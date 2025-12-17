@@ -1,0 +1,19 @@
+# Format (one entry per line):
+#
+# 1) URL only (output file auto-derived):
+# https://example.com/path/to/doc.pdf
+#
+# 2) URL + output file (relative to documentation/):
+# https://example.com/doc.pdf | sfdx_dev.md
+#
+# 3) Title + URL (output file auto-derived from title/url):
+# Salesforce DX Developer Guide | https://example.com/doc.pdf
+#
+# 4) Title + URL + output file:
+# Salesforce DX Developer Guide | https://example.com/doc.pdf | sfdx_dev.md
+#
+# Lines starting with # are ignored.
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_dev.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_reference_guide.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
