@@ -1,5 +1,9 @@
 .cache/
 node_modules/
-bun.lockb
+.venv/
+__pycache__/
+.mypy_cache/
+.ruff_cache/
+.uv/
 .DS_Store
-
+*.egg-info

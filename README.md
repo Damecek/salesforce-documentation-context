@@ -6,7 +6,8 @@ versions of those Markdown files.
 
 ## Requirements
 
-- Bun (`bun --version`)
+- Python 3.10+ (`python3 --version`)
+- uv (`uv --version`)
 
 ## Usage
 
@@ -14,13 +15,13 @@ versions of those Markdown files.
 2. Install dependencies:
 
    ```bash
-   bun install
+   uv sync
    ```
 
 3. Generate / refresh Markdown:
 
    ```bash
-   bun run update
+   uv run update
    ```
 
 Output:
@@ -28,6 +29,11 @@ Output:
 - Markdown files in `documentation/` (one per entry in `src.txt`).
 - Download cache in `.cache/` (ETag / Last-Modified when available).
 - Updated `llms.txt` with GitHub Raw links.
+
+Conversion notes:
+
+- Uses `pymupdf4llm.to_markdown()` (PyMuPDF4LLM) for Markdown output.
+- Header detection defaults to auto (TOC-based if available, otherwise font-size heuristics).
 
 ## `src.txt` format
 
@@ -49,5 +55,17 @@ The updater supports these env vars:
 - `CACHE_DIR` (default `.cache`)
 - `CONCURRENCY` (default `4`)
 - `FORCE` (set to `1`/`true` to regenerate Markdown even if the PDF content is unchanged)
+- `HTTP_TIMEOUT` (default `60`, seconds)
 - `GITHUB_RAW_BASE` (e.g. `https://raw.githubusercontent.com/OWNER/REPO/main`)
 - `GITHUB_RAW_BRANCH` (override branch used for raw links)
+
+PyMuPDF4LLM conversion tuning:
+
+- `PDF_HDR_MODE` (`auto` | `toc` | `identify` | `none`) (default `auto`)
+- `PDF_HDR_BODY_LIMIT` (default `12`)
+- `PDF_HDR_MAX_LEVELS` (default `4`)
+- `PDF_HDR_SAMPLE_PAGES` (default `10`)
+- `PDF_FORCE_TEXT` (`1`/`true` to extract text even over images)
+- `PDF_IGNORE_IMAGES` (`1`/`true`)
+- `PDF_IGNORE_GRAPHICS` (`1`/`true`)
+- `PDF_TABLE_STRATEGY` (e.g. `lines_strict`, `lines`, `text`, `explicit`; empty disables)

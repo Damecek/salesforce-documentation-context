@@ -13,7 +13,7 @@
 # Salesforce DX Developer Guide | https://example.com/doc.pdf | sfdx_dev.md
 #
 # Lines starting with # are ignored.
+# After editing this file, run: `uv run update`
 https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_dev.pdf
 https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
 https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_reference_guide.pdf
-https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
