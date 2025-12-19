@@ -14,15 +14,15 @@ versions of those Markdown files.
 1. Update `src.txt` (your list of PDF sources).
 2. Install dependencies:
 
-   ```bash
-   uv sync
-   ```
+```bash
+uv sync
+```
 
 3. Generate / refresh Markdown:
 
-   ```bash
-   uv run update
-   ```
+```bash
+export PDF_IGNORE_IMAGES=1 && export PDF_FORCE_TEXT=1 && uv run update
+```
 
 Output:
 

@@ -15,5 +15,11 @@
 # Lines starting with # are ignored.
 # After editing this file, run: `uv run update`
 https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_dev.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_setup.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_cli_reference.pdf
 https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
 https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_reference_guide.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/pkg2_dev.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/api_action.pdf
+https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/object_reference.pdf

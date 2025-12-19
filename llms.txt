@@ -5,6 +5,12 @@
 Update `src.txt`, then run `uv run update` to regenerate Markdown files in `documentation/` and refresh this list.
 
 ## Documentation
+- [Api action](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/api-action.md)
+- [Object reference](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/object-reference.md)
+- [Pkg2 dev](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/pkg2-dev.md)
 - [Salesforce apex developer guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-apex-developer-guide.md)
 - [Salesforce apex reference guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-apex-reference-guide.md)
+- [Salesforce soql sosl](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-soql-sosl.md)
+- [Sfdx cli reference](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/sfdx-cli-reference.md)
 - [Sfdx dev](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/sfdx-dev.md)
+- [Sfdx setup](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/sfdx-setup.md)
