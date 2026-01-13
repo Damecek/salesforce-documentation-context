@@ -9,7 +9,21 @@ versions of those Markdown files.
 - Python 3.10+ (`python3 --version`)
 - uv (`uv --version`)
 
-## Usage
+## Usage (Context7 MCP)
+
+Install the Context7 MCP server into your AI agent:
+https://github.com/upstash/context7#installation
+
+Then tell the agent to use this library (the `llms.txt` from this repo) directly via Context7. Example instruction:
+
+```
+- If a Context7 MCP server is available, call `get-library-docs` directly (skip `resolve-library-id`) with
+  `context7CompatibleLibraryID: /llmstxt/raw_githubusercontent_damecek_salesforce-documentation-context_refs_heads_main_llms_txt`, to get up to date information about target topic.
+```
+
+## Generate Documentation
+
+Fastest way to create or re-generate Markdown documentation files (`documentation/`) and update `llms.txt`:
 
 1. Update `src.txt` (your list of PDF sources).
 2. Install dependencies:
