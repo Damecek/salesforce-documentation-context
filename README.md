@@ -1,14 +1,4 @@
 # salesforce-documentation-context
-
-One place where Salesforce documentation (PDFs on URLs) is downloaded, converted to Markdown, and written into
-`documentation/`. The project also generates `llms.txt` (per https://llmstxt.org/) with links to the GitHub Raw
-versions of those Markdown files.
-
-## Requirements
-
-- Python 3.10+ (`python3 --version`)
-- uv (`uv --version`)
-
 ## Usage (Context7 MCP)
 
 Install the Context7 MCP server into your AI agent:
@@ -22,6 +12,15 @@ Then tell the agent to use this library (the `llms.txt` from this repo) directly
 ```
 
 ## Generate Documentation
+
+One place where Salesforce documentation (PDFs on URLs) is downloaded, converted to Markdown, and written into
+`documentation/`. The project also generates `llms.txt` (per https://llmstxt.org/) with links to the GitHub Raw
+versions of those Markdown files.
+
+## Requirements
+
+- Python 3.10+ (`python3 --version`)
+- uv (`uv --version`)
 
 Fastest way to create or re-generate Markdown documentation files (`documentation/`) and update `llms.txt`:
 
