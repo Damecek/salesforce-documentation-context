@@ -1,13 +1,13 @@
 # Pkg2 dev
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/pkg2_dev.pdf
-> Fetched: 2025-12-19T11:11:09Z
+> Fetched: 2026-01-13T15:43:53Z
 Second-Generation Managed
 Packaging Developer Guide
 
 Version 65.0, Winter ’26
 
-Last updated: November 14, 2025
+Last updated: December 19, 2025
 
 © Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -20135,7 +20135,8 @@ needs no annotation.
 
 Considerations for Apex Accessibility Across Packages
 
-**•** You can't use the `@NamespaceAccessible` annotation for an `@AuraEnabled` Apex method.
+**•** You can’t use the `@NamespaceAccessible` annotation for an `@AuraEnabled` Apex method or an `@InvocableMethod`
+Apex method.
 
 **•** You can add or remove the `@NamespaceAccessible` annotation at any time, even on managed and released Apex code.
 Make sure that you don’t have dependent packages relying on the functionality of the annotation before adding or removing it.
@@ -20187,8 +20188,6 @@ within the same namespace. The first constructor is also visible within the name
 
       @NamespaceAccessible
 
-      protected Boolean getBypassFLS() {
-
 ```
 
 324
@@ -20196,6 +20195,8 @@ within the same namespace. The first constructor is also visible within the name
 ### Second-Generation Managed Packages Work with Services Outside of Salesforce
 
 ```
+      protected Boolean getBypassFLS() {
+
         return bypassFLS;
 
       }
