@@ -1,13 +1,13 @@
 # Sfdx cli reference
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_cli_reference.pdf
-> Fetched: 2025-12-19T11:11:02Z
+> Fetched: 2026-01-13T15:20:03Z
 Salesforce CLI Command
 Reference
 
 Salesforce, Winter ’26
 
-Last updated: December 12, 2025
+Last updated: December 18, 2025
 
 © Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -59,7 +59,7 @@ both the current release and the release candidate.
 Commands to manage Salesforce DX projects, create and manage scratch orgs and sandboxes, synchronize source to and from orgs,
 create and install packages, and more.
 
-## This version of the sf command reference includes details about version 2.116.6 of the sf executable of Salesforce CLI and the
+## This version of the sf command reference includes details about version 2.117.6 of the sf executable of Salesforce CLI and the
 
 following plug-in versions:
 
@@ -89,15 +89,15 @@ Salesforce CLI Command Reference sf
 
 **•** `@salesforce/plugin-user` version 3.6.44
 
-**•** `@salesforce/plugin-org` version 5.9.52
+**•** `@salesforce/plugin-org` version 5.9.53
 
-**•** `@salesforce/plugin-packaging` version 2.24.0
+**•** `@salesforce/plugin-packaging` version 2.24.2
 
-**•** `@salesforce/plugin-templates` version 56.3.74
+**•** `@salesforce/plugin-templates` version 56.4.0
 
-**•** `@salesforce/plugin-apex` version 3.9.4
+**•** `@salesforce/plugin-apex` version 3.9.5
 
-**•** `@salesforce/plugin-auth` version 3.9.25
+**•** `@salesforce/plugin-auth` version 3.9.26
 
 **•** `@salesforce/plugin-dev` version 2.5.1
 
@@ -111,7 +111,7 @@ Salesforce CLI Command Reference sf
 
 **•** `@salesforce/plugin-api` version 1.3.6
 
-**•** `@salesforce/plugin-agent` version 1.25.2
+**•** `@salesforce/plugin-agent` version 1.26.0
 
 **•** `@salesforce/plugin-flow` version 1.0.5
 
@@ -18860,7 +18860,7 @@ Output directory to store the Metadata API–formatted files in.
 
 Type: option
 
-Default value: metadataPackage_1765402727606
+Default value: metadataPackage_1765992141312
 
 **`-n`** **|** **`--package-name PACKAGE-NAME`**
 Optional
@@ -24482,18 +24482,6 @@ in which we plan to remove the command or flag. The command help also includes d
 
 Check out these other plugins that work with specific Salesforce features. These plugins are created by Salesforce.
 
-**ISV Technical Enablement Plugin**
-
-The ISVTE plugin is an on-demand Technical Evangelist. It scans your package metadata and code, and provides targeted feedback
-to help you improve and future-proof your app. The feedback includes a detailed metadata inventory, recommendations on features
-or technologies to consider using, enablement resources, and installation limitations. The feedback also includes best practices,
-partner alerts, guidance on improving your partner Trailblazer score, and more. While it's designed for ISV and OEM partners, anyone
-developing on the platform can use it.
-
-When you install the plugin, you're asked to confirm that it's unsigned. Answer _`yes`_ . This behavior is expected.
-
-[See GitHub for documentation and more information.](https://github.com/forcedotcom/isvte-sfdx-plugin/blob/master/README.md)
-
 **CRM Analytics Plugin**
 
 CRM Analytics is a cloud-based platform for connecting data from multiple sources, creating interactive views of that data, and
@@ -24510,7 +24498,8 @@ apps.
 **Salesforce Code Analyzer Plugin**
 
 The Salesforce Code Analyzer plugin is a unified tool for static analysis of source code, in multiple languages (including Apex), with
-a consistent command-line interface and report output. We currently support the PMD rule engine, ESLint, and RetireJS.
+a consistent command-line interface and report output. The plugin supports multiple third-party engines, such as PMD, CPD, ESLint,
+and RetireJS. The plugin also supports Salesforce engines, such as Flow Scanner and Regex.
 
 The plugin creates "rule violations" when the scanner identifies issues. Developers use this information as feedback to fix their code.
 Integrate this plugin into your continuous integration (CI) solution to continually enforce the rules and ensure high-quality code.

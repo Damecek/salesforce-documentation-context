@@ -1,12 +1,12 @@
 # Salesforce soql sosl
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
-> Fetched: 2025-12-19T11:11:04Z
+> Fetched: 2026-01-13T15:20:23Z
 SOQL and SOSL Reference
 
 Version 65.0, Winter ’26
 
-Last updated: November 28, 2025
+Last updated: January 5, 2026
 
 © Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.

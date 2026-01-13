@@ -1,12 +1,12 @@
 # Salesforce apex developer guide
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
-> Fetched: 2025-12-18T21:54:13Z
+> Fetched: 2026-01-13T15:20:03Z
 Apex Developer Guide
 
 Version 65.0, Winter ’26
 
-Last updated: December 5, 2025
+Last updated: January 9, 2026
 
 © Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -6347,15 +6347,15 @@ The following is a batch job that uses an iterator:
 
 Apex provides the keywords `final`, `instanceof`, `super`, `this`, `transient`, `with sharing` and `without sharing` .
 
-1. Using the final Keyword
+1. Using the final Keyword Keyword
 
-2. Using the instanceof Keyword
+2. Using the instanceof Keyword Keyword
 
-3. Using the super Keyword
+3. Using the super Keyword Keyword
 
-4. Using the this Keyword
+4. Using the this Keyword Keyword
 
-5. Using the transient Keyword
+5. Using the transient Keyword Keyword
 
 84
 
@@ -6369,7 +6369,7 @@ SEE ALSO:
 
 Reserved Keywords
 
-##### Using the final Keyword
+##### Using the final Keyword Keyword
 
 Keep in mind these consideration while using the `final` keyword to modify variables.
 
@@ -6390,7 +6390,7 @@ SEE ALSO:
 
 Extended Class Example
 
-##### Using the instanceof Keyword
+##### Using the instanceof Keyword Keyword
 
 If you need to verify at run time whether an object is actually an instance of a particular class, use the `instanceof` keyword. The
 
@@ -6478,7 +6478,7 @@ In API version 32.0 and later, `instanceof` returns `false` if the left operand 
 
    System.assertEquals(false, result);
 
-##### Using the super Keyword
+##### Using the super Keyword Keyword
 
 ```
 
@@ -6587,7 +6587,7 @@ Best Practices for Using the **`super`** Keyword
 
 **•** You can only use `super` in methods that are designated with the `override` keyword.
 
-##### Using the this Keyword
+##### Using the this Keyword Keyword
 
 There are two different ways of using the `this` keyword.
 
@@ -6645,7 +6645,7 @@ the `this` keyword with parentheses. For example:
 
 When you use the `this` keyword in a constructor to do constructor chaining, it must be the first statement in the constructor.
 
-##### Using the transient Keyword
+##### Using the transient Keyword Keyword
 
 Use the `transient` keyword to declare instance variables that can't be saved, and shouldn't be transmitted as part of the view state
 for a Visualforce page. For example:
@@ -7042,11 +7042,11 @@ You can use multiple annotations for the same class or method. Specify each anno
 or method definition. Some annotations can’t be used together. If applicable, these limitations are documented on the page for the
 annotation.
 
-1. AuraEnabled Annotation
+1. AuraEnabled Annotation Annotation
 
-2. Deprecated Annotation
+2. Deprecated Annotation Annotation
 
-3. Future Annotation
+3. Future Annotation Annotation
 
 4. InvocableMethod Annotation
 Use the `InvocableMethod` annotation to identify methods that can be run as invocable actions.
@@ -7064,24 +7064,24 @@ If the annotation restricts the JSON or XML serialization and deserialization, a
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
-8. NamespaceAccessible Annotation
+8. NamespaceAccessible Annotation Annotation
 
-9. ReadOnly Annotation
+9. ReadOnly Annotation Annotation
 
-10. RemoteAction Annotation
+10. RemoteAction Annotation Annotation
 
-11. SuppressWarnings Annotation
+11. SuppressWarnings Annotation Annotation
 
 This annotation does nothing in Apex but can be used to provide information to third-party tools.
 
-12. TestSetup Annotation
+12. TestSetup Annotation Annotation
 
 Methods defined with the `@TestSetup` annotation are used for creating common test records that are available for all test
 methods in the class.
 
-13. TestVisible Annotation
+13. TestVisible Annotation Annotation
 
-##### AuraEnabled Annotation
+##### AuraEnabled Annotation Annotation
 
 The `@AuraEnabled` annotation enables client-side and server-side access to an Apex controller method. Providing this annotation
 makes your methods available to your Lightning components (both Lightning web components and Aura components). Only methods
@@ -7100,7 +7100,7 @@ Versioned Behavior Changes
 
 In API version 55.0 and later, overloads aren’t allowed on methods annotated with `@AuraEnabled` .
 
-##### Deprecated Annotation Use the Deprecated annotation to identify methods, classes, exceptions, enums, interfaces, or variables that can no longer be
+##### Deprecated Annotation Annotation Use the Deprecated annotation to identify methods, classes, exceptions, enums, interfaces, or variables that can no longer be
 
 referenced in subsequent releases of the managed package in which they reside. This annotation is useful when you’re refactoring code
 in managed packages as the requirements evolve. New subscribers can’t see the deprecated elements, while the elements continue to
@@ -7145,7 +7145,7 @@ that item in Apex is deprecated.
 
 For more information about package versions, see What is a Package? on page 742.
 
-##### Future Annotation Use the Future annotation to identify methods that are executed asynchronously. When you specify Future, the method executes
+##### Future Annotation Annotation Use the Future annotation to identify methods that are executed asynchronously. When you specify Future, the method executes
 
 when Salesforce has available resources.
 
@@ -7574,7 +7574,7 @@ InvocableMethod Considerations
 
 **•** Only one method in a class can have the `InvocableMethod` annotation.
 
-**•** Other annotations can’t be used with the `InvocableMethod` annotation.
+**•** The only annotation that can be used with the `InvocableMethod` annotation is `Deprecated` .
 
 99
 
@@ -7621,7 +7621,7 @@ the package.
 **•** Global invocable methods can be referred to anywhere in the subscriber org. Only global invocable methods appear in Flow
 Builder and Process Builder in the subscriber org.
 
-For more information about invocable actions, see the _Actions Developer Guide._
+[For more information about invocable actions, see Apex Actions in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_action.meta/api_action/actions_intro.htm) _Actions Developer Guide_ .
 
 SEE ALSO:
 
@@ -8418,7 +8418,7 @@ In versions 48.0 and earlier, the default access for deserialization is `always`
 to preserve the existing behavior. From version 49.0 onwards, the default access for both serialization and deserialization is
 `sameNamespace` .
 
-##### NamespaceAccessible Annotation
+##### NamespaceAccessible Annotation Annotation
 
 The `@NamespaceAccessible` makes public Apex in a package available to other packages that use the same namespace. Without
 this annotation, Apex classes, methods, interfaces, properties, and abstract classes defined in a 2GP package aren’t accessible to the
@@ -8429,7 +8429,8 @@ no annotation.
 
 Considerations for Apex Accessibility Across Packages
 
-**•** You can't use the `@NamespaceAccessible` annotation for an `@AuraEnabled` Apex method.
+**•** You can’t use the `@NamespaceAccessible` annotation for an `@AuraEnabled` Apex method or an `@InvocableMethod`
+Apex method.
 
 **•** You can add or remove the `@NamespaceAccessible` annotation at any time, even on managed and released Apex code.
 Make sure that you don’t have dependent packages relying on the functionality of the annotation before adding or removing it.
@@ -8567,7 +8568,7 @@ In API version 50.0 and later, scope and accessibility rules are enforced on Ape
 annotated with `@NamespaceAccessible` . For accessibility considerations, see Considerations for Apex Acessibility Across Packages.
 [For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
-##### ReadOnly Annotation
+##### ReadOnly Annotation Annotation
 
 The `@ReadOnly` annotation allows you to perform less restrictive queries against the Lightning Platform database by increasing the
 limit of the number of returned rows for a request to 1,000,000. All other limits still apply. The annotation blocks the following operations
@@ -8594,7 +8595,7 @@ Prior to API version 49.0, using `@ReadOnly` on Apex REST methods (@HttpDelete, 
 also required annotating the method with `@RemoteAction` . In API version 49.0 and later, you can annotate Apex REST methods
 with just `@ReadOnly` .
 
-##### RemoteAction Annotation The RemoteAction annotation provides support for Apex methods used in Visualforce to be called via JavaScript. This process is
+##### RemoteAction Annotation Annotation The RemoteAction annotation provides support for Apex methods used in Visualforce to be called via JavaScript. This process is
 
 often referred to as JavaScript remoting.
 
@@ -8650,13 +8651,13 @@ actual type. Your method can return Apex primitives, sObjects, collections, user
 
 For more information, see “JavaScript Remoting for Apex Controllers” in the _Visualforce Developer's Guide_ .
 
-##### SuppressWarnings Annotation
+##### SuppressWarnings Annotation Annotation
 
 This annotation does nothing in Apex but can be used to provide information to third-party tools.
 
 The `@SuppressWarnings` annotation does nothing in Apex but can be used to provide information to third-party tools.
 
-##### TestSetup Annotation
+##### TestSetup Annotation Annotation
 
 Methods defined with the `@TestSetup` annotation are used for creating common test records that are available for all test methods
 in the class.
@@ -8686,7 +8687,7 @@ Because data isolation for tests is available for API versions 24.0 and later, t
 
 For more information, see Using Test Setup Methods.
 
-##### TestVisible Annotation Use the TestVisible annotation to allow test methods to access private or protected members of another class outside the test
+##### TestVisible Annotation Annotation Use the TestVisible annotation to allow test methods to access private or protected members of another class outside the test
 
 class. These members include methods, member variables, and inner classes. This annotation enables a more permissive access level
 for running tests only. This annotation doesn’t change the visibility of members if accessed by non-test classes.
@@ -8769,7 +8770,7 @@ SEE ALSO:
 
 Exposing Apex Classes as REST Web Services
 
-###### RestResource Annotation
+###### RestResource Annotation Annotation
 
 The `@RestResource` annotation is used at the class level and enables you to expose an Apex class as a REST resource.
 
@@ -8812,14 +8813,14 @@ The URL for a namespaced class contains the namespace. For example, if your clas
 `https://` _`instance`_ `.salesforce.com/services/apexrest/abc/your_url/` . In the case of a URL collision, the
 namespaced class is always used.
 
-###### HttpDelete Annotation
+###### HttpDelete Annotation Annotation
 
 The `@HttpDelete` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This
 method is called when an HTTP `DELETE` request is sent, and deletes the specified resource.
 
 To use this annotation, your Apex method must be defined as global static.
 
-###### HttpGet Annotation
+###### HttpGet Annotation Annotation
 
 The `@HttpGet` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
 is called when an HTTP `GET` request is sent, and returns the specified resource.
@@ -8830,14 +8831,14 @@ These are some considerations when using this annotation:
 
 **•** Methods annotated with `@HttpGet` are also called if the HTTP request uses the `HEAD` request method.
 
-###### HttpPatch Annotation
+###### HttpPatch Annotation Annotation
 
 The `@HttpPatch` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
 is called when an HTTP `PATCH` request is sent, and updates the specified resource.
 
 To use this annotation, your Apex method must be defined as global static.
 
-###### HttpPost Annotation
+###### HttpPost Annotation Annotation
 
 The `@HttpPost` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
 is called when an HTTP `POST` request is sent, and creates a new resource.
@@ -8848,7 +8849,7 @@ To use this annotation, your Apex method must be defined as global static.
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
-###### HttpPut Annotation
+###### HttpPut Annotation Annotation
 
 The `@HttpPut` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
 is called when an HTTP `PUT` request is sent, and creates or updates the specified resource.
@@ -12097,8 +12098,8 @@ are called. If any savepoints are reset, a `SAVEPOINT_RESET` event is logged.
 
 Before API version 60.0, making a callout after creating savepoints throws a `CalloutException` regardless of whether there was
 uncommitted DML or the changes were rolled back to a savepoint. Also, before API version 60.0, both
-`Database.rollback(databaseSavepoint)` and `Database.setSavepoint()` calls incremented the DML row usage
-limit.
+`Database.rollback(databaseSavepoint)` and `Database.setSavepoint()` calls incremented the DML row
+usage limit.
 
 157
 
@@ -40793,11 +40794,11 @@ Note: The `DataSource.Connection` class requires a Salesforce Connect add-on lic
 
 Let’s step through the code of a sample custom adapter.
 
-1. Create a Sample DataSource.Connection Class
+1. Create a Sample DataSource.Connection Class Class
 First, create a `DataSource.Connection` class to enable Salesforce to obtain the external system’s schema and to handle
 queries and searches of the external data.
 
-2. Create a Sample DataSource.Provider Class
+2. Create a Sample DataSource.Provider Class Class
 Now you need a class that extends and overrides a few methods in `DataSource.Provider` .
 
 522
@@ -40808,7 +40809,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 After you create your `DataSource.Connection` and `DataSource.Provider` classes, the Salesforce Connect custom
 adapter becomes available in Setup.
 
-###### Create a Sample DataSource.Connection Class
+###### Create a Sample DataSource.Connection Class Class
 
 First, create a `DataSource.Connection` class to enable Salesforce to obtain the external system’s schema and to handle queries
 and searches of the external data.
@@ -41253,7 +41254,7 @@ _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.
 
 Filters in the Apex Connector Framework
 
-###### Create a Sample DataSource.Provider Class
+###### Create a Sample DataSource.Provider Class Class
 
 Now you need a class that extends and overrides a few methods in `DataSource.Provider` .
 
@@ -41415,7 +41416,7 @@ then page through those batches. However, custom adapters for Salesforce Connect
 kind. To support paging through external object data that’s obtained by a custom adapter, implement server-driven or client-driven
 paging.
 
-queryMore with the Apex Connector Framework
+queryMore with the Apex Connector Framework with the Apex Connector Framework
 Custom adapters for Salesforce Connect don’t automatically support the `queryMore` method in API queries. However, your
 implementation must be able to break up large result sets into batches and iterate over them by using the `queryMore` method
 in the SOAP API. The default batch size is 500 records, but the query developer can adjust that value programmatically in the query
@@ -41668,7 +41669,7 @@ SEE ALSO:
 
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_QueryContext.htm)_ : QueryContext Class
 
-###### queryMore with the Apex Connector Framework Custom adapters for Salesforce Connect don’t automatically support the queryMore method in API queries. However, your implementation must be able to break up large result sets into batches and iterate over them by using the queryMore method in
+###### queryMore with the Apex Connector Framework with the Apex Connector Framework Custom adapters for Salesforce Connect don’t automatically support the queryMore method in API queries. However, your implementation must be able to break up large result sets into batches and iterate over them by using the queryMore method in
 
 the SOAP API. The default batch size is 500 records, but the query developer can adjust that value programmatically in the query call.
 
@@ -41726,7 +41727,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    }
 
-####### Support queryMore by Using Server-Driven Paging
+####### Support queryMore by Using Server-Driven Paging by Using Server-Driven Paging
 ```
 
 With server-driven paging, the external system controls the paging and ignores any batch boundaries or page sizes that are specified
@@ -41737,7 +41738,7 @@ in queries. To enable server-driven paging, declare the `QUERY_PAGINATION_SERVER
 
 With client-driven paging, you use `LIMIT` and `OFFSET` clauses to page through result sets.
 
-####### Support queryMore by Using Server-Driven Paging
+####### Support queryMore by Using Server-Driven Paging by Using Server-Driven Paging
 
 With server-driven paging, the external system controls the paging and ignores any batch boundaries or page sizes that are specified
 in queries. To enable server-driven paging, declare the `QUERY_PAGINATION_SERVER_DRIVEN` capability in your
@@ -41754,7 +41755,7 @@ The Apex Connector Framework doesn't support server-driven pagination for list v
 
 SEE ALSO:
 
-queryMore with the Apex Connector Framework
+queryMore with the Apex Connector Framework with the Apex Connector Framework
 
 ####### Support queryMore by Using Client-Driven Paging
 
@@ -41783,7 +41784,7 @@ against changes infrequently.
 
 SEE ALSO:
 
-queryMore with the Apex Connector Framework
+queryMore with the Apex Connector Framework with the Apex Connector Framework
 
 ###### Aggregation for Salesforce Connect Custom Adapters
 
@@ -41862,7 +41863,7 @@ SEE ALSO:
 
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_QueryContext.htm)_ : QueryContext Class
 
-Create a Sample DataSource.Connection Class
+Create a Sample DataSource.Connection Class Class
 
 535
 
@@ -49136,13 +49137,13 @@ Apex Developer Guide Integration and Apex Utilities
 
 To enable running DML operations before mock callouts in your test methods, see Performing DML Operations and Mock Callouts.
 
-####### Testing HTTP Callouts by Implementing the HttpCalloutMock Interface
+####### Testing HTTP Callouts by Implementing the HttpCalloutMock Interface Interface
 
 Testing HTTP Callouts Using Static Resources
 
 Performing DML Operations and Mock Callouts
 
-####### Testing HTTP Callouts by Implementing the HttpCalloutMock Interface
+####### Testing HTTP Callouts by Implementing the HttpCalloutMock Interface Interface
 
 Provide an implementation for the `HttpCalloutMock` interface to specify the response sent in the `respond` method, which the
 Apex runtime calls to send a response for a callout.
@@ -57386,14 +57387,14 @@ Apex Developer Guide Testing Apex
 
    }
 
-##### 1. Using the runAs Method
+##### 1. Using the runAs Method Method
 ```
 
 Generally, all Apex code runs in system mode, where the object-level and field-level permissions of the current user aren’t taken into
 account. With the System method `runAs`, you can write test methods that change the user context to an existing user or a new
 user. Then the user’s sharing rules and object-level and field-level permissions are enforced.
 
-2. Using Limits, startTest, and stopTest
+2. Using Limits, startTest, and, and stopTest
 
 3. Adding SOSL Queries to Unit Tests
 
@@ -57403,7 +57404,7 @@ Testing and Code Coverage
 
 _Salesforce Help_ [: Open the Developer Console](https://help.salesforce.com/HTViewHelpDoc?id=code_dev_console_opening.htm&language=en_US)
 
-##### Using the runAs Method
+##### Using the runAs Method Method
 
 Generally, all Apex code runs in system mode, where the object-level and field-level permissions of the current user aren’t taken into
 account. With the System method `runAs`, you can write test methods that change the user context to an existing user or a new user.
@@ -57545,7 +57546,7 @@ Enforce Object and Field Permissions
 
 _Apex Reference Guide_ [: System.runAs(userSObject)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_runAs_2)
 
-##### Using Limits, startTest, and stopTest
+##### Using Limits, startTest, and, and stopTest
 
 The Limits methods return the specific limit for the particular governor, such as the number of calls of a method or the amount of heap
 size remaining.
@@ -59359,7 +59360,7 @@ Exposing Apex Classes as REST Web Services
 
 Exposing Apex Methods as SOAP Web Services
 
-NamespaceAccessible Annotation
+NamespaceAccessible Annotation Annotation
 
 Deprecating Apex
 

@@ -1,12 +1,12 @@
 # Sfdx setup
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_setup.pdf
-> Fetched: 2025-12-19T11:11:02Z
+> Fetched: 2026-01-13T15:20:03Z
 Salesforce CLI Setup Guide
 
 Version 65.0, Winter ’26
 
-Last updated: October 31, 2025
+Last updated: December 18, 2025
 
 © Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -3954,26 +3954,10 @@ your home directory. Install only unsigned and unverified plugins that you trust
 
 Check out these other plugins that work with specific Salesforce features. These plugins are created by Salesforce.
 
-**ISV Technical Enablement Plugin**
-
-The ISVTE plugin is an on-demand Technical Evangelist. It scans your package metadata and code, and provides targeted feedback
-to help you improve and future-proof your app. The feedback includes a detailed metadata inventory, recommendations on features
-or technologies to consider using, enablement resources, and installation limitations. The feedback also includes best practices,
-partner alerts, guidance on improving your partner Trailblazer score, and more. While it's designed for ISV and OEM partners, anyone
-developing on the platform can use it.
-
-When you install the plugin, you're asked to confirm that it's unsigned. Answer _`yes`_ . This behavior is expected.
-
-[See GitHub for documentation and more information.](https://github.com/forcedotcom/isvte-sfdx-plugin/blob/master/README.md)
-
 **CRM Analytics Plugin**
 
 CRM Analytics is a cloud-based platform for connecting data from multiple sources, creating interactive views of that data, and
 sharing those views in apps.
-
-63
-
-## Salesforce CLI Plugins Quickly Uninstall All Non-Core Plugins
 
 Use the CRM Analytics CLI plugin to create scratch orgs with Analytics Studio, which you can use to develop and test source code.
 The plugin includes commands that call a subset of the Analytics REST API endpoints to manage CRM Analytics assets programmatically.
@@ -3983,10 +3967,15 @@ apps.
 
 [See Develop with the Analytics Plugin for the Salesforce CLI for documentation and more information.](https://help.salesforce.com/articleView?id=analytics.bi_dev_tools_cli_analytics_plugin.htm&type=5&language=en_US)
 
+63
+
+## Salesforce CLI Plugins Quickly Uninstall All Non-Core Plugins
+
 **Salesforce Code Analyzer Plugin**
 
 The Salesforce Code Analyzer plugin is a unified tool for static analysis of source code, in multiple languages (including Apex), with
-a consistent command-line interface and report output. We currently support the PMD rule engine, ESLint, and RetireJS.
+a consistent command-line interface and report output. The plugin supports multiple third-party engines, such as PMD, CPD, ESLint,
+and RetireJS. The plugin also supports Salesforce engines, such as Flow Scanner and Regex.
 
 The plugin creates "rule violations" when the scanner identifies issues. Developers use this information as feedback to fix their code.
 Integrate this plugin into your continuous integration (CI) solution to continually enforce the rules and ensure high-quality code.

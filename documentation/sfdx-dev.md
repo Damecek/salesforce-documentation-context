@@ -1,12 +1,12 @@
 # Sfdx dev
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_dev.pdf
-> Fetched: 2025-12-18T21:54:13Z
+> Fetched: 2026-01-13T15:20:03Z
 Salesforce DX Developer Guide
 
 Version 65.0, Winter ’26
 
-Last updated: November 7, 2025
+Last updated: December 18, 2025
 
 © Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -79,194 +79,198 @@ Authorize an Org Using a Browser **. . . . . . . . . . . . . . . . . . . . . . .
 Authorize an Org Using the JWT Flow **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 59**
 
 Authorize a Scratch Org Using the JWT Flow **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60**
-Authorize an Org Using Its SFDX Authorization URL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 61**
-Create a Private Key and Self-Signed Digital Certificate **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 62**
-Create a Connected App in Your Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63**
-Use the Default Connected App Securely **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64**
-Use an Existing Access Token **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65**
-Authorization Information for an Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66**
-Log Out of an Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67**
+Create a Private Key and Self-Signed Digital Certificate **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 61**
+Create an External Client App in Your Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62**
 
-**Chapter 5:** Metadata Coverage **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68**
+Get and Use the Consumer Key and Secret **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64**
+Create a Connected App in Your Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64**
+Use the Default Connected App Securely **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66**
+Use an Existing Access Token **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67**
+Authorize an Org Using Its SFDX Authorization URL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68**
+Authorization Information for an Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 68**
+Log Out of an Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69**
 
-**Chapter 6:** Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69**
+**Chapter 5:** Metadata Coverage **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71**
 
-Supported Scratch Org Editions and Allocations **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 72**
-Build Your Own Scratch Org Definition File **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 73**
+**Chapter 6:** Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 72**
 
-Scratch Org Features **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 77**
-Scratch Org Settings **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 163**
-Create a Scratch Org Based on an Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 165**
+Supported Scratch Org Editions and Allocations **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 75**
+Build Your Own Scratch Org Definition File **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 76**
 
-Enable Org Shape for Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 166**
-Org Shape Permissions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 167**
-Create and Manage Org Shapes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 167**
-Scratch Org Definition for Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168**
-Troubleshoot Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170**
-Create Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 172**
-Scratch Org Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 175**
+Scratch Org Features **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 80**
+Scratch Org Settings **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 166**
+Create a Scratch Org Based on an Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168**
 
-Get Started with Scratch Org Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 177**
-Salesforce CLI Snapshot Commands **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 178**
-Create a Scratch Org Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 178**
-Create a Snapshot for Use with Namespaced Scratch Orgs **. . . . . . . . . . . . . . . . . . . . 179**
-Create a Scratch Org Based on a Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 179**
-Create a Package Version Based on a Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 181**
-Manage and Maintain Your Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 182**
-Select the Salesforce Release for a Scratch Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 183**
-Deploy Source From Your Project to the Scratch Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 185**
+Enable Org Shape for Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169**
+Org Shape Permissions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170**
+Create and Manage Org Shapes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170**
+Scratch Org Definition for Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171**
+Troubleshoot Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 173**
+Create Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 175**
+Scratch Org Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 178**
 
-**Contents**
-
-Retrieve Source from the Scratch Org to Your Project **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 188**
-Scratch Org Users **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 190**
-
-Create a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 191**
-User Definition File for Customizing a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . . 192**
-Generate or Change a Password for a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . 194**
-Manage Scratch Orgs from the Dev Hub Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 195**
-Scratch Org Error Codes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 195**
-
-**Chapter 7:** Sandboxes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 197**
-
-Authorize Your Production Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 198**
-Create a Sandbox Definition File **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 198**
-Create, Clone, or Refresh a Sandbox **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201**
-
-**Chapter 8:** Track Changes Between Your Project and Org **. . . . . . . . . . . . . . . . . . . . 205**
-
-Manage Source Tracking for Your org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 206**
-Preview Changes Identified by Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 207**
-Deploy and Retrieve Changes Identified by Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . 208**
-
-Retrieve Changes to Profiles with Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . 211**
-Resolve Conflicts Between Your Local Project and Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 212**
-Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 213**
-Performance Considerations of Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 214**
-
-**Chapter 9:** Work with Data **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 215**
-
-Work With Small Datasets **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 216**
-Work With Large Datasets **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 218**
-Work With Individual Records **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 222**
-Run a SOQL or SOSL Query **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 224**
-Upload a File to Your Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 225**
-
-**Chapter 10:** Salesforce DX MCP Server and Tools (Beta) **. . . . . . . . . . . . . . . . . . . . . . 226**
-
-Quick Start Using the VS Code With Copilot MCP Client (Beta) **. . . . . . . . . . . . . . . . . . . . . . . 229**
-Install and Configure the Salesforce DX MCP Server (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . 230**
-
-Add the Salesforce DX MCP Server to Your MCP Client (Beta) **. . . . . . . . . . . . . . . . . . . 230**
-Configure the Salesforce DX MCP Server for Your Environment (Beta) **. . . . . . . . . . . . . . 231**
-Manage the Salesforce DX MCP Server (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 236**
-Use the Core Salesforce DX MCP Tools (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 237**
-
-**Chapter 11:** Development **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 240**
-
-Develop Against Any Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 242**
-Assign a Permission Set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 245**
-Create Lightning Apps and Aura Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 246**
-Create Lightning Web Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 246**
-Create an Apex Class **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 247**
-Create an Apex Trigger **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 248**
-Create a Custom Object **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 248**
+Get Started with Scratch Org Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 180**
+Salesforce CLI Snapshot Commands **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 181**
+Create a Scratch Org Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 181**
+Create a Snapshot for Use with Namespaced Scratch Orgs **. . . . . . . . . . . . . . . . . . . . 182**
+Create a Scratch Org Based on a Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 182**
+Create a Package Version Based on a Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . 184**
+Manage and Maintain Your Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 185**
 
 **Contents**
 
-Execute Anonymous Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 249**
-Run Apex Tests **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 250**
+Select the Salesforce Release for a Scratch Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186**
+Deploy Source From Your Project to the Scratch Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 188**
+Retrieve Source from the Scratch Org to Your Project **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 191**
+Scratch Org Users **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 193**
 
-Debug Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 253**
-Generate and View Apex Debug Logs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 254**
+Create a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 194**
+User Definition File for Customizing a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . . 195**
+Generate or Change a Password for a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . 197**
+Manage Scratch Orgs from the Dev Hub Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 198**
+Scratch Org Error Codes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 198**
 
-**Chapter 12:** Build and Release Your App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256**
+**Chapter 7:** Sandboxes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 200**
 
-Build and Release Your App with Metadata API **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 258**
+Authorize Your Production Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201**
+Create a Sandbox Definition File **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201**
+Create, Clone, or Refresh a Sandbox **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 204**
 
-Develop and Test Changes Locally **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 260**
-Build and Test the Release Artifact **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261**
-Test the Release Artifact in a Staging Environment **. . . . . . . . . . . . . . . . . . . . . . . . . . . 261**
-Release Your App to Production **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 262**
-Cancel a Metadata Deployment **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 262**
+**Chapter 8:** Track Changes Between Your Project and Org **. . . . . . . . . . . . . . . . . . . . 208**
 
-**Chapter 13:** Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 263**
+Manage Source Tracking for Your org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 209**
+Preview Changes Identified by Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 210**
+Deploy and Retrieve Changes Identified by Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . 211**
 
-What’s an Unlocked Package? **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 264**
-Package-Based Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 264**
-Before You Create Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265**
-Know Your Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265**
-Create Org-Dependent Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 266**
-Workflow for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267**
-Configure Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
+Retrieve Changes to Profiles with Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . 214**
+Resolve Conflicts Between Your Local Project and Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 215**
+Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 216**
+Performance Considerations of Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 217**
 
-Project Configuration File for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 269**
-Unlocked Packaging Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 275**
-Package Installation Key **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276**
-Extract Dependency Information from Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . 277**
-Understanding Namespaces **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278**
-Share Release Notes and Post-Install Instructions **. . . . . . . . . . . . . . . . . . . . . . . . . . . 282**
-Specify Unpackaged Metadata or Apex Access for Apex Tests (Unlocked Packages) **. . . 283**
-Best Practices for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 284**
-Package IDs and Aliases for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 284**
-Frequently Used Unlocked Packaging Operations **. . . . . . . . . . . . . . . . . . . . . . . . . . 285**
-How We Handle Profile Settings in Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . 286**
-Develop Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 287**
+**Chapter 9:** Work with Data **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 218**
 
-Create and Update an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 288**
-Create New Versions of an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 289**
-Guidance for Package Version Numbering **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 294**
-Code Coverage for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 295**
-Considerations for Promoting Packages with Dependencies **. . . . . . . . . . . . . . . . . . . 296**
-Release an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 297**
-Update an Unlocked Package Version **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298**
-Hard-Deleted Components in Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . 298**
-Delete an Unlocked Package or Package Version **. . . . . . . . . . . . . . . . . . . . . . . . . . 303**
-View Package Details **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 304**
-Push a Package Upgrade for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 304**
+Work With Small Datasets **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 219**
+Work With Large Datasets **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 221**
+Work With Individual Records **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 225**
+Run a SOQL or SOSL Query **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 227**
+Upload a File to Your Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 228**
+
+**Chapter 10:** Salesforce DX MCP Server and Tools (Beta) **. . . . . . . . . . . . . . . . . . . . . . 229**
+
+Quick Start Using the VS Code With Copilot MCP Client (Beta) **. . . . . . . . . . . . . . . . . . . . . . . 232**
+Install and Configure the Salesforce DX MCP Server (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . 233**
+
+Add the Salesforce DX MCP Server to Your MCP Client (Beta) **. . . . . . . . . . . . . . . . . . . 233**
+Configure the Salesforce DX MCP Server for Your Environment (Beta) **. . . . . . . . . . . . . . 234**
+Manage the Salesforce DX MCP Server (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 239**
+Use the Core Salesforce DX MCP Tools (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 240**
+
+**Chapter 11:** Development **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 243**
+
+Develop Against Any Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 245**
+Assign a Permission Set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 248**
+Create Lightning Apps and Aura Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 249**
+Create Lightning Web Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 249**
+Create an Apex Class **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 250**
 
 **Contents**
 
-Schedule a Push Upgrade Using CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 305**
-Install an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 308**
+Create an Apex Trigger **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251**
+Create a Custom Object **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251**
+Execute Anonymous Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252**
+Run Apex Tests **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 253**
 
-Install Packages with the CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 309**
-Install Unlocked Packages from a URL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 310**
-Upgrade a Version of an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 310**
-Sample Script for Installing Unlocked Packages with Dependencies **. . . . . . . . . . . . . . . 311**
-Migrate Deprecated Metadata from Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . 313**
-Uninstall an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 314**
-Transfer an Unlocked Package to a Different Dev Hub **. . . . . . . . . . . . . . . . . . . . . . . . . . . 314**
+Debug Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256**
+Generate and View Apex Debug Logs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257**
 
-Take Ownership of an Unlocked Package Transferred from a Different Dev Hub **. . . . . . 317**
+**Chapter 12:** Build and Release Your App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 259**
 
-**Chapter 14:** Continuous Integration **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 319**
+Build and Release Your App with Metadata API **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261**
 
-Continuous Integration Using CircleCI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 320**
+Develop and Test Changes Locally **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 263**
+Build and Test the Release Artifact **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 264**
+Test the Release Artifact in a Staging Environment **. . . . . . . . . . . . . . . . . . . . . . . . . . 264**
+Release Your App to Production **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265**
+Cancel a Metadata Deployment **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265**
 
-Configure Your Environment for CircleCI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 320**
-Connect CircleCI to Your DevHub **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 321**
-Continuous Integration Using Jenkins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 322**
+**Chapter 13:** Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 266**
 
-Configure Your Environment for Jenkins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 323**
-Jenkinsfile Walkthrough **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 324**
-Sample Jenkinsfile **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 330**
-Continuous Integration with Travis CI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 335**
-Sample CI Repos for Org Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 335**
-Sample CI Repos for Package Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 335**
+What’s an Unlocked Package? **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267**
+Package-Based Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267**
+Before You Create Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
+Know Your Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
+Create Org-Dependent Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269**
+Workflow for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 270**
+Configure Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 271**
 
-**Chapter 15:** Troubleshoot Salesforce DX **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 337**
+Project Configuration File for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 272**
+Unlocked Packaging Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278**
+Package Installation Key **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 279**
+Extract Dependency Information from Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . 280**
+Understanding Namespaces **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 281**
+Share Release Notes and Post-Install Instructions **. . . . . . . . . . . . . . . . . . . . . . . . . . . 285**
+Specify Unpackaged Metadata or Apex Access for Apex Tests (Unlocked Packages) **. . . 286**
+Best Practices for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 287**
+Package IDs and Aliases for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 287**
+Frequently Used Unlocked Packaging Operations **. . . . . . . . . . . . . . . . . . . . . . . . . . 288**
+How We Handle Profile Settings in Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . 289**
+Develop Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 290**
 
-Resolve Common Authorization Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
+Create and Update an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 291**
+Create New Versions of an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 292**
+Guidance for Package Version Numbering **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 297**
+Code Coverage for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298**
+Considerations for Promoting Packages with Dependencies **. . . . . . . . . . . . . . . . . . . 299**
+Release an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 300**
+Update an Unlocked Package Version **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 301**
+Hard-Deleted Components in Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . 301**
+Delete an Unlocked Package or Package Version **. . . . . . . . . . . . . . . . . . . . . . . . . . 306**
 
-org login web Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
-org login jwt Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 341**
-Error: No default dev hub found **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 344**
-Unable to Work After Failed Org Authorization **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 344**
-Error: The consumer key is already taken **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 345**
-CLI Version Information **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 346**
+**Contents**
 
-**Chapter 16:** Limitations for Salesforce DX **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 347**
+View Package Details **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307**
+Push a Package Upgrade for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307**
+
+Schedule a Push Upgrade Using CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 308**
+Install an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 311**
+
+Install Packages with the CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 312**
+Install Unlocked Packages from a URL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 313**
+Upgrade a Version of an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 313**
+Sample Script for Installing Unlocked Packages with Dependencies **. . . . . . . . . . . . . . . 314**
+Migrate Deprecated Metadata from Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . 316**
+Uninstall an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 317**
+Transfer an Unlocked Package to a Different Dev Hub **. . . . . . . . . . . . . . . . . . . . . . . . . . . 317**
+
+Take Ownership of an Unlocked Package Transferred from a Different Dev Hub **. . . . . . 320**
+
+**Chapter 14:** Continuous Integration **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 322**
+
+Continuous Integration Using CircleCI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 323**
+
+Configure Your Environment for CircleCI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 323**
+Connect CircleCI to Your DevHub **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 324**
+Continuous Integration Using Jenkins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 325**
+
+Configure Your Environment for Jenkins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 326**
+Jenkinsfile Walkthrough **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 327**
+Sample Jenkinsfile **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 333**
+Continuous Integration with Travis CI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
+Sample CI Repos for Org Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
+Sample CI Repos for Package Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
+
+**Chapter 15:** Troubleshoot Salesforce DX **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 340**
+
+Resolve Common Authorization Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 341**
+
+org login web Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 341**
+org login jwt Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 344**
+Error: No default dev hub found **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 347**
+Unable to Work After Failed Org Authorization **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 347**
+Error: The consumer key is already taken **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 348**
+CLI Version Information **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 349**
+
+**Chapter 16:** Limitations for Salesforce DX **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 350**
 
 # CHAPTER 1 How Salesforce Developer Experience (DX) Tooling
 
@@ -3739,13 +3743,13 @@ Using a Browser
 **•** Authorize an Org
 Using the JWT Flow
 
-**•** Authorize an Org
-Using Its SFDX
-# Authorization URL
-
 **•** Create a Private Key
 and Self-Signed
 Digital Certificate
+
+**•** Create an External
+Client App in Your
+Org
 
 **•** Create a Connected
 App in Your Org
@@ -3793,9 +3797,11 @@ Connected App
 Securely You have some options when authorizing an org, depending on what you’re trying to accomplish.
 
 **•** Use an Existing **•** The easiest option is to run `org login web`, which opens a browser in which you enter your
-Access Token Salesforce credentials. This option is officially called the OAuth 2.0 web server flow.
+Access Token Salesforce credentials. This option is officially called the _OAuth 2.0 web server flow_ .
 
-# • Authorization
+**•** Authorize an Org
+Using Its SFDX
+# Authorization URL • Authorization
 
 Information for an
 Org
@@ -3803,8 +3809,8 @@ Org
 **•** Log Out of an Org
 
 **•** For continuous integration (CI) or automated environments, use the `org login jwt` command.
-This option is officially called the OAuth 2.0 JSON Web Tokens (JWT) bearer flow. This flow is ideal
-for scenarios where you can’t interactively log in to a browser, such as from a CI script.
+This option is officially called the _OAuth 2.0 JSON Web Tokens (JWT) bearer flow_ . This flow is ideal for
+scenarios where you can’t interactively log in to a browser, such as from a CI script.
 
 You can also use the `org login sfdx-url` command in automated environments; this
 method uses the org’s SFDX authorization URL.
@@ -3882,17 +3888,21 @@ org’s Salesforce instance. Be sure you use the version that ends in `my.salesf
 Experience ( `.lightning.force.com` ). To verify the valid My Domain URL, from Setup, enter _`My Domain`_ in the Quick
 Find box, then select **My Domain** .
 
+The orgs you authorize for Salesforce CLI are required to have either an external client app (preferred) or a connected app. We provide
+a default connected app called `Salesforce CLI` . If you need more security or control, such as setting the refresh token timeout
+
 58
 
 ## Authorization Authorize an Org Using the JWT Flow
 
-Also, the orgs you authorize for Salesforce CLI are required to have a connected app. We provide a default connected app called
-`Salesforce CLI` . If you need more security or control, such as setting the refresh token timeout or specifying IP ranges, create
-your own connected app. You can also configure the default connected app to be more secure.
+or specifying IP ranges, create your own external client app or connected app (only if you need to create scratch orgs or sandboxes).
+You can also configure the default connected app to be more secure.
 
 SEE ALSO:
 
 _[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)_ : org login web
+
+Create an External Client App in Your Org
 
 Create a Connected App in Your Org
 
@@ -3909,8 +3919,6 @@ _VS Code Command_ [: SFDX: Authorize an Org, SFDX: Authorize a Dev Hub](https://
 Use the JWT flow to authorize an org in continuous integration (CI) environments, which are fully automated and don’t support the
 human interactivity of logging into a browser.
 
-Note: This option to authorize an org is officially called the OAuth 2.0 JSON Web Tokens (JWT) bearer flow.
-
 The JWT flow requires a digital certificate, also called a digital signature, to sign the JWT request. You can use your own certificate or
 create a self-signed certificate using OpenSSL.
 
@@ -3921,16 +3929,19 @@ identity. This verification process means that you can’t use the JWT flow and 
 
 It’s assumed in this task that your private key file is named `server.key` and your digital certificate is named `server.crt` .
 
-**2.** Create a connected app, and configure it for Salesforce DX.
+**2.** Create an external client app and configure it for Salesforce DX.
 
-This task includes uploading the `server.crt` digital certificate file. Make note of the consumer key when you save the connected
-app because you need it later.
+This task includes uploading the `server.crt` digital certificate file. Make note of the consumer key when you finish configuring
+the external client app because you need it later.
+
+Important: If you're authoring a Dev Hub org and plan to create scratch orgs or sandboxes with the `org create`
+`scratch|sandbox` commands, then you must create a connected app instead of an external client app.
 
 **3.** Open a terminal (macOS and Linux) or command prompt (Windows).
 
 **4.** Run the `org login jwt` CLI command. We recommend using the `--alias` flag to make it easy to refer to the org later.
-Specify the consumer key from your connected app with the `--client-id` flag, the path to the private JWT key file
-( `server.key` ), and the username for your org. For example:
+Specify the consumer key from your external client app or connected app with the `--client-id` flag, the path to the private
+JWT key file ( `server.key` ), and the username for your org. For example:
 
 ```
      sf org login jwt --client-id 04580y4051234051 --jwt-key-file /Users/jdoe/JWT/server.key
@@ -3946,6 +3957,10 @@ for examples.
 You can authorize a scratch org using the same consumer key and private key file that you used to authorize its associated Dev Hub org.
 See Authorize a Scratch Org Using the JWT Flow
 
+59
+
+### Authorization Authorize a Scratch Org Using the JWT Flow
+
 If the URL that you use to log in to your org isn’t the default ( `login.salesforce.com` ), update your project configuration file
 ( `sfdx-project.json` ). Set the `sfdcLoginUrl` option to your enhanced My Domain login URL. For example:
 
@@ -3953,10 +3968,6 @@ If the URL that you use to log in to your org isn’t the default ( `login.sales
    "sfdcLoginUrl" : "https:// MyDomainName .my.salesforce.com"
 
 ```
-
-59
-
-### Authorization Authorize a Scratch Org Using the JWT Flow
 
 This example is for a sandbox.
 
@@ -3981,12 +3992,6 @@ Note: We recommend that you use your My Domain login URL, because it isn’t aff
 Salesforce instance. Be sure you use the version that ends in `my.salesforce.com` instead of the URL you see in Lightning
 Experience ( `.lightning.force.com` ). To verify the valid My Domain URL, from Setup, enter _`My Domain`_ in the Quick
 Find box, then select **My Domain** .
-
-### Authorize a Scratch Org Using the JWT Flow
-
-If you authorized your Dev Hub org using the `org login jwt` command, you can use the same digital certificate and private
-key to authorize an associated scratch org. This method is useful for continuous integration (CI) systems that must authorize scratch
-orgs after creating them, but don’t have access to the scratch org’s access token.
 
 SEE ALSO:
 
@@ -4025,17 +4030,18 @@ Before you begin, we assume that:
 
 ```
 
-**1.** Copy the consumer key from the connected app that you created in your Dev Hub org.
+**1.** Copy the consumer key from the external client app (or connected app) that you created in your Dev Hub org.
 
 **a.** Log in to your Dev Hub org.
 
 **b.** From Setup, enter _`App Manager`_ in the Quick Find box to get to the Lightning Experience App Manager.
 
+**c.** Locate the external client app (or connected app) in the apps list, then click the dropdown menu on the right side, and select
+**View** .
+
 60
 
-## Authorization Authorize an Org Using Its SFDX Authorization URL
-
-**c.** Locate the connected app in the apps list, then click the dropdown menu on the right side, and select **View** .
+## Authorization Create a Private Key and Self-Signed Digital Certificate
 
 **d.** In the API (Enable OAuth Settings) section, click **Manage Consumer Details**
 
@@ -4075,46 +4081,21 @@ _Salesforce Help_ [: Connected Apps](https://help.salesforce.com/articleView?id=
 
 Create Scratch Orgs
 
-## Authorize an Org Using Its SFDX Authorization URL
-
-Use an org's Salesforce DX (SFDX) authorization URL to authorize an org in continuous integration (CI) environments, which are fully
-automated and don’t support the human interactivity of logging into a browser.
-
-**1.** Open a terminal (macOS and Linux) or command prompt (Windows) on the computer where you’ve already authorized the org
-using a Web browser.
-
-**2.** Get your org’s SFDX authorization URL and store it in a file by running this command.
-
-```
-     sf org display --target-org my-org --verbose --json > authFile.json
-
-```
-
-The JSON output includes a key called `sfdxAuthUrl`, whose value is the org’s SFDX authorization URL.
-
-**3.** In your CI environment, authorize the org by referencing the `authFile.json` file with this command.
-
-```
-     sf org login sfdx-url --sfdx-url-file authFile.json
-
-```
-
-For more information and examples, see the reference about the `org login sfdx-url` [command in the Salesforce CLI Command](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified)
-[Reference.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified)
-
-61
-
-## Authorization Create a Private Key and Self-Signed Digital Certificate Create a Private Key and Self-Signed Digital Certificate
+## Create a Private Key and Self-Signed Digital Certificate
 
 Authorizing an org with the `org login jwt` command requires a digital certificate and the private key used to sign the certificate.
-You can use your own private key and certificate issued by a certification authority. Alternatively, you can use OpenSSL to create a key
-and a self-signed digital certificate. Using a private key and certificate is optional when you authorize an org by logging into a browser.
+We highly recommend that you use your own private key and certificate issued by a certification authority. You can also use OpenSSL
+to create a key and a self-signed digital certificate, just to get started. Using a private key and certificate is optional when you authorize
+an org by logging into a browser.
+
+Warning: The steps in this topic are for sample purposes only. You can use the generated key and certificate to get started, but
+check with your company's security policies before you use either of them in a production environment.
 
 This process produces two files:
 
 **•** `server.key` —The private key. You specify this file when you authorize an org with the `org login jwt` command.
 
-**•** `server.crt` —The digital certificate. You upload this file when you create the required connected app.
+**•** `server.crt` —The digital certificate. You upload this file when you create the required external client app or connected app.
 
 **1.** Open a terminal (macOS and Linux) or command prompt (Windows).
 
@@ -4128,6 +4109,10 @@ on Windows.
 
 ```
 
+61
+
+## Authorization Create an External Client App in Your Org
+
 **3.** Create a directory for storing the generated files, and change to the directory.
 
 ```
@@ -4140,18 +4125,16 @@ on Windows.
 **4.** Generate a private key, and store it in a file called `server.key` .
 
 ```
-     openssl genpkey -des3 -algorithm RSA -pass pass:SomePassword -out server.pass.key -pkeyopt
+     openssl genpkey -aes-256-cbc -algorithm RSA -pass pass:SomePassword -out server.pass.key
 
-      rsa_keygen_bits:2048
+      -pkeyopt rsa_keygen_bits:2048
 
      openssl rsa -passin pass:SomePassword -in server.pass.key -out server.key
 
 ```
 
-You can delete the `server.pass.key` file because you no longer need it.
-
-**5.** Generate a certificate signing request using the `server.key` file. Store the certificate signing request in a file called `server.csr` .
-Enter information about your company when prompted.
+**5.** Generate a certificate signing request by using the `server.key` file. Store the certificate signing request in a file called
+`server.csr` . Enter information about your company when prompted.
 
 ```
      openssl req -new -key server.key -out server.csr
@@ -4166,7 +4149,8 @@ Enter information about your company when prompted.
 
 ```
 
-Now create a custom connected app and upload the digital certificate to it.
+Now create a external client app and upload the digital certificate to it. If you're authorizing a Dev Hub and you plan to create scratch
+orgs or sandboxes later with the `org create scratch|sandbox` commands, then you must create a connected app instead.
 
 SEE ALSO:
 
@@ -4176,39 +4160,39 @@ Create a Connected App in Your Org
 
 Authorize an Org Using the JWT Flow
 
-62
+## Create an External Client App in Your Org
 
-## Authorization Create a Connected App in Your Org Create a Connected App in Your Org
-
-Salesforce CLI requires a connected app in the org that you're authorizing. A connected app is a framework that enables an external
-application, in this case Salesforce CLI, to integrate with Salesforce using APIs and standard protocols, such as OAuth. We provide a
-default connected app when you authorize an org with the `org login web` command. For extra security, you can create your own
-connected app in your org using Setup and configure it with the settings of your choice. You're required to create a connected app
+Salesforce CLI requires an external client app in the org that you're authorizing. An external client app is a packageable framework that
+enables a third-party application (Salesforce CLI) to integrate with Salesforce by using APIs and security protocols. We provide a default
+connected app when you authorize an org with the `org login web` command. For extra security, you can create your own external
+client app in your org by using Setup and configure it with the settings of your choice. You're required to create an external client app
 when authorizing the org with the `org login jwt` command.
 
-We don't recommend that you create an External Client App, which is the next generation of Salesforce connected apps, particularly
-when authorizing a Dev Hub org. The main reason is that using the Dev Hub org to create scratch orgs can lead to errors.
+Important: If you're authoring a Dev Hub org and plan to create scratch orgs or sandboxes with the `org create`
+`scratch|sandbox` commands, then you create a connected app instead.
 
-Note: The steps marked _Required for JWT_ are required only if you’re creating a connected app to use with the `org login`
-`jwt` command. In this case you also need a file that contains a digital certificate, such as `server.crt` . The steps are optional
-if you’re creating a connected app to use with `org login web` .
+In the next task, the steps marked _(Required for JWT)_ are required only if you’re creating an external client app to use with the `org`
+`login jwt` command. In this case, you also need a file that contains a digital certificate, such as `server.crt` . You can use your
+own private key and certificate issued by a certification authority. Or you can use OpenSSL to create a key and a self-signed digital
+certificate. See Create a Private Key and Self-Signed Digital Certificate.
 
-Important: You must have the **Approve Uninstalled Connected Apps** user permission to complete this task. Org administrators
-have the permission by default.
+The steps marked _(Required for JWT)_ are optional if you’re creating an external client app to use with `org login web` .
 
 **1.** Log in to your org.
 
-**2.** From Setup, in the Quick Find box, enter _`External Client Apps,`_ and then select **Settings** .
+**2.** From the Quick Find box in Setup, enter _`App Manager`_, then click **App Manager** .
 
-**3.** Turn on **Allow creation of connected apps** and click **Enable** .
+62
 
-**4.** Click **New Connected App** .
+Authorization Create an External Client App in Your Org
 
-**5.** [Update the basic information as needed, such as the connected app name and your email address.](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm&language=en_US)
+**3.** Click **New External Client App** .
 
-**6.** Select **Enable OAuth Settings** .
+**4.** [Update the basic information as needed, such as the external client app name and your contact email address.](https://help.salesforce.com/s/articleView?id=xcloud.create_a_local_external_client_app.htm&language=en_US)
 
-**7.** For the callback URL, enter _`http://localhost:1717/OauthRedirect`_ .
+**5.** Under **API (Enable OAuth Settings)**, click **Enable OAuth** .
+
+**6.** Under **App Settings**, in the **Callback URL** box, enter _`http://localhost:1717/OauthRedirect`_ .
 
 If port 1717 (the default) is already in use on your local machine, specify an available one instead. Then update your
 `sfdx-project.json` file by setting the `oauthLocalPort` property to the new port. For example, if you set the callback
@@ -4219,11 +4203,7 @@ URL to _`http://localhost:1919/OauthRedirect`_ :
 
 ```
 
-**8.** (Required for JWT) Select **Use digital signatures** .
-
-**9.** (Required for JWT) Click **Choose File** and upload file that contains your digital certificate, such as `server.crt` .
-
-**10.** Add these OAuth scopes:
+**7.** In the **OAuth Scopes** section, select these scopes:
 
 **•** **Manage user data via APIs (api)**
 
@@ -4231,41 +4211,189 @@ URL to _`http://localhost:1919/OauthRedirect`_ :
 
 **•** **Perform requests at any time (refresh_token, offline_access)**
 
-**11.** Click **Save**, then **Continue** .
+**8.** _(Required for JWT)_ In the **Flow Enablement** section, select **Enable JWT Bearer Flow** .
 
-**12.** Click **Manage Consumer Details** .
+**9.** _(Required for JWT)_ Click **Upload Files** and upload the file that contains your digital certificate, such as `server.crt` .
 
-If prompted, verify your identity by entering the verification code that was automatically sent to your email address.
+**10.** Click **Create** .
 
-**13.** Click **Copy** next to Consumer Key because you need it later when you run an `org login` command. Depending on whether
-you specify that it's required, also copy the Consumer Secret.
+The basic external client app is created and enabled, and you see the page to manage your new external client app. However, you
+must further configure the external client app to use it with Salesforce CLI.
 
-**14.** Click **Back to Manage Connected Apps** .
+**11.** Click **Edit** .
 
-**15.** Click **Manage** .
+**12.** _(Required for JWT, including substeps)_ Click the **Policies** tab.
 
-63
+**a.** Open **OAuth Policies** .
 
-## Authorization Use the Default Connected App Securely
+**b.** In the **Plugin Policies** section, set **Permitted Users** to _`Admin approved users are pre-authorized`_ .
 
-**16.** Click **Edit Policies** .
+**c.** Click **OK** .
 
-**17.** In the OAuth Policies section, for the Refresh Token Policy field, click **Expire refresh token after:** and enter 90 days or less.
+**d.** In the **App Policies** section, select the profiles that are pre-authorized to use this external client app. Similarly, select the permission
+sets. Create the profiles or permission sets if necessary.
+
+**13.** If not currently there, click the **Policies** tab.
+
+**14.** In the **App Authorization** section, under **OAuth Policies**, click **Expire refresh token after a specific time** .
+
+**15.** In the **Refresh Token Validity Period** box, enter _`90`_ . For **Refresh Token Validity Unit**, select _`Day(s)`_ .
 
 Setting a maximum of 90 days for the refresh token expiration is a security best practice. To continue running CLI commands against
 an org whose refresh tokens have expired, reauthorize it with the `org login web` or `org login jwt` command.
 
-**18.** In the Session Policies section, set **Timeout Value** to _`15 minutes`_ .
+**16.** In the **Session Timeout in Minutes** box, enter _`15`_ .
 
 Setting a timeout for access tokens is a security best practice. Salesforce CLI automatically handles an expired access token by referring
 to the refresh token.
 
-**19.** (Required for JWT) In the OAuth Policies section, select **Admin approved users are pre-authorized** for permitted users, and click
+**17.** Click **Save** .
+
+Your external client app is ready to use.
+
+63
+
+### Authorization Get and Use the Consumer Key and Secret Get and Use the Consumer Key and Secret
+
+When you're ready to run one of the `org login` commands that uses this external client app, follow these steps to get the consumer
+key and secret:
+
+**1.** Log in to your org.
+
+**2.** From the Quick Find box in Setup, enter _`App Manager`_, and then click **External Client App Manager** .
+
+**3.** Click your external client app.
+
+**4.** Click the **Settings** tab.
+
+**5.** Open **OAuth Settings** and click **Consumer Key and Secret** .
+
+The **Verify Your Identiy** web page opens.
+
+**6.** Check your email for a verification code, and then copy and paste the code in the **Verify Your Identity** web page.
+
+**7.** Click **Verify** .
+
+**8.** Click **Copy** next to **Consumer Key** .
+
+Depending on whether you've specified that it's required, also copy the **Consumer Secret** .
+
+To use the consumer key, use the `--client-id` flag of the `org login` commands. For example, if your consumer key is
+04580y4051234051 and you’re authorizing a Dev Hub org by logging into it from a browser, run this command in a terminal (macOS
+and Linux) or command prompt (Windows):
+
+```
+   sf org login web --client-id 04580y4051234051 --set-default-dev-hub --alias my-hub-org
+
+```
+
+If you specified in the external client app that the Web Server Flow requires a client (consumer) secret, the command prompts you for
+it. The command then opens the login page for you to add your org credentials.
+
+See the reference for `[org login web](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)` and `[org login jwt](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)` for more examples.
+
+## Create a Connected App in Your Org
+
+Salesforce CLI requires either an external client app (preferred) or connected app in the org that you're authorizing.
+
+Warning: Create a connected app in your org **only** if it's your Dev Hub and you plan to later create scratch orgs or sandboxes
+with the `org create scratch|sandbox` commands. Otherwise, create an external client app, which is the preferred
+integration framework.
+
+Connected apps are being deprecated. We plan to provide the information in this topic only until the requirement to use connected
+apps for sandbox or scratch org creation is removed.
+
+A connected app is a framework that enables an external application, in this case Salesforce CLI, to integrate with Salesforce using APIs
+and standard protocols, such as OAuth. We provide a default connected app when you authorize an org with the `org login web`
+command.
+
+Important: You must have the **Approve Uninstalled Connected Apps** user permission to complete this task. Org administrators
+have the permission by default.
+
+In the task below, the steps marked _Required for JWT_ are required only if you’re creating a connected app to use with the `org login`
+`jwt` command. In this case you also need a file that contains a digital certificate, such as `server.crt` . The steps are optional if
+you’re creating a connected app to use with `org login web` .
+
+**1.** Contact Salesforce Customer Support to enable the creation of connected apps in your org.
+
+64
+
+Authorization Create a Connected App in Your Org
+
+Creating connected apps is now disabled by default, because connected apps are being deprecated. If you need to create a connected
+[app, Salesforce Customer Support must enable an org perm in your org. This is a one-time process per org. See New connected](https://help.salesforce.com/s/articleView?id=005228017&type=1&language=en_US)
+[apps can no longer be created in Spring ‘26.](https://help.salesforce.com/s/articleView?id=005228017&type=1&language=en_US)
+
+**2.** Log in to your org.
+
+**3.** From Setup, in the Quick Find box, enter _`External Client Apps,`_ and then select **Settings** .
+
+**4.** Turn on **Allow creation of connected apps** and click **Enable** .
+
+**5.** Click **New Connected App** .
+
+**6.** [Update the basic information as needed, such as the connected app name and your email address.](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm&language=en_US)
+
+**7.** Select **Enable OAuth Settings** .
+
+**8.** For the callback URL, enter _`http://localhost:1717/OauthRedirect`_ .
+
+If port 1717 (the default) is already in use on your local machine, specify an available one instead. Then update your
+`sfdx-project.json` file by setting the `oauthLocalPort` property to the new port. For example, if you set the callback
+URL to _`http://localhost:1919/OauthRedirect`_ :
+
+```
+     "oauthLocalPort" : "1919"
+
+```
+
+**9.** (Required for JWT) Select **Use digital signatures** .
+
+**10.** (Required for JWT) Click **Choose File** and upload file that contains your digital certificate, such as `server.crt` .
+
+**11.** Add these OAuth scopes:
+
+**•** **Manage user data via APIs (api)**
+
+**•** **Manage user data via Web browsers (web)**
+
+**•** **Perform requests at any time (refresh_token, offline_access)**
+
+**12.** Click **Save**, then **Continue** .
+
+**13.** Click **Manage Consumer Details** .
+
+If prompted, verify your identity by entering the verification code that was automatically sent to your email address.
+
+**14.** Click **Copy** next to Consumer Key because you need it later when you run an `org login` command. Depending on whether
+you specify that it's required, also copy the Consumer Secret.
+
+**15.** Click **Back to Manage Connected Apps** .
+
+**16.** Click **Manage** .
+
+**17.** Click **Edit Policies** .
+
+**18.** In the OAuth Policies section, for the Refresh Token Policy field, click **Expire refresh token after:** and enter 90 days or less.
+
+Setting a maximum of 90 days for the refresh token expiration is a security best practice. To continue running CLI commands against
+an org whose refresh tokens have expired, reauthorize it with the `org login web` or `org login jwt` command.
+
+**19.** In the Session Policies section, set **Timeout Value** to _`15 minutes`_ .
+
+Setting a timeout for access tokens is a security best practice. Salesforce CLI automatically handles an expired access token by referring
+to the refresh token.
+
+**20.** (Required for JWT) In the OAuth Policies section, select **Admin approved users are pre-authorized** for permitted users, and click
 **OK** .
 
-**20.** Click **Save** .
+**21.** Click **Save** .
 
-**21.** (Required for JWT) Click **Manage Profiles**, select the profiles that are pre-authorized to use this connected app, and click **Save** .
+65
+
+## Authorization Use the Default Connected App Securely
+
+**22.** (Required for JWT) Click **Manage Profiles**, select the profiles that are pre-authorized to use this connected app, and click **Save** .
 Similarly, click **Manage Permission Sets** to select the permission sets. Create permission sets if necessary.
 
 To specify the consumer key, use the `--client-id` flag of the `org login` commands. For example, if your consumer key is
@@ -4313,10 +4441,6 @@ steps of this task.
 
 **5.** In the OAuth Policies section, for the Refresh Token Policy field, click **Expire refresh token after:** and enter _`90 Days`_ or less.
 
-64
-
-## Authorization Use an Existing Access Token
-
 **6.** In the Session Policies section, set **Timeout Value** to _`15 minutes`_ .
 
 **7.** Click **Save** .
@@ -4332,6 +4456,10 @@ If you run a CLI command against an org whose refresh token has expired, you get
 
 The `org list` command also displays expired refresh token information in the CONNECTED STATUS column. To continue using the
 org, reauthorize it with the `org login web` or `org login jwt` command.
+
+66
+
+## Authorization Use an Existing Access Token
 
 Salesforce CLI automatically handles an expired access token by referring to the refresh token.
 
@@ -4395,12 +4523,12 @@ username. For example:
 
 ```
 
-65
-
-## Authorization Authorization Information for an Org
-
 Tip: If your access token contains a `!` character, you must sometimes escape it with a backslash ( `\` ). For example, if your
 access token is `00007wpr!AQkAQA`, specify it this way: `--target-org 00007wpr\!AQkAQA`
+
+67
+
+## Authorization Authorize an Org Using Its SFDX Authorization URL
 
 Salesforce CLI doesn’t store the access token in its internal files. It uses it only for this CLI command run.
 
@@ -4411,6 +4539,33 @@ SEE ALSO:
 _[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_config_commands_unified.htm#cli_reference_config_set_unified)_ : config set
 
 _[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_deploy_start_unified)_ : project deploy start
+
+## Authorize an Org Using Its SFDX Authorization URL
+
+Use an org's Salesforce DX (SFDX) authorization URL to authorize an org in continuous integration (CI) environments, which are fully
+automated and don’t support the human interactivity of logging into a browser.
+
+**1.** Open a terminal (macOS and Linux) or command prompt (Windows) on the computer where you’ve already authorized the org
+using a Web browser.
+
+**2.** Get your org’s SFDX authorization URL and store it in a file by running this command.
+
+```
+     sf org display --target-org my-org --verbose --json > authFile.json
+
+```
+
+The JSON output includes a key called `sfdxAuthUrl`, whose value is the org’s SFDX authorization URL.
+
+**3.** In your CI environment, authorize the org by referencing the `authFile.json` file with this command.
+
+```
+     sf org login sfdx-url --sfdx-url-file authFile.json
+
+```
+
+For more information and examples, see the reference about the `org login sfdx-url` [command in the Salesforce CLI Command](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified)
+[Reference.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified)
 
 ## Authorization Information for an Org
 
@@ -4447,6 +4602,13 @@ If you’ve set an alias for an org, you can specify it with the `--target-org` 
 
     KEY VALUE
 
+```
+
+68
+
+## Authorization Log Out of an Org
+
+```
     ───────────────
 
    ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -4467,13 +4629,6 @@ If you’ve set an alias for an org, you can specify it with the `--target-org` 
 
     Edition Developer
 
-```
-
-66
-
-## Authorization Log Out of an Org
-
-```
     Expiration Date 2023-06-16
 
     Id 00D8H0000007wprU
@@ -4508,6 +4663,11 @@ users from accessing your orgs if you don’t want them to.
 
 Important: The only way to access an org after you log out of it is with a password. By default, new scratch orgs contain one
 administrator with no password. Therefore, to avoid losing access to a scratch org, set a password for at least one user of a scratch
+
+69
+
+Authorization Log Out of an Org
+
 org if you want to access it again after logging out. If you don’t want to access the scratch org again, delete it with `org delete`
 `scratch` rather than log out of it.
 
@@ -4537,7 +4697,7 @@ _[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.
 
 _VS Code Command_ [: SFDX: Log Out from All Authorized Orgs, SFDX: Log Out from Default Org](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/default-org.html)
 
-67
+70
 
 # CHAPTER 5 Metadata Coverage
 
@@ -4556,7 +4716,7 @@ SEE ALSO:
 
 [Components Available in Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/packaging_packageable_components.htm)
 
-68
+71
 
 # CHAPTER 6 Scratch Orgs
 
@@ -4639,7 +4799,7 @@ org so you can easily sync the changes between your org and your local project. 
 slow down deployments and retrievals, so it’s sometimes better to disable it if it’s not needed. Here are
 some use cases.
 
-69
+72
 
 Scratch Orgs
 
@@ -4704,7 +4864,7 @@ instance.
 
 **•** Scratch orgs created from a Dev Hub org in Hyperforce are created on a Hyperforce instance.
 
-70
+73
 
 Scratch Orgs
 
@@ -4728,7 +4888,7 @@ SEE ALSO:
 
 _Salesforce Admins Blog_ [: Sandboxes vs. Scratch Orgs and How to Use Them](https://admin.salesforce.com/blog/2023/sandboxes-vs-scratch-orgs-and-how-to-use-them)
 
-71
+74
 
 ## Scratch Orgs Supported Scratch Org Editions and Allocations Supported Scratch Org Editions and Allocations
 
@@ -4776,7 +4936,7 @@ allocation becomes available if you delete a scratch org or if a scratch org exp
 of successful scratch org creations you can initiate in a rolling (sliding) 24-hour window. Allocations are determined based on the number
 of scratch orgs created in the preceding 24 hours.
 
-72
+75
 
 ## Scratch Orgs Build Your Own Scratch Org Definition File
 
@@ -4847,7 +5007,7 @@ access.
 **•** If you’re using Salesforce Extensions for VS Code, make sure that the scratch org definition file is located in the `config` folder of
 your Salesforce DX project. Its name must also end in `scratch-def.json` .
 
-73
+76
 
 Scratch Orgs Build Your Own Scratch Org Definition File
 
@@ -4859,7 +5019,7 @@ Scratch Org Definition File Options
 
 Here are the options you can specify in the scratch org definition file:
 
-74
+77
 
 Scratch Orgs Build Your Own Scratch Org Definition File
 
@@ -4890,7 +5050,7 @@ Here’s what the scratch org definition JSON file looks like. For more informat
 
 ```
 
-75
+78
 
 Scratch Orgs Build Your Own Scratch Org Definition File
 
@@ -4980,7 +5140,7 @@ definition, then create the scratch org:
 
 ```
 
-76
+79
 
 ### Scratch Orgs Scratch Org Features
 
@@ -5061,7 +5221,7 @@ You can specify multiple feature values in a comma-delimited list in the scratch
 
 ```
 
-77
+80
 
 Scratch Orgs Scratch Org Features
 
@@ -5122,7 +5282,7 @@ AnalyticsAdminPerms
 Enables all permissions required to administer the CRM Analytics platform, including permissions to enable creating CRM Analytics
 templated apps and CRM Analytics Apps.
 
-78
+81
 
 Scratch Orgs Scratch Org Features
 
@@ -5182,7 +5342,7 @@ BenefitManagement
 Enables the objects, features, and permissions for managing benefits programs, benefit disbursements, and benefit applicant tracking
 in Public Sector Solutions.
 
-79
+82
 
 Scratch Orgs Scratch Org Features
 
@@ -5244,7 +5404,7 @@ Enables Change Data Capture, if the scratch org edition doesn't automatically en
 Chatbot
 Enables deployment of Bot metadata into a scratch org, and allows you to create and edit bots.
 
-80
+83
 
 Scratch Orgs Scratch Org Features
 
@@ -5307,7 +5467,7 @@ Enables contract approvals, which allow you to track contracts through an approv
 ContractManagement
 Enables the Contract Lifecycle (CLM) Management features in the org.
 
-81
+84
 
 Scratch Orgs Scratch Org Features
 
@@ -5370,7 +5530,7 @@ Enables CRM Analytics development in a scratch org. It assigns five platform lic
 org, along with assigning the permission set license to the admin user. It also enables the CRM Analytics Templates and Einstein
 Discovery features.
 
-82
+85
 
 Scratch Orgs Scratch Org Features
 
@@ -5433,7 +5593,7 @@ Enable CRM Analytics Output Connectors.
 EASyncOut
 Enable CRM Analytics SyncOut.
 
-83
+86
 
 Scratch Orgs Scratch Org Features
 
@@ -5495,7 +5655,7 @@ EmpPublishRateLimit:<value>
 Increases the maximum number of standard-volume platform event notifications published per hour. Indicate a value between
 1,000–10,000.
 
-84
+87
 
 Scratch Orgs Scratch Org Features
 
@@ -5557,7 +5717,7 @@ tracked with Field Audit Trail.
 FieldService:<value>
 Provides the Field Service license. Indicate a value between 1–25.
 
-85
+88
 
 Scratch Orgs Scratch Org Features
 
@@ -5618,7 +5778,7 @@ Gives users access to Nonprofit Cloud for Fundraising features and objects in Sa
 GenericStreaming
 Enables Generic Streaming API for API version 36.0 and earlier.
 
-86
+89
 
 Scratch Orgs Scratch Org Features
 
@@ -5679,7 +5839,7 @@ Enables use of Salesforce Identity User Provisioning.
 IgnoreQueryParamWhitelist
 Ignores allowlisting rules for query parameter filter rules. If enabled, you can add any query parameter to the URL.
 
-87
+90
 
 Scratch Orgs Scratch Org Features
 
@@ -5738,7 +5898,7 @@ Also, provides one seat each of the OmniStudio and BREPlatformAccess licenses.
 InsuranceClaimMgmt
 Enables claim management features. Provides one seat of the InsuranceClaimMgmtAddOn license.
 
-88
+91
 
 Scratch Orgs Scratch Org Features
 
@@ -5798,7 +5958,7 @@ Facebook Messenger.
 LongLayoutSectionTitles
 Allows page layout section titles to be up to 80 characters.
 
-89
+92
 
 Scratch Orgs Scratch Org Features
 
@@ -5858,7 +6018,7 @@ MaxApexCodeSize:<value>
 Limits the non-test, unmanaged Apex code size (in MB). To use a value greater than the default value of 10, contact Salesforce
 Customer Support.
 
-90
+93
 
 Scratch Orgs Scratch Org Features
 
@@ -5920,7 +6080,7 @@ Limits the number of wishlist items per wishlist. The default value is 500.
 MaxWishlistsPerStoreAccUsr
 Limits the number of wishlists allowed per store, account, and user. The default value is 100.
 
-91
+94
 
 Scratch Orgs Scratch Org Features
 
@@ -5981,7 +6141,7 @@ OrderManagement
 Provides the Salesforce Order Management license. Order Management is your central hub for handling all aspects of the order
 lifecycle, including order capture, fulfillment, shipping, payment processing, and servicing.
 
-92
+95
 
 Scratch Orgs Scratch Org Features
 
@@ -6042,7 +6202,7 @@ Enables read access to Product Catalog Management features and objects for Partn
 ProgramManagement
 Enables access to all Program Management and Case Management features and objects.
 
-93
+96
 
 Scratch Orgs Scratch Org Features
 
@@ -6105,7 +6265,7 @@ components.
 SalesforcePricing
 Enables Salesforce Pricing, which allows you to set, manage, and optimize prices across your entire product portfolio
 
-94
+97
 
 Scratch Orgs Scratch Org Features
 
@@ -6167,7 +6327,7 @@ standardized lists, instead of entering state, country, and territory data into 
 StreamingAPI
 Enables Streaming API.
 
-95
+98
 
 Scratch Orgs Scratch Org Features
 
@@ -6229,7 +6389,7 @@ Enables the Wave Platform license.
 Workflow
 Enables Workflow so you can automate standard internal procedures and processes.
 
-96
+99
 
 Scratch Orgs Scratch Org Features
 
@@ -6283,7 +6443,7 @@ Supported Quantities
 
 1–30, Multiplier: 1
 
-97
+100
 
 Scratch Orgs Scratch Org Features
 
@@ -6336,7 +6496,7 @@ Supported Quantities
 
 1–40, Multiplier: 1
 
-98
+101
 
 Scratch Orgs Scratch Org Features
 
@@ -6438,7 +6598,7 @@ Add these options to your scratch org definition file:
 
 ```
 
-99
+102
 
 Scratch Orgs Scratch Org Features
 
@@ -6538,7 +6698,7 @@ Add these options to your scratch org definition file:
 
 ```
 
-100
+103
 
 Scratch Orgs Scratch Org Features
 
@@ -6635,7 +6795,7 @@ More Information
 
 [Next, install the Pathways package in the scratch org. For setup instructions, see Set Up Pathways in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sfdo.ssh_setup_pathways.htm&language=en_US)
 
-101
+104
 
 Scratch Orgs Scratch Org Features
 
@@ -6700,7 +6860,7 @@ More Information
 
 Provides one CRM Analytics Embedded App license for the CRM Analytics platform.
 
-102
+105
 
 Scratch Orgs Scratch Org Features
 
@@ -6767,7 +6927,7 @@ editions.
 
 ```
 
-103
+106
 
 Scratch Orgs Scratch Org Features
 
@@ -6822,7 +6982,7 @@ More Information
 Requires that you also include the Communities scratch org feature in your scratch org definition file to create a store using B2B Commerce.
 Not available in Professional, Partner Professional, Group, or Partner Group Edition orgs.
 
-104
+107
 
 Scratch Orgs Scratch Org Features
 
@@ -6875,7 +7035,7 @@ More Information
 
 [See Batch Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.concept_batch_management.htm&language=en_US)
 
-105
+108
 
 Scratch Orgs Scratch Org Features
 
@@ -6961,7 +7121,7 @@ More Information
 
 **•** Available in Enterprise, Unlimited, and Developer Edition scratch orgs.
 
-106
+109
 
 Scratch Orgs Scratch Org Features
 
@@ -7039,7 +7199,7 @@ More Information
 [Provides 10 Business Rules Engine Designer and 10 Business Rules Engine Runtime licenses. For more information, see Business Rules](https://help.salesforce.com/s/articleView?id=sf.business_rules_engine.htm&type=5&language=en_US)
 [Engine in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.business_rules_engine.htm&type=5&language=en_US)
 
-107
+110
 
 Scratch Orgs Scratch Org Features
 
@@ -7121,7 +7281,7 @@ Sample Scratch Org Definition File
 
 ```
 
-108
+111
 
 Scratch Orgs Scratch Org Features
 
@@ -7193,7 +7353,7 @@ This feature is available in Salesforce Enterprise, Performance, Unlimited, and 
 Optional configuration steps are accessible in Setup in the scratch org. For more information, see _Salesforce Help_ [: Customizable Campaign](https://help.salesforce.com/s/articleView?id=sf.campaigns_influence_customizable.htm&type=5&language=en_US)
 [Influence.](https://help.salesforce.com/s/articleView?id=sf.campaigns_influence_customizable.htm&type=5&language=en_US)
 
-109
+112
 
 Scratch Orgs Scratch Org Features
 
@@ -7244,7 +7404,7 @@ To use this feature, turn on **Enable Einstein Features** in the Dev Hub org to 
 
 #### ChatterEmailFooterLogo ChatterEmailFooterLogo allows you to use the Document ID of a logo image, which you can use to customize chatter emails.
 
-110
+113
 
 Scratch Orgs Scratch Org Features
 
@@ -7291,7 +7451,7 @@ Enables unlimited content records, content types, and bandwidth usage in Salesfo
 Allows the org to create an Experience Cloud site. Experience Cloud uses the term Communities in its configuration. To use Communities,
 you must also include communitiesSettings > enableNetworksEnabled in the settings section of your scratch org definition file.
 
-111
+114
 
 Scratch Orgs Scratch Org Features
 
@@ -7343,7 +7503,7 @@ More Information
 
 Increases how often console data is saved, in minutes. Indicate a value between 0–500. To disable auto save, set the value to 0.
 
-112
+115
 
 Scratch Orgs Scratch Org Features
 
@@ -7411,7 +7571,7 @@ Add these options to your scratch org definition file.
 
 ```
 
-113
+116
 
 Scratch Orgs Scratch Org Features
 
@@ -7526,7 +7686,7 @@ Scratch Orgs Scratch Org Features
 
 ```
 
-114
+117
 
 Scratch Orgs Scratch Org Features
 
@@ -7607,7 +7767,7 @@ See _Salesforce Help_ [: Feature Availability in Data Cloud and Customer Data Pl
 Enables the Data Cloud license in scratch orgs. You must also include the CustomerDataPlatform feature and enableCustomerDataPlatform
 Metadata API setting in your scratch org definition.
 
-115
+118
 
 Scratch Orgs Scratch Org Features
 
@@ -7672,7 +7832,7 @@ Sending custom notifications requires both CustomNotificationType to create noti
 [ConnectedAppCustomNotifSubscription to subscribe to notification types. See Manage Your Notifications with Notification Builder in](https://help.salesforce.com/s/articleView?id=sf.notif_builder.htm&language=en_US)
 Salesforce Help for more information on custom notifications.
 
-116
+119
 
 Scratch Orgs Scratch Org Features
 
@@ -7723,7 +7883,7 @@ Sets the scratch org admin as the default workflow user.
 
 Allows admins to suspend group membership and sharing rule calculations and to resume them later.
 
-117
+120
 
 Scratch Orgs Scratch Org Features
 
@@ -7802,7 +7962,7 @@ and setting to the scratch org definition for legal reasons as part of the DevOp
 
 ```
 
-118
+121
 
 Scratch Orgs Scratch Org Features
 
@@ -7872,7 +8032,7 @@ Enables the Document Generation Feature in the Org.
 
 Enables the designers to create and configure document templates.
 
-119
+122
 
 Scratch Orgs Scratch Org Features
 
@@ -7926,7 +8086,7 @@ Available in Enterprise and Developer Edition scratch orgs.
 
 Allows the org to register up to 100 OAuth 2.0 connected apps through the dynamic client registration endpoint.
 
-120
+123
 
 Scratch Orgs Scratch Org Features
 
@@ -7979,7 +8139,7 @@ Supported Quantities
 
 Maximum: 10; Multiplier: 1
 
-121
+124
 
 Scratch Orgs Scratch Org Features
 
@@ -8049,7 +8209,7 @@ More Information
 
 Available in Enterprise Edition scratch orgs.
 
-122
+125
 
 Scratch Orgs Scratch Org Features
 
@@ -8104,7 +8264,7 @@ Enables Consumer Goods Cloud. With Consumer Goods cloud, transform the way you c
 Empower your sales managers to plan visits and analyze your business’s health across stores. Also, allow your field reps to track inventory,
 take orders, and capture visit details using the Retail Execution mobile app.
 
-123
+126
 
 Scratch Orgs Scratch Org Features
 
@@ -8157,7 +8317,7 @@ optional configuration settings.
 [See Sales Programs and Partner Tracks with Enablement in Salesforce Help and see the Sales Programs and Partner Tracks with Enablement](https://help.salesforce.com/s/articleView?id=sf.enablement.htm&language=en_US)
 [Developer Guide for more information.](https://developer.salesforce.com/docs/sales/enablement/overview)
 
-124
+127
 
 Scratch Orgs Scratch Org Features
 
@@ -8210,7 +8370,7 @@ More Information
 
 Provides 1 seat of the ERMAnalyticsPlus add-on license.
 
-125
+128
 
 Scratch Orgs Scratch Org Features
 
@@ -8263,7 +8423,7 @@ More Information
 
 Previous name: RetainFieldHistory
 
-126
+129
 
 Scratch Orgs Scratch Org Features
 
@@ -8315,7 +8475,7 @@ Supported Quantities
 
 Adds the Field Service Mobile Extension permission set license.
 
-127
+130
 
 Scratch Orgs Scratch Org Features
 
@@ -8364,7 +8524,7 @@ More Information
 
 [See Get Started with Financial Services Cloud for Insurance in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.fsc_admin_insurance_landing.htm&language=en_US)
 
-128
+131
 
 Scratch Orgs Scratch Org Features
 
@@ -8415,7 +8575,7 @@ Setup and grant users the AccessToServiceProcess permission.
 
 Gives users access to Nonprofit Cloud for Fundraising features and objects in Salesforce.
 
-129
+132
 
 Scratch Orgs Scratch Org Features
 
@@ -8504,7 +8664,7 @@ Supported Quantities
 
 10,000–50,000, Multiplier: 1
 
-130
+133
 
 Scratch Orgs Scratch Org Features
 
@@ -8568,7 +8728,7 @@ More Information
 [To use this scratch org feature, the Dev Hub org requires the HealthCloudEOLOverride permission. See Candidate Patient Data Entity](https://help.salesforce.com/s/articleView?id=000391944&type=1&language=en_US)
 [Retirement in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=000391944&type=1&language=en_US)
 
-131
+134
 
 Scratch Orgs Scratch Org Features
 
@@ -8620,7 +8780,7 @@ Increases the daily delivery allocation of high-volume platform events or change
 
 flexible and isn’t enforced strictly to allow for usage peaks.
 
-132
+135
 
 Scratch Orgs Scratch Org Features
 
@@ -8671,7 +8831,7 @@ Previous name: ActionPlan.
 Branch Management lets branch managers and administrators track the work output of branches, employees, and customer segments
 in Financial Services Cloud.
 
-133
+136
 
 Scratch Orgs Scratch Org Features
 
@@ -8724,7 +8884,7 @@ More Information
 
 [See Learn About Program Based Business in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.pbb_parent_concept.htm&type=5&language=en_US)
 
-134
+137
 
 Scratch Orgs Scratch Org Features
 
@@ -8778,7 +8938,7 @@ provides one seat each of the OmniStudio and BREPlatformAccess licenses.
 
 Enables claim management features. Provides one seat of the InsuranceClaimMgmtAddOn license.
 
-135
+138
 
 Scratch Orgs Scratch Org Features
 
@@ -8858,7 +9018,7 @@ To enable InvestigativeCaseManagement, add these features and settings to your s
 
 ```
 
-136
+139
 
 Scratch Orgs Scratch Org Features
 
@@ -8947,7 +9107,7 @@ To enable InvoiceManagement, add these settings to your scratch org definition f
 Enables flows. A flow is the part of Salesforce Flow that collects data and performs actions in your Salesforce org or an external system.
 Salesforce Flow provides two types of flows: screen flows and autolaunched flows.
 
-137
+140
 
 Scratch Orgs Scratch Org Features
 
@@ -9001,7 +9161,7 @@ More Information
 Assigns the Lightning Service Console License to your scratch org so you can use the Lightning Service Console and access features that
 help manage cases faster.
 
-138
+141
 
 Scratch Orgs Scratch Org Features
 
@@ -9052,7 +9212,7 @@ More Information
 
 [See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.loyaltyoverview.htm&language=en_US)
 
-139
+142
 
 Scratch Orgs Scratch Org Features
 
@@ -9105,7 +9265,7 @@ Supported Quantities
 
 Increases the number of Transaction Journal records that can be stored in an org that has the Loyalty Management - Start license enabled.
 
-140
+143
 
 Scratch Orgs Scratch Org Features
 
@@ -9183,7 +9343,7 @@ Scratch Org permission enabled in their Partner Business Orgs.
 [You can enable Data Cloud in your scratch org by creating a case with Salesforce Partner Support. Use this template as a guide when](https://partners.salesforce.com/)
 you submit your request, replacing _`{your_org_id_here}`_ with the ID of your Partner Business Org:
 
-141
+144
 
 Scratch Orgs Scratch Org Features
 
@@ -9273,7 +9433,7 @@ More Information
 [For configuration steps, see Configure Net Zero Cloud and Enable the Disclosure and Compliance Hub in the Set Up and Maintain Net](https://help.salesforce.com/s/articleView?id=netzero_admin.htm&language=en_US)
 Zero Cloud guide in Salesforce Help.
 
-142
+145
 
 Scratch Orgs Scratch Org Features
 
@@ -9327,7 +9487,7 @@ Supported Quantities
 
 1–30, Multiplier: 1
 
-143
+146
 
 Scratch Orgs Scratch Org Features
 
@@ -9381,7 +9541,7 @@ Supported Quantities
 
 0–300, Multiplier: 1
 
-144
+147
 
 Scratch Orgs Scratch Org Features
 
@@ -9434,7 +9594,7 @@ More Information
 
 [For more information, see Salesforce Help at Salesforce B2B Commerce and D2C Commerce](https://help.salesforce.com/s/articleView?id=sf.comm_intro.htm&language=en_US)
 
-145
+148
 
 Scratch Orgs Scratch Org Features
 
@@ -9484,7 +9644,7 @@ Supported Quantities
 
 1–2,000, Multiplier: 1
 
-146
+149
 
 Scratch Orgs Scratch Org Features
 
@@ -9560,7 +9720,7 @@ Add these options to your scratch org definition file:
 
 ```
 
-147
+150
 
 Scratch Orgs Scratch Org Features
 
@@ -9620,7 +9780,7 @@ Enables business users to execute OmniScripts, DataMappers, FlexCards, and so on
 
 Enables administrator or developer to create new OmniScripts/ DataMappers / Integration Procedures instances.
 
-148
+151
 
 Scratch Orgs Scratch Org Features
 
@@ -9697,7 +9857,7 @@ To enable OrderSaveLogicEnabled, update your scratch org definitions file.
 
 ```
 
-149
+152
 
 Scratch Orgs Scratch Org Features
 
@@ -9761,7 +9921,7 @@ Available in Enterprise and Developer Edition scratch orgs.
 Enables Pipeline Inspection. Pipeline Inspection is a consolidated pipeline view with metrics, opportunities, and highlights of recent
 changes.
 
-150
+153
 
 Scratch Orgs Scratch Org Features
 
@@ -9822,7 +9982,7 @@ Supported Quantities
 
 Enables Process Builder, a Salesforce Flow tool that helps you automate your business processes.
 
-151
+154
 
 Scratch Orgs Scratch Org Features
 
@@ -9885,7 +10045,7 @@ To enable ProgramManagement, add these settings to your scratch org definition f
 
 ```
 
-152
+155
 
 Scratch Orgs Scratch Org Features
 
@@ -9975,7 +10135,7 @@ To enable ProviderManagement, add these features and settings to your scratch or
 
 ```
 
-153
+156
 
 Scratch Orgs Scratch Org Features
 
@@ -10048,7 +10208,7 @@ More Information
 
 [See Configure Rate Pricing Calculations in Revenue Cloud in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.rm_rate_management.htm&type=5&language=en_US)
 
-154
+157
 
 Scratch Orgs Scratch Org Features
 
@@ -10110,7 +10270,7 @@ Available in Enterprise Edition scratch orgs.
 
 Enables access to Salesforce content features.
 
-155
+158
 
 Scratch Orgs Scratch Org Features
 
@@ -10163,7 +10323,7 @@ Enables access support for the SCIM protocol base API.
 
 Enables you to set up and test multiparty calls and consult calls for Service Cloud Voice with Partner Telephony.
 
-156
+159
 
 Scratch Orgs Scratch Org Features
 
@@ -10235,7 +10395,7 @@ More Information
 Assigns the Service Cloud license to your scratch org, so you can choose how your customers can reach you, such as by email, phone,
 social media, online communities, chat, and text.
 
-157
+160
 
 Scratch Orgs Scratch Org Features
 
@@ -10286,7 +10446,7 @@ More Information
 
 You can create sites and communities in a scratch org, but custom domains, such as www.example.com, aren't supported.
 
-158
+161
 
 Scratch Orgs Scratch Org Features
 
@@ -10338,7 +10498,7 @@ Supported Quantities
 
 Enables a license for the features available with the Salesforce Feedback Management - Growth license.
 
-159
+162
 
 Scratch Orgs Scratch Org Features
 
@@ -10401,7 +10561,7 @@ More Information
 
 Enables the objects, features, and permissions for managing the talent recruitment and hiring process in Public Sector Solutions.
 
-160
+163
 
 Scratch Orgs Scratch Org Features
 
@@ -10481,7 +10641,7 @@ More Information
 
 Limits the number of event types displayed on a timeline to 5.
 
-161
+164
 
 Scratch Orgs Scratch Org Features
 
@@ -10534,7 +10694,7 @@ Increases the maximum number of supported currencies for CRM Analytics. Indicate
 
 Enables the Wave Platform license.
 
-162
+165
 
 ### Scratch Orgs Scratch Org Settings
 
@@ -10601,7 +10761,7 @@ camel case in the scratch org definition.
 
 ```
 
-163
+166
 
 Scratch Orgs Scratch Org Settings
 
@@ -10704,7 +10864,7 @@ Person Account, and User.
 
 ```
 
-164
+167
 
 ## Scratch Orgs Create a Scratch Org Based on an Org Shape Create a Scratch Org Based on an Org Shape
 
@@ -10756,7 +10916,7 @@ Org Shape Permissions
 A Salesforce admin for the Dev Hub org must assign permissions to users who plan to create org shapes, or create scratch orgs based
 on an org shape. If you already have a permission set for Salesforce DX users, you can update it to include access.
 
-165
+168
 
 ### Scratch Orgs Enable Org Shape for Scratch Orgs
 
@@ -10822,7 +10982,7 @@ require the shape of another production org.
 **•** Your developers use their own Dev Hub orgs and don't have access to the production org. However, they want to create scratch
 orgs based on the shape of the production org.
 
-166
+169
 
 ### Scratch Orgs Org Shape Permissions
 
@@ -10878,7 +11038,7 @@ org is upgraded to the new Salesforce release.
 
 ```
 
-167
+170
 
 ### Scratch Orgs Scratch Org Definition for Org Shape
 
@@ -10963,7 +11123,7 @@ org shape.
 
 ```
 
-168
+171
 
 Scratch Orgs Scratch Org Definition for Org Shape
 
@@ -11042,7 +11202,7 @@ and Metadata API settings. Settings refer to the Settings metadata type, not all
 
 ```
 
-169
+172
 
 ### Scratch Orgs Troubleshoot Org Shape
 
@@ -11126,7 +11286,7 @@ org definition file, which enables both features.
 
 ```
 
-170
+173
 
 Scratch Orgs Troubleshoot Org Shape
 
@@ -11208,7 +11368,7 @@ Can't create a Digital Experience Cloud Site Using Org Shape
 
 **Workaround:** None.
 
-171
+174
 
 ## Scratch Orgs Create Scratch Orgs
 
@@ -11280,7 +11440,7 @@ against your active scratch org allocations.
 Indicate the path to the scratch definition file relative to your current directory. For sample repos and new projects, this file is located in
 the `config` directory.
 
-172
+175
 
 Scratch Orgs Create Scratch Orgs
 
@@ -11370,7 +11530,7 @@ Create a scratch org with source tracking disabled.
 
 ```
 
-173
+176
 
 Scratch Orgs Create Scratch Orgs
 
@@ -11446,7 +11606,7 @@ to see if it returns the scratch org ID, which confirms the existence of a scrat
 
 ```
 
-174
+177
 
 ## Scratch Orgs Scratch Org Snapshots
 
@@ -11508,7 +11668,7 @@ immediately available.
 **•** Snapshot data is retained for 100 days. When a snapshot expires, it’s associated data is deleted 10 days later. If a snapshot is deleted,
 its associated data is deleted 100 days after its creation date.
 
-175
+178
 
 Scratch Orgs Scratch Org Snapshots
 
@@ -11569,7 +11729,7 @@ dependent base packages are stable.
 Manage and Maintain Your Snapshots
 You can check the status of snapshot creation, list all snapshots, and delete a snapshot.
 
-176
+179
 
 ### Scratch Orgs Get Started with Scratch Org Snapshots Get Started with Scratch Org Snapshots
 
@@ -11645,7 +11805,7 @@ See _Required Permissions for Scratch Orgs_ in Create and Assign a Permission Se
 
 **8.** Select the users, click **Next**, and optionally set an expiration date.
 
-177
+180
 
 ### Scratch Orgs Salesforce CLI Snapshot Commands
 
@@ -11724,7 +11884,7 @@ spaces, even if the name is surrounded by quotation marks during creation).
 
 Tip: To view the aliases, usernames, and IDs of your authenticated orgs and scratch orgs, run the `org list` command.
 
-178
+181
 
 ### Scratch Orgs Create a Snapshot for Use with Namespaced Scratch Orgs
 
@@ -11800,7 +11960,7 @@ settings to configure the scratch orgs created from it.
 Using our Dreamhouse scratch org as an example, let’s create a scratch org definition file called `dhsnapshot-scratch-def.json`
 that contains only two entries: `orgName` and `snapshot`, which is the name you gave the snapshot when you created it.
 
-179
+182
 
 Scratch Orgs Create a Scratch Org Based on a Snapshot
 
@@ -11895,7 +12055,7 @@ Create the Scratch Org Based On Your Snapshot
 It can take Salesforce longer to create a scratch org from a snapshot, so we suggest you increase the `--wait` value so the command
 doesn’t time out. Remember to set the `--target-dev-hub` flag to the same Dev Hub org associated with the snapshot.
 
-180
+183
 
 ### Scratch Orgs Create a Package Version Based on a Snapshot
 
@@ -11953,7 +12113,7 @@ If you’re a partner or ISV who builds second-generation managed packages that 
 versions significantly faster by using scratch org snapshots. Using a snapshot to create a package version is a great choice if your dependent
 base packages are stable.
 
-181
+184
 
 ### Scratch Orgs Manage and Maintain Your Snapshots
 
@@ -12029,7 +12189,7 @@ After the status changes to `Active`, you can use the snapshot to create scratch
 
 ```
 
-182
+185
 
 ## Scratch Orgs Select the Salesforce Release for a Scratch Org
 
@@ -12092,7 +12252,7 @@ scratch orgs. You can use your existing Dev Hub that includes your existing scra
 For example, you can select a version over the next three releases during these release transition dates. Preview start date is when
 sandbox instances are upgraded. Preview end date is when all instances are on the GA release.
 
-183
+186
 
 Scratch Orgs Select the Salesforce Release for a Scratch Org
 
@@ -12166,7 +12326,7 @@ To set it on the command line:
 
 ```
 
-184
+187
 
 ## Scratch Orgs Deploy Source From Your Project to the Scratch Org
 
@@ -12225,7 +12385,7 @@ so when you retrieve it back to your project, it knows where it belongs.
 To run the deploy commands described in the remainder of this topic, first open a terminal (macOS and Linux) or command window
 (Windows) and then change to your Salesforce DX project directory.
 
-185
+188
 
 Scratch Orgs Deploy Source From Your Project to the Scratch Org
 
@@ -12304,7 +12464,7 @@ Select Files to Ignore During Deploys
 It’s likely that you have some files that you don’t want to sync between the project and scratch org. Add these files to the `.forceignore`
 file so they’re ignored by the deploy command.
 
-186
+189
 
 Scratch Orgs Deploy Source From Your Project to the Scratch Org
 
@@ -12381,7 +12541,7 @@ Track Changes Between Your Project and Org
 
 _VS Code Command_ [: SFDX: Deploy Source to Org](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/deploy-changes.html)
 
-187
+190
 
 ## Scratch Orgs Retrieve Source from the Scratch Org to Your Project Retrieve Source from the Scratch Org to Your Project
 
@@ -12457,7 +12617,7 @@ the `DiscountSpecial` Apex class and `DiscountPermSet` permission set into the `
 
 Use flags to target the source you want to retrieve, rather than everything that’s changed.
 
-188
+191
 
 Scratch Orgs Retrieve Source from the Scratch Org to Your Project
 
@@ -12533,7 +12693,7 @@ Track Changes Between Your Project and Org
 
 _VS Code Command_ [: SFDX: Retrieve Source to Org](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/deploy-changes.html)
 
-189
+192
 
 ## Scratch Orgs Scratch Org Users Scratch Org Users
 
@@ -12592,7 +12752,7 @@ To determine the infrastructure, find the **Instance** [on the Company Informati
 **•** If the scratch org is on a Salesforce first-party instance, other users can log in using `test.salesforce.com` or the My Domain
 URL.
 
-190
+193
 
 ### Scratch Orgs Create a Scratch Org User
 
@@ -12671,7 +12831,7 @@ user that was created when the scratch org was created.
 
 ```
 
-191
+194
 
 ### Scratch Orgs User Definition File for Customizing a Scratch Org User
 
@@ -12714,7 +12874,7 @@ To customize a new scratch org user, rather than use the default and generated v
 
 The user definition file uses JSON format and can include any Salesforce User sObject field and these Salesforce DX-specific options.
 
-192
+195
 
 Scratch Orgs User Definition File for Customizing a Scratch Org User
 
@@ -12795,7 +12955,7 @@ SEE ALSO:
 
 [User sObject API Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_user.htm)
 
-193
+196
 
 ### Scratch Orgs Generate or Change a Password for a Scratch Org User Generate or Change a Password for a Scratch Org User
 
@@ -12869,7 +13029,7 @@ a password that's 20 characters long:
 
 ```
 
-194
+197
 
 ## Scratch Orgs Manage Scratch Orgs from the Dev Hub Org
 
@@ -12932,11 +13092,11 @@ by the SignupRequest API and apply to all org signups.
 Note: These error codes are specific to scratch org signups. Additional error codes for other org signup scenarios are included in
 the _Object Reference for the Salesforce Platform_ [: SignupRequest.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_signuprequest.htm)
 
-195
+198
 
 Scratch Orgs Scratch Org Error Codes
 
-196
+199
 
 # CHAPTER 7 Sandboxes
 
@@ -12997,7 +13157,7 @@ scratch org, or Developer Edition org as your development environment, you’re 
 [better understand which to choose, see the Salesforce Developers Blog: Choose the Right Salesforce](https://developer.salesforce.com/blogs/2024/05/choose-the-right-salesforce-org-for-the-right-job)
 [Org for the Right Job.](https://developer.salesforce.com/blogs/2024/05/choose-the-right-salesforce-org-for-the-right-job)
 
-197
+200
 
 ## Sandboxes Authorize Your Production Org Authorize Your Production Org
 
@@ -13024,11 +13184,11 @@ file is a blueprint for the sandbox. You can create different definition files f
 
 Sandbox Configuration Values
 
-198
+201
 
 Sandboxes Create a Sandbox Definition File
 
-199
+202
 
 Sandboxes Create a Sandbox Definition File
 
@@ -13064,7 +13224,7 @@ Here's a sample definition file for cloning a sandbox:
 
 ```
 
-200
+203
 
 ## Sandboxes Create, Clone, or Refresh a Sandbox
 
@@ -13139,7 +13299,7 @@ The command asks you to confirm the sandbox configuration and then shows informa
 The `--set-default` flag indicates that this sandbox is your default org for all CLI commands. If you’re working with several orgs
 and you don’t want this one to be the default, exclude this flag.
 
-201
+204
 
 Sandboxes Create, Clone, or Refresh a Sandbox
 
@@ -13227,7 +13387,7 @@ sandbox and stepping on each other’s toes.
 Tip: Because the sandbox is processed in a queue, the sandbox cloning process can take longer than the default wait time of 6
 minutes. We recommend setting a larger value for `--wait`, for example, 30 minutes.
 
-202
+205
 
 Sandboxes Create, Clone, or Refresh a Sandbox
 
@@ -13299,7 +13459,7 @@ license.
 
 ```
 
-203
+206
 
 Sandboxes Create, Clone, or Refresh a Sandbox
 
@@ -13321,7 +13481,7 @@ Authorize an Org Using the JWT Flow
 
 Authorize an Org Using a Browser
 
-204
+207
 
 # CHAPTER 8 Track Changes Between Your Project and Org
 
@@ -13377,7 +13537,7 @@ or retrieving source.
 To see which metadata components support source tracking, check the Source Tracking column of the
 [Metadata Coverage Report.](https://developer.salesforce.com/docs/metadata-coverage/)
 
-205
+208
 
 ## Track Changes Between Your Project and Org Manage Source Tracking for Your org Manage Source Tracking for Your org
 
@@ -13438,7 +13598,7 @@ support tracking, such as a Full sandbox.
 
 ```
 
-206
+209
 
 ## Track Changes Between Your Project and Org Preview Changes Identified by Source Tracking
 
@@ -13518,7 +13678,7 @@ WidgetObject__c custom object that can be deployed to the org.
 
 ```
 
-207
+210
 
 ## Track Changes Between Your Project and Org Deploy and Retrieve Changes Identified by Source Tracking
 
@@ -13597,7 +13757,7 @@ The process is iterative. First you preview the remote and local changes. If con
 these changes exist in both the org and your local project. So you retrieve the remote changes to your local project, then push them to
 your source control repository, to ensure that the source control system contains all your changes and is the source of historical truth.
 
-208
+211
 
 Track Changes Between Your Project and Org Deploy and Retrieve Changes Identified by Source Tracking
 
@@ -13690,7 +13850,7 @@ After retrieving the source, run `project retrieve preview` again. Now, source t
 
 ```
 
-209
+212
 
 Track Changes Between Your Project and Org Deploy and Retrieve Changes Identified by Source Tracking
 
@@ -13782,7 +13942,7 @@ Run `project deploy preview` again.
 
 ```
 
-210
+213
 
 ### Track Changes Between Your Project and Org Retrieve Changes to Profiles with Source Tracking
 
@@ -13851,7 +14011,7 @@ With source tracking, retrieving profiles returns profile information pertaining
 plus any components getting tracked by source tracking. That includes any entity for which a change exists between your local project
 and the org.
 
-211
+214
 
 ## Track Changes Between Your Project and Org Resolve Conflicts Between Your Local Project and Org
 
@@ -13933,7 +14093,7 @@ this command output shows that `WidgetClass` has conflicting changes but `GizmoC
 
 ```
 
-212
+215
 
 ## Track Changes Between Your Project and Org Best Practices
 
@@ -14010,7 +14170,7 @@ _VS Code Documentation_ [: Detect Conflicts on Deploy](https://developer.salesfo
 
 Get the most out of source tracking by following these best practices.
 
-213
+216
 
 ## Track Changes Between Your Project and Org Performance Considerations of Source Tracking
 
@@ -14049,7 +14209,7 @@ the `org create scratch|sandbox` command. See Source Tracking for use cases.
 
 If creating a scratch org or sandbox for use as a development environment in DevOps Center, don’t disable source tracking.
 
-214
+217
 
 # CHAPTER 9 Work with Data
 
@@ -14094,7 +14254,7 @@ _[Salesforce Help](https://help.salesforce.com/s/articleView?id=sf.scalability_o
 
 _Salesforce Help_ [: Secure Your Sandbox Data with Salesforce Data Mask](https://help.salesforce.com/s/articleView?id=sf.data_mask_overview.htm&language=en_US)
 
-215
+218
 
 ## Work with Data Work With Small Datasets Work With Small Datasets
 
@@ -14174,7 +14334,7 @@ looks something like this:
 
 ```
 
-216
+219
 
 Work with Data Work With Small Datasets
 
@@ -14257,7 +14417,7 @@ A junction object is a Salesforce object with two master-detail relationships th
 objects. An example of a junction object is AccountContactRelation, which represents a relationship between a contact and one or more
 accounts.
 
-217
+220
 
 ## Work with Data Work With Large Datasets
 
@@ -14338,7 +14498,7 @@ Here are the bulk commands:
 
 **•** `data import bulk|resume`
 
-218
+221
 
 Work with Data Work With Large Datasets
 
@@ -14399,7 +14559,7 @@ the most recently run job.
 
 ```
 
-219
+222
 
 Work with Data Work With Large Datasets
 
@@ -14478,7 +14638,7 @@ CSV file snippet is for updating the Name field of the Account object:
 
 ```
 
-220
+223
 
 Work with Data Work With Large Datasets
 
@@ -14564,7 +14724,7 @@ the affected Salesforce object, and the number of successful and failed records 
 
 ```
 
-221
+224
 
 ## Work with Data Work With Individual Records
 
@@ -14636,7 +14796,7 @@ API object:
 
 ```
 
-222
+225
 
 Work with Data Work With Individual Records
 
@@ -14715,7 +14875,7 @@ _[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.
 
 _[Tooling API](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/tooling_api_objects_traceflag.htm)_ : TraceFlag
 
-223
+226
 
 ## Work with Data Run a SOQL or SOSL Query Run a SOQL or SOSL Query
 
@@ -14787,7 +14947,7 @@ runs against an org with the alias `new-scratch-org` :
 
 ```
 
-224
+227
 
 ## Work with Data Upload a File to Your Org
 
@@ -14843,7 +15003,7 @@ _[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.
 
 _[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_contentdocument.htm)_ : ContentDocument
 
-225
+228
 
 # CHAPTER 10 Salesforce DX MCP Server and Tools (Beta)
 
@@ -14906,7 +15066,7 @@ The Salesforce DX MCP Server was designed with security as a top priority.
 
 **–** Greatly decreases the size of the MCP Server.
 
-226
+229
 
 Salesforce DX MCP Server and Tools (Beta)
 
@@ -14967,7 +15127,7 @@ features and adhere to Mobile Offline design patterns.
 **•** **Lightning Web Components (LWC) and Aura** : Help you design, build, test, and optimize LWC
 code and facilitate Aura migration to LWC.
 
-227
+230
 
 Salesforce DX MCP Server and Tools (Beta)
 
@@ -14988,7 +15148,7 @@ DX MCP Server has `metadata` and `orgs` toolsets.
 and act as an interface to the LLM. Also called MCP Host, although this document uses the term
 MCP client.
 
-228
+231
 
 ## Salesforce DX MCP Server and Tools (Beta) Quick Start Using the VS Code With Copilot MCP Client (Beta) Quick Start Using the VS Code With Copilot MCP Client (Beta)
 
@@ -15066,7 +15226,7 @@ When the DX MCP Server is ready, you see a message like this (your server versio
 
 ```
 
-229
+232
 
 ## Salesforce DX MCP Server and Tools (Beta) Install and Configure the Salesforce DX MCP Server (Beta)
 
@@ -15124,7 +15284,7 @@ VS Code with Copilot
 See the Quick Start Using the VS Code With Copilot MCP Client (Beta), which uses VS Code with GitHub Copilot as the example. The
 topic includes details about which JSON file to update and an example JSON snippet.
 
-230
+233
 
 ### Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
 
@@ -15208,7 +15368,7 @@ value.
 Let’s just run through some examples so you get the idea. Then see later sections for the full list of values you can specify for the `args`
 option and its flags.
 
-231
+234
 
 Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
 (Beta)
@@ -15310,7 +15470,7 @@ toolsets. The `core` toolset is always enabled, even if you don't specify it in 
 
 ```
 
-232
+235
 
 Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
 (Beta)
@@ -15334,7 +15494,7 @@ These are the flags that you can pass to the `args` option.
 
 **Table 1: Valid values for the args option**
 
-233
+236
 
 Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
 (Beta)
@@ -15358,7 +15518,7 @@ These are the available values for the `--orgs` flag.
 
 **Table 2: Valid values for the --orgs Flag**
 
-234
+237
 
 Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
 (Beta)
@@ -15375,7 +15535,7 @@ as indicated.
 
 **Table 3: Valid values for the --toolsets Flag**
 
-235
+238
 
 ### Salesforce DX MCP Server and Tools (Beta) Manage the Salesforce DX MCP Server (Beta)
 
@@ -15393,7 +15553,7 @@ The easiest way to find the name of a specific MCP tool is using your MCP client
 
 You can also refer to the documentation for the different types of MCP tools:
 
-**•** Core Salesforce DX MCP Tools Documentation on page 237
+**•** Core Salesforce DX MCP Tools Documentation on page 240
 
 **•** [DevOps Center MCP Tools Documentation](https://help.salesforce.com/s/articleView?id=platform.devops_center_mcp_intro.htm&language=en_US)
 
@@ -15409,7 +15569,7 @@ The exact steps to manage the Salesforce DX MCP Server depends on your MCP clien
 
 But most clients allow you to:
 
-236
+239
 
 ## Salesforce DX MCP Server and Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta)
 
@@ -15475,7 +15635,7 @@ before it runs a tool that makes a real change in your local DX project or in yo
 
 Tips:
 
-237
+240
 
 Salesforce DX MCP Server and Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta)
 
@@ -15549,13 +15709,13 @@ so you understand what kinds of tasks these tools can accomplish; you don’t ca
 The tools marked NON-GA are not yet generally available, specify the `--allow-non-ga-tools` flag in your DX MCP Server
 configuration to use them. See Configure the Salesforce DX MCP Server for Your Environment.
 
-238
+241
 
 Salesforce DX MCP Server and Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta)
 
 **Table 4: Core DX MCP Tools**
 
-239
+242
 
 # CHAPTER 11 Development
 
@@ -15624,7 +15784,7 @@ Apex **•** `cmdt generate object`
 
 **•** `visualforce generate page`
 
-240
+243
 
 Development
 
@@ -15663,7 +15823,7 @@ SEE ALSO:
 
 _[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_unified.htm)_
 
-241
+244
 
 ## Development Develop Against Any Org Develop Against Any Org
 
@@ -15730,7 +15890,7 @@ example, after you've done an initial retrieve.
 
 If the comma-separated list you’re supplying contains spaces, enclose the entire comma-separated list in one set of double quotes.
 
-242
+245
 
 Development Develop Against Any Org
 
@@ -15757,7 +15917,7 @@ You can deploy metadata in source format using these methods:
 
 If the comma-separated list you’re supplying contains spaces, enclose the entire comma-separated list in one set of double quotes.
 
-243
+246
 
 Development Develop Against Any Org
 
@@ -15783,7 +15943,7 @@ variable:
 
 **•** `project retrieve start`
 
-244
+247
 
 ## Development Assign a Permission Set
 
@@ -15863,7 +16023,7 @@ _Salesforce Help_ [: Permission Sets](https://help.salesforce.com/s/articleView?
 
 _Salesforce Help_ [: Permission Set Licenses](https://help.salesforce.com/s/articleView?id=sf.users_permissionset_licenses_overview.htm&type=5&language=en_US)
 
-245
+248
 
 ## Development Create Lightning Apps and Aura Components Create Lightning Apps and Aura Components
 
@@ -15924,7 +16084,7 @@ to generate them in the default package directory, create the `force-app/main/de
 
 ```
 
-246
+249
 
 ## Development Create an Apex Class
 
@@ -15979,7 +16139,7 @@ force-app/main/default/classes
 
 ```
 
-247
+250
 
 ## Development Create an Apex Trigger
 
@@ -16052,7 +16212,7 @@ You can use Salesforce CLI to generate the metadata files for new custom objects
 
 **1.** Open a terminal (macOS and Linux) or command prompt Windows and change to your Salesforce DX project directory.
 
-248
+251
 
 ## Development Execute Anonymous Apex
 
@@ -16135,7 +16295,7 @@ This output shows an example of executing the Apex code `system.debug ('Hello wo
 
 ```
 
-249
+252
 
 ## Development Run Apex Tests
 
@@ -16215,7 +16375,7 @@ Also ensure that the Enable Streaming API setting is enabled in the org’s user
 
 [See User Permissions and Configure User Interface Settings for details.](https://help.salesforce.com/articleView?id=sf.admin_userperms.htm&type=5&language=en_US)
 
-250
+253
 
 Development Run Apex Tests
 
@@ -16264,7 +16424,7 @@ include only classes that were directly touched by the test methods in the run.
 Here’s an example of how you can use the **Store Only Aggregate Code Coverage** setting to investigate and resolve code coverage
 issues. A nightly build with the setting checked shows that the `Class032` has only 57% code coverage.
 
-251
+254
 
 Development Run Apex Tests
 
@@ -16272,7 +16432,7 @@ Uncheck the setting and run the test on `Class032` to get code coverage informat
 more unit tests for the class with low coverage. As you keep checking the new code coverage percentage of `Class032`, you no longer
 have to scroll through the long results of all your Apex tests.
 
-252
+255
 
 ### Development Debug Apex Debug Apex
 
@@ -16301,7 +16461,7 @@ If you use Salesforce Extensions for Visual Studio Code (VS Code) for your devel
 extensions. Whichever debugger you chose, you set breakpoints in your Apex classes and step through their execution to inspect your
 code in real time to find bugs. You can run Apex tests in VS Code or on the command line.
 
-253
+256
 
 ### Development Generate and View Apex Debug Logs
 
@@ -16375,7 +16535,7 @@ CLI.
 
 ```
 
-254
+257
 
 Development Generate and View Apex Debug Logs
 
@@ -16410,7 +16570,7 @@ SEE ALSO:
 
 _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_debugging_debug_log.htm)_ : Debug Log
 
-255
+258
 
 # CHAPTER 12 Build and Release Your App
 
@@ -16468,7 +16628,7 @@ to organize your source, build small modular packages, integrate with your versi
 and better utilize your custom Apex code. You can execute all packaging operations via Salesforce
 CLI, or automate them using scripts.
 
-256
+259
 
 Build and Release Your App
 
@@ -16486,7 +16646,7 @@ If you’re familiar with first-generation managed packages and want to learn mo
 [For more information on managed 1GP packages, see Create a First-Generation Managed Package](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/sfdx_dev_build_release.htm)
 [using Salesforce DX.](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/sfdx_dev_build_release.htm)
 
-257
+260
 
 ## Build and Release Your App Build and Release Your App with Metadata API Build and Release Your App with Metadata API
 
@@ -16512,7 +16672,7 @@ Pro sandbox for integration. Developer Pro sandboxes don’t contain production 
 **4. Release:** After the release is in production, the team can use the Full sandbox to train users without the risk of altering production
 data. A Full sandbox includes a copy of production data.
 
-258
+261
 
 Build and Release Your App Build and Release Your App with Metadata API
 
@@ -16535,7 +16695,7 @@ that originate from a managed package.
 You can run tests for a deployment of non-Apex components. You can override the default test execution behavior by setting the test
 level in your deployment options. Test levels are enforced regardless of the types of components present in your deployment package.
 
-259
+262
 
 ### Build and Release Your App Develop and Test Changes Locally
 
@@ -16604,7 +16764,7 @@ Run `sf project retrieve start --help` for all command options with examples.
 [Next: Deploy all changes the team has made to the first testing environment to test those changes. See Salesforce CLI Reference: deploy](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_deploy_commands_unified.htm)
 [Commands.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_deploy_commands_unified.htm)
 
-260
+263
 
 ### Build and Release Your App Build and Test the Release Artifact Build and Test the Release Artifact
 
@@ -16683,7 +16843,7 @@ This command returns a job ID that you reference in the quick deploy.
 
 After you validate a deployment, you have 10 days to perform the quick deployment to production.
 
-261
+264
 
 ### Build and Release Your App Release Your App to Production Release Your App to Production
 
@@ -16743,7 +16903,7 @@ Curious about the status of a canceled deployment? Run a deployment report.
 
 ```
 
-262
+265
 
 # CHAPTER 13 Unlocked Packages
 
@@ -16807,7 +16967,7 @@ Note: If you’re an AppExchange partner that plans to distribute your app to cu
 [AppExchange, use second-generation managed packaging. See Second-Generation Managed](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)
 [Packages for more information.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)
 
-263
+266
 
 ## Unlocked Packages What’s an Unlocked Package? What’s an Unlocked Package?
 
@@ -16860,7 +17020,7 @@ Unlocked packages allow you to declare multi-level dependencies on one or many m
 packages small and modular. You can use the command line to execute unlocked packaging operations, or you can include
 packaging-specific Salesforce CLI commands in a script and automate your package development.
 
-264
+267
 
 ## Unlocked Packages Before You Create Unlocked Packages Before You Create Unlocked Packages
 
@@ -16921,7 +17081,7 @@ this org as your namespace org.. If you want to use the namespace strictly for t
 After you create a namespace org and use it to specify your namespace, open your Dev Hub org and link the namespace org to your
 Dev Hub org.
 
-265
+268
 
 ## Unlocked Packages Create Org-Dependent Unlocked Packages
 
@@ -16967,7 +17127,7 @@ sf package create -t Unlocked -r force-app -n MyPackage --org-dependent
 
 ```
 
-266
+269
 
 ## Unlocked Packages Workflow for Unlocked Packages
 
@@ -17042,7 +17202,7 @@ creates an alias based on the package name.
 
 ```
 
-267
+270
 
 ## Unlocked Packages Configure Unlocked Packages
 
@@ -17122,7 +17282,7 @@ installation, whether installing the package from the CLI or from a browser. An 
 The key ensures that no package information, such as the name or components, is disclosed until the correct installation key is
 supplied.
 
-268
+271
 
 ### Unlocked Packages Project Configuration File for Unlocked Packages
 
@@ -17157,23 +17317,23 @@ package attributes and package contents.
 
 Here are the parameters you can specify in the project configuration file.
 
-269
-
-Unlocked Packages Project Configuration File for Unlocked Packages
-
-270
-
-Unlocked Packages Project Configuration File for Unlocked Packages
-
-271
-
-Unlocked Packages Project Configuration File for Unlocked Packages
-
 272
 
 Unlocked Packages Project Configuration File for Unlocked Packages
 
 273
+
+Unlocked Packages Project Configuration File for Unlocked Packages
+
+274
+
+Unlocked Packages Project Configuration File for Unlocked Packages
+
+275
+
+Unlocked Packages Project Configuration File for Unlocked Packages
+
+276
 
 Unlocked Packages Project Configuration File for Unlocked Packages
 
@@ -17253,7 +17413,7 @@ CLI command to generate a project file that you can build upon. Here’s how the
 
 ```
 
-274
+277
 
 ### Unlocked Packages Unlocked Packaging Keywords
 
@@ -17286,7 +17446,7 @@ A keyword is a variable that you can use to specify a package version number.
 You can use keywords to automatically increment the value of the package build numbers, ancestor version numbers, set the package
 dependency to the latest version, or the latest released and promoted version.
 
-275
+278
 
 ### Unlocked Packages Package Installation Key
 
@@ -17334,7 +17494,7 @@ sf package version create --package "Expense Manager" --directory common \
 
 ```
 
-276
+279
 
 ### Unlocked Packages Extract Dependency Information from Unlocked Packages
 
@@ -17431,7 +17591,7 @@ as packages A, B, and C.
 
 ```
 
-277
+280
 
 ### Unlocked Packages Understanding Namespaces
 
@@ -17525,7 +17685,7 @@ component to a package associated with the Acme namespace, the API name becomes 
 You can choose to create unlocked packages with or without a specific namespace. A namespace is assigned to a package at the time
 that it’s created and can’t be changed.
 
-278
+281
 
 Unlocked Packages Understanding Namespaces
 
@@ -17574,7 +17734,7 @@ To create a namespace:
 
 **5.** (Optional) Select a package to associate with this namespace, or select **None**, then click **Review** .
 
-279
+282
 
 Unlocked Packages Understanding Namespaces
 
@@ -17595,7 +17755,7 @@ To understand how namespaces affect the types of packages you can install in a n
 
 To understand how namespaces affect the combination of packages that can be installed into one org, review this table.
 
-280
+283
 
 Unlocked Packages Understanding Namespaces
 
@@ -17620,7 +17780,7 @@ package is treated the same as an unmanaged package.
 **•** You can add or remove the `@namespaceAccessible` annotation at any time, even on managed and released Apex code.
 Make sure that you don’t have dependent packages relying on the functionality of the annotation before adding or removing it.
 
-281
+284
 
 ### Unlocked Packages Share Release Notes and Post-Install Instructions
 
@@ -17715,7 +17875,7 @@ Specify the `postInstallUrl` and `releaseNotesUrl` attributes in the `packageDir
 
 ```
 
-282
+285
 
 ### Unlocked Packages Specify Unpackaged Metadata or Apex Access for Apex
 
@@ -17809,7 +17969,7 @@ run at package version creation.
 
 ```
 
-283
+286
 
 ### Unlocked Packages Best Practices for Unlocked Packages
 
@@ -17881,7 +18041,7 @@ ID always starts with `04t` .
 
 Here are the most commonly used IDs.
 
-284
+287
 
 ### Unlocked Packages Frequently Used Unlocked Packaging Operations
 
@@ -17889,7 +18049,7 @@ Here are the most commonly used IDs.
 
 [For a complete list of Salesforce CLI packaging commands, see: Salesforce Command Line Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
 
-285
+288
 
 ## Unlocked Packages How We Handle Profile Settings in Unlocked Packages How We Handle Profile Settings in Unlocked Packages
 
@@ -17917,7 +18077,7 @@ apply profile settings to existing profiles in the subscriber org.
 Whenever possible, use package permission sets instead of profile settings. Subscribers who install your package can easily assign your
 permission set to their users.
 
-286
+289
 
 ## Unlocked Packages Develop Unlocked Packages
 
@@ -17984,7 +18144,7 @@ Release an Unlocked Package
 Each new package version is marked as beta when its created. As you develop your package, you may create several package versions
 before you create a version that is ready to be released and installed in production orgs.
 
-287
+290
 
 ### Unlocked Packages Create and Update an Unlocked Package
 
@@ -18051,7 +18211,7 @@ To update the name, description, or the user to receive error notifications of a
 
 ```
 
-288
+291
 
 ### Unlocked Packages Create New Versions of an Unlocked Package
 
@@ -18131,7 +18291,7 @@ The output shows details about the request.
 
 You can find the request ID (08c) in the initial output of `sf package version create` .
 
-289
+292
 
 Unlocked Packages Create New Versions of an Unlocked Package
 
@@ -18218,7 +18378,7 @@ Note: You can't specify both skip validation and code coverage, because code cov
 
 You also can't specify both skip validation and async validation at the same time.
 
-290
+293
 
 Unlocked Packages Create New Versions of an Unlocked Package
 
@@ -18288,7 +18448,7 @@ org name and 15-character source org ID.
 
 ```
 
-291
+294
 
 Unlocked Packages Create New Versions of an Unlocked Package
 
@@ -18358,7 +18518,7 @@ Package Dependencies and Branches
 By default, your package can have dependencies on other packages in the same branch. For package dependencies based on packages
 in other branches, explicitly set the branch attribute in the `sfdx.project.json` file.
 
-292
+295
 
 Unlocked Packages Create New Versions of an Unlocked Package
 
@@ -18397,7 +18557,7 @@ or
 In the `sfdx-project.json` file, set the `sourceApiVersion` to correspond with the release version of the package version
 you’re creating. If you are targeting a previous release, any `sourceApiVersion` value below the current release is accepted.
 
-293
+296
 
 ### Unlocked Packages Guidance for Package Version Numbering
 
@@ -18462,7 +18622,7 @@ same version number, but unique subscriber package version IDs (starts with 04t)
 
 ```
 
-294
+297
 
 ### Unlocked Packages Code Coverage for Unlocked Packages
 
@@ -18536,7 +18696,7 @@ making smaller improvements.
 Before you can promote and release an unlocked package, the Apex code must meet a minimum 75% code coverage requirement. You
 can install package versions that don't meet code coverage requirements only in scratch orgs and sandboxes.
 
-295
+298
 
 ### Unlocked Packages Considerations for Promoting Packages with Dependencies
 
@@ -18600,7 +18760,7 @@ The keyword `RELEASED` maps to the promoted and released package version.
 For example: If you create versions 1.0.0.1, 1.0.0.2, and 1.0.0.3, and promote version 1.0.0.2, then 1.0.0.RELEASED = 1.0.0.2, but 1.0.0.LATEST
 = 1.0.0.3.
 
-296
+299
 
 ### Unlocked Packages Release an Unlocked Package
 
@@ -18693,7 +18853,7 @@ Confirm that the value of the Released property is `true` .
 
 ```
 
-297
+300
 
 ### Unlocked Packages Update an Unlocked Package Version
 
@@ -18777,7 +18937,7 @@ upgrade.
 
 **•** ApplicationRecordTypeConfig
 
-298
+301
 
 Unlocked Packages Hard-Deleted Components in Unlocked Packages
 
@@ -18861,7 +19021,7 @@ Unlocked Packages Hard-Deleted Components in Unlocked Packages
 
 **•** DiscoveryAIModel
 
-299
+302
 
 Unlocked Packages Hard-Deleted Components in Unlocked Packages
 
@@ -18945,7 +19105,7 @@ Unlocked Packages Hard-Deleted Components in Unlocked Packages
 
 **•** IntegrationHubSettingsType
 
-300
+303
 
 Unlocked Packages Hard-Deleted Components in Unlocked Packages
 
@@ -19029,7 +19189,7 @@ Unlocked Packages Hard-Deleted Components in Unlocked Packages
 
 **•** RecordAlertCategory
 
-301
+304
 
 Unlocked Packages Hard-Deleted Components in Unlocked Packages
 
@@ -19113,7 +19273,7 @@ Unlocked Packages Hard-Deleted Components in Unlocked Packages
 
 **•** WaveLens
 
-302
+305
 
 ### Unlocked Packages Delete an Unlocked Package or Package Version
 
@@ -19175,7 +19335,7 @@ first delete all associated package versions.
 These CLI commands can’t be used with first-generation managed packages or package versions. To delete a first-generation managed
 [package, see View Package Details in the](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/isv_viewing_package_details.htm) _First-Generation Managed Packaging Developer Guide_ .
 
-303
+306
 
 ### Unlocked Packages View Package Details View Package Details
 
@@ -19268,7 +19428,7 @@ Push upgrades enable you to upgrade packages installed in orgs, without asking o
 choose which orgs receive a push upgrade, what version the package is upgraded to, and when you want the upgrade to occur. Push
 upgrades are particularly helpful if you need to push a change for a hot bug fix.
 
-304
+307
 
 ### Unlocked Packages Schedule a Push Upgrade Using CLI
 
@@ -19322,7 +19482,7 @@ Determine the Orgs to Be Upgraded
 
 There isn't a dedicated `push-upgrade` CLI command for this action, instead let's look at how to use the CLI `data query` command.
 
-305
+308
 
 Unlocked Packages Schedule a Push Upgrade Using CLI
 
@@ -19404,7 +19564,7 @@ the command. The target org is the Dev Hub org that owns the package. Specify ei
 
 Note the `SubscriberPackageVersionId` values (starts with 04t) returned by this query.
 
-306
+309
 
 Unlocked Packages Schedule a Push Upgrade Using CLI
 
@@ -19488,7 +19648,7 @@ List all package push upgrade requests with a status of Failed. This status occu
 
 ```
 
-307
+310
 
 ## Unlocked Packages Install an Unlocked Package
 
@@ -19561,7 +19721,7 @@ Sample Script for Installing Unlocked Packages with Dependencies
 Use this sample script as a basis to create your own script to install packages with dependencies. This script contains a query that
 finds dependent packages and installs them in the correct dependency order.
 
-308
+311
 
 ### Unlocked Packages Install Packages with the CLI Install Packages with the CLI
 
@@ -19637,7 +19797,7 @@ interval.
 The following command has `publish-wait` set to six minutes and `wait` set to 10 minutes. If not already available, Expense
 Manager takes five minutes to become available on the target org. The clock then starts ticking for the 10-minute `wait` time. At the
 
-309
+312
 
 ### Unlocked Packages Install Unlocked Packages from a URL
 
@@ -19713,7 +19873,7 @@ the changes.
 
 **•** If a component in the upgrade was deleted from the target org, the component is re-created during the upgrade.
 
-310
+313
 
 ### Unlocked Packages Sample Script for Installing Unlocked Packages with
 
@@ -19775,7 +19935,7 @@ Note: Be sure to replace the package version ID and scratch org user name with y
 
 ```
 
-311
+314
 
 Unlocked Packages Sample Script for Installing Unlocked Packages with
 Dependencies
@@ -19833,7 +19993,7 @@ Dependencies
 
 ```
 
-312
+315
 
 ## Unlocked Packages Migrate Deprecated Metadata from Unlocked Packages
 
@@ -19890,7 +20050,7 @@ To move production metadata from package A to package B, follow these steps.
 
 Your metadata is now a part of package B in your production org.
 
-313
+316
 
 ## Unlocked Packages Uninstall an Unlocked Package Uninstall an Unlocked Package
 
@@ -19957,7 +20117,7 @@ field. Wait until the background job finishes, and try again.
 
 You can transfer the ownership of an unlocked package from one Dev Hub org to another.
 
-314
+317
 
 Unlocked Packages Transfer an Unlocked Package to a Different Dev Hub
 
@@ -20021,7 +20181,7 @@ During the Package Transfer Process
 All push upgrades or package version creation processes must be complete before the package transfer process is initiated. Salesforce
 Customer Support will alert you about the date the package transfer will occur.
 
-315
+318
 
 Unlocked Packages Transfer an Unlocked Package to a Different Dev Hub
 
@@ -20093,7 +20253,7 @@ Or specify the dependency using a package alias.
 
 ```
 
-316
+319
 
 ### Unlocked Packages Take Ownership of an Unlocked Package Transferred from
 
@@ -20152,7 +20312,7 @@ To verify that the transferred package is associated with your Dev Hub, run `sf 
 
 Impact of Package Transfers on Package IDs
 
-317
+320
 
 Unlocked Packages Take Ownership of an Unlocked Package Transferred from
 a Different Dev Hub
@@ -20201,7 +20361,7 @@ We don’t transfer:
 
 **•** Deleted package versions.
 
-318
+321
 
 # CHAPTER 14 Continuous Integration
 
@@ -20242,7 +20402,7 @@ _Salesforce Help:_ [Install and Configure DevOps Center](https://help.salesforce
 
 _Salesforce Help:_ [Manage and Release Changes Easily and Collaboratively with DevOps Center](https://help.salesforce.com/s/articleView?id=sf.devops_center_overview.htm&language=en_US)
 
-319
+322
 
 ## Continuous Integration Continuous Integration Using CircleCI Continuous Integration Using CircleCI
 
@@ -20312,7 +20472,7 @@ containing your `server.key` file, replacing _`<key>`_ and _`<iv>`_ with the val
 Note: Use the key and iv values only once, and don't use them to encrypt more than the `server.key` . While you can
 reuse this pair to encrypt other things, it is considered a security violation to do so.
 
-320
+323
 
 ### Continuous Integration Connect CircleCI to Your DevHub
 
@@ -20364,7 +20524,7 @@ CircleCI UI.
 `DECRYPTION_IV`, respectively. When you finish setting the environment variables, your project screen looks like the following
 image.
 
-321
+324
 
 ## Continuous Integration Continuous Integration Using Jenkins
 
@@ -20396,7 +20556,7 @@ Configure Your Environment for Jenkins
 Before integrating your Dev Hub and scratch orgs into your existing Jenkins framework, configure your Jenkins environment. Our
 example assumes that you’re working in a package development model.
 
-322
+325
 
 ### Continuous Integration Configure Your Environment for Jenkins
 
@@ -20462,7 +20622,7 @@ auto-update can interfere with the execution of a Jenkins job.
 
 **3.** Set up your Salesforce DX project so that you can create a scratch org.
 
-323
+326
 
 ### Continuous Integration Jenkinsfile Walkthrough
 
@@ -20541,7 +20701,7 @@ Define the `SF_USERNAME` variable, but don’t set its value. You do that later.
 
 ```
 
-324
+327
 
 Continuous Integration Jenkinsfile Walkthrough
 
@@ -20612,7 +20772,7 @@ it fails to refresh the token. Why? The CLI tries to use a JWT key file that no 
 If you set the home directory to match the workspace directory using `withEnv`, the authentication files are unique for each job.
 Creating unique auth files per job is also more secure because each job has access only to the auth files it creates.
 
-325
+328
 
 Continuous Integration Jenkinsfile Walkthrough
 
@@ -20693,7 +20853,7 @@ specifies that this HubOrg is the default Dev Hub org for creating scratch orgs.
 Note: It’s a best practice to have a unique authentication file for each Jenkins job using the `withEnv` wrapper. But it’s possible
 to authorize a Dev Hub on your Jenkins machine instead. The advantage is that your authentication is set centrally on your machine
 
-326
+329
 
 Continuous Integration Jenkinsfile Walkthrough
 
@@ -20767,7 +20927,7 @@ Now that your source code and test source are pushed to the scratch org, run the
 
 ```
 
-327
+330
 
 Continuous Integration Jenkinsfile Walkthrough
 
@@ -20851,7 +21011,7 @@ After you create a package, add metadata and create a new package version.
 
 ```
 
-328
+331
 
 Continuous Integration Jenkinsfile Walkthrough
 
@@ -20931,7 +21091,7 @@ To finish up, install your package in your scratch org, run unit tests, then del
 
 ```
 
-329
+332
 
 ### Continuous Integration Sample Jenkinsfile
 
@@ -21012,7 +21172,7 @@ CLI commands to automate testing of your Salesforce applications using scratch o
 
 ```
 
-330
+333
 
 Continuous Integration Sample Jenkinsfile
 
@@ -21091,7 +21251,7 @@ Continuous Integration Sample Jenkinsfile
 
 ```
 
-331
+334
 
 Continuous Integration Sample Jenkinsfile
 
@@ -21172,7 +21332,7 @@ Continuous Integration Sample Jenkinsfile
 
 ```
 
-332
+335
 
 Continuous Integration Sample Jenkinsfile
 
@@ -21255,7 +21415,7 @@ Continuous Integration Sample Jenkinsfile
 
 ```
 
-333
+336
 
 Continuous Integration Sample Jenkinsfile
 
@@ -21334,7 +21494,7 @@ Continuous Integration Sample Jenkinsfile
 
 ```
 
-334
+337
 
 ## Continuous Integration Continuous Integration with Travis CI
 
@@ -21379,7 +21539,7 @@ These sample repositories support the org development model. This model uses Sal
 Get started quickly with CI by cloning a sample repository from your vendor of choice. Each repo has a sample configuration file and a
 comprehensive `README.md` with step-by-step information.
 
-335
+338
 
 Continuous Integration Sample CI Repos for Package Development Model
 
@@ -21387,7 +21547,7 @@ These sample repositories support the package development model. This model uses
 orgs for development, and sandboxes for testing and staging. To determine if this model is right for you, head over and earn your badge
 [by completing the Package Development Model module.](https://trailhead.salesforce.com/content/learn/modules/sfdx_dev_model)
 
-336
+339
 
 # CHAPTER 15 Troubleshoot Salesforce DX
 
@@ -21415,7 +21575,7 @@ SEE ALSO:
 
 [Salesforce Trailblazer Community](https://success.salesforce.com/_ui/core/chatter/groups/GroupProfilePage?g=0F93A000000HTp1)
 
-337
+340
 
 ## Troubleshoot Salesforce DX Resolve Common Authorization Errors Resolve Common Authorization Errors
 
@@ -21483,7 +21643,7 @@ find your org's instance URL, log into it, go to the Setup > Company Settings > 
 **–** Check that your connected app settings are correct, especially if you created your own rather than use the default Salesforce CLI
 [connected app. See Create a Connected App in Your Org.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
 
-338
+341
 
 Troubleshoot Salesforce DX org login web Errors
 
@@ -21558,7 +21718,7 @@ generation and the request for an access token, an error like this can occur.
 **–** [If you're using a custom connected app rather than the default Salesforce CLI one, check that the settings are correct. See Create](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
 [a Connected App in Your Org.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
 
-339
+342
 
 Troubleshoot Salesforce DX org login web Errors
 
@@ -21641,7 +21801,7 @@ with its own certificate to allow it to inspect traffic, and the proxy certifica
 **–** Make sure that the certificates you're using are trusted within the trust store or added to the `NODE_EXTRA_CA_CERTS`
 environment variable.
 
-340
+343
 
 ### Troubleshoot Salesforce DX org login jwt Errors
 
@@ -21709,7 +21869,7 @@ from which you're running the `org login web` command.
 
 ### org login jwt Errors These errors can occur when you run org login jwt to authorize an org by logging into it with the JWT flow.
 
-341
+344
 
 Troubleshoot Salesforce DX org login jwt Errors
 
@@ -21783,7 +21943,7 @@ log into it, go to the Setup > Company Settings > My Domain page, and see **Curr
 **–** Don't use a Lightning URL for your instance URL. For example, use `https://MyDomainName.my.salesforce.com`
 and not `https://MyDomainName.lightning.force.com` .
 
-342
+345
 
 Troubleshoot Salesforce DX org login jwt Errors
 
@@ -21858,7 +22018,7 @@ and not `https://MyDomainName.lightning.force.com` .
 
 **–** If using a proxy, make sure that the `HTTPS_PROXY` and `HTTP_PROXY` environment variables are set properly.
 
-343
+346
 
 ## Troubleshoot Salesforce DX Error: No default dev hub found
 
@@ -21932,7 +22092,7 @@ How Salesforce Developer Experience (DX) Tooling Changes the Way You Work
 Sometimes you try to authorize a Dev Hub org or a scratch org using the Salesforce CLI or an IDE, but you don’t successfully log in to
 the org. The port remains open for the stray authorization process, and you can’t use the CLI or IDE. To proceed, end the process manually.
 
-344
+347
 
 ## Troubleshoot Salesforce DX Error: The consumer key is already taken
 
@@ -22007,7 +22167,7 @@ of a sample connected app file that shows the `<consumerKey>` element.
 
 ```
 
-345
+348
 
 ## Troubleshoot Salesforce DX CLI Version Information
 
@@ -22033,7 +22193,7 @@ Use these commands to view version information about Salesforce CLI.
 
 ```
 
-346
+349
 
 # CHAPTER 16 Limitations for Salesforce DX
 
@@ -22074,7 +22234,7 @@ orgs counts against your daily scratch org limits.
 **Workaround:** In your scratch org definition file, if you specify the Communities feature, also specify
 the Sites feature.
 
-347
+350
 
 Limitations for Salesforce DX
 
@@ -22149,7 +22309,7 @@ definition.
 
 ```
 
-348
+351
 
 Limitations for Salesforce DX
 
@@ -22205,4 +22365,4 @@ might add a “package-protected” keyword to prevent access to package secrets
 
 **Workaround:** None.
 
-349
+352

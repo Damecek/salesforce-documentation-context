@@ -1,13 +1,13 @@
 # Api action
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/api_action.pdf
-> Fetched: 2025-12-19T11:11:09Z
+> Fetched: 2026-01-13T15:21:33Z
 Actions Developer Guide
 Developer Guide
 
 Version 65.0, Winter ’26
 
-Last updated: December 12, 2025
+Last updated: December 16, 2025
 
 © Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
