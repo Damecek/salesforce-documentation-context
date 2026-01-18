@@ -1,7 +1,7 @@
-# Salesforce apex reference guide
+# Apex Reference Guide
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_reference_guide.pdf
-> Fetched: 2026-01-13T15:43:53Z
+> Fetched: 2026-01-16T15:53:35Z
 Apex Reference Guide
 
 Version 65.0, Winter ’26

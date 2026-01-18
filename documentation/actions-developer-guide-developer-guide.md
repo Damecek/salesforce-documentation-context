@@ -1,7 +1,7 @@
-# Api action
+# Actions Developer Guide Developer Guide
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/api_action.pdf
-> Fetched: 2026-01-13T15:21:33Z
+> Fetched: 2026-01-18T07:21:25Z
 Actions Developer Guide
 Developer Guide
 

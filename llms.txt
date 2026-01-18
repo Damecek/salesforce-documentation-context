@@ -5,12 +5,13 @@
 Update `src.txt`, then run `uv run update` to regenerate Markdown files in `documentation/` and refresh this list.
 
 ## Documentation
-- [Api action](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/api-action.md)
-- [Object reference](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/object-reference.md)
-- [Pkg2 dev](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/pkg2-dev.md)
-- [Salesforce apex developer guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-apex-developer-guide.md)
-- [Salesforce apex reference guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-apex-reference-guide.md)
-- [Salesforce soql sosl](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-soql-sosl.md)
-- [Sfdx cli reference](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/sfdx-cli-reference.md)
-- [Sfdx dev](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/sfdx-dev.md)
-- [Sfdx setup](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/sfdx-setup.md)
+- [Actions Developer Guide Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/actions-developer-guide-developer-guide.md)
+- [Apex Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/apex-developer-guide.md)
+- [Apex Reference Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/apex-reference-guide.md)
+- [Metadata API Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/metadata-api-developer-guide.md)
+- [Object Reference for the Salesforce Platform](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/object-reference-for-the-salesforce-platform.md)
+- [Salesforce CLI Command Reference](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-cli-command-reference.md)
+- [Salesforce CLI Setup Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-cli-setup-guide.md)
+- [Salesforce DX Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-dx-developer-guide.md)
+- [Second-Generation Managed Packaging Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/second-generation-managed-packaging-developer-guide.md)
+- [SOQL and SOSL Reference](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/soql-and-sosl-reference.md)

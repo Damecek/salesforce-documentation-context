@@ -1,7 +1,7 @@
-# Pkg2 dev
+# Second-Generation Managed Packaging Developer Guide
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/pkg2_dev.pdf
-> Fetched: 2026-01-13T15:43:53Z
+> Fetched: 2026-01-18T07:21:25Z
 Second-Generation Managed
 Packaging Developer Guide
 

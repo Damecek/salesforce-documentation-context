@@ -1,7 +1,7 @@
-# Salesforce apex developer guide
+# Apex Developer Guide
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
-> Fetched: 2026-01-13T15:20:03Z
+> Fetched: 2026-01-16T15:53:33Z
 Apex Developer Guide
 
 Version 65.0, Winter ’26

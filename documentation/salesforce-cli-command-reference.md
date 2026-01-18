@@ -1,7 +1,7 @@
-# Sfdx cli reference
+# Salesforce CLI Command Reference
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_cli_reference.pdf
-> Fetched: 2026-01-13T15:20:03Z
+> Fetched: 2026-01-16T15:53:33Z
 Salesforce CLI Command
 Reference
 
