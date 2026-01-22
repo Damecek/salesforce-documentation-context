@@ -34,7 +34,7 @@ uv sync
 3. Generate / refresh Markdown:
 
 ```bash
-export PDF_IGNORE_IMAGES=1 && export PDF_FORCE_TEXT=1 && uv run update
+FORCE=1 PDF_IGNORE_IMAGES=1 PDF_FORCE_TEXT=1 uv run update
 ```
 
 Output:

@@ -1,7 +1,7 @@
 # Salesforce CLI Command Reference
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_cli_reference.pdf
-> Fetched: 2026-01-16T15:53:33Z
+> Fetched: 2026-01-22T10:44:20Z
 Salesforce CLI Command
 Reference
 
@@ -77,7 +77,6 @@ following plug-in versions:
 
 **•** `@salesforce/plugin-custom-metadata` version 3.3.72
 
-1
 
 Salesforce CLI Command Reference sf
 
@@ -147,7 +146,6 @@ Create and publish an Experience Cloud site.
 config Commands
 Commands to configure Salesforce CLI.
 
-2
 
 ### Salesforce CLI Command Reference agent Commands
 
@@ -209,7 +207,6 @@ The `-h` and `--help` flags show details about `sf` topics and their commands.
 
 Commands to work with agents.
 
-3
 
 Salesforce CLI Command Reference agent Commands
 
@@ -271,7 +268,6 @@ preview" CLI command or VS Code.
 You must know the agent's API name to activate it; you can either be prompted for it or you can specify it with the --api-name flag. Find
 the agent's API name in its Agent Details page of your org's Agentforce Studio UI in Setup.
 
-4
 
 Salesforce CLI Command Reference agent Commands
 
@@ -351,7 +347,6 @@ the Agent Script language. See "Author an Agent"
 To run this command, you must have an agent spec file, which is a YAML file that define the agent properties and contains a list of
 AI-generated topics. Topics define the range of jobs the agent can handle. Use the "agent generate agent-spec" CLI command to generate
 
-5
 
 Salesforce CLI Command Reference agent Commands
 
@@ -439,7 +434,6 @@ Type: option
 
 Optional
 
-6
 
 Salesforce CLI Command Reference agent Commands
 
@@ -524,7 +518,6 @@ Type: boolean
 
 Optional
 
-7
 
 Salesforce CLI Command Reference agent Commands
 
@@ -585,7 +578,6 @@ an agent. (While not recommended, you can also use the agent spec file to immedi
 We don't recommend this workflow because these types of agents don't use Agent Script, and are thus less flexible and more difficult
 to maintain.)
 
-8
 
 Salesforce CLI Command Reference agent Commands
 
@@ -681,7 +673,6 @@ Override the api version used for api requests made by this command
 
 Type: option
 
-9
 
 Salesforce CLI Command Reference agent Commands
 
@@ -779,7 +770,6 @@ Optional
 Conversational style of the agent, such as how it expresses your brand personality in its messages through word choice, punctuation,
 and sentence structure.
 
-10
 
 Salesforce CLI Command Reference agent Commands
 
@@ -862,7 +852,6 @@ is subject to the applicable Beta Services Terms provided at Agreements and Term
 Authoring bundles are metadata components that contain an agent's Agent Script file. The Agent Script file is the agent's blueprint; it
 fully describes what the agent can do using the Agent Script language.
 
-11
 
 Salesforce CLI Command Reference agent Commands
 
@@ -946,7 +935,6 @@ Optional
 API name of the new authoring bundle; if not specified, the API name is derived from the authoring bundle name (label); the API
 name can't exist in the org.
 
-12
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1018,7 +1006,6 @@ Generate an agent template from a Bot metadata file in your DX project that corr
 
 ```
 
-13
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1097,7 +1084,6 @@ options for you to choose from:
 
     - (Optional) Conversation history: Boilerplate for additional context you can add to the test in the form of a conversation history.
 
-14
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1178,7 +1164,6 @@ Note: This feature is a Beta Service. Customers may opt to try such Beta Service
 is subject to the applicable Beta Services Terms provided at Agreements and Terms
 [(https://www.salesforce.com/company/legal/agreements/).](https://www.salesforce.com/company/legal/agreements/)
 
-15
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1249,7 +1234,6 @@ Type: option
 **`-o`** **|** **`--target-org TARGET-ORG`**
 Required
 
-16
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1323,7 +1307,6 @@ Note: This feature is a Beta Service. Customers may opt to try such Beta Service
 is subject to the applicable Beta Services Terms provided at Agreements and Terms
 [(https://www.salesforce.com/company/legal/agreements/).](https://www.salesforce.com/company/legal/agreements/)
 
-17
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1403,7 +1386,6 @@ API name of the authoring bundle you want to publish; if not specified, the comm
 
 Type: option
 
-18
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1491,7 +1473,6 @@ Optional
 
 Path to the test spec YAML file.
 
-19
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1578,7 +1559,6 @@ Optional
 
 Import flag values from a directory.
 
-20
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1660,7 +1640,6 @@ Import flag values from a directory.
 
 Type: option
 
-21
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1737,7 +1716,6 @@ Resume an agent test that you previously started in your org so you can view the
 This command requires a job ID, which the original "agent test run" command displays when it completes. You can also use the
 --use-most-recent flag to see results for the most recently run agent test.
 
-22
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1821,7 +1799,6 @@ Type: option
 **`-r`** **|** **`--use-most-recent`**
 Optional
 
-23
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1894,7 +1871,6 @@ By default, this command outputs test results in human-readable tables for each 
 whether the test case passed, the expected and actual values, the test score, how long the test took, and more. Use the --result-format
 to display the test results in JSON or Junit format. Use the --output-dir flag to write the results to a file rather than to the terminal.
 
-24
 
 Salesforce CLI Command Reference agent Commands
 
@@ -1985,7 +1961,6 @@ Optional
 
 Format of the agent test run results.
 
-25
 
 Salesforce CLI Command Reference agent Commands
 
@@ -2058,7 +2033,6 @@ Validate an authoring bundle with API name MyAuthoringBundle; use the org with a
 
 ```
 
-26
 
 ### Salesforce CLI Command Reference alias Commands
 
@@ -2130,7 +2104,6 @@ List all aliases currently set on your local computer.
 
 Aliases are global, which means that you can use all the listed aliases in any Salesforce DX project on your computer.
 
-27
 
 Salesforce CLI Command Reference alias Commands
 
@@ -2212,7 +2185,6 @@ Set an alias that contains spaces:
 
 ```
 
-28
 
 Salesforce CLI Command Reference alias Commands
 
@@ -2295,7 +2267,6 @@ Format output as json.
 
 Type: boolean
 
-29
 
 ### Salesforce CLI Command Reference analytics Commands
 
@@ -2360,7 +2331,6 @@ directory:
 
 ```
 
-30
 
 ### Salesforce CLI Command Reference apex Commands
 
@@ -2437,7 +2407,6 @@ Fetch the specified log or given number of most recent logs from the org.
 apex get test
 Display test results for a specific asynchronous test run.
 
-31
 
 Salesforce CLI Command Reference apex Commands
 
@@ -2510,7 +2479,6 @@ The name can be up to 40 characters and must start with a letter.
 
 Type: option
 
-32
 
 Salesforce CLI Command Reference apex Commands
 
@@ -2584,7 +2552,6 @@ Similar to the previous example, but generate the files in the "force-app/main/d
 
 ```
 
-33
 
 Salesforce CLI Command Reference apex Commands
 
@@ -2669,7 +2636,6 @@ Salesforce object to generate a trigger on.
 
 Type: option
 
-34
 
 Salesforce CLI Command Reference apex Commands
 
@@ -2753,7 +2719,6 @@ Import flag values from a directory.
 
 Type: option
 
-35
 
 Salesforce CLI Command Reference apex Commands
 
@@ -2826,7 +2791,6 @@ Display test results for your default org using a test run ID:
 
 ```
 
-36
 
 Salesforce CLI Command Reference apex Commands
 
@@ -2916,7 +2880,6 @@ Display detailed code coverage per test.
 
 Type: boolean
 
-37
 
 Salesforce CLI Command Reference apex Commands
 
@@ -2993,7 +2956,6 @@ Format output as json.
 
 Type: boolean
 
-38
 
 Salesforce CLI Command Reference apex Commands
 
@@ -3076,7 +3038,6 @@ Flags
 
 Optional
 
-39
 
 Salesforce CLI Command Reference apex Commands
 
@@ -3151,7 +3112,6 @@ only by a system administrator.
 NOTE: The testRunCoverage value (JSON and JUnit result formats) is a percentage of the covered lines and total lines from all the Apex
 classes evaluated by the tests in this run.
 
-40
 
 Salesforce CLI Command Reference apex Commands
 
@@ -3258,7 +3218,6 @@ Format output as json.
 
 Type: boolean
 
-41
 
 Salesforce CLI Command Reference apex Commands
 
@@ -3336,7 +3295,6 @@ For multiple classes, repeat the flag for each.
 
 --class-names Class1 --class-names Class2
 
-42
 
 Salesforce CLI Command Reference apex Commands
 
@@ -3413,7 +3371,6 @@ Type: boolean
 
 Optional
 
-43
 
 Salesforce CLI Command Reference apex Commands
 
@@ -3495,7 +3452,6 @@ Apply default colors to noteworthy log lines.
 
 Type: boolean
 
-44
 
 ### Salesforce CLI Command Reference api Commands
 
@@ -3559,7 +3515,6 @@ org:
 
 ```
 
-45
 
 Salesforce CLI Command Reference api Commands
 
@@ -3646,7 +3601,6 @@ File or content with the GraphQL statement. Specify "-" to read from standard in
 
 Type: option
 
-46
 
 Salesforce CLI Command Reference api Commands
 
@@ -3736,7 +3690,6 @@ Import flag values from a directory.
 
 Type: option
 
-47
 
 Salesforce CLI Command Reference api Commands
 
@@ -3810,7 +3763,6 @@ Here's a simple example of a JSON file that contains values for the request URL,
 
 "raw": {
 
-48
 
 ### Salesforce CLI Command Reference cmdt Commands
 
@@ -3874,7 +3826,6 @@ This command creates a metadata file that describes the new custom metadata type
 directory in the current directory. Use the --output-directory to generate the file in the directory that contains the custom metadata type
 metdata files, such as "force-app/main/default/objects/MyCmdt__mdt" for the custom metadata type called MyCmdt.
 
-49
 
 Salesforce CLI Command Reference cmdt Commands
 
@@ -3962,7 +3913,6 @@ Optional
 
 Number of decimal places to use for number or percent fields.
 
-50
 
 Salesforce CLI Command Reference cmdt Commands
 
@@ -4036,7 +3986,6 @@ Generate a protected custom metadata type from a custom object:
 
 ```
 
-51
 
 Salesforce CLI Command Reference cmdt Commands
 
@@ -4127,7 +4076,6 @@ Plural version of the label value; if blank, uses label.
 
 Type: option
 
-52
 
 Salesforce CLI Command Reference cmdt Commands
 
@@ -4197,7 +4145,6 @@ This command creates a metadata file that describes the new custom metadata type
 MyCustomType__mdt directory in the current directory, where MyCustomType is the value of the required --type-name flag. Use the
 --output-directory to generate the file in a package directory with other custom metadata types, such as "force-app/main/default/objects".
 
-53
 
 Salesforce CLI Command Reference cmdt Commands
 
@@ -4279,7 +4226,6 @@ Permissible values are: PackageProtected, Protected, Public
 
 Default value: Public
 
-54
 
 Salesforce CLI Command Reference cmdt Commands
 
@@ -4358,7 +4304,6 @@ Required
 
 API name of the custom metadata type to create a record for; must end in "__mdt".
 
-55
 
 Salesforce CLI Command Reference cmdt Commands
 
@@ -4427,7 +4372,6 @@ Generate new custom metadata type records from a CSV file.
 The custom metadata type must already exist in your project. By default, the Name column is used to determine the record name; use
 the --name-column flag to specify a different column.
 
-56
 
 Salesforce CLI Command Reference cmdt Commands
 
@@ -4510,7 +4454,6 @@ Default value: force-app/main/default/customMetadata
 **`-n`** **|** **`--name-column NAME-COLUMN`**
 Optional
 
-57
 
 ### Salesforce CLI Command Reference code-analyzer Commands
 
@@ -4577,7 +4520,6 @@ This example is identical to the previous one, assuming that `./code-analyzer.ym
 
 ```
 
-58
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -4667,7 +4609,6 @@ engines.eslint.auto_discover_eslint_config value of your `code-analyzer.yml` fil
 
 If you specify `--target` but not `--workspace`, then the current folder '.' is used as your workspace.
 
-59
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -4736,7 +4677,6 @@ Optional
 
 Output file to write the configuration state to. The file is written in YAML format.
 
-60
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -4815,7 +4755,6 @@ The previous example is equivalent to this example:
 
 ```
 
-61
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -4909,7 +4848,6 @@ Use the `--workspace` flag to return a more accurate list of the rules that appl
 a workspace is a single project folder that contains all your files. But it can also consist of one or more folders, one or more files, and
 use glob patterns (wildcards). If you specify this flag multiple times, then your workspace is the sum of the files and folders.
 
-62
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -4975,7 +4913,6 @@ Path to the configuration file used to customize the engines and rules.
 Code Analyzer has an internal default configuration for its rule and engine properties. If you want to override these defaults, you can
 create a Code Analyzer configuration file.
 
-63
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -5040,7 +4977,6 @@ If you want to preview the list of rules before you actually run them, use the `
 
 We're continually improving Salesforce Code Analyzer. Tell us what you think! Give feedback at https://sfdc.co/CodeAnalyzerFeedback.
 
-64
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -5144,7 +5080,6 @@ Flags
 
 Optional
 
-65
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -5214,7 +5149,6 @@ Optional
 
 Severity level of a found violation that must be met or exceeded to cause this command to fail with a non-zero exit code.
 
-66
 
 Salesforce CLI Command Reference code-analyzer Commands
 
@@ -5283,7 +5217,6 @@ takes your customizations into account.
 
 Type: option
 
-67
 
 ### Salesforce CLI Command Reference community Commands community Commands
 
@@ -5343,7 +5276,6 @@ Create an Experience Cloud site using template 'Customer Service' and URL path p
 
 ```
 
-68
 
 Salesforce CLI Command Reference community Commands
 
@@ -5426,7 +5358,6 @@ Type: option
 **`-o`** **|** **`--target-org TARGET-ORG`**
 Required
 
-69
 
 Salesforce CLI Command Reference community Commands
 
@@ -5507,7 +5438,6 @@ Optional
 
 Override the api version used for api requests made by this command
 
-70
 
 Salesforce CLI Command Reference community Commands
 
@@ -5580,7 +5510,6 @@ Name of the Experience Builder site to publish.
 
 Type: option
 
-71
 
 ### Salesforce CLI Command Reference config Commands
 
@@ -5652,7 +5581,6 @@ Get multiple configuration variables and display whether they're set locally or 
 
 ```
 
-72
 
 Salesforce CLI Command Reference config Commands
 
@@ -5732,7 +5660,6 @@ Optional
 
 Format output as json.
 
-73
 
 Salesforce CLI Command Reference config Commands
 
@@ -5807,7 +5734,6 @@ Set the global target-org and target-dev-hub configuration variables using alias
 
 ```
 
-74
 
 Salesforce CLI Command Reference config Commands
 
@@ -5886,7 +5812,6 @@ Format output as json.
 
 Type: boolean
 
-75
 
 ### Salesforce CLI Command Reference data Commands
 
@@ -5954,7 +5879,6 @@ Bulk import records into a Salesforce object from a CSV file. Uses Bulk API 2.0.
 data import resume
 Resume a bulk import job that you previously started. Uses Bulk API 2.0.
 
-76
 
 Salesforce CLI Command Reference data Commands
 
@@ -6015,7 +5939,6 @@ Get results from a bulk ingest job; use the org with alias "my-scratch":
 
 ```
 
-77
 
 Salesforce CLI Command Reference data Commands
 
@@ -6097,7 +6020,6 @@ Give the file a different filename after it's uploaded to the org with alias "my
 
 ```
 
-78
 
 Salesforce CLI Command Reference data Commands
 
@@ -6176,7 +6098,6 @@ Create and insert a record into a Salesforce or Tooling API object.
 
 You must specify a value for all required fields of the object.
 
-79
 
 Salesforce CLI Command Reference data Commands
 
@@ -6265,7 +6186,6 @@ Type: option
 **`-v`** **|** **`--values VALUES`**
 Required
 
-80
 
 Salesforce CLI Command Reference data Commands
 
@@ -6344,7 +6264,6 @@ Required
 
 Username or alias of the target org. Not required if the `target-org` configuration variable is already set.
 
-81
 
 Salesforce CLI Command Reference data Commands
 
@@ -6421,7 +6340,6 @@ marks, delimited by spaces. Enclose values that contain spaces in single quotes.
 
 This command deletes a record from Salesforce objects by default. Use the --use-tooling-api flag to delete from a Tooling API object.
 
-82
 
 Salesforce CLI Command Reference data Commands
 
@@ -6510,7 +6428,6 @@ ID of the record you’re deleting.
 
 Type: option
 
-83
 
 Salesforce CLI Command Reference data Commands
 
@@ -6588,7 +6505,6 @@ Username or alias of the target org. Not required if the "target-org" configurat
 
 Type: option
 
-84
 
 Salesforce CLI Command Reference data Commands
 
@@ -6662,7 +6578,6 @@ minutes, the command ends and displays a job ID. Use the org with alias "my-scra
 
 ```
 
-85
 
 Salesforce CLI Command Reference data Commands
 
@@ -6749,7 +6664,6 @@ Include records that have been soft-deleted due to a merge or delete. By default
 
 Type: boolean
 
-86
 
 Salesforce CLI Command Reference data Commands
 
@@ -6826,7 +6740,6 @@ Resume the most recently-run bulk export job:
 
 ```
 
-87
 
 Salesforce CLI Command Reference data Commands
 
@@ -6896,7 +6809,6 @@ file when you import the data into an org.
 The SOQL query can return a maximum of 2,000 records. For more information, see the REST API Developer Guide.
 (https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/resources_composite_sobject_tree.htm).
 
-88
 
 Salesforce CLI Command Reference data Commands
 
@@ -6985,7 +6897,6 @@ Type: boolean
 **`-x`** **|** **`--prefix PREFIX`**
 Optional
 
-89
 
 Salesforce CLI Command Reference data Commands
 
@@ -7066,7 +6977,6 @@ Optional
 
 Format output as json.
 
-90
 
 Salesforce CLI Command Reference data Commands
 
@@ -7142,7 +7052,6 @@ Bulk import records into a Salesforce object from a CSV file. Uses Bulk API 2.0.
 
 You can use this command to import millions of records into the object from a file in comma-separated values (CSV) format.
 
-91
 
 Salesforce CLI Command Reference data Commands
 
@@ -7222,7 +7131,6 @@ Required
 
 Username or alias of the target org. Not required if the `target-org` configuration variable is already set.
 
-92
 
 Salesforce CLI Command Reference data Commands
 
@@ -7309,7 +7217,6 @@ Use the job ID of the bulk import job that was most recently run.
 
 Type: boolean
 
-93
 
 Salesforce CLI Command Reference data Commands
 
@@ -7385,7 +7292,6 @@ Username or alias of the target org. Not required if the `target-org` configurat
 
 Type: option
 
-94
 
 Salesforce CLI Command Reference data Commands
 
@@ -7455,7 +7361,6 @@ Specify a SOQL query at the command line; the command uses your default org:
 
 ```
 
-95
 
 Salesforce CLI Command Reference data Commands
 
@@ -7544,7 +7449,6 @@ Optional
 
 Include deleted records. By default, deleted records are not returned.
 
-96
 
 Salesforce CLI Command Reference data Commands
 
@@ -7624,7 +7528,6 @@ Import flag values from a directory.
 
 Type: option
 
-97
 
 Salesforce CLI Command Reference data Commands
 
@@ -7702,7 +7605,6 @@ Flags
 
 Optional
 
-98
 
 Salesforce CLI Command Reference data Commands
 
@@ -7775,7 +7677,6 @@ every line in the CSV file must be an ID of the record you want to update. The C
 file doesn't currently exist in the Salesforce object, the command fails. Consider using "sf data upsert bulk" if you also want to insert new
 records.
 
-99
 
 Salesforce CLI Command Reference data Commands
 
@@ -7855,7 +7756,6 @@ Username or alias of the target org. Not required if the `target-org` configurat
 
 Type: option
 
-100
 
 Salesforce CLI Command Reference data Commands
 
@@ -7943,7 +7843,6 @@ Optional
 
 Format output as json.
 
-101
 
 Salesforce CLI Command Reference data Commands
 
@@ -8018,7 +7917,6 @@ Aliases for **`data update record`**
 
 ```
 
-102
 
 Salesforce CLI Command Reference data Commands
 
@@ -8096,7 +7994,6 @@ Time to wait for the command to finish, in minutes.
 
 Type: option
 
-103
 
 Salesforce CLI Command Reference data Commands
 
@@ -8177,7 +8074,6 @@ Required
 
 CSV file that contains the IDs of the records to update or delete.
 
-104
 
 Salesforce CLI Command Reference data Commands
 
@@ -8252,7 +8148,6 @@ Resume the most recently run bulk upsert job for an org with alias my-scratch:
 
 ```
 
-105
 
 ### Salesforce CLI Command Reference dev Commands
 
@@ -8335,7 +8230,6 @@ code.
 dev convert messages
 Convert a .json messages file into Markdown.
 
-106
 
 Salesforce CLI Command Reference dev Commands
 
@@ -8413,7 +8307,6 @@ Type: option
 
 Default value: messages
 
-107
 
 Salesforce CLI Command Reference dev Commands
 
@@ -8491,7 +8384,6 @@ Filename to convert.
 
 Type: option
 
-108
 
 Salesforce CLI Command Reference dev Commands
 
@@ -8559,7 +8451,6 @@ Type: option
 
 Generate a new sf command.
 
-109
 
 Salesforce CLI Command Reference dev Commands
 
@@ -8645,7 +8536,6 @@ Generate a unit test file for the command.
 
 Type: boolean
 
-110
 
 Salesforce CLI Command Reference dev Commands
 
@@ -8713,7 +8603,6 @@ plug-in's npm package dependencies using yarn install, and updates the package p
 
 When the command completes, your new plugin contains the source, message, and test files for a sample "sf hello world" command.
 
-111
 
 ### Salesforce CLI Command Reference doctor Commands
 
@@ -8786,7 +8675,6 @@ Run CLI doctor diagnostics:
 
 ```
 
-112
 
 ### Salesforce CLI Command Reference flow Commands
 
@@ -8864,7 +8752,6 @@ Display test results for a specific asynchronous test run.
 flow run test
 Invoke flow tests in an org.
 
-113
 
 Salesforce CLI Command Reference flow Commands
 
@@ -8952,7 +8839,6 @@ Override the api version used for api requests made by this command
 
 Type: option
 
-114
 
 Salesforce CLI Command Reference flow Commands
 
@@ -9026,7 +8912,6 @@ By default, "flow run test" runs asynchronously and immediately returns a test r
 haven't finished by the end of the wait time, the command displays a test run ID. Use the "flow get test --test-run-id" command to get
 the results.
 
-115
 
 Salesforce CLI Command Reference flow Commands
 
@@ -9117,7 +9002,6 @@ Type: option
 **`-r`** **|** **`--result-format RESULT-FORMAT`**
 Optional
 
-116
 
 Salesforce CLI Command Reference flow Commands
 
@@ -9195,7 +9079,6 @@ Not available for flow tests.
 
 Type: option
 
-117
 
 ### Salesforce CLI Command Reference force Commands
 
@@ -9259,7 +9142,6 @@ Bulk delete records from a custom object in an org with alias my-scratch and wai
 
 ```
 
-118
 
 Salesforce CLI Command Reference force Commands
 
@@ -9331,7 +9213,6 @@ View the status of a bulk data load job or batch. Uses Bulk API 1.0.
 
 Run this command using the job ID or batch ID returned from the "sf force data bulk delete" or "sf force data bulk upsert" commands.
 
-119
 
 Salesforce CLI Command Reference force Commands
 
@@ -9414,7 +9295,6 @@ Bulk upsert records to an org from a CSV file. Uses Bulk API 1.0.
 
 An upsert refers to inserting a record into a Salesforce object if the record doesn't already exist, or updating it if it does exist.
 
-120
 
 Salesforce CLI Command Reference force Commands
 
@@ -9497,7 +9377,6 @@ Type: option
 **`-f`** **|** **`--file FILE`**
 Required
 
-121
 
 Salesforce CLI Command Reference force Commands
 
@@ -9570,7 +9449,6 @@ path to Lightning web component .js file to create a test for
 
 Type: string
 
-122
 
 Salesforce CLI Command Reference force Commands
 
@@ -9641,7 +9519,6 @@ install Jest unit testing tools for Lightning Web Components.
 
 ```
 
-123
 
 ### Salesforce CLI Command Reference info Commands
 
@@ -9721,7 +9598,6 @@ Optional
 
 Format output as json.
 
-124
 
 ### Salesforce CLI Command Reference lightning Commands
 
@@ -9789,7 +9665,6 @@ Generate the metadata files for a Lightning app bundle called "myapp" in the cur
 
 ```
 
-125
 
 Salesforce CLI Command Reference lightning Commands
 
@@ -9872,7 +9747,6 @@ Aliases for **`lightning generate app`**
 
 ```
 
-126
 
 Salesforce CLI Command Reference lightning Commands
 
@@ -9956,7 +9830,6 @@ Optional
 
 Template to use for file creation.
 
-127
 
 Salesforce CLI Command Reference lightning Commands
 
@@ -10035,7 +9908,6 @@ Similar to previous example, but generate the files in the "force-app/main/defau
 
 ```
 
-128
 
 Salesforce CLI Command Reference lightning Commands
 
@@ -10115,7 +9987,6 @@ Aliases for **`lightning generate event`**
 
 Generate a Lightning Interface.
 
-129
 
 Salesforce CLI Command Reference lightning Commands
 
@@ -10195,7 +10066,6 @@ Type: option
 
 Default value: .
 
-130
 
 Salesforce CLI Command Reference lightning Commands
 
@@ -10276,7 +10146,6 @@ Type: option
 **`-t`** **|** **`--template TEMPLATE`**
 Optional
 
-131
 
 ### Salesforce CLI Command Reference logic Commands
 
@@ -10342,7 +10211,6 @@ is subject to the applicable Beta Services Terms provided at Agreements and Term
 When you run 'sf logic run test' to test Apex classes and Flows asynchronously, it returns a test run ID. Use that ID with this command
 to see the results.
 
-132
 
 Salesforce CLI Command Reference logic Commands
 
@@ -10428,7 +10296,6 @@ Optional
 
 Display detailed code coverage per test.
 
-133
 
 Salesforce CLI Command Reference logic Commands
 
@@ -10495,7 +10362,6 @@ flag to see detailed coverage results for each test method run.
 You must have the "View All Data" org system permission to use this command. The permission is disabled by default and can be enabled
 only by a system administrator.
 
-134
 
 Salesforce CLI Command Reference logic Commands
 
@@ -10589,7 +10455,6 @@ Optional
 
 Directory in which to store test run files.
 
-135
 
 Salesforce CLI Command Reference logic Commands
 
@@ -10661,7 +10526,6 @@ Comma-separated list of test names to run. Can include Apex test classes and Flo
 
 If you specify --tests, you can't specify --class-names or --suite-names
 
-136
 
 ### Salesforce CLI Command Reference org Commands
 
@@ -10733,7 +10597,6 @@ Create a scratch org.
 org create shape
 Create a scratch org configuration (shape) based on the specified source org.
 
-137
 
 Salesforce CLI Command Reference org Commands
 
@@ -10797,7 +10660,6 @@ List scratch org snapshots.
 org list sobject record-counts
 Display record counts for the specified standard or custom objects.
 
-138
 
 Salesforce CLI Command Reference org Commands
 
@@ -10862,7 +10724,6 @@ Assign the Dreamhouse permission set to the original admin user of the org with 
 
 ```
 
-139
 
 Salesforce CLI Command Reference org Commands
 
@@ -10940,7 +10801,6 @@ command. Don't use the value of the Alias field of the User Salesforce object fo
 To assign multiple permission sets, either set multiple --name flags or a single --name flag with multiple names separated by spaces.
 Enclose names that contain spaces in one set of double quotes. The same syntax applies to --on-behalf-of.
 
-140
 
 Salesforce CLI Command Reference org Commands
 
@@ -11026,7 +10886,6 @@ Type: option
 
 Create a sandbox org.
 
-141
 
 Salesforce CLI Command Reference org Commands
 
@@ -11112,7 +10971,6 @@ in the development process. See
 <https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_sandbox_definition.htm> for all the options
 you can specify in the definition file.
 
-142
 
 Salesforce CLI Command Reference org Commands
 
@@ -11188,7 +11046,6 @@ Type: option
 
 Optional
 
-143
 
 Salesforce CLI Command Reference org Commands
 
@@ -11264,7 +11121,6 @@ This is a good use case for disabling source tracking in the sandbox.
 
 Type: boolean
 
-144
 
 Salesforce CLI Command Reference org Commands
 
@@ -11341,7 +11197,6 @@ Create a preview Enterprise edition scratch org; for use only during Salesforce 
 
 ```
 
-145
 
 Salesforce CLI Command Reference org Commands
 
@@ -11422,7 +11277,6 @@ Type: option
 **`-v`** **|** **`--target-dev-hub TARGET-DEV-HUB`**
 Required
 
-146
 
 Salesforce CLI Command Reference org Commands
 
@@ -11498,7 +11352,6 @@ Override the api version used for api requests made by this command
 
 Type: option
 
-147
 
 Salesforce CLI Command Reference org Commands
 
@@ -11584,7 +11437,6 @@ Optional
 
 Email address that will be applied to the org's admin user. Overrides the value of the "adminEmail" option in the definition file, if set.
 
-148
 
 Salesforce CLI Command Reference org Commands
 
@@ -11662,7 +11514,6 @@ Username or alias of the target org. Not required if the `target-org` configurat
 
 Type: option
 
-149
 
 Salesforce CLI Command Reference org Commands
 
@@ -11745,7 +11596,6 @@ Username or alias of the Dev Hub org. Not required if the `target-dev-hub` confi
 
 Type: option
 
-150
 
 Salesforce CLI Command Reference org Commands
 
@@ -11815,7 +11665,6 @@ If you don't customize your new user, this command creates a user with the follo
 
     - The user has no password.
 
-151
 
 Salesforce CLI Command Reference org Commands
 
@@ -11900,7 +11749,6 @@ Set an alias for the created username to reference in other CLI commands.
 
 Type: option
 
-152
 
 Salesforce CLI Command Reference org Commands
 
@@ -11965,7 +11813,6 @@ Run "sf org list" to view all your orgs, including sandboxes, and their aliases.
 
 Both the sandbox and the associated production org must already be authenticated with the CLI to successfully delete the sandbox.
 
-153
 
 Salesforce CLI Command Reference org Commands
 
@@ -12046,7 +11893,6 @@ Salesforce CLI marks the org for deletion in the Dev Hub org and then deletes al
 Specify a scratch org with either the username or the alias you gave the scratch org when you created it. Run "sf org list" to view all your
 orgs, including scratch orgs, and their aliases.
 
-154
 
 Salesforce CLI Command Reference org Commands
 
@@ -12126,7 +11972,6 @@ A source org can have only one active org shape. If you try to create an org sha
 shape is marked inactive and replaced by a new active shape. If you don’t want to create scratch orgs based on this shape, you can delete
 the org shape.
 
-155
 
 Salesforce CLI Command Reference org Commands
 
@@ -12208,7 +12053,6 @@ Delete a scratch org snapshot.
 Dev Hub admins can delete any snapshot. Users can delete only their own snapshots, unless a Dev Hub admin gives the user Modify All
 permission, which works only with the Salesforce license.
 
-156
 
 Salesforce CLI Command Reference org Commands
 
@@ -12290,7 +12134,6 @@ Aliases for **`org delete snapshot`**
 
 ```
 
-157
 
 Salesforce CLI Command Reference org Commands
 
@@ -12368,7 +12211,6 @@ can be used to access an org. Don't share or distribute this URL or token.
 
 Including --verbose displays the sfdxAuthUrl property only if you authenticated to the org using "org login web" (not "org login jwt").
 
-158
 
 Salesforce CLI Command Reference org Commands
 
@@ -12453,7 +12295,6 @@ Display information about a Salesforce user.
 Output includes the profile name, org ID, access token, instance URL, login URL, and alias if applicable. The displayed alias is local and
 different from the Alias field of the User sObject record of the new user, which you set in the Setup UI.
 
-159
 
 Salesforce CLI Command Reference org Commands
 
@@ -12531,7 +12372,6 @@ setting in the org's local configuration file so that source tracking operations
 This command throws an error if the org doesn't support tracking. Examples of orgs that don't support source tracking include Developer
 Edition orgs, production orgs, Partial Copy sandboxes, and Full sandboxes.
 
-160
 
 Salesforce CLI Command Reference org Commands
 
@@ -12612,7 +12452,6 @@ in the generated password:
 
 4 - lower and upper case letters and symbols only
 
-161
 
 Salesforce CLI Command Reference org Commands
 
@@ -12699,7 +12538,6 @@ Level of password complexity or strength; the higher the value, the stronger the
 
 Type: option
 
-162
 
 Salesforce CLI Command Reference org Commands
 
@@ -12778,7 +12616,6 @@ Username or alias of the Dev Hub org. Not required if the `target-dev-hub` confi
 
 Type: option
 
-163
 
 Salesforce CLI Command Reference org Commands
 
@@ -12867,7 +12704,6 @@ List more information about each org.
 
 Type: boolean
 
-164
 
 Salesforce CLI Command Reference org Commands
 
@@ -12946,7 +12782,6 @@ Format output as json.
 
 Type: boolean
 
-165
 
 Salesforce CLI Command Reference org Commands
 
@@ -13029,7 +12864,6 @@ Type: option
 
 Optional
 
-166
 
 Salesforce CLI Command Reference org Commands
 
@@ -13109,7 +12943,6 @@ Import flag values from a directory.
 
 Type: option
 
-167
 
 Salesforce CLI Command Reference org Commands
 
@@ -13186,7 +13019,6 @@ Display information about all known and enabled metadata types in the org with a
 
 ```
 
-168
 
 Salesforce CLI Command Reference org Commands
 
@@ -13264,7 +13096,6 @@ List all org shapes you’ve created.
 The output includes the alias, username, and ID of the source org, the status of the org shape creation, and more. Use the org ID to
 update your scratch org configuration file so you can create a scratch org based on this org shape.
 
-169
 
 Salesforce CLI Command Reference org Commands
 
@@ -13348,7 +13179,6 @@ Flags
 
 Optional
 
-170
 
 Salesforce CLI Command Reference org Commands
 
@@ -13428,7 +13258,6 @@ Display record counts for the Account and Lead objects for the org with alias "m
 
 ```
 
-171
 
 Salesforce CLI Command Reference org Commands
 
@@ -13505,7 +13334,6 @@ List the locally-authenticated users of your default org:
 
 ```
 
-172
 
 Salesforce CLI Command Reference org Commands
 
@@ -13583,7 +13411,6 @@ Authorize an org on https://mycompany.my.salesforce.com; the command prompts you
 
 ```
 
-173
 
 Salesforce CLI Command Reference org Commands
 
@@ -13658,7 +13485,6 @@ Don't prompt for confirmation.
 
 Type: boolean
 
-174
 
 Salesforce CLI Command Reference org Commands
 
@@ -13730,7 +13556,6 @@ Set the org as the default Dev Hub and give it an alias:
 
 ```
 
-175
 
 Salesforce CLI Command Reference org Commands
 
@@ -13811,7 +13636,6 @@ Type: boolean
 **`-s`** **|** **`--set-default`**
 Optional
 
-176
 
 Salesforce CLI Command Reference org Commands
 
@@ -13883,7 +13707,6 @@ Authorize an org using the SFDX authorization URL in the files/authFile.json fil
 
 ```
 
-177
 
 Salesforce CLI Command Reference org Commands
 
@@ -13958,7 +13781,6 @@ Alias for the org.
 
 Type: option
 
-178
 
 Salesforce CLI Command Reference org Commands
 
@@ -14034,7 +13856,6 @@ Use --browser to specify a specific browser, such as Google Chrome:
 
 ```
 
-179
 
 Salesforce CLI Command Reference org Commands
 
@@ -14115,7 +13936,6 @@ Set the authenticated org as the default that all org-related commands run again
 
 Type: boolean
 
-180
 
 Salesforce CLI Command Reference org Commands
 
@@ -14184,7 +14004,6 @@ the CLI or the Salesforce UI.
 Use the --client-app flag to log out of the link you previously created between an authenticated user and a connected app or external
 client app; you create these links with "org login web --client-app". Run "org display" to get the list of client app names.
 
-181
 
 Salesforce CLI Command Reference org Commands
 
@@ -14270,7 +14089,6 @@ Don't prompt for confirmation.
 
 Type: boolean
 
-182
 
 Salesforce CLI Command Reference org Commands
 
@@ -14353,7 +14171,6 @@ Open local Agent metadata (Bot) in Agent Builder:
 
 ```
 
-183
 
 Salesforce CLI Command Reference org Commands
 
@@ -14436,7 +14253,6 @@ Path to ApexPage, FlexiPage, Flow, or Agent metadata to open in the associated B
 
 Type: option
 
-184
 
 Salesforce CLI Command Reference org Commands
 
@@ -14521,7 +14337,6 @@ Type: option
 
 Optional
 
-185
 
 Salesforce CLI Command Reference org Commands
 
@@ -14593,7 +14408,6 @@ defintion file. The default target org is the production org, so you don't need 
 
 ```
 
-186
 
 Salesforce CLI Command Reference org Commands
 
@@ -14681,7 +14495,6 @@ with the --name flag, must both be associated with the production org (--target-
 
 You can specify either --source-sandbox-name or --source-id when refreshing an existing sandbox, but not both.
 
-187
 
 Salesforce CLI Command Reference org Commands
 
@@ -14756,7 +14569,6 @@ Type: boolean
 
 Check the status of a sandbox creation, and log in to it if it's ready.
 
-188
 
 Salesforce CLI Command Reference org Commands
 
@@ -14838,7 +14650,6 @@ Job ID of the incomplete sandbox creation that you want to check the status of.
 
 The job ID is valid for 24 hours after you start the sandbox creation.
 
-189
 
 Salesforce CLI Command Reference org Commands
 
@@ -14916,7 +14727,6 @@ Import flag values from a directory.
 
 Type: option
 
-190
 
 ### Salesforce CLI Command Reference package Commands
 
@@ -14980,7 +14790,6 @@ List the org’s installed packages.
 package list
 List all packages in the Dev Hub org.
 
-191
 
 Salesforce CLI Command Reference package Commands
 
@@ -15040,7 +14849,6 @@ package versions or unlocked packages.
 package version update
 Update a package version.
 
-192
 
 Salesforce CLI Command Reference package Commands
 
@@ -15121,7 +14929,6 @@ Optional
 
 Override the api version used for api requests made by this command
 
-193
 
 Salesforce CLI Command Reference package Commands
 
@@ -15197,7 +15004,6 @@ Specific released patch version to be converted.
 
 Specify a released patch version as major.minor.patch to convert to a second-generation managed package version.
 
-194
 
 Salesforce CLI Command Reference package Commands
 
@@ -15277,7 +15083,6 @@ Type: option
 **`-v`** **|** **`--target-dev-hub TARGET-DEV-HUB`**
 Required
 
-195
 
 Salesforce CLI Command Reference package Commands
 
@@ -15355,7 +15160,6 @@ Optional
 
 Active Dev Hub user designated to receive email notifications for package errors.
 
-196
 
 Salesforce CLI Command Reference package Commands
 
@@ -15436,7 +15240,6 @@ Override the api version used for api requests made by this command
 
 Type: option
 
-197
 
 Salesforce CLI Command Reference package Commands
 
@@ -15514,7 +15317,6 @@ Flags
 
 Optional
 
-198
 
 Salesforce CLI Command Reference package Commands
 
@@ -15592,7 +15394,6 @@ ID (starts with 04t) or alias of the package version to install.
 
 Type: option
 
-199
 
 Salesforce CLI Command Reference package Commands
 
@@ -15665,7 +15466,6 @@ Retrieve the status of a package installation request with the specified ID on y
 
 ```
 
-200
 
 Salesforce CLI Command Reference package Commands
 
@@ -15749,7 +15549,6 @@ List the installed packages in the org with username me@example.com:
 
 ```
 
-201
 
 Salesforce CLI Command Reference package Commands
 
@@ -15833,7 +15632,6 @@ Optional
 
 Format output as json.
 
-202
 
 Salesforce CLI Command Reference package Commands
 
@@ -15917,7 +15715,6 @@ Flags
 
 Optional
 
-203
 
 Salesforce CLI Command Reference package Commands
 
@@ -15997,7 +15794,6 @@ List all package push upgrade with a status Succeeded:
 
 ```
 
-204
 
 Salesforce CLI Command Reference package Commands
 
@@ -16081,7 +15877,6 @@ Display only push upgrade requests for package migrations.
 
 Type: boolean
 
-205
 
 Salesforce CLI Command Reference package Commands
 
@@ -16163,7 +15958,6 @@ Required
 ID of the package push request (starts with 0DV). This ID is returned after the package push-upgrade schedule command completes
 successfully.
 
-206
 
 Salesforce CLI Command Reference package Commands
 
@@ -16246,7 +16040,6 @@ Import flag values from a directory.
 
 Type: option
 
-207
 
 Salesforce CLI Command Reference package Commands
 
@@ -16323,7 +16116,6 @@ pushing a 2GP package to orgs with the 1GP version installed.
 
 Type: boolean
 
-208
 
 Salesforce CLI Command Reference package Commands
 
@@ -16408,7 +16200,6 @@ Number of minutes to wait for uninstall status.
 
 Type: option
 
-209
 
 Salesforce CLI Command Reference package Commands
 
@@ -16490,7 +16281,6 @@ Type: option
 **`-i`** **|** **`--request-id REQUEST-ID`**
 Required
 
-210
 
 Salesforce CLI Command Reference package Commands
 
@@ -16572,7 +16362,6 @@ Override the api version used for api requests made by this command
 
 Type: option
 
-211
 
 Salesforce CLI Command Reference package Commands
 
@@ -16649,7 +16438,6 @@ Aliases for **`package update`**
 
 Create a package version in the Dev Hub org.
 
-212
 
 Salesforce CLI Command Reference package Commands
 
@@ -16737,7 +16525,6 @@ Required
 
 Username or alias of the Dev Hub org. Not required if the `target-dev-hub` configuration variable is already set.
 
-213
 
 Salesforce CLI Command Reference package Commands
 
@@ -16811,7 +16598,6 @@ Path to the directory that contains the contents of the package.
 
 Type: option
 
-214
 
 Salesforce CLI Command Reference package Commands
 
@@ -16903,7 +16689,6 @@ Type: option
 
 Optional
 
-215
 
 Salesforce CLI Command Reference package Commands
 
@@ -16979,7 +16764,6 @@ Aliases for **`package version create`**
 
 ```
 
-216
 
 Salesforce CLI Command Reference package Commands
 
@@ -17069,7 +16853,6 @@ Optional
 
 Override the api version used for api requests made by this command
 
-217
 
 Salesforce CLI Command Reference package Commands
 
@@ -17147,7 +16930,6 @@ Retrieve details about the specified package version creation request in the Dev
 
 ```
 
-218
 
 Salesforce CLI Command Reference package Commands
 
@@ -17230,7 +17012,6 @@ Delete a package version with the specified ID using the Dev Hub org with userna
 
 ```
 
-219
 
 Salesforce CLI Command Reference package Commands
 
@@ -17314,7 +17095,6 @@ Similar to previous example, but display the output in DOT code:
 
 ```
 
-220
 
 Salesforce CLI Command Reference package Commands
 
@@ -17403,7 +17183,6 @@ Display both the package version ID (starts with 04t) and the version number (ma
 
 Type: boolean
 
-221
 
 Salesforce CLI Command Reference package Commands
 
@@ -17490,7 +17269,6 @@ Required
 ID or alias of the package version (starts with 04t) or the package version create request (starts with 08c) to display the dependency
 graph for.
 
-222
 
 Salesforce CLI Command Reference package Commands
 
@@ -17570,7 +17348,6 @@ List package versions that were modified today in your default Dev Hub org; show
 
 ```
 
-223
 
 Salesforce CLI Command Reference package Commands
 
@@ -17662,7 +17439,6 @@ Filter the list output to display only converted package version.
 
 Type: boolean
 
-224
 
 Salesforce CLI Command Reference package Commands
 
@@ -17735,7 +17511,6 @@ Promote the package version with the specified ID to released; uses your default
 
 ```
 
-225
 
 Salesforce CLI Command Reference package Commands
 
@@ -17819,7 +17594,6 @@ Aliases for **`package version promote`**
 
 Retrieve details about a package version in the Dev Hub org.
 
-226
 
 Salesforce CLI Command Reference package Commands
 
@@ -17907,7 +17681,6 @@ Aliases for **`package version report`**
 
 ```
 
-227
 
 Salesforce CLI Command Reference package Commands
 
@@ -17985,7 +17758,6 @@ Subscriber package version ID (starts with 04t).
 
 Type: option
 
-228
 
 Salesforce CLI Command Reference package Commands
 
@@ -18066,7 +17838,6 @@ Username or alias of the Dev Hub org. Not required if the `target-dev-hub` confi
 
 Type: option
 
-229
 
 ### Salesforce CLI Command Reference package1 Commands
 
@@ -18136,7 +17907,6 @@ Commands to develop first-generation managed and unmanaged packages.
 package1 version create
 Create a first-generation package version in the release org.
 
-230
 
 Salesforce CLI Command Reference package1 Commands
 
@@ -18216,7 +17986,6 @@ Optional
 
 Override the api version used for api requests made by this command
 
-231
 
 Salesforce CLI Command Reference package1 Commands
 
@@ -18289,7 +18058,6 @@ Optional
 
 Minutes to wait for the package version to be created (default: 2 minutes).
 
-232
 
 Salesforce CLI Command Reference package1 Commands
 
@@ -18368,7 +18136,6 @@ ID of the PackageUploadRequest (starts with 0HD).
 
 Type: option
 
-233
 
 Salesforce CLI Command Reference package1 Commands
 
@@ -18452,7 +18219,6 @@ Type: option
 
 ```
 
-234
 
 ### Salesforce CLI Command Reference plugins Commands
 
@@ -18535,7 +18301,6 @@ Type: option
 
 Find and manage plugins
 
-235
 
 ### Salesforce CLI Command Reference project Commands
 
@@ -18604,7 +18369,6 @@ Quickly deploy a validated deployment to an org.
 project deploy pipeline report (Beta)
 Check the status of a pipeline deploy operation.
 
-236
 
 Salesforce CLI Command Reference project Commands
 
@@ -18667,7 +18431,6 @@ To convert files from the source format back to the metadata format, run "sf pro
 To convert multiple metadata components, either set multiple --metadata <name> flags or a single --metadata flag with multiple names
 separated by spaces. Enclose names that contain spaces in one set of double quotes. The same syntax applies to --source-dir.
 
-237
 
 Salesforce CLI Command Reference project Commands
 
@@ -18751,7 +18514,6 @@ Root of directory or zip file of metadata formatted files to convert.
 The supplied paths can be to a single file (in which case the operation is applied to only one file) or to a folder (in which case the
 operation is applied to all metadata types in the directory and its sub-directories).
 
-238
 
 Salesforce CLI Command Reference project Commands
 
@@ -18830,7 +18592,6 @@ Import flag values from a directory.
 
 Type: option
 
-239
 
 Salesforce CLI Command Reference project Commands
 
@@ -18904,7 +18665,6 @@ Aliases for **`project convert source`**
 
 ```
 
-240
 
 Salesforce CLI Command Reference project Commands
 
@@ -18983,7 +18743,6 @@ Required
 
 Behavior to enable; the values correspond to the possible values of the "sourceBehaviorOption" option in the "sfdx-project.json" file.
 
-241
 
 Salesforce CLI Command Reference project Commands
 
@@ -19066,7 +18825,6 @@ Delete the Apex source files in a directory and the corresponding components fro
 
 ```
 
-242
 
 Salesforce CLI Command Reference project Commands
 
@@ -19145,7 +18903,6 @@ Optional
 
 Number of minutes to wait for the command to finish.
 
-243
 
 Salesforce CLI Command Reference project Commands
 
@@ -19221,7 +18978,6 @@ Optional
 
 Source file paths to delete.
 
-244
 
 Salesforce CLI Command Reference project Commands
 
@@ -19295,7 +19051,6 @@ Format output as json.
 
 Type: boolean
 
-245
 
 Salesforce CLI Command Reference project Commands
 
@@ -19376,7 +19131,6 @@ Flags
 
 Optional
 
-246
 
 Salesforce CLI Command Reference project Commands
 
@@ -19453,7 +19207,6 @@ the cancellation, run "sf project deploy resume". To check the status of the can
 
 Type: option
 
-247
 
 Salesforce CLI Command Reference project Commands
 
@@ -19527,7 +19280,6 @@ Optional
 
 Run the command asynchronously.
 
-248
 
 Salesforce CLI Command Reference project Commands
 
@@ -19603,7 +19355,6 @@ Note: This feature is a Beta Service. Customers may opt to try such Beta Service
 is subject to the applicable Beta Services Terms provided at Agreements and Terms
 [(https://www.salesforce.com/company/legal/agreements/).](https://www.salesforce.com/company/legal/agreements/)
 
-249
 
 Salesforce CLI Command Reference project Commands
 
@@ -19675,7 +19426,6 @@ Type: boolean
 
 Resume watching a pipeline deploy operation.
 
-250
 
 Salesforce CLI Command Reference project Commands
 
@@ -19750,7 +19500,6 @@ Optional
 
 Use the job ID of the most recent deploy operation.
 
-251
 
 Salesforce CLI Command Reference project Commands
 
@@ -19826,7 +19575,6 @@ Deploy all changes in the main branch to the release environment:
 
 ```
 
-252
 
 Salesforce CLI Command Reference project Commands
 
@@ -19900,7 +19648,6 @@ Valid values are:
       - NoTestRun — No tests are run. This test level applies only to deployments to development environments, such as sandbox,
 Developer Edition, or trial orgs. This test level is the default for development environments.
 
-253
 
 Salesforce CLI Command Reference project Commands
 
@@ -19976,7 +19723,6 @@ Note: This feature is a Beta Service. Customers may opt to try such Beta Service
 is subject to the applicable Beta Services Terms provided at Agreements and Terms
 [(https://www.salesforce.com/company/legal/agreements/).](https://www.salesforce.com/company/legal/agreements/)
 
-254
 
 Salesforce CLI Command Reference project Commands
 
@@ -20055,7 +19801,6 @@ Type: option
 **`-c`** **|** **`--devops-center-username DEVOPS-CENTER-USERNAME`**
 Required
 
-255
 
 Salesforce CLI Command Reference project Commands
 
@@ -20132,7 +19877,6 @@ Default value: 33 minutes
 
 Optional
 
-256
 
 Salesforce CLI Command Reference project Commands
 
@@ -20213,7 +19957,6 @@ Optional
 
 Format output as json.
 
-257
 
 Salesforce CLI Command Reference project Commands
 
@@ -20290,7 +20033,6 @@ Aliases for **`project deploy preview`**
 
 ```
 
-258
 
 Salesforce CLI Command Reference project Commands
 
@@ -20372,7 +20114,6 @@ Type: boolean
 
 Optional
 
-259
 
 Salesforce CLI Command Reference project Commands
 
@@ -20445,7 +20186,6 @@ Aliases for **`project deploy quick`**
 
 ```
 
-260
 
 Salesforce CLI Command Reference project Commands
 
@@ -20526,7 +20266,6 @@ Job ID of the deploy operation you want to check the status of.
 
 These commands return a job ID if they time out or you specified the --async flag:
 
-261
 
 Salesforce CLI Command Reference project Commands
 
@@ -20605,7 +20344,6 @@ Aliases for **`project deploy report`**
 
 ```
 
-262
 
 Salesforce CLI Command Reference project Commands
 
@@ -20686,7 +20424,6 @@ These commands return a job ID if they time out or you specified the --async fla
 
       - sf project deploy cancel
 
-263
 
 Salesforce CLI Command Reference project Commands
 
@@ -20767,7 +20504,6 @@ Aliases for **`project deploy resume`**
 
 ```
 
-264
 
 Salesforce CLI Command Reference project Commands
 
@@ -20850,7 +20586,6 @@ Deploy a custom object called ExcitingObject that's in the SBQQ namespace:
 
 ```
 
-265
 
 Salesforce CLI Command Reference project Commands
 
@@ -20946,7 +20681,6 @@ Optional
 
 Run the command asynchronously.
 
-266
 
 Salesforce CLI Command Reference project Commands
 
@@ -21023,7 +20757,6 @@ Metadata component names to deploy. Wildcards (`*` ) supported as long as you us
 
 Type: option
 
-267
 
 Salesforce CLI Command Reference project Commands
 
@@ -21101,7 +20834,6 @@ test level is the default for production deployments that include Apex classes o
 
       - RunAllTestsInOrg — All tests in your org are run, including tests of managed packages.
 
-268
 
 Salesforce CLI Command Reference project Commands
 
@@ -21191,7 +20923,6 @@ Permissible values are: clover, cobertura, html-spa, html, json, json-summary, l
 
 Optional
 
-269
 
 Salesforce CLI Command Reference project Commands
 
@@ -21261,7 +20992,6 @@ Validate the deployment of all source files in two directories: "force-app" and 
 
 ```
 
-270
 
 Salesforce CLI Command Reference project Commands
 
@@ -21349,7 +21079,6 @@ Type: option
 **`-m`** **|** **`--metadata METADATA`**
 Optional
 
-271
 
 Salesforce CLI Command Reference project Commands
 
@@ -21428,7 +21157,6 @@ test level is the default.
 
       - RunAllTestsInOrg — All tests in your org are run, including tests of managed packages.
 
-272
 
 Salesforce CLI Command Reference project Commands
 
@@ -21511,7 +21239,6 @@ Output directory for code coverage and JUnit results; defaults to the deploy ID.
 
 Type: option
 
-273
 
 Salesforce CLI Command Reference project Commands
 
@@ -21595,7 +21322,6 @@ Generate a project with the minimum files and directories:
 
 ```
 
-274
 
 Salesforce CLI Command Reference project Commands
 
@@ -21675,7 +21401,6 @@ Optional
 
 Directory for saving the created files.
 
-275
 
 Salesforce CLI Command Reference project Commands
 
@@ -21749,7 +21474,6 @@ package.xml or destructiveChanges.xml to delete metadata. Valid values for this 
 
     - post : destructiveChangesPost.xml
 
-276
 
 Salesforce CLI Command Reference project Commands
 
@@ -21838,7 +21562,6 @@ Optional
 
 Import flag values from a directory.
 
-277
 
 Salesforce CLI Command Reference project Commands
 
@@ -21919,7 +21642,6 @@ Optional
 
 Directory to save the created manifest.
 
-278
 
 Salesforce CLI Command Reference project Commands
 
@@ -21995,7 +21717,6 @@ File or directory of files that the command checks for foreceignored files.
 
 Type: option
 
-279
 
 Salesforce CLI Command Reference project Commands
 
@@ -22077,7 +21798,6 @@ Optional
 
 Override the api version used for api requests made by this command
 
-280
 
 Salesforce CLI Command Reference project Commands
 
@@ -22154,7 +21874,6 @@ Type: boolean
 
 Optional
 
-281
 
 Salesforce CLI Command Reference project Commands
 
@@ -22229,7 +21948,6 @@ Retrieve the source files in the "force-app" directory from an org with alias "m
 
 ```
 
-282
 
 Salesforce CLI Command Reference project Commands
 
@@ -22332,7 +22050,6 @@ directory:
 
 ```
 
-283
 
 Salesforce CLI Command Reference project Commands
 
@@ -22410,7 +22127,6 @@ matches the name of the package. The retrieved metadata is meant for your refere
 for development and deployment. For package development, retrieve the metadata using a manifest (`--manifest` flag) or by targeting
 a source controlled package directory within your project (`--source-dir` flag).
 
-284
 
 Salesforce CLI Command Reference project Commands
 
@@ -22489,7 +22205,6 @@ Optional
 
 File name to use for the retrieved zip file.
 
-285
 
 ### Salesforce CLI Command Reference schema Commands
 
@@ -22560,7 +22275,6 @@ Flags
 
 Optional
 
-286
 
 Salesforce CLI Command Reference schema Commands
 
@@ -22632,7 +22346,6 @@ The platform event's label.
 
 Type: option
 
-287
 
 Salesforce CLI Command Reference schema Commands
 
@@ -22709,7 +22422,6 @@ Enables these features:
 
       - History: Enables object history tracking.
 
-288
 
 Salesforce CLI Command Reference schema Commands
 
@@ -22784,7 +22496,6 @@ The API name for a custom object always ends in `__c`, such as `MyObject__c`.
 
 Type: option
 
-289
 
 ### Salesforce CLI Command Reference sobject Commands
 
@@ -22852,7 +22563,6 @@ Display the metadata of the "MyObject__c" custom object in the org with alias "m
 
 ```
 
-290
 
 Salesforce CLI Command Reference sobject Commands
 
@@ -22931,7 +22641,6 @@ List all Salesforce objects of a specified category.
 
 You can list the standard objects, custom objects, or all. The lists include only Salesforce objects, not Tooling API objects.
 
-291
 
 ### Salesforce CLI Command Reference static-resource Commands
 
@@ -23013,7 +22722,6 @@ Work with static resources.
 static-resource generate
 Generate a static resource.
 
-292
 
 Salesforce CLI Command Reference static-resource Commands
 
@@ -23098,7 +22806,6 @@ Type: option
 
 Default value: application/zip
 
-293
 
 ### Salesforce CLI Command Reference visualforce Commands
 
@@ -23166,7 +22873,6 @@ Similar to previous example, but generate the files in the directory "force-app/
 
 ```
 
-294
 
 Salesforce CLI Command Reference visualforce Commands
 
@@ -23249,7 +22955,6 @@ Aliases for **`visualforce generate component`**
 
 ```
 
-295
 
 Salesforce CLI Command Reference visualforce Commands
 
@@ -23332,7 +23037,6 @@ Type: option
 **`-l`** **|** **`--label LABEL`**
 Required
 
-296
 
 ### Salesforce CLI Command Reference Help for sf Commands
 
@@ -23408,7 +23112,6 @@ Usage notes.
 
 **2. Examples**
 
-297
 
 ## Salesforce CLI Command Reference Salesforce Functions (Retired)
 
@@ -23461,7 +23164,6 @@ Follow these high-level steps to migrate.
 
 [see the Spring ‘24 Salesforce CLI Command Reference.](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
 
-298
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -23551,7 +23253,6 @@ command formats to get a configuration variable are valid.
 
 ```
 
-299
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -23635,7 +23336,6 @@ Here’s the `sf` -style equivalent.
 
 ```
 
-300
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -23685,7 +23385,6 @@ new names, we recommend that you update them manually to avoid deprecation warni
 variable names continue to work, we recommend that you start using the new `sf` -style ones. When you use the old ones, you get
 a warning with the name of the new configuration and environment variable to use.
 
-301
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -23752,15 +23451,12 @@ details.
 
 **•** `[force:mdapi:*](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_mdapi.htm)`
 
-302
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-303
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-304
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -23789,7 +23485,6 @@ Here’s the `sf` -style equivalent.
 
 ```
 
-305
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -23894,7 +23589,6 @@ flag.
 
 ```
 
-306
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -23978,7 +23672,6 @@ if you don’t plan to later do a quick deploy. This way of previewing provides 
 `--pre|post-destructive-changes` flags. The `project deploy validate` provides just a subset of the full
 deployment flags.
 
-307
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -24017,7 +23710,6 @@ notes indicate if the mapping is one-to-one. If it is, you migrate them by chang
 
 notes. For more guidance, see the examples after the table.
 
-308
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -24059,7 +23751,6 @@ username=admin_user@orgname.org --country=GB --targetdevhubusername MyDevHub
 
 ```
 
-309
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -24161,7 +23852,6 @@ Here’s the equivalent `sf` -style command.
 
 ```
 
-310
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -24232,7 +23922,6 @@ These examples show the rules in action.
 
 ```
 
-311
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -24289,7 +23978,6 @@ SFDX_MAX_QUERY_LIMIT SF_ORG_MAX_QUERY_LIMIT
 
 SFDX_REST_DEPLOY SF_ORG_METADATA_REST_DEPLOY
 
-312
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -24359,7 +24047,6 @@ appropriate flag, such as `--source-dir` .
 
 Here’s how to determine whether your org allows source tracking.
 
-313
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -24410,23 +24097,18 @@ This table maps the `sfdx` -style commands, such as `force:org:create`, to their
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
 of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
-314
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-315
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-316
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-317
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-318
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
@@ -24438,23 +24120,18 @@ This table maps the core `sf` -style commands, such as `org create sandbox`, to 
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
 of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
-319
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-320
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-321
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-322
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
-323
 
 ## Salesforce CLI Command Reference CLI Deprecation Policy CLI Deprecation Policy
 
@@ -24506,4 +24183,3 @@ Integrate this plugin into your continuous integration (CI) solution to continua
 
 [See Salesforce Code Analyzer for documentation and more information.](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/overview)
 
-324

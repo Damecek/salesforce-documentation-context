@@ -1,7 +1,7 @@
 # Apex Developer Guide
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
-> Fetched: 2026-01-16T15:53:33Z
+> Fetched: 2026-01-22T10:44:20Z
 Apex Developer Guide
 
 Version 65.0, Winter ’26
@@ -94,7 +94,6 @@ Notes.
 Learn about the Apex development lifecycle. Follow a step-by-step tutorial to create an Apex class and trigger, and deploy them to a
 production organization.
 
-1
 
 ### Apex Developer Guide Introducing Apex Introducing Apex
 
@@ -145,7 +144,6 @@ The Apex programming language is saved and runs in the cloud—the multitenant p
 data manipulation on the platform, and it enables you to add custom business logic to system events. While it provides many benefits
 for automating business processes on the platform, it is not a general purpose programming language.
 
-2
 
 Apex Developer Guide Introducing Apex
 
@@ -177,7 +175,6 @@ records
 
 **•** Warnings and errors issued when a user tries to edit or delete a custom object or field that is referenced by Apex
 
-3
 
 Apex Developer Guide Introducing Apex
 
@@ -218,7 +215,6 @@ Apex is included in Performance Edition, Unlimited Edition, Developer Edition, E
 
 Apex code typically contains many things that you're familiar with from other programming languages.
 
-4
 
 Apex Developer Guide Introducing Apex
 
@@ -240,7 +236,6 @@ already associated with the class or trigger.
 
 For more information about using version settings with managed packages, see _About Package Versions_ in Salesforce Help.
 
-5
 
 Apex Developer Guide Introducing Apex
 
@@ -320,7 +315,6 @@ In Apex, statements must end with a semicolon and can be one of these types:
 
 **•** Exception Handling
 
-6
 
 Apex Developer Guide Introducing Apex
 
@@ -410,7 +404,6 @@ To create a set:
 
 **•** Use the `Set` keyword followed by the primitive data type contained within `<>` characters
 
-7
 
 Apex Developer Guide Introducing Apex
 
@@ -500,7 +493,6 @@ again and again based on a condition. Apex supports the following types of loops
 
 **•** Do-while
 
-8
 
 Apex Developer Guide Introducing Apex
 
@@ -565,7 +557,6 @@ the Salesforce user interface. With Visualforce you can:
 
 **•** Create your own custom flow control through an application.
 
-9
 
 Apex Developer Guide Introducing Apex
 
@@ -615,7 +606,6 @@ consistent performance and scalability, the execution of Apex is bound by govern
 impacts the overall service of Salesforce. This means all Apex code is limited by the number of operations (such as DML or SOQL)
 that it can perform within one process.
 
-10
 
 ### Apex Developer Guide Apex Development Process
 
@@ -675,7 +665,6 @@ We recommend the following process for developing Apex:
 
 **3.** Write your Apex.
 
-11
 
 Apex Developer Guide Apex Development Process
 
@@ -731,7 +720,6 @@ Live users accessing the system while you're developing can destabilize your dat
 
 There are several development environments for developing Apex code. Choose the environment that meets your needs.
 
-12
 
 Apex Developer Guide Apex Development Process
 
@@ -797,7 +785,6 @@ such as comments, keywords, literal strings, and so on.
 **•** From Setup in the Quick Find box, enter `Apex`, and select an Apex class or trigger. To edit it, click **Edit** beside the class or trigger
 name.
 
-13
 
 Apex Developer Guide Apex Development Process
 
@@ -856,7 +843,6 @@ Beginning and advanced programmers
 [Open-source code samples and SDKs, reference code, and best practices can be found at Code samples and SDKs. A library of concise,](https://developer.salesforce.com/code-samples-and-sdks)
 [meaningful examples of Apex code for common use cases, following best practices, can be found at Apex-recipes.](https://github.com/trailheadapps/apex-recipes)
 
-14
 
 Apex Developer Guide Apex Development Process
 
@@ -926,7 +912,6 @@ records. This approach ensures that 75% or more of your code is covered by unit 
 
 **•** Every trigger must have some test coverage.
 
-15
 
 ### Apex Developer Guide Apex Quick Start
 
@@ -987,7 +972,6 @@ Because Apex is similar to Java, you can recognize much of the functionality.
 
 This tutorial is based on a custom object called Book that is created in the first step. This custom object is updated through a trigger.
 
-16
 
 Apex Developer Guide Apex Quick Start
 
@@ -1053,7 +1037,6 @@ Ta dah! You’ve now created your first custom object. Now let’s create a cust
 
 **11.** Click **Next** to accept the default values for field-level security.
 
-17
 
 Apex Developer Guide Apex Quick Start
 
@@ -1132,7 +1115,6 @@ provided by default in Salesforce are accessed using the same type of dot notati
 end with `__c` in `Book__c.Name` . The statement `b.Price__c *= 0.9;` takes the old value of `b.Price__c`, multiplies
 it by 0.9, which means its value is discounted by 10%, and then stores the new value into the `b.Price__c` field. The `*=` operator
 
-18
 
 Apex Developer Guide Apex Quick Start
 
@@ -1218,7 +1200,6 @@ The next line in the code calls the method `applyDiscount` in the `MyHelloWorld`
 
 ```
 
-19
 
 Apex Developer Guide Apex Quick Start
 
@@ -1295,7 +1276,6 @@ single records. This approach ensures that 75% or more of your code is covered b
 
 ```
 
-20
 
 Apex Developer Guide Apex Quick Start
 
@@ -1374,7 +1354,6 @@ from the `MyHelloWorld` class, this class also has coverage (100%). To view the 
 **9.** To open the log file, in the Logs tab, double-click the most recent log line in the list of logs. The execution log displays, including
 logging information about the trigger event, the call to the `applyDiscount` method, and the price before and after the trigger.
 
-21
 
 Apex Developer Guide Apex Quick Start
 
@@ -1442,7 +1421,6 @@ the list and click **Add to Change Set** .
 In this tutorial, you learned how to create a custom object, how to add an Apex trigger, class, and test class. Finally, you also learned
 how to test your code, and how to upload the code and the custom object using Change Sets.
 
-22
 
 ## Apex Developer Guide Writing Apex Writing Apex
 
@@ -1497,7 +1475,6 @@ Local variables are declared with Java-style syntax.
 Apex constants are variables whose values don’t change after being initialized once. Constants can be defined using the `final`
 keyword.
 
-23
 
 #### Apex Developer Guide Data Types and Variables
 
@@ -1562,7 +1539,6 @@ service arguments, stored in a document (the body of a document is a Blob), or s
 [For more information, see Crypto Class. Salesforce supports Blob manipulation only with Apex class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_crypto.htm)
 methods that are supplied by Salesforce.
 
-24
 
 Apex Developer Guide Data Types and Variables
 
@@ -1645,7 +1621,6 @@ ID id='00300000003T2PGAA0';
 
 ```
 
-25
 
 Apex Developer Guide Data Types and Variables
 
@@ -1733,7 +1708,6 @@ The Solution sObject field SolutionNote operates as a special type of String. If
 enabled, any HTML tags used in this field are verified before the object is created or updated. If invalid
 HTML is entered, an error is thrown. Any JavaScript used in this field is removed before the object is
 
-26
 
 Apex Developer Guide Data Types and Variables
 
@@ -1795,7 +1769,6 @@ SOQL and SOSL `WHERE` clauses to filter against sObject currency fields. You can
 
 [For more information on the AnyType data type, see Field Types in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/field_types.htm) _Object Reference for Salesforce_ .
 
-27
 
 Apex Developer Guide Data Types and Variables
 
@@ -1853,7 +1826,6 @@ The index position of the first element in a list is always 0.
 
 of lists of sets of Integers. A list can contain up to seven levels of nested collections inside it, that is, up to eight levels overall.
 
-28
 
 Apex Developer Guide Data Types and Variables
 
@@ -1942,7 +1914,6 @@ Defines an Integer list with memory allocated for six Integers
 List Sorting
 You can sort list elements and the sort order depends on the data type of the elements.
 
-29
 
 Apex Developer Guide Data Types and Variables
 
@@ -2034,7 +2005,6 @@ The output of the debug statements shows the contents of the list, both before a
 
 ```
 
-30
 
 Apex Developer Guide Data Types and Variables
 
@@ -2124,7 +2094,6 @@ the same code.
 A map is a collection of key-value pairs where each unique key maps to a single value. Keys and values can be any data type—primitive
 types, collections, sObjects, user-defined types, and built-in Apex types.
 
-31
 
 Apex Developer Guide Data Types and Variables
 
@@ -2205,7 +2174,6 @@ distinct.
 your classes. Uniqueness of keys of all other non-primitive types, such as sObject keys, is determined by comparing the objects’ field
 values. Use caution when you use an sObject as a map key because when the sObject is changed, it no longer maps to the same
 
-32
 
 Apex Developer Guide Data Types and Variables
 
@@ -2284,7 +2252,6 @@ Although each value corresponds to a distinct integer value, the enum hides this
 any possible misuse of the values to perform arithmetic and so on. After you create an enum, variables, method arguments, and return
 types can be declared of that type.
 
-33
 
 Apex Developer Guide Data Types and Variables
 
@@ -2365,7 +2332,6 @@ examples are the Decimal `divide` method and the Double `round` [method. For mor
 
 This enum is returned by the field describe result `getSoapType` [method. For more information, see SOAPType Enum.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_Schema_SOAPType.htm)
 
-34
 
 Apex Developer Guide Data Types and Variables
 
@@ -2439,7 +2405,6 @@ dollar signs ($) and hyphens (-), aren’t allowed.
 **•** Salesforce doesn't recommend sharing the same name between a variable and either its class or a method in its class, although it
 is permitted to do so.
 
-35
 
 Apex Developer Guide Data Types and Variables
 
@@ -2529,7 +2494,6 @@ To avoid confusion with case-insensitive SOQL and SOSL queries, Apex is also cas
 
 Note: You’ll learn more about sObjects, SOQL, and SOSL later in this guide.
 
-36
 
 Apex Developer Guide Data Types and Variables
 
@@ -2605,7 +2569,6 @@ Safe Navigation Operator
 Use the safe navigation operator ( `?.` ) to replace explicit, sequential checks for null references. This operator short-circuits expressions
 that attempt to operate on a null value and returns null instead of throwing a NullPointerException.
 
-37
 
 Apex Developer Guide Data Types and Variables
 
@@ -2691,7 +2654,6 @@ of expression yields a query result, much like SOQL and SOSL queries.
 
 For information, see SOQL and SOSL Queries on page 167.
 
-38
 
 Apex Developer Guide Data Types and Variables
 
@@ -2771,7 +2733,6 @@ then reassigned to `x` .
 `>>=` `x >>= y` **Bitwise shift right signed assignment operator** . Shifts each bit in `x` to the right
 by `y` bits so that the low-order bits are lost and the new left bits are set to 0 for
 
-39
 
 Apex Developer Guide Data Types and Variables
 
@@ -2845,7 +2806,6 @@ between 15-character and 18-character formats
 two objects are equal only if they reference the same location in
 memory. You can override this default comparison behavior by
 
-40
 
 Apex Developer Guide Data Types and Variables
 
@@ -2910,7 +2870,6 @@ Note:
 
 **•** The comparison of any two values can never result in `null` .
 
-41
 
 Apex Developer Guide Data Types and Variables
 
@@ -2978,7 +2937,6 @@ validated and treated as an ID.
 **•** The comparison of two strings is performed according to the locale of
 the context user and is case-insensitive.
 
-42
 
 Apex Developer Guide Data Types and Variables
 
@@ -3047,7 +3005,6 @@ the specified number of days.
 decremented by the specified number of days, with the fractional portion
 corresponding to a portion of a day.
 
-43
 
 Apex Developer Guide Data Types and Variables
 
@@ -3143,7 +3100,6 @@ versa.
 `()` `(x)` **Parentheses** . Elevates the precedence of an expression `x` so that it’s evaluated
 first in a compound expression.
 
-44
 
 Apex Developer Guide Data Types and Variables
 
@@ -3222,7 +3178,6 @@ not.
 
 ```
 
-45
 
 Apex Developer Guide Data Types and Variables
 
@@ -3249,7 +3204,6 @@ Apex Developer Guide Data Types and Variables
 
 **Table 1: Safe Navigation Operator Use-Cases**
 
-46
 
 Apex Developer Guide Data Types and Variables
 
@@ -3310,7 +3264,6 @@ compilation:
 
 Note: You can use the operator with `addError()` on SObjects, including lookup and master-detail fields.
 
-47
 
 Apex Developer Guide Data Types and Variables
 
@@ -3387,7 +3340,6 @@ There are some restrictions on using the null coalescing operator.
 
 **–** `foo??bar++; // This is not a valid assignment`
 
-48
 
 Apex Developer Guide Data Types and Variables
 
@@ -3455,7 +3407,6 @@ creation
 
 Both single and multiline comments are supported in Apex code.
 
-49
 
 Apex Developer Guide Data Types and Variables
 
@@ -3546,7 +3497,6 @@ In the forms above, `[LValue]` stands for any expression that can be placed on t
 
 ```
 
-50
 
 Apex Developer Guide Data Types and Variables
 
@@ -3622,7 +3572,6 @@ exception is thrown.
 
 **•** The `instanceOf` keyword can always be used to test whether a string is an ID.
 
-51
 
 ### Apex Developer Guide Control Flow Statements
 
@@ -3682,7 +3631,6 @@ have a block of code execute repeatedly.
 Conditional (If-Else) Statements
 The conditional statement in Apex works similarly to Java.
 
-52
 
 Apex Developer Guide Control Flow Statements
 
@@ -3784,7 +3732,6 @@ The syntax is:
 
 ```
 
-53
 
 Apex Developer Guide Control Flow Statements
 
@@ -3865,7 +3812,6 @@ If no `when` values match the expression, the `when else` block is executed.
 Note: Salesforce recommends including a `when else` block, especially with enum types, although it isn’t required. When you
 build a `switch` statement using enum values provided by a managed package, your code might not behave as expected if a
 
-54
 
 Apex Developer Guide Control Flow Statements
 
@@ -3965,7 +3911,6 @@ also nest Apex `switch` statements to provide multiple execution paths within a 
 
 ```
 
-55
 
 Apex Developer Guide Control Flow Statements
 
@@ -4070,7 +4015,6 @@ You can replace and simplify this code with the following `switch` statement.
 
 Note: You can use only one sObject type per `when` block.
 
-56
 
 Apex Developer Guide Control Flow Statements
 
@@ -4150,7 +4094,6 @@ Note: Curly braces ( `{}` ) are always required around a _**`code_block`**_ .
 As in Java, the Apex `do-while` loop does not check the Boolean condition statement until after the first loop is executed. Consequently,
 the code block always runs at least once.
 
-57
 
 Apex Developer Guide Control Flow Statements
 
@@ -4241,7 +4184,6 @@ where _**`variable`**_ must be of the same primitive or sObject type as _**`list
 
 ```
 
-58
 
 Apex Developer Guide Control Flow Statements
 
@@ -4322,7 +4264,6 @@ where _**`variable`**_ must be of the same primitive or sObject type as _**`list
 When executing this type of `for` loop, the Apex runtime engine assigns _**`variable`**_ to each element in _**`list_or_set`**_, and
 runs the _**`code_block`**_ for each value.
 
-59
 
 ### Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -4382,7 +4323,6 @@ Apex provides the keywords `final`, `instanceof`, `super`, `this`, `transient`, 
 An Apex annotation modifies the way that a method or class is used, similar to annotations in Java. Annotations are defined with
 an initial `@` symbol, followed by the appropriate keyword.
 
-60
 
 #### Apex Developer Guide Classes, Objects, and Interfaces 5. Classes and Casting
 
@@ -4443,7 +4383,6 @@ operations. See Triggers.
 
 2. Class Variables
 
-61
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -4524,7 +4463,6 @@ Use the following syntax for defining classes:
 access for inner classes—that is, if you don't specify an access modifier for an inner class, it’s considered `private` . This keyword
 can only be used with inner classes (or with top-level test classes marked with the `@IsTest` annotation).
 
-62
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -4591,7 +4529,6 @@ To declare a variable, specify the following:
 
 **•** Required: The name of the variable.
 
-63
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -4675,7 +4612,6 @@ User-defined methods:
 
 **•** Can be recursive.
 
-64
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -4754,7 +4690,6 @@ returns, the value of the original variable, _`msg`_, is unchanged. An assert st
 This example shows how a List argument is passed by reference into the `reference()` method and is modified. It then shows, in
 the `referenceNew()` method, that the List argument can't be changed to point to another List object.
 
-65
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -4832,7 +4767,6 @@ invalid for these method types because the implementing class can’t access the
 an abstract or override method without an allowed access modifier, you get the compilation error `Abstract methods require`
 `at least one of the following: global, public, protected` .
 
-66
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -4911,7 +4845,6 @@ illustrates how one constructor calls another constructor using the `this(...)` 
 
 ```
 
-67
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -4993,7 +4926,6 @@ This means that the method or variable is visible to any inner classes in the de
 defining Apex class. You can only use this access modifier for instance methods and member variables. This setting is strictly more
 permissive than the default (private) setting, just like Java.
 
-68
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5071,7 +5003,6 @@ Static methods, variables, and initialization code have these characteristics.
 
 **•** They’re initialized only when a class is loaded.
 
-69
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5159,7 +5090,6 @@ A trigger that uses this class could then selectively fail the first run of the 
 
 ```
 
-70
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5241,7 +5171,6 @@ uses member variables to hold the list of points and an inner class to manage th
 
 ```
 
-71
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5324,7 +5253,6 @@ example:
 
 ```
 
-72
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5409,7 +5337,6 @@ page 24.
 
 **•** _`property_name`_ is the name of the property
 
-73
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5499,7 +5426,6 @@ The following code segment exercises these properties:
 
 ```
 
-74
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5589,7 +5515,6 @@ You can extend a class to provide more specialized behavior.
 A class that extends another class inherits all the methods and properties of the extended class. In addition, the extending class can
 override the existing virtual methods by using the override keyword in the method definition. Overriding a virtual method allows you
 
-75
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5685,7 +5610,6 @@ Before running the next snippet, create the `RedMarker` class, which requires th
 
 ```
 
-76
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5767,7 +5691,6 @@ example are explained in more detail throughout this chapter.
 
 ```
 
-77
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5858,7 +5781,6 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
 ```
 
-78
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -5951,7 +5873,6 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
 ```
 
-79
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6039,7 +5960,6 @@ This example shows how the class above can be called by other Apex code:
 
 ```
 
-80
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6121,7 +6041,6 @@ This class implements the `PurchaseOrder` interface for customer purchase orders
 
 ```
 
-81
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6190,7 +6109,6 @@ Using the `Iterator` interface you can create a custom set of instructions for t
 data that exists in sources outside of Salesforce that you would normally define the scope of using a `SELECT` statement. Iterators can
 also be used if you have multiple `SELECT` statements.
 
-82
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6263,7 +6181,6 @@ In the following example a custom iterator iterates through a collection:
 
 ```
 
-83
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6357,7 +6274,6 @@ Apex provides the keywords `final`, `instanceof`, `super`, `this`, `transient`, 
 
 5. Using the transient Keyword Keyword
 
-84
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6431,7 +6347,6 @@ compilation fails. An example expression that’s always true and therefore caus
 
 ```
 
-85
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6520,7 +6435,6 @@ For example, if you have the following virtual class:
 
 ```
 
-86
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6613,7 +6527,6 @@ In the above example, the class `myTestThis` declares an instance variable `s` .
 
 `this` keyword.
 
-87
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6696,7 +6609,6 @@ its original value, which has been deserialized from the view state, so it remai
 
 ```
 
-88
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6772,7 +6684,6 @@ For example, to turn off sharing rule enforcement for a class that’s called by
 
 ```
 
-89
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6847,7 +6758,6 @@ If a class isn’t explicitly declared as either `with sharing` or `without shar
 Therefore, the class doesn’t enforce sharing rules except if it acquires sharing rules from another class. For example, if the class is called
 by another class that has sharing enforced, then sharing is enforced for the called class.
 
-90
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6934,7 +6844,6 @@ account is inserted into the database, then `ContactTrigger2` runs as `with shar
 In both cases, after the nested trigger fires in `with sharing` mode, subsequent calls to other classes use the declared sharing mode
 of each class.
 
-91
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -6983,7 +6892,6 @@ global class MyClass {
 
 ```
 
-92
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7060,7 +6968,6 @@ To identify variables used by invocable methods in custom classes, use the `Invo
 The `@JsonAccess` annotation defined at Apex class level controls whether instances of the class can be serialized or deserialized.
 If the annotation restricts the JSON or XML serialization and deserialization, a runtime `JSONException` exception is thrown.
 
-93
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7130,7 +7037,6 @@ be deprecated. A deprecated item, such as a method or a class, can still be refe
 
 **•** `webservice` methods and variables can’t be deprecated.
 
-94
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7209,7 +7115,6 @@ from an annotated method that calls another annotated method.
 
 ##### InvocableMethod Annotation Use the InvocableMethod annotation to identify methods that can be run as invocable actions.
 
-95
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7314,7 +7219,6 @@ This code sample shows an invocable method with the generic sObject data type.
 
 ```
 
-96
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7404,7 +7308,6 @@ This code sample shows an invocable method with a custom icon from the Salesforc
 To handle exceptions within an invocable method, wrap the results in an Apex object that reports failures. The execution of the invocable
 method must run and return the same number of results as inputs received even if errors occur.
 
-97
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7499,7 +7402,6 @@ This test method checks whether the value adjustments were successful and verifi
 
 ```
 
-98
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7576,7 +7478,6 @@ InvocableMethod Considerations
 
 **•** The only annotation that can be used with the `InvocableMethod` annotation is `Deprecated` .
 
-99
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7645,7 +7546,6 @@ Customize Invocable Action Input Order in Flow Builder
 
 ##### InvocableVariable Annotation To identify variables used by invocable methods in custom classes, use the InvocableVariable annotation.
 
-100
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7738,7 +7638,6 @@ This code sample shows an invocable method with invocable variables.
 
 ```
 
-101
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7828,7 +7727,6 @@ This code sample shows an invocable method with invocable variables that have th
 
 ```
 
-102
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -7917,7 +7815,6 @@ Valid invocable variable data types are:
 
 ```
 
-103
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8003,7 +7900,6 @@ InvocableVariable Considerations
 
 **–** A `final` variable.
 
-104
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8077,7 +7973,6 @@ Here’s an example of a private test class that contains two test methods.
 
 ```
 
-105
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8159,7 +8054,6 @@ class have access to all data in the organization.
 
 ```
 
-106
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8254,7 +8148,6 @@ organization, such as users.
 
 ```
 
-107
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8340,7 +8233,6 @@ but `test2` and `test3` isn’t.
 
 Use the `@IsTest(IsParallel=true)` annotation to indicate test classes that can run in parallel.
 
-108
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8408,7 +8300,6 @@ This example code shows an Apex class marked with the `@JsonAccess` annotation.
 `toString` method on objects whose data must be protected. For example, serializing an object stored as a key in a Map invokes
 the `toString` method. The generated map includes key (string) and value entries, thus exposing all the fields of the object.
 
-109
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8488,7 +8379,6 @@ within the same namespace. The first constructor is also visible within the name
 
 ```
 
-110
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8579,7 +8469,6 @@ annotation, the top-level request must be in the schedule execution or the Web s
 calls a Web service that contains the `@ReadOnly` annotation, the request fails because Visualforce is the top-level request, not the
 Web service.
 
-111
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8629,7 +8518,6 @@ Then, add the request as a JavaScript function call. A simple JavaScript remotin
 
 **Table 2: Remote Request Elements**
 
-112
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8696,7 +8584,6 @@ With this annotation, you don’t have to change the access modifiers of your me
 access them in a test method. For example, if a private member variable isn’t supposed to be exposed to external classes but it must be
 ##### accessible by a test method, you can add the TestVisible annotation to the variable definition.
 
-113
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8783,7 +8670,6 @@ Some considerations when using this annotation:
 **•** The URL mapping is case-sensitive. For example, a URL mapping for `my_url` matches a REST resource containing `my_url` and
 not `My_Url` .
 
-114
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8845,7 +8731,6 @@ is called when an HTTP `POST` request is sent, and creates a new resource.
 
 To use this annotation, your Apex method must be defined as global static.
 
-115
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8916,7 +8801,6 @@ as a report object, which is then cast back into a custom report object.
 
 ```
 
-116
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -8945,7 +8829,6 @@ SEE ALSO:
 
 Using Custom Types in Map Keys and Sets
 
-117
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9019,7 +8902,6 @@ the class that contains it as `global` .
 
 **–** The `virtual` definition modifier allows extension and overrides.
 
-118
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9083,7 +8965,6 @@ The editor automatically applies syntax highlighting for keywords and all functi
 Search enables you to search for text within the current page, class, or trigger. To use search, enter a string in the `Search` textbox
 and click **Find Next** .
 
-119
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9148,7 +9029,6 @@ standard Java form:
 
 ```
 
-120
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9219,7 +9099,6 @@ To invoke a method that is defined in a managed package, Apex allows fully quali
 
 ```
 
-121
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9297,7 +9176,6 @@ Create this custom Apex class:
 
 ```
 
-122
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9382,7 +9260,6 @@ Apex runtime to use the sObject.
 
 ```
 
-123
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9462,7 +9339,6 @@ Then the following expressions are all legal:
 
 ```
 
-124
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9527,7 +9403,6 @@ To set the Salesforce API and Apex version for a class or trigger:
 
 **2.** Select the `Version` of the Salesforce API. This version is also the version of Apex associated with the class or trigger.
 
-125
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9621,7 +9496,6 @@ To configure the package version settings for a class or trigger:
 
 **1.** Edit either a class or trigger, and click **Version Settings** .
 
-126
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9680,7 +9554,6 @@ Adding **`equals`** and **`hashCode`** Methods to Your Class
 To ensure that map keys of your custom type are compared correctly and their uniqueness can be determined consistently, provide an
 implementation of the following two methods in your class:
 
-127
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
@@ -9774,7 +9647,6 @@ This code snippet makes use of the `PairNumbers` class.
 
 ```
 
-128
 
 ### Apex Developer Guide Working with Data in Apex
 
@@ -9852,7 +9724,6 @@ SOQL `for` loops iterate over all of the sObject records returned by a SOQL quer
 sObject Collections
 You can manage sObjects in lists, sets, and maps.
 
-129
 
 Apex Developer Guide Working with Data in Apex
 
@@ -9929,7 +9800,6 @@ Because sObjects work like objects, you can also have the following:
 
 DML operations work on variables declared as the generic sObject data type as well as with regular sObjects.
 
-130
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10012,7 +9882,6 @@ Note: If your organization has enabled person accounts, you have two different k
 accounts. If your code creates a new account using `name`, a business account is created. If your code uses `LastName`, a person
 account is created.
 
-131
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10109,7 +9978,6 @@ Note: To erase the current value of a field, set the field to null.
 [If an Apex method takes an SObject parameter, you can use the System.isSet() method to identify the set fields. If you want to unset any](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_isSet)
 fields to retain their values, first create an SObject instance. Then apply only the fields you want to be part of the DML operation.
 
-132
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10185,7 +10053,6 @@ DML Operations As Atomic Transactions
 DML Operations
 Using DML, you can insert new records and commit them to the database. You can also update the field values of existing records.
 
-133
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10268,7 +10135,6 @@ Another DML governor limit is the total number of rows that can be processed by 
 All rows processed by all DML calls in the same transaction count incrementally toward this limit. For example, if you insert 100 contacts
 and update 50 contacts in the same transaction, your total DML processed rows are 150. You still have 9,850 rows left (10,000 - 150).
 
-134
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10343,7 +10209,6 @@ to the database.
 
 ```
 
-135
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10439,7 +10304,6 @@ This is an equivalent example to the previous one but it uses a method of the Da
 
 ```
 
-136
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10495,7 +10359,6 @@ records.
 
 Upserting Records
 
-137
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10580,7 +10443,6 @@ You can insert records related to existing records if a relationship has already
 or master-detail relationship. A record is associated with a related record through a foreign key ID. For example, when inserting a new
 contact, you can specify the contact’s related account record by setting the value of the `AccountId` field.
 
-138
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10671,7 +10533,6 @@ its related account using two `update` statements.
 
 ```
 
-139
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10745,7 +10606,6 @@ creating the parent record first, querying its ID, and then creating the child r
 **•** Create the parent reference sObject used only for setting the parent foreign key reference on the child sObject. This sObject has only
 the external ID field defined and no other fields set.
 
-140
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10837,7 +10697,6 @@ first error if record creation fails. This sample requires an external ID text f
 
 ```
 
-141
 
 Apex Developer Guide Working with Data in Apex
 
@@ -10924,7 +10783,6 @@ bulk inserted. This example is followed by a test class that contains a test met
 
 ```
 
-142
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11015,7 +10873,6 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-143
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11102,7 +10959,6 @@ When you have duplicate lead, contact, case, or account records in the database,
 is a good idea. You can merge up to three records of the same sObject type. The `merge` operation merges the duplicate records into
 the main record, deletes the duplicate records, and reparents any related records.
 
-144
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11191,7 +11047,6 @@ Note: To use the AccountContactRelation sObject in this example, enable the “A
 
 ```
 
-145
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11278,7 +11133,6 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-146
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11358,7 +11212,6 @@ Referential Integrity When Deleting and Restoring Records
 The `delete` operation supports cascading deletions. If you delete a parent object, you delete its children automatically, as long as
 each child record can be deleted.
 
-147
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11432,7 +11285,6 @@ level and aggregate relationships, including deleted records and archived activi
 
 Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
 
-148
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11508,7 +11360,6 @@ that the conversion was successful.
 
 ```
 
-149
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11579,7 +11430,6 @@ can handle the exceptions in your code by wrapping your DML statements within tr
 
 ```
 
-150
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11646,7 +11496,6 @@ through the errors, writing error information to the debug log.
 
 ```
 
-151
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11720,7 +11569,6 @@ The `Database.DMLOptions` class has the following properties:
 
 **•** `optAllOrNone` Property
 
-152
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11793,7 +11641,6 @@ Note: If there are no assignment rules in the organization, in API version 29.0 
 `useDefaultRule` set to `true` results in the case or lead being assigned to the predefined default owner. In API version 30.0
 and later, the case or lead is unassigned and doesn't get assigned to the default owner.
 
-153
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11870,7 +11717,6 @@ In the following example, the `triggerAutoResponseEmail` option is specified:
 
 ```
 
-154
 
 Apex Developer Guide Working with Data in Apex
 
@@ -11933,7 +11779,6 @@ Generating Savepoints and Rolling Back Transactions
 Sometimes during the processing of records, your business rules require that partial work (already executed DML statements) is rolled
 back so that the processing can continue in another direction. Apex gives you the ability to generate a _savepoint_, that is, a point in the
 
-155
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12019,7 +11864,6 @@ In this example, the `makeACallout()` callout succeeds because the uncommitted D
 
 ```
 
-156
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12101,7 +11945,6 @@ uncommitted DML or the changes were rolled back to a savepoint. Also, before API
 `Database.rollback(databaseSavepoint)` and `Database.setSavepoint()` calls incremented the DML row
 usage limit.
 
-157
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12175,7 +12018,6 @@ aren’t updated:
 
 **–** `IsActive`
 
-158
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12266,7 +12108,6 @@ This example shows how to perform mixed DML operations by using a future method 
 
 ```
 
-159
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12352,7 +12193,6 @@ operation.
 
 ```
 
-160
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12447,7 +12287,6 @@ such objects:
 
 **•** CurrencyType
 
-161
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12526,7 +12365,6 @@ of a Database DML method was specified as `false`, the runtime engine attempts a
 **1.** During the first attempt, the runtime engine processes all records. Any record that generates an error due to issues such as
 validation rules or unique index violations is set aside.
 
-162
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12592,7 +12430,6 @@ When inserting new records, system fields such as `CreatedDate`, `CreatedById`, 
 updated. You cannot explicitly specify these values in your Apex. Similarly, when updating records, system fields such as
 `LastModifiedDate`, `LastModifiedById`, and `SystemModstamp` are automatically updated.
 
-163
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12658,7 +12495,6 @@ Lead and Contact, and the remaining are due to the default chunking size of 200 
 operation returns an error because you reached the limit of 10 chunks in hybrid arrays. The workaround is to call the DML
 operation for each object type separately.
 
-164
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12729,7 +12565,6 @@ Avoiding Deadlocks
 In Apex, you can use `FOR UPDATE` to lock sObject records while they’re being updated in order to prevent race conditions and other
 thread safety problems.
 
-165
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12799,7 +12634,6 @@ in the SOAP API.
 Note that there is no `commit` statement. If your Apex trigger completes successfully, any database changes are automatically committed.
 If your Apex trigger does not complete successfully, any changes made to the database are rolled back.
 
-166
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12883,7 +12717,6 @@ SOSL statements evaluate to a list of lists of sObjects, where each list contain
 lists are always returned in the same order as they were specified in the SOSL query. If a SOSL query doesn’t return any records for a
 specified sObject type, the search results include an empty list for that sObject.
 
-167
 
 Apex Developer Guide Working with Data in Apex
 
@@ -12959,7 +12792,6 @@ example, the `Who` relationship field of a Task can be a Contact or a Lead.
 
 10. Querying All Records with a SOQL Statement
 
-168
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13039,7 +12871,6 @@ access data from the account. The reference field is only populated as the resul
 For example, the following Apex code shows how an account and a contact can be associated with one another, and then how the
 contact can be used to modify a field on the account:
 
-169
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13127,7 +12958,6 @@ execution limits, see Execution Governors and Limits on page 346.
 
 ```
 
-170
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13218,7 +13048,6 @@ you could find the average `Amount` for all your opportunities by campaign.
 
 ```
 
-171
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13305,7 +13134,6 @@ the last name of a contact in records for contacts whose first and last names ma
 
 ```
 
-172
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13384,7 +13212,6 @@ operator requires a full scan of the index. This threshold is subject to change.
 However, there are other complex scenarios in which custom indexes can’t be used. Contact your Salesforce representative if
 your scenario isn't covered by these cases or if you need further assistance with non-selective queries.
 
-173
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13459,7 +13286,6 @@ This usage is supported with the following Apex types, methods, or operators:
 
 Warning: Although currently supported, Salesforce recommends against using this feature with `Map.values` .
 
-174
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13543,7 +13369,6 @@ the `Who` relationship field of a Task can be a Contact or a Lead.
 The following describes how to use SOQL queries with polymorphic relationships in Apex. If you want more general information on
 [polymorphic relationships, see Understanding Relationship Fields and Polymorphic Fields in the SOQL and SOSL Reference.](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_and_polymorph_keys.htm)
 
-175
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13642,7 +13467,6 @@ another method. The following example
 
 ```
 
-176
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13731,7 +13555,6 @@ For example:
 
 ```
 
-177
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13823,7 +13646,6 @@ Note: Apex bind variables aren’t supported for the units parameter in the `DIS
 
 ```
 
-178
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13909,7 +13731,6 @@ The following example combines creating a list from a SOQL query, with the DML `
 
 ```
 
-179
 
 Apex Developer Guide Working with Data in Apex
 
@@ -13994,7 +13815,6 @@ For example, the following code illustrates the difference between the two types
 
 ```
 
-180
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14073,7 +13893,6 @@ Using the `List.sort` method, you can sort lists of sObjects.
 
 Expanding sObject and List Expressions
 
-181
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14159,7 +13978,6 @@ You can bulk-process a list of sObjects by passing a list to the DML operation. 
 
 ```
 
-182
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14248,7 +14066,6 @@ List<Contact> contacts = new List<Contact>
 
 ```
 
-183
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14327,7 +14144,6 @@ accounts because the Industry field comes before the Site field in alphabetical 
 
 ```
 
-184
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14427,7 +14243,6 @@ Example: This example implements the `Comparator` interface to compare two oppor
 
 ```
 
-185
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14539,7 +14354,6 @@ This test sorts a list of `Comparator` objects and verifies that the list elemen
 
 ```
 
-186
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14643,7 +14457,6 @@ in this instance, and the opportunity object passed into the method.
 
 ```
 
-187
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14741,7 +14554,6 @@ _Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com
 
 As in Java, sObject and list expressions can be expanded with method references and list expressions, respectively, to form new expressions.
 
-188
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14819,7 +14631,6 @@ when using, for example, the `contains` or `containsAll` methods, because of cha
 
 Map keys and values can be of any data type, including sObject types, such as Account.
 
-189
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14901,7 +14712,6 @@ existence of a key and gets the set of all keys. The map in this example has one
 
 sObject Map Considerations
 
-190
 
 Apex Developer Guide Working with Data in Apex
 
@@ -14976,7 +14786,6 @@ Note that describe information provides information about _objects_ in an organi
 
 **•** Access Salesforce app information
 
-191
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15036,7 +14845,6 @@ sObject or field when you are determining the type of an sObject or field that y
 the equality operator ( `==` ) to determine whether an sObject is the Account object, for example, or whether a field is the `Name` field or
 a custom calculated field.
 
-192
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15121,7 +14929,6 @@ This example can be used to determine whether an sObject or a list of sObjects i
 
 ```
 
-193
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15206,7 +15013,6 @@ In the following example, the field token is returned from the field describe re
 
 ```
 
-194
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15281,7 +15087,6 @@ The map has the following characteristics:
 
 **•** The keys reflect whether the field is a custom object.
 
-195
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15348,7 +15153,6 @@ the sObject label, number of fields, whether it is a custom object or not, and t
 
 ```
 
-196
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15442,7 +15246,6 @@ describe information is written to the debug output.
 
 ```
 
-197
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15538,7 +15341,6 @@ The map has the following characteristics:
 prefixed with the namespace, if any, of the code in which it is running. For example, if the code block that makes the
 `getGlobalDescribe` call is in namespace NS1, and a custom object named MyObject__c is in the same namespace, the key
 
-198
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15612,7 +15414,6 @@ information on answers, see “Answers Overview” in the Salesforce online help
 
 ```
 
-199
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15705,7 +15506,6 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-200
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15798,7 +15598,6 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-201
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15897,7 +15696,6 @@ categories and associated objects are correct.
 
 ```
 
-202
 
 Apex Developer Guide Working with Data in Apex
 
@@ -15992,7 +15790,6 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-203
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16075,7 +15872,6 @@ and Limits on page 346.
 
 [For a full description of SOQL query syntax, see Salesforce Object Query Language (SOQL) in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) _SOQL and SOSL Reference._
 
-204
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16163,7 +15959,6 @@ _SOQL injection_ is a technique by which a user causes your application to execu
 statements into your code. This can occur in Apex code whenever your application relies on end-user input to construct a dynamic SOQL
 statement and you don’t handle the input properly.
 
-205
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16232,7 +16027,6 @@ To use the SOSL `WITH SNIPPET` clause in a dynamic SOSL query at run time, use t
 
 ```
 
-206
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16313,7 +16107,6 @@ example:
 
 [See SObjectType Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Schema_SObjectType.htm)
 
-207
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16405,7 +16198,6 @@ The following example uses the `AccountNumber` field's token instead:
 
 ```
 
-208
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16487,7 +16279,6 @@ parent-to-child relationship using dynamic Apex:
 
 ```
 
-209
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16545,7 +16336,6 @@ Apex developers must take care not to inadvertently expose sensitive data that w
 field-level security, or organization-wide defaults. They must be particularly careful with Web services, which can be restricted by
 permissions, but execute in system context after they’re initiated.
 
-210
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16628,7 +16418,6 @@ executes under the same sharing context as the caller. It also contains a class 
 
 ```
 
-211
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16700,7 +16489,6 @@ read, create, or update access for a field. In addition, you can call the `isDel
 
 These examples call the access control methods.
 
-212
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16781,7 +16569,6 @@ object permissions of the running user are respected in user mode, unlike in sys
 in system mode they’re controlled by sharing keywords on the class. See Use the with sharing, without sharing, and inherited sharing
 Keywords.
 
-213
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16864,7 +16651,6 @@ An exception is thrown on the insert operation and the inaccessible fields are r
 
 ```
 
-214
 
 Apex Developer Guide Working with Data in Apex
 
@@ -16958,7 +16744,6 @@ custom object.
 
 ```
 
-215
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17035,7 +16820,6 @@ show the `BudgetedCost` . The `ActualCost` must be shown only to users who have 
 
 ```
 
-216
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17125,7 +16909,6 @@ an exception.
 
 ```
 
-217
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17226,7 +17009,6 @@ insert the `Account__c` field, which is a lookup from MyCustomObject__c to Accou
 
 ```
 
-218
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17298,7 +17080,6 @@ For example, if the user has field access for LastName, this query returns Id an
 There are some restrictions while querying polymorphic lookup fields using `WITH SECURITY_ENFORCED` . Polymorphic fields are
 relationship fields that can point to more than one entity.
 
-219
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17383,7 +17164,6 @@ only set security on Apex classes, not on triggers.
 
 To set Apex class security from a permission set:
 
-220
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17448,7 +17228,6 @@ Salesforce has the following types of sharing:
 Managed sharing involves sharing access granted by Lightning Platform based on record ownership, the role hierarchy, and sharing
 rules:
 
-221
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17508,7 +17287,6 @@ Associated record owner or sharing `ImplicitParent`
 
 Owner `Owner`
 
-222
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17563,7 +17341,6 @@ Full Access All The specified user or group can view, edit, transfer, share, and
 
 Note: This access level can only be granted with managed sharing.
 
-223
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17637,7 +17414,6 @@ the parent object. For more information, see Understanding Sharing on page 221.
 `RowCause` The reason why the user or group is being granted access. The reason determines the type of sharing,
 which controls who can alter the sharing record. This field can’t be updated.
 
-224
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17713,7 +17489,6 @@ removed when ownership changes.
 
 ```
 
-225
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17808,7 +17583,6 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-226
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17887,7 +17661,6 @@ end with an underscore, and not contain two consecutive underscores.
 
 Note: Apex sharing reasons and Apex managed sharing recalculation are only available for custom objects.
 
-227
 
 Apex Developer Guide Working with Data in Apex
 
@@ -17972,7 +17745,6 @@ and Recruiter.
 
 ```
 
-228
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18052,7 +17824,6 @@ automatically made accessible to Roles, Internal, and Portal Subordinates. To se
 so that it creates shares to the Role and Internal Subordinates group. Because this conversion is a large-scale operation, consider
 using batch Apex.
 
-229
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18119,7 +17890,6 @@ the email address with a valid email address to which you want to send error not
 
 ```
 
-230
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18204,7 +17974,6 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-231
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18301,7 +18070,6 @@ Apex Developer Guide Working with Data in Apex
 
 ```
 
-232
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18395,7 +18163,6 @@ class is invoked by a test method, the email notifications won’t be sent in th
 
 ```
 
-233
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18485,7 +18252,6 @@ To associate an Apex managed sharing recalculation class with a custom object:
 
 **3.** Click **Save** .
 
-234
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18545,7 +18311,6 @@ For example, assume this script is included in a Lightning Platform page using a
 
 ```
 
-235
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18621,7 +18386,6 @@ in JavaScript.
 
 ```
 
-236
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18701,7 +18465,6 @@ HTML entity equivalents and inserting escape characters before unsafe JavaScript
 is a convenience function that is equivalent to `JSENCODE(HTMLENCODE((` _**`someValue`**_ `))` . That is, `JSINHTMLENCODE`
 first encodes _`someValue`_ with `HTMLENCODE`, and then encodes the result with `JSENCODE` .
 
-237
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18783,7 +18546,6 @@ For more information and traditional defenses:
 
 **•** [http://www.cgisecurity.com/csrf-faq.html](http://www.cgisecurity.com/csrf-faq.html)
 
-238
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18864,7 +18626,6 @@ Here’s a simple example of Apex and Visualforce code vulnerable to SOQL inject
 
 ```
 
-239
 
 Apex Developer Guide Working with Data in Apex
 
@@ -18961,7 +18722,6 @@ If you must use dynamic SOQL, use the `escapeSingleQuotes` method to sanitize us
 escape character (\) to all single quotation marks in a string that is passed in from a user. The method ensures that all single quotation
 marks are treated as enclosing strings, instead of database commands.
 
-240
 
 Apex Developer Guide Working with Data in Apex
 
@@ -19033,7 +18793,6 @@ A type of custom setting that uses a built-in hierarchical logic that lets you �
 hierarchy logic checks the organization, profile, and user settings for the current user and returns the most specific, or “lowest,” value.
 In the hierarchy, settings for an organization are overridden by profile settings, which, in turn, are overridden by user settings.
 
-241
 
 Apex Developer Guide Working with Data in Apex
 
@@ -19102,7 +18861,6 @@ The following example uses the `getOrgDefaults` method to return the data set va
 
 ```
 
-242
 
 ### Apex Developer Guide Document Your Apex Code
 
@@ -19168,7 +18926,6 @@ asterisk and any whitespace that precedes it on the line.
 
 ```
 
-243
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19205,15 +18962,12 @@ This table provides a comprehensive ApexDoc tag reference.
 
 **Table 3: ApexDoc Tags**
 
-244
 
 Apex Developer Guide Document Your Apex Code
 
-245
 
 Apex Developer Guide Document Your Apex Code
 
-246
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19260,7 +19014,6 @@ public without sharing class DataAggregationService {
 
 ```
 
-247
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19334,7 +19087,6 @@ the conditions causing them. This documentation is crucial for identifying gaps 
 
 For examples of methods and constructors with ApexDoc comments, see ApexDoc Examples on page 250.
 
-248
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19421,7 +19173,6 @@ usage.
 
 Refer to this table as you write ApexDoc comments for elements with Apex annotations.
 
-249
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19435,7 +19186,6 @@ ApexDoc Comment Structure and Tags
 
 See practical examples of ApexDoc comments applied to various Apex constructs.
 
-250
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19544,7 +19294,6 @@ Class Example
 
 ```
 
-251
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19648,7 +19397,6 @@ Packaged Class Example
 
 ```
 
-252
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19759,7 +19507,6 @@ Apex Developer Guide Document Your Apex Code
 
 ```
 
-253
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19865,7 +19612,6 @@ Test Class Example
 
 ```
 
-254
 
 Apex Developer Guide Document Your Apex Code
 
@@ -19974,7 +19720,6 @@ Apex Developer Guide Document Your Apex Code
 
 ```
 
-255
 
 Apex Developer Guide Document Your Apex Code
 
@@ -20071,7 +19816,6 @@ Apex Developer Guide Document Your Apex Code
 
 ```
 
-256
 
 Apex Developer Guide Document Your Apex Code
 
@@ -20178,7 +19922,6 @@ Method Example (with params, return, throws)
 
 ```
 
-257
 
 Apex Developer Guide Document Your Apex Code
 
@@ -20288,7 +20031,6 @@ Annotated Method (@AuraEnabled) Example
 
 ```
 
-258
 
 Apex Developer Guide Document Your Apex Code
 
@@ -20392,7 +20134,6 @@ External Reference Example
 
 ```
 
-259
 
 Apex Developer Guide Document Your Apex Code
 
@@ -20496,7 +20237,6 @@ Inline Tags Example
 
 ```
 
-260
 
 ## Apex Developer Guide Running Apex
 
@@ -20562,7 +20302,6 @@ records, such as insertions, updates, or deletions.
 Apex offers multiple ways for running your Apex code asynchronously. Choose the asynchronous Apex feature that best suits your
 needs.
 
-261
 
 Apex Developer Guide Invoking Apex
 
@@ -20625,7 +20364,6 @@ Compile and execute anonymous blocks using one of the following:
 You can use anonymous blocks to quickly evaluate Apex in the Developer Console or using the Salesforce Extensions for Visual Studio
 Code and Code Builder.
 
-262
 
 Apex Developer Guide Invoking Apex
 
@@ -20698,7 +20436,6 @@ Developer Console. Such users are allowed to run the following in an anonymous b
 
 **•** Code that they write in the anonymous block
 
-263
 
 Apex Developer Guide Invoking Apex
 
@@ -20763,7 +20500,6 @@ This includes both direct and indirect operations. For example, if you update ac
 inserts contact _`B`_, and the after insert trigger of contact _`B`_ queries for account _`A`_ and updates it using the DML `update` statement or
 database method, then you are indirectly updating account _`A`_ in its before trigger, and you will receive a runtime error.
 
-264
 
 Apex Developer Guide Invoking Apex
 
@@ -20834,7 +20570,6 @@ You can write triggers for the FeedItem and FeedComment objects.
 You can write triggers for KnowledgeArticleVersion objects. Learn when you can use triggers, and which actions don’t fire triggers,
 like archiving articles.
 
-265
 
 Apex Developer Guide Invoking Apex
 
@@ -20906,7 +20641,6 @@ Apex, or the API.
 `isUpdate` Returns `true` if this trigger was fired due to an update operation, from the Salesforce user interface,
 Apex, or the API.
 
-266
 
 Apex Developer Guide Invoking Apex
 
@@ -20978,7 +20712,6 @@ value is set to `null` in these variables:
 
 **•** `oldMap`
 
-267
 
 Apex Developer Guide Invoking Apex
 
@@ -21082,7 +20815,6 @@ for specific trigger conditions:
 
 ```
 
-268
 
 Apex Developer Guide Invoking Apex
 
@@ -21192,7 +20924,6 @@ Not allowed. A runtime error is
 thrown. The deletion is already
 in progress.
 
-269
 
 Apex Developer Guide Invoking Apex
 
@@ -21282,7 +21013,6 @@ trigger oppLineTrigger on OpportunityLineItem (before insert) {
 
 ```
 
-270
 
 Apex Developer Guide Invoking Apex
 
@@ -21347,7 +21077,6 @@ deselected if you only want to store the code in your organization's metadata. T
 
 **5.** In the `Body` text box, enter the Apex for the trigger. A single trigger can be up to 1 million characters in length.
 
-271
 
 Apex Developer Guide Invoking Apex
 
@@ -21419,7 +21148,6 @@ or trigger.
 **•** To use a regular expression as your search string, select the **Regular Expressions** option. The regular expressions follow
 JavaScript's regular expression rules. A search using regular expressions can find strings that wrap over more than one line.
 
-272
 
 Apex Developer Guide Invoking Apex
 
@@ -21482,7 +21210,6 @@ The `after undelete` trigger events only run on top-level objects. For example, 
 be deleted. When you recover the Account from the Recycle Bin, the Opportunity is also recovered. If there is an `after undelete`
 trigger event associated with both the Account and the Opportunity, only the Account `after undelete` trigger event executes.
 
-273
 
 Apex Developer Guide Invoking Apex
 
@@ -21553,7 +21280,6 @@ Additionally, if the request is from a User object on a standard UI edit page, S
 **•** For requests from multiline item creation such as quote line items and opportunity line items, Salesforce runs custom validation
 rules.
 
-274
 
 Apex Developer Guide Invoking Apex
 
@@ -21623,7 +21349,6 @@ procedure.
 **20.** After the changes are committed to the database, executes post-commit logic. Examples of post-commit logic (in no particular
 order) include:
 
-275
 
 Apex Developer Guide Invoking Apex
 
@@ -21692,7 +21417,6 @@ some system bulk operations don't invoke triggers. Some examples include:
 
 **•** Changing a user's default division with the transfer division option checked
 
-276
 
 Apex Developer Guide Invoking Apex
 
@@ -21753,7 +21477,6 @@ Triggers fire when the Attachment object is created via Email-to-Case or via the
 
 When you create triggers, consider the behavior of certain entities, fields, and operations.
 
-277
 
 Apex Developer Guide Invoking Apex
 
@@ -21825,7 +21548,6 @@ We recommend using the following date and time fields to create or update events
 
 **•** We recommend that you use `DurationInMinutes` because it works with all updates and creates for Events.
 
-278
 
 Apex Developer Guide Invoking Apex
 
@@ -21885,7 +21607,6 @@ versions before 21.0.
 
 In addition, the `ContentData` field isn’t available in any delete trigger.
 
-279
 
 Apex Developer Guide Invoking Apex
 
@@ -21947,7 +21668,6 @@ Other Chatter Trigger Considerations
 a member of that group. If the running user isn't a member, you can set the `CreatedById` field to be a member of the group in
 the FeedItem record.
 
-280
 
 Apex Developer Guide Invoking Apex
 
@@ -22015,7 +21735,6 @@ The `before delete` and `after delete` triggers are called in these cases:
 
 **•** When deleting a translation draft.
 
-281
 
 Apex Developer Guide Invoking Apex
 
@@ -22082,7 +21801,6 @@ runtime engine still processes every record in the operation to compile a compre
 **•** If the trigger was spawned by a bulk DML call in the Lightning Platform API, the runtime engine sets aside the bad records and
 attempts to do a partial save of the records that did not generate errors. See Bulk DML Exception Handling on page 162.
 
-282
 
 Apex Developer Guide Invoking Apex
 
@@ -22161,7 +21879,6 @@ Developing Code in the Cloud
 
 Apex offers multiple ways for running your Apex code asynchronously. Choose the asynchronous Apex feature that best suits your needs.
 
-283
 
 Apex Developer Guide Invoking Apex
 
@@ -22195,7 +21912,6 @@ synchronous Apex, such as heap size limits.
 
 Important: If an Apex transaction rolls back, any queueable jobs queued for execution by the transaction aren’t processed.
 
-284
 
 Apex Developer Guide Invoking Apex
 
@@ -22270,7 +21986,6 @@ with a specified minimum delay (0–10 minutes). The delay is ignored during Ape
 
 See `[System.enqueueJob(queueable, delay)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_enqueueJob_2)` in the _Apex Reference Guide_ .
 
-285
 
 Apex Developer Guide Invoking Apex
 
@@ -22348,7 +22063,6 @@ Apex method executions.
 
 ```
 
-286
 
 Apex Developer Guide Invoking Apex
 
@@ -22440,7 +22154,6 @@ created.
 
 ```
 
-287
 
 Apex Developer Guide Invoking Apex
 
@@ -22520,7 +22233,6 @@ queueable job.
 **•** When chaining jobs with `System.enqueueJob`, you can add only one job from an executing job. Only one child job can exist
 for each parent queueable job. Starting multiple child jobs from the same queueable job isn’t supported.
 
-288
 
 Apex Developer Guide Invoking Apex
 
@@ -22583,7 +22295,6 @@ method. Set the `asyncOptions` parameter to the `AsyncOptions` instance with the
 unique job. When the new job is enqueued, the system checks for existing enqueued jobs with the same signature. If other enqueued
 jobs with the same signature are found, then the enqueue operation for the new job fails, and a DuplicateMessageException is thrown.
 
-289
 
 Apex Developer Guide Invoking Apex
 
@@ -22669,7 +22380,6 @@ The Queueable job and the Finalizer run in separate Apex and Database transactio
 the Finalizer can include REST callouts. Using a finalizer doesn’t count as an extra execution against your daily Async Apex limit. Synchronous
 governor limits apply for the Finalizer transaction, except in these cases where asynchronous limits apply:
 
-290
 
 Apex Developer Guide Invoking Apex
 
@@ -22753,7 +22463,6 @@ Implementation Details
 
 **•** Only one finalizer instance can be attached to any Queueable job.
 
-291
 
 Apex Developer Guide Invoking Apex
 
@@ -22840,7 +22549,6 @@ Queueable job fails, and can be accessed for use in DML in finalizer implementat
 
 ```
 
-292
 
 Apex Developer Guide Invoking Apex
 
@@ -22933,7 +22641,6 @@ a queueable chaining limit of 5 retries.
 
 ```
 
-293
 
 Apex Developer Guide Invoking Apex
 
@@ -23025,7 +22732,6 @@ We urge ISVs to exercise caution in using global Finalizers with state-mutating 
 invokes such methods in the global Finalizer, it can result in unexpected behavior. Examine all state-mutating methods to see how they
 affect the finalizer state and overall behavior.
 
-294
 
 Apex Developer Guide Invoking Apex
 
@@ -23050,7 +22756,6 @@ tasks using Batch Apex.
 To invoke Apex classes to run at specific times, first implement the `Schedulable` interface for the class, then specify the schedule
 using either the Schedule Apex page in the Salesforce user interface, or the `System.schedule` method.
 
-295
 
 Apex Developer Guide Invoking Apex
 
@@ -23134,7 +22839,6 @@ You can also use the `Schedulable` interface with batch Apex classes. The follow
 
 ```
 
-296
 
 Apex Developer Guide Invoking Apex
 
@@ -23221,7 +22925,6 @@ Testing the Apex Scheduler
 
 Here’s an example of how to test using the Apex scheduler.
 
-297
 
 Apex Developer Guide Invoking Apex
 
@@ -23306,7 +23009,6 @@ This code tests the class:
 
 ```
 
-298
 
 Apex Developer Guide Invoking Apex
 
@@ -23379,7 +23081,6 @@ _`Hours`_ 0–23 `, - * /`
 
 _`Day_of_month`_ 1–31 `, - * ? / L W`
 
-299
 
 Apex Developer Guide Invoking Apex
 
@@ -23449,7 +23150,6 @@ begin, and the number after the slash is the interval amount. For example, if yo
 `1/5` for _`Day_of_month`_, the Apex class runs every fifth day of the month, starting
 on the first of the month.
 
-300
 
 Apex Developer Guide Invoking Apex
 
@@ -23513,7 +23213,6 @@ Using the **`System.scheduleBatch`** Method for Batch Jobs
 You can call the `System.scheduleBatch` method to schedule a batch job to run one time at a specified time in the future. This
 method is available only for batch classes and doesn’t require the implementation of the `Schedulable` interface. It’s therefore easy
 
-301
 
 Apex Developer Guide Invoking Apex
 
@@ -23573,7 +23272,6 @@ see the message `You can bypass this error by allowing deployments with Apex job
 that you first delete the scheduled job, and then deploy your changes. After deployment, create a new scheduled job with the
 updated class.
 
-302
 
 Apex Developer Guide Invoking Apex
 
@@ -23634,7 +23332,6 @@ To use batch Apex, write an Apex class that implements the Salesforce-provided i
 the class programmatically. To monitor or stop the execution of the batch Apex job, from Setup, enter _`Apex Jobs`_ in the Quick Find
 box and then select **Apex Jobs** .
 
-303
 
 Apex Developer Guide Invoking Apex
 
@@ -23706,7 +23403,6 @@ Use this object to track the progress of the batch job.
 
 The following is the instance method with the `Database.BatchableContext` object:
 
-304
 
 Apex Developer Guide Invoking Apex
 
@@ -23795,7 +23491,6 @@ The following example uses a `Database.QueryLocator` :
 
 ```
 
-305
 
 Apex Developer Guide Invoking Apex
 
@@ -23876,7 +23571,6 @@ value of 2,000. If set to a higher value, Salesforce chunks the records returned
 if you use a high number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100, 200, 400 and so
 on.
 
-306
 
 Apex Developer Guide Invoking Apex
 
@@ -23947,7 +23641,6 @@ The following table lists all possible statuses for a batch job along with a des
 Holding Job has been submitted and is held in the Apex flex queue until
 system resources become available to queue the job for processing.
 
-307
 
 Apex Developer Guide Invoking Apex
 
@@ -24014,7 +23707,6 @@ corresponding scheduled job.
 
 [For more information, see CronTrigger in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_crontrigger.htm) _Object Reference for Salesforce._
 
-308
 
 Apex Developer Guide Invoking Apex
 
@@ -24097,7 +23789,6 @@ You can use this code to call the previous class.
 
 ```
 
-309
 
 Apex Developer Guide Invoking Apex
 
@@ -24192,7 +23883,6 @@ The following class uses batch Apex to reassign all accounts owned by a specific
 
 ```
 
-310
 
 Apex Developer Guide Invoking Apex
 
@@ -24291,7 +23981,6 @@ To use a callout in batch Apex, specify `Database.AllowsCallouts` in the class d
 
 Callouts include HTTP requests and methods defined with the `webservice` keyword.
 
-311
 
 Apex Developer Guide Invoking Apex
 
@@ -24377,7 +24066,6 @@ instances of the `Database.Batchable` methods. For example:
 
 ```
 
-312
 
 Apex Developer Guide Invoking Apex
 
@@ -24455,7 +24143,6 @@ The following example tests the `OwnerReassignment` class.
 
 ```
 
-313
 
 Apex Developer Guide Invoking Apex
 
@@ -24536,7 +24223,6 @@ exception is thrown, and the remaining executions are left unchanged. The licens
 Salesforce and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only users, Identity users, and Company
 Communities users.
 
-314
 
 Apex Developer Guide Invoking Apex
 
@@ -24601,7 +24287,6 @@ managed package and the subscribing org is running the batch job, notifications 
 of errors, progress, and submitter, use the `AsyncApexJob` record’s ID. For more information about the `AsyncApexJob` object,
 [see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
 
-315
 
 Apex Developer Guide Invoking Apex
 
@@ -24667,7 +24352,6 @@ because of the relationship subquery:
 A better strategy is to perform the subquery separately, from within the `execute` method, which allows the batch job to run
 using the faster, chunking implementation.
 
-316
 
 Apex Developer Guide Invoking Apex
 
@@ -24728,7 +24412,6 @@ Batch Apex classes can fire platform events when encountering an error or except
 information, such as how often the event failed and which records were in scope at the time of failure. Events are also fired for Salesforce
 Platform internal errors and other uncatchable Apex exceptions such as LimitExceptions, which are caused by reaching governor limits.
 
-317
 
 Apex Developer Guide Invoking Apex
 
@@ -24816,7 +24499,6 @@ Testing BatchApexErrorEvent Messages Published from Batch Apex Jobs
 Use the `Test.getEventBus().deliver()` method to deliver event messages that are published by failed batch Apex jobs.
 Use the `Test.startTest()` and `Test.stopTest()` statement block to execute the batch job.
 
-318
 
 Apex Developer Guide Invoking Apex
 
@@ -24894,7 +24576,6 @@ take sObjects or objects as arguments.
 The reason why sObjects can’t be passed as arguments to future methods is because the sObject can change between the time you call
 the method and the time it executes. In this case, the future method gets the old sObject values and can overwrite them. To work with
 
-319
 
 Apex Developer Guide Invoking Apex
 
@@ -24989,7 +24670,6 @@ This `Util` class contains the future method for inserting a user with a non-nul
 
 ```
 
-320
 
 Apex Developer Guide Invoking Apex
 
@@ -25064,7 +24744,6 @@ To test methods defined with the `future` [annotation, call the class containing
 asynchronous calls made after the `startTest` method are collected by the system. When `stopTest` is executed, all asynchronous
 processes are run synchronously.
 
-321
 
 Apex Developer Guide Invoking Apex
 
@@ -25145,7 +24824,6 @@ enable Apex to invoke external web or HTTP services.
 
 **•** Apex REST API exposes your Apex classes and methods as REST web services. See Exposing Apex Classes as REST Web Services.
 
-322
 
 Apex Developer Guide Invoking Apex
 
@@ -25212,7 +24890,6 @@ to define a class or an inner class method.
 
 **•** System-defined enums cannot be used in Web service methods.
 
-323
 
 Apex Developer Guide Invoking Apex
 
@@ -25294,7 +24971,6 @@ The following example shows a class with Web service member variables and a Web 
 
 ```
 
-324
 
 Apex Developer Guide Invoking Apex
 
@@ -25374,7 +25050,6 @@ used, and any user who has access to these methods can use their full power, reg
 rules. Developers who expose methods using the Apex REST annotations should therefore take care that they are not inadvertently
 exposing any sensitive data.
 
-325
 
 Apex Developer Guide Invoking Apex
 
@@ -25386,7 +25061,6 @@ You can expose your Apex class and methods so that external applications can acc
 architecture. This is done by defining your Apex class with the `@RestResource` annotation to expose it as a REST resource. Similarly,
 add annotations to your methods to expose them through REST. For example, you can add the `@HttpGet` annotation to your method
 to expose it as a REST resource that can be called by an HTTP `GET` request. For more information, see Apex REST Annotations on page
-114
 
 These are the classes containing methods and properties you can use with Apex REST.
 
@@ -25434,7 +25108,6 @@ Use these annotations to expose an Apex class as a RESTful Web service.
 
 **•** `@HttpPut`
 
-326
 
 Apex Developer Guide Invoking Apex
 
@@ -25501,7 +25174,6 @@ in a managed package namespace called `packageNamespace` and the Apex REST metho
 `https://` _`instance`_ `.salesforce.com/services/apexrest/packageNamespace/MyMethod/` . For more
 information about managed packages, see What is a Package?.
 
-327
 
 Apex Developer Guide Invoking Apex
 
@@ -25587,7 +25259,6 @@ The `public`, `private`, or `global` class member variables must be types allowe
 
 **•** Apex primitives (excluding sObject and Blob).
 
-328
 
 Apex Developer Guide Invoking Apex
 
@@ -25676,7 +25347,6 @@ the following:
 
 ```
 
-329
 
 Apex Developer Guide Invoking Apex
 
@@ -25766,7 +25436,6 @@ if you define an Apex REST method such as:
 
 ```
 
-330
 
 Apex Developer Guide Invoking Apex
 
@@ -25843,7 +25512,6 @@ DELETE, GET, PATCH, POST, PUT 415 The XML parameter type is unsupported.
 DELETE, GET, PATCH, POST, PUT 415 The Content-Header Type specified in the HTTP request header
 is unsupported.
 
-331
 
 Apex Developer Guide Invoking Apex
 
@@ -25901,7 +25569,6 @@ record.
 
 For more information about authenticating with `cURL` [, see the Quick Start section of the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/quickstart.htm) _REST API Developer Guide_ .
 
-332
 
 Apex Developer Guide Invoking Apex
 
@@ -26000,7 +25667,6 @@ After calling the `doGet` method, Salesforce returns a JSON response with data s
 
 ```
 
-333
 
 Apex Developer Guide Invoking Apex
 
@@ -26096,7 +25762,6 @@ Click **New** and add the following code to your new class:
 
 ```
 
-334
 
 Apex Developer Guide Invoking Apex
 
@@ -26184,7 +25849,6 @@ To use email services, from Setup, enter _`Email Services`_ in the `Quick Find` 
 
 **•** Click **Delete** to delete an email service.
 
-335
 
 Apex Developer Guide Invoking Apex
 
@@ -26258,7 +25922,6 @@ The following is an example of how you can look up a contact based on the inboun
 
 ```
 
-336
 
 Apex Developer Guide Invoking Apex
 
@@ -26349,7 +26012,6 @@ for the word “unsubscribe.” If the word is found, the code finds all contact
 
 ```
 
-337
 
 Apex Developer Guide Invoking Apex
 
@@ -26442,7 +26104,6 @@ Apex Developer Guide Invoking Apex
 
 ```
 
-338
 
 Apex Developer Guide Invoking Apex
 
@@ -26543,7 +26204,6 @@ Apex Developer Guide Invoking Apex
 
 ```
 
-339
 
 Apex Developer Guide Invoking Apex
 
@@ -26628,7 +26288,6 @@ _Apex Reference Guide_ [: InboundEnvelope Class](https://developer.salesforce.co
 
 _Apex Reference Guide_ [: InboundEmailResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_email_inbound_result.htm)
 
-340
 
 Apex Developer Guide Invoking Apex
 
@@ -26694,7 +26353,6 @@ differences from normal action methods.
 
 **•** The response handler callback function you add to or include in your Visualforce page, written in JavaScript.
 
-341
 
 Apex Developer Guide Invoking Apex
 
@@ -26754,7 +26412,6 @@ To invoke Apex through anonymous blocks or public `webservice` methods, include 
 
 Note: For AJAX buttons, use the alternate forms of these includes.
 
-342
 
 ### Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -26847,7 +26504,6 @@ efficient use of resources on the Lightning Platform multitenant platform.
 
 Most of the governor limits are per transaction, and some aren’t, such as 24-hour limits.
 
-343
 
 #### Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -26902,7 +26558,6 @@ funds from one bank account to another is a common scenario. It involves debitin
 with the amount to transfer. These two operations must be committed together to the database. If the debit operation succeeds and
 the credit operation fails, the account balances become inconsistent.
 
-344
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -26992,7 +26647,6 @@ the invoice statements and line items are rolled back and aren’t inserted into
 
 ```
 
-345
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27059,7 +26713,6 @@ Total stack depth for any Apex invocation that recursively fires triggers due to
 
 Total number of callouts (HTTP requests or web services calls) in a transaction 100 100
 
-346
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27126,7 +26779,6 @@ of SOQL statements issued in a request.
 
 **•** `Database.setSavePoint`
 
-347
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27146,7 +26798,6 @@ Apex Developer Guide Apex Transactions and Governor Limits
 
 **•** `System.runAs`
 
-3
 Recursive Apex that doesn’t fire any triggers with `insert`, `update`, or `delete` statements, exists in a single invocation, with a
 single stack. Conversely, recursive Apex that fires a trigger spawns the trigger in a new Apex invocation. The new invocation is separate
 from the invocation of the code that caused it to fire. Spawning a new invocation of Apex is a more expensive operation than a recursive
@@ -27190,7 +26841,6 @@ limit is 11 times the per-namespace limit of 100. These queries can be performed
 as any one namespace doesn't have more than 100 queries. The cumulative limit doesn’t affect limits that are shared across all namespaces,
 such as the limit on maximum CPU time.
 
-348
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27257,7 +26907,6 @@ of 100 licenses to one
 concurrent long-running Apex
 transaction [9] .
 
-349
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27292,7 +26941,6 @@ The greater of 500 or 20
 multiplied by the number of test
 classes in the org
 
-1
 For Batch Apex, method executions include executions of the `start`, `execute`, and `finish` methods. This limit is for your entire
 org and is shared with all asynchronous Apex: Batch Apex, Queueable Apex, scheduled Apex, and future methods. The license types
 that count toward this limit include full Salesforce and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only
@@ -27309,7 +26957,6 @@ any batch job to fail. `execute` methods of batch Apex jobs still run in paralle
 5 This limit applies to tests running asynchronously. This group of tests includes tests started through the Salesforce user interface
 including the Developer Console or by inserting `ApexTestQueueItem` objects using SOAP API.
 
-6
 To check how many asynchronous Apex executions are available, make a request to REST API `limits` resource or use Apex methods
 `OrgLimits.getAll()` or `OrgLimits.getMap()` [. See List Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ [and OrgLimits](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm)
 [Class in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm) _Apex Reference Guide_ .
@@ -27324,7 +26971,6 @@ are left unchanged.
 8 The license types that count toward this limit include full Salesforce and Salesforce Platform user licenses, App Subscription user licenses,
 Chatter Only users, Identity users, and Company Communities users.
 
-350
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27381,7 +27027,6 @@ defined with the `@isTest` annotation.
 [4 For scratch orgs, the limit is 10MB. The limit can be increased by opening a support case for your org. Before you apply for a limit](https://help.salesforce.com/s/)
 [increase, ensure that you’re following the best practices.](https://help.salesforce.com/s/articleView?id=000382172&type=1&language=en_US)
 
-351
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27443,7 +27088,6 @@ When defining email services, note the following:
 
 **•** An email service only processes messages it receives at one of its addresses.
 
-352
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27509,7 +27153,6 @@ count toward this limit.
 Each test push notification that is generated through the Test Push Notification page is limited to a single recipient. Test push notifications
 count toward an org’s hourly push notification limit.
 
-353
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27574,7 +27217,6 @@ When you develop software in a multitenant cloud environment such as the Lightni
 because the Lightning platform does it for you. Because resources are shared in a multitenant platform, the Apex runtime engine enforces
 some limits to ensure that no one transaction monopolizes shared resources.
 
-354
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27652,7 +27294,6 @@ which isn’t efficient. An alternative example is given with a modified query t
 
 **Example:** Inefficient querying of child items
 
-355
 
 Apex Developer Guide Apex Transactions and Governor Limits
 
@@ -27738,7 +27379,6 @@ merchandise items are large in size and a large number of them was returned, the
 
 **Recommended Alternative:** Query within a for loop
 
-356
 
 ### Apex Developer Guide Using Salesforce Features with Apex
 
@@ -27801,7 +27441,6 @@ Data Cloud In Apex
 You can use Apex with Data Cloud objects, with constraints and considerations that are detailed in this topic . Further, you can mock
 SOQL query responses for Data Cloud data model objects (DMOs) in Apex testing by using SOQL stub methods and a test class.
 
-357
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -27859,7 +27498,6 @@ and view the articles they need.
 Salesforce Files
 Use Apex to customize the behavior of Salesforce Files.
 
-358
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -27923,7 +27561,6 @@ _Apex Reference Guide_ [: DescribeLayoutComponent Class](https://developer.sales
 
 _Apex Reference Guide_ [: DescribeAvailableQuickActionResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_describeavailablequickactionresult.htm)
 
-359
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -27999,7 +27636,6 @@ Apex Cursor Example
 
 ```
 
-360
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28076,7 +27712,6 @@ approval process on Account exists and is valid for the Account record created.
 
 ```
 
-361
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28154,7 +27789,6 @@ exchange flow, which implements an Apex token exchange handler.
 
 You can use Apex to create a custom OAuth-based authentication provider plug-in for single sign-on (SSO) to Salesforce.
 
-362
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28244,7 +27878,6 @@ called Concur. Build the sample classes and sample test classes in the following
 
 ```
 
-363
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28341,7 +27974,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-364
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28445,7 +28077,6 @@ The following example contains test classes for the Concur class.
 
 ```
 
-365
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28538,7 +28169,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-366
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28623,7 +28253,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-367
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28699,7 +28328,6 @@ validating the identity provider’s token and mapping the token’s subject, wh
 To build an Apex token exchange handler, create a class that extends the `Auth.Oauth2TokenExchangeHandler` abstract
 class and customize its validation logic and subject mapping.
 
-368
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28794,7 +28422,6 @@ these examples to get started.
 Important: These example implementations and code snippets are for demonstration only. Use them as a starting point, but
 make sure you evaluate, customize, and test them carefully.
 
-369
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28887,7 +28514,6 @@ doesn’t find a user, so it creates a User object. To finish creating the user,
 
 ```
 
-370
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -28990,7 +28616,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-371
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29081,7 +28706,6 @@ In this example, the handler validates a JWT from the identity provider. The han
 For opaque access tokens, which can’t be introspected locally on your app, call out to the introspection or user info endpoints on the
 external identity provider. In this example for validating an opaque token, the handler sends a POST request to the identity provider’s
 
-372
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29181,7 +28805,6 @@ response using the `validateIncomingToken` method.
 
 ```
 
-373
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29262,7 +28885,6 @@ Salesforce user. If no user exists, it creates a User object.
 
 ```
 
-374
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29336,7 +28958,6 @@ Review walkthroughs, use cases, and reference material for the `CommercePayments
 
 To review `CommercePayments` [class reference docs, go to CommercePayments Namespace.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_commercepayments.htm)
 
-375
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29394,7 +29015,6 @@ sends a notification, which contains the final transaction status. The platform 
 Set Up an Asynchronous Payment Gateway Adapter
 For payments transactions, you can configure Salesforce to interface with an asynchronous payment gateway adapter.
 
-376
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29472,7 +29092,6 @@ First, it builds a payment request object that the gateway can understand.
 Note: We don't recommend encoding the request body, which contains the merge fields, including the card number and CVV.
 This can cause the request to fail to read the encoded request body and to fail to replace the merge field values.
 
-377
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29554,7 +29173,6 @@ Gateway Adapter.
 
 **b.** Complete the required fields, including the URL for your payment gateway.
 
-378
 
 EDITIONS
 
@@ -29639,7 +29257,6 @@ The asynchronous process differs from synchronous transactions, where the platfo
 initial gateway request. Instead, the platform creates a transaction only after the gateway sends a response containing the final transaction
 status. For information on building a synchronous adapter, review Building a Synchronous Gateway Adapter.
 
-379
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29728,7 +29345,6 @@ Then, the adapter sends the request to the payment gateway.
 
 ```
 
-380
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29823,7 +29439,6 @@ include status, referenceNumber, event, and amount. The `notificationStatus` obj
 whether the platform successfully received the notification. If the notification’s event code indicates that the gateway processed a
 payment capture transaction, the adapter builds a notification object using the `CaptureNotification` class. If the event code
 
-381
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -29925,7 +29540,6 @@ acknowledgment.
 
 ```
 
-382
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30002,7 +29616,6 @@ Use this payload as the request body, replacing _`value`_ with the correct data.
 
 ```
 
-383
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30080,7 +29693,6 @@ _[Object Reference for the Salesforce Platform](https://developer.salesforce.com
 The final sections of a payment gateway adapter should define how the adapter creates requests and responses. The implementation
 of these classes can vary widely based on your gateway and platform requirements. We’ve provided several generics examples for review.
 
-384
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30176,7 +29788,6 @@ Example:
 
 ```
 
-385
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30258,7 +29869,6 @@ The payment gateway adapter sends this class as a response for an Authorization 
 
 ```
 
-386
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30343,7 +29953,6 @@ Then, add a class that sets the amount of the authorization reversal request, ga
 
 ```
 
-387
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30410,7 +30019,6 @@ accepted.
 
 **Table 8: Reversal Service Input Parameters**
 
-388
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30460,7 +30068,6 @@ This request calls a $150 reversal against an authorization.
 
 **Sample Response - Success**
 
-389
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30550,7 +30157,6 @@ Use the tokenization service to hide sensitive customer payment method data. The
 `PaymentMethodTokenizationRequest`, `PaymentMethodTokenizationResponse`, and
 `CardPaymentMethodRequest` . Implement these classes in your payment gateway adapter.
 
-390
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30622,7 +30228,6 @@ createTokenizeResponse((commercepayments.PaymentMethodTokenizationRequest)gatewa
 
 ```
 
-391
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30718,7 +30323,6 @@ If the instantiated class already has a gateway token, `setGatewayTokenEncrypted
 Note: While the PaymentMethodTokenizationResponse's `[setGatewayToken](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_PaymentMethodTokenizationResponse.htm#apex_commercepayments_PaymentMethodTokenizationResponse_setGatewayToken)` method (available in API v48.0 and later) also
 returns a payment method token, the tokenized value isn't encrypted.
 
-392
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30751,7 +30355,6 @@ Call the tokenization service by making a POST request to this endpoint.
 
 The Tokenization Service accepts these request parameters from payment and related entities.
 
-393
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30862,7 +30465,6 @@ payment gateway logs.
 
 ```
 
-394
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -30956,7 +30558,6 @@ Next, create an alternative payment method record for the `AlternativePaymentMet
 
 ```
 
-395
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31055,7 +30656,6 @@ Spring ’20
 
 ```
 
-396
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31141,7 +30741,6 @@ The payment gateway adapter class is linked to a paymentGatewayProvider object r
 Payments provides its own layer of idempotency for its own service request. Each payment gateway
 can also specify their `idempotencySupported` value in the paymentGatewayProvider object record. If Salesforce CCS Payment
 
-397
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31214,7 +30813,6 @@ Serializing and Deserializing ConnectApi Objects
 When `ConnectApi` output objects are serialized into JSON, the structure is similar to the JSON returned from Connect REST API.
 When `ConnectApi` input objects are deserialized from JSON, the format is also similar to Connect REST API.
 
-398
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31276,7 +30874,6 @@ Create one action link in an action link group, associate the action link group 
 Define an Action Link in a Template and Post with a Feed Element
 Create an action link and action link group and instantiate the action link group from a template.
 
-399
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31340,7 +30937,6 @@ Call a method to get allowed item types.
 Get Previews
 Call a method to get all supported preview formats and their respective URLs.
 
-400
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31402,7 +30998,6 @@ signature is the name of the method and its parameters in order.
 Each signature lets you send different inputs. For example, one signature may specify the feed type and the subject ID. Another signature
 could have those parameters and an additional parameter to specify the maximum number of comments to return for each feed element.
 
-401
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31485,7 +31080,6 @@ Call `[postFeedElement(communityId, subjectId, feedElementType, text)](https://d
 The second parameter, `subjectId` is the ID of the parent this feed element is posted to. The value can be the ID of a user, group, or
 record, or the string `me` to indicate the context user.
 
-402
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31572,7 +31166,6 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
 ```
 
-403
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31661,7 +31254,6 @@ includes text and a mention.
 
 ```
 
-404
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31747,7 +31339,6 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
 ```
 
-405
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31825,7 +31416,6 @@ accounts.
 
 ```
 
-406
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31903,7 +31493,6 @@ accounts. Each post has a new file (binary) attachment.
 
 ```
 
-407
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31942,7 +31531,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Create one action link in an action link group, associate the action link group with a feed item, and post the feed item.
 
-408
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -31952,7 +31540,6 @@ the feed item UI is updated.
 
 Refresh the user’s feed to see the new post.
 
-409
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32043,7 +31630,6 @@ for the “To Do” comments in the code.
 
 ```
 
-410
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32129,7 +31715,6 @@ Create an action link and action link group and instantiate the action link grou
 This example creates the same action link and action link group as the example Define an Action Link and Post with a Feed Element,
 but this example instantiates the action link group from a template.
 
-411
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32162,7 +31747,6 @@ DeveloperName='Doc_Example'];
 
 ```
 
-412
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32257,7 +31841,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-413
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32345,7 +31928,6 @@ Call `[updateFeedElement(communityId, feedElementId, feedElement)](https://devel
 
 ```
 
-414
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32435,7 +32017,6 @@ bookmark a feed element.
 
 ```
 
-415
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32528,7 +32109,6 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
 ```
 
-416
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32614,7 +32194,6 @@ this example, which calls `[postCommentToFeedElement(communityId, feedElementId,
 
 ```
 
-417
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32686,7 +32265,6 @@ To post a comment and attach an existing file (already uploaded to Salesforce) t
 
 Call a method to post a comment with a new file.
 
-418
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32769,7 +32347,6 @@ Salesforce.
 
 ```
 
-419
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32854,7 +32431,6 @@ This example calls `[postCommentToFeedElement(communityId, feedElementId, commen
 
 ```
 
-420
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -32944,7 +32520,6 @@ Call `[updateComment(communityId, commentId, comment)](https://developer.salesfo
 
 ```
 
-421
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33023,7 +32598,6 @@ Call `[getRepositories()](https://developer.salesforce.com/docs/atlas.en-us.258.
 
 ```
 
-422
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33109,7 +32683,6 @@ and number of renditions. For each supported preview format, we show every rendi
 
 Call a method to get a file preview.
 
-423
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33210,7 +32783,6 @@ Call `[getRepositoryFolder(repositoryId, repositoryFolderId)](https://developer.
 
 ```
 
-424
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33306,7 +32878,6 @@ to get a repository file with permissions information.
 
 ```
 
-425
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33394,7 +32965,6 @@ URL.
 
 ```
 
-426
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33489,7 +33059,6 @@ repository folder. After the file is updated, we show the file’s ID, name, des
 
 ```
 
-427
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33582,7 +33151,6 @@ and metadata of a file in a repository. After the file is updated, we show the f
 
 ```
 
-428
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33655,7 +33223,6 @@ it to the `additionalConfig` property of the input object.
 To generate messages based on the prompt template and input parameters, call the `generateMessagesForPromptTemplate`
 method of the `ConnectApi.EinsteinLLM` class with the prompt template ID and the input object.
 
-429
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33737,7 +33304,6 @@ Resolve a Flex Prompt Template with Apex and Flow Resources
 
 ```
 
-430
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33815,7 +33381,6 @@ Resolve a Sales Email Prompt Template
 
 ```
 
-431
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33899,7 +33464,6 @@ Resolve a Summary Prompt Template
 
 ```
 
-432
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -33985,7 +33549,6 @@ use.
 
 ```
 
-433
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34055,7 +33618,6 @@ API call to Salesforce or to an external server. An action link includes a URL a
 header information, such as an OAuth token for authentication. Use action links to integrate Salesforce and third-party services into the
 feed so that users can drive productivity and accelerate innovation.
 
-434
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34104,7 +33666,6 @@ capability.
 `[ActionLinks.getActionLinkGroup(communityId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLinkGroup_1)` Get information about an action link group including state for the
 `[actionLinkGroupId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLinkGroup_1)` context user.
 
-435
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34153,7 +33714,6 @@ The workflow to create and post action links with a feed element:
 
 **1.** (Optional) Create an action link template.
 
-436
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34220,7 +33780,6 @@ Salesforce automatically authenticates these resources.
 
 Don’t use these resources for sensitive operations.
 
-437
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34283,7 +33842,6 @@ Use context variables to pass information about the user who executed the action
 HTTP request made by invoking an action link. You can use context variables in the `actionUrl`, `headers`, and `requestBody`
 properties of the Action Link Definition Input request body or `ConnectApi.ActionLinkDefinitionInput` object. You can
 
-438
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34320,7 +33878,6 @@ Action links use a predefined set of localized labels specified in the `labelKey
 
 [For a list of labels, see Actions Links Labels.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_appendices_action_links_labels.htm)
 
-439
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34361,7 +33918,6 @@ As a developer thinking about how to create the action link URL, you come up wit
 
 To dynamically create the action link URLs, you create an action link template in Setup.
 
-440
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34381,7 +33937,6 @@ with it. Even if you’re using a single action link (as in this example) it mus
 template is `Action Link Group Template`, which in this case is **Video Chat**, which is the action link group template the
 action link template is associated with.
 
-441
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34423,7 +33978,6 @@ The Salesforce UI uses one layout to display every feed item. This single layout
 developers an easy way to create UI. The layout always contains the same pieces and the pieces are always in the same position. Only
 the content of the layout pieces changes.
 
-442
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34470,7 +34024,6 @@ the date and time are formatted as an absolute, localized string.
 `fieldName` and the `oldValue` and `newValue` properties for the first two feed-tracked changes in the bundle. If there are
 more than two feed-tracked changes, the bundle displays a “Show All Updates” link.
 
-443
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34548,7 +34101,6 @@ feed when there aren’t many personalized feed items.
 **•** `Moderation` —Contains all feed items that are flagged for moderation, except direct messages. The moderation feed is available
 only to users with Moderate Experiences Feeds permissions.
 
-444
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34620,7 +34172,6 @@ also specify the context user’s ID.
 
 The `parent` property of the newly posted feed item contains the `ConnectApi.UserSummary` of the context user.
 
-445
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34707,7 +34258,6 @@ This code posts a feed item to a record and mentions a group. The _**`subjectId`
 
 ```
 
-446
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34801,7 +34351,6 @@ three characters of the object ID. The _`subjectId`_ must be the ID of the conte
 To get the feed elements from these feed types, specify a subject ID. If _`feedType`_ is `Record`, _`subjectId`_ can be any record
 ID, including a group ID. If _`feedType`_ is `Streams`, _`subjectId`_ must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_
 
-447
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34915,7 +34464,6 @@ _Apex Reference Guide_ [: ConnectApi Input Classes](https://developer.salesforce
 
 Many `ConnectApi` methods work within the context of a single Experience Cloud site.
 
-448
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -34994,7 +34542,6 @@ that require Chatter doesn’t load correctly on public site pages.
 
 **–** `[getFeedWithFeedElements()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedWithFeedElements_5)`
 
-449
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35076,7 +34623,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 **–** `[deleteInventoryReservation()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteInventoryReservation_1)` (developer preview)
 
-450
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35154,7 +34700,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 **•** `Knowledge` methods:
 
-451
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35232,7 +34777,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 **–** `[getAudienceBatch()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getAudienceBatch_1)`
 
-452
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35297,7 +34841,6 @@ class, provides validation for the SQL.
 
 The `sql` property of the `ConnectApi.CdpSegmentDbtModelInput` is subject to these validations.
 
-453
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35360,7 +34903,6 @@ SEE ALSO:
 
 Distributing Apex Using Managed Packages
 
-454
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35422,7 +34964,6 @@ Record fields are typed as `ConnectApi.AbstractRecordField` . These classes are 
 subclasses. At runtime you can use `instanceof` to check the concrete types of these objects and then safely proceed with the
 corresponding downcast. When you downcast, you must have a default case that handles unknown subclasses.
 
-455
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35495,7 +35036,6 @@ extraneous matches (such as `prosperity` ).
 the special character. For example, `"where are you\?"` finds the phrase `where are you?` . The escape character ( `\` ) is
 required in order for this search to work correctly.
 
-456
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35581,7 +35121,6 @@ This example shows a test that constructs an `ConnectApi.FeedElementPage` and re
 
 ```
 
-457
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35641,7 +35180,6 @@ Information about Connect in Apex objects doesn’t appear in `VARIABLE_ASSIGNME
 **No Apex SOAP web services support**
 Connect in Apex objects can’t be used in Apex SOAP web services indicated with the keyword `webservice` .
 
-458
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35715,7 +35253,6 @@ trigger PrivateMessageModerationTrigger on ChatterMessage (before insert) {
 If a message violates your policy, for example when the message body contains blocklisted words, you can prevent the message from
 being sent by calling the Apex `addError` method. You can call `addError` to add a custom error message on a field or on the
 
-459
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35819,7 +35356,6 @@ Part of the code in this class has been deleted for brevity.
 
 ```
 
-460
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -35922,7 +35458,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-461
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36000,7 +35535,6 @@ This example uses static SOQL with the _`UnifiedIndividual__dlm`_ Data Cloud obj
 
 ```
 
-462
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36075,7 +35609,6 @@ This example shows a mock test class for the _`SkyMilesForBusinessOptInControlle
 
 ```
 
-463
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36172,7 +35705,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-464
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36248,7 +35780,6 @@ Implementing DataWeave in Apex
 Create DataWeave scripts as metadata and invoke them directly from Apex. Use class methods and exceptions in the DataWeave
 namespace to load and execute the scripts.
 
-465
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36316,7 +35847,6 @@ Versioned Behavior Changes
 
 These versions of DataWeave script syntax are supported in Apex.
 
-466
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36408,7 +35938,6 @@ This example invokes the `csvToContacts.dwl` script.
 
 [Note: Extensive code samples that demonstrate the DataWeave in Apex feature are available on Developerforce.](https://github.com/developerforce/DataWeaveInApex)
 
-467
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36448,7 +35977,6 @@ Note: XML Entity Expansion isn’t supported, either currently or in the future,
 
 #### Moderate Feed Items with Triggers
 
-468
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36513,7 +36041,6 @@ Note: Visualforce email templates cannot be used for mass email.
 You can use Salesforce to track the status of email in HTML format, including the date the email was sent, first opened and last opened,
 and the total number of times it was opened.
 
-469
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36598,7 +36125,6 @@ this limit is reached, calls to the `sendEmail` method using `MassEmailMessage` 
 `OrgWideEmailAddress.DisplayName` field is used in the email header, instead of the logged-in user's `Display Name` .
 The sending email address in the header is also set to the field defined in `OrgWideEmailAddress.Address` .
 
-470
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36678,7 +36204,6 @@ Example
 
 ```
 
-471
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36744,7 +36269,6 @@ breadcrumbs regardless of which flow the interview is running.
 
 ```
 
-472
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36810,7 +36334,6 @@ Create the Apex Invocable Action
 
 This section shows the Apex class structure required for the invocable action that exposes configurable input parameters to a flow.
 
-473
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36909,7 +36432,6 @@ Note: Users who invoke the action from a flow must have the appropriate Apex cla
 The `invoke` method uses the `@InvocableMethod` annotation to be callable from a flow. Input and output are defined by the
 inner classes, `BookingRequest` and `BookingResult`, ensuring data integrity. The individual input variables within
 
-474
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -36988,7 +36510,6 @@ for at least one parameter, you must define an `Order` for all parameters within
 
 ```
 
-475
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37039,7 +36560,6 @@ Implementing the Process.Plugin Interface
 
 `Process.Plugin` is a built-in interface that allows you to pass data between your organization and a specified flow.
 
-476
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37118,7 +36638,6 @@ global Process.PluginResult invoke(Process.PluginRequest request) {
 
 ```
 
-477
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37206,7 +36725,6 @@ The following is a test class for the preceding class.
 
 The `Process.PluginRequest` class passes input parameters from the class that implements the interface to the flow.
 
-478
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37298,7 +36816,6 @@ In this example, the code returns the subject of a Chatter post from a flow and 
 
 ```
 
-479
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37368,7 +36885,6 @@ The `Process.PluginDescribeResult` class doesn’t support the following functio
 
 **•** Apex nested callouts
 
-480
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37473,7 +36989,6 @@ For example:
 
 ```
 
-481
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37553,7 +37068,6 @@ Date Datetime/Date
 
 DateTime Datetime/Date
 
-482
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37643,7 +37157,6 @@ free-form in Flow Builder. Existing actions can be edited in both auto-layout an
 
 ```
 
-483
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37750,7 +37263,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-484
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37856,7 +37368,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-485
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -37963,7 +37474,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-486
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38060,7 +37570,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-487
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38153,7 +37662,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-488
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38246,7 +37754,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-489
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38318,7 +37825,6 @@ SEE ALSO:
 
 _Apex Reference Guide:_ [FormulaEval Namespace](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_formulaeval.htm)
 
-490
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38376,7 +37882,6 @@ in the full name. For example, the full name for a custom metadata MDType1__mdt 
 in the myPackage namespace is myPackage__MDType1__mdt.myPackage__Component1. For more information on the metadata
 #### component full name syntax, see Metadata base type in the Metadata API Developer Guide .
 
-491
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38441,7 +37946,6 @@ Tests for deployment result code verify that your `DeployCallback` handles expec
 outside of the deployment process, create tests that use your callback class directly. You also must create test `DeployResults` and
 `DeployCallbackContext` instances to test your `DeployCallback.handleResults()` method.
 
-492
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38520,7 +38024,6 @@ SEE ALSO:
 
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
 
-493
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38579,7 +38082,6 @@ retrieve values to a session or org cache.
 best cache performance. In general, it’s more efficient to cache a few large items than to cache many small items separately. Also
 be mindful of cache limits to prevent unexpected cache evictions.
 
-494
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38637,7 +38139,6 @@ cache, see "Request Additional Platform Cache" in Salesforce Help.
 For more information about Provider Free capacity cache, see “Set Up a Platform Cache partition using Provider Free Capacity” in Salesforce
 Help.
 
-495
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38700,7 +38201,6 @@ database that cause Apex triggers to fire.
 
 These limits apply when using Platform Cache.
 
-496
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38757,7 +38257,6 @@ Minimum developer-assigned time-to-live 300 seconds (5 minutes)
 
 Maximum developer-assigned time-to-live 172,800 seconds (48 hours)
 
-497
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38816,7 +38315,6 @@ When packaging an application that uses Platform Cache, add any referenced parti
 pulled into packages automatically, as other dependencies are. Partition validation occurs during run time, rather than compile time.
 Therefore, if a partition is missing from a package, you don’t receive an error message at compile time.
 
-498
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38874,7 +38372,6 @@ Use the `Cache.Session` and `Cache.SessionPartition` classes to manage values in
 in any partition, use the methods in the `Cache.Session` class. If you’re managing cache values in one partition, use the
 `Cache.SessionPartition` methods instead.
 
-499
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -38964,7 +38461,6 @@ partition prefix.
 First, get the session partition and specify the desired partition. The partition name includes the namespace prefix:
 `namespace.partition` . You can manage the cached values in that partition by adding and retrieving cache values on the obtained
 
-500
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39051,7 +38547,6 @@ key name.
 
 ```
 
-501
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39139,7 +38634,6 @@ _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.
 
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_OrgPartition.htm)_ : OrgPartition Class
 
-502
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39221,7 +38715,6 @@ Let’s look at an example. Suppose you’re coding an Apex controller class for
 query that looks up a User record based on a user ID. SOQL queries can be expensive, and Salesforce user records don’t typically change
 much, so the User information is a good candidate for `CacheBuilder` .
 
-503
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39296,7 +38789,6 @@ either the cache or another data source. Then calculate the elapsed time.
 
 ```
 
-504
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39383,7 +38875,6 @@ When possible, group cache requests, but be aware of caching limits. To help imp
 of keys rather than on individual keys. For example, if you know which keys are necessary to invoke a Visualforce page or perform a task
 in Apex, retrieve all keys at once. To retrieve multiple keys, call `get(keys)` in an initialization method.
 
-505
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39463,7 +38954,6 @@ The size of individual cached items is limited to 100 KB. If the serialized size
 `Cache.ItemSizeLimitExceededException` exception is thrown. It’s a good practice to catch this exception and reduce
 the size of the cached item.
 
-506
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39523,7 +39013,6 @@ Suggest Salesforce Knowledge Articles
 Provide users with shortcuts to navigate to relevant articles before they perform a search. Call `Search.suggest(searchText,`
 `objectType, options)` to return a list of Salesforce Knowledge articles whose titles match a user’s search query string.
 
-507
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39594,7 +39083,6 @@ of type MyArticle__kav. Next, the sample creates a SearchPromotionRule sObject t
 
 To perform DML operations on the SearchPromotionRule sObject, you must enable Salesforce Knowledge.
 
-508
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39696,7 +39184,6 @@ are displayed. If there are more than five results, the More results button appe
 
 ```
 
-509
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39794,7 +39281,6 @@ This code is the custom Visualforce controller for the page:
 
 ```
 
-510
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39877,7 +39363,6 @@ SEE ALSO:
 
 Use Apex to customize the behavior of Salesforce Files.
 
-511
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -39936,7 +39421,6 @@ If a download isn’t allowed, a redirection can’t be handled, and an exceptio
 You can use Apex to customize the behavior of files upon attempted download. These examples assume that only one file is being
 downloaded. File download customization is available in API version 39.0 and later.
 
-512
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40020,7 +39504,6 @@ JSON response with the download endpoint in a `downloadEndpoint` value.
 
 ```
 
-513
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40116,7 +39599,6 @@ Example: You can also prevent downloading a file from a mobile device and requir
 
 ```
 
-514
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40188,7 +39670,6 @@ custom adapter.
 Considerations for the Apex Connector Framework
 Understand the limits and considerations for creating Salesforce Connect custom adapters with the Apex Connector Framework.
 
-515
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40251,7 +39732,6 @@ _Salesforce Help_ [: Client-driven and Server-driven Paging for Salesforce Conne
 
 _Salesforce Help_ [: Define an External Data Source for Salesforce Connect—OData 2.0 or 4.0 Adapter](https://help.salesforce.com/articleView?id=platform_connect_add_external_data_source.htm&language=en_US)
 
-516
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40323,7 +39803,6 @@ has a valid certificate with the same name.
 To help you test your External Change Data Capture–triggered Apex classes, here is a unit test code example of a trigger reacting to a
 simulated external change.
 
-517
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40425,7 +39904,6 @@ the test code.
 
 Note: Apex governor limits apply to the stubbed records.
 
-518
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40523,7 +40001,6 @@ This example shows a mock test class for the _`GithubIssueTest`_ class with join
 
 ```
 
-519
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40618,7 +40095,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-520
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40717,7 +40193,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-521
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40801,7 +40276,6 @@ queries and searches of the external data.
 2. Create a Sample DataSource.Provider Class Class
 Now you need a class that extends and overrides a few methods in `DataSource.Provider` .
 
-522
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40891,7 +40365,6 @@ The `query` method is invoked when a SOQL query is executed on an external objec
 executed when a user opens an external object’s list view or detail page in Salesforce. The `DataSource.QueryContext` is always
 only for a single table.
 
-523
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -40991,7 +40464,6 @@ multiple tables selected. In this example, however, the custom adapter knows abo
 
 ```
 
-524
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41085,7 +40557,6 @@ method. The example uses the passed-in `UpsertContext` to determine what table w
 the name of the selected table is `Sample` . The upsert operation is broken up into either an insert of a new record or an update of an
 existing record. These operations are performed in the external system using callouts. An array of `DataSource.UpsertResult`
 
-525
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41185,7 +40656,6 @@ hit the Apex callouts limit.
 
 ```
 
-526
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41271,7 +40741,6 @@ definition or users’ personal settings. This example specifies that the extern
 OAuth authentication. To do so, it returns `AuthenticationCapability.ANONYMOUS` and
 `AuthenticationCapability.OAUTH` in the list of authentication capabilities.
 
-527
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41360,7 +40829,6 @@ the queries and searches of the external data.
 
 ```
 
-528
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41422,7 +40890,6 @@ implementation must be able to break up large result sets into batches and itera
 in the SOAP API. The default batch size is 500 records, but the query developer can adjust that value programmatically in the query
 call.
 
-529
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41499,7 +40966,6 @@ SEE ALSO:
 
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Column.htm)_ : Column Class
 
-530
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41557,7 +41023,6 @@ in your Salesforce organization.
 For other authentication providers, you must request offline access in the authentication URL as a query parameter. For example, with
 Google, append _`?access_type=offline`_ to the `Authorize Endpoint URL` field on the authentication provider definition
 
-531
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41636,7 +41101,6 @@ A Salesforce Connect custom adapter obtains the relevant credentials that are st
 your Apex code must apply those credentials to all callouts, except those that specify named credentials as the callout endpoints. A
 named credential lets Salesforce handle the authentication logic for you so that your code doesn’t have to.
 
-532
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41712,7 +41176,6 @@ Lightning Platform knows that more data exists, your API queries return a `Query
 
 ```
 
-533
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41775,7 +41238,6 @@ The presence or absence of that sixth row in the result set indicates whether mo
 set we query against doesn’t change between queries. If the data set changes between queries, you might see repeated rows or not
 get all results.
 
-534
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41865,7 +41327,6 @@ _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.
 
 Create a Sample DataSource.Connection Class Class
 
-535
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -41943,7 +41404,6 @@ SEE ALSO:
 
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Filter.htm)_ : Filter Class
 
-536
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42038,7 +41498,6 @@ This code example illustrates how to deal with compound filters.
 
 ```
 
-537
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42136,7 +41595,6 @@ associated external objects’ custom tabs no longer appear in the Salesforce UI
 **•** Make sure that you understand the limits of the external system’s APIs. For example, some external systems accept only requests
 for up to 40 rows.
 
-538
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42199,7 +41657,6 @@ lookup relationship also links GitHub Issues to the comments on each issue.
 
 This example illustrates a range of common use cases for custom adapters, including how to:
 
-539
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42296,7 +41753,6 @@ Product2 standard object. Specify the name of the custom text field as Repositor
 
 ```
 
-540
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42401,7 +41857,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-541
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42506,7 +41961,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-542
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42607,7 +42061,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-543
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42706,7 +42159,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-544
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42807,7 +42259,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-545
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -42918,7 +42369,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-546
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43025,7 +42475,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-547
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43127,7 +42576,6 @@ This example creates a class named `GitHubDataSourceProvider` .
 
 ```
 
-548
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43224,7 +42672,6 @@ GitHubDataSourceConnection Class
 
 ```
 
-549
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43331,7 +42778,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-550
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43434,7 +42880,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-551
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43537,7 +42982,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-552
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43645,7 +43089,6 @@ GitHubDataSourceProvider Class
 
 ```
 
-553
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43738,7 +43181,6 @@ DriveDataSourceConnection Class
 
 ```
 
-554
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43849,7 +43291,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-555
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -43948,7 +43389,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-556
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44055,7 +43495,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-557
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44165,7 +43604,6 @@ DriveDataSourceProvider Class
 
 ```
 
-558
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44257,7 +43695,6 @@ BooksDataSourceConnection Class
 
 ```
 
-559
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44362,7 +43799,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-560
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44473,7 +43909,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-561
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44582,7 +44017,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-562
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44681,7 +44115,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-563
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44784,7 +44217,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-564
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44884,7 +44316,6 @@ BooksDataSourceProvider Class
 This example illustrates how to handle filtering in queries. For simplicity, this example connects the Salesforce org to itself as the external
 system.
 
-565
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -44991,7 +44422,6 @@ LoopbackDataSourceConnection Class
 
 ```
 
-566
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45102,7 +44532,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-567
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45209,7 +44638,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-568
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45320,7 +44748,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-569
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45428,7 +44855,6 @@ LoopbackDataSourceProvider Class
 
 ```
 
-570
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45530,7 +44956,6 @@ StackOverflowDataSourceConnection Class
 
 ```
 
-571
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45629,7 +45054,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-572
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45740,7 +45164,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-573
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45843,7 +45266,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-574
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -45946,7 +45368,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-575
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46047,7 +45468,6 @@ StackOverflowPostDataSourceProvider Class
 
 The Salesforce Reports and Dashboards API via Apex gives you programmatic access to your report data as defined in the report builder.
 
-576
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46117,7 +45537,6 @@ The following restrictions apply to the Reports and Dashboards API via Apex, in 
 
 **•** A list of up to 200 recently viewed reports can be returned.
 
-577
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46193,7 +45612,6 @@ To run a report synchronously, use one of the `ReportManager.runReport()` method
 
 ```
 
-578
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46275,7 +45693,6 @@ the metadata to do several things:
 Use the `ReportResults.getReportMetadata` method to retrieve report metadata. You can then use the “get” methods on
 the `ReportMetadata` class to access metadata values.
 
-579
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46356,7 +45773,6 @@ the first down-grouping.
 **6.** Get the field value from the first data cell of the first row of the report by using the `ReportFactWithDetails.getRows`
 method.
 
-580
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46437,7 +45853,6 @@ report metadata, overrides the filter value, and runs the report. The example:
 
 **2.** Sets the value in the filter to a specific date by using the `ReportFilter.setValue` method and runs the report.
 
-581
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46522,7 +45937,6 @@ _**`grouping_second level column grouping>`**_ .
 
 Each item in a row or column grouping is numbered starting with `0` . Here are some examples of fact map keys:
 
-582
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46548,7 +45962,6 @@ Summary Report Fact Map
 
 This example shows how the values in a summary report are represented in the fact map.
 
-583
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46579,7 +45992,6 @@ Like all Apex code, Salesforce Reports and Dashboards API via Apex code requires
 The Reporting Apex methods don’t run in system mode, they run in the context of the current user (also called the _context user_ or the
 _logged-in_ user). The methods have access to whatever the current user has access to.
 
-584
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46666,7 +46078,6 @@ Note: In Apex tests, asynchronous reports execute only after the test is stopped
 
 ```
 
-585
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46734,7 +46145,6 @@ workflow and approvals, and programmable logic.
 
 You can manage your Salesforce sites in Apex using the methods of the `Site` and `Cookie` classes.
 
-586
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46807,7 +46217,6 @@ of the methods, simply have it return `null` .
 Incoming URL requests can only be mapped to Visualforce pages associated with your site. You can't map to standard pages, images,
 or other entities.
 
-587
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46884,7 +46293,6 @@ https://custom-domain/pathPrefix/baseURL, and https:// _`MyDomainName`_ .my.sale
 
 **•** `lightning`
 
-588
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -46965,7 +46373,6 @@ You can't use the following reserved strings at the end of a rewritten URL path:
 example, if your URL is `https://mycompany.my.salesforce-sites.com/sales/MyPage?id=12345`, where
 “sales” is the site prefix, only `/MyPage?id=12345` is returned.
 
-589
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -47037,7 +46444,6 @@ doesn't contain any rewriting logic except `URLFOR` . This page should be named 
 
 ```
 
-590
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -47133,7 +46539,6 @@ form.
 
 ```
 
-591
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -47228,7 +46633,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
-592
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -47256,7 +46660,6 @@ The numbered elements in this figure are:
 
 **3.** The original URL for the link to the account page before rewriting, shown in the browser's status bar
 
-593
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -47308,7 +46711,6 @@ This example finds the time one business hour from startTime, returning the Date
 
 ```
 
-594
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -47388,7 +46790,6 @@ _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.
 With trigger support for the Territory2 and UserTerritory2Association standard objects, you can automate actions and processes related
 to changes in these territory management records.
 
-595
 
 Apex Developer Guide Using Salesforce Features with Apex
 
@@ -47484,7 +46885,6 @@ belongs to.
 
 ```
 
-596
 
 ### Apex Developer Guide Integration and Apex Utilities
 
@@ -47554,7 +46954,6 @@ If the callout specifies a named credential as the endpoint, you don’t need to
 specifies the URL of a callout endpoint and its required authentication parameters in one definition. To set up named credentials,
 see “Define a Named Credential” in the Salesforce Help.
 
-597
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -47615,7 +47014,6 @@ To add a remote site setting:
 Tip: For best performance, verify that your remote HTTPS encrypted sites have OCSP (Online Certificate Status Protocol) stapling
 turned on.
 
-598
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -47663,14 +47061,12 @@ Example: In the following Apex code, a named credential and an appended path spe
 
 The referenced named credential specifies the endpoint URL and an external credential that specifies authentication settings.
 
-599
 
 Apex Developer Guide Integration and Apex Utilities
 
 The Apex code remains the same no matter what authentication you use. The authentication settings differ in the external credential,
 which references an authentication provider that’s defined in the org.
 
-600
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -47742,7 +47138,6 @@ _[Named Credentials Developer Guide](https://developer.salesforce.com/docs/platf
 Salesforce generates a standard authorization header for each callout to a named-credential-defined endpoint, but you can disable this
 option. Your Apex code can also use merge fields to construct each callout’s HTTP header and body.
 
-601
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -47824,7 +47219,6 @@ req.setHeader('X-Password',
 
 ```
 
-602
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -47900,7 +47294,6 @@ _Knowledge Article_ [: Named credential OAuth token doesn't get automatically re
 Classes can be automatically generated from a WSDL document that is stored on a local hard drive or network. Creating a class by
 consuming a WSDL document allows developers to make callouts to the external Web service in their Apex code.
 
-603
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -47959,7 +47352,6 @@ After you have generated a class from the WSDL, you can invoke the external serv
 Note: Before you can use the samples in the rest of this topic, you must copy the Apex class `docSampleClass` from Generated
 WSDL2Apex Code and add it to your organization.
 
-604
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48033,7 +47425,6 @@ Tip: Instead of hardcoding the `Authorization` header value, use named credentia
 and secure way to store and manage the credentials needed for HTTP callouts so that Salesforce can authenticate with external
 [APIs. For more information, see Named Credentials in](https://help.salesforce.com/s/articleView?id=sf.named_credentials_about.htm&language=en_US) _Salesforce Help_ .
 
-605
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48105,7 +47496,6 @@ Apex supports only the document literal wrapped WSDL style and the following pri
 
 `xsd:QName` String
 
-606
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48180,7 +47570,6 @@ supported:
 
 ```
 
-607
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48281,7 +47670,6 @@ the document literal style and is supported.
 You can generate Apex classes from a WSDL document using the WSDL2Apex tool. The WSDL2Apex tool is open source and available
 on GitHub.
 
-608
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48369,7 +47757,6 @@ The following code shows a sample WSDL document.
 
 ```
 
-609
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48468,7 +47855,6 @@ importing the WSDL.
 
 ```
 
-610
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48583,7 +47969,6 @@ Apex Developer Guide Integration and Apex Utilities
 
 ```
 
-611
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48667,7 +48052,6 @@ Note:
 
 **•** The class implementing the `WebServiceMock` interface can be either global or public.
 
-612
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48757,7 +48141,6 @@ This method makes a web service callout.
 
 ```
 
-613
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48839,7 +48222,6 @@ the callout, verifies the mock response values, and finally, calls `Test.stopTes
 
 ```
 
-614
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48912,7 +48294,6 @@ SOAP Web Service Callout
 For WSDLs that require namespace changes within the SOAP requests, you must manually construct the HTTP request body and invoke
 the endpoint as a POST request from Apex.
 
-615
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -48974,7 +48355,6 @@ responsibility for handling the construction of the SOAP message for the request
 
 1. HTTP Classes
 
-616
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49052,7 +48432,6 @@ _`url`_ parameter. This example also accesses the body of the returned response.
 The previous example runs synchronously, meaning no further processing happens until the external web service returns a response.
 Alternatively, you can use the @future annotation to make the callout run asynchronously.
 
-617
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49129,7 +48508,6 @@ Specify the mock response in one of the following ways.
 
 **•** By implementing the `HttpCalloutMock` interface
 
-618
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49212,7 +48590,6 @@ verifies that the response returned is what the implemented `respond` method sen
 
 ```
 
-619
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49302,7 +48679,6 @@ _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.
 You can test HTTP callouts by specifying the body of the response you’d like to receive in a static resource and using one of two built-in
 classes— `StaticResourceCalloutMock` or `MultiStaticResourceCalloutMock` .
 
-620
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49385,7 +48761,6 @@ _`mockResponse`_ based on a text file with the content _`{"hah":"fooled you"}`_ 
 
 ```
 
-621
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49476,7 +48851,6 @@ argument, and the variable name that you created for `MultiStaticResourceCallout
 
 ```
 
-622
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49567,7 +48941,6 @@ based on a text file with the content _`{"hah":"fooled you twice"}`_ . Save each
 
 ```
 
-623
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49645,7 +49018,6 @@ method that performs the callout, verifies the mock response values, and finally
 
 ```
 
-624
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49719,7 +49091,6 @@ the Remote Site Settings page, or the callout fails.
 If the callout specifies a named credential as the endpoint, you don’t need to configure remote site settings. To set up named
 [credentials, see Named Credentials and External Credentials in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.nc_named_creds_and_ext_creds.htm&language=en_US)
 
-625
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49781,7 +49152,6 @@ To integrate the certificate with your Apex:
 **2.** In your Apex, use the `setClientCertificateName` method of the `HttpRequest` class. The value used for the argument
 for this method must match the `Unique Name` of the certificate that you generated in the previous step.
 
-626
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49852,7 +49222,6 @@ through WSDL2Apex. The process for checking for read-only mode is the same in ei
 
 ```
 
-627
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49938,7 +49307,6 @@ and process responses in callback methods.
 An asynchronous callout is a callout that is made from a Visualforce page or a Lightning component for which the response is returned
 through a callback method. An asynchronous callout is also referred to as a _continuation_ .
 
-628
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -49990,7 +49358,6 @@ renders the `outputText` component again to display the body of the response.
 
 The following is the Apex controller that’s associated with the Visualforce page. This controller contains the action and callback methods.
 
-629
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50075,7 +49442,6 @@ For example: `callout:` _`My_Named_Credential`_ `/` _`some_path`_ .
 
 ```
 
-630
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50135,7 +49501,6 @@ _Lightning Web Components Developer Guide_ [: Make Long-Running Callouts with Co
 
 To use asynchronous callouts, create a `Continuation` object in an action method of a controller, and implement a callback method.
 
-631
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50213,7 +49578,6 @@ This table lists the return values for the callback method. Each return value co
 
 **Table 10: Possible Return Values for the Callback Method**
 
-632
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50277,7 +49641,6 @@ public with sharing class ContinuationController {
 
 ```
 
-633
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50372,7 +49735,6 @@ the callback method processed the mock response by verifying that the controller
 
 ```
 
-634
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50430,7 +49792,6 @@ To make multiple callouts to a long-running service simultaneously from a Visual
 Continuation instance. An example of when to make simultaneous callouts is when you’re making independent requests to a service,
 such as getting inventory statistics for two products.
 
-635
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50524,7 +49885,6 @@ the responses.
 
 ```
 
-636
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50610,7 +49970,6 @@ response in the `outputPanel` component.
 
 ```
 
-637
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50705,7 +50064,6 @@ returned, the second callback method ( `processChainedResponse` ) is invoked and
 
 ```
 
-638
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50791,7 +50149,6 @@ the original unmodified service class. The asynchronous class differs from the s
 **•** The Web service operations are invoked asynchronously and their responses are obtained with the `getValue` method of the
 response element.
 
-639
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50881,7 +50238,6 @@ The following is the entire controller with the action and callback methods.
 
 ```
 
-640
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -50982,7 +50338,6 @@ calls these methods of the `Test` [class: Test.setContinuationResponse() and Tes
 
 ```
 
-641
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51071,7 +50426,6 @@ the standard JSON encoding.
 
 `[System.JSONParser](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)` Represents a parser for JSON-encoded content.
 
-642
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51139,7 +50493,6 @@ you to serialize objects into JSON-formatted strings and to deserialize JSON str
 JSON Generator
 Using the `JSONGenerator` class methods, you can generate standard JSON-encoded content.
 
-643
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51226,7 +50579,6 @@ the list again and the sample verifies that the new list contains the same invoi
 
 ```
 
-644
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51316,7 +50668,6 @@ the JSON string. For example:
 
 ```
 
-645
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51395,7 +50746,6 @@ Next, it adds the `A` object into the `Object A` field, which also gets deserial
 
 ```
 
-646
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51479,7 +50829,6 @@ response in JSON format. Next, the response is parsed to build up a map from api
 
 ```
 
-647
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51578,7 +50927,6 @@ This example uses a hardcoded JSON string, which is the same JSON string returne
 example, the entire string is parsed into `Invoice` objects using the `readValueAs` method. This code also uses the `skipChildren`
 method to skip the child array and child objects and parse the next sibling invoice in the list. The parsed objects are instances of the
 
-648
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51680,7 +51028,6 @@ line item type, the `LineItem` class, is also defined as an inner class. Add thi
 
 ```
 
-649
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51755,7 +51102,6 @@ These methods work on the following XML events:
 
 **•** An _end element_ event is the closing tag for an element, for example `</book>` .
 
-650
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51852,7 +51198,6 @@ The following example processes an XML string.
 
 ```
 
-651
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -51941,7 +51286,6 @@ service. The following example shows how to instantiate a new XmlStreamReader ob
 
 ```
 
-652
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52034,7 +51378,6 @@ SEE ALSO:
 
 _Apex Reference Guide_ [: XmlStreamWriter Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_xml_XmlStream_writer.htm)
 
-653
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52119,7 +51462,6 @@ The following example illustrates how to use DOM classes to parse the XML respon
 
 ```
 
-654
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52204,7 +51546,6 @@ considered to be a separate text node.
 
 [For more information about the methods shared by all enums, see Enum Methods.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_enum.htm)
 
-655
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52287,7 +51628,6 @@ This example shows how to use `XmlNode` methods and namespaces to create an XML 
 
 ```
 
-656
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52367,7 +51707,6 @@ entry from the ZIP archive.
 
 ```
 
-657
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52453,7 +51792,6 @@ This example demonstrates an integration of Amazon WebServices with Salesforce.
 
 ```
 
-658
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52553,7 +51891,6 @@ This example shows how to write a unit test for the `encryptWithManagedIV` and `
 
 ```
 
-659
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52655,7 +51992,6 @@ This next example shows how to use `convertToHex` to compute a client response f
 
 ```
 
-660
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52708,7 +52044,6 @@ All further actions are then performed using the Matcher object. For example:
 
 ```
 
-661
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52784,7 +52119,6 @@ the `lookingAt` method
 
 Each of these methods returns a Boolean indicating success or failure.
 
-662
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52848,7 +52182,6 @@ when you are parsing a string and want to do additional work with it after you h
 
 In regular expression syntax, `?` means match once or not at all, and `+` means match 1 or more times.
 
-663
 
 Apex Developer Guide Integration and Apex Utilities
 
@@ -52945,7 +52278,6 @@ subdomain for similar email addresses. For example, `john@fairway.smithco` is no
 
 ```
 
-664
 
 ## Apex Developer Guide Debugging, Testing, and Deploying Apex
 
@@ -53016,7 +52348,6 @@ unhandled exceptions.
 _Exceptions_ note errors and other events that disrupt the normal flow of code execution. `throw` statements are used to generate
 exceptions, while `try`, `catch`, and `finally` statements are used to gracefully recover from exceptions.
 
-665
 
 Apex Developer Guide Debugging Apex
 
@@ -53083,7 +52414,6 @@ Note: Session IDs are replaced with "SESSION_ID_REMOVED" in Apex debug logs
 
 A debug log has the following sections.
 
-666
 
 Apex Developer Guide Debugging Apex
 
@@ -53158,7 +52488,6 @@ For example:
 
 ```
 
-667
 
 Apex Developer Guide Debugging Apex
 
@@ -53227,7 +52556,6 @@ batch Apex message processing, `@future` methods, Apex test methods, Apex web se
 **•** Cumulative profiling information is logged once at the end of the transaction and contains information about DML invocations,
 expensive queries, and so on. “Expensive” queries use resources heavily.
 
-668
 
 Apex Developer Guide Debugging Apex
 
@@ -53325,7 +52653,6 @@ the log verbosity for a given class while turning off logging for other classes 
 [For an explanation and an example of how Apex class and trigger trace flags work, see Debug Log Filtering for Apex Classes and Apex](https://help.salesforce.com/s/articleView?id=platform.code_debug_log_classes.htm&type=5&language=en_US)
 [Triggers in](https://help.salesforce.com/s/articleView?id=platform.code_debug_log_classes.htm&type=5&language=en_US) _Salesforce Help_ .
 
-669
 
 Apex Developer Guide Debugging Apex
 
@@ -53387,7 +52714,6 @@ determine why an object isn’t accessible.
 `Workflow` Includes information for workflow rules, flows, and processes, such as the rule name and the
 actions taken.
 
-670
 
 Apex Developer Guide Debugging Apex
 
@@ -53456,7 +52782,6 @@ Debug Event Types
 This example shows what is written to the debug log. The event is `USER_DEBUG` . The format is _`timestamp`_ | _`event identifier`_ .
 This example shows a debug log line.
 
-671
 
 Apex Developer Guide Debugging Apex
 
@@ -53516,7 +52841,6 @@ In this example, the event identifier consists of:
 
 This code snippet triggers this example log line.
 
-672
 
 Apex Developer Guide Debugging Apex
 
@@ -53589,7 +52913,6 @@ above
 `CALLOUT_RESPONSE` Status and status code Callout INFO and
 above
 
-673
 
 Apex Developer Guide Debugging Apex
 
@@ -53683,7 +53006,6 @@ Profiling above
 `CUMULATIVE_PROFILING_BEGIN` None Apex FINE and
 Profiling above
 
-674
 
 Apex Developer Guide Debugging Apex
 
@@ -53754,7 +53076,6 @@ above
 `FATAL_ERROR` Exception type, message, and stack trace Apex Code ERROR and
 above
 
-675
 
 Apex Developer Guide Debugging Apex
 
@@ -53839,7 +53160,6 @@ above
 `FLOW_ELEMENT_END` Interview ID, element type, and element name Workflow FINE and
 above
 
-676
 
 Apex Developer Guide Debugging Apex
 
@@ -53934,7 +53254,6 @@ Push notifications
 `FLOW_INTERVIEW_PAUSED` Interview ID, flow name, and why the user paused Workflow INFO and
 above
 
-677
 
 Apex Developer Guide Debugging Apex
 
@@ -54020,7 +53339,6 @@ above
 `FLOW_WAIT_EVENT_RESUMING_DETAIL` Interview ID, element name, event name, and event Workflow FINER and
 type above
 
-678
 
 Apex Developer Guide Debugging Apex
 
@@ -54051,7 +53369,6 @@ LIMIT_USAGE_FOR_NS
 
 Namespace and these limits: Apex FINEST
 
-679
 
 Apex Developer Guide Debugging Apex
 
@@ -54125,7 +53442,6 @@ above
 `NBA_OFFER_INVALID` Name, ID, reason NBA FINE and
 above
 
-680
 
 Apex Developer Guide Debugging Apex
 
@@ -54204,7 +53520,6 @@ App namespace, app name Apex Code DEBUG
 This event occurs when none of the users we’re trying
 to send notifications to have devices registered.
 
-681
 
 Apex Developer Guide Debugging Apex
 
@@ -54284,7 +53599,6 @@ Query Plan details for the executed SOQL query. To DB FINEST
 [get feedback on query performance, see Get Feedback](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_query_explain.htm)
 [on Query Performance.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_query_explain.htm)
 
-682
 
 Apex Developer Guide Debugging Apex
 
@@ -54361,7 +53675,6 @@ default. If the
 user sets the
 log level for
 
-683
 
 Apex Developer Guide Debugging Apex
 
@@ -54436,7 +53749,6 @@ above
 `VF_DESERIALIZE_VIEWSTATE_END` None Visualforce INFO and
 above
 
-684
 
 Apex Developer Guide Debugging Apex
 
@@ -54503,7 +53815,6 @@ above
 `WF_ENQUEUE_ACTIONS` Summary of actions enqueued Workflow INFO and
 above
 
-685
 
 Apex Developer Guide Debugging Apex
 
@@ -54568,7 +53879,6 @@ above
 `WF_REASSIGN_RECORD` `EntityName: NameField Id` and owner Workflow INFO and
 above
 
-686
 
 Apex Developer Guide Debugging Apex
 
@@ -54629,7 +53939,6 @@ including returned records above
 (External object access via cross-org and OData
 adapters for Salesforce Connect)
 
-687
 
 ##### Apex Developer Guide Debugging Apex
 
@@ -54700,7 +54009,6 @@ Valid log levels are (listed from lowest to highest):
 
 **•** `FINEST`
 
-688
 
 Apex Developer Guide Debugging Apex
 
@@ -54766,7 +54074,6 @@ Note: Setting class and trigger trace flags doesn’t cause logs to be generated
 other logging levels, including logging levels set by user trace flags, but they don’t cause logging to occur. If logging is enabled
 when classes or triggers execute, logs are generated at the time of execution.
 
-689
 
 Apex Developer Guide Debugging Apex
 
@@ -54822,7 +54129,6 @@ aren’t committed to the database. Exceptions get logged in debug logs. For unh
 catch) Salesforce sends an email that includes the exception information. The end user sees an error message in the Salesforce user
 interface.
 
-690
 
 Apex Developer Guide Debugging Apex
 
@@ -54866,7 +54172,6 @@ Built-In Exceptions and Common Methods
 
 Catching Different Exception Types
 
-691
 
 Apex Developer Guide Debugging Apex
 
@@ -54944,7 +54249,6 @@ The syntax of the `try`, `catch`, and `finally` statements is as follows.
 
 ```
 
-692
 
 Apex Developer Guide Debugging Apex
 
@@ -55031,7 +54335,6 @@ throws an unconditional exception.
 
 Learn how exception handling works in Apex.
 
-693
 
 Apex Developer Guide Debugging Apex
 
@@ -55137,7 +54440,6 @@ try-catch block. Execute it to see that you get the same result as before.
 
 ```
 
-694
 
 Apex Developer Guide Debugging Apex
 
@@ -55226,7 +54528,6 @@ Create Custom Exceptions
 
 _Salesforce Developers Blog_ [: Error Handling Best Practices for Lightning and Apex](https://developer.salesforce.com/blogs/2017/09/error-handling-best-practices-lightning-apex)
 
-695
 
 Apex Developer Guide Debugging Apex
 
@@ -55317,7 +54618,6 @@ log: `The following exception has occurred: Attempt to de-reference a null objec
 Any problem with SOQL queries, such as assigning a query that returns no records or more than one record to a singleton sObject
 variable.
 
-696
 
 Apex Developer Guide Debugging Apex
 
@@ -55408,7 +54708,6 @@ You can use common exception methods to get more information about an exception,
 trace. The previous example calls the `getMessage` method, which returns the error message associated with the exception. There
 are other exception methods that are also available. Here are descriptions of some useful methods:
 
-697
 
 Apex Developer Guide Debugging Apex
 
@@ -55493,7 +54792,6 @@ failed record.
 
 **Example**
 
-698
 
 Apex Developer Guide Debugging Apex
 
@@ -55578,7 +54876,6 @@ sample, you’ll see an output of `System.debug` statements similar to the follo
 The number of DML failures is correctly reported as two since two items in our list fail insertion. Also, the field names that caused the
 failure, and the error message for each failed record is written to the output.
 
-699
 
 Apex Developer Guide Debugging Apex
 
@@ -55674,7 +54971,6 @@ catch block. Execute this modified example. You’ll see the following debug mes
 
 ```
 
-700
 
 Apex Developer Guide Debugging Apex
 
@@ -55769,7 +55065,6 @@ You can construct exceptions:
 
 ```
 
-701
 
 Apex Developer Guide Debugging Apex
 
@@ -55859,7 +55154,6 @@ such as `getMessage`, from the built-in `Exception` class.
 
 ```
 
-702
 
 Apex Developer Guide Debugging Apex
 
@@ -55950,7 +55244,6 @@ MerchandiseException.
 
 ```
 
-703
 
 ### Apex Developer Guide Testing Apex Testing Apex
 
@@ -56006,7 +55299,6 @@ Why Test Apex?
 Testing is key to the success of your application, particularly if your application is to be deployed to customers. If you validate that your
 application works as expected, that there are no unexpected behaviors, your customers are going to trust you more.
 
-704
 
 Apex Developer Guide Testing Apex
 
@@ -56068,7 +55360,6 @@ Note: Conditional and ternary operators are not considered executed unless both 
 
 For examples of these types of tests, see Testing Example on page 727.
 
-705
 
 Apex Developer Guide Testing Apex
 
@@ -56157,7 +55448,6 @@ This example shows a class to be tested and its corresponding test class. It con
 
 ```
 
-706
 
 Apex Developer Guide Testing Apex
 
@@ -56258,7 +55548,6 @@ sufficient test coverage, the test methods in the test class perform extra testi
 
 ```
 
-707
 
 Apex Developer Guide Testing Apex
 
@@ -56333,7 +55622,6 @@ IsTest Annotation
 Test methods are defined in a test class, separate from the class they test. This can present a problem when having to access a private
 class member variable from the test method, or when calling a private method. Because these are private, they aren’t visible to the test
 
-708
 
 Apex Developer Guide Testing Apex
 
@@ -56428,7 +55716,6 @@ The class is listed first and is followed by a test class containing the test me
 
 ```
 
-709
 
 Apex Developer Guide Testing Apex
 
@@ -56510,7 +55797,6 @@ no need to delete any test data at the conclusion of a test. Likewise, all the c
 don’t persist. This transient behavior of test data makes the management of data easier as you don’t have to perform any test data
 cleanup. At the same time, if your tests access organization data, this prevents accidental deletions or modifications to existing records.
 
-710
 
 Apex Developer Guide Testing Apex
 
@@ -56575,7 +55861,6 @@ this limitation, `SELECT Owner.IsActive FROM Account` returns null when run with
 earlier, the data access restrictions of the caller are enforced in the called method. The called method can’t access organization
 data because the caller can’t access it, even though it was saved in an earlier version.
 
-711
 
 Apex Developer Guide Testing Apex
 
@@ -56644,7 +55929,6 @@ class have access to all data in the organization.
 
 ```
 
-712
 
 Apex Developer Guide Testing Apex
 
@@ -56739,7 +56023,6 @@ organization, such as users.
 
 ```
 
-713
 
 Apex Developer Guide Testing Apex
 
@@ -56823,7 +56106,6 @@ to create your .csv file.
 
 ```
 
-714
 
 Apex Developer Guide Testing Apex
 
@@ -56912,7 +56194,6 @@ create and the number of contacts per account. The next example shows a test met
 
 ```
 
-715
 
 Apex Developer Guide Testing Apex
 
@@ -56999,7 +56280,6 @@ Similarly, if you create a static variable in a test setup method, and then modi
 to other test methods. Every test method, including the test setup method, runs as a separate transaction. The static context of the test
 class is reinitialized before each transaction begins. Therefore, static variable initializers and static blocks are executed fresh at the start
 
-716
 
 Apex Developer Guide Testing Apex
 
@@ -57089,7 +56369,6 @@ changes that are made in the first test method are rolled back and are not avail
 
 ```
 
-717
 
 Apex Developer Guide Testing Apex
 
@@ -57158,7 +56437,6 @@ You can run unit tests on the Application Test Execution page. Tests started on 
 wait for a test class execution to finish. The Application Test Execution page refreshes the status of a test and displays the results after
 the test completes.
 
-718
 
 Apex Developer Guide Testing Apex
 
@@ -57202,7 +56480,6 @@ In the Developer Console, you can execute some or all tests in specific test cla
 Console runs tests asynchronously in the background, unless your test run includes only one class and you’ve not chosen **Always Run**
 **Asynchronously** in the Test menu. Running tests asynchronously lets you work in other areas of the Developer Console while tests are
 
-719
 
 Apex Developer Guide Testing Apex
 
@@ -57272,7 +56549,6 @@ of 500 or 20 multiplied by the number of test classes in the org.
 You may observe slower async test execution time when compilation is required, for example when tests are run after altering an Apex
 class. This is because parallel test execution is restricted to one job until compilation is completed. If you have Apex code in your org that
 
-720
 
 Apex Developer Guide Testing Apex
 
@@ -57370,7 +56646,6 @@ items that correspond to the specified job ID. It then queries and outputs the n
 
 ```
 
-721
 
 Apex Developer Guide Testing Apex
 
@@ -57448,7 +56723,6 @@ In the following example, a new test user is created, then code is run as that u
 
 ```
 
-722
 
 Apex Developer Guide Testing Apex
 
@@ -57530,7 +56804,6 @@ You can also use the `runAs` method to perform mixed DML operations in your test
 block. In this way, you bypass the mixed DML error that is otherwise returned when inserting or updating setup objects together with
 other sObjects. See sObjects That Cannot Be Used Together in DML Operations.
 
-723
 
 Apex Developer Guide Testing Apex
 
@@ -57589,7 +56862,6 @@ returned by the search. All SOSL queries that take place later in the test metho
 `Test.setFixedSearchResults` method. Additionally, the test method can call `Test.setFixedSearchResults`
 multiple times to define different result sets for different SOSL queries. If you do not call the `Test.setFixedSearchResults`
 
-724
 
 Apex Developer Guide Testing Apex
 
@@ -57666,7 +56938,6 @@ bulk and single records. This approach ensures that 75% or more of your code is 
 
 **•** If code uses conditional logic (including ternary operators), execute each branch.
 
-725
 
 Apex Developer Guide Testing Apex
 
@@ -57731,7 +57002,6 @@ You can prevent receiving those errors by turning off parallel test execution in
 
 **3.** In the Apex Test Execution Options dialog, select **Disable Parallel Apex Testing** and then click **OK** .
 
-726
 
 Apex Developer Guide Testing Apex
 
@@ -57805,7 +57075,6 @@ of the code.
 
 ```
 
-727
 
 Apex Developer Guide Testing Apex
 
@@ -57886,7 +57155,6 @@ Apex Developer Guide Testing Apex
 
 ```
 
-728
 
 Apex Developer Guide Testing Apex
 
@@ -57975,7 +57243,6 @@ The following steps through the above code, in particular, the positive test cas
 
 ```
 
-729
 
 Apex Developer Guide Testing Apex
 
@@ -58068,7 +57335,6 @@ error message. Use the `Assert.fail` method to clearly assert that you expect th
 
 ```
 
-730
 
 Apex Developer Guide Testing Apex
 
@@ -58159,7 +57425,6 @@ The following steps through the above code, in particular, running as a second u
 
 ```
 
-731
 
 Apex Developer Guide Testing Apex
 
@@ -58195,7 +57460,6 @@ coverage, more tests are needed. The tests must call `getTaskPriority()` with di
 
 This is the class that is partially covered by test methods. The corresponding test class isn’t shown.
 
-732
 
 Apex Developer Guide Testing Apex
 
@@ -58235,7 +57499,6 @@ results in ApexCodeCoverage—one for each test method that has tested it. You c
 API to retrieve coverage information. Using SOQL queries with Tooling API is an alternative way of checking code coverage and a quick
 way to get more details.
 
-733
 
 Apex Developer Guide Testing Apex
 
@@ -58292,7 +57555,6 @@ organization unless tests are rerun.
 **•** If the organization has been updated since the last test run, the code coverage estimate can be incorrect. Rerun Apex tests to get a
 correct estimate.
 
-734
 
 Apex Developer Guide Testing Apex
 
@@ -58350,7 +57612,6 @@ deployed from sandbox. Test methods that have dependencies on the organization�
 coverage. If the data and metadata have changed sufficiently to alter the result of dependent test methods, some methods can fail
 or behave differently. In that case, certain lines are no longer covered.
 
-735
 
 Apex Developer Guide Testing Apex
 
@@ -58434,7 +57695,6 @@ For testing, we want to isolate the `getFormattedDate()` method to make sure tha
 value of the `getTodaysDate()` method normally varies based on the day. However, in this case, we want to return a constant,
 predictable value to isolate our testing to the formatting. Rather than writing a “fake” version of the class, where the method returns a
 
-736
 
 Apex Developer Guide Testing Apex
 
@@ -58518,7 +57778,6 @@ method has the following parameters.
 
 **•** `stubbedObject` : The stubbed object
 
-737
 
 Apex Developer Guide Testing Apex
 
@@ -58601,7 +57860,6 @@ In this test, we call the `createMock()` method to create a stub version of the 
 `getTodaysDate()` method on the stub object, which returns our hard-coded date. Using the hard-coded date allows us to test
 the behavior of the `getFormattedDate()` method in isolation.
 
-738
 
 ### Apex Developer Guide Deploying Apex
 
@@ -58666,7 +57924,6 @@ production org.
 2. Deploy Apex Using Salesforce Extensions for Visual Studio Code and Code Builder
 Salesforce Extensions for VS Code and Code Builder are powered by Salesforce CLI and the Salesforce APIs.
 
-739
 
 Apex Developer Guide Deploying Apex
 
@@ -58731,7 +57988,6 @@ Use Metadata API to deploy customization information, such as custom object defi
 To deploy custom metadata, use the `Metadata.Operations.enqueueDeployment()` method to asynchronously deploy
 [metadata to the current org. For more information, see Operations Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Metadata_Operations.htm)
 
-740
 
 ### Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -58789,7 +58045,6 @@ the actions at run time, follow these requirements and recommendations.
 
 5. Deprecating Apex
 
-741
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -58850,7 +58105,6 @@ exclusively for use within your managed packages. For these internal components,
 `protected`, or `private` avoid the manageability constraints of `global` . You can even combine the `public` access modifier
 with the `@NamespaceAccessible` annotation to allow access throughout your package namespace.
 
-742
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -58920,7 +58174,6 @@ package, or `public` and `@NamespaceAccessible` for access only by other Apex in
 
 **•** Are there other designs? Can you achieve the same result without making methods or classes `global` ?
 
-743
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59010,7 +58263,6 @@ or add new helper methods without violating `global` Apex manageability rules.
 
 ```
 
-744
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59101,7 +58353,6 @@ Example: In this example, the `GeocodingService.getCoordinates` method is the gl
 
 ```
 
-745
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59201,7 +58452,6 @@ Apex Developer Guide Distributing Apex Using Managed Packages
 
 ```
 
-746
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59275,7 +58525,6 @@ add `getSmsNotifier()` to the factory class and implement a new `public SmsNotif
 
 ```
 
-747
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59343,7 +58592,6 @@ deprecated `global` member. Then minimize the member’s internal code. Although
 can become non-operational (no-op), return a safe default, or throw a specific `Feature Retired` exception. Implementing
 these changes reduces the risk and effort of maintaining the old code.
 
-748
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59409,7 +58657,6 @@ To define an Apex agent action, use the `@InvocableMethod` on page 95 annotation
 
 **•** Your Apex method must be `global static` .
 
-749
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59476,7 +58723,6 @@ input and output wrapper classes are both annotated with `@JsonAccess(serializab
 `deserializable='always')` so Agentforce can serialize and deserialize the objects from an unmanaged context. The properties
 of both wrapper classes are defined as `@InvocableVariable` so an admin can configure them declaratively. The `label` and
 
-750
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59568,7 +58814,6 @@ Agentforce reasoning engine to understand how to use the action.
 
 ```
 
-751
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59652,7 +58897,6 @@ Apex Developer Guide Distributing Apex Using Managed Packages
 
 ```
 
-752
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59721,7 +58965,6 @@ refactoring code in managed packages as the requirements evolve.
 **•** You can’t add a method to a global interface or an abstract method to a global class after the interface or class has been uploaded
 in a Managed - Released package version. If the class in the Managed - Released package is virtual, the method that you can add to
 
-753
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59778,7 +59021,6 @@ different code paths based on the version setting of the calling Apex code that 
 the calling code can be determined within the package code by calling the `System.requestVersion` method. In this way,
 package developers can determine the request context and specify different behavior for different versions of the package.
 
-754
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59859,7 +59101,6 @@ Package developers can make limited changes to the following items:
 
 **•** `abstract` —can be changed to `virtual` but cannot be removed
 
-755
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -59943,7 +59184,6 @@ The following test class uses the `runAs` method to verify the trigger's behavio
 
 ```
 
-756
 
 Apex Developer Guide Distributing Apex Using Managed Packages
 
@@ -60050,7 +59290,6 @@ Apex Developer Guide Distributing Apex Using Managed Packages
 
 ```
 
-757
 
 ## Apex Developer Guide Apex Reference Apex Reference
 
@@ -60099,7 +59338,6 @@ product.
 
 **•** The tax rate is 9.25%.
 
-758
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60151,7 +59389,6 @@ shipping discount
 
 The following is the general flow of user actions and when triggers run:
 
-759
 
 #### Apex Developer Guide Shipping Invoice Example
 
@@ -60190,7 +59427,6 @@ The test class verifies the following actions are completed successfully:
 
 The following triggers and test class make up the shipping invoice example application:
 
-760
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60277,7 +59513,6 @@ Calculate Trigger
 
 ```
 
-761
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60376,7 +59611,6 @@ Apex Developer Guide Shipping Invoice Example
 
 ```
 
-762
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60472,7 +59706,6 @@ ShippingDiscount Trigger
 
 ```
 
-763
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60574,7 +59807,6 @@ Shipping Invoice Test
 
 ```
 
-764
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60677,7 +59909,6 @@ Apex Developer Guide Shipping Invoice Example
 
 ```
 
-765
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60782,7 +60013,6 @@ Apex Developer Guide Shipping Invoice Example
 
 ```
 
-766
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60885,7 +60115,6 @@ Apex Developer Guide Shipping Invoice Example
 
 ```
 
-767
 
 Apex Developer Guide Shipping Invoice Example
 
@@ -60988,7 +60217,6 @@ Apex Developer Guide Shipping Invoice Example
 
 ```
 
-768
 
 ### Apex Developer Guide Reserved Keywords
 
@@ -61085,7 +60313,6 @@ Apex Developer Guide Shipping Invoice Example
 
 These words can be used only as keywords.
 
-769
 
 Apex Developer Guide Reserved Keywords
 
@@ -61161,7 +60388,6 @@ double nulls virtual
 
 else number void
 
-770
 
 ### Apex Developer Guide Documentation Typographical Conventions
 
@@ -61238,7 +60464,6 @@ or syntax.
 
 In descriptions of syntax, less-than and greater-than symbols (< >) are typed exactly as shown.
 
-771
 
 Apex Developer Guide Documentation Typographical Conventions
 
@@ -61295,4 +60520,3 @@ Set< data_type > set_name
 
 ```
 
-772

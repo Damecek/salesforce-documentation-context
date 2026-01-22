@@ -67,7 +67,7 @@ def pdf_to_markdown(*, pdf_bytes: bytes, title: str, source_url: str, fetched_at
                     )
             else:
                 raise
-        body = _strip_leading_h1(_normalize_markdown(md))
+        body = _strip_leading_h1(_strip_page_numbers(_normalize_markdown(md)))
     finally:
         try:
             doc.close()
@@ -93,6 +93,29 @@ def _normalize_markdown(md: str) -> str:
     while "\n\n\n" in out:
         out = out.replace("\n\n\n", "\n\n")
     return out.strip()
+
+
+def _strip_page_numbers(md: str) -> str:
+    lines = md.split("\n")
+    out = []
+    in_fence = False
+    fence_delim = None
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            if not in_fence:
+                in_fence = True
+                fence_delim = stripped[:3]
+            else:
+                if fence_delim and stripped.startswith(fence_delim):
+                    in_fence = False
+                    fence_delim = None
+            out.append(line)
+            continue
+        if not in_fence and stripped.isdigit():
+            continue
+        out.append(line)
+    return "\n".join(out)
 
 
 def _strip_leading_h1(md: str) -> str:

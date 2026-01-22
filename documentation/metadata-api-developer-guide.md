@@ -1,7 +1,7 @@
 # Metadata API Developer Guide
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/api_meta.pdf
-> Fetched: 2026-01-16T15:58:12Z
+> Fetched: 2026-01-22T10:46:48Z
 Metadata API Developer Guide
 
 Version 65.0, Winter ’26
@@ -832,7 +832,6 @@ You can move metadata with one of two ways. The first method is with Metadata AP
 often use the `deploy()` and `retrieve()` calls to move the full metadata model. These calls are best fit for the final stages of
 development, such as deploying tested customizations to the production org.
 
-1
 
 ### Understanding Metadata API Use Cases for Metadata API
 
@@ -892,7 +891,6 @@ Move Metadata to a Sandbox at Integration Points on page 4
 During development, use Metadata API to move metadata to sandboxes for integrating changes, testing, and collaborating with your
 team.
 
-2
 
 #### Understanding Metadata API Move Metadata from Production to Your Local File System
 
@@ -954,7 +952,6 @@ retrieve()
 Use a scratch org to develop and test changes to metadata. You can perform your development within or outside the scratch org using
 Salesforce CLI or Salesforce Extensions for VS Code, which leverage the power of Metadata API.
 
-3
 
 #### Understanding Metadata API Move Metadata to a Sandbox at Integration Points
 
@@ -1011,7 +1008,6 @@ back to the local environment with Git commands. Next, deploy metadata to produc
 Moving metadata to production requires a deploy call instead of a push command because the deploy call deploys the entire metadata
 model and not just changes in the metadata.
 
-4
 
 #### Understanding Metadata API Move Metadata for Production-Level Changes
 
@@ -1068,7 +1064,6 @@ Use the Salesforce Release Notes to learn about the most recent updates and chan
 Use the Salesforce Extensions for Visual Studio Code on Salesforce CLI to access Metadata API commands. Salesforce CLI and the Salesforce
 Extensions for Visual Studio Code streamline the process of using Metadata API.
 
-5
 
 ### Understanding Metadata API Supported Salesforce Editions
 
@@ -1130,7 +1125,6 @@ Edition orgs.
 
 As an ISV partner, you can request Metadata API access by following these steps.
 
-6
 
 ### Understanding Metadata API Metadata API Edit Access
 
@@ -1186,7 +1180,6 @@ CRUD-Based Development
 The CRUD Metadata API calls act upon the metadata components in a manner similar to the way synchronous API calls in the _enterprise_
 _WSDL_ act upon objects. For more information about the enterprise WSDL, see the _[SOAP API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/)_ .
 
-7
 
 ### Understanding Metadata API Standards Compliance Standards Compliance
 
@@ -1240,7 +1233,6 @@ and performance of the API, versions that are over 3 years old sometimes are no 
 
 Salesforce notifies customers who use an API version scheduled for deprecation at least 1 year before support for the version ends.
 
-8
 
 ### Understanding Metadata API Related Resources
 
@@ -1278,7 +1270,6 @@ You can visit these websites to find out more about Salesforce applications:
 
 **•** [Trailblazer Community for services to ensure Salesforce customer success.](https://trailhead.salesforce.com/en/trailblazer-community/feed)
 
-9
 
 ## CHAPTER 2 Quick Start: Metadata API
 
@@ -1326,7 +1317,6 @@ SEE ALSO:
 
 Move Metadata from Production to Your Local File System
 
-10
 
 ### Quick Start: Metadata API Prerequisites Prerequisites
 
@@ -1392,7 +1382,6 @@ in your package.xml. When you issue a retrieve call, you retrieve only the Accou
 
 ```
 
-11
 
 ### Quick Start: Metadata API Step 3: Retrieve Components with Metadata API
 
@@ -1473,7 +1462,6 @@ their own when resources are available.
 With this command, you send a request to retrieve all custom objects as specified in your package.xml manifest. Your requests are
 queued until our systems are ready to process your retrieve call. After your request is dequeued, your retrieve call is run. The client
 
-12
 
 Quick Start: Metadata API Step 3: Retrieve Components with Metadata API
 
@@ -1506,7 +1494,6 @@ retrieve()
 
 [mdapi Commands](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_mdapi.htm#cli_reference_force_mdapi)
 
-13
 
 ## CHAPTER 3 Build Client Applications for Metadata API
 
@@ -1551,7 +1538,6 @@ the samples, first download the latest force-wsc JAR file and its dependencies f
 Note: Development platforms vary in their SOAP implementations. Implementation differences in certain development
 platforms can prevent access to some or all features in Metadata API.
 
-14
 
 ### Build Client Applications for Metadata API Step 1: Generate or Obtain the Web Service WSDLs for Your
 
@@ -1616,7 +1602,6 @@ The basic syntax for `wsdlc` is:
 
 ```
 
-15
 
 ### Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -1695,7 +1680,6 @@ reused without change across different Salesforce APIs.
 
 ```
 
-16
 
 Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -1787,7 +1771,6 @@ sample, the manifest file retrieves all custom objects, custom tabs, and page la
 
 ```
 
-17
 
 Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -1873,7 +1856,6 @@ Note: This sample requires API version 34.0 or later.
 
 ```
 
-18
 
 Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -1978,7 +1960,6 @@ Build Client Applications for Metadata API Step 3: Walk Through the Java Sample 
 
 ```
 
-19
 
 Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -2087,7 +2068,6 @@ Build Client Applications for Metadata API Step 3: Walk Through the Java Sample 
 
 ```
 
-20
 
 Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -2188,7 +2168,6 @@ Build Client Applications for Metadata API Step 3: Walk Through the Java Sample 
 
 ```
 
-21
 
 Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -2285,7 +2264,6 @@ Build Client Applications for Metadata API Step 3: Walk Through the Java Sample 
 
 ```
 
-22
 
 Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -2390,7 +2368,6 @@ Build Client Applications for Metadata API Step 3: Walk Through the Java Sample 
 
 ```
 
-23
 
 Build Client Applications for Metadata API Step 3: Walk Through the Java Sample Code
 
@@ -2423,7 +2400,6 @@ Build Client Applications for Metadata API Step 3: Walk Through the Java Sample 
 
 ```
 
-24
 
 USING METADATA API
 
@@ -2474,7 +2450,6 @@ and the `MyCustomObject__c` component is an instance of a custom object.
 The files that are retrieved or deployed in a .zip file might be unpackaged components that reside in your org (such as _standard objects_ )
 or packaged components that reside within named packages.
 
-25
 
 Deploying and Retrieving Metadata Deploying and Retrieving Metadata with the Zip File
 
@@ -2554,7 +2529,6 @@ The following elements can be defined in `package.xml` .
 **•** `<types>` contains the name of the metadata type (for example, `CustomObject` ) and the named members (for example,
 `myCustomObject__c` ) to be retrieved or deployed. You can add multiple `<types>` elements in a manifest file.
 
-26
 
 ### Deploying and Retrieving Metadata Slow Deployments
 
@@ -2610,7 +2584,6 @@ This section includes sample package.xml manifest files that show you how to wor
 can include multiple <types> elements so you could combine the individual samples into one package.xml manifest file if you want to
 work with all the metadata in one batch.
 
-27
 
 Deploying and Retrieving Metadata Sample package.xml Manifest Files
 
@@ -2693,7 +2666,6 @@ This sample `package.xml` manifest file illustrates how to work with all custom 
 
 This manifest file can be used to retrieve or deploy all custom objects, but not all standard objects.
 
-28
 
 Deploying and Retrieving Metadata Sample package.xml Manifest Files
 
@@ -2790,7 +2762,6 @@ represented in this sample `package.xml` as the `OpportunityTeamMember.TeamMembe
 
 ```
 
-29
 
 Deploying and Retrieving Metadata Sample package.xml Manifest Files
 
@@ -2877,7 +2848,6 @@ manifest file illustrates how to work with a list view for the standard Account 
 
 ```
 
-30
 
 Deploying and Retrieving Metadata Sample package.xml Manifest Files
 
@@ -2952,7 +2922,6 @@ element and Settings in the name element when retrieving the SecuritySettings co
 
 ```
 
-31
 
 Deploying and Retrieving Metadata Sample package.xml Manifest Files
 
@@ -3051,7 +3020,6 @@ retrieving all ownership-based sharing rules for all objects, and retrieving all
 
 ```
 
-32
 
 Deploying and Retrieving Metadata Sample package.xml Manifest Files
 
@@ -3132,7 +3100,6 @@ When retrieving permission sets and profiles, make sure that you also retrieve a
 settings. For example, when retrieving app visibilities, you must also retrieve the associated app, and when retrieving object or field
 permissions, you must also retrieve the associated object.
 
-33
 
 ### Deploying and Retrieving Metadata Running Tests in a Deployment Running Tests in a Deployment
 
@@ -3201,7 +3168,6 @@ If the deployment includes components for the following metadata types, all loca
 
 **•** SharingReason
 
-34
 
 ### Deploying and Retrieving Metadata Running a Subset of Tests in a Deployment
 
@@ -3272,7 +3238,6 @@ those steps to run only the specified test classes.
 
 ```
 
-35
 
 ### Deploying and Retrieving Metadata Run the Same Tests in Sandbox and Production Deployments
 
@@ -3342,7 +3307,6 @@ When you reach the limit, you receive this exception as an API response in Apex.
 
 ```
 
-36
 
 ### Deploying and Retrieving Metadata Maintaining User References
 
@@ -3373,7 +3337,6 @@ renamed.
 **3.** If a username in the source environment doesn’t exist in the destination environment, Salesforce displays an error, and the deployment
 stops until the usernames are removed or resolved to users in the destination environment.
 
-37
 
 **CHAPTER 5** CRUD-Based Metadata Development
 
@@ -3432,7 +3395,6 @@ public class CRUDSampleCreate {
 
 ```
 
-38
 
 CRUD-Based Metadata Development
 
@@ -3533,7 +3495,6 @@ CRUD-Based Metadata Development
 
 ```
 
-39
 
 CRUD-Based Metadata Development
 
@@ -3619,7 +3580,6 @@ Note the error handling code that follows each API call.
 
 ```
 
-40
 
 CRUD-Based Metadata Development
 
@@ -3714,7 +3674,6 @@ CRUD-Based Metadata Development
 
 ```
 
-41
 
 CRUD-Based Metadata Development
 
@@ -3747,7 +3706,6 @@ CRUD-Based Metadata Development
 
 ```
 
-42
 
 ## CHAPTER 6 REST Resources
 
@@ -3812,7 +3770,6 @@ The following is a sample `package.xml` file.
 
 ```
 
-43
 
 REST Resources
 
@@ -3876,7 +3833,6 @@ metadata, see Sample package.xml Manifest Files.
 
 To delete components, see Deleting Components from an Organization.
 
-44
 
 ### REST Resources Deploy Metadata with Apex Testing Using REST Deploy Metadata with Apex Testing Using REST
 
@@ -3951,7 +3907,6 @@ DeployMessage is `true` . If `ignoreWarnings` is set to `false`, `success` is se
 
 `performRetrieve` Reserved for future use.
 
-45
 
 REST Resources Deploy Metadata with Apex Testing Using REST
 
@@ -4026,7 +3981,6 @@ Request Body: Deploy Metadata
 When you deploy metadata, your request includes both the deployment parameters and the .zip file containing the component directories
 and the manifest.
 
-46
 
 REST Resources Deploy Metadata with Apex Testing Using REST
 
@@ -4118,7 +4072,6 @@ is being processed.
 
 ```
 
-47
 
 REST Resources Deploy Metadata with Apex Testing Using REST
 
@@ -4202,7 +4155,6 @@ deployments to production organizations.
 
 `lastModifiedDate` DateTime. Timestamp of the last update for the deployment process.
 
-48
 
 #### REST Resources Check the Status of Your Deployment Using REST Resources
 
@@ -4280,7 +4232,6 @@ must be set to `true` if you’re deploying to a production org.
 Check the status of your deployment by using passing the deployment request ID in the URL The response body is similar to that returned
 by the original deployment request, but it includes information about the deployment in progress.
 
-49
 
 REST Resources Check the Status of Your Deployment Using REST Resources
 
@@ -4380,7 +4331,6 @@ The following example shows the response when `?includeDetails=true` is added as
 
 ```
 
-50
 
 #### REST Resources Deploy a Recently Validated Component Set Without Tests
 
@@ -4467,7 +4417,6 @@ JSON
 **HTTP Method**
 POST
 
-51
 
 #### REST Resources Cancel a Deployment in Progress Using REST
 
@@ -4550,7 +4499,6 @@ ongoing `deployRequest` . The cancellation is processed asynchronously. For API 
 of `Finalizing Deploy`, can't be cancelled. For API versions below 65.0, attempts to cancel a deployment may fail if the deployment
 has started committing data. Alternatively, it's possible that the cancellation will succeed, but data from the deployment is also committed.
 
-52
 
 REST Resources Cancel a Deployment in Progress Using REST
 
@@ -4647,7 +4595,6 @@ Because the cancellation request is processed asynchronously, the status shown i
 
 ```
 
-53
 
 ### REST Resources Deploy Metadata with REST API in Salesforce CLI
 
@@ -4702,7 +4649,6 @@ as **project retrieve start**, always use SOAP API.
 
 Here are the deploy limits. Limits can change without notice.
 
-54
 
 REST Resources Deploy Metadata with REST API in Salesforce CLI
 
@@ -4714,7 +4660,6 @@ an uncompressed project is 600 MB or less, depending on the files’ compression
 migrate a total of approximately 600 MB because the compressed size would be under 39 MB. However, if the components can't be
 compressed much, like binary static resources, you can migrate less than 600 MB.
 
-55
 
 ## CHAPTER 7 Error Handling
 
@@ -4746,7 +4691,6 @@ automatically expire after the amount of time specified in the **Security Contro
 hours). When your session expires, the exception code INVALID_SESSION_ID is returned. If this happens, you must invoke the `login()`
 call again. For more information about `login()`, see the _[SOAP API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/)_ .
 
-56
 
 METADATA API CONTEXT MCP TOOL (BETA)
 
@@ -4801,7 +4745,6 @@ With this feature, you might make API calls to your org. API usage counts agains
 [- Salesforce.com or a written Unified Pilot Agreement if executed by Customer, and applicable terms in](https://www.salesforce.com/company/legal/agreements/)
 [the Product Terms Directory. Use of this beta service is at the Customer's sole discretion.](https://ptd.salesforce.com/)
 
-57
 
 ### Quick Start: Metadata API Context MCP Tool Prerequisites: Set Up Salesforce Hosted MCP Servers (Beta) Prerequisites: Set Up Salesforce Hosted MCP Servers (Beta)
 
@@ -4860,7 +4803,6 @@ Store the consumer key for later use.
 
 [Important: Check the Salesforce mcp-hosted repository for the latest updates on the Salesforce Hosted MCP Servers beta.](https://github.com/forcedotcom/mcp-hosted)
 
-58
 
 ### Quick Start: Metadata API Context MCP Tool Step 1: Configure a MCP Client Step 1: Configure a MCP Client
 
@@ -4935,7 +4877,6 @@ Agentforce attempts to connect to the server and display the connection status. 
 [more details, review the Managed Connected Servers, or the Troubleshoot Connection Issues sections in Connect to Remote MCP Servers](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/devagent-mcpservers.html)
 in the Agentforce Vibes Extension Guide.
 
-59
 
 #### Quick Start: Metadata API Context MCP Tool Configure Cursor in Developer Mode Configure Cursor in Developer Mode
 
@@ -5011,7 +4952,6 @@ extension.
 
 **4.** In Server Name, enter _`platform/salesforce-api-context`_ .
 
-60
 
 ### Quick Start: Metadata API Context MCP Tool Step 2: Test Your Connection to the MCP Server
 
@@ -5079,7 +5019,6 @@ metadata XML files. This helps ensure the structural integrity of the metadata X
 
 ```
 
-61
 
 Quick Start: Metadata API Context MCP Tool Step 3 [Optional]: Configure a Rule
 
@@ -5100,7 +5039,6 @@ For more details about configuring AI rules, see:
 
 **•** _Cursor Docs_ [: Rules](https://cursor.com/docs/context/rules)
 
-62
 
 REFERENCE
 
@@ -5138,7 +5076,6 @@ increases the size of the payload by approximately 22%, so your compressed paylo
 2The maximum size of uncompressed components in an uncompressed project is 600 MB (629,145,600 bytes) or less, depending on
 the files’ compression ratio. The size limit in bytes is calculated as 600 x 1024 x 1024.
 
-63
 
 File-Based Calls deploy()
 
@@ -5197,7 +5134,6 @@ contains charts that provide a visual representation of the overall deployment p
 have already been deployed out of the total and includes the number of components with errors. For example, the following chart
 indicates that 302 components were processed successfully out of 450 and there were 45 components with errors.
 
-64
 
 File-Based Calls deploy()
 
@@ -5230,7 +5166,6 @@ Your client application must be logged in with the Modify Metadata Through Metad
 Note: If a user requires access to metadata but not to data, enable the Modify Metadata Through Metadata API Functions
 permission. Otherwise, enable the Modify All Data permission.
 
-65
 
 File-Based Calls deploy()
 
@@ -5291,7 +5226,6 @@ A Metadata API deployment that includes Master-Detail
 relationships deletes all detail records in the Recycle Bin in the
 following cases.
 
-66
 
 File-Based Calls deploy()
 
@@ -5355,7 +5289,6 @@ the field isn't saved in the Recycle Bin. The field is purged even
 if you don’t set the `purgeOnDelete` deployment option
 to `true` .
 
-67
 
 File-Based Calls deploy()
 
@@ -5392,7 +5325,6 @@ To use this option, set `testLevel` to
 `testLevel` TestLevel (enumeration of type
 string)
 
-68
 
 Indicates whether the specified `.zip` file points to a directory
 structure with a single package ( `true` ) or a set of packages
@@ -5499,7 +5431,6 @@ This sample shows how to deploy components in a zip file. See the retrieve() sam
 
 ```
 
-69
 
 File-Based Calls deploy()
 
@@ -5596,7 +5527,6 @@ File-Based Calls deploy()
 
 ```
 
-70
 
 File-Based Calls deploy()
 
@@ -5695,7 +5625,6 @@ File-Based Calls deploy()
 
 ```
 
-71
 
 File-Based Calls deploy()
 
@@ -5802,7 +5731,6 @@ File-Based Calls deploy()
 
 ```
 
-72
 
 #### File-Based Calls Deleting Components from an Organization
 
@@ -5866,7 +5794,6 @@ Note: You can’t use `destructiveChanges.xml` to delete items that are associat
 as a custom object, a component on the page, or the page itself. First, you must remove the page's action override by deactivating
 it in the Lightning App Builder.
 
-73
 
 File-Based Calls Deleting Components from an Organization
 
@@ -5951,7 +5878,6 @@ Sample `package.xml`, which specifies the class to update:
 
 ```
 
-74
 
 #### File-Based Calls checkDeployStatus()
 
@@ -6021,7 +5947,6 @@ Sample Code—Java
 
 See the `deploy()` sample code for sample usage of this call.
 
-75
 
 #### File-Based Calls cancelDeploy()
 
@@ -6082,7 +6007,6 @@ and repeat steps a and b. Otherwise, if the status is `Canceled`, the deployment
 
 The `deploy()` operation throws these API faults.
 
-76
 
 File-Based Calls cancelDeploy()
 
@@ -6153,7 +6077,6 @@ checks whether the cancellation has completed, and if not, calls `checkDeploySta
 
 ```
 
-77
 
 ### File-Based Calls deployRecentValidation()
 
@@ -6230,7 +6153,6 @@ the next step.
 
 After you’ve run a validation successfully, use these steps to quick-deploy the validation to the same target environment.
 
-78
 
 File-Based Calls deployRecentValidation()
 
@@ -6305,7 +6227,6 @@ Sample Code—Java
 
 ```
 
-79
 
 File-Based Calls deployRecentValidation()
 
@@ -6398,7 +6319,6 @@ File-Based Calls deployRecentValidation()
 
 ```
 
-80
 
 File-Based Calls deployRecentValidation()
 
@@ -6501,7 +6421,6 @@ File-Based Calls deployRecentValidation()
 
 ```
 
-81
 
 ### File-Based Calls retrieve()
 
@@ -6585,7 +6504,6 @@ Syntax
 
 ```
 
-82
 
 File-Based Calls retrieve()
 
@@ -6641,7 +6559,6 @@ iterations as the size of the zip file increases.
 
 For examples of manifest files, see Sample package.xml Manifest Files.
 
-83
 
 File-Based Calls retrieve()
 
@@ -6721,7 +6638,6 @@ Note: This sample requires API version 34.0 or later.
 
 ```
 
-84
 
 File-Based Calls retrieve()
 
@@ -6810,7 +6726,6 @@ File-Based Calls retrieve()
 
 ```
 
-85
 
 File-Based Calls retrieve()
 
@@ -6915,7 +6830,6 @@ File-Based Calls retrieve()
 
 ```
 
-86
 
 File-Based Calls retrieve()
 
@@ -7022,7 +6936,6 @@ File-Based Calls retrieve()
 
 ```
 
-87
 
 #### File-Based Calls RetrieveRequest
 
@@ -7111,7 +7024,6 @@ files are retrieved.
 `apiVersion` double Required. The API version for the retrieve request. The API
 version determines the fields retrieved for each metadata type.
 
-88
 
 #### File-Based Calls checkRetrieveStatus()
 
@@ -7177,7 +7089,6 @@ RetrieveResult = metadatabinding.checkRetrieveStatus(ID id, boolean includeZip);
 
 ```
 
-89
 
 File-Based Calls checkRetrieveStatus()
 
@@ -7258,7 +7169,6 @@ the zip file to be deleted from the server.
 
 ```
 
-90
 
 File-Based Calls checkRetrieveStatus()
 
@@ -7299,7 +7209,6 @@ Response
 
 RetrieveResult
 
-91
 
 ## CHAPTER 10 CRUD-Based Calls
 
@@ -7350,7 +7259,6 @@ SaveResult[] = metadatabinding.createMetadata(
 
 ```
 
-92
 
 CRUD-Based Calls createMetadata()
 
@@ -7404,7 +7312,6 @@ Follow this process to create metadata components.
 **3.** A `SaveResult` object is returned for each component you tried to create. It contains information about whether the operation
 was successful, the name of the component created, and any errors returned if the operation wasn’t successful.
 
-93
 
 CRUD-Based Calls createMetadata()
 
@@ -7495,7 +7402,6 @@ limit is 200.)
 You must submit arrays of only one type of component. For example, you can submit an array
 of 10 custom objects or 10 profiles, but not a mix of both types.
 
-94
 
 ### CRUD-Based Calls readMetadata()
 
@@ -7555,7 +7461,6 @@ corresponding to the components you wish to get.
 **3.** A `ReadResult` is returned that contains an array of `Metadata` components. Cast each returned `Metadata` object to the
 metadata type you specified in the call to get the component’s properties.
 
-95
 
 ### CRUD-Based Calls updateMetadata()
 
@@ -7640,7 +7545,6 @@ of 10 custom objects or 10 profiles, but not a mix of both types.
 
 Updates one or more metadata components in your organization synchronously.
 
-96
 
 CRUD-Based Calls updateMetadata()
 
@@ -7697,7 +7601,6 @@ Use this process to update metadata components.
 
 **2.** Invoke the `updateMetadata()` call, passing in the array of metadata components to update.
 
-97
 
 CRUD-Based Calls updateMetadata()
 
@@ -7788,7 +7691,6 @@ Array of one or more metadata components you wish to update.
 Limit: 10. (For CustomMetadata on page 726 and CustomApplication on
 page 693 only, the limit is 200.)
 
-98
 
 ### CRUD-Based Calls upsertMetadata()
 
@@ -7843,7 +7745,6 @@ Required Fields
 
 You must supply values for all the required fields in the component.
 
-99
 
 CRUD-Based Calls upsertMetadata()
 
@@ -7921,7 +7822,6 @@ Sample Code—Java
 
 ```
 
-100
 
 ### CRUD-Based Calls deleteMetadata()
 
@@ -8000,7 +7900,6 @@ DeleteResult[] = metadataConnection.delete(string metadataType, string[] fullNam
 
 ```
 
-101
 
 CRUD-Based Calls deleteMetadata()
 
@@ -8056,7 +7955,6 @@ pass in an array of full names corresponding to the components you wish to delet
 A `DeleteResult` object is returned for each component you try to delete. It contains information about whether the operation
 was successful, the name of the deleted component, and any errors returned if the operation wasn’t successful.
 
-102
 
 ### CRUD-Based Calls renameMetadata()
 
@@ -8133,7 +8031,6 @@ custom objects or 10 profiles, but not a mix of both types.
 
 Renames a metadata component in your organization synchronously.
 
-103
 
 CRUD-Based Calls renameMetadata()
 
@@ -8209,7 +8106,6 @@ Sample Code—Java
 
 ```
 
-104
 
 ### CRUD-Based Calls create()
 
@@ -8275,7 +8171,6 @@ Your client application must be logged in with the Modify Metadata Through Metad
 Note: If a user requires access to metadata but not to data, enable the Modify Metadata Through Metadata API Functions on
 page 7 permission. Otherwise, enable the Modify All Data permission.
 
-105
 
 CRUD-Based Calls create()
 
@@ -8324,7 +8219,6 @@ Limit: 10.
 You must submit arrays of only one type of component. For example, you could submit an
 array of 10 custom objects or 10 profiles, but not a mix of both types.
 
-106
 
 ### CRUD-Based Calls delete()
 
@@ -8384,7 +8278,6 @@ When deleting components, consider the following rules and guidelines:
 **•** To ensure referential integrity, this call supports cascading deletions. If you delete a parent component, you delete its children
 automatically, as long as each child component can be deleted.
 
-107
 
 CRUD-Based Calls delete()
 
@@ -8465,7 +8358,6 @@ Limit: 10.
 You must submit arrays of only one type of component. For example, you could submit an
 array of 10 custom objects or 10 profiles, but not a mix of both types.
 
-108
 
 ### CRUD-Based Calls update()
 
@@ -8518,7 +8410,6 @@ Required Fields
 
 You must supply values for all the required fields in the component.
 
-109
 
 CRUD-Based Calls update()
 
@@ -8594,7 +8485,6 @@ Sample Code—Java
 
 ```
 
-110
 
 CRUD-Based Calls update()
 
@@ -8672,7 +8562,6 @@ change the name, and the value here provides mapping.
 
 `metadata` Metadata Full specification of the component or field you want to update.
 
-111
 
 CRUD-Based Calls update()
 
@@ -8690,7 +8579,6 @@ delete()
 
 checkStatus()
 
-112
 
 ## CHAPTER 11 Utility Calls
 
@@ -8733,7 +8621,6 @@ Sample Code—Java
 
 See Step 3: Walk Through the Java Sample Code on page 16 for sample Java code using this call.
 
-113
 
 ### Utility Calls describeMetadata()
 
@@ -8800,7 +8687,6 @@ Sample Code—Java
 
 ```
 
-114
 
 ### Utility Calls describeValueType()
 
@@ -8877,7 +8763,6 @@ Describe Apex class metadata in the Tooling namespace:
 
 ```
 
-115
 
 Utility Calls describeValueType()
 
@@ -8955,7 +8840,6 @@ through the fields and outputs information about each field.
 
 ```
 
-116
 
 Utility Calls describeValueType()
 
@@ -9067,7 +8951,6 @@ After you run the sample, the output looks similar to the following.
 
 ```
 
-117
 
 ### Utility Calls listMetadata()
 
@@ -9144,7 +9027,6 @@ components. For more information about working with `package.xml`, see Deploying
 This call is synchronous, so the results are returned in one call. This call differs from asynchronous calls, such as retrieve(), where at least
 one subsequent call is required to get the results.
 
-118
 
 #### Utility Calls ListMetadataQuery
 
@@ -9219,7 +9101,6 @@ FileProperties
 
 #### **`ListMetadataQuery`** The ListMetadataQuery parameter represents a list of objects that specify which components you are interested in.
 
-119
 
 Utility Calls ListMetadataQuery
 
@@ -9234,7 +9115,6 @@ EmailTemplate, or Report.
 `type` string Required. The metadata type, such as `CustomObject`,
 `CustomField`, or `ApexClass` .
 
-120
 
 ## CHAPTER 12 Result Objects
 
@@ -9281,7 +9161,6 @@ Represents an error that occurred during a synchronous CRUD ( `createMetadata()`
 Contains the ID of a deployment or retrieval. In API version 28.0 and earlier, contains status information of any asynchronous metadata
 call.
 
-121
 
 Result Objects AsyncResult
 
@@ -9351,7 +9230,6 @@ type string)
 
 **•** `Error` : An error occurred. See the `statusCode` for more information.
 
-122
 
 Result Objects AsyncResult
 
@@ -9424,7 +9302,6 @@ This field in conjunction with the `numberComponentsTotal` field gives
 you an indication of the progress of the deployment. This field is available in
 API version 16.0 and later and is relevant only for the deploy() call.
 
-123
 
 Result Objects AsyncResult
 
@@ -9507,7 +9384,6 @@ to the status code is returned in the `message` field.
 [For a description of each StatusCode value, see StatusCode in the SOAP API](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/)
 [Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/)
 
-124
 
 ```
 statusCode
@@ -9578,7 +9454,6 @@ way.
 
 `completedDate` dateTime Timestamp for when the deployment process ended.
 
-125
 
 Result Objects DeployResult
 
@@ -9657,7 +9532,6 @@ The total number of files included in this deployment.
 
 This field is available in API version 64.0 and later.
 
-126
 
 Result Objects DeployResult
 
@@ -9733,7 +9607,6 @@ deployment process finishes, the other fields populate with the data for the ent
 `componentFailures` DeployMessage[] One or more DeployMessage objects containing deployment errors for each
 component.
 
-127
 
 Result Objects DeployResult
 
@@ -9799,7 +9672,6 @@ This field is available in API version 30.0 and later.
 `created` boolean If `true`, the component was created as a result of this deployment. If `false`, the
 component was either deleted or modified as a result of the deployment.
 
-128
 
 Result Objects DeployResult
 
@@ -9870,7 +9742,6 @@ This field is available in API version 35.0 and later.
 An array of one or more CodeCoverageResult objects that contains the details
 of the code coverage for the specified unit tests.
 
-129
 
 Result Objects DeployResult
 
@@ -9938,7 +9809,6 @@ For each class or trigger tested, the method invocation locations, the number of
 the code was executed, and the total cumulative time spent in these calls. This can
 be helpful for performance monitoring.
 
-130
 
 Result Objects DeployResult
 
@@ -10001,7 +9871,6 @@ The failure message.
 `methodName` string
 The name of the method that failed.
 
-131
 
 Result Objects DeployResult
 
@@ -10067,7 +9936,6 @@ This object contains information about the flow version that generated warnings.
 
 `flowId` string The ID of the flow version that generated the warning.
 
-132
 
 Result Objects DeployResult
 
@@ -10129,7 +9997,6 @@ The line location of the Apex tested.
 `numExecutions` int
 The number of times the Apex was executed in the test run.
 
-133
 
 ### Result Objects DescribeMetadataResult
 
@@ -10195,7 +10062,6 @@ file.
 
 `suffix` string The file suffix for this component.
 
-134
 
 ### Result Objects DescribeValueTypeResult
 
@@ -10262,7 +10128,6 @@ ValueTypeField
 This object is returned as part of the DescribeValueTypeResult and represents the metadata for one field. Each ValueTypeField has these
 properties.
 
-135
 
 ### Result Objects ReadResult
 
@@ -10318,7 +10183,6 @@ Version
 
 Available in API version 30.0 and later.
 
-136
 
 ### Result Objects RetrieveResult
 
@@ -10388,7 +10252,6 @@ an API call, client applications must encode the binary attachment data as base6
 receiving a response, client applications must decode the base64 data to binary. This
 conversion is handled for you by a SOAP client.
 
-137
 
 Result Objects RetrieveResult
 
@@ -10458,7 +10321,6 @@ RetrieveMessage
 RetrieveResult on page 137 returns this object, which contains information about the success or failure of the retrieve() on page 82 call.
 One object per problem is returned:
 
-138
 
 ### Result Objects SaveResult
 
@@ -10508,7 +10370,6 @@ Properties
 
 `success` boolean Indicates whether the deletion was successful ( `true` ) or not ( `false` ).
 
-139
 
 ### Result Objects UpsertResult UpsertResult
 
@@ -10560,7 +10421,6 @@ ExtendedErrorDetails in the _SOAP API Developer Guide_ .
 
 `message` string The error message text.
 
-140
 
 Result Objects Error
 
@@ -10573,7 +10433,6 @@ A status code corresponding to the error.
 For a description of each StatusCode value, see StatusCode in the
 _SOAP API Developer Guide_ .
 
-141
 
 ## CHAPTER 13 Metadata Types
 
@@ -10620,7 +10479,6 @@ AccountingModelConfig
 Represents the mapping of the financial data model to a logical data model and configuration for the generation of Transaction
 Journal records.
 
-142
 
 Metadata Types
 
@@ -10681,7 +10539,6 @@ Represents a Tableau Next visualization.
 AnalyticsWorkspace
 Represents a Tableau Next workspace.
 
-143
 
 Metadata Types
 
@@ -10742,7 +10599,6 @@ Represents the container object that stores the questions required for an assess
 AssessmentQuestionSet
 Represents the container object for Assessment Questions.
 
-144
 
 Metadata Types
 
@@ -10801,7 +10657,6 @@ BusinessProcessGroup
 Represents the surveys used to track customers’ experiences across different stages in their lifecycle. This type extends the Metadata
 metadata type and inherits its `fullName` field.
 
-145
 
 Metadata Types
 
@@ -10861,7 +10716,6 @@ ClauseCatgConfiguration
 Represents the configuration about the clause category that can be used to categorize your disclosure and compliance reports from
 standardized disclosure templates in a response document.
 
-146
 
 Metadata Types
 
@@ -10920,7 +10774,6 @@ this type contains information about the partner telephony system or Contact Cen
 Own Channel for Messaging or Bring Your Own Channel for CCaaS, this type contains information about the partner messaging
 system or CCaaS system.
 
-147
 
 Metadata Types
 
@@ -10980,7 +10833,6 @@ Represents the metadata associated with a custom notification type.
 CustomObject
 Represents a custom object that stores data unique to your org or an external object that maps to data stored outside your org.
 
-148
 
 Metadata Types
 
@@ -11042,7 +10894,6 @@ Represents external content providers, such as digital asset management (DAM) sy
 combined with the DgtAssetMgmtPrvdLghtCpnt type, this metadata type enables organizations to configure external content
 systems as content providers within the Salesforce platform.
 
-149
 
 Metadata Types
 
@@ -11104,7 +10955,6 @@ as standard maps are. Custom maps are accessed in Analytics from the list of map
 EmailServicesFunction
 Represents an email service. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-150
 
 Metadata Types
 
@@ -11162,7 +11012,6 @@ EscalationRules
 Represents case escalation rules to escalate cases automatically if they aren’t resolved within a certain time. You can access rules
 metadata for all applicable objects, for a specific object, or for a specific rule on a specific object.
 
-151
 
 Metadata Types
 
@@ -11223,7 +11072,6 @@ ExtlClntAppGlobalOauthSettings
 Represents the global settings for the OAuth plugin in an external client app. These settings include private and sensitive OAuth
 consumer information that can’t be packaged and must not be added to source control.
 
-152
 
 Metadata Types
 
@@ -11284,7 +11132,6 @@ and external services. This includes managing data operations like creating, upd
 looping through collections, and invoking actions like Apex or external services to extend functionality. A flow contains options for
 API versioning, various execution environments, and detailed configuration of elements to design powerful automation solutions.
 
-153
 
 Metadata Types
 
@@ -11346,7 +11193,6 @@ Represents an agent action that can be added to an AI agent.
 GenAiPlanner
 Represents a planner for an agent. It’s a container for all the topics and actions used to interact with a large language model (LLM).
 
-154
 
 Metadata Types
 
@@ -11407,7 +11253,6 @@ IdentityVerificationProcFld
 Represents the search and verification fields used in identity verification. This type extends the Metadata metadata type and inherits
 its `fullName` field.
 
-155
 
 Metadata Types
 
@@ -11465,7 +11310,6 @@ templates. This type extends the Metadata metadata type and inherits its `fullNa
 LightningComponentBundle
 Represents a Lightning web component bundle. A bundle contains Lightning web component resources.
 
-156
 
 Metadata Types
 
@@ -11525,7 +11369,6 @@ Represents an integration with a third-party app or service that is used to work
 MatchingRule
 Represents a matching rule that is used to identify duplicate records.
 
-157
 
 Metadata Types
 
@@ -11587,7 +11430,6 @@ Represents the configuration settings when the My Domain login page type is Disc
 login experience, where the login page contains the identifier field only. Based on the identifier entered, a handler determines how
 to authenticate the user. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-158
 
 Metadata Types
 
@@ -11645,7 +11487,6 @@ parent record.
 PathAssistant
 Represents Path records.This type extends the Metadata metadata type and inherits its `fullName` field.
 
-159
 
 Metadata Types
 
@@ -11706,7 +11547,6 @@ PresenceDeclineReason
 Represents an Omni-Channel decline reason that agents can select when declining work requests. This type extends the Metadata
 metadata type and inherits its `fullName` field.
 
-160
 
 Metadata Types
 
@@ -11764,7 +11604,6 @@ Represents a specified create or update quick action for an object that then bec
 you can create an action that, on the detail page of an account, allows a user to create a contact related to that account from the
 Chatter feed on that page. QuickAction can be created on objects that permit custom fields.
 
-161
 
 Metadata Types
 
@@ -11822,7 +11661,6 @@ access that specified users have to designated records. A scoping rule has `enfo
 the default records that your users see without restricting access. This type extends the Metadata metadata type and inherits its
 `fullName` field.
 
-162
 
 Metadata Types
 
@@ -11881,7 +11719,6 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 ServiceChannel
 Represents a channel of work items that are received from your organization—for example, cases, chats, or leads.
 
-163
 
 Metadata Types
 
@@ -11942,7 +11779,6 @@ SustainabilityUom
 Represents the unit of measure (UOM) values for custom fuel types in an org. Track fuel consumption and emission results with the
 flexibility to add custom fuel types and UOM values.
 
-164
 
 Metadata Types
 
@@ -12001,7 +11837,6 @@ Translations
 Metadata type that enables work with translations for various supported languages. The ability to translate component labels is part
 of the Translation Workbench.
 
-165
 
 Metadata Types
 
@@ -12062,7 +11897,6 @@ Represents the WaveDataset object in the Analytics application. This type extend
 WaveLens
 Represents the WaveLens object in the Analytics application.
 
-166
 
 ### Metadata Types Metadata Components and Types
 
@@ -12123,7 +11957,6 @@ Metadata components can be manipulated by asynchronous Metadata API calls or dec
 Most of the components can be accessed using Salesforce Extensions for Visual Studio Code. Exceptions are noted in the description of
 the object.
 
-167
 
 ### Metadata Types Metadata Coverage Report
 
@@ -12190,7 +12023,6 @@ with Metadata API. To make changes to these types, you must do it manually in ea
 
 Some metadata types may also be unsupported in source tracking, packaging, and change sets.
 
-168
 
 ### Metadata Types Special Behavior in Metadata API Deployments
 
@@ -12249,7 +12081,6 @@ Represents the white-labeled metadata configuration for an external connector in
 DataConnectorIngestApi
 Represents the connection information specific to Ingestion API.
 
-169
 
 Metadata Types Data 360 Metadata Types
 
@@ -12313,7 +12144,6 @@ field.
 ExternalDataTransportObjectTemplate
 For internal use only.
 
-170
 
 #### Metadata Types ActivationPlatform
 
@@ -12368,7 +12198,6 @@ Version
 
 #### ActivationPlatform components are available in API version 54.0 and later.
 
-171
 
 Metadata Types ActivationPlatform
 
@@ -12440,7 +12269,6 @@ boolean
 **Description**
 Indicates whether to include the segment name in metadata ( `true` ) or not ( `false` ).
 
-172
 
 Metadata Types ActivationPlatform
 
@@ -12517,7 +12345,6 @@ Valid values are:
 **Field Type**
 ActivationPlatformPeriodicFullRefresh (enumeration of type string)
 
-173
 
 Metadata Types ActivationPlatform
 
@@ -12591,7 +12418,6 @@ Valid values are:
 
 **•** `INCREMENTAL`
 
-174
 
 Metadata Types ActivationPlatform
 
@@ -12694,7 +12520,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-175
 
 #### Metadata Types ActivationPlatformActvAttr ActivationPlatformActvAttr
 
@@ -12756,7 +12581,6 @@ Information about ActivationPlatformField.
 **Field Type**
 boolean
 
-176
 
 Metadata Types ActivationPlatformField
 
@@ -12840,7 +12664,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-177
 
 #### Metadata Types ActvPfrmDataConnectorS3
 
@@ -12913,7 +12736,6 @@ string
 
 Required.
 
-178
 
 Metadata Types ActvPfrmDataConnectorS3
 
@@ -12998,7 +12820,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-179
 
 #### Metadata Types ActvPlatformAdncIdentifier ActvPlatformAdncIdentifier
 
@@ -13062,7 +12883,6 @@ ActivationPlatformIdentifierType (enumeration of type string)
 
 Required.
 
-180
 
 Metadata Types ActvPlatformAdncIdentifier
 
@@ -13151,7 +12971,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-181
 
 #### Metadata Types ActvPlatformFieldValue ActvPlatformFieldValue
 
@@ -13217,7 +13036,6 @@ Required.
 
 The name of the field.
 
-182
 
 Metadata Types ActvPlatformFieldValue
 
@@ -13316,7 +13134,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-183
 
 #### Metadata Types AiPluginUtteranceDef AiPluginUtteranceDef
 
@@ -13381,7 +13198,6 @@ Required.
 
 The master label for the utterance.
 
-184
 
 #### Metadata Types CustomerDataPlatformSettings
 
@@ -13443,7 +13259,6 @@ boolean
 **Description**
 Indicates whether an org has Data 360 enabled ( `true` ) or not ( `false` ).
 
-185
 
 #### Metadata Types DataConnector
 
@@ -13512,7 +13327,6 @@ Special Access Rules
 
 There are no additional access requirements that are specific to this type.
 
-186
 
 Metadata Types DataConnector
 
@@ -13594,7 +13408,6 @@ string
 
 Required.
 
-187
 
 Metadata Types DataConnector
 
@@ -13668,7 +13481,6 @@ string
 **Description**
 The support email address users can contact for help with the connector.
 
-188
 
 Metadata Types DataConnector
 
@@ -13748,7 +13560,6 @@ string
 **Description**
 The command string executed during data operations, such as import or sync.
 
-189
 
 Metadata Types DataConnector
 
@@ -13828,7 +13639,6 @@ boolean
 **Description**
 Indicates whether the field value can be modified by the user.
 
-190
 
 Metadata Types DataConnector
 
@@ -13908,7 +13718,6 @@ The validation pattern used to ensure input follows a defined format.
 **Field Type**
 string
 
-191
 
 Metadata Types DataConnector
 
@@ -13983,7 +13792,6 @@ DataConnectorCapability[] (enumeration of type string)
 **Description**
 A list of capabilities supported by the data connector.
 
-192
 
 Metadata Types DataConnector
 
@@ -14062,7 +13870,6 @@ The order or priority of the connector in processing context.
 **Field Type**
 LocalizedValue[]
 
-193
 
 Metadata Types DataConnector
 
@@ -14144,7 +13951,6 @@ The following is an example of a DataConnector component.
 
 ```
 
-194
 
 #### Metadata Types DataConnectorIngestApi
 
@@ -14230,7 +14036,6 @@ File Suffix and Directory Location
 
 `dataConnectorIngestApis` folder.
 
-195
 
 Metadata Types DataConnectorIngestApi
 
@@ -14308,7 +14113,6 @@ Wildcard Support in the Manifest File
 This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
 using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-196
 
 #### Metadata Types DataConnectorS3 DataConnectorS3
 
@@ -14369,7 +14173,6 @@ Represents the object in Data Kit Object Template. These object templates are ad
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
 terms in our code can break current implementations, we maintained this metadata type’s name.
 
-197
 
 Metadata Types DataKitObjectTemplate
 
@@ -14433,7 +14236,6 @@ string
 **Description**
 Required. The linked data kit package definition in the data kit.
 
-198
 
 Metadata Types DataKitObjectTemplate
 
@@ -14516,7 +14318,6 @@ Required. The object type of the metadata component in the data kit. Valid value
 
 **•** `DATA_CLEAN_ROOM_PROVIDER`
 
-199
 
 Metadata Types DataKitObjectTemplate
 
@@ -14611,7 +14412,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-200
 
 #### Metadata Types DataKitObjectDependency
 
@@ -14675,7 +14475,6 @@ string
 
 only underscores and alphanumeric characters and must be unique in your org. It
 
-201
 
 #### Metadata Types DataObjectBuildOrgTemplate
 
@@ -14741,7 +14540,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-202
 
 Metadata Types DataObjectBuildOrgTemplate
 
@@ -14810,7 +14608,6 @@ Required. The type of metadata entity associated with the template. Valid values
 
 **•** `DataGraph`
 
-203
 
 Metadata Types DataObjectBuildOrgTemplate
 
@@ -14905,7 +14702,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-204
 
 #### Metadata Types DataPackageKitDefinition
 
@@ -14966,7 +14762,6 @@ string
 **Description**
 The data source in the updated data kit. Available in API version 63.0 and later.
 
-205
 
 Metadata Types DataPackageKitDefinition
 
@@ -15040,7 +14835,6 @@ double
 **Description**
 Auto incremented version number.
 
-206
 
 #### Metadata Types DataPackageKitObject
 
@@ -15127,7 +14921,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents the object in Data Kit Content Object. These objects are added inside the data kit.
 
-207
 
 Metadata Types DataPackageKitObject
 
@@ -15191,7 +14984,6 @@ string
 **Description**
 Required. The type of the content object in the data kit.
 
-208
 
 #### Metadata Types DataSource
 
@@ -15271,7 +15063,6 @@ Special Access Rules
 
 You need the Salesforce CustomizeApplication permission to access this object.
 
-209
 
 #### Metadata Types DataSourceBundleDefinition
 
@@ -15333,7 +15124,6 @@ string
 A description of the associated data source bundle. This field is available in API version
 53.0 and later.
 
-210
 
 Metadata Types DataSourceBundleDefinition
 
@@ -15414,7 +15204,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 [manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/file_based_zip_file.htm)
 
-211
 
 #### Metadata Types DataSourceField DataSourceField
 
@@ -15482,7 +15271,6 @@ string)
 
 **•** `Ml_Prediction`
 
-212
 
 Metadata Types DataSourceField
 
@@ -15554,7 +15342,6 @@ Values are:
 
 **•** `NONE` —The field isn’t used as a key qualifier field.
 
-213
 
 ```
 usageTag
@@ -15640,7 +15427,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-214
 
 Metadata Types DataSourceObject
 
@@ -15708,7 +15494,6 @@ API version 63.0 and later.
 
 `objectCategory` string The category of the data source object.
 
-215
 
 #### Metadata Types DataSourceTenant
 
@@ -15775,7 +15560,6 @@ Special Access Rules
 
 You need Data 360 permission to access this object.
 
-216
 
 Metadata Types DataSrcDataModelFieldMap
 
@@ -15857,7 +15641,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 [manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/file_based_zip_file.htm)
 
-217
 
 #### Metadata Types DataStreamDefinition DataStreamDefinition
 
@@ -15919,7 +15702,6 @@ Valid values available in API version 62.0 and later are:
 `dataConnector` string Required. Describe whether this data stream definition was created by
 a customer or by an internal system.
 
-218
 
 Metadata Types DataStreamDefinition
 
@@ -16012,7 +15794,6 @@ enterprise ID (EID) of the customer in the format `MC_<EID>` . Example:
 
 `fileNameWildcard` string File or wildcard (*) used when finding files.
 
-219
 
 #### Metadata Types DataStreamTemplate
 
@@ -16072,7 +15853,6 @@ DataConnectionParamTmpl[]
 **Description**
 Input representation for the data connection source parameters.
 
-220
 
 Metadata Types DataStreamTemplate
 
@@ -16150,7 +15930,6 @@ The frequency with which the datastream must be refreshed. Possible values are:
 
 **•** `NONE`
 
-221
 
 Metadata Types DataStreamTemplate
 
@@ -16229,7 +16008,6 @@ The date to retrieve data based on the refresh frequency data. Available in API 
 **Field Type**
 string
 
-222
 
 Metadata Types DataStreamTemplate
 
@@ -16309,7 +16087,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-223
 
 #### Metadata Types ExternalDataConnector
 
@@ -16392,7 +16169,6 @@ type string)
 
 **•** `SalesforceDotCom`
 
-224
 
 #### Metadata Types ExternalDataSource
 
@@ -16460,7 +16236,6 @@ Version
 
 #### ExternalDataSource components are available in API version 28.0 and later.
 
-225
 
 Metadata Types ExternalDataSource
 
@@ -16525,7 +16300,6 @@ version 56.0 or later).
 Lets the Lightning Platform and users in this org create, update,
 and delete records for external objects associated with the external
 
-226
 
 Metadata Types ExternalDataSource
 
@@ -16609,7 +16383,6 @@ For Simple URL data sources, select **No Authentication** .
 `repository` string Used for SharePoint Online. If metadata is not accessible, use this
 field to create tables and default table fields.
 
-227
 
 Metadata Types ExternalDataSource
 
@@ -16684,7 +16457,6 @@ later.
 
 For SalesAgreement in Manufacturing Cloud, the valid values are:
 
-228
 
 Metadata Types ExternalDataSource
 
@@ -16747,7 +16519,6 @@ The parameters correspond to these fields in the user interface:
 
 **•** `timeout` - `Connection Timeout`
 
-229
 
 Metadata Types ExternalDataSource
 
@@ -16838,7 +16609,6 @@ The following is the definition of an external data source for Salesforce Connec
 
 ```
 
-230
 
 Metadata Types ExternalDataSource
 
@@ -16917,7 +16687,6 @@ type string)
 
 **Declarative Metadata Sample Definition: Amazon DynamoDB**
 
-231
 
 Metadata Types ExternalDataSource
 
@@ -17029,7 +16798,6 @@ The following is an example of an external data source for the Salesforce Connec
 
 ```
 
-232
 
 #### Metadata Types ExternalDataTransportFieldTemplate
 
@@ -17100,7 +16868,6 @@ availabilityStatus
 **Field Type**
 AvailabilityStatus (enumeration of type string)
 
-233
 
 Metadata Types ExternalDataTranObject
 
@@ -17179,7 +16946,6 @@ Reserved for internal use and read-only. Reference to the associated
 ExtDataTranObjectTemplate data kit object. The system populates this field when
 a data kit that contains a data stream is deployed.
 
-234
 
 Metadata Types ExternalDataTranObject
 
@@ -17260,7 +17026,6 @@ or by the System. Valid values are:
 
 **•** `Custom`
 
-235
 
 Metadata Types ExternalDataTranObject
 
@@ -17338,7 +17103,6 @@ If true, this field is a currency ISO code.
 **Field Type**
 boolean
 
-236
 
 Metadata Types ExternalDataTranObject
 
@@ -17419,7 +17183,6 @@ Used for currency and numbers.
 **Field Type**
 int
 
-237
 
 Metadata Types ExternalDataTranObject
 
@@ -17495,7 +17258,6 @@ string
 
 Required.
 
-238
 
 Metadata Types ExternalDataTranObject
 
@@ -17575,7 +17337,6 @@ int
 
 Optional.
 
-239
 
 Metadata Types ExternalDataTranObject
 
@@ -17657,7 +17418,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 [manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/file_based_zip_file.htm)
 
-240
 
 #### Metadata Types ExternalDataTransportObjectTemplate ExternalDataTransportObjectTemplate
 
@@ -17716,7 +17476,6 @@ Values are:
 
 **•** `Directory_Table`
 
-241
 
 ```
 definitionCreationType
@@ -17805,7 +17564,6 @@ relationship.
 
 For internal use only.
 
-242
 
 #### Metadata Types MarketSegmentDefinition MarketSegmentDefinition
 
@@ -17869,7 +17627,6 @@ DBT is supported.
 **Field Type**
 string
 
-243
 
 Metadata Types MarketSegmentDefinition
 
@@ -17954,7 +17711,6 @@ ssot__Individual__dlm</sql>
 
 ```
 
-244
 
 #### Metadata Types MktCalcInsightObjectDef
 
@@ -18017,7 +17773,6 @@ Fields
 `creationType` [CalculatedInsightCreationType(enumeration](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_objects_intro.htm#enumeration_title) Required. Describes whether this Calculated Insight Object Definition
 of type string) was added was added by the customer. Valid values include: Custom.
 
-245
 
 #### Metadata Types MktDataTranObject
 
@@ -18081,7 +17836,6 @@ Version
 
 #### MktDataTranObject components are available in API version 50.0 and later.
 
-246
 
 Metadata Types MktDataTranObject
 
@@ -18148,7 +17902,6 @@ Taxonomy.
 
 **–** `Calculated_Insight`
 
-247
 
 #### Metadata Types ObjectSourceTargetMap
 
@@ -18211,7 +17964,6 @@ File Suffix and Directory Location
 
 `objectSourceTargetMaps` folder.
 
-248
 
 Metadata Types ObjectSourceTargetMap
 
@@ -18288,7 +18040,6 @@ SfmcEnt1_Subscriber.
 `targetObjectName` string Required. Name of the target object that’s mapped, such as
 ContactPointEmail or Individual.
 
-249
 
 Metadata Types ObjectSourceTargetMap
 
@@ -18372,7 +18123,6 @@ you must include the sourceFormula value.
 
 `sourceFormula` string A formula, such as concatenation, date function, or constant value.
 
-250
 
 #### Metadata Types StreamingAppDataConnector
 
@@ -18437,7 +18187,6 @@ The value of the field is restricted to `SteamingApp` .
 
 Possible values are:
 
-251
 
 Metadata Types StreamingAppDataConnector
 
@@ -18526,7 +18275,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-252
 
 ### Metadata Types AccountPlanObjMeasCalcDef
 
@@ -18587,7 +18335,6 @@ Special Access Rules
 
 To access AccountPlanObjMeasCalcDef components, enable account plans.
 
-253
 
 Metadata Types AccountPlanObjMeasCalcDef
 
@@ -18666,7 +18413,6 @@ records that match the calculation definition and any optional conditions.
 
 Possible values are:
 
-254
 
 Metadata Types AccountPlanObjMeasCalcDef
 
@@ -18738,7 +18484,6 @@ Possible values are:
 
 **•** `Opportunity`
 
-255
 
 Metadata Types AccountPlanObjMeasCalcDef
 
@@ -18817,7 +18562,6 @@ The following is an example of an AccountPlanObjMeasCalcDef component.
 
 ```
 
-256
 
 ### Metadata Types AccountRelationshipShareRule
 
@@ -18902,7 +18646,6 @@ Special Access Rules
 Access to the AccountRelationshipShareRule type requires orgs to enable the Account Relationships permission. The Manage Experiences
 permission is required for user access.
 
-257
 
 Metadata Types AccountRelationshipShareRule
 
@@ -18979,7 +18722,6 @@ The following is an example of an AccountRelationshipShareRule component.
 
 ```
 
-258
 
 ### Metadata Types AccountingFieldMapping
 
@@ -19054,7 +18796,6 @@ Required.
 Record ID of the AccountingModelConfig record that the Field Mapping is associated
 with.
 
-259
 
 Metadata Types AccountingFieldMapping
 
@@ -19131,7 +18872,6 @@ AccountingFieldMapping is created.
 **Field Type**
 string
 
-260
 
 Metadata Types AccountingFieldMapping
 
@@ -19214,7 +18954,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-261
 
 ### Metadata Types AccountingModelConfig AccountingModelConfig
 
@@ -19279,7 +19018,6 @@ string
 **Description**
 Represents the name of your account for written off payments.
 
-262
 
 Metadata Types AccountingModelConfig
 
@@ -19357,7 +19095,6 @@ boolean
 **Description**
 Reserved for internal use.
 
-263
 
 Metadata Types AccountingModelConfig
 
@@ -19429,7 +19166,6 @@ case-sensitive.
 
 Note: If no record type is specified in the filter, all records are processed.
 
-264
 
 Metadata Types AccountingModelConfig
 
@@ -19516,7 +19252,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-265
 
 ### Metadata Types ActionLinkGroupTemplate ActionLinkGroupTemplate
 
@@ -19588,7 +19323,6 @@ Required. The number of hours from when the action link group is
 created until it's removed from associated feed elements and can no
 longer be executed. The maximum value is 8,760.
 
-266
 
 Metadata Types ActionLinkGroupTemplate
 
@@ -19665,7 +19399,6 @@ asynchronous operation is complete.
 
 **•** `Download` —The action link downloads a file from the action URL.
 
-267
 
 Metadata Types ActionLinkGroupTemplate
 
@@ -19741,7 +19474,6 @@ the action link.
 **•** `CustomExcludedUser` —Everyone but the custom user can see the
 action link.
 
-268
 
 Metadata Types ActionLinkGroupTemplate
 
@@ -19831,7 +19563,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-269
 
 ### Metadata Types ActionPlanTemplate ActionPlanTemplate
 
@@ -19898,7 +19629,6 @@ later.
 `estimatedCompletionDays` int Estimated number of days required to complete the action plan. Available
 in API version 64.0 and later.
 
-270
 
 Metadata Types ActionPlanTemplate
 
@@ -19957,7 +19687,6 @@ ActionPlanTemplateItemDependency
 Represents a dependency between action plan template items, defining the sequential relationship and creation timing of items. Available
 in API version 59.0 and later.
 
-271
 
 Metadata Types ActionPlanTemplate
 
@@ -20039,7 +19768,6 @@ The following is an example of an ActionPlanTemplate component.
 
 ```
 
-272
 
 Metadata Types ActionPlanTemplate
 
@@ -20142,7 +19870,6 @@ Metadata Types ActionPlanTemplate
 
 ```
 
-273
 
 Metadata Types ActionPlanTemplate
 
@@ -20249,7 +19976,6 @@ Metadata Types ActionPlanTemplate
 
 ```
 
-274
 
 ### Metadata Types ActionableListDefinition
 
@@ -20321,7 +20047,6 @@ Version
 
 ### ActionableListDefinition components are available in API version 57.0 and later.
 
-275
 
 Metadata Types ActionableListDefinition
 
@@ -20398,7 +20123,6 @@ Required.
 
 The master label of the actionable list definition.
 
-276
 
 Metadata Types ActionableListDefinition
 
@@ -20478,7 +20202,6 @@ API version 57.0 and later:
 
 **•** `Contact`
 
-277
 
 Metadata Types ActionableListDefinition
 
@@ -20557,7 +20280,6 @@ Create, Filter, Group, Nillable, Sort, Update
 The order in which the actionable list dataset columns are displayed. Available in API version
 58.0 and later.
 
-278
 
 Metadata Types ActionableListDefinition
 
@@ -20638,7 +20360,6 @@ API version 59.0 and later with Loyalty Cloud:
 
 **•** `LoyaltyProgramMember`
 
-279
 
 Metadata Types ActionableListDefinition
 
@@ -20712,7 +20433,6 @@ string
 **Description**
 The status of the actionable list member.
 
-280
 
 Metadata Types ActionableListDefinition
 
@@ -20803,7 +20523,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-281
 
 ### Metadata Types AdvAccountForecastSet AdvAccountForecastSet
 
@@ -20862,7 +20581,6 @@ Possible values are:
 
 The default value is `Monthly` .
 
-282
 
 Metadata Types AdvAccountForecastSet
 
@@ -20944,7 +20662,6 @@ The name of the advanced account forecast period group record.
 **Field Type**
 string
 
-283
 
 Metadata Types AdvAccountForecastSet
 
@@ -21022,7 +20739,6 @@ The field name for the period in the advanced account forecast fact record.
 **Field Type**
 string
 
-284
 
 Metadata Types AdvAccountForecastSet
 
@@ -21095,7 +20811,6 @@ AdvAccountForecastFormula
 Represents the formulas that are used to calculate forecast values in real time after applying the DPE calculations. For example, processing
 forecast rollover for all accounts at the start of a month.
 
-285
 
 Metadata Types AdvAccountForecastSet
 
@@ -21174,7 +20889,6 @@ int
 
 Required.
 
-286
 
 Metadata Types AdvAccountForecastSet
 
@@ -21253,7 +20967,6 @@ The name of the advanced account forecast dimension.
 **Field Type**
 string
 
-287
 
 Metadata Types AdvAccountForecastSet
 
@@ -21329,7 +21042,6 @@ Possible values are:
 
 **•** `MINIMUM`
 
-288
 
 Metadata Types AdvAccountForecastSet
 
@@ -21409,7 +21121,6 @@ The default value is `QUANTITY` .
 **Field Type**
 boolean
 
-289
 
 Metadata Types AdvAccountForecastSet
 
@@ -21476,7 +21187,6 @@ string
 **Description**
 The name of the profile for which the display group is applicable.
 
-290
 
 Metadata Types AdvAccountForecastSet
 
@@ -21565,7 +21275,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 ```
 
-291
 
 Metadata Types AdvAccountForecastSet
 
@@ -21673,7 +21382,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-292
 
 ### Metadata Types AffinityScoreDefinition
 
@@ -21731,7 +21439,6 @@ string
 **Description**
 Name of the affinity score definition.
 
-293
 
 Metadata Types AffinityScoreDefinition
 
@@ -21811,7 +21518,6 @@ as 3, provide the values for the `scoreRangeList` field in this format.
 
 ```
 
-294
 
 Metadata Types AffinityScoreDefinition
 
@@ -21902,7 +21608,6 @@ This example shows a sample of an AffinityScoreDefinition component.
 
 ```
 
-295
 
 Metadata Types AffinityScoreDefinition
 
@@ -22017,7 +21722,6 @@ Metadata Types AffinityScoreDefinition
 
 ```
 
-296
 
 ### Metadata Types AIApplication
 
@@ -22106,7 +21810,6 @@ inherits its `fullName` field.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-297
 
 ### Metadata Types AIApplicationConfig
 
@@ -22178,7 +21881,6 @@ File Suffix and Directory Location
 
 folder.
 
-298
 
 ### Metadata Types AiAuthoringBundle
 
@@ -22242,7 +21944,6 @@ Agentforce agent contains an Agent Script file and the associated metadata conte
 
 way to organize, version, and target AI-related content within your Salesforce org.
 
-299
 
 Metadata Types AiAuthoringBundle
 
@@ -22318,7 +22019,6 @@ To commit an agent version, Agentforce agents must specify the
 `developerName` for the Bot on page 479 and BotVersion on page 501
 components, separated by a period: `{Bot}.{BotVersion}` . For example,
 
-300
 
 Metadata Types AiAuthoringBundle
 
@@ -22405,7 +22105,6 @@ because it contains a `target` value. Uncommitted versions don't contain this fi
 
 ```
 
-301
 
 ### Metadata Types AiEvaluationDefinition
 
@@ -22465,7 +22164,6 @@ purpose
 of the
 test.
 
-302
 
 Metadata Types AiEvaluationDefinition
 
@@ -22529,7 +22227,6 @@ A
 unique
 identifier
 
-303
 
 Metadata Types AiEvaluationDefinition
 
@@ -22593,7 +22290,6 @@ agent
 
 version
 
-304
 
 Metadata Types AiEvaluationDefinition
 
@@ -22658,7 +22354,6 @@ the
 artifact's
 responses.
 
-305
 
 Metadata Types AiEvaluationDefinition
 
@@ -22727,7 +22422,6 @@ test.
 The
 format
 
-306
 
 Metadata Types AiEvaluationDefinition
 
@@ -22788,7 +22482,6 @@ times
 in a
 test
 
-307
 
 Metadata Types AiEvaluationDefinition
 
@@ -22853,7 +22546,6 @@ as
 For
 a
 
-308
 
 Metadata Types AiEvaluationDefinition
 
@@ -22920,7 +22612,6 @@ actions,
 see
 Standard
 
-309
 
 Metadata Types AiEvaluationDefinition
 
@@ -22988,7 +22679,6 @@ easy
 to
 understand
 
-310
 
 Metadata Types AiEvaluationDefinition
 
@@ -23052,7 +22742,6 @@ value.
 A
 gen **e** ratd
 
-311
 
 Metadata Types AiEvaluationDefinition
 
@@ -23111,7 +22800,6 @@ don't
 need
 an
 
-312
 
 Metadata Types AiEvaluationDefinition
 
@@ -23176,7 +22864,6 @@ of
 parameters
 for the
 
-313
 
 Metadata Types AiEvaluationDefinition
 
@@ -23248,7 +22935,6 @@ Results
 resource.
 If
 
-314
 
 Metadata Types AiEvaluationDefinition
 
@@ -23313,7 +22999,6 @@ valid
 options
 include:
 
-315
 
 Metadata Types AiEvaluationDefinition
 
@@ -23395,7 +23080,6 @@ ends
 with
 the
 
-316
 
 Metadata Types AiEvaluationDefinition
 
@@ -23473,7 +23157,6 @@ is
 less
 than
 
-317
 
 Metadata Types AiEvaluationDefinition
 
@@ -23554,7 +23237,6 @@ if
 
 is
 
-318
 
 Metadata Types AiEvaluationDefinition
 
@@ -23620,7 +23302,6 @@ history
 elements
 sent to
 
-319
 
 Metadata Types AiEvaluationDefinition
 
@@ -23684,7 +23365,6 @@ variable.
 
 An XML array of conversation history sent to the agent.
 
-320
 
 Metadata Types AiEvaluationDefinition
 
@@ -23758,7 +23438,6 @@ the
 Required
 for
 
-321
 
 Metadata Types AiEvaluationDefinition
 
@@ -23853,7 +23532,6 @@ Here's an example of an AiEvaluationDefinition component.
 
 ```
 
-322
 
 ### Metadata Types AIScoringModelDefinition
 
@@ -23920,7 +23598,6 @@ Special Access Rules
 To access this metadata type, you must have the AI Accelerator User permission set with Scoring Framework enabled for Industries Cloud
 Einstein from Salesforce Setup. The Salesforce org must have the CRM Plus license and the product’s CRM license.
 
-323
 
 Metadata Types AIScoringModelDefinition
 
@@ -23998,7 +23675,6 @@ record.
 
 AIScoringStep[]
 
-324
 
 Metadata Types AIScoringModelDefinition
 
@@ -24073,7 +23749,6 @@ aiModelConfigStep
 **Field Type**
 string
 
-325
 
 Metadata Types AIScoringModelDefinition
 
@@ -24155,7 +23830,6 @@ Here’s an example of an AIScoringModelDefinition component.
 
 ```
 
-326
 
 ### Metadata Types AIUsecaseDefinition
 
@@ -24233,7 +23907,6 @@ Version
 
 ### AIUsecaseDefinition components are available in API version 56.0 and later.
 
-327
 
 Metadata Types AIUsecaseDefinition
 
@@ -24306,7 +23979,6 @@ int
 **Description**
 The maximum number of insights returned by the scoring response.
 
-328
 
 Metadata Types AIUsecaseDefinition
 
@@ -24381,7 +24053,6 @@ Indicates whether to save the features extracted for the scoring request ( `true
 
 The default value is `false` .
 
-329
 
 Metadata Types AIUsecaseDefinition
 
@@ -24457,7 +24128,6 @@ on the score are displayed on the prediction scorecard.
 **Field Type**
 string
 
-330
 
 Metadata Types AIUsecaseDefinition
 
@@ -24529,7 +24199,6 @@ Valid values are:
 
 **•** `SECONDARY_RESPONSE_RECORD_ID`
 
-331
 
 Metadata Types AIUsecaseDefinition
 
@@ -24606,7 +24275,6 @@ AIFeatureExtractor[]
 **Description**
 The AI feature extractors to retrieve the input data.
 
-332
 
 Metadata Types AIUsecaseDefinition
 
@@ -24683,7 +24351,6 @@ values are:
 
 **•** `Einstein_Discovery`
 
-333
 
 Metadata Types AIUsecaseDefinition
 
@@ -24754,7 +24421,6 @@ The ID of the Apex class created for the feature extractor.
 **Field Type**
 string
 
-334
 
 Metadata Types AIUsecaseDefinition
 
@@ -24830,7 +24496,6 @@ also include the data in the uploaded CSV file. Available in API version 57.0 an
 **Field Type**
 string
 
-335
 
 Metadata Types AIUsecaseDefinition
 
@@ -24930,7 +24595,6 @@ The following is an example of an AIUsecaseDefinition component.
 
 ```
 
-336
 
 Metadata Types AIUsecaseDefinition
 
@@ -25025,7 +24689,6 @@ Metadata Types AIUsecaseDefinition
 
 ```
 
-337
 
 Metadata Types AIUsecaseDefinition
 
@@ -25136,7 +24799,6 @@ Metadata Types AIUsecaseDefinition
 
 ```
 
-338
 
 ### Metadata Types AnalyticsDashboard
 
@@ -25203,7 +24865,6 @@ Required.
 
 The Tableau Next workspace the dashboard belongs to.
 
-339
 
 Metadata Types AnalyticsDashboard
 
@@ -25280,7 +24941,6 @@ string
 If the dashboard was created from a template, the name of the source dashboard in
 the template.
 
-340
 
 Metadata Types AnalyticsDashboard
 
@@ -25357,7 +25017,6 @@ The version of the dashboard the layout is associated with.
 **Field Type**
 string
 
-341
 
 Metadata Types AnalyticsDashboard
 
@@ -25433,7 +25092,6 @@ double
 **Description**
 The API version of the dashboard layout.
 
-342
 
 Metadata Types AnalyticsDashboard
 
@@ -25508,7 +25166,6 @@ string
 **Description**
 The column span for the widget on the page. This is a numeric value.
 
-343
 
 Metadata Types AnalyticsDashboard
 
@@ -25587,7 +25244,6 @@ widgets. Required for container widget.
 
 AnlytDshbrdWdgtDynamicTkn[]
 
-344
 
 Metadata Types AnalyticsDashboard
 
@@ -25666,7 +25322,6 @@ Values are:
 
 **•** `filter`
 
-345
 
 Metadata Types AnalyticsDashboard
 
@@ -25744,7 +25399,6 @@ Values are:
 **Field Type**
 string
 
-346
 
 Metadata Types AnalyticsDashboard
 
@@ -25823,7 +25477,6 @@ Example:
 
 ```
 
-347
 
 Metadata Types AnalyticsDashboard
 
@@ -25900,7 +25553,6 @@ string
 **Description**
 The specification for the dynamic token.
 
-348
 
 Metadata Types AnalyticsDashboard
 
@@ -25974,7 +25626,6 @@ string
 **Description**
 The parameters for the filter widget. This is a JSON String.
 
-349
 
 Metadata Types AnalyticsDashboard
 
@@ -26047,7 +25698,6 @@ string
 **Description**
 The parameters for the filter widget. This is a JSON String.
 
-350
 
 Metadata Types AnalyticsDashboard
 
@@ -26122,7 +25772,6 @@ string
 **Description**
 The version of the visualization.
 
-351
 
 Metadata Types AnalyticsDashboard
 
@@ -26227,7 +25876,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 ```
 
-352
 
 Metadata Types AnalyticsDashboard
 
@@ -26328,7 +25976,6 @@ Metadata Types AnalyticsDashboard
 
 ```
 
-353
 
 Metadata Types AnalyticsDashboard
 
@@ -26419,7 +26066,6 @@ Metadata Types AnalyticsDashboard
 
 ```
 
-354
 
 ### Metadata Types AnalyticSnapshot
 
@@ -26509,7 +26155,6 @@ report results to fields on a custom object, then map those fields to correspond
 when to run the report to load the custom object's fields with the report's data. Reporting snapshots enable you to work with report
 data similarly to how you work with other records in Salesforce.
 
-355
 
 Metadata Types AnalyticSnapshot
 
@@ -26567,7 +26212,6 @@ ExecutionTime (set through the user interface)
 `sourceType` ReportJobSourceTypes[] List that defines the report format for the reporting snapshot. For valid
 (enumeration of type string) values, see ReportJobSourceTypes.
 
-356
 
 Metadata Types AnalyticSnapshot
 
@@ -26646,7 +26290,6 @@ Here’s a sample XML definition of a reporting snapshot.
 
 ```
 
-357
 
 ### Metadata Types AnalyticsVisualization
 
@@ -26711,7 +26354,6 @@ string
 
 Required.
 
-358
 
 Metadata Types AnalyticsVisualization
 
@@ -26788,7 +26430,6 @@ If the visualization was created from a template, the name of the source templat
 **Field Type**
 double
 
-359
 
 Metadata Types AnalyticsVisualization
 
@@ -26863,7 +26504,6 @@ string
 **Description**
 The expression to compute the field value with.
 
-360
 
 Metadata Types AnalyticsVisualization
 
@@ -26945,7 +26585,6 @@ Values are:
 
 **•** `FiscalDatePartMonth`
 
-361
 
 Metadata Types AnalyticsVisualization
 
@@ -27026,7 +26665,6 @@ Values are:
 
 **•** `Dimension`
 
-362
 
 Metadata Types AnalyticsVisualization
 
@@ -27103,7 +26741,6 @@ Required.
 
 The name of the view definition.
 
-363
 
 Metadata Types AnalyticsVisualization
 
@@ -27199,7 +26836,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 ```
 
-364
 
 ### Metadata Types AnalyticsWorkspace
 
@@ -27271,7 +26907,6 @@ Version
 
 ### AnalyticsWorkspace components are available in API version 64 and later.
 
-365
 
 Metadata Types AnalyticsWorkspace
 
@@ -27350,7 +26985,6 @@ Values are:
 
 **•** `MktCalculatedInsightObject` (Data 360 Calculated Insight Object)
 
-366
 
 Metadata Types AnalyticsWorkspace
 
@@ -27432,7 +27066,6 @@ The following is an example of an AnalyticsWorkspace component.
 
 ```
 
-367
 
 ### Metadata Types AnimationRule
 
@@ -27502,7 +27135,6 @@ user selects the designated picklist values in a path. Valid values are:
 
 **•** `sometimes`
 
-368
 
 Metadata Types AnimationRule
 
@@ -27576,7 +27208,6 @@ The following is an example of an AnimationRule component.
 
 ```
 
-369
 
 ### Metadata Types AppFrameworkTemplateBundle
 
@@ -27659,7 +27290,6 @@ myTemplate.
 App framework template bundles must be under a top-level folder that’s named `appTemplates` . Each bundle must have its own
 subfolder under the `appTemplate` folder and named with the template's fully qualified API name. The bundle folder must contain
 
-370
 
 Metadata Types AppFrameworkTemplateBundle
 
@@ -27720,7 +27350,6 @@ The maximum number of apps that can be created from this template.
 **Field Type**
 string
 
-371
 
 ### Metadata Types ArticleType
 
@@ -27793,7 +27422,6 @@ appearance, and which users can access it. For example, a simple FAQ article typ
 where article managers enter data when creating or updating FAQ articles. A more complex article type can have dozens of fields
 organized into several sections. Using layouts and templates, administrators can structure the article type in the most effective way for
 
-372
 
 Metadata Types ArticleType
 
@@ -27876,7 +27504,6 @@ Indicates the gender of the noun that represents the object. This is used
 for languages where words need different treatment depending on their
 gender.
 
-373
 
 Metadata Types ArticleType
 
@@ -27936,7 +27563,6 @@ must also set the `page` field with the Visualforce page name.
 
 **•** `Toc` : display the sections you defined in the layout as table of content.
 
-374
 
 Metadata Types ArticleType
 
@@ -28024,7 +27650,6 @@ content inline into communication channels (for example, in email publishers, Ex
 Admins can create a list of fields for an article type or record type that they want to share for each communication channel. You can
 customize the order of the fields.
 
-375
 
 #### Metadata Types ArticleType Layout
 
@@ -28078,7 +27703,6 @@ are automatically translated.
 `label` string The label; either standard or custom, based on the `customLabel`
 flag.
 
-376
 
 Metadata Types ArticleType Layout
 
@@ -28163,7 +27787,6 @@ The following is the definition of an ArticleType page layout:
 
 ```
 
-377
 
 #### Metadata Types ChannelLayout
 
@@ -28228,7 +27851,6 @@ is enabled in API version 47.0 and later, `Chat`, `Messaging`, and
 
 on page 379[] field order.
 
-378
 
 #### Metadata Types ArticleType CustomField
 
@@ -28309,7 +27931,6 @@ custom field definitions.
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-379
 
 Metadata Types ArticleType CustomField
 
@@ -28382,7 +28003,6 @@ it's in a lookup relationship.
 **•** `SetNull` —This is the default. If the lookup record is
 deleted, the lookup field is cleared.
 
-380
 
 Metadata Types ArticleType CustomField
 
@@ -28457,7 +28077,6 @@ or not ( `false` ).
 
 **•** `Formula`
 
-381
 
 ### Metadata Types ApexClass
 
@@ -28535,7 +28154,6 @@ in this case, do one of the following.
 
 **•** Cancel Apex jobs before deploying changes to Apex code. Reschedule the jobs after the deployment.
 
-382
 
 Metadata Types ApexClass
 
@@ -28597,7 +28215,6 @@ The status of the Apex class. The following string values are valid:
 packages, because it allows a class to be deleted when a managed package
 is updated.
 
-383
 
 Metadata Types ApexClass
 
@@ -28662,7 +28279,6 @@ metadata file.
 
 ```
 
-384
 
 ### Metadata Types ApexComponent
 
@@ -28729,7 +28345,6 @@ the MetadataWithContent component.
 
 `description` string A description of what the component does.
 
-385
 
 ### Metadata Types ApexEmailNotifications
 
@@ -28780,7 +28395,6 @@ Version
 
 ### ApexEmailNotifications components are available in API version 49.0 and later.
 
-386
 
 Metadata Types ApexEmailNotifications
 
@@ -28850,7 +28464,6 @@ This example specifies the exact file name in `package.xml` .
 
 ```
 
-387
 
 ### Metadata Types ApexPage
 
@@ -28938,7 +28551,6 @@ Version
 
 Visualforce pages are available in API version 11.0 and later.
 
-388
 
 Metadata Types ApexPage
 
@@ -29002,7 +28614,6 @@ For more information about managed packages, see
 [Second-Generation Managed Packages in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer_
 _Guide_ . This field is available in API version 16.0 and later.
 
-389
 
 ### Metadata Types ApexTestSuite
 
@@ -29066,7 +28677,6 @@ Fields
 `testClassName` string[] A list of Apex test classes, specified by name, to include in this
 test suite.
 
-390
 
 Metadata Types ApexTestSuite
 
@@ -29161,7 +28771,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-391
 
 ### Metadata Types ApexTrigger ApexTrigger
 
@@ -29220,7 +28829,6 @@ and later.
 
 **•** `Inactive`                    - The trigger is inactive, but not deleted.
 
-392
 
 ### Metadata Types AppMenu
 
@@ -29282,7 +28890,6 @@ field.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-393
 
 Metadata Types AppointmentAssignmentPolicy
 
@@ -29353,7 +28960,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-394
 
 ### Metadata Types AppointmentSchedulingPolicy
 
@@ -29416,7 +29022,6 @@ then begin at the top of the hour and at 15-minute intervals thereafter
 
 **•** `15`
 
-395
 
 Metadata Types AppointmentSchedulingPolicy
 
@@ -29492,7 +29097,6 @@ Required. Indicates whether this appointment scheduling policy allows
 only required service resources to be assigned to appointments ( `true` )
 or not ( `false` ).
 
-396
 
 Metadata Types AppointmentSchedulingPolicy
 
@@ -29586,7 +29190,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-397
 
 ### Metadata Types ApprovalProcess
 
@@ -29643,7 +29246,6 @@ requests.
 `allowedSubmitters` ApprovalSubmitter[] Required. An array of users who are allowed to submit records
 for approval.
 
-398
 
 Metadata Types ApprovalProcess
 
@@ -29712,7 +29314,6 @@ approvals. Default: `false` .
 `finalRejectionActions` ApprovalAction Specifies which workflow actions to execute after a record
 enters the final rejection state.
 
-399
 
 Metadata Types ApprovalProcess
 
@@ -29778,7 +29379,6 @@ approval request details and approve or reject the record. The
 Approval History related list tracks a record through the
 approval process.
 
-400
 
 Metadata Types ApprovalProcess
 
@@ -29858,7 +29458,6 @@ string)
 
 **•** `allInternalUsers` —all Salesforce users in the organization
 
-401
 
 Metadata Types ApprovalProcess
 
@@ -29921,7 +29520,6 @@ first step in the approval process.
 **•** `GotoNextStep` —Skip to the next approval step. If you
 select this option for the first approval step, and a record
 
-402
 
 Metadata Types ApprovalProcess
 
@@ -29983,7 +29581,6 @@ approval request for this step is rejected.
 
 **•** `FirstResponse` —Approve or reject based on the first response.
 
-403
 
 Metadata Types ApprovalProcess
 
@@ -30047,7 +29644,6 @@ Approval processes don’t support `valueField` entries in filter criteria.
 `formula` string Formula that must evaluate to true for a record to enter the approval process
 or approval step.
 
-404
 
 Metadata Types ApprovalProcess
 
@@ -30119,7 +29715,6 @@ The following is an example of an ApprovalProcess component:
 
 ```
 
-405
 
 Metadata Types ApprovalProcess
 
@@ -30234,7 +29829,6 @@ Metadata Types ApprovalProcess
 
 ```
 
-406
 
 Metadata Types ApprovalProcess
 
@@ -30349,7 +29943,6 @@ Metadata Types ApprovalProcess
 
 ```
 
-407
 
 ### Metadata Types AssignmentRules
 
@@ -30441,7 +30034,6 @@ see Deploying and Retrieving Metadata with the Zip File.
 Represents assignment rules that allow you to automatically route cases to the appropriate users or queues. You can access rules metadata
 for all applicable objects, for a specific object, or for a specific rule on a specific object.
 
-408
 
 Metadata Types AssignmentRules
 
@@ -30514,7 +30106,6 @@ container.
 `active` boolean Indicates whether the assignment rule is active ( `true` ) or
 not ( `false` ).
 
-409
 
 Metadata Types AssignmentRules
 
@@ -30580,7 +30171,6 @@ automatically sent to the designated recipient.
 Lightning email templates aren’t packageable. We
 recommend using a Classic email template.
 
-410
 
 ### Metadata Types AssessmentQuestion
 
@@ -30666,7 +30256,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-411
 
 Metadata Types AssessmentQuestion
 
@@ -30735,7 +30324,6 @@ string
 **Description**
 Specifies the data type of the question response calculated by a formula.
 
-412
 
 Metadata Types AssessmentQuestion
 
@@ -30812,7 +30400,6 @@ The guidance for the assessment question.
 **Field Type**
 string
 
-413
 
 Metadata Types AssessmentQuestion
 
@@ -30887,7 +30474,6 @@ Required.
 
 Status of the assessment question version. Possible values are Draft, Active, or Archived.
 
-414
 
 Metadata Types AssessmentQuestion
 
@@ -30979,7 +30565,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-415
 
 ### Metadata Types AssessmentQuestionSet
 
@@ -31031,7 +30616,6 @@ Version
 
 ### AssessmentQuestionSet components are available in API version 55.0 and later.
 
-416
 
 Metadata Types AssessmentQuestionSet
 
@@ -31112,7 +30696,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-417
 
 ### Metadata Types Audience
 
@@ -31176,7 +30759,6 @@ Version
 
 ### Audience components are available in API version 44.0 and later.
 
-418
 
 Metadata Types Audience
 
@@ -31249,7 +30831,6 @@ Represents criteria for an audience. This subtype is available in API version 47
 
 `criterion` AudienceCriterion[] List of criteria for an audience. An audience can have up to 100 criteria.
 
-419
 
 Metadata Types Audience
 
@@ -31335,7 +30916,6 @@ Developer name of the audience. This field is available in API version 53.0 and
 later. You can use this field only when the value of the AudienceCriterion `type`
 field is `Audience` .
 
-420
 
 Metadata Types Audience
 
@@ -31420,7 +31000,6 @@ entityType
 
 ```
 
-421
 
 Metadata Types Audience
 
@@ -31496,7 +31075,6 @@ record targets.
 For more information on the `ExperienceVariation` target type, see
 ExperienceBundle.
 
-422
 
 Metadata Types Audience
 
@@ -31595,7 +31173,6 @@ The following is an example of an Audience component.
 
 ```
 
-423
 
 Metadata Types Audience
 
@@ -31708,7 +31285,6 @@ Metadata Types Audience
 
 ```
 
-424
 
 Metadata Types Audience
 
@@ -31808,7 +31384,6 @@ To update an audience without updating targets, deploy the audience without targ
 
 ```
 
-425
 
 ### Metadata Types AuraDefinitionBundle
 
@@ -31885,7 +31460,6 @@ folder. The name of each definition file must start with the bundle name.
 
 A bundle doesn’t have a suffix. Definition files can have one of these suffixes:
 
-426
 
 Metadata Types AuraDefinitionBundle
 
@@ -31923,7 +31497,6 @@ later.
 
 `designContent` base64Binary The content of a design definition. Only valid inside a component bundle.
 
-427
 
 Metadata Types AuraDefinitionBundle
 
@@ -32017,7 +31590,6 @@ Content of `sampleCmpController.js` :
 
 ```
 
-428
 
 ### Metadata Types AuthProvider
 
@@ -32087,7 +31659,6 @@ Required when using Apple as a third-party authentication provider. A
 10-character team ID, obtained from an Apple developer account. Available
 in API version 48.0 and later.
 
-429
 
 Metadata Types AuthProvider
 
@@ -32161,7 +31732,6 @@ authentication details for your Salesforce org.
 
 **•** `EU` —EU control plane
 
-430
 
 Metadata Types AuthProvider
 
@@ -32228,7 +31798,6 @@ profile that new users are assigned to. If you include this field, Salesforce
 automatically uses it for the `defaultProfileId` variable in the
 Authentication Provider User Registration standard flow.
 
-431
 
 Metadata Types AuthProvider
 
@@ -32295,7 +31864,6 @@ version 33.0 and later.
 `oauthKickoffUrl` string The URL for obtaining OAuth access tokens for a third party. This field is
 read-only. Available in API version 43.0 and later.
 
-432
 
 Metadata Types AuthProvider
 
@@ -32371,7 +31939,6 @@ version 31.0 and later.
 
 **•** `Twitter` . Available in API version 32.0 and later.
 
-433
 
 Metadata Types AuthProvider
 
@@ -32441,7 +32008,6 @@ In API version 33.0 and later, for Salesforce-managed auth providers, leave
 the field blank to let Salesforce supply and manage the value. For details,
 see “Usage.”
 
-434
 
 Metadata Types AuthProvider
 
@@ -32512,7 +32078,6 @@ This example package manifest references the previous AuthProvider definition.
 
 ```
 
-435
 
 ### Metadata Types AutoResponseRules
 
@@ -32586,7 +32151,6 @@ The `package.xml` syntax for accessing all auto-response rules for all objects i
 
 ```
 
-436
 
 Metadata Types AutoResponseRules
 
@@ -32653,7 +32217,6 @@ an example of this field specified for a call.
 
 This value can't be `null` .
 
-437
 
 Metadata Types AutoResponseRules
 
@@ -32732,7 +32295,6 @@ recommend using a Classic email template.
 
 ```
 
-438
 
 ### Metadata Types BatchCalcJobDefinition
 
@@ -32793,7 +32355,6 @@ Aggregate[]
 `atomicWritebacks` BatchCalcJobAtomicWriteBack[] Collection of composite writeback nodes in a data processing engine
 definition. Available in API version 62.0 and later.
 
-439
 
 Metadata Types BatchCalcJobDefinition
 
@@ -32864,7 +32425,6 @@ Available in API version 58.0 and later.
 
 `hierarchyPaths` BatchCalcJobHierarchyPath[] Collection of hierarchy path nodes in a data processing engine definition.
 
-440
 
 Metadata Types BatchCalcJobDefinition
 
@@ -32938,7 +32498,6 @@ later.
 
 **•** `Loyalty`
 
-441
 
 ```
 processType
@@ -33018,7 +32577,6 @@ BatchCalcJobAggregate
 
 Represents a collection of fields relating to an aggregate node in a data processing engine.
 
-442
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33085,7 +32643,6 @@ to refer to the aggregate field.
 
 `sourceFieldName` string Required. Source node field on which the aggregate is calculated.
 
-443
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33137,7 +32694,6 @@ BatchCalcJobCustomNode
 
 Represents a collection of custom nodes in a data processing engine. Use a custom node to add a custom action.
 
-444
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33196,7 +32752,6 @@ Possible values are:
 
 **•** `TAB`
 
-445
 
 ```
 CSVDelimiter
@@ -33285,7 +32840,6 @@ Fields
 `alias` string Name that subsequent nodes within the data processing engine use to refer
 to the data source field. Required when the field name is lookup.
 
-446
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33359,7 +32913,6 @@ criteria is passed in runtime with `filterParameterName` .
 
 `sourceName` string Required. Name of the source node.
 
-447
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33428,7 +32981,6 @@ as the forecast period
 type, and 4 as the forecast
 period count, the forecast
 
-448
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33484,7 +33036,6 @@ node.
 
 `seasonality` BatchCalcJobFrcstSeasonality (enumeration of type string)
 
-449
 
 Required.
 
@@ -33583,7 +33134,6 @@ Required.
 The name of the source
 node.
 
-450
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33647,7 +33197,6 @@ The name of the source field.
 
 Represents source fields for grouping the data to be processed by the forecast node.
 
-451
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33715,7 +33264,6 @@ Fields
 
 `sourceName` string Required. Name of the source node.
 
-452
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33794,7 +33342,6 @@ DataType
 **•** `DateTime`
 string)
 
-453
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33868,7 +33415,6 @@ string)
 
 **•** `Lookup`
 
-454
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33920,7 +33466,6 @@ AddedField[] transformation type is `Expression` .
 
 `name` string Required. The name of the batch calculation job transform.
 
-455
 
 Metadata Types BatchCalcJobDefinition
 
@@ -33989,7 +33534,6 @@ Valid values are:
 
 **•** `Numeric`
 
-456
 
 ```
 dataType
@@ -34057,7 +33601,6 @@ fields.
 
 `sources` string[] Names of the source nodes.
 
-457
 
 Metadata Types BatchCalcJobDefinition
 
@@ -34126,7 +33669,6 @@ Valid values are:
 
 **•** `Upsert`
 
-458
 
 ```
 operationType
@@ -34206,7 +33748,6 @@ field is defined.
 
 `relationshipName` string Name of the lookup relationship.
 
-459
 
 Metadata Types BatchCalcJobDefinition
 
@@ -34308,7 +33849,6 @@ The following is an example of a BatchCalcJobDefinition component.
 
 ```
 
-460
 
 Metadata Types BatchCalcJobDefinition
 
@@ -34423,7 +33963,6 @@ Metadata Types BatchCalcJobDefinition
 
 ```
 
-461
 
 Metadata Types BatchCalcJobDefinition
 
@@ -34538,7 +34077,6 @@ Metadata Types BatchCalcJobDefinition
 
 ```
 
-462
 
 Metadata Types BatchCalcJobDefinition
 
@@ -34653,7 +34191,6 @@ Metadata Types BatchCalcJobDefinition
 
 ```
 
-463
 
 Metadata Types BatchCalcJobDefinition
 
@@ -34768,7 +34305,6 @@ Metadata Types BatchCalcJobDefinition
 
 ```
 
-464
 
 Metadata Types BatchCalcJobDefinition
 
@@ -34881,7 +34417,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-465
 
 ### Metadata Types BatchProcessJobDefinition
 
@@ -34936,7 +34471,6 @@ that the batch job must execute.
 
 **•** If the batch job’s type is Loyalty Program Process, enter:
 
-466
 
 Metadata Types BatchProcessJobDefinition
 
@@ -34994,7 +34528,6 @@ of type string) field is available in API version 55.0 and later. Valid values a
 
 **•** `Loyalty Program Process`
 
-467
 
 Metadata Types BatchProcessJobDefinition
 
@@ -35055,7 +34588,6 @@ members whose tier must be assessed.
 
 Represents the filter conditions that decide which records must be processed by the Batch Management job.
 
-468
 
 Metadata Types BatchProcessJobDefinition
 
@@ -35120,7 +34652,6 @@ domainObjectName string Required. Name of the object the field is associated wit
 `fieldName` string Required. Name of the field that must be used to filter records. Available in API
 version 64.0 and later.
 
-469
 
 Metadata Types BatchProcessJobDefinition
 
@@ -35220,7 +34751,6 @@ The following is an example of a Flow object used in Metadata API.
 
 ```
 
-470
 
 Metadata Types BatchProcessJobDefinition
 
@@ -35334,7 +34864,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-471
 
 ### Metadata Types BillingSettings
 
@@ -35397,7 +34926,6 @@ General ledger account to record the credit amount for unrealized or realized lo
 and the debit amount for unrealized or realized gains in transaction journals. Available
 in API version 64.0 and later.
 
-472
 
 Metadata Types BillingSettings
 
@@ -35469,7 +34997,6 @@ string
 Default email template to send the generated invoice PDFs. Available in API version
 64.0 and later.
 
-473
 
 Metadata Types BillingSettings
 
@@ -35541,7 +35068,6 @@ applied to invoices or invoice lines.
 **Field Type**
 boolean
 
-474
 
 Metadata Types BillingSettings
 
@@ -35610,7 +35136,6 @@ boolean
 Indicates whether to create a default payment schedule policy and payment schedule
 treatment ( `true` ) or not ( `false` ). The default value is `false` .
 
-475
 
 Metadata Types BillingSettings
 
@@ -35683,7 +35208,6 @@ This setting applies balances of credit memos and payments to invoices or balanc
 of credit memo lines and payments lines to invoice lines. For the latter, amounts and
 balances on the invoices are rolled-up from the related invoice lines.
 
-476
 
 Metadata Types BillingSettings
 
@@ -35760,7 +35284,6 @@ The following is an example of a BillingSettings component.
 
 ```
 
-477
 
 ### Metadata Types BlacklistedConsumer
 
@@ -35828,7 +35351,6 @@ Fields
 
 This metadata type contains the following fields:
 
-478
 
 ### Metadata Types Bot
 
@@ -35905,7 +35427,6 @@ connected app.
 
 Represents a definition of an Einstein Bot configuration that can have one or more versions. Only one version can be active.
 
-479
 
 Metadata Types Bot
 
@@ -35975,7 +35496,6 @@ and later.
 
 `description` string A description of the bot.
 
-480
 
 Metadata Types Bot
 
@@ -36037,7 +35557,6 @@ A context variable local to the current bot version. Available in API version 45
 `contextVariableMappings` ConversationContextVariableMapping Represents the mapping between a context variable, channel type, and sObject
 on page 482 field.
 
-481
 
 Metadata Types Bot
 
@@ -36109,7 +35628,6 @@ Represents the mapping between a context variable, channel type, and sObject fie
 
 `fieldName` string Required. The API name of an SObject field to be used as part of the mapping.
 
-482
 
 Metadata Types Bot
 
@@ -36182,7 +35700,6 @@ PageContextVariable
 
 A page-level context variable used by the bot. Available in API version 64.0 and later.
 
-483
 
 Metadata Types Bot
 
@@ -36275,7 +35792,6 @@ The following is an example of a Bot. This example has been trimmed to make it e
 
 ```
 
-484
 
 Metadata Types Bot
 
@@ -36390,7 +35906,6 @@ Metadata Types Bot
 
 ```
 
-485
 
 Metadata Types Bot
 
@@ -36505,7 +36020,6 @@ Metadata Types Bot
 
 ```
 
-486
 
 Metadata Types Bot
 
@@ -36620,7 +36134,6 @@ Metadata Types Bot
 
 ```
 
-487
 
 ### Metadata Types BotBlock
 
@@ -36692,7 +36205,6 @@ Special Access Rules
 
 ### BotBlock is available only if Chat and Einstein Bots are enabled in your org.
 
-488
 
 Metadata Types BotBlock
 
@@ -36768,7 +36280,6 @@ ConversationDefinitionGoal[] on page 524
 **Description**
 The list of goals in this bot block. Available in API version 57.0 and later.
 
-489
 
 Metadata Types BotBlock
 
@@ -36844,7 +36355,6 @@ Values are:
 
 **•** `Published`
 
-490
 
 Metadata Types BotBlock
 
@@ -36957,7 +36467,6 @@ The following is an example of a BotBlock component.
 
 ```
 
-491
 
 Metadata Types BotBlock
 
@@ -37072,7 +36581,6 @@ Metadata Types BotBlock
 
 ```
 
-492
 
 Metadata Types BotBlock
 
@@ -37187,7 +36695,6 @@ Metadata Types BotBlock
 
 ```
 
-493
 
 ### Metadata Types BotTemplate
 
@@ -37257,7 +36764,6 @@ Special Access Rules
 
 ### BotTemplate is available only if Chat and Einstein Bots are enabled in your org.
 
-494
 
 Metadata Types BotTemplate
 
@@ -37340,7 +36846,6 @@ use variables within dialog actions as both inputs and outputs.
 **Field Type**
 string
 
-495
 
 Metadata Types BotTemplate
 
@@ -37416,7 +36921,6 @@ later.
 **Field Type**
 boolean
 
-496
 
 Metadata Types BotTemplate
 
@@ -37510,7 +37014,6 @@ The following is an example of a BotTemplate component.
 
 ```
 
-497
 
 Metadata Types BotTemplate
 
@@ -37625,7 +37128,6 @@ Metadata Types BotTemplate
 
 ```
 
-498
 
 Metadata Types BotTemplate
 
@@ -37738,7 +37240,6 @@ Metadata Types BotTemplate
 
 ```
 
-499
 
 Metadata Types BotTemplate
 
@@ -37848,7 +37349,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-500
 
 ### Metadata Types BotVersion
 
@@ -37912,7 +37412,6 @@ string
 **Description**
 Reserved for internal use.
 
-501
 
 Metadata Types BotVersion
 
@@ -37994,7 +37493,6 @@ A reference to the first dialog that the bot presents to your customer. For exam
 **Field Type**
 boolean
 
-502
 
 Metadata Types BotVersion
 
@@ -38071,7 +37569,6 @@ ConversationDefinitionNlpProvider[] on page 528
 Defines the language provider which is used for a particular language. Available
 in API version 49.0 and later.
 
-503
 
 Metadata Types BotVersion
 
@@ -38147,7 +37644,6 @@ Required.
 This unique name prevents conflicts with other dialog groups associated with the same
 bot version. This name can contain only underscores and alphanumeric characters. The
 
-504
 
 Metadata Types BotVersion
 
@@ -38221,7 +37717,6 @@ This name can contain only underscores and alphanumeric characters. It must begi
 a letter, not include spaces, not end with an underscore, and not contain two consecutive
 underscores.
 
-505
 
 Metadata Types BotVersion
 
@@ -38288,7 +37783,6 @@ Indicates whether to show this dialog in the Bot Options menu. The default value
 
 A step that is executed as part of the dialog.
 
-506
 
 Metadata Types BotVersion
 
@@ -38371,7 +37865,6 @@ Represents the type of conditional logic used by a BotStep. Values are:
 
 **•** `Or`
 
-507
 
 Metadata Types BotVersion
 
@@ -38449,7 +37942,6 @@ Values are:
 
 **•** `GoalStep` (Available in API version 57.0 and later.)
 
-508
 
 Metadata Types BotVersion
 
@@ -38521,7 +38013,6 @@ BotInvocationMapping[] on page 510
 **Description**
 List of Bot Invocation Mappings for a Bot Invocation.
 
-509
 
 Metadata Types BotVersion
 
@@ -38599,7 +38090,6 @@ Values are:
 
 **•** `ConversationVariable`
 
-510
 
 Metadata Types BotVersion
 
@@ -38670,7 +38160,6 @@ BotNavigationType (enumeration of type string)
 
 Required.
 
-511
 
 Metadata Types BotVersion
 
@@ -38737,7 +38226,6 @@ Values are:
 
 **•** `PageContextVariable`
 
-512
 
 Metadata Types BotVersion
 
@@ -38816,7 +38304,6 @@ string
 Value that is used as the right side of the condition operation. This value is ignored
 when using `IsSet` and `IsNotSet` operators.
 
-513
 
 Metadata Types BotVersion
 
@@ -38890,7 +38377,6 @@ List of static choice options used by a Bot Variable Operation of type `Collect`
 
 BotVariableOperand[] on page 518
 
-514
 
 Metadata Types BotVersion
 
@@ -38966,7 +38452,6 @@ Values are:
 
 **•** `Static`
 
-515
 
 Metadata Types BotVersion
 
@@ -39045,7 +38530,6 @@ Required.
 
 Values are:
 
-516
 
 Metadata Types BotVersion
 
@@ -39116,7 +38600,6 @@ If a quick reply option is created via the UI, the `quickReplyOptionIdentifier`
 is automatically generated. If a message is created via API, the
 `quickReplyOptionIdentifier` must be provided.
 
-517
 
 Metadata Types BotVersion
 
@@ -39191,7 +38674,6 @@ Literal value used as the source for this variable operation.
 **Field Type**
 string
 
-518
 
 Metadata Types BotVersion
 
@@ -39270,7 +38752,6 @@ Values are:
 
 Available in API version 51.0 and later.
 
-519
 
 Metadata Types BotVersion
 
@@ -39348,7 +38829,6 @@ Values are:
 
 **•** `PageContextVariable`
 
-520
 
 Metadata Types BotVersion
 
@@ -39425,7 +38905,6 @@ string
 **Description**
 The name of the variable to compare against.
 
-521
 
 Metadata Types BotVersion
 
@@ -39495,7 +38974,6 @@ ConversationDefinitionStepGoalMapping
 Represents the association between a goal and a BotStep. A goal can be associated with only one BotStep and one dialog at a time.
 Available in API version 57.0 and later.
 
-522
 
 Metadata Types BotVersion
 
@@ -39574,7 +39052,6 @@ Values are:
 
 **•** `Output`
 
-523
 
 Metadata Types BotVersion
 
@@ -39648,7 +39125,6 @@ ConversationDefinitionGoal
 
 A goal included in the bot version. Available in API version 57.0 and later.
 
-524
 
 Metadata Types BotVersion
 
@@ -39721,7 +39197,6 @@ string
 **Description**
 The dialog name triggered when this system event fires.
 
-525
 
 Metadata Types BotVersion
 
@@ -39800,7 +39275,6 @@ Valid values are:
 **Field Type**
 string
 
-526
 
 Metadata Types BotVersion
 
@@ -39874,7 +39348,6 @@ Specifies the SObjectType of the ID stored in a bot variable. Valid values are:
 **Field Type**
 ConversationVariableVisibilityType (enumeration of type string)
 
-527
 
 Metadata Types BotVersion
 
@@ -39947,7 +39420,6 @@ The following is an example of a BotVersion.
 
 ```
 
-528
 
 Metadata Types BotVersion
 
@@ -40062,7 +39534,6 @@ Metadata Types BotVersion
 
 ```
 
-529
 
 Metadata Types BotVersion
 
@@ -40177,7 +39648,6 @@ Metadata Types BotVersion
 
 ```
 
-530
 
 Metadata Types BotVersion
 
@@ -40290,7 +39760,6 @@ Metadata Types BotVersion
 
 ```
 
-531
 
 ### Metadata Types BrandingSet
 
@@ -40359,7 +39828,6 @@ as `TextColor:#333` .
 
 `description` string A description of the set of branding properties.
 
-532
 
 Metadata Types BrandingSet
 
@@ -40420,7 +39888,6 @@ and later.
 **Field Type**
 string
 
-533
 
 Metadata Types BrandingSet
 
@@ -40489,7 +39956,6 @@ within the org.
 
 Available only for SLDS 1 themes.
 
-534
 
 Metadata Types BrandingSet
 
@@ -40558,7 +40024,6 @@ branded component containers. Container accent colors are
 also used for hover states for branded component containers.
 Must be a valid hex color string in the format #54C254.
 
-535
 
 Metadata Types BrandingSet
 
@@ -40629,7 +40094,6 @@ is automatically generated. In places where your selected brand
 color isn’t accessible, an accessible color is used instead. If you
 provide a value for `OVERRIDE_A11Y_COLOR`, your value
 
-536
 
 Metadata Types BrandingSet
 
@@ -40693,7 +40157,6 @@ GIF that's 200x200 pixels and smaller than 5 MB. Users can
 [change their profile avatar image. Must refer to an asset file](https://help.salesforce.com/s/articleView?id=experience.admin_files_asset_files.htm&type=5&language=en_US)
 that already exists within the org.
 
-537
 
 Metadata Types BrandingSet
 
@@ -40806,7 +40269,6 @@ The following is an example of a BrandingSet component.
 
 ```
 
-538
 
 Metadata Types BrandingSet
 
@@ -40901,7 +40363,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-539
 
 ### Metadata Types BriefcaseDefinition BriefcaseDefinition
 
@@ -40958,7 +40419,6 @@ Represents a rule that specifies records to be included in the BriefcaseDefiniti
 
 `briefcaseRuleFilters` BriefcaseRuleFilter[] A list of filters on a rule.
 
-540
 
 Metadata Types BriefcaseDefinition
 
@@ -41035,7 +40495,6 @@ string)
 The `AssignedToMe` scope is supported for the ServiceAppointment object
 only.
 
-541
 
 Metadata Types BriefcaseDefinition
 
@@ -41118,7 +40577,6 @@ Valid values include:
 
 **•** `h` —Greater than or equal
 
-542
 
 Metadata Types BriefcaseDefinition
 
@@ -41201,7 +40659,6 @@ The following is an example definition of a briefcase definition. If you include
 
 ```
 
-543
 
 Metadata Types BriefcaseDefinition
 
@@ -41315,7 +40772,6 @@ only for the Offline App (Salesforce Mobile App Plus).
 
 ```
 
-544
 
 ### Metadata Types BusinessProcessGroup
 
@@ -41380,7 +40836,6 @@ Fields
 `businessProcessDefinitions` BusinessProcessDefinition A list that defines stages in a customer lifecycle map.
 on page 546[]
 
-545
 
 Metadata Types BusinessProcessGroup
 
@@ -41456,7 +40911,6 @@ permission can view, group, sort, and filter this field.
 
 `masterLabel` string Required. The name of a stage in the customer lifecycle map.
 
-546
 
 Metadata Types BusinessProcessGroup
 
@@ -41543,7 +40997,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-547
 
 ### Metadata Types CallCenter
 
@@ -41603,7 +41056,6 @@ channels to a CallCenter and represents the routing details for a voicemail conf
 **Field Type**
 string
 
-548
 
 Metadata Types CallCenter
 
@@ -41682,7 +41134,6 @@ string
 
 Required.
 
-549
 
 Metadata Types CallCenter
 
@@ -41750,7 +41201,6 @@ Represents a junction subtype that relates a Bring Your Own Channel for Contact 
 CallCenter type for Bring Your Own Channel for CCaaS. This subtype also represents the routing details for a voicemail configuration.
 This subtype is available in API version 56.0 and later.
 
-550
 
 Metadata Types CallCenter
 
@@ -41830,7 +41280,6 @@ The following is an example of a CallCenter component:
 
 ```
 
-551
 
 ### Metadata Types CallCenterRoutingMap
 
@@ -41930,7 +41379,6 @@ Represents the mapping between a user or queue in a Salesforce org to a user or 
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-552
 
 Metadata Types CallCenterRoutingMap
 
@@ -41997,7 +41445,6 @@ Required.
 
 Unique identifier for the external system’s user or queue.
 
-553
 
 Metadata Types CallCenterRoutingMap
 
@@ -42081,7 +41528,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-554
 
 ### Metadata Types CallCoachingMediaProvider
 
@@ -42143,7 +41589,6 @@ The following is an example of a CallCoachingMediaProvider component.
 
 ```
 
-555
 
 ### Metadata Types CampaignInfluenceModel
 
@@ -42208,7 +41653,6 @@ campaign influence records associated with the default model appear
 on campaigns and opportunities. You can only have one default model
 at a time. A model must be active to become the default model.
 
-556
 
 Metadata Types CampaignInfluenceModel
 
@@ -42287,7 +41731,6 @@ not be the default model.
 
 ```
 
-557
 
 ### Metadata Types CaseSubjectParticle
 
@@ -42359,7 +41802,6 @@ type
 (enumeration of type
 string)
 
-558
 
 ### Metadata Types CareBenefitVerifySettings
 
@@ -42427,7 +41869,6 @@ string
 **Description**
 Specifies the code set type for the benefits verification service type codes.
 
-559
 
 Metadata Types CareBenefitVerifySettings
 
@@ -42504,7 +41945,6 @@ string
 **Description**
 Service type code for the plan benefits as a whole.
 
-560
 
 Metadata Types CareBenefitVerifySettings
 
@@ -42596,7 +42036,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 [manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/file_based_zip_file.htm)
 
-561
 
 ### Metadata Types CareLimitType CareLimitType
 
@@ -42660,7 +42099,6 @@ Name of the limit type.
 Metric to be used for calculating and displaying the benefit limit, such as number of
 visits, amount spent, or percentage of allowed expenditure.
 
-562
 
 ### Metadata Types CareSystemFieldMapping
 
@@ -42737,7 +42175,6 @@ File Suffix and Directory Location
 
 `careSystemFieldMappings` folder.
 
-563
 
 Metadata Types CareSystemFieldMapping
 
@@ -42803,7 +42240,6 @@ no applicable role.
 `targetObject` string The name of the Salesforce object to which the external system field is
 mapped.
 
-564
 
 ### Metadata Types CareProviderSearchConfig
 
@@ -42879,7 +42315,6 @@ Fields
 
 `isActive` boolean Indicates whether this configuration is active ( `true` ) or not ( `false` ).
 
-565
 
 Metadata Types CareProviderSearchConfig
 
@@ -42974,7 +42409,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-566
 
 ### Metadata Types CareRequestConfiguration CareRequestConfiguration
 
@@ -43041,7 +42475,6 @@ The type of care request. For example, an appeal, a service request, or an admis
 **Field Type**
 boolean
 
-567
 
 Metadata Types CareRequestConfiguration
 
@@ -43117,7 +42550,6 @@ This is an example of a CareRequestConfiguration component.
 
 ```
 
-568
 
 ### Metadata Types Certificate
 
@@ -43193,7 +42625,6 @@ Version
 
 ### Certificate components are available in API version 36.0 and later.
 
-569
 
 Metadata Types Certificate
 
@@ -43256,7 +42687,6 @@ certificate, the content of the downloaded .crt file is the CSR.
 **•** Uploading a CA-Signed Certificate—To upload the signed certificate chain back to Salesforce, save the signed certificate chain as
 the content of the .crt file and update it via the Metadata API.
 
-570
 
 ### Metadata Types ChatterExtension
 
@@ -43344,7 +42774,6 @@ Here’s an example of retrieved information.
 
 ```
 
-571
 
 Metadata Types ChatterExtension
 
@@ -43412,7 +42841,6 @@ interface.
 `type` ChatterExtensionType
 (enumeration of type string)
 
-572
 
 Required. Describes the type of the extension. Currently, the
 only value supported is _`Lightning`_ . Included to allow for
@@ -43475,7 +42903,6 @@ string
 **Description**
 A description of the choice list.
 
-573
 
 Metadata Types ChoiceList
 
@@ -43555,7 +42982,6 @@ The following is an example of a Choicelist component.
 
 ```
 
-574
 
 ### Metadata Types ClaimFinancialSettings
 
@@ -43639,7 +43065,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-575
 
 Metadata Types ClaimFinancialSettings
 
@@ -43708,7 +43133,6 @@ Required.
 The unique label that identifies the claim financial settings throughout the Salesforce
 user interface.
 
-576
 
 ### Metadata Types ClauseCatgConfiguration
 
@@ -43785,7 +43209,6 @@ Version
 
 ### ClauseCatgConfiguration components are available in API version 57.0 and later.
 
-577
 
 Metadata Types ClauseCatgConfiguration
 
@@ -43858,7 +43281,6 @@ The following is an example of a ClauseCatgConfiguration component.
 
 ```
 
-578
 
 ### Metadata Types CleanDataService
 
@@ -43932,7 +43354,6 @@ Fields
 
 `cleanRules` CleanRule[] Required. A list of data integration rules
 
-579
 
 Metadata Types CleanDataService
 
@@ -43995,7 +43416,6 @@ Required. A standard object that’s the target of additions and updates specifi
 by this CleanRule. Specifying an object that the data service does not support
 causes an error.
 
-580
 
 Metadata Types CleanDataService
 
@@ -44052,7 +43472,6 @@ Represents a field in a standard object. A FieldMappingField maps to a FieldMapp
 
 `dataServiceField` string Required. A field in the data service that is mapped to this field.
 
-581
 
 Metadata Types CleanDataService
 
@@ -44154,7 +43573,6 @@ The following is an example of a CleanDataService component for the lead standar
 
 ```
 
-582
 
 Metadata Types CleanDataService
 
@@ -44258,7 +43676,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-583
 
 ### Metadata Types CMSConnectSource
 
@@ -44313,7 +43730,6 @@ page 586[]
 `cmsConnectLanguage` CMSConnectLanguage 0 to more. Represents language mappings defined for the connection.
 on page 586[]
 
-584
 
 Metadata Types CMSConnectSource
 
@@ -44383,7 +43799,6 @@ of type string) values are:
 
 **•** `Other`
 
-585
 
 Metadata Types CMSConnectSource
 
@@ -44446,7 +43861,6 @@ CMSConnectLanguage components determine the presented language of the content.
 `cmsLanguage` string When a language placeholder is in the URL path, this value is used to replace
 it.
 
-586
 
 Metadata Types CMSConnectSource
 
@@ -44504,7 +43918,6 @@ the new value is inserted.
 **•** If the current source is DETAIL and the destination has DETAIL with a different name, then the destination is updated to LIST
 and the source is inserted as DETAIL.
 
-587
 
 Metadata Types CMSConnectSource
 
@@ -44595,7 +44008,6 @@ The following is an example of a CMSConnectSource definition.
 
 ```
 
-588
 
 Metadata Types CMSConnectSource
 
@@ -44700,7 +44112,6 @@ To retrieve a specific connection:
 
 ```
 
-589
 
 Metadata Types CMSConnectSource
 
@@ -44732,7 +44143,6 @@ validation.
 Refer to the following content for more details for how each entity how is handled while saving the details from package to destination
 org:
 
-590
 
 ### Metadata Types Community (Zone)
 
@@ -44776,7 +44186,6 @@ Note: When `enableChatterAnswers` is set to `false`, values specified for the fo
 `communityFeedPage`, `emailFooterDocument`, `emailHeaderDocument`, `enablePrivateQuestions`,
 `emailNotificationUrl`, and `site` .
 
-591
 
 Metadata Types Community (Zone)
 
@@ -44845,7 +44254,6 @@ available to any portals ( `false` ).
 `site` string The name of the site for the zone. This field is available when Chatter
 Answers is enabled in the organization.
 
-592
 
 Metadata Types Community (Zone)
 
@@ -44921,7 +44329,6 @@ The following is the definition of a community (zone) component:
 
 ```
 
-593
 
 ### Metadata Types CommerceSettings
 
@@ -45013,7 +44420,6 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
 
-594
 
 Metadata Types CommerceSettings
 
@@ -45083,7 +44489,6 @@ Indicates whether Commerce Copilot is enabled ( `true` ) or not ( `false` ).
 **Field Type**
 boolean
 
-595
 
 Metadata Types CommerceSettings
 
@@ -45157,7 +44562,6 @@ Indicates whether Message Engagement data kit is enabled ( `true` ) or not ( `fa
 Message Engagement data kit is a Data 360 data model object (DMO) for a user’s
 engagement with a marketing message.
 
-596
 
 ### Metadata Types CommunityTemplateDefinition
 
@@ -45241,7 +44645,6 @@ File Suffix and Directory Location
 
 `communityTemplateDefinitions` folder.
 
-597
 
 Metadata Types CommunityTemplateDefinition
 
@@ -45320,7 +44723,6 @@ StaticResource on page 2283. Values are true or false.
 `masterLabel` string Required. The label for this CommunityTemplateDefinition, which displays
 in Setup.
 
-598
 
 Metadata Types CommunityTemplateDefinition
 
@@ -45392,7 +44794,6 @@ Required. The name of the FlexiPage for the theme layout.
 
 This field is available in API version 39.0 and later.
 
-599
 
 Metadata Types CommunityTemplateDefinition
 
@@ -45505,7 +44906,6 @@ The following is an example of a CommunityTemplateDefinition component.
 
 ```
 
-600
 
 Metadata Types CommunityTemplateDefinition
 
@@ -45620,7 +45020,6 @@ Metadata Types CommunityTemplateDefinition
 
 ```
 
-601
 
 Metadata Types CommunityTemplateDefinition
 
@@ -45735,7 +45134,6 @@ Metadata Types CommunityTemplateDefinition
 
 ```
 
-602
 
 Metadata Types CommunityTemplateDefinition
 
@@ -45849,7 +45247,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-603
 
 ### Metadata Types CommunityThemeDefinition
 
@@ -45915,7 +45312,6 @@ automatically, for example, FlexiPage. Values are true or false.
 `masterLabel` string Required. The label for this CommunityThemeDefinition, which displays
 in Setup.
 
-604
 
 Metadata Types CommunityThemeDefinition
 
@@ -45980,7 +45376,6 @@ CommunityCustomThemeLayoutType
 `label` string Required. The name of the custom theme layout type. The values `Inner`,
 `Home`, and `Login` are reserved.
 
-605
 
 Metadata Types CommunityThemeDefinition
 
@@ -46065,7 +45460,6 @@ The following is an example of a CommunityThemeDefinition component.
 
 ```
 
-606
 
 Metadata Types CommunityThemeDefinition
 
@@ -46174,7 +45568,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-607
 
 ### Metadata Types ConnectedApp ConnectedApp
 
@@ -46232,7 +45625,6 @@ app is accessed from a mobile device. If you don't give a URL, the user
 is sent to the app’s default start page after authentication completes.
 If the connected app that you’re creating is a canvas app, then you
 
-608
 
 Metadata Types ConnectedApp
 
@@ -46298,7 +45690,6 @@ You can assign multiple profiles to the connected app, but you must
 enter each profile name on a separate line. You can’t enter the same
 profile name more than one time for each connected app.
 
-609
 
 Metadata Types ConnectedApp
 
@@ -46355,7 +45746,6 @@ type string) authentication flow. The valid values are:
 **•** `Get` —OAuth authentication is used, and the user is prompted to
 allow the third-party application to access their information. When
 
-610
 
 Metadata Types ConnectedApp
 
@@ -46425,7 +45815,6 @@ Valid values are:
 **•** `HideShare` —The **Share** button is hidden in the publisher for
 the related canvas app. Available in API version 30.0 and later.
 
-611
 
 Metadata Types ConnectedApp
 
@@ -46486,7 +45875,6 @@ creation. After you define and save the value, it can’t be edited. The
 
 value must be alphanumeric, can’t contain special characters or spaces,
 
-612
 
 Metadata Types ConnectedApp
 
@@ -46553,7 +45941,6 @@ If set to `true`, the connected app can use the Authorization Code and
 Credentials Flow and all associated Headless Identity features. The
 default value is `false` .
 
-613
 
 Metadata Types ConnectedApp
 
@@ -46621,7 +46008,6 @@ code flow variations that don’t implement it fail. If set to `false`, you
 can still implement PKCE but it isn’t required. The default value is
 `false` .
 
-614
 
 Metadata Types ConnectedApp
 
@@ -46688,7 +46074,6 @@ behavior as deploying `Address`, `Email`, `Phone`, and
 
 **•** `Api` —Allows access to the logged-in user's account over the APIs.
 
-615
 
 Metadata Types ConnectedApp
 
@@ -46755,7 +46140,6 @@ app refresh token flow. Available in API version 51.0 and later.
 Customers use these API services to upload and maintain external
 datasets in the Data 360. Available in API version 52.0 and later.
 
-616
 
 Metadata Types ConnectedApp
 
@@ -46820,7 +46204,6 @@ eligible to receive one and is synonymous with allowing
 **•** `Wave` —Allows access to the Analytics REST API resources. Available
 in API version 35.0 and later.
 
-617
 
 Metadata Types ConnectedApp
 
@@ -46884,7 +46267,6 @@ Required. The ID of the JWT certificate’s signing secret. The certificate
 size can’t exceed 4 KB. If it does, try using a DER encoded file to reduce
 the size.
 
-618
 
 Metadata Types ConnectedApp
 
@@ -46945,7 +46327,6 @@ new browser or device.
 
 **•** `BYPASS` —Allows a user to run this app without org IP restrictions.
 
-619
 
 Metadata Types ConnectedApp
 
@@ -47005,7 +46386,6 @@ sends logout requests to this URL when users log out of Salesforce.
 The single logout URL must be an absolute URL starting with
 `https://` .
 
-620
 
 Metadata Types ConnectedApp
 
@@ -47084,7 +46464,6 @@ and can change every time the user logs in.
 is applied to both single sign-on and single logout responses from your
 org. Available in API version 50.0 and later. Valid values are:
 
-621
 
 Metadata Types ConnectedApp
 
@@ -47146,7 +46525,6 @@ such as the JSON Web Token (JWT) bearer token flow, don’t include
 a user approval step. For flows without a user approval step, API
 logins with the High Assurance session security level are blocked.
 
-622
 
 Metadata Types ConnectedApp
 
@@ -47247,7 +46625,6 @@ The following is an example of a ConnectedApp component.
 
 ```
 
-623
 
 Metadata Types ConnectedApp
 
@@ -47348,7 +46725,6 @@ Metadata Types ConnectedApp
 
 ```
 
-624
 
 Metadata Types ConnectedApp
 
@@ -47458,7 +46834,6 @@ Here's an example of a ConnectedApp component with multiple callback URLs.
 
 ```
 
-625
 
 ### Metadata Types ContentAsset
 
@@ -47548,7 +46923,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents the metadata for creating an asset file. Asset files enable a Salesforce file to be used for org setup and configuration purposes.
 This type extends the MetadataWithContent metadata type and inherits its `content` and `fullName` fields.
 
-626
 
 Metadata Types ContentAsset
 
@@ -47614,7 +46988,6 @@ ContentAssetRelationships
 
 Represents the relationships between an asset file and the locations it's linked with.
 
-627
 
 Metadata Types ContentAsset
 
@@ -47676,7 +47049,6 @@ ContentAssetVersion
 
 Represents information about one file version included in the asset metadata.
 
-628
 
 Metadata Types ContentAsset
 
@@ -47762,7 +47134,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-629
 
 ### Metadata Types ContentTypeBundle ContentTypeBundle
 
@@ -47822,7 +47193,6 @@ string
 **Description**
 Explanatory text about the content type.
 
-630
 
 Metadata Types ContentTypeBundle
 
@@ -47890,7 +47260,6 @@ Required.
 
 The content of the resource.
 
-631
 
 Metadata Types ContentTypeBundle
 
@@ -47994,7 +47363,6 @@ file are completely configurable and must include a `lightning:type` for each pr
 
 ```
 
-632
 
 Metadata Types ContentTypeBundle
 
@@ -48109,7 +47477,6 @@ Metadata Types ContentTypeBundle
 
 ```
 
-633
 
 Metadata Types ContentTypeBundle
 
@@ -48198,7 +47565,6 @@ Wildcard Support in the Manifest
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving with the Zip .
 
-634
 
 ### Metadata Types ContextDefinition ContextDefinition
 
@@ -48257,7 +47623,6 @@ The name of the context definition that's used to clone the current context defi
 **Description**
 References of the context definition.
 
-635
 
 Metadata Types ContextDefinition
 
@@ -48332,7 +47697,6 @@ boolean
 **Description**
 Auto-generated value that doesn’t impact the behavior of the metadata type.
 
-636
 
 Metadata Types ContextDefinition
 
@@ -48408,7 +47772,6 @@ contextMappings
 
 ContextMapping[]
 
-637
 
 Metadata Types ContextDefinition
 
@@ -48487,7 +47850,6 @@ ContextMappingIntent[]
 **Description**
 Purpose associated to a context mapping.
 
-638
 
 Metadata Types ContextDefinition
 
@@ -48565,7 +47927,6 @@ Specifies the purpose that's used to identify the type of context mapping requir
 
 Valid values are:
 
-639
 
 Metadata Types ContextDefinition
 
@@ -48640,7 +48001,6 @@ string
 **Description**
 Name of the object used for the mapping.
 
-640
 
 Metadata Types ContextDefinition
 
@@ -48716,7 +48076,6 @@ contextAttrHydrationDetails
 
 ContextAttrHydrationDetail[]
 
-641
 
 Metadata Types ContextDefinition
 
@@ -48788,7 +48147,6 @@ string
 Name of the parent context attribute hydration detail that's used to derive the current
 context attribute.
 
-642
 
 Metadata Types ContextDefinition
 
@@ -48867,7 +48225,6 @@ it records the relationship between context node and context dictionary.
 
 ContextTag[]
 
-643
 
 Metadata Types ContextDefinition
 
@@ -48944,7 +48301,6 @@ ContextAttributeDataType (enumeration of type string)
 
 Required.
 
-644
 
 Metadata Types ContextDefinition
 
@@ -49024,7 +48380,6 @@ Valid values are:
 
 **•** `output`
 
-645
 
 Metadata Types ContextDefinition
 
@@ -49101,7 +48456,6 @@ string
 
 Required.
 
-646
 
 Metadata Types ContextDefinition
 
@@ -49187,7 +48541,6 @@ Name</contextAttrDictIdentifier>
 
 ```
 
-647
 
 Metadata Types ContextDefinition
 
@@ -49274,7 +48627,6 @@ Metadata Types ContextDefinition
 
 ```
 
-648
 
 Metadata Types ContextDefinition
 
@@ -49361,7 +48713,6 @@ Metadata Types ContextDefinition
 
 ```
 
-649
 
 Metadata Types ContextDefinition
 
@@ -49471,7 +48822,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-650
 
 ### Metadata Types ConversationMessageDefinition
 
@@ -49545,7 +48895,6 @@ multiple data types, including text, URL, and image.
 **Field Type**
 string
 
-651
 
 Metadata Types ConversationMessageDefinition
 
@@ -49625,7 +48974,6 @@ Required. The type of the conversation message definition. Valid values are:
 
 **•** `AuthenticationRequest`
 
-652
 
 Metadata Types ConversationMessageDefinition
 
@@ -49700,7 +49048,6 @@ The UI label of the conversation message constant.
 **Field Type**
 string
 
-653
 
 Metadata Types ConversationMessageDefinition
 
@@ -49774,7 +49121,6 @@ string
 **Description**
 Required. The client identifier.
 
-654
 
 Metadata Types ConversationMessageDefinition
 
@@ -49849,7 +49195,6 @@ Required. The duration of an active request in minutes.
 **Field Type**
 string
 
-655
 
 Metadata Types ConversationMessageDefinition
 
@@ -49929,7 +49274,6 @@ Required. The format type of the conversation message layout. Valid values are:
 
 **•** `QuickReplies`
 
-656
 
 Metadata Types ConversationMessageDefinition
 
@@ -50007,7 +49351,6 @@ string
 **Description**
 Required. The language of the conversation message external template.
 
-657
 
 Metadata Types ConversationMessageDefinition
 
@@ -50082,7 +49425,6 @@ collectionType
 **Field Type**
 ConversationMessageCollectionType (enumeration of type string)
 
-658
 
 Metadata Types ConversationMessageDefinition
 
@@ -50161,7 +49503,6 @@ string
 **Description**
 The source of the conversation message layout composite value.
 
-659
 
 Metadata Types ConversationMessageDefinition
 
@@ -50239,7 +49580,6 @@ are:
 
 **•** `SourceSobjectFormula`
 
-660
 
 Metadata Types ConversationMessageDefinition
 
@@ -50309,7 +49649,6 @@ ConversationMessageOptionsParameter
 
 Represents a conversation message options parameter.
 
-661
 
 Metadata Types ConversationMessageDefinition
 
@@ -50387,7 +49726,6 @@ boolean
 Indicates whether the conversation message parameter is required ( `true` ) or not
 ( `false` ). The default value is false.
 
-662
 
 Metadata Types ConversationMessageDefinition
 
@@ -50462,7 +49800,6 @@ Indicates whether the conversation message parameter primitive details field is 
 **Field Type**
 string
 
-663
 
 Metadata Types ConversationMessageDefinition
 
@@ -50541,7 +49878,6 @@ compositeTypeDetails
 
 ConversationMessageParameterCompositeDetails
 
-664
 
 Metadata Types ConversationMessageDefinition
 
@@ -50636,7 +49972,6 @@ The following is an example of a `ConversationMessageDefinition` component.
 
 ```
 
-665
 
 Metadata Types ConversationMessageDefinition
 
@@ -50751,7 +50086,6 @@ Metadata Types ConversationMessageDefinition
 
 ```
 
-666
 
 Metadata Types ConversationMessageDefinition
 
@@ -50864,7 +50198,6 @@ Metadata Types ConversationMessageDefinition
 
 ```
 
-667
 
 Metadata Types ConversationMessageDefinition
 
@@ -50977,7 +50310,6 @@ Metadata Types ConversationMessageDefinition
 
 ```
 
-668
 
 Metadata Types ConversationMessageDefinition
 
@@ -51086,7 +50418,6 @@ Metadata Types ConversationMessageDefinition
 
 ```
 
-669
 
 Metadata Types ConversationMessageDefinition
 
@@ -51197,7 +50528,6 @@ Metadata Types ConversationMessageDefinition
 
 ```
 
-670
 
 Metadata Types ConversationMessageDefinition
 
@@ -51303,7 +50633,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-671
 
 ### Metadata Types ConversationMessageDefinitionTranslation
 
@@ -51331,7 +50660,6 @@ Version
 
 Fields
 
-672
 
 Metadata Types ConversationMessageDefinitionTranslation
 
@@ -51372,7 +50700,6 @@ This complex type is used within ConversationMessageDefinition to provide transl
 
 ```
 
-673
 
 ### Metadata Types ConversationVendorInfo ConversationVendorInfo
 
@@ -51427,7 +50754,6 @@ center, set this value and the `namedCredentialSupported` value to `true`
 and configure the `service_cloud_voice.PartnerSSO` interface in your
 Apex integration class.
 
-674
 
 Metadata Types ConversationVendorInfo
 
@@ -51503,7 +50829,6 @@ Applies to the following implementations:
 
 **•** Bring Your Own Channel for CCaaS
 
-675
 
 Metadata Types ConversationVendorInfo
 
@@ -51582,7 +50907,6 @@ Applies to the following implementations:
 
 **•** Service Cloud Voice with Partner Telephony
 
-676
 
 Metadata Types ConversationVendorInfo
 
@@ -51660,7 +50984,6 @@ Deprecated in API version 53.0. Don't set this field. Instead, use
 
 Applies to the following implementations:
 
-677
 
 Metadata Types ConversationVendorInfo
 
@@ -51731,7 +51054,6 @@ center record.
 For Service Cloud Voice with Amazon Connect, this field is always set to `Service`
 `Cloud Voice` .
 
-678
 
 Metadata Types ConversationVendorInfo
 
@@ -51807,7 +51129,6 @@ Applies to the following implementations:
 
 **•** Service Cloud Voice with Partner Telephony from Amazon Connect
 
-679
 
 Metadata Types ConversationVendorInfo
 
@@ -51883,7 +51204,6 @@ agent settings in the Omni-Channel widget. This value is in the format
 associated with the Service Cloud Voice package that was created, and
 `componentName` is the FQDN of the Lightning component.
 
-680
 
 Metadata Types ConversationVendorInfo
 
@@ -51960,7 +51280,6 @@ Applies to the following implementations:
 **Field Type**
 ConversationVendorType (enumeration of type string)
 
-681
 
 Metadata Types ConversationVendorInfo
 
@@ -52052,7 +51371,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-682
 
 ### Metadata Types ConvIntelligenceSignalRule
 
@@ -52113,7 +51431,6 @@ Required. The conversation intelligence signal type. Values are:
 
 **•** `LaunchFlow` –Triggers an auto-launched flow. If set, also set `ActionValue` .
 
-683
 
 Metadata Types ConvIntelligenceSignalRule
 
@@ -52188,7 +51505,6 @@ For Voice, set this parameter to `Phone` .
 **Field Type**
 string
 
-684
 
 Metadata Types ConvIntelligenceSignalRule
 
@@ -52265,7 +51581,6 @@ service name.
 
 ConvIntelligenceSignalSubRule[]
 
-685
 
 Metadata Types ConvIntelligenceSignalRule
 
@@ -52336,7 +51651,6 @@ whether to trigger an action. This value depends on the
 `ConvIntelligenceSignalRule.channelType` and
 `ConvIntelligenceSignalRule.service` values.
 
-686
 
 Metadata Types ConvIntelligenceSignalRule
 
@@ -52429,7 +51743,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-687
 
 ### Metadata Types CorsWhitelistOrigin
 
@@ -52483,7 +51796,6 @@ The origin URL pattern can be an IP address. But an IP address and a
 domain that resolve to the same address aren’t the same origin, and
 you must add them to the CORS allowlist as separate entries.
 
-688
 
 ### Metadata Types CspTrustedSite
 
@@ -52556,7 +51868,6 @@ Declarative Metadata File Suffix and Directory Location
 
 matches the unique name of the trusted site, and the extension is `.cspTrustedSite` .
 
-689
 
 Metadata Types CspTrustedSite
 
@@ -52625,7 +51936,6 @@ This field is available in API version 44.0 and later.
 
 `description` string The description of this trusted URL.
 
-690
 
 Metadata Types CspTrustedSite
 
@@ -52692,7 +52002,6 @@ WebSocket connections can load audio and video from this
 trusted URL ( `true` ) or not ( `false` ). This field has a default
 value of `false` .
 
-691
 
 Metadata Types CspTrustedSite
 
@@ -52765,7 +52074,6 @@ To ensure smooth integration across Salesforce products, Salesforce includes URL
 `isApplicable` fields, even though those URLs aren’t defined as CspTrustedSite components. Salesforce regularly updates those
 URLs based on the latest requirements.
 
-692
 
 ### Metadata Types CustomApplication
 
@@ -52821,7 +52129,6 @@ opens when this application is selected.
 
 `description` string The optional description text of the application.
 
-693
 
 Metadata Types CustomApplication
 
@@ -52888,7 +52195,6 @@ Salesforce app or Salesforce console app.
 `navType` NavType (enumeration of type string) Not updateable. Indicates the type of navigation the app
 uses. The value `Standard` is for a Lightning app with
 
-694
 
 Metadata Types CustomApplication
 
@@ -52954,7 +52260,6 @@ example). In API version 13.0 and later, built-in tabs are
 prefixed with `standard-` . For example, to reference
 the Account tab you would use `standard-Account` .
 
-695
 
 Metadata Types CustomApplication
 
@@ -53023,7 +52328,6 @@ environment and is valid only for the `flexipage` and
 `lightningcomponent` types. The `Small` value represents the
 Salesforce mobile app on a phone or tablet. The `Medium` value is
 
-696
 
 Metadata Types CustomApplication
 
@@ -53092,7 +52396,6 @@ The color scheme and logo used for the app. Available for Lightning apps in API 
 `footerColor` string Optional. Determines the footer color in the app. Specify the color with
 a hexadecimal code, such as #0000FF for blue.
 
-697
 
 Metadata Types CustomApplication
 
@@ -53154,7 +52457,6 @@ actions performed outside of the console. This field is required if
 `enableListViewHover` boolean Indicates if a Salesforce Classic console app has list view hovers enabled.
 If set to `true`, summary information is displayed about a record in a
 
-698
 
 Metadata Types CustomApplication
 
@@ -53217,7 +52519,6 @@ ProfileActionOverride is being specified as part of a CustomApplication,
 `content` string Read-only. Represents the name of the Lightning page being used as
 the override.
 
-699
 
 Metadata Types CustomApplication
 
@@ -53282,7 +52583,6 @@ apps.
 
 `tab` string Required. Name of the tab.
 
-700
 
 Metadata Types CustomApplication
 
@@ -53353,7 +52653,6 @@ Valid non-modifier keys are letters A through Z and numbers 0 through
 
 **•** `DOWN ARROW`
 
-701
 
 Metadata Types CustomApplication
 
@@ -53435,7 +52734,6 @@ Metadata Types CustomApplication
 
 **•** `.`
 
-702
 
 Metadata Types CustomApplication
 
@@ -53505,7 +52803,6 @@ keyboard shortcut. Valid values are:
 
 **•** `SAVE`
 
-703
 
 Metadata Types CustomApplication
 
@@ -53563,7 +52860,6 @@ ListPlacement
 Represents how lists display in a Salesforce console app. Required if `isServiceCloudConsole` is `true` . Available in API version
 25.0 and later.
 
-704
 
 Metadata Types CustomApplication
 
@@ -53629,7 +52925,6 @@ This field is available in API version 42.0 and later.
 `showKnowledgeArticles` boolean Specifies whether to display the Knowledge component while using
 Chat in a Salesforce console app ( `true` ) or not ( `false` ).
 
-705
 
 Metadata Types CustomApplication
 
@@ -53692,7 +52987,6 @@ instead of having to use a mouse.
 `primaryTabColor` string Determines the primary tab color in a Salesforce console app.Specify the
 color with a hexadecimal code, such as #0000FF for blue.
 
-706
 
 Metadata Types CustomApplication
 
@@ -53752,7 +53046,6 @@ reset. After making the changes, rezip the folder and deploy.
 You can remove one override at a time each with its own deploy, or you can remove multiple overrides in a single deploy. However, we
 recommend that you do a fresh retrieve every time you want to delete a new override. Don’t use a previously retrieved file.
 
-707
 
 Metadata Types CustomApplication
 
@@ -53851,7 +53144,6 @@ Here’s the definition of a custom Lightning Experience app:
 
 ```
 
-708
 
 Metadata Types CustomApplication
 
@@ -53967,7 +53259,6 @@ The following is a definition of a standard app (Chatter):
 
 ```
 
-709
 
 Metadata Types CustomApplication
 
@@ -54079,7 +53370,6 @@ The following is the definition of a custom app where `isServiceCloudConsole` is
 
 ```
 
-710
 
 Metadata Types CustomApplication
 
@@ -54194,7 +53484,6 @@ Metadata Types CustomApplication
 
 ```
 
-711
 
 Metadata Types CustomApplication
 
@@ -54309,7 +53598,6 @@ Metadata Types CustomApplication
 
 ```
 
-712
 
 ### Metadata Types CustomApplicationComponent
 
@@ -54372,7 +53660,6 @@ component.
 `isHeightFixed` boolean Required. Indicates whether users can change the custom console
 component height ( `false` ) or not ( `true` ).
 
-713
 
 ### Metadata Types CustomFeedFilter
 
@@ -54438,7 +53725,6 @@ File Suffix and Directory Location
 
 ### CustomFeedFilter components have the suffix .feedFilter and are stored in the feedFilters folder.
 
-714
 
 Metadata Types CustomFeedFilter
 
@@ -54504,7 +53790,6 @@ The feed item type can be one of the following values:
 
 **•** TextPost
 
-715
 
 Metadata Types CustomFeedFilter
 
@@ -54592,7 +53877,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-716
 
 ### Metadata Types CustomFieldDisplay
 
@@ -54662,7 +53946,6 @@ The following is an example of a CustomFieldDisplay component.
 
 ```
 
-717
 
 ### Metadata Types CustomHelpMenuSection
 
@@ -54732,7 +54015,6 @@ Required. Name of the custom section. Only one custom section
 can be added to the Lightning Experience help menu. Specify up
 to 80 characters.
 
-718
 
 ### Metadata Types CustomIndex
 
@@ -54820,7 +54102,6 @@ The following is an example `package.xml` that references the previous definitio
 Represents an index used to increase the speed of queries.This type extends the Metadata metadata type and inherits its `fullName`
 field.
 
-719
 
 ### Metadata Types CustomLabels
 
@@ -54879,7 +54160,6 @@ This type extends the Metadata metadata type and inherits its `fullName` field. 
 characters in length that can be accessed from Apex classes or Visualforce pages. For more information, see “Custom Labels” in Salesforce
 Help.
 
-720
 
 Metadata Types CustomLabels
 
@@ -54943,7 +54223,6 @@ referenced by components created in the installing organization.
 `shortDescription` string Required. An easily recognizable term to identify this custom
 label. This description is used in merge fields.
 
-721
 
 Metadata Types CustomLabels
 
@@ -55039,7 +54318,6 @@ This is a sample manifest file for retrieving two custom labels by name. Notice 
 
 ```
 
-722
 
 ### Metadata Types Custom Metadata Types (CustomObject)
 
@@ -55097,7 +54375,6 @@ Moreover, DML operations aren’t allowed on custom metadata in the Partner or E
 custom metadata type can’t add new custom fields to it. With unpackaged metadata, both developer-controlled and subscriber-controlled
 [access behave the same: like subscriber-controlled access. Refer to Trust, but Verify: Apex Metadata API and Security to learn more.](https://developer.salesforce.com/blogs/engineering/2017/06/apex-metadata-api-security.html)
 
-723
 
 Metadata Types Custom Metadata Types (CustomObject)
 
@@ -55110,7 +54387,6 @@ Custom metadata types can contain the following CustomObject fields.
 
 To make the fields on your custom metadata types unique and indexable, mark your fields as `Unique` and `ExternalId` .
 
-724
 
 Metadata Types Custom Metadata Types (CustomObject)
 
@@ -55208,7 +54484,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-725
 
 #### Metadata Types CustomMetadata 1. CustomMetadata
 
@@ -55265,7 +54540,6 @@ that type.
 contain either the type or the protected record can’t
 read the protected records.
 
-726
 
 Metadata Types CustomMetadata
 
@@ -55318,7 +54592,6 @@ Declarative Metadata Sample Definitions
 The following is an example of a CustomMetadata component. In this example, the sample app TravelApp deploys a Planets picklist,
 specifies its sort order, and adds picklist items to it.
 
-727
 
 Metadata Types CustomMetadata
 
@@ -55427,7 +54700,6 @@ with these contents. This component file specifies types that apply to the `Reus
 
 ```
 
-728
 
 Metadata Types CustomMetadata
 
@@ -55538,7 +54810,6 @@ records’ names. Assume that Picklists R Us’s namespace is `picklist1234` .
 
 ```
 
-729
 
 Metadata Types CustomMetadata
 
@@ -55626,7 +54897,6 @@ are:
 
 `xsi:type="xsd:picklist"` Picklist
 
-730
 
 ### Metadata Types CustomNotificationType
 
@@ -55681,7 +54951,6 @@ Declarative Metadata File Suffix and Directory Location
 The file suffix is `.notiftype` for the notification type definition. Notification types are stored in the `notificationtypes`
 directory of the corresponding package directory.
 
-731
 
 ### Metadata Types CustomObject
 
@@ -55745,7 +55014,6 @@ Specify all relevant fields when you create or update a custom object. You can�
 You can also use this metadata type to work with customizations of standard objects, such as accounts. For an example, see the section
 [on Standard Objects in Sample package.xml Manifest Files in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/manifest_samples.htm) _Metadata API Developer Guide_
 
-732
 
 Metadata Types CustomObject
 
@@ -55823,7 +55091,6 @@ A list of compact layouts associated with the object.
 This field is available in API version 29.0 and later. This field is
 available for external objects in API version 42.0 and later.
 
-733
 
 Metadata Types CustomObject
 
@@ -55893,7 +55160,6 @@ or not ( `false` ).
 
 Not available for external objects.
 
-734
 
 Metadata Types CustomObject
 
@@ -55967,7 +55233,6 @@ later.
 To enhance Einstein Search performance, searchability is
 disabled for custom objects that haven't been searched for
 
-735
 
 Metadata Types CustomObject
 
@@ -56030,7 +55295,6 @@ for the external object.
 
 This field is available in API version 32.0 and later.
 
-736
 
 Metadata Types CustomObject
 
@@ -56100,7 +55364,6 @@ all standard, custom, and external objects in the org.
 
 `listViews` ListView[] Represents one or more _list views_ associated with the object.
 
-737
 
 Metadata Types CustomObject
 
@@ -56167,7 +55430,6 @@ whether the transaction succeeds.
 If you don’t specify this field, the default value used is
 `PublishImmediately` .
 
-738
 
 Metadata Types CustomObject
 
@@ -56222,7 +55484,6 @@ character. Valid values are listed in StartsWith.
 `visibility` SetupObjectVisibility
 (enumeration of type string)
 
-739
 
 This field returns the visibility of the custom object, custom
 setting, or custom metadata type. The following values are
@@ -56302,7 +55563,6 @@ from which this Object was started. Currently only supports the following
 strings: if the creationType is Standard, it must be Reference, if creationType is
 Custom, it must be View.
 
-740
 
 Metadata Types CustomObject
 
@@ -56370,7 +55630,6 @@ Values are:
 
 **•** `Ml_Prediction`
 
-741
 
 Metadata Types CustomObject
 
@@ -56447,7 +55706,6 @@ components are defined in the CustomObject:
 
 **•** HistoryRetentionPolicy
 
-742
 
 Metadata Types CustomObject
 
@@ -56551,7 +55809,6 @@ The following is the metadata definition of an external object for Salesforce Co
 
 ```
 
-743
 
 Metadata Types CustomObject
 
@@ -56666,7 +55923,6 @@ Metadata Types CustomObject
 
 ```
 
-744
 
 Metadata Types CustomObject
 
@@ -56781,7 +56037,6 @@ Metadata Types CustomObject
 
 ```
 
-745
 
 Metadata Types CustomObject
 
@@ -56866,7 +56121,6 @@ standard, custom, and external objects or standard field definitions on standard
 Represents a field set. A field set is a grouping of fields. For example, you could have a field set that contains fields describing a user's
 first name, middle name, last name, and business title.
 
-746
 
 Metadata Types CustomObject
 
@@ -56929,7 +56183,6 @@ to invalid data.
 
 Represents a custom button or link defined in a custom object.
 
-747
 
 #### Metadata Types ActionOverride
 
@@ -56995,7 +56248,6 @@ Unless otherwise noted, all fields are creatable, filterable, and nillable.
 
 `comment` string Any comments you want associated with the override.
 
-748
 
 Metadata Types ActionOverride
 
@@ -57059,7 +56311,6 @@ ActionOverrideType
 
 ActionOverrideType on page 749 is an enumeration of type string that defines which kind of action override to use. The valid values are:
 
-749
 
 Metadata Types ActionOverride
 
@@ -57141,7 +56392,6 @@ A Lightning component override for Lightning Experience:
 
 ```
 
-750
 
 #### Metadata Types BusinessProcess
 
@@ -57238,7 +56488,6 @@ CustomObject
 
 The BusinessProcess metadata type enables you to display different picklist values for users based on their profile.
 
-751
 
 Metadata Types BusinessProcess
 
@@ -57289,7 +56538,6 @@ package was created.
 
 `values` PicklistValue[] A list of picklist values associated with this business process.
 
-752
 
 #### Metadata Types CompactLayout
 
@@ -57381,7 +56629,6 @@ Gmail integrations.
 
 Compact layouts support all field types except:
 
-753
 
 Metadata Types CompactLayout
 
@@ -57463,7 +56710,6 @@ The following is an example of a CompactLayout component:
 
 ```
 
-754
 
 Metadata Types CompactLayout
 
@@ -57574,7 +56820,6 @@ Metadata Types CompactLayout
 
 ```
 
-755
 
 #### Metadata Types CustomField
 
@@ -57653,7 +56898,6 @@ Declarative Metadata File Suffix and Directory Location
 Custom fields are user-defined fields and are part of the custom object or standard object definition. See CustomObject for more
 information. Standard fields are predefined on standard objects.
 
-756
 
 Metadata Types CustomField
 
@@ -57720,7 +56964,6 @@ Fields
 
 Unless otherwise noted, all fields are creatable, filterable, and nillable.
 
-757
 
 Metadata Types CustomField
 
@@ -57791,7 +57034,6 @@ in a lookup relationship.
 **•** `SetNull` —This value is the default. If the lookup record is
 deleted, the lookup field is cleared.
 
-758
 
 Metadata Types CustomField
 
@@ -57862,7 +57104,6 @@ type is AutoNumber, Email, Number, or Text.
 **•** `DeveloperControlled` —The creator of the record can
 update the field with a package upgrade.
 
-759
 
 Metadata Types CustomField
 
@@ -57928,7 +57169,6 @@ and later.
 `isNameField` boolean Available only for external object fields of type text. For each
 external object, you can specify one field as the name field. If you
 
-760
 
 Metadata Types CustomField
 
@@ -57996,7 +57236,6 @@ last four display. This option is equivalent to the `Credit`
 display. This option is equivalent to the `Last Four`
 `Characters Clear` option in Salesforce.
 
-761
 
 Metadata Types CustomField
 
@@ -58062,7 +57301,6 @@ If specified, indicates the value for one-to-many relationships. For
 example, in the object MyObject that had a relationship to
 YourObject, the relationship name can be YourObjects.
 
-762
 
 Metadata Types CustomField
 
@@ -58134,7 +57372,6 @@ value in your `package.xml` file, the default starting number
 for standard fields is `0` . The default starting number for custom
 fields is `1` .
 
-763
 
 Metadata Types CustomField
 
@@ -58201,7 +57438,6 @@ version 29.0 and later.
 For more information, see "Report on Historical Changes" in
 Salesforce Help.
 
-764
 
 Metadata Types CustomField
 
@@ -58268,7 +57504,6 @@ MktDataModelFieldAttributes
 
 This is a subtype of CustomField.
 
-765
 
 Metadata Types CustomField
 
@@ -58350,7 +57585,6 @@ MktDataLakeFieldAttributes
 
 This is a subtype of CustomField. MktDataLakeFieldAttributes is available in API version 50.0 or later.
 
-766
 
 Metadata Types CustomField
 
@@ -58427,7 +57661,6 @@ LookupFilter
 Represents the metadata associated with a lookup filter. Replaces the NamedFilter component, which was removed as of API version
 30.0. LookupFilter is available in API version 30.0 and later.
 
-767
 
 Metadata Types CustomField
 
@@ -58506,7 +57739,6 @@ Represents the value of the filter item being operated upon, for
 example, if the filter is `my_number_field__c > 1`, the value
 of `value` is `1` .
 
-768
 
 Metadata Types CustomField
 
@@ -58602,7 +57834,6 @@ standard field ( `Phone` ) that has history tracking enabled.
 
 ```
 
-769
 
 #### Metadata Types FieldSet
 
@@ -58655,7 +57886,6 @@ the order of appearance on the page.
 `isFieldManaged` boolean Read-only. Denotes whether the field was added to the field set
 via a managed or unmanaged package.
 
-770
 
 #### Metadata Types HistoryRetentionPolicy
 
@@ -58732,7 +57962,6 @@ Version
 
 Available in API version 31.0 and later.
 
-771
 
 #### Metadata Types Index
 
@@ -58800,7 +58029,6 @@ File Suffix and Directory Location
 
 #### Indexes are user-defined and are part of the custom object definition for big objects. See CustomObject for more information.
 
-772
 
 Metadata Types Index
 
@@ -58869,7 +58097,6 @@ The following is an example of an index contained within the definition of a cus
 
 ```
 
-773
 
 Metadata Types Index
 
@@ -58972,7 +58199,6 @@ Metadata Types Index
 
 ```
 
-774
 
 #### Metadata Types ListView
 
@@ -59035,7 +58261,6 @@ API name counterparts. If person accounts are enabled in your
 
 organization, standard fields merged from a contact into an
 
-775
 
 Metadata Types ListView
 
@@ -59098,7 +58323,6 @@ This field is available in API version 17.0 and later.
 
 `filter` string Required. Represents the field specified in the filter.
 
-776
 
 Metadata Types ListView
 
@@ -59173,7 +58397,6 @@ Records in the territory of the user seeing the list view. This option is availa
 management is enabled for your organization. Opportunities can’t be filtered by
 `MyTerritory` . This option is available in API version 17.0 and later.
 
-777
 
 Metadata Types ListView
 
@@ -59266,7 +58489,6 @@ In general, avoid including unedited default list views in managed packages. We 
 [managed package, as it can result in duplicated list views in the target org. See Incorrect List View Loads Due to Possibility of Existing](https://help.salesforce.com/s/articleView?id=000386164&type=1&language=en_US)
 [Duplicate List Views.](https://help.salesforce.com/s/articleView?id=000386164&type=1&language=en_US)
 
-778
 
 #### Metadata Types NamedFilter
 
@@ -59318,7 +58540,6 @@ Unless otherwise noted, all fields are creatable, filterable, and nillable.
 
 `errorMessage` string The error message that appears if the lookup filter fails.
 
-779
 
 Metadata Types NamedFilter
 
@@ -59388,7 +58609,6 @@ Represents the value of the filter item being operated upon, for
 example, if the filter is `my_number_field__c > 1`, the value
 of `value` is `1` .
 
-780
 
 Metadata Types NamedFilter
 
@@ -59469,7 +58689,6 @@ Declarative Metadata Sample Definition
 
 ```
 
-781
 
 #### Metadata Types Picklist (Including Dependent Picklist)
 
@@ -59533,7 +58752,6 @@ This field is available in API version 37.0 and later.
 Indicates whether values are sorted ( `true` ), or not ( `false` ). By default
 this value is `false` .
 
-782
 
 Metadata Types Picklist (Including Dependent Picklist)
 
@@ -59637,7 +58855,6 @@ the list of models shown in the `model__c` picklist.
 
 ```
 
-783
 
 Metadata Types Picklist (Including Dependent Picklist)
 
@@ -59752,7 +58969,6 @@ Metadata Types Picklist (Including Dependent Picklist)
 
 ```
 
-784
 
 Metadata Types Picklist (Including Dependent Picklist)
 
@@ -59858,7 +59074,6 @@ The following sample shows usage for the standard `Stage` field in opportunities
 
 ```
 
-785
 
 #### Metadata Types ProfileSearchLayouts
 
@@ -59922,7 +59137,6 @@ object's tab must exist in the destination org or must be included with the depl
 
 ```
 
-786
 
 #### Metadata Types RecordType
 
@@ -59991,7 +59205,6 @@ Fields
 
 `active` boolean Required. Indicates whether the record type is active.
 
-787
 
 Metadata Types RecordType
 
@@ -60050,7 +59263,6 @@ RecordTypePicklistValue represents the combination of picklists and valid values
 `values` PicklistValue One or more of the picklist values in the picklist. Each value defined is
 available in the record type that contains this component.
 
-788
 
 Metadata Types RecordType
 
@@ -60154,7 +59366,6 @@ The definition of a record type in a custom object is shown in this code block.
 
 ```
 
-789
 
 #### Metadata Types SearchLayouts
 
@@ -60222,7 +59433,6 @@ that allow users to associate two records together in a
 
 relationship. For example, a contact record includes an
 
-790
 
 Metadata Types SearchLayouts
 
@@ -60289,7 +59499,6 @@ The list of fields displayed in a search result for the object.
 This field is equivalent to the `Search Results` related
 list on the object detail page in the application user interface.
 
-791
 
 #### Metadata Types SharingReason
 
@@ -60364,7 +59573,6 @@ Version
 
 Sharing reasons are available in API version 14.0 and later.
 
-792
 
 #### Metadata Types SharingRecalculation
 
@@ -60432,7 +59640,6 @@ Required. The Apex class that recalculates the Apex sharing for a custom
 object. This class must implement the `Database.Batchable`
 interface.
 
-793
 
 #### Metadata Types ValidationRule
 
@@ -60498,7 +59705,6 @@ the error message appears next to the specified field. If you do not specify
 a value or the field isn’t visible on the page layout, the value changes
 automatically to `Top of Page` .
 
-794
 
 Metadata Types ValidationRule
 
@@ -60584,7 +59790,6 @@ Wildcard Support in the Manifest File
 This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
 using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-795
 
 #### Metadata Types WebLink WebLink
 
@@ -60653,7 +59858,6 @@ characters escaped for validity. The name can only contain characters,
 
 letters, and the underscore (_) character. The name must start with a
 
-796
 
 Metadata Types WebLink
 
@@ -60730,7 +59934,6 @@ not translated.
 
 **•** `onClickJavaScript`
 
-797
 
 Metadata Types WebLink
 
@@ -60809,7 +60012,6 @@ public void WebLinkSample(String name) throws Exception {
 
 ```
 
-798
 
 Metadata Types WebLink
 
@@ -60914,7 +60116,6 @@ Declarative Metadata Sample Definition.
 
 ```
 
-799
 
 #### Metadata Types Metadata Field Types
 
@@ -60990,7 +60191,6 @@ FieldType Custom field Indicates the type of a custom field. Valid values are:
 
 **•** `Email`
 
-800
 
 Metadata Types Metadata Field Types
 
@@ -61035,7 +60235,6 @@ Note: This page is about Classic Encryption, not Shield Platform
 
 **•** `Time`
 
-1
 A `Number` custom field is internally represented as a field of type double.
 Setting the scale of the `Number` field to 0 gives you a double that behaves like
 an int.
@@ -61067,7 +60266,6 @@ them through the Metadata API, use “Feminine”.
 
 **•** `Common (Dutch)`
 
-801
 
 Metadata Types Metadata Field Types
 
@@ -61146,7 +60344,6 @@ The `fullname` of the controlling field if this is a dependent picklist. A
 controlling field can be a checkbox or picklist field, but in this case it’s a picklist.
 The controlling picklist filters the available values in the dependent picklist.
 
-802
 
 ### Metadata Types CustomObjectTranslation
 
@@ -61203,7 +60400,6 @@ Local translations are stored in a file with a format of _`customObjectName__c`_
 _`customObjectName__c`_ is the custom object name, and _`lang`_ is the translation language. A sample file name for German
 translations is `myCustomObject__c-de.objectTranslation` .
 
-803
 
 Metadata Types CustomObjectTranslation
 
@@ -61267,7 +60463,6 @@ field in the CustomFieldTranslation on page 805 subtype.
 
 `quickActions` QuickActionTranslation[] A list of translations for actions.
 
-804
 
 Metadata Types CustomObjectTranslation
 
@@ -61331,7 +60526,6 @@ LookupFilter isn’t supported on the article type object.
 `name` string Required. The name of the field relative to the custom object;
 for example, `MyField__c` .
 
-805
 
 Metadata Types CustomObjectTranslation
 
@@ -61390,7 +60584,6 @@ LayoutSectionTranslation contains details for a page layout section translation.
 
 `section` string Required. The section name.
 
-806
 
 Metadata Types CustomObjectTranslation
 
@@ -61455,7 +60648,6 @@ member of a group. The valid values are:
 
 **•** `None`
 
-807
 
 Metadata Types CustomObjectTranslation
 
@@ -61532,7 +60724,6 @@ string) to indicate a relationship of possession. The valid values are:
 
 `value` string Required. The value or label in this grammatical context.
 
-808
 
 Metadata Types CustomObjectTranslation
 
@@ -61588,7 +60779,6 @@ SharingReasonTranslation contains details for a sharing reason translation. For 
 
 `name` string Required. The sharing reason name.
 
-809
 
 Metadata Types CustomObjectTranslation
 
@@ -61657,7 +60847,6 @@ The name and location of the file containing this definition would be
 
 ```
 
-810
 
 Metadata Types CustomObjectTranslation
 
@@ -61771,7 +60960,6 @@ file containing this definition would be `objectTranslations/Account-de.objectTr
 
 ```
 
-811
 
 Metadata Types CustomObjectTranslation
 
@@ -61878,7 +61066,6 @@ Metadata Types CustomObjectTranslation
 
 ```
 
-812
 
 ### Metadata Types CustomPageWebLink
 
@@ -61935,7 +61122,6 @@ Valid values:
 
 **•** `massActionButton` for a button attached to a related list
 
-813
 
 Metadata Types CustomPageWebLink
 
@@ -62015,7 +61201,6 @@ type string) by a URL, an sControl, a JavaScript code block, or a Visualforce pa
 
 **•** `flow` —Reserved for future use.
 
-814
 
 Metadata Types CustomPageWebLink
 
@@ -62093,7 +61278,6 @@ JavaScript content. If the value is neither of these, leave this field empty.
 
 Content must be escaped in a manner consistent with XML parsing rules.
 
-815
 
 ### Metadata Types CustomPermission
 
@@ -62169,7 +61353,6 @@ WebLink
 Represents a permission that grants access to a custom feature.This type extends the Metadata metadata type and inherits its `fullName`
 field.
 
-816
 
 Metadata Types CustomPermission
 
@@ -62228,7 +61411,6 @@ required custom permission must be enabled when its parent is enabled.
 
 `customPermission` string Required. The custom permission name.
 
-817
 
 Metadata Types CustomPermission
 
@@ -62319,7 +61501,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-818
 
 ### Metadata Types CustomSite CustomSite
 
@@ -62382,7 +61563,6 @@ site can access standard Salesforce pages as allowed
 by their access controls. When disabled, authenticated
 users in this site can't access standard Salesforce
 
-819
 
 Metadata Types CustomSite
 
@@ -62449,7 +61629,6 @@ field is available in API version 27.0 and later.
 `chatterAnswersForgotPasswordPage` string The name of the Visualforce page to be displayed
 when a user clicks the link to retrieve a forgotten
 
-820
 
 Metadata Types CustomSite
 
@@ -62522,7 +61701,6 @@ URLs in the site with the root custom URLs in this list.
 Custom URLs that use a non-root path prefix are not
 included in this list and are not affected when saving
 
-821
 
 Metadata Types CustomSite
 
@@ -62590,7 +61768,6 @@ system-managed URLs are redirected to the HTTPS
 custom domain serving this site ( `true` ) or not
 ( `false` ). System-managed site URLs end in
 
-822
 
 Metadata Types CustomSite
 
@@ -62655,7 +61832,6 @@ The username of the user who owns all new records
 that unauthenticated guest users create. This field is
 available in API version 51.0 and later.
 
-823
 
 Metadata Types CustomSite
 
@@ -62718,7 +61894,6 @@ to frame your site or Experience Cloud site
 
 pages. Accepts these formats: `example`,
 
-824
 
 Metadata Types CustomSite
 
@@ -62775,7 +61950,6 @@ Required. Indicates whether this is the
 primary domain ( `true` ). If `false`, this is
 not the primary domain.
 
-825
 
 Metadata Types CustomSite
 
@@ -62872,7 +62046,6 @@ Here is a sample XML definition of a site.
 
 ```
 
-826
 
 ### Metadata Types CustomTab
 
@@ -62935,7 +62108,6 @@ Fields
 
 This metadata type contains the following fields:
 
-827
 
 Metadata Types CustomTab
 
@@ -63015,7 +62187,6 @@ Only one of these fields can have a value set:
 `frameHeight` int The height, in pixels of the tab frame. Required for s-control and page
 tabs.
 
-828
 
 Metadata Types CustomTab
 
@@ -63086,7 +62257,6 @@ Custom30:Radardish, Custom31:Car, Custom32:Factory, Custom33:Desk,
 Custom34:Insect, Custom35:Microphone, Custom36:Train,
 Custom37:Bridge, Custom38:Camera, Custom39:Telescope,
 
-829
 
 Metadata Types CustomTab
 
@@ -63155,7 +62325,6 @@ Only one of these fields can have a value set:
 `splashPageLink` string The custom link used as the introductory splash page when users click
 the tab. References a HomePageComponent.
 
-830
 
 ### Metadata Types CustomValue
 
@@ -63236,7 +62405,6 @@ To deactivate a global picklist value, you can invoke an `update()` call on Glob
 version 38.0 and later) with the value omitted, or with the value’s `isActive` field set to `false` . Or, you can invoke an `update()`
 call directly on GlobalPicklistValue (API version 37.0) or CustomValue (API version 38.0 and later) with the `isActive` field set to `false` .
 
-831
 
 Metadata Types CustomValue
 
@@ -63294,7 +62462,6 @@ extends the CustomValue metadata type and inherits all its fields.
 
 When you deploy changes to standard picklist fields, picklist values are added as needed.
 
-832
 
 Metadata Types CustomValue
 
@@ -63369,7 +62536,6 @@ type string)
 in tasks. For more information about tasks, see Start Using Tasks in
 Salesforce Help. This field is available in API version 16.0 and later.
 
-833
 
 ### Metadata Types Dashboard
 
@@ -63428,7 +62594,6 @@ Retrieving Dashboards
 You can’t use the wildcard (*) symbol with dashboards in `package.xml` . To retrieve the list of dashboards for populating
 ### package.xml with explicit names, call listMetadata() and pass in DashboardFolder as the type. Note that DashboardFolder is not returned as a type in describeMetadata() . Dashboard is returned from describeMetadata()
 
-834
 
 Metadata Types Dashboard
 
@@ -63503,7 +62668,6 @@ format; for example #FF6600.
 `backgroundFadeDirection` ChartBackgroundDirection
 (enumeration of type string)
 
-835
 
 Required. The direction of the gradient color change, defined
 by the `backgroundStartColor` and
@@ -63590,7 +62754,6 @@ versions prior to API version 42.0.
 
 **•** `bluegrass`
 
-836
 
 Metadata Types Dashboard
 
@@ -63663,7 +62826,6 @@ This field is available in API version 19.0 and later.
 
 `description` string Description for the dashboard. Maximum of 255 characters.
 
-837
 
 Metadata Types Dashboard
 
@@ -63732,7 +62894,6 @@ appropriate users.
 `textColor` string Required. Color of the text on each chart in the dashboard. The
 color is in hexadecimal format; for example #FF6600.
 
-838
 
 Metadata Types Dashboard
 
@@ -63802,7 +62963,6 @@ Note: The “between” operator takes two operands
 MaximumValue”). Note also that the minimum value
 is inclusive, while the maximum value is exclusive.
 
-839
 
 Metadata Types Dashboard
 
@@ -63861,7 +63021,6 @@ component.
 
 `rowSpan` int Required. The height of the dashboard component in rows.
 
-840
 
 Metadata Types Dashboard
 
@@ -63938,7 +63097,6 @@ This field is available in API version 25.0 and later.
 
 **•** `Line`
 
-841
 
 Metadata Types Dashboard
 
@@ -64018,7 +63176,6 @@ system that uses a Web interface. This field overrides the
 `drillEnabled` and `drillToDetailEnabled`
 fields.
 
-842
 
 Metadata Types Dashboard
 
@@ -64088,7 +63245,6 @@ component. If the component has one or more groupings,
 
 sort information is stored here; otherwise, it is stored in
 
-843
 
 Metadata Types Dashboard
 
@@ -64158,7 +63314,6 @@ Salesforce online help.
 
 `scontrolHeightInPixels` int Display height of the s-control in pixels.
 
-844
 
 Metadata Types Dashboard
 
@@ -64220,7 +63375,6 @@ dashboard are overridden. If you defined a combination
 chart in the source report, use this option to use that
 combination chart on this dashboard.
 
-845
 
 Metadata Types Dashboard
 
@@ -64285,7 +63439,6 @@ dynamic value.
 `isDynamicUser` boolean Indicates whether the value should be retrieved as the user
 running the dashboard ( `true` ) or not ( `false` ).
 
-846
 
 Metadata Types Dashboard
 
@@ -64348,7 +63501,6 @@ component.
 
 This field is available in API version 65.0 and later.
 
-847
 
 Metadata Types Dashboard
 
@@ -64408,7 +63560,6 @@ This field stores the order of conditional highlights.
 
 `showTotal` boolean If `true`, the column total is displayed.
 
-848
 
 Metadata Types Dashboard
 
@@ -64469,7 +63620,6 @@ DashboardComponentFilter is an enumeration of type string that lists the sort va
 
 `RowValueDescending` Sorts highest to lowest by the value.
 
-849
 
 Metadata Types Dashboard
 
@@ -64581,7 +63731,6 @@ file name matches the dashboard title and the extension is `.dashboard` .
 
 ```
 
-850
 
 Metadata Types Dashboard
 
@@ -64696,7 +63845,6 @@ Metadata Types Dashboard
 
 ```
 
-851
 
 Metadata Types Dashboard
 
@@ -64808,7 +63956,6 @@ A sample XML definition of a dashboard is shown below. The file name matches the
 
 ```
 
-852
 
 Metadata Types Dashboard
 
@@ -64923,7 +64070,6 @@ Metadata Types Dashboard
 
 ```
 
-853
 
 Metadata Types Dashboard
 
@@ -65038,7 +64184,6 @@ Metadata Types Dashboard
 
 ```
 
-854
 
 Metadata Types Dashboard
 
@@ -65146,7 +64291,6 @@ example is supported in API version 35.0 and later. The file name matches the da
 
 ```
 
-855
 
 Metadata Types Dashboard
 
@@ -65261,7 +64405,6 @@ Metadata Types Dashboard
 
 ```
 
-856
 
 ### Metadata Types DataCategoryGroup
 
@@ -65353,7 +64496,6 @@ Represents a data category group.
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-857
 
 Metadata Types DataCategoryGroup
 
@@ -65423,7 +64565,6 @@ a data category group, the `fullName` field and the file name (without
 
 its suffix) must match.The `fullName` can contain only underscores
 
-858
 
 Metadata Types DataCategoryGroup
 
@@ -65482,7 +64623,6 @@ group. Valid values are:
 **•** `KnowledgeArticleVersion` —to associate articles. See
 "Modify Default Category Group Assignments for Articles" in the
 
-859
 
 Metadata Types DataCategoryGroup
 
@@ -65574,7 +64714,6 @@ This sample is the definition of the `Geography` data category group and its dat
 
 ```
 
-860
 
 Metadata Types DataCategoryGroup
 
@@ -65632,7 +64771,6 @@ file includes a `USA` category in the same hierarchical position. The Metadata A
 the organization and moves associations for any records from `US` to the parent `AMER` category. It also adds the `USA` category under
 `AMER` . Note that all records that were previously categorized with `US` are now associated with the `AMER` category.
 
-861
 
 Metadata Types DataCategoryGroup
 
@@ -65642,7 +64780,6 @@ initial data category group in the sandbox organization. In hierarchy 2, we add 
 `UK` below `EU` . In hierarchy 3, we delete `FR` and associate its records with its new parent, `EU` . Finally, we deploy the changes from the
 sandbox to the production organization.
 
-862
 
 ### Metadata Types DataObjectSearchIndexConf
 
@@ -65676,7 +64813,6 @@ File Suffix and Directory Location
 
 `dataObjectSearchIndexConfs` folder.
 
-863
 
 Metadata Types DataObjectSearchIndexConf
 
@@ -65748,7 +64884,6 @@ The DMO that the Search Answers configuration applies to.
 **Field Type**
 string
 
-864
 
 ### Metadata Types DataWeaveResource
 
@@ -65826,7 +64961,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents the `DataWeaveScriptResource` class that is generated for all DataWeave scripts. DataWeave scripts can be directly
 invoked from Apex.
 
-865
 
 Metadata Types DataWeaveResource
 
@@ -65894,7 +65028,6 @@ output application/apex
 
 ```
 
-866
 
 ### Metadata Types DecisionTable
 
@@ -65971,7 +65104,6 @@ Version
 
 ### DecisionTable components are available in API version 51.0 and later.
 
-867
 
 Metadata Types DecisionTable
 
@@ -66048,7 +65180,6 @@ Valid values are:
 
 **•** `SingleSobject`
 
-868
 
 Metadata Types DecisionTable
 
@@ -66130,7 +65261,6 @@ Valid values are:
 
 **•** `Solr`
 
-869
 
 Metadata Types DecisionTable
 
@@ -66206,7 +65336,6 @@ Latest date on which the decision table was refreshed.
 **Field Type**
 string
 
-870
 
 Metadata Types DecisionTable
 
@@ -66282,7 +65411,6 @@ Valid values are:
 
 **•** `Inactive`
 
-871
 
 Metadata Types DecisionTable
 
@@ -66365,7 +65493,6 @@ Valid values are:
 
 **•** `PlanCostCalculation`
 
-872
 
 Metadata Types DecisionTable
 
@@ -66438,7 +65565,6 @@ int
 **Description**
 The number of digits to the right of the decimal point.
 
-873
 
 Metadata Types DecisionTable
 
@@ -66513,7 +65639,6 @@ table.
 **Field Type**
 DecisionTableOperator (enumeration of type string)
 
-874
 
 Metadata Types DecisionTable
 
@@ -66592,7 +65717,6 @@ DecisionTableParameterType (enumeration of type string)
 
 Required. Usage type of a field.
 
-875
 
 Metadata Types DecisionTable
 
@@ -66668,7 +65792,6 @@ logic.
 **Field Type**
 string
 
-876
 
 Metadata Types DecisionTable
 
@@ -66761,7 +65884,6 @@ The following is an example of a DecisionTable component.
 
 ```
 
-877
 
 Metadata Types DecisionTable
 
@@ -66872,7 +65994,6 @@ Metadata Types DecisionTable
 
 ```
 
-878
 
 ### Metadata Types DecisionTableDatasetLink
 
@@ -66943,7 +66064,6 @@ selected in the dataset link.
 
 `description` string The description of the dataset link.
 
-879
 
 Metadata Types DecisionTableDatasetLink
 
@@ -67020,7 +66140,6 @@ The following is an example of a DecisionTableDatasetLink component.
 
 ```
 
-880
 
 ### Metadata Types DecisionMatrixDefinition
 
@@ -67097,7 +66216,6 @@ Version
 
 ### DecisionMatrixDefinition components are available in API version 55.0 and later.
 
-881
 
 Metadata Types DecisionMatrixDefinition
 
@@ -67173,7 +66291,6 @@ Available in API version 59.0 and later.
 **Field Type**
 string
 
-882
 
 Metadata Types DecisionMatrixDefinition
 
@@ -67250,7 +66367,6 @@ The date until which a decision matrix definition version is available for use.
 **Field Type**
 string
 
-883
 
 Metadata Types DecisionMatrixDefinition
 
@@ -67324,7 +66440,6 @@ Valid values are:
 **Field Type**
 string
 
-884
 
 Metadata Types DecisionMatrixDefinition
 
@@ -67401,7 +66516,6 @@ Valid values are:
 
 **•** `TextRange`
 
-885
 
 Metadata Types DecisionMatrixDefinition
 
@@ -67485,7 +66599,6 @@ The following is an example of a DecisionMatrixDefinition component.
 
 ```
 
-886
 
 ### Metadata Types DelegateGroup
 
@@ -67576,7 +66689,6 @@ Represents a group of users who have the same administrative privileges. These g
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-887
 
 Metadata Types DelegateGroup
 
@@ -67628,7 +66740,6 @@ all subordinate roles by delegated administrators.
 `roles` string[] The roles and subordinates for which delegated administrators of the
 group can create and edit users.
 
-888
 
 ### Metadata Types DgtAssetMgmtProvider
 
@@ -67708,7 +66819,6 @@ File Suffix and Directory Location
 
 `dgtAssetMgmtProviders` folder.
 
-889
 
 Metadata Types DgtAssetMgmtProvider
 
@@ -67786,7 +66896,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-890
 
 ### Metadata Types DgtAssetMgmtPrvdLghtCpnt
 
@@ -67850,7 +66959,6 @@ Required. References the external content provider, represented by the
 DgtAssetMgmtProvider on page 889 type, that this Lightning web component
 configuration supports.
 
-891
 
 Metadata Types DgtAssetMgmtPrvdLghtCpnt
 
@@ -67935,7 +67043,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-892
 
 ### Metadata Types DigitalExperienceBundle
 
@@ -67994,7 +67101,6 @@ item.
 
 Here’s an example of the DigitalExperienceBundle structure.
 
-893
 
 Metadata Types DigitalExperienceBundle
 
@@ -68028,7 +67134,6 @@ deploying the DigitalExperienceBundle fails.
 
 The `_meta.json` file contains several properties:
 
-894
 
 Metadata Types DigitalExperienceBundle
 
@@ -68036,7 +67141,6 @@ Version
 
 DigitalExperienceBundle components are available in API version 56.0 and later.
 
-895
 
 Metadata Types DigitalExperienceBundle
 
@@ -68105,7 +67209,6 @@ type, such as views, routes, themes, and languageSettings.
 Represents content in the bundle. When retrieved as part of DigitalExperienceBundle, DigitalExperience represents all content for the
 requested workspace or workspaces. When retrieved on its own, DigitalExperience represents only the content types you specify.
 
-896
 
 Metadata Types DigitalExperienceBundle
 
@@ -68178,7 +67281,6 @@ The list of target workspaces that the source workspace is shared with.
 
 Represents a target marketing workspace that the source marketing workspace is shared with. Available in API version 61.0 and later.
 
-897
 
 Metadata Types DigitalExperienceBundle
 
@@ -68254,7 +67356,6 @@ DigitalExperienceBundle: Site Workspace Bundle and Folders
 DigitalExperienceBundle uses the `site` workspace type to organize data for enhanced LWR sites in a content-focused, text-based
 code structure.
 
-898
 
 #### Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 
@@ -68312,7 +67413,6 @@ This content type folder contains one content subfolder per brand. Each content 
 
 ```
 
-899
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -68428,7 +67528,6 @@ Folders
 
 ```
 
-900
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -68544,7 +67643,6 @@ Folders
 
 ```
 
-901
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -68636,7 +67734,6 @@ This content type folder contains one content subfolder per email. Each content 
 
 **•** If applicable, additional `JSON` files that represent variations of the content item
 
-902
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -68746,7 +67843,6 @@ in the target org.
 
 ```
 
-903
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -68855,7 +67951,6 @@ This content type folder contains one content subfolder per form. Each content s
 
 ```
 
-904
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -68971,7 +68066,6 @@ Folders
 
 ```
 
-905
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -69087,7 +68181,6 @@ Folders
 
 ```
 
-906
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -69194,7 +68287,6 @@ This content type folder contains one content subfolder per image. Each content 
 
 **•** `content.json`
 
-907
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -69301,7 +68393,6 @@ This content type folder contains one content subfolder per landing page. Each c
 
 ```
 
-908
 
 Metadata Types DigitalExperienceBundle: Marketing Workspace Bundle and
 Folders
@@ -69417,7 +68508,6 @@ Folders
 
 ```
 
-909
 
 #### Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -69513,7 +68603,6 @@ The `site` folder contains one or more workspace folders, each representing the 
 workspace folder contains a collection of related content items, such as settings and site components, that form the site when combined
 with data from the DigitalExperienceConfig metadata type.
 
-910
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -69557,11 +68646,9 @@ The content subfolder contains two or more `JSON` files:
 
 ```
 
-911
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-912
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -69624,11 +68711,9 @@ This content type folder contains one content subfolder per branding set. Each c
 
 ```
 
-913
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-914
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -69729,7 +68814,6 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
 ```
 
-915
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -69844,7 +68928,6 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
 ```
 
-916
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -69959,7 +69042,6 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
 ```
 
-917
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70038,15 +69120,12 @@ files:
 
 ```
 
-918
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-919
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-920
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70095,11 +69174,9 @@ This content type folder contains one content subfolder for each of the site’s
 
 ```
 
-921
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-922
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70144,7 +69221,6 @@ files:
 
 ```
 
-923
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70181,11 +69257,9 @@ This content type folder contains one content subfolder, representing the site�
 
 ```
 
-924
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-925
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70242,27 +69316,21 @@ region that you’re modifying has a lock icon next to it, it’s a locked regio
 
 ```
 
-926
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-927
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-928
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-929
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-930
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-931
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70285,7 +69353,6 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
 ```
 
-932
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70400,7 +69467,6 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
 ```
 
-933
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70509,7 +69575,6 @@ This content type folder contains one content subfolder per view. Each content s
 
 **•** `content.json`
 
-934
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70541,27 +69606,21 @@ present in the source org, deploying the DigitalExperienceBundle fails.
 
 ```
 
-935
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-936
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-937
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-938
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-939
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
-940
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70576,7 +69635,6 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
 ```
 
-941
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70691,7 +69749,6 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
 ```
 
-942
 
 Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
@@ -70806,7 +69863,6 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
 
 ```
 
-943
 
 ### Metadata Types DigitalExperienceConfig
 
@@ -70903,7 +69959,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-944
 
 Metadata Types DigitalExperienceConfig
 
@@ -70973,7 +70028,6 @@ urlPathPrefix
 **Field Type**
 string
 
-945
 
 ### Metadata Types DisclosureDefinition
 
@@ -71045,7 +70099,6 @@ Parent Type
 
 [This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
 
-946
 
 Metadata Types DisclosureDefinition
 
@@ -71110,7 +70163,6 @@ Required.
 A user-friendly name for DisclosureDefinition, which is defined when the
 DisclosureDefinition is created.
 
-947
 
 ### Metadata Types DisclosureDefinitionVersion
 
@@ -71189,7 +70241,6 @@ File Suffix and Directory Location
 
 `disclosureDefinitionVersions` folder.
 
-948
 
 Metadata Types DisclosureDefinitionVersion
 
@@ -71261,7 +70312,6 @@ string
 The document template global key associated with the DOCX template for the
 disclosure definition version.
 
-949
 
 Metadata Types DisclosureDefinitionVersion
 
@@ -71337,7 +70387,6 @@ field.
 **Field Type**
 string
 
-950
 
 Metadata Types DisclosureDefinitionVersion
 
@@ -71427,7 +70476,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-951
 
 ### Metadata Types DisclosureType
 
@@ -71486,7 +70534,6 @@ disclosure.
 **Field Type**
 string
 
-952
 
 Metadata Types DisclosureType
 
@@ -71570,7 +70617,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-953
 
 ### Metadata Types DiscoveryAIModel
 
@@ -71649,7 +70695,6 @@ Version
 
 ### DiscoveryAIModels are available in API version 51.0 and later.
 
-954
 
 Metadata Types DiscoveryAIModel
 
@@ -71711,7 +70756,6 @@ learning algorithm.
 `Xgboost` string XGBoost. Decision tree-based ensemble machine learning
 algorithm.
 
-955
 
 Metadata Types DiscoveryAIModel
 
@@ -71769,7 +70813,6 @@ Represents the type of transformation to apply before making a prediction.
 
 `CatagoricalImputation` string Catagorical imputation transformation.
 
-956
 
 Metadata Types DiscoveryAIModel
 
@@ -71825,7 +70868,6 @@ into Salesforce.
 Note: This source type is not supported in the Metadata
 API.
 
-957
 
 Metadata Types DiscoveryAIModel
 
@@ -71916,7 +70958,6 @@ Here is a sample DiscoveryAIModel:
 
 ```
 
-958
 
 ### Metadata Types DiscoveryGoal
 
@@ -71991,7 +71032,6 @@ Fields
 `deployedModels` DiscoveryDeployedModel[] One or more deployed models associated with this prediction
 definition.
 
-959
 
 Metadata Types DiscoveryGoal
 
@@ -72053,7 +71093,6 @@ No filters indicates that the model matches all input rows.
 
 `name` string Name of the deployed model.
 
-960
 
 Metadata Types DiscoveryGoal
 
@@ -72106,7 +71145,6 @@ Represents a field filter.
 
 `values` DiscoveryFilterValue[] One or more values selected for the filter.
 
-961
 
 Metadata Types DiscoveryGoal
 
@@ -72166,7 +71204,6 @@ DiscoveryFilterValue
 
 Represents a filter value.
 
-962
 
 Metadata Types DiscoveryGoal
 
@@ -72222,7 +71259,6 @@ Represents a model card associated with an Einstein Discovery prediction definit
 
 `contactName` string Contact name for this model card.
 
-963
 
 Metadata Types DiscoveryGoal
 
@@ -72276,7 +71312,6 @@ DiscoveryPushbackType
 
 Represents the type of writeback field. Must be set to `AiRecordInsight` .
 
-964
 
 Metadata Types DiscoveryGoal
 
@@ -72377,7 +71412,6 @@ Here is a sample DiscoveryGoal:
 
 ```
 
-965
 
 Metadata Types DiscoveryGoal
 
@@ -72492,7 +71526,6 @@ Metadata Types DiscoveryGoal
 
 ```
 
-966
 
 ### Metadata Types DiscoveryStory
 
@@ -72579,7 +71612,6 @@ A DiscoveryStory is stored in the `discovery` folder. DiscoveryStory have two fi
 
 **•** file with `.story` suffix contains the story’s actual data
 
-967
 
 Metadata Types DiscoveryStory
 
@@ -72646,7 +71678,6 @@ DiscoveryStoryOutcome
 
 Represents the selected outcome of the generated story.
 
-968
 
 Metadata Types DiscoveryStory
 
@@ -72724,7 +71755,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-969
 
 ### Metadata Types Document Document
 
@@ -72801,7 +71831,6 @@ related documents in the Recycle Bin are permanently deleted.
 
 In API version 18.0 and later, documents do not need an extension.
 
-970
 
 Metadata Types Document
 
@@ -72859,7 +71888,6 @@ a Salesforce username and password to view, set this field to `false` .
 This field and `internalUseOnly` are mutually exclusive; you cannot
 set both to `true` .
 
-971
 
 ### Metadata Types DocumentCategory
 
@@ -72923,7 +71951,6 @@ description
 **Field Type**
 string
 
-972
 
 ### Metadata Types DocumentCategoryDocumentType
 
@@ -73000,7 +72027,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents the junction between a DocumentCategory and a DocumentType. Puts a DocumentType in a DocumentCategory.
 
-973
 
 Metadata Types DocumentCategoryDocumentType
 
@@ -73066,7 +72092,6 @@ string
 
 Required.
 
-974
 
 ### Metadata Types DocumentChecklistSettings
 
@@ -73148,7 +72173,6 @@ File Suffix and Directory Location
 
 `.settings` files are different from other named components because there’s only one settings file for each settings component.
 
-975
 
 Metadata Types DocumentChecklistSettings
 
@@ -73219,7 +72243,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-976
 
 ### Metadata Types DocumentType DocumentType
 
@@ -73276,7 +72299,6 @@ Required.
 
 The master label of the DocumentType. This internal label doesn’t get translated.
 
-977
 
 ### Metadata Types DuplicateRule
 
@@ -73345,7 +72367,6 @@ Version
 
 ### DuplicateRule components are available in API version 65.0 and later.
 
-978
 
 Metadata Types DuplicateRule
 
@@ -73414,7 +72435,6 @@ Block
 For users, the UI displays an error message and prevents them from
 continuing. The DuplicateRule API returns an error.
 
-979
 
 ```
 actionOnInsert
@@ -73513,7 +72533,6 @@ EnforceSharingRules
 Sharing rules affect duplicate management. If a duplicate rule is
 triggered because an insert or update duplicates an existing record,
 
-980
 
 ```
 securityOption
@@ -73583,7 +72602,6 @@ This type extends the FilterItem type and inherits all its fields.
 
 `sortOrder` int Required. The order of this item in the duplicate rule filter.
 
-981
 
 Metadata Types DuplicateRule
 
@@ -73638,7 +72656,6 @@ in ObjectMapping. The field is mapped to the field name in
 `inputField`, which is assumed to be a field in the object specified
 by the `inputObject` in ObjectMapping.
 
-982
 
 Metadata Types DuplicateRule
 
@@ -73750,7 +72767,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-983
 
 ### Metadata Types EclairGeoData
 
@@ -73807,7 +72823,6 @@ coordinate.
 
 `boundingBoxTop` double When bounding-box coordinates are used, this contains the top coordinate.
 
-984
 
 Metadata Types EclairGeoData
 
@@ -73897,7 +72912,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-985
 
 ### Metadata Types EmailServicesFunction
 
@@ -73963,7 +72977,6 @@ such as image, audio, application, and video files.
 
 **•** `All` —The email service accepts any type of attachment.
 
-986
 
 Metadata Types EmailServicesFunction
 
@@ -74042,7 +73055,6 @@ One of the following values:
 
 **•** `UseSystemDefault` —The system default is used.
 
-987
 
 ```
 functionInactiveAction
@@ -74111,7 +73123,6 @@ supplied as an Apex Blob instead of as an Apex String.
 
 `isTlsRequired` boolean Not currently in use.
 
-988
 
 Metadata Types EmailServicesFunction
 
@@ -74180,7 +73191,6 @@ in a subscriber’s organization.
 Note: When creating large sets of data, always specify a unique
 `developerName` for each record. If no `developerName` is
 
-989
 
 ### Metadata Types EmailTemplate
 
@@ -74245,7 +73255,6 @@ The following example shows folders in `package.xml` :
 
 ```
 
-990
 
 Metadata Types EmailTemplate
 
@@ -74329,7 +73338,6 @@ binary. This conversion is handled for you by a SOAP client. This field contains
 
 **•** Visualforce body if `type` is set to `visualforce`
 
-991
 
 Metadata Types EmailTemplate
 
@@ -74407,7 +73415,6 @@ Object Name Reserved for future use with Lightning Experience.
 (enumeration of type
 string)
 
-992
 
 Metadata Types EmailTemplate
 
@@ -74504,7 +73511,6 @@ If `UiType` is `SFX`, the `type` must be `custom` .
 
 Packaging is supported for Salesforce Classic email templates only.
 
-993
 
 Metadata Types EmailTemplate
 
@@ -74580,7 +73586,6 @@ SEE ALSO:
 
 Letterhead
 
-994
 
 ### Metadata Types EmbeddedServiceBranding EmbeddedServiceBranding
 
@@ -74638,7 +73643,6 @@ as a hexadecimal value.
 `secondaryColor` string Secondary branding color used in the embedded component, displayed
 as a hexadecimal value.
 
-995
 
 ### Metadata Types EmbeddedServiceConfig
 
@@ -74707,7 +73711,6 @@ File Suffix and Directory Location
 
 ### EmbeddedServiceConfig components have the suffix .EmbeddedServiceConfig and are stored in the EmbeddedServiceConfig folder.
 
-996
 
 Metadata Types EmbeddedServiceConfig
 
@@ -74789,7 +73792,6 @@ The settings of the Embedded Service deployment whose
 `embeddedServiceCustomComponents` EmbeddedServiceCustomComponent The custom components used in this Embedded Service deployment.
 on page 999[] Available in API version 44.0 and later.
 
-997
 
 Metadata Types EmbeddedServiceConfig
 
@@ -74856,7 +73858,6 @@ appointmentConfirmImg
 **Field Type**
 string
 
-998
 
 Metadata Types EmbeddedServiceConfig
 
@@ -74918,7 +73919,6 @@ EmbeddedServiceCustomComponent
 
 Returns a custom component that’s associated with an EmbeddedServiceConfig setup.
 
-999
 
 Metadata Types EmbeddedServiceConfig
 
@@ -74926,7 +73926,6 @@ EmbeddedServiceCustomLabel
 
 Returns a custom label that’s associated with an EmbeddedServiceConfig setup.
 
-1000
 
 Metadata Types EmbeddedServiceConfig
 
@@ -74938,7 +73937,6 @@ EmbeddedServiceForm
 
 Returns the form that’s used for pre-chat. Available in API version 62 and later.
 
-1001
 
 Metadata Types EmbeddedServiceConfig
 
@@ -74946,7 +73944,6 @@ EmbeddedServiceFormField
 
 Represents an individual field in a prechat form. Available in API version 62 or higher.
 
-1002
 
 Metadata Types EmbeddedServiceConfig
 
@@ -74961,7 +73958,6 @@ deploymentFeature
 
 is EmbeddedMessaging. Available in API version 62 or higher.
 
-1003
 
 Metadata Types EmbeddedServiceConfig
 
@@ -74973,7 +73969,6 @@ EmbeddedServiceFlow
 
 Returns an embedded flow that’s associated with an EmbeddedServiceConfig setup.
 
-1004
 
 Metadata Types EmbeddedServiceConfig
 
@@ -75021,7 +74016,6 @@ whose `deploymentFeature` is `FieldService` . Available in API version 44.0 and 
 `appointmentStatus` string The service appointment status that the EmbeddedServiceLayout subtype
 is valid for.
 
-1005
 
 Metadata Types EmbeddedServiceConfig
 
@@ -75120,7 +74114,6 @@ The following is an example of an EmbeddedServiceConfig file.
 
 ```
 
-1006
 
 ### Metadata Types EmbeddedServiceFieldService
 
@@ -75187,7 +74180,6 @@ Appointment Management (beta) deployment.
 `enabled` boolean Required. Indicates whether this embedded Appointment Management
 deployment is enabled ( `true` ).
 
-1007
 
 Metadata Types EmbeddedServiceFieldService
 
@@ -75260,7 +74252,6 @@ Usage
 Note: Any changes you make to the image fields override what you’ve entered in Setup. We recommend setting your image
 URLs in Setup.
 
-1008
 
 ### Metadata Types EmbeddedServiceFlowConfig EmbeddedServiceFlowConfig
 
@@ -75313,7 +74304,6 @@ Version
 
 ### EmbeddedServiceLiveAgent is available in API version 38.0 and later.
 
-1009
 
 Metadata Types EmbeddedServiceLiveAgent
 
@@ -75391,7 +74381,6 @@ type string)
 
 **•** `Sales`
 
-1010
 
 Metadata Types EmbeddedServiceLiveAgent
 
@@ -75469,7 +74458,6 @@ The following is an example of an EmbeddedServiceLiveAgent file.
 
 ```
 
-1011
 
 Metadata Types EmbeddedServiceLiveAgent
 
@@ -75540,7 +74528,6 @@ EmbeddedServiceLiveAgent record.
 
 Any changes you make to the image fields override what you’ve entered in Setup. We recommend setting your image URLs in Setup.
 
-1012
 
 ### Metadata Types EmbeddedServiceMenuSettings
 
@@ -75595,7 +74582,6 @@ deployment.
 `site` string Required. The name of the Experience site or website
 connected to this channel menu deployment.
 
-1013
 
 Metadata Types EmbeddedServiceMenuSettings
 
@@ -75625,7 +74611,6 @@ EmbeddedServiceResource
 
 Returns the static resource associated with the Embedded Service Chat feature customization. Available in API version 50.0 and later.
 
-1014
 
 Metadata Types EmbeddedServiceMenuSettings
 
@@ -75691,7 +74676,6 @@ operating system.
 `phoneNumber` string The phone number for menu items whose
 `channelType` is `Phone` .
 
-1015
 
 Metadata Types EmbeddedServiceMenuSettings
 
@@ -75782,7 +74766,6 @@ tab ( `true` ) or a new tab ( `false` ).
 
 ```
 
-1016
 
 ### Metadata Types EnablementMeasureDefinition
 
@@ -75861,7 +74844,6 @@ Version
 
 ### EnablementMeasureDefinition components are available in API version 61.0 and later.
 
-1017
 
 Metadata Types EnablementMeasureDefinition
 
@@ -75931,7 +74913,6 @@ Values are:
 **•** `Published` —The measure is activated for use in programs. In Lightning
 Experience, this value is Active.
 
-1018
 
 Metadata Types EnablementMeasureDefinition
 
@@ -76005,7 +74986,6 @@ number of deals won, you’re tracking the Opportunity object, and maybe you wan
 to identify opportunities by their name. In this case, this field can be `Name`, the
 programmatic name of the Opportunity Name field on the Opportunity object.
 
-1019
 
 Metadata Types EnablementMeasureDefinition
 
@@ -76080,7 +75060,6 @@ fieldApiName
 **Field Type**
 string
 
-1020
 
 Metadata Types EnablementMeasureDefinition
 
@@ -76157,7 +75136,6 @@ int
 Required. A number that specifies the order of the filter, relative to other filters, starting
 at 1.
 
-1021
 
 Metadata Types EnablementMeasureDefinition
 
@@ -76237,7 +75215,6 @@ The following is an example of an EnablementMeasureDefinition component.
 
 ```
 
-1022
 
 ### Metadata Types EnablementProgramDefinition
 
@@ -76333,7 +75310,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents an Enablement program, which includes exercises and measurable milestones to help users such as sales reps achieve specific
 outcomes related to your company’s revenue goals.
 
-1023
 
 Metadata Types EnablementProgramDefinition
 
@@ -76395,7 +75371,6 @@ boolean
 Indicates whether users can self-enroll in programs that are shared with them ( `true` )
 or take only assigned programs ( `false` ). The default value is `false` .
 
-1024
 
 Metadata Types EnablementProgramDefinition
 
@@ -76465,7 +75440,6 @@ EnablementProgramSection
 Represents a logical, trackable group of milestones and exercises within an Enablement program. When users take programs, they can
 expand or collapse sections.
 
-1025
 
 Metadata Types EnablementProgramDefinition
 
@@ -76541,7 +75515,6 @@ date. For example, if a user is expected to complete an exercise where they watc
 product demo by day 2, this field’s value is 2. For an outcome, this field specifies the
 number of days the full program takes. For example, if your program lasts 60 days, the
 
-1026
 
 Metadata Types EnablementProgramDefinition
 
@@ -76616,7 +75589,6 @@ other milestones or exercises that have the same due date in the program or in t
 same section, starting at 0. This number determines the order of items that users see
 for that day in the program.
 
-1027
 
 Metadata Types EnablementProgramDefinition
 
@@ -76694,7 +75666,6 @@ cmsContent
 
 EnablementProgramTaskCmsContent
 
-1028
 
 Metadata Types EnablementProgramDefinition
 
@@ -76767,7 +75738,6 @@ metadata type.
 For example, a Link content record from the Enablement workspace has this API name:
 `enablement/sfdcEnablement_EnablementWorkspace.sfdc_enablement__link/link_API_name` .
 
-1029
 
 Metadata Types EnablementProgramDefinition
 
@@ -76844,7 +75814,6 @@ Values are:
 
 **•** `Trailhead`
 
-1030
 
 Metadata Types EnablementProgramDefinition
 
@@ -76909,7 +75878,6 @@ EnablementProgramTaskMilestone
 Defines the requirements for an outcome or milestone, including the Enablement measures used for tracking activity and the criteria
 for completing the outcome or milestone.
 
-1031
 
 Metadata Types EnablementProgramDefinition
 
@@ -76981,7 +75949,6 @@ EnablementProgramTaskMilestoneMeasure
 
 Defines the Enablement measure used with an outcome or milestone.
 
-1032
 
 Metadata Types EnablementProgramDefinition
 
@@ -77076,7 +76043,6 @@ deal!</description>
 
 ```
 
-1033
 
 Metadata Types EnablementProgramDefinition
 
@@ -77183,7 +76149,6 @@ Metadata Types EnablementProgramDefinition
 
 ```
 
-1034
 
 Metadata Types EnablementProgramDefinition
 
@@ -77290,7 +76255,6 @@ Metadata Types EnablementProgramDefinition
 
 ```
 
-1035
 
 ### Metadata Types EnblProgramTaskSubCategory
 
@@ -77359,7 +76323,6 @@ the Enablement add-on license.
 **•** For users who take Enablement programs, the Take Enablement Programs permission is required. This permission is enabled by
 default as part of the Use Enablement Programs permission set, which comes with the Enablement add-on license.
 
-1036
 
 Metadata Types EnblProgramTaskSubCategory
 
@@ -77432,7 +76395,6 @@ The following is an example of an EnblProgramTaskSubCategory component for a cus
 
 ```
 
-1037
 
 ### Metadata Types EntitlementProcess
 
@@ -77497,7 +76459,6 @@ Version
 
 Entitlement processes are available in API version 27.0 and later.
 
-1038
 
 Metadata Types EntitlementProcess
 
@@ -77570,7 +76531,6 @@ the entitlement process.
 
 This field is available in API version 28.0 and later.
 
-1039
 
 Metadata Types EntitlementProcess
 
@@ -77638,7 +76598,6 @@ When the milestone starts: when the milestone criteria
 are met (true) or when the case enters the entitlement
 process (false).
 
-1040
 
 Metadata Types EntitlementProcess
 
@@ -77727,7 +76686,6 @@ Here’s a sample entitlement process.
 
 ```
 
-1041
 
 ### Metadata Types EntitlementTemplate
 
@@ -77823,7 +76781,6 @@ products offered to customers.
 
 ### EntitlementTemplate extends the Metadata metadata type and inherits its fullName field.
 
-1042
 
 Metadata Types EntitlementTemplate
 
@@ -77888,7 +76845,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1043
 
 ### Metadata Types EscalationRules EscalationRules
 
@@ -77959,7 +76915,6 @@ Represents one escalation rule and specifies whether it’s active or not.
 Escalation rules are processed in the order they appear in the
 ### EscalationRules container.
 
-1044
 
 Metadata Types EscalationRules
 
@@ -78022,7 +76977,6 @@ The validation formula.
 Specify either `formula` or `criteriaItems`, but not
 both fields.
 
-1045
 
 Metadata Types EscalationRules
 
@@ -78106,7 +77060,6 @@ The following is an example EscalationRules component:
 
 ```
 
-1046
 
 ### Metadata Types EventDelivery
 
@@ -78163,7 +77116,6 @@ Those flows are built through Process Builder.
 
 **•** `ResumeFlow` —Reserved for future use.
 
-1047
 
 ```
 type
@@ -78248,7 +77200,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents the configuration of an event relay, which relays platform events and change data capture events from Salesforce to Amazon
 EventBridge.
 
-1048
 
 Metadata Types EventRelayConfig
 
@@ -78314,7 +77265,6 @@ use a meaningful label that describes your event relay and try to make it unique
 **Field Type**
 string
 
-1049
 
 Metadata Types EventRelayConfig
 
@@ -78387,7 +77337,6 @@ The following is an example of an EventRelayConfig component with the file name 
 
 ```
 
-1050
 
 ### Metadata Types EventSubscription
 
@@ -78455,7 +77404,6 @@ Fields
 
 `eventType` string Required. The name of the platform event.
 
-1051
 
 Metadata Types EventSubscription
 
@@ -78544,7 +77492,6 @@ The following is an example `package.xml` that deploys or retrieves all the avai
 
 ```
 
-1052
 
 ### Metadata Types ExperienceBundle
 
@@ -78584,7 +77531,6 @@ Version
 
 ### ExperienceBundle components are available in API version 46.0 and later.
 
-1053
 
 Metadata Types ExperienceBundle
 
@@ -78647,7 +77593,6 @@ Represents a list of sites in the bundle.
 `experienceResource` ExperienceResource[] The list of resources in this ExperienceBundle. Each resource represents a
 property for the site, such as brandingSets, config, routes, themes, and views.
 
-1054
 
 Metadata Types ExperienceBundle
 
@@ -78715,7 +77660,6 @@ branding sets under a theme. Defined as _`theme`_ :branding- _`theme`_ .
 For example, if the site theme is Stella, the `definitionName` would be
 `stella:branding-stella` .
 
-1055
 
 Metadata Types ExperienceBundle
 
@@ -78804,7 +77748,6 @@ unique in your org.
 
 ```
 
-1056
 
 Metadata Types ExperienceBundle
 
@@ -78873,7 +77816,6 @@ Available in API version 51.0 and later.
 Note: Unsupported if the active Experience Builder template for the
 site doesn't support login (such as Help Center).
 
-1057
 
 Metadata Types ExperienceBundle
 
@@ -78939,7 +77881,6 @@ When implemented, there’s one `trustedSitesForScript` container in _`sitename`
 `isActive` boolean Indicates if allowlisted item is active ( `true` ) and must be respected or inactive
 ( `false` ) and must not be treated as an allowlisted source. Default is `false` .
 
-1058
 
 Metadata Types ExperienceBundle
 
@@ -79023,7 +77964,6 @@ There’s one section per supported language as a container in `languages.json`
 
 **language container**
 
-1059
 
 Metadata Types ExperienceBundle
 
@@ -79105,7 +78045,6 @@ selector in Experience Builder.
 
 ```
 
-1060
 
 Metadata Types ExperienceBundle
 
@@ -79201,7 +78140,6 @@ enhanced domains.
 
 ```
 
-1061
 
 Metadata Types ExperienceBundle
 
@@ -79281,7 +78219,6 @@ Controls the iOS and Android Minimum App Versions. These
 property values are currently hard coded to ensure that the app
 versions supporting enhanced domains are used.
 
-1062
 
 Metadata Types ExperienceBundle
 
@@ -79350,7 +78287,6 @@ Required. Allows the addition of custom markup to the site's main page
 
 `id` UUID Required. Represents the component's GUID.
 
-1063
 
 Metadata Types ExperienceBundle
 
@@ -79425,7 +78361,6 @@ The `routes` folder contains one JSON file per page, named _`<page_name>`_ `.jso
 
 ```
 
-1064
 
 Metadata Types ExperienceBundle
 
@@ -79501,7 +78436,6 @@ theme_name .json
 
 ```
 
-1065
 
 Metadata Types ExperienceBundle
 
@@ -79589,7 +78523,6 @@ of the ThemeLayout. Login and Inner theme layouts are always required.
 
 ```
 
-1066
 
 Metadata Types ExperienceBundle
 
@@ -79655,7 +78588,6 @@ For example, if the `targetId` is pointing to a theme, you can override the
 `defaultBrandingSet` property of the theme to use a different branding
 set for this experience variation.
 
-1067
 
 Metadata Types ExperienceBundle
 
@@ -79742,7 +78674,6 @@ Uses the format:
 
 ```
 
-1068
 
 Metadata Types ExperienceBundle
 
@@ -79840,7 +78771,6 @@ the ID of a theme, route, or component.
 
 ```
 
-1069
 
 Metadata Types ExperienceBundle
 
@@ -79941,7 +78871,6 @@ Metadata Types ExperienceBundle
 
 ```
 
-1070
 
 Metadata Types ExperienceBundle
 
@@ -80006,7 +78935,6 @@ component.
 `type` string Required. Represents the component type. The only supported value is
 `region` .
 
-1071
 
 Metadata Types ExperienceBundle
 
@@ -80062,7 +78990,6 @@ Each component can have a rendition container in each _`<view_name>`_ `.json`
 
 `renditionValue` map Map of different variations of a component, such as different languages of text.
 
-1072
 
 Metadata Types ExperienceBundle
 
@@ -80146,7 +79073,6 @@ Metadata Types ExperienceBundle
 
 ```
 
-1073
 
 Metadata Types ExperienceBundle
 
@@ -80241,7 +79167,6 @@ metadata from an earlier API version to a later one—for example, from API vers
 
 **2.** Then, set the API version in package.xml to 49.0.
 
-1074
 
 ### Metadata Types ExperiencePropertyTypeBundle (Beta)
 
@@ -80304,7 +79229,6 @@ Version
 
 ExperiencePropertyTypeBundle components are available in API version 58.0 and later.
 
-1075
 
 Metadata Types ExperiencePropertyTypeBundle (Beta)
 
@@ -80378,7 +79302,6 @@ Required. The file path of the resource.
 **Field Type**
 base64Binary
 
-1076
 
 Metadata Types ExperiencePropertyTypeBundle (Beta)
 
@@ -80478,7 +79401,6 @@ Contents of `schema.json` :
 
 ```
 
-1077
 
 Metadata Types ExperiencePropertyTypeBundle (Beta)
 
@@ -80586,7 +79508,6 @@ Contents of `design.json` (an optional file):
 
 ```
 
-1078
 
 ### Metadata Types ExplainabilityMsgTemplate
 
@@ -80647,7 +79568,6 @@ Valid values are:
 **Field Type**
 ExpressionSetStepType (enumeration of type string)
 
-1079
 
 Metadata Types ExplainabilityMsgTemplate
 
@@ -80726,7 +79646,6 @@ boolean
 Indicates whether the decision explainer template for a specified step type is default
 (true) or not (false).
 
-1080
 
 Metadata Types ExplainabilityMsgTemplate
 
@@ -80812,7 +79731,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 [manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/file_based.htm)
 
-1081
 
 ### Metadata Types ExpressionSetDefinition ExpressionSetDefinition
 
@@ -80876,7 +79794,6 @@ ExpsSetInterfaceSourceType (enumeration of type string)
 The interface source type designed by the consuming cloud that's making a customized
 expression set builder available to its users.
 
-1082
 
 Metadata Types ExpressionSetDefinition
 
@@ -80956,7 +79873,6 @@ or a default value.
 
 Valid values are:
 
-1083
 
 Metadata Types ExpressionSetDefinition
 
@@ -81033,7 +79949,6 @@ dateTime
 **Description**
 The date until which the expression set definition is available for use.
 
-1084
 
 Metadata Types ExpressionSetDefinition
 
@@ -81110,7 +80025,6 @@ Possible values are:
 
 **•** `InvalidDraft`
 
-1085
 
 Metadata Types ExpressionSetDefinition
 
@@ -81188,7 +80102,6 @@ Valid values are:
 
 **•** `AssignBadgeToMember`
 
-1086
 
 Metadata Types ExpressionSetDefinition
 
@@ -81269,7 +80182,6 @@ later.)
 
 **•** `GetOutputsFromDecisionMatrix`
 
-1087
 
 Metadata Types ExpressionSetDefinition
 
@@ -81350,7 +80262,6 @@ and later.)
 
 **•** `RunFlow`
 
-1088
 
 Metadata Types ExpressionSetDefinition
 
@@ -81432,7 +80343,6 @@ ExpressionSetCustomElement
 Represents a custom element step that contains the input and output mappings. Available
 in API version 56.0 and later.
 
-1089
 
 Metadata Types ExpressionSetDefinition
 
@@ -81509,7 +80419,6 @@ The full name of an expression set definition version step.
 **Field Type**
 string
 
-1090
 
 Metadata Types ExpressionSetDefinition
 
@@ -81585,7 +80494,6 @@ boolean
 Indicates whether the step output must be included in the expression result (true) or not
 (false).
 
-1091
 
 Metadata Types ExpressionSetDefinition
 
@@ -81662,7 +80570,6 @@ ExpressionSetSubExpression
 **Description**
 Represents a sub expression step.
 
-1092
 
 Metadata Types ExpressionSetDefinition
 
@@ -81739,7 +80646,6 @@ Specifies the operator for evaluating an expression.
 
 Valid values are:
 
-1093
 
 Metadata Types ExpressionSetDefinition
 
@@ -81817,7 +80723,6 @@ Valid values are:
 
 **•** `Picklist`
 
-1094
 
 Metadata Types ExpressionSetDefinition
 
@@ -81890,7 +80795,6 @@ Required.
 
 The expression set definition version variable associated with a step detail.
 
-1095
 
 Metadata Types ExpressionSetDefinition
 
@@ -81967,7 +80871,6 @@ parameters
 
 ExpressionSetElementParameter[]
 
-1096
 
 Metadata Types ExpressionSetDefinition
 
@@ -82042,7 +80945,6 @@ Values are:
 
 **•** `PickList`
 
-1097
 
 Metadata Types ExpressionSetDefinition
 
@@ -82118,7 +81020,6 @@ expressionSet
 **Field Type**
 string
 
-1098
 
 Metadata Types ExpressionSetDefinition
 
@@ -82196,7 +81097,6 @@ Valid values are:
 
 **•** `Text`
 
-1099
 
 Metadata Types ExpressionSetDefinition
 
@@ -82274,7 +81174,6 @@ Required.
 
 The full name of the variable used in an expression set definition.
 
-1100
 
 Metadata Types ExpressionSetDefinition
 
@@ -82344,7 +81243,6 @@ ExpressionSetVariableField
 
 Represents a definition of a field in an object that is used as a variable in an expression set.
 
-1101
 
 Metadata Types ExpressionSetDefinition
 
@@ -82425,7 +81323,6 @@ Required.
 
 The type of lookup used in an expression set definition.
 
-1102
 
 Metadata Types ExpressionSetDefinition
 
@@ -82521,7 +81418,6 @@ The following is an example of an ExpressionSetDefinition component.
 
 ```
 
-1103
 
 Metadata Types ExpressionSetDefinition
 
@@ -82636,7 +81532,6 @@ Metadata Types ExpressionSetDefinition
 
 ```
 
-1104
 
 Metadata Types ExpressionSetDefinition
 
@@ -82751,7 +81646,6 @@ Metadata Types ExpressionSetDefinition
 
 ```
 
-1105
 
 Metadata Types ExpressionSetDefinition
 
@@ -82866,7 +81760,6 @@ Metadata Types ExpressionSetDefinition
 
 ```
 
-1106
 
 Metadata Types ExpressionSetDefinition
 
@@ -82981,7 +81874,6 @@ Metadata Types ExpressionSetDefinition
 
 ```
 
-1107
 
 Metadata Types ExpressionSetDefinition
 
@@ -83097,7 +81989,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1108
 
 ### Metadata Types ExpressionSetMessageToken
 
@@ -83162,7 +82053,6 @@ string
 
 Required.
 
-1109
 
 ### Metadata Types ExpressionSetObjectAlias
 
@@ -83245,7 +82135,6 @@ This metadata type supports the wildcard character `*` (asterisk) in the `packag
 
 Represents information about the alias of the source object that’s used in an expression set.
 
-1110
 
 Metadata Types ExpressionSetObjectAlias
 
@@ -83316,7 +82205,6 @@ ExpsSetProcessType (enumeration of type string)
 
 Required.
 
-1111
 
 Metadata Types ExpressionSetObjectAlias
 
@@ -83390,7 +82278,6 @@ The following is an example of an ExpressionSetObjectAlias component.
 
 ```
 
-1112
 
 ### Metadata Types ExternalAuthIdentityProvider
 
@@ -83472,7 +82359,6 @@ File Suffix and Directory Location
 
 `externalAuthIdentityProviders` folder.
 
-1113
 
 Metadata Types ExternalAuthIdentityProvider
 
@@ -83544,7 +82430,6 @@ provider.
 **Field Type**
 string
 
-1114
 
 Metadata Types ExternalAuthIdentityProvider
 
@@ -83620,7 +82505,6 @@ behavior of the parameter. Values are:
 
 **•** `TokenRequestHttpHeader`
 
-1115
 
 Metadata Types ExternalAuthIdentityProvider
 
@@ -83712,7 +82596,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1116
 
 ### Metadata Types ExternalClientApplication
 
@@ -83777,7 +82660,6 @@ string
 The phone number that Salesforce uses to contact the external client app admin for
 the subscriber org.
 
-1117
 
 Metadata Types ExternalClientApplication
 
@@ -83853,7 +82735,6 @@ string
 **Description**
 The URL for the logo image.
 
-1118
 
 Metadata Types ExternalClientApplication
 
@@ -83949,7 +82830,6 @@ This example `package.xml` references the previous definition.
 
 ```
 
-1119
 
 ### Metadata Types ExternalCredential
 
@@ -84017,7 +82897,6 @@ AuthenticationProtocol (enumeration of type string)
 
 Required.
 
-1120
 
 Metadata Types ExternalCredential
 
@@ -84091,7 +82970,6 @@ callouts through a combination of the type, name, and value and lookup fields. A
 
 These parameters are used internally to provide a flexible architecture and are exposed here for packaging reasons.
 
-1121
 
 Metadata Types ExternalCredential
 
@@ -84161,7 +83039,6 @@ parameters `parameterGroup` defaults to DEFAULT_GROUP.
 **Field Type**
 string
 
-1122
 
 Metadata Types ExternalCredential
 
@@ -84228,7 +83105,6 @@ specified.
 
 **•** `CreatedByNamespace` : Reserved for internal use.
 
-1123
 
 Metadata Types ExternalCredential
 
@@ -84298,7 +83174,6 @@ applicable for a credential provider. Priority is from lower to higher numbers.
 
 You can set this field only when `parameterType` is `NamedPrincipal` .
 
-1124
 
 Metadata Types ExternalCredential
 
@@ -84387,7 +83262,6 @@ _Apex Developer Guide_ [: Invoking Callouts Using Apex](https://developer.salesf
 
 _Apex Developer Guide_ [: Named Credentials as Callout Endpoints](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_callouts_named_credentials.htm)
 
-1125
 
 ### Metadata Types ExternalAIModel ExternalAIModel
 
@@ -84461,7 +83335,6 @@ type string)
 
 `threshold` double Threshold override value for this model. Nillable.
 
-1126
 
 ### Metadata Types ExternalServiceRegistration
 
@@ -84533,7 +83406,6 @@ Version
 
 ### ExternalServiceRegistration components are available in API version 39.0 and later.
 
-1127
 
 Metadata Types ExternalServiceRegistration
 
@@ -84606,7 +83478,6 @@ YAML format. Nillable.
 `schemaAbsoluteUrl` string The full, absolute URL to the schema. Populated when a user selects
 **Absolute URL** during registration.
 
-1128
 
 Metadata Types ExternalServiceRegistration
 
@@ -84677,7 +83548,6 @@ This field is read-only. You can’t upgrade an external service to a newer
 system version. If you want to take advantage of functionality in a newer
 system version, you must create an external service using the same
 
-1129
 
 Metadata Types ExternalServiceRegistration
 
@@ -84766,7 +83636,6 @@ The following is an example of an ExternalServiceRegistration component that ref
 
 ```
 
-1130
 
 ### Metadata Types ExtlClntAppConfigurablePolicies
 
@@ -84818,7 +83687,6 @@ Special Access Rules
 The View all External Client Apps, view their settings, and edit their policies user permission is required for users with admin roles to
 configure OAuth policies.
 
-1131
 
 Metadata Types ExtlClntAppConfigurablePolicies
 
@@ -84893,7 +83761,6 @@ plugin is disabled. The default value is `true` . Available in API version 63.0 
 **Field Type**
 boolean
 
-1132
 
 Metadata Types ExtlClntAppConfigurablePolicies
 
@@ -84973,7 +83840,6 @@ This example shows an ExtlClntAppConfigurablePolicies component.
 
 ```
 
-1133
 
 ### Metadata Types ExtlClntAppGlobalOauthSettings
 
@@ -85054,7 +83920,6 @@ Version
 
 ### ExtlClntAppGlobalOauthSettings components are available in API version 59.0 and later.
 
-1134
 
 Metadata Types ExtlClntAppGlobalOauthSettings
 
@@ -85127,7 +83992,6 @@ ExternalAppIdTokenConfig
 **Description**
 The settings for the ID token.
 
-1135
 
 Metadata Types ExtlClntAppGlobalOauthSettings
 
@@ -85198,7 +84062,6 @@ boolean
 If set to `true`, the external client app can use the OAuth 2.0 device flow. Available in
 API version 60.0 and later.
 
-1136
 
 Metadata Types ExtlClntAppGlobalOauthSettings
 
@@ -85272,7 +84135,6 @@ boolean
 **Description**
 If set to `true`, token exchange is enabled. Available in API version 60.0 and later.
 
-1137
 
 Metadata Types ExtlClntAppGlobalOauthSettings
 
@@ -85345,7 +84207,6 @@ boolean
 Indicates whether standard claims about the authentication event are included in the
 ID token ( `true` ) or not ( `false` ).
 
-1138
 
 Metadata Types ExtlClntAppGlobalOauthSettings
 
@@ -85449,7 +84310,6 @@ This example `package.xml` references the previous definition.
 
 ```
 
-1139
 
 ### Metadata Types ExtlClntAppMobileConfigurablePolicies
 
@@ -85513,7 +84373,6 @@ requires the app user to reauthenticate. Valid values include:
 
 **•** _`Five`_ (5 minutes)
 
-1140
 
 ### Metadata Types ExtlClntAppMobileSettings
 
@@ -85568,7 +84427,6 @@ specified timeout value.
 
 label string Label for the external client app’s mobile app settings configuration.
 
-1141
 
 ### Metadata Types ExtlClntAppNotificationSettings ExtlClntAppNotificationSettings
 
@@ -85621,7 +84479,6 @@ channel are supported.
 Note: You can use Notification Builder in Setup to configure a notification type for the mobile delivery channel. See [Manage](https://help.salesforce.com/s/articleView?id=platform.notif_builder_delivery_settings.htm&type=5&language=en_US)
 [Notification Delivery Settings](https://help.salesforce.com/s/articleView?id=platform.notif_builder_delivery_settings.htm&type=5&language=en_US) in Salesforce Help.
 
-1142
 
 ### Metadata Types ExtlClntAppOauthConfigurablePolicies
 
@@ -85680,7 +84537,6 @@ Name of the Apex handler. Available in API version 61.0 and later.
 **Field Type**
 string
 
-1143
 
 Metadata Types ExtlClntAppOauthConfigurablePolicies
 
@@ -85754,7 +84610,6 @@ The name of the external client app associated with this OAuth policies file.
 **Field Type**
 int
 
-1144
 
 Metadata Types ExtlClntAppOauthConfigurablePolicies
 
@@ -85830,7 +84685,6 @@ Values are:
 
 **•** `Enforce`
 
-1145
 
 Metadata Types ExtlClntAppOauthConfigurablePolicies
 
@@ -85901,7 +84755,6 @@ The OAuth policies name for the external client app.
 **Field Type**
 int
 
-1146
 
 Metadata Types ExtlClntAppOauthConfigurablePolicies
 
@@ -85977,7 +84830,6 @@ Values are:
 
 **•** `AdminApprovedPreAuthorized`
 
-1147
 
 Metadata Types ExtlClntAppOauthConfigurablePolicies
 
@@ -86053,7 +84905,6 @@ Values are:
 **Field Type**
 SessionSecurityLevel (enumeration of type string)
 
-1148
 
 Metadata Types ExtlClntAppOauthConfigurablePolicies
 
@@ -86128,7 +84979,6 @@ string
 
 Required.
 
-1149
 
 Metadata Types ExtlClntAppOauthConfigurablePolicies
 
@@ -86232,7 +85082,6 @@ This example `package.xml` that references the previous definition.
 
 ```
 
-1150
 
 ### Metadata Types ExtlClntAppOauthSettings
 
@@ -86293,7 +85142,6 @@ token flow. The default value is `false` .
 
 Available in API version 61.0 and later.
 
-1151
 
 Metadata Types ExtlClntAppOauthSettings
 
@@ -86364,7 +85212,6 @@ required for requests to the OAuth 2.0 authorization challenge endpoint for head
 identity flows for first-party apps. To confirm that the app that sent the request is your
 first-party app, Salesforce validates the client attestation JWT against this certificate.
 
-1152
 
 Metadata Types ExtlClntAppOauthSettings
 
@@ -86442,7 +85289,6 @@ URL where Salesforce sends a logout request when users log out of Salesforce.
 
 ExtlClntAppOauthIpRange[]
 
-1153
 
 Metadata Types ExtlClntAppOauthSettings
 
@@ -86513,7 +85359,6 @@ string
 
 Required.
 
-1154
 
 Metadata Types ExtlClntAppOauthSettings
 
@@ -86615,7 +85460,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1155
 
 ### Metadata Types ExtlClntAppPushConfigurablePolicies
 
@@ -86675,7 +85519,6 @@ externalClientApplication string Required. The name of the associated external c
 isFullContent boolean Required. Indicates if push notifications display the full notification title
 and body text ( _`true`_ ). When set to _`false`_, standard notifications
 
-1156
 
 ### Metadata Types ExtlClntAppPushSettings
 
@@ -86729,7 +85572,6 @@ the `androidPushConfig` or `applePushConfig` information from the record, if pre
 org refers to the information in the source org, keep the `pushConfigLink` field as the only push notification configuration
 in the record.
 
-1157
 
 Metadata Types ExtlClntAppPushSettings
 
@@ -86796,7 +85638,6 @@ The maximum length of the string is 8000 characters.
 Represents the push notification configuration of an iOS mobile app. To configure the required authentication for iOS push notifications,
 you submit either a private key (.p8 file) or a TLS certificate (.p12 file).
 
-1158
 
 ### Metadata Types ExtlClntAppSamlConfigurablePolicies
 
@@ -86860,7 +85701,6 @@ Version
 
 ### ExtlClntAppSamlConfigurablePolicies components are available in API version 63.0 and later.
 
-1159
 
 Metadata Types ExtlClntAppSamlConfigurablePolicies
 
@@ -86929,7 +85769,6 @@ profiles that you specify here apply to the entire app, not just its SAML config
 We recommend that you use permission sets to manage user permissions instead of
 profiles.
 
-1160
 
 Metadata Types ExtlClntAppSamlConfigurablePolicies
 
@@ -87001,7 +85840,6 @@ string
 
 Required. The `label` for the parent ExternalClientApplication.
 
-1161
 
 Metadata Types ExtlClntAppSamlConfigurablePolicies
 
@@ -87073,7 +85911,6 @@ hash value.
 
 **•** `SHA256` —SHA-256 algorithm,which generates a 256-bit hash value.
 
-1162
 
 Metadata Types ExtlClntAppSamlConfigurablePolicies
 
@@ -87145,7 +85982,6 @@ For example, get a value from the service provider and then specify it in Salesf
 
 **•** `UserId` —The user's 15-character Salesforce user ID.
 
-1163
 
 Metadata Types ExtlClntAppSamlConfigurablePolicies
 
@@ -87223,7 +86059,6 @@ The following is an example of an ExtlClntAppSamlConfigurablePolicies component.
 
 ```
 
-1164
 
 ### Metadata Types FeatureParameterBoolean
 
@@ -87309,7 +86144,6 @@ track activation metrics in subscriber orgs that install your package. This type
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1165
 
 Metadata Types FeatureParameterBoolean
 
@@ -87363,7 +86197,6 @@ Valid values are:
 
 **•** `SubscriberToLmo`
 
-1166
 
 ### Metadata Types FeatureParameterDate
 
@@ -87444,7 +86277,6 @@ File Suffix and Directory Location
 
 `featureParameters` folder, which contains components for all the feature parameter metadata types.
 
-1167
 
 Metadata Types FeatureParameterDate
 
@@ -87508,7 +86340,6 @@ The following is an example of a FeatureParameterDate component.
 
 ```
 
-1168
 
 ### Metadata Types FeatureParameterInteger
 
@@ -87581,7 +86412,6 @@ Version
 
 ### FeatureParameterInteger components are available in API version 41.0 and later.
 
-1169
 
 Metadata Types FeatureParameterInteger
 
@@ -87645,7 +86475,6 @@ The following is an example of a FeatureParameterInteger component.
 
 ```
 
-1170
 
 ### Metadata Types FieldRestrictionRule
 
@@ -87719,7 +86548,6 @@ and the Provides access to Workplace Command Center features system permission.
 **•** To create and manage User field visibility rules, you must enable Digital Experiences and the Enhanced Personal Information
 Management feature.
 
-1171
 
 Metadata Types FieldRestrictionRule
 
@@ -87794,7 +86622,6 @@ users with a specified role or profile.
 
 `version` int Required. The rule's version number.
 
-1172
 
 ### Metadata Types FlexiPage
 
@@ -87891,7 +86718,6 @@ The following is an example `package.xml` that references the previous definitio
 Represents the metadata associated with a Lightning page. A Lightning page represents a customizable screen made up of regions
 containing Lightning components.
 
-1173
 
 Metadata Types FlexiPage
 
@@ -87952,7 +86778,6 @@ This field is available in API version 53.0 and later.
 `masterLabel` string Required. The label for the Lightning page, which displays in
 Setup.
 
-1174
 
 Metadata Types FlexiPage
 
@@ -87989,7 +86814,6 @@ This field is available in API version 34.0 and later.
 `type` FlexiPageType (enumeration
 of type string)
 
-1175
 
 The object the Lightning page is associated with. For Lightning
 pages of type `AppPage` or `HomePage`, this field is `null` .
@@ -88090,7 +86914,6 @@ Builder. This value is available in API version 38.0 and later.
 to override the search result page, as created in Experience
 Builder. This value is available in API version 38.0 and later.
 
-1176
 
 Metadata Types FlexiPage
 
@@ -88152,7 +86975,6 @@ available in API version 37.0 and later.
 **•** `RecordPreview` A Lightning page used to override
 standard lookup previews when hovering over previewable
 
-1177
 
 Metadata Types FlexiPage
 
@@ -88209,7 +87031,6 @@ A property associated with an event. Available in API version 53.0 and later.
 `name` string Required. In API version 53.0 and later, the value of this
 field can be only `eventName` .
 
-1178
 
 Metadata Types FlexiPage
 
@@ -88279,7 +87100,6 @@ expression format is
 `{!Event.eventPropertyName}` . Event is the
 only context supported for expressions in interactions.
 
-1179
 
 Metadata Types FlexiPage
 
@@ -88311,7 +87131,6 @@ Note: A Lightning page region can contain up to 100 components.
 
 `itemInstances` ItemInstance[]
 
-1180
 
 This field is available in Digital Experiences in API 45.0 or later,
 but is reserved for future use for all other areas.
@@ -88373,7 +87192,6 @@ This field is available in API version 35.0 or later.
 `replaceable` RegionFlagStatus
 (enumeration of type string)
 
-1181
 
 This field is available in Digital Experiences in API 45.0 or later,
 but is reserved for future use for all other areas.
@@ -88486,7 +87304,6 @@ is `null`, the component displays by default.
 
 This field is available in API version 41.0 and later.
 
-1182
 
 Metadata Types FlexiPage
 
@@ -88554,7 +87371,6 @@ set to `title`, the `value` field uses a system-defined value instead of the lab
 
 **•** `Standard.Tab.relatedLists`
 
-1183
 
 Metadata Types FlexiPage
 
@@ -88635,7 +87451,6 @@ options during save.
 `APPLY_OPTION_WITHOUT_CHECKBOX_DISPLAY` Don’t display the checkbox, but apply the save option
 value during save.
 
-1184
 
 Metadata Types FlexiPage
 
@@ -88710,7 +87525,6 @@ For example, if you have an array of actions with API names `Clone` and `Edit`, 
 
 ```
 
-1185
 
 Metadata Types FlexiPage
 
@@ -88772,7 +87586,6 @@ based on the standard permissions of the user viewing the Lightning page. Suppor
 
 **•** `{!Record.` _**`field`**_ `}` —Supported for record pages only.
 
-1186
 
 Metadata Types FlexiPage
 
@@ -88835,7 +87648,6 @@ Available in API version 62.0 and later.
 
 Available in API version 49.0 and later.
 
-1187
 
 Metadata Types FlexiPage
 
@@ -88912,7 +87724,6 @@ type string)
 
 **•** `Global`
 
-1188
 
 Metadata Types FlexiPage
 
@@ -88990,7 +87801,6 @@ and Delete.
 
 `sortOrder` int Required. The placement of the action in the list.
 
-1189
 
 Metadata Types FlexiPage
 
@@ -89088,7 +87898,6 @@ region as unlocked, and the `footer` region as unlocked.
 
 ```
 
-1190
 
 Metadata Types FlexiPage
 
@@ -89203,7 +88012,6 @@ Metadata Types FlexiPage
 
 ```
 
-1191
 
 Metadata Types FlexiPage
 
@@ -89318,7 +88126,6 @@ Metadata Types FlexiPage
 
 ```
 
-1192
 
 Metadata Types FlexiPage
 
@@ -89431,7 +88238,6 @@ Metadata Types FlexiPage
 
 ```
 
-1193
 
 Metadata Types FlexiPage
 
@@ -89532,7 +88338,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1194
 
 ### Metadata Types Flow Flow
 
@@ -89591,7 +88396,6 @@ This field is available in API version 50.0 and later. Flows created
 
 before API version 50.0 show an API version of 0 on the Flows
 
-1195
 
 Metadata Types Flow
 
@@ -89661,7 +88465,6 @@ and later.
 
 `groups` FlowNodeGroup[] Reserved for future use.
 
-1196
 
 Metadata Types Flow
 
@@ -89728,7 +88531,6 @@ Metadata values for the flow.
 
 This field is available in API version 31.0 and later.
 
-1197
 
 Metadata Types Flow
 
@@ -89791,7 +88593,6 @@ process. This value is available in API version 41.0 and later.
 configure the Form tab in the Field Service mobile app.
 When the Data Capture flow is launched, its Flow metadata
 
-1198
 
 Metadata Types Flow
 
@@ -89853,7 +88654,6 @@ value is available in API version 38.0 and later.
 **•** `Journey` —An audience-driven flow for Marketing Cloud.
 This value is available in API version 57.0 and later.
 
-1199
 
 Metadata Types Flow
 
@@ -89920,7 +88720,6 @@ These values are reserved for future or Salesforce internal use.
 
 **•** `JourneyBuilderIntegration`
 
-1200
 
 Metadata Types Flow
 
@@ -89984,7 +88783,6 @@ flow. This field is available in API version 42.0 and later.
 `start` FlowStart[] The flow’s Start element, which specifies how and when the
 flow starts. This field is available in API version 47.0 and later.
 
-1201
 
 Metadata Types Flow
 
@@ -90050,7 +88848,6 @@ This metadata type is available in API version 31.0 and later.
 `actionName` string Required. Name for the action. Must be unique across
 actions with the same `actionType` .
 
-1202
 
 Metadata Types Flow
 
@@ -90121,7 +88918,6 @@ This field is available in API version 61.0 and later.
 
 `outputParameters` FlowActionCallOutputParameter[] An array of output parameters from the action to the flow.
 
-1203
 
 Metadata Types Flow
 
@@ -90184,7 +88980,6 @@ slide. This value is available in API version 46.0 and later.
 `addUsersToQuipChat` Adds users, identified by their email addresses, to an existing Quip chat room. This value is
 available in API version 46.0 and later.
 
-1204
 
 Metadata Types Flow
 
@@ -90262,7 +89057,6 @@ available in API version 63.0 and later.
 
 `chat` Creates a Salesforce Anywhere chat. This value is available in API version 49.0 and later.
 
-1205
 
 Metadata Types Flow
 
@@ -90331,7 +89125,6 @@ is available in API version 64.0 and later.
 
 `emailAlert` Sends an email by referencing a workflow email alert
 
-1206
 
 Metadata Types Flow
 
@@ -90415,7 +89208,6 @@ in API version 64.0 and later.
 `getTranscriptForConversation` Gets the transcript for a specified conversation record such as voice call, messaging session, or
 chat transcript. This value is available in API version 64.0 and later.
 
-1207
 
 Metadata Types Flow
 
@@ -90498,7 +89290,6 @@ Create visiting records for patient home visits by bundling them into a group an
 either a single start-of-care visit or a series of recurring visits associated with the bundled records.
 This value is available in API version 60.0 and later.
 
-1208
 
 Metadata Types Flow
 
@@ -90566,7 +89357,6 @@ AI into an Apex Object record. This value is available in API version 61.0 and l
 `verifyCustomerCode` Verifies the code entered by the customer to complete identity verification. This value is available
 in API version 63.0 and later.
 
-1209
 
 Metadata Types Flow
 
@@ -90623,7 +89413,6 @@ These values are used in the B2B Commerce and D2C Commerce.
 `recordTaxReversal` Reverses the recorded tax transactions in an external system. This value is available in API version
 62.0 and later.
 
-1210
 
 Metadata Types Flow
 
@@ -90677,7 +89466,6 @@ later.
 `managedContentPublishVariant` Publishes a content variant associated with a flow. This value is available in API version 59.0 and
 later.
 
-1211
 
 Metadata Types Flow
 
@@ -90742,7 +89530,6 @@ summary.
 
 `createReturnOrder` Creates a return order and return order items for an order.
 
-1212
 
 Metadata Types Flow
 
@@ -90807,7 +89594,6 @@ ID. This value is available in API version 54.0 and later.
 `calculateRebateAmountAndUpsertPayout` Calculates the rebate amount and upserts the rebate payout for the specified aggregate record.
 This value is available in API version 51.0 and later.
 
-1213
 
 Metadata Types Flow
 
@@ -90864,7 +89650,6 @@ later.
 `getEngagements` Gets engagement interaction, messaging session, and voice call records associated with a
 specified account record.
 
-1214
 
 Metadata Types Flow
 
@@ -90923,7 +89708,6 @@ object that’s visible to the current user.
 `searchKnowledgeArticles` Searches for knowledge articles with specified search terms, language, data category group,
 and data category.
 
-1215
 
 Metadata Types Flow
 
@@ -90980,7 +89764,6 @@ Enqueues requests to get a field update suggestion from a field generation promp
 Also enqueues requests to update a field based on the generated suggestion. This value is
 available in API version 64.0 and later.
 
-1216
 
 Metadata Types Flow
 
@@ -91051,7 +89834,6 @@ These values are used in the Contracts flow.
 
 `updateContractDocumentVersion` Updates a contract document version. Available in API version 64.0 and later.
 
-1217
 
 Metadata Types Flow
 
@@ -91106,7 +89888,6 @@ value is available in API version 64.0 and later.
 
 These values are used in Unified Catalog. If no version is specified, the value is available in API version 64.0 and later.
 
-1218
 
 Metadata Types Flow
 
@@ -91157,7 +89938,6 @@ These values are used in Einstein Conversation Insights.
 `getConversationIntelligence` Gets the conversation intelligence information about a voice or video call, including any insights
 and the conversation summary. This value is available in API version 65.0 and later.
 
-1219
 
 Metadata Types Flow
 
@@ -91231,7 +90011,6 @@ For values used in other products or features, see:
 
 **•** [Flow for Process Compliance Navigator](https://developer.salesforce.com/docs/atlas.en-us.258.0.industries_reference.meta/industries_reference/process_compliance_navigator_flow_metadata_api.htm)
 
-1220
 
 Metadata Types Flow
 
@@ -91288,7 +90067,6 @@ FlowApexPluginCall
 
 Defines a call to an Apex plug-in from the flow. It extends FlowNode and inherits all its fields.
 
-1221
 
 Metadata Types Flow
 
@@ -91340,7 +90118,6 @@ order, starting from the index 0.
 
 `connector` FlowConnector Specifies which node to execute after this assignment node.
 
-1222
 
 Metadata Types Flow
 
@@ -91408,7 +90185,6 @@ operator.
 The `Add` operator isn’t supported when the `assignToReference` field is a variable of
 type boolean, dateTime, or sObject.
 
-1223
 
 Metadata Types Flow
 
@@ -91481,7 +90257,6 @@ Supported only when `assignToReference` and `value` are both collection variable
 Keeps items that are in both collections and removes the rest from the collection variable in
 the `assignToReference` field. This operator is available in API version 43.0 and later.
 
-1224
 
 Metadata Types Flow
 
@@ -91546,7 +90321,6 @@ Actual value that’s used during flow execution, for example,
 in assignments, calls to Apex plug-ins, and record elements. If
 null, this choice always has the value of null.
 
-1225
 
 Metadata Types Flow
 
@@ -91608,7 +90382,6 @@ are:
 
 `connector` FlowConnector Specifies which node to execute after processing the collection.
 
-1226
 
 Metadata Types Flow
 
@@ -91670,7 +90443,6 @@ FlowCustomError
 Defines a custom error element to roll back a change that triggered a flow and inform the user exactly what caused the error. It extends
 FlowNode and inherits all its fields.
 
-1227
 
 Metadata Types Flow
 
@@ -91728,7 +90500,6 @@ of type string) is used for. Valid values are:
 
 **•** ExitCondition
 
-1228
 
 Metadata Types Flow
 
@@ -91798,7 +90569,6 @@ and later.
 
 [See Flow Operators.](https://help.salesforce.com/s/articleView?id=platform.flow_ref_operators.htm&language=en_US)
 
-1229
 
 Metadata Types Flow
 
@@ -91856,7 +90626,6 @@ specified operator is applied.
 `operator` FlowAssignmentOperator (enumeration Required. Applies to the variable reference in the
 of type string) `assignToFieldReference` field.
 
-1230
 
 Metadata Types Flow
 
@@ -91921,7 +90690,6 @@ string)
 
 **•** `String`
 
-1231
 
 Metadata Types Flow
 
@@ -91982,7 +90750,6 @@ all its fields. Depending on the fields that are set, this element represents a 
 the `picklistField` and `picklistObject` parameters set, it’s a record choice and it can’t have a data type of `Picklist`
 or `Multipicklist` .
 
-1232
 
 Metadata Types Flow
 
@@ -92055,7 +90822,6 @@ This field is available in API version 25.0 and later.
 
 This field is nillable in API version 45.0 and later.
 
-1233
 
 Metadata Types Flow
 
@@ -92106,7 +90872,6 @@ This field is available in API version 35.0 and later.
 
 `sortOrder` SortOrder (enumeration of type string)
 
-1234
 
 Field that’s used for sorting records that meet the filter
 criteria. If this field isn’t specified, the returned records aren’t
@@ -92188,7 +90953,6 @@ the list of fields specified in `fieldReference` .
 
 This field is available in API version 63.0 and later.
 
-1235
 
 Metadata Types Flow
 
@@ -92272,7 +91036,6 @@ in API version 59.0 and later. See FlowTransform.
 `numberValue` double Use this field to specify a double value. If you want to specify a different data
 type or element reference, don’t use this field.
 
-1236
 
 Metadata Types Flow
 
@@ -92335,7 +91098,6 @@ true
 `ruleOrder` int Indicates how the exit rule is ordered against other exit rules. The
 `ruleOrder` value must be unique within the flow.
 
-1237
 
 Metadata Types Flow
 
@@ -92400,7 +91162,6 @@ of type string)
 
 **•** `Currency`
 
-1238
 
 Metadata Types Flow
 
@@ -92466,7 +91227,6 @@ of type string) Builder, it corresponds to the target data. Valid types are:
 
 **•** `Multipicklist`
 
-1239
 
 Metadata Types Flow
 
@@ -92522,7 +91282,6 @@ to the target of `nextValueConnector` .
 
 `collectionReference` string The collection being looped through.
 
-1240
 
 Metadata Types Flow
 
@@ -92591,7 +91350,6 @@ the node, which is inherited from FlowElement.
 `locationY` int Required. Vertical location of the node, in pixels from the top. In API version 64.0
 and later, if a flow is saved in auto-layout, this field is set to 0.
 
-1241
 
 Metadata Types Flow
 
@@ -92663,7 +91421,6 @@ FlowOutputFieldAssignment
 
 Assigns a record field’s value to a variable that can be used elsewhere in the flow. It extends FlowBaseElement and inherits all its fields.
 
-1242
 
 Metadata Types Flow
 
@@ -92723,7 +91480,6 @@ is selected.
 `getFirstRecordOnly` boolean Indicates whether to store field values
 for only one record, even when
 
-1243
 
 Metadata Types Flow
 
@@ -92785,7 +91541,6 @@ have the `Sort` API field property, as
 
 `sortOrder` SortOrder (enumeration of type string)
 
-1244
 
 Order in which to sort the records. If
 this field isn’t specified, then the results
@@ -92857,7 +91612,6 @@ to populate the new record’s fields.
 
 `object` string Required. The object type that the element creates.
 
-1245
 
 Metadata Types Flow
 
@@ -92921,7 +91675,6 @@ Note: The flow record `create`, `lookup`, `update`, and `delete` operations are 
 calls `create()`, `retrieve()`, `update()`, and `delete()` . The flow record methods apply to record operations from
 within a flow, which aren’t the same as doing any metadata calls to CRUD setup entities.
 
-1246
 
 Metadata Types Flow
 
@@ -92985,7 +91738,6 @@ Note: The flow record `create`, `lookup`, `update`, and `delete` operations are 
 calls `create()`, `retrieve()`, `update()`, and `delete()` . The flow record methods apply to record operations from
 within a flow, which aren’t the same as doing any metadata calls to CRUD setup entities.
 
-1247
 
 Metadata Types Flow
 
@@ -93055,7 +91807,6 @@ for only one record, even when
 multiple records meet the filter criteria.
 Supported only when
 
-1248
 
 Metadata Types Flow
 
@@ -93132,7 +91883,6 @@ records that meet the filter criteria. If
 this field isn’t specified, the returned
 records aren’t sorted.
 
-1249
 
 Metadata Types Flow
 
@@ -93192,7 +91942,6 @@ FlowRecordUpdate
 
 Finds records in the database and updates them with values from the flow. It extends FlowNode and inherits all its fields.
 
-1250
 
 Metadata Types Flow
 
@@ -93252,7 +92001,6 @@ didn’t meet the required conditions before the triggering update
 but now meets the conditions after the update. This field is available
 in API version 50.0 and later.
 
-1251
 
 Metadata Types Flow
 
@@ -93314,7 +92062,6 @@ to execute after the provided time.
 
 **•** `Minutes`
 
-1252
 
 Metadata Types Flow
 
@@ -93378,7 +92125,6 @@ corrections on a previous screen.
 You can set `allowBack` or `allowFinish` to `false`, but
 not both.
 
-1253
 
 Metadata Types Flow
 
@@ -93444,7 +92190,6 @@ to show navigation actions.
 
 This field is available in API version 42.0 and later.
 
-1254
 
 Metadata Types Flow
 
@@ -93483,7 +92228,6 @@ Defines an iput parameter for a flow screen action. It extends FlowScreenFieldIn
 
 This metadata type is available in API version 59.0 and later.
 
-1255
 
 Metadata Types Flow
 
@@ -93541,7 +92285,6 @@ fields at runtime, are available in API version
 Only the string data type is supported for
 multi-select checkboxes and multi-select
 
-1256
 
 Metadata Types Flow
 
@@ -93614,7 +92357,6 @@ of type string) screen. Valid values are:
 
 **•** `LargeTextArea`
 
-1257
 
 Metadata Types Flow
 
@@ -93681,7 +92423,6 @@ later.
 `inputsOnNextNavToAssocScrn` FlowScreenFieldInputsRevisited Controls whether the flow remembers the
 (enumeration of type string) input value if the user moves to any screen and
 
-1258
 
 Metadata Types Flow
 
@@ -93744,7 +92485,6 @@ Available only when the data type is Number
 or Currency. Corresponds to the Decimal Places
 field in Flow Builder.
 
-1259
 
 Metadata Types Flow
 
@@ -93812,7 +92552,6 @@ parameter.
 
 `value` FlowElementReferenceOrValue Defines the value of the input parameter.
 
-1260
 
 Metadata Types Flow
 
@@ -93856,7 +92595,6 @@ FlowScreenTriggerHandler
 
 Defines conditions for a flow screen trigger handler.
 
-1261
 
 Metadata Types Flow
 
@@ -93866,7 +92604,6 @@ FlowStage
 
 A section of your flow that can be represented in the UI, such as with breadcrumbs. It extends FlowElement and inherits all its fields.
 
-1262
 
 Metadata Types Flow
 
@@ -93929,7 +92666,6 @@ entry condition for the step.
 `entryActionName` string The name of the evaluation flow used as an
 entry condition for the step.
 
-1263
 
 Metadata Types Flow
 
@@ -93992,7 +92728,6 @@ string)
 
 `exitConditionLogic` string
 
-1264
 
 The type of the evaluation flow used as a
 custom exit condition for the step. The only
@@ -94076,7 +92811,6 @@ FlowStageStepEntryActionInputParameter
 Defines an input parameter from the step to its associated evaluation flow. It extends FlowBaseElement and inherits all its fields. This
 metadata type is available in API version 53.0 and later.
 
-1265
 
 Metadata Types Flow
 
@@ -94130,7 +92864,6 @@ Required. A unique name for the output parameter of the evaluation
 flow used by a stage or step as an exit condition. The only possible
 value is `isOrchestrationConditionMet` .
 
-1266
 
 Metadata Types Flow
 
@@ -94183,7 +92916,6 @@ and how frequently to run the flow. To run the flow only for specific records, t
 FlowStart extends FlowNode and inherits all its fields except `name` and `label` . This metadata type is available in API version 47.0 and
 later.
 
-1267
 
 Metadata Types Flow
 
@@ -94255,7 +92987,6 @@ event-triggered flow. Valid values are:
 
 This field is available in API version 61.0 and later.
 
-1268
 
 Metadata Types Flow
 
@@ -94327,7 +93058,6 @@ To require all conditions, use `AND` . To require any conditions, use
 example `1 AND 2 OR (3 AND 4)` . This field is available in
 API version 50.0 and later.
 
-1269
 
 Metadata Types Flow
 
@@ -94397,7 +93127,6 @@ Available only when `triggerType` is `RecordBeforeSave`
 or `DataCloudDataChange` . This field is available in API version
 48.0 and later.
 
-1270
 
 Metadata Types Flow
 
@@ -94466,7 +93195,6 @@ and later.
 **•** `RecordAfterSave` —The flow starts after a record is saved.
 This value is available in API version 49.0 and later.
 
-1271
 
 Metadata Types Flow
 
@@ -94522,7 +93250,6 @@ FlowCapabilityInput
 Defines the data structure of a capability input. It extends FlowElement and inherits all of its fields. This metadata type is available in API
 version 60.0 and later.
 
-1272
 
 Metadata Types Flow
 
@@ -94579,7 +93306,6 @@ parent flow. FlowSubflow extends FlowNode and inherits all its fields. It’s av
 
 `connector` FlowConnector Specifies which node to execute after the subflow.
 
-1273
 
 Metadata Types Flow
 
@@ -94636,7 +93362,6 @@ FlowTransform
 Defines a node that can dynamically transform the value of source data to target data in the flow. It extends FlowNode and inherits all
 of its fields. This metadata type is available in API version 59.0 and later.
 
-1274
 
 Metadata Types Flow
 
@@ -94704,7 +93429,6 @@ available in API version 59.0 and later.
 
 `transformValueDescription` string Reserved for future use.
 
-1275
 
 Metadata Types Flow
 
@@ -94765,7 +93489,6 @@ FlowTransformValueActionInputParameter
 
 Defines the input parameters of the source data for data transformation. This metadata type is available in API version 60.0 and later.
 
-1276
 
 Metadata Types Flow
 
@@ -94826,7 +93549,6 @@ The Apex class of this variable if its data type
 is `Apex` . This field is available in API version
 46.0 and later.
 
-1277
 
 Metadata Types Flow
 
@@ -94893,7 +93615,6 @@ and access the variable. For example, you
 can access variables from URL parameters,
 processes, and other flows.
 
-1278
 
 Metadata Types Flow
 
@@ -94955,7 +93676,6 @@ rule conditions aren’t met. This metadata type is available in API version 47.
 **•** `and` —Evaluates to `true` only if all its conditions evaluate to
 true.
 
-1279
 
 Metadata Types Flow
 
@@ -95011,7 +93731,6 @@ used.
 An event that a FlowWait element is waiting for. FlowWaitEvent extends FlowElement and inherits all its fields. FlowWaitEvent is available
 in API version 32.0 and later.
 
-1280
 
 Metadata Types Flow
 
@@ -95081,7 +93800,6 @@ are:
 **•** `AlarmEvent` —This event is an alarm
 based off an absolute date/time value.
 
-1281
 
 Metadata Types Flow
 
@@ -95143,7 +93861,6 @@ of type string)
 
 `outputParameters` FlowWaitEventOutputParameter[]
 
-1282
 
 An array of the event’s output parameters.
 The parameter values are assigned from the
@@ -95206,7 +93923,6 @@ no longer includes the version number. Before you deploy using API version 44.0 
 **•** For each active flow, the `status` field is `Active` . Any flow without a `status` value is deployed or retrieved with a `status`
 value of `Draft` .
 
-1283
 
 Metadata Types Flow
 
@@ -95299,7 +94015,6 @@ Here’s a sample XML definition of a flow.
 
 ```
 
-1284
 
 Metadata Types Flow
 
@@ -95414,7 +94129,6 @@ Metadata Types Flow
 
 ```
 
-1285
 
 Metadata Types Flow
 
@@ -95529,7 +94243,6 @@ Metadata Types Flow
 
 ```
 
-1286
 
 Metadata Types Flow
 
@@ -95644,7 +94357,6 @@ Metadata Types Flow
 
 ```
 
-1287
 
 Metadata Types Flow
 
@@ -95759,7 +94471,6 @@ Metadata Types Flow
 
 ```
 
-1288
 
 Metadata Types Flow
 
@@ -95874,7 +94585,6 @@ Metadata Types Flow
 
 ```
 
-1289
 
 Metadata Types Flow
 
@@ -95990,7 +94700,6 @@ Sample XML definition with a subflow element.
 
 ```
 
-1290
 
 Metadata Types Flow
 
@@ -96101,7 +94810,6 @@ Metadata Types Flow
 
 ```
 
-1291
 
 Metadata Types Flow
 
@@ -96215,7 +94923,6 @@ Sample XML definition of an autolaunched flow with a loop.
 
 ```
 
-1292
 
 Metadata Types Flow
 
@@ -96330,7 +95037,6 @@ Metadata Types Flow
 
 ```
 
-1293
 
 ### Metadata Types FlowCategory
 
@@ -96400,7 +95106,6 @@ Version
 
 ### FlowCategory components are available in API version 43.0 and later.
 
-1294
 
 Metadata Types FlowCategory
 
@@ -96479,7 +95184,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1295
 
 ### Metadata Types FlowDefinition FlowDefinition
 
@@ -96534,7 +95238,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1296
 
 Metadata Types FlowTest
 
@@ -96605,7 +95308,6 @@ FlowTestPoint[]
 **Description**
 An array of test points for the test.
 
-1297
 
 Metadata Types FlowTest
 
@@ -96680,7 +95382,6 @@ An array of conditions for an assertion.
 **Field Type**
 string
 
-1298
 
 Metadata Types FlowTest
 
@@ -96756,7 +95457,6 @@ Possible values are:
 
 **•** `StartsWith`
 
-1299
 
 Metadata Types FlowTest
 
@@ -96830,7 +95530,6 @@ string
 **Description**
 Specifies an sObject value.
 
-1300
 
 Metadata Types FlowTest
 
@@ -96906,7 +95605,6 @@ Possible values are:
 
 FlowTestReferenceOrValue
 
-1301
 
 Metadata Types FlowTest
 
@@ -97002,7 +95700,6 @@ The following is an example of a FlowTest component.
 
 ```
 
-1302
 
 ### Metadata Types FlowValueMap
 
@@ -97075,7 +95772,6 @@ File Suffix and Directory Location
 `accessType` . For example, for a documents folder named sampleFolder, there’s a
 _`sampleFolder.documentFolder-meta.xml`_ within the `documents` folder of the package.
 
-1303
 
 Metadata Types Folder
 
@@ -97151,7 +95847,6 @@ inherited from the Metadata component.
 
 `name` string Required. The name of the document folder.
 
-1304
 
 Metadata Types Folder
 
@@ -97224,7 +95919,6 @@ Wildcard Support in the Manifest File
 This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
 using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1305
 
 #### Metadata Types FolderShare 1. FolderShare
 
@@ -97283,7 +95977,6 @@ plus control other users’ access to a folder.
 `sharedTo` string Required. Specifies the user, group, or role that has the specified access
 level to the folder.
 
-1306
 
 Metadata Types FolderShare
 
@@ -97345,7 +96038,6 @@ specified access level to the folder.
 role, and portal users with a role subordinate to that role, have the
 specified access level to the folder.
 
-1307
 
 ### Metadata Types ForecastingFilter
 
@@ -97417,7 +96109,6 @@ Version
 
 ### ForecastingFilter components are available in API version 55.0 and later.
 
-1308
 
 Metadata Types ForecastingFilter
 
@@ -97490,7 +96181,6 @@ The following is an example of a ForecastingFilter component.
 
 ```
 
-1309
 
 ### Metadata Types ForecastingFilterCondition
 
@@ -97555,7 +96245,6 @@ fieldName
 **Field Type**
 string
 
-1310
 
 Metadata Types ForecastingFilterCondition
 
@@ -97630,7 +96319,6 @@ string
 The value of the filter condition. If multiple values are specified, they must be separated by
 a comma delimiter.
 
-1311
 
 ### Metadata Types ForecastingSourceDefinition
 
@@ -97707,7 +96395,6 @@ Represents the object, measure, date type, and hierarchy that a forecast uses to
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1312
 
 Metadata Types ForecastingSourceDefinition
 
@@ -97775,7 +96462,6 @@ types. Possible values are*:
 
 **•** `OpportunityLineItemSchedule.Revenue`
 
-1313
 
 Metadata Types ForecastingSourceDefinition
 
@@ -97857,7 +96543,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1314
 
 ### Metadata Types ForecastingType
 
@@ -97909,7 +96594,6 @@ Fields
 `active` boolean Required. If `true`, the forecast type is active. If `false`, the forecast
 type isn’t active. The default value is `false` .
 
-1315
 
 Metadata Types ForecastingType
 
@@ -97983,7 +96667,6 @@ Required. If `true`, the forecast type is based on a quantity measure. If
 `false`, the forecast type is based on a revenue measure. The default
 value is `false` .
 
-1316
 
 Metadata Types ForecastingType
 
@@ -98085,7 +96768,6 @@ The following is an example of a ForecastingType component using an opportunity 
 
 ```
 
-1317
 
 ### Metadata Types ForecastingTypeSource
 
@@ -98162,7 +96844,6 @@ Represents the mapping of a forecasting source definition to a forecast type.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1318
 
 Metadata Types ForecastingTypeSource
 
@@ -98218,7 +96899,6 @@ Possible values are:
 
 `sourceGroup` int Required. Represents a grouping of forecasting source definitions.
 
-1319
 
 Metadata Types ForecastingTypeSource
 
@@ -98300,7 +96980,6 @@ create and activate the forecast type.
 **•** Deploy Metadata API types in the following sequence: ForecastingSettings, ForecastingType, ForecastingSourceDefinition, and then
 ForecastingTypeSource. If all are specified in the package file, the sequence is followed automatically.
 
-1320
 
 ### Metadata Types FuelType FuelType
 
@@ -98363,7 +97042,6 @@ The default value is `false` .
 **Field Type**
 boolean
 
-1321
 
 Metadata Types FuelType
 
@@ -98449,7 +97127,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1322
 
 ### Metadata Types FuelTypeSustnUom
 
@@ -98512,7 +97189,6 @@ Possible values are:
 
 **•** `Cooling`
 
-1323
 
 Metadata Types FuelTypeSustnUom
 
@@ -98593,7 +97269,6 @@ Possible values are:
 
 **•** `GWh`
 
-1324
 
 Metadata Types FuelTypeSustnUom
 
@@ -98681,7 +97356,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1325
 
 ### Metadata Types FunctionReference
 
@@ -98734,7 +97408,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1326
 
 Metadata Types FundraisingConfig
 
@@ -98800,7 +97473,6 @@ boolean
 **Description**
 Reserved for future use.
 
-1327
 
 Metadata Types FundraisingConfig
 
@@ -98872,7 +97544,6 @@ which the donation was received. Available in API version 64.0 and later.
 **Field Type**
 string
 
-1328
 
 Metadata Types FundraisingConfig
 
@@ -98956,7 +97627,6 @@ The following is an example of a FundraisingConfig component.
 
 ```
 
-1329
 
 ### Metadata Types GatewayProviderPaymentMethodType
 
@@ -99029,7 +97699,6 @@ Links the Salesforce payment method to the payment method used in the Salesforce
 Order Management storefront. Your payment gateway integration uses this field when
 finding a payment method to link to a payment.
 
-1330
 
 Metadata Types GatewayProviderPaymentMethodType
 
@@ -99100,7 +97769,6 @@ ID of the record type entity related to the gateway provider payment method type
 
 This is a relationship field.
 
-1331
 
 ### Metadata Types GenAiFunction
 
@@ -99164,7 +97832,6 @@ showing the schema folders.
 
 See the Input Folder on page 1335 and Output Folder on page 1338 sections for more information.
 
-1332
 
 Metadata Types GenAiFunction
 
@@ -99237,7 +97904,6 @@ boolean
 **Description**
 Indicates whether confirmation is required for this action.
 
-1333
 
 Metadata Types GenAiFunction
 
@@ -99314,7 +97980,6 @@ string
 
 Required. Label for the planner attribute.
 
-1334
 
 Metadata Types GenAiFunction
 
@@ -99400,15 +98065,12 @@ The `input` folder contains a `schema.json` file with the action inputs. Here’
 
 This table describes the properties that you can specify in this JSON file.
 
-1335
 
 Metadata Types GenAiFunction
 
-1336
 
 Metadata Types GenAiFunction
 
-1337
 
 Metadata Types GenAiFunction
 
@@ -99447,11 +98109,9 @@ The `output` folder contains a `schema.json` file with the action output. Here�
 
 This table describes the properties that you can specify in this JSON file.
 
-1338
 
 Metadata Types GenAiFunction
 
-1339
 
 Metadata Types GenAiFunction
 
@@ -99503,7 +98163,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1340
 
 ### Metadata Types GenAiPlanner
 
@@ -99566,7 +98225,6 @@ string
 
 A set of tags associated with the agent.
 
-1341
 
 Metadata Types GenAiPlanner
 
@@ -99645,7 +98303,6 @@ GenAiPlannerRuleExprAsgn[]
 **Description**
 A list of rule expression assignments.
 
-1342
 
 Metadata Types GenAiPlanner
 
@@ -99722,7 +98379,6 @@ The target name for the attribute mapping.
 **Field Type**
 AttributeMappingType (enumeration of type string)
 
-1343
 
 Metadata Types GenAiPlanner
 
@@ -99795,7 +98451,6 @@ AiPluginUtteranceDef[]
 **Description**
 A list of utterances that can be used to pick a topic during runtime.
 
-1344
 
 Metadata Types GenAiPlanner
 
@@ -99875,7 +98530,6 @@ PluginType (enumeration of type string)
 
 Required.
 
-1345
 
 Metadata Types GenAiPlanner
 
@@ -99943,7 +98597,6 @@ GenAiPlannerRuleExprDef
 
 Represents a rule expression, which conditionally locks or unlocks topics and actions based on defined security criteria.
 
-1346
 
 Metadata Types GenAiPlanner
 
@@ -100022,7 +98675,6 @@ Required. The left operand in the expression.
 **Field Type**
 GenAiAgentVariableType (enumeration of type string)
 
-1347
 
 Metadata Types GenAiPlanner
 
@@ -100108,7 +98760,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1348
 
 ### Metadata Types GenAiPlannerBundle
 
@@ -100171,7 +98822,6 @@ A list of action attribute mappings.
 **Field Type**
 string
 
-1349
 
 Metadata Types GenAiPlannerBundle
 
@@ -100247,7 +98897,6 @@ generate modular, testable components based on evolving user input and context.
 Unlike linear workflows, it supports continuous refinement and feedback loops
 throughout the development process.
 
-1350
 
 Metadata Types GenAiPlannerBundle
 
@@ -100324,7 +98973,6 @@ string
 
 Reserved for future use.
 
-1351
 
 Metadata Types GenAiPlannerBundle
 
@@ -100400,7 +99048,6 @@ string
 
 The name of the agent topic.
 
-1352
 
 Metadata Types GenAiPlannerBundle
 
@@ -100482,7 +99129,6 @@ The master label for the topic.
 **Field Type**
 string
 
-1353
 
 Metadata Types GenAiPlannerBundle
 
@@ -100556,7 +99202,6 @@ Required. The target of the assignment, which is a
 **Field Type**
 string
 
-1354
 
 Metadata Types GenAiPlannerBundle
 
@@ -100628,7 +99273,6 @@ The expression type. Values are:
 
 **•** `sel` —Salesforce Expression Language, as used in formula fields
 
-1355
 
 Metadata Types GenAiPlannerBundle
 
@@ -100703,7 +99347,6 @@ actions, or those created in the Asset Library, use GenAiPlugin on page 1360 and
 
 In Summer ‘25 orgs and earlier, deploy topic and action metadata using GenAiPlugin on page 1360 and GenAiFunction on page 1332.
 
-1356
 
 Metadata Types GenAiPlannerBundle
 
@@ -100787,7 +99430,6 @@ Here’s an example of a GenAiPlannerBundle component.
 
 ```
 
-1357
 
 Metadata Types GenAiPlannerBundle
 
@@ -100876,7 +99518,6 @@ Metadata Types GenAiPlannerBundle
 
 ```
 
-1358
 
 Metadata Types GenAiPlannerBundle
 
@@ -100983,7 +99624,6 @@ Metadata Types GenAiPlannerBundle
 
 ```
 
-1359
 
 ### Metadata Types GenAiPlugin
 
@@ -101049,7 +99689,6 @@ AiPluginUtteranceDef[]
 **Description**
 A list of utterances that can be used to pick a topic during runtime.
 
-1360
 
 Metadata Types GenAiPlugin
 
@@ -101128,7 +99767,6 @@ Required.
 
 The master label for the topic.
 
-1361
 
 Metadata Types GenAiPlugin
 
@@ -101196,7 +99834,6 @@ topics in the asset library, use GenAiPlugin.
 When deploying topic or action metadata to a Summer '25 (version 64.0) org, retrieve the metadata using Metadata API version 64.0,
 even if your source org is Winter '26 or later (version 65.0). For Winter `26 and later, use Metadata API version 65.0 and later.
 
-1362
 
 Metadata Types GenAiPlugin
 
@@ -101303,7 +99940,6 @@ The following is an example of a GenAiPlugin component.
 
 ```
 
-1363
 
 Metadata Types GenAiPlugin
 
@@ -101418,7 +100054,6 @@ Metadata Types GenAiPlugin
 
 ```
 
-1364
 
 Metadata Types GenAiPlugin
 
@@ -101533,7 +100168,6 @@ Metadata Types GenAiPlugin
 
 ```
 
-1365
 
 ### Metadata Types GenAiPluginInstructionDef
 
@@ -101628,7 +100262,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1366
 
 Metadata Types GenAiPluginInstructionDef
 
@@ -101698,7 +100331,6 @@ Required.
 
 The master label for the topic instruction.
 
-1367
 
 ### Metadata Types GenAiPromptTemplate
 
@@ -101757,7 +100389,6 @@ int
 This tag will be deprecated in 63.0 and will not work in 64.0 and later. Use
 activeVersionIdentifier instead.
 
-1368
 
 Metadata Types GenAiPromptTemplate
 
@@ -101836,7 +100467,6 @@ values are:
 
 **•** `einstein_gpt__caseEmailDraft`
 
-1369
 
 Metadata Types GenAiPromptTemplate
 
@@ -101913,7 +100543,6 @@ The model associated with the prompt template version.
 **Field Type**
 [GenAiPromptTemplateStatus (enumeration of type string)](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_objects_intro.htm)
 
-1370
 
 Metadata Types GenAiPromptTemplate
 
@@ -101986,7 +100615,6 @@ string
 **Description**
 Developer name of the policy for this prompt template version.
 
-1371
 
 Metadata Types GenAiPromptTemplate
 
@@ -102055,7 +100683,6 @@ GenAiPromptTemplateDataProvider
 
 Represents a source of data for a prompt template version, such as an invocable action, flow, or Apex method.
 
-1372
 
 Metadata Types GenAiPromptTemplate
 
@@ -102129,7 +100756,6 @@ Required. Name of the parameter.
 **Field Type**
 string
 
-1373
 
 Metadata Types GenAiPromptTemplate
 
@@ -102222,7 +100848,6 @@ The following is an example of a GenAiPromptTemplate component.
 
 ```
 
-1374
 
 ### Metadata Types GenAiPromptTemplateActv
 
@@ -102318,7 +100943,6 @@ Represents the activation status of a Salesforce-provided prompt template.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1375
 
 Metadata Types GenAiPromptTemplateActv
 
@@ -102384,7 +101008,6 @@ GenAiPromptTemplateActv is created.
 **Field Type**
 string
 
-1376
 
 ### Metadata Types GlobalPicklist
 
@@ -102458,7 +101081,6 @@ File Suffix and Directory Location
 
 ### GlobalPicklist components have the suffix .globalPicklist and are stored in the globalPicklist folder.
 
-1377
 
 Metadata Types GlobalPicklist
 
@@ -102539,7 +101161,6 @@ This Territories.globalPicklist is an example of a GlobalPicklist component.
 
 ```
 
-1378
 
 ### Metadata Types GlobalPicklistValue
 
@@ -102608,7 +101229,6 @@ retrieve operation for global picklist values returns all active and inactive
 values in the picklist. (Meanwhile, retrieving the values of a non-global,
 unrestricted picklist returns only the active values.)
 
-1379
 
 Metadata Types GlobalPicklistValue
 
@@ -102676,7 +101296,6 @@ Self-Service provides an online support channel for your customers allowing them
 service representative. For more information about Self-Service, see
 “Setting Up Your Self-Service Portal” in the Salesforce online help.
 
-1380
 
 Metadata Types GlobalPicklistValue
 
@@ -102749,7 +101368,6 @@ version 16.0 and later.
 `Stage` field in opportunities. This field is available in API version 16.0
 and later.
 
-1381
 
 ### Metadata Types GlobalValueSet
 
@@ -102798,7 +101416,6 @@ set is created. Appears as Label in the user interface.
 `sorted` boolean Required. Indicates whether a global value set is sorted in alphabetical order.
 By default this value is `false` .
 
-1382
 
 ### Metadata Types GlobalValueSetTranslation
 
@@ -102889,7 +101506,6 @@ optionally across objects. This type extends the Metadata metadata type and inhe
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1383
 
 Metadata Types GlobalValueSetTranslation
 
@@ -102961,7 +101577,6 @@ paired with its masterLabel.
 
 ```
 
-1384
 
 ### Metadata Types Group
 
@@ -103027,7 +101642,6 @@ Note: Members of the public group are not migrated when you deploy the group typ
 
 This metadata type represents the valid values that define a group:
 
-1385
 
 ### Metadata Types HomePageComponent
 
@@ -103090,7 +101704,6 @@ Declarative Metadata File Suffix and Directory Location
 The file suffix for home page components is `.homePageComponent` and components are stored in the `homepagecomponents`
 directory of the corresponding package directory.
 
-1386
 
 Metadata Types HomePageComponent
 
@@ -103173,7 +101786,6 @@ whether the component displays with scrollbars ( `true` ) or not ( `false` ).
 
 This field is available in API version 31.0 and later.
 
-1387
 
 ### Metadata Types HomePageLayout
 
@@ -103248,7 +101860,6 @@ Version
 Home page components are available in API version 12.0 and later. This type extends the Metadata metadata type and inherits its
 `fullName` field.
 
-1388
 
 ### Metadata Types IdentityVerificationProcDef
 
@@ -103308,7 +101919,6 @@ Represents the definition of the identity verification process.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1389
 
 Metadata Types IdentityVerificationProcDef
 
@@ -103373,7 +101983,6 @@ Valid values are:
 
 **•** `Tab`
 
-1390
 
 Metadata Types IdentityVerificationProcDef
 
@@ -103451,7 +102060,6 @@ boolean
 **Description**
 Indicates whether the record is active ( `true` ) or not ( `false` ).
 
-1391
 
 Metadata Types IdentityVerificationProcDef
 
@@ -103529,7 +102137,6 @@ string
 **Description**
 The field storing the unique identifier of a record displayed in the search results.
 
-1392
 
 Metadata Types IdentityVerificationProcDef
 
@@ -103607,7 +102214,6 @@ Valid values are:
 
 **•** `External`
 
-1393
 
 Metadata Types IdentityVerificationProcDef
 
@@ -103687,7 +102293,6 @@ Required.
 The label of the field that contains the verification data based on the selected field
 type. Available in API version 58.0 and later.
 
-1394
 
 Metadata Types IdentityVerificationProcDef
 
@@ -103766,7 +102371,6 @@ A user-friendly name for Identity Verification Process Field.
 **Field Type**
 int
 
-1395
 
 Metadata Types IdentityVerificationProcDef
 
@@ -103867,7 +102471,6 @@ This is an example of an IdentityVerificationProcDef component.
 
 ```
 
-1396
 
 ### Metadata Types IdentityVerificationProcDtl
 
@@ -103962,7 +102565,6 @@ the Metadata metadata type and inherits its `fullName` field.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1397
 
 Metadata Types IdentityVerificationProcDtl
 
@@ -104030,7 +102632,6 @@ Indicates whether the record is active ( `true` ) or not ( `false` ).
 
 The default value is `false` .
 
-1398
 
 Metadata Types IdentityVerificationProcDtl
 
@@ -104108,7 +102709,6 @@ Required.
 
 Enter 1 as the search sequence number.
 
-1399
 
 Metadata Types IdentityVerificationProcDtl
 
@@ -104184,7 +102784,6 @@ Required.
 The developer name of Identity Verification Process Field. Can contain only underscores
 and alphanumeric characters and must be unique in your org. It must begin with a
 
-1400
 
 Metadata Types IdentityVerificationProcDtl
 
@@ -104264,7 +102863,6 @@ Indicates the type of field.
 
 Valid values are:
 
-1401
 
 Metadata Types IdentityVerificationProcDtl
 
@@ -104336,7 +102934,6 @@ Required.
 
 The sequence number of the field.
 
-1402
 
 Metadata Types IdentityVerificationProcDtl
 
@@ -104444,7 +103041,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1403
 
 ### Metadata Types IdentityVerificationProcFld
 
@@ -104505,7 +103101,6 @@ Valid values are:
 
 **•** `External`
 
-1404
 
 Metadata Types IdentityVerificationProcFld
 
@@ -104584,7 +103179,6 @@ Required.
 
 Indicates the type of field.
 
-1405
 
 Metadata Types IdentityVerificationProcFld
 
@@ -104656,7 +103250,6 @@ Required.
 
 The label of the Identity Verification Process Field record.
 
-1406
 
 ### Metadata Types InboundCertificate
 
@@ -104737,7 +103330,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents a mutual authentication certificate that is imported to your Salesforce org.
 
-1407
 
 Metadata Types InboundCertificate
 
@@ -104810,7 +103402,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1408
 
 ### Metadata Types InboundNetworkConnection
 
@@ -104881,7 +103472,6 @@ performs a Provision, Sync, or Teardown action. The valid values are:
 
 **•** `PendingAcceptance`
 
-1409
 
 ```
 status
@@ -104975,7 +103565,6 @@ The following sample definition has the suffix `.inboundNetworkConnection` .
 
 ```
 
-1410
 
 ### Metadata Types IndustriesPricingSettings
 
@@ -105058,7 +103647,6 @@ Parent Type and Manifest Access
 
 [In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_settings.htm)
 
-1411
 
 Metadata Types IndustriesPricingSettings
 
@@ -105125,7 +103713,6 @@ and later.
 **Field Type**
 boolean
 
-1412
 
 Metadata Types IndustriesPricingSettings
 
@@ -105208,7 +103795,6 @@ This example shows a sample `package.xml` that references the previous definitio
 
 ```
 
-1413
 
 ### Metadata Types IndustriesRatingSettings
 
@@ -105269,7 +103855,6 @@ boolean
 Indicates whether to enable Rate Management ( `true` ) or not ( `false` ). The default
 value is `false` .
 
-1414
 
 ### Metadata Types IndustriesUnifiedInventorySettings
 
@@ -105346,7 +103931,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 
 Represents the settings for Industries Unified Inventory.
 
-1415
 
 Metadata Types IndustriesUnifiedInventorySettings
 
@@ -105403,7 +103987,6 @@ Indicates whether the Product Inventory Operations that provides the capabilitie
 perform various actions related to managing product inventory is enabled ( `true` ) or
 not ( `false` ).
 
-1416
 
 ### Metadata Types InstalledPackage
 
@@ -105478,7 +104061,6 @@ set to either of these values.
 **true**
 Keep the isActive state of any RSS or CSP in the package.
 
-1417
 
 ### Metadata Types IntegrationProviderDef
 
@@ -105547,7 +104129,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1418
 
 Metadata Types IntegrationProviderDef
 
@@ -105613,7 +104194,6 @@ A system name for the Integration Definition.
 **Field Type**
 string
 
-1419
 
 Metadata Types IntegrationProviderDef
 
@@ -105685,7 +104265,6 @@ Available in API version 64.0 and later.
 **Field Type**
 string
 
-1420
 
 Metadata Types IntegrationProviderDef
 
@@ -105761,7 +104340,6 @@ Required.
 
 What the Integration Definition calls, either an Apex class or an external service.
 
-1421
 
 Metadata Types IntegrationProviderDef
 
@@ -105835,7 +104413,6 @@ string
 **Description**
 A meaningful explanation of the attribute.
 
-1422
 
 Metadata Types IntegrationProviderDef
 
@@ -105914,7 +104491,6 @@ The value of the attribute if the `dataType` is `String` .
 **Field Type**
 boolean
 
-1423
 
 ### Metadata Types IPAddressRange
 
@@ -105992,7 +104568,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1424
 
 Metadata Types IPAddressRange
 
@@ -106058,7 +104633,6 @@ email opens and email clicks.
 **Field Type**
 picklist
 
-1425
 
 Metadata Types IPAddressRange
 
@@ -106147,7 +104721,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1426
 
 ### Metadata Types InvocableActionExtension
 
@@ -106207,7 +104780,6 @@ attributes
 **Description**
 The list of attributes.
 
-1427
 
 Metadata Types InvocableActionExtension
 
@@ -106285,7 +104857,6 @@ Values are:
 
 **•** `String`
 
-1428
 
 Metadata Types InvocableActionExtension
 
@@ -106378,7 +104949,6 @@ The following example shows an InvocableActionExtension component definition.
 
 ```
 
-1429
 
 ### Metadata Types KeywordList
 
@@ -106473,7 +105043,6 @@ Keep the following things in mind when creating keyword list criteria:
 
 **•** A keyword list can have up to 2,000 keywords.
 
-1430
 
 Metadata Types KeywordList
 
@@ -106534,7 +105103,6 @@ The following is an example of a KeywordList component.
 
 ```
 
-1431
 
 ### Metadata Types Layout
 
@@ -106615,7 +105183,6 @@ File Suffix and Directory Location
 Note: Retrieving a component of this metadata type in a project makes the component appear in any Profile and PermissionSet
 components that are retrieved in the same package.
 
-1432
 
 Metadata Types Layout
 
@@ -106686,7 +105253,6 @@ Fields for the special multiline layout fields that appear in
 OpportunityProduct layouts. These fields are otherwise
 similar to `miniLayoutFields` .
 
-1433
 
 Metadata Types Layout
 
@@ -106760,7 +105326,6 @@ Salesforce Classic, which summarizes key fields in a grid at
 the top of a page layout, when Case Feed is enabled. This
 field is available in API version 18.0 and later.
 
-1434
 
 Metadata Types Layout
 
@@ -106823,7 +105388,6 @@ Required for components with a location of left or right. The width of the
 custom console component. The value must be specified in pixels and
 be greater than 0 but less than 999.
 
-1435
 
 Metadata Types Layout
 
@@ -106892,7 +105456,6 @@ Represents a specific custom console component to display in a container that ho
 Salesforce console. You can specify up to five components for each of the four container locations (left, right, top, and bottom). Available
 in API version 30.0 and later.
 
-1436
 
 Metadata Types Layout
 
@@ -106957,7 +105520,6 @@ measurement, in pixels or percent.
 
 Represents related list custom components on the sidebars of the Salesforce console. Available in API version 31.0 and later.
 
-1437
 
 Metadata Types Layout
 
@@ -107029,7 +105591,6 @@ space on the page ( `true` ) or not ( `false` ).
 
 `leftComponents` FeedLayoutComponent[] The individual components displayed in the left column of the feed view.
 
-1438
 
 Metadata Types Layout
 
@@ -107113,7 +105674,6 @@ FeedLayoutFilterType The type of filter. Valid values are:
 
 string)
 
-1439
 
 Metadata Types Layout
 
@@ -107191,7 +105751,6 @@ status on a case. Available only on Case layouts.
 
 **•** `PollPost` —feed items related to posting a poll on a feed.
 
-1440
 
 Metadata Types Layout
 
@@ -107252,7 +105811,6 @@ corresponds to the checkbox in the section details dialog.
 
 `editHeading` boolean Controls if this section appears in the edit page.
 
-1441
 
 Metadata Types Layout
 
@@ -107322,7 +105880,6 @@ Reference to a canvas app.
 
 This field is available in API version 31.0 and later.
 
-1442
 
 Metadata Types Layout
 
@@ -107387,7 +105944,6 @@ asset type is `dashboard` .
 `error` string Error string; only populated if an error occurred in the underlying
 dashboard.
 
-1443
 
 Metadata Types Layout
 
@@ -107457,7 +106013,6 @@ error and this attribute is set, the chart doesn’t show any data except the
 
 error. An error can happen for many reasons, such as when a user doesn’t
 
-1444
 
 Metadata Types Layout
 
@@ -107539,7 +106094,6 @@ type string)
 
 **•** `RelatedList`
 
-1445
 
 Metadata Types Layout
 
@@ -107610,7 +106164,6 @@ QuickActionList represents the list of actions associated with the page layout. 
 
 `quickActionListItems` QuickActionListItem[] Array of zero or more QuickActionList objects.
 
-1446
 
 Metadata Types Layout
 
@@ -107675,7 +106228,6 @@ string)
 
 **•** `Desc`          - Sort in descending order
 
-1447
 
 Metadata Types Layout
 
@@ -107745,7 +106297,6 @@ within the range of `sizeY` .
 
 `posZ` int Reserved for future use. If provided, the setting is visible to users.
 
-1448
 
 Metadata Types Layout
 
@@ -107858,7 +106409,6 @@ This sample defines a page layout.
 
 ```
 
-1449
 
 Metadata Types Layout
 
@@ -107973,7 +106523,6 @@ Metadata Types Layout
 
 ```
 
-1450
 
 Metadata Types Layout
 
@@ -108089,7 +106638,6 @@ This example shows a layout using `<summaryLayout>` .
 
 ```
 
-1451
 
 Metadata Types Layout
 
@@ -108205,7 +106753,6 @@ This example shows a feed-based layout.
 
 ```
 
-1452
 
 ### Metadata Types LearningItemType
 
@@ -108271,7 +106818,6 @@ default as part of the Use Enablement Programs permission set, which comes with 
 
 Important: Custom exercises aren’t compatible with Partner Enablement programs.
 
-1453
 
 Metadata Types LearningItemType
 
@@ -108343,7 +106889,6 @@ string
 
 Required. The unique programmatic name for the LearningItemType record.
 
-1454
 
 Metadata Types LearningItemType
 
@@ -108421,7 +106966,6 @@ The following is an example of a LearningItemType component for a custom exercis
 
 ```
 
-1455
 
 ### Metadata Types Letterhead
 
@@ -108482,7 +107026,6 @@ With the exception of logo, and horizontal and vertical alignment, all of these 
 
 `bodyColor` string Required. The body color in hexadecimal.
 
-1456
 
 Metadata Types Letterhead
 
@@ -108547,7 +107090,6 @@ hexadecimal format.
 
 **•** `Center`
 
-1457
 
 Metadata Types Letterhead
 
@@ -108632,7 +107174,6 @@ Declarative Metadata Sample Definition
 
 ```
 
-1458
 
 ### Metadata Types LightningBolt
 
@@ -108704,7 +107245,6 @@ type string)
 
 **•** `Government`
 
-1459
 
 Metadata Types LightningBolt
 
@@ -108766,7 +107306,6 @@ Represents the list of images of a Lightning Bolt Solution.
 `image` string Required. The developer name of the `ContentAsset` type, which is used
 as a preview image for this Lightning Bolt Solution.
 
-1460
 
 Metadata Types LightningBolt
 
@@ -108853,7 +107392,6 @@ The following is an example of a LightningBolt component.
 
 ```
 
-1461
 
 ### Metadata Types LightningComponentBundle
 
@@ -108928,7 +107466,6 @@ Fields
 
 `apiVersion` double A double value that binds the component to a Salesforce API version.
 
-1462
 
 Metadata Types LightningComponentBundle
 
@@ -109000,7 +107537,6 @@ Represents a list of capabilities. A capability is something that a component ca
 
 **•** `lightning__ServiceCloudVoiceToolkitApi`
 
-1463
 
 Metadata Types LightningComponentBundle
 
@@ -109072,7 +107608,6 @@ lwc
 
 ```
 
-1464
 
 ### Metadata Types LightningExperienceTheme
 
@@ -109158,7 +107693,6 @@ the API name of the LightningExperienceTheme.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1465
 
 Metadata Types LightningExperienceTheme
 
@@ -109225,7 +107759,6 @@ in Setup. Limited to 70 characters.
 `shouldOverrideLoadingImage` boolean If `true`, the LightningExperienceTheme overrides the splash screen
 image.
 
-1466
 
 ### Metadata Types LightningMessageChannel
 
@@ -109306,7 +107839,6 @@ to Lightning Message Channels in managed packages and Lightning Message Channels
 [Message Channel in Visualforce can’t pass the AppExchange Security Review. See Considerations and Limitations in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/message_channel_considerations.htm)
 _Visualforce Developer Guide_ .
 
-1467
 
 Metadata Types LightningMessageChannel
 
@@ -109379,7 +107911,6 @@ Here’s an example of a LightningMessageChannel component with LightningMessage
 
 ```
 
-1468
 
 ### Metadata Types LightningOnboardingConfig
 
@@ -109453,7 +107984,6 @@ Version
 
 ### LightningOnboardingConfig components are available in API version 49.0 and later.
 
-1469
 
 Metadata Types LightningOnboardingConfig
 
@@ -109520,7 +108050,6 @@ The following is an example of a LightningOnboardingConfig component.
 
 ```
 
-1470
 
 ### Metadata Types LightningTypeBundle
 
@@ -109579,7 +108108,6 @@ Version
 
 ### LightningTypeBundle components are available in API version 64.0 and later.
 
-1471
 
 Metadata Types LightningTypeBundle
 
@@ -109653,7 +108181,6 @@ base64Binary
 
 Required. The JSON content of the resource.
 
-1472
 
 Metadata Types LightningTypeBundle
 
@@ -109750,7 +108277,6 @@ In this example, the custom Lightning type `flightResponse` is a complex type th
 
 ```
 
-1473
 
 Metadata Types LightningTypeBundle
 
@@ -109846,7 +108372,6 @@ In this example, the custom Lightning type `flightFilter` is a complex type that
 
 ```
 
-1474
 
 Metadata Types LightningTypeBundle
 
@@ -109940,7 +108465,6 @@ Contents of the `editor.json` file.
 
 Note: flightFilter is a custom LWC component referenced in `editor.json` file.
 
-1475
 
 ### Metadata Types LiveChatAgentConfig
 
@@ -110003,7 +108527,6 @@ Indicates whether the greeting is disabled for agents during
 chat transfer and chat conferencing ( `true` ) or not ( `false` ).
 Available in API version 53.0 and later.
 
-1476
 
 Metadata Types LiveChatAgentConfig
 
@@ -110078,7 +108601,6 @@ Indicates whether previews of customers’ messages are
 displayed as customers type ( `true` ) or not ( `false` ) in the
 agent’s Chat window. Available in API version 29.0 and later.
 
-1477
 
 Metadata Types LiveChatAgentConfig
 
@@ -110149,7 +108671,6 @@ agent configuration.
 `users` AgentConfigUserAssignments Specifies the users that are associated with a specific agent
 configuration.
 
-1478
 
 Metadata Types LiveChatAgentConfig
 
@@ -110197,7 +108718,6 @@ Represents the agent skills associated with a supervisor’s Chat configuration.
 `skill` string Specifies the agent skills available for filtering the Agent
 Status list in the Supervisor Panel.
 
-1479
 
 ### Metadata Types LiveChatButton
 
@@ -110271,7 +108791,6 @@ Version
 
 ### LiveChatButton on page 1480 is available in API version 28.0 and later.
 
-1480
 
 Metadata Types LiveChatButton
 
@@ -110343,7 +108862,6 @@ or not ( `false` ).
 
 **•** `BottomLeft`
 
-1481
 
 Metadata Types LiveChatButton
 
@@ -110414,7 +108932,6 @@ Indicates whether custom routing is enabled for
 incoming chat requests ( `true` ) or not ( `false` ).
 Available in API version 30.0 and later.
 
-1482
 
 Metadata Types LiveChatButton
 
@@ -110482,7 +108999,6 @@ Specifies the number of seconds an agent has
 to answer an incoming chat request before the
 request is routed to another agent.
 
-1483
 
 Metadata Types LiveChatButton
 
@@ -110543,7 +109059,6 @@ LiveChatButtonDeployments
 
 Represents the deployments associated with a chat button or invitation.
 
-1484
 
 ### Metadata Types LiveChatDeployment
 
@@ -110621,7 +109136,6 @@ File Suffix and Directory Location
 
 `liveChatDeployments` directory.
 
-1485
 
 Metadata Types LiveChatDeployment
 
@@ -110685,7 +109199,6 @@ Salesforce site with Chat.
 `windowTitle` string Specifies the title of the window associated
 with the deployment.
 
-1486
 
 ### Metadata Types LiveChatSensitiveDataRule
 
@@ -110753,7 +109266,6 @@ File Suffix and Directory Location
 
 `liveChatSensitiveDataRule` folder.
 
-1487
 
 Metadata Types LiveChatSensitiveDataRule
 
@@ -110831,7 +109343,6 @@ The following is an example of a LiveChatSensitiveDataRule component.
 
 ```
 
-1488
 
 ### Metadata Types LoyaltyProgramSetup
 
@@ -110896,7 +109407,6 @@ To use this metadata type, your org must have either B2C - Loyalty, B2C - Loyalt
 
     - Advanced, or Referral Marketing license enabled.
 
-1489
 
 Metadata Types LoyaltyProgramSetup
 
@@ -110969,7 +109479,6 @@ string
 **Description**
 The subtype of transaction journals processed by the loyalty program process.
 
-1490
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111046,7 +109555,6 @@ LoyaltyProgramProcessRule[] on page 1496
 **Description**
 The rules associated with the loyalty program process.
 
-1491
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111124,7 +109632,6 @@ int
 The number of decimal places supported by the parameter when it is of the type
 Variable and data type Numeric.
 
-1492
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111200,7 +109707,6 @@ Possible values are:
 
 **•** `Constant`
 
-1493
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111269,7 +109775,6 @@ LoyaltyProgramProcessConditionFilterCriteria
 Represents a collection of fields relating to a filter criteria that's part of a condition. Multiple filter criteria can be added for a condition.
 Filter criteria determine which records are filtered by related condition.
 
-1494
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111350,7 +109855,6 @@ The value of the filter criteria.
 **Field Type**
 LoyaltyPgmProcCondType (enumeration of type string)
 
-1495
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111424,7 +109928,6 @@ string
 The rule that processes new transaction journals before the current rule. The current
 rule is triggered when the previous rule completes processing transaction journals.
 
-1496
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111501,7 +110004,6 @@ actionName
 **Field Type**
 string
 
-1497
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111575,7 +110077,6 @@ This value is available in API version 56.0 and later.
 **–** `GetOutputsFromDecisionTable` —Gets outputs provided by a
 decision table. This value is available in API version 56.0 and later.
 
-1498
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111644,7 +110145,6 @@ advocate’s current attribute value for the selected engagement attribute.
 **–** `GetCustomerPromotionAttrValue` —This value is available in API
 version 64.0 and later.
 
-1499
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111714,7 +110214,6 @@ rule. The selected flow must be of the type LoyaltyManagementFlow.
 **Field Type**
 string
 
-1500
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111781,7 +110280,6 @@ Required.
 
 The value of the parameter.
 
-1501
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111861,7 +110359,6 @@ The following is an example of a LoyaltyProgramSetup component.
 
 ```
 
-1502
 
 Metadata Types LoyaltyProgramSetup
 
@@ -111976,7 +110473,6 @@ Metadata Types LoyaltyProgramSetup
 
 ```
 
-1503
 
 Metadata Types LoyaltyProgramSetup
 
@@ -112067,7 +110563,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1504
 
 ### Metadata Types ManagedContentType ManagedContentType
 
@@ -112125,7 +110620,6 @@ ManagedContentNodeType
 
 Represents the structure of individual nodes within the custom content type.
 
-1505
 
 Metadata Types ManagedContentType
 
@@ -112194,7 +110688,6 @@ Rich text node (max length=65536 characters)
 
 Image node
 
-1506
 
 ```
 nodeType
@@ -112264,7 +110757,6 @@ the content creation page.
 When `NAMEFIELD` is used, `isRequired` must also be set to
 `true` for the field.
 
-1507
 
 Metadata Types ManagedContentType
 
@@ -112365,7 +110857,6 @@ The following is an example of a ManagedContentType component.
 
 ```
 
-1508
 
 ### Metadata Types ManagedEventSubscription (Beta)
 
@@ -112418,7 +110909,6 @@ in the event bus. This option sends new events and any other events
 less than 72 hours old. You can reprocess all stored events and catch
 up on missed events. Use this option sparingly. Subscribing with the
 
-1509
 
 ```
 defaultReplay
@@ -112503,7 +110993,6 @@ data capture channel. The topic name can be one of the following values.
 **•** For a custom platform event
 channel— `/event/CustomPEChannel__chn`
 
-1510
 
 ### Metadata Types ManagedTopics
 
@@ -112578,7 +111067,6 @@ Represents navigational and featured topics managed in an Experience Cloud site.
 Note: The related Experience Cloud site must exist before you deploy managed topics. (This occurs automatically when deploying
 an entire org.)
 
-1511
 
 Metadata Types ManagedTopics
 
@@ -112631,7 +111119,6 @@ Experience Cloud site home page.
 Enter a number between 0 and 24. (The maximum amount of navigational
 or featured topics is 25.)
 
-1512
 
 Metadata Types ManagedTopics
 
@@ -112744,7 +111231,6 @@ The following example shows the ManagedTopics component itself:
 
 ```
 
-1513
 
 ### Metadata Types MarketingAppExtension
 
@@ -112813,7 +111299,6 @@ Version
 
 ### MarketingAppExtension components are available in API version 54.0 and later.
 
-1514
 
 Metadata Types MarketingAppExtension
 
@@ -112885,7 +111370,6 @@ Required. Label for the MarketingAppExtension. In the UI, this field is Extensio
 Represents an Activity Type, which is a prospect activity that occurs in a third-party app and can be used in Account Engagement
 automations.
 
-1515
 
 Metadata Types MarketingAppExtension
 
@@ -112966,7 +111450,6 @@ This example retrieves all Activity Types associated with the MarketingAppExtens
 
 ```
 
-1516
 
 Metadata Types MarketingAppExtension
 
@@ -113080,7 +111563,6 @@ This example `package.xml` references the previous definition.
 
 ```
 
-1517
 
 Metadata Types MarketingAppExtension
 
@@ -113160,7 +111642,6 @@ string
 **Description**
 The description of the action for internal reference. Appears in the UI.
 
-1518
 
 Metadata Types MarketingAppExtension
 
@@ -113256,7 +111737,6 @@ This example retrieves a specific action associated the MarketingAppExtension co
 
 ```
 
-1519
 
 ### Metadata Types MatchingRule
 
@@ -113348,7 +111828,6 @@ Represents a matching rule that is used to identify duplicate records.
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1520
 
 Metadata Types MatchingRule
 
@@ -113426,7 +111905,6 @@ string)
 `fieldName` string Required. Indicates which field to compare when determining if a record is
 similar enough to an existing record to be considered a match.
 
-1521
 
 Metadata Types MatchingRule
 
@@ -113522,7 +112000,6 @@ The following `package.xml` shows how to reference a matching rule by name. It s
 
 ```
 
-1522
 
 ### Metadata Types MessagingChannel
 
@@ -113585,7 +112062,6 @@ Special Access Rules
 
 This type is available if your org has the “Configure Messaging” and “View Setup and Configuration” permissions for Messaging enabled.
 
-1523
 
 Metadata Types MessagingChannel
 
@@ -113664,7 +112140,6 @@ The external account identifier for the messaging channel. Available in API vers
 **Field Type**
 string
 
-1524
 
 Metadata Types MessagingChannel
 
@@ -113742,7 +112217,6 @@ The queue routing configuration for the messaging channel. Available in API vers
 **Field Type**
 string
 
-1525
 
 Metadata Types MessagingChannel
 
@@ -113804,11 +112278,9 @@ Parameters added to the messaging channel.
 
 Represents settings specific to an embedded messaging channel.
 
-1526
 
 Metadata Types MessagingChannel
 
-1527
 
 Metadata Types MessagingChannel
 
@@ -113818,7 +112290,6 @@ This junction entity stores the messaging channel authorization for a Messaging 
 we configure different authorization methods supported by the Messaging for In-App and Web `(Embedded Messaging) channel. This
 entity is available in API version 62.0 or later.
 
-1528
 
 Metadata Types MessagingChannel
 
@@ -113880,7 +112351,6 @@ range from 5 to 60.
 **Field Type**
 MessagingAutoResponseType (enumeration of type string)
 
-1529
 
 Metadata Types MessagingChannel
 
@@ -113954,7 +112424,6 @@ int
 **Description**
 The maximum length of the parameter value.
 
-1530
 
 Metadata Types MessagingChannel
 
@@ -114023,7 +112492,6 @@ MessagingChannelStandardParameter
 
 Represents a standard parameter used to pass information into a channel.
 
-1531
 
 Metadata Types MessagingChannel
 
@@ -114086,7 +112554,6 @@ MessagingChannelUsage
 
 Represents the deployment type and consent configuration for a messaging channel. Available in API version 62.0 and later.
 
-1532
 
 Metadata Types MessagingChannel
 
@@ -114094,7 +112561,6 @@ MessagingKeyword
 
 Represents settings specific to an EmbeddedMessaging MessagingChannel. Available in API version 62 or later.
 
-1533
 
 Metadata Types MessagingChannel
 
@@ -114206,7 +112672,6 @@ the messaging channel to a flow, and it routes to a flow with a fallback queue.
 
 ```
 
-1534
 
 Metadata Types MessagingChannel
 
@@ -114318,7 +112783,6 @@ If you route the messaging channel to a queue, there’s no fallback flow.
 
 ```
 
-1535
 
 ### Metadata Types Metadata
 
@@ -114385,7 +112849,6 @@ For example, for the custom field component
 A namespace prefix is a 1-character to 15-character alphanumeric
 identifier that distinguishes your package and its contents from other
 
-1536
 
 ### Metadata Types MetadataWithContent
 
@@ -114433,7 +112896,6 @@ Inherited from the Metadata component, this field isn’t defined in the
 WSDL for this component. It must be specified when creating, updating,
 or deleting. See create() to see an example of this field specified for a call.
 
-1537
 
 ### Metadata Types MfgProgramTemplate
 
@@ -114492,7 +112954,6 @@ The description of the manufacturing program template.
 **Description**
 The list of templates associated with the manufacturing program template.
 
-1538
 
 Metadata Types MfgProgramTemplate
 
@@ -114569,7 +113030,6 @@ such as an opportunity or account.
 **Field Type**
 string
 
-1539
 
 Metadata Types MfgProgramTemplate
 
@@ -114644,7 +113104,6 @@ Values are:
 
 **•** `ForecastSetRelation`
 
-1540
 
 ### Metadata Types MilestoneType
 
@@ -114722,7 +113181,6 @@ Version
 
 ### MilestoneType on page 1541 is available in API version 27.0 and later.
 
-1541
 
 ### Metadata Types MlDomain
 
@@ -114799,7 +113257,6 @@ File Suffix and Directory Location
 
 ### MlDomain components have the suffix .mlDomain and are stored in the mlDomains folder.
 
-1542
 
 Metadata Types MlDomain
 
@@ -114852,7 +113309,6 @@ MlIntentUtterance
 
 A customer input for this intent.
 
-1543
 
 Metadata Types MlDomain
 
@@ -114934,7 +113390,6 @@ string)
 
 `mlSlotClassValues` MlSlotClassValue[] List of entity values associated with an entity of type `Value` .
 
-1544
 
 Metadata Types MlDomain
 
@@ -115028,7 +113483,6 @@ The following is an example of an MlDomain.
 
 ```
 
-1545
 
 Metadata Types MlDomain
 
@@ -115138,7 +113592,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1546
 
 ### Metadata Types MLDataDefinition
 
@@ -115196,7 +113649,6 @@ This field further filters data used in training and scoring when
 `segmentFilter` is combined with both `scoringFilter` and
 `trainingFilter` . For example, select all records in a specific region.
 
-1547
 
 Metadata Types MLDataDefinition
 
@@ -115288,7 +113740,6 @@ string)
 Represents a data filter based on a data comparison. For each comparison, there’s a left-hand element, an operator, and a right-hand
 element. For each record, only one of these left-hand elements is populated: `lhFilter`, `lhPredictionField`, or `lhValue` .
 
-1548
 
 Metadata Types MLDataDefinition
 
@@ -115390,7 +113841,6 @@ string)
 
 **•** `NotEquals`
 
-1549
 
 Metadata Types MLDataDefinition
 
@@ -115483,7 +113933,6 @@ string)
 
 `rhValue` string The right-hand value.
 
-1550
 
 ### Metadata Types MLPredictionDefinition
 
@@ -115540,7 +113989,6 @@ Configuration permission can view, group, sort, and filter this field.
 `masterLabel` string Label that identifies the ML prediction definition throughout the Salesforce
 user interface.
 
-1551
 
 ### Metadata Types MobileApplicationDetail
 
@@ -115613,7 +114061,6 @@ File Suffix and Directory Location
 
 ### MobileApplicationDetail components have the suffix MobileApplicationDetail and are stored in the MobileApplicationDetails folder.
 
-1552
 
 Metadata Types MobileApplicationDetail
 
@@ -115694,7 +114141,6 @@ metadata.
 
 ```
 
-1553
 
 ### Metadata Types MobileSecurityAssignment
 
@@ -115759,7 +114205,6 @@ connectedApplication
 **Field Type**
 string
 
-1554
 
 Metadata Types MobileSecurityAssignment
 
@@ -115841,7 +114286,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1555
 
 ### Metadata Types MobileSecurityPolicy
 
@@ -115902,7 +114346,6 @@ boolean
 Required. Indicates whether the mobile security policy is enabled. The default value
 is `false`, which means that the policy is disabled.
 
-1556
 
 Metadata Types MobileSecurityPolicy
 
@@ -115979,7 +114422,6 @@ Values are:
 
 **•** `TextList`
 
-1557
 
 Metadata Types MobileSecurityPolicy
 
@@ -116062,7 +114504,6 @@ Values are:
 
 **•** `LogTextmessage`
 
-1558
 
 Metadata Types MobileSecurityPolicy
 
@@ -116148,7 +114589,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1559
 
 ### Metadata Types MobSecurityCertPinConfig
 
@@ -116208,7 +114648,6 @@ string
 
 Required.
 
-1560
 
 Metadata Types MobSecurityCertPinConfig
 
@@ -116282,7 +114721,6 @@ string
 The name of the mobile security assignment associated with the mobile security policy.
 See MobileSecurityAssignment on page 1554.
 
-1561
 
 Metadata Types MobSecurityCertPinConfig
 
@@ -116373,7 +114811,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1562
 
 ### Metadata Types ModerationRule
 
@@ -116434,7 +114871,6 @@ Special Access Rules
 To view, create, edit, and delete moderation rules, you need the Manage Experiences or Create and Set Up Experiences permission. As
 of Spring ’20 and later, only users with permission to edit moderation rules can access this object.
 
-1563
 
 Metadata Types ModerationRule
 
@@ -116504,7 +114940,6 @@ user profiles. All feed types, such as polls and links, are supported.
 Note: To moderate feed posts, use `entityName FeedItem` with
 `fieldName RawBody` . To moderate feed comments, use
 
-1564
 
 Metadata Types ModerationRule
 
@@ -116575,7 +115010,6 @@ The following is an example of a ModerationRule component.
 
 ```
 
-1565
 
 ### Metadata Types MutingPermissionSet
 
@@ -116670,7 +115104,6 @@ Represents a set of disabled permissions and is used in conjunction with Permiss
 
 This type extends the PermissionSet metadata type.
 
-1566
 
 Metadata Types MutingPermissionSet
 
@@ -116725,7 +115158,6 @@ PermissionSet, settings enabled by MutingPermissionSet are turned off for the pe
 
 `label` string Required. The name of the muting permission set.
 
-1567
 
 Metadata Types MutingPermissionSet
 
@@ -116834,7 +115266,6 @@ Set Group.
 
 ```
 
-1568
 
 ### Metadata Types MyDomainDiscoverableLogin
 
@@ -116902,7 +115333,6 @@ authentication logic.
 `executeApexHandlerAs` string The user who is executing the handler. Requires the Manage User
 permission.
 
-1569
 
 ### Metadata Types NamedCredential
 
@@ -116972,7 +115402,6 @@ Note: All credentials stored within this entity are encrypted under a framework 
 on the platform. Salesforce encrypts your credentials by auto-creating org-specific keys. Credentials encrypted using the previous
 encryption scheme have been migrated to the new framework.
 
-1570
 
 Metadata Types NamedCredential
 
@@ -117035,7 +115464,6 @@ This field is valid only when NamedCredentialType is set to `Legacy` .
 
 **This field is deprecated in API version 56.0.**
 
-1571
 
 Metadata Types NamedCredential
 
@@ -117111,7 +115539,6 @@ This field is valid only when NamedCredentialType is set to `Legacy` .
 **First available in API version 46.0, this field is deprecated in API version 56.0**
 **and later.**
 
-1572
 
 Metadata Types NamedCredential
 
@@ -117186,7 +115613,6 @@ This field is valid only when NamedCredentialType is set to `Legacy` .
 
 **This field is deprecated in API version 56.0.**
 
-1573
 
 Metadata Types NamedCredential
 
@@ -117258,7 +115684,6 @@ This field is valid only when NamedCredentialType is set to `Legacy` .
 **Field Type**
 int
 
-1574
 
 Metadata Types NamedCredential
 
@@ -117333,7 +115758,6 @@ token expires.
 
 This field is valid only when NamedCredentialType is set to `Legacy` .
 
-1575
 
 Metadata Types NamedCredential
 
@@ -117408,7 +115832,6 @@ external system. Corresponds to **Identity Type** in the user interface. Values 
 
 **•** `Anonymous`
 
-1576
 
 Metadata Types NamedCredential
 
@@ -117480,7 +115903,6 @@ NamedCredentialParameter
 Represents the parameters that configure a named credential. Named credential parameters are used to configure Named Credential
 callouts through a combination of the type, name, and value/lookup fields. Available in API version 56.0 and later.
 
-1577
 
 Metadata Types NamedCredential
 
@@ -117554,7 +115976,6 @@ Required.
 
 The name of the named credential parameter.
 
-1578
 
 Metadata Types NamedCredential
 
@@ -117627,7 +116048,6 @@ boolean
 **Description**
 Reserved for internal use.
 
-1579
 
 Metadata Types NamedCredential
 
@@ -117728,7 +116148,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1580
 
 ### Metadata Types NavigationMenu
 
@@ -117786,7 +116205,6 @@ Fields
 
 `container` string The name of the navigation menu container.
 
-1581
 
 Metadata Types NavigationMenu
 
@@ -117846,7 +116264,6 @@ as _`/contactsupport`_ . If `type` is
 `NavigationalTopic`, `target` isn’t
 used.
 
-1582
 
 Metadata Types NavigationMenu
 
@@ -117903,7 +116320,6 @@ Branding for a menu item.
 `tileImage` string Name of the ContentAsset to use for the
 navigation menu item.
 
-1583
 
 Metadata Types NavigationMenu
 
@@ -117998,7 +116414,6 @@ The following is an example of a NavigationMenu component.
 
 ```
 
-1584
 
 ### Metadata Types Network
 
@@ -118068,7 +116483,6 @@ file types lets you control what your members upload and
 also prevents spammers from polluting your site with
 inappropriate files. Available in API version 36.0 and later.
 
-1585
 
 Metadata Types Network
 
@@ -118136,7 +116550,6 @@ later.
 when counting points toward reputation levels. Available
 in API version 41.0 and later.
 
-1586
 
 Metadata Types Network
 
@@ -118214,7 +116627,6 @@ Determines whether to optimize cached images for guest
 users on all devices when a site uses Salesforce’s CDN for
 Digital Experiences. Available in API version 56.0 and later.
 
-1587
 
 Metadata Types Network
 
@@ -118283,7 +116695,6 @@ Replaces the option to like a question or answer with the
 option to upvote or downvote. Available in API version
 41.0 and later.
 
-1588
 
 Metadata Types Network
 
@@ -118356,7 +116767,6 @@ Password Flow, Headless Passwordless Login Flow, and
 their associated APIs. Available in API version 60.0 and
 later.
 
-1589
 
 Metadata Types Network
 
@@ -118420,7 +116830,6 @@ accrue points by performing certain actions.
 `reputationPointsRules` ReputationPointsRules The points members accrue when they perform certain
 defined actions.
 
-1590
 
 Metadata Types Network
 
@@ -118486,7 +116895,6 @@ site URL is
 _`MyDomainName`_ `.my.site.com/partners`, then
 `partners` is the `urlPathPrefix` .
 
-1591
 
 Metadata Types Network
 
@@ -118549,7 +116957,6 @@ on edit and detail pages.
 
 `zeronaryComplementColor` string Font color used with `zeronaryColor` .
 
-1592
 
 Metadata Types Network
 
@@ -118610,7 +117017,6 @@ available in API 39.0 and later.
 `target` string Required if `type` is `ExternalLink`,
 `InternalLink`, or
 
-1593
 
 Metadata Types Network
 
@@ -118669,7 +117075,6 @@ You can’t nest other items of type
 `NavigationalTopic` under
 `MenuLabel` .
 
-1594
 
 Metadata Types Network
 
@@ -118731,7 +117136,6 @@ interface.
 `isFirstPartyAppsAllowed` leanb **o** Determines whether the Experience Cloud site can use headless identity flows that use the
 OAuth 2.0 for First-Party Applications draft protocol.
 
-1595
 
 Metadata Types Network
 
@@ -118800,7 +117204,6 @@ to both the Headless Registration Flow and the Headless Forgot Password Flow.
 Google issues a reCAPTCHA score only for reCAPTCHA v3 implementations. If you implement
 reCAPTCHA v2, this field doesn’t apply.
 
-1596
 
 Metadata Types Network
 
@@ -118865,7 +117268,6 @@ sets are members of the site, unless the user is a Chatter customer (from a cust
 Note: If a Chatter customer (from a
 customer group) is assigned a
 
-1597
 
 Metadata Types Network
 
@@ -118895,7 +117297,6 @@ of type string)
 `homePageOverrideSetting` NetworkPageOverrideSetting (enumeration
 of type string)
 
-1598
 
 Required. Specifies the page type that the
 Change Password page setting applies to.
@@ -118998,7 +117399,6 @@ RecommendationAudienceDetail
 
 The specific details of an audience for recommendations. Available in API version 41.0 and later.
 
-1599
 
 Metadata Types Network
 
@@ -119053,7 +117453,6 @@ ReputationBranding
 
 Branding for the reputation level.
 
-1600
 
 Metadata Types Network
 
@@ -119085,7 +117484,6 @@ Represents the name and lower value of the reputation level. The application cal
 
 `label` string
 
-1601
 
 Represents any branding associated with
 the reputation level, specifically, the custom
@@ -119185,7 +117583,6 @@ event. The default number of points per event is:
 
 **•** FeedItemWriteAPost +1
 
-1602
 
 Metadata Types Network
 
@@ -119238,7 +117635,6 @@ The specific details of a scheduled recommendation. Available in API version 41.
 `channel` RecommendationChannel (enumeration of
 type string)
 
-1603
 
 A way to group recommendations together
 to determine where they show up in the
@@ -119311,7 +117707,6 @@ list.
 `recommendationAudience` string The name of the audience for this scheduled
 recommendation.
 
-1604
 
 Metadata Types Network
 
@@ -119401,7 +117796,6 @@ A sample XML definition of a network.
 
 ```
 
-1605
 
 Metadata Types Network
 
@@ -119516,7 +117910,6 @@ Metadata Types Network
 
 ```
 
-1606
 
 Metadata Types Network
 
@@ -119631,7 +118024,6 @@ Metadata Types Network
 
 ```
 
-1607
 
 ### Metadata Types NetworkBranding
 
@@ -119726,7 +118118,6 @@ Community (Zone)
 Represents the branding and color scheme applied to the login pages of an Experience Cloud site. (Experience Cloud sites are represented
 by the Network component.)
 
-1608
 
 Metadata Types NetworkBranding
 
@@ -119786,7 +118177,6 @@ value.
 `network` string The name of the Experience Cloud site
 associated with the branding.
 
-1609
 
 Metadata Types NetworkBranding
 
@@ -119857,7 +118247,6 @@ A sample XML definition of network branding.
 
 ```
 
-1610
 
 ### Metadata Types NotificationTypeConfig
 
@@ -119925,7 +118314,6 @@ NotificationTypeSettings
 
 Represents the delivery settings for a standard or custom notification type.
 
-1611
 
 Metadata Types NotificationTypeConfig
 
@@ -119989,7 +118377,6 @@ The following is an example of a NotificationTypeConfig component.
 
 ```
 
-1612
 
 ### Metadata Types OauthCustomScope
 
@@ -120086,7 +118473,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents a permission defining the protected data that a connected app can access from an external entity when Salesforce is the
 OAuth authorization provider. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1613
 
 Metadata Types OauthCustomScope
 
@@ -120151,7 +118537,6 @@ Required. Indicates whether this component is protected () or not
 ( `false` ). Protected components cannot be linked to or referenced by
 components created in the installing org.
 
-1614
 
 Metadata Types OauthCustomScope
 
@@ -120231,7 +118616,6 @@ the connected app requesting access to the order status API. When the external e
 a customer’s order status, it validates the connected app’s access token and Order Status scope. With a successful validation, the app
 can access the customer order status information in the order system’s API.
 
-1615
 
 ### Metadata Types OauthTokenExchangeHandler
 
@@ -120289,7 +118673,6 @@ string
 **Description**
 Required. The API name for the handler.
 
-1616
 
 Metadata Types OauthTokenExchangeHandler
 
@@ -120363,7 +118746,6 @@ boolean
 Indicates whether the handler can be linked to or referenced by components created
 [in a subscriber org. See Protected Components in Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/packaging_protected_components.htm)
 
-1617
 
 Metadata Types OauthTokenExchangeHandler
 
@@ -120431,7 +118813,6 @@ OauthTokenExchHandlerApp
 Represents the settings for a specific Salesforce connected app or external client app that’s enabled for the token exchange handler. A
 handler can be enabled for multiple apps.
 
-1618
 
 Metadata Types OauthTokenExchangeHandler
 
@@ -120519,7 +118900,6 @@ The following is an example of an OauthTokenExchangeHandler component.
 
 ```
 
-1619
 
 ### Metadata Types OcrSampleDocument
 
@@ -120583,7 +118963,6 @@ Special Access Rules
 
 To use this metadata type, your Salesforce org must have the AWSTextract1000LimitAddOn license.
 
-1620
 
 Metadata Types OcrSampleDocument
 
@@ -120657,7 +119036,6 @@ the key.
 `fieldLabelMaxY` double A normalized coordinate representing the bottom edge of the bounding box
 of the key.
 
-1621
 
 Metadata Types OcrSampleDocument
 
@@ -120718,7 +119096,6 @@ OcrSampleDocumentPageItem
 
 Represents a foreign key reference to the item on the sample document page containing a value for the page item.
 
-1622
 
 Metadata Types OcrSampleDocument
 
@@ -120819,7 +119196,6 @@ The following is an example of a OcrSampleDocument component.
 
 ```
 
-1623
 
 ### Metadata Types OcrTemplate
 
@@ -120898,7 +119274,6 @@ Special Access Rules
 
 To use this metadata type, your Salesforce org must have the AWSTextract1000LimitAddOn license.
 
-1624
 
 Metadata Types OcrTemplate
 
@@ -120960,7 +119335,6 @@ Required. Specifies the type of mapping. Available in API version 56.0 and later
 
 Valid values are:
 
-1625
 
 ```
 type
@@ -121033,7 +119407,6 @@ extracting and mapping information from a customer form.
 `ocrSampleDocumentPageItem` OcrSampleDocumentPageItem A reference to the item on the sample document page containing this field's
 value. Available in API version 56.0 and later.
 
-1626
 
 Metadata Types OcrTemplate
 
@@ -121119,7 +119492,6 @@ The following is an example of a OcrTemplate component.
 
 ```
 
-1627
 
 ### Metadata Types OutboundNetworkConnection
 
@@ -121211,7 +119583,6 @@ File Suffix and Directory Location
 
 `outboundNetworkConnections` folder.
 
-1628
 
 Metadata Types OutboundNetworkConnection
 
@@ -121297,7 +119668,6 @@ string)
 after an outbound AwsPrivateLink is created. The value is read-only when
 the `status` is `Ready` .
 
-1629
 
 Metadata Types OutboundNetworkConnection
 
@@ -121384,7 +119754,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1630
 
 ### Metadata Types Package Package
 
@@ -121444,7 +119813,6 @@ This field is available in API version 24.0 and later.
 
 `setupWeblink` string The weblink used to describe package installation.
 
-1631
 
 ### Metadata Types ParticipantRole
 
@@ -121504,7 +119872,6 @@ Sample package.xml Manifest Files
 Represents details, such as the name and associated default access level, for a role that a participant can have in the context of a parent
 record.
 
-1632
 
 Metadata Types ParticipantRole
 
@@ -121572,7 +119939,6 @@ Required. The parent object for the participant role.
 
 Valid values are:
 
-1633
 
 Metadata Types ParticipantRole
 
@@ -121656,7 +120022,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1634
 
 ### Metadata Types PathAssistant
 
@@ -121719,7 +120084,6 @@ been configured, not that it doesn’t exist.
 `recordTypeName` string Required. The name of the record type associated with the path. This
 field is not updateable.
 
-1635
 
 Metadata Types PathAssistant
 
@@ -121817,7 +120181,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1636
 
 ### Metadata Types PaymentGatewayProvider
 
@@ -121884,7 +120247,6 @@ unique within your organization.
 `comments` string Users can add comments to provide additional details about a record.
 Maximum of 1000 characters.
 
-1637
 
 ### Metadata Types PermissionSet
 
@@ -121967,7 +120329,6 @@ In API version 39.0 and earlier, retrieving or deploying permission set metadata
 the permission set. Junction metadata (such as Apex, CRUD) are included only if the metadata for the related component is also included
 in the package definition.
 
-1638
 
 Metadata Types PermissionSet
 
@@ -122031,7 +120392,6 @@ API version 29.0, this field supports custom apps only. In
 API version 30.0 and later, this field supports both
 standard and custom apps.
 
-1639
 
 Metadata Types PermissionSet
 
@@ -122112,7 +120472,6 @@ up to API Version 37.0.
 `objectPermissions` PermissionSetObjectPermissions[] Indicates the objects that are accessible to a user assigned
 to this permission set, and the kind of access available
 
-1640
 
 Metadata Types PermissionSet
 
@@ -122174,7 +120533,6 @@ PermissionSetApplicationVisibility
 
 PermissionSetApplicationVisibility on page 1641 determines whether an app is visible to a user assigned to this permission set.
 
-1641
 
 Metadata Types PermissionSet
 
@@ -122225,7 +120583,6 @@ PermissionSetCustomSettingAccesses
 PermissionSetCustomSettingAccesses represents the custom setting access for users assigned to a permission set. Available in API version
 47.0 and later.
 
-1642
 
 Metadata Types PermissionSet
 
@@ -122279,7 +120636,6 @@ PermissionSetExternalDataSourceAccess
 PermissionSetExternalDataSourceAccess on page 1643 represents the data source access for users with identity type of `Per User` .
 Available in API version 27.0 and later.
 
-1643
 
 Metadata Types PermissionSet
 
@@ -122338,7 +120694,6 @@ PermissionSetObjectPermissions
 
 PermissionSetObjectPermissions represents the object permissions for a permission set. Use one of these elements for each permission.
 
-1644
 
 Metadata Types PermissionSet
 
@@ -122404,7 +120759,6 @@ PermissionSetApexPageAccess on page 1645 represents the Visualforce page access 
 `enabled` boolean Required. Indicates whether users assigned to this permission set
 can execute the Visualforce page ( `true` ) or not ( `false` ).
 
-1645
 
 Metadata Types PermissionSet
 
@@ -122459,7 +120813,6 @@ PermissionSetServicePresenceStatusAccess
 
 Represents the presence statuses that reps assigned to this profile have access. Available in API version 64.0 and later.
 
-1646
 
 Metadata Types PermissionSet
 
@@ -122561,7 +120914,6 @@ The following is an example of a PermissionSet component.
 
 ```
 
-1647
 
 ### Metadata Types PermissionSetGroup
 
@@ -122648,7 +121000,6 @@ Declarative Metadata File Suffix and Directory Location
 Permission set groups are stored in the `permissionsetgroups` directory. The file name matches the permission set API name
 and the extension is `.permissionsetgroup` . For example, a permission set group with the name
 
-1648
 
 Metadata Types PermissionSetGroup
 
@@ -122706,7 +121057,6 @@ values are:
 
 **•** `Failed` —The group recalculation failed.
 
-1649
 
 Metadata Types PermissionSetGroup
 
@@ -122807,7 +121157,6 @@ groups, also retrieve the related components. For example, to retrieve Permissio
 
 ```
 
-1650
 
 ### Metadata Types PermissionSetLicenseDefinition (Developer Preview)
 
@@ -122859,7 +121208,6 @@ The default value is `false` . This field is available in API version
 
 `label` string Required. The name of the permission set license definition.
 
-1651
 
 Metadata Types PermissionSetLicenseDefinition (Developer Preview)
 
@@ -122929,7 +121277,6 @@ The following is an example of a PermissionSetLicenseDefinition component.
 
 ```
 
-1652
 
 ### Metadata Types PersonAccountOwnerPowerUser
 
@@ -123006,7 +121353,6 @@ string
 **Description**
 Required. The unique name of the object in the API.
 
-1653
 
 ### Metadata Types PipelineInspMetricConfig
 
@@ -123071,7 +121417,6 @@ Special Access Rules
 
 Only users with the Customize Application or Modify All Data permission can access this type.
 
-1654
 
 Metadata Types PipelineInspMetricConfig
 
@@ -123152,7 +121497,6 @@ The following is an example of a PipelineInspMetricConfig component.
 
 ```
 
-1655
 
 ### Metadata Types PlatformCachePartition
 
@@ -123218,7 +121562,6 @@ partition in your organization ( `true` ) or not ( `false` ).
 `masterLabel` string Required. The label of the cache partition that appears in the
 Salesforce user interface.
 
-1656
 
 Metadata Types PlatformCachePartition
 
@@ -123306,7 +121649,6 @@ The following is an example of a PlatformCachePartition component.
 
 ```
 
-1657
 
 ### Metadata Types PlatformEventChannel
 
@@ -123384,7 +121726,6 @@ Version
 
 ### PlatformEventChannel components are available in API version 45.0 and later.
 
-1658
 
 Metadata Types PlatformEventChannel
 
@@ -123453,7 +121794,6 @@ notifications. For example, for the Account standard object, the name
 is `AccountChangeEvent`, or for a custom object MyObject__c, the
 name is `MyObject__ChangeEvent` .
 
-1659
 
 Metadata Types PlatformEventChannel
 
@@ -123538,7 +121878,6 @@ The `channelMembers` field of the PlatformEventChannel type is removed in API ve
 PlatformEventChannel components created in prior versions can’t be deployed using a later API version but you can deploy them in the
 same API version they were created with.
 
-1660
 
 ### Metadata Types PlatformEventChannelMember
 
@@ -123624,7 +121963,6 @@ _Change Data Capture Developer Guide_ [: Compose Streams of Change Data Capture 
 Represents an entity selected for Change Data Capture notifications on a standard or custom channel, or a platform event selected on
 a custom channel.
 
-1661
 
 Metadata Types PlatformEventChannelMember
 
@@ -123687,7 +122025,6 @@ Capture notifications. For example, for the Account standard object, the
 name is `AccountChangeEvent`, or for a custom object
 MyObject__c, the name is `MyObject__ChangeEvent` .
 
-1662
 
 Metadata Types PlatformEventChannelMember
 
@@ -123772,7 +122109,6 @@ are supported in API version 51.0 and later.
 
 ```
 
-1663
 
 Metadata Types PlatformEventChannelMember
 
@@ -123865,7 +122201,6 @@ This manifest file references members of the `SalesEvents__chn` custom channel.
 
 ```
 
-1664
 
 ### Metadata Types PlatformEventSubscriberConfig
 
@@ -123934,7 +122269,6 @@ Version
 
 ### PlatformEventSubscriberConfig components are available in API version 51.0 and later.
 
-1665
 
 Metadata Types PlatformEventSubscriberConfig
 
@@ -123997,7 +122331,6 @@ entity. Setting the running user to a specific user has these benefits:
 
 **•** Records are created or modified as this user.
 
-1666
 
 Metadata Types PlatformEventSubscriberConfig
 
@@ -124090,7 +122423,6 @@ fails. This example `package.xml` includes all the referenced components.
 
 ```
 
-1667
 
 ### Metadata Types Portal
 
@@ -124165,7 +122497,6 @@ Special Access Rules
 
 All users, including unauthenticated guest users, can view portals via the API.
 
-1668
 
 Metadata Types Portal
 
@@ -124234,7 +122565,6 @@ portal.
 `newCommentTemplate` string The email template to be used for auto-notifications on new
 case comments.
 
-1669
 
 Metadata Types Portal
 
@@ -124311,7 +122641,6 @@ Here’s a sample XML definition of a portal.
 
 ```
 
-1670
 
 ### Metadata Types PortalDelegablePermissionSet
 
@@ -124373,7 +122702,6 @@ Version
 
 ### PortalDelegablePermissionSet components are available in API version 56.0 and later.
 
-1671
 
 Metadata Types PortalDelegablePermissionSet
 
@@ -124462,7 +122790,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1672
 
 ### Metadata Types PostTemplate
 
@@ -124529,7 +122856,6 @@ post template.
 
 `description` string Optional description of the post template.
 
-1673
 
 ### Metadata Types ProductAttributeSet
 
@@ -124602,7 +122928,6 @@ Version
 
 ### ProductAttributeSet components are available in API version 54 and later.
 
-1674
 
 ### Metadata Types PresenceDeclineReason
 
@@ -124660,7 +122985,6 @@ The following is an example of a PresenceDeclineReason component.
 
 ```
 
-1675
 
 ### Metadata Types PresenceUserConfig
 
@@ -124724,7 +123048,6 @@ later.
 `afterConvoWorkMaxTime` int The maximum length of time, measured in seconds, an agent has to
 complete After Conversation Work (ACW). You must set this field if
 
-1676
 
 Metadata Types PresenceUserConfig
 
@@ -124793,7 +123116,6 @@ field to the value set in the `capacity` field. Available in API version
 `maxExtensions` string The maximum number of times an agent can extend their After Work
 Conversation (ACW) time. Specify a value from 1 through 10. You must
 
-1677
 
 Metadata Types PresenceUserConfig
 
@@ -124856,7 +123178,6 @@ The following is an example of a PresenceUserConfig component.
 
 ```
 
-1678
 
 ### Metadata Types PricingActionParameters
 
@@ -124938,7 +123259,6 @@ File Suffix and Directory Location
 
 `pricingActionParameters` folder.
 
-1679
 
 Metadata Types PricingActionParameters
 
@@ -125010,7 +123330,6 @@ Date and time from when the pricing action becomes effective.
 **Field Type**
 dateTime
 
-1680
 
 Metadata Types PricingActionParameters
 
@@ -125090,7 +123409,6 @@ The following is an example of a PricingActionParameters component.
 
 ```
 
-1681
 
 ### Metadata Types PricingRecipe
 
@@ -125157,7 +123475,6 @@ defaultPricingProcedure
 **Description**
 Expression set definition that's associated with this pricing recipe setting.
 
-1682
 
 Metadata Types PricingRecipe
 
@@ -125234,7 +123551,6 @@ PricingRecipeTableMapping[]
 **Description**
 Mapping of the pricing components of a lookup table with the chosen pricing recipe.
 
-1683
 
 Metadata Types PricingRecipe
 
@@ -125314,7 +123630,6 @@ Valid values are:
 
 PricingProcedureOutputMap[]
 
-1684
 
 Metadata Types PricingRecipe
 
@@ -125387,7 +123702,6 @@ Derived field that references a specific column in a decision table or decision 
 **Field Type**
 string
 
-1685
 
 Metadata Types PricingRecipe
 
@@ -125471,7 +123785,6 @@ The following is an example of a PricingRecipe component.
 
 ```
 
-1686
 
 ### Metadata Types Profile
 
@@ -125563,7 +123876,6 @@ In API version 29.0 and later, you can retrieve and deploy access settings for t
 
 **•** Custom field permissions
 
-1687
 
 Metadata Types Profile
 
@@ -125626,7 +123938,6 @@ Configuration permission is required.
 
 **•** Record types
 
-1688
 
 Metadata Types Profile
 
@@ -125696,7 +124007,6 @@ a user assigned to this profile. Available in API version
 `description` string The profile description. Limit: 255 characters. Available
 in API version 30.0 and later.
 
-1689
 
 Metadata Types Profile
 
@@ -125766,7 +124076,6 @@ standard profiles is disabled.
 `pageAccesses` ProfileApexPageAccess[] Indicates which Visualforce pages that users assigned to
 this profile can execute.
 
-1690
 
 Metadata Types Profile
 
@@ -125840,7 +124149,6 @@ string)
 
 `friendlyname` string Required. The name of the LoginFlow.
 
-1691
 
 Metadata Types Profile
 
@@ -125912,7 +124220,6 @@ override:
 to the name of the Lightning page, Lightning component, s-control, or
 Visualforce page to use as the override. To reference installed
 
-1692
 
 Metadata Types Profile
 
@@ -125984,7 +124291,6 @@ ProfileApplicationVisibility determines whether an app is visible to a user assi
 `visible` boolean Required. Indicates whether this app is visible to users assigned to this
 profile ( `true` ) or not ( `false` ).
 
-1693
 
 Metadata Types Profile
 
@@ -126021,7 +124327,6 @@ ProfileCustomPermissions
 ProfileCustomPermissions represents the custom permissions access for users assigned to a profile. Only enabled custom permissions
 are retrieved.
 
-1694
 
 Metadata Types Profile
 
@@ -126076,7 +124381,6 @@ Required. Indicates the name of the field.
 When referencing shared Activity fields, specify Event or Task. For
 example, `Event.Meeting__c` .
 
-1695
 
 Metadata Types Profile
 
@@ -126137,7 +124441,6 @@ day.
 **•** Valid values for `weekday` : `monday`, `tuesday`, `wednesday`,
 `thursday`, `friday`, `saturday`, or `sunday` . For example,
 
-1696
 
 Metadata Types Profile
 
@@ -126199,7 +124502,6 @@ created by the users assigned to this profile ( `true` ) or not ( `false` ).
 This field is named `revokeCreate` before version 14.0 and the logic
 is reversed. The field name change and the update from `true` to
 
-1697
 
 Metadata Types Profile
 
@@ -126269,7 +124571,6 @@ field can be read by the users assigned to this profile ( `true` ) or not
 ( `false` ), regardless of the sharing settings for the object. This setting
 includes private records (records with no parent object). This setting is
 
-1698
 
 Metadata Types Profile
 
@@ -126320,7 +124621,6 @@ accounts, contact Salesforce.
 `visible` boolean Required. Indicates whether this record type is visible to users assigned
 to this profile ( `true` ) or not ( `false` ).
 
-1699
 
 Metadata Types Profile
 
@@ -126385,7 +124685,6 @@ Represents the presence statuses that reps assigned to this profile have access.
 `enabled` boolean Required. Indicates whether the rep assigned to this profile has
 access to the presence status ( `true` ) or not ( `false` ).
 
-1700
 
 Metadata Types Profile
 
@@ -126484,7 +124783,6 @@ This sample uses picklists, profiles, record types, and a custom app:
 
 ```
 
-1701
 
 Metadata Types Profile
 
@@ -126589,7 +124887,6 @@ Metadata Types Profile
 
 ```
 
-1702
 
 Metadata Types Profile
 
@@ -126683,7 +124980,6 @@ When you use the `retrieve()` call to get information about profiles, the return
 for the other metadata types referenced in the retrieve request. Exceptions include user permissions, IP address ranges, and login hours,
 which are always retrieved. For example, the following `package.xml` file contains a `types` element that matches all custom
 
-1703
 
 Metadata Types Profile
 
@@ -126785,7 +125081,6 @@ This `package.xml` file allows you to return profile permissions for the `MyCust
 
 ```
 
-1704
 
 ### Metadata Types ProfileActionOverride
 
@@ -126850,7 +125145,6 @@ Version
 to user profile must also have a corresponding app assignment because more granular Home page assignments are supported. As a
 result, ProfileActionOverride is defined for CustomApplication rather than Profile.
 
-1705
 
 Metadata Types ProfileActionOverride
 
@@ -126921,7 +125215,6 @@ Avoid creating duplicate ProfileActionOverrides in your org. Duplicate ProfileAc
 to select or deselect the **Disable end user personalization of nav items in this app** option in app settings and the **Disable Navigation**
 **Bar Personalization in Lightning Experience** User Interface setting.
 
-1706
 
 ### Metadata Types ProfilePasswordPolicy
 
@@ -127007,7 +125300,6 @@ File Suffix and Directory Location
 
 `profilePasswordPolicies` folder.
 
-1707
 
 Metadata Types ProfilePasswordPolicy
 
@@ -127071,7 +125363,6 @@ changed. Valid values:
 
 **•** `60`
 
-1708
 
 ### Metadata Types ProfileSessionSetting
 
@@ -127145,7 +125436,6 @@ File Suffix and Directory Location
 
 `profileSessionSettings` folder.
 
-1709
 
 Metadata Types ProfileSessionSetting
 
@@ -127209,7 +125499,6 @@ string)
 Assurance requirements set in the org’s session settings under Session
 Security Levels.
 
-1710
 
 ### Metadata Types Prompt
 
@@ -127267,7 +125556,6 @@ Version
 
 ### Prompt components are available in API version 46.0 and later.
 
-1711
 
 Metadata Types Prompt
 
@@ -127334,7 +125622,6 @@ this value on the last step.
 **Field Type**
 string
 
-1712
 
 Metadata Types Prompt
 
@@ -127409,7 +125696,6 @@ The position of a floating prompt on the page. Valid values are:
 
 **•** `BottomLeft`
 
-1713
 
 Metadata Types Prompt
 
@@ -127487,7 +125773,6 @@ first step.
 **Field Type**
 string
 
-1714
 
 Metadata Types Prompt
 
@@ -127560,7 +125845,6 @@ string
 **Description**
 Used by Salesforce for efficient querying.
 
-1715
 
 Metadata Types Prompt
 
@@ -127634,7 +125918,6 @@ on page load ( `true` ) or not ( `false` ). This field is available in API versi
 **Field Type**
 date
 
-1716
 
 Metadata Types Prompt
 
@@ -127706,7 +125989,6 @@ string
 Used by Salesforce to identify the prompt’s page location along with `targetPageKey1`,
 `targetPageKey2`, `targetPageKey4`, and `targetPageType` .
 
-1717
 
 Metadata Types Prompt
 
@@ -127780,7 +126062,6 @@ this value on the first step. Valid values are:
 **Field Type**
 int
 
-1718
 
 Metadata Types Prompt
 
@@ -127853,7 +126134,6 @@ int
 **Description**
 Required. The number remains `1` since multiple versions aren’t saved in the org.
 
-1719
 
 Metadata Types Prompt
 
@@ -127925,7 +126205,6 @@ and record pages only.
 **•** `{!$Permission.StandardPermission.` _**`permissionName`**_ `}` —Use
 this expression to control visibility based on the standard permissions
 
-1720
 
 Metadata Types Prompt
 
@@ -128008,7 +126287,6 @@ update your records.</body>
 
 ```
 
-1721
 
 Metadata Types Prompt
 
@@ -128116,7 +126394,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1722
 
 ### Metadata Types PublicKeyCertificate
 
@@ -128175,7 +126452,6 @@ boolean
 Indicates whether the public key certificate is active (true) or inactive (false). The default
 value is false.
 
-1723
 
 Metadata Types PublicKeyCertificate
 
@@ -128274,7 +126550,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1724
 
 ### Metadata Types PublicKeyCertificateSet
 
@@ -128335,7 +126610,6 @@ A description of the public key certificate set.
 **Field Type**
 string
 
-1725
 
 Metadata Types PublicKeyCertificateSet
 
@@ -128410,7 +126684,6 @@ Required.
 
 The PublicKeyCertificate we want to reference.
 
-1726
 
 ### Metadata Types Queue
 
@@ -128488,7 +126761,6 @@ Version
 
 ### Queue components are available in API version 24.0 and later.
 
-1727
 
 Metadata Types Queue
 
@@ -128549,7 +126821,6 @@ members.
 `users` Users[] Represents users in the org. Users can be added directly as queue
 members.
 
-1728
 
 Metadata Types Queue
 
@@ -128600,7 +126871,6 @@ Represents users in the org. Users can be added directly as queue members. Avail
 
 `user` string Represents a user. Specify the user’s username.
 
-1729
 
 Metadata Types Queue
 
@@ -128694,7 +126964,6 @@ end of duplicate names, so these groups and roles can be referred to independent
 
 ```
 
-1730
 
 ### Metadata Types QueueRoutingConfig
 
@@ -128766,7 +127035,6 @@ Fields
 `capacityPercentage` double The percentage of an agent’s capacity for work items that’s consumed
 by a specific type of work item from this service channel. Voice calls must
 
-1731
 
 Metadata Types QueueRoutingConfig
 
@@ -128830,7 +127098,6 @@ paused. The paused capacity feature is available with status-based
 capacity and Enhanced Omni-Channel only. Available in API version 64.0
 and later.
 
-1732
 
 Metadata Types QueueRoutingConfig
 
@@ -128906,7 +127173,6 @@ The following is an example of a QueueRoutingConfig component.
 
 ```
 
-1733
 
 ### Metadata Types QuickAction
 
@@ -128970,7 +127236,6 @@ Version
 
 ### QuickAction components are available in API version 28.0 and later.
 
-1734
 
 Metadata Types QuickAction
 
@@ -129039,7 +127304,6 @@ The input and output of the quick action.
 
 Available in API version 63.0 and later.
 
-1735
 
 Metadata Types QuickAction
 
@@ -129123,7 +127387,6 @@ org has Health Cloud enabled)
 
 **•** `Update`
 
-1736
 
 Metadata Types QuickAction
 
@@ -129200,7 +127463,6 @@ Represents the field names and their respective formulas and literal values that
 page 1734. If a field on an action has both a predefined value and a default value set, the action uses the predefined value, not the default
 value. A formula value takes precedence over a literal value if both are defined.
 
-1737
 
 Metadata Types QuickAction
 
@@ -129264,7 +127526,6 @@ A row item comprised of fields and defined for a QuickActionLayoutColumn on page
 
 `field` string Represents a specific field in QuickActionLayoutItem on page 1738.
 
-1738
 
 Metadata Types QuickAction
 
@@ -129357,7 +127618,6 @@ The following is an example of a QuickAction on page 1734 component:
 
 ```
 
-1739
 
 ### Metadata Types RedirectWhitelistUrl
 
@@ -129440,7 +127700,6 @@ File Suffix and Directory Location
 
 folder.
 
-1740
 
 ### Metadata Types RecommendationStrategy
 
@@ -129491,7 +127750,6 @@ Version
 
 ### RecommendationStrategy components are available in API version 45.0 and later.
 
-1741
 
 Metadata Types RecommendationStrategy
 
@@ -129553,7 +127811,6 @@ Base class for all strategy nodes. This is an abstract class.
 
 `childNode` string Array of child node names, in order of execution.
 
-1742
 
 Metadata Types RecommendationStrategy
 
@@ -129624,7 +127881,6 @@ is available in API version 46.0 and later.
 addresses, to an existing Quip chat room. This value is available in API
 version 46.0 and later.
 
-1743
 
 Metadata Types RecommendationStrategy
 
@@ -129691,7 +127947,6 @@ slide. This value is available in API version 46.0 and later.
 **•** `createQuipFolder` —Creates a Quip folder. This value is available in
 API version 46.0 and later.
 
-1744
 
 Metadata Types RecommendationStrategy
 
@@ -129755,7 +128010,6 @@ is available in API version 54.0 and later.
 **•** `getPoliciesByObject` —Gets Policy Center policies that contain a
 given object and returns a list of matching policy names.
 
-1745
 
 Metadata Types RecommendationStrategy
 
@@ -129822,7 +128076,6 @@ workspace. This value is available in API version 54.0 and later.
 a collection of Salesforce users is connected to a given Slack app. This value
 is available in API version 54.0 and later.
 
-1746
 
 Metadata Types RecommendationStrategy
 
@@ -129888,7 +128141,6 @@ reservations between locations or location groups.
 These values are used in the B2B Commerce Checkout Flow. If no version is
 specified, the value is available in API version 47.0 and later.
 
-1747
 
 Metadata Types RecommendationStrategy
 
@@ -129956,7 +128208,6 @@ in API version 64.0 and later.
 **•** `dataKitGetComponentAction` Gets the deployment status of
 data kit deployment jobs.
 
-1748
 
 Metadata Types RecommendationStrategy
 
@@ -130024,7 +128275,6 @@ commissions that producers receive for the insurance policy associated
 with the specified commission statement line item, and update the
 commission statement line item record status.
 
-1749
 
 Metadata Types RecommendationStrategy
 
@@ -130088,7 +128338,6 @@ or more change orders. This value is available in API version 56.0 and later.
 **•** `createInvoiceFromFulfillmentOrder` —Creates an invoice
 for a fulfillment order.
 
-1750
 
 Metadata Types RecommendationStrategy
 
@@ -130154,7 +128403,6 @@ For values used in Fundraising for Nonprofit Cloud, see Flow for Fundraising.
 
 [For values used in Manufacturing Cloud, see Flow for Manufacturing Cloud.](https://developer.salesforce.com/docs/atlas.en-us.258.0.mfg_api_devguide.meta/mfg_api_devguide/mfg_flow_metadata_api.htm)
 
-1751
 
 Metadata Types RecommendationStrategy
 
@@ -130219,7 +128467,6 @@ customer as an advocate for a referral promotion.
 an advocate refers a friend, or when referred friends sign up or make a
 purchase.
 
-1752
 
 Metadata Types RecommendationStrategy
 
@@ -130285,7 +128532,6 @@ belongs to. This value is available in API version 53.0 and later.
 **•** `issueVoucher` —Issues a voucher for a member or contract. This value
 is available in API version 51.0 and later.
 
-1753
 
 Metadata Types RecommendationStrategy
 
@@ -130350,7 +128596,6 @@ later.
 These values are used in Field Service. If no version is specified, the value is
 available in API version 52.0 and later.
 
-1754
 
 Metadata Types RecommendationStrategy
 
@@ -130416,7 +128661,6 @@ This value is used in the Process Field Update Suggestions flow.
 a field update suggestion from a field generation prompt template. This
 value is available in API version 64.0 and later.
 
-1755
 
 Metadata Types RecommendationStrategy
 
@@ -130470,7 +128714,6 @@ StrategyNodeFilter
 
 Defines a filter element that filters recommendations. It extends StrategyNodeUnionBase and inherits all its fields.
 
-1756
 
 Metadata Types RecommendationStrategy
 
@@ -130538,7 +128781,6 @@ activation. This value is available in API version 64.0 and later.
 **•** `addMessageToChat` —Adds a message to an existing Salesforce
 Anywhere chat. This value is available in API version 49.0 and later.
 
-1757
 
 Metadata Types RecommendationStrategy
 
@@ -130606,7 +128848,6 @@ and later.
 **•** `convertAttributesToJson` —Converts the given attributes into
 a JSON string format. This value is available in API version 64.0 and later.
 
-1758
 
 Metadata Types RecommendationStrategy
 
@@ -130671,7 +128912,6 @@ flows with a processType of Flow or AutolaunchedFlow. To invoke an
 autolaunched flow from one of those types, use FlowSubflow. This value
 is available in API version 32.0 and later.
 
-1759
 
 Metadata Types RecommendationStrategy
 
@@ -130737,7 +128977,6 @@ and later.
 **•** `sendAlert` —Sends Salesforce Anywhere alerts to users. This value is
 available in API version 49.0 and later.
 
-1760
 
 Metadata Types RecommendationStrategy
 
@@ -130800,7 +129039,6 @@ in API version 46.0 and later.
 **•** `triggerJourney`                        - Send an individual to a specified journey. This
 value is available in API version 64.0 and later.
 
-1761
 
 Metadata Types RecommendationStrategy
 
@@ -130866,7 +129104,6 @@ order summary. This value is available in API version 47.0 and later.
 
 [For values used in Business Rules Engine, see Flow for Business Rules Engine.](https://developer.salesforce.com/docs/atlas.en-us.258.0.industries_reference.meta/industries_reference/bre_flow_metadata_api.htm)
 
-1762
 
 Metadata Types RecommendationStrategy
 
@@ -130934,7 +129171,6 @@ a set of user inputs that represent policy details.
 
 **•** `getInsurancePolicy` —Get the details of an insurance policy.
 
-1763
 
 Metadata Types RecommendationStrategy
 
@@ -130998,7 +129234,6 @@ summaries from an order summary.
 fulfillment order capacity. This value is available in API version 55.0 and
 later.
 
-1764
 
 Metadata Types RecommendationStrategy
 
@@ -131064,7 +129299,6 @@ average distance from sets of inventory locations to an order recipient, and
 returns the sets sorted by that average distance. This value is available in
 API version 51.0 and later.
 
-1765
 
 Metadata Types RecommendationStrategy
 
@@ -131130,7 +129364,6 @@ value is available in API version 51.0 and later.
 batch calculation job from the Data Processing Engine. This value is available
 in API version 51.0 and later.
 
-1766
 
 Metadata Types RecommendationStrategy
 
@@ -131195,7 +129428,6 @@ balance. This value is available in API version 51.0 and later.
 with the benefit, which is assigned to a loyalty program member. This value
 is available in API version 51.0 and later.
 
-1767
 
 Metadata Types RecommendationStrategy
 
@@ -131262,7 +129494,6 @@ value is available in API version 51.0 and later.
 
 These values are for the Batch Management jobs.
 
-1768
 
 Metadata Types RecommendationStrategy
 
@@ -131329,7 +129560,6 @@ and if the list is linked to a service process.
 
 This value is used in the Get Opportunity Grounding Data flow.
 
-1769
 
 Metadata Types RecommendationStrategy
 
@@ -131386,7 +129616,6 @@ StrategyNodeRecommendationLimit
 
 Filters out recommendations that have already been accepted or rejected. Extends StrategyNodeUnionBase and inherits all of its fields.
 
-1770
 
 Metadata Types RecommendationStrategy
 
@@ -131460,7 +129689,6 @@ Valid values are:
 
 **•** `ENDS_WITH` =
 
-1771
 
 ```
 operator
@@ -131545,7 +129773,6 @@ Sorts the recommendations. Extends StrategyNodeUnionBase and inherits all of its
 
 `field` StrategyNodeSortField Required. Field to sort on.
 
-1772
 
 Metadata Types RecommendationStrategy
 
@@ -131605,7 +129832,6 @@ Valid values are:
 
 **•** `TIME`
 
-1773
 
 Metadata Types RecommendationStrategy
 
@@ -131714,7 +129940,6 @@ The following is an example of a RecommendationStrategy component that reference
 
 ```
 
-1774
 
 Metadata Types RecommendationStrategy
 
@@ -131829,7 +130054,6 @@ Metadata Types RecommendationStrategy
 
 ```
 
-1775
 
 ### Metadata Types RecordActionDeployment
 
@@ -131907,7 +130131,6 @@ Version
 
 ### RecordActionDeployment is available in API version 45.0 and later.
 
-1776
 
 Metadata Types RecordActionDeployment
 
@@ -131972,7 +130195,6 @@ Represents actions and attributes specified as channel defaults in a deployment.
 `action` string Required. Specifies the API name of an action. For example, the API name of a
 flow, such as `Verify_Information` .
 
-1777
 
 Metadata Types RecordActionDeployment
 
@@ -132050,7 +130272,6 @@ of page, it includes object-specific quick actions and uses an object-specific s
 
 Note: We support a maximum of 10 objects that provide context within a deployment.
 
-1778
 
 Metadata Types RecordActionDeployment
 
@@ -132122,7 +130343,6 @@ Indicates whether an action is frequently accessed by users ( `true` ) or not
 
 This field applies only to Action Launcher.
 
-1779
 
 Metadata Types RecordActionDeployment
 
@@ -132219,7 +130439,6 @@ The following is a sample of a `recordActionDeployment` file.
 
 ```
 
-1780
 
 ### Metadata Types RecordAggregationDefinition
 
@@ -132308,7 +130527,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1781
 
 Metadata Types RecordAggregationDefinition
 
@@ -132378,7 +130596,6 @@ string
 **Description**
 Data Processing Engine definition that aggregates data from one record to another.
 
-1782
 
 Metadata Types RecordAggregationDefinition
 
@@ -132457,7 +130674,6 @@ associatedObject
 **Field Type**
 string
 
-1783
 
 Metadata Types RecordAggregationDefinition
 
@@ -132527,7 +130743,6 @@ List of filters that are applied to the records of this record aggregation objec
 
 Available in API version 60.0 and later.
 
-1784
 
 Metadata Types RecordAggregationDefinition
 
@@ -132602,7 +130817,6 @@ Valid values are:
 
 **•** `Intermediate`
 
-1785
 
 Metadata Types RecordAggregationDefinition
 
@@ -132682,7 +130896,6 @@ Required.
 Reference value with which the designated field's values are compared when the filter
 is applied on the associated object's records.
 
-1786
 
 Metadata Types RecordAggregationDefinition
 
@@ -132789,7 +131002,6 @@ The following is an example of a RecordAggregationDefinition component.
 
 ```
 
-1787
 
 ### Metadata Types RecordAlertCategory
 
@@ -132869,7 +131081,6 @@ File Suffix and Directory Location
 
 folder.
 
-1788
 
 Metadata Types RecordAlertCategory
 
@@ -132944,7 +131155,6 @@ The following is an example of a RecordAlertCategory component.
 
 ```
 
-1789
 
 ### Metadata Types RegisteredExternalService
 
@@ -133015,7 +131225,6 @@ configUrl
 **Field Type**
 string
 
-1790
 
 Metadata Types RegisteredExternalService
 
@@ -133094,7 +131303,6 @@ later.
 **•** `Commerce_Endpoint_Cart_ItemCollection` —Available in API
 version 62.0 and later.
 
-1791
 
 Metadata Types RegisteredExternalService
 
@@ -133171,7 +131379,6 @@ string
 **Description**
 URI of icon for the extension provider.
 
-1792
 
 Metadata Types RegisteredExternalService
 
@@ -133261,7 +131468,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1793
 
 ### Metadata Types ReferencedDashboard
 
@@ -133313,7 +131519,6 @@ created from a template.
 
 `visibility` string The visibility of the dashboard. Valid values are: `ALL` and `LIMITED` .
 
-1794
 
 ### Metadata Types RelatedRecordAssocCriteria
 
@@ -133372,7 +131577,6 @@ Special Access Rules
 
 To use this object, you must have the Financial Services Cloud Extension permission set.
 
-1795
 
 Metadata Types RelatedRecordAssocCriteria
 
@@ -133450,7 +131654,6 @@ The type of reference object event that triggers creation of the association. Va
 **Field Type**
 boolean
 
-1796
 
 Metadata Types RelatedRecordAssocCriteria
 
@@ -133521,7 +131724,6 @@ The status of the association criteria. Values are:
 
 **•** `Inactive`
 
-1797
 
 ### Metadata Types RelationshipGraphDefinition
 
@@ -133598,7 +131800,6 @@ Version
 
 ### RelationshipGraphDefinition components are available in API version 55.0 and later.
 
-1798
 
 Metadata Types RelationshipGraphDefinition
 
@@ -133664,7 +131865,6 @@ RelationshipGraphDefVersion
 
 The list of graph versions associated with the relationship graph definition.
 
-1799
 
 Metadata Types RelationshipGraphDefinition
 
@@ -133760,7 +131960,6 @@ The following is an example of a RelationshipGraphDefinition component.
 
 ```
 
-1800
 
 Metadata Types RelationshipGraphDefinition
 
@@ -133875,7 +132074,6 @@ Metadata Types RelationshipGraphDefinition
 
 ```
 
-1801
 
 ### Metadata Types RemoteSiteSetting
 
@@ -133949,7 +132147,6 @@ Version
 
 ### RemoteSiteSetting on page 1802 components are available in API version 19.0 and later.
 
-1802
 
 ### Metadata Types Report
 
@@ -134015,7 +132212,6 @@ terms to avoid any effect on customer implementations.
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1803
 
 Metadata Types Report
 
@@ -134104,7 +132300,6 @@ To correctly reference the nested folder, append a trailing slash (/) to its ful
 
 ```
 
-1804
 
 Metadata Types Report
 
@@ -134176,7 +132371,6 @@ available in API version 65.0 and later.
 `currency` `CurrencyIsoCode` (enumeration of type When using multiple currencies, some reports
 string) allow you to display converted amounts by
 
-1805
 
 Metadata Types Report
 
@@ -134251,7 +132445,6 @@ group and subtotal data across a matrix report
 
 (row headings). When grouping by a date field,
 
-1806
 
 Metadata Types Report
 
@@ -134326,7 +132519,6 @@ Defines the API Name for the report type.
 
 This field is available in API version 48.0 and later.
 
-1807
 
 Metadata Types Report
 
@@ -134396,7 +132588,6 @@ territory hierarchy.
 
 This field is available in API version 17.0 and later.
 
-1808
 
 Metadata Types Report
 
@@ -134459,7 +132650,6 @@ summary formula, for example, `FORMULA1` . This name is used
 to reference custom summary formulas from other report
 components, including conditional highlighting.
 
-1809
 
 Metadata Types Report
 
@@ -134517,7 +132707,6 @@ globally grouping across the blocks.
 
 ReportAggregateReference defines the developer name used for custom summary formulas in joined reports.
 
-1810
 
 Metadata Types Report
 
@@ -134577,7 +132766,6 @@ use, a bucket field contains multiple buckets.
 
 ReportBucketFieldValue defines a bucket value used in the bucket field.
 
-1811
 
 Metadata Types Report
 
@@ -134642,7 +132830,6 @@ example, `CAMPAIGN_SOURCE`
 `sortByName` string The API name of the column, aggregate, or custom summary
 field used to order the grouping.
 
-1812
 
 Metadata Types Report
 
@@ -134703,7 +132890,6 @@ highlighting.
 `scale` int The formula result is calculated to the specified number of
 decimal places. Valid values `0` through `18` .
 
-1813
 
 Metadata Types Report
 
@@ -134765,7 +132951,6 @@ Salesforce Help.
 
 `FiscalWeek` When custom fiscal years are enabled: By fiscal week
 
-1814
 
 Metadata Types Report
 
@@ -134828,7 +133013,6 @@ ReportColumn
 
 ReportColumn defines how fields (columns) are displayed in the report.
 
-1815
 
 Metadata Types Report
 
@@ -134902,7 +133086,6 @@ of valid language values, see Language.
 
 ReportFilterItem limits the report results by filtering data on specified fields.
 
-1816
 
 Metadata Types Report
 
@@ -134976,7 +133159,6 @@ ReportFormat
 
 An enumeration of type string that defines the report format. Valid values:
 
-1817
 
 Metadata Types Report
 
@@ -135033,7 +133215,6 @@ range upper bounds. Valid values:
 
 #54C254. At least one color is required. You can optionally specify
 
-1818
 
 Metadata Types Report
 
@@ -135097,7 +133278,6 @@ ReportAggregateDatatype
 
 An enumeration of type string that specifies the data type for formatting and display of custom summary formula results. Valid values:
 
-1819
 
 Metadata Types Report
 
@@ -135160,7 +133340,6 @@ all values individually on the chart; set to `false` to combine
 small groups into 'Others.' This field is available in API version
 17.0 and later.
 
-1820
 
 Metadata Types Report
 
@@ -135234,7 +133413,6 @@ supported in version API 17.0 and later. See
 
 `textColor` string The color (in HTML format) of the chart text and labels.
 
-1821
 
 Metadata Types Report
 
@@ -135306,7 +133484,6 @@ Help. Valid values:
 
 ```
 
-1822
 
 Metadata Types Report
 
@@ -135373,7 +133550,6 @@ ChartSummary defines how data in the chart is summarized. Valid values:
 
 field to specify the summary value to use for the aggregation.
 
-1823
 
 Metadata Types Report
 
@@ -135435,7 +133611,6 @@ An enumeration of type string that defines the report format. Valid values:
 
 ```
 
-1824
 
 Metadata Types Report
 
@@ -135508,7 +133683,6 @@ A sample XML snippet using cross filters to build an Accounts report for cases w
 
 ```
 
-1825
 
 Metadata Types Report
 
@@ -135576,7 +133750,6 @@ time period's start date and end date.
 
 `INTERVAL_THISMONTH` This calendar month
 
-1826
 
 Metadata Types Report
 
@@ -135642,7 +133815,6 @@ Metadata Types Report
 
 `NEXT_FISCALWEEK` When custom fiscal years are enabled: Next fiscal week
 
-1827
 
 Metadata Types Report
 
@@ -135731,7 +133903,6 @@ A sample XML report definition:
 
 ```
 
-1828
 
 Metadata Types Report
 
@@ -135846,7 +134017,6 @@ Metadata Types Report
 
 ```
 
-1829
 
 Metadata Types Report
 
@@ -135961,7 +134131,6 @@ Metadata Types Report
 
 ```
 
-1830
 
 Metadata Types Report
 
@@ -136073,7 +134242,6 @@ A sample XML report definition:
 
 ```
 
-1831
 
 Metadata Types Report
 
@@ -136188,7 +134356,6 @@ Metadata Types Report
 
 ```
 
-1832
 
 Metadata Types Report
 
@@ -136303,7 +134470,6 @@ Metadata Types Report
 
 ```
 
-1833
 
 ### Metadata Types ReportType
 
@@ -136364,7 +134530,6 @@ Version
 
 Custom report types are available in API version 14.0 and later.
 
-1834
 
 Metadata Types ReportType
 
@@ -136442,7 +134607,6 @@ later.)
 `deployed` boolean Required. Indicates whether the report type is available to users ( `true` )
 or whether it's still in development ( `false` ).
 
-1835
 
 Metadata Types ReportType
 
@@ -136498,7 +134662,6 @@ this custom report type.
 `masterLabel` string Required. The label for this group of columns in the report
 wizard.
 
-1836
 
 Metadata Types ReportType
 
@@ -136593,7 +134756,6 @@ Assets.
 
 ```
 
-1837
 
 ### Metadata Types RestrictionRule
 
@@ -136682,7 +134844,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 that specified users have to designated records. A scoping rule has `enforcementType` set to `Scoping` and controls the default
 records that your users see without restricting access. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1838
 
 Metadata Types RestrictionRule
 
@@ -136755,7 +134916,6 @@ objects, and these objects are supported:
 If `enforcementType` is set to `Scoping`, custom objects and these
 objects are supported:
 
-1839
 
 Metadata Types RestrictionRule
 
@@ -136851,7 +135011,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1840
 
 ### Metadata Types RetrievalSummaryDefinition
 
@@ -136922,7 +135081,6 @@ and the order in which it should be processed.
 
 RetrievalSummaryDefObject[]
 
-1841
 
 Metadata Types RetrievalSummaryDefinition
 
@@ -136990,7 +135148,6 @@ RetrievalSummaryDefObject
 Represents a rollup definition that aggregates data from a related object. Each rollup definition specifies the aggregation logic, the fields
 to retrieve, and the processing order for summarizing data across object relationships.
 
-1842
 
 Metadata Types RetrievalSummaryDefinition
 
@@ -137064,7 +135221,6 @@ rollup from related Opportunity records.
 
 ```
 
-1843
 
 ### Metadata Types Role
 
@@ -137152,7 +135308,6 @@ Declarative Metadata File Suffix and Directory Location
 The file suffix for role components is `.role` and components are stored in the `roles` directory of the corresponding package
 directory.
 
-1844
 
 ### Metadata Types RoleOrTerritory
 
@@ -137215,7 +135370,6 @@ Version
 
 Note: You can’t create a RoleOrTerritory component directly. Use the Role or Territory metadata types instead.
 
-1845
 
 Metadata Types RoleOrTerritory
 
@@ -137282,7 +135436,6 @@ opportunities is Public Read/Write.
 If no value is set for this field, this field value uses the default access level
 that is specified in the Manage Territory page in Setup.
 
-1846
 
 ### Metadata Types RpaRobotPoolMetadata
 
@@ -137362,7 +135515,6 @@ Version
 
 ### SalesWorkQueueSettings components are available in API version 49.0 and later.
 
-1847
 
 Metadata Types SalesWorkQueueSettings
 
@@ -137435,7 +135587,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1848
 
 ### Metadata Types SamlSsoConfig
 
@@ -137485,7 +135636,6 @@ Fields
 `attributeName` string The name of the identity provider’s application. Get this name from your
 identity provider.
 
-1849
 
 Metadata Types SamlSsoConfig
 
@@ -137563,7 +135713,6 @@ base64-encoded HTML forms.
 **•** `HTTP Redirect`                       - HTTP Redirect binding sends base64-encoded
 and URL-encoded SAML messages within URL parameters.
 
-1850
 
 Metadata Types SamlSsoConfig
 
@@ -137642,7 +135791,6 @@ This field is available in API version 55.0 and later. You can edit this field
 only for legacy SAML configurations created before Spring ’22. For
 configurations created after Spring ’22, this field is `true` by default.
 
-1851
 
 ### Metadata Types SchedulingObjective
 
@@ -137730,7 +135878,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents a scheduling objective in Workforce Engagement. Scheduling objectives define business goals that the scheduling tools
 consider when identifying agents for shifts.
 
-1852
 
 Metadata Types SchedulingObjective
 
@@ -137791,7 +135938,6 @@ Required. What the scheduling logic applies the objective to. The valid values a
 
 **•** `B` —Shift
 
-1853
 
 Metadata Types SchedulingObjective
 
@@ -137875,7 +136021,6 @@ The following is an example of a `SchedulingObjective` component.
 
 ```
 
-1854
 
 ### Metadata Types SchedulingRule
 
@@ -137937,7 +136082,6 @@ Special Access Rules
 This type is available only if Workforce Engagement is enabled in your org. To view, create, edit, and delete records, the user requires
 the Workforce Engagement Planner permission set.
 
-1855
 
 Metadata Types SchedulingRule
 
@@ -138016,7 +136160,6 @@ later.
 non-standard shifts can be assigned to each agent. Available in API version 54.0
 and later.
 
-1856
 
 Metadata Types SchedulingRule
 
@@ -138104,7 +136247,6 @@ The following is an example of a `SchedulingRule` component.
 
 ```
 
-1857
 
 ### Metadata Types Scontrol
 
@@ -138174,7 +136316,6 @@ an API call, client applications must encode the binary attachment
 data as base64. Upon receiving a response, client applications must
 decode the base64 data to binary. This conversion is handled for you
 
-1858
 
 Metadata Types Scontrol
 
@@ -138239,7 +136380,6 @@ alphanumeric characters only and begin with a letter. For example
 `supportsCaching` boolean Required. Indicates whether the s-control supports caching ( `true` )
 or not ( `false` ). Caching optimizes the page so that it remembers
 
-1859
 
 ### Metadata Types SearchCustomization
 
@@ -138304,7 +136444,6 @@ File Suffix and Directory Location
 
 folder.
 
-1860
 
 Metadata Types SearchCustomization
 
@@ -138377,7 +136516,6 @@ Specifies user profile if the search channel is Einstein Global Search Bar.
 **Field Type**
 string[]
 
-1861
 
 Metadata Types SearchCustomization
 
@@ -138449,7 +136587,6 @@ SearchCustomizationFieldOverride
 
 Represents the configuration for a specific field within an object.
 
-1862
 
 Metadata Types SearchCustomization
 
@@ -138524,7 +136661,6 @@ SearchCustomizationRuleValue
 
 Represents the value of a rule used to filter search results.
 
-1863
 
 Metadata Types SearchCustomization
 
@@ -138625,7 +136761,6 @@ The following is an example of a SearchCustomization component.
 
 ```
 
-1864
 
 ### Metadata Types SearchOrgWideObjectConfig
 
@@ -138720,7 +136855,6 @@ the search index includes searchable fields and fields protected by field-level 
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-1865
 
 Metadata Types SearchOrgWideObjectConfig
 
@@ -138783,7 +136917,6 @@ SearchOrgWideFieldConfig
 
 Represents the configuration in the search index for a field in an object.
 
-1866
 
 Metadata Types SearchOrgWideObjectConfig
 
@@ -138873,7 +137006,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1867
 
 ### Metadata Types ServiceAISetupDefinition
 
@@ -138942,7 +137074,6 @@ Recommendations
 
 `name` string Required. A reference to the configuration.
 
-1868
 
 ### Metadata Types ServiceAISetupField
 
@@ -139030,7 +137161,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents a field on cases or knowledge articles that Einstein uses to identify relevant articles in Einstein Article Recommendations. This
 type extends the Metadata metadata type and inherits its `fullName` field.
 
-1869
 
 Metadata Types ServiceAISetupField
 
@@ -139110,7 +137240,6 @@ The following is an example of a ServiceAISetupField component.
 
 ```
 
-1870
 
 ### Metadata Types ServiceChannel
 
@@ -139174,7 +137303,6 @@ complete After Conversation Work (ACW). You must set this field if
 10 through 3600. Available only for service channels of type Messaging
 or Voice.
 
-1871
 
 Metadata Types ServiceChannel
 
@@ -139237,7 +137365,6 @@ workspace so that the agent doesn’t have to manually accept them.
 `interactionComponent` string The custom console component to open in the footer when an agent
 accepts a work item from this service channel.
 
-1872
 
 Metadata Types ServiceChannel
 
@@ -139297,7 +137424,6 @@ Possible types are `IN_PROGRESS`, `PAUSED`, `COMPLETED` .
 `value` string Required. The value of the secondaryRoutingPriorityField field defined
 in the parent ServiceChannel.
 
-1873
 
 ### Metadata Types ServicePresenceStatus
 
@@ -139381,7 +137507,6 @@ Version
 
 ### ServicePresenceStatus components are available in API version 44.0 and later.
 
-1874
 
 Metadata Types ServicePresenceStatus
 
@@ -139452,7 +137577,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1875
 
 ### Metadata Types ServiceProcess ServiceProcess
 
@@ -139513,7 +137637,6 @@ Custom attributes that store the data associated with the service process.
 **Field Type**
 ### ServiceProcessDependency[]
 
-1876
 
 Metadata Types ServiceProcess
 
@@ -139589,7 +137712,6 @@ Values are:
 
 **•** `Extended`
 
-1877
 
 Metadata Types ServiceProcess
 
@@ -139667,7 +137789,6 @@ A system name for the attribute.
 **Field Type**
 string
 
-1878
 
 Metadata Types ServiceProcess
 
@@ -139738,7 +137859,6 @@ ServiceProcessDependency
 A dependent component of the service process, which can be a flow, an OmniScript, an Integration Definition, or a preprocessor Apex
 class.
 
-1879
 
 Metadata Types ServiceProcess
 
@@ -139818,7 +137938,6 @@ Required.
 
 The API Name of the group.
 
-1880
 
 Metadata Types ServiceProcess
 
@@ -139917,7 +138036,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1881
 
 ### Metadata Types Settings
 
@@ -139978,7 +138096,6 @@ Each settings component gets stored in a single file in the `settings` directory
 uses the format _`Setting feature`_ `.settings` . For example, the SecuritySettings file would be `Security.settings` . See
 “File Suffix and Directory Location” information for the individual settings components to determine the exact filename.
 
-1882
 
 Metadata Types Settings
 
@@ -140055,7 +138172,6 @@ ActionsSettings
 Represents an org’s actions settings for default quick actions, multi-dimensional publisher, and third-party actions. This type extends
 the Metadata metadata type and inherits its `fullName` field.
 
-1883
 
 Metadata Types Settings
 
@@ -140117,7 +138233,6 @@ CampaignSettings
 Represents an org’s Campaign Influence, Einstein Attribution, Einstein Key Accounts, and campaign member settings. These features
 help you understand how your campaigns and accounts are affecting your opportunity pipeline.
 
-1884
 
 Metadata Types Settings
 
@@ -140178,7 +138293,6 @@ Represents the settings for custom address fields.
 DataDotComSettings
 Represents the org's Data.com settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1885
 
 Metadata Types Settings
 
@@ -140238,7 +138352,6 @@ EncryptionKeySettings
 Represents an org’s encryption key settings, such as customer-supplied keys options and key derivation settings. This type extends
 the Metadata metadata type and inherits its `fullName` field.
 
-1886
 
 Metadata Types Settings
 
@@ -140301,7 +138414,6 @@ Represents settings for Customer Service Incident Management and Broadcast Commu
 IndustriesEinsteinFeatureSettings
 Represents the settings for enabling the Industries Einstein feature.
 
-1887
 
 Metadata Types Settings
 
@@ -140361,7 +138473,6 @@ type and inherits its `fullName` field.
 MailMergeSettings
 Represents the settings for Extended Mail Merge functionality.
 
-1888
 
 Metadata Types Settings
 
@@ -140423,7 +138534,6 @@ Represents order settings.
 OrgPreferenceSettings
 Removed in API version 48.0. Represents the unique org preference settings in a Salesforce org.
 
-1889
 
 Metadata Types Settings
 
@@ -140484,7 +138594,6 @@ RealTimeEventSettings
 Represents the list of Real-Time Event entities that you want to enable or disable. This type extends the Metadata metadata type
 and inherits its `fullName` field.
 
-1890
 
 Metadata Types Settings
 
@@ -140546,7 +138655,6 @@ SurveySettings
 Represents an org’s survey settings. Use the SurveySettings component to enable Salesforce Surveys, enable Customer Lifecycle
 Maps, and choose whether the owner of a survey can manage the responses.
 
-1891
 
 #### Metadata Types AccountPlanSettings
 
@@ -140603,7 +138711,6 @@ File Suffix and Directory Location
 
 files are different from other named components, because there is only one settings file for each settings component.
 
-1892
 
 #### Metadata Types AccountSettings
 
@@ -140677,7 +138784,6 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-1893
 
 Metadata Types AccountSettings
 
@@ -140741,7 +138847,6 @@ or only one account ( `false` ). The default value is `false` . If this feature
 
 (Contacts to Multiple Accounts) is disabled, secondary contact–account
 
-1894
 
 Metadata Types AccountSettings
 
@@ -140819,7 +138924,6 @@ The following is an example package manifest used to deploy or retrieve the Acco
 
 ```
 
-1895
 
 #### Metadata Types AccountInsightsSettings
 
@@ -140887,7 +138991,6 @@ The following is an example package manifest used to deploy or retrieve the Acco
 
 ```
 
-1896
 
 #### Metadata Types AccountIntelligenceSettings
 
@@ -140950,7 +139053,6 @@ value is `false` .
 `enableAutomatedAccountFields` must be `true` to use this
 setting.
 
-1897
 
 #### Metadata Types AccountingSettings
 
@@ -141022,7 +139124,6 @@ Version
 
 #### AccountingSettings components are available in API version 57.0 and later.
 
-1898
 
 Metadata Types AccountingSettings
 
@@ -141101,7 +139202,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1899
 
 #### Metadata Types ActionsSettings
 
@@ -141162,7 +139262,6 @@ multi-dimensional publisher ( `true` ) or not ( `false`, the default setting).
 `enableOfflineWebLinks` boolean Indicates whether a button or link is available offline ( `true` ), or if it's
 only available online ( `false`, the default setting).
 
-1900
 
 #### Metadata Types ActivitiesSettings
 
@@ -141223,7 +139322,6 @@ Fields
 
 Settings for all types listed below are controlled on the Activity Settings page or the User Interface settings page as noted.
 
-1901
 
 Metadata Types ActivitiesSettings
 
@@ -141291,7 +139389,6 @@ email templates.
 
 Admins control this field on the Activity Settings page.
 
-1902
 
 Metadata Types ActivitiesSettings
 
@@ -141371,7 +139468,6 @@ a regular task record edit page or a page that displays key task fields first.
 
 Admins control this field on the Activity Settings page.
 
-1903
 
 Metadata Types ActivitiesSettings
 
@@ -141441,7 +139537,6 @@ overlay.
 
 Admins control this field on the User Interface settings page.
 
-1904
 
 Metadata Types ActivitiesSettings
 
@@ -141529,7 +139624,6 @@ SEE ALSO:
 
 Document
 
-1905
 
 #### Metadata Types AddressSettings AddressSettings
 
@@ -141586,7 +139680,6 @@ to the API names of custom fields and objects. Configuring
 integration values allows integrations that you set up before
 enabling state and country/territory picklists to continue to work.
 
-1906
 
 Metadata Types AddressSettings
 
@@ -141648,7 +139741,6 @@ to the API names of custom fields and objects. Configuring
 integration values allows integrations that you set up before
 enabling state and country/territory picklists to continue to work.
 
-1907
 
 Metadata Types AddressSettings
 
@@ -141736,7 +139828,6 @@ also makes the country of Greenland available only in the API. This example is s
 
 ```
 
-1908
 
 Metadata Types AddressSettings
 
@@ -141839,7 +139930,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1909
 
 #### Metadata Types AIReplyRecommendationsSettings AIReplyRecommendationsSettings
 
@@ -141909,7 +139999,6 @@ The following is an example package.xml manifest that references the AIReplyReco
 
 ```
 
-1910
 
 #### Metadata Types AgentPlatformSettings
 
@@ -141962,7 +140051,6 @@ boolean
 **Description**
 Indicates whether Agentforce is turned on. The default value is `false` .
 
-1911
 
 #### Metadata Types AgentforceForDevelopersSettings
 
@@ -142029,7 +140117,6 @@ Version
 
 #### AgentforceForDevelopersSettings are available in API versions 62.0 and later.
 
-1912
 
 #### Metadata Types AnalyticsSettings
 
@@ -142099,7 +140186,6 @@ File Suffix and Directory Location
 
 from other named components because there’s only one settings file for each settings component.
 
-1913
 
 Metadata Types AnalyticsSettings
 
@@ -142173,7 +140259,6 @@ Indicates whether the Data Discovery live model metrics calculation
 feature is enabled in Salesforce ( `true` ) or not ( `false` ). Available in API
 version 48.0 and 49.0. Removed in API version 50.0.
 
-1914
 
 Metadata Types AnalyticsSettings
 
@@ -142277,7 +140362,6 @@ Indicates whether using auto-complete when choosing reports and
 dashboards is enabled in Salesforce ( `true` ) or not ( `false` ). Available
 in API version 47.0 and later.
 
-1915
 
 Metadata Types AnalyticsSettings
 
@@ -142398,7 +140482,6 @@ and later.
 Indicates whether a dashboard can be exported to a PDF in Salesforce
 ( `true` ) or not ( `false` ). Available in API version 48.0 and later.
 
-1916
 
 Metadata Types AnalyticsSettings
 
@@ -142501,7 +140584,6 @@ Indicates whether Lightning Web Components are enabled for use in
 CRM Analytics Dashboards ( `true` ) or not ( `false` ). Available as Beta
 in API version 53.0. Removed for GA in API version 54.0.
 
-1917
 
 Metadata Types AnalyticsSettings
 
@@ -142608,7 +140690,6 @@ Indicates whether recommended report types for Lightning Reports are
 available in Salesforce ( `true` ) or not ( `false` ). Available in API version
 54.0 to 56.0. Removed in API version 57.0.
 
-1918
 
 Metadata Types AnalyticsSettings
 
@@ -142726,7 +140807,6 @@ Indicates whether the unique org email for Lightning Experience Report
 subscriptions is enabled ( `true` ) or not ( `false` ). Available in API version
 61.0 and later.
 
-1919
 
 Metadata Types AnalyticsSettings
 
@@ -142836,7 +140916,6 @@ Indicates whether SQL live datasets are available in Salesforce ( `true` )
 or not ( `false` ). Available in API version 51.0 and 52.0. Removed in API
 version 53.0.
 
-1920
 
 Metadata Types AnalyticsSettings
 
@@ -142935,7 +141014,6 @@ Indicates whether replication (extract) for Salesforce objects is enabled
 in Salesforce ( `true` ) instead of SFDC Digest ( `false` ). Available in API
 version 47.0 and later.
 
-1921
 
 Metadata Types AnalyticsSettings
 
@@ -143042,7 +141120,6 @@ The maximum number of hours an embedded application can have the
 status `InProgress` before it’s canceled. Available in API version 50.0
 and later.
 
-1922
 
 Metadata Types AnalyticsSettings
 
@@ -143128,7 +141205,6 @@ The following is an example of the Analytics.settings file:
 
 ```
 
-1923
 
 #### Metadata Types ApexSettings
 
@@ -143198,7 +141274,6 @@ not ( `false` ). The default value is `false` .
 
 `enableApexAccessRightsPref` boolean Deprecated.
 
-1924
 
 Metadata Types ApexSettings
 
@@ -143264,7 +141339,6 @@ serially.
 `enableDebugLogsDuringDeployment` boolean Indicates whether debug logs are enabled during
 metadata deployment ( `true` ) or not ( `false` ), in
 
-1925
 
 Metadata Types ApexSettings
 
@@ -143340,7 +141414,6 @@ The following is an example `package.xml` manifest that references the previous 
 
 ```
 
-1926
 
 #### Metadata Types AppAnalyticsSettings
 
@@ -143412,7 +141485,6 @@ The following is an example of the AppAnalytics.settings file:
 
 ```
 
-1927
 
 #### Metadata Types AppExperienceSettings
 
@@ -143478,7 +141550,6 @@ If set to `false` (default), all standard and custom apps show up on the
 App Launcher. If set to `true`, the admin must select which standard
 and custom apps to display on the App Launcher.
 
-1928
 
 #### Metadata Types AssociationEngineSettings
 
@@ -143551,7 +141622,6 @@ Special Access Rules
 
 There are no additional access requirements that are specific to this type.
 
-1929
 
 #### Metadata Types AutomatedContactsSettings
 
@@ -143624,7 +141694,6 @@ File Suffix and Directory Location
 
 `.settings` files are different from other named components because there’s only one settings file for each settings component.
 
-1930
 
 Metadata Types AutomatedContactsSettings
 
@@ -143693,7 +141762,6 @@ The following is an example of the AutomatedContactsSettings.settings file:
 
 ```
 
-1931
 
 #### Metadata Types BotSettings
 
@@ -143760,7 +141828,6 @@ The following is an example of a BotSetting. This example has been trimmed to ma
 
 ```
 
-1932
 
 #### Metadata Types BranchManagementSettings
 
@@ -143828,7 +141895,6 @@ associateAccountWithBranch
 **Field Type**
 boolean
 
-1933
 
 #### Metadata Types BusinessHoursSettings
 
@@ -143894,7 +141960,6 @@ Version
 
 #### BusinessHoursSettings is available in API version 29.0 and later.
 
-1934
 
 Metadata Types BusinessHoursSettings
 
@@ -143961,7 +142026,6 @@ on Thursday.
 `fridayStartTime` string Start time for the business hours on Friday. Uses the format
 `HH:mm:ss.SSSZ` .
 
-1935
 
 Metadata Types BusinessHoursSettings
 
@@ -144031,7 +142095,6 @@ RecursYearly, RecursYealyNth.
 
 `recurrenceInterval` string The interval of weeks, months, or years the holiday recurs.
 
-1936
 
 Metadata Types BusinessHoursSettings
 
@@ -144126,7 +142189,6 @@ The following is an example `businesshours.settings` metadata file:
 
 ```
 
-1937
 
 #### Metadata Types CampaignSettings
 
@@ -144221,7 +142283,6 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-1938
 
 Metadata Types CampaignSettings
 
@@ -144292,7 +142353,6 @@ Indicates whether Einstein Key Accounts Identification is enabled ( `true` )
 or not ( `false` ). The default value is `false` . Available in API version
 53.0 and later.
 
-1939
 
 #### Metadata Types CaseSettings
 
@@ -144374,7 +142434,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents an organization’s case settings, such as the default case owner, which case-related features are enabled, and which Classic
 email templates are used for various case activities. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-1940
 
 Metadata Types CaseSettings
 
@@ -144438,7 +142497,6 @@ layouts. This field is available in API version 32.0 and later.
 `caseFeedReadUnreadLtng` boolean Indicates whether unread feed items are shown in bold in
 Lightning Experience ( `true` ) or not ( `false` ).
 
-1941
 
 Metadata Types CaseSettings
 
@@ -144507,7 +142565,6 @@ If `true`, the case contact is notified by email when someone
 makes an externally visible post on a case in an Experience
 Builder site.
 
-1942
 
 Metadata Types CaseSettings
 
@@ -144577,7 +142634,6 @@ Articles button appears on case detail pages ( `true` ) or not
 `enableSuggestedArticlesApplication`,
 `enableSuggestedArticlesCustomerPortal`,
 
-1943
 
 Metadata Types CaseSettings
 
@@ -144645,7 +142701,6 @@ Indicates whether the **Save & Close** button on case edit
 pages and the **Cls** link on Cases related lists are hidden
 ( `true` ) or shown ( `false` ).
 
-1944
 
 Metadata Types CaseSettings
 
@@ -144711,7 +142766,6 @@ or not ( `false` ). After you enable this setting, the **Case**
 from Email-to-Case. Associated emails are marked as `Read`
 when the agent opens the case.
 
-1945
 
 Metadata Types CaseSettings
 
@@ -144764,7 +142818,6 @@ orgs using Lightning Threading.
 
 `replyWithNewContentOnly` boolean
 
-1946
 
 Indicates whether the owner of a case receives a notification
 when a new email related to the case is received ( `true` ) or
@@ -144853,7 +142906,6 @@ value of `defaultCaseOwner` in CaseSettings.
 `casePriority` string Specifies the default case priority for cases created through
 this routing address.
 
-1947
 
 Metadata Types CaseSettings
 
@@ -144921,7 +142973,6 @@ Represents an organization's feed item settings. Available in API version 32.0 a
 `characterLimit` int Specifies the maximum number of characters displayed for
 each feed item.
 
-1948
 
 Metadata Types CaseSettings
 
@@ -144997,7 +143048,6 @@ This code sample is an example of a case settings file.
 
 ```
 
-1949
 
 Metadata Types CaseSettings
 
@@ -145112,7 +143162,6 @@ Metadata Types CaseSettings
 
 ```
 
-1950
 
 #### Metadata Types ChatterAnswersSettings
 
@@ -145187,7 +143236,6 @@ a question that they’re following ( `true` ) or not ( `false` ).
 `emailFollowersOnReply` boolean Indicates whether users are notified when other users reply to questions
 that they’re following ( `true` ) or not ( `false` ).
 
-1951
 
 Metadata Types ChatterAnswersSettings
 
@@ -145262,7 +143310,6 @@ The following is an example `chatteranswers.settings` metadata file:
 
 ```
 
-1952
 
 #### Metadata Types ChatterEmailsMDSettings
 
@@ -145336,7 +143383,6 @@ Fields
 `enableChatterDigestEmailsApiOnly` boolean Indicates whether Chatter digests can be sent via the API, rather than
 according to the regular schedule, for your org ( `true` ) or not ( `false` ).
 
-1953
 
 Metadata Types ChatterEmailsMDSettings
 
@@ -145408,7 +143454,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-1954
 
 #### Metadata Types ChatterSettings ChatterSettings
 
@@ -145469,7 +143514,6 @@ timestamp to see the absolute. When the value is `false`, Case feed
 items show an absolute timestamp (for example, `January 7, 2020`
 `at 12:15PM` ). When you change this setting, all timestamps in Case
 
-1955
 
 Metadata Types ChatterSettings
 
@@ -145537,7 +143581,6 @@ the My Drafts feed.
 In Setup, `enableFeedsDraftPosts` equates to the Chatter setting
 **Allow draft posts** .
 
-1956
 
 Metadata Types ChatterSettings
 
@@ -145598,7 +143641,6 @@ list page. Membership in unlisted groups is by invitation only.
 In Setup, `unlistedGroupsEnabled` equates to the Chatter setting
 **Enable Unlisted Groups** .
 
-1957
 
 #### Metadata Types CodeBuilderSettings
 
@@ -145684,7 +143726,6 @@ Version
 
 #### CodeBuilderSettings is available in API versions 58.0 and later.
 
-1958
 
 #### Metadata Types CollectionsDashboardSettings
 
@@ -145740,7 +143781,6 @@ Version
 
 #### CollectionsDashboardSettings components are available in API version 56.0 and later.
 
-1959
 
 #### Metadata Types CommunitiesSettings
 
@@ -145816,7 +143856,6 @@ File Suffix and Directory Location
 
 files are different from other named components, because there’s only one settings file for each settings component.
 
-1960
 
 Metadata Types CommunitiesSettings
 
@@ -145883,7 +143922,6 @@ When `true`, allows customer users to access notes and attachments
 associated with accounts and contacts. Available in API version 48.0 and
 later.
 
-1961
 
 Metadata Types CommunitiesSettings
 
@@ -145952,7 +143990,6 @@ The following is an example of a CommunitiesSettings component.
 
 ```
 
-1962
 
 #### Metadata Types CompanySettings
 
@@ -146016,7 +144053,6 @@ is enabled. When changing fiscal year settings, quotas and
 adjustments can be purged. For example changing your start
 month results in purging this data.
 
-1963
 
 #### Metadata Types ConnectedAppSettings
 
@@ -146080,7 +144116,6 @@ Version
 
 #### ConnectedAppSettings components are available in API version 47.0 and later.
 
-1964
 
 #### Metadata Types ContentSettings
 
@@ -146155,7 +144190,6 @@ Represents content settings for an org. This type extends the Metadata metadata 
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-1965
 
 Metadata Types ContentSettings
 
@@ -146225,7 +144259,6 @@ When `true`, files respect user sharing settings. Files shared with users
 with **SharedUsers** visibility are only accessible to users who are members
 of the Experience Cloud site the file was created in.
 
-1966
 
 Metadata Types ContentSettings
 
@@ -146305,7 +144338,6 @@ The following is an example of a Content.settings file.
 
 ```
 
-1967
 
 #### Metadata Types ContractSettings
 
@@ -146374,7 +144406,6 @@ This is a sample contract settings file.
 
 ```
 
-1968
 
 #### Metadata Types ConversationalIntelligenceSettings
 
@@ -146438,7 +144469,6 @@ Indicates whether Zoom video calls are enabled for Einstein Conversation Insight
 ( `true` ) or not ( `false` ). The default value is `false` . Available in API version 51.0
 and later.
 
-1969
 
 Metadata Types ConversationalIntelligenceSettings
 
@@ -146508,7 +144538,6 @@ boolean
 Indicates whether Generative Conversation Insights is enabled ( `true` ) or not ( `false` ).
 The default value is `false` . Available in API version 61.0 and later.
 
-1970
 
 Metadata Types ConversationalIntelligenceSettings
 
@@ -146595,7 +144624,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1971
 
 #### Metadata Types ConversationChannelDefinition
 
@@ -146657,7 +144685,6 @@ to use for the channel definition and channel at runtime.
 **Field Type**
 CustomChannelConnectedAppType
 
-1972
 
 Metadata Types ConversationChannelDefinition
 
@@ -146727,7 +144754,6 @@ This field is available in API version 60.0 and earlier. Use a combination of
 `customEventTypeField` and `customEventPayloadField` in API version
 61.0 and later instead.
 
-1973
 
 Metadata Types ConversationChannelDefinition
 
@@ -146799,7 +144825,6 @@ devorg__TestEvent__e.
 **Field Type**
 string
 
-1974
 
 Metadata Types ConversationChannelDefinition
 
@@ -146866,7 +144891,6 @@ This field is available in API version 63.0 and 64.0. The field is deprecated in
 65.0 and will be removed in API version 66.0. Use isInboundAcknwOptionExposed
 instead.
 
-1975
 
 Metadata Types ConversationChannelDefinition
 
@@ -146935,7 +144959,6 @@ instead.
 **Field Type**
 boolean
 
-1976
 
 Metadata Types ConversationChannelDefinition
 
@@ -147003,7 +145026,6 @@ Messaging or Bring Your Own Channel for CCaaS.
 
 Possible values are:
 
-1977
 
 Metadata Types ConversationChannelDefinition
 
@@ -147072,7 +145094,6 @@ value is required and must always be set to true. The default value is false.
 **Field Type**
 boolean
 
-1978
 
 #### Metadata Types CurrencySettings
 
@@ -147132,7 +145153,6 @@ Indicates whether the currency symbol ( `true` ) or ISO code ( `false` )
 displays in multi-currency orgs. This field has a default value of `false` .
 This field has no effect if `enableMultiCurrency` is set to `false` .
 
-1979
 
 Metadata Types CurrencySettings
 
@@ -147199,7 +145219,6 @@ The following is an example of a CurrencySettings file.
 
 ```
 
-1980
 
 #### Metadata Types CustomAddressFieldSettings
 
@@ -147265,7 +145284,6 @@ Custom Address Fields can’t be disabled. When
 `enableCustomAddressField` is set to `true`, you can’t
 change the value to `false` .
 
-1981
 
 #### Metadata Types DataDotComSettings
 
@@ -147329,7 +145347,6 @@ Version
 
 #### DataDotComSettings components are available in API version 47.0 and later.
 
-1982
 
 #### Metadata Types DataImportManagementSettings
 
@@ -147407,7 +145424,6 @@ The following is an example `package.xml` that references the previous definitio
 
 Represents an org's contact and leads import settings.
 
-1983
 
 Metadata Types DataImportManagementSettings
 
@@ -147481,7 +145497,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1984
 
 #### Metadata Types DeploymentSettings
 
@@ -147554,7 +145569,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1985
 
 #### Metadata Types DevHubSettings
 
@@ -147617,7 +145631,6 @@ Available in API version 56.0 and later.
 or `false` . When enabled, you can install and use the DevOps Center
 beta package in the org.
 
-1986
 
 Metadata Types DevHubSettings
 
@@ -147682,7 +145695,6 @@ enabled, you can create org shapes as the basis for scratch orgs.
 
 Available in API version 55.0 and later.
 
-1987
 
 #### Metadata Types DocumentGenerationSetting
 
@@ -147755,7 +145767,6 @@ type string)
 
 optional preview.
 
-1988
 
 Metadata Types DocumentGenerationSetting
 
@@ -147837,7 +145848,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1989
 
 #### Metadata Types DynamicFormsSettings
 
@@ -147901,7 +145911,6 @@ The following is an example of a DynamicFormsSettings component.
 
 ```
 
-1990
 
 #### Metadata Types EACSettings
 
@@ -147976,7 +145985,6 @@ Indicates whether Automatic Contact Creation is enabled ( `true` ) or not
 
 Default value is `false` .
 
-1991
 
 Metadata Types EACSettings
 
@@ -148051,7 +146059,6 @@ set to `false` can still see emails and events in their Salesforce timeline
 
 Default value is `true` .
 
-1992
 
 Metadata Types EACSettings
 
@@ -148129,7 +146136,6 @@ attendees are part of the internal domain.
 
 Available in API version 53.0 and later.
 
-1993
 
 #### Metadata Types EinsteinAISettings
 
@@ -148207,7 +146213,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents Einstein AI settings, including AI feedback integration with Data 360 and PII masking for AI trust features.
 
-1994
 
 Metadata Types EinsteinAISettings
 
@@ -148267,7 +146272,6 @@ boolean
 Indicates whether PII (Personally Identifiable Information) masking for AI trust features
 is enabled ( `true` ) or not ( `false` ). Available in API version 60.0 and later.
 
-1995
 
 #### Metadata Types EinsteinAgentSettings
 
@@ -148342,7 +146346,6 @@ Fields
 `einsteinAgentRecommendations` boolean Indicates whether Einstein classification apps are enabled in your org.
 The default value is `false` .
 
-1996
 
 #### Metadata Types EinsteinGptSettings
 
@@ -148411,7 +146414,6 @@ Version
 
 #### EinsteinGptSettings components are available in API version 61.0 and later.
 
-1997
 
 Metadata Types EinsteinGptSettings
 
@@ -148495,7 +146497,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-1998
 
 #### Metadata Types EmailAdministrationSettings
 
@@ -148555,7 +146556,6 @@ Salesforce before you enable this setting.
 
 `enableEmailSpfCompliance` boolean
 
-1999
 
 Indicates whether outgoing emails comply with Sender
 Policy Framework (SPF) email authentication ( `true` ) or not
@@ -148623,7 +146623,6 @@ setting applies only to specific domains ( `true` ) or applies
 to all domains ( `false` ). This field has a default value of
 `false` .
 
-2000
 
 Metadata Types EmailAdministrationSettings
 
@@ -148702,7 +146701,6 @@ The following is an example of an EmailAdministrationSettings component.
 
 ```
 
-2001
 
 #### Metadata Types EmailIntegrationSettings
 
@@ -148767,7 +146765,6 @@ Version
 
 #### EmailIntegrationSettings fields are available in API version 47.0 and later.
 
-2002
 
 Metadata Types EmailIntegrationSettings
 
@@ -148838,7 +146835,6 @@ within the same domain ( `true` ) or not ( `false` ).
 
 This field is available in API version 58.0 and later.
 
-2003
 
 Metadata Types EmailIntegrationSettings
 
@@ -148905,7 +146901,6 @@ page in Salesforce Setup are supported ( `true` ) or not ( `false` ). These
 domains are for users who access email using Outlook on the web. The
 default value is `true` .
 
-2004
 
 #### Metadata Types EmailTemplateSettings
 
@@ -148988,7 +146983,6 @@ File Suffix and Directory Location
 
 files are different from other named components because there’s only one settings file for each settings component.
 
-2005
 
 #### Metadata Types EmployeeUserSettings
 
@@ -149058,7 +147052,6 @@ File Suffix and Directory Location
 A EmployeeUserSettings component file has the suffix `.settings` and is stored in the `settings` directory. The `.settings`
 files are different from other named components because there’s only one settings file for each settings component.
 
-2006
 
 Metadata Types EmployeeUserSettings
 
@@ -149117,7 +147110,6 @@ to perform different functions within Salesforce.
 `usernameSuffix` string Represents a domain name. We create a unique login by combining this
 domain name with each employee’s username.
 
-2007
 
 #### Metadata Types EnhancedNotesSettings
 
@@ -149193,7 +147185,6 @@ Users must have the Use New Notes permission to use enhanced notes.
 
 Default value is `true` .
 
-2008
 
 #### Metadata Types EncryptionKeySettings
 
@@ -149265,7 +147256,6 @@ Version
 
 #### EncryptionKeySettings is available in API versions 47.0 and later.
 
-2009
 
 Metadata Types EncryptionKeySettings
 
@@ -149334,7 +147324,6 @@ The following is an example of the EncryptionKey.settings file:
 
 ```
 
-2010
 
 #### Metadata Types EntitlementSettings
 
@@ -149405,7 +147394,6 @@ Indicates whether entitlements-related lookup filters on
 cases return only the assets related to the case’s account
 ( `true` ) or not ( `false` ).
 
-2011
 
 Metadata Types EntitlementSettings
 
@@ -149475,7 +147463,6 @@ milestone in actual hours ( `true` ) or business hours
 
 This field is available in API version 47.0 and later.
 
-2012
 
 #### Metadata Types EventSettings
 
@@ -149564,7 +147551,6 @@ Version
 
 #### EventSettings components are available in API version 47.0 and later.
 
-2013
 
 Metadata Types EventSettings
 
@@ -149631,7 +147617,6 @@ When `true`, and a user triggers an end-session action,
 Salesforce terminates the user’s oldest session until the user
 is in compliance. When set to `false`, Salesforce blocks the
 
-2014
 
 Metadata Types EventSettings
 
@@ -149708,7 +147693,6 @@ The following is an example package manifest used to deploy or retrieve the Even
 
 ```
 
-2015
 
 #### Metadata Types ExperienceBundleSettings
 
@@ -149768,7 +147752,6 @@ SEE ALSO:
 
 #### ExperienceBundle
 
-2016
 
 #### Metadata Types ExternalClientAppSettings ExternalClientAppSettings
 
@@ -149830,7 +147813,6 @@ The example shows a settings file component.
 
 ```
 
-2017
 
 #### Metadata Types ExternalServicesSettings
 
@@ -149890,7 +147872,6 @@ with invalid schema operations can't be registered successfully ( `false` ). Det
 schema errors pertaining to unsupported operations are shown only if this flag is
 `false` .
 
-2018
 
 #### Metadata Types FieldServiceSettings
 
@@ -149941,19 +147922,15 @@ Version
 
 Fields
 
-2019
 
 Metadata Types FieldServiceSettings
 
-2020
 
 Metadata Types FieldServiceSettings
 
-2021
 
 Metadata Types FieldServiceSettings
 
-2022
 
 Metadata Types FieldServiceSettings
 
@@ -149985,7 +147962,6 @@ a WorkStep
 
 `objectMapping` ObjectMapping on page 2024 The object mapping details.
 
-2023
 
 Metadata Types FieldServiceSettings
 
@@ -150062,7 +148038,6 @@ This sample file shows a subset of the possible field service settings that you 
 
 ```
 
-2024
 
 Metadata Types FieldServiceSettings
 
@@ -150165,7 +148140,6 @@ Metadata Types FieldServiceSettings
 
 ```
 
-2025
 
 #### Metadata Types FilesConnectSettings
 
@@ -150236,7 +148210,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2026
 
 #### Metadata Types FileUploadAndDownloadSecuritySettings
 
@@ -150301,7 +148274,6 @@ later.
 The following filetypes are a security risk and can not have EXECUTE
 behavior:
 
-2027
 
 Metadata Types FileUploadAndDownloadSecuritySettings
 
@@ -150382,7 +148354,6 @@ string) by FileTypeDispositionAssignmentBean:
 
 **•** XML
 
-2028
 
 Metadata Types FileUploadAndDownloadSecuritySettings
 
@@ -150486,7 +148457,6 @@ The following is an example of a FileUploadAndDownloadSecuritySettings component
 
 ```
 
-2029
 
 Metadata Types FileUploadAndDownloadSecuritySettings
 
@@ -150601,7 +148571,6 @@ Metadata Types FileUploadAndDownloadSecuritySettings
 
 ```
 
-2030
 
 #### Metadata Types FlowSettings
 
@@ -150701,7 +148670,6 @@ Represents the Salesforce settings for processes and flows, such as whether Ligh
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2031
 
 Metadata Types FlowSettings
 
@@ -150769,7 +148737,6 @@ custom property editors for actions and screen fields.
 `enableFlowDeployAsActiveEnabled` boolean Indicates whether processes and flows can be deployed as active via
 change sets or Metadata API. When the value is `false`, all processes
 
-2032
 
 Metadata Types FlowSettings
 
@@ -150831,7 +148798,6 @@ values of record fields that were null when the process began.
 Corresponds to the Evaluate Criteria Based on Original Record Values in
 the Process Builder critical update.
 
-2033
 
 Metadata Types FlowSettings
 
@@ -150899,7 +148865,6 @@ experience ( `false` ). By default, the value is `true` .
 Corresponds to the `Enable Lightning runtime for flows`
 field on the Process Automation Settings page in Setup.
 
-2034
 
 Metadata Types FlowSettings
 
@@ -150967,7 +148932,6 @@ charts in Automation Home (Beta) ( `true` ) or not ( `false` ). The default
 
 value is `false` . All users with the View Setup and Configuration
 
-2035
 
 Metadata Types FlowSettings
 
@@ -151052,7 +149016,6 @@ Here’s an example `package.xml` that references the previous definition.
 
 ```
 
-2036
 
 #### Metadata Types ForecastingObjectListSettings
 
@@ -151111,7 +149074,6 @@ in the object detail list on the forecasts page. Changes to
 `forecastingObjectListSelectedSettings` field are
 reflected in this field.
 
-2037
 
 Metadata Types ForecastingObjectListSettings
 
@@ -151183,7 +149145,6 @@ The following is an example of the ForecastingObjectListSettings.settings file:
 
 ```
 
-2038
 
 Metadata Types ForecastingObjectListSettings
 
@@ -151298,7 +149259,6 @@ Metadata Types ForecastingObjectListSettings
 
 ```
 
-2039
 
 Metadata Types ForecastingObjectListSettings
 
@@ -151413,7 +149373,6 @@ Metadata Types ForecastingObjectListSettings
 
 ```
 
-2040
 
 Metadata Types ForecastingObjectListSettings
 
@@ -151528,7 +149487,6 @@ Metadata Types ForecastingObjectListSettings
 
 ```
 
-2041
 
 #### Metadata Types ForecastingSettings
 
@@ -151608,7 +149566,6 @@ File Suffix and Directory Location
 corresponding package directory. The `.settings` files are different from other named components because there’s only one settings
 file for each settings component.
 
-2042
 
 Metadata Types ForecastingSettings
 
@@ -151678,7 +149635,6 @@ The adjustment options for forecasts. Available in API version 53.0 and
 later. In API version 52.0 and earlier, use the
 `adjustmentsSettings` field on ForecastingTypeSettings.
 
-2043
 
 Metadata Types ForecastingSettings
 
@@ -151747,7 +149703,6 @@ closed
 
 **•** Rollup: `pipelineonly`, Forecast categories: `pipeline`
 
-2044
 
 Metadata Types ForecastingSettings
 
@@ -151810,7 +149765,6 @@ adjustments, and quotas for the forecast type. When `active` is set to
 true, some values on the Forecasts tab don’t appear immediately. An
 in-process con appears to indicate that the values are being calculated.
 
-2045
 
 Metadata Types ForecastingSettings
 
@@ -151886,7 +149840,6 @@ Valid values are:
 
 **•** `OpportunityCloseDate` (default)
 
-2046
 
 ```
 forecastingDateType
@@ -151966,7 +149919,6 @@ Valid values for organizations using individual forecast category rollups:
 
 **•** `bestcaseonly`
 
-2047
 
 Metadata Types ForecastingSettings
 
@@ -152026,7 +149978,6 @@ is the name of your active territory model in the API and can be
 followed by _`N`_, an auto-generated number that distinguishes
 between territory forecast types. Available in API versions 45.0 and
 
-2048
 
 Metadata Types ForecastingSettings
 
@@ -152089,7 +150040,6 @@ API version 53.0 and later, use globalQuotasSettings.
 `territory2ModelName` string Indicates whether the forecasting type has a Territory2 model, and if so,
 the name of the Territory2 model. Available in API version 41.0 and later.
 
-2049
 
 Metadata Types ForecastingSettings
 
@@ -152153,7 +150103,6 @@ group. Possible values include:
 
 **•** Product2
 
-2050
 
 Metadata Types ForecastingSettings
 
@@ -152212,7 +150161,6 @@ A read-only list of the API names and UI labels for all fields on the Opportunit
 
 `label` string Required. The UI label of the Opportunity field.
 
-2051
 
 Metadata Types ForecastingSettings
 
@@ -152271,7 +150219,6 @@ Required. Specifies the weight given to the forecast category
 when calculating the forecast for the rollup type. The only
 supported value is `1.0` .
 
-2052
 
 Metadata Types ForecastingSettings
 
@@ -152381,7 +150328,6 @@ owner adjustments, and quotas, and changes forecast range settings:
 
 ```
 
-2053
 
 Metadata Types ForecastingSettings
 
@@ -152494,7 +150440,6 @@ Metadata Types ForecastingSettings
 
 ```
 
-2054
 
 #### Metadata Types HighVelocitySalesSettings
 
@@ -152569,7 +150514,6 @@ Version
 
 #### HighVelocitySalesSettings components are available in API version 47.0 and later.
 
-2055
 
 Metadata Types HighVelocitySalesSettings
 
@@ -152639,7 +150583,6 @@ Default value is `false` .
 about calls, engagement, and how each sales rep moves through their
 cadence steps.
 
-2056
 
 Metadata Types HighVelocitySalesSettings
 
@@ -152722,7 +150665,6 @@ The following is an example of the `HighVelocitySales.settings` file:
 
 ```
 
-2057
 
 #### Metadata Types IdeasSettings
 
@@ -152804,7 +150746,6 @@ Version
 
 Represents settings for Ideas and Idea Themes.
 
-2058
 
 Metadata Types IdeasSettings
 
@@ -152874,7 +150815,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2059
 
 #### Metadata Types IdentityProviderSettings IdentityProviderSettings
 
@@ -152933,7 +150873,6 @@ Required.
 Indicates whether Salesforce can be used as a SAML identity provider ( `true` ) or not
 ( `false` ).
 
-2060
 
 #### Metadata Types IframeWhiteListUrlSettings
 
@@ -153006,7 +150945,6 @@ Fields
 `iframeWhiteListUrls` IframeWhiteListUrl[] The list of external domains that you allow to frame your Visualforce
 pages or surveys.
 
-2061
 
 Metadata Types IframeWhiteListUrlSettings
 
@@ -153100,7 +151038,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2062
 
 #### Metadata Types IncidentMgmtSettings
 
@@ -153161,7 +151098,6 @@ Indicates whether broadcast communication alerts are enabled ( `true` ) or disab
 when an incident occurs. The default value is `false` . Available in API version 57.0
 and later.
 
-2063
 
 Metadata Types IncidentMgmtSettings
 
@@ -153231,7 +151167,6 @@ Indicates whether the Chat and Voice to Incident with Al feature is enabled ( `t
 or disabled ( `false` ) for your org. The default value is `false` . Available in API version
 64.0 and later.
 
-2064
 
 Metadata Types IncidentMgmtSettings
 
@@ -153303,7 +151238,6 @@ later.
 **Field Type**
 boolean
 
-2065
 
 Metadata Types IncidentMgmtSettings
 
@@ -153374,7 +151308,6 @@ The default value is `true` . Available in API version 54.0 and later.
 **Field Type**
 boolean
 
-2066
 
 Metadata Types IncidentMgmtSettings
 
@@ -153442,7 +151375,6 @@ or disabled ( `false` ) for your org. The default value is `false` . Available i
 **Field Type**
 boolean
 
-2067
 
 Metadata Types IncidentMgmtSettings
 
@@ -153536,7 +151468,6 @@ The following is an example of an IncidentMgmtSettings component.
 
 ```
 
-2068
 
 #### Metadata Types IndustriesEinsteinFeatureSettings
 
@@ -153606,7 +151537,6 @@ Specify the confidence score threshold to indicate the reliability of data in a
 document. You can enter a number from 0 to 100, with up to two decimal places,
 where 0 is the least confident and 100 is the most confident.
 
-2069
 
 #### Metadata Types IndustriesLoyaltySettings
 
@@ -153680,7 +151610,6 @@ eligible for tier assessment when members’ qualifying points balance
 changes is enabled ( `true` ) or disabled ( `false` ) for your org. The default
 value is `false` . This field is available in API version 58.0 or later.
 
-2070
 
 Metadata Types IndustriesLoyaltySettings
 
@@ -153750,7 +151679,6 @@ hold negative point balances for non-qualifying currencies is enabled
 ( `true` ) or disabled ( `false` ) for your org. The default value is `false` .
 This field is available in API version 61.0 or later.
 
-2071
 
 Metadata Types IndustriesLoyaltySettings
 
@@ -153820,7 +151748,6 @@ The following is an example of a IndustriesLoyaltySettings component.
 
 ```
 
-2072
 
 Metadata Types IndustriesLoyaltySettings
 
@@ -153896,7 +151823,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2073
 
 #### Metadata Types IndustriesSettings IndustriesSettings
 
@@ -153959,7 +151885,6 @@ When importing loan application data, indicates whether to create a
 customer property record from a loan application property record to
 represent the new home.
 
-2074
 
 Metadata Types IndustriesSettings
 
@@ -154029,7 +151954,6 @@ to create and manage strategic account plans for business clients,
 including growth strategies, cross-sell opportunities, and relationship
 mapping. The default value is `false` .
 
-2075
 
 Metadata Types IndustriesSettings
 
@@ -154096,7 +152020,6 @@ custom objects ( `true` ) or not ( `false` ). The default value is `false` .
 This field is available in editions where Financial Services Cloud is
 enabled.
 
-2076
 
 Metadata Types IndustriesSettings
 
@@ -154170,7 +152093,6 @@ or not ( `false` ). This field is available in API version 54.0 and later.
 `enableFinancialDealCallReportPref` boolean Indicates whether the junction object is enabled between the Financial
 Deal object and the Interaction and Interaction Summary objects
 
-2077
 
 Metadata Types IndustriesSettings
 
@@ -154247,7 +152169,6 @@ Indicates whether Roll-by-Lookup (RBL) Using Calc Service is enabled
 for your org. The default is `false` . This field is available in editions
 where Financial Services Cloud is enabled.
 
-2078
 
 Metadata Types IndustriesSettings
 
@@ -154318,7 +152239,6 @@ collections management interface. The default value is `false` .
 `transformRBLtoDPE` boolean Indicates whether you can convert RBL rules into Data Processing
 Engine definitions for faster calculations. The default is `false` .
 
-2079
 
 Metadata Types IndustriesSettings
 
@@ -154391,7 +152311,6 @@ cases for Utilization Management & Clinical Decision Support users.
 `enableIndustriesLPIPreference` boolean Indicates whether Industries Licensing, Permitting, and Inspections
 (LPI) feature is enabled for your org ( `true` ) or not ( `false` ). The
 
-2080
 
 Metadata Types IndustriesSettings
 
@@ -154463,7 +152382,6 @@ healthcare services they provide for their patients ( `true` ) or not
 `enableAccountBasedSharing` boolean Indicates whether to enable Account-Based Sharing to control data
 access based on account ownership.
 
-2081
 
 Metadata Types IndustriesSettings
 
@@ -154531,7 +152449,6 @@ Sciences Customer Engagement (LS C4CE).
 `enableLifeSciencesMergeManagement` boolean Indicates whether to enable the Merge Management feature for
 merging duplicate records within life sciences data.
 
-2082
 
 Metadata Types IndustriesSettings
 
@@ -154600,7 +152517,6 @@ Partner Hierarchy.
 `enableProdTerrAvlRecSharing` boolean Indicates whether to enable sharing of available records for Product
 Territories.
 
-2083
 
 Metadata Types IndustriesSettings
 
@@ -154667,7 +152583,6 @@ where Disclosure and Compliance Hub is enabled.
 **Field Type**
 boolean
 
-2084
 
 Metadata Types IndustriesSettings
 
@@ -154736,7 +152651,6 @@ in API version 56.0 and later in editions where Net Zero Cloud is enabled.
 **Field Type**
 boolean
 
-2085
 
 Metadata Types IndustriesSettings
 
@@ -154806,7 +152720,6 @@ in editions where Net Zero Cloud is enabled.
 **Field Type**
 boolean
 
-2086
 
 Metadata Types IndustriesSettings
 
@@ -154874,7 +152787,6 @@ Indicates whether the benefit and goal sharing feature is enabled for
 your org. The default is `false` . Available in editions where Public
 Sector Solutions is enabled.
 
-2087
 
 Metadata Types IndustriesSettings
 
@@ -154942,7 +152854,6 @@ Available in API version 47.0 and later.
 
 This setting is used in Financial Services Cloud.
 
-2088
 
 Metadata Types IndustriesSettings
 
@@ -155012,7 +152923,6 @@ in API version 47.0 and later.
 
 This setting is used in Financial Services Cloud.
 
-2089
 
 Metadata Types IndustriesSettings
 
@@ -155089,7 +152999,6 @@ The following is an example of an Industries.Settings metadata file.
 
 ```
 
-2090
 
 #### Metadata Types InterestTaggingSettings
 
@@ -155170,7 +153079,6 @@ Version
 
 #### InterestTaggingSettings components are available in API version 54.0 and later.
 
-2091
 
 #### Metadata Types InventorySettings
 
@@ -155241,7 +153149,6 @@ Represents options for the Salesforce Omnichannel Inventory product.This type ex
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2092
 
 Metadata Types InventorySettings
 
@@ -155317,7 +153224,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2093
 
 #### Metadata Types InvLatePymntRiskCalcSettings InvLatePymntRiskCalcSettings
 
@@ -155392,7 +153298,6 @@ This example shows a sample `package.xml` that references the previous definitio
 
 ```
 
-2094
 
 #### Metadata Types InvocableActionSettings
 
@@ -155444,7 +153349,6 @@ The following is an example of the InvocableAction.settings file.
 
 ```
 
-2095
 
 #### Metadata Types KnowledgeSettings
 
@@ -155512,7 +153416,6 @@ for Salesforce Knowledge and Answers.
 `cases` KnowledgeCaseSettings Represents the metadata used to manage settings
 for Salesforce Knowledge and Cases.
 
-2096
 
 Metadata Types KnowledgeSettings
 
@@ -155582,7 +153485,6 @@ editing when an article loads in Lightning
 
 Knowledge ( `true` ) or not ( `false` ). This field is
 
-2097
 
 Metadata Types KnowledgeSettings
 
@@ -155642,7 +153544,6 @@ KnowledgeCaseSettings
 
 Represents the metadata used to manage settings for Salesforce Knowledge and Cases.
 
-2098
 
 Metadata Types KnowledgeSettings
 
@@ -155708,7 +153609,6 @@ KnowledgeLanguageSettings
 
 A list of languages enabled for Salesforce Knowledge. KnowledgeLanguageSettings is available in API version 28.0 and later.
 
-2099
 
 Metadata Types KnowledgeSettings
 
@@ -155770,7 +153670,6 @@ suggest articles for the work order.
 `workOrderLineItemFields` KnowledgeWorkOrderLineItemFieldsSettings Represents a list of the work order line item fields used
 to suggest articles for the work order line item.
 
-2100
 
 Metadata Types KnowledgeSettings
 
@@ -155820,7 +153719,6 @@ later.
 `field` KnowledgeWorkOrderLineItemField[] Specifies the names of the work order line item fields
 used to suggest articles for the work order line item.
 
-2101
 
 Metadata Types KnowledgeSettings
 
@@ -155919,7 +153817,6 @@ This is a sample Knowledge settings file.
 
 ```
 
-2102
 
 #### Metadata Types LanguageSettings
 
@@ -155985,7 +153882,6 @@ prior to API version 47.0 have a default of `false` .
 [See Go Global with New International Locale Formats for more](https://help.salesforce.com/articleView?id=icu_migration_overview.htm&language=en_US)
 information.
 
-2103
 
 Metadata Types LanguageSettings
 
@@ -156068,7 +153964,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2104
 
 #### Metadata Types LeadConfigSettings
 
@@ -156137,7 +154032,6 @@ Orgs that use record types can create a lead process that allows different
 lead status values for different record types. If
 `doesPreserveLeadStatus` is `false`, the lead status might
 
-2105
 
 Metadata Types LeadConfigSettings
 
@@ -156219,7 +154113,6 @@ The following is an example of the LeadConfigSettings type:
 
 ```
 
-2106
 
 #### Metadata Types LeadConvertSettings
 
@@ -156291,7 +154184,6 @@ ObjectMapping[]
 A set of custom field mappings between objects. Up to three `objectMapping`
 types can be declared—one each for account, contact, and opportunity.
 
-2107
 
 Metadata Types LeadConvertSettings
 
@@ -156368,7 +154260,6 @@ The object type receiving data during lead conversion.
 
 **•** `Opportunity`
 
-2108
 
 Metadata Types LeadConvertSettings
 
@@ -156463,7 +154354,6 @@ The following is an example of the LeadConvertSettings type:
 
 ```
 
-2109
 
 #### Metadata Types LiveAgentSettings
 
@@ -156531,7 +154421,6 @@ This is a sample Chat settings file.
 
 ```
 
-2110
 
 #### Metadata Types LightningExperienceSettings
 
@@ -156589,7 +154478,6 @@ With dynamic boxcar optimization, a limited number of server-side Aura
 actions are grouped in a single network request, which improves the
 performance of Lightning components and apps. For more information,
 
-2111
 
 Metadata Types LightningExperienceSettings
 
@@ -156655,7 +154543,6 @@ Indicates whether Lightning Experience is turned on for iPad Browsers
 ( `true` ) or not ( `false` ). The default is `false` [. See Give Users Access](https://help.salesforce.com/articleView?id=lex_ipad_browser_enable.htm&language=en_US)
 [to Lightning Experience on iPad Browsers (Beta) in Salesforce Help.](https://help.salesforce.com/articleView?id=lex_ipad_browser_enable.htm&language=en_US)
 
-2112
 
 Metadata Types LightningExperienceSettings
 
@@ -156719,7 +154606,6 @@ available.
 `enableSparkAllUsers` boolean Deprecated in API version 50.0 and later because the feature is no longer
 available.
 
-2113
 
 Metadata Types LightningExperienceSettings
 
@@ -156785,7 +154671,6 @@ org. If `false`, your users can’t enable the Lightning Extension, even if
 they already have it installed. This field is available in API version 48.0
 and later.
 
-2114
 
 #### Metadata Types LiveMessageSettings
 
@@ -156863,7 +154748,6 @@ File Suffix and Directory Location
 
 named components because there is only one settings file for each settings component.
 
-2115
 
 #### Metadata Types MacroSettings
 
@@ -156939,7 +154823,6 @@ from other named components because there’s only one settings file for each se
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2116
 
 #### Metadata Types MailMergeSettings
 
@@ -157001,7 +154884,6 @@ Fields
 
 **Field Name** **Field Type** **Descriptions**
 
-2117
 
 #### Metadata Types MapAndLocationSettings
 
@@ -157071,7 +154953,6 @@ Represents an org’s map and location settings.
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2118
 
 #### Metadata Types MeetingsSettings
 
@@ -157132,7 +155013,6 @@ Special Access Rules
 
 The MeetingsSettings type isn’t available in scratch orgs.
 
-2119
 
 Metadata Types MeetingsSettings
 
@@ -157215,7 +155095,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2120
 
 #### Metadata Types MobileSettings
 
@@ -157278,7 +155157,6 @@ Removed in API version 56.0.
 experience. Available in API version 52.0
 through 55.0. Removed in API version 56.0.
 
-2121
 
 Metadata Types MobileSettings
 
@@ -157337,7 +155215,6 @@ These fields are removed in API version 46.0. Represents your organization's Cha
 `IPadAuthorized` boolean Indicates whether iPad devices are enabled
 for Chatter Mobile ( `true` ) or not ( `false` ).
 
-2122
 
 Metadata Types MobileSettings
 
@@ -157410,7 +155287,6 @@ Indicates whether Mobile Dashboards iPad
 app has been enabled for your organization
 ( `true` ) or not ( `false` ).
 
-2123
 
 #### Metadata Types MyDomainSettings
 
@@ -157475,7 +155351,6 @@ Version
 
 #### MyDomainSettings components are available in API version 47.0 and later.
 
-2124
 
 Metadata Types MyDomainSettings
 
@@ -157537,7 +155412,6 @@ Experience Cloud site or Salesforce Site.
 
 This field is available in API version 59.0 and later.
 
-2125
 
 Metadata Types MyDomainSettings
 
@@ -157619,7 +155493,6 @@ org. If `useEdge` is `false`, this field has no effect. The default is
 
 Possible values are:
 
-2126
 
 Metadata Types MyDomainSettings
 
@@ -157689,7 +155562,6 @@ For more information about the end of legacy hostname redirections,
 [see Prepare for the End of Redirections for Non-Enhanced Domains in](https://help.salesforce.com/s/articleView?id=sf.domain_name_redirections_non_enhanced.htm&type=5&language=en_US)
 Salesforce Help.
 
-2127
 
 Metadata Types MyDomainSettings
 
@@ -157767,7 +155639,6 @@ data retention period. When `logRedirections` is `true`, this event
 
 is available in the API but not in the Event Monitoring Analytics app. You
 
-2128
 
 Metadata Types MyDomainSettings
 
@@ -157847,7 +155718,6 @@ Experience Cloud site or Salesforce Site.
 
 Available in API version 55.0 and later.
 
-2129
 
 Metadata Types MyDomainSettings
 
@@ -157915,7 +155785,6 @@ Visualforce, Experience Builder, Site.com Studio, and content files ( `true` )
 
 or not ( `false` ). This field has a default value of `true` . For example,
 
-2130
 
 Metadata Types MyDomainSettings
 
@@ -157999,7 +155868,6 @@ The following is an example of a MyDomainSettings component.
 
 ```
 
-2131
 
 #### Metadata Types MfgServiceConsoleSettings
 
@@ -158070,7 +155938,6 @@ Special Access Rules
 
 To use this metadata type, your Salesforce org must have the Manufacturing Cloud license.
 
-2132
 
 #### Metadata Types NameSettings
 
@@ -158138,7 +156005,6 @@ In the package manifest, all organization settings metadata types are accessed u
 [You can’t enable local name fields programmatically via the Metadata API. For more information about enabling local fields, see Local](https://help.salesforce.com/s/articleView?id=xcloud.admin_local_name_fields.htm&language=en_US)
 [Name Fields and Enable ‘Local Name’ Fields.](https://help.salesforce.com/s/articleView?id=xcloud.admin_local_name_fields.htm&language=en_US)
 
-2133
 
 #### Metadata Types NotificationsSettings
 
@@ -158211,7 +156077,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents an organization’s mobile settings.
 
-2134
 
 #### Metadata Types OauthOidcSettings
 
@@ -158268,7 +156133,6 @@ Parent Type and Manifest Access
 
 [In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_settings.htm)
 
-2135
 
 Metadata Types OauthOidcSettings
 
@@ -158337,7 +156201,6 @@ is required for variations of the OAuth authorization code flow that access this
 ( `true` ) or not ( `false` ). This setting requires PKCE for all supported variations of the
 authorization code flow, including the web server flow, the Authorization Code and
 
-2136
 
 #### Metadata Types ObjectHierarchyRelationship
 
@@ -158416,7 +156279,6 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-2137
 
 Metadata Types ObjectHierarchyRelationship
 
@@ -158489,7 +156351,6 @@ Valid values are:
 **Field Type**
 string
 
-2138
 
 Metadata Types ObjectHierarchyRelationship
 
@@ -158563,7 +156424,6 @@ and reference object. This field is available in API version 56.0 and later.
 **Field Type**
 MappingUsageType (enumeration of type string)
 
-2139
 
 Metadata Types ObjectHierarchyRelationship
 
@@ -158629,7 +156489,6 @@ Required.
 Name of the output object type receiving data conversion. For example, SalesAgreement
 or SalesAgreementProduct.
 
-2140
 
 Metadata Types ObjectHierarchyRelationship
 
@@ -158711,7 +156570,6 @@ The following is an example of a ObjectHierarchyRelationship component.
 
 ```
 
-2141
 
 Metadata Types ObjectHierarchyRelationship
 
@@ -158809,7 +156667,6 @@ Use the `deploy()` call to deploy metadata with a .zip file. Every .zip file con
 and a set of directories that contain the components. The manifest file defines the components that you’re trying to retrieve or deploy
 in the .zip file. The manifest also defines the API version that’s used for the deployment or retrieval. For more information on the .zip file,
 
-2142
 
 #### Metadata Types ObjectLinkingSettings (Beta)
 
@@ -158872,7 +156729,6 @@ The following is an example of an ObjectLinkingSettings component.
 
 ```
 
-2143
 
 #### Metadata Types OpportunityInsightsSettings
 
@@ -158940,7 +156796,6 @@ The following is an example of the OpportunityInsights.settings file:
 
 ```
 
-2144
 
 #### Metadata Types OpportunitySettings
 
@@ -159008,7 +156863,6 @@ If customizable product schedules are enabled, you can use custom
 fields in default schedules and customize their layout, but Apex triggers
 or validation rules that you apply to default schedules are bypassed.
 
-2145
 
 Metadata Types OpportunitySettings
 
@@ -159083,7 +156937,6 @@ in Setup is required.
 
 Available in API version 52.0 and later.
 
-2146
 
 Metadata Types OpportunitySettings
 
@@ -159159,7 +157012,6 @@ Available in API version 56.0 and later.
 `simpleOppCreateFromContact` boolean Indicates whether you can create an opportunity with prefilled
 information (such as the contact’s account) from the Global Actions
 
-2147
 
 Metadata Types OpportunitySettings
 
@@ -159238,7 +157090,6 @@ The package file references the following Opportunity.settings file.
 
 ```
 
-2148
 
 #### Metadata Types OpportunityScoreSettings
 
@@ -159309,7 +157160,6 @@ The following is an example of the OpportunityScore.settings file:
 
 ```
 
-2149
 
 #### Metadata Types OrderManagementSettings
 
@@ -159376,7 +157226,6 @@ Indicates whether Order Management is allowed to accept order data
 from B2C Commerce ( `true` ) or not ( `false` ). The default value is
 `false` .
 
-2150
 
 Metadata Types OrderManagementSettings
 
@@ -159459,7 +157308,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2151
 
 #### Metadata Types OrderSettings OrderSettings
 
@@ -159521,7 +157369,6 @@ To enable this preference, `enableOrders` and
 This field helps to offer different pricing structures for various customer
 segments, regions, or promotional periods.
 
-2152
 
 #### Metadata Types OrgPreferenceSettings
 
@@ -159606,7 +157453,6 @@ Removed in API version 48.0. Represents the unique org preference settings in a 
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-2153
 
 Metadata Types OrgPreferenceSettings
 
@@ -159674,7 +157520,6 @@ disabled in any version of the API.
 **•** `ScratchOrgManagementPref on page 1987` (available
 in API version 41.0 and later)
 
-2154
 
 Metadata Types OrgPreferenceSettings
 
@@ -159753,7 +157598,6 @@ supported but not yet available as fields on another Settings type in API versio
 
 ```
 
-2155
 
 #### Metadata Types OrgSettings
 
@@ -159818,7 +157662,6 @@ The following is an example of a OrgSettings component.
 
 ```
 
-2156
 
 #### Metadata Types PartyDataModelSettings
 
@@ -159890,7 +157733,6 @@ the Individual is retained when merging lead, contact, and person
 
 accounts ( `true` ) or users must manually determine which data privacy
 
-2157
 
 #### Metadata Types PardotSettings
 
@@ -159962,7 +157804,6 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2158
 
 Metadata Types PardotSettings
 
@@ -160023,7 +157864,6 @@ take some time to populate. Depending on how much data and the
 type of licenses you have, enabling this preference can impact the
 account’s row limit for Analytics.
 
-2159
 
 Metadata Types PardotSettings
 
@@ -160103,7 +157943,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2160
 
 #### Metadata Types PardotEinsteinSettings PardotEinsteinSettings
 
@@ -160176,7 +158015,6 @@ The following is an example package manifest used to deploy or retrieve the Pard
 
 ```
 
-2161
 
 #### Metadata Types PathAssistantSettings
 
@@ -160237,7 +158075,6 @@ or not.
 
 Available in API version 34.0 and earlier.
 
-2162
 
 #### Metadata Types PaymentsSettings
 
@@ -160309,7 +158146,6 @@ Special Access Rules
 
 This metadata type is only accessible by developers and customers using Salesforce Payments.
 
-2163
 
 #### Metadata Types PicklistSettings
 
@@ -160382,7 +158218,6 @@ File Suffix and Directory Location
 
 are different from other named components because there’s only one settings file for each settings component.
 
-2164
 
 #### Metadata Types PlatformEncryptionSettings
 
@@ -160452,7 +158287,6 @@ and which fields can be encrypted. This type extends the Metadata metadata type 
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2165
 
 Metadata Types PlatformEncryptionSettings
 
@@ -160519,7 +158353,6 @@ The following is an example of the PlatformEncryption.settings file:
 
 ```
 
-2166
 
 #### Metadata Types PlatformEventSettings
 
@@ -160583,7 +158416,6 @@ Special Access Rules
 
 There are no additional access requirements that are specific to this type.
 
-2167
 
 #### Metadata Types PredictionBuilderSettings
 
@@ -160660,7 +158492,6 @@ File Suffix and Directory Location
 
 from other named components in that each settings component has only one settings file.
 
-2168
 
 #### Metadata Types PrivacySettings
 
@@ -160722,7 +158553,6 @@ Version
 
 #### PrivacySettings components are available in API version 47.0 and later.
 
-2169
 
 Metadata Types PrivacySettings
 
@@ -160802,7 +158632,6 @@ Indicates whether Salesforce Archive is enabled for privacy-related data
 archival ( `true` ) or not ( `false` ). The default value is `false` . Available
 in API version 61.0 and later.
 
-2170
 
 #### Metadata Types ProcessFlowMigration
 
@@ -160870,7 +158699,6 @@ Version
 
 #### ProcessFlowMigration components are available in API version 58.0 and later.
 
-2171
 
 Metadata Types ProcessFlowMigration
 
@@ -160942,7 +158770,6 @@ string
 **Description**
 Required. The version ID of the originating process.
 
-2172
 
 #### Metadata Types ProductSettings
 
@@ -161025,7 +158852,6 @@ Version
 
 #### ProductSettings is available in API version 28.0 and later.
 
-2173
 
 #### Metadata Types QuoteSettings
 
@@ -161100,7 +158926,6 @@ the Metadata metadata type and inherits its `fullName` field.
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2174
 
 Metadata Types QuoteSettings
 
@@ -161176,7 +159001,6 @@ The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn�
 wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2175
 
 #### Metadata Types RealTimeEventSettings RealTimeEventSettings
 
@@ -161242,7 +159066,6 @@ The following is an example `RealTimeEvent.settings` metadata file:
 
 ```
 
-2176
 
 #### Metadata Types RecordPageSettings
 
@@ -161311,7 +159134,6 @@ Indicates whether the default record page
 view is full view ( `true` ) or grouped view
 ( `false` ).
 
-2177
 
 #### Metadata Types RetailExecutionSettings
 
@@ -161383,7 +159205,6 @@ Version
 
 #### RetailExecutionSettings are available in API version 47.0 and later.
 
-2178
 
 #### Metadata Types SalesAgreementSettings
 
@@ -161464,7 +159285,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents settings that control the display of agreement terms metrics in sales agreements and the calculation of the actual quantity
 of products in sales agreements. These settings also control the approval of sales agreements.
 
-2179
 
 Metadata Types SalesAgreementSettings
 
@@ -161534,7 +159354,6 @@ SalesAgreementSettings.
 `renewalPeriodDayCount` int The number of days before the end date of a sales agreement from when
 the agreement can be renewed. Available in API version 50.0 and later.
 
-2180
 
 Metadata Types SalesAgreementSettings
 
@@ -161590,7 +159409,6 @@ version 56.0 and later.
 
 `advAcctForecastMeasureDefName` string Required. Name for the measure.
 
-2181
 
 Metadata Types SalesAgreementSettings
 
@@ -161665,7 +159483,6 @@ on page 2183 SalesAgreementSettings.
 `outputObject` string Required. The output object for the SalesAgreementSettings.
 SalesAgreementProduct is the output object for the SalesAgreementSettings.
 
-2182
 
 Metadata Types SalesAgreementSettings
 
@@ -161751,7 +159568,6 @@ The following is an example of SalesAgreementSettings component.
 
 ```
 
-2183
 
 #### Metadata Types SandboxSettings
 
@@ -161840,7 +159656,6 @@ Version
 
 #### SandboxSettings are available in API version 56.0 and later.
 
-2184
 
 #### Metadata Types SchemaSettings
 
@@ -161900,7 +159715,6 @@ Fields
 `enableAdvancedCMTSecurity` boolean Indicates whether custom metadata type values are available only to
 Apex, flow, and formula operations ( `true` ) or exposed in other contexts
 
-2185
 
 #### Metadata Types SearchSettings
 
@@ -161981,7 +159795,6 @@ Represents an org's search settings.
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-2186
 
 Metadata Types SearchSettings
 
@@ -162047,7 +159860,6 @@ various objects by a common theme ( `true` ) or not ( `false` ).
 Personal tags are visible to all users. Available in Salesforce
 Classic only. Available in API version 48.0 and later.
 
-2187
 
 Metadata Types SearchSettings
 
@@ -162114,7 +159926,6 @@ sidebar search section ( `true` ) or not ( `false` ). From this list,
 users can select to search within tags, within a specific object,
 or across all objects.
 
-2188
 
 Metadata Types SearchSettings
 
@@ -162180,7 +159991,6 @@ The following is an example of the `Search.settings` file.
 
 ```
 
-2189
 
 Metadata Types SearchSettings
 
@@ -162280,7 +160090,6 @@ The following is an example package manifest used to deploy or retrieve the Sear
 
 ```
 
-2190
 
 #### Metadata Types SecuritySettings
 
@@ -162340,7 +160149,6 @@ expressions in dynamically created Aura components. The
 default is `false` . This field is available in API version 47.0 and
 later.
 
-2191
 
 Metadata Types SecuritySettings
 
@@ -162409,7 +160217,6 @@ Possible values are:
 **•** `Always` —All apps and websites loaded from Salesforce
 can access the user’s camera.
 
-2192
 
 Metadata Types SecuritySettings
 
@@ -162481,7 +160288,6 @@ Content-Security-Policy: frame-ancestors
 HTTP header directive. In those cases, this field indicates whether
 that directive is included in ( `true` ) or omitted from ( `false` )
 
-2193
 
 Metadata Types SecuritySettings
 
@@ -162542,7 +160348,6 @@ PasswordPolicies
 
 Represents your org’s password and login policies, which show up under **Security Controls | Password Policies** .
 
-2194
 
 Metadata Types SecuritySettings
 
@@ -162620,7 +160425,6 @@ must always reset a new, unique password. Valid values are `0`
 
 through `24` passwords remembered. The maximum value of
 
-2195
 
 Metadata Types SecuritySettings
 
@@ -162695,7 +160499,6 @@ passwords.
 
 `passwordAssistanceURL` string The URL that users can click to retrieve forgotten passwords.
 
-2196
 
 Metadata Types SecuritySettings
 
@@ -162761,7 +160564,6 @@ By default, this setting is disabled ( `false` ) for existing orgs.
 For new orgs, this setting is enabled ( `true` ) by default.
 Available in API version 48.0 and later.
 
-2197
 
 Metadata Types SecuritySettings
 
@@ -162834,7 +160636,6 @@ If enabled ( `true` ), users can use Lightning Login (Salesforce
 Authenticator) to log in instead of a password. Available in API
 Version 47.0 and later.
 
-2198
 
 Metadata Types SecuritySettings
 
@@ -162904,7 +160705,6 @@ Indicates whether the HTTP `X-XSS-Protection` response
 header is enabled to protect against reflected cross-site scripting
 attacks.
 
-2199
 
 Metadata Types SecuritySettings
 
@@ -162971,7 +160771,6 @@ their email address, instead of requiring a relogin.
 
 This field is available in API version 42.0 and later.
 
-2200
 
 Metadata Types SecuritySettings
 
@@ -163038,7 +160837,6 @@ Salesforce domains via links in URL or Long Text Area fields.
 
 When a user who accesses Salesforce via Salesforce Classic clicks
 
-2201
 
 Metadata Types SecuritySettings
 
@@ -163107,7 +160905,6 @@ Valid current values are:
 **•** `same-origin` —Omit the referrer for cross-origin
 requests.
 
-2202
 
 Metadata Types SecuritySettings
 
@@ -163161,7 +160958,6 @@ For more information on HTTP referrer policy directives,
 [including examples, see the Referrer-Policy entry in the](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) _MDN_
 _Docs HTTP Guide_ .
 
-2203
 
 Metadata Types SecuritySettings
 
@@ -163240,7 +161036,6 @@ of type string)
 
 `sidToken3rdPartyAuraApp` boolean
 
-2204
 
 Metadata Types SecuritySettings
 
@@ -163319,7 +161114,6 @@ of type string)
 
 `welcomeEmailTemplateId` string
 
-2205
 
 Metadata Types SecuritySettings
 
@@ -163397,7 +161191,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 ```
 
-2206
 
 Metadata Types SecuritySettings
 
@@ -163502,7 +161295,6 @@ Metadata Types SecuritySettings
 
 ```
 
-2207
 
 #### Metadata Types ServiceCloudVoiceSettings
 
@@ -163590,7 +161382,6 @@ File Suffix and Directory Location
 
 `.settings` files are different from other named components because there’s only one settings file for each settings component.
 
-2208
 
 Metadata Types ServiceCloudVoiceSettings
 
@@ -163658,7 +161449,6 @@ Indicates whether you agree to the terms of using Service Cloud Voice
 with Amazon Connect in a Salesforce Government Cloud environment.
 The default value is `false` . This field is optional.
 
-2209
 
 Metadata Types ServiceCloudVoiceSettings
 
@@ -163740,7 +161530,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2210
 
 #### Metadata Types ServiceSetupAssistantSettings ServiceSetupAssistantSettings
 
@@ -163796,7 +161585,6 @@ Represents an organization’s sharing, visibility, and data access settings. Th
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2211
 
 Metadata Types SharingSettings
 
@@ -163857,7 +161645,6 @@ Customer Support.
 **•** When you change the value of this field from `true` to
 `false`, sharing rules are automatically recalculated.
 
-2212
 
 Metadata Types SharingSettings
 
@@ -163928,7 +161715,6 @@ feature after migrating to Sales Territories when set to `true` . This field
 has a default value of `false` . Once this field is set to `true`, it can't be
 set to `false` again.
 
-2213
 
 Metadata Types SharingSettings
 
@@ -164013,7 +161799,6 @@ The following is an example of a SharingSettings component.
 
 ```
 
-2214
 
 #### Metadata Types SiteSettings
 
@@ -164076,7 +161861,6 @@ Enhanced LWR sites are represented by the DigitalExperienceBundle
 and DigitalExperienceConfig types. Available in API version 56.0 and
 later.
 
-2215
 
 Metadata Types SiteSettings
 
@@ -164149,7 +161933,6 @@ The following is an example of a SiteSettings component.
 
 ```
 
-2216
 
 #### Metadata Types SocialCustomerServiceSettings
 
@@ -164227,7 +162010,6 @@ a Facebook post can only be sent from the account that the
 original customer post was directed to. The default value is
 `true` . Available in API version 56.0 and later.
 
-2217
 
 Metadata Types SocialCustomerServiceSettings
 
@@ -164313,7 +162095,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2218
 
 #### Metadata Types SocialProfileSettings
 
@@ -164375,7 +162156,6 @@ Twitter social profiles.
 This setting is permanently set to True because Twitter access was
 removed in API version 59.0.
 
-2219
 
 #### Metadata Types SourceTrackingSettings (Beta)
 
@@ -164435,7 +162215,6 @@ enabled in the same org to enable source tracking.
 This field applies to production orgs only; in other orgs, this field is
 ignored.
 
-2220
 
 #### Metadata Types SubscriptionManagementSettings
 
@@ -164495,7 +162274,6 @@ generation is enabled in the org
 ( `true` ) or not ( `false` ). The
 default value is `false` .
 
-2221
 
 Metadata Types SubscriptionManagementSettings
 
@@ -164568,7 +162346,6 @@ This example shows a sample `package.xml` that references the previous definitio
 
 ```
 
-2222
 
 #### Metadata Types SurveySettings
 
@@ -164631,7 +162408,6 @@ The default value is `false` .
 `enableSurveyOwnerCanManageResponse` boolean Indicates whether the owner of a survey can manage its responses. The
 default value is `false` .
 
-2223
 
 #### Metadata Types Territory2Settings
 
@@ -164703,7 +162479,6 @@ Version
 
 #### Territory2Settings is available in API version 32.0 and later.
 
-2224
 
 Metadata Types Territory2Settings
 
@@ -164778,7 +162553,6 @@ Valid values are:
 
 Available in API version 49.0 and later.
 
-2225
 
 Metadata Types Territory2Settings
 
@@ -164852,7 +162626,6 @@ If `true`, the Apex class runs automatically every time a user creates an opport
 
 Sets the user access levels of all objects that support territory assignments in the org.
 
-2226
 
 Metadata Types Territory2Settings
 
@@ -164938,7 +162711,6 @@ The following example shows the definition of a Territory2Settings component.
 
 ```
 
-2227
 
 #### Metadata Types TrailheadSettings
 
@@ -164992,7 +162764,6 @@ Indicates whether the terms and conditions for showing Trailhead
 content in Lightning Experience are accepted in your org. The default
 value of this field is `false` .
 
-2228
 
 #### Metadata Types TrialOrgSettings
 
@@ -165059,7 +162830,6 @@ Special Access Rules
 Access to TrialOrgSettings requires users to complete the checkout flow in Enterprise, Professional, or Essentials editions. For Essentials,
 you can also access TrialOrgSettings by completing step 7 of the Setup Assistant.
 
-2229
 
 #### Metadata Types UserEngagementSettings
 
@@ -165118,7 +162888,6 @@ Fields
 `canUseAdoptionApps` boolean Indicates whether an org can access Lightning Experience transition
 tools ( `true` ) or not ( `false` ). Examples of these tools are Salesforce
 
-2230
 
 Metadata Types UserEngagementSettings
 
@@ -165182,7 +162951,6 @@ default is `true` . Even if `false`, admins always see all links in the Help
 [Menu. See Define Custom Help for the Lightning Experience Help Menu](https://help.salesforce.com/articleView?id=customhelp_lexhelpmenu.htm&language=en_US)
 in Salesforce Help for more information.
 
-2231
 
 Metadata Types UserEngagementSettings
 
@@ -165254,7 +163022,6 @@ for more information.
 `enableScheduledSwitcher` boolean Indicates whether users are automatically switched from Salesforce
 Classic to Lightning Experience ( `true` ) or not ( `false` ). The default is
 
-2232
 
 Metadata Types UserEngagementSettings
 
@@ -165338,7 +163105,6 @@ The following is an example of a UserEngagementSettings component.
 
 ```
 
-2233
 
 #### Metadata Types UserInterfaceSettings
 
@@ -165421,7 +163187,6 @@ Version
 
 #### UserInterfaceSettings components are available in API version 46.0 and later.
 
-2234
 
 Metadata Types UserInterfaceSettings
 
@@ -165494,7 +163259,6 @@ fields in the mini page layout.
 `enableInlineEdit` boolean Indicates whether users are allowed to edit field values on a record’s
 detail page ( `true` ) or not ( `false` ). The default is `true` .
 
-2235
 
 Metadata Types UserInterfaceSettings
 
@@ -165560,7 +163324,6 @@ The following is an example of a UserInterfaceSettings component.
 
 ```
 
-2236
 
 #### Metadata Types UserManagementSettings
 
@@ -165626,7 +163389,6 @@ instead of `enableConcealPersonalInfo` . Before
 you set the
 `enableEnhancedConcealPersonalInfo` field
 
-2237
 
 Metadata Types UserManagementSettings
 
@@ -165688,7 +163450,6 @@ use only one user interface at a time.
 `enableProfileFiltering` boolean With profile filtering enabled ( `true` ), you can restrict
 who sees profile names to the users who require the
 
-2238
 
 Metadata Types UserManagementSettings
 
@@ -165753,7 +163514,6 @@ accounts.
 `enhancedPermSetList` boolean Indicates whether you manage permission sets with an
 updated user interface on the Permissions Setup page
 
-2239
 
 Metadata Types UserManagementSettings
 
@@ -165815,7 +163575,6 @@ mechanisms based on criteria that you set. The default
 value is `false` . This field is available in API version 58.0
 and later.
 
-2240
 
 #### Metadata Types VoiceSettings
 
@@ -165901,7 +163660,6 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-2241
 
 Metadata Types VoiceSettings
 
@@ -165971,7 +163729,6 @@ of their sales reps for personalized coaching.
 Default value is `false` . To use this feature, enable Dialer in Lightning
 Experience.
 
-2242
 
 Metadata Types VoiceSettings
 
@@ -166052,7 +163809,6 @@ The package file references the following Voice.settings file.
 
 ```
 
-2243
 
 #### Metadata Types WarrantyLifeCycleMgmtSettings
 
@@ -166127,7 +163883,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2244
 
 #### Metadata Types WorkDotComSettings
 
@@ -166198,7 +163953,6 @@ Indicates whether Badge Definition Restriction is available to users
 
 Deprecated.
 
-2245
 
 #### Metadata Types WorkforceEngagementSettings
 
@@ -166285,7 +164039,6 @@ The following is an example of a WorkDotComSettings component.
 
 Represents settings for Workforce Engagement Management.
 
-2246
 
 Metadata Types WorkforceEngagementSettings
 
@@ -166352,7 +164105,6 @@ The following is an example of a `WorkforceEngagement.settings` component.
 
 ```
 
-2247
 
 ### Metadata Types SharedTo
 
@@ -166429,7 +164181,6 @@ A group containing all customer portal users.
 
 This field is available in API version 24.0 and later.
 
-2248
 
 Metadata Types SharedTo
 
@@ -166510,7 +164261,6 @@ A list of roles with sharing access. Use this field instead of the
 
 This field is available in API version 22.0 and later.
 
-2249
 
 Metadata Types SharedTo
 
@@ -166583,7 +164333,6 @@ in the API.
 
 This field is available in API version 22.0 and later.
 
-2250
 
 ### Metadata Types SharingBaseRule
 
@@ -166641,7 +164390,6 @@ characters.
 
 `label` string Required. Label for the sharing rule.
 
-2251
 
 ### Metadata Types SharingRules
 
@@ -166705,7 +164453,6 @@ Represents the base container for sharing rules, which can be criteria-based, ow
 This type extends the Metadata metadata type and inherits its `fullName` field. For more information, see “Sharing Rules” in Salesforce
 Help.
 
-2252
 
 Metadata Types SharingRules
 
@@ -166757,7 +164504,6 @@ API version 33.0 and later.
 `sharingTerritoryRules` SharingTerritoryRule[] An array of territory-based sharing rules. Available in API
 version 33.0 and later.
 
-2253
 
 Metadata Types SharingRules
 
@@ -166812,7 +164558,6 @@ SharingOwnerRule
 
 Defines an ownership-based sharing rule. It extends SharingBaseRule and inherits all its fields. Available in API version 33.0 and later.
 
-2254
 
 Metadata Types SharingRules
 
@@ -166870,7 +164615,6 @@ API version 32.0 and earlier.
 
 `criteriaBasedRules` CaseCriteriaBasedSharingRule[] List that defines user criteria-based rules.
 
-2255
 
 Metadata Types SharingRules
 
@@ -166925,7 +164669,6 @@ acceptable values for the `sharedFrom` fields are:
 
 **•** `territoryAndSubordinates`
 
-2256
 
 Metadata Types SharingRules
 
@@ -167004,7 +164747,6 @@ The following sample XML definition represents a criteria-based sharing rule in 
 
 ```
 
-2257
 
 Metadata Types SharingRules
 
@@ -167117,7 +164859,6 @@ AccountOwnerSharingRule.
 
 ```
 
-2258
 
 Metadata Types SharingRules
 
@@ -167224,7 +164965,6 @@ earlier. The file name corresponds to `User.sharingRules` under the `userSharing
 
 ```
 
-2259
 
 #### Metadata Types BaseSharingRule
 
@@ -167290,7 +165030,6 @@ Version
 
 #### BaseSharingRule on page 2260 components are available in API version 24.0 and later.
 
-2260
 
 #### Metadata Types CriteriaBasedSharingRule
 
@@ -167343,7 +165082,6 @@ Fields
 The following information assumes that you’re familiar with implementing sharing rules for standard objects and custom objects. For
 more information on these fields, see Sharing Settings in Salesforce Help.
 
-2261
 
 Metadata Types CriteriaBasedSharingRule
 
@@ -167420,7 +165158,6 @@ This field is available in API version 29.0 and later.
 `name` string Required. Name for the sharing rule. Corresponds to **Label** in
 the user interface.
 
-2262
 
 Metadata Types CriteriaBasedSharingRule
 
@@ -167486,7 +165223,6 @@ characters.
 
 This field is available in API version 29.0 and later.
 
-2263
 
 Metadata Types CriteriaBasedSharingRule
 
@@ -167551,7 +165287,6 @@ LeadCriteriaBasedSharingRule is used by the `criteriaBasedRules` field in LeadSh
 `description` string Represents the description of the sharing rule. Maximum of 1000
 characters. This field is available in API version 29.0 and later.
 
-2264
 
 Metadata Types CriteriaBasedSharingRule
 
@@ -167613,7 +165348,6 @@ The possible values are:
 
 **•** `All`
 
-2265
 
 Metadata Types CriteriaBasedSharingRule
 
@@ -167689,7 +165423,6 @@ file name corresponds to the Account.sharingRules file under the accountSharingR
 
 ```
 
-2266
 
 #### Metadata Types OwnerSharingRule
 
@@ -167789,7 +165522,6 @@ earlier versions only.
 
 in the Salesforce online help.
 
-2267
 
 Metadata Types OwnerSharingRule
 
@@ -167847,7 +165579,6 @@ AccountOwnerSharingRule is used by the `ownerRules` field in AccountSharingRules
 
 **•** `All`
 
-2268
 
 Metadata Types OwnerSharingRule
 
@@ -167928,7 +165659,6 @@ CampaignOwnerSharingRule is used by the `ownerRules` field in CampaignSharingRul
 `description` string Represents the description of the sharing rule. Maximum of 1000
 characters.This field is available in API version 29.0 and later.
 
-2269
 
 Metadata Types OwnerSharingRule
 
@@ -167986,7 +165716,6 @@ LeadOwnerSharingRule
 Represents a sharing rule for a lead with users other than the owner. It extends the OwnerSharingRule metadata type and inherits its
 fullName, `sharedFrom`, and `sharedTo` fields.
 
-2270
 
 Metadata Types OwnerSharingRule
 
@@ -168044,7 +165773,6 @@ accountAccessLevel ShareAccessLevelNoNone
 
 (enumeration of type string)
 
-2271
 
 Required. A value that represents the level of access that a
 Territory or TerritoryAndSubordinates group is granted for an
@@ -168128,7 +165856,6 @@ or role is granted to a custom object. The possible values are:
 
 **•** `All`
 
-2272
 
 ### Metadata Types SharingSet
 
@@ -168185,7 +165912,6 @@ File Suffix and Directory Location
 
 ### SharingSet components have the suffix .sharingSet and are stored in the sharingSets folder.
 
-2273
 
 Metadata Types SharingSet
 
@@ -168250,7 +165976,6 @@ are:
 
 **•** `Read`
 
-2274
 
 Metadata Types SharingSet
 
@@ -168328,7 +166053,6 @@ users’ contacts.
 
 ```
 
-2275
 
 Metadata Types SharingSet
 
@@ -168442,7 +166166,6 @@ The following is an example of a SharingSet component with a list of access mapp
 
 ```
 
-2276
 
 ### Metadata Types SiteDotCom
 
@@ -168517,7 +166240,6 @@ Version
 
 ### SiteDotCom components are available in API version 30.0 and later.
 
-2277
 
 ### Metadata Types Skill
 
@@ -168581,7 +166303,6 @@ File Suffix and Directory Location
 
 ### Skill values are stored in the <developer_name>.skill file in the skills directory.
 
-2278
 
 Metadata Types Skill
 
@@ -168634,7 +166355,6 @@ SkillUserAssignments
 
 Represents the users that are associated with a specific skill.
 
-2279
 
 ### Metadata Types StandardValueSet
 
@@ -168695,7 +166415,6 @@ Version
 
 ### StandardValueSet components are available in API version 38.0 and later.
 
-2280
 
 Metadata Types StandardValueSet
 
@@ -168777,7 +166496,6 @@ object.
 
 ```
 
-2281
 
 ### Metadata Types StandardValueSetTranslation
 
@@ -168840,7 +166558,6 @@ comment that’s paired with its label.
 
 ```
 
-2282
 
 ### Metadata Types StaticResource
 
@@ -168917,7 +166634,6 @@ Version
 
 Static resources are available in API version 12.0 and later.
 
-2283
 
 ### Metadata Types StageAssignment
 
@@ -168983,7 +166699,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents a collection of fields to automatically assign stage definitions to records based on rule criteria.
 
-2284
 
 Metadata Types StageAssignment
 
@@ -169051,7 +166766,6 @@ example, ApplicationForm or Order).
 **Field Type**
 string
 
-2285
 
 Metadata Types StageAssignment
 
@@ -169122,7 +166836,6 @@ values are:
 
 **•** `OR`
 
-2286
 
 Metadata Types StageAssignment
 
@@ -169196,7 +166909,6 @@ Required. API name of the field to evaluate for this condition.
 **Field Type**
 StageConditionOperator (enumeration of type string)
 
-2287
 
 Metadata Types StageAssignment
 
@@ -169272,7 +166984,6 @@ Evaluation Process:
 
 Use Cases:
 
-2288
 
 Metadata Types StageAssignment
 
@@ -169377,7 +167088,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2289
 
 ### Metadata Types StageDefinition
 
@@ -169446,7 +167156,6 @@ The description of the stage definition.
 **Field Type**
 string
 
-2290
 
 Metadata Types StageDefinition
 
@@ -169523,7 +167232,6 @@ StageCriteria[]
 A collection of fields to set up the criteria for the object stage transition and object
 stage change.
 
-2291
 
 Metadata Types StageDefinition
 
@@ -169594,7 +167302,6 @@ Values are:
 
 Represents a collection of fields to set up the criteria for the object stage transition and object stage change.
 
-2292
 
 Metadata Types StageDefinition
 
@@ -169673,7 +167380,6 @@ Available in API version 63.0 and later.
 **Field Type**
 boolean
 
-2293
 
 Metadata Types StageDefinition
 
@@ -169750,7 +167456,6 @@ Values are:
 
 **•** `LessOrEqual`
 
-2294
 
 Metadata Types StageDefinition
 
@@ -169823,7 +167528,6 @@ A collection of fields to set up fullfillment step definitions for stages and tr
 
 Represents a collection of fields to set up fullfillment step definitions for stages and transitions.
 
-2295
 
 Metadata Types StageDefinition
 
@@ -169900,7 +167604,6 @@ The ID associated with the integration provider definition.
 **Field Type**
 string
 
-2296
 
 Metadata Types StageDefinition
 
@@ -169976,7 +167679,6 @@ StageCriteria[]
 A collection of fields to set up the criteria for the object stage transition and object
 stage change.
 
-2297
 
 Metadata Types StageDefinition
 
@@ -170076,7 +167778,6 @@ The following is an example of a StageDefinition component.
 
 ```
 
-2298
 
 Metadata Types StageDefinition
 
@@ -170183,7 +167884,6 @@ Metadata Types StageDefinition
 
 ```
 
-2299
 
 ### Metadata Types SustainabilityUom
 
@@ -170250,7 +167950,6 @@ string
 **Description**
 The description of the unit of measure.
 
-2300
 
 Metadata Types SustainabilityUom
 
@@ -170328,7 +168027,6 @@ The type of unit used for conversions or calculations.
 
 Values are:
 
-2301
 
 ### Metadata Types SustnUomConversion
 
@@ -170405,7 +168103,6 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-2302
 
 Metadata Types SustnUomConversion
 
@@ -170476,7 +168173,6 @@ Possible values are:
 
 **•** `Heat`
 
-2303
 
 Metadata Types SustnUomConversion
 
@@ -170557,7 +168253,6 @@ Possible values are:
 
 **•** `Therms`
 
-2304
 
 Metadata Types SustnUomConversion
 
@@ -170647,7 +168342,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2305
 
 ### Metadata Types SvcCatalogCategory
 
@@ -170717,7 +168411,6 @@ boolean
 **Description**
 An auto-generated value. This value currently has no impact.
 
-2306
 
 ### Metadata Types SvcCatalogFulfillmentFlow
 
@@ -170790,7 +168483,6 @@ File Suffix and Directory Location
 
 `svcCatalogFulfillmentFlows` folder.
 
-2307
 
 Metadata Types SvcCatalogFulfillmentFlow
 
@@ -170858,7 +168550,6 @@ SvcCatalogFulfillFlowItem
 
 Represents a variable in a fulfillment flow that can accept input. Describes what type of value it accepts.
 
-2308
 
 Metadata Types SvcCatalogFulfillmentFlow
 
@@ -170936,7 +168627,6 @@ to a user. This value can only be `true` if the `displayType` for this item is `
 Only one item per SvcCatalogFulfillmentFlow component can set this attribute to
 `true` .
 
-2309
 
 Metadata Types SvcCatalogFulfillmentFlow
 
@@ -171021,7 +168711,6 @@ User. If this will be used by Users without related Contacts, provide an Account
 
 ```
 
-2310
 
 Metadata Types SvcCatalogFulfillmentFlow
 
@@ -171132,7 +168821,6 @@ Metadata Types SvcCatalogFulfillmentFlow
 
 ```
 
-2311
 
 ### Metadata Types SvcCatalogItemDef
 
@@ -171197,7 +168885,6 @@ A list of catalog categories that contain this catalog item.
 **Description**
 A list of data categories for this catalog item. Available in API version 59.0 and later.
 
-2312
 
 Metadata Types SvcCatalogItemDef
 
@@ -171270,7 +168957,6 @@ users, set the value to `True` . This value corresponds to the **Allow Access fo
 **Users** option for Internal Access in the Catalog Item Builder. Available in API version
 61.0 and later.
 
-2313
 
 Metadata Types SvcCatalogItemDef
 
@@ -171342,7 +169028,6 @@ Values are:
 
 **•** `Published`
 
-2314
 
 Metadata Types SvcCatalogItemDef
 
@@ -171414,7 +169099,6 @@ category
 **Field Type**
 string
 
-2315
 
 Metadata Types SvcCatalogItemDef
 
@@ -171494,7 +169178,6 @@ Values are:
 
 **•** `ListOfString`
 
-2316
 
 Metadata Types SvcCatalogItemDef
 
@@ -171574,7 +169257,6 @@ double
 
 Applicable when the display type is slider.
 
-2317
 
 Metadata Types SvcCatalogItemDef
 
@@ -171652,7 +169334,6 @@ boolean
 Required. Marks the attribute detail as the default. Applicable when the input display
 type is picklist or checkbox.
 
-2318
 
 Metadata Types SvcCatalogItemDef
 
@@ -171754,7 +169435,6 @@ The following is an example of a SvcCatalogItemDef component.
 
 ```
 
-2319
 
 ### Metadata Types SynonymDictionary
 
@@ -171821,7 +169501,6 @@ Fields
 
 `groups` SynonymGroup The synonym groups defined in this dictionary.
 
-2320
 
 Metadata Types SynonymDictionary
 
@@ -171906,7 +169585,6 @@ The following is an example `package.xml` that references the SynonymDictionary 
 
 ```
 
-2321
 
 ### Metadata Types Territory
 
@@ -171968,7 +169646,6 @@ assigned to this territory and are otherwise inaccessible. Valid values are:
 If your organization’s sharing model for accounts is Public Read/Write,
 valid values are only `Edit` and `All` .
 
-2322
 
 ### Metadata Types Territory2
 
@@ -172033,7 +169710,6 @@ Version
 
 ### Territory2 components are available in API version 32.0 and later.
 
-2323
 
 Metadata Types Territory2
 
@@ -172099,7 +169775,6 @@ are:
 Specify no value if your organization’s sharing model for contacts is
 Public Read/Write or Controlled By Parent.
 
-2324
 
 Metadata Types Territory2
 
@@ -172163,7 +169838,6 @@ FieldValue
 
 Represents the values of custom fields on the Territory2 object. Available in API version 32.0 and later.
 
-2325
 
 Metadata Types Territory2
 
@@ -172229,7 +169903,6 @@ The following example shows the definition of a Territory2 component.
 
 ```
 
-2326
 
 Metadata Types Territory2
 
@@ -172341,7 +170014,6 @@ all rules in all models in an organization.
 
 ```
 
-2327
 
 ### Metadata Types Territory2Model
 
@@ -172404,7 +170076,6 @@ models in `Active` state. The Manage Territories permission is required for `dep
 Using `retrieve()` without the Manage Territories permission returns only entities that belong to a Territory2Model in `Active`
 state. We recommend against retrieving without the Manage Territories permission because the call retrieves only partial data.
 
-2328
 
 Metadata Types Territory2Model
 
@@ -172483,7 +170154,6 @@ The following example shows the definition of a Territory2Model component.
 
 ```
 
-2329
 
 ### Metadata Types Territory2Rule
 
@@ -172537,7 +170207,6 @@ Version
 
 ### Territory2Rule components are available in API version 32.0 and later.
 
-2330
 
 Metadata Types Territory2Rule
 
@@ -172603,7 +170272,6 @@ string)
 
 **•** `lessOrEqual`
 
-2331
 
 Metadata Types Territory2Rule
 
@@ -172694,7 +170362,6 @@ rules in all models in an org.
 
 ```
 
-2332
 
 ### Metadata Types Territory2Type
 
@@ -172754,7 +170421,6 @@ Special Access Rules
 The Manage Territories permission is required for the `deploy()` operation, but not `retrieve()` . The `retrieve()` operation
 retrieves all the Territory2Type components in the org.
 
-2333
 
 ### Metadata Types TimelineObjectDefinition
 
@@ -172812,7 +170478,6 @@ records' related events in a linear time-sorted view.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-2334
 
 Metadata Types TimelineObjectDefinition
 
@@ -172878,7 +170543,6 @@ string
 **Description**
 Required.
 
-2335
 
 Metadata Types TimelineObjectDefinition
 
@@ -172962,7 +170626,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2336
 
 ### Metadata Types TimeSheetTemplate
 
@@ -173030,7 +170693,6 @@ type string)
 
 **•** `Monthly`
 
-2337
 
 Metadata Types TimeSheetTemplate
 
@@ -173111,7 +170773,6 @@ The following is an example of a TimeSheetTemplate file.
 
 ```
 
-2338
 
 ### Metadata Types TopicsForObjects
 
@@ -173180,7 +170841,6 @@ Version
 
 ### TopicsForObjects components are available in API version 41.0 and later.
 
-2339
 
 Metadata Types TopicsForObjects
 
@@ -173264,7 +170924,6 @@ The following is an example `package.xml` that references the previous definitio
 
 ```
 
-2340
 
 ### Metadata Types TransactionSecurityPolicy
 
@@ -173322,7 +170981,6 @@ in API version 49.0 and later.
 Include org- or policy-specific information in your custom message,
 such as the name of the responsible administrator or the business
 
-2341
 
 Metadata Types TransactionSecurityPolicy
 
@@ -173386,7 +171044,6 @@ version 50.0 and later.
 user successfully logs into Salesforce during an identified
 credential stuffing attack. Credential stuffing refers to
 
-2342
 
 Metadata Types TransactionSecurityPolicy
 
@@ -173453,7 +171110,6 @@ authentication provider or Chatter comment.
 
 **•** `Login` —Notifies you when a user logs in.
 
-2343
 
 Metadata Types TransactionSecurityPolicy
 
@@ -173521,7 +171177,6 @@ TransactionSecurityAction
 
 Describes the action to take when the matching Transaction Security policy is triggered.
 
-2344
 
 Metadata Types TransactionSecurityPolicy
 
@@ -173593,7 +171248,6 @@ The following is an example of a Real-Time Event Monitoring TransactionSecurityP
 
 ```
 
-2345
 
 ### Metadata Types Translations
 
@@ -173676,7 +171330,6 @@ Salesforce offers full support for these languages.
 
 **•** Danish: `da`
 
-2346
 
 Metadata Types Translations
 
@@ -173755,7 +171408,6 @@ End-user languages include:
 
 Important: Before enabling end-user languages Arabic and Hebrew, review the right-to-left language support limitations.
 
-2347
 
 Metadata Types Translations
 
@@ -173834,7 +171486,6 @@ Platform-only languages include:
 
 **•** English (Australia): `en_AU`
 
-2348
 
 Metadata Types Translations
 
@@ -173918,7 +171569,6 @@ Metadata Types Translations
 
 **•** Kazakh: `kk`
 
-2349
 
 Metadata Types Translations
 
@@ -174002,7 +171652,6 @@ Metadata Types Translations
 
 **•** Spanish (United States): `es_US`
 
-2350
 
 Metadata Types Translations
 
@@ -174065,7 +171714,6 @@ component.
 `desFieldTemplateMessages` ExplainabilityMsgTemplateFieldTranslation[] A list of admin-configured explainability message
 templates.
 
-2351
 
 Metadata Types Translations
 
@@ -174133,7 +171781,6 @@ and later.
 
 `name` string Required. Name of the coaching scenario.
 
-2352
 
 Metadata Types Translations
 
@@ -174192,7 +171839,6 @@ BotVersion.
 `label` string A translated label that identifies the dialog throughout the
 Salesforce user interface.
 
-2353
 
 Metadata Types Translations
 
@@ -174253,7 +171899,6 @@ BotMessageTranslation contains details for a translation of a bot message step. 
 `message` string A translated message to display as part of an outgoing message
 from the bot to the customer.
 
-2354
 
 Metadata Types Translations
 
@@ -174322,7 +171967,6 @@ translation must match the
 `variableOperationIdentifier` on the original
 BotVariableOperation subtype of BotVersion.
 
-2355
 
 Metadata Types Translations
 
@@ -174376,7 +172020,6 @@ CustomPageWebLinkTranslation
 CustomPageWebLinkTranslation contains details for a translation of a web link defined in a home page component. For more details,
 see CustomPageWebLink.
 
-2356
 
 Metadata Types Translations
 
@@ -174441,7 +172084,6 @@ This is an example of an ExplainabilityMsgTemplateFieldTranslation component.
 
 ```
 
-2357
 
 Metadata Types Translations
 
@@ -174507,7 +172149,6 @@ on page 2360 Available in API version 63.0 and later.
 `stages` FlowStageTranslation on page A list of stage translations for the flow version. Available in API
 2361[] version 43.0 and later.
 
-2358
 
 Metadata Types Translations
 
@@ -174562,7 +172203,6 @@ translation.
 
 `stageLabel` string A translated label for the orchestration stage.
 
-2359
 
 Metadata Types Translations
 
@@ -174622,7 +172262,6 @@ Note: Translation isn’t supported for screen components that require Lightning
 
 `name` string Required. An API name for the screen component.
 
-2360
 
 Metadata Types Translations
 
@@ -174672,7 +172311,6 @@ Available in API version 43.0 and later.
 
 `name` string Required. An API name for the stage.
 
-2361
 
 Metadata Types Translations
 
@@ -174752,7 +172390,6 @@ This is an example of an IdentityVerificationFieldTranslation component.
 
 ```
 
-2362
 
 Metadata Types Translations
 
@@ -174830,7 +172467,6 @@ version 53.0 and later.
 
 `name` string Required. The quick action name.
 
-2363
 
 Metadata Types Translations
 
@@ -174889,7 +172525,6 @@ later.
 
 `label` string The translated prompt name.
 
-2364
 
 Metadata Types Translations
 
@@ -174944,7 +172579,6 @@ Existing s-controls are unaffected and can still be edited.
 
 ScontrolTranslation contains details for a translation of an s-control. For more information, see “About S-Controls” in Salesforce Help.
 
-2365
 
 Metadata Types Translations
 
@@ -175039,7 +172673,6 @@ Translations for all these metadata types are returned because each metadata typ
 
 ```
 
-2366
 
 ### Metadata Types UiFormatSpecificationSet
 
@@ -175102,7 +172735,6 @@ Special Access Rules
 
 There are no additional access requirements that are specific to this type.
 
-2367
 
 Metadata Types UiFormatSpecificationSet
 
@@ -175180,7 +172812,6 @@ string
 
 Required. The properties for a given `formatType` in JSON format.
 
-2368
 
 Metadata Types UiFormatSpecificationSet
 
@@ -175255,7 +172886,6 @@ UiFormulaCriterion[]
 List of one or more filters that, when evaluated, determine conditional field formatting
 visibility.
 
-2369
 
 Metadata Types UiFormatSpecificationSet
 
@@ -175339,7 +172969,6 @@ The following is an example of an UiFormatSpecificationSet component.
 
 ```
 
-2370
 
 Metadata Types UiFormatSpecificationSet
 
@@ -175440,7 +173069,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2371
 
 ### Metadata Types UIObjectRelationConfig UIObjectRelationConfig
 
@@ -175502,7 +173130,6 @@ string
 For direct relationships, the child relationship field on the related object that matches
 the context object.
 
-2372
 
 Metadata Types UIObjectRelationConfig
 
@@ -175576,7 +173203,6 @@ string
 **Description**
 The record type of the related object for this configuration.
 
-2373
 
 Metadata Types UIObjectRelationConfig
 
@@ -175653,7 +173279,6 @@ A case-insensitive template query for generating the content in this field.
 **Field Type**
 int
 
-2374
 
 Metadata Types UIObjectRelationConfig
 
@@ -175754,7 +173379,6 @@ This is an example of a UIObjectRelationConfig component.
 
 ```
 
-2375
 
 ### Metadata Types UiPreviewMessageTabDef
 
@@ -175854,7 +173478,6 @@ This metadata type supports the wildcard character `*` (asterisk) in the `packag
 Represents the registration of a custom Marketing Cloud Preview and Test modal tab, created using custom Lightning web components.
 You can register and show multiple tabs in the Preview and Test experience.
 
-2376
 
 Metadata Types UiPreviewMessageTabDef
 
@@ -175916,7 +173539,6 @@ Required.
 
 Label for the tab.
 
-2377
 
 Metadata Types UiPreviewMessageTabDef
 
@@ -175998,7 +173620,6 @@ export default class CustomTab extends LightningElement {
 
 ```
 
-2378
 
 ### Metadata Types UserAccessPolicy
 
@@ -176069,7 +173690,6 @@ Special Access Rules
 
 To create or modify user access policies, users must have the Manage User Access Policies permission.
 
-2379
 
 Metadata Types UserAccessPolicy
 
@@ -176142,7 +173762,6 @@ Required. The status of the user access policy.
 
 Values are:
 
-2380
 
 Metadata Types UserAccessPolicy
 
@@ -176212,7 +173831,6 @@ The filters used to define the users that the user access policy is applied to.
 
 Represents an action applied by a user access policy.
 
-2381
 
 Metadata Types UserAccessPolicy
 
@@ -176292,7 +173910,6 @@ If you set `type` to any value other than `User`, then this field isn’t used.
 **Field Type**
 UserAccessPolicyFilterOperation (enumeration of type string)
 
-2382
 
 Metadata Types UserAccessPolicy
 
@@ -176369,7 +173986,6 @@ Values are:
 
 **•** `UserRole`
 
-2383
 
 Metadata Types UserAccessPolicy
 
@@ -176471,7 +174087,6 @@ roles</description>
 
 ```
 
-2384
 
 ### Metadata Types UserAuthCertificate
 
@@ -176548,7 +174163,6 @@ Version
 
 ### UserAuthCertificate components are available in API version 50.0 and later.
 
-2385
 
 Metadata Types UserAuthCertificate
 
@@ -176620,7 +174234,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2386
 
 ### Metadata Types UserCriteria UserCriteria
 
@@ -176686,7 +174299,6 @@ The following is an example of a UserCriteria component.
 
 ```
 
-2387
 
 ### Metadata Types UserProfileSearchScope
 
@@ -176740,7 +174352,6 @@ associated connected app. If the value is null, no approval is required.
 `enabled` boolean Indicates whether user provisioning is enabled for the associated
 connected app ( `true` ) or not ( `false` ). Default setting is `false` .
 
-2388
 
 Metadata Types UserProvisioningConfig
 
@@ -176826,7 +174437,6 @@ The following is an example of a UserProvisioningConfig component.
 
 ```
 
-2389
 
 ### Metadata Types VirtualVisitConfig
 
@@ -176897,7 +174507,6 @@ phrase extraction (KeyPhrasePrefEnabled) Org Preference
 
 **•** Natural Language Processing (NLPServicePrefEnabled) Org Preference
 
-2390
 
 Metadata Types VirtualVisitConfig
 
@@ -176967,7 +174576,6 @@ string
 The ID of the role that's used to allow users to join a video call and to grant them
 temporary access to certain functions needed to participate in the call.
 
-2391
 
 Metadata Types VirtualVisitConfig
 
@@ -177042,7 +174650,6 @@ account.
 **Field Type**
 string
 
-2392
 
 Metadata Types VirtualVisitConfig
 
@@ -177119,7 +174726,6 @@ Valid values are:
 
 **•** `ap-southeast-2`
 
-2393
 
 Metadata Types VirtualVisitConfig
 
@@ -177213,7 +174819,6 @@ This is an example `package.xml` that references the previous definition.
 
 ```
 
-2394
 
 ### Metadata Types WaveAnalyticAssetCollection
 
@@ -177278,7 +174883,6 @@ The following is an example of a WaveAnalyticsAssetCollection component.
 
 ```
 
-2395
 
 ### Metadata Types WaveApplication
 
@@ -177351,7 +174955,6 @@ Version
 
 ### WaveApplication components are available in API version 37.0 and later.
 
-2396
 
 ### Metadata Types WaveComponent
 
@@ -177425,7 +175028,6 @@ inherits its `content` and `fullName` fields.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-2397
 
 ### Metadata Types WaveDataflow
 
@@ -177487,7 +175089,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents the WaveDataflow object in the Analytics application. This type extends the MetadataWithContent metadata type and inherits
 its `content` and `fullName` fields.
 
-2398
 
 ### Metadata Types WaveDashboard
 
@@ -177548,7 +175149,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents the WaveDashboard object in the Analytics application. This type extends the MetadataWithContent metadata type and
 inherits its `content` and `fullName` fields.
 
-2399
 
 Metadata Types WaveDashboard
 
@@ -177615,7 +175215,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2400
 
 ### Metadata Types WaveDataset WaveDataset
 
@@ -177673,7 +175272,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2401
 
 ### Metadata Types WaveLens WaveLens
 
@@ -177737,7 +175335,6 @@ from a template.
 
 **•** `time` —Time line
 
-2402
 
 ### Metadata Types WaveRecipe
 
@@ -177797,7 +175394,6 @@ Version
 
 ### WaveRecipe components are available in API version 41.0 and later.
 
-2403
 
 Metadata Types WaveRecipe
 
@@ -177861,7 +175457,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Note: Use of the wildcard character doesn’t return the recipe’s associated dataflows.
 
-2404
 
 ### Metadata Types WaveTemplateBundle WaveTemplateBundle
 
@@ -177917,7 +175512,6 @@ Valid values are `1.png` through `20.png` .
 
 `label` string Required. The label of the template.
 
-2405
 
 ### Metadata Types WaveXmd
 
@@ -177967,7 +175561,6 @@ this XMD.
 
 `origin` string The origin of the dataset version.
 
-2406
 
 Metadata Types WaveXmd
 
@@ -178032,7 +175625,6 @@ or not ( `false` ).
 
 `dateFieldWeek` string The week field.
 
-2407
 
 Metadata Types WaveXmd
 
@@ -178093,7 +175685,6 @@ notation like `Global.LogACall` or `FeedItem.Post` .
 
 `description` string The description of the dimension.
 
-2408
 
 Metadata Types WaveXmd
 
@@ -178155,7 +175746,6 @@ WaveXmdFormattingProperty represents an XMD formatting property for conditional 
 
 `formattingPredicates` WaveXmdFormattingPredicate The formatting predicates for this property.
 
-2409
 
 Metadata Types WaveXmd
 
@@ -178211,7 +175801,6 @@ WaveXmdDimensionCustomAction represents a custom action in a dimension.
 `enabled` boolean Required. Indicates whether the action is enabled for a specific
 dimension ( `true` ) or not ( `false` ).
 
-2410
 
 Metadata Types WaveXmd
 
@@ -178267,7 +175856,6 @@ WaveXmdDimensionSalesforceAction represents an action in a dimension.
 `enabled` boolean Required. Indicates whether the action is enabled for a specific
 dimension ( `true` ) or not ( `false` ).
 
-2411
 
 Metadata Types WaveXmd
 
@@ -178329,7 +175917,6 @@ dataset ( `true` ) or not ( `false` ).
 
 `label` string The label for the measure.
 
-2412
 
 Metadata Types WaveXmd
 
@@ -178410,7 +175997,6 @@ The following is an example of a WaveXmd component for an Asset XMD belonging to
 
 ```
 
-2413
 
 ### Metadata Types WebStoreBundle
 
@@ -178496,7 +176082,6 @@ File Suffix and Directory Location
 
 ### WebStoreTemplate components have the suffix .webstoretemplate and are stored in the webstoretemplate folder.
 
-2414
 
 Metadata Types WebStoreTemplate
 
@@ -178563,7 +176148,6 @@ is available in API version 56.0 and later.
 
 `defaultLanguage` string Required. The template’s default language setting for new records.
 
-2415
 
 Metadata Types WebStoreTemplate
 
@@ -178651,7 +176235,6 @@ logs in to the store. Set the option to `True` to preserve guest carts.
 
 This field is available in API version 60.0 and later.
 
-2416
 
 Metadata Types WebStoreTemplate
 
@@ -178747,7 +176330,6 @@ The following is an example of a web store template component.
 
 ```
 
-2417
 
 ### Metadata Types Workflow
 
@@ -178841,7 +176423,6 @@ rule definitions.
 
 For more information, see Workflow in Salesforce Help. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-2418
 
 Metadata Types Workflow
 
@@ -178906,7 +176487,6 @@ with the workflow.
 
 `rules` WorkflowRule[] An array of all the objects associated with the workflow.
 
-2419
 
 Metadata Types Workflow
 
@@ -178970,7 +176550,6 @@ a letter, not include spaces, not end with an underscore, and
 not contain two consecutive underscores. This field is inherited
 from the Metadata component.
 
-2420
 
 Metadata Types Workflow
 
@@ -179032,7 +176611,6 @@ WorkflowEmailRecipient represents a recipient for an email alert associated with
 `field` string Name of the field referenced in `type` . The field named is of
 the type specified in `type` .
 
-2421
 
 Metadata Types Workflow
 
@@ -179098,7 +176676,6 @@ hierarchy.
 a role subordinate. For this value, the recipient field must
 reference a role.
 
-2422
 
 Metadata Types Workflow
 
@@ -179157,7 +176734,6 @@ value that is referenced.
 
 `notifyAssignee` boolean Required. Notify the assignee when the field is updated.
 
-2423
 
 Metadata Types Workflow
 
@@ -179220,7 +176796,6 @@ WorkflowFlowAction
 Represents a flow trigger, which is a workflow action that launches a flow. Available in API version 30.0 and later. For more information,
 see these topics in Salesforce Help.
 
-2424
 
 Metadata Types Workflow
 
@@ -179288,7 +176863,6 @@ associated with the record that fired the workflow rule.
 For variables of other data types, you can enter a merge field or a literal value. Manually enter a literal
 value when the variable requires the same value every time the flow is launched, regardless of which
 
-2425
 
 Metadata Types Workflow
 
@@ -179345,7 +176919,6 @@ approval actions that send the information you specify to an endpoint you design
 sends the data in the specified fields in the form of a SOAP message to the endpoint. For more information, see Outbound Message
 Actions in Salesforce Help.
 
-2426
 
 Metadata Types Workflow
 
@@ -179413,7 +176986,6 @@ queue if normal delivery fails.
 
 This metadata type represents a workflow rule. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-2427
 
 Metadata Types Workflow
 
@@ -179481,7 +177053,6 @@ including Field Updates, Email Alerts,
 
 Outbound Messages, and Tasks, that
 
-2428
 
 Metadata Types Workflow
 
@@ -179547,7 +177118,6 @@ for API access. The `fullName` can contain only
 underscores and alphanumeric characters. It must be
 unique, begin with a letter, not include spaces, not end
 
-2429
 
 Metadata Types Workflow
 
@@ -179608,7 +177178,6 @@ by `workflowTimeTriggerUnit` .
 
 **•** `Days`
 
-2430
 
 Metadata Types Workflow
 
@@ -179721,7 +177290,6 @@ Here’s the definition of a workflow rule.
 
 ```
 
-2431
 
 Metadata Types Workflow
 
@@ -179836,7 +177404,6 @@ Metadata Types Workflow
 
 ```
 
-2432
 
 Metadata Types Workflow
 
@@ -179951,7 +177518,6 @@ Metadata Types Workflow
 
 ```
 
-2433
 
 ### Metadata Types WorkSkillRouting
 
@@ -180009,7 +177575,6 @@ attribute mapping set for each object.
 Represents the routing assignments between object attributes and skills. Attributes are used to route a work item to an agent who has
 the skills necessary to take the work.
 
-2434
 
 Metadata Types WorkSkillRouting
 
@@ -180081,7 +177646,6 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-2435
 
 ## CHAPTER 14 Headers
 
@@ -180120,7 +177684,6 @@ If this header isn’t used in API version 34.0 and later, by default a call can
 
 Fields
 
-2436
 
 Headers AllOrNoneHeader
 
@@ -180202,7 +177765,6 @@ output is shown after this code sample.
 
 ```
 
-2437
 
 ### Headers CallOptions
 
@@ -180294,7 +177856,6 @@ Version
 
 This call is available in all API versions.
 
-2438
 
 ### Headers DebuggingHeader
 
@@ -180331,7 +177892,6 @@ Supported Calls
 
 Fields
 
-2439
 
 Headers DebuggingHeader
 
@@ -180395,7 +177955,6 @@ logs[0] = new LogInfo();
 
 ```
 
-2440
 
 ### Headers SessionHeader
 
@@ -180435,7 +177994,6 @@ Sample Code—Java
 
 ```
 
-2441
 
 APPENDICES
 
@@ -180501,7 +178059,6 @@ gender
 
 ```
 
-2442
 
 CustomObjectTranslation Language Support: Fully Supported
 Languages
@@ -180583,7 +178140,6 @@ French
 
 ```
 
-2443
 
 CustomObjectTranslation Language Support: Fully Supported
 Languages
@@ -180660,7 +178216,6 @@ Korean
 
 ```
 
-2444
 
 CustomObjectTranslation Language Support: Fully Supported
 Languages
@@ -180742,7 +178297,6 @@ Russian
 
 ```
 
-2445
 
 CustomObjectTranslation Language Support: Fully Supported
 Languages
@@ -180820,7 +178374,6 @@ Thai
 
 ```
 
-2446
 
 ## APPENDIX B CustomObjectTranslation Language Support:
 
@@ -180882,7 +178435,6 @@ plural
 
 ```
 
-2447
 
 CustomObjectTranslation Language Support: End-User
 Languages
@@ -180964,7 +178516,6 @@ English (UK)
 
 ```
 
-2448
 
 CustomObjectTranslation Language Support: End-User
 Languages
@@ -181049,7 +178600,6 @@ Hungarian
 
 ```
 
-2449
 
 CustomObjectTranslation Language Support: End-User
 Languages
@@ -181133,7 +178683,6 @@ Polish
 
 ```
 
-2450
 
 CustomObjectTranslation Language Support: End-User
 Languages
@@ -181218,7 +178767,6 @@ Slovak
 
 ```
 
-2451
 
 CustomObjectTranslation Language Support: End-User
 Languages
@@ -181300,7 +178848,6 @@ Turkish
 
 ```
 
-2452
 
 CustomObjectTranslation Language Support: End-User
 Languages
@@ -181360,7 +178907,6 @@ Vietnamese
 
 ```
 
-2453
 
 ## APPENDIX C StandardValueSet Names and Standard Picklist
 
@@ -181372,87 +178918,66 @@ names.
 
 Note: The names of standard value sets and picklist fields are case-sensitive.
 
-2454
 
 StandardValueSet Names and Standard Picklist Fields
 
-2455
 
 StandardValueSet Names and Standard Picklist Fields
 
-2456
 
 StandardValueSet Names and Standard Picklist Fields
 
-2457
 
 StandardValueSet Names and Standard Picklist Fields
 
-2458
 
 StandardValueSet Names and Standard Picklist Fields
 
-2459
 
 StandardValueSet Names and Standard Picklist Fields
 
-2460
 
 StandardValueSet Names and Standard Picklist Fields
 
-2461
 
 StandardValueSet Names and Standard Picklist Fields
 
-2462
 
 StandardValueSet Names and Standard Picklist Fields
 
-2463
 
 StandardValueSet Names and Standard Picklist Fields
 
-2464
 
 StandardValueSet Names and Standard Picklist Fields
 
-2465
 
 StandardValueSet Names and Standard Picklist Fields
 
-2466
 
 StandardValueSet Names and Standard Picklist Fields
 
-2467
 
 StandardValueSet Names and Standard Picklist Fields
 
-2468
 
 StandardValueSet Names and Standard Picklist Fields
 
-2469
 
 StandardValueSet Names and Standard Picklist Fields
 
-2470
 
 StandardValueSet Names and Standard Picklist Fields
 
-2471
 
 StandardValueSet Names and Standard Picklist Fields
 
-2472
 
 StandardValueSet Names and Standard Picklist Fields
 
-2473
 
 StandardValueSet Names and Standard Picklist Fields
 
-2474
 
 StandardValueSet Names and Standard Picklist Fields
 
@@ -181464,7 +178989,6 @@ StandardValueSet Names and Standard Picklist Fields
 
 4Part of Salesforce Net Zero Cloud.
 
-2475
 
 StandardValueSet Names and Standard Picklist Fields
 
@@ -181472,7 +178996,6 @@ StandardValueSet Names and Standard Picklist Fields
 
 6Part of Digital Lending Solutions.
 
-2476
 
 INDEX
 
@@ -181490,4 +179013,3 @@ U
 
 UserEngagementSettings component 2230
 
-2477

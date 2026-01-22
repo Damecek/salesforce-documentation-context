@@ -15,12 +15,10 @@
 # Lines starting with # are ignored.
 # After editing this file, run: `uv run update`
 Salesforce DX Developer Guide | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_dev.pdf
-Salesforce CLI Setup Guide | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_setup.pdf
 Salesforce CLI Command Reference | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_cli_reference.pdf
 Apex Developer Guide | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
 Apex Reference Guide | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_reference_guide.pdf
 SOQL and SOSL Reference | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
 Second-Generation Managed Packaging Developer Guide | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/pkg2_dev.pdf
-Actions Developer Guide Developer Guide | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/api_action.pdf
 Object Reference for the Salesforce Platform | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/object_reference.pdf
 Metadata API Developer Guide | https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/api_meta.pdf

@@ -1,7 +1,7 @@
 # SOQL and SOSL Reference
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
-> Fetched: 2026-01-18T07:21:25Z
+> Fetched: 2026-01-22T10:46:16Z
 SOQL and SOSL Reference
 
 Version 65.0, Winter ’26
@@ -156,7 +156,6 @@ uses a `CONTAINS` term.
 and builds a search index off this. If you’re searching for a specific distinct term that you know exists
 within a field, you might find SOSL is faster than SOQL for these searches. For example, you might
 
-1
 
 Introduction to SOQL and SOSL
 
@@ -175,7 +174,6 @@ REST API, Apex, and more. For more information on which environments support que
 see Salesforce Object Query Language (SOQL) on page 3 and Salesforce Object Search Language
 (SOSL) on page 95.
 
-2
 
 # CHAPTER 2 Salesforce Object Query Language (SOQL)
 
@@ -248,7 +246,6 @@ colon ( `:` ).
 
 For a complete description of the syntax, see SOQL SELECT Syntax.
 
-3
 
 Salesforce Object Query Language (SOQL)
 
@@ -271,7 +268,6 @@ SEE ALSO:
 
 _[Salesforce Developer Limits and Allocations Quick Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm)_ : SOQL and SOSL Limits for Search Queries
 
-4
 
 ## Salesforce Object Query Language (SOQL) Typographical Conventions in This Document Typographical Conventions in This Document
 
@@ -340,7 +336,6 @@ new lines, carriage returns, tabs, quotes, and more. The escape character for SO
 
 You can use the following escape sequences with SOQL:
 
-5
 
 ## Salesforce Object Query Language (SOQL) Reserved Characters
 
@@ -405,7 +400,6 @@ interpreted.
 Reserved characters, if specified in a `SELECT` clause as a literal string (between single quotes), must be escaped (preceded by the
 backslash \ character) to be properly interpreted. An error occurs if you do not precede reserved characters with a backslash.
 
-6
 
 ## Salesforce Object Query Language (SOQL) Alias Notation
 
@@ -494,7 +488,6 @@ The SOQL SELECT statement uses the following syntax:
 
 ```
 
-7
 
 Salesforce Object Query Language (SOQL) SOQL SELECT Syntax
 
@@ -583,7 +576,6 @@ the `query()` returns the matching records that are visible to the user. The `WI
 
 **•** `KnowledgeArticleVersion` —to query articles.
 
-8
 
 Salesforce Object Query Language (SOQL) SOQL SELECT Syntax
 
@@ -660,7 +652,6 @@ exceed this maximum length, the API returns a `MALFORMED_QUERY` exception code; 
 Note: Long, complex SOQL statements, such as statements that contain many formula fields, can result in a
 `QUERY_TOO_COMPLICATED` error. The error occurs because the statement is expanded internally when processed by
 
-9
 
 ### Salesforce Object Query Language (SOQL) SELECT
 
@@ -723,7 +714,6 @@ This keyword is available in API version 51.0 and later.
 
 to retrieve many fields. And if you don’t know what fields an object has, you must first get a description of the object. Typically, you use
 
-10
 
 Salesforce Object Query Language (SOQL) SELECT
 
@@ -807,7 +797,6 @@ Queries.
 
 **•** Apex
 
-11
 
 Salesforce Object Query Language (SOQL) SELECT
 
@@ -862,7 +851,6 @@ To limit the result rows, you can add any of these limits to the query:
 
 ```
 
-12
 
 Salesforce Object Query Language (SOQL) SELECT
 
@@ -949,7 +937,6 @@ Keep these considerations in mind when using the `FIELDS()` keyword.
 
 **•** `FIELDS()` can cause errors if you use it with operators that require aggregation.
 
-13
 
 ### Salesforce Object Query Language (SOQL) TYPEOF
 
@@ -1037,7 +1024,6 @@ Polymorphism feature.
 
 ```
 
-14
 
 Salesforce Object Query Language (SOQL) TYPEOF
 
@@ -1120,7 +1106,6 @@ that contains semi-join queries. The following example is not valid because `TYP
 
 ```
 
-15
 
 Salesforce Object Query Language (SOQL) TYPEOF
 
@@ -1222,7 +1207,6 @@ The following example selects specific fields depending on whether the `What` fi
 
 See Understanding Relationship Fields and Polymorphic Fields for details on polymorphic relationships, and more examples of `TYPEOF` .
 
-16
 
 ### Salesforce Object Query Language (SOQL) USING SCOPE USING SCOPE The optional USING SCOPE clause of a SOQL query returns records within a specified scope. For example, you can limit the records
 
@@ -1301,7 +1285,6 @@ at least one scoping rule on the object that you’re querying.
 
 `team` Filter for records assigned to a team, such as an Account team.
 
-17
 
 ### Salesforce Object Query Language (SOQL) WHERE WHERE The condition expression in a WHERE clause of a SOQL query includes one or more field expressions. You can specify multiple field
 
@@ -1370,7 +1353,6 @@ but case sensitive for case-sensitive fields.
 _`value`_ A value used to compare with the value in the _`fieldName`_ . Supply a value whose data type matches the
 field type of the specified field. The value must be a valid value, not other field names or calculations. If
 
-18
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -1441,7 +1423,6 @@ mechanism for matching partial text strings and includes support for:
 
 **–** The `_` wildcard matches exactly one character.
 
-19
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -1525,7 +1506,6 @@ If you filter by an ID field, you can create parent-to-child semi- or anti-joins
 field, you can create child-to-child semi- or anti-joins, such as `Contact` to `Opportunity`, or child-to-parent semi- or anti-joins,
 such as `Opportunity` to `Account` .
 
-20
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -1624,7 +1604,6 @@ This query returns opportunity IDs for all contacts whose source isn’t `Web` :
 
 This example is a child-to-child anti-join from `Opportunity` to `Contact` .
 
-21
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -1715,7 +1694,6 @@ reference field. For example:
 
 ```
 
-22
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -1812,7 +1790,6 @@ Rewrite the query in a valid form, for example:
 
 **–** You can’t use semi-joins and anti-joins in a `HAVING` clause.
 
-23
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -1897,7 +1874,6 @@ The following table lists the logical operator values that are used in _**`field
 
 ```
 
-24
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -1982,7 +1958,6 @@ provide `dateTime` values in another timezone. The time zone offset is always fr
 
 For more information on `dateTime` formats and time zone offsets, see:
 
-25
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -2059,7 +2034,6 @@ Starts at 12:00:00 AM 90 days before the current `SELECT Id FROM Account WHERE`
 day and continues up to the current second. (The `CreatedDate = LAST_90_DAYS`
 range includes today. Using this date value
 
-26
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -2139,7 +2113,6 @@ that started _n_ months before the start of the `CloseDate = N_MONTHS_AGO:6`
 current month and continues for all the days of
 that month.
 
-27
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -2221,7 +2194,6 @@ Starts at 12:00:00 am on January 1, _`n+1`_ years ago. `SELECT Id FROM Opportuni
 The range ends on December 31 of the year before `CloseDate = LAST_N_YEARS:5`
 the current year.
 
-28
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -2260,7 +2232,6 @@ fiscal year and continues through the end of the `CloseDate = THIS_FISCAL_YEAR`
 last day of the fiscal year. The fiscal quarter is
 defined on the Fiscal Year page in Setup.
 
-29
 
 Starts at 12:00:00 AM on the first day of the current
 fiscal quarter and continues through the end of
@@ -2426,7 +2397,6 @@ Whether the current day is included in the range of a date literal depends on wh
 **•** The two date literals `LAST_N_DAYS:` _**`n`**_ and `LAST_90_DAYS` _do_ include the current day. So, for example, `LAST_N_DAYS:1`
 includes yesterday and today. And `LAST_90_DAYS` includes 91 days, not just 90.
 
-30
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -2441,7 +2411,6 @@ time zone. For example, in the Pacific time zone, the earliest valid date is 169
 You can search polymorphic relationship fields on a SOQL query. A polymorphic relationship is one where the current object can be one
 of several object types.
 
-31
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -2521,7 +2490,6 @@ SELECT Id, MSP1__c FROM CustObj__c WHERE MSP1__c = 'AAA;BBB'
 
 ```
 
-32
 
 Salesforce Object Query Language (SOQL) WHERE
 
@@ -2609,7 +2577,6 @@ SEE ALSO:
 
 null Values in Lookup Relationships and Outer Joins
 
-33
 
 ### Salesforce Object Query Language (SOQL) WITH **`WITH`**
 
@@ -2672,7 +2639,6 @@ _`ObjectTypeName`_ equals:
 
 **•** `Question` to query questions
 
-34
 
 Salesforce Object Query Language (SOQL) WITH
 
@@ -2770,7 +2736,6 @@ use as a filter, the filter selector, and the name of the category to use for fi
 
 ```
 
-35
 
 Salesforce Object Query Language (SOQL) WITH
 
@@ -2864,7 +2829,6 @@ WITH DATA CATEGORY Geography__c AT asia__c
 
 ```
 
-36
 
 Salesforce Object Query Language (SOQL) WITH
 
@@ -2957,7 +2921,6 @@ data category group
 **•** above the `dsl__c` data category in
 the `Product__` data category group
 
-37
 
 ### Salesforce Object Query Language (SOQL) GROUP BY
 
@@ -3020,7 +2983,6 @@ results rather than having to process the individual records in your code.
 _`fieldGroupByList`_ specifies a list of one or more fields, separated by commas, that you want to group by. If the list of fields in a
 ### SELECT clause includes an aggregate function, you must include all non-aggregated fields in the GROUP BY clause.
 
-38
 
 #### Salesforce Object Query Language (SOQL) GROUP BY For example, to determine how many leads are associated with each LeadSource value without using GROUP BY, you could run
 
@@ -3101,7 +3063,6 @@ This simple example rolls the results up by one field:
 
 ```
 
-39
 
 Salesforce Object Query Language (SOQL) GROUP BY
 
@@ -3177,7 +3138,6 @@ more subtotal rows.
 
 ```
 
-40
 
 #### Salesforce Object Query Language (SOQL) GROUP BY
 
@@ -3253,7 +3213,6 @@ The following query returns subtotals of accounts for each combination of `Type`
 
 ```
 
-41
 
 Salesforce Object Query Language (SOQL) GROUP BY
 
@@ -3338,7 +3297,6 @@ field)
 `null` `null` `1` `1` `12` Grand total of 12 accounts ( `grpType` = `1` and `grpCty` = `1`
 indicates this is the grand total)
 
-42
 
 Salesforce Object Query Language (SOQL) GROUP BY
 
@@ -3411,7 +3369,6 @@ and subtotal rows. You can use `GROUPING(fieldName)` to do this. Using `GROUPING
 interpreting your results when you have more than one field in your `GROUP BY ROLLUP` or `GROUP BY CUBE` clause. It is the
 best way to differentiate between aggregated data and subtotals.
 
-43
 
 Salesforce Object Query Language (SOQL) GROUP BY
 
@@ -3508,7 +3465,6 @@ getting subtotals for each `Rating` instead of for each `LeadSource`, switch the
 
 Understand the special behavior and limitations for using the `GROUP BY` clause in SOQL queries.
 
-44
 
 ### Salesforce Object Query Language (SOQL) HAVING
 
@@ -3589,7 +3545,6 @@ However, if you are only interested in `LeadSource` values that have generated m
 
 ```
 
-45
 
 ### Salesforce Object Query Language (SOQL) ORDER BY
 
@@ -3663,7 +3618,6 @@ This example returns the same data in descending order.
 
 ```
 
-46
 
 ### Salesforce Object Query Language (SOQL) LIMIT
 
@@ -3739,7 +3693,6 @@ You can use `ORDER BY` with the optional LIMIT qualifier in a `SELECT` statement
 
 return.
 
-47
 
 ### Salesforce Object Query Language (SOQL) OFFSET
 
@@ -3817,7 +3770,6 @@ result set for the example query would be a subset of the full result set, retur
 
 ```
 
-48
 
 Salesforce Object Query Language (SOQL) OFFSET
 
@@ -3913,7 +3865,6 @@ You could then retrieve the next 100 rows, 101 through 201, using the following 
 
 ```
 
-49
 
 ### Salesforce Object Query Language (SOQL) FOR VIEW and FOR REFERENCE
 
@@ -3974,7 +3925,6 @@ When the `FOR REFERENCE` clause is used with a query, two things happen:
 
 **•** A record is added to the RecentlyViewed object to reflect the recently referenced data for each retrieved record.
 
-50
 
 ### Salesforce Object Query Language (SOQL) UPDATE
 
@@ -4038,7 +3988,6 @@ You can use this syntax to increase the view count for every article you have ac
 
 thread safety problems.
 
-51
 
 ## Salesforce Object Query Language (SOQL) SOQL SELECT Examples
 
@@ -4123,7 +4072,6 @@ Account.Industry = 'media'
 
 ```
 
-52
 
 Salesforce Object Query Language (SOQL) SOQL SELECT Examples
 
@@ -4228,7 +4176,6 @@ belongs, that record type isn’t returned in the query results.
 Note: Apex requires that you surround SOQL and SOSL statements with square brackets to use them in your statements. You
 can use Apex script variables and expressions when preceded by a colon ( `:` ).
 
-53
 
 ## Salesforce Object Query Language (SOQL) SOQL SELECT Functions SOQL SELECT Functions
 
@@ -4288,7 +4235,6 @@ Note: All aggregate functions ignore null values, except for `COUNT()` and `COUN
 
 `COUNT(` _**`fieldname`**_ `)` is different from `COUNT()` . `COUNT(` _**`fieldname`**_ `)` does ignore null values.
 
-54
 
 Salesforce Object Query Language (SOQL) Aggregate Functions
 
@@ -4399,7 +4345,6 @@ WHERE IsClosed = false AND Probability > 60
 
 ```
 
-55
 
 Salesforce Object Query Language (SOQL) Aggregate Functions
 
@@ -4462,7 +4407,6 @@ For example:
 
 The count is returned in `expr0`, which is the implied alias for the aggregated field.
 
-56
 
 Salesforce Object Query Language (SOQL) Aggregate Functions
 
@@ -4529,7 +4473,6 @@ address No No No No No No
 
 anyType No No No No No No
 
-57
 
 ### Salesforce Object Query Language (SOQL) convertCurrency()
 
@@ -4588,7 +4531,6 @@ requires that the org has multiple currencies enabled.
 
 ### The following syntax is for using convertCurrency() with the SELECT clause: `convertCurrency( field )`
 
-58
 
 Salesforce Object Query Language (SOQL) convertCurrency()
 
@@ -4679,7 +4621,6 @@ example, the following query doesn’t work.
 
 You can’t use `convertCurrency()` with ORDER BY. Ordering is always based on the converted currency value, just like in reports.
 
-59
 
 ### Salesforce Object Query Language (SOQL) convertTimezone() convertTimezone()
 
@@ -4761,7 +4702,6 @@ date field.
 
 **•** `7` for Saturday
 
-60
 
 Salesforce Object Query Language (SOQL) Date Functions
 
@@ -4828,7 +4768,6 @@ a date field.
 
 Note the following when you use date functions:
 
-61
 
 `18` for a time of 18:23:10
 
@@ -4927,7 +4866,6 @@ example:
 
 ```
 
-62
 
 ### Salesforce Object Query Language (SOQL) GROUPING(fieldName)
 
@@ -5000,7 +4938,6 @@ The returned records are translated into the language of the user who issued the
 Note: You can’t filter on the translated name value from a record type. Always filter on the master value or the ID of the object
 for record types.
 
-63
 
 ## Salesforce Object Query Language (SOQL) Relationship Queries
 
@@ -5075,7 +5012,6 @@ Use the following topics to understand and use relationship queries in SOQL.
 
 Parent-to-child and child-to-parent relationships exist between many types of objects. For example, Account is a parent of Contact.
 
-64
 
 ### Salesforce Object Query Language (SOQL) Using Relationship Queries
 
@@ -5136,7 +5072,6 @@ Query child-to-parent relationships, which are often many-to-one, using the dot 
 
 ```
 
-65
 
 Salesforce Object Query Language (SOQL) Using Relationship Queries
 
@@ -5223,7 +5158,6 @@ each note for the account. If there were no notes for the account, the result se
 
 ```
 
-66
 
 ### Salesforce Object Query Language (SOQL) Understanding Relationship Names, Custom Objects, and
 
@@ -5259,7 +5193,6 @@ Notice that the `Child Relationship Name` (parent to child) is the plural form o
 Once the relationship is created, notice that it has an `API Name`, which is the name of the custom field you created, appended by
 `__c` (underscore-underscore-c):
 
-67
 
 ### Salesforce Object Query Language (SOQL) Understanding Query Results
 
@@ -5312,7 +5245,6 @@ query results of subqueries.
 
 For example, you can construct a query using either parent-to-child or child-to-parent syntax:
 
-68
 
 Salesforce Object Query Language (SOQL) Understanding Query Results
 
@@ -5420,7 +5352,6 @@ This query returns one query result (assuming there were not too many returned r
 
 ```
 
-69
 
 Salesforce Object Query Language (SOQL) Understanding Query Results
 
@@ -5533,7 +5464,6 @@ from the subquery.
 
 ```
 
-70
 
 Salesforce Object Query Language (SOQL) Understanding Query Results
 
@@ -5643,7 +5573,6 @@ The following sample illustrates how to process subquery results:
 
 ```
 
-71
 
 ### Salesforce Object Query Language (SOQL) null Values in Lookup Relationships and Outer Joins
 
@@ -5725,7 +5654,6 @@ The results contain parent-child relationship information.
 
 You can also examine the enterprise WSDL for your organization:
 
-72
 
 Salesforce Object Query Language (SOQL) Identifying Parent and Child Relationships
 
@@ -5830,7 +5758,6 @@ Note: Not all relationships are exposed in the API. The most reliable method for
 
 ```
 
-73
 
 ### Salesforce Object Query Language (SOQL) Understanding Relationship Fields and Polymorphic Fields
 
@@ -5916,7 +5843,6 @@ The `OwnerId` field of the `Account` object has the following properties:
 
 **•** `referenceTo` = User
 
-74
 
 Salesforce Object Query Language (SOQL) Understanding Relationship Fields and Polymorphic Fields
 
@@ -6001,7 +5927,6 @@ If you'd like to know the type of object returned in a query, use `Who.Type` . F
 
 ```
 
-75
 
 Salesforce Object Query Language (SOQL) Understanding Relationship Fields and Polymorphic Fields
 
@@ -6085,7 +6010,6 @@ Note the following considerations for `TYPEOF` .
 
 **•** `TYPEOF` can’t be used with a relationship field whose `relationshipName` attribute is false.
 
-76
 
 Salesforce Object Query Language (SOQL) Understanding Relationship Fields and Polymorphic Fields
 
@@ -6188,7 +6112,6 @@ Instead, run the same query without functions to retrieve a list of IDs.
 
 ```
 
-77
 
 Salesforce Object Query Language (SOQL) Understanding Relationship Fields and Polymorphic Fields
 
@@ -6282,7 +6205,6 @@ object type is `sObject` . For example:
 
 ```
 
-78
 
 ### Salesforce Object Query Language (SOQL) Understanding Relationship Query Limitations
 
@@ -6373,7 +6295,6 @@ The same relationship used multiple times in a query also count as 1 relationshi
 
 **•** No more than 20 parent-to-child relationships can be specified in a query.
 
-79
 
 ### Salesforce Object Query Language (SOQL) Using Relationship Queries with History Objects
 
@@ -6451,7 +6372,6 @@ This example query returns every Foo object row together with the corresponding 
 
 ```
 
-80
 
 ### Salesforce Object Query Language (SOQL) Using Relationship Queries with Data Category Selection
 
@@ -6522,7 +6442,6 @@ Connector (WSC) clients can set the batch size by calling `setQueryOptions()` on
 Note: If the SOQL statement selects two or more custom fields of type long text, the batch size can’t be greater than 200 records.
 This limit prevents large SOAP messages from being returned.
 
-81
 
 ## Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
 
@@ -6604,7 +6523,6 @@ _`conditionExpression`_ .
 
 **–** `AND`
 
-82
 
 Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
 
@@ -6679,7 +6597,6 @@ supported: `SELECT AVG(Number) FROM Dmo HAVING AVG(Number)`
 
 ```
 
-83
 
 Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
 
@@ -6766,7 +6683,6 @@ restrictions.
 
 **–** Example query:
 
-84
 
 Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
 
@@ -6852,7 +6768,6 @@ Expect longer response times for each join in a query.
 
 **–** `MAX()` function
 
-85
 
 Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
 
@@ -6926,7 +6841,6 @@ To retrieve all archived versions for a given article, specify a SOQL filter whe
 published articles by default. In API version 47.0 and later, draft, published, and archived
 articles are returned when Lightning Knowledge is enabled.
 
-86
 
 Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
 
@@ -7007,7 +6921,6 @@ UserProfileFeed
 **•** No SOQL limit if logged-in user has “View All Data” permission. If not, specify a LIMIT clause
 of 1,000 records or fewer.
 
-87
 
 ### Salesforce Object Query Language (SOQL) SOQL with Big Objects
 
@@ -7091,7 +7004,6 @@ This query specifies only the first field in the index. The filter on `LastName_
 
 ```
 
-88
 
 ## Salesforce Object Query Language (SOQL) Syndication Feed SOQL and Mapping Syntax
 
@@ -7173,7 +7085,6 @@ the data is presented. Syndication feeds can be defined for public sites.
 
 For full information about the limitations on SOQL in query feed definitions, see the Salesforce online help for syndication feeds.
 
-89
 
 ## Salesforce Object Query Language (SOQL) Location-Based SOQL Queries Location-Based SOQL Queries
 
@@ -7250,7 +7161,6 @@ combine the two primitive values. Here are sample results from a REST API reques
 
 ```
 
-90
 
 Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
 
@@ -7340,7 +7250,6 @@ Sort records by distance using a distance condition in the `ORDER BY` clause. Fo
 
 ```
 
-91
 
 Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
 
@@ -7410,7 +7319,6 @@ S H Frank & Company 37.763662 _null_
 
 San Francisco Tech Mart 37.77587 -122.399902
 
-92
 
 ## Salesforce Object Query Language (SOQL) Considerations for Querying Currency Data Using SOQL
 
@@ -7480,7 +7388,6 @@ These considerations apply when using SOQL to query Data Cloud objects, such as 
 
 **•** Use the `cdp_sys_record_currency__c` system field to query the ISO code value of a Data Cloud record.
 
-93
 
 Salesforce Object Query Language (SOQL) Considerations for Querying Currency Data Using SOQL
 
@@ -7499,7 +7406,6 @@ for the `CurrencyIsoCode` field. However, aliasing isn't required when using cur
 **•** The `convertCurrency()` function doesn't round the result to configured decimal places for the currency in your org when
 it's used on currency fields from Data Cloud objects.
 
-94
 
 # CHAPTER 3 Salesforce Object Search Language (SOSL)
 
@@ -7616,7 +7522,6 @@ NetworkIdSpec **•** `LIMIT` : Specifies the maximum number of rows to return.
 
 **•** `RETURNING` : Limits the objects and fields to return.
 
-95
 
 Salesforce Object Search Language (SOSL)
 
@@ -7637,7 +7542,6 @@ Navigating This Document
 
 **•** To get started working with SOSL, see Example Text Searches.
 
-96
 
 ## Salesforce Object Search Language (SOSL) Typographical Conventions in This Document Typographical Conventions in This Document
 
@@ -7702,7 +7606,6 @@ raindrop represents some records. The numbers correspond to this flow:
 **2.** If you query one object only, a maximum of 250 records are returned. To return up to 2,000 results, include either the `WHERE` clause
 or `ORDER BY` clause.
 
-97
 
 Salesforce Object Search Language (SOSL) SOSL Limits on Search Results
 
@@ -7723,7 +7626,6 @@ five blue raindrops going into the filter, but only three make it to the next st
 applies to only that object, increasing the chance that the record he wants is returned. Joe retries his search by typing Industrial
 Computing San Francisco. With a more specific search term, the search engine returns better matches, even with the same limits
 
-98
 
 ## Salesforce Object Search Language (SOSL) SOSL Limits on External Object Search Results
 
@@ -7796,7 +7698,6 @@ After the required `FIND` clause, you can add one or more optional clauses in th
 
 ```
 
-99
 
 Salesforce Object Search Language (SOSL) SOSL Syntax
 
@@ -7872,7 +7773,6 @@ If these objects are specified in the RETURNING clause, the
 search is not limited to specific fields, and all fields are
 searched.
 
-100
 
 Salesforce Object Search Language (SOSL) SOSL Syntax
 
@@ -7945,7 +7845,6 @@ filters all search results based on one or more data categories.
 `WITH` _`DivisionFilter`_ Optional. If an org uses divisions, filters all search results based on
 values for the `Division` field.
 
-101
 
 ## Salesforce Object Search Language (SOSL) Example Text Searches
 
@@ -8023,7 +7922,6 @@ RETURNING lead(name, phone)
 
 ```
 
-102
 
 ## Salesforce Object Search Language (SOSL) convertCurrency()
 
@@ -8114,7 +8012,6 @@ For example,
 If an org has enabled advanced currency management, dated exchange rates are used when converting currency fields on opportunities,
 ## opportunity line items, and opportunity history. With advanced currency management, convertCurrency uses the conversion
 
-103
 
 ## Salesforce Object Search Language (SOSL) FIND {SearchQuery}
 
@@ -8185,7 +8082,6 @@ A `SearchQuery` can contain:
 The search engine splits record information separated by spaces or punctuation into separate tokens. The search engine returns accurate
 search results from searches in East Asian languages that don't include spaces between words using morphological tokenization.
 
-104
 
 Salesforce Object Search Language (SOSL) FIND {SearchQuery}
 
@@ -8230,7 +8126,6 @@ Operators
 Combine multiple words with logic and grouping by using operators to form a more complex query. You can use the following special
 operators to focus your text search. Operator support is case-insensitive.
 
-105
 
 Salesforce Object Search Language (SOSL) FIND {SearchQuery}
 
@@ -8301,7 +8196,6 @@ For example, to search for the following text:
 
 ```
 
-106
 
 Salesforce Object Search Language (SOSL) FIND {SearchQuery}
 
@@ -8381,7 +8275,6 @@ Note: Apex that is running in system mode ignores field-level security while sca
 
 ```
 
-107
 
 ## Salesforce Object Search Language (SOSL) FORMAT()
 
@@ -8453,7 +8346,6 @@ In addition to the Name field, Salesforce searches the following fields when usi
 
 **•** Note: Title
 
-108
 
 ## Salesforce Object Search Language (SOSL) LIMIT n
 
@@ -8513,7 +8405,6 @@ to 200 results.
 
 You can set limits on individual objects or on an entire query.
 
-109
 
 ## Salesforce Object Search Language (SOSL) OFFSET n
 
@@ -8588,7 +8479,6 @@ need to re-execute the query with a higher offset value.
 **•** Consecutive SOSL requests for the same search term but with a different OFFSET aren’t guaranteed to return a different subset of
 the same data if the data being searched has been updated since the previous request.
 
-110
 
 ## Salesforce Object Search Language (SOSL) ORDER BY Clause
 
@@ -8654,7 +8544,6 @@ the locations’ distance from the coordinates.
 If you don’t specify this clause, the default behavior is to return the IDs of all searchable objects in advanced search up to the maximum
 limit. The maximum limit is specified in the `LIMIT` _`n`_ clause or 2,000 (API version 28.0 and later), whichever is smaller. The returned IDs
 
-111
 
 Salesforce Object Search Language (SOSL) RETURNING FieldSpec
 
@@ -8739,7 +8628,6 @@ RETURNING Account (Name, Industry WHERE Name like 'test')
 
 See _`conditionExpression`_ for more information.
 
-112
 
 Salesforce Object Search Language (SOSL) RETURNING FieldSpec
 
@@ -8824,7 +8712,6 @@ Multiple sObject objects, no fields `FIND {MyProspect} RETURNING Contact, Lead`
 
 One sObject, one or more fields `FIND {MyProspect} RETURNING Account(Name)`
 
-113
 
 ## Salesforce Object Search Language (SOSL) toLabel(fields)
 
@@ -8918,7 +8805,6 @@ FIND {Joe} RETURNING Lead(company, toLabel(Recordtype.Name))
 
 The returned records are translated into the language of the user who issued the query.
 
-114
 
 ## Salesforce Object Search Language (SOSL) Update an Article’s Keyword Tracking with SOSL
 
@@ -8996,7 +8882,6 @@ You can use this syntax to increase the view count for every article you have ac
 
 ```
 
-115
 
 ## Salesforce Object Search Language (SOSL) USING Listview= USING Listview=
 
@@ -9062,7 +8947,6 @@ _**`fieldExpression2`**_ are `true` .
 
 ```
 
-116
 
 Salesforce Object Search Language (SOSL) WHERE
 
@@ -9138,7 +9022,6 @@ mechanism for matching partial text strings and includes support for:
 
 **–** The `%` wildcard matches zero or more characters.
 
-117
 
 Salesforce Object Search Language (SOSL) WHERE
 
@@ -9236,7 +9119,6 @@ WHERE LastName = 'Young' OR Account.Name =
 
 ```
 
-118
 
 Salesforce Object Search Language (SOSL) WHERE
 
@@ -9305,7 +9187,6 @@ Example WHERE Clauses
 
 ```
 
-119
 
 ## Salesforce Object Search Language (SOSL) WITH DATA CATEGORY DataCategorySpec
 
@@ -9382,7 +9263,6 @@ one or more data categories and are visible to users. This clause is used in sea
 
 ## The WITH DATA CATEGORY clause can be used in API version 18.0 or later.
 
-120
 
 Salesforce Object Search Language (SOSL) WITH DATA CATEGORY DataCategorySpec
 
@@ -9463,7 +9343,6 @@ FIND {tourism} RETURNING KnowledgeArticleVersion
 
 ```
 
-121
 
 ## Salesforce Object Search Language (SOSL) WITH DivisionFilter
 
@@ -9540,7 +9419,6 @@ Highlighted search terms are generated from the following standard and custom fi
 
 **•** Auto number
 
-122
 
 Salesforce Object Search Language (SOSL) WITH HIGHLIGHT
 
@@ -9625,7 +9503,6 @@ Example:
 
 ```
 
-123
 
 ## Salesforce Object Search Language (SOSL) WITH METADATA
 
@@ -9684,7 +9561,6 @@ along with accounts from the entire org.
 To filter search results for _groups_ or _topics_ by Experience Cloud site, use the `WHERE` clause with a NetworkId value. If you want to search
 for an internal org, use an all zero value for NetworkId.
 
-124
 
 ## Salesforce Object Search Language (SOSL) WITH PricebookId
 
@@ -9767,7 +9643,6 @@ Search snippets and highlights are _not_ generated from the following field type
 
 **•** Date
 
-125
 
 Salesforce Object Search Language (SOSL) WITH SNIPPET
 
@@ -9864,7 +9739,6 @@ Example:
 
 ```
 
-126
 
 Salesforce Object Search Language (SOSL) WITH SNIPPET
 
@@ -9944,7 +9818,6 @@ href='https://salesforce.com'>salesforce.com</a>”. The original hyperlink tags
 
 ```
 
-127
 
 ## Salesforce Object Search Language (SOSL) WITH SPELL_CORRECTION
 
@@ -9996,7 +9869,6 @@ SEE ALSO:
 
 _Einstein Search Help_ [: Einstein Search Terms: Spelling Correction](https://help.salesforce.com/s/articleView?id=sf.search_glossary.htm&type=5&language=en_US)
 
-128
 
 INDEX
 
@@ -10030,4 +9902,3 @@ SOSL
 Apex syntax 107
 SOSL character limit 106
 
-129

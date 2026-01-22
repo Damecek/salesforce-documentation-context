@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import shutil
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -47,6 +48,8 @@ def run_update(
         sys.stderr.write(f"Invalid {src_file}: {e}\n")
         return 2
 
+    if force:
+        _clear_docs_dir(docs_dir)
     ensure_dir(docs_dir)
     ensure_dir(cache_dir)
 
@@ -230,3 +233,14 @@ def _path_for_urls(path: str) -> str:
         return rel.as_posix()
     except Exception:
         return p.as_posix()
+
+
+def _clear_docs_dir(docs_dir: str) -> None:
+    root = Path(docs_dir)
+    if not root.exists():
+        return
+    for child in root.iterdir():
+        if child.is_dir():
+            shutil.rmtree(child)
+        else:
+            child.unlink()

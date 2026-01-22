@@ -1,7 +1,7 @@
 # Apex Reference Guide
 
 > Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_reference_guide.pdf
-> Fetched: 2026-01-16T15:53:35Z
+> Fetched: 2026-01-22T10:44:20Z
 Apex Reference Guide
 
 Version 65.0, Winter ’26
@@ -998,7 +998,6 @@ CommerceOrders Namespace
 The `CommerceOrders` namespace provides classes and methods to place orders with integrated pricing, configuration, and
 validation.
 
-1
 
 Apex Reference Guide
 
@@ -1060,7 +1059,6 @@ Flow Namespace
 The `Flow` namespace provides a class for advanced access to flows from Apex such as from Visualforce controllers and asynchronous
 Apex.
 
-2
 
 Apex Reference Guide
 
@@ -1123,7 +1121,6 @@ Preference Manager, previously called Preference Center, is a feature within the
 Process Namespace
 The `Process` namespace provides an interface and classes for passing data between your organization and a flow.
 
-3
 
 Apex Reference Guide
 
@@ -1184,7 +1181,6 @@ The `System` namespace provides classes and methods for core Apex functionality.
 TerritoryMgmt Namespace
 The `TerritoryMgmt` namespace provides an interface used for territory management.
 
-4
 
 Apex Reference Guide Apex Release Notes
 
@@ -1244,7 +1240,6 @@ Syntax
 
 ```
 
-5
 
 Apex Reference Guide Apex DML Statements
 
@@ -1324,7 +1319,6 @@ Syntax
 
 ```
 
-6
 
 Apex Reference Guide Apex DML Statements
 
@@ -1401,7 +1395,6 @@ This next example performs an upsert of a list of accounts using a foreign key f
 
 ```
 
-7
 
 Apex Reference Guide Apex DML Statements
 
@@ -1480,7 +1473,6 @@ level and aggregate relationships, including deleted records and archived activi
 
 Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
 
-8
 
 ## Apex Reference Guide ApexPages Namespace
 
@@ -1546,7 +1538,6 @@ extension.
 Component Class
 Represents a dynamic Visualforce component in Apex.
 
-9
 
 ### Apex Reference Guide Action Class
 
@@ -1608,7 +1599,6 @@ Action Methods
 
 ### The following are constructors for Action .
 
-10
 
 Apex Reference Guide Action Class
 
@@ -1679,7 +1669,6 @@ Signature
 
 ```
 
-11
 
 ### Apex Reference Guide Component Class
 
@@ -1740,7 +1729,6 @@ Example
 
 ```
 
-12
 
 ### Apex Reference Guide IdeaStandardController Class
 
@@ -1805,7 +1793,6 @@ Example
 
 `StandardController` .
 
-13
 
 Apex Reference Guide IdeaStandardController Class
 
@@ -1883,7 +1870,6 @@ specific idea (for example, `/apex/detailPage?id=<ideaID>` ) whose comments you 
 
 ```
 
-14
 
 ### Apex Reference Guide IdeaStandardSetController Class
 
@@ -1955,7 +1941,6 @@ This method returns the following comment properties:
 
 `StandardSetController` .
 
-15
 
 Apex Reference Guide IdeaStandardSetController Class
 
@@ -2035,7 +2020,6 @@ for the current logged in user. This page must be named _`profilePage`_ in order
 
 ```
 
-16
 
 Apex Reference Guide IdeaStandardSetController Class
 
@@ -2135,7 +2119,6 @@ be named _`listPage`_ in order for this example to work:
 
 ```
 
-17
 
 Apex Reference Guide IdeaStandardSetController Class
 
@@ -2227,7 +2210,6 @@ Signature
 
 ```
 
-18
 
 ### Apex Reference Guide KnowledgeArticleVersionStandardController Class
 
@@ -2291,7 +2273,6 @@ associated with `StandardController` .
 Note: Though inherited, the `edit`, `delete`, and `save` methods don't serve a function when used with the
 ### KnowledgeArticleVersionStandardController class.
 
-19
 
 Apex Reference Guide KnowledgeArticleVersionStandardController Class
 
@@ -2387,7 +2368,6 @@ Category Groups” and “Add Data Categories to Category Groups” in the Sales
 
 ```
 
-20
 
 Apex Reference Guide KnowledgeArticleVersionStandardController Class
 
@@ -2453,7 +2433,6 @@ specified knowledge article.
 Creates a new instance of the `ApexPages.KnowledgeArticleVersionStandardController` class using the specified
 knowledge article.
 
-21
 
 Apex Reference Guide KnowledgeArticleVersionStandardController Class
 
@@ -2526,7 +2505,6 @@ Type: String
 
 Type: String
 
-22
 
 ### Apex Reference Guide Message Class
 
@@ -2588,7 +2566,6 @@ To specify the severity of the message, use the `ApexPages.Severity` enum values
 
 All enums have access to standard methods, such as `name` and `value` .
 
-23
 
 Apex Reference Guide Message Class
 
@@ -2663,7 +2640,6 @@ Type: ApexPages.Severity
 
 The severity of a Visualforce message.
 
-24
 
 Apex Reference Guide Message Class
 
@@ -2746,7 +2722,6 @@ Returns the severity enum used to create the message.
 getSummary()
 Returns the summary String used to create the message.
 
-25
 
 ### Apex Reference Guide StandardController Class
 
@@ -2814,7 +2789,6 @@ Type: String
 
 Use a StandardController when defining an extension for a standard controller.
 
-26
 
 Apex Reference Guide StandardController Class
 
@@ -2893,7 +2867,6 @@ StandardController Constructors
 
 StandardController Methods
 
-27
 
 Apex Reference Guide StandardController Class
 
@@ -2955,7 +2928,6 @@ reset()
 Forces the controller to reacquire access to newly referenced fields. Any changes made to the record prior to this method call are
 discarded.
 
-28
 
 Apex Reference Guide StandardController Class
 
@@ -3018,7 +2990,6 @@ Type: System.PageReference
 
 Deletes record and returns the PageReference of the delete page.
 
-29
 
 Apex Reference Guide StandardController Class
 
@@ -3087,7 +3058,6 @@ fields, including fields from any related objects, must be queried using a SOQL 
 Tip: You can work around this restriction by including a hidden component that references any additional fields that you want
 to query. Hide the component from display by setting the component's `rendered` attribute to `false` .
 
-30
 
 Apex Reference Guide StandardController Class
 
@@ -3156,7 +3126,6 @@ Return Value
 
 Type: System.PageReference
 
-31
 
 ### Apex Reference Guide StandardSetController Class StandardSetController Class StandardSetController objects allow you to create list controllers similar to, or as extensions of, the pre-built Visualforce list
 
@@ -3233,7 +3202,6 @@ The following example shows how a StandardSetController object can be used in th
 
 ```
 
-32
 
 Apex Reference Guide StandardSetController Class
 
@@ -3313,7 +3281,6 @@ Type: Database.QueryLocator
 
 A query locator representing a list of sObjects.
 
-33
 
 Apex Reference Guide StandardSetController Class
 
@@ -3381,7 +3348,6 @@ Returns the page number of the current page set. Note that the first page return
 getPageSize()
 Returns the number of records included in each page set.
 
-34
 
 Apex Reference Guide StandardSetController Class
 
@@ -3442,7 +3408,6 @@ SEE ALSO:
 
 _Visualforce Developer Guide_ [: Standard List Controller Actions](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/pages_controller_sosc_actions.htm)
 
-35
 
 Apex Reference Guide StandardSetController Class
 
@@ -3506,7 +3471,6 @@ _Visualforce Developer Guide_ [: Standard List Controller Actions](https://devel
 
 _Visualforce Developer Guide_ [: List Views with Standard List Controllers](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/pages_controller_sosc_list_views.htm)
 
-36
 
 Apex Reference Guide StandardSetController Class
 
@@ -3572,7 +3536,6 @@ Signature
 
 ```
 
-37
 
 Apex Reference Guide StandardSetController Class
 
@@ -3638,7 +3601,6 @@ _Visualforce Developer Guide_ [: Building a Custom List Controller](https://deve
 
 Returns the number of records in the set.
 
-38
 
 Apex Reference Guide StandardSetController Class
 
@@ -3706,7 +3668,6 @@ SEE ALSO:
 
 _Visualforce Developer Guide_ [: Standard List Controller Actions](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/pages_controller_sosc_actions.htm)
 
-39
 
 Apex Reference Guide StandardSetController Class
 
@@ -3772,7 +3733,6 @@ Return Value
 
 Type: Void
 
-40
 
 Apex Reference Guide StandardSetController Class
 
@@ -3845,7 +3805,6 @@ Return Value
 
 Type: Void
 
-41
 
 ## Apex Reference Guide AppLauncher Namespace
 
@@ -3918,7 +3877,6 @@ Contains methods to set the appearance of apps in the App Launcher.
 ChangePasswordController Class
 This class and its methods are for internal use only.
 
-42
 
 ### Apex Reference Guide AppMenu Class
 
@@ -3973,7 +3931,6 @@ Sets an individual user’s default sort order for the App Launcher based on a L
 
 Shows or hides specific apps in the App Launcher.
 
-43
 
 Apex Reference Guide AppMenu Class
 
@@ -4052,7 +4009,6 @@ Parameters
 
 Type: List<Id>
 
-44
 
 ### Apex Reference Guide ChangePasswordController Class
 
@@ -4103,7 +4059,6 @@ Namespace
 
 AppLauncher
 
-45
 
 ### Apex Reference Guide LoginFormController Class LoginFormController Class
 
@@ -4152,7 +4107,6 @@ Use the `ProcessWorkitemRequest` class for processing an approval request after 
 UnlockResult Class
 The result of a record unlock, returned by a `System.Approval.unlock()` method.
 
-46
 
 ### Apex Reference Guide LockResult Class LockResult Class
 
@@ -4225,7 +4179,6 @@ SEE ALSO:
 
 Approval Class
 
-47
 
 Apex Reference Guide LockResult Class
 
@@ -4290,7 +4243,6 @@ Signature
 
 ```
 
-48
 
 ### Apex Reference Guide ProcessRequest Class
 
@@ -4344,7 +4296,6 @@ Return Value
 
 Type: String
 
-49
 
 ### Apex Reference Guide ProcessResult Class
 
@@ -4414,7 +4365,6 @@ Type: Void
 
 ### ProcessResult Class After you submit a record for approval, use the ProcessResult class to process the results of an approval process.
 
-50
 
 Apex Reference Guide ProcessResult Class
 
@@ -4475,7 +4425,6 @@ Type: String
 
 If an error occurred, returns an array of one or more database error objects including the error code and description.
 
-51
 
 Apex Reference Guide ProcessResult Class
 
@@ -4546,7 +4495,6 @@ Signature
 
 ```
 
-52
 
 ### Apex Reference Guide ProcessSubmitRequest Class
 
@@ -4605,7 +4553,6 @@ getSkipEntryCriteria()
 If `getProcessDefinitionNameOrId()` returns a value other than `null`, `getSkipEntryCriteria()` determines
 whether to evaluate the entry criteria for the process ( `true` ) or not ( `false` ).
 
-53
 
 Apex Reference Guide ProcessSubmitRequest Class
 
@@ -4667,7 +4614,6 @@ processes applicable to the user.
 
 whether to evaluate the entry criteria for the process ( `true` ) or not ( `false` ).
 
-54
 
 Apex Reference Guide ProcessSubmitRequest Class
 
@@ -4740,7 +4686,6 @@ Parameters
 
 Type: String
 
-55
 
 Apex Reference Guide ProcessSubmitRequest Class
 
@@ -4808,7 +4753,6 @@ Type: String
 The user ID on behalf of which the record is submitted. If set to `null`, the current user is the submitter. If the submitter is not set
 with this method, the default submitter is null (the current user).
 
-56
 
 ### Apex Reference Guide ProcessWorkitemRequest Class
 
@@ -4869,7 +4813,6 @@ Sets the ID of the approval request that is being approved, rejected, or removed
 
 Returns the type of action already associated with the approval request. Valid values are: Approve, Reject, or Removed.
 
-57
 
 Apex Reference Guide ProcessWorkitemRequest Class
 
@@ -4943,7 +4886,6 @@ Parameters
 
 Type: String
 
-58
 
 ### Apex Reference Guide UnlockResult Class
 
@@ -5016,7 +4958,6 @@ processed successfully to the debug log, or writes error messages and failed fie
 
 ```
 
-59
 
 Apex Reference Guide UnlockResult Class
 
@@ -5091,7 +5032,6 @@ Type: List<Database.Error>
 
 Returns the ID of the sObject you are trying to unlock.
 
-60
 
 ## Apex Reference Guide Auth Namespace
 
@@ -5149,7 +5089,6 @@ AuthProviderPluginClass Class
 Contains methods to create a custom OAuth-based authentication provider plug-in for single sign-on in to Salesforce. Use this class
 to create a custom authentication provider plug-in if you can’t use one of the authentication providers that Salesforce provides.
 
-61
 
 Apex Reference Guide Auth Namespace
 
@@ -5211,7 +5150,6 @@ IntegratingAppType Enum
 Specifies whether you’re integrating your app as a connected app or as an external client app in methods used in your customized
 Apex token exchange handler, which extends the `Auth.Oauth2TokenExchangeHandler` class.
 
-62
 
 Apex Reference Guide Auth Namespace
 
@@ -5271,7 +5209,6 @@ Stores the result of an `AuthProviderPluginClass` refresh method. OAuth authenti
 can be used to get a new access token. Access tokens have a limited lifetime as specified by the session timeout value. When an
 access token expires, use a refresh token to get a new access token.
 
-63
 
 ### Apex Reference Guide AuthConfiguration Class
 
@@ -5328,7 +5265,6 @@ of their Salesforce credentials. The authentication provider can be any authenti
 such as Google, Facebook, or Twitter. Users log in to either an Experience Cloud site ( `https://` _`MyDomainName`_ `.my.site.com` )
 or your My Domain login URL ( `https://` _`MyDomainName`_ `.my.salesforce.com` ).
 
-64
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5400,7 +5336,6 @@ The page users see after successfully logging in to the Experience Cloud site or
 
 community.
 
-65
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5462,7 +5397,6 @@ Determines if the Headless Registration Flow is enabled.
 getLogoUrl()
 Returns the location of the icon image at the bottom of the login page for a community.
 
-66
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5521,7 +5455,6 @@ internal org from the Experience Cloud site, they don't have to log in again.
 Returns the AuthConfig sObject, which represents the authentication options for an Experience Cloud site or Salesforce My Domain
 subdomain.
 
-67
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5590,7 +5523,6 @@ Signature
 
 ```
 
-68
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5673,7 +5605,6 @@ Type: String
 
 The Single Sign-On Initialization URL for the Experience Cloud site or Salesforce My Domain subdomain.
 
-69
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5750,7 +5681,6 @@ Return Value
 
 Type: String
 
-70
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5824,7 +5754,6 @@ Signature
 
 ```
 
-71
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5893,7 +5822,6 @@ Signature
 
 ```
 
-72
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -5967,7 +5895,6 @@ for the Experience Cloud site. If `null` or specified as an empty string, you ge
 
 Type: String
 
-73
 
 Apex Reference Guide AuthConfiguration Class
 
@@ -6037,7 +5964,6 @@ Type: String
 
 The location of the start page for the Experience Cloud site or My Domain subdomain.
 
-74
 
 ### Apex Reference Guide AuthProviderCallbackState Class
 
@@ -6097,7 +6023,6 @@ handleCallback(authProviderConfiguration, callbackState)
 
 ### The following are constructors for AuthProviderCallbackState .
 
-75
 
 Apex Reference Guide AuthProviderCallbackState Class
 
@@ -6171,7 +6096,6 @@ Signature
 
 ```
 
-76
 
 ### Apex Reference Guide AuthProviderPlugin Interface
 
@@ -6229,7 +6153,6 @@ AuthProviderPlugin Methods
 
 AuthProviderPlugin Example Implementation
 
-77
 
 Apex Reference Guide AuthProviderPlugin Interface
 
@@ -6293,7 +6216,6 @@ Signature
 
 ```
 
-78
 
 Apex Reference Guide AuthProviderPlugin Interface
 
@@ -6368,7 +6290,6 @@ Type: Auth.AuthProviderTokenResponse
 
 Creates an instance of the `AuthProviderTokenResponse` class.
 
-79
 
 ### Apex Reference Guide AuthProviderPluginClass Class
 
@@ -6434,7 +6355,6 @@ Namespace
 
 #### Auth
 
-80
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -6490,7 +6410,6 @@ Signature
 
 ```
 
-81
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -6557,7 +6476,6 @@ provider.
 Uses the authentication provider’s supported authentication protocol to return an OAuth access token, OAuth secret or refresh token,
 and the state passed in when the request for the current user was initiated.
 
-82
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -6634,7 +6552,6 @@ Type: String
 
 The state passed in to initiate the authentication request for the user.
 
-83
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -6706,7 +6623,6 @@ The following example demonstrates how to implement a custom Auth. provider plug
 
 ```
 
-84
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -6799,7 +6715,6 @@ Apex Reference Guide AuthProviderPluginClass Class
 
 ```
 
-85
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -6902,7 +6817,6 @@ Apex Reference Guide AuthProviderPluginClass Class
 
 ```
 
-86
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -7002,7 +6916,6 @@ The following example contains test classes for the Concur class.
 
 ```
 
-87
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -7099,7 +7012,6 @@ Apex Reference Guide AuthProviderPluginClass Class
 
 ```
 
-88
 
 Apex Reference Guide AuthProviderPluginClass Class
 
@@ -7196,7 +7108,6 @@ Apex Reference Guide AuthProviderPluginClass Class
 
 ```
 
-89
 
 ### Apex Reference Guide AuthProviderTokenResponse Class
 
@@ -7283,7 +7194,6 @@ AuthProviderTokenResponse Properties
 
 ### The following are constructors for AuthProviderTokenResponse .
 
-90
 
 Apex Reference Guide AuthProviderTokenResponse Class
 
@@ -7364,7 +7274,6 @@ Signature
 
 ```
 
-91
 
 Apex Reference Guide AuthProviderTokenResponse Class
 
@@ -7439,7 +7348,6 @@ Signature
 
 ```
 
-92
 
 Apex Reference Guide AuthProviderTokenResponse Class
 
@@ -7507,7 +7415,6 @@ Property Value
 
 Type: String
 
-93
 
 ### Apex Reference Guide AuthToken Class AuthToken Class
 
@@ -7567,7 +7474,6 @@ Parameters
 
 Type: String
 
-94
 
 Apex Reference Guide AuthToken Class
 
@@ -7648,7 +7554,6 @@ The proper name of the provider. Here are valid values for each provider type.
 
 **•** Apple— `Apple`
 
-95
 
 Apex Reference Guide AuthToken Class
 
@@ -7727,7 +7632,6 @@ as `MyProvider` .
 
 **•** Google— `Google`
 
-96
 
 Apex Reference Guide AuthToken Class
 
@@ -7798,7 +7702,6 @@ A successful request includes the access token in the response.
 Revokes the access token for a specified SSO user from a provider such as Facebook. You can use this method only if the
 `IsNotSsoUsable` field on the associated ThirdPartyAccountLink object is set to `false` .
 
-97
 
 Apex Reference Guide AuthToken Class
 
@@ -7885,7 +7788,6 @@ Return Value
 
 Type: Boolean
 
-98
 
 ### Apex Reference Guide CommunitiesUtil Class
 
@@ -7953,7 +7855,6 @@ Indicates whether the current user is logged in as a member of the parent Salesf
 
 Returns the page to display after the current Experience Cloud user logs out.
 
-99
 
 ### Apex Reference Guide ConfigurableSelfRegHandler Interface
 
@@ -8020,7 +7921,6 @@ Gives you more control over how customers or partners self-register for your Exp
 their email address, phone number, or another identifier. When verified, you create a customer or partner user and log in the user to
 your Experience Cloud site.
 
-100
 
 Apex Reference Guide ConfigurableSelfRegHandler Interface
 
@@ -8075,7 +7975,6 @@ Create a community member from the information that the visitor provided on your
 
 Create a community member from the information that the visitor provided on your community’s self-registration page.
 
-101
 
 Apex Reference Guide ConfigurableSelfRegHandler Interface
 
@@ -8147,7 +8046,6 @@ page, the user is created and logged in. Likewise, if the admin chose Text Messa
 is prompted to enter a phone number. Salesforce sends a challenge (verification code) via SMS to the user. If successful, the user is
 created and logged in. Requiring verification before creating a user reduces the number of dummy users cluttering your org.
 
-102
 
 Apex Reference Guide ConfigurableSelfRegHandler Interface
 
@@ -8254,7 +8152,6 @@ You can modify the handler to make sure that the email address and phone number 
 
 ```
 
-103
 
 Apex Reference Guide ConfigurableSelfRegHandler Interface
 
@@ -8365,7 +8262,6 @@ Apex Reference Guide ConfigurableSelfRegHandler Interface
 
 ```
 
-104
 
 ### Apex Reference Guide ConfirmUserRegistrationHandler Interface
 
@@ -8454,7 +8350,6 @@ that require you to confirm user information during the update process, implemen
 You can use the `Auth.ConfirmUserRegistrationHandler` interface to ensure that users are mapped correctly between
 Salesforce and the third party. When a user who has previously logged in with an authentication provider logs in again, you can confirm
 
-105
 
 Apex Reference Guide ConfirmUserRegistrationHandler Interface
 
@@ -8529,7 +8424,6 @@ The portal ID the user is logging in to. If there's no portal configured, this v
 
 Contains user information from the third-party identity provider.
 
-106
 
 Apex Reference Guide ConfirmUserRegistrationHandler Interface
 
@@ -8631,7 +8525,6 @@ confirm that the correct user is logging in based on their email address and las
 
 ```
 
-107
 
 ### Apex Reference Guide ConnectedAppPlugin Class
 
@@ -8709,7 +8602,6 @@ If you don't specify an execution user, the plug-in runs as an Automated Process
 
 `customAttributes` [method. For more information, see Create a Custom Connected App Handler.](https://help.salesforce.com/articleView?id=sf.connected_app_create_custom_handler.htm&language=en_US)
 
-108
 
 Apex Reference Guide ConnectedAppPlugin Class
 
@@ -8810,7 +8702,6 @@ modify a SAML assertion before it’s sent to the service provider.
 
 ```
 
-109
 
 Apex Reference Guide ConnectedAppPlugin Class
 
@@ -8874,7 +8765,6 @@ Parameters
 
 Type: Id
 
-110
 
 Apex Reference Guide ConnectedAppPlugin Class
 
@@ -8960,7 +8850,6 @@ Usage
 `ConnectedAppPlugin` runs on behalf of the current user. But the user must have permission to use the connected app for the
 plug-in to work. Use this method to authorize the user.
 
-111
 
 Apex Reference Guide ConnectedAppPlugin Class
 
@@ -9042,7 +8931,6 @@ Type: Id
 
 The 15-character ID for the connected app.
 
-112
 
 Apex Reference Guide ConnectedAppPlugin Class
 
@@ -9121,7 +9009,6 @@ Use this method to modify the XML SAML response to perform an action based on th
 signed, and sent to the target service provider. This method enables developers to extend the connected app plug-in to meet their
 specific needs.
 
-113
 
 Apex Reference Guide ConnectedAppPlugin Class
 
@@ -9202,7 +9089,6 @@ Return Value
 
 Type: void
 
-114
 
 ### Apex Reference Guide CustomOneTimePasswordDeliveryHandler Interface CustomOneTimePasswordDeliveryHandler Interface
 
@@ -9277,7 +9163,6 @@ Type: String
 
 The OTP that the user receives.
 
-115
 
 Apex Reference Guide CustomOneTimePasswordDeliveryHandler Interface
 
@@ -9366,7 +9251,6 @@ This example implements the `Auth.CustomOneTimePasswordDeliveryHandler` interfac
 
 ```
 
-116
 
 ### Apex Reference Guide CustomOneTimePasswordDeliveryResult Enum CustomOneTimePasswordDeliveryResult Enum
 
@@ -9421,7 +9305,6 @@ this class to support new authentication protocols or respond to user attributes
 execution user. The execution user authorizes access for the external client app. For example, when you use the authorize method, the
 execution user authorizes the external client app to access data.
 
-117
 
 Apex Reference Guide ExternalClientAppOauthHandler Class
 
@@ -9494,7 +9377,6 @@ The approval state of the specified user when the external client app requires a
 
 Type: Auth.InvocationContext on page 136
 
-118
 
 Apex Reference Guide ExternalClientAppOauthHandler Class
 
@@ -9572,7 +9454,6 @@ Signature
 
 ```
 
-119
 
 ### Apex Reference Guide GeneratedUserData Class
 
@@ -9640,7 +9521,6 @@ GeneratedUserData Properties
 
 ### The following are constructors for GeneratedUserData .
 
-120
 
 Apex Reference Guide GeneratedUserData Class
 
@@ -9731,7 +9611,6 @@ handler execution user. The execution user is specified in the Run As field in t
 
 Type: String
 
-121
 
 Apex Reference Guide GeneratedUserData Class
 
@@ -9792,7 +9671,6 @@ Stores the default value for the user's locale, defined using two-letter Interna
 example, `en_US` indicates English (United States). The default value is the language for the registration handler execution user.
 The execution user is specified in the Run As field in the authentication provider definition.
 
-122
 
 Apex Reference Guide GeneratedUserData Class
 
@@ -9852,7 +9730,6 @@ Property Value
 
 Type: String
 
-123
 
 Apex Reference Guide GeneratedUserData Class
 
@@ -9920,7 +9797,6 @@ Property Value
 
 Type: String
 
-124
 
 ### Apex Reference Guide HeadlessSelfRegistrationHandler Interface
 
@@ -9979,7 +9855,6 @@ IN THIS SECTION:
 HeadlessSelfRegistrationHandler Methods
 ### The following are methods for HeadlessSelfRegistrationHandler .
 
-125
 
 Apex Reference Guide HeadlessSelfRegistrationHandler Interface
 
@@ -10057,7 +9932,6 @@ Type: String
 
 The user password.
 
-126
 
 Apex Reference Guide HeadlessSelfRegistrationHandler Interface
 
@@ -10148,7 +10022,6 @@ your client sends to Headless Registration API.
 
 ```
 
-127
 
 ### Apex Reference Guide HeadlessUserDiscoveryHandler Interface
 
@@ -10234,7 +10107,6 @@ Develop headless authorization flows where users log in to an off-platform app w
 email address, phone number, or order number. When a user enters the identifier in your headless app, your app sends the identifying
 information to a Salesforce endpoint. Salesforce then passes the identifying information to your implementation of the
 
-128
 
 Apex Reference Guide HeadlessUserDiscoveryHandler Interface
 
@@ -10303,7 +10175,6 @@ Type: Id
 
 The ID of the Experience Cloud site where your headless app sends requests.
 
-129
 
 Apex Reference Guide HeadlessUserDiscoveryHandler Interface
 
@@ -10384,7 +10255,6 @@ returns an instance of `Auth.HeadlessUserDiscoveryResponse` with the user ID, an
 
 ```
 
-130
 
 Apex Reference Guide HeadlessUserDiscoveryHandler Interface
 
@@ -10491,7 +10361,6 @@ Apex Reference Guide HeadlessUserDiscoveryHandler Interface
 
 ```
 
-131
 
 Apex Reference Guide HeadlessUserDiscoveryHandler Interface
 
@@ -10598,7 +10467,6 @@ Apex Reference Guide HeadlessUserDiscoveryHandler Interface
 
 ```
 
-132
 
 ### Apex Reference Guide HeadlessUserDiscoveryResponse Class
 
@@ -10663,7 +10531,6 @@ Signature
 
 ```
 
-133
 
 Apex Reference Guide HeadlessUserDiscoveryResponse Class
 
@@ -10728,7 +10595,6 @@ Property Value
 
 [Type: Set<Id>](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_set.htm)
 
-134
 
 ### Apex Reference Guide HttpCalloutMockUtil Class HttpCalloutMockUtil Class
 
@@ -10786,7 +10652,6 @@ Parameters
 [A class that implements the System.HttpCalloutMock interface to return a fake HTTP response for a given request to the OAuth token](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_httpcalloutmock.htm)
 endpoint or a JWKS endpoint on an external identity provider, depending on your use case.
 
-135
 
 ### Apex Reference Guide IntegratingAppType Enum
 
@@ -10843,7 +10708,6 @@ flow.
 
 `OAUTH2_USER_AGENT_TOKEN` Context used when authentication is through an OAuth 2.0 user agent flow.
 
-136
 
 ### Apex Reference Guide JsonValueOutput Class
 
@@ -10902,7 +10766,6 @@ JsonValueOutput Constructors
 
 JsonValueOutput Properties
 
-137
 
 Apex Reference Guide JsonValueOutput Class
 
@@ -10986,7 +10849,6 @@ If the attribute returned by the action is a JSON array, it's formatted as a str
 
 #### JsonValueOutput Properties The following are properties for JsonValueOutput .
 
-138
 
 Apex Reference Guide JsonValueOutput Class
 
@@ -11054,7 +10916,6 @@ Signature
 
 ```
 
-139
 
 ### Apex Reference Guide JWS Class
 
@@ -11116,7 +10977,6 @@ Namespace
 
 Auth
 
-140
 
 Apex Reference Guide JWS Class
 
@@ -11179,7 +11039,6 @@ Calls the `toJSONString()` method in `Auth.JWT` and sets the resulting string as
 
 #### Creates an instance of the JWS class using the specified payload and certificate used for signing the JWT bearer token.
 
-141
 
 Apex Reference Guide JWS Class
 
@@ -11247,7 +11106,6 @@ Type: JWS
 Returns the compact serialization representation of the JWS as a concatenated string, with the encoded JWS header, encoded JWS
 payload, and encoded JWS signature strings separated by period ('.') characters.
 
-142
 
 ### Apex Reference Guide JWT Class
 
@@ -11305,7 +11163,6 @@ some leeway for clock skew. This method returns a `NoAccess` exception for JWTs 
 getSub()
 Returns the subject ( `sub` ) claim that identifies the current user of the JWT.
 
-143
 
 Apex Reference Guide JWT Class
 
@@ -11370,7 +11227,6 @@ Return Value
 
 Type: Map<String,Object>
 
-144
 
 Apex Reference Guide JWT Class
 
@@ -11435,7 +11291,6 @@ Return Value
 
 Type: Integer
 
-145
 
 Apex Reference Guide JWT Class
 
@@ -11502,7 +11357,6 @@ Additional claims must not include any standard claims.
 
 Sets the audience ( `aud` ) claim in the JWT. Returned by the `getAud` method.
 
-146
 
 Apex Reference Guide JWT Class
 
@@ -11573,7 +11427,6 @@ Return Value
 
 Type: void
 
-147
 
 Apex Reference Guide JWT Class
 
@@ -11640,7 +11493,6 @@ Return Value
 
 Type: String
 
-148
 
 ### Apex Reference Guide JWTBearerTokenExchange Class JWTBearerTokenExchange Class
 
@@ -11712,7 +11564,6 @@ In the following example application, the Apex controller:
 
 ```
 
-149
 
 Apex Reference Guide JWTBearerTokenExchange Class
 
@@ -11781,7 +11632,6 @@ The signed JWT bearer token.
 
 Creates an instance of the `Auth.JWTBearerTokenExchange` class.
 
-150
 
 Apex Reference Guide JWTBearerTokenExchange Class
 
@@ -11845,7 +11695,6 @@ Type: JWTBearerTokenExchange
 
 Returns the `access_token` in the token response to the JWT bearer token request.
 
-151
 
 Apex Reference Guide JWTBearerTokenExchange Class
 
@@ -11912,7 +11761,6 @@ Signature
 
 ```
 
-152
 
 Apex Reference Guide JWTBearerTokenExchange Class
 
@@ -11981,7 +11829,6 @@ Return Value
 
 Type: void
 
-153
 
 ### Apex Reference Guide JWTUtil Class
 
@@ -12040,7 +11887,6 @@ validateJWTWithCert(incomingJWT, certDeveloperName)
 Parses and validates the JWT using a certificate saved in Salesforce. The certificate can be self-signed or signed by a certificate
 authority.
 
-154
 
 Apex Reference Guide JWTUtil Class
 
@@ -12113,7 +11959,6 @@ Return Value
 
 Parses and validates the JWT using a public key from the external identity provider.
 
-155
 
 Apex Reference Guide JWTUtil Class
 
@@ -12194,7 +12039,6 @@ Return Value
 
 [Type: Auth.JWT](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Auth_JWT.htm)
 
-156
 
 ### Apex Reference Guide LightningLoginEligibility Enum LightningLoginEligibility Enum
 
@@ -12250,7 +12094,6 @@ Namespace
 
 Auth
 
-157
 
 Apex Reference Guide LoginDiscoveryHandler Interface
 
@@ -12321,7 +12164,6 @@ login.
 
 Type: Map<String,String>
 
-158
 
 Apex Reference Guide LoginDiscoveryHandler Interface
 
@@ -12396,7 +12238,6 @@ implementation-specific logic to handle the lookup.
 
 ```
 
-159
 
 Apex Reference Guide LoginDiscoveryHandler Interface
 
@@ -12509,7 +12350,6 @@ Apex Reference Guide LoginDiscoveryHandler Interface
 
 ```
 
-160
 
 Apex Reference Guide LoginDiscoveryHandler Interface
 
@@ -12618,7 +12458,6 @@ Apex Reference Guide LoginDiscoveryHandler Interface
 
 ```
 
-161
 
 Apex Reference Guide LoginDiscoveryHandler Interface
 
@@ -12722,7 +12561,6 @@ Community, and Partner Community Plus. It depends on which profiles have access 
 
 ```
 
-162
 
 Apex Reference Guide LoginDiscoveryHandler Interface
 
@@ -12833,7 +12671,6 @@ Apex Reference Guide LoginDiscoveryHandler Interface
 
 ```
 
-163
 
 Apex Reference Guide LoginDiscoveryHandler Interface
 
@@ -12936,7 +12773,6 @@ Apex Reference Guide LoginDiscoveryHandler Interface
 
 ```
 
-164
 
 ### Apex Reference Guide LoginDiscoveryMethod Enum
 
@@ -12999,7 +12835,6 @@ Login Discovery Handler, select this handler from the list of Apex classes.
 For an example, see MyDomainLoginDiscoveryHandler Example Implementation. For more details, search for My Domain Login Discovery
 in _Salesforce Help_ .
 
-165
 
 Apex Reference Guide MyDomainLoginDiscoveryHandler Interface
 
@@ -13066,7 +12901,6 @@ Type: System.PageReference
 
 The URL of the page where the user is redirected to complete authentication.
 
-166
 
 Apex Reference Guide MyDomainLoginDiscoveryHandler Interface
 
@@ -13164,7 +12998,6 @@ To implement this interface, the My Domain login page type must be set to Discov
 
 ```
 
-167
 
 Apex Reference Guide MyDomainLoginDiscoveryHandler Interface
 
@@ -13273,7 +13106,6 @@ type set to Discovery.
 
 ```
 
-168
 
 ### Apex Reference Guide Oauth2TokenExchangeHandler Class
 
@@ -13364,7 +13196,6 @@ IN THIS SECTION:
 
 Oauth2TokenExchangeHandler Methods
 
-169
 
 Apex Reference Guide Oauth2TokenExchangeHandler Class
 
@@ -13445,7 +13276,6 @@ Return Value
 
 [Type: User](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_user.htm)
 
-170
 
 ### Apex Reference Guide OAuth2TokenExchangeType Enum
 
@@ -13521,7 +13351,6 @@ During the token exchange flow, your app requests a token from Salesforce by sen
 identity provider. The request includes a `subject_token_type` parameter to specify the type of token. The values specified in
 this enum must correspond to the `subject_token_type` in the token request.
 
-171
 
 ### Apex Reference Guide OAuthRefreshResult Class
 
@@ -13590,7 +13419,6 @@ OAuthRefreshResult Properties
 
 ### The following are constructors for OAuthRefreshResult .
 
-172
 
 Apex Reference Guide OAuthRefreshResult Class
 
@@ -13670,7 +13498,6 @@ Type: String
 
 The OAuth refresh token for the user who is logged in.
 
-173
 
 Apex Reference Guide OAuthRefreshResult Class
 
@@ -13735,7 +13562,6 @@ Property Value
 
 Type: String
 
-174
 
 ### Apex Reference Guide OauthToken Class OauthToken Class
 
@@ -13798,7 +13624,6 @@ Type: String
 
 The access token (opaque or JWT-based), refresh token, or delete token issued by Salesforce.
 
-175
 
 ### Apex Reference Guide OauthTokenType Enum
 
@@ -13856,7 +13681,6 @@ account and contact records.
 Note: During the user update process, you can use the `confirmUser()` method to ensure that users are correctly mapped
 between Salesforce and the third party. For more information, see the ConfirmUserRegistrationHandler Interface.
 
-176
 
 Apex Reference Guide RegistrationHandler Interface
 
@@ -13922,7 +13746,6 @@ Usage
 
 The _`portalID`_ value can be null or an empty key if there’s no portal configured with this provider.
 
-177
 
 Apex Reference Guide RegistrationHandler Interface
 
@@ -13993,7 +13816,6 @@ provider for this user can be obtained in Apex using the `Auth.AuthToken` Apex c
 to retrieve access tokens. One is `getAccessToken`, which obtains a single access token. Use this method if the user ID is mapped
 to a single third-party user. If the user ID is mapped to multiple third-party users, use `getAccessTokenMap`, which returns a map
 
-178
 
 Apex Reference Guide RegistrationHandler Interface
 
@@ -14071,7 +13893,6 @@ This example snippet creates a custom class to store the user info response. It 
 
 ```
 
-179
 
 Apex Reference Guide RegistrationHandler Interface
 
@@ -14177,7 +13998,6 @@ The following example tests the above code.
 
 ```
 
-180
 
 Apex Reference Guide RegistrationHandler Interface
 
@@ -14273,7 +14093,6 @@ To limit this example to the custom exception, some code was omitted.
 
 ```
 
-181
 
 ### Apex Reference Guide SamlJitHandler Interface
 
@@ -14339,7 +14158,6 @@ Signature
 
 ```
 
-182
 
 Apex Reference Guide SamlJitHandler Interface
 
@@ -14425,7 +14243,6 @@ Signature
 
 ```
 
-183
 
 Apex Reference Guide SamlJitHandler Interface
 
@@ -14522,7 +14339,6 @@ and contacts (handleContact() and handleAccount()), which aren’t included in t
 
 ```
 
-184
 
 Apex Reference Guide SamlJitHandler Interface
 
@@ -14625,7 +14441,6 @@ Apex Reference Guide SamlJitHandler Interface
 
 ```
 
-185
 
 ### Apex Reference Guide SessionManagement Class
 
@@ -14688,7 +14503,6 @@ getQrCode()
 Returns a map containing a URL to a quick response (QR) code and a time-based one-time password (TOTP) shared secret to configure
 authenticator apps or devices for multi-factor authentication (MFA).
 
-186
 
 Apex Reference Guide SessionManagement Class
 
@@ -14759,7 +14573,6 @@ Return Value
 
 Type: System.PageReference
 
-187
 
 Apex Reference Guide SessionManagement Class
 
@@ -14822,7 +14635,6 @@ Return Value
 
 Type: System.PageReference
 
-188
 
 Apex Reference Guide SessionManagement Class
 
@@ -14891,7 +14703,6 @@ Type: String
 
 The URL where the user is redirected to verify identity.
 
-189
 
 Apex Reference Guide SessionManagement Class
 
@@ -14973,7 +14784,6 @@ an “s” in the name to match the name of the corresponding field in the AuthS
 
 ```
 
-190
 
 Apex Reference Guide SessionManagement Class
 
@@ -15046,7 +14856,6 @@ for the user after verifying a TOTP token with the secret.
 
 The `secret` is a base32-encoded string of a 20-byte shared key.
 
-191
 
 Apex Reference Guide SessionManagement Class
 
@@ -15124,7 +14933,6 @@ Signature
 
 ```
 
-192
 
 Apex Reference Guide SessionManagement Class
 
@@ -15189,7 +14997,6 @@ Signature
 
 ```
 
-193
 
 Apex Reference Guide SessionManagement Class
 
@@ -15261,7 +15068,6 @@ This setting affects the session level of all sessions associated with the curre
 If you create an Apex test method that calls this method, the test fails with an error such as, “Unexpected Exception: Current session
 unavailable." An error occurs because there isn’t a session in the context through which the test is being run.
 
-194
 
 Apex Reference Guide SessionManagement Class
 
@@ -15337,7 +15143,6 @@ Signature
 
 ```
 
-195
 
 Apex Reference Guide SessionManagement Class
 
@@ -15410,7 +15215,6 @@ this method throws an exception.
 
 Indicates whether a time-based one-time password (TOTP) code (token) is valid for the current user.
 
-196
 
 Apex Reference Guide SessionManagement Class
 
@@ -15487,7 +15291,6 @@ Return Value
 
 Type:System.PageReference
 
-197
 
 ### Apex Reference Guide SessionLevel Enum
 
@@ -15539,7 +15342,6 @@ Namespace
 
 Auth
 
-198
 
 Apex Reference Guide TokenValidationResult Class
 
@@ -15629,7 +15431,6 @@ Here’s is an example of the `Auth.TokenValidationResult` class.
 
 ```
 
-199
 
 Apex Reference Guide TokenValidationResult Class
 
@@ -15713,7 +15514,6 @@ The token from the external identity provider.
 
 [Type: Auth.OAuth2TokenExchangeType](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_Auth_OAuth2TokenExchangeType.htm)
 
-200
 
 Apex Reference Guide TokenValidationResult Class
 
@@ -15778,7 +15578,6 @@ Information about the user that’s obtained from the identity provider’s toke
 
 A custom error message that’s returned if token validation fails.
 
-201
 
 Apex Reference Guide TokenValidationResult Class
 
@@ -15844,7 +15643,6 @@ Type: String
 The type of token from the external identity provider. It can be an access token, refresh token, ID token, SAML 2.0 assertion, or a JSON
 Web Token (JWT).
 
-202
 
 Apex Reference Guide TokenValidationResult Class
 
@@ -15909,7 +15707,6 @@ Signature
 
 ```
 
-203
 
 Apex Reference Guide TokenValidationResult Class
 
@@ -15974,7 +15771,6 @@ Signature
 
 ```
 
-204
 
 ### Apex Reference Guide UserData Class
 
@@ -16034,7 +15830,6 @@ userInfoJSONString)
 Creates an instance of the Auth.UserData class that includes the ID token and user info response from the identity provider, if returned
 during single sign-on.
 
-205
 
 Apex Reference Guide UserData Class
 
@@ -16137,7 +15932,6 @@ Type: String
 
 The site login page URL passed in if used with a site; `null` otherwise.
 
-206
 
 Apex Reference Guide UserData Class
 
@@ -16236,7 +16030,6 @@ The username of the authenticated user in the third party.
 
 Type: String
 
-207
 
 Apex Reference Guide UserData Class
 
@@ -16313,7 +16106,6 @@ The username of the authenticated user in the third party.
 locale
 The standard locale string for the authenticated user.
 
-208
 
 Apex Reference Guide UserData Class
 
@@ -16374,7 +16166,6 @@ Type: String
 
 The last name of the authenticated user, according to the third party.
 
-209
 
 Apex Reference Guide UserData Class
 
@@ -16445,7 +16236,6 @@ Signature
 
 ```
 
-210
 
 Apex Reference Guide UserData Class
 
@@ -16510,7 +16300,6 @@ Signature
 
 ```
 
-211
 
 ### Apex Reference Guide VerificationAction Enum
 
@@ -16575,7 +16364,6 @@ Usage
 Use this enum to specify the user's method of receiving a one-time password when you implement the
 `Auth.HeadlessUserDiscoveryHandler` interface.
 
-212
 
 ### Apex Reference Guide VerificationMethod Enum
 
@@ -16632,7 +16420,6 @@ SECURITY_KEY instead.
 The `Auth.VerificationPolicy` enum contains an identity verification policy value used by the
 `SessionManagement.generateVerificationUrl` method.
 
-213
 
 ### Apex Reference Guide VerificationResult Class
 
@@ -16696,7 +16483,6 @@ VerificationResult Constructor
 
 VerificationResult Properties
 
-214
 
 Apex Reference Guide VerificationResult Class
 
@@ -16765,7 +16551,6 @@ location specified by the start URL.
 success
 The verification challenge is successful.
 
-215
 
 Apex Reference Guide VerificationResult Class
 
@@ -16828,7 +16613,6 @@ Duplicates the Auth.VerificationResult object.
 
 Duplicates the Auth.VerificationResult object.
 
-216
 
 ### Apex Reference Guide Auth Exceptions
 
@@ -16911,7 +16695,6 @@ flow when the HTTP response:
 
 To get the error message and write it to debug log, use the `String getMessage()` .
 
-217
 
 Apex Reference Guide Auth Exceptions
 
@@ -16999,7 +16782,6 @@ trigger testTrigger on Account (before insert) {
 
 ```
 
-218
 
 ## Apex Reference Guide Cache Namespace
 
@@ -17059,7 +16841,6 @@ _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.
 An interface for safely retrieving and removing values from a session or org cache. Use the interface to generate a value that you want
 to store in the cache. The interface checks for cache misses, which means you no longer need to check for null cache values yourself.
 
-219
 
 Apex Reference Guide CacheBuilder Interface
 
@@ -17115,7 +16896,6 @@ Type: Object
 
 The value that was cached. Cast the return value to the appropriate type.
 
-220
 
 ### Apex Reference Guide Org Class
 
@@ -17169,7 +16949,6 @@ Note:
 **•** The `local` prefix in an installed managed package refers to the namespace of the subscriber org and not the package’s
 namespace. The cache `put` calls aren’t allowed in a partition that the invoking class doesn’t own.
 
-221
 
 Apex Reference Guide Org Class
 
@@ -17253,7 +17032,6 @@ user. For example, if the counter value was five, the next user sees the counter
 
 ```
 
-222
 
 Apex Reference Guide Org Class
 
@@ -17348,7 +17126,6 @@ Apex Reference Guide Org Class
 
 ```
 
-223
 
 Apex Reference Guide Org Class
 
@@ -17450,7 +17227,6 @@ This is the Visualforce page that corresponds to the `OrgCacheController` class.
 
 ```
 
-224
 
 Apex Reference Guide Org Class
 
@@ -17519,7 +17295,6 @@ Returns `true` if the org cache contains values for the specified key entries.
 contains(setOfKeys)
 Returns `true` if the org cache contains values for a specified set of keys.
 
-225
 
 Apex Reference Guide Org Class
 
@@ -17580,7 +17355,6 @@ Stores the specified key/value pair as a cached entry in the org cache and sets 
 put(key, value, ttlSecs)
 Stores the specified key/value pair as a cached entry in the org cache and sets the cached value’s lifetime.
 
-226
 
 Apex Reference Guide Org Class
 
@@ -17649,7 +17423,6 @@ Type: List<Boolean>
 
 `true` if the key entries are found. Othewise, `false` .
 
-227
 
 Apex Reference Guide Org Class
 
@@ -17729,7 +17502,6 @@ Boolean value for the key entry from the org cache of different partitions.
 
 Returns the cached value corresponding to the specified key from the org cache.
 
-228
 
 Apex Reference Guide Org Class
 
@@ -17810,7 +17582,6 @@ Type: Object
 
 The cached value as a generic object type. Cast the returned value to the appropriate type.
 
-229
 
 Apex Reference Guide Org Class
 
@@ -17893,7 +17664,6 @@ Fetch multiple keys from the org cache of different partitions.
 
 ```
 
-230
 
 Apex Reference Guide Org Class
 
@@ -17956,7 +17726,6 @@ and key 4 and returns the average item size of the fetched keys.
 
 Returns the average time taken to get a key from the org cache, in nanoseconds.
 
-231
 
 Apex Reference Guide Org Class
 
@@ -18024,7 +17793,6 @@ A set containing all cache keys.
 
 Returns the maximum item size of all the keys fetched from the org cache, in bytes.
 
-232
 
 Apex Reference Guide Org Class
 
@@ -18088,7 +17856,6 @@ Signature
 
 ```
 
-233
 
 Apex Reference Guide Org Class
 
@@ -18154,7 +17921,6 @@ Signature
 
 ```
 
-234
 
 Apex Reference Guide Org Class
 
@@ -18224,7 +17990,6 @@ Signature
 
 ```
 
-235
 
 Apex Reference Guide Org Class
 
@@ -18303,7 +18068,6 @@ Signature
 
 ```
 
-236
 
 Apex Reference Guide Org Class
 
@@ -18396,7 +18160,6 @@ Type: Boolean
 
 Indicates whether the cached value can be overwritten by another namespace ( `false` ) or not ( `true` ).
 
-237
 
 Apex Reference Guide Org Class
 
@@ -18468,7 +18231,6 @@ Type: Boolean
 
 `true` if the cache value was successfully removed. Otherwise, `false` .
 
-238
 
 ### Apex Reference Guide OrgPartition Class OrgPartition Class
 
@@ -18541,7 +18303,6 @@ user. For example, if the counter value was five, the next user sees the counter
 
 ```
 
-239
 
 Apex Reference Guide OrgPartition Class
 
@@ -18638,7 +18399,6 @@ Apex Reference Guide OrgPartition Class
 
 ```
 
-240
 
 Apex Reference Guide OrgPartition Class
 
@@ -18730,7 +18490,6 @@ This is the Visualforce page that corresponds to the `OrgPartitionController` cl
 
 ```
 
-241
 
 ### Apex Reference Guide Partition Class
 
@@ -18795,7 +18554,6 @@ IN THIS SECTION:
 contains(key)
 Returns `true` if the cache partition contains a cached value corresponding to the specified key.
 
-242
 
 Apex Reference Guide Partition Class
 
@@ -18854,7 +18612,6 @@ Returns the name of this cache partition.
 getNumKeys()
 Returns the total number of keys in the partition.
 
-243
 
 Apex Reference Guide Partition Class
 
@@ -18914,7 +18671,6 @@ Signature
 
 ```
 
-244
 
 Apex Reference Guide Partition Class
 
@@ -18990,7 +18746,6 @@ value for the key entry from the org cache of the partition.
 
 ```
 
-245
 
 Apex Reference Guide Partition Class
 
@@ -19072,7 +18827,6 @@ Signature
 
 ```
 
-246
 
 Apex Reference Guide Partition Class
 
@@ -19150,7 +18904,6 @@ Return Value
 
 Type: Map <String, Object>
 
-247
 
 Apex Reference Guide Partition Class
 
@@ -19235,7 +18988,6 @@ Type: String
 A case-sensitive string value that, combined with the class name corresponding to the _`cacheBuilder`_ parameter, uniquely
 identifies a cached value.
 
-248
 
 Apex Reference Guide Partition Class
 
@@ -19301,7 +19053,6 @@ Signature
 
 ```
 
-249
 
 Apex Reference Guide Partition Class
 
@@ -19369,7 +19120,6 @@ Signature
 
 ```
 
-250
 
 Apex Reference Guide Partition Class
 
@@ -19437,7 +19187,6 @@ Signature
 
 ```
 
-251
 
 Apex Reference Guide Partition Class
 
@@ -19516,7 +19265,6 @@ Type: Cache.Visibility
 Indicates whether the cached value is available only to Apex code that is executing in the same namespace or to Apex code executing
 from any namespace.
 
-252
 
 Apex Reference Guide Partition Class
 
@@ -19603,7 +19351,6 @@ The value to store in the cache. The cached value must be serializable.
 
 Type: Integer
 
-253
 
 Apex Reference Guide Partition Class
 
@@ -19685,7 +19432,6 @@ The Apex class that implements the `CacheBuilder` interface.
 
 Type: String
 
-254
 
 Apex Reference Guide Partition Class
 
@@ -19757,7 +19503,6 @@ Return Value
 
 Type: void
 
-255
 
 Apex Reference Guide Partition Class
 
@@ -19837,7 +19582,6 @@ Return Value
 
 Type: void
 
-256
 
 ### Apex Reference Guide Session Class
 
@@ -19889,7 +19633,6 @@ Note:
 **•** The `local` prefix in an installed managed package refers to the namespace of the subscriber org and not the package’s
 namespace. The cache `put` calls are not allowed in a partition that the invoking class doesn’t own.
 
-257
 
 Apex Reference Guide Session Class
 
@@ -19971,7 +19714,6 @@ The Remove button deletes the date-time value (with key `datetime` ) from the ca
 
 ```
 
-258
 
 Apex Reference Guide Session Class
 
@@ -20068,7 +19810,6 @@ Apex Reference Guide Session Class
 
 ```
 
-259
 
 Apex Reference Guide Session Class
 
@@ -20168,7 +19909,6 @@ This is the Visualforce page that corresponds to the `SessionCacheController` cl
 
 ```
 
-260
 
 Apex Reference Guide Session Class
 
@@ -20231,7 +19971,6 @@ get(cacheBuilder, key)
 Returns the cached value corresponding to the specified key from the session cache. Use this method if your cached value is a class
 that implements the `CacheBuilder` interface.
 
-261
 
 Apex Reference Guide Session Class
 
@@ -20292,7 +20031,6 @@ put(key, value, ttlSecs, visibility, immutable)
 Stores the specified key/value pair as a cached entry in the session cache. This method also sets the cached value’s lifetime, visibility,
 and whether it can be overwritten by another namespace.
 
-262
 
 Apex Reference Guide Session Class
 
@@ -20362,7 +20100,6 @@ Usage
 
 The number of input keys cannot exceed the maximum limit of 10.
 
-263
 
 Apex Reference Guide Session Class
 
@@ -20449,7 +20186,6 @@ use of the returned value.
 
 ```
 
-264
 
 Apex Reference Guide Session Class
 
@@ -20529,7 +20265,6 @@ Fetch multiple keys from the session cache of different partitions.
 Returns the cached value corresponding to the specified key from the session cache. Use this method if your cached value is a class that
 implements the `CacheBuilder` interface.
 
-265
 
 Apex Reference Guide Session Class
 
@@ -20605,7 +20340,6 @@ Return Value
 
 Type: Long
 
-266
 
 Apex Reference Guide Session Class
 
@@ -20673,7 +20407,6 @@ Return Value
 
 Type: Long
 
-267
 
 Apex Reference Guide Session Class
 
@@ -20740,7 +20473,6 @@ Type: String
 
 The name of the default cache partition.
 
-268
 
 Apex Reference Guide Session Class
 
@@ -20813,7 +20545,6 @@ After you get the session partition, you can add and retrieve the partition’s 
 
 ```
 
-269
 
 Apex Reference Guide Session Class
 
@@ -20888,7 +20619,6 @@ Parameters
 
 Type: String
 
-270
 
 Apex Reference Guide Session Class
 
@@ -20963,7 +20693,6 @@ Type: void
 Stores the specified key/value pair as a cached entry in the session cache. This method also sets the cached value’s lifetime, visibility,
 and whether it can be overwritten by another namespace.
 
-271
 
 Apex Reference Guide Session Class
 
@@ -21050,7 +20779,6 @@ Return Value
 
 Type: Boolean
 
-272
 
 ### Apex Reference Guide SessionPartition Class
 
@@ -21118,7 +20846,6 @@ To get a session partition, call `Cache.Session.getPartition` and pass in a full
 
 See Cache Key Format for Partition Methods.
 
-273
 
 Apex Reference Guide SessionPartition Class
 
@@ -21208,7 +20935,6 @@ cache.
 
 ```
 
-274
 
 Apex Reference Guide SessionPartition Class
 
@@ -21303,7 +21029,6 @@ Apex Reference Guide SessionPartition Class
 
 ```
 
-275
 
 ### Apex Reference Guide Cache Exceptions
 
@@ -21382,7 +21107,6 @@ cache.
 `Cache.Session.SessionCacheNoSessionException` An attempt is made to access the cache when the session cache
 isn’t available.
 
-276
 
 ### Apex Reference Guide Visibility Enum
 
@@ -21447,7 +21171,6 @@ Enum Values
 
 The following are the values of the `Cache.Visibility` enum.
 
-277
 
 ## Apex Reference Guide Canvas Namespace
 
@@ -21505,7 +21228,6 @@ SEE ALSO:
 
 Use this interface to retrieve application context information, such as the application version or URL.
 
-278
 
 Apex Reference Guide ApplicationContext Interface
 
@@ -21560,7 +21282,6 @@ Return Value
 
 Type: String
 
-279
 
 Apex Reference Guide ApplicationContext Interface
 
@@ -21623,7 +21344,6 @@ Return Value
 
 Type: String
 
-280
 
 Apex Reference Guide ApplicationContext Interface
 
@@ -21690,7 +21410,6 @@ If the provided path results in a malformed URL, or a URL that exceeds 2,048 cha
 This method overrides the canvas app URL for the current request and does not permanently change the canvas app URL as configured
 in the UI for the Salesforce canvas app settings.
 
-281
 
 ### Apex Reference Guide CanvasLifecycleHandler Interface CanvasLifecycleHandler Interface
 
@@ -21754,7 +21473,6 @@ IN THIS SECTION:
 excludeContextTypes()
 Lets the implementation exclude parts of the CanvasRequest context, if the application does not need it.
 
-282
 
 Apex Reference Guide CanvasLifecycleHandler Interface
 
@@ -21825,7 +21543,6 @@ _Canvas Developer Guide_ [: Filtering CanvasRequest Context Data](https://develo
 Invoked when a canvas app is rendered. Provides the ability to set and retrieve canvas application and environment context information
 during the application render phase.
 
-283
 
 ### Apex Reference Guide ContextTypeEnum Enum
 
@@ -21892,7 +21609,6 @@ running.
 `RECORD_DETAIL` Exclude context information about the object record on which the canvas app
 appears.
 
-284
 
 ### Apex Reference Guide EnvironmentContext Interface
 
@@ -21946,7 +21662,6 @@ Retrieves the current custom parameters for the canvas app. Parameters are retur
 getSublocation()
 Retrieves the display sublocation where the canvas app is being called from.
 
-285
 
 Apex Reference Guide EnvironmentContext Interface
 
@@ -22012,7 +21727,6 @@ Visualforce page that's associated with the Account page layout.
 Adds a set of fields to the list of object fields that are returned in the signed request Record object when the component appears on a
 Visualforce page that’s placed on an object.
 
-286
 
 Apex Reference Guide EnvironmentContext Interface
 
@@ -22087,7 +21801,6 @@ The return value can be one of the following strings:
 
 **•** Chatter—The canvas app was called from the Chatter tab.
 
-287
 
 Apex Reference Guide EnvironmentContext Interface
 
@@ -22162,7 +21875,6 @@ If the canvas app that’s using this lifecycle code was run from the detail pag
 
 ```
 
-288
 
 Apex Reference Guide EnvironmentContext Interface
 
@@ -22230,7 +21942,6 @@ This example gets the current custom parameters, de-serializes them into a map, 
 
 Retrieves the display sublocation where the canvas app is being called from.
 
-289
 
 Apex Reference Guide EnvironmentContext Interface
 
@@ -22297,7 +22008,6 @@ parameter set as needed, and then use this modified set in your call to setParam
 
 If the provided JSON string exceeds 32KB, a System.CanvasException will be thrown.
 
-290
 
 ### Apex Reference Guide RenderContext Interface
 
@@ -22357,7 +22067,6 @@ Retrieves the environment context information.
 
 Retrieves the application context information.
 
-291
 
 Apex Reference Guide RenderContext Interface
 
@@ -22433,7 +22142,6 @@ Usage
 
 Use this method to get the environment context information for your canvas app.
 
-292
 
 ### Apex Reference Guide Test Class
 
@@ -22501,7 +22209,6 @@ SEE ALSO:
 
 _Canvas Developer Guide_ [: Testing Your CanvasLifecycleHandler Implementation](https://developer.salesforce.com/docs/atlas.en-us.258.0.platform_connect.meta/platform_connect/canvas_testing_your_canvaslifecyclehandler.htm)
 
-293
 
 Apex Reference Guide Test Class
 
@@ -22569,7 +22276,6 @@ Parameters
 
 Type: Map<String,String>
 
-294
 
 Apex Reference Guide Test Class
 
@@ -22645,7 +22351,6 @@ Parameters
 
 Type: Canvas.CanvasLifecycleHandler
 
-295
 
 Apex Reference Guide Test Class
 
@@ -22722,7 +22427,6 @@ defined as MyCanvasListener, which is example implementation provided in Canvas.
 
 ```
 
-296
 
 ### Apex Reference Guide Canvas Exceptions
 
@@ -22794,7 +22498,6 @@ with a string that exceeded the maximum length. A CanvasRenderException is creat
 
 See the _[Canvas Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.platform_connect.meta/platform_connect/)_ for additional examples that use CanvasRenderException.
 
-297
 
 ## Apex Reference Guide ChatterAnswers Namespace ChatterAnswers Namespace The ChatterAnswers namespace provides an interface for creating Account records. The following is the interface in the ChatterAnswers namespace.
 
@@ -22854,7 +22557,6 @@ IN THIS SECTION:
 createAccount(firstName, lastName, siteAdminId)
 Accepts basic user information and creates an Account record. The implementation of this method returns the account ID.
 
-298
 
 Apex Reference Guide AccountCreator Interface
 
@@ -22947,7 +22649,6 @@ This example tests the code above.
 
 ```
 
-299
 
 ## Apex Reference Guide CommerceBuyGrp Namespace
 
@@ -23006,7 +22707,6 @@ Consideration
 **•** [The number of buyer groups that can be assigned to a user is determined by the limit set in your Salesforce org. See Shopper Buyer](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/b2b-b2c-comm-data-model-shopper-buyer-groups-accounts-limits.html)
 [Groups and Accounts Data Limits Groups.](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/b2b-b2c-comm-data-model-shopper-buyer-groups-accounts-limits.html)
 
-300
 
 Apex Reference Guide BuyerGroupEvaluationService Class
 
@@ -23064,7 +22764,6 @@ Signature
 
 ```
 
-301
 
 ### Apex Reference Guide BuyerGroupRequest Class
 
@@ -23122,7 +22821,6 @@ Return Value
 
 Type: String
 
-302
 
 ### Apex Reference Guide BuyerGroupResponse Class
 
@@ -23185,7 +22883,6 @@ BuyerGroupResponse Constructors
 
 BuyerGroupResponse Methods
 
-303
 
 Apex Reference Guide BuyerGroupResponse Class
 
@@ -23248,7 +22945,6 @@ Sets a list of evaluated buyer group IDs assigned to a user.
 setError(errorMessage, localizedErrorMessage)
 Sets the error message to be returned when the evaluation of buyer group IDs fails.
 
-304
 
 Apex Reference Guide BuyerGroupResponse Class
 
@@ -23323,7 +23019,6 @@ Return Value
 
 Type: void
 
-305
 
 ## Apex Reference Guide CommerceExtension Namespace CommerceExtension Namespace Use the CommerceExtension namespace to define resolution strategies for registered Commerce extensions. The following are the classes in the CommerceExtension namespace.
 
@@ -23389,7 +23084,6 @@ Example
 
 ```
 
-306
 
 Apex Reference Guide ExtensionInfo Class
 
@@ -23456,7 +23150,6 @@ Type: String
 
 Custom parameter field name.
 
-307
 
 ### Apex Reference Guide Resolution Class
 
@@ -23528,7 +23221,6 @@ Example
 
 ```
 
-308
 
 Apex Reference Guide Resolution Class
 
@@ -23606,7 +23298,6 @@ Parameters
 
 Type: CommerceExtension.ResolutionStates on page 313
 
-309
 
 Apex Reference Guide Resolution Class
 
@@ -23674,7 +23365,6 @@ Type: String
 
 Name of an extension provider.
 
-310
 
 ### Apex Reference Guide ResolutionException Class
 
@@ -23739,7 +23429,6 @@ Signature
 
 ```
 
-311
 
 Apex Reference Guide ResolutionException Class
 
@@ -23818,7 +23507,6 @@ Signature
 
 ```
 
-312
 
 ### Apex Reference Guide ResolutionStates Enum
 
@@ -23876,7 +23564,6 @@ When you implement this interface, you can register your apex class just like an
 decide how to handle each extension invocation. You can delegate to a specific extension provider, you can execute default domain
 logic, or you can execute no logic at all.
 
-313
 
 Apex Reference Guide ResolutionStrategy Interface
 
@@ -23949,7 +23636,6 @@ This is an example implementation of the `CommerceExtension.ResolutionStrategy` 
 
 ```
 
-314
 
 ## Apex Reference Guide CommerceOrders Namespace
 
@@ -24042,7 +23728,6 @@ This is an example implementation of the `CommerceExtension.ResolutionStrategy` 
 
 [See CommerceOrders namespace for more information about the available classes and methods.](https://developer.salesforce.com/docs/atlas.en-us.258.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/apex_namespace_commerceorders.htm)
 
-315
 
 ## Apex Reference Guide CommercePayments Namespace CommercePayments Namespace Use the CommercePayments namespace to provide a safe and customizable platform for managing customer payments and
 
@@ -24101,7 +23786,6 @@ Specifies the bank type.
 BankPaymentMethodRequest Class
 Sends data related to a bank payment method to a gateway adapter during a service call.
 
-316
 
 Apex Reference Guide CommercePayments Namespace
 
@@ -24165,7 +23849,6 @@ properties. It has no unique methods or parameters.
 NotificationClient Class
 Communicates with the payment platform regarding the gateway’s notification.
 
-317
 
 Apex Reference Guide CommercePayments Namespace
 
@@ -24229,7 +23912,6 @@ The payment gateway adapter sends this response for the `ReferencedRefund` reque
 RefundRequest Class
 Sends data related to a refund to the payment gateway adapter.
 
-318
 
 ### Apex Reference Guide AbstractResponse Class
 
@@ -24288,7 +23970,6 @@ IN THIS SECTION:
 
 AbstractResponse Methods
 
-319
 
 Apex Reference Guide AbstractResponse Class
 
@@ -24353,7 +24034,6 @@ Signature
 
 ```
 
-320
 
 Apex Reference Guide AbstractResponse Class
 
@@ -24425,7 +24105,6 @@ Type: void
 
 Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
 
-321
 
 ### Apex Reference Guide AbstractTransactionResponse Class
 
@@ -24499,7 +24178,6 @@ For example:
 
 ```
 
-322
 
 Apex Reference Guide AbstractTransactionResponse Class
 
@@ -24562,7 +24240,6 @@ Return Value
 
 Type: void
 
-323
 
 Apex Reference Guide AbstractTransactionResponse Class
 
@@ -24638,7 +24315,6 @@ Type: String
 
 The message that the gateway returned with the transaction request. Contains additional information about the transaction.
 
-324
 
 Apex Reference Guide AbstractTransactionResponse Class
 
@@ -24707,7 +24383,6 @@ Signature
 
 ```
 
-325
 
 Apex Reference Guide AbstractTransactionResponse Class
 
@@ -24779,7 +24454,6 @@ Return Value
 
 Type: void
 
-326
 
 ### Apex Reference Guide AccountType Enum AccountType Enum
 
@@ -24841,7 +24515,6 @@ AddressRequest Constructors
 
 AddressRequest Properties
 
-327
 
 Apex Reference Guide AddressRequest Class
 
@@ -24913,7 +24586,6 @@ Postal code for the payment method's address.
 
 #### AddressRequest Properties The following are properties for AddressRequest .
 
-328
 
 Apex Reference Guide AddressRequest Class
 
@@ -24981,7 +24653,6 @@ Signature
 
 ```
 
-329
 
 Apex Reference Guide AddressRequest Class
 
@@ -25046,7 +24717,6 @@ is dynamic and is based on the equals method in Java.
 hashCode()
 #### Maintains the integrity of lists of type AddressRequest .
 
-330
 
 ### Apex Reference Guide AlternativePaymentMethodRequest Class
 
@@ -25114,7 +24784,6 @@ Type: String
 
 The class contains information about the alternative payment method that are required for a gateway to process the request.
 
-331
 
 Apex Reference Guide AlternativePaymentMethodRequest Class
 
@@ -25183,7 +24852,6 @@ Type: String
 A unique, alphanumeric ID, called a token, that a payment gateway generates when it first processes a payment. The token replaces
 the actual payment data so that the data is kept secure. This token is stored as encrypted text, and can be used for recurring payments.
 
-332
 
 Apex Reference Guide AlternativePaymentMethodRequest Class
 
@@ -25247,7 +24915,6 @@ A unique, alphanumeric ID, that a payment gateway generates when it first proces
 The token replaces the actual payment data so that the data is kept secure. This token is stored as encrypted text, and can be used for
 recurring payments.
 
-333
 
 Apex Reference Guide AlternativePaymentMethodRequest Class
 
@@ -25309,7 +24976,6 @@ object records in a list.
 toString()
 Converts a date to a string.
 
-334
 
 ### Apex Reference Guide AlternativePaymentMethodResponse Class
 
@@ -25374,7 +25040,6 @@ Type: String
 
 The class contains the response details of the alternative payment method.
 
-335
 
 Apex Reference Guide AlternativePaymentMethodResponse Class
 
@@ -25435,7 +25100,6 @@ Signature
 
 ```
 
-336
 
 Apex Reference Guide AlternativePaymentMethodResponse Class
 
@@ -25507,7 +25171,6 @@ Type: void
 
 Sets the token ID that a payment gateway generates when it first processes a payment.
 
-337
 
 Apex Reference Guide AlternativePaymentMethodResponse Class
 
@@ -25583,7 +25246,6 @@ Return Value
 
 Type: void
 
-338
 
 ### Apex Reference Guide AuditParamsRequest AuditParamsRequest AuditParamsRequest is used for audit parameters in a transaction request. This is an abstract request class that is extended by
 
@@ -25643,7 +25305,6 @@ Type: String
 
 The customer’s IP address. Gateways often use this data in risk checks.
 
-339
 
 #### Apex Reference Guide AuditParamsRequest
 
@@ -25701,7 +25362,6 @@ Type: String
 
 Phone number of the client that initiated the request.
 
-340
 
 ### Apex Reference Guide AuthApiPaymentMethodRequest Class
 
@@ -25765,7 +25425,6 @@ Parameters
 
 Type: commercepayments.CardPaymentMethodRequest on page 400
 
-341
 
 ### Apex Reference Guide AuthorizationRequest Class
 
@@ -25820,7 +25479,6 @@ This class contains information about a transaction authorization request. The g
 constructing an authorization JSON request to send to the payment gateway. An object of this class is available by calling
 `getPaymentRequest()` in the `PaymentGatewayContext Class` .
 
-342
 
 Apex Reference Guide AuthorizationRequest Class
 
@@ -25923,7 +25581,6 @@ Creating a `buildAuthRequest` class to store information about the authorization
 
 ```
 
-343
 
 Apex Reference Guide AuthorizationRequest Class
 
@@ -26007,7 +25664,6 @@ Signature
 
 ```
 
-344
 
 Apex Reference Guide AuthorizationRequest Class
 
@@ -26070,7 +25726,6 @@ Property Value
 
 Type: Double
 
-345
 
 Apex Reference Guide AuthorizationRequest Class
 
@@ -26134,7 +25789,6 @@ hashCode()
 toString()
 Converts a date to a string.
 
-346
 
 ### Apex Reference Guide AuthorizationResponse Class
 
@@ -26202,7 +25856,6 @@ Namespace
 
 CommercePayments
 
-347
 
 Apex Reference Guide AuthorizationResponse Class
 
@@ -26288,7 +25941,6 @@ Example
 
 ```
 
-348
 
 Apex Reference Guide AuthorizationResponse Class
 
@@ -26347,7 +25999,6 @@ setSalesforceResultCodeInfo(salesforceResultCodeInfo)
 Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
 uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
 
-349
 
 Apex Reference Guide AuthorizationResponse Class
 
@@ -26422,7 +26073,6 @@ Return Value
 
 Type: void
 
-350
 
 Apex Reference Guide AuthorizationResponse Class
 
@@ -26494,7 +26144,6 @@ Parameters
 
 Type: String
 
-351
 
 Apex Reference Guide AuthorizationResponse Class
 
@@ -26562,7 +26211,6 @@ Signature
 
 ```
 
-352
 
 Apex Reference Guide AuthorizationResponse Class
 
@@ -26634,7 +26282,6 @@ Return Value
 
 Type: void
 
-353
 
 ### Apex Reference Guide AuthorizationReversalRequest Class
 
@@ -26705,7 +26352,6 @@ requestType value when calling processRequest on the gateway’s response.
 
 ```
 
-354
 
 Apex Reference Guide AuthorizationReversalRequest Class
 
@@ -26779,7 +26425,6 @@ exception if used outside of the Apex test context.
 Constructor for building the amount in an authorization reversal request. This constructor is intended for test usage and throws an
 exception if used outside of the Apex test context.
 
-355
 
 Apex Reference Guide AuthorizationReversalRequest Class
 
@@ -26851,7 +26496,6 @@ Property Value
 
 Type: Double
 
-356
 
 Apex Reference Guide AuthorizationReversalRequest Class
 
@@ -26914,7 +26558,6 @@ Return Value
 
 Type: Boolean
 
-357
 
 ### Apex Reference Guide AuthorizationReversalResponse Class
 
@@ -26985,7 +26628,6 @@ the Salesforce result code.
 
 ```
 
-358
 
 Apex Reference Guide AuthorizationReversalResponse Class
 
@@ -27058,7 +26700,6 @@ Sets a unique gateway reference number for the transaction that the gateway retu
 setGatewayResultCode(gatewayResultCode)
 Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
 
-359
 
 Apex Reference Guide AuthorizationReversalResponse Class
 
@@ -27129,7 +26770,6 @@ Signature
 
 ```
 
-360
 
 Apex Reference Guide AuthorizationReversalResponse Class
 
@@ -27203,7 +26843,6 @@ Signature
 
 ```
 
-361
 
 Apex Reference Guide AuthorizationReversalResponse Class
 
@@ -27276,7 +26915,6 @@ Type: void
 Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
 the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
 
-362
 
 ### Apex Reference Guide BankType Enum
 
@@ -27339,7 +26977,6 @@ Usage
 the fields from this class when constructing the tokenized JSON request for the payment gateway. You can create an instance of this
 class by calling `bankPaymentMethod` on the `PaymentMethodTokenizationRequest` class.
 
-363
 
 Apex Reference Guide BankPaymentMethodRequest Class
 
@@ -27428,7 +27065,6 @@ Example
 
 ```
 
-364
 
 Apex Reference Guide BankPaymentMethodRequest Class
 
@@ -27519,7 +27155,6 @@ Apex Reference Guide BankPaymentMethodRequest Class
 
 ```
 
-365
 
 Apex Reference Guide BankPaymentMethodRequest Class
 
@@ -27580,7 +27215,6 @@ standardEntryClassCode
 The three-letter code that identifies the type of electronic payment transaction being processed within the Automated Clearing
 House (ACH) network.
 
-366
 
 Apex Reference Guide BankPaymentMethodRequest Class
 
@@ -27648,7 +27282,6 @@ Type: commercepayments.AccountHolderType on page 327
 
 Salesforce Payments account ID associated with the bank payment method.
 
-367
 
 Apex Reference Guide BankPaymentMethodRequest Class
 
@@ -27713,7 +27346,6 @@ Type: Boolean
 
 The routing number is a unique nine-digit code that identifies the bank.
 
-368
 
 Apex Reference Guide BankPaymentMethodRequest Class
 
@@ -27784,7 +27416,6 @@ Signature
 
 ```
 
-369
 
 Apex Reference Guide BankPaymentMethodRequest Class
 
@@ -27844,7 +27475,6 @@ Converts a date to a string.
 
 method is dynamic and based on the equals method in Java.
 
-370
 
 ### Apex Reference Guide BankPaymentMethodResponse Class
 
@@ -27912,7 +27542,6 @@ IN THIS SECTION:
 
 BankPaymentMethodResponse Methods
 
-371
 
 Apex Reference Guide BankPaymentMethodResponse Class
 
@@ -27975,7 +27604,6 @@ Signature
 
 ```
 
-372
 
 Apex Reference Guide BankPaymentMethodResponse Class
 
@@ -28048,7 +27676,6 @@ Signature
 
 ```
 
-373
 
 Apex Reference Guide BankPaymentMethodResponse Class
 
@@ -28121,7 +27748,6 @@ Signature
 
 ```
 
-374
 
 Apex Reference Guide BankPaymentMethodResponse Class
 
@@ -28194,7 +27820,6 @@ Signature
 
 ```
 
-375
 
 Apex Reference Guide BankPaymentMethodResponse Class
 
@@ -28267,7 +27892,6 @@ Signature
 
 ```
 
-376
 
 ### Apex Reference Guide BaseApiPaymentMethodRequest Class
 
@@ -28331,7 +27955,6 @@ BaseApiPaymentMethodRequest Properties
 
 BaseApiPaymentMethodRequest Methods
 
-377
 
 Apex Reference Guide BaseApiPaymentMethodRequest Class
 
@@ -28398,7 +28021,6 @@ Indicates whether the payment method is saved as a record in Salesforce for futu
 
 The payment method’s address.
 
-378
 
 Apex Reference Guide BaseApiPaymentMethodRequest Class
 
@@ -28460,7 +28082,6 @@ object records in a list.
 toString()
 Converts a date to a string.
 
-379
 
 ### Apex Reference Guide BaseNotification Class
 
@@ -28525,7 +28146,6 @@ Type: String
 
 Abstract class for storing notification information sent from payment gateways.
 
-380
 
 Apex Reference Guide BaseNotification Class
 
@@ -28591,7 +28211,6 @@ Sets a description of the gateway-specific result code that a payment gateway re
 setId(id)
 Sets the ID of the notification sent by the gateway.
 
-381
 
 Apex Reference Guide BaseNotification Class
 
@@ -28662,7 +28281,6 @@ Signature
 
 ```
 
-382
 
 Apex Reference Guide BaseNotification Class
 
@@ -28734,7 +28352,6 @@ Type: void
 
 Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
 
-383
 
 Apex Reference Guide BaseNotification Class
 
@@ -28808,7 +28425,6 @@ Return Value
 
 Type: void
 
-384
 
 ### Apex Reference Guide BasePaymentMethodRequest Class
 
@@ -28877,7 +28493,6 @@ Usage
 
 ### The BasePaymentMethodRequest class contains fields common to CardPaymentMethodRequest on page 400
 
-385
 
 Apex Reference Guide BasePaymentMethodRequest Class
 
@@ -28942,7 +28557,6 @@ Signature
 
 ```
 
-386
 
 ### Apex Reference Guide BaseRequest Class
 
@@ -29002,7 +28616,6 @@ Parameters
 
 Type: String
 
-387
 
 ### Apex Reference Guide CaptureNotification Class
 
@@ -29068,7 +28681,6 @@ IN THIS SECTION:
 
 ### The following are methods for CaptureNotification .
 
-388
 
 Apex Reference Guide CaptureNotification Class
 
@@ -29137,7 +28749,6 @@ Type: void
 
 Sets the date that the transaction occurred. Some gateways don’t send this value.
 
-389
 
 Apex Reference Guide CaptureNotification Class
 
@@ -29211,7 +28822,6 @@ Return Value
 
 Type: void
 
-390
 
 Apex Reference Guide CaptureNotification Class
 
@@ -29286,7 +28896,6 @@ Type: String
 
 Description of the gateway’s result code. Use this field to learn more about why the gateway returned a certain result code.
 
-391
 
 Apex Reference Guide CaptureNotification Class
 
@@ -29356,7 +28965,6 @@ Signature
 
 ```
 
-392
 
 ### Apex Reference Guide CaptureRequest Class
 
@@ -29426,7 +29034,6 @@ CaptureRequest Properties
 
 ### The following are constructors for CaptureRequest .
 
-393
 
 Apex Reference Guide CaptureRequest Class
 
@@ -29489,7 +29096,6 @@ Property Value
 
 Type: Double
 
-394
 
 ### Apex Reference Guide CaptureResponse Class
 
@@ -29546,7 +29152,6 @@ Sets information or messages that the gateway returned.
 setGatewayReferenceDetails(gatewayReferenceDetails)
 Sets the payment gateway’s reference details.
 
-395
 
 Apex Reference Guide CaptureResponse Class
 
@@ -29614,7 +29219,6 @@ Type: void
 
 Sets the payment gateway’s AVS (address verification system) code.
 
-396
 
 Apex Reference Guide CaptureResponse Class
 
@@ -29689,7 +29293,6 @@ Return Value
 
 Type: void
 
-397
 
 Apex Reference Guide CaptureResponse Class
 
@@ -29764,7 +29367,6 @@ Type: String
 
 The gateway result code. You must map this to a Salesforce result code.
 
-398
 
 ### Apex Reference Guide CardCategory Enum
 
@@ -29832,7 +29434,6 @@ Namespace
 
 CommercePayments on page 316
 
-399
 
 ### Apex Reference Guide CardPaymentMethodRequest Class
 
@@ -29893,7 +29494,6 @@ Sets the `cardCategory` value for the card payment method request.
 
 Sets the `cardCategory` value for the card payment method request.
 
-400
 
 Apex Reference Guide CardPaymentMethodRequest Class
 
@@ -29959,7 +29559,6 @@ inputCardType
 Input field for the card type. This field doesn’t store the card type directly, but instead populates CardBin, LastFour, and
 DisplayCardNumber based on the value entered in `inputCardType` .
 
-401
 
 Apex Reference Guide CardPaymentMethodRequest Class
 
@@ -30025,7 +29624,6 @@ Signature
 
 ```
 
-402
 
 Apex Reference Guide CardPaymentMethodRequest Class
 
@@ -30093,7 +29691,6 @@ Property Value
 
 Type: CardType
 
-403
 
 Apex Reference Guide CardPaymentMethodRequest Class
 
@@ -30157,7 +29754,6 @@ Property Value
 
 Type: Integer
 
-404
 
 Apex Reference Guide CardPaymentMethodRequest Class
 
@@ -30220,7 +29816,6 @@ hashCode()
 toString()
 Converts a date to a string.
 
-405
 
 ### Apex Reference Guide CardPaymentMethodResponse Class
 
@@ -30288,7 +29883,6 @@ Namespace
 
 CommercePayments
 
-406
 
 Apex Reference Guide CardPaymentMethodResponse Class
 
@@ -30346,7 +29940,6 @@ Sets the year of expiry of the card.
 setNickName(nickName)
 Sets the nickname of the card.
 
-407
 
 Apex Reference Guide CardPaymentMethodResponse Class
 
@@ -30418,7 +30011,6 @@ Signature
 
 ```
 
-408
 
 Apex Reference Guide CardPaymentMethodResponse Class
 
@@ -30490,7 +30082,6 @@ Type: void
 
 Sets the last name of the card holder.
 
-409
 
 Apex Reference Guide CardPaymentMethodResponse Class
 
@@ -30565,7 +30156,6 @@ Return Value
 
 Type: void
 
-410
 
 Apex Reference Guide CardPaymentMethodResponse Class
 
@@ -30640,7 +30230,6 @@ Type: String
 
 Details about a record added by a user, maximum is 1000 characters.
 
-411
 
 Apex Reference Guide CardPaymentMethodResponse Class
 
@@ -30709,7 +30298,6 @@ Signature
 
 ```
 
-412
 
 Apex Reference Guide CardPaymentMethodResponse Class
 
@@ -30781,7 +30369,6 @@ Type: void
 
 Sets the month the card becomes active.
 
-413
 
 ### Apex Reference Guide CardType Enum
 
@@ -30851,7 +30438,6 @@ The following are the values of the `commercepayments.CardType` enum.
 
 `MasterCard` Master card
 
-414
 
 ### Apex Reference Guide CustomMetadataTypeInfo Class
 
@@ -30912,7 +30498,6 @@ Field that contains the Salesforce result code values. Belongs to the custom met
 
 ### The following are methods for CustomMetadataTypeInfo .
 
-415
 
 ### Apex Reference Guide GatewayErrorResponse Class GatewayErrorResponse Class
 
@@ -30988,7 +30573,6 @@ IN THIS SECTION:
 
 GatewayErrorResponse Constructors
 
-416
 
 ### Apex Reference Guide GatewayNotificationResponse Class
 
@@ -31053,7 +30637,6 @@ Usage
 You must specify the `CommercePayments` namespace when creating an instance of this class. The constructor of this class takes
 no arguments. For example:
 
-417
 
 Apex Reference Guide GatewayNotificationResponse Class
 
@@ -31129,7 +30712,6 @@ Parameters
 
 Type: Blob
 
-418
 
 Apex Reference Guide GatewayNotificationResponse Class
 
@@ -31212,7 +30794,6 @@ Return Value
 
 Type: void
 
-419
 
 ### Apex Reference Guide GatewayResponse Interface GatewayResponse Interface
 
@@ -31299,7 +30880,6 @@ This is an example implementation of the `commercepayments.GatewayResponse` inte
 
 ```
 
-420
 
 ### Apex Reference Guide NotificationClient Class
 
@@ -31364,7 +30944,6 @@ Stores the results of a notification request.
 
 Stores the results of a notification request.
 
-421
 
 ### Apex Reference Guide NotificationSaveResult Class
 
@@ -31432,7 +31011,6 @@ getErrorMessage()
 Gets the error message, if any, from the payment platform regarding its attempt to save the notification sent from the payment
 gateway.
 
-422
 
 ### Apex Reference Guide NotificationStatus Enum
 
@@ -31498,7 +31076,6 @@ Usage
 When the gateway sends a notification for a payment request, the payments platform delegates the notification request to the gateway
 adapter. First, the adapter evaluates the signature from the notification request. If the signature is valid, the adapter builds a notification
 
-423
 
 ### Apex Reference Guide PaymentGatewayAdapter Interface
 
@@ -31558,7 +31135,6 @@ Parameters
 
 You can retrieve the request type and the request from the Context object.
 
-424
 
 ### Apex Reference Guide PaymentGatewayAsyncAdapter Interface
 
@@ -31625,7 +31201,6 @@ IN THIS SECTION:
 processNotification(paymentGatewayNotificationContext)
 Entry point for processing notifications from payment gateways.
 
-425
 
 Apex Reference Guide PaymentGatewayAsyncAdapter Interface
 
@@ -31712,7 +31287,6 @@ This is a sample implementation of the `commercepayments.PaymentGatewayAsyncAdap
 
 ```
 
-426
 
 Apex Reference Guide PaymentGatewayAsyncAdapter Interface
 
@@ -31817,7 +31391,6 @@ Apex Reference Guide PaymentGatewayAsyncAdapter Interface
 
 ```
 
-427
 
 ### Apex Reference Guide PaymentGatewayContext Class
 
@@ -31894,7 +31467,6 @@ PaymentGatewayContext(request, requestType)
 Constructor to enable instance creation. This constructor is intended for test usage and throws an exception if used outside of the
 Apex test context.
 
-428
 
 Apex Reference Guide PaymentGatewayContext Class
 
@@ -31970,7 +31542,6 @@ Signature
 
 ```
 
-429
 
 ### Apex Reference Guide PaymentGatewayNotificationContext Class
 
@@ -32033,7 +31604,6 @@ Returns the payment gateway’s notification request.
 
 Returns the payment gateway’s notification request.
 
-430
 
 ### Apex Reference Guide PaymentGatewayNotificationRequest Class
 
@@ -32101,7 +31671,6 @@ IN THIS SECTION:
 requestBody
 Body of the notification request sent by the payment gateway.
 
-431
 
 ### Apex Reference Guide PaymentMethodDetailsResponse Class
 
@@ -32166,7 +31735,6 @@ Type: Blob
 
 This class contains the details about the payment method.
 
-432
 
 Apex Reference Guide PaymentMethodDetailsResponse Class
 
@@ -32237,7 +31805,6 @@ Return Value
 
 Type: void
 
-433
 
 ### Apex Reference Guide PaymentMethodTokenizationRequest Class
 
@@ -32301,7 +31868,6 @@ Use the `GatewayResponse` class's `processRequest` method to build responses bas
 from an instance of `PaymentGatewayContext on page 428` . If the request type is Tokenize, `GatewayResponse on`
 `page 420` calls the `createTokenizeResponse` method and passes an instance of the
 
-434
 
 Apex Reference Guide PaymentMethodTokenizationRequest Class
 
@@ -32397,7 +31963,6 @@ PaymentMethodTokenizationRequest Properties
 
 PaymentMethodTokenizationRequest Methods
 
-435
 
 Apex Reference Guide PaymentMethodTokenizationRequest Class
 
@@ -32459,7 +32024,6 @@ The bank payment method containing data to be tokenized.
 cardPaymentMethod
 The card payment method containing data to be tokenized.
 
-436
 
 Apex Reference Guide PaymentMethodTokenizationRequest Class
 
@@ -32525,7 +32089,6 @@ external object records in a list.
 toString()
 Converts a date to a string.
 
-437
 
 ### Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -32591,7 +32154,6 @@ Type: String
 Gateway response sent by payment gateway adapters for the payment method tokenization request. The response includes the payment
 method’s token ID value.
 
-438
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -32679,7 +32241,6 @@ tokenization response values sent by the gateway.
 
 ```
 
-439
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -32777,7 +32338,6 @@ After you've built a PaymentMethodTokenizationResponse object and set the encryp
 
 ```
 
-440
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -32846,7 +32406,6 @@ Sets the AVS (address verification system) result code information that the gate
 setGatewayDate(gatewayDate)
 Sets the date that the tokenization occurred. Some gateways don’t send this value.
 
-441
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -32913,7 +32472,6 @@ Signature
 
 ```
 
-442
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -32986,7 +32544,6 @@ Signature
 
 ```
 
-443
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -33055,7 +32612,6 @@ Type: void
 
 Sets error messages that the gateway returned for the tokenization request. Maximum length of 255 characters.
 
-444
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -33128,7 +32684,6 @@ Type: void
 
 Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
 
-445
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -33203,7 +32758,6 @@ The gateway token that the payment gateway sends following a tokenization reques
 For the CardPaymentMethod and DigitalWallet objects, use the _`gatewyTokenEncrypted`_ parameter, which encrypts the
 token value.
 
-446
 
 Apex Reference Guide PaymentMethodTokenizationResponse Class
 
@@ -33274,7 +32828,6 @@ Signature
 
 ```
 
-447
 
 ### Apex Reference Guide PaymentsHttp Class
 
@@ -33337,7 +32890,6 @@ Signature
 
 ```
 
-448
 
 ### Apex Reference Guide PostAuthApiPaymentMethodRequest Class
 
@@ -33395,7 +32947,6 @@ Lists the constructors for the PostAuthApiPaymentMethodRequest.
 PostAuthApiPaymentMethodRequest Properties
 Lists the properties for PostAuthApiPaymentMethodRequest.
 
-449
 
 Apex Reference Guide PostAuthApiPaymentMethodRequest Class
 
@@ -33468,7 +33019,6 @@ Type: commercepayments.AlternativePaymentMethodRequest on page 400
 
 Contains information about the alternative payment method. Used to send information to a gateway adapter during a service call.
 
-450
 
 ### Apex Reference Guide PostAuthorizationRequest Class
 
@@ -33531,7 +33081,6 @@ Type: commercepayments.alternativePaymentMethodRequest
 
 Sends information about a postauthorization request to a gateway adapter during a service call.
 
-451
 
 Apex Reference Guide PostAuthorizationRequest Class
 
@@ -33599,7 +33148,6 @@ The amount of the authorization.
 
 Lists properties for a postauthorizaiton request.
 
-452
 
 Apex Reference Guide PostAuthorizationRequest Class
 
@@ -33666,7 +33214,6 @@ Signature
 
 ```
 
-453
 
 ### Apex Reference Guide PostAuthorizationResponse Class
 
@@ -33733,7 +33280,6 @@ IN THIS SECTION:
 PostAuthorizationResponse Methods
 ### Lists the methods for the PostAuthorizationResponse .
 
-454
 
 Apex Reference Guide PostAuthorizationResponse Class
 
@@ -33794,7 +33340,6 @@ Type: void
 
 Sets details from the gateway about the authorized card payment method.
 
-455
 
 Apex Reference Guide PostAuthorizationResponse Class
 
@@ -33871,7 +33416,6 @@ PaymentMethodTokenizationResponse on page 438
 
 Gateway response sent by payment gateway adapters for the payment method tokenization request.
 
-456
 
 Apex Reference Guide PostAuthorizationResponse Class
 
@@ -33939,7 +33483,6 @@ Signature
 
 ```
 
-457
 
 ### Apex Reference Guide ReferencedRefundNotification Class
 
@@ -34013,7 +33556,6 @@ IN THIS SECTION:
 
 ### The following are methods for ReferencedRefundNotification .
 
-458
 
 Apex Reference Guide ReferencedRefundNotification Class
 
@@ -34080,7 +33622,6 @@ Type: void
 
 Sets the date that communication for the refund notification occurred with the payment gateway.
 
-459
 
 Apex Reference Guide ReferencedRefundNotification Class
 
@@ -34153,7 +33694,6 @@ Return Value
 
 Type: void
 
-460
 
 Apex Reference Guide ReferencedRefundNotification Class
 
@@ -34228,7 +33768,6 @@ Type: String
 
 Description of the gateway result code. Provides additional context about the result code .
 
-461
 
 Apex Reference Guide ReferencedRefundNotification Class
 
@@ -34297,7 +33836,6 @@ Signature
 
 ```
 
-462
 
 ### Apex Reference Guide ReferencedRefundRequest
 
@@ -34358,7 +33896,6 @@ This constructor is intended for test usage and throws an exception if used outs
 
 This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
 
-463
 
 #### Apex Reference Guide ReferencedRefundRequest
 
@@ -34418,7 +33955,6 @@ Property Value
 
 Type: Double
 
-464
 
 ### Apex Reference Guide ReferencedRefundResponse Class
 
@@ -34475,7 +34011,6 @@ Sets the payment gateway’s result code.
 setGatewayResultCodeDescription(gatewayResultCodeDescription)
 Sets the payment gateway’s result code description.
 
-465
 
 Apex Reference Guide ReferencedRefundResponse Class
 
@@ -34543,7 +34078,6 @@ Signature
 
 ```
 
-466
 
 Apex Reference Guide ReferencedRefundResponse Class
 
@@ -34615,7 +34149,6 @@ Type: void
 
 Sets the payment gateway’s reference number.
 
-467
 
 Apex Reference Guide ReferencedRefundResponse Class
 
@@ -34690,7 +34223,6 @@ Return Value
 
 Type: void
 
-468
 
 ### Apex Reference Guide RefundRequest Class
 
@@ -34753,7 +34285,6 @@ IN THIS SECTION:
 
 ### The following are methods for RefundRequest .
 
-469
 
 ### Apex Reference Guide RequestType Enum
 
@@ -34819,7 +34350,6 @@ The following are the values of the `commercepayments.RequestType` enum.
 
 `Authorize` Payment authorization request
 
-470
 
 ### Apex Reference Guide SaleApiPaymentMethodRequest Class
 
@@ -34886,7 +34416,6 @@ SaleApiPaymentMethodRequest Methods
 
 ### The following are constructors for SaleApiPaymentMethodRequest .
 
-471
 
 Apex Reference Guide SaleApiPaymentMethodRequest Class
 
@@ -34956,7 +34485,6 @@ Signature
 
 ```
 
-472
 
 Apex Reference Guide SaleApiPaymentMethodRequest Class
 
@@ -35021,7 +34549,6 @@ Return Value
 
 Type: Boolean
 
-473
 
 ### Apex Reference Guide SaleNotification Class
 
@@ -35094,7 +34621,6 @@ Example
 
 ```
 
-474
 
 Apex Reference Guide SaleNotification Class
 
@@ -35193,7 +34719,6 @@ Apex Reference Guide SaleNotification Class
 
 ```
 
-475
 
 Apex Reference Guide SaleNotification Class
 
@@ -35250,7 +34775,6 @@ Signature
 
 ```
 
-476
 
 Apex Reference Guide SaleNotification Class
 
@@ -35319,7 +34843,6 @@ Type: void
 
 Sets error messages that the gateway returned for the sale request. Maximum length of 255 characters.
 
-477
 
 Apex Reference Guide SaleNotification Class
 
@@ -35393,7 +34916,6 @@ Type: void
 
 Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
 
-478
 
 Apex Reference Guide SaleNotification Class
 
@@ -35464,7 +34986,6 @@ Return Value
 
 Type: void
 
-479
 
 ### Apex Reference Guide SaleRequest Class
 
@@ -35531,7 +35052,6 @@ This class holds all the required details about a sale request. Gateway adapters
 sale JSON request thatis sent to the payment gateway. The object of this class is made available through
 `commercepayments.paymentGatewayContext` by calling `getPaymentRequest()` .
 
-480
 
 Apex Reference Guide SaleRequest Class
 
@@ -35624,7 +35144,6 @@ Example
 
 ```
 
-481
 
 Apex Reference Guide SaleRequest Class
 
@@ -35685,7 +35204,6 @@ IN THIS SECTION:
 accountId
 Customer account ID for the sale request.
 
-482
 
 Apex Reference Guide SaleRequest Class
 
@@ -35751,7 +35269,6 @@ Property Value
 
 Type: String
 
-483
 
 Apex Reference Guide SaleRequest Class
 
@@ -35815,7 +35332,6 @@ Compares this object with the specified object and returns `true` if both object
 hashCode()
 #### Maintains the integrity of lists of type SaleRequest by determining the uniqueness of the external object records in a list.
 
-484
 
 ### Apex Reference Guide SaleResponse Class
 
@@ -35880,7 +35396,6 @@ Type: String
 
 Response sent by payment gateway adapters for a sales service.
 
-485
 
 Apex Reference Guide SaleResponse Class
 
@@ -35944,7 +35459,6 @@ Sets the date that the sale occurred. Some gateways don’t send this value.
 setGatewayMessage(gatewayMessage)
 Sets error messages that the gateway returned for the sale request. Maximum length of 255 characters.
 
-486
 
 Apex Reference Guide SaleResponse Class
 
@@ -36013,7 +35527,6 @@ Parameters
 
 Type: Boolean
 
-487
 
 Apex Reference Guide SaleResponse Class
 
@@ -36081,7 +35594,6 @@ Signature
 
 ```
 
-488
 
 Apex Reference Guide SaleResponse Class
 
@@ -36150,7 +35662,6 @@ Type: void
 
 Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
 
-489
 
 Apex Reference Guide SaleResponse Class
 
@@ -36226,7 +35737,6 @@ Type: PaymentMethodTokenizationResponse on page 438
 Gateway response sent by payment gateway adapters for the payment method tokenization request. The response includes the
 payment method’s token ID value.
 
-490
 
 ### Apex Reference Guide SalesforceResultCode Enum
 
@@ -36296,7 +35806,6 @@ payment.
 `PermanentFail` The customer’s bank recognized the payment account as closed, terminated, or
 fraudulent. The gateway won’t further calls from the payment method associate
 
-491
 
 ### Apex Reference Guide SalesforceResultCodeInfo
 
@@ -36355,7 +35864,6 @@ IN THIS SECTION:
 
 Constructor for providing the `customMetadataTypeInfo` for the result of the transaction.
 
-492
 
 ### Apex Reference Guide StandardEntryClassCode Enum
 
@@ -36426,7 +35934,6 @@ The following are the values of the `commercepayments.StandardEntryClassCode` en
 
 `Tel` —Telephone-Initiated Entry
 
-493
 
 ### Apex Reference Guide TokenizeNotification Class
 
@@ -36509,7 +36016,6 @@ Example
 
 ```
 
-494
 
 Apex Reference Guide TokenizeNotification Class
 
@@ -36595,7 +36101,6 @@ IN THIS SECTION:
 setAmount(amount)
 Sets the amount.
 
-495
 
 Apex Reference Guide TokenizeNotification Class
 
@@ -36661,7 +36166,6 @@ Return Value
 
 Type: void
 
-496
 
 Apex Reference Guide TokenizeNotification Class
 
@@ -36733,7 +36237,6 @@ Parameters
 
 Type: String
 
-497
 
 Apex Reference Guide TokenizeNotification Class
 
@@ -36807,7 +36310,6 @@ Parameters
 
 Type: String
 
-498
 
 Apex Reference Guide TokenizeNotification Class
 
@@ -36875,7 +36377,6 @@ Signature
 
 ```
 
-499
 
 Apex Reference Guide TokenizeNotification Class
 
@@ -36944,7 +36445,6 @@ Type: void
 
 Sets the notification status value on the notification object.
 
-500
 
 ## Apex Reference Guide CommerceTax Namespace
 
@@ -37010,7 +36510,6 @@ such as request-forbidden responses, custom validation errors, or expired API to
 HeaderTaxAddressesRequest Class
 Captures the address values that are applicable for the quote or order transaction.
 
-501
 
 Apex Reference Guide CommerceTax Namespace
 
@@ -37072,7 +36571,6 @@ Shows whether the tax transaction has been committed or uncommitted.
 TaxTransactionType Enum
 Shows whether the tax transaction is for a credit or debit transaction.
 
-502
 
 ### Apex Reference Guide AbstractTransactionResponse Class AbstractTransactionResponse Class
 
@@ -37130,7 +36628,6 @@ setReferenceDocumentCode(referenceDocumentCode)
 Sets the ReferenceDocumentCode field. Use this field to store the code of an additional document used in the tax calculation process.
 For example, use this field in case of a refund for a previously taxed purchase.
 
-503
 
 Apex Reference Guide AbstractTransactionResponse Class
 
@@ -37200,7 +36697,6 @@ Type: void
 
 Sets the currencyIsoCode field.
 
-504
 
 Apex Reference Guide AbstractTransactionResponse Class
 
@@ -37274,7 +36770,6 @@ Type: String
 
 Optional field for providing additional information about a record.
 
-505
 
 Apex Reference Guide AbstractTransactionResponse Class
 
@@ -37340,7 +36835,6 @@ Type: void
 Uses an instance of the `LineItemResponse` class to set a list of line items. Each line item represents an item sent to an external
 tax engine for tax calculation.
 
-506
 
 Apex Reference Guide AbstractTransactionResponse Class
 
@@ -37414,7 +36908,6 @@ Type: String
 
 ID of a record related to the items sent for tax calculation.
 
-507
 
 ### Apex Reference Guide AddressesResponse Class
 
@@ -37482,7 +36975,6 @@ Namespace
 
 CommerceTax
 
-508
 
 Apex Reference Guide AddressesResponse Class
 
@@ -37554,7 +37046,6 @@ Sets the value of a ShipTo address field.
 setSoldTo(soldTo)
 Sets the value of a SoldTo address field.
 
-509
 
 Apex Reference Guide AddressesResponse Class
 
@@ -37623,7 +37114,6 @@ Signature
 
 ```
 
-510
 
 ### Apex Reference Guide AddressResponse Class
 
@@ -37691,7 +37181,6 @@ IN THIS SECTION:
 AddressResponse Methods
 ### Learn more about the available methods with the AddressResponse class.
 
-511
 
 ### Apex Reference Guide AmountDetailsResponse Class
 
@@ -37758,7 +37247,6 @@ the instance to `lineItemResponse` .
 
 ```
 
-512
 
 Apex Reference Guide AmountDetailsResponse Class
 
@@ -37818,7 +37306,6 @@ Signature
 
 ```
 
-513
 
 ### Apex Reference Guide CalculateTaxRequest Class
 
@@ -37891,7 +37378,6 @@ Type: void
 Represents a request to an external tax engine to calculate tax. Extends the TaxTransactionRequest class and is the top-level request
 class.
 
-514
 
 Apex Reference Guide CalculateTaxRequest Class
 
@@ -37947,7 +37433,6 @@ This constructor is intended for test usage only and throws an exception if used
 
 This constructor is intended for test usage only and throws an exception if used outside of the Apex test context.
 
-515
 
 Apex Reference Guide CalculateTaxRequest Class
 
@@ -38014,7 +37499,6 @@ Signature
 
 ```
 
-516
 
 Apex Reference Guide CalculateTaxRequest Class
 
@@ -38075,7 +37559,6 @@ Converts a value to a string.
 
 is dynamic and is based on the `equals()` method in Java.
 
-517
 
 ### Apex Reference Guide CalculateTaxResponse Class
 
@@ -38140,7 +37623,6 @@ Namespace
 
 CommerceTax
 
-518
 
 Apex Reference Guide CalculateTaxResponse Class
 
@@ -38242,7 +37724,6 @@ IN THIS SECTION:
 CalculateTaxResponse Methods
 Learn more about the available methods with the `CalculateTaxResponse` class.
 
-519
 
 Apex Reference Guide CalculateTaxResponse Class
 
@@ -38300,7 +37781,6 @@ setTransactionDate(transactionDate)
 
 Sets the value of the Addresses field using the addresses contained in an instance of the AddressesResponse class.
 
-520
 
 Apex Reference Guide CalculateTaxResponse Class
 
@@ -38375,7 +37855,6 @@ Return Value
 
 Type: void
 
-521
 
 Apex Reference Guide CalculateTaxResponse Class
 
@@ -38448,7 +37927,6 @@ Parameters
 
 Type: Datetime
 
-522
 
 Apex Reference Guide CalculateTaxResponse Class
 
@@ -38514,7 +37992,6 @@ Type: void
 
 Sets the value of the ReferenceEntityId field of the `CalculateTaxResponse` object.
 
-523
 
 Apex Reference Guide CalculateTaxResponse Class
 
@@ -38590,7 +38067,6 @@ Return Value
 
 Type: void
 
-524
 
 Apex Reference Guide CalculateTaxResponse Class
 
@@ -38665,7 +38141,6 @@ Type: CalculateTaxType
 
 Indicates whether a tax calculation request is for estimated or actual tax.
 
-525
 
 ### Apex Reference Guide CalculateTaxType Enum
 
@@ -38726,7 +38201,6 @@ Namespace
 
 CommerceTax
 
-526
 
 Apex Reference Guide CustomTaxAttributesResponse Class
 
@@ -38780,7 +38254,6 @@ Type: Map<String, Object>
 
 Additional data or custom attributes to be included in the tax response.
 
-527
 
 ### Apex Reference Guide ErrorResponse Class
 
@@ -38860,7 +38333,6 @@ property is null or indicates an error, the adapter returns an error response wi
 
 ```
 
-528
 
 ### Apex Reference Guide HeaderTaxAddressesRequest Class
 
@@ -38924,7 +38396,6 @@ The error message sent by the tax engine.
 
 Captures the address values that are applicable for the quote or order transaction.
 
-529
 
 Apex Reference Guide HeaderTaxAddressesRequest Class
 
@@ -38991,7 +38462,6 @@ Type: TaxAddressRequest
 
 Address of the line item's buyer.
 
-530
 
 Apex Reference Guide HeaderTaxAddressesRequest Class
 
@@ -39056,7 +38526,6 @@ Signature
 
 ```
 
-531
 
 Apex Reference Guide HeaderTaxAddressesRequest Class
 
@@ -39118,7 +38587,6 @@ equals(obj)
 
 list. This method is dynamic and is based on the `equals()` method in Java.
 
-532
 
 Apex Reference Guide HeaderTaxAddressesRequest Class
 
@@ -39186,7 +38654,6 @@ Return Value
 
 Type: String
 
-533
 
 ### Apex Reference Guide ImpositionResponse Class ImpositionResponse Class
 
@@ -39250,7 +38717,6 @@ setType(type)
 
 ### Sets the ID field of the ImpositionResponse class.
 
-534
 
 Apex Reference Guide ImpositionResponse Class
 
@@ -39326,7 +38792,6 @@ Return Value
 
 Type: void
 
-535
 
 ### Apex Reference Guide JurisdictionResponse Class
 
@@ -39402,7 +38867,6 @@ address parameters directly. In a standard implementation, the jurisdiction's se
 
 ```
 
-536
 
 Apex Reference Guide JurisdictionResponse Class
 
@@ -39459,7 +38923,6 @@ Type: void
 
 #### Sets the ID field of the JurisdictionResponse class.
 
-537
 
 Apex Reference Guide JurisdictionResponse Class
 
@@ -39534,7 +38997,6 @@ Return Value
 
 Type: void
 
-538
 
 ### Apex Reference Guide LineItemResponse Class
 
@@ -39602,7 +39064,6 @@ Example
 
 For simplicity, the sample code uses a static value of 1 for the tax rate. However, most integrations typically have a more complex process
 
-539
 
 Apex Reference Guide LineItemResponse Class
 
@@ -39710,7 +39171,6 @@ they assign to each line item in the `LineItemResponse` list.
 
 ```
 
-540
 
 Apex Reference Guide LineItemResponse Class
 
@@ -39779,7 +39239,6 @@ setIsTaxable(isTaxable)
 setLineNumber(lineNumber)
 #### Sets the LineNumber field on the LineItemResponse class.
 
-541
 
 Apex Reference Guide LineItemResponse Class
 
@@ -39849,7 +39308,6 @@ Type: void
 
 Uses an instance of `CustomTaxAttributesResponse` class to include additional attributes in the tax response at line item level.
 
-542
 
 Apex Reference Guide LineItemResponse Class
 
@@ -39924,7 +39382,6 @@ Type: Boolean
 
 Whether line items were taxed as part of the tax calculation request.
 
-543
 
 Apex Reference Guide LineItemResponse Class
 
@@ -39993,7 +39450,6 @@ Signature
 
 ```
 
-544
 
 Apex Reference Guide LineItemResponse Class
 
@@ -40063,7 +39519,6 @@ Return Value
 
 Type: void
 
-545
 
 ### Apex Reference Guide LineTaxAddressesRequest Class LineTaxAddressesRequest Class
 
@@ -40129,7 +39584,6 @@ TaxAddressRequest
 
 Address where a line item is shipped to.
 
-546
 
 Apex Reference Guide LineTaxAddressesRequest Class
 
@@ -40199,7 +39653,6 @@ Signature
 
 ```
 
-547
 
 Apex Reference Guide LineTaxAddressesRequest Class
 
@@ -40260,7 +39713,6 @@ Converts a value to a string.
 
 method is dynamic and is based on the `equals()` method in Java.
 
-548
 
 ### Apex Reference Guide RequestType Enum
 
@@ -40328,7 +39780,6 @@ Enum Values
 
 The `commercetax.RequestType` enum includes these values.
 
-549
 
 ### Apex Reference Guide ResultCode Enum
 
@@ -40380,7 +39831,6 @@ Contains information about the tax rules used when calculating tax for line item
 setNonTaxableRuleId(nonTaxableRuleId)
 ### Sets the NonTaxableRuleId field of the RuleDetailsResponse .
 
-550
 
 Apex Reference Guide RuleDetailsResponse Class
 
@@ -40445,7 +39895,6 @@ Parameters
 
 Type: String
 
-551
 
 ### Apex Reference Guide TaxAddressesRequest Class
 
@@ -40513,7 +39962,6 @@ Namespace
 
 CommerceTax
 
-552
 
 Apex Reference Guide TaxAddressesRequest Class
 
@@ -40584,7 +40032,6 @@ TaxAddressRequest
 
 The person or group who was billed for the line item.
 
-553
 
 Apex Reference Guide TaxAddressesRequest Class
 
@@ -40647,7 +40094,6 @@ Property Value
 
 TaxAddressRequest
 
-554
 
 Apex Reference Guide TaxAddressesRequest Class
 
@@ -40710,7 +40156,6 @@ hashCode()
 
 in a list.
 
-555
 
 ### Apex Reference Guide TaxAddressRequest Class
 
@@ -40779,7 +40224,6 @@ Type: String
 
 Contains address details used for tax calculation.
 
-556
 
 Apex Reference Guide TaxAddressRequest Class
 
@@ -40849,7 +40293,6 @@ Type: Double
 
 Latitude used in an address, which is required for tax calculation.
 
-557
 
 Apex Reference Guide TaxAddressRequest Class
 
@@ -40924,7 +40367,6 @@ State used in an address, which is required for tax calculation.
 stateCode
 State code used in an address, which is required for tax calculation.
 
-558
 
 Apex Reference Guide TaxAddressRequest Class
 
@@ -40991,7 +40433,6 @@ Property Value
 
 Type: Double
 
-559
 
 Apex Reference Guide TaxAddressRequest Class
 
@@ -41059,7 +40500,6 @@ Type: String
 
 State code used in an address, which is required for tax calculation.
 
-560
 
 Apex Reference Guide TaxAddressRequest Class
 
@@ -41126,7 +40566,6 @@ Type: Object
 
 External object whose key is to be validated.
 
-561
 
 ### Apex Reference Guide TaxApiException Class
 
@@ -41181,7 +40620,6 @@ IN THIS SECTION:
 
 ### Learn more about the available constructors with the TaxApiException class. The TaxApiException class includes these constructors.
 
-562
 
 Apex Reference Guide TaxApiException Class
 
@@ -41252,7 +40690,6 @@ Parameters
 An exception denotes an error that disrupts the normal flow of code execution. You can use Apex built-in exceptions or create
 custom exceptions. All exceptions have common methods.
 
-563
 
 ### Apex Reference Guide TaxCustomerDetailsRequest Class
 
@@ -41312,7 +40749,6 @@ Signature
 
 ```
 
-564
 
 Apex Reference Guide TaxCustomerDetailsRequest Class
 
@@ -41383,7 +40819,6 @@ Property Value
 
 Type: String
 
-565
 
 Apex Reference Guide TaxCustomerDetailsRequest Class
 
@@ -41449,7 +40884,6 @@ Type: String
 
 #### TaxCustomerDetailsRequest Methods Learn more about the available methods with the TaxCustomerDetailsRequest class.
 
-566
 
 Apex Reference Guide TaxCustomerDetailsRequest Class
 
@@ -41517,7 +40951,6 @@ Type: Integer
 
 Converts a value to a string.
 
-567
 
 ### Apex Reference Guide TaxDetailsResponse Class
 
@@ -41605,7 +41038,6 @@ Example
 
 ```
 
-568
 
 Apex Reference Guide TaxDetailsResponse Class
 
@@ -41676,7 +41108,6 @@ setRate(rate)
 setSerCode(serCode)
 #### Sets the Service Code field of the TaxDetailsResponse class.
 
-569
 
 Apex Reference Guide TaxDetailsResponse Class
 
@@ -41747,7 +41178,6 @@ Type: Double
 
 Amount of tax on a line item that is exempt from tax calculation.
 
-570
 
 Apex Reference Guide TaxDetailsResponse Class
 
@@ -41816,7 +41246,6 @@ Signature
 
 ```
 
-571
 
 Apex Reference Guide TaxDetailsResponse Class
 
@@ -41888,7 +41317,6 @@ Type: void
 
 Sets the Tax field of the `TaxDetailsResponse` class.
 
-572
 
 Apex Reference Guide TaxDetailsResponse Class
 
@@ -41963,7 +41391,6 @@ Return Value
 
 Type: void
 
-573
 
 Apex Reference Guide TaxDetailsResponse Class
 
@@ -42038,7 +41465,6 @@ Type: Double
 
 Amount that can be taxed on a line item.
 
-574
 
 ### Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42099,7 +41525,6 @@ Return Value
 
 Type: TaxEngineResponse
 
-575
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42182,7 +41607,6 @@ instance of `TaxEngineContext` class and returns a response with the calculated 
 
 ```
 
-576
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42293,7 +41717,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-577
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42404,7 +41827,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-578
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42497,7 +41919,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-579
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42596,7 +42017,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-580
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42691,7 +42111,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-581
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42789,7 +42208,6 @@ through Salesforce.
 
 ```
 
-582
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -42896,7 +42314,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-583
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43003,7 +42420,6 @@ This example shows the `JsonSuccessParser` class.
 
 ```
 
-584
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43112,7 +42528,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-585
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43225,7 +42640,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-586
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43334,7 +42748,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-587
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43447,7 +42860,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-588
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43558,7 +42970,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-589
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43671,7 +43082,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-590
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43786,7 +43196,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-591
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -43892,7 +43301,6 @@ Prepare your JSON request to call the Avalara endpoint by using the `AvalaraJSON
 
 ```
 
-592
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -44001,7 +43409,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-593
 
 Apex Reference Guide TaxEngineAdapter Interface
 
@@ -44096,7 +43503,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
 ```
 
-594
 
 ### Apex Reference Guide TaxEngineContext Class
 
@@ -44188,7 +43594,6 @@ Namespace
 
 CommerceTax
 
-595
 
 Apex Reference Guide TaxEngineContext Class
 
@@ -44261,7 +43666,6 @@ TaxEngineContext(request, requestType, namedUri)
 
 of the Apex test context.
 
-596
 
 Apex Reference Guide TaxEngineContext Class
 
@@ -44329,7 +43733,6 @@ Return Value
 
 Type: String
 
-597
 
 ### Apex Reference Guide TaxLineItemRequest Class
 
@@ -44392,7 +43795,6 @@ TaxLineItemRequest Methods
 
 ### Learn more about the constructors available with the TaxLineItemRequest class.
 
-598
 
 Apex Reference Guide TaxLineItemRequest Class
 
@@ -44486,7 +43888,6 @@ Unique number used to identify a tax line item.
 
 Type: String
 
-599
 
 Apex Reference Guide TaxLineItemRequest Class
 
@@ -44545,7 +43946,6 @@ Code used to identify how tax is calculated for a tax line item.
 
 Contains the list of addresses of a line item.
 
-600
 
 Apex Reference Guide TaxLineItemRequest Class
 
@@ -44616,7 +44016,6 @@ Signature
 
 ```
 
-601
 
 Apex Reference Guide TaxLineItemRequest Class
 
@@ -44684,7 +44083,6 @@ Property Value
 
 Type: Double
 
-602
 
 Apex Reference Guide TaxLineItemRequest Class
 
@@ -44746,7 +44144,6 @@ Converts a value to a string.
 
 is dynamic and is based on the `equals()` method in Java.
 
-603
 
 ### Apex Reference Guide TaxSellerDetailsRequest Class
 
@@ -44810,7 +44207,6 @@ Namespace
 
 CommerceTax
 
-604
 
 Apex Reference Guide TaxSellerDetailsRequest Class
 
@@ -44860,7 +44256,6 @@ Tax code used for tax calculation.
 
 Tax code used for tax calculation.
 
-605
 
 Apex Reference Guide TaxSellerDetailsRequest Class
 
@@ -44925,7 +44320,6 @@ Type: Boolean
 
 list.
 
-606
 
 ### Apex Reference Guide TaxTransactionRequest Class
 
@@ -44984,7 +44378,6 @@ TaxTransactionRequest Methods
 
 ### Learn more about the available constructors with the TaxTransactionRequest class. The TaxTransactionRequest class includes these constructors.
 
-607
 
 Apex Reference Guide TaxTransactionRequest Class
 
@@ -45079,7 +44472,6 @@ Identifier that combines the original invoice ID, previous tax transaction type,
 invoice lines. For example, a referenceDocumentCode parameter value `3ttxx00000004Bh_Debit-4wAxx0000000001EAA`
 indicates `3ttxx00000004Bh` is the original invoice ID and `4wAxx0000000001EAA` is the tax engine ID.
 
-608
 
 Apex Reference Guide TaxTransactionRequest Class
 
@@ -45159,7 +44551,6 @@ The date that the tax transaction takes effect. User-defined and used only for r
 lineItems
 A list of line items on which tax will be calculated.
 
-609
 
 Apex Reference Guide TaxTransactionRequest Class
 
@@ -45225,7 +44616,6 @@ Type: TaxCustomerDetailsRequest
 
 Customised tax contract to include additional attributes at the header level.
 
-610
 
 Apex Reference Guide TaxTransactionRequest Class
 
@@ -45296,7 +44686,6 @@ Signature
 
 ```
 
-611
 
 Apex Reference Guide TaxTransactionRequest Class
 
@@ -45364,7 +44753,6 @@ Signature
 
 ```
 
-612
 
 Apex Reference Guide TaxTransactionRequest Class
 
@@ -45431,7 +44819,6 @@ Return Value
 
 Type: Integer
 
-613
 
 ### Apex Reference Guide TaxTransactionStatus Enum
 
@@ -45489,7 +44876,6 @@ The `commercetax.TaxTransactionType` enum includes these values.
 `Void` Specifies that the tax engine has voided the document that's mentioned in the
 `referenceDocumentCode` property value.
 
-614
 
 ## Apex Reference Guide ComplianceMgmt Namespace ComplianceMgmt Namespace The ComplianceMgmt namespace provides classes and methods to implement rule processors for compliance control. The ComplianceMgmt namespace includes these classes.
 
@@ -45544,7 +44930,6 @@ Enum Values
 
 The following are the values of the `Compression.Level` enum.
 
-615
 
 ### Apex Reference Guide Method Enum
 
@@ -45597,7 +44982,6 @@ IN THIS SECTION:
 equals(obj)
 Compares this object with the specified object and returns `true` if both objects are equal; otherwise, returns `false` .
 
-616
 
 Apex Reference Guide ZipEntry Class
 
@@ -45664,7 +45048,6 @@ Parameters
 
 Type: Object
 
-617
 
 Apex Reference Guide ZipEntry Class
 
@@ -45732,7 +45115,6 @@ Return Value
 
 Type: blob
 
-618
 
 Apex Reference Guide ZipEntry Class
 
@@ -45798,7 +45180,6 @@ Return Value
 
 Type: string
 
-619
 
 Apex Reference Guide ZipEntry Class
 
@@ -45867,7 +45248,6 @@ Type: Compression.ZipEntry
 
 Sets the last modification time of the zip entry that’s written to the Zip archive. This method doesn’t work with the `ZipReader` class.
 
-620
 
 ### Apex Reference Guide ZipReader Class
 
@@ -45938,7 +45318,6 @@ Namespace
 
 Compression
 
-621
 
 Apex Reference Guide ZipReader Class
 
@@ -45994,7 +45373,6 @@ Gets a zip entry for the specified name from the zip file.
 getEntryNames()
 Gets a list of all the zip entry names from the zip file.
 
-622
 
 Apex Reference Guide ZipReader Class
 
@@ -46067,7 +45445,6 @@ Return Value
 
 Type: List<Compression.ZipEntry>
 
-623
 
 ### Apex Reference Guide ZipWriter Class
 
@@ -46136,7 +45513,6 @@ Namespace
 
 Compression
 
-624
 
 Apex Reference Guide ZipWriter Class
 
@@ -46204,7 +45580,6 @@ IN THIS SECTION:
 
 #### Creates a new instance of the ZipWriter class.
 
-625
 
 Apex Reference Guide ZipWriter Class
 
@@ -46268,7 +45643,6 @@ Signature
 
 ```
 
-626
 
 Apex Reference Guide ZipWriter Class
 
@@ -46351,7 +45725,6 @@ The name of the zip entry.
 
 Type: String
 
-627
 
 Apex Reference Guide ZipWriter Class
 
@@ -46430,7 +45803,6 @@ Signature
 
 ```
 
-628
 
 Apex Reference Guide ZipWriter Class
 
@@ -46498,7 +45870,6 @@ Type: Compression.Method
 
 Uses the `Method` enum values to indicate the compression method as `DEFLATED` or `STORED` .
 
-629
 
 Apex Reference Guide ZipWriter Class
 
@@ -46575,7 +45946,6 @@ Type: Compression.Method
 
 Uses the `Method` enum to set the compression method.
 
-630
 
 ### Apex Reference Guide Compression Exceptions
 
@@ -46632,7 +46002,6 @@ Get database schemas for a Data 360 connection.
 CdpDataSpace Class
 Get Data 360 data spaces.
 
-631
 
 Apex Reference Guide ConnectApi Namespace
 
@@ -46694,7 +46063,6 @@ Evaluate promotions for Commerce orders. Get coupon code redemption usage.
 CommerceSearch Class
 Get sort rules for the live search index. Get product search suggestions. Search products.
 
-632
 
 Apex Reference Guide ConnectApi Namespace
 
@@ -46758,7 +46126,6 @@ Fulfill orders in Order Management.
 IBusinessObjectivesAndRecsFamily Class
 Get and patch business objectives, or goals. Get, create, patch, and update recommended actions for business objectives.
 
-633
 
 Apex Reference Guide ConnectApi Namespace
 
@@ -46821,7 +46188,6 @@ Work with payments in Order Management.
 OrderSummary Class
 Work with orders in Order Management.
 
-634
 
 Apex Reference Guide ConnectApi Namespace
 
@@ -46885,7 +46251,6 @@ Get predictions on Salesforce objects.
 SocialEngagement Class
 Manage information about social accounts or fan pages for social networks.
 
-635
 
 ### Apex Reference Guide ActionLinks Class
 
@@ -46943,7 +46308,6 @@ API call to Salesforce or to an external server. An action link includes a URL a
 header information, such as an OAuth token for authentication. Use action links to integrate Salesforce and third-party services into the
 feed so that users can drive productivity and accelerate innovation.
 
-636
 
 Apex Reference Guide ActionLinks Class
 
@@ -47008,7 +46372,6 @@ API Version
 
 33.0
 
-637
 
 Apex Reference Guide ActionLinks Class
 
@@ -47086,7 +46449,6 @@ Example for Defining an Action Link and Posting with a Feed Element
 
 ```
 
-638
 
 Apex Reference Guide ActionLinks Class
 
@@ -47185,7 +46547,6 @@ Apex Reference Guide ActionLinks Class
 
 ```
 
-639
 
 Apex Reference Guide ActionLinks Class
 
@@ -47281,7 +46642,6 @@ Example for Defining an Action Link in a Template and Posting with a Feed Elemen
 
 ```
 
-640
 
 Apex Reference Guide ActionLinks Class
 
@@ -47363,7 +46723,6 @@ Signature
 
 ```
 
-641
 
 Apex Reference Guide ActionLinks Class
 
@@ -47438,7 +46797,6 @@ Return Value
 
 Type: `ConnectApi.PlatformAction`
 
-642
 
 Apex Reference Guide ActionLinks Class
 
@@ -47507,7 +46865,6 @@ Signature
 
 ```
 
-643
 
 Apex Reference Guide ActionLinks Class
 
@@ -47581,7 +46938,6 @@ Return Value
 
 Type: `ConnectApi.ActionLinkGroupDefinition`
 
-644
 
 ### Apex Reference Guide Announcements Class
 
@@ -47616,7 +46972,6 @@ replaced by another announcement.
 
 All methods in this class require Chatter and are subject to the per user, per namespace, per hour rate limit.
 
-645
 
 Apex Reference Guide Announcements Class
 
@@ -47682,7 +47037,6 @@ Return Value
 
 Type: Void
 
-646
 
 Apex Reference Guide Announcements Class
 
@@ -47753,7 +47107,6 @@ API Version
 
 36.0
 
-647
 
 Apex Reference Guide Announcements Class
 
@@ -47821,7 +47174,6 @@ Signature
 
 ```
 
-648
 
 Apex Reference Guide Announcements Class
 
@@ -47902,7 +47254,6 @@ Type: `ConnectApi.AnnouncementInput`
 
 A `ConnectApi.AnnouncementInput` object.
 
-649
 
 ### Apex Reference Guide BotVersionActivation Class
 
@@ -47975,7 +47326,6 @@ To post an announcement to a group, call `postAnnouncement(communityId, announce
 
 Access and update activation information of a bot version.
 
-650
 
 Apex Reference Guide BotVersionActivation Class
 
@@ -48039,7 +47389,6 @@ user permissions.
 
 Update the status of the specified bot version.
 
-651
 
 ### Apex Reference Guide CdpActivation Class
 
@@ -48111,7 +47460,6 @@ Namespace
 
 ConnectApi
 
-652
 
 Apex Reference Guide CdpActivation Class
 
@@ -48170,7 +47518,6 @@ API Version
 
 60.0
 
-653
 
 Apex Reference Guide CdpActivation Class
 
@@ -48248,7 +47595,6 @@ Requires Chatter
 
 No
 
-654
 
 Apex Reference Guide CdpActivation Class
 
@@ -48317,7 +47663,6 @@ Type: Void
 
 Get an activation by ID.
 
-655
 
 Apex Reference Guide CdpActivation Class
 
@@ -48389,7 +47734,6 @@ Type: `ConnectApi.ActivationDefinitionInput`
 
 Input representation for an activation.
 
-656
 
 ### Apex Reference Guide CdpActivationTarget Class
 
@@ -48448,7 +47792,6 @@ Signature
 
 ```
 
-657
 
 Apex Reference Guide CdpActivationTarget Class
 
@@ -48518,7 +47861,6 @@ Signature
 
 ```
 
-658
 
 Apex Reference Guide CdpActivationTarget Class
 
@@ -48599,7 +47941,6 @@ These are examples of filter specifications:
 
 **•** `targetStatus in active`
 
-659
 
 ### Apex Reference Guide CdpAudienceDMO Class
 
@@ -48666,7 +48007,6 @@ ConnectApi
 
 ### These methods are for CdpAudienceDMO . All methods are static.
 
-660
 
 ### Apex Reference Guide CdpCalculatedInsight Class
 
@@ -48729,7 +48069,6 @@ Create a calculated insight.
 deleteCalculatedInsight(apiName)
 Delete a calculated insight.
 
-661
 
 Apex Reference Guide CdpCalculatedInsight Class
 
@@ -48791,7 +48130,6 @@ API Version
 
 57.0
 
-662
 
 Apex Reference Guide CdpCalculatedInsight Class
 
@@ -48861,7 +48199,6 @@ API Version
 
 56.0
 
-663
 
 Apex Reference Guide CdpCalculatedInsight Class
 
@@ -48948,7 +48285,6 @@ Requires Chatter
 
 No
 
-664
 
 Apex Reference Guide CdpCalculatedInsight Class
 
@@ -49033,7 +48369,6 @@ API Version
 
 57.0
 
-665
 
 Apex Reference Guide CdpCalculatedInsight Class
 
@@ -49107,7 +48442,6 @@ Return Value
 
 Type: `ConnectApi.CdpCalculatedInsightOutput`
 
-666
 
 ### Apex Reference Guide CdpConnection Class CdpConnection Class
 
@@ -49172,7 +48506,6 @@ Return Value
 
 Type: `ConnectApi.ConnectionDbSchemaCollection`
 
-667
 
 ### Apex Reference Guide CdpDataSpace Class CdpDataSpace Class
 
@@ -49243,7 +48576,6 @@ Type: String
 Sort order for the result set. Results are ordered by ID. Specify `id` to order results in ascending order. Specify `id desc` to order
 results in descending order.
 
-668
 
 ### Apex Reference Guide CdpDataStreams Class
 
@@ -49306,7 +48638,6 @@ Start a data stream run to read from a source and update a data lake object.
 
 Start a data stream run to read from a source and update a data lake object.
 
-669
 
 ### Apex Reference Guide CdpIdentityResolution Class
 
@@ -49375,7 +48706,6 @@ Get an identity resolution ruleset.
 getIdentityResolutions()
 Get identity resolution rulesets.
 
-670
 
 Apex Reference Guide CdpIdentityResolution Class
 
@@ -49439,7 +48769,6 @@ Signature
 
 ```
 
-671
 
 Apex Reference Guide CdpIdentityResolution Class
 
@@ -49504,7 +48833,6 @@ Requires Chatter
 
 No
 
-672
 
 Apex Reference Guide CdpIdentityResolution Class
 
@@ -49576,7 +48904,6 @@ Requires Chatter
 
 No
 
-673
 
 ### Apex Reference Guide CdpMachineLearning Class
 
@@ -49641,7 +48968,6 @@ Requires Chatter
 
 No
 
-674
 
 ### Apex Reference Guide CdpQuery Class
 
@@ -49707,7 +49033,6 @@ getDataGraphData(dataGraphEntityName, id, dataspace, live)
 Query a data graph by performing a live lookup in a specified data space. For real-time data graphs, the method attempts to retrieve
 data from the real-time data graph but falls back to the standard data graph if the real-time data graph is unavailable.
 
-675
 
 Apex Reference Guide CdpQuery Class
 
@@ -49767,7 +49092,6 @@ queryANSISql(input, batchSize, offset, orderby, dataspace)
 Synchronously query data across data model, lake, unified, and linked objects. Specify batch size, offset, order of the results, and data
 space. This query returns up to 49,999 rows.
 
-676
 
 Apex Reference Guide CdpQuery Class
 
@@ -49829,7 +49153,6 @@ cancelQuerySql(queryId, workloadName, dataspace)
 Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption. Specify
 the data space and workload name.
 
-677
 
 Apex Reference Guide CdpQuery Class
 
@@ -49892,7 +49215,6 @@ Look up objects by source ID and specify the data space.
 
 Get all metadata, including Calculated Insights, Engagement, Profile, and other objects, as well as their relationships to other objects.
 
-678
 
 Apex Reference Guide CdpQuery Class
 
@@ -49964,7 +49286,6 @@ Type: String
 
 Metadata name of the entity, for example `UnifiedIndividual__dlm` . If unspecified, a complete list of entities is returned.
 
-679
 
 Apex Reference Guide CdpQuery Class
 
@@ -50038,7 +49359,6 @@ Type: `ConnectApi.CdpQueryMetadataOutput`
 Query a data graph in the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time data
 graph but falls back to the standard data graph if the real-time data graph is unavailable.
 
-680
 
 Apex Reference Guide CdpQuery Class
 
@@ -50113,7 +49433,6 @@ Type: String
 
 API name of the data graph to query.
 
-681
 
 Apex Reference Guide CdpQuery Class
 
@@ -50192,7 +49511,6 @@ Return Value
 
 Type: `ConnectApi.CdpQueryOutput`
 
-682
 
 Apex Reference Guide CdpQuery Class
 
@@ -50265,7 +49583,6 @@ Query a data graph by the primary key of either the primary Data Model Object (D
 the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time data graph but falls back to
 the standard data graph if the real-time data graph is unavailable.
 
-683
 
 Apex Reference Guide CdpQuery Class
 
@@ -50340,7 +49657,6 @@ Signature
 
 ```
 
-684
 
 Apex Reference Guide CdpQuery Class
 
@@ -50426,7 +49742,6 @@ Type: String
 
 Lookup key and value to search on. Specify one of these key-value pairs:
 
-685
 
 Apex Reference Guide CdpQuery Class
 
@@ -50498,7 +49813,6 @@ Signature
 
 ```
 
-686
 
 Apex Reference Guide CdpQuery Class
 
@@ -50567,7 +49881,6 @@ API Version
 
 52.0
 
-687
 
 Apex Reference Guide CdpQuery Class
 
@@ -50631,7 +49944,6 @@ Requires Chatter
 
 No
 
-688
 
 Apex Reference Guide CdpQuery Class
 
@@ -50699,7 +50011,6 @@ API Version
 
 52.0
 
-689
 
 Apex Reference Guide CdpQuery Class
 
@@ -50772,7 +50083,6 @@ Return Value
 
 Type: `ConnectApi.CdpQueryMetadataOutput`
 
-690
 
 Apex Reference Guide CdpQuery Class
 
@@ -50837,7 +50147,6 @@ Signature
 
 ```
 
-691
 
 Apex Reference Guide CdpQuery Class
 
@@ -50916,7 +50225,6 @@ Type: `ConnectApi.CdpQueryInput`
 
 A `ConnectApi.CdpQueryInput` body with the SQL query.
 
-692
 
 Apex Reference Guide CdpQuery Class
 
@@ -50991,7 +50299,6 @@ Return Value
 
 Type: `ConnectApi.CdpQueryOutputV2`
 
-693
 
 Apex Reference Guide CdpQuery Class
 
@@ -51052,7 +50359,6 @@ API Version
 
 54.0
 
-694
 
 Apex Reference Guide CdpQuery Class
 
@@ -51126,7 +50432,6 @@ Type: String
 
 Name of the data space to query. If unspecified, the `default` data space is used.
 
-695
 
 Apex Reference Guide CdpQuery Class
 
@@ -51195,7 +50500,6 @@ Submit a query, check its status, then retrieve and process data in chunks until
 
 ```
 
-696
 
 Apex Reference Guide CdpQuery Class
 
@@ -51288,7 +50592,6 @@ Apex Reference Guide CdpQuery Class
 
 Submit an SQL query request for execution and specify the data space.
 
-697
 
 Apex Reference Guide CdpQuery Class
 
@@ -51363,7 +50666,6 @@ Submit a query with a data space:
 
 Submit an SQL query request for execution and specify the workload name and data space.
 
-698
 
 Apex Reference Guide CdpQuery Class
 
@@ -51445,7 +50747,6 @@ Submit a query with a data space and workload name:
 
 ```
 
-699
 
 Apex Reference Guide CdpQuery Class
 
@@ -51525,7 +50826,6 @@ Query additional rows with an offset and row limit:
 
 ```
 
-700
 
 Apex Reference Guide CdpQuery Class
 
@@ -51606,7 +50906,6 @@ Retrieve the _`queryId`_ from the initial query request. To submit an SQL query 
 
 `querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
 
-701
 
 Apex Reference Guide CdpQuery Class
 
@@ -51688,7 +50987,6 @@ Type: String
 
 Name of the data space to query. If unspecified, the `default` data space is used.
 
-702
 
 Apex Reference Guide CdpQuery Class
 
@@ -51765,7 +51063,6 @@ Type: Long
 Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
 rows. If unspecified, no rows are skipped.
 
-703
 
 Apex Reference Guide CdpQuery Class
 
@@ -51845,7 +51142,6 @@ Signature
 
 ```
 
-704
 
 Apex Reference Guide CdpQuery Class
 
@@ -51930,7 +51226,6 @@ Get additional query results that weren't returned in the initial request. Pagin
 and row limit. Also, specify the workload name, data space, and whether or not to exclude metadata from the response. Results are
 available for up to 24 hours.
 
-705
 
 Apex Reference Guide CdpQuery Class
 
@@ -52016,7 +51311,6 @@ Retrieve the _`queryId`_ from the initial query request. To submit an SQL query 
 
 `querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
 
-706
 
 Apex Reference Guide CdpQuery Class
 
@@ -52092,7 +51386,6 @@ Cancel a query:
 
 ```
 
-707
 
 Apex Reference Guide CdpQuery Class
 
@@ -52161,7 +51454,6 @@ Cancel a query with a data space:
 Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption. Specify
 the data space and workload name.
 
-708
 
 Apex Reference Guide CdpQuery Class
 
@@ -52237,7 +51529,6 @@ API Version
 
 62.0
 
-709
 
 Apex Reference Guide CdpQuery Class
 
@@ -52309,7 +51600,6 @@ Signature
 
 ```
 
-710
 
 Apex Reference Guide CdpQuery Class
 
@@ -52384,7 +51674,6 @@ Parameters
 
 Type: String
 
-711
 
 Apex Reference Guide CdpQuery Class
 
@@ -52457,7 +51746,6 @@ ID of the query to return the status for, for example
 `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
 ##### querySql response.
 
-712
 
 Apex Reference Guide CdpQuery Class
 
@@ -52534,7 +51822,6 @@ ID of the query to return the status for, for example
 `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
 ##### querySql response.
 
-713
 
 Apex Reference Guide CdpQuery Class
 
@@ -52608,7 +51895,6 @@ Signature
 
 ```
 
-714
 
 Apex Reference Guide CdpQuery Class
 
@@ -52687,7 +51973,6 @@ Requires Chatter
 
 No
 
-715
 
 Apex Reference Guide CdpQuery Class
 
@@ -52780,7 +52065,6 @@ API Version
 
 54.0
 
-716
 
 Apex Reference Guide CdpQuery Class
 
@@ -52876,7 +52160,6 @@ Time range for the measures. Values are:
 
 **•** `QUARTER`
 
-717
 
 Apex Reference Guide CdpQuery Class
 
@@ -52961,7 +52244,6 @@ Type: String
 
 Filter the result set to a more narrow scope or specific type, such as `[GenderId__c=Male,FirstName__c=Angel]` .
 
-718
 
 Apex Reference Guide CdpQuery Class
 
@@ -53044,7 +52326,6 @@ Type: String
 
 Name of the data model object, for example, `UnifiedIndividual__dlm` .
 
-719
 
 Apex Reference Guide CdpQuery Class
 
@@ -53132,7 +52413,6 @@ Type: String
 
 Name of the data model object, for example, `UnifiedIndividual__dlm` .
 
-720
 
 Apex Reference Guide CdpQuery Class
 
@@ -53215,7 +52495,6 @@ Requires Chatter
 
 No
 
-721
 
 Apex Reference Guide CdpQuery Class
 
@@ -53311,7 +52590,6 @@ Return Value
 
 Type: `ConnectApi.CdpQueryOutput`
 
-722
 
 Apex Reference Guide CdpQuery Class
 
@@ -53403,7 +52681,6 @@ Type: String
 
 Comma-separated list of equality expressions within square brackets, for example, `[FirstName__c=DON]` .
 
-723
 
 Apex Reference Guide CdpQuery Class
 
@@ -53491,7 +52768,6 @@ Type: String
 
 Value of the primary or secondary key field, for example, `John` . If unspecified, defaults to the value of the primary key field.
 
-724
 
 Apex Reference Guide CdpQuery Class
 
@@ -53591,7 +52867,6 @@ Time range for the measures. Values are:
 
 If unspecified, no time range is applied.
 
-725
 
 Apex Reference Guide CdpQuery Class
 
@@ -53681,7 +52956,6 @@ Type: String
 Comma-separated list of up to 5 measures, such as `TotalSales__c`, to project. If unspecified, this parameter includes all of the
 available measures.
 
-726
 
 Apex Reference Guide CdpQuery Class
 
@@ -53772,7 +53046,6 @@ API Version
 
 54.0
 
-727
 
 Apex Reference Guide CdpQuery Class
 
@@ -53855,7 +53128,6 @@ Signature
 
 ```
 
-728
 
 ### Apex Reference Guide CdpSegment Class
 
@@ -53931,7 +53203,6 @@ Deactivate a segment by API name.
 deactivateSegmentById(segmentId)
 Deactivate a segment by ID.
 
-729
 
 Apex Reference Guide CdpSegment Class
 
@@ -53996,7 +53267,6 @@ Type: `ConnectApi.CdpSegmentInput`
 
 A `ConnectApi.CdpSegmentInput` class.
 
-730
 
 Apex Reference Guide CdpSegment Class
 
@@ -54060,7 +53330,6 @@ Requires Chatter
 
 No
 
-731
 
 Apex Reference Guide CdpSegment Class
 
@@ -54128,7 +53397,6 @@ API Version
 
 56.0
 
-732
 
 Apex Reference Guide CdpSegment Class
 
@@ -54198,7 +53466,6 @@ API Version
 
 56.0
 
-733
 
 Apex Reference Guide CdpSegment Class
 
@@ -54268,7 +53535,6 @@ API Version
 
 55.0
 
-734
 
 Apex Reference Guide CdpSegment Class
 
@@ -54340,7 +53606,6 @@ Return Value
 
 Type: `ConnectApi.CdpSegmentContainerOutput`
 
-735
 
 Apex Reference Guide CdpSegment Class
 
@@ -54414,7 +53679,6 @@ API Version
 
 65.0
 
-736
 
 Apex Reference Guide CdpSegment Class
 
@@ -54502,7 +53766,6 @@ These are examples of filter parameter specifications:
 
 ```
 
-737
 
 Apex Reference Guide CdpSegment Class
 
@@ -54591,7 +53854,6 @@ Type: String
 Name of the dataspace in which to perform the action. The user must have permission to the specified dataspace. Specify `default`
 to use the default dataspace.
 
-738
 
 Apex Reference Guide CdpSegment Class
 
@@ -54677,7 +53939,6 @@ Requires Chatter
 
 No
 
-739
 
 ### Apex Reference Guide Chatter Class
 
@@ -54743,7 +54004,6 @@ Get information about a subscription.
 submitDigestJob(period)
 Submit a daily or weekly Chatter email digest job.
 
-740
 
 Apex Reference Guide Chatter Class
 
@@ -54812,7 +54072,6 @@ SEE ALSO:
 
 follow(communityId, userId, subjectId)
 
-741
 
 Apex Reference Guide Chatter Class
 
@@ -54879,7 +54138,6 @@ Requires Chatter
 
 Yes
 
-742
 
 Apex Reference Guide Chatter Class
 
@@ -54952,7 +54210,6 @@ Requires Chatter
 
 Yes
 
-743
 
 Apex Reference Guide Chatter Class
 
@@ -55028,7 +54285,6 @@ Type: `ConnectApi.DigestPeriod`
 
 Time period that’s included in a Chatter email digest. Values are:
 
-744
 
 ### Apex Reference Guide ChatterFavorites Class
 
@@ -55100,7 +54356,6 @@ Usage
 Use Connect in Apex to get and delete topics, list views, and feed searches that have been added as favorites. Add topics and feed
 searches as favorites, and update the last view date of a feed search or list view feed to the current system time.
 
-745
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55136,7 +54391,6 @@ Get a page of sorted feed elements for a favorite.
 getFeedElements(communityId, subjectId, favoriteId, recentCommentCount, elementsPerBundle, pageParam, pageSize, sortParam)
 Get a page of sorted feed elements for a favorite. Include no more than the specified number of comments per feed element.
 
-746
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55207,7 +54461,6 @@ Requires Chatter
 
 Yes
 
-747
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55295,7 +54548,6 @@ ID of the context user or the alias `me` .
 
 Type: String
 
-748
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55364,7 +54616,6 @@ API Version
 
 28.0
 
-749
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55446,7 +54697,6 @@ ID of the context user or the alias `me` .
 
 Type: String
 
-750
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55527,7 +54777,6 @@ ID of a favorite.
 
 Type: String
 
-751
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55596,7 +54845,6 @@ Requires Chatter
 
 Yes
 
-752
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55692,7 +54940,6 @@ Values are:
 
 If you pass in `null`, the default value `CreatedDateDesc` is used.
 
-753
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55767,7 +55014,6 @@ Type: Boolean
 
 Specify whether to update the last view date of the specified favorite to the current system time ( `true` ) or not ( `false` ).
 
-754
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55839,7 +55085,6 @@ Type: String
 
 ID of a favorite.
 
-755
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -55927,7 +55172,6 @@ or `nextPageToken` . If you pass in `null`, the first page is returned.
 
 Type: Integer
 
-756
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56008,7 +55252,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-757
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56101,7 +55344,6 @@ getFeedElements(communityId, subjectId, favoriteId, recentCommentCount, elements
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-758
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56169,7 +55411,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-759
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56244,7 +55485,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-760
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56328,7 +55568,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 
 Get a page of sorted feed items for a favorite. Include no more than the specified number of comments per feed item.
 
-761
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56420,7 +55659,6 @@ Values are:
 
 **•** `LastModifiedDateDesc` —Sorts by most recent activity.
 
-762
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56498,7 +55736,6 @@ ID of a favorite.
 
 Type: `ConnectApi.FeedItemPage`
 
-763
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56582,7 +55819,6 @@ Type: Integer
 
 Number of feed items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-764
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56662,7 +55898,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-765
 
 Apex Reference Guide ChatterFavorites Class
 
@@ -56748,7 +55983,6 @@ getFeedItems(communityId, subjectId, favoriteId, recentCommentCount, pageParam, 
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-766
 
 ### Apex Reference Guide ChatterFeeds Class ChatterFeeds Class
 
@@ -56804,7 +56038,6 @@ Get a comment.
 getCommentBatch(communityId, commentIds)
 Get a list of comments.
 
-767
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -56869,7 +56102,6 @@ getFeedElement(communityId, feedElementId, recentCommentCount, elementsPerBundle
 Get a feed element with the specified number of elements per bundle including no more than the specified number of comments
 per feed element.
 
-768
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -56929,7 +56161,6 @@ getFeedElementsFromFeed(communityId, feedType, subjectId, pageParam, pageSize, s
 Get a page of sorted feed elements from any feed other than `Company`, `DirectMessageModeration`, `DirectMessages`,
 `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
 
-769
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -56987,7 +56218,6 @@ Get feed elements from a feed filtered by a key prefix for a user.
 getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam)
 Get a page of sorted feed elements from a feed filtered by a key prefix for a user.
 
-770
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57043,7 +56273,6 @@ Get a page of filtered feed elements from a record feed. Include only feed eleme
 in the _`updatedSince`_ parameter. Specify the maximum number of feed elements in a bundle and whether to return feed
 elements posted by internal (non-Experience Cloud site) users only.
 
-771
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57107,7 +56336,6 @@ Get information about a Chatter feed stream, regardless of Experience Cloud site
 getStreams(communityId)
 Get the Chatter feed streams for the context user.
 
-772
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57171,7 +56399,6 @@ Discover whether a news feed has been updated or changed. Use this method to pol
 likeComment(communityId, commentId)
 Like a comment for the context user.
 
-773
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57232,7 +56459,6 @@ Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`
 and `PendingReview` feeds that match the search criteria. Each feed element includes no more than the specified number of
 comments.
 
-774
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57293,7 +56519,6 @@ Search the Chatter feed streams for the context user.
 searchStreams(communityId, q, sortParam)
 Search and sort the Chatter feed streams for the context user.
 
-775
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57357,7 +56582,6 @@ Mark multiple feed elements as read by the context user at the same time using a
 updateFeedElementReadByCapabilityBatch(communityId, feedElementIds, isReadByMe)
 Mark multiple feed elements as read by the context user at the same time.
 
-776
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57423,7 +56647,6 @@ Type: `ConnectApi.ChatterStream`
 
 Delete a comment.
 
-777
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57501,7 +56724,6 @@ Type: String
 
 ID of the feed element.
 
-778
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57569,7 +56791,6 @@ Signature
 
 ```
 
-779
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57644,7 +56865,6 @@ Type: `ConnectApi.Comment`
 
 Get a list of comments.
 
-780
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57715,7 +56935,6 @@ Signature
 
 ```
 
-781
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57794,7 +57013,6 @@ Type: String
 
 ID of the feed element.
 
-782
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57872,7 +57090,6 @@ If the feed element doesn’t support the `Comments` capability, the return valu
 
 Get a page of comments for a feed element.
 
-783
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -57951,7 +57168,6 @@ API Version
 
 44.0
 
-784
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58038,7 +57254,6 @@ API Version
 
 44.0
 
-785
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58120,7 +57335,6 @@ If the feed element doesn’t support the `Comments` capability, the return valu
 
 Get a page of sorted comments in a threaded style for a feed element.
 
-786
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58208,7 +57422,6 @@ Order of comments. Values are:
 
 Sorting in descending order isn’t supported.
 
-787
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58283,7 +57496,6 @@ Type: `ConnectApi.CommentsCapability`
 
 If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
 
-788
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58367,7 +57579,6 @@ Return Value
 
 Type: `ConnectApi.CommentsCapability`
 
-789
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58437,7 +57648,6 @@ API Version
 
 28.0
 
-790
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58504,7 +57714,6 @@ Signature
 
 ```
 
-791
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58580,7 +57789,6 @@ Signature
 
 ```
 
-792
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58658,7 +57866,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: `ConnectApi.FeedType`
 
-793
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58730,7 +57937,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-794
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58797,7 +58003,6 @@ Available to Guest Users
 
 41.0
 
-795
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58870,7 +58075,6 @@ Requires Chatter
 
 Yes
 
-796
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -58955,7 +58159,6 @@ Parameters
 
 Type: String
 
-797
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59038,7 +58241,6 @@ Parameters
 
 Type: String
 
-798
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59123,7 +58325,6 @@ Type: String
 
 ID of the feed element.
 
-799
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59208,7 +58409,6 @@ Type: String
 
 ID of the feed element.
 
-800
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59291,7 +58491,6 @@ Signature
 
 ```
 
-801
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59367,7 +58566,6 @@ Requires Chatter
 
 Yes
 
-802
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59448,7 +58646,6 @@ Type: String
 
 ID of the feed element.
 
-803
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59519,7 +58716,6 @@ API Version
 
 31.0
 
-804
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59602,7 +58798,6 @@ API Version
 
 31.0
 
-805
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59670,7 +58865,6 @@ Available to Guest Users
 
 31.0
 
-806
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59753,7 +58947,6 @@ Return Value
 
 Type: `ConnectApi.FeedElementPage`
 
-807
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59834,7 +59027,6 @@ Maximum number of comments to return with each feed item. The default value is 3
 
 Type: `ConnectApi.FeedDensity`
 
-808
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -59912,7 +59104,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Get a page of sorted and filtered feed elements from the `Home` feed. Each feed element contains no more than the specified number
 of comments.
 
-809
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60000,7 +59191,6 @@ Type: Integer
 
 Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-810
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60071,7 +59261,6 @@ Return Value
 
 Type: `ConnectApi.FeedElementPage`
 
-811
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60148,7 +59337,6 @@ Type: Integer
 
 Maximum number of comments to return with each feed item. The default value is 3.
 
-812
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60232,7 +59420,6 @@ them. This value is valid only for users with the Access Einstein-Generated Answ
 answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
 permission.
 
-813
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60295,7 +59482,6 @@ Requires Chatter
 
 Yes
 
-814
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60368,7 +59554,6 @@ Example for Getting Another User’s Profile Feed
 
 ```
 
-815
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60451,7 +59636,6 @@ If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a gro
 must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID. If _`feedType`_ is `UserProfile`, _`subjectId`_
 can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the alias `me` .
 
-816
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60524,7 +59708,6 @@ API Version
 
 31.0
 
-817
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60615,7 +59798,6 @@ or `nextPageToken` . If you pass in `null`, the first page is returned.
 
 Type: Integer
 
-818
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60681,7 +59863,6 @@ Requires Chatter
 
 Yes
 
-819
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60778,7 +59959,6 @@ Values are:
 
 **•** `LastModifiedDateDesc` —Sorts by most recent activity.
 
-820
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60848,7 +60028,6 @@ Signature
 
 ```
 
-821
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -60945,7 +60124,6 @@ If you pass in `null`, the default value `CreatedDateDesc` is used.
 
 Type: `ConnectApi.FeedFilter`
 
-822
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61018,7 +60196,6 @@ Signature
 
 ```
 
-823
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61115,7 +60292,6 @@ If you pass in `null`, the default value `CreatedDateDesc` is used.
 
 Type: `ConnectApi.FeedFilter`
 
-824
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61189,7 +60365,6 @@ Parameters
 
 Type: String
 
-825
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61280,7 +60455,6 @@ Type: String
 
 [Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
 
-826
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61354,7 +60528,6 @@ Type: `ConnectApi.FeedType`
 
 Value must be `ConnectApi.FeedType.Record` .
 
-827
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61444,7 +60617,6 @@ Type: Boolean
 Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
 value is `false` .
 
-828
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61520,7 +60692,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: `ConnectApi.FeedType`
 
-829
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61618,7 +60789,6 @@ value is `false` .
 
 Type: `ConnectApi.FeedFilter`
 
-830
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61684,7 +60854,6 @@ Get a page of sorted and filtered feed elements with comments in a threaded styl
 per bundle and include no more than the specified number of comments per feed element. Specify whether to return feed elements
 posted by internal (non-Experience Cloud site) users only.
 
-831
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61777,7 +60946,6 @@ displays custom recommendations, but hides some system-generated updates from re
 
 Type: String
 
-832
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61860,7 +61028,6 @@ permission.
 **•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
 only for the `Record` feed of a group.
 
-833
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -61928,7 +61095,6 @@ Signature
 
 ```
 
-834
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62025,7 +61191,6 @@ Values are:
 
 **•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
 
-835
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62102,7 +61267,6 @@ Signature
 
 ```
 
-836
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62199,7 +61363,6 @@ Values are:
 
 **•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
 
-837
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62269,7 +61432,6 @@ Signature
 
 ```
 
-838
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62343,7 +61505,6 @@ Signature
 
 ```
 
-839
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62428,7 +61589,6 @@ setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pagePara
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-840
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62519,7 +61679,6 @@ Specify the amount of content in a feed.
 **•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
 custom recommendations.
 
-841
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62597,7 +61756,6 @@ API Version
 
 31.0
 
-842
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62692,7 +61850,6 @@ Type: Integer
 
 Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-843
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62764,7 +61921,6 @@ Parameters
 
 Type: String
 
-844
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62844,7 +62000,6 @@ result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-845
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62930,7 +62085,6 @@ Type: String
 Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
 or `nextPageToken` . If you pass in `null`, the first page is returned.
 
-846
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -62996,7 +62150,6 @@ Return Value
 
 Type: `ConnectApi.FeedElementPage`
 
-847
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63072,7 +62225,6 @@ One of these values:
 
 **•** `People`
 
-848
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63153,7 +62305,6 @@ updatedSince, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-849
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63239,7 +62390,6 @@ Specify the amount of content in a feed.
 **•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
 custom recommendations.
 
-850
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63315,7 +62465,6 @@ API Version
 
 35.0
 
-851
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63411,7 +62560,6 @@ or `nextPageToken` . If you pass in `null`, the first page is returned.
 
 Type: Integer
 
-852
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63485,7 +62633,6 @@ Signature
 
 ```
 
-853
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63587,7 +62734,6 @@ Type: String
 
 [Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
 
-854
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63663,7 +62809,6 @@ Type: `ConnectApi.FeedType`
 
 Value must be `ConnectApi.FeedType.Record` .
 
-855
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63746,7 +62891,6 @@ Return Value
 
 Type: `ConnectApi.FeedElementPage`
 
-856
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63826,7 +62970,6 @@ Type: String
 
 Any record ID, including a group ID.
 
-857
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63916,7 +63059,6 @@ always visible in all sites are filtered out. This value is valid only for the `
 **•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
 them. This value is valid only for users with the Access Einstein-Generated Answers permission.
 
-858
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -63980,7 +63122,6 @@ Requires Chatter
 
 Yes
 
-859
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64081,7 +63222,6 @@ from the `updatesToken` property of the `ConnectApi.FeedElementPage` response bo
 
 The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
 
-860
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64153,7 +63293,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-861
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64230,7 +63369,6 @@ The type of feed. Valid values are `Company`, `DirectMessageModeration`, `Direct
 
 Type: Integer
 
-862
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64304,7 +63442,6 @@ Type: `ConnectApi.Feed`
 
 Get a sorted feed filtered by a key prefix for a user.
 
-863
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64382,7 +63519,6 @@ Type: `ConnectApi.Feed`
 
 Get a feed directory of filter feeds available to the context user.
 
-864
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64449,7 +63585,6 @@ Example
 This example calls `getFilterFeedDirectory` and loops through the returned `FeedDirectoryItem` objects to find the
 key prefixes the context user can use to filter their news feed. It then copies each `keyPrefix` value to a list. Finally, it passes one of
 
-865
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64528,7 +63663,6 @@ Signature
 
 ```
 
-866
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64601,7 +63735,6 @@ Return Value
 
 Type: `ConnectApi.ChatterLikePage`
 
-867
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64676,7 +63809,6 @@ API Version
 
 32.0
 
-868
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64746,7 +63878,6 @@ Signature
 
 ```
 
-869
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64826,7 +63957,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-870
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64899,7 +64029,6 @@ Type: `ConnectApi.PinnedFeedElements`
 
 If the feed doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
 
-871
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -64965,7 +64094,6 @@ Requires Chatter
 
 Yes
 
-872
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65044,7 +64172,6 @@ Signature
 
 ```
 
-873
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65118,7 +64245,6 @@ Requires Chatter
 
 Yes
 
-874
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65200,7 +64326,6 @@ Specifies whether to get streams from all the context user’s Experience Cloud 
 
 Tip: If you know the _`communityId`_ for the stream, we recommend setting _`globalScope`_ to `false` .
 
-875
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65270,7 +64395,6 @@ Parameters
 
 Type: String
 
-876
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65348,7 +64472,6 @@ Return Value
 
 Type: `ConnectApi.ChatterStreamPage`
 
-877
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65424,7 +64547,6 @@ Type: `ConnectApi.ChatterStreamPage`
 
 Get a sorted page of Chatter feed streams from all Enterprise Cloud sites for the context user.
 
-878
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65506,7 +64628,6 @@ Type: `ConnectApi.ChatterStreamPage`
 
 Get supported emojis for the org.
 
-879
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65576,7 +64697,6 @@ Type: String
 
 ID of the comment.
 
-880
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65652,7 +64772,6 @@ Type: `ConnectApi.CommentPage`
 
 If the comment doesn’t support the `comments` capability, the return value is `ConnectApi.NotFoundException` .
 
-881
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65726,7 +64845,6 @@ API Version
 
 42.0
 
-882
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65790,7 +64908,6 @@ Signature
 
 ```
 
-883
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65867,7 +64984,6 @@ ID of the Experience Cloud site.
 
 Type: Integer
 
-884
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -65938,7 +65054,6 @@ Type: Integer
 
 Specifies the number of items per page. Valid values are from 0 through 10. If you pass in `null`, the default size is 5.
 
-885
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66012,7 +65127,6 @@ Specifies the value of the vote for the feed element. Values are:
 
 **•** `Up`
 
-886
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66089,7 +65203,6 @@ Type: Integer
 
 Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
 
-887
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66164,7 +65277,6 @@ Specifies the value of the vote for the feed element. Values are:
 
 You can’t specify `None` .
 
-888
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66247,7 +65359,6 @@ Type: Integer
 
 Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-889
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66314,7 +65425,6 @@ API Version
 
 34.0
 
-890
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66385,7 +65495,6 @@ Signature
 
 ```
 
-891
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66465,7 +65574,6 @@ Type: String
 
 ID for a comment.
 
-892
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66537,7 +65645,6 @@ API Version
 
 32.0
 
-893
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66609,7 +65716,6 @@ Requires Chatter
 
 Yes
 
-894
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66696,7 +65802,6 @@ this method example.
 
 ```
 
-895
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66777,7 +65882,6 @@ Example for Posting a Comment with a New File
 
 ```
 
-896
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66863,7 +65967,6 @@ Salesforce.
 
 ```
 
-897
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -66941,7 +66044,6 @@ API Version
 
 31.0
 
-898
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67021,7 +66123,6 @@ Requires Chatter
 
 Yes
 
-899
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67107,7 +66208,6 @@ Example for Posting a Feed Element with Existing Content
 
 ```
 
-900
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67201,7 +66301,6 @@ to Salesforce. The post also includes text and a mention.
 
 ```
 
-901
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67289,7 +66388,6 @@ Example for Posting a Rich-Text Feed Element with a Code Block
 
 ```
 
-902
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67386,7 +66484,6 @@ Example for Sending a Direct Message
 
 ```
 
-903
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67465,7 +66562,6 @@ Return Value
 
 Type: `ConnectApi.BatchResult` []
 
-904
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67535,7 +66631,6 @@ This trigger bulk posts to the feeds of newly inserted accounts.
 
 ```
 
-905
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67608,7 +66703,6 @@ Requires Chatter
 
 Yes
 
-906
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67680,7 +66774,6 @@ Signature
 
 ```
 
-907
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67752,7 +66845,6 @@ Available to Guest Users
 
 44.0
 
-908
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67825,7 +66917,6 @@ Available to Guest Users
 
 31.0
 
-909
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67901,7 +66992,6 @@ API Version
 
 31.0
 
-910
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -67984,7 +67074,6 @@ Return Value
 
 Type: `ConnectApi.FeedElementPage`
 
-911
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68065,7 +67154,6 @@ Type: Integer
 
 Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-912
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68137,7 +67225,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-913
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68217,7 +67304,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Get the feed elements from the `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`, and
 `PendingReview` feeds that match the search criteria.
 
-914
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68285,7 +67371,6 @@ setTestSearchFeedElementsInFeed(communityId, feedType, q, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-915
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68371,7 +67456,6 @@ Values are:
 
 **•** `CreatedDateDesc` —Sorts by most recent creation date.
 
-916
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68442,7 +67526,6 @@ Signature
 
 ```
 
-917
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68535,7 +67618,6 @@ Type: String
 Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
 [wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
 
-918
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68608,7 +67690,6 @@ Type: `ConnectApi.FeedType`
 
 The type of feed. The only valid value is `Home` .
 
-919
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68698,7 +67779,6 @@ Specifies the feed filters.
 
 **•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
 
-920
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68758,7 +67838,6 @@ Available to Guest Users
 
 31.0
 
-921
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68837,7 +67916,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 
 Get a page of sorted feed elements from a feed for a record or user that match the search criteria.
 
-922
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68925,7 +68003,6 @@ Order of feed items in the feed.
 
 **•** `LastModifiedDateDesc` —Sorts by most recent activity.
 
-923
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -68995,7 +68072,6 @@ Signature
 
 ```
 
-924
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69089,7 +68165,6 @@ Values are:
 
 If you pass in `null`, the default value `CreatedDateDesc` is used.
 
-925
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69162,7 +68237,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-926
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69258,7 +68332,6 @@ One or more keywords to search for in the feed elements visible to the context u
 
 Type: `ConnectApi.FeedFilter`
 
-927
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69331,7 +68404,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: `ConnectApi.FeedType`
 
-928
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69423,7 +68495,6 @@ Type: String
 
 [Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
 
-929
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69497,7 +68568,6 @@ Type: `ConnectApi.FeedType`
 
 Value must be `ConnectApi.FeedType.Record` .
 
-930
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69588,7 +68658,6 @@ Type: Boolean
 Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
 value is `false` .
 
-931
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69664,7 +68733,6 @@ Type: `ConnectApi.FeedType`
 
 Value must be `ConnectApi.FeedType.Record` .
 
-932
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69761,7 +68829,6 @@ value is `false` .
 
 Type: `ConnectApi.FeedFilter`
 
-933
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69827,7 +68894,6 @@ API Version
 
 40.0
 
-934
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69919,7 +68985,6 @@ Type: Integer
 
 Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-935
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -69995,7 +69060,6 @@ API Version
 
 31.0
 
-936
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70076,7 +69140,6 @@ API Version
 
 31.0
 
-937
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70170,7 +69233,6 @@ Type: String
 Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
 [wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
 
-938
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70253,7 +69315,6 @@ example, User objects have a prefix of 005 and Group objects have a prefix of 0F
 
 Type: Integer
 
-939
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70325,7 +69386,6 @@ Return Value
 
 Type: `ConnectApi.FeedElementPage`
 
-940
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70394,7 +69454,6 @@ setTestSearchStreams(communityId, q, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-941
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70470,7 +69529,6 @@ setTestSearchStreams(communityId, q, sortParam, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-942
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70545,7 +69603,6 @@ setTestSearchStreams(communityId, q, pageParam, pageSize, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-943
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70626,7 +69683,6 @@ Return Value
 
 Type: `ConnectApi.ChatterStreamPage`
 
-944
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70709,7 +69765,6 @@ Specifies the sort order. Values are:
 
 **•** `Descending` —Items are in descending alphabetical order (Z-A).
 
-945
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70786,7 +69841,6 @@ Specifies whether to mark the comment as verified ( `true` ) or unverified ( `fa
 
 Only verified comments can be marked as unverified, and only unverified comments can be marked as verified.
 
-946
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70867,7 +69921,6 @@ can be set to `true` only if `isVerified` is already set to `true` .
 You can’t set `isVerifiedByAnonymized` to `false` . After `isVerifiedByAnonymized` is set to `true`, it can be
 undone only when another user marks the comment as unverified and then reverifies the comment.
 
-947
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -70938,7 +69991,6 @@ API Version
 
 38.0
 
-948
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71010,7 +70062,6 @@ Requires Chatter
 
 Yes
 
-949
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71094,7 +70145,6 @@ Type: String
 
 ID of the feed element.
 
-950
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71169,7 +70219,6 @@ Usage
 
 Only users with the Can Approve Feed Post and Comment permission can set the status of a feed post or comment.
 
-951
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71238,7 +70287,6 @@ Requires Chatter
 
 Yes
 
-952
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71322,7 +70370,6 @@ Type: String
 
 ID of the feed element to mark as read.
 
-953
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71402,7 +70449,6 @@ Example
 
 ```
 
-954
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71486,7 +70532,6 @@ Signature
 
 ```
 
-955
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71569,7 +70614,6 @@ Type: `ConnectApi.FeedElementInput`
 
 Information about the feed item to be edited.
 
-956
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71655,7 +70699,6 @@ Example for Editing a Question Title and Post
 
 ```
 
-957
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71737,7 +70780,6 @@ Type: String
 
 ID of the feed element.
 
-958
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71813,7 +70855,6 @@ Type: `ConnectApi.BookmarksCapability`
 
 If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
 
-959
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71893,7 +70934,6 @@ error, the error is embedded within the `ConnectApi.BatchResult` list.
 
 Mark multiple feed elements as read by the context user at the same time.
 
-960
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -71967,7 +71007,6 @@ Signature
 
 ```
 
-961
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72048,7 +71087,6 @@ Type: Boolean
 
 Specifies if the context user likes ( `true` ) or unlikes ( `false` ) the feed element.
 
-962
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72123,7 +71161,6 @@ Type: `ConnectApi.PinCapability`
 
 If the feed doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
 
-963
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72199,7 +71236,6 @@ Signature
 
 ```
 
-964
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72267,7 +71303,6 @@ result)
 Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
 matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
 
-965
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72326,7 +71361,6 @@ pageSize, sortParam, showInternalOnly, filter, threadedCommentsCollapsed, result
 Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
 matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
 
-966
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72384,7 +71418,6 @@ pageParam, pageSize, updatedSince, filter, result)
 Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
 with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
 
-967
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72443,7 +71476,6 @@ Register a `ConnectApi.FeedElementPage` object to be returned when the matching
 `ConnectApi.searchFeedElements` method is called in a test context. Use the method with the same parameters or you
 receive an exception.
 
-968
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72499,7 +71531,6 @@ Register a `ConnectApi.FeedElementPage` object to be returned when the matching
 `ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
 or you receive an exception.
 
-969
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72553,7 +71584,6 @@ Register a `ConnectApi.FeedElementPage` object to be returned when the matching
 `ConnectApi.searchFeedElementsInFilterFeed` method is called in a test context. Use the method with the same
 parameters or you receive an exception.
 
-970
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72620,7 +71650,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-971
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72703,7 +71732,6 @@ Type: String
 Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
 or `nextPageToken` . If you pass in `null`, the first page is returned.
 
-972
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72780,7 +71808,6 @@ Signature
 
 ```
 
-973
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72872,7 +71899,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-974
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -72959,7 +71985,6 @@ displays custom recommendations, but hides some system-generated updates from re
 
 Type: String
 
-975
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73043,7 +72068,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-976
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73127,7 +72151,6 @@ custom recommendations.
 **•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
 displays custom recommendations, but hides some system-generated updates from records.
 
-977
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73209,7 +72232,6 @@ only for the `Record` feed of a group.
 
 **•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
 
-978
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73294,7 +72316,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-979
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73379,7 +72400,6 @@ Type: Integer
 
 Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-980
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73460,7 +72480,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-981
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73552,7 +72571,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-982
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73640,7 +72658,6 @@ Specify the amount of content in a feed.
 **•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
 custom recommendations.
 
-983
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73724,7 +72741,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
 matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
 
-984
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73821,7 +72837,6 @@ Values are:
 **•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
 `Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
 
-985
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73897,7 +72912,6 @@ Signature
 
 ```
 
-986
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -73994,7 +73008,6 @@ If you pass in `null`, the default value `CreatedDateDesc` is used.
 
 Type: `ConnectApi.FeedFilter`
 
-987
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74078,7 +73091,6 @@ Type: `ConnectApi.FeedType`
 
 Value must be `ConnectApi.FeedType.Record` .
 
-988
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74167,7 +73179,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-989
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74255,7 +73266,6 @@ Type: Integer
 
 Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
 
-990
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74340,7 +73350,6 @@ pageSize, sortParam, showInternalOnly)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-991
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74437,7 +73446,6 @@ displays custom recommendations, but hides some system-generated updates from re
 
 Type: String
 
-992
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74520,7 +73528,6 @@ permission.
 **•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
 only for the `Record` feed of a group.
 
-993
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74608,7 +73615,6 @@ Any record ID, including a group ID.
 
 Type: Integer
 
-994
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74700,7 +73706,6 @@ Specifies the feed filters.
 or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
 always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
 
-995
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74772,7 +73777,6 @@ API Version
 
 40.0
 
-996
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74872,7 +73876,6 @@ Type: `ConnectApi.FeedSortOrder`
 
 Values are:
 
-997
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -74954,7 +73957,6 @@ Signature
 
 ```
 
-998
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75053,7 +74055,6 @@ Values are:
 
 **•** `LastModifiedDateDesc` —Sorts by most recent activity.
 
-999
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75133,7 +74134,6 @@ Signature
 
 ```
 
-1000
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75217,7 +74217,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1001
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75295,7 +74294,6 @@ getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam, page
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1002
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75391,7 +74389,6 @@ displays custom recommendations, but hides some system-generated updates from re
 
 Type: String
 
-1003
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75472,7 +74469,6 @@ Signature
 
 ```
 
-1004
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75575,7 +74571,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-1005
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75658,7 +74653,6 @@ custom recommendations.
 **•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
 displays custom recommendations, but hides some system-generated updates from records.
 
-1006
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75743,7 +74737,6 @@ Parameters
 
 Type: String
 
-1007
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75834,7 +74827,6 @@ permission.
 **•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
 when the context user joined the group. This value is valid only for the `Record` feed of a group.
 
-1008
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -75916,7 +74908,6 @@ One of these values:
 
 **•** `Files`
 
-1009
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76006,7 +74997,6 @@ updatedSince)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1010
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76102,7 +75092,6 @@ or `nextPageToken` . If you pass in `null`, the first page is returned.
 
 Type: Integer
 
-1011
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76186,7 +75175,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1012
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76281,7 +75269,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-1013
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76373,7 +75360,6 @@ Maximum number of feed elements to include in a bundle. The value must be an int
 
 Type: `ConnectApi.FeedDensity`
 
-1014
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76455,7 +75441,6 @@ API Version
 
 31.0
 
-1015
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76556,7 +75541,6 @@ from the `updatesToken` property of the `ConnectApi.FeedElementPage` response bo
 
 The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
 
-1016
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76643,7 +75627,6 @@ Value must be `ConnectApi.FeedType.Record` .
 
 Type: String
 
-1017
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76735,7 +75718,6 @@ always visible in all sites are filtered out. This value is valid only for the `
 **•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
 them. This value is valid only for users with the Access Einstein-Generated Answers permission.
 
-1018
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76809,7 +75791,6 @@ Signature
 
 ```
 
-1019
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76912,7 +75893,6 @@ value is `false` .
 
 Type: String
 
-1020
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -76992,7 +75972,6 @@ Specifies the type of related feed post. Values are:
 
 **•** `Unanswered` —Related questions that don’t have answers.
 
-1021
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77070,7 +76049,6 @@ getTopUnansweredQuestions(communityId) (Pilot)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1022
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77141,7 +76119,6 @@ or you receive an exception.
 Note: We provided top-five unanswered questions to selected customers through a pilot program that required agreement to
 specific terms and conditions. This pilot program is closed and not accepting new participants.
 
-1023
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77216,7 +76193,6 @@ Signature
 
 ```
 
-1024
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77299,7 +76275,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1025
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77377,7 +76352,6 @@ Values are:
 
 **•** `LastModifiedDateDesc` —Sorts by most recent activity.
 
-1026
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77460,7 +76434,6 @@ Specifies whether to return threaded comments in a collapsed style ( `true` ) or
 
 Type: `ConnectApi.FeedElementPage`
 
-1027
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77539,7 +76512,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-1028
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77626,7 +76598,6 @@ Values are:
 **•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
 `Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
 
-1029
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77710,7 +76681,6 @@ Required and can’t be `null` . Specifies the string to search. The search stri
 
 Type: String
 
-1030
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77795,7 +76765,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1031
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77877,7 +76846,6 @@ API Version
 
 31.0
 
-1032
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -77962,7 +76930,6 @@ Signature
 
 ```
 
-1033
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78051,7 +77018,6 @@ searchFeedElementsInFeed(communityId, feedType, pageParam, pageSize, sortParam, 
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1034
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78141,7 +77107,6 @@ Type: Integer
 
 Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1035
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78222,7 +77187,6 @@ Signature
 
 ```
 
-1036
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78320,7 +77284,6 @@ Required and can’t be `null` . Specifies the string to search. The search stri
 
 Type: `ConnectApi.FeedFilter`
 
-1037
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78385,7 +77348,6 @@ API Version
 
 31.0
 
-1038
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78470,7 +77432,6 @@ API Version
 
 31.0
 
-1039
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78562,7 +77523,6 @@ Type: String
 Search term. Searches keywords in the user or group name. A minimum of one character is required. This parameter doesn’t support
 wildcards. This parameter is required.
 
-1040
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78647,7 +77607,6 @@ alias `me` .
 
 Type: Integer
 
-1041
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78734,7 +77693,6 @@ q)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1042
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78826,7 +77784,6 @@ Type: String
 Specifies the page token to use to view a page of information. Page tokens are returned as part of the response class, such as
 `currentPageToken` or `nextPageToken` . If you pass in `null`, the first page is returned.
 
-1043
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -78911,7 +77868,6 @@ Register a `ConnectApi.FeedElementPage` object to be returned when the matching
 `ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
 or you receive an exception.
 
-1044
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79007,7 +77963,6 @@ Type: `ConnectApi.FeedSortOrder`
 
 Values are:
 
-1045
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79089,7 +78044,6 @@ Signature
 
 ```
 
-1046
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79187,7 +78141,6 @@ Values are:
 
 If you pass in `null`, the default value `CreatedDateDesc` is used.
 
-1047
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79270,7 +78223,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1048
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79366,7 +78318,6 @@ Required and can’t be `null` . Specifies the string to search. The search stri
 
 Type: Boolean
 
-1049
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79431,7 +78382,6 @@ showInternalOnly, filter)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1050
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79524,7 +78474,6 @@ Type: String
 Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
 or `nextPageToken` . If you pass in `null`, the first page is returned.
 
-1051
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79603,7 +78552,6 @@ showInternalOnly, customFilter)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1052
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79685,7 +78633,6 @@ searchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, q)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1053
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79777,7 +78724,6 @@ Values are:
 **•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
 `ConnectApi.FeedFilter` is `UnansweredQuestions` .
 
-1054
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79864,7 +78810,6 @@ ID of the context user or the alias `me` .
 
 Type: String
 
-1055
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -79949,7 +78894,6 @@ Type: `ConnectApi.FeedElementPage`
 
 Object containing test data.
 
-1056
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80020,7 +78964,6 @@ searchStreams(communityId, q)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1057
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80097,7 +79040,6 @@ searchStreams(communityId, q, sortParam)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1058
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80173,7 +79115,6 @@ searchStreams(communityId, q, pageParam, pageSize)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1059
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80256,7 +79197,6 @@ Type: `ConnectApi.ChatterStreamPage`
 
 Object containing test data.
 
-1060
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80347,7 +79287,6 @@ Specifies the sort order. Values are:
 
 **•** `Descending` —Items are in descending alphabetical order (Z-A).
 
-1061
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80413,7 +79352,6 @@ Get feed items from a feed for a user or record.
 getFeedItemsFromFeed(communityId, feedType, subjectId, pageParam, pageSize, sortParam)
 Get a page of sorted feed items from a feed for a user or record.
 
-1062
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80474,7 +79412,6 @@ Post a plain-text comment to a feed item.
 postComment(communityId, feedItemId, comment, feedItemFileUpload)
 Post a rich-text comment to a feed item. Use this method to include mentions and to attach a file to a comment.
 
-1063
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80535,7 +79472,6 @@ Get the feed items that match the search criteria from a feed filtered by a key 
 searchFeedItemsInFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam, q)
 Get a page of sorted feed items that match the search criteria from a feed filtered by a key prefix for a user.
 
-1064
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80594,7 +79530,6 @@ setTestGetFeedItemsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam, 
 Register a `ConnectApi.FeedItemPage` object to be returned when the matching `getFeedItemsFromFilterFeed`
 method is called in a test context. Use the method with the same parameters or the code throws an exception.
 
-1065
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80652,7 +79587,6 @@ Register a `ConnectApi.FeedItemPage` object to be returned when the matching
 `ConnectApi.searchFeedItemsInFeed` method is called in a test context. Use the method with the same parameters
 or you receive an exception.
 
-1066
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80709,7 +79643,6 @@ API Version
 
 Important: In version 32.0 and later, use deleteFeedElement(communityId, feedElementId).
 
-1067
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80783,7 +79716,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1068
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80861,7 +79793,6 @@ Type: Integer
 
 Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1069
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -80928,7 +79859,6 @@ API Version
 
 31.0–31.0
 
-1070
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81015,7 +79945,6 @@ Example
 
 ```
 
-1071
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81092,7 +80021,6 @@ Return Value
 
 Type: `ConnectApi.FeedItemPage`
 
-1072
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81170,7 +80098,6 @@ or `nextPageToken` . If you pass in `null`, the first page is returned.
 
 Type: Integer
 
-1073
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81239,7 +80166,6 @@ Requires Chatter
 
 Yes
 
-1074
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81332,7 +80258,6 @@ Values are:
 
 **•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
 
-1075
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81400,7 +80325,6 @@ Type: `ConnectApi.FeedType`
 Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessageModeration`,
 `DirectMessages`, `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
 
-1076
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81472,7 +80396,6 @@ Parameters
 
 Type: String
 
-1077
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81552,7 +80475,6 @@ setTestGetFeedItemsFromFeed(communityId, feedType, subjectId, pageParam, pageSiz
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1078
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81638,7 +80560,6 @@ Type: `ConnectApi.FeedDensity`
 
 Specify the amount of content in a feed.
 
-1079
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81714,7 +80635,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Get a page of sorted feed items from a record feed for a user or record. Each feed item includes no more than the specified number of
 comments. Specify whether to return feed items posted by internal (non-Experience Cloud site) users only.
 
-1080
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81800,7 +80720,6 @@ displays custom recommendations, but hides some system-generated updates from re
 
 Type: String
 
-1081
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81873,7 +80792,6 @@ API Version
 
 Important: In version 32.0 and later, use getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix).
 
-1082
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -81948,7 +80866,6 @@ API Version
 Important: In version 32.0 and later, use getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize,
 sortParam).
 
-1083
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82038,7 +80955,6 @@ Return Value
 
 Type: `ConnectApi.FeedItemPage`
 
-1084
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82120,7 +81036,6 @@ Type: Integer
 
 Maximum number of comments to return with each feed item. The default value is 3.
 
-1085
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82194,7 +81109,6 @@ sortParam, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1086
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82279,7 +81193,6 @@ custom recommendations.
 **•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
 displays custom recommendations, but hides some system-generated updates from records.
 
-1087
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82351,7 +81264,6 @@ Available to Guest Users
 
 31.0 only
 
-1088
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82441,7 +81353,6 @@ Return Value
 
 Type: `ConnectApi.FeedItemPage`
 
-1089
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82513,7 +81424,6 @@ Available to Guest Users
 
 31.0 only
 
-1090
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82608,7 +81518,6 @@ Type: Integer
 
 Number of feed items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1091
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82681,7 +81590,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Get a page of feed items from a record feed. Include only feed items that have been updated since the time specified in the
 _`updatedSince`_ parameter. Specify whether to return feed items posted by internal (non-Experience Cloud site) users only.
 
-1092
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82767,7 +81675,6 @@ displays custom recommendations, but hides some system-generated updates from re
 
 Type: String
 
-1093
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82842,7 +81749,6 @@ the value of `updatesToken` to the `getFeedItemsUpdatedSince` method to get the 
 
 ```
 
-1094
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82911,7 +81817,6 @@ may not be available in the trigger.
 
 Get likes for a feed item.
 
-1095
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -82978,7 +81883,6 @@ Requires Chatter
 
 Yes
 
-1096
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83060,7 +81964,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1097
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83133,7 +82036,6 @@ Return Value
 
 Type: `ConnectApi.Comment`
 
-1098
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83208,7 +82110,6 @@ Return Value
 
 Type: `ConnectApi.Comment`
 
-1099
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83281,7 +82182,6 @@ Requires Chatter
 
 Yes
 
-1100
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83364,7 +82264,6 @@ API Version
 
 28.0–31.0
 
-1101
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83445,7 +82344,6 @@ Note: Triggers on FeedItem objects run before their attachment and capabilities 
 `ConnectApi.FeedItem.attachment` information and `ConnectApi.FeedElement.capabilities` information
 may not be available in the trigger.
 
-1102
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83529,7 +82427,6 @@ can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must b
 
 Type: `ConnectApi.FeedItemInput`
 
-1103
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83609,7 +82506,6 @@ To post to a user profile feed and include an @mention, call the `ConnectApi.Cha
 
 ```
 
-1104
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83686,7 +82582,6 @@ Type: String
 Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
 [wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
 
-1105
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83759,7 +82654,6 @@ Type: `ConnectApi.FeedSortOrder`
 
 Values are:
 
-1106
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83820,7 +82714,6 @@ Signature
 
 ```
 
-1107
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83893,7 +82786,6 @@ Requires Chatter
 
 Yes
 
-1108
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -83969,7 +82861,6 @@ Return Value
 
 Type: `ConnectApi.FeedItemPage`
 
-1109
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84046,7 +82937,6 @@ Type: Integer
 
 Maximum number of comments to return with each feed item. The default value is 3.
 
-1110
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84115,7 +83005,6 @@ API Version
 
 Important: In version 32.0 and later, use searchFeedElementsInFeed(communityId, feedType, q).
 
-1111
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84192,7 +83081,6 @@ API Version
 
 28.0–31.0
 
-1112
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84277,7 +83165,6 @@ Values are:
 Sorts the returned feed by the most recently created feed item, or by the most recently modified feed item. If you pass in `null`,
 the default value `CreatedDateDesc` is used.
 
-1113
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84349,7 +83236,6 @@ Parameters
 
 Type: String
 
-1114
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84439,7 +83325,6 @@ Return Value
 
 Type: `ConnectApi.FeedItemPage`
 
-1115
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84515,7 +83400,6 @@ can be any user ID. If _`feedType`_ is any other value, _`subjectId`_ must be th
 
 Type: String
 
-1116
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84588,7 +83472,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: `ConnectApi.FeedType`
 
-1117
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84669,7 +83552,6 @@ setTestSearchFeedItemsInFeed(communityId, feedType, subjectId, pageParam, pageSi
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1118
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84756,7 +83638,6 @@ Type: `ConnectApi.FeedDensity`
 
 Specify the amount of content in a feed.
 
-1119
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84831,7 +83712,6 @@ q, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1120
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84918,7 +83798,6 @@ Specify the amount of content in a feed.
 **•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
 custom recommendations.
 
-1121
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -84999,7 +83878,6 @@ q, showInternalOnly, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1122
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85066,7 +83944,6 @@ Return Value
 
 Type: `ConnectApi.FeedItemPage`
 
-1123
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85148,7 +84025,6 @@ Type: String
 Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
 or `nextPageToken` . If you pass in `null`, the first page is returned.
 
-1124
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85224,7 +84100,6 @@ API Version
 Important: In version 32.0 and later, use searchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, recentCommentCount,
 density, pageParam, pageSize, sortParam, q).
 
-1125
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85319,7 +84194,6 @@ Type: `ConnectApi.FeedSortOrder`
 
 Values are:
 
-1126
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85385,7 +84259,6 @@ Requires Chatter
 
 Yes
 
-1127
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85468,7 +84341,6 @@ Important:
 **•** In version 32.0–38.0, use `shareFeedElement(communityId, subjectId, feedElementType,`
 `originalFeedElementId)` .
 
-1128
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85542,7 +84414,6 @@ Return Value
 
 Type: `ConnectApi.FeedItem`
 
-1129
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85616,7 +84487,6 @@ Type: `ConnectApi.FeedItem`
 
 Vote or change your vote on a feed poll.
 
-1130
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85695,7 +84565,6 @@ Parameters
 
 Type: String
 
-1131
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85781,7 +84650,6 @@ Type: String
 Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
 or `nextPageToken` . If you pass in `null`, the first page is returned.
 
-1132
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85859,7 +84727,6 @@ Signature
 
 ```
 
-1133
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -85952,7 +84819,6 @@ Type: `ConnectApi.FeedItemPage`
 
 Object containing test data.
 
-1134
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86021,7 +84887,6 @@ Type: `ConnectApi.FeedItemPage`
 
 Object containing test data.
 
-1135
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86106,7 +84971,6 @@ Type: Integer
 
 Number of feed items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1136
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86186,7 +85050,6 @@ Parameters
 
 Type: String
 
-1137
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86279,7 +85142,6 @@ the default value `CreatedDateDesc` is used.
 
 Type: `ConnectApi.FeedItemPage`
 
-1138
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86361,7 +85223,6 @@ Type: Integer
 
 Maximum number of comments to return with each feed item. The default value is 3.
 
-1139
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86447,7 +85308,6 @@ showInternalOnly)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1140
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86528,7 +85388,6 @@ API Version
 
 28.0–31.0
 
-1141
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86618,7 +85477,6 @@ Type: `ConnectApi.FeedItemPage`
 
 Object containing test data.
 
-1142
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86705,7 +85563,6 @@ Specify the amount of content in a feed.
 **•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
 custom recommendations.
 
-1143
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86786,7 +85643,6 @@ API Version
 
 30.0–31.0
 
-1144
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86884,7 +85740,6 @@ Values are:
 
 **•** `LastModifiedDateDesc` —Sorts by most recent activity.
 
-1145
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -86966,7 +85821,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: `ConnectApi.FeedType`
 
-1146
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87053,7 +85907,6 @@ API Version
 
 30.0–31.0
 
-1147
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87152,7 +86005,6 @@ Number of feed items per page. Valid values are from 1 through 100. If you pass 
 
 Type: String
 
-1148
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87234,7 +86086,6 @@ One of these values:
 
 **•** `Record`
 
-1149
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87323,7 +86174,6 @@ showInternalOnly)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1150
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87399,7 +86249,6 @@ Signature
 
 ```
 
-1151
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87472,7 +86321,6 @@ API Version
 
 28.0–31.0
 
-1152
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87557,7 +86405,6 @@ Signature
 
 ```
 
-1153
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87638,7 +86485,6 @@ searchFeedItems(communityId, q, pageParam, pageSize, sortParam)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1154
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87731,7 +86577,6 @@ Values are:
 
 **•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
 
-1155
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87811,7 +86656,6 @@ Type: `ConnectApi.FeedItemPage`
 
 Object containing test data.
 
-1156
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87898,7 +86742,6 @@ Values are:
 **•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
 `Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
 
-1157
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -87979,7 +86822,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1158
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88071,7 +86913,6 @@ Type: `ConnectApi.FeedItemPage`
 
 Object containing test data.
 
-1159
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88150,7 +86991,6 @@ Type: `ConnectApi.FeedItemPage`
 
 Object containing test data.
 
-1160
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88236,7 +87076,6 @@ Type: Integer
 
 Number of feed items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1161
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88318,7 +87157,6 @@ Signature
 
 ```
 
-1162
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88410,7 +87248,6 @@ Values are:
 
 **•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
 
-1163
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88493,7 +87330,6 @@ Type: `ConnectApi.FeedType`
 Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessages`, `Filter`,
 `Landing`, and `Streams` .
 
-1164
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88584,7 +87420,6 @@ Required and can’t be `null` . Specifies the string to search. The search stri
 
 Type: Boolean
 
-1165
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88667,7 +87502,6 @@ example, User objects have a prefix of 005 and Group objects have a prefix of 0F
 
 Type: String
 
-1166
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88753,7 +87587,6 @@ ID of the context user or the alias `me` .
 
 Type: String
 
-1167
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88827,7 +87660,6 @@ searchFeedItemsInFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSi
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1168
 
 Apex Reference Guide ChatterFeeds Class
 
@@ -88919,7 +87751,6 @@ custom recommendations.
 **•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
 displays custom recommendations, but hides some system-generated updates from records.
 
-1169
 
 ### Apex Reference Guide ChatterGroups Class
 
@@ -88996,7 +87827,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Information about groups, such as the group’s members, photo, and the groups the specified user is a member of. Add members to a
 group, remove members, and change the group photo.
 
-1170
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89055,7 +87885,6 @@ Get information about a request to join a private group.
 getGroupMembershipRequests(communityId, groupId)
 Get information about every request to join a private group.
 
-1171
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89119,7 +87948,6 @@ Get a page of groups that match the search criteria.
 searchGroups(communityId, q, archiveStatus, pageParam, pageSize)
 Get a page of groups with the archive status that match the search criteria.
 
-1172
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89183,7 +88011,6 @@ Signature
 
 ```
 
-1173
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89266,7 +88093,6 @@ ID for a group.
 
 Type: String
 
-1174
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89343,7 +88169,6 @@ Return Value
 
 Type: `ConnectApi.GroupRecord`
 
-1175
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89417,7 +88242,6 @@ Parameters
 
 Type: String
 
-1176
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89488,7 +88312,6 @@ API Version
 
 28.0
 
-1177
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89566,7 +88389,6 @@ Type: String
 
 ID for a group.
 
-1178
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89634,7 +88456,6 @@ API Version
 
 31.0
 
-1179
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89713,7 +88534,6 @@ Signature
 
 ```
 
-1180
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89788,7 +88608,6 @@ Type: `ConnectApi.ChatterGroupDetail`
 
 Get information about a list of groups.
 
-1181
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89875,7 +88694,6 @@ Example
 
 ```
 
-1182
 
 Apex Reference Guide ChatterGroups Class
 
@@ -89951,7 +88769,6 @@ Usage
 
 This method is successful only when the context user is the group manager or owner, or has Modify All Data permission.
 
-1183
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90023,7 +88840,6 @@ Signature
 
 ```
 
-1184
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90100,7 +88916,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1185
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90171,7 +88986,6 @@ API Version
 
 29.0
 
-1186
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90250,7 +89064,6 @@ Requires Chatter
 
 Yes
 
-1187
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90328,7 +89141,6 @@ Return Value
 
 Type: `ConnectApi.GroupMemberPage`
 
-1188
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90403,7 +89215,6 @@ API Version
 
 31.0
 
-1189
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90494,7 +89305,6 @@ Example
 
 ```
 
-1190
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90568,7 +89378,6 @@ API Version
 
 28.0
 
-1191
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90646,7 +89455,6 @@ Return Value
 
 Type: `ConnectApi.GroupRecord`
 
-1192
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90720,7 +89528,6 @@ Parameters
 
 Type: String
 
-1193
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90795,7 +89602,6 @@ Return Value
 
 Type: `ConnectApi.Invitations`
 
-1194
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90866,7 +89672,6 @@ API Version
 
 34.0
 
-1195
 
 Apex Reference Guide ChatterGroups Class
 
@@ -90942,7 +89747,6 @@ Type: String
 
 ID for a group.
 
-1196
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91011,7 +89815,6 @@ Return Value
 
 Type: `ConnectApi.ChatterGroupPage`
 
-1197
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91086,7 +89889,6 @@ Type: Integer
 
 Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1198
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91161,7 +89963,6 @@ Archive status of groups.
 
 **•** `Archived` —Groups that are archived.
 
-1199
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91237,7 +90038,6 @@ Type: String
 
 The ID of the group.
 
-1200
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91314,7 +90114,6 @@ Type: `ConnectApi.BinaryInput`
 
 File to use as the photo. The content type must be usable as an image.
 
-1201
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91385,7 +90184,6 @@ This method is successful only when the context user is the group manager or own
 
 Photos are processed asynchronously and might not be visible right away.
 
-1202
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91460,7 +90258,6 @@ Photos are processed asynchronously and might not be visible right away.
 
 Set an uploaded file as the group photo.
 
-1203
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91545,7 +90342,6 @@ the group photo. The key prefix must be 069 and the file size must be less than 
 
 ```
 
-1204
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91627,7 +90423,6 @@ When a group is created, it doesn’t have a group photo. You can upload a photo
 
 ```
 
-1205
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91699,7 +90494,6 @@ Photos are processed asynchronously and might not be visible right away.
 
 Set and crop a file that hasn’t been uploaded as the group photo.
 
-1206
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91776,7 +90570,6 @@ Requires Chatter
 
 Yes
 
-1207
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91854,7 +90647,6 @@ Requires Chatter
 
 Yes
 
-1208
 
 Apex Reference Guide ChatterGroups Class
 
@@ -91934,7 +90726,6 @@ Parameters
 
 Type: String
 
-1209
 
 Apex Reference Guide ChatterGroups Class
 
@@ -92018,7 +90809,6 @@ ID for a request to join a private group.
 
 Type: `ConnectApi.GroupMembershipRequestStatus`
 
-1210
 
 Apex Reference Guide ChatterGroups Class
 
@@ -92090,7 +90880,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1211
 
 Apex Reference Guide ChatterGroups Class
 
@@ -92165,7 +90954,6 @@ Parameters
 
 Type: String
 
-1212
 
 Apex Reference Guide ChatterGroups Class
 
@@ -92249,7 +91037,6 @@ Number of the page you want returned. Starts at 0. If you pass in `null` or 0, t
 
 Type: Integer
 
-1213
 
 Apex Reference Guide ChatterGroups Class
 
@@ -92331,7 +91118,6 @@ Archive status of groups.
 
 **•** `NotArchived` —Groups that aren’t archived.
 
-1214
 
 ### Apex Reference Guide ChatterMessages Class
 
@@ -92398,7 +91184,6 @@ Get a conversation.
 getConversation(conversationId, pageParam, pageSize)
 Get a page of a conversation.
 
-1215
 
 Apex Reference Guide ChatterMessages Class
 
@@ -92462,7 +91247,6 @@ Get a conversation that matches the search criteria.
 searchConversation(conversationId, pageParam, pageSize, q)
 Get a conversation with a page of messages that match the search criteria.
 
-1216
 
 Apex Reference Guide ChatterMessages Class
 
@@ -92529,7 +91313,6 @@ Parameters
 
 Type: String
 
-1217
 
 Apex Reference Guide ChatterMessages Class
 
@@ -92599,7 +91382,6 @@ API Version
 
 30.0
 
-1218
 
 Apex Reference Guide ChatterMessages Class
 
@@ -92683,7 +91465,6 @@ ID for the conversation.
 
 Type:String
 
-1219
 
 Apex Reference Guide ChatterMessages Class
 
@@ -92746,7 +91527,6 @@ Signature
 
 ```
 
-1220
 
 Apex Reference Guide ChatterMessages Class
 
@@ -92814,7 +91594,6 @@ API Version
 
 30.0
 
-1221
 
 Apex Reference Guide ChatterMessages Class
 
@@ -92891,7 +91670,6 @@ Type: String
 
 ID for the message.
 
-1222
 
 Apex Reference Guide ChatterMessages Class
 
@@ -92959,7 +91737,6 @@ Signature
 
 ```
 
-1223
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93030,7 +91807,6 @@ Signature
 
 ```
 
-1224
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93104,7 +91880,6 @@ Type: `ConnectApi.ChatterMessagePage`
 
 Get the number of conversations that are marked unread.
 
-1225
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93171,7 +91946,6 @@ Return Value
 
 Type: `ConnectApi.UnreadConversationCount`
 
-1226
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93243,7 +92017,6 @@ Signature
 
 ```
 
-1227
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93322,7 +92095,6 @@ Type: `ConnectApi.ChatterMessage`
 
 Reply to a message in an Experience Cloud site.
 
-1228
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93394,7 +92166,6 @@ Signature
 
 ```
 
-1229
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93478,7 +92249,6 @@ Type: String
 Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
 [wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
 
-1230
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93550,7 +92320,6 @@ Requires Chatter
 
 Yes
 
-1231
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93630,7 +92399,6 @@ Signature
 
 ```
 
-1232
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93706,7 +92474,6 @@ Type: `ConnectApi.ChatterConversationPage`
 
 Get conversations in which member names and messages match the search criteria in an Experience Cloud site.
 
-1233
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93781,7 +92548,6 @@ Type:String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1234
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93853,7 +92619,6 @@ Type: `ConnectApi.ChatterMessagePage`
 
 Get a page of messages that match the search criteria.
 
-1235
 
 Apex Reference Guide ChatterMessages Class
 
@@ -93927,7 +92692,6 @@ Signature
 
 ```
 
-1236
 
 Apex Reference Guide ChatterMessages Class
 
@@ -94011,7 +92775,6 @@ Type: String
 Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
 [wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
 
-1237
 
 Apex Reference Guide ChatterMessages Class
 
@@ -94081,7 +92844,6 @@ Signature
 
 ```
 
-1238
 
 ### Apex Reference Guide ChatterUsers Class
 
@@ -94152,7 +92914,6 @@ Get the first page of users and records that a user follows.
 getFollowings(communityId, userId, pageParam)
 Get a page of users and records that a user follows.
 
-1239
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94213,7 +92974,6 @@ Update the default Chatter settings for a user.
 updateUser(communityId, userId, userInput)
 Update the About Me section for a user.
 
-1240
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94288,7 +93048,6 @@ The following activities can be exported.
 
 **•** `UpVote` —User upvoted a post or comment.
 
-1241
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94361,7 +93120,6 @@ SEE ALSO:
 
 [Unfollow a Record](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectapi_examples_unfollow_record.htm)
 
-1242
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94431,7 +93189,6 @@ Signature
 
 ```
 
-1243
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94514,7 +93271,6 @@ Number of the page you want returned. Starts at 0. If you pass in `null` or 0, t
 
 Type: Integer
 
-1244
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94581,7 +93337,6 @@ Available to Guest Users
 
 32.0
 
-1245
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94653,7 +93408,6 @@ Signature
 
 ```
 
-1246
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94736,7 +93490,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1247
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94815,7 +93568,6 @@ Type: Integer
 
 Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
 
-1248
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94895,7 +93647,6 @@ Return Value
 
 Type: `ConnectApi.FollowingPage`
 
-1249
 
 Apex Reference Guide ChatterUsers Class
 
@@ -94960,7 +93711,6 @@ Requires Chatter
 
 Yes
 
-1250
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95033,7 +93783,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1251
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95117,7 +93866,6 @@ API Version
 
 45.0
 
-1252
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95185,7 +93933,6 @@ Signature
 
 ```
 
-1253
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95264,7 +94011,6 @@ Return Value
 
 Type: `ConnectApi.UserPage`
 
-1254
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95335,7 +94081,6 @@ Requires Chatter
 
 Yes
 
-1255
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95412,7 +94157,6 @@ Available to Guest Users
 
 45.0
 
-1256
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95485,7 +94229,6 @@ Signature
 
 ```
 
-1257
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95567,7 +94310,6 @@ Parameters
 
 Type: String
 
-1258
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95638,7 +94380,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1259
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95711,7 +94452,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1260
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95785,7 +94525,6 @@ Signature
 
 ```
 
-1261
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95869,7 +94608,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1262
 
 Apex Reference Guide ChatterUsers Class
 
@@ -95940,7 +94678,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1263
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96024,7 +94761,6 @@ Specifies the number of items per page. Valid values are from 1 through 100. If 
 
 Type: `ConnectApi.UserPage`
 
-1264
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96107,7 +94843,6 @@ Type: Integer
 
 Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1265
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96172,7 +94907,6 @@ Set and crop a file that hasn’t been uploaded as a user’s photo.
 
 Delete a user’s photo.
 
-1266
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96246,7 +94980,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1267
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96323,7 +95056,6 @@ Type: Integer
 
 Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1268
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96388,7 +95120,6 @@ API Version
 
 Important: In version 45.0 and later, use `searchUserGroupDetails(communityId, userId, q)` .
 
-1269
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96459,7 +95190,6 @@ Requires Chatter
 
 Yes
 
-1270
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96547,7 +95277,6 @@ Signature
 
 ```
 
-1271
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96631,7 +95360,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1272
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96713,7 +95441,6 @@ Type: `ConnectApi.PhotoInput`
 
 A `ConnectApi.PhotoInput` object specifying the file ID, version number, and cropping parameters.
 
-1273
 
 Apex Reference Guide ChatterUsers Class
 
@@ -96793,7 +95520,6 @@ Return Value
 
 Type: `ConnectApi.Photo`
 
-1274
 
 ### Apex Reference Guide Clm Class
 
@@ -96857,7 +95583,6 @@ Return Value
 
 Type: `ConnectApi.ContractOutputRepresentation on page 2246`
 
-1275
 
 ### Apex Reference Guide CommerceBuyerExperience Class
 
@@ -96920,7 +95645,6 @@ Add an order to a cart for a specific account using a webstore order summary.
 calculateAdjustmentAggregates(webstoreId, orderSummaryIds)
 Submit a job to calculate adjustment aggregates for a list of order summary IDs.
 
-1276
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -96985,7 +95709,6 @@ Get order item summaries for a delivery group summary.
 getOrderItemSummaries(webstoreId, effectiveAccountId, orderSummaryId, orderDeliveryGroupSummaryId, pageSize)
 Get order item summaries for a delivery group summary.
 
-1277
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97050,7 +95773,6 @@ Get a sorted page of order shipments with specific fields.
 getOrderSummaries(webstoreId)
 Get order summaries.
 
-1278
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97112,7 +95834,6 @@ Update a Commerce account address for a webstore.
 
 Add an order to a cart using a webstore order summary.
 
-1279
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97189,7 +95910,6 @@ Signature
 
 ```
 
-1280
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97272,7 +95992,6 @@ Type: `ConnectApi.OrderSummaryAdjustmentAggregatesAsyncInput`
 
 A `ConnectApi.OrderSummaryAdjustmentAggregatesAsyncInput` class with a list of order summary IDs.
 
-1281
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97343,7 +96062,6 @@ Requires Chatter
 
 No
 
-1282
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97425,7 +96143,6 @@ Type: String
 
 ID of the account.
 
-1283
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97499,7 +96216,6 @@ API Version
 
 54.0
 
-1284
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97593,7 +96309,6 @@ Sort order for Commerce addresses.
 
 **•** `NameDesc` —Sort in descending order of name.
 
-1285
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97677,7 +96392,6 @@ Type: `ConnectApi.CommerceAddressCollection`
 
 Get Commerce account addresses for a webstore and account.
 
-1286
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97760,7 +96474,6 @@ API Version
 
 57.0
 
-1287
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97861,7 +96574,6 @@ Sort order for Commerce addresses. Values are:
 
 **•** `CreatedDateDesc` —Sort in descending order of created date.
 
-1288
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -97935,7 +96647,6 @@ Type: `ConnectApi.OrderDeliveryGroupSummaryCollection`
 
 Get order delivery group summaries.
 
-1289
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98013,7 +96724,6 @@ Requires Chatter
 
 No
 
-1290
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98095,7 +96805,6 @@ Signature
 
 ```
 
-1291
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98184,7 +96893,6 @@ Type: String
 
 ID of the account for which the request is made. If `null`, defaults to the account ID for the context user.
 
-1292
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98272,7 +96980,6 @@ Type: String
 
 ID of the order summary.
 
-1293
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98360,7 +97067,6 @@ Type: List<String>
 List of up to 15 order delivery group summary or order delivery method fields to display in the UI in each item row. For example,
 `fields=OrderDeliveryGroupSummary.DeliveryAddress, OrderDeliveryMethod.Name` .
 
-1294
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98447,7 +97153,6 @@ Type: List<String>
 List of up to 15 order delivery group summary or order delivery method fields to display in the UI in each item row. For example,
 `fields=OrderDeliveryGroupSummary.DeliveryAddress, OrderDeliveryMethod.Name` .
 
-1295
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98528,7 +97233,6 @@ Return Value
 
 Type: `ConnectApi.OrderItemSummaryCollection`
 
-1296
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98609,7 +97313,6 @@ API Version
 
 51.0
 
-1297
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98694,7 +97397,6 @@ Signature
 
 ```
 
-1298
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98782,7 +97484,6 @@ Type: String
 
 ID of the webstore.
 
-1299
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98869,7 +97570,6 @@ Type: String
 
 ID of the account for which the request is made. If `null`, defaults to the account ID for the context user.
 
-1300
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -98961,7 +97661,6 @@ ID of the order summary.
 
 Type: String
 
-1301
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99049,7 +97748,6 @@ Type: String
 
 ID of the order delivery group summary.
 
-1302
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99138,7 +97836,6 @@ Type: String
 
 ID of the order delivery group summary.
 
-1303
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99224,7 +97921,6 @@ Type: String
 
 ID of the order summary.
 
-1304
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99312,7 +98008,6 @@ Type: String
 
 ID of the webstore.
 
-1305
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99404,7 +98099,6 @@ API Version
 
 53.0
 
-1306
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99485,7 +98179,6 @@ Signature
 
 ```
 
-1307
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99566,7 +98259,6 @@ Type: String
 
 ID of the shipment.
 
-1308
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99637,7 +98329,6 @@ Requires Chatter
 
 No
 
-1309
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99726,7 +98417,6 @@ Type: String
 
 ID of the webstore.
 
-1310
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99818,7 +98508,6 @@ ID of the webstore.
 
 Type: String
 
-1311
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99903,7 +98592,6 @@ Parameters
 
 Type: String
 
-1312
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -99976,7 +98664,6 @@ Type: `ConnectApi.OrderShipmentCollection`
 
 Get order shipments with specific fields.
 
-1313
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100052,7 +98739,6 @@ Requires Chatter
 
 No
 
-1314
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100138,7 +98824,6 @@ Requires Chatter
 
 No
 
-1315
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100232,7 +98917,6 @@ Type: `ConnectApi.OrderShipmentCollection`
 
 Get order summaries.
 
-1316
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100306,7 +98990,6 @@ Type: String
 
 ID of the account for which the request is made. If `null`, defaults to the account ID for the context user.
 
-1317
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100381,7 +99064,6 @@ Return Value
 
 Type: `ConnectApi.OrderSummaryCollectionRepresentation`
 
-1318
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100466,7 +99148,6 @@ Type: String
 
 Specifies the base64 encoded page token. Page tokens are returned as part of the response. If unspecified, the first page is returned.
 
-1319
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100552,7 +99233,6 @@ Type: Integer
 
 Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1320
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100637,7 +99317,6 @@ Type: String
 
 ID of the account for which the request is made. If `null`, defaults to the account ID for the context user.
 
-1321
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100724,7 +99403,6 @@ Return Value
 
 Type: `ConnectApi.OrderSummaryCollectionRepresentation`
 
-1322
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100816,7 +99494,6 @@ Type: String
 
 Specifies the base64 encoded page token. Page tokens are returned as part of the response. If unspecified, the first page is returned.
 
-1323
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100898,7 +99575,6 @@ Signature
 
 ```
 
-1324
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -100994,7 +99670,6 @@ supported and results in an error.
 
 Type: String
 
-1325
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -101078,7 +99753,6 @@ Type: String
 
 ID of the account for which the request is made. If `null`, defaults to the account ID for the context user.
 
-1326
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -101157,7 +99831,6 @@ These order summary fields are returned regardless of fields specified.
 
 **•** `totalAmount`
 
-1327
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -101243,7 +99916,6 @@ These order summary fields are returned regardless of fields specified.
 
 **•** `totalAmount`
 
-1328
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -101314,7 +99986,6 @@ Requires Chatter
 
 No
 
-1329
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -101387,7 +100058,6 @@ Requires Chatter
 
 No
 
-1330
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -101484,7 +100154,6 @@ Type: `ConnectApi.OrderSummaryLookupInput`
 
 Order summary lookup input representation.
 
-1331
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -101561,7 +100230,6 @@ List of specific fields, including custom fields, to return in the response alon
 
 Type: `ConnectApi.OrderSummaryLookupInput`
 
-1332
 
 Apex Reference Guide CommerceBuyerExperience Class
 
@@ -101634,7 +100302,6 @@ Return Value
 
 Type: `ConnectApi.OrderSummaryLookupOutput`
 
-1333
 
 ### Apex Reference Guide CommerceCart Class
 
@@ -101707,7 +100374,6 @@ Namespace
 
 ConnectApi
 
-1334
 
 Apex Reference Guide CommerceCart Class
 
@@ -101767,7 +100433,6 @@ Delete an item from a cart.
 deleteInventoryReservation(webstoreId, activeCartOrId, effectiveAccountId) (Pilot)
 Delete an inventory reservation.
 
-1335
 
 Apex Reference Guide CommerceCart Class
 
@@ -101830,7 +100495,6 @@ Get a cart.
 getCartSummary(webstoreId, effectiveAccountId, activeCartOrId, currencyIsoCode)
 Get a cart in a specific currency.
 
-1336
 
 Apex Reference Guide CommerceCart Class
 
@@ -101889,7 +100553,6 @@ Requires Chatter
 
 No
 
-1337
 
 Apex Reference Guide CommerceCart Class
 
@@ -101974,7 +100637,6 @@ Available to Guest Users
 
 51.0
 
-1338
 
 Apex Reference Guide CommerceCart Class
 
@@ -102059,7 +100721,6 @@ This method respects buyer View Product entitlements and only users entitled to 
 
 Add a batch of up to 100 items to a cart.
 
-1339
 
 Apex Reference Guide CommerceCart Class
 
@@ -102137,7 +100798,6 @@ Buyers with read access to carts can add, update, and delete items in carts.
 
 This method respects buyer View Product entitlements and only users entitled to view product data can access it.
 
-1340
 
 Apex Reference Guide CommerceCart Class
 
@@ -102223,7 +100883,6 @@ Type: `ConnectApi.BatchResult` []
 
 The `ConnectApi.BatchResult.getResult()` method returns a `ConnectApi.CartItem` object.
 
-1341
 
 Apex Reference Guide CommerceCart Class
 
@@ -102298,7 +100957,6 @@ Type: `ConnectApi.CartItemInput`
 
 A `ConnectApi.CartItemInput` object representing an item to add to the cart.
 
-1342
 
 Apex Reference Guide CommerceCart Class
 
@@ -102377,7 +101035,6 @@ Type: `ConnectApi.cartCouponInput`
 
 Coupon code for the coupon.
 
-1343
 
 Apex Reference Guide CommerceCart Class
 
@@ -102460,7 +101117,6 @@ Type: String
 
 Currency ISO code of the cart.
 
-1344
 
 Apex Reference Guide CommerceCart Class
 
@@ -102539,7 +101195,6 @@ Return Value
 
 Type: `ConnectApi.CartToWishlistResult`
 
-1345
 
 Apex Reference Guide CommerceCart Class
 
@@ -102614,7 +101269,6 @@ This method respects buyer View Product entitlements and only users entitled to 
 
 Calculate a cart.
 
-1346
 
 Apex Reference Guide CommerceCart Class
 
@@ -102690,7 +101344,6 @@ This method respects buyer View Product entitlements and only users entitled to 
 
 Create a cart.
 
-1347
 
 Apex Reference Guide CommerceCart Class
 
@@ -102758,7 +101411,6 @@ Requires Chatter
 
 No
 
-1348
 
 Apex Reference Guide CommerceCart Class
 
@@ -102839,7 +101491,6 @@ Signature
 
 ```
 
-1349
 
 Apex Reference Guide CommerceCart Class
 
@@ -102919,7 +101570,6 @@ ID of the webstore.
 
 Type: String
 
-1350
 
 Apex Reference Guide CommerceCart Class
 
@@ -103003,7 +101653,6 @@ Type: String
 ID of the cart, `active`, or `current` . The `current` value indicates a cart with a status that isn’t `Closed` or `PendingDelete` .
 Use active only for B2B Aura stores; all other stores must use current.
 
-1351
 
 Apex Reference Guide CommerceCart Class
 
@@ -103085,7 +101734,6 @@ that isn’t `Closed` or `PendingDelete` .
 
 Type: String
 
-1352
 
 Apex Reference Guide CommerceCart Class
 
@@ -103157,7 +101805,6 @@ Use active only for B2B Aura stores; all other stores must use current.
 
 Type: String
 
-1353
 
 Apex Reference Guide CommerceCart Class
 
@@ -103238,7 +101885,6 @@ Return Value
 
 Type: `ConnectApi.CalculateCartResult`
 
-1354
 
 Apex Reference Guide CommerceCart Class
 
@@ -103319,7 +101965,6 @@ Return Value
 
 Type: `ConnectApi.CalculateCartResult`
 
-1355
 
 Apex Reference Guide CommerceCart Class
 
@@ -103394,7 +102039,6 @@ Type: `ConnectApi.CartCouponCollection`
 
 Get coupons for a cart.
 
-1356
 
 Apex Reference Guide CommerceCart Class
 
@@ -103467,7 +102111,6 @@ Available to Guest Users
 
 57.0
 
-1357
 
 Apex Reference Guide CommerceCart Class
 
@@ -103548,7 +102191,6 @@ Requires Chatter
 
 No
 
-1358
 
 Apex Reference Guide CommerceCart Class
 
@@ -103628,7 +102270,6 @@ Requires Chatter
 
 No
 
-1359
 
 Apex Reference Guide CommerceCart Class
 
@@ -103707,7 +102348,6 @@ Type: String
 
 ID of the webstore.
 
-1360
 
 Apex Reference Guide CommerceCart Class
 
@@ -103791,7 +102431,6 @@ Type: String
 
 ID of the buyer account or guest buyer profile for which the request is made. If `null`, the default value is determined from context.
 
-1361
 
 Apex Reference Guide CommerceCart Class
 
@@ -103869,7 +102508,6 @@ Signature
 
 ```
 
-1362
 
 Apex Reference Guide CommerceCart Class
 
@@ -103953,7 +102591,6 @@ Signature
 
 ```
 
-1363
 
 Apex Reference Guide CommerceCart Class
 
@@ -104040,7 +102677,6 @@ API Version
 
 49.0
 
-1364
 
 Apex Reference Guide CommerceCart Class
 
@@ -104132,7 +102768,6 @@ Sort order for items in a cart. Values are:
 
 **•** `NameDesc` —Sorts by name in descending alphabetical order (Z–A).
 
-1365
 
 Apex Reference Guide CommerceCart Class
 
@@ -104214,7 +102849,6 @@ Type: String
 Comma-separated list of up to 15 product fields. Results include fields that you have access to. Some product fields (such as
 `productName` and `sku` ) are returned even when not included in the _`productFields`_ parameter.
 
-1366
 
 Apex Reference Guide CommerceCart Class
 
@@ -104299,7 +102933,6 @@ ID of the webstore.
 
 Type: String
 
-1367
 
 Apex Reference Guide CommerceCart Class
 
@@ -104383,7 +103016,6 @@ Requires Chatter
 
 No
 
-1368
 
 Apex Reference Guide CommerceCart Class
 
@@ -104483,7 +103115,6 @@ Type: Boolean
 
 Indicates whether to include coupons ( `True` ) or not ( `False` )
 
-1369
 
 Apex Reference Guide CommerceCart Class
 
@@ -104559,7 +103190,6 @@ Type: String
 ID of the cart, `active`, or `current` . The `current` value indicates a cart with a status that isn’t `Closed` or `PendingDelete` .
 Use active only for B2B Aura stores; all other stores must use current.
 
-1370
 
 Apex Reference Guide CommerceCart Class
 
@@ -104636,7 +103266,6 @@ Return Value
 
 Type: `ConnectApi.CartPromotionCollection`
 
-1371
 
 Apex Reference Guide CommerceCart Class
 
@@ -104709,7 +103338,6 @@ API Version
 
 57.0
 
-1372
 
 Apex Reference Guide CommerceCart Class
 
@@ -104785,7 +103413,6 @@ Requires Chatter
 
 No
 
-1373
 
 Apex Reference Guide CommerceCart Class
 
@@ -104863,7 +103490,6 @@ Signature
 
 ```
 
-1374
 
 Apex Reference Guide CommerceCart Class
 
@@ -104940,7 +103566,6 @@ Signature
 
 ```
 
-1375
 
 Apex Reference Guide CommerceCart Class
 
@@ -105024,7 +103649,6 @@ Signature
 
 ```
 
-1376
 
 Apex Reference Guide CommerceCart Class
 
@@ -105109,7 +103733,6 @@ Signature
 
 ```
 
-1377
 
 Apex Reference Guide CommerceCart Class
 
@@ -105195,7 +103818,6 @@ ID of the buyer account or guest buyer profile for which the request is made. If
 
 Type: String
 
-1378
 
 Apex Reference Guide CommerceCart Class
 
@@ -105279,7 +103901,6 @@ ID of the buyer account or guest buyer profile for which the request is made. If
 
 Type: `ConnectApi.CartMessagesVisibilityInput`
 
-1379
 
 Apex Reference Guide CommerceCart Class
 
@@ -105364,7 +103985,6 @@ Type: `ConnectApi.CartItemInput`
 
 A `ConnectApi.CartItemInput` object representing a cart item to update.
 
-1380
 
 Apex Reference Guide CommerceCart Class
 
@@ -105445,7 +104065,6 @@ Type: String
 
 ID of the cart item.
 
-1381
 
 Apex Reference Guide CommerceCart Class
 
@@ -105525,7 +104144,6 @@ Type: String
 
 ID of the buyer account or guest buyer profile for which the request is made. If `null`, the default value is determined from context.
 
-1382
 
 Apex Reference Guide CommerceCart Class
 
@@ -105605,7 +104223,6 @@ API Version
 
 58.0
 
-1383
 
 ### Apex Reference Guide CommerceCatalog Class
 
@@ -105681,7 +104298,6 @@ ConnectApi
 
 ### These methods are for CommerceCatalog . All methods are static.
 
-1384
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -105743,7 +104359,6 @@ getProducts(webstoreId, effectiveAccountId, ids, skus, fields, excludeMedia, inc
 includeAttributeSetInfo, includeGroupByAttributeVariationInfo, noCache)
 Get fields and default images for a list of products.
 
-1385
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -105836,7 +104451,6 @@ Maximum number of hierarchical levels to be retrieved.
 
 Type: String
 
-1386
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -105918,7 +104532,6 @@ Type: List<String>
 
 Comma-separated list of field names.
 
-1387
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -105999,7 +104612,6 @@ Available to Guest Users
 
 51.0
 
-1388
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106096,7 +104708,6 @@ Type: Boolean
 
 Specifies whether the entitlement details of the product are returned ( `false` ) or not ( `true` ). If unspecified, defaults to `false` .
 
-1389
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106174,7 +104785,6 @@ Signature
 
 ```
 
-1390
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106276,7 +104886,6 @@ Type: Boolean
 
 Specifies whether the attribute set information for the product is returned ( `false` ) or not ( `true` ). If unspecified, defaults to `false` .
 
-1391
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106356,7 +104965,6 @@ ID of the webstore.
 
 Type: String
 
-1392
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106459,7 +105067,6 @@ Type: Boolean
 Specifies whether product selling models are returned or not. The behavior of this parameter depends on whether you turn on the
 CommerceSubscription permission. If the permission is on, and if you set the parameter to `false` (or if you omit the parameter),
 
-1393
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106535,7 +105142,6 @@ Type: String
 
 ID of the product.
 
-1394
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106631,7 +105237,6 @@ product selling models are returned. If the permission is on, and if you set the
 returned. If the permission is off, product selling models are not returned, regardless of whether you omit the parameter or provide
 a value.
 
-1395
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106715,7 +105320,6 @@ ID of the buyer account or guest buyer profile for which the request is made.
 
 Type: List<String>
 
-1396
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106809,7 +105413,6 @@ Return Value
 
 Type: `ConnectApi.ProductDetail`
 
-1397
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106895,7 +105498,6 @@ Type: Boolean
 
 Specifies whether the fields are returned ( `false` ) or not ( `true` ). If unspecified, defaults to `false` .
 
-1398
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -106975,7 +105577,6 @@ Type: String
 
 ID of the buyer account or guest buyer profile for which the request is made. If `null`, the default value is determined from context.
 
-1399
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -107048,7 +105649,6 @@ Requires Chatter
 
 No
 
-1400
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -107128,7 +105728,6 @@ Signature
 
 ```
 
-1401
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -107228,7 +105827,6 @@ Specifies whether the attribute set information for the product is returned ( `f
 
 Type: Boolean
 
-1402
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -107313,7 +105911,6 @@ context.
 
 Type: List<String>
 
-1403
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -107388,7 +105985,6 @@ Signature
 
 ```
 
-1404
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -107473,7 +106069,6 @@ Requires Chatter
 
 No
 
-1405
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -107576,7 +106171,6 @@ Specifies whether the attribute set information for the product is returned ( `t
 
 Type: Boolean
 
-1406
 
 Apex Reference Guide CommerceCatalog Class
 
@@ -107662,7 +106256,6 @@ List of skus. Specify either a list of up to 20 SKUs or product IDs, but not bot
 
 Type: List<String>
 
-1407
 
 ### Apex Reference Guide CommerceCatalogManagement Class
 
@@ -107738,7 +106331,6 @@ ConnectApi
 
 ### These methods are for CommerceCatalogManagement . All methods are static.
 
-1408
 
 Apex Reference Guide CommerceCatalogManagement Class
 
@@ -107820,7 +106412,6 @@ Signature
 
 ```
 
-1409
 
 Apex Reference Guide CommerceCatalogManagement Class
 
@@ -107909,7 +106500,6 @@ Type: `ConnectApi.CompositeCommerceVariationInputRepresentation`
 
 Details used to create the variation product.
 
-1410
 
 ### Apex Reference Guide CommercePromotions Class
 
@@ -107960,7 +106550,6 @@ Requires Chatter
 
 No
 
-1411
 
 Apex Reference Guide CommercePromotions Class
 
@@ -108029,7 +106618,6 @@ Return Value
 
 Type: `ConnectApi.PromotionEvaluation`
 
-1412
 
 ### Apex Reference Guide CommerceSearch Class
 
@@ -108092,7 +106680,6 @@ Get sort rules for the live index.
 getSuggestions(webstoreId, effectiveAccountId, searchTerm, maxResults)
 Get suggestions for product searches.
 
-1413
 
 Apex Reference Guide CommerceSearch Class
 
@@ -108155,7 +106742,6 @@ Requires Chatter
 
 No
 
-1414
 
 Apex Reference Guide CommerceSearch Class
 
@@ -108239,7 +106825,6 @@ Signature
 
 ```
 
-1415
 
 Apex Reference Guide CommerceSearch Class
 
@@ -108324,7 +106909,6 @@ Signature
 
 ```
 
-1416
 
 ### Apex Reference Guide CommerceSearchConnectFamily Class
 
@@ -108396,7 +106980,6 @@ API Version
 
 58.0
 
-1417
 
 Apex Reference Guide CommerceSearchConnectFamily Class
 
@@ -108490,7 +107073,6 @@ Type: Integer
 
 Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
 
-1418
 
 ### Apex Reference Guide CommerceSearchSettings Class
 
@@ -108559,7 +107141,6 @@ Get Commerce search index logs.
 
 Create an index of a product catalog.
 
-1419
 
 Apex Reference Guide CommerceSearchSettings Class
 
@@ -108632,7 +107213,6 @@ Signature
 
 ```
 
-1420
 
 Apex Reference Guide CommerceSearchSettings Class
 
@@ -108701,7 +107281,6 @@ API Version
 
 57.0
 
-1421
 
 ### Apex Reference Guide CommerceStorePricing Class
 
@@ -108764,7 +107343,6 @@ Get the prices for multiple products.
 getProductPrices(webstoreId, effectiveAccountId, pricingInput, currencyIsoCode)
 Get the prices for multiple products using a currency ISO code.
 
-1422
 
 Apex Reference Guide CommerceStorePricing Class
 
@@ -108839,7 +107417,6 @@ and returns the appropriate values.
 
 Get a product’s list and buyer price for specified product selling models.
 
-1423
 
 Apex Reference Guide CommerceStorePricing Class
 
@@ -108914,7 +107491,6 @@ Available to Guest Users
 
 54.0
 
-1424
 
 Apex Reference Guide CommerceStorePricing Class
 
@@ -108984,7 +107560,6 @@ Requires Chatter
 
 No
 
-1425
 
 Apex Reference Guide CommerceStorePricing Class
 
@@ -109058,7 +107633,6 @@ Requires Chatter
 
 No
 
-1426
 
 Apex Reference Guide CommerceStorePricing Class
 
@@ -109138,7 +107712,6 @@ Signature
 
 ```
 
-1427
 
 ### Apex Reference Guide CommerceWishlist Class
 
@@ -109210,7 +107783,6 @@ Add an item to a wishlist.
 addWishlistToCart(webstoreId, wishlistId)
 Add a wishlist to the active cart for the context user.
 
-1428
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109273,7 +107845,6 @@ API Version
 
 49.0
 
-1429
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109350,7 +107921,6 @@ Signature
 
 ```
 
-1430
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109433,7 +108003,6 @@ ID of the webstore.
 
 Type: String
 
-1431
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109502,7 +108071,6 @@ Usage
 
 This method respects buyer View Product entitlements and only users entitled to view product data can access it.
 
-1432
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109578,7 +108146,6 @@ Requires Chatter
 
 No
 
-1433
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109662,7 +108229,6 @@ Parameters
 
 Type: String
 
-1434
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109735,7 +108301,6 @@ Type: `ConnectApi.Wishlist`
 
 Delete a wishlist for the context user.
 
-1435
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109813,7 +108378,6 @@ ID of the webstore.
 
 Type: String
 
-1436
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109902,7 +108466,6 @@ Type: `ConnectApi.WishlistItemSortOrder`
 
 Sort order for wishlist items. Values are:
 
-1437
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -109987,7 +108550,6 @@ Type: Integer
 
 Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
 
-1438
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -110072,7 +108634,6 @@ Type: String
 Comma-separated list of custom product fields. Fields aren’t case-sensitive. For example, `ProductCode` and `productcode`
 return the same results.
 
-1439
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -110157,7 +108718,6 @@ Type: String
 
 ID of the wishlist.
 
-1440
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -110242,7 +108802,6 @@ ID of the webstore.
 
 Type: String
 
-1441
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -110331,7 +108890,6 @@ If _`includeDisplayedList`_ is `false`, _`productFields`_ is ignored.
 
 Type: `ConnectApi.WishlistItemSortOrder`
 
-1442
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -110414,7 +108972,6 @@ return the same results.
 
 If _`includeDisplayedList`_ is `false`, _`productFields`_ is ignored.
 
-1443
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -110499,7 +109056,6 @@ ID of the wishlist.
 
 Type: String
 
-1444
 
 Apex Reference Guide CommerceWishlist Class
 
@@ -110573,7 +109129,6 @@ API Version
 
 50.0
 
-1445
 
 ### Apex Reference Guide Communities Class
 
@@ -110650,7 +109205,6 @@ Get a list of Experience Cloud sites that the context user has access to.
 getCommunities(communityStatus)
 Get a list of Experience Cloud sites with the specified status that the context user has access to.
 
-1446
 
 Apex Reference Guide Communities Class
 
@@ -110717,7 +109271,6 @@ _`communityStatus`_ —Status of the Experience Cloud site. Values are:
 
 **•** `UnderConstruction`
 
-1447
 
 ### Apex Reference Guide CommunityModeration Class
 
@@ -110777,7 +109330,6 @@ ConnectApi
 
 All methods in this class require Chatter and are subject to the per user, per namespace, per hour rate limit.
 
-1448
 
 Apex Reference Guide CommunityModeration Class
 
@@ -110840,7 +109392,6 @@ Get the moderation flags with specified visibility on a comment.
 getFlagsOnComment(communityId, commentId, pageSize, pageParam)
 Get a page of moderation flags on a comment.
 
-1449
 
 Apex Reference Guide CommunityModeration Class
 
@@ -110908,7 +109459,6 @@ Return Value
 
 Type: `ConnectApi.ModerationFlags`
 
-1450
 
 Apex Reference Guide CommunityModeration Class
 
@@ -110980,7 +109530,6 @@ To add a flag to a comment, Allow members to flag content must be selected for a
 
 Add a moderation flag of the specified type to a comment.
 
-1451
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111053,7 +109602,6 @@ Requires Chatter
 
 Yes
 
-1452
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111137,7 +109685,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1453
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111220,7 +109767,6 @@ ID for a comment.
 
 Type: `ConnectApi.CommunityFlagType`
 
-1454
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111298,7 +109844,6 @@ ID for a comment.
 
 Type: `ConnectApi.CommunityFlagVisibility`
 
-1455
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111378,7 +109923,6 @@ Type of moderation flag.
 
 **•** `FlagAsSpam` —Flag for spam.
 
-1456
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111452,7 +109996,6 @@ Type: String
 
 ID of the feed element.
 
-1457
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111524,7 +110067,6 @@ Type: `ConnectApi.ModerationCapability`
 
 If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
 
-1458
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111597,7 +110139,6 @@ To add a flag to a feed element, Allow members to flag content must be selected 
 
 Add a moderation flag with a note to a feed element.
 
-1459
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111673,7 +110214,6 @@ Signature
 
 ```
 
-1460
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111748,7 +110288,6 @@ Signature
 
 ```
 
-1461
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111826,7 +110365,6 @@ Signature
 
 ```
 
-1462
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111908,7 +110446,6 @@ Parameters
 
 Type: String
 
-1463
 
 Apex Reference Guide CommunityModeration Class
 
@@ -111986,7 +110523,6 @@ Signature
 
 ```
 
-1464
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112065,7 +110601,6 @@ Visibility behavior of a flag for various user types.
 
 **•** `ModeratorsOnly` —The flag is visible only to users with moderation permissions on the flagged element or item.
 
-1465
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112140,7 +110675,6 @@ Return Value
 
 Type: `ConnectApi.ModerationFlags`
 
-1466
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112223,7 +110757,6 @@ Return Value
 
 Type: `ConnectApi.ModerationFlags`
 
-1467
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112292,7 +110825,6 @@ Requires Chatter
 
 Yes
 
-1468
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112367,7 +110899,6 @@ Signature
 
 ```
 
-1469
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112452,7 +110983,6 @@ Parameters
 
 Type: String
 
-1470
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112527,7 +111057,6 @@ Signature
 
 ```
 
-1471
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112610,7 +111139,6 @@ ID of the feed element.
 
 Type: String
 
-1472
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112671,7 +111199,6 @@ Signature
 
 ```
 
-1473
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112752,7 +111279,6 @@ Visibility behavior of a flag for various user types.
 
 **•** `ModeratorsOnly` —The flag is visible only to users with moderation permissions on the flagged element or item.
 
-1474
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112820,7 +111346,6 @@ To get moderation flags, the context user must have the Moderate Experiences Fee
 
 Get the moderation flags with specified visibility on a feed item.
 
-1475
 
 Apex Reference Guide CommunityModeration Class
 
@@ -112892,7 +111417,6 @@ API Version
 
 Important: In version 32.0 and later, use removeFlagFromFeedElement(communityId, feedElementId, userId).
 
-1476
 
 ### Apex Reference Guide ContentHub Class
 
@@ -112960,7 +111484,6 @@ IN THIS SECTION:
 addRepositoryItem(repositoryId, repositoryFolderId, file)
 Add a repository item.
 
-1477
 
 Apex Reference Guide ContentHub Class
 
@@ -113024,7 +111547,6 @@ Get a page of repositories in an Experience Cloud site.
 getRepository(repositoryId)
 Get a repository.
 
-1478
 
 Apex Reference Guide ContentHub Class
 
@@ -113085,7 +111607,6 @@ Requires Chatter
 
 No
 
-1479
 
 Apex Reference Guide ContentHub Class
 
@@ -113175,7 +111696,6 @@ the file’s ID, name, description, external URL, and download URL.
 
 ```
 
-1480
 
 Apex Reference Guide ContentHub Class
 
@@ -113259,7 +111779,6 @@ Type: `ConnectApi.ContentHubItemInput`
 
 The item type ID and fields of the item type.
 
-1481
 
 Apex Reference Guide ContentHub Class
 
@@ -113335,7 +111854,6 @@ Type: `ConnectApi.BinaryInput`
 
 The binary file.
 
-1482
 
 Apex Reference Guide ContentHub Class
 
@@ -113416,7 +111934,6 @@ file’s ID, name, description, external URL, and download URL.
 
 ```
 
-1483
 
 Apex Reference Guide ContentHub Class
 
@@ -113503,7 +112020,6 @@ Type: `ConnectApi.BinaryInput`
 
 The binary file.
 
-1484
 
 Apex Reference Guide ContentHub Class
 
@@ -113565,7 +112081,6 @@ Return Value
 
 Type: `ConnectApi.ContentHubAllowedItemTypeCollection`
 
-1485
 
 Apex Reference Guide ContentHub Class
 
@@ -113637,7 +112152,6 @@ Return Value
 
 Type: `ConnectApi.ContentHubAllowedItemTypeCollection`
 
-1486
 
 Apex Reference Guide ContentHub Class
 
@@ -113712,7 +112226,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1487
 
 Apex Reference Guide ContentHub Class
 
@@ -113788,7 +112301,6 @@ Type: String
 
 The ID of the repository.
 
-1488
 
 Apex Reference Guide ContentHub Class
 
@@ -113866,7 +112378,6 @@ The ID of the repository.
 
 Type: String
 
-1489
 
 Apex Reference Guide ContentHub Class
 
@@ -113947,7 +112458,6 @@ setTestGetFilePreview(repositoryId, repositoryFileId, formatType, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1490
 
 Apex Reference Guide ContentHub Class
 
@@ -114034,7 +112544,6 @@ Type: Integer
 
 The starting page number in the range of file preview URLs.
 
-1491
 
 Apex Reference Guide ContentHub Class
 
@@ -114114,7 +112623,6 @@ The ID of the repository file.
 
 Type: `ConnectApi.FilePreviewFormat`
 
-1492
 
 Apex Reference Guide ContentHub Class
 
@@ -114184,7 +112692,6 @@ Signature
 
 ```
 
-1493
 
 Apex Reference Guide ContentHub Class
 
@@ -114263,7 +112770,6 @@ Return Value
 
 Type: `ConnectApi.FilePreview`
 
-1494
 
 Apex Reference Guide ContentHub Class
 
@@ -114332,7 +112838,6 @@ setTestGetItemType(repositoryId, repositoryItemTypeId, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1495
 
 Apex Reference Guide ContentHub Class
 
@@ -114402,7 +112907,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 
 Get information about a repository file’s supported previews.
 
-1496
 
 Apex Reference Guide ContentHub Class
 
@@ -114478,7 +112982,6 @@ we show every rendition URL available.
 
 ```
 
-1497
 
 Apex Reference Guide ContentHub Class
 
@@ -114546,7 +113049,6 @@ Return Value
 
 Type: `ConnectApi.FilePreviewCollection`
 
-1498
 
 Apex Reference Guide ContentHub Class
 
@@ -114612,7 +113114,6 @@ This example gets all repositories and gets the first SharePoint online reposito
 
 ```
 
-1499
 
 Apex Reference Guide ContentHub Class
 
@@ -114679,7 +113180,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 
 Get a page of repositories.
 
-1500
 
 Apex Reference Guide ContentHub Class
 
@@ -114745,7 +113245,6 @@ Requires Chatter
 
 No
 
-1501
 
 Apex Reference Guide ContentHub Class
 
@@ -114818,7 +113317,6 @@ Signature
 
 ```
 
-1502
 
 Apex Reference Guide ContentHub Class
 
@@ -114895,7 +113393,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1503
 
 Apex Reference Guide ContentHub Class
 
@@ -114964,7 +113461,6 @@ Usage
 To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
 with the same parameters or the code throws an exception.
 
-1504
 
 Apex Reference Guide ContentHub Class
 
@@ -115049,7 +113545,6 @@ Specifies whether to include permission information, such as whether the file is
 
 Managing external file permissions is supported for Google Drive, SharePoint Online, and OneDrive for Business.
 
-1505
 
 Apex Reference Guide ContentHub Class
 
@@ -115127,7 +113622,6 @@ API Version
 
 39.0
 
-1506
 
 Apex Reference Guide ContentHub Class
 
@@ -115202,7 +113696,6 @@ Requires Chatter
 
 No
 
-1507
 
 Apex Reference Guide ContentHub Class
 
@@ -115278,7 +113771,6 @@ Requires Chatter
 
 No
 
-1508
 
 Apex Reference Guide ContentHub Class
 
@@ -115357,7 +113849,6 @@ Requires Chatter
 
 No
 
-1509
 
 Apex Reference Guide ContentHub Class
 
@@ -115432,7 +113923,6 @@ Signature
 
 ```
 
-1510
 
 Apex Reference Guide ContentHub Class
 
@@ -115519,7 +114009,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 
 Get repository folder items in an Experience Cloud site.
 
-1511
 
 Apex Reference Guide ContentHub Class
 
@@ -115594,7 +114083,6 @@ API Version
 
 39.0
 
-1512
 
 Apex Reference Guide ContentHub Class
 
@@ -115673,7 +114161,6 @@ API Version
 
 39.0
 
-1513
 
 Apex Reference Guide ContentHub Class
 
@@ -115753,7 +114240,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 
 Update the name of a repository file.
 
-1514
 
 Apex Reference Guide ContentHub Class
 
@@ -115835,7 +114321,6 @@ external URL, download URL.
 
 ```
 
-1515
 
 Apex Reference Guide ContentHub Class
 
@@ -115921,7 +114406,6 @@ The item type ID and fields of the item type.
 
 When updating the metadata of a repository file, only the name field can be updated.
 
-1516
 
 Apex Reference Guide ContentHub Class
 
@@ -116004,7 +114488,6 @@ setTestUpdateRepositoryFile(repositoryId, repositoryFileId, file, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1517
 
 Apex Reference Guide ContentHub Class
 
@@ -116080,7 +114563,6 @@ setTestUpdateRepositoryFile(repositoryId, repositoryFileId, file, fileData, resu
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1518
 
 Apex Reference Guide ContentHub Class
 
@@ -116160,7 +114642,6 @@ Return Value
 
 Type: `ConnectApi.RepositoryFileDetail`
 
-1519
 
 Apex Reference Guide ContentHub Class
 
@@ -116235,7 +114716,6 @@ Type: `ConnectApi.RepositoryFolderItem`
 
 Object containing test data.
 
-1520
 
 Apex Reference Guide ContentHub Class
 
@@ -116317,7 +114797,6 @@ Type: `ConnectApi.RepositoryFolderItem`
 
 Object containing test data.
 
-1521
 
 Apex Reference Guide ContentHub Class
 
@@ -116399,7 +114878,6 @@ Type: `ConnectApi.RepositoryFolderItem`
 
 Object containing test data.
 
-1522
 
 Apex Reference Guide ContentHub Class
 
@@ -116489,7 +114967,6 @@ Type: `ConnectApi.RepositoryFolderItem`
 
 Object containing test data.
 
-1523
 
 Apex Reference Guide ContentHub Class
 
@@ -116558,7 +115035,6 @@ getAllowedItemTypes(repositoryId, repositoryFolderId)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1524
 
 Apex Reference Guide ContentHub Class
 
@@ -116633,7 +115109,6 @@ getAllowedItemTypes(repositoryId, repositoryFolderId, filter)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1525
 
 Apex Reference Guide ContentHub Class
 
@@ -116716,7 +115191,6 @@ Register a `ConnectApi.ContentHubAllowedItemTypeCollection` object to be returne
 `getAllowedItemTypes(communityId, repositoryId, repositoryFolderId, filter)` method is called
 in a test context. Use the method with the same parameters or you receive an exception.
 
-1526
 
 Apex Reference Guide ContentHub Class
 
@@ -116799,7 +115273,6 @@ Register a `ConnectApi.FilePreview` object to be returned when the matching `get
 `repositoryFileId, formatType)` method is called in a test context. Use the method with the same parameters or you
 receive an exception.
 
-1527
 
 Apex Reference Guide ContentHub Class
 
@@ -116881,7 +115354,6 @@ getFilePreview(repositoryId, repositoryFileId, formatType)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1528
 
 Apex Reference Guide ContentHub Class
 
@@ -116972,7 +115444,6 @@ The starting page number in the range of file preview URLs.
 
 Type: Integer
 
-1529
 
 Apex Reference Guide ContentHub Class
 
@@ -117058,7 +115529,6 @@ Specifies the format of the file preview. Values are:
 
 **•** `Audio` —Preview format is MP3.
 
-1530
 
 Apex Reference Guide ContentHub Class
 
@@ -117135,7 +115605,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1531
 
 Apex Reference Guide ContentHub Class
 
@@ -117218,7 +115687,6 @@ getFilePreview(communityId, repositoryId, repositoryFileId, formatType, startPag
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1532
 
 Apex Reference Guide ContentHub Class
 
@@ -117287,7 +115755,6 @@ API Version
 
 40.0
 
-1533
 
 Apex Reference Guide ContentHub Class
 
@@ -117371,7 +115838,6 @@ Parameters
 
 Type: String
 
-1534
 
 Apex Reference Guide ContentHub Class
 
@@ -117456,7 +115922,6 @@ Type: `ConnectApi.FilePreviewCollection`
 
 Object containing test data.
 
-1535
 
 Apex Reference Guide ContentHub Class
 
@@ -117518,7 +115983,6 @@ API Version
 
 40.0
 
-1536
 
 Apex Reference Guide ContentHub Class
 
@@ -117602,7 +116066,6 @@ Specifies the number of items per page. Valid values are from 1 through 100. If 
 
 Type: `ConnectApi.ContentHubRepositoryCollection`
 
-1537
 
 Apex Reference Guide ContentHub Class
 
@@ -117671,7 +116134,6 @@ Type: `ConnectApi.ContentHubRepositoryCollection`
 
 Object containing test data.
 
-1538
 
 Apex Reference Guide ContentHub Class
 
@@ -117738,7 +116200,6 @@ Register a `ConnectApi.ContentHubRepository` object to be returned when the matc
 `getRepository(communityId, repositoryId)` method is called in a test context. Use the method with the same
 parameters or you receive an exception.
 
-1539
 
 Apex Reference Guide ContentHub Class
 
@@ -117818,7 +116279,6 @@ Parameters
 
 Type: String
 
-1540
 
 Apex Reference Guide ContentHub Class
 
@@ -117906,7 +116366,6 @@ Specifies whether to include permission information, such as whether the file is
 
 Managing external file permissions is supported for Google Drive, SharePoint Online, and OneDrive for Business.
 
-1541
 
 Apex Reference Guide ContentHub Class
 
@@ -117981,7 +116440,6 @@ Type: `ConnectApi.RepositoryFileDetail`
 
 Object containing test data.
 
-1542
 
 Apex Reference Guide ContentHub Class
 
@@ -118070,7 +116528,6 @@ Type: `ConnectApi.RepositoryFileDetail`
 
 Object containing test data.
 
-1543
 
 Apex Reference Guide ContentHub Class
 
@@ -118139,7 +116596,6 @@ getRepositoryFolder(repositoryId, repositoryFolderId)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1544
 
 Apex Reference Guide ContentHub Class
 
@@ -118217,7 +116673,6 @@ Register a `ConnectApi.RepositoryFolderItemsCollection` object to be returned wh
 `getRepositoryFolderItems(repositoryId, repositoryFolderId)` method is called in a test context. Use the
 method with the same parameters or you receive an exception.
 
-1545
 
 Apex Reference Guide ContentHub Class
 
@@ -118296,7 +116751,6 @@ Signature
 
 ```
 
-1546
 
 Apex Reference Guide ContentHub Class
 
@@ -118380,7 +116834,6 @@ Type: String
 
 The ID of the repository.
 
-1547
 
 Apex Reference Guide ContentHub Class
 
@@ -118472,7 +116925,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1548
 
 Apex Reference Guide ContentHub Class
 
@@ -118556,7 +117008,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1549
 
 Apex Reference Guide ContentHub Class
 
@@ -118641,7 +117092,6 @@ Type: String
 
 The ID of the repository.
 
-1550
 
 Apex Reference Guide ContentHub Class
 
@@ -118729,7 +117179,6 @@ The ID of the repository file.
 
 Type: `ConnectApi.ContentHubItemInput`
 
-1551
 
 Apex Reference Guide ContentHub Class
 
@@ -118813,7 +117262,6 @@ Type: String
 
 The ID of the repository file.
 
-1552
 
 ### Apex Reference Guide ConversationApplicationDefinition Class
 
@@ -118873,7 +117321,6 @@ Requires Chatter
 
 No
 
-1553
 
 ### Apex Reference Guide Datacloud Class
 
@@ -118938,7 +117385,6 @@ Get a list of purchased company records for an order.
 getCompany(companyId)
 Get a company record.
 
-1554
 
 Apex Reference Guide Datacloud Class
 
@@ -119008,7 +117454,6 @@ Return Value
 
 Type: `ConnectApi.DatacloudCompanies`
 
-1555
 
 Apex Reference Guide Datacloud Class
 
@@ -119078,7 +117523,6 @@ Return Value
 
 Type: `ConnectApi.DatacloudContact`
 
-1556
 
 Apex Reference Guide Datacloud Class
 
@@ -119152,7 +117596,6 @@ Signature
 
 ```
 
-1557
 
 Apex Reference Guide Datacloud Class
 
@@ -119215,7 +117658,6 @@ Requires Chatter
 
 No
 
-1558
 
 ### Apex Reference Guide EinsteinLLM Class
 
@@ -119286,7 +117728,6 @@ Get a list of prompt templates using the specified filters.
 
 Generates a response using the specified prompt template and input parameters.
 
-1559
 
 Apex Reference Guide EinsteinLLM Class
 
@@ -119368,7 +117809,6 @@ In this example, call `generateMessagesForPromptTemplate(promptTemplateDevName,`
 
 ```
 
-1560
 
 Apex Reference Guide EinsteinLLM Class
 
@@ -119453,7 +117893,6 @@ retrieved.
 
 Type: Integer
 
-1561
 
 Apex Reference Guide EinsteinLLM Class
 
@@ -119544,7 +117983,6 @@ Example
 
 ```
 
-1562
 
 ### Apex Reference Guide EmailMergeFieldService Class EmailMergeFieldService Class
 
@@ -119602,7 +118040,6 @@ Type: `ConnectApi.EmailMergeFieldInfo`
 
 Get, set and crop, and delete employee banner photos and photos.
 
-1563
 
 Apex Reference Guide EmployeeProfiles Class
 
@@ -119659,7 +118096,6 @@ API Version
 
 51.0
 
-1564
 
 Apex Reference Guide EmployeeProfiles Class
 
@@ -119729,7 +118165,6 @@ API Version
 
 51.0
 
-1565
 
 Apex Reference Guide EmployeeProfiles Class
 
@@ -119799,7 +118234,6 @@ Type: `ConnectApi.Photo`
 
 Set an uploaded file as an employee’s banner photo.
 
-1566
 
 Apex Reference Guide EmployeeProfiles Class
 
@@ -119871,7 +118305,6 @@ Signature
 
 ```
 
-1567
 
 Apex Reference Guide EmployeeProfiles Class
 
@@ -119944,7 +118377,6 @@ Return Value
 
 Type: `ConnectApi.BannerPhoto`
 
-1568
 
 Apex Reference Guide EmployeeProfiles Class
 
@@ -120015,7 +118447,6 @@ API Version
 
 51.0
 
-1569
 
 Apex Reference Guide EmployeeProfiles Class
 
@@ -120087,7 +118518,6 @@ Signature
 
 ```
 
-1570
 
 Apex Reference Guide EmployeeProfiles Class
 
@@ -120160,7 +118590,6 @@ Return Value
 
 Type: `ConnectApi.Photo`
 
-1571
 
 ### Apex Reference Guide Exchanges Class
 
@@ -120231,7 +118660,6 @@ Namespace
 
 ConnectApi
 
-1572
 
 Apex Reference Guide Exchanges Class
 
@@ -120294,7 +118722,6 @@ Creates an exchange order summary, based on the return order and the cart used f
 attached to the original order summary (created before any exchanges occurred). You can also provide optional payment information
 and optional information about order summary sequences, which affect the newly created exchange order summary.
 
-1573
 
 ### Apex Reference Guide ExtendedCommerceDelivery Class
 
@@ -120359,7 +118786,6 @@ API Version
 
 63.0
 
-1574
 
 ### Apex Reference Guide ExternalEmailServices Class
 
@@ -120429,7 +118855,6 @@ Get information about whether an external email service has been authorized to s
 
 Get information about whether an external email service has been authorized to send email on behalf of a user.
 
-1575
 
 ### Apex Reference Guide ExternalManagedAccount Class
 
@@ -120493,7 +118918,6 @@ Get externally managed accounts for a store.
 getExternalManagedAccounts(webstoreId, includeMyAccount)
 Get externally managed accounts, including the context user’s account, for a store.
 
-1576
 
 Apex Reference Guide ExternalManagedAccount Class
 
@@ -120564,7 +118988,6 @@ Parameters
 
 Type: String
 
-1577
 
 Apex Reference Guide ExternalManagedAccount Class
 
@@ -120632,7 +119055,6 @@ Requires Chatter
 
 No
 
-1578
 
 ### Apex Reference Guide FieldService Class
 
@@ -120700,7 +119122,6 @@ Requires Chatter
 
 Yes
 
-1579
 
 Apex Reference Guide FieldService Class
 
@@ -120782,7 +119203,6 @@ Return Value
 
 Type: `ConnectApi.ShiftsFromPattern`
 
-1580
 
 ### Apex Reference Guide FulfillmentOrder Class FulfillmentOrder Class
 
@@ -120845,7 +119265,6 @@ Signature
 
 ```
 
-1581
 
 Apex Reference Guide FulfillmentOrder Class
 
@@ -120926,7 +119345,6 @@ API Version
 
 48.0
 
-1582
 
 Apex Reference Guide FulfillmentOrder Class
 
@@ -121010,7 +119428,6 @@ Example
 
 ```
 
-1583
 
 Apex Reference Guide FulfillmentOrder Class
 
@@ -121091,7 +119508,6 @@ Example
 
 ```
 
-1584
 
 Apex Reference Guide FulfillmentOrder Class
 
@@ -121166,7 +119582,6 @@ Signature
 
 ```
 
-1585
 
 ### Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
 
@@ -121225,7 +119640,6 @@ API Version
 
 60.0
 
-1586
 
 Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
 
@@ -121305,7 +119719,6 @@ Type: String
 
 ID of the channel.
 
-1587
 
 Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
 
@@ -121397,7 +119810,6 @@ ID of the channel.
 
 Type: String
 
-1588
 
 Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
 
@@ -121477,7 +119889,6 @@ Return Value
 
 Type: `ConnectApi.BusObjSummaryOutputRepresentation` on page 2171
 
-1589
 
 Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
 
@@ -121550,7 +119961,6 @@ Parameters
 
 Type: `ConnectApi.BusObjRecommendationInputRepresentation` on page 1963
 
-1590
 
 ### Apex Reference Guide Knowledge Class
 
@@ -121610,7 +120020,6 @@ Signature
 
 ```
 
-1591
 
 Apex Reference Guide Knowledge Class
 
@@ -121687,7 +120096,6 @@ Type: Integer
 
 The maximum number of articles returned. Values can be from 0 to 25. Default is 5.
 
-1592
 
 Apex Reference Guide Knowledge Class
 
@@ -121757,7 +120165,6 @@ Type: Integer
 
 The maximum number of articles returned. Values can be from 0 to 25. Default is 5.
 
-1593
 
 Apex Reference Guide Knowledge Class
 
@@ -121826,7 +120233,6 @@ Type: `ConnectApi.KnowledgeArticleVersionCollection`
 
 Object containing test data.
 
-1594
 
 Apex Reference Guide Knowledge Class
 
@@ -121903,7 +120309,6 @@ getTrendingArticlesForTopic(communityId, topicId, maxResults)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1595
 
 ### Apex Reference Guide LightningScheduler Class LightningScheduler Class
 
@@ -121963,7 +120368,6 @@ Return Value
 
 Type: `ConnectApi.ServiceAppointmentOutput`
 
-1596
 
 Apex Reference Guide LightningScheduler Class
 
@@ -122049,7 +120453,6 @@ For an account (existing user):
 
 ```
 
-1597
 
 Apex Reference Guide LightningScheduler Class
 
@@ -122147,7 +120550,6 @@ For a lead (authenticated guest user):
 
 ```
 
-1598
 
 Apex Reference Guide LightningScheduler Class
 
@@ -122223,7 +120625,6 @@ Considerations for using engagement channel types with the `service-appointments
 
 **•** Enable **Schedule Appointments Using Engagement Channels** in Salesforce Scheduler Settings in your Salesforce org.
 
-1599
 
 Apex Reference Guide LightningScheduler Class
 
@@ -122311,7 +120712,6 @@ Example
 
 ```
 
-1600
 
 ### Apex Reference Guide ManagedContent Class
 
@@ -122382,7 +120782,6 @@ Delete a digital asset management (DAM) provider instance.
 deleteManagedContentVariant(variantId)
 Delete a managed content variant.
 
-1601
 
 Apex Reference Guide ManagedContent Class
 
@@ -122443,7 +120842,6 @@ getManagedContentByTopicsAndIds(communityId, managedContentIds, topics, pagePara
 managedContentType, showAbsoluteUrl)
 Get managed content versions with absolute URLs using a list of managed content IDs and content topic names.
 
-1602
 
 Apex Reference Guide ManagedContent Class
 
@@ -122512,7 +120910,6 @@ Type: `ConnectApi.ManagedContentDocumentCloneInput`
 
 `ConnectApi.ManagedContentDocumentCloneInput` class specifying the details for the cloned content.
 
-1603
 
 Apex Reference Guide ManagedContent Class
 
@@ -122578,7 +120975,6 @@ Signature
 
 ```
 
-1604
 
 Apex Reference Guide ManagedContent Class
 
@@ -122648,7 +121044,6 @@ Delete a digital asset management (DAM) provider instance.
 You can’t delete a DAM provider instance that’s in use. Delete managed content that’s associated with a DAM provider instance before
 deleting the instance.
 
-1605
 
 Apex Reference Guide ManagedContent Class
 
@@ -122714,7 +121109,6 @@ Return Value
 
 Type: Void
 
-1606
 
 Apex Reference Guide ManagedContent Class
 
@@ -122803,7 +121197,6 @@ Type: Boolean
 
 Specifies whether to include metadata in the response ( `true` ) or not ( `false` ). The default value is `false` .
 
-1607
 
 Apex Reference Guide ManagedContent Class
 
@@ -122886,7 +121279,6 @@ Type: Integer
 Specifies the number of items per page. Valid values are from 1 through 250. For performance reasons, we recommend 25 or fewer
 items per page. If you pass in `null`, the default size is 25.
 
-1608
 
 Apex Reference Guide ManagedContent Class
 
@@ -122963,7 +121355,6 @@ Requires Chatter
 
 No
 
-1609
 
 Apex Reference Guide ManagedContent Class
 
@@ -123048,7 +121439,6 @@ Type: Integer
 
 Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
 
-1610
 
 Apex Reference Guide ManagedContent Class
 
@@ -123131,7 +121521,6 @@ ID of the Experience Cloud site.
 
 Type: Integer
 
-1611
 
 Apex Reference Guide ManagedContent Class
 
@@ -123210,7 +121599,6 @@ Signature
 
 ```
 
-1612
 
 Apex Reference Guide ManagedContent Class
 
@@ -123304,7 +121692,6 @@ Return Value
 
 Type: `ConnectApi.ManagedContentVersionCollection`
 
-1613
 
 Apex Reference Guide ManagedContent Class
 
@@ -123393,7 +121780,6 @@ language.
 
 Type: String
 
-1614
 
 Apex Reference Guide ManagedContent Class
 
@@ -123479,7 +121865,6 @@ Type: List<String>
 
 Comma-separated list of managed content IDs. HTTP/2 clients support up to 200 IDs. HTTP/1.1 clients don’t.
 
-1615
 
 Apex Reference Guide ManagedContent Class
 
@@ -123571,7 +121956,6 @@ Available to Guest Users
 
 51.0
 
-1616
 
 Apex Reference Guide ManagedContent Class
 
@@ -123658,7 +122042,6 @@ Return Value
 
 Type: `ConnectApi.ManagedContentVersionCollection`
 
-1617
 
 Apex Reference Guide ManagedContent Class
 
@@ -123747,7 +122130,6 @@ Type: String
 
 Developer name of the content type, such as `cms_document` or `cms_image` .
 
-1618
 
 Apex Reference Guide ManagedContent Class
 
@@ -123832,7 +122214,6 @@ Language locale for the managed content, for example, `en_US` . If the requested
 to the context user’s language. If the context user’s language isn’t available, the language defaults to the content type’s original
 language.
 
-1619
 
 Apex Reference Guide ManagedContent Class
 
@@ -123920,7 +122301,6 @@ Number of the page you want returned. Starts at 0. If you pass in `null` or 0, t
 
 Type: Integer
 
-1620
 
 Apex Reference Guide ManagedContent Class
 
@@ -123999,7 +122379,6 @@ Type: List<String>
 
 Comma-separated list of up to 15 content topic names.
 
-1621
 
 Apex Reference Guide ManagedContent Class
 
@@ -124084,7 +122463,6 @@ Signature
 
 ```
 
-1622
 
 Apex Reference Guide ManagedContent Class
 
@@ -124175,7 +122553,6 @@ API Version
 
 47.0
 
-1623
 
 Apex Reference Guide ManagedContent Class
 
@@ -124265,7 +122642,6 @@ Return Value
 
 Type: `ConnectApi.ManagedContentVersionCollection`
 
-1624
 
 Apex Reference Guide ManagedContent Class
 
@@ -124352,7 +122728,6 @@ items per page. If you pass in `null`, the default size is 25.
 
 Type: String
 
-1625
 
 Apex Reference Guide ManagedContent Class
 
@@ -124417,7 +122792,6 @@ Requires Chatter
 
 No
 
-1626
 
 Apex Reference Guide ManagedContent Class
 
@@ -124487,7 +122861,6 @@ Workspaces are the only supported sharing targets. To get the targets that a man
 `getMCSFolderShares(folderId)` . To get the targets that a managed content space folder can be shared with, use
 ##### getMCSFolderShareTargets(folderId) .
 
-1627
 
 Apex Reference Guide ManagedContent Class
 
@@ -124561,7 +122934,6 @@ Type: `ConnectApi.ManagedContentPublishInput`
 
 A `ConnectApi.ManagedContentPublishInput` request body specifying the content to publish.
 
-1628
 
 Apex Reference Guide ManagedContent Class
 
@@ -124630,7 +123002,6 @@ Requires Chatter
 
 No
 
-1629
 
 Apex Reference Guide ManagedContent Class
 
@@ -124709,7 +123080,6 @@ Type: `ConnectApi.ManagedContentUnpublishInput`
 
 A `ConnectApi,ManagedContentUnpublishInput` request body specifying the content to unpublish.
 
-1630
 
 Apex Reference Guide ManagedContent Class
 
@@ -124776,7 +123146,6 @@ Type: Integer
 
 Specifies the number of items per page. Valid values are from 1 through 250. If you pass in `null`, the default size is 25.
 
-1631
 
 ### Apex Reference Guide ManagedContentChannels Class
 
@@ -124839,7 +123208,6 @@ IN THIS SECTION:
 deleteManagedContentChannel(channelId)
 Delete a managed content channel.
 
-1632
 
 Apex Reference Guide ManagedContentChannels Class
 
@@ -124901,7 +123269,6 @@ Requires Chatter
 
 No
 
-1633
 
 Apex Reference Guide ManagedContentChannels Class
 
@@ -124978,7 +123345,6 @@ Return Value
 
 Type: `ConnectApi.ManagedContentChannelsRepresentation`
 
-1634
 
 Apex Reference Guide ManagedContentChannels Class
 
@@ -125050,7 +123416,6 @@ Signature
 
 ```
 
-1635
 
 ### Apex Reference Guide ManagedContentDelivery Class
 
@@ -125111,7 +123476,6 @@ getManagedContentForChannel(channelId, contentKeyOrId, language, showAbsoluteUrl
 referencesAsList)
 Get a piece of published content in a specified language with references for a channel.
 
-1636
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125179,7 +123543,6 @@ Return Value
 
 Type: `ConnectApi.ManagedContentDeliveryChannelsRepresentation`
 
-1637
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125254,7 +123617,6 @@ This example gets a collection of a custom content type that includes references
 
 ```
 
-1638
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125336,7 +123698,6 @@ Language locale for the managed content, for example, `en_US` . If the requested
 to the channel or site’s default language. If the channel or site’s default language isn’t available, the language defaults to the primary
 language of the content space.
 
-1639
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125413,7 +123774,6 @@ Language locale for the managed content, for example, `en_US` . If the requested
 to the channel or site’s default language. If the channel or site’s default language isn’t available, the language defaults to the primary
 language of the content space.
 
-1640
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125480,7 +123840,6 @@ Signature
 
 ```
 
-1641
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125557,7 +123916,6 @@ Signature
 
 ```
 
-1642
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125633,7 +123991,6 @@ Return Value
 
 Type: `ConnectApi.ManagedContentDeliveryDocument`
 
-1643
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125705,7 +124062,6 @@ API Version
 
 54.0
 
-1644
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125783,7 +124139,6 @@ API Version
 
 54.0
 
-1645
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125874,7 +124229,6 @@ Specifies whether to return the references as a list in the `referencesList` pro
 `ConnectApi.ManagedContentDeliveryDocument` output class ( `true` ). If you specify `false`, the references are
 returned as key value pairs in the `references` property. If unspecified, the default value is `false` .
 
-1646
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -125952,7 +124306,6 @@ This example gets a custom content type with an image reference and uses the
 
 ```
 
-1647
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126028,7 +124381,6 @@ Parameters
 
 Type: String
 
-1648
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126107,7 +124459,6 @@ Type: String
 
 ID for the Experience Cloud site.
 
-1649
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126191,7 +124542,6 @@ Available to Guest Users
 
 58.0
 
-1650
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126290,7 +124640,6 @@ Specifies whether to return the content body ( `true` ) or the content summary (
 
 Type: Integer
 
-1651
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126381,7 +124730,6 @@ This example gets Event custom content type records and uses the
 
 ```
 
-1652
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126452,7 +124800,6 @@ Requires Chatter
 
 No
 
-1653
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126557,7 +124904,6 @@ is 0.
 
 Type: Boolean
 
-1654
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126646,7 +124992,6 @@ This example gets custom content type Event records and uses the
 
 ```
 
-1655
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126713,7 +125058,6 @@ API Version
 
 54.0–61.0
 
-1656
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126786,7 +125130,6 @@ Requires Chatter
 
 No
 
-1657
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126891,7 +125234,6 @@ is 0.
 
 Type: Boolean
 
-1658
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -126974,7 +125316,6 @@ Signature
 
 ```
 
-1659
 
 Apex Reference Guide ManagedContentDelivery Class
 
@@ -127078,7 +125419,6 @@ the default value is `false` .
 
 Type: Boolean
 
-1660
 
 ### Apex Reference Guide ManagedContentSpaces Class
 
@@ -127145,7 +125485,6 @@ Create a managed content space.
 
 Get a managed content space.
 
-1661
 
 Apex Reference Guide ManagedContentSpaces Class
 
@@ -127221,7 +125560,6 @@ Type: Integer
 
 Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
 
-1662
 
 Apex Reference Guide ManagedContentSpaces Class
 
@@ -127293,7 +125631,6 @@ Type: `ConnectApi.ManagedContentSpaceCollectionRepresentation`
 
 Update the name or description of a managed content space.
 
-1663
 
 Apex Reference Guide ManagedContentSpaces Class
 
@@ -127369,7 +125706,6 @@ Type: String
 
 ID of the managed content space.
 
-1664
 
 ### Apex Reference Guide ManagedTopics Class
 
@@ -127433,7 +125769,6 @@ ConnectApi
 
 ### These methods are for ManagedTopics . All methods are static.
 
-1665
 
 Apex Reference Guide ManagedTopics Class
 
@@ -127492,7 +125827,6 @@ Requires Chatter
 
 No
 
-1666
 
 Apex Reference Guide ManagedTopics Class
 
@@ -127564,7 +125898,6 @@ Requires Chatter
 
 No
 
-1667
 
 Apex Reference Guide ManagedTopics Class
 
@@ -127638,7 +125971,6 @@ Requires Chatter
 
 No
 
-1668
 
 Apex Reference Guide ManagedTopics Class
 
@@ -127710,7 +126042,6 @@ Requires Chatter
 
 No
 
-1669
 
 Apex Reference Guide ManagedTopics Class
 
@@ -127791,7 +126122,6 @@ Signature
 
 ```
 
-1670
 
 Apex Reference Guide ManagedTopics Class
 
@@ -127865,7 +126195,6 @@ Type: String
 
 ID of managed topic.
 
-1671
 
 Apex Reference Guide ManagedTopics Class
 
@@ -127937,7 +126266,6 @@ Get the featured and navigational managed topics for an Experience Cloud site.
 
 To get the content topics for an Experience Cloud site, use `getManagedTopics(communityId, managedTopicType)` .
 
-1672
 
 Apex Reference Guide ManagedTopics Class
 
@@ -128007,7 +126335,6 @@ Parameters
 
 Type: String
 
-1673
 
 Apex Reference Guide ManagedTopics Class
 
@@ -128083,7 +126410,6 @@ Type of managed topic.
 
 **•** `Content` —Topics that are associated with native content.
 
-1674
 
 Apex Reference Guide ManagedTopics Class
 
@@ -128157,7 +126483,6 @@ Type of managed topic.
 
 **•** `Featured` —Topics that are featured, for example, on the Experience Cloud site home page, but don’t provide overall navigation.
 
-1675
 
 Apex Reference Guide ManagedTopics Class
 
@@ -128234,7 +126559,6 @@ Type: `ConnectApi.ManagedTopicType`
 
 Type of managed topic.
 
-1676
 
 Apex Reference Guide ManagedTopics Class
 
@@ -128311,7 +126635,6 @@ Return Value
 
 Type: `ConnectApi.ManagedTopicCollection`
 
-1677
 
 Apex Reference Guide ManagedTopics Class
 
@@ -128368,7 +126691,6 @@ ManagedTopicC 4
 
 These methods for `ManagedTopics` are retired.
 
-1678
 
 Apex Reference Guide ManagedTopics Class
 
@@ -128443,7 +126765,6 @@ Type: String
 
 ID of the topic associated with the managed topics.
 
-1679
 
 ### Apex Reference Guide MarketingIntegration Class
 
@@ -128501,7 +126822,6 @@ Requires Chatter
 
 No
 
-1680
 
 Apex Reference Guide MarketingIntegration Class
 
@@ -128575,7 +126895,6 @@ Return Value
 
 Type: `ConnectApi.Form`
 
-1681
 
 ### Apex Reference Guide Mentions Class
 
@@ -128645,7 +126964,6 @@ Type: `ConnectApi.FormSubmission`
 Access information about mentions. A mention is an “@” character followed by a user or group name. When a user or group is mentioned,
 they receive a notification.
 
-1682
 
 Apex Reference Guide Mentions Class
 
@@ -128715,7 +127033,6 @@ doesn’t require a minimum number of characters. This parameter does not suppor
 
 Type: String
 
-1683
 
 Apex Reference Guide Mentions Class
 
@@ -128788,7 +127105,6 @@ doesn’t require a minimum number of characters. This parameter does not suppor
 
 Type: String
 
-1684
 
 Apex Reference Guide Mentions Class
 
@@ -128864,7 +127180,6 @@ Signature
 
 ```
 
-1685
 
 Apex Reference Guide Mentions Class
 
@@ -128940,7 +127255,6 @@ Signature
 
 ```
 
-1686
 
 Apex Reference Guide Mentions Class
 
@@ -129026,7 +127340,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1687
 
 ### Apex Reference Guide Missions Class
 
@@ -129108,7 +127421,6 @@ ConnectApi
 
 ### These methods are for Missions . All methods are static.
 
-1688
 
 Apex Reference Guide Missions Class
 
@@ -129179,7 +127491,6 @@ Usage
 
 You can export these activities with this method.
 
-1689
 
 Apex Reference Guide Missions Class
 
@@ -129250,7 +127561,6 @@ Type: `ConnectApi.UserMissionActivityCollection`
 
 Start a job to purge mission activity for a user.
 
-1690
 
 Apex Reference Guide Missions Class
 
@@ -129325,7 +127635,6 @@ API Version
 
 49.0
 
-1691
 
 Apex Reference Guide Missions Class
 
@@ -129397,7 +127706,6 @@ Requires Chatter
 
 Yes
 
-1692
 
 ### Apex Reference Guide NamedCredentials Class
 
@@ -129479,7 +127787,6 @@ Note: Managed packages can access only the named credentials and external creden
 the package’s Apex code. If a managed package tries to access non-packaged named credentials and external credentials that a
 Salesforce admin created in the org, an error occurs.
 
-1693
 
 Apex Reference Guide NamedCredentials Class
 
@@ -129539,7 +127846,6 @@ Get external credentials that the user can authenticate to.
 getNamedCredential(developerName)
 Get a named credential.
 
-1694
 
 Apex Reference Guide NamedCredentials Class
 
@@ -129608,7 +127914,6 @@ Return Value
 
 Type: `ConnectApi.Credential`
 
-1695
 
 Apex Reference Guide NamedCredentials Class
 
@@ -129680,7 +127985,6 @@ Signature
 
 ```
 
-1696
 
 Apex Reference Guide NamedCredentials Class
 
@@ -129751,7 +128055,6 @@ API Version
 
 58.0
 
-1697
 
 Apex Reference Guide NamedCredentials Class
 
@@ -129821,7 +128124,6 @@ Type: `ConnectApi.NamedCredential`
 
 Delete a credential.
 
-1698
 
 Apex Reference Guide NamedCredentials Class
 
@@ -129897,7 +128199,6 @@ API Version
 
 59.0
 
-1699
 
 Apex Reference Guide NamedCredentials Class
 
@@ -129978,7 +128279,6 @@ Signature
 
 ```
 
-1700
 
 Apex Reference Guide NamedCredentials Class
 
@@ -130053,7 +128353,6 @@ Return Value
 
 Type: `ConnectApi.Credential`
 
-1701
 
 Apex Reference Guide NamedCredentials Class
 
@@ -130123,7 +128422,6 @@ Type: String
 
 Full name of the external auth identity provider.
 
-1702
 
 Apex Reference Guide NamedCredentials Class
 
@@ -130189,7 +128487,6 @@ Return Value
 
 Type: `ConnectApi.ExternalCredential`
 
-1703
 
 Apex Reference Guide NamedCredentials Class
 
@@ -130253,7 +128550,6 @@ Type: `ConnectApi.NamedCredential`
 
 Get a list of named credentials for the org.
 
-1704
 
 Apex Reference Guide NamedCredentials Class
 
@@ -130317,7 +128613,6 @@ Accepts input parameters representing a specific external credential and, option
 visit to begin the authentication flow, ultimately returning authentication tokens to Salesforce. Use this method as part of building a
 customized or branded user interface to help users initiate authentication.
 
-1705
 
 Apex Reference Guide NamedCredentials Class
 
@@ -130387,7 +128682,6 @@ This method uses the `ConnectApi.CredentialInput` and the `ConnectApi.Credential
 to replace a credential’s values. In the UI, these values appear as the credential’s authentication parameters. To update a credential, use
 ##### patchCredential(requestBody) .
 
-1706
 
 Apex Reference Guide NamedCredentials Class
 
@@ -130463,7 +128757,6 @@ Type: `ConnectApi.ExternalAuthIdentityProviderInput` on page 2016
 
 A `ConnectApi.ExternalAuthIdentityProviderInput` input class.
 
-1707
 
 ### Apex Reference Guide NavigationMenu Class
 
@@ -130528,7 +128821,6 @@ ConnectApi
 
 ### These methods are for NavigationMenu . All methods are static.
 
-1708
 
 Apex Reference Guide NavigationMenu Class
 
@@ -130612,7 +128904,6 @@ Developer name of the navigation link set.
 
 Type: `ConnectApi.PublishStatus`
 
-1709
 
 Apex Reference Guide NavigationMenu Class
 
@@ -130694,7 +128985,6 @@ Supported navigation menu item types are:
 
 **•** `SystemLink` —System link, such as a link to Builder, Workspaces, or Setup.
 
-1710
 
 Apex Reference Guide NavigationMenu Class
 
@@ -130786,7 +129076,6 @@ Specifies whether to include the image URL with the menu item ( `true` ) or not 
 
 Type: Boolean
 
-1711
 
 ### Apex Reference Guide NextBestAction Class
 
@@ -130864,7 +129153,6 @@ Namespace
 
 ConnectApi
 
-1712
 
 Apex Reference Guide NextBestAction Class
 
@@ -130928,7 +129216,6 @@ Parameters
 
 Type: String
 
-1713
 
 Apex Reference Guide NextBestAction Class
 
@@ -130997,7 +129284,6 @@ Return Value
 
 Type: `ConnectApi.NBARecommendations`
 
-1714
 
 Apex Reference Guide NextBestAction Class
 
@@ -131072,7 +129358,6 @@ API Version
 
 45.0
 
-1715
 
 Apex Reference Guide NextBestAction Class
 
@@ -131144,7 +129429,6 @@ Type: String
 
 ID of the recommendation.
 
-1716
 
 Apex Reference Guide NextBestAction Class
 
@@ -131208,7 +129492,6 @@ Requires Chatter
 
 No
 
-1717
 
 Apex Reference Guide NextBestAction Class
 
@@ -131293,7 +129576,6 @@ Available to Guest Users
 
 48.0
 
-1718
 
 ### Apex Reference Guide OmnichannelInventoryService Class
 
@@ -131354,7 +129636,6 @@ Retrieve the status of an inventory availability upload job.
 getPublishLocationStructureStatus(uploadId)
 Retrieve the status of a publish location structure job.
 
-1719
 
 Apex Reference Guide OmnichannelInventoryService Class
 
@@ -131417,7 +129698,6 @@ Type: `ConnectApi.OCICreateReservationOutputRepresentation`
 
 Fulfill one or more inventory reservations.
 
-1720
 
 Apex Reference Guide OmnichannelInventoryService Class
 
@@ -131491,7 +129771,6 @@ Return Value
 
 Type: `ConnectApi.OCIGetInventoryAvailabilityOutputRepresentation`
 
-1721
 
 Apex Reference Guide OmnichannelInventoryService Class
 
@@ -131561,7 +129840,6 @@ Type: String
 
 The upload ID of the publish job.
 
-1722
 
 Apex Reference Guide OmnichannelInventoryService Class
 
@@ -131629,7 +129907,6 @@ Type: `ConnectApi.OCIReleaseReservationInputRepresentation`
 
 Details of one or more inventory reservations to release.
 
-1723
 
 Apex Reference Guide OmnichannelInventoryService Class
 
@@ -131698,7 +129975,6 @@ duplicate data. The recordId is provided in NDJSON and automatically generated f
 Note: The file must be in NDJSON or CSV format. For larger collections, use the Commerce API or split the data into multiple files.
 The Commerce API accepts GZIP, NDJSON, or CSV files up to 100 MB.
 
-1724
 
 Apex Reference Guide OmnichannelInventoryService Class
 
@@ -131795,7 +130071,6 @@ API Version
 
 51.0
 
-1725
 
 Apex Reference Guide OmnichannelInventoryService Class
 
@@ -131865,7 +130140,6 @@ Return Value
 
 Type: ConnectApi.OCIUpdateReservationOutputRepresentation on page 2398
 
-1726
 
 ### Apex Reference Guide OMSAnalytics Class OMSAnalytics Class
 
@@ -131916,7 +130190,6 @@ API Version
 
 59.0
 
-1727
 
 Apex Reference Guide OMSAnalytics Class
 
@@ -131993,7 +130266,6 @@ Type: String
 
 The scope for the extensibility framework. Requires a web store ID.
 
-1728
 
 Apex Reference Guide OMSAnalytics Class
 
@@ -132076,7 +130348,6 @@ A list of IDs to fetch details for.
 
 Type: List )Integer)
 
-1729
 
 Apex Reference Guide OMSAnalytics Class
 
@@ -132147,7 +130418,6 @@ API Version
 
 60.0
 
-1730
 
 Apex Reference Guide OMSAnalytics Class
 
@@ -132228,7 +130498,6 @@ Type: ConnectApi.TextClassificationsInputRepresentation
 
 Text classification containing a list of text strings and classifiers. Each text string is classified into classifiers based on analysis.
 
-1731
 
 ### Apex Reference Guide Orchestration Class
 
@@ -132293,7 +130562,6 @@ Requires Chatter
 
 No
 
-1732
 
 ### Apex Reference Guide OrderPaymentSummary Class
 
@@ -132363,7 +130631,6 @@ Namespace
 
 ConnectApi
 
-1733
 
 Apex Reference Guide OrderPaymentSummary Class
 
@@ -132435,7 +130702,6 @@ Example
 
 ```
 
-1734
 
 ### Apex Reference Guide OrderSummary Class
 
@@ -132497,7 +130763,6 @@ Ensure and apply funds for one or more Invoices. If needed, capture authorized f
 This method inserts a background operation into an asynchronous job queue and returns the ID of that operation so you can track
 its status. Payment gateway responses appear in the payment gateway log and do not affect the background operation status.
 
-1735
 
 Apex Reference Guide OrderSummary Class
 
@@ -132565,7 +130830,6 @@ Usage
 
 When a price adjustment is applied to an OrderItemSummary, its quantities are considered in three groups:
 
-1736
 
 Apex Reference Guide OrderSummary Class
 
@@ -132630,7 +130894,6 @@ Type: String
 
 ID of the OrderSummary.
 
-1737
 
 Apex Reference Guide OrderSummary Class
 
@@ -132690,7 +130953,6 @@ the CreditMemo to the `ensureRefundsAsync()` method.
 **•** If the discount applied to both fulfilled and unfulfilled OrderItemSummaries for which payment has been captured, process both
 refunds. Pass the _`postFulfillmentChangeOrderId`_ from the output representation to the `createCreditMemo()`
 
-1738
 
 Apex Reference Guide OrderSummary Class
 
@@ -132757,7 +131019,6 @@ API Version
 
 56.0
 
-1739
 
 Apex Reference Guide OrderSummary Class
 
@@ -132829,7 +131090,6 @@ Parameters
 
 Type: Boolean
 
-1740
 
 Apex Reference Guide OrderSummary Class
 
@@ -132896,7 +131156,6 @@ API Version
 
 48.0
 
-1741
 
 Apex Reference Guide OrderSummary Class
 
@@ -132973,7 +131232,6 @@ to cover the balance, use the OrderPaymentSummary with the smallest `AvailableTo
 **c.** If no single OrderPaymentSummary has a large enough `AvailableToRefund` amount, use multiple OrderPaymentSummaries
 in descending order of `AvailableToRefund` amount. This ensures the fewest OrderPaymentSummaries are used.
 
-1742
 
 Apex Reference Guide OrderSummary Class
 
@@ -133041,7 +131299,6 @@ Parameters
 
 Type: `ConnectApi.MultipleEnsureFundsAsyncInputRepresentation`
 
-1743
 
 Apex Reference Guide OrderSummary Class
 
@@ -133103,7 +131360,6 @@ Signature
 
 ```
 
-1744
 
 Apex Reference Guide OrderSummary Class
 
@@ -133177,7 +131433,6 @@ Type: `ConnectApi.ChangeInputRepresentation`
 
 A list of changes to OrderItemSummaries that make up an order change, such as a cancel or return.
 
-1745
 
 Apex Reference Guide OrderSummary Class
 
@@ -133247,7 +131502,6 @@ previewCancel(orderSummaryId, changeInput)
 Return one or more OrderItemSummaries from an OrderSummary, and create a corresponding change order. This return is a simple
 return that creates a change order but not a ReturnOrder.
 
-1746
 
 ### Apex Reference Guide OrderSummaryCreation Class
 
@@ -133315,7 +131569,6 @@ ConnectApi
 
 ### These methods are for OrderSummaryCreation . All methods are static.
 
-1747
 
 ### Apex Reference Guide Organization Class
 
@@ -133376,7 +131629,6 @@ ConnectApi
 
 ### These methods are for Organization . All methods are static.
 
-1748
 
 ### Apex Reference Guide PardotBusinessUnitContext Class
 
@@ -133434,7 +131686,6 @@ Get the Pardot business units the context user has access to by specifying the c
 
 Get the Pardot business units the context user has access to.
 
-1749
 
 ### Apex Reference Guide Payments Class
 
@@ -133498,7 +131749,6 @@ Type: `ConnectApi.PardotBusinessUnitContextOutput`
 
 Authorize a payment, capture an authorized payment, and refund an authorized payment.
 
-1750
 
 Apex Reference Guide Payments Class
 
@@ -133554,7 +131804,6 @@ Requires Chatter
 
 No
 
-1751
 
 Apex Reference Guide Payments Class
 
@@ -133624,7 +131873,6 @@ API Version
 
 51.0
 
-1752
 
 Apex Reference Guide Payments Class
 
@@ -133704,7 +131952,6 @@ Type: String
 
 ID of the payment authorization. Required.
 
-1753
 
 Apex Reference Guide Payments Class
 
@@ -133772,7 +132019,6 @@ API Version
 
 54.0
 
-1754
 
 Apex Reference Guide Payments Class
 
@@ -133844,7 +132090,6 @@ Usage
 Accepts input parameters representing a payment method and passes them in a tokenization request to the payment gateway. The
 results of the tokenization request are returned as a response from the payment gateway. If the tokenization was successful, the response
 
-1755
 
 ### Apex Reference Guide Personalization Class
 
@@ -133918,7 +132163,6 @@ Delete a target.
 getAudience(communityId, audienceId, includeAudienceCriteria)
 Get an audience.
 
-1756
 
 Apex Reference Guide Personalization Class
 
@@ -133986,7 +132230,6 @@ Type: `ConnectApi.AudienceInput`
 
 A `ConnectApi.AudienceInput` object that defines the audience.
 
-1757
 
 Apex Reference Guide Personalization Class
 
@@ -134056,7 +132299,6 @@ Signature
 
 ```
 
-1758
 
 Apex Reference Guide Personalization Class
 
@@ -134131,7 +132373,6 @@ API Version
 
 48.0
 
-1759
 
 Apex Reference Guide Personalization Class
 
@@ -134207,7 +132448,6 @@ Signature
 
 ```
 
-1760
 
 Apex Reference Guide Personalization Class
 
@@ -134292,7 +132532,6 @@ IP address of the user. If `null`, no audiences with location criteria are retur
 
 Type: String
 
-1761
 
 Apex Reference Guide Personalization Class
 
@@ -134379,7 +132618,6 @@ Type: `ConnectApi.AudienceCollection`
 
 Get a list of assigned audiences that match the user context.
 
-1762
 
 Apex Reference Guide Personalization Class
 
@@ -134472,7 +132710,6 @@ Comma-separated list of target types to filter the results. Supported values inc
 
 **•** `ExperienceVariation` (version 48.0 and later)
 
-1763
 
 Apex Reference Guide Personalization Class
 
@@ -134545,7 +132782,6 @@ Return Value
 
 Type: `ConnectApi.Target`
 
-1764
 
 Apex Reference Guide Personalization Class
 
@@ -134618,7 +132854,6 @@ Available to Guest Users
 
 48.0
 
-1765
 
 Apex Reference Guide Personalization Class
 
@@ -134715,7 +132950,6 @@ Comma-separated list of target types to filter the results. Supported values inc
 
 **•** `ContentDocument` (version 49.0 and later)
 
-1766
 
 Apex Reference Guide Personalization Class
 
@@ -134801,7 +133035,6 @@ ID of the audience.
 
 Type: `ConnectApi.AudienceInput`
 
-1767
 
 ### Apex Reference Guide PickTicket Class
 
@@ -134866,7 +133099,6 @@ ConnectApi
 
 ### These methods are for PickTicket . All methods are static.
 
-1768
 
 ### Apex Reference Guide QuestionAndAnswers Class
 
@@ -134930,7 +133162,6 @@ IN THIS SECTION:
 
 ### These methods are for QuestionAndAnswers . All methods are static.
 
-1769
 
 Apex Reference Guide QuestionAndAnswers Class
 
@@ -135012,7 +133243,6 @@ Specify `true` to include knowledge articles in the search results. To return on
 
 Type: Integer
 
-1770
 
 Apex Reference Guide QuestionAndAnswers Class
 
@@ -135094,7 +133324,6 @@ Type: Boolean
 
 Specify `true` to include knowledge articles in the search results. To return only questions, specify `false` .
 
-1771
 
 Apex Reference Guide QuestionAndAnswers Class
 
@@ -135178,7 +133407,6 @@ Type: `ConnectApi.QuestionAndAnswersCapabilityInput`
 
 Specify the best answer (comment ID) for the question.
 
-1772
 
 ### Apex Reference Guide Recommendations Class
 
@@ -135243,7 +133471,6 @@ Create a scheduled custom recommendation with the specified parameters.
 deleteRecommendationAudience(communityId, recommendationAudienceId)
 Delete a custom recommendation audience.
 
-1773
 
 Apex Reference Guide Recommendations Class
 
@@ -135308,7 +133535,6 @@ Reject a static recommendation for the context user.
 updateRecommendationAudience(communityId, recommendationAudienceId, recommendationAudience)
 Update a custom recommendation audience.
 
-1774
 
 Apex Reference Guide Recommendations Class
 
@@ -135379,7 +133605,6 @@ Return Value
 
 Type: `ConnectApi.RecommendationAudience`
 
-1775
 
 Apex Reference Guide Recommendations Class
 
@@ -135444,7 +133669,6 @@ recommendations.
 
 Create a custom recommendation definition.
 
-1776
 
 Apex Reference Guide Recommendations Class
 
@@ -135517,7 +133741,6 @@ API Version
 
 35.0
 
-1777
 
 Apex Reference Guide Recommendations Class
 
@@ -135604,7 +133827,6 @@ These recommendations appear by default on the Customer Service template. They a
 in the feed in Salesforce mobile web. They also appear anywhere community managers add recommendations using Experience Builder
 in the Customer Service template.
 
-1778
 
 Apex Reference Guide Recommendations Class
 
@@ -135674,7 +133896,6 @@ API Version
 
 36.0
 
-1779
 
 Apex Reference Guide Recommendations Class
 
@@ -135761,7 +133982,6 @@ custom channels. For example, community managers can use Experience Builder to d
 **•** `CustomChannel2` —Custom recommendation channel. Not used by default. Work with your community manager to define
 custom channels.
 
-1780
 
 Apex Reference Guide Recommendations Class
 
@@ -135821,7 +134041,6 @@ ScheduledRecommendationB 3
 
 ScheduledRecommendationC 4
 
-1781
 
 Apex Reference Guide Recommendations Class
 
@@ -135887,7 +134106,6 @@ Requires Chatter
 
 Yes
 
-1782
 
 Apex Reference Guide Recommendations Class
 
@@ -135966,7 +134184,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1783
 
 Apex Reference Guide Recommendations Class
 
@@ -136040,7 +134257,6 @@ Return Value
 
 Type: Void
 
-1784
 
 Apex Reference Guide Recommendations Class
 
@@ -136108,7 +134324,6 @@ recommendations.
 
 Get the members of a custom recommendation audience.
 
-1785
 
 Apex Reference Guide Recommendations Class
 
@@ -136184,7 +134399,6 @@ Signature
 
 ```
 
-1786
 
 Apex Reference Guide Recommendations Class
 
@@ -136264,7 +134478,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1787
 
 Apex Reference Guide Recommendations Class
 
@@ -136335,7 +134548,6 @@ Usage
 Community managers can access, create, and delete audiences, definitions, and schedules for custom recommendations. (Community
 managers are users with the Create and Set Up Experiences or Manage Experiences permission.) Users with the Modify All Data permission
 
-1788
 
 Apex Reference Guide Recommendations Class
 
@@ -136400,7 +134612,6 @@ API Version
 
 35.0
 
-1789
 
 Apex Reference Guide Recommendations Class
 
@@ -136475,7 +134686,6 @@ Parameters
 
 Type: String
 
-1790
 
 Apex Reference Guide Recommendations Class
 
@@ -136553,7 +134763,6 @@ Type: String
 
 Specifies the object to act on.
 
-1791
 
 Apex Reference Guide Recommendations Class
 
@@ -136624,7 +134833,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1792
 
 Apex Reference Guide Recommendations Class
 
@@ -136707,7 +134915,6 @@ Return Value
 
 Type: `ConnectApi.RecommendationCollection`
 
-1793
 
 Apex Reference Guide Recommendations Class
 
@@ -136783,7 +134990,6 @@ Type: String
 
 ID for the context user or the keyword `me` .
 
-1794
 
 Apex Reference Guide Recommendations Class
 
@@ -136868,7 +135074,6 @@ Type: Integer
 
 Maximum number of recommendation results; default is 10. Values must be from 1 to 99.
 
-1795
 
 Apex Reference Guide Recommendations Class
 
@@ -136940,7 +135145,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1796
 
 Apex Reference Guide Recommendations Class
 
@@ -137028,7 +135232,6 @@ Type: `ConnectApi.RecommendationChannel`
 A way to tie custom recommendations together. For example, display recommendations in specific places in the UI or show
 recommendations based on time of day or geographic locations. Values are:
 
-1797
 
 Apex Reference Guide Recommendations Class
 
@@ -137072,7 +135275,6 @@ ID for _`contextObjectId`_ .
 This method only recommends users who are followed by people who follow Pam. In this example, John follows Pam so the method
 returns a recommendation for you to follow Suzanne since John also follows Suzanne.
 
-1798
 
 Apex Reference Guide Recommendations Class
 
@@ -137140,7 +135342,6 @@ recommendations.
 
 Get scheduled custom recommendations.
 
-1799
 
 Apex Reference Guide Recommendations Class
 
@@ -137210,7 +135411,6 @@ managers are users with the Create and Set Up Experiences or Manage Experiences 
 can also access, create, and delete custom recommendation audiences, custom recommendation definitions, and scheduled custom
 recommendations.
 
-1800
 
 Apex Reference Guide Recommendations Class
 
@@ -137290,7 +135490,6 @@ Type: Void
 
 Reject a static recommendation for the context user.
 
-1801
 
 Apex Reference Guide Recommendations Class
 
@@ -137370,7 +135569,6 @@ Requires Chatter
 
 Yes
 
-1802
 
 Apex Reference Guide Recommendations Class
 
@@ -137450,7 +135648,6 @@ Signature
 
 ```
 
-1803
 
 Apex Reference Guide Recommendations Class
 
@@ -137536,7 +135733,6 @@ API Version
 
 35.0
 
-1804
 
 Apex Reference Guide Recommendations Class
 
@@ -137609,7 +135805,6 @@ Requires Chatter
 
 Yes
 
-1805
 
 Apex Reference Guide Recommendations Class
 
@@ -137685,7 +135880,6 @@ Signature
 
 ```
 
-1806
 
 Apex Reference Guide Recommendations Class
 
@@ -137768,7 +135962,6 @@ Parameters
 
 Type: String
 
-1807
 
 Apex Reference Guide Recommendations Class
 
@@ -137847,7 +136040,6 @@ Type: String
 
 ID of the custom recommendation definition.
 
-1808
 
 Apex Reference Guide Recommendations Class
 
@@ -137930,7 +136122,6 @@ ID of the scheduled custom recommendation.
 
 Type: `ConnectApi.ScheduledRecommendationInput`
 
-1809
 
 Apex Reference Guide Recommendations Class
 
@@ -137990,7 +136181,6 @@ API Version
 
 35.0
 
-1810
 
 Apex Reference Guide Recommendations Class
 
@@ -138073,7 +136263,6 @@ managers are users with the Create and Set Up Experiences or Manage Experiences 
 can also access, create, and delete custom recommendation audiences, custom recommendation definitions, and scheduled custom
 recommendations.
 
-1811
 
 Apex Reference Guide Recommendations Class
 
@@ -138125,7 +136314,6 @@ setTestGetRecommendationsForUser(communityId, userId, action, contextAction, con
 Register a `ConnectApi.RecommendationCollection` object to be returned when `getRecommendationsForUser`
 is called with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
 
-1812
 
 Apex Reference Guide Recommendations Class
 
@@ -138205,7 +136393,6 @@ Specifies the object to take action on.
 **•** If _`action`_ is `view`, _`objectId`_ is a user ID, file ID, group ID, record ID, custom recommendation ID, the enum `Today` for
 static recommendations, or an article ID (version 37.0 and later).
 
-1813
 
 Apex Reference Guide Recommendations Class
 
@@ -138288,7 +136475,6 @@ Action that the context user just performed. Supported values are:
 
 **•** `view`
 
-1814
 
 Apex Reference Guide Recommendations Class
 
@@ -138365,7 +136551,6 @@ getRecommendationsForUser(communityId, userId, contextAction, contextObjectId, c
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1815
 
 Apex Reference Guide Recommendations Class
 
@@ -138455,7 +136640,6 @@ Type: String
 
 ID of the object that the context user just performed an action on.
 
-1816
 
 Apex Reference Guide Recommendations Class
 
@@ -138531,7 +136715,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Register a `ConnectApi.RecommendationCollection` object to be returned when `getRecommendationsForUser`
 is called with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
 
-1817
 
 Apex Reference Guide Recommendations Class
 
@@ -138620,7 +136803,6 @@ Type: `ConnectApi.RecommendationActionType`
 
 Action that the context user just performed. Supported values are:
 
-1818
 
 Apex Reference Guide Recommendations Class
 
@@ -138701,7 +136883,6 @@ getRecommendationsForUser(communityId, userId, action, objectCategory, contextAc
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1819
 
 Apex Reference Guide Recommendations Class
 
@@ -138762,7 +136943,6 @@ Requires Chatter
 
 Yes
 
-1820
 
 Apex Reference Guide Recommendations Class
 
@@ -138845,7 +137025,6 @@ recommendations.
 
 If you have these scheduled custom recommendations:
 
-1821
 
 Apex Reference Guide Recommendations Class
 
@@ -138908,7 +137087,6 @@ Signature
 
 ```
 
-1822
 
 Apex Reference Guide Recommendations Class
 
@@ -138990,7 +137168,6 @@ setTestGetRecommendationsForUser(communityId, userId, contextAction, contextObje
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1823
 
 Apex Reference Guide Recommendations Class
 
@@ -139081,7 +137258,6 @@ If you don’t want recommendations based on a recent action, specify `null` .
 
 Type: String
 
-1824
 
 Apex Reference Guide Recommendations Class
 
@@ -139154,7 +137330,6 @@ Signature
 
 ```
 
-1825
 
 Apex Reference Guide Recommendations Class
 
@@ -139248,7 +137423,6 @@ ID of the object that the context user just performed an action on.
 Use _`contextAction`_ and _`contextObjectId`_ together to get new recommendations based on the action just performed.
 If you don’t want recommendations based on a recent action, specify `null` .
 
-1826
 
 Apex Reference Guide Recommendations Class
 
@@ -139291,7 +137465,6 @@ API Version
 
 35.0 only
 
-1827
 
 Apex Reference Guide Recommendations Class
 
@@ -139360,7 +137533,6 @@ Signature
 
 ```
 
-1828
 
 Apex Reference Guide Recommendations Class
 
@@ -139448,7 +137620,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Register a `ConnectApi.RecommendationCollection` object to be returned when `getRecommendationsForUser`
 is called with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
 
-1829
 
 Apex Reference Guide Recommendations Class
 
@@ -139535,7 +137706,6 @@ ID of the object that the context user just performed an action on.
 Use _`contextAction`_ and _`contextObjectId`_ together to get new recommendations based on the action just performed.
 If you don’t want recommendations based on a recent action, specify `null` .
 
-1830
 
 Apex Reference Guide Recommendations Class
 
@@ -139620,7 +137790,6 @@ ID for the context user or the keyword `me` .
 
 Type: `ConnectApi.RecommendationActionType`
 
-1831
 
 Apex Reference Guide Recommendations Class
 
@@ -139699,7 +137868,6 @@ Type: `ConnectApi.RecommendationCollection`
 
 Object containing test data.
 
-1832
 
 ### Apex Reference Guide RecordFilterCriteriaFamily Class
 
@@ -139764,7 +137932,6 @@ Type: `ConnectApi.RecordsetFilterCriteriaInput`
 
 `ConnectApi.RecordsetFilterCriteriaInput` object providing a set of recordset filter criteria and records.
 
-1833
 
 ### Apex Reference Guide Records Class
 
@@ -139826,7 +137993,6 @@ Parameters
 
 Type: String
 
-1834
 
 Apex Reference Guide Records Class
 
@@ -139894,7 +138060,6 @@ Type: `ConnectApi.BatchResult` []
 The `ConnectApi.BatchResult.getResult()` method returns a `ConnectApi.Motif` object and errors for motifs that
 didn’t load.
 
-1835
 
 ### Apex Reference Guide RegisterGuestBuyer Class
 
@@ -139971,7 +138136,6 @@ Register a guest buyer for a webstore using an account ID. This method enables a
 
 Register a guest buyer for a webstore using an account ID. This method enables a guest buyer to order on behalf of another buyer.
 
-1836
 
 ### Apex Reference Guide Repricing Class
 
@@ -140034,7 +138198,6 @@ Get details of a product in a web store.
 searchProducts(webstoreId, searchTerm, pageParam, pageSize, effectiveAccountId, facets)
 Search products in a webstore.
 
-1837
 
 Apex Reference Guide Repricing Class
 
@@ -140132,7 +138295,6 @@ Type: String
 
 Specifies whether the media groups and default images of the product are returned.
 
-1838
 
 Apex Reference Guide Repricing Class
 
@@ -140224,7 +138386,6 @@ Maximum number of search results pages to return. If you don't specify a value, 
 
 Type: Integer
 
-1839
 
 ### Apex Reference Guide ReturnOrder Class
 
@@ -140292,7 +138453,6 @@ Requires Chatter
 
 No
 
-1840
 
 Apex Reference Guide ReturnOrder Class
 
@@ -140364,7 +138524,6 @@ Type: `ConnectApi.ReturnItemsInputRepresentation`
 
 Data about products and delivery charges to return, as well as associated return fees.
 
-1841
 
 ### Apex Reference Guide Routing Class
 
@@ -140423,7 +138582,6 @@ releaseHeldFOCapacity(releaseHeldFOCapacityInput)
 Release held fulfillment order capacity at one or more locations. This call decreases a location’s held capacity without changing its
 assigned fulfillment order count. Release held capacity when you cancel the assignment of a fulfillment order to a location.
 
-1842
 
 Apex Reference Guide Routing Class
 
@@ -140489,7 +138647,6 @@ Signature
 
 ```
 
-1843
 
 Apex Reference Guide Routing Class
 
@@ -140558,7 +138715,6 @@ findRoutesWithFewestSplits(findRoutesWithFewestSplitsInputRepresentation)
 
 Get information about the current fulfillment order capacity of one or more locations.
 
-1844
 
 Apex Reference Guide Routing Class
 
@@ -140630,7 +138786,6 @@ Return Value
 
 Type: `ConnectApi.HoldFOCapacityOutputRepresentation`
 
-1845
 
 Apex Reference Guide Routing Class
 
@@ -140697,7 +138852,6 @@ Signature
 
 ```
 
-1846
 
 ### Apex Reference Guide SalesforceInbox Class
 
@@ -140764,7 +138918,6 @@ Type: String
 
 The ID of the activity.
 
-1847
 
 ### Apex Reference Guide Search Class
 
@@ -140826,7 +138979,6 @@ Search an object using keywords and return results.
 
 Search objects using a natural language query and return an answer.
 
-1848
 
 Apex Reference Guide Search Class
 
@@ -140891,7 +139043,6 @@ Signature
 
 ```
 
-1849
 
 Apex Reference Guide Search Class
 
@@ -140971,7 +139122,6 @@ API name of the object.
 
 Type: List<String>
 
-1850
 
 Apex Reference Guide Search Class
 
@@ -141032,7 +139182,6 @@ with the same parameters or the code throws an exception.
 
 Search objects using keyword search and a configuration. The search returns result groups.
 
-1851
 
 Apex Reference Guide Search Class
 
@@ -141100,7 +139249,6 @@ Requires Chatter
 
 No
 
-1852
 
 Apex Reference Guide Search Class
 
@@ -141173,7 +139321,6 @@ Signature
 
 ```
 
-1853
 
 Apex Reference Guide Search Class
 
@@ -141247,7 +139394,6 @@ Return Value
 
 Type: Void
 
-1854
 
 Apex Reference Guide Search Class
 
@@ -141327,7 +139473,6 @@ Type: String
 
 Natural language query to search for in the org.
 
-1855
 
 Apex Reference Guide Search Class
 
@@ -141402,7 +139547,6 @@ Type: Void
 Registers a `ConnectApi.SearchResultGroups` object to be returned when the matching `findAndGroup(q,`
 `configurationName)` method is called in a test context. Use the method with the same parameters or you receive an exception.
 
-1856
 
 Apex Reference Guide Search Class
 
@@ -141486,7 +139630,6 @@ Type: String
 
 Search configuration to apply.
 
-1857
 
 ### Apex Reference Guide Sites Class
 
@@ -141562,7 +139705,6 @@ Type: Void
 
 Search an Experience Cloud site.
 
-1858
 
 Apex Reference Guide Sites Class
 
@@ -141636,7 +139778,6 @@ Specifies the base64 encoded page token. Page tokens are returned as part of the
 
 Type: Integer
 
-1859
 
 ### Apex Reference Guide SmartDataDiscovery Class
 
@@ -141696,7 +139837,6 @@ Get available intents for a social post.
 getManagedSocialAccount(id)
 Get a managed social account that is in the org and assigned to the user.
 
-1860
 
 Apex Reference Guide SocialEngagement Class
 
@@ -141756,7 +139896,6 @@ Signature
 
 ```
 
-1861
 
 Apex Reference Guide SocialEngagement Class
 
@@ -141829,7 +139968,6 @@ Type: `ConnectApi.FollowSocialPersonaIntent`
 
 Follow a social persona on a social post in its social network.
 
-1862
 
 Apex Reference Guide SocialEngagement Class
 
@@ -141901,7 +140039,6 @@ Type: String
 
 ID of a social post.
 
-1863
 
 Apex Reference Guide SocialEngagement Class
 
@@ -141965,7 +140102,6 @@ Return Value
 
 Type: `ConnectApi.ManagedSocialAccounts`
 
-1864
 
 Apex Reference Guide SocialEngagement Class
 
@@ -142044,7 +140180,6 @@ Description: Filters results based on the social network. Values are:
 
 **•** `YouTube`
 
-1865
 
 Apex Reference Guide SocialEngagement Class
 
@@ -142116,7 +140251,6 @@ Signature
 
 ```
 
-1866
 
 Apex Reference Guide SocialEngagement Class
 
@@ -142189,7 +140323,6 @@ Type: `ConnectApi.LikeSocialPostIntent`
 
 Approve or reject the publishing of a large number of social posts.
 
-1867
 
 Apex Reference Guide SocialEngagement Class
 
@@ -142258,7 +140391,6 @@ Return Value
 
 Type: Void
 
-1868
 
 Apex Reference Guide SocialEngagement Class
 
@@ -142332,7 +140464,6 @@ Type: String
 
 ID of the social post authored by the social persona to stop following.
 
-1869
 
 Apex Reference Guide SocialEngagement Class
 
@@ -142401,7 +140532,6 @@ Requires Chatter
 
 No
 
-1870
 
 ### Apex Reference Guide Surveys Class
 
@@ -142466,7 +140596,6 @@ Requires Chatter
 
 No
 
-1871
 
 ### Apex Reference Guide TaxPlatform Class
 
@@ -142531,7 +140660,6 @@ Requires Chatter
 
 No
 
-1872
 
 ### Apex Reference Guide Topics Class
 
@@ -142597,7 +140725,6 @@ Create a topic.
 createTopicDataCategoryRules(communityId, dataCategoryGroup, dataCategory, topicNames)
 Create topic and article assignment rules by data category.
 
-1873
 
 Apex Reference Guide Topics Class
 
@@ -142661,7 +140788,6 @@ Get suggested topics for a record or feed item.
 getTopicSuggestionsForText(communityId, text, maxResults)
 Get up to a specified number of suggested topics for a string of text.
 
-1874
 
 Apex Reference Guide Topics Class
 
@@ -142732,7 +140858,6 @@ Type: String
 
 ID for a record or feed item.
 
-1875
 
 Apex Reference Guide Topics Class
 
@@ -142804,7 +140929,6 @@ Return Value
 
 Type: `ConnectApi.Topic`
 
-1876
 
 Apex Reference Guide Topics Class
 
@@ -142878,7 +141002,6 @@ Only users with the Create Topics permission can create a topic.
 
 Create topic and article assignment rules by data category.
 
-1877
 
 Apex Reference Guide Topics Class
 
@@ -142956,7 +141079,6 @@ Signature
 
 ```
 
-1878
 
 Apex Reference Guide Topics Class
 
@@ -143033,7 +141155,6 @@ Type: String
 
 ID for a topic.
 
-1879
 
 Apex Reference Guide Topics Class
 
@@ -143099,7 +141220,6 @@ Return Value
 
 Type: `ConnectApi.TopicPage`
 
-1880
 
 Apex Reference Guide Topics Class
 
@@ -143161,7 +141281,6 @@ Return Value
 
 Type: `ConnectApi.TopicPage`
 
-1881
 
 Apex Reference Guide Topics Class
 
@@ -143223,7 +141342,6 @@ Return Value
 
 Type: `ConnectApi.TopicPage`
 
-1882
 
 Apex Reference Guide Topics Class
 
@@ -143291,7 +141409,6 @@ API Version
 
 40.0
 
-1883
 
 Apex Reference Guide Topics Class
 
@@ -143369,7 +141486,6 @@ Parameters
 
 Type: String
 
-1884
 
 Apex Reference Guide Topics Class
 
@@ -143436,7 +141552,6 @@ API Version
 
 29.0
 
-1885
 
 Apex Reference Guide Topics Class
 
@@ -143508,7 +141623,6 @@ Signature
 
 ```
 
-1886
 
 Apex Reference Guide Topics Class
 
@@ -143591,7 +141705,6 @@ Number of the page you want returned. Starts at 0. If you pass in `null` or 0, t
 
 Type: Integer
 
-1887
 
 Apex Reference Guide Topics Class
 
@@ -143668,7 +141781,6 @@ Values are:
 
 **•** `alphaAsc` —Sorts topics alphabetically.
 
-1888
 
 Apex Reference Guide Topics Class
 
@@ -143743,7 +141855,6 @@ Type: `ConnectApi.TopicPage`
 
 Get a page of sorted topics that match the search criteria.
 
-1889
 
 Apex Reference Guide Topics Class
 
@@ -143822,7 +141933,6 @@ Type: `ConnectApi.TopicPage`
 
 Get the topic that matches the exact, case-insensitive name.
 
-1890
 
 Apex Reference Guide Topics Class
 
@@ -143898,7 +142008,6 @@ Requires Chatter
 
 No
 
-1891
 
 Apex Reference Guide Topics Class
 
@@ -143982,7 +142091,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1892
 
 Apex Reference Guide Topics Class
 
@@ -144059,7 +142167,6 @@ Type: String
 
 ID for a record or feed item.
 
-1893
 
 Apex Reference Guide Topics Class
 
@@ -144132,7 +142239,6 @@ Return Value
 
 Type: `ConnectApi.TopicSuggestionPage`
 
-1894
 
 Apex Reference Guide Topics Class
 
@@ -144201,7 +142307,6 @@ setTestGetTopicSuggestionsForText(communityId, text, result)
 
 _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
 
-1895
 
 Apex Reference Guide Topics Class
 
@@ -144266,7 +142371,6 @@ API Version
 
 29.0
 
-1896
 
 Apex Reference Guide Topics Class
 
@@ -144334,7 +142438,6 @@ API Version
 
 33.0
 
-1897
 
 Apex Reference Guide Topics Class
 
@@ -144414,7 +142517,6 @@ Signature
 
 ```
 
-1898
 
 Apex Reference Guide Topics Class
 
@@ -144502,7 +142604,6 @@ The ID of the record or feed item to which to assign the topic.
 
 Type: `ConnectApi.TopicNamesInput`
 
-1899
 
 Apex Reference Guide Topics Class
 
@@ -144573,7 +142674,6 @@ Usage
 Only users with the Assign Topics permission can remove topics from feed items or records. Administrators must enable topics for objects
 before users can add topics to records of that object type.
 
-1900
 
 Apex Reference Guide Topics Class
 
@@ -144647,7 +142747,6 @@ API Version
 
 40.0
 
-1901
 
 Apex Reference Guide Topics Class
 
@@ -144727,7 +142826,6 @@ Signature
 
 ```
 
-1902
 
 Apex Reference Guide Topics Class
 
@@ -144812,7 +142910,6 @@ Type: `ConnectApi.TopicPage`
 
 Object containing test data.
 
-1903
 
 Apex Reference Guide Topics Class
 
@@ -144886,7 +142983,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Register a `ConnectApi.TopicPage` object to be returned when the matching `ConnectApi.getRelatedTopics` method
 is called in a test context. Use the method with the same parameters or you receive an exception.
 
-1904
 
 Apex Reference Guide Topics Class
 
@@ -144966,7 +143062,6 @@ Parameters
 
 Type: String
 
-1905
 
 Apex Reference Guide Topics Class
 
@@ -145050,7 +143145,6 @@ ID for a record or feed item.
 
 Type: `ConnectApi.TopicSuggestionPage`
 
-1906
 
 Apex Reference Guide Topics Class
 
@@ -145120,7 +143214,6 @@ Type: `ConnectApi.TopicSuggestionPage`
 
 Object containing test data.
 
-1907
 
 Apex Reference Guide Topics Class
 
@@ -145194,7 +143287,6 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 Register a `ConnectApi.TopicPage` object to be returned when the matching `ConnectApi.getTrendingTopics`
 method is called in a test context. Use the method with the same parameters or you receive an exception.
 
-1908
 
 Apex Reference Guide Topics Class
 
@@ -145273,7 +143365,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: Integer
 
-1909
 
 ### Apex Reference Guide UserProfiles Class
 
@@ -145334,7 +143425,6 @@ Get the user profile of the context user.
 setBannerPhoto(communityId, userId, fileId, versionNumber)
 Set an uploaded file as a user’s banner photo.
 
-1910
 
 Apex Reference Guide UserProfiles Class
 
@@ -145400,7 +143490,6 @@ Return Value
 
 Type: Void
 
-1911
 
 Apex Reference Guide UserProfiles Class
 
@@ -145474,7 +143563,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-1912
 
 Apex Reference Guide UserProfiles Class
 
@@ -145543,7 +143631,6 @@ API Version
 
 29.0
 
-1913
 
 Apex Reference Guide UserProfiles Class
 
@@ -145625,7 +143712,6 @@ ID of the user.
 
 Type: String
 
-1914
 
 Apex Reference Guide UserProfiles Class
 
@@ -145698,7 +143784,6 @@ Return Value
 
 Type: `ConnectApi.BannerPhoto`
 
-1915
 
 Apex Reference Guide UserProfiles Class
 
@@ -145769,7 +143854,6 @@ API Version
 
 36.0
 
-1916
 
 Apex Reference Guide UserProfiles Class
 
@@ -145851,7 +143935,6 @@ Signature
 
 ```
 
-1917
 
 Apex Reference Guide UserProfiles Class
 
@@ -145934,7 +144017,6 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
-1918
 
 Apex Reference Guide UserProfiles Class
 
@@ -146007,7 +144089,6 @@ Return Value
 
 Type: `ConnectApi.Photo`
 
-1919
 
 ### Apex Reference Guide Zones Class
 
@@ -146083,7 +144164,6 @@ Photos are processed asynchronously and might not be visible right away.
 Access information about Chatter Answers zones in your organization. Zones organize questions into logical groups, with each zone
 having its own focus and unique questions.
 
-1920
 
 Apex Reference Guide Zones Class
 
@@ -146143,7 +144223,6 @@ Signature
 
 ```
 
-1921
 
 Apex Reference Guide Zones Class
 
@@ -146214,7 +144293,6 @@ Note: With the Spring ’18 release, Salesforce no longer supports Chatter Answe
 comment, or view existing Chatter Answers data, but support and updates are scheduled to end. We recommend transitioning
 [to Chatter Questions. For more information, see End of Support for Chatter Answers in Spring ’18.](https://help.salesforce.com/apex/HTViewSolution?urlname=Chatter-Answers-to-Retire-in-Spring-18)
 
-1922
 
 Apex Reference Guide Zones Class
 
@@ -146285,7 +144363,6 @@ Requires Chatter
 
 Yes
 
-1923
 
 Apex Reference Guide Zones Class
 
@@ -146363,7 +144440,6 @@ API Version
 
 29.0
 
-1924
 
 Apex Reference Guide Zones Class
 
@@ -146443,7 +144519,6 @@ Return Value
 
 Type: `ConnectApi.ZoneSearchPage`
 
-1925
 
 Apex Reference Guide Zones Class
 
@@ -146521,7 +144596,6 @@ Type: `ConnectApi.ZoneSearchResultType`
 
 **•** `Article` —Search results contain only articles.
 
-1926
 
 Apex Reference Guide Zones Class
 
@@ -146593,7 +144667,6 @@ Type: String
 
 The ID of a zone.
 
-1927
 
 Apex Reference Guide Zones Class
 
@@ -146675,7 +144748,6 @@ Type: String
 
 Use either the ID for an Experience Cloud site, `internal`, or `null` .
 
-1928
 
 Apex Reference Guide Zones Class
 
@@ -146755,7 +144827,6 @@ API Version
 
 36.0
 
-1929
 
 ### Apex Reference Guide ConnectApi Input Classes
 
@@ -146841,7 +144912,6 @@ parameters.
 Some methods have parameters that are typed with an abstract class. You must pass in an instance of a concrete child class for these
 parameters.
 
-1930
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -146906,7 +144976,6 @@ Superclass of:
 
 **•** ConnectApi.StringList
 
-1931
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -146946,7 +145015,6 @@ about the user who executed the action link to your server-side code. Salesforce
 
 The available context variables are:
 
-1932
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147015,7 +145083,6 @@ REST resource. `Api` and `ApiAsync`
 action link URLs aren’t provided to clients.
 Links to Salesforce can be relative. All other
 
-1933
 
 Required 33.0
 
@@ -147121,7 +145188,6 @@ For a complete list of keys and labels, see
 If none of the predefined labels work for
 your action link, use a custom label. To use
 
-1934
 
 ```
 headers
@@ -147209,7 +145275,6 @@ value.
 `requires` Boolean `true` to require the user to confirm the
 `Confirmation` action; `false` otherwise.
 
-1935
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147292,7 +145357,6 @@ You can create up to three action links in a
 `Primary` group and up to four in an
 `Overflow` group.
 
-1936
 
 action link group
 without a template.
@@ -147390,7 +145454,6 @@ template, see Set the Action Link Group
 [Expiration Time in Design Action Link](https://help.salesforce.com/s/articleView?id=sf.action_link_group_template_design.htm&language=en_US)
 [Templates.](https://help.salesforce.com/s/articleView?id=sf.action_link_group_template_design.htm&language=en_US)
 
-1937
 
 action link group
 without a template.
@@ -147483,7 +145546,6 @@ value could be `Joan` .
 
 ConnectApi.ActionLinkGroupDefinitionInput
 
-1938
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147547,7 +145609,6 @@ Represents the activation contact point input.
 
 `entityName` String Entity name for the contact point. 60.0
 
-1939
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147611,7 +145672,6 @@ activation target.
 
 `curatedEntity` `CuratedEntityInputRepresentation` Curated entity details for the activation. 60.0
 
-1940
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147677,7 +145737,6 @@ Indicates whether to exclude records 60.0
 modified since the last refresh ( `true` ) or
 not ( `false` ) .
 
-1941
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147747,7 +145806,6 @@ createActivationTarget(input)
 
 updateActivationTarget(activationTargetId, input)
 
-1942
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147821,7 +145879,6 @@ Address input representation for a payment method or card payment method.
 
 `street` String Payment method street. Optional 51.0
 
-1943
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147884,7 +145941,6 @@ OrderItemSummaryChange object.
 Price adjustments to order item summaries that together make up a price adjustment to an order, with options for adjusting items in
 the process of being fulfilled.
 
-1944
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -147949,7 +146005,6 @@ Representation
 
 `title` String Title of the extension. Optional 40.0
 
-1945
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148009,7 +146064,6 @@ Don’t specify for
 updating an
 announcement.
 
-1946
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148091,7 +146145,6 @@ postAnnouncement(communityId, announcement)
 
 An article and topic assignment job.
 
-1947
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148150,7 +146203,6 @@ ConnectApi.FeedElementCapabilitiesInput
 
 Records associated with the survey invitation.
 
-1948
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148215,7 +146267,6 @@ Represents the limiting expression input for an activation.
 
 `entityName` String Name of the entity. 63.0
 
-1949
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148263,7 +146314,6 @@ Superclass for:
 
 **•** ConnectApi.NewUserAudienceCriteriaInput
 
-1950
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148370,7 +146420,6 @@ Operator
 
 **•** `StartsWith`
 
-1951
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148464,7 +146513,6 @@ or updating an
 
 audience with the
 
-1952
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148536,7 +146584,6 @@ audience with the
 `Profile` criterion
 type
 
-1953
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148616,7 +146663,6 @@ audience criterion is true (OR operation).
 criteria match the custom formula (for
 example, (1 AND 2) OR 3).
 
-1954
 
 Required when 48.0
 creating an audience
@@ -148683,7 +146729,6 @@ Authorization reversal input consumed by authorization reversal service.
 
 Subclass of ConnectApi.BaseRequest.
 
-1955
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148757,7 +146802,6 @@ MethodRequest
 
 ```
 
-1956
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148842,7 +146886,6 @@ Area transaction
 `comments` String Comments for providing more information Optional 65.0
 about the bank.
 
-1957
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148908,7 +146951,6 @@ be used.
 `versionNumber` Integer Version number of an existing file. If not Optional 36.0
 provided, the latest version is used.
 
-1958
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -148974,7 +147016,6 @@ Base parameters for making a request to the payment gateway.
 
 This class is abstract.
 
-1959
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149033,7 +147074,6 @@ be `ConnectApi.FeedElementInput` .
 
 `binary` `ConnectApi.BinaryInput` A binary file to associate with the input object. 32.0
 
-1960
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149100,7 +147140,6 @@ bookmarked for the user ( `true` ) or not
 
 ConnectApi.FeedElementCapabilitiesInput
 
-1961
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149171,7 +147210,6 @@ Business objective association.
 `id` String Association ID for the business objective, or Required 59.0
 goal.
 
-1962
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149258,7 +147296,6 @@ recommended action.
 `businessObjectiveId` String 18-character business objective ID
 associated with the recommended action.
 
-1963
 
 Required to create a 60.0
 recommended
@@ -149336,7 +147373,6 @@ Primary state of the recommended action Optional 60.0
 (e.g., "ACTIVE", "INACTIVE", "ACCEPTED",
 "NOT_EXPIRING").
 
-1964
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149397,7 +147433,6 @@ you use this property.
 **•** If the `shouldVoidTax` property
 value is set to `true`, then the operation
 
-1965
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149473,7 +147508,6 @@ voided the document that's mentioned
 as the `referenceDocumentCode`
 property value.
 
-1966
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149545,7 +147579,6 @@ connected app.
 `namespacePrefix` String A unique namespace prefix for the canvas Optional 32.0
 app.
 
-1967
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149604,7 +147637,6 @@ payment caller to re-establish context.
 
 `effectiveDate` Datetime Date when the payment becomes effective. Optional 50.0
 
-1968
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149691,7 +147723,6 @@ LastName
 
 **•** `Maestro`
 
-1969
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149765,7 +147796,6 @@ adjustment is a percentage.
 `priority` Integer Where in the sequence of adjustments this Optional 60.0
 adjustment was applied.
 
-1970
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149824,7 +147854,6 @@ registered shoppers and for the guest
 
 `shippingAddress` `ConnectApi.CartShippingAddressInputRepresentation` Shipping address for a cart. Required 63.0
 
-1971
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149886,7 +147915,6 @@ sObjects. Standard fields are ignored. The
 custom fields must already be defined for
 the sObject. Currently, only the CartItem
 
-1972
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -149955,7 +147983,6 @@ updating a cart item
 
 Promotions for a cart item.
 
-1973
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150016,7 +148043,6 @@ for registered shoppers and for the guest
 `effective` String ID of the buyer account or guest buyer Optional 49.0
 `AccountId` profile for which the request is made. If
 
-1974
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150081,7 +148107,6 @@ Copy products from a cart to a wishlist.
 
 Refernce to the model asset to use for the prediction request.
 
-1975
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150167,7 +148192,6 @@ calculated insight
 `draft` Boolean Specifies whether to save the calculated Optional 57.0
 insight as draft ( `true` ) or not ( `false` ).
 
-1976
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150246,7 +148270,6 @@ and can't be longer than 4 characters.
 
 Input representation for updating an identity resolution ruleset.
 
-1977
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150324,7 +148347,6 @@ precision.
 **•** `FuzzyLow` —Fuzzy match with low
 precision.
 
-1978
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150382,7 +148404,6 @@ criteria
 `CdpIdentityResolution` and the match method applied.
 `MatchCriterion` 
 
-1979
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150465,7 +148486,6 @@ Input representation for an identity resolution ruleset's default reconciliation
 `entityName` String API name of the Data Model Object the Required 57.0
 reconciliation rule applies to.
 
-1980
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150572,7 +148592,6 @@ ConnectApi.CdpIdentityResolutionReconciliationFieldRule
 
 Input representation for running an identity resolution ruleset job on demand.
 
-1981
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150637,7 +148656,6 @@ prescriptions to return. Only prescriptions
 
 whose impact percentage is greater than
 
-1982
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150699,7 +148717,6 @@ Segment dbt model input.
 
 `name` String Dbt model name. Required 55.0
 
-1983
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150779,7 +148796,6 @@ DbtInput
 rapidly publish UI and DBT-based
 segments.
 
-1984
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150871,7 +148887,6 @@ ConnectApi.ChangeItemFeeInputRepresentation
 
 Input representation for Change Item Fee Input
 
-1985
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150924,7 +148939,6 @@ optional in the org
 
 `product2Id` String ID of the product representing the fee. Required 57.0
 
-1986
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -150987,7 +149001,6 @@ amount.
 
 fees.
 
-1987
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151041,7 +149054,6 @@ OrderItemSummaryChange object.
 `reasonForChangeText` String Reason text used for the return insights. The Optional 59.0
 value has a max of 255 characters.
 
-1988
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151107,7 +149119,6 @@ Input
 `owner` String The ID of the group owner. This property is available for PATCH 29.0
 requests only.
 
-1989
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151171,7 +149182,6 @@ entity in `subscriptionsToAdd` and
 `subscriptionsToRemove` results in
 no operation.
 
-1990
 
 ```
 subscriptions
@@ -151281,7 +149291,6 @@ comments is supported in version 34.0 and later.
 Rich text and inline images are supported in
 comment bodies in version 35.0 and later. Inline
 
-1991
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151349,7 +149358,6 @@ or `Billing` .
 
 `city` String The address city. Optional 54.0
 
-1992
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151426,7 +149434,6 @@ Composite product input.
 
 `ProductAttributeSetInputRepresentation` parent product.
 
-1993
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151510,7 +149517,6 @@ Represents the attribute of an activation contact point.
 
 `label` String Label of the attribute. 60.0
 
-1994
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151567,7 +149573,6 @@ ConnectApi.ContactPointAttributeInput
 
 Represents the attribute of an activation contact point.
 
-1995
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151622,7 +149627,6 @@ ConnectApi.ContactPointSourceInput
 
 Represents the configuration input for contact point sources.
 
-1996
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151696,7 +149700,6 @@ ConnectApi.FeedElementCapabilitiesInput
 
 Fields of the item type.
 
-1997
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151761,7 +149764,6 @@ generation is required or not.
 `templateName` String Document template name for document Optional 56.0
 generation.
 
-1998
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151815,7 +149817,6 @@ createMultipleInvoices(invoicesInput)
 
 Data about the change orders to create Invoices for.
 
-1999
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151874,7 +149875,6 @@ appointment, use
 to any of the fields, including custom
 fields, in `assignedResources`
 
-2000
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -151944,7 +149944,6 @@ ConnectApi.ExternalCredentialInput
 
 ConnectApi.NamedCredentialInput
 
-2001
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152027,7 +150026,6 @@ If specified, the authentication protocol
 variant must match the actual protocol
 variant of the external credential.
 
-2002
 
 **•** `AwsSv4`
 
@@ -152129,7 +150127,6 @@ such as OAuthToken. If the provided revision
 isn’t the latest version, the authentication
 endpoint refreshes the credential.
 
-2003
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152217,7 +150214,6 @@ audience
 
 Input details for the data connector.
 
-2004
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152272,7 +150268,6 @@ Delivery estimation product information.
 
 `stockKeepingUnit` String Product's stock keeping unit (SKU). Required 63.0
 
-2005
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152335,7 +150330,6 @@ considers attribute labels for localization.
 
 Input representation to Distribute Picked Quantities
 
-2006
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152390,7 +150384,6 @@ Represents the DMO filter input.
 
 Represents the DMO filter limit input.
 
-2007
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152452,7 +150445,6 @@ Use the format
 `isSubfolderCreationEnabled` Boolean Indicates whether subfolder creation is Optional 60.0
 enabled ( `true` ) or not ( `false` ). If `true`,
 
-2008
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152518,7 +150510,6 @@ ConnectApi.EinsteinLlmAdditionalConfigInput
 
 Additional configuration information for the LLM provider.
 
-2009
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152590,7 +150581,6 @@ ConnectApi.EinsteinPromptTemplateGenerationsInput
 
 Prompt template input parameters to use for generation.
 
-2010
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152655,7 +150645,6 @@ ID of an Invoice to ensure funds for and apply them to.
 
 `invoiceId` String ID of the Invoice. Required 48.0
 
-2011
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152726,7 +150715,6 @@ list, this value is ignored and the default
 refund logic is applied. The default value is
 false.
 
-2012
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152786,7 +150774,6 @@ on page 2005
 
 `locations` String List of location external references. Optional 63.0
 
-2013
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152845,7 +150832,6 @@ Create or update extensions associated with a feed element.
 
 This class is a subclass of ConnectApi.FeedElementCapabilityInput.
 
-2014
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152897,7 +150883,6 @@ SEE ALSO:
 
 External auth identity provider credentials input.
 
-2015
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -152996,7 +150981,6 @@ The default value is
 `description` String Description of the external auth identity Optional 62.0
 provider.
 
-2016
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153093,7 +151077,6 @@ ParameterType
 
 **•** `RefreshRequestBodyParameter`
 
-2017
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153183,7 +151166,6 @@ Authentication
 **•** `ClientCredentialsClientSecret` —OAuth
 2.0 Client Credentials client secret. Client
 
-2018
 
 **•** `AwsSv4`
 
@@ -153273,7 +151255,6 @@ ExternalCredential
 
 `PrincipalInput` 
 
-2019
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153359,7 +151340,6 @@ ExternalCredential
 
 `principalName` String Principal name. Required 58.0
 
-2020
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153475,7 +151455,6 @@ Input
 
 ```
 
-2021
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153575,7 +151554,6 @@ This class is a superclass of:
 
 **•** ConnectApi.CanvasCapabilityInput
 
-2022
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153634,7 +151612,6 @@ CapabilitiesInput
 
 `FeedElementType` represents.
 
-2023
 
 Required when 31.0
 creating a feed
@@ -153704,7 +151681,6 @@ Used to create rich feed items, for example, feed items that include @mentions o
 
 Subclass of ConnectApi.FeedElementInput as of version 31.0.
 
-2024
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153804,7 +151780,6 @@ Enum
 **•** `InternalUsers` —Visibility is limited to
 internal users.
 
-2025
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153864,7 +151839,6 @@ Attach up to 10 files that have already been uploaded or remove one or more file
 
 This class is a subclass of ConnectApi.FeedElementCapabilityInput.
 
-2026
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -153932,7 +151906,6 @@ ConnectApi.SearchRequest
 
 Data used to calculate inventory availability and fulfillment routes for one order involving the fewest number of shipment splits.
 
-2027
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154013,7 +151986,6 @@ that can fulfill the entire order in a
 single shipment. A maximum of 1
 returns combinations of locations
 
-2028
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154069,7 +152041,6 @@ that group.
 
 `quantity` Double Quantity of the product. Required 54.0
 
-2029
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154138,7 +152109,6 @@ The member identification code (MID) of Required 53.0
 the Marketing Cloud Engagement account
 associated with the form.
 
-2030
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154206,7 +152176,6 @@ Summaries OrderItem
 
 `Representation`         
 
-2031
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154283,7 +152252,6 @@ createFulfillmentOrders(fulfillmentOrderInput)
 
 Instantiate and include this object with no properties when creating an invoice.
 
-2032
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154356,7 +152324,6 @@ Locations to get fulfillment order capacity information for.
 `locationIds` List<String> List of IDs of the locations to get fulfillment Required 55.0
 order capacity information for.
 
-2033
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154420,7 +152387,6 @@ RequestInput
 
 Request to hold fulfillment order capacity at one or more locations.
 
-2034
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154495,7 +152461,6 @@ available balance that isn’t reserved by
 another Order Summary is used. If false, any
 available balance is used.
 
-2035
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154549,7 +152514,6 @@ Representation for Item Quantity Input
 
 `quantity` Double Quantity of the external item. Required 58.0
 
-2036
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154604,7 +152568,6 @@ SEE ALSO:
 
 ConnectApi.MessageBodyInput
 
-2037
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154650,7 +152613,6 @@ Subclass of ConnectApi.AbstractList.
 
 Input representation for the body of a piece of managed content.
 
-2038
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154718,7 +152680,6 @@ managed content channel. channel types except
 
 ```
 
-2039
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154793,7 +152754,6 @@ Specifies whether the text contents of the Optional 62.0
 channel are searchable ( `true` ) or not
 ( `false` ).
 
-2040
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154864,7 +152824,6 @@ Input representation for a piece of managed content.
 
 `apiName` String API name of the managed content. Optional 61.0
 
-2041
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154932,7 +152891,6 @@ instance ( `true` ) or not ( `false` ).
 
 `name` String Name of the provider instance. Required 65.0
 
-2042
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -154998,7 +152956,6 @@ space.
 
 `description` String Description of the managed content space. Optional 64.0
 
-2043
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155069,7 +153026,6 @@ managed content space.
 
 Channels to add or remove from the managed content space.
 
-2044
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155137,7 +153093,6 @@ workspace.
 
 `description` String Description for unpublish action. Optional 60.0
 
-2045
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155208,7 +153163,6 @@ Relative position of a managed topic.
 
 `managedTopicId` String ID of existing managed topic. Required 32.0
 
-2046
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155280,7 +153234,6 @@ Supported hyperlink URLs start with `Hyperlink`
 
 ConnectApi.MessageBodyInput
 
-2047
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155354,7 +153307,6 @@ method.
 
 ConnectApi.MCSFolderShareCollectionUpdateInput
 
-2048
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155451,7 +153403,6 @@ both.
 
 Add rich messages to feed items and comments.
 
-2049
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155505,7 +153456,6 @@ Superclass for:
 [Use the ConnectApiHelper repository on GitHub to simplify many of the tasks accomplished with ConnectApi.MessageSegmentInput,](https://github.com/forcedotcom/ConnectApiHelper)
 such as posting with inline images, rich text, and mentions.
 
-2050
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155597,7 +153547,6 @@ multipleEnsureFundsAsync(multipleEnsureFundsInput)
 
 List of inputs for creating fulfillment orders.
 
-2051
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155657,7 +153606,6 @@ Named credential callout options input.
 `allowMergeFields` Boolean Specifies whether to allow merge fields in Required 58.0
 `InHeader` the HTTP header ( `true` ) or not ( `false` ).
 
-2052
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155772,7 +153720,6 @@ NamedCredential
 
 `ParameterInput` 
 
-2053
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155859,7 +153806,6 @@ are from 1 to 25. The default is 3.
 `strategyContext` Map<String, String> Variable and value mappings for the Optional 45.0
 strategy.
 
-2054
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -155917,7 +153863,6 @@ OAuth authentication flow.
 `principalName` String Name of the external credential named Required if 56.0
 principal. `principalType`
 
-2055
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156020,7 +153965,6 @@ then it expires. The maximum value is
 `reservationTime` String The time at which to record the reservation. Optional 51.0
 Example: 2020-07-24T21:13:00Z
 
-2056
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156089,7 +154033,6 @@ identify which requests succeeded or failed.
 `externalRefId` String The external reference ID of the location Optional 51.0
 that’s fulfilling the reservation.
 
-2057
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156165,7 +154108,6 @@ availability data for that SKU at all inventory
 locations that aren’t assigned to location
 groups.
 
-2058
 
 Optional; can’t 51.0
 combine with
@@ -156253,7 +154195,6 @@ is required.
 `quantity` Double The quantity of reserved inventory to Required 51.0
 release.
 
-2059
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156329,7 +154270,6 @@ receiving the transfer.
 `fromLocationGroupIdentifier` String The identifier of the location group sending The identifier for a 51.0
 the reservation. sending location or
 
-2060
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156395,7 +154335,6 @@ update a partial reservation.
 `reservationTime` String The time the reservation was updated. Optional 61.0
 Example: 2020-07-24T21:13:00Z.
 
-2061
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156468,7 +154407,6 @@ Order by parameter for object search.
 
 Default value is `Ascending` .
 
-2062
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156542,7 +154480,6 @@ OrderItemSummary
 
 Order item summary.
 
-2063
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156604,7 +154541,6 @@ Order Management.
 **•** `UNMANAGED` —Managed by an
 external system.
 
-2064
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156670,7 +154606,6 @@ for guest shoppers.
 
 Order summary verification input.
 
-2065
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156727,7 +154662,6 @@ Payment information about additional funds required for an order.
 `lastPaymentGatewayLogId` String Last payment gateway log ID for the new Optional 60.0
 order payment summary.
 
-2066
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156807,7 +154741,6 @@ Method
 BankPayment method.
 MethodRequest
 
-2067
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156888,7 +154821,6 @@ setPhotoWithAttributes(communityId, userId, photo, fileUpload)
 
 Pin or unpin a feed element to a feed.
 
-2068
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -156956,7 +154888,6 @@ MethodRequest
 
 ```
 
-2069
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157027,7 +154958,6 @@ exchange order.
 
 `reservationType` String The type of the reservation. Optional 61.0
 
-2070
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157098,7 +155028,6 @@ If `NoGrouping` is specified for
 `groupingOption`,
 `topProductType` is ignored.
 
-2071
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157178,7 +155107,6 @@ up to 20 values for each refinement.
 `searchTerm` String List of up to 32 space-separated search
 terms.
 
-2072
 
 Required if 52.0
 `categoryId` isn’t
@@ -157256,7 +155184,6 @@ Collection of cart delivery groups associated
 with the items in the cart. Available if
 shipping promotions are enabled.
 
-2073
 
 Required when 60.0
 evaluating shipping
@@ -157347,7 +155274,6 @@ specified
 
 `sku` String Stock keeping unit (SKU) of the cart item.
 
-2074
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157445,7 +155371,6 @@ promotions
 `effectiveAccount` String ID of the account for which the request is
 `Id` made.
 
-2075
 
 Required if 57.0
 `segments` isn’t
@@ -157524,7 +155449,6 @@ evaluate(salesTransaction)
 
 IDs of a product and associated category.
 
-2076
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157578,7 +155502,6 @@ Represents the query path configuration input.
 
 Represents the input to create an SQL query.
 
-2077
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157646,7 +155569,6 @@ Represents the parameter fields for an SQL query input.
 
 **•** `Oid`
 
-2078
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157721,7 +155643,6 @@ ConnectApi.FeedElementCapabilitiesInput
 
 Attribute-based refinement with minimum or maximum numeric values for product search.
 
-2079
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157786,7 +155707,6 @@ Mark feed elements as read by the context user.
 
 This class is a subclass of ConnectApi.FeedElementCapabilityInput.
 
-2080
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157841,7 +155761,6 @@ Shared order payment summary sequence.
 
 Information required for a submit cart to exchange order action.
 
-2081
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157904,7 +155823,6 @@ ConnectApi.SurveyInvitationEmailInput
 
 A custom recommendation audience.
 
-2082
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -157984,7 +155902,6 @@ SEE ALSO:
 
 createRecommendationAudience(communityId, recommendationAudience)
 
-2083
 
 Required to update 35.0 only
 a recommendation
@@ -158072,7 +155989,6 @@ createRecommendationDefinition(communityId, recommendationDefinition)
 
 A reaction to a recommendation produced by a recommendation strategy.
 
-2084
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158151,7 +156067,6 @@ This class is a subclass of ConnectApi.FeedElementCapabilityInput.
 `recordId` String ID of the existing knowledge article to Required 42.0
 attach.
 
-2085
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158209,7 +156124,6 @@ Attribute-based refinement input for product search.
 
 This class is abstract and is a superclass of ConnectApi.DistinctValueRefinementInput.
 
-2086
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158314,7 +156228,6 @@ cancels all other requests in the list ( _`true`_ )
 
 or whether some requests can succeed if
 
-2087
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158399,7 +156312,6 @@ how to process them.
 
 returnItems(returnOrderId, returnItemsInput)
 
-2088
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158457,7 +156369,6 @@ object’s Status picklist.
 
 ID of a ReturnOrderLineItem representing a delivery charge.
 
-2089
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158516,7 +156427,6 @@ the expected quantity, then the remaining
 quantity to be returned is added to a new
 ReturnOrderLineItem.
 
-2090
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158578,7 +156488,6 @@ was rejected. This value isn’t used by any
 standard features, but is provided for use in
 customizations.
 
-2091
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158644,7 +156553,6 @@ ConnectApi.ReturnOrderInputRepresentation
 
 createReturnOrder(returnOrderInput)
 
-2092
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158702,7 +156610,6 @@ Available in version 65.0 and later.
 
 `product2Id` String ID of the product representing the fee. Required 56.0
 
-2093
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158771,7 +156678,6 @@ request.
 `paymentGroup` `ConnectApi.Payment` Payment group information for the sale Optional 54.0
 `GroupRequest` request.
 
-2094
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158863,7 +156769,6 @@ Recommendations appear by default
 on the Home and Question Detail pages
 of Customer Service and Partner Central
 
-2095
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158925,7 +156830,6 @@ scheduled custom recommendation, specify
 custom recommendation audience and a
 scheduled custom recommendation.
 
-2096
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -158993,7 +156897,6 @@ SEE ALSO:
 
 createScheduledRecommendation(communityId, scheduledRecommendation)
 
-2097
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159073,7 +156976,6 @@ are defined by the search layout.
 
 `SearchFilter`        
 
-2098
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159140,7 +157042,6 @@ is Group.
 **•** `Regular`                 - Default mode of service
 appointment.
 
-2099
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159207,7 +157108,6 @@ to start.
 `serviceTerritoryId` String ID of the service territory associated with Optional 53.0
 the service appointment.
 
-2100
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159297,7 +157197,6 @@ In version 53.0 and later, use
 
 Additional status values can be created.
 
-2101
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159344,7 +157243,6 @@ Change the status of a feed post or comment.
 
 This class is a subclass of ConnectApi.FeedElementCapabilityInput.
 
-2102
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159403,7 +157301,6 @@ ConnectApi.ChatterStreamInput
 
 List of string values.
 
-2103
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159485,7 +157382,6 @@ question in the email. Only Lightning email
 templates are used to send survey
 invitations.
 
-2104
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159567,7 +157463,6 @@ Collection of targets to create.
 
 `TargetInput`        
 
-2105
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159644,7 +157539,6 @@ include:
 _**`CustomObjectName`**_ `__c` (version
 48.0 and later)
 
-2106
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159705,7 +157599,6 @@ A set of inventory locations that together can fulfill an order.
 
 `LocationInputRepresentation`                      - their country and postal codes.
 
-2107
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159763,7 +157656,6 @@ Address input representation for tax calculation.
 
 Addresses, including the Bill To address, Ship From address, Ship to address, and Sold To address.
 
-2108
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159855,7 +157747,6 @@ address.
 `effectiveDate` Datetime Date to apply the tax calculation to the line Optional 55.0
 item.
 
-2109
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -159950,7 +157841,6 @@ TaxLine
 
 `ItemRequest` 
 
-2110
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160010,7 +157900,6 @@ ConnectApi.MessageBodyInput
 
 Update a topic’s name or description or merge topics.
 
-2111
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160073,7 +157962,6 @@ Assign topics to a feed element.
 `contextTopic` String Name of the parent topic in the site to Optional 38.0
 `Name` which the feed element belongs.
 
-2112
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160133,7 +158021,6 @@ appointment gets updated with:
 
 **•** ResourceC—Created
 
-2113
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160203,7 +158090,6 @@ those fields.
 
 Upvote or downvote a feed element or a comment.
 
-2114
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160262,7 +158148,6 @@ WishlistItem
 
 Item to update or add to a wishlist.
 
-2115
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160316,7 +158201,6 @@ Add links to a feed item.
 ConnectApi.NewFileAttachmentInput
 Attach a new file to a feed item.
 
-2116
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160376,7 +158260,6 @@ Subclass of ConnectApi.FeedItemAttachmentInput.
 
 Input representation for a Datacloud order to purchase contacts or companies and retrieve purchase information.
 
-2117
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160448,7 +158331,6 @@ Important: This class isn’t available in version 32.0 and later. In version 32
 
 Subclass of ConnectApi.FeedItemAttachmentInput.
 
-2118
 
 Apex Reference Guide ConnectApi Input Classes
 
@@ -160512,7 +158394,6 @@ IdList
 
 ```
 
-2119
 
 ### Apex Reference Guide ConnectApi Output Classes ConnectApi Output Classes Most ConnectApi methods return instances of ConnectApi output classes.
 
@@ -160587,7 +158468,6 @@ is `true`, the cart item is classified as a digital product.
 
 `name` String Name of the item. 49.0
 
-2120
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -160689,7 +158569,6 @@ Support ContentHub
 
 **•** `ContentStreamRequired`
 
-2121
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -160770,7 +158649,6 @@ Payment gateway response fields commonly used in payment services.
 
 This class is abstract.
 
-2122
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -160842,7 +158720,6 @@ communication.
 `gatewayReferenceNumber` String Unique transaction ID created by the payment 50.0
 gateway.
 
-2123
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -160913,7 +158790,6 @@ SEE ALSO:
 
 ConnectApi.ManagedContentDeliveryDocumentCollection
 
-2124
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -160977,7 +158853,6 @@ Superclass of ConnectApi.NBAFlowAction.
 
 `parameters` List< `ConnectApi.NBAActionParameter`   - List of parameters to pass to the action. 45.0
 
-2125
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161061,7 +158936,6 @@ Group
 
 ```
 
-2126
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161140,7 +159014,6 @@ members that the context user follows.
 **•** `GroupPopular` —Groups with many active
 members.
 
-2127
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161207,7 +159080,6 @@ Superclass of:
 
 **•** ConnectApi.BlankRecordField
 
-2128
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161278,7 +159150,6 @@ Superclass of:
 
 **•** ConnectApi.RecordSummary
 
-2129
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161365,7 +159236,6 @@ is `false` .
 
 `previewsUrl` String URL to the previews. 39.0
 
-2130
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161429,7 +159299,6 @@ Superclass of:
 
 `name` String Name of the item. 39.0
 
-2131
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161497,7 +159366,6 @@ SEE ALSO:
 
 ConnectApi.UserMissionActivityCollection
 
-2132
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161553,7 +159421,6 @@ Salesforce UI.
 
 `id` String The 18-character ID for the action link definition. 33.0
 
-2133
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161622,7 +159489,6 @@ empty. Exceptions are the batch posting
 resources and methods, which return HTTP 200
 on success.
 
-2134
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161689,7 +159555,6 @@ status, use Connect REST API. See the Action
 [Link resource in the Connect REST API](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/)
 [Developer Guidefor more information.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/)
 
-2135
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161764,7 +159629,6 @@ in the body of the feed element.
 **•** `Overflow` —The action link group is displayed
 in the overflow menu of the feed element.
 
-2136
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161835,7 +159699,6 @@ Represents an activation output.
 
 `activationDefinitionId` String ID of the activation definition. 60.0
 
-2137
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -161929,7 +159792,6 @@ AudienceDMO.
 
 `historyAudienceDmoLabel` String Name of the history audience DMO. 60.0
 
-2138
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162007,7 +159869,6 @@ the last refresh `(true)` or not `(false)` .
 
 ```
 
-2139
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162079,7 +159940,6 @@ Represents the activation attribute output.
 
 **•** `Model_Related`
 
-2140
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162134,7 +159994,6 @@ Represents an activation contact point field configuration output.
 
 Represents the activation contact points field configuration output.
 
-2141
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162193,7 +160052,6 @@ Unified Individual.Id.
 
 **•** `U` —UPDATED
 
-2142
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162249,7 +160107,6 @@ applicable only for file-based activation targets.
 
 `historyAudienceDmoLabel` String Name of the history audience DMO. 60.0
 
-2143
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162315,7 +160172,6 @@ Represents a collection of activation targets.
 `batchSize` Integer Number of results returned. Values are from `1` 60.0
 through `200` .
 
-2144
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162371,7 +160227,6 @@ Superclass of:
 
 `name` String Name of the actor, such as the group name. 28.0
 
-2145
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162447,7 +160302,6 @@ An icon that identifies the actor as a user, group, file, or custom 28.0
 object. The icon isn’t the user or group photo, and it isn’t a preview
 of the file. The motif can also contain the object’s base color.
 
-2146
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162516,7 +160370,6 @@ changeBalances
 `ChangeItem` values for the price adjustment action. Most of the
 `OutputRepresentation` values match the change order values. If two change
 
-2147
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162574,7 +160427,6 @@ Alternative representation for an extension on a feed element.
 
 Alternative payment method details output.
 
-2148
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162645,7 +160497,6 @@ SEE ALSO:
 
 ConnectApi.ChatterGroup
 
-2149
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162718,7 +160569,6 @@ The work item ID. The work item ID is `null` if there 32.0
 isn’t a pending work item associated with the
 approval record.
 
-2150
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162802,7 +160652,6 @@ If no record exists or if the reference is `null`, this value is `null` .
 
 Article item in question and answers suggestions.
 
-2151
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162856,7 +160705,6 @@ viewed.
 
 If a feed element has this capability, it has platform actions associated with it.
 
-2152
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162923,7 +160771,6 @@ Represents the attribute filter output.
 
 `values` List<String> Values for the attribute. 60.0
 
-2153
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -162999,7 +160846,6 @@ SEE ALSO:
 
 #### ConnectApi.AudienceCollection
 
-2154
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163089,7 +160935,6 @@ Operator
 
 **•** `Contains`
 
-2155
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163162,7 +161007,6 @@ ConnectApi.AudienceCriteriaDetail
 
 Represents a collection of Audience Data Model Object (DMO) records.
 
-2156
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163231,7 +161075,6 @@ matches more than one audience.
 
 **•** `Live`
 
-2157
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163320,7 +161163,6 @@ AuthorizationResponse
 
 ```
 
-2158
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163414,7 +161256,6 @@ ConnectApi.FindRoutesWithFewestSplitsOutputRepresentation
 
 ConnectApi.FindRoutesWithFewestSplitsUsingOCIOutputRepresentation
 
-2159
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163478,7 +161319,6 @@ Subclass of ConnectApi.FeedElementCapability.
 
 `motif` `ConnectApi.Motif` A banner motif. 31.0
 
-2160
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163545,7 +161385,6 @@ Superclass of:
 
 ```
 
-2161
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163609,7 +161448,6 @@ for this account on the social network.
 
 **•** `InstagramBusiness`
 
-2162
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163685,7 +161523,6 @@ Superclass of:
 
 **•** ConnectApi.FindRoutesWithFewestSplitsOutputRepresentation
 
-2163
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163754,7 +161591,6 @@ in the list parameter passed to the batch method. The first element in the `Batc
 list parameter, the second element corresponds with the second string, and so on. If only one string is passed, the `BatchResult` list
 contains a single element.
 
-2164
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163821,7 +161657,6 @@ This example generates one successful operation and one failure.
 
 ```
 
-2165
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163883,7 +161718,6 @@ Returns a Boolean that is set to `true` if the batch operation was successful fo
 
 If an error occurred, returns a `ConnectApi.ConnectApiException` object providing the error code and description.
 
-2166
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -163950,7 +161784,6 @@ Return Value
 
 Type: Object
 
-2167
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164024,7 +161857,6 @@ Indicates whether the feed element has been 32.0
 bookmarked by the context user ( `true` ) or not
 ( `false` ).
 
-2168
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164089,7 +161921,6 @@ CategoryEnum
 
 Insights related to a business objective, or goal.
 
-2169
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164189,7 +162020,6 @@ BusObjAssociations
 
 `displayName` String Display name of the business objective. 59.0
 
-2170
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164272,7 +162102,6 @@ BusObj
 
 `OutputRepresentation` 
 
-2171
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164350,7 +162179,6 @@ Subclass of ConnectApi.CommerceResultRepresentationBase
 
 Shows the results of a tax calculation request.
 
-2172
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164441,7 +162269,6 @@ Subclass of ConnectApi.FeedElementCapability.
 `commentEndTime` Integer End time of the comment on the media player, in 51.0
 seconds.
 
-2173
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164501,7 +162328,6 @@ is 255 characters.
 `developerName` String The API name (developer name) of the connected 32.0
 app.
 
-2174
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164571,7 +162397,6 @@ Gateway log response containing details about 50.0
 gateway logs created during the process of the
 capture request.
 
-2175
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164651,7 +162476,6 @@ CardCategory
 `comments` String Details about a record added by a user. Maximum of 56.0
 1,000 characters.
 
-2176
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164714,7 +162538,6 @@ but the request isn't completed yet. The cart can’t
 be modified. This value is available in API version
 57.0 and later.
 
-2177
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164782,7 +162605,6 @@ Cart delivery group for a promotion.
 
 `cartDeliveryGroupId` String ID of the cart delivery group. 60.0
 
-2178
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164848,7 +162670,6 @@ your sole risk.
 
 `errorMessage` String Error message for this reservation. 58.0
 
-2179
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -164943,7 +162764,6 @@ is the same as `totalTax` .
 
 **•** `Variation`
 
-2180
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165038,7 +162858,6 @@ in pricing calculations.
 
 Represents the result of a cart request.
 
-2181
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165111,7 +162930,6 @@ there isn’t a previous page.
 `previousPageUrl` String Connect REST API URL identifying the previous page, 49.0
 or `null` if there isn’t a previous page.
 
-2182
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165191,7 +163009,6 @@ Rule
 
 ```
 
-2183
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165261,7 +163078,6 @@ Subclass of ConnectApi.AbstractCartItem.
 
 No additional properties.
 
-2184
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165328,7 +163144,6 @@ the related cart item. In
 can be related to the cart or to another cart-related
 entity.
 
-2185
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165387,7 +163202,6 @@ All the promotions associated with the cart.
 modifications, like adding or removing products
 or promotions.
 
-2186
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165465,7 +163279,6 @@ automatic promotions.
 
 `displayName` String Localized display name of the promotion. 52.0
 
-2187
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165561,7 +163374,6 @@ non-subscription products.
 `grandTotalAmount` String Grand total amount including shipping and tax for 49.0
 items in the cart, in the currency of the cart.
 
-2188
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165644,7 +163456,6 @@ AdjustmentAmount
 
 ```
 
-2189
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165726,7 +163537,6 @@ SEE ALSO:
 
 ConnectApi.CartItemCollection
 
-2190
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165798,7 +163608,6 @@ Superclass of:
 
 **•** ConnectApi.CdpSegmentActionOutput in API version 59.0 and later.
 
-2191
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165867,7 +163676,6 @@ InsightDataSource
 
 `dateGranularity` String Date granularity of the dimension. 57.0
 
-2192
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -165936,7 +163744,6 @@ Status
 
 `dataSpace` String Data space of the calculated insight. 57.0
 
-2193
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166035,7 +163842,6 @@ InsightPageData
 
 ```
 
-2194
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166092,7 +163898,6 @@ No additional properties.
 
 Represents metadata from one or more data graphs.
 
-2195
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166174,7 +163979,6 @@ Info CdpIdentityResolution
 
 ```
 
-2196
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166236,7 +164040,6 @@ Identity resolution ruleset.
 `anonymousUnified` Long Count of anonymous unified profiles created by 57.0
 `Profiles` running the identity resolution ruleset.
 
-2197
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166336,7 +164139,6 @@ Extension ID of a ruleset. The ruleset ID must be 57.0
 unique and no longer than 4 characters. This ID is not
 the identifying ID for the ruleset.
 
-2198
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166412,7 +164214,6 @@ SEE ALSO:
 
 Identity resolution ruleset’s reconciliation rule for an object.
 
-2199
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166496,7 +164297,6 @@ ConnectApi.CdpIdentityResolutionReconciliationRuleOutput
 
 ConnectApi.CdpIdentityResolutionReconciliationFieldRuleOutput
 
-2200
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166585,7 +164385,6 @@ prediction.
 
 **•** `Success`
 
-2201
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166646,7 +164445,6 @@ Maximum number of recommendations. The default 59.0
 value is `-1` (unlimited) and the allowed range is `-1`
 through `200` .
 
-2202
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166699,7 +164497,6 @@ universalIdLookupBySourceId(entityName, dataSourceId, dataSourceObjectId, source
 
 Represents metadata for a data graph.
 
-2203
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166774,7 +164571,6 @@ the data graph.
 
 **•** `Unrecognized`
 
-2204
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166834,7 +164630,6 @@ getProfileMetadata(dataModelName, dataspace)
 
 Query result.
 
-2205
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166900,7 +164695,6 @@ dataspace)
 
 Query output for the V2 API.
 
-2206
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -166970,7 +164764,6 @@ nextBatchAnsiSqlV2(nextBatchId, dataspace)
 
 Row in the query output for the V2 API.
 
-2207
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167016,7 +164809,6 @@ Segment container.
 
 `orderByExpression` String Expression indicating how results are ordered. 56.0
 
-2208
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167081,7 +164873,6 @@ ConnectApi.CdpSegmentOutput
 
 Data 360 segment member output.
 
-2209
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167150,7 +164941,6 @@ Data 360 segment membership table.
 
 `historyTable` String Segment membership history table. 58.0
 
-2210
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167232,7 +165022,6 @@ StartDateTime
 
 `publishStatus` String Segment publish status. 55.0
 
-2211
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167335,7 +165124,6 @@ ProductTaxAmount
 `totalAdjustment` Double Change to the TotalAdjustmentDistributedAmount 48.0
 `DistributedAmount` field.
 
-2212
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167393,7 +165181,6 @@ List of IDs of invoices created for change orders.
 
 Subclass of ConnectApi.BaseInvoiceOutputRepresentation.
 
-2213
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167462,7 +165249,6 @@ user.
 
 Chatter conversation.
 
-2214
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167536,7 +165322,6 @@ Chatter conversation summary.
 `read` Boolean Specifies if the conversation is read ( `true` ) or not read 29.0
 ( `false` ).
 
-2215
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167613,7 +165398,6 @@ enabled in your organization.
 `isBroadcast` Boolean Specifies whether the group is a broadcast group ( `true` ) or not ( `false` ). 36.0
 In a broadcast group, only group owners and managers can post to the group.
 
-2216
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167713,7 +165497,6 @@ Information
 
 ```
 
-2217
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167779,7 +165562,6 @@ SEE ALSO:
 
 ConnectApi.UserGroupPage
 
-2218
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167857,7 +165639,6 @@ Page of Chatter likes.
 
 ```
 
-2219
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167929,7 +165710,6 @@ If the context user has liked the feed element, this 32.0
 property is a reference to the specific like, `null`
 otherwise.
 
-2220
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -167988,7 +165768,6 @@ Chatter message page.
 `nextPageToken` String Token identifying the next page, or `null` if there 29.0
 isn’t a next page.
 
-2221
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168046,7 +165825,6 @@ In version 39.0, all streams are included in
 
 `total` Integer Total number of streams in the collection. 39.0
 
-2222
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168107,7 +165885,6 @@ SEE ALSO:
 
 ConnectApi.FeedElementCapabilities
 
-2223
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168208,7 +165985,6 @@ reference to the specific like, `null` otherwise.
 
 This property is `null` for comments on direct messages.
 
-2224
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168286,7 +166062,6 @@ to private.
 `edit` `ConnectApi.EditCapability` If a comment has this capability, users who have 34.0
 permission can edit it.
 
-2225
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168350,7 +166125,6 @@ comments in the thread are refreshed, not just the ones that match the
 search term. Avoid using `nextPageUrl` until the comments are
 refreshed.
 
-2226
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168409,7 +166183,6 @@ Result of executing a commerce action.
 `isSuccess` Boolean Specifies whether the action is a success ( `true` ) or 53.0
 not ( `false` ).
 
-2227
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168471,7 +166244,6 @@ Address for a Commerce account.
 
 `countryCode` String Two-character country code. 54.0–58.0
 
-2228
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168541,7 +166313,6 @@ Product selling model information.
 `isSubscriptionProduct` Boolean Indicates whether the product selling model is a 59.0
 subscription product or not.
 
-2229
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168658,7 +166429,6 @@ SetSummary
 
 Collection of product summary representations in product search results.
 
-2230
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168764,7 +166534,6 @@ IndexStatus
 
 **•** `InProgress`
 
-2231
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168881,7 +166650,6 @@ IndexBuildType
 
 **•** `Incremental`
 
-2232
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -168966,7 +166734,6 @@ sites using Salesforce's CDN for Digital Experiences ( `true` ) or not
 
 `invitationsEnabled` Boolean Specifies whether users can invite other external users. 28.0
 
-2233
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169047,7 +166814,6 @@ Page of Experience Cloud sites.
 `communities` `List<ConnectApi.` List of Experience Cloud sites the context user has access 28.0
 `Community>` to.
 
-2234
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169108,7 +166874,6 @@ Details of a composite product.
 
 `productId` String ID of the product record created. 61.0
 
-2235
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169183,7 +166948,6 @@ CapacityResponse
 
 Response to a request to confirm held fulfillment order capacity at one or more locations.
 
-2236
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169251,7 +167015,6 @@ Represents an activation contact point configuration output.
 
 `QueryPathConfigList`            
 
-2237
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169311,7 +167074,6 @@ files, renditions process asynchronously after upload.
 
 For private files, renditions process when the first file
 
-2238
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169380,7 +167142,6 @@ restricted.
 
 **•** `Na` —Rendering is not available for this image.
 
-2239
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169441,7 +167202,6 @@ are processed asynchronously and may not be
 available immediately after the file has been
 uploaded.
 
-2240
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169530,7 +167290,6 @@ allowedItemTypes
 `ContentHub` allowed to create in a repository folder.
 `ItemTypeSummary` 
 
-2241
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169610,7 +167369,6 @@ The summary of an item type associated with a repository folder.
 
 Subclass of ConnectApi.AbstractContentHubItemType.
 
-2242
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169668,7 +167426,6 @@ Subclass of ConnectApi.ActorWithId.
 
 #### authentication ConnectApi.ContentHubRepositoryAuthentication Repository authentication information. 40.0
 
-2243
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169756,7 +167513,6 @@ SEE ALSO:
 
 #### ConnectApi.ContentHubRepository
 
-2244
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169819,7 +167575,6 @@ SEE ALSO:
 
 ConnectApi.InlineImageSegment
 
-2245
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169895,7 +167650,6 @@ Coupon code redemption result.
 `errorMsg` String Error message when coupon code redemption isn’t 58.0
 successful.
 
-2246
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -169967,7 +167721,6 @@ SummaryId
 
 Result of a creating a named credential for a social external channel.
 
-2247
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170048,7 +167801,6 @@ are sent in the callout’s request body.
 are sent in the callout’s authorization header, as
 with Basic authentication.
 
-2248
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170134,7 +167886,6 @@ Credential custom header.
 
 `id` String ID of the customer header parameter. 58.0
 
-2249
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170187,7 +167938,6 @@ recommendation audience.
 
 Represents both dashboard component snapshots and alerts you receive when a dashboard component value crosses a threshold.
 
-2250
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170252,7 +168002,6 @@ SEE ALSO:
 
 ConnectApi.FeedElementCapabilities
 
-2251
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170314,7 +168063,6 @@ Represents a field of a data graph.
 
 **•** `Measure`
 
-2252
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170367,7 +168115,6 @@ Represents the fields of the Data Model Object (DMO) that contains the ID table 
 
 Represents object metadata for a data graph.
 
-2253
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170435,7 +168182,6 @@ graph.
 
 Represents the relationship of a field of the object data for the data graph.
 
-2254
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170489,7 +168235,6 @@ SEE ALSO:
 
 getAllDataSpaces(batchSize, offset, orderBy)
 
-2255
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170546,7 +168291,6 @@ Record field containing a date.
 
 Subclass of ConnectApi.LabeledRecordField.
 
-2256
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170601,7 +168345,6 @@ Delete intent for the social post.
 
 Delivery estimation information for products.
 
-2257
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170667,7 +168410,6 @@ MemberPage
 
 ```
 
-2258
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170760,7 +168502,6 @@ DirectMessage
 `nextPageToken` String Token identifying the next page, or `null` if there 40.0
 isn’t a next page.
 
-2259
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170823,7 +168564,6 @@ locations
 `rank` Integer This result’s rank among all results by average 51.0
 distance to the order recipient.
 
-2260
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170889,7 +168629,6 @@ OrdersList
 
 ```
 
-2261
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -170953,7 +168692,6 @@ Represents a DMO filter limit output.
 
 **•** `FilterSortOrderDesc`
 
-2262
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171022,7 +168760,6 @@ ConnectApi.CommentCapabilities
 
 ConnectApi.FeedElementCapabilities
 
-2263
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171089,7 +168826,6 @@ Custom name of the output file. Either 60.0
 
 `outputMaxRecordsPerFile` Long Maximum number of records in the output file. 60.0
 
-2264
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171176,7 +168912,6 @@ Quality information about the generated response.
 `isToxicityDetected` Boolean Specifies whether the generated response contains 61.0
 toxic language `(true)` or not `(false)` .
 
-2265
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171236,7 +168971,6 @@ ConnectApi.EinsteinLLMGenerationItemOutput
 
 Generated response from the LLM provider.
 
-2266
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171323,7 +169057,6 @@ Minimum value of `0.0` . Maximum value of `1.0` .
 `sexualScore` Double A higher value means the generated response is more 60.0
 likely to contain text meant to arouse sexual
 
-2267
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171387,7 +169120,6 @@ Prompt template record.
 
 `apiName` String API name of the prompt template record. 62.0
 
-2268
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171466,7 +169198,6 @@ ErrorMessage
 `messageCode` String Message code associated with the error message, if 60.0
 any.
 
-2269
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171580,7 +169311,6 @@ ConnectApi.EinsteinPromptTemplateMaskContentRepresentation
 
 Generated response with masked data and masking information for a prompt template.
 
-2270
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171648,7 +169378,6 @@ SEE ALSO:
 
 ConnectApi.EmailMessageCapability
 
-2271
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171715,7 +169444,6 @@ Subclass of ConnectApi.FeedElementCapability.
 
 `EmailAttachment`          
 
-2272
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171791,7 +169519,6 @@ Important: In version 36.0 and later, use the
 `toAddresses` List< `ConnectApi.` To addresses of the email message. 32.0
 `EmailAddress`            
 
-2273
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171844,7 +169571,6 @@ Subclass of ConnectApi.FeedElementCapability.
 `linkRecordId` String A ID associated with the link if the link URL refers to 32.0
 a Salesforce record.
 
-2274
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171899,7 +169625,6 @@ SEE ALSO:
 
 ConnectApi.RecordSummary
 
-2275
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -171986,7 +169711,6 @@ Base error response.
 
 `errorCode` String Error code. 48.0
 
-2276
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172043,7 +169767,6 @@ An extension's definition.
 `canAccess` Boolean Indicates whether users can access the extension 40.0
 when it’s associated with a feed element.
 
-2277
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172110,7 +169833,6 @@ isn’t a next page.
 
 `total` Integer Total number of extensions returned. 40.0
 
-2278
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172208,7 +169930,6 @@ auth identity provider.
 
 `description` String Description of the external auth identity provider. 62.0
 
-2279
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172274,7 +169995,6 @@ SEE ALSO:
 
 #### ConnectApi.ExternalAuthIdentityProviderCredentials
 
-2280
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172354,7 +170074,6 @@ ParameterType
 
 **•** `TokenRequestBodyParameter`
 
-2281
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172435,7 +170154,6 @@ are sent in the callout’s request body.
 are sent in the callout’s authorization header, as
 with Basic authentication.
 
-2282
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172532,7 +170250,6 @@ ConnectApi.ExternalCredentialList
 
 ConnectApi.NamedCredential
 
-2283
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172617,7 +170334,6 @@ ParameterType
 
 **•** `SigningCertificate`
 
-2284
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172710,7 +170426,6 @@ Type
 
 **•** `PerUserPrincipal`
 
-2285
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172794,7 +170509,6 @@ includeExternalFilePermissionsInfo
 
 is `true` ; `null` otherwise.
 
-2286
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172871,7 +170585,6 @@ ConnectApi.ExternalManagedAccountOutput
 
 Collection of externally managed accounts.
 
-2287
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -172970,7 +170683,6 @@ FacetType
 
 Features available to the context user in the org.
 
-2288
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173074,7 +170786,6 @@ updates are scheduled to end. We recommend transitioning to
 
 `defaultLocale` String Specifies the Default locale. 63.0
 
-2289
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173192,7 +170903,6 @@ PeriodType PeriodType
 
 `ideas` Boolean Specifies whether Ideas is enabled. 29.0
 
-2290
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173282,7 +170992,6 @@ is `false` .
 `viralInvites` Boolean Specifies whether existing Chatter users can invite people in their 28.0
 `Allowed` company to use Chatter.
 
-2291
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173364,7 +171073,6 @@ shows the ability to mute or unmute each element, depending on the
 value of `isMutedByMe` ; `null` if the mute feature is disabled for the
 organization.
 
-2292
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173442,7 +171150,6 @@ direct messages.
 
 **•** `Draft` —Contains all the feed items that the context user drafted.
 
-2293
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173508,7 +171215,6 @@ records that can be tracked in a feed. Contains feed items whose
 parent is the user and feed items that @mention the user. This feed
 is different than the news feed, which returns more feed items,
 
-2294
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173586,7 +171292,6 @@ Capabilities
 characteristics of that feed element. One of these
 values:
 
-2295
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173649,7 +171354,6 @@ ConnectApi.QuestionAndAnswersSuggestions
 
 A container for all capabilities that can be included with a feed element.
 
-2296
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173753,7 +171457,6 @@ Important: In version 36.0 and later, use the
 
 point in time.
 
-2297
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173872,7 +171575,6 @@ If a feed element has this capability, it has a question 31.0
 and comments on the feed element are answers to
 the question.
 
-2298
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -173986,7 +171688,6 @@ This class is a superclass of:
 
 **•** ConnectApi.ApprovalCapability
 
-2299
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174066,7 +171767,6 @@ This class doesn’t have any properties.
 
 #### ConnectApi.FeedElementPage A paged collection of ConnectApi.FeedElement objects.
 
-2300
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174131,7 +171831,6 @@ ConnectApi.BundleCapability
 
 ConnectApi.Feed
 
-2301
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174195,7 +171894,6 @@ Subclass of ConnectApi.UserFeedEntityActivitySummary.
 
 No additional properties.
 
-2302
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174277,7 +171975,6 @@ always be gracefully degraded to text-only values.
 feed element with a recommendations capability.
 A recommendation suggests records to follow,
 
-2303
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174350,7 +172047,6 @@ otherwise, an empty string.
 
 **•** `Topic`
 
-2304
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174418,7 +172114,6 @@ Important: As of version 39.0, use the
 `clientInfo` `ConnectApi.ClientInfo` Information about the connected app used to 28.0
 authenticate the connection.
 
-2305
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174499,7 +172194,6 @@ inherited
 
 property.
 
-2306
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174592,7 +172286,6 @@ inherited
 
 property.
 
-2307
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174657,7 +172350,6 @@ activated.
 **•** `ContentPost` —Feed item with a content
 capability.
 
-2308
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174728,7 +172420,6 @@ their own profile.
 **•** `AllUsers` —Visibility is not limited to internal
 users.
 
-2309
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174810,7 +172501,6 @@ Feed modified information.
 Important: This feature is available through a Feed Polling pilot program. This pilot program is closed and not accepting new
 participants.
 
-2310
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174874,7 +172564,6 @@ Subclass of ConnectApi.UserActivitySummary.
 
 Summary of the feed that was read.
 
-2311
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174938,7 +172627,6 @@ permissions.
 **•** `Mute` —Contains all feed items that the context
 user muted.
 
-2312
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -174996,7 +172684,6 @@ Subclass of ConnectApi.MessageSegment.
 
 No additional properties.
 
-2313
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175079,7 +172766,6 @@ Search metadata for the field of an object.
 
 **•** `DateTime`
 
-2314
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175154,7 +172840,6 @@ SEE ALSO:
 
 ConnectApi.ObjectMetadata
 
-2315
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175211,7 +172896,6 @@ Note: Flash renditions were retired on July 16, 2021.
 
 `isFileAsset` Boolean Specifies whether the file is an asset. 46.0
 
-2316
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175293,7 +172977,6 @@ private files, renditions process when the first file preview is
 requested, and aren’t available immediately after the file is
 uploaded.
 
-2317
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175376,7 +173059,6 @@ system process, such as a trigger, updated the file.
 
 **•** `Na` —Rendering is not available for this image.
 
-2318
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175447,7 +173129,6 @@ A file preview.
 
 **•** `Thumbnail` —Preview format is 240 x 180 PNG.
 
-2319
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175510,7 +173191,6 @@ ConnectApi.InlineImageSegment
 
 A URL to a file preview.
 
-2320
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175573,7 +173253,6 @@ findRoutesWithFewestSplits(findRoutesWithFewestSplitsInputRepresentation)
 
 A list of order fulfillment routes with inventory availability information.
 
-2321
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175657,7 +173336,6 @@ if there isn’t a next page.
 
 `total` Integer Total number of followers across all pages. 28.0
 
-2322
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175728,7 +173406,6 @@ FollowSocial
 
 ConnectApi.SocialPostIntents
 
-2323
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175793,7 +173470,6 @@ SEE ALSO:
 
 #### ConnectApi.FormFields
 
-2324
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175846,7 +173522,6 @@ FulfillmentOrder was created, then its ID is returned. If it failed, then data f
 
 Subclass of ConnectApi.BaseOutputRepresentation.
 
-2325
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175913,7 +173588,6 @@ OrderIds
 
 ```
 
-2326
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -175976,7 +173650,6 @@ Chatter influence.
 `percentile` String Percentile value for the user’s influence rank within the org or 28.0
 Experience Cloud site.
 
-2327
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176057,7 +173730,6 @@ GroupMembership
 
 **•** `NotAMemberPrivateRequested`
 
-2328
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176112,7 +173784,6 @@ Request to become a group member.
 
 `Reference` to join.
 
-2329
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176187,7 +173858,6 @@ SEE ALSO:
 
 #### ConnectApi.GroupRecordPage
 
-2330
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176258,7 +173928,6 @@ Hide intent for a social post.
 `isHidden` Boolean Specifies whether the managed social account hid 45.0
 the social post ( `true` ) or not ( `false` ).
 
-2331
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176330,7 +173999,6 @@ HTTP header with information about a text classification
 
 Icon.
 
-2332
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176389,7 +174057,6 @@ on the key performance indicator.
 `value` Double Value of the insight for the current timeframe based 62.0
 on the key performance indicator.
 
-2333
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176452,7 +174119,6 @@ An invitation.
 
 `email` String Email address of the user. 39.0
 
-2334
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176519,7 +174185,6 @@ The quantity for a specific item
 
 `quantityDistributed` Double Quantity that was distributed to this item 58.0
 
-2335
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176579,7 +174244,6 @@ Superclass of:
 
 Important: The composition of a feed can change between releases. Write your code to handle instances of unknown subclasses.
 
-2336
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176635,7 +174299,6 @@ SEE ALSO:
 
 List of like intents for a social post.
 
-2337
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176707,7 +174370,6 @@ line item.
 
 `quantity` Double Quantity of the taxed line item. 55.0
 
-2338
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176785,7 +174447,6 @@ from.
 
 **•** `Link` —Represents a link.
 
-2339
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176838,7 +174499,6 @@ Fulfillment order capacity values for a location.
 `assigned` Integer Value of the location’s Assigned Fulfillment Order 55.0
 Count.
 
-2340
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176912,7 +174572,6 @@ ExpirationTime
 
 ```
 
-2341
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -176996,7 +174655,6 @@ ManagedContent
 
 **•** `Community` —Experience Cloud site channel.
 
-2342
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177059,7 +174717,6 @@ ChannelDomain ManagedContent
 
 `targetId` String ID of the target associated with the channel. 62.0
 
-2343
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177136,7 +174793,6 @@ or `null` if there isn’t a previous page.
 
 Managed content channel detail.
 
-2344
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177203,7 +174859,6 @@ SEE ALSO:
 
 #### ConnectApi.ManagedContentChannel
 
-2345
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177285,7 +174940,6 @@ ManagedContent
 **•** `ConnectedApp` —Channel served by a
 connected app.
 
-2346
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177356,7 +175010,6 @@ CloneStatus
 
 ConnectApi.ManagedContentDocumentClone
 
-2347
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177427,7 +175080,6 @@ ChannelSummary
 
 ```
 
-2348
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177517,7 +175169,6 @@ SEE ALSO:
 
 #### ConnectApi.ManagedContentCollectionItem
 
-2349
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177571,7 +175222,6 @@ is searchable ( `true` ) or not ( `false` ).
 
 `name` String Name of the managed content channel. 62.0
 
-2350
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177643,7 +175293,6 @@ getAllDeliveryChannels(pageParam, pageSize)
 
 Summary information of a managed content delivery channel.
 
-2351
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177726,7 +175375,6 @@ ChannelSummary
 
 ```
 
-2352
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177825,7 +175473,6 @@ ChannelSummary
 
 ```
 
-2353
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -177911,7 +175558,6 @@ values.
 `contentKey` String Globally unique identifier (GUID) for the managed 60.0
 content.
 
-2354
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178020,7 +175666,6 @@ VersionId
 
 Managed content document clone.
 
-2355
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178110,7 +175755,6 @@ SEE ALSO:
 
 ConnectApi.ManagedContentDocumentClone
 
-2356
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178187,7 +175831,6 @@ available if referencing asset files or media.
 `unauthenticatedUrl` String Unauthenticated URL to the image or `null` if the 48.0
 image isn’t visible to external users.
 
-2357
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178251,7 +175894,6 @@ Managed content node type.
 
 `name` String Developer name of the managed content node type. 47.0
 
-2358
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178314,7 +175956,6 @@ Superclass of:
 
 **•** ConnectApi.ManagedContentTextNodeValue
 
-2359
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178416,7 +176057,6 @@ ProviderType
 
 Collection of managed content providers.
 
-2360
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178483,7 +176123,6 @@ Information about a Publish action
 
 Managed content reference.
 
-2361
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178540,7 +176179,6 @@ modified.
 
 `name` String Name of the managed content space. 55.0
 
-2362
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178616,7 +176254,6 @@ UserSummary
 `createdDate` Datetime Date when the managed content space channel was 62.0
 created.
 
-2363
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178689,7 +176326,6 @@ getManagedContentSpaceChannels(contentSpaceId, pageParam, pageSize)
 
 Collection of managed content spaces.
 
-2364
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178745,7 +176381,6 @@ Managed content type.
 
 `name` String Developer name of the managed content type. 47.0
 
-2365
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178812,7 +176447,6 @@ Information about the user who created or modified the content.
 
 `name` String Reserved for future use. 60.0
 
-2366
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178907,7 +176541,6 @@ UserSummary
 
 ```
 
-2367
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -178994,7 +176627,6 @@ ConnectApi.ManagedContentDocument
 
 Managed content version.
 
-2368
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179083,7 +176715,6 @@ Map<String, Map of managed content types. 47.0
 
 `totalTypes` Integer Total number of managed content types. 47.0
 
-2369
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179149,7 +176780,6 @@ SEE ALSO:
 
 A collection of managed topics.
 
-2370
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179227,7 +176857,6 @@ Subclass of ConnectApi.MessageSegment.
 
 **•** `Code` —Code tag.
 
-2371
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179298,7 +176927,6 @@ Status
 
 `targetId` String ID of the share target. 63.0
 
-2372
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179345,7 +176973,6 @@ SEE ALSO:
 
 Collection of targets that a managed content space folder can be shared with.
 
-2373
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179404,7 +177031,6 @@ completion, for example, “(Customer)” or “(Acme Corporation)”.
 `name` String The name of the record represented by this completion. The name 29.0
 is localized, if possible.
 
-2374
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179476,7 +177102,6 @@ Mention segment.
 
 Subclass of ConnectApi.MessageSegment.
 
-2375
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179563,7 +177188,6 @@ mention.
 
 Information about whether a set of mentions is valid for the context user.
 
-2376
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179633,7 +177257,6 @@ Superclass of:
 
 **•** ConnectApi.MoreChangesSegment
 
-2377
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179705,7 +177328,6 @@ If a feed element has this capability, users in an Experience Cloud site can fla
 
 Subclass of ConnectApi.FeedElementCapability.
 
-2378
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179779,7 +177401,6 @@ or item.
 
 Information about the moderation flags on a feed item, comment, or file.
 
-2379
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179861,7 +177482,6 @@ SEE ALSO:
 
 #### ConnectApi.ModerationFlags
 
-2380
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -179956,7 +177576,6 @@ Groups use the following icons:
 
 ```
 
-2381
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180032,7 +177651,6 @@ Subclass of ConnectApi.BaseOutputRepresentation.
 
 `invoiceIds` List<String> List of IDs of the created Invoices. 52.0
 
-2382
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180107,7 +177725,6 @@ CalloutOptions
 
 **•** `Disabled`
 
-2383
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180190,7 +177807,6 @@ Named credential callout options.
 `allowMergeFields` Boolean Specifies whether to allow merge fields in the HTTP 58.0
 `InBody` body ( `true` ) or not ( `false` ).
 
-2384
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180254,7 +177870,6 @@ SEE ALSO:
 
 Navigation menu item.
 
-2385
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180344,7 +177959,6 @@ a new window.
 
 Collection of navigation menu items.
 
-2386
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180405,7 +178019,6 @@ that runs in the background.
 
 `id` String ID of the flow. 45.0
 
-2387
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180479,7 +178092,6 @@ SEE ALSO:
 
 #### ConnectApi.NBARecommendations
 
-2388
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180540,7 +178152,6 @@ Subclass of ConnectApi.AudienceCriteria.
 `maxDaysInCommunity` Double The maximum number of days since a user became 36.0
 a site member.
 
-2389
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180627,7 +178238,6 @@ Map<String, Metadata on each field of the object. 63.0
 
 `label` String Name of the object. 63.0
 
-2390
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180710,7 +178320,6 @@ ConnectApi.QueryInfo
 
 ConnectApi.ScopedSearchResults
 
-2391
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180785,7 +178394,6 @@ OCICreateReservation
 `success` Boolean Indicates whether the reservation was successfully 51.0
 created.
 
-2392
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180858,7 +178466,6 @@ Details of a single fulfilled reservation.
 `actionRequestId` String The UUID that identifies the original fulfill reservation 51.0
 request.
 
-2393
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -180924,7 +178531,6 @@ Inventory availability data for a product.
 
 `availableToFulfill` Double The Available To Fulfill quantity. 51.0
 
-2394
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181012,7 +178618,6 @@ Response to a publish location structure request.
 
 Subclass of ConnectApi.OCIBaseOutputRepresentation.
 
-2395
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181078,7 +178683,6 @@ SingleOutputRepresentation
 
 Response to a request to release one or more inventory reservations.
 
-2396
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181146,7 +178750,6 @@ SingleOutputRepresentation
 
 Response to a request to transfer one or more inventory reservations.
 
-2397
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181208,7 +178811,6 @@ Error output representation for the update inventory reservation.
 
 Result of an Omnichannel Inventory update request for reserved inventory.
 
-2398
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181273,7 +178875,6 @@ Detailed status of an upload inventory availability job.
 
 Subclass of ConnectApi.OCIBaseOutputRepresentation.
 
-2399
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181334,7 +178935,6 @@ OrchestrationStage
 
 `Instance` 
 
-2400
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181427,7 +179027,6 @@ Status
 
 **•** `Suspended`
 
-2401
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181518,7 +179117,6 @@ Status
 
 **•** `NotStarted`
 
-2402
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181611,7 +179209,6 @@ orchestration work item.
 `relatedRecordId` String ID of the record the orchestration work item is related 54.0
 to.
 
-2403
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181679,7 +179276,6 @@ group summaries.
 `nextPageUrl` String URL to the next page of order delivery group 51.0
 summaries.
 
-2404
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181747,7 +179343,6 @@ Order delivery method lookup output.
 
 Order item summary.
 
-2405
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181840,7 +179435,6 @@ job for the order summary is submitted.
 `totalPromotion` String Total of all order level promotions applied to this 55.0
 `DistAmount` specific product.
 
-2406
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181911,7 +179505,6 @@ Collection of order item summaries.
 
 Order item summary lookup output.
 
-2407
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -181992,7 +179585,6 @@ Summary
 
 ```
 
-2408
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182054,7 +179646,6 @@ Collection of order shipments.
 `currentPageToken` String Token identifying the current page of order 52.0
 shipments.
 
-2409
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182133,7 +179724,6 @@ SummaryProduct
 
 `shipmentItemId` String ID of the shipment item. 52.0
 
-2410
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182215,7 +179805,6 @@ the adjustment.
 
 ```
 
-2411
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182293,7 +179882,6 @@ TotalAmount
 
 ```
 
-2412
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182380,7 +179968,6 @@ OrderSummary
 **•** `CreatedDateDesc` —Sorts by the most
 recent created date.
 
-2413
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182438,7 +180025,6 @@ product (true) or not (false).
 
 `errorMessage` String Error message captured during product load. 58.0
 
-2414
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182512,7 +180098,6 @@ Order summary product attribute representation.
 `sequence` Integer Sequence of the attribute set with regard to the 58.0
 product.
 
-2415
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182567,7 +180152,6 @@ maintenances for the org.
 
 `name` String Org name. 28.0
 
-2416
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182620,7 +180204,6 @@ return ( `true` ) or not ( `false` ).
 
 `offset` Integer Search page offset position. 63.0
 
-2417
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182680,7 +180263,6 @@ that the context user has access to.
 
 Authorization Adjustment output representation.
 
-2418
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182742,7 +180324,6 @@ the payment group record.
 
 `effectiveDate` Datetime Date that the authorization becomes effective. 51.0
 
-2419
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182806,7 +180387,6 @@ method is linked.
 
 `id` String ID of the payment method. 51.0
 
-2420
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182883,7 +180463,6 @@ the payment output.
 
 `effectiveDate` Datetime Date that the payment becomes effective. 50.0
 
-2421
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182929,7 +180508,6 @@ Phone number.
 
 These values are not localized.
 
-2422
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -182994,7 +180572,6 @@ org.
 
 `photoVersionId` String 18–character ID to that version of the photo 28.0
 
-2423
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183053,7 +180630,6 @@ ConnectApi.FeedElementCapabilities
 
 List of pinned feed elements for a feed.
 
-2424
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183123,7 +180699,6 @@ is `Create`, this value is `null` .
 
 `label` String The localized label for this platform action. 33.0
 
-2425
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183199,7 +180774,6 @@ However, there isn’t currently a way to set the
 status of an action link using Apex. To set the
 status, use Connect REST API. See the Action
 
-2426
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183273,7 +180847,6 @@ in the body of the feed element.
 **•** `Overflow` —The action link group is displayed
 in the overflow menu of the feed element.
 
-2427
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183343,7 +180916,6 @@ this value is `null` .
 user has voted for in this poll. Returns `null` if the
 context user has not voted.
 
-2428
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183444,7 +181016,6 @@ Response
 
 ```
 
-2429
 
 Payment group, consisting of one or more payments, 54.0
 sent to the gateway for the post authorization
@@ -183521,7 +181092,6 @@ OutputRepresentation
 
 Expected change order financial values for the preview cart to exchange order action.
 
-2430
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183604,7 +181174,6 @@ PriceAdjustment
 
 `Tier` 
 
-2431
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183676,7 +181245,6 @@ the product.
 `success` Boolean Specifies whether the execution was successful 49.0
 ( `true` ) or not ( `false` ).
 
-2432
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183742,7 +181310,6 @@ specific attribute.
 
 `objectName` String Name of the object that contains the field. 50.0
 
-2433
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183815,7 +181382,6 @@ Product attribute set data.
 `attributes` Map<String, String> Map of the attributes that are members of the 50.0
 attribute set.
 
-2434
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183888,7 +181454,6 @@ ConnectApi.OrderItemSummaryProduct
 
 ConnectApi.ProductSummary
 
-2435
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -183952,7 +181517,6 @@ example, `blue__c` .
 `colorHexCode` String Hex code value of a color attribute. For example, 63.0
 `#0000FF` .
 
-2436
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184022,7 +181586,6 @@ number exceeds the total number of pages. In this
 scenario, the current page is the highest available
 page number.
 
-2437
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184105,7 +181668,6 @@ ProductCategory
 
 ```
 
-2438
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184172,7 +181734,6 @@ Not supported in enhanced CMS workspaces.
 
 `title` String Title of the product category media. 49.0
 
-2439
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184244,7 +181805,6 @@ SEE ALSO:
 
 ConnectApi.ProductDetail
 
-2440
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184319,7 +181879,6 @@ for `previousPageUrl` .
 
 **•** `VariationParent`
 
-2441
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184404,7 +181963,6 @@ CategoryPath ProductCategoryPath
 
 **•** `Set`
 
-2442
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184517,7 +182075,6 @@ AttributeOutput
 
 `listPrice` Double List price. 55.0
 
-2443
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184573,7 +182130,6 @@ Product expand information with return reasons.
 
 Details about a product image group.
 
-2444
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184646,7 +182202,6 @@ Not supported in enhanced CMS workspaces.
 
 **•** `Video`
 
-2445
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184692,7 +182247,6 @@ Media group associated with a product.
 
 `name` String Name of the product media group. 49.0
 
-2446
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184782,7 +182336,6 @@ Price of the product. 54.0–57.0
 To get pricing information for products in version 58
 and later, use the CommerceStorePricing Class.
 
-2447
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184862,7 +182415,6 @@ Unit price for the product. If a product selling model 49.0
 ID is specified in a request parameter, this property
 is empty.
 
-2448
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184938,7 +182490,6 @@ Product search facet value.
 
 `attributeType` String Attribute type of the facet value. 59.0
 
-2449
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -184993,7 +182544,6 @@ Output representation of the product search response
 `currencyIsoCode` String Three-letter ISO 4217 currency code associated with 59.0
 the product.
 
-2450
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185064,7 +182614,6 @@ Product search results.
 
 ```
 
-2451
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185126,7 +182675,6 @@ subscription is priced monthly. However, if the
 empty, because the product isn’t sold as a
 subscription.
 
-2452
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185238,7 +182786,6 @@ SellingModel
 
 ```
 
-2453
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185315,7 +182862,6 @@ Details about a product variation.
 
 `variationValues` Map<String, String> The variation attribute values that define the variation. 55.0
 
-2454
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185383,7 +182929,6 @@ ConnectApi.ProductDetail
 
 Qualifier for a promotion with an approaching discount.
 
-2455
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185456,7 +183001,6 @@ evaluate(salesTransaction)
 
 Adjustment group associated with a cart.
 
-2456
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185529,7 +183073,6 @@ is a percentage.
 
 `baseAmount` String Price value of the adjustment. 60.0
 
-2457
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185599,7 +183142,6 @@ A cart item and its adjustments.
 `totalNetAmount` String Total amount for the cart item, based on list price 57.0
 and quantity, including adjustments.
 
-2458
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185696,7 +183238,6 @@ GroupId
 
 ```
 
-2459
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185760,7 +183301,6 @@ Results of a promotion evaluation.
 
 ```
 
-2460
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185828,7 +183368,6 @@ If a feed element has this capability, it has a question and comments on the fee
 
 Subclass of ConnectApi.FeedElementCapability.
 
-2461
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185903,7 +183442,6 @@ Represents a query path.
 
 Represents a query path configuration.
 
-2462
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -185958,7 +183496,6 @@ Represents the metadata associated with an SQL query output.
 
 **•** `ArrayOfX`
 
-2463
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186024,7 +183561,6 @@ querySqlRows(queryId, offset, rowLimit, omitSchema, workloadName, dataspace)
 
 Represents data associated with the an SQL query output.
 
-2464
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186084,7 +183620,6 @@ querySqlStatus(queryId, workloadName, dataspace, waitTimeMs)
 
 Display metadata representation for a range facet.
 
-2465
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186141,7 +183676,6 @@ Subclass of ConnectApi.BaseOutputRepresentation.
 
 `distanceUnit` String The specified unit of distance (miles or kilometers). 51.0
 
-2466
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186208,7 +183742,6 @@ A collection of information about who read the feed element and when.
 
 `currentPageToken` String Token identifying the current page. 40.0
 
-2467
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186272,7 +183805,6 @@ the recommended action.
 `domain` String Domain category of the recommended action (e.g., 59.0
 "Product").
 
-2468
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186337,7 +183869,6 @@ launching a flow.
 
 `description` String Description of the recommendation. 45.0
 
-2469
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186404,7 +183935,6 @@ page 2468>
 
 A custom recommendation audience.
 
-2470
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186464,7 +183994,6 @@ audiences.
 
 `previousPageUrl` String URL to the previous page. 35.0
 
-2471
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186540,7 +184069,6 @@ ConnectApi.ScheduledRecommendation
 
 A list of custom recommendation definitions.
 
-2472
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186628,7 +184156,6 @@ Type
 
 **•** `Rejected`
 
-2473
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186712,7 +184239,6 @@ Abstract
 
 ConnectApi.FeedElementCapabilities
 
-2474
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186774,7 +184300,6 @@ Field value.
 
 `highlight` String Represents field highlighting in the results. 63.0
 
-2475
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186822,7 +184347,6 @@ Record summary.
 
 Subclass of ConnectApi.AbstractRecordView.
 
-2476
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186882,7 +184406,6 @@ Section of record fields and values on a record detail.
 `columnCount` Integer Number of columns to use to lay out the fields in a record 29.0
 section.
 
-2477
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -186949,7 +184472,6 @@ SEE ALSO:
 
 evaluateRecordsetFilterCriteria(recordsetFilterCriteriaInput)
 
-2478
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187019,7 +184541,6 @@ Subclass of ConnectApi.LabeledRecordField.
 
 `dateValue` Datetime Time at which the referenced object acted. 29.0
 
-2479
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187083,7 +184604,6 @@ Subclass of ConnectApi.BaseOutputRepresentation.
 
 `success` Boolean Indicates whether the transaction was successful. 48.0
 
-2480
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187151,7 +184671,6 @@ CapacityResponse
 
 `OutputRepresentation` 
 
-2481
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187208,7 +184727,6 @@ A summary of a repository file.
 
 Subclass of ConnectApi.AbstractRepositoryFile.
 
-2482
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187290,7 +184808,6 @@ Repository
 `nextPageUrl` String URL to the next page of items, or `null` if there isn’t 39.0
 a next page.
 
-2483
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187361,7 +184878,6 @@ Subclass of ConnectApi.AbstractDirectoryEntrySummary.
 
 `lastName` String Last name of the user. 39.0
 
-2484
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187419,7 +184935,6 @@ SEE ALSO:
 
 ConnectApi.ActionLinkDefinition
 
-2485
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187480,7 +184995,6 @@ Subclass of ConnectApi.BaseOutputRepresentation.
 `newReturnOrderItemId` String ID of the new ReturnOrderLineItem that holds the 52.0
 remaining return quantity.
 
-2486
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187552,7 +185066,6 @@ Payment sale response.
 
 ```
 
-2487
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187619,7 +185132,6 @@ appear in the feed in the Salesforce mobile web
 and anywhere community managers add
 recommendations using Experience Builder.
 
-2488
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187699,7 +185211,6 @@ Scope information for a target.
 
 `name` String Name of the scope for the target. 48.0–49.0
 
-2489
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187766,7 +185277,6 @@ Map<String, All search related metadata associated with the 63.0
 
 `ObjectMetadata` 
 
-2490
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187846,7 +185356,6 @@ AttributeType
 
 `displayName` String Display name of the facet. 52.0
 
-2491
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -187952,7 +185461,6 @@ Info
 
 ```
 
-2492
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188023,7 +185531,6 @@ Search result group.
 
 `objectApiName` String Object API name. 64.0
 
-2493
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188092,7 +185599,6 @@ object. In version 64.0 and later, use
 
 `code` String Search status code. 63.0
 
-2494
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188146,7 +185652,6 @@ Contains result of the service appointment.
 
 Shifts created from a pattern.
 
-2495
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188218,7 +185723,6 @@ SEE ALSO:
 
 ConnectApi.SiteSearchResult
 
-2496
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188289,7 +185793,6 @@ CommerceSearch
 **•** `Default` —When no direction is defined, sorts
 by relevance.
 
-2497
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188376,7 +185879,6 @@ SortRuleLabelSuffix
 `nameOrId` String Name of the sort rule field or, if the sort rule is based 52.0
 on a custom field, ID.
 
-2498
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188442,7 +185944,6 @@ ConnectApi.ObjectQueryInfo
 
 ConnectApi.SearchObject
 
-2499
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188500,7 +186001,6 @@ can’t be drafts.
 **•** `Isolated` —The feed post or comment is
 isolated, and only admins can see it.
 
-2500
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188558,7 +186058,6 @@ A trace node for a recommendation strategy execution.
 
 `outputs` List<String> Recommendations that are returned from the node. 45.0
 
-2501
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188638,7 +186137,6 @@ Exhange order summary resulting from a submit cart to exchange order action.
 
 `orderSummaryId` String ID of the order summary. Big, 60.0
 
-2502
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188706,7 +186204,6 @@ ConnectApi.FollowerPage
 
 ConnectApi.FollowingPage
 
-2503
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188778,7 +186275,6 @@ Personalization target information.
 
 ```
 
-2504
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188852,7 +186348,6 @@ Response
 
 ```
 
-2505
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188937,7 +186432,6 @@ Response
 
 ```
 
-2506
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -188995,7 +186489,6 @@ Represents the address or jurisdiction of the primary business used for calculat
 
 `stateAssignedNo` String State-assigned number of the tax jurisdiction address. 55.0
 
-2507
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189075,7 +186568,6 @@ Text classification to get results for multiple text classification request IDs.
 
 HTTP headers containing URLs associating text strings and classifications.
 
-2508
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189127,7 +186619,6 @@ Theme information related to an object.
 
 `color` String Color that represents the object. 63.0
 
-2509
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189194,7 +186685,6 @@ Number of people talking about this topic over the last two months, 29.0
 based on factors such as topic additions and comments on posts
 with the topic.
 
-2510
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189266,7 +186756,6 @@ Collection of topic endorsement response bodies.
 `nextPageUrl` String Connect REST API URL identifying the next page, or `null` if 30.0
 there isn’t a next page.
 
-2511
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189331,7 +186820,6 @@ if there isn’t a next page.
 
 ```
 
-2512
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189389,7 +186877,6 @@ Summary of a topic.
 
 `id` String ID of the topic. 47.0
 
-2513
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189435,7 +186922,6 @@ If a feed element has this capability, it contains all changes to a record for a
 
 Subclass of ConnectApi.FeedElementCapability.
 
-2514
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189491,7 +186977,6 @@ Subclass of ConnectApi.FeedElementCapability.
 
 `downVoteCount` Long Number of downvotes. 41.0
 
-2515
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189560,7 +187045,6 @@ aren’t enabled, the full name is displayed.
 `firstName` String User's first name. In version 39.0 and later, if nicknames 28.0
 are enabled, `firstName` is `null` .
 
-2516
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189627,7 +187111,6 @@ User activities job.
 
 `jobToken` String Token that identifies the user activities job. 42.0
 
-2517
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189688,7 +187171,6 @@ on a topic.
 
 **•** `UpVote` —User upvoted a post or comment.
 
-2518
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189766,7 +187248,6 @@ on a topic.
 
 `activityUrl` String URL to the user activity. 42.0
 
-2519
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189822,7 +187303,6 @@ User’s global Chatter settings.
 `defaultGroup` `ConnectApi.GroupEmail` The default frequency with which a user receives email 28.0
 `EmailFrequency` `Frequency` Enum from a group when they join it.
 
-2520
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189901,7 +187381,6 @@ ConnectApi.UserProfile
 
 User feed entity activity summary.
 
-2521
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -189975,7 +187454,6 @@ Summary>
 
 ```
 
-2522
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190031,7 +187509,6 @@ When the job completes, you receive an email with
 information about the Salesforce file that contains
 #### ConnectApi.UserMissionActivityCollection .
 
-2523
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190104,7 +187581,6 @@ Page of users.
 
 `currentPageUrl` String Connect REST API URL identifying the current page. 28.0
 
-2524
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190164,7 +187640,6 @@ user profile ( `true` ) or not ( `false` )
 **•** `CustomVisualForce` —Tab that displays
 data from a Visualforce page.
 
-2525
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190227,7 +187702,6 @@ Settings specific to a user.
 
 ```
 
-2526
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190329,7 +187803,6 @@ the `ConnectApi.Features.multiCurrency` property is `false` .
 
 ```
 
-2527
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190357,7 +187830,6 @@ User summary.
 
 Subclass of ConnectApi.User.
 
-2528
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190429,7 +187901,6 @@ or not ( `false` ).
 `Anonymized` by an anonymous user ( `true` ) or not ( `false` ). If
 the comment has never been marked as verified or
 
-2529
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190493,7 +187964,6 @@ A page of upvotes or downvotes on a feed element or comment.
 
 `currentPageUrl` String Connect REST API URL identifying the current page. 42.0
 
-2530
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190561,7 +188031,6 @@ count that as two upvotes.
 
 `webStoreId` String ID of the webstore. 64.0
 
-2531
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190638,7 +188107,6 @@ SEE ALSO:
 
 #### ConnectApi.WishlistItemCollection
 
-2532
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190699,7 +188167,6 @@ user.
 
 Summary of a wishlist.
 
-2533
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190756,7 +188223,6 @@ Map of a parameter name and value.
 
 `wrappedMap` Map<String, Object> Map of parameter name and value. 60.0
 
-2534
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190816,7 +188282,6 @@ or `null` if there isn’t a next page.
 
 Page of zone search results.
 
-2535
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190873,7 +188338,6 @@ IN THIS SECTION:
 ConnectApi.ApprovalAttachment
 Attach an approval to a feed item.
 
-2536
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -190937,7 +188401,6 @@ Fields of a record at the point in time when the record was created.
 ConnectApi.SocialAccount
 A social account on a social network.
 
-2537
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191022,7 +188485,6 @@ WorkflowProcess
 
 **•** `Started`
 
-2538
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191089,7 +188551,6 @@ Optional. Parameters passed to the canvas app in JSON format. Example: 29.0–31
 `thumbnailUrl` String Optional. A URL to a thumbnail image for the canvas app. Maximum 29.0–31.0
 dimensions are 120x120 pixels.
 
-2539
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191168,7 +188629,6 @@ Subclass of ConnectApi.FeedItemAttachment.
 
 `fileExtension` String File’s extension. 28.0–31.0
 
-2540
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191234,7 +188694,6 @@ available immediately after the file is uploaded.
 
 **•** `Failed` —Rendering process failed.
 
-2541
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191305,7 +188764,6 @@ Information about a Data.com company.
 All company information is visible for companies that you purchased and own. If you haven’t purchased a company, some of the fields
 are hidden. Hidden fields are fully or partially hidden by asterisks “***.”
 
-2542
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191382,7 +188840,6 @@ The type of ownership of the company:
 
 **•** Private
 
-2543
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191446,7 +188903,6 @@ company’s information.
 
 Lists all companies that were purchased in a specific order, page URLs, and the number of companies in the order.
 
-2544
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191511,7 +188967,6 @@ works. Here are some possible departments.
 
 **•** Sales
 
-2545
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191574,7 +189029,6 @@ Lists all contacts that were purchased in the specific order, page URLs, and the
 `previousPageUrl` String URL to the previous page of contacts. This value is 32.0
 null if there is no previous page.
 
-2546
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191636,7 +189090,6 @@ for the current month.
 
 Email message from a case.
 
-2547
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191716,7 +189169,6 @@ subclasses.
 
 Important: The composition of a feed can change between releases. Write your code to handle instances of unknown subclasses.
 
-2548
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191775,7 +189227,6 @@ Feed item topic page.
 
 Important: This class isn’t available in version 32.0 and later. In version 32.0 and later, ConnectApi.TopicsCapability is used.
 
-2549
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191845,7 +189296,6 @@ Subclass of ConnectApi.AbstractRecommendation.
 
 ConnectApi.EntityRecommendation is used for all recommendations.
 
-2550
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191906,7 +189356,6 @@ ConnectApi.SocialPostCapability
 
 Follow relationship between a managed social account and a social persona.
 
-2551
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -191997,7 +189446,6 @@ Provider
 
 **•** `Facebook`
 
-2552
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -192072,7 +189520,6 @@ Intents available for a social post.
 
 ```
 
-2553
 
 Apex Reference Guide ConnectApi Output Classes
 
@@ -192131,7 +189578,6 @@ The status of a social post.
 
 `message` String Status message. 36.0
 
-2554
 
 ### Apex Reference Guide ConnectApi Enums
 
@@ -192201,7 +189647,6 @@ Enums are not versioned. Enum values are returned in all API versions. Clients m
 **•** `Unlimited` —An action link can be executed an unlimited number of times by each user.
 If the action link’s `actionType` is `Api` or `ApiAsync`, you can’t use this value.
 
-2555
 
 Apex Reference Guide ConnectApi Enums
 
@@ -192282,7 +189727,6 @@ complete.
 
 **•** `Business`
 
-2556
 
 Apex Reference Guide ConnectApi Enums
 
@@ -192373,7 +189817,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `Audience` —Criterion based on audience.
 
-2557
 
 Apex Reference Guide ConnectApi Enums
 
@@ -192455,7 +189898,6 @@ DefinitionTypeEnum
 
 **•** `CALCULATED_METRIC`
 
-2558
 
 Apex Reference Guide ConnectApi Enums
 
@@ -192542,7 +189984,6 @@ is finalized.
 
 **•** `Error`
 
-2559
 
 Apex Reference Guide ConnectApi Enums
 
@@ -192623,7 +190064,6 @@ published.
 
 **•** `PublishExisting` —An existing case comment that was republished.
 
-2560
 
 Apex Reference Guide ConnectApi Enums
 
@@ -192733,7 +190173,6 @@ CdpMlPredictAggregateFunctionStatusEnum
 
 **•** `Success`
 
-2561
 
 Apex Reference Guide ConnectApi Enums
 
@@ -192845,7 +190284,6 @@ CommerceSearchFacetType
 
 **•** `Range`
 
-2562
 
 Apex Reference Guide ConnectApi Enums
 
@@ -192983,7 +190421,6 @@ LabelSuffix
 
 **•** `LowHigh` —Label suffix for 'Low-High'
 
-2563
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193079,7 +190516,6 @@ CommunityFlagVisibility
 **•** `ModeratorsOnly` —The flag is visible only to users with moderation permissions on the
 flagged element or item.
 
-2564
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193160,7 +190596,6 @@ moderation permissions on the flagged element or item.
 
 **•** `Password` —Repository uses user name and password authentication protocol.
 
-2565
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193271,7 +190706,6 @@ CreateCredentialAction
 
 **•** `Refresh`
 
-2566
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193382,7 +190816,6 @@ DataCategoryOperator
 
 **•** `Above` —Queries the data category and all of its parent categories.
 
-2567
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193459,7 +190892,6 @@ subcategories.
 
 **•** `Adg`
 
-2568
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193547,7 +190979,6 @@ an org allows the addition of duplicate records in its CRM.
 
 **•** `Active` —The data space is active.
 
-2569
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193646,7 +191077,6 @@ ProviderParamType
 
 **•** `TokenRequestQueryParameter`
 
-2570
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193750,7 +191180,6 @@ are visible in the bookmarks feed.
 **•** `Bundle` —The feed element has a group of other feed elements that display as a bundle
 in the feed. The bundle type determines the additional data associated with the bundle.
 
-2571
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193828,7 +191257,6 @@ change event.
 
 **•** `UpDownVote` —Users can upvote or downvote the feed element.
 
-2572
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193899,7 +191327,6 @@ Einstein-Generated Answers permission.
 that are questions that have candidate answers that have been reviewed or published. This
 value is valid only for users with the Access Einstein-Generated Answers permission.
 
-2573
 
 Apex Reference Guide ConnectApi Enums
 
@@ -193974,7 +191401,6 @@ Case Feed.
 
 **•** `BasicTemplateFeedItem` —Feed item with an enhanced link capability.
 
-2574
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194051,7 +191477,6 @@ changed.
 
 **•** `AllUsers` —Visibility is not limited to internal users.
 
-2575
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194124,7 +191549,6 @@ is the context user.
 
 **•** `PendingReview` —Contains all feed items and comments that are pending review.
 
-2576
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194202,7 +191626,6 @@ group updates. You can get another user’s user profile feed.
 
 **•** `IndirectLookup`
 
-2577
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194286,7 +191709,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `ThumbnailBig` —Preview format is 720 x 480 PNG.
 
-2578
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194383,7 +191805,6 @@ new version of a file.
 
 **•** `IncludesOp` —Includes
 
-2579
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194471,7 +191892,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `All` —All groups, including groups that are archived and groups that aren’t archived.
 
-2580
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194572,7 +191992,6 @@ Method
 
 **•** `HttpGet` —Returns HTTP 200 on success.
 
-2581
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194671,7 +192090,6 @@ is empty.
 
 ```
 
-2582
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194792,7 +192210,6 @@ ManagedContentSpaceType
 
 **•** `Marketing`
 
-2583
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194887,7 +192304,6 @@ MentionValidationStatus
 is trying to mention something that is not allowed. For example, a user who is not a member
 of a private group is trying to mention the private group.
 
-2584
 
 Apex Reference Guide ConnectApi Enums
 
@@ -194988,7 +192404,6 @@ OpenTarget
 
 **•** `NewWindow` —Navigation menu item opens in a new window.
 
-2585
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195085,7 +192500,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `InteractiveStep`
 
-2586
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195189,7 +192603,6 @@ initiated.
 
 **•** `Submitted` —The adjustment aggregate data job for the order summary is submitted.
 
-2587
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195286,7 +192699,6 @@ News. Except for the Call action, you can’t edit productivity actions.
 
 **•** `Activation`
 
-2588
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195380,7 +192792,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `TwentyFour` —Refreshes every twenty-four hours.
 
-2589
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195479,7 +192890,6 @@ your community manager to define custom channels.
 **•** `DefaultChannel` —Default recommendation channel. Recommendations appear by
 default on the Home and Question Detail pages of Customer Service and Partner Central
 
-2590
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195555,7 +192965,6 @@ context user followed .
 
 **•** `UserViewingSameRecords` —Users who view the same records as the context user.
 
-2591
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195651,7 +193060,6 @@ recommendation.
 
 **•** `Time`
 
-2592
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195737,7 +193145,6 @@ a specified time period. When the term ends, the subscription ends.
 
 **•** `ContentPage`
 
-2593
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195827,7 +193234,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `ApprovalRejected`
 
-2594
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195909,7 +193315,6 @@ sort order is valid only for Chatter feed streams.
 
 **•** `Credit` —Transaction is a credit transaction.
 
-2595
 
 Apex Reference Guide ConnectApi Enums
 
@@ -195987,7 +193392,6 @@ received for a user.
 
 **•** `CompanyVerify` —User verified comment.
 
-2596
 
 Apex Reference Guide ConnectApi Enums
 
@@ -196075,7 +193479,6 @@ page.
 
 **•** `CreatedDateAsc` —Sorts by oldest creation date.
 
-2597
 
 ### Apex Reference Guide ConnectApi Exceptions
 
@@ -196150,7 +193553,6 @@ equivalent to receiving a 404 error from Connect REST API.
 `ConnectApi.RateLimitException` When you exceed the rate limit. This is equivalent to receiving a
 503 Service Unavailable error from Connect REST API.
 
-2598
 
 ### Apex Reference Guide ConnectApi Utilities ConnectApi Utilities The ConnectApi namespace contains a utility class.
 
@@ -196224,7 +193626,6 @@ Use the Salesforce Release Notes to learn about the most recent updates and chan
 [For new and changed ConnectApi classes and enums, see ConnectApi (Connect in Apex): New and Changed Classes and Enums in the](https://help.salesforce.com/s/articleView?id=release-notes.rn_connect_in_apex.htm&language=en_US)
 Salesforce Release Notes.
 
-2599
 
 ## Apex Reference Guide Context Namespace Context Namespace The Context namespace provides classes and methods to manage the sharing and consumption of business application data by
 
@@ -196276,7 +193677,6 @@ The result of the emptyRecycleBin DML operation returned by the `Database.emptyR
 Error Class
 Represents information about an error that occurred during a DML operation when using a Database method.
 
-2600
 
 ### Apex Reference Guide Batchable Interface
 
@@ -196335,7 +193735,6 @@ batch job.
 finish(jobId)
 Gets invoked when the batch job finishes. Place any clean up code in this method.
 
-2601
 
 Apex Reference Guide Batchable Interface
 
@@ -196410,7 +193809,6 @@ Type: Void
 
 Gets invoked when the batch job starts. Returns the record set as an iterable that will be batched for execution.
 
-2602
 
 ### Apex Reference Guide BatchableContext Interface
 
@@ -196476,7 +193874,6 @@ Batchable Interface
 
 ### The following are methods for BatchableContext .
 
-2603
 
 ### Apex Reference Guide Cursor Class (Beta)
 
@@ -196538,7 +193935,6 @@ A cursor is created when a SOQL query is executed on a `Database.getCursor()` or
 call. When the SOQL query is invoked, the corresponding rows are returned from the cursor. The maximum number of rows per cursor
 is 50 million, regardless of the operation being synchronous or asynchronous.
 
-2604
 
 Apex Reference Guide Cursor Class (Beta)
 
@@ -196609,7 +194005,6 @@ Signature
 
 ```
 
-2605
 
 ### Apex Reference Guide DeletedRecord Class
 
@@ -196675,7 +194070,6 @@ IN THIS SECTION:
 getDeletedDate()
 Returns the deleted date of this record.
 
-2606
 
 ### Apex Reference Guide DeleteFilter Enum
 
@@ -196735,7 +194129,6 @@ The following are the values of the `Database.DeleteFilter` enum.
 
 Represents the result of a delete DML operation returned by the `Database.delete` method.
 
-2607
 
 Apex Reference Guide DeleteResult Class
 
@@ -196809,7 +194202,6 @@ occurred, returns an empty set.
 getId()
 Returns the ID of the sObject you were trying to delete.
 
-2608
 
 ### Apex Reference Guide DMLOptions Class
 
@@ -196871,7 +194263,6 @@ Namespace
 
 Database
 
-2609
 
 Apex Reference Guide DMLOptions Class
 
@@ -196931,7 +194322,6 @@ Property Value
 
 Type: Boolean
 
-2610
 
 Apex Reference Guide DMLOptions Class
 
@@ -196997,7 +194387,6 @@ The Salesforce user interface allows you to specify whether or not to send an em
 
 information regarding the email that gets sent when one of the events occurs because of the code's execution.
 
-2611
 
 ### Apex Reference Guide DmlOptions.AssignmentRuleHeader Class
 
@@ -197055,7 +194444,6 @@ Namespace
 
 Database
 
-2612
 
 Apex Reference Guide DmlOptions.AssignmentRuleHeader Class
 
@@ -197121,7 +194509,6 @@ The ID can be retrieved by querying the AssignmentRule sObject. If specified, do
 
 If the value is not in the correct ID format (15-character or 18-character Salesforce ID), the call fails and an exception is returned.
 
-2613
 
 ### Apex Reference Guide DMLOptions.DuplicateRuleHeader Class
 
@@ -197186,7 +194573,6 @@ IN THIS SECTION:
 
 ### The following are properties for DMLOptions.DuplicateRuleHeader .
 
-2614
 
 Apex Reference Guide DMLOptions.DuplicateRuleHeader Class
 
@@ -197261,7 +194647,6 @@ Property Value
 
 Type: Boolean
 
-2615
 
 ### Apex Reference Guide DmlOptions.EmailHeader Class
 
@@ -197332,7 +194717,6 @@ In the following example, the `triggerAutoResponseEmail` option is specified:
 
 ```
 
-2616
 
 Apex Reference Guide DmlOptions.EmailHeader Class
 
@@ -197396,7 +194780,6 @@ Property Value
 
 Type: Boolean
 
-2617
 
 ### Apex Reference Guide DuplicateError Class
 
@@ -197455,7 +194838,6 @@ Namespace
 
 Database
 
-2618
 
 Apex Reference Guide DuplicateError Class
 
@@ -197532,7 +194914,6 @@ Returns an array of one or more field names. Identifies which fields in the obje
 getMessage()
 Returns the error message text.
 
-2619
 
 Apex Reference Guide DuplicateError Class
 
@@ -197602,7 +194983,6 @@ Type: String
 
 Returns a code that characterizes the error.
 
-2620
 
 ### Apex Reference Guide EmptyRecycleBinResult Class
 
@@ -197665,7 +195045,6 @@ Return Value
 
 Type: Database.Errors []
 
-2621
 
 ### Apex Reference Guide Error Class
 
@@ -197726,7 +195105,6 @@ IN THIS SECTION:
 getFields()
 Returns an array of one or more field names. Identifies which fields in the object, if any, affected the error condition.
 
-2622
 
 ### Apex Reference Guide GetDeletedResult Class
 
@@ -197792,7 +195170,6 @@ _Certificates_ in the Salesforce online help.)
 
 Contains the deleted records retrieved for a specific sObject type and time window.
 
-2623
 
 Apex Reference Guide GetDeletedResult Class
 
@@ -197851,7 +195228,6 @@ Return Value
 
 Type: Date
 
-2624
 
 ### Apex Reference Guide GetUpdatedResult Class
 
@@ -197914,7 +195290,6 @@ Signature
 
 ```
 
-2625
 
 ### Apex Reference Guide LeadConvert Class
 
@@ -197981,7 +195356,6 @@ that the conversion was successful.
 
 ```
 
-2626
 
 Apex Reference Guide LeadConvert Class
 
@@ -198037,7 +195411,6 @@ Gets the ID of the lead to convert.
 getOpportunityId()
 Gets the ID of the existing opportunity that will be related to the resulting contact.
 
-2627
 
 Apex Reference Guide LeadConvert Class
 
@@ -198099,7 +195472,6 @@ Sets the ID of the lead to convert. This field is required.
 setOpportunityId(opportunityId)
 Sets the ID of the opportunity into which the lead is merged. This value is required only when updating an existing opportunity.
 
-2628
 
 Apex Reference Guide LeadConvert Class
 
@@ -198157,7 +195529,6 @@ This method is for internal use only.
 
 Gets the ID of the contact into which the lead will be merged.
 
-2629
 
 Apex Reference Guide LeadConvert Class
 
@@ -198225,7 +195596,6 @@ Type: ID
 
 Gets the name of the opportunity to create.
 
-2630
 
 Apex Reference Guide LeadConvert Class
 
@@ -198293,7 +195663,6 @@ Type: ID
 
 Indicates whether an Opportunity is created during lead conversion ( `false`, the default) or not ( `true` ).
 
-2631
 
 Apex Reference Guide LeadConvert Class
 
@@ -198363,7 +195732,6 @@ Return Value
 
 Type: Void
 
-2632
 
 Apex Reference Guide LeadConvert Class
 
@@ -198429,7 +195797,6 @@ Signature
 
 ```
 
-2633
 
 Apex Reference Guide LeadConvert Class
 
@@ -198503,7 +195870,6 @@ Signature
 
 ```
 
-2634
 
 Apex Reference Guide LeadConvert Class
 
@@ -198574,7 +195940,6 @@ Parameters
 
 Type: Boolean
 
-2635
 
 Apex Reference Guide LeadConvert Class
 
@@ -198640,7 +196005,6 @@ Type: Void
 
 send email.
 
-2636
 
 ### Apex Reference Guide LeadConvertResult Class
 
@@ -198702,7 +196066,6 @@ The ID of the new opportunity, if one was created when `convertLead` was invoked
 getRelatedPersonAccountId()
 The ID of the new or existing person account specified when `convertLead` was invoked.
 
-2637
 
 Apex Reference Guide LeadConvertResult Class
 
@@ -198769,7 +196132,6 @@ Return Value
 
 Type: ID
 
-2638
 
 ### Apex Reference Guide MergeResult Class
 
@@ -198830,7 +196192,6 @@ Usage
 
 The `Database.merge` method returns a `Database.MergeResult` object for each merged record.
 
-2639
 
 Apex Reference Guide MergeResult Class
 
@@ -198893,7 +196254,6 @@ Type: ID
 
 Returns the IDs of the records merged into the master record.
 
-2640
 
 ### Apex Reference Guide QueryLocator Class
 
@@ -198958,7 +196318,6 @@ Returns the query used to instantiate the `Database.QueryLocator` object. This i
 iterator()
 Returns a new instance of a query locator iterator.
 
-2641
 
 ### Apex Reference Guide QueryLocatorIterator Class
 
@@ -199027,7 +196386,6 @@ Namespace
 
 Database
 
-2642
 
 Apex Reference Guide QueryLocatorIterator Class
 
@@ -199100,7 +196458,6 @@ Signature
 
 ```
 
-2643
 
 ### Apex Reference Guide SaveResult Class
 
@@ -199174,7 +196531,6 @@ messages and fields of the failed records. This example generates one successful
 
 ```
 
-2644
 
 Apex Reference Guide SaveResult Class
 
@@ -199248,7 +196604,6 @@ Signature
 
 ```
 
-2645
 
 ### Apex Reference Guide UndeleteResult Class
 
@@ -199308,7 +196663,6 @@ second element, and so on. If only one sObject is passed in, the UndeleteResults
 
 ### The following are methods for UndeleteResult . All are instance methods.
 
-2646
 
 Apex Reference Guide UndeleteResult Class
 
@@ -199377,7 +196731,6 @@ Return Value
 
 Type: Boolean
 
-2647
 
 ### Apex Reference Guide UpsertResult Class UpsertResult Class
 
@@ -199435,7 +196788,6 @@ Type: Database.Error []
 
 Returns the ID of the sObject you were trying to update or insert.
 
-2648
 
 ## Apex Reference Guide Datacloud Namespace
 
@@ -199497,7 +196849,6 @@ control whether and when users can save duplicate records within Salesforce.
 
 ## The following are the classes in the Datacloud namespace.
 
-2649
 
 ### Apex Reference Guide AdditionalInformationMap Class
 
@@ -199555,7 +196906,6 @@ Returns the element name.
 getValue()
 Returns the value of the element.
 
-2650
 
 ### Apex Reference Guide DuplicateResult Class
 
@@ -199624,7 +196974,6 @@ the page makes use of the Apex controller. Save the Apex class first before savi
 
 ```
 
-2651
 
 Apex Reference Guide DuplicateResult Class
 
@@ -199722,7 +197071,6 @@ message to the page, and returns information about the duplicate records to be d
 
 ```
 
-2652
 
 Apex Reference Guide DuplicateResult Class
 
@@ -199819,7 +197167,6 @@ Apex Reference Guide DuplicateResult Class
 
 ```
 
-2653
 
 Apex Reference Guide DuplicateResult Class
 
@@ -199888,7 +197235,6 @@ associated with a duplicate rule.
 getMatchResults()
 Returns the duplicate records and match information.
 
-2654
 
 Apex Reference Guide DuplicateResult Class
 
@@ -199959,7 +197305,6 @@ Return Value
 
 Type: List<Datacloud.MatchResult>
 
-2655
 
 ### Apex Reference Guide FieldDiff Class
 
@@ -200019,7 +197364,6 @@ Returns the name of a field on a matching rule that detected duplicates.
 
 Returns how the field values compare for the duplicate and its matching record.
 
-2656
 
 ### Apex Reference Guide FindDuplicates Class
 
@@ -200082,7 +197426,6 @@ Identifies duplicates for sObjects provided and returns a list of `FindDuplicate
 
 Identifies duplicates for sObjects provided and returns a list of `FindDuplicatesResult` objects.
 
-2657
 
 Apex Reference Guide FindDuplicates Class
 
@@ -200163,7 +197506,6 @@ Example
 
 ```
 
-2658
 
 Apex Reference Guide FindDuplicates Class
 
@@ -200265,7 +197607,6 @@ Parameters
 
 Type: List<SObject>
 
-2659
 
 ### Apex Reference Guide FindDuplicatesByIds Class
 
@@ -200322,7 +197663,6 @@ duplicate rules.
 
 ```
 
-2660
 
 Apex Reference Guide FindDuplicatesByIds Class
 
@@ -200408,7 +197748,6 @@ Example
 
 ```
 
-2661
 
 ### Apex Reference Guide FindDuplicatesResult Class
 
@@ -200484,7 +197823,6 @@ FindDuplicatesResult Properties
 
 FindDuplicatesResult Methods
 
-2662
 
 Apex Reference Guide FindDuplicatesResult Class
 
@@ -200546,7 +197884,6 @@ Type: List<Database.Error>
 Boolean signifying whether the call to `FindDuplicates.findDuplicates(sObjects)` or
 `FindDuplicatesByIds.findDuplicatesByIds(ids)` was successful.
 
-2663
 
 Apex Reference Guide FindDuplicatesResult Class
 
@@ -200617,7 +197954,6 @@ Example
 
 ```
 
-2664
 
 ### Apex Reference Guide MatchRecord Class
 
@@ -200679,7 +198015,6 @@ IN THIS SECTION:
 
 ### The following are methods for MatchRecord .
 
-2665
 
 Apex Reference Guide MatchRecord Class
 
@@ -200749,7 +198084,6 @@ Return Value
 
 Type: Double
 
-2666
 
 ### Apex Reference Guide MatchResult Class
 
@@ -200805,7 +198139,6 @@ Returns the number of duplicates detected by the matching rule.
 isSuccess()
 Returns `false` if there’s an error with the matching rule, and `true` if the matching rule successfully ran.
 
-2667
 
 Apex Reference Guide MatchResult Class
 
@@ -200873,7 +198206,6 @@ Type: List<Datacloud.MatchRecord>
 
 Returns the developer name of the matching rule.
 
-2668
 
 ## Apex Reference Guide DataRetrieval Namespace
 
@@ -200942,7 +198274,6 @@ of their conversations.
 
 [RecordTranscriptsList Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.industries_reference.meta/industries_reference/apex_class_DataRetrieval_RecordTranscriptsList.htm)
 
-2669
 
 ## Apex Reference Guide DataSource Namespace
 
@@ -200998,7 +198329,6 @@ Parent class for the `DataSource.Provider`, `DataSource.Connection`, `DataSource
 DataType Enum
 Specifies the data types that are supported by the Apex Connector Framework.
 
-2670
 
 Apex Reference Guide DataSource Namespace
 
@@ -201058,7 +198388,6 @@ Describes a table on an external system that the Salesforce Connect custom adapt
 TableResult Class
 Contains the results of a search or query.
 
-2671
 
 ### Apex Reference Guide AsyncDeleteCallback Class
 
@@ -201114,7 +198443,6 @@ Signature
 
 ```
 
-2672
 
 ### Apex Reference Guide AsyncSaveCallback Class
 
@@ -201177,7 +198505,6 @@ Parameters
 
 Type: Database.SaveResult
 
-2673
 
 ### Apex Reference Guide AuthenticationCapability Enum
 
@@ -201232,7 +198559,6 @@ The following are the values of the `DataSource.AuthenticationProtocol` enum.
 
 `PASSWORD` A username and password are used to authenticate to the external system.
 
-2674
 
 ### Apex Reference Guide Capability Enum Capability Enum
 
@@ -201295,7 +198621,6 @@ objects.
 
 `ROW_UPDATE` Allows updating external data.
 
-2675
 
 ### Apex Reference Guide Column Class
 
@@ -201356,7 +198681,6 @@ If the data type is numeric, the number of decimal places to the right of the de
 description
 Description of what the column represents.
 
-2676
 
 Apex Reference Guide Column Class
 
@@ -201416,7 +198740,6 @@ Type: Integer
 
 Description of what the column represents.
 
-2677
 
 Apex Reference Guide Column Class
 
@@ -201487,7 +198810,6 @@ Signature
 
 ```
 
-2678
 
 Apex Reference Guide Column Class
 
@@ -201554,7 +198876,6 @@ Signature
 
 ```
 
-2679
 
 Apex Reference Guide Column Class
 
@@ -201618,7 +198939,6 @@ Returns a new column of data type `BOOLEAN_TYPE` .
 currency(name, length, decimalPlaces)
 Returns a new column of data type `CURRENCY_TYPE` .
 
-2680
 
 Apex Reference Guide Column Class
 
@@ -201679,7 +198999,6 @@ the picklist is sorted alphabetically or if the picklist is restricted.
 picklist(name, picklistValues)
 Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values.
 
-2681
 
 Apex Reference Guide Column Class
 
@@ -201751,7 +199070,6 @@ Parameters
 
 Type: String
 
-2682
 
 Apex Reference Guide Column Class
 
@@ -201827,7 +199145,6 @@ Return Value
 
 Type: DataSource.Column
 
-2683
 
 Apex Reference Guide Column Class
 
@@ -201903,7 +199220,6 @@ isSortable true
 
 isFilterable true
 
-2684
 
 Apex Reference Guide Column Class
 
@@ -202001,7 +199317,6 @@ Type: Integer
 
 Type: String
 
-2685
 
 Apex Reference Guide Column Class
 
@@ -202108,7 +199423,6 @@ Type: Integer
 
 Type: String
 
-2686
 
 Apex Reference Guide Column Class
 
@@ -202197,7 +199511,6 @@ Type: DataSource.Column
 
 Returns a new column with the seven specified `Column` property values.
 
-2687
 
 Apex Reference Guide Column Class
 
@@ -202297,7 +199610,6 @@ API name of the parent object in the indirect lookup relationship.
 
 Type: String
 
-2688
 
 Apex Reference Guide Column Class
 
@@ -202365,7 +199677,6 @@ Return Value
 
 Type: DataSource.Column
 
-2689
 
 Apex Reference Guide Column Class
 
@@ -202436,7 +199747,6 @@ referenceTargetField null
 Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values. You can also
 specify whether the picklist is sorted alphabetically or if the picklist is restricted.
 
-2690
 
 Apex Reference Guide Column Class
 
@@ -202522,7 +199832,6 @@ Type: DataSource.Column
 
 Returns a new column of data type `NUMBER_TYPE` .
 
-2691
 
 Apex Reference Guide Column Class
 
@@ -202604,7 +199913,6 @@ Type: String
 
 Name of the column.
 
-2692
 
 Apex Reference Guide Column Class
 
@@ -202688,7 +199996,6 @@ Name of the column.
 
 Type: List<Map<String,String>>
 
-2693
 
 Apex Reference Guide Column Class
 
@@ -202774,7 +200081,6 @@ Name of the column.
 
 Type: String
 
-2694
 
 Apex Reference Guide Column Class
 
@@ -202851,7 +200157,6 @@ Type: DataSource.Column
 
 The returned column has these property values.
 
-2695
 
 Apex Reference Guide Column Class
 
@@ -202920,7 +200225,6 @@ isFilterable true
 
 type DataSource.DataType.STRING_SHORT_TYPE
 
-2696
 
 Apex Reference Guide Column Class
 
@@ -202986,7 +200290,6 @@ Signature
 
 ```
 
-2697
 
 Apex Reference Guide Column Class
 
@@ -203057,7 +200360,6 @@ length _`length`_
 
 decimalPlaces 0
 
-2698
 
 ### Apex Reference Guide ColumnSelection Class
 
@@ -203122,7 +200424,6 @@ IN THIS SECTION:
 
 ColumnSelection Properties
 
-2699
 
 Apex Reference Guide ColumnSelection Class
 
@@ -203187,7 +200488,6 @@ Property Value
 
 Type: String
 
-2700
 
 ### Apex Reference Guide Connection Class Connection Class
 
@@ -203267,7 +200567,6 @@ Example
 
 ```
 
-2701
 
 Apex Reference Guide Connection Class
 
@@ -203376,7 +200675,6 @@ Apex Reference Guide Connection Class
 
 ```
 
-2702
 
 Apex Reference Guide Connection Class
 
@@ -203481,7 +200779,6 @@ Apex Reference Guide Connection Class
 
 ```
 
-2703
 
 Apex Reference Guide Connection Class
 
@@ -203551,7 +200848,6 @@ Invoked when external object records are created or updated via the Salesforce u
 
 Invoked when external object records are deleted via the Salesforce user interface, APIs, or Apex.
 
-2704
 
 Apex Reference Guide Connection Class
 
@@ -203626,7 +200922,6 @@ Type: DataSource.SearchContext
 
 Represents the query to run against an external data table.
 
-2705
 
 ### Apex Reference Guide ConnectionParams Class
 
@@ -203689,7 +200984,6 @@ Namespace
 
 DataSource
 
-2706
 
 Apex Reference Guide ConnectionParams Class
 
@@ -203746,7 +201040,6 @@ Reserved for future use.
 username
 The username for authenticating to the external system.
 
-2707
 
 Apex Reference Guide ConnectionParams Class
 
@@ -203816,7 +201109,6 @@ Type: String
 
 The value depends on the `Identity Type` field of the external data source definition in Salesforce.
 
-2708
 
 Apex Reference Guide ConnectionParams Class
 
@@ -203881,7 +201173,6 @@ Reserved for future use.
 
 The username for authenticating to the external system.
 
-2709
 
 ### Apex Reference Guide DataSourceUtil Class
 
@@ -203943,7 +201234,6 @@ Signature
 
 ```
 
-2710
 
 ### Apex Reference Guide DataType Enum
 
@@ -204010,7 +201300,6 @@ The following are the values of the `DataSource.DataType` enum.
 
 `EMAIL_TYPE` Email
 
-2711
 
 ### Apex Reference Guide DeleteContext Class
 
@@ -204066,7 +201355,6 @@ IN THIS SECTION:
 externalIds
 The external IDs of the rows representing external object records to delete.
 
-2712
 
 ### Apex Reference Guide DeleteResult Class
 
@@ -204128,7 +201416,6 @@ DeleteResult Methods
 
 ### The following are properties for DeleteResult .
 
-2713
 
 Apex Reference Guide DeleteResult Class
 
@@ -204193,7 +201480,6 @@ Type: Boolean
 
 #### DeleteResult Methods The following are methods for DeleteResult .
 
-2714
 
 Apex Reference Guide DeleteResult Class
 
@@ -204269,7 +201555,6 @@ Type: String
 
 The reason the delete operation failed.
 
-2715
 
 ### Apex Reference Guide Filter Class
 
@@ -204334,7 +201619,6 @@ Usage
 Compound types require child filters. Specifically, the `subfilters` property can’t be null if the `type` property is `NOT_`, `AND_`, or
 `OR_` .
 
-2716
 
 Apex Reference Guide Filter Class
 
@@ -204396,7 +201680,6 @@ Type: Object
 
 List of subfilters for compound filter types, such as `NOT_`, `AND_`, and `OR_` .
 
-2717
 
 ### Apex Reference Guide FilterType Enum
 
@@ -204461,7 +201744,6 @@ The following are the values of the `DataSource.FilterType` enum.
 
 `ENDS_WITH` Simple comparative filter type.
 
-2718
 
 ### Apex Reference Guide IdentityType Enum
 
@@ -204525,7 +201807,6 @@ credentials come from the external data source definition.
 
 Contains details about how to sort the rows in the result set. Equivalent to an `ORDER BY` statement in a SOQL query.
 
-2719
 
 Apex Reference Guide Order Class
 
@@ -204588,7 +201869,6 @@ Property Value
 
 Type: DataSource.OrderDirection
 
-2720
 
 Apex Reference Guide Order Class
 
@@ -204656,7 +201936,6 @@ Return Value
 
 Type: DataSource.Order
 
-2721
 
 ### Apex Reference Guide OrderDirection Enum OrderDirection Enum
 
@@ -204707,7 +201986,6 @@ IN THIS SECTION:
 
 ### The following are methods for Provider .
 
-2722
 
 Apex Reference Guide Provider Class
 
@@ -204773,7 +202051,6 @@ Type: List<DataSource.Capability>
 
 Returns a connection that points to an instance of the external data source.
 
-2723
 
 ### Apex Reference Guide QueryAggregation Enum
 
@@ -204832,7 +202109,6 @@ Namespace
 
 DataSource
 
-2724
 
 Apex Reference Guide QueryContext Class
 
@@ -204887,7 +202163,6 @@ IN THIS SECTION:
 get(metadata, offset, maxResults, tableSelection)
 #### Creates an instance of the QueryContext class.
 
-2725
 
 ### Apex Reference Guide QueryUtils Class
 
@@ -204960,7 +202235,6 @@ data from external systems. Complete the filtering and sorting on the external s
 When possible, use server-driven paging or another technique to have the external system determine the appropriate data subsets
 according to the limit and offset clauses in the query.
 
-2726
 
 Apex Reference Guide QueryUtils Class
 
@@ -205023,7 +202297,6 @@ Return Value
 
 Type: List<Map<String, Object>>
 
-2727
 
 Apex Reference Guide QueryUtils Class
 
@@ -205099,7 +202372,6 @@ Return Value
 
 Type: List<Map<String, Object>>
 
-2728
 
 ### Apex Reference Guide ReadContext Class
 
@@ -205164,7 +202436,6 @@ Describes the external system’s tables to query.
 offset
 The starting row offset into the query’s result set. Used for client-driven paging.
 
-2729
 
 ### Apex Reference Guide SearchContext Class
 
@@ -205227,7 +202498,6 @@ SearchContext Constructors
 
 SearchContext Properties
 
-2730
 
 Apex Reference Guide SearchContext Class
 
@@ -205308,7 +202578,6 @@ Signature
 
 ```
 
-2731
 
 ### Apex Reference Guide SearchUtils Class
 
@@ -205370,7 +202639,6 @@ IN THIS SECTION:
 
 SearchUtils Methods
 
-2732
 
 ### Apex Reference Guide Table Class
 
@@ -205434,7 +202702,6 @@ can become an external object in Salesforce.
 The metadata is stored in Salesforce. Updating the Apex code to return new or updated values for the table metadata doesn’t automatically
 update the stored metadata in Salesforce.
 
-2733
 
 Apex Reference Guide Table Class
 
@@ -205496,7 +202763,6 @@ Signature
 
 ```
 
-2734
 
 Apex Reference Guide Table Class
 
@@ -205560,7 +202826,6 @@ Signature
 
 ```
 
-2735
 
 Apex Reference Guide Table Class
 
@@ -205644,7 +202909,6 @@ Type: List<DataSource.Column>
 
 List of table columns.
 
-2736
 
 ### Apex Reference Guide TableResult Class
 
@@ -205717,7 +202981,6 @@ columns _`columns`_
 
 Contains the results of a search or query.
 
-2737
 
 Apex Reference Guide TableResult Class
 
@@ -205770,7 +203033,6 @@ Type: String
 Query token that’s used for server-driven paging to determine and fetch the subsequent batch of results. This token is passed back to
 ##### the Apex data source on subsequent queries in the queryMoreToken property on the QueryContext .
 
-2738
 
 Apex Reference Guide TableResult Class
 
@@ -205841,7 +203103,6 @@ Signature
 
 ```
 
-2739
 
 Apex Reference Guide TableResult Class
 
@@ -205906,7 +203167,6 @@ tableName null
 
 rows null
 
-2740
 
 Apex Reference Guide TableResult Class
 
@@ -205986,7 +203246,6 @@ Signature
 
 ```
 
-2741
 
 Apex Reference Guide TableResult Class
 
@@ -206067,7 +203326,6 @@ Type: DataSource.TableResult
 
 Returns the subset of data rows that meet the query criteria, and the number of rows in the table, in a `TableResult` .
 
-2742
 
 ### Apex Reference Guide TableSelection Class
 
@@ -206132,7 +203390,6 @@ Identifies the order for sorting the query results. Corresponds to the `ORDER BY
 tableSelected
 Name of the table to query. Corresponds to the `FROM` clause in a SOQL or SOSL query.
 
-2743
 
 Apex Reference Guide TableSelection Class
 
@@ -206197,7 +203454,6 @@ Property Value
 
 Type: String
 
-2744
 
 ### Apex Reference Guide UpsertContext Class UpsertContext Class An instance of UpsertContext is passed to the upsertRows() method on your Datasource.Connection class. This
 
@@ -206256,7 +203512,6 @@ Signature
 
 ```
 
-2745
 
 ### Apex Reference Guide UpsertResult Class
 
@@ -206315,7 +203570,6 @@ Property Value
 
 Type: String
 
-2746
 
 Apex Reference Guide UpsertResult Class
 
@@ -206379,7 +203633,6 @@ Signature
 
 ```
 
-2747
 
 Apex Reference Guide UpsertResult Class
 
@@ -206451,7 +203704,6 @@ Type: Integer
 
 Creates a delete result that indicates the successful completion of an upsert request for a given external ID.
 
-2748
 
 ### Apex Reference Guide DataSource Exceptions
 
@@ -206528,7 +203780,6 @@ IN THIS SECTION:
 Result Class
 Contains methods to retrieve data that was transformed using Script class methods.
 
-2749
 
 ### Apex Reference Guide Result Class
 
@@ -206582,7 +203833,6 @@ Return Value
 
 Type: Object
 
-2750
 
 ### Apex Reference Guide Script Class
 
@@ -206654,7 +203904,6 @@ IN THIS SECTION:
 
 ### The following are methods for Script .
 
-2751
 
 Apex Reference Guide Script Class
 
@@ -206731,7 +203980,6 @@ is empty, the org namespace is used.
 
 Type: String
 
-2752
 
 ## Apex Reference Guide Dom Namespace
 
@@ -206794,7 +204042,6 @@ IN THIS SECTION:
 Document Class
 Use the `Document` class to process XML content. You can parse nested XML content that’s up to 50 nodes deep.
 
-2753
 
 ### Apex Reference Guide Document Class
 
@@ -206847,7 +204094,6 @@ Signature
 
 ```
 
-2754
 
 Apex Reference Guide Document Class
 
@@ -206923,7 +204169,6 @@ Return Value
 
 Type: Dom.XmlNode
 
-2755
 
 ### Apex Reference Guide XmlNode Class
 
@@ -206989,7 +204234,6 @@ IN THIS SECTION:
 addChildElement(name, namespace, prefix)
 Creates a child element node for this node.
 
-2756
 
 Apex Reference Guide XmlNode Class
 
@@ -207053,7 +204297,6 @@ Inserts a new child node before the specified node.
 removeAttribute(key, keyNamespace)
 Removes the attribute with the given key and key namespace. Returns `true` if successful, `false` otherwise.
 
-2757
 
 Apex Reference Guide XmlNode Class
 
@@ -207125,7 +204368,6 @@ Signature
 
 ```
 
-2758
 
 Apex Reference Guide XmlNode Class
 
@@ -207201,7 +204443,6 @@ Example
 
 For example, for the `<xyz a:b="c:d" />` element:
 
-2759
 
 Apex Reference Guide XmlNode Class
 
@@ -207270,7 +204511,6 @@ Return Value
 
 Type: String
 
-2760
 
 Apex Reference Guide XmlNode Class
 
@@ -207340,7 +204580,6 @@ Type: String
 
 Returns the child element node for the node with the given name and namespace.
 
-2761
 
 Apex Reference Guide XmlNode Class
 
@@ -207414,7 +204653,6 @@ Return Value
 
 Type: String
 
-2762
 
 Apex Reference Guide XmlNode Class
 
@@ -207484,7 +204722,6 @@ Signature
 
 ```
 
-2763
 
 Apex Reference Guide XmlNode Class
 
@@ -207561,7 +204798,6 @@ Type: Dom.XmlNode
 
 The node before the new node.
 
-2764
 
 Apex Reference Guide XmlNode Class
 
@@ -207631,7 +204867,6 @@ Type: Boolean
 
 Sets the key attribute value.
 
-2765
 
 Apex Reference Guide XmlNode Class
 
@@ -207714,7 +204949,6 @@ Signature
 
 ```
 
-2766
 
 ### Apex Reference Guide XmlNodeType Enum
 
@@ -207776,7 +205010,6 @@ and data processing.
 
 Create, clone, and convert string based key-value pairs to a JSON string format.
 
-2767
 
 Apex Reference Guide ApexMap Class
 
@@ -207837,7 +205070,6 @@ Property Value
 
 Type: String
 
-2768
 
 ### Apex Reference Guide RecordApexRepresentation Class
 
@@ -207897,7 +205129,6 @@ Stores the type of the object.
 recordData
 Stores a list of objects, where each object holds a key-value pair.
 
-2769
 
 Apex Reference Guide RecordApexRepresentation Class
 
@@ -207962,7 +205193,6 @@ Create detailed, hierarchical record objects and convert them to a custom JSON s
 
 #### The following are methods for RecordApexRepresentation .
 
-2770
 
 ## Apex Reference Guide EventBus Namespace
 
@@ -208016,7 +205246,6 @@ TestBroker Class
 Contains methods that simulate the successful delivery or failed publishing of platform event or change event messages in an Apex
 test.
 
-2771
 
 ### Apex Reference Guide ChangeEventHeader Class
 
@@ -208073,7 +205302,6 @@ The date and time when the change occurred, represented as the number of millise
 commituser
 The ID of the user that ran the change operation.
 
-2772
 
 Apex Reference Guide ChangeEventHeader Class
 
@@ -208140,7 +205368,6 @@ The format of the `changeOrigin` field value is:
 
 ```
 
-2773
 
 Apex Reference Guide ChangeEventHeader Class
 
@@ -208217,7 +205444,6 @@ Signature
 
 ```
 
-2774
 
 Apex Reference Guide ChangeEventHeader Class
 
@@ -208285,7 +205511,6 @@ Signature
 
 ```
 
-2775
 
 Apex Reference Guide ChangeEventHeader Class
 
@@ -208353,7 +205578,6 @@ Property Value
 
 Type: Integer
 
-2776
 
 ### Apex Reference Guide EventPublishFailureCallback Interface
 
@@ -208414,7 +205638,6 @@ onFailure(result)
 The system invokes this method when the final result of `EventBus.publish` is available and the publishing of the platform
 event message failed.
 
-2777
 
 ### Apex Reference Guide EventPublishSuccessCallback Interface
 
@@ -208473,7 +205696,6 @@ EventPublishSuccessCallback Example Implementation
 
 ### The following are methods for EventPublishSuccessCallback .
 
-2778
 
 ### Apex Reference Guide FailureResult Interface
 
@@ -208530,7 +205752,6 @@ IN THIS SECTION:
 
 ### The following are methods for FailureResult .
 
-2779
 
 ### Apex Reference Guide SuccessResult Interface
 
@@ -208591,7 +205812,6 @@ Signature
 
 ```
 
-2780
 
 ### Apex Reference Guide TestBroker Class
 
@@ -208656,7 +205876,6 @@ Enclose `Test.getEventBus().deliver()` within the `Test.startTest()` and `Test.s
 
 ```
 
-2781
 
 ### Apex Reference Guide TriggerContext Class
 
@@ -208731,7 +205950,6 @@ TriggerContext Properties
 
 TriggerContext Methods
 
-2782
 
 Apex Reference Guide TriggerContext Class
 
@@ -208791,7 +206009,6 @@ Type: Integer
 
 #### TriggerContext Methods The following are methods for TriggerContext .
 
-2783
 
 Apex Reference Guide TriggerContext Class
 
@@ -208855,7 +206072,6 @@ method, pass in the replay ID of the last successfully processed event message. 
 `Trigger.New` are processed, either because of an uncaught exception or intentionally, the trigger is invoked again. The new execution
 starts with the event message in the stream after the one with the checkpointed Replay ID.
 
-2784
 
 ## Apex Reference Guide ExternalService Namespace
 
@@ -208918,7 +206134,6 @@ IN THIS SECTION:
 Interview Class
 The `Flow.Interview` class provides advanced controller access to flows and the ability to start a flow.
 
-2785
 
 ### Apex Reference Guide Interview Class Interview Class
 
@@ -208985,7 +206200,6 @@ Interview Created Statically for a Local Flow
 
 ```
 
-2786
 
 Apex Reference Guide Interview Class
 
@@ -209075,7 +206289,6 @@ _Salesforce Help_ [: Launch a Flow from Apex](https://help.salesforce.com/s/arti
 
 _Apex Developer Guide_ [: Launch a Flow from Apex](https://help.salesforce.com/s/articleView?id=platform.flow_distribute_system_apex_invoke_a_flow_from_apex.htm&language=en_US)
 
-2787
 
 Apex Reference Guide Interview Class
 
@@ -209150,7 +206363,6 @@ If the flow doesn't exist in the current org, a TypeException is thrown.
 
 Creates an interview for a flow.
 
-2788
 
 Apex Reference Guide Interview Class
 
@@ -209233,7 +206445,6 @@ Return Value
 
 Type: Object
 
-2789
 
 ## Apex Reference Guide Flowtesting Namespace
 
@@ -209299,7 +206510,6 @@ must be global.
 
 ```
 
-2790
 
 ### Apex Reference Guide FormulaBuilder Class
 
@@ -209367,7 +206577,6 @@ IN THIS SECTION:
 
 ### The following are methods for FormulaBuilder .
 
-2791
 
 Apex Reference Guide FormulaBuilder Class
 
@@ -209430,7 +206639,6 @@ Signature
 
 ```
 
-2792
 
 Apex Reference Guide FormulaBuilder Class
 
@@ -209505,7 +206713,6 @@ Type: FormulaEval.FormulaBuilder
 
 Required. Sets the formula expression that the `build()` method uses to create the formula instance.
 
-2793
 
 Apex Reference Guide FormulaBuilder Class
 
@@ -209582,7 +206789,6 @@ Return Value
 
 Type: FormulaEval.FormulaBuilder
 
-2794
 
 Apex Reference Guide FormulaBuilder Class
 
@@ -209657,7 +206863,6 @@ This example uses an SObject type as an input in the `withType()` method to buil
 
 ```
 
-2795
 
 ### Apex Reference Guide FormulaGlobal Enum FormulaGlobal Enum
 
@@ -209721,7 +206926,6 @@ global class MotorYacht {
 
 ```
 
-2796
 
 Apex Reference Guide FormulaInstance Class
 
@@ -209795,7 +206999,6 @@ Signature
 
 ```
 
-2797
 
 ### Apex Reference Guide FormulaReturnType Enum
 
@@ -209868,7 +207071,6 @@ Example
 
 Specifies the return type for the `withReturnType(returnType)` method.
 
-2798
 
 ## Apex Reference Guide fsccashflow Namespace
 
@@ -209921,7 +207123,6 @@ Usage
 The Financial Goals FlexCards use Integration Procedures that call the FSCHouseholdService class. These FlexCards display information
 about Financial Goals.
 
-2799
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -209980,7 +207181,6 @@ Checks create, update and delete access on partyExpense entity.
 
 Returns the picklist values for the party income frequency field on the party income entity.
 
-2800
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210045,7 +207245,6 @@ Examples
 
 Input and output JSON example of the actions are as follows.
 
-2801
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210159,7 +207358,6 @@ Output format:
 
 ```
 
-2802
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210245,7 +207443,6 @@ Signature
 
 ```
 
-2803
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210343,7 +207540,6 @@ Input format:
 
 ```
 
-2804
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210459,7 +207655,6 @@ Output format:
 
 ```
 
-2805
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210574,7 +207769,6 @@ Apex Reference Guide FSCCashFlowUtil Class
 
 ```
 
-2806
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210663,7 +207857,6 @@ Signature
 
 ```
 
-2807
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210749,7 +207942,6 @@ Output format:
 
 Checks for read access on the partyIncome and partyExpense entities.
 
-2808
 
 Apex Reference Guide FSCCashFlowUtil Class
 
@@ -210820,7 +208012,6 @@ Examples
 
 Output JSON example of the action are as follows.
 
-2809
 
 ## Apex Reference Guide Functions Namespace
 
@@ -210878,7 +208069,6 @@ Namespace
 
 functions
 
-2810
 
 Apex Reference Guide Function Class
 
@@ -210949,7 +208139,6 @@ get(functionName)
 Returns the Function instance for the named Function and Project. The Function must be properly deployed and have appropriate
 permissions to work with the org running your Apex code.
 
-2811
 
 Apex Reference Guide Function Class
 
@@ -211017,7 +208206,6 @@ Signature
 
 ```
 
-2812
 
 Apex Reference Guide Function Class
 
@@ -211093,7 +208281,6 @@ Type: functions.FunctionCallback
 
 A FunctionCallback implementation that gets called when your Function is invoked asynchronously.
 
-2813
 
 Apex Reference Guide Function Class
 
@@ -211163,7 +208350,6 @@ The `Function.invoke(payload)` method can throw the following exceptions:
 
 **•** `CalloutException`   - One of the following conditions causes this exception to be thrown:
 
-2814
 
 ### Apex Reference Guide FunctionCallback Interface
 
@@ -211221,7 +208407,6 @@ Called when an asynchronous Function invocation has completed.
 
 Called when an asynchronous Function invocation has completed.
 
-2815
 
 ### Apex Reference Guide FunctionErrorType Enum
 
@@ -211304,7 +208489,6 @@ or framework the Function uses.
 `RUNTIME_EXCEPTION` A known exception resulting from the Salesforce Functions runtime. For example,
 a malformed payload passed to the Function when invoked results in this error type.
 
-2816
 
 ### Apex Reference Guide FunctionInvocation Interface
 
@@ -211358,7 +208542,6 @@ Returns the status of the Function invocation.
 
 Returns error information for a Function invocation.
 
-2817
 
 Apex Reference Guide FunctionInvocation Interface
 
@@ -211428,7 +208611,6 @@ Type: functions.FunctionInvocationStatus
 
 The result of the invocation, such as `FunctionInvocationStatus.SUCCESS` or `FunctionInvocationStatus.ERROR` .
 
-2818
 
 ### Apex Reference Guide FunctionInvocationError Interface
 
@@ -211518,7 +208700,6 @@ Usage
 
 FunctionInvocationError contains various error information such as the error message at the time of the error.
 
-2819
 
 Apex Reference Guide FunctionInvocationError Interface
 
@@ -211585,7 +208766,6 @@ This is an example implementation of the `functions.FunctionInvocationError` int
 
 ```
 
-2820
 
 ### Apex Reference Guide FunctionInvocationStatus Enum
 
@@ -211654,7 +208834,6 @@ FunctionInvokeMock Methods
 
 FunctionInvokeMock Example Implementation
 
-2821
 
 Apex Reference Guide FunctionInvokeMock Interface
 
@@ -211733,7 +208912,6 @@ This is sample implementation of the `functions.FunctionInvokeMock` interface.
 
 ```
 
-2822
 
 Apex Reference Guide FunctionInvokeMock Interface
 
@@ -211821,7 +208999,6 @@ function invocations and the `FunctionCallback` class.
 
 ```
 
-2823
 
 ### Apex Reference Guide MockFunctionInvocationFactory Class
 
@@ -211888,7 +209065,6 @@ IN THIS SECTION:
 
 MockFunctionInvocationFactory Methods
 
-2824
 
 Apex Reference Guide MockFunctionInvocationFactory Class
 
@@ -211960,7 +209136,6 @@ Signature
 
 ```
 
-2825
 
 ## Apex Reference Guide ise_bots_apex Namespace
 
@@ -212023,7 +209198,6 @@ Learn more about the properties available with the DynamicMenuItem class.
 
 ### The DynamicMenuItem class includes these properties.
 
-2826
 
 Apex Reference Guide DynamicMenuItem Class
 
@@ -212092,7 +209266,6 @@ Signature
 
 ```
 
-2827
 
 Apex Reference Guide DynamicMenuItem Class
 
@@ -212155,7 +209328,6 @@ Type: String
 
 The value of the label displayed to the user for the menu item at run time.
 
-2828
 
 Apex Reference Guide DynamicMenuItem Class
 
@@ -212224,7 +209396,6 @@ Property Value
 
 Type: Date
 
-2829
 
 ## Apex Reference Guide industriesNlpSvc
 
@@ -212280,7 +209451,6 @@ IN THIS SECTION:
 
 ### The following are properties for NlpResponse .
 
-2830
 
 ### Apex Reference Guide NlpSummarizationResult Class
 
@@ -212340,7 +209510,6 @@ IN THIS SECTION:
 
 ### The following are properties for NlpSummarizationResult :
 
-2831
 
 ## Apex Reference Guide IndustriesDigitalLending Namespace
 
@@ -212398,7 +209567,6 @@ Contains methods to create, update, and retrieve information about invocable act
 Action.Error Class
 Contains methods to retrieve errors returned by invocable actions.
 
-2832
 
 ### Apex Reference Guide Action Class
 
@@ -212457,7 +209625,6 @@ Gets the namespace of a custom invocable action.
 getType()
 Gets the type of an invocable action.
 
-2833
 
 Apex Reference Guide Action Class
 
@@ -212523,7 +209690,6 @@ Type: Object
 
 Creates a wrapper for a custom invocable action in a specified package namespace.
 
-2834
 
 Apex Reference Guide Action Class
 
@@ -212603,7 +209769,6 @@ Type: Invocable.Action
 
 Creates a wrapper for a standard invocable action.
 
-2835
 
 Apex Reference Guide Action Class
 
@@ -212673,7 +209838,6 @@ Signature
 
 ```
 
-2836
 
 Apex Reference Guide Action Class
 
@@ -212746,7 +209910,6 @@ Type: Object
 
 Value to set the invocable action parameter to.
 
-2837
 
 ### Apex Reference Guide Action.Error Class
 
@@ -212804,7 +209967,6 @@ Gets the error code returned by an invocable action.
 getMessage()
 Gets the error message returned by an invocable action.
 
-2838
 
 ### Apex Reference Guide Action.Result Class
 
@@ -212865,7 +210027,6 @@ IN THIS SECTION:
 
 Action.Result Methods
 
-2839
 
 Apex Reference Guide Action.Result Class
 
@@ -212930,7 +210091,6 @@ Type: Invocable.Action on page 2833
 
 Gets a list of errors that were returned by an invocable action.
 
-2840
 
 Apex Reference Guide Action.Result Class
 
@@ -212994,7 +210154,6 @@ Type: Boolean
 
 This method returns `true` if the invocable action ran successfully.
 
-2841
 
 ## Apex Reference Guide InvoiceWriteOff Namespace InvoiceWriteOff Namespace The InvoiceWriteOff namespace provides classes to create credit memos with the total charge amount on the invoice as the
 
@@ -213051,7 +210210,6 @@ Example
 
 ```
 
-2842
 
 Apex Reference Guide AppAnalytics Class
 
@@ -213120,7 +210278,6 @@ Signature
 
 ```
 
-2843
 
 ## Apex Reference Guide KbManagement Namespace
 
@@ -213186,7 +210343,6 @@ Use the methods in the `KbManagement.PublishingService` class to manage the life
 
 Use the methods in the `KbManagement.PublishingService` class to manage the lifecycle of an article and its translations.
 
-2844
 
 Apex Reference Guide PublishingService Class
 
@@ -213249,7 +210405,6 @@ Deletes an archived article.
 deleteArchivedArticleVersion(articleId, versionNumber)
 Deletes a specific archived version of a published article.
 
-2845
 
 Apex Reference Guide PublishingService Class
 
@@ -213317,7 +210472,6 @@ Return Value
 
 Type: Void
 
-2846
 
 Apex Reference Guide PublishingService Class
 
@@ -213406,7 +210560,6 @@ Example
 
 Assigns a review task related to a draft translation.
 
-2847
 
 Apex Reference Guide PublishingService Class
 
@@ -213495,7 +210648,6 @@ Return Value
 
 Type: Void
 
-2848
 
 Apex Reference Guide PublishingService Class
 
@@ -213572,7 +210724,6 @@ Example
 
 ```
 
-2849
 
 Apex Reference Guide PublishingService Class
 
@@ -213652,7 +210803,6 @@ Example
 
 Deletes a draft article.
 
-2850
 
 Apex Reference Guide PublishingService Class
 
@@ -213727,7 +210877,6 @@ Signature
 
 ```
 
-2851
 
 Apex Reference Guide PublishingService Class
 
@@ -213805,7 +210954,6 @@ Signature
 
 ```
 
-2852
 
 Apex Reference Guide PublishingService Class
 
@@ -213889,7 +211037,6 @@ Example
 Creates a draft article from an existing online article based on the specified archived version of the article and returns the article version
 ID.
 
-2853
 
 Apex Reference Guide PublishingService Class
 
@@ -213971,7 +211118,6 @@ Example
 
 Sets a draft translation that is ready for publication back to “in progress” status.
 
-2854
 
 Apex Reference Guide PublishingService Class
 
@@ -214060,7 +211206,6 @@ Example
 
 ```
 
-2855
 
 ## Apex Reference Guide LxScheduler Namespace
 
@@ -214116,7 +211261,6 @@ Contains information about a service resource.
 ServiceResourceSchedule Class
 Use this class to pass results from your implemented Apex class to the ServiceResourceScheduleHandler interface methods.
 
-2856
 
 ### Apex Reference Guide GetAppointmentCandidatesInput Class
 
@@ -214184,7 +211328,6 @@ This example shows how to get a list of available appointment candidates based o
 
 ```
 
-2857
 
 Apex Reference Guide GetAppointmentCandidatesInput Class
 
@@ -214278,7 +211421,6 @@ Important: If you're using shifts, you must specify the `workTypeGroupId` or `wo
 
 ```
 
-2858
 
 ### Apex Reference Guide GetAppointmentCandidatesInputBuilder Class
 
@@ -214356,7 +211498,6 @@ IN THIS SECTION:
 
 ### The following are methods for GetAppointmentCandidatesInputBuilder .
 
-2859
 
 Apex Reference Guide GetAppointmentCandidatesInputBuilder Class
 
@@ -214420,7 +211561,6 @@ Return Value
 
 Type: lxscheduler.GetAppointmentCandidatesInput
 
-2860
 
 Apex Reference Guide GetAppointmentCandidatesInputBuilder Class
 
@@ -214495,7 +211635,6 @@ Parameters
 
 Type: Double
 
-2861
 
 Apex Reference Guide GetAppointmentCandidatesInputBuilder Class
 
@@ -214563,7 +211702,6 @@ The latest time that a time slot can end (inclusive).
 
 Note: If end time is not specified, it defaults to 31 days.
 
-2862
 
 Apex Reference Guide GetAppointmentCandidatesInputBuilder Class
 
@@ -214631,7 +211769,6 @@ Signature
 
 ```
 
-2863
 
 Apex Reference Guide GetAppointmentCandidatesInputBuilder Class
 
@@ -214706,7 +211843,6 @@ Return Value
 
 Type: LxScheduler.GetAppointmentCandidatesInputBuilder
 
-2864
 
 Apex Reference Guide GetAppointmentCandidatesInputBuilder Class
 
@@ -214780,7 +211916,6 @@ Signature
 
 ```
 
-2865
 
 ### Apex Reference Guide GetAppointmentSlotsInput Class
 
@@ -214851,7 +211986,6 @@ The following factors affect how time slots are calculated and returned.
 
 **•** The resource must be marked as a required resource on the assigned resource object.
 
-2866
 
 Apex Reference Guide GetAppointmentSlotsInput Class
 
@@ -214928,7 +212062,6 @@ lxscheduler.GetAppointmentSlotsInputBuilder()
 
 ```
 
-2867
 
 Apex Reference Guide GetAppointmentSlotsInput Class
 
@@ -215033,7 +212166,6 @@ This example shows a sample response of a list of available time slots:
 
 ```
 
-2868
 
 ### Apex Reference Guide GetAppointmentSlotsInputBuilder Class
 
@@ -215094,7 +212226,6 @@ Sets the resource IDs.
 setSchedulingPolicyId(schedulingPolicyId)
 Sets the ID of the `AppointmentSchedulingPolicy` object.
 
-2869
 
 Apex Reference Guide GetAppointmentSlotsInputBuilder Class
 
@@ -215163,7 +212294,6 @@ Signature
 
 ```
 
-2870
 
 Apex Reference Guide GetAppointmentSlotsInputBuilder Class
 
@@ -215232,7 +212362,6 @@ Parameters
 
 Type: String
 
-2871
 
 Apex Reference Guide GetAppointmentSlotsInputBuilder Class
 
@@ -215300,7 +212429,6 @@ selected. This field is available in API version 56.0 and later.
 
 Note: This field supports only one engagement channel type ID.
 
-2872
 
 Apex Reference Guide GetAppointmentSlotsInputBuilder Class
 
@@ -215371,7 +212499,6 @@ Type: List<String>
 
 List of resource IDs that must be available during the time slot. This is a required field.
 
-2873
 
 Apex Reference Guide GetAppointmentSlotsInputBuilder Class
 
@@ -215440,7 +212567,6 @@ Type: lxscheduler.GetAppointmentSlotsInputBuilder
 
 Sets the IDs of service territories.
 
-2874
 
 Apex Reference Guide GetAppointmentSlotsInputBuilder Class
 
@@ -215520,7 +212646,6 @@ Type: String
 
 The ID of the work type group containing the work types that are being performed.
 
-2875
 
 ### Apex Reference Guide SchedulerResources Class
 
@@ -215578,7 +212703,6 @@ Returns a list of available appointment time slots for a resource based on given
 setAppointmentCandidatesMock(expectedResponse)
 Sets a mock object when running tests for the `getAppointmentCandidates` method.
 
-2876
 
 Apex Reference Guide SchedulerResources Class
 
@@ -215644,7 +212768,6 @@ Returns a list of available appointment time slots for a resource based on given
 The appointment time slots are determined based on your Salesforce Scheduler data model configurations. Here are some prerequisites
 that you can consider while setting up data.
 
-2877
 
 Apex Reference Guide SchedulerResources Class
 
@@ -215718,7 +212841,6 @@ Type: lxscheduler.GetAppointmentSlotsInput
 This method takes input as an instance of the `lxscheduler.GetAppointmentSlotsInput` class. Build the instance of
 the input class using the `lxscheduler.GetAppointmentSlotsInputBuilder` class.
 
-2878
 
 Apex Reference Guide SchedulerResources Class
 
@@ -215808,7 +212930,6 @@ This example shows a sample implementation of the `GetAppointmentCandidates` cla
 
 ```
 
-2879
 
 Apex Reference Guide SchedulerResources Class
 
@@ -215904,7 +213025,6 @@ Parameters
 
 Type: String
 
-2880
 
 ### Apex Reference Guide SkillRequirement Class
 
@@ -215958,7 +213078,6 @@ Sets the level of the skill that is required to complete a particular task for a
 
 Returns an instance of the `lxscheduler.SkillRequirement` object.
 
-2881
 
 ### Apex Reference Guide WorkType Class
 
@@ -216026,7 +213145,6 @@ Type: lxscheduler.SkillRequirementBuilder
 
 Contains information about the type of work to be performed.
 
-2882
 
 ### Apex Reference Guide WorkTypeBuilder Class
 
@@ -216083,7 +213201,6 @@ Sets the end of the timeframe.
 setTimeFrameStartInMinutes(timeFrameStartInMinutes)
 Sets the beginning of the timeframe.
 
-2883
 
 Apex Reference Guide WorkTypeBuilder Class
 
@@ -216156,7 +213273,6 @@ Return Value
 
 Type: lxscheduler.WorkTypeBuilder
 
-2884
 
 Apex Reference Guide WorkTypeBuilder Class
 
@@ -216232,7 +213348,6 @@ Type: String
 The overlap of all operating hours from the account, work type, service territory, and service territory member are considered while
 determining time slots.
 
-2885
 
 Apex Reference Guide WorkTypeBuilder Class
 
@@ -216306,7 +213421,6 @@ Signature
 
 ```
 
-2886
 
 ### Apex Reference Guide ServiceResourceScheduleHandler Interface
 
@@ -216375,7 +213489,6 @@ getUnavailableTimeslots(var1)
 Passes the required information to get unavailable time slots from an external system. The implementation of this method returns
 the `lxscheduler.ServiceResourceSchedule` class.
 
-2887
 
 Apex Reference Guide ServiceResourceScheduleHandler Interface
 
@@ -216462,7 +213575,6 @@ This is an example implementation of the `lxscheduler.ServiceResourceScheduleHan
 
 ```
 
-2888
 
 Apex Reference Guide ServiceResourceScheduleHandler Interface
 
@@ -216560,7 +213672,6 @@ This example shows how to set a sample test mock using the `lxscheduler.ServiceR
 
 ```
 
-2889
 
 ### Apex Reference Guide ServiceAppointmentRequestInfo Class
 
@@ -216629,7 +213740,6 @@ Signature
 
 ```
 
-2890
 
 Apex Reference Guide ServiceAppointmentRequestInfo Class
 
@@ -216720,7 +213830,6 @@ Returns a unique identifier for a request.
 getEndDate()
 Returns the end date and time for which unavailable time slots are requested.
 
-2891
 
 Apex Reference Guide ServiceAppointmentRequestInfo Class
 
@@ -216787,7 +213896,6 @@ Return Value
 
 Type: Datetime
 
-2892
 
 Apex Reference Guide ServiceAppointmentRequestInfo Class
 
@@ -216855,7 +213963,6 @@ Type: Datetime
 
 Returns the work type group ID if the API request contains one.
 
-2893
 
 ### Apex Reference Guide ServiceResourceInfo Class
 
@@ -216918,7 +214025,6 @@ Creates a new instance of the `lxscheduler.ServiceResourceInfo` class using the 
 
 Creates a new instance of the `lxscheduler.ServiceResourceInfo` class using the specified service resource details.
 
-2894
 
 Apex Reference Guide ServiceResourceInfo Class
 
@@ -217003,7 +214109,6 @@ Returns the user ID of the service resource.
 getUserName()
 Returns the user name of the service resource.
 
-2895
 
 Apex Reference Guide ServiceResourceInfo Class
 
@@ -217071,7 +214176,6 @@ Type: List<String>
 
 Returns the user ID of the service resource.
 
-2896
 
 ### Apex Reference Guide ServiceResourceSchedule Class
 
@@ -217138,7 +214242,6 @@ Signature
 
 ```
 
-2897
 
 ### Apex Reference Guide UnavailableTimeslot Class
 
@@ -217203,7 +214306,6 @@ Type: Set<lxscheduler.UnavailableTimeslot>
 Use this class to pass the unavailable time slots to the lxscheduler.ServiceResourceSchedule class. Timezones that differ across operating
 hours are handled and results are always returned in UTC.
 
-2898
 
 Apex Reference Guide UnavailableTimeslot Class
 
@@ -217260,7 +214362,6 @@ End time of an unavailable time slot.
 timeMin
 Start time of an unavailable time slot.
 
-2899
 
 ## Apex Reference Guide Messaging Namespace
 
@@ -217320,7 +214421,6 @@ Contains field data from the authentication result response for inbound emails.
 InboundEmail.BinaryAttachment Class
 An InboundEmail object stores binary attachments in an InboundEmail.BinaryAttachment object.
 
-2900
 
 ### Apex Reference Guide AttachmentRetrievalOption Enum
 
@@ -217382,7 +214482,6 @@ Enum Values
 
 The following are the values of the `Messaging.AttachmentRetrievalOption` enum.
 
-2901
 
 ### Apex Reference Guide Email Class (Base Email Methods)
 
@@ -217440,7 +214539,6 @@ Optional. The default value is `true`, meaning the email is saved as an activity
 on `targetObjectId` or `targetObjectIds` . If HTML email tracking is enabled for the organization, you will be able to track
 open rates.
 
-2902
 
 Apex Reference Guide Email Class (Base Email Methods)
 
@@ -217505,7 +214603,6 @@ Return Value
 
 Type: Void
 
-2903
 
 Apex Reference Guide Email Class (Base Email Methods)
 
@@ -217574,7 +214671,6 @@ Signature
 
 ```
 
-2904
 
 ### Apex Reference Guide EmailFileAttachment Class
 
@@ -217638,7 +214734,6 @@ IN THIS SECTION:
 EmailFileAttachment()
 Creates a new instance of the `Messaging.EmailFileAttachment` class.
 
-2905
 
 Apex Reference Guide EmailFileAttachment Class
 
@@ -217706,7 +214801,6 @@ Property Value
 
 Type: String
 
-2906
 
 ### Apex Reference Guide InboundEmail Class
 
@@ -217769,7 +214863,6 @@ InboundEmail Constructors
 
 InboundEmail Properties
 
-2907
 
 Apex Reference Guide InboundEmail Class
 
@@ -217827,7 +214920,6 @@ parent email or emails' message-IDs.
 messageId
 The Message-ID—the incoming email's unique identifier.
 
-2908
 
 Apex Reference Guide InboundEmail Class
 
@@ -217891,7 +214983,6 @@ Usage
 
 Examples of binary attachments include image, audio, application, and video files.
 
-2909
 
 Apex Reference Guide InboundEmail Class
 
@@ -217959,7 +215050,6 @@ Usage
 
 The list of the RFC 2822 headers includes:
 
-2910
 
 Apex Reference Guide InboundEmail Class
 
@@ -218028,7 +215118,6 @@ Signature
 
 ```
 
-2911
 
 Apex Reference Guide InboundEmail Class
 
@@ -218093,7 +215182,6 @@ Signature
 
 ```
 
-2912
 
 Apex Reference Guide InboundEmail Class
 
@@ -218159,7 +215247,6 @@ Property Value
 
 Type: String[]
 
-2913
 
 ### Apex Reference Guide InboundEmail.AuthenticationResult Class InboundEmail.AuthenticationResult Class
 
@@ -218214,7 +215301,6 @@ processing a message, possible values include `pass` or `fail` . Otherwise, the 
 
 Additional information in authentication result headers. Examples include: `name: smtp.mailfrom` and `value: example.com` .
 
-2914
 
 ### Apex Reference Guide InboundEmail.AuthenticationResultField Class
 
@@ -218278,7 +215364,6 @@ InboundEmail.AuthenticationResultField Properties
 
 ### The following are constructors for InboundEmail.AuthenticationResultField .
 
-2915
 
 Apex Reference Guide InboundEmail.AuthenticationResultField Class
 
@@ -218343,7 +215428,6 @@ Property Value
 
 Type: String
 
-2916
 
 ### Apex Reference Guide InboundEmail.BinaryAttachment Class InboundEmail.BinaryAttachment Class
 
@@ -218396,7 +215480,6 @@ headers
 Any header values associated with the attachment. Examples of header names include `Content-Type`,
 `Content-Transfer-Encoding`, and `Content-ID` .
 
-2917
 
 Apex Reference Guide InboundEmail.BinaryAttachment Class
 
@@ -218465,7 +215548,6 @@ Property Value
 
 Type: String
 
-2918
 
 ### Apex Reference Guide InboundEmail.TextAttachment Class InboundEmail.TextAttachment Class
 
@@ -218519,7 +215601,6 @@ The body of the attachment.
 bodyIsTruncated
 Indicates whether the attachment body text is truncated ( `true` ) or not ( `false` .)
 
-2919
 
 Apex Reference Guide InboundEmail.TextAttachment Class
 
@@ -218587,7 +215668,6 @@ Type: String
 
 The name of the attached file.
 
-2920
 
 ### Apex Reference Guide InboundEmailResult Class
 
@@ -218651,7 +215731,6 @@ message
 A message that Salesforce returns in the body of a reply email. This field can be populated with text irrespective of the value returned
 by the `Success` field.
 
-2921
 
 ### Apex Reference Guide InboundEnvelope Class
 
@@ -218712,7 +215791,6 @@ IN THIS SECTION:
 fromAddress
 The name that appears in the `From` field of the envelope, if any.
 
-2922
 
 ### Apex Reference Guide MassEmailMessage Class
 
@@ -218773,7 +215851,6 @@ SEE ALSO:
 
 Email Class (Base Email Methods)
 
-2923
 
 Apex Reference Guide MassEmailMessage Class
 
@@ -218835,7 +215912,6 @@ Return Value
 
 Type: Void
 
-2924
 
 Apex Reference Guide MassEmailMessage Class
 
@@ -218905,7 +215981,6 @@ Return Value
 
 Type: Void
 
-2925
 
 ### Apex Reference Guide InboundEmail.Header Class
 
@@ -218972,7 +216047,6 @@ Signature
 
 ```
 
-2926
 
 ### Apex Reference Guide PushNotification Class
 
@@ -219051,7 +216125,6 @@ user who last modified the case.
 
 ```
 
-2927
 
 Apex Reference Guide PushNotification Class
 
@@ -219120,7 +216193,6 @@ Signature
 
 ```
 
-2928
 
 Apex Reference Guide PushNotification Class
 
@@ -219193,7 +216265,6 @@ Signature
 
 ```
 
-2929
 
 ### Apex Reference Guide PushNotificationPayload Class
 
@@ -219258,7 +216329,6 @@ IN THIS SECTION:
 
 PushNotificationPayload Methods
 
-2930
 
 Apex Reference Guide PushNotificationPayload Class
 
@@ -219331,7 +216401,6 @@ Usage
 
 To generate a valid payload, you must provide a value for at least one of the following parameters: `alert`, `sound`, `badgeCount` .
 
-2931
 
 Apex Reference Guide PushNotificationPayload Class
 
@@ -219427,7 +216496,6 @@ Type: Map<String, Object>
 Map of key-value pairs that contains any additional data used to provide context for the notification. For example, it can contain IDs
 of the records that caused the notification to be sent. The mobile client app can use these IDs to display these records.
 
-2932
 
 ### Apex Reference Guide CustomNotification Class
 
@@ -219482,7 +216550,6 @@ to find a `targetID` in the notification payload. If you can’t update a client
 However, if your Apex code runs in a user context—for example, by executing anonymous Apex in the Developer Console—the Send
 Custom Notifications user permission is checked, and `send()` fails if you don’t have the required permission.
 
-2933
 
 Apex Reference Guide CustomNotification Class
 
@@ -219563,7 +216630,6 @@ _Actions Developer Guide_ [: Custom Notification Actions](https://developer.sale
 
 _[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_customnotificationtype.htm)_ : CustomNotificationType
 
-2934
 
 Apex Reference Guide CustomNotification Class
 
@@ -219647,7 +216713,6 @@ Type: String
 
 The Record ID for the target record of the notification.
 
-2935
 
 Apex Reference Guide CustomNotification Class
 
@@ -219714,7 +216779,6 @@ Parameters
 
 Type: Set<String>
 
-2936
 
 Apex Reference Guide CustomNotification Class
 
@@ -219780,7 +216844,6 @@ See the Custom Notification Example.
 
 Sets the title of the custom notification.
 
-2937
 
 Apex Reference Guide CustomNotification Class
 
@@ -219853,7 +216916,6 @@ Signature
 
 ```
 
-2938
 
 Apex Reference Guide CustomNotification Class
 
@@ -219927,7 +216989,6 @@ Parameters
 
 Type: String
 
-2939
 
 ### Apex Reference Guide RenderEmailTemplateBodyResult Class
 
@@ -219984,7 +217045,6 @@ Return Value
 
 Type: List<Messaging.RenderEmailTemplateError>
 
-2940
 
 ### Apex Reference Guide RenderEmailTemplateError Class
 
@@ -220043,7 +217103,6 @@ Returns a message describing the error.
 getOffset()
 Returns the offset within the supplied body text where the error was discovered. If the offset cannot be determined, -1 is returned.
 
-2941
 
 Apex Reference Guide RenderEmailTemplateError Class
 
@@ -220111,7 +217170,6 @@ Return Value
 
 Type: System.StatusCode
 
-2942
 
 ### Apex Reference Guide SendEmailError Class SendEmailError Class
 
@@ -220171,7 +217229,6 @@ Return Value
 
 Type: String
 
-2943
 
 ### Apex Reference Guide SendEmailResult Class
 
@@ -220232,7 +217289,6 @@ Indicates whether the email was successfully submitted for delivery ( `true` ) o
 not mean the intended recipients received the email, as there could have been a problem with the email address or it could have
 bounced or been blocked by a spam blocker.
 
-2944
 
 ### Apex Reference Guide SingleEmailMessage Class
 
@@ -220291,7 +217347,6 @@ IN THIS SECTION:
 
 SingleEmailMessage Constructors
 
-2945
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220347,7 +217402,6 @@ setDocumentAttachments(documentIds)
 **(Deprecated. Use** `setEntityAttachments()` **instead.)** Optional. A list containing the ID of each document object you
 want to attach to the email.
 
-2946
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220405,7 +217459,6 @@ Optional. A list of email addresses or object IDs of the contacts, leads, and us
 this field is 4,000 bytes. The maximum total of `toAddresses`, `ccAddresses`, and `bccAddresses` per email is 150. All
 recipients in these three fields count against the limit for email sent using Apex or the API.
 
-2947
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220467,7 +217520,6 @@ Signature
 
 ```
 
-2948
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220535,7 +217587,6 @@ Signature
 
 ```
 
-2949
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220606,7 +217657,6 @@ Parameters
 
 Type: ID[]
 
-2950
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220673,7 +217723,6 @@ You can attach multiple files as long as the total size of all attachments does 
 Optional. The HTML version of the email, specified by the sender. The value is encoded according to the specification associated with
 ##### the organization. Specify a value for setTemplateId, setHtmlBody, or setPlainTextBody . Or, you can define both setHtmlBody and setPlainTextBody .
 
-2951
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220748,7 +217797,6 @@ Return Value
 
 Type: void
 
-2952
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220824,7 +217872,6 @@ Signature
 
 ```
 
-2953
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220906,7 +217953,6 @@ Signature
 
 ```
 
-2954
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -220981,7 +218027,6 @@ Signature
 
 ```
 
-2955
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -221054,7 +218099,6 @@ All emails must have a recipient value in at least one of the following fields:
 
 **•** `ccAddresses`
 
-2956
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -221122,7 +218166,6 @@ All emails must have a recipient value in at least one of the following fields:
 
 **•** `targetObjectId`
 
-2957
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -221192,7 +218235,6 @@ Signature
 
 ```
 
-2958
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -221266,7 +218308,6 @@ for the unsubscribe action.
 
 ```
 
-2959
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -221341,7 +218382,6 @@ and includes an unsubscribe URL. The email message is added to a list and sent u
 
 ```
 
-2960
 
 Apex Reference Guide SingleEmailMessage Class
 
@@ -221420,7 +218460,6 @@ The value must be one of the following types:
 
 **•** Custom
 
-2961
 
 ## Apex Reference Guide Metadata Namespace Metadata Namespace The Metadata namespace provides classes and methods for working with custom metadata in Salesforce
 
@@ -221479,7 +218518,6 @@ Represents the results of a metadata deployment.
 DeployStatus Enum
 The result status of a deployment.
 
-2962
 
 Apex Reference Guide Metadata Namespace
 
@@ -221542,7 +218580,6 @@ Represents a class to execute metadata operations, such as retrieving or deployi
 PlatformActionList Class
 Represents the list of actions, and their order, that display in the Salesforce mobile action bar for the layout.
 
-2963
 
 Apex Reference Guide Metadata Namespace
 
@@ -221606,7 +218643,6 @@ SummaryLayoutItem Class
 Controls the appearance of an individual field and its column and row position within the highlights panel grid, when Case Feed is
 enabled. You can have two fields per each grid in a highlights panel.
 
-2964
 
 ### Apex Reference Guide AnalyticsCloudComponentLayoutItem Class
 
@@ -221663,7 +218699,6 @@ showSharing
 If set to true, and the dashboard is shareable the dashboard shows the Share icon. If set to false, the dashboard doesn’t show the
 Share icon.
 
-2965
 
 Apex Reference Guide AnalyticsCloudComponentLayoutItem Class
 
@@ -221729,7 +218764,6 @@ Signature
 
 ```
 
-2966
 
 Apex Reference Guide AnalyticsCloudComponentLayoutItem Class
 
@@ -221794,7 +218828,6 @@ Signature
 
 ```
 
-2967
 
 Apex Reference Guide AnalyticsCloudComponentLayoutItem Class
 
@@ -221855,7 +218888,6 @@ Return Value
 
 Type: Object
 
-2968
 
 ### Apex Reference Guide ConsoleComponent Class ConsoleComponent Class
 
@@ -221915,7 +218947,6 @@ Type: Integer
 
 The location of the custom console component on the page layout. Valid values are right, left, top, and bottom.
 
-2969
 
 Apex Reference Guide ConsoleComponent Class
 
@@ -221979,7 +219010,6 @@ Signature
 
 ```
 
-2970
 
 ### Apex Reference Guide Container Class
 
@@ -222038,7 +219068,6 @@ The width of the component’s container. The `unit` property determines the uni
 
 The height of the component’s container. The `unit` property determines the unit of measurement, in pixels or percent.
 
-2971
 
 Apex Reference Guide Container Class
 
@@ -222109,7 +219138,6 @@ Signature
 
 ```
 
-2972
 
 Apex Reference Guide Container Class
 
@@ -222168,7 +219196,6 @@ Return Value
 
 Type: Object
 
-2973
 
 ### Apex Reference Guide CustomConsoleComponents Class CustomConsoleComponents Class
 
@@ -222229,7 +219256,6 @@ Signature
 
 ```
 
-2974
 
 ### Apex Reference Guide CustomMetadata Class
 
@@ -222290,7 +219316,6 @@ Example
 
 ```
 
-2975
 
 Apex Reference Guide CustomMetadata Class
 
@@ -222363,7 +219388,6 @@ Signature
 
 ```
 
-2976
 
 Apex Reference Guide CustomMetadata Class
 
@@ -222424,7 +219448,6 @@ Return Value
 
 Type: Object
 
-2977
 
 ### Apex Reference Guide CustomMetadataValue Class CustomMetadataValue Class
 
@@ -222489,7 +219512,6 @@ The field name for the custom metadata value.
 value
 The field value for the custom metadata value.
 
-2978
 
 Apex Reference Guide CustomMetadataValue Class
 
@@ -222557,7 +219579,6 @@ Makes a duplicate copy of the `Metadata.CustomMetadataValue` .
 
 Makes a duplicate copy of the `Metadata.CustomMetadataValue` .
 
-2979
 
 ### Apex Reference Guide DeployCallback Interface
 
@@ -222618,7 +219639,6 @@ Signature
 
 ```
 
-2980
 
 ### Apex Reference Guide DeployCallbackContext Class
 
@@ -222695,7 +219715,6 @@ Usage
 After an asynchronous metadata deployment finishes, Salesforce provides an instance of `Metadata.DeployCallbackContext`
 in an asynchronous call to your implementation of `handleResult()` in your `Metadata.DeployCallback` class.
 
-2981
 
 Apex Reference Guide DeployCallbackContext Class
 
@@ -222760,7 +219779,6 @@ Return Value
 
 Type: Id
 
-2982
 
 ### Apex Reference Guide DeployContainer Class DeployContainer Class
 
@@ -222820,7 +219838,6 @@ Removes a metadata component from the container using the component’s full nam
 
 Add a custom metadata component to the container.
 
-2983
 
 Apex Reference Guide DeployContainer Class
 
@@ -222888,7 +219905,6 @@ Signature
 
 ```
 
-2984
 
 ### Apex Reference Guide DeployDetails Class
 
@@ -222954,7 +219970,6 @@ DeployDetails Properties
 
 DeployDetails Methods
 
-2985
 
 Apex Reference Guide DeployDetails Class
 
@@ -223012,7 +220027,6 @@ Makes a duplicate copy of the `Metadata.DeployDetails` .
 
 Makes a duplicate copy of the `Metadata.DeployDetails` .
 
-2986
 
 ### Apex Reference Guide DeployMessage Class
 
@@ -223071,7 +220085,6 @@ If true, the component was created as a result of the deployment. If false, the 
 createdDate
 The date and time when the component was created as a result of the deployment.
 
-2987
 
 Apex Reference Guide DeployMessage Class
 
@@ -223133,7 +220146,6 @@ Property Value
 
 Type: Integer
 
-2988
 
 Apex Reference Guide DeployMessage Class
 
@@ -223198,7 +220210,6 @@ Property Value
 
 Type: Boolean
 
-2989
 
 Apex Reference Guide DeployMessage Class
 
@@ -223263,7 +220274,6 @@ Property Value
 
 Type: Integer
 
-2990
 
 Apex Reference Guide DeployMessage Class
 
@@ -223324,7 +220334,6 @@ Makes a duplicate copy of the `Metadata.DeployMessage` .
 
 Makes a duplicate copy of the `Metadata.DeployMessage` .
 
-2991
 
 ### Apex Reference Guide DeployProblemType Enum
 
@@ -223389,7 +220398,6 @@ Example
 
 ```
 
-2992
 
 Apex Reference Guide DeployResult Class
 
@@ -223451,7 +220459,6 @@ ID of the deployment job.
 ignoreWarnings
 Specifies whether a deployment continues, even if the deployment generates warnings.
 
-2993
 
 Apex Reference Guide DeployResult Class
 
@@ -223517,7 +220524,6 @@ Property Value
 
 Type: String
 
-2994
 
 Apex Reference Guide DeployResult Class
 
@@ -223582,7 +220588,6 @@ Property Value
 
 Type: String
 
-2995
 
 Apex Reference Guide DeployResult Class
 
@@ -223646,7 +220651,6 @@ Property Value
 
 Type: String
 
-2996
 
 Apex Reference Guide DeployResult Class
 
@@ -223713,7 +220717,6 @@ Property Value
 
 Type: Datetime
 
-2997
 
 Apex Reference Guide DeployResult Class
 
@@ -223779,7 +220782,6 @@ Property Value
 
 Type: Integer
 
-2998
 
 Apex Reference Guide DeployResult Class
 
@@ -223847,7 +220849,6 @@ Type: Metadata.DeployStatus
 
 Indicates whether the deployment was successful (true) or not (false).
 
-2999
 
 ### Apex Reference Guide DeployStatus Enum
 
@@ -223908,7 +220909,6 @@ The following are the values of the `Metadata.DeployStatus` enum.
 `FinalizingDeploy` The deployment has started, and is in the finalizing state. Deployments in the state
 can't be canceled.
 
-3000
 
 ### Apex Reference Guide FeedItemTypeEnum Enum
 
@@ -223969,7 +220969,6 @@ Activities (tasks and events).
 
 `DashboardComponentAlert` Not used.
 
-3001
 
 ### Apex Reference Guide FeedLayout Class
 
@@ -224027,7 +221026,6 @@ FeedLayout Properties
 
 FeedLayout Methods
 
-3002
 
 Apex Reference Guide FeedLayout Class
 
@@ -224088,7 +221086,6 @@ Type: Boolean
 Specifies whether the feed-based page layout uses a compact feed (true) or not (false). If set to true, feed items on the page are collapsed
 by default, and the feed view has an updated design.
 
-3003
 
 Apex Reference Guide FeedLayout Class
 
@@ -224159,7 +221156,6 @@ Signature
 
 ```
 
-3004
 
 Apex Reference Guide FeedLayout Class
 
@@ -224227,7 +221223,6 @@ Property Value
 
 Type: Boolean
 
-3005
 
 ### Apex Reference Guide FeedLayoutComponent Class
 
@@ -224282,7 +221277,6 @@ IN THIS SECTION:
 componentType
 Represents a component in the feed view of a feed-based page layout. The type of component is required.
 
-3006
 
 Apex Reference Guide FeedLayoutComponent Class
 
@@ -224346,7 +221340,6 @@ IN THIS SECTION:
 clone()
 Makes a duplicate copy of the `Metadata.FeedLayoutComponent` .
 
-3007
 
 ### Apex Reference Guide FeedLayoutComponentType Enum
 
@@ -224411,7 +221404,6 @@ only on Case layouts.
 Represents a feed filter option in the feed view of a feed-based page layout. A filter can have only `standardFilter` or
 `feedItemType` set.
 
-3008
 
 Apex Reference Guide FeedLayoutFilter Class
 
@@ -224473,7 +221465,6 @@ Signature
 
 ```
 
-3009
 
 ### Apex Reference Guide FeedLayoutFilterPosition Enum
 
@@ -224533,7 +221524,6 @@ The following are the values of the `Metadata.FeedLayoutFilterPosition` enum.
 
 `LeftFixed` As a fixed list in the left column.
 
-3010
 
 ### Apex Reference Guide FeedLayoutFilterType Enum
 
@@ -224587,7 +221577,6 @@ The custom buttons for this layout.
 customConsoleComponents
 Represents custom console components (Visualforce pages, lookup fields, or related lists) on a page layout.
 
-3011
 
 Apex Reference Guide Layout Class
 
@@ -224651,7 +221640,6 @@ is controlled by the `runAssignmentRulesDefault` property.
 showSolutionSection
 Only allowed on CaseClose layout. If set, the built-in solution information section shows up on the page.
 
-3012
 
 Apex Reference Guide Layout Class
 
@@ -224717,7 +221705,6 @@ Signature
 
 ```
 
-3013
 
 Apex Reference Guide Layout Class
 
@@ -224785,7 +221772,6 @@ Property Value
 
 Type: Metadata.MiniLayout
 
-3014
 
 Apex Reference Guide Layout Class
 
@@ -224853,7 +221839,6 @@ Type: Metadata.RelatedContent
 
 The related lists for the layout, listed in the order they appear in the user interface.
 
-3015
 
 Apex Reference Guide Layout Class
 
@@ -224919,7 +221904,6 @@ Type: Boolean
 
 If set, the highlights panel displays on pages in the Salesforce console.
 
-3016
 
 Apex Reference Guide Layout Class
 
@@ -224984,7 +221968,6 @@ Type: Boolean
 
 Only allowed on CaseClose layout. If set, the built-in solution information section shows up on the page.
 
-3017
 
 Apex Reference Guide Layout Class
 
@@ -225048,7 +222031,6 @@ Signature
 
 ```
 
-3018
 
 ### Apex Reference Guide LayoutColumn Class
 
@@ -225108,7 +222090,6 @@ Type: List<Metadata.LayoutItem>
 
 This field is reserved for Salesforce.
 
-3019
 
 ### Apex Reference Guide LayoutHeader Enum
 
@@ -225168,7 +222149,6 @@ Namespace
 
 Metadata
 
-3020
 
 Apex Reference Guide LayoutItem Class
 
@@ -225226,7 +222206,6 @@ For s-control and pages only, whether to show the label.
 showScrollbars
 For s-control and pages only, whether to show scrollbars.
 
-3021
 
 Apex Reference Guide LayoutItem Class
 
@@ -225294,7 +222273,6 @@ Property Value
 
 Type: String
 
-3022
 
 Apex Reference Guide LayoutItem Class
 
@@ -225362,7 +222340,6 @@ Type: Integer
 
 Reference to a Visualforce page.
 
-3023
 
 Apex Reference Guide LayoutItem Class
 
@@ -225433,7 +222410,6 @@ Signature
 
 ```
 
-3024
 
 ### Apex Reference Guide LayoutSection Class
 
@@ -225493,7 +222469,6 @@ Usage
 Use this class when accessing `Metadata.Layout` metadata components. For more information, see “LayoutSection” in the _[Metadata](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_intro.htm)_
 _[API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_intro.htm)_ .
 
-3025
 
 Apex Reference Guide LayoutSection Class
 
@@ -225557,7 +222532,6 @@ Property Value
 
 Type: Boolean
 
-3026
 
 Apex Reference Guide LayoutSection Class
 
@@ -225623,7 +222597,6 @@ Type: Metadata.LayoutSectionStyle
 
 #### LayoutSection Methods The following are methods for LayoutSection .
 
-3027
 
 ### Apex Reference Guide LayoutSectionStyle Enum
 
@@ -225680,7 +222653,6 @@ You can’t create instances of this abstract class. Instead, create an instance
 from `Metadata.Metadata`, such as `Metadata.CustomMetadata` [. For more information, see Metadata in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/metadata.htm) _Metadata API_
 _Developer Guide_ .
 
-3028
 
 Apex Reference Guide Metadata Class
 
@@ -225734,7 +222706,6 @@ Signature
 
 ```
 
-3029
 
 ### Apex Reference Guide MetadataType Enum
 
@@ -225785,7 +222756,6 @@ Makes a duplicate copy of the `Metadata.MetadataValue` .
 
 Makes a duplicate copy of the `Metadata.MetadataValue` .
 
-3030
 
 ### Apex Reference Guide MiniLayout Class
 
@@ -225846,7 +222816,6 @@ Signature
 
 ```
 
-3031
 
 ### Apex Reference Guide Operations Class
 
@@ -225906,7 +222875,6 @@ Usage
 Use the `Metadata.Operations` class to execute metadata operations. For more information on use cases and restrictions of
 metadata operations in Apex, see Metadata.
 
-3032
 
 Apex Reference Guide Operations Class
 
@@ -225999,7 +222967,6 @@ class that implements the `Metadata.DeployCallback` interface, which is then use
 
 ```
 
-3033
 
 Apex Reference Guide Operations Class
 
@@ -226074,7 +223041,6 @@ IN THIS SECTION:
 
 #### Operations Methods Operations Methods The following are methods for Operations .
 
-3034
 
 Apex Reference Guide Operations Class
 
@@ -226147,7 +223113,6 @@ Type: Id
 
 ID of deployment request.
 
-3035
 
 ### Apex Reference Guide PlatformActionList Class
 
@@ -226214,7 +223179,6 @@ IN THIS SECTION:
 actionListContext
 The context of the action list.
 
-3036
 
 Apex Reference Guide PlatformActionList Class
 
@@ -226273,7 +223237,6 @@ Type: String
 
 #### PlatformActionList Methods The following are methods for PlatformActionList .
 
-3037
 
 ### Apex Reference Guide PlatformActionListContextEnum Enum
 
@@ -226338,7 +223301,6 @@ The following are the values of the `Metadata.PlatformActionListContextEnum` enu
 
 `ObjectHomeChart` Object home chart context.
 
-3038
 
 ### Apex Reference Guide PlatformActionListItem Class
 
@@ -226396,7 +223358,6 @@ The subtype of the action.
 
 The API name for the action in the list.
 
-3039
 
 Apex Reference Guide PlatformActionListItem Class
 
@@ -226458,7 +223419,6 @@ Type: String
 
 #### PlatformActionListItem Methods The following are methods for PlatformActionListItem .
 
-3040
 
 ### Apex Reference Guide PlatformActionTypeEnum Enum
 
@@ -226515,7 +223475,6 @@ Namespace
 
 Metadata
 
-3041
 
 Apex Reference Guide PrimaryTabComponents Class
 
@@ -226571,7 +223530,6 @@ Type: List<Metadata.Container>
 
 #### PrimaryTabComponents Methods The following are methods for PrimaryTabComponents .
 
-3042
 
 ### Apex Reference Guide QuickActionList Class
 
@@ -226628,7 +223586,6 @@ IN THIS SECTION:
 
 ### List of QuickActionList objects.
 
-3043
 
 ### Apex Reference Guide QuickActionListItem Class
 
@@ -226685,7 +223642,6 @@ QuickActionListItem Properties
 
 QuickActionListItem Methods
 
-3044
 
 ### Apex Reference Guide RelatedContent Class
 
@@ -226743,7 +223699,6 @@ Namespace
 
 Metadata
 
-3045
 
 Apex Reference Guide RelatedContent Class
 
@@ -226796,7 +223751,6 @@ Signature
 
 ```
 
-3046
 
 ### Apex Reference Guide RelatedContentItem Class
 
@@ -226846,7 +223800,6 @@ Type: Metadata.LayoutItem
 
 ### The following are methods for RelatedContentItem .
 
-3047
 
 ### Apex Reference Guide RelatedList Class
 
@@ -226903,7 +223856,6 @@ showing.
 name
 The name of the component as it appears to console users.
 
-3048
 
 ### Apex Reference Guide RelatedListItem Class
 
@@ -226965,7 +223917,6 @@ Type: Object
 
 Represents an item in the related list in a page layout.
 
-3049
 
 Apex Reference Guide RelatedListItem Class
 
@@ -227025,7 +223976,6 @@ Property Value
 
 Type: List<String>
 
-3050
 
 Apex Reference Guide RelatedListItem Class
 
@@ -227091,7 +224041,6 @@ Property Value
 
 Type: String
 
-3051
 
 ### Apex Reference Guide ReportChartComponentLayoutItem Class
 
@@ -227150,7 +224099,6 @@ Type: Object
 
 Represents the settings for a report chart on a standard or custom page.
 
-3052
 
 Apex Reference Guide ReportChartComponentLayoutItem Class
 
@@ -227207,7 +224155,6 @@ Size of the displayed chart. The default is medium.
 Indicates whether to use cached data when displaying the chart. When the attribute is set to true, data is cached for 24 hours. When
 the attribute is set to false, the report is run every time the page is refreshed.
 
-3053
 
 Apex Reference Guide ReportChartComponentLayoutItem Class
 
@@ -227274,7 +224221,6 @@ Type: Boolean
 
 If true, filters the report chart to return data that’s relevant to the page.
 
-3054
 
 Apex Reference Guide ReportChartComponentLayoutItem Class
 
@@ -227336,7 +224282,6 @@ Type: Metadata.ReportChartComponentSize
 
 #### ReportChartComponentLayoutItem Methods The following are methods for ReportChartComponentLayoutItem .
 
-3055
 
 ### Apex Reference Guide ReportChartComponentSize Enum
 
@@ -227395,7 +224340,6 @@ IN THIS SECTION:
 
 SidebarComponent Properties
 
-3056
 
 Apex Reference Guide SidebarComponent Class
 
@@ -227454,7 +224398,6 @@ Signature
 
 ```
 
-3057
 
 Apex Reference Guide SidebarComponent Class
 
@@ -227522,7 +224465,6 @@ Property Value
 
 Type: Boolean
 
-3058
 
 Apex Reference Guide SidebarComponent Class
 
@@ -227590,7 +224532,6 @@ Type: List<Metadata.RelatedList>
 
 The unit of measurement (pixels or percent) for the height and width of the component in the container.
 
-3059
 
 Apex Reference Guide SidebarComponent Class
 
@@ -227654,7 +224595,6 @@ Signature
 
 ```
 
-3060
 
 ### Apex Reference Guide SortOrder Enum
 
@@ -227706,7 +224646,6 @@ Namespace
 
 Metadata
 
-3061
 
 Apex Reference Guide SubtabComponents Class
 
@@ -227762,7 +224701,6 @@ Type: List<Metadata.Container>
 
 #### SubtabComponents Methods The following are methods for SubtabComponents .
 
-3062
 
 ### Apex Reference Guide SummaryLayoutStyleEnum Enum
 
@@ -227820,7 +224758,6 @@ The following are the values of the `Metadata.SummaryLayoutStyleEnum` enum.
 Controls the appearance of the highlights panel, which summarizes key fields in a grid at the top of a page layout, when Case Feed is
 enabled.
 
-3063
 
 Apex Reference Guide SummaryLayout Class
 
@@ -227881,7 +224818,6 @@ Property Value
 
 Type: String
 
-3064
 
 Apex Reference Guide SummaryLayout Class
 
@@ -227946,7 +224882,6 @@ Property Value
 
 Type: List<Metadata.SummaryLayoutItem>
 
-3065
 
 ### Apex Reference Guide SummaryLayoutItem Class
 
@@ -228006,7 +224941,6 @@ IN THIS SECTION:
 
 SummaryLayoutItem Properties
 
-3066
 
 Apex Reference Guide SummaryLayoutItem Class
 
@@ -228068,7 +225002,6 @@ Type: String
 
 The item's column position in the highlights panel grid. Must be within the range of `sizeX` .
 
-3067
 
 Apex Reference Guide SummaryLayoutItem Class
 
@@ -228132,7 +225065,6 @@ Signature
 
 ```
 
-3068
 
 ### Apex Reference Guide UiBehavior Enum
 
@@ -228186,7 +225118,6 @@ Contains methods to retrieve information on buttons and options selected in a pr
 SubmitParameters Class
 Retrieve record ID information to use with your submit-form handler.
 
-3069
 
 ### Apex Reference Guide LoadFormData Class
 
@@ -228262,7 +225193,6 @@ Example
 
 ```
 
-3070
 
 Apex Reference Guide LoadFormData Class
 
@@ -228317,7 +225247,6 @@ Add an option for a checkbox, picklist, or radio button field in a preference fo
 addOption(fieldId, option)
 Add a defined, selectable option for a checkbox, picklist, or radio button field in a preference form.
 
-3071
 
 Apex Reference Guide LoadFormData Class
 
@@ -228390,7 +225319,6 @@ Type: void
 
 Add a defined, selectable option for a checkbox, picklist, or radio button field in a preference form.
 
-3072
 
 Apex Reference Guide LoadFormData Class
 
@@ -228468,7 +225396,6 @@ Signature
 
 ```
 
-3073
 
 Apex Reference Guide LoadFormData Class
 
@@ -228549,7 +225476,6 @@ Type: String
 
 Identifies a field in the preference form.
 
-3074
 
 Apex Reference Guide LoadFormData Class
 
@@ -228628,7 +225554,6 @@ Type: String
 
 The hint text in the text input field.
 
-3075
 
 ### Apex Reference Guide LoadParameters Class
 
@@ -228692,7 +225617,6 @@ IN THIS SECTION:
 
 ### The following are methods for LoadParameters .
 
-3076
 
 ### Apex Reference Guide PreferenceCenterApexHandler Interface
 
@@ -228753,7 +225677,6 @@ Signature
 
 ```
 
-3077
 
 ### Apex Reference Guide SubmitFormData Class
 
@@ -228834,7 +225757,6 @@ Type: void
 
 Contains methods to retrieve information on buttons and options selected in a preference form.
 
-3078
 
 Apex Reference Guide SubmitFormData Class
 
@@ -228907,7 +225829,6 @@ getOldSelectedValue(fieldId)
 Returns the value that was set for the specified field when the preference form was previously edited by the user. This method is
 used for field types such as picklist or radio buttons.
 
-3079
 
 Apex Reference Guide SubmitFormData Class
 
@@ -228975,7 +225896,6 @@ Type: String
 
 Returns a list of the string values that were set on a checkbox field when the preference form was previously edited by the user.
 
-3080
 
 Apex Reference Guide SubmitFormData Class
 
@@ -229051,7 +225971,6 @@ Return Value
 
 Type: String
 
-3081
 
 ### Apex Reference Guide SubmitParameters Class
 
@@ -229122,7 +226041,6 @@ Example
 
 ```
 
-3082
 
 ### Apex Reference Guide TokenType Enum
 
@@ -229173,7 +226091,6 @@ Namespace
 
 Pref_center
 
-3083
 
 Apex Reference Guide TokenUtility Class
 
@@ -229247,7 +226164,6 @@ Returns the generated tokens in the form of a map. This method uses the default 
 
 Returns the authentication token for the specified token value using the given token type.
 
-3084
 
 Apex Reference Guide TokenUtility Class
 
@@ -229321,7 +226237,6 @@ Signature
 
 ```
 
-3085
 
 ### Apex Reference Guide ValidationResult Class
 
@@ -229384,7 +226299,6 @@ Pref_center
 
 ## Process Namespace The Process namespace provides an interface and classes for passing data between your organization and a flow. The following are the interfaces and classes in the Process namespace.
 
-3086
 
 ### Apex Reference Guide Plugin Interface
 
@@ -229445,7 +226359,6 @@ Plugin Example Implementation
 
 ### The following are instance methods for Plugin .
 
-3087
 
 Apex Reference Guide Plugin Interface
 
@@ -229522,7 +226435,6 @@ Type: Process.PluginResult
 
 ```
 
-3088
 
 ### Apex Reference Guide PluginDescribeResult Class
 
@@ -229604,7 +226516,6 @@ Namespace
 
 Process
 
-3089
 
 Apex Reference Guide PluginDescribeResult Class
 
@@ -229658,7 +226569,6 @@ outputParameters
 The output parameters passed by the `Process.PluginResult` class from the class that implements the `Process.Plugin`
 interface to the flow.
 
-3090
 
 Apex Reference Guide PluginDescribeResult Class
 
@@ -229721,7 +226631,6 @@ Size limit: 40 characters.
 The output parameters passed by the `Process.PluginResult` class from the class that implements the `Process.Plugin`
 interface to the flow.
 
-3091
 
 ### Apex Reference Guide PluginDescribeResult.InputParameter Class
 
@@ -229786,7 +226695,6 @@ parameter type, and required option.
 Creates a new instance of the `Process.PluginDescribeResult.InputParameter` class using the specified name,
 description, parameter type, and required option.
 
-3092
 
 Apex Reference Guide PluginDescribeResult.InputParameter Class
 
@@ -229877,7 +226785,6 @@ Set to `true` for required and `false` otherwise.
 
 ##### The following are properties for PluginDescribeResult.InputParameter .
 
-3093
 
 Apex Reference Guide PluginDescribeResult.InputParameter Class
 
@@ -229947,7 +226854,6 @@ Signature
 
 ```
 
-3094
 
 ### Apex Reference Guide PluginDescribeResult.OutputParameter Class
 
@@ -230005,7 +226911,6 @@ PluginDescribeResult.OutputParameter(name, description, parameterType)
 Creates a new instance of the `Process.PluginDescribeResult.OutputParameter` class using the specified name,
 description, and parameter type.
 
-3095
 
 Apex Reference Guide PluginDescribeResult.OutputParameter Class
 
@@ -230086,7 +226991,6 @@ Type: Process.PluginDescribeResult.ParameterType
 
 The data type of the input parameter.
 
-3096
 
 Apex Reference Guide PluginDescribeResult.OutputParameter Class
 
@@ -230148,7 +227052,6 @@ Size limit: 40 characters.
 
 The data type of the output parameter.
 
-3097
 
 ### Apex Reference Guide PluginDescribeResult.ParameterType Enum
 
@@ -230211,7 +227114,6 @@ implement the interface on a class, the class can be referenced only from flows.
 **•** The annotation supports all data types and bulk operations. After you implement the annotation on a class, the class can be
 referenced from flows, processes, and the Custom Invocable Actions REST API endpoint.
 
-3098
 
 ### Apex Reference Guide PluginResult Class
 
@@ -230269,7 +227171,6 @@ IN THIS SECTION:
 outputParameters
 Output parameters returned from the class that implements the interface to the flow.
 
-3099
 
 ## Apex Reference Guide QuickAction Namespace
 
@@ -230327,7 +227228,6 @@ and Send Email actions in the case feed. You can use this interface to specify t
 and email body for the Email action in the case feed. You can use the interface to pre-populate these fields based on the context
 where the action is displayed, such as the case origin (for example, country) and subject.
 
-3100
 
 ### Apex Reference Guide DescribeAvailableQuickActionResult Class
 
@@ -230387,7 +227287,6 @@ Signature
 
 ```
 
-3101
 
 ### Apex Reference Guide DescribeLayoutComponent Class
 
@@ -230448,7 +227347,6 @@ Namespace
 
 QuickAction
 
-3102
 
 Apex Reference Guide DescribeLayoutComponent Class
 
@@ -230512,7 +227410,6 @@ Signature
 
 ```
 
-3103
 
 ### Apex Reference Guide DescribeLayoutItem Class
 
@@ -230571,7 +227468,6 @@ Indicates whether this item can be edited for update( `true` ) or not ( `false` 
 isPlaceholder()
 Indicates whether this item is a placeholder ( `true` ) or not ( `false` ). If `true`, then this item is blank.
 
-3104
 
 Apex Reference Guide DescribeLayoutItem Class
 
@@ -230638,7 +227534,6 @@ Return Value
 
 Type: Boolean
 
-3105
 
 ### Apex Reference Guide DescribeLayoutRow Class
 
@@ -230696,7 +227591,6 @@ objects). An empty `QuickAction.DescribeLayoutItem` can be returned when a given
 
 ### The following are methods for DescribeLayoutRow . All are instance methods.
 
-3106
 
 ### Apex Reference Guide DescribeLayoutSection Class
 
@@ -230759,7 +227653,6 @@ QuickAction
 
 The current view of the record details section: collapsed ( `true` ) or expanded ( `false` ).
 
-3107
 
 Apex Reference Guide DescribeLayoutSection Class
 
@@ -230821,7 +227714,6 @@ Indicates whether the `QuickAction.DescribeLayoutSection` is a collapsible secti
 isUseHeading()
 Indicates whether to use the `heading` ( `true` ) or not ( `false` ).
 
-3108
 
 Apex Reference Guide DescribeLayoutSection Class
 
@@ -230889,7 +227781,6 @@ Type: Id
 
 Returns the ID of the layout upon which this `DescribeLayoutSection` resides.
 
-3109
 
 Apex Reference Guide DescribeLayoutSection Class
 
@@ -230954,7 +227845,6 @@ Type: Boolean
 
 Indicates whether to use the `heading` ( `true` ) or not ( `false` ).
 
-3110
 
 ### Apex Reference Guide DescribeQuickActionDefaultValue Class
 
@@ -231021,7 +227911,6 @@ Signature
 
 ```
 
-3111
 
 ### Apex Reference Guide DescribeQuickActionParameter Class
 
@@ -231080,7 +227969,6 @@ Property Value
 
 Type: String
 
-3112
 
 Apex Reference Guide DescribeQuickActionParameter Class
 
@@ -231143,7 +228031,6 @@ Return Value
 
 Type: String
 
-3113
 
 ### Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231205,7 +228092,6 @@ IN THIS SECTION:
 canvasapplicationname
 The name of the Canvas application invoked by the custom action.
 
-3114
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231268,7 +228154,6 @@ showquickactionlcheader
 Indicates whether the Lightning component quick action header and footer are shown. If `false`, then both the header containing
 the quick action title and the footer containing the Save and Cancel buttons aren’t displayed.
 
-3115
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231329,7 +228214,6 @@ Type: List<Schema.DescribeColorResult> on page 3323
 
 The object used for the action. Was `getsourceSobjectType()` in API version 29.0 and earlier.
 
-3116
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231395,7 +228279,6 @@ Valid values are _`null`_ or _`recordId`_ .
 
 The height in pixels of the action pane.
 
-3117
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231463,7 +228346,6 @@ Property Value
 
 Type: String
 
-3118
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231527,7 +228409,6 @@ Property Value
 
 Type: String
 
-3119
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231594,7 +228475,6 @@ Property Value
 
 Type: String
 
-3120
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231661,7 +228541,6 @@ Property Value
 
 Type: String
 
-3121
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231727,7 +228606,6 @@ Type: Integer
 
 #### DescribeQuickActionResult Methods The following are methods for DescribeQuickActionResult . All are instance methods.
 
-3122
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231790,7 +228668,6 @@ getLightningWebComponentBundleName()
 If the custom action invokes a Lightning web component, returns the name of the Lightning web component bundle to which the
 component belongs.
 
-3123
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231853,7 +228730,6 @@ Type: String
 
 Returns the name of the Canvas application, if used.
 
-3124
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231924,7 +228800,6 @@ Signature
 
 ```
 
-3125
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -231992,7 +228867,6 @@ Return Value
 
 Type: String
 
-3126
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -232060,7 +228934,6 @@ Type: String
 
 If the custom action invokes an Aura component, returns the name of the Aura component bundle to which the component belongs.
 
-3127
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -232127,7 +229000,6 @@ Type: String
 If the custom action invokes a Lightning web component, returns the fully qualified name of the Lightning web component invoked
 by the custom action.
 
-3128
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -232193,7 +229065,6 @@ If `false`, then both the header containing the quick action title and the foote
 
 Returns an indication of whether the Visualforce quick action header and footer should be shown.
 
-3129
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -232259,7 +229130,6 @@ Type: String
 
 Returns the action’s target object type.
 
-3130
 
 Apex Reference Guide DescribeQuickActionResult Class
 
@@ -232330,7 +229200,6 @@ Signature
 
 ```
 
-3131
 
 ### Apex Reference Guide QuickActionDefaults Class
 
@@ -232385,7 +229254,6 @@ Signature
 
 ```
 
-3132
 
 ### Apex Reference Guide QuickActionDefaultsHandler Interface
 
@@ -232449,7 +229317,6 @@ Namespace
 
 ### QuickAction
 
-3133
 
 Apex Reference Guide QuickActionDefaultsHandler Interface
 
@@ -232512,7 +229379,6 @@ Signature
 
 ```
 
-3134
 
 Apex Reference Guide QuickActionDefaultsHandler Interface
 
@@ -232596,7 +229462,6 @@ associated with the call.
 
 ```
 
-3135
 
 Apex Reference Guide QuickActionDefaultsHandler Interface
 
@@ -232701,7 +229566,6 @@ Apex Reference Guide QuickActionDefaultsHandler Interface
 
 ```
 
-3136
 
 Apex Reference Guide QuickActionDefaultsHandler Interface
 
@@ -232795,7 +229659,6 @@ _`Response`_ email template is inserted into the body of the email.
 
 ```
 
-3137
 
 ### Apex Reference Guide QuickActionRequest Class
 
@@ -232872,7 +229735,6 @@ The constructor of this class takes no arguments:
 
 ```
 
-3138
 
 Apex Reference Guide QuickActionRequest Class
 
@@ -232932,7 +229794,6 @@ Signature
 
 ```
 
-3139
 
 Apex Reference Guide QuickActionRequest Class
 
@@ -232998,7 +229859,6 @@ Signature
 
 ```
 
-3140
 
 Apex Reference Guide QuickActionRequest Class
 
@@ -233067,7 +229927,6 @@ Signature
 
 ```
 
-3141
 
 ### Apex Reference Guide QuickActionResult Class
 
@@ -233126,7 +229985,6 @@ Signature
 
 ```
 
-3142
 
 Apex Reference Guide QuickActionResult Class
 
@@ -233194,7 +230052,6 @@ Return Value
 
 Type: Boolean
 
-3143
 
 ### Apex Reference Guide SendEmailQuickActionDefaults Class SendEmailQuickActionDefaults Class
 
@@ -233248,7 +230105,6 @@ Signature
 
 ```
 
-3144
 
 Apex Reference Guide SendEmailQuickActionDefaults Class
 
@@ -233319,7 +230175,6 @@ Return Value
 
 Type: void
 
-3145
 
 ## Apex Reference Guide Reports Namespace
 
@@ -233382,7 +230237,6 @@ Contains methods and constructors used to work with information about a cross fi
 CsfGroupType Enum
 The group level at which the custom summary format aggregate is displayed in a report.
 
-3146
 
 Apex Reference Guide Reports Namespace
 
@@ -233445,7 +230299,6 @@ Contains data cells for a detail row of a report.
 ReportDivisionInfo Class
 Contains information about the divisions that can be used to filter a report.
 
-3147
 
 Apex Reference Guide Reports Namespace
 
@@ -233507,7 +230360,6 @@ plus filter information for those fields.
 SortColumn Class
 Contains information about the sort column used in the report.
 
-3148
 
 ### Apex Reference Guide AggregateColumn Class
 
@@ -233563,7 +230415,6 @@ Reports
 
 ### The following are methods for AggregateColumn . All are instance methods.
 
-3149
 
 Apex Reference Guide AggregateColumn Class
 
@@ -233632,7 +230483,6 @@ Return Value
 
 Type: Reports.ColumnDataType
 
-3150
 
 ### Apex Reference Guide BucketField Class
 
@@ -233692,7 +230542,6 @@ Creates an instance of the `Reports.BucketField` class using the specified param
 BucketField()
 Creates an instance of the `Reports.BucketField` class. You can then set values by using the class’s `set` methods.
 
-3151
 
 Apex Reference Guide BucketField Class
 
@@ -233785,7 +230634,6 @@ Signature
 
 ```
 
-3152
 
 Apex Reference Guide BucketField Class
 
@@ -233846,7 +230694,6 @@ Returns a string.
 
 Returns the bucket type.
 
-3153
 
 Apex Reference Guide BucketField Class
 
@@ -233917,7 +230764,6 @@ Signature
 
 ```
 
-3154
 
 Apex Reference Guide BucketField Class
 
@@ -233984,7 +230830,6 @@ Type: void
 
 Sets the `BucketType` of the bucket.
 
-3155
 
 Apex Reference Guide BucketField Class
 
@@ -234059,7 +230904,6 @@ Type: void
 
 Specifies whether null values in the bucket are converted to zero ( `true` ) or not ( `false` ).
 
-3156
 
 Apex Reference Guide BucketField Class
 
@@ -234132,7 +230976,6 @@ Type: void
 
 Specifies which type of values are included in the bucket.
 
-3157
 
 ### Apex Reference Guide BucketFieldValue Class
 
@@ -234196,7 +231039,6 @@ Creates an instance of the `Reports.BucketFieldValue` class using the specified 
 BucketFieldValue()
 Creates an instance of the `Reports.BucketFieldValue` class. You can then set values by using the class’s `set` methods.
 
-3158
 
 Apex Reference Guide BucketFieldValue Class
 
@@ -234272,7 +231114,6 @@ Set the user-facing name of the bucket category.
 setRangeUpperBound(rangeUpperBound)
 Sets the greatest limit of a range under which values are included in this bucket category (in buckets of type `NUMBER` ).
 
-3159
 
 Apex Reference Guide BucketFieldValue Class
 
@@ -234340,7 +231181,6 @@ Signature
 
 ```
 
-3160
 
 Apex Reference Guide BucketFieldValue Class
 
@@ -234413,7 +231253,6 @@ Signature
 
 ```
 
-3161
 
 ### Apex Reference Guide BucketType Enum
 
@@ -234470,7 +231309,6 @@ specify a value that is not in the list
 
 `INT_DATA` Integer values
 
-3162
 
 ### Apex Reference Guide ColumnSortOrder Enum
 
@@ -234524,7 +231362,6 @@ The following are the values of the `Reports.ColumnSortOrder` enum.
 
 Contains methods and constructors used to work with information about a cross filter.
 
-3163
 
 Apex Reference Guide CrossFilter Class
 
@@ -234607,7 +231444,6 @@ The name of the object that the `primaryEntityField` is evaluated against—the 
 
 Type: String
 
-3164
 
 Apex Reference Guide CrossFilter Class
 
@@ -234670,7 +231506,6 @@ Returns a string.
 Returns information about how to filter the `relatedEntity` . Describes the subset of the `relatedEntity` which the primary
 entity is evaluated against.
 
-3165
 
 Apex Reference Guide CrossFilter Class
 
@@ -234741,7 +231576,6 @@ Signature
 
 ```
 
-3166
 
 Apex Reference Guide CrossFilter Class
 
@@ -234814,7 +231648,6 @@ Parameters
 
 Type: String
 
-3167
 
 Apex Reference Guide CrossFilter Class
 
@@ -234883,7 +231716,6 @@ Return Value
 
 Type: String
 
-3168
 
 ### Apex Reference Guide CsfGroupType Enum CsfGroupType Enum
 
@@ -234938,7 +231770,6 @@ The following are the values of the `Reports.DateGranularity` enum.
 
 `NONE` No date grouping
 
-3169
 
 ### Apex Reference Guide DetailColumn Class
 
@@ -235002,7 +231833,6 @@ Syntax
 
 ```
 
-3170
 
 ### Apex Reference Guide Dimension Class
 
@@ -235063,7 +231893,6 @@ Type: List<Reports.GroupingValue>
 Contains the individual components of an evaluated condition for a report notification, such as the aggregate name and label, the
 operator, and the value that the aggregate is compared to.
 
-3171
 
 Apex Reference Guide EvaluatedCondition Class
 
@@ -235145,7 +231974,6 @@ The actual value of the aggregate when the report is run.
 
 Type: String
 
-3172
 
 Apex Reference Guide EvaluatedCondition Class
 
@@ -235212,7 +232040,6 @@ Return Value
 
 Type: String
 
-3173
 
 Apex Reference Guide EvaluatedCondition Class
 
@@ -235278,7 +232105,6 @@ Return Value
 
 Type: String
 
-3174
 
 ### Apex Reference Guide EvaluatedConditionOperator Enum
 
@@ -235339,7 +232165,6 @@ The following are the values of the `Reports.EvaluatedConditionOperator` enum.
 
 `NOT_EQUAL` Inequality operator.
 
-3175
 
 ### Apex Reference Guide FilterOperator Class FilterOperator Class
 
@@ -235399,7 +232224,6 @@ Return Value
 
 Type: String
 
-3176
 
 ### Apex Reference Guide FilterValue Class FilterValue Class
 
@@ -235457,7 +232281,6 @@ Return Value
 
 Type: String
 
-3177
 
 ### Apex Reference Guide FormulaType Enum FormulaType Enum
 
@@ -235517,7 +232340,6 @@ Syntax
 
 ```
 
-3178
 
 ### Apex Reference Guide GroupingInfo Class
 
@@ -235580,7 +232402,6 @@ Usage
 
 Contains methods for describing fields that are used for grouping.
 
-3179
 
 Apex Reference Guide GroupingInfo Class
 
@@ -235642,7 +232463,6 @@ Type: Reports.ColumnSortOrder
 
 Returns the date interval that is used for row or column grouping.
 
-3180
 
 ### Apex Reference Guide GroupingValue Class
 
@@ -235705,7 +232525,6 @@ Returns the value of the field that is used as a row or column grouping.
 
 Returns a list of second- or third-level row or column groupings. If there are none, the value is an empty array.
 
-3181
 
 Apex Reference Guide GroupingValue Class
 
@@ -235774,7 +232593,6 @@ The value depends on the field’s data type.
 
 **–** `amount` : Of type currency. A data cell’s value.
 
-3182
 
 ### Apex Reference Guide NotificationAction Interface
 
@@ -235833,7 +232651,6 @@ Executes the custom Apex action specified in the `context` parameter of the cont
 The object contains information about the report instance and the conditions that must be met for a notification to be triggered. The
 method executes whenever the specified conditions are met.
 
-3183
 
 ### Apex Reference Guide NotificationActionContext Class
 
@@ -235907,7 +232724,6 @@ NotificationActionContext Methods
 
 ### The following are constructors for NotificationActionContext .
 
-3184
 
 Apex Reference Guide NotificationActionContext Class
 
@@ -235981,7 +232797,6 @@ Type: Reports.ReportInstance
 
 Returns the threshold information associated with the notification.
 
-3185
 
 ### Apex Reference Guide ReportCsf Class
 
@@ -236053,7 +232868,6 @@ Type: String
 
 The user-facing name of the custom summary formula.
 
-3186
 
 Apex Reference Guide ReportCsf Class
 
@@ -236144,7 +232958,6 @@ Returns the name of a column grouping when the `acrossGroupType` is `CUSTOM` . O
 getAcrossGroupType()
 Returns where to display the aggregate.
 
-3187
 
 Apex Reference Guide ReportCsf Class
 
@@ -236208,7 +233021,6 @@ Sets the user-facing name of the custom summary formula.
 toString()
 Returns a string.
 
-3188
 
 Apex Reference Guide ReportCsf Class
 
@@ -236276,7 +233088,6 @@ Type: String
 
 Returns the name of a row grouping when the `downGroupType` is `CUSTOM` . Otherwise, returns `null` .
 
-3189
 
 Apex Reference Guide ReportCsf Class
 
@@ -236347,7 +233158,6 @@ Signature
 
 ```
 
-3190
 
 Apex Reference Guide ReportCsf Class
 
@@ -236422,7 +233232,6 @@ Parameters
 
 Type: Reports.CsfGroupType
 
-3191
 
 Apex Reference Guide ReportCsf Class
 
@@ -236495,7 +233304,6 @@ Parameters
 
 Type: String
 
-3192
 
 Apex Reference Guide ReportCsf Class
 
@@ -236570,7 +233378,6 @@ Parameters
 
 Type: String
 
-3193
 
 Apex Reference Guide ReportCsf Class
 
@@ -236645,7 +233452,6 @@ Parameters
 
 Type: String
 
-3194
 
 ### Apex Reference Guide ReportCurrency Class
 
@@ -236705,7 +233511,6 @@ Return Value
 
 Type: Decimal
 
-3195
 
 ### Apex Reference Guide ReportDataCell Class
 
@@ -236766,7 +233571,6 @@ Type: String
 
 Returns the value of a specified cell of a detail row of a report.
 
-3196
 
 ### Apex Reference Guide ReportDescribeResult Class
 
@@ -236832,7 +233636,6 @@ Syntax
 
 ```
 
-3197
 
 ### Apex Reference Guide ReportDetailRow Class
 
@@ -236892,7 +233695,6 @@ Type: List<Reports.ReportDataCell>
 
 Contains information about the divisions that can be used to filter a report.
 
-3198
 
 ### Apex Reference Guide ReportExtendedMetadata Class
 
@@ -236950,7 +233752,6 @@ Reports
 Report extended metadata provides additional, detailed metadata about summary and grouping fields, including data type and label
 information.
 
-3199
 
 Apex Reference Guide ReportExtendedMetadata Class
 
@@ -237017,7 +233818,6 @@ Syntax
 
 ```
 
-3200
 
 ### Apex Reference Guide ReportFact Class
 
@@ -237081,7 +233881,6 @@ Syntax
 
 ```
 
-3201
 
 ### Apex Reference Guide ReportFactWithDetails Class
 
@@ -237141,7 +233940,6 @@ Type: List<Reports.SummaryValue>
 
 Returns the unique identifier for a row or column grouping. This identifier can be used to index specific data values within each grouping.
 
-3202
 
 ### Apex Reference Guide ReportFactWithSummaries Class
 
@@ -237201,7 +233999,6 @@ grouping.
 toString()
 Returns a string.
 
-3203
 
 ### Apex Reference Guide ReportFilter Class
 
@@ -237264,7 +234061,6 @@ ReportFilter Constructors
 
 ReportFilter Methods
 
-3204
 
 Apex Reference Guide ReportFilter Class
 
@@ -237342,7 +234138,6 @@ Syntax
 
 ```
 
-3205
 
 Apex Reference Guide ReportFilter Class
 
@@ -237433,7 +234228,6 @@ when using cross filters.
 getFilterType()
 Returns the type of report filter.
 
-3206
 
 Apex Reference Guide ReportFilter Class
 
@@ -237495,7 +234289,6 @@ Return Value
 
 Type: String
 
-3207
 
 Apex Reference Guide ReportFilter Class
 
@@ -237564,7 +234357,6 @@ Parameters
 
 Type: String
 
-3208
 
 Apex Reference Guide ReportFilter Class
 
@@ -237631,7 +234423,6 @@ Syntax
 
 ```
 
-3209
 
 ### Apex Reference Guide ReportFormat Enum
 
@@ -237697,7 +234488,6 @@ Enum Values
 
 The following are the values of the `Reports.ReportFormat` enum.
 
-3210
 
 ### Apex Reference Guide ReportFilterType Enum
 
@@ -237750,7 +234540,6 @@ Returns the ID of the user who created the report instance.
 getReportId()
 Returns the unique ID of the report this instance is based on.
 
-3211
 
 Apex Reference Guide ReportInstance Class
 
@@ -237814,7 +234603,6 @@ Type: Id
 
 Returns the unique ID of the report this instance is based on.
 
-3212
 
 Apex Reference Guide ReportInstance Class
 
@@ -237883,7 +234671,6 @@ Usage
 
 **•** `Running` if the report is being run.
 
-3213
 
 ### Apex Reference Guide ReportManager Class
 
@@ -237942,7 +234729,6 @@ the report metadata in _`reportMetadata`_ .
 runReport(reportId, includeDetails)
 Runs a report immediately with the report ID. Includes details if _`includeDetails`_ is set to `true` .
 
-3214
 
 Apex Reference Guide ReportManager Class
 
@@ -238010,7 +234796,6 @@ Parameters
 
 Type: Id
 
-3215
 
 Apex Reference Guide ReportManager Class
 
@@ -238084,7 +234869,6 @@ Type: Reports.ReportInstance
 
 Runs a report asynchronously with the report ID. Includes details if _`includeDetails`_ is set to `true` .
 
-3216
 
 Apex Reference Guide ReportManager Class
 
@@ -238167,7 +234951,6 @@ Return Value
 
 Type: Reports.ReportInstance
 
-3217
 
 Apex Reference Guide ReportManager Class
 
@@ -238251,7 +235034,6 @@ Syntax
 
 ```
 
-3218
 
 ### Apex Reference Guide ReportMetadata Class
 
@@ -238320,7 +235102,6 @@ IN THIS SECTION:
 getAggregates()
 Returns unique identifiers for summary or custom summary formula fields in the report.
 
-3219
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238383,7 +235164,6 @@ Returns the format of the report.
 getReportType()
 Returns the unique API name and display name for the report type.
 
-3220
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238446,7 +235226,6 @@ Sets row groupings for a report.
 setHasDetailRows(hasDetailRows)
 Specifies whether the report has detail rows.
 
-3221
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238510,7 +235289,6 @@ Return Value
 
 Type: List<String>
 
-3222
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238579,7 +235357,6 @@ Type: String
 
 Returns information about custom summary formulas in a report.
 
-3223
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238647,7 +235424,6 @@ Returns the division specified in the report.
 Note: Reports that use standard filters (such as My Cases or My Team’s Accounts) show records in all divisions. These reports can’t
 be further limited to a specific division.
 
-3224
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238714,7 +235490,6 @@ The identifier is:
 
 Indicates whether the report has detail rows.
 
-3225
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238785,7 +235560,6 @@ Syntax
 
 ```
 
-3226
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238852,7 +235626,6 @@ This value can be:
 
 Returns the unique API name and display name for the report type.
 
-3227
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238923,7 +235696,6 @@ Signature
 
 ```
 
-3228
 
 Apex Reference Guide ReportMetadata Class
 
@@ -238987,7 +235759,6 @@ Signature
 
 ```
 
-3229
 
 Apex Reference Guide ReportMetadata Class
 
@@ -239060,7 +235831,6 @@ Signature
 
 ```
 
-3230
 
 Apex Reference Guide ReportMetadata Class
 
@@ -239134,7 +235904,6 @@ Signature
 
 ```
 
-3231
 
 Apex Reference Guide ReportMetadata Class
 
@@ -239203,7 +235972,6 @@ Type: void
 
 Sets column groupings in a report.
 
-3232
 
 Apex Reference Guide ReportMetadata Class
 
@@ -239276,7 +236044,6 @@ Type: void
 
 Specifies whether the report is configured to show the total number of records.
 
-3233
 
 Apex Reference Guide ReportMetadata Class
 
@@ -239349,7 +236116,6 @@ Type: void
 
 Sets the report name.
 
-3234
 
 Apex Reference Guide ReportMetadata Class
 
@@ -239422,7 +236188,6 @@ Type: Void
 
 Sets the format of the report.
 
-3235
 
 Apex Reference Guide ReportMetadata Class
 
@@ -239495,7 +236260,6 @@ Type: void
 
 Specifies whether the report shows the grand total.
 
-3236
 
 Apex Reference Guide ReportMetadata Class
 
@@ -239568,7 +236332,6 @@ Type: void
 
 Sets the standard date filter—which includes the start date, end date, date range, and date field API name—for the report.
 
-3237
 
 ### Apex Reference Guide ReportResults Class
 
@@ -239641,7 +236404,6 @@ Type: void
 
 Contains the results of running a report.
 
-3238
 
 Apex Reference Guide ReportResults Class
 
@@ -239699,7 +236461,6 @@ When `false`, indicates that results are returned for the same number of rows as
 
 Note: For reports that contain too many records, use filters to refine results.
 
-3239
 
 Apex Reference Guide ReportResults Class
 
@@ -239764,7 +236525,6 @@ Return Value
 
 Type: Boolean
 
-3240
 
 ### Apex Reference Guide ReportScopeInfo Class
 
@@ -239824,7 +236584,6 @@ IN THIS SECTION:
 getDefaultValue()
 Returns the default scope of the data to display in the report.
 
-3241
 
 ### Apex Reference Guide ReportScopeValue Class
 
@@ -239882,7 +236641,6 @@ IN THIS SECTION:
 getAllowsDivision()
 Returns a boolean value that indicates whether you can segment the report by this scope.
 
-3242
 
 ### Apex Reference Guide ReportType Class
 
@@ -239947,7 +236705,6 @@ Namespace
 
 Reports
 
-3243
 
 ### Apex Reference Guide ReportTypeColumn Class
 
@@ -240005,7 +236762,6 @@ Reports
 
 ### The following are methods for ReportTypeColumn . All are instance methods.
 
-3244
 
 Apex Reference Guide ReportTypeColumn Class
 
@@ -240074,7 +236830,6 @@ Syntax
 
 ```
 
-3245
 
 ### Apex Reference Guide ReportTypeColumnCategory Class
 
@@ -240143,7 +236898,6 @@ Get category information about a report by first getting the report metadata:
 
 ```
 
-3246
 
 Apex Reference Guide ReportTypeColumnCategory Class
 
@@ -240209,7 +236963,6 @@ Return Value
 
 Type: String
 
-3247
 
 ### Apex Reference Guide ReportTypeMetadata Class ReportTypeMetadata Class
 
@@ -240266,7 +237019,6 @@ Type: List<Reports.ReportTypeColumnCategory>
 
 Returns the default division and a list of all possible divisions that can be applied to this type of report.
 
-3248
 
 ### Apex Reference Guide SortColumn Class
 
@@ -240334,7 +237086,6 @@ Type: Map<String,Reports.StandardFilterInfo>
 
 Contains information about the sort column used in the report.
 
-3249
 
 Apex Reference Guide SortColumn Class
 
@@ -240392,7 +237143,6 @@ Return Value
 
 Type: Reports.ColumnSortOrder
 
-3250
 
 ### Apex Reference Guide StandardDateFilter Class
 
@@ -240457,7 +237207,6 @@ IN THIS SECTION:
 
 ### The following are methods for StandardDateFilter .
 
-3251
 
 Apex Reference Guide StandardDateFilter Class
 
@@ -240525,7 +237274,6 @@ Type: String
 
 Returns the end date of the standard date filter.
 
-3252
 
 Apex Reference Guide StandardDateFilter Class
 
@@ -240597,7 +237345,6 @@ Parameters
 
 Type: String
 
-3253
 
 ### Apex Reference Guide StandardDateFilterDuration Class
 
@@ -240664,7 +237411,6 @@ IN THIS SECTION:
 
 StandardDateFilterDuration Methods
 
-3254
 
 Apex Reference Guide StandardDateFilterDuration Class
 
@@ -240731,7 +237477,6 @@ Signature
 
 ```
 
-3255
 
 ### Apex Reference Guide StandardDateFilterDurationGroup Class
 
@@ -240791,7 +237536,6 @@ Signature
 
 ```
 
-3256
 
 ### Apex Reference Guide StandardFilter Class
 
@@ -240855,7 +237599,6 @@ IN THIS SECTION:
 getName()
 Return the API name of the standard filter.
 
-3257
 
 Apex Reference Guide StandardFilter Class
 
@@ -240923,7 +237666,6 @@ Return Value
 
 Type: void
 
-3258
 
 ### Apex Reference Guide StandardFilterInfo Class
 
@@ -240984,7 +237726,6 @@ Signature
 
 ```
 
-3259
 
 ### Apex Reference Guide StandardFilterInfoPicklist Class
 
@@ -241042,7 +237783,6 @@ Returns the type of the standard filter picklist.
 
 Returns the default value for the standard filter picklist.
 
-3260
 
 ### Apex Reference Guide StandardFilterType Enum
 
@@ -241106,7 +237846,6 @@ Type: Reports.StandardFilterType
 
 `Reports.StandardFilterType` enum value.
 
-3261
 
 ### Apex Reference Guide SummaryValue Class
 
@@ -241165,7 +237904,6 @@ Type: String
 
 Returns the numeric value of the summary data for a specified cell.
 
-3262
 
 ### Apex Reference Guide ThresholdInformation Class
 
@@ -241225,7 +237963,6 @@ A list of `Reports.EvaluatedCondition` objects.
 
 ### The following are methods for ThresholdInformation .
 
-3263
 
 ### Apex Reference Guide TopRows Class
 
@@ -241288,7 +238025,6 @@ Signature
 
 ```
 
-3264
 
 Apex Reference Guide TopRows Class
 
@@ -241361,7 +238097,6 @@ Return Value
 
 Type: Reports.ColumnSortOrder
 
-3265
 
 Apex Reference Guide TopRows Class
 
@@ -241432,7 +238167,6 @@ Type: void
 
 Sets the maximum number of rows included in the report.
 
-3266
 
 ### Apex Reference Guide Reports Exceptions
 
@@ -241498,7 +238232,6 @@ columns
 
 `Reports.ReportRunException` Error running report
 
-3267
 
 ## Apex Reference Guide RevSignaling Namespace
 
@@ -241557,7 +238290,6 @@ IN THIS SECTION:
 AbstractTiming Class
 Parent class for other RichMessaging timing classes.
 
-3268
 
 Apex Reference Guide RichMessaging Namespace
 
@@ -241620,7 +238352,6 @@ content payloads in rich content messages.
 TimingIntervalUnit Enum
 Represents an enumerated type that describes the timing interval.
 
-3269
 
 ### Apex Reference Guide AbstractTiming Class
 
@@ -241685,7 +238416,6 @@ Signature
 
 ```
 
-3270
 
 Apex Reference Guide AddressableContact Class
 
@@ -241769,7 +238499,6 @@ The phonetic spelling of the contact’s surname.
 phoneticGivenName
 The phonetic spelling of the contact’s first name.
 
-3271
 
 Apex Reference Guide AddressableContact Class
 
@@ -241836,7 +238565,6 @@ Property Value
 
 Type: String
 
-3272
 
 ### Apex Reference Guide AuthRequestHandler Interface
 
@@ -241897,7 +238625,6 @@ Usage
 
 [When using this interface, the following limits are overridden. See Execution Governors and Limits in the Apex Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_gov_limits.htm)
 
-3273
 
 Apex Reference Guide AuthRequestHandler Interface
 
@@ -241944,7 +238671,6 @@ Return Value
 
 Type: RichMessaging.AuthRequestResult on page 3278
 
-3274
 
 Apex Reference Guide AuthRequestHandler Interface
 
@@ -242035,7 +238761,6 @@ This is an example implementation of the `RichMessaging.AuthRequestHandler` inte
 
 ```
 
-3275
 
 ### Apex Reference Guide AuthRequestResponse Class
 
@@ -242109,7 +238834,6 @@ Type: String
 
 The provider name.
 
-3276
 
 Apex Reference Guide AuthRequestResponse Class
 
@@ -242174,7 +238898,6 @@ Signature
 
 ```
 
-3277
 
 ### Apex Reference Guide AuthRequestResult Class
 
@@ -242247,7 +238970,6 @@ Type: Datetime
 
 The expiration time.
 
-3278
 
 Apex Reference Guide AuthRequestResult Class
 
@@ -242312,7 +239034,6 @@ Property Value
 
 Type: RichMessaging.AuthRequestResultStatus on page 3280
 
-3279
 
 ### Apex Reference Guide AuthRequestResultStatus Enum AuthRequestResultStatus Enum
 
@@ -242366,7 +239087,6 @@ Signature
 
 ```
 
-3280
 
 Apex Reference Guide DeferredTiming Class
 
@@ -242436,7 +239156,6 @@ Property Value
 
 Type: Datetime
 
-3281
 
 ### Apex Reference Guide MessageDefinitionInputParameter Class
 
@@ -242496,7 +239215,6 @@ A name input parameter.
 numberValue
 A number input parameter.
 
-3282
 
 Apex Reference Guide MessageDefinitionInputParameter Class
 
@@ -242560,7 +239278,6 @@ Property Value
 
 Type: Datetime
 
-3283
 
 Apex Reference Guide MessageDefinitionInputParameter Class
 
@@ -242628,7 +239345,6 @@ Type: String
 
 A number input parameter.
 
-3284
 
 Apex Reference Guide MessageDefinitionInputParameter Class
 
@@ -242699,7 +239415,6 @@ Signature
 
 ```
 
-3285
 
 ### Apex Reference Guide PaymentItemStatus Enum
 
@@ -242766,7 +239481,6 @@ Example
 
 ```
 
-3286
 
 Apex Reference Guide PaymentLineItem Class
 
@@ -242840,7 +239554,6 @@ Type: String
 
 The label of the payment line item.
 
-3287
 
 Apex Reference Guide PaymentLineItem Class
 
@@ -242918,7 +239631,6 @@ The automatic reload payment threshold amount of the payment line item.
 automaticReloadPaymentThresholdAmountValue
 The automatic reload payment threshold amount value of the payment line item.
 
-3288
 
 Apex Reference Guide PaymentLineItem Class
 
@@ -242984,7 +239696,6 @@ Signature
 
 ```
 
-3289
 
 Apex Reference Guide PaymentLineItem Class
 
@@ -243052,7 +239763,6 @@ Property Value
 
 Type: String
 
-3290
 
 Apex Reference Guide PaymentLineItem Class
 
@@ -243118,7 +239828,6 @@ Type: RichMessaging.AbstractTiming
 
 #### PaymentLineItem Methods The following are methods for PaymentLineItem .
 
-3291
 
 ### Apex Reference Guide PaymentMethod Class PaymentMethod Class
 
@@ -243181,7 +239890,6 @@ The display name of the payment method.
 
 ### The following are properties for PaymentMethod .
 
-3292
 
 ### Apex Reference Guide PostalAddress Class
 
@@ -243248,7 +239956,6 @@ Type: String
 
 Represents the postal address.
 
-3293
 
 Apex Reference Guide PostalAddress Class
 
@@ -243332,7 +240039,6 @@ Type: String
 
 The sub-administrative area.
 
-3294
 
 Apex Reference Guide PostalAddress Class
 
@@ -243404,7 +240110,6 @@ Property Value
 
 Type: List<String>
 
-3295
 
 Apex Reference Guide PostalAddress Class
 
@@ -243472,7 +240177,6 @@ Type: String
 
 The postal code.
 
-3296
 
 ### Apex Reference Guide ProcessPaymentHandler Interface
 
@@ -243535,7 +240239,6 @@ ProcessPaymentHandler Example Implementation
 
 ### The following are methods for ProcessPaymentHandler .
 
-3297
 
 ### Apex Reference Guide ProcessPaymentRequest Class
 
@@ -243605,7 +240308,6 @@ Namespace
 
 RichMessaging
 
-3298
 
 Apex Reference Guide ProcessPaymentRequest Class
 
@@ -243694,7 +240396,6 @@ The payment method for the payment request.
 
 Type: RichMessaging.ShippingMethod
 
-3299
 
 Apex Reference Guide ProcessPaymentRequest Class
 
@@ -243759,7 +240460,6 @@ Signature
 
 ```
 
-3300
 
 Apex Reference Guide ProcessPaymentRequest Class
 
@@ -243827,7 +240527,6 @@ Property Value
 
 Type: RichMessaging.ShippingMethod
 
-3301
 
 ### Apex Reference Guide ProcessPaymentResult Class
 
@@ -243894,7 +240593,6 @@ Parameters
 
 Type: RichMessaging.ProcessPaymentResultStatus
 
-3302
 
 Apex Reference Guide ProcessPaymentResult Class
 
@@ -243965,7 +240663,6 @@ Signature
 
 ```
 
-3303
 
 ### Apex Reference Guide ProcessPaymentResultStatus Enum
 
@@ -244018,7 +240715,6 @@ Creates a new instance of the `RichMessaging.RecurringTiming` class.
 
 Creates a new instance of the `RichMessaging.RecurringTiming` class.
 
-3304
 
 Apex Reference Guide RecurringTiming Class
 
@@ -244099,7 +240795,6 @@ intervalUnit
 The amount of time—in calendar units, such as day, month, or year—that represents a fraction of the total payment interval.
 Invocable variable.
 
-3305
 
 Apex Reference Guide RecurringTiming Class
 
@@ -244165,7 +240860,6 @@ Type: Integer
 
 The number of interval units that make up the total payment interval. Enabled for Lightning components.
 
-3306
 
 Apex Reference Guide RecurringTiming Class
 
@@ -244231,7 +240925,6 @@ Type: Date
 
 The start date. Enabled for Lightning components.
 
-3307
 
 ### Apex Reference Guide ShippingMethod Class
 
@@ -244304,7 +240997,6 @@ Example
 
 ```
 
-3308
 
 Apex Reference Guide ShippingMethod Class
 
@@ -244382,7 +241074,6 @@ Signature
 
 ```
 
-3309
 
 Apex Reference Guide ShippingMethod Class
 
@@ -244445,7 +241136,6 @@ Signature
 
 ```
 
-3310
 
 Apex Reference Guide ShippingMethod Class
 
@@ -244513,7 +241203,6 @@ Property Value
 
 Type: String
 
-3311
 
 ### Apex Reference Guide TimeSlotOption Class
 
@@ -244577,7 +241266,6 @@ TimeSlotOption Constructors
 
 TimeSlotOption Properties
 
-3312
 
 Apex Reference Guide TimeSlotOption Class
 
@@ -244652,7 +241340,6 @@ Type: Integer
 
 Duration in seconds.
 
-3313
 
 Apex Reference Guide TimeSlotOption Class
 
@@ -244718,7 +241405,6 @@ Property Value
 
 Type: Integer
 
-3314
 
 ### Apex Reference Guide TimingIntervalUnit Enum
 
@@ -244783,7 +241469,6 @@ The following are the values of the `RichMessaging.TimingIntervalUnit` enum.
 
 `Minute` Minute interval.
 
-3315
 
 ### Apex Reference Guide TimingType Enum
 
@@ -244823,7 +241508,6 @@ Namespace
 
 ## Salesforce_Backup Schema Namespace The Schema namespace provides classes and methods for schema metadata information. The following are the classes in the Schema namespace.
 
-3316
 
 Apex Reference Guide Schema Namespace
 
@@ -244886,7 +241570,6 @@ A `Schema.SOAPType` enum value is returned by the field describe result `getSoap
 SObjectDescribeOptions Enum
 A `Schema.SObjectDescribeOptions` enum value is a parameter in the `SObjectType.getDescribe` method.
 
-3317
 
 ### Apex Reference Guide ChildRelationship Class
 
@@ -244946,7 +241629,6 @@ Returns `true` if the parent object can't be deleted because it is referenced by
 
 Returns the token of the child sObject on which there is a foreign key back to the parent sObject.
 
-3318
 
 Apex Reference Guide ChildRelationship Class
 
@@ -245017,7 +241699,6 @@ Signature
 
 ```
 
-3319
 
 ### Apex Reference Guide DataCategory Class
 
@@ -245079,7 +241760,6 @@ Signature
 
 ```
 
-3320
 
 ### Apex Reference Guide DataCategoryGroupSobjectTypePair Class
 
@@ -245140,7 +241820,6 @@ DataCategoryGroupSobjectTypePair Methods
 
 ### The following are constructors for DataCategoryGroupSobjectTypePair .
 
-3321
 
 Apex Reference Guide DataCategoryGroupSobjectTypePair Class
 
@@ -245207,7 +241886,6 @@ Signature
 
 ```
 
-3322
 
 ### Apex Reference Guide DescribeColorResult Class
 
@@ -245272,7 +241950,6 @@ Namespace
 
 Schema
 
-3323
 
 Apex Reference Guide DescribeColorResult Class
 
@@ -245347,7 +242024,6 @@ Returns the color theme.
 
 Returns the Web RGB color code, such as `00FF00` .
 
-3324
 
 Apex Reference Guide DescribeDataCategoryGroupResult Class
 
@@ -245413,7 +242089,6 @@ Usage
 The `describeDataCategoryGroups` method returns a `Schema.DescribeDataCategoryGroupResult` object
 containing the list of the category groups associated with the specified object.
 
-3325
 
 Apex Reference Guide DescribeDataCategoryGroupResult Class
 
@@ -245477,7 +242152,6 @@ Type: Integer
 
 Returns the description of the data category group.
 
-3326
 
 Apex Reference Guide DescribeDataCategoryGroupStructureResult Class
 
@@ -245545,7 +242219,6 @@ Namespace
 
 Schema
 
-3327
 
 Apex Reference Guide DescribeDataCategoryGroupStructureResult Class
 
@@ -245612,7 +242285,6 @@ getTopCategories()
 Returns a `Schema.DataCategory` object, that contains the top categories visible depending on the user's data category group
 visibility settings.
 
-3328
 
 Apex Reference Guide DescribeDataCategoryGroupStructureResult Class
 
@@ -245676,7 +242348,6 @@ Return Value
 
 Type: String
 
-3329
 
 ### Apex Reference Guide DescribeFieldResult Class
 
@@ -245737,7 +242408,6 @@ For variable-length fields (including binary fields), returns the maximum size o
 getCalculatedFormula()
 Returns the formula specified for this field.
 
-3330
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -245799,7 +242469,6 @@ Returns one of the SoapType enum values, depending on the type of field.
 getSObjectField()
 Returns the token for this field.
 
-3331
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -245863,7 +242532,6 @@ Returns `true` if the field has been formatted for HTML and should be encoded fo
 of a field that returns `true` for this method is a hyperlink custom formula field. Another example is a custom formula field that has
 an `IMAGE` text function.
 
-3332
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -245926,7 +242594,6 @@ Type: Integer
 
 Returns the formula specified for this field.
 
-3333
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -245997,7 +242664,6 @@ Signature
 
 ```
 
-3334
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246061,7 +242727,6 @@ Return Value
 
 Type: Integer
 
-3335
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246126,7 +242791,6 @@ Return Value
 
 Type: Integer
 
-3336
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246189,7 +242853,6 @@ Return Value
 
 Type: String
 
-3337
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246251,7 +242914,6 @@ Type: Schema.SOAPType
 
 Returns the token for this field.
 
-3338
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246322,7 +242984,6 @@ Return Value
 
 Type: Boolean
 
-3339
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246387,7 +243048,6 @@ Type: Boolean
 
 Returns `true` if the child object is deleted when the parent object is deleted, `false` otherwise.
 
-3340
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246458,7 +243118,6 @@ Signature
 
 ```
 
-3341
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246522,7 +243181,6 @@ Type: Boolean
 
 Returns `true` if the field is used as an external ID, `false` otherwise.
 
-3342
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246589,7 +243247,6 @@ Returns `true` if the field has been formatted for HTML and should be encoded fo
 of a field that returns `true` for this method is a hyperlink custom formula field. Another example is a custom formula field that has an
 `IMAGE` text function.
 
-3343
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246653,7 +243310,6 @@ Signature
 
 ```
 
-3344
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246718,7 +243374,6 @@ Signature
 
 ```
 
-3345
 
 Apex Reference Guide DescribeFieldResult Class
 
@@ -246784,7 +243439,6 @@ be reparented to different parent records; `false` otherwise.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-3346
 
 ### Apex Reference Guide DescribeIconResult Class
 
@@ -246858,7 +243512,6 @@ This sample shows how to get the icon information in the Sales app for the first
 
 ```
 
-3347
 
 Apex Reference Guide DescribeIconResult Class
 
@@ -246928,7 +243581,6 @@ Return Value
 
 Type: Integer
 
-3348
 
 Apex Reference Guide DescribeIconResult Class
 
@@ -246993,7 +243645,6 @@ Usage
 
 Note: If the icon content type is SVG, the icon won’t have a size and its width is zero.
 
-3349
 
 ### Apex Reference Guide DescribeSObjectResult Class DescribeSObjectResult Class
 
@@ -247056,7 +243707,6 @@ Signature
 
 ```
 
-3350
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247124,7 +243774,6 @@ Property Value
 
 Type: Boolean
 
-3351
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247192,7 +243841,6 @@ Type: Boolean
 
 Indicates whether Chatter feeds are enabled for the SObject.
 
-3352
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247265,7 +243913,6 @@ Example
 
 ```
 
-3353
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247333,7 +243980,6 @@ Type: Boolean
 
 The three-character prefix code in the SObject ID.
 
-3354
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247399,7 +244045,6 @@ Type: String
 Indicates whether the SObject can be merged with other objects of its type by the current user. This is set to `true` for leads, contacts,
 and accounts.
 
-3355
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247470,7 +244115,6 @@ Signature
 
 ```
 
-3356
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247538,7 +244182,6 @@ Property Value
 
 Type: Boolean
 
-3357
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247604,7 +244247,6 @@ Type: Boolean
 
 #### DescribeSObjectResult Methods The following are methods for DescribeSObjectResult . All are instance methods.
 
-3358
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247667,7 +244309,6 @@ namespace portion of the name is omitted.
 getName()
 Returns the name of the object.
 
-3359
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247728,7 +244369,6 @@ for leads, contacts, and accounts.
 isMruEnabled()
 Returns `true` if Most Recently Used (MRU) list functionality is enabled for the object, `false` otherwise.
 
-3360
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247793,7 +244433,6 @@ SEE ALSO:
 
 DescribeSObjectResult Properties
 
-3361
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247856,7 +244495,6 @@ Type: Boolean
 
 Reserved for future use.
 
-3362
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247917,7 +244555,6 @@ Return Value
 
 Type: Schema.SObjectTypeFieldSets
 
-3363
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -247987,7 +244624,6 @@ Type: String
 
 Reserved for future use.
 
-3364
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -248055,7 +244691,6 @@ Signature
 
 ```
 
-3365
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -248115,7 +244750,6 @@ Return Value
 
 Type: List<Schema.RecordTypeInfo>
 
-3366
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -248184,7 +244818,6 @@ Type: Schema.SObjectDescribeOptions
 
 Valid values are:
 
-3367
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -248257,7 +244890,6 @@ Signature
 
 ```
 
-3368
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -248320,7 +244952,6 @@ Type: Boolean
 
 Returns `true` if the object can be deleted by the current user, `false` otherwise.
 
-3369
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -248386,7 +245017,6 @@ Type: Boolean
 
 Returns `true` if Most Recently Used (MRU) list functionality is enabled for the object, `false` otherwise.
 
-3370
 
 Apex Reference Guide DescribeSObjectResult Class
 
@@ -248457,7 +245087,6 @@ Signature
 
 ```
 
-3371
 
 ### Apex Reference Guide DescribeTabResult Class
 
@@ -248515,7 +245144,6 @@ the heading at the top of most pages.
 getIcons()
 Returns a list of icon metadata information for all icons associated with this tab. Each icon is associated with a theme and context.
 
-3372
 
 Apex Reference Guide DescribeTabResult Class
 
@@ -248581,7 +245209,6 @@ Return Value
 
 Type: List<Schema.DescribeIconResult>
 
-3373
 
 Apex Reference Guide DescribeTabResult Class
 
@@ -248646,7 +245273,6 @@ Return Value
 
 Type: String
 
-3374
 
 ### Apex Reference Guide DescribeTabSetResult Class
 
@@ -248721,7 +245347,6 @@ apps. This example iterates through each describe result and gets more metadata 
 
 ```
 
-3375
 
 Apex Reference Guide DescribeTabSetResult Class
 
@@ -248798,7 +245423,6 @@ Signature
 
 ```
 
-3376
 
 Apex Reference Guide DescribeTabSetResult Class
 
@@ -248860,7 +245484,6 @@ Usage
 This namespace prefix corresponds to the namespace prefix of the Developer Edition organization that was enabled to allow publishing
 a managed package. This method applies to a custom app containing a set of tabs and installed as part of a managed package.
 
-3377
 
 ### Apex Reference Guide DisplayType Enum
 
@@ -248924,7 +245547,6 @@ not in the list
 
 `DATE` Date values
 
-3378
 
 ### Apex Reference Guide FieldDescribeOptions Enum
 
@@ -248985,7 +245607,6 @@ see Enum Methods.
 
 A `Schema.FieldDescribeOptions` enum value is a parameter in the `SObjectType.getDescribe` method.
 
-3379
 
 ### Apex Reference Guide FieldSet Class
 
@@ -249047,7 +245668,6 @@ set in advance, using an explicit reference to the field set. The following two 
 
 ```
 
-3380
 
 Apex Reference Guide FieldSet Class
 
@@ -249133,7 +245753,6 @@ One thing to note about the above markup is the expression used to determine if 
 required field. A field in a field set can be required by either the field set definition, or the field’s own definition. The expression handles
 both cases.
 
-3381
 
 Apex Reference Guide FieldSet Class
 
@@ -249196,7 +245815,6 @@ Return Value
 
 Type: List<Schema.FieldSetMember>
 
-3382
 
 Apex Reference Guide FieldSet Class
 
@@ -249261,7 +245879,6 @@ Signature
 
 ```
 
-3383
 
 ### Apex Reference Guide FieldSetMember Class
 
@@ -249327,7 +245944,6 @@ Returns the field’s Apex data type.
 getSObjectField()
 Returns the token for this field.
 
-3384
 
 Apex Reference Guide FieldSetMember Class
 
@@ -249395,7 +246011,6 @@ Return Value
 
 Type: `Boolean`
 
-3385
 
 ### Apex Reference Guide PicklistEntry Class
 
@@ -249461,7 +246076,6 @@ IN THIS SECTION:
 getLabel()
 Returns the display name of this item in the picklist.
 
-3386
 
 Apex Reference Guide PicklistEntry Class
 
@@ -249528,7 +246142,6 @@ Type: Boolean
 Returns `true` if this item is the default value for the picklist, `false` otherwise. Only one item in a picklist can be designated as the
 default.
 
-3387
 
 ### Apex Reference Guide RecordTypeInfo Class
 
@@ -249599,7 +246212,6 @@ Returns the developer name for this record type.
 getName()
 Returns the UI label of this record type. The label can be translated into any language that Salesforce supports.
 
-3388
 
 Apex Reference Guide RecordTypeInfo Class
 
@@ -249666,7 +246278,6 @@ Return Value
 
 Type: ID
 
-3389
 
 Apex Reference Guide RecordTypeInfo Class
 
@@ -249732,7 +246343,6 @@ Return Value
 
 Type: Boolean
 
-3390
 
 ### Apex Reference Guide SOAPType Enum SOAPType Enum
 
@@ -249791,7 +246401,6 @@ Enum Values
 
 The following are the values of the `Schema.SObjectDescribeOptions` enum.
 
-3391
 
 ### Apex Reference Guide SObjectField Class
 
@@ -249851,7 +246460,6 @@ Return Value
 
 Type: Schema.DescribeFieldResult
 
-3392
 
 ### Apex Reference Guide SObjectType Class
 
@@ -249919,7 +246527,6 @@ or not.
 newSObject()
 Constructs a new sObject of this type.
 
-3393
 
 Apex Reference Guide SObjectType Class
 
@@ -249979,7 +246586,6 @@ The type of describe operation, as determined by the parameter value is depicted
 
 **Table 2: Type of Load for SObjectType.getDescribe()**
 
-3394
 
 Apex Reference Guide SObjectType Class
 
@@ -250044,7 +246650,6 @@ Constructs a new sObject of this type, and optionally, of the specified record t
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-3395
 
 Apex Reference Guide SObjectType Class
 
@@ -250124,7 +246729,6 @@ doesn’t have a default value, before inserting the new accounts.
 
 ```
 
-3396
 
 ## Apex Reference Guide Search Namespace
 
@@ -250187,7 +246791,6 @@ suggest(searchQuery, sObjectType, suggestions)
 Filter settings that narrow the results from a call to `System.Search.suggest(searchQuery, sObjectType, options)`
 when the SOSL search query contains a KnowledgeArticleVersion object.
 
-3397
 
 Apex Reference Guide KnowledgeSuggestionFilter Class
 
@@ -250248,7 +246851,6 @@ Type: String
 
 A three-character ID prefix indicating the desired article type.
 
-3398
 
 Apex Reference Guide KnowledgeSuggestionFilter Class
 
@@ -250318,7 +246920,6 @@ Type: String
 
 The name of the article topic.
 
-3399
 
 Apex Reference Guide KnowledgeSuggestionFilter Class
 
@@ -250391,7 +246992,6 @@ Type: void
 Adds filters that narrow suggestion results to display articles in the specified data categories. Use this method to set multiple data category
 group and name pairs in one call. This filter is optional.
 
-3400
 
 Apex Reference Guide KnowledgeSuggestionFilter Class
 
@@ -250466,7 +247066,6 @@ Parameters
 
 Type: String
 
-3401
 
 ### Apex Reference Guide QuestionSuggestionFilter Class
 
@@ -250528,7 +247127,6 @@ addNetworkId(networkId)
 Adds a filter to display questions associated with the single specified network whose ID is passed in as an argument. This filter is
 optional.
 
-3402
 
 Apex Reference Guide QuestionSuggestionFilter Class
 
@@ -250598,7 +247196,6 @@ Type: String
 
 The ID of the Experience Cloud site about which you’re retrieving this information.
 
-3403
 
 Apex Reference Guide QuestionSuggestionFilter Class
 
@@ -250664,7 +247261,6 @@ Return Value
 
 Type: void
 
-3404
 
 Apex Reference Guide QuestionSuggestionFilter Class
 
@@ -250740,7 +247336,6 @@ Type: List<String>
 
 A list of user IDs.
 
-3405
 
 ### Apex Reference Guide SearchResult Class
 
@@ -250805,7 +247400,6 @@ Signature
 
 ```
 
-3406
 
 ### Apex Reference Guide SearchResults Class
 
@@ -250869,7 +247463,6 @@ IN THIS SECTION:
 get(sObjectType)
 Returns a list of `Search.SearchResult` objects that contain an sObject of the specified type.
 
-3407
 
 ### Apex Reference Guide SuggestionOption Class
 
@@ -250932,7 +247525,6 @@ setFilter(knowledgeSuggestionFilter)
 Set filters that narrow Salesforce Knowledge article results in a call to `System.Search.suggest(String, String,`
 `Search.SuggestionOption)` .
 
-3408
 
 Apex Reference Guide SuggestionOption Class
 
@@ -251006,7 +247598,6 @@ Signature
 
 ```
 
-3409
 
 ### Apex Reference Guide SuggestionResult Class
 
@@ -251073,7 +247664,6 @@ Return Value
 
 Type: SObject
 
-3410
 
 ### Apex Reference Guide SuggestionResults Class SuggestionResults Class
 
@@ -251130,7 +247720,6 @@ Return Value
 
 Type: Boolean
 
-3411
 
 ## Apex Reference Guide Sfc Namespace
 
@@ -251188,7 +247777,6 @@ endpoint). Used in both Android and iOS apps.
 
 `RETRIEVE` Retrieve VersionData from SObject API.
 
-3412
 
 ### Apex Reference Guide ContentDownloadHandler Class
 
@@ -251243,7 +247831,6 @@ Type: String
 This message is used if a `redirectUrl` is not provided. If the download is not allowed, Salesforce will throw a
 ##### ContentCustomizedDownloadException exception that contains the downloadErrorMessage .
 
-3413
 
 ### Apex Reference Guide ContentDownloadHandlerFactory Interface
 
@@ -251303,7 +247890,6 @@ ContentDownloadHandlerFactory Example Implementation
 
 ### The following are methods for ContentDownloadHandlerFactory .
 
-3414
 
 Apex Reference Guide ContentDownloadHandlerFactory Interface
 
@@ -251384,7 +247970,6 @@ handler that blocks downloading content to mobile devices.
 
 ```
 
-3415
 
 ## Apex Reference Guide Sfdc_Checkout Namespace Sfdc_Checkout Namespace
 
@@ -251440,7 +248025,6 @@ for Commerce checkout.
 The startCartProcessAsync method is called asynchronously by the integration framework. Calling this method begins cart processing
 for Commerce checkout.
 
-3416
 
 ### Apex Reference Guide B2BCheckoutController Class
 
@@ -251516,7 +248100,6 @@ IN THIS SECTION:
 
 B2BCheckoutController Methods
 
-3417
 
 ### Apex Reference Guide IntegrationInfo Class
 
@@ -251580,7 +248163,6 @@ IN THIS SECTION:
 
 IntegrationInfo Properties
 
-3418
 
 Apex Reference Guide IntegrationInfo Class
 
@@ -251645,7 +248227,6 @@ Property Value
 
 Type: String
 
-3419
 
 ### Apex Reference Guide IntegrationStatus Class IntegrationStatus Class
 
@@ -251699,7 +248280,6 @@ The following are the values of the `sfdc_checkout.IntegrationStatus.Status` enu
 `FAILED` Indicates transient, unknown error, managed by the implementor. The buyer can
 retry this action.
 
-3420
 
 ## Apex Reference Guide Sfdc_Enablement Namespace
 
@@ -251753,7 +248333,6 @@ IN THIS SECTION:
 
 LearningEvaluation Methods
 
-3421
 
 Apex Reference Guide LearningEvaluation Class
 
@@ -251817,7 +248396,6 @@ Signature
 
 ```
 
-3422
 
 ### Apex Reference Guide LearningEvaluationResult Class
 
@@ -251882,7 +248460,6 @@ Example
 
 See example code in sfdc_enablement.LearningItemEvaluationHandler on page 3425.
 
-3423
 
 Apex Reference Guide LearningEvaluationResult Class
 
@@ -251943,7 +248520,6 @@ Type: sfdc_enablement.LearningItemProgressStatus on page 3427
 
 Sets the progress percentage of the learning item.
 
-3424
 
 ### Apex Reference Guide LearningItemEvaluationHandler Class
 
@@ -252006,7 +248582,6 @@ Usage
 [Extend this class and implement your custom progress evaluation method. Then link this class to a LearningItemType metadata record](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_learningitemtype.htm)
 by passing the Apex class name to the `ApexEvaluationHandler` field.
 
-3425
 
 Apex Reference Guide LearningItemEvaluationHandler Class
 
@@ -252091,7 +248666,6 @@ progress by checking the number of screens the user has navigated, calculating t
 
 ```
 
-3426
 
 ### Apex Reference Guide LearningItemProgressStatus Enum
 
@@ -252153,7 +248727,6 @@ Usage
 
 To set the progress status in the sfdc_enablement.LearningEvaluationResult on page 3423 class, use this enum.
 
-3427
 
 ### Apex Reference Guide LearningItemSerializeDeserializer Class
 
@@ -252222,7 +248795,6 @@ program. For this example to work, make sure the screen flow exists in the targe
 
 ```
 
-3428
 
 Apex Reference Guide LearningItemSerializeDeserializer Class
 
@@ -252313,7 +248885,6 @@ IN THIS SECTION:
 
 LearningItemSerializeDeserializer Methods
 
-3429
 
 Apex Reference Guide LearningItemSerializeDeserializer Class
 
@@ -252380,7 +248951,6 @@ Type: String
 
 The ID of the learning item associated with the custom content to be serialized.
 
-3430
 
 ## Apex Reference Guide sfdc_surveys Namespace
 
@@ -252432,7 +249002,6 @@ SurveyInvitationLinkShortener Example Implementation
 
 ### The following are methods for SurveyInvitationLinkShortener .
 
-3431
 
 Apex Reference Guide SurveyInvitationLinkShortener Interface
 
@@ -252517,7 +249086,6 @@ This is an example implementation of the `sfdc_surveys.SurveyInvitationLinkShort
 
 ```
 
-3432
 
 ### Apex Reference Guide Example Implementation to Associate SurveySubjects with
 
@@ -252612,7 +249180,6 @@ This example shows how to associate SurveySubjects with SurveyInvitation and Sur
 
 ```
 
-3433
 
 ## Apex Reference Guide Site Namespace
 
@@ -252683,7 +249250,6 @@ Enables rewriting Sites URLs.
 Site Exceptions
 ## The Site namespace contains an exception class.
 
-3434
 
 ### Apex Reference Guide UrlRewriter Interface UrlRewriter Interface
 
@@ -252746,7 +249312,6 @@ Return Value
 
 Type: System.PageReference[]
 
-3435
 
 ### Apex Reference Guide Site Exceptions
 
@@ -252810,7 +249375,6 @@ This exception can’t be subclassed or thrown in code.
 
 [AppClient](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/guide/apex_ref_client.html)
 
-3436
 
 Apex Reference Guide Slack Namespace
 
@@ -252888,7 +249452,6 @@ Apex Reference Guide Slack Namespace
 
 [Usergroup Classes](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/guide/apex_ref_usergroups.html)
 
-3437
 
 ## Apex Reference Guide Support Namespace
 
@@ -252941,7 +249504,6 @@ IN THIS SECTION:
 getDefaultTemplateId(caseId)
 Returns the ID of the email template to preload for the case currently being viewed in the case feed using the specified case ID.
 
-3438
 
 Apex Reference Guide EmailTemplateSelector Interface
 
@@ -253025,7 +249587,6 @@ The following example tests the above code:
 
 ```
 
-3439
 
 ### Apex Reference Guide MilestoneTriggerTimeCalculator Interface
 
@@ -253109,7 +249670,6 @@ MilestoneTriggerTimeCalculator Methods
 
 MilestoneTriggerTimeCalculator Example Implementation
 
-3440
 
 Apex Reference Guide MilestoneTriggerTimeCalculator Interface
 
@@ -253188,7 +249748,6 @@ sample, the case’s priority and the milestone `m1` determine that the time tri
 
 ```
 
-3441
 
 ## Apex Reference Guide System Namespace
 
@@ -253269,7 +249828,6 @@ Specifies the access check type for the fields of an sObject.
 Address Class
 Contains methods for accessing the component fields of address compound fields.
 
-3442
 
 Apex Reference Guide System Namespace
 
@@ -253330,7 +249888,6 @@ Implement different sort orders with the Comparator interface’s `compare()` me
 to `List.sort()` . Your implementation must explicitly handle null inputs in the `compare()` method to avoid a null pointer
 exception.
 
-3443
 
 Apex Reference Guide System Namespace
 
@@ -253393,7 +249950,6 @@ Enum Methods
 An enum is an abstract data type with values that each take on exactly one of a finite set of identifiers that you specify. Apex provides
 built-in enums, such as `LoggingLevel`, and you can define your own enum.
 
-3444
 
 Apex Reference Guide System Namespace
 
@@ -253455,7 +250011,6 @@ Contains methods for serializing Apex objects into JSON format and deserializing
 JSONGenerator Class
 Contains methods used to serialize objects into JSON content using the standard JSON encoding.
 
-3445
 
 Apex Reference Guide System Namespace
 
@@ -253517,7 +250072,6 @@ PageReference Class
 A PageReference is a reference to an instantiation of a page. Among other attributes, PageReferences consist of a URL and a set of
 query parameter names and values.
 
-3446
 
 Apex Reference Guide System Namespace
 
@@ -253580,7 +250134,6 @@ SchedulableContext Interface
 Represents the parameter type of a method in a class that implements the `Schedulable` interface and contains the scheduled
 job ID. This interface is implemented internally by Apex.
 
-3447
 
 Apex Reference Guide System Namespace
 
@@ -253642,7 +250195,6 @@ Trigger Class
 Use the `Trigger` class to access run-time context information in a trigger, such as the type of trigger or the list of sObject records
 that the trigger operates on.
 
-3448
 
 ### Apex Reference Guide AccessLevel Class
 
@@ -253701,7 +250253,6 @@ By default, Apex code runs in system mode, which means that it runs with substan
 code. In system mode, the object and field-level permissions of the current user are ignored, and the record sharing rules are controlled
 [by the class sharing keywords. In user mode, the current user's object permissions, field-level security, and sharing rules are enforced.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 
-3449
 
 Apex Reference Guide AccessLevel Class
 
@@ -253762,7 +250313,6 @@ tools in a production environment. You can provide feedback and suggestions for 
 This feature is available in scratch orgs where the `ApexUserModeWithPermset` feature is enabled. If the feature isn’t enabled,
 Apex code with this feature can be compiled but not executed.
 
-3450
 
 Apex Reference Guide AccessLevel Class
 
@@ -253842,7 +250392,6 @@ and inserts a custom object.
 
 ```
 
-3451
 
 Apex Reference Guide AccessLevel Class
 
@@ -253909,7 +250458,6 @@ Property Value
 
 Type: System.AccessLevel
 
-3452
 
 ### Apex Reference Guide AccessType Enum AccessType Enum
 
@@ -253964,7 +250512,6 @@ Important: “Address” in Salesforce can also refer to the Address standard ob
 field. If referencing both the Address object and the Address standard field in the same snippet, you can differentiate between the
 two by using `System.Address` for the field and `Schema.Address` for the object.
 
-3453
 
 Apex Reference Guide Address Class
 
@@ -254034,7 +250581,6 @@ Returns the longitude field of this address.
 getPostalCode()
 Returns the postal code of this address.
 
-3454
 
 Apex Reference Guide Address Class
 
@@ -254099,7 +250645,6 @@ Type: String
 
 Returns the distance from this location to the specified location using the specified unit.
 
-3455
 
 Apex Reference Guide Address Class
 
@@ -254153,7 +250698,6 @@ Type: String
 example, `Zip` means the latitude and longitude point to the center of the zip code area, in case a match for an exact street address
 can’t be found.
 
-3456
 
 Apex Reference Guide Address Class
 
@@ -254213,7 +250757,6 @@ Signature
 
 ```
 
-3457
 
 ### Apex Reference Guide Answers Class
 
@@ -254274,7 +250817,6 @@ Namespace
 
 System
 
-3458
 
 Apex Reference Guide Answers Class
 
@@ -254345,7 +250887,6 @@ reply helps users quickly identify the reply that contains the most helpful info
 
 Returns a list of similar questions based on the title of the specified question.
 
-3459
 
 ### Apex Reference Guide ApexPages Class
 
@@ -254412,7 +250953,6 @@ Usage
 
 ### In addition, ApexPages is used as a namespace for the PageReference Class and the Message Class.
 
-3460
 
 Apex Reference Guide ApexPages Class
 
@@ -254479,7 +251019,6 @@ Parameters
 
 Type: Exception
 
-3461
 
 Apex Reference Guide ApexPages Class
 
@@ -254555,7 +251094,6 @@ Signature
 
 ```
 
-3462
 
 ### Apex Reference Guide Approval Class
 
@@ -254618,7 +251156,6 @@ IN THIS SECTION:
 isLocked(id)
 Returns `true` if the record with the ID `id` is locked, or `false` if it’s not.
 
-3463
 
 Apex Reference Guide Approval Class
 
@@ -254683,7 +251220,6 @@ Unlocks a set of objects, and returns the unlock results, including failures.
 unlock(recordId, allOrNothing)
 Unlocks an object, with the option for partial success, and returns the unlock result.
 
-3464
 
 Apex Reference Guide Approval Class
 
@@ -254752,7 +251288,6 @@ Type: Map<Id,Boolean>
 
 Returns `true` if the `sobject` record is locked, or `false` if it’s not.
 
-3465
 
 Apex Reference Guide Approval Class
 
@@ -254827,7 +251362,6 @@ Return Value
 
 Type: Approval.LockResult
 
-3466
 
 Apex Reference Guide Approval Class
 
@@ -254902,7 +251436,6 @@ Return Value
 
 Type: List<Approval.LockResult>
 
-3467
 
 Apex Reference Guide Approval Class
 
@@ -254978,7 +251511,6 @@ Type: List<Approval.LockResult>
 
 Locks an object, with the option for partial success, and returns the lock result.
 
-3468
 
 Apex Reference Guide Approval Class
 
@@ -255055,7 +251587,6 @@ Signature
 
 ```
 
-3469
 
 Apex Reference Guide Approval Class
 
@@ -255132,7 +251663,6 @@ Return Value
 
 Approval.ProcessResult
 
-3470
 
 Apex Reference Guide Approval Class
 
@@ -255206,7 +251736,6 @@ Signature
 
 ```
 
-3471
 
 Apex Reference Guide Approval Class
 
@@ -255276,7 +251805,6 @@ Type: Approval.UnlockResult
 
 Unlocks a set of objects, and returns the unlock results, including failures.
 
-3472
 
 Apex Reference Guide Approval Class
 
@@ -255356,7 +251884,6 @@ Type: List<Id>
 
 IDs of the objects to unlock.
 
-3473
 
 Apex Reference Guide Approval Class
 
@@ -255435,7 +251962,6 @@ Type: Boolean
 Specifies whether this operation allows partial success. If you specify `false` and a record fails, the remainder of the DML operation
 can still succeed. This method returns a result object that you can use to verify which records succeeded, which failed, and why.
 
-3474
 
 ### Apex Reference Guide Assert Class
 
@@ -255494,7 +252020,6 @@ Asserts that the instance isn’t of the specified type.
 isNotInstanceOfType(instance, notExpectedType)
 Asserts that the instance isn’t of the specified type.
 
-3475
 
 Apex Reference Guide Assert Class
 
@@ -255563,7 +252088,6 @@ If the first two arguments aren't the same, a fatal error is returned that cause
 
 You can’t catch an assertion failure using a try/catch block even though it’s logged as an exception.
 
-3476
 
 Apex Reference Guide Assert Class
 
@@ -255645,7 +252169,6 @@ Type: Object
 
 Value that’s not expected.
 
-3477
 
 Apex Reference Guide Assert Class
 
@@ -255723,7 +252246,6 @@ If the two arguments are the same, a fatal error is returned that causes code ex
 
 You can’t catch an assertion failure using a try/catch block even though it’s logged as an exception.
 
-3478
 
 Apex Reference Guide Assert Class
 
@@ -255800,7 +252322,6 @@ Return Value
 
 Type: void
 
-3479
 
 Apex Reference Guide Assert Class
 
@@ -255880,7 +252401,6 @@ Example
 
 Asserts that the specified condition is `false` .
 
-3480
 
 Apex Reference Guide Assert Class
 
@@ -255963,7 +252483,6 @@ Return Value
 
 Type: void
 
-3481
 
 Apex Reference Guide Assert Class
 
@@ -256038,7 +252557,6 @@ Example
 
 Asserts that the instance isn’t of the specified type.
 
-3482
 
 Apex Reference Guide Assert Class
 
@@ -256125,7 +252643,6 @@ Type: System.Type on page 4204
 
 Type that's not expected.
 
-3483
 
 Apex Reference Guide Assert Class
 
@@ -256200,7 +252717,6 @@ Example
 
 Asserts that the value isn’t null.
 
-3484
 
 Apex Reference Guide Assert Class
 
@@ -256279,7 +252795,6 @@ If the value isn't null, a fatal error is returned that causes code execution to
 
 You can’t catch an assertion failure using a try/catch block even though it’s logged as an exception.
 
-3485
 
 Apex Reference Guide Assert Class
 
@@ -256361,7 +252876,6 @@ Type: String
 
 (Optional) Custom message returned as part of the error message.
 
-3486
 
 ### Apex Reference Guide AsyncInfo Class
 
@@ -256429,7 +252943,6 @@ Example
 Provides methods to get the current stack depth, maximum stack depth, and the minimum queueable delay for Queueable transactions,
 and to determine if maximum stack depth is set.
 
-3487
 
 Apex Reference Guide AsyncInfo Class
 
@@ -256487,7 +253000,6 @@ Return Value
 
 Type: Integer
 
-3488
 
 ### Apex Reference Guide AsyncOptions Class
 
@@ -256547,7 +253059,6 @@ _Apex Developer Guide_ [: Detecting Duplicate Queueable Jobs](https://developer.
 
 ### The following are properties for AsyncOptions .
 
-3489
 
 ### Apex Reference Guide Blob Class
 
@@ -256614,7 +253125,6 @@ Type: Integer
 
 Contains methods for the Blob primitive data type.
 
-3490
 
 Apex Reference Guide Blob Class
 
@@ -256682,7 +253192,6 @@ Signature
 
 ```
 
-3491
 
 Apex Reference Guide Blob Class
 
@@ -256759,7 +253268,6 @@ Example
 
 Casts the specified String to a Blob.
 
-3492
 
 ### Apex Reference Guide Boolean Class
 
@@ -256824,7 +253332,6 @@ Signature
 
 ```
 
-3493
 
 Apex Reference Guide Boolean Class
 
@@ -256901,7 +253408,6 @@ Example
 
 ```
 
-3494
 
 ### Apex Reference Guide BusinessHours Class
 
@@ -256974,7 +253480,6 @@ Type: Datetime
 
 Type: Long
 
-3495
 
 Apex Reference Guide BusinessHours Class
 
@@ -257056,7 +253561,6 @@ Return Value
 
 Type: Long
 
-3496
 
 Apex Reference Guide BusinessHours Class
 
@@ -257140,7 +253644,6 @@ The business hours ID.
 
 Type: Datetime
 
-3497
 
 ### Apex Reference Guide CallbackStatus Enum
 
@@ -257202,7 +253705,6 @@ the ones you had in mind, to extend your code’s functionality.
 Note: This interface is not an analog of the Java Callable interface, which is used for asynchronous invocation. Don’t confuse the
 two.
 
-3498
 
 Apex Reference Guide Callable Interface
 
@@ -257269,7 +253771,6 @@ Type: Object
 
 The result of the method invocation.
 
-3499
 
 Apex Reference Guide Callable Interface
 
@@ -257365,7 +253866,6 @@ The following test code illustrates how calling code utilizes the interface to c
 
 ```
 
-3500
 
 ### Apex Reference Guide Cases Class
 
@@ -257430,7 +253930,6 @@ Return Value
 
 Type: String
 
-3501
 
 Apex Reference Guide Cases Class
 
@@ -257511,7 +254010,6 @@ choose to implement header-based threading only, replace `Cases.getCaseIdFromEma
 The _`headers`_ argument is used to find the matching Case Id using values for the `In-Reply-To` and `References` headers
 based on RFC 2822. If Email-to-Case can’t find any emails with a matching `In-Reply-To` or `References` header, it also checks
 
-3502
 
 Apex Reference Guide Cases Class
 
@@ -257599,7 +254097,6 @@ In this example, we rely on threading tokens and use header-based threading as a
 
 ```
 
-3503
 
 ### Apex Reference Guide Collator Class
 
@@ -257676,7 +254173,6 @@ method.
 Contains methods to get locale-specific instances that can be used for comparisons and sorting. Use the `getInstance()` method
 to obtain the Collator instance for a given locale and pass the Collator as the Comparator parameter to the `list.sort()` method.
 
-3504
 
 Apex Reference Guide Collator Class
 
@@ -257758,7 +254254,6 @@ IN THIS SECTION:
 
 Collator Methods
 
-3505
 
 ### Apex Reference Guide Comparable Interface
 
@@ -257823,7 +254318,6 @@ Type: Collator Class
 Adds sorting support for Lists that contain non-primitive types, that is, Lists of user-defined types. Your implementation must explicitly
 handle null inputs in the `compareTo()` method to avoid a null pointer exception.
 
-3506
 
 Apex Reference Guide Comparable Interface
 
@@ -257894,7 +254388,6 @@ Parameters
 
 Type: Object
 
-3507
 
 Apex Reference Guide Comparable Interface
 
@@ -257983,7 +254476,6 @@ This example tests the sort order of a list of `Employee` objects.
 
 ```
 
-3508
 
 ### Apex Reference Guide Comparator Interface
 
@@ -258049,7 +254541,6 @@ Signature
 
 ```
 
-3509
 
 Apex Reference Guide Comparator Interface
 
@@ -258140,7 +254631,6 @@ This example implements two different ways of sorting employees.
 
 ```
 
-3510
 
 ### Apex Reference Guide Continuation Class
 
@@ -258238,7 +254728,6 @@ The following example tests the implementation:
 
 ```
 
-3511
 
 Apex Reference Guide Continuation Class
 
@@ -258294,7 +254783,6 @@ The name of the callback method that is called after the callout response return
 timeout
 The timeout of the continuation in seconds. Maximum: 120 seconds.
 
-3512
 
 Apex Reference Guide Continuation Class
 
@@ -258366,7 +254854,6 @@ This example shows how to save state information for a continuation in a control
 
 ```
 
-3513
 
 Apex Reference Guide Continuation Class
 
@@ -258438,7 +254925,6 @@ You can add up tothree requests to a continuation.
 Note: The timeout that is set in each passed-in request is ignored. Only the global timeout maximum of 120 seconds applies for
 a continuation.
 
-3514
 
 ### Apex Reference Guide Cookie Class
 
@@ -258506,7 +254992,6 @@ When a problem occurs with the response, some possible status code values are:
 
 ### Cookie Class The Cookie class lets you access cookies for your Salesforce site using Apex.
 
-3515
 
 Apex Reference Guide Cookie Class
 
@@ -258586,7 +255071,6 @@ a counter each time a user displays a page. The number of times a user goes to t
 
 ```
 
-3516
 
 Apex Reference Guide Cookie Class
 
@@ -258672,7 +255156,6 @@ IN THIS SECTION:
 Cookie(name, value, path, maxAge, isSecure)
 #### Creates a new instance of the Cookie class using the specified name, value, path, age, and the secure setting.
 
-3517
 
 Apex Reference Guide Cookie Class
 
@@ -258745,7 +255228,6 @@ Note: Google Chrome 80 introduces a new default cookie attribute setting of `Sam
 `SameSite` cookie attribute defaulted to the value of `None` . When `SameSite` is set to `None`, cookies must be tagged with
 the `isSecure` attribute indicating that they require an encrypted HTTPS connection.
 
-3518
 
 Apex Reference Guide Cookie Class
 
@@ -258831,7 +255313,6 @@ Signature
 
 ```
 
-3519
 
 Apex Reference Guide Cookie Class
 
@@ -258915,7 +255396,6 @@ cookie is deleted.
 getName()
 Returns the name of the cookie. Can't be `null` .
 
-3520
 
 Apex Reference Guide Cookie Class
 
@@ -258980,7 +255460,6 @@ Return Value
 
 Type: String
 
-3521
 
 Apex Reference Guide Cookie Class
 
@@ -259048,7 +255527,6 @@ Return Value
 
 Type: Boolean
 
-3522
 
 ### Apex Reference Guide Crypto Class
 
@@ -259108,7 +255586,6 @@ provide the aaData
 When use the Crypto class to encrypt using GCM, the final encrypted content includes the length of the IV (always 12), the
 Salesforce-generated 12-byte IV, and the cipher text.
 
-3523
 
 Apex Reference Guide Crypto Class
 
@@ -259174,7 +255651,6 @@ format)
 
 ECDSA-SHA512-P1363
 
-3524
 
 Apex Reference Guide Crypto Class
 
@@ -259241,7 +255717,6 @@ Exceptions
 For CBC, the `Crypto` [class uses AES / CBC / PKCS7 padding, which is vulnerable to a Padding Oracle attack. You can protect against a](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/09-Testing_for_Weak_Cryptography/02-Testing_for_Padding_Oracle)
 Padding Oracle attack by using the Encrypt-then-MAC method. In this method, you encrypt the cipher text and MAC separately.
 
-3525
 
 Apex Reference Guide Crypto Class
 
@@ -259295,7 +255770,6 @@ Exception Class and Built-In Exceptions
 
 #### Crypto Methods The following are methods for Crypto . All methods are static.
 
-3526
 
 Apex Reference Guide Crypto Class
 
@@ -259355,7 +255829,6 @@ Envelops the signature into an XML document.
 signXML(algorithmName, node, idAttributeName, certDevName, refChild)
 Inserts the signature envelope before the specified child node.
 
-3527
 
 Apex Reference Guide Crypto Class
 
@@ -259432,7 +255905,6 @@ Type: Blob
 
 The content to decrypt.
 
-3528
 
 Apex Reference Guide Crypto Class
 
@@ -259518,7 +255990,6 @@ decryptWithManagedIV supports all these values for _`algorithmName`_ . See Crypt
 
 **•** `AES256`, `AES256-CBC`
 
-3529
 
 Apex Reference Guide Crypto Class
 
@@ -259601,7 +256072,6 @@ Decrypts the _`IVAndCipherText`_ blob by using the specified algorithm and priva
 
 additional authentication data. CBC isn’t supported for this method.
 
-3530
 
 Apex Reference Guide Crypto Class
 
@@ -259693,7 +256163,6 @@ Example
 
 ```
 
-3531
 
 Apex Reference Guide Crypto Class
 
@@ -259775,7 +256244,6 @@ Type: Blob
 
 Contains the encrypted contents of _`clearText`_ .
 
-3532
 
 Apex Reference Guide Crypto Class
 
@@ -259863,7 +256331,6 @@ Private key text. The length of _`secretKey`_ must match the size required by _`
 which is 16 bytes, 24 bytes, or 32 bytes, respectively. You can use a third-party application or the `generateAesKey` method to
 generate this key for you.
 
-3533
 
 Apex Reference Guide Crypto Class
 
@@ -259945,7 +256412,6 @@ Signature
 
 ```
 
-3534
 
 Apex Reference Guide Crypto Class
 
@@ -260035,7 +256501,6 @@ Example
 
 ```
 
-3535
 
 Apex Reference Guide Crypto Class
 
@@ -260117,7 +256582,6 @@ To invoke this method, run the following:
 
 Computes a secure, one-way hash digest using the specified algorithm on the supplied _`input`_ blob.
 
-3536
 
 Apex Reference Guide Crypto Class
 
@@ -260202,7 +256666,6 @@ To invoke this method, run the following:
 
 Computes a message authentication code (MAC) for the _`input`_ blob value using the private key and the specified algorithm.
 
-3537
 
 Apex Reference Guide Crypto Class
 
@@ -260293,7 +256756,6 @@ To invoke this method, run the following:
 
 ```
 
-3538
 
 Apex Reference Guide Crypto Class
 
@@ -260373,7 +256835,6 @@ Type: Long
 Returns a random 8-byte long. Salesforce invokes the `java.security.SecureRandom` api to generate this number. For
 [information on how the number is generated, see java.security.SecureRandom.](https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/security/SecureRandom.html)
 
-3539
 
 Apex Reference Guide Crypto Class
 
@@ -260462,7 +256923,6 @@ Return Value
 
 Type: Blob
 
-3540
 
 Apex Reference Guide Crypto Class
 
@@ -260551,7 +257011,6 @@ Type: Blob
 
 The data to sign.
 
-3541
 
 Apex Reference Guide Crypto Class
 
@@ -260630,7 +257089,6 @@ Type: String
 
 signWithCertificate supports all these values for _`algorithmName`_ . See Crypto Class for details on each algorithm.
 
-3542
 
 Apex Reference Guide Crypto Class
 
@@ -260723,7 +257181,6 @@ To invoke this method, run the following:
 
 ```
 
-3543
 
 Apex Reference Guide Crypto Class
 
@@ -260812,7 +257269,6 @@ run this test.
 
 ```
 
-3544
 
 Apex Reference Guide Crypto Class
 
@@ -260905,7 +257361,6 @@ Blob
 
 The RSA or EDSA-compliant signature.
 
-3545
 
 Apex Reference Guide Crypto Class
 
@@ -260988,7 +257443,6 @@ KEY lines) for both the _`privateKey`_ and _`publicKey`_ parameters.
 
 ```
 
-3546
 
 Apex Reference Guide Crypto Class
 
@@ -261074,7 +257528,6 @@ page to use for signing.
 To access the Certificate and Key Management page from Setup, enter _`Certificate and Key Management`_ in the **Quick**
 **Find** box, then select **Certificate and Key Management** .
 
-3547
 
 Apex Reference Guide Crypto Class
 
@@ -261156,7 +257609,6 @@ These are valid values for _`algorithmName`_ .
 
 **•** `hmacSHA512`
 
-3548
 
 ### Apex Reference Guide Custom Metadata Type Methods
 
@@ -261243,7 +257695,6 @@ Custom metadata types are customizable, deployable, packageable, and upgradeable
 exposed in the application cache, which allows access without repeated queries to the database. The metadata is then available for
 formula fields, validation rules, flows, Apex, and SOAP API. All methods are static.
 
-3549
 
 Apex Reference Guide Custom Metadata Type Methods
 
@@ -261313,7 +257764,6 @@ If no records are defined for the type, this method returns an empty map. To ite
 
 fields get truncated. If you want all the field data from a custom metadata type record, use a SOQL query.
 
-3550
 
 Apex Reference Guide Custom Metadata Type Methods
 
@@ -261385,7 +257835,6 @@ Parameters
 
 Type: String
 
-3551
 
 Apex Reference Guide Custom Metadata Type Methods
 
@@ -261451,7 +257900,6 @@ as `MyNamespace__FirstRecord` .
 
 ```
 
-3552
 
 ### Apex Reference Guide Custom Settings Methods Custom Settings Methods
 
@@ -261524,7 +257972,6 @@ value for the profile specified with `pid` .
 
 The example is identical if you choose to use the `getValues` method.
 
-3553
 
 Apex Reference Guide Custom Settings Methods
 
@@ -261615,7 +258062,6 @@ example, if Robert passes his user ID `RobertId` to `getValues`, the result is:
 
 ```
 
-3554
 
 Apex Reference Guide Custom Settings Methods
 
@@ -261652,7 +258098,6 @@ The Foundation_States custom setting is also a List type of custom setting and h
 
 **•** `State Name`
 
-3555
 
 Apex Reference Guide Custom Settings Methods
 
@@ -261715,7 +258160,6 @@ The Visualforce page shows two picklists: one for country and one for state.
 
 ```
 
-3556
 
 Apex Reference Guide Custom Settings Methods
 
@@ -261807,7 +258251,6 @@ page.
 
 ```
 
-3557
 
 Apex Reference Guide Custom Settings Methods
 
@@ -261877,7 +258320,6 @@ Return Value
 
 Type: Map<String, CustomSetting__c>
 
-3558
 
 Apex Reference Guide Custom Settings Methods
 
@@ -261945,7 +258387,6 @@ Usage
 
 If no data is defined for the specified data set, this method returns `null` .
 
-3559
 
 Apex Reference Guide Custom Settings Methods
 
@@ -262007,7 +258448,6 @@ Usage
 If no custom setting data is defined for the user, this method returns a new custom setting object. The new custom setting object
 contains an ID set to `null` and merged fields from higher in the hierarchy. You can add this new custom setting record for the user
 
-3560
 
 Apex Reference Guide Custom Settings Methods
 
@@ -262069,7 +258509,6 @@ Note: For Apex saved using Salesforce API version 21.0 or earlier, this method r
 fields merged from field values defined at the lowest hierarchy level, starting with the user. Also, if no custom setting data is defined
 in the hierarchy, this method returns `null` .
 
-3561
 
 Apex Reference Guide Custom Settings Methods
 
@@ -262134,7 +258573,6 @@ for the organization.
 
 Returns the custom setting data set record for the specified user ID.
 
-3562
 
 ### Apex Reference Guide Database Class
 
@@ -262198,7 +258636,6 @@ Namespace
 
 System
 
-3563
 
 Apex Reference Guide Database Class
 
@@ -262257,7 +258694,6 @@ Deletes an existing sObject record, such as an individual account or contact, fr
 delete(recordsToDelete, allOrNone)
 Deletes a list of existing sObject records, such as individual accounts or contacts, from your organization’s data.
 
-3564
 
 Apex Reference Guide Database Class
 
@@ -262314,7 +258750,6 @@ Initiates requests to delete the external data that corresponds to the specified
 asynchronously, as background operations, and are sent to the external systems that are defined by the external objects' associated
 external data sources.
 
-3565
 
 Apex Reference Guide Database Class
 
@@ -262376,7 +258811,6 @@ Returns the status of an asynchronous insert or update operation based on the un
 getCursor(query)
 Creates a cursor when the specified SOQL query is executed.
 
-3566
 
 Apex Reference Guide Database Class
 
@@ -262438,7 +258872,6 @@ Initiates requests to add external object data to the relevant external systems.
 operations, and are sent to the external systems that are defined by the external objects' associated external data sources. Allows
 referencing a callback class whose `processSave` method is called for each record after the remote operations are completed.
 
-3567
 
 Apex Reference Guide Database Class
 
@@ -262497,7 +258930,6 @@ merge(mergeToRecord, duplicateId)
 Merges the duplicate record into the `mergeToRecord` sObject record of the same type, deleting the duplicate, and reparenting
 any related records. Merges only accounts, contacts, or leads.
 
-3568
 
 Apex Reference Guide Database Class
 
@@ -262557,7 +258989,6 @@ merge(mergeToRecord, duplicateIds, allOrNone, accessLevel)
 Merges up to two records of the same sObject type into the `mergeToRecord` sObject record, optionally returning any errors,
 deleting the duplicates, and reparenting any related records.
 
-3569
 
 Apex Reference Guide Database Class
 
@@ -262619,7 +259050,6 @@ Modifies one or more existing sObject records, such as individual accounts or co
 update(recordToUpdate, dmlOptions)
 Modifies an existing sObject record, such as an individual account or contact, in your organization's data.
 
-3570
 
 Apex Reference Guide Database Class
 
@@ -262679,7 +259109,6 @@ background operations, and are sent to the external systems that are defined by 
 Allows referencing a callback class whose `processSave` method is called for each record after the remote operations are
 completed.
 
-3571
 
 Apex Reference Guide Database Class
 
@@ -262748,7 +259177,6 @@ and a record fails, the remainder of the DML operation can still succeed. You mu
 which records succeeded or failed. If _`allOrNone`_ is set to `true` and the method isn’t successful, an exception is thrown. The
 default for the parameter is `true` .
 
-3572
 
 Apex Reference Guide Database Class
 
@@ -262817,7 +259245,6 @@ Signature
 
 ```
 
-3573
 
 Apex Reference Guide Database Class
 
@@ -262890,7 +259317,6 @@ per call can result in Apex governor limit errors.
 
 ##### Each executed convertLead method counts against the governor limit for DML statements.
 
-3574
 
 Apex Reference Guide Database Class
 
@@ -262968,7 +259394,6 @@ Parameters
 
 Type: List<Database.LeadConvert>
 
-3575
 
 Apex Reference Guide Database Class
 
@@ -263045,7 +259470,6 @@ or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-l
 [ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the object permissions, field-level](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 security, and sharing rules of the current user are enforced. System mode is the default.
 
-3576
 
 Apex Reference Guide Database Class
 
@@ -263114,7 +259538,6 @@ per call can result in Apex governor limit errors.
 
 Returns the number of records that a dynamic SOQL query would return when executed.
 
-3577
 
 Apex Reference Guide Database Class
 
@@ -263190,7 +259613,6 @@ Return Value
 
 Type: Integer
 
-3578
 
 Apex Reference Guide Database Class
 
@@ -263267,7 +259689,6 @@ method.
 
 ```
 
-3579
 
 Apex Reference Guide Database Class
 
@@ -263347,7 +259768,6 @@ Signature
 
 ```
 
-3580
 
 Apex Reference Guide Database Class
 
@@ -263423,7 +259843,6 @@ Return Value
 
 Type: Database.DeleteResult
 
-3581
 
 Apex Reference Guide Database Class
 
@@ -263488,7 +259907,6 @@ Signature
 
 ```
 
-3582
 
 Apex Reference Guide Database Class
 
@@ -263566,7 +259984,6 @@ default for the parameter is `true` .
 
 Type: System.AccessLevel
 
-3583
 
 Apex Reference Guide Database Class
 
@@ -263632,7 +260049,6 @@ Usage
 
 ##### delete is analogous to the delete() statement in the SOAP API. Each executed delete method counts against the governor limit for DML statements.
 
-3584
 
 Apex Reference Guide Database Class
 
@@ -263699,7 +260115,6 @@ Initiates requests to delete the external data that corresponds to the specified
 asynchronously, as a background operation, and is sent to the external system that's defined by the external object's associated external
 data source. Allows referencing a callback class whose `processDelete` method is called for each record after deletion.
 
-3585
 
 Apex Reference Guide Database Class
 
@@ -263779,7 +260194,6 @@ Return Value
 
 Type: Database.DeleteResult
 
-3586
 
 Apex Reference Guide Database Class
 
@@ -263849,7 +260263,6 @@ Status result for the delete operation. The result corresponds to the record pro
 with a unique identifier ( `asyncLocator` ). The `asyncLocator` value is included in the errors array of the result. You can retrieve
 this identifier with `Database.getAsyncLocator()` . Retrieve the final result with `Database.getAsyncDeleteResult()` .
 
-3587
 
 Apex Reference Guide Database Class
 
@@ -263923,7 +260336,6 @@ Signature
 
 ```
 
-3588
 
 Apex Reference Guide Database Class
 
@@ -264003,7 +260415,6 @@ or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-l
 [ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the object permissions, field-level](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 security, and sharing rules of the current user are enforced. System mode is the default.
 
-3589
 
 Apex Reference Guide Database Class
 
@@ -264072,7 +260483,6 @@ Signature
 
 ```
 
-3590
 
 Apex Reference Guide Database Class
 
@@ -264140,7 +260550,6 @@ Signature
 
 ```
 
-3591
 
 Apex Reference Guide Database Class
 
@@ -264217,7 +260626,6 @@ Type: Database.DeleteResult
 
 Status result for the delete operation.
 
-3592
 
 Apex Reference Guide Database Class
 
@@ -264287,7 +260695,6 @@ Usage
 
 Note the following:
 
-3593
 
 Apex Reference Guide Database Class
 
@@ -264359,7 +260766,6 @@ Parameters
 
 Type: Object
 
-3594
 
 Apex Reference Guide Database Class
 
@@ -264428,7 +260834,6 @@ The value for _`scope`_ must be greater than 0.
 If the `start` method of the batch class returns a `Database.QueryLocator,` the scope parameter of
 `Database.executeBatch` can have a maximum value of 2,000. If set to a higher value, Salesforce chunks the records returned
 
-3595
 
 Apex Reference Guide Database Class
 
@@ -264501,7 +260906,6 @@ Return Value
 
 Type: Database.DeleteResult
 
-3596
 
 Apex Reference Guide Database Class
 
@@ -264573,7 +260977,6 @@ Signature
 
 ```
 
-3597
 
 Apex Reference Guide Database Class
 
@@ -264650,7 +261053,6 @@ or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-l
 [ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the object permissions, field-level](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 security, and sharing rules of the current user are enforced. System mode is the default.
 
-3598
 
 Apex Reference Guide Database Class
 
@@ -264728,7 +261130,6 @@ Type: String
 
 The _`sObjectType`_ argument is the sObject type name for which to get the deleted records, such as account or merchandise__c.
 
-3599
 
 Apex Reference Guide Database Class
 
@@ -264805,7 +261206,6 @@ of SOQL queries issued.
 
 [For more information, see Understanding Apex Managed Sharing, and IdeaStandardSetController Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_bulk_sharing.htm)
 
-3600
 
 Apex Reference Guide Database Class
 
@@ -264878,7 +261278,6 @@ Return Value
 
 Type: Database.QueryLocator
 
-3601
 
 Apex Reference Guide Database Class
 
@@ -264947,7 +261346,6 @@ of SOQL queries issued.
 Creates a QueryLocator object used in batch Apex or Visualforce. Bind variables in the query are resolved from the _`bindMap`_ Map
 parameter directly with the key, rather than from Apex code variables.
 
-3602
 
 Apex Reference Guide Database Class
 
@@ -265027,7 +261425,6 @@ _`acctBinds`_ Map.
 
 ```
 
-3603
 
 Apex Reference Guide Database Class
 
@@ -265112,7 +261509,6 @@ Example
 
 Adds an sObject, such as an individual account or contact, to your organization's data.
 
-3604
 
 Apex Reference Guide Database Class
 
@@ -265185,7 +261581,6 @@ default for the parameter is `true` .
 
 If _`allOrNone`_ is set to `false` and a before-trigger assigns an invalid value to a field, the partial set of valid records isn’t inserted.
 
-3605
 
 Apex Reference Guide Database Class
 
@@ -265262,7 +261657,6 @@ is too long for the field.
 
 ##### Each executed insert method counts against the governor limit for DML statements.
 
-3606
 
 Apex Reference Guide Database Class
 
@@ -265339,7 +261733,6 @@ and a record fails, the remainder of the DML operation can still succeed. You mu
 which records succeeded or failed. If _`allOrNone`_ is set to `true` and the method isn’t successful, an exception is thrown. The
 default for the parameter is `true` .
 
-3607
 
 Apex Reference Guide Database Class
 
@@ -265409,7 +261802,6 @@ and a record fails, the remainder of the DML operation can still succeed. You mu
 which records succeeded or failed. If _`allOrNone`_ is set to `true` and the method isn’t successful, an exception is thrown. The
 default for the parameter is `true` .
 
-3608
 
 Apex Reference Guide Database Class
 
@@ -265485,7 +261877,6 @@ behavior when errors occur during record insertions.
 
 Type: System.AccessLevel
 
-3609
 
 Apex Reference Guide Database Class
 
@@ -265554,7 +261945,6 @@ Usage
 
 ##### insert is analogous to the INSERT statement in SQL.
 
-3610
 
 Apex Reference Guide Database Class
 
@@ -265624,7 +262014,6 @@ Signature
 
 ```
 
-3611
 
 Apex Reference Guide Database Class
 
@@ -265696,7 +262085,6 @@ Usage
 `Database.insertAsync()` methods can’t be executed in the context of a portal user, even when the portal user is a community
 member. To add external object records via Apex, use `Database.insertImmediate()` methods.
 
-3612
 
 Apex Reference Guide Database Class
 
@@ -265771,7 +262159,6 @@ after the insert operation is completed. The execution is in system mode regardl
 action callback to update org data according to the operation’s results. The callback object must extend
 `DataSource.AsyncSaveCallback` .
 
-3613
 
 Apex Reference Guide Database Class
 
@@ -265846,7 +262233,6 @@ or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-l
 [ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the object permissions, field-level](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 security, and sharing rules of the current user are enforced. System mode is the default.
 
-3614
 
 Apex Reference Guide Database Class
 
@@ -265911,7 +262297,6 @@ Usage
 `Database.insertAsync()` methods can’t be executed in the context of a portal user, even when the portal user is a community
 member. To add external object records via Apex, use `Database.insertImmediate()` methods.
 
-3615
 
 Apex Reference Guide Database Class
 
@@ -265986,7 +262371,6 @@ Type: List<SObject>
 
 List of external object records to insert.
 
-3616
 
 Apex Reference Guide Database Class
 
@@ -266051,7 +262435,6 @@ Signature
 
 ```
 
-3617
 
 Apex Reference Guide Database Class
 
@@ -266124,7 +262507,6 @@ or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-l
 [ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the object permissions, field-level](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 security, and sharing rules of the current user are enforced. System mode is the default.
 
-3618
 
 Apex Reference Guide Database Class
 
@@ -266195,7 +262577,6 @@ Parameters
 
 Type: sObject
 
-3619
 
 Apex Reference Guide Database Class
 
@@ -266259,7 +262640,6 @@ Usage
 Merges up to two records of the same object type into the `mergeToRecord` sObject record, deleting the others, and reparenting
 any related records.
 
-3620
 
 Apex Reference Guide Database Class
 
@@ -266339,7 +262719,6 @@ and a record fails, the remainder of the DML operation can still succeed. You mu
 which records succeeded or failed. If _`allOrNone`_ is set to `true` and the method isn’t successful, an exception is thrown. The
 default for the parameter is `true` .
 
-3621
 
 Apex Reference Guide Database Class
 
@@ -266403,7 +262782,6 @@ Usage
 Merges up to two records of the same sObject type into the `mergeToRecord` sObject record, optionally returning any errors, deleting
 the duplicates, and reparenting any related records.
 
-3622
 
 Apex Reference Guide Database Class
 
@@ -266484,7 +262862,6 @@ Type: List<SObject>
 
 A list of up to two sObject records to merge with the mergeToRecord. These sObjects must be of the same type as the mergeToRecord.
 
-3623
 
 Apex Reference Guide Database Class
 
@@ -266556,7 +262933,6 @@ Usage
 
 ##### Each executed merge method counts against the governor limit for DML statements.
 
-3624
 
 Apex Reference Guide Database Class
 
@@ -266633,7 +263009,6 @@ Type: SObject
 
 The sObject record that the other records are merged into.
 
-3625
 
 Apex Reference Guide Database Class
 
@@ -266710,7 +263085,6 @@ Return Value
 
 Type: List<Database.MergeResult>
 
-3626
 
 Apex Reference Guide Database Class
 
@@ -266784,7 +263158,6 @@ equivalent `[DmlOptions.optAllOrNone](https://developer.salesforce.com/docs/atla
 `DMLException.getDMLFieldNames()` [method to retrieve the list of inaccessible fields. See Exception Class and Built-In](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_exception_methods.htm)
 [Exceptions for more information.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_exception_methods.htm)
 
-3627
 
 Apex Reference Guide Database Class
 
@@ -266856,7 +263229,6 @@ If you use the `accessLevel` parameter to specify that the method runs in user m
 The way to retrieve the names of these inaccessible fields depends on the value of this method's `allOrNone` parameter, or the
 equivalent `[DmlOptions.optAllOrNone](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database_dmloptions.htm#apex_Database_DmlOptions_optAllOrNone)` property. If you specify that:
 
-3628
 
 Apex Reference Guide Database Class
 
@@ -266927,7 +263299,6 @@ Return Value
 
 Type: List<Database.MergeResult>
 
-3629
 
 Apex Reference Guide Database Class
 
@@ -267003,7 +263374,6 @@ Return Value
 
 Type: List<Database.MergeResult>
 
-3630
 
 Apex Reference Guide Database Class
 
@@ -267066,7 +263436,6 @@ Signature
 
 ```
 
-3631
 
 Apex Reference Guide Database Class
 
@@ -267142,7 +263511,6 @@ duplicates, and the values can’t be null or empty strings.
 
 Type: System.AccessLevel
 
-3632
 
 Apex Reference Guide Database Class
 
@@ -267221,7 +263589,6 @@ Parameters
 
 Type: System.Savepoint
 
-3633
 
 Apex Reference Guide Database Class
 
@@ -267284,7 +263651,6 @@ Versioned Behavior Changes
 For Apex tests with API version 60.0 or later, all savepoints are released when `Test.startTest()` and `Test.stopTest()`
 are called. If any savepoints are reset, a `SAVEPOINT_RESET` event is logged.
 
-3634
 
 Apex Reference Guide Database Class
 
@@ -267353,7 +263719,6 @@ Parameters
 
 Type: sObject
 
-3635
 
 Apex Reference Guide Database Class
 
@@ -267414,7 +263779,6 @@ Usage
 
 ##### undelete is analogous to the UNDELETE statement in SQL. Each executed undelete method counts against the governor limit for DML statements.
 
-3636
 
 Apex Reference Guide Database Class
 
@@ -267489,7 +263853,6 @@ Parameters
 
 Type: ID[]
 
-3637
 
 Apex Reference Guide Database Class
 
@@ -267557,7 +263920,6 @@ Return Value
 
 Type: Database.UndeleteResult
 
-3638
 
 Apex Reference Guide Database Class
 
@@ -267625,7 +263987,6 @@ Signature
 
 ```
 
-3639
 
 Apex Reference Guide Database Class
 
@@ -267703,7 +264064,6 @@ default for the parameter is `true` .
 
 Type: System.AccessLevel
 
-3640
 
 Apex Reference Guide Database Class
 
@@ -267765,7 +264125,6 @@ is too long for the field.
 
 ##### Each executed update method counts against the governor limit for DML statements.
 
-3641
 
 Apex Reference Guide Database Class
 
@@ -267841,7 +264200,6 @@ Signature
 
 ```
 
-3642
 
 Apex Reference Guide Database Class
 
@@ -267916,7 +264274,6 @@ is too long for the field.
 
 ##### Each executed update method counts against the governor limit for DML statements.
 
-3643
 
 Apex Reference Guide Database Class
 
@@ -267985,7 +264342,6 @@ object that results from the DML operation. Use the `Error.getFields()` method t
 
 Modifies one or more existing sObject records, such as individual accounts or contacts, in your organization’s data.
 
-3644
 
 Apex Reference Guide Database Class
 
@@ -268059,7 +264415,6 @@ Signature
 
 ```
 
-3645
 
 Apex Reference Guide Database Class
 
@@ -268140,7 +264495,6 @@ Return Value
 
 Type: List<Database.SaveResult>
 
-3646
 
 Apex Reference Guide Database Class
 
@@ -268208,7 +264562,6 @@ For more information on how the upsert operation works, see the upsert() stateme
 Creates new sObject records or updates existing sObject records within a single statement, using a specified field to determine the
 presence of existing objects, or the ID field if no field is specified.
 
-3647
 
 Apex Reference Guide Database Class
 
@@ -268282,7 +264635,6 @@ Signature
 
 ```
 
-3648
 
 Apex Reference Guide Database Class
 
@@ -268354,7 +264706,6 @@ Each executed `upsert` method counts against the governor limit for DML statemen
 
 For more information on how the upsert operation works, see the upsert() statement.
 
-3649
 
 Apex Reference Guide Database Class
 
@@ -268427,7 +264778,6 @@ If you use the `accessLevel` parameter to specify that the method runs in user m
 The way to retrieve the names of these inaccessible fields depends on the value of this method's `allOrNone` parameter, or the
 equivalent `[DmlOptions.optAllOrNone](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database_dmloptions.htm#apex_Database_DmlOptions_optAllOrNone)` property. If you specify that:
 
-3650
 
 Apex Reference Guide Database Class
 
@@ -268495,7 +264845,6 @@ Initiates a request to update external object data on the relevant external syst
 operation, and is sent to the external system that's defined by the external object's associated external data source. Allows referencing
 a callback class whose `processSave` method is called after the remote operation is completed.
 
-3651
 
 Apex Reference Guide Database Class
 
@@ -268571,7 +264920,6 @@ this identifier with `Database.getAsyncLocator()` . Retrieve the final result wi
 Initiates a request to update external object data on the relevant external system. The request is executed asynchronously, as a background
 operation, and is sent to the external system that's defined by the external object's associated external data source.
 
-3652
 
 Apex Reference Guide Database Class
 
@@ -268647,7 +264995,6 @@ or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-l
 [ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the object permissions, field-level](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 security, and sharing rules of the current user are enforced. System mode is the default.
 
-3653
 
 Apex Reference Guide Database Class
 
@@ -268719,7 +265066,6 @@ this identifier with `Database.getAsyncLocator()` . Retrieve the final result wi
 Initiates requests to update external object data on the relevant external systems. The requests are executed asynchronously, as background
 operations, and are sent to the external systems that are defined by the external objects' associated external data sources.
 
-3654
 
 Apex Reference Guide Database Class
 
@@ -268796,7 +265142,6 @@ or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-l
 [ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the object permissions, field-level](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 security, and sharing rules of the current user are enforced. System mode is the default.
 
-3655
 
 Apex Reference Guide Database Class
 
@@ -268866,7 +265211,6 @@ Type: SObject
 
 External object record to modify.
 
-3656
 
 Apex Reference Guide Database Class
 
@@ -268935,7 +265279,6 @@ Initiates a request to update external object data on the relevant external syst
 the external system that's defined by the external object's associated external data source. If the Apex transaction contains pending
 changes, the synchronous operation can't be completed and throws an exception.
 
-3657
 
 ### Apex Reference Guide Date Class
 
@@ -269001,7 +265344,6 @@ IN THIS SECTION:
 addDays(additionalDays)
 Adds the specified number of additional days to a Date.
 
-3658
 
 Apex Reference Guide Date Class
 
@@ -269063,7 +265405,6 @@ Converts the specified object to a `Date` . Use this method to convert a history
 year()
 Returns the year component of a Date
 
-3659
 
 Apex Reference Guide Date Class
 
@@ -269139,7 +265480,6 @@ Example
 
 Adds the specified number of additional years to a Date
 
-3660
 
 Apex Reference Guide Date Class
 
@@ -269216,7 +265556,6 @@ Return Value
 
 Type: Integer
 
-3661
 
 Apex Reference Guide Date Class
 
@@ -269294,7 +265633,6 @@ Type: Integer
 
 Type: Integer
 
-3662
 
 Apex Reference Guide Date Class
 
@@ -269369,7 +265707,6 @@ Example
 
 ```
 
-3663
 
 Apex Reference Guide Date Class
 
@@ -269444,7 +265781,6 @@ Signature
 
 ```
 
-3664
 
 Apex Reference Guide Date Class
 
@@ -269528,7 +265864,6 @@ Signature
 
 ```
 
-3665
 
 Apex Reference Guide Date Class
 
@@ -269600,7 +265935,6 @@ Example
 
 Returns the start of the week for the Date that called the method, depending on the context user's locale.
 
-3666
 
 Apex Reference Guide Date Class
 
@@ -269678,7 +266012,6 @@ Example
 
 ```
 
-3667
 
 Apex Reference Guide Date Class
 
@@ -269753,7 +266086,6 @@ If the `Datetime` object is initialized using `Datetime.newInstance(year, month,
 If you call `Date.valueOf` with a `Datetime` object, the method converts the object to a valid `Date` without the time
 information.
 
-3668
 
 ### Apex Reference Guide Datetime Class
 
@@ -269815,7 +266147,6 @@ Adds the specified number of months to a Datetime.
 addSeconds(additionalSeconds)
 Adds the specified number of seconds to a Datetime.
 
-3669
 
 Apex Reference Guide Datetime Class
 
@@ -269879,7 +266210,6 @@ Return the millisecond component of a Datetime in the GMT time zone.
 minute()
 Returns the minute component of a Datetime in the local time zone of the context user.
 
-3670
 
 Apex Reference Guide Datetime Class
 
@@ -269943,7 +266273,6 @@ Datetime value.
 valueOfGmt(dateTimeString)
 Returns a Datetime that contains the value of the specified String.
 
-3671
 
 Apex Reference Guide Datetime Class
 
@@ -270021,7 +266350,6 @@ Example
 
 ```
 
-3672
 
 Apex Reference Guide Datetime Class
 
@@ -270104,7 +266432,6 @@ Example
 
 ```
 
-3673
 
 Apex Reference Guide Datetime Class
 
@@ -270184,7 +266511,6 @@ Example
 
 Returns the Date component of a Datetime in the local time zone of the context user.
 
-3674
 
 Apex Reference Guide Datetime Class
 
@@ -270266,7 +266592,6 @@ Example
 
 ```
 
-3675
 
 Apex Reference Guide Datetime Class
 
@@ -270337,7 +266662,6 @@ Return Value
 
 Type: Integer
 
-3676
 
 Apex Reference Guide Datetime Class
 
@@ -270414,7 +266738,6 @@ Usage
 
 [For more information on the Java simple date format, see Java SimpleDateFormat.](http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html)
 
-3677
 
 Apex Reference Guide Datetime Class
 
@@ -270498,7 +266821,6 @@ format.
 
 ```
 
-3678
 
 Apex Reference Guide Datetime Class
 
@@ -270574,7 +266896,6 @@ Example
 
 Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT represented by this DateTime object.
 
-3679
 
 Apex Reference Guide Datetime Class
 
@@ -270652,7 +266973,6 @@ Example
 
 ```
 
-3680
 
 Apex Reference Guide Datetime Class
 
@@ -270727,7 +267047,6 @@ Signature
 
 ```
 
-3681
 
 Apex Reference Guide Datetime Class
 
@@ -270803,7 +267122,6 @@ Signature
 
 ```
 
-3682
 
 Apex Reference Guide Datetime Class
 
@@ -270882,7 +267200,6 @@ Example
 
 ```
 
-3683
 
 Apex Reference Guide Datetime Class
 
@@ -270969,7 +267286,6 @@ Type: Datetime
 
 The returned date is in the GMT time zone.
 
-3684
 
 Apex Reference Guide Datetime Class
 
@@ -271056,7 +267372,6 @@ Signature
 
 ```
 
-3685
 
 Apex Reference Guide Datetime Class
 
@@ -271140,7 +267455,6 @@ Example
 Constructs a Datetime from Integer representations of the specified year, month (1=Jan), day, hour, minute, and second in the GMT
 time zone
 
-3686
 
 Apex Reference Guide Datetime Class
 
@@ -271232,7 +267546,6 @@ Example
 
 ```
 
-3687
 
 Apex Reference Guide Datetime Class
 
@@ -271307,7 +267620,6 @@ Example
 
 Returns the second component of a Datetime in the GMT time zone.
 
-3688
 
 Apex Reference Guide Datetime Class
 
@@ -271389,7 +267701,6 @@ Example
 
 ```
 
-3689
 
 Apex Reference Guide Datetime Class
 
@@ -271465,7 +267776,6 @@ Parameters
 
 Type: Object
 
-3690
 
 Apex Reference Guide Datetime Class
 
@@ -271549,7 +267859,6 @@ Example
 
 ```
 
-3691
 
 ### Apex Reference Guide Decimal Class
 
@@ -271618,7 +267927,6 @@ Namespace
 
 System
 
-3692
 
 Apex Reference Guide Decimal Class
 
@@ -271692,7 +268000,6 @@ value. For example:
 
 **•** Input number -2.7: `DOWN` round mode result: -2
 
-3693
 
 Apex Reference Guide Decimal Class
 
@@ -271780,7 +268087,6 @@ odd. It behaves the same as the `HALF_DOWN` rounding method if it is even. For e
 
 **•** Input number -2.7: `HALF_EVEN` round mode result: -3
 
-3694
 
 Apex Reference Guide Decimal Class
 
@@ -271877,7 +268183,6 @@ value. For example:
 
 **•** Input number 1.1: `UP` round mode result: 2
 
-3695
 
 Apex Reference Guide Decimal Class
 
@@ -271940,7 +268245,6 @@ Returns the rounded approximation of this Decimal. The number is rounded to zero
 that is, it rounds towards the “nearest neighbor” unless both neighbors are equidistant, in which case, this mode rounds towards
 the even neighbor.
 
-3696
 
 Apex Reference Guide Decimal Class
 
@@ -272009,7 +268313,6 @@ Signature
 
 ```
 
-3697
 
 Apex Reference Guide Decimal Class
 
@@ -272093,7 +268396,6 @@ Example
 
 Returns the Double value of this Decimal.
 
-3698
 
 Apex Reference Guide Decimal Class
 
@@ -272164,7 +268466,6 @@ Return Value
 
 Type: Integer
 
-3699
 
 Apex Reference Guide Decimal Class
 
@@ -272243,7 +268544,6 @@ Example
 
 ```
 
-3700
 
 Apex Reference Guide Decimal Class
 
@@ -272321,7 +268621,6 @@ Example
 
 ```
 
-3701
 
 Apex Reference Guide Decimal Class
 
@@ -272398,7 +268697,6 @@ Signature
 
 ```
 
-3702
 
 Apex Reference Guide Decimal Class
 
@@ -272478,7 +268776,6 @@ the power of the negation of _`scale`_ . For example, after this operation, the 
 
 Type: System.RoundingMode
 
-3703
 
 Apex Reference Guide Decimal Class
 
@@ -272551,7 +268848,6 @@ Example
 
 Returns a Decimal that contains the value of the specified Double.
 
-3704
 
 Apex Reference Guide Decimal Class
 
@@ -272630,7 +268926,6 @@ Signature
 
 ```
 
-3705
 
 ### Apex Reference Guide Domain Class
 
@@ -272693,7 +268988,6 @@ IN THIS SECTION:
 getDomainType()
 Returns the domain’s type, such as `CONTENT_DOMAIN`, `EXPERIENCE_CLOUD_SITES_DOMAIN`, or `LIGHTNING_DOMAIN` .
 
-3706
 
 Apex Reference Guide Domain Class
 
@@ -272760,7 +269054,6 @@ Return Value
 
 Type: String
 
-3707
 
 ### Apex Reference Guide DomainCreator Class
 
@@ -272824,7 +269117,6 @@ In this case, in a production org with a My Domain name of `mycompany`, `myDomai
 `mycompany.my.salesforce.com` . And in the same production org, `vfHostname` returns
 `mycompany--uat.vf.force.com` .
 
-3708
 
 Apex Reference Guide DomainCreator Class
 
@@ -272887,7 +269179,6 @@ Returns the hostname for the org’s Salesforce Sites. If Salesforce Sites aren�
 getSetupHostname()
 Returns the hostname for the org’s setup domain, which hosts Setup pages in Salesforce.
 
-3709
 
 Apex Reference Guide DomainCreator Class
 
@@ -272952,7 +269243,6 @@ Signature
 
 ```
 
-3710
 
 Apex Reference Guide DomainCreator Class
 
@@ -273021,7 +269311,6 @@ Type: String
 
 Returns the hostname for the org’s My Domain login domain.
 
-3711
 
 Apex Reference Guide DomainCreator Class
 
@@ -273094,7 +269383,6 @@ Return Value
 
 Type: String
 
-3712
 
 ### Apex Reference Guide DomainParser Class DomainParser Class
 
@@ -273158,7 +269446,6 @@ Parses a passed uniform resource locator (URL) of a domain that Salesforce hosts
 
 Parses a passed hostname of a domain that Salesforce hosts for the org, and returns the System.Domain.
 
-3713
 
 ### Apex Reference Guide DomainType Enum
 
@@ -273227,7 +269514,6 @@ Usage
 
 ### Use the DomainType enum to obtain the type of a domain parsed through the System.DomainParser class.
 
-3714
 
 ### Apex Reference Guide Double Class
 
@@ -273286,7 +269572,6 @@ IN THIS SECTION:
 format()
 Returns the String value for this Double using the locale of the context user
 
-3715
 
 Apex Reference Guide Double Class
 
@@ -273357,7 +269642,6 @@ Example
 
 ```
 
-3716
 
 Apex Reference Guide Double Class
 
@@ -273436,7 +269720,6 @@ Signature
 
 ```
 
-3717
 
 Apex Reference Guide Double Class
 
@@ -273515,7 +269798,6 @@ Example
 
 ```
 
-3718
 
 ### Apex Reference Guide EmailMessages Class EmailMessages Class Use the methods in the EmailMessages class to interact with emails and email threading.
 
@@ -273578,7 +269860,6 @@ When sending emails in Apex, use the returned string to match emails to a record
 thread. Embed the formatted token in the body or subject of outgoing emails. To find the corresponding record ID in incoming emails,
 use EmailMessages.getRecordIdFromEmail(subject, textBody, htmlBody) on page 3720.
 
-3719
 
 Apex Reference Guide EmailMessages Class
 
@@ -273663,7 +269944,6 @@ Type: String
 
 The body of the email in HTML format.
 
-3720
 
 Apex Reference Guide EmailMessages Class
 
@@ -273745,7 +270025,6 @@ In this example, we rely on threading tokens and use header-based threading as a
 
 ```
 
-3721
 
 ### Apex Reference Guide EncodingUtil Class
 
@@ -273834,7 +270113,6 @@ In this example, we rely on threading tokens and use header-based threading as a
 
 ```
 
-3722
 
 Apex Reference Guide EncodingUtil Class
 
@@ -273896,7 +270174,6 @@ Return Value
 
 Type: Blob
 
-3723
 
 Apex Reference Guide EncodingUtil Class
 
@@ -273969,7 +270246,6 @@ Example
 
 ```
 
-3724
 
 Apex Reference Guide EncodingUtil Class
 
@@ -274043,7 +270319,6 @@ Signature
 
 ```
 
-3725
 
 ### Apex Reference Guide Enum Methods
 
@@ -274125,7 +270400,6 @@ Enum values cannot have user-defined methods added to them.
 
 [For more information about Enum, see Enums.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_enums.htm)
 
-3726
 
 ### Apex Reference Guide EventBus Class
 
@@ -274186,7 +270460,6 @@ an Apex publish callback.
 
 Returns the event UUID, which identifies a published event message.
 
-3727
 
 Apex Reference Guide EventBus Class
 
@@ -274255,7 +270528,6 @@ subscribers. It isn’t used to identify an event message, and isn’t always un
 This method returns a `System.UnexpectedException` if you attempt to publish an `SObject` that represents an object that
 isn’t a platform event.
 
-3728
 
 Apex Reference Guide EventBus Class
 
@@ -274321,7 +270593,6 @@ Usage
 **•** Apex governor limits apply. For events configured with the **Publish After Commit** behavior, each method execution is counted as
 one DML statement against the Apex DML statement limit. You can check limit usage using the `Limits.getDMLStatements()`
 
-3729
 
 Apex Reference Guide EventBus Class
 
@@ -274387,7 +270658,6 @@ on page 3828 method. For events configured with the **Publish Immediately** beha
 a separate event publishing limit of 150 `EventBus.publish()` calls. You can check limit usage using the
 `Limits.getPublishImmediateDML()` on page 3831 method.
 
-3730
 
 Apex Reference Guide EventBus Class
 
@@ -274454,7 +270724,6 @@ on page 3828 method. For events configured with the **Publish Immediately** beha
 a separate event publishing limit of 150 `EventBus.publish()` calls. You can check limit usage using the
 `Limits.getPublishImmediateDML()` on page 3831 method.
 
-3731
 
 ### Apex Reference Guide Exception Class and Built-In Exceptions Exception Class and Built-In Exceptions
 
@@ -274520,7 +270789,6 @@ An illegal header argument was provided to an Apex REST call. For example, a cal
 the `RestResponse.addHeader(name, value)` method throws this
 exception if the header name is `cookie` .
 
-3732
 
 Apex Reference Guide Exception Class and Built-In Exceptions
 
@@ -274608,7 +270876,6 @@ s.toLowerCase(); // Since s is null, this call causes
 `QueryException` Any problem with SOQL queries, such as assigning a query that returns no records or
 more than one record to a singleton sObject variable.
 
-3733
 
 Apex Reference Guide Exception Class and Built-In Exceptions
 
@@ -274688,7 +270955,6 @@ For exceptions in other namespaces, see:
 
 **•** Reports Exceptions
 
-3734
 
 Apex Reference Guide Exception Class and Built-In Exceptions
 
@@ -274745,7 +271011,6 @@ failure code for the _`i`_ _`[th]`_ failed row.
 
 `getDmlType` Integer _`i`_ [System.StatusCode](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_enums.htm)
 
-3735
 
 Returns the value of the System.StatusCode enum. For
 example:
@@ -274827,7 +271092,6 @@ field level security access to the `Contact.Email` and
 
 ```
 
-3736
 
 ### Apex Reference Guide ExternalServiceTest Class ExternalServiceTest Class
 
@@ -274887,7 +271151,6 @@ Return Value
 
 Type: System.HttpResponse on page 3763
 
-3737
 
 ### Apex Reference Guide FlexQueue Class FlexQueue Class
 
@@ -274942,7 +271205,6 @@ move _`jobToMoveId`_ forward or backward in the queue. If either job isn’t in 
 Returns `true` if the job is moved, or `false` if _`jobToMoveId`_ is already immediately after _`jobInQueueId`_, so no change
 is made.
 
-3738
 
 Apex Reference Guide FlexQueue Class
 
@@ -275013,7 +271275,6 @@ Signature
 
 ```
 
-3739
 
 Apex Reference Guide FlexQueue Class
 
@@ -275089,7 +271350,6 @@ Type: Id
 
 The ID of the job to move.
 
-3740
 
 ### Apex Reference Guide FeatureManagement Class
 
@@ -275145,7 +271405,6 @@ setPackageBooleanValue(apiName, value)
 Sets the `value__c` value of the `FeatureParameterBoolean__c` record for a subscriber-to-LMO feature parameter in
 your subscriber’s org. You can check the record’s value using `checkPackageBooleanValue(apiName)` .
 
-3741
 
 Apex Reference Guide FeatureManagement Class
 
@@ -275219,7 +271478,6 @@ To hide custom permissions in released packages:
 
 ```
 
-3742
 
 Apex Reference Guide FeatureManagement Class
 
@@ -275293,7 +271551,6 @@ Return Value
 
 Type: Date
 
-3743
 
 Apex Reference Guide FeatureManagement Class
 
@@ -275361,7 +271618,6 @@ Shows whether the permission is enabled ( `true` ) or disabled ( `false` ).
 Sets the `value__c` value of the `FeatureParameterBoolean__c` record for a subscriber-to-LMO feature parameter in your
 subscriber’s org. You can check the record’s value using `checkPackageBooleanValue(apiName)` .
 
-3744
 
 Apex Reference Guide FeatureManagement Class
 
@@ -275437,7 +271693,6 @@ Type: void
 Sets the `value__c` value of the `FeatureParameterInteger__c` record for a subscriber-to-LMO feature parameter in your
 subscriber’s org. You can check the record’s value using `checkPackageIntegerValue(apiName)` .
 
-3745
 
 ### Apex Reference Guide Formula Class
 
@@ -275509,7 +271764,6 @@ IN THIS SECTION:
 
 Formula Methods
 
-3746
 
 Apex Reference Guide Formula Class
 
@@ -275576,7 +271830,6 @@ required to evaluate a formula field is missing, that data is retrieved and limi
 
 The new formula values are stored in the SObjects themselves and overwrite previous values of formula fields.
 
-3747
 
 ### Apex Reference Guide FormulaRecalcFieldError Class
 
@@ -275643,7 +271896,6 @@ Return Value
 
 Type: String
 
-3748
 
 ### Apex Reference Guide FormulaRecalcResult Class
 
@@ -275708,7 +271960,6 @@ getErrors()
 If an error occurs during formula recalculation, an array of one or more database error objects, along with error codes and descriptions,
 is returned.
 
-3749
 
 ### Apex Reference Guide Http Class
 
@@ -275772,7 +272023,6 @@ Namespace
 
 System
 
-3750
 
 ### Apex Reference Guide HttpCalloutMock Interface
 
@@ -275834,7 +272084,6 @@ Namespace
 
 System
 
-3751
 
 ### Apex Reference Guide HttpRequest Class
 
@@ -275892,7 +272141,6 @@ The following example illustrates how you can use an authorization header with a
 
 ```
 
-3752
 
 Apex Reference Guide HttpRequest Class
 
@@ -275973,7 +272221,6 @@ _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.
 
 _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_xml_support.htm)_ : XML Support
 
-3753
 
 Apex Reference Guide HttpRequest Class
 
@@ -276032,7 +272279,6 @@ Sets the contents of the body for this request. The contents represent a DOM doc
 setClientCertificate(clientCert, password)
 This method is deprecated. Use `setClientCertificateName` instead.
 
-3754
 
 Apex Reference Guide HttpRequest Class
 
@@ -276098,7 +272344,6 @@ Type: Blob
 
 Retrieves the body of this request as a DOM document.
 
-3755
 
 Apex Reference Guide HttpRequest Class
 
@@ -276173,7 +272418,6 @@ Parameters
 
 Type: String
 
-3756
 
 Apex Reference Guide HttpRequest Class
 
@@ -276243,7 +272487,6 @@ Limit: 6 MB for synchronous Apex or 12 MB for asynchronous Apex.
 
 The HTTP request and response sizes count towards the total heap size.
 
-3757
 
 Apex Reference Guide HttpRequest Class
 
@@ -276314,7 +272557,6 @@ Signature
 
 ```
 
-3758
 
 Apex Reference Guide HttpRequest Class
 
@@ -276386,7 +272628,6 @@ Parameters
 
 Type: Boolean
 
-3759
 
 Apex Reference Guide HttpRequest Class
 
@@ -276463,7 +272704,6 @@ Type: String
 
 Type: String
 
-3760
 
 Apex Reference Guide HttpRequest Class
 
@@ -276531,7 +272771,6 @@ Signature
 
 ```
 
-3761
 
 ### Apex Reference Guide HttpResponse Class
 
@@ -276605,7 +272844,6 @@ the `XmlStreamReader` class.
 
 ```
 
-3762
 
 Apex Reference Guide HttpResponse Class
 
@@ -276675,7 +272913,6 @@ Returns an `XmlStreamReader` that parses the body of the callout response.
 setBody(body)
 Specifies the body returned in the response.
 
-3763
 
 Apex Reference Guide HttpResponse Class
 
@@ -276738,7 +272975,6 @@ size.
 
 Retrieves the body returned in the response as a DOM document.
 
-3764
 
 Apex Reference Guide HttpResponse Class
 
@@ -276813,7 +273049,6 @@ Signature
 
 ```
 
-3765
 
 Apex Reference Guide HttpResponse Class
 
@@ -276885,7 +273120,6 @@ Return Value
 
 Type: Void
 
-3766
 
 Apex Reference Guide HttpResponse Class
 
@@ -276960,7 +273194,6 @@ Parameters
 
 Type: String
 
-3767
 
 ### Apex Reference Guide Id Class
 
@@ -277027,7 +273260,6 @@ This sample shows how to use the `getSObjectType` method to obtain an sObject to
 in this sample accepts a list of IDs of the sObjects to update the ownerId field of. This list contains IDs of sObjects of the same type. The
 second parameter is the new owner ID. Note that since it is a future method, it doesn’t accept sObject types as parameters; this is why
 
-3768
 
 Apex Reference Guide Id Class
 
@@ -277121,7 +273353,6 @@ and constructs a query dynamicallly. It then queries for all sObjects and update
 
 ```
 
-3769
 
 Apex Reference Guide Id Class
 
@@ -277187,7 +273418,6 @@ Note: This method escapes any HTML markup in the specified error message. The es
 `\u2028`, `\u2029`, and `\u00a9` . As a result, HTML markup is not rendered; instead, it is displayed as text in the Salesforce user
 interface.
 
-3770
 
 Apex Reference Guide Id Class
 
@@ -277256,7 +273486,6 @@ Example
 
 Marks a trigger record with a custom error message and prevents any DML operation from occurring.
 
-3771
 
 Apex Reference Guide Id Class
 
@@ -277332,7 +273561,6 @@ Return Value
 
 Type: Void
 
-3772
 
 Apex Reference Guide Id Class
 
@@ -277401,7 +273629,6 @@ Signature
 
 ```
 
-3773
 
 Apex Reference Guide Id Class
 
@@ -277477,7 +273704,6 @@ Parameters
 
 Type: String
 
-3774
 
 ### Apex Reference Guide Ideas Class
 
@@ -277525,7 +273751,6 @@ string, then all recent replies for the specified user are returned regardless o
 
 For more information on ideas, see “Using Ideas” in the Salesforce online help.
 
-3775
 
 Apex Reference Guide Ideas Class
 
@@ -277609,7 +273834,6 @@ The following is the markup for a Visualforce page that uses the above custom co
 
 ```
 
-3776
 
 Apex Reference Guide Ideas Class
 
@@ -277699,7 +273923,6 @@ The following is the markup for a Visualforce page that uses the above custom co
 
 ```
 
-3777
 
 Apex Reference Guide Ideas Class
 
@@ -277765,7 +273988,6 @@ Signature
 
 ```
 
-3778
 
 Apex Reference Guide Ideas Class
 
@@ -277841,7 +274063,6 @@ Parameters
 
 Type: String
 
-3779
 
 ### Apex Reference Guide InstallHandler Interface
 
@@ -277906,7 +274127,6 @@ field of the package. If no user is specified, the install or upgrade details ar
 
 The post install script has the following additional properties.
 
-3780
 
 Apex Reference Guide InstallHandler Interface
 
@@ -277984,7 +274204,6 @@ Specifies the actions to be performed on install/upgrade.
 
 Specifies the actions to be performed on install/upgrade.
 
-3781
 
 Apex Reference Guide InstallHandler Interface
 
@@ -278078,7 +274297,6 @@ The following sample post install script performs these actions on package insta
 
 ```
 
-3782
 
 ### Apex Reference Guide Integer Class
 
@@ -278157,7 +274375,6 @@ valueOf(stringToInteger)
 Returns an Integer that contains the value of the specified String. As in Java, the String is interpreted as representing a signed decimal
 integer.
 
-3783
 
 Apex Reference Guide Integer Class
 
@@ -278237,7 +274454,6 @@ A `TypeException` is returned if you attempt to convert a string to an invalid i
 
 ```
 
-3784
 
 ### Apex Reference Guide JSON Class
 
@@ -278308,7 +274524,6 @@ Namespace
 
 System
 
-3785
 
 Apex Reference Guide JSON Class
 
@@ -278372,7 +274587,6 @@ Parameters
 
 Type: Boolean
 
-3786
 
 Apex Reference Guide JSON Class
 
@@ -278441,7 +274655,6 @@ Return Value
 
 Type: Object
 
-3787
 
 Apex Reference Guide JSON Class
 
@@ -278518,7 +274731,6 @@ also defines.
 
 ```
 
-3788
 
 Apex Reference Guide JSON Class
 
@@ -278610,7 +274822,6 @@ further collections of primitive types. It then verifies the deserialized values
 
 ```
 
-3789
 
 Apex Reference Guide JSON Class
 
@@ -278700,7 +274911,6 @@ Return Value
 
 Type: String
 
-3790
 
 Apex Reference Guide JSON Class
 
@@ -278779,7 +274989,6 @@ Signature
 
 ```
 
-3791
 
 ### Apex Reference Guide JSONGenerator Class
 
@@ -278842,7 +275051,6 @@ Namespace
 
 System
 
-3792
 
 Apex Reference Guide JSONGenerator Class
 
@@ -278902,7 +275110,6 @@ Writes the ending marker of a JSON object ('}').
 writeFieldName(fieldName)
 Writes a field name.
 
-3793
 
 Apex Reference Guide JSONGenerator Class
 
@@ -278966,7 +275173,6 @@ Writes the specified time value in the ISO-8601 format.
 writeTimeField(fieldName, timeValue)
 Writes a field name and value pair using the specified field name and time value in the ISO-8601 format.
 
-3794
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279034,7 +275240,6 @@ Signature
 
 ```
 
-3795
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279106,7 +275311,6 @@ Type: Void
 
 Writes a field name and value pair using the specified field name and Boolean value.
 
-3796
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279187,7 +275391,6 @@ Return Value
 
 Type: Void
 
-3797
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279259,7 +275462,6 @@ Return Value
 
 Type: Void
 
-3798
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279328,7 +275530,6 @@ Type: Void
 
 Writes a field name and value pair using the specified field name and identifier value.
 
-3799
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279406,7 +275607,6 @@ Signature
 
 ```
 
-3800
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279479,7 +275679,6 @@ Signature
 
 ```
 
-3801
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279557,7 +275756,6 @@ Type: Void
 
 Writes a field name and value pair using the specified field name and integer value.
 
-3802
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279638,7 +275836,6 @@ Return Value
 
 Type: Void
 
-3803
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279712,7 +275909,6 @@ Signature
 
 ```
 
-3804
 
 Apex Reference Guide JSONGenerator Class
 
@@ -279784,7 +275980,6 @@ Type: Void
 
 Writes a field name and value pair using the specified field name and time value in the ISO-8601 format.
 
-3805
 
 ### Apex Reference Guide JSONParser Class
 
@@ -279851,7 +276046,6 @@ Returns the name associated with the current token.
 getCurrentToken()
 Returns the token that the parser currently points to or `null` if there's no current token.
 
-3806
 
 Apex Reference Guide JSONParser Class
 
@@ -279916,7 +276110,6 @@ Signature
 
 ```
 
-3807
 
 Apex Reference Guide JSONParser Class
 
@@ -279992,7 +276185,6 @@ The following example parses a sample JSON string and retrieves a Boolean value.
 
 ```
 
-3808
 
 Apex Reference Guide JSONParser Class
 
@@ -280074,7 +276266,6 @@ The following example iterates through all the tokens in a sample JSON string.
 
 ```
 
-3809
 
 Apex Reference Guide JSONParser Class
 
@@ -280158,7 +276349,6 @@ Usage
 
 The current token must be of type `JSONToken.VALUE_STRING` and must represent a `Date` value in the ISO-8601 format.
 
-3810
 
 Apex Reference Guide JSONParser Class
 
@@ -280243,7 +276433,6 @@ Signature
 
 ```
 
-3811
 
 Apex Reference Guide JSONParser Class
 
@@ -280329,7 +276518,6 @@ The following example parses a sample JSON string and retrieves an ID value.
 
 Returns the current token as an integer value.
 
-3812
 
 Apex Reference Guide JSONParser Class
 
@@ -280408,7 +276596,6 @@ Usage
 The current token must be of type `JSONToken.VALUE_NUMBER_INT` and is a numerical value that can be converted to a value
 of type `Long` .
 
-3813
 
 Apex Reference Guide JSONParser Class
 
@@ -280491,7 +276678,6 @@ The following example parses a sample JSON string and retrieves a Datetime value
 
 ```
 
-3814
 
 Apex Reference Guide JSONParser Class
 
@@ -280562,7 +276748,6 @@ Usage
 Advances the stream enough to determine the type of the next token that is of a value type, if any, including a JSON array and object
 start and end markers.
 
-3815
 
 Apex Reference Guide JSONParser Class
 
@@ -280650,7 +276835,6 @@ Next, insert the following sample in a class method:
 
 ```
 
-3816
 
 Apex Reference Guide JSONParser Class
 
@@ -280741,7 +276925,6 @@ Next, insert the following sample in a class method:
 
 ```
 
-3817
 
 ### Apex Reference Guide JSONToken Enum
 
@@ -280816,7 +276999,6 @@ encountered.
 START_OBJECT The start of an object value. This token is returned when '{' is
 encountered.
 
-3818
 
 ### Apex Reference Guide Label Class
 
@@ -280877,7 +277059,6 @@ System.Label. myLabelName
 
 [For information on passing in labels into Aura components, see Getting Labels in Apex in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.lightning.meta/lightning/labels_apex.htm) _Lightning Aura Components Developer Guide_ .
 
-3819
 
 Apex Reference Guide Label Class
 
@@ -280947,7 +277128,6 @@ Return Value
 
 Type: String
 
-3820
 
 Apex Reference Guide Label Class
 
@@ -281033,7 +277213,6 @@ Type: String
 [This parameter must be a valid language ISO code. See the Platform-Only Languages section in Supported Languages in Salesforce](https://help.salesforce.com/s/articleView?id=sf.faq_getstart_what_languages_does.htm&language=en_US)
 Help.
 
-3821
 
 ### Apex Reference Guide Limits Class
 
@@ -281096,7 +277275,6 @@ Gets the maximum number of fetch calls that can be made on an Apex cursor.
 getAsyncCalls()
 Reserved for future use.
 
-3822
 
 Apex Reference Guide Limits Class
 
@@ -281159,7 +277337,6 @@ Returns the approximate amount of memory (in bytes) that has been used for the h
 getLimitHeapSize()
 Returns the total amount of memory (in bytes) that can be used for the heap.
 
-3823
 
 Apex Reference Guide Limits Class
 
@@ -281223,7 +277400,6 @@ Deprecated. Returns the same value as `getLimitDMLStatements` .
 getSoslQueries()
 Returns the number of SOSL queries that have been issued.
 
-3824
 
 Apex Reference Guide Limits Class
 
@@ -281290,7 +277466,6 @@ Return Value
 
 Type: Integer
 
-3825
 
 Apex Reference Guide Limits Class
 
@@ -281358,7 +277533,6 @@ Type: Integer
 
 Returns the number of Web service statements that have been processed.
 
-3826
 
 Apex Reference Guide Limits Class
 
@@ -281423,7 +277597,6 @@ Return Value
 
 Type: Integer
 
-3827
 
 Apex Reference Guide Limits Class
 
@@ -281490,7 +277663,6 @@ Return Value
 
 Type: Integer
 
-3828
 
 Apex Reference Guide Limits Class
 
@@ -281555,7 +277727,6 @@ Return Value
 
 Type: Integer
 
-3829
 
 Apex Reference Guide Limits Class
 
@@ -281620,7 +277791,6 @@ Return Value
 
 Type: Integer
 
-3830
 
 Apex Reference Guide Limits Class
 
@@ -281688,7 +277858,6 @@ Type: Integer
 
 Returns the total number of `EventBus.publish` statements that can be called for platform events configured to publish immediately.
 
-3831
 
 Apex Reference Guide Limits Class
 
@@ -281759,7 +277928,6 @@ Signature
 
 ```
 
-3832
 
 Apex Reference Guide Limits Class
 
@@ -281825,7 +277993,6 @@ Signature
 
 ```
 
-3833
 
 Apex Reference Guide Limits Class
 
@@ -281890,7 +278057,6 @@ Usage
 
 The number of `Rollback` methods is no longer a separate limit, but is tracked as the number of DML statements issued.
 
-3834
 
 Apex Reference Guide Limits Class
 
@@ -281955,7 +278121,6 @@ The number of `setSavepoint` methods is no longer a separate limit, but is track
 
 Returns the number of SOSL queries that have been issued.
 
-3835
 
 ### Apex Reference Guide List Class
 
@@ -282022,7 +278187,6 @@ List Constructors
 
 List Methods
 
-3836
 
 Apex Reference Guide List Class
 
@@ -282091,7 +278255,6 @@ Type: List<T>
 
 The list containing the elements to initialize this list from. T is the data type of the list elements.
 
-3837
 
 Apex Reference Guide List Class
 
@@ -282167,7 +278330,6 @@ Inserts an element into the list at the specified index position and shifts all 
 addAll(fromList)
 Adds all of the elements in the specified list to the list that calls the method. Both lists must be of the same type.
 
-3838
 
 Apex Reference Guide List Class
 
@@ -282233,7 +278395,6 @@ Signature
 
 ```
 
-3839
 
 Apex Reference Guide List Class
 
@@ -282313,7 +278474,6 @@ are shifted to the right. After the two methods are called, the list has eight t
 
 Adds all of the elements in the specified list to the list that calls the method. Both lists must be of the same type.
 
-3840
 
 Apex Reference Guide List Class
 
@@ -282385,7 +278545,6 @@ Signature
 
 ```
 
-3841
 
 Apex Reference Guide List Class
 
@@ -282463,7 +278622,6 @@ Example
 
 ```
 
-3842
 
 Apex Reference Guide List Class
 
@@ -282540,7 +278698,6 @@ This example performs a deep clone for a list with two accounts.
 
 ```
 
-3843
 
 Apex Reference Guide List Class
 
@@ -282631,7 +278788,6 @@ Type: List
 
 The list to compare this list with.
 
-3844
 
 Apex Reference Guide List Class
 
@@ -282702,7 +278858,6 @@ Example
 
 Returns the token of the sObject type that makes up a list of sObjects.
 
-3845
 
 Apex Reference Guide List Class
 
@@ -282775,7 +278930,6 @@ Type: Integer
 
 Returns the index of the first occurrence of the specified element in this list. If this list does not contain the element, returns -1.
 
-3846
 
 Apex Reference Guide List Class
 
@@ -282847,7 +279001,6 @@ Note: You don’t have to implement the `iterable` interface to use the `iterabl
 
 [See Custom Iterators.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_iterable.htm)
 
-3847
 
 Apex Reference Guide List Class
 
@@ -282934,7 +279087,6 @@ Example
 
 ```
 
-3848
 
 Apex Reference Guide List Class
 
@@ -283012,7 +279164,6 @@ Return Value
 
 Type: Integer
 
-3849
 
 Apex Reference Guide List Class
 
@@ -283079,7 +279230,6 @@ The second element and third element have values of 5 and 10.
 
 ```
 
-3850
 
 ### Apex Reference Guide Location Class
 
@@ -283146,7 +279296,6 @@ Important: “Location” in Salesforce can also refer to the Location standard 
 field. If referencing both the location object and the Location field in the same snippet, you can differentiate between the two by
 using `System.Location` for the field and `Schema.Location` for the object.
 
-3851
 
 Apex Reference Guide Location Class
 
@@ -283219,7 +279368,6 @@ Signature
 
 ```
 
-3852
 
 Apex Reference Guide Location Class
 
@@ -283299,7 +279447,6 @@ Signature
 
 ```
 
-3853
 
 ### Apex Reference Guide LoggingLevel Enum
 
@@ -283368,7 +279515,6 @@ that is, if you select FINE, the log also includes all events logged at the DEBU
 
 `WARN` Warning logging.
 
-3854
 
 ### Apex Reference Guide Long Class
 
@@ -283428,7 +279574,6 @@ valueOf(stringToLong)
 Returns a Long that contains the value of the specified String. As in Java, the string is interpreted as representing a signed decimal
 Long.
 
-3855
 
 Apex Reference Guide Long Class
 
@@ -283505,7 +279650,6 @@ Return Value
 
 Type: Long
 
-3856
 
 ### Apex Reference Guide Map Class
 
@@ -283564,7 +279708,6 @@ IN THIS SECTION:
 Map<T1,T2>()
 ### Creates a new instance of the Map class. T1 is the data type of the keys and T2 is the data type of the values.
 
-3857
 
 Apex Reference Guide Map Class
 
@@ -283635,7 +279778,6 @@ Example
 
 ```
 
-3858
 
 Apex Reference Guide Map Class
 
@@ -283702,7 +279844,6 @@ Returns the hashcode corresponding to this map.
 isEmpty()
 Returns true if the map has zero key-value pairs.
 
-3859
 
 Apex Reference Guide Map Class
 
@@ -283767,7 +279908,6 @@ references to each sObject record, but the records themselves are not duplicated
 
 To also copy the sObject records, you must use the `deepClone` method.
 
-3860
 
 Apex Reference Guide Map Class
 
@@ -283846,7 +279986,6 @@ Example
 
 ```
 
-3861
 
 Apex Reference Guide Map Class
 
@@ -283921,7 +280060,6 @@ Return Value
 
 Type: Boolean
 
-3862
 
 Apex Reference Guide Map Class
 
@@ -283992,7 +280130,6 @@ Signature
 
 ```
 
-3863
 
 Apex Reference Guide Map Class
 
@@ -284067,7 +280204,6 @@ Return Value
 
 Type: Boolean
 
-3864
 
 Apex Reference Guide Map Class
 
@@ -284141,7 +280277,6 @@ Return Value
 
 Type: Object
 
-3865
 
 Apex Reference Guide Map Class
 
@@ -284215,7 +280350,6 @@ Example
 
 Adds the list of sObject records to a map declared as Map<ID, sObject> or Map<String, sObject>.
 
-3866
 
 Apex Reference Guide Map Class
 
@@ -284292,7 +280426,6 @@ Usage
 
 If the key is a string, the key value is case-sensitive.
 
-3867
 
 Apex Reference Guide Map Class
 
@@ -284365,7 +280498,6 @@ truncated to avoid exceeding total heap size and maximum CPU time.
 
 **•** Up to 10 items per collection are included in the output, followed by an ellipsis (…).
 
-3868
 
 ### Apex Reference Guide Matcher Class
 
@@ -284426,7 +280558,6 @@ IN THIS SECTION:
 end()
 Returns the position after the last matched character.
 
-3869
 
 Apex Reference Guide Matcher Class
 
@@ -284489,7 +280620,6 @@ Returns the start index (inclusive) of this Matcher object's region.
 replaceAll(replacementString)
 Replaces every subsequence of the input sequence that matches the pattern with the replacement string.
 
-3870
 
 Apex Reference Guide Matcher Class
 
@@ -284550,7 +280680,6 @@ Signature
 
 ```
 
-3871
 
 Apex Reference Guide Matcher Class
 
@@ -284618,7 +280747,6 @@ Parameters
 
 Type: Integer
 
-3872
 
 Apex Reference Guide Matcher Class
 
@@ -284682,7 +280810,6 @@ matches the empty string in the input.
 
 [See Understanding Capturing Groups.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_pattern_and_matcher_capturing_groups.htm)
 
-3873
 
 Apex Reference Guide Matcher Class
 
@@ -284748,7 +280875,6 @@ Usage
 
 [For more information, see Using Bounds.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_pattern_and_matcher_bounds.htm)
 
-3874
 
 Apex Reference Guide Matcher Class
 
@@ -284814,7 +280940,6 @@ If the match succeeds, more information can be obtained using the `start`, `end`
 
 [See Using Regions.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_pattern_and_matcher_regions.htm)
 
-3875
 
 Apex Reference Guide Matcher Class
 
@@ -284886,7 +281011,6 @@ Type: Integer
 
 Type: Integer
 
-3876
 
 Apex Reference Guide Matcher Class
 
@@ -284953,7 +281077,6 @@ Signature
 
 ```
 
-3877
 
 Apex Reference Guide Matcher Class
 
@@ -285020,7 +281143,6 @@ first be reset.
 Given the regular expression `dog`, the input `"zzzdogzzzdogzzz"`, and the replacement string `"cat"`, an invocation of this
 method on a Matcher object for that expression would return the string `"zzzcatzzzdogzzz"` .
 
-3878
 
 Apex Reference Guide Matcher Class
 
@@ -285086,7 +281208,6 @@ Parameters
 
 Type: String
 
-3879
 
 Apex Reference Guide Matcher Class
 
@@ -285157,7 +281278,6 @@ Parameters
 
 Type: Boolean
 
-3880
 
 Apex Reference Guide Matcher Class
 
@@ -285223,7 +281343,6 @@ Return Value
 
 Type: Matcher
 
-3881
 
 ### Apex Reference Guide Math Class
 
@@ -285287,7 +281406,6 @@ Type: Double
 
 ### The following are methods for Math . All methods are static.
 
-3882
 
 Apex Reference Guide Math Class
 
@@ -285351,7 +281469,6 @@ Returns the trigonometric cosine of the angle specified by _`decimalAngle`_ .
 cos(doubleAngle)
 Returns the trigonometric cosine of the angle specified by _`doubleAngle`_ .
 
-3883
 
 Apex Reference Guide Math Class
 
@@ -285415,7 +281532,6 @@ Returns the remainder of _`integerValue1`_ divided by _`integerValue2`_ .
 mod(longValue1, longValue2)
 Returns the remainder of _`longValue1`_ divided by _`longValue2`_ .
 
-3884
 
 Apex Reference Guide Math Class
 
@@ -285476,7 +281592,6 @@ Returns the correctly rounded positive square root of _`decimalValue`_ .
 sqrt(doubleValue)
 Returns the correctly rounded positive square root of _`doubleValue`_ .
 
-3885
 
 Apex Reference Guide Math Class
 
@@ -285542,7 +281657,6 @@ Return Value
 
 Type: Double
 
-3886
 
 Apex Reference Guide Math Class
 
@@ -285614,7 +281728,6 @@ Signature
 
 ```
 
-3887
 
 Apex Reference Guide Math Class
 
@@ -285687,7 +281800,6 @@ Signature
 
 ```
 
-3888
 
 Apex Reference Guide Math Class
 
@@ -285761,7 +281873,6 @@ Signature
 
 ```
 
-3889
 
 Apex Reference Guide Math Class
 
@@ -285836,7 +281947,6 @@ Return Value
 
 Type: Decimal
 
-3890
 
 Apex Reference Guide Math Class
 
@@ -285909,7 +282019,6 @@ Return Value
 
 Type: Double
 
-3891
 
 Apex Reference Guide Math Class
 
@@ -285982,7 +282091,6 @@ Return Value
 
 Type: Decimal
 
-3892
 
 Apex Reference Guide Math Class
 
@@ -286049,7 +282157,6 @@ Return Value
 
 Type: Double
 
-3893
 
 Apex Reference Guide Math Class
 
@@ -286122,7 +282229,6 @@ Return Value
 
 Type: Decimal
 
-3894
 
 Apex Reference Guide Math Class
 
@@ -286195,7 +282301,6 @@ Return Value
 
 Type: Double
 
-3895
 
 Apex Reference Guide Math Class
 
@@ -286277,7 +282382,6 @@ Signature
 
 ```
 
-3896
 
 Apex Reference Guide Math Class
 
@@ -286357,7 +282461,6 @@ Return Value
 
 Type: Decimal
 
-3897
 
 Apex Reference Guide Math Class
 
@@ -286439,7 +282542,6 @@ Signature
 
 ```
 
-3898
 
 Apex Reference Guide Math Class
 
@@ -286522,7 +282624,6 @@ Parameters
 
 Type: Long
 
-3899
 
 Apex Reference Guide Math Class
 
@@ -286599,7 +282700,6 @@ Parameters
 
 Type: Decimal
 
-3900
 
 Apex Reference Guide Math Class
 
@@ -286667,7 +282767,6 @@ Signature
 
 ```
 
-3901
 
 Apex Reference Guide Math Class
 
@@ -286744,7 +282843,6 @@ Example
 
 ```
 
-3902
 
 Apex Reference Guide Math Class
 
@@ -286816,7 +282914,6 @@ Signature
 
 ```
 
-3903
 
 Apex Reference Guide Math Class
 
@@ -286890,7 +282987,6 @@ Signature
 
 ```
 
-3904
 
 Apex Reference Guide Math Class
 
@@ -286964,7 +283060,6 @@ Signature
 
 ```
 
-3905
 
 Apex Reference Guide Math Class
 
@@ -287033,7 +283128,6 @@ Returns the hyperbolic tangent of _`decimalAngle`_ . The hyperbolic tangent of _
 
 less than 1.
 
-3906
 
 ### Apex Reference Guide Messaging Class
 
@@ -287101,7 +283195,6 @@ Use this method in your email service code to control how to parse and process f
 of `Messaging.InboundEmail` from a stream of data that is in RFC822 format. The data stream can be a forwarded email in
 an attachment to an existing InboundEmail, or a stream from another source.
 
-3907
 
 Apex Reference Guide Messaging Class
 
@@ -287166,7 +283259,6 @@ Type: Object
 An instance of `Messaging.InboundEmail.BinaryAttachment` whose MimeTypeSubtype is `message/rfc822`
 or a Blob. If _`source`_ is a Blob, then supply a byte array in RFC822 format.
 
-3908
 
 Apex Reference Guide Messaging Class
 
@@ -287238,7 +283330,6 @@ Parameters
 
 Type: Integer
 
-3909
 
 Apex Reference Guide Messaging Class
 
@@ -287311,7 +283402,6 @@ Signature
 
 ```
 
-3910
 
 Apex Reference Guide Messaging Class
 
@@ -287392,7 +283482,6 @@ a valid address.
 
 ```
 
-3911
 
 Apex Reference Guide Messaging Class
 
@@ -287462,7 +283551,6 @@ SEE ALSO:
 
 [Execution Governors and Limits](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_gov_limits.htm)
 
-3912
 
 Apex Reference Guide Messaging Class
 
@@ -287542,7 +283630,6 @@ Signature
 
 ```
 
-3913
 
 Apex Reference Guide Messaging Class
 
@@ -287621,7 +283708,6 @@ Signature
 
 ```
 
-3914
 
 ### Apex Reference Guide MultiStaticResourceCalloutMock Class
 
@@ -287696,7 +283782,6 @@ Namespace
 
 System
 
-3915
 
 Apex Reference Guide MultiStaticResourceCalloutMock Class
 
@@ -287753,7 +283838,6 @@ Signature
 
 ```
 
-3916
 
 Apex Reference Guide MultiStaticResourceCalloutMock Class
 
@@ -287831,7 +283915,6 @@ Type: Void
 
 Sets the specified HTTP status code for the response.
 
-3917
 
 ### Apex Reference Guide Network Class
 
@@ -287895,7 +283978,6 @@ Signature
 
 ```
 
-3918
 
 Apex Reference Guide Network Class
 
@@ -287959,7 +284041,6 @@ Return Value
 
 Type: PageReference
 
-3919
 
 Apex Reference Guide Network Class
 
@@ -288043,7 +284124,6 @@ Type: SObject
 
 The records created for objects. Objects must be supported by the high-volume record creation.
 
-3920
 
 Apex Reference Guide Network Class
 
@@ -288110,7 +284190,6 @@ Usage
 
 Returns the full URL for the Lightning Platform or Experience Builder page used as the login page in the Experience Cloud site.
 
-3921
 
 Apex Reference Guide Network Class
 
@@ -288182,7 +284261,6 @@ Parameters
 
 Type: String
 
-3922
 
 Apex Reference Guide Network Class
 
@@ -288245,7 +284323,6 @@ method is invoked automatically during site creation and package installation, b
 
 If digital experiences isn’t enabled for the user’s org or the user is in the internal org, returns `0` .
 
-3923
 
 ### Apex Reference Guide Object Class Object Class
 
@@ -288303,7 +284380,6 @@ Return Value
 
 Type: Boolean
 
-3924
 
 Apex Reference Guide Object Class
 
@@ -288372,7 +284448,6 @@ same value.
 Returns a string that represents the object. The string includes the class name of which the object is an instance, the at (@) character,
 and the unsigned hexadecimal representation of the object’s hash code value.
 
-3925
 
 ### Apex Reference Guide OrgLimit Class
 
@@ -288430,7 +284505,6 @@ Returns the limit usage value.
 toString()
 Returns the string representation of the org limit.
 
-3926
 
 Apex Reference Guide OrgLimit Class
 
@@ -288509,7 +284583,6 @@ Return Value
 
 Type: Integer
 
-3927
 
 ### Apex Reference Guide OrgLimits Class
 
@@ -288576,7 +284649,6 @@ SEE ALSO:
 
 _[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/resources_limits.htm)_ : Limits
 
-3928
 
 ### Apex Reference Guide PageReference Class
 
@@ -288642,7 +284714,6 @@ Example
 A PageReference is a reference to an instantiation of a page. Among other attributes, PageReferences consist of a URL and a set of query
 parameter names and values.
 
-3929
 
 Apex Reference Guide PageReference Class
 
@@ -288709,7 +284780,6 @@ used instead of HTTP/1.1.
 
 Referer The URL that is either included or linked to the current request's URL. This header is optional.
 
-3930
 
 Apex Reference Guide PageReference Class
 
@@ -288790,7 +284860,6 @@ page. To access `id`, the `getAccount` method uses the `ApexPages` namespace.
 **•** First the `currentPage` method returns the `PageReference` instance for the current page. `PageReference` returns a
 reference to a Visualforce page, including its query string parameters.
 
-3931
 
 Apex Reference Guide PageReference Class
 
@@ -288874,7 +284943,6 @@ the account just created:
 
 ```
 
-3932
 
 Apex Reference Guide PageReference Class
 
@@ -288945,7 +285013,6 @@ Signature
 
 ```
 
-3933
 
 Apex Reference Guide PageReference Class
 
@@ -289013,7 +285080,6 @@ Returns the output of the page, as displayed to a user in a web browser.
 getContentAsPDF()
 Returns the page in PDF, regardless of the `<apex:page>` component’s `renderAs` attribute.
 
-3934
 
 Apex Reference Guide PageReference Class
 
@@ -289081,7 +285147,6 @@ Type: String
 
 The resource path
 
-3935
 
 Apex Reference Guide PageReference Class
 
@@ -289147,7 +285212,6 @@ Return Value
 
 Type: Blob
 
-3936
 
 Apex Reference Guide PageReference Class
 
@@ -289222,7 +285286,6 @@ Signature
 
 ```
 
-3937
 
 Apex Reference Guide PageReference Class
 
@@ -289297,7 +285360,6 @@ Parameter keys are case-insensitive. For example:
 
 ```
 
-3938
 
 Apex Reference Guide PageReference Class
 
@@ -289363,7 +285425,6 @@ to update any references to the requested URL with the target location.
 Returns the relative URL associated with the PageReference when it was originally defined, including any query string parameters and
 anchors.
 
-3939
 
 Apex Reference Guide PageReference Class
 
@@ -289437,7 +285498,6 @@ hexadecimal representation.
 
 **•** After you create a cookie, the properties of the cookie can't be changed.
 
-3940
 
 Apex Reference Guide PageReference Class
 
@@ -289507,7 +285567,6 @@ redirected.
 **•** 301 — Moved Permanently. Redirect users by sending an HTTP GET request to the target location. Includes instructions to update
 any references to the requested URL with the target location.
 
-3941
 
 ### Apex Reference Guide Packaging Class
 
@@ -289565,7 +285624,6 @@ Signature
 
 ```
 
-3942
 
 ### Apex Reference Guide Pattern Class
 
@@ -289627,7 +285685,6 @@ Signature
 
 ```
 
-3943
 
 Apex Reference Guide Pattern Class
 
@@ -289700,7 +285757,6 @@ Usage
 
 If a pattern is to be used multiple times, compiling it once and reusing it is more efficient than invoking this method each time.
 
-3944
 
 Apex Reference Guide Pattern Class
 
@@ -289775,7 +285831,6 @@ Signature
 
 ```
 
-3945
 
 Apex Reference Guide Pattern Class
 
@@ -289847,7 +285902,6 @@ Type: String[]
 Note: In API version 34.0 and earlier, a zero-width _`regExp`_ value produces an empty list item at the beginning of the method’s
 output.
 
-3946
 
 ### Apex Reference Guide Queueable Interface Queueable Interface
 
@@ -289914,7 +285968,6 @@ Executes the queueable job.
 
 Executes the queueable job.
 
-3947
 
 Apex Reference Guide Queueable Interface
 
@@ -289999,7 +286052,6 @@ created.
 
 ```
 
-3948
 
 ### Apex Reference Guide QueueableContext Interface
 
@@ -290070,7 +286122,6 @@ SEE ALSO:
 
 _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_queueing_jobs.htm)_ : Queueable Apex
 
-3949
 
 ### Apex Reference Guide QueueableDuplicateSignature Class QueueableDuplicateSignature Class
 
@@ -290125,7 +286176,6 @@ Namespace
 
 System
 
-3950
 
 Apex Reference Guide QueueableDuplicateSignature.Builder Class
 
@@ -290203,7 +286253,6 @@ addString(inputString)
 Adds a string to build a unique signature for a queueable job. You can then enqueue the job by using the signature as the
 `AsyncOptions` parameter to `System.enqueueJob()` .
 
-3951
 
 Apex Reference Guide QueueableDuplicateSignature.Builder Class
 
@@ -290269,7 +286318,6 @@ Return Value
 
 Type: QueueableDuplicateSignature.Builder
 
-3952
 
 Apex Reference Guide QueueableDuplicateSignature.Builder Class
 
@@ -290340,7 +286388,6 @@ Signature
 
 ```
 
-3953
 
 ### Apex Reference Guide QuickAction Class
 
@@ -290422,7 +286469,6 @@ This sample performs a global action— `QuickAction.CreateContact` –on the pa
 
 ```
 
-3954
 
 Apex Reference Guide QuickAction Class
 
@@ -290492,7 +286538,6 @@ Type: List<QuickAction.DescribeAvailableQuickActionResult>
 
 The metadata information for the available quick actions of the parent object.
 
-3955
 
 Apex Reference Guide QuickAction Class
 
@@ -290573,7 +286618,6 @@ Signature
 
 ```
 
-3956
 
 Apex Reference Guide QuickAction Class
 
@@ -290651,7 +286695,6 @@ Return Value
 
 Type: List<QuickAction.QuickActionResult>
 
-3957
 
 ### Apex Reference Guide Quiddity Enum
 
@@ -290721,7 +286764,6 @@ The following are the values of the `System.Quiddity` enum.
 `DISCOVERABLE_LOGIN` Execution event is Login Discoverable login page used by external users to log in
 to an Experience Cloud site.
 
-3958
 
 ### Apex Reference Guide RemoteObjectController
 
@@ -290779,7 +286821,6 @@ Usage
 
 pages.
 
-3959
 
 #### Apex Reference Guide RemoteObjectController RemoteObjectController Methods The following are methods for RemoteObjectController . All methods are static.
 
@@ -290847,7 +286888,6 @@ A map that contains a single element with the error message for the overall oper
 
 Delete records from the database.
 
-3960
 
 Apex Reference Guide RemoteObjectController
 
@@ -290934,7 +286974,6 @@ The fields to retrieve for each record.
 
 Type: Map<String,Object>
 
-3961
 
 Apex Reference Guide RemoteObjectController
 
@@ -291010,7 +287049,6 @@ was called and the results of the call.
 **Single Update—Success**
 A map that contains a single element with the ID of the record that was updated. For example, `{ id: '` _**`recordId`**_ `'` `}` .
 
-3962
 
 ### Apex Reference Guide Request Class
 
@@ -291073,7 +287111,6 @@ IN THIS SECTION:
 
 ### The following are methods for Request .
 
-3963
 
 ### Apex Reference Guide ResetPasswordResult Class
 
@@ -291142,7 +287179,6 @@ Type: String
 
 Represents the result of a password reset.
 
-3964
 
 ### Apex Reference Guide RestContext Class
 
@@ -291208,7 +287244,6 @@ REST method.
 
 ```
 
-3965
 
 ### Apex Reference Guide RestRequest Class
 
@@ -291274,7 +287309,6 @@ Namespace
 
 System
 
-3966
 
 Apex Reference Guide RestRequest Class
 
@@ -291359,7 +287393,6 @@ RestRequest Properties
 
 RestRequest Methods
 
-3967
 
 Apex Reference Guide RestRequest Class
 
@@ -291419,7 +287452,6 @@ Signature
 
 ```
 
-3968
 
 Apex Reference Guide RestRequest Class
 
@@ -291486,7 +287518,6 @@ Property Value
 
 Type: String
 
-3969
 
 Apex Reference Guide RestRequest Class
 
@@ -291550,7 +287581,6 @@ Example
 
 `/services/apexrest/MyResource/*` .
 
-3970
 
 Apex Reference Guide RestRequest Class
 
@@ -291617,7 +287647,6 @@ The following headers aren't allowed:
 
 If any of these headers are used, an Apex exception is thrown.
 
-3971
 
 ### Apex Reference Guide RestResponse Class
 
@@ -291679,7 +287708,6 @@ RestResponse Methods
 
 ### The following are constructors for RestResponse .
 
-3972
 
 Apex Reference Guide RestResponse Class
 
@@ -291743,7 +287771,6 @@ following rules:
 **•** If the method returns a value, then Apex REST serializes the return value as the response. If the return value contains fields with null
 value, those fields are not serialized in the response.
 
-3973
 
 Apex Reference Guide RestResponse Class
 
@@ -291810,7 +287837,6 @@ Note: If you set the `RestResponse.statusCode` property to a value that's not li
 
 403 FORBIDDEN
 
-3974
 
 Apex Reference Guide RestResponse Class
 
@@ -291876,7 +287902,6 @@ Type: String
 
 Type: String
 
-3975
 
 ### Apex Reference Guide SandboxPostCopy Interface
 
@@ -291938,7 +287963,6 @@ _Tooling API_ [: SandboxProcess](https://developer.salesforce.com/docs/atlas.en-
 
 ### The following method is for SandboxPostCopy .
 
-3976
 
 Apex Reference Guide SandboxPostCopy Interface
 
@@ -292014,7 +288038,6 @@ This example implements the `System.SandboxPostCopy` interface.
 
 ```
 
-3977
 
 ### Apex Reference Guide Schedulable Interface
 
@@ -292091,7 +288114,6 @@ SEE ALSO:
 
 _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_scheduler.htm)_ : Scheduler
 
-3978
 
 ### Apex Reference Guide SchedulableContext Interface
 
@@ -292151,7 +288173,6 @@ IN THIS SECTION:
 getTriggerId()
 Returns the ID of the CronTrigger scheduled job.
 
-3979
 
 ### Apex Reference Guide Schema Class
 
@@ -292215,7 +288236,6 @@ Signature
 
 ```
 
-3980
 
 Apex Reference Guide Schema Class
 
@@ -292287,7 +288307,6 @@ Signature
 
 ```
 
-3981
 
 Apex Reference Guide Schema Class
 
@@ -292364,7 +288383,6 @@ Type: List<Schema.DescribeSObjectResult>
 
 Returns information about the standard and custom apps available to the running user.
 
-3982
 
 Apex Reference Guide Schema Class
 
@@ -292452,7 +288470,6 @@ information, such as the icon URL, whether the tab is custom or not, and colors.
 
 ```
 
-3983
 
 Apex Reference Guide Schema Class
 
@@ -292549,7 +288566,6 @@ Parameters
 
 Type: List<Schema.DataCategoryGroupSobjectTypePair>
 
-3984
 
 ### Apex Reference Guide Search Class
 
@@ -292608,7 +288624,6 @@ suggest(searchQuery, sObjectType, suggestions, accessLevel)
 Returns a list of records or Salesforce Knowledge articles whose names or titles match the user’s search query string. Use this method
 to provide users with shortcuts to navigate to relevant records or articles before they perform a search.
 
-3985
 
 Apex Reference Guide Search Class
 
@@ -292683,7 +288698,6 @@ Type: System.AccessLevel
 (Optional) The _`accessLevel`_ parameter specifies whether the method runs in system mode ( `AccessLevel.SYSTEM_MODE` )
 or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-level permissions of the current user are
 
-3986
 
 Apex Reference Guide Search Class
 
@@ -292746,7 +288760,6 @@ Signature
 
 ```
 
-3987
 
 Apex Reference Guide Search Class
 
@@ -292826,7 +288839,6 @@ This object contains options that change the suggestion results.
 If the _`searchQuery`_ returns KnowledgeArticleVersion objects, pass an _`options`_ parameter with a Search.SuggestionOption
 object that contains a language KnowledgeSuggestionFilter and a publish status KnowledgeSuggestionFilter.
 
-3988
 
 Apex Reference Guide Search Class
 
@@ -292896,7 +288908,6 @@ Type: String
 
 An sObject type.
 
-3989
 
 ### Apex Reference Guide Security Class
 
@@ -292960,7 +288971,6 @@ Namespace
 
 System
 
-3990
 
 Apex Reference Guide Security Class
 
@@ -293026,7 +289036,6 @@ or `isUpdatable()` .
 
 Type: List<SObject>
 
-3991
 
 Apex Reference Guide Security Class
 
@@ -293107,7 +289116,6 @@ Signature
 
 ```
 
-3992
 
 Apex Reference Guide Security Class
 
@@ -293193,7 +289201,6 @@ In this example, the user doesn’t have permission to read the `ActualCost` fie
 Creates a list of sObjects from the source records, which are stripped of fields that fail field-level and object-level access checks. Apex
 enforces field-level security (FLS) and object permissions as per the specified permission set, in addition to the running user’s permissions.
 
-3993
 
 ### Apex Reference Guide SelectOption Class
 
@@ -293268,7 +289275,6 @@ System
 
 ### SelectOption consists of a label that is displayed to the end user, and a value that is returned to the controller if the option is selected. A SelectOption can also be displayed in a disabled state, so that a user cannot select it as an option, but can still view it.
 
-3994
 
 Apex Reference Guide SelectOption Class
 
@@ -293346,7 +289352,6 @@ the options are displayed as checkboxes:
 
 ```
 
-3995
 
 Apex Reference Guide SelectOption Class
 
@@ -293430,7 +289435,6 @@ Type: String
 
 The string that is displayed to the user as the option choice.
 
-3996
 
 Apex Reference Guide SelectOption Class
 
@@ -293499,7 +289503,6 @@ Sets the value of the option label that is displayed to the user.
 setValue(value)
 Sets the value of the option value that is returned to the controller if a user selects the option.
 
-3997
 
 Apex Reference Guide SelectOption Class
 
@@ -293562,7 +289565,6 @@ Type: String
 
 Returns the option value that is returned to the controller if a user selects the option.
 
-3998
 
 Apex Reference Guide SelectOption Class
 
@@ -293633,7 +289635,6 @@ Usage
 If `itemEscaped` is set to `true`, sensitive HTML and XML characters are escaped in the HTML output generated by this component.
 If `itemEscaped` is set to `false`, items are rendered as written.
 
-3999
 
 ### Apex Reference Guide Set Class
 
@@ -293698,7 +289699,6 @@ Usage
 can be of any data type—primitive types, collections, sObjects, user-defined types, and built-in Apex types. Set methods are all instance
 methods, that is, they all operate on a particular instance of a Set. The following are the instance methods for sets.
 
-4000
 
 Apex Reference Guide Set Class
 
@@ -293766,7 +289766,6 @@ Example
 
 and can be any data type.
 
-4001
 
 Apex Reference Guide Set Class
 
@@ -293847,7 +289846,6 @@ Example
 
 ```
 
-4002
 
 Apex Reference Guide Set Class
 
@@ -293909,7 +289907,6 @@ Returns the number of elements in the set (its cardinality).
 toString()
 Returns the string representation of the set.
 
-4003
 
 Apex Reference Guide Set Class
 
@@ -293982,7 +289979,6 @@ This method results in the _union_ of the list and the set. The list must be of 
 
 Adds all of the elements in the specified set to the set that calls the method if they are not already present.
 
-4004
 
 Apex Reference Guide Set Class
 
@@ -294054,7 +290050,6 @@ Return Value
 
 Type: Set (of same type)
 
-4005
 
 Apex Reference Guide Set Class
 
@@ -294127,7 +290122,6 @@ Signature
 
 ```
 
-4006
 
 Apex Reference Guide Set Class
 
@@ -294201,7 +290195,6 @@ Two sets are equal if their elements are equal, regardless of their order. The `
 
 Returns the hashcode corresponding to this set and its contents.
 
-4007
 
 Apex Reference Guide Set Class
 
@@ -294278,7 +290271,6 @@ Signature
 
 ```
 
-4008
 
 Apex Reference Guide Set Class
 
@@ -294351,7 +290343,6 @@ the method.
 
 Retains only the elements in this set that are contained in the specified list.
 
-4009
 
 Apex Reference Guide Set Class
 
@@ -294426,7 +290417,6 @@ This method results in the _intersection_ of the two sets. The specified set mus
 
 Returns the number of elements in the set (its cardinality).
 
-4010
 
 ### Apex Reference Guide Site Class
 
@@ -294492,7 +290482,6 @@ Namespace
 
 System
 
-4011
 
 Apex Reference Guide Site Class
 
@@ -294552,7 +290541,6 @@ never ends with a `/` character. If all the custom URLs in this site end in Forc
 an empty string. If the current request is not a site request, then this method returns an empty string. This method replaced
 getCustomWebAddress and includes the custom URL's path prefix..
 
-4012
 
 Apex Reference Guide Site Class
 
@@ -294612,7 +290600,6 @@ Returns the URL path prefix of the current site or an empty string if none. For 
 `https://myco.my.salesforce-sites.com/partners`, then `/partners` is the path prefix. If the current request
 is not a site request, then this method returns an empty string. This method replaced getPrefix in API version 30.0.
 
-4013
 
 Apex Reference Guide Site Class
 
@@ -294671,7 +290658,6 @@ user’s org.
 
 Changes the password of the current user.
 
-4014
 
 Apex Reference Guide Site Class
 
@@ -294754,7 +290740,6 @@ Type: Id
 
 The ID of the user that this method creates.
 
-4015
 
 Apex Reference Guide Site Class
 
@@ -294829,7 +290814,6 @@ Note: This method is only valid when a site is associated with a Customer Portal
 Calls to this method in API version 30.0 and later can’t commit the transaction automatically. Calls to this method before API version
 30.0 commit the transaction, making it impossible to roll back to a save point before the call.
 
-4016
 
 Apex Reference Guide Site Class
 
@@ -294908,7 +290892,6 @@ Calls to this method in API version 30.0 and later can’t commit the transactio
 
 Creates a person account using the default record type defined on the guest user's profile, then enables it for the site's portal.
 
-4017
 
 Apex Reference Guide Site Class
 
@@ -294996,7 +290979,6 @@ Return Value
 
 Type: ID
 
-4018
 
 Apex Reference Guide Site Class
 
@@ -295069,7 +291051,6 @@ Note: This method is only valid when a site is associated with a Customer Portal
 Calls to this method in API version 30.0 and later can’t commit the transaction automatically. Calls to this method before API version
 30.0 commit the transaction, making it impossible to roll back to a save point before the call.
 
-4019
 
 Apex Reference Guide Site Class
 
@@ -295142,7 +291123,6 @@ Return Value
 
 Type: Boolean
 
-4020
 
 Apex Reference Guide Site Class
 
@@ -295203,7 +291183,6 @@ Return Value
 
 Type: String
 
-4021
 
 Apex Reference Guide Site Class
 
@@ -295267,7 +291246,6 @@ Signature
 
 ```
 
-4022
 
 Apex Reference Guide Site Class
 
@@ -295332,7 +291310,6 @@ Usage
 
 This method replaces `getCurrentSiteUrl()` .
 
-4023
 
 Apex Reference Guide Site Class
 
@@ -295395,7 +291372,6 @@ Type: String
 Returns an error message for the current page if it’s a designated error page for the site and an error exists; otherwise, returns an empty
 string.
 
-4024
 
 Apex Reference Guide Site Class
 
@@ -295464,7 +291440,6 @@ Type: String
 
 Returns the API name of the current site.
 
-4025
 
 Apex Reference Guide Site Class
 
@@ -295528,7 +291503,6 @@ Type: String
 
 ##### **`getPrefix()`** Deprecated. This method was replaced by getPathPrefix() in API version 30.0.
 
-4026
 
 Apex Reference Guide Site Class
 
@@ -295594,7 +291568,6 @@ Return Value
 
 Type: String
 
-4027
 
 Apex Reference Guide Site Class
 
@@ -295659,7 +291632,6 @@ Return Value
 
 Type: Boolean
 
-4028
 
 Apex Reference Guide Site Class
 
@@ -295733,7 +291705,6 @@ a call to `Site.login` .
 
 Note: Do not include `http://` or `https://` in the `startURL` .
 
-4029
 
 Apex Reference Guide Site Class
 
@@ -295819,7 +291790,6 @@ to the site page specified by the start URL.
 
 ```
 
-4030
 
 Apex Reference Guide Site Class
 
@@ -295904,7 +291874,6 @@ secondary pages associated with the login page (such as multi-factor authenticat
 experiences depending on who users are or where they’re logging in from. For example, you can require a different registration process
 based on the user’s location. In this case, `expIdValue` includes a state or country code. When the user logs in, the URL contains the
 
-4031
 
 Apex Reference Guide Site Class
 
@@ -295984,7 +291953,6 @@ Parameters
 
 Type: SObject
 
-4032
 
 ### Apex Reference Guide SObject Class
 
@@ -296046,7 +292014,6 @@ from occurring.
 addError(exceptionError)
 Marks a trigger record with a custom error message and prevents any DML operation from occurring.
 
-4033
 
 Apex Reference Guide SObject Class
 
@@ -296109,7 +292076,6 @@ Returns a list of `Database.Error` objects for an SObject instance. If the SObje
 getOptions()
 Returns the database.DMLOptions object for the SObject.
 
-4034
 
 Apex Reference Guide SObject Class
 
@@ -296171,7 +292137,6 @@ putSObject(fieldName, value)
 Sets the value for the field specified by the token `Schema.SObjectType` . This method is primarily used with dynamic DML for
 setting external IDs. The method returns the previous value of the field.
 
-4035
 
 Apex Reference Guide SObject Class
 
@@ -296240,7 +292205,6 @@ Signature
 
 ```
 
-4036
 
 Apex Reference Guide SObject Class
 
@@ -296311,7 +292275,6 @@ Return Value
 
 Type: Void
 
-4037
 
 Apex Reference Guide SObject Class
 
@@ -296383,7 +292346,6 @@ Warning: Be cautious if you specify `false` for the _`escape`_ argument. Unescap
 interface can represent a vulnerability in the system because these strings might contain harmful code. If you want to include
 HTML markup in the error message, call this method with a `false` _`escape`_ argument. Make sure that you escape any dynamic
 
-4038
 
 Apex Reference Guide SObject Class
 
@@ -296454,7 +292416,6 @@ Example
 Places the specified error message, which can be escaped or unescaped, on a trigger record field in the Salesforce user interface, and
 prevents any DML operation from occurring.
 
-4039
 
 Apex Reference Guide SObject Class
 
@@ -296534,7 +292495,6 @@ The field name of the SObject .
 
 Type: String
 
-4040
 
 Apex Reference Guide SObject Class
 
@@ -296607,7 +292567,6 @@ Usage
 Use this method to add errors to the specified field token of a standard or custom object. If `fieldToken` is null, the error is associated
 with the SObject and not with a specific field.
 
-4041
 
 Apex Reference Guide SObject Class
 
@@ -296693,7 +292652,6 @@ Warning:
 **•** Be cautious if you specify `false` for the _`escape`_ argument. Unescaped strings displayed in the Salesforce user interface
 can represent a vulnerability in the system because these strings might contain harmful code. If you want to include HTML
 
-4042
 
 Apex Reference Guide SObject Class
 
@@ -296773,7 +292731,6 @@ with the SObject and not with a specific field.
 The escaped characters are: `\n`, `<`, `>`, `&`, `"`, `\`, `\u2028`, `\u2029`, and `\u00a9` . As a result, HTML markup is not rendered; instead,
 it is displayed as text in the Salesforce user interface.
 
-4043
 
 Apex Reference Guide SObject Class
 
@@ -296851,7 +292808,6 @@ Signature
 
 ```
 
-4044
 
 Apex Reference Guide SObject Class
 
@@ -296921,7 +292877,6 @@ Usage
 Note: For Apex saved using Salesforce API version 22.0 or earlier, the default value for the _`preserveId`_ argument is `true`,
 that is, the ID is preserved.
 
-4045
 
 Apex Reference Guide SObject Class
 
@@ -296998,7 +292953,6 @@ Signature
 
 ```
 
-4046
 
 Apex Reference Guide SObject Class
 
@@ -297073,7 +293027,6 @@ Example
 
 Returns the value for the field specified by _`fieldName`_, such as `AccountNumber` .
 
-4047
 
 Apex Reference Guide SObject Class
 
@@ -297145,7 +293098,6 @@ Usage
 
 [For more information, see Dynamic SOQL.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dynamic_soql.htm)
 
-4048
 
 Apex Reference Guide SObject Class
 
@@ -297227,7 +293179,6 @@ Signature
 
 ```
 
-4049
 
 Apex Reference Guide SObject Class
 
@@ -297303,7 +293254,6 @@ Fields on related objects that are queried or set are also returned in the map.
 
 ```
 
-4050
 
 Apex Reference Guide SObject Class
 
@@ -297401,7 +293351,6 @@ The following example shows how to use the `getPopulatedFieldsAsMap()` method wi
 
 ```
 
-4051
 
 Apex Reference Guide SObject Class
 
@@ -297481,7 +293430,6 @@ Signature
 
 ```
 
-4052
 
 Apex Reference Guide SObject Class
 
@@ -297556,7 +293504,6 @@ Usage
 
 [For more information, see Dynamic DML.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dynamic_dml.htm)
 
-4053
 
 Apex Reference Guide SObject Class
 
@@ -297626,7 +293573,6 @@ Usage
 
 For more information, see apex_dynamic_describe_objects_understanding.
 
-4054
 
 Apex Reference Guide SObject Class
 
@@ -297708,7 +293654,6 @@ Type: Boolean
 Returns `true` if an entity is cloned from something, even if the entity hasn’t been saved. The method can only be used within the
 transaction where the entity is cloned, as clone information doesn’t persist in subsequent transactions.
 
-4055
 
 Apex Reference Guide SObject Class
 
@@ -297787,7 +293732,6 @@ Example
 
 ```
 
-4056
 
 Apex Reference Guide SObject Class
 
@@ -297863,7 +293807,6 @@ Return Value
 
 Type: Object
 
-4057
 
 Apex Reference Guide SObject Class
 
@@ -297946,7 +293889,6 @@ Parameters
 
 Type: String
 
-4058
 
 Apex Reference Guide SObject Class
 
@@ -298024,7 +293966,6 @@ Signature
 
 ```
 
-4059
 
 ### Apex Reference Guide SObjectAccessDecision Class
 
@@ -298089,7 +294030,6 @@ Namespace
 
 System
 
-4060
 
 Apex Reference Guide SObjectAccessDecision Class
 
@@ -298159,7 +294099,6 @@ In this example, the user doesn’t have permission to update the `AnnualRevenue
 
 ```
 
-4061
 
 Apex Reference Guide SObjectAccessDecision Class
 
@@ -298236,7 +294175,6 @@ Signature
 
 ```
 
-4062
 
 ### Apex Reference Guide SoqlStubProvider Class
 
@@ -298314,7 +294252,6 @@ This example shows a mock test class for the _`SkyMilesForBusinessOptInControlle
 
 ```
 
-4063
 
 Apex Reference Guide SoqlStubProvider Class
 
@@ -298401,7 +294338,6 @@ Apex Reference Guide SoqlStubProvider Class
 
 ```
 
-4064
 
 Apex Reference Guide SoqlStubProvider Class
 
@@ -298480,7 +294416,6 @@ Defines a mocked response for a SOQL query executed against the specified SObjec
 
 Defines a mocked response for a SOQL query executed against the specified SObject type.
 
-4065
 
 ### Apex Reference Guide StaticResourceCalloutMock Class
 
@@ -298553,7 +294488,6 @@ StaticResourceCalloutMock Methods
 
 ### The following are constructors for StaticResourceCalloutMock .
 
-4066
 
 Apex Reference Guide StaticResourceCalloutMock Class
 
@@ -298616,7 +294550,6 @@ Return Value
 
 Type: Void
 
-4067
 
 Apex Reference Guide StaticResourceCalloutMock Class
 
@@ -298689,7 +294622,6 @@ Return Value
 
 Type: Void
 
-4068
 
 ### Apex Reference Guide String Class String Class
 
@@ -298747,7 +294679,6 @@ Returns the number of Unicode code points within the specified text range.
 compareTo(secondString)
 Compares two strings lexicographically, based on the Unicode value of each character in the Strings.
 
-4069
 
 Apex Reference Guide String Class
 
@@ -298809,7 +294740,6 @@ Escapes the characters in a String using HTML 3.0 entities.
 escapeHtml4()
 Escapes the characters in a String using HTML 4.0 entities.
 
-4070
 
 Apex Reference Guide String Class
 
@@ -298871,7 +294801,6 @@ indexOfChar(character, startIndex)
 Returns the index of the first occurrence of the character that corresponds to the specified character value, starting from the specified
 index.
 
-4071
 
 Apex Reference Guide String Class
 
@@ -298934,7 +294863,6 @@ Joins the elements of the specified iterable object, such as a List, into a sing
 lastIndexOf(substring)
 Returns the index of the last occurrence of the specified substring. If the substring does not occur, this method returns -1.
 
-4072
 
 Apex Reference Guide String Class
 
@@ -298996,7 +294924,6 @@ Removes the specified substring only if it occurs at the beginning of the String
 repeat(numberOfTimes)
 Returns the current String repeated the specified number of times.
 
-4073
 
 Apex Reference Guide String Class
 
@@ -299057,7 +294984,6 @@ substring(startIndex, endIndex)
 Returns a new String that begins with the character at the specified zero-based _`startIndex`_ and extends to the character at
 _`endIndex`_    - 1.
 
-4074
 
 Apex Reference Guide String Class
 
@@ -299122,7 +295048,6 @@ Returns a String whose escaped Unicode characters are unescaped.
 unescapeXml()
 Unescapes the characters in a String using XML entities.
 
-4075
 
 Apex Reference Guide String Class
 
@@ -299189,7 +295114,6 @@ Example
 
 ```
 
-4076
 
 Apex Reference Guide String Class
 
@@ -299262,7 +295186,6 @@ Usage
 
 This method is based on the `[Character.toTitleCase(char)](http://docs.oracle.com/javase/6/docs/api/java/lang/Character.html?is-external=true#toTitleCase%28char%29)` Java method.
 
-4077
 
 Apex Reference Guide String Class
 
@@ -299346,7 +295269,6 @@ Return Value
 
 Type: String
 
-4078
 
 Apex Reference Guide String Class
 
@@ -299427,7 +295349,6 @@ the value for the entire surrogate pair.
 
 Returns the Unicode code point value at the specified index.
 
-4079
 
 Apex Reference Guide String Class
 
@@ -299506,7 +295427,6 @@ Type: Integer
 
 The index before the Unicode code point that is to be returned. The index range is from one to the string length.
 
-4080
 
 Apex Reference Guide String Class
 
@@ -299580,7 +295500,6 @@ Usage
 The specified range begins at _`beginIndex`_ and ends at _**`endIndex`**_ `—1` . Unpaired surrogates within the text range count as one
 code point each.
 
-4081
 
 Apex Reference Guide String Class
 
@@ -299660,7 +295579,6 @@ Example
 
 ```
 
-4082
 
 Apex Reference Guide String Class
 
@@ -299740,7 +295658,6 @@ Example
 
 ```
 
-4083
 
 Apex Reference Guide String Class
 
@@ -299817,7 +295734,6 @@ Example
 
 ```
 
-4084
 
 Apex Reference Guide String Class
 
@@ -299904,7 +295820,6 @@ Example
 
 ```
 
-4085
 
 Apex Reference Guide String Class
 
@@ -299983,7 +295898,6 @@ Example
 
 ```
 
-4086
 
 Apex Reference Guide String Class
 
@@ -300063,7 +295977,6 @@ Return Value
 
 Type: Boolean
 
-4087
 
 Apex Reference Guide String Class
 
@@ -300139,7 +296052,6 @@ This method returns `true` when the `compareTo` method returns 0.
 Use this method to perform case-sensitive comparisons. In contrast, the `==` operator performs case-insensitive string comparisons to
 match Apex semantics.
 
-4088
 
 Apex Reference Guide String Class
 
@@ -300221,7 +296133,6 @@ how Apex automatically converts certain values before comparing them.
 
 ```
 
-4089
 
 Apex Reference Guide String Class
 
@@ -300302,7 +296213,6 @@ Signature
 
 ```
 
-4090
 
 Apex Reference Guide String Class
 
@@ -300379,7 +296289,6 @@ Signature
 
 ```
 
-4091
 
 Apex Reference Guide String Class
 
@@ -300462,7 +296371,6 @@ Type: String
 
 The escaped string.
 
-4092
 
 Apex Reference Guide String Class
 
@@ -300540,7 +296448,6 @@ Signature
 
 ```
 
-4093
 
 Apex Reference Guide String Class
 
@@ -300615,7 +296522,6 @@ Signature
 
 ```
 
-4094
 
 Apex Reference Guide String Class
 
@@ -300695,7 +296601,6 @@ Example
 
 Returns an array of character values that represent the characters in this string.
 
-4095
 
 Apex Reference Guide String Class
 
@@ -300775,7 +296680,6 @@ Example
 
 ```
 
-4096
 
 Apex Reference Guide String Class
 
@@ -300848,7 +296752,6 @@ Return Value
 
 Type: Integer
 
-4097
 
 Apex Reference Guide String Class
 
@@ -300922,7 +296825,6 @@ Example
 
 Returns the index of the first occurrence of the specified substring. If the substring does not occur, this method returns -1.
 
-4098
 
 Apex Reference Guide String Class
 
@@ -301004,7 +296906,6 @@ Example
 Returns the zero-based index of the first occurrence of any character specified in the substring. If none of the characters occur, returns
 -1.
 
-4099
 
 Apex Reference Guide String Class
 
@@ -301087,7 +296988,6 @@ Signature
 
 ```
 
-4100
 
 Apex Reference Guide String Class
 
@@ -301162,7 +297062,6 @@ Type: Integer
 
 The index, starting from the specified start index, of the first occurrence of the specified character, -1 if the character is not found.
 
-4101
 
 Apex Reference Guide String Class
 
@@ -301243,7 +297142,6 @@ Signature
 
 ```
 
-4102
 
 Apex Reference Guide String Class
 
@@ -301315,7 +297213,6 @@ Return Value
 
 Type: Boolean
 
-4103
 
 Apex Reference Guide String Class
 
@@ -301400,7 +297297,6 @@ Example
 
 ```
 
-4104
 
 Apex Reference Guide String Class
 
@@ -301484,7 +297380,6 @@ Example
 
 ```
 
-4105
 
 Apex Reference Guide String Class
 
@@ -301562,7 +297457,6 @@ Example
 
 ```
 
-4106
 
 Apex Reference Guide String Class
 
@@ -301646,7 +297540,6 @@ Example
 
 ```
 
-4107
 
 Apex Reference Guide String Class
 
@@ -301728,7 +297621,6 @@ Return Value
 
 Type: Boolean
 
-4108
 
 Apex Reference Guide String Class
 
@@ -301808,7 +297700,6 @@ Usage
 
 A decimal point (1.2) is not a Unicode digit.
 
-4109
 
 Apex Reference Guide String Class
 
@@ -301886,7 +297777,6 @@ Return Value
 
 Type: String
 
-4110
 
 Apex Reference Guide String Class
 
@@ -301969,7 +297859,6 @@ Type: String
 
 Type: Integer
 
-4111
 
 Apex Reference Guide String Class
 
@@ -302044,7 +297933,6 @@ Example
 Returns the index of the last occurrence of the character that corresponds to the specified character value, starting from the specified
 index.
 
-4112
 
 Apex Reference Guide String Class
 
@@ -302123,7 +298011,6 @@ Return Value
 
 Type: Integer
 
-4113
 
 Apex Reference Guide String Class
 
@@ -302199,7 +298086,6 @@ Signature
 
 ```
 
-4114
 
 Apex Reference Guide String Class
 
@@ -302272,7 +298158,6 @@ Example
 
 Returns the current String padded with String `padStr` on the left and of the specified length.
 
-4115
 
 Apex Reference Guide String Class
 
@@ -302349,7 +298234,6 @@ Example
 Returns a new String that begins with the character at the specified zero-based _`startIndex`_ with the number of characters specified
 ##### by length .
 
-4116
 
 Apex Reference Guide String Class
 
@@ -302429,7 +298313,6 @@ Example
 
 ```
 
-4117
 
 Apex Reference Guide String Class
 
@@ -302508,7 +298391,6 @@ Signature
 
 ```
 
-4118
 
 Apex Reference Guide String Class
 
@@ -302588,7 +298470,6 @@ Signature
 
 ```
 
-4119
 
 Apex Reference Guide String Class
 
@@ -302664,7 +298545,6 @@ Signature
 
 ```
 
-4120
 
 Apex Reference Guide String Class
 
@@ -302740,7 +298620,6 @@ Signature
 
 ```
 
-4121
 
 Apex Reference Guide String Class
 
@@ -302826,7 +298705,6 @@ Example
 
 Replaces each substring of a string that matches the regular expression _`regExp`_ with the replacement sequence _`replacement`_ .
 
-4122
 
 Apex Reference Guide String Class
 
@@ -302907,7 +298785,6 @@ Usage
 
 See the Java `[Pattern](http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html)` class for information on regular expressions.
 
-4123
 
 Apex Reference Guide String Class
 
@@ -302985,7 +298862,6 @@ Example
 
 Returns the current String padded with spaces on the right and of the specified length.
 
-4124
 
 Apex Reference Guide String Class
 
@@ -303069,7 +298945,6 @@ Example
 
 ```
 
-4125
 
 Apex Reference Guide String Class
 
@@ -303146,7 +299021,6 @@ In the following example, a string is split using a backslash as a delimiter.
 Returns a list that contains each substring of the String that is terminated by either the regular expression _`regExp`_ or the end of the
 String.
 
-4126
 
 Apex Reference Guide String Class
 
@@ -303224,7 +299098,6 @@ Signature
 
 ```
 
-4127
 
 Apex Reference Guide String Class
 
@@ -303302,7 +299175,6 @@ Signature
 
 ```
 
-4128
 
 Apex Reference Guide String Class
 
@@ -303374,7 +299246,6 @@ Return Value
 
 Type: String
 
-4129
 
 Apex Reference Guide String Class
 
@@ -303455,7 +299326,6 @@ Type: Integer
 
 Type: Integer
 
-4130
 
 Apex Reference Guide String Class
 
@@ -303533,7 +299403,6 @@ Parameters
 
 Type: String
 
-4131
 
 Apex Reference Guide String Class
 
@@ -303613,7 +299482,6 @@ Parameters
 
 Type: String
 
-4132
 
 Apex Reference Guide String Class
 
@@ -303695,7 +299563,6 @@ Type: String
 
 Type: String
 
-4133
 
 Apex Reference Guide String Class
 
@@ -303774,7 +299641,6 @@ Example
 
 ```
 
-4134
 
 Apex Reference Guide String Class
 
@@ -303860,7 +299726,6 @@ Example
 
 ```
 
-4135
 
 Apex Reference Guide String Class
 
@@ -303941,7 +299806,6 @@ Example
 
 ```
 
-4136
 
 Apex Reference Guide String Class
 
@@ -304020,7 +299884,6 @@ Example
 
 ```
 
-4137
 
 Apex Reference Guide String Class
 
@@ -304103,7 +299966,6 @@ Signature
 
 ```
 
-4138
 
 Apex Reference Guide String Class
 
@@ -304180,7 +300042,6 @@ Type: String
 
 The unescaped string.
 
-4139
 
 Apex Reference Guide String Class
 
@@ -304256,7 +300117,6 @@ Return Value
 
 Type: String
 
-4140
 
 Apex Reference Guide String Class
 
@@ -304337,7 +300197,6 @@ Example
 
 ```
 
-4141
 
 Apex Reference Guide String Class
 
@@ -304417,7 +300276,6 @@ Example
 
 Returns a String that represents the specified Long.
 
-4142
 
 Apex Reference Guide String Class
 
@@ -304498,7 +300356,6 @@ Example
 
 ```
 
-4143
 
 ### Apex Reference Guide StubProvider Interface
 
@@ -304562,7 +300419,6 @@ requires implementing: `handleMethodCall()` . You specify the behavior of each m
 In your Apex test, you create a stubbed object using the `Test.createStub()` method. When you invoke methods on the stubbed
 object, `StubProvider.handleMethodCall()` is called, which performs the behavior that you’ve specified for each method.
 
-4144
 
 Apex Reference Guide StubProvider Interface
 
@@ -304646,7 +300502,6 @@ Type: List<String>
 
 A list of the parameter names of the invoked method.
 
-4145
 
 ### Apex Reference Guide System Class
 
@@ -304705,7 +300560,6 @@ currentTimeMillis()
 Returns the current time in milliseconds, which is expressed as the difference between the current time and midnight, January 1,
 1970 UTC.
 
-4146
 
 Apex Reference Guide System Class
 
@@ -304766,7 +300620,6 @@ Moves the specified user’s password to a different user.
 now()
 Returns the current date and time in the GMT time zone.
 
-4147
 
 Apex Reference Guide System Class
 
@@ -304827,7 +300680,6 @@ the current user.
 today()
 Returns the current date in the current user's time zone.
 
-4148
 
 Apex Reference Guide System Class
 
@@ -304902,7 +300754,6 @@ Type: Object
 
 (Optional) Custom message returned as part of the error message.
 
-4149
 
 Apex Reference Guide System Class
 
@@ -304976,7 +300827,6 @@ Signature
 
 ```
 
-4150
 
 Apex Reference Guide System Class
 
@@ -305049,7 +300899,6 @@ Return Value
 
 Type: Long
 
-4151
 
 Apex Reference Guide System Class
 
@@ -305122,7 +300971,6 @@ Type: Object
 
 The message or object to write in string format to the execution debug log.
 
-4152
 
 Apex Reference Guide System Class
 
@@ -305191,7 +301039,6 @@ Signature
 
 ```
 
-4153
 
 Apex Reference Guide System Class
 
@@ -305270,7 +301117,6 @@ Type: AsyncOptions
 Specify a unique signature for your queueable job, the maximum stack depth, or a minimum queue delay in the AsyncOptions class
 properties.
 
-4154
 
 Apex Reference Guide System Class
 
@@ -305342,7 +301188,6 @@ The comparison rules for `System.equals` are identical to the ones for the `==` 
 
 Returns the read write mode set for an organization during Salesforce.com upgrades and downtimes.
 
-4155
 
 Apex Reference Guide System Class
 
@@ -305425,7 +301270,6 @@ Type: System.Quiddity
 The Quiddity enum value that has an associated short code. This short code is used in Event Monitoring logs. For more information,
 [see Apex Execution Event Type.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile_apexexecution.htm)
 
-4156
 
 Apex Reference Guide System Class
 
@@ -305491,7 +301335,6 @@ code is a batch Apex job.
 Returns `true` if an asynchronous Salesforce Function callback invoked the executing code, or `false` if not. Available in API version
 51.0 and later.
 
-4157
 
 Apex Reference Guide System Class
 
@@ -305560,7 +301403,6 @@ Usage
 
 ```
 
-4158
 
 Apex Reference Guide System Class
 
@@ -305643,7 +301485,6 @@ Return Value
 
 Type: Boolean
 
-4159
 
 Apex Reference Guide System Class
 
@@ -305715,7 +301556,6 @@ Return Value
 
 Type: Datetime
 
-4160
 
 Apex Reference Guide System Class
 
@@ -305794,7 +301634,6 @@ Type: List<Id>
 
 Type: String
 
-4161
 
 Apex Reference Guide System Class
 
@@ -305870,7 +301709,6 @@ This example shows how to delete all job records for jobs that have finished bef
 Returns a two-part version that contains the major and minor version numbers of a package. Applies to first-generation managed
 packages.
 
-4162
 
 Apex Reference Guide System Class
 
@@ -305936,7 +301774,6 @@ Warning: Be careful with this method, and do not expose this functionality to en
 Resets the user's password and sends an email to the user with their new password. You specify the email template that is sent to the
 specified user. Use this method for external users of Experience Cloud sites.
 
-4163
 
 Apex Reference Guide System Class
 
@@ -306011,7 +301848,6 @@ Return Value
 
 Type: void
 
-4164
 
 Apex Reference Guide System Class
 
@@ -306077,7 +301913,6 @@ A package developer can use Version methods to continue to support existing beha
 versions while continuing to evolve the code. Apex classes and triggers are saved with the version settings for each installed managed
 package that the class or trigger references.
 
-4165
 
 Apex Reference Guide System Class
 
@@ -306140,7 +301975,6 @@ Signature
 
 ```
 
-4166
 
 Apex Reference Guide System Class
 
@@ -306214,7 +302048,6 @@ _`Hours`_ 0–23 `, - * /`
 
 _`Day_of_month`_ 1–31 `, - * ? / L W`
 
-4167
 
 Apex Reference Guide System Class
 
@@ -306290,7 +302123,6 @@ begin, and the number after the slash is the interval amount. For example, if yo
 `1/5` for _`Day_of_month`_, the Apex class runs every fifth day of the month, starting
 on the first of the month.
 
-4168
 
 Apex Reference Guide System Class
 
@@ -306356,7 +302188,6 @@ Signature
 
 ```
 
-4169
 
 Apex Reference Guide System Class
 
@@ -306435,7 +302266,6 @@ Parameters
 
 Type: Database.Batchable
 
-4170
 
 Apex Reference Guide System Class
 
@@ -306515,7 +302345,6 @@ Type: ID
 
 Type: String
 
-4171
 
 Apex Reference Guide System Class
 
@@ -306588,7 +302417,6 @@ Return Value
 
 Type: Date
 
-4172
 
 ### Apex Reference Guide Test Class Test Class
 
@@ -306646,7 +302474,6 @@ getFlexQueueOrder()
 Returns an ordered list of job IDs for jobs in the test-context flex queue. The job at index `0` is the next job slated to run. This method
 returns only test-context results, even if it’s annotated with `@IsTest(SeeAllData=true)` .
 
-4173
 
 Apex Reference Guide Test Class
 
@@ -306708,7 +302535,6 @@ testSandboxPostCopyScript(script, organizationId, sandboxId, sandboxName)
 Tests the implementation of the SandboxPostCopy Interface, which is used for specifying a script to run at the completion of a
 Sandbox copy. Tests run as the test initiator in the development environment.
 
-4174
 
 Apex Reference Guide Test Class
 
@@ -306774,7 +302600,6 @@ Type: void
 
 Clear the messages on a Visualforce page while executing Apex test methods.
 
-4175
 
 Apex Reference Guide Test Class
 
@@ -306857,7 +302682,6 @@ SEE ALSO:
 
 _Apex Developer Guide_ [: Mock SOQL Tests for Data Cloud Data Model Objects](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/MockSOQLTestsForDMOs.htm)
 
-4176
 
 Apex Reference Guide Test Class
 
@@ -306932,7 +302756,6 @@ Type: Schema.SObjectType
 
 The SObject type to be stubbed. This parameter can’t be null.
 
-4177
 
 Apex Reference Guide Test Class
 
@@ -307012,7 +302835,6 @@ Return Value
 
 Type: List<SObject>
 
-4178
 
 Apex Reference Guide Test Class
 
@@ -307081,7 +302903,6 @@ SEE ALSO:
 
 _[Change Data Capture Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.change_data_capture.meta/change_data_capture/cdc_intro.htm)_
 
-4179
 
 Apex Reference Guide Test Class
 
@@ -307156,7 +302977,6 @@ Enclose `Test.getEventBus().deliver()` within the `Test.startTest()` and `Test.s
 
 ```
 
-4180
 
 Apex Reference Guide Test Class
 
@@ -307229,7 +303049,6 @@ custom price book to add a price book entry with a custom price.
 
 ```
 
-4181
 
 Apex Reference Guide Test Class
 
@@ -307319,7 +303138,6 @@ Type: Continuation
 
 The continuation that is returned by an action method in the controller class.
 
-4182
 
 Apex Reference Guide Test Class
 
@@ -307384,7 +303202,6 @@ Type: Boolean
 
 Inserts test records from the specified static resource .csv file and for the specified sObject type, and returns a list of the inserted sObjects.
 
-4183
 
 Apex Reference Guide Test Class
 
@@ -307467,7 +303284,6 @@ Type: Id
 
 Previous email message ID if this email message is a reply.
 
-4184
 
 Apex Reference Guide Test Class
 
@@ -307542,7 +303358,6 @@ Parameters
 
 Type: Id
 
-4185
 
 Apex Reference Guide Test Class
 
@@ -307625,7 +303440,6 @@ Type: Void
 
 A Visualforce test method that sets the current PageReference for the controller.
 
-4186
 
 Apex Reference Guide Test Class
 
@@ -307701,7 +303515,6 @@ Parameters
 
 Type: System.Type
 
-4187
 
 Apex Reference Guide Test Class
 
@@ -307776,7 +303589,6 @@ It then resets the application mode and performs a successful insert.
 
 ```
 
-4188
 
 Apex Reference Guide Test Class
 
@@ -307858,7 +303670,6 @@ run before doing any assertions or testing. Each test method is allowed to call 
 should be used to initialize variables, populate data structures, and so on, allowing you to set up everything you need to run your test.
 ##### Any code that executes after the call to startTest and before stopTest is assigned a new set of governor limits.
 
-4189
 
 Apex Reference Guide Test Class
 
@@ -307934,7 +303745,6 @@ Usage
 
 This method throws a run-time exception if the test install fails.
 
-4190
 
 Apex Reference Guide Test Class
 
@@ -308019,7 +303829,6 @@ This method throws a run-time exception if the test install fails.
 used by post-copy tasks during sandbox creation. Using the same permissions enables the test to better simulate the actual usage
 of the class, and to uncover potential issues.
 
-4191
 
 Apex Reference Guide Test Class
 
@@ -308101,7 +303910,6 @@ Usage
 
 This method throws a run-time exception if the test install fails.
 
-4192
 
 ### Apex Reference Guide Time Class
 
@@ -308170,7 +303978,6 @@ Usage
 
 ### The following are methods for Time .
 
-4193
 
 Apex Reference Guide Time Class
 
@@ -308243,7 +304050,6 @@ Example
 
 Adds the specified number of milliseconds to a Time.
 
-4194
 
 Apex Reference Guide Time Class
 
@@ -308324,7 +304130,6 @@ Signature
 
 ```
 
-4195
 
 Apex Reference Guide Time Class
 
@@ -308403,7 +304208,6 @@ Example
 
 ```
 
-4196
 
 Apex Reference Guide Time Class
 
@@ -308485,7 +304289,6 @@ The following example creates a time of 18:30:2:20 (UTC).
 
 ```
 
-4197
 
 ### Apex Reference Guide TimeZone Class
 
@@ -308554,7 +304357,6 @@ varies based on the user's time zone.
 This second example shows how to create a time zone for the New York time zone and get the offset of this time zone to the GMT time
 zone. The example uses two dates to get the offset from. One date is before DST (Daylight Saving Time), and one is after DST. In 2000,
 
-4198
 
 Apex Reference Guide TimeZone Class
 
@@ -308628,7 +304430,6 @@ Returns the string representation of this time zone.
 
 Returns this time zone’s display name.
 
-4199
 
 Apex Reference Guide TimeZone Class
 
@@ -308697,7 +304498,6 @@ zone.
 
 Returns the time zone corresponding to the specified time zone ID.
 
-4200
 
 ### Apex Reference Guide Trigger Class
 
@@ -308762,7 +304562,6 @@ Trigger Context Variables
 
 ### The Trigger class provides the following context variables.
 
-4201
 
 Apex Reference Guide Trigger Class
 
@@ -308837,7 +304636,6 @@ value is set to `null` in these variables:
 
 **•** `new`
 
-4202
 
 Apex Reference Guide Trigger Class
 
@@ -308935,7 +304733,6 @@ for specific trigger conditions:
 
 ```
 
-4203
 
 ### Apex Reference Guide TriggerOperation Enum
 
@@ -309011,7 +304808,6 @@ else, such as a subscriber of your package, provide the methods’ implementatio
 
 Note: A call to `Type.forName()` can cause the class to be compiled.
 
-4204
 
 Apex Reference Guide Type Class
 
@@ -309097,7 +304893,6 @@ Class Property
 The `class` property returns the `System.Type` of the type it is called on. It’s exposed on all Apex built-in types including primitive
 data types and collections, sObject types, and user-defined classes. This property can be used instead of `forName` methods.
 
-4205
 
 Apex Reference Guide Type Class
 
@@ -309166,7 +304961,6 @@ Type: Object
 
 The type to compare with the current type.
 
-4206
 
 Apex Reference Guide Type Class
 
@@ -309237,7 +305031,6 @@ Signature
 
 ```
 
-4207
 
 Apex Reference Guide Type Class
 
@@ -309309,7 +305102,6 @@ Return Value
 
 Type: String
 
-4208
 
 Apex Reference Guide Type Class
 
@@ -309383,7 +305175,6 @@ following ways, the method returns `false` :
 
 **•** typeA.isAssignableFrom(TypeB) where TypeB and TypeA are unrelated
 
-4209
 
 Apex Reference Guide Type Class
 
@@ -309465,7 +305256,6 @@ Then, it explores several type comparisons using `isAssignableFrom()` .
 
 ```
 
-4210
 
 Apex Reference Guide Type Class
 
@@ -309548,7 +305338,6 @@ the methods’ implementation. For example, a package developer can provide an i
 can implement. The code in the package calls the subscriber's implementation of the interface methods by instantiating the subscriber’s
 Type.
 
-4211
 
 ### Apex Reference Guide UninstallHandler Interface
 
@@ -309615,7 +305404,6 @@ Usage
 App developers can implement this interface to specify Apex code that runs automatically after a subscriber uninstalls a managed
 package. This makes it possible to perform cleanup and notification tasks based on details of the subscriber’s organization.
 
-4212
 
 Apex Reference Guide UninstallHandler Interface
 
@@ -309687,7 +305475,6 @@ Signature
 
 ```
 
-4213
 
 Apex Reference Guide UninstallHandler Interface
 
@@ -309782,7 +305569,6 @@ This sample shows how to test an uninstall script implemented in the `UninstallC
 
 ```
 
-4214
 
 ### Apex Reference Guide URL Class URL Class
 
@@ -309863,7 +305649,6 @@ the debug log output.
 
 ```
 
-4215
 
 Apex Reference Guide URL Class
 
@@ -309924,7 +305709,6 @@ Signature
 
 ```
 
-4216
 
 Apex Reference Guide URL Class
 
@@ -310008,7 +305792,6 @@ The protocol name for this URL.
 
 Type: String
 
-4217
 
 Apex Reference Guide URL Class
 
@@ -310086,7 +305869,6 @@ Returns the file name of the current URL.
 getFileFieldURL(entityId, fieldName)
 Returns the download URL for a file attachment.
 
-4218
 
 Apex Reference Guide URL Class
 
@@ -310151,7 +305933,6 @@ Signature
 
 ```
 
-4219
 
 Apex Reference Guide URL Class
 
@@ -310224,7 +306005,6 @@ Specifies the ID of the entity that holds the file data.
 
 Type: String
 
-4220
 
 Apex Reference Guide URL Class
 
@@ -310295,7 +306075,6 @@ for creating and customizing picklist value sets and custom fields, and more.
 
 You don't need a RemoteSiteSetting for your org to interact with the Salesforce APIs using domain URLs retrieved with this method.
 
-4221
 
 Apex Reference Guide URL Class
 
@@ -310372,7 +306151,6 @@ Signature
 
 ```
 
-4222
 
 Apex Reference Guide URL Class
 
@@ -310435,7 +306213,6 @@ Return Value
 
 Type: `System.URL`
 
-4223
 
 Apex Reference Guide URL Class
 
@@ -310498,7 +306275,6 @@ Usage
 
 Returns a string representation of the current URL.
 
-4224
 
 ### Apex Reference Guide UserInfo Class
 
@@ -310561,7 +306337,6 @@ Returns the context user's profile ID.
 getSessionId()
 Returns the session ID for the current session.
 
-4225
 
 Apex Reference Guide UserInfo Class
 
@@ -310621,7 +306396,6 @@ Type: String
 
 If a UVID isn’t available, returns `null` .
 
-4226
 
 Apex Reference Guide UserInfo Class
 
@@ -310688,7 +306462,6 @@ Signature
 
 ```
 
-4227
 
 Apex Reference Guide UserInfo Class
 
@@ -310758,7 +306531,6 @@ Return Value
 
 Type: String
 
-4228
 
 Apex Reference Guide UserInfo Class
 
@@ -310824,7 +306596,6 @@ access tokens for named users” setting isn’t selected for your external clie
 
 Returns the current user’s local time zone.
 
-4229
 
 Apex Reference Guide UserInfo Class
 
@@ -310898,7 +306669,6 @@ Valid values include:
 
 Returns the theme being displayed for the current user.
 
-4230
 
 Apex Reference Guide UserInfo Class
 
@@ -310974,7 +306744,6 @@ Signature
 
 ```
 
-4231
 
 Apex Reference Guide UserInfo Class
 
@@ -311038,7 +306807,6 @@ Signature
 
 ```
 
-4232
 
 Apex Reference Guide UserInfo Class
 
@@ -311105,7 +306873,6 @@ Return Value
 
 Type: Boolean
 
-4233
 
 ### Apex Reference Guide UserManagement Class
 
@@ -311163,7 +306930,6 @@ IN THIS SECTION:
 clone()
 Makes a duplicate copy of the System.UserManagement object.
 
-4234
 
 Apex Reference Guide UserManagement Class
 
@@ -311225,7 +306991,6 @@ verifyVerificationMethod(identifier, code, method)
 Completes the verification service for email, phone (SMS), Salesforce Authenticator, password, or time-based one-time password
 (TOTP) verification methods.
 
-4235
 
 Apex Reference Guide UserManagement Class
 
@@ -311294,7 +307059,6 @@ Note: This method doesn't support deregistering built-in authenticators.
 Formats a mobile phone number for a user. Call this method to ensure that the phone number is formatted properly before updating
 a user’s mobile phone number.
 
-4236
 
 Apex Reference Guide UserManagement Class
 
@@ -311374,7 +307138,6 @@ format required by Salesforce. Then it updates the user’s record with the form
 
 ```
 
-4237
 
 Apex Reference Guide UserManagement Class
 
@@ -311454,7 +307217,6 @@ Use this method along with its paired `verifyPasswordlessLogin` to customize the
 
 number.
 
-4238
 
 Apex Reference Guide UserManagement Class
 
@@ -311521,7 +307283,6 @@ registering a user’s verification method using a Visualforce Verify page.
 
 it. If the verification code isn’t valid, it returns an error message.
 
-4239
 
 Apex Reference Guide UserManagement Class
 
@@ -311619,7 +307380,6 @@ whether the phone number is verified already. If the user is registered with a d
 
 Invokes a verification challenge for self-registration when creating a custom (Visualforce) Verify page for Experience Cloud self-registration.
 
-4240
 
 Apex Reference Guide UserManagement Class
 
@@ -311701,7 +307461,6 @@ Signature
 
 ```
 
-4241
 
 Apex Reference Guide UserManagement Class
 
@@ -311783,7 +307542,6 @@ Type: Auth.VerificationMethod
 
 Method used to initiate a verification service for `EMAIL`, `SMS`, or `SALESFORCE_AUTHENTICATOR` verification methods.
 
-4242
 
 Apex Reference Guide UserManagement Class
 
@@ -311866,7 +307624,6 @@ to `Connect to My Salesforce Org` and the `challenge_required` _`extra`_ paramet
 
 ```
 
-4243
 
 Apex Reference Guide UserManagement Class
 
@@ -311949,7 +307706,6 @@ Note: Take care when using this method. The users’ data becomes anonymous and 
 
 **•** This method requires that the org’s User Management setting, **Scramble Specific Users' Data**, is enabled from Setup.
 
-4244
 
 Apex Reference Guide UserManagement Class
 
@@ -312017,7 +307773,6 @@ such as the email address.
 **•** This method changes only the user object. The association between the user and other objects is removed, but no other objects are
 changed. For example, contact, ThirdPartyAccountLink (TPAL), and user password authentication (UPA) objects remain unchanged.
 
-4245
 
 Apex Reference Guide UserManagement Class
 
@@ -312099,7 +307854,6 @@ Type: String
 
 Path to the page that users see after they log in.
 
-4246
 
 Apex Reference Guide UserManagement Class
 
@@ -312165,7 +307919,6 @@ Type: String
 ID of the email template in which the verification link is defined. If `null`, Salesforce sends a default email. Here's how the default
 email looks.
 
-4247
 
 Apex Reference Guide UserManagement Class
 
@@ -312219,7 +307972,6 @@ Example
 Completes a verification challenge during a passwordless login that uses a custom Verify page (Visualforce only). If the user who is trying
 to log in enters the verification code successfully, the user is logged in.
 
-4248
 
 Apex Reference Guide UserManagement Class
 
@@ -312304,7 +308056,6 @@ Signature
 
 ```
 
-4249
 
 Apex Reference Guide UserManagement Class
 
@@ -312390,7 +308141,6 @@ user is registered with a different phone number, the number is updated.
 
 ```
 
-4250
 
 Apex Reference Guide UserManagement Class
 
@@ -312493,7 +308243,6 @@ Code used to verify the identity of the user.
 
 Type: String
 
-4251
 
 Apex Reference Guide UserManagement Class
 
@@ -312568,7 +308317,6 @@ Type: String
 
 Identifier returned from `initVerificationMethod` for `EMAIL`, `SMS`, and `SALESFORCE_AUTHENTICATOR` .
 
-4252
 
 Apex Reference Guide UserManagement Class
 
@@ -312656,7 +308404,6 @@ verifications.
 
 ```
 
-4253
 
 ### Apex Reference Guide UUID Class UUID Class
 
@@ -312716,7 +308463,6 @@ Type: Object
 
 The UUID object to be compared.
 
-4254
 
 Apex Reference Guide UUID Class
 
@@ -312790,7 +308536,6 @@ Signature
 
 ```
 
-4255
 
 ### Apex Reference Guide Version Class
 
@@ -312853,7 +308598,6 @@ A package version is a number that identifies the set of components uploaded in 
 _`majorNumber.minorNumber.patchNumber`_ (for example, 2.1.3). The major and minor numbers increase to a chosen value
 during every major release. The _`patchNumber`_ is generated and updated only for a patch release.
 
-4256
 
 Apex Reference Guide Version Class
 
@@ -312925,7 +308669,6 @@ numbers.
 
 #### Creates a new instance of the Version class as a two-part package version using the specified major and minor version numbers.
 
-4257
 
 Apex Reference Guide Version Class
 
@@ -313006,7 +308749,6 @@ Returns the major package version of the of the calling code.
 minor()
 Returns the minor package version of the calling code.
 
-4258
 
 Apex Reference Guide Version Class
 
@@ -313075,7 +308817,6 @@ Signature
 
 ```
 
-4259
 
 ### Apex Reference Guide WebServiceCallout Class
 
@@ -313138,7 +308879,6 @@ Signature
 
 ```
 
-4260
 
 ### Apex Reference Guide WebServiceMock Interface
 
@@ -313219,7 +308959,6 @@ Namespace
 
 System
 
-4261
 
 Apex Reference Guide WebServiceMock Interface
 
@@ -313307,7 +309046,6 @@ The requested SOAP operation.
 
 Type: String
 
-4262
 
 ### Apex Reference Guide XmlStreamReader Class
 
@@ -313373,7 +309111,6 @@ _Apex Developer Guide_ [: Reading XML Using Streams](https://developer.salesforc
 
 ### The following are constructors for XmlStreamReader .
 
-4263
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313434,7 +309171,6 @@ Returns the local name of the current event.
 getLocation()
 Return the current location of the cursor.
 
-4264
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313497,7 +309233,6 @@ nextTag()
 Skips any white space (the `isWhiteSpace` method returns `true` ), comment, or processing instruction XML events, until a start
 element or end element is reached. Returns the index for that XML event.
 
-4265
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313560,7 +309295,6 @@ Usage
 
 If there is no name, an empty string is returned. This method is only valid with start element or attribute XML events.
 
-4266
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313629,7 +309363,6 @@ Signature
 
 ```
 
-4267
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313702,7 +309435,6 @@ Parameters
 
 Type: Integer
 
-4268
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313774,7 +309506,6 @@ Signature
 
 ```
 
-4269
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313840,7 +309571,6 @@ Return Value
 
 Type: Integer
 
-4270
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313907,7 +309637,6 @@ The returned URI depends on the current state of the processor.
 
 Returns the URI for the namespace declared at the index.
 
-4271
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -313979,7 +309708,6 @@ Return Value
 
 Type: String
 
-4272
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -314053,7 +309781,6 @@ Signature
 
 ```
 
-4273
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -314118,7 +309845,6 @@ Return Value
 
 Type: Boolean
 
-4274
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -314183,7 +309909,6 @@ Return Value
 
 Type: Integer
 
-4275
 
 Apex Reference Guide XmlStreamReader Class
 
@@ -314252,7 +309977,6 @@ Parameters
 
 Type: Boolean
 
-4276
 
 ### Apex Reference Guide XmlStreamWriter Class
 
@@ -314311,7 +310035,6 @@ HttpResponse Class
 
 ### The following are constructors for XmlStreamWriter .
 
-4277
 
 Apex Reference Guide XmlStreamWriter Class
 
@@ -314369,7 +310092,6 @@ Writes an end tag to the output stream, relying on the internal state of the wri
 writeNamespace(prefix, namespaceUri)
 Writes the specified namespace to the output stream.
 
-4278
 
 Apex Reference Guide XmlStreamWriter Class
 
@@ -314435,7 +310157,6 @@ Return Value
 
 Type: Void
 
-4279
 
 Apex Reference Guide XmlStreamWriter Class
 
@@ -314518,7 +310239,6 @@ Signature
 
 ```
 
-4280
 
 Apex Reference Guide XmlStreamWriter Class
 
@@ -314591,7 +310311,6 @@ Signature
 
 ```
 
-4281
 
 Apex Reference Guide XmlStreamWriter Class
 
@@ -314670,7 +310389,6 @@ Parameters
 
 Type: String
 
-4282
 
 Apex Reference Guide XmlStreamWriter Class
 
@@ -314746,7 +310464,6 @@ Type: Void
 
 Writes the start tag specified by _`localName`_ to the output stream.
 
-4283
 
 ## Apex Reference Guide TerritoryMgmt Namespace
 
@@ -314809,7 +310526,6 @@ OpportunityTerritory2AssignmentFilter Methods
 
 OpportunityTerritory2AssignmentFilter Example Implementation
 
-4284
 
 Apex Reference Guide OpportunityTerritory2AssignmentFilter Global Interface
 
@@ -314891,7 +310607,6 @@ This is an example implementation of the `TerritoryMgmt.OpportunityTerritory2Ass
 
 ```
 
-4285
 
 Apex Reference Guide OpportunityTerritory2AssignmentFilter Global Interface
 
@@ -314994,7 +310709,6 @@ Apex Reference Guide OpportunityTerritory2AssignmentFilter Global Interface
 
 ```
 
-4286
 
 Apex Reference Guide OpportunityTerritory2AssignmentFilter Global Interface
 
@@ -315093,7 +310807,6 @@ Apex Reference Guide OpportunityTerritory2AssignmentFilter Global Interface
 
 ```
 
-4287
 
 ## Apex Reference Guide TxnSecurity Namespace TxnSecurity Namespace The TxnSecurity namespace provides an interface used for transaction security. The following is the interface and its supporting class in the TxnSecurity namespace.
 
@@ -315141,7 +310854,6 @@ Event Properties
 
 ### The following is the constructor for Event .
 
-4288
 
 Apex Reference Guide Event Class
 
@@ -315202,7 +310914,6 @@ Identifies the user that caused the event.
 Specifies the action being taken on the resource for an Entity event. For example, a Login IP resource for an Entity event could have an
 ##### action of create . The action attribute is not used by any other event type.
 
-4289
 
 Apex Reference Guide Event Class
 
@@ -315236,7 +310947,6 @@ The following table lists all the available data types. Not all types appear wit
 representations. For example, the `isApi` value is a string in the map, but is actually a Boolean value. Convert the value from a string
 to its true type this way: `Boolean.valueOf(event.data.get('isApi'));`
 
-4290
 
 Apex Reference Guide Event Class
 
@@ -315285,7 +310995,6 @@ Property Value
 
 Type: String
 
-4291
 
 ### Apex Reference Guide EventCondition Interface
 
@@ -315350,7 +311059,6 @@ For example, imagine a transaction security policy that triggers when a user que
 the `evaluate` method checks whether the `RowsProcessed` value is greater than 1,000 and the `QueriedEntities` value
 contains “Lead”. If so, `true` is returned.
 
-4292
 
 Apex Reference Guide EventCondition Interface
 
@@ -315416,7 +311124,6 @@ and returns `true` if it’s the user’s second login attempt.
 
 ##### The system performs the action and notification, not the evaluate method.
 
-4293
 
 ### Apex Reference Guide AsyncCondition Interface
 
@@ -315496,7 +311203,6 @@ interface.
 
 This interface has no methods.
 
-4294
 
 ### Apex Reference Guide PolicyCondition Interface
 
@@ -315575,7 +311281,6 @@ the usual `TxnSecurity.EventCondition` interface.
 Apex interface that allows an implementing class to specify actions to take when certain events occur based on a transaction security
 policy.
 
-4295
 
 Apex Reference Guide PolicyCondition Interface
 
@@ -315634,7 +311339,6 @@ Type: TxnSecurity.Event
 
 The event to check against the transaction security policy.
 
-4296
 
 ## Apex Reference Guide UserProvisioning Namespace
 
@@ -315690,7 +311394,6 @@ inserted in the database table.
 
 ```
 
-4297
 
 Apex Reference Guide ConnectorTestUtil Class
 
@@ -315770,7 +311473,6 @@ Parameters
 
 Type: String
 
-4298
 
 ### Apex Reference Guide UserProvisioningLog Class
 
@@ -315831,7 +311533,6 @@ user.
 
 Writes a specific message, such as an error message, to monitor the progress of a user provisioning request.
 
-4299
 
 Apex Reference Guide UserProvisioningLog Class
 
@@ -315915,7 +311616,6 @@ Type: void
 Writes a specific message, such as an error message, to monitor the progress of a user provisioning request associated with a specific
 user.
 
-4300
 
 ### Apex Reference Guide UserProvisioningPlugin Class
 
@@ -315993,7 +311693,6 @@ parameters.
 
 `userId` The ID of the associated user for the request.
 
-4301
 
 Apex Reference Guide UserProvisioningPlugin Class
 
@@ -316071,7 +311770,6 @@ a new quota limit.
 
 If you want to add more custom parameters, use the `buildDescribeCall()` method.
 
-4302
 
 Apex Reference Guide UserProvisioningPlugin Class
 
@@ -316165,7 +311863,6 @@ The example also demonstrates how to bypass the limit of the 10,000 records proc
 
 ```
 
-4303
 
 Apex Reference Guide UserProvisioningPlugin Class
 
@@ -316234,7 +311931,6 @@ Return Value
 
 Type: Process.PluginDescribeResult
 
-4304
 
 ## Apex Reference Guide VisualEditor Namespace
 
@@ -316299,7 +311995,6 @@ As of Spring ’19 (API version 45.0), you can build Lightning components using 
 model, and the original Aura Components model. Lightning web components are custom HTML elements built using HTML and modern
 JavaScript. Lightning web components and Aura components can coexist and interoperate on a page.
 
-4305
 
 ### Apex Reference Guide DataRow Class
 
@@ -316362,7 +312057,6 @@ Signature
 
 ```
 
-4306
 
 Apex Reference Guide DataRow Class
 
@@ -316443,7 +312137,6 @@ Returns the value of the picklist item.
 isSelected()
 Returns the state of the picklist item, indicating whether it’s selected or not.
 
-4307
 
 Apex Reference Guide DataRow Class
 
@@ -316515,7 +312208,6 @@ Type: String
 
 Returns the value of the picklist item.
 
-4308
 
 ### Apex Reference Guide DesignTimePageContext Class
 
@@ -316588,7 +312280,6 @@ Here’s an example of a custom Apex class extending the `VisualEditor.DynamicPi
 
 ```
 
-4309
 
 Apex Reference Guide DesignTimePageContext Class
 
@@ -316654,7 +312345,6 @@ Type: String
 
 The type of Lightning page, such as `HomePage`, `AppPage`, or `RecordPage` .
 
-4310
 
 ### Apex Reference Guide DynamicPickList Class
 
@@ -316718,7 +312408,6 @@ Here’s an example of a custom Apex class extending the `VisualEditor.DynamicPi
 
 ```
 
-4311
 
 Apex Reference Guide DynamicPickList Class
 
@@ -316792,7 +312481,6 @@ Signature
 
 ```
 
-4312
 
 Apex Reference Guide DynamicPickList Class
 
@@ -316860,7 +312548,6 @@ Type: VisualEditor.DynamicPickListRows
 Returns the valid state of the picklist item’s value. A picklist value is considered valid if it’s a part of any `VisualEditor.DataRow`
 ##### in the VisualEditor.DynamicPickListRows returned by getValues() .
 
-4313
 
 ### Apex Reference Guide DynamicPickListRows Class
 
@@ -316927,7 +312614,6 @@ Signature
 
 ```
 
-4314
 
 Apex Reference Guide DynamicPickListRows Class
 
@@ -317002,7 +312688,6 @@ Adds a single picklist item to a dynamic picklist rendered in a Lightning compon
 clone()
 Makes a duplicate copy of the `VisualEditor.DynamicPickListRows` object.
 
-4315
 
 Apex Reference Guide DynamicPickListRows Class
 
@@ -317072,7 +312757,6 @@ Type: VisualEditor.DataRow
 
 A single picklist item.
 
-4316
 
 Apex Reference Guide DynamicPickListRows Class
 
@@ -317141,7 +312825,6 @@ Return Value
 
 Type: VisualEditor.DataRow
 
-4317
 
 Apex Reference Guide DynamicPickListRows Class
 
@@ -317210,7 +312893,6 @@ Type: Integer
 
 Sorts the list of `VisualEditor.DynamicPickListRows` .
 
-4318
 
 ## Apex Reference Guide Wave Namespace
 
@@ -317278,7 +312960,6 @@ statement. For example:
 
 ```
 
-4319
 
 Apex Reference Guide QueryBuilder Class
 
@@ -317367,7 +313048,6 @@ IN THIS SECTION:
 
 #### QueryBuilder Methods QueryBuilder Methods The following are methods for QueryBuilder .
 
-4320
 
 Apex Reference Guide QueryBuilder Class
 
@@ -317439,7 +313119,6 @@ Return Value
 
 Type: wave.ProjectionNode
 
-4321
 
 Apex Reference Guide QueryBuilder Class
 
@@ -317515,7 +313194,6 @@ Parameters
 
 Type: wave.QueryNode
 
-4322
 
 ### Apex Reference Guide QueryNode Class
 
@@ -317574,7 +313252,6 @@ Limits the number of results that are returned.
 filter(filterCondition)
 Selects rows from a dataset based on a filter condition (a predicate).
 
-4323
 
 Apex Reference Guide QueryNode Class
 
@@ -317647,7 +313324,6 @@ Signature
 
 ```
 
-4324
 
 Apex Reference Guide QueryNode Class
 
@@ -317728,7 +313404,6 @@ A list of column names and associated ascending or descending keywords, for exam
 
 ```
 
-4325
 
 Apex Reference Guide QueryNode Class
 
@@ -317795,7 +313470,6 @@ Signature
 
 ```
 
-4326
 
 ### Apex Reference Guide ProjectionNode Class
 
@@ -317863,7 +313537,6 @@ IN THIS SECTION:
 
 ### The following are methods for ProjectionNode .
 
-4327
 
 Apex Reference Guide ProjectionNode Class
 
@@ -317934,7 +313607,6 @@ Signature
 
 ```
 
-4328
 
 Apex Reference Guide ProjectionNode Class
 
@@ -317998,7 +313670,6 @@ Signature
 
 ```
 
-4329
 
 ### Apex Reference Guide Templates Class
 
@@ -318085,7 +313756,6 @@ For example, in the lwc.js file:
 
 ```
 
-4330
 
 Apex Reference Guide Templates Class
 
@@ -318153,7 +313823,6 @@ Return Value
 
 [Type: Map<String,Object>](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_collections_maps.htm)
 
-4331
 
 Apex Reference Guide Templates Class
 
@@ -318226,7 +313895,6 @@ Type: Wave.TemplatesSearchOptions on page 4333
 
 The search options to use for filtering the template collection.
 
-4332
 
 ### Apex Reference Guide TemplatesSearchOptions Class
 
@@ -318302,7 +313970,6 @@ Use TemplatesSearchOptions with `Wave.Templates` class to filter the CRM Analyti
 
 ```
 
-4333
 
 Apex Reference Guide TemplatesSearchOptions Class
 
@@ -318367,7 +314034,6 @@ Signature
 
 ```
 
-4334
 
 ## Apex Reference Guide Appendices
 
@@ -318433,7 +314099,6 @@ This appendix provides an example of an Apex application. This is a more complex
 
 ### • Shipping Invoice Example Code
 
-4335
 
 #### Apex Reference Guide Shipping Invoice Example
 
@@ -318494,7 +314159,6 @@ Name String The name of the shipping invoice/order
 
 Subtotal Currency The subtotal
 
-4336
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -318526,7 +314190,6 @@ The following is the general flow of user actions and when triggers run:
 
 **1.** User clicks **Orders**    - **New**, names the shipping invoice and clicks **Save** .
 
-4337
 
 #### Apex Reference Guide Shipping Invoice Example
 
@@ -318606,7 +314269,6 @@ Calculate Trigger
 
 ```
 
-4338
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -318699,7 +314361,6 @@ Apex Reference Guide Shipping Invoice Example
 
 ```
 
-4339
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -318798,7 +314459,6 @@ Apex Reference Guide Shipping Invoice Example
 
 ```
 
-4340
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -318895,7 +314555,6 @@ Shipping Invoice Test
 
 ```
 
-4341
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -319000,7 +314659,6 @@ Apex Reference Guide Shipping Invoice Example
 
 ```
 
-4342
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -319101,7 +314759,6 @@ Apex Reference Guide Shipping Invoice Example
 
 ```
 
-4343
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -319208,7 +314865,6 @@ Apex Reference Guide Shipping Invoice Example
 
 ```
 
-4344
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -319311,7 +314967,6 @@ Apex Reference Guide Shipping Invoice Example
 
 ```
 
-4345
 
 Apex Reference Guide Shipping Invoice Example
 
@@ -319414,7 +315069,6 @@ Apex Reference Guide Shipping Invoice Example
 
 ```
 
-4346
 
 ### Apex Reference Guide Reserved Keywords
 
@@ -319499,7 +315153,6 @@ cast instanceof switch
 
 catch int synchronized
 
-4347
 
 ### Apex Reference Guide Documentation Typographical Conventions
 
@@ -319573,7 +315226,6 @@ These words are special types of keywords that aren't reserved words and can be 
 
 Apex and Visualforce documentation uses these typographical conventions.
 
-4348
 
 Apex Reference Guide Documentation Typographical Conventions
 
@@ -319665,4 +315317,3 @@ Set< data_type > set_name
 
 ```
 
-4349
