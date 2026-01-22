@@ -1,0 +1,14 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Salesforce Documentation Context",
+  "description": "Provides curated list of Salesforce documentation sourced in official Salesforce PDFs as markdown files.",
+  "folders": ["documentation/"],
+  "rules": [
+    "Do not infer product behavior beyond what is stated in the markdown.",
+    "Preserve product terminology as written in the source markdown."
+  ],
+  "excludeFolders": ["sfdocctx/"],
+  "branch": "main",
+  "url": "https://context7.com/damecek/salesforce-documentation-context",
+  "public_key": "pk_UzhHdgVqxdkf6v9UYuXZ3"
+}
