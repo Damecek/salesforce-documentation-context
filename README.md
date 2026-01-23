@@ -8,7 +8,7 @@ Then tell the agent to use this library (the `llms.txt` from this repo) directly
 
 ```
 - If a Context7 MCP server is available, call `get-library-docs` directly (skip `resolve-library-id`) with
-  `context7CompatibleLibraryID: /llmstxt/raw_githubusercontent_damecek_salesforce-documentation-context_refs_heads_main_llms_txt`, to get up to date information about target topic.
+  `context7CompatibleLibraryID: damecek/salesforce-documentation-context`, to get up to date information about target topic.
 ```
 
 ## Generate Documentation
