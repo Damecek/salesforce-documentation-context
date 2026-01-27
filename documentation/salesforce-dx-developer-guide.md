@@ -1,14 +1,14 @@
 # Salesforce DX Developer Guide
 
-> Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_dev.pdf
-> Fetched: 2026-01-22T10:44:20Z
+> Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/sfdx_dev.pdf
+> Fetched: 2026-01-27T10:01:22Z
 Salesforce DX Developer Guide
 
-Version 65.0, Winter ’26
+Version 66.0, Spring ’26
 
-Last updated: December 18, 2025
+Last updated: January 23, 2026
 
-© Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
+© Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
 
 CONTENTS
@@ -98,179 +98,179 @@ Supported Scratch Org Editions and Allocations **. . . . . . . . . . . . . . . .
 Build Your Own Scratch Org Definition File **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 76**
 
 Scratch Org Features **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 80**
-Scratch Org Settings **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 166**
+Scratch Org Settings **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 167**
 Create a Scratch Org Based on an Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 168**
 
 Enable Org Shape for Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 169**
 Org Shape Permissions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170**
-Create and Manage Org Shapes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 170**
-Scratch Org Definition for Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171**
+Create and Manage Org Shapes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171**
+Scratch Org Definition for Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 172**
 Troubleshoot Org Shape **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 173**
-Create Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 175**
+Create Scratch Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 176**
 Scratch Org Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 178**
 
 Get Started with Scratch Org Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 180**
 Salesforce CLI Snapshot Commands **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 181**
 Create a Scratch Org Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 181**
 Create a Snapshot for Use with Namespaced Scratch Orgs **. . . . . . . . . . . . . . . . . . . . 182**
-Create a Scratch Org Based on a Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 182**
-Create a Package Version Based on a Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . 184**
-Manage and Maintain Your Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 185**
+Create a Scratch Org Based on a Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 183**
+Create a Package Version Based on a Snapshot **. . . . . . . . . . . . . . . . . . . . . . . . . . . 185**
+Manage and Maintain Your Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186**
 
 **Contents**
 
 Select the Salesforce Release for a Scratch Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 186**
-Deploy Source From Your Project to the Scratch Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 188**
+Deploy Source From Your Project to the Scratch Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 189**
 Retrieve Source from the Scratch Org to Your Project **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 191**
 Scratch Org Users **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 193**
 
 Create a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 194**
-User Definition File for Customizing a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . . 195**
+User Definition File for Customizing a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . . 196**
 Generate or Change a Password for a Scratch Org User **. . . . . . . . . . . . . . . . . . . . . . 197**
 Manage Scratch Orgs from the Dev Hub Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 198**
-Scratch Org Error Codes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 198**
+Scratch Org Error Codes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 199**
 
-**Chapter 7:** Sandboxes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 200**
+**Chapter 7:** Sandboxes **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201**
 
-Authorize Your Production Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201**
-Create a Sandbox Definition File **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 201**
-Create, Clone, or Refresh a Sandbox **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 204**
+Authorize Your Production Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 202**
+Create a Sandbox Definition File **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 202**
+Create, Clone, or Refresh a Sandbox **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 205**
 
-**Chapter 8:** Track Changes Between Your Project and Org **. . . . . . . . . . . . . . . . . . . . 208**
+**Chapter 8:** Track Changes Between Your Project and Org **. . . . . . . . . . . . . . . . . . . . 209**
 
-Manage Source Tracking for Your org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 209**
-Preview Changes Identified by Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 210**
-Deploy and Retrieve Changes Identified by Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . 211**
+Manage Source Tracking for Your org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 210**
+Preview Changes Identified by Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 211**
+Deploy and Retrieve Changes Identified by Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . 212**
 
-Retrieve Changes to Profiles with Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . 214**
-Resolve Conflicts Between Your Local Project and Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 215**
-Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 216**
-Performance Considerations of Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 217**
+Retrieve Changes to Profiles with Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . 215**
+Resolve Conflicts Between Your Local Project and Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 216**
+Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 217**
+Performance Considerations of Source Tracking **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 218**
 
-**Chapter 9:** Work with Data **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 218**
+**Chapter 9:** Work with Data **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 219**
 
-Work With Small Datasets **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 219**
-Work With Large Datasets **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 221**
-Work With Individual Records **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 225**
-Run a SOQL or SOSL Query **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 227**
-Upload a File to Your Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 228**
+Work With Small Datasets **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 220**
+Work With Large Datasets **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 222**
+Work With Individual Records **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 226**
+Run a SOQL or SOSL Query **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 228**
+Upload a File to Your Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 229**
 
-**Chapter 10:** Salesforce DX MCP Server and Tools (Beta) **. . . . . . . . . . . . . . . . . . . . . . 229**
+**Chapter 10:** Salesforce DX MCP Server and Tools (Beta) **. . . . . . . . . . . . . . . . . . . . . . 230**
 
-Quick Start Using the VS Code With Copilot MCP Client (Beta) **. . . . . . . . . . . . . . . . . . . . . . . 232**
-Install and Configure the Salesforce DX MCP Server (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . 233**
+Quick Start Using the VS Code With Copilot MCP Client (Beta) **. . . . . . . . . . . . . . . . . . . . . . . 233**
+Install and Configure the Salesforce DX MCP Server (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . 234**
 
-Add the Salesforce DX MCP Server to Your MCP Client (Beta) **. . . . . . . . . . . . . . . . . . . 233**
-Configure the Salesforce DX MCP Server for Your Environment (Beta) **. . . . . . . . . . . . . . 234**
-Manage the Salesforce DX MCP Server (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 239**
-Use the Core Salesforce DX MCP Tools (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 240**
+Add the Salesforce DX MCP Server to Your MCP Client (Beta) **. . . . . . . . . . . . . . . . . . . 234**
+Configure the Salesforce DX MCP Server for Your Environment (Beta) **. . . . . . . . . . . . . . 235**
+Manage the Salesforce DX MCP Server (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 240**
+Use the Core Salesforce DX MCP Tools (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 241**
 
-**Chapter 11:** Development **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 243**
+**Chapter 11:** Development **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 244**
 
-Develop Against Any Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 245**
-Assign a Permission Set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 248**
-Create Lightning Apps and Aura Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 249**
-Create Lightning Web Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 249**
-Create an Apex Class **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 250**
-
-**Contents**
-
-Create an Apex Trigger **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251**
-Create a Custom Object **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251**
-Execute Anonymous Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252**
-Run Apex Tests **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 253**
-
-Debug Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256**
-Generate and View Apex Debug Logs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257**
-
-**Chapter 12:** Build and Release Your App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 259**
-
-Build and Release Your App with Metadata API **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261**
-
-Develop and Test Changes Locally **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 263**
-Build and Test the Release Artifact **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 264**
-Test the Release Artifact in a Staging Environment **. . . . . . . . . . . . . . . . . . . . . . . . . . 264**
-Release Your App to Production **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265**
-Cancel a Metadata Deployment **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265**
-
-**Chapter 13:** Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 266**
-
-What’s an Unlocked Package? **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267**
-Package-Based Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267**
-Before You Create Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
-Know Your Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
-Create Org-Dependent Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269**
-Workflow for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 270**
-Configure Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 271**
-
-Project Configuration File for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 272**
-Unlocked Packaging Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278**
-Package Installation Key **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 279**
-Extract Dependency Information from Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . 280**
-Understanding Namespaces **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 281**
-Share Release Notes and Post-Install Instructions **. . . . . . . . . . . . . . . . . . . . . . . . . . . 285**
-Specify Unpackaged Metadata or Apex Access for Apex Tests (Unlocked Packages) **. . . 286**
-Best Practices for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 287**
-Package IDs and Aliases for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 287**
-Frequently Used Unlocked Packaging Operations **. . . . . . . . . . . . . . . . . . . . . . . . . . 288**
-How We Handle Profile Settings in Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . 289**
-Develop Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 290**
-
-Create and Update an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 291**
-Create New Versions of an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 292**
-Guidance for Package Version Numbering **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 297**
-Code Coverage for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298**
-Considerations for Promoting Packages with Dependencies **. . . . . . . . . . . . . . . . . . . 299**
-Release an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 300**
-Update an Unlocked Package Version **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 301**
-Hard-Deleted Components in Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . 301**
-Delete an Unlocked Package or Package Version **. . . . . . . . . . . . . . . . . . . . . . . . . . 306**
+Develop Against Any Org **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 246**
+Assign a Permission Set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 249**
+Create Lightning Apps and Aura Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 250**
+Create Lightning Web Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 250**
+Create an Apex Class **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251**
 
 **Contents**
 
-View Package Details **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307**
-Push a Package Upgrade for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307**
+Create an Apex Trigger **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252**
+Create a Custom Object **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252**
+Execute Anonymous Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 253**
+Run Apex Tests **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 254**
 
-Schedule a Push Upgrade Using CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 308**
-Install an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 311**
+Debug Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257**
+Generate and View Apex Debug Logs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 258**
 
-Install Packages with the CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 312**
-Install Unlocked Packages from a URL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 313**
-Upgrade a Version of an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 313**
-Sample Script for Installing Unlocked Packages with Dependencies **. . . . . . . . . . . . . . . 314**
-Migrate Deprecated Metadata from Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . 316**
-Uninstall an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 317**
-Transfer an Unlocked Package to a Different Dev Hub **. . . . . . . . . . . . . . . . . . . . . . . . . . . 317**
+**Chapter 12:** Build and Release Your App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 260**
 
-Take Ownership of an Unlocked Package Transferred from a Different Dev Hub **. . . . . . 320**
+Build and Release Your App with Metadata API **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 262**
 
-**Chapter 14:** Continuous Integration **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 322**
+Develop and Test Changes Locally **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 264**
+Build and Test the Release Artifact **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265**
+Test the Release Artifact in a Staging Environment **. . . . . . . . . . . . . . . . . . . . . . . . . . 265**
+Release Your App to Production **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 266**
+Cancel a Metadata Deployment **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 266**
 
-Continuous Integration Using CircleCI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 323**
+**Chapter 13:** Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267**
 
-Configure Your Environment for CircleCI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 323**
-Connect CircleCI to Your DevHub **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 324**
-Continuous Integration Using Jenkins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 325**
+What’s an Unlocked Package? **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
+Package-Based Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
+Before You Create Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269**
+Know Your Orgs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269**
+Create Org-Dependent Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 270**
+Workflow for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 271**
+Configure Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 272**
 
-Configure Your Environment for Jenkins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 326**
-Jenkinsfile Walkthrough **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 327**
-Sample Jenkinsfile **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 333**
-Continuous Integration with Travis CI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
-Sample CI Repos for Org Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
-Sample CI Repos for Package Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
+Project Configuration File for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 273**
+Unlocked Packaging Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 279**
+Package Installation Key **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 280**
+Extract Dependency Information from Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . 281**
+Understanding Namespaces **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 282**
+Share Release Notes and Post-Install Instructions **. . . . . . . . . . . . . . . . . . . . . . . . . . . 286**
+Specify Unpackaged Metadata or Apex Access for Apex Tests (Unlocked Packages) **. . . 287**
+Best Practices for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 288**
+Package IDs and Aliases for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 288**
+Frequently Used Unlocked Packaging Operations **. . . . . . . . . . . . . . . . . . . . . . . . . . 289**
+How We Handle Profile Settings in Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . 290**
+Develop Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 291**
 
-**Chapter 15:** Troubleshoot Salesforce DX **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 340**
+Create and Update an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 292**
+Create New Versions of an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 293**
+Guidance for Package Version Numbering **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298**
+Code Coverage for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 299**
+Considerations for Promoting Packages with Dependencies **. . . . . . . . . . . . . . . . . . . 300**
+Release an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 301**
+Update an Unlocked Package Version **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 302**
+Hard-Deleted Components in Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . 302**
+Delete an Unlocked Package or Package Version **. . . . . . . . . . . . . . . . . . . . . . . . . . 307**
 
-Resolve Common Authorization Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 341**
+**Contents**
 
-org login web Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 341**
-org login jwt Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 344**
-Error: No default dev hub found **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 347**
-Unable to Work After Failed Org Authorization **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 347**
-Error: The consumer key is already taken **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 348**
-CLI Version Information **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 349**
+View Package Details **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 308**
+Push a Package Upgrade for Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 308**
 
-**Chapter 16:** Limitations for Salesforce DX **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 350**
+Schedule a Push Upgrade Using CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 309**
+Install an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 312**
+
+Install Packages with the CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 313**
+Install Unlocked Packages from a URL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 314**
+Upgrade a Version of an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 314**
+Sample Script for Installing Unlocked Packages with Dependencies **. . . . . . . . . . . . . . . 315**
+Migrate Deprecated Metadata from Unlocked Packages **. . . . . . . . . . . . . . . . . . . . . . . . . 317**
+Uninstall an Unlocked Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 318**
+Transfer an Unlocked Package to a Different Dev Hub **. . . . . . . . . . . . . . . . . . . . . . . . . . . 318**
+
+Take Ownership of an Unlocked Package Transferred from a Different Dev Hub **. . . . . . 321**
+
+**Chapter 14:** Continuous Integration **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 323**
+
+Continuous Integration Using CircleCI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 324**
+
+Configure Your Environment for CircleCI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 324**
+Connect CircleCI to Your DevHub **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 325**
+Continuous Integration Using Jenkins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 326**
+
+Configure Your Environment for Jenkins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 327**
+Jenkinsfile Walkthrough **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 328**
+Sample Jenkinsfile **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 334**
+Continuous Integration with Travis CI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 339**
+Sample CI Repos for Org Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 339**
+Sample CI Repos for Package Development Model **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 339**
+
+**Chapter 15:** Troubleshoot Salesforce DX **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 341**
+
+Resolve Common Authorization Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 342**
+
+org login web Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 342**
+org login jwt Errors **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 345**
+Error: No default dev hub found **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 348**
+Unable to Work After Failed Org Authorization **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 348**
+Error: The consumer key is already taken **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 349**
+CLI Version Information **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 350**
+
+**Chapter 16:** Limitations for Salesforce DX **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 351**
 
 # CHAPTER 1 How Salesforce Developer Experience (DX) Tooling
 
@@ -320,7 +320,7 @@ Are You Ready to Begin?
 Here’s the basic order for doing your work using Salesforce DX. These workflows include the most
 common CLI commands. For all commands, see the _Salesforce CLI Command Reference_ .
 
-**•** [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+**•** [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 
 **•** Enable Dev Hub
 
@@ -340,13 +340,13 @@ Optionally, install:
 How Salesforce Developer Experience (DX) Tooling Changes
 the Way You Work
 
-**•** [DevOps Center](https://help.salesforce.com/s/articleView?id=sf.devops_center_setup.htm&language=en_US)
+**•** [DevOps Center](https://help.salesforce.com/s/articleView?id=platform.devops_center_setup.htm&type=5&language=en_US)
 
 SEE ALSO:
 
 [Developer Experience (DX) Developer Center](https://developer.salesforce.com/developer-centers/developer-experience)
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference)_
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference)_
 
 
 ## How Salesforce Developer Experience (DX) Tooling Changes Get Started by Using a Sample Repo
@@ -359,9 +359,9 @@ The quickest way to get going with Salesforce DX tooling is to clone the `dreamh
 and Salesforce application to try some commonly used Salesforce CLI commands. In addition to source code for the application, the
 repo includes sample data and Apex tests.
 
-[This task assumes you have a Dev Hub org. See Select and Enable a Dev Hub Org for more information.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm)
+[This task assumes you have a Dev Hub org. See Select and Enable a Dev Hub Org for more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm)
 
-**1.** [If you haven't already, install Salesforce CLI on your computer.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
+**1.** [If you haven't already, install Salesforce CLI on your computer.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
 **2.** Open a terminal or command prompt window, and clone the `[dreamhouse-lwc](https://www.sfdc.co/sfdx-sample-repo)` GitHub sample repo using HTTPS or SSH.
 HTTPS:
@@ -548,7 +548,7 @@ Then follow these steps.
 
 **Read more about it:**
 
-**•** [Select and Enable a Dev Hub Org](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm)
+**•** [Select and Enable a Dev Hub Org](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm)
 
 ### Install the Salesforce Platform Development Tools
 
@@ -602,7 +602,7 @@ CLI
 
 **•** [Agentforce Vibes IDE Overview](https://developer.salesforce.com/tools/vscode/en/codebuilder/about)
 
-**•** [Salesforce CLI: Quick Start](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+**•** [Salesforce CLI: Quick Start](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 
 **•** [Salesforce Extensions for Visual Studio Code](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide)
 
@@ -655,7 +655,7 @@ but we’ll add some later!
 
 the Way You Work
 
-**•** [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm)
+**•** [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm)
 
 ### Authorize Your Dev Hub and Create a Scratch Org
 
@@ -744,13 +744,13 @@ Good job! You’re now ready to do some development work using your new scratch 
 
 **Read more about it:**
 
-**•** [Authorize an Org Using a Browser](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
+**•** [Authorize an Org Using a Browser](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
 
-**•** [Authorization Information for an Org](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_view_info.htm)
+**•** [Authorization Information for an Org](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_view_info.htm)
 
-**•** [Reference documentation for the “org” CLI commands](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm)
+**•** [Reference documentation for the “org” CLI commands](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm)
 
-**•** [Create Scratch Orgs](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_create.htm)
+**•** [Create Scratch Orgs](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_create.htm)
 
 ### Make a Change in Your Scratch Org And Retrieve It to Your Project
 
@@ -850,11 +850,11 @@ What you just did was pretty amazing; you used the Object Manager UI to customiz
 
 **•** [Develop with Ease with Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode)
 
-**•** [How to Exclude Source When Syncing](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_exclude_source.htm)
+**•** [How to Exclude Source When Syncing](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_exclude_source.htm)
 
-**•** [Retrieve Metadata from Your Scratch Org](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_pull_md_from_scratch_org.htm)
+**•** [Retrieve Metadata from Your Scratch Org](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_pull_md_from_scratch_org.htm)
 
-**•** [Reference Documentation for the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm) `project` CLI Commands
+**•** [Reference Documentation for the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm) `project` CLI Commands
 
 ### Create an Apex Class and Deploy it To the Scratch Org
 
@@ -932,7 +932,7 @@ This section gave you just a taste of using VS Code to develop Apex classes.
 
 **Read more about it:**
 
-**•** [Apex Quick Start](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_qs_HelloWorld.htm)
+**•** [Apex Quick Start](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_qs_HelloWorld.htm)
 
 **•** [Develop with Ease with Salesforce Extensions for VS Code](https://developer.salesforce.com/tools/vscode)
 
@@ -1117,9 +1117,9 @@ Wow, you just created and moved lots of metadata around! Awesome sauce.
 
 **Read more about it:**
 
-**•** [Deploy Source From Your Project to the Scratch Org](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_push_md_to_)
+**•** [Deploy Source From Your Project to the Scratch Org](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_push_md_to_)
 
-**•** [Reference Documentation for the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm) `project` CLI Commands
+**•** [Reference Documentation for the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm) `project` CLI Commands
 
 ### Add Project Files to Your VCS
 
@@ -1134,7 +1134,7 @@ your code updates, test updates using a continuous integration (CI) system, and 
 We hope this document gets you started using Salesforce DX. Here are a few more links to help you as you embark on this exciting
 journey.
 
-**•** [Get Started by Using a Sample Repo](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro_sample_repo.htm)
+**•** [Get Started by Using a Sample Repo](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro_sample_repo.htm)
 
 **•** [Salesforce Developers Sample Apps](https://github.com/trailheadapps/)
 
@@ -1330,7 +1330,7 @@ Before you begin, enable Dev Hub in your org.
 
 After you enable this setting, you can’t disable it.
 
-[To get started with creating unlocked packages, see Unlocked Packages. For information on second-generation managed packages, see](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
+[To get started with creating unlocked packages, see Unlocked Packages. For information on second-generation managed packages, see](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
 [the Second-Generation Managed Packages Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)
 
 ### Enable Einstein Chatbot Features in Scratch Orgs
@@ -1591,9 +1591,9 @@ users other than themselves.
 
 SEE ALSO:
 
-_[Add Salesforce DX Users](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_add_users.htm)_
+_[Add Salesforce DX Users](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_add_users.htm)_
 
-_[Permission Set for Salesforce DX Users](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_add_users.htm#sfdx_setup_permission_set.xml)_
+_[Permission Set for Salesforce DX Users](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_add_users.htm#sfdx_setup_permission_set.xml)_
 
 ### Add a System Administrator or Standard User to Your Dev Hub Org
 
@@ -1695,8 +1695,8 @@ objects.
 
 **e.** After filling out the remaining information, click **Save** .
 
-**2.** [Create a permission set that provides your developer users with access to the required Dev Hub objects. For details, see Create and](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_permission_set.htm)
-[Assign a Permission Set for Developer Users or Assign Second-Generation Managed Packaging User Permissions.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_permission_set.htm)
+**2.** [Create a permission set that provides your developer users with access to the required Dev Hub objects. For details, see Create and](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_permission_set.htm)
+[Assign a Permission Set for Developer Users or Assign Second-Generation Managed Packaging User Permissions.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_permission_set.htm)
 
 ### Create and Assign a Permission Set to Developer Users
 
@@ -1962,7 +1962,7 @@ This example illustrates how different types of static resources are stored in y
 called `expandedzippedresource` and its related `.resource-meta.xml` file. You also see a couple `.jpg` files being stored
 with their MIME type, and a single file being stored with the legacy `.resource` extension
 
-[See Salefsorce Help: Static Resources for more information.](https://help.salesforce.com/s/articleView?id=sf.pages_static_resources.htm&language=en_US)
+[See Salefsorce Help: Static Resources for more information.](https://help.salesforce.com/s/articleView?id=platform.pages_static_resources.htm&type=5&language=en_US)
 
 File Extensions
 
@@ -2125,7 +2125,7 @@ their own files within the custom object translation’s directory.
 The remaining pieces of the custom object translation that aren’t field translations are placed in a file called
 _`<objectTranslation-name>`_ `.objectTranslation-meta.xml` .
 
-[See Salesforce Help: Translation Workbench for more information.](https://help.salesforce.com/s/articleView?id=sf.workbench.htm&language=en_US)
+[See Salesforce Help: Translation Workbench for more information.](https://help.salesforce.com/s/articleView?id=platform.workbench.htm&type=5&language=en_US)
 
 Custom Labels (Beta)
 
@@ -2365,7 +2365,7 @@ For example, if you have a permission set named `Dreamhouse,` add this entry to 
 
 Exclude MetadataWithContent Types
 
-[Metadata components that include content, such as ApexClass or EmailTemplate, extend the MetadataWithContent type. These](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_metadatawithcontent.htm)
+[Metadata components that include content, such as ApexClass or EmailTemplate, extend the MetadataWithContent type. These](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_metadatawithcontent.htm)
 components have two source files: one for the content itself, such as the Apex code or email template, and the accompanying metadata
 file. For example, the source files for the HelloWorld Apex class are `HelloWorld.cls` and `HelloWorld.cls-meta.xml` .
 
@@ -2591,7 +2591,7 @@ sf project generate manifest --help
 
 ## Project Setup Convert Files in Metadata Format to Source Format
 
-[You can also refer to Sample package.xml Manifest Files in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/manifest_samples.htm) _Metadata API Developer Guide_ .
+[You can also refer to Sample package.xml Manifest Files in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/manifest_samples.htm) _Metadata API Developer Guide_ .
 
 SEE ALSO:
 
@@ -2907,7 +2907,7 @@ SEE ALSO:
 
 [Get a Trial Development Environment for Free](https://developer.salesforce.com/free-trials)
 
-_[Lightning Aura Components Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.lightning.meta/lightning/namespaces_creating.htm)_ : Create a Namespace in Your Org
+_[Lightning Aura Components Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.lightning.meta/lightning/namespaces_creating.htm)_ : Create a Namespace in Your Org
 
 Add Salesforce DX Users
 
@@ -3073,7 +3073,7 @@ replacements (optional)
 
 Automatically replace strings in your metadata source files with specific values right before you deploy the files to an org.
 
-[See Replace Strings in Code Before Deploying for details.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_string_replace.htm)
+[See Replace Strings in Code Before Deploying for details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_string_replace.htm)
 
 sfdcLoginUrl (optional)
 
@@ -3094,8 +3094,8 @@ You’d want to specify the version of your metadata source. For example, let's 
 63.0. If you retrieve components for version 57.0 or earlier, you see errors when running the `project` commands because the
 components don't include that field.
 
-[Don’t confuse this project configuration parameter with the org-api-version CLI configuration variable, which has a similar name. See](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_config_values.htm)
-[How API Version and Source API Version Work in Salesforce CLI for more information and the default value.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_apiversion.htm)
+[Don’t confuse this project configuration parameter with the org-api-version CLI configuration variable, which has a similar name. See](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_config_values.htm)
+[How API Version and Source API Version Work in Salesforce CLI for more information and the default value.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_apiversion.htm)
 
 
 ## Project Setup Multiple Package Directories
@@ -3116,15 +3116,15 @@ into smaller files. See Start Decomposing the Optional Metadata Types (Beta) on 
 
 Possible values:
 
-**•** `decomposeCustomLabelsBeta2` [—Decompose the CustomLabels metadata type.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_customlabels.htm)
+**•** `decomposeCustomLabelsBeta2` [—Decompose the CustomLabels metadata type.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customlabels.htm)
 
-**•** `decomposeExternalServiceRegistrationBeta` [—Decompose the ExternalServiceRegistration metadata type.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_externalserviceregistration.htm)
+**•** `decomposeExternalServiceRegistrationBeta` [—Decompose the ExternalServiceRegistration metadata type.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_externalserviceregistration.htm)
 
-**•** `decomposePermissionSetBeta2` [—Decompose the PermissionSet metadata type.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_permissionset.htm)
+**•** `decomposePermissionSetBeta2` [—Decompose the PermissionSet metadata type.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_permissionset.htm)
 
-**•** `decomposeSharingRulesBeta` [—Decompose the SharingRules metadata type](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_sharingrules.htm)
+**•** `decomposeSharingRulesBeta` [—Decompose the SharingRules metadata type](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_sharingrules.htm)
 
-**•** `decomposeWorkflowBeta` [—Decompose the WorkFlow metadata type.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_workflow.htm)
+**•** `decomposeWorkflowBeta` [—Decompose the WorkFlow metadata type.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_workflow.htm)
 
 Example:
 
@@ -3630,7 +3630,7 @@ To view string replacement information in the `project deploy start` human-reada
 
 **•** Many of the string replacement use cases and examples in this topic use environment variables. How to set an environment variable
 to the required value depends on your operating system, and is beyond the scope of this document. But for some hints, see the
-[introduction of the Salesforce CLI Environment Variables topic in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_env_variables.htm) _Salesforce CLI Setup Guide_ .
+[introduction of the Salesforce CLI Environment Variables topic in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_env_variables.htm) _Salesforce CLI Setup Guide_ .
 
 Considerations and Limitations
 
@@ -3795,7 +3795,7 @@ have the permission by default.
 ```
 
 Use the `--set-default` flag if you want the org to be the default for commands that accept the `--target-org` flag. If
-you’re authorizing a Dev Hub org, use the `--set-default-dev-hub` flag instead. See the `[org login web](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)` command
+you’re authorizing a Dev Hub org, use the `--set-default-dev-hub` flag instead. See the `[org login web](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)` command
 for examples.
 
 **3.** In the browser window that opens, sign in to your org with your Salesforce login credentials. Click **Allow**, which allows Salesforce
@@ -3842,7 +3842,7 @@ You can also configure the default connected app to be more secure.
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)_ : org login web
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)_ : org login web
 
 Create an External Client App in Your Org
 
@@ -3852,7 +3852,7 @@ Use the Default Connected App Securely
 
 Salesforce DX Project Configuration
 
-_Salesforce Help_ [: Enhanced Domains](https://help.salesforce.com/s/articleView?id=sf.domain_name_enhanced.htm&language=en_US)
+_Salesforce Help_ [: Enhanced Domains](https://help.salesforce.com/s/articleView?id=products.domain_name_enhanced.htm&type=5&language=en_US)
 
 _VS Code Command_ [: SFDX: Authorize an Org, SFDX: Authorize a Dev Hub](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/default-org.html)
 
@@ -3893,7 +3893,7 @@ JWT key file ( `server.key` ), and the username for your org. For example:
 ```
 
 Use the `--set-default` flag if you want the org to be the default for commands that accept the `--target-org` flag. If
-you’re authorizing a Dev Hub org, use the `--set-default-dev-hub` flag instead. See the `[org login jwt](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)` command
+you’re authorizing a Dev Hub org, use the `--set-default-dev-hub` flag instead. See the `[org login jwt](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)` command
 for examples.
 
 You can authorize a scratch org using the same consumer key and private key file that you used to authorize its associated Dev Hub org.
@@ -3936,7 +3936,7 @@ Find box, then select **My Domain** .
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)_ : org login jwt
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)_ : org login jwt
 
 Create a Private Key and Self-Signed Digital Certificate
 
@@ -3944,7 +3944,7 @@ Create a Connected App in Your Org
 
 Salesforce DX Project Configuration
 
-_Salesforce Help_ [: Enhanced Domains](https://help.salesforce.com/s/articleView?id=sf.domain_name_enhanced.htm&language=en_US)
+_Salesforce Help_ [: Enhanced Domains](https://help.salesforce.com/s/articleView?id=products.domain_name_enhanced.htm&type=5&language=en_US)
 
 _Salesforce Help_ [: Set Up Multi-Factor Authentication](https://help.salesforce.com/articleView?id=security_2fa_config.htm&language=en_US)
 
@@ -4227,7 +4227,7 @@ and Linux) or command prompt (Windows):
 If you specified in the external client app that the Web Server Flow requires a client (consumer) secret, the command prompts you for
 it. The command then opens the login page for you to add your org credentials.
 
-See the reference for `[org login web](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)` and `[org login jwt](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)` for more examples.
+See the reference for `[org login web](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)` and `[org login jwt](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)` for more examples.
 
 ## Create a Connected App in Your Org
 
@@ -4343,7 +4343,7 @@ and Linux) or command prompt (Windows):
 If you specifed in the connected app that the web login flow requires a client (consumer) secret, the command prompts you for it. The
 command then opens the login page for you to add your org credentials.
 
-See the reference for `[org login web](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)` and `[org login jwt](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)` for more examples.
+See the reference for `[org login web](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)` and `[org login jwt](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_jwt_unified)` for more examples.
 
 SEE ALSO:
 
@@ -4469,9 +4469,9 @@ SEE ALSO:
 
 ## Authorization Information for an Org
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_config_commands_unified.htm#cli_reference_config_set_unified)_ : config set
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_config_commands_unified.htm#cli_reference_config_set_unified)_ : config set
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_deploy_start_unified)_ : project deploy start
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_deploy_start_unified)_ : project deploy start
 
 ## Authorize an Org Using Its SFDX Authorization URL
 
@@ -4497,8 +4497,8 @@ The JSON output includes a key called `sfdxAuthUrl`, whose value is the org’s 
 
 ```
 
-For more information and examples, see the reference about the `org login sfdx-url` [command in the Salesforce CLI Command](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified)
-[Reference.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified)
+For more information and examples, see the reference about the `org login sfdx-url` [command in the Salesforce CLI Command](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified)
+[Reference.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_sfdx-url_unified)
 
 ## Authorization Information for an Org
 
@@ -4624,7 +4624,7 @@ orgs show up only if you specify the `--all` flag.
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_logout_unified)_ : org logout
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_logout_unified)_ : org logout
 
 _VS Code Command_ [: SFDX: Log Out from All Authorized Orgs, SFDX: Log Out from Default Org](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/default-org.html)
 
@@ -4638,7 +4638,7 @@ second-generation managed packages, classic managed packages, and more.
 
 [View the Metadata Coverage report.](https://dx-extended-coverage.my.salesforce-sites.com/docs/metadata-coverage)
 
-[For more information, see Metadata Types in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_types_list.htm) _Metadata API Developer Guide_ .
+[For more information, see Metadata Types in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_types_list.htm) _Metadata API Developer Guide_ .
 
 We've moved the information on Hard-Deleted Components in Unlocked Packages.
 
@@ -4844,8 +4844,8 @@ Scratch orgs have these storage limits:
 
 **•** 50 MB for files
 
-[Entities defined as metadata types aren’t counted as part of storage allocations in scratch orgs. For more information about entities that](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_types_list.htm)
-are counted against storage allocations, see _Salesforce Help_ [: Data and File Storage Allocations.](https://help.salesforce.com/s/articleView?id=sf.overview_storage.htm&language=en_US)
+[Entities defined as metadata types aren’t counted as part of storage allocations in scratch orgs. For more information about entities that](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_types_list.htm)
+are counted against storage allocations, see _Salesforce Help_ [: Data and File Storage Allocations.](https://help.salesforce.com/s/articleView?id=xcloud.overview_storage.htm&type=5&language=en_US)
 
 Supported Dev Hub Editions and Associated Scratch Org Allocations
 
@@ -5018,7 +5018,7 @@ Cloud uses the term `Communities` in its configuration. This code snippet sets b
 Create a Custom Field for ScratchOrgInfo
 
 You can add more options to the scratch org definition to manage your Dev Ops process. To do so, create a custom field on the
-[ScratchOrgInfo object. (ScratchOrgInfo tracks scratch org creation and deletion.)](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_scratchorginfo.htm)
+[ScratchOrgInfo object. (ScratchOrgInfo tracks scratch org creation and deletion.)](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_scratchorginfo.htm)
 
 Important: If you’re making these changes directly in your production org, proceed with the appropriate level of caution. The
 ScratchOrgInfo object isn’t available in sandboxes or scratch orgs.
@@ -6282,17 +6282,20 @@ Enables you to implement and attach Apex Finalizers to Queueable Apex jobs.
 UsageManagement
 Enables Usage Management. Using Usage Management, you can setup, track, and manage the consumption of usage-based products.
 
+VolunteerManagement
+Gives users access to Volunteer Management features and objects in Salesforce.
+
 WaveMaxCurrency
 Increases the maximum number of supported currencies for CRM Analytics. Indicate a value between 1–5.
 
 WavePlatform
 Enables the Wave Platform license.
 
-Workflow
-Enables Workflow so you can automate standard internal procedures and processes.
-
 
 Scratch Orgs Scratch Org Features
+
+Workflow
+Enables Workflow so you can automate standard internal procedures and processes.
 
 WorkflowFlowActionFeature
 Allows you to launch a flow from a workflow action.
@@ -6340,12 +6343,12 @@ Requires that you install the Accounting Subledger or Accounting Subledger for I
 
 Increases the maximum number of custom apps allowed in an org. Indicate a value from 1–30.
 
+
+Scratch Orgs Scratch Org Features
+
 Supported Quantities
 
 1–30, Multiplier: 1
-
-
-Scratch Orgs Scratch Org Features
 
 #### AddCustomObjects:<value>
 
@@ -6392,12 +6395,12 @@ Supported Quantities
 
 Increases the number of fields you can track history for beyond the default, which is 20 fields. Indicate a value between 1–40.
 
+
+Scratch Orgs Scratch Org Features
+
 Supported Quantities
 
 1–40, Multiplier: 1
-
-
-Scratch Orgs Scratch Org Features
 
 More Information
 
@@ -6487,6 +6490,12 @@ Add these options to your scratch org definition file:
 
          "enableExperienceBundleMetadata": true
 
+```
+
+
+Scratch Orgs Scratch Org Features
+
+```
        },
 
        "communitiesSettings": {
@@ -6495,12 +6504,6 @@ Add these options to your scratch org definition file:
 
          "enableOotbProfExtUserOpsEnable": true
 
-```
-
-
-Scratch Orgs Scratch Org Features
-
-```
        },
 
        "mobileSettings": {
@@ -6586,6 +6589,12 @@ Add these options to your scratch org definition file:
 
        "enableS1EncryptedStoragePref2": false
 
+```
+
+
+Scratch Orgs Scratch Org Features
+
+```
       },
 
       "languageSettings": {
@@ -6594,12 +6603,6 @@ Add these options to your scratch org definition file:
 
       },
 
-```
-
-
-Scratch Orgs Scratch Org Features
-
-```
       "securitySettings": {
 
        "enableAdminLoginAsAnyUser": true
@@ -6688,12 +6691,12 @@ Add these options to your scratch org definition file:
 
 ```
 
+
+Scratch Orgs Scratch Org Features
+
 More Information
 
 [Next, install the Pathways package in the scratch org. For setup instructions, see Set Up Pathways in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sfdo.ssh_setup_pathways.htm&language=en_US)
-
-
-Scratch Orgs Scratch Org Features
 
 #### AIAttribution
 
@@ -6732,7 +6735,7 @@ More Information
 
 This feature is available in Account Engagement Advanced and Premium editions.
 
-Optional configuration steps are accessible in Setup in the scratch org. For more information, see _Salesforce Help_ [: Einstein Attribution.](https://help.salesforce.com/s/articleView?id=sf.pardot_einstein_attribution_parent.htm&type=5&language=en_US)
+Optional configuration steps are accessible in Setup in the scratch org. For more information, see _Salesforce Help_ [: Einstein Attribution.](https://help.salesforce.com/s/articleView?id=mktg.pardot_einstein_attribution_parent.htm&type=5&language=en_US)
 
 #### AllUserIdServiceAccess
 
@@ -6752,12 +6755,12 @@ More Information
 
 [See Set Up the CRM Analytics Platform in Salesforce Help for more information.](https://help.salesforce.com/articleView?id=bi_help_setup.htm&type=5&language=en_US)
 
+
+Scratch Orgs Scratch Org Features
+
 #### AnalyticsAppEmbedded
 
 Provides one CRM Analytics Embedded App license for the CRM Analytics platform.
-
-
-Scratch Orgs Scratch Org Features
 
 #### ApexGuruCodeAnalyzer
 
@@ -6789,7 +6792,7 @@ More Information
 
 Provides 1 seat of the FinancialServicesEALoginAddon add-on license.
 
-[Requires that you install Financial Services Cloud. See Customize Experience Cloud Templates using ARC Components in Financial Services](https://developer.salesforce.com/docs/atlas.en-us.258.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_arc_experience_cloud.htm)
+[Requires that you install Financial Services Cloud. See Customize Experience Cloud Templates using ARC Components in Financial Services](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_arc_experience_cloud.htm)
 Cloud Administrator Guide.
 
 #### Assessments
@@ -6812,6 +6815,12 @@ editions.
 
      "settings": {
 
+```
+
+
+Scratch Orgs Scratch Org Features
+
+```
       "industriesSettings": {
 
        "enableIndustriesAssessment": true,
@@ -6820,19 +6829,13 @@ editions.
 
       }
 
-```
-
-
-Scratch Orgs Scratch Org Features
-
-```
      }
 
    }
 
 ```
 
-[Add the Assessment to the page layout. See Page Layouts in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.customize_layout.htm&type=5&language=en_US)
+[Add the Assessment to the page layout. See Page Layouts in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=platform.customize_layout.htm&type=5&language=en_US)
 
 #### AssetScheduling:<value>
 
@@ -6855,7 +6858,7 @@ More Information
 
 Provides 11 seats of the FSCComprehensivePsl user license and 11 seats of the FSCComprehensiveAddOn add-on license.
 
-[Requires that you install Financial Services Cloud. See AssociationEngineSettings in Metadata API Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_associationenginesettings.htm)
+[Requires that you install Financial Services Cloud. See AssociationEngineSettings in Metadata API Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_associationenginesettings.htm)
 
 #### AuthorApex
 
@@ -6886,7 +6889,7 @@ recognize, rewards, and retain customers.
 
 More Information
 
-[See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.loyaltyoverview.htm&language=en_US)
+[See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=xcloud.loyaltyoverview.htm&type=5&language=en_US)
 
 #### B2CCommerceGMV
 
@@ -6900,7 +6903,7 @@ Also requires the Communities feature in your scratch org definition file.
 
 Not available in Professional, Partner Professional, Group, or Partner Group Edition orgs.
 
-[For more information, see Salesforce Help at Salesforce B2B Commerce and B2B2C Commerce..](https://help.salesforce.com/s/articleView?id=sf.comm_intro.htm&language=en_US)
+[For more information, see Salesforce Help at Salesforce B2B Commerce and B2B2C Commerce..](https://help.salesforce.com/s/articleView?id=commerce.comm_intro.htm&type=5&language=en_US)
 
 #### B2CLoyaltyManagement
 
@@ -6909,7 +6912,7 @@ you to recognize, rewards, and retain customers.
 
 More Information
 
-[See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.loyaltyoverview.htm&language=en_US)
+[See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=xcloud.loyaltyoverview.htm&type=5&language=en_US)
 
 #### B2CLoyaltyManagementPlus
 
@@ -6918,7 +6921,7 @@ you to recognize, rewards, and retain customers.
 
 More Information
 
-[See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.loyaltyoverview.htm&language=en_US)
+[See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=xcloud.loyaltyoverview.htm&type=5&language=en_US)
 
 #### BatchManagement
 
@@ -6926,7 +6929,7 @@ Enables the Batch Management license. Batch Management allows you to process a h
 
 More Information
 
-[See Batch Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.concept_batch_management.htm&language=en_US)
+[See Batch Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.concept_batch_management.htm&type=5&language=en_US)
 
 
 Scratch Orgs Scratch Org Features
@@ -7003,7 +7006,7 @@ Enables the scratch org to use BigObjects in the Bulk API.
 
 More Information
 
-[See Big Objects Implementation Guide for more information.](https://developer.salesforce.com/docs/atlas.en-us.258.0.bigobjects.meta/bigobjects/big_object.htm)
+[See Big Objects Implementation Guide for more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bigobjects.meta/bigobjects/big_object.htm)
 
 #### BillingAdvanced
 
@@ -7079,7 +7082,7 @@ definition file.
 
 More Information
 
-[See Budget Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.grmk_budget_management_for_grantmaking.htm&language=en_US)
+[See Budget Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.grmk_budget_management_for_grantmaking.htm&type=5&language=en_US)
 
 #### BusinessRulesEngine
 
@@ -7087,8 +7090,8 @@ Enables Business Rules Engine, which enables both expression sets and lookup tab
 
 More Information
 
-[Provides 10 Business Rules Engine Designer and 10 Business Rules Engine Runtime licenses. For more information, see Business Rules](https://help.salesforce.com/s/articleView?id=sf.business_rules_engine.htm&type=5&language=en_US)
-[Engine in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.business_rules_engine.htm&type=5&language=en_US)
+[Provides 10 Business Rules Engine Designer and 10 Business Rules Engine Runtime licenses. For more information, see Business Rules](https://help.salesforce.com/s/articleView?id=ind.business_rules_engine.htm&type=5&language=en_US)
+[Engine in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.business_rules_engine.htm&type=5&language=en_US)
 
 
 Scratch Orgs Scratch Org Features
@@ -7104,7 +7107,7 @@ This feature requires that you also include the `ServiceCloud` and `Scrt2Convers
 org definition file. You must also enable second-generation managed packaging to use this feature in a scratch org. Available in Salesforce
 Enterprise and Developer Editions.
 
-[For setup and configuration steps, see Bring Your Own Channel for CCaaS in Salesforce Help.](https://help.salesforce.com/articleView?id=sf.byoc_ccaas_setup.htm&language=en_US)
+[For setup and configuration steps, see Bring Your Own Channel for CCaaS in Salesforce Help.](https://help.salesforce.com/articleView?id=service.byoc_ccaas_setup.htm&type=5&language=en_US)
 
 Sample Scratch Org Definition File
 
@@ -7148,7 +7151,7 @@ This feature requires that you also include the `ServiceCloud` and `Scrt2Convers
 org definition file. You must also enable second-generation managed packaging to use this feature in a scratch org. Available in Salesforce
 Enterprise and Developer Editions.
 
-[For setup and configuration steps, see Bring Your Own Channel in Salesforce Help.](https://help.salesforce.com/articleView?id=sf.partner_messaging_intro.htm&language=en_US)
+[For setup and configuration steps, see Bring Your Own Channel in Salesforce Help.](https://help.salesforce.com/articleView?id=service.partner_messaging_intro.htm&type=5&language=en_US)
 
 Sample Scratch Org Definition File
 
@@ -7194,7 +7197,7 @@ Key Service fetch your key on demand from a key service that you control.
 
 More Information
 
-[Requires enabling PlatformEncryption and configuration using the Setup menu in the scratch org. See Which User Permissions Does](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_platformencryption)
+[Requires enabling PlatformEncryption and configuration using the Setup menu in the scratch org. See Which User Permissions Does](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_platformencryption)
 [Shield Platform Encryption Require?, Generate a Tenant Secret with Salesforce, and Cache-Only Key Service in Salesforce Help.](https://help.salesforce.com/articleView?id=security_pe_permissions.htm&language=en_US)
 
 #### CalloutSizeMB:<value>
@@ -7239,8 +7242,8 @@ More Information
 
 This feature is available in Salesforce Enterprise, Performance, Unlimited, and Developer Editions.
 
-Optional configuration steps are accessible in Setup in the scratch org. For more information, see _Salesforce Help_ [: Customizable Campaign](https://help.salesforce.com/s/articleView?id=sf.campaigns_influence_customizable.htm&type=5&language=en_US)
-[Influence.](https://help.salesforce.com/s/articleView?id=sf.campaigns_influence_customizable.htm&type=5&language=en_US)
+Optional configuration steps are accessible in Setup in the scratch org. For more information, see _Salesforce Help_ [: Customizable Campaign](https://help.salesforce.com/s/articleView?id=sales.campaigns_influence_customizable.htm&type=5&language=en_US)
+[Influence.](https://help.salesforce.com/s/articleView?id=sales.campaigns_influence_customizable.htm&type=5&language=en_US)
 
 
 Scratch Orgs Scratch Org Features
@@ -7297,13 +7300,13 @@ Scratch Orgs Scratch Org Features
 
 More Information
 
-[See Add Your Custom Brand to Email Notifications in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.collab_admin_email_customize.htm&type=5&language=en_US)
+[See Add Your Custom Brand to Email Notifications in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=experience.collab_admin_email_customize.htm&type=5&language=en_US)
 
 #### ChatterEmailFooterText ChatterEmailFooterText allows you to use footer text in customized Chatter emails.
 
 More Information
 
-[See Add Your Custom Brand to Email Notifications in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.collab_admin_email_customize.htm&type=5&language=en_US)
+[See Add Your Custom Brand to Email Notifications in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=experience.collab_admin_email_customize.htm&type=5&language=en_US)
 
 #### ChatterEmailSenderName ChatterEmailSenderName allows you to customize the name that appears as the sender’s name in the email notification. For example,
 
@@ -7311,7 +7314,7 @@ your company’s name.
 
 More Information
 
-[See Chatter Email Settings and Branding in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.collab_admin_email_settings.htm&type=5&language=en_US)
+[See Chatter Email Settings and Branding in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=experience.collab_admin_email_settings.htm&type=5&language=en_US)
 
 #### CloneApplication CloneApplication allows you to clone an existing custom Lightning app and make required customizations to the new app. This way,
 
@@ -7319,7 +7322,7 @@ you don’t have to start from scratch, especially when you want to create apps 
 
 More Information
 
-[See Create Lightning Apps in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.apps_lightning_create.htm.htm&language=en_US)
+[See Create Lightning Apps in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=platform.apps_lightning_create.htm.htm&type=5&language=en_US)
 
 #### CMSMaxContType
 
@@ -7383,7 +7386,7 @@ Enables the Consent Event Stream permission for the org.
 
 More Information
 
-[See Use the Consent Event Stream in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.consent_event_stream.htm&type=5&language=en_US)
+[See Use the Consent Event Stream in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=xcloud.consent_event_stream.htm&type=5&language=en_US)
 
 #### ConsolePersistenceInterval:<value>
 
@@ -7431,7 +7434,7 @@ Management, Dynamic Revenue Orchestrator, and Billing.
 Product Catalog Management, Salesforce Pricing, Revenue Settings (Product Configurator and Transaction Management), Contracts,
 Rate Management, Dynamic Revenue Orchestrator, and Billing.
 
-**•** [Requires configuration using the Setup menu in the scratch org. See Revenue Cloud.](https://help.salesforce.com/s/articleView?id=sf.revenue_lifecycle_management.htm&type=5&language=en_US)
+**•** [Requires configuration using the Setup menu in the scratch org. See Revenue Cloud.](https://help.salesforce.com/s/articleView?id=ind.revenue_lifecycle_management.htm&type=5&language=en_US)
 
 Scratch Org Definition File
 
@@ -7711,7 +7714,7 @@ Allows the org to create custom notification types, which are used to send custo
 More Information
 
 Sending custom notifications requires both CustomNotificationType to create notification types and
-[ConnectedAppCustomNotifSubscription to subscribe to notification types. See Manage Your Notifications with Notification Builder in](https://help.salesforce.com/s/articleView?id=sf.notif_builder.htm&language=en_US)
+[ConnectedAppCustomNotifSubscription to subscribe to notification types. See Manage Your Notifications with Notification Builder in](https://help.salesforce.com/s/articleView?id=platform.notif_builder.htm&type=5&language=en_US)
 Salesforce Help for more information on custom notifications.
 
 
@@ -7740,7 +7743,7 @@ back the transformation results as new or updated records.
 
 More Information
 
-[See Data Processing Engine in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.concept_data_processing_engine.htm&language=en_US)
+[See Data Processing Engine in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.dpe_intro.htm&type=5&language=en_US)
 
 #### DebugApex
 
@@ -7854,7 +7857,7 @@ Scratch Orgs Scratch Org Features
 
 More Information
 
-[Salesforce Help: Build an Extension Package for DevOps Center](https://help.salesforce.com/s/articleView?id=sf.devops_center_partners_extension_packages.htm&language=en_US)
+[Salesforce Help: Build an Extension Package for DevOps Center](https://help.salesforce.com/s/articleView?id=platform.devops_center_partners_extension_packages.htm&type=5&language=en_US)
 
 #### DisableManageIdConfAPI
 
@@ -7895,7 +7898,7 @@ Add these options to your scratch org definition file:
 
 More Information
 
-[For configuration steps, see Disclosure and Compliance Hub in the Set Up and Maintain Net Zero Cloud guide in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.netzero_setup_disclosure_and_compliance_hub.htm&language=en_US)
+[For configuration steps, see Disclosure and Compliance Hub in the Set Up and Maintain Net Zero Cloud guide in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.netzero_setup_disclosure_and_compliance_hub.htm&type=5&language=en_US)
 
 #### Division
 
@@ -7925,7 +7928,7 @@ you define documents to upload and approve, which supports processes like loan a
 
 More Information
 
-[See Enable Document Tracking and Approvals in the Financial Services Cloud Administrator Guide for more information.](https://developer.salesforce.com/docs/atlas.en-us.258.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/admin_enable_doc_mgmt.htm)
+[See Enable Document Tracking and Approvals in the Financial Services Cloud Administrator Guide for more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/admin_enable_doc_mgmt.htm)
 
 #### DocumentReaderPageLimit
 
@@ -7933,7 +7936,7 @@ Limits the number of pages sent for data extraction to 5.
 
 More Information
 
-[See Intelligent Form Reader in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.form_reader.htm&language=en_US)
+[See Intelligent Form Reader in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.form_reader.htm&type=5&language=en_US)
 
 #### DSARPortability
 
@@ -7981,7 +7984,7 @@ Enable CRM Analytics Output Connectors.
 
 More Information
 
-[This scratch org requires the Dev Hub to have the EAOutputConnectors permission. See Salesforce Output Connection in Salesforce](https://help.salesforce.com/s/articleView?id=sf.bi_integrate_connectors_output_salesforce.htm&language=en_US)
+[This scratch org requires the Dev Hub to have the EAOutputConnectors permission. See Salesforce Output Connection in Salesforce](https://help.salesforce.com/s/articleView?id=analytics.bi_integrate_connectors_output_salesforce.htm&type=5&language=en_US)
 Help for more details.
 
 #### EASyncOut
@@ -7990,7 +7993,7 @@ Enable CRM Analytics SyncOut.
 
 More Information
 
-[This scratch org requires the Dev Hub to have the EASyncOut permission. See Sync Out for Snowflake in Salesforce Help for more details.](https://help.salesforce.com/s/articleView?id=sf.bi_integrate_connectors_sync_out_snowflake.htm&language=en_US)
+[This scratch org requires the Dev Hub to have the EASyncOut permission. See Sync Out for Snowflake in Salesforce Help for more details.](https://help.salesforce.com/s/articleView?id=analytics.bi_integrate_connectors_sync_out_snowflake.htm&type=5&language=en_US)
 
 #### EdPredictionM3Threshold
 
@@ -8070,7 +8073,7 @@ Available in Developer and Enterprise Edition scratch orgs.
 
 Requires configuration using the Setup menu in the scratch org. Many generative AI features also require a Data Cloud license.
 
-[See Einstein Generative AI in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.generative_ai_about.htm&language=en_US)
+[See Einstein Generative AI in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ai.generative_ai_about.htm&type=5&language=en_US)
 
 #### EinsteinAnalyticsPlus
 
@@ -8109,7 +8112,7 @@ recognition to automatically extract data with Amazon Textract.
 More Information
 
 To use this scratch org feature, the Dev Hub org requires the EinsteinDocReader and SalesforceManagedIFR permissions. For information
-[about Intelligent Form Reader, see Intelligent Form Reader in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.form_reader.htm&language=en_US)
+[about Intelligent Form Reader, see Intelligent Form Reader in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.form_reader.htm&type=5&language=en_US)
 
 #### EinsteinRecommendationBuilder
 
@@ -8149,7 +8152,7 @@ strategy that allows Einstein to provide optimal store visit recommendations.
 
 More Information
 
-[See Create a Visit Frequency Next Best Action Strategy in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.industries_einstein_visit_frequency_strategy.htm&type=5&language=en_US)
+[See Create a Visit Frequency Next Best Action Strategy in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.industries_einstein_visit_frequency_strategy.htm&type=5&language=en_US)
 
 #### EmbeddedLoginForIE
 
@@ -8188,7 +8191,7 @@ the Enablement Resources permission set license.
 **•** Provides access to the Enablement Settings page in Setup, which provides guidance for assigning permissions and includes other
 optional configuration settings.
 
-[See Sales Programs and Partner Tracks with Enablement in Salesforce Help and see the Sales Programs and Partner Tracks with Enablement](https://help.salesforce.com/s/articleView?id=sf.enablement.htm&language=en_US)
+[See Sales Programs and Partner Tracks with Enablement in Salesforce Help and see the Sales Programs and Partner Tracks with Enablement](https://help.salesforce.com/s/articleView?id=sales.enablement.htm&type=5&language=en_US)
 [Developer Guide for more information.](https://developer.salesforce.com/docs/sales/enablement/overview)
 
 
@@ -8209,7 +8212,7 @@ Supported Quantities
 
 More Information
 
-[Requires enabling PlatformEncryption and some configuration using the Setup menu in the scratch org. See Which User Permissions](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_platformencryption)
+[Requires enabling PlatformEncryption and some configuration using the Setup menu in the scratch org. See Which User Permissions](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_platformencryption)
 [Does Shield Platform Encryption Require?, and Generate a Tenant Secret with Salesforce in Salesforce Help.](https://help.salesforce.com/articleView?id=security_pe_permissions.htm&language=en_US)
 
 #### EncryptionSyncInterval:<value>
@@ -8223,7 +8226,7 @@ Supported Quantities
 
 More Information
 
-[Requires enabling PlatformEncryption and some configuration using the Setup menu in the scratch org. See Which User Permissions](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_platformencryption)
+[Requires enabling PlatformEncryption and some configuration using the Setup menu in the scratch org. See Which User Permissions](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_platformencryption)
 [Does Shield Platform Encryption Require?, and Generate a Tenant Secret with Salesforce in Salesforce Help.](https://help.salesforce.com/articleView?id=security_pe_permissions.htm&language=en_US)
 
 #### EnergyAndUtilitiesCloud
@@ -8274,13 +8277,13 @@ provider and you don’t want the session index to be sent during SLO. To turn o
 
 Enables an org to use Decision Explainer features.
 
-[For more information, see Decision Explainer for Expression Set in Salesforce developer documentation.](https://developer.salesforce.com/docs/atlas.en-us.258.0.industries_reference.meta/industries_reference/decision_explainer_bre_parent.htm)
+[For more information, see Decision Explainer for Expression Set in Salesforce developer documentation.](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/decision_explainer_bre_parent.htm)
 
 #### ExpressionSetMaxExecPerHour
 
 Enables an org to run a maximum of 500,000 expression sets per hour by using Connect REST API.
 
-[For more information, see Expression Set in Salesforce developer documentation.](https://developer.salesforce.com/docs/atlas.en-us.258.0.industries_reference.meta/industries_reference/connect_resources_bre_expression_set.htm)
+[For more information, see Expression Set in Salesforce developer documentation.](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/connect_resources_bre_expression_set.htm)
 
 #### ExternalIdentityLogin
 
@@ -8392,7 +8395,7 @@ Adds the Financial Services Insurance permission set license, and enables access
 
 More Information
 
-[See Get Started with Financial Services Cloud for Insurance in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.fsc_admin_insurance_landing.htm&language=en_US)
+[See Get Started with Financial Services Cloud for Insurance in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.fsc_admin_insurance_landing.htm&type=5&language=en_US)
 
 
 Scratch Orgs Scratch Org Features
@@ -8421,8 +8424,8 @@ Enables custom currency and customer number fields for use as measures in foreca
 
 More Information
 
-[Available in Enterprise Edition and Unlimited Edition scratch orgs, and requires enabling Salesforce Forecasting in Setup. See Salesforce](https://help.salesforce.com/s/articleView?id=sf.forecasts3_intro.htm&language=en_US)
-[Forecasting in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.forecasts3_intro.htm&language=en_US)
+[Available in Enterprise Edition and Unlimited Edition scratch orgs, and requires enabling Salesforce Forecasting in Setup. See Salesforce](https://help.salesforce.com/s/articleView?id=sales.forecasts3_intro.htm&type=5&language=en_US)
+[Forecasting in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sales.forecasts3_intro.htm&type=5&language=en_US)
 
 #### FSCAlertFramework
 
@@ -8432,7 +8435,7 @@ More Information
 
 Provides 11 seats of the FSCComprehensivePsl user license and 11 seats of the FSCComprehensiveAddOn add-on license.
 
-[Requires that you install Financial Services Cloud and OmniStudio. See Record Alerts in Financial Services Cloud Administrator Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_record_alerts.htm)
+[Requires that you install Financial Services Cloud and OmniStudio. See Record Alerts in Financial Services Cloud Administrator Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_record_alerts.htm)
 
 #### FSCServiceProcess
 
@@ -8541,7 +8544,7 @@ Gives users access to Grantmaking features and objects in Salesforce and Experie
 
 More Information
 
-[See Grantmaking in Salesforce Help for more information. To enable Grantmaking, add these settings to your scratch org definition file.](https://help.salesforce.com/s/articleView?id=sf.grmk_grantmaking.htm&language=en_US)
+[See Grantmaking in Salesforce Help for more information. To enable Grantmaking, add these settings to your scratch org definition file.](https://help.salesforce.com/s/articleView?id=ind.grmk_grantmaking.htm&type=5&language=en_US)
 
 ```
    {
@@ -8575,7 +8578,7 @@ Not available in Group Edition scratch orgs.
 To use this scratch org feature, the Dev Hub org requires the GuidanceHubAllowed permission. If this permission isn't enabled in the
 Dev Hub, contact Salesforce Customer Support.
 
-[See Guidance Center in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.admin_guidancecenter_ov.htm&language=en_US)
+[See Guidance Center in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=platform.admin_guidancecenter_ov.htm&type=5&language=en_US)
 
 #### HealthCloudAddOn
 
@@ -8583,7 +8586,7 @@ Enables use of Health Cloud.
 
 More Information
 
-[See Administer Health Cloud in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.healthcare_admin.htm&language=en_US)
+[See Administer Health Cloud in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.healthcare_admin.htm&type=5&language=en_US)
 
 #### HealthCloudEOLOverride
 
@@ -8604,7 +8607,7 @@ Enables use of Health Cloud for Experience Cloud Sites.
 
 More Information
 
-[See Experience Cloud Sites in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.admin_communities.htm&language=en_US)
+[See Experience Cloud Sites in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.admin_communities.htm&type=5&language=en_US)
 
 #### HealthCloudMedicationReconciliation
 
@@ -8612,7 +8615,7 @@ Allows Medication Management to support Medication Reconciliation.
 
 More Information
 
-[See Enable Medication Management to Perform Medication Reconciliation in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.admin_medication_management_enable.htm&language=en_US)
+[See Enable Medication Management to Perform Medication Reconciliation in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.admin_medication_management_enable.htm&type=5&language=en_US)
 
 #### HealthCloudPNMAddOn
 
@@ -8620,7 +8623,7 @@ Enables use of Provider Network Management.
 
 More Information
 
-[See Provider Network Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.admin_provider_network_management.htm&language=en_US)
+[See Provider Network Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.admin_provider_network_management.htm&type=5&language=en_US)
 
 #### HealthCloudUser
 
@@ -8629,7 +8632,7 @@ user.
 
 More Information
 
-[See Assign Health Cloud Permission Sets and Permission Set Licenses in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.admin_permissionset_licenses_assign.htm&type=5&language=en_US)
+[See Assign Health Cloud Permission Sets and Permission Set Licenses in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.admin_permissionset_licenses_assign.htm&type=5&language=en_US)
 
 #### HighVelocitySales
 
@@ -8651,7 +8654,7 @@ Scratch Orgs Scratch Org Features
 
 More Information
 
-[See Platform Event Allocations in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.platform_events.meta/platform_events/platform_event_limits.htm) _Platform Events Developer Guide_ .
+[See Platform Event Allocations in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_event_limits.htm) _Platform Events Developer Guide_ .
 
 #### HLSAnalytics
 
@@ -8704,7 +8707,7 @@ More Information
 Provides the Branch Management add-on license and user permissions, plus 11 seats of the FSCComprehensivePsl user license and 11
 seats of the FSCComprehensiveAddOn add-on license.
 
-[Requires that you install Financial Services Cloud. See Branch Management in Financial Services Cloud Administrator Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_branch.htm)
+[Requires that you install Financial Services Cloud. See Branch Management in Financial Services Cloud Administrator Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_branch.htm)
 
 #### IndustriesCompliantDataSharing
 
@@ -8715,7 +8718,7 @@ More Information
 
 Provides 1 seat of the FinancialServicesCloudStandardAddOn add-on license.
 
-[Requires that you install Financial Services Cloud. See Compliant Data Sharing in](https://developer.salesforce.com/docs/atlas.en-us.258.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_cds.htm) _Financial Services Cloud Administrator Guide_ .
+[Requires that you install Financial Services Cloud. See Compliant Data Sharing in](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_cds.htm) _Financial Services Cloud Administrator Guide_ .
 
 #### IndustriesMfgAdvncdAccFrcs
 
@@ -8824,7 +8827,7 @@ character recognition to automatically extract data with Amazon Textract by usin
 More Information
 
 To use this scratch org feature, the Dev Hub org requires the EinsteinDocReader and BYOAForIFR permissions. For information about
-[Intelligent Document Reader, see Intelligent Document Reader in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.intelligent_document_reader.htm&language=en_US)
+[Intelligent Document Reader, see Intelligent Document Reader in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.intelligent_document_reader.htm&type=5&language=en_US)
 
 #### InvestigativeCaseManagement
 
@@ -9051,7 +9054,7 @@ Enables Analytics for Loyalty license. The Analytics for Loyalty app gives you a
 
 More Information
 
-[See Analytics for Loyalty in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.analytics_loyalty_deploy_and_use.htm&language=en_US)
+[See Analytics for Loyalty in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=xcloud.analytics_loyalty_deploy_and_use.htm&type=5&language=en_US)
 
 #### LoyaltyEngine
 
@@ -9060,7 +9063,7 @@ processes. Loyalty program processes help you decide how incoming and new Accrua
 
 More Information
 
-[See Create Processes with Promotion Setup in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.promotion_setup.htm&language=en_US)
+[See Create Processes with Promotion Setup in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=xcloud.promotion_setup.htm&type=5&language=en_US)
 
 #### LoyaltyManagementStarter
 
@@ -9069,7 +9072,7 @@ to recognize, rewards, and retain customers.
 
 More Information
 
-[See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.loyaltyoverview.htm&language=en_US)
+[See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=xcloud.loyaltyoverview.htm&type=5&language=en_US)
 
 
 Scratch Orgs Scratch Org Features
@@ -9445,7 +9448,7 @@ Limits the number of wishlist items per wishlist. The default value is 500.
 
 More Information
 
-[For more information, see Salesforce Help at Salesforce B2B Commerce and D2C Commerce](https://help.salesforce.com/s/articleView?id=sf.comm_intro.htm&language=en_US)
+[For more information, see Salesforce Help at Salesforce B2B Commerce and D2C Commerce](https://help.salesforce.com/s/articleView?id=commerce.comm_intro.htm&type=5&language=en_US)
 
 
 Scratch Orgs Scratch Org Features
@@ -9459,7 +9462,7 @@ for the combinations of User1 with Store1 and Account1, User1 with Store2 and Ac
 
 More Information
 
-[For more information, see Salesforce Help at Salesforce B2B Commerce and D2C Commerce.](https://help.salesforce.com/s/articleView?id=sf.comm_intro.htm&language=en_US)
+[For more information, see Salesforce Help at Salesforce B2B Commerce and D2C Commerce.](https://help.salesforce.com/s/articleView?id=commerce.comm_intro.htm&type=5&language=en_US)
 
 #### MaxWritebacksPerDPE:<value>
 
@@ -9485,7 +9488,7 @@ once per 604,800 seconds (7 days) for Search Index key material, and once per 86
 
 More Information
 
-[Requires enabling PlatformEncryption and some configuration using the Setup menu in the scratch org. See Which User Permissions](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_platformencryption)
+[Requires enabling PlatformEncryption and some configuration using the Setup menu in the scratch org. See Which User Permissions](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_platformencryption)
 [Does Shield Platform Encryption Require? and Generate a Tenant Secret with Salesforce in Salesforce Help.](https://help.salesforce.com/articleView?id=security_pe_permissions.htm&language=en_US)
 
 #### MobileExtMaxFileSizeMB:<value>
@@ -9593,7 +9596,7 @@ Scratch Orgs Scratch Org Features
 
 More Information
 
-[Salesforce Help: Enablement Sites (myTrailhead)](https://help.salesforce.com/s/articleView?id=sf.mth_intro.htm&language=en_US)
+[Salesforce Help: Enablement Sites (myTrailhead)](https://help.salesforce.com/s/articleView?id=sales.mth_intro.htm&type=5&language=en_US)
 
 #### NonprofitCloudCaseManagementUser
 
@@ -9620,7 +9623,7 @@ Create rules to quickly link channel interactions to objects such as contacts, l
 
 Enables Omnistudio metadata API. Using this API, customers can deploy and retrieve Omnistudio components programmatically.
 
-[For more information, see Enable OmniStudio Metadata API Support.](https://help.salesforce.com/s/articleView?id=sf.os_enable_omnistudio_metadata_api_support.htm&type=5&language=en_US)
+[For more information, see Enable OmniStudio Metadata API Support.](https://help.salesforce.com/s/articleView?id=xcloud.os_enable_omnistudio_metadata_api_support.htm&type=5&language=en_US)
 
 #### OmnistudioRuntime
 
@@ -9652,12 +9655,12 @@ If you want to configure Order Management to use any of these features, enable i
 
 **•** StateAndCountryPicklist
 
-Requires configuration using the Setup menu in the scratch org. For installation and configuration steps, see _Salesforce Help_ [: Salesforce](https://help.salesforce.com/s/articleView?id=sf.om_order_management.htm&type=5&language=en_US)
-[Order Management.](https://help.salesforce.com/s/articleView?id=sf.om_order_management.htm&type=5&language=en_US)
+Requires configuration using the Setup menu in the scratch org. For installation and configuration steps, see _Salesforce Help_ [: Salesforce](https://help.salesforce.com/s/articleView?id=commerce.om_order_management.htm&type=5&language=en_US)
+[Order Management.](https://help.salesforce.com/s/articleView?id=commerce.om_order_management.htm&type=5&language=en_US)
 
 Note: The implementation process includes turning on several Order and Order Management feature toggles in Setup. In a scratch
 org, you can turn them on by including metadata settings in your scratch org definition file. For details about these settings, see
-[OrderSettings and OrderManagementSettings in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_ordersettings.htm) _Metadata API Developer Guide_ .
+[OrderSettings and OrderManagementSettings in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_ordersettings.htm) _Metadata API Developer Guide_ .
 
 #### OrderSaveLogicEnabled
 
@@ -9730,7 +9733,7 @@ Gives users access to Outcome Management features and objects in Salesforce and 
 
 More Information
 
-[See Outcome Management in Salesforce Help for more information. To enable Outcome Management, add these settings to your](https://help.salesforce.com/s/articleView?id=sf.outcome_management.htm&language=en_US)
+[See Outcome Management in Salesforce Help for more information. To enable Outcome Management, add these settings to your](https://help.salesforce.com/s/articleView?id=ind.outcome_management.htm&type=5&language=en_US)
 scratch org definition file.
 
 ```
@@ -9801,7 +9804,7 @@ when caching Salesforce session and org data.
 
 More Information
 
-[See Platform Cache in the Apex Developer Guide for more information.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_cache_namespace_overview.htm)
+[See Platform Cache in the Apex Developer Guide for more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_cache_namespace_overview.htm)
 
 #### PlatformConnect:<value>
 
@@ -10048,7 +10051,7 @@ More Information
 
 **–** 10 FullCRM licenses
 
-**•** [Requires you to enable CoreCpq to access Rate Management.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_corecpq)
+**•** [Requires you to enable CoreCpq to access Rate Management.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_def_file_config_values.htm#so_corecpq)
 
 [See Configure Rate Pricing Calculations in Revenue Cloud in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.rm_rate_management.htm&type=5&language=en_US)
 
@@ -10124,7 +10127,7 @@ More Information
 
 Available in Enterprise and Developer edition scratch orgs. To use the Salesforce Feedback Management - Starter features, enable Surveys
 and assign the Salesforce Advanced Features Starter user permission to the scratch org user. For additional information on how to enable
-[Surveys and configuration steps, see Enable Surveys and Configure Survey Settings and Assign User Permissions in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.task_enable_surveys.htm&type=5&language=en_US)
+[Surveys and configuration steps, see Enable Surveys and Configure Survey Settings and Assign User Permissions in Salesforce Help.](https://help.salesforce.com/s/articleView?id=xcloud.task_enable_surveys.htm&type=5&language=en_US)
 
 #### SalesforceHostedMCP
 
@@ -10146,8 +10149,8 @@ Enables Salesforce Pricing, which allows you to set, manage, and optimize prices
 
 More Information
 
-[Provides 5 Salesforce Pricing Design Time AddOn, 5 Salesforce Pricing Run Time AddOn licenses. For more information, see Salesforce](https://help.salesforce.com/s/articleView?id=sf.pricing_salesforce_pricing.htm&language=en_US)
-[Pricing in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.pricing_salesforce_pricing.htm&language=en_US)
+[Provides 5 Salesforce Pricing Design Time AddOn, 5 Salesforce Pricing Run Time AddOn licenses. For more information, see Salesforce](https://help.salesforce.com/s/articleView?id=ind.pricing_salesforce_pricing.htm&type=5&language=en_US)
+[Pricing in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.pricing_salesforce_pricing.htm&type=5&language=en_US)
 
 #### SalesUser
 
@@ -10174,7 +10177,7 @@ More Information
 
 org definition file. Available in Salesforce Enterprise, Unlimited, and Developer Editions.
 
-[For setup and configuration steps, see Manage Multiparty Calls and Consult Calls in the Service Cloud Voice for Partner Telephony](https://developer.salesforce.com/docs/atlas.en-us.258.0.voice_pt_developer_guide.meta/voice_pt_developer_guide/voice_pt_multiparty_consult_calls.htm)
+[For setup and configuration steps, see Manage Multiparty Calls and Consult Calls in the Service Cloud Voice for Partner Telephony](https://developer.salesforce.com/docs/atlas.en-us.260.0.voice_pt_developer_guide.meta/voice_pt_developer_guide/voice_pt_multiparty_consult_calls.htm)
 Developer Guide.
 
 Sample Scratch Org Definition File
@@ -10220,7 +10223,7 @@ your customers and get actionable insights to improve it.
 More Information
 
 To use this scratch org feature, the Dev Hub org requires the IESentimentAnalysis, AwsSentimentAnalysis, BYOAForSentiment, and
-[IESentimentAnalysisEnabled permissions. For information about Sentiment Insights, see Sentiment Insights in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.sentiment_insights.htm&language=en_US)
+[IESentimentAnalysisEnabled permissions. For information about Sentiment Insights, see Sentiment Insights in Salesforce Help.](https://help.salesforce.com/s/articleView?id=xcloud.sentiment_insights.htm&type=5&language=en_US)
 
 #### ServiceCatalog
 
@@ -10229,7 +10232,7 @@ requests for these products and services into approved and documented orders.
 
 More Information
 
-[To use this scratch org feature, the Dev Hub org requires the ServiceCatalog permission. To learn more, see Employee Service Catalog.](https://help.salesforce.com/s/articleView?id=sf.esc_get_started_with_employee_service_catalog.htm&language=en_US)
+[To use this scratch org feature, the Dev Hub org requires the ServiceCatalog permission. To learn more, see Employee Service Catalog.](https://help.salesforce.com/s/articleView?id=service.esc_get_started_with_employee_service_catalog.htm&type=5&language=en_US)
 
 #### ServiceCloud
 
@@ -10250,7 +10253,7 @@ Supported Quantities
 
 More Information
 
-[For setup and configuration steps, see Service Cloud Voice with Partner Telephony in Salesforce Help.](https://help.salesforce.com/articleView?id=sf.voice_pt_setup.htm&language=en_US)
+[For setup and configuration steps, see Service Cloud Voice with Partner Telephony in Salesforce Help.](https://help.salesforce.com/articleView?id=service.voice_pt_setup.htm&type=5&language=en_US)
 
 #### ServiceUser
 
@@ -10275,7 +10278,7 @@ Allow users to relate multiple contacts to tasks and events.
 
 More Information
 
-[For additional installation and configuration steps, see Considerations for Enabling Shared Activities in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.activities_shared_considerations.htm&type=5&language=en_US)
+[For additional installation and configuration steps, see Considerations for Enabling Shared Activities in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sales.activities_shared_considerations.htm&type=5&language=en_US)
 
 #### Sites
 
@@ -10344,7 +10347,7 @@ More Information
 
 Available in Enterprise and Developer edition scratch orgs. To use the Salesforce Feedback Management - Growth features, enable
 Surveys and assign the Salesforce Surveys Advanced Features user permission to the scratch org user. For additional information on how
-[to enable Surveys and configuration steps, see Enable Surveys and Configure Survey Settings and Assign User Permissions in Salesforce](https://help.salesforce.com/s/articleView?id=sf.task_enable_surveys.htm&type=5&language=en_US)
+[to enable Surveys and configuration steps, see Enable Surveys and Configure Survey Settings and Assign User Permissions in Salesforce](https://help.salesforce.com/s/articleView?id=xcloud.task_enable_surveys.htm&type=5&language=en_US)
 Help.
 
 #### SustainabilityCloud
@@ -10354,7 +10357,7 @@ Analytics and CRM Analytics templates, include the DevelopmentWave scratch org f
 
 More Information
 
-[For installation and configuration steps, see Sustainability Cloud Legacy Documentation in the Set Up and Maintain Net Zero Cloud](https://help.salesforce.com/s/articleView?id=sf.sustainability_cloud_legacy_documentation.htm&language=en_US)
+[For installation and configuration steps, see Sustainability Cloud Legacy Documentation in the Set Up and Maintain Net Zero Cloud](https://help.salesforce.com/s/articleView?id=ind.sustainability_cloud_legacy_documentation.htm&type=5&language=en_US)
 guide in Salesforce Help.
 
 #### SustainabilityApp
@@ -10464,7 +10467,7 @@ app for your users to bring your environmental accounting in line with your fina
 
 More Information
 
-[For more information, see Deploy Net Zero Analytics in the Set Up and Maintain Net Zero Cloud guide in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.netzero_admin_analytics_deploy.htm&language=en_US)
+[For more information, see Deploy Net Zero Analytics in the Set Up and Maintain Net Zero Cloud guide in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.netzero_admin_analytics_deploy.htm&type=5&language=en_US)
 
 #### TimelineConditionsLimit
 
@@ -10472,7 +10475,7 @@ Limits the number of timeline record display conditions per event type to 3.
 
 More Information
 
-[See Provide Holistic Patient Care with Enhanced Timeline in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.hc_timeline.htm&language=en_US)
+[See Provide Holistic Patient Care with Enhanced Timeline in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.hc_timeline.htm&type=5&language=en_US)
 
 #### TimelineEventLimit
 
@@ -10483,7 +10486,7 @@ Scratch Orgs Scratch Org Features
 
 More Information
 
-[See Provide Holistic Patient Care with Enhanced Timeline in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.hc_timeline.htm&language=en_US)
+[See Provide Holistic Patient Care with Enhanced Timeline in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.hc_timeline.htm&type=5&language=en_US)
 
 #### TimelineRecordTypeLimit
 
@@ -10491,7 +10494,7 @@ Limits the number of related object record types per event type to 3.
 
 More Information
 
-[See Provide Holistic Patient Care with Enhanced Timeline in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=sf.hc_timeline.htm&language=en_US)
+[See Provide Holistic Patient Care with Enhanced Timeline in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.hc_timeline.htm&type=5&language=en_US)
 
 #### TimeSheetTemplateSettings
 
@@ -10510,7 +10513,7 @@ More Information
 
 Note: This functionality is currently in open pilot and subject to restrictions.
 
-[See the Transaction Finalizers (Pilot) in Apex Developer Guide for more information.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_transaction_finalizers.htm)
+[See the Transaction Finalizers (Pilot) in Apex Developer Guide for more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_transaction_finalizers.htm)
 
 #### UsageManagement
 
@@ -10522,16 +10525,64 @@ More Information
 
 [See Usage Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.um_usage_management.htm&type=5&language=en_US)
 
+#### VolunteerManagement
+
+Gives users access to Volunteer Management features and objects in Salesforce.
+
+Scratch Org Definition File
+
+[See Nonprofit Cloud for Volunteer Management in Salesforce Help for more information. To enable Volunteer Management, add these](https://help.salesforce.com/s/articleView?id=sfdo.volunteer_mgmt_volunteer_management.htm&language=en_US)
+settings to your scratch org definition file.
+
+
+Scratch Orgs Scratch Org Features
+
+Note: Volunteer Management licenses are assigned when the Volunteer Management feature is enabled in the scratch org.
+
+```
+   {
+
+      "orgName": "Volunteer Management Org",
+
+      "edition": "Enterprise",
+
+      "hasSampleData": "false",
+
+      "features": [
+
+        "PersonAccounts",
+
+        "VolunteerManagement"
+
+      ],
+
+      "settings": {
+
+        "lightningExperienceSettings": {
+
+           "enableS1DesktopEnabled": true
+
+        },
+
+        "IndustriesSettings": {
+
+           "enableVolunteerManagement": true
+
+        }
+
+      }
+
+     }
+
 #### WaveMaxCurrency
+
+```
 
 Increases the maximum number of supported currencies for CRM Analytics. Indicate a value between 1–5.
 
 #### WavePlatform
 
 Enables the Wave Platform license.
-
-
-### Scratch Orgs Scratch Org Settings
 
 #### Workflow
 
@@ -10556,9 +10607,12 @@ If you didn't enable the pilot, use the Flows action in the ProcessBuilder scrat
 
 Enables access to Workplace Command Center features including access to objects such as Employee, Crisis, and EmployeeCrisisAssessment.
 
+
+### Scratch Orgs Scratch Org Settings
+
 More Information
 
-[For additional installation and configuration steps, see Set Up Your Work.com Development Org in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.workdotcom_dev_guide.meta/workdotcom_dev_guide/wdc_cc_setup_dev_org.htm) _Workplace Command Center for_
+[For additional installation and configuration steps, see Set Up Your Work.com Development Org in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.workdotcom_dev_guide.meta/workdotcom_dev_guide/wdc_cc_setup_dev_org.htm) _Workplace Command Center for_
 _Work.com Developer Guide_ .
 
 #### WorkThanksPref
@@ -10572,7 +10626,7 @@ settings, they’re the most comprehensive way to configure a scratch org. If a 
 scratch orgs. Settings provide you with fine-grained control because you can define values for all fields for a setting, rather than just
 enabling or disabling it.
 
-[For information on Metadata API settings and their supported fields, see Settings in](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_settings.htm) _Metadata API Developer Guide_ .
+[For information on Metadata API settings and their supported fields, see Settings in](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm) _Metadata API Developer Guide_ .
 
 Important: Although the Settings are upper camel case in the _Metadata API Developer Guide_, be sure to indicate them as lower
 camel case in the scratch org definition.
@@ -10594,12 +10648,6 @@ camel case in the scratch org definition.
 
        },
 
-```
-
-
-Scratch Orgs Scratch Org Settings
-
-```
        "lightningExperienceSettings": {
 
          "enableS1DesktopEnabled": true
@@ -10630,7 +10678,7 @@ Scratch Orgs Scratch Org Settings
 
 ```
 
-[Here’s an example of how to configure SecuritySettings in your scratch org. In this case, to define session timeout, you nest the field](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_securitysettings.htm)
+[Here’s an example of how to configure SecuritySettings in your scratch org. In this case, to define session timeout, you nest the field](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_securitysettings.htm)
 values.
 
 ```
@@ -10648,6 +10696,12 @@ values.
 
          "enableS1EncryptedStoragePref2": true
 
+```
+
+
+## Scratch Orgs Create a Scratch Org Based on an Org Shape
+
+```
         },
 
        "securitySettings": {
@@ -10666,7 +10720,7 @@ values.
 
 ```
 
-[This example shows how to use NameSettings to enable middle names and suffixes in your org for these person objects: Contact, Lead,](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_namesettings.htm)
+[This example shows how to use NameSettings to enable middle names and suffixes in your org for these person objects: Contact, Lead,](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_namesettings.htm)
 Person Account, and User.
 
 ```
@@ -10696,10 +10750,9 @@ Person Account, and User.
 
    }
 
+## Create a Scratch Org Based on an Org Shape
+
 ```
-
-
-## Scratch Orgs Create a Scratch Org Based on an Org Shape Create a Scratch Org Based on an Org Shape
 
 We know it’s not easy to build a scratch org definition that mirrors the features and settings in your production org. With Org Shape for
 Scratch Orgs, you can leave building the scratch org definition to us. After you capture the org’s shape, you can spin up scratch orgs
@@ -10723,6 +10776,9 @@ org created from the org shape.
 Note: Some features aren’t captured when the org shape is created. However, you can add the features manually to the scratch
 org definition file. See Troubleshoot Org Shape for details.
 
+
+### Scratch Orgs Enable Org Shape for Scratch Orgs
+
 What’s Not Included in Org Shape?
 
 **•** Metadata API settings with `integer` or `string` fields. However, you can manually add non-Boolean settings or other settings
@@ -10742,15 +10798,11 @@ Can I See the Org Shape File?
 
 Org shapes are internal system files and aren’t viewable.
 
-Enable Org Shape for Scratch Orgs
-Enable Org Shape for Scratch Orgs in the org whose shape you want to capture (source org).
+### Enable Org Shape for Scratch Orgs Enable Org Shape for Scratch Orgs in the org whose shape you want to capture (source org).
 
 Org Shape Permissions
 A Salesforce admin for the Dev Hub org must assign permissions to users who plan to create org shapes, or create scratch orgs based
 on an org shape. If you already have a permission set for Salesforce DX users, you can update it to include access.
-
-
-### Scratch Orgs Enable Org Shape for Scratch Orgs
 
 Create and Manage Org Shapes
 Create an org shape to mimic the baseline setup (features, limits, edition, and Metadata API settings) of a source org without the
@@ -10768,7 +10820,7 @@ Here are some issues you can encounter when using Org Shape for Scratch Orgs.
 
 SEE ALSO:
 
-_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_settings.htm)_ : Settings
+_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)_ : Settings
 
 ### Enable Org Shape for Scratch Orgs Enable Org Shape for Scratch Orgs in the org whose shape you want to capture (source org).
 
@@ -10778,21 +10830,22 @@ Not available in: Scratch orgs and sandboxes
 
 Be sure to:
 
-### • Enable Org Shape for Scratch Orgs in both the source org and the Dev Hub org, if you want to capture the shape of an org that isn’t
 
+### Scratch Orgs Org Shape Permissions
+
+**•** Enable Org Shape for Scratch Orgs in both the source org and the Dev Hub org, if you want to capture the shape of an org that isn’t
 also your Dev Hub org.
 
 **•** When entering the org ID, use only the first 15 characters rather than the full 18-character org ID.
 
 You can find the org ID in **Setup > Company Information** .
 
-### 1. Enable Org Shape for Scratch Orgs in the Dev Hub org that you use to create scratch orgs. Contact a Salesforce admin if you require
-
+**1.** Enable Org Shape for Scratch Orgs in the Dev Hub org that you use to create scratch orgs. Contact a Salesforce admin if you require
 assistance.
 
 **a.** From Setup, enter _`Scratch Orgs`_ in the Quick Find box, then select **Scratch Orgs** .
 
-### b. Click the toggle for Enable Org Shape for Scratch Orgs .
+**b.** Click the toggle for **Enable Org Shape for Scratch Orgs** .
 
 **c.** In the text box, enter the 15-character org ID for the Dev Hub, then click **Save** .
 
@@ -10802,7 +10855,7 @@ assistance.
 
 **b.** From Setup, enter _`Scratch Orgs`_ in the Quick Find box, then select **Scratch Orgs** .
 
-### c. Click the toggle for Enable Org Shape for Scratch Orgs .
+**c.** Click the toggle for **Enable Org Shape for Scratch Orgs** .
 
 **d.** Enter the 15-character Dev Hub org ID that you’re using to create scratch orgs.
 
@@ -10813,9 +10866,6 @@ require the shape of another production org.
 
 **•** Your developers use their own Dev Hub orgs and don't have access to the production org. However, they want to create scratch
 orgs based on the shape of the production org.
-
-
-### Scratch Orgs Org Shape Permissions
 
 **•** You're an ISV who uses your production org to create scratch orgs. You want to capture the shape of your first-generation packaging
 org so you can build second-generation packages.
@@ -10828,6 +10878,9 @@ on an org shape. If you already have a permission set for Salesforce DX users, y
 You don’t require the “Modify All Records” permission to delete shapes created by others because there can be only one active shape
 in the org at a time.
 
+
+### Scratch Orgs Create and Manage Org Shapes
+
 Supported Licenses
 
 In addition to providing users with appropriate permissions, be sure to assign the Salesforce license to Org Shape users. Other user
@@ -10837,7 +10890,7 @@ SEE ALSO:
 
 Add Salesforce DX Users
 
-_[SOAP API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_objects_shaperepresentation.htm)_ : ShapeRepresentation
+_[SOAP API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_objects_shaperepresentation.htm)_ : ShapeRepresentation
 
 ### Create and Manage Org Shapes
 
@@ -10846,9 +10899,9 @@ extraneous data and metadata. If the features, settings, or licenses of that org
 org shape. You can have only one active org shape at a time. Org shapes are internal system files and aren’t viewable.
 
 An org shape captures Metadata API settings, not all metadata types. For example, customizations that appear in the org, such as
-[Lightning Experience Themes, aren’t included as part of org shape. See Settings in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_settings.htm) _Metadata API Guide_ for the complete list.
+[Lightning Experience Themes, aren’t included as part of org shape. See Settings in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm) _Metadata API Guide_ for the complete list.
 
-[An org shape includes org preference and permissions. It doesn’t include data entries such as AddressSettings.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_addresssettings.htm)
+[An org shape includes org preference and permissions. It doesn’t include data entries such as AddressSettings.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_addresssettings.htm)
 
 Important: Scratch org shapes are associated with a specific Salesforce release. Be sure to recreate the org shape after the source
 org is upgraded to the new Salesforce release.
@@ -10868,9 +10921,6 @@ org is upgraded to the new Salesforce release.
      Successfully created org shape for 3SRB0000000TXbnOCG.
 
 ```
-
-
-### Scratch Orgs Scratch Org Definition for Org Shape
 
 **3.** Check the status of the `shape:create` command.
 
@@ -10908,9 +10958,10 @@ If you don’t want to create scratch orgs based on this shape, you can delete t
 ```
    sf org delete shape --target-org <username/alias>
 
-### Scratch Org Definition for Org Shape
-
 ```
+
+
+### Scratch Orgs Scratch Org Definition for Org Shape Scratch Org Definition for Org Shape
 
 During org shape creation, we capture the features, settings, edition, licenses, and limits of the specified source org. This way, you don’t
 have to manually include these items in the scratch org definition file. You can create a scratch org based solely on the source org shape.
@@ -10953,9 +11004,6 @@ org shape.
 
 ```
 
-
-Scratch Orgs Scratch Org Definition for Org Shape
-
 Scratch Org Definition File for DevOps Center
 
 If you create a scratch org based on an org shape with DevOps Center enabled, we still require that you add the DevOps Center feature
@@ -10979,6 +11027,12 @@ terms and conditions.
 
            }
 
+```
+
+
+### Scratch Orgs Troubleshoot Org Shape
+
+```
         }
 
       }
@@ -11031,14 +11085,11 @@ and Metadata API settings. Settings refer to the Settings metadata type, not all
 
 ```
 
-
-### Scratch Orgs Troubleshoot Org Shape
-
 Next: Create a scratch org using the org shape scratch org definition file.
 
 SEE ALSO:
 
-_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_settings.htm)_ : Settings
+_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)_ : Settings
 
 ### Troubleshoot Org Shape
 
@@ -11067,6 +11118,12 @@ Some Features Not Captured by Org Shape
 
       "features": [”Chatbot”, "MultiCurrency", "DevOpsCenter"],
 
+```
+
+
+Scratch Orgs Troubleshoot Org Shape
+
+```
       "settings":
 
        {
@@ -11112,12 +11169,6 @@ org definition file, which enables both features.
 
       "fieldServiceSettings":
 
-```
-
-
-Scratch Orgs Troubleshoot Org Shape
-
-```
        {
 
         "fieldServiceOrgPref": true,
@@ -11161,6 +11212,9 @@ indicating the feature and setting in the scratch org definition file for legal 
 **Workaround:** Add the DevOps Center feature and setting to the scratch org definition file. See Scratch Org Definition for Org Shape for
 details.
 
+
+Scratch Orgs Troubleshoot Org Shape
+
 ERROR running force:org:shape:list
 
 **Description:** A trial org from which you created the org shape has expired. You could see either of these errors:
@@ -11194,9 +11248,6 @@ Can't create a Digital Experience Cloud Site Using Org Shape
 ```
 
 **Workaround:** None.
-
-
-## Scratch Orgs Create Scratch Orgs
 
 Error While Creating Scratch Org Using a Shape
 
@@ -11245,7 +11296,8 @@ scratch org definition file. Org IDs are usually 18 characters long, which is wh
 
 **Workaround:** Use only the first 15 characters of a standard 18-character org ID when working with the Org Shape feature.
 
-## Create Scratch Orgs
+
+## Scratch Orgs Create Scratch Orgs Create Scratch Orgs
 
 Easily spin up a scratch org and open it directly from the command line.
 
@@ -11265,9 +11317,6 @@ against your active scratch org allocations.
 
 Indicate the path to the scratch definition file relative to your current directory. For sample repos and new projects, this file is located in
 the `config` directory.
-
-
-Scratch Orgs Create Scratch Orgs
 
 Ways to Create Scratch Orgs
 
@@ -11325,6 +11374,9 @@ specifies the scratch org’s duration, which indicates when the scratch org exp
 
 ```
 
+
+Scratch Orgs Create Scratch Orgs
+
 Specify the Salesforce release for the scratch org. During the Salesforce release transition, you can specify the release (preview or previous)
 when creating a scratch org. See Select the Salesforce Release for a Scratch Org for details.
 
@@ -11354,9 +11406,6 @@ Create a scratch org with source tracking disabled.
    sf org create scratch --definition-file config/project-scratch-def.json --no-track-source
 
 ```
-
-
-Scratch Orgs Create Scratch Orgs
 
 View Scratch Org Creation Progress
 
@@ -11412,6 +11461,10 @@ Salesforce Release Transition Periods
 
 Timing is everything during the Salesforce release transition period. During the transition period, you can intend to create a scratch org
 on the current release but find that the scratch org is unexpectedly created on the preview release. If the instance on which the scratch
+
+
+## Scratch Orgs Scratch Org Snapshots
+
 is created transitions to the preview release after the creation request is initiated, the scratch org is created on the preview version instead
 of the current version. During this transition period, there’s no way to know when the sandbox (CS) instance will be upgraded.
 
@@ -11430,9 +11483,6 @@ to see if it returns the scratch org ID, which confirms the existence of a scrat
 
 ```
 
-
-## Scratch Orgs Scratch Org Snapshots
-
 Use this information to determine if the creation actually worked. For example, let’s say your name is Jane Doe, and you created an alias
 for your Dev Hub org called DevHub:
 
@@ -11445,7 +11495,7 @@ for your Dev Hub org called DevHub:
 
 SEE ALSO:
 
-[ScratchOrgInfo sObject API Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_scratchorginfo.htm)
+[ScratchOrgInfo sObject API Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_scratchorginfo.htm)
 
 Project Setup
 
@@ -11478,6 +11528,9 @@ system. You continue to follow best development practices by externalizing and m
 Snapshots and scratch orgs don’t replace sandboxes for user acceptance testing. A snapshot is intended to contain the static dependencies
 of a project, and not the entire happy soup of your production org.
 
+
+Scratch Orgs Scratch Org Snapshots
+
 Snapshot Allocations and Limits
 
 Snapshots are associated with a Dev Hub org. Therefore, you must use the same Dev Hub org when you create the scratch org from the
@@ -11490,9 +11543,6 @@ immediately available.
 
 **•** Snapshot data is retained for 100 days. When a snapshot expires, it’s associated data is deleted 10 days later. If a snapshot is deleted,
 its associated data is deleted 100 days after its creation date.
-
-
-Scratch Orgs Scratch Org Snapshots
 
 To view your snapshot usage with Salesforce CLI, run:
 
@@ -11538,6 +11588,9 @@ While you can't use a namespaced scratch org to create a snapshot, you can creat
 way, you can deploy namespaced metadata to the scratch org. Snapshots are intended to include only dependent packages,
 metadata, and test data.
 
+
+### Scratch Orgs Get Started with Scratch Org Snapshots
+
 Create a Scratch Org Based on a Snapshot
 The snapshot must belong to the Dev Hub that you’re using to create the scratch org. We recommend that you create a scratch org
 definition file that references the snapshot, although you can also reference it directly with the `--snapshot` flag of `org create`
@@ -11551,16 +11604,15 @@ dependent base packages are stable.
 Manage and Maintain Your Snapshots
 You can check the status of snapshot creation, list all snapshots, and delete a snapshot.
 
-
-### Scratch Orgs Get Started with Scratch Org Snapshots Get Started with Scratch Org Snapshots
+### Get Started with Scratch Org Snapshots
 
 Install the required Salesforce DX tools, then enable Dev Hub and Scratch Org Snapshots in an org, usually your production org.
 
 **•** [Install Salesforce CLI.](https://developer.salesforce.com/tools/salesforcecli)
 
-**•** [Enable Dev Hub in your production org.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm)
+**•** [Enable Dev Hub in your production org.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm)
 
-**•** [Authorize your Dev Hub org. The Dev Hub org is the org you use to create and manage scratch orgs.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth.htm)
+**•** [Authorize your Dev Hub org. The Dev Hub org is the org you use to create and manage scratch orgs.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth.htm)
 
 **•** Enable Scratch Org Snapshots in the Dev Hub org.
 
@@ -11597,11 +11649,6 @@ snapshots by default.
 
 **4.** From the permission set’s Object Settings, select **Org Snapshots**, then click **Edit** .
 
-**a.** Under Object Permissions, select **Read**, **Create**, and **Delete** .
-
-**b.** (Optional) Add these object permissions to the permission set.
-
-**•** To allow users to see snapshots that other users create, select **View All Records** .
 
 EDITIONS
 
@@ -11612,6 +11659,12 @@ editions
 
 Not available in: Scratch
 orgs and sandboxes
+
+### Scratch Orgs Salesforce CLI Snapshot Commands a. Under Object Permissions, select Read, Create, and Delete .
+
+**b.** (Optional) Add these object permissions to the permission set.
+
+**•** To allow users to see snapshots that other users create, select **View All Records** .
 
 **•** To allow users to delete snapshots that other users create, select **Modify All Records** (Salesforce license only).
 
@@ -11625,9 +11678,6 @@ See _Required Permissions for Scratch Orgs_ in Create and Assign a Permission Se
 **7.** Click **Manage Assignments**, then **Add Assignment** .
 
 **8.** Select the users, click **Next**, and optionally set an expiration date.
-
-
-### Scratch Orgs Salesforce CLI Snapshot Commands
 
 **9.** Click **Assign**, then **Done** .
 
@@ -11687,6 +11737,9 @@ A snapshot captures the state of a scratch org at a point in time. To update you
 an org shape, a snapshot includes installed packages, metadata, and data. The time to create a snapshot depends on the size of the
 source scratch org. To speed up snapshot creation time, include only what’s necessary for your project.
 
+
+### Scratch Orgs Create a Snapshot for Use with Namespaced Scratch Orgs
+
 Note: If you continue to modify the source scratch org after you run the snapshot command, not all the modifications will be
 reflected in the snapshot. Instead, complete the configuration of the source scratch org before creating the snapshot.
 
@@ -11703,9 +11756,6 @@ A snapshot name can have a maximum length of 15 characters. It can contain only 
 spaces, even if the name is surrounded by quotation marks during creation).
 
 Tip: To view the aliases, usernames, and IDs of your authenticated orgs and scratch orgs, run the `org list` command.
-
-
-### Scratch Orgs Create a Snapshot for Use with Namespaced Scratch Orgs
 
 Example:
 
@@ -11763,9 +11813,10 @@ the resulting scratch org.
 
 SEE ALSO:
 
-[Link a Namespace to a Dev Hub Org](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm)
+[Link a Namespace to a Dev Hub Org](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm)
 
-### Create a Scratch Org Based on a Snapshot
+
+### Scratch Orgs Create a Scratch Org Based on a Snapshot Create a Scratch Org Based on a Snapshot
 
 The snapshot must belong to the Dev Hub that you’re using to create the scratch org. We recommend that you create a scratch org
 definition file that references the snapshot, although you can also reference it directly with the `--snapshot` flag of `org create`
@@ -11778,9 +11829,6 @@ settings to configure the scratch orgs created from it.
 
 Using our Dreamhouse scratch org as an example, let’s create a scratch org definition file called `dhsnapshot-scratch-def.json`
 that contains only two entries: `orgName` and `snapshot`, which is the name you gave the snapshot when you created it.
-
-
-Scratch Orgs Create a Scratch Org Based on a Snapshot
 
 Important: Be sure you use the `snapshot` option instead of `edition` in the scratch org definition file.
 
@@ -11848,6 +11896,12 @@ from the scratch org snapshot.
 
        "blockOAuthUnPwFlow": true
 
+```
+
+
+Scratch Orgs Create a Scratch Org Based on a Snapshot
+
+```
       },
 
       "mobileSettings": {
@@ -11872,9 +11926,6 @@ Create the Scratch Org Based On Your Snapshot
 
 It can take Salesforce longer to create a scratch org from a snapshot, so we suggest you increase the `--wait` value so the command
 doesn’t time out. Remember to set the `--target-dev-hub` flag to the same Dev Hub org associated with the snapshot.
-
-
-### Scratch Orgs Create a Package Version Based on a Snapshot
 
 For example:
 
@@ -11920,18 +11971,18 @@ During the Salesforce release transition, release version differences can occur 
 In cases where the Dev Hub org and snapshot release versions differ, the resulting scratch org is created on the same release version as
 the snapshot, as illustrated in this table.
 
+
+### Scratch Orgs Create a Package Version Based on a Snapshot
+
 Snapshot Error Codes
 
-[See Scratch Org Error Codes for details.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_error_codes.htm)
+[See Scratch Org Error Codes for details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_error_codes.htm)
 
 ### Create a Package Version Based on a Snapshot
 
 If you’re a partner or ISV who builds second-generation managed packages that depend on base packages, you can create package
 versions significantly faster by using scratch org snapshots. Using a snapshot to create a package version is a great choice if your dependent
 base packages are stable.
-
-
-### Scratch Orgs Manage and Maintain Your Snapshots
 
 What Are the Benefits of Using a Snapshot When Developing a Package Version?
 
@@ -11958,11 +12009,15 @@ upgrade to orgs that don’t contain the dependent metadata.
 To ensure your package version is ready to release and doesn’t contain any unintended dependencies, you must build a package version
 without a snapshot.
 
+[Note: You can promote an unlocked package based on a snapshot. Only managed packages based on snapshots can’t be](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
+promoted to the released state.
+
 How Do I Create a Package Version Based on Snapshot?
 
 [See Second-Generation Managed Packaging Guide: Create a Package Version Based on a Scratch Org Snapshot.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/dev2gp_so_pkg_snapshot.htm)
 
-### Manage and Maintain Your Snapshots
+
+### Scratch Orgs Manage and Maintain Your Snapshots Manage and Maintain Your Snapshots
 
 You can check the status of snapshot creation, list all snapshots, and delete a snapshot.
 
@@ -12003,12 +12058,6 @@ After the status changes to `Active`, you can use the snapshot to create scratch
 
     Last Modified Date 09/22/2023, 02:14 PM
 
-```
-
-
-## Scratch Orgs Select the Salesforce Release for a Scratch Org
-
-```
     Expiration Date 2024-09-21
 
     Last Cloned Date
@@ -12051,6 +12100,9 @@ This example identifies the snapshot for deletion by snapshot ID.
 
 During the Salesforce release transition, you can specify the release (preview or previous) when creating a scratch org.
 
+
+Scratch Orgs Select the Salesforce Release for a Scratch Org
+
 What Is Salesforce Preview?
 
 During every major Salesforce release, you can get early access to the upcoming release in your scratch orgs and sandboxes to test new
@@ -12066,9 +12118,6 @@ scratch orgs. You can use your existing Dev Hub that includes your existing scra
 
 For example, you can select a version over the next three releases during these release transition dates. Preview start date is when
 sandbox instances are upgraded. Preview end date is when all instances are on the GA release.
-
-
-Scratch Orgs Select the Salesforce Release for a Scratch Org
 
 Because _previous_ and _preview_ are relative terms, your Dev Hub org version during the release transition determines their relative
 significance. Here’s what happens when you try to create a scratch org with one of the release values.
@@ -12099,6 +12148,12 @@ line overrides what you have defined in your scratch definition file.
 
            "enableS1EncryptedStoragePref2": true
 
+```
+
+
+Scratch Orgs Select the Salesforce Release for a Scratch Org
+
+```
          }
 
        }
@@ -12140,9 +12195,6 @@ To set it on the command line:
 
 ```
 
-
-## Scratch Orgs Deploy Source From Your Project to the Scratch Org
-
 Note: Regardless of the release version of your Dev Hub, you can use scratch org features that are available in the release (preview
 or previous) of the scratch org you create.
 
@@ -12173,7 +12225,8 @@ SEE ALSO:
 
 _VS Code Command_ [: SFDX: Create a Default Scratch Org](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/vscode-overview.html)
 
-## Deploy Source From Your Project to the Scratch Org
+
+## Scratch Orgs Deploy Source From Your Project to the Scratch Org Deploy Source From Your Project to the Scratch Org
 
 After changing the source, you can sync the changes to your scratch org by deploying the changed source to it with the `project`
 `deploy start` command.
@@ -12197,9 +12250,6 @@ so when you retrieve it back to your project, it knows where it belongs.
 
 To run the deploy commands described in the remainder of this topic, first open a terminal (macOS and Linux) or command window
 (Windows) and then change to your Salesforce DX project directory.
-
-
-Scratch Orgs Deploy Source From Your Project to the Scratch Org
 
 Preview a Deployment
 
@@ -12247,6 +12297,12 @@ The command displays what it deployed. This sample output shows a deployment of 
 
    =====================================================================================================
 
+```
+
+
+Scratch Orgs Deploy Source From Your Project to the Scratch Org
+
+```
    | State Name Type Path
 
    | ──────────────────────────────────
@@ -12269,15 +12325,12 @@ Use flags to target the source you want to deploy, rather than everything that�
 
 **•** Use `--source-dir` to deploy source in a package directory.
 
-[See the reference information about project deploy start for examples and other flags you can specify.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_deploy_start_unified)
+[See the reference information about project deploy start for examples and other flags you can specify.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_deploy_start_unified)
 
 Select Files to Ignore During Deploys
 
 It’s likely that you have some files that you don’t want to sync between the project and scratch org. Add these files to the `.forceignore`
 file so they’re ignored by the deploy command.
-
-
-Scratch Orgs Deploy Source From Your Project to the Scratch Org
 
 If the Deploy Detects Warnings
 
@@ -12318,6 +12371,12 @@ changed both locally and in the org, but the changes are in conflict.
 
     Conflict PropertyController ApexClass
 
+```
+
+
+## Scratch Orgs Retrieve Source from the Scratch Org to Your Project
+
+```
    <dir>/force-app/main/default/classes/PropertyController.cls
 
    Error (1): There are changes in the org that conflict with the local changes you're trying
@@ -12346,14 +12405,13 @@ SEE ALSO:
 
 How to Exclude Source When Syncing
 
-Retrieve Source from the Scratch Org to Your Project
+## Retrieve Source from the Scratch Org to Your Project
 
 Track Changes Between Your Project and Org
 
 _VS Code Command_ [: SFDX: Deploy Source to Org](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/deploy-changes.html)
 
-
-## Scratch Orgs Retrieve Source from the Scratch Org to Your Project Retrieve Source from the Scratch Org to Your Project
+## Retrieve Source from the Scratch Org to Your Project
 
 After you do an initial deploy, your changes are tracked between your local file system and your scratch org. If you change metadata in
 your scratch org, retrieve those changes to your local project to keep both in sync.
@@ -12385,6 +12443,9 @@ from a scratch org with the alias `MyGroovyScratchOrg` to your local project.
 
 Tip: You can create an alias for an org using `alias set` . To display the usernames and aliases of all the scratch orgs you’ve
 created, run `org list` .
+
+
+Scratch Orgs Retrieve Source from the Scratch Org to Your Project
 
 Retrieve Metadata from Your Scratch Org
 
@@ -12427,16 +12488,13 @@ the `DiscountSpecial` Apex class and `DiscountPermSet` permission set into the `
 
 Use flags to target the source you want to retrieve, rather than everything that’s changed.
 
-
-Scratch Orgs Retrieve Source from the Scratch Org to Your Project
-
 **•** Use the `--metadata` flag to retrieve specific metadata components, such as Apex classes.
 
 **•** Use the `--manifest` flag to retrieve components in a manifest file.
 
 **•** Use `--source-dir` to retrieve source in a package directory.
 
-[See the reference information about project retrieve start for examples and other flags you can specify.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_retrieve_start_unified)
+[See the reference information about project retrieve start for examples and other flags you can specify.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_retrieve_start_unified)
 
 Select Files to Ignore During Retrieves
 
@@ -12464,6 +12522,12 @@ changed both locally and in the org, but the changes are in conflict.
 
    ───────────────────────────────────────────────────────────────────
 
+```
+
+
+## Scratch Orgs Scratch Org Users
+
+```
     Conflict PropertyController ApexClass
 
    <dir>force-app/main/default/classes/PropertyController.cls-meta.xml
@@ -12502,8 +12566,7 @@ Track Changes Between Your Project and Org
 
 _VS Code Command_ [: SFDX: Retrieve Source to Org](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/deploy-changes.html)
 
-
-## Scratch Orgs Scratch Org Users Scratch Org Users
+## Scratch Org Users
 
 A scratch org includes one administrator user by default. The admin user is typically adequate for all your testing needs. But sometimes
 you need other users to test with different profiles and permission sets.
@@ -12533,6 +12596,9 @@ new user. If you want to customize your new user, create a definition file and s
 flag. In the file, you can include all the User sObject fields and a set of Salesforce DX-specific options, described in User Definition
 File for Customizing a Scratch Org User. You can also specify these options on the command line.
 
+
+### Scratch Orgs Create a Scratch Org User
+
 **•** If you don’t customize your new user, the `org create user` command creates a user with these default characteristics.
 
 **–** The username is the existing administrator’s username prepended with a timestamp. For example, if the administrator username
@@ -12560,9 +12626,6 @@ To determine the infrastructure, find the **Instance** [on the Company Informati
 **•** If the scratch org is on a Salesforce first-party instance, other users can log in using `test.salesforce.com` or the My Domain
 URL.
 
-
-### Scratch Orgs Create a Scratch Org User
-
 **•** If the scratch org is on a Hyperforce instance, other users must log in using the My Domain URL.
 
 ### Create a Scratch Org User
@@ -12579,7 +12642,7 @@ to generate or change a password for this admin user. After it's set, you can’
 
 SEE ALSO:
 
-[User sObject API Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_user.htm)
+[User sObject API Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_user.htm)
 
 ### Create a Scratch Org User
 
@@ -12596,6 +12659,12 @@ you can reference in later CLI commands. When the command completes, it outputs 
 
     for org 00D80000PhAkUAK.
 
+```
+
+
+Scratch Orgs Create a Scratch Org User
+
+```
    See more details about this user by running "sf org user display -o
 
    1690397809774_test-st9thgoyyyq3@example.com".
@@ -12638,9 +12707,6 @@ user that was created when the scratch org was created.
 
 ```
 
-
-### Scratch Orgs User Definition File for Customizing a Scratch Org User
-
 Display details about a user with the `org display user` command.
 
 ```
@@ -12672,16 +12738,14 @@ Display details about a user with the `org display user` command.
 
     Alias qa-user
 
-### User Definition File for Customizing a Scratch Org User
-
 ```
+
+
+### Scratch Orgs User Definition File for Customizing a Scratch Org User User Definition File for Customizing a Scratch Org User
 
 To customize a new scratch org user, rather than use the default and generated values, create a definition file.
 
 The user definition file uses JSON format and can include any Salesforce User sObject field and these Salesforce DX-specific options.
-
-
-Scratch Orgs User Definition File for Customizing a Scratch Org User
 
 The user definition file options are case-insensitive. However, we recommend that you use lower camel case for the Salesforce DX-specific
 options and upper camel case for the User sObject fields. This format is consistent with other Salesforce DX definition files.
@@ -12690,37 +12754,41 @@ This user definition file includes some User sObject fields and three Salesforce
 `generatePassword` ).
 
 ```
-   {
+{
 
-      "Username": "tester1@sfdx.org",
+   "Username": "tester1@sfdx.org",
 
-      "LastName": "Hobbs",
+   "LastName": "Hobbs",
 
-      "Email": "tester1@sfdx.org",
+   "Email": "tester1@sfdx.org",
 
-      "Alias": "tester1",
+   "Alias": "tester1",
 
-      "TimeZoneSidKey": "America/Denver",
+   "TimeZoneSidKey": "America/Denver",
 
-      "LocaleSidKey": "en_US",
+   "LocaleSidKey": "en_US",
 
-      "EmailEncodingKey": "UTF-8",
+   "EmailEncodingKey": "UTF-8",
 
-      "LanguageLocaleKey": "en_US",
+   "LanguageLocaleKey": "en_US",
 
-      "profileName": "Standard Platform User",
+   "profileName": "Standard Platform User",
 
-      "permsets": ["Dreamhouse", "Cloudhouse"],
+   "permsets": ["Dreamhouse", "Cloudhouse"],
 
-      "generatePassword": true
+   "generatePassword": true
 
-   }
+}
 
 ```
 
 In the example, the username tester1@sfdx.org must be unique across the entire Salesforce ecosystem; otherwise, the `org create`
 `user` command fails. We recommend that you use the `--set-unique-username` flag, which overrides the value in the
 configuration file and ensures a unique username. The alias in the Alias option is different from the alias you specify with the
+
+
+### Scratch Orgs Generate or Change a Password for a Scratch Org User
+
 `--set-alias` flag of `org create user` . Use the Alias option only with the Salesforce UI. The `--set-alias` flag is local to
 the computer from which you run the CLI, and you can use it with other CLI commands.
 
@@ -12758,10 +12826,9 @@ You can also add options at the command line that aren’t in the user definitio
 
 SEE ALSO:
 
-[User sObject API Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_user.htm)
+[User sObject API Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_user.htm)
 
-
-### Scratch Orgs Generate or Change a Password for a Scratch Org User Generate or Change a Password for a Scratch Org User
+### Generate or Change a Password for a Scratch Org User
 
 By default, new scratch orgs contain one administrator user with no password. Use the `org generate password` CLI command
 to generate or change a password for this admin user. After it's set, you can’t unset a password, you can only change it.
@@ -12802,6 +12869,9 @@ a password that's 20 characters long:
 
 ```
 
+
+## Scratch Orgs Manage Scratch Orgs from the Dev Hub Org
+
 **2.** View the generated password and other user details:
 
 ```
@@ -12831,12 +12901,6 @@ a password that's 20 characters long:
 
       Login Url https://connect-enterprise-1121-dev-ed.scratch.my.salesforce.com
 
-```
-
-
-## Scratch Orgs Manage Scratch Orgs from the Dev Hub Org
-
-```
       Alias qa-user
 
       Password ogihymg%lXa
@@ -12871,6 +12935,9 @@ To view more details about a scratch org, click the link in the Number column.
 
 **3.** To delete an active scratch org from the Active Scratch Orgs list view, choose **Delete** from the dropdown.
 
+
+## Scratch Orgs Scratch Org Error Codes
+
 Deleting an active scratch org doesn’t delete the request (ScratchOrgInfo) that created it, but it does free up a scratch org so that it
 doesn’t count against your allocations.
 
@@ -12893,7 +12960,7 @@ If scratch org creation fails, the system generates an error code that can help 
 by the SignupRequest API and apply to all org signups.
 
 Note: These error codes are specific to scratch org signups. Additional error codes for other org signup scenarios are included in
-the _Object Reference for the Salesforce Platform_ [: SignupRequest.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_signuprequest.htm)
+the _Object Reference for the Salesforce Platform_ [: SignupRequest.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_signuprequest.htm)
 
 
 Scratch Orgs Scratch Org Error Codes
@@ -12964,7 +13031,7 @@ scratch org, or Developer Edition org as your development environment, you’re 
 JWT and Web-based flows require a production org with sandbox licenses instead of a Dev Hub. However, it’s OK if your production org
 is also a Dev Hub org.
 
-[The examples in Authorize an Org Using the JWT-Based Flow and Authorize an Org Using the Web-Based Flow are geared toward scratch](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_jwt_flow.htm#sfdx_dev_auth_jwt_flow)
+[The examples in Authorize an Org Using the JWT-Based Flow and Authorize an Org Using the Web-Based Flow are geared toward scratch](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_jwt_flow.htm#sfdx_dev_auth_jwt_flow)
 orgs. Follow these tips to successfully authorize your production org.
 
 **•** Be sure to use _`https://login.salesforce.com`_ for `sfdcLoginUrl` in `sfdx-project.json` file. Alternatively,
@@ -13042,7 +13109,7 @@ Here's a sample definition file for creating a sandbox with the `features` optio
 
 SEE ALSO:
 
-_Tooling API_ [: SandboxInfo](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/tooling_api_objects_sandboxinfo.htm)
+_Tooling API_ [: SandboxInfo](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/tooling_api_objects_sandboxinfo.htm)
 
 _Salesforce Help_ [: Public and Personal Groups](https://help.salesforce.com/articleView?id=user_groups.htm&language=en_US)
 
@@ -13836,14 +13903,14 @@ Even though the `package.xml` file doesn’t reference OppCustomField__c, becaus
 your retrieve returns profile permissions for both the MyCustomField__c custom field on the Account object and the OppCustomField__c
 on the Opportunity object.
 
-[For more information about retrieving profiles, see the Profile metadata type in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_profile.htm) _Metadata API Developer Guide_ .
+[For more information about retrieving profiles, see the Profile metadata type in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_profile.htm) _Metadata API Developer Guide_ .
 
 Note: Although source retrieves don’t include `package.xml` files, retrieve requests return profile information pertaining to
 everything reported by source tracking.
 
 SEE ALSO:
 
-_Salesforce Help_ [: Permission Sets](https://help.salesforce.com/s/articleView?id=sf.perm_sets_overview.htm&type=5&language=en_US)
+_Salesforce Help_ [: Permission Sets](https://help.salesforce.com/s/articleView?id=platform.perm_sets_overview.htm&type=5&language=en_US)
 
 How to Exclude Source When Syncing
 
@@ -14029,13 +14096,13 @@ provide basic usage examples. The commands you use depend on your current stage 
 
 SEE ALSO:
 
-_Salesforce DX Developer Guide_ [: Supported Scratch Org Editions and Allocations](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_editions_and_allocations.htm)
+_Salesforce DX Developer Guide_ [: Supported Scratch Org Editions and Allocations](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_editions_and_allocations.htm)
 
-_Salesforce Help_ [: Sandbox Licenses and Storage Limits by Type](https://help.salesforce.com/s/articleView?id=sf.data_sandbox_environments.htm&language=en_US)
+_Salesforce Help_ [: Sandbox Licenses and Storage Limits by Type](https://help.salesforce.com/s/articleView?id=platform.data_sandbox_environments.htm&type=5&language=en_US)
 
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=sf.scalability_overview.htm&language=en_US)_ : Scalability
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.scalability_overview.htm&type=5&language=en_US)_ : Scalability
 
-_Salesforce Help_ [: Secure Your Sandbox Data with Salesforce Data Mask](https://help.salesforce.com/s/articleView?id=sf.data_mask_overview.htm&language=en_US)
+_Salesforce Help_ [: Secure Your Sandbox Data with Salesforce Data Mask](https://help.salesforce.com/s/articleView?id=platform.data_mask_overview.htm&type=5&language=en_US)
 
 
 ## Work with Data Work With Small Datasets Work With Small Datasets
@@ -14249,17 +14316,17 @@ ContactsToMultipleAccounts feature in the scratch org definition file. For examp
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
 
-_[SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_sosl_intro.htm)_
+_[SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_sosl_intro.htm)_
 
-_[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/resources_composite_sobject_tree.htm)_ : sObject Tree
+_[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_composite_sobject_tree.htm)_ : sObject Tree
 
 _Salesforce Help_ [: Create a Many-to-Many Object Relationship (Junction Objects)](https://help.salesforce.com/s/articleView?id=platform.relationships_manytomany.htm&language=en_US)
 
-_Salesforce Help_ [: Contacts to Multiple Accounts](https://help.salesforce.com/s/articleView?id=sf.shared_contacts_overview.htm&language=en_US)
+_Salesforce Help_ [: Contacts to Multiple Accounts](https://help.salesforce.com/s/articleView?id=sales.shared_contacts_overview.htm&type=5&language=en_US)
 
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_accountcontactrelation.htm)_ : AccountContactRelation
+_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_accountcontactrelation.htm)_ : AccountContactRelation
 
 ## Work With Large Datasets
 
@@ -14520,17 +14587,17 @@ records.
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
 
-_Salesforce Help_ [: Sandbox Licenses and Storage Limits by Type](https://help.salesforce.com/s/articleView?id=sf.data_sandbox_environments.htm&language=en_US)
+_Salesforce Help_ [: Sandbox Licenses and Storage Limits by Type](https://help.salesforce.com/s/articleView?id=platform.data_sandbox_environments.htm&type=5&language=en_US)
 
-_[Bulk API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_asynch.meta/api_asynch/bulk_api_2_0.htm)_ : Bulk API 2.0
+_[Bulk API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_asynch.meta/api_asynch/bulk_api_2_0.htm)_ : Bulk API 2.0
 
-_[Bulk API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_asynch.meta/api_asynch/queries.htm)_ : SOQL Considerations
+_[Bulk API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_asynch.meta/api_asynch/queries.htm)_ : SOQL Considerations
 
-_[Bulk API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_asynch.meta/api_asynch/datafiles_prepare_data.htm)_ : Prepare Data to Ingest
+_[Bulk API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_asynch.meta/api_asynch/datafiles_prepare_data.htm)_ : Prepare Data to Ingest
 
-_[Data Loader Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.dataLoader.meta/dataLoader/data_loader_intro.htm)_
+_[Data Loader Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.dataLoader.meta/dataLoader/data_loader_intro.htm)_
 
 [Salesforce AppExchange](https://appexchange.salesforce.com/)
 
@@ -14646,9 +14713,9 @@ This example shows how to delete a record of a Tooling API object using its reco
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
 
-_[Tooling API](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/tooling_api_objects_traceflag.htm)_ : TraceFlag
+_[Tooling API](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/tooling_api_objects_traceflag.htm)_ : TraceFlag
 
 
 ## Work with Data Run a SOQL or SOSL Query Run a SOQL or SOSL Query
@@ -14733,9 +14800,9 @@ Specify `--result-format csv` to write a comma-separated value (CSV) file to dis
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
 
-_[SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_sosl_intro.htm)_
+_[SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_sosl_intro.htm)_
 
 ## Upload a File to Your Org
 
@@ -14772,9 +14839,9 @@ ID starts with `003` :
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_data_commands_unified.htm)_ : data Commands
 
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_contentdocument.htm)_ : ContentDocument
+_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_contentdocument.htm)_ : ContentDocument
 
 
 # CHAPTER 10 Salesforce DX MCP Server and Tools (Beta)
@@ -14901,6 +14968,10 @@ code and facilitate Aura migration to LWC.
 
 Salesforce DX MCP Server and Tools (Beta)
 
+**•** **Lightning Types** : Create and enhance custom Lightning types to define complex data structures
+and build custom user interfaces for Agentforce, Prompt Builder, and other Salesforce applications.
+[See the Lightning Types MCP Tool documentation.](https://developer.salesforce.com/docs/einstein/genai/guide/lightning-types-mcp-tool.html)
+
 MCP Terminology
 
 Here are the MCP-specific terms we use in this document.
@@ -14930,14 +15001,14 @@ particular:
 
 **•** [Install Node.js on your computer. We recommend you use the Active LTS version.](https://nodejs.org/en)
 
-**•** [Install Salesforce CLI on your computer.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli)
+**•** [Install Salesforce CLI on your computer.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli)
 
 **•** [Install VS Code on your computer.](https://code.visualstudio.com/docs)
 
-**•** [Create a Salesforce DX project and open it in VS Code. You can also clone an example repo, such as dreamhouse-lwc, which is a](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_create_new.htm)
+**•** [Create a Salesforce DX project and open it in VS Code. You can also clone an example repo, such as dreamhouse-lwc, which is a](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_create_new.htm)
 ready-to-use DX project that contains a simple Salesforce application, with metadata and test data.
 
-**•** [Authorize at least one development Salesforce org to use with your DX project, such as a Trailhead playground, sandbox, scratch](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
+**•** [Authorize at least one development Salesforce org to use with your DX project, such as a Trailhead playground, sandbox, scratch](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
 org, or Developer Edition org, and set it as your default org.
 
 If you want to create a scratch org using MCP, then you must also authorize a Dev Hub org.
@@ -15275,7 +15346,7 @@ Tip: If you’re limiting the MCP tools to those that don’t typically require 
 in the `code-analysis` toolset), you must still set the `--orgs` flag, such as `--orgs DEFAULT_TARGET_ORG` . You
 don’t get an error on server start, even if you haven’t set a default org.
 
-[You must explicitly authorize the orgs on your computer before the MCP server can access them. Use the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm) `org login web` Salesforce
+[You must explicitly authorize the orgs on your computer before the MCP server can access them. Use the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm) `org login web` Salesforce
 CLI command or the **VS Code SFDX: Authorize an Org** command from the command palette.
 
 These are the available values for the `--orgs` flag.
@@ -15315,13 +15386,13 @@ The easiest way to find the name of a specific MCP tool is using your MCP client
 
 You can also refer to the documentation for the different types of MCP tools:
 
-**•** Core Salesforce DX MCP Tools Documentation on page 240
+**•** Core Salesforce DX MCP Tools Documentation on page 241
 
 **•** [DevOps Center MCP Tools Documentation](https://help.salesforce.com/s/articleView?id=platform.devops_center_mcp_intro.htm&language=en_US)
 
 **•** [Code Analyzer MCP Tools Documentation](https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/mcp.html)
 
-**•** [Mobile MCP Tools Documentation](https://developer.salesforce.com/docs/atlas.en-us.258.0.mobile_offline.meta/mobile_offline/dx_mobile_mcp_tools.htm)
+**•** [Mobile MCP Tools Documentation](https://developer.salesforce.com/docs/atlas.en-us.260.0.mobile_offline.meta/mobile_offline/dx_mobile_mcp_tools.htm)
 
 **•** [LWC MCP Tools Documentation](https://developer.salesforce.com/docs/platform/lwc/guide/mcp-intro.html)
 
@@ -15367,14 +15438,14 @@ To work with the core DX MCP tools, you need the standard Salesforce DX environm
 
 **•** Install and configure the Salesforce DX MCP Server in your MCP client.
 
-**•** [Install Salesforce CLI on your computer.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli)
+**•** [Install Salesforce CLI on your computer.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli)
 
 **•** [Install VS Code on your computer.](https://code.visualstudio.com/docs)
 
-**•** [Create a Salesforce DX project and open it in VS Code. You can also clone an example repo, such as dreamhouse-lwc, which is a](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_create_new.htm)
+**•** [Create a Salesforce DX project and open it in VS Code. You can also clone an example repo, such as dreamhouse-lwc, which is a](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_create_new.htm)
 ready-to-use DX project that contains a simple Salesforce application, with metadata and test data.
 
-**•** [Authorize at least one development Salesforce org to use with your DX project, such as a Trailhead playground, sandbox, scratch](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
+**•** [Authorize at least one development Salesforce org to use with your DX project, such as a Trailhead playground, sandbox, scratch](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
 org, or Developer Edition org, and set it as your default org.
 
 If you want to create a scratch org using MCP, then you must also authorize a Dev Hub org.
@@ -15578,7 +15649,7 @@ sf org open --source-file Property_Record_Page.flexipage-meta.xml
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_unified.htm)_
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_unified.htm)_
 
 
 ## Development Develop Against Any Org Develop Against Any Org
@@ -15587,14 +15658,14 @@ After developing against scratch or sandbox orgs that have source tracking enabl
 non-source-tracked org.
 
 You can use Salesforce CLI to retrieve and deploy metadata (in metadata format) to non-source-tracked orgs with the same ease as
-[retrieving and deploying source (in source format) to and from scratch orgs. If you’re new to Salesforce CLI, Salesforce DX Project Structure](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_source_file_format.htm)
-[and Source File Format explains the difference between source format and metadata format.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_source_file_format.htm)
+[retrieving and deploying source (in source format) to and from scratch orgs. If you’re new to Salesforce CLI, Salesforce DX Project Structure](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_source_file_format.htm)
+[and Source File Format explains the difference between source format and metadata format.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_source_file_format.htm)
 
 Using `project retrieve start`, you can retrieve the metadata you need in source format to your local file system (DX project).
 When your changes are ready for testing or production, you can use `project deploy start` to deploy your local files directly
 to a non-source-tracked org.
 
-Not sure what metadata types are supported or which metadata types support wild cards in `package.xml` [? See Metadata Types in](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_types_list.htm)
+Not sure what metadata types are supported or which metadata types support wild cards in `package.xml` [? See Metadata Types in](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_types_list.htm)
 the _Metadata API Developer Guide_ .
 
 Before You Begin
@@ -15605,7 +15676,7 @@ Before you begin, don't forget to:
 `MyProject --manifest` .
 
 **•** Authorize your non-source-tracked org. If connecting to a sandbox, edit your `sfdx-project.json` file to set `sfdcLoginUrl`
-to `https://test.salesforce.com` [before you authorize the org. Don't forget to create aliases for your non-source-tracked](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_cli_usernames_orgs.htm)
+to `https://test.salesforce.com` [before you authorize the org. Don't forget to create aliases for your non-source-tracked](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_cli_usernames_orgs.htm)
 orgs.
 
 Metadata Names That Require Encoding on the Command Line
@@ -15772,9 +15843,9 @@ the `org assign permset` command.
 
 SEE ALSO:
 
-_Salesforce Help_ [: Permission Sets](https://help.salesforce.com/s/articleView?id=sf.perm_sets_overview.htm&type=5&language=en_US)
+_Salesforce Help_ [: Permission Sets](https://help.salesforce.com/s/articleView?id=platform.perm_sets_overview.htm&type=5&language=en_US)
 
-_Salesforce Help_ [: Permission Set Licenses](https://help.salesforce.com/s/articleView?id=sf.users_permissionset_licenses_overview.htm&type=5&language=en_US)
+_Salesforce Help_ [: Permission Set Licenses](https://help.salesforce.com/s/articleView?id=platform.users_permissionset_licenses_overview.htm&type=5&language=en_US)
 
 
 ## Development Create Lightning Apps and Aura Components Create Lightning Apps and Aura Components
@@ -15902,7 +15973,7 @@ Use the `project deploy start` command to deploy the new Apex class to your org.
 
 SEE ALSO:
 
-_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dev_guide.htm)_
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dev_guide.htm)_
 
 _VS Code Command_ [: SFDX: Create Apex Class](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/apex-overview.html)
 
@@ -15950,7 +16021,7 @@ Use the `project deploy start` command to deploy the new Apex trigger to your or
 
 SEE ALSO:
 
-_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_triggers.htm)_ : Triggers
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_triggers.htm)_ : Triggers
 
 _Trailhead_ [: Apex Triggers](https://trailhead.salesforce.com/en/modules/apex_triggers)
 
@@ -15998,11 +16069,11 @@ new information.
 
 SEE ALSO:
 
-_Salesforce Help_ [: Fields Required for Creating Custom Objects](https://help.salesforce.com/s/articleView?id=sf.dev_objectcreate.htm&type=5&language=en_US)
+_Salesforce Help_ [: Fields Required for Creating Custom Objects](https://help.salesforce.com/s/articleView?id=platform.dev_objectcreate.htm&type=5&language=en_US)
 
-_Salesforce Help_ [: Custom Field Types](https://help.salesforce.com/s/articleView?id=sf.custom_field_types.htm&type=5&language=en_US)
+_Salesforce Help_ [: Custom Field Types](https://help.salesforce.com/s/articleView?id=platform.custom_field_types.htm&type=5&language=en_US)
 
-_Salesforce Help_ [: Custom Field Attributes](https://help.salesforce.com/s/articleView?id=sf.custom_field_types.htm&type=5&language=en_US)
+_Salesforce Help_ [: Custom Field Attributes](https://help.salesforce.com/s/articleView?id=platform.custom_field_types.htm&type=5&language=en_US)
 
 ## Execute Anonymous Apex
 
@@ -16101,7 +16172,7 @@ Use the `--file` flag to execute Apex code in a file rather than interactively.
 
 SEE ALSO:
 
-_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_anonymous_block.htm)_ : Anonymous Blocks
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_anonymous_block.htm)_ : Anonymous Blocks
 
 _VS Code Command_ [: SFDX: Execute Anonymous Apex with Currently Selected Text | Editor Contents](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/apex-writing.html#anonymous-apex)
 
@@ -16121,7 +16192,7 @@ The user running Apex tests must have these user permissions in the org:
 
 Also ensure that the Enable Streaming API setting is enabled in the org’s user interface. The setting is enabled by default.
 
-[See User Permissions and Configure User Interface Settings for details.](https://help.salesforce.com/articleView?id=sf.admin_userperms.htm&type=5&language=en_US)
+[See User Permissions and Configure User Interface Settings for details.](https://help.salesforce.com/articleView?id=platform.admin_userperms.htm&type=5&language=en_US)
 
 
 Development Run Apex Tests
@@ -16143,7 +16214,7 @@ The command outputs the `apex get test` command with a job ID that you can then 
 ```
 
 For more examples, see the help for the commands by running `sf apex run test --help` and `sf apex get test`
-`--help` [CLI commands, or read the Salesforce CLI Reference, which contains the same information as the help output.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_apex_commands_unified.htm)
+`--help` [CLI commands, or read the Salesforce CLI Reference, which contains the same information as the help output.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_apex_commands_unified.htm)
 
 Determine Code Coverage in Orgs With Large Volumes of Apex Code
 
@@ -16192,9 +16263,9 @@ Salesforce CLI.
 
 SEE ALSO:
 
-_Apex Developer Guide_ [: Debugging, Testing, and Deploying Apex](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_debug_test_deploy.htm)
+_Apex Developer Guide_ [: Debugging, Testing, and Deploying Apex](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_debug_test_deploy.htm)
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_apex_commands_unified.htm)_ : Apex Commands
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_apex_commands_unified.htm)_ : Apex Commands
 
 [Test Anything Protocol (TAP)](https://testanything.org/)
 
@@ -16311,7 +16382,7 @@ Development Generate and View Apex Debug Logs
 
 SEE ALSO:
 
-_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_debugging_debug_log.htm)_ : Debug Log
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_debugging_debug_log.htm)_ : Debug Log
 
 
 # CHAPTER 12 Build and Release Your App
@@ -16347,14 +16418,14 @@ web browser.
 **•** [Salesforce Extensions for VS Code – A set of extensions that come with rich tools for developing on](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/vscode-overview.html)
 the Salesforce platform.
 
-**•** [Salesforce CLI – A command-line interface that simplifies development and build automation when](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+**•** [Salesforce CLI – A command-line interface that simplifies development and build automation when](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 working with your Salesforce org
 
-**•** [Metadata API – An API for deploying, retrieving, creating, updatinge, or deleting customizations.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_use_cases_deploy_prod.htm)
+**•** [Metadata API – An API for deploying, retrieving, creating, updatinge, or deleting customizations.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_use_cases_deploy_prod.htm)
 
-**•** [DevOps Center – Change and release management for declarative and pro-code developers.](https://help.salesforce.com/s/articleView?id=sf.devops_center_setup.htm&language=en_US)
+**•** [DevOps Center – Change and release management for declarative and pro-code developers.](https://help.salesforce.com/s/articleView?id=platform.devops_center_setup.htm&type=5&language=en_US)
 
-**•** [Unlocked Packages – For customers who want to organize metadata into a package and deploy the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
+**•** [Unlocked Packages – For customers who want to organize metadata into a package and deploy the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_intro.htm)
 metadata (via packages) to different orgs.
 
 ISV Partners
@@ -16499,8 +16570,8 @@ Run `sf project retrieve start --help` for all command options with examples.
 
 **6.** Commit the changes to the source control repository.
 
-[Next: Deploy all changes the team has made to the first testing environment to test those changes. See Salesforce CLI Reference: deploy](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_deploy_commands_unified.htm)
-[Commands.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_deploy_commands_unified.htm)
+[Next: Deploy all changes the team has made to the first testing environment to test those changes. See Salesforce CLI Reference: deploy](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_deploy_commands_unified.htm)
+[Commands.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_deploy_commands_unified.htm)
 
 
 ### Build and Release Your App Build and Test the Release Artifact Build and Test the Release Artifact
@@ -16761,17 +16832,17 @@ When you use unlocked packaging, to be sure that you set it up correctly, verify
 
 Did you?
 
-**•** [Enable Dev Hub in Your Org](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm)
+**•** [Enable Dev Hub in Your Org](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_devhub.htm)
 
-**•** [Enable Second-Generation Managed Packaging](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_secondgen_pkg.htm)
+**•** [Enable Second-Generation Managed Packaging](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_enable_secondgen_pkg.htm)
 
-**•** [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+**•** [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 
 Note: Unlocked packaging is available with these licenses: Salesforce or Salesforce Limited Access - Free (partners only).
 
 Developers who work with unlocked packages need the correct permission set in the Dev Hub org. Developers need either the System
-[Administrator profile or the Create and Update Second-Generation Packages permission. For more information, see Add Salesforce DX](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_add_users.htm)
-[Users.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_add_users.htm)
+[Administrator profile or the Create and Update Second-Generation Packages permission. For more information, see Add Salesforce DX](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_add_users.htm)
+[Users.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_setup_add_users.htm)
 
 The maximum number of unlocked package versions that you can create from a Dev Hub per day is the same as your daily scratch org
 allocation. To request a limit increase, contact Salesforce Customer Support.
@@ -16784,7 +16855,7 @@ your scratch org limits, use the CLI:
 
 ```
 
-[For more information on scratch org limits, see Scratch Orgs.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs.htm)
+[For more information on scratch org limits, see Scratch Orgs.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs.htm)
 
 ## Know Your Orgs
 
@@ -16849,7 +16920,7 @@ a package-based Application Lifecycle Management (ALM) approach. Instead, you ca
 metadata in the installation org.
 
 Note: Org-dependent unlocked packages are a variation of unlocked packages, and not a separate package type. They follow
-[the same package development steps, and use the same supported metadata types as unlocked packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_workflow.htm)
+[the same package development steps, and use the same supported metadata types as unlocked packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_pkg_workflow.htm)
 
 To create an org-dependent unlocked package, specify the `orgdependent` CLI parameter on the `sf package create` CLI
 command.
@@ -17460,7 +17531,7 @@ Unlocked Packages Understanding Namespaces
 
 To register a namespace:
 
-**1.** [To link the namespace that you created with your Dev Hub, use Namespace Registry. See Link a Namespace to a Dev Hub for details.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm)
+**1.** [To link the namespace that you created with your Dev Hub, use Namespace Registry. See Link a Namespace to a Dev Hub for details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm)
 
 **2.** In the `sfdx-project.json` file, specify your namespace using the namespace attribute. When you create a new unlocked
 package, the package is associated with the namespace specified in the `sfdx-project.json` file.
@@ -17712,7 +17783,7 @@ run at package version creation.
 
 ```
 
-[Note: To assign user licenses, use the runAs Method. User licenses can't be assigned in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_testing_tools_runas.htm) `sfdx-project.json` file.
+[Note: To assign user licenses, use the runAs Method. User licenses can't be assigned in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_testing_tools_runas.htm) `sfdx-project.json` file.
 
 ### Best Practices for Unlocked Packages
 
@@ -17760,7 +17831,7 @@ Here are the most commonly used IDs.
 
 ### Frequently Used Unlocked Packaging Operations
 
-[For a complete list of Salesforce CLI packaging commands, see: Salesforce Command Line Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+[For a complete list of Salesforce CLI packaging commands, see: Salesforce Command Line Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
 
 
 ## Unlocked Packages How We Handle Profile Settings in Unlocked Packages How We Handle Profile Settings in Unlocked Packages
@@ -18143,9 +18214,9 @@ dependencies in a scratch org definition file. Instead, create an org shape of y
 specify that source org’s ID in your scratch org definition file. During package creation, we mimic the source org’s environment when
 we build and validate your package’s metadata.
 
-[Before using this feature, get familiar with how Org Shape for Scratch Orgs works.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm)
+[Before using this feature, get familiar with how Org Shape for Scratch Orgs works.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_intro.htm)
 
-[Then enable the scratch org setting in your source org, generate the org shape, and edit your scratch org definition file to include the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_enable_org_shape.htm)
+[Then enable the scratch org setting in your source org, generate the org shape, and edit your scratch org definition file to include the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_shape_enable_org_shape.htm)
 org name and 15-character source org ID.
 
 ```
@@ -19179,9 +19250,9 @@ There isn't a dedicated `push-upgrade` CLI command for this action, instead let'
 Unlocked Packages Schedule a Push Upgrade Using CLI
 
 Push upgrades must be done in the context of the Dev Hub org that owns the package. To confirm the set of packages owned by a
-specific Dev Hub org, run the `[package list](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_list_unified)` command.
+specific Dev Hub org, run the `[package list](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_list_unified)` command.
 
-[Then authorize to the Dev Hub org that is the owner of the package are upgrading.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)
+[Then authorize to the Dev Hub org that is the owner of the package are upgrading.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_login_web_unified)
 
 ```
    sf org login web --set-default-dev-hub
@@ -19192,11 +19263,11 @@ specific Dev Hub org, run the `[package list](https://developer.salesforce.com/d
 [Your Development Environment.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_pkg_dev_environment.htm)
 
 Here are three example queries you can use to retrieve a list of subscriber orgs that are eligible for a package upgrade. To review the
-[possible fields that can be queried, see PackageSubscriber in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_packagesubscriber.htm) _Object Reference for the Salesforce Platform_ .
+[possible fields that can be queried, see PackageSubscriber in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_packagesubscriber.htm) _Object Reference for the Salesforce Platform_ .
 
 Each query requires either a subscriber package ID (starts with 033), or a subscriber package version ID (starts with 04t). To retrieve the
-[subsciber package ID, use the package list command and specify the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_list_unified) `--verbose` flag. To retrieve the subscriber package version ID,
-[use the package version list command.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_version_list_unified)
+[subsciber package ID, use the package list command and specify the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_list_unified) `--verbose` flag. To retrieve the subscriber package version ID,
+[use the package version list command.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_version_list_unified)
 
 Query Example 1:
 
@@ -19240,7 +19311,7 @@ two-part query, you must specify the 0Ho ID. If you run the `package list` comma
 [determine both the 033 and 0Ho ID for a package. For more details on package IDs, see Package IDs and Aliases for](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_plan_pkg_types_pkg_ids.htm)
 [Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_plan_pkg_types_pkg_ids.htm)
 
-[First, query the Package2Version object to find all versions of your package that are numerically lower than the specified version (2.7).](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/tooling_api_objects_package2version.htm)
+[First, query the Package2Version object to find all versions of your package that are numerically lower than the specified version (2.7).](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/tooling_api_objects_package2version.htm)
 
 ```
    sf data query --target-org admin@packaging.com --use-tooling-api --query "SELECT
@@ -19259,7 +19330,7 @@ Note the `SubscriberPackageVersionId` values (starts with 04t) returned by this 
 
 Unlocked Packages Schedule a Push Upgrade Using CLI
 
-[Next, query the PackageSubscriber object using the subscriber package version IDs (starts with 04t) from the previous step.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_packagesubscriber.htm)
+[Next, query the PackageSubscriber object using the subscriber package version IDs (starts with 04t) from the previous step.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_packagesubscriber.htm)
 
 ```
    sf data query --target-org myDevHub --query "SELECT OrgKey FROM PackageSubscriber WHERE
@@ -19278,7 +19349,7 @@ Schedule a Package Push Upgrade
 
 After you have the org IDs for the subscribers you're upgrading, you can schedule the push upgrade. Review these examples of the flags
 you might include with the `package push-upgrade schedule` command. For more details on this command, see the
-[Salesforce CLI Command Reference.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_push-upgrade_schedule_unified)
+[Salesforce CLI Command Reference.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_push-upgrade_schedule_unified)
 
 When scheduling a push upgrade you have a choice about how to specify the orgs you want upgraded. You can use either flag:
 
@@ -19379,7 +19450,7 @@ To cancel a specified push upgrade request:
 Retrieve Error Messages for a Package Push Upgrade
 
 There isn't a dedicated push upgrade CLI command for this retrieving error message, instead let's look at how to use the CLI `data`
-`query` [command. Use this example query to retrieve error messages stored in the PackagePushError object.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_packagepusherror.htm)
+`query` [command. Use this example query to retrieve error messages stored in the PackagePushError object.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_packagepusherror.htm)
 
 Example:
 
@@ -19500,9 +19571,9 @@ completes and `sf package install report` indicates a successful installation.
 
 SEE ALSO:
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_install_unified)_ package install
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_install_unified)_ package install
 
-_Salesforce Help:_ [Determine Which Users Can Access a Package](https://help.salesforce.com/s/articleView?id=sf.pkg_subscriber_determine_access.htm&language=en_US)
+_Salesforce Help:_ [Determine Which Users Can Access a Package](https://help.salesforce.com/s/articleView?id=xcloud.pkg_subscriber_determine_access.htm&type=5&language=en_US)
 
 ### Install Unlocked Packages from a URL
 
@@ -19534,7 +19605,7 @@ A message describes the progress. You receive a confirmation message when the in
 
 SEE ALSO:
 
-_Salesforce Help:_ [Determine Which Users Can Access a Package](https://help.salesforce.com/s/articleView?id=sf.pkg_subscriber_determine_access.htm&language=en_US)
+_Salesforce Help:_ [Determine Which Users Can Access a Package](https://help.salesforce.com/s/articleView?id=xcloud.pkg_subscriber_determine_access.htm&type=5&language=en_US)
 
 ### Upgrade a Version of an Unlocked Package
 
@@ -19547,7 +19618,7 @@ To upgrade a package, use the package install CLI command
 
 ```
 
-[For more examples and details about this command, see package install in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_install_unified) _Salesforce CLI Command Reference_ .
+[For more examples and details about this command, see package install in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_package_commands_unified.htm#cli_reference_package_install_unified) _Salesforce CLI Command Reference_ .
 
 When you perform a package upgrade, here’s what to expect for metadata changes.
 
@@ -19592,7 +19663,7 @@ For more information on hard-deleted components, see Hard-Deleted Components in 
 It's possible to install a lower package version on top of a higher package version, but seriously consider this scenario before attempting
 it. This is not the same as a rollback, which isn't possible.
 
-[Note: For package installs into production orgs, or any org that has Apex Compile on Deploy enabled, the platform compiles all](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_deploying.htm)
+[Note: For package installs into production orgs, or any org that has Apex Compile on Deploy enabled, the platform compiles all](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_deploying.htm)
 Apex in the org after the package install or upgrade operation completes. This approach assures that package installs and upgrades
 don’t impact the performance of an org, and is done even if `--apex-compile package` is specified.
 
@@ -19982,7 +20053,7 @@ Government Cloud aren’t permitted.
 
 Receive a Package Transfer
 
-[Link the namespace of the package you’re receiving to your Dev Hub org. See Link a Namespace to a Dev Hub Org in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm) _Salesforce DX_
+[Link the namespace of the package you’re receiving to your Dev Hub org. See Link a Namespace to a Dev Hub Org in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_reg_namespace.htm) _Salesforce DX_
 _Developer Guide_ . If the package isn’t associated with a namespace, skip this step.
 
 After the Package Transfer Is Complete
@@ -20077,9 +20148,9 @@ Development Model
 
 SEE ALSO:
 
-_Salesforce Help:_ [Install and Configure DevOps Center](https://help.salesforce.com/s/articleView?id=sf.devops_center_setup.htm&language=en_US)
+_Salesforce Help:_ [Install and Configure DevOps Center](https://help.salesforce.com/s/articleView?id=platform.devops_center_setup.htm&type=5&language=en_US)
 
-_Salesforce Help:_ [Manage and Release Changes Easily and Collaboratively with DevOps Center](https://help.salesforce.com/s/articleView?id=sf.devops_center_overview.htm&language=en_US)
+_Salesforce Help:_ [Manage and Release Changes Easily and Collaboratively with DevOps Center](https://help.salesforce.com/s/articleView?id=platform.devops_center_overview.htm&type=5&language=en_US)
 
 
 ## Continuous Integration Continuous Integration Using CircleCI Continuous Integration Using CircleCI
@@ -20109,7 +20180,7 @@ Before integrating your existing CircleCI framework, configure your Dev Hub org 
 
 **1.** [Set up your GitHub repository with CircleCI. You can follow the sign-up steps on the CircleCI website to access your code on GitHub.](https://circleci.com/docs/first-steps/)
 
-**2.** [Install the Salesforce CLI, if you haven’t already.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
+**2.** [Install the Salesforce CLI, if you haven’t already.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
 **3.** Follow Authorize an Org Using the JWT Flow for your Dev Hub org, if you haven’t already.
 
@@ -20164,7 +20235,7 @@ are considered secret, so take the appropriate precautions to protect them.
 Authorize CircleCI to push content to your Dev Hub org via a connected app.
 
 **1.** Make sure that you have Salesforce CLI installed. Check by running `sf version` and confirm that you see version information.
-[If you don't have it installed, see Install Salesforce CLI.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli)
+[If you don't have it installed, see Install Salesforce CLI.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli)
 
 **2.** Confirm you can perform a JWT-based authorization from the directory containing your `server.key` file. Run the following
 command from the directory containing your `server.key` (replace _`<your_consumer_key>`_ and _`<your_username>`_
@@ -20308,7 +20379,7 @@ SEE ALSO:
 
 Authorize an Org Using the JWT Flow
 
-_[Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup)_
+_[Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup)_
 
 [Jenkins: Credentials Binding Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Binding+Plugin)
 
@@ -20822,7 +20893,7 @@ SEE ALSO:
 
 Configure Your Environment for Jenkins
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference)_
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference)_
 
 ### Sample Jenkinsfile
 
@@ -21298,10 +21369,10 @@ required to run any CLI command that involves an org.
 
 **–** Use the correct instance URL when logging in to the org, and make sure that it’s in the correct enhanced My Domain format. To
 find your org's instance URL, log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain**
-**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
+**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
 
 **–** Check that your connected app settings are correct, especially if you created your own rather than use the default Salesforce CLI
-[connected app. See Create a Connected App in Your Org.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
+[connected app. See Create a Connected App in Your Org.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
 
 
 Troubleshoot Salesforce DX org login web Errors
@@ -21361,7 +21432,7 @@ app, check to see if it’s configured correctly for the grant types used by the
 
 **–** Use the correct instance URL when logging in to the org, and make sure that it’s in the correct enhanced My Domain format. To
 find your org's instance URL, log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain**
-**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
+**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
 
 **–** Don't use a Lightning URL for your instance URL. For example, use `https://MyDomainName.my.salesforce.com`
 and not `https://MyDomainName.lightning.force.com` .
@@ -21374,8 +21445,8 @@ required to run any CLI command that involves an org.
 **–** Check that the clock on your local computer is accurate. If too much time (over 3 minutes) passes between the auth code
 generation and the request for an access token, an error like this can occur.
 
-**–** [If you're using a custom connected app rather than the default Salesforce CLI one, check that the settings are correct. See Create](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
-[a Connected App in Your Org.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
+**–** [If you're using a custom connected app rather than the default Salesforce CLI one, check that the settings are correct. See Create](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
+[a Connected App in Your Org.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
 
 
 Troubleshoot Salesforce DX org login web Errors
@@ -21403,7 +21474,7 @@ Error: ECONNRESET
 
 **–** Use the correct instance URL when logging in to the org, and make sure that it’s in the correct enhanced My Domain format. To
 find your org's instance URL, log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain**
-**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
+**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
 
 Error: ETIMEDOUT
 
@@ -21428,7 +21499,7 @@ Error: ETIMEDOUT
 
 **–** Use the correct instance URL when logging in to the org, and make sure that it’s in the correct enhanced My Domain format. To
 find your org's instance URL, log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain**
-**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
+**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
 
 Error: self-signed certificate in certificate chain
 
@@ -21488,7 +21559,7 @@ Error: IP restricted
 **•** **What it likely means** : The org has IP restrictions enabled. If Salesforce CLI attempts to log in and authorize an org from an IP address
 that isn't allowed, then this error is thrown.
 
-**•** **Recommended fix** [: If the IP address that Salesforce CLI uses is known and allowed, update your org's Trusted IP Ranges.](https://help.salesforce.com/s/articleView?id=sf.security_networkaccess.htm&type=5&language=en_US)
+**•** **Recommended fix** [: If the IP address that Salesforce CLI uses is known and allowed, update your org's Trusted IP Ranges.](https://help.salesforce.com/s/articleView?id=xcloud.security_networkaccess.htm&type=5&language=en_US)
 
 Error: ENOTFOUND
 
@@ -21514,7 +21585,7 @@ instance URL, a DNS issue, or a proxy issue.
 
 **–** Use the correct instance URL when logging in to the org, and make sure that it’s in the correct enhanced My Domain format. To
 find your org's instance URL, log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain**
-**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
+**URL** [. See My Domain Login and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
 
 **–** Don't use a Lightning URL for your instance URL. For example, use `https://MyDomainName.my.salesforce.com`
 and not `https://MyDomainName.lightning.force.com` .
@@ -21551,7 +21622,7 @@ Error: user hasn't approved this consumer
 **–** If you recently created the connected app, wait a few minutes for it to finish replicating and then try to authorize again.
 
 **–** Check that your connected app settings are correct, especially if you created your own rather than used the default Salesforce
-[CLI connected app. See Create a Connected App in Your Org. In particular, on the main page where you manage the connected](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
+[CLI connected app. See Create a Connected App in Your Org. In particular, on the main page where you manage the connected](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_connected_app.htm)
 app:
 
 **•** Set **Permitted Users** to `Admin approved users are pre-authorized` .
@@ -21561,8 +21632,8 @@ app:
 **–** Use the correct instance URL when logging in to the org, and make sure that it’s in the correct enhanced My Domain format.
 You can specify the instance URL either with the `--instance-url` command flag or the `SF_AUDIENCE_URL` environment
 variable, although `SF_AUDIENCE_URL` isn't usually needed for production environments. To find your org's instance URL,
-log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain URL** [. See My Domain Login](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
-[and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
+log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain URL** [. See My Domain Login](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
+[and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
 
 **–** Don't use a Lightning URL for your instance URL. For example, use `https://MyDomainName.my.salesforce.com`
 and not `https://MyDomainName.lightning.force.com` .
@@ -21593,8 +21664,8 @@ to the `org login jwt` command.
 **–** Use the correct instance URL when logging in to the org, and make sure that it’s in the correct enhanced My Domain format.
 You can specify the instance URL either with the `--instance-url` command flag or the `SF_AUDIENCE_URL` environment
 variable, although `SF_AUDIENCE_URL` isn't usually needed for production environments. To find your org's instance URL,
-log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain URL** [. See My Domain Login](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
-[and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
+log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain URL** [. See My Domain Login](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
+[and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
 
 **–** Don't use a Lightning URL for your instance URL. For example, use `https://MyDomainName.my.salesforce.com`
 and not `https://MyDomainName.lightning.force.com` .
@@ -21665,8 +21736,8 @@ error can also indicate that you used the incorrect instance URL with the comman
 **–** Use the correct instance URL when logging in to the org, and make sure that it’s in the correct enhanced My Domain format.
 You can specify the instance URL either with the `--instance-url` command flag or the `SF_AUDIENCE_URL` environment
 variable, although `SF_AUDIENCE_URL` isn't usually needed for production environments. To find your org's instance URL,
-log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain URL** [. See My Domain Login](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
-[and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=sf.domain_name_url_formats.htm&type=5&language=en_US)
+log into it, go to the Setup > Company Settings > My Domain page, and see **Current My Domain URL** [. See My Domain Login](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
+[and Application URL Formats with Enhanced Domains.](https://help.salesforce.com/s/articleView?id=products.domain_name_url_formats.htm&type=5&language=en_US)
 
 **–** Don't use a Lightning URL for your instance URL. For example, use `https://MyDomainName.my.salesforce.com`
 and not `https://MyDomainName.lightning.force.com` .
@@ -21680,13 +21751,13 @@ and not `https://MyDomainName.lightning.force.com` .
 
 SEE ALSO:
 
-[Authorize an Org Using a Browser](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
+[Authorize an Org Using a Browser](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_web_flow.htm)
 
-[Authorize an Org Using the JWT Flow](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_jwt_flow.htm)
+[Authorize an Org Using the JWT Flow](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_auth_jwt_flow.htm)
 
-_Salesforce Help_ [: OAuth 2.0 Web Server Flow for Web App Integration](https://help.salesforce.com/s/articleView?id=sf.remoteaccess_oauth_web_server_flow.htm&type=5&language=en_US)
+_Salesforce Help_ [: OAuth 2.0 Web Server Flow for Web App Integration](https://help.salesforce.com/s/articleView?id=xcloud.remoteaccess_oauth_web_server_flow.htm&type=5&language=en_US)
 
-_Salesforce Help_ [: Set Trusted IP Ranges for Your Organization](https://help.salesforce.com/s/articleView?id=sf.security_networkaccess.htm&type=5&language=en_US)
+_Salesforce Help_ [: Set Trusted IP Ranges for Your Organization](https://help.salesforce.com/s/articleView?id=xcloud.security_networkaccess.htm&type=5&language=en_US)
 
 ## Error: No default dev hub found
 
@@ -21832,7 +21903,7 @@ of a sample connected app file that shows the `<consumerKey>` element.
 
 SEE ALSO:
 
-_Salesforce Help_ [: Connected Apps](https://help.salesforce.com/s/articleView?id=sf.connected_app_overview.htm&type=5&language=en_US)
+_Salesforce Help_ [: Connected Apps](https://help.salesforce.com/s/articleView?id=xcloud.connected_app_overview.htm&type=5&language=en_US)
 
 ## CLI Version Information
 

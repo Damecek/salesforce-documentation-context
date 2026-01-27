@@ -7,9 +7,11 @@ Update `src.txt`, then run `uv run update` to regenerate Markdown files in `docu
 ## Documentation
 - [Apex Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/apex-developer-guide.md)
 - [Apex Reference Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/apex-reference-guide.md)
+- [Automate Your Business Processes](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/automate-your-business-processes.md)
 - [Metadata API Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/metadata-api-developer-guide.md)
 - [Object Reference for the Salesforce Platform](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/object-reference-for-the-salesforce-platform.md)
 - [Salesforce CLI Command Reference](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-cli-command-reference.md)
+- [SALESFORCE DEVELOPER LIMITS AND ALLOCATIONS](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-developer-limits-and-allocations.md)
 - [Salesforce DX Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/salesforce-dx-developer-guide.md)
 - [Second-Generation Managed Packaging Developer Guide](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/second-generation-managed-packaging-developer-guide.md)
 - [SOQL and SOSL Reference](https://raw.githubusercontent.com/Damecek/salesforce-documentation-context/main/documentation/soql-and-sosl-reference.md)

@@ -43,6 +43,37 @@ Output:
 - Download cache in `.cache/` (ETag / Last-Modified when available).
 - Updated `llms.txt` with GitHub Raw links.
 
+## Refresh only one specific link
+
+Do not use `FORCE=1` here (it clears the whole `documentation/` folder).
+
+1. Prepare a temporary source file with just the one entry:
+
+```bash
+cat > /tmp/one.txt <<'EOF'
+https://example.com/doc.pdf | doc.md
+EOF
+```
+
+2. (Optional but recommended) Clear the cache just for that URL so it always regenerates:
+
+```bash
+URL="https://example.com/doc.pdf"
+KEY=$(python - <<'PY'
+import hashlib, os
+url = os.environ["URL"]
+print(hashlib.sha256(url.encode("utf-8")).hexdigest()[:24])
+PY
+)
+rm -f ".cache/${KEY}.pdf" ".cache/${KEY}.json"
+```
+
+3. Run the updater against only that temporary file:
+
+```bash
+uv run update --src /tmp/one.txt
+```
+
 Conversion notes:
 
 - Uses `pymupdf4llm.to_markdown()` (PyMuPDF4LLM) for Markdown output.

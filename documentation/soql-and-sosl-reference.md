@@ -1,14 +1,14 @@
 # SOQL and SOSL Reference
 
-> Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
-> Fetched: 2026-01-22T10:46:16Z
+> Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
+> Fetched: 2026-01-27T10:01:27Z
 SOQL and SOSL Reference
 
-Version 65.0, Winter ’26
+Version 66.0, Spring ’26
 
-Last updated: January 5, 2026
+Last updated: January 23, 2026
 
-© Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
+© Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
 
 CONTENTS
@@ -68,7 +68,7 @@ SOQL Object Limits and Limitations **. . . . . . . . . . . . . . . . . . . . . .
 SOQL with Big Objects **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 88**
 Syndication Feed SOQL and Mapping Syntax **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 89**
 Location-Based SOQL Queries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 90**
-Considerations for Querying Currency Data Using SOQL **. . . . . . . . . . . . . . . . . . . . . . . . . . . 93**
+Considerations for Querying Currency Data Using SOQL **. . . . . . . . . . . . . . . . . . . . . . . . . . . 94**
 
 **Chapter 3:** Salesforce Object Search Language (SOSL) **. . . . . . . . . . . . . . . . . . . . . . . . 95**
 
@@ -165,7 +165,7 @@ Company”.
 **•** Keep the number of fields to be searched or queried to a minimum. Using many fields leads to many
 permutations, which can be difficult to tune.
 
-For more information, see _[Best Practices for Deployments with Large Data Volumes](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_large_data_volumes_bp.meta/salesforce_large_data_volumes_bp/)_ .
+For more information, see _[Best Practices for Deployments with Large Data Volumes](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_large_data_volumes_bp.meta/salesforce_large_data_volumes_bp/)_ .
 
 Sending Queries and Searches
 
@@ -188,17 +188,17 @@ Conventions in This
 With SOQL, you can construct simple but powerful query strings in several environments.
 Document
 
-**•** Quoted String Escape **•** Using the `queryString` parameter of a SOAP API `query()` [call. See query() in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_query.htm) _SOAP API_
+**•** Quoted String Escape **•** Using the `queryString` parameter of a SOAP API `query()` [call. See query() in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_query.htm) _SOAP API_
 Sequences _Developer Guide_ .
 
-**•** Reserved Characters **•** Using the `q` [parameter of a REST API query request. See Query in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/resources_query.htm) _REST API Developer Guide_ .
+**•** Reserved Characters **•** Using the `q` [parameter of a REST API query request. See Query in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_query.htm) _REST API Developer Guide_ .
 
-**•** Alias Notation **•** [Using Apex statements. See SOQL and SOSL Queries in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_SOQL.htm) _Apex Developer Guide_ .
+**•** Alias Notation **•** [Using Apex statements. See SOQL and SOSL Queries in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SOQL.htm) _Apex Developer Guide_ .
 
-**•** SOQL SELECT Syntax **•** [Using Visualforce controllers and getter methods. See Controller Methods in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/pages_controller_methods.htm) _Visualforce Developer_
+**•** SOQL SELECT Syntax **•** [Using Visualforce controllers and getter methods. See Controller Methods in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/pages_controller_methods.htm) _Visualforce Developer_
 
 **•** SOQL SELECT _Guide_ .
-Examples **•** [Using the Salesforce CLI. See force:data:soql:query in the data Commands topic of the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_data.htm#cli_reference_force_data_soql_query) _Salesforce CLI_
+Examples **•** [Using the Salesforce CLI. See force:data:soql:query in the data Commands topic of the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_data.htm#cli_reference_force_data_soql_query) _Salesforce CLI_
 
 **•** SOQL SELECT _Command Reference_ .
 Functions
@@ -266,7 +266,7 @@ information, see SOQL with Big Objects on page 88.
 
 SEE ALSO:
 
-_[Salesforce Developer Limits and Allocations Quick Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm)_ : SOQL and SOSL Limits for Search Queries
+_[Salesforce Developer Limits and Allocations Quick Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm)_ : SOQL and SOSL Limits for Search Queries
 
 
 ## Salesforce Object Query Language (SOQL) Typographical Conventions in This Document Typographical Conventions in This Document
@@ -390,7 +390,7 @@ SEE ALSO:
 
 _Trailhead_ [: Secure Server-Side Development](https://trailhead.salesforce.com/content/learn/modules/secure-serverside-development)
 
-_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/pages_security_tips_soql_injection.htm)_ : SOQL Injection
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/pages_security_tips_soql_injection.htm)_ : SOQL Injection
 
 ## Reserved Characters
 
@@ -592,8 +592,8 @@ code.
 ```
 
 Use the `WITH SECURITY_ENFORCED` clause to filter records based on user access
-[permissions on fields or objects being queried within Apex code. See Filter SOQL Queries](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_with_security_enforced.htm)
-[Using WITH SECURITY_ENFORCED in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_with_security_enforced.htm) _Apex Developer Guide_ .
+[permissions on fields or objects being queried within Apex code. See Filter SOQL Queries](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_with_security_enforced.htm)
+[Using WITH SECURITY_ENFORCED in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_with_security_enforced.htm) _Apex Developer Guide_ .
 
 **`USER_MODE`** **or** **`SYSTEM_MODE`**
 Specify user mode or system mode access for Apex database operations. Apex code runs
@@ -601,7 +601,7 @@ in system mode by default, which means that it runs with substantially elevated
 permissions over the user running the code. To enhance the security context of Apex,
 you can specify user mode access using `WITH USER_MODE` . Field-level security (FLS)
 and object permissions of the running user are respected and sharing rules are applied
-[in user mode, unlike in system mode. See Enforce User Mode for Database Operations in](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_enforce_usermode.htm)
+[in user mode, unlike in system mode. See Enforce User Mode for Database Operations in](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_enforce_usermode.htm)
 the _Apex Developer Guide_ .
 
 Salesforce recommends that you enforce field- and object-level security permissions by using
@@ -675,7 +675,7 @@ fields, or CLOB or BLOB fields, large volumes of data can also be returned. To r
 **–** In SOQL, if you use OFFSET and LIMIT in your SOQL query, the number of records returned can be less than LIMIT. Check the
 number of returned results and adjust OFFSET as required. Don’t increment OFFSET by LIMIT.
 
-**–** In SOAP API, use `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_querymore.htm#topic-title)` .
+**–** In SOAP API, use `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_querymore.htm#topic-title)` .
 
 **–** In REST API, use the nextRecordsUrl returned by `/query` and `/queryAll` .
 
@@ -692,13 +692,13 @@ statements. You can use Apex script variables and expressions when preceded by a
 **•** **Picklist Values** —In API version 39.0 and later, query for picklist values by the value’s API name, which can be different from the
 actual value.
 
-**•** **Avoid Query Timeouts** —Consider using `[WHERE](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_conditionexpression.htm)` or `[WITH](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_with.htm)` clauses to reduce the query operation time. In REST API, you can also
-try the `explain` [parameter (beta) to get information on query processing. For more information, see Get Feedback on Query](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_query_explain.htm)
-[Performance in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_query_explain.htm) _REST API Developer Guide._
+**•** **Avoid Query Timeouts** —Consider using `[WHERE](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_conditionexpression.htm)` or `[WITH](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_with.htm)` clauses to reduce the query operation time. In REST API, you can also
+try the `explain` [parameter (beta) to get information on query processing. For more information, see Get Feedback on Query](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_query_explain.htm)
+[Performance in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_query_explain.htm) _REST API Developer Guide._
 
 SEE ALSO:
 
-_[Salesforce Developer Limits and Allocations Quick Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm)_ : SOQL and SOSL Limits for Search Queries
+_[Salesforce Developer Limits and Allocations Quick Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm)_ : SOQL and SOSL Limits for Search Queries
 
 ### SELECT SOQL query syntax consists of a required SELECT statement that specifies the fields to query. The fieldList in the SELECT
 
@@ -870,7 +870,7 @@ REST API Example
 This request uses `FIELDS()` with /query in REST API:
 
 ```
-   GET https:// yourInstance .salesforce.com/services/data/v65.0/query?
+   GET https:// yourInstance .salesforce.com/services/data/v66.0/query?
 
    q=SELECT+FIELDS(STANDARD)+FROM+Account
 
@@ -881,7 +881,7 @@ SOAP API Example
 This example uses `FIELDS()` with query() in SOAP API:
 
 ```
-   POST https:// yourInstance .salesforce.com/services/Soap/c/65.0
+   POST https:// yourInstance .salesforce.com/services/Soap/c/66.0
 
    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
 
@@ -916,7 +916,7 @@ Bulk API 2.0 Example
 This request uses `FIELDS()` when creating a bulk query job:
 
 ```
-   POST https:// yourInstance .salesforce.com/services/data/v65.0/jobs/query
+   POST https:// yourInstance .salesforce.com/services/data/v66.0/jobs/query
 
    {
 
@@ -1074,7 +1074,7 @@ the `Type` qualifier in a `WHERE` clause. For details, see Filter on Polymorphic
 
 **•** `TYPEOF` isn’t allowed in queries that don’t return objects, such as `COUNT()` .
 
-**•** `TYPEOF` [can’t be used in SOQL queries that are the basis of Streaming API PushTopics.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_streaming.meta/api_streaming/pushtopic_events_intro.htm)
+**•** `TYPEOF` [can’t be used in SOQL queries that are the basis of Streaming API PushTopics.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_streaming.meta/api_streaming/pushtopic_events_intro.htm)
 
 **•** `TYPEOF` can’t be used in SOQL used in Bulk API.
 
@@ -1219,8 +1219,8 @@ to return only objects that the user owns or only records in the user’s territ
 
 ```
 
-`filterScope` [can take one of many enumeration values. To get a list of scopes supported by an object, call describeSObject() for](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_describesobject.htm)
-[SOAP API or sObject Describe for REST API. In the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api/resources_sobject_describe.htm) `supportedScopes` section of the object’s description, the `name` shows the name
+`filterScope` [can take one of many enumeration values. To get a list of scopes supported by an object, call describeSObject() for](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_describesobject.htm)
+[SOAP API or sObject Describe for REST API. In the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api/resources_sobject_describe.htm) `supportedScopes` section of the object’s description, the `name` shows the name
 of the scope and the `label` shows an explanation of that scope. This example shows the description of the Account object.
 
 ```
@@ -1272,7 +1272,7 @@ mine_and_my_groups
 
 Filter for records assigned to the user running the query and the user’s queues. If a user is assigned
 to a queue, the user can access records in the queue. This filter applies only to the
-[ProcessInstanceWorkItem object.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_processinstanceworkitem.htm)
+[ProcessInstanceWorkItem object.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_processinstanceworkitem.htm)
 
 `my_territory` Filter for records in the territory of the user running the query. This option is available if territory
 management is enabled for your organization.
@@ -1973,7 +1973,7 @@ fiscal year.
 
 Each date literal represents a range of time relative to the current day. The exact start and stop of the range depends on the date literal
 and the locale of the user sending the query. If the user hasn't set a personal locale, the range depends on the locale of the org. For more
-[information, see Select Your Language, Locale, and Currency in](https://help.salesforce.com/s/articleView?id=sf.admin_language_locale_currency.htm&language=en_US) _Salesforce Help_ .
+[information, see Select Your Language, Locale, and Currency in](https://help.salesforce.com/s/articleView?id=xcloud.admin_language_locale_currency.htm&type=5&language=en_US) _Salesforce Help_ .
 
 To filter for results within a range, use the `=` comparison operator. To filter for results on either side of a range, use the `>` or `<` comparison
 operators. The table shows the available list of date literals, the ranges they represent, and examples.
@@ -2587,10 +2587,10 @@ SOQL query.
 
 ### Unlike the WHERE clause, which only supports fields from the object specified in the FROM clause, WITH allows you to filter by other related criteria. For example, you can use the WITH clause to filter articles based on their classification in one or more data category groups. The WITH clause can only be used in the following cases: • To filter records based on their categorization. See WITH DATA CATEGORY on page 34.
 
-**•** [To query and retrieve record changes tracked in a user profile feed. See Custom Object__Feed in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_customobject__feed.htm) _Object Reference for the Salesforce_
+**•** [To query and retrieve record changes tracked in a user profile feed. See Custom Object__Feed in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_customobject__feed.htm) _Object Reference for the Salesforce_
 _Platform_ .
 
-**•** [To filter records based on user access permissions on fields or objects being queried within Apex code. See Filter SOQL Queries Using](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_with_security_enforced.htm)
+**•** [To filter records based on user access permissions on fields or objects being queried within Apex code. See Filter SOQL Queries Using](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_with_security_enforced.htm)
 ### WITH SECURITY_ENFORCED in the Apex Developer Guide .
 
 **•** To specify user mode access for Apex database operations. Apex code runs in system mode by default, which means that it runs
@@ -2598,7 +2598,7 @@ with substantially elevated permissions over the user running the code. To enhan
 ### user mode access by using WITH USER_MODE . Field-level security (FLS) and object permissions of the running user are respected
 
 in user mode, unlike in system mode. User mode always applies sharing rules, but in system mode they’re controlled by sharing
-[keywords on the class. See Enforce User Mode for Database Operations in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_enforce_usermode.htm) _Apex Developer Guide_ .
+[keywords on the class. See Enforce User Mode for Database Operations in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_enforce_usermode.htm) _Apex Developer Guide_ .
 
 ### Note: Salesforce recommends that you enforce field- and object-level security permissions by using WITH USER_MODE instead of WITH SECURITY_ENFORCED because it has fewer limitations. If WITH is specified, the query returns only records that match the filter and are visible to the user. If unspecified, the query returns only
 
@@ -2642,7 +2642,7 @@ _`ObjectTypeName`_ equals:
 
 Salesforce Object Query Language (SOQL) WITH
 
-When _`ObjectTypeName`_ [equals to KnowledgeArticleVersion or any article type](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_knowledgearticleversion.htm) `API Name` in the `FROM` clause, a `WHERE` clause
+When _`ObjectTypeName`_ [equals to KnowledgeArticleVersion or any article type](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_knowledgearticleversion.htm) `API Name` in the `FROM` clause, a `WHERE` clause
 must be specified with one of the following parameters:
 
 **•** `PublishStatus` to query articles depending on their status in the publishing cycle:
@@ -2657,7 +2657,7 @@ must be specified with one of the following parameters:
 
 For information on article types or questions, see “Knowledge Article Types” in Salesforce Help.
 
-Note: The `WITH DATA CATEGORY` [clause does not support bind variables. The clause can have no more than three data](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_SOQL_variables.htm)
+Note: The `WITH DATA CATEGORY` [clause does not support bind variables. The clause can have no more than three data](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SOQL_variables.htm)
 category conditions.
 
 ```
@@ -2965,7 +2965,7 @@ This query is valid:
 
 ```
 
-[For more information, see RecordVisibility in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_recordvisibility.htm#!) _Object Reference_ .
+[For more information, see RecordVisibility in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_recordvisibility.htm#!) _Object Reference_ .
 
 ### GROUP BY You can use the GROUP BY option in a SOQL query to avoid iterating through individual query results. That is, you specify a group of
 
@@ -3502,9 +3502,9 @@ The following query is invalid as there’s no `GROUP BY` clause:
 **•** You can't use child relationship expressions that use the `__r` syntax in a query that uses a `GROUP BY` clause. For more information,
 see Understanding Relationship Names, Custom Objects, and Custom Fields.
 
-**•** [In SOAP API, queries that include a GROUP BY clause can't use the queryMore() call to get more results.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_querymore.htm)
+**•** [In SOAP API, queries that include a GROUP BY clause can't use the queryMore() call to get more results.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_querymore.htm)
 
-**•** [In REST API, queries that include a GROUP BY clause can’t use the query locator to get more results.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/resources_query_more_results.htm)
+**•** [In REST API, queries that include a GROUP BY clause can’t use the query locator to get more results.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_query_more_results.htm)
 
 **•** Formula fields can't be grouped.
 
@@ -3886,10 +3886,10 @@ of 50 rows, and the first 10 rows are skipped using an `OFFSET` clause:
 
 After the query is run, 10 new rows are then inserted into Merchandise__c with Name values that come early in the sort order. If the
 query is run again, with the same `OFFSET` value, a different set of rows is skipped. If you need to query multiple pages of records
-and consistently locate specific records in the database, use the `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_querymore.htm)` call.
+and consistently locate specific records in the database, use the `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_querymore.htm)` call.
 
-**•** Offsets are not intended to be used as a replacement for using `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_querymore.htm)`, given the maximum offset size and lack of a
-server-side cursor. Multiple queries with offsets into a large result set has a higher performance impact than using `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_querymore.htm)`
+**•** Offsets are not intended to be used as a replacement for using `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_querymore.htm)`, given the maximum offset size and lack of a
+server-side cursor. Multiple queries with offsets into a large result set has a higher performance impact than using `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_querymore.htm)`
 against a server-side cursor.
 
 **•** When using `OFFSET`, only the first batch of records is returned for a given query. If you want to retrieve the next batch, you’ll need
@@ -4005,7 +4005,7 @@ for two accounts and also locks the accounts that are returned.
 
 ```
 
-[Warning: Use care when setting locks in your Apex code. For details, see Locking Records in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_locking_records.htm) _Apex Developer Guide_ .
+[Warning: Use care when setting locks in your Apex code. For details, see Locking Records in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_locking_records.htm) _Apex Developer Guide_ .
 
 ## SOQL SELECT Examples
 
@@ -4434,7 +4434,7 @@ example, the following query returns the number of leads for each `LeadSource` v
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_countQuery)_ : countQuery(query)
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_countQuery)_ : countQuery(query)
 
 #### Support for Field Types in Aggregate Functions
 
@@ -4442,7 +4442,7 @@ Using aggregate functions in SOQL queries is a powerful way to analyze records, 
 example, base64 fields don’t support aggregate functions because they wouldn’t generate any meaningful data.
 
 Aggregate functions are supported for several primitive data types and field types. The following table lists support by the aggregate
-[functions for the primitive data types.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/primitive_data_types.htm)
+[functions for the primitive data types.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/primitive_data_types.htm)
 
 **Data Type** `AVG()` `COUNT()` `COUNT_DISTINCT()` `MIN()` `MAX()` `SUM()`
 
@@ -4464,7 +4464,7 @@ string No Yes Yes Yes Yes No
 
 time No No No No No No
 
-[In addition to the primitive data types, the API uses an extended set of field types for object fields. The following table lists support by](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/field_types.htm)
+[In addition to the primitive data types, the API uses an extended set of field types for object fields. The following table lists support by](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/field_types.htm)
 the aggregate functions for these field types.
 
 **Data Type** `AVG()` `COUNT()` `COUNT_DISTINCT()` `MIN()` `MAX()` `SUM()`
@@ -5725,7 +5725,7 @@ object referenced by the ID, and the other represents the contents of the record
 ```
 
 Note: Not all relationships are exposed in the API. The most reliable method for identifying relationships is to execute a
-`describeSObjects()` [call. You can use the AJAX Toolkit to quickly execute test calls.](https://developer.salesforce.com/docs/atlas.en-us.258.0.ajax.meta/ajax/)
+`describeSObjects()` [call. You can use the AJAX Toolkit to quickly execute test calls.](https://developer.salesforce.com/docs/atlas.en-us.260.0.ajax.meta/ajax/)
 
 **•** For custom objects, look for a pair of entries with the relationship suffix `__r` :
 
@@ -6018,7 +6018,7 @@ the `Type` qualifier in a `WHERE` clause. For details, see Filter on Polymorphic
 
 **•** `TYPEOF` isn’t allowed in queries that don’t return objects, such as `COUNT()` .
 
-**•** `TYPEOF` [can’t be used in SOQL queries that are the basis of Streaming API PushTopics.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_streaming.meta/api_streaming/pushtopic_events_intro.htm)
+**•** `TYPEOF` [can’t be used in SOQL queries that are the basis of Streaming API PushTopics.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_streaming.meta/api_streaming/pushtopic_events_intro.htm)
 
 **•** `TYPEOF` can’t be used in SOQL used in Bulk API.
 
@@ -6230,15 +6230,15 @@ This affects Java code generated from these WSDLs. For example, in `Task.java`, 
 
 ```
 
-[For more information about generating Java code from WSDL files, see Setting Up Your Java Developer Environment.](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_developer_environment_tipsheet.meta/salesforce_developer_environment_tipsheet/salesforce_developer_environment_overview.htm)
+[For more information about generating Java code from WSDL files, see Setting Up Your Java Developer Environment.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_developer_environment_tipsheet.meta/salesforce_developer_environment_tipsheet/salesforce_developer_environment_overview.htm)
 
 SEE ALSO:
 
-_SOQL and SOSL Reference_ [: Understanding Relationship Query Limitations](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
+_SOQL and SOSL Reference_ [: Understanding Relationship Query Limitations](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
 
-_Apex Reference Guide_ [: Working with Polymorphic Relationships in SOQL Queries](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_SOQL_polymorphic_relationships.htm)
+_Apex Reference Guide_ [: Working with Polymorphic Relationships in SOQL Queries](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SOQL_polymorphic_relationships.htm)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_getSObject_2)_ : getSObject(field)
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_getSObject_2)_ : getSObject(field)
 
 ### Understanding Relationship Query Limitations
 
@@ -6432,12 +6432,12 @@ returned in queries made using both REST API and SOAP API.
 The default and the maximum for query result batch size is 2,000 records. However, to optimize performance, the returned batch size
 can be lower than the max or what's set in the request, based on the size and complexity of records queried.
 
-In REST API, use the `batchSize` [field in the query options header to change the number of results returned in a single query. For](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/headers_queryoptions.htm)
-[more information, see Query in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/resources_query.htm) _REST API Developer Guide_ .
+In REST API, use the `batchSize` [field in the query options header to change the number of results returned in a single query. For](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/headers_queryoptions.htm)
+[more information, see Query in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_query.htm) _REST API Developer Guide_ .
 
 In SOAP API, change the batch size in the `QueryOptions` header before invoking the `query()` call. Salesforce Web Service
 Connector (WSC) clients can set the batch size by calling `setQueryOptions()` on the connection object. For more information,
-[see query() in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_query.htm) _SOAP API Developer Guide_ .
+[see query() in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_query.htm) _SOAP API Developer Guide_ .
 
 Note: If the SOQL statement selects two or more custom fields of type long text, the batch size can’t be greater than 200 records.
 This limit prevents large SOAP messages from being returned.
@@ -6554,13 +6554,18 @@ that they are defined, without gaps.
 
 **–** `!=`, `LIKE`, `NOT IN`, `EXCLUDES`, and `INCLUDES`
 
-Data Cloud Objects
+Data 360 Objects
+
+**•** To prevent large queries from crashing the app server, Data 360 limits Salesforce Object
+Query Language (SOQL) results to 12-MB. SOQL returns the results up to the size limit with
+a query more link to paginate through the rest of the results. If a single query result exceeds
+the size limit, SOQL rejects the query and you can’t retrieve the results.
 
 **•** Queries that contain aggregate functions don’t support currency fields even when the
 fields are outside the aggregate functions.
 
 **•** For currency field query limitations, see Considerations for Querying Currency Data Using
-SOQL on page 93.
+SOQL on page 94.
 
 **•** These aggregate functions are available for querying data model objects (DMOs) and data
 lake objects (DLOs).
@@ -6589,24 +6594,26 @@ lake objects (DLOs).
 
 **•** Data Cloud objects have these limitations related to the `HAVING` clause.
 
-**–** You can’t use the `HAVING` clause with the `IN` operator. For example, this query isn’t
-supported: `SELECT AVG(Number) FROM Dmo HAVING AVG(Number)`
-
-```
-                     IN (0, 10, 20)
-
-```
-
 
 Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
 
 **Object** **Description**
 
+**–**
+
+You can’t use the `HAVING` clause with the `IN` operator. For example, this query isn’t
+supported: `SELECT AVG(Number) FROM Dmo HAVING AVG(Number)`
+
+```
+IN (0, 10, 20)
+
+```
+
 **–** You can’t use the `HAVING` clause when comparing to a null value. For example, this
 query isn’t supported: `SELECT AVG(Number) FROM Dmo HAVING`
 
 ```
-                     AVG(Number) != NULL
+   AVG(Number) != NULL
 
 ```
 
@@ -6617,7 +6624,7 @@ Comparison operators ( `>`, `<`, `>=`, and `<=` ) that are used with string coll
 supported for Data Cloud queries. For example, this query isn’t supported: `SELECT`
 
 ```
-                    Text_Field FROM Dmo WHERE Text_Field > 'SomeValue'
+  Text_Field FROM Dmo WHERE Text_Field > 'SomeValue'
 
 ```
 
@@ -6632,42 +6639,42 @@ in the outer or inner query.
 **•** Outer query on parent DMO:
 
 ```
-                        SELECT …
+     SELECT …
 
-                        FROM <parentDMO>
+     FROM <parentDMO>
 
-                        WHERE ID IN
+     WHERE ID IN
 
-                        (
+     (
 
-                           SELECT rel_…__c
+        SELECT rel_…__c
 
-                           FROM <childDMO>
+        FROM <childDMO>
 
-                           …
+        …
 
-                        )
+     )
 
 ```
 
 **•** Inner query on parent DMO:
 
 ```
-                        SELECT …
+     SELECT …
 
-                        FROM <childDMO>
+     FROM <childDMO>
 
-                        WHERE rel_…__c IN
+     WHERE rel_…__c IN
 
-                        (
+     (
 
-                           SELECT Id
+        SELECT Id
 
-                           FROM <parentDMO>
+        FROM <parentDMO>
 
-                           …
+        …
 
-                        )
+     )
 
 ```
 
@@ -6681,14 +6688,20 @@ restrictions.
 
 **–** The child DMO must look up the parent sObject’s ID field.
 
-**–** Example query:
-
 
 Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
 
 **Object** **Description**
 
+**–** Example query:
+
 ```
+                       SELECT …
+
+                       FROM <childDMO>
+
+                       WHERE rel_…__c IN
+
                        (
 
                          SELECT Id
@@ -6760,6 +6773,11 @@ Expect longer response times for each join in a query.
 
 **–** `AVG()` function
 
+
+Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
+
+**Object** **Description**
+
 **–** `COUNT(` _**`fieldName`**_ `)` function (however, `COUNT()` is supported)
 
 **–** `HAVING` clause
@@ -6767,11 +6785,6 @@ Expect longer response times for each join in a query.
 **–** `GROUP BY` clause
 
 **–** `MAX()` function
-
-
-Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
-
-**Object** **Description**
 
 **–** `MIN()` function
 
@@ -6834,17 +6847,18 @@ KnowledgeArticleVersion
 
 **•** Filter on a single value of `PublishStatus` for best results. To find all versions of each
 article, omit the `PublishStatus` filter, but do filter on one or more primary key IDs.
+
+
+Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
+
+**Object** **Description**
+
 To retrieve all archived versions for a given article, specify a SOQL filter where
 `IsLatestVersion` is `false` .
 
 **•** In API version 46.0 and earlier, queries without a filter on `PublishStatus` return
 published articles by default. In API version 47.0 and later, draft, published, and archived
 articles are returned when Lightning Knowledge is enabled.
-
-
-Salesforce Object Query Language (SOQL) SOQL Object Limits and Limitations
-
-**Object** **Description**
 
 **•** To support security, only users with the “View Draft Articles” permission see articles whose
 `PublishStatus` value is `Draft` . Similarly, only users with the “View Archived Articles”
@@ -6869,7 +6883,7 @@ objects. For example, the following SOQL statement causes a compilation error.
 
 ```
 
-[Instead, use dynamic SOQL as follows. See Dynamic SOQL in](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dynamic_soql.htm) _Apex Developer Guide_ .
+[Instead, use dynamic SOQL as follows. See Dynamic SOQL in](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dynamic_soql.htm) _Apex Developer Guide_ .
 
 ```
                      final String PUBLISH_STATUS_ONLINE = 'Online';
@@ -6914,17 +6928,17 @@ UserRecordAccess
 `HasAccess`, and `ORDER BY MaxAccessLevel` if you `SELECT`
 `MaxAccessLevel` .
 
+
+### Salesforce Object Query Language (SOQL) SOQL with Big Objects
+
+**Object** **Description**
+
 **•** Maximum number of records that can be queried is 200.
 
 UserProfileFeed
 
 **•** No SOQL limit if logged-in user has “View All Data” permission. If not, specify a LIMIT clause
 of 1,000 records or fewer.
-
-
-### Salesforce Object Query Language (SOQL) SOQL with Big Objects
-
-**Object** **Description**
 
 **•** SOQL ORDER BY on fields using relationships is not available. Use ORDER BY on fields on
 the root object in the SOQL query.
@@ -6941,7 +6955,7 @@ Vote
 
 **•** `Id IN = [` _**`list of IDs`**_ `]`
 
-[For other SOQL limits, see SOQL and SOSL Limits in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm) _Salesforce Developer Limits and Allocations Quick Reference_ .
+[For other SOQL limits, see SOQL and SOSL Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm) _Salesforce Developer Limits and Allocations Quick Reference_ .
 
 ### SOQL with Big Objects
 
@@ -6993,6 +7007,9 @@ This query specifies only the first two fields in the index. In this case, the f
 
 ```
 
+
+## Salesforce Object Query Language (SOQL) Syndication Feed SOQL and Mapping Syntax
+
 This query specifies only the first field in the index. The filter on `LastName__c` can use a range operator.
 
 ```
@@ -7003,9 +7020,6 @@ This query specifies only the first field in the index. The filter on `LastName_
    WHERE LastName__c='Kelly'
 
 ```
-
-
-## Salesforce Object Query Language (SOQL) Syndication Feed SOQL and Mapping Syntax
 
 This query uses the `IN` operator on the first field in the index.
 
@@ -7083,10 +7097,12 @@ _Syndication feed_ services use a SOQL query and mapping specification that allo
 objects and to traverse relationships between objects. Several options can be added as query string parameters to filter and control how
 the data is presented. Syndication feeds can be defined for public sites.
 
+
+## Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
+
 For full information about the limitations on SOQL in query feed definitions, see the Salesforce online help for syndication feeds.
 
-
-## Salesforce Object Query Language (SOQL) Location-Based SOQL Queries Location-Based SOQL Queries
+## Location-Based SOQL Queries
 
 Location-based SOQL queries let you compare and query location values stored in Salesforce. You can calculate the distance between
 two location values, such as between a warehouse and a store. Or you can calculate the distance between a location value and fixed
@@ -7096,7 +7112,7 @@ The geolocation custom field type allows you to create a field to store location
 latitude and longitude. Standard addresses on Salesforce objects also include a geolocation field that, when populated, can be used in
 similar ways—with a few restrictions. You can compare and query the locations of both types, for example, to find the 10 closest accounts.
 
-[For more information and considerations to keep in mind, see Compound Fields in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/compound_fields.htm) _Salesforce Object Reference_ .
+[For more information and considerations to keep in mind, see Compound Fields in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/compound_fields.htm) _Salesforce Object Reference_ .
 
 Field Types That Support Location-Based SOQL Queries
 
@@ -7153,18 +7169,18 @@ combine the two primitive values. Here are sample results from a REST API reques
 
        "url" : "/services/data/v30.0/sobjects/Warehouse__c/a06D00000017O4nIAE"
 
-      },
-
-      "Name" : "Ferry Building Depot",
-
-      "Location__c" : {
-
 ```
 
 
 Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
 
 ```
+      },
+
+      "Name" : "Ferry Building Depot",
+
+      "Location__c" : {
+
        "latitude" : 37.79302,
 
        "longitude" : -122.394507
@@ -7244,14 +7260,17 @@ Sort records by distance using a distance condition in the `ORDER BY` clause. Fo
 
    WHERE DISTANCE(Location__c, GEOLOCATION(37.775,-122.418), 'mi') < 20
 
+```
+
+
+Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
+
+```
    ORDER BY DISTANCE(Location__c, GEOLOCATION(37.775,-122.418), 'mi')
 
    LIMIT 10
 
 ```
-
-
-Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
 
 This query finds up to 10 of the warehouses in the custom object Warehouse that are within 20 miles of the geolocation 37.775°, -122.418°,
 which is San Francisco. The results include the name and address of each warehouse, but not its geocoordinates. The nearest warehouse
@@ -7317,10 +7336,12 @@ Big Tech Warehouse _null_ _null_
 
 S H Frank & Company 37.763662 _null_
 
+
+Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
+
+**Name** **Location__latitude__s** **Location__longitude__s**
+
 San Francisco Tech Mart 37.77587 -122.399902
-
-
-## Salesforce Object Query Language (SOQL) Considerations for Querying Currency Data Using SOQL
 
 In these results, only one geolocation field is genuinely null. The other two, with partial nulls, are invalid.
 
@@ -7379,22 +7400,20 @@ For example, `DISTANCE(warehouse_location__c, GEOLOCATION(37.775,-122.418), 'km'
 
 ```
 
-[For more information, see Compound Field Considerations and Limitations in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/compound_fields_limitations.htm) _Salesforce Object Reference_ .
+[For more information, see Compound Field Considerations and Limitations in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/compound_fields_limitations.htm) _Salesforce Object Reference_ .
 
-## Considerations for Querying Currency Data Using SOQL
+
+## Salesforce Object Query Language (SOQL) Considerations for Querying Currency Data Using SOQL Considerations for Querying Currency Data Using SOQL
 
 These considerations apply when using SOQL to query Data Cloud objects, such as data lake objects (DLOs) and data model objects
 (DMOs).
 
 **•** Use the `cdp_sys_record_currency__c` system field to query the ISO code value of a Data Cloud record.
 
-
-Salesforce Object Query Language (SOQL) Considerations for Querying Currency Data Using SOQL
-
 **•** If an SOQL query on Data Cloud objects returns null values for all currency fields, the ISO code is unsupported or invalid. Check the
 `cdp_sys_record_currency__c` system field to make sure the ISO codes are supported by your org, or verify that it matches
 the default corporate currency if you're using a single currency. If all records are stored with valid ISO codes, make sure the org setup
-[page has these ISO codes configured as supported currencies. To set up the supported currencies, see Manage Multiple Currencies.](https://help.salesforce.com/s/articleView?id=sf.admin_currency.htm&type=5&language=en_US)
+[page has these ISO codes configured as supported currencies. To set up the supported currencies, see Manage Multiple Currencies.](https://help.salesforce.com/s/articleView?id=sales.admin_currency.htm&type=5&language=en_US)
 
 **•** When querying currency data from Data Cloud objects using a SELECT clause, use an alias on the `toLabel()` on page 63 function
 for the `CurrencyIsoCode` field. However, aliasing isn't required when using currency fields in a WHERE or ORDER BY clause.
@@ -7435,20 +7454,20 @@ there’s a possibility of running into search crowding.
 External Object You can search text, email, and phone fields for multiple objects, including custom objects, that you
 Search Results have access to in a single query in the following environments.
 
-**•** SOSL Syntax **•** [SOAP API search() calls. See search() in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_search.htm) _SOAP API Developer Guide_ .
+**•** SOSL Syntax **•** [SOAP API search() calls. See search() in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_search.htm) _SOAP API Developer Guide_ .
 
-**•** Example Text **•** [REST API Search calls. See Search in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/resources_search.htm) _REST API Developer Guide_ .
+**•** Example Text **•** [REST API Search calls. See Search in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_search.htm) _REST API Developer Guide_ .
 Searches
 
-**•** [Apex statements. See SOQL and SOSL Queries in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_SOQL.htm) _Apex Developer Guide_ .
+**•** [Apex statements. See SOQL and SOSL Queries in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SOQL.htm) _Apex Developer Guide_ .
 
 **•** convertCurrency()
 
-**•** [Visualforce controllers and getter methods. See Controller Methods in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/pages_controller_methods.htm) _Visualforce Developer Guide_ .
+**•** [Visualforce controllers and getter methods. See Controller Methods in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/pages_controller_methods.htm) _Visualforce Developer Guide_ .
 
 **•** FIND {SearchQuery}
 
-**•** [Schema Explorer of the Eclipse Toolkit. See Schema Explorer in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.eclipse.meta/eclipse/eclipse_schema_browser.htm) _Force.com IDE Developer Guide_ .
+**•** [Schema Explorer of the Eclipse Toolkit. See Schema Explorer in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.eclipse.meta/eclipse/eclipse_schema_browser.htm) _Force.com IDE Developer Guide_ .
 
 **•** FORMAT()
 
@@ -7632,7 +7651,7 @@ Computing San Francisco. With a more specific search term, the search engine ret
 applied. In this scenario, the record Joe’s looking for is one of the blue raindrops that makes it from the top of the filter all the way
 through to Joe’s search results page.
 
-[For other SOSL limits, see SOQL and SOSL Limits in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm) _Salesforce Developer Limits and Allocations Quick Reference_ .
+[For other SOSL limits, see SOQL and SOSL Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm) _Salesforce Developer Limits and Allocations Quick Reference_ .
 
 ## SOSL Limits on External Object Search Results
 
@@ -8278,7 +8297,7 @@ Note: Apex that is running in system mode ignores field-level security while sca
 
 ## Salesforce Object Search Language (SOSL) FORMAT()
 
-The _Apex Developer Guide_ [has more information about using SOSL and SOQL with Apex.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_SOQL.htm)
+The _Apex Developer Guide_ [has more information about using SOSL and SOQL with Apex.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SOQL.htm)
 
 ## FORMAT() Use FORMAT with the FIND clause to apply localized formatting to standard and custom number, date, time, and currency fields. When the FORMAT function is applied these fields reflect the appropriate format for the given user locale. The field format matches
 
@@ -8401,7 +8420,7 @@ query, which can be up to 2,000 results. If unspecified, the default is the maxi
 The default of 2,000 results is the largest number of rows that can be returned for API version 28.0 and later. Previous versions return up
 to 200 results.
 
-[The LIMIT clause can’t increase the maximum number of records returned. See SOSL Limits on Search Results.](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl_limits.htm)
+[The LIMIT clause can’t increase the maximum number of records returned. See SOSL Limits on Search Results.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl_limits.htm)
 
 You can set limits on individual objects or on an entire query.
 
@@ -9312,9 +9331,9 @@ In the `RETURNING` clause, specify one of the following for _`ObjectTypeName`_ :
 
 **•** To search a specific article type, use the article type name with the suffix ___kav_
 
-**•** [To search all article types, use KnowledgeArticleVersion](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_knowledgearticleversion.htm)
+**•** [To search all article types, use KnowledgeArticleVersion](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_knowledgearticleversion.htm)
 
-**•** [To search questions, use Question](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_question.htm)
+**•** [To search questions, use Question](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_question.htm)
 
 For information on article types, see “Knowledge Article Types” in the Salesforce Help.
 
@@ -9771,7 +9790,7 @@ In the `RETURNING` clause, specify one of the following for _`ObjectTypeName`_ :
 
 **•** To search a specific article type, use the article type name with the suffix ___kav_ .
 
-**•** [To search all article types, use KnowledgeArticleVersion.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_knowledgearticleversion.htm)
+**•** [To search all article types, use KnowledgeArticleVersion.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_knowledgearticleversion.htm)
 
 **•** To search case, case comment, feed, feed comment, idea, and idea comment types, use `Case`, `CaseComment`, `FeedItem`,
 `FeedComment`, `Idea`, and `IdeaComment` . For example:
@@ -9867,7 +9886,7 @@ Supported APIs
 
 SEE ALSO:
 
-_Einstein Search Help_ [: Einstein Search Terms: Spelling Correction](https://help.salesforce.com/s/articleView?id=sf.search_glossary.htm&type=5&language=en_US)
+_Einstein Search Help_ [: Einstein Search Terms: Spelling Correction](https://help.salesforce.com/s/articleView?id=ai.search_glossary.htm&type=5&language=en_US)
 
 
 INDEX

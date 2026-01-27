@@ -1,14 +1,14 @@
 # Apex Developer Guide
 
-> Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
-> Fetched: 2026-01-22T10:44:20Z
+> Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
+> Fetched: 2026-01-27T10:01:22Z
 Apex Developer Guide
 
-Version 65.0, Winter ’26
+Version 66.0, Spring ’26
 
-Last updated: January 9, 2026
+Last updated: January 23, 2026
 
-© Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
+© Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
 
 CONTENTS
@@ -26,26 +26,26 @@ Writing Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 Data Types and Variables **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23**
 Control Flow Statements **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52**
 Classes, Objects, and Interfaces **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60**
-Working with Data in Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 129**
-Document Your Apex Code **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 243**
-Running Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261**
+Working with Data in Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 131**
+Document Your Apex Code **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 244**
+Running Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 262**
 
-Invoking Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261**
-Apex Transactions and Governor Limits **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 343**
-Using Salesforce Features with Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 357**
-Integration and Apex Utilities **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 597**
-Debugging, Testing, and Deploying Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 665**
+Invoking Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 263**
+Apex Transactions and Governor Limits **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 344**
+Using Salesforce Features with Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 358**
+Integration and Apex Utilities **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 601**
+Debugging, Testing, and Deploying Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 669**
 
-Debugging Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 665**
-Testing Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 704**
-Deploying Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 739**
-Distributing Apex Using Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 741**
-Apex Reference **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 758**
-Appendices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 758**
+Debugging Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 669**
+Testing Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 711**
+Deploying Apex **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 746**
+Apex in Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 748**
+Apex Reference **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 776**
+Appendices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 777**
 
-Shipping Invoice Example **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 758**
-Reserved Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 769**
-Documentation Typographical Conventions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 771**
+Shipping Invoice Example **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 777**
+Reserved Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 788**
+Documentation Typographical Conventions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 790**
 
 APEX DEVELOPER GUIDE
 
@@ -53,7 +53,7 @@ Apex is a strongly typed, object-oriented programming language that allows devel
 statements on the Salesforce Platform server, in conjunction with calls to the API. This guide introduces you to the Apex development
 process and provides valuable information on learning, writing, deploying and testing Apex.
 
-[For reference information on Apex classes, interfaces, exceptions and so on, see Apex Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ref_guide.htm)
+[For reference information on Apex classes, interfaces, exceptions and so on, see Apex Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ref_guide.htm)
 
 Apex Release Notes
 Use the Salesforce Release Notes to learn about the most recent updates and changes to Apex.
@@ -562,14 +562,14 @@ Apex Developer Guide Introducing Apex
 
 **•** Define navigation patterns and data-specific rules for optimal, efficient application interaction.
 
-[For more information, see the Visualforce Developer's Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/)
+[For more information, see the Visualforce Developer's Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)
 
 SOAP API
 
 Use standard SOAP API calls when you want to add functionality to a composite application that processes only one type of record at a
 time and does not require any transactional control (such as setting a Savepoint or rolling back changes).
 
-[For more information, see the SOAP API Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/)
+[For more information, see the SOAP API Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/)
 
 #### How Does Apex Work?
 
@@ -687,14 +687,14 @@ Sandboxes (Recommended)
 A sandbox is a copy of your production org’s metadata in a separate environment, with varying amounts of data depending on the
 sandbox type. A sandbox provides a safe space for developers and admins to experiment with new features and validate changes before
 deploying code to production. Developer and Developer Pro sandboxes with source tracking enabled can take advantage of many of
-[the features of our Salesforce DX source-driven development tools, including Salesforce CLI, Code Builder, and DevOps Center. See Create](https://help.salesforce.com/s/articleView?id=sf.data_sandbox_create.htm&language=en_US)
-[a Sandbox in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.data_sandbox_create.htm&language=en_US)
+[the features of our Salesforce DX source-driven development tools, including Salesforce CLI, Code Builder, and DevOps Center. See Create](https://help.salesforce.com/s/articleView?id=platform.data_sandbox_create.htm&type=5&language=en_US)
+[a Sandbox in Salesforce Help.](https://help.salesforce.com/s/articleView?id=platform.data_sandbox_create.htm&type=5&language=en_US)
 
 Scratch Orgs (Recommended)
 
 A scratch org is a source-driven and temporary deployment of Salesforce code and metadata. A scratch org is fully configurable, allowing
 you to emulate different Salesforce editions with different features and settings. Scratch orgs have a maximum 30-day lifespan, with the
-[default set at 7 days. For information on using and creating scratch orgs, see Scratch Orgs in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs.htm) _Salesforce DX Developer Guide_ .
+[default set at 7 days. For information on using and creating scratch orgs, see Scratch Orgs in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs.htm) _Salesforce DX Developer Guide_ .
 
 Developer Edition (DE) Orgs
 
@@ -799,7 +799,7 @@ Alternatively, you can use any text editor, such as Notepad, to write Apex code.
 or use one of the API calls to deploy it.
 
 To develop an Apex IDE of your own, use SOAP API methods for compiling triggers and classes, and executing test methods. Use Metadata
-API methods for deploying code to production environments. For more information, see Deploying Apex on page 739.
+API methods for deploying code to production environments. For more information, see Deploying Apex on page 746.
 
 SEE ALSO:
 
@@ -917,7 +917,7 @@ records. This approach ensures that 75% or more of your code is covered by unit 
 
 **•** All classes and triggers must compile successfully.
 
-For more information on writing tests, see Testing Apex on page 704.
+For more information on writing tests, see Testing Apex on page 711.
 
 #### Deploying Apex to a Sandbox Organization
 
@@ -933,7 +933,7 @@ You can also use the `deploy()` Metadata API call to deploy your Apex from a dev
 A useful API call is `runTests()` . In a development or sandbox organization, you can run the unit tests for a specific class, a list of
 classes, or a namespace.
 
-[You can also use Salesforce CLI. See Develop Against Any Org for details.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
+[You can also use Salesforce CLI. See Develop Against Any Org for details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)
 
 For more information, see Deploying Apex.
 
@@ -946,7 +946,7 @@ Salesforce production organization.
 [Studio Code and Code Builder.](https://developer.salesforce.com/tools/vscode/)
 
 Also, you can deploy Apex through change sets in the Salesforce user interface. For more information and for additional deployment
-[options, see Deploying Apex on page 739, and Build and Release Your App.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_build_and_release_your_app.htm)
+[options, see Deploying Apex on page 746, and Build and Release Your App.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_build_and_release_your_app.htm)
 
 #### Adding Apex Code to a AppExchange App
 
@@ -1496,7 +1496,7 @@ In Apex, all variables and expressions have a data type, such as sObject, primit
 **•** A primitive, such as an Integer, Double, Long, Date, Datetime, String, ID, or Boolean (see Primitive Data Types on page 24)
 
 **•** An sObject, either as a generic sObject or as a specific sObject, such as an Account, Contact, or MyCustomObject__c (see Working
-with sObjects on page 130 in Chapter 4.)
+with sObjects on page 131 in Chapter 4.)
 
 **•** A collection, including:
 
@@ -1519,7 +1519,7 @@ Methods can return values of any of the listed types, or return no value and be 
 
 Type checking is strictly enforced at compile time. For example, the parser generates an error if an object field of type Integer is assigned
 a value of type String. However, all compile-time exceptions are returned as specific fault codes, with the line number and column of
-the error. For more information, see Debugging Apex on page 665.
+the error. For more information, see Debugging Apex on page 669.
 
 #### Primitive Data Types
 
@@ -1536,7 +1536,7 @@ Blob A collection of binary data stored as a single object. You can convert this
 String using the `toString` and `valueOf` methods, respectively. Blobs can be accepted as Web
 
 service arguments, stored in a document (the body of a document is a Blob), or sent as attachments.
-[For more information, see Crypto Class. Salesforce supports Blob manipulation only with Apex class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_crypto.htm)
+[For more information, see Crypto Class. Salesforce supports Blob manipulation only with Apex class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_crypto.htm)
 methods that are supplied by Salesforce.
 
 
@@ -1568,7 +1568,7 @@ about time. Always create date values with a system static method.
 
 You can add or subtract an Integer value from a Date value, returning a Date value. Addition and
 subtraction of Integer values are the only arithmetic functions that work with Date values. You can’t
-[perform arithmetic functions that include two or more Date values. Instead, use the Date methods.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_date.htm)
+[perform arithmetic functions that include two or more Date values. Instead, use the Date methods.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_date.htm)
 
 Use the `String.valueOf()` method to obtain the date without an appended timestamp.
 Using an implicit string conversion with a Date value results in the date with the timestamp appended.
@@ -1580,7 +1580,7 @@ You can add or subtract an Integer or Double value from a Datetime value, return
 Addition and subtraction of Integer and Double values are the only arithmetic functions that work
 
 with Datetime values. You can’t perform arithmetic functions that include two or more Datetime
-[values. Instead, use the Datetime methods.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
+[values. Instead, use the Datetime methods.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
 
 A number that includes a decimal point. Decimal is an arbitrary precision number. Currency fields
 are automatically assigned the type Decimal.
@@ -1747,17 +1747,17 @@ For more information, see “HTML Solutions Overview” in Salesforce Help.
 
 **Comparison Operators** : Unlike Java, Apex Strings support using the comparison operators `==`,
 `!=`, `<`, `<=`, `>`, and `>=` . Because Apex uses SOQL comparison semantics, results for Strings are collated
-[according to the context user’s locale and aren’t case-sensitive. For more information, see Expression](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)
-[Operators.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)
+[according to the context user’s locale and aren’t case-sensitive. For more information, see Expression](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)
+[Operators.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)
 
 **String Methods** : As in Java, Strings can be manipulated with several standard methods. For more
-[information, see String Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_string.htm)
+[information, see String Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm)
 
 Apex classes and triggers saved (compiled) using API version 15.0 and higher produce a runtime
 error if you assign a String value that is too long for the field.
 
 Time A value that indicates a particular time. Always create time values with a system static method. See
-[Time Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_time.htm)
+[Time Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_time.htm)
 
 In addition, two non-standard primitive data types can’t be used as variable or method types, but do appear in system static methods:
 
@@ -1767,7 +1767,7 @@ the Lightning Platform database exclusively for sObject fields in field history 
 **•** Currency. The `Currency.newInstance` static method creates a literal of type Currency. This method is for use solely within
 SOQL and SOSL `WHERE` clauses to filter against sObject currency fields. You can’t instantiate Currency in any other type of Apex.
 
-[For more information on the AnyType data type, see Field Types in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/field_types.htm) _Object Reference for Salesforce_ .
+[For more information on the AnyType data type, see Field Types in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/field_types.htm) _Object Reference for Salesforce_ .
 
 
 Apex Developer Guide Data Types and Variables
@@ -1782,7 +1782,7 @@ Expression Operators
 
 Class Methods
 
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/primitive_data_types.htm)_ : Primitive Data Types
+_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/primitive_data_types.htm)_ : Primitive Data Types
 
 #### Collections Collections in Apex can be lists, sets, or maps.
 
@@ -1860,7 +1860,7 @@ To access elements in a list, use the `List` methods provided by Apex. For examp
 
 ```
 
-[For more information, including a complete list of all supported methods, see List Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_list.htm)
+[For more information, including a complete list of all supported methods, see List Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_list.htm)
 
 Using Array Notation for One-Dimensional Lists
 
@@ -1926,7 +1926,7 @@ as strings. The sort order of other more complex data types is described in the 
 
 You can sort custom types (your Apex classes) if they implement the `Comparable` interface. Alternatively, a class implementing the
 `Comparator` interface can be passed as a parameter to the `List.sort` method. For more information on the sort order used for
-[sObjects, see Sorting Lists of sObjects.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_list_sorting_sobject.htm)
+[sObjects, see Sorting Lists of sObjects.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_list_sorting_sobject.htm)
 
 This example shows how to sort a list of strings and verifies that the colors are in ascending order in the list.
 
@@ -2077,7 +2077,7 @@ The following example shows how to create a set from elements of another set.
 
 ```
 
-[For more information, including a complete list of all supported set system methods, see Set Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_set.htm)
+[For more information, including a complete list of all supported set system methods, see Set Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_set.htm)
 
 Note the following limitations on sets:
 
@@ -2151,7 +2151,7 @@ adds two entries, checks for the existence of the first key, retrieves the value
 
 ```
 
-[For more information, including a complete list of all supported Map methods, see Map Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_map.htm)
+[For more information, including a complete list of all supported Map methods, see Map Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_map.htm)
 
 Map Considerations
 
@@ -2170,7 +2170,7 @@ entry.
 distinct Map entries. Subsequently, the Map methods, including `put`, `get`, `containsKey`, and `remove` treat these keys as
 distinct.
 
-**•** Uniqueness of map keys of user-defined types is determined by the `equals` and `[hashCode](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_collections_maps_keys_userdefined.htm)` methods, which you provide in
+**•** Uniqueness of map keys of user-defined types is determined by the `equals` and `[hashCode](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_collections_maps_keys_userdefined.htm)` methods, which you provide in
 your classes. Uniqueness of keys of all other non-primitive types, such as sObject keys, is determined by comparing the objects’ field
 values. Use caution when you use an sObject as a map key because when the sObject is changed, it no longer maps to the same
 
@@ -2178,31 +2178,31 @@ values. Use caution when you use an sObject as a map key because when the sObjec
 Apex Developer Guide Data Types and Variables
 
 value. For information and examples, see
-[https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_map_sobject_considerations.htm](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_map_sobject_considerations.htm)
+[https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_map_sobject_considerations.htm](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_map_sobject_considerations.htm)
 
 **•** A Map object is serializable into JSON only if it uses one of the following data types as a key.
 
-**–** [Boolean](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_boolean.htm)
+**–** [Boolean](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_boolean.htm)
 
-**–** [Date](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_date.htm)
+**–** [Date](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_date.htm)
 
-**–** [DateTime](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
+**–** [DateTime](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
 
-**–** [Decimal](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
+**–** [Decimal](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
 
-**–** [Double](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_double.htm)
+**–** [Double](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_double.htm)
 
 #### – Enum
 
-**–** [Id](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_id.htm)
+**–** [Id](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_id.htm)
 
-**–** [Integer](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_integer.htm)
+**–** [Integer](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_integer.htm)
 
-**–** [Long](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_long.htm)
+**–** [Long](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_long.htm)
 
-**–** [String](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_string.htm)
+**–** [String](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm)
 
-**–** [Time](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_time.htm)
+**–** [Time](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_time.htm)
 
 ##### Parameterized Typing
 
@@ -2313,39 +2313,39 @@ for your organization, see _Downloading Salesforce WSDLs and Client Authenticati
 **•** `System.XmlTag` :
 
 This enum returns a list of XML tags used for parsing the result XML from a `webservice` method. For more information, see
-[XmlStreamReader Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_xml_XmlStream_reader.htm)
+[XmlStreamReader Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_XmlStream_reader.htm)
 
 **•** `System.ApplicationReadWriteMode` : This enum indicates if an organization is in 5 Minute Upgrade read-only mode
-[during Salesforce upgrades and downtimes. For more information, see System.getApplicationReadWriteMode().](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_getApplicationReadWriteMode)
+[during Salesforce upgrades and downtimes. For more information, see System.getApplicationReadWriteMode().](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_getApplicationReadWriteMode)
 
 **•** `System.LoggingLevel` :
 
-This enum is used with the `system.debug` method, to specify the log level for all `debug` [calls. For more information, see System](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm)
-[Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm)
+This enum is used with the `system.debug` method, to specify the log level for all `debug` [calls. For more information, see System](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)
+[Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)
 
 **•** `System.RoundingMode` :
 
 This enum is used by methods that perform mathematical operations to specify the rounding behavior for the operation. Typical
-examples are the Decimal `divide` method and the Double `round` [method. For more information, see Rounding Mode.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
+examples are the Decimal `divide` method and the Double `round` [method. For more information, see Rounding Mode.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
 
 **•** `System.SoapType` :
 
-This enum is returned by the field describe result `getSoapType` [method. For more information, see SOAPType Enum.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_Schema_SOAPType.htm)
+This enum is returned by the field describe result `getSoapType` [method. For more information, see SOAPType Enum.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_Schema_SOAPType.htm)
 
 
 Apex Developer Guide Data Types and Variables
 
 **•** `System.DisplayType` :
 
-This enum is returned by the field describe result `getType` [method. For more information, see DisplayType Enum.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_Schema_DisplayType.htm)
+This enum is returned by the field describe result `getType` [method. For more information, see DisplayType Enum.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_Schema_DisplayType.htm)
 
 **•** `System.JSONToken` :
 
-[This enum is used for parsing JSON content. For more information, see JsonToken Enum.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_System_JsonToken.htm)
+[This enum is used for parsing JSON content. For more information, see JsonToken Enum.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_System_JsonToken.htm)
 
 **•** `ApexPages.Severity` :
 
-[This enum specifies the severity of a Visualforce message. For more information, see ApexPages.Severity Enum.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_pages_message.htm)
+[This enum specifies the severity of a Visualforce message. For more information, see ApexPages.Severity Enum.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_pages_message.htm)
 
 **•** `Dom.XmlNodeType` :
 
@@ -2353,7 +2353,7 @@ This enum specifies the node type in a DOM document.
 
 Note: System-defined enums cannot be used in Web service methods.
 
-[All enum values, including system enums, have common methods associated with them. For more information, see Enum Methods.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_enum.htm)
+[All enum values, including system enums, have common methods associated with them. For more information, see Enum Methods.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_enum.htm)
 
 You cannot add user-defined methods to enum values.
 
@@ -2398,7 +2398,7 @@ dollar signs ($) and hyphens (-), aren’t allowed.
 
 **•** Varable names can’t contain consecutive underscores (_ _).
 
-**•** [Reserved keywords can’t be used as variable names.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_reserved_words.htm)
+**•** [Reserved keywords can’t be used as variable names.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_reserved_words.htm)
 
 **•** Variable names can have a maximum length of 255 characters.
 
@@ -2652,7 +2652,7 @@ of expression yields a query result, much like SOQL and SOSL queries.
 
 ```
 
-For information, see SOQL and SOSL Queries on page 167.
+For information, see SOQL and SOSL Queries on page 168.
 
 
 Apex Developer Guide Data Types and Variables
@@ -3411,7 +3411,7 @@ Both single and multiline comments are supported in Apex code.
 Apex Developer Guide Data Types and Variables
 
 Tip: We recommend using the standardized ApexDoc comment format to increase code readability, collaboration, and long-term
-maintainability. For the full specifications, see Document Your Apex Code on page 243.
+maintainability. For the full specifications, see Document Your Apex Code on page 244.
 
 **•** To create a single line comment, use `//` . All characters on the same line to the right of the `//` are ignored by the parser. For example:
 
@@ -4440,7 +4440,7 @@ To define a class, specify the following:
 **4.** Optional extensions or implementations or both
 
 Note: Avoid using standard object names for class names. Doing so causes unexpected results. For a list of standard objects, see
-[Object Reference for Salesforce.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/)
+[Object Reference for Salesforce.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/)
 
 Use the following syntax for defining classes:
 
@@ -4491,7 +4491,7 @@ an implementation.
 
 **•** You can’t override a public or protected virtual method of a global class of an installed managed package.
 
-For more information about managed packages, see What is a Package? on page 742.
+For more information about managed packages, see Managed Package Types on page 749.
 
 A class can implement multiple interfaces, but only extend one existing class. This restriction means that Apex doesn’t support multiple
 inheritance. The interface names in the list are separated by commas. For more information about interfaces, see Interfaces on page 81.
@@ -4556,7 +4556,7 @@ Versioned Behavior Changes
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ##### Class Methods
 
@@ -4615,7 +4615,7 @@ User-defined methods:
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
-**•** Can have side effects, such as DML `insert` [statements that initialize sObject record IDs. See Apex DML Statements.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_dml_section.htm#apex_dml)
+**•** Can have side effects, such as DML `insert` [statements that initialize sObject record IDs. See Apex DML Statements.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_dml_section.htm#apex_dml)
 
 **•** Can refer to themselves or to methods defined later in the same class or anonymous block. Apex parses methods in two phases, so
 forward declarations aren’t needed.
@@ -4772,7 +4772,7 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 SEE ALSO:
 
@@ -4941,7 +4941,7 @@ Note: In Apex, the `public` access modifier isn’t the same as it is in Java. T
 to keep the code for each application separate. In Apex, if you want to make something public like it is in Java, you must use
 the `global` access modifier.
 
-[For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ```
    global
@@ -5281,7 +5281,7 @@ Versioned Behavior Changes
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ##### Apex Properties
 
@@ -5653,7 +5653,7 @@ an abstract or override method without an allowed access modifier, you get the c
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ##### Extended Class Example
 
@@ -6073,7 +6073,7 @@ When you define a new interface, you’re defining a new data type. You can use 
 type name. Any object assigned to a variable of type interface must be an instance of a class that implements the interface, or a
 sub-interface data type.
 
-See also Classes and Casting on page 116.
+See also Classes and Casting on page 117.
 
 Note: You can’t add a method to a global interface after the class has been uploaded in a Managed - Released package version.
 
@@ -6081,7 +6081,7 @@ Versioned Behavior Changes
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@namespaceAccessible` . For accessibility considerations, see NamespaceAccessible Annotation. For more
-[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 In API version 61.0 and later, private methods are no longer overridden by an instance method with the same signature in a subclass.
 This change is versioned, so to prevent the override, update your abstract or virtual classes that contain private methods to API version
@@ -6590,7 +6590,7 @@ a collection of Savepoints
 
 **•** `JSONParser` class instances.
 
-[Static variables also don't get transmitted through the view state.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_static.htm)
+[Static variables also don't get transmitted through the view state.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_static.htm)
 
 The following example contains both a Visualforce page and a custom controller. Clicking the **refresh** button on the page causes the
 transient date to be updated because it is being recreated each time the page is refreshed. The non-transient date continues to have
@@ -6645,7 +6645,7 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)_ : JSONParser Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)_ : JSONParser Class
 
 ##### Use the with sharing, without sharing, and inherited sharing Keywords Use the with sharing or without sharing keywords on a class to specify whether sharing rules must be enforced. Use the
 
@@ -6659,7 +6659,7 @@ With Sharing
 
 ensures that Apex code runs in the current user context. Apex code that is executed with the `executeAnonymous` call and Connect
 in Apex always execute using the sharing rules of the current user. For more information on `executeAnonymous`, see Anonymous
-Blocks on page 262.
+Blocks on page 263.
 
 ##### Use the with sharing keywords when declaring a class to enforce the sharing rules that apply to the current user. For example:
 
@@ -6782,7 +6782,7 @@ Apex triggers can’t have an explicit sharing declaration. Triggers typically r
 the current user aren’t enforced. However, a nested trigger that fires due to the execution of another trigger runs as `with sharing`
 in the following circumstances:
 
-**•** A DML operation that runs in user mode on page 213 invokes the nested trigger. For example, given this sample code, if an account
+**•** A DML operation that runs in user mode on page 215 invokes the nested trigger. For example, given this sample code, if an account
 is inserted into the database, then `ContactTrigger1` runs as `with sharing` .
 
 ```
@@ -7001,7 +7001,7 @@ Using this annotation eliminates the need to call `setStorable()` in JavaScript 
 In API version 55.0 and later, you can use the annotation `@AuraEnabled(cacheable=true scope='global')` to enable
 Apex methods to be cached in a global cache.
 
-[For more information, see Lightning Aura Components Developer Guide and Lightning Web Components Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.lightning.meta/lightning/)
+[For more information, see Lightning Aura Components Developer Guide and Lightning Web Components Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.lightning.meta/lightning/)
 
 Versioned Behavior Changes
 
@@ -7049,7 +7049,7 @@ Apex Developer Guide Classes, Objects, and Interfaces
 **•** You can’t remove the `Deprecated` annotation to undeprecate something in Apex after you’ve released a package version where
 that item in Apex is deprecated.
 
-For more information about package versions, see What is a Package? on page 742.
+For more information about package versions, see Managed Package Types on page 749.
 
 ##### Future Annotation Annotation Use the Future annotation to identify methods that are executed asynchronously. When you specify Future, the method executes
 
@@ -7522,23 +7522,23 @@ the package.
 **•** Global invocable methods can be referred to anywhere in the subscriber org. Only global invocable methods appear in Flow
 Builder and Process Builder in the subscriber org.
 
-[For more information about invocable actions, see Apex Actions in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_action.meta/api_action/actions_intro.htm) _Actions Developer Guide_ .
+[For more information about invocable actions, see Apex Actions in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_action.meta/api_action/actions_intro.htm) _Actions Developer Guide_ .
 
 SEE ALSO:
 
 ##### InvocableVariable Annotation
 
-_[Actions Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_action.meta/api_action/actions_obj_apex.htm)_ : Apex Actions
+_[Actions Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_action.meta/api_action/actions_obj_apex.htm)_ : Apex Actions
 
-_[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/resources_actions_invocable.htm)_ : Invocable Actions
+_[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_actions_invocable.htm)_ : Invocable Actions
 
-_Salesforce Help_ [: Add a Custom Icon to an Apex-Defined Action](https://help.salesforce.com/s/articleView?id=sf.flow_build_extend_apex_type_add_a_custom_icon.htm&type=5&language=en_US)
+_Salesforce Help_ [: Add a Custom Icon to an Apex-Defined Action](https://help.salesforce.com/s/articleView?id=platform.flow_build_extend_apex_type_add_a_custom_icon.htm&type=5&language=en_US)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Invocable_Action.htm)_ : Action Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Invocable_Action.htm)_ : Action Class
 
 _Lightning Web Components Developer Guide_ [: Develop Custom Property Editors for Flow Builder](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.use_flow_custom_property_editor)
 
-_Prompt Builder_ [: Ground with Apex](https://help.salesforce.com/s/articleView?id=sf.prompt_builder_ground_apex.htm&language=en_US)
+_Prompt Builder_ [: Ground with Apex](https://help.salesforce.com/s/articleView?id=ai.prompt_builder_ground_apex.htm&type=5&language=en_US)
 
 Making Callouts to External Systems from Invocable Actions
 
@@ -7924,16 +7924,16 @@ Process Builder in the subscriber org.
 
 SEE ALSO:
 
-_Apex Developer Guide_ [: InvocableMethod Annotation](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_annotation_InvocableMethod.htm)
+_Apex Developer Guide_ [: InvocableMethod Annotation](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_annotation_InvocableMethod.htm)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Invocable_Action.htm)_ : Action Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Invocable_Action.htm)_ : Action Class
 
 Customize Invocable Action Input Order in Flow Builder
 
 ##### IsTest Annotation
 
-Use the `@IsTest` annotation to define classes and methods that only contain code used for testing your application. The annotation
-can take multiple modifiers within parentheses and separated by blanks.
+Use the `@IsTest` annotation to define classes and methods that only contain code used for testing your app. The annotation can
+take multiple modifiers within parentheses and separated by blanks.
 
 Note: The `@IsTest` annotation on methods is equivalent to the `testMethod` keyword. As best practice, Salesforce
 recommends that you use `@IsTest` rather than `testMethod` . The `testMethod` keyword may be versioned out in a future
@@ -8010,7 +8010,7 @@ For Apex code saved using Salesforce API version 24.0 and later, use the `@IsTes
 classes and individual test methods access to all data in the organization. The access includes pre-existing data that the test didn’t create.
 Starting with Apex code saved using Salesforce API version 24.0, test methods don’t have access to pre-existing data in the organization.
 However, test code saved against Salesforce API version 23.0 and earlier continues to have access to all data in the organization. See
-Isolation of Test Data from Organization Data in Unit Tests on page 711.
+Isolation of Test Data from Organization Data in Unit Tests on page 718.
 
 **Considerations for the** **`@IsTest(SeeAllData=true)`** **Annotation**
 
@@ -8256,7 +8256,67 @@ same Apex method.
 
 **•** Tests can’t use the SObjects that are listed in sObjects That Can't Be Used Together in DML Operations.
 
+**`@IsTest(critical=true)`** Annotation (Beta)
+
+Important: The `RunRelevantTests` test level and the associated `@IsTest()` annotations are pilot or beta services that
+are subject to the Beta Services Terms at Agreements — Salesforce.com or a written Unified Pilot Agreement if executed by
+Customer, and applicable terms in the Product Terms Directory. Use of these pilot or beta services are at the Customer’s sole
+discretion.
+
+If you set the deployment test level to `[RunRelevantTests](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_deploy_run_relevant_tests.htm)`, use the `@IsTest(critical=true)` annotation to guarantee
+that the test class always runs during deployments, regardless of the deployment payload. This annotation is available at the test class
+level in Salesforce API version 66.0 and later. Using this annotation on a test method results in a compilation error.
+
+This example code shows a test class marked with the `@IsTest(critical=true)` annotation. When you set the deployment
+test level to `RunRelevantTests`, the tests in this class always run.
+
+```
+   @IsTest(critical=true)
+
+   public with sharing class AccountServiceTest {
+
+     // ...
+
+   }
+
+```
+
+**`@IsTest(testFor='...')`** Annotation (Beta)
+
+Important: The `RunRelevantTests` test level and the associated `@IsTest()` annotations are pilot or beta services that
+are subject to the Beta Services Terms at Agreements — Salesforce.com or a written Unified Pilot Agreement if executed by
+Customer, and applicable terms in the Product Terms Directory. Use of these pilot or beta services are at the Customer’s sole
+discretion.
+
+If you set the deployment test level to `[RunRelevantTests](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_deploy_run_relevant_tests.htm)`, use the `@IsTest(testFor='...')` annotation to guarantee
+that the tests in the class run whenever the deployment includes new or modified versions of the referenced Apex components. This
+annotation is available at the test class level in Salesforce API version 66.0 and later. Using this annotation on a test method results in a
+compilation error.
+
+To use `@IsTest(testFor='...')`, set the `testFor` parameter to a comma-separated string of Apex classes and Apex triggers.
+For Apex classes, use the format `ApexClass:` _**`ClassName`**_ . For Apex triggers, use the format `ApexTrigger:` _**`TriggerName`**_ .
+If specifying a class or trigger from a different namespace, use the fully qualified name, for example,
+`ApexClass:` _**`MyNamespace`**_ `.` _**`ClassName`**_ .
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+This example code shows a test class marked with the `@IsTest(testFor='...')` annotation. If you set the deployment test
+level to `RunRelevantTests`, this test class runs whenever `AccountHandler` or `AccountTrigger` are new or modified
+in the deployment payload.
+
+```
+   @IsTest(testFor='ApexClass:AccountHandler,ApexTrigger:AccountTrigger')
+
+   public with sharing class AccountHandlerTest {
+
+     // ...
+
+   }
+
 ##### JsonAccess Annotation
+
+```
 
 The `@JsonAccess` annotation defined at Apex class level controls whether instances of the class can be serialized or deserialized. If
 the annotation restricts the JSON or XML serialization and deserialization, a runtime `JSONException` exception is thrown.
@@ -8300,14 +8360,14 @@ This example code shows an Apex class marked with the `@JsonAccess` annotation.
 `toString` method on objects whose data must be protected. For example, serializing an object stored as a key in a Map invokes
 the `toString` method. The generated map includes key (string) and value entries, thus exposing all the fields of the object.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 Versioned Behavior Changes
 
 In versions 48.0 and earlier, the default access for deserialization is `always` and the default access for serialization is `sameNamespace`
 to preserve the existing behavior. From version 49.0 onwards, the default access for both serialization and deserialization is
 `sameNamespace` .
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 ##### NamespaceAccessible Annotation Annotation
 
@@ -8316,7 +8376,7 @@ this annotation, Apex classes, methods, interfaces, properties, and abstract cla
 other packages with which they share a namespace. Apex that is declared global is always available across all namespaces, and needs
 no annotation.
 
-[For more information on 2GP managed packages, see Second-Generation Managed Packages in](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer Guide_ .
+[For more information on 2GP managed packages, see Second-Generation Managed Packages in](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) _Salesforce DX Developer Guide_ .
 
 Considerations for Apex Accessibility Across Packages
 
@@ -8377,17 +8437,14 @@ within the same namespace. The first constructor is also visible within the name
 
         return bypassFLS;
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       }
 
    }
 
 ```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 Versioned Behavior Changes
 
@@ -8456,7 +8513,7 @@ But this behavior is allowed.
 
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@NamespaceAccessible` . For accessibility considerations, see Considerations for Apex Acessibility Across Packages.
-[For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
+[For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
 
 ##### ReadOnly Annotation Annotation
 
@@ -8469,14 +8526,14 @@ annotation, the top-level request must be in the schedule execution or the Web s
 calls a Web service that contains the `@ReadOnly` annotation, the request fails because Visualforce is the top-level request, not the
 Web service.
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 Visualforce pages can call controller methods with the `@ReadOnly` annotation, and those methods run with the same relaxed
 restrictions. To increase other Visualforce-specific limits, such as the size of a collection that can be used by an iteration component like
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 `<apex:pageBlockTable>`, you can set the `readonly` attribute on the `<apex:page>` tag to `true` . For more information,
-[see Working with Large Sets of Data in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/pages_controller_readonly_context.htm) _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/)_ .
+[see Working with Large Sets of Data in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/pages_controller_readonly_context.htm) _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)_ .
 
 Versioned Behavior Changes
 
@@ -8942,7 +8999,7 @@ test methods, or classes defined using `@IsTest` .
 your class. Your Apex class must compile correctly before you can save your class.
 
 Classes can also be automatically generated from a WSDL by clicking **Generate from WSDL** . See SOAP Services: Defining a Class from
-a WSDL Document on page 603.
+a WSDL Document on page 607.
 
 Once saved, classes can be invoked through class methods or variables by other Apex code, such as a trigger.
 
@@ -9372,14 +9429,14 @@ If an Apex class or trigger references components, such as a custom object, in i
 managed package referenced by the class are saved too. This ensures that as Apex, the API, and the components in managed packages
 evolve in subsequent released versions, a class or trigger is still bound to versions with specific, known behavior.
 
-Setting a version for an installed package determines the exposed interface and behavior of any Apex code in the installed package. This
-allows you to continue to reference Apex that may be deprecated in the latest version of an installed package, if you installed a version
-of the package before the code was deprecated.
+Setting a version for an installed package determines the exposed interface of any Apex code in the installed package. This allows you
+to continue to reference Apex that may be deprecated in the latest version of an installed package, if you installed a version of the
+package before the code was deprecated.
 
 Typically, you reference the latest Salesforce API version and each installed package version. If you save an Apex class or trigger without
-specifying the Salesforce API version, the class or trigger is associated with the latest installed version by default. If you save an Apex
-class or trigger that references a managed package without specifying a version of the managed package, the class or trigger is associated
-with the latest installed version of the managed package by default.
+specifying the Salesforce API version, the class or trigger is associated with the latest installed version by default. If you save or redeploy
+an Apex class or trigger that references a managed package without specifying a version of the managed package, the class or trigger
+is associated with the latest installed version of the managed package by default.
 
 Versioning of Apex Classes and Methods
 
@@ -9387,13 +9444,21 @@ When classes and methods are added to the Apex language, those classes and metho
 is saved with, regardless of the API version (Salesforce release) they were introduced in. For example, if a method was added in API
 version 33.0, you can use this method in a custom class saved with API version 33.0 or another class saved with API version 25.0.
 
-There is one exception to this rule. The classes and methods of the `[ConnectApi](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_connect_api.htm)` namespace are supported only in the API versions
+There is one exception to this rule. The classes and methods of the `[ConnectApi](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_connect_api.htm)` namespace are supported only in the API versions
 specified in the documentation. For example, if a class or method is introduced in API version 33.0, it is not available in earlier versions.
-For more information, see ConnectApi Versioning and Equality Checking on page 455.
+For more information, see ConnectApi Versioning and Equality Checking on page 459.
 
-##### 1. Setting the Salesforce API Version for Classes and Triggers
+Setting the Salesforce API Version for Classes and Triggers
 
-2. Setting Package Versions for Apex Classes and Triggers
+Setting Package Versions for Apex Classes and Triggers
+As a managed package subscriber, you can specify which package version that your managed Apex classes and triggers use.
+
+SEE ALSO:
+
+Use Apex Referenced by Managed Packages
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 ##### Setting the Salesforce API Version for Classes and Triggers
 
@@ -9402,9 +9467,6 @@ To set the Salesforce API and Apex version for a class or trigger:
 **1.** Edit either a class or trigger, and click **Version Settings** .
 
 **2.** Select the `Version` of the Salesforce API. This version is also the version of Apex associated with the class or trigger.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **3.** Click **Save** .
 
@@ -9488,31 +9550,49 @@ The following class is saved using Salesforce API version 16.0:
 
    }
 
-##### Setting Package Versions for Apex Classes and Triggers
-
 ```
-
-To configure the package version settings for a class or trigger:
-
-**1.** Edit either a class or trigger, and click **Version Settings** .
 
 
 Apex Developer Guide Classes, Objects, and Interfaces
 
-**2.** Select a `Version` for each managed package referenced by the class or trigger. This version of the managed package will continue
-to be used by the class or trigger if later versions of the managed package are installed, unless you manually update the version
-setting. To add an installed managed package to the settings list, select a package from the list of available packages. The list is only
-displayed if you have an installed managed package that is not already associated with the class or trigger.
+##### Setting Package Versions for Apex Classes and Triggers
 
-**3.** Click **Save** .
+As a managed package subscriber, you can specify which package version that your managed Apex classes and triggers use.
 
-Note the following when working with package version settings:
+Note: In Summer ’25 and later, package subscribers can use version settings to specify the version of a migrated second-generation
+managed package (2GP) that an Apex class or trigger depends on. This functionality is already available to first-generation managed
+[packages (1GP), but isn’t yet supported in 2GP packages that weren’t converted from a 1GP package. See Apex Version Settings](https://help.salesforce.com/s/articleView?id=005101483&type=1&language=en_US)
+[in Migrated Second-Generation Managed Packages (2GP).](https://help.salesforce.com/s/articleView?id=005101483&type=1&language=en_US)
 
-**•** If you save an Apex class or trigger that references a managed package without specifying a version of the managed package, the
-Apex class or trigger is associated with the latest installed version of the managed package by default.
+To configure the package version settings for a class or trigger:
 
-**•** You cannot **Remove** a class or trigger's version setting for a managed package if the package is referenced in the class or trigger.
-Use **Show Dependencies** to find where a managed package is referenced by a class or trigger.
+**1.** From Setup, enter _`Apex Classes`_ or _`Apex Triggers`_ in the Quick Find box, and then select **Apex Classes** or **Apex Triggers** .
+
+**2.** From the list, click **Edit** for the Apex class or trigger that you want to configure.
+
+**3.** Click the **Version Settings** tab.
+
+**4.** From the Version dropdown for the managed package, select the desired version referenced by the class or trigger.
+
+The class or trigger continues to use this version even if you install later versions of the managed package, unless you manually
+update the version setting.
+
+**5.** Click **Save** .
+
+When working with package version settings, keep these considerations in mind.
+
+**•** By default, an Apex class or trigger that references a managed package is associated with the version of the package installed when
+that class or trigger was last saved or deployed.
+
+**•** If a class or trigger references a managed package, you can’t remove the package’s version settings for that class or trigger. To find
+where the class or trigger references a managed package, on the class or trigger’s Detail page, click **Show Dependencies** .
+
+Tip: You can also set the package version for an Apex class or trigger through metadata deployments or with API requests. See
+Set Package Versions for Apex Classes and Triggers on page 766.
+
+SEE ALSO:
+
+Use Apex Referenced by Managed Packages
 
 #### Lists of Custom Types and Sorting
 
@@ -9529,11 +9609,14 @@ results depending on the user running the code, avoid using it in triggers or in
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Collator.htm)_ : Collator Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Collator.htm)_ : Collator Class
 
-_Apex Reference Guide_ [: Comparable Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_comparable.htm)
+_Apex Reference Guide_ [: Comparable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_comparable.htm)
 
-_Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_System_Comparator.htm)
+_Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_System_Comparator.htm)
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 #### Using Custom Types in Map Keys and Sets
 
@@ -9554,10 +9637,7 @@ Adding **`equals`** and **`hashCode`** Methods to Your Class
 To ensure that map keys of your custom type are compared correctly and their uniqueness can be determined consistently, provide an
 implementation of the following two methods in your class:
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-**•** The `[equals](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Object.htm#apex_System_Object_equals)` method with this signature:
+**•** The `[equals](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Object.htm#apex_System_Object_equals)` method with this signature:
 
 ```
      public Boolean equals(Object obj) {
@@ -9568,7 +9648,7 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
 ```
 
-**•** The `[hashCode](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Object.htm#apex_System_Object_hashCode)` method with this signature:
+**•** The `[hashCode](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Object.htm#apex_System_Object_hashCode)` method with this signature:
 
 ```
      public Integer hashCode() {
@@ -9612,6 +9692,12 @@ adds the same objects to it. It verifies that the set size is two, since only tw
 
         }
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
         return false;
 
       }
@@ -9645,12 +9731,6 @@ This code snippet makes use of the `PairNumbers` class.
 
    m.put(p3, 'third');
 
-```
-
-
-### Apex Developer Guide Working with Data in Apex
-
-```
    // Map size is 2 because the entry with
 
    // the duplicate key overwrote the first entry.
@@ -9699,16 +9779,17 @@ This code snippet makes use of the `PairNumbers` class.
 
    System.assertEquals(2, s1.size());
 
-### Working with Data in Apex
-
 ```
+
+
+### Apex Developer Guide Working with Data in Apex Working with Data in Apex
 
 You can add and interact with data in the Lightning Platform persistence layer. The sObject data type is the main data type that holds
 data objects. You’ll use Data Manipulation Language (DML) to work with data, and use query languages to retrieve data, such as the (),
 among other things.
 
-Working with sObjects
-In this developer guide, the term _`sObject`_ refers to any object that can be stored in the Lightning platform database.
+#### Working with sObjects
+##### In this developer guide, the term sObject refers to any object that can be stored in the Lightning platform database.
 
 Data Manipulation Language
 Apex enables you to insert, update, delete or restore data in the database. DML operations allow you to modify records one at a time
@@ -9723,9 +9804,6 @@ SOQL `for` loops iterate over all of the sObject records returned by a SOQL quer
 
 sObject Collections
 You can manage sObjects in lists, sets, and maps.
-
-
-Apex Developer Guide Working with Data in Apex
 
 Dynamic Apex
 
@@ -9761,6 +9839,9 @@ For example:
    MyCustomObject__c co = new MyCustomObject__c();
 
 ```
+
+
+Apex Developer Guide Working with Data in Apex
 
 Similar to SOAP API, Apex allows the use of the generic sObject abstract type to represent any object. The sObject data type can be used
 in code that processes different types of sObjects.
@@ -9799,9 +9880,6 @@ Because sObjects work like objects, you can also have the following:
 ```
 
 DML operations work on variables declared as the generic sObject data type as well as with regular sObjects.
-
-
-Apex Developer Guide Working with Data in Apex
 
 sObject variables are initialized to `null`, but can be assigned a valid object reference with the `new` operator. For example:
 
@@ -9851,9 +9929,12 @@ System-generated fields, such as `Created By` or `Last Modified Date`, cannot be
 engine generates an error. Additionally, formula field values and values for other fields that are read-only for the context user cannot be
 changed.
 
+
+Apex Developer Guide Working with Data in Apex
+
 If you use the generic SObject type instead of a specific object, such as Account, you can retrieve only the `Id` field using dot notation.
 You can set the `Id` field for Apex code saved using Salesforce API version 27.0 and later). Alternatively, you can use the generic SObject
-`put` and `get` [methods. See SObject Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject.htm)
+`put` and `get` [methods. See SObject Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm)
 
 This example shows how you can access the `Id` field and operations that aren’t allowed on generic SObjects.
 
@@ -9881,9 +9962,6 @@ This example shows how you can access the `Id` field and operations that aren’
 Note: If your organization has enabled person accounts, you have two different kinds of accounts: business accounts and person
 accounts. If your code creates a new account using `name`, a business account is created. If your code uses `LastName`, a person
 account is created.
-
-
-Apex Developer Guide Working with Data in Apex
 
 If you want to perform operations on an SObject, it is recommended that you first convert it into a specific object. For example:
 
@@ -9950,6 +10028,12 @@ the generic SObject record into a Contact, Lead, or Account, you can modify its 
 
              } else if (record.getSObjectType() == Lead.sObjectType){
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
                leads.add((Lead) record);
 
              } else if (record.getSObjectType() == Account.sObjectType) {
@@ -9975,11 +10059,8 @@ on an SObject, you can change a field that is set; you can’t change unset fiel
 
 Note: To erase the current value of a field, set the field to null.
 
-[If an Apex method takes an SObject parameter, you can use the System.isSet() method to identify the set fields. If you want to unset any](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_isSet)
+[If an Apex method takes an SObject parameter, you can use the System.isSet() method to identify the set fields. If you want to unset any](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_isSet)
 fields to retain their values, first create an SObject instance. Then apply only the fields you want to be part of the DML operation.
-
-
-Apex Developer Guide Working with Data in Apex
 
 This example code shows how SObject fields are identified as set or unset.
 
@@ -10030,12 +10111,15 @@ code to become invalid:
 
 **•** Making certain organization-wide changes, such as record sharing, field history tracking, or record types
 
+
+Apex Developer Guide Working with Data in Apex
+
 #### Data Manipulation Language
 
 Apex enables you to insert, update, delete or restore data in the database. DML operations allow you to modify records one at a time or
 in batches.
 
-How DML Works
+##### How DML Works
 
 Adding and Retrieving Data With DML
 Apex is tightly integrated with the Lightning Platform persistence layer. Records in the database can be inserted and manipulated
@@ -10052,9 +10136,6 @@ DML Operations As Atomic Transactions
 
 DML Operations
 Using DML, you can insert new records and commit them to the database. You can also update the field values of existing records.
-
-
-Apex Developer Guide Working with Data in Apex
 
 Exception Handling
 
@@ -10099,6 +10180,9 @@ Description field. If the list contains more than items, the 151st update return
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 This example is a modified version of the previous example that doesn't hit the governor limit. The DML operation is performed in bulk
 by calling `update` on a list of contacts. This code counts as one DML statement, which is far below the limit of 150.
 
@@ -10135,9 +10219,6 @@ Another DML governor limit is the total number of rows that can be processed by 
 All rows processed by all DML calls in the same transaction count incrementally toward this limit. For example, if you insert 100 contacts
 and update 50 contacts in the same transaction, your total DML processed rows are 150. You still have 9,850 rows left (10,000 - 150).
 
-
-Apex Developer Guide Working with Data in Apex
-
 System Context and Sharing Rules
 
 Most DML operations execute in system context, ignoring the current user's permissions, field-level security, organization-wide defaults,
@@ -10170,6 +10251,9 @@ Account sObject and assign it to a variable.
    Account a = new Account(Name='Account Example');
 
 ```
+
+
+Apex Developer Guide Working with Data in Apex
 
 In the previous example, the account referenced by the variable `a` exists in memory with the required `Name` field. However, it is not
 persisted yet to the Lightning Platform persistence layer. You need to call DML statements to persist sObjects to the database. Here is
@@ -10207,12 +10291,6 @@ to the database.
 
    a.Name = 'Account of the Day';
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    a.Industry = 'Technology';
 
    // Persist the changes.
@@ -10256,6 +10334,9 @@ This is an example of a DML statement to insert a new record.
    insert acctList;
 
 ```
+
+
+Apex Developer Guide Working with Data in Apex
 
 This is an equivalent example to the previous one but it uses a method of the Database class instead of the DML verb.
 
@@ -10304,9 +10385,6 @@ This is an equivalent example to the previous one but it uses a method of the Da
 
 ```
 
-
-Apex Developer Guide Working with Data in Apex
-
 One difference between the two options is that by using the Database class method, you can specify whether or not to allow for partial
 record processing if errors are encountered. You can do so by passing an additional second Boolean parameter. If you specify `false`
 for this parameter and if a record fails, the remainder of DML operations can still succeed. Also, instead of exceptions, a result object
@@ -10334,7 +10412,10 @@ emptying the Recycle Bin, and methods related to SOQL queries.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: Database Class Methods](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm)
+_Apex Reference Guide_ [: Database Class Methods](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm)
+
+
+Apex Developer Guide Working with Data in Apex
 
 ##### DML Operations As Atomic Transactions
 
@@ -10353,14 +10434,12 @@ transaction isn’t committed.
 
 Using DML, you can insert new records and commit them to the database. You can also update the field values of existing records.
 
-Inserting and Updating Records
+###### Inserting and Updating Records
+
 Using DML, you can insert new records and commit them to the database. Similarly, you can update the field values of existing
 records.
 
 Upserting Records
-
-
-Apex Developer Guide Working with Data in Apex
 
 Merging Records
 When you have duplicate lead, contact, case, or account records in the database, cleaning up your data and consolidating the records
@@ -10405,6 +10484,12 @@ is updated, and the update statement is called to persist the change in the data
 
       // Update account Acme2.
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       accountToUpdate =
 
         [SELECT BillingCity FROM Account
@@ -10442,9 +10527,6 @@ Inserting Related Records
 You can insert records related to existing records if a relationship has already been defined between the two objects, such as a lookup
 or master-detail relationship. A record is associated with a related record through a foreign key ID. For example, when inserting a new
 contact, you can specify the contact’s related account record by setting the value of the `AccountId` field.
-
-
-Apex Developer Guide Working with Data in Apex
 
 This example adds a contact to an account (the related record) by setting the `AccountId` field on the contact. Contact and Account
 are linked through a lookup relationship.
@@ -10491,6 +10573,10 @@ Updating Related Records
 Fields on related records can't be updated with the same call to the DML operation and require a separate DML call. For example, if
 inserting a new contact, you can specify the contact's related account record by setting the value of the `AccountId` field. However,
 you can't change the account's name without updating the account itself with a separate DML call. Similarly, when updating a contact,
+
+
+Apex Developer Guide Working with Data in Apex
+
 if you also want to update the contact’s related account, you must make two DML calls. The following example updates a contact and
 its related account using two `update` statements.
 
@@ -10531,18 +10617,16 @@ its related account using two `update` statements.
 
    }
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
 ####### Relating Records by Using an External ID
+```
 
 Add related records by using a custom external ID field on the parent record. Associating records through the external ID field is an
 alternative to using the record ID. You can add a related record to another record only if a relationship (such as master-detail or
 lookup) has been defined for the objects involved.
 
-####### Creating Parent and Child Records in a Single Statement Using Foreign Keys Relating Records by Using an External ID
+Creating Parent and Child Records in a Single Statement Using Foreign Keys
+
+####### Relating Records by Using an External ID
 
 Add related records by using a custom external ID field on the parent record. Associating records through the external ID field is an
 alternative to using the record ID. You can add a related record to another record only if a relationship (such as master-detail or lookup)
@@ -10570,6 +10654,12 @@ Before the new opportunity is inserted, the account record is added to this oppo
 
       CloseDate=Date.today().addDays(7));
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    // Create the parent record reference.
 
    // An account with external ID = 'SAP111111' already exists.
@@ -10606,9 +10696,6 @@ creating the parent record first, querying its ID, and then creating the child r
 **•** Create the parent reference sObject used only for setting the parent foreign key reference on the child sObject. This sObject has only
 the external ID field defined and no other fields set.
 
-
-Apex Developer Guide Working with Data in Apex
-
 **•** Set the foreign key field of the child sObject to the parent reference sObject you just created.
 
 **•** Create another parent sObject to be passed to the `insert` statement. This sObject must have the required fields (and optionally
@@ -10618,7 +10705,7 @@ other fields) set in addition to the external ID field.
 the array index of the parent must be lower than the child’s index.
 
 You can create related records that are up to 10 levels deep. Also, the related records created in a single call must have different sObject
-[types. For more information, see Creating Records for Different Object Types in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_create.htm#MixedSaveSection) _SOAP API Developer Guide_ .
+[types. For more information, see Creating Records for Different Object Types in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_create.htm#MixedSaveSection) _SOAP API Developer Guide_ .
 
 The following example shows how to create an opportunity with a parent account using the same `insert` statement. The example
 creates an Opportunity sObject and populates some of its fields, then creates two Account objects. The first account is only for the foreign
@@ -10649,6 +10736,12 @@ first error if record creation fails. This sample requires an external ID text f
 
         // Used only for foreign key reference
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         // and doesn't contain any other fields.
 
         Account accountReference = new Account(
@@ -10695,12 +10788,6 @@ first error if record creation fails. This sample requires an external ID text f
 
               + results[i].getErrors()[0].getMessage() + '\n');
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
            }
 
         }
@@ -10739,6 +10826,12 @@ account in San Francisco:
 
    for (Account a : acctsList) {
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       a.BillingCity = 'Mumbai';
 
    }
@@ -10759,7 +10852,7 @@ account in San Francisco:
 
 ```
 
-Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
+Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
 
 This next example uses the `Database.upsert` method to upsert a collection of leads that are passed in. This example allows for
 partial processing of records, that is, in case some records fail processing, the remaining records are still inserted or updated. It iterates
@@ -10781,12 +10874,6 @@ bulk inserted. This example is followed by a test class that contains a test met
 
        operation */
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
      public static List<Database.upsertResult> upsertLeads(List<Lead> leads) {
 
        /* Perform the upsert. In this case the unique identifier for the
@@ -10833,6 +10920,12 @@ Apex Developer Guide Working with Data in Apex
 
        List<Lead> leads = new List<Lead>();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
        /* Create a set of leads for testing */
 
        for(Integer i = 0;i < 100; i++) {
@@ -10871,12 +10964,6 @@ Apex Developer Guide Working with Data in Apex
 
        /* Assert that exactly one task exists for each lead that was inserted. */
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
        for(Lead l:[SELECT Id, (SELECT Subject FROM Tasks) FROM Lead WHERE Id IN :ids]) {
 
          System.assertEquals(1,l.tasks.size());
@@ -10919,6 +11006,12 @@ Note: External ID fields used in upsert calls must be unique or the user must ha
 
       for (OpportunityLineItem lineItem:opp.OpportunityLineItems) {
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         //This code populates the line item Id, AccountId, and Product2Id for each asset
 
         Asset asset = new Asset(Name = lineItem.PricebookEntry.Name,
@@ -10958,9 +11051,6 @@ Note: External ID fields used in upsert calls must be unique or the user must ha
 When you have duplicate lead, contact, case, or account records in the database, cleaning up your data and consolidating the records
 is a good idea. You can merge up to three records of the same sObject type. The `merge` operation merges the duplicate records into
 the main record, deletes the duplicate records, and reparents any related records.
-
-
-Apex Developer Guide Working with Data in Apex
 
 Use the **`merge`** Statement
 
@@ -11007,6 +11097,12 @@ main record remains in the database.
 
    }
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    // After the account is merged with the main account,
 
    // the related contact is moved to the main record.
@@ -11045,12 +11141,6 @@ Note: To use the AccountContactRelation sObject in this example, enable the “A
 
    Account main = new Account(Name='Account1');
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    insert main;
 
    // Create duplicate accounts
@@ -11091,6 +11181,12 @@ Apex Developer Guide Working with Data in Apex
 
       if (res.isSuccess()) {
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         // Get the main record ID from the result and validate it
 
         System.debug('Main record ID: ' + res.getId());
@@ -11131,12 +11227,6 @@ Apex Developer Guide Working with Data in Apex
 
         if (c.id == res.getUpdatedRelatedIds()[0] || c.id == res.getUpdatedRelatedIds()[1]
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
     )
 
            flag2 = true;
@@ -11167,7 +11257,7 @@ Merge Considerations
 
 When merging sObject records, consider these rules and guidelines:
 
-**•** Only leads, contacts, cases, and accounts can be merged. See sObjects That Don’t Support DML Operations on page 161.
+**•** Only leads, contacts, cases, and accounts can be merged. See sObjects That Don’t Support DML Operations on page 163.
 
 **•** You can pass a main record and up to two additional sObject records to a single `merge` method.
 
@@ -11177,6 +11267,9 @@ operation regardless of the field value on the duplicate record. To preserve a f
 field value on the main record before performing the merge.
 
 **•** External ID fields can’t be used with `merge` .
+
+
+Apex Developer Guide Working with Data in Apex
 
 ###### Deleting Records
 
@@ -11205,15 +11298,12 @@ The following example deletes all accounts that are named 'DotCom':
 
 ```
 
-Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
+Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
 
 Referential Integrity When Deleting and Restoring Records
 
 The `delete` operation supports cascading deletions. If you delete a parent object, you delete its children automatically, as long as
 each child record can be deleted.
-
-
-Apex Developer Guide Working with Data in Apex
 
 For example, if you delete a case record, Apex automatically deletes any CaseComment, CaseHistory, and CaseSolution records associated
 with that case. However, if a particular child record is not deletable or is currently being used, then the `delete` operation on the parent
@@ -11246,6 +11336,9 @@ list on an account)
 
 Note: Salesforce only restores lookup relationships that have not been replaced. For example, if an asset is related to a different
 product prior to the original product record being undeleted, that asset-product relationship is not restored.
+
+
+Apex Developer Guide Working with Data in Apex
 
 ###### Restoring Deleted Records
 
@@ -11283,10 +11376,7 @@ level and aggregate relationships, including deleted records and archived activi
 
 ```
 
-Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
-
-
-Apex Developer Guide Working with Data in Apex
+Note: For more information on processing `DmlException` [s, see Bulk DML Exception Handling.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
 
 Undelete Considerations
 
@@ -11319,6 +11409,9 @@ search for accounts that match the lead name, as in the following example:
      SELECT Id, Name FROM Account WHERE Name='CompanyNameOfLeadBeingMerged'
 
 ```
+
+
+Apex Developer Guide Working with Data in Apex
 
 **3.** Optionally, your application determines the IDs of the contact or contacts into which to merge the lead. The application can use
 SOQL to search for contacts that match the lead contact name, as in the following example:
@@ -11358,12 +11451,6 @@ that the conversion was successful.
 
    lc.setLeadId(myLead.id);
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    LeadStatus convertStatus = [SELECT Id, ApiName FROM LeadStatus WHERE IsConverted=true LIMIT
 
     1];
@@ -11392,6 +11479,9 @@ lead conversion. The default record type of the user converting the lead determi
 If the desired lead source values are not available, add the values to the default record type of the user converting the lead. For more
 information about record types, see Salesforce Help.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** Picklist values: The system assigns the default picklist values for the account, contact, and opportunity when mapping any standard
 lead picklist fields that are blank. If your organization uses record types, blank values are replaced with the default picklist values of
 the new record owner.
@@ -11406,7 +11496,7 @@ on the user's home page. This is a useful way to stay up-to-date with changes to
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm)_ : Database Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm)_ : Database Class
 
 ##### Exception Handling
 
@@ -11428,12 +11518,13 @@ can handle the exceptions in your code by wrapping your DML statements within tr
 
    }
 
+###### Database Class Method Result Objects
+
 ```
 
+Returned Database Errors
 
-Apex Developer Guide Working with Data in Apex
-
-###### Database Class Method Result Objects Returned Database Errors Database Class Method Result Objects
+###### Database Class Method Result Objects
 
 Database class methods return the results of the data operation. These result objects contain useful information about the data operation
 for each record, such as whether the operation was successful or not, and any error information. Each type of operation returns a specific
@@ -11441,19 +11532,22 @@ result object type, as outlined below.
 
 **Operation** **Result Class**
 
-insert, update [SaveResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database_saveresult.htm)
+insert, update [SaveResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_saveresult.htm)
 
-upsert [UpsertResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database_upsertresult.htm)
+upsert [UpsertResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_upsertresult.htm)
 
-merge [MergeResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_database_mergeresult.htm)
+merge [MergeResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_database_mergeresult.htm)
 
-delete [DeleteResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database_deleteresult.htm)
+delete [DeleteResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_deleteresult.htm)
 
-undelete [UndeleteResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database_undeleteresult.htm)
+undelete [UndeleteResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_undeleteresult.htm)
 
-convertLead [LeadConvertResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_database_leadconvertresult.htm)
+convertLead [LeadConvertResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_database_leadconvertresult.htm)
 
-emptyRecycleBin [EmptyRecycleBinResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database_EmptyRecycleBinResult.htm)
+emptyRecycleBin [EmptyRecycleBinResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_EmptyRecycleBinResult.htm)
+
+
+Apex Developer Guide Working with Data in Apex
 
 ###### Returned Database Errors
 
@@ -11494,12 +11588,6 @@ through the errors, writing error information to the debug log.
 
         for(Database.Error err : sr.getErrors()) {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
            System.debug('The following error has occurred.');
 
            System.debug(err.getStatusCode() + ': ' + err.getMessage());
@@ -11518,7 +11606,7 @@ Apex Developer Guide Working with Data in Apex
 
 Here are some things you may want to know about using Data Manipulation Language.
 
-###### Setting DML Options
+Setting DML Options
 
 Transaction Control
 Read about transaction requests, generating and releasing savepoints, rolling back transactions, and more.
@@ -11532,6 +11620,9 @@ For example, you can’t update an account and a user role in a single transacti
 sObjects That Don’t Support DML Operations
 
 Bulk DML Exception Handling
+
+
+Apex Developer Guide Working with Data in Apex
 
 Things You Should Know about Data in Apex
 
@@ -11569,9 +11660,6 @@ The `Database.DMLOptions` class has the following properties:
 
 **•** `optAllOrNone` Property
 
-
-Apex Developer Guide Working with Data in Apex
-
 DMLOptions is only available for Apex saved against API versions 15.0 and higher. DMLOptions settings take effect only for record
 operations performed using Apex DML and not through the Salesforce user interface.
 
@@ -11599,6 +11687,9 @@ The `assignmentRuleHeader` property specifies the assignment rule to be used whe
 Note: The Database.DMLOptions object supports assignment rules for cases and leads, but not for accounts.
 
 Using the `assignmentRuleHeader` property, you can set these options:
+
+
+Apex Developer Guide Working with Data in Apex
 
 **•** `assignmentRuleID` : The ID of an assignment rule for the case or lead. The assignment rule can be active or inactive. The ID
 can be retrieved by querying the AssignmentRule sObject. If specified, do not specify `useDefaultRule` . If the value is not in
@@ -11641,9 +11732,6 @@ Note: If there are no assignment rules in the organization, in API version 29.0 
 `useDefaultRule` set to `true` results in the case or lead being assigned to the predefined default owner. In API version 30.0
 and later, the case or lead is unassigned and doesn't get assigned to the default owner.
 
-
-Apex Developer Guide Working with Data in Apex
-
 **`duplicateRuleHeader`** Property
 
 The `duplicateRuleHeader` property determines whether a record that’s identified as a duplicate can be saved. Duplicate rules
@@ -11654,7 +11742,7 @@ Using the `duplicateRuleHeader` property, you can set these options.
 **•** `allowSave` : Indicates whether a record that’s identified as a duplicate can be saved.
 
 The following example shows how to save an account record that’s been identified as a duplicate. To learn how to iterate through
-[duplicate errors, see DuplicateError Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Database_DuplicateError.htm)
+[duplicate errors, see DuplicateError Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Database_DuplicateError.htm)
 
 ```
    Database.DMLOptions dml = new Database.DMLOptions();
@@ -11682,6 +11770,9 @@ The Salesforce user interface allows you to specify whether or not to send an em
 **•** Conversion of a case email to a contact
 
 **•** New user email notification
+
+
+Apex Developer Guide Working with Data in Apex
 
 **•** Lead queue email notification
 
@@ -11715,12 +11806,6 @@ In the following example, the `triggerAutoResponseEmail` option is specified:
 ```
    Account a = new Account(name='Acme Plumbing');
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    insert a;
 
    Contact c = new Contact(email='jplumber@salesforce.com', firstname='Joe',lastname='Plumber',
@@ -11750,6 +11835,9 @@ group event email sent through Apex:
 **•** Email sent when updating or deleting a group event also respects the `triggerUserEmail` and `triggerOtherEmail`
 options, as appropriate
 
+
+Apex Developer Guide Working with Data in Apex
+
 **`localeOptions`** Property
 
 The `localeOptions` property specifies the language of any labels that are returned by Apex. The value must be a valid user locale
@@ -11778,10 +11866,6 @@ Generating Savepoints and Rolling Back Transactions
 
 Sometimes during the processing of records, your business rules require that partial work (already executed DML statements) is rolled
 back so that the processing can continue in another direction. Apex gives you the ability to generate a _savepoint_, that is, a point in the
-
-
-Apex Developer Guide Working with Data in Apex
-
 request that specifies the state of the database at that time. Any DML statement that occurs after the savepoint can be discarded, restoring
 the database to the condition it was in when you generated the savepoint. All table and row locks acquired since the savepoint are
 released.
@@ -11807,6 +11891,9 @@ count toward the DML statement limit. This behavior applies to all API versions.
 created before the rollback fails because the sObject variable has an ID. Updating or upserting the sObject using the same variable
 also fails because the sObject isn’t in the database and, thus, can’t be updated. To perform further DML operations, create an sObject
 variable without setting its ID.
+
+
+Apex Developer Guide Working with Data in Apex
 
 The following is an example using the `setSavepoint` and `rollback` Database methods.
 
@@ -11845,7 +11932,7 @@ To allow callouts, roll back all uncommitted DML by using a savepoint. Then use 
 to explicitly release savepoints before making the desired callout. When `Database.releaseSavepoint()` is called,
 `SAVEPOINT_RELEASE` is logged.
 
-See `[releaseSavepoint()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_releaseSavepoint)` for more information.
+See `[releaseSavepoint()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_releaseSavepoint)` for more information.
 
 In this example, the `makeACallout()` callout succeeds because the uncommitted DML is rolled back and the savepoint is released.
 
@@ -11862,12 +11949,6 @@ In this example, the `makeACallout()` callout succeeds because the uncommitted D
 
    } catch (Exception ex) {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
      Database.rollback(sp);
 
      Database.releaseSavepoint(sp);
@@ -11912,6 +11993,12 @@ transaction before the callout is made or the transaction must be committed.
 
      makeACallout();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    } catch (System.CalloutException ex) {
 
      Assert.isTrue(ex.getMessage().contains('You have uncommitted work pending. Please commit
@@ -11945,9 +12032,6 @@ uncommitted DML or the changes were rolled back to a savepoint. Also, before API
 `Database.rollback(databaseSavepoint)` and `Database.setSavepoint()` calls incremented the DML row
 usage limit.
 
-
-Apex Developer Guide Working with Data in Apex
-
 ###### sObjects That Can’t Be Used Together in DML Operations
 
 DML operations on certain sObjects, sometimes referred to as setup objects, can’t be mixed with DML on non-setup sObjects in the
@@ -11980,6 +12064,9 @@ Note: With legacy Apex code saved using Salesforce API version 14.0 and earlier,
 with other sObjects in the same transaction.
 
 **•** ObjectPermissions
+
+
+Apex Developer Guide Working with Data in Apex
 
 **•** ObjectTerritory2AssignmentRule
 
@@ -12018,9 +12105,6 @@ aren’t updated:
 
 **–** `IsActive`
 
-
-Apex Developer Guide Working with Data in Apex
-
 **–** `ForecastEnabled`
 
 **–** `IsPortalEnabled`
@@ -12048,6 +12132,9 @@ You can perform DML operations on more than one type of sObject in a single clas
 **2.** Create a second method that uses the `future` annotation to manipulate a second sObject type.
 
 This process is demonstrated in the example in the next section.
+
+
+Apex Developer Guide Working with Data in Apex
 
 Example: Using a Future Method to Perform Mixed DML Operations
 
@@ -12106,12 +12193,6 @@ This example shows how to perform mixed DML operations by using a future method 
 
            timezonesidkey='America/Los_Angeles',
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
            username=uname);
 
         insert u;
@@ -12136,6 +12217,9 @@ in an asynchronous job that your test method calls. These techniques enable you,
 sObjects in the same test.
 
 The setup sObjects are listed in sObjects That Cannot Be Used Together in DML Operations.
+
+
+Apex Developer Guide Working with Data in Apex
 
 Note: Because validation for mixed DML operations is skipped during deployment, there can be a difference in the number of
 test failures when tests are deployed versus when run in the user interface.
@@ -12193,9 +12277,6 @@ operation.
 
 ```
 
-
-Apex Developer Guide Working with Data in Apex
-
 **Use** **`@future`** **to Bypass the Mixed DML Error in a Test Method**
 
 Mixed DML operations within a single transaction aren’t allowed. You can’t perform DML on a setup sObject and another sObject in the
@@ -12233,6 +12314,12 @@ or in the original transaction. This class contains an `@future` method to be ca
 
         insert(futureUser);
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       }
 
    }
@@ -12287,9 +12374,6 @@ such objects:
 
 **•** CurrencyType
 
-
-Apex Developer Guide Working with Data in Apex
-
 **•** DatedConversionRate
 
 **•** NetworkMember (allows `update` only)
@@ -12318,11 +12402,14 @@ The following are special cases of DML operations on objects.
 
 **•** If an Account record has a record type of Person Account, the Name field can’t be modified with DML operations.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** All standard and custom objects can also be accessed through the SOAP API. ProcessInstance is an exception. You can’t create,
 update, or delete ProcessInstance in the SOAP API.
 
 **•** DML operations aren't supported on Data Cloud data model objects (DMOs). For details on using Apex with Data Cloud objects, see
-[Data Cloud in Apex.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/DataCloudInApex.htm)
+[Data Cloud in Apex.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/DataCloudInApex.htm)
 
 **•** To determine if DML is supported on your specific object, use the `Schema.describeSObjects()` method as shown in this
 sample code.
@@ -12365,9 +12452,6 @@ of a Database DML method was specified as `false`, the runtime engine attempts a
 **1.** During the first attempt, the runtime engine processes all records. Any record that generates an error due to issues such as
 validation rules or unique index violations is set aside.
 
-
-Apex Developer Guide Working with Data in Apex
-
 **2.** If there were errors during the first attempt, the runtime engine makes a second attempt that includes only those records that
 didn’t generate errors. All records that didn't generate an error during the first attempt are processed, and if any record generates
 an error (perhaps because of race conditions) it’s also set aside.
@@ -12383,6 +12467,9 @@ Governors and Limits on page 346.
 
 **–** Apex triggers are fired for the first save attempt, and if errors are encountered for some records and subsequent attempts
 are made to save the subset of successful records, triggers are refired on this subset of records.
+
+
+Apex Developer Guide Working with Data in Apex
 
 ###### Things You Should Know about Data in Apex
 
@@ -12430,9 +12517,6 @@ When inserting new records, system fields such as `CreatedDate`, `CreatedById`, 
 updated. You cannot explicitly specify these values in your Apex. Similarly, when updating records, system fields such as
 `LastModifiedDate`, `LastModifiedById`, and `SystemModstamp` are automatically updated.
 
-
-Apex Developer Guide Working with Data in Apex
-
 **Maximum Number of Records Processed by DML Statement**
 You can pass a maximum of 10,000 sObject records to a single `insert`, `update`, `delete`, and `undelete` method.
 
@@ -12441,7 +12525,7 @@ is subject to the runtime limits for `insert` and `update`, respectively. For ex
 all of them are being updated, you receive an error. (See Execution Governors and Limits on page 346)
 
 **Upsert and Foreign Keys**
-[You can use foreign keys to upsert sObject records if they have been set as reference fields. For more information, see Field Types](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/field_types.htm)
+[You can use foreign keys to upsert sObject records if they have been set as reference fields. For more information, see Field Types](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/field_types.htm)
 in the _Object Reference for Salesforce._
 
 **Creating Records for Multiple Object Types**
@@ -12452,6 +12536,10 @@ types in one call.
 
 Records are saved in the same order that they’re entered in the sObject input array. If you’re entering new records that have a
 parent-child relationship, the parent record must precede the child record in the array. For example, if you’re creating a contact that
+
+
+Apex Developer Guide Working with Data in Apex
+
 references an account that’s also being created in the same call, the account must have a smaller index in the array than the contact
 does. The contact references the account by using an `External ID` field.
 
@@ -12482,8 +12570,8 @@ Salesforce splits the records into five chunks:
 **5.** `contact4`
 
 Each call can process up to 10 chunks. If the sObject array contains more than 10 chunks, you must process the records in more than
-[one call. For additional information about this feature, see Creating Records for Different Object Types in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_create.htm#MixedSaveTitle) _[SOAP API Developer](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_quickstart_intro.htm)_
-_[Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_quickstart_intro.htm)_ .
+[one call. For additional information about this feature, see Creating Records for Different Object Types in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_create.htm#MixedSaveTitle) _[SOAP API Developer](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_quickstart_intro.htm)_
+_[Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_quickstart_intro.htm)_ .
 
 Note: For Apex, the chunking of the input array for an insert or update DML operation has two possible causes: the existence
 of multiple object types or the default chunk size of 200. If chunking in the input array occurs because of both of these reasons,
@@ -12494,9 +12582,6 @@ by 1,001 consecutive contacts, the array will be chunked into 12 groups: Two gro
 Lead and Contact, and the remaining are due to the default chunking size of 200 objects. In this case, the insert or update
 operation returns an error because you reached the limit of 10 chunks in hybrid arrays. The workaround is to call the DML
 operation for each object type separately.
-
-
-Apex Developer Guide Working with Data in Apex
 
 **DML and Knowledge Objects**
 To execute DML code on knowledge articles (KnowledgeArticleVersion types such as the custom FAQ__kav article type), the running
@@ -12519,6 +12604,12 @@ article. A non-administrator non-knowledge user who calls the `doNothing` method
 
        FAQ__kav[] articles = [SELECT Id FROM FAQ__kav WHERE PublishStatus = 'Draft' and
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
      Language = 'en_US'];
 
        update articles;
@@ -12565,9 +12656,6 @@ Avoiding Deadlocks
 In Apex, you can use `FOR UPDATE` to lock sObject records while they’re being updated in order to prevent race conditions and other
 thread safety problems.
 
-
-Apex Developer Guide Working with Data in Apex
-
 While an sObject record is locked, no other client or user is allowed to make updates either through code or the Salesforce user interface.
 The client locking the records can perform logic on the records and make updates with the guarantee that the locked records won’t be
 changed by another client during the lock period. The lock gets released when the transaction completes.
@@ -12590,6 +12678,10 @@ records. Other clients can still query the same records while they’re locked.
 
 **•** If you attempt to lock a record currently locked by another client, your process waits a maximum of 10 seconds for the lock to be
 released before acquiring a new lock. If the wait time exceeds 10 seconds, a `QueryException` is thrown. Similarly, if you attempt
+
+
+Apex Developer Guide Working with Data in Apex
+
 to update a record currently locked by another client and the lock isn’t released within a maximum of 10 seconds, a `DmlException`
 is thrown.
 
@@ -12634,9 +12726,6 @@ in the SOAP API.
 Note that there is no `commit` statement. If your Apex trigger completes successfully, any database changes are automatically committed.
 If your Apex trigger does not complete successfully, any changes made to the database are rolled back.
 
-
-Apex Developer Guide Working with Data in Apex
-
 ###### Avoiding Deadlocks
 
 Apex has the possibility of deadlocks, as does any other procedural logic language involving updates to multiple database tables or
@@ -12657,6 +12746,9 @@ by surrounding the statement in square brackets.
 SOQL Statements
 
 SOQL statements evaluate to a list of sObjects, a single sObject, or an Integer for `count` method queries.
+
+
+Apex Developer Guide Working with Data in Apex
 
 For example, you could retrieve a list of accounts that are named Acme:
 
@@ -12709,16 +12801,13 @@ You can also operate on the results using standard arithmetic:
 
 SOQL limits apply when executing SOQL queries. See Execution Governors and Limits.
 
-For a full description of SOQL query syntax, see the _[Salesforce SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/)_ .
+For a full description of SOQL query syntax, see the _[Salesforce SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/)_ .
 
 SOSL Statements
 
 SOSL statements evaluate to a list of lists of sObjects, where each list contains the search results for a particular sObject type. The result
 lists are always returned in the same order as they were specified in the SOSL query. If a SOSL query doesn’t return any records for a
 specified sObject type, the search results include an empty list for that sObject.
-
-
-Apex Developer Guide Working with Data in Apex
 
 For example, you can return a list of accounts, contacts, opportunities, and leads that begin with the phrase map:
 
@@ -12748,6 +12837,9 @@ Note: Apex that is running in system mode ignores field-level security while sca
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 From `searchList`, you can create arrays for each object returned:
 
 ```
@@ -12766,9 +12858,9 @@ SOSL limits apply when executing SOSL queries. See Execution Governors and Limit
 Note: The 4,000 characters limit for WHERE clause strings doesn’t apply to SOQL queries in Apex if the WHERE clause includes
 the IN operator.
 
-For a full description of SOSL query syntax, see the _[Salesforce SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/)_ .
+For a full description of SOSL query syntax, see the _[Salesforce SOQL and SOSL Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/)_ .
 
-1. Working with SOQL and SOSL Query Results
+##### 1. Working with SOQL and SOSL Query Results
 
 2. Accessing sObject Fields Through Relationships
 
@@ -12791,9 +12883,6 @@ example, the `Who` relationship field of a Task can be a Contact or a Lead.
 9. Using Apex Variables in SOQL and SOSL Queries
 
 10. Querying All Records with a SOQL Statement
-
-
-Apex Developer Guide Working with Data in Apex
 
 ##### Working with SOQL and SOSL Query Results
 
@@ -12825,6 +12914,9 @@ the select statement, after `Id` .
    String name = [SELECT Id, Name FROM Account WHERE Name = 'Singha' LIMIT 1].Name;
 
 ```
+
+
+Apex Developer Guide Working with Data in Apex
 
 Even if only one sObject field is selected, a SOQL or SOSL query always returns data as complete records. Consequently, you must
 dereference the field in order to access it. For example, this code retrieves an sObject list from the database with a SOQL query, accesses
@@ -12871,12 +12963,9 @@ access data from the account. The reference field is only populated as the resul
 For example, the following Apex code shows how an account and a contact can be associated with one another, and then how the
 contact can be used to modify a field on the account:
 
-
-Apex Developer Guide Working with Data in Apex
-
 Note: To provide the most complete example, this code uses some elements that are described later in this guide:
 
-**•** For information on `insert` and `update` [, see Insert Statement and Update Statement.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_dml_section.htm)
+**•** For information on `insert` and `update` [, see Insert Statement and Update Statement.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_dml_section.htm)
 
 ```
    Account a = new Account(Name = 'Acme');
@@ -12907,6 +12996,12 @@ Note: To provide the most complete example, this code uses some elements that ar
 
    // To update the database, the two types of records must be
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    // updated separately
 
    update c; // This only changes the contact's last name
@@ -12956,12 +13051,6 @@ execution limits, see Execution Governors and Limits on page 346.
 
       Contact c = new Contact(Account = refAcct.Id);
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       insert c;
 
 ##### Understanding Foreign Key and Parent-Child Relationship SOQL Queries
@@ -12993,6 +13082,12 @@ Additionally, parent-child relationships in sObjects act as SOQL queries as well
 
    //The following example also works because we limit to only 1 contact
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    for (Account a : [SELECT Id, Name, (SELECT LastName FROM Contacts LIMIT 1)
 
               FROM Account
@@ -13009,7 +13104,7 @@ Additionally, parent-child relationships in sObjects act as SOQL queries as well
 
 Aggregate functions in SOQL, such as `SUM()` and `MAX()`, allow you to roll up and summarize your data in a query.
 
-For more information on aggregate functions, see _Aggregate Functions_ [in the Salesforce SOQL and SOSL Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_agg_functions.htm)
+For more information on aggregate functions, see _Aggregate Functions_ [in the Salesforce SOQL and SOSL Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_agg_functions.htm)
 
 You can use aggregate functions without using a `GROUP BY` clause. For example, you could use the `AVG()` aggregate function to
 find the average `Amount` for all your opportunities.
@@ -13048,12 +13143,9 @@ you could find the average `Amount` for all your opportunities by campaign.
 
 ```
 
-
-Apex Developer Guide Working with Data in Apex
-
 Any aggregated field in a `SELECT` list that does not have an alias automatically gets an implied alias with a format `expr` _**`i`**_, where _`i`_
 denotes the order of the aggregated fields with no explicit aliases. The value of _`i`_ starts at 0 and increments for every aggregated field
-with no explicit alias. For more information, see _Using Aliases with_ _`GROUP BY`_ [in the Salesforce SOQL and SOSL Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/)
+with no explicit alias. For more information, see _Using Aliases with_ _`GROUP BY`_ [in the Salesforce SOQL and SOSL Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/)
 
 Note: Queries that include aggregate functions are still subject to the limit on total number of query rows. All aggregate functions
 other than `COUNT()` or `COUNT(fieldname)` include each row used by the aggregation as a query row for the purposes
@@ -13062,7 +13154,7 @@ of limit tracking.
 For `COUNT()` or `COUNT(fieldname)` queries, limits are counted as one query row, unless the query contains a GROUP BY
 clause, in which case one query row per grouping is consumed.
 
-For information about the limits that apply to queries with `for` loop, see SOQL For Loops on page 179.
+For information about the limits that apply to queries with `for` loop, see SOQL For Loops on page 180.
 
 ##### Working with Very Large SOQL Queries
 
@@ -13071,6 +13163,9 @@ terms to avoid any effect on customer implementations.
 
 Your SOQL query sometimes returns so many sObjects that the limit on heap size is exceeded and an error occurs. To resolve, use a SOQL
 query `for` loop instead, since it can process multiple batches of records by using internal calls to `query` and `queryMore` .
+
+
+Apex Developer Guide Working with Data in Apex
 
 For example, if the results are too large, this syntax causes a runtime exception:
 
@@ -13115,8 +13210,8 @@ Instead, use a SOQL query `for` loop as in one of the following examples:
 ```
 
 Note: Using the SOQL query within the `for` loop reduces the possibility of reaching the limit on heap size. However, this approach
-[can result in more CPU cycles being used with increased DML calls. For more information, see SOQL For Loops Versus Standard](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_loops_for_SOQL.htm#soql_for_loop_desc)
-[SOQL Queries.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_loops_for_SOQL.htm#soql_for_loop_desc)
+[can result in more CPU cycles being used with increased DML calls. For more information, see SOQL For Loops Versus Standard](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_loops_for_SOQL.htm#soql_for_loop_desc)
+[SOQL Queries.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_loops_for_SOQL.htm#soql_for_loop_desc)
 
 The following example demonstrates a SOQL query `for` loop that’s used to mass update records. Suppose that you want to change
 the last name of a contact in records for contacts whose first and last names match specified criteria:
@@ -13132,12 +13227,6 @@ the last name of a contact in records for contacts whose first and last names ma
 
            if (c.FirstName == 'Barbara' &&
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
             c.LastName == 'Gordon') {
 
              c.LastName = 'Wayne';
@@ -13157,7 +13246,7 @@ Apex Developer Guide Working with Data in Apex
 Instead of using a SOQL query in a `for` loop, the preferred method of mass updating records is to use batch Apex, which minimizes
 the risk of hitting governor limits.
 
-For more information, see SOQL For Loops on page 179.
+For more information, see SOQL For Loops on page 180.
 
 More Efficient SOQL Queries
 
@@ -13168,6 +13257,9 @@ For best performance, SOQL queries must be selective, particularly for queries i
 **•** A query is selective when one of the query filters is on an indexed field and the query filter reduces the resulting number of rows
 below a system-defined threshold. The performance of the SOQL query improves when two or more filters used in the WHERE
 clause meet the mentioned conditions.
+
+
+Apex Developer Guide Working with Data in Apex
 
 **•** As a best practice, a query is considered selective when a query filter on an indexed field matches less than 10% of the total
 rows.
@@ -13212,9 +13304,6 @@ operator requires a full scan of the index. This threshold is subject to change.
 However, there are other complex scenarios in which custom indexes can’t be used. Contact your Salesforce representative if
 your scenario isn't covered by these cases or if you need further assistance with non-selective queries.
 
-
-Apex Developer Guide Working with Data in Apex
-
 **Examples of Selective SOQL Queries**
 To better understand whether a query on a large object is selective or not, let's analyze some queries. For these queries, assume that
 there are more than 1 million records for the Account sObject. These records include soft-deleted records, that is, deleted records
@@ -13248,6 +13337,9 @@ Query 3:
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Here we have to see if any filter, when considered individually, is selective. As we saw in the previous example, the first filter isn't
 selective. So let's focus on the second one. If the count of records returned by `SELECT COUNT() FROM Account WHERE`
 `CustomField__c = 'ValueA'` is lower than the selectivity threshold, and CustomField__c is indexed, the query is selective.
@@ -13278,16 +13370,13 @@ This usage is supported with the following Apex types, methods, or operators:
 
 **•** `Database.query` method.
 
-**•** [Safe Navigation Operator. See Safe Navigation Operator.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_SafeNavigationOperator.htm)
+**•** [Safe Navigation Operator. See Safe Navigation Operator.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SafeNavigationOperator.htm)
 
-**•** [Null Coalescing Operator. See Null Coalescing Operator.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_NullCoalescingOperator.htm)
+**•** [Null Coalescing Operator. See Null Coalescing Operator.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_NullCoalescingOperator.htm)
 
 **•** `Map.values` .
 
 Warning: Although currently supported, Salesforce recommends against using this feature with `Map.values` .
-
-
-Apex Developer Guide Working with Data in Apex
 
 ##### Improve Performance by Avoiding Null Values
 
@@ -13325,6 +13414,12 @@ In the following example, any records where the `Thread__c` value is null are el
 
        for(CSO_CaseThread_Tag__c t :
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
          [SELECT Name FROM CSO_CaseThread_Tag__c
 
          WHERE Thread__c = :threadId AND
@@ -13367,10 +13462,7 @@ A polymorphic relationship is a relationship between objects where a referenced 
 the `Who` relationship field of a Task can be a Contact or a Lead.
 
 The following describes how to use SOQL queries with polymorphic relationships in Apex. If you want more general information on
-[polymorphic relationships, see Understanding Relationship Fields and Polymorphic Fields in the SOQL and SOSL Reference.](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_and_polymorph_keys.htm)
-
-
-Apex Developer Guide Working with Data in Apex
+[polymorphic relationships, see Understanding Relationship Fields and Polymorphic Fields in the SOQL and SOSL Reference.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_and_polymorph_keys.htm)
 
 You can use SOQL queries that reference polymorphic fields in Apex to get results that depend on the object type referenced by the
 polymorphic field. One approach is to filter your results using the `Type` qualifier. This example queries Events that are related to an
@@ -13417,6 +13509,9 @@ Note that you must assign the referenced sObject that the query returns to a var
 another method. The following example
 
 **1.** Queries for User or Group owners of Merchandise__c custom objects using a SOQL query with a `TYPEOF` clause
+
+
+Apex Developer Guide Working with Data in Apex
 
 **2.** Uses `instanceof` to determine the owner type
 
@@ -13465,12 +13560,6 @@ another method. The following example
 
              processUser(userOwner);
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
            } else if (merch.Owner instanceof Group) {
 
              Group groupOwner = merch.Owner;
@@ -13513,6 +13602,12 @@ For example:
 
    insert A;
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    Account B;
 
    // A simple bind
@@ -13553,12 +13648,6 @@ For example:
 
                          accountId=A.id)};
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // Binds in both the parent and aggregate queries
 
    B = [SELECT Id, (SELECT Id FROM Contacts
@@ -13601,6 +13690,12 @@ Apex Developer Guide Working with Data in Apex
 
    Account[] aa = [SELECT Id FROM Account
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
              WHERE AccountNumber IN :ss];
 
    // A SOSL query with binds in all possible clauses
@@ -13644,12 +13739,6 @@ Note: Apex bind variables aren’t supported for the units parameter in the `DIS
 
         [SELECT ID, Name, BillingLatitude, BillingLongitude
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
          FROM Account
 
          WHERE DISTANCE(My_Location_Field__c, GEOLOCATION(10,10), :units) < 10];
@@ -13693,6 +13782,9 @@ or
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Both _**`variable`**_ and _**`variable_list`**_ must be of the same type as the sObjects that are returned by the _**`soql_query`**_ .
 As in standard SOQL queries, the `[` _**`soql_query`**_ `]` statement can refer to code expressions in their `WHERE` clauses using the `:`
 syntax. For example:
@@ -13731,9 +13823,6 @@ The following example combines creating a list from a SOQL query, with the DML `
 
 ```
 
-
-Apex Developer Guide Working with Data in Apex
-
 SOQL For Loops Versus Standard SOQL Queries
 
 SOQL `for` loops differ from standard SOQL statements because of the method they use to retrieve sObjects. While the standard queries
@@ -13745,7 +13834,7 @@ CPU cycles being used. See Total heap size.
 Queries including an aggregate function don't support `queryMore` . A run-time exception occurs if you use a query containing an
 aggregate function that returns more than 2,000 rows in a `for` loop.
 
-[For fine-grained control over the results of a SOQL query, consider using Apex cursors. See Apex Cursors.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_cursors.htm)
+[For fine-grained control over the results of a SOQL query, consider using Apex cursors. See Apex Cursors.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_cursors.htm)
 
 SOQL For Loop Formats
 
@@ -13771,6 +13860,12 @@ For example, the following code illustrates the difference between the two types
 
                 new Account(Name = 'yyy'),
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
                 new Account(Name = 'yyy')};
 
    // The single sObject format executes the for loop once per returned record
@@ -13813,12 +13908,6 @@ For example, the following code illustrates the difference between the two types
 
                  // loop should have executed only once
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // Revert the database to the original state
 
    Database.rollback(sp);
@@ -13868,6 +13957,12 @@ To avoid getting this exception, use a `for` loop to iterate over the child reco
 
           for (Contact c : acct.Contacts) {
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
             count++;
 
           }
@@ -13885,16 +13980,14 @@ complete serialization.
 
 You can manage sObjects in lists, sets, and maps.
 
-Lists of sObjects
+##### Lists of sObjects
+
 Lists can contain sObjects among other types of elements. Lists of sObjects can be used for bulk processing of data.
 
 Sorting Lists of sObjects
 Using the `List.sort` method, you can sort lists of sObjects.
 
 Expanding sObject and List Expressions
-
-
-Apex Developer Guide Working with Data in Apex
 
 Sets of Objects
 Sets can contain sObjects among other types of elements.
@@ -13934,10 +14027,12 @@ returns account records containing the Id and Name fields.
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Adding and Retrieving List Elements
 
-##### As with lists of primitive data types, you can access and set elements of sObject lists using the List methods provided by Apex. For
-
+As with lists of primitive data types, you can access and set elements of sObject lists using the `List` methods provided by Apex. For
 example:
 
 ```
@@ -13977,9 +14072,6 @@ You can bulk-process a list of sObjects by passing a list to the DML operation. 
    insert acctList;
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 Note: If you perform a bulk insert of Knowledge article versions, make the ownerId of all records the same.
 
@@ -14021,6 +14113,9 @@ Using Array Notation for One-Dimensional Lists of sObjects
 
 Alternatively, you can use the array notation (square brackets) to declare and reference lists of sObjects.
 
+
+Apex Developer Guide Working with Data in Apex
+
 This example declares a list of accounts using the array notation.
 
 ```
@@ -14060,16 +14155,13 @@ and another new Account object in the third.
 
 Defines the Contact list with a new list.
 ```
-List<Contact> contacts = new List<Contact>
+ List<Contact> contacts = new List<Contact>
 
-(otherList);
-
-```
-
-
-Apex Developer Guide Working with Data in Apex
+ (otherList);
 
 ##### Sorting Lists of sObjects
+
+```
 
 Using the `List.sort` method, you can sort lists of sObjects.
 
@@ -14100,6 +14192,9 @@ For example, if two accounts have the same name, the first standard field used f
 
 For example, suppose two accounts have the same name and identical standard fields, and there are two custom fields, FieldA and
 FieldB, the value of FieldA is used first for sorting.
+
+
+Apex Developer Guide Working with Data in Apex
 
 Not all steps in this sequence are necessarily carried out. For example, a list containing two sObjects of the same type and with unique
 Name values is sorted based on the Name field and sorting stops at step 2. Otherwise, if the names are identical or the sObject doesn’t
@@ -14142,12 +14237,6 @@ accounts because the Industry field comes before the Site field in alphabetical 
 
    Assert.areEqual('sForce', acctList[1].Name);
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    Assert.areEqual('Agriculture', acctList[1].Industry);
 
    Assert.areEqual('sForce', acctList[2].Name);
@@ -14202,6 +14291,12 @@ because it comes before the Price and Total_Inventory fields in alphabetical ord
 
    Assert.areEqual('Notebooks', merchList[0].Name);
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    Assert.areEqual('Pens', merchList[1].Name);
 
    Assert.areEqual('Blue pens', merchList[1].Description__c);
@@ -14241,12 +14336,6 @@ Example: This example implements the `Comparator` interface to compare two oppor
 
              // nulls-first implementation
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
              returnValue = -1;
 
            } else if(o2 == null) {
@@ -14304,6 +14393,12 @@ This test sorts a list of `Comparator` objects and verifies that the list elemen
 
         @isTest
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         static void sortViaComparator() {
 
            // Add the opportunity wrapper objects to a list.
@@ -14352,12 +14447,6 @@ This test sorts a list of `Comparator` objects and verifies that the list elemen
 
            Assert.isNull(oppyList[0]);
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
            Assert.areEqual('Grand Hotels SLA', oppyList[1].Name);
 
            Assert.areEqual(25000, oppyList[1].Amount);
@@ -14409,6 +14498,12 @@ in this instance, and the opportunity object passed into the method.
 
         }
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         // Compare opportunities based on the opportunity amount.
 
         public Integer compareTo(Object compareTo) {
@@ -14455,12 +14550,6 @@ in this instance, and the opportunity object passed into the method.
 
            return returnValue;
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         }
 
       }
@@ -14518,6 +14607,12 @@ This test sorts a list of `OpportunityWrapper` objects and verifies that the lis
 
            oppyList.sort();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
            // Verify the sort order
 
            Assert.areEqual('Grand Hotels SLA', oppyList[0].oppy.Name);
@@ -14544,18 +14639,15 @@ This test sorts a list of `OpportunityWrapper` objects and verifies that the lis
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Collator.htm)_ : Collator Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Collator.htm)_ : Collator Class
 
-_Apex Reference Guide_ [: Comparable Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_comparable.htm)
+_Apex Reference Guide_ [: Comparable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_comparable.htm)
 
-_Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_System_Comparator.htm)
+_Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_System_Comparator.htm)
 
 ##### Expanding sObject and List Expressions
 
 As in Java, sObject and list expressions can be expanded with method references and list expressions, respectively, to form new expressions.
-
-
-Apex Developer Guide Working with Data in Apex
 
 In the following example, a new variable containing the length of the new account name is assigned to `acctNameLength` .
 
@@ -14599,6 +14691,12 @@ accounts with the same name to a set, with no other fields set, only one sObject
 
    Set<Account> accountSet = new Set<Account>{a1, a2};
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    // Verify that the set only contains one item
 
    System.assertEquals(accountSet.size(), 1);
@@ -14630,9 +14728,6 @@ when using, for example, the `contains` or `containsAll` methods, because of cha
 ##### Maps of sObjects
 
 Map keys and values can be of any data type, including sObject types, such as Account.
-
-
-Apex Developer Guide Working with Data in Apex
 
 Maps can hold sObjects both in their keys and values. A map key represents a unique value that maps to a map value. For example, a
 common key would be an ID that maps to an account (a specific sObject type). This example shows how to define a map whose keys
@@ -14683,9 +14778,12 @@ and `Name` fields. The `new` operator uses the returned list of accounts to crea
 
 One common usage of this map type is for in-memory “joins” between two tables.
 
+
+Apex Developer Guide Working with Data in Apex
+
 Note: RecentlyViewed records for users who are members of several communities can’t be retrieved automatically into a map
 via Apex. This is because records of a user with different networks can result in duplicate IDs that maps don’t support. For more
-[information, see RecentlyViewed.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_recentlyviewed.htm)
+[information, see RecentlyViewed.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_recentlyviewed.htm)
 
 Using Map Methods
 
@@ -14708,14 +14806,9 @@ existence of a key and gets the set of all keys. The map in this example has one
 
    map
 
+###### sObject Map Considerations sObject Map Considerations
+
 ```
-
-sObject Map Considerations
-
-
-Apex Developer Guide Working with Data in Apex
-
-###### sObject Map Considerations
 
 Be cautious when using sObjects as map keys. Key matching for sObjects is based on the comparison of all sObject field values. If one
 or more field values change after adding an sObject to the map, attempting to retrieve this sObject from the map returns `null` . This
@@ -14767,6 +14860,9 @@ map entry, as shown in this example.
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Another scenario where sObject fields are autofilled is in triggers, for example, when using before and after insert triggers for an sObject.
 If those triggers share a static map defined in a class, and the sObjects in `Trigger.New` are added to this map in the before trigger,
 the sObjects in `Trigger.New` in the after trigger aren’t found in the map because the two sets of sObjects differ by the fields that
@@ -14785,9 +14881,6 @@ whether it is a calculated field, the type of the field, and so on.
 Note that describe information provides information about _objects_ in an organization, not individual records.
 
 **•** Access Salesforce app information
-
-
-Apex Developer Guide Working with Data in Apex
 
 You can obtain describe information for standard and custom apps available in the Salesforce user interface. Each app corresponds
 to a collection of tabs. Describe information for an app includes the app’s label, namespace, and tabs. Describe information for a tab
@@ -14828,6 +14921,9 @@ Apex provides two data structures and a method for sObject and field describe in
 
 **•** _Token_ —a lightweight, serializable reference to an sObject or a field that is validated at compile time. This is used for token describes.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** The `describeSObjects` method—a method in the `Schema` class that performs describes on one or more sObject types.
 
 **•** _Describe result_ —an object of type `Schema.DescribeSObjectResult` that contains all the describe properties for the
@@ -14844,9 +14940,6 @@ Because tokens are lightweight, using them can make your code faster and more ef
 sObject or field when you are determining the type of an sObject or field that your code needs to use. The token can be compared using
 the equality operator ( `==` ) to determine whether an sObject is the Account object, for example, or whether a field is the `Name` field or
 a custom calculated field.
-
-
-Apex Developer Guide Working with Data in Apex
 
 The following code provides a general example of how to use tokens and describe results to access information about sObject and field
 properties:
@@ -14900,6 +14993,9 @@ To access the token for an sObject, use one of the following methods:
 
 **•** Access the `sObjectType` member variable on an sObject type, such as Account.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** Call the `getSObjectType` method on an sObject describe result, an sObject variable, a list, or a map.
 
 `Schema.SObjectType` is the data type for an sObject token.
@@ -14927,12 +15023,6 @@ This example can be used to determine whether an sObject or a list of sObjects i
 
    SObject s = Database.query('SELECT Id FROM Account LIMIT 1');
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // Verify if that sObject variable is an Account token
 
    System.assertEquals(s.getSObjectType(), Account.sObjectType);
@@ -14975,17 +15065,20 @@ The following example uses the Schema `sObjectType` static member variable:
 
 ```
 
-[For more information about the methods available with the sObject describe result, see DescribeSObjectResultClass.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[For more information about the methods available with the sObject describe result, see DescribeSObjectResultClass.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 
 SEE ALSO:
 
-[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 
-[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 
 ##### Using Field Tokens
 
 To access the token for a field, use one of the following methods:
+
+
+Apex Developer Guide Working with Data in Apex
 
 **•** Access the static member variable name of an sObject static type, for example, `Account.Name` .
 
@@ -15011,12 +15104,6 @@ In the following example, the field token is returned from the field describe re
 
    System.assert(dfr.getSObjectField() == Account.Name);
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // Get the describe result from the token
 
    dfr = dfr.getSObjectField().getDescribe();
@@ -15059,12 +15146,15 @@ used in this manner.
 Note: Don’t use the `fields` member variable without also using either a field member variable name or the `getMap` method.
 For more information on `getMap`, see the next section.
 
-[For more information about the methods available with a field describe result, see DescribeFieldResultClass.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
+[For more information about the methods available with a field describe result, see DescribeFieldResultClass.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
 
 Accessing All Field Describe Results for an sObject
 
 Use the field describe result's `getMap` method to return a map that represents the relationship between all the field names (keys) and
 the field tokens (values) for an sObject.
+
+
+Apex Developer Guide Working with Data in Apex
 
 The following example generates a map that can be used to access a field by name:
 
@@ -15087,9 +15177,6 @@ The map has the following characteristics:
 
 **•** The keys reflect whether the field is a custom object.
 
-
-Apex Developer Guide Working with Data in Apex
-
 Field Describe Considerations
 
 Note the following when describing fields.
@@ -15109,9 +15196,9 @@ make sure that your code accesses keys correctly using the namespace prefix.
 
 SEE ALSO:
 
-[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 
-[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 
 ##### Understanding Describe Information Permissions
 
@@ -15129,7 +15216,10 @@ SEE ALSO:
 
 Anonymous Blocks
 
-What is a Package?
+Managed Package Types
+
+
+Apex Developer Guide Working with Data in Apex
 
 ##### Describing sObjects Using Schema Method
 
@@ -15151,12 +15241,6 @@ the sObject label, number of fields, whether it is a custom object or not, and t
 
    System.debug('Got describe information for ' + results.size() + ' sObjects.');
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // For each returned result, get some info
 
    for(Schema.DescribeSobjectResult res : results) {
@@ -15183,9 +15267,9 @@ Apex Developer Guide Working with Data in Apex
 
 SEE ALSO:
 
-[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[DescribeSObjectResult.fields()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 
-[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[DescribeSObjectResult.fieldsets()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 
 ##### Describing Tabs Using Schema Methods
 
@@ -15216,6 +15300,12 @@ describe information is written to the debug output.
 
       String ns = tsr.getNamespace();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       if (ns == '') {
 
         System.debug('The ' + appLabel + ' app has no namespace defined.');
@@ -15244,12 +15334,6 @@ describe information is written to the debug output.
 
            System.debug('getIconUrl: ' + tr.getIconUrl());
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
            System.debug('getIcons: ' + tr.getIcons());
 
            System.debug('getMiniIconUrl: ' + tr.getMiniIconUrl());
@@ -15315,9 +15399,12 @@ Apex Developer Guide Working with Data in Apex
 
    // DEBUG|isCustom: false
 
-##### Accessing All sObjects
-
 ```
+
+
+Apex Developer Guide Working with Data in Apex
+
+##### Accessing All sObjects
 
 Use the Schema `getGlobalDescribe` method to return a map that represents the relationship between all sObject names (keys)
 to sObject tokens (values). For example:
@@ -15340,10 +15427,6 @@ The map has the following characteristics:
      Starting with Apex saved using Salesforce API version 28.0, the keys in the map that `getGlobalDescribe` returns are always
 prefixed with the namespace, if any, of the code in which it is running. For example, if the code block that makes the
 `getGlobalDescribe` call is in namespace NS1, and a custom object named MyObject__c is in the same namespace, the key
-
-
-Apex Developer Guide Working with Data in Apex
-
 returned is `NS1__MyObject__c` . For Apex saved using earlier API versions, the key contains the namespace only if the namespace
 of the code block and the namespace of the sObject are different. For example, if the code block that generates the map is in namespace
 N1, and an sObject is also in N1, the key in the map is represented as `MyObject__c` . However, if the code block is in namespace N1,
@@ -15365,7 +15448,7 @@ categories associated with a specific object:
 
 **2.** From the returned map, get the category group name and sObject name you want to further interrogate (see
 
-[DescribeDataCategoryGroupResult Class).](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Schema_DescribeDataCategoryGroupResult.htm)
+[DescribeDataCategoryGroupResult Class).](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Schema_DescribeDataCategoryGroupResult.htm)
 
 **3.** Specify the category group and associated object, then retrieve the categories available to this object (see
 `describeDataCategoryGroupStructures` ).
@@ -15387,6 +15470,9 @@ To use the following example, you must:
 **•** Create a data category group called Regions.
 
 **•** Assign Regions as the data category group to be used by Answers.
+
+
+Apex Developer Guide Working with Data in Apex
 
 **•** Make sure the Regions data category group is assigned to Salesforce Knowledge.
 
@@ -15412,12 +15498,6 @@ information on answers, see “Answers Overview” in the Salesforce online help
 
          objType.add('Question');
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
          //Describe Call
 
          describeCategoryResult = Schema.describeDataCategoryGroups(objType);
@@ -15476,6 +15556,12 @@ Apex Developer Guide Working with Data in Apex
 
          objType.add('Question');
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
          describeCategoryResult = Schema.describeDataCategoryGroups(objType);
 
          //Creating a list of pair objects to use as a parameter
@@ -15504,12 +15590,6 @@ Apex Developer Guide Working with Data in Apex
 
            pairs.add(p);
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
          }
 
          //describeDataCategoryGroupStructures()
@@ -15566,6 +15646,12 @@ Apex Developer Guide Working with Data in Apex
 
             DataCategory [] childCategories =
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
               category.getChildCategories();
 
            }
@@ -15596,12 +15682,6 @@ Apex Developer Guide Working with Data in Apex
 
          categoriesClone.remove(0);
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
          categoriesClone.addAll(category.getChildCategories());
 
          allCategories.addAll(getAllCategories(categoriesClone));
@@ -15666,6 +15746,12 @@ category group and associated objects are correct.
 
          'Incorrect description was returned: ' + description);
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
          System.assert(objectNames.contains('KnowledgeArticleVersion')
 
                  || objectNames.contains('Question'),
@@ -15694,12 +15780,6 @@ categories and associated objects are correct.
 
         DescribeDataCategoryGroupStructures.getDescribeDataCategoryGroupStructureResults();
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
        System.assert(describeResult.size() == 2,
 
            'The results should only contain 2 results: ' + describeResult.size());
@@ -15764,6 +15844,12 @@ Apex Developer Guide Working with Data in Apex
 
          System.assert(topLevelCategories[0].getLabel() == world.getLabel() &&
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
                  topLevelCategories[0].getName() == world.getName());
 
          //checking if the correct children are returned
@@ -15788,12 +15874,6 @@ Apex Developer Guide Working with Data in Apex
 
      private class CategoryInfo {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
        private final String name;
 
        private final String label;
@@ -15851,6 +15931,9 @@ of the following ways.
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 The `Database.query` and `Database.queryWithBinds` methods can be used wherever an inline SOQL query can be used,
 such as in regular assignment statements and `for` loops. The results are processed in much the same way as static SOQL queries are
 processed.
@@ -15858,22 +15941,17 @@ processed.
 With API version 55.0 and later, as part of the User Mode for Database Operations feature, use the _`accessLevel`_ parameter to run
 the query operation in user or system mode. The _`accessLevel`_ parameter specifies whether the method runs in system mode
 ( `AccessLevel.SYSTEM_MODE` ) or user mode ( `AccessLevel.USER_MODE` ). In system mode, the object and field-level
-[permissions of the current user are ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
+[permissions of the current user are ignored, and the record sharing rules are controlled by the class sharing keywords. In user mode, the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_keywords_sharing.htm)
 object permissions, field-level security, and sharing rules of the current user are enforced. System mode is the default.
 
-##### Dynamic SOQL results can be specified as concrete sObjects, such as Account or MyCustomObject__c, or as the generic sObject data
-
+Dynamic SOQL results can be specified as concrete sObjects, such as Account or MyCustomObject__c, or as the generic sObject data
 type. At run time, the system validates that the type of the query matches the declared type of the variable. If the query doesn’t return
 the correct sObject type, a run-time error is thrown. Therefore, you don’t have to cast from a generic sObject to a concrete sObject.
 
-##### Dynamic SOQL queries have the same governor limits as static queries. For more information on governor limits, see Execution Governors
-
+Dynamic SOQL queries have the same governor limits as static queries. For more information on governor limits, see Execution Governors
 and Limits on page 346.
 
-[For a full description of SOQL query syntax, see Salesforce Object Query Language (SOQL) in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) _SOQL and SOSL Reference._
-
-
-Apex Developer Guide Working with Data in Apex
+[For a full description of SOQL query syntax, see Salesforce Object Query Language (SOQL) in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) _SOQL and SOSL Reference._
 
 Dynamic SOQL Considerations
 
@@ -15934,6 +16012,10 @@ These considerations apply when using the Map parameter in the `Database.queryWi
 
 **•** Although map keys of type String are case-sensitive,the `queryWithBinds` method doesn’t support Map keys that differ only
 in case. In a `queryWithBinds` method, comparison of Map keys is case-insensitive. If duplicate Map keys exist, the method
+
+
+Apex Developer Guide Working with Data in Apex
+
 throws a runtime `QueryException` . This example throws this runtime exception: `System.QueryException: The`
 `bindMap consists of duplicate case-insensitive keys: [Acctname, acctName]` .
 
@@ -15959,9 +16041,6 @@ _SOQL injection_ is a technique by which a user causes your application to execu
 statements into your code. This can occur in Apex code whenever your application relies on end-user input to construct a dynamic SOQL
 statement and you don’t handle the input properly.
 
-
-Apex Developer Guide Working with Data in Apex
-
 To prevent SOQL injection, use the `escapeSingleQuotes` method. This method adds the escape character (\) to all single quotation
 marks in a string that is passed in from a user. The method ensures that all single quotation marks are treated as enclosing strings, instead
 of database commands.
@@ -15979,7 +16058,7 @@ used in batch Apex or Visualforce.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: System.Database Methods](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_methods)
+_Apex Reference Guide_ [: System.Database Methods](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_methods)
 
 ##### Dynamic SOSL Dynamic SOSL refers to the creation of a SOSL string at run time with Apex code. Dynamic SOSL enables you to create more flexible
 
@@ -15999,9 +16078,12 @@ The following example exercises a simple SOSL query string.
 
    List<List<SObject>>searchList=search.query(searchquery);
 
-##### Dynamic SOSL statements evaluate to a list of lists of sObjects, where each list contains the search results for a particular sObject type.
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
+Dynamic SOSL statements evaluate to a list of lists of sObjects, where each list contains the search results for a particular sObject type.
 The result lists are always returned in the same order as they were specified in the dynamic SOSL query. From the example above, the
 results from Account are first, then Contact, then Lead.
 
@@ -16009,16 +16091,15 @@ The search `query` method can be used wherever an inline SOSL query can be used,
 
 `for` loops. The results are processed in much the same way as static SOSL queries are processed.
 
-##### Dynamic SOSL queries have the same governor limits as static queries. For more information on governor limits, see Execution Governors
-
+Dynamic SOSL queries have the same governor limits as static queries. For more information on governor limits, see Execution Governors
 and Limits on page 346.
 
-[For a full description of SOSL query syntax, see Salesforce Object Search Language (SOSL) in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm) _SOQL and SOSL Reference_ .
+[For a full description of SOSL query syntax, see Salesforce Object Search Language (SOSL) in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm) _SOQL and SOSL Reference_ .
 
 Use Dynamic SOSL to Return Snippets
 
 To provide more context for records in search results, use the SOSL `WITH SNIPPET` clause. Snippets make it easier to identify the
-[content you’re looking for. For information about how snippets are generated, see WITH SNIPPET in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl_with_snippet.htm) _SOQL and SOSL Reference_ .
+[content you’re looking for. For information about how snippets are generated, see WITH SNIPPET in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl_with_snippet.htm) _SOQL and SOSL Reference_ .
 
 To use the SOSL `WITH SNIPPET` clause in a dynamic SOSL query at run time, use the `Search.find` method.
 
@@ -16026,9 +16107,6 @@ To use the SOSL `WITH SNIPPET` clause in a dynamic SOSL query at run time, use t
    Search.SearchResults searchResults = Search.find( SOSL_search_string );
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 This example exercises a simple SOSL query string that includes a `WITH SNIPPET` clause. The example calls `System.debug()`
 to print the returned titles and snippets. Your code would display the titles and snippets in a Web page.
@@ -16077,6 +16155,12 @@ concrete sObject type (such as Account). For example:
 
    Account a = new Account();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    // Get the token for the account
 
    Schema.sObjectType tokenA = a.getSObjectType();
@@ -16093,7 +16177,7 @@ concrete sObject type (such as Account). For example:
 
 Though the sObject token `tokenA` is a token of Account, it is considered an sObject because it is accessed separately. It must be cast
 back into the concrete sObject type Account to use the `newSObject` method. For more information on casting, see Classes and
-Casting on page 116.
+Casting on page 117.
 
 You can also specify an ID with `newSObject` to create an sObject that references an existing record that you can update later. For
 example:
@@ -16105,10 +16189,7 @@ example:
 
 ```
 
-[See SObjectType Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Schema_SObjectType.htm)
-
-
-Apex Developer Guide Working with Data in Apex
+[See SObjectType Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Schema_SObjectType.htm)
 
 Dynamic sObject Creation Example
 
@@ -16167,6 +16248,12 @@ of an account.
 
         system.assert(b.size() > 0);
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       }
 
    }
@@ -16198,11 +16285,8 @@ The following example uses the `AccountNumber` field's token instead:
 
 ```
 
-
-Apex Developer Guide Working with Data in Apex
-
 The Object scalar data type can be used as a generic data type to set or retrieve field values on an sObject. This is equivalent to the
-[anyType field type. Note that the Object data type is different from the sObject data type, which can be used as a generic type for any](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/field_types.htm)
+[anyType field type. Note that the Object data type is different from the sObject data type, which can be used as a generic type for any](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/field_types.htm)
 sObject.
 
 Note: Apex classes and triggers saved (compiled) using API version 15.0 and higher produce a runtime error if you assign a String
@@ -16251,6 +16335,12 @@ parent-to-child relationship using dynamic Apex:
 
    SObject[] queryParentObject = Database.query(queryString);
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    for (SObject parentRecord : queryParentObject){
 
       Object ParentFieldValue = parentRecord.get('Name');
@@ -16277,18 +16367,14 @@ parent-to-child relationship using dynamic Apex:
 
    }
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
 #### Apex Security and Sharing
+
+```
 
 When you use Apex, the security of your code is critical. You'll need to add user permissions for Apex classes and enforce sharing rules.
 Read on to learn about Apex managed sharing and get some security tips.
 
-##### Enforce Sharing Rules
-
+Enforce Sharing Rules
 Apex generally runs in system context, so the current user’s permissions and field-level security aren’t taken into account during
 code execution. You can use sharing rules to extend a user’s access to specific records, and then enforce sharing rules by using the
 `with sharing` keyword on a class declaration. If you declare a class with the `without sharing` keyword, then sharing
@@ -16322,6 +16408,9 @@ access can be granted using the Salesforce user interface and Lightning Platform
 
 Security Tips for Apex and Visualforce Development
 
+
+Apex Developer Guide Working with Data in Apex
+
 ##### Enforce Sharing Rules
 
 Apex generally runs in system context, so the current user’s permissions and field-level security aren’t taken into account during code
@@ -16330,14 +16419,11 @@ execution. You can use sharing rules to extend a user’s access to specific rec
 enforced.
 
 Note: Apex code that is executed with the `executeAnonymous` call and Connect in Apex always execute using the sharing
-rules of the current user. See Anonymous Blocks on page 262.
+rules of the current user. See Anonymous Blocks on page 263.
 
 Apex developers must take care not to inadvertently expose sensitive data that would normally be hidden from users by user permissions,
 field-level security, or organization-wide defaults. They must be particularly careful with Web services, which can be restricted by
 permissions, but execute in system context after they’re initiated.
-
-
-Apex Developer Guide Working with Data in Apex
 
 Most of the time, system context provides the correct behavior for system-level operations such as triggers and Web services that need
 access to all data in an organization. However, you can also specify that particular Apex classes should enforce the sharing rules that
@@ -16396,6 +16482,12 @@ executes under the same sharing context as the caller. It also contains a class 
 
       // This call into CWith operates with enforced sharing rules
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       // for the context user. When the call finishes, the code execution
 
       // returns to without sharing mode.
@@ -16416,12 +16508,6 @@ executes under the same sharing context as the caller. It also contains a class 
 
       // Again, this call into CWith operates with enforced sharing rules
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       // for the context user, regardless of the class that initially called this inner
 
    class.
@@ -16473,12 +16559,15 @@ a query only if the user has sufficient permissions.
 Enforce User Mode
 
 To enforce field-level security and object permissions of the current user, you can specify user mode access for database operations and
-[SOQL queries. See Enforce User Mode for Database Operations.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_enforce_usermode.htm)
+[SOQL queries. See Enforce User Mode for Database Operations.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_enforce_usermode.htm)
+
+
+Apex Developer Guide Working with Data in Apex
 
 Check Field-Level Permissions
 
 You can also enforce object-level and field-level permissions in your code by explicitly calling the access control methods of the
-[Schema.DescribeSObjectResult and the Schema.DescribeFieldResult classes. These methods check the current user's access permission](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[Schema.DescribeSObjectResult and the Schema.DescribeFieldResult classes. These methods check the current user's access permission](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 levels so that you can perform a specific DML operation or a query only if the user has sufficient permissions.
 
 For example, you can call the `isAccessible`, `isCreateable`, or `isUpdateable` methods of
@@ -16488,9 +16577,6 @@ read, create, or update access for a field. In addition, you can call the `isDel
 `Schema.DescribeSObjectResult` to check if the current user has permission to delete a specific sObject.
 
 These examples call the access control methods.
-
-
-Apex Developer Guide Working with Data in Apex
 
 To check the field-level update permission of the contact's email field before updating it:
 
@@ -16540,16 +16626,19 @@ Considerations
 
 **•** Object-level and field-level permissions are distinct from sharing rules, which enforce specific record access. They can coexist. If
 sharing rules are defined in Salesforce, you can enforce them at the class level by declaring the class with the `with sharing`
-[keyword. See Use the with sharing, without sharing, and inherited sharing Keywords. If you call the Schema.DescribeSObjectResult](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-[and Schema.DescribeFieldResult access control methods, the verification of object and field-level permissions is performed in addition](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
+[keyword. See Use the with sharing, without sharing, and inherited sharing Keywords. If you call the Schema.DescribeSObjectResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[and Schema.DescribeFieldResult access control methods, the verification of object and field-level permissions is performed in addition](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
 to the sharing rules that are in effect. Sometimes, the access level granted by a sharing rule can conflict with an object-level or
 field-level permission. In that case, object-level and field-level permissions take precedence over sharing rules.
 
-**•** [Orgs with Experience Cloud sites enabled provide various settings to hide a user's personal information from other users. See Manage](https://help.salesforce.com/s/articleView?id=sf.users_manage_personal_info_visibility.htm&type=5&language=en_US)
-[Personal User Information Visibility and Share Personal Contact Information Within Experience Cloud Sites. These settings aren’t](https://help.salesforce.com/s/articleView?id=sf.users_manage_personal_info_visibility.htm&type=5&language=en_US)
+**•** [Orgs with Experience Cloud sites enabled provide various settings to hide a user's personal information from other users. See Manage](https://help.salesforce.com/s/articleView?id=platform.users_manage_personal_info_visibility.htm&type=5&language=en_US)
+[Personal User Information Visibility and Share Personal Contact Information Within Experience Cloud Sites. These settings aren’t](https://help.salesforce.com/s/articleView?id=platform.users_manage_personal_info_visibility.htm&type=5&language=en_US)
 enforced in Apex, even with security features such as the `WITH USER_MODE` clause or the `stripInaccessible` method.
-[To hide specific fields on the User object in Apex, follow the example code outlined in Comply with a User’s Personal Information](https://developer.salesforce.com/docs/atlas.en-us.258.0.communities_dev.meta/communities_dev/communities_dev_pii_settings.htm)
-[Visibility Settings.](https://developer.salesforce.com/docs/atlas.en-us.258.0.communities_dev.meta/communities_dev/communities_dev_pii_settings.htm)
+[To hide specific fields on the User object in Apex, follow the example code outlined in Comply with a User’s Personal Information](https://developer.salesforce.com/docs/atlas.en-us.260.0.communities_dev.meta/communities_dev/communities_dev_pii_settings.htm)
+[Visibility Settings.](https://developer.salesforce.com/docs/atlas.en-us.260.0.communities_dev.meta/communities_dev/communities_dev_pii_settings.htm)
+
+
+Apex Developer Guide Working with Data in Apex
 
 **•** Automated Process users can’t perform Object and FLS checks in custom code unless appropriate permission sets are explicitly
 applied to those users.
@@ -16568,9 +16657,6 @@ code. To enhance the security context of Apex, you can specify user-mode access 
 object permissions of the running user are respected in user mode, unlike in system mode. User mode always applies sharing rules, but
 in system mode they’re controlled by sharing keywords on the class. See Use the with sharing, without sharing, and inherited sharing
 Keywords.
-
-
-Apex Developer Guide Working with Data in Apex
 
 You can indicate the mode of the operation by using `WITH USER_MODE` or `WITH SYSTEM_MODE` in your SOQL or SOSL query.
 This example specifies user mode in SOQL.
@@ -16610,16 +16696,19 @@ method runs in system mode ( `AccessLevel.SYSTEM_MODE` ) or user mode ( `AccessL
 
 Use these overloaded methods to perform DML and query operations.
 
-**•** `[Database.query](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_query_2)` method. See Dynamic SOQL.
+**•** `[Database.query](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_query_2)` method. See Dynamic SOQL.
 
-**•** `[Database.getQueryLocator](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_getQueryLocator_3)` methods
+**•** `[Database.getQueryLocator](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_getQueryLocator_3)` methods
 
-**•** `[Database.countQuery](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_countQuery_2)` method
+**•** `[Database.countQuery](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_countQuery_2)` method
 
-**•** `[Search.query](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_search.htm#apex_System_Search_query_2)` method
+**•** `[Search.query](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_search.htm#apex_System_Search_query_2)` method
 
-**•** [Database DML methods (](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm) `insert`, `update`, `upsert`, `merge`, `delete`, `undelete`, and `convertLead` ). Includes the
+**•** [Database DML methods (](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm) `insert`, `update`, `upsert`, `merge`, `delete`, `undelete`, and `convertLead` ). Includes the
 `*Immediate` and `*Async` methods, such as `insertImmediate` and `deleteAsync` .
+
+
+Apex Developer Guide Working with Data in Apex
 
 Note: When Database DML methods are run with `AccessLevel.USER_MODE`, you can access errors via
 `SaveResult.getErrors().getFields()` . With `insert as user`, you can use the `DMLException` method
@@ -16627,11 +16716,11 @@ Note: When Database DML methods are run with `AccessLevel.USER_MODE`, you can ac
 
 These methods require the _`accessLevel`_ parameter.
 
-**•** `[Database.queryWithBinds](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_queryWithBinds)`
+**•** `[Database.queryWithBinds](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_queryWithBinds)`
 
-**•** `[Database.getQueryLocatorWithBinds](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_getQueryLocatorWithBinds)`
+**•** `[Database.getQueryLocatorWithBinds](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_getQueryLocatorWithBinds)`
 
-**•** `[Database.countQueryWithBinds](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_countQueryWithBinds)`
+**•** `[Database.countQueryWithBinds](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_countQueryWithBinds)`
 
 Example: This example assumes that the context user does not have view and edit permissions on `Account.AnnualRevenue` .
 An exception is thrown on the insert operation and the inaccessible fields are retrieved using `getDmlFieldNames()` .
@@ -16649,12 +16738,6 @@ An exception is thrown on the insert operation and the inaccessible fields are r
 
         Assert.isTrue(dex.getMessage()
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
          .contains(
 
          'Operation failed due to fields being inaccessible on Sobject <object name>,
@@ -16714,6 +16797,12 @@ custom object.
 
              Assert.isTrue(ex.getMessage().contains('Account'));
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
            }
 
            //Get ID of previously created permission set named 'AllowCreateToAccount'
@@ -16742,19 +16831,13 @@ custom object.
 
         }
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       }
 
    }
 
 ```
 
-[Note: Checkmarx, the AppExchange Security Review source code scanner, hasn’t been updated with this new Apex feature. Until](https://developer.salesforce.com/docs/atlas.en-us.258.0.packagingGuide.meta/packagingGuide/security_review_partner_security_portal_scanners.htm)
+[Note: Checkmarx, the AppExchange Security Review source code scanner, hasn’t been updated with this new Apex feature. Until](https://developer.salesforce.com/docs/atlas.en-us.260.0.packagingGuide.meta/packagingGuide/security_review_partner_security_portal_scanners.htm)
 it’s updated, Checkmarx can generate false positives for field or object level security violations that require exception documentation.
 
 ##### Enforce Security with the stripInaccessible Method
@@ -16767,9 +16850,9 @@ untrusted source.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-[The field- and object-level data protection is accessed through the Security and SObjectAccessDecision classes. The access check is](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Security.htm)
+[The field- and object-level data protection is accessed through the Security and SObjectAccessDecision classes. The access check is](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Security.htm)
 based on the field-level permission of the current user in the context of the specified operation—create, read, update, or upsert. The
-[Security.stripInaccessible() method checks the source records for fields that don’t meet the field-level security check for the current user.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Security.htm)
+[Security.stripInaccessible() method checks the source records for fields that don’t meet the field-level security check for the current user.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Security.htm)
 The method also checks the source records for lookup or master-detail relationship fields to which the current user doesn’t have access.
 The method creates a return list of sObjects that is identical to the source records, except that the fields that are inaccessible to the
 current user are removed. The sObjects returned by the `getRecords` method contain records in the same order as the sObjects in
@@ -16781,7 +16864,7 @@ access as per the specified permission set, in addition to the running user’s 
 Note: The ID field is never stripped by the `stripInaccessible` method to avoid issues when performing DML on the
 result.
 
-[To identify inaccessible fields that were removed, you can use the SObject.isSet() method. For example, the return list contains the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_isSet)
+[To identify inaccessible fields that were removed, you can use the SObject.isSet() method. For example, the return list contains the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm#apex_System_SObject_isSet)
 Contact object and the custom field social_security_number__c is inaccessible to the user. Because this custom field fails the field-level
 access check, the field isn’t set and `isSet` returns `false` .
 
@@ -16790,6 +16873,12 @@ access check, the field isn’t set and `isSet` returns `false` .
 
    sourceRecords);
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    Contact c = securityDecision.getRecords()[0];
 
    System.debug(c.isSet('social_security_number__c')); // prints "false"
@@ -16800,7 +16889,7 @@ Note: The `stripInaccessible` method doesn’t support AggregateResult SObject. 
 SObject type, an exception is thrown.
 
 To enforce object and field permissions on the User object and hide a user’s personal information from other users in orgs with Experience
-[Cloud sites, see Enforcing Object and Field Permissions.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_perms_enforcing.htm)
+[Cloud sites, see Enforcing Object and Field Permissions.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_perms_enforcing.htm)
 
 The following are some examples where the `stripInaccessible` method can be used.
 
@@ -16818,12 +16907,6 @@ show the `BudgetedCost` . The `ActualCost` must be shown only to users who have 
 
         // Construct the output table
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         if (securityDecision.getRemovedFields().get('Campaign').contains('ActualCost')) {
 
            for (Campaign c : securityDecision.getRecords()) {
@@ -16880,6 +16963,12 @@ Example: This example code removes inaccessible fields from the subquery result.
 
        System.debug('Records modified by stripInaccessible: '+decision.getModifiedIndexes());
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       // Print removed fields
 
         System.debug('Fields removed by stripInaccessible: '+decision.getRemovedFields());
@@ -16907,12 +16996,6 @@ an exception.
 
       // No exceptions are thrown and no rating is set
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       insert securityDecision.getRecords();
 
       System.debug(securityDecision.getRemovedFields().get('Account')); // Prints "Rating"
@@ -16965,6 +17048,9 @@ permission to update the `AnnualRevenue` of an Account.
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Example: This example code removes inaccessible relationship fields from the query result. The user doesn’t have permission to
 insert the `Account__c` field, which is a lookup from MyCustomObject__c to Account.
 
@@ -17007,12 +17093,6 @@ insert the `Account__c` field, which is a lookup from MyCustomObject__c to Accou
 
               System.debug('Lookup field FLS is not READABLE to running user,
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
                       should not be set: ' +
 
                       strippedRecord.isSet('Account__c')); // prints false
@@ -17027,11 +17107,11 @@ Apex Developer Guide Working with Data in Apex
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_System_AccessType.htm)_ : AccessType Enum
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_System_AccessType.htm)_ : AccessType Enum
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Security.htm)_ : Security Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Security.htm)_ : Security Class
 
-_Apex Reference Guide_ [: SObjectAccessDecision Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_SObjectAccessDecision.htm)
+_Apex Reference Guide_ [: SObjectAccessDecision Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_SObjectAccessDecision.htm)
 
 ##### Filter SOQL Queries Using WITH SECURITY_ENFORCED
 
@@ -17044,12 +17124,16 @@ Important: Salesforce recommends that you enforce Field Level Security (FLS) by 
 If you enforce user mode, remove any redundant `WITH SECURITY_ENFORCED` clauses. You can’t combine both forms of
 access checks in the same query.
 
-See Enforce User Mode for Database Operations on page 213.
+See Enforce User Mode for Database Operations on page 215.
 
 Apex generally runs in system context; that is, the current user's permissions and field-level security aren’t taken into account during
 code execution. Sharing rules, however, are not always bypassed: the class must be declared with the `without sharing` keyword
 in order to ensure that sharing rules are not enforced. Although performing field- and object-level security checks was possible in earlier
 releases, this clause substantially reduces the verbosity and technical complexity in query operations. This feature is tailored to Apex
+
+
+Apex Developer Guide Working with Data in Apex
+
 developers who have minimal development experience with security and to applications where graceful degradation on permissions
 errors isn’t required.
 
@@ -17066,7 +17150,7 @@ Insert the `WITH SECURITY_ENFORCED` clause:
 
 **•** Before any `ORDER BY`, `LIMIT`, `OFFSET`, or aggregate function clauses.
 
-For more information on `SOQL SELECT` [queries, see SOQL SELECT Syntax in the SOQL and SOSL Reference.](https://developer.salesforce.com/docs/atlas.en-us.258.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select.htm)
+For more information on `SOQL SELECT` [queries, see SOQL SELECT Syntax in the SOQL and SOSL Reference.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select.htm)
 
 For example, if the user has field access for LastName, this query returns Id and LastName for the Acme account entry.
 
@@ -17079,9 +17163,6 @@ For example, if the user has field access for LastName, this query returns Id an
 
 There are some restrictions while querying polymorphic lookup fields using `WITH SECURITY_ENFORCED` . Polymorphic fields are
 relationship fields that can point to more than one entity.
-
-
-Apex Developer Guide Working with Data in Apex
 
 **•** Traversing a polymorphic field’s relationship is not supported in queries using `WITH SECURITY_ENFORCED` . For example, you
 cannot use `WITH SECURITY_ENFORCED` in this query, which returns the Id and Owner names for User and Calendar entities:
@@ -17119,7 +17200,10 @@ If any fields or objects referenced in the `SOQL SELECT` query using `WITH SECUR
 a `System.QueryException` is thrown, and no data is returned.
 
 To enforce object and field permissions on the User object and hide a user’s personal information from other users in orgs with Experience
-[Cloud sites, see Enforcing Object and Field Permissions.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_perms_enforcing.htm)
+[Cloud sites, see Enforcing Object and Field Permissions.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_perms_enforcing.htm)
+
+
+Apex Developer Guide Working with Data in Apex
 
 Example: If field access for either LastName or Description is hidden, this query throws an exception indicating insufficient
 permissions.
@@ -17158,14 +17242,11 @@ Example: If field access for Type is hidden, this aggregate function query throw
 You can specify which users can execute methods in a particular top-level class based on their user profile or permission sets. You can
 only set security on Apex classes, not on triggers.
 
-[To set Apex class security from the class list page, seeSet Apex Class Access from the Class List Page](https://help.salesforce.com/s/articleView?id=sf.code_apex_access_via_list.htm&language=en_US)
+[To set Apex class security from the class list page, seeSet Apex Class Access from the Class List Page](https://help.salesforce.com/s/articleView?id=platform.code_apex_access_via_list.htm&type=5&language=en_US)
 
-[To set Apex class security from the class detail page, see Set Apex Class Access from the Class List Page](https://help.salesforce.com/s/articleView?id=sf.code_apex_access_via_detail.htm&language=en_US)
+[To set Apex class security from the class detail page, see Set Apex Class Access from the Class List Page](https://help.salesforce.com/s/articleView?id=platform.code_apex_access_via_detail.htm&type=5&language=en_US)
 
 To set Apex class security from a permission set:
-
-
-Apex Developer Guide Working with Data in Apex
 
 **1.** From Setup, enter _`Permission Sets`_ in the `Quick Find` box, then select **Permission Sets** .
 
@@ -17200,6 +17281,9 @@ can be granted using the Salesforce user interface and Lightning Platform, or pr
 
 For more information on sharing, see _Set Your Internal Organization-Wide Sharing Defaults_ in the Salesforce online help.
 
+
+Apex Developer Guide Working with Data in Apex
+
 ###### Understanding Sharing
 
 _Sharing_ enables record-level access control for all custom objects, as well as many standard objects (such as Account, Contact,
@@ -17227,9 +17311,6 @@ Salesforce has the following types of sharing:
 **Managed Sharing**
 Managed sharing involves sharing access granted by Lightning Platform based on record ownership, the role hierarchy, and sharing
 rules:
-
-
-Apex Developer Guide Working with Data in Apex
 
 **Record Ownership**
 Each record is owned by a user or optionally a queue for custom objects, cases and leads. The _record owner_ is automatically
@@ -17261,6 +17342,9 @@ permission for the given object or the “Modify All Data” permission can also
 removed when the record owner changes or when the access granted in the sharing does not grant additional access beyond the
 object's organization-wide sharing default access level.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **Apex Managed Sharing**
 Apex managed sharing provides developers with the ability to support an application’s particular sharing requirements
 programmatically through Apex or the SOAP API. This type of sharing is similar to managed sharing. Only users with “Modify All
@@ -17286,11 +17370,6 @@ Account Sharing `ImplicitChild`
 Associated record owner or sharing `ImplicitParent`
 
 Owner `Owner`
-
-
-Apex Developer Guide Working with Data in Apex
-
-`Reason Field` **Value** `rowCause` **Value (Used in Apex or the API)**
 
 Opportunity Team `Team`
 
@@ -17318,6 +17397,9 @@ version 45.0 and later,
 
 Defined by developer Defined by developer
 
+
+Apex Developer Guide Working with Data in Apex
+
 The displayed reason for Apex managed sharing is defined by the developer.
 
 Access Levels
@@ -17340,9 +17422,6 @@ Read/Write Edit The specified user or group can view and edit the record.
 Full Access All The specified user or group can view, edit, transfer, share, and delete the record.
 
 Note: This access level can only be granted with managed sharing.
-
-
-Apex Developer Guide Working with Data in Apex
 
 Sharing Considerations
 
@@ -17372,7 +17451,7 @@ object. In addition, all custom object sharing objects are named as follows, whe
 object:
 
 ```
-   MyCustomObject __Share
+MyCustomObject __Share
 
 ```
 
@@ -17382,6 +17461,10 @@ Help.
 
 A share object includes records supporting all three types of sharing: managed sharing, user managed sharing, and Apex managed
 sharing. Sharing that is granted to users implicitly through organization-wide defaults, the role hierarchy, and permissions such as the
+
+
+Apex Developer Guide Working with Data in Apex
+
 “View All Records” and “Modify All Records” permissions for the given object, “View All Data,” and “Modify All Data” aren’t tracked with
 this object.
 
@@ -17407,17 +17490,12 @@ for LeadShare object is `LeadAccessLevel` . Valid values are:
 Note: The `All` access level is an internal value and can’t be granted.
 
 This field must be set to an access level that’s higher than the organization’s default access level for
-the parent object. For more information, see Understanding Sharing on page 221.
+the parent object. For more information, see Understanding Sharing on page 223.
 
 `ParentID` The ID of the custom object. This field can’t be updated.
 
 `RowCause` The reason why the user or group is being granted access. The reason determines the type of sharing,
 which controls who can alter the sharing record. This field can’t be updated.
-
-
-Apex Developer Guide Working with Data in Apex
-
-**Property Name** **Description**
 
 `UserOrGroupId` The user or group IDs to which you’re granting access. A group can be:
 
@@ -17430,7 +17508,7 @@ This field can’t be updated.
 Note: You can't grant access to unauthenticated guest users using Apex.
 
 You can share a standard or custom object with users or groups. For more information about the types of users and groups you can
-[share an object with, see User and Group in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_user.htm) _[Object Reference for Salesforce](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/)_ .
+[share an object with, see User and Group in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_user.htm) _[Object Reference for Salesforce](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/)_ .
 
 Creating User Managed Sharing Using Apex
 
@@ -17443,16 +17521,22 @@ Note: Manual shares written using Apex contains `RowCause="Manual"` by default. 
 removed when ownership changes.
 
 ```
-   public class JobSharing {
+public class JobSharing {
 
-     public static boolean manualShareRead(Id recordId, Id userOrGroupId){
+  public static boolean manualShareRead(Id recordId, Id userOrGroupId){
 
-       // Create new sharing object for the custom object Job.
+    // Create new sharing object for the custom object Job.
 
-       Job__Share jobShr = new Job__Share();
+    Job__Share jobShr = new Job__Share();
 
-       // Set the ID of record being shared.
+    // Set the ID of record being shared.
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
        jobShr.ParentId = recordId;
 
        // Set the ID of user or group being granted access.
@@ -17487,12 +17571,6 @@ removed when ownership changes.
 
        }
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
        else {
 
          // Get first save result error.
@@ -17549,6 +17627,12 @@ Apex Developer Guide Working with Data in Apex
 
        // Create new job.
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
        Job__c j = new Job__c();
 
        j.Name = 'Test Job';
@@ -17581,12 +17665,6 @@ Apex Developer Guide Working with Data in Apex
 
        // Test invalid job Id.
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
        delete j;
 
        // Insert manual share for deleted job id.
@@ -17600,7 +17678,7 @@ Apex Developer Guide Working with Data in Apex
 ```
 
 Important: The object’s organization-wide default access level must not be set to the most permissive access level. For custom
-objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 221.
+objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 223.
 
 Creating Apex Managed Sharing
 
@@ -17630,6 +17708,9 @@ All Apex sharing reason names have the following format:
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Apex sharing reasons can be referenced programmatically as follows:
 
 ```
@@ -17644,7 +17725,7 @@ For example, an Apex sharing reason called Recruiter for an object called Job ca
 
 ```
 
-[For more information, see System.Schema Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_schema.htm)
+[For more information, see System.Schema Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_schema.htm)
 
 To create an Apex sharing reason:
 
@@ -17660,9 +17741,6 @@ end with an underscore, and not contain two consecutive underscores.
 **4.** Click **Save** .
 
 Note: Apex sharing reasons and Apex managed sharing recalculation are only available for custom objects.
-
-
-Apex Developer Guide Working with Data in Apex
 
 Apex Managed Sharing Example
 
@@ -17709,6 +17787,12 @@ and Recruiter.
 
            // Set the access level
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
            recruiterShr.AccessLevel = 'edit';
 
            hmShr.AccessLevel = 'read';
@@ -17743,12 +17827,6 @@ and Recruiter.
 
         for(Database.SaveResult sr : lsr){
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
            if(!sr.isSuccess()){
 
              // Get the first save result error
@@ -17802,12 +17880,15 @@ Under certain circumstances, inserting a share row results in an update of an ex
 **•** A manual share access level is set to Read and you insert a new one set to Write. The original share rows are updated to Write,
 indicating the higher level of access.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** Users can access an account because they can access its child records (contact, case, opportunity, and so on). If an account sharing
 rule is created, the sharing rule row cause (which is a higher access level) replaces the parent implicit share row cause, indicating
 the higher level of access.
 
 Important: The object’s organization-wide default access level must not be set to the most permissive access level. For custom
-objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 221.
+objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 223.
 
 Creating Apex Managed Sharing for Customer Community Plus users
 
@@ -17823,9 +17904,6 @@ Warning: After enabling digital experiences, records accessible to Roles and Sub
 automatically made accessible to Roles, Internal, and Portal Subordinates. To secure external users’ access, update your Apex code
 so that it creates shares to the Role and Internal Subordinates group. Because this conversion is a large-scale operation, consider
 using batch Apex.
-
-
-Apex Developer Guide Working with Data in Apex
 
 ###### Recalculating Apex Managed Sharing
 
@@ -17858,12 +17936,15 @@ Salesforce-provided interface `Database.Batchable` .
 
 The `Database.Batchable` interface is used for all batch Apex processes, including recalculating Apex managed sharing. You can
 implement this interface more than once in your organization. For more information on the methods that must be implemented, see
-Use Batch Apex on page 303.
+Use Batch Apex on page 304.
+
+
+Apex Developer Guide Working with Data in Apex
 
 Before creating an Apex managed sharing recalculation class, also consider the best practices.
 
 Important: The object’s organization-wide default access level must not be set to the most permissive access level. For custom
-objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 221.
+objects, this level is Public Read/Write. For more information, see Understanding Sharing on page 223.
 
 Apex Managed Sharing Recalculation Example
 
@@ -17888,12 +17969,6 @@ the email address with a valid email address to which you want to send error not
 
       // to be recalculated.
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       global Database.QueryLocator start(Database.BatchableContext BC){
 
         return Database.getQueryLocator([SELECT Id, Hiring_Manager__c, Recruiter__c
@@ -17942,6 +18017,12 @@ Apex Developer Guide Working with Data in Apex
 
            // The hiring manager on the job should always have 'Read Only' access.
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
            jobHMShr.AccessLevel = 'Read';
 
            // The ID of the record being shared
@@ -17972,12 +18053,6 @@ Apex Developer Guide Working with Data in Apex
 
            // Set the rowCause to the Apex sharing reason for recruiter.
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
            // This establishes the sharing record as Apex managed sharing.
 
            jobRecShr.RowCause = Schema.Job__Share.RowCause.Recruiter__c;
@@ -18028,6 +18103,12 @@ Apex Developer Guide Working with Data in Apex
 
                           && err.getMessage().contains('AccessLevel'))){
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
                  // Error is not related to trivial access level.
 
                  // Send an email to the Apex job's submitter.
@@ -18068,12 +18149,6 @@ Apex Developer Guide Working with Data in Apex
 
            mail.setPlainTextBody(
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
             'The Apex sharing recalculation threw the following exception: ' +
 
                   e.getMessage());
@@ -18125,6 +18200,12 @@ class is invoked by a test method, the email notifications won’t be sent in th
 
       // Test for the JobSharingRecalc class
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       static testMethod void testApexSharing(){
 
         // Instantiate the class implementing the Database.Batchable interface.
@@ -18161,12 +18242,6 @@ class is invoked by a test method, the email notifications won’t be sent in th
 
         Test.startTest();
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         // Invoke the Batch class.
 
         String jobId = Database.executeBatch(recalc);
@@ -18221,6 +18296,12 @@ Apex Developer Guide Working with Data in Apex
 
              // Test the sharing record for recruiter on job.
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
              else if(jobShr.RowCause == Schema.Job__Share.RowCause.Recruiter__c){
 
                System.assertEquals(jobShr.UserOrGroupId,job.Recruiter__c);
@@ -18252,9 +18333,6 @@ To associate an Apex managed sharing recalculation class with a custom object:
 
 **3.** Click **Save** .
 
-
-Apex Developer Guide Working with Data in Apex
-
 ##### Security Tips for Apex and Visualforce Development
 
 Understanding Security
@@ -18281,9 +18359,12 @@ Warning: Open redirects through static resources can expose users to the risk of
 
 Only admins with “Customize Application” permissions can upload static resources within an organization. Admins with this permission
 must use caution to ensure that static resources don’t contain malicious content. To learn how to help guard against static resources
-[that were obtained from third parties, see Referencing Untrusted Third-Party Content with iframes .](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/pages_resources_iframe.htm)
+[that were obtained from third parties, see Referencing Untrusted Third-Party Content with iframes .](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/pages_resources_iframe.htm)
 
-###### Cross Site Scripting (XSS)
+Cross Site Scripting (XSS)
+
+
+Apex Developer Guide Working with Data in Apex
 
 Unescaped Output and Formulas in Visualforce Pages
 When using components that have set the `escape` attribute to false, or when including formulas outside of a Visualforce component,
@@ -18310,9 +18391,6 @@ For example, assume this script is included in a Lightning Platform page using a
    <script>var foo = '{!$CurrentPage.parameters.userparam}';</script>
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 This script block inserts the value of the user-supplied `userparam` onto the page. The attacker can then enter this value for
 `userparam` .
@@ -18348,6 +18426,10 @@ Existing Protection
 
 All standard Visualforce components, which start with `<apex>`, have anti-XSS filters in place to screen out harmful characters. For
 example, this code is normally vulnerable to an XSS attack because it takes user-supplied input and outputs it directly back to the user,
+
+
+Apex Developer Guide Working with Data in Apex
+
 but the `<apex:outputText>` tag is XSS-safe. All characters that appear to be HTML tags are converted to their literal form. For
 example, the < character is converted to `&lt;` so that a literal < appears on the user's screen.
 
@@ -18384,12 +18466,6 @@ in JavaScript.
 
       var foo = location.search;
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       document.write(foo);
 
    </script>
@@ -18432,6 +18508,12 @@ A common vulnerability is created by rerendering user input on a page. For examp
 
      <apex:outputPanel id="outputIt">
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       Value of myTextField is <apex:outputText value="{!myTextField}" escape="false"/>
 
      </apex:outputPanel>
@@ -18464,9 +18546,6 @@ Encodes text and merge field values for use in JavaScript inside HTML tags by re
 HTML entity equivalents and inserting escape characters before unsafe JavaScript characters. `JSINHTMLENCODE(` _**`someValue`**_ `)`
 is a convenience function that is equivalent to `JSENCODE(HTMLENCODE((` _**`someValue`**_ `))` . That is, `JSINHTMLENCODE`
 first encodes _`someValue`_ with `HTMLENCODE`, and then encodes the result with `JSENCODE` .
-
-
-Apex Developer Guide Working with Data in Apex
 
 **URLENCODE**
 Encodes text and merge field values for use in URLs by replacing characters that are illegal in URLs, such as blank spaces, with the
@@ -18517,6 +18596,10 @@ In this case, to prevent JavaScript from being executed, use the `JSENCODE` func
 
 Formula tags can also be used to include platform object data. Although the data is taken directly from the user's organization, it must
 still be escaped before use to prevent users from executing code in the context of other users (potentially those with higher privilege
+
+
+Apex Developer Guide Working with Data in Apex
+
 levels). While these types of attacks must be performed by users within the same organization, they undermine the organization's user
 roles and reduce the integrity of auditing records. Additionally, many organizations contain data which has been imported from external
 sources and might not have been screened for malicious content.
@@ -18545,9 +18628,6 @@ For more information and traditional defenses:
 **•** [http://www.owasp.org/index.php/Cross-Site_Request_Forgery](http://www.owasp.org/index.php/Cross-Site_Request_Forgery)
 
 **•** [http://www.cgisecurity.com/csrf-faq.html](http://www.cgisecurity.com/csrf-faq.html)
-
-
-Apex Developer Guide Working with Data in Apex
 
 **•** [http://shiflett.org/articles/cross-site-request-forgeries](http://shiflett.org/articles/cross-site-request-forgeries)
 
@@ -18593,6 +18673,9 @@ Because of the Salesforce built-in defense against CSRF, your users can encounte
 open. If the user logs in to Salesforce in one tab and then attempts to log in on another, they see this error: The page you submitted was
 invalid for your session. Users can successfully log in by refreshing the login page or by attempting to log in a second time.
 
+
+Apex Developer Guide Working with Data in Apex
+
 ###### SOQL Injection
 
 In other programming languages, the previous flaw is known as SQL injection. Apex doesn’t use SQL, but uses its own database query
@@ -18624,12 +18707,6 @@ Here’s a simple example of Apex and Visualforce code vulnerable to SOQL inject
 
       public String name {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         get { return name;}
 
         set { name = value;}
@@ -18684,6 +18761,9 @@ In that case, the query string becomes:
 Now the results show all contacts, not just the non-deleted ones. A SOQL Injection flaw can be used to modify the intended logic of any
 vulnerable query.
 
+
+Apex Developer Guide Working with Data in Apex
+
 SOQL Injection Defenses
 
 To prevent a SOQL injection attack, avoid using dynamic SOQL queries. Instead, use static queries and binding variables. The preceding
@@ -18721,9 +18801,6 @@ vulnerable example can be rewritten using static SOQL.
 If you must use dynamic SOQL, use the `escapeSingleQuotes` method to sanitize user-supplied input. This method adds the
 escape character (\) to all single quotation marks in a string that is passed in from a user. The method ensures that all single quotation
 marks are treated as enclosing strings, instead of database commands.
-
-
-Apex Developer Guide Working with Data in Apex
 
 ###### Data Access Control
 
@@ -18769,6 +18846,9 @@ Custom settings are similar to custom objects. Application developers can create
 organization, profile, or specific user. All custom settings data is exposed in the application cache, which enables efficient access without
 the cost of repeated queries to the database. Formula fields, validation rules, flows, Apex, and SOAP API can then use this data.
 
+
+Apex Developer Guide Working with Data in Apex
+
 Warning: Protection only applies to custom settings that are marked protected and installed to a subscriber organization as part
 of a managed package. Otherwise, they are treated as public custom settings and are readable for all profiles, including the guest
 user. Do not store secrets, personally identifying information, or any private data in these settings. Use protected custom settings
@@ -18793,10 +18873,7 @@ A type of custom setting that uses a built-in hierarchical logic that lets you �
 hierarchy logic checks the organization, profile, and user settings for the current user and returns the most specific, or “lowest,” value.
 In the hierarchy, settings for an organization are overridden by profile settings, which, in turn, are overridden by user settings.
 
-
-Apex Developer Guide Working with Data in Apex
-
-To get custom setting data set record based on the lowest level fields defined in the hierarchy, use the `[getinstance()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_custom_settings.htm#apex_System_HierarchyCustomSetting_getInstance)` instance
+To get custom setting data set record based on the lowest level fields defined in the hierarchy, use the `[getinstance()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_custom_settings.htm#apex_System_HierarchyCustomSetting_getInstance)` instance
 method for hierarchy custom settings.
 
 The following examples illustrate how you can use custom settings.
@@ -18828,6 +18905,9 @@ setting.
 
 Note: Only custom settings definitions are included in packages, not data. To include data, you must populate the custom settings
 using Apex code run by the subscribing organization after they’ve installed the package.
+
+
+### Apex Developer Guide Document Your Apex Code
 
 Apex can access both custom setting types—list and hierarchy.
 
@@ -18861,9 +18941,6 @@ The following example uses the `getOrgDefaults` method to return the data set va
 
 ```
 
-
-### Apex Developer Guide Document Your Apex Code
-
 The following example uses the `getInstance` method to return the data set values for the specified profile. The `getInstance`
 method can also be used with a user ID.
 
@@ -18874,7 +18951,7 @@ method can also be used with a user ID.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: Custom Settings Methods](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_custom_settings.htm)
+_Apex Reference Guide_ [: Custom Settings Methods](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_custom_settings.htm)
 
 ### Document Your Apex Code
 
@@ -18883,8 +18960,7 @@ your codebase. We recommend using ApexDoc comments to facilitate code collaborat
 Based on the JavaDoc standard, ApexDoc provides specifications, such as specialized tags and guidelines, that are tailored to Apex and
 the Salesforce ecosystem.
 
-#### ApexDoc Comment Structure and Tags
-
+ApexDoc Comment Structure and Tags
 To promote consistency and parsability, ApexDoc comments have a defined structure and syntax. Each ApexDoc comment consists
 of a main description and a set of block and inline tags that provide information about the documented code element.
 
@@ -18894,6 +18970,9 @@ to document these elements with ApexDoc.
 
 ApexDoc Examples
 See practical examples of ApexDoc comments applied to various Apex constructs.
+
+
+Apex Developer Guide Document Your Apex Code
 
 #### ApexDoc Comment Structure and Tags
 
@@ -18924,12 +19003,6 @@ asterisk and any whitespace that precedes it on the line.
 
    public with sharing class MyClass {
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
       //...
 
    }
@@ -18960,10 +19033,10 @@ by the tag name, but the tags are enclosed in curly braces ( `{@...}` ).
 
 This table provides a comprehensive ApexDoc tag reference.
 
-**Table 3: ApexDoc Tags**
-
 
 Apex Developer Guide Document Your Apex Code
+
+**Table 3: ApexDoc Tags**
 
 
 Apex Developer Guide Document Your Apex Code
@@ -18973,9 +19046,12 @@ Apex Developer Guide Document Your Apex Code
 
 SEE ALSO:
 
-#### Document Apex Constructs and Features
+Document Apex Constructs and Features
 
 ApexDoc Examples
+
+
+Apex Developer Guide Document Your Apex Code
 
 #### Document Apex Constructs and Features
 
@@ -18994,30 +19070,24 @@ We also recommend using tags such as `@author`, `@version`, `@since`, `@see,` an
 Here’s an example ApexDoc comment for the `DataAggregationService` class.
 
 ```
-/**
+   /**
 
- * This service class handles critical data aggregation tasks.
+    * This service class handles critical data aggregation tasks.
 
- * It operates using 'without sharing' to ensure access to all necessary
+    * It operates using 'without sharing' to ensure access to all necessary
 
- * records for calculation, irrespective of the running user's sharing rules.
+    * records for calculation, irrespective of the running user's sharing rules.
 
- * Care must be taken when calling methods from this class.
+    * Care must be taken when calling methods from this class.
 
- * @author Jane Doe
+    * @author Jane Doe
 
- * @since 0.1.0
+    * @since 0.1.0
 
- */
+    */
 
-public without sharing class DataAggregationService {
+   public without sharing class DataAggregationService {
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
       //...
 
    }
@@ -19033,7 +19103,7 @@ metadata tags such as `@author`, `@version`, `@since`, and `@see` are also appli
 Document each method declaration in the interface as a standard method. Clearly explain the method’s expected behavior, parameters,
 and return values. This documentation sets expectations for any class that implements the interface.
 
-For an example of an interface with an ApexDoc comment, see ApexDoc Examples on page 250.
+For an example of an interface with an ApexDoc comment, see ApexDoc Examples on page 252.
 
 Enums
 
@@ -19056,6 +19126,12 @@ Here’s an example ApexDoc comment for the `Season` enum.
 
     */
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
    public enum Season {
 
      WINTER,
@@ -19085,10 +19161,7 @@ empty list if no matches are found.”
 Use the `@throws` block tag to list all significant checked and unchecked exceptions that the method can explicitly throw, along with
 the conditions causing them. This documentation is crucial for identifying gaps in error handling.
 
-For examples of methods and constructors with ApexDoc comments, see ApexDoc Examples on page 250.
-
-
-Apex Developer Guide Document Your Apex Code
+For examples of methods and constructors with ApexDoc comments, see ApexDoc Examples on page 252.
 
 Properties and Variables
 
@@ -19127,9 +19200,12 @@ Here’s an example ApexDoc comment for the public `maxRetries` variable.
 
 Triggers
 
-Apex triggers on page 264 are event-driven pieces of code that execute in response to specific database operations. Apex trigger
+Apex triggers on page 265 are event-driven pieces of code that execute in response to specific database operations. Apex trigger
 definitions provide significant context, so we strongly recommend that you delegate all business logic to a separate handler class or a
 trigger framework. Therefore, ApexDoc doesn’t have any trigger-specific comment specifications.
+
+
+Apex Developer Guide Document Your Apex Code
 
 However, you can still include standard ApexDoc tags such as `@since` and `@see` . For example, here’s a ApexDoc comment for the
 `Opportunity` trigger.
@@ -19173,10 +19249,10 @@ usage.
 
 Refer to this table as you write ApexDoc comments for elements with Apex annotations.
 
+**Table 4: Document Common Apex Annotations**
+
 
 Apex Developer Guide Document Your Apex Code
-
-**Table 4: Document Common Apex Annotations**
 
 SEE ALSO:
 
@@ -19185,9 +19261,6 @@ ApexDoc Comment Structure and Tags
 #### ApexDoc Examples ApexDoc Examples
 
 See practical examples of ApexDoc comments applied to various Apex constructs.
-
-
-Apex Developer Guide Document Your Apex Code
 
 Class Example
 
@@ -19242,6 +19315,12 @@ Class Example
 
       public static final String DEFAULT_REGION = 'North America';
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
       /**
 
       * Stores the count of active accounts managed by this instance.
@@ -19292,12 +19371,6 @@ Class Example
 
              'Failed to create account: ' + e.getMessage()
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
            );
 
         }
@@ -19347,6 +19420,12 @@ Packaged Class Example
 
      /**
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
      * Represents geographic coordinates (latitude and longitude).
 
      */
@@ -19395,12 +19474,6 @@ Packaged Class Example
 
      * @deprecated in 0.2.0. Use {@link #geocodeAddress(
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
      * String street,
 
      * String city,
@@ -19453,6 +19526,12 @@ Apex Developer Guide Document Your Apex Code
 
      * @param postalCode The postal or ZIP code (e.g., "90210").
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
      * @param country The country name or code (e.g., "USA").
 
      * @return A Coordinates object containing the latitude and longitude.
@@ -19505,12 +19584,6 @@ Apex Developer Guide Document Your Apex Code
 
       String postalCode,
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
       String country
 
      ) {
@@ -19560,6 +19633,12 @@ Test Class Example
 
     * @version 0.2.0
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
     * @see GeolocationService
 
     * @since 0.1.0
@@ -19610,12 +19689,6 @@ Test Class Example
 
        street,
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
        city,
 
        state,
@@ -19668,6 +19741,12 @@ Apex Developer Guide Document Your Apex Code
 
      * String street,
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
      * String city,
 
      * String state,
@@ -19718,12 +19797,6 @@ Apex Developer Guide Document Your Apex Code
 
        caughtException = true;
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
        Assert.areEqual(
 
         'Street, City, and Postal Code are required for geocoding.',
@@ -19774,6 +19847,12 @@ Apex Developer Guide Document Your Apex Code
 
        GeolocationService.convertAddressToCoordinates(
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
         oldAddress
 
        );
@@ -19815,9 +19894,6 @@ Apex Developer Guide Document Your Apex Code
    }
 
 ```
-
-
-Apex Developer Guide Document Your Apex Code
 
 Interface Example
 
@@ -19877,6 +19953,12 @@ Enum Example
 
     * @since 0.1.5
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
     */
 
    public enum CaseStatus {
@@ -19920,12 +20002,6 @@ Method Example (with params, return, throws)
 
     * Returns 0.0 if productCodes is null or empty.
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
     * @throws InvalidArgumentException if discountPercentage is out of range.
 
     * @throws ProductNotFoundException if any productCode does not match an
@@ -19986,6 +20062,12 @@ Apex Developer Guide Document Your Apex Code
 
     * WHERE ProductCode = :productCode
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
     * LIMIT 1
 
     * ];
@@ -20029,12 +20111,6 @@ Annotated Method (@AuraEnabled) Example
 
       * open opportunities are found or if accountId is invalid.
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
       * @see OpportunitySelector
 
       */
@@ -20094,6 +20170,12 @@ External Reference Example
 
      * @see <a href="https://example.com/weather-api-docs/current-conditions.html">External
 
+```
+
+
+Apex Developer Guide Document Your Apex Code
+
+```
      * Weather API</a>
 
      */
@@ -20132,12 +20214,6 @@ External Reference Example
 
       req.setEndpoint(namedCredentialUrl + requestParams);
 
-```
-
-
-Apex Developer Guide Document Your Apex Code
-
-```
       req.setMethod('GET');
 
       req.setTimeout(60000);
@@ -20196,6 +20272,9 @@ Apex Developer Guide Document Your Apex Code
 
 ```
 
+
+## Apex Developer Guide Running Apex
+
 Inline Tags Example
 
 ```
@@ -20235,12 +20314,6 @@ Inline Tags Example
 
     * @since 2.0
 
-```
-
-
-## Apex Developer Guide Running Apex
-
-```
     */
 
    global static String sanitizeInput(String inputString) {
@@ -20270,8 +20343,7 @@ Document Apex Constructs and Features
 You can access many features of the Salesforce user interface programmatically in Apex, and you can integrate with external SOAP and
 REST Web services. You can run Apex code using a variety of mechanisms. Apex code runs in atomic transactions.
 
-### Invoking Apex
-
+Invoking Apex
 You can run Apex code with triggers, or asynchronously, or as SOAP or REST web services.
 
 Apex Transactions and Governor Limits
@@ -20283,6 +20355,9 @@ Many features of the Salesforce user interface are exposed in Apex so that you c
 Platform. For example, you can write Apex code to post to a Chatter feed, or use the approval methods to submit and approve
 process requests.
 
+
+### Apex Developer Guide Invoking Apex
+
 Integration and Apex Utilities
 Apex allows you to integrate with external SOAP and REST Web services using callouts. You can use utilities for JSON, XML, data
 security, and encoding. A general-purpose utility for regular expressions with text strings is also provided.
@@ -20291,7 +20366,8 @@ security, and encoding. A general-purpose utility for regular expressions with t
 
 You can run Apex code with triggers, or asynchronously, or as SOAP or REST web services.
 
-1. Anonymous Blocks
+#### 1. Anonymous Blocks
+
 An anonymous block is Apex code that doesn’t get stored in the metadata, but that can be compiled and executed.
 
 2. Triggers
@@ -20301,9 +20377,6 @@ records, such as insertions, updates, or deletions.
 3. Asynchronous Apex
 Apex offers multiple ways for running your Apex code asynchronously. Choose the asynchronous Apex feature that best suits your
 needs.
-
-
-Apex Developer Guide Invoking Apex
 
 4. Exposing Apex Methods as SOAP Web Services
 You can expose your Apex methods as SOAP web services so that external applications can access your code and your application.
@@ -20339,6 +20412,9 @@ The AJAX toolkit includes built-in support for invoking Apex through anonymous b
 
 An anonymous block is Apex code that doesn’t get stored in the metadata, but that can be compiled and executed.
 
+
+Apex Developer Guide Invoking Apex
+
 **User Permissions Needed**
 
 To execute anonymous Apex: “API Enabled” and “Author Apex”
@@ -20363,9 +20439,6 @@ Compile and execute anonymous blocks using one of the following:
 
 You can use anonymous blocks to quickly evaluate Apex in the Developer Console or using the Salesforce Extensions for Visual Studio
 Code and Code Builder.
-
-
-Apex Developer Guide Invoking Apex
 
 Important: Every time you run an anonymous block, the code and its references are compiled. For repetitive calls, we strongly
 recommend you use compiled classes, such as Apex REST endpoints.
@@ -20411,6 +20484,12 @@ doesn’t:
 
    }
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
    myProcedure1();
 
 ```
@@ -20419,12 +20498,12 @@ The returned result for anonymous blocks includes:
 
 **•** Status information for the compile and execute phases of the call, including any errors that occur
 
-**•** The debug log content, including the output of any calls to the `System.debug` method (see Debug Log on page 666)
+**•** The debug log content, including the output of any calls to the `System.debug` method (see Debug Log on page 670)
 
 **•** The Apex stack trace of any uncaught code execution exceptions, including the class, method, and line number for each call stack
 element
 
-For more information, see `[executeAnonymous()](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_executeanonymous.htm)` [, Working with Logs in the Developer Console, and Salesforce extensions for Visual](https://developer.salesforce.com/tools/vscode)
+For more information, see `[executeAnonymous()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_executeanonymous.htm)` [, Working with Logs in the Developer Console, and Salesforce extensions for Visual](https://developer.salesforce.com/tools/vscode)
 [Studio Code and Code Builder.](https://developer.salesforce.com/tools/vscode)
 
 Executing Anonymous Apex through the API and the Author Apex Permission
@@ -20435,9 +20514,6 @@ This exception applies only when users execute anonymous Apex through the API, o
 Developer Console. Such users are allowed to run the following in an anonymous block.
 
 **•** Code that they write in the anonymous block
-
-
-Apex Developer Guide Invoking Apex
 
 **•** Web service methods (methods declared with the `webservice` keyword) that are saved in the org
 
@@ -20476,6 +20552,9 @@ An Apex trigger can also execute after the undelete operation.
 For example, you can have a trigger run before an object's records are inserted into the database, after records have been deleted, or
 even after a record is restored from the Recycle Bin.
 
+
+Apex Developer Guide Invoking Apex
+
 You can define triggers for top-level standard objects that support triggers, such as a Contact or an Account, some standard child objects,
 such as a CaseComment, and custom objects. To define a trigger, from the object management settings for the object whose triggers
 you want to access, go to Triggers.
@@ -20488,8 +20567,7 @@ There are two types of triggers.
 to affect changes in other records, such as logging into an audit table or firing asynchronous events with a queue. The records that
 fire the _after trigger_ are read-only.
 
-#### Triggers can also modify other records of the same type as the records that initially fired the trigger. For example, if a trigger fires after
-
+Triggers can also modify other records of the same type as the records that initially fired the trigger. For example, if a trigger fires after
 an update of contact _`A`_, the trigger can also modify contacts _`B`_, _`C`_, and _`D`_ . Because triggers can cause other records to change, and
 because these changes can, in turn, fire more triggers, the Apex runtime engine considers all such operations a single unit of work and
 sets limits on the number of operations that can be performed to prevent infinite recursion. See Execution Governors and Limits on page
@@ -20500,9 +20578,6 @@ This includes both direct and indirect operations. For example, if you update ac
 inserts contact _`B`_, and the after insert trigger of contact _`B`_ queries for account _`A`_ and updates it using the DML `update` statement or
 database method, then you are indirectly updating account _`A`_ in its before trigger, and you will receive a runtime error.
 
-
-Apex Developer Guide Invoking Apex
-
 Implementation Considerations
 
 Before creating triggers, consider the following:
@@ -20510,10 +20585,10 @@ Before creating triggers, consider the following:
 **•** `upsert` triggers fire both before and after `insert` or before and after `update` triggers as appropriate.
 
 **•** `merge` triggers fire both before and after `delete` for the losing records, and both before and after `update` triggers for the
-winning record. See Triggers and Merge Statements on page 273.
+winning record. See Triggers and Merge Statements on page 274.
 
 **•** Triggers that execute after a record has been undeleted only work with specific objects. See Triggers and Recovered Records on
-page 273.
+page 275.
 
 **•** Field history is not recorded until the end of a trigger. If you query field history in a trigger, you don’t see any history for the current
 transaction.
@@ -20539,6 +20614,9 @@ HTTP request.
 3. Trigger Context Variables
 
 4. Context Variable Considerations
+
+
+Apex Developer Guide Invoking Apex
 
 5. Common Bulk Trigger Idioms
 
@@ -20569,9 +20647,6 @@ You can write triggers for the FeedItem and FeedComment objects.
 
 You can write triggers for KnowledgeArticleVersion objects. Learn when you can use triggers, and which actions don’t fire triggers,
 like archiving articles.
-
-
-Apex Developer Guide Invoking Apex
 
 14. Trigger Exceptions
 
@@ -20609,6 +20684,9 @@ To define a trigger, use the following syntax:
 
 where _`trigger_events`_ can be a comma-separated list of one or more of the following events:
 
+
+Apex Developer Guide Invoking Apex
+
 For example, the following code defines a trigger for the `before insert` and `before update` events on the Account object:
 
 ```
@@ -20641,11 +20719,6 @@ Apex, or the API.
 `isUpdate` Returns `true` if this trigger was fired due to an update operation, from the Salesforce user interface,
 Apex, or the API.
 
-
-Apex Developer Guide Invoking Apex
-
-**Variable** **Usage**
-
 `isDelete` Returns `true` if this trigger was fired due to a delete operation, from the Salesforce user interface,
 Apex, or the API.
 
@@ -20664,8 +20737,6 @@ newMap
 old
 
 oldMap
-
-operationType
 
 ```
 
@@ -20686,6 +20757,16 @@ This sObject list is only available in `update` and `delete` triggers.
 A map of IDs to the old versions of the sObject records.
 
 This map is only available in `update` and `delete` triggers.
+
+
+Apex Developer Guide Invoking Apex
+
+**Variable** **Usage**
+
+```
+operationType
+
+```
 
 Returns an enum of type System.TriggerOperation corresponding to the current operation.
 
@@ -20712,34 +20793,31 @@ value is set to `null` in these variables:
 
 **•** `oldMap`
 
-
-Apex Developer Guide Invoking Apex
-
 For example, in this simple trigger, `Trigger.new` is a list of sObjects and can be iterated over in a `for` loop. It can also be used as
 a bind variable in the `IN` clause of a SOQL query.
 
 ```
-   Trigger simpleTrigger on Account (after insert) {
+Trigger simpleTrigger on Account (after insert) {
 
-      for (Account a : Trigger.new) {
+   for (Account a : Trigger.new) {
 
-        // Iterate over each sObject
-
-      }
-
-      // This single query finds every contact that is associated with any of the
-
-      // triggering accounts. Note that although Trigger.new is a collection of
-
-      // records, when used as a bind variable in a SOQL query, Apex automatically
-
-      // transforms the list of records into a list of corresponding Ids.
-
-      Contact[] cons = [SELECT LastName FROM Contact
-
-                 WHERE AccountId IN :Trigger.new];
+     // Iterate over each sObject
 
    }
+
+   // This single query finds every contact that is associated with any of the
+
+   // triggering accounts. Note that although Trigger.new is a collection of
+
+   // records, when used as a bind variable in a SOQL query, Apex automatically
+
+   // transforms the list of records into a list of corresponding Ids.
+
+   Contact[] cons = [SELECT LastName FROM Contact
+
+              WHERE AccountId IN :Trigger.new];
+
+}
 
 ```
 
@@ -20747,26 +20825,32 @@ This trigger uses Boolean context variables like `Trigger.isBefore` and `Trigger
 for specific trigger conditions:
 
 ```
-   trigger myAccountTrigger on Account(before delete, before insert, before update,
+trigger myAccountTrigger on Account(before delete, before insert, before update,
 
-                         after delete, after insert, after update) {
+                      after delete, after insert, after update) {
 
-   if (Trigger.isBefore) {
+if (Trigger.isBefore) {
 
-      if (Trigger.isDelete) {
+   if (Trigger.isDelete) {
 
-        // In a before delete trigger, the trigger accesses the records that will be
+     // In a before delete trigger, the trigger accesses the records that will be
 
-        // deleted with the Trigger.old list.
+     // deleted with the Trigger.old list.
 
-        for (Account a : Trigger.old) {
+     for (Account a : Trigger.old) {
 
-           if (a.name != 'okToDelete') {
+        if (a.name != 'okToDelete') {
 
-             a.addError('You can\'t delete this record!');
+          a.addError('You can\'t delete this record!');
 
-           }
+        }
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         }
 
       } else {
@@ -20813,12 +20897,6 @@ for specific trigger conditions:
 
            if(a.Name == 'makeContact') {
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
              contacts.add(new Contact (LastName = a.Name,
 
                              AccountId = a.Id));
@@ -20839,7 +20917,7 @@ Apex Developer Guide Invoking Apex
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: TriggerOperation Enum](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_System_TriggerOperation.htm)
+_Apex Reference Guide_ [: TriggerOperation Enum](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_System_TriggerOperation.htm)
 
 Switch Statements
 
@@ -20858,6 +20936,9 @@ Be aware of the following considerations for trigger context variables:
 **•** You cannot delete `trigger.new` .
 
 The following table lists considerations about certain actions in different trigger events:
+
+
+Apex Developer Guide Invoking Apex
 
 **Trigger Event** **Can change fields using**
 
@@ -20901,6 +20982,8 @@ after update
 
 before delete
 
+after delete
+
 ```
 
 Not allowed. A runtime error is Allowed. Even though bad code Allowed. The updates are saved
@@ -20909,6 +20992,10 @@ already saved. doing this incorrectly, the error if the object is undeleted, the
 
 would be found by the governor updates become visible.
 limits.
+
+Not allowed. A runtime error is Not applicable. The object has Not applicable. The object has
+thrown. `trigger.new` is not already been deleted. already been deleted.
+available in after delete triggers.
 
 Not allowed. A runtime error is
 thrown. `trigger.new` is not
@@ -20923,33 +21010,6 @@ updates become visible.
 Not allowed. A runtime error is
 thrown. The deletion is already
 in progress.
-
-
-Apex Developer Guide Invoking Apex
-
-**Trigger Event** **Can change fields using**
-
-```
-             trigger.new
-
-```
-
-**Can update original object**
-**using an update DML**
-**operation**
-
-**Can delete original object**
-**using a delete DML**
-**operation**
-
-```
-after delete
-
-```
-
-Not allowed. A runtime error is Not applicable. The object has Not applicable. The object has
-thrown. `trigger.new` is not already been deleted. already been deleted.
-available in after delete triggers.
 
 `after undelete` Not allowed. A runtime error is Allowed.
 thrown.
@@ -20979,42 +21039,45 @@ in `Trigger.new` and uses the map to assign the appropriate color.
 
 // associated product's color to the new record.
 
-trigger oppLineTrigger on OpportunityLineItem (before insert) {
-
-   // For every OpportunityLineItem record, add its associated pricebook entry
-
-   // to a set so there are no duplicates.
-
-   Set<Id> pbeIds = new Set<Id>();
-
-   for (OpportunityLineItem oli : Trigger.new)
-
-     pbeIds.add(oli.pricebookentryid);
-
-   // Query the PricebookEntries for their associated product color and place the results
-
-   // in a map.
-
-   Map<Id, PricebookEntry> entries = new Map<Id, PricebookEntry>(
-
-     [select product2.color__c from pricebookentry
-
-      where id in :pbeIds]);
-
-   // Now use the map to set the appropriate color on every OpportunityLineItem processed
-
-   // by the trigger.
-
-   for (OpportunityLineItem oli : Trigger.new)
-
-     oli.color__c = entries.get(oli.pricebookEntryId).product2.color__c;
-
-}
-
 ```
 
 
 Apex Developer Guide Invoking Apex
+
+```
+   trigger oppLineTrigger on OpportunityLineItem (before insert) {
+
+      // For every OpportunityLineItem record, add its associated pricebook entry
+
+      // to a set so there are no duplicates.
+
+      Set<Id> pbeIds = new Set<Id>();
+
+      for (OpportunityLineItem oli : Trigger.new)
+
+        pbeIds.add(oli.pricebookentryid);
+
+      // Query the PricebookEntries for their associated product color and place the results
+
+      // in a map.
+
+      Map<Id, PricebookEntry> entries = new Map<Id, PricebookEntry>(
+
+        [select product2.color__c from pricebookentry
+
+         where id in :pbeIds]);
+
+      // Now use the map to set the appropriate color on every OpportunityLineItem processed
+
+      // by the trigger.
+
+      for (OpportunityLineItem oli : Trigger.new)
+
+        oli.color__c = entries.get(oli.pricebookEntryId).product2.color__c;
+
+   }
+
+```
 
 Correlating Records with Query Results in Bulk Triggers
 
@@ -21056,6 +21119,9 @@ record is no longer valid.
 
 Trigger code is stored as metadata under the object with which they are associated.
 
+
+Apex Developer Guide Invoking Apex
+
 To define a trigger in Salesforce:
 
 **1.** From the object management settings for the object whose triggers you want to access, go to Triggers.
@@ -21076,9 +21142,6 @@ recent package version.
 deselected if you only want to store the code in your organization's metadata. This checkbox is selected by default.
 
 **5.** In the `Body` text box, enter the Apex for the trigger. A single trigger can be up to 1 million characters in length.
-
-
-Apex Developer Guide Invoking Apex
 
 To define a trigger, use the following syntax:
 
@@ -21128,6 +21191,9 @@ the code. Recompiling occurs when the trigger is next executed, or when a user r
 If a lookup field references a record that has been deleted, Salesforce clears the value of the lookup field by default. Alternatively,
 you can choose to prevent records from being deleted if they’re in a lookup relationship.
 
+
+Apex Developer Guide Invoking Apex
+
 The Apex Trigger Editor
 
 The Apex and Visualforce editor has the following functionality:
@@ -21147,9 +21213,6 @@ or trigger.
 
 **•** To use a regular expression as your search string, select the **Regular Expressions** option. The regular expressions follow
 JavaScript's regular expression rules. A search using regular expressions can find strings that wrap over more than one line.
-
-
-Apex Developer Guide Invoking Apex
 
 If you use the replace operation with a string found by a regular expression, the replace operation can also bind regular expression
 group variables ( `$1`, `$2`, and so on) from the found search string. For example, to replace an `<h1>` tag with an `<h2>` tag and
@@ -21192,6 +21255,9 @@ such as accounts or opportunities, fire.
 
 The following is the order of events when a merge occurs:
 
+
+Apex Developer Guide Invoking Apex
+
 **1.** The `before delete` trigger fires.
 
 **2.** The system deletes the necessary records due to the merge, assigns new parent records to the child records, and sets the
@@ -21209,9 +21275,6 @@ from the Recycle Bin through the `undelete` DML statement. These are also called
 The `after undelete` trigger events only run on top-level objects. For example, if you delete an Account, an Opportunity may also
 be deleted. When you recover the Account from the Recycle Bin, the Opportunity is also recovered. If there is an `after undelete`
 trigger event associated with both the Account and the Opportunity, only the Account `after undelete` trigger event executes.
-
-
-Apex Developer Guide Invoking Apex
 
 The `after undelete` trigger event only fires for custom objects and these standard objects.
 
@@ -21252,7 +21315,7 @@ fields. The validation limits each dependent picklist field to its available val
 [Note: For a diagrammatic representation of the order of execution, see the Order of Execution Flowchart in the](http://developer.salesforce.com/docs/platform/data-models/guide/order-of-execution.html) _Salesforce Data_
 _Model Gallery_ . The diagram is specific to the API version indicated on it, and can be out-of-sync with the information here. This
 _Apex Developer Guide_ page contains the most up-to-date information on the order of execution for this API version. To access a
-[different API version, use the version picker for the Apex Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_dev_guide.htm)
+[different API version, use the version picker for the Apex Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dev_guide.htm)
 
 On the server, Salesforce performs events in this sequence.
 
@@ -21260,6 +21323,9 @@ Note: During a recursive save, Salesforce skips steps 9 (assignment rules) throu
 record).
 
 **1.** Loads the original record from the database or initializes the record for an `upsert` statement.
+
+
+Apex Developer Guide Invoking Apex
 
 **2.** Loads the new record field values from the request and overwrites the old values.
 
@@ -21279,9 +21345,6 @@ Additionally, if the request is from a User object on a standard UI edit page, S
 
 **•** For requests from multiline item creation such as quote line items and opportunity line items, Salesforce runs custom validation
 rules.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** For requests from other sources such as an Apex application or a SOAP API call, Salesforce validates foreign keys, field formats,
 maximum field lengths, and restricted picklists. Before executing a trigger, Salesforce verifies that any custom foreign keys don’t
@@ -21326,10 +21389,13 @@ one more time (and only one more time)
 
 **•** Flows launched by workflow rules (flow trigger workflow actions pilot)
 
-[Note: To control the order of execution of Salesforce Flow automations, use record-triggered flows. See Manage](https://help.salesforce.com/s/articleView?id=sf.flow_trigger_explorer.htm&language=en_US)
-[Record-Triggered Flows](https://help.salesforce.com/s/articleView?id=sf.flow_trigger_explorer.htm&language=en_US)
+[Note: To control the order of execution of Salesforce Flow automations, use record-triggered flows. See Manage](https://help.salesforce.com/s/articleView?id=platform.flow_trigger_explorer.htm&type=5&language=en_US)
+[Record-Triggered Flows](https://help.salesforce.com/s/articleView?id=platform.flow_trigger_explorer.htm&type=5&language=en_US)
 
 When a process or flow executes a DML operation, the affected record goes through the save procedure.
+
+
+Apex Developer Guide Invoking Apex
 
 **14.** Executes record-triggered flows that are configured to run after the record is saved
 
@@ -21348,9 +21414,6 @@ procedure.
 
 **20.** After the changes are committed to the database, executes post-commit logic. Examples of post-commit logic (in no particular
 order) include:
-
-
-Apex Developer Guide Invoking Apex
 
 **•** Sending email
 
@@ -21377,16 +21440,16 @@ you have two `before insert` triggers for Case and a new Case record is inserted
 guaranteed.
 
 **•** To learn about the order of execution when you insert a non-private contact in your org that associates a contact to multiple accounts,
-[see AccountContactRelation.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_accountcontactrelation.htm)
+[see AccountContactRelation.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_accountcontactrelation.htm)
 
 **•** To learn about the order of execution when you’re using `before` triggers to set `Stage` and `Forecast Category`, see
-[Opportunity.](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_opportunity.htm)
+[Opportunity.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_opportunity.htm)
 
 **•** In API version 53.0 and earlier, after-save record-triggered flows run after entitlements are executed.
 
 SEE ALSO:
 
-_Salesforce Help_ [: Triggers for Autolaunched Flows](https://help.salesforce.com/s/articleView?id=sf.flow_concepts_trigger.htm&type=5&language=en_US)
+_Salesforce Help_ [: Triggers for Autolaunched Flows](https://help.salesforce.com/s/articleView?id=platform.flow_concepts_trigger.htm&type=5&language=en_US)
 
 ##### Operations That Don't Invoke Triggers
 
@@ -21394,6 +21457,9 @@ Some operations don’t invoke triggers.
 
 Triggers are invoked for data manipulation language (DML) operations that the Java application server initiates or processes. Therefore,
 some system bulk operations don't invoke triggers. Some examples include:
+
+
+Apex Developer Guide Invoking Apex
 
 **•** Cascading delete operations. Records that did not initiate a `delete` don't cause trigger evaluation.
 
@@ -21416,9 +21482,6 @@ some system bulk operations don't invoke triggers. Some examples include:
 **•** Managing price books
 
 **•** Changing a user's default division with the transfer division option checked
-
-
-Apex Developer Guide Invoking Apex
 
 **•** Changes to the following objects:
 
@@ -21471,14 +21534,14 @@ Triggers on the Attachment object don’t fire when:
 
 **•** the user sends email via the Email related list and adds an attachment file.
 
+
+Apex Developer Guide Invoking Apex
+
 Triggers fire when the Attachment object is created via Email-to-Case or via the UI.
 
 ##### Entity and Field Considerations in Triggers
 
 When you create triggers, consider the behavior of certain entities, fields, and operations.
-
-
-Apex Developer Guide Invoking Apex
 
 QuestionDataCategorySelection Entity Not Available in After Insert Triggers
 
@@ -21542,14 +21605,14 @@ Considerations for Event DateTime Fields in Insert and Update Triggers
 
 We recommend using the following date and time fields to create or update events.
 
+
+Apex Developer Guide Invoking Apex
+
 **•** When creating or updating a timed Event, use `ActivityDateTime` to avoid issues with inconsistent date and time values.
 
 **•** When creating or updating an all-day Event, use `ActivityDate` to avoid issues with inconsistent date and time values.
 
 **•** We recommend that you use `DurationInMinutes` because it works with all updates and creates for Events.
-
-
-Apex Developer Guide Invoking Apex
 
 Operations Not Supported in Insert and Update Triggers
 
@@ -21603,12 +21666,12 @@ versions before 21.0.
 
 **–** `ContentSize`
 
+
+Apex Developer Guide Invoking Apex
+
 **–** `ContentType`
 
 In addition, the `ContentData` field isn’t available in any delete trigger.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** Triggers on FeedItem objects run before their attachment and capabilities information is saved, which means that
 `ConnectApi.FeedItem.attachment` information and `ConnectApi.FeedElement.capabilities` information
@@ -21679,15 +21742,15 @@ SEE ALSO:
 
 Entity and Field Considerations in Triggers
 
-_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_feeditem.htm)_ : FeedItem
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_feeditem.htm)_ : FeedItem
 
-_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_feedattachment.htm)_ : FeedAttachment
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_feedattachment.htm)_ : FeedAttachment
 
-_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_feedcomment.htm)_ : FeedComment
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_feedcomment.htm)_ : FeedComment
 
-_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_collaborationgroup.htm)_ : CollaborationGroup
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_collaborationgroup.htm)_ : CollaborationGroup
 
-_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_collaborationgroupmember.htm)_ : CollaborationGroupMember
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_collaborationgroupmember.htm)_ : CollaborationGroupMember
 
 ##### Trigger Considerations for Knowledge Articles
 
@@ -21799,7 +21862,7 @@ A subset of the records being processed can be marked with the `addError()` meth
 runtime engine still processes every record in the operation to compile a comprehensive list of errors.
 
 **•** If the trigger was spawned by a bulk DML call in the Lightning Platform API, the runtime engine sets aside the bad records and
-attempts to do a partial save of the records that did not generate errors. See Bulk DML Exception Handling on page 162.
+attempts to do a partial save of the records that did not generate errors. See Bulk DML Exception Handling on page 164.
 
 
 Apex Developer Guide Invoking Apex
@@ -21808,7 +21871,7 @@ If a trigger ever throws an unhandled exception, all records are marked with an 
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject.htm)_ : SObject.addError()
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm)_ : SObject.addError()
 
 ##### Trigger and Bulk Request Best Practices
 
@@ -21984,7 +22047,7 @@ Adding a Queueable Job with a Specified Minimum Delay
 Use the `System.enqueueJob(queueable, delay)` method to add queueable jobs to the asynchronous execution queue
 with a specified minimum delay (0–10 minutes). The delay is ignored during Apex testing.
 
-See `[System.enqueueJob(queueable, delay)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_enqueueJob_2)` in the _Apex Reference Guide_ .
+See `[System.enqueueJob(queueable, delay)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_enqueueJob_2)` in the _Apex Reference Guide_ .
 
 
 Apex Developer Guide Invoking Apex
@@ -22020,16 +22083,16 @@ Define the org-wide delay in one of these ways.
 **•** From Setup, in the Quick Find box, enter _`Apex Settings`_, and then enter a value (1–600 seconds) for **Default minimum**
 **enqueue delay (in seconds) for queueable jobs that do not have a delay parameter**
 
-**•** [To enable this feature programmatically with Metadata API, see ApexSettings in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_apexsettings.htm) _Metadata API Developer Guide_ .
+**•** [To enable this feature programmatically with Metadata API, see ApexSettings in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_apexsettings.htm) _Metadata API Developer Guide_ .
 
 Adding a Queueable Job with a Specified Stack Depth
 
 Use the `System.enqueueJob(queueable, asyncOptions)` method where you can specify the maximum stack depth
 and the minimum queue delay in the asyncOptions parameter.
 
-The `[System.AsyncInfo](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_AsyncOptions.htm)` class properties contain the current and maximum stack depths and the minimum queueable delay.
+The `[System.AsyncInfo](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_AsyncOptions.htm)` class properties contain the current and maximum stack depths and the minimum queueable delay.
 
-The `[System.AsyncInfo](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_AsyncInfo.htm)` class has methods to help you determine if maximum stack depth is set in your Queueable request and
+The `[System.AsyncInfo](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_AsyncInfo.htm)` class has methods to help you determine if maximum stack depth is set in your Queueable request and
 to get the stack depths and queue delay for your queueables that are currently running. Use information about the current queueable
 execution to make decisions on adjusting delays on subsequent calls.
 
@@ -22223,7 +22286,7 @@ Platform Apex Limits.
 
 **•** You can add up to 50 jobs to the queue with `System.enqueueJob` in a single transaction. In asynchronous transactions (for
 example, from a batch Apex job), you can add only one job to the queue with `System.enqueueJob` . To check how many
-queueable jobs have been added in one transaction, call `[Limits.getQueueableJobs()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_limits.htm)` .
+queueable jobs have been added in one transaction, call `[Limits.getQueueableJobs()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_limits.htm)` .
 
 **•** Because no limit is enforced on the depth of chained jobs, you can chain one job to another. You can repeat this process with each
 new child job to link it to a new child job. For Developer Edition and Trial organizations, the maximum stack depth for chained jobs
@@ -22251,9 +22314,9 @@ Troubleshoot both semantic and run-time issues by analyzing these error messages
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: Queueable Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Queueable.htm)
+_Apex Reference Guide_ [: Queueable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Queueable.htm)
 
-_Apex Reference Guide_ [: QueueableContext Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_system_queueablecontext.htm)
+_Apex Reference Guide_ [: QueueableContext Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_system_queueablecontext.htm)
 
 ###### Detecting Duplicate Queueable Jobs
 
@@ -22263,9 +22326,9 @@ when you try to enqueue subsequent jobs.
 
 Build a Queueable Signature
 
-To create a unique queuable signature, first declare an instance of the `[AsyncOptions](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_AsyncOptions.htm)` class. Then set the value of the instance’s
-`DuplicateSignature` property to a `[QueueableDuplicateSignature](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_QueueableDuplicateSignature.htm)` object, which is built using the inner
-`[QueueableDuplicateSignature.Builder](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_QueueableDuplicateSignature_Builder.htm)` class.
+To create a unique queuable signature, first declare an instance of the `[AsyncOptions](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_AsyncOptions.htm)` class. Then set the value of the instance’s
+`DuplicateSignature` property to a `[QueueableDuplicateSignature](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_QueueableDuplicateSignature.htm)` object, which is built using the inner
+`[QueueableDuplicateSignature.Builder](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_QueueableDuplicateSignature_Builder.htm)` class.
 
 To build the queueable signature, add different strings, IDs, or integers using these methods from
 `QueueableDuplicateSignature.Builder` .
@@ -22290,7 +22353,7 @@ When the signature has the required components, call the `.build()` method and a
 
 Enqueue a Job with a Queueable Signature
 
-After you build a queuable signature, enqueue a new job using the `[System.enqueueJob(queueable, asyncOptions)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_system_enqueueJob)`
+After you build a queuable signature, enqueue a new job using the `[System.enqueueJob(queueable, asyncOptions)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_system_enqueueJob)`
 method. Set the `asyncOptions` parameter to the `AsyncOptions` instance with the queueable signature that identifies the
 unique job. When the new job is enqueued, the system checks for existing enqueued jobs with the same signature. If other enqueued
 jobs with the same signature are found, then the enqueue operation for the new job fails, and a DuplicateMessageException is thrown.
@@ -22849,11 +22912,11 @@ Apex Developer Guide Invoking Apex
 
 ```
 
-An easier way to schedule a batch job is to call the `[System.scheduleBatch](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_batch_interface.htm#apex_batch_scheduleBatch_section)` method without having to implement the
+An easier way to schedule a batch job is to call the `[System.scheduleBatch](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_batch_interface.htm#apex_batch_scheduleBatch_section)` method without having to implement the
 `Schedulable` interface.
 
 Use the SchedulableContext object to track the scheduled job when it's scheduled. The SchedulableContext `getTriggerID` method
-[returns the ID of the CronTrigger object associated with this scheduled job as a string. You can query](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_crontrigger.htm) `CronTrigger` to track the
+[returns the ID of the CronTrigger object associated with this scheduled job as a string. You can query](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_crontrigger.htm) `CronTrigger` to track the
 progress of the scheduled job.
 
 To stop execution of a job that was scheduled, use the `System.abortJob` method with the ID returned by the `getTriggerID`
@@ -23228,7 +23291,7 @@ CronTrigger and CronJobDetail objects to get the count of Apex scheduled jobs.
 **•** The maximum number of scheduled Apex executions per a 24-hour period is 250,000 or the number of user licenses in your
 organization multiplied by 200, whichever is greater. This limit is for your entire org and is shared with all asynchronous Apex: Batch
 Apex, Queueable Apex, scheduled Apex, and future methods. To check how many asynchronous Apex executions are available,
-make a request to REST API `limits` [resource. See List Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ . If the number of
+make a request to REST API `limits` [resource. See List Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ . If the number of
 asynchronous Apex executions needed by a job exceeds the available number that’s calculated using the 24-hour rolling limit, an
 exception is thrown. For example, if your async job requires 10,000 method executions and the available 24-hour rolling limit is
 9,500, you get AsyncApexExecutions Limit exceeded exception. The license types that count toward this limit include full Salesforce
@@ -23280,7 +23343,7 @@ established schedule. Any scheduled executions that were missed while the job wa
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: Schedulable Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_system_schedulable.htm)
+_Apex Reference Guide_ [: Schedulable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_system_schedulable.htm)
 
 ##### Batch Apex
 
@@ -23307,9 +23370,9 @@ online help.
 
 The batch Apex interface is also used for Apex managed sharing recalculations.
 
-For more information on batch jobs, continue to Using Batch Apex on page 303.
+For more information on batch jobs, continue to Using Batch Apex on page 304.
 
-For more information on Apex managed sharing, see Understanding Apex Managed Sharing on page 221.
+For more information on Apex managed sharing, see Understanding Apex Managed Sharing on page 222.
 
 For more information on firing platform events from batch Apex, see Firing Platform Events from Batch Apex
 
@@ -23408,11 +23471,11 @@ Apex Developer Guide Invoking Apex
 
 **Name** **Arguments** **Returns** **Description**
 
-`getJobID` ID [Returns the ID of the AsyncApexJob object associated with](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm)
+`getJobID` ID [Returns the ID of the AsyncApexJob object associated with](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm)
 this batch job as a string. Use this method to track the
 
 progress of records in the batch job. You can also use this
-ID with the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
+ID with the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
 
 The following example uses the `Database.BatchableContext` to query the `AsyncApexJob` associated with the batch job.
 
@@ -23567,12 +23630,8 @@ parameter when you have many operations for each record being passed in and are 
 number of records, you’re limiting the operations per transaction. This value must be greater than zero. If the `start` method of
 the batch class returns a QueryLocator, the optional scope parameter of `Database.executeBatch` can have a maximum
 value of 2,000. If set to a higher value, Salesforce chunks the records returned by the QueryLocator into smaller batches of up to
-2,000 records. If the `start` method of the batch class returns an iterable, the scope parameter value has no upper limit. However,
-if you use a high number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100, 200, 400 and so
-on.
-
-
-Apex Developer Guide Invoking Apex
+records. If the `start` method of the batch class returns an iterable, the scope parameter value has no upper limit. However, if you
+use a high number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100, 200, 400 and so on.
 
 The `Database.executeBatch` method returns the ID of the AsyncApexJob object, which you can use to track the progress of
 the job. For example:
@@ -23580,15 +23639,21 @@ the job. For example:
 ```
    ID batchprocessid = Database.executeBatch(reassign);
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
    AsyncApexJob aaj = [SELECT Id, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors
 
                FROM AsyncApexJob WHERE ID =: batchprocessid ];
 
 ```
 
-You can also use this ID with the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
+You can also use this ID with the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
 
-[For more information, see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
+[For more information, see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
 
 Holding Batch Jobs in the Apex Flex Queue
 
@@ -23615,7 +23680,7 @@ While submitted jobs have a status of `Holding`, you can reorder them in the Sal
 processed first. To do so, from Setup, enter _`Apex Flex Queue`_ in the `Quick Find` box, then select **Apex Flex Queue** .
 
 Alternatively, you can use Apex methods to reorder batch jobs in the flex queue. To move a job to a new position, call one of the
-`[System.FlexQueue](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_flexqueue.htm)` methods. Pass the method the job ID and, if applicable, the ID of the job next to the moved job’s new position.
+`[System.FlexQueue](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_flexqueue.htm)` methods. Pass the method the job ID and, if applicable, the ID of the job next to the moved job’s new position.
 For example:
 
 ```
@@ -23641,15 +23706,15 @@ The following table lists all possible statuses for a batch job along with a des
 Holding Job has been submitted and is held in the Apex flex queue until
 system resources become available to queue the job for processing.
 
-
-Apex Developer Guide Invoking Apex
-
-**Status** **Description**
-
 Queued Job is awaiting execution.
 
 Preparing The `start` method of the job has been invoked. This status can
 last a few minutes depending on the size of the batch of records.
+
+
+Apex Developer Guide Invoking Apex
+
+**Status** **Description**
 
 Processing Job is being processed.
 
@@ -23674,10 +23739,10 @@ The `System.scheduleBatch` method takes these parameters.
 **•** An optional scope value. This parameter specifies the number of records to pass into the `execute` method. Use this parameter
 when you have many operations for each record being passed in and are running into governor limits. By limiting the number of
 records, you’re limiting the operations per transaction. This value must be greater than zero.If the `start` method of the batch class
-returns a QueryLocator, the optional scope parameter of `Database.executeBatch` can have a maximum value of 2,000. If
-set to a higher value, Salesforce chunks the records returned by the QueryLocator into smaller batches of up to 2,000 records. If the
-`start` method of the batch class returns an iterable, the scope parameter value has no upper limit. However, if you use a high
-number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100, 200, 400 and so on.
+returns a QueryLocator, the optional scope parameter of `Database.executeBatch` can have a maximum value of . If set to
+a higher value, Salesforce chunks the records returned by the QueryLocator into smaller batches of up to 2,000 records. If the `start`
+method of the batch class returns an iterable, the scope parameter value has no upper limit. However, if you use a high number,
+you can run into other limits. The optimal scope size is a factor of 2000, for example, 100, 200, 400 and so on.
 
 The `System.scheduleBatch` method returns the scheduled job ID (CronTrigger ID).
 
@@ -23705,10 +23770,7 @@ corresponding scheduled job.
 
 ```
 
-[For more information, see CronTrigger in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_crontrigger.htm) _Object Reference for Salesforce._
-
-
-Apex Developer Guide Invoking Apex
+[For more information, see CronTrigger in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_crontrigger.htm) _Object Reference for Salesforce._
 
 Note: Some things to note about `System.scheduleBatch` :
 
@@ -23720,12 +23782,15 @@ occurs at or after that time, depending on service availability.
 **•** When the job’s schedule is triggered, the system queues the batch job for processing. If Apex flex queue is enabled in your
 org, the batch job is added at the end of the flex queue. For more information, see Holding Batch Jobs in the Apex Flex Queue.
 
+
+Apex Developer Guide Invoking Apex
+
 **•** All scheduled Apex limits apply for batch jobs scheduled using `System.scheduleBatch` . After the batch job is queued
 (with a status of `Holding` or `Queued` ), all batch job limits apply and the job no longer counts toward scheduled Apex
 limits.
 
 **•** After calling this method and before the batch job starts, you can use the returned scheduled job ID to abort the scheduled
-job using the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
+job using the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
 
 Batch Apex Examples
 
@@ -23789,9 +23854,6 @@ You can use this code to call the previous class.
 
 ```
 
-
-Apex Developer Guide Invoking Apex
-
 To exclude accounts or invoices that were deleted but are still in the Recycle Bin, include `isDeleted=false` in the SOQL query
 WHERE clause, as shown in these modified samples.
 
@@ -23804,6 +23866,12 @@ WHERE clause, as shown in these modified samples.
 
    String f = 'Industry';
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
    String v = 'Consulting';
 
    Id batchInstanceId = Database.executeBatch(new UpdateAccountFields(q,e,f,v), 5);
@@ -23883,9 +23951,6 @@ The following class uses batch Apex to reassign all accounts owned by a specific
 
 ```
 
-
-Apex Developer Guide Invoking Apex
-
 Use this code to execute the `OwnerReassignment` class in the previous example.
 
 ```
@@ -23897,6 +23962,12 @@ Use this code to execute the `OwnerReassignment` class in the previous example.
 
    reassign.email='admin@acme.com';
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
    reassign.fromUserId = u;
 
    reassign.toUserId = u2;
@@ -23981,13 +24052,13 @@ To use a callout in batch Apex, specify `Database.AllowsCallouts` in the class d
 
 Callouts include HTTP requests and methods defined with the `webservice` keyword.
 
-
-Apex Developer Guide Invoking Apex
-
 Using State in Batch Apex
 
 Each execution of a batch Apex job is considered a discrete transaction. For example, a batch Apex job that contains 1,000 records and
 is executed without the optional _`scope`_ parameter is considered five transactions of 200 records each.
+
+
+Apex Developer Guide Invoking Apex
 
 If you specify `Database.Stateful` in the class definition, you can maintain state across these transactions. When using
 `Database.Stateful`, only instance member variables retain their values between transactions. Static member variables don’t
@@ -24064,18 +24135,18 @@ instances of the `Database.Batchable` methods. For example:
 
      public Database.QueryLocator start(Database.BatchableContext bc) {
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
       // Access initialState here
 
       return Database.getQueryLocator(query);
 
      }
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
      public void execute(Database.BatchableContext bc,
 
                  List<sObject> batch) {
@@ -24141,12 +24212,6 @@ The following example tests the `OwnerReassignment` class.
 
    // test one execute.
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
      List <Account> accns = new List<Account>();
 
        for(integer i = 0; i<200; i++){
@@ -24157,6 +24222,12 @@ Apex Developer Guide Invoking Apex
 
          accns.add(a);
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
        }
 
      insert accns;
@@ -24213,8 +24284,8 @@ Keep in mind these governor limits and other limitations for batch Apex.
 **•** The maximum number of batch Apex method executions per 24-hour period is 250,000, or the number of user licenses in your org
 multiplied by 200—whichever is greater. Method executions include executions of the `start`, `execute`, and `finish` methods.
 This limit is for your entire org and is shared with all asynchronous Apex: Batch Apex, Queueable Apex, scheduled Apex, and future
-methods. To check how many asynchronous Apex executions are available, make a request to REST API `limits` [resource. See List](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_limits.htm)
-[Organization Limits in the REST API Developer Guide. If the number of asynchronous Apex executions needed by a job exceeds the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_limits.htm)
+methods. To check how many asynchronous Apex executions are available, make a request to REST API `limits` [resource. See List](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm)
+[Organization Limits in the REST API Developer Guide. If the number of asynchronous Apex executions needed by a job exceeds the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm)
 available number that’s calculated using the 24-hour rolling limit, an exception is thrown. Batch Apex preemptively checks the
 required asynchronous job capacity when `Database.executeBatch` is called and the `start` method has returned the
 workload. The batch won’t start unless there is sufficient capacity for the entire job available. For example, if the batch requires 10,000
@@ -24223,15 +24294,16 @@ exception is thrown, and the remaining executions are left unchanged. The licens
 Salesforce and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only users, Identity users, and Company
 Communities users.
 
-
-Apex Developer Guide Invoking Apex
-
 **•** A maximum of 50 million records can be returned in the `Database.QueryLocator` object. If more than 50 million records
 are returned, the batch job is immediately terminated and marked as Failed.
 
 **•** If the `start` method of the batch class returns a QueryLocator, the optional scope parameter of `Database.executeBatch`
 can have a maximum value of 2,000. If set to a higher value, Salesforce chunks the records returned by the QueryLocator into smaller
 batches of up to 2,000 records. If the `start` method of the batch class returns an iterable, the scope parameter value has no upper
+
+
+Apex Developer Guide Invoking Apex
+
 limit. However, if you use a high number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100,
 200, 400 and so on.
 
@@ -24251,7 +24323,7 @@ start, execute, and finish the queued jobs. You can use the Apex flex queue to p
 **•** Using `FOR UPDATE` in SOQL queries to lock records during update isn’t applicable to Batch Apex.
 
 **•** `Database.QueryLocator` objects and related query results are available for 2 days, including results in nested queries. For
-[more information, see API Query Cursor Limits.](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apicursors.htm)
+[more information, see API Query Cursor Limits.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apicursors.htm)
 
 Batch Apex Considerations and Best Practices
 
@@ -24285,17 +24357,17 @@ managed package and the subscribing org is running the batch job, notifications 
 
 **•** Each batch Apex invocation creates an `AsyncApexJob` record. To construct a SOQL query to retrieve the job’s status, number
 of errors, progress, and submitter, use the `AsyncApexJob` record’s ID. For more information about the `AsyncApexJob` object,
-[see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
-
-
-Apex Developer Guide Invoking Apex
+[see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
 
 **•** For each 10,000 `AsyncApexJob` records, Apex creates an `AsyncApexJob` record of type `BatchApexWorker` for internal
 use. When querying for all `AsyncApexJob` records, we recommend that you filter out records of type `BatchApexWorker`
 using the `JobType` field. Otherwise, the query returns one more record for every 10,000 `AsyncApexJob` records. For more
-information about the `AsyncApexJob` [object, see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
+information about the `AsyncApexJob` [object, see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
 
 **•** All implemented `Database.Batchable` interface methods must be defined as `public` or `global` .
+
+
+Apex Developer Guide Invoking Apex
 
 **•** For a sharing recalculation, we recommend that the `execute` method delete and then re-create all Apex managed sharing for
 the records in the batch. This process ensures that sharing is accurate and complete.
@@ -24303,8 +24375,8 @@ the records in the batch. This process ensures that sharing is accurate and comp
 **•** Batch jobs queued before a Salesforce service maintenance downtime remain in the queue. After service downtime ends and when
 system resources become available, the queued batch jobs are executed. If a batch job is running when downtime occurred, the
 batch execution is rolled back and restarted after the service comes back up. Because execute methods can therefore run multiple
-[times, any non-transactional operations, such as callouts, can be retried. All non-transactional operations must follow Idempotent](https://developer.salesforce.com/docs/atlas.en-us.258.0.integration_patterns_and_practices.meta/integration_patterns_and_practices/integ_pat_remote_process_invocation_state.htm#idempotent_design_header)
-[Design Considerations to maintain data integrity.](https://developer.salesforce.com/docs/atlas.en-us.258.0.integration_patterns_and_practices.meta/integration_patterns_and_practices/integ_pat_remote_process_invocation_state.htm#idempotent_design_header)
+[times, any non-transactional operations, such as callouts, can be retried. All non-transactional operations must follow Idempotent](https://developer.salesforce.com/docs/atlas.en-us.260.0.integration_patterns_and_practices.meta/integration_patterns_and_practices/integ_pat_remote_process_invocation_state.htm#idempotent_design_header)
+[Design Considerations to maintain data integrity.](https://developer.salesforce.com/docs/atlas.en-us.260.0.integration_patterns_and_practices.meta/integration_patterns_and_practices/integ_pat_remote_process_invocation_state.htm#idempotent_design_header)
 
 **•** Minimize the number of batches, if possible. Salesforce uses a queue-based framework to handle asynchronous processes from such
 sources as future methods and batch Apex. This queue is used to balance request workload across organizations. If more than 2,000
@@ -24312,7 +24384,7 @@ unprocessed requests from a single organization are in the queue, any additional
 while the queue handles requests from other organizations.
 
 **•** Salesforce recommends that you design your asynchronous Apex jobs to handle variations in processing time. For example, to
-handle potential processing overlaps, consider chaining batch jobs on page 317 instead of scheduling jobs at fixed intervals.
+handle potential processing overlaps, consider chaining batch jobs on page 318 instead of scheduling jobs at fixed intervals.
 
 **•** Ensure that batch jobs execute as fast as possible. To ensure fast execution of batch jobs, minimize Web service callout times and
 tune the queries used in your batch Apex code. The longer the batch job executes, the more likely other queued jobs are delayed
@@ -24352,14 +24424,14 @@ because of the relationship subquery:
 A better strategy is to perform the subquery separately, from within the `execute` method, which allows the batch job to run
 using the faster, chunking implementation.
 
-
-Apex Developer Guide Invoking Apex
-
 **•** To implement record locking as part of the batch job, you can requery records inside the `execute` method, using FOR UPDATE.
 Requerying records in this manner ensures that conflicting updates aren’t overwritten by DML in the batch job. To requery records,
 simply select the `Id` field in the batch job's main query locator.
 
 **•** The Salesforce Platform's flow control mechanism and fair-usage algorithm can cause a delay in running batch jobs.
+
+
+Apex Developer Guide Invoking Apex
 
 Chaining Batch Jobs
 
@@ -24394,13 +24466,13 @@ doesn’t matter.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_database_batchable.htm)_ : Batchable Interface
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_database_batchable.htm)_ : Batchable Interface
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_FlexQueue.htm)_ :FlexQueue Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_FlexQueue.htm)_ :FlexQueue Class
 
-_Apex Reference Guide_ [: Test.enqueueBatchJobs()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm)
+_Apex Reference Guide_ [: Test.enqueueBatchJobs()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)
 
-_Apex Reference Guide_ [: Test.getFlexQueueOrder()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm)
+_Apex Reference Guide_ [: Test.getFlexQueueOrder()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)
 
 _Salesforce Help_ [: Client-driven and Server-driven Paging for Salesforce Connect—OData 2.0 and 4.0 Adapters](https://help.salesforce.com/articleView?id=odata_paging.htm&language=en_US)
 
@@ -24412,19 +24484,19 @@ Batch Apex classes can fire platform events when encountering an error or except
 information, such as how often the event failed and which records were in scope at the time of failure. Events are also fired for Salesforce
 Platform internal errors and other uncatchable Apex exceptions such as LimitExceptions, which are caused by reaching governor limits.
 
-
-Apex Developer Guide Invoking Apex
-
 An event message provides more granular error tracking than the Apex Jobs UI. It includes the record IDs being processed, exception
 type, exception message, and stack trace. You can also incorporate custom handling and retry logic for failures. You can invoke custom
 Apex logic from any trigger on this type of event, so Apex developers can build functionality like custom logging or automated retry
 handling.
 
-[For information on subscribing to platform events, see Subscribing to Platform Events.](https://developer.salesforce.com/docs/atlas.en-us.258.0.platform_events.meta/platform_events/platform_events_subscribe.htm)
+[For information on subscribing to platform events, see Subscribing to Platform Events.](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_subscribe.htm)
+
+
+Apex Developer Guide Invoking Apex
 
 The BatchApexErrorEvent object represents a platform event associated with a batch Apex class. This object is available in API version
 44.0 and later. If the `start`, `execute`, or `finish` method of a batch Apex job encounters an unhandled exception, a
-`BatchApexErrorEvent` [platform event is fired. For more details, see BatchApexErrorEvent in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.platform_events.meta/platform_events/sforce_api_objects_batchapexerrorevent.htm) _Platform Events Developer Guide_ .
+`BatchApexErrorEvent` [platform event is fired. For more details, see BatchApexErrorEvent in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/sforce_api_objects_batchapexerrorevent.htm) _Platform Events Developer Guide_ .
 
 To fire a platform event, a batch Apex class declaration must implement the Database.RaisesPlatformEvents interface.
 
@@ -24499,9 +24571,6 @@ Testing BatchApexErrorEvent Messages Published from Batch Apex Jobs
 Use the `Test.getEventBus().deliver()` method to deliver event messages that are published by failed batch Apex jobs.
 Use the `Test.startTest()` and `Test.stopTest()` statement block to execute the batch job.
 
-
-Apex Developer Guide Invoking Apex
-
 This snippet shows how to execute a batch Apex job and deliver event messages. It executes the batch job after `Test.stopTest()` .
 This batch job publishes a BatchApexErrorEvent message when a failure occurs through the implementation of
 `Database.RaisesPlatformEvents` . After `Test.stopTest()` runs, a separate `Test.getEventBus().deliver()`
@@ -24512,6 +24581,12 @@ statement is added so that it can deliver the BatchApexErrorEvent.
 
       Test.startTest();
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
       Database.executeBatch(new SampleBatchApex());
 
       Test.stopTest();
@@ -24536,9 +24611,9 @@ job, publishes another platform event, add a `Test.getEventBus().deliver();` sta
 
 SEE ALSO:
 
-_[Platform Events Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.platform_events.meta/platform_events/platform_events_test_deliver.htm)_ : Deliver Test Event Messages
+_[Platform Events Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_test_deliver.htm)_ : Deliver Test Event Messages
 
-_Platform Events Developer Guide_ [: Event and Event Bus Properties in Test Context](https://developer.salesforce.com/docs/atlas.en-us.258.0.platform_events.meta/platform_events/platform_events_test_events.htm)
+_Platform Events Developer Guide_ [: Event and Event Bus Properties in Test Context](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_test_events.htm)
 
 ##### Future Methods
 
@@ -24575,10 +24650,6 @@ take sObjects or objects as arguments.
 
 The reason why sObjects can’t be passed as arguments to future methods is because the sObject can change between the time you call
 the method and the time it executes. In this case, the future method gets the old sObject values and can overwrite them. To work with
-
-
-Apex Developer Guide Invoking Apex
-
 sObjects that already exist in the database, pass the sObject ID instead (or collection of IDs) and use the ID to perform a query for the
 most up-to-date record. The following example shows how to do so with a list of IDs.
 
@@ -24597,6 +24668,12 @@ most up-to-date record. The following example shows how to do so with a list of 
 
          List<Account> accts = [SELECT Name FROM Account WHERE Id IN :recordIds];
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
          // Process records
 
       }
@@ -24670,9 +24747,6 @@ This `Util` class contains the future method for inserting a user with a non-nul
 
 ```
 
-
-Apex Developer Guide Invoking Apex
-
 This class contains the main method that calls the future method that was defined previously.
 
 ```
@@ -24696,6 +24770,12 @@ This class contains the main method that calls the future method that was define
 
         Util.insertUserWithRole(
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
            'mruiz@awcomputing.com', 'mruiz',
 
            'mruiz@awcomputing.com', 'Ruiz');
@@ -24717,13 +24797,13 @@ of queued jobs.
 
 Note: Having multiple future methods fan out from a queueable job isn’t recommended practice as it can rapidly add a large
 number of future methods to the asynchronous queue. Request processing can be delayed and you can quickly hit the daily
-[maximum limit for asynchronous Apex method executions. See Future Method Performance Best Practices and Lightning](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_invoking_future_methods.htm)
-[Platform Apex Limits.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_gov_limits.htm#in_topic_non_transactional_gov_limits_section)
+[maximum limit for asynchronous Apex method executions. See Future Method Performance Best Practices and Lightning](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_invoking_future_methods.htm)
+[Platform Apex Limits.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm#in_topic_non_transactional_gov_limits_section)
 
 **•** The maximum number of `future` method invocations per a 24-hour period is 250,000 or the number of user licenses in your
 organization multiplied by 200, whichever is greater. This limit is for your entire org and is shared with all asynchronous Apex: Batch
 Apex, Queueable Apex, scheduled Apex, and future methods. To check how many asynchronous Apex executions are available,
-make a request to REST API `limits` [resource. See List Organization Limits in the REST API Developer Guide. If the number of](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_limits.htm)
+make a request to REST API `limits` [resource. See List Organization Limits in the REST API Developer Guide. If the number of](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm)
 asynchronous Apex executions needed by a job exceeds the available number that’s calculated using the 24-hour rolling limit, an
 exception is thrown. For example, if your async job requires 10,000 method executions and the available 24-hour rolling limit is
 9,500, you get AsyncApexExecutions Limit exceeded exception. The license types that count toward this limit include full Salesforce
@@ -24740,12 +24820,9 @@ running when downtime occurred, the future method execution is rolled back and r
 
 Testing Future Methods
 
-To test methods defined with the `future` [annotation, call the class containing the method in a startTest(), stopTest() code block. All](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_startTest)
+To test methods defined with the `future` [annotation, call the class containing the method in a startTest(), stopTest() code block. All](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_startTest)
 asynchronous calls made after the `startTest` method are collected by the system. When `stopTest` is executed, all asynchronous
 processes are run synchronously.
-
-
-Apex Developer Guide Invoking Apex
 
 For our example, here’s the test class.
 
@@ -24770,6 +24847,12 @@ For our example, here’s the test class.
 
            Test.stopTest();
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         }
 
         // The future method will run after Test.stopTest();
@@ -24824,12 +24907,16 @@ enable Apex to invoke external web or HTTP services.
 
 **•** Apex REST API exposes your Apex classes and methods as REST web services. See Exposing Apex Classes as REST Web Services.
 
+Webservice Methods
 
-Apex Developer Guide Invoking Apex
+Exposing Data with Webservice Methods
 
-##### Webservice Methods Exposing Data with Webservice Methods Considerations for Using the webservice Keyword
+Considerations for Using the webservice Keyword
 
 Overloading Web Service Methods
+
+
+Apex Developer Guide Invoking Apex
 
 ##### Webservice Methods
 
@@ -24871,8 +24958,8 @@ any sensitive data.
 
 Warning: Apex class methods that are exposed through the API with the `webservice` keyword don't enforce object permissions
 and field-level security by default. We recommend that you make use of the appropriate object or field describe result methods
-[to check the current user’s access level on the objects and fields that the webservice method is accessing. See DescribeSObjectResult](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-[Class and DescribeFieldResult Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[to check the current user’s access level on the objects and fields that the webservice method is accessing. See DescribeSObjectResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[Class and DescribeFieldResult Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
 
 Also, sharing rules (record-level access) are enforced only when declaring a class with the `with sharing` keyword. This
 requirement applies to all Apex classes, including to classes that contain webservice methods. To enforce sharing rules for webservice
@@ -24890,9 +24977,6 @@ to define a class or an inner class method.
 
 **•** System-defined enums cannot be used in Web service methods.
 
-
-Apex Developer Guide Invoking Apex
-
 **•** You cannot use the `webservice` keyword in a trigger.
 
 **•** All classes that contain methods defined with the `webservice` keyword must be declared as `global` . If a method or inner
@@ -24902,6 +24986,9 @@ class is declared as `global`, the outer, top-level class must also be defined a
 methods. You can consider the `webservice` keyword as a type of access modifier that enables more access than `global` .
 
 **•** Define any method that uses the `webservice` keyword as `static` .
+
+
+Apex Developer Guide Invoking Apex
 
 **•** You cannot deprecate `webservice` methods or variables in managed package code.
 
@@ -24969,12 +25056,6 @@ The following example shows a class with Web service member variables and a Web 
 
         child.parentId = parent.Id;
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         insert child;
 
         grandChild.parentId = child.Id;
@@ -24989,6 +25070,12 @@ Apex Developer Guide Invoking Apex
 
         results[2] = grandChild.Id;
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         return results;
 
       }
@@ -25019,7 +25106,7 @@ Apex Developer Guide Invoking Apex
 
 ```
 
-You can invoke this Web service using AJAX. For more information, see Apex in AJAX on page 342.
+You can invoke this Web service using AJAX. For more information, see Apex in AJAX on page 343.
 
 ##### Overloading Web Service Methods
 
@@ -25038,7 +25125,7 @@ see code samples that show you how to implement this functionality.
 Tip: Apex SOAP web services allow an external application to invoke Apex methods through SOAP web services. See Exposing
 Apex Methods as SOAP Web Services.
 
-Introduction to Apex REST
+##### Introduction to Apex REST
 
 Apex REST Annotations
 
@@ -25050,9 +25137,6 @@ used, and any user who has access to these methods can use their full power, reg
 rules. Developers who expose methods using the Apex REST annotations should therefore take care that they are not inadvertently
 exposing any sensitive data.
 
-
-Apex Developer Guide Invoking Apex
-
 Apex REST Code Samples
 
 ##### Introduction to Apex REST
@@ -25060,18 +25144,22 @@ Apex REST Code Samples
 You can expose your Apex class and methods so that external applications can access your code and your application through the REST
 architecture. This is done by defining your Apex class with the `@RestResource` annotation to expose it as a REST resource. Similarly,
 add annotations to your methods to expose them through REST. For example, you can add the `@HttpGet` annotation to your method
+
+
+Apex Developer Guide Invoking Apex
+
 to expose it as a REST resource that can be called by an HTTP `GET` request. For more information, see Apex REST Annotations on page
 
 These are the classes containing methods and properties you can use with Apex REST.
 
 **Class** **Description**
 
-[RestContext Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_restcontext.htm) Contains the `RestRequest` and `RestResponse` objects.
+[RestContext Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_restcontext.htm) Contains the `RestRequest` and `RestResponse` objects.
 
-`[request](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_restcontext.htm)` Use the `System.RestRequest` class to access and pass
+`[request](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_restcontext.htm)` Use the `System.RestRequest` class to access and pass
 request data in a RESTful Apex method.
 
-`[response](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_restcontext.htm)` Represents an object used to pass data from an Apex RESTful Web
+`[response](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_restcontext.htm)` Represents an object used to pass data from an Apex RESTful Web
 service method to an HTTP response.
 
 Governor Limits
@@ -25088,7 +25176,7 @@ Apex REST supports these authentication mechanisms:
 
 **•** Session ID
 
-See _[Step Two: Set Up Authorization](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/quickstart_oauth.htm)_ in the _REST API Developer Guide_ .
+See _[Step Two: Set Up Authorization](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/quickstart_oauth.htm)_ in the _REST API Developer Guide_ .
 
 ##### Apex REST Annotations
 
@@ -25108,9 +25196,6 @@ Use these annotations to expose an Apex class as a RESTful Web service.
 
 **•** `@HttpPut`
 
-
-Apex Developer Guide Invoking Apex
-
 ##### Apex REST Methods
 
 Apex REST supports two formats for representations of resources: JSON and XML. JSON representations are passed by default in the
@@ -25122,6 +25207,9 @@ representation is serialized into the response body.
 These return and parameter types are allowed:
 
 **•** Apex primitives (excluding sObject and Blob).
+
+
+Apex Developer Guide Invoking Apex
 
 **•** sObjects
 
@@ -25174,9 +25262,6 @@ in a managed package namespace called `packageNamespace` and the Apex REST metho
 `https://` _`instance`_ `.salesforce.com/services/apexrest/packageNamespace/MyMethod/` . For more
 information about managed packages, see What is a Package?.
 
-
-Apex Developer Guide Invoking Apex
-
 **•** If a login call is made from the API for a user with an expired or temporary password, subsequent API calls to custom Apex REST Web
 service methods aren't supported and result in the MUTUAL_AUTHENTICATION_FAILED error. Reset the user's password and make
 a call with an unexpired password to be able to call Apex Web service methods.
@@ -25186,6 +25271,9 @@ a call with an unexpired password to be able to call Apex Web service methods.
 buffering the JSON serialized form of each sObject. Heap and CPU limits may not be encountered until after the HTTP response
 header and initial data has started streaming back to the client. To gain control of the statusCode and the `responseBody`, use
 a `RestResponse` instead of directly returning sObjects.
+
+
+Apex Developer Guide Invoking Apex
 
 User-Defined Types
 
@@ -25259,9 +25347,6 @@ The `public`, `private`, or `global` class member variables must be types allowe
 
 **•** Apex primitives (excluding sObject and Blob).
 
-
-Apex Developer Guide Invoking Apex
-
 **•** sObjects
 
 **•** Lists or maps of Apex primitives or sObjects (only maps with String keys are supported).
@@ -25276,6 +25361,12 @@ result in cycles (definitions that depend on each other) at run time in your use
 
       @HttpGet
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
       global static MyUserDef1 doCycleTest() {
 
         MyUserDef1 def1 = new MyUserDef1();
@@ -25347,9 +25438,6 @@ the following:
 
 ```
 
-
-Apex Developer Guide Invoking Apex
-
 **•** The URL patterns _`URLpattern`_ and _`URLpattern`_ /* match the same URL. If one class has a `urlMapping` of _`URLpattern`_
 and another class has a `urlMapping` of _`URLpattern`_ /*, a REST request for this URL pattern resolves to the class that was saved
 first.
@@ -25359,6 +25447,9 @@ response, and hence, methods with these parameter or return types can't be used 
 for example, `List<List<String>>` aren't supported. However, you can use these types with JSON. If the parameter list
 includes a type that's invalid for XML and XML is sent, an HTTP 415 status code is returned. If the return type is a type that's invalid
 for XML and XML is the requested response format, an HTTP 406 status code is returned.
+
+
+Apex Developer Guide Invoking Apex
 
 **•** For request data in either JSON or XML, valid values for Boolean parameters are: `true`, `false` (both are treated as case-insensitive),
 `1` and `0` (the numeric values, not strings of “1” or “0”). Any other values for Boolean parameters result in an error.
@@ -25434,12 +25525,6 @@ if you define an Apex REST method such as:
 
        @HttpPost
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
        global static MyUDT echoTest(MyUDT def, String extraString) {
 
           return def;
@@ -25455,6 +25540,9 @@ Apex Developer Guide Invoking Apex
      }
 
 ```
+
+
+Apex Developer Guide Invoking Apex
 
 You can use the following XML request data:
 
@@ -25476,7 +25564,7 @@ You can use the following XML request data:
 Response Status Codes
 
 The status code of a response is set automatically. This table lists some HTTP status codes and what they mean in the context of the
-HTTP request method. For the full list of response status codes, see `[statusCode](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_restresponse.htm#apex_System_RestResponse_statusCode)` .
+HTTP request method. For the full list of response status codes, see `[statusCode](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_restresponse.htm#apex_System_RestResponse_statusCode)` .
 
 **Request Method** **Response Status** **Description**
 **Code**
@@ -25512,12 +25600,6 @@ DELETE, GET, PATCH, POST, PUT 415 The XML parameter type is unsupported.
 DELETE, GET, PATCH, POST, PUT 415 The Content-Header Type specified in the HTTP request header
 is unsupported.
 
-
-Apex Developer Guide Invoking Apex
-
-**Request Method** **Response Status** **Description**
-**Code**
-
 DELETE, GET, PATCH, POST, PUT 500 An unhandled Apex exception occurred.
 
 SEE ALSO:
@@ -25525,6 +25607,9 @@ SEE ALSO:
 JSON Support
 
 XML Support
+
+
+Apex Developer Guide Invoking Apex
 
 ##### Exposing Data with Apex REST Web Service Methods
 
@@ -25537,8 +25622,8 @@ Apex class methods that are exposed through the Apex REST API don’t enforce ob
 enforce object or field-level security while using SOQL SELECT statements in Apex, use the `WITH USER_MODE` clause. You can strip
 user-inaccessible fields from query and subquery results, or remove inaccessible sObject fields before DML operations by using the
 `Security.stripInaccessible` method. You can also use the appropriate object or field describe result methods to check the
-[current user’s access level on the objects and fields that the Apex REST API method is accessing. See DescribeSObjectResult Class and](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
-[DescribeFieldResult Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
+[current user’s access level on the objects and fields that the Apex REST API method is accessing. See DescribeSObjectResult Class and](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[DescribeFieldResult Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
 
 Also, sharing rules (record-level access) are enforced only when declaring a class with the `with sharing` keyword. This requirement
 applies to all Apex classes, including to classes that are exposed through Apex REST API. To enforce sharing rules for Apex REST API
@@ -25567,10 +25652,7 @@ This sample shows you how to add an attachment to a record by using the RestRequ
 This sample shows how to implement a simple REST API in Apex with three HTTP request methods to delete, retrieve, and update a
 record.
 
-For more information about authenticating with `cURL` [, see the Quick Start section of the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/quickstart.htm) _REST API Developer Guide_ .
-
-
-Apex Developer Guide Invoking Apex
+For more information about authenticating with `cURL` [, see the Quick Start section of the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/quickstart.htm) _REST API Developer Guide_ .
 
 **1.** Create an Apex class in your instance from Setup. Enter _`Apex Classes`_ in the `Quick Find` box, select **Apex Classes**, and
 then click **New** . Add this code to the new Apex class:
@@ -25590,6 +25672,12 @@ then click **New** . Add this code to the new Apex class:
 
          String accountId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
           Account account = [SELECT Id FROM Account WHERE Id = :accountId];
 
           delete account;
@@ -25665,12 +25753,6 @@ After calling the `doGet` method, Salesforce returns a JSON response with data s
 
          "type" : "Account",
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
          "url" : "/services/data/v22.0/sobjects/Account/ accountId "
 
        },
@@ -25684,6 +25766,9 @@ Apex Developer Guide Invoking Apex
 ```
 
 Note: The `cURL` examples in this section don't use a namespaced Apex class so you don’t see the namespace in the URL.
+
+
+Apex Developer Guide Invoking Apex
 
 **3.** Create a file called `account.txt` to contain the data for the account you will create in the next step.
 
@@ -25731,7 +25816,7 @@ The _`accountId`_ is the ID of the account you just created with the POST reques
 
 This sample shows you how to add an attachment to a record by using the RestRequest object.
 
-For more information about authenticating with `cURL` [, see the Quick Start section of the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/quickstart.htm) _REST API Developer Guide_ . In this code, the
+For more information about authenticating with `cURL` [, see the Quick Start section of the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/quickstart.htm) _REST API Developer Guide_ . In this code, the
 binary file data is stored in the RestRequest object, and the Apex service class accesses the binary data in the RestRequest object .
 
 **1.** Create an Apex class in your org from Setup by entering _`Apex Classes`_ in the `Quick Find` box, then selecting **Apex Classes** .
@@ -25760,12 +25845,6 @@ Click **New** and add the following code to your new class:
 
                             Body = picture,
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
                             ContentType = 'image/jpg',
 
                             Name = 'VehiclePicture');
@@ -25781,6 +25860,9 @@ Apex Developer Guide Invoking Apex
 ```
 
 **2.** Open a command-line window and execute the following `cURL` command to upload the attachment to a case:
+
+
+Apex Developer Guide Invoking Apex
 
 ```
     curl -H "Authorization: Bearer sessionId " -H "X-PrettyPrint: 1" -H "Content-Type:
@@ -25849,9 +25931,6 @@ To use email services, from Setup, enter _`Email Services`_ in the `Quick Find` 
 
 **•** Click **Delete** to delete an email service.
 
-
-Apex Developer Guide Invoking Apex
-
 Note: Before deleting email services, you must delete all associated email service addresses.
 
 When defining email services, note the following:
@@ -25861,6 +25940,10 @@ When defining email services, note the following:
 **•** Salesforce limits the total number of messages that all email services combined, including On-Demand Email-to-Case, can process
 daily. Messages that exceed this limit are bounced, discarded, or queued for processing the next day, depending on how you
 configure the failure response settings for each email service. Salesforce calculates the limit by multiplying the number of user
+
+
+Apex Developer Guide Invoking Apex
+
 licenses by 1,000; maximum 1,000,000. For example, if you have 10 licenses, your org can process up to 10,000 email messages a
 day.
 
@@ -25920,12 +26003,6 @@ The following is an example of how you can look up a contact based on the inboun
 
         FROM Contact
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         WHERE Email = :email.fromAddress
 
         WITH USER_MODE
@@ -25942,6 +26019,12 @@ Apex Developer Guide Invoking Apex
 
           Subject = email.subject,
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
           IsReminderSet = true,
 
           ReminderDateTime = System.now()+1,
@@ -26010,12 +26093,6 @@ for the word “unsubscribe.” If the word is found, the code finds all contact
 
         List<Lead> ll = new List <lead>();
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         // Convert the subject line to lower case so the program can match on lower case.
 
         String mySubject = email.subject.toLowerCase();
@@ -26028,6 +26105,12 @@ Apex Developer Guide Invoking Apex
 
    line.
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         Boolean unsubMe;
 
         // Look for the word "unsubcribe" in the subject line.
@@ -26102,12 +26185,6 @@ Apex Developer Guide Invoking Apex
 
              System.debug('Lead Object: ' + l);
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
            }
 
            // Update all lead records in the query.
@@ -26122,6 +26199,12 @@ Apex Developer Guide Invoking Apex
 
         }
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         System.debug('Found the unsubscribe word in the subject line.');
 
          }
@@ -26202,12 +26285,6 @@ Apex Developer Guide Invoking Apex
 
         env.fromAddress = 'user@acme.com';
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         // Call the class and test it with the data in the testMethod.
 
         unsubscribe unsubscribeObj = new unsubscribe();
@@ -26218,6 +26295,12 @@ Apex Developer Guide Invoking Apex
 
       static testMethod void testUnsubscribe2() {
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         // Create a new email and envelope object.
 
         Messaging.InboundEmail email = new Messaging.InboundEmail();
@@ -26282,14 +26365,11 @@ Apex Developer Guide Invoking Apex
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: InboundEmail Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_email_inbound_inbound.htm)
+_Apex Reference Guide_ [: InboundEmail Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_email_inbound_inbound.htm)
 
-_Apex Reference Guide_ [: InboundEnvelope Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_email_inbound_envelope.htm)
+_Apex Reference Guide_ [: InboundEnvelope Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_email_inbound_envelope.htm)
 
-_Apex Reference Guide_ [: InboundEmailResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_email_inbound_result.htm)
-
-
-Apex Developer Guide Invoking Apex
+_Apex Reference Guide_ [: InboundEmailResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_email_inbound_result.htm)
 
 #### Visualforce Classes
 
@@ -26303,6 +26383,9 @@ that was already provided in a standard controller.
 
 Like other Apex classes, custom controllers execute entirely in system mode, in which the object and field-level permissions of the
 current user are ignored. You can specify whether a user can execute methods in a custom controller based on the user's profile.
+
+
+Apex Developer Guide Invoking Apex
 
 **•** A controller extension is a class written in Apex that adds to or overrides behavior in a standard or custom controller. Extensions
 allow you to leverage the functionality of another controller while adding your own custom logic.
@@ -26337,7 +26420,7 @@ You can use these system-supplied Apex classes when building custom Visualforce 
 In addition to these classes, the `transient` keyword can be used when declaring methods in controllers and controller extensions.
 For more information, see Using the `transient` Keyword on page 88.
 
-For more information on Visualforce, see the _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/)_ .
+For more information on Visualforce, see the _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)_ .
 
 #### JavaScript Remoting
 
@@ -26353,9 +26436,6 @@ differences from normal action methods.
 
 **•** The response handler callback function you add to or include in your Visualforce page, written in JavaScript.
 
-
-Apex Developer Guide Invoking Apex
-
 In your controller, your Apex method declaration is preceded with the `@RemoteAction` annotation like this:
 
 ```
@@ -26363,9 +26443,9 @@ In your controller, your Apex method declaration is preceded with the `@RemoteAc
 
    global static String getItemId(String objectName) { ... }
 
-#### Apex @RemoteAction methods must be static and either global or public .
-
 ```
+
+Apex `@RemoteAction` methods must be `static` and either `global` or `public` .
 
 Add the Apex class as a custom controller or a controller extension to your page.
 
@@ -26377,6 +26457,9 @@ Add the Apex class as a custom controller or a controller extension to your page
 Warning: Adding a controller or controller extension grants access to all `@RemoteAction` methods in that Apex class, even
 if those methods aren’t used in the page. Anyone who can view the page can execute all `@RemoteAction` methods and
 provide fake or malicious data to the controller.
+
+
+Apex Developer Guide Invoking Apex
 
 Then, add the request as a JavaScript function call. A simple JavaScript remoting invocation takes the following form.
 
@@ -26404,16 +26487,13 @@ The AJAX toolkit includes built-in support for invoking Apex through anonymous b
 To invoke Apex through anonymous blocks or public `webservice` methods, include the following lines in your AJAX code:
 
 ```
-<script src="/soap/ajax/65.0/connection.js" type="text/javascript"></script>
+<script src="/soap/ajax/66.0/connection.js" type="text/javascript"></script>
 
-<script src="/soap/ajax/65.0/apex.js" type="text/javascript"></script>
+<script src="/soap/ajax/66.0/apex.js" type="text/javascript"></script>
 
 ```
 
 Note: For AJAX buttons, use the alternate forms of these includes.
-
-
-### Apex Developer Guide Apex Transactions and Governor Limits
 
 To invoke Apex, use one of the following two methods:
 
@@ -26423,19 +26503,22 @@ result type, but as a JavaScript structure.
 **•** Use a class WSDL. For example, you can call the following Apex class:
 
 ```
-     global class myClass {
+  global class myClass {
 
-      webservice static Id makeContact(String lastName, Account a) {
+   webservice static Id makeContact(String lastName, Account a) {
 
-          Contact c = new Contact(LastName = lastName, AccountId = a.Id);
+       Contact c = new Contact(LastName = lastName, AccountId = a.Id);
 
-          return c.id;
+       return c.id;
 
-       }
+    }
 
-     }
+  }
 
 ```
+
+
+### Apex Developer Guide Apex Transactions and Governor Limits
 
 By using the following JavaScript code:
 
@@ -26488,7 +26571,7 @@ the class. For example, to call the _`myClass`_ class, the JavaScript code from 
 To verify whether your organization has a namespace, log in to your Salesforce organization and from Setup, enter _`Packages`_
 in the `Quick Find` box, then select **Packages** . If a namespace is defined, it’s listed under Developer Settings.
 
-[For more information on the return datatypes, see Data Types in AJAX Toolkit](https://developer.salesforce.com/docs/atlas.en-us.258.0.ajax.meta/ajax/sforce_api_ajax_datatypes.htm)
+[For more information on the return datatypes, see Data Types in AJAX Toolkit](https://developer.salesforce.com/docs/atlas.en-us.260.0.ajax.meta/ajax/sforce_api_ajax_datatypes.htm)
 
 Use the following line to display a window with debugging information:
 
@@ -26504,18 +26587,18 @@ efficient use of resources on the Lightning Platform multitenant platform.
 
 Most of the governor limits are per transaction, and some aren’t, such as 24-hour limits.
 
-
-#### Apex Developer Guide Apex Transactions and Governor Limits
-
 To make sure Apex adheres to governor limits, certain design patterns should be used, such as bulk calls and foreign key relationships
 in queries.
 
-#### Apex Transactions
+### Apex Transactions
 
 An _Apex transaction_ represents a set of operations that are executed as a single unit. All DML operations in a transaction must complete
 successfully. If an error occurs in one operation, the entire transaction is rolled back and no data is committed to the database. The
 boundary of a transaction can be a trigger, a class method, an anonymous block of code, a Visualforce page, or a custom Web service
 method.
+
+
+#### Apex Developer Guide Apex Transactions and Governor Limits
 
 Execution Governors and Limits
 Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces limits so that runaway Apex code or
@@ -26558,9 +26641,6 @@ funds from one bank account to another is a common scenario. It involves debitin
 with the amount to transfer. These two operations must be committed together to the database. If the debit operation succeeds and
 the credit operation fails, the account balances become inconsistent.
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 Example
 
 This example shows how all DML `insert` operations in a method are rolled back when the last operation causes a validation rule
@@ -26573,6 +26653,9 @@ enough to cover new purchases.
 Since this example attempts to purchase more pencils (5,000) than items in stock (1,000), the validation rule fails and throws an exception.
 Code execution halts at this point and all DML operations processed before this exception are rolled back. The invoice statement and
 the line item aren’t added to the database, and their `insert` DML operations are rolled back.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 In the Developer Console, execute the static `invoice` method.
 
@@ -26645,12 +26728,9 @@ the invoice statements and line items are rolled back and aren’t inserted into
 
    }
 
-```
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 #### Execution Governors and Limits
+
+```
 
 Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces limits so that runaway Apex code or processes
 don’t monopolize shared resources. If some Apex code exceeds a limit, the associated governor issues a runtime exception that can’t
@@ -26667,6 +26747,9 @@ The Apex limits, or _governors_, track, and enforce the statistics outlined in t
 **•** Static Apex Limits
 
 **•** Size-Specific Apex Limits
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 **•** Miscellaneous Apex Limits
 
@@ -26713,12 +26796,6 @@ Total stack depth for any Apex invocation that recursively fires triggers due to
 
 Total number of callouts (HTTP requests or web services calls) in a transaction 100 100
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
-**Description** **Synchronous** **Asynchronous**
-**Limit** **Limit**
-
 Maximum cumulative timeout for all callouts (HTTP requests or Web services calls) in a 120 seconds 120 seconds
 transaction
 
@@ -26734,6 +26811,12 @@ Total number of `sendEmail` methods allowed 10 10
 
 Total heap size [4] 6 MB 12 MB
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
+**Description** **Synchronous** **Asynchronous**
+**Limit** **Limit**
+
 Maximum CPU time on the Salesforce servers [5] 10,000 milliseconds 60,000 milliseconds
 
 Maximum execution time for each Apex transaction 10 minutes 10 minutes
@@ -26746,13 +26829,22 @@ call
 Maximum number of `EventBus.publish` calls for platform events configured to 150 150
 publish immediately
 
-Maximum number of rows per Apex cursor 50 million 50 million
+Maximum number of rows across all Apex cursors per transaction 50 million 50 million
 
 Maximum number of Apex cursors per day 10,000 10,000
 
 Maximum number of cursor fetch calls per transaction 10 10
 
-Maximum number of Apex cursor rows fetched per day (aggregate) 100 million 100 million
+Maximum cumulative number of new cursor rows and pagination cursor rows per 24-hour 100 million 100 million
+period
+
+Maximum number of rows across all Apex pagination cursors per transaction 100,000 100,000
+
+Maximum number of Apex pagination cursor instances per transaction 50 50
+
+Maximum number of Apex pagination cursor instances per 24-hour period 200,000 200,000
+
+Maximum number of rows retrieved per page from an Apex pagination cursor 2000 2000
 
 1 In a SOQL query with parent-child relationship subqueries, each parent-child relationship counts as an extra query. These types of
 queries have a limit of three times the number for top-level queries. The limit for subqueries corresponds to the value that
@@ -26779,14 +26871,14 @@ of SOQL statements issued in a request.
 
 **•** `Database.setSavePoint`
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 **•** `delete` and `Database.delete`
 
 **•** `insert` and `Database.insert`
 
 **•** `merge` and `Database.merge`
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 **•** `undelete` and `Database.undelete`
 
@@ -26841,15 +26933,15 @@ limit is 11 times the per-namespace limit of 100. These queries can be performed
 as any one namespace doesn't have more than 100 queries. The cumulative limit doesn’t affect limits that are shared across all namespaces,
 such as the limit on maximum CPU time.
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 Note:
 
 **•** These cross-namespace limits apply only to namespaces in certified managed packages.
 
 **•** Namespaces in non-certified packages don’t have their own separate governor limits. The resources that they use continue
 to count against the same governor limits used by the org's custom code.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 This table lists the cumulative cross-namespace limits.
 
@@ -26907,17 +26999,17 @@ of 100 licenses to one
 concurrent long-running Apex
 transaction [9] .
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
-**Description** **Limit**
-
 **•** Minimum limit is 10
 
 **•** Maximum limit is 50
 
 Maximum number of Apex classes scheduled concurrently 100. In Developer Edition orgs,
 the limit is 5.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
+**Description** **Limit**
 
 Maximum number of batch Apex jobs in the Apex flex queue that are in `Holding` status 100
 
@@ -26958,8 +27050,8 @@ any batch job to fail. `execute` methods of batch Apex jobs still run in paralle
 including the Developer Console or by inserting `ApexTestQueueItem` objects using SOAP API.
 
 To check how many asynchronous Apex executions are available, make a request to REST API `limits` resource or use Apex methods
-`OrgLimits.getAll()` or `OrgLimits.getMap()` [. See List Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ [and OrgLimits](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm)
-[Class in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm) _Apex Reference Guide_ .
+`OrgLimits.getAll()` or `OrgLimits.getMap()` [. See List Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ [and OrgLimits](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm)
+[Class in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm) _Apex Reference Guide_ .
 
 7 If the number of asynchronous Apex executions needed by a job exceeds the available number that’s calculated using the 24-hour
 rolling limit, an exception is thrown. Batch Apex preemptively checks the required asynchronous job capacity when
@@ -26971,12 +27063,12 @@ are left unchanged.
 8 The license types that count toward this limit include full Salesforce and Salesforce Platform user licenses, App Subscription user licenses,
 Chatter Only users, Identity users, and Company Communities users.
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 9 For example, if your org has 4,000 licenses, the concurrent long-running Apex requests limit is set at 40. If your org has 5,000 or more
 licenses, the concurrent long-running Apex requests limit is set at 50, which is the maximum capped limit. If your org has 1,000 or fewer
 licenses, the concurrent long-running Apex requests limit is set at 10, which is the minimum floor limit.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 Static Apex Limits
 
@@ -27000,7 +27092,7 @@ Maximum number of records returned for a Batch Apex query in `Database.QueryLoca
 1 The HTTP request and response sizes count towards the total heap size.
 
 2 The Apex trigger batch size for platform events and Change Data Capture events is 2,000. The trigger batch size doesn’t apply when
-[using Mass Transfer Records.](https://help.salesforce.com/s/articleView?id=sf.admin_transfer.htm&language=en_US)
+[using Mass Transfer Records.](https://help.salesforce.com/s/articleView?id=platform.admin_transfer.htm&type=5&language=en_US)
 
 Size-Specific Apex Limits
 
@@ -27027,20 +27119,21 @@ defined with the `@isTest` annotation.
 [4 For scratch orgs, the limit is 10MB. The limit can be increased by opening a support case for your org. Before you apply for a limit](https://help.salesforce.com/s/)
 [increase, ensure that you’re following the best practices.](https://help.salesforce.com/s/articleView?id=000382172&type=1&language=en_US)
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 Miscellaneous Apex Limits
 
 **Connect in Apex**
 For classes in the `ConnectApi` namespace, every write operation costs one DML statement against the Apex governor limit.
 `ConnectApi` method calls are also subject to rate limits. `ConnectApi` rate limits match Connect REST API rate limits, and
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 have a per user, per namespace, per hour rate limit. When you exceed the rate limit, a `ConnectApi.RateLimitException`
 is thrown. Your Apex code must catch and handle this exception.
 
 For migrated orgs and orgs created in Summer ’24 and later, only `ConnectApi` method calls that require Chatter are subject to
 the per user, per namespace, per hour rate limit. The documentation for every `ConnectApi` method indicates whether Chatter
-is required. `ConnectApi` [method calls that don’t require Chatter count toward the Salesforce Platform total API request allocations,](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)
+is required. `ConnectApi` [method calls that don’t require Chatter count toward the Salesforce Platform total API request allocations,](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)
 which are per org and span a 24-hour period.
 
 **Data.com Clean**
@@ -27059,8 +27152,8 @@ limited to 450,000. For example, an Apex class can have 45 methods that insert 1
 error: `Your runallTests is consuming too many DB resources` .
 
 **SOQL Query Performance**
-[For best performance, use selective SOQL queries. This is especially important for queries inside triggers. See More Efficient SOQL](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_SOQL_VLSQ.htm)
-[Queries.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/langCon_apex_SOQL_VLSQ.htm)
+[For best performance, use selective SOQL queries. This is especially important for queries inside triggers. See More Efficient SOQL](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SOQL_VLSQ.htm)
+[Queries.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/langCon_apex_SOQL_VLSQ.htm)
 
 Email Limits
 
@@ -27088,12 +27181,13 @@ When defining email services, note the following:
 
 **•** An email service only processes messages it receives at one of its addresses.
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 **•** Salesforce limits the total number of messages that all email services combined, including On-Demand Email-to-Case, can
 process daily. Messages that exceed this limit are bounced, discarded, or queued for processing the next day, depending on
 how you configure the failure response settings for each email service. Salesforce calculates the limit by multiplying the number
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 of user licenses by 1,000; maximum 1,000,000. For example, if you have 10 licenses, your org can process up to 10,000 email
 messages a day.
 
@@ -27163,7 +27257,7 @@ SEE ALSO:
 
 Asynchronous Callout Limits
 
-_[Platform Events Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.platform_events.meta/platform_events/platform_events_intro.htm)_
+_[Platform Events Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_intro.htm)_
 
 #### Set Up Governor Limit Email Warnings
 
@@ -27406,12 +27500,12 @@ Create quick actions, and add them to your Salesforce Classic home page, to the 
 pages. Choose from standard quick actions, such as create and update actions, or create custom actions based on your company’s
 needs.
 
-Apex Cursors (Beta)
+Apex Cursors
 Use Apex cursors to break up the processing of a SOQL query result into pieces that can be processed within the bounds of a single
 transaction. Cursors provide you with the ability to work with large query result sets, while not actually returning the entire result
 set. You can traverse a query result in parts, with the flexibility to navigate forward and back in the result set. Package developers
-and advanced developers can use cursors effectively to work with high-volume and high-resource processing jobs. Cursors combined
-with chained queueable Apex jobs are a powerful alternative to batch Apex and address some of batch Apex’s limitations.
+and advanced developers can use cursors to work with high-volume and high-resource processing jobs. Cursors combined with
+chained queueable Apex jobs are a powerful alternative to batch Apex and address some of batch Apex’s limitations.
 
 Approval Processing
 An approval process automates how records are approved in Salesforce. An approval process specifies each step of approval, including
@@ -27541,40 +27635,36 @@ For more information on actions, see the online help.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_system_quickaction.htm)_ : QuickAction Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_system_quickaction.htm)_ : QuickAction Class
 
-_Apex Reference Guide_ [: QuickActionRequest Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_quickactionrequest.htm)
+_Apex Reference Guide_ [: QuickActionRequest Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_quickactionrequest.htm)
 
-_Apex Reference Guide_ [: QuickActionResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_quickactionresult.htm)
+_Apex Reference Guide_ [: QuickActionResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_quickactionresult.htm)
 
-_Apex Reference Guide_ [: DescribeQuickActionResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_describequickactionresult.htm)
+_Apex Reference Guide_ [: DescribeQuickActionResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describequickactionresult.htm)
 
-_Apex Reference Guide_ [: DescribeQuickActionDefaultValue Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_describequickactiondefaultvalue.htm)
+_Apex Reference Guide_ [: DescribeQuickActionDefaultValue Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describequickactiondefaultvalue.htm)
 
-_Apex Reference Guide_ [: DescribeLayoutSection Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_describelayoutsection.htm)
+_Apex Reference Guide_ [: DescribeLayoutSection Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describelayoutsection.htm)
 
-_Apex Reference Guide_ [: DescribeLayoutRow Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_describelayoutrow.htm)
+_Apex Reference Guide_ [: DescribeLayoutRow Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describelayoutrow.htm)
 
-_Apex Reference Guide_ [: DescribeLayoutItem Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_describelayoutitem.htm)
+_Apex Reference Guide_ [: DescribeLayoutItem Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describelayoutitem.htm)
 
-_Apex Reference Guide_ [: DescribeLayoutComponent Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_describelayoutcomponent.htm)
+_Apex Reference Guide_ [: DescribeLayoutComponent Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describelayoutcomponent.htm)
 
-_Apex Reference Guide_ [: DescribeAvailableQuickActionResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_quickaction_describeavailablequickactionresult.htm)
+_Apex Reference Guide_ [: DescribeAvailableQuickActionResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describeavailablequickactionresult.htm)
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
-#### Apex Cursors (Beta)
+#### Apex Cursors
 
 Use Apex cursors to break up the processing of a SOQL query result into pieces that can be processed within the bounds of a single
 transaction. Cursors provide you with the ability to work with large query result sets, while not actually returning the entire result set.
 You can traverse a query result in parts, with the flexibility to navigate forward and back in the result set. Package developers and advanced
-developers can use cursors effectively to work with high-volume and high-resource processing jobs. Cursors combined with chained
-queueable Apex jobs are a powerful alternative to batch Apex and address some of batch Apex’s limitations.
-
-Note: This feature is a Beta Service. Customer may opt to try such Beta Service in its sole discretion. Any use of the Beta Service
-[is subject to the applicable Beta Services Terms provided at Agreements and Terms. You can provide feedback and suggestions](https://www.salesforce.com/company/legal/agreements/)
-[for the feature in the Trailblazer Community.](https://trailhead.salesforce.com/trailblazer-community/groups/0F94V000000bvOlSAI)
+developers can use cursors to work with high-volume and high-resource processing jobs. Cursors combined with chained queueable
+Apex jobs are a powerful alternative to batch Apex and address some of batch Apex’s limitations.
 
 Apex cursors are stateless and generate results from the offset position that is specified in the `Cursor.fetch(integer`
 `position, integer count)` method. You must track the offsets or positions of the results within your particular processing
@@ -27583,21 +27673,15 @@ scenario.
 A cursor is created when a SOQL query is executed on a `Database.getCursor()` or `Database.getCursorWithBinds()`
 call. When a `Cursor.fetch(integer position, integer count)` method is invoked with an offset position and the
 count of records to fetch, the corresponding rows are returned from the cursor. The maximum number of rows per cursor is 50 million,
-regardless of the operation being synchronous or asynchronous. To get the number of cursor rows returned from the SOQL query, use
-`Cursor.getNumRecords()` .
+regardless of whether the operation is synchronous or asynchronous. To get the number of cursor rows returned from the SOQL query,
+use `Cursor.getNumRecords()` .
+
+Calling the `Cursor.fetch()` method counts against the SOQL query limit, and the rows fetched count against the SOQL query
+row limit.
 
 Apex cursors throw these new System exceptions: `System.FatalCursorException` and
 `System.TransientCursorException` . Transactions that fail with `System.TransientCursorException` can be
 retried.
-
-[Apex cursors have the same expiration limits as API Query cursors. See API Query Cursor Limits.](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apicursors.htm)
-
-To get Apex cursor limits, use these new methods in the `Limits` class.
-
-**•** `Limits.getApexCursorRows()` and its upper bound `Limits.getLimitApexCursorRows()` method
-
-**•** `Limits.getFetchCallsOnApexCursor()` and its upper bound
-`Limits.getLimitFetchCallsOnApexCursor()` method
 
 Apex Cursor Example
 
@@ -27634,35 +27718,194 @@ Apex Cursor Example
 
         }
 
+      }
+
+   }
+
+```
+
+Pagination Cursors
+
+Like a standard Apex cursor, an Apex pagination cursor provides a pointer to a large SOQL query result set. However, an Apex pagination
+cursor is designed for UI-based pagination, such as multipage record lists.
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+To create a pagination cursor, call `Database.getPaginationCursor()` or
+`Database.getPaginationCursorWithBinds()` with a SOQL query as an argument. A single
+`Database.PaginationCursor` instance can have a maximum of 100,000 rows, regardless of whether the operation is synchronous
+or asynchronous. This size limit is lower than that of a regular Apex cursor, as pagination cursors are designed for human-readable data.
+
+However, pagination cursors have a higher instance daily limit than that of regular Apex cursors. Whereas standard cursors are limited
+to 10,000 instances per org per 24-hour period, pagination cursors are limited to 200,000 instances per org per 24-hour period. This
+higher instance limit supports many users accessing records lists that rely on smaller pagination cursors.
+
+To retrieve a page of rows from a pagination cursor, call `PaginationCursor.fetchPage(integer start, integer`
+`pageSize)` . The _`start`_ parameter is the zero-based index from which to begin fetching rows, and the _`pageSize`_ is the maximum
+number of rows to retrieve for this page. The maximum _`pageSize`_ value is 2000 rows.
+
+Unlike a standard Apex cursor, a pagination cursor retrieves a complete page of records, where record rows deleted after the creation
+of the cursor are skipped over by default. This way, the number of rows displayed per page is consistent.
+
+For example, let’s say that you create a standard cursor and a pagination cursor on the same SOQL query, where the result set is 100
+rows. After the cursors are created, you delete the first five rows in the set, indexed 0-4. If you then call `Cursor.fetch(0, 20)`,
+only 15 rows are retrieved—rows indexed 5-19. However, if you call `PaginationCursor.fetchPage(0, 20)`, 20 rows are
+retrieved—rows indexed 5-24. The `fetchPage()` method automatically skips over the five deleted records so that a complete page
+is retrieved.
+
+To manage this handling of deleted records, the `fetchPage()` method returns a `Database.CursorFetchResult` object
+instead of only the list of results. The `Database.CursorFetchResult` object encapsulates the rows retrieved and information
+for the next pagination call.
+
+**•** To retrieve the rows as a list of sObjects, call `CursorFetchResult.getRecords()` .
+
+**•** To retrieve the number of deleted rows that the cursor skipped in the `fetchPage()` operation, call
+`CursorFetchResult.getDeletedRows()` .
+
+**•** To retrieve the next page of results, first call `CursorFetchResult.getNextIndex()`, and then use the return value as the
+_`start`_ parameter in the next `fetchPage()` call.
+
+**•** To determine whether to make subsequent calls to `fetchPage()`, use the `CursorFetchResult.isDone()` method.
+The method returns `true` if the specified _`pageSize`_ is reached, which indicates that a full page of results is retrieved. It also
+returns `true` if the pagination cursor reaches the end of a result set before the specified _`pageSize`_ is reached, which indicates
+that a partial, final page of results is retrieved.
+
+Calling the `PaginationCursor.fetchPage()` and `PaginationCursor.fetchDeleted()` methods count against
+the SOQL query limit, and the rows fetched count against the SOQL query row limit.
+
+Apex pagination cursors throw these System exceptions: `System.FatalCursorException` and
+`System.TransientCursorException` . Transactions that fail with `System.TransientCursorException` can be
+retried.
+
+Cursors and Pagination Cursor Limits
+
+To get limits on Apex cursors and Apex pagination cursors, use these methods in the `Limits` class.
+
+**•** `Limits.getApexCursorRows()` and its upper bound `Limits.getLimitApexCursorRows()` method
+
+**•** `Limits.getFetchCallsOnApexCursor()` and its upper bound
+`Limits.getLimitFetchCallsOnApexCursor()` method
+
+**•** `Limits.getApexCursors()` and its upper bound `Limits.getLimitApexCursors()` method
+
+**•** `Limits.getApexPaginationCursors()` and its upper bound `Limits.getLimitApexPaginationCursors()`
+method
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+**•** `Limits.getApexPaginationCursorRows()` and its upper bound
+`Limits.getLimitApexPaginationCursorRows()` method
+
+[To view transaction and daily limits for Apex cursors and Apex pagination cursors, see Execution Governors and Limits.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm)
+
+[Apex cursors and pagination cursors have the same expiration limits as API Query cursors. See API Query Cursor Limits.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apicursors.htm)
+
+Apex Cursor and Pagination Cursor Limits Example
+
+```
+   // Create a standard cursor
+
+   Database.Cursor cursor = Database.getCursor('SELECT Id, Name FROM Account LIMIT 20');
+
+   System.debug('Standard Cursors: ' + Limits.getApexCursors() + '/' +
+
+   Limits.getLimitApexCursors());
+
+   System.debug('Standard Cursor Rows: ' + Limits.getApexCursorRows() + '/' +
+
+   Limits.getLimitApexCursorRows());
+
+   // Fetch records
+
+   List<Account> batch1 = cursor.fetch(0, 10);
+
+   List<Account> batch2 = cursor.fetch(10, 10);
+
+   // Create a pagination cursor
+
+   Database.PaginationCursor pagCursor = Database.getPaginationCursor('SELECT Id, Name FROM
+
+   Account LIMIT 15');
+
+   System.debug('Pagination Cursors: ' + Limits.getApexPaginationCursors() + '/' +
+
+   Limits.getLimitApexPaginationCursors());
+
+   System.debug('Pagination Cursor Rows: ' + Limits.getApexPaginationCursorRows() + '/' +
+
+   Limits.getLimitApexPaginationCursorRows());
+
+   // Fetch a page
+
+   Database.CursorFetchResult page = pagCursor.fetchPage(0, 5);
+
+   // Check shared fetch call limit
+
+   System.debug('Fetch Calls: ' + Limits.getFetchCallsOnApexCursor() + '/' +
+
+   Limits.getLimitFetchCallsOnApexCursor());
+
+   // Get daily limits map
+
+   Map<String, System.OrgLimit> limitMap = OrgLimits.getMap();
+
+   // Standard cursor daily limit
+
+   System.OrgLimit dailyCursorLimit = limitMap.get('DailyApexCursorLimit');
+
+   System.debug('Daily Cursors: ' + dailyCursorLimit.getValue() + '/' +
+
+   dailyCursorLimit.getLimit());
+
+   // Pagination cursor daily limit
+
+   System.OrgLimit dailyPCursorLimit = limitMap.get('DailyApexPCursorLimit');
+
+   System.debug('Daily Pagination Cursors: ' + dailyPCursorLimit.getValue() + '/' +
+
+   dailyPCursorLimit.getLimit());
+
+   // Shared daily rows limit
+
+   System.OrgLimit dailyRowsLimit = limitMap.get('DailyApexCursorRowsLimit');
+
 ```
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
 ```
-      }
+   System.debug('Daily Cursor Rows: ' + dailyRowsLimit.getValue() + '/' +
 
-   }
-
-#### Approval Processing
+   dailyRowsLimit.getLimit());
 
 ```
+
+SEE ALSO:
+
+_[Apex Reference Guide:](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Database_Cursor.htm)_ Cursor Class
+
+_Apex Reference Guide:_ [PaginationCursor Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Database_PaginationCursor.htm)
+
+#### Approval Processing
 
 An approval process automates how records are approved in Salesforce. An approval process specifies each step of approval, including
 from whom to request approval and what to do at each point of the process.
 
 **•** Use the Apex process classes to create approval requests and process the results of those requests:
 
-**–** [ProcessRequest Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ProcessRequest.htm)
+**–** [ProcessRequest Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ProcessRequest.htm)
 
-**–** [ProcessResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ProcessResult.htm)
+**–** [ProcessResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ProcessResult.htm)
 
-**–** [ProcessSubmitRequest Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ProcessSubmitRequest.htm)
+**–** [ProcessSubmitRequest Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ProcessSubmitRequest.htm)
 
-**–** [ProcessWorkItemRequest Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ProcessWorkitemRequest.htm)
+**–** [ProcessWorkItemRequest Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ProcessWorkitemRequest.htm)
 
 **•** Use the `Approval.process` method to submit an approval request and approve or reject existing approval requests. For more
-[information, see Approval Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_approval.htm)
+[information, see Approval Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_approval.htm)
 
 Note: The `process` method counts against the DML limits for your organization. See Execution Governors and Limits.
 
@@ -27702,6 +27945,12 @@ approval process on Account exists and is valid for the Account record created.
 
         // Submit the record to the existing process named PTO_Request_Process
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         req1.setProcessDefinitionNameOrId('PTO_Request_Process');
 
         // Skip the criteria evaluation for the specified process
@@ -27710,12 +27959,6 @@ approval process on Account exists and is valid for the Account record created.
 
         // Submit the approval request for the account
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         Approval.ProcessResult result = Approval.process(req1);
 
         // Verify the result
@@ -27775,9 +28018,11 @@ Apex Developer Guide Using Salesforce Features with Apex
 Salesforce provides various ways to authenticate users. Build a combination of authentication methods to fit the needs of your org and
 your users’ use patterns.
 
-##### Create a Custom Authentication Provider Plug-in
-
+Create a Custom Authentication Provider Plug-in
 You can use Apex to create a custom OAuth-based authentication provider plug-in for single sign-on (SSO) to Salesforce.
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 OAuth 2.0 Token Exchange Handler Examples
 Sometimes you want to integrate Salesforce into a complex system where you have a primary app, a central identity provider, and
@@ -27788,9 +28033,6 @@ exchange flow, which implements an Apex token exchange handler.
 ##### Create a Custom Authentication Provider Plug-in
 
 You can use Apex to create a custom OAuth-based authentication provider plug-in for single sign-on (SSO) to Salesforce.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Out of the box, Salesforce supports several external authentication providers for single sign-on, including Facebook, Google, LinkedIn,
 and service providers that implement the OpenID Connect protocol. By creating a plug-in with Apex, you can add your own OAuth-based
@@ -27812,6 +28054,10 @@ called Concur. Build the sample classes and sample test classes in the following
 **3.** MockHttpResponseGenerator
 
 **4.** ConcurTestClass
+
+Note: The `Auth.AuthProviderPluginClass` class doesn't include a method for single logout. You can easily configure
+[single logout in Setup. For steps, see Configure OpenID Connect Single Logout with Salesforce as the Relying Party in](https://help.salesforce.com/s/articleView?id=xcloud.security_auth_slo_oidc_rp_configuring.htm&language=en_US) _Salesforce_
+_Help_ . Alternatively, create custom methods for single logout.
 
 ```
    global class Concur extends Auth.AuthProviderPluginClass {
@@ -27848,6 +28094,12 @@ called Concur. Build the sample classes and sample test classes in the following
 
             }
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
             global PageReference initiate(Map<string,string> authProviderConfiguration,
 
     String stateToPropagate) {
@@ -27876,12 +28128,6 @@ called Concur. Build the sample classes and sample test classes in the following
 
              //Their responsibility is to return a new object called AuthProviderToken
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
                //This will contain an optional accessToken and refreshToken
 
                key = authProviderConfiguration.get('Key__c');
@@ -27944,6 +28190,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                 String token = response.oauthToken;
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
                 HttpRequest req = new HttpRequest();
 
                 userAPIUrl = authProviderConfiguration.get('API_User_Url__c');
@@ -27972,12 +28224,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                 String fname = getTokenValueFromResponse(responseBody, 'FirstName',
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    userAPIVersionUrl);
 
                 String lname = getTokenValueFromResponse(responseBody, 'LastName',
@@ -28045,6 +28291,12 @@ The following example contains test classes for the Concur class.
 
       private static final String STATE = 'mocktestState';
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       private static final String REFRESH_TOKEN = 'refreshToken';
 
       private static final String LOGIN_ID = 'testLoginId';
@@ -28075,12 +28327,6 @@ The following example contains test classes for the Concur class.
 
      private static final String ACCESS_TOKEN_URL = 'http://www.dummyhost.com/accessTokenUri';
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
      private static final String API_USER_VERSION_URL = 'http://www.dummyhost.com/user/20/1';
 
       private static final String AUTH_URL = 'http://www.dummy.com/authurl';
@@ -28143,6 +28389,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         }
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       static testMethod void testHandleCallback() {
 
           Map<String,String> authProviderConfiguration = setupAuthProviderConfig();
@@ -28167,12 +28419,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    concurCls.handleCallback(authProviderConfiguration, cbState);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
           Auth.AuthProviderTokenResponse expectedAuthProvResponse = new
 
    Auth.AuthProviderTokenResponse('Concur', OAUTH_TOKEN, REFRESH_TOKEN, null);
@@ -28229,6 +28475,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
           System.assertEquals(expectedUserData.fullName, actualUserData.fullName);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
           System.assertEquals(expectedUserData.email, actualUserData.email);
 
           System.assertEquals(expectedUserData.username, actualUserData.username);
@@ -28251,12 +28503,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         String prefix = 'mockPrefix';
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         Dom.Document doc = new Dom.Document();
 
        Dom.XmlNode xmlNode = doc.createRootElement('mockRootNodeName', namespace, prefix);
@@ -28301,7 +28547,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: AuthProviderPlugin Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_Auth_AuthProviderPlugin.htm)
+_Apex Reference Guide_ [: AuthProviderPlugin Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_Auth_AuthProviderPlugin.htm)
 
 [Salesforce Help: Create a Custom External Authentication Provider](https://help.salesforce.com/HTViewHelpDoc?id=sso_provider_plugin_custom.htm&language=en_US)
 
@@ -28313,23 +28559,23 @@ to the primary app via the identity provider and access data provided by the oth
 microservices. To fit Salesforce into this model as one of the apps providing data, use the OAuth
 2.0 token exchange flow, which implements an Apex token exchange handler.
 
+
 EDITIONS
 
 Available in: **Enterprise**,
 **Unlimited**, **Performance**,
 and **Developer** Editions
 
-During the OAuth 2.0 token exchange flow, when a user logs in to the primary app via the identity
-provider, the identity provider issues a token to the primary app. The primary app can’t use this
-token to directly access Salesforce data, but it can exchange the token for a Salesforce access token. To complete this exchange, the
-primary app uses an Apex token exchange handler. With the token exchange handler, Salesforce can issue its own access token by
-validating the identity provider’s token and mapping the token’s subject, which identifies the end user, to a Salesforce user.
+Apex Developer Guide Using Salesforce Features with Apex
+
+During the OAuth 2.0 token exchange flow, when a user logs in to the primary app via the identity provider, the identity provider issues
+a token to the primary app. The primary app can’t use this token to directly access Salesforce data, but it can exchange the token for a
+Salesforce access token. To complete this exchange, the primary app uses an Apex token exchange handler. With the token exchange
+handler, Salesforce can issue its own access token by validating the identity provider’s token and mapping the token’s subject, which
+identifies the end user, to a Salesforce user.
 
 To build an Apex token exchange handler, create a class that extends the `Auth.Oauth2TokenExchangeHandler` abstract
 class and customize its validation logic and subject mapping.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Token Exchange Handler Abstract Class
 
@@ -28408,6 +28654,12 @@ to map the token’s subject to a Salesforce user.
 
     canCreateUser is true)
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         return null;
 
       }
@@ -28422,23 +28674,20 @@ these examples to get started.
 Important: These example implementations and code snippets are for demonstration only. Use them as a starting point, but
 make sure you evaluate, customize, and test them carefully.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 Token Exchange Handler Example Implementation
 
 This example implementation extends the `Auth.Oauth2TokenExchangeHandler` abstract class.
 
-In this example, the `[OAuth2TokenExchangeType](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_Auth_OAuth2TokenExchangeType.htm)` enum specifies that the token is a JSON Web Token (JWT). The first method,
-`validateIncomingToken`, uses a method in the `[Auth.JWTUtil](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Auth_JWTUtil.htm#apex_Auth_JWTUtil_methods)` class to validate the token by calling an endpoint on the
+In this example, the `[OAuth2TokenExchangeType](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_Auth_OAuth2TokenExchangeType.htm)` enum specifies that the token is a JSON Web Token (JWT). The first method,
+`validateIncomingToken`, uses a method in the `[Auth.JWTUtil](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Auth_JWTUtil.htm#apex_Auth_JWTUtil_methods)` class to validate the token by calling an endpoint on the
 external identity provider.
 
-Validating the token returns an instance of the `[Auth.TokenValidationResult](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Auth_TokenValidationResult.htm)` class with information about the token and the
+Validating the token returns an instance of the `[Auth.TokenValidationResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Auth_TokenValidationResult.htm)` class with information about the token and the
 user.
 
 With the second method, `getUserForTokenSubject`, the handler gets information about the user from the token validation
 result. The example shows two ways to bundle the user data—either by creating a class with a custom data structure or by using the
-`[Auth.UserData](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Auth_UserData.htm)` class.
+`[Auth.UserData](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Auth_UserData.htm)` class.
 
 After the handler gets the user data from the token, it looks for a Salesforce user matching the token subject. In this example, the handler
 doesn’t find a user, so it creates a User object. To finish creating the user, Salesforce automatically inserts the User object for you.
@@ -28492,6 +28741,12 @@ doesn’t find a user, so it creates a User object. To finish creating the user,
 
    'https://your-idp.com/keys', true);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
              isValid = true;
 
              //These values are sourced from the JWT or ID Token
@@ -28512,12 +28767,6 @@ doesn’t find a user, so it creates a User object. To finish creating the user,
 
            }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         } else if (tokenType == Auth.OAuth2TokenExchangeType.ACCESS_TOKEN || tokenType ==
 
     Auth.OAuth2TokenExchangeType.REFRESH_TOKEN) {
@@ -28596,6 +28845,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
            u = [SELECT Id, IsActive FROM User WHERE email =: userData.email];
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         } catch (Exception e) {
 
            //No user existed for this email address, or there were too many. Try looking
@@ -28614,12 +28869,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
            u.lastName = userData.lastName;
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
           //Finish setting user attributes. For external users, make sure you set up the
 
     contact/account/person account
@@ -28663,7 +28912,7 @@ Examples for Validating Different Token Types
 The custom logic for your implementation of the `validateIncomingToken` method depends on the token type. Here’s an
 overview of the options for different token types.
 
-**•** For JWTs and ID tokens, use methods in the `[Auth.JWTUtil](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Auth_JWTUtil.htm)` class.
+**•** For JWTs and ID tokens, use methods in the `[Auth.JWTUtil](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Auth_JWTUtil.htm)` class.
 
 **•** For opaque tokens, such as opaque access and refresh tokens, call out to the identity provider’s introspection or user info endpoints.
 
@@ -28695,6 +28944,12 @@ In this example, the handler validates a JWT from the identity provider. The han
 
         }
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         return new Auth.TokenValidationResult(false); // Returns a general 'Token handler
 
     validation failed' message that you can customize
@@ -28705,10 +28960,6 @@ In this example, the handler validates a JWT from the identity provider. The han
 
 For opaque access tokens, which can’t be introspected locally on your app, call out to the introspection or user info endpoints on the
 external identity provider. In this example for validating an opaque token, the handler sends a POST request to the identity provider’s
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 introspection endpoint and parses the identity provider’s JSON response so that Salesforce can understand it. It then validates the
 response using the `validateIncomingToken` method.
 
@@ -28789,6 +29040,12 @@ response using the `validateIncomingToken` method.
 
              if (active != null && username != null) {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
                userData = new Auth.UserData(null, null, null, null, null, null,
 
    username, null, null, null, null);
@@ -28803,12 +29060,6 @@ response using the `validateIncomingToken` method.
 
              }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
           } else {
 
              return new Auth.TokenValidationResult(false); // Returns a general 'Token
@@ -28836,7 +29087,7 @@ Example for Finding and Creating a User
 During subject mapping, your handler finds the subject (end user) of the incoming token and tries to link it to a Salesforce user. Optionally,
 you can configure your handler to help create a Salesforce user if it can’t find one. The handler doesn’t technically create the user—instead,
 it returns a User object. Salesforce then automatically inserts the new user into the User object for you. To create the User object, the
-`isUserCreationAllowed` field on your `[OauthTokenExchangeHandler](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_oauthtokenexchangehandler.htm)` metadata definition must be set to `true` . When
+`isUserCreationAllowed` field on your `[OauthTokenExchangeHandler](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_oauthtokenexchangehandler.htm)` metadata definition must be set to `true` . When
 you set this metadata field to `true`, the `CanCreateUser` parameter in the `getUserForTokenSubject` Apex method is
 also set to `true` .
 
@@ -28871,6 +29122,12 @@ Salesforce user. If no user exists, it creates a User object.
 
      global override User getUserForTokenSubject(Id networkId, Auth.TokenValidationResult
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    result, Boolean canCreateUser, String appDeveloperName, Auth.IntegratingAppType appType)
 
    {
@@ -28883,12 +29140,6 @@ Salesforce user. If no user exists, it creates a User object.
 
         if (!existingUser.isEmpty()) {
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
            return existingUser[0];
 
         }
@@ -28925,17 +29176,17 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_Salesforce Help:_ [OAuth 2.0 Token Exchange Flow](https://help.salesforce.com/s/articleView?id=sf.remoteaccess_token_exchange_overview.htm&language=en_US)
+_Salesforce Help:_ [OAuth 2.0 Token Exchange Flow](https://help.salesforce.com/s/articleView?id=xcloud.remoteaccess_token_exchange_overview.htm&type=5&language=en_US)
 
-_Apex Reference Guide:_ [Oauth2TokenExchangeHandler Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Auth_Oauth2TokenExchangeHandler.htm)
+_Apex Reference Guide:_ [Oauth2TokenExchangeHandler Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Auth_Oauth2TokenExchangeHandler.htm)
 
-_Apex Reference Guide:_ [TokenValidationResult Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Auth_TokenValidationResult.htm)
+_Apex Reference Guide:_ [TokenValidationResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Auth_TokenValidationResult.htm)
 
-_Apex Reference Guide:_ [OAuth2TokenExchangeType Enum](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_Auth_OAuth2TokenExchangeType.htm)
+_Apex Reference Guide:_ [OAuth2TokenExchangeType Enum](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_Auth_OAuth2TokenExchangeType.htm)
 
-_Apex Reference Guide:_ [IntegratingAppType Enum](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_Auth_IntegratingAppType.htm)
+_Apex Reference Guide:_ [IntegratingAppType Enum](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_Auth_IntegratingAppType.htm)
 
-_[Apex Reference Guide:](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Auth_JWTUtil.htm)_ JWTUtil Class
+_[Apex Reference Guide:](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Auth_JWTUtil.htm)_ JWTUtil Class
 
 #### Chatter Answers and Ideas
 
@@ -28946,20 +29197,20 @@ To work with zones in Apex, use the `Answers`, `Ideas`, and `ConnectApi.Zones` c
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_answers.htm)_ : Answers Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_answers.htm)_ : Answers Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_ideas.htm)_ : Ideas Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_ideas.htm)_ : Ideas Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Zones_static_methods.htm)_ : Zones Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Zones_static_methods.htm)_ : Zones Class
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 #### Use Cases for the CommercePayments Namespace
 
 Review walkthroughs, use cases, and reference material for the `CommercePayments` platform.
 
-To review `CommercePayments` [class reference docs, go to CommercePayments Namespace.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_commercepayments.htm)
-
-
-Apex Developer Guide Using Salesforce Features with Apex
+To review `CommercePayments` [class reference docs, go to CommercePayments Namespace.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_commercepayments.htm)
 
 ##### Payment Gateway Adapters
 
@@ -29007,6 +29258,9 @@ successful in the gateway.
 Set Up a Synchronous Payment Gateway Adapter
 For payments transactions, you can configure Salesforce to interface with a synchronous payment gateway adapter.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Building an Asynchronous Gateway Adapter
 In an asynchronous payments configuration, the payments platform first sends transaction information to the gateway. The gateway
 responds with an acknowledgment that it received the transaction, and then the platform creates a pending transaction. The gateway
@@ -29014,9 +29268,6 @@ sends a notification, which contains the final transaction status. The platform 
 
 Set Up an Asynchronous Payment Gateway Adapter
 For payments transactions, you can configure Salesforce to interface with an asynchronous payment gateway adapter.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Builder Examples for Payment Gateway Adapters
 The final sections of a payment gateway adapter should define how the adapter creates requests and responses. The implementation
@@ -29029,7 +29280,7 @@ In synchronous payment configurations, the Salesforce payment platform sends tra
 for a gateway response that contains the final transaction status. Salesforce creates a transaction only if the transaction is successful in
 the gateway.
 
-A synchronous gateway adapter implements the `[PaymentGatewayAdapter Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_commercepayments_PaymentGatewayAdapter.htm#apex_interface_commerce_payments_PaymentGatewayAdapter)` . In this topic, we examine a sample
+A synchronous gateway adapter implements the `[PaymentGatewayAdapter Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_commercepayments_PaymentGatewayAdapter.htm#apex_interface_commerce_payments_PaymentGatewayAdapter)` . In this topic, we examine a sample
 synchronous adapter by looking at `PaymentGatewayAdapter`, and then the `processRequest` method, which drives most
 of the communication between the payment platform and the payment gateway.
 
@@ -29079,6 +29330,12 @@ First, it builds a payment request object that the gateway can understand.
 
    } else if (requestType == commercepayments.RequestType.ReferencedRefund) {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       req.setEndpoint('/pal/servlet/Payment/v52/refund');
 
       body =
@@ -29091,9 +29348,6 @@ First, it builds a payment request object that the gateway can understand.
 
 Note: We don't recommend encoding the request body, which contains the merge fields, including the card number and CVV.
 This can cause the request to fail to read the encoded request body and to fail to replace the merge field values.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Then, the adapter sends the request to the payment gateway.
 
@@ -29144,18 +29398,21 @@ whether you originally made a payment capture request or a refund request.
 
 Using Custom Data
 
-[To transfer additional, custom data from the frontend to your payment gateway adapter, use the Checkout Payments Connect API.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_resources_commerce_webstore_checkouts_payments.htm)
+[To transfer additional, custom data from the frontend to your payment gateway adapter, use the Checkout Payments Connect API.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_commerce_webstore_checkouts_payments.htm)
 Sending custom data to the adapter supports use cases like implementing conditional logic based on specific data or mapping
 asynchronous webhook events to a cart by passing an identifier.
 
-To send custom data to your payment gateway adapter, use the `paymentsData` [parameter in the Checkout Payments Connect API](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_resources_commerce_webstore_checkouts_payments.htm)
+To send custom data to your payment gateway adapter, use the `paymentsData` [parameter in the Checkout Payments Connect API](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_commerce_webstore_checkouts_payments.htm)
 input payload. This parameter is a serialized map of type `<String, String>` that supports up to four key-value pairs. Each key
 and each value can contain up to 255 characters. `paymentsData` is only applicable to Auth and PostAuth payment requests. Simple
 purchase orders don’t support `paymentsData` .
 
-[Similarly, the Post Authorization input payload has an](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_resources_payment_post_auth.htm) `additionalData` property, which is also a map of type `<String, String>` .
+[Similarly, the Post Authorization input payload has an](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_payment_post_auth.htm) `additionalData` property, which is also a map of type `<String, String>` .
 The `paymentsData` property is accepted for Auth and PostAuth requests and is transferred to the Payment APIs through the
 `additionalData` property.
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 ###### Set Up a Synchronous Payment Gateway Adapter
 
@@ -29173,7 +29430,6 @@ Gateway Adapter.
 
 **b.** Complete the required fields, including the URL for your payment gateway.
 
-
 EDITIONS
 
 Available in: Salesforce
@@ -29182,12 +29438,10 @@ Summer ’20 and later
 Available in: API 49.0 and
 later
 
-Apex Developer Guide Using Salesforce Features with Apex
-
 **3.** Create a payment gateway provider. The PaymentGatewayProvider object stores details about the payment gateway that Salesforce
 Payments communicates with when processing a transaction.
 
-**a.** [Generate an access token according to the instructions in Connect to Connect REST API Using OAuth.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/quickstart_connecting.htm)
+**a.** [Generate an access token according to the instructions in Connect to Connect REST API Using OAuth.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/quickstart_connecting.htm)
 
 The response includes the access token, specified in the `access_token` property, and the server instance, specified in the
 `instance_url` property. Use this information to make API calls to build the payment gateway provider.
@@ -29198,35 +29452,35 @@ The response includes the access token, specified in the `access_token` property
 Use this payload as the request body, replacing _`value`_ with the correct data.
 
 ```
-       {
+    {
 
-           "ApexAdapterId": " value ",
+        "ApexAdapterId": " value ",
 
-           "DeveloperName": " value ",
+        "DeveloperName": " value ",
 
-           "MasterLabel": " value ",
+        "MasterLabel": " value ",
 
-           "IdempotencySupported": " value ",
+        "IdempotencySupported": " value ",
 
-           "Comments": " value "
+        "Comments": " value "
 
-           }
+        }
 
-           Example:
+        Example:
 
-           {
+        {
 
-           "ApexAdapterId": "01pxx0000004UU8AAM",
+        "ApexAdapterId": "01pxx0000004UU8AAM",
 
-           "DeveloperName": "MyNewGatewayProvider",
+        "DeveloperName": "MyNewGatewayProvider",
 
-           "MasterLabel": "My New Gateway Provider",
+        "MasterLabel": "My New Gateway Provider",
 
-           "IdempotencySupported": "Yes",
+        "IdempotencySupported": "Yes",
 
-           "Comments": "Custom made gateway provider."
+        "Comments": "Custom made gateway provider."
 
-           }
+        }
 
 ```
 
@@ -29239,13 +29493,16 @@ gateway. The record requires these field values.
 
 **•** Payment Gateway Provider ID: ID of the payment gateway provider that you created.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **•** Status: Active
 
 SEE ALSO:
 
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_paymentgateway.htm)_ : PaymentGateway
+_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_paymentgateway.htm)_ : PaymentGateway
 
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_paymentgatewayprovider.htm)_ : PaymentGatewayProvider
+_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_paymentgatewayprovider.htm)_ : PaymentGatewayProvider
 
 ###### Building an Asynchronous Gateway Adapter
 
@@ -29256,9 +29513,6 @@ sends a notification, which contains the final transaction status. The platform 
 The asynchronous process differs from synchronous transactions, where the platform does not create a pending transaction after the
 initial gateway request. Instead, the platform creates a transaction only after the gateway sends a response containing the final transaction
 status. For information on building a synchronous adapter, review Building a Synchronous Gateway Adapter.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 An asynchronous configuration requires both a synchronous gateway adapter and an asynchronous adapter. In this topic, we’ll break
 down a sample asynchronous adapter by looking at several important areas.
@@ -29276,8 +29530,8 @@ calls, or execute DMLs using SOQL.
 
 Asynchronous Payment Gateway Adapter Definition
 
-An asynchronous gateway adapter class must implement both the `[PaymentGatewayAdapter Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_commercepayments_PaymentGatewayAdapter.htm#apex_interface_commerce_payments_PaymentGatewayAdapter)` and the
-`[PaymentGatewayAsyncAdapter Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_commercepayments_PaymentGatewayAsyncAdapter.htm#apex_interface_commercepayments_PaymentGatewayAsyncAdapter)` . The adapter class must also implement the `processRequest` method for
+An asynchronous gateway adapter class must implement both the `[PaymentGatewayAdapter Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_commercepayments_PaymentGatewayAdapter.htm#apex_interface_commerce_payments_PaymentGatewayAdapter)` and the
+`[PaymentGatewayAsyncAdapter Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_commercepayments_PaymentGatewayAsyncAdapter.htm#apex_interface_commercepayments_PaymentGatewayAsyncAdapter)` . The adapter class must also implement the `processRequest` method for
 PaymentGatewayAdapter and the `processNotification` method for PaymentGatewayAsyncAdapter.
 
 ```
@@ -29311,6 +29565,9 @@ When the payments platform receives a payments API request, it passes the reques
 adapter begins the request evaluation process by calling the **processRequest** method, which represents the first step in an asynchronous
 payment flow. We can break the processRequest implementation into three parts.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 First, it builds a payment request object that the gateway can understand.
 
 ```
@@ -29343,12 +29600,6 @@ Then, the adapter sends the request to the payment gateway.
 
    req.setMethod('POST');
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    commercepayments.PaymentsHttp http = new commercepayments.PaymentsHttp();
 
    HttpResponse res = null;
@@ -29417,6 +29668,12 @@ call the processNotification class. We can split the processNotification impleme
 
         + requestItem.eventCode + ':'
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         + requestItem.success;
 
       String myHMacKey = getHMacKey();
@@ -29438,10 +29695,6 @@ Next, the adapter parses the gateway’s notification request and builds a notif
 include status, referenceNumber, event, and amount. The `notificationStatus` object is set to Success or Failed based on
 whether the platform successfully received the notification. If the notification’s event code indicates that the gateway processed a
 payment capture transaction, the adapter builds a notification object using the `CaptureNotification` class. If the event code
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 indicates that the gateway processed a refund transaction, the adapter builds a notification object using the
 `ReferencedRefundNotification` class.
 
@@ -29513,6 +29766,9 @@ The adapter then requests that the payments platform records the results of the 
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 All asynchronous gateways require that the platform acknowledges that it received the notification, regardless of whether the platform
 successfully saved the notification’s data. The platform calls the `GatewayNotificationResponse` class to send the
 acknowledgment.
@@ -29540,21 +29796,18 @@ acknowledgment.
 
 ```
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 Using Custom Data
 
-[To transfer additional, custom data from the frontend to your payment gateway adapter, use the Checkout Payments Connect API.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_resources_commerce_webstore_checkouts_payments.htm)
+[To transfer additional, custom data from the frontend to your payment gateway adapter, use the Checkout Payments Connect API.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_commerce_webstore_checkouts_payments.htm)
 Sending custom data to the adapter supports use cases like implementing conditional logic based on specific data or mapping
 asynchronous webhook events to a cart by passing an identifier.
 
-To send custom data to your payment gateway adapter, use the `paymentsData` [parameter in the Checkout Payments Connect API](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_resources_commerce_webstore_checkouts_payments.htm)
+To send custom data to your payment gateway adapter, use the `paymentsData` [parameter in the Checkout Payments Connect API](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_commerce_webstore_checkouts_payments.htm)
 input payload. This parameter is a serialized map of type `<String, String>` that supports up to four key-value pairs. Each key
 and each value can contain up to 255 characters. `paymentsData` is only applicable to Auth and PostAuth payment requests. Simple
 purchase orders don’t support `paymentsData` .
 
-[Similarly, the Post Authorization input payload has an](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_resources_payment_post_auth.htm) `additionalData` property, which is also a map of type `<String, String>` .
+[Similarly, the Post Authorization input payload has an](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_payment_post_auth.htm) `additionalData` property, which is also a map of type `<String, String>` .
 The `paymentsData` property is accepted for Auth and PostAuth requests and is transferred to the Payment APIs through the
 `additionalData` property.
 
@@ -29594,10 +29847,13 @@ Building an Asynchronous Gateway Adapter and Building a Synchronous Gateway Adap
 
 **b.** Complete the required fields. For the URL, enter the URL of your payment gateway.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **4.** Create a payment gateway provider. The PaymentGatewayProvider object stores details about the payment gateway that Salesforce
 Payments communicates with when processing a transaction.
 
-**a.** [Generate an access token according to the instructions in Connect to Connect REST API Using OAuth.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/quickstart_connecting.htm)
+**a.** [Generate an access token according to the instructions in Connect to Connect REST API Using OAuth.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/quickstart_connecting.htm)
 
 The response includes the access token, specified in the `access_token` property, and the server instance, specified in the
 `instance_url` property. Use this information to make API calls to build the payment gateway provider.
@@ -29608,18 +29864,12 @@ The response includes the access token, specified in the `access_token` property
 Use this payload as the request body, replacing _`value`_ with the correct data.
 
 ```
-    {
+       {
 
-     "ApexAdapterId": " value ",
+        "ApexAdapterId": " value ",
 
-     "DeveloperName": " value ",
+        "DeveloperName": " value ",
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         "MasterLabel": " value ",
 
         "IdempotencySupported": " value ",
@@ -29680,21 +29930,21 @@ example,
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **c.** Enter the webhook in your external payment gateway’s standard notification settings.
 
 SEE ALSO:
 
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_paymentgatewayprovider.htm)_ : PaymentGatewayProvider
+_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_paymentgatewayprovider.htm)_ : PaymentGatewayProvider
 
-_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_paymentgateway.htm)_ : PaymentGateway
+_[Object Reference for the Salesforce Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_paymentgateway.htm)_ : PaymentGateway
 
 ###### Builder Examples for Payment Gateway Adapters
 
 The final sections of a payment gateway adapter should define how the adapter creates requests and responses. The implementation
 of these classes can vary widely based on your gateway and platform requirements. We’ve provided several generics examples for review.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Example:
 
@@ -29768,6 +30018,12 @@ Example:
 
           if(statusCode == 200) {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
             system.debug('Response - success - Capture received');
 
             commercepayments.CaptureResponse captureResponse = new
@@ -29786,12 +30042,6 @@ Example:
 
             return captureResponse;
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
           } else {
 
             system.debug('Response - error - Capture not received by Gateway');
@@ -29844,6 +30094,9 @@ Represents the authorization reversal request. Extends `BaseRequest` and inherit
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 If you want to build a sample authorization reversal, you can also invoke a constructor with arguments for the reversal amount and
 payment authorization ID. However, the constructor would only work for test usage and would throw an exception if used outside
 of the Apex test context.
@@ -29868,9 +30121,6 @@ The payment gateway adapter sends this class as a response for an Authorization 
      CommercePayments.AuthorizationReversalResponse();
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Note: Salesforce doesn't support bulk operations or custom fields in the authorization reversal process.
 
@@ -29931,6 +30181,12 @@ Then, add a class that sets the amount of the authorization reversal request, ga
 
            throw new SalesforceValidationException('Required Field Missing : Amount');
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         }
 
         system.debug('Response - success');
@@ -29952,9 +30208,6 @@ Then, add a class that sets the amount of the authorization reversal request, ga
       }
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 **Sample Apex Request**
 
@@ -30014,13 +30267,13 @@ Call the authorization reversal service by making a POST request to the followin
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 The service accepts one authorization reversal request per call. The following payment authorization adjustment API parameters are
 accepted.
 
 **Table 8: Reversal Service Input Parameters**
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Sample Request and Response
 
@@ -30032,44 +30285,47 @@ This request calls a $150 reversal against an authorization.
 ```
 
 ```
-  "accountId":"",
+"accountId":"",
 
-  "amount": "150",* "comments": "authorization reversal request",
+"amount": "150",* "comments": "authorization reversal request",
 
-  "effectiveDate":"2020-10-18T11:32:27.000Z",
+"effectiveDate":"2020-10-18T11:32:27.000Z",
 
-  "ipAddress": "202.95.77.70",
+"ipAddress": "202.95.77.70",
 
-  "macAddress": "00-14-22-01-23-45",
+```
 
-  "phone": "100-456-67",
 
-  "email": "test@example.org",
+Apex Developer Guide Using Salesforce Features with Apex
 
-  "additionalData":{
+```
+     "macAddress": "00-14-22-01-23-45",
 
-     //add additional parameters if needed
+     "phone": "100-456-67",
 
-    "key1":"value1",
+     "email": "test@example.org",
 
-    "key2":"value2",
+     "additionalData":{
 
-    "key3":"value3",
+        //add additional parameters if needed
 
-    "key4":"value4",
+       "key1":"value1",
 
-    "key5":"value5"
+       "key2":"value2",
+
+       "key3":"value3",
+
+       "key4":"value4",
+
+       "key5":"value5"
+
+      }
 
    }
-
-}
 
 ```
 
 **Sample Response - Success**
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 A successful authorization reversal response provides information about the gateway’s response and the values to construct a payment
 authorization adjustment entity.
@@ -30142,9 +30398,12 @@ If an error is returned, the response contains the gateway's error code and erro
 
    }
 
-##### Tokenization Service
-
 ```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+##### Tokenization Service
 
 The credit card tokenization process replaces sensitive customer information with a one-time algorithmically generated number, called
 a token, used during the payment transaction. Salesforce stores the token and then uses that token as a representation of the credit card
@@ -30157,16 +30416,14 @@ Use the tokenization service to hide sensitive customer payment method data. The
 `PaymentMethodTokenizationRequest`, `PaymentMethodTokenizationResponse`, and
 `CardPaymentMethodRequest` . Implement these classes in your payment gateway adapter.
 
+##### Tokenization Service API
 
-Apex Developer Guide Using Salesforce Features with Apex
-
-Tokenization Service API
 The credit card tokenization process replaces sensitive customer information with a one-time algorithmically generated number,
 called a token, to use during the payment transaction. Salesforce stores the token and then uses that token as a representation of
 the credit card used for transactions. The token stores information about the credit card without storing sensitive customer data
 such as credit card numbers. To add tokenization capabilities to your payment services, implement our Tokenization API.
 
-###### Tokenization Service Apex Class Implementation
+##### Tokenization Service Apex Class Implementation
 
 Use the tokenization service to hide sensitive customer payment method data. The Tokenization
 service uses `PaymentMethodTokenizationRequest`,
@@ -30184,8 +30441,8 @@ CommercePayments uses Salesforce field encryption to securely store gateway toke
 such as DigitalWallet, CardPaymentMethod, and AlternativePaymentMethod.
 
 CardPaymentMethod and DigitalWallet contain the GatewayTokenEncrypted field, available in API v52.0 and later, and the GatewayToken
-[field, available in API v48.0 and later. Both fields store gateway token values. However, GatewayTokenEncrypted uses Salesforce Classic](https://developer.salesforce.com/docs/atlas.en-us.258.0.securityImplGuide.meta/securityImplGuide/fields_about_encrypted_fields.htm)
-[Encryption for Custom Fields to securely encrypt the token. GatewayToken doesn't use encryption. To ensure secure tokenization, we](https://developer.salesforce.com/docs/atlas.en-us.258.0.securityImplGuide.meta/securityImplGuide/fields_about_encrypted_fields.htm)
+[field, available in API v48.0 and later. Both fields store gateway token values. However, GatewayTokenEncrypted uses Salesforce Classic](https://developer.salesforce.com/docs/atlas.en-us.260.0.securityImplGuide.meta/securityImplGuide/fields_about_encrypted_fields.htm)
+[Encryption for Custom Fields to securely encrypt the token. GatewayToken doesn't use encryption. To ensure secure tokenization, we](https://developer.salesforce.com/docs/atlas.en-us.260.0.securityImplGuide.meta/securityImplGuide/fields_about_encrypted_fields.htm)
 recommend using GatewayTokenEncrypted on your DigitalWallets and CardPaymentMethods. The AlternativePaymentMethod object
 uses a GatewayToken field for token storage, however, this field is encrypted on AlternativePaymentMethods.
 
@@ -30204,34 +30461,32 @@ The following code is used within your `PaymentGatewayAdapter` Apex class.
 Gateway tokens are created and encrypted when the `GatewayResponse` class's `processRequest` method receives a tokenization
 request. If the request type is `Tokenize`, `GatewayResponse` calls the `createTokenizeResponse` method and passes an
 instance of the `PaymentMethodTokenizationRequest` class. The passed `PaymentMethodTokenizationRequest`
-object contains the address and cardPaymentMethod information that the payment gateway needs to manage the tokenization process.
-For example:
-
-```
-global commercepayments.GatewayResponse processRequest(commercepayments.paymentGatewayContext
-
- gatewayContext) {
-
-     commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
-
-      commercepayments.GatewayResponse response;
-
-      try
-
-      {
-
-        if (requestType == commercepayments.RequestType.Tokenize) {
-
-             response =
-
-createTokenizeResponse((commercepayments.PaymentMethodTokenizationRequest)gatewayContext.getPaymentRequest());
-
-```
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
+object contains the address and cardPaymentMethod information that the payment gateway needs to manage the tokenization process.
+For example:
+
 ```
+   global commercepayments.GatewayResponse processRequest(commercepayments.paymentGatewayContext
+
+    gatewayContext) {
+
+        commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
+
+         commercepayments.GatewayResponse response;
+
+         try
+
+         {
+
+           if (requestType == commercepayments.RequestType.Tokenize) {
+
+                response =
+
+   createTokenizeResponse((commercepayments.PaymentMethodTokenizationRequest)gatewayContext.getPaymentRequest());
+
            }
 
            //Add other else if statements for different request types as needed.
@@ -30257,7 +30512,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 ```
 
 Configure the `createTokenizeResponse` method to accept an instance of `PaymentMethodTokenizationRequest`
-and then build an instance of `[PaymentMethodTokenizationResponse](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_PaymentMethodTokenizationResponse.htm#apex_class_commercepayments_PaymentMethodTokenizationResponse)` based on the values that it receives from the payment
+and then build an instance of `[PaymentMethodTokenizationResponse](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentMethodTokenizationResponse.htm#apex_class_commercepayments_PaymentMethodTokenizationResponse)` based on the values that it receives from the payment
 gateway. The tokenizeResponse contains the results of the gateway's tokenization process, and if successful, the tokenized value. In this
 example, we call the `setGatewayTokenEncrypted` method to set the tokenized value in our tokenization response.
 
@@ -30304,6 +30559,12 @@ method values are encrypted and secure.
 
       global void setGatewayTokenEncrypted(String gatewayTokenEncrypted) {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
          if (gatewayTokenSet) {
 
            throwTokenError();
@@ -30320,11 +30581,8 @@ method values are encrypted and secure.
 
 If the instantiated class already has a gateway token, `setGatewayTokenEncrypted` throws an error.
 
-Note: While the PaymentMethodTokenizationResponse's `[setGatewayToken](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_PaymentMethodTokenizationResponse.htm#apex_commercepayments_PaymentMethodTokenizationResponse_setGatewayToken)` method (available in API v48.0 and later) also
+Note: While the PaymentMethodTokenizationResponse's `[setGatewayToken](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentMethodTokenizationResponse.htm#apex_commercepayments_PaymentMethodTokenizationResponse_setGatewayToken)` method (available in API v48.0 and later) also
 returns a payment method token, the tokenized value isn't encrypted.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 ###### Tokenization Service API
 
@@ -30344,7 +30602,7 @@ card.
 
 The Commerce Payments Tokenization API accepts credit card information and uses the external payment gateway configured through
 the customer's Salesforce org to tokenize the card information. It then returns the tokenization representation. The API then saves the
-token in `[CardPaymentMethod](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_cardpaymentmethod.htm)` .
+token in `[CardPaymentMethod](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_cardpaymentmethod.htm)` .
 
 Call the tokenization service by making a POST request to this endpoint.
 
@@ -30445,6 +30703,9 @@ This sample request provides a customer's credit card information for tokenizati
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 A successful tokenization response updates the payment method and provides information about the gateway response and any
 payment gateway logs.
 
@@ -30463,12 +30724,6 @@ payment gateway logs.
 
      "gatewayResponse" : {
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       "gatewayResultCode": "00",
 
       "gatewayResultCodeDescription": "Transaction Normal",
@@ -30539,9 +30794,15 @@ Example: Let's say you wanted to make an alternative payment method for GiroPay.
 
    "DeveloperName" : "GiroPay",
 
-   "SobjectType" : "AlternativePaymentMethod"
+```
 
-   }
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
+      "SobjectType" : "AlternativePaymentMethod"
+
+      }
 
 ```
 
@@ -30550,18 +30811,12 @@ Next, create an alternative payment method record for the `AlternativePaymentMet
 **New AlternativePaymentMethod**
 
 ```
-   /services/data/v51.0/sobjects/AlternativePaymentMethod
+      /services/data/v51.0/sobjects/AlternativePaymentMethod
 
-   {
+      {
 
-   "ProcessingMode": "External",
+      "ProcessingMode": "External",
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       "status":"Active",
 
       "GatewayToken":"mHkDsh0oIA3mnWjo9UL",
@@ -30603,7 +30858,7 @@ Process a payment in the payment gateway.
 
 To access `commercepayments` API, you need the PaymentPlatform org permission.
 
-**1.** Get the payment capture request object from the `[PaymentGatewayContext Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_PaymentGatewayContext.htm#apex_class_commerce_payments_PaymentGatewayContext)` .
+**1.** Get the payment capture request object from the `[PaymentGatewayContext Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentGatewayContext.htm#apex_class_commerce_payments_PaymentGatewayContext)` .
 
 EDITIONS
 
@@ -30626,9 +30881,9 @@ Spring ’20
 
 ```
 
-**3.** Read the parameters from the `[CaptureRequest](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_CaptureRequest.htm#apex_class_commerce_payments_CaptureRequest)` object and prepare the HTTP request body.
+**3.** Read the parameters from the `[CaptureRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_CaptureRequest.htm#apex_class_commerce_payments_CaptureRequest)` object and prepare the HTTP request body.
 
-**4.** Make the HTTP call to the gateway using the `[PaymentsHttp Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_PaymentsHttp.htm#apex_class_commerce_payments_PaymentsHttp)` .
+**4.** Make the HTTP call to the gateway using the `[PaymentsHttp Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentsHttp.htm#apex_class_commerce_payments_PaymentsHttp)` .
 
 ```
   commercepayments.PaymentsHttp http = new commercepayments.PaymentsHttp();
@@ -30637,27 +30892,27 @@ Spring ’20
 
 ```
 
-**5.** Parse the `httpResponse` and prepare the `[CaptureResponse](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_CaptureResponse.htm#apex_class_commerce_payments_CaptureResponse)` object.
-
-```
-  commercepayments.CaptureResponse captureResponse = new commercepayments.CaptureResponse();
-
-  captureResponse.setGatewayResultCode(“”);
-
-  captureResponse.setGatewayResultCodeDescription(“”);
-
-  captureResponse.setGatewayReferenceNumber(“”);
-
-  captureResponse.setSalesforceResultCodeInfo(getSalesforceResultCodeInfo(commercepayments.SalesforceResultCode.SUCCESS.name()));
-
-  captureResponse.setGatewayReferenceDetails(“”);
-
-  captureResponse.setAmount(double.valueOf(100);
-
-```
-
 
 Apex Developer Guide Using Salesforce Features with Apex
+
+**5.** Parse the `httpResponse` and prepare the `[CaptureResponse](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_CaptureResponse.htm#apex_class_commerce_payments_CaptureResponse)` object.
+
+```
+     commercepayments.CaptureResponse captureResponse = new commercepayments.CaptureResponse();
+
+     captureResponse.setGatewayResultCode(“”);
+
+     captureResponse.setGatewayResultCodeDescription(“”);
+
+     captureResponse.setGatewayReferenceNumber(“”);
+
+     captureResponse.setSalesforceResultCodeInfo(getSalesforceResultCodeInfo(commercepayments.SalesforceResultCode.SUCCESS.name()));
+
+     captureResponse.setGatewayReferenceDetails(“”);
+
+     captureResponse.setAmount(double.valueOf(100);
+
+```
 
 **6.** Return the `captureResponse` .
 
@@ -30667,7 +30922,7 @@ Process a refund in the payment gateway.
 
 To access the `commercepayments` API, you need the PaymentPlatform org permission.
 
-**1.** Get the referenced refund request object from the `[PaymentGatewayContext Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_PaymentGatewayContext.htm#apex_class_commerce_payments_PaymentGatewayContext)` .
+**1.** Get the referenced refund request object from the `[PaymentGatewayContext Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentGatewayContext.htm#apex_class_commerce_payments_PaymentGatewayContext)` .
 
 EDITIONS
 
@@ -30690,9 +30945,9 @@ Spring ’20
 
 ```
 
-**3.** Read the parameters from the `[ReferencedRefundRequest object](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_ReferencedRefundRequest.htm#apex_class_commerce_payments_ReferencedRefundRequest)` and prepare the HTTP request body.
+**3.** Read the parameters from the `[ReferencedRefundRequest object](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_ReferencedRefundRequest.htm#apex_class_commerce_payments_ReferencedRefundRequest)` and prepare the HTTP request body.
 
-**4.** Make the HTTP call to the gateway using the `[PaymentsHttp Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_PaymentsHttp.htm#apex_class_commerce_payments_PaymentsHttp)` .
+**4.** Make the HTTP call to the gateway using the `[PaymentsHttp Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentsHttp.htm#apex_class_commerce_payments_PaymentsHttp)` .
 
 ```
   commercepayments.PaymentsHttp http = new commercepayments.PaymentsHttp();
@@ -30701,7 +30956,7 @@ Spring ’20
 
 ```
 
-**5.** Parse the `httpResponse` and prepare the `[ReferencedRefundResponse](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_commercepayments_ReferencedRefundResponse.htm#apex_class_commerce_payments_ReferencedRefundResponse)` object.
+**5.** Parse the `httpResponse` and prepare the `[ReferencedRefundResponse](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_ReferencedRefundResponse.htm#apex_class_commerce_payments_ReferencedRefundResponse)` object.
 
 ```
   commercepayments.ReferencedRefundResponse referencedRefundResponse = new
@@ -30724,6 +30979,9 @@ Spring ’20
 
 **6.** Return the `referencedRefundResponse` .
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 ##### Idempotency Guidelines
 
 Idempotency represents the ability of a payment gateway to recognize duplicate requests submitted
@@ -30740,26 +30998,22 @@ Spring ’20
 The payment gateway adapter class is linked to a paymentGatewayProvider object record. CCS
 Payments provides its own layer of idempotency for its own service request. Each payment gateway
 can also specify their `idempotencySupported` value in the paymentGatewayProvider object record. If Salesforce CCS Payment
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 APIs detects a duplicate request and the gateway provider supports idempotency, the request body’s `duplicate` parameter becomes
 _`True`_ .
 
 ```
-   commercepayments.CaptureRequest request =
+commercepayments.CaptureRequest request =
 
-   (commercepayments.CaptureRequest)paymentGatewayContext.getPaymentRequest();
+(commercepayments.CaptureRequest)paymentGatewayContext.getPaymentRequest();
 
-   Boolean isDuplicate = requestObject.duplicate
+Boolean isDuplicate = requestObject.duplicate
 
 ```
 
 The idempotency key can be fetched from the request object.
 
 ```
-   String idempotencyKey = request.idempotencyKey
+String idempotencyKey = request.idempotencyKey
 
 ##### Sample Payment Gateway Implementation for CommercePayments
 
@@ -30789,7 +31043,7 @@ can do it with a single call.
 
 has access to. It doesn’t run in system mode like other Apex code.
 
-[For Connect in Apex reference information, see ConnectApi Namespace.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_connect_api.htm)
+[For Connect in Apex reference information, see ConnectApi Namespace.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_connect_api.htm)
 
 #### Connect in Apex Examples
 
@@ -30803,6 +31057,9 @@ Using ConnectApi Input and Output Classes
 Some classes in the `ConnectApi` namespace contain static methods that access Connect REST API data. The `ConnectApi`
 namespace also contains input classes to pass as parameters and output classes that calls to the static methods return.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Understanding Limits for ConnectApi Classes
 Limits for methods in the `ConnectApi` namespace are different than the limits for other Apex classes.
 
@@ -30812,9 +31069,6 @@ If you include `ConnectApi` classes in a package, be aware of Chatter dependenci
 Serializing and Deserializing ConnectApi Objects
 When `ConnectApi` output objects are serialized into JSON, the structure is similar to the JSON returned from Connect REST API.
 When `ConnectApi` input objects are deserialized from JSON, the format is also similar to Connect REST API.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 ConnectApi Versioning and Equality Checking
 Versioning in `ConnectApi` classes follows specific rules that are different than the rules for other Apex classes.
@@ -30862,6 +31116,9 @@ Call a method to post a feed element with a code block.
 Post a Feed Element with a New File (Binary) Attachment
 Call a method to post a feed element with a new file.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Post a Batch of Feed Elements
 Use a trigger to call a method to bulk post to the feeds of accounts.
 
@@ -30873,9 +31130,6 @@ Create one action link in an action link group, associate the action link group 
 
 Define an Action Link in a Template and Post with a Feed Element
 Create an action link and action link group and instantiate the action link group from a template.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Edit a Feed Element
 Call a method to edit a feed element.
@@ -30925,6 +31179,9 @@ Call a method to follow a record.
 Unfollow a Record
 Call a method to stop following a record.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Get a Repository
 Call a method to get a repository.
 
@@ -30936,9 +31193,6 @@ Call a method to get allowed item types.
 
 Get Previews
 Call a method to get all supported preview formats and their respective URLs.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Get a File Preview
 Call a method to get a file preview.
@@ -30980,7 +31234,7 @@ Create a cart with a cart item using custom fields for a buyer or guest user in 
 
 Call a method to get feed elements from a feed.
 
-Call `[getFeedElementsFromFeed(communityId, feedType, subjectId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_2)` to get the first page of feed elements
+Call `[getFeedElementsFromFeed(communityId, feedType, subjectId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_2)` to get the first page of feed elements
 from the context user’s news feed.
 
 ```
@@ -30992,27 +31246,27 @@ from the context user’s news feed.
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 The `getFeedElementsFromFeed` method is overloaded, which means that the method name has many different signatures. A
 signature is the name of the method and its parameters in order.
 
 Each signature lets you send different inputs. For example, one signature may specify the feed type and the subject ID. Another signature
 could have those parameters and an additional parameter to specify the maximum number of comments to return for each feed element.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 Tip: Each signature operates on certain feed types. Use the signatures that operate on the `ConnectApi.FeedType.Record`
 to get group feeds, since a group is a record type.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm)_ : ChatterFeeds Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm)_ : ChatterFeeds Class
 
 ###### Get Feed Elements From Another User’s Feed
 
 Call a method to get feed elements from another user’s feed.
 
-Call `[getFeedElementsFromFeed(communityId, feedType, subjectId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_2)` to get the first page of feed elements
+Call `[getFeedElementsFromFeed(communityId, feedType, subjectId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_2)` to get the first page of feed elements
 from another user’s feed.
 
 ```
@@ -31048,8 +31302,8 @@ Call a method to display a user profile feed that contains only feed elements th
 Feed elements that have a User or a Group parent record are scoped to sites. Feed elements whose parents are record types other than
 User or Group are always visible in all sites. Other parent record types could be scoped to sites in the future.
 
-This example calls `[getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_7a)`
-`[density, pageParam, pageSize, sortParam, filter)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_7a)` to get only site-specific feed elements.
+This example calls `[getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_7a)`
+`[density, pageParam, pageSize, sortParam, filter)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_7a)` to get only site-specific feed elements.
 
 ```
    ConnectApi.FeedElementPage fep =
@@ -31066,7 +31320,10 @@ This example calls `[getFeedElementsFromFeed(communityId, feedType, subjectId, r
 
 Make a call to post a feed element.
 
-Call `[postFeedElement(communityId, subjectId, feedElementType, text)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_1)` to post a string of text.
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+Call `[postFeedElement(communityId, subjectId, feedElementType, text)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_1)` to post a string of text.
 
 ```
    ConnectApi.FeedElement feedElement =
@@ -31080,15 +31337,12 @@ Call `[postFeedElement(communityId, subjectId, feedElementType, text)](https://d
 The second parameter, `subjectId` is the ID of the parent this feed element is posted to. The value can be the ID of a user, group, or
 record, or the string `me` to indicate the context user.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 ###### Post a Feed Element with a Mention
 
 Call a method or use the ConnectApiHelper repository to post a feed.
 
 [You can post feed elements with mentions two ways. Use the ConnectApiHelper repository on GitHub to write a single line of code, or](https://github.com/forcedotcom/ConnectApiHelper)
-use this example, which calls `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` .
+use this example, which calls `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` .
 
 ```
    ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
@@ -31125,7 +31379,7 @@ use this example, which calls `[postFeedElement(communityId, feedElement)](https
 
 Call a method to post a feed element with already uploaded files.
 
-Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed item with files that have already been uploaded.
+Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed item with files that have already been uploaded.
 
 ```
    // Define the FeedItemInput object to pass to postFeedElement
@@ -31150,6 +31404,12 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    // The FeedElementCapabilitiesInput object holds the capabilities of the feed item.
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    // For this feed item, we define a files capability to hold the file(s).
 
    List<String> fileIds = new List<String>();
@@ -31164,12 +31424,6 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    fileIds.add('069xx00000000Qd');
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    ConnectApi.FilesCapabilityInput filesInput = new ConnectApi.FilesCapabilityInput();
 
    filesInput.items = new List<ConnectApi.FileIdInput>();
@@ -31205,7 +31459,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 Call a method or use the ConnectApiHelper repository to post a feed element with an already uploaded, inline image.
 
 [You can post rich-text feed elements with inline images and mentions two ways. Use the ConnectApiHelper repository on GitHub to](https://github.com/forcedotcom/ConnectApiHelper)
-write a single line of code, or use this example, which calls `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` . In this
+write a single line of code, or use this example, which calls `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` . In this
 example, the image file is existing content that has already been uploaded to Salesforce as a content document (069). The post also
 includes text and a mention.
 
@@ -31238,6 +31492,12 @@ includes text and a mention.
 
    messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
 
    markupBeginSegment.markupType = ConnectApi.MarkupType.Bold;
@@ -31252,12 +31512,6 @@ includes text and a mention.
 
    mentionSegment = new ConnectApi.MentionSegmentInput();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    mentionSegment.id = mentionedUserId;
 
    messageInput.messageSegments.add(mentionSegment);
@@ -31290,17 +31544,17 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: ConnectApi.MarkupBeginSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_markup_begin_segment.htm)
+_Apex Reference Guide_ [: ConnectApi.MarkupBeginSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_markup_begin_segment.htm)
 
-_Apex Reference Guide_ [: ConnectApi.MarkupEndSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_markup_end_segment.htm)
+_Apex Reference Guide_ [: ConnectApi.MarkupEndSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_markup_end_segment.htm)
 
-_Apex Reference Guide_ [: ConnectApi.InlineImageSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_inline_image_segment.htm)
+_Apex Reference Guide_ [: ConnectApi.InlineImageSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_inline_image_segment.htm)
 
 ###### Post a Rich-Text Feed Element with a Code Block
 
 Call a method to post a feed element with a code block.
 
-Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed item with a code block.
+Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed item with a code block.
 
 ```
    String communityId = null;
@@ -31325,6 +31579,12 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
 
    markupBeginSegment.markupType = ConnectApi.MarkupType.Code;
@@ -31337,12 +31597,6 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    messageInput.messageSegments.add(textSegment);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    markupEndSegment = new ConnectApi.MarkupEndSegmentInput();
 
    markupEndSegment.markupType = ConnectApi.MarkupType.Code;
@@ -31357,9 +31611,9 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: ConnectApi.MarkupBeginSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_markup_begin_segment.htm)
+_Apex Reference Guide_ [: ConnectApi.MarkupBeginSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_markup_begin_segment.htm)
 
-_Apex Reference Guide_ [: ConnectApi.MarkupEndSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_markup_end_segment.htm)
+_Apex Reference Guide_ [: ConnectApi.MarkupEndSegmentInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_markup_end_segment.htm)
 
 ###### Post a Feed Element with a New File (Binary) Attachment
 
@@ -31368,7 +31622,7 @@ Call a method to post a feed element with a new file.
 Important: In version 36.0 and later, you can’t post a feed element with a new file in the same call. Upload files to Salesforce first,
 and then specify existing files when posting a feed element.
 
-This example calls `[postFeedElement(communityId, feedElement, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_2)` to post a feed
+This example calls `[postFeedElement(communityId, feedElement, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_2)` to post a feed
 item with a new file (binary) attachment.
 
 ```
@@ -31404,7 +31658,10 @@ item with a new file (binary) attachment.
 
 Use a trigger to call a method to bulk post to the feeds of accounts.
 
-This trigger calls `[postFeedElementBatch(communityId, feedElements)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElementBatch_1)` to bulk post to the feeds of newly inserted
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+This trigger calls `[postFeedElementBatch(communityId, feedElements)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElementBatch_1)` to bulk post to the feeds of newly inserted
 accounts.
 
 ```
@@ -31414,12 +31671,6 @@ accounts.
 
       // Bulk post to the account feeds.
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       List<ConnectApi.BatchInput> batchInputs = new List<ConnectApi.BatchInput>();
 
       for (Account a : accounts) {
@@ -31459,7 +31710,7 @@ Use a trigger to call a method to bulk post a new file to the feeds of accounts.
 Important: This example is valid in version 32.0–35.0. In version 36.0 and later, you can’t post a batch of feed elements with a
 new file in the same call. Upload the file to Salesforce first, and then specify the uploaded file when posting a batch of feed elements.
 
-This trigger calls `[postFeedElementBatch(communityId, feedElements)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElementBatch_1)` to bulk post to the feeds of newly inserted
+This trigger calls `[postFeedElementBatch(communityId, feedElements)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElementBatch_1)` to bulk post to the feeds of newly inserted
 accounts. Each post has a new file (binary) attachment.
 
 ```
@@ -31481,6 +31732,12 @@ accounts. Each post has a new file (binary) attachment.
 
         body.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         ConnectApi.TextSegmentInput textSegment = new ConnectApi.TextSegmentInput();
 
         textSegment.text = 'Let\'s win the ' + a.name + ' account.';
@@ -31491,12 +31748,6 @@ accounts. Each post has a new file (binary) attachment.
 
         ConnectApi.ContentCapabilityInput contentInput = new
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    ConnectApi.ContentCapabilityInput();
 
         contentInput.title = 'Title';
@@ -31538,10 +31789,10 @@ When a user clicks the action link, the action link requests the Connect REST AP
 posts a feed item to the user’s feed. After the user clicks the action link and it executes successfully, its status changes to successful and
 the feed item UI is updated.
 
-Refresh the user’s feed to see the new post.
-
 
 Apex Developer Guide Using Salesforce Features with Apex
+
+Refresh the user’s feed to see the new post.
 
 This simple example shows you how to use action links to call a Salesforce resource.
 
@@ -31558,11 +31809,11 @@ Just like radio buttons, action links must be nested in a group. Action links wi
 mutually exclusive (you can click only one action link within a group). Even if you define only one action link, it must be part of an action
 link group.
 
-This example calls `[ConnectApi.ActionLinks.createActionLinkGroupDefinition(communityId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)`
-`[actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)` to create an action link group definition.
+This example calls `[ConnectApi.ActionLinks.createActionLinkGroupDefinition(communityId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)`
+`[actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)` to create an action link group definition.
 
 It saves the action link group ID from that call and associates it with a feed element in a call to
-`[ConnectApi.ChatterFeeds.postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` .
+`[ConnectApi.ChatterFeeds.postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` .
 
 To use this code, substitute an OAuth value for your own Salesforce org. Also, verify that the `expirationDate` is in the future. Look
 for the “To Do” comments in the code.
@@ -31578,6 +31829,12 @@ for the “To Do” comments in the code.
 
    ConnectApi.RequestHeaderInput requestHeaderInput1 = new ConnectApi.RequestHeaderInput();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    ConnectApi.RequestHeaderInput requestHeaderInput2 = new ConnectApi.RequestHeaderInput();
 
    // Create the action link group definition.
@@ -31628,12 +31885,6 @@ for the “To Do” comments in the code.
 
    00DD00000007WNP!ARsAQCwoeV0zzAV847FTl4zF.85w.EwsPbUgXR4SAjsp ';
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    actionLinkDefinitionInput.headers.add(requestHeaderInput1);
 
    requestHeaderInput2.name = 'Content-Type';
@@ -31676,6 +31927,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    feedItemInput.subjectId = 'me';
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    // Create the text for the post.
 
    messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
@@ -31715,9 +31972,6 @@ Create an action link and action link group and instantiate the action link grou
 This example creates the same action link and action link group as the example Define an Action Link and Post with a Feed Element,
 but this example instantiates the action link group from a template.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 Step 1: Create the Action Link Templates
 
 **1.** From Setup, enter _`Action Link Templates`_ in the `Quick Find` box, then select **Action Link Templates** .
@@ -31726,14 +31980,17 @@ Step 1: Create the Action Link Templates
 
 **3.** Use these values in a new Action Link Template:
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **4.** Go back to the Action Link Group Template and select `Published` . Click **Save** .
 
 Step 2: Instantiate the Action Link Group, Associate it with a Feed Item, and Post it
 
-This example calls `[ConnectApi.ActionLinks.createActionLinkGroupDefinition(communityId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)`
-`[actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)` to create an action link group definition.
+This example calls `[ConnectApi.ActionLinks.createActionLinkGroupDefinition(communityId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)`
+`[actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)` to create an action link group definition.
 
-It calls `[ConnectApi.ChatterFeeds.postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to associate the action
+It calls `[ConnectApi.ChatterFeeds.postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to associate the action
 link group with a feed item and post it.
 
 ```
@@ -31745,52 +32002,52 @@ DeveloperName='Doc_Example'];
 
 // Add binding name-value pairs to a map.
 
+// The names are defined in the action link template(s) associated with the action link
+
+group template.
+
+// Get them from Setup UI or SOQL.
+
+Map<String, String> bindingMap = new Map<String, String>();
+
+bindingMap.put('ApiVersion', 'v33.0');
+
+bindingMap.put('Text', 'This post was created by an API action link.');
+
+bindingMap.put('SubjectId', 'me');
+
+// Create ActionLinkTemplateBindingInput objects from the map elements.
+
+List<ConnectApi.ActionLinkTemplateBindingInput> bindingInputs = new
+
+List<ConnectApi.ActionLinkTemplateBindingInput>();
+
+for (String key : bindingMap.keySet()) {
+
+   ConnectApi.ActionLinkTemplateBindingInput bindingInput = new
+
+ConnectApi.ActionLinkTemplateBindingInput();
+
+   bindingInput.key = key;
+
+   bindingInput.value = bindingMap.get(key);
+
+   bindingInputs.add(bindingInput);
+
+}
+
+// Set the template Id and template binding values in the action link group definition.
+
+ConnectApi.ActionLinkGroupDefinitionInput actionLinkGroupDefinitionInput = new
+
+ConnectApi.ActionLinkGroupDefinitionInput();
+
 ```
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
 ```
-   // The names are defined in the action link template(s) associated with the action link
-
-   group template.
-
-   // Get them from Setup UI or SOQL.
-
-   Map<String, String> bindingMap = new Map<String, String>();
-
-   bindingMap.put('ApiVersion', 'v33.0');
-
-   bindingMap.put('Text', 'This post was created by an API action link.');
-
-   bindingMap.put('SubjectId', 'me');
-
-   // Create ActionLinkTemplateBindingInput objects from the map elements.
-
-   List<ConnectApi.ActionLinkTemplateBindingInput> bindingInputs = new
-
-   List<ConnectApi.ActionLinkTemplateBindingInput>();
-
-   for (String key : bindingMap.keySet()) {
-
-      ConnectApi.ActionLinkTemplateBindingInput bindingInput = new
-
-   ConnectApi.ActionLinkTemplateBindingInput();
-
-      bindingInput.key = key;
-
-      bindingInput.value = bindingMap.get(key);
-
-      bindingInputs.add(bindingInput);
-
-   }
-
-   // Set the template Id and template binding values in the action link group definition.
-
-   ConnectApi.ActionLinkGroupDefinitionInput actionLinkGroupDefinitionInput = new
-
-   ConnectApi.ActionLinkGroupDefinitionInput();
-
    actionLinkGroupDefinitionInput.templateId = template.id;
 
    actionLinkGroupDefinitionInput.templateBindings = bindingInputs;
@@ -31839,12 +32096,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
     group.
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    // The action link group ID is returned from the call to create the action link group
 
    definition.
@@ -31867,7 +32118,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Call a method to edit a feed element.
 
-Call `[updateFeedElement(communityId, feedElementId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updateFeedElement)` to edit a feed element. Feed items are
+Call `[updateFeedElement(communityId, feedElementId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updateFeedElement)` to edit a feed element. Feed items are
 the only type of feed element that can be edited.
 
 ```
@@ -31881,6 +32132,12 @@ the only type of feed element that can be edited.
 
    if (feedItems.isEmpty()) {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       // Return null within anonymous apex.
 
       return null;
@@ -31921,17 +32178,11 @@ the only type of feed element that can be edited.
 
 Call a method to edit a question title and post.
 
-Call `[updateFeedElement(communityId, feedElementId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updateFeedElement)` to edit a question title and post.
+Call `[updateFeedElement(communityId, feedElementId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updateFeedElement)` to edit a question title and post.
 
 ```
    String communityId = Network.getNetworkId();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    // Get the last feed item created by the context user.
 
    List<FeedItem> feedItems = [SELECT Id FROM FeedItem WHERE CreatedById = :UserInfo.getUserId()
@@ -31970,6 +32221,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
       messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       textSegmentInput.text = 'This is my edited question.';
 
       messageBodyInput.messageSegments.add(textSegmentInput);
@@ -31994,7 +32251,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Call a method to like a feed element.
 
-Call `[likeFeedElement(communityId, feedElementId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_likeFeedElement)` to like a feed element.
+Call `[likeFeedElement(communityId, feedElementId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_likeFeedElement)` to like a feed element.
 
 ```
    ConnectApi.ChatterLike chatterLike = ConnectApi.ChatterFeeds.likeFeedElement(null,
@@ -32007,7 +32264,7 @@ Call `[likeFeedElement(communityId, feedElementId)](https://developer.salesforce
 
 Call a method to bookmark a feed element.
 
-Call `[updateFeedElementBookmarks(communityId, feedElementId, isBookmarkedByCurrentUser)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updateFeedElementBookmarks_2)` to
+Call `[updateFeedElementBookmarks(communityId, feedElementId, isBookmarkedByCurrentUser)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updateFeedElementBookmarks_2)` to
 bookmark a feed element.
 
 ```
@@ -32015,19 +32272,16 @@ bookmark a feed element.
 
    ConnectApi.ChatterFeeds.updateFeedElementBookmarks(null, '0D5D0000000KuGh', true);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 ###### Share a Feed Element (prior to Version 39.0)
+
+```
 
 Call a method to share a feed element.
 
 Important: In API version 39.0 and later, `shareFeedElement(communityId, subjectId, feedElementType,`
 `originalFeedElementId)` isn’t supported. See Share a Feed Element (in Version 39.0 and Later).
 
-Call `[shareFeedElement(communityId, subjectId, feedElementType, originalFeedElementId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_shareFeedElement)` to
+Call `[shareFeedElement(communityId, subjectId, feedElementType, originalFeedElementId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_shareFeedElement)` to
 share a feed item (which is a type of feed element) with a group.
 
 ```
@@ -32041,7 +32295,7 @@ share a feed item (which is a type of feed element) with a group.
 
 Call a method to share a feed element.
 
-Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to share a feed element.
+Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to share a feed element.
 
 ```
    // Define the FeedItemInput object to pass to postFeedElement
@@ -32050,6 +32304,12 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    feedItemInput.subjectId = 'me';
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
 
    textSegmentInput.text = 'Look at this post I'm sharing.';
@@ -32090,7 +32350,7 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
 Call a method to send a direct message.
 
-Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to send a direct message to two people.
+Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to send a direct message to two people.
 
 ```
    // Define the FeedItemInput object to pass to postFeedElement
@@ -32107,12 +32367,6 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
    messageBodyInput.messageSegments.add(textSegmentInput);
@@ -32145,6 +32399,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    feedElementCapabilitiesInput.directMessage = dmInput;
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    feedItemInput.capabilities = feedElementCapabilitiesInput;
 
    // Post the feed item.
@@ -32159,7 +32419,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Call a method to post a comment.
 
-Call `[postCommentToFeedElement(communityId, feedElementId, text)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_1)` to post a plain text comment to a feed
+Call `[postCommentToFeedElement(communityId, feedElementId, text)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_1)` to post a plain text comment to a feed
 element.
 
 ```
@@ -32174,8 +32434,8 @@ element.
 Make call or use the ConnectApiHelper repository to post a comment with a mention.
 
 [You can post comments with mentions two ways. Use the ConnectApiHelper repository on GitHub to write a single line of code, or use](https://github.com/forcedotcom/ConnectApiHelper)
-this example, which calls `[postCommentToFeedElement(communityId, feedElementId, comment,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
-`[feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` .
+this example, which calls `[postCommentToFeedElement(communityId, feedElementId, comment,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
+`[feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` .
 
 ```
    String communityId = null;
@@ -32192,12 +32452,6 @@ this example, which calls `[postCommentToFeedElement(communityId, feedElementId,
 
    messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    textSegmentInput.text = 'Does anyone in this group have an idea? ';
 
    messageBodyInput.messageSegments.add(textSegmentInput);
@@ -32218,9 +32472,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Make a call to post a comment with an already uploaded file.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 To post a comment and attach an existing file (already uploaded to Salesforce) to the comment, create a
-`ConnectApi.CommentInput` object to pass to `[postCommentToFeedElement(communityId, feedElementId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
-`[comment, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` .
+`ConnectApi.CommentInput` object to pass to `[postCommentToFeedElement(communityId, feedElementId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
+`[comment, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` .
 
 ```
    String feedElementId = '0D5D0000000KtW3';
@@ -32265,12 +32522,9 @@ To post a comment and attach an existing file (already uploaded to Salesforce) t
 
 Call a method to post a comment with a new file.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 To post a comment and upload and attach a new file to the comment, create a `ConnectApi.CommentInput` object and a
-`ConnectApi.BinaryInput` object to pass to the `[postCommentToFeedElement(communityId, feedElementId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
-`[comment, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` method.
+`ConnectApi.BinaryInput` object to pass to the `[postCommentToFeedElement(communityId, feedElementId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
+`[comment, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` method.
 
 ```
    String feedElementId = '0D5D0000000KtW3';
@@ -32293,6 +32547,12 @@ To post a comment and upload and attach a new file to the comment, create a `Con
 
    ConnectApi.CommentCapabilitiesInput();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    ConnectApi.ContentCapabilityInput contentCapabilityInput = new
 
    ConnectApi.ContentCapabilityInput();
@@ -32324,8 +32584,8 @@ To post a comment and upload and attach a new file to the comment, create a `Con
 Make a call or use the ConnectApiHelper repository to post a comment with an already uploaded, inline image.
 
 [You can post rich-text comments with inline images and mentions two ways. Use the ConnectApiHelper repository on GitHub to write](https://github.com/forcedotcom/ConnectApiHelper)
-a single line of code, or use this example, which calls `[postCommentToFeedElement(communityId, feedElementId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
-`[comment, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` . In this example, the image file is existing content that has already been uploaded to
+a single line of code, or use this example, which calls `[postCommentToFeedElement(communityId, feedElementId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
+`[comment, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` . In this example, the image file is existing content that has already been uploaded to
 Salesforce.
 
 ```
@@ -32345,12 +32605,6 @@ Salesforce.
 
    ConnectApi.MentionSegmentInput mentionSegment;
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    ConnectApi.MarkupBeginSegmentInput markupBeginSegment;
 
    ConnectApi.MarkupEndSegmentInput markupEndSegment;
@@ -32377,6 +32631,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    messageInput.messageSegments.add(mentionSegment);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    textSegment = new ConnectApi.TextSegmentInput();
 
    textSegment.text = '!';
@@ -32407,8 +32667,8 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Call a method to post a comment with a code block.
 
-This example calls `[postCommentToFeedElement(communityId, feedElementId, comment,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
-`[feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` to post a comment with a code block.
+This example calls `[postCommentToFeedElement(communityId, feedElementId, comment,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)`
+`[feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postCommentToFeedElement_2)` to post a comment with a code block.
 
 ```
    String communityId = null;
@@ -32429,12 +32689,6 @@ This example calls `[postCommentToFeedElement(communityId, feedElementId, commen
 
    messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
 
    markupBeginSegment.markupType = ConnectApi.MarkupType.Code;
@@ -32457,13 +32711,16 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    ConnectApi.ChatterFeeds.postCommentToFeedElement(communityId, feedElementId, input, null);
 
-###### Edit a Comment
-
 ```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+###### Edit a Comment
 
 Call a method to edit a comment.
 
-Call `[updateComment(communityId, commentId, comment)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updateComment)` to edit a comment.
+Call `[updateComment(communityId, commentId, comment)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updateComment)` to edit a comment.
 
 ```
    String commentId;
@@ -32518,12 +32775,6 @@ Call `[updateComment(communityId, commentId, comment)](https://developer.salesfo
 
       messageBodyInput.messageSegments.add(textSegmentInput);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       commentInput.body = messageBodyInput;
 
       ConnectApi.Comment editedComment = ConnectApi.ChatterFeeds.updateComment(communityId,
@@ -32538,7 +32789,10 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Call a method to follow a record.
 
-Call `[follow(communityId, userId, subjectId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_follow)` to follow a record.
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+Call `[follow(communityId, userId, subjectId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_follow)` to follow a record.
 
 ```
    ChatterUsers.ConnectApi.Subscription subscriptionToRecord =
@@ -32555,7 +32809,7 @@ Call a method to stop following a record.
 
 When you follow a record such as a user, the call to `ConnectApi.ChatterUsers.follow` returns a
 `ConnectApi.Subscription` object. To unfollow a record, pass the `id` property of that object to
-`[deleteSubscription(communityId, subscriptionId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Chatter_static_methods.htm#apex_ConnectAPI_Chatter_deleteSubscription)` .
+`[deleteSubscription(communityId, subscriptionId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Chatter_static_methods.htm#apex_ConnectAPI_Chatter_deleteSubscription)` .
 
 ```
    ConnectApi.Chatter.deleteSubscription(null, '0E8RR0000004CnK0AU');
@@ -32564,11 +32818,13 @@ When you follow a record such as a user, the call to `ConnectApi.ChatterUsers.fo
 
 SEE ALSO:
 
-###### Follow a Record Get a Repository
+Follow a Record
+
+###### Get a Repository
 
 Call a method to get a repository.
 
-Call `[getRepository(repositoryId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepository_1)` to get a repository.
+Call `[getRepository(repositoryId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepository_1)` to get a repository.
 
 ```
    final string repositoryId = '0XCxx0000000123GAA';
@@ -32583,7 +32839,7 @@ Call `[getRepository(repositoryId)](https://developer.salesforce.com/docs/atlas.
 
 Call a method to get all repositories.
 
-Call `[getRepositories()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositories_1)` to get all repositories and get the first SharePoint online repository found.
+Call `[getRepositories()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositories_1)` to get all repositories and get the first SharePoint online repository found.
 
 ```
    final string sharePointOnlineProviderType ='ContentHubSharepointOffice365';
@@ -32596,12 +32852,6 @@ Call `[getRepositories()](https://developer.salesforce.com/docs/atlas.en-us.258.
 
    for(ConnectApi.ContentHubRepository repository : repositoryCollection.repositories){
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
      if(sharePointOnlineProviderType.equalsIgnoreCase(repository.providerType.type)){
 
        sharePointOnlineRepository = repository;
@@ -32618,7 +32868,10 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Call a method to get allowed item types.
 
-Call `[getAllowedItemTypes(repositoryId, repositoryFolderId, filter)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getAllowedItemTypes_2)` with a `filter` of `FilesOnly`
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+Call `[getAllowedItemTypes(repositoryId, repositoryFolderId, filter)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getAllowedItemTypes_2)` with a `filter` of `FilesOnly`
 to get the first `ConnectApi.ContentHubItemTypeSummary.id` of a file. The context user can create allowed files in a
 repository folder in the external system.
 
@@ -32649,7 +32902,7 @@ repository folder in the external system.
 
 Call a method to get all supported preview formats and their respective URLs.
 
-Call `[getPreviews(repositoryId, repositoryFileId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getPreviews_1)` to get all supported preview formats and their respective URLs
+Call `[getPreviews(repositoryId, repositoryFileId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getPreviews_1)` to get all supported preview formats and their respective URLs
 and number of renditions. For each supported preview format, we show every rendition URL available.
 
 ```
@@ -32683,10 +32936,7 @@ and number of renditions. For each supported preview format, we show every rendi
 
 Call a method to get a file preview.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Call `[getFilePreview(repositoryId, repositoryFileId, formatType)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getFilePreview_1)` with a `formatType` of `Thumbnail`
+Call `[getFilePreview(repositoryId, repositoryFileId, formatType)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getFilePreview_1)` with a `formatType` of `Thumbnail`
 to get the thumbnail format preview along with its respective URL and number of thumbnail renditions. For each thumbnail format, we
 show every rendition URL available.
 
@@ -32711,6 +32961,12 @@ show every rendition URL available.
 
        System.debug('-----> Rendition URL: ' + filePreviewUrl.previewUrl);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
        }
 
    }
@@ -32721,7 +32977,7 @@ show every rendition URL available.
 
 Call a method to get a collection of repository folder items.
 
-Call `[getRepositoryFolderItems(repositoryId, repositoryFolderId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositoryFolderItems_1)` to get the collection of items in a
+Call `[getRepositoryFolderItems(repositoryId, repositoryFolderId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositoryFolderItems_1)` to get the collection of items in a
 repository folder. For files, we show the file’s name, size, external URL, and download URL. For folders, we show the folder’s name,
 description, and external URL.
 
@@ -32770,7 +33026,7 @@ description, and external URL.
 
 Call a method to get a repository folder.
 
-Call `[getRepositoryFolder(repositoryId, repositoryFolderId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositoryFolder_3)` to get a repository folder.
+Call `[getRepositoryFolder(repositoryId, repositoryFolderId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositoryFolder_3)` to get a repository folder.
 
 ```
    final String gDriveRepositoryId = '0XCxx00000000ODGAY', gDriveFolderId =
@@ -32781,12 +33037,6 @@ Call `[getRepositoryFolder(repositoryId, repositoryFolderId)](https://developer.
 
    ConnectApi.ContentHub.getRepositoryFolder(gDriveRepositoryId, gDriveFolderId);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    System.debug(String.format('Folder - name: \'\'{0}\'\', description: \'\'{1}\'\', external
 
     URL: \'\'{2}\'\', folder items URL: \'\'{3}\'\'',
@@ -32801,7 +33051,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Call a method to get a repository file without permission information.
 
-Call `[getRepositoryFile(repositoryId, repositoryFileId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositoryFile_3)` to get a repository file without permissions information.
+Call `[getRepositoryFile(repositoryId, repositoryFileId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositoryFile_3)` to get a repository file without permissions information.
 
 ```
    final String gDriveRepositoryId = '0XCxx00000000ODGAY', gDriveFileId =
@@ -32810,6 +33060,12 @@ Call `[getRepositoryFile(repositoryId, repositoryFileId)](https://developer.sale
 
    final ConnectApi.RepositoryFileDetail file =
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    ConnectApi.ContentHub.getRepositoryFile(gDriveRepositoryId, gDriveFileId);
 
    System.debug(String.format('File - name: \'\'{0}\'\', size: {1}, external URL: \'\'{2}\'\',
@@ -32826,7 +33082,7 @@ Call `[getRepositoryFile(repositoryId, repositoryFileId)](https://developer.sale
 
 Call a method to get a repository file with permission information.
 
-Call `[getRepositoryFile(repositoryId, repositoryFileId, includeExternalFilePermissionsInfo)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositoryFile_4)`
+Call `[getRepositoryFile(repositoryId, repositoryFileId, includeExternalFilePermissionsInfo)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_getRepositoryFile_4)`
 to get a repository file with permissions information.
 
 ```
@@ -32876,16 +33132,13 @@ to get a repository file with permissions information.
 
    }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 ###### Create a Repository File Without Content (Metadata Only)
+
+```
 
 Call a method to create a file without binary content (metadata only) in a Google Drive repository folder.
 
-Call `[addRepositoryItem(repositoryId, repositoryFolderId, file)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_addRepositoryItem_5)` to create a file without binary content
+Call `[addRepositoryItem(repositoryId, repositoryFolderId, file)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_addRepositoryItem_5)` to create a file without binary content
 (metadata only) in a Google Drive repository folder. After the file is created, we show the file’s ID, name, description, external URL, and
 download URL.
 
@@ -32900,6 +33153,12 @@ download URL.
 
    for creation/update
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    newItem.fields = new List<ConnectApi.ContentHubFieldValueInput>();
 
    //Metadata: name field
@@ -32944,15 +33203,15 @@ download URL.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: ConnectApi.ContentHubItemInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_content_hub_item.htm)
+_Apex Reference Guide_ [: ConnectApi.ContentHubItemInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_content_hub_item.htm)
 
-_Apex Reference Guide_ [: ConnectApi.ContentHubFieldValueInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_content_hub_field_value.htm)
+_Apex Reference Guide_ [: ConnectApi.ContentHubFieldValueInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_content_hub_field_value.htm)
 
 ###### Create a Repository File with Content
 
 Call a method to create a file with binary content in a Google Drive repository folder.
 
-Call `[addRepositoryItem(repositoryId, repositoryFolderId, file, filedata)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_addRepositoryItem_7)` to create a file with binary
+Call `[addRepositoryItem(repositoryId, repositoryFolderId, file, filedata)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_addRepositoryItem_7)` to create a file with binary
 content in a Google Drive repository folder. After the file is created, we show the file’s ID, name, description, external URL, and download
 URL.
 
@@ -32963,12 +33222,6 @@ URL.
 
    final ConnectApi.ContentHubItemInput newItem = new ConnectApi.ContentHubItemInput();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    newItem.itemTypeId = 'document'; //see getAllowedTypes for any file item types available
 
    for creation/update
@@ -32991,6 +33244,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    //Metadata: description field
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    final ConnectApi.ContentHubFieldValueInput fieldValueInputDesc = new
 
    ConnectApi.ContentHubFieldValueInput();
@@ -33031,17 +33290,17 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: ConnectApi.ContentHubItemInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_content_hub_item.htm)
+_Apex Reference Guide_ [: ConnectApi.ContentHubItemInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_content_hub_item.htm)
 
-_Apex Reference Guide_ [: ConnectApi.ContentHubFieldValueInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_content_hub_field_value.htm)
+_Apex Reference Guide_ [: ConnectApi.ContentHubFieldValueInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_content_hub_field_value.htm)
 
-_Apex Reference Guide_ [: ConnectApi.BinaryInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_binary.htm)
+_Apex Reference Guide_ [: ConnectApi.BinaryInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_binary.htm)
 
 ###### Update a Repository File Without Content (Metadata Only)
 
 Call a method to update the metadata of a repository file.
 
-Call `[updateRepositoryFile(repositoryId, repositoryFileId, file)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_updateRepositoryFile_7)` to update the metadata of a file in a
+Call `[updateRepositoryFile(repositoryId, repositoryFileId, file)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_updateRepositoryFile_7)` to update the metadata of a file in a
 repository folder. After the file is updated, we show the file’s ID, name, description, external URL, download URL.
 
 ```
@@ -33057,12 +33316,6 @@ repository folder. After the file is updated, we show the file’s ID, name, des
 
     for creation/update
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    updatedItem.fields = new List<ConnectApi.ContentHubFieldValueInput>();
 
    //Metadata: name field
@@ -33085,6 +33338,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
     \'\'{2}\'\',\n external URL: \'\'{3}\'\', download URL: \'\'{4}\'\'', new String[]{
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    updatedFile.id, updatedFile.name, updatedFile.description, updatedFile.externalDocumentUrl,
 
     updatedFile.downloadUrl}));
@@ -33093,15 +33352,15 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: ConnectApi.ContentHubItemInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_content_hub_item.htm)
+_Apex Reference Guide_ [: ConnectApi.ContentHubItemInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_content_hub_item.htm)
 
-_Apex Reference Guide_ [: ConnectApi.ContentHubFieldValueInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_content_hub_field_value.htm)
+_Apex Reference Guide_ [: ConnectApi.ContentHubFieldValueInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_content_hub_field_value.htm)
 
 ###### Update a Repository File with Content
 
 Call a method to update a repository file with content.
 
-Call `[updateRepositoryFile(repositoryId, repositoryFileId, file, fileData)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_updateRepositoryFile_8)` to update the content
+Call `[updateRepositoryFile(repositoryId, repositoryFileId, file, fileData)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ContentHub_static_methods.htm#apex_ConnectAPI_ContentHub_updateRepositoryFile_8)` to update the content
 and metadata of a file in a repository. After the file is updated, we show the file’s ID, name, description, external URL, and download URL.
 
 ```
@@ -33149,12 +33408,6 @@ and metadata of a file in a repository. After the file is updated, we show the f
 
     \'\'{2}\'\',\n external URL: \'\'{3}\'\', download URL: \'\'{4}\'\'', new String[]{
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    updatedFile.id, updatedFile.name, updatedFile.description, updatedFile.externalDocumentUrl,
 
     updatedFile.downloadUrl}));
@@ -33163,17 +33416,20 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: ConnectApi.ContentHubItemInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_content_hub_item.htm)
+_Apex Reference Guide_ [: ConnectApi.ContentHubItemInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_content_hub_item.htm)
 
-_Apex Reference Guide_ [: ConnectApi.ContentHubFieldValueInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_content_hub_field_value.htm)
+_Apex Reference Guide_ [: ConnectApi.ContentHubFieldValueInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_content_hub_field_value.htm)
 
-_Apex Reference Guide_ [: ConnectApi.BinaryInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_binary.htm)
+_Apex Reference Guide_ [: ConnectApi.BinaryInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_binary.htm)
 
 ###### Get an Authentication URL
 
 Call a method to get an authentication URL.
 
-Call `[getOAuthCredentialAuthUrl(requestBody)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_NamedCredentials_static_methods.htm#apex_ConnectAPI_NamedCredentials_getOAuthCredentialAuthUrl_1)` to retrieve the URL that a user must visit to begin an authentication
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+Call `[getOAuthCredentialAuthUrl(requestBody)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_NamedCredentials_static_methods.htm#apex_ConnectAPI_NamedCredentials_getOAuthCredentialAuthUrl_1)` to retrieve the URL that a user must visit to begin an authentication
 flow, ultimately returning authentication tokens to Salesforce. Accepts input parameters representing a specific external credential and,
 optionally, a named principal. Use this method as part of building a customized or branded user interface to help users initiate
 authentication.
@@ -33199,14 +33455,14 @@ authentication.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: NamedCredentials Methods](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_NamedCredentials_static_methods.htm)
+_Apex Reference Guide_ [: NamedCredentials Methods](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_NamedCredentials_static_methods.htm)
 
 ###### Resolve a Prompt Template
 
 Call a method to resolve a prompt template.
 
-Call `[generateMessagesForPromptTemplate(promptTemplateDevName,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_EinsteinLLM_static_methods.htm)`
-`[promptTemplateGenerationsInput)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_EinsteinLLM_static_methods.htm)` to resolve a prompt template.
+Call `[generateMessagesForPromptTemplate(promptTemplateDevName,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_EinsteinLLM_static_methods.htm)`
+`[promptTemplateGenerationsInput)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_EinsteinLLM_static_methods.htm)` to resolve a prompt template.
 
 To resolve a prompt template, create an input object, build input maps, configure additional settings, call the service, and handle the
 resolution and response.
@@ -33222,9 +33478,6 @@ it to the `additionalConfig` property of the input object.
 
 To generate messages based on the prompt template and input parameters, call the `generateMessagesForPromptTemplate`
 method of the `ConnectApi.EinsteinLLM` class with the prompt template ID and the input object.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 To access the prompt resolution, use `generationsOutput.prompt` and, to access the first generated response, use
 `generationsOutput.generations[0].text` .
@@ -33244,6 +33497,12 @@ Resolve a Flex Prompt Template with Apex and Flow Resources
 
    Map<String,ConnectApi.WrappedValue> valueMap = new
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    Map<String,ConnectApi.WrappedValue>();
 
    Map<String, String> account1RecordIdMap = new Map<String, String>();
@@ -33302,12 +33561,6 @@ Resolve a Flex Prompt Template with Apex and Flow Resources
 
    ConnectApi.EinsteinLLM.generateMessagesForPromptTemplate('0hfxx0000000KQ9AAM',
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    promptGenerationsInput);
 
    // Consume resolution
@@ -33327,6 +33580,12 @@ Resolve a Sales Email Prompt Template
 
    ConnectApi.EinsteinPromptTemplateGenerationsInput promptGenerationsInput = new
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    ConnectApi.EinsteinPromptTemplateGenerationsInput();
 
    promptGenerationsInput.isPreview = false;
@@ -33381,9 +33640,6 @@ Resolve a Sales Email Prompt Template
 
 ```
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 Resolve a Field Generation Prompt Template
 
 ```
@@ -33409,6 +33665,12 @@ Resolve a Field Generation Prompt Template
 
    valueMap.put('Input:Account', relatedEntityWrappedValue);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    promptGenerationsInput.inputParams = valueMap;
 
    // Set additional configuration values
@@ -33462,12 +33724,6 @@ Resolve a Summary Prompt Template
 
    // Set additional configuration values
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    promptGenerationsInput.additionalConfig = new ConnectApi.EinsteinLlmAdditionalConfigInput();
 
    promptGenerationsInput.additionalConfig.applicationName =
@@ -33492,15 +33748,18 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Create a cart with a cart item using custom fields for a buyer or guest user in your Commerce store.
 
-[Custom fields are optional and must be previously defined for the WebCart and CartItem sObjects. See Create Custom Fields. Field-level](https://help.salesforce.com/s/articleView?id=sf.adding_fields.htm&language=en_US)
-[security rules from the shopper profile are applied to the WebCart and CartItem custom fields. The rules are applied for registered](https://help.salesforce.com/s/articleView?id=sf.comm_create_shopper_profile.htm&type=5&language=en_US)
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+[Custom fields are optional and must be previously defined for the WebCart and CartItem sObjects. See Create Custom Fields. Field-level](https://help.salesforce.com/s/articleView?id=platform.adding_fields.htm&type=5&language=en_US)
+[security rules from the shopper profile are applied to the WebCart and CartItem custom fields. The rules are applied for registered](https://help.salesforce.com/s/articleView?id=commerce.comm_create_shopper_profile.htm&type=5&language=en_US)
 shoppers and for the guest shopper profile.
 
-To create a cart with custom fields, call `[createCart(webstoreId, cartInput)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_Commerce_createCart_1)` . Specify your custom fields using the
+To create a cart with custom fields, call `[createCart(webstoreId, cartInput)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_Commerce_createCart_1)` . Specify your custom fields using the
 `customFields` property of `cartInput` . The type for `customFields` is `List<SObject>`, where the sObject is a WebCart.
 
-Then, to add an item to the cart, call `[addItemToCart(webstoreId, effectiveAccountId, activeCartOrId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_addItemToCart_9)`
-`[cartItemInput, currencyIsoCode)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_addItemToCart_9)` . You can specify custom fields using the `customFields` property of
+Then, to add an item to the cart, call `[addItemToCart(webstoreId, effectiveAccountId, activeCartOrId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_addItemToCart_9)`
+`[cartItemInput, currencyIsoCode)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_addItemToCart_9)` . You can specify custom fields using the `customFields` property of
 `cartItemInput` . Again, the type of `customFields` is `List<SObject>`, but the sObject must be a CartItem.
 
 [In this scenario we assume that further customization sets a custom field within the Cart Calculate API flow onto the cart item for further](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/cart-calculate-api.html)
@@ -33547,12 +33806,6 @@ use.
 
       cartItemList.add(cartItem);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       final ConnectApi.CartItemInput input = new ConnectApi.CartItemInput();
 
       input.productId = productId;
@@ -33581,13 +33834,16 @@ Apex Developer Guide Using Salesforce Features with Apex
 
       String valueForCustomization = cartItemResult.additionalCustomField__c;
 
-##### Connect in Apex Features
-
 ```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+##### Connect in Apex Features
 
 This topic describes which classes and methods to use to work with common Connect in Apex features.
 
-[You can also go directly to the ConnectApi Namespace reference content.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_connect_api.htm)
+[You can also go directly to the ConnectApi Namespace reference content.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_connect_api.htm)
 
 ###### Working with Action Links
 
@@ -33618,30 +33874,30 @@ API call to Salesforce or to an external server. An action link includes a URL a
 header information, such as an OAuth token for authentication. Use action links to integrate Salesforce and third-party services into the
 feed so that users can drive productivity and accelerate innovation.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 Workflow
 
 This feed item contains one action link group with one visible action link, **Join** .
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 The workflow to create and post action links with a feed element:
 
 **1.** (Optional) Create an action link template.
 
-**2.** Call `[ConnectApi.ActionLinks.createActionLinkGroupDefinition(communityId, actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)`
+**2.** Call `[ConnectApi.ActionLinks.createActionLinkGroupDefinition(communityId, actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)`
 
 to define an action link group that contains at least one action link.
 
-**3.** Call `[ConnectApi.ChatterFeeds.postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed element
+**3.** Call `[ConnectApi.ChatterFeeds.postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed element
 and associate the action link with it.
 
 Use these methods to work with action links.
 
 **ConnectApi Method** **Task**
 
-`[ActionLinks.createActionLinkGroupDefinition](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)` Create an action link group definition. To associate an action link
-`[(communityId, actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)` group with a feed element, first create an action link group
+`[ActionLinks.createActionLinkGroupDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)` Create an action link group definition. To associate an action link
+`[(communityId, actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)` group with a feed element, first create an action link group
 
 ```
 ActionLinks.deleteActionLinkGroupDefinition(communityId,
@@ -33657,14 +33913,25 @@ actionLinkGroupId)
 definition. Then post a feed element with an associated actions
 capability.
 
-`[ChatterFeeds.postFeedElement(communityId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` Post a feed element with an associated actions capability. Associate
-`[feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` up to 10 action link groups with a feed element.
+`[ChatterFeeds.postFeedElement(communityId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` Post a feed element with an associated actions capability. Associate
+`[feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` up to 10 action link groups with a feed element.
 
-`[ActionLinks.getActionLink(communityId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLink_1)` Get information about an action link, including state for the context
-`[actionLinkId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLink_1)` user.
+`[ActionLinks.getActionLink(communityId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLink_1)` Get information about an action link, including state for the context
+`[actionLinkId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLink_1)` user.
 
-`[ActionLinks.getActionLinkGroup(communityId,](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLinkGroup_1)` Get information about an action link group including state for the
-`[actionLinkGroupId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLinkGroup_1)` context user.
+`[ActionLinks.getActionLinkGroup(communityId,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLinkGroup_1)` Get information about an action link group including state for the
+`[actionLinkGroupId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLinkGroup_1)` context user.
+
+```
+ActionLinks.getActionLinkDiagnosticInfo(communityId,
+
+actionLinkId)
+
+```
+
+Get diagnostic information returned when an action link executes.
+Diagnostic information is given only for users who can access the
+action link.
 
 
 Apex Developer Guide Using Salesforce Features with Apex
@@ -33672,17 +33939,9 @@ Apex Developer Guide Using Salesforce Features with Apex
 **ConnectApi Method** **Task**
 
 ```
-ActionLinks.getActionLinkDiagnosticInfo(communityId,
-
-actionLinkId)
-
 ChatterFeeds.getFeedElementsFromFeed()
 
 ```
-
-Get diagnostic information returned when an action link executes.
-Diagnostic information is given only for users who can access the
-action link.
 
 Get the feed elements from a specified feed type. If a feed element
 has action links associated with it, the action links data is returned
@@ -33714,14 +33973,14 @@ The workflow to create and post action links with a feed element:
 
 **1.** (Optional) Create an action link template.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**2.** Call `[ConnectApi.ActionLinks.createActionLinkGroupDefinition(communityId, actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)`
+**2.** Call `[ConnectApi.ActionLinks.createActionLinkGroupDefinition(communityId, actionLinkGroup)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_createActionLinkGroupDefinition_1)`
 
 to define an action link group that contains at least one action link.
 
-**3.** Call `[ConnectApi.ChatterFeeds.postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed element
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+**3.** Call `[ConnectApi.ChatterFeeds.postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed element
 and associate the action link with it.
 
 **Action Link Templates**
@@ -33780,14 +34039,14 @@ Salesforce automatically authenticates these resources.
 
 Don’t use these resources for sensitive operations.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 **Security**
 
 **HTTPS**
 The action URL in an action link must begin with `https://` or be a relative URL that matches one of the rules in the previous
 Authentication section.
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 **Encryption**
 API details are stored with encryption, and obfuscated for clients.
@@ -33802,19 +34061,19 @@ Only users with Customize Application user permission can create, edit, delete, 
 
 Don’t store sensitive information in templates. Use binding variables to add sensitive information when you instantiate the action
 link group. After the action link group is instantiated, the values are stored in an encrypted format. See Define Binding Variables in
-[Design Action Link Templates.](https://help.salesforce.com/s/articleView?id=sf.action_link_group_template_design.htm&language=en_US)
+[Design Action Link Templates.](https://help.salesforce.com/s/articleView?id=platform.action_link_group_template_design.htm&type=5&language=en_US)
 
-**Connected Apps**
-When creating action links via a connected app, it's a good idea to use a connected app with a consumer key that never leaves your
-control. The connected app is used for server-to-server communication and is not compiled into mobile apps that could be decompiled.
+**Client Apps**
+When creating action links via a client app, it's a good idea to use a client app with a consumer key that never leaves your control.
+The client app is used for server-to-server communication and is not compiled into mobile apps that could be decompiled.
 
 **Expiration Date**
 When you define an action link group, specify an expiration date ( `expirationDate` ). After that date, the action links in the group
 can’t be executed and disappear from the feed. If your action link group definition includes an OAuth token, set the group’s expiration
 date to the same value as the expiration date of the OAuth token.
 
-[Action link templates use a slightly different mechanism for excluding a user. See Set the Action Link Group Expiration Time in Design](https://help.salesforce.com/s/articleView?id=sf.action_link_group_template_design.htm&language=en_US)
-[Action Link Templates.](https://help.salesforce.com/s/articleView?id=sf.action_link_group_template_design.htm&language=en_US)
+[Action link templates use a slightly different mechanism for excluding a user. See Set the Action Link Group Expiration Time in Design](https://help.salesforce.com/s/articleView?id=platform.action_link_group_template_design.htm&type=5&language=en_US)
+[Action Link Templates.](https://help.salesforce.com/s/articleView?id=platform.action_link_group_template_design.htm&type=5&language=en_US)
 
 **Exclude a User or Specify a User**
 Use the `excludeUserId` property of the action link definition input to exclude a single user from executing an action.
@@ -33823,8 +34082,8 @@ Use the `userId` property of the action link definition input to specify the ID 
 don’t specify a `userId` property or if you pass `null`, any user can execute the action. You can’t specify both `excludeUserId`
 and `userId` for an action link
 
-[Action link templates use a slightly different mechanism for excluding a user. See Set Who Can See the Action Link in Design Action](https://help.salesforce.com/s/articleView?id=sf.action_link_group_template_design.htm&language=en_US)
-[Link Templates.](https://help.salesforce.com/s/articleView?id=sf.action_link_group_template_design.htm&language=en_US)
+[Action link templates use a slightly different mechanism for excluding a user. See Set Who Can See the Action Link in Design Action](https://help.salesforce.com/s/articleView?id=platform.action_link_group_template_design.htm&type=5&language=en_US)
+[Link Templates.](https://help.salesforce.com/s/articleView?id=platform.action_link_group_template_design.htm&type=5&language=en_US)
 
 **Read, Modify, or Delete an Action Link Group Definition**
 There are two views of an action link and an action link group: the definition, and the context user’s view. The definition includes
@@ -33833,27 +34092,26 @@ values reflect the state of the context user.
 
 Action link group definitions can contain sensitive information (such as OAuth tokens). For this reason, to read, modify, or delete a
 definition, the user must have created the definition or have View All Data permission. In addition, in Connect REST API, the request
-must be made via the same connected app that created the definition. In Apex, the call must be made from the same namespace
-that created the definition.
+must be made via the same client app that created the definition. In Apex, the call must be made from the same namespace that
+created the definition.
 
 **Context Variables**
 
 Use context variables to pass information about the user who executed the action link and the context in which it was invoked into the
 HTTP request made by invoking an action link. You can use context variables in the `actionUrl`, `headers`, and `requestBody`
 properties of the Action Link Definition Input request body or `ConnectApi.ActionLinkDefinitionInput` object. You can
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 also use context variables in the `Action URL`, `HTTP Request Body`, and `HTTP Headers` fields of action link templates. You
 can edit these fields, including adding and removing context variables, after a template is published.
 
 The context variables are:
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **Versioning**
 
 To avoid issues due to upgrades or changing functionality in your API, we recommend using versioning when defining action links. For
-example, the `actionUrl` property in the `[ConnectApi.ActionLinkDefinitionInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_action_link_definition.htm)` looks like
+example, the `actionUrl` property in the `[ConnectApi.ActionLinkDefinitionInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_action_link_definition.htm)` looks like
 `https://www.example.com/api/v1/exampleResource` .
 
 You can use templates to change the values of the `actionUrl`, `headers`, or `requestBody` properties, even after a template is
@@ -33862,21 +34120,21 @@ link template in Setup and even action links already associated with a feed elem
 binding variables to a published action link template.
 
 If your API isn’t versioned, you can use the `expirationDate` property of the
-`[ConnectApi.ActionLinkGroupDefinitionInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_action_link_group_definition.htm)` to avoid issues due to upgrades or changing functionality in your API.
-[See Set the Action Link Group Expiration Time in Design Action Link Templates.](https://help.salesforce.com/s/articleView?id=sf.action_link_group_template_design.htm&language=en_US)
+`[ConnectApi.ActionLinkGroupDefinitionInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_action_link_group_definition.htm)` to avoid issues due to upgrades or changing functionality in your API.
+[See Set the Action Link Group Expiration Time in Design Action Link Templates.](https://help.salesforce.com/s/articleView?id=platform.action_link_group_template_design.htm&type=5&language=en_US)
 
 **Errors**
 
 Use the Action Link Diagnostic Information method
-( `[ConnectApi.ActionLinks.getActionLinkDiagnosticInfo(communityId, actionLinkId)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLinkDiagnosticInfo_1)` ) to return
+( `[ConnectApi.ActionLinks.getActionLinkDiagnosticInfo(communityId, actionLinkId)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ActionLinks_static_methods.htm#apex_ConnectAPI_ActionLinks_getActionLinkDiagnosticInfo_1)` ) to return
 status codes and errors from executing `Api` action links. Diagnostic info is given only for users who can access the action link.
 
 **Localized Labels**
 
 Action links use a predefined set of localized labels specified in the `labelKey` property of the
-`[ConnectApi.ActionLinkDefinitionInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_action_link_definition.htm)` request body and the `Label` field of an action link template.
+`[ConnectApi.ActionLinkDefinitionInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_action_link_definition.htm)` request body and the `Label` field of an action link template.
 
-[For a list of labels, see Actions Links Labels.](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_appendices_action_links_labels.htm)
+[For a list of labels, see Actions Links Labels.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_appendices_action_links_labels.htm)
 
 
 Apex Developer Guide Using Salesforce Features with Apex
@@ -33957,14 +34215,14 @@ provide a consistent way to interact with the feed. Don’t inspect the feed ele
 a feed element. Inspect the capability, which tells you explicitly what’s available. Check for the presence of a capability to determine
 what a client can do to a feed element.
 
-The `[ConnectApi.FeedElement.capabilities](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_output_feed_element.htm)` property holds a set of capabilities.
+The `[ConnectApi.FeedElement.capabilities](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_output_feed_element.htm)` property holds a set of capabilities.
 
 A capability includes both an indication that a feature is possible and data associated with that feature. If a capability property exists on
 a feed element, that capability is available, even if there isn’t any data associated with the capability yet. For example, if the
 `chatterLikes` capability property exists on a feed element, the context user can like that feed element. If the capability property
 doesn’t exist on a feed element, it isn’t possible to like that feed element.
 
-When posting a feed element, specify its characteristics in the `[ConnectApi.FeedElementInput.capabilities](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_feed_element.htm)` property.
+When posting a feed element, specify its characteristics in the `[ConnectApi.FeedElementInput.capabilities](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_feed_element.htm)` property.
 
 How the Salesforce UI Displays Feed Items
 
@@ -33981,7 +34239,7 @@ the content of the layout pieces changes.
 
 Apex Developer Guide Using Salesforce Features with Apex
 
-The feed item ( `[ConnectApi.FeedItem](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_output_Feed_Item.htm)` ) layout elements are:
+The feed item ( `[ConnectApi.FeedItem](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_output_Feed_Item.htm)` ) layout elements are:
 
 **1.** Actor ( `ConnectApi.FeedItem.actor` )—A photo or icon of the creator of the feed item. (You can override the creator at
 the feed item type level. For example, the dashboard snapshot feed item type shows the dashboard as the creator.)
@@ -34144,11 +34402,11 @@ Use these methods to post feed items.
 
 Post a plain-text feed element.
 
-**`[postFeedElement(communityId, feedElement, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_2)`** **(version 35.0 and earlier)**
+**`[postFeedElement(communityId, feedElement, feedElementFileUpload)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_2)`** **(version 35.0 and earlier)**
 Post a rich-text feed element. Include mentions and hashtag topics, attach a file to a feed element, and associate action link groups
 with a feed element. You can also use this method to share a feed element and add a comment.
 
-**`[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)`** **(version 36.0 and later)**
+**`[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)`** **(version 36.0 and later)**
 Post a rich-text feed element. Include mentions and hashtag topics, attach already uploaded files to a feed element, and associate
 action link groups with a feed element. You can also use this method to share a feed element and add a comment.
 
@@ -34452,13 +34710,13 @@ UI is a record feed.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: ChatterFavorites Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFavorites_static_methods.htm)
+_Apex Reference Guide_ [: ChatterFavorites Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFavorites_static_methods.htm)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm)_ : ChatterFeeds Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm)_ : ChatterFeeds Class
 
-_Apex Reference Guide_ [: ConnectApi Output Classes](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_output.htm)
+_Apex Reference Guide_ [: ConnectApi Output Classes](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_output.htm)
 
-_Apex Reference Guide_ [: ConnectApi Input Classes](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input.htm)
+_Apex Reference Guide_ [: ConnectApi Input Classes](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input.htm)
 
 ###### Accessing ConnectApi Data in Experience Cloud Sites
 
@@ -34516,315 +34774,319 @@ that require Chatter doesn’t load correctly on public site pages.
 
 **•** `Announcements` methods:
 
-**–** `[getAnnouncements()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Announcements_static_methods.htm#apex_ConnectAPI_Announcements_getAnnouncements_1)`
+**–** `[getAnnouncements()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Announcements_static_methods.htm#apex_ConnectAPI_Announcements_getAnnouncements_1)`
 
 **•** `ChatterFeeds` methods:
 
-**–** `[getComment()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getComment)`
+**–** `[getComment()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getComment)`
 
-**–** `[getCommentInContext()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getCommentInContext_1)`
+**–** `[getCommentInContext()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getCommentInContext_1)`
 
-**–** `[getCommentsForFeedElement()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getCommentsForFeedElement_1)`
+**–** `[getCommentsForFeedElement()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getCommentsForFeedElement_1)`
 
-**–** `[getExtensions()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getExtensions_1)`
+**–** `[getExtensions()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getExtensions_1)`
 
-**–** `[getFeed()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeed)`
+**–** `[getFeed()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeed)`
 
-**–** `[getFeedElement()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElement_1)`
+**–** `[getFeedElement()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElement_1)`
 
-**–** `[getFeedElementBatch()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementBatch_1)`
+**–** `[getFeedElementBatch()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementBatch_1)`
 
-**–** `[getFeedElementPoll()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementPoll_1)`
+**–** `[getFeedElementPoll()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementPoll_1)`
 
-**–** `[getFeedElementsFromFeed()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_1)`
+**–** `[getFeedElementsFromFeed()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_1)`
 
-**–** `[getFeedElementsUpdatedSince()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsUpdatedSince_1)`
+**–** `[getFeedElementsUpdatedSince()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsUpdatedSince_1)`
 
-**–** `[getFeedWithFeedElements()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedWithFeedElements_5)`
+**–** `[getFeedWithFeedElements()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedWithFeedElements_5)`
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
-**–** `[getLike()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getLike)`
+**–** `[getLike()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getLike)`
 
-**–** `[getLikesForComment()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getLikesForComment)`
+**–** `[getLikesForComment()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getLikesForComment)`
 
-**–** `[getLikesForFeedElement()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getLikesForFeedElement_1)`
+**–** `[getLikesForFeedElement()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getLikesForFeedElement_1)`
 
-**–** `[getLinkMetadata()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getLinkMetadata_1)`
+**–** `[getLinkMetadata()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getLinkMetadata_1)`
 
-**–** `[getPinnedFeedElementsFromFeed()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getPinnedFeedElementsFromFeed_1)`
+**–** `[getPinnedFeedElementsFromFeed()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getPinnedFeedElementsFromFeed_1)`
 
-**–** `[getRelatedPosts()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getRelatedPosts_1)`
+**–** `[getRelatedPosts()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getRelatedPosts_1)`
 
-**–** `[getThreadsForFeedComment()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getThreadsForFeedComment_1)`
+**–** `[getThreadsForFeedComment()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getThreadsForFeedComment_1)`
 
-**–** `[getVotesForComment()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getVotesForComment_1)`
+**–** `[getVotesForComment()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getVotesForComment_1)`
 
-**–** `[getVotesForFeedElement()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getVotesForFeedElement_1)`
+**–** `[getVotesForFeedElement()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getVotesForFeedElement_1)`
 
-**–** `[searchFeedElements()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_searchFeedElements_1)`
+**–** `[searchFeedElements()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_searchFeedElements_1)`
 
-**–** `[searchFeedElementsInFeed()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_searchFeedElementsInFeed_1)`
+**–** `[searchFeedElementsInFeed()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_searchFeedElementsInFeed_1)`
 
-**–** `[updatePinnedFeedElements()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updatePinnedFeedElements_2)`
+**–** `[updatePinnedFeedElements()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_updatePinnedFeedElements_2)`
 
 **•** `ChatterGroups` methods:
 
-**–** `[getGroup()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterGroups_static_methods.htm#apex_ConnectAPI_ChatterGroups_getGroup)`
+**–** `[getGroup()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterGroups_static_methods.htm#apex_ConnectAPI_ChatterGroups_getGroup)`
 
-**–** `[getGroups()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterGroups_static_methods.htm#apex_ConnectAPI_ChatterGroups_getGroups)`
+**–** `[getGroups()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterGroups_static_methods.htm#apex_ConnectAPI_ChatterGroups_getGroups)`
 
-**–** `[getMembers()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterGroups_static_methods.htm#apex_ConnectAPI_ChatterGroups_getMembers)`
+**–** `[getMembers()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterGroups_static_methods.htm#apex_ConnectAPI_ChatterGroups_getMembers)`
 
-**–** `[searchGroups()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterGroups_static_methods.htm#apex_ConnectAPI_ChatterGroups_searchGroups)`
+**–** `[searchGroups()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterGroups_static_methods.htm#apex_ConnectAPI_ChatterGroups_searchGroups)`
 
 **•** `ChatterUsers` methods:
 
-**–** `[getFollowers()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getFollowers)`
+**–** `[getFollowers()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getFollowers)`
 
-**–** `[getFollowings()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getFollowings)`
+**–** `[getFollowings()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getFollowings)`
 
-**–** `[getReputation()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getReputation_1)`
+**–** `[getReputation()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getReputation_1)`
 
-**–** `[getUser()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getUser)`
+**–** `[getUser()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getUser)`
 
-**–** `[getUserBatch()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getUserBatch)`
+**–** `[getUserBatch()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getUserBatch)`
 
-**–** `[getUserGroups()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getGroups_3)`
+**–** `[getUserGroups()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getGroups_3)`
 
-**–** `[getUsers()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getUsers)`
+**–** `[getUsers()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_getUsers)`
 
-**–** `[searchUserGroupDetails()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_searchUserGroups_3)`
+**–** `[searchUserGroupDetails()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_searchUserGroups_3)`
 
-**–** `[searchUsers()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_searchUsers)`
+**–** `[searchUsers()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterUsers_static_methods.htm#apex_ConnectAPI_ChatterUsers_searchUsers)`
 
 **•** `CommerceCart` methods:
 
-**–** `[addItemsToCart()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_addItemsToCart_1)`
+**–** `[addItemsToCart()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_addItemsToCart_1)`
 
-**–** `[addItemToCart()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_addItemToCart_1)`
+**–** `[addItemToCart()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_addItemToCart_1)`
 
-**–** `[applyCartCoupon()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_applyCartCoupon_1)`
+**–** `[applyCartCoupon()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_applyCartCoupon_1)`
 
 **–** `[calculateCart()](https://developer.salesforce.com/docs/atlas.en-us.252.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_Commerce_calculateCart_1)`
 
 **–** `[cloneCart()](https://developer.salesforce.com/docs/atlas.en-us.246.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_Commerce_cloneCart_1)`
 
-**–** `[copyCartToWishlist()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_copyCartToWishlist_1)`
+**–** `[copyCartToWishlist()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_copyCartToWishlist_1)`
 
-**–** `[createCart()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_createCart_1)`
+**–** `[createCart()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_createCart_1)`
 
-**–** `[deleteCart()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteCart_1)`
+**–** `[deleteCart()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteCart_1)`
 
-**–** `[deleteCartCoupon()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteCartCoupon_1)`
+**–** `[deleteCartCoupon()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteCartCoupon_1)`
 
-**–** `[deleteCartItem()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteCartItem_1)`
+**–** `[deleteCartItem()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteCartItem_1)`
 
-**–** `[deleteInventoryReservation()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteInventoryReservation_1)` (developer preview)
+**–** `[deleteInventoryReservation()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_deleteInventoryReservation_1)` (developer preview)
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
-**–** `[evaluateShipping()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_evaluateShipping_1)`
+**–** `[evaluateShipping()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_evaluateShipping_1)`
 
-**–** `[evaluateTaxes()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_evaluateTaxes_1)`
+**–** `[evaluateTaxes()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_evaluateTaxes_1)`
 
-**–** `[getCartCoupons()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getCartCoupons_1)`
+**–** `[getCartCoupons()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getCartCoupons_1)`
 
-**–** `[getCartItems()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getCartItems_6)`
+**–** `[getCartItems()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getCartItems_6)`
 
-**–** `[getCartCompactSummary()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getCartCompactSummary_1)`
+**–** `[getCartCompactSummary()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getCartCompactSummary_1)`
 
-**–** `[getCartSummary()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getCartSummary_1)`
+**–** `[getCartSummary()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getCartSummary_1)`
 
-**–** `[getOrCreateActiveCartSummary()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getOrCreateActiveCartSummary_2)`
+**–** `[getOrCreateActiveCartSummary()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_getOrCreateActiveCartSummary_2)`
 
-**–** `[makeCartPrimary()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_makeCartPrimary_1)`
+**–** `[makeCartPrimary()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_makeCartPrimary_1)`
 
-**–** `[setCartMessagesVisibility()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_setCartMessagesVisibility_1)`
+**–** `[setCartMessagesVisibility()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_setCartMessagesVisibility_1)`
 
-**–** `[updateCartItem()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_updateCartItem_2)`
+**–** `[updateCartItem()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_updateCartItem_2)`
 
-**–** `[upsertInventoryReservation()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_upsertInventoryReservation_2.htm)` (developer preview)
+**–** `[upsertInventoryReservation()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCart_static_methods.htm#apex_ConnectAPI_CommerceCart_upsertInventoryReservation_2.htm)` (developer preview)
 
 **•** `CommerceCatalog` methods:
 
-**–** `[getCategoryMenuItems()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getCategoryMenuItems_1)`
+**–** `[getCategoryMenuItems()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getCategoryMenuItems_1)`
 
-**–** `[getProduct()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProduct_6)`
+**–** `[getProduct()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProduct_6)`
 
-**–** `[getProducts()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProducts_4)`
+**–** `[getProducts()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProducts_4)`
 
-**–** `[getProductCategory()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProductCategory_2)`
+**–** `[getProductCategory()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProductCategory_2)`
 
-**–** `[getProductCategoryChildren()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProductCategoryChildren_1)`
+**–** `[getProductCategoryChildren()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProductCategoryChildren_1)`
 
-**–** `[getProductCategoryPath()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getStorefrontCategoryPath_1)`
+**–** `[getProductCategoryPath()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getStorefrontCategoryPath_1)`
 
-**–** `[getProductChildCollection()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProductChildCollection_1)`
+**–** `[getProductChildCollection()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceCatalog_static_methods.htm#apex_ConnectAPI_CommerceCatalog_getProductChildCollection_5)`
 
 **•** `CommercePromotions` methods:
 
 **–** `decreaseRedemption()`
 
-**–** `[evaluate()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommercePromotions_static_methods.htm#apex_ConnectAPI_CommercePromotions_evaluate_1.xml)`
+**–** `[evaluate()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommercePromotions_static_methods.htm#apex_ConnectAPI_CommercePromotions_evaluate_1.xml)`
 
 **–** `increaseRedemption()`
 
 **•** `CommerceSearch` methods:
 
-**–** `[getSortRules()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceSearch_static_methods.htm#apex_ConnectAPI_CommerceSearch_getSortRules_1)`
+**–** `[getSortRules()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceSearch_static_methods.htm#apex_ConnectAPI_CommerceSearch_getSortRules_1)`
 
-**–** `[getSuggestions()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceSearch_static_methods.htm#apex_ConnectAPI_CommerceSearch_getSuggestions_1)`
+**–** `[getSuggestions()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceSearch_static_methods.htm#apex_ConnectAPI_CommerceSearch_getSuggestions_1)`
 
-**–** `[searchProducts()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceSearch_static_methods.htm#apex_ConnectAPI_CommerceSearch_productSearch_1)`
+**–** `[searchProducts()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceSearch_static_methods.htm#apex_ConnectAPI_CommerceSearch_productSearch_1)`
 
 **•** `CommerceStorePricing` methods:
 
-**–** `[getProductPrice()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceStorePricing_static_methods.htm#apex_ConnectAPI_CommerceStorePricing_getProductPrice_1)`
+**–** `[getProductPrice()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceStorePricing_static_methods.htm#apex_ConnectAPI_CommerceStorePricing_getProductPrice_1)`
 
-**–** `[getProductPrices()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CommerceStorePricing_static_methods.htm#apex_ConnectAPI_CommerceStorePricing_getProductPrices_1)`
+**–** `[getProductPrices()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CommerceStorePricing_static_methods.htm#apex_ConnectAPI_CommerceStorePricing_getProductPrices_1)`
 
 **•** `Communities` methods:
 
-**–** `[getCommunity()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Communities_static_methods.htm#apex_ConnectAPI_Communities_getCommunity)`
+**–** `[getCommunity()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Communities_static_methods.htm#apex_ConnectAPI_Communities_getCommunity)`
 
 **•** `EmployeeProfiles` methods:
 
-**–** `[getPhoto()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_EmployeeProfiles_static_methods.htm#apex_ConnectAPI_EmployeeProfiles_getPhoto_2)`
+**–** `[getPhoto()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_EmployeeProfiles_static_methods.htm#apex_ConnectAPI_EmployeeProfiles_getPhoto_2)`
 
 **•** `ExtendedCommerceDelivery` methods:
 
-**–** `[estimateDeliveryDate()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ExtendedCommerceDelivery_static_methods.htm#apex_ConnectAPI_ExtendedCommerceDelivery_estimateDeliveryDate_1)`
+**–** `[estimateDeliveryDate()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ExtendedCommerceDelivery_static_methods.htm#apex_ConnectAPI_ExtendedCommerceDelivery_estimateDeliveryDate_1)`
 
 **•** `Knowledge` methods:
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
-**–** `[getTopViewedArticlesForTopic()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Knowledge_static_methods.htm#apex_ConnectAPI_Knowledge_getTopicTopViewedArticles_1)`
+**–** `[getTopViewedArticlesForTopic()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Knowledge_static_methods.htm#apex_ConnectAPI_Knowledge_getTopicTopViewedArticles_1)`
 
-**–** `[getTrendingArticles()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Knowledge_static_methods.htm#apex_ConnectAPI_Knowledge_getTrendingArticles_1)`
+**–** `[getTrendingArticles()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Knowledge_static_methods.htm#apex_ConnectAPI_Knowledge_getTrendingArticles_1)`
 
-**–** `[getTrendingArticlesForTopic()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Knowledge_static_methods.htm#apex_ConnectAPI_Knowledge_getTrendingArticlesForTopic_1)`
+**–** `[getTrendingArticlesForTopic()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Knowledge_static_methods.htm#apex_ConnectAPI_Knowledge_getTrendingArticlesForTopic_1)`
 
 **•** `ManagedContent` methods:
 
-**–** `[getAllContent()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getAllContent_1)`
+**–** `[getAllContent()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getAllContent_1)`
 
-**–** `[getAllDeliveryChannels()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getAllDeliveryChannels_1)`
+**–** `[getAllDeliveryChannels()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getAllDeliveryChannels_1)`
 
-**–** `[getAllManagedContent()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getAllManagedContent_1)`
+**–** `[getAllManagedContent()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getAllManagedContent_1)`
 
-**–** `[getContentByContentKeys()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getContentByContentKeys_2)`
+**–** `[getContentByContentKeys()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getContentByContentKeys_2)`
 
-**–** `[getContentByIds()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getContentByIds_2)`
+**–** `[getContentByIds()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getContentByIds_2)`
 
-**–** `[getManagedContentByContentKeys()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByContentKeys_2)`
+**–** `[getManagedContentByContentKeys()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByContentKeys_2)`
 
-**–** `[getManagedContentByIds()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByIds_2)`
+**–** `[getManagedContentByIds()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByIds_2)`
 
-**–** `[getManagedContentByTopics()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByTopics_3)`
+**–** `[getManagedContentByTopics()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByTopics_3)`
 
-**–** `[getManagedContentByTopicsAndContentKeys()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByTopicsAndContentKeys_3a)`
+**–** `[getManagedContentByTopicsAndContentKeys()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByTopicsAndContentKeys_3a)`
 
-**–** `[getManagedContentByTopicsAndIds()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByTopicsAndIds_4)`
+**–** `[getManagedContentByTopicsAndIds()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContent_static_methods.htm#apex_ConnectAPI_ManagedContent_getManagedContentByTopicsAndIds_4)`
 
 **•** `ManagedContentDelivery` methods:
 
-**–** `[getChannel()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getChannel_1)`
+**–** `[getChannel()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getChannel_1)`
 
-**–** `[getChannels()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getChannels_1)`
+**–** `[getChannels()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getChannels_1)`
 
-**–** `[getCollectionItemsForChannel()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getCollectionItemsForChannel_1)`
+**–** `[getCollectionItemsForChannel()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getCollectionItemsForChannel_1)`
 
-**–** `[getCollectionItemsForSite()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getCollectionItemsForSite_2)`
+**–** `[getCollectionItemsForSite()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getCollectionItemsForSite_2)`
 
-**–** `[getManagedContentChannel()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentChannel_1)`
+**–** `[getManagedContentChannel()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentChannel_1)`
 
-**–** `[getManagedContentForChannel()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentForChannel_1)`
+**–** `[getManagedContentForChannel()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentForChannel_1)`
 
-**–** `[getManagedContentForSite()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentForSite_4)`
+**–** `[getManagedContentForSite()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentForSite_4)`
 
-**–** `[getManagedContentsForChannel()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentsForChannel_2)`
+**–** `[getManagedContentsForChannel()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentsForChannel_2)`
 
-**–** `[getManagedContentsForSite()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentsForSite_4)`
+**–** `[getManagedContentsForSite()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedContentDelivery_static_methods.htm#apex_ConnectAPI_ManagedContentDelivery_getManagedContentsForSite_4)`
 
 **•** `ManagedTopics` methods:
 
-**–** `[getManagedTopic()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedTopics_static_methods.htm#apex_ConnectAPI_ManagedTopics_getManagedTopic)`
+**–** `[getManagedTopic()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedTopics_static_methods.htm#apex_ConnectAPI_ManagedTopics_getManagedTopic)`
 
-**–** `[getManagedTopics()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ManagedTopics_static_methods.htm#apex_ConnectAPI_ManagedTopics_getManagedTopics_1)`
+**–** `[getManagedTopics()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ManagedTopics_static_methods.htm#apex_ConnectAPI_ManagedTopics_getManagedTopics_1)`
 
 **•** `MarketingIntegration` methods:
 
-**–** `[submitForm()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_MarketingIntegration_static_methods.htm#apex_ConnectAPI_MarketingIntegration_submitForm_1)`
+**–** `[submitForm()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_MarketingIntegration_static_methods.htm#apex_ConnectAPI_MarketingIntegration_submitForm_1)`
 
 **•** `NavigationMenu` methods:
 
-**–** `[getCommunityNavigationMenu()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_NavigationMenu_static_methods.htm#apex_ConnectAPI_NavigationMenu_getCommunityNavigationMenu_1)`
+**–** `[getCommunityNavigationMenu()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_NavigationMenu_static_methods.htm#apex_ConnectAPI_NavigationMenu_getCommunityNavigationMenu_1)`
 
 **•** `NextBestActions` methods:
 
-**–** `[executeStrategy()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_NextBestAction_static_methods.htm#apex_ConnectAPI_NextBestAction_executeStrategy_1)`
+**–** `[executeStrategy()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_NextBestAction_static_methods.htm#apex_ConnectAPI_NextBestAction_executeStrategy_1)`
 
-**–** `[setRecommendationReaction()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_NextBestAction_static_methods.htm#apex_ConnectAPI_NextBestAction_setRecommendationReaction_1)`
+**–** `[setRecommendationReaction()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_NextBestAction_static_methods.htm#apex_ConnectAPI_NextBestAction_setRecommendationReaction_1)`
 
 **•** `Personalization` methods:
 
-**–** `[getAudience()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getAudience_2)`
+**–** `[getAudience()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getAudience_2)`
 
-**–** `[getAudienceBatch()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getAudienceBatch_1)`
+**–** `[getAudienceBatch()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getAudienceBatch_1)`
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
-**–** `[getAudiences()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getAudiences_1)`
+**–** `[getAudiences()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getAudiences_1)`
 
-**–** `[getTarget()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getTarget_2)`
+**–** `[getTarget()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getTarget_2)`
 
-**–** `[getTargetBatch()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getTargetBatch_1)`
+**–** `[getTargetBatch()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getTargetBatch_1)`
 
-**–** `[getTargets()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getTargets_1)`
+**–** `[getTargets()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Personalization_static_methods.htm#apex_ConnectAPI_Personalization_getTargets_1)`
 
 **•** `Recommendations` methods:
 
-**–** `[getRecommendationsForUser()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Recommendations_static_methods.htm#apex_ConnectAPI_Recommendations_getRecommendationsForUser_1a)`
+**–** `[getRecommendationsForUser()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Recommendations_static_methods.htm#apex_ConnectAPI_Recommendations_getRecommendationsForUser_1a)`
 
 Note: Only article and file recommendations are available to guest users.
 
+**•** `RecordUi` methods.
+
+**–** `[getPicklistValuesByRecordType()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_RecordUi_static_methods.htm#apex_ConnectAPI_RecordUi_getPicklistValuesByRecordType_1)`
+
 **•** `Search` methods.
 
-**–** `[answer()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Search_static_methods.htm#apex_ConnectAPI_Search_answer_objects_1)`
+**–** `[answer()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Search_static_methods.htm#apex_ConnectAPI_Search_answer_objects_1)`
 
-**–** `[find()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Search_static_methods.htm#apex_ConnectAPI_Search_find_object_1)`
+**–** `[find()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Search_static_methods.htm#apex_ConnectAPI_Search_find_object_1)`
 
-**–** `[findAndGroup()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Search_static_methods.htm#apex_ConnectAPI_Search_find_objects_1)`
+**–** `[findAndGroup()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Search_static_methods.htm#apex_ConnectAPI_Search_find_objects_1)`
 
 **•** `Sites` methods:
 
-**–** `[searchSite()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Sites_static_methods.htm#apex_ConnectAPI_Sites_searchSite_1)`
+**–** `[searchSite()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Sites_static_methods.htm#apex_ConnectAPI_Sites_searchSite_1)`
 
 **•** `Topics` methods:
 
-**–** `[getGroupsRecentlyTalkingAboutTopic()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getGroupsRecentlyTalkingAboutTopic)`
+**–** `[getGroupsRecentlyTalkingAboutTopic()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getGroupsRecentlyTalkingAboutTopic)`
 
-**–** `[getRecentlyTalkingAboutTopicsForGroup()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getRecentlyTalkingAboutTopicsForGroup)`
+**–** `[getRecentlyTalkingAboutTopicsForGroup()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getRecentlyTalkingAboutTopicsForGroup)`
 
-**–** `[getRecentlyTalkingAboutTopicsForUser()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getRecentlyTalkingAboutTopicsForUser)`
+**–** `[getRecentlyTalkingAboutTopicsForUser()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getRecentlyTalkingAboutTopicsForUser)`
 
-**–** `[getRelatedTopics()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getRelatedTopics)`
+**–** `[getRelatedTopics()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getRelatedTopics)`
 
-**–** `[getTopic()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getTopic)`
+**–** `[getTopic()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getTopic)`
 
-**–** `[getTopics()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getTopics)`
+**–** `[getTopics()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getTopics)`
 
-**–** `[getTrendingTopics()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getTrendingTopics)`
+**–** `[getTrendingTopics()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Topics_static_methods.htm#apex_ConnectAPI_Topics_getTrendingTopics)`
 
 **•** `UserProfiles` methods:
 
-**–** `[getPhoto()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_UserProfiles_static_methods.htm#apex_ConnectAPI_UserProfiles_getPhoto)`
+**–** `[getPhoto()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_UserProfiles_static_methods.htm#apex_ConnectAPI_UserProfiles_getPhoto)`
 
 SEE ALSO:
 
@@ -34834,9 +35096,9 @@ _Salesforce Help_ [: Give Secure Access to Unauthenticated Users with the Guest 
 
 When creating or updating a segment, the ConnectApi.CdpSegmentInput class is subject to some SQL validations.
 
-You can create a segment using the `[createSegment(input)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CdpSegment_static_methods.htm#apex_ConnectAPI_CdpSegment_createSegment_4)` method with the `ConnectApi.CdpSegmentInput` class.
-Similarly, you can update a segment using the `[updateSegment(segmentApiName, input)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_CdpSegment_static_methods.htm#apex_ConnectAPI_CdpSegment_updateSegment_4)` method with the same input
-class. The `[ConnectApi.CdpSegmentDbtModelInput](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input_cdp_segment_dbt_model.htm)` input class, which is nested in the `ConnectApi.CdpSegmentInput`
+You can create a segment using the `[createSegment(input)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CdpSegment_static_methods.htm#apex_ConnectAPI_CdpSegment_createSegment_4)` method with the `ConnectApi.CdpSegmentInput` class.
+Similarly, you can update a segment using the `[updateSegment(segmentApiName, input)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_CdpSegment_static_methods.htm#apex_ConnectAPI_CdpSegment_updateSegment_4)` method with the same input
+class. The `[ConnectApi.CdpSegmentDbtModelInput](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input_cdp_segment_dbt_model.htm)` input class, which is nested in the `ConnectApi.CdpSegmentInput`
 class, provides validation for the SQL.
 
 The `sql` property of the `ConnectApi.CdpSegmentDbtModelInput` is subject to these validations.
@@ -34853,7 +35115,7 @@ namespace also contains input classes to pass as parameters and output classes t
 types are `ConnectApi` input objects.
 
 The successful execution of a `ConnectApi` method can return an output object from the `ConnectApi` namespace. `ConnectApi`
-output objects can be made up of other output objects. For example, the `[ConnectApi.ActorWithId](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_output_actorWithIdOutput.htm)` output object contains
+output objects can be made up of other output objects. For example, the `[ConnectApi.ActorWithId](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_output_actorWithIdOutput.htm)` output object contains
 properties such as `id` and `url`, which contain primitive data types. It also contains a `mySubscription` property, which contains
 a `ConnectApi.Reference` object.
 
@@ -34862,9 +35124,9 @@ character IDs.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: ConnectApi Input Classes](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_input.htm)
+_Apex Reference Guide_ [: ConnectApi Input Classes](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_input.htm)
 
-_Apex Reference Guide_ [: ConnectApi Output Classes](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_output.htm)
+_Apex Reference Guide_ [: ConnectApi Output Classes](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_output.htm)
 
 ##### Understanding Limits for ConnectApi Classes
 
@@ -34877,7 +35139,7 @@ Your Apex code must catch and handle this exception.
 
 For migrated orgs and orgs created in Summer ’24 and later, only `ConnectApi` method calls that require Chatter are subject to the
 per user, per namespace, per hour rate limit. The documentation for every `ConnectApi` method indicates whether Chatter is required.
-`ConnectApi` [method calls that don’t require Chatter count toward the Salesforce Platform total API request allocations, which are](https://developer.salesforce.com/docs/atlas.en-us.258.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)
+`ConnectApi` [method calls that don’t require Chatter count toward the Salesforce Platform total API request allocations, which are](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)
 per org and span a 24-hour period.
 
 When testing code, a call to the Apex `Test.startTest` method starts a new rate limit count. A call to the `Test.stopTest`
@@ -34901,7 +35163,7 @@ In its reference documentation, every `ConnectApi` method indicates whether or n
 
 SEE ALSO:
 
-Distributing Apex Using Managed Packages
+Develop and Distribute Apex for Managed Packages
 
 
 Apex Developer Guide Using Salesforce Features with Apex
@@ -34982,13 +35244,13 @@ Important: The composition of a feed can change between releases. Write your cod
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm)_ : ChatterFeeds Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm)_ : ChatterFeeds Class
 
-_Apex Reference Guide_ [: ConnectApi.FeedElementCapabilities](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_output_feed_element_capabilities.htm)
+_Apex Reference Guide_ [: ConnectApi.FeedElementCapabilities](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_output_feed_element_capabilities.htm)
 
-_Apex Reference Guide_ [: ConnectApi.MessageSegment](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_output_msg_seg.htm)
+_Apex Reference Guide_ [: ConnectApi.MessageSegment](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_output_msg_seg.htm)
 
-_Apex Reference Guide_ [: ConnectApi.AbstractRecordView](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_connectapi_output_abstractRecordView.htm)
+_Apex Reference Guide_ [: ConnectApi.AbstractRecordView](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_connectapi_output_abstractRecordView.htm)
 
 ##### Wildcards
 
@@ -35474,7 +35736,7 @@ version 61.0 and later. In versions earlier than 61.0, only the first 201 record
 using `QueryLocators`, but is supported when using `Iterable` .
 
 Warning: Running SOQL queries against DMOs can result in Data Services credits being consumed from your Data Cloud
-[subscription. For more information on how usage is billed, see Data Cloud Billable Usage Types. Use caution when using FOR loops,](https://help.salesforce.com/s/articleView?id=sf.c360_a_data_usage_types.htm&type=5&language=en_US)
+[subscription. For more information on how usage is billed, see Data Cloud Billable Usage Types. Use caution when using FOR loops,](https://help.salesforce.com/s/articleView?id=data.c360_a_data_usage_types.htm&type=5&language=en_US)
 query locators, recursion, or any mechanism that can result in multiple queries to Data Cloud.
 
 A static SOQL query against Data Cloud from Apex is considered a callout and is subject to the same restrictions as HTTP callouts from
@@ -35745,7 +36007,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_Apex Reference Guide:_ [SoqlStubProvider Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_SoqlStubProvider.htm)
+_Apex Reference Guide:_ [SoqlStubProvider Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_SoqlStubProvider.htm)
 
 #### DataWeave in Apex DataWeave in Apex uses the Mulesoft DataWeave library to read and parse data from one format, transform it, and export it in a different
 
@@ -35791,11 +36053,11 @@ DataWeave in Apex has these limitations.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: DataWeave Namespace](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_dataweave.htm)
+_Apex Reference Guide_ [: DataWeave Namespace](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_dataweave.htm)
 
-_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_dataweaveresource.htm)_ : DataWeaveResource
+_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_dataweaveresource.htm)_ : DataWeaveResource
 
-_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/packaging_packageable_components.htm#mdc_dataweaveresource)_ : DataWeaveResource
+_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/packaging_packageable_components.htm#mdc_dataweaveresource)_ : DataWeaveResource
 
 ##### Implementing DataWeave in Apex
 
@@ -35808,7 +36070,7 @@ The DataWeave namespace provides classes and methods to support the invocation o
 class contains the `createScript()` method to load DataWeave scripts from `.dwl` metadata files that have been deployed to an
 org. The resulting script can then be run with a payload using the `execute()` method to obtain script output in a
 `DataWeave.Result` object. The `Result` class contains methods to retrieve script output using `Script` class methods. For
-[more information on these classes and methods, see DataWeave Namespace.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_DataWeave.htm)
+[more information on these classes and methods, see DataWeave Namespace.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_DataWeave.htm)
 
 For every DataWeave script, an inner class of type `DataWeaveScriptResource.ScriptName` is generated. The inner class
 extends the `DataWeave.Script` class. You can use the generated `DataWeaveScriptResource.ScriptName` class
@@ -35858,7 +36120,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-[Limitations of DataWeave in Apex](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/DataWeaveInApex_limitations.htm)
+[Limitations of DataWeave in Apex](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/DataWeaveInApex_limitations.htm)
 
 ##### Examples of DataWeave in Apex
 
@@ -36000,9 +36262,9 @@ Apex methods take a _`communityId`_ argument, and some Connect in Apex methods t
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_network.htm)_ : Network Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_network.htm)_ : Network Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_connect_api.htm)_ : Connect in Apex
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_connect_api.htm)_ : Connect in Apex
 
 #### Email
 
@@ -36046,7 +36308,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 To send individual and mass email with Apex, use the following classes:
 
-**[SingleEmailMessage](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_email_outbound_single.htm)**
+**[SingleEmailMessage](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_email_outbound_single.htm)**
 
 Instantiates an email object used for sending a single email message. The syntax is:
 
@@ -36055,7 +36317,7 @@ Instantiates an email object used for sending a single email message. The syntax
 
 ```
 
-**[MassEmailMessage](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_email_outbound_mass.htm)**
+**[MassEmailMessage](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_email_outbound_mass.htm)**
 
 Instantiates an email object used for sending a mass email message. The syntax is:
 
@@ -36064,7 +36326,7 @@ Instantiates an email object used for sending a mass email message. The syntax i
 
 ```
 
-**[Messaging](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_email_outbound_messaging.htm)**
+**[Messaging](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_email_outbound_messaging.htm)**
 
 Includes the static `sendEmail` method, which sends the email objects you instantiate with either the `SingleEmailMessage`
 or `MassEmailMessage` classes, and returns a SendEmailResult object.
@@ -36107,7 +36369,7 @@ Note the following:
 **•** The email address of the user calling the `sendEmail` method is inserted in the `From Address` field of the email header. All
 email that is returned, bounced, or received out-of-office replies goes to the user calling the method.
 
-**•** Maximum of 10 `sendEmail` [methods per transaction. Use the Limits methods to verify the number of](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_limits.htm) `sendEmail` methods
+**•** Maximum of 10 `sendEmail` [methods per transaction. Use the Limits methods to verify the number of](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_limits.htm) `sendEmail` methods
 in a transaction.
 
 **•** Single email messages sent with the `sendEmail` method count against the sending organization's daily single email limit. When
@@ -36216,7 +36478,7 @@ callout to an external service from Apex without needing to use the `Http` class
 
 SEE ALSO:
 
-_Salesforce Help_ [: Invoke External Service Callouts Using Apex](https://help.salesforce.com/s/articleView?id=sf.external_services_apex_invoking.htm&language=en_US)
+_Salesforce Help_ [: Invoke External Service Callouts Using Apex](https://help.salesforce.com/s/articleView?id=platform.external_services_apex_invoking.htm&type=5&language=en_US)
 
 #### Flows
 
@@ -36226,7 +36488,7 @@ in your Salesforce org or an external system.
 For example, you can create a flow to script calls for a customer support center or to generate real-time quotes for a sales team. You can
 embed a flow in a Visualforce page or Aura component and access it in an Apex controller.
 
-[For more information about using Apex to start a flow, see Apex Reference Guide: Interview Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/flow_interview_class.htm#flow_interview_class)
+[For more information about using Apex to start a flow, see Apex Reference Guide: Interview Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/flow_interview_class.htm#flow_interview_class)
 
 ##### Getting Flow Variables
 
@@ -36287,7 +36549,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/flow_interview_class.htm)_ : Interview Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/flow_interview_class.htm)_ : Interview Class
 
 ##### Making Callouts to External Systems from Invocable Actions
 
@@ -36523,7 +36785,7 @@ InvocableMethod Annotation
 
 InvocableVariable Annotation
 
-_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_invocableactionextension.htm)_ : InvocableActionExtension
+_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_invocableactionextension.htm)_ : InvocableActionExtension
 
 ##### Passing Data to a Flow Using the Process.Plugin Interface
 
@@ -36546,15 +36808,15 @@ Apex action.
 
 `Process.Plugin` has these top-level classes.
 
-**•** `[Process.PluginRequest](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Process_PluginRequest.htm)` passes input parameters from the class that implements the interface to the flow.
+**•** `[Process.PluginRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginRequest.htm)` passes input parameters from the class that implements the interface to the flow.
 
-**•** `[Process.PluginResult](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Process_PluginResult.htm)` returns output parameters from the class that implements the interface to the flow.
+**•** `[Process.PluginResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginResult.htm)` returns output parameters from the class that implements the interface to the flow.
 
-**•** `[Process.PluginDescribeResult](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult.htm)` passes input parameters from a flow to the class that implements the interface. This
+**•** `[Process.PluginDescribeResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult.htm)` passes input parameters from a flow to the class that implements the interface. This
 class determines the input parameters and output parameters needed by the `Process.PluginResult` plug-in.
 
 When you write Apex unit tests, instantiate a class and pass it into the interface `invoke` method. To pass in the parameters that the
-system needs, create a map and use it in the constructor. For more information, see Using the Process.PluginRequest Class on page 478.
+system needs, create a map and use it in the constructor. For more information, see Using the Process.PluginRequest Class on page 482.
 
 Implementing the Process.Plugin Interface
 
@@ -36897,11 +37159,11 @@ Here’s the constructor for the `Process.PluginDescribeResult` class.
 
 ```
 
-**•** [PluginDescribeResult Class Properties](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult.htm)
+**•** [PluginDescribeResult Class Properties](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult.htm)
 
-**•** [PluginDescribeResult.InputParameter Class Properties](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult_InputParameter.htm)
+**•** [PluginDescribeResult.InputParameter Class Properties](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult_InputParameter.htm)
 
-**•** [PluginDescribeResult.OutputParameter Class Properties](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult_OutputParameter.htm)
+**•** [PluginDescribeResult.OutputParameter Class Properties](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult_OutputParameter.htm)
 
 Here’s the constructor for the `Process.PluginDescribeResult.InputParameter` class.
 
@@ -37802,12 +38064,12 @@ Apex class used in the `FormulaBuilder.withType()` method must be a global, user
 or methods that the formula references must also be global.
 
 Note: If formula fields on the input SObjects require a round-trip request to the database, use the
-`[Formula.recalculateFormulas()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Formula.htm#apex_System_Formula_recalculateFormulas)` method.
+`[Formula.recalculateFormulas()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Formula.htm#apex_System_Formula_recalculateFormulas)` method.
 
 Formulas in Apex support these features.
 
 **•** Reference Apex types in formula fields. The values contained in individual components of such Apex types are accessed and evaluated
-[by the formula. Address, Location, URL, and UUID System types are supported.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_system_Address.htm#topic-title)
+[by the formula. Address, Location, URL, and UUID System types are supported.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_system_Address.htm#topic-title)
 
 **•** Reference standard lookups and custom lookups in formula fields.
 
@@ -37815,15 +38077,15 @@ Formulas in Apex support these features.
 
 **•** Access the return value from the `toString()` method in formula fields.
 
-[Formula evaluation in Apex is bound by the formula field character limit, but not the compile size limit. A formula can contain up to](https://help.salesforce.com/s/articleView?id=sf.formula_field_limits.htm&language=en_US)
+[Formula evaluation in Apex is bound by the formula field character limit, but not the compile size limit. A formula can contain up to](https://help.salesforce.com/s/articleView?id=platform.formula_field_limits.htm&type=5&language=en_US)
 3,900 characters including spaces, return characters, and comments.
 
-[Formula functions that are available to use in Apex are ones that can be used in validation rules. For details, see Formula Operators and](https://help.salesforce.com/s/articleView?id=sf.customize_functions.htm&type=5&language=en_US)
-[Functions by Context.](https://help.salesforce.com/s/articleView?id=sf.customize_functions.htm&type=5&language=en_US)
+[Formula functions that are available to use in Apex are ones that can be used in validation rules. For details, see Formula Operators and](https://help.salesforce.com/s/articleView?id=platform.customize_functions.htm&type=5&language=en_US)
+[Functions by Context.](https://help.salesforce.com/s/articleView?id=platform.customize_functions.htm&type=5&language=en_US)
 
 SEE ALSO:
 
-_Apex Reference Guide:_ [FormulaEval Namespace](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_formulaeval.htm)
+_Apex Reference Guide:_ [FormulaEval Namespace](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_formulaeval.htm)
 
 
 Apex Developer Guide Using Salesforce Features with Apex
@@ -37862,7 +38124,7 @@ Apex code that accesses metadata must be properly tested.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: Metadata Namespace](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_Metadata.htm)
+_Apex Reference Guide_ [: Metadata Namespace](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_Metadata.htm)
 
 ##### Retrieving and Deploying Metadata
 
@@ -37888,7 +38150,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 You can retrieve and deploy metadata in post install scripts. In uninstall scripts, you can only retrieve, not deploy, metadata from Apex
 code.
 
-[See Metadata.Operations for code examples for retrieving and deploying metadata.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Metadata_Operations.htm)
+[See Metadata.Operations for code examples for retrieving and deploying metadata.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Metadata_Operations.htm)
 
 ##### Supported Metadata Types
 
@@ -37929,7 +38191,7 @@ that access metadata, notify users in the description of your package. You can w
 
 ```
 
-[Salesforce verifies the notice during the security review. For more information, see the ISVforce Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.packagingGuide.meta/packagingGuide/security_guidelines.htm)
+[Salesforce verifies the notice during the security review. For more information, see the ISVforce Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.packagingGuide.meta/packagingGuide/security_guidelines.htm)
 
 ##### Testing Metadata Deployments
 
@@ -37976,7 +38238,7 @@ implementation of `getCallbackJobId()` .
 To provide Apex test coverage for permission set groups, write tests using the `calculatePermissionSetGroup()` method
 in the `System.Test` class.
 
-The `[calculatePermissionSetGroup()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_System_Test_class.htm)` method forces an immediate calculation of aggregate permissions for a specified
+The `[calculatePermissionSetGroup()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_System_Test_class.htm)` method forces an immediate calculation of aggregate permissions for a specified
 permission set group. As the forced calculation counts against Apex CPU limits, and can require complex data setup, it’s a best practice
 to minimize the number of times you perform this operation. Recalculating complex permission set groups with a large number of
 included permission sets or overall enabled permissions can cause Apex test failures because Apex CPU limits are exceeded. Apex CPU
@@ -38020,9 +38282,9 @@ Set this test to run once in a Test setup method, then reuse the data in subsequ
 
 SEE ALSO:
 
-[Salesforce Help: Permission Set Groups](https://help.salesforce.com/s/articleView?id=sf.perm_set_groups.htm&language=en_US)
+[Salesforce Help: Permission Set Groups](https://help.salesforce.com/s/articleView?id=platform.perm_set_groups.htm&type=5&language=en_US)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
 
 
 Apex Developer Guide Using Salesforce Features with Apex
@@ -38146,17 +38408,17 @@ Note: Platform Cache isn’t supported in Professional Edition.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_Session.htm)_ : Session Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_Session.htm)_ : Session Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_Org.htm)_ : Org Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_Org.htm)_ : Org Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_Partition.htm)_ : Partition Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_Partition.htm)_ : Partition Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_OrgPartition.htm)_ : OrgPartition Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_OrgPartition.htm)_ : OrgPartition Class
 
-_Apex Reference Guide_ [: SessionPartition Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_SessionPartition.htm)
+_Apex Reference Guide_ [: SessionPartition Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_SessionPartition.htm)
 
-_Apex Reference Guide_ [: CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
+_Apex Reference Guide_ [: CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
 
 ##### Platform Cache Considerations
 
@@ -38177,7 +38439,7 @@ In this case, the `PetType` winning value could be from the first transaction, a
 second transaction. Subsequent `get()` calls on those keys would return `PetType="Cat"` and `PetName="Fido"` .
 
 **•** Cache misses can happen. We recommend constructing your code to consider a case where previously cached items aren’t found.
-[Alternatively, use the CacheBuilder Interface, which checks for cache misses.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
+[Alternatively, use the CacheBuilder Interface, which checks for cache misses.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
 
 **•** All platform cache statistical methods: `getAvgGetSize()`, `getAvgGetTime()`, `getMaxGetSize()`,
 `getMaxGetTime()`, and `getMissRate()` report data starting from the time the cache server was restarted, and do not
@@ -38323,13 +38585,13 @@ and package a non-default partition. Any package containing the default partitio
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_Partition.htm)_ : Partition Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_Partition.htm)_ : Partition Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_OrgPartition.htm)_ : OrgPartition Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_OrgPartition.htm)_ : OrgPartition Class
 
-_Apex Reference Guide_ [: SessionPartition Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_SessionPartition.htm)
+_Apex Reference Guide_ [: SessionPartition Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_SessionPartition.htm)
 
-[Metadata API Developer’s Guide: Platform Cache Partition Type](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_platformcachepartition.htm)
+[Metadata API Developer’s Guide: Platform Cache Partition Type](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_platformcachepartition.htm)
 
 ##### Platform Cache Internals
 
@@ -38499,9 +38761,9 @@ This example calls the `get` method on a partition in one expression without ass
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_Session.htm)_ : Session Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_Session.htm)_ : Session Class
 
-_Apex Reference Guide_ [: SessionPartition Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_SessionPartition.htm)
+_Apex Reference Guide_ [: SessionPartition Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_SessionPartition.htm)
 
 ##### Store and Retrieve Values from the Org Cache
 
@@ -38630,9 +38892,9 @@ This example calls the `get` method on a partition in one expression without ass
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_Org.htm)_ : Org Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_Org.htm)_ : Org Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_cache_OrgPartition.htm)_ : OrgPartition Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_cache_OrgPartition.htm)_ : OrgPartition Class
 
 
 Apex Developer Guide Using Salesforce Features with Apex
@@ -38767,7 +39029,7 @@ runs the `doLoad(String var)` method to create the cached value.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
+_Apex Reference Guide_ [: CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
 
 ##### Platform Cache Best Practices
 
@@ -38993,7 +39255,7 @@ SEE ALSO:
 
 Platform Cache Limits
 
-_Apex Reference Guide_ [: CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
+_Apex Reference Guide_ [: CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
 
 #### Salesforce Knowledge Salesforce Knowledge is a knowledge base where users can easily create and manage content, known as articles, and quickly find and
 
@@ -39041,12 +39303,12 @@ and its translations:
 
 Note: Date values are based on GMT.
 
-[To use the methods in this class, you must enable Salesforce Knowledge. See Salesforce Knowledge Implementation Guide for more](https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_knowledge_implementation_guide.pdf)
+[To use the methods in this class, you must enable Salesforce Knowledge. See Salesforce Knowledge Implementation Guide for more](https://resources.docs.salesforce.com/260/latest/en-us/sfdc/pdf/salesforce_knowledge_implementation_guide.pdf)
 information on setting up Salesforce Knowledge.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: PublishingService Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_knowledge_kbManagement.htm)
+_Apex Reference Guide_ [: PublishingService Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_knowledge_kbManagement.htm)
 
 ##### Promoted Search Terms
 
@@ -39091,7 +39353,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 Provide users with shortcuts to navigate to relevant articles before they perform a search. Call `Search.suggest(searchText,`
 `objectType, options)` to return a list of Salesforce Knowledge articles whose titles match a user’s search query string.
 
-[To return suggestions, enable Salesforce Knowledge. See Salesforce Knowledge Implementation Guide for more information on setting](https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/salesforce_knowledge_implementation_guide.pdf)
+[To return suggestions, enable Salesforce Knowledge. See Salesforce Knowledge Implementation Guide for more information on setting](https://resources.docs.salesforce.com/260/latest/en-us/sfdc/pdf/salesforce_knowledge_implementation_guide.pdf)
 up Salesforce Knowledge.
 
 This Visualforce page has an input field for searching articles or accounts. When the user presses the Suggest button, suggested records
@@ -39357,7 +39619,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-[Search.suggest(searchQuery,sObjectType,suggestions)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_search.htm)
+[Search.suggest(searchQuery,sObjectType,suggestions)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_search.htm)
 
 #### Salesforce Files
 
@@ -39678,7 +39940,7 @@ These examples illustrate how to use the Apex Connector Framework to create cust
 
 SEE ALSO:
 
-_Salesforce Help_ [: Access External Data With Salesforce Connect](https://help.salesforce.com/s/articleView?id=sf.salesforce_connect.htm&language=en_US)
+_Salesforce Help_ [: Access External Data With Salesforce Connect](https://help.salesforce.com/s/articleView?id=platform.salesforce_connect.htm&type=5&language=en_US)
 
 [Salesforce Connect Learning Map](https://salesforceconnect-learningmap.herokuapp.com/)
 
@@ -39783,7 +40045,7 @@ When you initiate an Apex method on an external object, a job is scheduled and p
 BackgroundOperation object lets you view the job status for write operations via the API or SOQL. Monitor job progress and related
 errors in the org, extract statistics, process batch jobs, or see how many errors occur in a specified time period.
 
-[For usage information and examples, see Database Namespace and DataSource Namespace.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_Database.htm)
+[For usage information and examples, see Database Namespace and DataSource Namespace.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_Database.htm)
 
 SEE ALSO:
 
@@ -40492,7 +40754,7 @@ method makes use of other helper methods:
 **•** `foundRow` populates a row based on values from the callout result. The `foundRow` method is used to make any modifications
 to the returned field values, such as changing a field name or modifying a field value.
 
-[These methods aren’t included in this snippet but are available in the full example included in Connection Class. Typically, the filter from](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)
+[These methods aren’t included in this snippet but are available in the full example included in Connection Class. Typically, the filter from](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)
 `SearchContext` or `QueryContext` would be used to reduce the result set, but for simplicity this example doesn’t make use of
 the context object.
 
@@ -40720,7 +40982,7 @@ SEE ALSO:
 
 Execution Governors and Limits
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)_ : Connection Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)_ : Connection Class
 
 Filters in the Apex Connector Framework
 
@@ -40841,7 +41103,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Provider.htm)_ : Provider Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Provider.htm)_ : Provider Class
 
 ###### Set Up Salesforce Connect to Use Your Custom Adapter
 
@@ -40857,7 +41119,7 @@ To add write capability for external objects to your adapter:
 in the Salesforce Help.
 
 **2.** Implement the `DataSource.Connection.upsertRows()` and `DataSource.Connection.deleteRows()`
-[methods for the adapter. For details, see Connection Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)
+[methods for the adapter. For details, see Connection Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)
 
 ##### Key Concepts About the Apex Connector Framework
 
@@ -40964,7 +41226,7 @@ Example: This excerpt from a sample `DataSource.Connection` class shows the `Dat
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Column.htm)_ : Column Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Column.htm)_ : Column Class
 
 
 Apex Developer Guide Using Salesforce Features with Apex
@@ -40973,9 +41235,9 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 Your `DataSource.Provider` class declares what types of credentials can be used to authenticate to the external system.
 
-If your extension of the `[DataSource.Provider](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Provider.htm)` class returns `[DataSource.AuthenticationCapability](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_enum_DataSource_AuthenticationCapability.htm)` values that
-indicate support for authentication, the `[DataSource.Connection](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)` class is instantiated with a
-`[DataSource.ConnectionParams](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_ConnectionParams.htm)` instance in the constructor.
+If your extension of the `[DataSource.Provider](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Provider.htm)` class returns `[DataSource.AuthenticationCapability](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_DataSource_AuthenticationCapability.htm)` values that
+indicate support for authentication, the `[DataSource.Connection](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)` class is instantiated with a
+`[DataSource.ConnectionParams](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_ConnectionParams.htm)` instance in the constructor.
 
 The authentication credentials in the `DataSource.ConnectionParams` instance depend on the `Identity Type` field of
 the external data source definition in Salesforce.
@@ -41131,7 +41393,7 @@ system supports.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_QueryContext.htm)_ : QueryContext Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_QueryContext.htm)_ : QueryContext Class
 
 ###### queryMore with the Apex Connector Framework with the Apex Connector Framework Custom adapters for Salesforce Connect don’t automatically support the queryMore method in API queries. However, your implementation must be able to break up large result sets into batches and iterate over them by using the queryMore method in
 
@@ -41323,7 +41585,7 @@ An aggregate query can still have filters, so your query method can be implement
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_QueryContext.htm)_ : QueryContext Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_QueryContext.htm)_ : QueryContext Class
 
 Create a Sample DataSource.Connection Class Class
 
@@ -41402,7 +41664,7 @@ smaller collection of data in your Apex code.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Filter.htm)_ : Filter Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Filter.htm)_ : Filter Class
 
 
 Apex Developer Guide Using Salesforce Features with Apex
@@ -41580,7 +41842,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_DataSource_Filter.htm)_ : Filter Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Filter.htm)_ : Filter Class
 
 ##### Considerations for the Apex Connector Framework
 
@@ -41610,7 +41872,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 **–** Test methods don’t support web service callouts. Tests that perform web service callouts fail. For an example that shows how
 to avoid these failing tests by returning mock responses, see Google Drive [™] Custom Adapter for Salesforce Connect on page
-554.
+558.
 
 **•** In Apex tests, use dynamic SOQL to query external objects. Tests that perform static SOQL queries of external objects fail.
 
@@ -41671,7 +41933,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 **•** Use Data Manipulation Language (DML) operations to insert, update, and delete external data.
 
 To improve unit tests for the Apex code in this example, you can also return mock records in a testing context. See Mock SOQL Tests for
-External Objects on page 518.
+External Objects on page 522.
 
 DataSource.Connection Class
 
@@ -45519,7 +45781,7 @@ Like all Apex code, Salesforce Reports and Dashboards API via Apex code requires
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: Reports Namespace](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_Reports.htm)
+_Apex Reference Guide_ [: Reports Namespace](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_Reports.htm)
 
 ##### Requirements and Limitations
 
@@ -46157,7 +46419,7 @@ better index your site pages.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_sites.htm)_ : Site Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_sites.htm)_ : Site Class
 
 ##### Rewrite URLs for Salesforce Sites
 
@@ -46182,7 +46444,7 @@ the link URL might show: `https://myblog.my.salesforce-sites.com/posts/2019/02/1
 To rewrite URLs for a site, create an Apex class that maps the original URLs to user-friendly URLs, and then add the Apex class to your
 site.
 
-To learn about the methods in the `Site.UrlRewriter interface` [, see UrlRewriter Interface.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_site_urlRewriter_reference.htm)
+To learn about the methods in the `Site.UrlRewriter interface` [, see UrlRewriter Interface.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_site_urlRewriter_reference.htm)
 
 Creating the Apex Class
 
@@ -46230,11 +46492,11 @@ following links to a Visualforce page named myPage:
 
 Note: Visualforce `<apex:form>` elements with `forceSSL=”true”` aren't affected by the `urlRewriter` .
 
-See the “Functions” appendix of the _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/)_ .
+See the “Functions” appendix of the _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)_ .
 
 **Encoded URLs**
 The URLs you get from using the `Site.urlRewriter` interface are encoded. If you need to access the unencoded values of
-your URL, use the `urlDecode` [method of the EncodingUtil Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)
+your URL, use the `urlDecode` [method of the EncodingUtil Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)
 
 **Restricted Characters**
 User-friendly URLs must be distinct from Salesforce URLs. URLs with a 3-character entity prefix or a 15- or 18-character ID aren’t
@@ -46369,7 +46631,7 @@ You can't use the following reserved strings at the end of a rewritten URL path:
 **•** /mobile
 
 **Relative Paths Only**
-[The PageReference.getUrl() method only returns the part of the URL immediately following the host name or site prefix (if any). For](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_System_PageReference_getUrl.htm)
+[The PageReference.getUrl() method only returns the part of the URL immediately following the host name or site prefix (if any). For](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_System_PageReference_getUrl.htm)
 example, if your URL is `https://mycompany.my.salesforce-sites.com/sales/MyPage?id=12345`, where
 “sales” is the site prefix, only `/MyPage?id=12345` is returned.
 
@@ -46781,9 +47043,9 @@ The following example uses an email thread ID to retrieve the related case ID.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: BusinessHours Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_businesshours.htm)
+_Apex Reference Guide_ [: BusinessHours Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_businesshours.htm)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_system_cases.htm)_ : Cases Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_system_cases.htm)_ : Cases Class
 
 #### Territory Management 2.0
 
@@ -46959,11 +47221,11 @@ Apex Developer Guide Integration and Apex Utilities
 
 To learn more about the types of callouts, see:
 
-**•** SOAP Services: Defining a Class from a WSDL Document on page 603
+**•** SOAP Services: Defining a Class from a WSDL Document on page 607
 
-**•** Invoking HTTP Callouts on page 616
+**•** Invoking HTTP Callouts on page 620
 
-**•** Asynchronous Callouts for Long-Running Requests on page 628
+**•** Asynchronous Callouts for Long-Running Requests on page 632
 
 Tip: Callouts enable Apex to invoke external web or HTTP services. Apex Web services allow an external application to invoke
 Apex methods through Web services.
@@ -47265,7 +47527,7 @@ When you use merge fields to construct HTTP headers and request bodies, keep the
 Salesforce admin must enable **Allow Merge Fields in HTTP Header** and **Allow Merge Fields in HTTP Body** on the named
 [credential. See Create or Edit a Named Credential in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.nc_create_edit_named_credential.htm&language=en_US)
 
-**•** [To access or input custom headers, use Connect REST API. See Named Credentials Resources in the Connect REST API Developer](https://developer.salesforce.com/docs/atlas.en-us.258.0.chatterapi.meta/chatterapi/connect_resources_named_credentials_resources.htm)
+**•** [To access or input custom headers, use Connect REST API. See Named Credentials Resources in the Connect REST API Developer](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_named_credentials_resources.htm)
 Guide.
 
 **•** When you use these merge fields in HTTP request bodies of callouts, you can apply the `HTMLENCODE` formula function to escape
@@ -47390,7 +47652,7 @@ header. To set HTTP headers, add `inputHttpHeaders_x` and `outputHttpHeaders_x` 
 Note: In API versions 16.0 and earlier, HTTP responses for callouts are always decoded using UTF-8, regardless of the Content-Type
 header. In API versions 17.0 and later, HTTP responses are decoded using the encoding specified in the Content-Type header.
 
-The following samples work with the sample WSDL file in Generated WSDL2Apex Code on page 609:
+The following samples work with the sample WSDL file in Generated WSDL2Apex Code on page 613:
 
 Sending HTTP Headers on a Web Service Callout
 
@@ -48174,7 +48436,7 @@ and verifies that a mock response is received.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: WebServiceMock Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_webservicemock.htm)
+_Apex Reference Guide_ [: WebServiceMock Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_webservicemock.htm)
 
 ###### Performing DML Operations and Mock Callouts
 
@@ -48283,7 +48545,7 @@ Asynchronous calls that occur after mock callouts are allowed and don’t requir
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
 
 ###### Considerations Using WSDLs
 
@@ -48307,7 +48569,7 @@ Understanding Runtime Events
 The following checks are performed when Apex code is making a callout to an external service.
 
 **•** For information on the timeout limits when making an HTTP request or a Web services call, see Callout Limits and Limitations on
-page 627.
+page 631.
 
 **•** Circular references in Apex classes are not allowed.
 
@@ -48343,7 +48605,7 @@ Debugging Classes Generated from WSDL Files
 Salesforce tests code with SOAP API, .NET, and Axis. If you use other tools, you can encounter issues.
 
 You can use the debugging header to return the XML in request and response SOAP messages to help you diagnose problems. For more
-information, see _SOAP API Developer Guide_ [: DebuggingHeader.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_header_debuggingheader.htm)
+information, see _SOAP API Developer Guide_ [: DebuggingHeader.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_header_debuggingheader.htm)
 
 ##### Invoking HTTP Callouts
 
@@ -48367,9 +48629,9 @@ tests that perform callouts fail. Enable HTTP callout testing by instructing Ape
 
 These classes expose the HTTP request and response functionality.
 
-**•** `[Http Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_http_http.htm)` . Use this class to initiate an HTTP request and response.
+**•** `[Http Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_http.htm)` . Use this class to initiate an HTTP request and response.
 
-**•** [HttpRequest Class: Use this class to programmatically create HTTP requests like GET, POST, PATCH, PUT, and DELETE.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
+**•** [HttpRequest Class: Use this class to programmatically create HTTP requests like GET, POST, PATCH, PUT, and DELETE.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
 
 ###### • HttpResponse Class: Use this class to handle the HTTP response returned by HTTP .
 
@@ -48478,20 +48740,20 @@ in the _`url`_ parameter. Replace _`Your_JSON_Content`_ with the JSON content th
 To access an external server from an endpoint or a redirect endpoint, add the remote site to a list of authorized remote sites. Log in to
 Salesforce and from Setup, in the Quick Find box, enter _`Remote Site Settings`_, and then select **Remote Site Settings** .
 
-Use the XML classes or JSON classes to parse XML or JSON content in the body of a request created by `[HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)`, or a response
-accessed by `[HttpResponse](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm)` .
+Use the XML classes or JSON classes to parse XML or JSON content in the body of a request created by `[HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)`, or a response
+accessed by `[HttpResponse](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm)` .
 
 Considerations
 
 **•** The AJAX proxy handles redirects and authentication challenges (401/407 responses) automatically. For more information about
-[the AJAX proxy, see AJAX Toolkit documentation.](https://developer.salesforce.com/docs/atlas.en-us.258.0.ajax.meta/ajax/sforce_api_ajax_queryresultiterator.htm#ajax_proxy)
+[the AJAX proxy, see AJAX Toolkit documentation.](https://developer.salesforce.com/docs/atlas.en-us.260.0.ajax.meta/ajax/sforce_api_ajax_queryresultiterator.htm#ajax_proxy)
 
 **•** You can set the endpoint as a named credential URL. A named credential URL contains the scheme `callout:`, the name of the
 named credential, and an optional path. For example: `callout:` _`My_Named_Credential`_ `/` _`some_path`_ . A named credential
 specifies the URL of a callout endpoint and its required authentication parameters in one definition. Salesforce manages all
 authentication for Apex callouts that specify a named credential as the callout endpoint so that your code doesn’t have to. You can
 also skip remote site settings, which are otherwise required for callouts to external sites, for the site defined in the named credential.
-[See Named Credentials as Callout Endpoints.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_callouts_named_credentials.htm)
+[See Named Credentials as Callout Endpoints.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_callouts_named_credentials.htm)
 
 **•** When you set a request body in the callout, set the method to `POST` . If you set a request body and the request method is `GET`, a
 `POST` request is performed.
@@ -48670,9 +48932,9 @@ Apex Developer Guide Integration and Apex Utilities
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: HttpCalloutMock Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_httpcalloutmock.htm)
+_Apex Reference Guide_ [: HttpCalloutMock Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_httpcalloutmock.htm)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
 
 ####### Testing HTTP Callouts Using Static Resources
 
@@ -49066,7 +49328,7 @@ Asynchronous calls that occur after mock callouts are allowed and don’t requir
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
 
 ##### Using Certificates
 
@@ -49280,7 +49542,7 @@ can toggle read-only mode on and verify your apps.
 Setting Callout Timeouts
 
 The following example sets a custom timeout for Web services callouts. The example works with the sample WSDL file and the generated
-`DocSamplePort` class described in Generated WSDL2Apex Code on page 609. Set the timeout value in milliseconds by assigning a
+`DocSamplePort` class described in Generated WSDL2Apex Code on page 613. Set the timeout value in milliseconds by assigning a
 value to the special `timeout_x` variable on the stub.
 
 ```
@@ -49324,7 +49586,7 @@ A typical Salesforce application that benefits from asynchronous callouts contai
 button to get data from an external Web service. For example, a Visualforce page that gets warranty information for a certain product
 from a Web service. Thousands of agents in the organization can use this page. Therefore, a hundred of those agents can click the same
 button to process warranty information for products at the same time. These hundred simultaneous actions exceed the limit of concurrent
-long-running requests on page 348 . But by using asynchronous callouts, the requests aren’t subjected to this limit and can be executed.
+long-running requests on page 349 . But by using asynchronous callouts, the requests aren’t subjected to this limit and can be executed.
 
 In the following example application, the button action is implemented in an Apex controller method. The action method creates a
 `Continuation` and returns it. After the request is sent to the service, the Visualforce request is suspended. The user must wait for
@@ -49572,7 +49834,7 @@ Or:
 ```
 
 The _`labels`_ parameter is supplied by the system when it invokes the callback method and holds the labels associated with the callout
-requests made. The _`state`_ [parameter is supplied by setting the Continuation.state property in the controller.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Continuation.htm#apex_System_Continuation_state)
+requests made. The _`state`_ [parameter is supplied by setting the Continuation.state property in the controller.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Continuation.htm#apex_System_Continuation_state)
 
 This table lists the return values for the callback method. Each return value corresponds to a different behavior.
 
@@ -49586,7 +49848,7 @@ called again when the callout response returns.
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Continuation.htm)_ : Continuation Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Continuation.htm)_ : Continuation Class
 
 ###### Testing Asynchronous Callouts
 
@@ -49597,7 +49859,7 @@ sent to the external service, and a mock response is used.
 The following example shows how to invoke a mock asynchronous callout in a test for a Web service call that uses `HTTPRequest` .
 ###### To simulate callouts in continuations, call these methods of the Test class: Test.setContinuationResponse() and
 
-[Test.invokeContinuationMethod().](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_invokeContinuationMethod)
+[Test.invokeContinuationMethod().](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_invokeContinuationMethod)
 
 The controller class to test is listed first, followed by the test class. The controller class from Make Long-Running Callouts with Continuations
 is reused here.
@@ -49784,7 +50046,7 @@ View state holds more data than the controller state and has a higher maximum si
 structure. State is serialization of all controllers and all the attributes of each component on a page, including subpages and subcomponents
 . Component structure is the parent-child relationship of components that are in the page. You can monitor the view state size in the
 Developer Console or in the footer of a Visualforce page when development mode is enabled. For more information, see “View State
-[Tab” in the Salesforce Help or refer to the Visualforce Developer’s Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.pages.meta/pages/)
+[Tab” in the Salesforce Help or refer to the Visualforce Developer’s Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)
 
 ###### Making Multiple Asynchronous Callouts
 
@@ -50321,7 +50583,7 @@ by enabling a mock continuation and making sure that the test has no real effect
 
 This example is the test class that corresponds to the `ContinuationSOAPController` controller. The test method in the class
 sets a fake response and invokes a mock continuation. The callout isn’t sent to the external service. To perform a mock callout, the test
-calls these methods of the `Test` [class: Test.setContinuationResponse() and Test.invokeContinuationMethod().](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_setContinuationResponse)
+calls these methods of the `Test` [class: Test.setContinuationResponse() and Test.invokeContinuationMethod().](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_setContinuationResponse)
 
 ```
    @isTest
@@ -50421,10 +50683,10 @@ Contains methods for serializing Apex objects into JSON format
 and deserializing JSON content that was serialized using the
 `serialize` method in this class.
 
-`[System.JSONGenerator](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_JsonGenerator.htm)` Contains methods used to serialize objects into JSON content using
+`[System.JSONGenerator](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonGenerator.htm)` Contains methods used to serialize objects into JSON content using
 the standard JSON encoding.
 
-`[System.JSONParser](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)` Represents a parser for JSON-encoded content.
+`[System.JSONParser](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)` Represents a parser for JSON-encoded content.
 
 
 Apex Developer Guide Integration and Apex Utilities
@@ -50443,27 +50705,27 @@ managed package. Objects that are instances of Apex classes defined in the manag
 
 **•** A Map object is serializable into JSON only if it uses one of the following data types as a key.
 
-**–** [Boolean](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_boolean.htm)
+**–** [Boolean](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_boolean.htm)
 
-**–** [Date](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_date.htm)
+**–** [Date](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_date.htm)
 
-**–** [DateTime](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
+**–** [DateTime](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
 
-**–** [Decimal](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
+**–** [Decimal](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
 
-**–** [Double](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_double.htm)
+**–** [Double](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_double.htm)
 
-**–** [Enum](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_enum.htm)
+**–** [Enum](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_enum.htm)
 
-**–** [Id](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_id.htm)
+**–** [Id](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_id.htm)
 
-**–** [Integer](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_integer.htm)
+**–** [Integer](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_integer.htm)
 
-**–** [Long](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_long.htm)
+**–** [Long](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_long.htm)
 
-**–** [String](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_string.htm)
+**–** [String](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm)
 
-**–** [Time](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_time.htm)
+**–** [Time](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_time.htm)
 
 **•** When an object is declared as the parent type but is set to an instance of the subtype, some data can be lost. The object gets
 serialized and deserialized as the parent type and any fields that are specific to the subtype are lost.
@@ -50484,7 +50746,7 @@ an exception throws an error: `Type unsupported in JSON: MyException` .
 
 In API version 53.0 and later, DateTime format and processing has been updated. The API correctly handles DateTime values in JSON
 requests that use more than 3 digits after the decimal point. Requests that use an unsupported DateTime format (such as `123456000` )
-[result in an error. Salesforce recommends that you strictly adhere to DateTime formats specified in Valid Date and DateTime Formats.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/intro_valid_date_formats.htm)
+[result in an error. Salesforce recommends that you strictly adhere to DateTime formats specified in Valid Date and DateTime Formats.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/intro_valid_date_formats.htm)
 
 Roundtrip Serialization and Deserialization
 Use the `JSON` class methods to perform roundtrip serialization and deserialization of your JSON content. These methods enable
@@ -50650,7 +50912,7 @@ This aggregate query returns two fields: the count of ID fields and the account 
 
 **Serialization of empty fields**
 Starting with API version 28.0, null fields aren’t serialized and aren’t included in the JSON string, unlike in earlier versions. This change
-[doesn’t affect deserializing JSON strings with JSON methods, such as Json.deserialize(). This change is noticeable when you inspect](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Json.htm#apex_System_Json_deserialize)
+[doesn’t affect deserializing JSON strings with JSON methods, such as Json.deserialize(). This change is noticeable when you inspect](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Json.htm#apex_System_Json_deserialize)
 the JSON string. For example:
 
 ```
@@ -50688,7 +50950,7 @@ JSON from aggregate results can’t be deserialized back into Apex AggregateResu
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Json.htm)_ : JSON Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Json.htm)_ : JSON Class
 
 ##### JSON Generator
 
@@ -50796,7 +51058,7 @@ Apex Developer Guide Integration and Apex Utilities
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: JSONGenerator Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_JsonGenerator.htm)
+_Apex Reference Guide_ [: JSONGenerator Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonGenerator.htm)
 
 ##### JSON Parsing
 
@@ -51050,7 +51312,7 @@ Apex Developer Guide Integration and Apex Utilities
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)_ : JSONParser Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)_ : JSONParser Class
 
 #### XML Support
 
@@ -51270,7 +51532,7 @@ Apex Developer Guide Integration and Apex Utilities
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: XmlStreamReader Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_xml_XmlStream_reader.htm)
+_Apex Reference Guide_ [: XmlStreamReader Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_XmlStream_reader.htm)
 
 ###### Writing XML Using Streams
 
@@ -51376,7 +51638,7 @@ package also contains sample code and objects for the Shipping Invoice example.
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: XmlStreamWriter Class](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_xml_XmlStream_writer.htm)
+_Apex Reference Guide_ [: XmlStreamWriter Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_XmlStream_writer.htm)
 
 
 Apex Developer Guide Integration and Apex Utilities
@@ -51386,18 +51648,18 @@ Apex Developer Guide Integration and Apex Utilities
 Apex provides classes that enable you to work with XML content using the DOM (Document Object Model).
 
 DOM classes help you parse or generate XML content. You can use these classes to work with any XML content. One common application
-[is to use the classes to generate the body of a request created by HttpRequest or to parse a response accessed by HttpResponse. The](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
+[is to use the classes to generate the body of a request created by HttpRequest or to parse a response accessed by HttpResponse. The](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
 DOM represents an XML document as a hierarchy of nodes. Some nodes may be branch nodes and have child nodes, while others are
 leaf nodes with no children. You can parse nested XML content that’s up to 50 nodes deep.
 
 The DOM classes are contained in the `Dom` namespace.
 
-[Use the Document Class to process the content in the body of the XML document.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_xml_dom_document.htm)
+[Use the Document Class to process the content in the body of the XML document.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_dom_document.htm)
 
-[Use the XmlNode Class to work with a node in the XML document.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_xml_dom_xmlnode.htm)
+[Use the XmlNode Class to work with a node in the XML document.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_dom_xmlnode.htm)
 
-[Use the Document Class class to process XML content. One common application is to use it to create the body of a request for HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
-[or to parse a response accessed by HttpResponse.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm)
+[Use the Document Class class to process XML content. One common application is to use it to create the body of a request for HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
+[or to parse a response accessed by HttpResponse.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm)
 
 XML Namespaces
 
@@ -51544,7 +51806,7 @@ This example contains three XML elements: `name`, `firstName`, and `lastName` . 
 and `lastName` element nodes, as well as two text nodes— `Suvain` and `Singh` . Note that the text within an element node is
 considered to be a separate text node.
 
-[For more information about the methods shared by all enums, see Enum Methods.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_enum.htm)
+[For more information about the methods shared by all enums, see Enum Methods.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_enum.htm)
 
 
 Apex Developer Guide Integration and Apex Utilities
@@ -51676,7 +51938,7 @@ Apex Developer Guide Integration and Apex Utilities
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_xml_dom_document.htm)_ : Document Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_dom_document.htm)_ : Document Class
 
 #### ZIP Support
 
@@ -51719,7 +51981,7 @@ Apex Developer Guide Integration and Apex Utilities
 
 SEE ALSO:
 
-_Apex Reference Guide_ [: Compression NameSpace](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_namespace_Compression.htm)
+_Apex Reference Guide_ [: Compression NameSpace](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_Compression.htm)
 
 #### Securing Your Data
 
@@ -51937,11 +52199,11 @@ Apex Developer Guide Integration and Apex Utilities
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_crypto.htm)_ : Crypto Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_crypto.htm)_ : Crypto Class
 
 _Salesforce Help_ [: Strengthen Your Data’s Security with Shield Platform Encryption](https://help.salesforce.com/s/articleView?id=xcloud.security_pe_overview.htm&type=5&language=en_US)
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)_ : EncodingUtil Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)_ : EncodingUtil Class
 
 #### Encoding Your Data
 
@@ -52006,7 +52268,7 @@ Apex Developer Guide Integration and Apex Utilities
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)_ : EncodingUtil Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)_ : EncodingUtil Class
 
 #### Using Patterns and Matchers
 
@@ -52310,9 +52572,9 @@ subdomain for similar email addresses. For example, `john@fairway.smithco` is no
 
 SEE ALSO:
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_pattern_and_matcher_pattern_methods.htm)_ : Pattern Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_pattern_and_matcher_pattern_methods.htm)_ : Pattern Class
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_pattern_and_matcher_matcher_methods.htm)_ : Matcher Class
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_pattern_and_matcher_matcher_methods.htm)_ : Matcher Class
 
 ## Debugging, Testing, and Deploying Apex
 
@@ -52331,9 +52593,10 @@ Deploying Apex
 You can't develop Apex in your Salesforce production org. Your development work is done in a sandbox, in a scratch org, or in a
 Developer Edition org.
 
-Distributing Apex Using Managed Packages
-As an ISV or Salesforce partner, you can distribute Apex code to customer organizations using packages. Here we'll describe packages
-and package versioning.
+Apex in Managed Packages
+Learn how to develop, distribute, and use managed Apex. Apex in managed packages can behave differently than Apex in unmanaged
+packages or Apex deployed directly to an org. Managed package developers and subscribers must understand these differences so
+that they can safely evolve their packages and integrations.
 
 ### Debugging Apex
 
@@ -52344,12 +52607,12 @@ unhandled exceptions.
 
 1. Debug Log
 
+
+Apex Developer Guide Debugging Apex
+
 2. Exceptions in Apex
 _Exceptions_ note errors and other events that disrupt the normal flow of code execution. `throw` statements are used to generate
 exceptions, while `try`, `catch`, and `finally` statements are used to gracefully recover from exceptions.
-
-
-Apex Developer Guide Debugging Apex
 
 #### Debug Log
 
@@ -52405,6 +52668,9 @@ the request can result in failure, regardless of the time window and the size of
 **•** When your org accumulates more than 1,000 MB of debug logs, we prevent users in the org from adding or editing trace flags. To
 add or edit trace flags so that you can generate more logs after you reach the limit, delete some debug logs.
 
+
+Apex Developer Guide Debugging Apex
+
 Inspecting the Debug Log Sections
 
 After you generate a debug log, the type and amount of information listed depends on the filter values you set for the user. However,
@@ -52413,9 +52679,6 @@ the format for a debug log is always the same.
 Note: Session IDs are replaced with "SESSION_ID_REMOVED" in Apex debug logs
 
 A debug log has the following sections.
-
-
-Apex Developer Guide Debugging Apex
 
 **Header**
 The header contains the following information.
@@ -52427,7 +52690,7 @@ The header contains the following information.
 The following is an example of a header.
 
 ```
-     65.0
+     66.0
 
      APEX_CODE,DEBUG;APEX_PROFILING,INFO;CALLOUT,INFO;DB,INFO;SYSTEM,DEBUG;VALIDATION,INFO;VISUALFORCE,INFO;
 
@@ -52435,7 +52698,7 @@ The following is an example of a header.
 
 ```
 
-In this example, the API version is 65.0, and the following debug log categories and levels have been set.
+In this example, the API version is 66.0, and the following debug log categories and levels have been set.
 
 Apex Code DEBUG
 
@@ -52468,6 +52731,9 @@ or a validation rule.
 
 Note: A class isn’t a discrete unit of code.
 
+
+Apex Developer Guide Debugging Apex
+
 `CODE_UNIT_STARTED` and `CODE_UNIT_FINISHED` delimit units of code. Units of work can embed other units of work.
 For example:
 
@@ -52487,9 +52753,6 @@ For example:
      EXECUTION_FINISHED
 
 ```
-
-
-Apex Developer Guide Debugging Apex
 
 Units of code include, but aren’t limited to, the following:
 
@@ -52547,6 +52810,9 @@ For a trigger, the typeRef begins with the SFDC trigger prefix `__sfdc_trigger/`
 For a class, the typeRef uses the format _**`YourClass`**_, _**`YourClass`**_ `$` _**`YourInnerClass,`**_, or
 _**`YourNamespace`**_ `/` _**`YourClass`**_ `$` _**`YourInnerClass`**_ .
 
+
+Apex Developer Guide Debugging Apex
+
 **More Log Data**
 In addition, the log contains the following information.
 
@@ -52555,9 +52821,6 @@ batch Apex message processing, `@future` methods, Apex test methods, Apex web se
 
 **•** Cumulative profiling information is logged once at the end of the transaction and contains information about DML invocations,
 expensive queries, and so on. “Expensive” queries use resources heavily.
-
-
-Apex Developer Guide Debugging Apex
 
 **•** Heap usage is accurately reported in the debug log and an exception is thrown whenever an Apex Heap Size error occurs. At
 other times, the heap size shown in the debug log is the largest heap size that was calculated during the transaction. To reduce
@@ -52644,6 +52907,9 @@ The following is an example debug log.
 
 ```
 
+
+Apex Developer Guide Debugging Apex
+
 Setting Debug Log Filters for Apex Classes and Triggers
 
 To debug complex Apex logic, you can set Apex class and trigger trace flags, also known as debug log filters. For example, you can raise
@@ -52652,9 +52918,6 @@ the log verbosity for a given class while turning off logging for other classes 
 
 [For an explanation and an example of how Apex class and trigger trace flags work, see Debug Log Filtering for Apex Classes and Apex](https://help.salesforce.com/s/articleView?id=platform.code_debug_log_classes.htm&type=5&language=en_US)
 [Triggers in](https://help.salesforce.com/s/articleView?id=platform.code_debug_log_classes.htm&type=5&language=en_US) _Salesforce Help_ .
-
-
-Apex Developer Guide Debugging Apex
 
 [For concrete instructions about how to configure debug log filters, see Set Up Apex Class and Trigger Trace Flags in](https://help.salesforce.com/s/articleView?id=platform.code_debug_log_classes_setup.htm&type=5&language=en_US) _Salesforce Help_ .
 
@@ -52703,6 +52966,9 @@ Debug Log Categories
 Each debug level includes a debug log level for each of these log categories. The amount of information logged for each category
 depends on the log level.
 
+
+Apex Developer Guide Debugging Apex
+
 **Log Category** **Description**
 
 `Database` Includes information about database activity, including every data manipulation language
@@ -52713,11 +52979,6 @@ determine why an object isn’t accessible.
 
 `Workflow` Includes information for workflow rules, flows, and processes, such as the rule name and the
 actions taken.
-
-
-Apex Developer Guide Debugging Apex
-
-**Log Category** **Description**
 
 `NBA` Includes information about Einstein Next Best Action activity, including strategy execution
 details from Strategy Builder.
@@ -52773,6 +53034,9 @@ Note: Not all levels are available for all categories. Only the levels that corr
 
 **•** `FINEST`
 
+
+Apex Developer Guide Debugging Apex
+
 Important: Before running a deployment, verify that the Apex Code log level isn’t set to FINEST. Otherwise, the deployment is
 likely to take longer than expected. If the Developer Console is open, the log levels in the Developer Console affect all logs, including
 logs created during a deployment.
@@ -52781,9 +53045,6 @@ Debug Event Types
 
 This example shows what is written to the debug log. The event is `USER_DEBUG` . The format is _`timestamp`_ | _`event identifier`_ .
 This example shows a debug log line.
-
-
-Apex Developer Guide Debugging Apex
 
 **Debug Log Line Example**
 
@@ -52832,6 +53093,9 @@ In this example, the event identifier consists of:
 
 ```
 
+
+Apex Developer Guide Debugging Apex
+
 **•** User-supplied string for the `System.Debug` method:
 
 ```
@@ -52840,9 +53104,6 @@ In this example, the event identifier consists of:
 ```
 
 This code snippet triggers this example log line.
-
-
-Apex Developer Guide Debugging Apex
 
 **Debug Log Line Code Snippet**
 
@@ -52893,10 +53154,11 @@ In this example, the event identifier consists of:
 These event types are logged. The table lists which fields or other information are logged with each event, and which combination of
 log level and category causes an event to be logged.
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
-`BULK_HEAP_ALLOCATE` Number of bytes allocated Apex Code FINEST
+`BULK_HEAP_ALLOCATE` Number of bytes allocated Apex FINEST
+Code
 
 `CALLOUT_REQUEST` Line number and request headers Callout INFO and
 above
@@ -52904,8 +53166,15 @@ above
 `CALLOUT_REQUEST` External endpoint and method Callout INFO and
 above
 
-(External object access via cross-org and OData
-adapters for Salesforce Connect)
+
+Apex Developer Guide Debugging Apex
+
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
+
+(External object access via cross-org
+and OData adapters for Salesforce
+Connect)
 
 `CALLOUT_RESPONSE` Line number and response body Callout INFO and
 above
@@ -52913,81 +53182,128 @@ above
 `CALLOUT_RESPONSE` Status and status code Callout INFO and
 above
 
+(External object access via cross-org
+and OData adapters for Salesforce
+Connect)
 
-Apex Developer Guide Debugging Apex
+ERROR
+and
+above
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
-
-(External object access via cross-org and OData
-adapters for Salesforce Connect)
+ERROR
+and
+above
 
 ```
 CODE_UNIT_FINISHED
 
 CODE_UNIT_STARTED
 
-CONSTRUCTOR_ENTRY
-
-CONSTRUCTOR_EXIT
-
 ```
 
-Line number, code unit name, such as `MyTrigger` Apex Code ERROR and
-`on Account trigger event` above
-`BeforeInsert for [new]`, and:
+Line number, code unit name, such as Apex
+`MyTrigger on Account` Code
 
-**•** For Apex methods, the namespace (if applicable),
-class name, and method name; for example,
+```
+trigger event
+```
+
+`BeforeInsert for [new]`,
+and:
+
+**•** For Apex methods, the namespace
+(if applicable), class name, and
+method name; for example,
 
 ```
   YourNamespace.YourClass.yourMethod()
 ```
 
-or `YourClass.yourMethod()`
+or
 
-**•** For Apex triggers, a typeRef; for example,
+```
+  YourClass.yourMethod()
+
+```
+
+**•** For Apex triggers, a typeRef; for
+example,
 
 ```
   __sfdc_trigger/YourNamespace.YourTrigger
 ```
 
-or `__sfdc_trigger/YourTrigger`
-
-Line number, code unit name, such as `MyTrigger` Apex Code ERROR and
-`on Account trigger event` above
-`BeforeInsert for [new]`, and:
-
-**•** For Apex methods, the namespace (if applicable),
-class name, and method name; for example,
-
-```
-  YourNamespace.YourClass.yourMethod()
-```
-
-or `YourClass.yourMethod()`
-
-**•** For Apex triggers, a typeRef; for example,
+or
 
 ```
   __sfdc_trigger/YourTrigger
 
 ```
 
-Line number, Apex class ID, the string `<init>()` Apex Code FINE and
-with the types of parameters (if any) between the above
-parentheses, and a typeRef; for example,
+Line number, code unit name, such as Apex
+`MyTrigger on Account` Code
 
-`YourClass` or
+```
+trigger event
+```
+
+`BeforeInsert for [new]`,
+and:
+
+**•** For Apex methods, the namespace
+(if applicable), class name, and
+method name; for example,
+
+```
+  YourNamespace.YourClass.yourMethod()
+```
+
+or
+
+```
+  YourClass.yourMethod()
+
+```
+
+**•** For Apex triggers, a typeRef; for
+example,
+
+```
+  __sfdc_trigger/YourTrigger
+
+```
+
+
+Apex Developer Guide Debugging Apex
+
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
+
+```
+CONSTRUCTOR_ENTRY
+
+CONSTRUCTOR_EXIT
+
+```
+
+Line number, Apex class ID, the string Apex FINE and
+`<init>()` with the types of Code above
+parameters (if any) between the
+
+parentheses, and a typeRef; for
+example, `YourClass` or
 
 ```
 YourClass.YourInnerClass
 
 ```
 
-Line number, the string `<init>()` with the types Apex Code FINE and
-of parameters (if any) between the parentheses, and above
-a typeRef; for example, `YourClass` or
+Line number, the string `<init>()` Apex FINE and
+with the types of parameters (if any) Code above
+between the parentheses, and a
+
+typeRef; for example, `YourClass`
+or
 
 ```
 YourClass.YourInnerClass
@@ -53006,14 +53322,58 @@ Profiling above
 `CUMULATIVE_PROFILING_BEGIN` None Apex FINE and
 Profiling above
 
+`CUMULATIVE_PROFILING_END` None Apex FINE and
+Profiling above
+
+```
+CURSOR_CREATE_BEGIN
+
+CURSOR_CREATE_END
+
+CURSOR_FETCH
+
+CURSOR_FETCH_PAGE
+
+```
+
+DB INFO and
+Line number and SOQL query
+above
+
+This event occurs when you call
+`[Database.getCursor()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_getCursor)` or
+`[Database.getPaginationCursor()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm#apex_System_Database_getPaginationCursor)` .
+
+DB INFO and
+Line number, query ID, and number of
+above
+rows in the result set
+
+This event occurs when a cursor or
+pagination cursor is created.
+
+DB INFO and
+Line number, query ID, cursor offset
+above
+position, and number of rows fetched
+
+This event occurs when you call
+`[Cursor.fetch()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Database_Cursor.htm#apex_Database_Cursor_fetch)` .
+
+DB INFO and
+Line number, query ID, cursor offset
+above
+position, and number of rows on the
+current page
+
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
-`CUMULATIVE_PROFILING_END` None Apex FINE and
-Profiling above
+This event occurs when you call
+`[PaginationCursor.fetchPage()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Database_PaginationCursor.htm#apex_Database_PaginationCursor_fetchPage)` .
 
 ```
 DATA_ACCESS_EVALUATION
@@ -53022,33 +53382,48 @@ DML_BEGIN
 
 ```
 
-Request and Response for the data access request. Data Access FINE
-Used regardless of the data space or policy being
-accessed.
+Request and Response for the data Data FINE
+access request. Used regardless of the Access
+data space or policy being accessed.
 
-Line number, operation (such as `Insert` or DB INFO and
-`Update` ), record name or type, and number of rows above
-passed into DML operation
+Line number, operation (such as DB INFO and
+`Insert` or `Update` ), record name above
+or type, and number of rows passed
+into DML operation
 
 `DML_END` Line number DB INFO and
 above
 
-`EMAIL_QUEUE` Line number Apex Code INFO and
-above
+`EMAIL_QUEUE` Line number Apex INFO and
+Code above
 
-`ENTERING_MANAGED_PKG` Package namespace Apex Code FINE and
-above
+`ENTERING_MANAGED_PKG` Package namespace Apex FINE and
+Code above
 
 `EVENT_SERVICE_PUB_BEGIN` Event Type Workflow INFO and
 above
 
-`EVENT_SERVICE_PUB_DETAIL` Subscription IDs, ID of the user who published the Workflow FINER and
-event, and event message data above
+FINER
+and
+above
+
+```
+EVENT_SERVICE_PUB_DETAIL
+
+```
+
+Subscription IDs, ID of the user who Workflow
+published the event, and event
+message data
 
 `EVENT_SERVICE_PUB_END` Event Type Workflow INFO and
 above
 
-`EVENT_SERVICE_SUB_BEGIN` Event type and action (subscribe or unsubscribe) Workflow INFO and
+`EVENT_SERVICE_SUB_BEGIN` Event type and action (subscribe or Workflow INFO and
+unsubscribe) above
+
+FINER
+and
 above
 
 ```
@@ -53056,61 +53431,96 @@ EVENT_SERVICE_SUB_DETAIL
 
 ```
 
-ID of the subscription, ID of the subscription instance, Workflow FINER and
-reference data (such as process API name), ID of the above
-user who activated or deactivated the subscription,
-and event message data
+ID of the subscription, ID of the Workflow
+subscription instance, reference data
+(such as process API name), ID of the
+user who activated or deactivated the
+subscription, and event message data
 
-`EVENT_SERVICE_SUB_END` Event type and action (subscribe or unsubscribe) Workflow INFO and
+`EVENT_SERVICE_SUB_END` Event type and action (subscribe or Workflow INFO and
+unsubscribe) above
+
+`EXCEPTION_THROWN` Line number, exception type, and Apex INFO and
+message Code above
+
+`EXECUTION_FINISHED` None Apex
+Code
+
+
+ERROR
+and
 above
-
-`EXCEPTION_THROWN` Line number, exception type, and message Apex Code INFO and
-above
-
-`EXECUTION_FINISHED` None Apex Code ERROR and
-above
-
-`EXECUTION_STARTED` None Apex Code ERROR and
-above
-
-`FATAL_ERROR` Exception type, message, and stack trace Apex Code ERROR and
-above
-
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
+
+`EXECUTION_STARTED` None Apex
+Code
+
+`FATAL_ERROR` Exception type, message, and stack Apex
+trace Code
+
+ERROR
+and
+above
+
+ERROR
+and
+above
+
+FINER
+and
+above
+
+FINER
+and
+above
 
 ```
 FLOW_ACTIONCALL_DETAIL
 
 ```
 
-Interview ID, element name, action type, action enum Workflow FINER and
-or ID, whether the action call succeeded, and error above
+Interview ID, element name, action Workflow
+type, action enum or ID, whether the
+action call succeeded, and error
 message
 
-`FLOW_ASSIGNMENT_DETAIL` Interview ID, reference, operator, and value Workflow FINER and
-above
+`FLOW_ASSIGNMENT_DETAIL` Interview ID, reference, operator, and Workflow
+value
 
 `FLOW_BULK_ELEMENT_BEGIN` Interview ID and element type Workflow FINE and
 above
 
-`FLOW_BULK_ELEMENT_DETAIL` Interview ID, element type, element name, number Workflow FINER and
-of records above
+`FLOW_BULK_ELEMENT_DETAIL` Interview ID, element type, element Workflow
+name, number of records
 
-`FLOW_BULK_ELEMENT_END` Interview ID, element type, element name, number Workflow FINE and
-of records, and execution time above
+FINER
+and
+above
 
 ```
+FLOW_BULK_ELEMENT_END
+
 FLOW_BULK_ELEMENT_LIMIT_USAGE
 
+FLOW_BULK_ELEMENT_NOT_SUPPORTED
+
 ```
 
-Incremented usage toward a limit for this bulk Workflow FINER and
-element. Each event displays the usage for one of above
-these limits.
+Interview ID, element type, element Workflow FINE and
+name, number of records, and above
+execution time
+
+Operation, element name, and entity Workflow INFO and
+name that doesn’t support bulk above
+operations
+
+Incremented usage toward a limit for Workflow
+this bulk element. Each event displays
+the usage for one of these limits.
 
 ```
 SOQL queries
@@ -53139,128 +53549,162 @@ Push notifications
 
 ```
 
-`FLOW_BULK_ELEMENT_NOT_SUPPORTED` Operation, element name, and entity name that Workflow INFO and
-doesn’t support bulk operations above
-
-`FLOW_CREATE_INTERVIEW_BEGIN` Organization ID, definition ID, and version ID Workflow INFO and
+FINER
+and
 above
+
+`FLOW_CREATE_INTERVIEW_BEGIN` Organization ID, definition ID, and Workflow INFO and
+version ID above
+
+
+Apex Developer Guide Debugging Apex
+
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
 `FLOW_CREATE_INTERVIEW_END` Interview ID and flow name Workflow INFO and
 above
 
-`FLOW_CREATE_INTERVIEW_ERROR` Message, organization ID, definition ID, and version Workflow ERROR and
-ID above
+`FLOW_CREATE_INTERVIEW_ERROR` Message, organization ID, definition Workflow
+ID, and version ID
 
-`FLOW_ELEMENT_BEGIN` Interview ID, element type, and element name Workflow FINE and
+ERROR
+and
 above
+
+`FLOW_ELEMENT_BEGIN` Interview ID, element type, and Workflow FINE and
+element name above
 
 `FLOW_ELEMENT_DEFERRED` Element type and element name Workflow FINE and
 above
 
-`FLOW_ELEMENT_END` Interview ID, element type, and element name Workflow FINE and
+`FLOW_ELEMENT_END` Interview ID, element type, and Workflow FINE and
+element name above
+
+`FLOW_ELEMENT_ERROR` Message, element type, and element Workflow
+name (flow runtime exception)
+
+`FLOW_ELEMENT_ERROR` Message, element type, and element Workflow
+name (spark not found)
+
+`FLOW_ELEMENT_ERROR` Message, element type, and element Workflow
+name (designer exception)
+
+`FLOW_ELEMENT_ERROR` Message, element type, and element Workflow
+name (designer limit exceeded)
+
+`FLOW_ELEMENT_ERROR` Message, element type, and element Workflow
+name (designer runtime exception)
+
+`FLOW_ELEMENT_FAULT` Message, element type, and element Workflow
+name (fault path taken)
+
+ERROR
+and
 above
 
+ERROR
+and
+above
 
-Apex Developer Guide Debugging Apex
+ERROR
+and
+above
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+ERROR
+and
+above
 
-`FLOW_ELEMENT_ERROR` Message, element type, and element name (flow Workflow ERROR and
-runtime exception) above
+ERROR
+and
+above
 
-`FLOW_ELEMENT_ERROR` Message, element type, and element name (spark not Workflow ERROR and
-found) above
+WARNING
+and
+above
 
-`FLOW_ELEMENT_ERROR` Message, element type, and element name (designer Workflow ERROR and
-exception) above
-
-`FLOW_ELEMENT_ERROR` Message, element type, and element name (designer Workflow ERROR and
-limit exceeded) above
-
-`FLOW_ELEMENT_ERROR` Message, element type, and element name (designer Workflow ERROR and
-runtime exception) above
-
-`FLOW_ELEMENT_FAULT` Message, element type, and element name (fault path Workflow WARNING
-taken) and above
+FINER
+and
+above
 
 ```
 FLOW_ELEMENT_LIMIT_USAGE
 
-FLOW_INTERVIEW_FINISHED_LIMIT_USAGE
-
 ```
 
-Incremented usage toward a limit for this element. Workflow FINER and
-Each event displays the usage for one of these limits. above
-
-```
-SOQL queries
-
-SOQL query rows
-
-SOSL queries
-
-DML statements
-
-DML rows
-
-CPU time in ms
-
-Heap size in bytes
-
-Callouts
-
-Email invocations
-
-Future calls
-
-Jobs in queue
-
-Push notifications
-
-```
-
-Usage toward a limit when the interview finishes. Each Workflow FINER and
-event displays the usage for one of these limits. above
-
-```
-SOQL queries
-
-SOQL query rows
-
-SOSL queries
-
-DML statements
-
-DML rows
-
-CPU time in ms
-
-Heap size in bytes
-
-Callouts
-
-Email invocations
-
-Future calls
-
-Jobs in queue
-
-Push notifications
-
-```
-
-`FLOW_INTERVIEW_PAUSED` Interview ID, flow name, and why the user paused Workflow INFO and
-above
+Incremented usage toward a limit for Workflow
+this element. Each event displays the
+usage for one of these limits.
 
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
+
+```
+                                 Email invocations
+
+                                 Future calls
+
+                                 Jobs in queue
+
+                                 Push notifications
+
+```
+
+FINER
+and
+above
+
+```
+FLOW_INTERVIEW_FINISHED_LIMIT_USAGE
+
+```
+
+Usage toward a limit when the Workflow
+interview finishes. Each event displays
+the usage for one of these limits.
+
+```
+SOQL queries
+
+SOQL query rows
+
+SOSL queries
+
+DML statements
+
+DML rows
+
+CPU time in ms
+
+Heap size in bytes
+
+Callouts
+
+Email invocations
+
+Future calls
+
+Jobs in queue
+
+Push notifications
+
+```
+
+`FLOW_INTERVIEW_PAUSED` Interview ID, flow name, and why the Workflow INFO and
+user paused above
 
 `FLOW_INTERVIEW_RESUMED` Interview ID and flow name Workflow INFO and
+above
+
+FINER
+and
+above
+
+FINER
+and
 above
 
 ```
@@ -53268,14 +53712,13 @@ FLOW_LOOP_DETAIL
 
 ```
 
-Interview ID, index, and value Workflow FINER and
-above
+Interview ID, index, and value Workflow
 
-The index is the position in the collection variable for
-the item that the loop is operating on.
+The index is the position in the
+collection variable for the item that the
+loop is operating on.
 
-`FLOW_RULE_DETAIL` Interview ID, rule name, and result Workflow FINER and
-above
+`FLOW_RULE_DETAIL` Interview ID, rule name, and result Workflow
 
 `FLOW_START_INTERVIEW_BEGIN` Interview ID and flow name Workflow INFO and
 above
@@ -53289,7 +53732,20 @@ above
 `FLOW_START_INTERVIEWS_END` Requests Workflow INFO and
 above
 
-`FLOW_START_INTERVIEWS_ERROR` Message, interview ID, and flow name Workflow ERROR and
+
+Apex Developer Guide Debugging Apex
+
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
+
+`FLOW_START_INTERVIEWS_ERROR` Message, interview ID, and flow name Workflow
+
+ERROR
+and
+above
+
+FINER
+and
 above
 
 ```
@@ -53297,8 +53753,9 @@ FLOW_START_INTERVIEW_LIMIT_USAGE
 
 ```
 
-Usage toward a limit at the interview’s start time. Each Workflow FINER and
-event displays the usage for one of these limits. above
+Usage toward a limit at the interview’s Workflow
+start time. Each event displays the
+usage for one of these limits.
 
 ```
 SOQL queries
@@ -53327,37 +53784,80 @@ Push notifications
 
 ```
 
-`FLOW_START_SCHEDULED_RECORDS` Message and number of records that the flow runs Workflow INFO and
-for above
+`FLOW_START_SCHEDULED_RECORDS` Message and number of records that Workflow INFO and
+the flow runs for above
 
-`FLOW_SUBFLOW_DETAIL` Interview ID, name, definition ID, and version ID Workflow FINER and
+`FLOW_SUBFLOW_DETAIL` Interview ID, name, definition ID, and Workflow
+version ID
+
+`FLOW_VALUE_ASSIGNMENT` Interview ID, key, and value Workflow
+
+`FLOW_WAIT_EVENT_RESUMING_DETAIL` Interview ID, element name, event Workflow
+name, and event type
+
+```
+FLOW_WAIT_EVENT_WAITING_DETAIL
+
+```
+
+Interview ID, element name, event Workflow
+name, event type, and whether
+conditions were met
+
+`FLOW_WAIT_RESUMING_DETAIL` Interview ID, element name, and Workflow
+persisted interview ID
+
+FINER
+and
 above
 
-`FLOW_VALUE_ASSIGNMENT` Interview ID, key, and value Workflow FINER and
+FINER
+and
 above
 
-`FLOW_WAIT_EVENT_RESUMING_DETAIL` Interview ID, element name, event name, and event Workflow FINER and
-type above
+FINER
+and
+above
+
+FINER
+and
+above
+
+FINER
+and
+above
+
+FINER
+and
+above
+
+FINER
+and
+above
+
+```
+FLOW_WAIT_WAITING_DETAIL
+
+```
+
+Interview ID, element name, number Workflow
+of events that the element is waiting
+for, and persisted interview ID
+
+`HEAP_ALLOCATE` Line number and number of bytes Apex
+Code
 
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
-`FLOW_WAIT_EVENT_WAITING_DETAIL` Interview ID, element name, event name, event type, Workflow FINER and
-and whether conditions were met above
+`HEAP_DEALLOCATE` Line number and number of bytes Apex
+deallocated Code
 
-`FLOW_WAIT_RESUMING_DETAIL` Interview ID, element name, and persisted interview Workflow FINER and
-ID above
-
-`FLOW_WAIT_WAITING_DETAIL` Interview ID, element name, number of events that Workflow FINER and
-the element is waiting for, and persisted interview ID above
-
-`HEAP_ALLOCATE` Line number and number of bytes Apex Code FINER and
-above
-
-`HEAP_DEALLOCATE` Line number and number of bytes deallocated Apex Code FINER and
+FINER
+and
 above
 
 `IDEAS_QUERY_EXECUTE` Line number DB FINEST
@@ -53368,64 +53868,125 @@ LIMIT_USAGE_FOR_NS
 ```
 
 Namespace and these limits: Apex FINEST
+Profiling
+```
+Number of SOQL queries
+
+Number of query rows
+
+Number of SOSL queries
+
+Number of DML statements
+
+Number of DML rows
+
+Number of code statements
+
+Maximum heap size
+
+Number of callouts
+
+Number of Email
+
+Invocations
+
+Number of fields
+
+describes
+
+Number of record type
+
+describes
+
+Number of child
+
+relationships
+
+ describes
+
+Number of picklist
+
+describes
+
+Number of future calls
+
+Number of find similar
+
+calls
+
+Number of System.runAs()
+
+invocations
+
+```
 
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
 ```
-                        invocations
+METHOD_ENTRY
 
-```
-
-`METHOD_ENTRY` Line number, the Lightning Platform ID of the class, Apex Code FINE and
-and method signature (with namespace, if applicable) above
-
-```
 METHOD_EXIT
 
 NAMED_CREDENTIAL_REQUEST
 
-```
+NAMED_CREDENTIAL_RESPONSE
 
-Line number, the Lightning Platform ID of the class, Apex Code FINE and
-and method signature (with namespace, if applicable) above
-
-For constructors, this information is logged: line
-number and class name.
-
-Named Credential Id, Named Credential Name, Callout INFO and
-Endpoint, Method, External Credential Type, Http above
-Header Authorization, Request Size bytes, and Retry
-on 401.
-
-If using an outbound network connection, these fields
-are also logged: Outbound Network Connection Id,
-
-Outbound Network Connection Name, Outbound
-Network Connection Status, Host Type, Host Region,
-and Private Connect Outbound Hourly Data Usage
-Percent.
-
-`NAMED_CREDENTIAL_RESPONSE` Truncated section of the response body that’s Callout INFO and
-returned from the NamedCredential callout. above
-
-```
 NAMED_CREDENTIAL_RESPONSE_DETAIL
 
 ```
 
-Named Credential Id, Named Credential Name, Status Callout FINER and
-Code, Response Size bytes, Overall Callout Time ms, above
-and Connect Time ms.
+Line number, the Lightning Platform Apex FINE and
+ID of the class, and method signature Code above
+(with namespace, if applicable)
 
-If using an outbound network connection, these fields
-are also logged: Outbound Network Connection Id,
+Line number, the Lightning Platform Apex FINE and
+ID of the class, and method signature Code above
+(with namespace, if applicable)
 
-Outbound Network Connection Name, and Private
-Connect Outbound Hourly Data Usage Percent.
+For constructors, this information is
+logged: line number and class name.
+
+Named Credential Id, Named Callout INFO and
+Credential Name, Endpoint, Method, above
+External Credential Type, Http Header
+
+Authorization, Request Size bytes, and
+Retry on 401.
+
+If using an outbound network
+connection, these fields are also
+logged: Outbound Network
+Connection Id, Outbound Network
+Connection Name, Outbound Network
+Connection Status, Host Type, Host
+Region, and Private Connect
+Outbound Hourly Data Usage Percent.
+
+Truncated section of the response Callout INFO and
+body that’s returned from the above
+NamedCredential callout.
+
+Named Credential Id, Named Callout
+Credential Name, Status Code,
+Response Size bytes, Overall Callout
+Time ms, and Connect Time ms.
+
+If using an outbound network
+connection, these fields are also
+
+logged: Outbound Network
+Connection Id, Outbound Network
+Connection Name, and Private
+Connect Outbound Hourly Data Usage
+Percent.
+
+FINER
+and
+above
 
 `NBA_NODE_BEGIN` Element name, element type NBA FINE and
 above
@@ -53433,20 +53994,24 @@ above
 `NBA_NODE_DETAIL` Element name, element type, message NBA FINE and
 above
 
+
+Apex Developer Guide Debugging Apex
+
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
+
 `NBA_NODE_END` Element name, element type, message NBA FINE and
 above
 
-`NBA_NODE_ERROR` Element name, element type, error message NBA ERROR and
+`NBA_NODE_ERROR` Element name, element type, error NBA
+message
+
+ERROR
+and
 above
 
 `NBA_OFFER_INVALID` Name, ID, reason NBA FINE and
 above
-
-
-Apex Developer Guide Debugging Apex
-
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
 
 `NBA_STRATEGY_BEGIN` Strategy name NBA FINE and
 above
@@ -53454,79 +54019,80 @@ above
 `NBA_STRATEGY_END` Strategy name, count of outputs NBA FINE and
 above
 
-`NBA_STRATEGY_ERROR` Strategy name, error message NBA ERROR and
+`NBA_STRATEGY_ERROR` Strategy name, error message NBA
+
+ERROR
+and
 above
 
-`POLICY_RULE_DEFINITION_CONDITION_EVALUATION_RESPONSE` Condition evaluation response for a policy. Used for Data Access FINER
-identifying conditions that match the policy.
-
-`POLICY_RULE_EVALUATION_REQUEST` Request received for the evaluation of access via the Data Access FINE
-policy.
-
-`POLICY_RULE_EVALUATION_RESPONSE` Response for the evaluation of access via the policy, Data Access FINER
-including why access is granted or denied.
+```
+POLICY_RULE_DEFINITION_CONDITION_EVALUATION_RESPONSE
 
 ```
+
+Condition evaluation response for a Data FINER
+policy. Used for identifying conditions Access
+that match the policy.
+
+`POLICY_RULE_EVALUATION_REQUEST` Request received for the evaluation of Data FINE
+access via the policy. Access
+
+```
+POLICY_RULE_EVALUATION_RESPONSE
+
 POLICY_RULE_EVALUATION_SKIPPED
 
 ```
 
-Object for which the policy evaluation is skipped. If Data Access FINER
-the policy evaluation is skipped, the user is allowed
-access to the object.
+Response for the evaluation of access Data FINER
+via the policy, including why access is Access
+granted or denied.
 
-`POLICY_RULE_EVALUATION_START` Rule being evaluated. Data Access FINER
+Object for which the policy evaluation Data FINER
+is skipped. If the policy evaluation is Access
+skipped, the user is allowed access to
+the object.
+
+`POLICY_RULE_EVALUATION_START` Rule being evaluated. Data FINER
+Access
 
 ```
 POP_TRACE_FLAGS
 
 PUSH_NOTIFICATION_INVALID_APP
 
+```
+
+Line number, the Lightning Platform System INFO and
+ID of the class or trigger that has its log above
+levels set and that is going into scope,
+
+the name of this class or trigger, and
+the log level settings that are in effect
+after leaving this scope
+
+App namespace, app name Apex ERROR
+Code
+
+This event occurs when Apex code is
+trying to send a notification to an app
+
+that doesn't exist in the org, or isn’t
+push-enabled.
+
+
+Apex Developer Guide Debugging Apex
+
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
+
+```
 PUSH_NOTIFICATION_INVALID_CERTIFICATE
 
 PUSH_NOTIFICATION_INVALID_NOTIFICATION
 
 PUSH_NOTIFICATION_NO_DEVICES
 
-```
-
-Line number, the Lightning Platform ID of the class System INFO and
-or trigger that has its log levels set and that is going above
-into scope, the name of this class or trigger, and the
-
-log level settings that are in effect after leaving this
-scope
-
-App namespace, app name Apex Code ERROR
-
-This event occurs when Apex code is trying to send
-a notification to an app that doesn't exist in the org,
-or isn’t push-enabled.
-
-App namespace, app name Apex Code ERROR
-
-This event indicates that the certificate is invalid. For
-example, it’s expired.
-
-App namespace, app name, service type (Apple or Apex Code ERROR
-Android GCM), user ID, device, payload (substring),
-payload length.
-
-This event occurs when a notification payload is too
-long.
-
-App namespace, app name Apex Code DEBUG
-
-This event occurs when none of the users we’re trying
-to send notifications to have devices registered.
-
-
-Apex Developer Guide Debugging Apex
-
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
-
-```
 PUSH_NOTIFICATION_NOT_ENABLED
 
 PUSH_NOTIFICATION_SENT
@@ -53535,21 +54101,48 @@ PUSH_TRACE_FLAGS
 
 ```
 
-Apex Code INFO
-This event occurs when push notifications aren’t
-enabled in your org.
+App namespace, app name Apex ERROR
+Code
 
-App namespace, app name, service type (Apple or Apex Code DEBUG
-Android GCM), user ID, device, payload (substring)
+This event indicates that the certificate
+is invalid. For example, it’s expired.
 
-This event records that a notification was accepted
-for sending. We don’t guarantee delivery of the
-notification.
+App namespace, app name, service Apex ERROR
+type (Apple or Android GCM), user ID, Code
+device, payload (substring), payload
+length.
 
-Line number, the Salesforce ID of the class or trigger System INFO and
-that has its log levels set and that is going out of above
-scope, the name of this class or trigger, and the log
-level settings that are in effect after entering this scope
+This event occurs when a notification
+payload is too long.
+
+App namespace, app name Apex DEBUG
+Code
+
+This event occurs when none of the
+users we’re trying to send notifications
+to have devices registered.
+
+Apex INFO
+This event occurs when push
+Code
+notifications aren’t enabled in your
+org.
+
+App namespace, app name, service Apex DEBUG
+type (Apple or Android GCM), user ID, Code
+device, payload (substring)
+
+This event records that a notification
+was accepted for sending. We don’t
+guarantee delivery of the notification.
+
+Line number, the Salesforce ID of the System INFO and
+class or trigger that has its log levels above
+set and that is going out of scope, the
+
+name of this class or trigger, and the
+log level settings that are in effect after
+entering this scope
 
 `QUERY_MORE_BEGIN` Line number DB INFO and
 above
@@ -53557,11 +54150,17 @@ above
 `QUERY_MORE_END` Line number DB INFO and
 above
 
-`QUERY_MORE_ITERATIONS` Line number and the number of `queryMore` DB INFO and
-iterations above
+`QUERY_MORE_ITERATIONS` Line number and the number of DB INFO and
+`queryMore` iterations above
 
 `SAVEPOINT_ROLLBACK` Line number and Savepoint name DB INFO and
 above
+
+
+Apex Developer Guide Debugging Apex
+
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
 `SAVEPOINT_SET` Line number and Savepoint name DB INFO and
 above
@@ -53571,9 +54170,10 @@ SLA_END
 
 ```
 
-Number of cases, load time, processing time, number Workflow INFO and
-of case milestones to insert, update, or delete, and above
-new trigger
+Number of cases, load time, processing Workflow INFO and
+time, number of case milestones to above
+insert, update, or delete, and new
+trigger
 
 `SLA_EVAL_MILESTONE` Milestone ID Workflow INFO and
 above
@@ -53584,40 +54184,32 @@ above
 `SLA_PROCESS_CASE` Case ID Workflow INFO and
 above
 
-`SOQL_EXECUTE_BEGIN` Line number, number of aggregations, and query DB INFO and
-source above
+`SOQL_EXECUTE_BEGIN` Line number, number of aggregations, DB INFO and
+and query source above
 
-`SOQL_EXECUTE_END` Line number, number of rows, and duration in DB INFO and
-milliseconds above
+`SOQL_EXECUTE_END` Line number, number of rows, and DB INFO and
+duration in milliseconds above
 
-```
-SOQL_EXECUTE_EXPLAIN
+`SOQL_EXECUTE_EXPLAIN` Query Plan details for the executed DB FINEST
+SOQL query. To get feedback on query
 
-```
-
-Query Plan details for the executed SOQL query. To DB FINEST
-[get feedback on query performance, see Get Feedback](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_query_explain.htm)
-[on Query Performance.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_rest.meta/api_rest/dome_query_explain.htm)
-
-
-Apex Developer Guide Debugging Apex
-
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+[performance, see Get Feedback on](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_query_explain.htm)
+[Query Performance.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_query_explain.htm)
 
 `SOSL_EXECUTE_BEGIN` Line number and query source DB INFO and
 above
 
-`SOSL_EXECUTE_END` Line number, number of rows, and duration in DB INFO and
-milliseconds above
+`SOSL_EXECUTE_END` Line number, number of rows, and DB INFO and
+duration in milliseconds above
 
 ```
 STACK_FRAME_VARIABLE_LIST
 
 ```
 
-Frame number and variable list of the form: Apex FINE and
-_`Variable number`_ | _`Value`_ . For example: Profiling above
+Frame number and variable list of the Apex FINE and
+form: _`Variable number`_ | Profiling above
+_`Value`_ . For example:
 
 ```
 var1:50
@@ -53626,7 +54218,11 @@ var2:'Hello World'
 
 ```
 
-`STATEMENT_EXECUTE` Line number Apex Code FINER and
+`STATEMENT_EXECUTE` Line number Apex
+Code
+
+FINER
+and
 above
 
 ```
@@ -53634,8 +54230,8 @@ STATIC_VARIABLE_LIST
 
 ```
 
-Variable list of the form: _`Variable number`_ | Apex FINE and
-_`Value`_ . For example: Profiling above
+Variable list of the form: _`Variable`_ Apex FINE and
+_`number`_ | _`Value`_ . For example: Profiling above
 
 ```
 var1:50
@@ -53644,11 +54240,28 @@ var2:'Hello World'
 
 ```
 
-`SYSTEM_CONSTRUCTOR_ENTRY` Line number and the string `<init>()` with the System FINE and
-types of parameters, if any, between the parentheses above
 
-`SYSTEM_CONSTRUCTOR_EXIT` Line number and the string `<init>()` with the System FINE and
-types of parameters, if any, between the parentheses above
+Apex Developer Guide Debugging Apex
+
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
+
+```
+SYSTEM_CONSTRUCTOR_ENTRY
+
+SYSTEM_CONSTRUCTOR_EXIT
+
+```
+
+Line number and the string System FINE and
+`<init>()` with the types of above
+parameters, if any, between the
+parentheses
+
+Line number and the string System FINE and
+`<init>()` with the types of above
+parameters, if any, between the
+parentheses
 
 `SYSTEM_METHOD_ENTRY` Line number and method signature System FINE and
 above
@@ -53668,36 +54281,42 @@ Profiling above
 `TOTAL_EMAIL_RECIPIENTS_QUEUED` Number of emails sent Apex FINE and
 Profiling above
 
-`USER_DEBUG` Line number, logging level, and user-supplied string Apex Code DEBUG and
-above by
+`USER_DEBUG` Line number, logging level, and Apex DEBUG
+user-supplied string Code and
 
-default. If the
-user sets the
-log level for
+above by
+default. If
+the user
+sets the
+log level
+for the
+
+```
+                                               System.Debug
+```
+
+method,
+the event
+is logged
+at that
+level
+instead.
+
+`USER_INFO` Line number, user ID, username, user Apex
+timezone, and user timezone in GMT Code
+
+ERROR
+and
+above
+
+`VALIDATION_ERROR` Error message Validation INFO and
+above
 
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
-
-the
-
-```
-                                                 System.Debug
-```
-
-method, the
-event is
-logged at
-that level
-instead.
-
-`USER_INFO` Line number, user ID, username, user timezone, and Apex Code ERROR and
-user timezone in GMT above
-
-`VALIDATION_ERROR` Error message Validation INFO and
-above
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
 `VALIDATION_FAIL` None Validation INFO and
 above
@@ -53714,19 +54333,27 @@ above
 ```
 VARIABLE_ASSIGNMENT
 
+VARIABLE_SCOPE_BEGIN
+
 ```
 
-Line number, variable name (including the variable’s Apex Code FINEST
-namespace, if applicable), a string representation of
-the variable’s value, and the variable’s address
+Line number, variable name (including Apex FINEST
+the variable’s namespace, if Code
+applicable), a string representation of
 
-`VARIABLE_SCOPE_BEGIN` Line number, variable name (including the variable’s Apex Code FINEST
-namespace, if applicable), type, a value that indicates
+the variable’s value, and the variable’s
+address
 
-whether the variable can be referenced, and a value
-that indicates whether the variable is static
+Line number, variable name (including Apex FINEST
+the variable’s namespace, if Code
+applicable), type, a value that indicates
 
-`VARIABLE_SCOPE_END` None Apex Code FINEST
+whether the variable can be
+referenced, and a value that indicates
+whether the variable is static
+
+`VARIABLE_SCOPE_END` None Apex FINEST
+Code
 
 ```
 VF_APEX_CALL_START
@@ -53735,12 +54362,14 @@ VF_APEX_CALL_END
 
 ```
 
-Element name, method name, return type, and the Apex Code INFO and
-typeRef for the Visualforce controller (for example, above
+Element name, method name, return Apex INFO and
+type, and the typeRef for the Code above
+Visualforce controller (for example,
 `YourApexClass` )
 
-Element name, method name, return type, and the Apex Code INFO and
-typeRef for the Visualforce controller (for example, above
+Element name, method name, return Apex INFO and
+type, and the typeRef for the Code above
+Visualforce controller (for example,
 `YourApexClass` )
 
 `VF_DESERIALIZE_VIEWSTATE_BEGIN` View state ID Visualforce INFO and
@@ -53749,20 +54378,26 @@ above
 `VF_DESERIALIZE_VIEWSTATE_END` None Visualforce INFO and
 above
 
+`VF_EVALUATE_FORMULA_BEGIN` View state ID and formula Visualforce
+
+`VF_EVALUATE_FORMULA_END` None Visualforce
+
+
+FINER
+and
+above
+
+FINER
+and
+above
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
-`VF_EVALUATE_FORMULA_BEGIN` View state ID and formula Visualforce FINER and
-above
-
-`VF_EVALUATE_FORMULA_END` None Visualforce FINER and
-above
-
-`VF_PAGE_MESSAGE` Message text Apex Code INFO and
-above
+`VF_PAGE_MESSAGE` Message text Apex INFO and
+Code above
 
 `VF_SERIALIZE_VIEWSTATE_BEGIN` View state ID Visualforce INFO and
 above
@@ -53773,14 +54408,20 @@ above
 `WF_ACTION` Action description Workflow INFO and
 above
 
-`WF_ACTION_TASK` Task subject, action ID, rule name, rule ID, owner, and Workflow INFO and
-due date above
+`WF_ACTION_TASK` Task subject, action ID, rule name, rule Workflow INFO and
+ID, owner, and due date above
 
 `WF_ACTIONS_END` Summary of actions performed Workflow INFO and
 above
 
-`WF_APPROVAL` Transition type, `EntityName: NameField` Workflow INFO and
-`Id`, and process node name above
+```
+WF_APPROVAL
+
+```
+
+Transition type, `EntityName:` Workflow INFO and
+`NameField Id`, and process node above
+name
 
 `WF_APPROVAL_REMOVE` `EntityName: NameField Id` Workflow INFO and
 above
@@ -53788,8 +54429,8 @@ above
 `WF_APPROVAL_SUBMIT` `EntityName: NameField Id` Workflow INFO and
 above
 
-`WF_APPROVAL_SUBMITTER` Submitter ID, submitter full name, and error message Workflow INFO and
-above
+`WF_APPROVAL_SUBMITTER` Submitter ID, submitter full name, and Workflow INFO and
+error message above
 
 `WF_ASSIGN` Owner and assignee template ID Workflow INFO and
 above
@@ -53799,39 +54440,46 @@ WF_CRITERIA_BEGIN
 
 ```
 
-`EntityName: NameField Id`, rule name, rule Workflow INFO and
-ID, and (if rule respects trigger types) trigger type and above
+`EntityName: NameField Id`, Workflow INFO and
+rule name, rule ID, and (if rule respects above
+trigger types) trigger type and
 recursive count
 
-`WF_CRITERIA_END` Boolean value indicating success (true or false) Workflow INFO and
-above
+`WF_CRITERIA_END` Boolean value indicating success (true Workflow INFO and
+or false) above
 
 `WF_EMAIL_ALERT` Action ID, rule name, and rule ID Workflow INFO and
 above
 
-`WF_EMAIL_SENT` Email template ID, recipients, and CC emails Workflow INFO and
-above
+`WF_EMAIL_SENT` Email template ID, recipients, and CC Workflow INFO and
+emails above
 
 `WF_ENQUEUE_ACTIONS` Summary of actions enqueued Workflow INFO and
+above
+
+`WF_ESCALATION_ACTION` Case ID and escalation date Workflow INFO and
 above
 
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
-
-`WF_ESCALATION_ACTION` Case ID and escalation date Workflow INFO and
-above
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
 `WF_ESCALATION_RULE` None Workflow INFO and
 above
 
-`WF_EVAL_ENTRY_CRITERIA` Process name, email template ID, and Boolean value Workflow INFO and
-indicating result (true or false) above
+```
+WF_EVAL_ENTRY_CRITERIA
 
-`WF_FIELD_UPDATE` `EntityName: NameField Id` and the object Workflow INFO and
-or field name above
+```
+
+Process name, email template ID, and Workflow INFO and
+Boolean value indicating result (true above
+or false)
+
+`WF_FIELD_UPDATE` `EntityName: NameField Id` Workflow INFO and
+and the object or field name above
 
 `WF_FLOW_ACTION_BEGIN` ID of flow trigger Workflow INFO and
 above
@@ -53841,19 +54489,34 @@ WF_FLOW_ACTION_DETAIL
 
 ```
 
-ID of flow trigger, object type and ID of record whose Workflow FINE and
-creation or update caused the workflow rule to fire, above
-name and ID of workflow rule, and the names and
-values of flow variables
+ID of flow trigger, object type and ID Workflow FINE and
+of record whose creation or update above
+caused the workflow rule to fire, name
+
+and ID of workflow rule, and the
+names and values of flow variables
 
 `WF_FLOW_ACTION_END` ID of flow trigger Workflow INFO and
 above
 
-`WF_FLOW_ACTION_ERROR` ID of flow trigger, ID of flow definition, ID of flow Workflow ERROR and
-version, and flow error message above
-
-`WF_FLOW_ACTION_ERROR_DETAIL` Detailed flow error message Workflow ERROR and
+ERROR
+and
 above
+
+ERROR
+and
+above
+
+```
+WF_FLOW_ACTION_ERROR
+
+```
+
+ID of flow trigger, ID of flow definition, Workflow
+ID of flow version, and flow error
+message
+
+`WF_FLOW_ACTION_ERROR_DETAIL` Detailed flow error message Workflow
 
 `WF_FORMULA` Formula source and values Workflow INFO and
 above
@@ -53867,8 +54530,8 @@ above
 `WF_NO_PROCESS_FOUND` None Workflow INFO and
 above
 
-`WF_OUTBOUND_MSG` `EntityName: NameField Id`, action ID, rule Workflow INFO and
-name, and rule ID above
+`WF_OUTBOUND_MSG` `EntityName: NameField Id`, Workflow INFO and
+action ID, rule name, and rule ID above
 
 `WF_PROCESS_FOUND` Process definition ID and process label Workflow INFO and
 above
@@ -53876,17 +54539,17 @@ above
 `WF_PROCESS_NODE` Process name Workflow INFO and
 above
 
-`WF_REASSIGN_RECORD` `EntityName: NameField Id` and owner Workflow INFO and
-above
+`WF_REASSIGN_RECORD` `EntityName: NameField Id` Workflow INFO and
+and owner above
 
 
 Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
-`WF_RESPONSE_NOTIFY` Notifier name, notifier email, notifier template ID, and Workflow INFO and
-reply-to email above
+`WF_RESPONSE_NOTIFY` Notifier name, notifier email, notifier Workflow INFO and
+template ID, and reply-to email above
 
 `WF_RULE_ENTRY_ORDER` Integer indicating order Workflow INFO and
 above
@@ -53915,41 +54578,70 @@ above
 `WF_SPOOL_ACTION_BEGIN` Node type Workflow INFO and
 above
 
-`WF_TIME_TRIGGER` `EntityName: NameField Id`, time action, Workflow INFO and
-time action container, and evaluation Datetime above
+```
+WF_TIME_TRIGGER
+
+```
+
+`EntityName: NameField Id`, Workflow INFO and
+time action, time action container, and above
+evaluation Datetime
 
 `WF_TIME_TRIGGERS_BEGIN` None Workflow INFO and
 above
 
-`XDS_DETAIL` For OData adapters, the POST body and the name and Callout FINER and
-evaluated formula for custom HTTP headers above
+FINER
+and
+above
 
-(External object access via cross-org and OData
-adapters for Salesforce Connect)
+```
+XDS_DETAIL
 
-`XDS_RESPONSE` External data source, external object, request details, Callout INFO and
-number of returned records, and system usage above
+```
 
-(External object access via cross-org and OData
-adapters for Salesforce Connect)
+(External object access via cross-org
+and OData adapters for Salesforce
+Connect)
 
-`XDS_RESPONSE_DETAIL` Truncated response from the external system, Callout FINER and
-including returned records above
+```
+XDS_RESPONSE
 
-(External object access via cross-org and OData
-adapters for Salesforce Connect)
+```
 
+(External object access via cross-org
+and OData adapters for Salesforce
+Connect)
+
+For OData adapters, the POST body Callout
+and the name and evaluated formula
+for custom HTTP headers
+
+External data source, external object, Callout INFO and
+request details, number of returned above
+records, and system usage
+
+`XDS_RESPONSE_DETAIL` Truncated response from the external Callout
+system, including returned records
+
+(External object access via cross-org
+and OData adapters for Salesforce
+Connect)
+
+
+FINER
+and
+above
 
 ##### Apex Developer Guide Debugging Apex
 
-**Event Name** **Fields or Information Logged with Event** **Category** **Level**
-**Logged** **Logged**
+**Event Name** **Fields or Information Logged** **Category** **Level**
+**with Event** **Logged** **Logged**
 
-`XDS_RESPONSE_ERROR` Error message Callout ERROR and
-above
+`XDS_RESPONSE_ERROR` Error message Callout
 
-(External object access via cross-org and OData
-adapters for Salesforce Connect)
+(External object access via cross-org
+and OData adapters for Salesforce
+Connect)
 
 SEE ALSO:
 
@@ -53960,6 +54652,10 @@ _Salesforce Help_ [: Partition Your Data with Enhanced Security Data Spaces](htt
 _Salesforce Help_ [: User Access Policies](https://help.salesforce.com/s/articleView?id=platform.perm_user_access_policies.htm&type=5&language=en_US)
 
 ##### Debugging Apex API Calls
+
+ERROR
+and
+above
 
 All API calls that invoke Apex support a debug facility that allows access to detailed information about the execution of the code, including
 any calls to `System.debug()` . The `categories` field of a SOAP input header called `DebuggingHeader` allows you to set
@@ -54056,7 +54752,7 @@ API calls or troubleshooting user access to external objects via Salesforce Conn
 
 **•** Any changes in the `with sharing` context
 
-The corresponding output header, `DebuggingInfo`, contains the resulting debug log. For more information, see `[DebuggingHeader](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_header_debuggingheader.htm)`
+The corresponding output header, `DebuggingInfo`, contains the resulting debug log. For more information, see `[DebuggingHeader](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_header_debuggingheader.htm)`
 in the _SOAP API Developer Guide_ .
 
 ##### Debug Log Order of Precedence
@@ -54153,7 +54849,7 @@ suppressed and only the first email is sent. This email suppression prevents flo
 the same error.
 
 **•** Emails aren’t sent for exceptions encountered with anonymous Apex executions or with Apex methods accessed by Aura
-[components and Lightning web components via the @AuraEnabled annotation.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_classes_annotation_AuraEnabled.htm)
+[components and Lightning web components via the @AuraEnabled annotation.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_annotation_AuraEnabled.htm)
 
 **•** Apex exception emails are limited to 10 emails per hour, per application server. Because this limit isn’t on a per-org basis, email
 delivery to a particular org can be unreliable.
@@ -54535,7 +55231,7 @@ Apex Developer Guide Debugging Apex
 
 Apex provides a number of built-in exception types that the runtime engine throws if errors are encountered during execution. You've
 seen the DmlException in the previous example. Here is a sample of some other built-in exceptions. For a complete list of built-in
-[exception types, see Exception Class and Built-In Exceptions.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_classes_exception_methods.htm)
+[exception types, see Exception Class and Built-In Exceptions.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_exception_methods.htm)
 
 **DmlException**
 Any problem with a DML statement, such as an `insert` statement missing a required field on a record.
@@ -55358,7 +56054,7 @@ run the code or receive error messages.
 
 Note: Conditional and ternary operators are not considered executed unless both the positive and negative branches are executed.
 
-For examples of these types of tests, see Testing Example on page 727.
+For examples of these types of tests, see Testing Example on page 734.
 
 
 Apex Developer Guide Testing Apex
@@ -55883,7 +56579,7 @@ with `IsTest(SeeAllData=true)` .
 **•** There can be some cases where you can’t create certain types of data from your test method because of specific limitations.
 Here are some examples of such limitations.
 
-**–** Some standard objects aren’t creatable. For more information on these objects, see the _[Object Reference for Salesforce](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/)_ .
+**–** Some standard objects aren’t creatable. For more information on these objects, see the _[Object Reference for Salesforce](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/)_ .
 
 **–** For some sObjects that have fields with unique constraints, inserting duplicate sObject records results in an error. For example,
 inserting CollaborationGroup sObjects with the same names results in an error because CollaborationGroup records must
@@ -55909,7 +56605,7 @@ New and changed records are still rolled back in Apex tests even when using the 
 Warning: By annotating your class with `@isTest(SeeAllData=true)`, you allow test methods to access all org records.
 The best practice, however, is to run Apex tests with data silo using `@isTest(SeeAllData=false)` . For data access
 considerations in Salesforce API version 23.0 and earlier, see Isolation of Test Data from Organization Data in Unit Tests on page
-711.
+718.
 
 This example shows how to define a test class with the `@IsTest(SeeAllData=true)` annotation. All the test methods in this
 class have access to all data in the organization.
@@ -56517,14 +57213,14 @@ It returns the following:
 
 **•** Time it took to run the test
 
-For more information on `runTests()`, see `[runTests()](https://developer.salesforce.com/docs/atlas.en-us.258.0.api.meta/api/sforce_api_calls_runtests.htm)` in the _SOAP API Developer Guide_ .
+For more information on `runTests()`, see `[runTests()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_runtests.htm)` in the _SOAP API Developer Guide_ .
 
 You can also run tests using the Tooling REST API. Use the `/runTestsAsynchronous/` and `/runTestsSynchronous/`
-endpoints to run tests asynchronously or synchronously. For usage details, see _Tooling API_ [: REST Resources.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/intro_rest_overview.htm)
+endpoints to run tests asynchronously or synchronously. For usage details, see _Tooling API_ [: REST Resources.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/intro_rest_overview.htm)
 
 Running Tests Using **`ApexTestQueueItem`**
 
-You can run tests asynchronously using `[ApexTestQueueItem](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_apextestqueueitem.htm)` and `[ApexTestResult](https://developer.salesforce.com/docs/atlas.en-us.258.0.object_reference.meta/object_reference/sforce_api_objects_apextestresult.htm)` . These objects let you add tests to the
+You can run tests asynchronously using `[ApexTestQueueItem](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_apextestqueueitem.htm)` and `[ApexTestResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_apextestresult.htm)` . These objects let you add tests to the
 Apex job queue and check the results of the completed test runs. This process enables you to not only start tests asynchronously but
 also schedule your tests to execute at specific times by using the Apex scheduler. See Apex Scheduler for more information.
 
@@ -56809,7 +57505,7 @@ Apex Developer Guide Testing Apex
 
 There’s another overload of the `runAs` method ( `runAs(System.Version)` ) that takes a package version as an argument. This
 method causes the code of a specific version of a managed package to be used. For information on using the `runAs` method and
-specifying a package version context, see Testing Behavior in Package Versions on page 756.
+specifying a package version context, see Testing Behavior in Package Versions on page 753.
 
 SEE ALSO:
 
@@ -56817,7 +57513,7 @@ Enforce Sharing Rules
 
 Enforce Object and Field Permissions
 
-_Apex Reference Guide_ [: System.runAs(userSObject)](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_runAs_2)
+_Apex Reference Guide_ [: System.runAs(userSObject)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_runAs_2)
 
 ##### Using Limits, startTest, and, and stopTest
 
@@ -56947,7 +57643,7 @@ Apex Developer Guide Testing Apex
 
 **•** Always handle all exceptions that are caught, instead of merely catching the exceptions.
 
-**•** [Use the methods of the Assert class to prove that the code behaves properly.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_System_Assert.htm)
+**•** [Use the methods of the Assert class to prove that the code behaves properly.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Assert.htm)
 
 **•** Use the `runAs` method to test your application in different user contexts.
 
@@ -57492,7 +58188,7 @@ Inspecting Code Coverage
 After running tests, you can view code coverage information in the Tests tab of the Developer Console. The code coverage pane includes
 coverage information for each Apex class and the overall coverage for all Apex code in your organization.
 
-[Also, code coverage is stored in two Lightning Platform Tooling API objects: ApexCodeCoverageAggregate and ApexCodeCoverage.](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/tooling_api_objects_apexcodecoverageaggregate.htm)
+[Also, code coverage is stored in two Lightning Platform Tooling API objects: ApexCodeCoverageAggregate and ApexCodeCoverage.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/tooling_api_objects_apexcodecoverageaggregate.htm)
 ApexCodeCoverageAggregate stores the sum of covered lines for a class after checking all test methods that test it. ApexCodeCoverage
 stores the lines that are covered and uncovered by each individual test method. For this reason, a class can have multiple coverage
 results in ApexCodeCoverage—one for each test method that has tested it. You can query these objects by using SOQL and the Tooling
@@ -57892,9 +58588,9 @@ implementation of the `StubProvider` interface can be in another namespace.
 
 SEE ALSO:
 
-[StubProvider Interface](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_System_StubProvider.htm)
+[StubProvider Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_System_StubProvider.htm)
 
-[Test.createStub()](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_createStub)
+[Test.createStub()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_createStub)
 
 ### Deploying Apex
 
@@ -57949,7 +58645,7 @@ components that you want to upload and deploy to the target organization.
 
 SEE ALSO:
 
-_[Sandboxes: Staging Environments for Customizing and Testing](https://help.salesforce.com/s/articleView?id=sf.changesets.htm&language=en_US)_ : Change Sets
+_[Sandboxes: Staging Environments for Customizing and Testing](https://help.salesforce.com/s/articleView?id=platform.changesets.htm&type=5&language=en_US)_ : Change Sets
 
 EDITIONS
 
@@ -57977,95 +58673,541 @@ SEE ALSO:
 
 _[Salesforce Extensions for Visual Studio Code](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/deploy-changes.htm)_ : Deploy and Retrieve Code
 
-_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)_ : Develop Against Any Org
+_[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_develop_any_org.htm)_ : Develop Against Any Org
 
-_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_deploy_start_unified.htm)_ : project deploy start
+_[Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_project_commands_unified.htm#cli_reference_project_deploy_start_unified.htm)_ : project deploy start
 
 #### Deploy Apex Using Metadata API
 
 Use Metadata API to deploy customization information, such as custom object definitions for your org.
 
 To deploy custom metadata, use the `Metadata.Operations.enqueueDeployment()` method to asynchronously deploy
-[metadata to the current org. For more information, see Operations Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_class_Metadata_Operations.htm)
+[metadata to the current org. For more information, see Operations Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Metadata_Operations.htm)
 
 
-### Apex Developer Guide Distributing Apex Using Managed Packages
+### Apex Developer Guide Apex in Managed Packages
 
-[Note: If a single deployment has over 2,000 Apex classes, ApexCodeCoverage objects for the deployed classes are deleted even](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/tooling_api_objects_apexcodecoverage.htm)
+[Note: If a single deployment has over 2,000 Apex classes, ApexCodeCoverage objects for the deployed classes are deleted even](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/tooling_api_objects_apexcodecoverage.htm)
 if the deployment fails or is rolled back. ApexCodeCoverageAggregate objects aren’t affected.
 
 SEE ALSO:
 
-_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_meta.meta/api_meta/meta_deploy.htm)_ : deploy()
+_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_deploy.htm)_ : deploy()
 
-_[Using Salesforce Features with Apex](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexcode.meta/apexcode/apex_metadata.htm)_ : Metadata
+_[Using Salesforce Features with Apex](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_metadata.htm)_ : Metadata
 
 #### Deploy Apex Using Tooling API
 
 Use Tooling API to deploy Apex classes or Apex triggers. Because Tooling API allows you to change just one element within a complex
 type, it is easy to deploy using Tooling API.
 
-[Use ContainerAsyncRequest to compile and deploy the changes with ApexTriggerMember, ApexComponentMember, and](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/tooling_api_objects_containerasyncrequest.htm)
+[Use ContainerAsyncRequest to compile and deploy the changes with ApexTriggerMember, ApexComponentMember, and](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/tooling_api_objects_containerasyncrequest.htm)
 ApexPageMember.
 
 SEE ALSO:
 
-_Tooling API_ [: When to Use Tooling API](https://developer.salesforce.com/docs/atlas.en-us.258.0.api_tooling.meta/api_tooling/intro_tasks.htm)
+_Tooling API_ [: When to Use Tooling API](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/intro_tasks.htm)
 
 #### Deploy Apex Using DevOps Center
 
 Salesforce DevOps Center provides an improved experience around change and release management. Build a pipeline when you
 configure DevOps Center and use the pipeline to promote work items through the release lifecycle from development to production.
 
-For information, see _Manage and Release Changes Easily and Collaboratively with DevOps Center_ [: Promote Work Items Through Your](https://help.salesforce.com/s/articleView?id=sf.devops_center_work_items_promote.htm&language=en_US)
-[Pipeline.](https://help.salesforce.com/s/articleView?id=sf.devops_center_work_items_promote.htm&language=en_US)
+For information, see _Manage and Release Changes Easily and Collaboratively with DevOps Center_ [: Promote Work Items Through Your](https://help.salesforce.com/s/articleView?id=platform.devops_center_work_items_promote.htm&type=5&language=en_US)
+[Pipeline.](https://help.salesforce.com/s/articleView?id=platform.devops_center_work_items_promote.htm&type=5&language=en_US)
 
-### Distributing Apex Using Managed Packages
+### Apex in Managed Packages
 
-As an ISV or Salesforce partner, you can distribute Apex code to customer organizations using packages. Here we'll describe packages
-and package versioning.
+Learn how to develop, distribute, and use managed Apex. Apex in managed packages can behave differently than Apex in unmanaged
+packages or Apex deployed directly to an org. Managed package developers and subscribers must understand these differences so that
+they can safely evolve their packages and integrations.
 
-Important: If a `ConnectApi` class has a dependency on Chatter, the code can be compiled and installed in orgs that don’t
-have Chatter enabled. However, if Chatter isn’t enabled, the code throws an error at run time. See Packaging `ConnectApi`
-Classes on page 454.
+Managed Package Types
+Salesforce supports the creation and distribution of Apex through different types of packages. Understand the distinctions between
+package types, and recognize that Apex behavior can vary across them.
 
-1. What is a Package?
+Develop and Distribute Apex for Managed Packages
+As an independent software vendor (ISV) or Salesforce partner, you can distribute Apex code to customer orgs by using managed
+packages. For first-generation managed packages (1GP) and migrated second-generation managed packages (2GP), use versioning
+to evolve components of your managed package gracefully without breaking existing customer integrations. Understand how global
+Apex in managed packages behaves and learn how to develop global Apex in managed packages specifically for agents.
 
-2. Best Practices for Using Global Apex in Managed Packages
-As an independent software vendor (ISV) developer, understand when and how to use `global` Apex in managed packages. Learn
-design patterns that maximize flexibility and comply with the strict manageability rules applied to `global` Apex after your managed
-package’s release. By following these best practices, you can improve the stability and maintainability of your API.
+Use Apex Referenced by Managed Packages
+Learn how to use managed Apex effectively as a managed package subscriber.
 
-3. Design Managed Apex for Agentforce
-As an independent software vendor (ISV) developer, you can build custom agent actions using Apex and distribute them in managed
-packages. To ensure that subscriber admins can declaratively configure your Apex agent actions and that Agentforce can invoke
-the actions at run time, follow these requirements and recommendations.
-
-4. Package Versions
-
-5. Deprecating Apex
+Safely Upgrade Packages from Developer and Subscriber Perspectives
+Learn how to upgrade a managed package safely through this extended example. See the actions that package developers and
+subscribers can take to ensure a smooth transition and safeguard the backwards compatibility of existing integrations.
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
-6. Behavior in Package Versions
+#### Managed Package Types
 
-#### What is a Package?
+Salesforce supports the creation and distribution of Apex through different types of packages. Understand the distinctions between
+package types, and recognize that Apex behavior can vary across them.
 
-A _package_ is a container for something as small as an individual component or as large as a set of related apps. After creating a package,
-you can distribute it to other Salesforce users and organizations, including those outside your company. An organization can create a
-single managed package that can be downloaded and installed by many different organizations. Managed packages differ from
-unmanaged packages by having some locked components, allowing the managed package to be upgraded later. Unmanaged packages
-do not include locked components and cannot be upgraded.
+A _package_ is a container that can be as small as an individual component or as large as a set of related apps. After creating a package,
+you can distribute it to other Salesforce users and orgs, including orgs outside of your company.
+
+Developers can create unmanaged packages and managed packages. These package types have different use cases and characteristics.
+
+[Unmanaged packages are best suited for one-time drops of apps that require customization after installation. After the components are](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/packaging_developing_unmanaged.htm)
+installed from an unmanaged package, the components can be edited in the org that they’re installed in. The developer who created
+and uploaded the unmanaged package has no control over the installed components, and can’t change or upgrade them.
+
+[Managed packages are ideal for commercial distribution through the AppExchange. Unlike unmanaged packages, package developers](https://appexchange.salesforce.com/)
+can upgrade managed packages and push these changes to subscriber orgs. Preserving the backwards-compatibility of managed
+packages is the package developer’s responsibility. However, Salesforce provides significant guardrails and tools that help package
+developers safely upgrade managed packages while minimizing the risk of introducing changes that may break existing code.
+
+[Salesforce supports first-generation managed packages (1GP) and second-generation managed packages (2GP). Salesforce also supports](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/sharing_apps.htm)
+[the conversion and migration of 1GP managed packages to 2GP managed packages. For new apps, we recommend using 2GP managed](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/move_to_second_gen_pkg.htm)
+[packages, as they allow for source-driven development and flexible versioning. See Why Switch to Second-Generation Managed Packaging](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/why_switch_2GP.htm)
+[and Comparison of First- and Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_comparison.htm)
+
+Apex classes and triggers from 1GP, 2GP, and migrated 2GP managed packages can behave differently depending on the managed
+package type. If a section of the _Apex Developer Guide_ or the _Apex Reference Guide_ doesn’t specify whether a behavior applies to only 1GP
+or 2GP, then it applies to all managed package types.
 
 SEE ALSO:
 
-_[ISVforce Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.packagingGuide.meta/packagingGuide/packaging_intro.htm)_
+_[ISVforce Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.packagingGuide.meta/packagingGuide/packaging_intro.htm)_
+
+_[First-Generation Managed Packaging Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/move_to_second_gen_pkg.htm)_ : Move to 2GP
 
 _Second-Generation Managed Packaging Developer Guide_ [: Components Available in Second-Generation Managed Packages–Apex](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/packaging_packageable_components.htm#mdc_apex_class)
 [Class](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/packaging_packageable_components.htm#mdc_apex_class)
 
-#### Best Practices for Using Global Apex in Managed Packages
+#### Develop and Distribute Apex for Managed Packages
+
+As an independent software vendor (ISV) or Salesforce partner, you can distribute Apex code to customer orgs by using managed
+packages. For first-generation managed packages (1GP) and migrated second-generation managed packages (2GP), use versioning to
+evolve components of your managed package gracefully without breaking existing customer integrations. Understand how global Apex
+in managed packages behaves and learn how to develop global Apex in managed packages specifically for agents.
+
+As you develop managed Apex, keep these points in mind.
+
+**•** The code contained in an Apex class, trigger, or Visualforce component that’s part of a managed package is obfuscated. You generally
+can’t view this code in an installing org. The only exceptions are methods declared as `global` . You can view global method
+signatures in an installing org. In addition, license management organization users with the View and Debug Managed Apex
+permission can view their packages’ obfuscated Apex classes when logged in to subscriber orgs via the Subscriber Support Console.
+
+**•** 1GP managed packages each have a unique namespace. 2GP managed packages can have the same namespace as other 2GP
+managed packages. However, you can’t associate a single 2GP managed package with more than one namespace. The namespace
+is prepended to your class’s names, methods, variables, and so on, which helps prevent duplicate names in a subscriber’s org.
+
+**•** You can use the `@NamespaceAccessible` on page 111 annotation to make public Apex in a 2GP managed package available
+to other 2GP managed packages that use the same namespace.
+
+
+Apex Developer Guide Apex in Managed Packages
+
+**•** In a single transaction, you can reference only 10 unique namespaces. For example, suppose that you have an object that executes
+a class in a managed package when the object is updated. Then that class updates a second object, which in turn executes a different
+class in a different package. Even though the first package didn’t access the second package directly, the access occurs in the same
+transaction. It’s therefore included in the number of namespaces accessed in a single transaction.
+
+**•** You can use the `@Deprecated` on page 94 annotation to identify methods, classes, exceptions, enums, interfaces, and variables
+that can no longer be referenced in subsequent releases of the managed package in which they reside. This annotation is useful
+when you’re refactoring code in managed packages as the requirements evolve. See Deprecate Apex in Managed Packages on page
+753.
+
+**•** For 1GP and migrated 2GP managed packages, you can write test methods that change the package version context to a different
+package version by using the `System.runAs()` method. See Testing Behavior in Package Versions on page 753.
+
+**•** You can’t add a method to a global interface or an abstract method to a global class after you upload that interface or class in a
+Managed - Released package version. If the class in the Managed - Released package is virtual, the method that you can add to it
+must also be virtual and must have an implementation. If the class in the Managed - Release package extends another class, you
+can’t remove the existing class’s contract. See Best Practices for Using Global Apex in Managed Packages on page 755.
+
+Note: If a `ConnectApi` class has a dependency on Chatter, the code can be compiled and installed in orgs that don’t have
+Chatter enabled. However, if Chatter isn’t enabled, the code throws an error at run time. See Packaging `ConnectApi` Classes
+on page 458.
+
+Apex Versioning in Managed Packages
+A managed package component can exhibit different behavior in different package versions. By versioning managed Apex, you can
+add and refine components in the managed package, while maintaining backwards compatibility for existing subscribers.
+
+Version Apex Code Behavior
+Package developers can use conditional logic in Apex classes and triggers to exhibit different behavior for different versions. With
+this conditional logic, you can support existing behavior in classes and triggers in previous package versions while evolving the code.
+
+Apex Code Items That Aren’t Versioned
+Some Apex items in managed packages can’t be versioned. The changes that you make to these items are reflected across all package
+versions. Additionally, there are limitations to the changes that you can make to some of these items when they are used in Apex
+code in managed packages.
+
+Deprecate Managed Apex
+Use the `@Deprecated` annotation to specify Apex identifiers that can subscribers can no longer reference in subsequent releases
+of the managed package. Deprecation is useful when you’re refactoring code in managed packages as the requirements evolve.
+
+Testing Versioned Behavior in Apex Code
+When you change the behavior in an Apex class or trigger for different package versions, it’s important to test that your code runs
+as expected in the different package versions. You can write test methods that change the package version context to a different
+package version by using the `System.runAs` method. You can only use `System.runAs` in a test method.
+
+Best Practices for Using Global Apex in Managed Packages
+As an independent software vendor (ISV) developer, understand when and how to use `global` Apex in managed packages. Learn
+design patterns that maximize flexibility and comply with the strict manageability rules applied to `global` Apex after your managed
+package’s release. By following these best practices, you can improve the stability and maintainability of your API.
+
+Design Managed Apex for Agentforce
+As an independent software vendor (ISV) developer, you can build custom agent actions using Apex and distribute them in managed
+packages. To ensure that subscriber admins can declaratively configure your Apex agent actions and that Agentforce can invoke
+the actions at run time, follow these requirements and recommendations.
+
+
+Apex Developer Guide Apex in Managed Packages
+
+##### Apex Versioning in Managed Packages
+
+A managed package component can exhibit different behavior in different package versions. By versioning managed Apex, you can add
+and refine components in the managed package, while maintaining backwards compatibility for existing subscribers.
+
+A package version is a number that identifies the set of components uploaded in a package. The version number has the format
+_`majorNumber.minorNumber.patchNumber`_ (for example, 2.1.3). The major and minor numbers increase to a chosen value
+during every major release. The _`patchNumber`_ is generated and updated only for a patch release.
+
+Unmanaged packages aren’t upgradeable, so each package version is simply a set of components for distribution. A package version
+has more significance for managed packages. With managed packages, you can specify different component behavior based on the
+package version. This practice allows you to evolve the components in your managed package without breaking existing subscriber
+integrations.
+
+When an existing subscriber installs a new package version, there’s still only one instance of each component in the package. However,
+the components can emulate older versions. For example, a subscriber can use a managed package that contains an Apex class. If the
+publisher decides to deprecate a method in the Apex class and release a new package version, the subscriber still sees only one instance
+of the Apex class after installing the new version. However, this Apex class can still emulate the previous version for any code that
+references the deprecated method in the older version.
+
+SEE ALSO:
+
+##### Version Apex Code Behavior
+
+Apex Code Items That Aren’t Versioned
+
+Deprecate Managed Apex
+
+Testing Versioned Behavior in Apex Code
+
+Set Package Versions for Apex Classes and Triggers (for package subscribers)
+
+##### Version Apex Code Behavior
+
+Package developers can use conditional logic in Apex classes and triggers to exhibit different behavior for different versions. With this
+conditional logic, you can support existing behavior in classes and triggers in previous package versions while evolving the code.
+
+Note: Starting in Summer ’25, package subscribers can use Version Settings to specify the version of a migrated second-generation
+managed package (2GP) that an Apex class depends on. This functionality is already available to first-generation managed packages
+[(1GP), but isn’t yet supported in 2GP packages that weren’t converted from a 1GP package. See Apex Version Settings in Migrated](https://help.salesforce.com/s/articleView?id=005101483&type=1&language=en_US)
+[Second-Generation Managed Packages (2GP).](https://help.salesforce.com/s/articleView?id=005101483&type=1&language=en_US)
+
+When subscribers install multiple versions of your package and write code that references Apex classes or triggers in your package, they
+must select the version that they’re referencing. Within the Apex code that is being referenced in your package, you can conditionally
+execute different code paths based on the version setting of the calling Apex code that is making the reference. The package version
+setting of the calling code can be determined within the package code by calling the `System.requestVersion` method. In this
+way, package developers can determine the request context and specify different behavior for different versions of the package.
+
+This example uses the `System.requestVersion` method and instantiates the `System.Version` class to define different
+behaviors in an Apex trigger for different package versions.
+
+```
+   trigger oppValidation on Opportunity (before insert, before update) {
+
+      for (Opportunity opp : Trigger.new){
+
+        // Add a new validation to the package
+
+        // Applies to versions of the managed package greater than 1.0
+
+        if (System.requestVersion().compareTo(new Version(1,0)) > 0) {
+
+```
+
+
+Apex Developer Guide Apex in Managed Packages
+
+```
+           if (opp.Probability >= 50 && opp.Description == null) {
+
+             opp.addError('All deals over 50% require a description');
+
+           }
+
+        }
+
+        // Validation applies to all versions of the managed package.
+
+        if (opp.IsWon == true && opp.LeadSource == null) {
+
+           opp.addError('A lead source must be provided for all Closed Won deals');
+
+        }
+
+      }
+
+   }
+
+```
+
+[For a full list of methods that work with package versions, see Version Class and the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_version.htm) `System.requestVersion` [method in System](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)
+[Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)
+
+The request context persists if a class in an installed package invokes a method of another class in the package. For example, imagine
+that a subscriber installs a GeoReports package that contains CountryUtil and ContinentUtil classes. The subscriber creates a GeoReportsEx
+class and associates it with version 2.3 of the GeoReports package. If GeoReportsEx invokes a ContinentUtil method that internally invokes
+a CountryUtil method, the request context propagates from ContinentUtil to CountryUtil. Therefore, the `System.requestVersion`
+method in CountryUtil returns version 2.3 of the GeoReports package.
+
+SEE ALSO:
+
+Set Package Versions for Apex Classes and Triggers (for package subscribers)
+
+Safely Upgrade Packages from Developer and Subscriber Perspectives
+
+##### Apex Code Items That Aren’t Versioned
+
+Some Apex items in managed packages can’t be versioned. The changes that you make to these items are reflected across all package
+versions. Additionally, there are limitations to the changes that you can make to some of these items when they are used in Apex code
+in managed packages.
+
+As a package developer, you can add or remove these items from Apex in manage packages.
+
+**•** `@Future`
+
+**•** `@IsTest`
+
+**•** `with sharing`
+
+**•** `without sharing`
+
+**•** `transient`
+
+You can make limited changes to these Apex items in managed packages.
+
+**•** `private` —can be changed to `global`
+
+**•** `protected` —can be changed to `global`
+
+**•** `public` —can be changed to `global`
+
+**•** `abstract` —can be changed to `virtual` but can’t be removed
+
+**•** `final` —can be removed but can’t be added
+
+You can’t remove or change these Apex items in managed packages.
+
+**•** `global`
+
+**•** `virtual`
+
+You can add the `webservice` keyword, but once it has been added, it can’t be removed.
+
+
+Apex Developer Guide Apex in Managed Packages
+
+Note: You can’t deprecate `webservice` methods or variables in managed package code.
+
+If a package upgrade includes an explicit global constructor for a released global class that previously only had an implicit constructor,
+then the new, explicit constructor will be called from the subscriber. Also, you can’t reduce the access modifier on the default constructor
+on a released global class in a package. See Best Practices for Using Global Apex in Managed Packages on page 755.
+
+##### Deprecate Managed Apex
+
+Use the `@Deprecated` annotation to specify Apex identifiers that can subscribers can no longer reference in subsequent releases of
+the managed package. Deprecation is useful when you’re refactoring code in managed packages as the requirements evolve.
+
+Apex identifiers include methods, classes, exceptions, enums, interfaces, and variables. After you upload another package version as
+Managed — Released, new subscribers that install the latest package version can’t see the deprecated identifiers. However, the identifiers
+still function for existing subscribers and API integrations. As the package developer, you can still reference deprecated identifiers
+internally.
+
+Note: You can’t use the `@Deprecated` annotation in Apex classes or triggers in unmanaged packages.
+
+You can use Managed — Beta package versions for evaluation and feedback with a pilot set of users in different Salesforce orgs. If you
+deprecate an Apex identifier, and then upload a version of the package as Managed — Beta, subscribers that install the package version
+still see the deprecated identifier in that package version. If the package developer then uploads a Managed — Released package version,
+subscribers will no longer see the deprecated identifier in the package version after they install it.
+
+SEE ALSO:
+
+Best Practices for Using Global Apex in Managed Packages
+
+##### Testing Versioned Behavior in Apex Code
+
+When you change the behavior in an Apex class or trigger for different package versions, it’s important to test that your code runs as
+expected in the different package versions. You can write test methods that change the package version context to a different package
+version by using the `System.runAs` method. You can only use `System.runAs` in a test method.
+
+This sample shows a trigger with different behavior for different package versions. For more information about defining different behavior
+for package versions, see Version Apex Behavior on page 751.
+
+```
+   trigger oppValidation on Opportunity (before insert, before update) {
+
+      for (Opportunity opp : Trigger.new){
+
+        // Add a new validation to the package
+
+        // Applies to versions of the managed package greater than 1.0
+
+        if (System.requestVersion().compareTo(new Version(1,0)) > 0) {
+
+           if (opp.Probability >= 50 && opp.Description == null) {
+
+             opp.addError('All deals over 50% require a description');
+
+           }
+
+        }
+
+        // Validation applies to all versions of the managed package.
+
+        if (opp.IsWon == true && opp.LeadSource == null) {
+
+           opp.addError('A lead source must be provided for all Closed Won deals');
+
+        }
+
+      }
+
+   }
+
+```
+
+
+Apex Developer Guide Apex in Managed Packages
+
+The following test class uses the `runAs` method to verify the trigger’s behavior with and without a specific version:
+
+```
+   @IsTest
+
+   private class OppTriggerTests{
+
+     static testMethod void testOppValidation(){
+
+       // Set up 50% opportunity with no description
+
+       Opportunity opp = new Opportunity();
+
+       opp.Name = 'Test Job';
+
+       opp.Probability = 50;
+
+       opp.StageName = 'Prospect';
+
+       opp.CloseDate = System.today();
+
+       // Test running as latest package version
+
+       try{
+
+         insert opp;
+
+       }
+
+       catch(DMLException e){
+
+         Assert.isTrue(
+
+            e.getMessage().contains(
+
+             'All deals over 50% require a description'),
+
+              e.getMessage());
+
+       }
+
+       // Run test as managed package version 1.0
+
+       System.runAs(new Version(1,0)){
+
+         try{
+
+            insert opp;
+
+         }
+
+         catch(DMLException e){
+
+            Assert.isFalse(false, e.getMessage());
+
+         }
+
+       }
+
+       // Set up a closed won opportunity with no lead source
+
+       opp = new Opportunity();
+
+       opp.Name = 'Test Job';
+
+       opp.Probability = 50;
+
+       opp.StageName = 'Prospect';
+
+       opp.CloseDate = System.today();
+
+       opp.StageName = 'Closed Won';
+
+       // Test running as latest package version
+
+       try{
+
+         insert opp;
+
+       }
+
+       catch(DMLException e){
+
+         Assert.isTrue(
+
+           e.getMessage().contains(
+
+            'A lead source must be provided for all Closed Won deals'),
+
+             e.getMessage());
+
+       }
+
+       // Run test as managed package version 1.0
+
+```
+
+
+Apex Developer Guide Apex in Managed Packages
+
+```
+       System.runAs(new Version(1,0)){
+
+         try{
+
+            insert opp;
+
+         }
+
+         catch(DMLException e){
+
+            Assert.isTrue(
+
+              e.getMessage().contains(
+
+               'A lead source must be provided for all Closed Won deals'),
+
+                  e.getMessage());
+
+         }
+
+       }
+
+     }
+
+   }
+
+##### Best Practices for Using Global Apex in Managed Packages
+
+```
 
 As an independent software vendor (ISV) developer, understand when and how to use `global` Apex in managed packages. Learn
 design patterns that maximize flexibility and comply with the strict manageability rules applied to `global` Apex after your managed
@@ -58105,11 +59247,11 @@ exclusively for use within your managed packages. For these internal components,
 `protected`, or `private` avoid the manageability constraints of `global` . You can even combine the `public` access modifier
 with the `@NamespaceAccessible` annotation to allow access throughout your package namespace.
 
-
-Apex Developer Guide Distributing Apex Using Managed Packages
-
 **•** Controller methods, or methods within your package that are called by your Lightning web components (LWC) and aren’t used by
 your subscribers directly. Make these methods `public` and annotate them with `@AuraEnabled` on page 94.
+
+
+Apex Developer Guide Apex in Managed Packages
 
 **•** Method signatures with external `global` types. Avoid using `global` Apex types from another managed package as parameters
 or return types in your own `global` methods. This practice locks your package into a rigid dependency. If the other package later
@@ -58139,7 +59281,7 @@ return type. You can add new methods that overload existing `global` methods.
 **•** You can’t change the data type of a `global` variable to an incompatible one.
 
 **•** You can’t change most annotations or modifiers on `global` members. For example, you can’t add or remove the `@AuraEnabled`
-annotation or any Apex REST annotation on page 326 from a `global` method. Similarly, you can’t add or remove the `static`
+annotation or any Apex REST annotation on page 327 from a `global` method. Similarly, you can’t add or remove the `static`
 or `final` keyword from a `global` method.
 
 **•** You can’t remove a zero-argument constructor from a `global` class. This restriction applies both to explicitly deleting a constructor
@@ -58175,7 +59317,7 @@ package, or `public` and `@NamespaceAccessible` for access only by other Apex in
 **•** Are there other designs? Can you achieve the same result without making methods or classes `global` ?
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
 Delegate from Thin Global Entry Points
 
@@ -58264,7 +59406,7 @@ or add new helper methods without violating `global` Apex manageability rules.
 ```
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
 ```
       // --- Subscriber Code --
@@ -58354,7 +59496,7 @@ Example: In this example, the `GeocodingService.getCoordinates` method is the gl
 ```
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
 ```
         // 2. The Input Parameter Object (as an inner class)
@@ -58453,7 +59595,7 @@ Apex Developer Guide Distributing Apex Using Managed Packages
 ```
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
 ```
         System.debug('Coordinates found: ' + coordinates.latitude + ', ' +
@@ -58477,7 +59619,7 @@ Additionally, using a Map for inputs sacrifices compile-time safety and discover
 to know the required keys and their data types. Simple typos in map keys can result in hard-to-debug run-time errors instead of
 compile-time errors.
 
-[Note: The standard Callable interface uses the Map pattern through its](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_System_Callable.htm) `call(String action, Map<String,`
+[Note: The standard Callable interface uses the Map pattern through its](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_System_Callable.htm) `call(String action, Map<String,`
 
 `Object> args)` method. However, this method returns a generic Object, which forces subscribers to cast the response and
 risk run-time errors. It creates a single, generic entry point that can perform many different functions based on the action string.
@@ -58485,7 +59627,7 @@ For a single-purpose action that accepts unstructured inputs, a custom method su
 is clearer and safer.
 
 Instead of using the Map pattern, prefer strongly-typed parameter objects as shown in the Use Parameter Objects for Global Method
-Inputs and Return Types on page 745 section. Reserve the Map pattern for advanced use cases where the inputs are truly unpredictable
+Inputs and Return Types on page 758 section. Reserve the Map pattern for advanced use cases where the inputs are truly unpredictable
 and its risks are acceptable, but always return a strongly-typed object.
 
 Use Global Interfaces with Factory Methods
@@ -58526,7 +59668,7 @@ add `getSmsNotifier()` to the factory class and implement a new `public SmsNotif
 ```
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
 ```
         }
@@ -58560,7 +59702,7 @@ Apex Developer Guide Distributing Apex Using Managed Packages
 
 Strategies for Retiring Global Apex
 
-Even though deprecating Apex on page 754 only affects future versions of your package, phasing out a `global` Apex member requires
+Even though deprecating Apex on page 753 only affects future versions of your package, phasing out a `global` Apex member requires
 careful planning and clear communication to prevent subscriber disruption.
 
 Here’s some recommendations for effectively retiring a `global` Apex member.
@@ -58593,7 +59735,7 @@ can become non-operational (no-op), return a safe default, or throw a specific `
 these changes reduces the risk and effort of maintaining the old code.
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
 Always thoroughly test changes related to deprecating `global` Apex, including testing your package’s behavior if a subscriber attempts
 to call the deprecated member. The goal is a graceful transition for your subscribers.
@@ -58610,14 +59752,14 @@ Exposing Apex Methods as SOAP Web Services
 
 NamespaceAccessible Annotation Annotation
 
-Deprecating Apex
+Deprecate Managed Apex
 
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_interface_System_Callable.htm)_ : Callable Interface
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_System_Callable.htm)_ : Callable Interface
 
 _Second-Generation Managed Packaging Developer Guide_ [: Components Available in Second-Generation Managed Packages–Apex](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/packaging_packageable_components.htm#mdc_apex_class)
 [Class](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/packaging_packageable_components.htm#mdc_apex_class)
 
-#### Design Managed Apex for Agentforce
+##### Design Managed Apex for Agentforce
 
 As an independent software vendor (ISV) developer, you can build custom agent actions using Apex and distribute them in managed
 packages. To ensure that subscriber admins can declaratively configure your Apex agent actions and that Agentforce can invoke the
@@ -58645,11 +59787,11 @@ namespace. By definition, this means that Apex agent actions don’t have access
 part of a managed package and does have a namespace.
 
 Importantly, managed `global` Apex is subject to stricter manageability rules than managed non- `global` Apex. See the Global Apex
-Manageability Rules on page 743 section of Best Practices for Using Global Apex in Managed Packages on page 742.
+Manageability Rules on page 756 section of Best Practices for Using Global Apex in Managed Packages on page 755.
 
 Although `global` Apex is required for any direct entry point to an agent action, delegate any business logic or heavy lifting to `public`
-classes and methods. See the Delegate from Thin Global Entry Points on page 744 section of Best Practices for Using Global Apex in
-Managed Packages on page 742.
+classes and methods. See the Delegate from Thin Global Entry Points on page 757 section of Best Practices for Using Global Apex in
+Managed Packages on page 755.
 
 Use @InvocableMethod to Define the Action
 
@@ -58658,7 +59800,7 @@ To define an Apex agent action, use the `@InvocableMethod` on page 95 annotation
 **•** Your Apex method must be `global static` .
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
 **•** Your Apex method must be annotated with `@InvocableMethod (label='` _**`Your Action Name`**_ `'`
 
@@ -58682,8 +59824,8 @@ Structure Inputs and Outputs with Global Wrapper Classes
 In addition to the requirements of using `global` Apex and the `@InvocableMethod` annotation, we also recommend using
 custom `global` classes to structure input and output parameters. By using parameter objects, you avoid changing the `global`
 method signature when you modify the parameters of the agent action. To learn how to use this pattern, see the Use Parameter Objects
-for Global Method Inputs and Return Types on page 745 section of Best Practices for Using Global Apex in Managed Packages on page
-742. Then review these targeted guidelines to implement Apex agent actions using this pattern.
+for Global Method Inputs and Return Types on page 758 section of Best Practices for Using Global Apex in Managed Packages on page
+755. Then review these targeted guidelines to implement Apex agent actions using this pattern.
 
 Because you can’t change managed `global` method signatures, make signatures flexible.
 
@@ -58692,7 +59834,7 @@ class as the invocable method.
 
 **•** Annotate both input and output classes with `@JsonAccess(serializable='always'`
 
-`deserializable='always')` . The @JsonAccess annotation on page 109 governs the serialization and deserialization of
+`deserializable='always')` . The @JsonAccess annotation on page 110 governs the serialization and deserialization of
 managed Apex. Because Agentforce serializes and deserializes complex Apex types from an unmanaged context at run time, both
 `@JsonAccess` parameters must be set to `'always'` .
 
@@ -58722,16 +59864,18 @@ input and output wrapper classes are both annotated with `@JsonAccess(serializab
 
 `deserializable='always')` so Agentforce can serialize and deserialize the objects from an unmanaged context. The properties
 of both wrapper classes are defined as `@InvocableVariable` so an admin can configure them declaratively. The `label` and
-
-
-Apex Developer Guide Distributing Apex Using Managed Packages
-
 `description` modifiers in both `@InvocableMethod` and `@InvocableVariable` are important because they help the
 Agentforce reasoning engine to understand how to use the action.
 
 ```
    // --- ISV's Managed Package Code --
    // --- 1. The Global Entrypoint Class --
+```
+
+
+Apex Developer Guide Apex in Managed Packages
+
+```
    // This class contains the @InvocableMethod and the input/output wrapper classes.
 
    global with sharing class GeocodingAction {
@@ -58812,18 +59956,18 @@ Agentforce reasoning engine to understand how to use the action.
 
            global String errorMessage;
 
-```
-
-
-Apex Developer Guide Distributing Apex Using Managed Packages
-
-```
         }
 
       // Static factory methods for creating consistent results.
 
         public static GeocodingResponse success(Decimal lat, Decimal lon) {
 
+```
+
+
+Apex Developer Guide Apex in Managed Packages
+
+```
            GeocodingResponse result = new GeocodingResponse();
 
            result.isSuccess = true;
@@ -58898,7 +60042,7 @@ Apex Developer Guide Distributing Apex Using Managed Packages
 ```
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
 ```
       }
@@ -58923,136 +60067,308 @@ Enforce User Mode for Database Operations
 
 _Salesforce Developers Blog_ [: Build Custom Agent Actions Using Apex](https://developer.salesforce.com/blogs/2024/03/build-custom-copilot-actions-using-apex)
 
-#### Package Versions
+#### Use Apex Referenced by Managed Packages
+
+Learn how to use managed Apex effectively as a managed package subscriber.
+
+##### Set Package Versions for Apex Classes and Triggers
+
+As a managed package subscriber, you can specify which package version that your managed Apex classes and triggers use. Set the
+package version in Setup, through metadata deployments, or with API requests.
+
+Managed Apex Considerations for Package Subscribers
+As you use managed Apex, keep these considerations in mind.
+
+##### Set Package Versions for Apex Classes and Triggers
+
+As a managed package subscriber, you can specify which package version that your managed Apex classes and triggers use. Set the
+package version in Setup, through metadata deployments, or with API requests.
+
+Note: In Summer ’25 and later, package subscribers can use version settings to specify the version of a migrated second-generation
+managed package (2GP) that an Apex class or trigger depends on. This functionality is already available to first-generation managed
+[packages (1GP), but isn’t yet supported in 2GP packages that weren’t converted from a 1GP package. See Apex Version Settings](https://help.salesforce.com/s/articleView?id=005101483&type=1&language=en_US)
+[in Migrated Second-Generation Managed Packages (2GP).](https://help.salesforce.com/s/articleView?id=005101483&type=1&language=en_US)
 
 A package version is a number that identifies the set of components uploaded in a package. The version number has the format
-_`majorNumber.minorNumber.patchNumber`_ (for example, 2.1.3). The major and minor numbers increase to a chosen value
-during every major release. The _`patchNumber`_ is generated and updated only for a patch release.
+majorNumber.minorNumber.patchNumber (for example, 2.1.3). The major and minor numbers increase to a chosen value during every
+major release. The patchNumber is generated and updated only for a patch release.
 
-Unmanaged packages aren’t upgradeable, so each package version is simply a set of components for distribution. A package version
-has more significance for managed packages. Packages can exhibit different behavior for different versions. Publishers can use package
-versions to evolve the components in their managed packages gracefully by releasing subsequent package versions without breaking
-existing customer integrations using the package.
+If you install a new package version, only one instance of each component exists in the package, but the components can emulate older
+versions. Say that you use a managed package that contains an Apex class. If the publisher decides to deprecate a method in the Apex
+class and release a new package version, you still see only one instance of the Apex class after installing the new version. However, this
+Apex class can still emulate the previous version for any code that references the deprecated method in the older version.
 
-When an existing subscriber installs a new package version, there’s still only one instance of each component in the package, but the
-components can emulate older versions. For example, a subscriber can use a managed package that contains an Apex class. If the
-publisher decides to deprecate a method in the Apex class and release a new package version, the subscriber still sees only one instance
-of the Apex class after installing the new version. However, this Apex class can still emulate the previous version for any code that
-references the deprecated method in the older version.
+By default, an Apex class or trigger that references a managed package is associated with the package version installed when that class
+or trigger was last saved or deployed. For example, say that you install version 1.0 of Package A, and then create and deploy an Apex
+class that references that managed package. If you upgrade to version 2.0 of Package A but don’t redeploy the class, then the class
+remains associated with version 1.0. However, if you upgrade Package A to version 2.0 and then redeploy the class, then the class is now
+associated with version 2.0.
 
-Note the following when developing Apex in managed packages:
-
-**•** The code contained in an Apex class, trigger, or Visualforce component that’s part of a managed package is obfuscated and can’t
-be viewed in an installing org. The only exceptions are methods declared as global. You can view global method signatures in an
-installing org. In addition, License Management Org users with the View and Debug Managed Apex permission can view their
-packages’ obfuscated Apex classes when logged in to subscriber orgs via the Subscriber Support Console.
-
-**•** Managed packages receive a unique namespace. This namespace is prepended to your class names, methods, variables, and so on,
-which helps prevent duplicate names in the installer’s org.
-
-**•** In a single transaction, you can only reference 10 unique namespaces. For example, suppose that you have an object that executes
-a class in a managed package when the object is updated. Then that class updates a second object, which in turn executes a different
-class in a different package. Even though the first package didn’t access the second package directly, the access occurs in the same
-transaction. It’s therefore included in the number of namespaces accessed in a single transaction.
-
-**•** Package developers can use the `deprecated` annotation to identify methods, classes, exceptions, enums, interfaces, and variables
-that can no longer be referenced in subsequent releases of the managed package in which they reside. This is useful when you’re
-refactoring code in managed packages as the requirements evolve.
-
-**•** You can write test methods that change the package version context to a different package version by using the system method
-`runAs` .
-
-**•** You can’t add a method to a global interface or an abstract method to a global class after the interface or class has been uploaded
-in a Managed - Released package version. If the class in the Managed - Released package is virtual, the method that you can add to
+You can override the default package version settings for an Apex class or trigger. When set to a specific package version, the class or
+trigger views the package’s global Apex as if that version was installed. Explicitly setting a package version is useful if your class or trigger
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
 
-it must also be virtual and must have an implementation. If the class in the Managed - Release package extends another class, the
-existing classes contract can't be removed.
-
-**•** Apex code contained in an unmanaged package that explicitly references a namespace can’t be uploaded.
+relies on an older shape of a packaged component. For an example where overriding the default package version is vital to maintain
+backwards compatibility, see Safely Upgrade Packages from Developer and Subscriber Perspectives on page 769.
 
 SEE ALSO:
 
-Setting Package Versions for Apex Classes and Triggers
+Version Apex in Managed Packages (for package developers)
 
-#### Behavior in Package Versions Deprecating Apex
+Safely Upgrade Packages from Developer and Subscriber Perspectives
 
-Package developers can use the `deprecated` annotation to identify methods, classes, exceptions, enums, interfaces, and variables
-that can no longer be referenced in subsequent releases of the managed package in which they reside. This is useful when you’re
-refactoring code in managed packages as the requirements evolve. After you upload another package version as Managed - Released,
-new subscribers that install the latest package version can’t see the deprecated elements, while the elements continue to function for
-existing subscribers and API integrations. A deprecated item, such as a method or a class, can still be referenced internally by the package
-developer.
+Set a Package Version in Setup
 
-Note: You can’t use the `deprecated` annotation in Apex classes or triggers in unmanaged packages.
+Associate an Apex class or trigger with a specific package version in Setup.
 
-Package developers can use Managed - Beta package versions for evaluation and feedback with a pilot set of users in different Salesforce
-organizations. If a developer deprecates an Apex identifier and then uploads a version of the package as Managed - Beta, subscribers
-that install the package version still see the deprecated identifier in that package version. If the package developer then uploads a
-Managed - Released package version, subscribers will no longer see the deprecated identifier in the package version after they install it.
+To configure the package version settings for an Apex class or trigger:
 
-SEE ALSO:
+**1.** From Setup, enter _`Apex Classes`_ or _`Apex Triggers`_ in the Quick Find box, and then select **Apex Classes** or **Apex Triggers** .
 
-Best Practices for Using Global Apex in Managed Packages
+**2.** From the list, click **Edit** for the Apex class or trigger that you want to configure.
 
-#### Behavior in Package Versions
+**3.** Click the **Version Settings** tab.
 
-A package component can exhibit different behavior in different package versions. This behavior versioning allows you to add new
-components to your package and refine your existing components, while still ensuring that your code continues to work seamlessly for
-existing subscribers. If a package developer adds a new component to a package and uploads a new package version, the new component
-is available to subscribers that install the new package version.
+**4.** From the Version dropdown for the managed package, select the desired version referenced by the class or trigger.
 
-##### 1. Versioning Apex Code Behavior
+The class or trigger continues to use this version even if your install later versions of the managed package, unless you manually
+update the version setting.
 
-2. Apex Code Items that Are Not Versioned
+**5.** Click **Save** .
 
-3. Testing Behavior in Package Versions
+Note: If the package is referenced in the class or trigger, you can’t remove a class or trigger’s version setting for a managed
+package. To find where the class or trigger references a managed package, on the class or trigger’s Detail page, click **Show**
+**Dependencies** .
 
-##### Versioning Apex Code Behavior
+Set a Package Version in Metadata API
 
-Package developers can use conditional logic in Apex classes and triggers to exhibit different behavior for different versions. Conditional
-logic lets the package developer support existing behavior in classes and triggers in previous package versions while evolving the code.
+Associate an Apex class or trigger with a specific package version by using Metadata API.
 
-When subscribers install multiple versions of your package and write code that references Apex classes or triggers in your package, they
-must select the version they’re referencing. Within the Apex code that is being referenced in your package, you can conditionally execute
-different code paths based on the version setting of the calling Apex code that is making the reference. The package version setting of
-the calling code can be determined within the package code by calling the `System.requestVersion` method. In this way,
-package developers can determine the request context and specify different behavior for different versions of the package.
+[With the PackageVersion field, you specify a managed package version in an Apex class or trigger’s metadata.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_classes.htm#PackageVersion)
 
+**1.** Identify the managed package’s reference ID. This ID is either the subscriber package ID for migrated 2GP managed packages or the
+package namespace for 1GP managed packages.
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+**a.** From Setup, in the Quick Find box, enter _`Installed Packages`_, and select **Installed Packages** .
 
-The following sample uses the `System.requestVersion` method and instantiates the `System.Version` class to define
-different behaviors in an Apex trigger for different package versions.
+**b.** Locate the installed package that you want to reference and click the Package Name.
+
+**c.** On the Installed Package Detail page, locate the Version Setting field. The field identifies the type of reference ID.
+
+**2.** In the Apex class or trigger’s metadata file, add a `<packageVersions>` element. If your Apex class or trigger references multiple
+managed packages, include a separate `<packageVersions>` element for each package.
+
+**3.** Within the `<packageVersions>` element, add the required fields and the desired values.
+
+**•** For migrated 2GP managed packages, add the `packageId` field.
+
+**•** For 1GP managed packages, use the `namespace` field instead.
+
+Example: Here’s an example declarative metadata definition of an Apex class that references a migrated 2GP managed package.
 
 ```
-   trigger oppValidation on Opportunity (before insert, before update) {
+      <?xml version="1.0" encoding="UTF-8"?>
 
-      for (Opportunity o : Trigger.new){
+      <ApexClass xmlns="http://soap.sforce.com/2006/04/metadata">
 
-        // Add a new validation to the package
+        <apiVersion>66.0</apiVersion>
 
-        // Applies to versions of the managed package greater than 1.0
+        <packageVersions>
 
-        if (System.requestVersion().compareTo(new Version(1,0)) > 0) {
+```
 
-           if (o.Probability >= 50 && o.Description == null) {
 
-             o.addError('All deals over 50% require a description');
+Apex Developer Guide Apex in Managed Packages
 
-           }
+```
+           <majorNumber>3</majorNumber>
+
+           <minorNumber>0</minorNumber>
+
+           <packageId>033xx0000000001</packageId>
+
+        </packageVersions>
+
+        <status>Active</status>
+
+      </ApexClass>
+
+```
+
+Here’s an example declarative metadata definition of an Apex class that references a 1GP managed package.
+
+```
+      <?xml version="1.0" encoding="UTF-8"?>
+
+      <ApexClass xmlns="http://soap.sforce.com/2006/04/metadata">
+
+        <apiVersion>66.0</apiVersion>
+
+        <packageVersions>
+
+           <majorNumber>3</majorNumber>
+
+           <minorNumber>0</minorNumber>
+
+           <namespace>pkg1</namespace>
+
+        </packageVersions>
+
+        <status>Active</status>
+
+      </ApexClass>
+
+```
+
+Note: **Metadata Usage Note for Migrated 2GP Packages**
+
+If you set a package version for an Apex class or trigger that references a 1GP managed package before Summer ’25, your existing
+version settings remain valid when the developer migrates the package to 2GP.
+
+If you retrieve metadata using Salesforce API version 61.0 and earlier, `<namespace>` is still used in the `<packageVersions>`
+section of the `meta.xml` file to identify the referenced migrated 2GP package. If you retrieve metadata using API version 62.0
+and later, `<packageId>` is used in the `<packageVersions>` section instead.
+
+An error can occur if you deploy metadata using `<packageId>` to an org that still has the 1GP or 2GP pre-migrated version of
+the package installed. To resolve this issue, either upgrade the target org to the migrated package, or edit the
+
+`<packageVersions>` section to use `<namespace>` instead.
+
+Set a Package Version in API Requests
+
+Specify a managed package version by using the package version header in your API request.
+
+**1.** Identify the managed package’s reference ID. This ID is either the subscriber package ID for migrated 2GP managed packages or the
+package namespace for 1GP managed packages.
+
+**a.** From Setup, in the Quick Find box, enter _`Installed Packages`_, and select **Installed Packages** .
+
+**b.** Locate the installed package that you want to reference and click the Package Name.
+
+**c.** On the Installed Package Detail page, locate the Version Setting field. The field identifies the type of reference ID.
+
+If the Version Setting field is set to `packageID`, then the value of the Package field is the package’s reference ID. If the Version
+Setting field is set to `namespace`, then the value of the Namespace field is the package’s reference ID.
+
+**2.** Set the package version header according to the managed package’s reference ID and the desired package version.
+
+**•** For REST API calls, use the `x-sfdc-packageversion-[packageId/namespace]` [header. See Package Version](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/headers_packageversion.htm)
+[Header in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/headers_packageversion.htm) _REST API Developer Guide_ .
+
+**•** For SOAP API calls, use the `PackageVersionHeader` [header. See PackageVersionHeader in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_header_packageversionheader.htm) _SOAP API Developer Guide_ .
+
+
+Apex Developer Guide Apex in Managed Packages
+
+Note: If a package version isn’t specified in a request header, the API client uses the version of the package specified in Setup. To
+set this value, from Setup, enter _`API`_ in the Quick Find box and select **API** . Then click **Configure Enterprise Package Version**
+**Settings** under Enterprise Package Version Settings.
+
+##### Managed Apex Considerations for Package Subscribers
+
+As you use managed Apex, keep these considerations in mind.
+
+**•** If a package developer deprecates a global Apex identifier in a managed package, you can only reference that identifier if you specify
+a package version between the creation and the deprecation of the identifier. Identifiers include global Apex methods, classes,
+exceptions, enums, interfaces, properties, and class variables. This behavior applies to both static and dynamic references, such as
+identifiers accessed with the `[Type.forName()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_type.htm#apex_System_Type_forName)` method, the `instanceof` [on page 85 keyword, and the ApexTypeImplementor](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_apextypeimplementor.htm)
+object.
+
+**•** Similarly, if a package developer deletes a schema from a managed package, you can only reference the schema in Apex if you
+specify a package version before the deletion of the schema. This behavior applies to both static and dynamic references, such as
+objects and fields accessed with `[Schema.describe()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_schema.htm#apex_System_Schema_methods)` methods.
+
+#### Safely Upgrade Packages from Developer and Subscriber Perspectives
+
+Learn how to upgrade a managed package safely through this extended example. See the actions that package developers and subscribers
+can take to ensure a smooth transition and safeguard the backwards compatibility of existing integrations.
+
+These sections follow an example package developer and package subscriber as they move through a managed package upgrade
+process.
+
+1. Package Developer: Publishes Version 1.0
+
+The package developer publishes version 1.0 of a 1GP managed package in the `eshop` namespace. The package contains Apex
+`CustomCart` and `CartCalculator` classes.
+
+```
+   /**
+
+    * CustomCart
+
+    * Simple container for item prices used in a managed package context.
+
+    * @version 1.0
+
+    * @since 1.0
+
+    */
+
+   global with sharing class CustomCart {
+
+      global List<Decimal> itemPrices;
+
+      global CustomCart() {
+
+        this.itemPrices = new List<Decimal>{0.0};
+
+      }
+
+   }
+
+   /**
+
+    * CartCalculator
+
+    * Handles tasks about calculating items and prices in customer carts.
+
+    * @version 1.0
+
+    * @since 1.0
+
+    */
+
+   global virtual class CartCalculator {
+
+      /**
+
+```
+
+
+Apex Developer Guide Apex in Managed Packages
+
+```
+      * Adds item prices in a custom cart.
+
+      * @param c A CustomCart object that represents a list of items that the customer
+
+      * wants to buy
+
+      * @return A Decimal object that represents the total price of items in the
+
+      * cart
+
+      * @version 1.0
+
+      * @since 1.0
+
+      */
+
+      global virtual Decimal getTotalPrice(CustomCart c) {
+
+        Decimal price = 0.0;
+
+        // Add up items in cart
+
+        for (Decimal itemPrice : c.itemPrices) {
+
+           price += itemPrice;
 
         }
 
-        // Validation applies to all versions of the managed package.
-
-        if (o.IsWon == true && o.LeadSource == null) {
-
-           o.addError('A lead source must be provided for all Closed Won deals');
-
-        }
+        return price;
 
       }
 
@@ -59060,100 +60376,73 @@ different behaviors in an Apex trigger for different package versions.
 
 ```
 
-[For a full list of methods that work with package versions, see Version Class and the](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_version.htm) `System.requestVersion` [method in System](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm)
-[Class.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_methods_system_system.htm)
+2. Package Subscriber: Adds Functionality by Overriding a Method
 
-The request context is persisted if a class in the installed package invokes a method in another class in the package. For example, a
-subscriber has installed a GeoReports package that contains CountryUtil and ContinentUtil Apex classes. The subscriber creates a new
-GeoReportsEx class and uses the version settings to bind it to version 2.3 of the GeoReports package. If GeoReportsEx invokes a method
-in ContinentUtil that internally invokes a method in CountryUtil, the request context is propagated from ContinentUtil to CountryUtil
-and the `System.requestVersion` method in CountryUtil returns version 2.3 of the GeoReports package.
+The package subscriber installs version 1.0 of the managed package, but they find that the existing `CartCalculator` class is
+inadequate. They want the ability to factor shipping costs into the total cart price.
 
-##### Apex Code Items that Are Not Versioned
-
-You can change the behavior of some Apex items across package versions. For example, you can deprecate a method so that new
-subscribers can no longer reference the package in a subsequent version.
-
-However, the following list of modifiers, keywords, and annotations cannot be versioned. If a package developer makes changes to one
-of the following modifiers, keywords, or annotations, the changes are reflected across all package versions.
-
-There are limitations on the changes that you can make to some of these items when they are used in Apex code in managed packages.
-
-Package developers can add or remove the following items:
-
-**•** `@future`
-
-**•** `@isTest`
-
-**•** `with sharing`
-
-**•** `without sharing`
-
-**•** `transient`
-
-Package developers can make limited changes to the following items:
-
-**•** `private` —can be changed to `global`
-
-**•** `public` —can be changed to `global`
-
-**•** `protected` —can be changed to `global`
-
-**•** `abstract` —can be changed to `virtual` but cannot be removed
-
-
-Apex Developer Guide Distributing Apex Using Managed Packages
-
-**•** `final` —can be removed but cannot be added
-
-Package developers cannot remove or change the following items:
-
-**•** `global`
-
-**•** `virtual`
-
-Package developers can add the `webservice` keyword, but once it has been added, it cannot be removed.
-
-Note: You cannot deprecate `webservice` methods or variables in managed package code.
-
-If a package upgrade includes an explicit global constructor for an already released global class (that previously only had an implicit
-constructor) the new, explicit constructor will be called from the subscriber. Additionally, you cannot reduce the access modifier on the
-default constructor on a released global class in a package.
-
-##### Testing Behavior in Package Versions
-
-When you change the behavior in an Apex class or trigger for different package versions, it is important to test that your code runs as
-expected in the different package versions. You can write test methods that change the package version context to a different package
-version by using the system method `runAs` . You can only use `runAs` in a test method.
-
-The following sample shows a trigger with different behavior for different package versions.
+So, the subscriber extends the `CartCalculator` class in the managed package with a custom
+`CartCalculatorWithShipping` class. They override the `getTotalPrice()` method so that the total price includes the
+shipping cost.
 
 ```
-   trigger oppValidation on Opportunity (before insert, before update) {
+   // Package Subscriber - CartCalculatorWithShipping.cls
 
-      for (Opportunity o : Trigger.new){
+   /**
 
-        // Add a new validation to the package
+   * Handles tasks about calculating items and prices in customer carts,
 
-        // Applies to versions of the managed package greater than 1.0
+   * including shipping costs.
 
-        if (System.requestVersion().compareTo(new Version(1,0)) > 0) {
+   */
 
-           if (o.Probability >= 50 && o.Description == null) {
+   public with sharing class CartCalculatorWithShipping extends eshop.CartCalculator {
 
-             o.addError('All deals over 50% require a description');
+      /**
 
-           }
+      * Adds item prices in a cart and adds the shipping cost to the total price.
 
-        }
+      * @param c A CustomCart object that represents a list of items that the customer
 
-        // Validation applies to all versions of the managed package.
+      * wants to buy
 
-        if (o.IsWon == true && o.LeadSource == null) {
+      * @return A Decimal object that represents the total price of items in the
 
-           o.addError('A lead source must be provided for all Closed Won deals');
+      * cart, including the shipping cost
 
-        }
+      */
+
+      public override Decimal getTotalPrice(eshop.CustomCart c) {
+
+        return super.getTotalPrice(c) + getShippingCost(c);
+
+      }
+
+      /**
+
+      * Get the shipping cost based on the items in a customer's cart
+
+      * @param c A CustomCart object that represents a list of items that the customer
+
+      * wants to buy
+
+      * @return A Decimal object that represents the total shipping cost
+
+      * for the cart
+
+      */
+
+      public Decimal getShippingCost(eshop.CustomCart c) {
+
+```
+
+
+Apex Developer Guide Apex in Managed Packages
+
+```
+       // Flat rate shipping
+
+       return 20.0;
 
       }
 
@@ -59161,128 +60450,357 @@ The following sample shows a trigger with different behavior for different packa
 
 ```
 
-The following test class uses the `runAs` method to verify the trigger's behavior with and without a specific version:
+3. Package Developer: Releases Version 2.0 and Implements the Subscriber’s Custom Functionality
+
+The package developer releases version 2.0 of the managed package. In this version, the `CartCalculator` class now includes a
+native shipping cost calculator. The updated `getTotalPrice()` method calls the new `getShippingCost()` method. Notice
+that the package developer uses the same method name for `getShippingCost()` as the subscriber does for their custom override
+method.
 
 ```
-   @isTest
+   // Package Developer - CartCalculator.cls
 
-   private class OppTriggerTests{
+   /**
 
-     static testMethod void testOppValidation(){
+   * Handles tasks about calculating items and prices in customer carts.
 
-       // Set up 50% opportunity with no description
+   * @version 2.0
 
-       Opportunity o = new Opportunity();
+   * @since 1.0
 
-       o.Name = 'Test Job';
+   */
 
-       o.Probability = 50;
+   global virtual class CartCalculator {
 
-       o.StageName = 'Prospect';
+      /**
 
-       o.CloseDate = System.today();
+      * Adds item prices in a cart, including the shipping cost
+
+      * @param c A CustomCart object that represents a list of items that the customer
+
+      * wants to buy
+
+      * @return A Decimal object that represents the total price of items in the
+
+      * cart, including the total shipping cost
+
+      * @version 2.0
+
+      * @since 1.0
+
+      */
+
+      global virtual Decimal getTotalPrice(CustomCart c) {
+
+        Decimal price = 0.0;
+
+        // Add up items in cart
+
+        for (Decimal itemPrice : c.itemPrices) {
+
+        price += itemPrice;
+
+      }
+
+      return price + getShippingCost(c);
+
+     }
+
+      /**
+
+      * Get the shipping cost based on the items in a customer's cart
+
+      * @param c A CustomCart object that represents a list of items that the customer
+
+      * wants to buy
+
+      * @return A Decimal object that represents the total shipping cost
+
+      * for the cart
+
+      * @version 2.0
+
+      * @since 2.0
+
+      */
+
+      global virtual Decimal getShippingCost(CustomCart c) {
+
+        // Flat rate shipping
+
+        return 20.0;
+
+      }
+
+   }
 
 ```
 
 
-Apex Developer Guide Distributing Apex Using Managed Packages
+Apex Developer Guide Apex in Managed Packages
+
+4. Package Subscriber: Upgrades to Version 2.0 Without Specifying a Package Version for the Apex
+Class
+
+By default, an Apex class or trigger is associated with the version of the managed package installed when the class or trigger was most
+recently deployed.
+
+In this example, the package subscriber created and saved the `CartCalculatorWithShipping` class when the `eshop` managed
+package was on version 1.0. If the package subscriber upgrades their `eshop` managed package to version 2.0, and doesn’t redeploy
+the `CartCalculatorWithShipping` class, then that class is still associated with version 1.0 of the managed package.
+
+Let’s say that the package subscriber upgrades their `eshop` managed package to version 2.0, but does try to redeploy
+`CartCalculatorWithShipping` . In this case, the subscriber encounters this compilation error: `Method must use the`
+`override keyword: public Decimal getShippingCost(CustomCart c)` .
+
+This error occurs because there’s a mismatch in the shape of the API. The subscriber’s original `CartCalculatorWithShipping`
+class has a `getShippingCost()` method, and the `CartCalculator` class in version 2.0 of the managed package now also
+includes a `getShippingCost()` method. The subscriber didn’t specify a package version for the
+`CartCalculatorWithShipping` class, so upon redeployment, the class is now associated with version 2.0 of the managed
+package. Therefore, the subscriber’s `getShippingCost()` method technically overrides the `getShippingCost()` method
+in `CartCalculator`, and so the Apex compiler requires an `override` keyword for the method.
+
+5. Package Subscriber: Sets Apex Class to Package Version 1.0
+
+To avoid this compilation error, the package subscriber explicitly sets a package version for the `CartCalculatorWithShipping`
+class. When is set to a specific package version, the class views the package’s global Apex as if that version was installed.
+
+In this case, setting `CartCalculatorWithShipping` to version 1.0 of the managed package avoids a compilation error because
+the package’s `CartCalculator` class doesn’t define a `getShippingCost()` method until version 2.0. As long as the
+`CartCalculatorWithShipping` class is set to an earlier package version, the package’s `CartCalculator` class doesn’t
+expose the `getShippingCost()` method to the subscriber. Therefore, the Apex compiler doesn’t flag the subscriber’s own
+`getShippingCost()` method as needing to override the method in the managed package.
+
+To override the default package version for an Apex class or trigger, use the Salesforce Setup UI or the `packageVersions` field of
+the class’s ApexClass metadata type. See Set Package Versions for Apex Classes and Triggers on page 766.
+
+Note: In Spring ’25 and earlier, setting Apex classes and triggers to a package version was available for only first-generation
+managed packages (1GP). In Summer ’25 and later, package version setting is also available for migrated 2GP managed packages.
+[Package version setting isn’t yet supported in 2GP packages that weren’t converted from a 1GP package. See Apex Version Settings](https://help.salesforce.com/s/articleView?id=005101483&type=1&language=en_US)
+[in Migrated Second-Generation Managed Packages (2GP).](https://help.salesforce.com/s/articleView?id=005101483&type=1&language=en_US)
+
+For migrated 2GP managed packages, the `packageVersions` field of the ApexClass metadata type is different from that of
+1GP managed packages. 2GP managed packages are identified by their package ID, whereas 1GP managed packages are identified
+by their namespace. This difference occurs because multiple 2GP managed packages can have the same namespace, whereas
+1GP managed packages each require a unique namespace.
+
+For example, here’s the metadata file for the subscriber’s `CartCalculatorWithShipping` class, where the class is set to version
+1.0 of the managed package. Because the package is a 1GP managed package, the namespace is specified instead of the package ID.
 
 ```
-       // Test running as latest package version
+   <!-- CartCalculatorWithShipping.cls-meta.xml -->
 
-       try{
+   <ApexClass xmlns="http://soap.sforce.com/2006/04/metadata">
 
-         insert o;
+      <apiVersion>66.0</apiVersion>
 
-       }
+      <status>Active</status>
 
-       catch(System.DMLException e){
+      <packageVersions>
 
-         System.assert(
+        <namespace>eshop</namespace> <!-- For only 1GP -->
 
-            e.getMessage().contains(
+        <majorNumber>1</majorNumber>
 
-             'All deals over 50% require a description'),
+```
 
-              e.getMessage());
 
-       }
+Apex Developer Guide Apex in Managed Packages
 
-       // Run test as managed package version 1.0
+```
+        <minorNumber>0</minorNumber>
 
-       System.runAs(new Version(1,0)){
+      </packageVersions>
 
-         try{
+   </ApexClass>
 
-            insert o;
+```
 
-         }
+6. Package Subscriber: getTotalPrice() Returns an Incorrect Value
 
-         catch(System.DMLException e){
+The subscriber sets the `CartCalculatorWithShipping` class to version 1.0 of the managed package and successfully recompiles
+the class. However, the subscriber now encounters a new issue at run time: the `getTotalPrice()` method in the
+`CartCalculatorWithShipping` class returns the wrong total price.
 
-            System.assert(false, e.getMessage());
+Recall that specifying an earlier package version for an Apex class or trigger hides globals that are defined in later versions during
+compilation. In other words, setting a package version preserves the shape of the API. However, it doesn’t necessarily preserve the
+behavior of the API at run time.
 
-         }
+In version 1.0, the `getTotalPrice()` method in the `CartCalculator` class returns only the base price. But in version 2.0, the
+`getTotalPrice()` method now returns the price plus the result of `getTotalShippingCost()` . The `getTotalPrice()`
+method exists in both versions of the managed package, even though its behavior differs. Therefore, even if the subscriber sets the
+`CartCalculatorWithShipping` class to version 1.0, the `getTotalPrice()` executes with its version 2.0 behavior at run
+time.
 
-       }
+Remember that the subscriber’s `getTotalPrice()` method in their `CartCalculatorWithShipping` class overrides the
+native `getTotalPrice()` method in the managed package. The subscriber’s override method adds the `getShippingCost()`
+result to the result of the native `getTotalPrice()` method. In version 2.0 of the managed package, the native `getTotalPrice()`
+method already adds the shipping cost, so the shipping cost is erroneously added twice.
 
-       // Set up a closed won opportunity with no lead source
+```
+   // Package Developer - CartCalculator.cls (v2.0) (code unchanged)
 
-       o = new Opportunity();
+   global virtual class CartCalculator {
 
-       o.Name = 'Test Job';
+      global virtual Decimal getTotalPrice(CustomCart c) {
 
-       o.Probability = 50;
+        Decimal price = 0.0;
 
-       o.StageName = 'Prospect';
+        // Add up items in cart
 
-       o.CloseDate = System.today();
+        for (Decimal itemPrice : c.itemPrices) {
 
-       o.StageName = 'Closed Won';
+           price += itemPrice;
 
-       // Test running as latest package version
+        }
 
-       try{
+        return price + getShippingCost(c);
 
-         insert o;
+      }
 
-       }
+      global virtual Decimal getShippingCost(CustomCart c) {
 
-       catch(System.DMLException e){
+        // Flat rate shipping
 
-         System.assert(
+        return 20.0;
 
-           e.getMessage().contains(
+      }
 
-            'A lead source must be provided for all Closed Won deals'),
+   }
 
-             e.getMessage());
+   // Package Subscriber - CartCalculatorWithShipping.cls (code unchanged)
 
-       }
+   public with sharing class CartCalculatorWithShipping extends eshop.CartCalculator {
 
-       // Run test as managed package version 1.0
+      // Now returns the wrong price because getShippingCost is added twice
 
-       System.runAs(new Version(1,0)){
+      public override Decimal getTotalPrice(eshop.CustomCart c) {
 
-         try{
+        return super.getTotalPrice(c) + getShippingCost(c);
 
-            insert o;
+      }
 
-         }
+      public Decimal getShippingCost(eshop.CustomCart c) {
 
-         catch(System.DMLException e){
+        // Flat rate shipping
 
-            System.assert(
+```
 
-              e.getMessage().contains(
 
-               'A lead source must be provided for all Closed Won deals'),
+Apex Developer Guide Apex in Managed Packages
 
-                  e.getMessage());
+```
+      return 20.0;
 
-         }
+      }
 
-       }
+   }
+
+```
+
+To resolve this problem without requiring the subscriber to change their code, the package developer must version the behavior of
+Apex classes and triggers in the package.
+
+7. Package Developer: Implements Backward Compatibility with System.requestVersion()
+
+After the package subscriber informs the package developer about the unexpected `getTotalPrice()` behavior, the package
+developer releases a patch update. Version 2.1 of the package allows the subscriber to keep their original
+`CartCalculatorWithShipping` class by implementing backwards compatibility with `[System.requestVersion()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_requestVersion)` .
+
+Here’s version 2.1 of the `CartCalculator` class that contains an updated `getTotalPrice()` method. In the method, a
+`callerVersion` variable is set to `System.requestVersion()`, which returns a `[Version](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_version.htm)` object that represents the
+managed package version of the calling class. A `minVersionWithShippingCost` variable is set to the managed package version
+that introduced the changed `getTotalPrice()` behavior.
+
+Then, the `[Version.compareTo()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_version.htm#apex_System_Version_compareTo)` method compares `callerVersion` and `minVersionWithShippingCost` . If the
+caller version is earlier than the version that the shipping cost feature was introduced in, then `getTotalPrice()` returns the price.
+This value aligns with the original behavior in version 1.0 of the managed package. If the caller version matches or is later than the version
+that the shipping cost feature was introduced in, then `getTotalPrice()` returns the price addition to the shipping cost.
+
+```
+   // Package Developer - CartCalculator.cls
+
+   /**
+
+   * Handles tasks about calculating items and prices in customer carts.
+
+   * @version 2.1
+
+   * @since 1.0
+
+   */
+
+   global virtual class CartCalculator {
+
+     /**
+
+      * Adds item prices in a cart.
+
+      * @param c A CustomCart object that represents a list of items that the customer
+
+      * wants to buy
+
+      * @return A Decimal object that represents the total price of items in the
+
+      * cart. Total price includes the shipping cost for v2.0 and later.
+
+      * @version 2.1
+
+      * @since 1.0
+
+     */
+
+     global virtual Decimal getTotalPrice (CustomCart c) {
+
+        Decimal price = 0.00;
+
+        // Add up items in cart
+
+        Version callerVersion = System.requestVersion();
+
+        Version minVersionWithShippingCost = new Version(2, 0);
+
+        if (callerVersion.compareTo(minVersionWithShippingCost) < 0) {
+
+        // callVer < minVer that you introduced the shipping cost feature in
+
+          return price;
+
+        } else {
+
+        return price + getShippingCost(c);
+
+        }
+
+```
+
+
+Apex Developer Guide Apex in Managed Packages
+
+```
+     }
+
+     /**
+
+     * Get the shipping cost based on the items in a customer's cart
+
+     * @param c A CustomCart object that represents a list of items that the customer
+
+     * wants to buy
+
+     * @return A Decimal object that represents the total shipping cost
+
+     * for the cart
+
+     * @version 2.1
+
+     * @since 2.0
+
+     */
+
+     global virtual Decimal getShippingCost(CustomCart c) {
+
+        return 20.00;
 
      }
 
@@ -59290,12 +60808,116 @@ Apex Developer Guide Distributing Apex Using Managed Packages
 
 ```
 
+By versioning the behavior of `getTotalPrice()`, the package developer has implemented basic backward compatibility for the
+class. Now, as long as package subscribers set Apex classes to the desired managed package version, then their existing implementations
+won’t break when they upgrade from version 1.0 to version 2.1 of the package.
 
-## Apex Developer Guide Apex Reference Apex Reference
+8: Package Developer: Tests Backward Compatibility with System.runAs()
+
+To ensure that `getTotalPrice()` now behaves differently based on the package version of the calling code, the package developer
+can use `[System.runAs()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_runAs)` in their unit tests. This method, which can only be used in test methods, changes the current package
+version to the package version specified in the argument Here’s a basic unit test that the package developer implements for
+`getTotalPrice()` .
+
+```
+   // Package Developer - CartCalculatorTest.cls
+
+   @isTest
+
+   private class CartCalculatorTest {
+
+      private static final List<Decimal> prices = new List<Decimal>{
+
+        10.0,
+
+        20.0,
+
+        30.0
+
+      };
+
+      @isTest
+
+      static void testGetTotalPrice_WithShippingCost() {
+
+        CustomCart cart = new CustomCart();
+
+        cart.itemPrices = prices;
+
+        CartCalculator calculator = new CartCalculator();
+
+        //Version 2.0 includes the shipping cost calculation
+
+        System.runAs(new Version(2, 0)) {
+
+           Decimal totalPrice = calculator.getTotalPrice(cart);
+
+           // The expected total is sum of item prices (60.0) plus the shipping cost
+
+   (20.0)
+
+           Assert.areEqual(80.0, totalPrice, 'The total price should be 80.0');
+
+        }
+
+      }
+
+```
+
+
+## Apex Developer Guide Apex Reference
+
+```
+      @isTest
+
+      static void testGetTotalPrice_WithoutShippingCost() {
+
+        CustomCart cart = new CustomCart();
+
+        cart.itemPrices = prices;
+
+        CartCalculator calculator = new CartCalculator();
+
+        // Version 1.0 doesn't include the shipping cost calculation
+
+        System.runAs(new Version(1, 0)) {
+
+           Decimal totalPrice = calculator.getTotalPrice(cart);
+
+           // The expected total is the sum of item prices (60.0)
+
+           Assert.areEqual(60.0, totalPrice, 'The total price should be 60.0');
+
+        }
+
+      }
+
+   }
+
+```
+
+Summary: Shared Responsibilities for Safe Package Upgrades
+
+The extended example demonstrates that the package developer and package subscriber both play a role in ensuring safe package
+upgrades. Here’s a table that summarizes the recommended actions that each actor can take so that the package can evolve without
+compromising subscriber implementations.
+
+**Table 11: Safe Package Upgrade Responsibilities**
+
+SEE ALSO:
+
+Develop and Distribute Apex for Managed Packages
+
+Use Apex Referenced by Managed Packages
+
+## Apex Reference
 
 In Summer ’21 and later versions, Apex reference content is moved to a separate guide called the Apex Reference Guide.
 
-[For reference information on Apex classes, interfaces, exceptions and so on, see Apex Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.258.0.apexref.meta/apexref/apex_ref_guide.htm)
+
+## Apex Developer Guide Appendices
+
+[For reference information on Apex classes, interfaces, exceptions and so on, see Apex Reference Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ref_guide.htm)
 
 ## Appendices
 
@@ -59338,14 +60960,14 @@ product.
 
 **•** The tax rate is 9.25%.
 
-
-Apex Developer Guide Shipping Invoice Example
-
 **•** The shipping rate is 75 cents per pound.
 
 **•** Once an order is over $100, the shipping discount is applied (shipping becomes free).
 
 The fields in the Item custom object include:
+
+
+Apex Developer Guide Shipping Invoice Example
 
 **Name** **Type** **Description**
 
@@ -60316,7 +61938,7 @@ These words can be used only as keywords.
 
 Apex Developer Guide Reserved Keywords
 
-**Table 11: Reserved Keywords**
+**Table 12: Reserved Keywords**
 
 abstract false package
 

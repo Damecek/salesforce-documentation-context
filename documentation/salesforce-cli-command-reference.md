@@ -1,15 +1,15 @@
 # Salesforce CLI Command Reference
 
-> Source: https://resources.docs.salesforce.com/258/latest/en-us/sfdc/pdf/sfdx_cli_reference.pdf
-> Fetched: 2026-01-22T10:44:20Z
+> Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/sfdx_cli_reference.pdf
+> Fetched: 2026-01-27T10:01:22Z
 Salesforce CLI Command
 Reference
 
-Salesforce, Winter ’26
+Salesforce, Spring ’26
 
-Last updated: December 18, 2025
+Last updated: January 23, 2026
 
-© Copyright 2000–2025 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
+© Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
 
 CONTENTS
@@ -21,7 +21,7 @@ sf **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 Salesforce Functions (Retired) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298**
 sfdx (Deprecated) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298**
 CLI Deprecation Policy **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 324**
-Discover Salesforce Plugins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 324**
+Discover Salesforce Plugins **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 325**
 
 SALESFORCE CLI COMMAND REFERENCE
 
@@ -59,11 +59,11 @@ both the current release and the release candidate.
 Commands to manage Salesforce DX projects, create and manage scratch orgs and sandboxes, synchronize source to and from orgs,
 create and install packages, and more.
 
-## This version of the sf command reference includes details about version 2.117.6 of the sf executable of Salesforce CLI and the
+## This version of the sf command reference includes details about version 2.120.3 of the sf executable of Salesforce CLI and the
 
 following plug-in versions:
 
-**•** `@salesforce/plugin-deploy-retrieve` version 3.24.2
+**•** `@salesforce/plugin-deploy-retrieve` version 3.24.7
 
 **•** `@salesforce/plugin-settings` version 2.4.54
 
@@ -80,23 +80,23 @@ following plug-in versions:
 
 Salesforce CLI Command Reference sf
 
-**•** `@salesforce/plugin-data` version 4.0.66
+**•** `@salesforce/plugin-data` version 4.0.67
 
 **•** `@salesforce/plugin-community` version 3.3.48
 
 **•** `@salesforce/plugin-signups` version 2.6.56
 
-**•** `@salesforce/plugin-user` version 3.6.44
+**•** `@salesforce/plugin-user` version 3.6.46
 
-**•** `@salesforce/plugin-org` version 5.9.53
+**•** `@salesforce/plugin-org` version 5.9.59
 
-**•** `@salesforce/plugin-packaging` version 2.24.2
+**•** `@salesforce/plugin-packaging` version 2.24.7
 
-**•** `@salesforce/plugin-templates` version 56.4.0
+**•** `@salesforce/plugin-templates` version 56.4.2
 
 **•** `@salesforce/plugin-apex` version 3.9.5
 
-**•** `@salesforce/plugin-auth` version 3.9.26
+**•** `@salesforce/plugin-auth` version 4.1.2
 
 **•** `@salesforce/plugin-dev` version 2.5.1
 
@@ -106,15 +106,15 @@ Salesforce CLI Command Reference sf
 
 **•** `@salesforce/plugin-marketplace` version 1.3.8
 
-**•** `@salesforce/plugin-code-analyzer` version 5.7.1
+**•** `@salesforce/plugin-code-analyzer` version 5.8.0
 
-**•** `@salesforce/plugin-api` version 1.3.6
+**•** `@salesforce/plugin-api` version 1.3.7
 
-**•** `@salesforce/plugin-agent` version 1.26.0
+**•** `@salesforce/plugin-agent` version 1.26.5
 
 **•** `@salesforce/plugin-flow` version 1.0.5
 
-For information about installing Salesforce CLI, see the _[Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)_ .
+For information about installing Salesforce CLI, see the _[Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)_ .
 
 For information about Salesforce CLI changes, see the _[Salesforce CLI Release Notes](https://github.com/forcedotcom/cli/blob/main/releasenotes/README.md)_ .
 
@@ -11649,7 +11649,7 @@ Create a user for a scratch org.
 A scratch org includes one administrator user by default. For testing purposes, however, you sometimes need to create additional users.
 
 The easiest way to create a user is to let this command assign default or generated characteristics to the new user. If you want to customize
-your new user, create a definition file and specify it with the --definition-file flag. In the file, you can include all the User sObject (SSalesforce
+your new user, create a definition file and specify it with the --definition-file flag. In the file, you can include all the User sObject (Salesforce
 object) fields and Salesforce DX-specific options, as described in "User Definition File for Customizing a Scratch Org User"
 (https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_scratch_orgs_users_def_file.htm). You can also
 specify these options on the command line.
@@ -16409,11 +16409,12 @@ Type: boolean
 **`-r`** **|** **`--recommended-version-id RECOMMENDED-VERSION-ID`**
 Optional
 
-Package version ID that subscribers are notified to install or upgrade to.
+ID of the package version that's installed when subscribers click the Upgrade to Recommended Version option on the Installed
+Packages page of their org.
 
-Specify the recommended package version for subscribers to install. Subscribers are notified to install the package version ID that
-you specify. If the subscribers have a different version of the same package installed, they're notified to upgrade to the recommended
-version.
+Specify the recommended package version for subscribers to install. If a subscriber has a package version installed in their org that's
+lower than the version you set, the subscriber sees the Upgrade to Recommended Version option on the Installed Packages page.
+Only released package versions can be set as the recommended version.
 
 Type: option
 
@@ -16432,16 +16433,16 @@ Aliases for **`package update`**
 ```
    force:package:update
 
-#### **`package version create`**
-
 ```
-
-Create a package version in the Dev Hub org.
 
 
 Salesforce CLI Command Reference package Commands
 
-Description for **`package version create`**
+#### **`package version create`**
+
+Create a package version in the Dev Hub org.
+
+#### Description for package version create
 
 The package version is based on the package contents in the specified directory.
 
@@ -16458,7 +16459,7 @@ requirements. This requirement applies to both managed and unlocked packages.
 
 We don’t calculate code coverage for org-dependent unlocked packages, or for package versions that specify --skip-validation.
 
-Examples for **`package version create`**
+#### Examples for package version create
 
 Create a package version from the contents of the "common" directory and give it an installation key of "password123"; uses your default
 Dev Hub org:
@@ -16520,13 +16521,13 @@ Import flag values from a directory.
 
 Type: option
 
+
+Salesforce CLI Command Reference package Commands
+
 **`-v`** **|** **`--target-dev-hub TARGET-DEV-HUB`**
 Required
 
 Username or alias of the Dev Hub org. Not required if the `target-dev-hub` configuration variable is already set.
-
-
-Salesforce CLI Command Reference package Commands
 
 Type: option
 
@@ -16594,12 +16595,12 @@ Type: option
 **`-d`** **|** **`--path PATH`**
 Optional
 
+
+Salesforce CLI Command Reference package Commands
+
 Path to the directory that contains the contents of the package.
 
 Type: option
-
-
-Salesforce CLI Command Reference package Commands
 
 ```
    --post-install-script POST-INSTALL-SCRIPT
@@ -16683,14 +16684,14 @@ Package version’s tag.
 
 Type: option
 
+
+Salesforce CLI Command Reference package Commands
+
 ```
    --uninstall-script UNINSTALL-SCRIPT
 ```
 
 Optional
-
-
-Salesforce CLI Command Reference package Commands
 
 Uninstall script name; applies to managed packages only.
 
@@ -18621,7 +18622,7 @@ Output directory to store the Metadata API–formatted files in.
 
 Type: option
 
-Default value: metadataPackage_1765992141312
+Default value: metadataPackage_1769024029228
 
 **`-n`** **|** **`--package-name PACKAGE-NAME`**
 Optional
@@ -18950,8 +18951,17 @@ test level is the default for production deployments that include Apex classes o
 
       - RunAllTestsInOrg — All tests in your org are run, including tests of managed packages.
 
+      - RunRelevantTests (Beta) — Runs only tests that are relevant to the files being deployed. Salesforce automatically identifies the
+relevant tests based on an analysis of the deployment payload and the payload dependencies. For fine-grained control, you can also
+annotate test classes so that they always run in certain conditions. See "@IsTest Annotation" in the "Apex Developer Guide"
+(https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_annotation_isTest.htm). Each class and
+trigger in the deployment package must be covered by the executed tests for a minimum of 75% code coverage. This coverage is
+computed for each class and triggers individually and is different than the overall coverage percentage.
+
 If you don’t specify a test level, the default behavior depends on the contents of your deployment package and target org. For more
-information, see “Running Tests in a Deployment” in the Metadata API Developer Guide.
+information, see "Running Tests in a Deployment"
+(https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_deploy_running_tests.htm) in the "Metadata
+API Developer Guide".
 
 Type: option
 
@@ -18963,6 +18973,9 @@ Optional
 Don't prompt for delete confirmation.
 
 Type: boolean
+
+
+Salesforce CLI Command Reference project Commands
 
 **`-m`** **|** **`--metadata METADATA`**
 Optional
@@ -18977,9 +18990,6 @@ Type: option
 Optional
 
 Source file paths to delete.
-
-
-Salesforce CLI Command Reference project Commands
 
 The supplied paths can be a single file (in which case the operation is applied to only one file) or a folder (in which case the operation
 is applied to all metadata types in the directory and its sub-directories).
@@ -19030,7 +19040,10 @@ WARNING: This command deletes or overwrites all existing source tracking files. 
 Deletes all local source tracking information. When you next run 'project deploy preview', Salesforce CLI displays all local and remote
 files as changed, and any files with the same name are listed as conflicts.
 
-#### Examples for project delete tracking
+
+Salesforce CLI Command Reference project Commands
+
+Examples for **`project delete tracking`**
 
 Delete local source tracking for the org with alias "my-scratch":
 
@@ -19050,9 +19063,6 @@ Optional
 Format output as json.
 
 Type: boolean
-
-
-Salesforce CLI Command Reference project Commands
 
 ```
    --flags-dir FLAGS-DIR
@@ -19107,7 +19117,10 @@ deploys, deploy validations, and deploy cancellations.
 Run this command by either passing it a job ID or specifying the --use-most-recent flag to use the job ID of the most recent deploy
 operation.
 
-#### Examples for project deploy cancel
+
+Salesforce CLI Command Reference project Commands
+
+Examples for **`project deploy cancel`**
 
 Cancel a deploy operation using a job ID:
 
@@ -19130,9 +19143,6 @@ Flags
 ```
 
 Optional
-
-
-Salesforce CLI Command Reference project Commands
 
 Format output as json.
 
@@ -19192,6 +19202,9 @@ Optional
 
 Use the job ID of the most recent deploy operation.
 
+
+Salesforce CLI Command Reference project Commands
+
 For performance reasons, this flag uses job IDs for deploy operations that started only in the past 3 days or less. If your most recent
 deploy operations was more than 3 days ago, this flag won't find a job ID.
 
@@ -19206,9 +19219,6 @@ If the command continues to run after the wait period, the CLI returns control o
 the cancellation, run "sf project deploy resume". To check the status of the cancellation, run "sf project deploy report".
 
 Type: option
-
-
-Salesforce CLI Command Reference project Commands
 
 Aliases for **`project deploy cancel`**
 
@@ -19260,6 +19270,9 @@ Asynchronously run a quick deploy of the most recently validated deployment usin
 
 ```
 
+
+Salesforce CLI Command Reference project Commands
+
 Flags
 
 ```
@@ -19279,9 +19292,6 @@ Type: boolean
 Optional
 
 Run the command asynchronously.
-
-
-Salesforce CLI Command Reference project Commands
 
 The command immediately returns the job ID and control of the terminal to you. This way, you can continue to use the CLI. To
 resume the deployment, run "sf project deploy pipeline resume". To check the status of the deployment, run "sf project deploy
@@ -19342,6 +19352,9 @@ Optional
 
 Use the job ID of the most recently validated deployment.
 
+
+Salesforce CLI Command Reference project Commands
+
 For performance reasons, this flag uses only job IDs that were validated in the past 3 days or less. If your most recent deployment
 validation was more than 3 days ago, this flag won't find the job ID.
 
@@ -19355,10 +19368,7 @@ Note: This feature is a Beta Service. Customers may opt to try such Beta Service
 is subject to the applicable Beta Services Terms provided at Agreements and Terms
 [(https://www.salesforce.com/company/legal/agreements/).](https://www.salesforce.com/company/legal/agreements/)
 
-
-Salesforce CLI Command Reference project Commands
-
-Description for **`project deploy pipeline report`**
+#### Description for project deploy pipeline report
 
 The first time you run any "project deploy pipeline" command, be sure to authorize the org in which DevOps Center is installed. The
 easiest way to authorize an org is with the "org login web" command.
@@ -19366,7 +19376,7 @@ easiest way to authorize an org is with the "org login web" command.
 Run this command by either indicating a job ID or specifying the —use-most-recent flag to use the job ID of the most recent deploy
 operation.
 
-Examples for **`project deploy pipeline report`**
+#### Examples for project deploy pipeline report
 
 Check the status using a job ID:
 
@@ -19415,6 +19425,9 @@ Type: option
 **`-r`** **|** **`--use-most-recent`**
 Optional
 
+
+Salesforce CLI Command Reference project Commands
+
 Use the job ID of the most recent deploy operation.
 
 For performance reasons, this flag uses job IDs for deploy operations that started in the past 3 days or fewer. If your most recent
@@ -19426,14 +19439,11 @@ Type: boolean
 
 Resume watching a pipeline deploy operation.
 
-
-Salesforce CLI Command Reference project Commands
-
 Note: This feature is a Beta Service. Customers may opt to try such Beta Service in its sole discretion. Any use of the Beta Service
 is subject to the applicable Beta Services Terms provided at Agreements and Terms
 [(https://www.salesforce.com/company/legal/agreements/).](https://www.salesforce.com/company/legal/agreements/)
 
-Description for **`project deploy pipeline resume`**
+#### Description for project deploy pipeline resume
 
 The first time you run any "project deploy pipeline" command, be sure to authorize the org in which DevOps Center is installed. The
 easiest way to authorize an org is with the "org login web" command.
@@ -19443,7 +19453,7 @@ Use this command to resume watching a pipeline deploy operation if the original 
 Run this command by either indicating a job ID or specifying the --use-most-recent flag to use the job ID of the most recent deploy
 operation.
 
-Examples for **`project deploy pipeline resume`**
+#### Examples for project deploy pipeline resume
 
 Resume watching a deploy operation using a job ID:
 
@@ -19487,6 +19497,9 @@ These commands return a job ID if they time out or you specified the --async fla
 
       - sf project deploy pipeline start
 
+
+Salesforce CLI Command Reference project Commands
+
       - sf project deploy pipeline validate
 
       - sf project deploy pipeline quick
@@ -19499,9 +19512,6 @@ Type: option
 Optional
 
 Use the job ID of the most recent deploy operation.
-
-
-Salesforce CLI Command Reference project Commands
 
 For performance reasons, this flag uses job IDs for operations that started in the past 3 days or fewer. If your most recent operation
 was longer than 3 days ago, this flag won't find a job ID.
@@ -19555,7 +19565,10 @@ easiest way to authorize an org is with the "org login web" command.
 
 Before you run this command, changes in the pipeline stage's branch must be merged in the source control repository.
 
-#### Examples for project deploy pipeline start
+
+Salesforce CLI Command Reference project Commands
+
+Examples for **`project deploy pipeline start`**
 
 Deploy changes in the Staging branch to the Staging environment (sandbox), if the previous stage is the bundling stage:
 
@@ -19574,9 +19587,6 @@ Deploy all changes in the main branch to the release environment:
     main --devops-center-username MyReleaseOrg --deploy-all
 
 ```
-
-
-Salesforce CLI Command Reference project Commands
 
 Flags
 
@@ -19634,6 +19644,9 @@ Optional
 
 Apex tests to run when --test-level is RunSpecifiedTests.
 
+
+Salesforce CLI Command Reference project Commands
+
 Separate multiple test names with commas. Enclose the entire flag value in double quotes if a test name contains spaces.
 
 Type: option
@@ -19647,9 +19660,6 @@ Valid values are:
 
       - NoTestRun — No tests are run. This test level applies only to deployments to development environments, such as sandbox,
 Developer Edition, or trial orgs. This test level is the default for development environments.
-
-
-Salesforce CLI Command Reference project Commands
 
       - RunSpecifiedTests — Runs only the tests that you specify with the --tests flag. Code coverage requirements differ from the default
 coverage requirements when using this test level. Executed tests must comprise a minimum of 75% code coverage for each class
@@ -19713,6 +19723,9 @@ Optional
 
 Show concise output of the command result.
 
+
+Salesforce CLI Command Reference project Commands
+
 Type: boolean
 
 #### project deploy pipeline validate (Beta)
@@ -19723,10 +19736,7 @@ Note: This feature is a Beta Service. Customers may opt to try such Beta Service
 is subject to the applicable Beta Services Terms provided at Agreements and Terms
 [(https://www.salesforce.com/company/legal/agreements/).](https://www.salesforce.com/company/legal/agreements/)
 
-
-Salesforce CLI Command Reference project Commands
-
-Description for **`project deploy pipeline validate`**
+#### Description for project deploy pipeline validate
 
 The first time you run any "project deploy pipeline" command, be sure to authorize the org in which DevOps Center is installed. The
 easiest way to authorize an org is with the "org login web" command.
@@ -19734,7 +19744,7 @@ easiest way to authorize an org is with the "org login web" command.
 A validation runs Apex tests to verify whether a deployment will succeed without actually deploying the metadata to your environment,
 so you can then quickly deploy the changes later without re-running the tests.
 
-Examples for **`project deploy pipeline validate`**
+#### Examples for project deploy pipeline validate
 
 Perform a validate-only deployment from the Staging branch to the Staging environment (sandbox):
 
@@ -19787,6 +19797,9 @@ Optional
 
 Deploy all metadata in the branch to the stage's org.
 
+
+Salesforce CLI Command Reference project Commands
+
 If you don’t specify this flag, only changes in the stage’s branch are deployed.
 
 Type: boolean
@@ -19800,9 +19813,6 @@ Type: option
 
 **`-c`** **|** **`--devops-center-username DEVOPS-CENTER-USERNAME`**
 Required
-
-
-Salesforce CLI Command Reference project Commands
 
 Username or alias of the DevOps Center org.
 
@@ -19859,6 +19869,9 @@ pipeline report".
 
 Type: boolean
 
+
+Salesforce CLI Command Reference project Commands
+
 **`-w`** **|** **`--wait WAIT`**
 Optional
 
@@ -19876,9 +19889,6 @@ Default value: 33 minutes
 ```
 
 Optional
-
-
-Salesforce CLI Command Reference project Commands
 
 Show verbose output of the command result.
 
@@ -19933,6 +19943,9 @@ Preview the deployment of all Apex classes to an org with alias "my-scratch":
 
 ```
 
+
+Salesforce CLI Command Reference project Commands
+
 Preview deployment of a specific Apex class:
 
 ```
@@ -19956,9 +19969,6 @@ Flags
 Optional
 
 Format output as json.
-
-
-Salesforce CLI Command Reference project Commands
 
 Type: boolean
 
@@ -20014,6 +20024,9 @@ Required
 
 Username or alias of the target org. Not required if the `target-org` configuration variable is already set.
 
+
+Salesforce CLI Command Reference project Commands
+
 Type: option
 
 ```
@@ -20031,12 +20044,9 @@ Aliases for **`project deploy preview`**
 ```
    deploy:metadata:preview
 
-```
-
-
-Salesforce CLI Command Reference project Commands
-
 #### **`project deploy quick`**
+
+```
 
 Quickly deploy a validated deployment to an org.
 
@@ -20093,6 +20103,9 @@ Optional
 
 Import flag values from a directory.
 
+
+Salesforce CLI Command Reference project Commands
+
 Type: option
 
 ```
@@ -20113,9 +20126,6 @@ Type: boolean
 ```
 
 Optional
-
-
-Salesforce CLI Command Reference project Commands
 
 Show concise output of the deploy result.
 
@@ -20174,6 +20184,9 @@ Optional
 
 Target API version for the deploy.
 
+
+Salesforce CLI Command Reference project Commands
+
 Use this flag to override the default API version with the API version of your package.xml file. The default API version is the latest
 version supported by the CLI.
 
@@ -20184,12 +20197,9 @@ Aliases for **`project deploy quick`**
 ```
    deploy:metadata:quick
 
-```
-
-
-Salesforce CLI Command Reference project Commands
-
 #### **`project deploy report`**
+
+```
 
 Check or poll for the status of a deploy operation.
 
@@ -20252,6 +20262,9 @@ Import flag values from a directory.
 
 Type: option
 
+
+Salesforce CLI Command Reference project Commands
+
 **`-o`** **|** **`--target-org TARGET-ORG`**
 Optional
 
@@ -20265,9 +20278,6 @@ Optional
 Job ID of the deploy operation you want to check the status of.
 
 These commands return a job ID if they time out or you specified the --async flag:
-
-
-Salesforce CLI Command Reference project Commands
 
       - sf project deploy start
 
@@ -20332,6 +20342,9 @@ Optional
 
 Number of minutes to wait for command to complete and display results.
 
+
+Salesforce CLI Command Reference project Commands
+
 If the command continues to run after the wait period, the CLI returns control of the terminal window to you and returns the job ID.
 To resume the deployment, run "sf project deploy resume". To check the status of the deployment, run "sf project deploy report".
 
@@ -20342,12 +20355,9 @@ Aliases for **`project deploy report`**
 ```
    deploy:metadata:report
 
-```
-
-
-Salesforce CLI Command Reference project Commands
-
 #### **`project deploy resume`**
+
+```
 
 Resume watching a deploy operation and update source tracking when the deploy completes.
 
@@ -20409,6 +20419,9 @@ Show concise output of the deploy operation result.
 
 Type: boolean
 
+
+Salesforce CLI Command Reference project Commands
+
 **`-i`** **|** **`--job-id JOB-ID`**
 Optional
 
@@ -20423,9 +20436,6 @@ These commands return a job ID if they time out or you specified the --async fla
       - sf project deploy quick
 
       - sf project deploy cancel
-
-
-Salesforce CLI Command Reference project Commands
 
 The job ID is valid for 10 days from when you started the deploy operation.
 
@@ -20493,6 +20503,9 @@ Type: boolean
 
 Optional
 
+
+Salesforce CLI Command Reference project Commands
+
 Output directory for code coverage and JUnit results; defaults to the deploy ID.
 
 Type: option
@@ -20502,12 +20515,9 @@ Aliases for **`project deploy resume`**
 ```
    deploy:metadata:resume
 
-```
-
-
-Salesforce CLI Command Reference project Commands
-
 #### **`project deploy start`**
+
+```
 
 Deploy metadata to an org from your local project.
 
@@ -20571,6 +20581,9 @@ the Apex class in the org if there are conflicts!):
 
 ```
 
+
+Salesforce CLI Command Reference project Commands
+
 Deploy specific Apex classes that match a pattern; in this example, deploy Apex classes whose names contain the string "MyApex". Also
 ignore any deployment warnings (again, be careful with this flag! You typically want to see the warnings):
 
@@ -20585,9 +20598,6 @@ Deploy a custom object called ExcitingObject that's in the SBQQ namespace:
    sf project deploy start --metadata CustomObject:SBQQ__ExcitingObject
 
 ```
-
-
-Salesforce CLI Command Reference project Commands
 
 Deploy all custom objects in the SBQQ namespace by using a wildcard and quotes:
 
@@ -20668,6 +20678,9 @@ Optional
 
 Target API version for the deploy.
 
+
+Salesforce CLI Command Reference project Commands
+
 Use this flag to override the default API version with the API version of your package.xml file. The default API version is the latest
 version supported by the CLI.
 
@@ -20680,9 +20693,6 @@ Type: option
 Optional
 
 Run the command asynchronously.
-
-
-Salesforce CLI Command Reference project Commands
 
 The command immediately returns the job ID and control of the terminal to you. This way, you can continue to use the CLI. To
 resume the deployment, run "sf project deploy resume". To check the status of the deployment, run "sf project deploy report".
@@ -20748,6 +20758,9 @@ Full file path for manifest (package.xml) of components to deploy.
 
 All child components are included. If you specify this flag, don’t specify --metadata or --source-dir.
 
+
+Salesforce CLI Command Reference project Commands
+
 Type: option
 
 **`-m`** **|** **`--metadata METADATA`**
@@ -20756,9 +20769,6 @@ Optional
 Metadata component names to deploy. Wildcards (`*` ) supported as long as you use quotes, such as `ApexClass:MyClass*`.
 
 Type: option
-
-
-Salesforce CLI Command Reference project Commands
 
 ```
    --metadata-dir METADATA-DIR
@@ -20824,6 +20834,9 @@ Valid values are:
       - NoTestRun — No tests are run. This test level applies only to deployments to development environments, such as sandbox,
 Developer Edition, or trial orgs. This test level is the default for development environments.
 
+
+Salesforce CLI Command Reference project Commands
+
       - RunSpecifiedTests — Runs only the tests that you specify with the --tests flag. Code coverage requirements differ from the default
 coverage requirements when using this test level. Executed tests must comprise a minimum of 75% code coverage for each class
 and trigger in the deployment package. This coverage is computed for each class and trigger individually and is different than the
@@ -20834,15 +20847,17 @@ test level is the default for production deployments that include Apex classes o
 
       - RunAllTestsInOrg — All tests in your org are run, including tests of managed packages.
 
-
-Salesforce CLI Command Reference project Commands
-
-      - RunRelevantTests — Runs only tests that are relevant to the files being deployed.
+      - RunRelevantTests (Beta) — Runs only tests that are relevant to the files being deployed. Salesforce automatically identifies the
+relevant tests based on an analysis of the deployment payload and the payload dependencies. For fine-grained control, you can also
+annotate test classes so that they always run in certain conditions. See "@IsTest Annotation" in the "Apex Developer Guide"
+(https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_annotation_isTest.htm). Each class and
+trigger in the deployment package must be covered by the executed tests for a minimum of 75% code coverage. This coverage is
+computed for each class and triggers individually and is different than the overall coverage percentage.
 
 If you don’t specify a test level, the default behavior depends on the contents of your deployment package and target org. For more
-information, see [Running Tests in a
-Deployment](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_deploy_running_tests.htm) in
-the "Metadata API Developer Guide".
+information, see "Running Tests in a Deployment"
+(https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_deploy_running_tests.htm) in the "Metadata
+API Developer Guide".
 
 Type: option
 
@@ -20899,6 +20914,9 @@ Optional
 
 File path for a manifest (destructiveChangesPost.xml) of components to delete after the deploy.
 
+
+Salesforce CLI Command Reference project Commands
+
 Type: option
 
 ```
@@ -20922,9 +20940,6 @@ Permissible values are: clover, cobertura, html-spa, html, json, json-summary, l
 ```
 
 Optional
-
-
-Salesforce CLI Command Reference project Commands
 
 Output JUnit test results.
 
@@ -20973,7 +20988,10 @@ Note: Don't use this command on sandboxes; the command is intended to be used on
 tests during a deploy. If you want to validate a deployment with tests on a sandbox, use "sf project deploy start --dry-run --test-level
 RunLocalTests" instead.
 
-#### Examples for project deploy validate
+
+Salesforce CLI Command Reference project Commands
+
+Examples for **`project deploy validate`**
 
 NOTE: These examples focus on validating large deployments. See the help for "sf project deploy start" for examples of deploying smaller
 sets of metadata which you can also use to validate.
@@ -20991,9 +21009,6 @@ Validate the deployment of all source files in two directories: "force-app" and 
    sf project deploy validate --source-dir force-app --source-dir force-app-utils
 
 ```
-
-
-Salesforce CLI Command Reference project Commands
 
 Asynchronously validate the deployment and run all tests in the org with alias "my-prod-org"; command immediately returns the job
 ID:
@@ -21065,6 +21080,9 @@ Optional
 
 Show concise output of the validation result.
 
+
+Salesforce CLI Command Reference project Commands
+
 Type: boolean
 
 **`-x`** **|** **`--manifest MANIFEST`**
@@ -21078,9 +21096,6 @@ Type: option
 
 **`-m`** **|** **`--metadata METADATA`**
 Optional
-
-
-Salesforce CLI Command Reference project Commands
 
 Metadata component names to validate for deployment.
 
@@ -21143,6 +21158,9 @@ Type: option
 **`-l`** **|** **`--test-level TEST-LEVEL`**
 Optional
 
+
+Salesforce CLI Command Reference project Commands
+
 Deployment Apex testing level.
 
 Valid values are:
@@ -21157,10 +21175,17 @@ test level is the default.
 
       - RunAllTestsInOrg — All tests in your org are run, including tests of managed packages.
 
+      - RunRelevantTests (Beta) — Runs only tests that are relevant to the files being deployed. Salesforce automatically identifies the
+relevant tests based on an analysis of the deployment payload and the payload dependencies. For fine-grained control, you can also
+annotate test classes so that they always run in certain conditions. See "@IsTest Annotation" in the "Apex Developer Guide"
+(https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_annotation_isTest.htm). Each class and
+trigger in the deployment package must be covered by the executed tests for a minimum of 75% code coverage. This coverage is
+computed for each class and triggers individually and is different than the overall coverage percentage.
 
-Salesforce CLI Command Reference project Commands
-
-      - RunRelevantTests — Runs only tests that are relevant to the files being deployed.
+If you don’t specify a test level, the default behavior depends on the contents of your deployment package and target org. For more
+information, see "Running Tests in a Deployment"
+(https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_deploy_running_tests.htm) in the "Metadata
+API Developer Guide".
 
 Type: option
 
@@ -21203,6 +21228,9 @@ doesn't exist in the org, you get a warning. In this case, to ensure that the co
 
 Type: boolean
 
+
+Salesforce CLI Command Reference project Commands
+
 ```
    --coverage-formatters COVERAGE-FORMATTERS
 ```
@@ -21238,9 +21266,6 @@ Optional
 Output directory for code coverage and JUnit results; defaults to the deploy ID.
 
 Type: option
-
-
-Salesforce CLI Command Reference project Commands
 
 ```
    --purge-on-delete
@@ -21289,10 +21314,13 @@ Generate a Salesforce DX project.
 A Salesforce DX project has a specific structure and a configuration file (sfdx-project.json) that identifies the directory as a Salesforce DX
 project. This command generates the necessary configuration files and directories to get you started.
 
+
+Salesforce CLI Command Reference project Commands
+
 By default, the generated sfdx-project.json file sets the sourceApiVersion property to the default API version currently used by Salesforce
 CLI. To specify a different version, set the apiVersion configuration variable. For example: "sf config set apiVersion=57.0 --global".
 
-#### Examples for project generate
+Examples for **`project generate`**
 
 Generate a project called "mywork":
 
@@ -21321,9 +21349,6 @@ Generate a project with the minimum files and directories:
    sf project generate --name mywork --template empty
 
 ```
-
-
-Salesforce CLI Command Reference project Commands
 
 Flags
 
@@ -21373,6 +21398,9 @@ template provides these files and directory to get you started.
 
       - package.json
 
+
+Salesforce CLI Command Reference project Commands
+
       - force-app (basic source directory structure)
 
 The standard template provides a complete force-app directory structure so you know where to put your source. It also provides
@@ -21400,9 +21428,6 @@ Default value: standard
 Optional
 
 Directory for saving the created files.
-
-
-Salesforce CLI Command Reference project Commands
 
 The location can be an absolute path or relative to the current working directory. The default is the current directory.
 
@@ -21449,6 +21474,9 @@ Override the api version used for api requests made by this command
 
 Type: option
 
+
+Salesforce CLI Command Reference project Commands
+
 #### Aliases for project generate
 
 ```
@@ -21474,9 +21502,6 @@ package.xml or destructiveChanges.xml to delete metadata. Valid values for this 
 
     - post : destructiveChangesPost.xml
 
-
-Salesforce CLI Command Reference project Commands
-
     - destroy : destructiveChanges.xml
 
 See https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_deploy_deleting_files.htm for information about
@@ -21496,7 +21521,7 @@ requests, use the SF_LIST_METADATA_BATCH_SIZE environment variable and set it to
 If you experience timeouts or inconsistent manifest contents, then setting this environment variable can improve accuracy. However,
 the command takes longer to run because it sends fewer requests at a time.
 
-Examples for **`project generate manifest`**
+#### Examples for project generate manifest
 
 Create a manifest for deploying or retrieving all Apex classes and custom objects:
 
@@ -21525,6 +21550,9 @@ Create a manifest from the metadata components in the specified org and include 
    $ sf project generate manifest --from-org test@myorg.com --include-packages unlocked
 
 ```
+
+
+Salesforce CLI Command Reference project Commands
 
 Create a manifest from specific metadata types in an org:
 
@@ -21561,9 +21589,6 @@ Type: boolean
 Optional
 
 Import flag values from a directory.
-
-
-Salesforce CLI Command Reference project Commands
 
 Type: option
 
@@ -21610,6 +21635,9 @@ Permissible values are: pre, post, destroy, package
 **`-c`** **|** **`--include-packages INCLUDE-PACKAGES`**
 Optional
 
+
+Salesforce CLI Command Reference project Commands
+
 Package types (managed, unlocked) whose metadata is included in the manifest; by default, metadata in managed and unlocked
 packages is excluded. Metadata in unmanaged packages is always included.
 
@@ -21641,9 +21669,6 @@ Type: option
 Optional
 
 Directory to save the created manifest.
-
-
-Salesforce CLI Command Reference project Commands
 
 Type: option
 
@@ -21688,6 +21713,9 @@ Check if a particular file is ignored:
 
 ```
 
+
+Salesforce CLI Command Reference project Commands
+
 Flags
 
 ```
@@ -21716,9 +21744,6 @@ Optional
 File or directory of files that the command checks for foreceignored files.
 
 Type: option
-
-
-Salesforce CLI Command Reference project Commands
 
 Aliases for **`project list ignored`**
 
@@ -21761,6 +21786,9 @@ Reset source tracking to revision number 30 for your default org:
 
 ```
 
+
+Salesforce CLI Command Reference project Commands
+
 Flags
 
 ```
@@ -21798,9 +21826,6 @@ Optional
 
 Override the api version used for api requests made by this command
 
-
-Salesforce CLI Command Reference project Commands
-
 Type: option
 
 **`-r`** **|** **`--revision REVISION`**
@@ -21836,11 +21861,14 @@ The command outputs a table that describes what will happen if you run the "sf p
 metadata components that will be retrieved and deleted. The table also lists the current conflicts between files in your local project and
 components in the org. Finally, the table lists the files that won't be retrieved because they're included in your .forceignore file.
 
+
+Salesforce CLI Command Reference project Commands
+
 If your org allows source tracking, then this command displays potential conflicts between the org and your local project. Some orgs,
 such as production org, never allow source tracking. Source tracking is enabled by default on scratch and sandbox orgs; you can disable
 source tracking when you create the orgs by specifying the --no-track-source flag on the "sf org create scratch|sandbox" commands.
 
-#### Examples for project retrieve preview
+Examples for **`project retrieve preview`**
 
 Preview the retrieve of all changes from your default org:
 
@@ -21873,9 +21901,6 @@ Type: boolean
 ```
 
 Optional
-
-
-Salesforce CLI Command Reference project Commands
 
 Import flag values from a directory.
 
@@ -21918,7 +21943,10 @@ Aliases for **`project retrieve preview`**
 
 Retrieve metadata from an org to your local project.
 
-#### Description for project retrieve start
+
+Salesforce CLI Command Reference project Commands
+
+Description for **`project retrieve start`**
 
 You must run this command from within a project.
 
@@ -21932,7 +21960,7 @@ create the orgs by specifying the --no-track-source flag on the "sf org create s
 To retrieve multiple metadata components, either use multiple --metadata <name> flags or use a single --metadata flag with multiple
 names separated by spaces. Enclose names that contain spaces in one set of double quotes. The same syntax applies to --source-dir.
 
-#### Examples for project retrieve start
+Examples for **`project retrieve start`**
 
 Retrieve all remote changes from your default org:
 
@@ -21947,9 +21975,6 @@ Retrieve the source files in the "force-app" directory from an org with alias "m
    sf project retrieve start --source-dir force-app --target-org my-scratch
 
 ```
-
-
-Salesforce CLI Command Reference project Commands
 
 Retrieve all the Apex classes and custom objects whose source is in the "force-app" directory. The list views, layouts, etc, that are associated
 with the custom objects are also retrieved. Both examples are equivalent:
@@ -22008,6 +22033,9 @@ Retrieve all list views for the Case standard object:
 
 ```
 
+
+Salesforce CLI Command Reference project Commands
+
 Retrieve all custom objects and Apex classes found in all defined package directories (both examples are equivalent):
 
 ```
@@ -22049,9 +22077,6 @@ directory:
    sf project retrieve start --source-dir force-app --target-metadata-dir output
 
 ```
-
-
-Salesforce CLI Command Reference project Commands
 
 Retrieve in metadata format and automatically extract the contents into the "output" directory:
 
@@ -22099,6 +22124,9 @@ Ignore conflicts and retrieve and save files to your local filesystem, even if t
 
 This flag applies only to orgs that allow source tracking. It has no effect on orgs that don't allow it, such as production orgs.
 
+
+Salesforce CLI Command Reference project Commands
+
 Type: boolean
 
 **`-x`** **|** **`--manifest MANIFEST`**
@@ -22126,9 +22154,6 @@ The metadata of the supplied package name(s) will be retrieved into a child dire
 matches the name of the package. The retrieved metadata is meant for your reference only, don't add it to a source control system
 for development and deployment. For package development, retrieve the metadata using a manifest (`--manifest` flag) or by targeting
 a source controlled package directory within your project (`--source-dir` flag).
-
-
-Salesforce CLI Command Reference project Commands
 
 Type: option
 
@@ -22172,6 +22197,9 @@ Directory that will contain the retrieved metadata format files or ZIP.
 
 Type: option
 
+
+### Salesforce CLI Command Reference schema Commands
+
 **`-o`** **|** **`--target-org TARGET-ORG`**
 Required
 
@@ -22205,9 +22233,6 @@ Optional
 
 File name to use for the retrieved zip file.
 
-
-### Salesforce CLI Command Reference schema Commands
-
 Type: option
 
 Aliases for **`project retrieve start`**
@@ -22238,7 +22263,10 @@ Generate the metadata source files for a new custom tab on a custom object.
 
 Generate metadata source files for a new custom field on a specified object.
 
-#### Description for schema generate field
+
+Salesforce CLI Command Reference schema Commands
+
+Description for **`schema generate field`**
 
 This command is interactive and must be run in a Salesforce DX project directory. You're required to specify the field's label with the
 "--label" flag. The command uses this label to provide intelligent suggestions for other field properties, such as its API name.
@@ -22249,7 +22277,7 @@ parent object must also exist in your local directory. Use the command "sf metad
 source files for both standard and custom objects from your org. To create a custom object, run the "sf generate metadata sobject"
 command or use the Object Manager UI in your Salesforce org.
 
-#### Examples for schema generate field
+Examples for **`schema generate field`**
 
 Create a field with the specified label; the command prompts you for the object:
 
@@ -22274,9 +22302,6 @@ Flags
 ```
 
 Optional
-
-
-Salesforce CLI Command Reference schema Commands
 
 Import flag values from a directory.
 
@@ -22313,12 +22338,15 @@ Aliases for **`schema generate field`**
 
 Generate metadata source files for a new platform event.
 
-#### Description for schema generate platformevent
+
+Salesforce CLI Command Reference schema Commands
+
+Description for **`schema generate platformevent`**
 
 This command is interactive and must be run in a Salesforce DX project directory. You're required to specify the event's label with the
 "--label" flag. The command uses this label to provide intelligent suggestions for other event properties, such as its API name.
 
-#### Examples for schema generate platformevent
+Examples for **`schema generate platformevent`**
 
 Create a platform event with the specified label:
 
@@ -22345,9 +22373,6 @@ Required
 The platform event's label.
 
 Type: option
-
-
-Salesforce CLI Command Reference schema Commands
 
 Aliases for **`schema generate platformevent`**
 
@@ -22380,6 +22405,9 @@ Create a custom object with the specified label and be prompted for additional i
    sf schema generate sobject --label "My Object"
 
 ```
+
+
+Salesforce CLI Command Reference schema Commands
 
 Create a custom object and enable optional features without prompting:
 
@@ -22422,9 +22450,6 @@ Enables these features:
 
       - History: Enables object history tracking.
 
-
-Salesforce CLI Command Reference schema Commands
-
       - Activities: Allows users to associate tasks and scheduled calendar events related to the custom object records.
 
       - Bulk API: With Sharing and Streaming API, classifies the custom object as an Enterprise Application object.
@@ -22454,7 +22479,10 @@ app’s navigation bar and in the App Launcher.
 This command must be run in a Salesforce DX project directory. You must pass all required information to it with the required flags. The
 source files for the custom object for which you're generating a tab don't need to exist in your local project.
 
-#### Examples for schema generate tab
+
+### Salesforce CLI Command Reference sobject Commands
+
+Examples for **`schema generate tab`**
 
 Create a tab on the `MyObject__c` custom object:
 
@@ -22496,9 +22524,6 @@ The API name for a custom object always ends in `__c`, such as `MyObject__c`.
 
 Type: option
 
-
-### Salesforce CLI Command Reference sobject Commands
-
 **`-d`** **|** **`--directory DIRECTORY`**
 Required
 
@@ -22528,9 +22553,11 @@ Aliases for **`schema generate tab`**
 
 Commands to interact with Salesforce objects.
 
-#### sobject describe
-
+sobject describe
 Display the metadata for a standard or custom object or a Tooling API object.
+
+
+Salesforce CLI Command Reference sobject Commands
 
 sobject list
 List all Salesforce objects of a specified category.
@@ -22562,9 +22589,6 @@ Display the metadata of the "MyObject__c" custom object in the org with alias "m
    sf sobject describe --sobject MyObject__c --target-org my-scratch-org
 
 ```
-
-
-Salesforce CLI Command Reference sobject Commands
 
 Display the metadata of the ApexCodeCoverage Tooling API object in your default org:
 
@@ -22612,6 +22636,9 @@ Override the api version used for api requests made by this command
 
 Type: option
 
+
+Salesforce CLI Command Reference sobject Commands
+
 **`-s`** **|** **`--sobject SOBJECT`**
 Required
 
@@ -22641,10 +22668,7 @@ List all Salesforce objects of a specified category.
 
 You can list the standard objects, custom objects, or all. The lists include only Salesforce objects, not Tooling API objects.
 
-
-### Salesforce CLI Command Reference static-resource Commands
-
-Examples for **`sobject list`**
+#### Examples for sobject list
 
 List all objects in your default org:
 
@@ -22689,6 +22713,9 @@ Username or alias of the target org. Not required if the `target-org` configurat
 
 Type: option
 
+
+### Salesforce CLI Command Reference static-resource Commands
+
 ```
    --api-version API-VERSION
 ```
@@ -22719,11 +22746,9 @@ Aliases for **`sobject list`**
 
 Work with static resources.
 
-static-resource generate
+#### static-resource generate
+
 Generate a static resource.
-
-
-Salesforce CLI Command Reference static-resource Commands
 
 #### **`static-resource generate`**
 
@@ -22759,6 +22784,9 @@ Generate the resource file in the "force-app/main/default/staticresources" direc
    force-app/main/default/staticresources
 
 ```
+
+
+### Salesforce CLI Command Reference visualforce Commands
 
 Flags
 
@@ -22806,9 +22834,6 @@ Type: option
 
 Default value: application/zip
 
-
-### Salesforce CLI Command Reference visualforce Commands
-
 **`-d`** **|** **`--output-dir OUTPUT-DIR`**
 Optional
 
@@ -22841,6 +22866,9 @@ Aliases for **`static-resource generate`**
 
 Work with Visualforce components.
 
+
+Salesforce CLI Command Reference visualforce Commands
+
 #### visualforce generate component
 
 Generate a Visualforce Component.
@@ -22872,9 +22900,6 @@ Similar to previous example, but generate the files in the directory "force-app/
    sf visualforce generate component --name mycomponent --label mylabel --output-dir components
 
 ```
-
-
-Salesforce CLI Command Reference visualforce Commands
 
 Flags
 
@@ -22918,6 +22943,9 @@ Type: option
 
 Permissible values are: DefaultVFComponent
 
+
+Salesforce CLI Command Reference visualforce Commands
+
 Default value: DefaultVFComponent
 
 **`-d`** **|** **`--output-dir OUTPUT-DIR`**
@@ -22953,12 +22981,9 @@ Aliases for **`visualforce generate component`**
 ```
    force:visualforce:component:create
 
-```
-
-
-Salesforce CLI Command Reference visualforce Commands
-
 #### **`visualforce generate page`**
+
+```
 
 Generate a Visualforce Page.
 
@@ -22993,6 +23018,9 @@ Optional
 Format output as json.
 
 Type: boolean
+
+
+### Salesforce CLI Command Reference Help for sf Commands
 
 ```
    --flags-dir FLAGS-DIR
@@ -23037,9 +23065,6 @@ Type: option
 **`-l`** **|** **`--label LABEL`**
 Required
 
-
-### Salesforce CLI Command Reference Help for sf Commands
-
 Visualforce Page label.
 
 Type: option
@@ -23069,6 +23094,9 @@ At the top of the `-h` output (with no heading), a short description of the comm
 The command signature on the Usage line uses the docopt format.
 
 **•** All available flags are listed. Flags that have short names are listed using their short names.
+
+
+## Salesforce CLI Command Reference Salesforce Functions (Retired)
 
 **•** Flags that take a value show `<value>` immediately after the flag’s name.
 
@@ -23112,9 +23140,6 @@ Usage notes.
 
 **2. Examples**
 
-
-## Salesforce CLI Command Reference Salesforce Functions (Retired)
-
 All examples include a brief description.
 
 **3. Flag Descriptions**
@@ -23135,24 +23160,25 @@ unresolvable issues.
 
 ## If you need reference information about the sfdx -style commands, see the Spring ‘24 Salesforce CLI Command Reference.
 
-### Migrate sfdx-Style Commands to Their sf-Style Equivalents
-## We recommend that you start using the new sf commands in your continuous integration (CI) scripts and in your day-to-day work
 
+### Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents Migrate sfdx-Style Commands to Their sf-Style Equivalents
+
+We recommend that you start using the new `sf` commands in your continuous integration (CI) scripts and in your day-to-day work
 as soon as possible. This section provides information on how to migrate. Migrating scripts are the focus, though this section also
-## applies to running impromptu commands at a terminal. The sfdx -style commands, such as force:org:create, continue
-
+applies to running impromptu commands at a terminal. The `sfdx` -style commands, such as `force:org:create`, continue
 to work for now, although they’re deprecated.
 
-## Migrate sfdx -Style Commands to Their sf -Style Equivalents We recommend that you start using the new sf commands in your continuous integration (CI) scripts and in your day-to-day work as
+### Migrate sfdx -Style Commands to Their sf -Style Equivalents
 
+We recommend that you start using the new `sf` commands in your continuous integration (CI) scripts and in your day-to-day work as
 soon as possible. This section provides information on how to migrate. Migrating scripts are the focus, though this section also applies
-## to running impromptu commands at a terminal. The sfdx -style commands, such as force:org:create, continue to work for
-
+to running impromptu commands at a terminal. The `sfdx` -style commands, such as `force:org:create`, continue to work for
 now, although they’re deprecated.
 
 Follow these high-level steps to migrate.
 
-## • If you’re still using version 7 of the sfdx executable of Salesforce CLI (also referred to as sfdx (v7)), move to version 2 of the sf executable ( sf (v2)) immediately. See Move from sfdx (v7) to sf (v2) for details.
+**•** If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2 of the `sf`
+executable ( `sf` (v2)) immediately. See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
 **•** Read an overview of the changes, including important usage differences.
 
@@ -23160,12 +23186,10 @@ Follow these high-level steps to migrate.
 
 **•** Manually update the remainder of your script.
 
-## Where is the Reference for sfdx -Style Commands? We removed the reference information about sfdx -style commands from this guide on June 12, 2024. If you need the information,
+Where is the Reference for **`sfdx`** -Style Commands?
 
+We removed the reference information about `sfdx` -style commands from this guide on June 12, 2024. If you need the information,
 [see the Spring ‘24 Salesforce CLI Command Reference.](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
-
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 Overview of Command and Usage Differences
 
@@ -23199,6 +23223,9 @@ SFDX_DEFAULTUSERNAME is now SF_TARGET_ORG.
 **•** We no longer use the `force` topic, except for a handful of commands that we kept for backward compatibility.
 
 Read these usage differences between the `sfdx` -style and `sf` -style commands, and apply them when necessary.
+
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 **•** When flags for new `sf` commands take multiple values, you specify the flag multiple times, with each flag taking a different single
 value. For example:
@@ -23253,9 +23280,6 @@ command formats to get a configuration variable are valid.
 
 ```
 
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
-
 Run the **`dev convert script`** Command
 
 Begin your migration by running the `dev convert script` command to update your CI scripts. The command replaces many
@@ -23284,6 +23308,9 @@ the new `sf` equivalent. The command overwrites your original file.
 While `dev convert script` can convert a large portion of your script, it likely can’t convert all of it because there’s not always a
 one-to-one mapping between the previous and new commands. In these cases, `dev convert script` doesn't replace the
 `sfdx` -style command but instead adds a comment that starts with `#ERROR` .
+
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 Migrate Scripts Manually
 
@@ -23336,9 +23363,6 @@ Here’s the `sf` -style equivalent.
 
 ```
 
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
-
 Some commands aren’t a direct one-to-one mapping, or their behavior changed, so migrating them requires more effort. For additional
 information about these commands, see these topics.
 
@@ -23351,6 +23375,9 @@ information about these commands, see these topics.
 High-Level Overview of Common Flag Name Changes
 
 This table provides an overview of common Salesforce CLI flag name changes.
+
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 For less common flags, the `sf` -style name is often similar to the `sfdx` -style one, but it has dashes to make it easier to read. We also
 standardized many of the flags across all topics and commands, such as using `--output-dir` consistently for the directory to write
@@ -23368,8 +23395,8 @@ the results of a command. Here are a few more examples.
 As always, for command and flag name changes for a specific deprecated `sfdx` [command, see its reference page in the Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
 [Command Reference.](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
 
-force:source:* and force:mdapi:* Commands Migration
-Migrating the `force:source:*` and `force:mdapi:*` commands is straightforward in most cases, although some scenarios
+#### force:source:* and force:mdapi:* Commands Migration Migrating the force:source:* and force:mdapi:* commands is straightforward in most cases, although some scenarios
+
 require some rework.
 
 force:org:* Commands Migration
@@ -23384,9 +23411,6 @@ Because the `dev convert script` conversion command doesn’t update configurati
 new names, we recommend that you update them manually to avoid deprecation warnings. Although the existing `sfdx` -style
 variable names continue to work, we recommend that you start using the new `sf` -style ones. When you use the old ones, you get
 a warning with the name of the new configuration and environment variable to use.
-
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 Source Tracking in New sf-Style Commands
 Source tracking in the new `sf` -style commands works basically the same as in the `sfdx` -style commands, but with a few small
@@ -23406,10 +23430,13 @@ as `force:org:create` .
 require some rework.
 
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
-of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
+of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
 We introduced two `sf` -style commands, `project deploy start` and `project retrieve start`, to replace these six
 #### deprecated force commands.
+
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 **•** `force:source:push`
 
@@ -23423,8 +23450,7 @@ We introduced two `sf` -style commands, `project deploy start` and `project retr
 
 **•** `force:mdapi:retrieve`
 
-#### It was often confusing to determine which force command to use because they all have similar functionality. For example, both
-
+It was often confusing to determine which `force` command to use because they all have similar functionality. For example, both
 `force:source:push` and `force:source:deploy` move source format files from your project to the org. Now it’s simple:
 use `project deploy start` to deploy metadata to your org and `project retrieve start` to retrieve metadata from
 your org.
@@ -23433,21 +23459,18 @@ By default, both new commands work with files in source format. If you want to d
 `--metadata-dir` or `--target-metadata-dir` flags, respectively.
 
 The `project deploy|retrieve start` commands support source tracking. However, because these two commands
-#### encapsulate the functionality of the six force commands, source tracking works a bit differently. For more information, see Source
-
+encapsulate the functionality of the six `force` commands, source tracking works a bit differently. For more information, see Source
 Tracking in New sf-Style Commands.
 
-#### The table summarizes the mapping between the force:source:* and force:mdapi:* commands to their new sf -style
-
+The table summarizes the mapping between the `force:source:*` and `force:mdapi:*` commands to their new `sf` -style
 equivalents. The usage notes indicate if the mapping is a simple one-to-one. If it is, you migrate them by replacing their command and
 flag names in your scripts. Some command migrations require changes beyond simple name replacements, or the functionality has
 changed, as described in the usage notes. For more guidance, see the examples after the table.
 
-#### For all command migrations, refer to the reference pages for each force command in the Salesforce CLI Command Reference for
-
+For all command migrations, refer to the reference pages for each `force` command in the Salesforce CLI Command Reference for
 details.
 
-#### • force:source:*
+**•** `[force:source:*](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_source.htm)`
 
 **•** `[force:mdapi:*](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_mdapi.htm)`
 
@@ -23484,9 +23507,6 @@ Here’s the `sf` -style equivalent.
    --package-name 'My Package'
 
 ```
-
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 This `force` command deploys multiple metadata types.
 
@@ -23528,6 +23548,9 @@ This `force` command retrieves the source in the specified directories.
    "path/to/objects/MyCustomObject/fields/MyField.field-meta.xml, path/to/apex/classes"
 
 ```
+
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 Here’s the `sf` -style equivalent in which the `--source-dir` flag is specified multiple times.
 
@@ -23589,9 +23612,6 @@ flag.
 
 ```
 
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
-
 **`force:mdapi`** Examples
 
 This `force` command deploys metadata format files in the specified directory.
@@ -23637,6 +23657,9 @@ This `force` command retrieves metadata defined in a manifest file into the targ
 
 ```
 
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
+
 Here’s the `sf` -style equivalent.
 
 ```
@@ -23672,9 +23695,6 @@ if you don’t plan to later do a quick deploy. This way of previewing provides 
 `--pre|post-destructive-changes` flags. The `project deploy validate` provides just a subset of the full
 deployment flags.
 
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
-
 **•** These new deploy commands that take a job ID now also have the handy `--use-most-recent` flag to automatically use the
 job ID of the most recent deploy operation.
 
@@ -23700,14 +23720,15 @@ job ID of the most recent deploy operation.
 
 #### force:org:* Commands Migration Migrating the force:org:* commands is straight forward in most cases, although some scenarios require some rework.
 
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
+
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
-of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
+of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
-#### This table summarizes the mapping between the existing force:org:* commands and their new sf -style equivalents. The usage
-
+This table summarizes the mapping between the existing `force:org:*` commands and their new `sf` -style equivalents. The usage
 notes indicate if the mapping is one-to-one. If it is, you migrate them by changing their command and flag names as listed in the
-#### reference page for each force:org:* command. Some command migrations require more changes, as described in the usage
-
+[reference page for each](https://developer.salesforce.com/docs/atlas.en-us.248.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_force_org.htm) `force:org:*` command. Some command migrations require more changes, as described in the usage
 notes. For more guidance, see the examples after the table.
 
 
@@ -23727,32 +23748,29 @@ Let’s start with the deprecated `force:org:create` [command. The reference tel
 or `org create scratch`, depending on what you want to create. Let’s say you want to migrate this `force` command.
 
 ```
-sfdx force:org:create --definitionfile config/scratch-def.json --setalias MyScratchOrg
+   sfdx force:org:create --definitionfile config/scratch-def.json --setalias MyScratchOrg
 
---targetdevhubusername MyDevHub --nonamespace --setdefaultusername
+   --targetdevhubusername MyDevHub --nonamespace --setdefaultusername
 
 ```
 
 Because the command creates a scratch org, use this equivalent `sf` command.
 
 ```
-sf org create scratch --definition-file config/scratch-def.json --alias MyScratchOrg
+   sf org create scratch --definition-file config/scratch-def.json --alias MyScratchOrg
 
---target-dev-hub MyDevHub --no-namespace --set-default
+   --target-dev-hub MyDevHub --no-namespace --set-default
 
 ```
 
 This `force` example specifies scratch org options as key-value pairs at the command line, which is no longer allowed.
 
 ```
-sfdx force:org:create adminEmail=me@email.com edition=Developer
+   sfdx force:org:create adminEmail=me@email.com edition=Developer
 
-username=admin_user@orgname.org --country=GB --targetdevhubusername MyDevHub
+   username=admin_user@orgname.org --country=GB --targetdevhubusername MyDevHub
 
 ```
-
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 In the `sf` -style equivalent, use the `--edition`, `--admin-email`, and `--username` flags instead. But because `country`
 doesn’t have an equivalent flag, you must specify a scratch org definition file that contains the `country` option. Here’s what the new
@@ -23810,6 +23828,9 @@ This `force` example creates a sandbox.
 
 ```
 
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
+
 Here’s the equivalent `sf` -style command.
 
 ```
@@ -23817,9 +23838,9 @@ Here’s the equivalent `sf` -style command.
 
    --target-org ProdOrg
 
+#### This force example clones a sandbox by specifying the SourceSandboxName and SandboxName key-value pairs at the
 ```
 
-This `force` example clones a sandbox by specifying the `SourceSandboxName` and `SandboxName` key-value pairs at the
 command line.
 
 ```
@@ -23836,11 +23857,8 @@ In the `sf` -style command, use flags instead.
 
     --target-org ProdOrg
 
-```
+#### This force example deletes a scratch org.
 
-This `force` example deletes a scratch org.
-
-```
    sfdx force:org:delete --targetusername MyScratchOrg --noprompt
 
 ```
@@ -23850,18 +23868,15 @@ Here’s the equivalent `sf` -style command.
 ```
    sf org delete scratch --target-org MyScratchOrg --no-prompt
 
-```
-
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
-
 #### force:data:bulk:* Commands Migration
+
+```
 
 We added four new `sf` commands that use Bulk API 2.0 to upsert and delete data to and from your org. All the `sfdx` commands use
 Bulk API 1.0.
 
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
-of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
+of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
 These new `sf` commands use Bulk API 2.0.
 
@@ -23884,7 +23899,12 @@ We generally recommend that you start using the new `sf` commands instead of the
 
 However, one reason to keep using the `force:data:bulk:upsert` command is if you want to run the upsert serially with
 the `--serial` flag. The new Bulk API 2.0 commands don’t support serial execution. For this reason, and for users who want to continue
-#### using Bulk API 1.0, we aren’t deprecating the force:data:bulk:* commands at this time. Configuration and Environment Variable Names Migration
+#### using Bulk API 1.0, we aren’t deprecating the force:data:bulk:* commands at this time.
+
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
+
+#### Configuration and Environment Variable Names Migration
 
 Because the `dev convert script` conversion command doesn’t update configuration and environment variables to their new
 names, we recommend that you update them manually to avoid deprecation warnings. Although the existing `sfdx` -style variable
@@ -23892,7 +23912,7 @@ names continue to work, we recommend that you start using the new `sf` -style on
 with the name of the new configuration and environment variable to use.
 
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
-of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
+of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
 Configuration Variables
 
@@ -23920,12 +23940,6 @@ These examples show the rules in action.
 
    sf config list
 
-```
-
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
-
-```
    List Config
 
    ===========================================
@@ -23954,13 +23968,16 @@ Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style E
 
 Use this table to migrate your scripts to use the new `sf` -style configuration variable names.
 
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
+
 Environment Variables
 
 You can set both the new `sf` -style and old `sfdx` -style environment variables. However, if they’re set to different values, Salesforce CLI
 uses the `sf` one and displays a warning.
 
 To migrate most environment variables, change the initial SFDX to SF. However, some variables have bigger changes, as displayed in
-[this table, while others haven’t changed their name. For the full list, see Salesforce CLI Environment Variables.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_env_variables.htm)
+[this table, while others haven’t changed their name. For the full list, see Salesforce CLI Environment Variables.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_env_variables.htm)
 
 **Equivalent** `sf` **-style Environment Variable** **Equivalent** `sf` **-style Environment Variable**
 
@@ -23978,9 +23995,6 @@ SFDX_MAX_QUERY_LIMIT SF_ORG_MAX_QUERY_LIMIT
 
 SFDX_REST_DEPLOY SF_ORG_METADATA_REST_DEPLOY
 
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
-
 For example, here’s how to set your default Dev Hub org to an alias with an environment variable before running the command to create
 a scratch org.
 
@@ -23995,7 +24009,7 @@ Source tracking in the new `sf` -style commands works basically the same as in t
 differences outlined in this topic.
 
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
-of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
+of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
 These `sf` -style commands support source tracking.
 
@@ -24008,6 +24022,9 @@ These `sf` -style commands support source tracking.
 The `sf` -style commands encapsulate the functionality of these six deprecated `sfdx` -style commands.
 
 **•** `force:source:push`
+
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
 
 **•** `force:source:pull`
 
@@ -24047,9 +24064,6 @@ appropriate flag, such as `--source-dir` .
 
 Here’s how to determine whether your org allows source tracking.
 
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
-
 **•** For Developer Edition orgs, production orgs, Partial Copy sandboxes, and Full sandboxes, source tracking isn’t available.
 
 **•** For Developer and Developer Pro sandboxes:
@@ -24081,12 +24095,15 @@ tracking disabled.
 
 ```
 
-Tip: You can use the `[org disable tracking](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_disable_tracking_unified)` or `[org enable tracking](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_enable_tracking_unified)` commands to disable or enable source
+
+Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
+
+Tip: You can use the `[org disable tracking](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_disable_tracking_unified)` or `[org enable tracking](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_org_commands_unified.htm#cli_reference_org_enable_tracking_unified)` commands to disable or enable source
 tracking on an existing org.
 
 SEE ALSO:
 
-_Salesforce DX Developer Guide_ [: Track Changes Between Your Project and Org](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_source_tracking.htm)
+_Salesforce DX Developer Guide_ [: Track Changes Between Your Project and Org](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_source_tracking.htm)
 
 #### Mapping sfdx Commands to Their sf Equivalents
 
@@ -24095,7 +24112,7 @@ This table maps the `sfdx` -style commands, such as `force:org:create`, to their
 `sf` -style commands, each `sfdx` -style entry links to a command reference page that provides more information.
 
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
-of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
+of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
@@ -24118,10 +24135,7 @@ This table maps the core `sf` -style commands, such as `org create sandbox`, to 
 `force:org:create` .
 
 Note: If you’re still using version 7 of the `sfdx` executable of Salesforce CLI (also referred to as `sfdx` (v7)), move to version 2
-of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
-
-
-Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
+of the `sf` executable ( `sf` (v2)). See Move from `[sfdx](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_setup_move_to_sf_v2.htm)` (v7) to `sf` (v2) for details.
 
 
 Salesforce CLI Command Reference Migrate sfdx-Style Commands to Their sf-Style Equivalents
@@ -24153,7 +24167,10 @@ in which we plan to remove the command or flag. The command help also includes d
 
 **•** When possible, Salesforce provides a functional alternative to the deprecated command or flag.
 
-**•** [For our policy on changes to a Salesforce CLI command’s JSON response, see Support for JSON Responses.](https://developer.salesforce.com/docs/atlas.en-us.258.0.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_json_support.htm)
+
+## Salesforce CLI Command Reference Discover Salesforce Plugins
+
+**•** [For our policy on changes to a Salesforce CLI command’s JSON response, see Support for JSON Responses.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_setup.meta/sfdx_setup/sfdx_dev_cli_json_support.htm)
 
 ## Discover Salesforce Plugins
 
