@@ -24,3 +24,4 @@ Object Reference for the Salesforce Platform | https://resources.docs.salesforce
 Metadata API Developer Guide | https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/api_meta.pdf
 SALESFORCE DEVELOPER LIMITS AND ALLOCATIONS | https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf
 Automate Your Business Processes | https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/extend_click_automate.pdf
+Lightning Aura Components Developer Guide | https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/lightning.pdf
