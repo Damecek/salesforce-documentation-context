@@ -1,12 +1,12 @@
 # SOQL and SOSL Reference
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
-> Fetched: 2026-01-27T10:01:27Z
+> Fetched: 2026-02-15T21:27:18Z
 SOQL and SOSL Reference
 
 Version 66.0, Spring ’26
 
-Last updated: January 23, 2026
+Last updated: February 13, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -25,15 +25,15 @@ SOQL SELECT Syntax **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 SELECT **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10**
 TYPEOF **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14**
-USING SCOPE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17**
-WHERE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18**
+USING SCOPE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16**
+WHERE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17**
 WITH **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34**
 GROUP BY **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38**
 HAVING **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45**
 ORDER BY **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46**
 LIMIT **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47**
 OFFSET **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48**
-FOR VIEW and FOR REFERENCE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50**
+FOR VIEW and and FOR REFERENCE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50**
 UPDATE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51**
 FOR UPDATE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 51**
 SOQL SELECT Examples **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52**
@@ -44,7 +44,7 @@ convertCurrency() **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 convertTimezone() **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60**
 Date Functions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60**
 FORMAT () **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62**
-GROUPING(fieldName) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63**
+GROUPING( fieldName ) ) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63**
 toLabel() **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63**
 Relationship Queries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64**
 
@@ -165,7 +165,7 @@ Company”.
 **•** Keep the number of fields to be searched or queried to a minimum. Using many fields leads to many
 permutations, which can be difficult to tune.
 
-For more information, see _[Best Practices for Deployments with Large Data Volumes](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_large_data_volumes_bp.meta/salesforce_large_data_volumes_bp/)_ .
+[For more information, see Best Practices for Deployments with Large Data Volumes.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_large_data_volumes_bp.meta/salesforce_large_data_volumes_bp/)
 
 Sending Queries and Searches
 
@@ -188,7 +188,7 @@ Conventions in This
 With SOQL, you can construct simple but powerful query strings in several environments.
 Document
 
-**•** Quoted String Escape **•** Using the `queryString` parameter of a SOAP API `query()` [call. See query() in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_query.htm) _SOAP API_
+**•** Quoted String Escape **•** Using the `queryString` [parameter of a SOAP API query() call. See query() in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_query.htm) _SOAP API_
 Sequences _Developer Guide_ .
 
 **•** Reserved Characters **•** Using the `q` [parameter of a REST API query request. See Query in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_query.htm) _REST API Developer Guide_ .
@@ -251,15 +251,19 @@ Salesforce Object Query Language (SOQL)
 
 When to Use SOQL
 
-Use SOQL when you know which objects the data resides in, and you want to:
+Use SOSL when you don’t know which object or field the data resides in, and you want to:
 
-**•** Retrieve data from a single object or from multiple objects that are related to one another.
+**•** Retrieve data for a specific term that you know exists within a field. Because SOSL can tokenize
+multiple terms within a field and build a search index from this, SOSL searches are faster and can
+return more relevant results.
 
-**•** Count the number of records that meet specified criteria.
+**•** Retrieve multiple objects and fields efficiently where the objects might or might not be related to
+one another.
 
-**•** Sort results as part of the query.
+**•** Retrieve data for a particular division in an organization using the divisions feature.
 
-**•** Retrieve data from number, date, or checkbox fields.
+**•** Retrieve data that’s in Chinese, Japanese, Korean, or Thai. Morphological tokenization for CJKT terms
+helps ensure accurate results.
 
 Note: With archived data and big objects, you can use only some SOQL features. For more
 information, see SOQL with Big Objects on page 88.
@@ -792,15 +796,14 @@ gives this error:
 
 Support for FIELDS()
 
-The `FIELDS()` keyword is supported in these platform features. For restrictions on what’s supported, see Bounded and Unbounded
-Queries.
+The `FIELDS()` keyword is supported in these platform features.
 
 **•** Apex
 
+**•** The SOQL language wherever query or queryAll operations can be executed.
+
 
 Salesforce Object Query Language (SOQL) SELECT
-
-**•** The SOQL language wherever query or queryAll operations can be executed.
 
 **•** Query jobs in Bulk API 2.0.
 
@@ -851,9 +854,6 @@ To limit the result rows, you can add any of these limits to the query:
 
 ```
 
-
-Salesforce Object Query Language (SOQL) SELECT
-
 Salesforce CLI Example
 
 This example uses `FIELDS()` with the Salesforce CLI:
@@ -864,6 +864,9 @@ This example uses `FIELDS()` with the Salesforce CLI:
 ```
 
 This example assumes that the CLI is updated to work with version 51.0 or later of the API.
+
+
+Salesforce Object Query Language (SOQL) SELECT
 
 REST API Example
 
@@ -937,9 +940,6 @@ Keep these considerations in mind when using the `FIELDS()` keyword.
 
 **•** `FIELDS()` can cause errors if you use it with operators that require aggregation.
 
-
-### Salesforce Object Query Language (SOQL) TYPEOF
-
 **–** For example, without `FIELDS()` this query works correctly:
 
 ```
@@ -955,6 +955,9 @@ But adding `FIELDS()` to the query
 ```
 
 results in a “Field must be grouped or aggregated” error because it’s equivalent to
+
+
+### Salesforce Object Query Language (SOQL) TYPEOF
 
 ```
       SELECT IsDeleted, <etc.>, MIN(NumberOfEmployees) FROM Account GROUP BY Id LIMIT
@@ -1022,17 +1025,17 @@ Polymorphism feature.
 
       END][...]
 
+### If you need to query multiple polymorphic relationship fields, you can use more than one TYPEOF expression in a single SELECT
 ```
 
-
-Salesforce Object Query Language (SOQL) TYPEOF
-
-If you need to query multiple polymorphic relationship fields, you can use more than one `TYPEOF` expression in a single `SELECT`
 statement.
 
 You can provide as many `WHEN` clauses as needed, one per object type. The `ELSE` clause is optional and used if the object type for
 the polymorphic relationship field in the current record doesn’t match any of the object types in the provided `WHEN` clauses. The syntax
-specific to `TYPEOF` is as follows.
+### specific to TYPEOF is as follows.
+
+
+Salesforce Object Query Language (SOQL) TYPEOF
 
 **Syntax** **Description**
 
@@ -1106,24 +1109,27 @@ that contains semi-join queries. The following example is not valid because `TYP
 
 ```
 
-
-Salesforce Object Query Language (SOQL) TYPEOF
-
 The following example is valid because `TYPEOF` is only used in the outer `SELECT` clause:
 
 ```
-     SELECT
+  SELECT
 
-       TYPEOF What
+    TYPEOF What
 
-          WHEN Account THEN Phone
+       WHEN Account THEN Phone
 
-          ELSE Name
+       ELSE Name
 
-       END
+    END
 
-     FROM Event
+  FROM Event
 
+```
+
+
+### Salesforce Object Query Language (SOQL) USING SCOPE
+
+```
      WHERE CreatedById IN
 
        (
@@ -1207,8 +1213,7 @@ The following example selects specific fields depending on whether the `What` fi
 
 See Understanding Relationship Fields and Polymorphic Fields for details on polymorphic relationships, and more examples of `TYPEOF` .
 
-
-### Salesforce Object Query Language (SOQL) USING SCOPE USING SCOPE The optional USING SCOPE clause of a SOQL query returns records within a specified scope. For example, you can limit the records
+### USING SCOPE The optional USING SCOPE clause of a SOQL query returns records within a specified scope. For example, you can limit the records
 
 to return only objects that the user owns or only records in the user’s territory.
 
@@ -1218,6 +1223,9 @@ to return only objects that the user owns or only records in the user’s territ
    [USING SCOPE filterScope ]
 
 ```
+
+
+### Salesforce Object Query Language (SOQL) WHERE
 
 `filterScope` [can take one of many enumeration values. To get a list of scopes supported by an object, call describeSObject() for](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_describesobject.htm)
 [SOAP API or sObject Describe for REST API. In the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api/resources_sobject_describe.htm) `supportedScopes` section of the object’s description, the `name` shows the name
@@ -1285,14 +1293,16 @@ at least one scoping rule on the object that you’re querying.
 
 `team` Filter for records assigned to a team, such as an Account team.
 
-
-### Salesforce Object Query Language (SOQL) WHERE WHERE The condition expression in a WHERE clause of a SOQL query includes one or more field expressions. You can specify multiple field
+### WHERE The condition expression in a WHERE clause of a SOQL query includes one or more field expressions. You can specify multiple field
 
 expressions in a condition expression by using logical operators.
 
 Syntax
 
 ### `WHERE conditionExpression`
+
+
+Salesforce Object Query Language (SOQL) WHERE
 
 ```
   conditionExpression
@@ -1304,26 +1314,32 @@ The _`conditionExpression`_ uses the following syntax:
 ```
    fieldExpression [ logicalOperator fieldExpression2 ][...]
 
-### Note: Strings in WHERE clauses can’t exceed 4,000 characters. This limit doesn’t apply to SOQL queries in Apex if the WHERE
 ```
 
+Note: Strings in `WHERE` clauses can’t exceed 4,000 characters. This limit doesn’t apply to SOQL queries in Apex if the `WHERE`
 clause includes the `IN` operator.
 
 The condition expressions in SOQL `SELECT` statements appear in bold in these examples:
 
-### • SELECT Name FROM Account WHERE Name LIKE 'A%' • SELECT Id FROM Contact WHERE Name LIKE 'A%' AND MailingState='California'
+**•** `SELECT Name FROM Account` **`WHERE Name LIKE 'A%'`**
+
+**•** `SELECT Id FROM Contact` **`WHERE Name LIKE 'A%' AND MailingState='California'`**
 
 You can use date or dateTime values, or date literals. The format for date and dateTime fields are different.
 
-### • SELECT Name FROM Account WHERE CreatedDate > 2011-04-26T10:00:00-08:00 • SELECT Amount FROM Opportunity WHERE CALENDAR_YEAR(CreatedDate) = 2011
+**•** `SELECT Name FROM Account` **`WHERE CreatedDate > 2011-04-26T10:00:00-08:00`**
+
+**•** `SELECT Amount FROM Opportunity` **`WHERE CALENDAR_YEAR(CreatedDate) = 2011`**
 
 For information on date functions, such as `CALENDAR_YEAR()`, see Date Functions.
 
 You can use the boolean values `TRUE` and `FALSE` in SOQL queries. To filter on a boolean field, use the following syntax:
 
-### `WHERE BooleanField = TRUE` `WHERE BooleanField = FALSE`
-
 ```
+   WHERE BooleanField = TRUE
+
+   WHERE BooleanField = FALSE
+
   fieldExpression
 
 ```
@@ -1353,11 +1369,6 @@ but case sensitive for case-sensitive fields.
 _`value`_ A value used to compare with the value in the _`fieldName`_ . Supply a value whose data type matches the
 field type of the specified field. The value must be a valid value, not other field names or calculations. If
 
-
-Salesforce Object Query Language (SOQL) WHERE
-
-**Syntax** **Description**
-
 quotes are required, use single quotes. Double quotes result in an error. Quotes are unnecessary for dates
 and numbers.
 
@@ -1366,9 +1377,12 @@ operators. However, multiple operators of the same type don’t need to be neste
 _**`fieldExpression1`**_ is `true` and either _**`fieldExpression2`**_ or _**`fieldExpression3`**_ are `true` .
 
 ```
-   fieldExpression1 AND ( fieldExpression2 OR fieldExpression3 )
+fieldExpression1 AND ( fieldExpression2 OR fieldExpression3 )
 
 ```
+
+
+Salesforce Object Query Language (SOQL) WHERE
 
 However, the following expression is `true` if either _**`fieldExpression3`**_ is `true` or both _**`fieldExpression1`**_ and
 _**`fieldExpression2`**_ are `true` .
@@ -1423,11 +1437,6 @@ mechanism for matching partial text strings and includes support for:
 
 **–** The `_` wildcard matches exactly one character.
 
-
-Salesforce Object Query Language (SOQL) WHERE
-
-**Operator** **Name** **Description**
-
 **•** The escaping of special characters `%` or `_` .
 
 Note: Don’t use the backslash (\) character in a search except to escape a special
@@ -1436,13 +1445,18 @@ character. See Quoted String Escape Sequences.
 This example query matches Appleton, Apple, and Appl, but not Bappl.
 
 ```
-                      SELECT AccountId, FirstName, lastname
+SELECT AccountId, FirstName, lastname
 
-                      FROM Contact
+FROM Contact
 
-                      WHERE lastname LIKE 'appl%'
+WHERE lastname LIKE 'appl%'
 
 ```
+
+
+Salesforce Object Query Language (SOQL) WHERE
+
+**Operator** **Name** **Description**
 
 ```
 IN IN
@@ -1506,28 +1520,28 @@ If you filter by an ID field, you can create parent-to-child semi- or anti-joins
 field, you can create child-to-child semi- or anti-joins, such as `Contact` to `Opportunity`, or child-to-parent semi- or anti-joins,
 such as `Opportunity` to `Account` .
 
-
-Salesforce Object Query Language (SOQL) WHERE
-
 **ID Field Semi-Join**
 You can include a semi-join in a `WHERE` clause. For example, this query returns account IDs if an associated opportunity is lost:
 
 ```
-     SELECT Id, Name
+  SELECT Id, Name
 
-     FROM Account
+  FROM Account
 
-     WHERE Id IN
+  WHERE Id IN
 
-      ( SELECT AccountId
+   ( SELECT AccountId
 
-       FROM Opportunity
+    FROM Opportunity
 
-       WHERE StageName = 'Closed Lost'
+    WHERE StageName = 'Closed Lost'
 
-      )
+   )
 
 ```
+
+
+Salesforce Object Query Language (SOQL) WHERE
 
 This example is a parent-to-child semi-join from `Account` to `Opportunity` . Notice that the left operand, `Id`, of the `IN` clause
 is an ID field. The subquery returns a single field of the same type as the field to which it’s compared. For restrictions that prevent
@@ -1604,9 +1618,6 @@ This query returns opportunity IDs for all contacts whose source isn’t `Web` :
 
 This example is a child-to-child anti-join from `Opportunity` to `Contact` .
 
-
-Salesforce Object Query Language (SOQL) WHERE
-
 **Multiple Semi-Joins or Anti-Joins**
 You can combine semi-join or anti-join clauses in a query. For example, the following query returns account IDs that have open
 opportunities if the last name of the contact associated with the account is like the last name “Apple”:
@@ -1628,6 +1639,12 @@ opportunities if the last name of the contact associated with the account is lik
 
       )
 
+```
+
+
+Salesforce Object Query Language (SOQL) WHERE
+
+```
       AND Id IN
 
       (
@@ -1692,12 +1709,6 @@ reference field. For example:
 
        FROM Idea
 
-```
-
-
-Salesforce Object Query Language (SOQL) WHERE
-
-```
        WHERE (Id IN (SELECT ParentId FROM Vote WHERE CreatedDate > LAST_WEEK AND
 
        Parent.Type='Idea'))
@@ -1721,6 +1732,9 @@ relationship field:
         )
 
 ```
+
+
+Salesforce Object Query Language (SOQL) WHERE
 
 **•** **Subquery limits:**
 
@@ -1790,9 +1804,6 @@ Rewrite the query in a valid form, for example:
 
 **–** You can’t use semi-joins and anti-joins in a `HAVING` clause.
 
-
-Salesforce Object Query Language (SOQL) WHERE
-
 **–** You can use semi-joins and anti-joins in the main `WHERE` statement, but not in a subquery `WHERE` statement. For example,
 the following query is valid:
 
@@ -1822,6 +1833,12 @@ The following query is invalid since the nested query is an extra level deep:
 
        WHERE
 
+```
+
+
+Salesforce Object Query Language (SOQL) WHERE
+
+```
         ((Idea.Title LIKE 'Vacation%')
 
         AND (CreatedDate > YESTERDAY)
@@ -1874,11 +1891,6 @@ The following table lists the logical operator values that are used in _**`field
 
 ```
 
-
-Salesforce Object Query Language (SOQL) WHERE
-
-**Operator** **Syntax** **Description**
-
 ```
 OR fieldExpressionX OR
 
@@ -1912,6 +1924,9 @@ SELECT Name FROM Account WHERE AnnualRevenue > 0 AND
 
 ```
 
+
+Salesforce Object Query Language (SOQL) WHERE
+
 #### Date Formats and Date Literals in WHERE
 
 You can specify date values or date literals in `WHERE` clauses to filter SOQL query results. Dates represent a specific day or time, while
@@ -1926,11 +1941,11 @@ operators between a field name and a specified date value to filter for results 
 for Account records that were created after the specified date and time.
 
 ```
-SELECT Id
+   SELECT Id
 
-FROM Account
+   FROM Account
 
-WHERE CreatedDate > 2005-10-08T01:02:03Z
+   WHERE CreatedDate > 2005-10-08T01:02:03Z
 
 ```
 
@@ -1942,9 +1957,9 @@ This table shows the supported `date` and `dateTime` formats that you can use in
 **Field Type** **Format** **Example**
 
 ```
-date YYYY-MM-DD 1999-01-01
+   date YYYY-MM-DD 1999-01-01
 
-dateTime
+   dateTime
 ```
 
 **•** `YYYY-MM-DDThh:mm:ss+hh:mm` **•** `1999-01-01T23:01:01+01:00`
@@ -1957,9 +1972,6 @@ Although `dateTime` field values are stored in Salesforce as Coordinated Univers
 provide `dateTime` values in another timezone. The time zone offset is always from UTC.
 
 For more information on `dateTime` formats and time zone offsets, see:
-
-
-Salesforce Object Query Language (SOQL) WHERE
 
 **•** `[http://www.w3.org/TR/xmlschema-2/#isoformats](http://www.w3.org/TR/xmlschema-2/#isoformats)`
 
@@ -1977,6 +1989,9 @@ and the locale of the user sending the query. If the user hasn't set a personal 
 
 To filter for results within a range, use the `=` comparison operator. To filter for results on either side of a range, use the `>` or `<` comparison
 operators. The table shows the available list of date literals, the ranges they represent, and examples.
+
+
+Salesforce Object Query Language (SOQL) WHERE
 
 **Date Literal** **Range** **Example**
 
@@ -2012,6 +2027,10 @@ NEXT_MONTH
 
 LAST_90_DAYS
 
+NEXT_90_DAYS
+
+LAST_N_DAYS: n
+
 ```
 
 Starts at 12:00:00 AM on the first day of the week `SELECT Id FROM Opportunity WHERE`
@@ -2034,19 +2053,27 @@ Starts at 12:00:00 AM 90 days before the current `SELECT Id FROM Account WHERE`
 day and continues up to the current second. (The `CreatedDate = LAST_90_DAYS`
 range includes today. Using this date value
 
+includes records from 91 days ago up to the
+current day.)
+
+Starts at 12:00:00 AM on the next day and `SELECT Id FROM Opportunity WHERE`
+continues for 90 days. The range doesn’t include `CloseDate > NEXT_90_DAYS`
+today.
+
+Starts at 12:00:00 AM _`n`_ days before the current `SELECT Id FROM Account WHERE`
+day and continues up to the current second. (The `CreatedDate = LAST_N_DAYS:365`
+range includes today. Using this date value
+
+includes records from _`n + 1`_ days ago up to the
+current day.) In standard filters, _n_ can be 7, 30, 60,
+90, or 120.
+
 
 Salesforce Object Query Language (SOQL) WHERE
 
 **Date Literal** **Range** **Example**
 
-includes records from 91 days ago up to the
-current day.)
-
 ```
-NEXT_90_DAYS
-
-LAST_N_DAYS: n
-
 NEXT_N_DAYS: n
 
 N_DAYS_AGO: n
@@ -2063,19 +2090,15 @@ LAST_N_MONTHS: n
 
 N_MONTHS_AGO: n
 
+THIS_QUARTER
+
+LAST_QUARTER
+
+NEXT_QUARTER
+
+NEXT_N_QUARTERS: n
+
 ```
-
-Starts at 12:00:00 AM on the next day and `SELECT Id FROM Opportunity WHERE`
-continues for 90 days. The range doesn’t include `CloseDate > NEXT_90_DAYS`
-today.
-
-Starts at 12:00:00 AM _`n`_ days before the current `SELECT Id FROM Account WHERE`
-day and continues up to the current second. (The `CreatedDate = LAST_N_DAYS:365`
-range includes today. Using this date value
-
-includes records from _`n + 1`_ days ago up to the
-current day.) In standard filters, _n_ can be 7, 30, 60,
-90, or 120.
 
 For standard date filters, starts at 12:00:00 AM on `SELECT Id FROM Opportunity WHERE`
 the next day and continues for _`n`_ days. The range `CloseDate > NEXT_N_DAYS:15`
@@ -2113,36 +2136,6 @@ that started _n_ months before the start of the `CloseDate = N_MONTHS_AGO:6`
 current month and continues for all the days of
 that month.
 
-
-Salesforce Object Query Language (SOQL) WHERE
-
-**Date Literal** **Range** **Example**
-
-```
-THIS_QUARTER
-
-LAST_QUARTER
-
-NEXT_QUARTER
-
-NEXT_N_QUARTERS: n
-
-LAST_N_QUARTERS: n
-
-N_QUARTERS_AGO: n
-
-THIS_YEAR
-
-LAST_YEAR
-
-NEXT_YEAR
-
-NEXT_N_YEARS: n
-
-LAST_N_YEARS: n
-
-```
-
 Starts at 12:00:00 AM on the first day of the current `SELECT Id FROM Account WHERE`
 calendar quarter and continues to the end of the `CreatedDate = THIS_QUARTER`
 quarter.
@@ -2159,8 +2152,34 @@ Starts at 12:00:00 AM on the first day of the `SELECT Id FROM Account WHERE`
 calendar quarter after the current quarter and `CreatedDate < NEXT_N_QUARTERS:2`
 continues to the end of the calendar quarter _`n`_
 
+
+Salesforce Object Query Language (SOQL) WHERE
+
+**Date Literal** **Range** **Example**
+
 quarters in the future. (The range doesn’t include
 the current quarter.)
+
+```
+LAST_N_QUARTERS: n
+
+N_QUARTERS_AGO: n
+
+THIS_YEAR
+
+LAST_YEAR
+
+NEXT_YEAR
+
+NEXT_N_YEARS: n
+
+LAST_N_YEARS: n
+
+N_YEARS_AGO: n
+
+THIS_FISCAL_QUARTER
+
+```
 
 Starts at 12:00:00 AM on the first day of the `SELECT Id FROM Account WHERE`
 calendar quarter _`n`_ quarters ago and continues to `CreatedDate = LAST_N_QUARTERS:2`
@@ -2194,16 +2213,31 @@ Starts at 12:00:00 am on January 1, _`n+1`_ years ago. `SELECT Id FROM Opportuni
 The range ends on December 31 of the year before `CloseDate = LAST_N_YEARS:5`
 the current year.
 
+Starts at 12:00:00 AM on January 1 of the calendar `SELECT Id FROM Opportunity WHERE`
+year _n_ years before the current calendar year and `CloseDate = N_YEARS_AGO:2`
+continues through the end of December 31 of that
+year.
+
+Starts at 12:00:00 AM on the first day of the current
+fiscal quarter and continues through the end of
+the last day of the current fiscal quarter. The fiscal
+quarter is defined on the Fiscal Year page in Setup.
+
+
+```
+SELECT Id FROM Account WHERE
+
+CreatedDate =
+
+THIS_FISCAL_QUARTER
+
+```
 
 Salesforce Object Query Language (SOQL) WHERE
 
 **Date Literal** **Range** **Example**
 
 ```
-N_YEARS_AGO: n
-
-THIS_FISCAL_QUARTER
-
 LAST_FISCAL_QUARTER
 
 NEXT_FISCAL_QUARTER
@@ -2220,23 +2254,11 @@ N_FISCAL_QUARTERS_AGO: n
 
 THIS_FISCAL_YEAR
 
+LAST_FISCAL_YEAR
+
+NEXT_FISCAL_YEAR
+
 ```
-
-Starts at 12:00:00 AM on January 1 of the calendar `SELECT Id FROM Opportunity WHERE`
-year _n_ years before the current calendar year and `CloseDate = N_YEARS_AGO:2`
-continues through the end of December 31 of that
-year.
-
-Starts at 12:00:00 AM on the first day of the current `SELECT Id FROM Opportunity WHERE`
-fiscal year and continues through the end of the `CloseDate = THIS_FISCAL_YEAR`
-last day of the fiscal year. The fiscal quarter is
-defined on the Fiscal Year page in Setup.
-
-
-Starts at 12:00:00 AM on the first day of the current
-fiscal quarter and continues through the end of
-the last day of the current fiscal quarter. The fiscal
-quarter is defined on the Fiscal Year page in Setup.
 
 Starts at 12:00:00 AM on the first day of the fiscal
 quarter before the current fiscal quarter and
@@ -2277,13 +2299,24 @@ quarter _`n`_ fiscal quarters before the current fiscal
 quarter and continues through the end of the last
 day of that fiscal quarter.
 
+Starts at 12:00:00 AM on the first day of the current `SELECT Id FROM Opportunity WHERE`
+fiscal year and continues through the end of the `CloseDate = THIS_FISCAL_YEAR`
+last day of the fiscal year. The fiscal quarter is
+defined on the Fiscal Year page in Setup.
+
+Starts at 12:00:00 AM on the first day of the fiscal `SELECT Id FROM Opportunity WHERE`
+year before the current fiscal year and continues `CloseDate > LAST_FISCAL_YEAR`
+through the end of the last day of that fiscal year.
+
+The fiscal quarter is defined on the Fiscal Year page
+in Setup.
+
+Starts at 12:00:00 AM on the first day of the fiscal `SELECT Id FROM Opportunity WHERE`
+year after the current fiscal year and continues `CloseDate < NEXT_FISCAL_YEAR`
+through the end of the last day of that fiscal year.
+
+
 ```
-SELECT Id FROM Account WHERE
-
-CreatedDate =
-
-THIS_FISCAL_QUARTER
-
 SELECT Id FROM Account WHERE
 
 CreatedDate >
@@ -2320,11 +2353,10 @@ Salesforce Object Query Language (SOQL) WHERE
 
 **Date Literal** **Range** **Example**
 
+The fiscal quarter is defined on the Fiscal Year page
+in Setup.
+
 ```
-LAST_FISCAL_YEAR
-
-NEXT_FISCAL_YEAR
-
 NEXT_N_FISCAL_
 
 YEARS: n
@@ -2336,24 +2368,6 @@ YEARS: n
 N_FISCAL_YEARS_AGO: n
 
 ```
-
-Starts at 12:00:00 AM on the first day of the fiscal `SELECT Id FROM Opportunity WHERE`
-year before the current fiscal year and continues `CloseDate > LAST_FISCAL_YEAR`
-through the end of the last day of that fiscal year.
-
-The fiscal quarter is defined on the Fiscal Year page
-in Setup.
-
-Starts at 12:00:00 AM on the first day of the fiscal `SELECT Id FROM Opportunity WHERE`
-year after the current fiscal year and continues `CloseDate < NEXT_FISCAL_YEAR`
-through the end of the last day of that fiscal year.
-
-The fiscal quarter is defined on the Fiscal Year page
-in Setup.
-
-Starts at 12:00:00 AM on the first day of the fiscal `SELECT Id FROM Opportunity WHERE`
-year _`n`_ fiscal years ago and continues through the `CloseDate = N_FISCAL_YEARS_AGO:3`
-end of the last day of that fiscal year.
 
 Starts at 12:00:00 AM on the first day of the fiscal
 year after the current fiscal year and continues
@@ -2370,6 +2384,10 @@ current fiscal year. (The range doesn’t include the
 
 current fiscal year.) The fiscal quarter is defined on
 the Fiscal Year page in Setup.
+
+Starts at 12:00:00 AM on the first day of the fiscal `SELECT Id FROM Opportunity WHERE`
+year _`n`_ fiscal years ago and continues through the `CloseDate = N_FISCAL_YEARS_AGO:3`
+end of the last day of that fiscal year.
 
 ```
 SELECT Id FROM Opportunity WHERE
@@ -2527,7 +2545,7 @@ matched:
 
                 'AAA;CCC'
 
-#### Use null in WHERE
+#### Use null in WHERE in WHERE
 
 ```
 
@@ -2578,7 +2596,7 @@ SEE ALSO:
 null Values in Lookup Relationships and Outer Joins
 
 
-### Salesforce Object Query Language (SOQL) WITH **`WITH`**
+### Salesforce Object Query Language (SOQL) WITH WITH
 
 You can filter records based on field values, for example, to filter according to category or to query and retrieve changes that are tracked
 ### in a user’s profile feed by using WITH filteringExpression . This optional clause can be added to a SELECT statement of a
@@ -2615,7 +2633,7 @@ The filtering expression in this statement is highlighted in bold.
 
     DESC, Id DESC LIMIT 20
 
-### **`WITH DATA CATEGORY`** You can search for Salesforce Knowledge articles and questions by their data category in a SOQL query. WITH DATA CATEGORY is
+### WITH DATA CATEGORY You can search for Salesforce Knowledge articles and questions by their data category in a SOQL query. WITH DATA CATEGORY is
 ```
 
 an optional clause in a `SELECT` statement that’s used to filter records that are associated with one or more data categories and are
@@ -2722,7 +2740,7 @@ You can only use the `AND` logical operator. The following syntax is incorrect a
 ```
    WITH DATA CATEGORY Geography__c ABOVE usa__c OR Product__c AT mobile_phones__c
 
-##### _`dataCategorySelection`_
+##### dataCategorySelection
 
 ```
 
@@ -2924,7 +2942,7 @@ the `Product__` data category group
 
 ### Salesforce Object Query Language (SOQL) GROUP BY
 
-#### **`WITH RecordVisibilityContext`** You can use RecordVisibilityContext to filter WITH clauses to query the attributes that determine the visibility of one or
+#### WITH RecordVisibilityContext You can use RecordVisibilityContext to filter WITH clauses to query the attributes that determine the visibility of one or
 
 more records. This feature is available in API version 48.0 and later.
 
@@ -3866,7 +3884,7 @@ You could then retrieve the next 100 rows, 101 through 201, using the following 
 ```
 
 
-### Salesforce Object Query Language (SOQL) FOR VIEW and FOR REFERENCE
+### Salesforce Object Query Language (SOQL) FOR VIEW and and FOR REFERENCE
 
 **•** `OFFSET` is applied to the result set returned at the time of the query. No server-side cursor and query locator are created to cache
 and find the full result set for future `OFFSET` queries. The page results may change if the underlying data is modified during multiple
@@ -3895,7 +3913,7 @@ against a server-side cursor.
 **•** When using `OFFSET`, only the first batch of records is returned for a given query. If you want to retrieve the next batch, you’ll need
 to re-execute the query with a higher offset value.
 
-### FOR VIEW and FOR REFERENCE
+### FOR VIEW and and FOR REFERENCE
 
 Salesforce stores information about record views in the interface and uses the information to generate a list of recently viewed and
 referenced records, such as a list of records in a sidebar and for a list of records as auto-complete options in search. To update recent
@@ -4867,7 +4885,7 @@ example:
 ```
 
 
-### Salesforce Object Query Language (SOQL) GROUPING(fieldName)
+### Salesforce Object Query Language (SOQL) GROUPING( fieldName ) )
 
 You can also nest it with aggregate or `convertCurrency()` functions. For example:
 
@@ -4878,7 +4896,7 @@ You can also nest it with aggregate or `convertCurrency()` functions. For exampl
 
    SELECT FORMAT(MIN(closedate)) Amt FROM opportunity
 
-### **`GROUPING( fieldName )`** You can use the GROUPING( fieldName ) function in SELECT, HAVING, and ORDER BY clauses. Use the GROUPING( fieldName ) function to determine whether a row is a subtotal or field when you use GROUP BY ROLLUP
+### GROUPING( fieldName ) ) You can use the GROUPING( fieldName ) function in SELECT, HAVING, and ORDER BY clauses. Use the GROUPING( fieldName ) function to determine whether a row is a subtotal or field when you use GROUP BY ROLLUP
 ```
 
 or `GROUP BY CUBE` in SOQL queries.
@@ -5047,9 +5065,9 @@ This query returns all accounts, and for each account, the first and last name o
 account.
 
 Warning: You must use the correct naming convention and `SELECT` syntax for the direction of the relationship. For information
-about how to discover relationship names via your organization's WSDL or `describeSObjects()`, see Identifying Parent
-and Child Relationships. There are limitations on relationship queries depending on the direction of the relationship. See
-Understanding Relationship Query Limitations for more information.
+about how to discover relationship names via your organization's WSDL or describeSObjects(), see Identifying Parent and Child
+Relationships. There are limitations on relationship queries depending on the direction of the relationship. See Understanding
+Relationship Query Limitations for more information.
 
 Relationship names are different for custom objects, though the `SELECT` syntax is the same. See Identifying Parent and Child Relationships
 for more information.
@@ -5826,7 +5844,7 @@ Some fields are _relationship_ fields, which means they can be used to get infor
 fields are _polymorphic_ fields. A polymorphic field is one where the related object might be one of several different types of objects. For
 example, the `Who` relationship field of a Task can be a Contact or a Lead.
 
-To determine what kind a field is, call `describeSObjects()` on the object and examine the properties for the field.
+To determine what kind a field is, call describeSObjects() on the object and examine the properties for the field.
 
 **1.** If `relationshipName` is _not_ null, the field is a relationship field.
 
@@ -8060,7 +8078,7 @@ comparative amounts. Using the previous example, opportunity records with `JPY50
 If you use IN in a `WHERE` clause, you can’t mix ISO code and non-ISO code values.
 
 Note: Ordering is always based on the converted currency value, just like in reports. So, `convertCurrency()` can’t be used
-with the ORDER BY _Clause_ .
+with the ORDER BY Clause.
 
 The `convertCurrency()` function supports aliasing. In addition, aliasing is required when the query includes the same field
 multiple times. For example:
@@ -8077,9 +8095,9 @@ A search query includes:
 
 **•** The literal text (single word or a phrase) to search for
 
-**•** Optionally, Wildcards
+**•** Optionally, wildcards
 
-**•** Optionally, logical Operators, including grouping parentheses
+**•** Optionally, logical operators, including grouping parentheses
 
 Searches are evaluated from left to right and use Unicode (UTF-8) encoding. Text searches are case-insensitive. For example, searches
 for Customer, customer, and CUSTOMER return the same results.
@@ -8579,8 +8597,7 @@ in a `RETURNING` clause to be returned in search results. For example:
 
 ```
 
-Use the `RETURNING` clause to restrict the results data that is returned from the `search()` call. For information on IDs, see ID Field
-Type.
+Use the `RETURNING` clause to restrict the results data that is returned from the search() call. For information on IDs, see ID Field Type.
 
 Syntax
 
@@ -8600,12 +8617,12 @@ RETURNING can contain the following elements:
 
 **Name** **Description**
 
-_`ObjectTypeName`_ Object to return. If specified, then the `search()` call returns the IDs of all found objects matching
-the specified object. Must be a valid sObject type. You can specify multiple objects, separated by
+_`ObjectTypeName`_ Object to return. If specified, then the search() call returns the IDs of all found objects matching the
+specified object. Must be a valid sObject type. You can specify multiple objects, separated by commas.
 
-commas. If you specify more than one _`ObjectTypeName`_, each object must be distinct; you can't
-repeat an _`ObjectTypeName`_ within a single `RETURNING` clause. The `search()` call only
-returns objects specified in the `RETURNING` clause.
+If you specify more than one _`ObjectTypeName`_, each object must be distinct; you can't repeat
+an _`ObjectTypeName`_ within a single `RETURNING` clause. The search() call only returns objects
+specified in the `RETURNING` clause.
 
 ```
 FieldList

@@ -1,7 +1,7 @@
 # SALESFORCE DEVELOPER LIMITS AND ALLOCATIONS
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf
-> Fetched: 2026-01-27T10:01:56Z
+> Fetched: 2026-02-15T21:31:50Z
 Summary
 
 Find the most critical limits
@@ -60,7 +60,7 @@ and asynchronous limits. For example, the maximum number of Bulk Apex jobs added
 queue with `System.enqueueJob` is the synchronous limit (50), which is higher than the
 asynchronous limit (1).
 
-Last updated: January 23, 2026
+Last updated: February 13, 2026
 
 Salesforce Developer Limits and Allocations Quick Reference Apex Governor Limits
 
@@ -1157,36 +1157,33 @@ SOQL statements statement limits, including information on queries that
 [involve external objects, see Understanding Relationship](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
 [Query Limitations.](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_relationships_query_limits.htm)
 
-Note: Long, complex SOQL statements, such as
-statements that contain many formula fields, can
-result in a `QUERY_TOO_COMPLICATED` error.
-The error occurs because the statement is
-expanded internally when processed by
-Salesforce, even though the original SOQL
-statement is under the 100,000 character limit.
-To avoid this error, reduce the complexity of your
-SOQL statement.
+Long, complex SOQL statements, such as statements
+that contain many formula fields, can result in a
+`QUERY_TOO_COMPLICATED` error. The error occurs
+because the statement is expanded internally when
+processed by Salesforce, even though the original SOQL
+statement is under the 100,000 character limit. To avoid
+this error, reduce the complexity of your SOQL statement.
+
+Page layouts in Lightning with more than 250 fields can
+also cause a `QUERY_TOO_COMPLICATED` error.
+Lightning uses auto-generated SOQL to retrieve fields
 
 
 Salesforce Developer Limits and Allocations Quick Reference SOQL and SOSL Limits for Search Queries
 
 **Feature** **Limit** **Limit Description**
 
-Page layouts in Lightning with more than 250
-fields can also cause a
-`QUERY_TOO_COMPLICATED` error. Lightning
-uses auto-generated SOQL to retrieve fields for a
-record page layout, so the error can occur even
-if there isn’t any customer-written SOQL.
+for a record page layout, so the error can occur even if
+there isn’t any customer-written SOQL.
 
-The character limit can also be reached by
-including too many currency fields. Currency fields
-require SOQL to use a format method, roughly
-doubling the field API name length for each
-currency field.
+The character limit can also be reached by including too
+many currency fields. Currency fields require SOQL to
+use a format method, roughly doubling the field API
+name length for each currency field.
 
-The SOQL statement character limit does not
-apply when using SOQL with dynamic Apex.
+The SOQL statement character limit does not apply when
+using SOQL with dynamic Apex.
 
 Maximum number of
 junction IDs
@@ -1229,11 +1226,6 @@ could return more results than expected.
 SOSL query results Maximum rows 2,000 results total (API version 28.0 and later), unless you
 returned specify custom limits in the query. This limit includes
 
-
-Salesforce Developer Limits and Allocations Quick Reference SOQL and SOSL Limits for Search Queries
-
-**Feature** **Limit** **Limit Description**
-
 results from child objects. Previous API versions return
 200 results.
 
@@ -1243,6 +1235,12 @@ Relationship queries Relationship query
 limits
 be specified in a query. A custom object allows up
 to 40 relationships, so you can reference all the
+
+
+Salesforce Developer Limits and Allocations Quick Reference SOQL and SOSL Limits for Search Queries
+
+**Feature** **Limit** **Limit Description**
+
 child-to-parent relationships for a custom object in
 one query.
 
@@ -1292,10 +1290,16 @@ Maximum number of
 rows skipped by
 OFFSET
 
-
 The maximum offset is 2,000 rows. Requesting an offset
 greater than 2,000 results in a
 `NUMBER_OUTSIDE_VALID_RANGE` error.
+
+ORDER BY clause in ORDER BY fields limit The `ORDER BY` clause in the `SELECT` statement of
+SOQL statement a SOQL query controls the order of the query results,
+such as alphabetically beginning with z. If records are
+null, you can use `ORDER BY` to display the empty
+records first or last.
+
 
 Salesforce Developer Limits and Allocations Quick Reference Visualforce Limits
 

@@ -1,12 +1,12 @@
 # Apex Developer Guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_apex_developer_guide.pdf
-> Fetched: 2026-01-27T10:01:22Z
+> Fetched: 2026-02-15T21:25:17Z
 Apex Developer Guide
 
 Version 66.0, Spring ’26
 
-Last updated: January 23, 2026
+Last updated: February 13, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -6954,7 +6954,9 @@ annotation.
 
 2. Deprecated Annotation Annotation
 
-3. Future Annotation Annotation
+3. Future Annotation
+Use the `Future` annotation to identify methods that run asynchronously. A future method runs when Salesforce has available
+resources.
 
 4. InvocableMethod Annotation
 Use the `InvocableMethod` annotation to identify methods that can be run as invocable actions.
@@ -6964,12 +6966,12 @@ To identify variables used by invocable methods in custom classes, use the `Invo
 
 6. IsTest Annotation
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 7. JsonAccess Annotation
 The `@JsonAccess` annotation defined at Apex class level controls whether instances of the class can be serialized or deserialized.
 If the annotation restricts the JSON or XML serialization and deserialization, a runtime `JSONException` exception is thrown.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 8. NamespaceAccessible Annotation Annotation
 
@@ -7031,14 +7033,14 @@ Note the following rules when deprecating Apex identifiers:
 
 **•** Unmanaged packages can’t contain code that uses the `deprecated` keyword.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 **•** When an Apex item is deprecated, all `global` access modifiers that reference the deprecated identifier must also be deprecated.
 Any global method that uses the deprecated type in its signature, either in an input argument or the method return type, must also
 be deprecated. A deprecated item, such as a method or a class, can still be referenced internally by the package developer.
 
 **•** `webservice` methods and variables can’t be deprecated.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **•** You can deprecate an `enum` but you can’t deprecate individual `enum` values.
 
@@ -7051,14 +7053,17 @@ that item in Apex is deprecated.
 
 For more information about package versions, see Managed Package Types on page 749.
 
-##### Future Annotation Annotation Use the Future annotation to identify methods that are executed asynchronously. When you specify Future, the method executes
+##### Future Annotation Use the Future annotation to identify methods that run asynchronously. A future method runs when Salesforce has available resources.
 
-when Salesforce has available resources.
+Important: Salesforce now recommends that you use Queueable Apex instead of Apex future methods. Queueables have the
+same use cases as future methods but offer extra benefits, including job IDs, support for non-primitive types, and job chaining.
 
-##### For example, you can use the Future annotation when making an asynchronous Web service callout to an external service. Without
+See Queueable Apex.
 
-the annotation, the Web service callout is made from the same thread that is executing the Apex code, and no additional processing
-can occur until the callout is complete (synchronous processing).
+##### For example, you can use the Future annotation when making an asynchronous web service callout to an external service. Without
+
+the annotation, the web service callout is made from the same thread that is running the Apex code. Then no additional processing can
+occur until the callout is complete (synchronous processing).
 
 ##### Methods with the Future annotation must be static methods, and can only return a void type. The specified parameters must be primitive data types, arrays of primitive data types, or collections of primitive data types. Methods with the Future annotation can’t
 
@@ -7067,17 +7072,17 @@ take sObjects or objects as arguments.
 ##### To make a method in a class execute asynchronously, define the method with the Future annotation. For example:
 
 ```
-   global class MyFutureClass {
+   public with sharing class MyFutureClass {
 
-     @Future
+      @Future
 
-     static void myMethod(String a, Integer i) {
+      static void myMethod(String a, Integer i) {
 
-      System.debug('Method called with: ' + a + ' and ' + i);
+        System.debug('Method called with: ' + a + ' and ' + i);
 
-      // Perform long-running code
+        // Perform long-running code
 
-     }
+      }
 
    }
 
@@ -7089,11 +7094,11 @@ from making callouts.
 The following snippet shows how to specify that a method executes a callout:
 
 ```
-     @Future (callout=true)
+   @Future (callout=true)
 
-     public static void doCalloutFromFuture() {
+   public static void doCalloutFromFuture() {
 
-     //Add code to perform callout
+      //Add code to perform callout
 
    }
 
@@ -7101,22 +7106,20 @@ The following snippet shows how to specify that a method executes a callout:
 
 Future Method Considerations
 
-##### • Remember that any method using the Future annotation requires special consideration because the method doesn’t necessarily
+##### • Remember that any method that uses the Future annotation requires special consideration because the method doesn’t necessarily
 
-execute in the same order it’s called.
-
-##### • Methods with the Future annotation can’t be used in Visualforce controllers in either get MethodName or set MethodName
-
-methods, nor in the constructor.
-
-##### • You can’t call a method annotated with Future from a method that also has the Future annotation. Nor can you call a trigger
-
-from an annotated method that calls another annotated method.
-
-##### InvocableMethod Annotation Use the InvocableMethod annotation to identify methods that can be run as invocable actions.
+execute in the same order that it’s called in.
 
 
 Apex Developer Guide Classes, Objects, and Interfaces
+
+**•** Methods with the `Future` annotation can’t be used in Visualforce controllers in either `get` _**`MethodName`**_ or `set` _**`MethodName`**_
+methods, nor in the constructor.
+
+**•** You can’t call a method annotated with `Future` from a method that also has the `Future` annotation. Nor can you call a trigger
+from an annotated method that calls another annotated method.
+
+##### InvocableMethod Annotation Use the InvocableMethod annotation to identify methods that can be run as invocable actions.
 
 Note: If a flow invokes Apex, the running user must have the corresponding Apex class security set in their user profile or permission
 set.
@@ -7196,6 +7199,12 @@ This code sample shows an invocable method with a specific sObject data type.
 
       return accountIds;
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
      }
 
    }
@@ -7217,12 +7226,6 @@ This code sample shows an invocable method with the generic sObject data type.
 
        List<SObject> inputCollection = request.inputCollection;
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
        SObject outputMember = inputCollection[0];
 
        //Create a Results object to hold the return values
@@ -7297,6 +7300,12 @@ This code sample shows an invocable method with a custom icon from the Salesforc
 ```
    public class CustomSldsIcon {
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
      @InvocableMethod(iconName='slds:standard:choice')
 
      public static void run() {}
@@ -7307,9 +7316,6 @@ This code sample shows an invocable method with a custom icon from the Salesforc
 
 To handle exceptions within an invocable method, wrap the results in an Apex object that reports failures. The execution of the invocable
 method must run and return the same number of results as inputs received even if errors occur.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 For example, this code sample adjusts positive values by taking their square root and multiplying by pi, setting a success flag to `true` .
 For negative values, it sets the success flag to `false` .
@@ -7390,6 +7396,12 @@ This test method checks whether the value adjustments were successful and verifi
 
       List<Double> values = new List<Double>();
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       values.add(4);
 
       values.add(-1);
@@ -7400,12 +7412,6 @@ This test method checks whether the value adjustments were successful and verifi
 
       // Call the doAdjustment method with the test values.
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       List<AdjustPositiveValuesAction.AdjustmentResult> results =
 
    AdjustPositiveValuesAction.doAdjustment(values);
@@ -7468,6 +7474,9 @@ If you don’t specify this modifier, Flow Builder uses the standard property ed
 The name of the icon to use as a custom icon for the action in the Flow Builder canvas. You can specify an SVG file that you uploaded
 as a static resource or a Salesforce Lightning Design System standard icon.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 InvocableMethod Considerations
 
 **Implementation Notes**
@@ -7477,9 +7486,6 @@ InvocableMethod Considerations
 **•** Only one method in a class can have the `InvocableMethod` annotation.
 
 **•** The only annotation that can be used with the `InvocableMethod` annotation is `Deprecated` .
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **Inputs and Outputs**
 There can be at most one input parameter and its data type must be one of the following:
@@ -7491,8 +7497,7 @@ There can be at most one input parameter and its data type must be one of the fo
 **•** A list of the generic sObject type ( `List<sObject>` ) or a list of lists of the generic sObject type ( `List<List<sObject>>` ).
 
 **•** A list of a user-defined type, containing variables of the supported types or user-defined Apex types, with the
-##### InvocableVariable annotation. To implement your data type, create a custom global or public Apex class. The class
-
+`InvocableVariable` annotation. To implement your data type, create a custom global or public Apex class. The class
 must contain at least one member variable with the invocable variable annotation.
 
 If the return type isn’t `Null`, the data type returned by the method must be one of the following:
@@ -7504,8 +7509,7 @@ If the return type isn’t `Null`, the data type returned by the method must be 
 **•** A list of the generic sObject type ( `List<sObject>` ) or a list of lists of the generic sObject type ( `List<List<sObject>>` ).
 
 **•** A list of a user-defined type, containing variables of the supported types or user-defined Apex types, with the
-##### InvocableVariable annotation. To implement your data type, create a custom global or public Apex class. The class
-
+`InvocableVariable` annotation. To implement your data type, create a custom global or public Apex class. The class
 must contain at least one member variable with the invocable variable annotation.
 
 Note: For a correct bulkification implementation, the Inputs and Outputs must match on both the size and the order. For
@@ -7521,6 +7525,9 @@ the package.
 
 **•** Global invocable methods can be referred to anywhere in the subscriber org. Only global invocable methods appear in Flow
 Builder and Process Builder in the subscriber org.
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 [For more information about invocable actions, see Apex Actions in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_action.meta/api_action/actions_intro.htm) _Actions Developer Guide_ .
 
@@ -7544,12 +7551,8 @@ Making Callouts to External Systems from Invocable Actions
 
 Customize Invocable Action Input Order in Flow Builder
 
-##### InvocableVariable Annotation To identify variables used by invocable methods in custom classes, use the InvocableVariable annotation.
+##### InvocableVariable Annotation To identify variables used by invocable methods in custom classes, use the InvocableVariable annotation. The InvocableVariable annotation identifies a class variable used as an input or output parameter for an InvocableMethod
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-The `InvocableVariable` annotation identifies a class variable used as an input or output parameter for an `InvocableMethod`
 method’s invocable action. If you create your own custom class to use as the input or output to an invocable method, you can annotate
 individual class member variables to make them available to the method.
 
@@ -7602,6 +7605,12 @@ This code sample shows an invocable method with invocable variables.
 
       }
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       if (request.createOpportunity != null && !request.createOpportunity) {
 
        lc.setDoNotCreateOpportunity(!request.createOpportunity);
@@ -7636,12 +7645,6 @@ This code sample shows an invocable method with invocable variables.
 
        result.contactId = lcr.getContactId();
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
        result.opportunityId = lcr.getOpportunityId();
 
        return result;
@@ -7690,6 +7693,12 @@ Apex Developer Guide Classes, Objects, and Interfaces
 
       @InvocableVariable
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       global Boolean sendEmailToOwner;
 
      }
@@ -7725,12 +7734,6 @@ This code sample shows an invocable method with invocable variables that have th
 
      public static List <Results> execute (List<Requests> requestList) {
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       List<SObject> inputCollection = requestList[0].inputCollection;
 
       SObject outputMember = inputCollection[0];
@@ -7781,6 +7784,9 @@ Supported Modifiers
 
 All modifiers are optional.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 Tip: Default values, labels, and placeholder text appear in Flow Builder for the Action element that corresponds to an invocable
 method. These modifiers help admins understand how to use variables in the flow.
 
@@ -7814,9 +7820,6 @@ Valid invocable variable data types are:
        public Double myDouble;
 
 ```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **•** Integer - fields must have a value of `'validIntegerValue'` where the inter value can’t have a suffix.
 
@@ -7866,6 +7869,9 @@ Specifies whether the variable is required. If not specified, the default is `fa
 
 Note: The `defaultValue` modifier throws an error when used with `required` .
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 Example: The invocable variable annotation supports the modifiers shown in this example.
 
 ```
@@ -7899,9 +7905,6 @@ InvocableVariable Considerations
 **–** A property.
 
 **–** A `final` variable.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **–** `Protected` or `private` .
 
@@ -7939,6 +7942,9 @@ Note: The `@IsTest` annotation on methods is equivalent to the `testMethod` keyw
 recommends that you use `@IsTest` rather than `testMethod` . The `testMethod` keyword may be versioned out in a future
 release.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 Classes and methods that are defined as `@IsTest` can be either `private` or `public` . Classes defined as `@IsTest` must be
 top-level classes.
 
@@ -7972,9 +7978,6 @@ Here’s an example of a private test class that contains two test methods.
    }
 
 ```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 Here’s an example of a public test class that contains utility methods for test data creation:
 
@@ -8017,6 +8020,9 @@ Isolation of Test Data from Organization Data in Unit Tests on page 718.
 **•** If a test class is defined with the `@IsTest(SeeAllData=true)` annotation, the `SeeAllData=true` applies to all
 test methods that don’t explicitly set the `SeeAllData` keyword.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 **•** The `@IsTest(SeeAllData=true)` annotation is used to open up data access when applied at the class or method level.
 However, if the containing class has been annotated with `@IsTest(SeeAllData=true)`, annotating a method with
 
@@ -8052,12 +8058,6 @@ class have access to all data in the organization.
 
         System.assert(a != null);
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
         // Create a test account based on the queried account.
 
         Account testAccount = a.clone();
@@ -8106,6 +8106,12 @@ organization, such as users.
 
       // Test method that has access to all data.
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       @IsTest(SeeAllData=true)
 
       static void testWithAllDataAccess() {
@@ -8146,12 +8152,6 @@ organization, such as users.
 
         System.assert(insertedAcct != null);
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       }
 
    }
@@ -8197,6 +8197,12 @@ but `test2` and `test3` isn’t.
 
      // during the installation of the package.
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
      @IsTest(OnInstall=true)
 
      static void test1() {
@@ -8232,9 +8238,6 @@ but `test2` and `test3` isn’t.
 **`@IsTest(IsParallel=true)`** Annotation
 
 Use the `@IsTest(IsParallel=true)` annotation to indicate test classes that can run in parallel.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **Considerations for the** **`@IsTest(IsParallel=true)`** **annotation**
 
@@ -8275,6 +8278,12 @@ test level to `RunRelevantTests`, the tests in this class always run.
 
    public with sharing class AccountServiceTest {
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
      // ...
 
    }
@@ -8297,9 +8306,6 @@ To use `@IsTest(testFor='...')`, set the `testFor` parameter to a comma-separate
 For Apex classes, use the format `ApexClass:` _**`ClassName`**_ . For Apex triggers, use the format `ApexTrigger:` _**`TriggerName`**_ .
 If specifying a class or trigger from a different namespace, use the fully qualified name, for example,
 `ApexClass:` _**`MyNamespace`**_ `.` _**`ClassName`**_ .
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 This example code shows a test class marked with the `@IsTest(testFor='...')` annotation. If you set the deployment test
 level to `RunRelevantTests`, this test class runs whenever `AccountHandler` or `AccountTrigger` are new or modified
@@ -8346,15 +8352,23 @@ This example code shows an Apex class marked with the `@JsonAccess` annotation.
 
    // AlwaysDeserializable class is always deserializable and serializable only in the same
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
    namespace (default value from version 49.0 and later)
 
    @JsonAccess(deserializable='always')
 
    public class AlwaysDeserializable { }
 
-##### JsonAccess Considerations • If an Apex class annotated with JsonAccess is extended, the extended class doesn’t inherit this property.
-
 ```
+
+**`JsonAccess`** Considerations
+
+**•** If an Apex class annotated with `JsonAccess` is extended, the extended class doesn’t inherit this property.
 
 **•** If the `toString` method is applied on objects that mustn't be serialized, private data can be exposed. You must override the
 `toString` method on objects whose data must be protected. For example, serializing an object stored as a key in a Map invokes
@@ -8365,9 +8379,6 @@ Versioned Behavior Changes
 In versions 48.0 and earlier, the default access for deserialization is `always` and the default access for serialization is `sameNamespace`
 to preserve the existing behavior. From version 49.0 onwards, the default access for both serialization and deserialization is
 `sameNamespace` .
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 ##### NamespaceAccessible Annotation Annotation
 
@@ -8411,6 +8422,12 @@ within the same namespace. The first constructor is also visible within the name
 
       private Boolean bypassFLS;
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
       // A namespace-visible constructor that only allows secure use
 
       @NamespaceAccessible
@@ -8442,9 +8459,6 @@ within the same namespace. The first constructor is also visible within the name
    }
 
 ```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 Versioned Behavior Changes
 
@@ -8511,6 +8525,9 @@ But this behavior is allowed.
 
 ```
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 In API version 50.0 and later, scope and accessibility rules are enforced on Apex variables, methods, inner classes, and interfaces that are
 annotated with `@NamespaceAccessible` . For accessibility considerations, see Considerations for Apex Acessibility Across Packages.
 [For more information on namespace-based visibility, see Namespace-Based Visibility for Apex Classes in Second-Generation Packages.](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_unlocked_namespace_visibility.htm)
@@ -8528,9 +8545,6 @@ Web service.
 
 Visualforce pages can call controller methods with the `@ReadOnly` annotation, and those methods run with the same relaxed
 restrictions. To increase other Visualforce-specific limits, such as the size of a collection that can be used by an iteration component like
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 `<apex:pageBlockTable>`, you can set the `readonly` attribute on the `<apex:page>` tag to `true` . For more information,
 [see Working with Large Sets of Data in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/pages_controller_readonly_context.htm) _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)_ .
@@ -8573,17 +8587,17 @@ Then, add the request as a JavaScript function call. A simple JavaScript remotin
 
 ```
 
-**Table 2: Remote Request Elements**
-
 
 Apex Developer Guide Classes, Objects, and Interfaces
+
+**Table 2: Remote Request Elements**
 
 In your controller, your Apex method declaration is preceded with the `@RemoteAction` annotation like this:
 
 ```
-   @RemoteAction
+@RemoteAction
 
-   global static String getItemId(String objectName) { ... }
+global static String getItemId(String objectName) { ... }
 
 ```
 
@@ -8612,14 +8626,18 @@ Syntax
 Test setup methods are defined in a test class, take no arguments, and return no value. The following is the syntax of a test setup method.
 
 ```
-   @TestSetup static void methodName () {
+@TestSetup static void methodName () {
 
-   }
+}
 
 ```
 
 If a test class contains a test setup method, the testing framework executes the test setup method first, before any test method in the
 class. Records that are created in a test setup method are available to all test methods in the test class and are rolled back at the end of
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 test class execution. If a test method changes those records, such as record field updates or record deletions, those changes are rolled
 back after each test method finishes execution. The next executing test method gets access to the original unmodified state of those
 records.
@@ -8639,12 +8657,7 @@ for running tests only. This annotation doesn’t change the visibility of membe
 
 With this annotation, you don’t have to change the access modifiers of your methods and member variables to public if you want to
 access them in a test method. For example, if a private member variable isn’t supposed to be exposed to external classes but it must be
-##### accessible by a test method, you can add the TestVisible annotation to the variable definition.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-This example shows how to annotate a private class member variable and private method with `TestVisible` .
+##### accessible by a test method, you can add the TestVisible annotation to the variable definition. This example shows how to annotate a private class member variable and private method with TestVisible .
 
 ```
    public class TestVisibleExample {
@@ -8700,6 +8713,9 @@ Use these annotations to expose an Apex class as a RESTful Web service.
 
 **•** `@RestResource(urlMapping='/` _**`yourUrl`**_ `')`
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 **•** `@HttpDelete`
 
 **•** `@HttpGet`
@@ -8726,9 +8742,6 @@ Some considerations when using this annotation:
 
 **•** The URL mapping is case-sensitive. For example, a URL mapping for `my_url` matches a REST resource containing `my_url` and
 not `My_Url` .
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **•** To use this annotation, your Apex class must be defined as global.
 
@@ -8763,6 +8776,9 @@ method is called when an HTTP `DELETE` request is sent, and deletes the specifie
 
 To use this annotation, your Apex method must be defined as global static.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 ###### HttpGet Annotation Annotation
 
 The `@HttpGet` annotation is used at the method level and enables you to expose an Apex method as a REST resource. This method
@@ -8787,9 +8803,6 @@ The `@HttpPost` annotation is used at the method level and enables you to expose
 is called when an HTTP `POST` request is sent, and creates a new resource.
 
 To use this annotation, your Apex method must be defined as global static.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 ###### HttpPut Annotation Annotation
 
@@ -8832,6 +8845,12 @@ as a report object, which is then cast back into a custom report object.
 
      CustomReport a = new CustomReport();
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
      // Because the custom report is a sub class of the Report class,
 
      // you can add the custom report object a to the list of report objects
@@ -8858,9 +8877,6 @@ as a report object, which is then cast back into a custom report object.
 
 ```
 
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 **Casting Example**
 
 In addition, an interface type can be cast to a sub-interface or a class type that implements that interface.
@@ -8869,11 +8885,12 @@ Tip: To verify if a class is a specific type of class, use the `instanceOf` keyw
 
 `instanceof` Keyword on page 85.
 
-##### 1. Classes and Collections
+1. Classes and Collections
 
-2. Collection Casting
 
-##### Classes and Collections
+Apex Developer Guide Classes, Objects, and Interfaces
+
+##### 2. Collection Casting Classes and Collections
 
 Lists and maps can be used with classes and interfaces, in the same ways that lists and maps can be used with sObjects. This means, for
 example, that you can use a user-defined data type for the value or the key of a map. Likewise, you can create a set of user-defined
@@ -8885,9 +8902,6 @@ interface _`i1`_, and _`MyC`_ implements _`i1`_, then _`MyC`_ can be placed in t
 SEE ALSO:
 
 Using Custom Types in Map Keys and Sets
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 ##### Collection Casting
 
@@ -8940,6 +8954,9 @@ These are the major differences between Apex classes and Java classes:
 
 **•** Static methods and variables can only be declared in a top-level class definition, not in an inner class.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 **•** An inner class behaves like a static Java inner class, but doesn’t require the `static` keyword. An inner class can have instance
 member variables like an outer class, but there is no implicit pointer to an instance of the outer class (using the `this` keyword).
 
@@ -8958,9 +8975,6 @@ the class that contains it as `global` .
 **•** Methods and classes are final by default.
 
 **–** The `virtual` definition modifier allows extension and overrides.
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **–** The `override` keyword must be used explicitly on methods that override base class methods.
 
@@ -9006,6 +9020,10 @@ Once saved, classes can be invoked through class methods or variables by other A
 Note: To aid backwards-compatibility, classes are stored with the version settings for a specified version of Apex and the API. If
 the Apex class references components, such as a custom object, in installed managed packages, the version settings for each
 managed package referenced by the class is saved too. Additionally, classes are stored with an `isValid` flag that is set to `true`
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 as long as dependent metadata hasn’t changed since the class was last compiled. If any changes are made to object names or
 fields that are used in the class, including superficial changes such as edits to an object or field description, or if changes are made
 to a class that calls this class, the `isValid` flag is set to `false` . When a trigger or Web service call invokes the class, the code
@@ -9021,9 +9039,6 @@ The editor automatically applies syntax highlighting for keywords and all functi
 **Search (** **)**
 Search enables you to search for text within the current page, class, or trigger. To use search, enter a string in the `Search` textbox
 and click **Find Next** .
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 **•** To replace a found search string with another string, enter the new string in the `Replace` textbox and click **replace** to replace
 just that instance, or **Replace All** to replace that instance and all other instances of the search string that occur in the page, class,
@@ -9055,10 +9070,17 @@ The line and column position of the cursor is displayed in the status bar at the
 **Line and character count**
 The total number of lines and characters is displayed in the status bar at the bottom of the editor.
 
-##### 1. Naming Conventions 2. Name Shadowing Naming Conventions
+##### 1. Naming Conventions
+
+2. Name Shadowing
+
+##### Naming Conventions
 
 We recommend following Java standards for naming, that is, classes start with a capital letter, methods start with a lowercase verb, and
 variable names should be meaningful.
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
 
 It is not legal to define a class and interface with the same name in the same class. It is also not legal for an inner class to have the same
 name as its outer class. However, methods and variables have their own namespaces within the class so these three types of names do
@@ -9085,9 +9107,6 @@ standard Java form:
    }
 
 ```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 Member variables in one class can shadow member variables with the same name in a parent classes. This can be useful if the two classes
 are in different top-level classes and written by different teams. For example, if one has a reference to a class C and wants to gain access
@@ -9138,6 +9157,9 @@ object and field names in the developer's managed packages take on the following
 
 ```
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 These fully qualified names can be onerous to update in working SOQL or SOSL statements, and Apex once a class is marked as “managed”.
 Therefore, Apex supports a default namespace for schema names. When looking at identifiers, the parser assumes that the namespace
 of the current object is the namespace of all other objects and fields unless otherwise specified. Therefore, a stored class must refer to
@@ -9155,9 +9177,6 @@ To invoke a method that is defined in a managed package, Apex allows fully quali
     namespace_prefix . class . method ( args )
 
 ```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 Versioned Behavior Changes
 
@@ -9209,13 +9228,16 @@ Or:
 
 ```
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 Note: In addition to the `System` namespace, there is a built-in `System` class in the `System` namespace, which provides
 methods like `assertEquals` and `debug` . Don’t get confused by the fact that both the namespace and the class have the
 same name in this case. The `System.debug('debug message');` and `System.System.debug('debug`
 
 `message');` statements are equivalent.
 
-##### Using the System Namespace for Disambiguation
+Using the System Namespace for Disambiguation
 
 It is easier to not include the `System` namespace when calling static methods of system classes, but there are situations where you
 must include the `System` namespace to differentiate the built-in Apex classes from custom Apex classes with the same name. If your
@@ -9231,12 +9253,6 @@ Create this custom Apex class:
 
         return 'wherefore art thou namespace?';
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
       }
 
    }
@@ -9291,9 +9307,12 @@ And:
 
    Map<String, FieldSet> FSMap = d.fieldSets.getMap();
 
-##### Using the Schema Namespace for Disambiguation
-
 ```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+Using the Schema Namespace for Disambiguation
 
 Use `Schema.` _**`object_name`**_ to refer to an sObject that has the same name as a custom class. This disambiguation instructs the
 Apex runtime to use the sObject.
@@ -9315,12 +9334,6 @@ Apex runtime to use the sObject.
 
    Account accountClassInstance = new Account();
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
    myAccountSObject.Name = 'Snazzy Account';
 
    accountClassInstance.myInteger = 1;
@@ -9369,6 +9382,9 @@ However, with class variables Apex also uses dot notation to reference member va
 class instances, or they might refer to an sObject which has its own dot notation rules to refer to field names (possibly navigating foreign
 keys).
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 Once you enter an sObject field in the expression, the remainder of the expression stays within the sObject domain, that is, sObject fields
 cannot refer back to Apex expressions.
 
@@ -9394,12 +9410,6 @@ Then the following expressions are all legal:
 
    c.c1.c2.a.owner.lastName.toLowerCase()
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
    c.c1.c2.a.tasks
 
    c.c1.c2.a.contacts.size()
@@ -9444,11 +9454,14 @@ When classes and methods are added to the Apex language, those classes and metho
 is saved with, regardless of the API version (Salesforce release) they were introduced in. For example, if a method was added in API
 version 33.0, you can use this method in a custom class saved with API version 33.0 or another class saved with API version 25.0.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 There is one exception to this rule. The classes and methods of the `[ConnectApi](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_connect_api.htm)` namespace are supported only in the API versions
 specified in the documentation. For example, if a class or method is introduced in API version 33.0, it is not available in earlier versions.
 For more information, see ConnectApi Versioning and Equality Checking on page 459.
 
-Setting the Salesforce API Version for Classes and Triggers
+##### Setting the Salesforce API Version for Classes and Triggers
 
 Setting Package Versions for Apex Classes and Triggers
 As a managed package subscriber, you can specify which package version that your managed Apex classes and triggers use.
@@ -9456,9 +9469,6 @@ As a managed package subscriber, you can specify which package version that your
 SEE ALSO:
 
 Use Apex Referenced by Managed Packages
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 ##### Setting the Salesforce API Version for Classes and Triggers
 
@@ -9526,6 +9536,12 @@ The following class is saved using Salesforce API version 16.0:
 
         i.Categories = 'test';
 
+```
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
+```
         C2 c2 = new C2();
 
         Idea returnedIdea = c2.insertIdea(i);
@@ -9550,12 +9566,9 @@ The following class is saved using Salesforce API version 16.0:
 
    }
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
 ##### Setting Package Versions for Apex Classes and Triggers
+
+```
 
 As a managed package subscriber, you can specify which package version that your managed Apex classes and triggers use.
 
@@ -9598,6 +9611,9 @@ Use Apex Referenced by Managed Packages
 
 Lists can hold objects of your user-defined types (your Apex classes). Lists of user-defined types can be sorted.
 
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 To sort such a list, your Apex class can implement the `Comparator` interface and pass it as a parameter to the `List.sort` method.
 Alternatively, your Apex class can implement the `Comparable` interface.
 
@@ -9614,9 +9630,6 @@ _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.
 _Apex Reference Guide_ [: Comparable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_comparable.htm)
 
 _Apex Reference Guide_ [: Comparator Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_System_Comparator.htm)
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
 
 #### Using Custom Types in Map Keys and Sets
 
@@ -9666,6 +9679,10 @@ also contains a constructor that takes two Integers. The second example is a cod
 which have the same values. Next, map entries are added using the pair objects as keys. The sample verifies that the map has only two
 entries since the entry that was added last has the same key as the first entry, and hence, overwrote it. The sample then uses the `==`
 operator, which works as expected because the class implements `equals` . Also, some additional map operations are performed, like
+
+
+Apex Developer Guide Classes, Objects, and Interfaces
+
 checking whether the map contains certain keys, and writing all keys and values to the debug log. Finally, the sample creates a set and
 adds the same objects to it. It verifies that the set size is two, since only two objects out of the three are unique.
 
@@ -9692,12 +9709,6 @@ adds the same objects to it. It verifies that the set size is two, since only tw
 
         }
 
-```
-
-
-Apex Developer Guide Classes, Objects, and Interfaces
-
-```
         return false;
 
       }
@@ -9763,6 +9774,12 @@ This code snippet makes use of the `PairNumbers` class.
 
    System.debug('m.values: ' + mValues);
 
+```
+
+
+### Apex Developer Guide Working with Data in Apex
+
+```
    // Create a set
 
    Set<PairNumbers> s1 = new Set<PairNumbers>();
@@ -9779,17 +9796,17 @@ This code snippet makes use of the `PairNumbers` class.
 
    System.assertEquals(2, s1.size());
 
+### Working with Data in Apex
+
 ```
-
-
-### Apex Developer Guide Working with Data in Apex Working with Data in Apex
 
 You can add and interact with data in the Lightning Platform persistence layer. The sObject data type is the main data type that holds
 data objects. You’ll use Data Manipulation Language (DML) to work with data, and use query languages to retrieve data, such as the (),
 among other things.
 
 #### Working with sObjects
-##### In this developer guide, the term sObject refers to any object that can be stored in the Lightning platform database.
+
+In this developer guide, the term _`sObject`_ refers to any object that can be stored in the Lightning platform database.
 
 Data Manipulation Language
 Apex enables you to insert, update, delete or restore data in the database. DML operations allow you to modify records one at a time
@@ -9819,9 +9836,13 @@ data.
 
 #### Working with sObjects
 
-##### In this developer guide, the term sObject refers to any object that can be stored in the Lightning platform database. sObject Types
+In this developer guide, the term _`sObject`_ refers to any object that can be stored in the Lightning platform database.
 
+sObject Types
 An sObject variable represents a row of data and can only be declared in Apex using SOAP API name of the object.
+
+
+Apex Developer Guide Working with Data in Apex
 
 Accessing SObject Fields
 
@@ -9839,9 +9860,6 @@ For example:
    MyCustomObject__c co = new MyCustomObject__c();
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 Similar to SOAP API, Apex allows the use of the generic sObject abstract type to represent any object. The sObject data type can be used
 in code that processes different types of sObjects.
@@ -9914,6 +9932,9 @@ label using `system.label.` _**`label_name`**_ . For example:
 
 For more information on custom labels, see “Custom Labels” in Salesforce Help.
 
+
+Apex Developer Guide Working with Data in Apex
+
 ##### Accessing SObject Fields
 
 As in Java, SObject fields can be accessed or changed with simple dot notation. For example:
@@ -9928,9 +9949,6 @@ As in Java, SObject fields can be accessed or changed with simple dot notation. 
 System-generated fields, such as `Created By` or `Last Modified Date`, cannot be modified. If you try, the Apex runtime
 engine generates an error. Additionally, formula field values and values for other fields that are read-only for the context user cannot be
 changed.
-
-
-Apex Developer Guide Working with Data in Apex
 
 If you use the generic SObject type instead of a specific object, such as Account, you can retrieve only the `Id` field using dot notation.
 You can set the `Id` field for Apex code saved using Salesforce API version 27.0 and later). Alternatively, you can use the generic SObject
@@ -10010,6 +10028,12 @@ the generic SObject record into a Contact, Lead, or Account, you can modify its 
 
         List<SObject> records = new List<SObject>();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         records.addAll(results[0]); //add Contact results to our results super-set
 
         records.addAll(results[1]); //add Lead results
@@ -10028,12 +10052,6 @@ the generic SObject record into a Contact, Lead, or Account, you can modify its 
 
              } else if (record.getSObjectType() == Lead.sObjectType){
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
                leads.add((Lead) record);
 
              } else if (record.getSObjectType() == Account.sObjectType) {
@@ -10103,6 +10121,9 @@ In addition, the Apex parser tracks the custom objects and fields that are used,
 and SOSL statements. The platform prevents users from making the following types of modifications when those changes cause Apex
 code to become invalid:
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** Changing a field or object name
 
 **•** Converting from one data type to another
@@ -10110,9 +10131,6 @@ code to become invalid:
 **•** Deleting a field or object
 
 **•** Making certain organization-wide changes, such as record sharing, field history tracking, or record types
-
-
-Apex Developer Guide Working with Data in Apex
 
 #### Data Manipulation Language
 
@@ -10158,6 +10176,9 @@ counts as one DML statement, not as one statement for each sObject.
 
 This example performs DML calls on single sObjects, which isn’t efficient.
 
+
+Apex Developer Guide Working with Data in Apex
+
 The `for` loop iterates over contacts. For each contact, if the department field matches a certain value, it sets a new value for the
 Description field. If the list contains more than items, the 151st update returns an exception that can't be caught.
 
@@ -10179,9 +10200,6 @@ Description field. If the list contains more than items, the 151st update return
    }
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 This example is a modified version of the previous example that doesn't hit the governor limit. The DML operation is performed in bulk
 by calling `update` on a list of contacts. This code counts as one DML statement, which is far below the limit of 150.
@@ -10240,6 +10258,9 @@ through Apex directly using simple statements. The language in Apex that allows 
 Data Manipulation Language (DML). In contrast to the SOQL language, which is used for read operations (querying records), DML is used
 for write operations.
 
+
+Apex Developer Guide Working with Data in Apex
+
 Before inserting or manipulating records, record data is created in memory as sObjects. The sObject data type is a generic data type and
 corresponds to the data type of the variable that will hold the record data. There are specific data types, subtyped from the sObject data
 type, which correspond to data types of standard object records, such as Account or Contact, and custom objects, such as
@@ -10251,9 +10272,6 @@ Account sObject and assign it to a variable.
    Account a = new Account(Name='Account Example');
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 In the previous example, the account referenced by the variable `a` exists in memory with the required `Name` field. However, it is not
 persisted yet to the Lightning Platform persistence layer. You need to call DML statements to persist sObjects to the database. Here is
@@ -10318,6 +10336,9 @@ to the database.
 Apex offers two ways to perform DML operations: using DML statements or Database class methods. This provides flexibility in how you
 perform data operations. DML statements are more straightforward to use and result in exceptions that you can handle in your code.
 
+
+Apex Developer Guide Working with Data in Apex
+
 This is an example of a DML statement to insert a new record.
 
 ```
@@ -10334,9 +10355,6 @@ This is an example of a DML statement to insert a new record.
    insert acctList;
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 This is an equivalent example to the previous one but it uses a method of the Database class instead of the DML verb.
 
@@ -10407,15 +10425,15 @@ Note: Most operations overlap between the two, except for a few.
 
 **•** The `convertLead` operation is only available as a Database class method, not as a DML statement.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** The Database class also provides methods not available as DML statements, such as methods transaction control and rollback,
 emptying the Recycle Bin, and methods related to SOQL queries.
 
 SEE ALSO:
 
 _Apex Reference Guide_ [: Database Class Methods](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database.htm)
-
-
-Apex Developer Guide Working with Data in Apex
 
 ##### DML Operations As Atomic Transactions
 
@@ -10468,6 +10486,12 @@ is updated, and the update statement is called to persist the change in the data
 
    for(Integer i=0;i<3;i++) {
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
       Account a = new Account(Name='Acme' + i,
 
                     BillingCity='San Francisco');
@@ -10484,12 +10508,6 @@ is updated, and the update statement is called to persist the change in the data
 
       // Update account Acme2.
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       accountToUpdate =
 
         [SELECT BillingCity FROM Account
@@ -10568,15 +10586,14 @@ are linked through a lookup relationship.
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 Updating Related Records
 
 Fields on related records can't be updated with the same call to the DML operation and require a separate DML call. For example, if
 inserting a new contact, you can specify the contact's related account record by setting the value of the `AccountId` field. However,
 you can't change the account's name without updating the account itself with a separate DML call. Similarly, when updating a contact,
-
-
-Apex Developer Guide Working with Data in Apex
-
 if you also want to update the contact’s related account, you must make two DML calls. The following example updates a contact and
 its related account using two `update` statements.
 
@@ -10642,6 +10659,9 @@ opportunity record is associated to the account record through the custom Extern
 
 **•** An account record exists where `MyExtID__c = ‘SAP111111’`
 
+
+Apex Developer Guide Working with Data in Apex
+
 Before the new opportunity is inserted, the account record is added to this opportunity as an sObject through the
 `Opportunity.Account` relationship field.
 
@@ -10654,12 +10674,6 @@ Before the new opportunity is inserted, the account record is added to this oppo
 
       CloseDate=Date.today().addDays(7));
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // Create the parent record reference.
 
    // An account with external ID = 'SAP111111' already exists.
@@ -10722,6 +10736,12 @@ first error if record creation fails. This sample requires an external ID text f
 
         Date dt = Date.today();
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
         dt = dt.addDays(7);
 
         Opportunity newOpportunity = new Opportunity(
@@ -10736,12 +10756,6 @@ first error if record creation fails. This sample requires an external ID text f
 
         // Used only for foreign key reference
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         // and doesn't contain any other fields.
 
         Account accountReference = new Account(
@@ -10814,6 +10828,9 @@ Note: Custom field matching is case-insensitive only if the custom field has the
 **values (case insensitive)** attributes selected as part of the field definition. If this is the case, “ABC123” is matched with “abc123.”
 [For more information, see Create Custom Fields.](https://help.salesforce.com/apex/HTViewHelpDoc?id=adding_fields.htm&language=en_US#adding_fields)
 
+
+Apex Developer Guide Working with Data in Apex
+
 Examples
 
 The following example updates the city name for all existing accounts in the city formerly known as Bombay, and also inserts a new
@@ -10826,12 +10843,6 @@ account in San Francisco:
 
    for (Account a : acctsList) {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
       a.BillingCity = 'Mumbai';
 
    }
@@ -10906,6 +10917,12 @@ bulk inserted. This example is followed by a test class that contains a test met
 
        return uResults;
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
      }
 
    }
@@ -10920,12 +10937,6 @@ bulk inserted. This example is followed by a test class that contains a test met
 
        List<Lead> leads = new List<Lead>();
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
        /* Create a set of leads for testing */
 
        for(Integer i = 0;i < 100; i++) {
@@ -10996,6 +11007,12 @@ Note: External ID fields used in upsert calls must be unique or the user must ha
 
                  FROM Opportunity
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
                  WHERE HasOpportunityLineItem = true
 
                  LIMIT 1];
@@ -11006,12 +11023,6 @@ Note: External ID fields used in upsert calls must be unique or the user must ha
 
       for (OpportunityLineItem lineItem:opp.OpportunityLineItems) {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         //This code populates the line item Id, AccountId, and Product2Id for each asset
 
         Asset asset = new Asset(Name = lineItem.PricebookEntry.Name,
@@ -11083,6 +11094,12 @@ main record remains in the database.
 
    c.AccountId = dupAcct.Id;
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    insert c;
 
    try {
@@ -11097,12 +11114,6 @@ main record remains in the database.
 
    }
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
    // After the account is merged with the main account,
 
    // the related contact is moved to the main record.
@@ -11171,6 +11182,12 @@ Note: To use the AccountContactRelation sObject in this example, enable the “A
 
    AccountContactRelation resultAcrel = [SELECT Id FROM AccountContactRelation WHERE
 
+```
+
+
+Apex Developer Guide Working with Data in Apex
+
+```
    ContactId=:c.Id LIMIT 1];
 
    // Merge duplicate accounts into main account
@@ -11181,12 +11198,6 @@ Note: To use the AccountContactRelation sObject in this example, enable the “A
 
       if (res.isSuccess()) {
 
-```
-
-
-Apex Developer Guide Working with Data in Apex
-
-```
         // Get the main record ID from the result and validate it
 
         System.debug('Main record ID: ' + res.getId());
@@ -11259,6 +11270,9 @@ When merging sObject records, consider these rules and guidelines:
 
 **•** Only leads, contacts, cases, and accounts can be merged. See sObjects That Don’t Support DML Operations on page 163.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** You can pass a main record and up to two additional sObject records to a single `merge` method.
 
 **•** Field values on the main record, including null and empty field values, always supersede the corresponding field values on the
@@ -11267,9 +11281,6 @@ operation regardless of the field value on the duplicate record. To preserve a f
 field value on the main record before performing the merge.
 
 **•** External ID fields can’t be used with `merge` .
-
-
-Apex Developer Guide Working with Data in Apex
 
 ###### Deleting Records
 
@@ -11334,11 +11345,11 @@ list on an account)
 
 **•** An article's categories, publication state, and assignments
 
-Note: Salesforce only restores lookup relationships that have not been replaced. For example, if an asset is related to a different
-product prior to the original product record being undeleted, that asset-product relationship is not restored.
-
 
 Apex Developer Guide Working with Data in Apex
+
+Note: Salesforce only restores lookup relationships that have not been replaced. For example, if an asset is related to a different
+product prior to the original product record being undeleted, that asset-product relationship is not restored.
 
 ###### Restoring Deleted Records
 
@@ -11402,6 +11413,9 @@ Converting leads involves the following basic steps:
 
 **1.** Your application determines the IDs of any lead(s) to be converted.
 
+
+Apex Developer Guide Working with Data in Apex
+
 **2.** Optionally, your application determines the IDs of any account(s) into which to merge the lead. Your application can use SOQL to
 search for accounts that match the lead name, as in the following example:
 
@@ -11409,9 +11423,6 @@ search for accounts that match the lead name, as in the following example:
      SELECT Id, Name FROM Account WHERE Name='CompanyNameOfLeadBeingMerged'
 
 ```
-
-
-Apex Developer Guide Working with Data in Apex
 
 **3.** Optionally, your application determines the IDs of the contact or contacts into which to merge the lead. The application can use
 SOQL to search for contacts that match the lead contact name, as in the following example:
@@ -11476,11 +11487,12 @@ contents of the `LeadSource` field in the source LeadConvert object.
 
 **•** Record types: If the organization uses record types, the default record type of the new owner is assigned to records created during
 lead conversion. The default record type of the user converting the lead determines the lead source values available during conversion.
-If the desired lead source values are not available, add the values to the default record type of the user converting the lead. For more
-information about record types, see Salesforce Help.
 
 
 Apex Developer Guide Working with Data in Apex
+
+If the desired lead source values are not available, add the values to the default record type of the user converting the lead. For more
+information about record types, see Salesforce Help.
 
 **•** Picklist values: The system assigns the default picklist values for the account, contact, and opportunity when mapping any standard
 lead picklist fields that are blank. If your organization uses record types, blank values are replaced with the default picklist values of
@@ -11544,10 +11556,12 @@ undelete [UndeleteResult Class](https://developer.salesforce.com/docs/atlas.en-u
 
 convertLead [LeadConvertResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_database_leadconvertresult.htm)
 
-emptyRecycleBin [EmptyRecycleBinResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_EmptyRecycleBinResult.htm)
-
 
 Apex Developer Guide Working with Data in Apex
+
+**Operation** **Result Class**
+
+emptyRecycleBin [EmptyRecycleBinResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_database_EmptyRecycleBinResult.htm)
 
 ###### Returned Database Errors
 
@@ -11611,6 +11625,9 @@ Setting DML Options
 Transaction Control
 Read about transaction requests, generating and releasing savepoints, rolling back transactions, and more.
 
+
+Apex Developer Guide Working with Data in Apex
+
 sObjects That Can’t Be Used Together in DML Operations
 DML operations on certain sObjects, sometimes referred to as setup objects, can’t be mixed with DML on non-setup sObjects in the
 same transaction. This restriction exists because some sObjects affect the user’s access to records in the org. You must insert or
@@ -11620,9 +11637,6 @@ For example, you can’t update an account and a user role in a single transacti
 sObjects That Don’t Support DML Operations
 
 Bulk DML Exception Handling
-
-
-Apex Developer Guide Working with Data in Apex
 
 Things You Should Know about Data in Apex
 
@@ -11680,6 +11694,9 @@ which is the behavior in API versions 14.0 and earlier. For example:
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 **`assignmentRuleHeader`** Property
 
 The `assignmentRuleHeader` property specifies the assignment rule to be used when creating a case or lead.
@@ -11687,9 +11704,6 @@ The `assignmentRuleHeader` property specifies the assignment rule to be used whe
 Note: The Database.DMLOptions object supports assignment rules for cases and leads, but not for accounts.
 
 Using the `assignmentRuleHeader` property, you can set these options:
-
-
-Apex Developer Guide Working with Data in Apex
 
 **•** `assignmentRuleID` : The ID of an assignment rule for the case or lead. The assignment rule can be active or inactive. The ID
 can be retrieved by querying the AssignmentRule sObject. If specified, do not specify `useDefaultRule` . If the value is not in
@@ -11761,6 +11775,9 @@ The following example shows how to save an account record that’s been identifi
 
 ```
 
+
+Apex Developer Guide Working with Data in Apex
+
 **`emailHeader`** Property
 
 The Salesforce user interface allows you to specify whether or not to send an email when the following events occur:
@@ -11770,9 +11787,6 @@ The Salesforce user interface allows you to specify whether or not to send an em
 **•** Conversion of a case email to a contact
 
 **•** New user email notification
-
-
-Apex Developer Guide Working with Data in Apex
 
 **•** Lead queue email notification
 
@@ -11830,13 +11844,13 @@ group event email sent through Apex:
 
 **•** Sending a group event invitation to a user respects the `triggerUserEmail` option
 
+
+Apex Developer Guide Working with Data in Apex
+
 **•** Sending a group event invitation to a lead or contact respects the `triggerOtherEmail` option
 
 **•** Email sent when updating or deleting a group event also respects the `triggerUserEmail` and `triggerOtherEmail`
 options, as appropriate
-
-
-Apex Developer Guide Working with Data in Apex
 
 **`localeOptions`** Property
 
@@ -11889,11 +11903,12 @@ count toward the DML statement limit. This behavior applies to all API versions.
 
 **•** The ID on an sObject inserted after setting a savepoint isn’t cleared after a rollback. Attempting to insert the sObject using the variable
 created before the rollback fails because the sObject variable has an ID. Updating or upserting the sObject using the same variable
-also fails because the sObject isn’t in the database and, thus, can’t be updated. To perform further DML operations, create an sObject
-variable without setting its ID.
 
 
 Apex Developer Guide Working with Data in Apex
+
+also fails because the sObject isn’t in the database and, thus, can’t be updated. To perform further DML operations, create an sObject
+variable without setting its ID.
 
 The following is an example using the `setSavepoint` and `rollback` Database methods.
 
@@ -11987,18 +12002,18 @@ transaction before the callout is made or the transaction must be committed.
 
    insert new Account(name='Foo');
 
-   Database.releaseSavepoint(sp);
-
-   try {
-
-     makeACallout();
-
 ```
 
 
 Apex Developer Guide Working with Data in Apex
 
 ```
+   Database.releaseSavepoint(sp);
+
+   try {
+
+     makeACallout();
+
    } catch (System.CalloutException ex) {
 
      Assert.isTrue(ex.getMessage().contains('You have uncommitted work pending. Please commit
@@ -12063,10 +12078,10 @@ You can only insert and update a group in a transaction with other sObjects. Oth
 Note: With legacy Apex code saved using Salesforce API version 14.0 and earlier, you can insert and update a group member
 with other sObjects in the same transaction.
 
-**•** ObjectPermissions
-
 
 Apex Developer Guide Working with Data in Apex
+
+**•** ObjectPermissions
 
 **•** ObjectTerritory2AssignmentRule
 
@@ -12463,7 +12478,7 @@ fails with the error message, “Too many batch retries in the presence of Apex 
 Note:
 
 **–** During the second and third attempts, governor limits are reset to their original state before the first attempt. See Execution
-Governors and Limits on page 346.
+Governors and Limits on page 347.
 
 **–** Apex triggers are fired for the first save attempt, and if errors are encountered for some records and subsequent attempts
 are made to save the subset of successful records, triggers are refired on this subset of records.
@@ -12522,7 +12537,7 @@ You can pass a maximum of 10,000 sObject records to a single `insert`, `update`,
 
 Each `upsert` statement consists of two operations, one for inserting records and one for updating records. Each of these operations
 is subject to the runtime limits for `insert` and `update`, respectively. For example, if you upsert more than 10,000 records and
-all of them are being updated, you receive an error. (See Execution Governors and Limits on page 346)
+all of them are being updated, you receive an error. (See Execution Governors and Limits on page 347)
 
 **Upsert and Foreign Keys**
 [You can use foreign keys to upsert sObject records if they have been set as reference fields. For more information, see Field Types](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/field_types.htm)
@@ -13044,7 +13059,7 @@ account, the insert fails.
 
 Tip: The following code is equivalent to the code above. However, because it uses a SOQL query, it is not as efficient. If this code
 was called multiple times, it could reach the execution limit for the maximum number of SOQL queries. For more information on
-execution limits, see Execution Governors and Limits on page 346.
+execution limits, see Execution Governors and Limits on page 347.
 
 ```
       Account refAcct = [SELECT Id FROM Account WHERE externalId__c='12345'];
@@ -15949,7 +15964,7 @@ type. At run time, the system validates that the type of the query matches the d
 the correct sObject type, a run-time error is thrown. Therefore, you don’t have to cast from a generic sObject to a concrete sObject.
 
 Dynamic SOQL queries have the same governor limits as static queries. For more information on governor limits, see Execution Governors
-and Limits on page 346.
+and Limits on page 347.
 
 [For a full description of SOQL query syntax, see Salesforce Object Query Language (SOQL) in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) _SOQL and SOSL Reference._
 
@@ -16092,7 +16107,7 @@ The search `query` method can be used wherever an inline SOSL query can be used,
 `for` loops. The results are processed in much the same way as static SOSL queries are processed.
 
 Dynamic SOSL queries have the same governor limits as static queries. For more information on governor limits, see Execution Governors
-and Limits on page 346.
+and Limits on page 347.
 
 [For a full description of SOSL query syntax, see Salesforce Object Search Language (SOSL) in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_sosl.htm) _SOQL and SOSL Reference_ .
 
@@ -17936,7 +17951,7 @@ Salesforce-provided interface `Database.Batchable` .
 
 The `Database.Batchable` interface is used for all batch Apex processes, including recalculating Apex managed sharing. You can
 implement this interface more than once in your organization. For more information on the methods that must be implemented, see
-Use Batch Apex on page 304.
+Use Batch Apex on page 305.
 
 
 Apex Developer Guide Working with Data in Apex
@@ -20571,7 +20586,7 @@ Triggers can also modify other records of the same type as the records that init
 an update of contact _`A`_, the trigger can also modify contacts _`B`_, _`C`_, and _`D`_ . Because triggers can cause other records to change, and
 because these changes can, in turn, fire more triggers, the Apex runtime engine considers all such operations a single unit of work and
 sets limits on the number of operations that can be performed to prevent infinite recursion. See Execution Governors and Limits on page
-346.
+347.
 
 Additionally, if you update or delete a record in its before trigger, or delete a record in its after trigger, you will receive a runtime error.
 This includes both direct and indirect operations. For example, if you update account _`A`_, and the before update trigger of account _`A`_
@@ -21455,13 +21470,15 @@ _Salesforce Help_ [: Triggers for Autolaunched Flows](https://help.salesforce.co
 
 Some operations don’t invoke triggers.
 
-Triggers are invoked for data manipulation language (DML) operations that the Java application server initiates or processes. Therefore,
+Triggers are invoked for Data Manipulation Language (DML) operations that the Java application server initiates or processes. Therefore,
 some system bulk operations don't invoke triggers. Some examples include:
 
 
 Apex Developer Guide Invoking Apex
 
-**•** Cascading delete operations. Records that did not initiate a `delete` don't cause trigger evaluation.
+Note: Inserts, updates, and deletes on person accounts fire Account triggers, not Contact triggers.
+
+**•** Cascading delete operations. Only records that initiate a `delete` cause trigger evaluation.
 
 **•** Cascading updates of child records that are reparented as a result of a merge operation
 
@@ -21483,7 +21500,7 @@ Apex Developer Guide Invoking Apex
 
 **•** Changing a user's default division with the transfer division option checked
 
-**•** Changes to the following objects:
+**•** Changes to these objects:
 
 **–** BrandTemplate
 
@@ -21491,21 +21508,23 @@ Apex Developer Guide Invoking Apex
 
 **–** Folder
 
-**•** Update account triggers don't fire before or after a business account record type is changed to person account (or a person account
-record type is changed to business account.)
+**•** Update account triggers don't fire before or after a business account record type changes to person account. They also don’t fire
+before or after a person account record type changes to business account.
 
 **•** Update triggers don’t fire on `FeedItem` when the `LikeCount` counter increases.
 
-Note: Inserts, updates, and deletes on person accounts fire Account triggers, not Contact triggers.
-
-The `before` triggers associated with the following operations are fired during lead conversion only if validation and triggers for lead
-conversion are enabled in the organization:
+The `before` triggers associated with these operations fire during lead conversion only if validation and triggers for lead conversion
+are enabled in the organization:
 
 **•** `insert` of accounts, contacts, and opportunities
 
 **•** `update` of accounts and contacts
 
-Opportunity triggers are not fired when the account owner changes as a result of the associated opportunity's owner changing.
+Opportunity triggers don’t fire when:
+
+**•** The account owner changes as a result of the associated opportunity’s owner changing.
+
+**•** The opportunity owner changes as a result of the associated account’s owner changing.
 
 The `before` and `after` triggers and the validation rules don't fire for an opportunity when:
 
@@ -21530,12 +21549,12 @@ records originates from the API.
 
 Triggers on the Attachment object don’t fire when:
 
-**•** the attachment is created via Case Feed publisher.
-
-**•** the user sends email via the Email related list and adds an attachment file.
-
 
 Apex Developer Guide Invoking Apex
+
+**•** The attachment is created via Case Feed publisher.
+
+**•** The user sends email via the Email related list and adds an attachment file.
 
 Triggers fire when the Attachment object is created via Email-to-Case or via the UI.
 
@@ -21601,12 +21620,12 @@ The following fields can’t be updated by `after insert` or `after update` trig
 
 **•** `Task.WhoId`
 
+
+Apex Developer Guide Invoking Apex
+
 Considerations for Event DateTime Fields in Insert and Update Triggers
 
 We recommend using the following date and time fields to create or update events.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** When creating or updating a timed Event, use `ActivityDateTime` to avoid issues with inconsistent date and time values.
 
@@ -21659,15 +21678,15 @@ Trigger Considerations for FeedItem, FeedAttachment, and FeedComment
 inserted, and therefore invoke the `before` or `after insert` trigger. User status updates don't cause the FeedItem triggers
 to fire.
 
+
+Apex Developer Guide Invoking Apex
+
 **•** While FeedPost objects were supported for API versions 18.0, 19.0, and 20.0, don't use any insert or delete triggers saved against
 versions before 21.0.
 
 **•** For FeedItem, the following fields aren’t available in the `before insert` trigger:
 
 **–** `ContentSize`
-
-
-Apex Developer Guide Invoking Apex
 
 **–** `ContentType`
 
@@ -21725,14 +21744,14 @@ is updated. As a result of this sequence of operations, in Salesforce Classic Fe
 **•** For FeedComment _before insert_ and _after insert_ triggers, the fields of a ContentVersion associated with the FeedComment (obtained
 through `FeedComment.RelatedRecordId` ) aren’t available.
 
+
+Apex Developer Guide Invoking Apex
+
 Other Chatter Trigger Considerations
 
 **•** Apex code uses extra security when executing in a Chatter context. To post to a private group, the user running the code must be
 a member of that group. If the running user isn't a member, you can set the `CreatedById` field to be a member of the group in
 the FeedItem record.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** When CollaborationGroupMember is updated, CollaborationGroup is automatically updated as well to ensure that the member
 count is correct. As a result, when CollaborationGroupMember `update` or `delete` triggers run, CollaborationGroup `update`
@@ -21792,14 +21811,14 @@ first time, the `before insert` and `after insert` triggers work instead.
 **•** In Salesforce Classic, the `before insert` and `after insert` triggers are called when editing an archived article from
 the Article Management tab. This creates a draft KAV record.
 
+
+Apex Developer Guide Invoking Apex
+
 **Cancel, Delete**
 
 The `before delete` and `after delete` triggers are called in these cases:
 
 **•** When deleting a translation draft.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** From the Article Management or Knowledge tab in Salesforce Classic, after editing a published article and then clicking Cancel.
 This deletes the new draft.
@@ -21858,14 +21877,14 @@ Note: Users experience less of a delay in response time if errors are added to `
 
 A subset of the records being processed can be marked with the `addError()` method:
 
+
+Apex Developer Guide Invoking Apex
+
 **•** If the trigger was spawned by a DML statement in Apex, any one error results in the entire operation rolling back. However, the
 runtime engine still processes every record in the operation to compile a comprehensive list of errors.
 
 **•** If the trigger was spawned by a bulk DML call in the Lightning Platform API, the runtime engine sets aside the bad records and
 attempts to do a partial save of the records that did not generate errors. See Bulk DML Exception Handling on page 164.
-
-
-Apex Developer Guide Invoking Apex
 
 If a trigger ever throws an unhandled exception, all records are marked with an error and no further processing takes place.
 
@@ -21938,19 +21957,18 @@ SEE ALSO:
 
 Developing Code in the Cloud
 
+
+Apex Developer Guide Invoking Apex
+
 #### Asynchronous Apex
 
 Apex offers multiple ways for running your Apex code asynchronously. Choose the asynchronous Apex feature that best suits your needs.
 
-
-Apex Developer Guide Invoking Apex
-
 This table lists the asynchronous Apex features and when to use each.
 
-##### Queueable Apex Take control of your asynchronous Apex processes by using the Queueable interface. This interface enables you to add jobs to
+##### Queueable Apex Take control of your asynchronous Apex processes by using the Queueable interface. Salesforce recommends that you use Queueable Apex instead of Apex future methods. Queueables have the same use cases as future methods but offer extra benefits,
 
-the queue and monitor them. Using the interface is an enhanced way of running your asynchronous Apex code compared to using
-future methods.
+including job IDs, support for non-primitive types, and job chaining.
 
 Apex Scheduler
 Use the Apex Scheduler to delay execution so that you can run Apex classes at a specified time. This is ideal for daily or weekly
@@ -21959,24 +21977,27 @@ maintenance tasks using Batch Apex.
 Batch Apex
 
 Future Methods
+A future method runs asynchronously. You can call a future method to run long-running operations, such as callouts to external
+web services or any operation that you want to run in its own thread. You can also use future methods to isolate Data Manipulation
+Language (DML) operations on different sObject types to prevent the mixed DML error. Each future method is queued and runs
+when system resources become available. That way, the execution of your code doesn’t wait for the completion of a long-running
+operation. A benefit of future methods is that some governor limits are higher, such as SOQL query limits and heap size limits.
 
-##### Queueable Apex Take control of your asynchronous Apex processes by using the Queueable interface. This interface enables you to add jobs to the
+##### Queueable Apex Take control of your asynchronous Apex processes by using the Queueable interface. Salesforce recommends that you use Queueable
 
-queue and monitor them. Using the interface is an enhanced way of running your asynchronous Apex code compared to using future
-methods.
-
-Apex processes that run for a long time, such as extensive database operations or external web service callouts, can be run asynchronously
-##### by implementing the Queueable interface and adding a job to the Apex job queue. In this way, your asynchronous Apex job runs
-
-in the background in its own thread and doesn’t delay the execution of your main Apex logic. Each queued job runs when system
-##### resources become available. A benefit of using the Queueable interface methods is that some governor limits are higher than for
-
-synchronous Apex, such as heap size limits.
-
-Important: If an Apex transaction rolls back, any queueable jobs queued for execution by the transaction aren’t processed.
+Apex instead of Apex future methods. Queueables have the same use cases as future methods but offer extra benefits, including job
+IDs, support for non-primitive types, and job chaining.
 
 
 Apex Developer Guide Invoking Apex
+
+Apex processes that run for a long time, such as extensive database operations or external web service callouts, can be run asynchronously
+by implementing the `Queueable` interface and adding a job to the Apex job queue. In this way, your asynchronous Apex job runs
+in the background in its own thread and doesn’t delay the execution of your main Apex logic. Each queued job runs when system
+resources become available. A benefit of using the `Queueable` interface methods is that some governor limits are higher than for
+synchronous Apex, such as heap size limits.
+
+Important: If an Apex transaction rolls back, any queueable jobs queued for execution by the transaction aren’t processed.
 
 Queueable jobs are similar to future methods in that they’re both queued for execution, but they provide you with these additional
 benefits.
@@ -22003,13 +22024,13 @@ This example implements the `Queueable` interface. The `execute` method in this 
 `System.enqueueJob(queueable)` method is used to add the job to the queue.
 
 ```
-   public class AsyncExecutionExample implements Queueable {
+   public with sharing class AsyncExecutionExample implements Queueable {
 
       public void execute(QueueableContext context) {
 
         Account a = new Account(Name='Acme',Phone='(415) 555-1212');
 
-        insert a;
+        insert as user a;
 
       }
 
@@ -22035,12 +22056,17 @@ To query information about your submitted job, perform a SOQL query on AsyncApex
 `System.enqueueJob` method returns. This example uses the jobID variable that was obtained in the previous example.
 
 ```
-   AsyncApexJob jobInfo = [SELECT Status,NumberOfErrors FROM AsyncApexJob WHERE Id=:jobID];
+   AsyncApexJob jobInfo = [SELECT Status,NumberOfErrors FROM AsyncApexJob WHERE Id = :jobID
+
+   WITH USER_MODE];
 
 ```
 
 Similar to future jobs, queueable jobs don’t process batches, and so the number of processed batches and the number of total batches
 are always zero.
+
+
+Apex Developer Guide Invoking Apex
 
 Adding a Queueable Job with a Specified Minimum Delay
 
@@ -22048,9 +22074,6 @@ Use the `System.enqueueJob(queueable, delay)` method to add queueable jobs to th
 with a specified minimum delay (0–10 minutes). The delay is ignored during Apex testing.
 
 See `[System.enqueueJob(queueable, delay)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_enqueueJob_2)` in the _Apex Reference Guide_ .
-
-
-Apex Developer Guide Invoking Apex
 
 Warning: When you set the delay to 0 (zero), the queueable job is run as quickly as possible. With chained queueable jobs,
 implement a mechanism to slow down or halt the job if necessary. Without such a fail-safe mechanism in place, you can rapidly
@@ -22112,8 +22135,14 @@ Apex method executions.
 ```
    // Fibonacci
 
-   public class FibonacciDepthQueueable implements Queueable {
+   public with sharing class FibonacciDepthQueueable implements Queueable {
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
       private long nMinus1, nMinus2;
 
       public static void calculateFibonacciTo(integer depth) {
@@ -22124,12 +22153,6 @@ Apex method executions.
 
         System.enqueueJob(new FibonacciDepthQueueable(null, null), asyncOptions);
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
       }
 
       private FibonacciDepthQueueable(long nMinus1param, long nMinus2param) {
@@ -22182,7 +22205,7 @@ Apex Developer Guide Invoking Apex
 
              );
 
-           insert result;
+           insert as user result;
 
         } else {
 
@@ -22199,28 +22222,26 @@ Apex Developer Guide Invoking Apex
 Testing Queueable Jobs
 
 This example shows how to test the execution of a queueable job in a test method. A queueable job is an asynchronous process. To
-ensure that this process runs within the test method, the job is submitted to the queue between the `Test.startTest` and
+make sure that this process runs within the test method, the job is submitted to the queue between the `Test.startTest` and
 `Test.stopTest` block. The system executes all asynchronous processes started in a test method synchronously after the
+
+
+Apex Developer Guide Invoking Apex
+
 `Test.stopTest` statement. Next, the test method verifies the results of the queueable job by querying the account that the job
 created.
 
 ```
-   @isTest
+   @IsTest
 
-   public class AsyncExecutionExampleTest {
+   public with sharing class AsyncExecutionExampleTest {
 
-      @isTest
+      @IsTest
 
       static void test1() {
 
         // startTest/stopTest block to force async processes
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         // to run in the test.
 
         Test.startTest();
@@ -22237,11 +22258,13 @@ Apex Developer Guide Invoking Apex
 
         // Queueable class method.
 
-        Account acct = [SELECT Name,Phone FROM Account WHERE Name='Acme' LIMIT 1];
+        Account acct = [SELECT Name,Phone FROM Account WHERE Name='Acme' LIMIT 1 WITH
 
-        System.assertNotEquals(null, acct);
+   USER_MODE];
 
-        System.assertEquals('(415) 555-1212', acct.Phone);
+        Assert.isNotNull(acct);
+
+        Assert.areEqual('(415) 555-1212', acct.Phone);
 
       }
 
@@ -22257,7 +22280,7 @@ that only one child job can exist for each parent job. For example, if you have 
 `Queueable` interface, you can add this class to the queue in the `execute()` method as follows:
 
 ```
-   public class AsyncExecutionExample implements Queueable {
+   public with sharing class AsyncExecutionExample implements Queueable {
 
       public void execute(QueueableContext context) {
 
@@ -22276,8 +22299,8 @@ that only one child job can exist for each parent job. For example, if you have 
 Note: Apex allows HTTP and web service callouts from queueable jobs, if they implement the `Database.AllowsCallouts`
 marker interface. In queueable jobs that implement this interface, callouts are also allowed in chained queueable jobs.
 
-You can test chained queueable jobs using appropriate stack depths, but be aware of applicable Apex governor limits. See Adding a
-Queueable Job with a Specified Stack Depth.
+You can test chained queueable jobs by using appropriate stack depths, but be aware of applicable Apex governor limits. See Adding
+a Queueable Job with a Specified Stack Depth.
 
 Queueable Apex Limits
 
@@ -22288,6 +22311,9 @@ Platform Apex Limits.
 example, from a batch Apex job), you can add only one job to the queue with `System.enqueueJob` . To check how many
 queueable jobs have been added in one transaction, call `[Limits.getQueueableJobs()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_limits.htm)` .
 
+
+Apex Developer Guide Invoking Apex
+
 **•** Because no limit is enforced on the depth of chained jobs, you can chain one job to another. You can repeat this process with each
 new child job to link it to a new child job. For Developer Edition and Trial organizations, the maximum stack depth for chained jobs
 is 5, which means that you can chain jobs four times. The maximum number of jobs in the chain is 5, including the initial parent
@@ -22295,9 +22321,6 @@ queueable job.
 
 **•** When chaining jobs with `System.enqueueJob`, you can add only one job from an executing job. Only one child job can exist
 for each parent queueable job. Starting multiple child jobs from the same queueable job isn’t supported.
-
-
-Apex Developer Guide Invoking Apex
 
 ###### Detecting Duplicate Queueable Jobs
 
@@ -22351,15 +22374,15 @@ methods from the `QueueableDuplicateSignature.Builder` class.
 When the signature has the required components, call the `.build()` method and assign the signature to the
 `DuplicateSignature` property.
 
+
+Apex Developer Guide Invoking Apex
+
 Enqueue a Job with a Queueable Signature
 
 After you build a queuable signature, enqueue a new job using the `[System.enqueueJob(queueable, asyncOptions)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_system_enqueueJob)`
 method. Set the `asyncOptions` parameter to the `AsyncOptions` instance with the queueable signature that identifies the
 unique job. When the new job is enqueued, the system checks for existing enqueued jobs with the same signature. If other enqueued
 jobs with the same signature are found, then the enqueue operation for the new job fails, and a DuplicateMessageException is thrown.
-
-
-Apex Developer Guide Invoking Apex
 
 However, if other jobs with the same signature are already running when the new job is enqueued, then the enqueue operation for the
 new job succeeds. Therefore, duplicates of already running jobs can still occur in this case. This behavior occurs because the queuable
@@ -22433,6 +22456,9 @@ Before Transaction Finalizers, you could only take these two actions for asynchr
 With transaction finalizers, you can attach a post-action sequence to a Queueable job and take relevant actions based on the job execution
 result.
 
+
+Apex Developer Guide Invoking Apex
+
 A Queueable job that failed due to an unhandled exception can be successively re-enqueued five times by a transaction finalizer. This
 limit applies to a series of consecutive Queueable job failures. The counter is reset when the Queueable job completes without an
 unhandled exception.
@@ -22442,9 +22468,6 @@ Finalizers can be implemented as an inner class. Also, you can implement both Qu
 The Queueable job and the Finalizer run in separate Apex and Database transactions. For example, the Queueable can include DML, and
 the Finalizer can include REST callouts. Using a finalizer doesn’t count as an extra execution against your daily Async Apex limit. Synchronous
 governor limits apply for the Finalizer transaction, except in these cases where asynchronous limits apply:
-
-
-Apex Developer Guide Invoking Apex
 
 **•** Total heap size
 
@@ -22514,6 +22537,9 @@ Attach the finalizer to your Queueable jobs using the `System.attachFinalizer` m
 
 **1.** Define a class that implements the `System.Finalizer` interface.
 
+
+Apex Developer Guide Invoking Apex
+
 **2.** Attach a finalizer within a Queueable job’s `execute` method. To attach the finalizer, invoke the `System.attachFinalizer`
 method, using as argument the instantiated class that implements the System.Finalizer interface.
 
@@ -22525,9 +22551,6 @@ method, using as argument the instantiated class that implements the System.Fina
 Implementation Details
 
 **•** Only one finalizer instance can be attached to any Queueable job.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** You can enqueue a single asynchronous Apex job (Queueable, Future, or Batch) in the finalizer’s implementation of the `execute`
 method.
@@ -22592,6 +22615,12 @@ Queueable job fails, and can be accessed for use in DML in finalizer implementat
 
         } catch (Exception e) {
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
            System.debug('Error executing the job [' + jobId + ']: ' + e.getMessage());
 
         } finally {
@@ -22610,12 +22639,6 @@ Queueable job fails, and can be accessed for use in DML in finalizer implementat
 
     // When the Queueable job completes, regardless of success or failure, the LoggingFinalizer
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
     instance commits this buffered log.
 
      // Custom object LogMessage__c has four custom fields-see addLog() method.
@@ -22690,6 +22713,9 @@ Apex Developer Guide Invoking Apex
 
 ```
 
+
+Apex Developer Guide Invoking Apex
+
 Retry Queueable Example
 
 This example demonstrates how to re-enqueue a failed Queueable job in its finalizer. It also shows that jobs can be re-enqueued up to
@@ -22702,12 +22728,6 @@ a queueable chaining limit of 5 retries.
 
      public void execute(QueueableContext ctx) {
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
       String jobId = '' + ctx.getJobId();
 
       System.debug('Begin: executing queueable job: ' + jobId);
@@ -22789,14 +22809,14 @@ Considerations
 If a job request is terminated unexpectedly, such as a database shutdown during system upgrade, the transaction finalizer can fail to
 execute.
 
+
+Apex Developer Guide Invoking Apex
+
 Best Practices
 
 We urge ISVs to exercise caution in using global Finalizers with state-mutating methods in packages. If a subscriber org’s implementation
 invokes such methods in the global Finalizer, it can result in unexpected behavior. Examine all state-mutating methods to see how they
 affect the finalizer state and overall behavior.
-
-
-Apex Developer Guide Invoking Apex
 
 ###### Transaction Finalizers Error Messages
 
@@ -22816,11 +22836,11 @@ error messages in the Splunk log.
 Use the Apex Scheduler to delay execution so that you can run Apex classes at a specified time. This is ideal for daily or weekly maintenance
 tasks using Batch Apex.
 
-To invoke Apex classes to run at specific times, first implement the `Schedulable` interface for the class, then specify the schedule
-using either the Schedule Apex page in the Salesforce user interface, or the `System.schedule` method.
-
 
 Apex Developer Guide Invoking Apex
+
+To invoke Apex classes to run at specific times, first implement the `Schedulable` interface for the class, then specify the schedule
+using either the Schedule Apex page in the Salesforce user interface, or the `System.schedule` method.
 
 Important: Salesforce schedules the class for execution at the specified time. Actual execution can be delayed based on service
 availability.
@@ -22896,16 +22916,16 @@ You can also use the `Schedulable` interface with batch Apex classes. The follow
 
      global void execute(SchedulableContext sc) {
 
-       Batchable b = new Batchable();
-
-       Database.executeBatch(b);
-
 ```
 
 
 Apex Developer Guide Invoking Apex
 
 ```
+       Batchable b = new Batchable();
+
+       Database.executeBatch(b);
+
      }
 
    }
@@ -22984,12 +23004,12 @@ is specified for the job type, which corresponds to the scheduled Apex job type.
 
 ```
 
+
+Apex Developer Guide Invoking Apex
+
 Testing the Apex Scheduler
 
 Here’s an example of how to test using the Apex scheduler.
-
-
-Apex Developer Guide Invoking Apex
 
 The `System.schedule` method starts an asynchronous process. When you test scheduled Apex, you must ensure that the scheduled
 job is finished before testing against the results. Use the Test methods `startTest` and `stopTest` around the `System.schedule`
@@ -23066,16 +23086,16 @@ This code tests the class:
 
          FROM CronTrigger WHERE id = :jobId];
 
-       // Verify the expressions are the same
-
-       System.assertEquals(TestScheduledApexFromTestMethod.CRON_EXP,
-
 ```
 
 
 Apex Developer Guide Invoking Apex
 
 ```
+       // Verify the expressions are the same
+
+       System.assertEquals(TestScheduledApexFromTestMethod.CRON_EXP,
+
          ct.CronExpression);
 
        // Verify the job has not run
@@ -23142,12 +23162,12 @@ _`Minutes`_ 0–59 None
 
 _`Hours`_ 0–23 `, - * /`
 
-_`Day_of_month`_ 1–31 `, - * ? / L W`
-
 
 Apex Developer Guide Invoking Apex
 
 **Name** **Values** **Special Characters**
+
+_`Day_of_month`_ 1–31 `, - * ? / L W`
 
 _`Month`_ 1–12 or the following: `, - * /`
 
@@ -23210,13 +23230,13 @@ _`Day_of_week`_ . It’s typically used when specifying a value for one and not 
 `/` Specifies increments. The number before the slash specifies when the intervals will
 begin, and the number after the slash is the interval amount. For example, if you specify
 
-`1/5` for _`Day_of_month`_, the Apex class runs every fifth day of the month, starting
-on the first of the month.
-
 
 Apex Developer Guide Invoking Apex
 
 **Special Character** **Description**
+
+`1/5` for _`Day_of_month`_, the Apex class runs every fifth day of the month, starting
+on the first of the month.
 
 `L` Specifies the end of a range (last). This option is only available for _`Day_of_month`_
 and _`Day_of_week`_ . When used with _`Day of month`_, `L` always means the last
@@ -23271,14 +23291,13 @@ on the 13 February.
 
 ```
 
+
+Apex Developer Guide Invoking Apex
+
 Using the **`System.scheduleBatch`** Method for Batch Jobs
 
 You can call the `System.scheduleBatch` method to schedule a batch job to run one time at a specified time in the future. This
 method is available only for batch classes and doesn’t require the implementation of the `Schedulable` interface. It’s therefore easy
-
-
-Apex Developer Guide Invoking Apex
-
 to schedule a batch job for one execution. For more details on how to use the `System.scheduleBatch` method, see Using the
 `System.scheduleBatch` Method.
 
@@ -23331,12 +23350,13 @@ use the `transient` keyword so that member variables and properties aren’t per
 **•** If you attempt to deploy changes to a class or its dependent code when the class is scheduled for execution, you see the error `This`
 `schedulable class has jobs pending or in progress - CronTrigger IDs (` _`ids`_ `)` . You can also
 see the message `You can bypass this error by allowing deployments with Apex jobs in the`
-`Deployment Settings page in Setup.` If you enable this setting, be aware that the job can fail. Instead, we recommend
-that you first delete the scheduled job, and then deploy your changes. After deployment, create a new scheduled job with the
-updated class.
 
 
 Apex Developer Guide Invoking Apex
+
+`Deployment Settings page in Setup.` If you enable this setting, be aware that the job can fail. Instead, we recommend
+that you first delete the scheduled job, and then deploy your changes. After deployment, create a new scheduled job with the
+updated class.
 
 **•** If you resume a paused scheduled job, the job immediately runs one time. Subsequent executions of the job run according to the
 established schedule. Any scheduled executions that were missed while the job was paused don’t run.
@@ -23370,14 +23390,13 @@ online help.
 
 The batch Apex interface is also used for Apex managed sharing recalculations.
 
-For more information on batch jobs, continue to Using Batch Apex on page 304.
+For more information on batch jobs, continue to Using Batch Apex on page 305.
 
 For more information on Apex managed sharing, see Understanding Apex Managed Sharing on page 222.
 
 For more information on firing platform events from batch Apex, see Firing Platform Events from Batch Apex
 
-###### Use Batch Apex
-
+Use Batch Apex
 To use batch Apex, write an Apex class that implements the Salesforce-provided interface `Database.Batchable` and then
 invoke the class programmatically. To monitor or stop the execution of the batch Apex job, from Setup, enter _`Apex Jobs`_ in the
 Quick Find box and then select **Apex Jobs** .
@@ -23389,14 +23408,14 @@ actionable information, such as how often the event failed and which records wer
 fired for Salesforce Platform internal errors and other uncatchable Apex exceptions such as LimitExceptions, which are caused by
 reaching governor limits.
 
+
+Apex Developer Guide Invoking Apex
+
 ###### Use Batch Apex
 
 To use batch Apex, write an Apex class that implements the Salesforce-provided interface `Database.Batchable` and then invoke
 the class programmatically. To monitor or stop the execution of the batch Apex job, from Setup, enter _`Apex Jobs`_ in the Quick Find
 box and then select **Apex Jobs** .
-
-
-Apex Developer Guide Invoking Apex
 
 Implement the **`Database.Batchable`** Interface
 
@@ -23459,15 +23478,15 @@ is executed without the optional _`scope`_ parameter from `Database.executeBatch
 each. The Apex governor limits are reset for each transaction. If the first transaction succeeds but the second fails, the database updates
 made in the first transaction aren’t rolled back.
 
+
+Apex Developer Guide Invoking Apex
+
 Use Database.BatchableContext
 
 All the methods in the `Database.Batchable` interface require a reference to a `Database.BatchableContext` object.
 Use this object to track the progress of the batch job.
 
 The following is the instance method with the `Database.BatchableContext` object:
-
-
-Apex Developer Guide Invoking Apex
 
 **Name** **Arguments** **Returns** **Description**
 
@@ -23542,6 +23561,12 @@ The following example uses a `Database.QueryLocator` :
 
      }
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
      public Database.QueryLocator start(Database.BatchableContext bc){
 
        return Database.getQueryLocator(query);
@@ -23552,12 +23577,6 @@ The following example uses a `Database.QueryLocator` :
 
       for(sobject s : scope){
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
       s.put(Field,Value);
 
       }
@@ -23633,18 +23652,15 @@ value of 2,000. If set to a higher value, Salesforce chunks the records returned
 records. If the `start` method of the batch class returns an iterable, the scope parameter value has no upper limit. However, if you
 use a high number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100, 200, 400 and so on.
 
+
+Apex Developer Guide Invoking Apex
+
 The `Database.executeBatch` method returns the ID of the AsyncApexJob object, which you can use to track the progress of
 the job. For example:
 
 ```
    ID batchprocessid = Database.executeBatch(reassign);
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
    AsyncApexJob aaj = [SELECT Id, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors
 
                FROM AsyncApexJob WHERE ID =: batchprocessid ];
@@ -23706,15 +23722,15 @@ The following table lists all possible statuses for a batch job along with a des
 Holding Job has been submitted and is held in the Apex flex queue until
 system resources become available to queue the job for processing.
 
-Queued Job is awaiting execution.
-
-Preparing The `start` method of the job has been invoked. This status can
-last a few minutes depending on the size of the batch of records.
-
 
 Apex Developer Guide Invoking Apex
 
 **Status** **Description**
+
+Queued Job is awaiting execution.
+
+Preparing The `start` method of the job has been invoked. This status can
+last a few minutes depending on the size of the batch of records.
 
 Processing Job is being processed.
 
@@ -23772,6 +23788,9 @@ corresponding scheduled job.
 
 [For more information, see CronTrigger in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_crontrigger.htm) _Object Reference for Salesforce._
 
+
+Apex Developer Guide Invoking Apex
+
 Note: Some things to note about `System.scheduleBatch` :
 
 **•** When you call `System.scheduleBatch`, Salesforce schedules the job for execution at the specified time. Actual execution
@@ -23781,9 +23800,6 @@ occurs at or after that time, depending on service availability.
 
 **•** When the job’s schedule is triggered, the system queues the batch job for processing. If Apex flex queue is enabled in your
 org, the batch job is added at the end of the flex queue. For more information, see Holding Batch Jobs in the Apex Flex Queue.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** All scheduled Apex limits apply for batch jobs scheduled using `System.scheduleBatch` . After the batch job is queued
 (with a status of `Holding` or `Queued` ), all batch job limits apply and the job no longer counts toward scheduled Apex
@@ -23854,6 +23870,9 @@ You can use this code to call the previous class.
 
 ```
 
+
+Apex Developer Guide Invoking Apex
+
 To exclude accounts or invoices that were deleted but are still in the Recycle Bin, include `isDeleted=false` in the SOQL query
 WHERE clause, as shown in these modified samples.
 
@@ -23866,12 +23885,6 @@ WHERE clause, as shown in these modified samples.
 
    String f = 'Industry';
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
    String v = 'Consulting';
 
    Id batchInstanceId = Database.executeBatch(new UpdateAccountFields(q,e,f,v), 5);
@@ -23951,6 +23964,9 @@ The following class uses batch Apex to reassign all accounts owned by a specific
 
 ```
 
+
+Apex Developer Guide Invoking Apex
+
 Use this code to execute the `OwnerReassignment` class in the previous example.
 
 ```
@@ -23962,12 +23978,6 @@ Use this code to execute the `OwnerReassignment` class in the previous example.
 
    reassign.email='admin@acme.com';
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
    reassign.fromUserId = u;
 
    reassign.toUserId = u2;
@@ -24052,13 +24062,13 @@ To use a callout in batch Apex, specify `Database.AllowsCallouts` in the class d
 
 Callouts include HTTP requests and methods defined with the `webservice` keyword.
 
+
+Apex Developer Guide Invoking Apex
+
 Using State in Batch Apex
 
 Each execution of a batch Apex job is considered a discrete transaction. For example, a batch Apex job that contains 1,000 records and
 is executed without the optional _`scope`_ parameter is considered five transactions of 200 records each.
-
-
-Apex Developer Guide Invoking Apex
 
 If you specify `Database.Stateful` in the class definition, you can maintain state across these transactions. When using
 `Database.Stateful`, only instance member variables retain their values between transactions. Static member variables don’t
@@ -24135,18 +24145,18 @@ instances of the `Database.Batchable` methods. For example:
 
      public Database.QueryLocator start(Database.BatchableContext bc) {
 
-      // Access initialState here
-
-      return Database.getQueryLocator(query);
-
-     }
-
 ```
 
 
 Apex Developer Guide Invoking Apex
 
 ```
+      // Access initialState here
+
+      return Database.getQueryLocator(query);
+
+     }
+
      public void execute(Database.BatchableContext bc,
 
                  List<sObject> batch) {
@@ -24212,6 +24222,12 @@ The following example tests the `OwnerReassignment` class.
 
    // test one execute.
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
      List <Account> accns = new List<Account>();
 
        for(integer i = 0; i<200; i++){
@@ -24222,12 +24238,6 @@ The following example tests the `OwnerReassignment` class.
 
          accns.add(a);
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
        }
 
      insert accns;
@@ -24294,16 +24304,15 @@ exception is thrown, and the remaining executions are left unchanged. The licens
 Salesforce and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only users, Identity users, and Company
 Communities users.
 
+
+Apex Developer Guide Invoking Apex
+
 **•** A maximum of 50 million records can be returned in the `Database.QueryLocator` object. If more than 50 million records
 are returned, the batch job is immediately terminated and marked as Failed.
 
 **•** If the `start` method of the batch class returns a QueryLocator, the optional scope parameter of `Database.executeBatch`
 can have a maximum value of 2,000. If set to a higher value, Salesforce chunks the records returned by the QueryLocator into smaller
 batches of up to 2,000 records. If the `start` method of the batch class returns an iterable, the scope parameter value has no upper
-
-
-Apex Developer Guide Invoking Apex
-
 limit. However, if you use a high number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100,
 200, 400 and so on.
 
@@ -24359,15 +24368,15 @@ managed package and the subscribing org is running the batch job, notifications 
 of errors, progress, and submitter, use the `AsyncApexJob` record’s ID. For more information about the `AsyncApexJob` object,
 [see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
 
+
+Apex Developer Guide Invoking Apex
+
 **•** For each 10,000 `AsyncApexJob` records, Apex creates an `AsyncApexJob` record of type `BatchApexWorker` for internal
 use. When querying for all `AsyncApexJob` records, we recommend that you filter out records of type `BatchApexWorker`
 using the `JobType` field. Otherwise, the query returns one more record for every 10,000 `AsyncApexJob` records. For more
 information about the `AsyncApexJob` [object, see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
 
 **•** All implemented `Database.Batchable` interface methods must be defined as `public` or `global` .
-
-
-Apex Developer Guide Invoking Apex
 
 **•** For a sharing recalculation, we recommend that the `execute` method delete and then re-create all Apex managed sharing for
 the records in the batch. This process ensures that sharing is accurate and complete.
@@ -24424,14 +24433,14 @@ because of the relationship subquery:
 A better strategy is to perform the subquery separately, from within the `execute` method, which allows the batch job to run
 using the faster, chunking implementation.
 
+
+Apex Developer Guide Invoking Apex
+
 **•** To implement record locking as part of the batch job, you can requery records inside the `execute` method, using FOR UPDATE.
 Requerying records in this manner ensures that conflicting updates aren’t overwritten by DML in the batch job. To requery records,
 simply select the `Id` field in the batch job's main query locator.
 
 **•** The Salesforce Platform's flow control mechanism and fair-usage algorithm can cause a delay in running batch jobs.
-
-
-Apex Developer Guide Invoking Apex
 
 Chaining Batch Jobs
 
@@ -24484,15 +24493,15 @@ Batch Apex classes can fire platform events when encountering an error or except
 information, such as how often the event failed and which records were in scope at the time of failure. Events are also fired for Salesforce
 Platform internal errors and other uncatchable Apex exceptions such as LimitExceptions, which are caused by reaching governor limits.
 
+
+Apex Developer Guide Invoking Apex
+
 An event message provides more granular error tracking than the Apex Jobs UI. It includes the record IDs being processed, exception
 type, exception message, and stack trace. You can also incorporate custom handling and retry logic for failures. You can invoke custom
 Apex logic from any trigger on this type of event, so Apex developers can build functionality like custom logging or automated retry
 handling.
 
 [For information on subscribing to platform events, see Subscribing to Platform Events.](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_subscribe.htm)
-
-
-Apex Developer Guide Invoking Apex
 
 The BatchApexErrorEvent object represents a platform event associated with a batch Apex class. This object is available in API version
 44.0 and later. If the `start`, `execute`, or `finish` method of a batch Apex job encounters an unhandled exception, a
@@ -24571,6 +24580,9 @@ Testing BatchApexErrorEvent Messages Published from Batch Apex Jobs
 Use the `Test.getEventBus().deliver()` method to deliver event messages that are published by failed batch Apex jobs.
 Use the `Test.startTest()` and `Test.stopTest()` statement block to execute the batch job.
 
+
+Apex Developer Guide Invoking Apex
+
 This snippet shows how to execute a batch Apex job and deliver event messages. It executes the batch job after `Test.stopTest()` .
 This batch job publishes a BatchApexErrorEvent message when a failure occurs through the implementation of
 `Database.RaisesPlatformEvents` . After `Test.stopTest()` runs, a separate `Test.getEventBus().deliver()`
@@ -24581,12 +24593,6 @@ statement is added so that it can deliver the BatchApexErrorEvent.
 
       Test.startTest();
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
       Database.executeBatch(new SampleBatchApex());
 
       Test.stopTest();
@@ -24617,20 +24623,23 @@ _Platform Events Developer Guide_ [: Event and Event Bus Properties in Test Cont
 
 ##### Future Methods
 
-A future method runs in the background, asynchronously. You can call a future method for executing long-running operations, such as
-callouts to external Web services or any operation you’d like to run in its own thread, on its own time. You can also use future methods
-to isolate DML operations on different sObject types to prevent the mixed DML error. Each future method is queued and executes when
-system resources become available. That way, the execution of your code doesn’t have to wait for the completion of a long-running
-operation. A benefit of using future methods is that some governor limits are higher, such as SOQL query limits and heap size limits.
+A future method runs asynchronously. You can call a future method to run long-running operations, such as callouts to external web
+services or any operation that you want to run in its own thread. You can also use future methods to isolate Data Manipulation Language
+(DML) operations on different sObject types to prevent the mixed DML error. Each future method is queued and runs when system
+resources become available. That way, the execution of your code doesn’t wait for the completion of a long-running operation. A benefit
+of future methods is that some governor limits are higher, such as SOQL query limits and heap size limits.
 
-To define a future method, simply annotate it with the `future` annotation, as follows.
+Important: Salesforce now recommends that you use Queueable Apex instead of Apex future methods. Queueables have the
+same use cases as future methods but offer more benefits, including job IDs, support for non-primitive types, and job chaining.
+
+See Queueable Apex.
+
+##### To define a future method, annotate it with the Future annotation.
 
 ```
-   global class FutureClass
+   public with sharing class FutureClass {
 
-   {
-
-      @future
+      @Future
 
       public static void myFutureMethod()
 
@@ -24642,23 +24651,24 @@ To define a future method, simply annotate it with the `future` annotation, as f
 
    }
 
+##### Methods with the Future annotation must be static methods, and can only return a void type. The specified parameters must be primitive data types, arrays of primitive data types, or collections of primitive data types. Methods with the Future annotation can’t
 ```
 
-Methods with the `future` annotation must be static methods, and can only return a void type. The specified parameters must be
-primitive data types, arrays of primitive data types, or collections of primitive data types. Methods with the `future` annotation can’t
 take sObjects or objects as arguments.
 
-The reason why sObjects can’t be passed as arguments to future methods is because the sObject can change between the time you call
-the method and the time it executes. In this case, the future method gets the old sObject values and can overwrite them. To work with
-sObjects that already exist in the database, pass the sObject ID instead (or collection of IDs) and use the ID to perform a query for the
-most up-to-date record. The following example shows how to do so with a list of IDs.
+The reason why sObjects can’t be passed as arguments to future methods is because the sObject can change between the time that
+you call the method and the time that it executes. In this case, the future method gets the old sObject values and can overwrite them.
+
+
+Apex Developer Guide Invoking Apex
+
+To work with sObjects that already exist in the database, pass the sObject ID or the collection of IDs instead. Then use the ID to perform
+a query for the most up-to-date record. This example shows how to do so with a list of IDs.
 
 ```
-   global class FutureMethodRecordProcessing
+   pubic with sharing class FutureMethodRecordProcessing {
 
-   {
-
-      @future
+      @Future
 
       public static void processRecords(List<ID> recordIds)
 
@@ -24666,14 +24676,10 @@ most up-to-date record. The following example shows how to do so with a list of 
 
          // Get those records based on the IDs
 
-         List<Account> accts = [SELECT Name FROM Account WHERE Id IN :recordIds];
+         List<Account> accts = [SELECT Name FROM Account WHERE Id IN :recordIds WITH
 
-```
+   USER_MODE];
 
-
-Apex Developer Guide Invoking Apex
-
-```
          // Process records
 
       }
@@ -24682,16 +24688,13 @@ Apex Developer Guide Invoking Apex
 
 ```
 
-The following is a skeletal example of a future method that makes a callout to an external service. Notice that the annotation takes an
-extra parameter ( `callout=true` ) to indicate that callouts are allowed. To learn more about callouts, see Invoking Callouts Using
-Apex.
+Here’s a skeletal example of a future method that makes a callout to an external service. Notice that the annotation takes an extra
+parameter ( `callout=true` ) to indicate that callouts are allowed. To learn more about callouts, see Invoking Callouts Using Apex.
 
 ```
-   global class FutureMethodExample
+   public with sharing class FutureMethodExample {
 
-   {
-
-      @future(callout=true)
+      @Future(callout=true)
 
       public static void getStockQuotes(String acctName)
 
@@ -24705,29 +24708,29 @@ Apex.
 
 ```
 
-Inserting a user with a non-null role must be done in a separate thread from DML operations on other sObjects. In this example, the
-future method, `insertUserWithRole`, which is defined in the `Util` class, performs the insertion of a user with the COO role.
-This future method requires the COO role to be defined in the organization. The `useFutureMethod` method in `MixedDMLFuture`
-inserts an account and calls the future method, `insertUserWithRole` .
+Insert a user with a non-null role in a separate thread from DML operations on other sObjects. In this example, the future method,
+`insertUserWithRole`, which is defined in the `Util` class, performs the insertion of a user with the COO role. This future method
+requires the COO role to be defined in the org. The `useFutureMethod` method in `MixedDMLFuture` inserts an account and
+calls the future method `insertUserWithRole` .
 
 This `Util` class contains the future method for inserting a user with a non-null role.
 
 ```
-   public class Util {
+   public with sharing class Util {
 
-      @future
+      @Future
 
       public static void insertUserWithRole(
 
         String uname, String al, String em, String lname) {
 
-        Profile p = [SELECT Id FROM Profile WHERE Name='Standard User'];
+        Profile p = [SELECT Id FROM Profile WHERE Name='Standard User' WITH USER_MODE];
 
-        UserRole r = [SELECT Id FROM UserRole WHERE Name='COO'];
+        UserRole r = [SELECT Id FROM UserRole WHERE Name='COO' WITH USER_MODE];
 
         // Create new user with a non-null user role ID
 
-        User u = new User(alias = al, email=em,
+        User newUser = new User(alias = al, email=em,
 
            emailencodingkey='UTF-8', lastname=lname,
 
@@ -24739,7 +24742,7 @@ This `Util` class contains the future method for inserting a user with a non-nul
 
            username=uname);
 
-        insert u;
+        insert as user newUser;
 
       }
 
@@ -24747,18 +24750,24 @@ This `Util` class contains the future method for inserting a user with a non-nul
 
 ```
 
-This class contains the main method that calls the future method that was defined previously.
+This class contains the main method that calls the future method.
 
 ```
-   public class MixedDMLFuture {
+   public with sharing class MixedDMLFuture {
 
       public static void useFutureMethod() {
 
         // First DML operation
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         Account a = new Account(Name='Acme');
 
-        insert a;
+        insert as user a;
 
         // This next operation (insert a user with a role)
 
@@ -24770,12 +24779,6 @@ This class contains the main method that calls the future method that was define
 
         Util.insertUserWithRole(
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
            'mruiz@awcomputing.com', 'mruiz',
 
            'mruiz@awcomputing.com', 'Ruiz');
@@ -24786,29 +24789,31 @@ Apex Developer Guide Invoking Apex
 
 ```
 
-You can invoke future methods the same way you invoke any other method. However, a future method can’t invoke another future
+You can invoke future methods the same way that you invoke any other method. However, a future method can’t invoke another future
 method.
 
-Methods with the `future` annotation have the following limits:
+Future Method Limits
+
+Methods with the `Future` annotation have these limits.
 
 **•** No more than 0 in batch and future contexts; 50 in queueable context method calls per Apex invocation. Asynchronous calls, such
-as `@future` or `executeBatch`, called in a `startTest`, `stopTest` block, don’t count against your limits for the number
-of queued jobs.
+as `Future` or `executeBatch`, that are called in a `startTest` or `stopTest` block don’t count against your limits for the
+number of queued jobs.
 
-Note: Having multiple future methods fan out from a queueable job isn’t recommended practice as it can rapidly add a large
-number of future methods to the asynchronous queue. Request processing can be delayed and you can quickly hit the daily
-[maximum limit for asynchronous Apex method executions. See Future Method Performance Best Practices and Lightning](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_invoking_future_methods.htm)
-[Platform Apex Limits.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm#in_topic_non_transactional_gov_limits_section)
+Note: Having multiple future methods fan out from a queueable job isn’t a recommended practice as it can rapidly add many
+future methods to the asynchronous queue. Request processing can be delayed and you can quickly hit the daily maximum
+[limit for asynchronous Apex method executions. See Future Method Performance Best Practices and Lightning Platform Apex](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_invoking_future_methods.htm)
+[Limits.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm#in_topic_non_transactional_gov_limits_section)
 
-**•** The maximum number of `future` method invocations per a 24-hour period is 250,000 or the number of user licenses in your
+**•** The maximum number of `Future` method invocations per a 24-hour period is 250,000 or the number of user licenses in your
 organization multiplied by 200, whichever is greater. This limit is for your entire org and is shared with all asynchronous Apex: Batch
 Apex, Queueable Apex, scheduled Apex, and future methods. To check how many asynchronous Apex executions are available,
 make a request to REST API `limits` [resource. See List Organization Limits in the REST API Developer Guide. If the number of](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm)
-asynchronous Apex executions needed by a job exceeds the available number that’s calculated using the 24-hour rolling limit, an
-exception is thrown. For example, if your async job requires 10,000 method executions and the available 24-hour rolling limit is
-9,500, you get AsyncApexExecutions Limit exceeded exception. The license types that count toward this limit include full Salesforce
-and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only users, Identity users, and Company Communities
-users.
+asynchronous Apex executions needed by a job exceeds the available number that’s calculated by using the 24-hour rolling limit,
+an exception is thrown. For example, if your async job requires 10,000 method executions and the available 24-hour rolling limit is
+9,500, you get the AsyncApexExecutions Limit exceeded exception. The license types that count toward this limit include full
+Salesforce and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only users, Identity users, and Company
+Communities users.
 
 Note:
 
@@ -24820,20 +24825,25 @@ running when downtime occurred, the future method execution is rolled back and r
 
 Testing Future Methods
 
-To test methods defined with the `future` [annotation, call the class containing the method in a startTest(), stopTest() code block. All](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_startTest)
+To test methods defined with the `Future` [annotation, call the class containing the method in a startTest(), stopTest() code block. All](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_startTest)
 asynchronous calls made after the `startTest` method are collected by the system. When `stopTest` is executed, all asynchronous
 processes are run synchronously.
+
+
+Apex Developer Guide Invoking Apex
 
 For our example, here’s the test class.
 
 ```
-   @isTest
+   @IsTest
 
    private class MixedDMLFutureTest {
 
-      @isTest static void test1() {
+      @IsTest static void test1() {
 
-        User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId()];
+        User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId() WITH
+
+   USER_MODE];
 
         // System.runAs() allows mixed DML operations in test context
 
@@ -24847,27 +24857,23 @@ For our example, here’s the test class.
 
            Test.stopTest();
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         }
 
         // The future method will run after Test.stopTest();
 
         // Verify account is inserted
 
-        Account[] accts = [SELECT Id from Account WHERE Name='Acme'];
+        Account[] accts = [SELECT Id from Account WHERE Name='Acme' WITH USER_MODE];
 
-        System.assertEquals(1, accts.size());
+        Assert.areEqual(1, accts.size());
 
         // Verify user is inserted
 
-        User[] users = [SELECT Id from User where username='mruiz@awcomputing.com'];
+        List<User> users = [SELECT Id from User WHERE username='mruiz@awcomputing.com'
 
-        System.assertEquals(1, users.size());
+   WITH USER_MODE];
+
+        Assert.areEqual(1, users.size());
 
       }
 
@@ -24878,19 +24884,19 @@ Apex Developer Guide Invoking Apex
 Future Method Performance Best Practices
 
 Salesforce uses a queue-based framework to handle asynchronous processes from such sources as future methods and batch Apex. This
-queue is used to balance request workload across organizations. Use the following best practices to ensure your organization is efficiently
-using the queue for your asynchronous processes.
+queue is used to balance request workload across organizations.To ensure that your organization is efficiently using the queue for your
+asynchronous processes:
 
 **•** Avoid adding large numbers of future methods to the asynchronous queue, if possible. If more than 2,000 unprocessed requests
 from a single organization are in the queue, any additional requests from the same organization will be delayed while the queue
 handles requests from other organizations.
 
-**•** Ensure that future methods execute as fast as possible. To ensure fast execution of batch jobs, minimize Web service callout times
-and tune queries used in your future methods. The longer the future method executes, the more likely other queued requests are
-delayed when there are a large number of requests in the queue.
+**•** Make sure that future methods run as fast as possible. To ensure fast execution of batch jobs, minimize web service callout times
+and tune queries used in your future methods. The longerthe future method runs, the more likely other queued requests are delayed
+when there are many requests in the queue.
 
-**•** Test your future methods at scale. To help determine if delays can occur, test using an environment that generates the maximum
-number of future methods you’d expect to handle.
+**•** Test your future methods at scale. To help determine if delays can occur, test by using an environment that generates the maximum
+number of future methods that you expect to handle.
 
 **•** Consider using batch Apex instead of future methods to process large numbers of records.
 
@@ -24907,16 +24913,12 @@ enable Apex to invoke external web or HTTP services.
 
 **•** Apex REST API exposes your Apex classes and methods as REST web services. See Exposing Apex Classes as REST Web Services.
 
-Webservice Methods
-
-Exposing Data with Webservice Methods
-
-Considerations for Using the webservice Keyword
-
-Overloading Web Service Methods
-
 
 Apex Developer Guide Invoking Apex
+
+##### Webservice Methods Exposing Data with Webservice Methods Considerations for Using the webservice Keyword
+
+Overloading Web Service Methods
 
 ##### Webservice Methods
 
@@ -24977,6 +24979,9 @@ to define a class or an inner class method.
 
 **•** System-defined enums cannot be used in Web service methods.
 
+
+Apex Developer Guide Invoking Apex
+
 **•** You cannot use the `webservice` keyword in a trigger.
 
 **•** All classes that contain methods defined with the `webservice` keyword must be declared as `global` . If a method or inner
@@ -24986,9 +24991,6 @@ class is declared as `global`, the outer, top-level class must also be defined a
 methods. You can consider the `webservice` keyword as a type of access modifier that enables more access than `global` .
 
 **•** Define any method that uses the `webservice` keyword as `static` .
-
-
-Apex Developer Guide Invoking Apex
 
 **•** You cannot deprecate `webservice` methods or variables in managed package code.
 
@@ -25056,6 +25058,12 @@ The following example shows a class with Web service member variables and a Web 
 
         child.parentId = parent.Id;
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         insert child;
 
         grandChild.parentId = child.Id;
@@ -25070,12 +25078,6 @@ The following example shows a class with Web service member variables and a Web 
 
         results[2] = grandChild.Id;
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         return results;
 
       }
@@ -25125,7 +25127,7 @@ see code samples that show you how to implement this functionality.
 Tip: Apex SOAP web services allow an external application to invoke Apex methods through SOAP web services. See Exposing
 Apex Methods as SOAP Web Services.
 
-##### Introduction to Apex REST
+Introduction to Apex REST
 
 Apex REST Annotations
 
@@ -25137,6 +25139,9 @@ used, and any user who has access to these methods can use their full power, reg
 rules. Developers who expose methods using the Apex REST annotations should therefore take care that they are not inadvertently
 exposing any sensitive data.
 
+
+Apex Developer Guide Invoking Apex
+
 Apex REST Code Samples
 
 ##### Introduction to Apex REST
@@ -25144,10 +25149,6 @@ Apex REST Code Samples
 You can expose your Apex class and methods so that external applications can access your code and your application through the REST
 architecture. This is done by defining your Apex class with the `@RestResource` annotation to expose it as a REST resource. Similarly,
 add annotations to your methods to expose them through REST. For example, you can add the `@HttpGet` annotation to your method
-
-
-Apex Developer Guide Invoking Apex
-
 to expose it as a REST resource that can be called by an HTTP `GET` request. For more information, see Apex REST Annotations on page
 
 These are the classes containing methods and properties you can use with Apex REST.
@@ -25196,6 +25197,9 @@ Use these annotations to expose an Apex class as a RESTful Web service.
 
 **•** `@HttpPut`
 
+
+Apex Developer Guide Invoking Apex
+
 ##### Apex REST Methods
 
 Apex REST supports two formats for representations of resources: JSON and XML. JSON representations are passed by default in the
@@ -25207,9 +25211,6 @@ representation is serialized into the response body.
 These return and parameter types are allowed:
 
 **•** Apex primitives (excluding sObject and Blob).
-
-
-Apex Developer Guide Invoking Apex
 
 **•** sObjects
 
@@ -25262,6 +25263,9 @@ in a managed package namespace called `packageNamespace` and the Apex REST metho
 `https://` _`instance`_ `.salesforce.com/services/apexrest/packageNamespace/MyMethod/` . For more
 information about managed packages, see What is a Package?.
 
+
+Apex Developer Guide Invoking Apex
+
 **•** If a login call is made from the API for a user with an expired or temporary password, subsequent API calls to custom Apex REST Web
 service methods aren't supported and result in the MUTUAL_AUTHENTICATION_FAILED error. Reset the user's password and make
 a call with an unexpired password to be able to call Apex Web service methods.
@@ -25271,9 +25275,6 @@ a call with an unexpired password to be able to call Apex Web service methods.
 buffering the JSON serialized form of each sObject. Heap and CPU limits may not be encountered until after the HTTP response
 header and initial data has started streaming back to the client. To gain control of the statusCode and the `responseBody`, use
 a `RestResponse` instead of directly returning sObjects.
-
-
-Apex Developer Guide Invoking Apex
 
 User-Defined Types
 
@@ -25347,6 +25348,9 @@ The `public`, `private`, or `global` class member variables must be types allowe
 
 **•** Apex primitives (excluding sObject and Blob).
 
+
+Apex Developer Guide Invoking Apex
+
 **•** sObjects
 
 **•** Lists or maps of Apex primitives or sObjects (only maps with String keys are supported).
@@ -25361,12 +25365,6 @@ result in cycles (definitions that depend on each other) at run time in your use
 
       @HttpGet
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
       global static MyUserDef1 doCycleTest() {
 
         MyUserDef1 def1 = new MyUserDef1();
@@ -25438,6 +25436,9 @@ the following:
 
 ```
 
+
+Apex Developer Guide Invoking Apex
+
 **•** The URL patterns _`URLpattern`_ and _`URLpattern`_ /* match the same URL. If one class has a `urlMapping` of _`URLpattern`_
 and another class has a `urlMapping` of _`URLpattern`_ /*, a REST request for this URL pattern resolves to the class that was saved
 first.
@@ -25447,9 +25448,6 @@ response, and hence, methods with these parameter or return types can't be used 
 for example, `List<List<String>>` aren't supported. However, you can use these types with JSON. If the parameter list
 includes a type that's invalid for XML and XML is sent, an HTTP 415 status code is returned. If the return type is a type that's invalid
 for XML and XML is the requested response format, an HTTP 406 status code is returned.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** For request data in either JSON or XML, valid values for Boolean parameters are: `true`, `false` (both are treated as case-insensitive),
 `1` and `0` (the numeric values, not strings of “1” or “0”). Any other values for Boolean parameters result in an error.
@@ -25525,6 +25523,12 @@ if you define an Apex REST method such as:
 
        @HttpPost
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
        global static MyUDT echoTest(MyUDT def, String extraString) {
 
           return def;
@@ -25540,9 +25544,6 @@ if you define an Apex REST method such as:
      }
 
 ```
-
-
-Apex Developer Guide Invoking Apex
 
 You can use the following XML request data:
 
@@ -25600,6 +25601,12 @@ DELETE, GET, PATCH, POST, PUT 415 The XML parameter type is unsupported.
 DELETE, GET, PATCH, POST, PUT 415 The Content-Header Type specified in the HTTP request header
 is unsupported.
 
+
+Apex Developer Guide Invoking Apex
+
+**Request Method** **Response Status** **Description**
+**Code**
+
 DELETE, GET, PATCH, POST, PUT 500 An unhandled Apex exception occurred.
 
 SEE ALSO:
@@ -25607,9 +25614,6 @@ SEE ALSO:
 JSON Support
 
 XML Support
-
-
-Apex Developer Guide Invoking Apex
 
 ##### Exposing Data with Apex REST Web Service Methods
 
@@ -25654,6 +25658,9 @@ record.
 
 For more information about authenticating with `cURL` [, see the Quick Start section of the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/quickstart.htm) _REST API Developer Guide_ .
 
+
+Apex Developer Guide Invoking Apex
+
 **1.** Create an Apex class in your instance from Setup. Enter _`Apex Classes`_ in the `Quick Find` box, select **Apex Classes**, and
 then click **New** . Add this code to the new Apex class:
 
@@ -25672,12 +25679,6 @@ then click **New** . Add this code to the new Apex class:
 
          String accountId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
           Account account = [SELECT Id FROM Account WHERE Id = :accountId];
 
           delete account;
@@ -25753,6 +25754,12 @@ After calling the `doGet` method, Salesforce returns a JSON response with data s
 
          "type" : "Account",
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
          "url" : "/services/data/v22.0/sobjects/Account/ accountId "
 
        },
@@ -25766,9 +25773,6 @@ After calling the `doGet` method, Salesforce returns a JSON response with data s
 ```
 
 Note: The `cURL` examples in this section don't use a namespaced Apex class so you don’t see the namespace in the URL.
-
-
-Apex Developer Guide Invoking Apex
 
 **3.** Create a file called `account.txt` to contain the data for the account you will create in the next step.
 
@@ -25845,6 +25849,12 @@ Click **New** and add the following code to your new class:
 
                             Body = picture,
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
                             ContentType = 'image/jpg',
 
                             Name = 'VehiclePicture');
@@ -25860,9 +25870,6 @@ Click **New** and add the following code to your new class:
 ```
 
 **2.** Open a command-line window and execute the following `cURL` command to upload the attachment to a case:
-
-
-Apex Developer Guide Invoking Apex
 
 ```
     curl -H "Authorization: Bearer sessionId " -H "X-PrettyPrint: 1" -H "Content-Type:
@@ -25931,6 +25938,9 @@ To use email services, from Setup, enter _`Email Services`_ in the `Quick Find` 
 
 **•** Click **Delete** to delete an email service.
 
+
+Apex Developer Guide Invoking Apex
+
 Note: Before deleting email services, you must delete all associated email service addresses.
 
 When defining email services, note the following:
@@ -25940,10 +25950,6 @@ When defining email services, note the following:
 **•** Salesforce limits the total number of messages that all email services combined, including On-Demand Email-to-Case, can process
 daily. Messages that exceed this limit are bounced, discarded, or queued for processing the next day, depending on how you
 configure the failure response settings for each email service. Salesforce calculates the limit by multiplying the number of user
-
-
-Apex Developer Guide Invoking Apex
-
 licenses by 1,000; maximum 1,000,000. For example, if you have 10 licenses, your org can process up to 10,000 email messages a
 day.
 
@@ -26003,6 +26009,12 @@ The following is an example of how you can look up a contact based on the inboun
 
         FROM Contact
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         WHERE Email = :email.fromAddress
 
         WITH USER_MODE
@@ -26019,12 +26031,6 @@ The following is an example of how you can look up a contact based on the inboun
 
           Subject = email.subject,
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
           IsReminderSet = true,
 
           ReminderDateTime = System.now()+1,
@@ -26093,6 +26099,12 @@ for the word “unsubscribe.” If the word is found, the code finds all contact
 
         List<Lead> ll = new List <lead>();
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         // Convert the subject line to lower case so the program can match on lower case.
 
         String mySubject = email.subject.toLowerCase();
@@ -26105,12 +26117,6 @@ for the word “unsubscribe.” If the word is found, the code finds all contact
 
    line.
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         Boolean unsubMe;
 
         // Look for the word "unsubcribe" in the subject line.
@@ -26185,6 +26191,12 @@ Apex Developer Guide Invoking Apex
 
              System.debug('Lead Object: ' + l);
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
            }
 
            // Update all lead records in the query.
@@ -26199,12 +26211,6 @@ Apex Developer Guide Invoking Apex
 
         }
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         System.debug('Found the unsubscribe word in the subject line.');
 
          }
@@ -26285,6 +26291,12 @@ Apex Developer Guide Invoking Apex
 
         env.fromAddress = 'user@acme.com';
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         // Call the class and test it with the data in the testMethod.
 
         unsubscribe unsubscribeObj = new unsubscribe();
@@ -26295,12 +26307,6 @@ Apex Developer Guide Invoking Apex
 
       static testMethod void testUnsubscribe2() {
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         // Create a new email and envelope object.
 
         Messaging.InboundEmail email = new Messaging.InboundEmail();
@@ -26371,6 +26377,9 @@ _Apex Reference Guide_ [: InboundEnvelope Class](https://developer.salesforce.co
 
 _Apex Reference Guide_ [: InboundEmailResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_email_inbound_result.htm)
 
+
+Apex Developer Guide Invoking Apex
+
 #### Visualforce Classes
 
 In addition to giving developers the ability to add business logic to Salesforce system events such as button clicks and related record
@@ -26383,9 +26392,6 @@ that was already provided in a standard controller.
 
 Like other Apex classes, custom controllers execute entirely in system mode, in which the object and field-level permissions of the
 current user are ignored. You can specify whether a user can execute methods in a custom controller based on the user's profile.
-
-
-Apex Developer Guide Invoking Apex
 
 **•** A controller extension is a class written in Apex that adds to or overrides behavior in a standard or custom controller. Extensions
 allow you to leverage the functionality of another controller while adding your own custom logic.
@@ -26436,6 +26442,9 @@ differences from normal action methods.
 
 **•** The response handler callback function you add to or include in your Visualforce page, written in JavaScript.
 
+
+Apex Developer Guide Invoking Apex
+
 In your controller, your Apex method declaration is preceded with the `@RemoteAction` annotation like this:
 
 ```
@@ -26443,9 +26452,9 @@ In your controller, your Apex method declaration is preceded with the `@RemoteAc
 
    global static String getItemId(String objectName) { ... }
 
-```
+#### Apex @RemoteAction methods must be static and either global or public .
 
-Apex `@RemoteAction` methods must be `static` and either `global` or `public` .
+```
 
 Add the Apex class as a custom controller or a controller extension to your page.
 
@@ -26457,9 +26466,6 @@ Add the Apex class as a custom controller or a controller extension to your page
 Warning: Adding a controller or controller extension grants access to all `@RemoteAction` methods in that Apex class, even
 if those methods aren’t used in the page. Anyone who can view the page can execute all `@RemoteAction` methods and
 provide fake or malicious data to the controller.
-
-
-Apex Developer Guide Invoking Apex
 
 Then, add the request as a JavaScript function call. A simple JavaScript remoting invocation takes the following form.
 
@@ -26495,6 +26501,9 @@ To invoke Apex through anonymous blocks or public `webservice` methods, include 
 
 Note: For AJAX buttons, use the alternate forms of these includes.
 
+
+### Apex Developer Guide Apex Transactions and Governor Limits
+
 To invoke Apex, use one of the following two methods:
 
 **•** Execute anonymously via `sforce.apex.executeAnonymous (` _**`script`**_ `)` . This method returns a result similar to the API's
@@ -26503,22 +26512,19 @@ result type, but as a JavaScript structure.
 **•** Use a class WSDL. For example, you can call the following Apex class:
 
 ```
-  global class myClass {
+     global class myClass {
 
-   webservice static Id makeContact(String lastName, Account a) {
+      webservice static Id makeContact(String lastName, Account a) {
 
-       Contact c = new Contact(LastName = lastName, AccountId = a.Id);
+          Contact c = new Contact(LastName = lastName, AccountId = a.Id);
 
-       return c.id;
+          return c.id;
 
-    }
+       }
 
-  }
+     }
 
 ```
-
-
-### Apex Developer Guide Apex Transactions and Governor Limits
 
 By using the following JavaScript code:
 
@@ -26587,18 +26593,18 @@ efficient use of resources on the Lightning Platform multitenant platform.
 
 Most of the governor limits are per transaction, and some aren’t, such as 24-hour limits.
 
+
+#### Apex Developer Guide Apex Transactions and Governor Limits
+
 To make sure Apex adheres to governor limits, certain design patterns should be used, such as bulk calls and foreign key relationships
 in queries.
 
-### Apex Transactions
+#### Apex Transactions
 
 An _Apex transaction_ represents a set of operations that are executed as a single unit. All DML operations in a transaction must complete
 successfully. If an error occurs in one operation, the entire transaction is rolled back and no data is committed to the database. The
 boundary of a transaction can be a trigger, a class method, an anonymous block of code, a Visualforce page, or a custom Web service
 method.
-
-
-#### Apex Developer Guide Apex Transactions and Governor Limits
 
 Execution Governors and Limits
 Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces limits so that runaway Apex code or
@@ -26641,6 +26647,9 @@ funds from one bank account to another is a common scenario. It involves debitin
 with the amount to transfer. These two operations must be committed together to the database. If the debit operation succeeds and
 the credit operation fails, the account balances become inconsistent.
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 Example
 
 This example shows how all DML `insert` operations in a method are rolled back when the last operation causes a validation rule
@@ -26653,9 +26662,6 @@ enough to cover new purchases.
 Since this example attempts to purchase more pencils (5,000) than items in stock (1,000), the validation rule fails and throws an exception.
 Code execution halts at this point and all DML operations processed before this exception are rolled back. The invoice statement and
 the line item aren’t added to the database, and their `insert` DML operations are rolled back.
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
 
 In the Developer Console, execute the static `invoice` method.
 
@@ -26728,9 +26734,12 @@ the invoice statements and line items are rolled back and aren’t inserted into
 
    }
 
-#### Execution Governors and Limits
-
 ```
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
+#### Execution Governors and Limits
 
 Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces limits so that runaway Apex code or processes
 don’t monopolize shared resources. If some Apex code exceeds a limit, the associated governor issues a runtime exception that can’t
@@ -26747,9 +26756,6 @@ The Apex limits, or _governors_, track, and enforce the statistics outlined in t
 **•** Static Apex Limits
 
 **•** Size-Specific Apex Limits
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
 
 **•** Miscellaneous Apex Limits
 
@@ -26796,6 +26802,12 @@ Total stack depth for any Apex invocation that recursively fires triggers due to
 
 Total number of callouts (HTTP requests or web services calls) in a transaction 100 100
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
+**Description** **Synchronous** **Asynchronous**
+**Limit** **Limit**
+
 Maximum cumulative timeout for all callouts (HTTP requests or Web services calls) in a 120 seconds 120 seconds
 transaction
 
@@ -26810,12 +26822,6 @@ Maximum number of Apex jobs added to the queue with `System.enqueueJob` 50 1
 Total number of `sendEmail` methods allowed 10 10
 
 Total heap size [4] 6 MB 12 MB
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
-**Description** **Synchronous** **Asynchronous**
-**Limit** **Limit**
 
 Maximum CPU time on the Salesforce servers [5] 10,000 milliseconds 60,000 milliseconds
 
@@ -26859,6 +26865,9 @@ of SOQL statements issued in a request.
 
 **•** `Database.query`, `Database.queryWithBinds`
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 2 Calls to the following methods count against the number of DML statements issued in a request.
 
 **•** `Approval.process`
@@ -26876,9 +26885,6 @@ of SOQL statements issued in a request.
 **•** `insert` and `Database.insert`
 
 **•** `merge` and `Database.merge`
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
 
 **•** `undelete` and `Database.undelete`
 
@@ -26925,6 +26931,9 @@ statements your org’s native code can execute. This limit increase means more 
 transaction if code from the managed package and your native org both executes. Similarly, the certified managed package gets its own
 100-SOQL-query limit for synchronous Apex, in addition to the org’s native code limit of 100 SOQL queries.
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 There’s no limit on the number of certified namespaces that can be invoked in a single transaction. However, the number of operations
 that can be performed in each namespace must not exceed the per-transaction limits. There’s also a limit on the cumulative number of
 operations that can be made across namespaces in a transaction. This cumulative limit is 11 times the per-namespace limit. For example,
@@ -26939,9 +26948,6 @@ Note:
 
 **•** Namespaces in non-certified packages don’t have their own separate governor limits. The resources that they use continue
 to count against the same governor limits used by the org's custom code.
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
 
 This table lists the cumulative cross-namespace limits.
 
@@ -26982,6 +26988,9 @@ Lightning Platform Apex Limits
 
 The limits in this table aren't specific to an Apex transaction; Lightning Platform enforces these limits.
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 **Description** **Limit**
 
 The maximum number of asynchronous Apex method executions (batch Apex, future methods,
@@ -27005,11 +27014,6 @@ transaction [9] .
 
 Maximum number of Apex classes scheduled concurrently 100. In Developer Edition orgs,
 the limit is 5.
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
-**Description** **Limit**
 
 Maximum number of batch Apex jobs in the Apex flex queue that are in `Holding` status 100
 
@@ -27053,6 +27057,9 @@ To check how many asynchronous Apex executions are available, make a request to 
 `OrgLimits.getAll()` or `OrgLimits.getMap()` [. See List Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ [and OrgLimits](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm)
 [Class in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm) _Apex Reference Guide_ .
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 7 If the number of asynchronous Apex executions needed by a job exceeds the available number that’s calculated using the 24-hour
 rolling limit, an exception is thrown. Batch Apex preemptively checks the required asynchronous job capacity when
 `Database.executeBatch` is called and the `start` method has returned the workload. The batch won’t start unless there is
@@ -27066,9 +27073,6 @@ Chatter Only users, Identity users, and Company Communities users.
 9 For example, if your org has 4,000 licenses, the concurrent long-running Apex requests limit is set at 40. If your org has 5,000 or more
 licenses, the concurrent long-running Apex requests limit is set at 50, which is the maximum capped limit. If your org has 1,000 or fewer
 licenses, the concurrent long-running Apex requests limit is set at 10, which is the minimum floor limit.
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
 
 Static Apex Limits
 
@@ -27107,6 +27111,9 @@ Maximum amount of code used by all Apex code in an org [1,3,4] 6 MB
 Method size limit [2] 65,535 bytecode instructions in
 compiled form
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 1 This limit doesn’t apply to Apex code in first generation(1GP) or second generation(2GP) managed packages. The code in those types
 of packages belongs to a namespace unique from the code in your org. This limit also doesn’t apply to any code included in a class
 defined with the `@isTest` annotation.
@@ -27124,10 +27131,6 @@ Miscellaneous Apex Limits
 **Connect in Apex**
 For classes in the `ConnectApi` namespace, every write operation costs one DML statement against the Apex governor limit.
 `ConnectApi` method calls are also subject to rate limits. `ConnectApi` rate limits match Connect REST API rate limits, and
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 have a per user, per namespace, per hour rate limit. When you exceed the rate limit, a `ConnectApi.RateLimitException`
 is thrown. Your Apex code must catch and handle this exception.
 
@@ -27168,6 +27171,9 @@ Email Services: Maximum Size of Email Message (Body and Attachments) 25 MB [1]
 
 On-Demand Email-to-Case: Maximum Email Attachment Size 25 MB
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 On-Demand Email-to-Case: Maximum Number of Email Messages Processed Number of user licenses multiplied by
 1,000; maximum 1,000,000
 
@@ -27184,10 +27190,6 @@ When defining email services, note the following:
 **•** Salesforce limits the total number of messages that all email services combined, including On-Demand Email-to-Case, can
 process daily. Messages that exceed this limit are bounced, discarded, or queued for processing the next day, depending on
 how you configure the failure response settings for each email service. Salesforce calculates the limit by multiplying the number
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 of user licenses by 1,000; maximum 1,000,000. For example, if you have 10 licenses, your org can process up to 10,000 email
 messages a day.
 
@@ -27234,6 +27236,9 @@ day is calculated based on Greenwich Mean Time (GMT).
 **•** In Developer Edition orgs and orgs evaluating Salesforce during a trial period, you can send to no more than 10 external email
 recipients per org per day using mass email and list email.
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 **•** You can’t send mass email using a Visualforce email template.
 
 Push Notification Limits
@@ -27246,9 +27251,6 @@ count toward this limit.
 
 Each test push notification that is generated through the Test Push Notification page is limited to a single recipient. Test push notifications
 count toward an org’s hourly push notification limit.
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
 
 When an org's hourly push notification limit is met, any additional notifications are still created for in-app display and retrieval via REST
 API.
@@ -27299,6 +27301,9 @@ Total number of `sendEmail` methods allowed
 
 Maximum number of methods with the `future` annotation allowed per Apex invocation
 
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 Maximum number of Apex jobs added to the queue with `System.enqueueJob`
 
 Total number of records retrieved by `Database.getQueryLocator`
@@ -27310,9 +27315,6 @@ Total number of mobile Apex push calls
 When you develop software in a multitenant cloud environment such as the Lightning platform, you don’t have to scale your code,
 because the Lightning platform does it for you. Because resources are shared in a multitenant platform, the Apex runtime engine enforces
 some limits to ensure that no one transaction monopolizes shared resources.
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
 
 Your Apex code must execute within these predefined execution limits. If a governor limit is exceeded, a run-time exception that can’t
 be handled is thrown. By following best practices in your code, you can avoid hitting these limits. Imagine you had to wash 100 T-shirts.
@@ -27374,6 +27376,12 @@ new list and then, inside the loop, adds every update line item to the new list.
 
    }
 
+```
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
+```
    // Once DML call for the entire list of line items
 
    update updatedList;
@@ -27387,9 +27395,6 @@ surpass the 100 SOQL queries limit per transaction. The following is an example 
 which isn’t efficient. An alternative example is given with a modified query that retrieves child items using only one SOQL query.
 
 **Example:** Inefficient querying of child items
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
 
 The `for` loop in this example iterates over all invoice statements that are in `Trigger.new` . The SOQL query performed inside the
 loop retrieves the child line items of each invoice statement. If more than 100 invoice statements were inserted or updated, and thus
@@ -27461,6 +27466,9 @@ SOQL For Loops
 Use SOQL for loops to operate on records in batches of 200. This helps avoid the heap size limit of 6 MB. Note that this limit is for code
 running synchronously and it is higher for asynchronous code execution.
 
+
+### Apex Developer Guide Using Salesforce Features with Apex
+
 **Example:** Query without a for loop
 
 The following is an example of a SOQL query that retrieves all merchandise items and stores them in a List variable. If the returned
@@ -27472,9 +27480,6 @@ merchandise items are large in size and a large number of them was returned, the
 ```
 
 **Recommended Alternative:** Query within a for loop
-
-
-### Apex Developer Guide Using Salesforce Features with Apex
 
 To prevent this from happening, this second version uses a SOQL for loop, which iterates over the returned results in batches of 200
 records. This reduces the size of the `ml` list variable which now holds 200 items instead of all items in the query results, and gets recreated
@@ -27527,6 +27532,9 @@ Use Connect in Apex to develop custom experiences in Salesforce. Connect in Apex
 CMS managed content, Experience Cloud sites, topics, and more. Create Apex pages that display Chatter feeds, post feed items with
 mentions and topics, and update user and group photos. Create triggers that update Chatter feeds.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Moderate Chatter Private Messages with Triggers
 Write a trigger for ChatterMessage to automate the moderation of private messages in an org or Experience Cloud site. Use triggers
 to ensure that messages conform to your company’s messaging policies and don’t contain blocklisted words.
@@ -27534,9 +27542,6 @@ to ensure that messages conform to your company’s messaging policies and don�
 Data Cloud In Apex
 You can use Apex with Data Cloud objects, with constraints and considerations that are detailed in this topic . Further, you can mock
 SOQL query responses for Data Cloud data model objects (DMOs) in Apex testing by using SOQL stub methods and a test class.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 DataWeave in Apex
 DataWeave in Apex uses the Mulesoft DataWeave library to read and parse data from one format, transform it, and export it in a
@@ -27585,15 +27590,15 @@ The Lightning Platform Cache layer provides faster performance and better reliab
 Specify what to cache and for how long without using custom objects and settings or overloading a Visualforce view state. Platform
 Cache improves performance by distributing cache space so that some applications or operations don’t steal capacity from others.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Salesforce Knowledge
 Salesforce Knowledge is a knowledge base where users can easily create and manage content, known as articles, and quickly find
 and view the articles they need.
 
 Salesforce Files
 Use Apex to customize the behavior of Salesforce Files.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Salesforce Connect
 Apex code can access external object data via any Salesforce Connect adapter. Use the Apex Connector Framework to develop a
@@ -27631,6 +27636,9 @@ pages, or canvas apps that let users interact with or create records that have a
 For create, Log a Call, and custom actions, you can create either object-specific actions or global actions. Update actions must be
 object-specific.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 For more information on actions, see the online help.
 
 SEE ALSO:
@@ -27654,9 +27662,6 @@ _Apex Reference Guide_ [: DescribeLayoutItem Class](https://developer.salesforce
 _Apex Reference Guide_ [: DescribeLayoutComponent Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describelayoutcomponent.htm)
 
 _Apex Reference Guide_ [: DescribeAvailableQuickActionResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_quickaction_describeavailablequickactionresult.htm)
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 #### Apex Cursors
 
@@ -27700,6 +27705,12 @@ Apex Cursor Example
 
         position = 0;
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       }
 
       public void execute(QueueableContext ctx) {
@@ -27728,9 +27739,6 @@ Pagination Cursors
 
 Like a standard Apex cursor, an Apex pagination cursor provides a pointer to a large SOQL query result set. However, an Apex pagination
 cursor is designed for UI-based pagination, such as multipage record lists.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 To create a pagination cursor, call `Database.getPaginationCursor()` or
 `Database.getPaginationCursorWithBinds()` with a SOQL query as an argument. A single
@@ -27771,6 +27779,9 @@ The method returns `true` if the specified _`pageSize`_ is reached, which indica
 returns `true` if the pagination cursor reaches the end of a result set before the specified _`pageSize`_ is reached, which indicates
 that a partial, final page of results is retrieved.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Calling the `PaginationCursor.fetchPage()` and `PaginationCursor.fetchDeleted()` methods count against
 the SOQL query limit, and the rows fetched count against the SOQL query row limit.
 
@@ -27791,9 +27802,6 @@ To get limits on Apex cursors and Apex pagination cursors, use these methods in 
 
 **•** `Limits.getApexPaginationCursors()` and its upper bound `Limits.getLimitApexPaginationCursors()`
 method
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 **•** `Limits.getApexPaginationCursorRows()` and its upper bound
 `Limits.getLimitApexPaginationCursorRows()` method
@@ -27849,6 +27857,12 @@ Apex Cursor and Pagination Cursor Limits Example
 
    // Get daily limits map
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    Map<String, System.OrgLimit> limitMap = OrgLimits.getMap();
 
    // Standard cursor daily limit
@@ -27871,12 +27885,6 @@ Apex Cursor and Pagination Cursor Limits Example
 
    System.OrgLimit dailyRowsLimit = limitMap.get('DailyApexCursorRowsLimit');
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    System.debug('Daily Cursor Rows: ' + dailyRowsLimit.getValue() + '/' +
 
    dailyRowsLimit.getLimit());
@@ -27925,6 +27933,12 @@ approval process on Account exists and is valid for the Account record created.
 
         Account a = new Account(Name='Test',annualRevenue=100.0);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         insert a;
 
         User user1 = [SELECT Id FROM User WHERE Alias='SomeStandardUser'];
@@ -27945,12 +27959,6 @@ approval process on Account exists and is valid for the Account record created.
 
         // Submit the record to the existing process named PTO_Request_Process
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         req1.setProcessDefinitionNameOrId('PTO_Request_Process');
 
         // Skip the criteria evaluation for the specified process
@@ -28011,18 +28019,19 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    }
 
-#### Authentication
-
 ```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+#### Authentication
 
 Salesforce provides various ways to authenticate users. Build a combination of authentication methods to fit the needs of your org and
 your users’ use patterns.
 
-Create a Custom Authentication Provider Plug-in
+##### Create a Custom Authentication Provider Plug-in
+
 You can use Apex to create a custom OAuth-based authentication provider plug-in for single sign-on (SSO) to Salesforce.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 OAuth 2.0 Token Exchange Handler Examples
 Sometimes you want to integrate Salesforce into a complex system where you have a primary app, a central identity provider, and
@@ -28084,6 +28093,12 @@ _Help_ . Alternatively, create custom methods for single logout.
 
             private String userAPIUrl; // api url to access the user in concur
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
             private String userAPIVersionUrl; // version of the user api url to access
 
     data from concur
@@ -28094,12 +28109,6 @@ _Help_ . Alternatively, create custom methods for single logout.
 
             }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
             global PageReference initiate(Map<string,string> authProviderConfiguration,
 
     String stateToPropagate) {
@@ -28178,6 +28187,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                //don’t hard-code the refresh token value!
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
              }
 
               global Auth.UserData getUserInfo(Map<string,string>
@@ -28190,12 +28205,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                 String token = response.oauthToken;
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
                 HttpRequest req = new HttpRequest();
 
                 userAPIUrl = authProviderConfiguration.get('API_User_Url__c');
@@ -28278,6 +28287,9 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Sample Test Classes
 
 The following example contains test classes for the Concur class.
@@ -28291,12 +28303,6 @@ The following example contains test classes for the Concur class.
 
       private static final String STATE = 'mocktestState';
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       private static final String REFRESH_TOKEN = 'refreshToken';
 
       private static final String LOGIN_ID = 'testLoginId';
@@ -28375,6 +28381,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                                 authProviderConfiguration.get('Key__c')
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    +'&scope=USER,EXPRPT,LIST&redirect_uri='+
 
    authProviderConfiguration.get('Redirect_Url__c') + '&state=' +
@@ -28389,12 +28401,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       static testMethod void testHandleCallback() {
 
           Map<String,String> authProviderConfiguration = setupAuthProviderConfig();
@@ -28461,6 +28467,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
           provMap.put('key2', 'value2');
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
           Auth.UserData expectedUserData = new Auth.UserData(LOGIN_ID, FIRST_NAME,
 
    LAST_NAME, FULL_NAME, EMAIL_ADDRESS,
@@ -28475,12 +28487,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
           System.assertEquals(expectedUserData.fullName, actualUserData.fullName);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
           System.assertEquals(expectedUserData.email, actualUserData.email);
 
           System.assertEquals(expectedUserData.username, actualUserData.username);
@@ -28551,6 +28557,9 @@ _Apex Reference Guide_ [: AuthProviderPlugin Interface](https://developer.salesf
 
 [Salesforce Help: Create a Custom External Authentication Provider](https://help.salesforce.com/HTViewHelpDoc?id=sso_provider_plugin_custom.htm&language=en_US)
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 ##### OAuth 2.0 Token Exchange Handler Examples
 
 Sometimes you want to integrate Salesforce into a complex system where you have a primary app,
@@ -28559,20 +28568,17 @@ to the primary app via the identity provider and access data provided by the oth
 microservices. To fit Salesforce into this model as one of the apps providing data, use the OAuth
 2.0 token exchange flow, which implements an Apex token exchange handler.
 
-
 EDITIONS
 
 Available in: **Enterprise**,
 **Unlimited**, **Performance**,
 and **Developer** Editions
 
-Apex Developer Guide Using Salesforce Features with Apex
-
-During the OAuth 2.0 token exchange flow, when a user logs in to the primary app via the identity provider, the identity provider issues
-a token to the primary app. The primary app can’t use this token to directly access Salesforce data, but it can exchange the token for a
-Salesforce access token. To complete this exchange, the primary app uses an Apex token exchange handler. With the token exchange
-handler, Salesforce can issue its own access token by validating the identity provider’s token and mapping the token’s subject, which
-identifies the end user, to a Salesforce user.
+During the OAuth 2.0 token exchange flow, when a user logs in to the primary app via the identity
+provider, the identity provider issues a token to the primary app. The primary app can’t use this
+token to directly access Salesforce data, but it can exchange the token for a Salesforce access token. To complete this exchange, the
+primary app uses an Apex token exchange handler. With the token exchange handler, Salesforce can issue its own access token by
+validating the identity provider’s token and mapping the token’s subject, which identifies the end user, to a Salesforce user.
 
 To build an Apex token exchange handler, create a class that extends the `Auth.Oauth2TokenExchangeHandler` abstract
 class and customize its validation logic and subject mapping.
@@ -28584,66 +28590,72 @@ The `Auth.Oauth2TokenExchangeHandler` abstract class contains two methods. Use t
 to map the token’s subject to a Salesforce user.
 
 ```
-   global abstract class Oauth2TokenExchangeHandler {
+global abstract class Oauth2TokenExchangeHandler {
 
-      //First method called in the handler
+   //First method called in the handler
 
-     global virtual Auth.TokenValidationResult validateIncomingToken(String appDeveloperName,
+  global virtual Auth.TokenValidationResult validateIncomingToken(String appDeveloperName,
 
-    Auth.IntegratingAppType appType, String incomingToken, Auth.OAuth2TokenExchangeType
+ Auth.IntegratingAppType appType, String incomingToken, Auth.OAuth2TokenExchangeType
 
-   tokenType) {
+tokenType) {
 
-        //This method must be overridden by the extending class
+     //This method must be overridden by the extending class
 
-        //Validate the identity provider’s token. Depending on your use case and token
+     //Validate the identity provider’s token. Depending on your use case and token
 
-   type, write validation logic that does these things:
+type, write validation logic that does these things:
 
-        // Use the token to make a callout to the identity provider’s User Info endpoint
+     // Use the token to make a callout to the identity provider’s User Info endpoint
 
-        // Use the token to make a callout to identity provider’s Introspection endpoint
+     // Use the token to make a callout to identity provider’s Introspection endpoint
 
-        // Validate a SAML response
+     // Validate a SAML response
 
-        // Validate a JWT locally
+     // Validate a JWT locally
 
-        // The appDeveloperName is the developer name of the Connected App or External
+     // The appDeveloperName is the developer name of the Connected App or External
 
-   Client App
+Client App
 
-        //The IntegratingAppType is an ENUM that is either a Connected App or External
+     //The IntegratingAppType is an ENUM that is either a Connected App or External
 
-   Client App
+Client App
 
-        // After you validate the token, return true or false
+     // After you validate the token, return true or false
 
-        return null;
+     return null;
 
-      }
+   }
 
-      //Second method called in the handler
+   //Second method called in the handler
 
-      global virtual User getUserForTokenSubject(Id networkId, Auth.TokenValidationResult
+   global virtual User getUserForTokenSubject(Id networkId, Auth.TokenValidationResult
 
-   result, Boolean canCreateUser, String appDeveloperName, Auth.IntegratingAppType appType)
+result, Boolean canCreateUser, String appDeveloperName, Auth.IntegratingAppType appType)
 
-   {
+{
 
-         //This method must be overridden by the extending class
+      //This method must be overridden by the extending class
 
-        //To map the subject of the token to a Salesforce user, write code that does these
+     //To map the subject of the token to a Salesforce user, write code that does these
 
-    things:
+ things:
 
-        // Get data directly from the token, and query for the user in Salesforce
+     // Get data directly from the token, and query for the user in Salesforce
 
-        // Get data from the identity provider’s User Info endpoint using the token and
+     // Get data from the identity provider’s User Info endpoint using the token and
 
-   query for the user in Salesforce
+query for the user in Salesforce
 
-        // Get data from the SAML assertion and query for the user in Salesforce
+     // Get data from the SAML assertion and query for the user in Salesforce
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         // If the user is not in Salesforce, and canCreateUser is true, set up a User
 
    object
@@ -28654,12 +28666,6 @@ to map the token’s subject to a Salesforce user.
 
     canCreateUser is true)
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         return null;
 
       }
@@ -28729,6 +28735,12 @@ doesn’t find a user, so it creates a User object. To finish creating the user,
 
         //Standard user data structure
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         Auth.UserData userData;
 
         if (tokenType == Auth.OAuth2TokenExchangeType.JWT || tokenType ==
@@ -28741,12 +28753,6 @@ doesn’t find a user, so it creates a User object. To finish creating the user,
 
    'https://your-idp.com/keys', true);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
              isValid = true;
 
              //These values are sourced from the JWT or ID Token
@@ -28833,6 +28839,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         //If you don’t have any data from the token, you can perform a callout using the
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    incoming token
 
         String userToken = result.token;
@@ -28845,12 +28857,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
            u = [SELECT Id, IsActive FROM User WHERE email =: userData.email];
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         } catch (Exception e) {
 
            //No user existed for this email address, or there were too many. Try looking
@@ -28930,6 +28936,12 @@ In this example, the handler validates a JWT from the identity provider. The han
 
         if (tokenType == Auth.OAuth2TokenExchangeType.JWT) {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
           // Validates the JWT with a public key, but we also provide methods to validate
 
     it with a certificate (Auth.JWTUtil.validateJWTWithCert) or with a keys endpoint
@@ -28944,12 +28956,6 @@ In this example, the handler validates a JWT from the identity provider. The han
 
         }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         return new Auth.TokenValidationResult(false); // Returns a general 'Token handler
 
     validation failed' message that you can customize
@@ -29028,6 +29034,12 @@ response using the `validateIncomingToken` method.
 
                     if (fieldName == 'username') {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
                        parser.nextToken();
 
                        username = parser.getText();
@@ -29040,12 +29052,6 @@ response using the `validateIncomingToken` method.
 
              if (active != null && username != null) {
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
                userData = new Auth.UserData(null, null, null, null, null, null,
 
    username, null, null, null, null);
@@ -29114,6 +29120,12 @@ Salesforce user. If no user exists, it creates a User object.
 
    'someProvider', 'someSiteLoginUrl', null);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
        return new Auth.TokenValidationResult(true, null, userData, incomingToken, tokenType,
 
     null);
@@ -29122,12 +29134,6 @@ Salesforce user. If no user exists, it creates a User object.
 
      global override User getUserForTokenSubject(Id networkId, Auth.TokenValidationResult
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    result, Boolean canCreateUser, String appDeveloperName, Auth.IntegratingAppType appType)
 
    {
@@ -29193,6 +29199,9 @@ _[Apex Reference Guide:](https://developer.salesforce.com/docs/atlas.en-us.260.0
 In Chatter Answers and Ideas, use zones to organize ideas and answers into groups. Each zone can have its own focus, with unique ideas
 and answers topics to match that focus.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 To work with zones in Apex, use the `Answers`, `Ideas`, and `ConnectApi.Zones` classes.
 
 SEE ALSO:
@@ -29202,9 +29211,6 @@ _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_ideas.htm)_ : Ideas Class
 
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_Zones_static_methods.htm)_ : Zones Class
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 #### Use Cases for the CommercePayments Namespace
 
@@ -29250,16 +29256,17 @@ CommercePayments namespace. Review the sample code if you need help with configu
 
 Payment gateway adapters represent the bridge between your payments platform in Salesforce and an external payment gateway.
 
-Building a Synchronous Gateway Adapter
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+###### Building a Synchronous Gateway Adapter
+
 In synchronous payment configurations, the Salesforce payment platform sends transaction information to the gateway, and then
 waits for a gateway response that contains the final transaction status. Salesforce creates a transaction only if the transaction is
 successful in the gateway.
 
 Set Up a Synchronous Payment Gateway Adapter
 For payments transactions, you can configure Salesforce to interface with a synchronous payment gateway adapter.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Building an Asynchronous Gateway Adapter
 In an asynchronous payments configuration, the payments platform first sends transaction information to the gateway. The gateway
@@ -29315,6 +29322,9 @@ When the payments platform receives a payments API request, it passes the reques
 adapter begins the request evaluation process by calling the `processRequest` method, which represents the first step in a
 synchronous payment flow. We can break the `processRequest` implementation into three parts.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 First, it builds a payment request object that the gateway can understand.
 
 ```
@@ -29330,12 +29340,6 @@ First, it builds a payment request object that the gateway can understand.
 
    } else if (requestType == commercepayments.RequestType.ReferencedRefund) {
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       req.setEndpoint('/pal/servlet/Payment/v52/refund');
 
       body =
@@ -59770,12 +59774,12 @@ Use Global Apex
 [For Agentforce to use Apex agent actions in managed packages, these Apex members must have the](https://help.salesforce.com/s/articleView?id=ai.copilot_actions.htm&type=5&language=en_US) `global` access modifier on page
 68.
 
-**•** The Apex class containing the `@InvocableMethod` on page 95 that defines the agent action.
+**•** The Apex class containing the `@InvocableMethod` on page 96 that defines the agent action.
 
 **•** The input wrapper class that defines the parameters an admin can configure for the action, and the output wrapper class that defines
 the structured result returned to Agentforce.
 
-**•** All `@InvocableVariable` on page 100 members within these input and output wrapper classes.
+**•** All `@InvocableVariable` on page 101 members within these input and output wrapper classes.
 
 **•** Any custom Apex data types used as properties in your wrapper classes.
 
@@ -59795,7 +59799,7 @@ Managed Packages on page 755.
 
 Use @InvocableMethod to Define the Action
 
-To define an Apex agent action, use the `@InvocableMethod` on page 95 annotation and follow these requirements.
+To define an Apex agent action, use the `@InvocableMethod` on page 96 annotation and follow these requirements.
 
 **•** Your Apex method must be `global static` .
 

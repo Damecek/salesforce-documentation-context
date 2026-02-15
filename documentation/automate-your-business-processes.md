@@ -1,7 +1,7 @@
 # Automate Your Business Processes
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/extend_click_automate.pdf
-> Fetched: 2026-01-27T10:14:59Z
+> Fetched: 2026-02-15T21:27:58Z
 Automate Your Business
 Processes
 

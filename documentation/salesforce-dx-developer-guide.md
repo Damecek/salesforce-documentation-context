@@ -1,12 +1,12 @@
 # Salesforce DX Developer Guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/sfdx_dev.pdf
-> Fetched: 2026-01-27T10:01:22Z
+> Fetched: 2026-02-15T21:25:17Z
 Salesforce DX Developer Guide
 
 Version 66.0, Spring ’26
 
-Last updated: January 23, 2026
+Last updated: February 13, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -5550,6 +5550,10 @@ EinsteinRecommendationBuilder
 Provides a license to create recommendations with Einstein Recommendation Builder. Einstein Recommendation Builder lets you
 build custom AI recommendations.
 
+EinsteinSalesRepFdbk
+Enables the Agentforce Sales Coach feature in an org. This scratch org feature also includes a large number of Einstein for Sales
+Generative AI features.
+
 EinsteinSearch
 Provides the license required to use and enable Einstein Search features in a scratch org.
 
@@ -5565,12 +5569,12 @@ frequency strategy that allows Einstein to provide optimal store visit recommend
 EmbeddedLoginForIE
 Provides JavaScript files that support Embedded Login in IE11.
 
+
+Scratch Orgs Scratch Org Features
+
 EmpPublishRateLimit:<value>
 Increases the maximum number of standard-volume platform event notifications published per hour. Indicate a value between
 1,000–10,000.
-
-
-Scratch Orgs Scratch Org Features
 
 EnablePRM
 Enables the partner relationship management permissions for the org.
@@ -5627,11 +5631,11 @@ FieldAuditTrail
 Enables Field Audit Trail for the org and allows a total 60 tracked fields. By default, 20 fields are tracked for all orgs, and 40 more are
 tracked with Field Audit Trail.
 
-FieldService:<value>
-Provides the Field Service license. Indicate a value between 1–25.
-
 
 Scratch Orgs Scratch Org Features
+
+FieldService:<value>
+Provides the Field Service license. Indicate a value between 1–25.
 
 FieldServiceAppointmentAssistantUser:<value>
 Adds the Field Service Appointment Assistant permission set license. Indicate a value between 1–25.
@@ -5687,11 +5691,11 @@ in Setup and grant users the AccessToServiceProcess permission.
 Fundraising
 Gives users access to Nonprofit Cloud for Fundraising features and objects in Salesforce.
 
-GenericStreaming
-Enables Generic Streaming API for API version 36.0 and earlier.
-
 
 Scratch Orgs Scratch Org Features
+
+GenericStreaming
+Enables Generic Streaming API for API version 36.0 and earlier.
 
 GenStreamingEventsPerDay:<value>
 Increases the maximum number of delivered event notifications within a 24-hour period, shared by all CometD clients, with generic
@@ -5747,11 +5751,11 @@ The frequency in hours when the sharing inheritance coverage report can be run f
 IdentityProvisioningFeatures
 Enables use of Salesforce Identity User Provisioning.
 
-IgnoreQueryParamWhitelist
-Ignores allowlisting rules for query parameter filter rules. If enabled, you can add any query parameter to the URL.
-
 
 Scratch Orgs Scratch Org Features
+
+IgnoreQueryParamWhitelist
+Ignores allowlisting rules for query parameter filter rules. If enabled, you can add any query parameter to the URL.
 
 IndustriesActionPlan
 Provides a license for Action Plans. Action Plans allow you to define the tasks or document checklist items for completing a business
@@ -5805,11 +5809,11 @@ InsuranceCalculationUser
 Enables the calculation feature of Insurance. Provides 10 seats each of the BRERuntimeAddOn and OmniStudioRuntime licenses.
 Also, provides one seat each of the OmniStudio and BREPlatformAccess licenses.
 
-InsuranceClaimMgmt
-Enables claim management features. Provides one seat of the InsuranceClaimMgmtAddOn license.
-
 
 Scratch Orgs Scratch Org Features
+
+InsuranceClaimMgmt
+Enables claim management features. Provides one seat of the InsuranceClaimMgmtAddOn license.
 
 InsurancePolicyAdmin
 Enables policy administration features. Provides one seat of the InsurancePolicyAdministrationAddOn license.
@@ -5864,11 +5868,11 @@ LiveMessage
 Enables Messaging for Service Cloud. Use Messaging to quickly support customers using apps such as SMS text messaging and
 Facebook Messenger.
 
-LongLayoutSectionTitles
-Allows page layout section titles to be up to 80 characters.
-
 
 Scratch Orgs Scratch Org Features
+
+LongLayoutSectionTitles
+Allows page layout section titles to be up to 80 characters.
 
 LoyaltyAnalytics
 Enables Analytics for Loyalty license. The Analytics for Loyalty app gives you actionable insights into your loyalty programs.
@@ -5922,12 +5926,12 @@ Provides the permission set licenses and permission sets required to configure m
 MaxActiveDPEDefs:<value>
 Increases the number of Data Processing Engine definitions that can be activated in the org. Indicate a value between 1–50.
 
+
+Scratch Orgs Scratch Org Features
+
 MaxApexCodeSize:<value>
 Limits the non-test, unmanaged Apex code size (in MB). To use a value greater than the default value of 10, contact Salesforce
 Customer Support.
-
-
-Scratch Orgs Scratch Org Features
 
 MaxAudTypeCriterionPerAud
 Limits the number of audience type criteria available per audience. The default value is 10.
@@ -5984,11 +5988,11 @@ Increases the maximum number of user-defined channels for generic streaming. Ind
 MaxWishlistsItemsPerWishlist
 Limits the number of wishlist items per wishlist. The default value is 500.
 
-MaxWishlistsPerStoreAccUsr
-Limits the number of wishlists allowed per store, account, and user. The default value is 100.
-
 
 Scratch Orgs Scratch Org Features
+
+MaxWishlistsPerStoreAccUsr
+Limits the number of wishlists allowed per store, account, and user. The default value is 100.
 
 MaxWritebacksPerDPE:<value>
 Increases the number of Writeback Object nodes a Data Processing Engine definition can contain. Indicate a value between 1–50.
@@ -6043,12 +6047,12 @@ Enables business users to execute OmniScripts, DataMappers, FlexCards, and so on
 OmnistudioDesigner
 Enables administrator or developer to create new OmniScripts/ DataMappers / Integration Procedures instances.
 
+
+Scratch Orgs Scratch Org Features
+
 OrderManagement
 Provides the Salesforce Order Management license. Order Management is your central hub for handling all aspects of the order
 lifecycle, including order capture, fulfillment, shipping, payment processing, and servicing.
-
-
-Scratch Orgs Scratch Org Features
 
 OrderSaveLogicEnabled
 Enables scratch org support for New Order Save Behavior. OrderSaveLogicEnabled supports only New Order Save Behavior. If your
@@ -6104,11 +6108,11 @@ Enables read access to Product Catalog Management features and objects.
 ProductCatalogManagementPCAddOn
 Enables read access to Product Catalog Management features and objects for Partner Community Users in scratch orgs.
 
-ProgramManagement
-Enables access to all Program Management and Case Management features and objects.
-
 
 Scratch Orgs Scratch Org Features
+
+ProgramManagement
+Enables access to all Program Management and Case Management features and objects.
 
 ProviderFreePlatformCache
 Provides 3 MB of free Platform Cache capacity for security-reviewed managed packages. This feature is made available through a
@@ -6166,11 +6170,11 @@ SalesforceIdentityForCommunities
 Adds Salesforce Identity components, including login and self-registration, to Experience Builder. This feature is required for Aura
 components.
 
-SalesforcePricing
-Enables Salesforce Pricing, which allows you to set, manage, and optimize prices across your entire product portfolio
-
 
 Scratch Orgs Scratch Org Features
+
+SalesforcePricing
+Enables Salesforce Pricing, which allows you to set, manage, and optimize prices across your entire product portfolio
 
 SalesUser
 Provides a license for Sales Cloud features.
@@ -6227,11 +6231,11 @@ StateAndCountryPicklist
 Enables state and country/territory picklists. State and country/territory picklists let users select states and countries from predefined,
 standardized lists, instead of entering state, country, and territory data into text fields.
 
-StreamingAPI
-Enables Streaming API.
-
 
 Scratch Orgs Scratch Org Features
+
+StreamingAPI
+Enables Streaming API.
 
 StreamingEventsPerDay:<value>
 Increases the maximum number of delivered PushTopic event notifications within a 24-hour period, shared by all CometD clients
@@ -6288,11 +6292,11 @@ Gives users access to Volunteer Management features and objects in Salesforce.
 WaveMaxCurrency
 Increases the maximum number of supported currencies for CRM Analytics. Indicate a value between 1–5.
 
-WavePlatform
-Enables the Wave Platform license.
-
 
 Scratch Orgs Scratch Org Features
+
+WavePlatform
+Enables the Wave Platform license.
 
 Workflow
 Enables Workflow so you can automate standard internal procedures and processes.
@@ -8126,9 +8130,24 @@ Enabled in Developer and Enterprise Editions.
 Requires configuration using the Setup menu in the scratch org. You also need the EinsteinRecommendationBuilderMetadata feature
 to use Einstein Recommendation Builder in scratch org.
 
+#### EinsteinSalesRepFdbk
+
+Enables the Agentforce Sales Coach feature in an org. This scratch org feature also includes a large number of Einstein for Sales Generative
+AI features.
+
+More Information
+
+[The EinsteinSalesRepFdbk scratch org feature enables Agentforce for Sales standard actions, such as Create Close Plan, Get Product](https://help.salesforce.com/s/articleView?id=ai.copilot_actions_ref_close_plan.htm&language=en_US&type=5)
+[Pricing, Meeting Follow-Up Email, Send Meeting Request, Identify Contact Role, Identify Key Contacts, Find Similar Opportunities, Review](https://help.salesforce.com/s/articleView?id=ai.copilot_actions_ref_get_product_pricing.htm&language=en_US&type=5)
+[My Day, and Find Contact Interactions. It also enables Einstein Generative AI features, such as Sales Call Summaries, Call Explorer, Generative](https://help.salesforce.com/s/articleView?id=ai.copilot_actions_ref_review_my_day.htm&language=en_US&type=5)
+[Conversation Insights, and Automatic Contact Enhancement.](https://help.salesforce.com/s/articleView?id=sales.eci_gen_insights.htm&type=5&language=en_US)
+
 #### EinsteinSearch
 
 Provides the license required to use and enable Einstein Search features in a scratch org.
+
+
+Scratch Orgs Scratch Org Features
 
 More Information
 
@@ -8141,9 +8160,6 @@ Requires configuration using the Setup menu in the scratch org.
 Enables Consumer Goods Cloud. With Consumer Goods cloud, transform the way you collaborate with your retail channel partners.
 Empower your sales managers to plan visits and analyze your business’s health across stores. Also, allow your field reps to track inventory,
 take orders, and capture visit details using the Retail Execution mobile app.
-
-
-Scratch Orgs Scratch Org Features
 
 #### EinsteinVisitsED
 
@@ -8181,6 +8197,9 @@ Enables features for creating, taking, and tracking sales programs with Enableme
 the revenue outcomes they want sales reps to achieve, such as increased average deal sizes or shorter ramp times. Then, they create
 programs that help sales reps work towards those outcomes as part of their daily work.
 
+
+Scratch Orgs Scratch Org Features
+
 More Information
 
 **•** Provides 5 Enablement add-on licenses, where each license provides 1 seat of the Enablement permission set license and 1 seat of
@@ -8193,9 +8212,6 @@ optional configuration settings.
 
 [See Sales Programs and Partner Tracks with Enablement in Salesforce Help and see the Sales Programs and Partner Tracks with Enablement](https://help.salesforce.com/s/articleView?id=sales.enablement.htm&type=5&language=en_US)
 [Developer Guide for more information.](https://developer.salesforce.com/docs/sales/enablement/overview)
-
-
-Scratch Orgs Scratch Org Features
 
 #### EnableSetPasswordInApi
 
@@ -8233,6 +8249,9 @@ More Information
 
 Enables the Energy and Utilities Cloud features in the org.
 
+
+Scratch Orgs Scratch Org Features
+
 #### Entitlements
 
 Enables entitlements. Entitlements are units of customer support in Salesforce, such as phone support or web support that represent
@@ -8245,9 +8264,6 @@ Enables the ERM Analytics org perm in your scratch org.
 More Information
 
 Provides 1 seat of the ERMAnalyticsPlus add-on license.
-
-
-Scratch Orgs Scratch Org Features
 
 #### EventLogFile
 
@@ -8285,6 +8301,9 @@ Enables an org to run a maximum of 500,000 expression sets per hour by using Con
 
 [For more information, see Expression Set in Salesforce developer documentation.](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/connect_resources_bre_expression_set.htm)
 
+
+Scratch Orgs Scratch Org Features
+
 #### ExternalIdentityLogin
 
 Allows the scratch org to use Salesforce Customer Identity features associated with your External Identity license.
@@ -8297,9 +8316,6 @@ tracked with Field Audit Trail.
 More Information
 
 Previous name: RetainFieldHistory
-
-
-Scratch Orgs Scratch Org Features
 
 #### FieldService:<value>
 
@@ -8337,6 +8353,9 @@ More Information
 
 [See Assign Field Service Permissions in Salesforce Help for more information.](https://help.salesforce.com/articleView?id=pfs_set_profiles_perms.htm&language=en_US)
 
+
+Scratch Orgs Scratch Org Features
+
 #### FieldServiceLastMileUser:<value>
 
 Adds the Field Service Last Mile permission set license. Indicate a value between 1–25.
@@ -8348,9 +8367,6 @@ Supported Quantities
 #### FieldServiceMobileExtension
 
 Adds the Field Service Mobile Extension permission set license.
-
-
-Scratch Orgs Scratch Org Features
 
 #### FieldServiceMobileUser:<value>
 
@@ -8389,6 +8405,9 @@ Supported Quantities
 
 1–10, Multiplier: 1
 
+
+Scratch Orgs Scratch Org Features
+
 #### FinancialServicesInsuranceUser
 
 Adds the Financial Services Insurance permission set license, and enables access to Financial Services insurance components and objects.
@@ -8396,9 +8415,6 @@ Adds the Financial Services Insurance permission set license, and enables access
 More Information
 
 [See Get Started with Financial Services Cloud for Insurance in Salesforce Help.](https://help.salesforce.com/s/articleView?id=ind.fsc_admin_insurance_landing.htm&type=5&language=en_US)
-
-
-Scratch Orgs Scratch Org Features
 
 #### FinancialServicesUser:<value>
 
@@ -8443,12 +8459,12 @@ Enables the Service Process Studio feature of Financial Service Cloud. Provides 
 and FinancialServicesCloudStardardAddOn licenses. To enable the feature, you must also turn on the StandardServiceProcess setting in
 Setup and grant users the AccessToServiceProcess permission.
 
+
+Scratch Orgs Scratch Org Features
+
 #### Fundraising
 
 Gives users access to Nonprofit Cloud for Fundraising features and objects in Salesforce.
-
-
-Scratch Orgs Scratch Org Features
 
 Scratch Org Definition File
 
@@ -8531,12 +8547,12 @@ Available in Enterprise and Developer Edition scratch orgs.
 Increases the maximum number of delivered event notifications within a 24-hour period, shared by all CometD clients, with generic
 streaming for API version 36.0 and earlier. Indicate a value between 10,000–50,000.
 
+
+Scratch Orgs Scratch Org Features
+
 Supported Quantities
 
 10,000–50,000, Multiplier: 1
-
-
-Scratch Orgs Scratch Org Features
 
 #### Grantmaking
 
@@ -8593,13 +8609,13 @@ More Information
 Salesforce retired the Health Cloud CandidatePatient object in Spring ‘22 to focus on the more robust Lead object. This scratch org
 feature allows you to override that retirement and access the object.
 
+
+Scratch Orgs Scratch Org Features
+
 More Information
 
 [To use this scratch org feature, the Dev Hub org requires the HealthCloudEOLOverride permission. See Candidate Patient Data Entity](https://help.salesforce.com/s/articleView?id=000391944&type=1&language=en_US)
 [Retirement in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=000391944&type=1&language=en_US)
-
-
-Scratch Orgs Scratch Org Features
 
 #### HealthCloudForCmty
 
@@ -8642,15 +8658,15 @@ prospects. And sales reps can rapidly handle prospects with a prioritized list a
 feature can be deployed in scratch orgs, but the settings for the feature can’t be updated through the scratch org definition file. Instead,
 configure settings directly in the Sales Engagement app.
 
+
+Scratch Orgs Scratch Org Features
+
 #### HighVolumePlatformEventAddOn
 
 Increases the daily delivery allocation of high-volume platform events or change data capture events by 100,000 events. This scratch
 #### org feature simulates the purchase of an add-on. If the org has the HighVolumePlatformEventAddOn, the daily allocation is
 
 flexible and isn’t enforced strictly to allow for usage peaks.
-
-
-Scratch Orgs Scratch Org Features
 
 More Information
 
@@ -8694,13 +8710,13 @@ Previous name: ActionPlan.
 
 [For more information and configuration steps, see Enable Actions Plans in Salesforce Help.](https://help.salesforce.com/articleView?id=fsc_action_plans.htm&language=en_US)
 
+
+Scratch Orgs Scratch Org Features
+
 #### IndustriesBranchManagement
 
 Branch Management lets branch managers and administrators track the work output of branches, employees, and customer segments
 in Financial Services Cloud.
-
-
-Scratch Orgs Scratch Org Features
 
 More Information
 
@@ -8747,12 +8763,12 @@ where they derive forecasts based on their customers’ forecasts, transform the
 opportunities into run-rate business. Program based business is common across multiple industries such as process, aerospace, defense,
 automotive, engineer-to-order, and make-to-order environments.
 
+
+Scratch Orgs Scratch Org Features
+
 More Information
 
 [See Learn About Program Based Business in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=ind.pbb_parent_concept.htm&type=5&language=en_US)
-
-
-Scratch Orgs Scratch Org Features
 
 #### IndustriesMfgRebates
 
@@ -8800,12 +8816,12 @@ Enables the CRM Analytics Plus license for CRM Analytics.
 Enables the calculation feature of Insurance. Provides 10 seats each of the BRERuntimeAddOn and OmniStudioRuntime licenses. Also,
 provides one seat each of the OmniStudio and BREPlatformAccess licenses.
 
+
+Scratch Orgs Scratch Org Features
+
 #### InsuranceClaimMgmt
 
 Enables claim management features. Provides one seat of the InsuranceClaimMgmtAddOn license.
-
-
-Scratch Orgs Scratch Org Features
 
 More Information
 
@@ -8871,6 +8887,12 @@ To enable InvestigativeCaseManagement, add these features and settings to your s
 
       "enableBenefitManagementPreference": true,
 
+```
+
+
+Scratch Orgs Scratch Org Features
+
+```
       "enableTimelinePref": true,
 
       "enableGroupMembershipPref": true,
@@ -8881,12 +8903,6 @@ To enable InvestigativeCaseManagement, add these features and settings to your s
 
       "enableInteractionSummaryPref": true,
 
-```
-
-
-Scratch Orgs Scratch Org Features
-
-```
       "enableEnhancedUIForISPref": true,
 
       "enableInteractionCstmSharingPref": true,
@@ -8964,15 +8980,15 @@ To enable InvoiceManagement, add these settings to your scratch org definition f
 
    }
 
-#### Interaction
-
 ```
-
-Enables flows. A flow is the part of Salesforce Flow that collects data and performs actions in your Salesforce org or an external system.
-Salesforce Flow provides two types of flows: screen flows and autolaunched flows.
 
 
 Scratch Orgs Scratch Org Features
+
+#### Interaction
+
+Enables flows. A flow is the part of Salesforce Flow that collects data and performs actions in your Salesforce org or an external system.
+Salesforce Flow provides two types of flows: screen flows and autolaunched flows.
 
 More Information
 
@@ -9019,13 +9035,13 @@ More Information
 
 [See Manage Appointments with Lightning Scheduler in Salesforce Help for more information.](https://help.salesforce.com/articleView?id=ls_overview.htm&type=5&language=en_US)
 
+
+Scratch Orgs Scratch Org Features
+
 #### LightningServiceConsole
 
 Assigns the Lightning Service Console License to your scratch org so you can use the Lightning Service Console and access features that
 help manage cases faster.
-
-
-Scratch Orgs Scratch Org Features
 
 More Information
 
@@ -9070,12 +9086,12 @@ More Information
 Enables the Loyalty Management - Starter license. Create loyalty programs and set up loyalty program-specific processes that allow you
 to recognize, rewards, and retain customers.
 
+
+Scratch Orgs Scratch Org Features
+
 More Information
 
 [See Loyalty Management in Salesforce Help for more information.](https://help.salesforce.com/s/articleView?id=xcloud.loyaltyoverview.htm&type=5&language=en_US)
-
-
-Scratch Orgs Scratch Org Features
 
 #### LoyaltyMaximumPartners:<value>
 
@@ -9122,12 +9138,12 @@ Supported Quantities
 
 1–50,000,000, Multiplier: 1
 
+
+Scratch Orgs Scratch Org Features
+
 #### LoyaltyMaxTrxnJournals:<value>
 
 Increases the number of Transaction Journal records that can be stored in an org that has the Loyalty Management - Start license enabled.
-
-
-Scratch Orgs Scratch Org Features
 
 Supported Quantities
 
@@ -9194,6 +9210,9 @@ Scratch Org Definition File
 
 ```
 
+
+Scratch Orgs Scratch Org Features
+
 More Information
 
 Marketing Cloud Growth edition uses Data Cloud to store engagement events, create segments, personalize messages, process decisions
@@ -9202,9 +9221,6 @@ Scratch Org permission enabled in their Partner Business Orgs.
 
 [You can enable Data Cloud in your scratch org by creating a case with Salesforce Partner Support. Use this template as a guide when](https://partners.salesforce.com/)
 you submit your request, replacing _`{your_org_id_here}`_ with the ID of your Partner Business Org:
-
-
-Scratch Orgs Scratch Org Features
 
 **•** **Subject** : _`Enable Data Cloud for scratch orgs in Dev Hub`_
 
@@ -9281,6 +9297,12 @@ Add these options to your scratch org definition file:
 
       }
 
+```
+
+
+Scratch Orgs Scratch Org Features
+
+```
      }
 
    }
@@ -9291,9 +9313,6 @@ More Information
 
 [For configuration steps, see Configure Net Zero Cloud and Enable the Disclosure and Compliance Hub in the Set Up and Maintain Net](https://help.salesforce.com/s/articleView?id=netzero_admin.htm&language=en_US)
 Zero Cloud guide in Salesforce Help.
-
-
-Scratch Orgs Scratch Org Features
 
 #### MaxActiveDPEDefs:<value>
 
@@ -9337,6 +9356,9 @@ Supported Quantities
 
 1–50, Multiplier: 1
 
+
+Scratch Orgs Scratch Org Features
+
 #### MaxDecisionTableAllowed:<value>
 
 Increases the number of decision tables rules that can be created in the org. Indicate a value between 1–30.
@@ -9344,9 +9366,6 @@ Increases the number of decision tables rules that can be created in the org. In
 Supported Quantities
 
 1–30, Multiplier: 1
-
-
-Scratch Orgs Scratch Org Features
 
 #### MaxFavoritesAllowed:<value>
 
@@ -9389,6 +9408,9 @@ Supported Quantities
 
 1–500, Multiplier: 1
 
+
+Scratch Orgs Scratch Org Features
+
 #### MaxNoOfLexThemesAllowed:<value>
 
 Increases the number of Themes allowed. Themes allow users to configure colors, fonts, images, sizes, and more. Access the list of
@@ -9397,9 +9419,6 @@ Themes in Setup, under Themes and Branding. Indicate a value between 0–300.
 Supported Quantities
 
 0–300, Multiplier: 1
-
-
-Scratch Orgs Scratch Org Features
 
 #### MaxOutputColumnsPerDT:<value>
 
@@ -9442,6 +9461,9 @@ Supported Quantities
 
 20–1,000, Multiplier: 1
 
+
+Scratch Orgs Scratch Org Features
+
 #### MaxWishlistsItemsPerWishlist
 
 Limits the number of wishlist items per wishlist. The default value is 500.
@@ -9449,9 +9471,6 @@ Limits the number of wishlist items per wishlist. The default value is 500.
 More Information
 
 [For more information, see Salesforce Help at Salesforce B2B Commerce and D2C Commerce](https://help.salesforce.com/s/articleView?id=commerce.comm_intro.htm&type=5&language=en_US)
-
-
-Scratch Orgs Scratch Org Features
 
 #### MaxWishlistsPerStoreAccUsr
 
@@ -9495,12 +9514,12 @@ More Information
 
 Increases the file size (in megabytes) for Field Service Mobile extensions. Indicate a value between 1–2,000.
 
+
+Scratch Orgs Scratch Org Features
+
 Supported Quantities
 
 1–2,000, Multiplier: 1
-
-
-Scratch Orgs Scratch Org Features
 
 #### MobileSecurity
 
@@ -9561,6 +9580,9 @@ Requires client certificates to verify inbound requests for mutual authenticatio
 
 Enables access to a myTrailhead enablement site in a scratch org.
 
+
+Scratch Orgs Scratch Org Features
+
 Scratch Org Definition File
 
 Add these options to your scratch org definition file:
@@ -9572,12 +9594,6 @@ Add these options to your scratch org definition file:
 
      "edition": "Enterprise",
 
-```
-
-
-Scratch Orgs Scratch Org Features
-
-```
      "features": ["MyTrailhead"],
 
      "settings": {
@@ -9629,12 +9645,12 @@ Enables Omnistudio metadata API. Using this API, customers can deploy and retrie
 
 Enables business users to execute OmniScripts, DataMappers, FlexCards, and so on in the employee facing applications.
 
+
+Scratch Orgs Scratch Org Features
+
 #### OmnistudioDesigner
 
 Enables administrator or developer to create new OmniScripts/ DataMappers / Integration Procedures instances.
-
-
-Scratch Orgs Scratch Org Features
 
 #### OrderManagement
 
@@ -9694,6 +9710,9 @@ To enable OrderSaveLogicEnabled, update your scratch org definitions file.
 
 Enables scratch org support for both New Order Save Behavior and Old Order Save Behavior.
 
+
+Scratch Orgs Scratch Org Features
+
 Scratch Org Definition File
 
 To enable OrderSaveLogicEnabled, update your scratch org definitions file.
@@ -9707,12 +9726,6 @@ To enable OrderSaveLogicEnabled, update your scratch org definitions file.
 
       "orderSettings": {
 
-```
-
-
-Scratch Orgs Scratch Org Features
-
-```
        "enableOrders": true
 
       }
@@ -14970,7 +14983,7 @@ Salesforce DX MCP Server and Tools (Beta)
 
 **•** **Lightning Types** : Create and enhance custom Lightning types to define complex data structures
 and build custom user interfaces for Agentforce, Prompt Builder, and other Salesforce applications.
-[See the Lightning Types MCP Tool documentation.](https://developer.salesforce.com/docs/einstein/genai/guide/lightning-types-mcp-tool.html)
+[See the Lightning Types MCP Tool documentation.](https://developer.salesforce.com/docs/platform/lightning-types/guide/lightning-types-mcp-tool.html)
 
 MCP Terminology
 

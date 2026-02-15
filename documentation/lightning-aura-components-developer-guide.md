@@ -1,7 +1,7 @@
 # Lightning Aura Components Developer Guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/lightning.pdf
-> Fetched: 2026-02-03T09:36:13Z
+> Fetched: 2026-02-15T21:29:47Z
 Lightning Aura Components
 Developer Guide
 
