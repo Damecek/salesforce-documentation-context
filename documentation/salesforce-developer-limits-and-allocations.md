@@ -1,7 +1,7 @@
 # SALESFORCE DEVELOPER LIMITS AND ALLOCATIONS
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf
-> Fetched: 2026-02-15T21:31:50Z
+> Fetched: 2026-02-19T08:11:02Z
 Summary
 
 Find the most critical limits

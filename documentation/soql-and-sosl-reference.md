@@ -1,7 +1,7 @@
 # SOQL and SOSL Reference
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
-> Fetched: 2026-02-15T21:27:18Z
+> Fetched: 2026-02-19T08:42:53Z
 SOQL and SOSL Reference
 
 Version 66.0, Spring ’26

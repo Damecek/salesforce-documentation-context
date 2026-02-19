@@ -37,8 +37,10 @@ def run_update(
     github_raw_base: str | None,
     github_raw_branch: str | None,
     http_timeout_s: float,
+    max_md_bytes: int,
 ) -> int:
     concurrency = concurrency if concurrency and concurrency > 0 else 4
+    max_md_bytes = max(max_md_bytes, 1)
 
     src_path = Path(src_file)
     contents = src_path.read_text(encoding="utf-8") if src_path.exists() else ""
@@ -63,6 +65,7 @@ def run_update(
             github_raw_base=github_raw_base,
             github_raw_branch=github_raw_branch,
             http_timeout_s=http_timeout_s,
+            max_md_bytes=max_md_bytes,
         )
     )
     return exit_code
@@ -78,6 +81,7 @@ async def _run_update_async(
     github_raw_base: str | None,
     github_raw_branch: str | None,
     http_timeout_s: float,
+    max_md_bytes: int,
 ) -> int:
     failures: list[tuple[str, str]] = []
 
@@ -95,6 +99,7 @@ async def _run_update_async(
                         docs_dir=docs_dir,
                         cache_dir=cache_dir,
                         force=force,
+                        max_md_bytes=max_md_bytes,
                     )
                 except Exception as e:
                     failures.append((entry.url, str(e)))
@@ -118,6 +123,7 @@ async def _process_entry(
     docs_dir: str,
     cache_dir: str,
     force: bool,
+    max_md_bytes: int,
 ) -> None:
     out_abs = safe_join_under(docs_dir, entry.out_file)
     out_file_url = entry.out_file.replace("\\", "/")
@@ -126,7 +132,7 @@ async def _process_entry(
     fetched_at_iso = _iso_now()
     pdf_bytes, changed = await _fetch_pdf_with_cache(client=client, url=entry.url, cache_dir=cache_dir)
 
-    if not force and not changed and out_abs.exists():
+    if not force and not changed and _output_exists(out_abs):
         sys.stdout.write(f"= {title_from_entry(entry)} (unchanged) -> {out_rel}\n")
         return
 
@@ -136,8 +142,11 @@ async def _process_entry(
         source_url=entry.url,
         fetched_at_iso=fetched_at_iso,
     )
-    write_text_atomic(out_abs, md)
-    sys.stdout.write(f"✓ {title_from_entry(entry)} -> {out_rel}\n")
+    written_paths = _write_markdown_outputs(base_abs=out_abs, markdown=md, max_md_bytes=max_md_bytes)
+    if len(written_paths) == 1:
+        sys.stdout.write(f"✓ {title_from_entry(entry)} -> {out_rel}\n")
+    else:
+        sys.stdout.write(f"✓ {title_from_entry(entry)} -> {out_rel} (split into {len(written_paths)} parts)\n")
 
 
 def title_from_entry(entry: SrcEntry) -> str:
@@ -244,3 +253,91 @@ def _clear_docs_dir(docs_dir: str) -> None:
             shutil.rmtree(child)
         else:
             child.unlink()
+
+
+def _output_exists(base_abs: Path) -> bool:
+    if base_abs.exists():
+        return True
+    return any(_iter_part_paths(base_abs))
+
+
+def _iter_part_paths(base_abs: Path):
+    stem, suffix = base_abs.stem, base_abs.suffix
+    yield from base_abs.parent.glob(f"{stem}-part-*{suffix}")
+
+
+def _remove_output_variants(base_abs: Path) -> None:
+    if base_abs.exists():
+        base_abs.unlink()
+    for part in _iter_part_paths(base_abs):
+        if part.exists():
+            part.unlink()
+
+
+def _write_markdown_outputs(*, base_abs: Path, markdown: str, max_md_bytes: int) -> list[str]:
+    chunks = _split_markdown_by_size(markdown, max_md_bytes=max_md_bytes)
+    _remove_output_variants(base_abs)
+
+    if len(chunks) == 1:
+        write_text_atomic(base_abs, chunks[0])
+        return [base_abs.name]
+
+    written: list[str] = []
+    width = max(2, len(str(len(chunks))))
+    for i, chunk in enumerate(chunks, start=1):
+        part_name = f"{base_abs.stem}-part-{str(i).zfill(width)}{base_abs.suffix}"
+        part_path = base_abs.with_name(part_name)
+        write_text_atomic(part_path, chunk)
+        written.append(part_path.name)
+    return written
+
+
+def _split_markdown_by_size(text: str, *, max_md_bytes: int) -> list[str]:
+    if len(text.encode("utf-8")) <= max_md_bytes:
+        return [text]
+
+    chunks: list[str] = []
+    current: list[str] = []
+    current_bytes = 0
+
+    def flush() -> None:
+        nonlocal current, current_bytes
+        if current:
+            chunks.append("".join(current))
+            current = []
+            current_bytes = 0
+
+    for line in text.splitlines(keepends=True):
+        line_bytes = len(line.encode("utf-8"))
+        if line_bytes > max_md_bytes:
+            flush()
+            for line_part in _split_oversized_text(line, max_md_bytes=max_md_bytes):
+                chunks.append(line_part)
+            continue
+
+        if current and current_bytes + line_bytes > max_md_bytes:
+            flush()
+        current.append(line)
+        current_bytes += line_bytes
+
+    flush()
+    return chunks if chunks else [text]
+
+
+def _split_oversized_text(text: str, *, max_md_bytes: int) -> list[str]:
+    parts: list[str] = []
+    current: list[str] = []
+    current_bytes = 0
+
+    for ch in text:
+        ch_bytes = len(ch.encode("utf-8"))
+        if current and current_bytes + ch_bytes > max_md_bytes:
+            parts.append("".join(current))
+            current = []
+            current_bytes = 0
+        current.append(ch)
+        current_bytes += ch_bytes
+
+    if current:
+        parts.append("".join(current))
+    return parts if parts else [text]

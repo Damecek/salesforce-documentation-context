@@ -58,6 +58,12 @@ def main(argv: list[str] | None = None) -> int:
         default=float(os.environ.get("HTTP_TIMEOUT", "60")),
         help="HTTP timeout in seconds (default: 60; env: HTTP_TIMEOUT).",
     )
+    parser.add_argument(
+        "--max-md-bytes",
+        type=int,
+        default=int(os.environ.get("MAX_MD_BYTES", "899999")),
+        help="Maximum size of one markdown output file in bytes (default: 899999; env: MAX_MD_BYTES).",
+    )
 
     args = parser.parse_args(argv)
     return run_update(
@@ -69,6 +75,7 @@ def main(argv: list[str] | None = None) -> int:
         github_raw_base=args.github_raw_base,
         github_raw_branch=args.github_raw_branch,
         http_timeout_s=args.timeout,
+        max_md_bytes=args.max_md_bytes,
     )
 
 
@@ -79,4 +86,3 @@ def _env_flag(name: str) -> bool:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

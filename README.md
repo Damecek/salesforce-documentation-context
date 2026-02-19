@@ -39,7 +39,7 @@ FORCE=1 PDF_IGNORE_IMAGES=1 PDF_FORCE_TEXT=1 uv run update
 
 Output:
 
-- Markdown files in `documentation/` (one per entry in `src.txt`).
+- Markdown files in `documentation/` (one or more per entry in `src.txt`; large outputs are split).
 - Download cache in `.cache/` (ETag / Last-Modified when available).
 - Updated `llms.txt` with GitHub Raw links.
 
@@ -100,6 +100,7 @@ The updater supports these env vars:
 - `CONCURRENCY` (default `4`)
 - `FORCE` (set to `1`/`true` to regenerate Markdown even if the PDF content is unchanged)
 - `HTTP_TIMEOUT` (default `60`, seconds)
+- `MAX_MD_BYTES` (default `899999`; split markdown outputs so each file stays under this size)
 - `GITHUB_RAW_BASE` (e.g. `https://raw.githubusercontent.com/OWNER/REPO/main`)
 - `GITHUB_RAW_BRANCH` (override branch used for raw links)
 
