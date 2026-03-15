@@ -1,3 +1,45 @@
+       "ButtonFont" : "Salesforce Sans",
+
+       "ButtonFontSize" : "1rem",
+
+       "ButtonFontStyle" : "normal",
+
+       "ButtonFontWeight" : "400",
+
+       "ButtonHoverColor" : "var(--dxp-s-button-color-1)",
+
+       "ButtonLargeBorderRadius" : "4px",
+
+       "ButtonLargeFontSize" : "1.25rem",
+
+       "ButtonLargePadding" : "1.25rem",
+
+       "ButtonLetterSpacing" : "0em",
+
+       "ButtonLineHeight" : "2",
+
+       "ButtonPadding" : "1rem",
+
+       "ButtonSmallBorderRadius" : "4px",
+
+       "ButtonSmallFontSize" : "0.75rem",
+
+       "ButtonSmallPadding" : "0.75rem",
+
+       "ButtonTextTransform" : "none",
+
+       "ColumnSpacerSizeDesktop" : "1rem",
+
+```
+
+
+Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
+
+```
+       "ColumnSpacerSizeMobile" : "0.75rem",
+
+       "ComponentSpacerSizeDesktop" : "1.5rem",
+
        "ComponentSpacerSizeMobile" : "1.5rem",
 
        "DropdownBackgroundColor" : "var(--dxp-g-root)",
@@ -1506,8 +1548,6 @@ omniScriptCnfgApiName
 
 omniScriptConfiguration
 
-versionNumber
-
 ```
 
 **Field Type**
@@ -1545,6 +1585,9 @@ Required.
 A user-friendly name for DisclosureDefinitionVersion, which is defined when the
 DisclosureDefinitionVersion is created.
 
+**Field Type**
+string
+
 **Description**
 The API name of the Omniscript configuration that's associated with the disclosure
 definition version. This field is required only when `authoringMode` isn’t
@@ -1560,13 +1603,18 @@ Note: The value of this field is automatically populated using the API name of
 the OmniScript configuration specified in the `omniScriptCnfgApiName`
 field.
 
-**Field Type**
-string
-
 
 Metadata Types DisclosureDefinitionVersion
 
 **Field Name** **Description**
+
+```
+versionNumber
+
+```
+
+**Field Type**
+string
 
 **Description**
 
@@ -1579,76 +1627,76 @@ Declarative Metadata Sample Definition
 The following is an example of a DisclosureDefinitionVersion component.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <DisclosureDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+<DisclosureDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <description>This is GRI Disclosure Definition Version</description>
+   <description>This is GRI Disclosure Definition Version</description>
 
-      <versionNumber>disclosure definition version number</versionNumber>
+   <versionNumber>disclosure definition version number</versionNumber>
 
-      <isActive>false</isActive>
+   <isActive>false</isActive>
 
-      <disclosureDefinition>df10</disclosureDefinition>
+   <disclosureDefinition>df10</disclosureDefinition>
 
-      <omniScriptConfiguration>omni script configuration</omniScriptConfiguration>
+   <omniScriptConfiguration>omni script configuration</omniScriptConfiguration>
 
-      <omniScriptCnfgApiName>omni script config api name</omniScriptCnfgApiName>
+   <omniScriptCnfgApiName>omni script config api name</omniScriptCnfgApiName>
 
-      <isCurrentVersion>true</isCurrentVersion>
+   <isCurrentVersion>true</isCurrentVersion>
 
-      <disclosureDefCurrVer>df10.Id</disclosureDefCurrVer>
+   <disclosureDefCurrVer>df10.Id</disclosureDefCurrVer>
 
-      <documentTemplateGlobalKey>document template global key</documentTemplateGlobalKey>
+   <documentTemplateGlobalKey>document template global key</documentTemplateGlobalKey>
 
-      <authoringMode>OmniScriptForm</authoringMode>
+   <authoringMode>OmniScriptForm</authoringMode>
 
-      <masterLabel>GRI</masterLabel>
+   <masterLabel>GRI</masterLabel>
 
-      <isProtected>false</isProtected>
+   <isProtected>false</isProtected>
 
-   </DisclosureDefinitionVersion>
+</DisclosureDefinitionVersion>
 
 ```
 
 The following is an example `package.xml` that references the previous definition.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package
+<Package
 
-    xmlns="http://soap.sforce.com/2006/04/metadata">
+ xmlns="http://soap.sforce.com/2006/04/metadata">
 
-    <fullName>Pkg</fullName>
+ <fullName>Pkg</fullName>
 
-    <types>
+ <types>
 
-     <members>GRI</members>
+  <members>GRI</members>
 
-     <name>DisclosureDefinitionVersion</name>
+  <name>DisclosureDefinitionVersion</name>
 
-    </types>
+ </types>
 
-    <types>
+ <types>
 
-     <members>df10</members>
+  <members>df10</members>
 
-     <name>DisclosureDefinition</name>
+  <name>DisclosureDefinition</name>
 
-    </types>
+ </types>
 
-    <types>
+ <types>
 
-     <members>dt10</members>
+  <members>dt10</members>
 
-     <name>DisclosureType</name>
+  <name>DisclosureType</name>
 
-    </types>
+ </types>
 
-    <version>60.0</version>
+ <version>60.0</version>
 
-   </Package>
+</Package>
 
 ```
 
@@ -10366,13 +10414,16 @@ _Developer Guide:_ [ExperienceBundle for Experience Builder Sites](https://devel
 
 ### ExperiencePropertyTypeBundle (Beta)
 
-Represents a property type. When you create a custom property type for a Lightning web component, deploy this bundle to your org.
+Represents a property type. Replaced in Spring ’26 by the updated LightningPropertyType. When you create a custom property type for
+a Lightning web component, use LightningPropertyType instead, and deploy that bundle to your org.
 
 Note: This feature is a Beta Service. Customer may opt to try such Beta Service in its sole discretion. Any use of the Beta Service
 [is subject to the applicable Beta Services Terms provided at Agreements and Terms.](https://www.salesforce.com/company/legal/agreements/)
 
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
+
+[To create a custom property type, see LightningPropertyType.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_lightningtypebundle.htm)
 
 Parent Type
 
@@ -14586,8 +14637,7 @@ using the manifest file, see Deploying and Retrieving Metadata with the Zip File
 
 ### Metadata Types ExternalServiceRegistration ExternalServiceRegistration
 
-Represents the external service configuration for an org. This type extends the Metadata metadata type and inherits its `fullName`
-field.
+Represents the external service configuration for an org.
 
 File Suffix and Directory Location
 
@@ -14604,7 +14654,7 @@ Fields
 **Field Name** **Field Type** **Description**
 
 `catalogedApiVersion` string A version of an API synced from an external source and managed for
-consumption in Salesforce using API Catalog.
+consumption in Salesforce by using API Catalog.
 
 `description` string The external service description defined when the service is created.
 
@@ -14641,12 +14691,12 @@ field contains the named query API name.
 methods exposed as REST resources or methods that are
 Aura-enabled, this field contains the Apex class name.
 
+Available in API version 66.0 and later.
+
 
 Metadata Types ExternalServiceRegistration
 
 **Field Name** **Field Type** **Description**
-
-Available in API version 66.0 and later.
 
 ```
 registrationProviderType
@@ -14659,36 +14709,50 @@ type string)
 
 **•** `AgentActionOutputs` —Reserved for internal use.
 
-**•** `Anypoint` —The API spec is managed in MuleSoft Anypoint
-Platform. Available in API version 63.0 and later.
+**•** `AgentToAgent` —The API specification represents the external
+service schemas that enable communication between AI agents.
+Available in API version 66.0 and later.
 
-**•** `ApexRest` —The API spec was created from an Apex REST class.
-Available in API version 63.0 and later.
+**•** `Anypoint` —The API specification is managed in the MuleSoft
+Anypoint Platform. Available in API version 63.0 and later.
 
-**•** `AuraEnabled` —The API spec was created from an Apex class
-that has AuraEnabled methods. Available in API version 65.0 and
-later.
+**•** `ApexRest` —The API specification was created from an Apex REST
+class. Available in API version 63.0 and later.
 
-**•** `Custom` —The API spec was manually configured.
+**•** `AuraEnabled` —The API specification was created from an Apex
+class that has AuraEnabled methods. Available in API version 65.0
+and later.
+
+**•** `ContextDef` —The API specification used to create dynamic Apex
+classes for the related context definition structure. Available in API
+version 66.0 and later.
+
+**•** `Custom` —The API specification was manually configured.
+
+**•** `CustomExternalConnector` —The API specification
+represents a custom partner-created version of an external
+connection. Available in API version 66.0 and later.
 
 **•** `DocumentProcessing` —Reserved for internal use.
 
-**•** `ExternalConnector` —The API spec represents an external
-connection.
+**•** `ExternalConnector` —The API specification represents an
+external connection.
 
-**•** `Heroku` —The API spec represents a Heroku app.
+**•** `Heroku` —The API specification represents a Heroku app.
 
-**•** `MuleSoft` —The API spec was selected from MuleSoft. Use
-Anypoint for API Catalog MuleSoft sources.
+**•** `MuleSoft` —The API specification was selected from MuleSoft.
+Use Anypoint for MuleSoft for Agentforce: API Catalog MuleSoft
+sources.
 
-**•** `NamedQuery` —The API spec represents a named query REST
-endpoint. Available in API version 64.0 and later.
+**•** `NamedQuery` —The API specification represents a named query
+REST endpoint. Available in API version 64.0 and later.
 
-**•** `SchemaInferred` —The API spec was provided during the HTTP
-Callout configuration process. Available in API version 57.0 and later.
+**•** `SchemaInferred` —The API specification was provided during
+the HTTP Callout configuration process. Available in API version 57.0
+and later.
 
-**•** `Standard` —The API spec was defined when an external service
-was created.
+**•** `Standard` —The API specification was defined when an external
+service was created.
 
 `schema` string The content of the OpenAPI 2.0.x or OpenAPI 3.0.x schema in JSON or
 YAML format. Nillable.
@@ -14699,27 +14763,27 @@ YAML format. Nillable.
 `schemaType` string The schema format. OpenAPI for Open API 2.0.x or Open API 3.0.x. If not
 specified, schema type is derived based on the schema content. Nillable.
 
+
+Metadata Types ExternalServiceRegistration
+
+**Field Name** **Field Type** **Description**
+
 `schemaUploadFileExtension` string The file’s extension. Populated when a user selects **Upload from local**
 during registration.
 
 `schemaUploadFileName` string The file’s name without the file extension. Populated when a user selects
 **Upload from local** during registration.
 
-`schemaUrl` string The path should begin with "/" and be relative to the named credential
+`schemaUrl` string The path must begin with "/" and be relative to the named credential
 endpoint.
 
 `serviceBinding` string
 
+`serviceName` string
+
 Used to map non-supported media types for this external service
 registration to supported media types. Nillable. Available in API version
 53.0 and later.
-
-
-Metadata Types ExternalServiceRegistration
-
-**Field Name** **Field Type** **Description**
-
-`serviceName` string
 
 The name of the cataloged API service that this external service
 registration belongs to. Available in API version 63.0 and later. This field
@@ -14734,9 +14798,7 @@ use.
 
 `systemVersion` int
 
-ExternalServiceOperation
-
-The internal version of External Services used to register the API
+The internal version of External Services that is used to register the API
 specification. Available in API version 55.0 and later. The system versions
 are independent of API versions.
 
@@ -14749,26 +14811,32 @@ length.
 within 80 characters.
 
 **•** `4` —Removed the default character set when making a callout to an
-external service. If you want to specify a character set, include it in
-the OpenAPI spec, for example: `contentType:`
+external service. To specify a character set, include it in the OpenAPI
+specification, for example: `contentType:`
 `application/xml; charset=utf-8` .
 
 **•** `5` —Introduced asynchronous callouts with callbacks from Apex.
 
-**•** `6` —Added support for OAS discriminator mapping.
+**•** `6` —Added support for OpenAPI Specification (OAS) discriminator
+mapping.
 
 **•** `7` —Added support for property names that begin with a number.
 
 For input parameters on invocable actions, encodes the keyword
-`connection` as `q0connection` .
+`connection` as `reconnection` .
 
 **•** `8` —Current version.
 
 This field is read-only. You can’t upgrade an external service to a newer
-system version. If you want to take advantage of functionality in a newer
-system version, you must create an external service using the same
-OpenAPI spec and then replace any references to the old external service.
-[See Register an External Service in Salesforce Help.](https://help.salesforce.com/s/articleView?id=platform.external_services_register.htm&language=en_US)
+system version. To take advantage of functionality in a newer system
+version, you must create an external service using the same OpenAPI
+spec and then replace any references to the old external service. See
+[Register an External Service in Salesforce Help.](https://help.salesforce.com/s/articleView?id=platform.external_services_register.htm&language=en_US)
+
+
+Metadata Types ExternalServiceRegistration
+
+ExternalServiceOperation
 
 **Field Name** **Field Type** **Description**
 
@@ -14776,9 +14844,6 @@ OpenAPI spec and then replace any references to the old external service.
 ( `false` ).
 
 `name` string Required. The operation’s name.
-
-
-Metadata Types ExternalServiceRegistration
 
 Declarative Metadata Sample Definition
 
@@ -14851,6 +14916,9 @@ The following is an example of an ExternalServiceRegistration component that ref
 
 ```
 
+
+### Metadata Types ExtlClntAppCanvasSettings
+
 serviceBinding
 
 The following JSON-encoded string defines the mapping of a non-supported media type to a supported media type for external service
@@ -14866,11 +14934,8 @@ request and response body serialization.
 ```
 
 The non-supported media type `application/x-acme-json` is mapped to the supported media type `application/json`
-for this External Services registration. The External Services runtime takes into account the non-supported media type for request and
-response header processing and serializes the request and response content by the mapped supported media type.
-
-
-### Metadata Types ExtlClntAppCanvasSettings
+for this External Services registration. The External Services runtime considers the non-supported media type for request and response
+header processing. It serializes the request and response content by the mapped supported media type.
 
 Wildcard Support in the Manifest File
 
@@ -14903,6 +14968,9 @@ Special Access Rules
 
 There are no additional access requirements that are specific to this type.
 
+
+Metadata Types ExtlClntAppCanvasSettings
+
 Fields
 
 **Field Name** **Field Type** **Description**
@@ -14921,12 +14989,6 @@ the administrator installs the canvas app, they
 implicitly allow access for users. Therefore, the
 user isn’t prompted to allow the third party to
 access their user information. When you use this
-
-
-Metadata Types ExtlClntAppCanvasSettings
-
-**Field Name** **Field Type** **Description**
-
 access method, the authentication is posted
 directly to the canvas app URL.
 
@@ -14958,6 +15020,7 @@ on a Visualforce page.
 
 `canvasOptions` CanvasOptions (enumeration of type string)[]
 
+
 Indicates whether to hide the **Share** button and
 header in the publisher for your canvas app. Valid
 values are:
@@ -14967,6 +15030,10 @@ the publisher for the related canvas app.
 
 **•** `HideHeader` —The header is hidden in the
 publisher for the related canvas app.
+
+Metadata Types ExtlClntAppCanvasSettings
+
+**Field Name** **Field Type** **Description**
 
 `canvasUrl` string Required. The URL of the third-party app that’s
 exposed as a canvas app.
@@ -14984,11 +15051,6 @@ which provider initiates the SSO flow.
 **•** `IdpInitiated` —Identity provider initiated.
 Salesforce makes the initial request to start the
 SSO flow.
-
-
-### Metadata Types ExtlClntAppConfigurablePolicies
-
-**Field Name** **Field Type** **Description**
 
 **•** `SpInitiated` —Service provider initiated. The
 canvas app starts the SSO flow after it’s invoked.
@@ -15053,6 +15115,12 @@ The following is an example `package.xml` that references the previous definitio
 
         <name>ExtlClntAppCanvasSettings</name>
 
+```
+
+
+### Metadata Types ExtlClntAppConfigurablePolicies
+
+```
       </types>
 
       <version>66.0</version>
@@ -15070,20 +15138,17 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents the policies for an external client app to disable or enable plugins.
 
-
-Metadata Types ExtlClntAppConfigurablePolicies
-
 Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-ExtlClntAppConfigurablePolicies components have the suffix `.ecaPlcy` and are stored in the `extlClntAppPolicies` folder.
+### ExtlClntAppConfigurablePolicies components have the suffix .ecaPlcy and are stored in the extlClntAppPolicies folder.
 
 Version
 
-ExtlClntAppConfigurablePolicies components are available in API version 60.0 and later.
+### ExtlClntAppConfigurablePolicies components are available in API version 60.0 and later.
 
 Special Access Rules
 
@@ -15099,10 +15164,6 @@ externalClientApplication
 
 isEnabled
 
-isCanvasPluginEnabled
-
-isMobilePluginEnabled
-
 ```
 
 **Field Type**
@@ -15117,12 +15178,32 @@ The name of the external client app associated with the plugins.
 **Field Type**
 boolean
 
+
+Metadata Types ExtlClntAppConfigurablePolicies
+
+**Field Name** **Description**
+
 **Description**
 
 Required.
 
 If `true`, all plugins are enabled unless individually disabled. If `false`, all plugins are
 disabled. The default value is `true` . Available in API version 60.0 and later.
+
+```
+isCanvasPluginEnabled
+
+isMobilePluginEnabled
+
+isNotificationPluginEnabled
+
+isOauthPluginEnabled
+
+isPushPluginEnabled
+
+isSamlPluginEnabled
+
+```
 
 **Field Type**
 boolean
@@ -15134,29 +15215,9 @@ The default value is `true` . Available in API version 66.0 and later.
 **Field Type**
 boolean
 
-
-Metadata Types ExtlClntAppConfigurablePolicies
-
-**Field Name** **Description**
-
 **Description**
 If `true`, the Mobile plugin is enabled. If `false`, the Mobile plugin is disabled. The
 default value is `true` . Available in API version 63.0 and later.
-
-```
-isNotificationPluginEnabled
-
-isOauthPluginEnabled
-
-isPushPluginEnabled
-
-isSamlPluginEnabled
-
-label
-
-startPage
-
-```
 
 **Field Type**
 boolean
@@ -15186,6 +15247,20 @@ boolean
 If `true`, the SAML plugin is enabled. If `false`, the SAML plugin is disabled. The
 default value is `true` . Available in API version 63.0 and later.
 
+
+Metadata Types ExtlClntAppConfigurablePolicies
+
+**Field Name** **Description**
+
+```
+label
+
+startPage
+
+```
+
+startUrl
+
 **Field Type**
 string
 
@@ -15205,13 +15280,6 @@ Determines which URL to use for the start page.
 **•** OAuth
 
 Available in API version 63.0 and later.
-
-
-Metadata Types ExtlClntAppConfigurablePolicies
-
-**Field Name** **Description**
-
-startUrl
 
 **Field Type**
 string
@@ -15267,437 +15335,12 @@ This example `package.xml` references the previous definition.
 
      <members>*</members>
 
-     <name>ExternalClientApplication</name>
-
-   </types>
-
-   <types>
-
-     <members>*</members>
-
-     <name>ExtlClntAppOauthSettings</name>
-
-   </types>
-
-   <types>
-
-     <members>*</members>
-
-     <name>ExtlClntAppGlobalOauthSettings</name>
-
-   </types>
-
-   <types>
-
-     <members>*</members>
-
-     <name>ExtlClntAppOauthConfigurablePolicies</name>
-
-   </types>
-
-   <types>
-
-     <members>*</members>
-
-     <name>ExtlClntAppConfigurablePolicies</name>
-
-   </types>
-
 ```
 
 
 ### Metadata Types ExtlClntAppGlobalOauthSettings
 
 ```
-      <version>60.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### ExtlClntAppGlobalOauthSettings
-
-Represents the global settings for the OAuth plugin in an external client app. These settings include private and sensitive OAuth consumer
-information that can’t be packaged and must not be added to source control.
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-### ExtlClntAppGlobalOauthSettings components have the suffix .ecaGlblOauth and are stored in the
-
-`extlClntAppGlobalOauthSets` folder.
-
-Version
-
-### ExtlClntAppGlobalOauthSettings components are available in API version 59.0 and later.
-
-Special Access Rules
-
-Access to the OAuth plugin requires orgs to enable the Allow Access to OAuth Consumer Secrets via Metadata API permission in Setup.
-The View External Client Apps Consumer Secrets in Metadata user permission is required for users with developer roles to configure
-global OAuth settings.
-
-Fields
-
-**Field Name** **Description**
-
-```
-callbackUrl
-
-certificate
-
-```
-
-**Field Type**
-string
-
-**Description**
-The endpoint that Salesforce calls back to your external client app during OAuth. It’s
-the OAuth redirect_uri.
-
-**Field Type**
-string
-
-
-Metadata Types ExtlClntAppGlobalOauthSettings
-
-**Field Name** **Description**
-
-**Description**
-If the app uses a certificate, the PEM-encoded certificate string. When provided, it
-enables the JWT Bearer flow. Available in API version 60.0 and later.
-
-```
-consumerKey
-
-consumerSecret
-
-externalClientApplication
-
-idTokenConfig
-
-isClientCredentialsFlowEnabled
-
-isCodeCredFlowEnabled
-
-```
-
-**Field Type**
-string
-
-**Description**
-A value used by the consumer for identification to Salesforce. Referred to as client_id
-in OAuth 2.0.
-
-**Field Type**
-string
-
-**Description**
-A value that is combined with the `consumerKey` and used by the consumer for
-identification to Salesforce. Referred to as client_secret in OAuth 2.0.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Name of the external client application.
-
-**Field Type**
-
-ExternalAppIdTokenConfig
-
-**Description**
-The settings for the ID token.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, the OAuth 2.0 client credentials flow is enabled. Available in API version
-60.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, the external client app can use the Authorization Code and Credentials
-Flow and its variations for headless login, passwordless login, and guest user identity
-services in an off-platform app. Headless registration isn’t currently supported for
-external client apps. The default value is `false` .
-
-To use this field, the Authorization Code and Credentials Flow must be enabled for
-your org in OAuth and OpenID Connect settings.
-
-
-Metadata Types ExtlClntAppGlobalOauthSettings
-
-**Field Name** **Description**
-
-Available in API version 61.0 and later.
-
-```
-isCodeCredPostOnly
-
-isConsumerSecretOptional
-
-isDeviceFlowEnabled
-
-isIntrospectAllTokens
-
-isNamedUserJwtEnabled
-
-isPkceRequired
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, for the Authorization Code and Credentials Flow, the external client
-app is required to send the user’s credentials to the Salesforce
-`services/oauth2/authorize` endpoint in the body of a POST request. If set
-to `false`, the app can send a POST or GET request with the user’s credentials in the
-request body or in a Basic authorization header. The default value is `false` .
-
-To use this field, the Authorization Code and Credentials Flow must be enabled for
-your external client app. Headless registration, a variation of this flow, isn’t currently
-supported for external client apps.
-
-Available in API version 61.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `false` (default), the external app’s client secret is required in exchange for
-an access token in the OAuth 2.0 web server flow. If set to `true`, the external app’s
-client secret is optional.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, the external client app can use the OAuth 2.0 device flow. Available in
-API version 60.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, authorizes the external app to introspect all access and refresh all
-tokens. If set to `false` (default), the external client app can introspect its own tokens.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, the external client app issues JSON Web Token (JWT)-based access
-tokens. If set to `false`, it issues opaque access tokens. The default value is `false`
-
-Available in API version 61.0 and later.
-
-**Field Type**
-boolean
-
-
-Metadata Types ExtlClntAppGlobalOauthSettings
-
-**Field Name** **Description**
-
-**Description**
-If set to `true` (default) Proof Key for Code for Exchange (PKCE) is required for OAuth
-integration. If set to `false`, PKCE is optional.
-
-```
-isRefreshTokenRotationEnabled
-
-isSecretRequiredForRefreshToken
-
-isSecretRequiredForTokenExchange
-
-isTokenExchangeEnabled
-
-label
-
-shouldRotateConsumerKey
-
-shouldRotateConsumerSecret
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, the refresh token rotation is enabled. Available in API version 60.0 and
-later.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true` (default), the app’s client secret is required in the authorization request
-of a refresh token and hybrid refresh token flow. If set to `false` and an app sends
-the client secret in the authorization request, Salesforce still validates it.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, the app’s client secret is required for token exchange. Available in API
-version 60.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, token exchange is enabled. Available in API version 60.0 and later.
-
-**Field Type**
-string
-
-**Description**
-External Client Application Global OAuth Settings name.
-
-**Field Type**
-boolean
-
-**Description**
-If set to `true`, the OAuth external client app's consumer key is replaced with a newly
-generated key on metadata deploy.. To maintain security, if this field is set to `true`,
-you must include the ignore warnings attribute in the deploy command. Default is
-`false` .
-
-**Field Type**
-boolean
-
-
-Metadata Types ExtlClntAppGlobalOauthSettings
-
-**Field Name** **Description**
-
-**Description**
-If set to `true`, the OAuth external client app’s consumer secret is replaced with a
-newly generated secret on metadata deploy. To maintain security, if this field is set to
-`true`, you must include the ignore warnings attribute in the deploy command. Default
-is `false` .
-
-ExternalAppIdTokenConfig
-
-Represents configurations that determine the ID token attributes.
-
-**Field Name** **Description**
-
-```
-idTokenAudience
-
-idTokenIncludeAttributes
-
-idTokenIncludeStandardClaims
-
-idTokenValidityInMinutes
-
-```
-
-**Field Type**
-string
-
-**Description**
-The audience that this ID token is intended for. The value is an array of case-sensitive
-strings. If no audiences are specified, the `client_id` of the relying party is returned
-as the default audience. Otherwise, the other audiences are returned with the
-`client_id` in the `aud` value.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether attributes are included in the ID token ( `true` ) or not ( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether standard claims about the authentication event are included in the
-ID token ( `true` ) or not ( `false` ).
-
-**Field Type**
-int
-
-**Description**
-The length of time that the ID token is valid for after it’s issued. The value can be 1–720
-minutes. The default value is 2 minutes.
-
-Declarative Metadata Sample Definition
-
-This example shows an ExtlClntAppGlobalOauthSettings component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
-
-```
-
-
-### Metadata Types ExtlClntAppMobileConfigurablePolicies
-
-```
-      <callbackUrl>https://www.example.com</callbackUrl>
-
-      <externalClientApplication>myeca</externalClientApplication>
-
-      <idTokenConfig>
-
-        <idTokenAudience>SalesforceAudience</idTokenAudience>
-
-        <idTokenIncludeStandardClaims>true</idTokenIncludeStandardClaims>
-
-        <idTokenValidityInMinutes>0</idTokenValidityInMinutes>
-
-      </idTokenConfig>
-
-      <isConsumerSecretOptional>false</isConsumerSecretOptional>
-
-      <isIntrospectAllTokens>false</isIntrospectAllTokens>
-
-      <isPkceRequired>true</isPkceRequired>
-
-      <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
-
-      <label>myecaglobalset</label>
-
-      <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
-
-      <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
-
-   </ExtlClntAppGlobalOauthSettings>
-
-```
-
-This example `package.xml` references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
         <name>ExternalClientApplication</name>
 
       </types>
@@ -15745,12 +15388,10 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### ExtlClntAppMobileConfigurablePolicies
+### ExtlClntAppGlobalOauthSettings
 
-Represents an external client app’s mobile policies configuration.
-
-
-### Metadata Types ExtlClntAppMobileSettings
+Represents the global settings for the OAuth plugin in an external client app. These settings include private and sensitive OAuth consumer
+information that can’t be packaged and must not be added to source control.
 
 Parent Type
 
@@ -15758,12 +15399,443 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-ExtlClntAppMobileConfigurablePolicies components have the suffix `.ecaMobilePlcy` and are stored in the
+### ExtlClntAppGlobalOauthSettings components have the suffix .ecaGlblOauth and are stored in the
+
+`extlClntAppGlobalOauthSets` folder.
+
+Version
+
+### ExtlClntAppGlobalOauthSettings components are available in API version 59.0 and later.
+
+
+Metadata Types ExtlClntAppGlobalOauthSettings
+
+Special Access Rules
+
+Access to the OAuth plugin requires orgs to enable the Allow Access to OAuth Consumer Secrets via Metadata API permission in Setup.
+The View External Client Apps Consumer Secrets in Metadata user permission is required for users with developer roles to configure
+global OAuth settings.
+
+Fields
+
+**Field Name** **Description**
+
+```
+callbackUrl
+
+certificate
+
+consumerKey
+
+consumerSecret
+
+externalClientApplication
+
+idTokenConfig
+
+```
+
+**Field Type**
+string
+
+**Description**
+The endpoint that Salesforce calls back to your external client app during OAuth. It’s
+the OAuth redirect_uri.
+
+**Field Type**
+string
+
+**Description**
+If the app uses a certificate, the PEM-encoded certificate string. When provided, it
+enables the JWT Bearer flow. Available in API version 60.0 and later.
+
+**Field Type**
+string
+
+**Description**
+A value used by the consumer for identification to Salesforce. Referred to as client_id
+in OAuth 2.0.
+
+**Field Type**
+string
+
+**Description**
+A value that is combined with the `consumerKey` and used by the consumer for
+identification to Salesforce. Referred to as client_secret in OAuth 2.0.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Name of the external client application.
+
+**Field Type**
+
+ExternalAppIdTokenConfig
+
+**Description**
+The settings for the ID token.
+
+
+Metadata Types ExtlClntAppGlobalOauthSettings
+
+**Field Name** **Description**
+
+```
+isClientCredentialsFlowEnabled
+
+isCodeCredFlowEnabled
+
+isCodeCredPostOnly
+
+isConsumerSecretOptional
+
+isDeviceFlowEnabled
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, the OAuth 2.0 client credentials flow is enabled. Available in API version
+60.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, the external client app can use the Authorization Code and Credentials
+Flow and its variations for headless login, passwordless login, and guest user identity
+services in an off-platform app. Headless registration isn’t currently supported for
+external client apps. The default value is `false` .
+
+To use this field, the Authorization Code and Credentials Flow must be enabled for
+your org in OAuth and OpenID Connect settings.
+
+Available in API version 61.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, for the Authorization Code and Credentials Flow, the external client
+app is required to send the user’s credentials to the Salesforce
+`services/oauth2/authorize` endpoint in the body of a POST request. If set
+to `false`, the app can send a POST or GET request with the user’s credentials in the
+request body or in a Basic authorization header. The default value is `false` .
+
+To use this field, the Authorization Code and Credentials Flow must be enabled for
+your external client app. Headless registration, a variation of this flow, isn’t currently
+supported for external client apps.
+
+Available in API version 61.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `false` (default), the external app’s client secret is required in exchange for
+an access token in the OAuth 2.0 web server flow. If set to `true`, the external app’s
+client secret is optional.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, the external client app can use the OAuth 2.0 device flow. Available in
+API version 60.0 and later.
+
+
+Metadata Types ExtlClntAppGlobalOauthSettings
+
+**Field Name** **Description**
+
+```
+isIntrospectAllTokens
+
+isNamedUserJwtEnabled
+
+isPkceRequired
+
+isRefreshTokenRotationEnabled
+
+isSecretRequiredForRefreshToken
+
+isSecretRequiredForTokenExchange
+
+isTokenExchangeEnabled
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, authorizes the external app to introspect all access and refresh all
+tokens. If set to `false` (default), the external client app can introspect its own tokens.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, the external client app issues JSON Web Token (JWT)-based access
+tokens. If set to `false`, it issues opaque access tokens. The default value is `false`
+
+Available in API version 61.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true` (default) Proof Key for Code for Exchange (PKCE) is required for OAuth
+integration. If set to `false`, PKCE is optional.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, the refresh token rotation is enabled. Available in API version 60.0 and
+later.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true` (default), the app’s client secret is required in the authorization request
+of a refresh token and hybrid refresh token flow. If set to `false` and an app sends
+the client secret in the authorization request, Salesforce still validates it.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, the app’s client secret is required for token exchange. Available in API
+version 60.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, token exchange is enabled. Available in API version 60.0 and later.
+
+
+Metadata Types ExtlClntAppGlobalOauthSettings
+
+**Field Name** **Description**
+
+```
+label
+
+shouldRotateConsumerKey
+
+shouldRotateConsumerSecret
+
+```
+
+**Field Type**
+string
+
+**Description**
+External Client Application Global OAuth Settings name.
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, the OAuth external client app's consumer key is replaced with a newly
+generated key on metadata deploy.. To maintain security, if this field is set to `true`,
+you must include the ignore warnings attribute in the deploy command. Default is
+`false` .
+
+**Field Type**
+boolean
+
+**Description**
+If set to `true`, the OAuth external client app’s consumer secret is replaced with a
+newly generated secret on metadata deploy. To maintain security, if this field is set to
+`true`, you must include the ignore warnings attribute in the deploy command. Default
+is `false` .
+
+ExternalAppIdTokenConfig
+
+Represents configurations that determine the ID token attributes.
+
+**Field Name** **Description**
+
+```
+idTokenAudience
+
+idTokenIncludeAttributes
+
+idTokenIncludeStandardClaims
+
+```
+
+**Field Type**
+string
+
+**Description**
+The audience that this ID token is intended for. The value is an array of case-sensitive
+strings. If no audiences are specified, the `client_id` of the relying party is returned
+as the default audience. Otherwise, the other audiences are returned with the
+`client_id` in the `aud` value.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether attributes are included in the ID token ( `true` ) or not ( `false` ).
+
+**Field Type**
+boolean
+
+
+Metadata Types ExtlClntAppGlobalOauthSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether standard claims about the authentication event are included in the
+ID token ( `true` ) or not ( `false` ).
+
+```
+idTokenValidityInMinutes
+
+```
+
+**Field Type**
+int
+
+**Description**
+The length of time that the ID token is valid for after it’s issued. The value can be 1–720
+minutes. The default value is 2 minutes.
+
+Declarative Metadata Sample Definition
+
+This example shows an ExtlClntAppGlobalOauthSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <callbackUrl>https://www.example.com</callbackUrl>
+
+   <externalClientApplication>myeca</externalClientApplication>
+
+   <idTokenConfig>
+
+     <idTokenAudience>SalesforceAudience</idTokenAudience>
+
+     <idTokenIncludeStandardClaims>true</idTokenIncludeStandardClaims>
+
+     <idTokenValidityInMinutes>0</idTokenValidityInMinutes>
+
+   </idTokenConfig>
+
+   <isConsumerSecretOptional>false</isConsumerSecretOptional>
+
+   <isIntrospectAllTokens>false</isIntrospectAllTokens>
+
+   <isPkceRequired>true</isPkceRequired>
+
+   <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+
+   <label>myecaglobalset</label>
+
+   <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+
+   <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+
+</ExtlClntAppGlobalOauthSettings>
+
+```
+
+This example `package.xml` references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>*</members>
+
+     <name>ExternalClientApplication</name>
+
+   </types>
+
+   <types>
+
+     <members>*</members>
+
+     <name>ExtlClntAppOauthSettings</name>
+
+   </types>
+
+   <types>
+
+     <members>*</members>
+
+     <name>ExtlClntAppGlobalOauthSettings</name>
+
+   </types>
+
+   <types>
+
+```
+
+
+### Metadata Types ExtlClntAppMobileConfigurablePolicies
+
+```
+        <members>*</members>
+
+        <name>ExtlClntAppOauthConfigurablePolicies</name>
+
+      </types>
+
+      <types>
+
+        <members>*</members>
+
+        <name>ExtlClntAppConfigurablePolicies</name>
+
+      </types>
+
+      <version>60.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### ExtlClntAppMobileConfigurablePolicies
+
+Represents an external client app’s mobile policies configuration.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### ExtlClntAppMobileConfigurablePolicies components have the suffix .ecaMobilePlcy and are stored in the
+
 `extlClntAppMobilePolicies` folder.
 
 Version
 
-ExtlClntAppMobileConfigurablePolicies components are available in API version 64.0 and later.
+### ExtlClntAppMobileConfigurablePolicies components are available in API version 64.0 and later.
 
 Special Access Rules
 
@@ -15780,10 +15852,15 @@ label string Label for the external client app’s mobile policies configuration
 screenLockTimeout
 
 ScreenLockTimeout When `isScreenLockEnabled` is true in the associated
-### (enumeration of ExtlClntAppMobileSettings metadata type, screenLockTimeout
+[(enumeration](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_objects_intro.htm#enumeration_title) of ExtlClntAppMobileSettings metadata type, `screenLockTimeout`
+type string)
 
-type string) represents the amount of time after which the mobile app locks and
 
+### Metadata Types ExtlClntAppMobileSettings
+
+**Field Name** **Field Type** **Description**
+
+represents the amount of time after which the mobile app locks and
 requires the app user to reauthenticate. Valid values include:
 
 **•** _`Never`_
@@ -15808,9 +15885,6 @@ requires the app user to reauthenticate. Valid values include:
 
 Represents an external client app’s mobile app settings, such as screen lock on a mobile device.
 
-
-### Metadata Types ExtlClntAppNotificationSettings
-
 Note: The ExtlClntAppMobileSettings metadata type is a pilot or beta service that is subject to the Beta Services Terms at
 [Agreements - Salesforce.com or a written Unified Pilot Agreement if executed by Customer, and applicable terms in the Product](https://www.salesforce.com/company/legal/agreements/)
 [Terms Directory. Use of this pilot or beta service is at the Customer's sole discretion.](https://ptd.salesforce.com/)
@@ -15821,16 +15895,20 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-ExtlClntAppMobileSettings components have the suffix `.ecaMobile` and are stored in the `extlClntAppMobileSettings`
+### ExtlClntAppMobileSettings components have the suffix .ecaMobile and are stored in the extlClntAppMobileSettings
+
 folder.
 
 Version
 
-ExtlClntAppMobileSettings components are available in API version 64.0 and later.
+### ExtlClntAppMobileSettings components are available in API version 64.0 and later.
 
 Special Access Rules
 
 There are no additional access requirements that are specific to this type.
+
+
+### Metadata Types ExtlClntAppNotificationSettings
 
 Fields
 
@@ -15858,17 +15936,15 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-
-### Metadata Types ExtlClntAppOauthConfigurablePolicies
-
 File Suffix and Directory Location
 
-ExtlClntAppNotificationSettings components have the suffix `.ecaNotifications` and are stored in the
+### ExtlClntAppNotificationSettings components have the suffix .ecaNotifications and are stored in the
+
 `extlClntAppNotifSettings` folder.
 
 Version
 
-ExtlClntAppNotificationSettings components are available in API version 64.0 and later.
+### ExtlClntAppNotificationSettings components are available in API version 64.0 and later.
 
 Special Access Rules
 
@@ -15881,6 +15957,11 @@ Fields
 externalClientApplication string Required. The name of the associated external client app.
 
 label string Label for the external client app’s notification settings configuration.
+
+
+### Metadata Types ExtlClntAppOauthConfigurablePolicies
+
+**Field Name** **Field Type** **Description**
 
 notificationTypes ExtlClntAppNotificationType[]
 
@@ -15912,26 +15993,27 @@ the ExtlClntAppPushSettings metadata type.
 
 Represents the policies configured by the admin for an OAuth-enabled external client app.
 
-
-Metadata Types ExtlClntAppOauthConfigurablePolicies
-
 Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-ExtlClntAppOauthConfigurablePolicies components have the suffix `.ecaOauthPlcy` and are stored in the
+### ExtlClntAppOauthConfigurablePolicies components have the suffix .ecaOauthPlcy and are stored in the
+
 `extlClntAppOauthPolicies` folder.
 
 Version
 
-ExtlClntAppOauthConfigurablePolicies components are available in API version 59.0 and later.
+### ExtlClntAppOauthConfigurablePolicies components are available in API version 59.0 and later.
 
 Special Access Rules
 
 The View all External Client Apps, view their settings, and edit their policies user permission is required for users with admin roles to
 configure OAuth policies.
+
+
+Metadata Types ExtlClntAppOauthConfigurablePolicies
 
 Fields
 
@@ -15945,6 +16027,12 @@ clientCredentialsFlowUser
 commaSeparatedCustomScopes
 
 commaSeparatedPermissionSet
+
+commaSeparatedProfile
+
+customAttributes
+
+executeHandlerAs
 
 ```
 
@@ -15975,24 +16063,6 @@ string
 Permission set IDs in a comma-separated list. This field or commaSeparatedProfile is
 used when permittedUsersPolicyType is set to AdminApprovedPreAuthorized.
 
-
-Metadata Types ExtlClntAppOauthConfigurablePolicies
-
-**Field Name** **Description**
-
-```
-commaSeparatedProfile
-
-customAttributes
-
-executeHandlerAs
-
-externalClientApplication
-
-guestJwtTimeout
-
-```
-
 **Field Type**
 string
 
@@ -16013,6 +16083,20 @@ string
 
 **Description**
 Username of the Apex handler's execution user. Available in API version 61.0 and later.
+
+
+Metadata Types ExtlClntAppOauthConfigurablePolicies
+
+**Field Name** **Description**
+
+```
+externalClientApplication
+
+guestJwtTimeout
+
+guestJwtSessionTimeoutType
+
+```
 
 **Field Type**
 string
@@ -16053,27 +16137,11 @@ These values are available in API version 65.0 and later.
 
 **•** `240` —4 Hours
 
-
-Metadata Types ExtlClntAppOauthConfigurablePolicies
-
-**Field Name** **Description**
-
 **•** `480` —8 Hours
 
 **•** `720` —12 Hours
 
 If `guestJwtSessionTimeoutType` is set to `UserSession`, omit this field.
-
-```
-guestJwtSessionTimeoutType
-
-ipRelaxationPolicyType
-
-isClientCredentialsFlowEnabled
-
-isGuestCodeCredFlowEnabled
-
-```
 
 **Field Type**
 JWTSessionTimeoutType (enumeration of type string)
@@ -16093,6 +16161,26 @@ If both are defined, Salesforce defaults to the profile session timeout.
 **•** `Custom` —Salesforce uses the value from the `guestJwtTimeout` field.
 
 Available in API version 65.0 and later.
+
+
+Metadata Types ExtlClntAppOauthConfigurablePolicies
+
+**Field Name** **Description**
+
+```
+ipRelaxationPolicyType
+
+isClientCredentialsFlowEnabled
+
+isGuestCodeCredFlowEnabled
+
+isNamedUserJwtEnabled
+
+isTokenExchangeFlowEnabled
+
+label
+
+```
 
 **Field Type**
 string
@@ -16127,22 +16215,6 @@ Code and Credentials Flow. To use this flow variation, the external client app m
 be configured to issue JWT-based access tokens. The default value is `false` . Available
 in API version 61.0 and later.
 
-
-Metadata Types ExtlClntAppOauthConfigurablePolicies
-
-**Field Name** **Description**
-
-```
-isNamedUserJwtEnabled
-
-isTokenExchangeFlowEnabled
-
-label
-
-namedUserJwtTimeout
-
-```
-
 **Field Type**
 boolean
 
@@ -16165,8 +16237,20 @@ Available in API version 60.0 and later.
 **Field Type**
 string
 
+
+Metadata Types ExtlClntAppOauthConfigurablePolicies
+
+**Field Name** **Description**
+
 **Description**
 The OAuth policies name for the external client app.
+
+```
+namedUserJwtTimeout
+
+namedUserJwtSessionTimeoutType
+
+```
 
 **Field Type**
 int
@@ -16202,24 +16286,8 @@ These values are available in API version 65.0 and later.
 
 **•** `720` —12 Hours
 
-
-Metadata Types ExtlClntAppOauthConfigurablePolicies
-
-**Field Name** **Description**
-
 If `namedUserJwtSessionTimeoutType` is set to `UserSession`, omit this
 field.
-
-```
-namedUserJwtSessionTimeoutType
-
-permittedUsersPolicyType
-
-policyAction
-
-refreshTokenPolicyType
-
-```
 
 **Field Type**
 JWTSessionTimeoutType (enumeration of type string)
@@ -16239,6 +16307,24 @@ If both are defined, Salesforce defaults to the profile session timeout.
 **•** `Custom` —Salesforce uses the value from the `namedUserJwtTimeout` field.
 
 Available in API version 65.0 and later.
+
+
+Metadata Types ExtlClntAppOauthConfigurablePolicies
+
+**Field Name** **Description**
+
+```
+permittedUsersPolicyType
+
+policyAction
+
+refreshTokenPolicyType
+
+refreshTokenValidityPeriod
+
+refreshTokenValidityUnit
+
+```
 
 **Field Type**
 PermittedUsersPolicyType (enumeration of type string)
@@ -16276,29 +16362,11 @@ Values are:
 
 **•** `Infinite`
 
-
-Metadata Types ExtlClntAppOauthConfigurablePolicies
-
-**Field Name** **Description**
-
 **•** `SpecificInactivity`
 
 **•** `SpecificLifetime`
 
 **•** `Zero`
-
-```
-refreshTokenValidityPeriod
-
-refreshTokenValidityUnit
-
-requiredSessionLevel
-
-sessionTimeoutInMinutes
-
-singleLogoutUrl
-
-```
 
 **Field Type**
 int
@@ -16316,11 +16384,27 @@ type is set to `SpecificInactivity` or `SpecificLifetime` .
 
 Values are:
 
+
+Metadata Types ExtlClntAppOauthConfigurablePolicies
+
+**Field Name** **Description**
+
 **•** `Days`
 
 **•** `Hours`
 
 **•** `Months`
+
+```
+requiredSessionLevel
+
+sessionTimeoutInMinutes
+
+singleLogoutUrl
+
+startUrl
+
+```
 
 **Field Type**
 SessionSecurityLevel (enumeration of type string)
@@ -16349,16 +16433,6 @@ string
 **Description**
 URL where Salesforce sends a logout request when users log out of Salesforce.
 
-
-Metadata Types ExtlClntAppOauthConfigurablePolicies
-
-**Field Name** **Description**
-
-```
-startUrl
-
-```
-
 **Field Type**
 string
 
@@ -16374,8 +16448,6 @@ Represents admin-defined attributes that provide personal information to customi
 ```
 formula
 
-key
-
 ```
 
 **Field Type**
@@ -16387,6 +16459,16 @@ Required.
 
 The existing field that includes the desired information. For example,
 `Organization.Country` .
+
+
+Metadata Types ExtlClntAppOauthConfigurablePolicies
+
+**Field Name** **Description**
+
+```
+key
+
+```
 
 **Field Type**
 string
@@ -16434,57 +16516,57 @@ This example shows an ExtlClntAppOauthConfigurablePolicies component.
 
    <policyAction>RaiseSessionLevel</policyAction>
 
-```
+   <singleLogoutUrl>https://www.example.com</singleLogoutUrl>
 
+   <startUrl>https://www.example.com</startUrl>
 
-### Metadata Types ExtlClntAppOauthSettings
+   <guestJwtSessionTimeoutType>UserSession</guestJwtSessionTimeoutType>
 
-```
-      <singleLogoutUrl>https://www.example.com</singleLogoutUrl>
+   <namedUserJwtSessionTimeoutType>Custom</namedUserJwtSessionTimeoutType>
 
-      <startUrl>https://www.example.com</startUrl>
+   <namedUserJwtTimeout>10</namedUserJwtSessionTimeout>
 
-      <guestJwtSessionTimeoutType>UserSession</guestJwtSessionTimeoutType>
-
-      <namedUserJwtSessionTimeoutType>Custom</namedUserJwtSessionTimeoutType>
-
-      <namedUserJwtTimeout>10</namedUserJwtSessionTimeout>
-
-   </ExtlClntAppOauthConfigurablePolicies>
+</ExtlClntAppOauthConfigurablePolicies>
 
 ```
 
 This example `package.xml` that references the previous definition.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <types>
+   <types>
 
-        <members>*</members>
+     <members>*</members>
 
-        <name>ExternalClientApplication</name>
+     <name>ExternalClientApplication</name>
 
-      </types>
+   </types>
 
-      <types>
+   <types>
 
-        <members>*</members>
+     <members>*</members>
 
-        <name>ExtlClntAppOauthSettings</name>
+     <name>ExtlClntAppOauthSettings</name>
 
-      </types>
+   </types>
 
-      <types>
+   <types>
 
-        <members>*</members>
+     <members>*</members>
 
-        <name>ExtlClntAppGlobalOauthSettings</name>
+     <name>ExtlClntAppGlobalOauthSettings</name>
 
-      </types>
+   </types>
 
+```
+
+
+### Metadata Types ExtlClntAppOauthSettings
+
+```
       <types>
 
         <members>*</members>
@@ -16524,12 +16606,9 @@ File Suffix and Directory Location
 
 ### ExtlClntAppOauthSettings components have the suffix .ecaOauth and are stored in the extlClntAppOauthSettings folder.
 
-
-Metadata Types ExtlClntAppOauthSettings
-
 Version
 
-ExtlClntAppOauthSettings components are available in API version 59.0 and later.
+### ExtlClntAppOauthSettings components are available in API version 59.0 and later.
 
 Special Access Rules
 
@@ -16544,16 +16623,15 @@ Fields
 ```
 areAttributesIncludedInAssetToken
 
-areCustomPermsIncludedInAssetToken
-
-assetTokenAudiences
-
-assetTokenSigningCertificate
-
 ```
 
 **Field Type**
 boolean
+
+
+Metadata Types ExtlClntAppOauthSettings
+
+**Field Name** **Description**
 
 **Description**
 Indicates whether custom attributes associated with the external client app are included
@@ -16561,6 +16639,17 @@ in the JSON Web Token (JWT) payload of an asset token issued as a result of the 
 token flow. The default value is `false` .
 
 Available in API version 61.0 and later.
+
+```
+areCustomPermsIncludedInAssetToken
+
+assetTokenAudiences
+
+assetTokenSigningCertificate
+
+assetTokenValidity
+
+```
 
 **Field Type**
 boolean
@@ -16587,26 +16676,12 @@ Available in API version 61.0 and later.
 **Field Type**
 string
 
-
-Metadata Types ExtlClntAppOauthSettings
-
-**Field Name** **Description**
-
 **Description**
 Required for the asset token flow. The ID of the self-signed certificate used to sign
 asset tokens issued by the external client app. The certificate size is limited to 4 KB. If
 your certificate is too large, try using a DER-encoded file to reduce the size.
 
 Available in API version 61.0 and later.
-
-```
-assetTokenValidity
-
-clientAssertionCertificate
-
-commaSeparatedOauthScopes
-
-```
 
 **Field Type**
 int
@@ -16618,6 +16693,18 @@ in UTC. The validity period must be within 3 minutes of the expiration time of t
 assertion.
 
 Available in API version 61.0 and later.
+
+
+Metadata Types ExtlClntAppOauthSettings
+
+**Field Name** **Description**
+
+```
+clientAssertionCertificate
+
+commaSeparatedOauthScopes
+
+```
 
 **Field Type**
 string
@@ -16658,11 +16745,6 @@ Connect apps.
 **•** `Profile` —Allows access to the logged-in user's profile (the same behavior as
 deploying `Basic` ).
 
-
-Metadata Types ExtlClntAppOauthSettings
-
-**Field Name** **Description**
-
 **•** `Email` —Allows access to the logged-in user's email address (the same behavior
 as deploying `Basic` ).
 
@@ -16683,6 +16765,11 @@ user has each permission enabled.
 **•** `Wave` —Allows access to the Analytics REST API resources.
 
 **•** `Eclair` —Allows access to the Analytics REST API Charts Geodata resource.
+
+
+Metadata Types ExtlClntAppOauthSettings
+
+**Field Name** **Description**
 
 **•** `Pardot` —Allows access to Pardot API services on behalf of the user. The full
 extent of accessible services is managed by the Pardot account.
@@ -16728,27 +16815,12 @@ this API.
 
 **•** MCP—Allows access to Model Context Protocol (MCP).
 
-
-Metadata Types ExtlClntAppOauthSettings
-
-**Field Name** **Description**
-
 **•** SCRT—Allows access to Service Cloud Real-Time features.
 
 ```
 customAttributes
 
 externalClientApplication
-
-isFirstPartyAppEnabled
-
-label
-
-oauthLink
-
-singleLogoutUrl
-
-trustedIpRanges
 
 ```
 
@@ -16768,6 +16840,24 @@ string
 Required.
 
 The external client app associated with this OAuth plugin.
+
+
+Metadata Types ExtlClntAppOauthSettings
+
+**Field Name** **Description**
+
+```
+isFirstPartyAppEnabled
+
+label
+
+oauthLink
+
+singleLogoutUrl
+
+trustedIpRanges
+
+```
 
 **Field Type**
 boolean
@@ -16804,9 +16894,6 @@ Specifies the ranges of IP addresses that can access the app without requiring t
 to authenticate with the external client app. The maximum number of IP ranges is
 128.
 
-
-Metadata Types ExtlClntAppOauthSettings
-
 ExtlClntAppOauthSettingsAttribute
 
 Represents developer-defined attributes that are used to include additional information in the external client apps. Developers use these
@@ -16816,8 +16903,6 @@ attributes to customize the app for specific use cases.
 
 ```
 formula
-
-key
 
 ```
 
@@ -16830,6 +16915,16 @@ Required.
 
 The existing field that includes the desired information. For example,
 `Organization.Country` .
+
+
+Metadata Types ExtlClntAppOauthSettings
+
+**Field Name** **Description**
+
+```
+key
+
+```
 
 **Field Type**
 string
@@ -16880,28 +16975,31 @@ Required.
 
 First address in the IP range, inclusive. Required with end address.
 
-
-Metadata Types ExtlClntAppOauthSettings
-
 Declarative Metadata Sample Definition
 
 The following is an example of an ExtlClntAppOauthSettings component.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+<ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <externalClientApplication>myeca</externalClientApplication>
+   <externalClientApplication>myeca</externalClientApplication>
 
-      <label>My Oauth Settings</label>
+   <label>My Oauth Settings</label>
 
-      <trustedIpRanges>
+   <trustedIpRanges>
 
-        <startIpAddress>10.55.2.0</startIpAddress>
+     <startIpAddress>10.55.2.0</startIpAddress>
 
-        <endIpAddress>10.55.2.255</endIpAddress>
+     <endIpAddress>10.55.2.255</endIpAddress>
 
+```
+
+
+### Metadata Types ExtlClntAppPushConfigurablePolicies
+
+```
         <description>Building 6</description>
 
       </trustedIpRanges>
@@ -16978,8 +17076,7 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-
-### Metadata Types ExtlClntAppPushConfigurablePolicies ExtlClntAppPushConfigurablePolicies
+### ExtlClntAppPushConfigurablePolicies
 
 Represents an external client app’s push notification policies configuration.
 
@@ -16990,19 +17087,21 @@ Note: The ExtlClntAppPushConfigurablePolicies metadata type is a pilot or beta s
 The ExtlClntAppPushConfigurablePolicies metadata type requires the OAuth plugin for External Client Apps. See [OAuth Plugin](https://help.salesforce.com/s/articleView?id=xcloud.meta_enable_oauth_plugin.htm&type=5&language=en_US)
 [Enablement with Metadata API](https://help.salesforce.com/s/articleView?id=xcloud.meta_enable_oauth_plugin.htm&type=5&language=en_US) in Salesforce Help.
 
+
+### Metadata Types ExtlClntAppPushSettings
+
 Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-### ExtlClntAppPushConfigurablePolicies components have the suffix .ecaPushPlcy and are stored in the
-
+ExtlClntAppPushConfigurablePolicies components have the suffix `.ecaPushPlcy` and are stored in the
 `extlClntAppPushPolicies` folder.
 
 Version
 
-### ExtlClntAppPushConfigurablePolicies components are available in API version 64.0 and later.
+ExtlClntAppPushConfigurablePolicies components are available in API version 64.0 and later.
 
 Special Access Rules
 
@@ -17026,9 +17125,6 @@ label string Label for the external client app’s push notification policies co
 
 Represents an external client app’s push notification settings.
 
-
-Metadata Types ExtlClntAppPushSettings
-
 [Note: The ExtlClntAppPushSettings metadata type is a pilot or beta service that is subject to the Beta Services Terms at Agreements](https://www.salesforce.com/company/legal/agreements/)
 
 [- Salesforce.com or a written Unified Pilot Agreement if executed by Customer, and applicable terms in the Product Terms Directory.](https://www.salesforce.com/company/legal/agreements/)
@@ -17040,6 +17136,9 @@ The ExtlClntAppPushSettings metadata type requires the OAuth plugin for External
 Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types ExtlClntAppPushSettings
 
 File Suffix and Directory Location
 
@@ -17081,11 +17180,6 @@ applePushConfig ExtlClntAppApplePushConfig Represents the push notification conf
 
 externalClientApplication string Required. The name of the associated external client app.
 
-
-Metadata Types ExtlClntAppPushSettings
-
-**Field Name** **Field Type** **Description**
-
 label string Label for the external client app’s push notifications configuration.
 
 pushConfigLink string Identifies the push notification credentials used by the app. Valid format
@@ -17103,6 +17197,11 @@ _`1Dh000000000001`_ ) separated by a colon. For example:
 If you configure `pushConfigLink`, you can’t also have
 `androidPushConfig` or `applePushConfig` in the same
 record.
+
+
+Metadata Types ExtlClntAppPushSettings
+
+**Field Name** **Field Type** **Description**
 
 pushServiceType
 
@@ -17145,11 +17244,6 @@ To configure push notifications with a TLS certificate (.p12 file), complete the
 
 applicationBundle string The bundle ID of the iOS mobile app from Apple App Store Connect.
 
-
-### Metadata Types ExtlClntAppSamlConfigurablePolicies
-
-**Field Name** **Field Type** **Description**
-
 certificate string
 
 The Base64-encoded TLS certificate with Apple Push Notification service
@@ -17171,6 +17265,11 @@ keyIdentifier string The key identifier for the private key entered in the `sign
 
 password string The password for the TLS certificate entered in the `certificate`
 field.
+
+
+### Metadata Types ExtlClntAppSamlConfigurablePolicies
+
+**Field Name** **Field Type** **Description**
 
 signingKey string
 
@@ -17206,9 +17305,6 @@ Special Access Rules
 To use the ExtlClntAppSamlConfigurablePolicies type, you must have the View all External Client Apps, view their settings, and edit their
 policies user permission.
 
-
-Metadata Types ExtlClntAppSamlConfigurablePolicies
-
 [This type must be related to a parent ExternalClientApplication. Because external client apps with SAML configurations can't be packaged,](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_externalclientapplication.htm)
 the `distributionState` for the parent external client app must be set to `Local` .
 
@@ -17222,6 +17318,23 @@ Fields
 ```
 acsUrl
 
+```
+
+**Field Type**
+string
+
+
+Metadata Types ExtlClntAppSamlConfigurablePolicies
+
+**Field Name** **Description**
+
+**Description**
+
+Required. The assertion consumer service (ACS) URL from the third-party service
+provider. The ACS URL is the endpoint where the service provider receives SAML
+responses from Salesforce.
+
+```
 certificate
 
 commaSeparatedPermissionSet
@@ -17230,16 +17343,9 @@ commaSeparatedProfile
 
 customAttributes
 
+encryptionCertificate
+
 ```
-
-**Field Type**
-string
-
-**Description**
-
-Required. The assertion consumer service (ACS) URL from the third-party service
-provider. The ACS URL is the endpoint where the service provider receives SAML
-responses from Salesforce.
 
 **Field Type**
 string
@@ -17275,19 +17381,28 @@ profiles.
 
 ExtlClntAppSamlConfigurablePoliciesAttribute[]
 
-
-Metadata Types ExtlClntAppSamlConfigurablePolicies
-
-**Field Name** **Description**
-
 **Description**
 Custom attributes that you can use to send more information about the user in SAML
 responses. For example, send information about the user's country. The service provider
 can use the information to validate the user's identity.
 
-```
-encryptionCertificate
+**Field Type**
+string
 
+**Description**
+A certificate that's used to encrypt SAML assertions that Salesforce sends to the service
+provider. Use an X.509 certificate that's saved in your Certificate and Key Management
+
+
+Metadata Types ExtlClntAppSamlConfigurablePolicies
+
+**Field Name** **Description**
+
+settings. To get the certificate, work with a certificate provider. If you include an
+`encryptionCertificate`, make sure that your service provider is configured
+to decrypt SAML assertions.
+
+```
 encryptionType
 
 entityUrl
@@ -17296,17 +17411,9 @@ externalClientApplication
 
 issuer
 
+label
+
 ```
-
-**Field Type**
-string
-
-**Description**
-A certificate that's used to encrypt SAML assertions that Salesforce sends to the service
-provider. Use an X.509 certificate that's saved in your Certificate and Key Management
-settings. To get the certificate, work with a certificate provider. If you include an
-`encryptionCertificate`, make sure that your service provider is configured
-to decrypt SAML assertions.
 
 **Field Type**
 ExtlClntAppSamlEncryptType
@@ -17345,31 +17452,33 @@ Required. The `label` for the parent ExternalClientApplication.
 **Field Type**
 string
 
-
-Metadata Types ExtlClntAppSamlConfigurablePolicies
-
-**Field Name** **Description**
-
 **Description**
 Specifies the URI from which Salesforce sends SAML responses. The service provider
 uses this value to confirm that the response came from Salesforce. If you don't include
 this field, Salesforce uses your My Domain by default. Include this field to specify a
 different value, such as an Experience Cloud site URL.
 
-```
-label
-
-nameIdFormat
-
-signingAlgorithmType
-
-```
-
 **Field Type**
 string
 
 **Description**
 A name for your external client app SAML policies configuration.
+
+
+Metadata Types ExtlClntAppSamlConfigurablePolicies
+
+**Field Name** **Description**
+
+```
+nameIdFormat
+
+signingAlgorithmType
+
+singleLogoutBindingType
+
+singleLogoutUrl
+
+```
 
 **Field Type**
 ExtlClntAppNameIdFormatType
@@ -17411,24 +17520,6 @@ hash value.
 
 **•** `SHA256` —SHA-256 algorithm,which generates a 256-bit hash value.
 
-
-Metadata Types ExtlClntAppSamlConfigurablePolicies
-
-**Field Name** **Description**
-
-```
-singleLogoutBindingType
-
-singleLogoutUrl
-
-startUrl
-
-subjectCustomAttribute
-
-subjectType
-
-```
-
 **Field Type**
 ExtlClntAppSamlBindingType
 
@@ -17445,9 +17536,23 @@ the browser via GET requests.
 **Field Type**
 string
 
+
+Metadata Types ExtlClntAppSamlConfigurablePolicies
+
+**Field Name** **Description**
+
 **Description**
 The SAML single logout endpoint on the service provider. When Salesforce initiates
 single logout, it sends logout requests to this endpoint.
+
+```
+startUrl
+
+subjectCustomAttribute
+
+subjectType
+
+```
 
 **Field Type**
 string
@@ -17482,11 +17587,6 @@ For example, get a value from the service provider and then specify it in Salesf
 
 **•** `UserId` —The user's 15-character Salesforce user ID.
 
-
-Metadata Types ExtlClntAppSamlConfigurablePolicies
-
-**Field Name** **Description**
-
 **•** `CustomAttribute` —An identifier that's taken from a custom field value.
 Specify the custom field in the `subjectCustomAttribute` field.
 
@@ -17497,6 +17597,9 @@ ExtlClntAppSamlConfigurablePoliciesAttribute
 
 Represents custom attributes that provide more information about the user. The attributes are included in SAML assertions in SAML
 responses that Salesforce sends to the service provider.
+
+
+Metadata Types ExtlClntAppSamlConfigurablePolicies
 
 **Field Name** **Description**
 
@@ -17557,41 +17660,38 @@ The following is an example of an ExtlClntAppSamlConfigurablePolicies component.
 
    <subjectType>CustomAttribute</subjectType>
 
+   <subjectCustomAttribute>MyCustomField</subjectCustomAttribute>
+
+   <certificate>MIIDzDCCArQCCQCFaZKGsGqZ...</certificate>
+
+   <encryptionCertificate>MIIDzDCCArQCCQCFaZKGsGqZ...</encryptionCertificate>
+
+   <encryptionType>AES_128</encryptionType>
+
+   <signingAlgorithmType>SHA1</signingAlgorithmType>
+
+   <customAttributes>
+
+     <key>User Firstname</key>
+
+     <formula>$User.FirstName</formula>
+
+   </customAttributes>
+
+   <customAttributes>
+
+     <key>User Country</key>
+
+     <formula>$User.Country</formula>
+
+   </customAttributes>
+
+</ExtlClntAppSamlConfigurablePolicies>
+
 ```
 
 
 ### Metadata Types FeatureParameterBoolean
-
-```
-      <subjectCustomAttribute>MyCustomField</subjectCustomAttribute>
-
-      <certificate>MIIDzDCCArQCCQCFaZKGsGqZ...</certificate>
-
-      <encryptionCertificate>MIIDzDCCArQCCQCFaZKGsGqZ...</encryptionCertificate>
-
-      <encryptionType>AES_128</encryptionType>
-
-      <signingAlgorithmType>SHA1</signingAlgorithmType>
-
-      <customAttributes>
-
-        <key>User Firstname</key>
-
-        <formula>$User.FirstName</formula>
-
-      </customAttributes>
-
-      <customAttributes>
-
-        <key>User Country</key>
-
-        <formula>$User.Country</formula>
-
-      </customAttributes>
-
-   </ExtlClntAppSamlConfigurablePolicies>
-
-```
 
 The following is an example `package.xml` that references the previous definition.
 
@@ -17644,22 +17744,23 @@ track activation metrics in subscriber orgs that install your package. This type
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
-
-Metadata Types FeatureParameterBoolean
-
 File Suffix and Directory Location
 
-FeatureParameterBoolean components have the suffix `.featureParameterBoolean` . The components are stored in the
+### FeatureParameterBoolean components have the suffix .featureParameterBoolean . The components are stored in the
+
 `featureParameters` folder, which contains components for all the feature parameter metadata types.
 
 Version
 
-FeatureParameterBoolean components are available in API version 41.0 and later.
+### FeatureParameterBoolean components are available in API version 41.0 and later.
 
 Special Access Rules
 
 [Available to package developers who have access to the Feature Management App (FMA). For details, see Manage Features in the](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/fma_manage_features.htm)
 _Second-Generation Managed Packaging Developer Guide_ .
+
+
+Metadata Types FeatureParameterBoolean
 
 Fields
 
@@ -17697,25 +17798,22 @@ Valid values are:
 
 **•** `SubscriberToLmo`
 
-
-### Metadata Types FeatureParameterDate
-
 Declarative Metadata Sample Definition
 
 The following is an example of a FeatureParameterBoolean component.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <FeatureParameterBoolean xmlns="http://soap.sforce.com/2006/04/metadata">
+<FeatureParameterBoolean xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <dataflowDirection>SubscriberToLmo</dataflowDirection>
+   <dataflowDirection>SubscriberToLmo</dataflowDirection>
 
-      <masterLabel>Budget Tracking Enabled</masterLabel>
+   <masterLabel>Budget Tracking Enabled</masterLabel>
 
-      <value>false</value>
+   <value>false</value>
 
-   </FeatureParameterBoolean>
+</FeatureParameterBoolean>
 
 ```
 
@@ -17723,18 +17821,24 @@ The following is an example `package.xml` that references the previous definitio
 types).
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <types>
+   <types>
 
-        <members>*</members>
+     <members>*</members>
 
-        <name>FeatureParameterBoolean</name>
+     <name>FeatureParameterBoolean</name>
 
-      </types>
+   </types>
 
+```
+
+
+### Metadata Types FeatureParameterDate
+
+```
       <types>
 
         <members>*</members>
@@ -17777,12 +17881,9 @@ File Suffix and Directory Location
 
 `featureParameters` folder, which contains components for all the feature parameter metadata types.
 
-
-Metadata Types FeatureParameterDate
-
 Version
 
-FeatureParameterDate components are available in API version 41.0 and later.
+### FeatureParameterDate components are available in API version 41.0 and later.
 
 Special Access Rules
 
@@ -17798,6 +17899,11 @@ indicates whether the feature parameter’s value is
 
 editable in your License Management Org (LMO) and
 read-only in your customer’s org or the other way around.
+
+
+Metadata Types FeatureParameterDate
+
+**Field Name** **Field Type** **Description**
 
 `masterLabel` string The feature parameter name that appears in the user
 interface.
@@ -17838,15 +17944,9 @@ The following is an example of a FeatureParameterDate component.
 
    <masterLabel>Activation Date</masterLabel>
 
-```
+   <value>2017-10-23</value>
 
-
-### Metadata Types FeatureParameterInteger
-
-```
-      <value>2017-10-23</value>
-
-   </FeatureParameterDate>
+</FeatureParameterDate>
 
 ```
 
@@ -17854,32 +17954,38 @@ The following is an example `package.xml` that references the previous definitio
 types).
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <types>
+   <types>
 
-        <members>*</members>
+     <members>*</members>
 
-        <name>FeatureParameterBoolean</name>
+     <name>FeatureParameterBoolean</name>
 
-      </types>
+   </types>
 
-      <types>
+   <types>
 
-        <members>*</members>
+     <members>*</members>
 
-        <name>FeatureParameterDate</name>
+     <name>FeatureParameterDate</name>
 
-      </types>
+   </types>
 
-      <types>
+   <types>
 
-        <members>*</members>
+     <members>*</members>
 
-        <name>FeatureParameterInteger</name>
+     <name>FeatureParameterInteger</name>
 
+```
+
+
+### Metadata Types FeatureParameterInteger
+
+```
       </types>
 
       <version>41.0</version>
@@ -17912,9 +18018,6 @@ Version
 
 ### FeatureParameterInteger components are available in API version 41.0 and later.
 
-
-Metadata Types FeatureParameterInteger
-
 Special Access Rules
 
 [Available to package developers who have access to the Feature Management App (FMA). For details, see Manage Features in the](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/fma_manage_features.htm)
@@ -17935,11 +18038,14 @@ interface.
 
 `value` int
 
-FeatureParameterDataFlowDirection
-
 The default value for this feature parameter. You can
 reference this value in your code, just like you reference
 other values in a subscriber’s org.
+
+
+Metadata Types FeatureParameterInteger
+
+FeatureParameterDataFlowDirection
 
 Represents the direction of the data flow between your License Management Org (LMO) and the customer’s org.
 
@@ -17961,22 +18067,19 @@ Declarative Metadata Sample Definition
 The following is an example of a FeatureParameterInteger component.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<FeatureParameterInteger xmlns="http://soap.sforce.com/2006/04/metadata">
+   <FeatureParameterInteger xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <dataflowDirection>SubscriberToLmo</dataflowDirection>
+      <dataflowDirection>SubscriberToLmo</dataflowDirection>
 
-   <masterLabel>Current Project Count</masterLabel>
+      <masterLabel>Current Project Count</masterLabel>
 
-   <value>42</value>
+      <value>42</value>
 
-</FeatureParameterInteger>
+   </FeatureParameterInteger>
 
 ```
-
-
-### Metadata Types FieldMappingConfig
 
 The following is an example `package.xml` that references the previous definition (and the definitions for the other feature parameter
 types).
@@ -18021,7 +18124,8 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### FieldMappingConfig
+
+### Metadata Types FieldMappingConfig FieldMappingConfig
 
 Represents the configuration for fields mapped between a source object and one or more destination objects and fields. This object is
 available in API version 63.0 and later.
@@ -18044,30 +18148,20 @@ Fields
 ```
 Description
 
+DeveloperName
+
+Language
+
 ```
 
 **Type**
 textarea
-
-
-Metadata Types FieldMappingConfig
-
-**Field** **Details**
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The description of the field mapping configuration.
-
-```
-DeveloperName
-
-Language
-
-MasterLabel
-
-```
 
 **Type**
 string
@@ -18092,6 +18186,11 @@ Possible values are:
 **•** `da` —Danish
 
 **•** `de` —German
+
+
+Metadata Types FieldMappingConfig
+
+**Field** **Details**
 
 **•** `en_US` —English
 
@@ -18125,28 +18224,21 @@ Possible values are:
 
 **•** `zh_TW` —Chinese (Traditional)
 
+```
+MasterLabel
+
+NamespacePrefix
+
+```
+
 **Type**
 string
-
-
-Metadata Types FieldMappingConfig
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort, Update
 
 **Description**
 Label for the FieldMappingConfig.
-
-```
-NamespacePrefix
-
-ProcessType
-
-SourceObjectId
-
-```
 
 **Type**
 string
@@ -18168,9 +18260,21 @@ an installed managed package. In that case, the object has the namespace prefix 
 installed managed package. This field’s value is the namespace prefix of the Developer
 Edition organization of the package developer.
 
+
+### Metadata Types FieldRestrictionRule **Field Details**
+
 **•** In organizations that are not Developer Edition organizations, `NamespacePrefix`
 is only set for objects that are part of an installed managed package. There is no
 namespace prefix for all other objects.
+
+```
+ProcessType
+
+SourceObjectId
+
+### FieldRestrictionRule
+
+```
 
 **Type**
 picklist
@@ -18199,17 +18303,12 @@ picklist
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort, Update
 
-
-### Metadata Types FieldRestrictionRule **Field Details**
-
 **Description**
 The ID of the source object for all of the fields mapped in the configuration.
 
 Possible values are:
 
 **•** `GiftEntry`
-
-### FieldRestrictionRule
 
 Represents a field visibility rule that controls whether a field is visible to a user, based on the field’s inclusion in a field set. If Enhanced
 Personal Information Management setting was enabled before Spring ’22, field visibility is based on the field’s compliance categorization.
@@ -18222,9 +18321,12 @@ File Suffix and Directory Location
 
 ### FieldRestrictionRule components have the suffix .rule and are stored in the fieldRestrictionRules folder.
 
+
+Metadata Types FieldRestrictionRule
+
 Version
 
-### FieldRestrictionRule components are available in API version 52.0 and later.
+FieldRestrictionRule components are available in API version 52.0 and later.
 
 Special Access Rules
 
@@ -18250,12 +18352,6 @@ with this categorization or included in this field set. If you enabled
 Enhanced Personal Information Management before Spring ‘22 (API
 version 54.0), you can use Salesforce's default compliance categorization
 values or values that you add yourself. If you enabled Enhanced Personal
-
-
-Metadata Types FieldRestrictionRule
-
-**Field Name** **Field Type** **Description**
-
 Information Management after Spring ‘22 (API version 54.0), use the
 PersonalInfo_EPIM field set or a field set that you add yourself.
 
@@ -18299,6 +18395,11 @@ type string)
 
 `masterLabel` string Required. The name of the rule.
 
+
+Metadata Types FieldRestrictionRule
+
+**Field Name** **Field Type** **Description**
+
 `recordFilter` string
 
 Required. The criteria that determine which fields are visible to the
@@ -18340,17 +18441,11 @@ use instead.
 
    <targetEntity>Employee</targetEntity>
 
-```
+   <userCriteria>$User.IsActive = true</userCriteria>
 
+   <version>1</version>
 
-### Metadata Types FlexiPage
-
-```
-      <userCriteria>$User.IsActive = true</userCriteria>
-
-      <version>1</version>
-
-   </FieldRestrictionRule>
+</FieldRestrictionRule>
 
 ```
 
@@ -18358,33 +18453,36 @@ The following is an example of a FieldRestrictionRule component, which uses the 
 Salesforce's default field set for personal information, but you can create a field set to use instead.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <FieldRestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
+<FieldRestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <active>true</active>
+   <active>true</active>
 
-      <classification>PersonalInfo_EPIM</classification>
+   <classification>PersonalInfo_EPIM</classification>
 
-      <classificationType>FieldSet</classificationType>
+   <classificationType>FieldSet</classificationType>
 
-      <description>Is Owner of Employee</description>
+   <description>Is Owner of Employee</description>
 
-      <enforcementType>FieldRestrict</enforcementType>
+   <enforcementType>FieldRestrict</enforcementType>
 
-      <masterLabel>Is Owner Field Restriction Rule</masterLabel>
+   <masterLabel>Is Owner Field Restriction Rule</masterLabel>
 
-      <recordFilter>OwnerId = $User.Id</recordFilter>
+   <recordFilter>OwnerId = $User.Id</recordFilter>
 
-      <targetEntity>Employee</targetEntity>
+   <targetEntity>Employee</targetEntity>
 
-      <userCriteria>$User.IsActive = true</userCriteria>
+   <userCriteria>$User.IsActive = true</userCriteria>
 
-      <version>1</version>
+   <version>1</version>
 
-   </FieldRestrictionRule>
+</FieldRestrictionRule>
 
 ```
+
+
+### Metadata Types FlexiPage
 
 The following is an example `package.xml` that references the previous definition.
 
@@ -18431,9 +18529,6 @@ Lightning pages are used in several places.
 
 **•** In Lightning Experience, Lightning pages can be used:
 
-
-Metadata Types FlexiPage
-
 **–** To customize the layout of record pages, the Salesforce Home page, and the Email Application pane in the Outlook and Gmail
 integrations.
 
@@ -18449,11 +18544,14 @@ results such as name collisions.
 
 File Suffix and Directory Location
 
-FlexiPage components have the suffix `.flexipage` and are stored in the `flexipages` folder.
+### FlexiPage components have the suffix .flexipage and are stored in the flexipages folder.
 
 Version
 
-FlexiPage components are available in API version 29.0 and later.
+### FlexiPage components are available in API version 29.0 and later.
+
+
+Metadata Types FlexiPage
 
 Fields
 
@@ -18496,11 +18594,6 @@ This field is available in API version 34.0 and later.
 
 `quickActionList` QuickActionList The list of quick actions associated with the Lightning page.
 
-
-Metadata Types FlexiPage
-
-**Field Name** **Field Type** **Description**
-
 `sobjectType` string
 
 `template` FlexiPageTemplateInstance
@@ -18532,6 +18625,10 @@ later for orgs that have Data 360 enabled.
 
 **•** `AppPage` —A Lightning page that is used as the home
 page for a custom app.
+
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
 
 **•** `CommAppPage` —A Lightning page that is used to
 represent a custom page, as created in the Experience
@@ -18567,10 +18664,6 @@ in Experience Builder. This value is available in API version
 override the login page, as created in Experience Builder.
 This value is available in API version 39.0 and later.
 
-Metadata Types FlexiPage
-
-**Field Name** **Field Type** **Description**
-
 **•** `CommNoSearchResultsPage` —An Experience
 Builder site page for B2B searches that return no results.
 The URL for this page is `no-results/:term` . The
@@ -18593,6 +18686,12 @@ Experience Builder. This value is available in API version
 
 **•** `CommQuickActionCreatePage` —A Lightning
 page used to override the create record page, as created
+
+
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
+
 in Experience Builder. This value is available in API version
 38.0 and later.
 
@@ -18626,11 +18725,6 @@ builder markup for your email content. When you edit
 email content in the builder, the FlexiPage object
 remembers where you put the components.
 
-
-Metadata Types FlexiPage
-
-**Field Name** **Field Type** **Description**
-
 Because they include builder markup, you can't retrieve
 or deploy FlexiPages when type is EmailContentPage.
 
@@ -18654,6 +18748,12 @@ available in API version 37.0 and later.
 
 **•** `MailAppAppPage` —An email application pane used
 to override the default layout in the Outlook and Gmail
+
+
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
+
 integrations. This value is available in API version 38.0 and
 later.
 
@@ -18686,9 +18786,6 @@ FlexiPageEvent
 
 An event associated with the Lightning page. Available in API version 53.0 and later.
 
-
-Metadata Types FlexiPage
-
 **Field Name** **Field Type** **Description**
 
 `sourceName` string
@@ -18712,6 +18809,9 @@ In API version 53.0, this field can have only a value of
 `Component` .
 
 `targets` FlexiPageEventTarget[] The list of targets associated with the event source.
+
+
+Metadata Types FlexiPage
 
 FlexiPageEventSourceProperty
 
@@ -18754,11 +18854,6 @@ Valid values are:
 
 **•** `flexipage:componentService`
 
-
-Metadata Types FlexiPage
-
-**Field Name** **Field Type** **Description**
-
 `properties` FlexiPageEventTargetProperty[] List of properties of the event target.
 
 `type` FlexiPageEventTargetTypeEnum
@@ -18779,6 +18874,11 @@ A key-value pair for an event’s source-to-target bindings. Available in API ve
 
 `name` string Required. Name of the target property that changes
 when the event is triggered.
+
+
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
 
 `value` string
 
@@ -18810,20 +18910,11 @@ component that can be scoped to a set of entities.
 
 Note: A Lightning page region can contain up to 100 components.
 
-
-Metadata Types FlexiPage
-
 **Field Name** **Field Type** **Description**
 
 `appendable` RegionFlagStatus
 (enumeration of type string)
 
-`componentInstances` ComponentInstance[]
-
-`itemInstances` ItemInstance[]
-
-`mode` FlexiPageRegionMode
-(enumeration of type string)
 
 This field is available in Digital Experiences in API 45.0 or later,
 but is reserved for future use for all other areas.
@@ -18847,6 +18938,17 @@ locked
 properties are missing, the region is unlocked.
 
 This field is available in API version 35.0 or later.
+
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
+
+`componentInstances` ComponentInstance[]
+
+`itemInstances` ItemInstance[]
+
+`mode` FlexiPageRegionMode
+(enumeration of type string)
 
 Properties and name of the component instance.
 
@@ -18875,6 +18977,9 @@ This field is available in API version 35.0 or later.
 `prependable` RegionFlagStatus
 (enumeration of type string)
 
+`replaceable` RegionFlagStatus
+(enumeration of type string)
+
 
 This field is available in Digital Experiences in API 45.0 or later,
 but is reserved for future use for all other areas.
@@ -18891,10 +18996,6 @@ This field is assessed in combination with `appendable` and
 **•** If all the properties are set to `enabled`, the region is
 unlocked
 
-Metadata Types FlexiPage
-
-**Field Name** **Field Type** **Description**
-
 **•** If all the properties are set to `disabled`, the region is
 locked
 
@@ -18902,14 +19003,6 @@ locked
 properties are missing, the region is unlocked.
 
 This field is available in API version 35.0 or later.
-
-`replaceable` RegionFlagStatus
-(enumeration of type string)
-
-`type` FlexiPageRegionType
-(enumeration of type string)
-
-ItemInstance
 
 This field is available in Digital Experiences in API 45.0 or later,
 but is reserved for future use for all other areas.
@@ -18926,6 +19019,10 @@ This field is assessed in combination with `appendable` and
 **•** If all the properties are set to `enabled`, the region is
 unlocked
 
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
+
 **•** If all the properties are set to `disabled`, the region is
 locked
 
@@ -18933,6 +19030,11 @@ locked
 properties are missing, the region is unlocked.
 
 This field is available in API version 35.0 or later.
+
+`type` FlexiPageRegionType
+(enumeration of type string)
+
+ItemInstance
 
 Required. The type of FlexiPage region.
 
@@ -18956,16 +19058,13 @@ Instance of a component or field on a Lightning page. Available in API version 4
 
 `fieldInstance` FieldInstance
 
-API name, label, and visibility rule information of the
-field component. This field is available only on
-Lightning pages that use Dynamic Forms.
-
-
-Metadata Types FlexiPage
-
 ComponentInstance
 
 Instance of a component in a page, such as a filter list.
+
+API name, label, and visibility rule information of the
+field component. This field is available only on
+Lightning pages that use Dynamic Forms.
 
 **Field Name** **Field Type** **Description**
 
@@ -18981,6 +19080,11 @@ instance of a component on a Lightning page. This
 field has a maximum limit of 120 characters.
 
 This field is available in API version 53.0 and later.
+
+
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
 
 `visibilityRule` UiFormulaRule
 
@@ -19023,11 +19127,6 @@ supports component decorators.
 
 Valid values are:
 
-
-Metadata Types FlexiPage
-
-**Field Name** **Field Type** **Description**
-
 **•** `decorator`
 
 This field is available in API version 38.0 or later.
@@ -19046,6 +19145,9 @@ record, set the value to _**`object`**_ `.Id` .
 version 49.0 and later.
 
 **Tabs**
+
+
+Metadata Types FlexiPage
 
 When you give a standard label to a tab in a Tabs component—such as Activity, Collaborate, or Details—and when the `name` field is
 set to `title`, the `value` field uses a system-defined value instead of the label. Here are some examples of the system-defined values:
@@ -19066,19 +19168,19 @@ For example, let’s say you have a Lightning page that contains a tab with the 
 page, you see the system-defined name of the tab, not the label, in `value` .
 
 ```
-<componentInstances>
+   <componentInstances>
 
-  <componentInstanceProperties>
+     <componentInstanceProperties>
 
-   <name>title</name>
+      <name>title</name>
 
-   <value>Standard.Tab.activity</value>
+      <value>Standard.Tab.activity</value>
 
-  </componentInstanceProperties>
+     </componentInstanceProperties>
 
-   <componentName>flexipage:tab</componentName>
+      <componentName>flexipage:tab</componentName>
 
-</componentInstances>
+   </componentInstances>
 
 ```
 
@@ -19100,12 +19202,6 @@ UseDefaultAssignmentRule Account Evaluate this account against territory
 rules on save
 
 **•** `APPLY_OPTION_WITHOUT_CHECKBOX_DISPLAY`
-
-
-Metadata Types FlexiPage
-
-**API Name** **Available** **Available Values** **UI Label**
-**Objects**
 
 **•** `SHOW_CHECKBOX_WITH_DEFAULT_OFF`
 
@@ -19134,6 +19230,12 @@ triggerOtherEmail Case Send notification email to Contact
 **•** `NONE`
 
 **•** `SHOW_CHECKBOX_WITH_DEFAULT_OFF`
+
+
+Metadata Types FlexiPage
+
+**API Name** **Available** **Available Values** **UI Label**
+**Objects**
 
 **•** `SHOW_CHECKBOX_WITH_DEFAULT_ON`
 
@@ -19167,9 +19269,6 @@ ComponentInstancePropertyList
 
 Value of an element in an array in a component instance.
 
-
-Metadata Types FlexiPage
-
 **Field Name** **Field Type** **Description**
 
 `valueListItems` ComponentInstancePropertyListItem[] An array of elements in a component instance.
@@ -19184,6 +19283,9 @@ Name of an element in an array in a component instance.
 
 In API version 49.0 and later, arrays in a FlexiPage are represented as `valueList` . Each array element is represented as
 `valueListItem`, and the element name is represented as `value` .
+
+
+Metadata Types FlexiPage
 
 For example, if you have an array of actions with API names `Clone` and `Edit`, the array is represented as `valueList`, with two
 `valueListItems` . One `valueListItems` has the `value Clone`, and one `valueListItems` has the `value Edit` .
@@ -19235,9 +19337,6 @@ UiFormulaCriterion
 
 A single filter that when evaluated, helps define component visibility on a Lightning page. Available in API version 41.0 and later.
 
-
-Metadata Types FlexiPage
-
 **Field Name** **Field Type** **Description**
 
 `leftValue` string Required. The field upon which the filter is based. For
@@ -19259,6 +19358,11 @@ Valid values are:
 **•** `LE` —less than or equal
 
 **•** `LT` —less than
+
+
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
 
 `rightValue` string The value by which you want to evaluate the
 component’s visibility. For example, `1000000` .
@@ -19294,13 +19398,8 @@ only on Lightning Pages that have enabled Dynamic Forms.
 
 **Field Name** **Field Type** **Description**
 
-`fieldInstanceProperties` FieldInstanceProperty on page 1202[] Properties of the field instance. Contains a name and
+`fieldInstanceProperties` FieldInstanceProperty on page 1203[] Properties of the field instance. Contains a name and
 value pair for each property associated with the field.
-
-
-Metadata Types FlexiPage
-
-**Field Name** **Field Type** **Description**
 
 `fieldItem` string The API name of the field, prefixed with its context. For
 example, record fields are prefixed with `Record.` .
@@ -19320,6 +19419,9 @@ under which the component displays on the page. If
 the rule evaluates to `true`, the component displays
 on the page. If `false`, it doesn't display. If this field
 is `null`, the component displays by default.
+
+
+Metadata Types FlexiPage
 
 FieldInstanceProperty
 
@@ -19359,16 +19461,12 @@ for this field are:
 
 FlexiPageTemplateInstance represents an instance of a Lightning page template.
 
-
-Metadata Types FlexiPage
-
 **Field Name** **Field Type** **Description**
 
 `name` string Required. The name of a single instance of a template.
 
 `properties` ComponentInstanceProperty[]
 
-PlatformActionList
 
 The value of a single property in a template instance.
 
@@ -19384,6 +19482,10 @@ Contains a name and value pair for each theme layout
 property associated with the page template. In
 Experience Builder, the theme layout and its properties
 appear in the Theme area.
+
+Metadata Types FlexiPage
+
+PlatformActionList
 
 PlatformActionList represents the list of actions, and their order, that display on a Lightning app page. Available in API version 34.0 and
 later.
@@ -19440,11 +19542,6 @@ type string)
 
 **•** `RelatedListRecord`
 
-
-Metadata Types FlexiPage
-
-**Field Name** **Field Type** **Description**
-
 `platformActionListItems` PlatformActionListItem[] The actions in the PlatformActionList.
 
 `relatedSourceEntity` string
@@ -19460,6 +19557,11 @@ PlatformActionListItem represents an action in the PlatformActionList. Available
 **Field Name** **Field Type** **Description**
 
 `actionName` string Required. The API name for the action in the list.
+
+
+Metadata Types FlexiPage
+
+**Field Name** **Field Type** **Description**
 
 ```
 actionType
@@ -19505,47 +19607,50 @@ Declarative Metadata Sample Definition
 Here’s a sample XML FlexiPage component definition for a custom opportunity record page. It includes a tab set and a rich text component
 with visibility rules assigned to it.
 
-
-Metadata Types FlexiPage
-
 Note: As an Experience Builder site page, three initial regions in the definition show the `header` region as locked, the `content`
 region as unlocked, and the `footer` region as unlocked.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <flexiPageRegions>
+   <flexiPageRegions>
 
-        <itemInstances>
+     <itemInstances>
 
-           <componentInstance>
+        <componentInstance>
 
-             <componentInstanceProperties>
+          <componentInstanceProperties>
 
-               <name>collapsed</name>
+            <name>collapsed</name>
 
-               <value>false</value>
+            <value>false</value>
 
-             </componentInstanceProperties>
+          </componentInstanceProperties>
 
-             <componentInstanceProperties>
+          <componentInstanceProperties>
 
-               <name>hideChatterActions</name>
+            <name>hideChatterActions</name>
 
-               <value>false</value>
+            <value>false</value>
 
-             </componentInstanceProperties>
+          </componentInstanceProperties>
 
-             <componentInstanceProperties>
+          <componentInstanceProperties>
 
-               <name>numVisibleActions</name>
+            <name>numVisibleActions</name>
 
-               <value>3</value>
+            <value>3</value>
 
-             </componentInstanceProperties>
+          </componentInstanceProperties>
 
+```
+
+
+Metadata Types FlexiPage
+
+```
              <componentName>force:highlightsPanel</componentName>
 
            </componentInstance>
@@ -19614,12 +19719,6 @@ region as unlocked, and the `footer` region as unlocked.
 
              </componentInstanceProperties>
 
-```
-
-
-Metadata Types FlexiPage
-
-```
              <componentInstanceProperties>
 
                <name>maxRecords</name>
@@ -19660,6 +19759,12 @@ Metadata Types FlexiPage
 
         </itemInstances>
 
+```
+
+
+Metadata Types FlexiPage
+
+```
         <name>facet-77f21b6f-ad73-4d79-838a-79e0df27cc63</name>
 
         <type>Facet</type>
@@ -19728,12 +19833,6 @@ Metadata Types FlexiPage
 
            </componentInstance>
 
-```
-
-
-Metadata Types FlexiPage
-
-```
         </itemInstances>
 
         <itemInstances>
@@ -19774,6 +19873,12 @@ Metadata Types FlexiPage
 
            <componentInstance>
 
+```
+
+
+Metadata Types FlexiPage
+
+```
              <componentInstanceProperties>
 
                <name>body</name>
@@ -19842,12 +19947,6 @@ Metadata Types FlexiPage
 
              </componentInstanceProperties>
 
-```
-
-
-Metadata Types FlexiPage
-
-```
              <componentName>flexipage:tabset</componentName>
 
            </componentInstance>
@@ -19886,6 +19985,12 @@ Metadata Types FlexiPage
 
              </componentInstanceProperties>
 
+```
+
+
+Metadata Types FlexiPage
+
+```
              <componentName>flexipage:richText</componentName>
 
              <visibilityRule>
@@ -19954,12 +20059,6 @@ Metadata Types FlexiPage
 
                   <rightValue>Small</rightValue>
 
-```
-
-
-### Metadata Types Flow
-
-```
                </criteria>
 
              </visibilityRule>
@@ -19999,6 +20098,9 @@ Metadata Types FlexiPage
    </FlexiPage>
 
 ```
+
+
+### Metadata Types Flow
 
 And, here’s the sample `package.xml` file that references the FlexiPage component definition:
 
@@ -20046,9 +20148,6 @@ Here are the limitations related to how you can use Metadata API to work with fl
 **•** Spaces in a flow file name can lead to errors when you deploy the flow. You can include spaces at the beginning or end of a name,
 but these spaces are removed when you deploy the flow.
 
-
-Metadata Types Flow
-
 **•** You can deploy changes to an active flow if in a non-production org, such as a scratch or sandbox org. To deploy changes in a
 production org, you must enable the **Deploy processes and flows as active** preference. After you deploy changes to an active
 flow, the flow’s detail page shows a new flow version that’s active. The new version includes your changes.
@@ -20062,8 +20161,12 @@ org.
 
 Declarative Metadata File Suffix and Directory Location
 
-Flows are stored in the `Flow` directory of the corresponding package directory. The file name matches the flow’s unique full name,
+### Flows are stored in the Flow directory of the corresponding package directory. The file name matches the flow’s unique full name,
+
 and the extension is `.flow` .
+
+
+Metadata Types Flow
 
 Version
 
@@ -20106,11 +20209,6 @@ in API version 50.0 and later.
 
 `constants` FlowConstant[] An array of constants.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `customErrors` FlowCustomError[] An array of custom errors.
 
 `customProperties` FlowCustomProperty[]
@@ -20132,6 +20230,11 @@ of type string)
 **•** `Default` —The flow can run from a Visualforce
 component, Lightning page, flow action, or custom Aura
 component.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 **•** `Offline` —The flow can run only offline. Flow types that
 support offline flows must set this value. This value is
@@ -20158,6 +20261,8 @@ and later.
 
 `fullName` string
 
+`interviewLabel` string
+
 Required. Inherited from the Metadata component. Name of
 the file in Metadata API.
 
@@ -20175,13 +20280,6 @@ a version number, the flow is the latest version.
 In API version 43.0 and earlier, this field included the version
 number. In API version 44 and later, this field no longer includes
 the version number.
-
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
-`interviewLabel` string
 
 Label for the interview. This label helps users and administrators
 differentiate interviews from the same flow.
@@ -20201,6 +20299,12 @@ value is `false` . When installed from managed packages,
 
 subscribers can’t view or clone processes or flows because of
 intellectual property (IP) protection. But when those processes
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
+
 and flows are templates, subscribers can open them in a builder,
 clone them, and customize the clones. This field is available in
 API version 45.0 and later.
@@ -20241,12 +20345,6 @@ and later.
 
 **•** `ActivityObjectMatchingFlow` —A flow that
 launches when Einstein Activity Capture detects and
-
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 captures a new activity, such as an email. This type of flow
 runs in the background without user interaction. This value
 is available with Sync Email as Salesforce Activity in API
@@ -20265,6 +20363,11 @@ interaction.
 **•** `CheckoutFlow` —A flow used in Lightning B2B
 Commerce to create a checkout in a store. This value is
 available in API version 48.0 and later.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 **•** `ContactRequestFlow` —A flow that lets customers
 request to be contacted by customer support. This flow is
@@ -20304,11 +20407,6 @@ value is available in API version 54.0 and later.
 mobile app. This value is available in API version 39.0 and
 later.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 **•** `FieldServiceWeb` —A flow for embedded
 Appointment Booking. Its UI label is Field Service Embedded
 Flow. This value is available in API version 41.0 and later.
@@ -20326,6 +20424,11 @@ Mortgage. This value is available in API version 46.0 and later.
 handle user registration and updates for single sign-on with
 the authentication provider framework. Available in API
 version 64.0 and later.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 **•** `IndicatorResultFlow` —A flow for Outcome
 Management that calculates and creates indicator results
@@ -20365,11 +20468,6 @@ recommendations for your users. A recommendation
 launches its assigned flow. This value is available in API
 [version 54.0 and later. See Flow Builder Strategies.](https://help.salesforce.com/s/articleView?id=platform.nba_building_flow_builder_strategy.htm&type=5&language=en_US)
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 **•** `RoutingFlow` —A flow for Salesforce Omni-Channel
 routing and other business logic. This value is available in
 API version 52.0 and later.
@@ -20388,6 +20486,11 @@ license is enabled.
 **•** `Workflow` —A process that is invoked when a record is
 created or edited. In the UI and Salesforce Help, it’s a record
 change process.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 Across flow versions, you can change the type only from `Flow`
 to `AutoLaunchedFlow` or vice versa. Before you change
@@ -20432,11 +20535,6 @@ This field is available in API version 31.0 and later.
 `recordRollbacks` FlowRecordRollback[] An array of nodes for rolling back transactions in the screen flow.
 This field is available in API version 52.0 and later.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `recordUpdates` FlowRecordUpdate[] An array of nodes for updating records in the database.
 
 `runInMode` FlowRunInMode (enumeration The context that the flow runs in. Valid values are:
@@ -20457,6 +20555,12 @@ as **System Context with Sharing—Enforces**
 
 **•** `SystemModeWithoutSharing—` The flow can access
 all data. In the UI, this value appears as **System Context**
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
+
 **without Sharing—Access All Data** . This value is available
 in API version 49.0 and later.
 
@@ -20497,11 +20601,6 @@ of type string)
 
 `steps` FlowStep[] An array of step nodes.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `subflows` FlowSubflow[] An array of subflows. This field is available in API version 25.0
 and later.
 
@@ -20523,6 +20622,9 @@ version 54.0 and later.
 
 `waits` FlowWait[] An array of wait nodes. This field is available in API version 32.0
 and later.
+
+
+Metadata Types Flow
 
 FlowActionCall
 
@@ -20559,15 +20661,10 @@ type string) execute invocable actions. Valid values are:
 **•** `Automatic`                            - Creates a transaction if the invocable
 action supports it and there’s pending DML.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
-**•** `CurrentTransaction`                               - Keeps the invocable
+**•** `CurrentTransaction`                            - Keeps the invocable
 action running in the same transaction.
 
-**•** `NewTransaction`                               - Creates a transaction before
+**•** `NewTransaction`                            - Creates a transaction before
 the invocable action is executed.
 
 This field is available in API version 51.0 and later.
@@ -20591,6 +20688,11 @@ version 62.0 and later.
 Specify the number of months, days, hours, or minutes to
 pause the flow while it waits for the action to be completed.
 This field is available in API version 61.0 and later.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `offsetUnit` FlowScheduledPathOffsetUnit Specify the time unit used to wait when the async action
 (enumeration of type string) executes. Possible values are:
@@ -20631,11 +20733,6 @@ of type string) action in a flow. Valid values are:
 
 **•** `EnableTimeoutPath`
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 This field is available in API version 66.0 and later.
 
 `versionSegment` int Specifies the version of the versioned action. By default, the
@@ -20648,7 +20745,7 @@ deprecated in API version 62.0 and later.
 
 InvocableActionType
 
-The valid values in the required `actionType` on FlowActionCall on page 1217.
+The valid values in the required `actionType` on FlowActionCall on page 1218.
 
 **Valid Value** **Description**
 
@@ -20656,6 +20753,11 @@ The valid values in the required `actionType` on FlowActionCall on page 1217.
 
 `activationSchema` Gets the activation schema for the specified activation. This value is available in API version 64.0
 and later.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 `addMessageToChat` Adds a message to an existing Salesforce Anywhere chat. This value is available in API version
 49.0 and later.
@@ -20688,11 +20790,6 @@ later.
 articles.
 
 `analyticsSendDigestAsSlackMsg` Sends an Analytics digest to a Slack channel. This value is available in API version 64.0 and later.
-
-
-Metadata Types Flow
-
-**Valid Value** **Description**
 
 `attachQuipDocumentToRecord` Attaches a Quip document, spreadsheet, or slide to a Salesforce record. This value is available
 in API version 46.0 and later.
@@ -20727,6 +20824,11 @@ result in the VerificationContext variable. This value is available in API versi
 
 `cdpGetDataGraph` Query a data graph in Data Cloud by data graph API name, data space name, and record ID. This
 resource is available in API version 61.0 and later.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 `cdpGetDataGraphByLookup` Get data of a data graph in Data Cloud by data graph API name, data space name, and lookup
 key. This resource is available in API version 63.0 and later.
@@ -20766,11 +20868,6 @@ and that is referenced by actionName. This value is available in API version 43.
 
 `contactRequestAction` Creates a contact request record. This value is available in API version 45.0 and later.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 `contentWorkspaceEnableFolders` Enables folders in a library.
 
 `convertAttributesToJson` Converts the given attributes into a JSON string format. This value is available in API version 64.0
@@ -20794,6 +20891,11 @@ API version 49.0 and later.
 
 `createQuipDocument` Creates a Quip document, spreadsheet, or slide. This value is available in API version 46.0 and
 later.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 `createQuipFolder` Creates a Quip folder. This value is available in API version 46.0 and later.
 
@@ -20831,11 +20933,6 @@ of Workflow.
 `externalConnector` Executes a process or method exposed via a connector to an external system. This value is
 available in API version 63.0 and later.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 ```
 externalService
 
@@ -20848,9 +20945,15 @@ version 46.0 and later.
 `findMatchingIndividuals` Finds contact, lead, or employee records that match a search term.
 
 ```
+findPastCollaborators
+
 flow
 
 ```
+
+Leverages insights from Einstein Activity Capture to identify individuals with past collaborative
+ties, aiding in securing introductions to relevant parties in ongoing or future deals. This value is
+available in API version 63.0 and later.
 
 Invokes an autolaunched flow. This action type isn't available for flows with a processType of
 Flow or AutolaunchedFlow. To invoke an autolaunched flow from one of those types, use
@@ -20866,6 +20969,11 @@ in API version 63.0 and later.
 
 `getActivitySummary` Gets a summary of activity data associated with a specified record, including emails, calls, and
 meetings. This value is available in API version 60.0 and later.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 ```
 getArticleSmartLinkUrl
@@ -20886,11 +20994,17 @@ Archive.
 targets.
 
 ```
+getProductPricing
+
 getResourcesForMnlScheduling
 
 getSalesAgreementDetails
 
 ```
+
+Gets the pricing information of a product, including relevant historical sale price data from
+previous won deals involving the same product. This value is available in API version 63.0 and
+later.
 
 Recommends resources to use to manually schedule the start of a care visit or recurring visits.
 You must enable Home Health to use this action. This value is available in API version 61.0 and
@@ -20917,11 +21031,6 @@ and later.
 
 `goToCadenceStep` Jumps to the specified step in the Sales cadence. This value is available in API version 57.0 and
 later.
-
-
-Metadata Types Flow
-
-**Valid Value** **Description**
 
 `internalTestAction` Reserved for internal use.
 
@@ -20950,6 +21059,11 @@ and later.
 
 `massUpdateAccountForecast` Bulk updates forecasts asynchronously. This value is available in API version 48.0 and later.
 
+
+Metadata Types Flow
+
+**Valid Value** **Description**
+
 `massUpdateSalesAgreement` Bulk updates sales agreements asynchronously. This value is available in API version 48.0 and
 later.
 
@@ -20974,11 +21088,16 @@ This value is available in API version 60.0 and later.
 and later.
 
 ```
+reviewBuyingCommittee
+
 rpa
 
 scheduleGroupVisits
 
 ```
+
+Identifies and reviews key contacts associated with a deal, their influence on that deal, and other
+deals that they’ve impacted. This value is available in API version 63.0 and later.
 
 Performs a set of actions in a defined scope outside the flow, such as operating a session or
 using an application on a on-premises computer via an RPA robot. This value is available in API
@@ -20995,11 +21114,6 @@ This value is available in API version 60.0 and later.
 `sendSurveyInvitation` Sends email survey invitations to leads, contacts, and users in your org based on an action, such
 as when a customer support case closes. This value is available in API version 47.0 and later.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 `pardotSlackCompletionActionNotification` Sends a user a Slack notification when a prospect completes an activity in Account Engagement.
 
 `performSurveySentimentAnalysis` Perform survey sentiment analysis to create or update the AI Sentiment Result records. This
@@ -21014,6 +21128,11 @@ is available in version 44.0 and later.
 is available in API version 54.0 and later.
 
 `slackCreateChannel` Creates a Slack channel in a Slack workspace. This value is available in API version 54.0 and later.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 `slackGetConversationInfo` Retrieves the name of a Slack channel or group direct message and finds out whether it's archived.
 This value is available in API version 54.0 and later.
@@ -21057,9 +21176,6 @@ in API version 63.0 and later.
 
 These values are used in Omnichannel Inventory. If no version is specified, the value is available in API version 51.0 and later.
 
-
-Metadata Types Flow
-
 **Valid Value** **Description**
 
 `ociCreateReservation` Creates one or more inventory reservations at a location or location group.
@@ -21074,6 +21190,9 @@ location groups.
 `ociTransferReservation` Transfers one or more inventory reservations between locations or location groups.
 
 These values are used in the B2B Commerce Checkout Flow. If no version is specified, the value is available in API version 47.0 and later.
+
+
+Metadata Types Flow
 
 **Valid Value** **Description**
 
@@ -21114,9 +21233,6 @@ These values are used in the B2B Commerce and D2C Commerce.
 `recordTaxTransaction` Records tax transactions from an order summary to an external system. This value is available
 in API version 62.0 and later.
 
-
-Metadata Types Flow
-
 These values are used in Data Cloud.
 
 **Valid Value** **Description**
@@ -21127,6 +21243,9 @@ These values are used in Data Cloud.
 `dataKitDeployComponentAction` Deploys data kit components in a target org. This value is available in API version 64.
 
 These values are used in Education Cloud.
+
+
+Metadata Types Flow
 
 **Valid Value** **Description**
 
@@ -21169,11 +21288,6 @@ version 59.0 and later.
 
 `managedContentVariantSetLockStatus` Sets the locked status of a content variant.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 `managedContentVariantSetReadyStatus` Sets the ready for publication status of a content variant.
 
 These values are used in Order Management. If no version is specified, the value is available in API version 48.0 and later.
@@ -21185,6 +21299,11 @@ later.
 
 `adjustOrderItemSummariesPreview` Previews the expected results of applying a price adjustment to order item summaries from an
 order summary without actually applying it. This value is available in API version 49.0 and later.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 `adjustOrderItemSummariesSubmit` Applies a price adjustment to order item summaries from an order summary. This value is
 available in API version 49.0 and later.
@@ -21234,11 +21353,6 @@ for an invoice belonging to an order summary.
 
 `getFulfillmentOrderCapacityValues` Gets fulfillment order capacity information. This value is available in API version 55.0 and later.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 `holdFulfillmentOrderCapacity` Holds fulfillment order capacity. This value is available in API version 55.0 and later.
 
 ```
@@ -21258,6 +21372,11 @@ value is available in API version 54.0 and later.
 
 `orderRoutingRankByAverageDistance` Calculates the average distance from sets of inventory locations to an order recipient, and returns
 the sets sorted by that average distance. This value is available in API version 51.0 and later.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 `releaseHeldFulfillmentOrderCapacity` Releases held fulfillment order capacity. This value is available in API version 55.0 and later.
 
@@ -21299,11 +21418,6 @@ version 52.0 and later.
 `generateRebatePayoutPeriods` Generates payout periods for a rebate program based on the frequency specified in the program.
 This value is available in API version 51.0 and later.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 `processRebatesBatchCalculationJob` Processes a rebate batch calculation job from the Data Processing Engine. This value is available
 in API version 51.0 and later.
 
@@ -21315,6 +21429,9 @@ target object. This value is available in API version 51.0 and later.
 
 `upsertCustomRebatePayout` Upserts the custom calculated rebate payout for the specified aggregate record. This value is
 available in API version 51.0 and later.
+
+
+Metadata Types Flow
 
 These values are for Decision Table. If no version is specified, the value is available in API version 51.0 and later.
 
@@ -21355,11 +21472,6 @@ later.
 `getEngagements` Gets engagement interaction, messaging session, and voice call records associated with a
 specified account record.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 `getRecordDetails` Gets the details of specified records, including the name of the parent record.
 
 These values are used in Field Service. If no version is specified, the value is available in API version 52.0 and later.
@@ -21373,6 +21485,11 @@ These values are used in Field Service. If no version is specified, the value is
 `completeWorkOrder` Completes a work order.
 
 `createWorkOrder` Creates a work order.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 `createWorkOrderLineItem` Creates a work order line item.
 
@@ -21413,9 +21530,6 @@ object that’s visible to the current user.
 `searchKnowledgeArticles` Searches for knowledge articles with specified search terms, language, data category group,
 and data category.
 
-
-Metadata Types Flow
-
 This value is used for Einstein Initiate Language Processing Action.
 
 **Valid Value** **Description**
@@ -21424,6 +21538,9 @@ This value is used for Einstein Initiate Language Processing Action.
 the service specified in the related record. This value is available in API version 60.0 and later.
 
 These values are used in Einstein Work summaries. If no version is specified, the value is available in API version 63.0 and later.
+
+
+Metadata Types Flow
 
 **Valid Value** **Description**
 
@@ -21469,15 +21586,15 @@ Enqueues requests to get a field update suggestion from a field generation promp
 Also enqueues requests to update a field based on the generated suggestion. This value is
 available in API version 64.0 and later.
 
-
-Metadata Types Flow
-
 This value is used in Einstein Case Classification flow.
 
 **Valid Value** **Description**
 
 `applyCaseClassificationRecommendations` Takes a Case ID as input and outputs a case SObject with recommendations applied. This value
 is available in API version 57.0 and later.
+
+
+Metadata Types Flow
 
 These values are used in the Activities: Match Email to Records flow. Sync Email as Salesforce Activity must be enabled.
 
@@ -21539,11 +21656,6 @@ These values are used in the Contracts flow.
 
 `updateContractDocumentVersion` Updates a contract document version. Available in API version 64.0 and later.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 `checkOutContractDocVersion` Check-out a contract document version. Available in API version 64.0 and later.
 
 `createClmContract` Create a contract for a specified record. Available in API version 64.0 and later.
@@ -21552,6 +21664,11 @@ Metadata Types Flow
 and later.
 
 `getContractDocumentVersions` Get contract document versions. Available in API version 64.0 and later.
+
+
+Metadata Types Flow
+
+**Valid Value** **Description**
 
 `performContractAction` Perform actions on a contract based on its status. Available in API version 64.0 and later.
 
@@ -21593,9 +21710,6 @@ value is available in API version 64.0 and later.
 
 These values are used in Unified Catalog. If no version is specified, the value is available in API version 64.0 and later.
 
-
-Metadata Types Flow
-
 **Valid Value** **Description**
 
 `checkProductEligibility` Determines whether a user is eligible for a list of products, which represent service processes,
@@ -21605,6 +21719,9 @@ based on predefined criteria.
 and if the list is linked to a service process.
 
 These values are for the Batch Management jobs.
+
+
+Metadata Types Flow
 
 **Valid Value** **Description**
 
@@ -21643,11 +21760,6 @@ These values are used in Einstein Conversation Insights.
 `getConversationIntelligence` Gets the conversation intelligence information about a voice or video call, including any insights
 and the conversation summary. This value is available in API version 65.0 and later.
 
-
-Metadata Types Flow
-
-**Valid Value** **Description**
-
 `getConversationTranscript` Gets the conversation transcript for the specified voice or video call record. This value is available
 in API version 63.0 and later.
 
@@ -21657,6 +21769,9 @@ This value is used in the Get Opportunity Details flow.
 
 `getRecPrioData` Gets the record data and field metadata required to prioritize records. This value is available in
 API version 62.0 and later.
+
+
+Metadata Types Flow
 
 These values are reserved for future use.
 
@@ -21716,9 +21831,6 @@ For values used in other products or features, see:
 
 **•** [Flow for Process Compliance Navigator](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/process_compliance_navigator_flow_metadata_api.htm)
 
-
-Metadata Types Flow
-
 **•** [Flow for Product Configurator](https://developer.salesforce.com/docs/atlas.en-us.260.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/product_configurator_flow_metadata_api.htm)
 
 **•** [Flow for Product Discovery](https://developer.salesforce.com/docs/atlas.en-us.260.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/product_discovery_flow_metadata_api.htm)
@@ -21732,6 +21844,9 @@ Metadata Types Flow
 **•** [Flow for Salesforce Pricing](https://developer.salesforce.com/docs/atlas.en-us.260.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/pricing_flow_metadata_api.htm)
 
 **•** [Flow for Usage Management](https://developer.salesforce.com/docs/atlas.en-us.260.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/usage_management_flow_metadata_api.htm)
+
+
+Metadata Types Flow
 
 FlowActionCallInputParameter
 
@@ -21772,9 +21887,6 @@ FlowApexPluginCall
 
 Defines a call to an Apex plug-in from the flow. It extends FlowNode and inherits all its fields.
 
-
-Metadata Types Flow
-
 **Field Name** **Field Type** **Description**
 
 `apexClass` string Required. The name of the Apex class.
@@ -21786,6 +21898,11 @@ results in an error.
 
 `inputParameters` FlowApexPluginCallInputParameter[] An array of input parameters from the flow to the Apex
 plug-in.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `outputParameters` FlowApexPluginCallOutputParameter[] An array of output parameters from the Apex plug-in to the
 flow.
@@ -21823,9 +21940,6 @@ order, starting from the index 0.
 
 `connector` FlowConnector Specifies which node to execute after this assignment node.
 
-
-Metadata Types Flow
-
 FlowAssignmentItem
 
 Defines an operation to apply to a variable. It extends FlowBaseElement and inherits all its fields.
@@ -21834,6 +21948,11 @@ Defines an operation to apply to a variable. It extends FlowBaseElement and inhe
 
 `assignToReference` string Reference to the variable to which you want to apply the
 specified operator.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `operator` FlowAssignmentOperator
 (enumeration of type string)
@@ -21890,11 +22009,6 @@ operator.
 The `Add` operator isn’t supported when the `assignToReference` field is a variable of
 type boolean, dateTime, or sObject.
 
-
-Metadata Types Flow
-
-**Enumeration Value** **Description**
-
 `AddAtStart` Supported only when the `assignToReference` field is a collection variable or the
 `$Flow.ActiveStages` global variable. Adds the `value` as a new item at the beginning
 
@@ -21909,6 +22023,11 @@ AddItem
 Supported only when the `assignToReference` field is a variable of type multipicklist.
 Adds the `value` to the picklist, including the semicolon that’s required to mark a `value` as
 a separate item. This operator is available in API version 34.0 and later.
+
+
+Metadata Types Flow
+
+**Enumeration Value** **Description**
 
 `Assign` Assigns the `value` to the variable in the `assignToReference` field.
 
@@ -21956,23 +22075,13 @@ items in the collection variable.
 ```
 RemoveUncommon
 
+Subtract
+
 ```
 
 Supported only when `assignToReference` and `value` are both collection variables.
 Keeps items that are in both collections and removes the rest from the collection variable in
 the `assignToReference` field. This operator is available in API version 43.0 and later.
-
-
-Metadata Types Flow
-
-**Enumeration Value** **Description**
-
-```
-Subtract
-
-```
-
-FlowBaseElement
 
 Supported only when the `assignToReference` field is a variable of type currency, date,
 or number.
@@ -21982,6 +22091,11 @@ subtracts the `value` from the variable.
 
 When the `assignToReference` field is a variable of type date, this operator subtracts the
 `value` in days from the variable.
+
+
+Metadata Types Flow
+
+FlowBaseElement
 
 Base class for all flow elements that require contextual information in metadata values. This class is an abstract class. FlowBaseElement
 is available in API version 32.0 and later.
@@ -22022,14 +22136,11 @@ selected. Not supported for choices in multi-select fields.
 
 `value` FlowElementReferenceOrValue
 
+FlowChoiceUserInput
+
 Actual value that’s used during flow execution, for example,
 in assignments, calls to Apex plug-ins, and record elements. If
 null, this choice always has the value of null.
-
-
-Metadata Types Flow
-
-FlowChoiceUserInput
 
 Allows the choice to include a user input field that appears when the user selects a choice. User input isn’t supported for choices in
 multi-select fields. It extends FlowBaseElement and inherits all its fields.
@@ -22041,6 +22152,11 @@ field when they select the choice.
 
 `promptText` string Text that’s displayed to prompt the user for input at runtime.
 Supports merge fields.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `validationRule` FlowInputValidationRule A rule used at runtime to validate the user input.
 
@@ -22087,11 +22203,6 @@ are:
 
 `connector` FlowConnector Specifies which node to execute after processing the collection.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `formula` string
 
 `limit` int
@@ -22110,6 +22221,11 @@ sorted before the limit takes effect.
 This field is available in API version 51.0 and later.
 
 This field is nillable in API version 51.0 and later.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `mapItems` FlowCollectionMapItem[] The rules to map each field of the collection variable.
 
@@ -22148,9 +22264,6 @@ FlowCustomError
 Defines a custom error element to roll back a change that triggered a flow and inform the user exactly what caused the error. It extends
 FlowNode and inherits all its fields.
 
-
-Metadata Types Flow
-
 **Field Name** **Field Type** **Description**
 
 `description` string Describes the error message.
@@ -22163,6 +22276,9 @@ current node.
 FlowCustomErrorMessage
 
 Defines a custom error message for a custom error element. It extends FlowBaseElement and inherits all its fields.
+
+
+Metadata Types Flow
 
 **Field Name** **Field Type** **Description**
 
@@ -22205,11 +22321,6 @@ of type string) is used for. Valid values are:
 
 **•** ExitCondition
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `conditions` FlowCondition[] An array of conditions that must be `true` for the flow to
 execute the rule.
 
@@ -22228,6 +22339,11 @@ left side of the condition expression.
 **•** `GreaterThan`
 
 **•** `GreaterThanOrEqualTo`
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 **•** `HasError` —This value is available in API version 64.0
 and later.
@@ -22274,11 +22390,6 @@ and later.
 
 [See Flow Operators.](https://help.salesforce.com/s/articleView?id=platform.flow_ref_operators.htm&language=en_US)
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `rightValue` FlowElementReferenceOrValue Unique name of an element or the actual value, such as text
 or a number, for the right side of the condition expression.
 
@@ -22290,6 +22401,11 @@ Defines the name and value of a custom property in a flow. This metadata type is
 
 `name` string Required. Unique name for the custom property associated with
 the flow.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `value` FlowElementReferenceOrValue
 
@@ -22331,11 +22447,6 @@ specified operator is applied.
 `operator` FlowAssignmentOperator (enumeration Required. Applies to the variable reference in the
 of type string) `assignToFieldReference` field.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `value` FlowElementReferenceOrValue
 
 FlowDataTypeMapping
@@ -22351,6 +22462,11 @@ FlowBaseElement and inherits all its fields. This metadata type is available in 
 
 `apexClass` string The name of the Apex class. This field is
 available in API version 61.0 and later.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `typeName` string Required. API name of the input or output
 variable. The `T__` prefix is required for
@@ -22390,14 +22506,11 @@ string)
 
 `value` FlowElementReferenceOrValue
 
+FlowDecision
+
 Default value of the constant. This field can’t have merge fields, nor
 can it reference another resource besides
 `$GlobalConstant.EmptyString` .
-
-
-Metadata Types Flow
-
-FlowDecision
 
 A node that evaluates a set of rules and routes the flow execution based on the first rule that evaluates to true. It extends FlowNode and
 inherits all its fields.
@@ -22411,6 +22524,11 @@ version 65.0 and later.
 true.
 
 `defaultConnectorLabel` string Label for the default connector.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `rules` FlowRule[] An array of rules for the decision. The rules are evaluated in the
 order that they’re listed, and the connector of the first true rule is
@@ -22451,11 +22569,6 @@ choice has the `picklistField` and `picklistObject` parameters set, it’s a pic
 `collectionReference` string The collection that’s used to generate choices. This field is
 available in API version 54.0 and later.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `dataType` FlowDataType (enumeration of type Required. Valid types are:
 string)
 
@@ -22476,6 +22589,11 @@ string)
 **•** `String`
 
 **•** `Time`
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `Picklist` and `Multipicklist` are available in API
 version 35.0 and later. `Record` is available in API version
@@ -22525,11 +22643,6 @@ in the database.
 
 Not supported for picklist choices.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `outputAssignments` FlowOutputFieldAssignment[] An array that assigns fields from the user-selected record to
 variables that can be used elsewhere in the flow. For
 
@@ -22544,6 +22657,12 @@ Not supported for picklist choices.
 you want to retrieve from the database and use to generate
 
 the picklist choice. For example, use “Industry” to dynamically
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
+
 generate one choice for each available value on the Industry
 picklist field.
 
@@ -22594,12 +22713,6 @@ This field is available in API version 25.0 and later.
 displayed to the user as the choice options
 
 ( `displayField` ). For example, the `displayField`
-
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 could be the account “Name” while the valueField is the
 account “Id.”
 
@@ -22609,6 +22722,9 @@ store the API value for the retrieved picklist values.
 FlowElement
 
 Base class for all flow elements. This class is an abstract class. It extends FlowBaseElement and inherits all its fields.
+
+
+Metadata Types Flow
 
 **Field Name** **Field Type** **Description**
 
@@ -22662,15 +22778,11 @@ type string)
 
 need the label and type in addition to the API name.
 
+`dateTimeValue` dateTime
+
 **•** `JoinDefinition` —When `InnerJoin` is specified in
 `transformType`, indicates flow resources for source and target
 collections, join keys, selected fields to join. and field mappings in a join
-
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 transformation. `JoinDefinition` isn't a valid value for
 FlowInlineTransform.
 
@@ -22680,14 +22792,17 @@ fields referenced in the flow.
 This field is available in API version 63.0 and later. Use `complexValue` to
 specify the data structure.
 
-`dateTimeValue` dateTime
-
 Use this field to specify a dateTime value. If you want to specify a different data
 type or element reference, don’t use this field. This field is available in API version
 30.0 and later.
 
 `dateValue` date Use this field to specify a date value. If you want to specify a different data type
 or element reference, don’t use this field.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `elementReference` string Use this field to specify the name of an existing flow resource. If you want to
 specify a value instead of an element reference, don’t use this field.
@@ -22741,11 +22856,6 @@ specified.
 `setupReferenceType` string Use this field to specify the type of setup reference. Required when
 setupReference is specified.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `sobjectValue` string Use this field to specify a JSON response value of an sObject record. Use this
 field only for `FlowScreenFieldInputParameter` and
 
@@ -22760,6 +22870,11 @@ or element reference, don’t use this field.
 When the FlowMetadataValue's `name` field is set to
 `SendNoApproverEmails`, valid values are `true` or `false` and are
 case-insensitive.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 When the FlowMetadataValue's `name` field is set to `BuilderType` or
 `OriginalBuilderType`, the valid value is `LightningFlowBuilder` .
@@ -22799,9 +22914,6 @@ FlowExperiment
 A node that routes the flow execution based on a specified experiment distribution percentage. It extends FlowNode and inherits all its
 fields. This metadata type is available in API version 61.0 and later.
 
-
-Metadata Types Flow
-
 **Field Name** **Field Type** **Description**
 
 `duration` int The amount of time that the experiment runs. This field is available
@@ -22816,6 +22928,11 @@ in API version 64.0 and later.
 **•** Days
 
 **•** Weeks
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 **•** Months
 
@@ -22866,11 +22983,6 @@ of type string)
 
 **•** `String`
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 **•** `Time`
 
 `dataType` defaults to `Number` if it isn’t defined in a formula.
@@ -22882,6 +22994,11 @@ This field is available in API version 31.0 and later.
 Required. Salesforce formula expression. The return value must
 match the data type. For API version 30.0 and earlier, the return
 value must be numeric.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `scale` int Scale of the return value, specifically, the number of digits to the
 right of the decimal point. Available only when the data type is
@@ -22931,17 +23048,15 @@ of type string) Builder, it corresponds to the target data. Valid types are:
 
 **•** `String`
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 **•** `Time`
 
 `isCollection` boolean Indicates whether the variable is a collection of values. The default
 value is `false` .
 
 `transformValues` FlowTransformValue[] An array of values for data transformation.
+
+
+Metadata Types Flow
 
 FlowInputFieldAssignment
 
@@ -22995,15 +23110,13 @@ to last).
 **•** `Desc` —Iterate through the collection in the reverse order the values are
 listed (last to first).
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `nextValueConnector` FlowConnector A reference to the next element in the collection.
 
 `noMoreValuesConnector` FlowConnector The element to navigate to when all entries in the collection have been iterated
 through.
+
+
+Metadata Types Flow
 
 FlowMetadataValue
 
@@ -23055,11 +23168,6 @@ version 53.0 and later.
 
 `connector` FlowConnector Specifies which node to execute after this stage.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `exitActionInputParameters` FlowStageStepExitActionInputParameter[]
 
 An array of input parameters from the stage to the
@@ -23068,6 +23176,11 @@ condition for the stage.
 
 `exitActionName` string The name of the evaluation flow used as an exit
 condition for the stage.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `exitActionOutputParameters` FlowStageStepExitActionOutputParameter[]
 
@@ -23123,14 +23236,14 @@ value of the record field.
 `field` string Required. Name of the field whose value is to be assigned after a
 record lookup.
 
-
-Metadata Types Flow
-
 FlowRelatedRecordLookup (Beta)
 
 [Note: This feature is a pilot or beta service that is subject to the Beta Services Terms at Agreements - Salesforce.com or a written](https://www.salesforce.com/company/legal/agreements/)
 [Unified Pilot Agreement if executed by Customer, and applicable terms in the Product Terms Directory. Use of this pilot or beta](https://ptd.salesforce.com/)
 service is at the Customer's sole discretion.
+
+
+Metadata Types Flow
 
 Finds records in the database that are related to the records specified in FlowRecordLookup and stores their field values in the flow.
 Corresponds to a Get Records element in Flow Builder. It extends FlowBaseElement and inherits all its fields.
@@ -23190,12 +23303,6 @@ is `true` . When
 is `false`, what determines whether
 one or multiple records are stored is
 whether `outputReference`
-
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 specifies a record variable or a record
 collection variable.
 
@@ -23203,6 +23310,12 @@ collection variable.
 records to store. Valid values are
 
 between 2 and 20,000. Supported only
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
+
 when `getFirstRecordOnly` is
 false.
 
@@ -23254,15 +23367,17 @@ Note: The flow record `create`, `lookup`, `update`, and `delete` operations are 
 calls `create()`, `retrieve()`, `update()`, and `delete()` . The flow record methods apply to record operations from
 within a flow, which aren’t the same as doing any metadata calls to CRUD setup entities.
 
-
-Metadata Types Flow
-
 **Field Name** **Field Type** **Description**
 
 `assignRecordIdToReference` string Reference to the variable where you want to store the
 ID after the record is created.
 
 `connector` FlowConnector Specifies which node to execute after creating the record.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `doesUpsert` boolean Indicates whether the element creates or updates
 records. The default value is `false`, indicating that the
@@ -23318,17 +23433,17 @@ are found. Valid values are:
 
 This field is available in API version 61.0 and later.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `operationOneMatchingRecord` string The operation to perform if one matching record is found.
 Valid values are:
 
 **•** `None`
 
 **•** `UpdateAllRecords`
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 This field is available in API version 61.0 and later.
 
@@ -23377,11 +23492,6 @@ within a flow, which aren’t the same as doing any metadata calls to CRUD setup
 `faultConnector` FlowConnector Specifies which node to execute if the attempt to delete a record results
 in an error.
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 `filters` FlowRecordFilter[]
 
 An array that specifies the criteria used to select which records to delete
@@ -23390,6 +23500,11 @@ older than a specified date.
 
 `inputReference` string Specifies the record variable whose record ID is used to identify which
 record to delete in the database.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `object` string Required. The name of the object whose records are deleted.
 
@@ -23442,11 +23557,6 @@ within a flow, which aren’t the same as doing any metadata calls to CRUD setup
 
 Supported only when
 
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
-
 ```
                                        storeOutputAutomatically
 ```
@@ -23455,6 +23565,11 @@ is `false` .
 
 This field is available in API version 30.0
 and later.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 `connector` FlowConnector Specifies which node to execute after
 getting records from the database.
@@ -23514,19 +23629,18 @@ is `true` . When
 
 ```
                                     storeOutputAutomatically
-
 ```
-
-
-Metadata Types Flow
-
-**Field Name** **Field Type** **Description**
 
 is `false`, what determines whether
 one or multiple records are stored is
 whether `outputReference`
 specifies a record variable or a record
 collection variable.
+
+
+Metadata Types Flow
+
+**Field Name** **Field Type** **Description**
 
 This field is available in API version 47.0
 and later.
@@ -23587,13 +23701,13 @@ You can only sort records by fields that
 have the `Sort` API field property, as
 [specified in SOAP API.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/)
 
+This field is available in API version 25.0
+and later.
+
 
 Metadata Types Flow
 
 **Field Name** **Field Type** **Description**
-
-This field is available in API version 25.0
-and later.
 
 `sortOrder` SortOrder (enumeration of type string)
 
@@ -27336,7 +27450,7 @@ rightValue
 
 **Field Type**
 
-FlowTestReferenceOrValue on page 1317
+FlowTestReferenceOrValue on page 1318
 
 **Description**
 The value that the operator applies to the resource reference in the
@@ -28498,7 +28612,7 @@ schedule dates, if available.
 `developerName` string
 
 Required. The name of the forecasting type. The `DeveloperName`
-is called `name` in ForecastingSettings on page 2072 and Forecasting Type
+is called `name` in ForecastingSettings on page 2085 and Forecasting Type
 in custom reports.
 
 `forecastingGroupDeveloperName` string Indicates the forecast group assigned to the forecast type. Required if
@@ -29693,11 +29807,11 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-### GenAiFunction components have the suffix .genAiFunction and are stored in the genAiFunctions folder. GenAiFunction components can contain folders for the input on page 1352 and output on page 1355 schemas. Here’s an example component,
+### GenAiFunction components have the suffix .genAiFunction and are stored in the genAiFunctions folder. GenAiFunction components can contain folders for the input on page 1353 and output on page 1356 schemas. Here’s an example component,
 
 showing the schema folders.
 
-See the Input Folder on page 1352 and Output Folder on page 1355 sections for more information.
+See the Input Folder on page 1353 and Output Folder on page 1356 sections for more information.
 
 
 Metadata Types GenAiFunction
@@ -29984,7 +30098,7 @@ Metadata Types GenAiFunction
 
 Usage
 
-In Winter '26 orgs and later, use GenAiPlannerBundle on page 1366 to retrieve actions that are created within a particular agent. To retrieve
+In Winter '26 orgs and later, use GenAiPlannerBundle on page 1367 to retrieve actions that are created within a particular agent. To retrieve
 actions in the asset library, use GenAiFunction.
 
 When deploying topic or action metadata to a Summer '25 (version 64.0) org, retrieve the metadata using Metadata API version 64.0,
@@ -31210,9 +31324,9 @@ string
 The value for the right operand.
 
 In Winter ‘26 orgs and later, use GenAiPlannerBundle to retrieve topics and actions created in an agent. To retrieve global topics and
-actions, or those created in the Asset Library, use GenAiPlugin on page 1377 and GenAiFunction on page 1349.
+actions, or those created in the Asset Library, use GenAiPlugin on page 1378 and GenAiFunction on page 1350.
 
-In Summer ‘25 orgs and earlier, deploy topic and action metadata using GenAiPlugin on page 1377 and GenAiFunction on page 1349.
+In Summer ‘25 orgs and earlier, deploy topic and action metadata using GenAiPlugin on page 1378 and GenAiFunction on page 1350.
 
 
 Metadata Types GenAiPlannerBundle
@@ -31695,7 +31809,7 @@ Required.
 
 The API name of the function.
 
-In Winter '26 orgs and later, use GenAiPlannerBundle on page 1366 to retrieve topics that are created within a particular agent. To retrieve
+In Winter '26 orgs and later, use GenAiPlannerBundle on page 1367 to retrieve topics that are created within a particular agent. To retrieve
 topics in the asset library, use GenAiPlugin.
 
 When deploying topic or action metadata to a Summer '25 (version 64.0) org, retrieve the metadata using Metadata API version 64.0,
@@ -32216,7 +32330,7 @@ A numerical value used to determine the order the instructions will be executed 
 
 Declarative Metadata Sample Definition
 
-See GenAiPlugin on page 1377.
+See GenAiPlugin on page 1378.
 
 ### GenAiPromptTemplate
 
@@ -32312,7 +32426,7 @@ The Salesforce field that the prompt template is associated with.
 
 **Field Type**
 
-GenAiPromptTemplateVersion on page 1387[]
+GenAiPromptTemplateVersion on page 1388[]
 
 **Description**
 Required. An array of prompt template versions.
@@ -32389,14 +32503,14 @@ Description of the prompt template version.
 
 **Field Type**
 
-GenAiPromptTemplateGenerationConfig on page 1388[]
+GenAiPromptTemplateGenerationConfig on page 1389[]
 
 **Description**
 Reference to the policies for the prompt template version.
 
 **Field Type**
 
-GenAiPromptTemplateInput on page 1389[]
+GenAiPromptTemplateInput on page 1390[]
 
 **Description**
 An array of prompt template inputs associated with the prompt template version.
@@ -32437,7 +32551,7 @@ versionIdentifier
 
 **Field Type**
 
-GenAiPromptTemplateDataProvider on page 1389[]
+GenAiPromptTemplateDataProvider on page 1390[]
 
 **Description**
 An array of prompt template data providers associated with the prompt template
@@ -32573,7 +32687,7 @@ as `flow://ns__CallToActionFlow` .
 
 **Field Type**
 
-GenAiPromptTemplateDataProviderParam on page 1390[]
+GenAiPromptTemplateDataProviderParam on page 1391[]
 
 **Description**
 An array of parameters associated with the data provider.
@@ -34834,7 +34948,7 @@ page.
 
 Declarative Metadata Sample Definition
 
-The following is the definition of a home page layout. See Declarative Metadata Sample Definition on page 1416 and Declarative Metadata
+The following is the definition of a home page layout. See Declarative Metadata Sample Definition on page 1417 and Declarative Metadata
 Sample Definition on page 806 for related samples.
 
 ```
@@ -36420,123 +36534,3 @@ not( `false` ). The default value is `false` .
 `label` string Required. A user-friendly label for the connection.
 
 Required. Connection status. The connection is initially Unprovisioned
-and moves through the other states automatically after an admin
-performs a Provision, Sync, or Teardown action. The valid values are:
-
-**•** `Unprovisioned`
-
-**•** `Allocating`
-
-**•** `PendingAcceptance`
-
-**•** `PendingActivation`
-
-**•** `RejectedRemotely`
-
-**•** `DeletedRemotely`
-
-**•** `TeardownInProgress`
-
-**•** `Ready`
-
-```
-status
-
-```
-
-ExternalConnectionStatus
-(enumeration of
-type string)
-
-InboundNetworkConnProperty
-
-Represents a name-value pair that describes the properties of the inbound network connection.
-
-**Field Name** **Field Type** **Description**
-
-```
-propertyName
-
-```
-
-InboundConnPropertyName Required. The name of a property used to establish an
-(enumeration of type InboundNetworkConnection. Valid values are:
-string)
-
-**•** `AwsVpcEndpointId` —The unique endpoint ID for connections to an
-AWS Virtual Private Cloud (VPC). The value is read-only when the `status`
-is `Ready` .
-
-**•** `Region` —The region in which the VPC is hosted.
-
-**•** `SourceIpRanges` —The ranges of source IP address allocated to this
-inbound connection by the Salesforce-managed VPC in your cloud provider.
-
-
-Metadata Types InboundNetworkConnection
-
-**Field Name** **Field Type** **Description**
-
-`propertyValue` string
-
-Required. The value of InboundConnPropertyName. An example of the
-`propertyValue` of `Region` is `us-west-2.`
-
-The `propertyValue` of `SourceIpRanges` is a JSON string that lists
-the start and end IP address for each range. This example shows two IP address
-ranges.
-
-```
-[
-
-  {
-
-   "startIp":"10.10.10.0",
-
-   "endIp":"10.10.10.3"
-
-  },
-
-  {
-
-   "startIp":"100.100.100.0",
-
-   "endIp":"100.100.100.15"
-
-  }
-
-]
-
-```
-
-Declarative Metadata Sample Definition
-
-The following sample definition has the suffix `.inboundNetworkConnection` .
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<InboundNetworkConnection xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <connectionType>AwsPrivateLink</connectionType>
-
-   <description>This is an Inbound Connection to make API calls into
-
-Salesforce</description>
-
-   <inboundNetworkConnProperties>
-
-     <propertyName>Region</propertyName>
-
-     <propertyValue>us-west-2</propertyValue>
-
-   </inboundNetworkConnProperties>
-
-   <inboundNetworkConnProperties>
-
-     <propertyName>AwsVpcEndpointId</propertyName>
-
-     <propertyValue>vpce-02ccb5fac2bacaceb</propertyValue>
-
-   </inboundNetworkConnProperties>
-

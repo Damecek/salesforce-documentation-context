@@ -1,3 +1,137 @@
+workflows, it’s often easier to reference the package alias, instead of the package ID or package version ID.
+
+
+### Second-Generation Managed Packages Avoid Namespace Collisions in Second-Generation Managed
+
+Packages
+
+Package aliases are stored in the `sfdx-project.json` file as name-value pairs, in which the name is the alias and the value is the
+ID. You can modify package aliases for existing packages and package versions in the project file.
+
+At the command line, you also see IDs for things like package members (a component in a package) and requests (like a `sf package`
+`version create` request).
+
+Note: As a shortcut, the documentation sometimes refers to an ID by its three-character prefix. For example, a package version
+ID always starts with `04t` .
+
+Here are the most commonly used IDs.
+
+### Avoid Namespace Collisions in Second-Generation Managed Packages
+
+Namespaces impact the combination of package types that you can install in an org.
+
+Important: When sharing a namespace, be intentional about managing component names across packages within that namespace.
+Ensure that packages associated with the same namespace don’t include components with the same API name. If two packages
+include a component with the same API name, you can’t install these packages into the same org.
+
+To understand how namespaces affect the types of packages you can install in a namespaced or no-namespace org, review this table.
+
+
+Second-Generation Managed Packages Avoid Namespace Collisions in Second-Generation Managed
+Packages
+
+To understand how namespaces affect the combination of packages that can be installed into one org, review this table.
+
+
+### Second-Generation Managed Packages Remove Metadata Components from Second-Generation
+
+Managed Packages
+
+SEE ALSO:
+
+[Namespaces for Second-Generation Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_plan_namespaces.htm)
+
+[Create and Register Your Namespace for Second-Generation Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_create_namespace.htm)
+
+[Link a Namespace to a Dev Hub Org](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_reg_namespace.htm)
+
+### Remove Metadata Components from Second-Generation Managed
+
+Packages
+
+Remove metadata components such as Apex classes that you no longer want in your second-generation managed packages.
+
+Impact of Component Removal in Subscriber Orgs
+
+During a package upgrade, only certain component types are hard deleted and removed from the subscriber org. Most metadata
+components that were removed from a package version remain in the subscriber org after package upgrade and are marked as deprecated.
+When a package is upgraded in the subscriber org, the Setup Audit Trail logs which components were removed. Admins of a subscriber
+org can delete deprecated metadata. If the subscriber uninstalls the package, deprecated metadata that was previously associated with
+the package is deleted.
+
+You can remove these metadata components from second-generation managed packages.
+
+
+Second-Generation Managed Packages Remove Metadata Components from Second-Generation
+Managed Packages
+
+
+Second-Generation Managed Packages Remove Metadata Components from Second-Generation
+Managed Packages
+
+How to Remove Metadata Components
+
+To request access to this feature, log a case with Salesforce Partner Support on page 406.
+
+After your request is approved, remove the metadata component’s source file from your Salesforce DX project, and create a package
+version. Test the new package version to ensure it’s working properly without the removed metadata.
+
+Before You Remove Metadata Components from Second-Generation Managed
+Packages
+
+To ensure you can successfully remove metadata components from a second-generation managed package, keep these details in mind.
+
+**•** Request access to the feature, if you haven’t already.
+
+**•** Familiarize yourself with the list of metadata components that can be removed.
+
+**•** Ensure that there aren’t dependencies on the metadata you plan to remove. If any component in the package depends on or
+references the component you're removing, the package version creation operation fails. After you remove a component, you can't
+access any customizations that depend on the removed component.
+
+Remove Metadata Dependencies Within a Package
+
+If there are dependencies to the metadata component you plan to remove, resolve the dependency before removing the metadata
+component.
+
+For example, before deleting a custom field that is referenced in a page layout, edit the page layout and remove the reference to the
+custom field. Then remove the custom field from your source file, and create a package version.
+
+
+Second-Generation Managed Packages Remove Metadata Components from Second-Generation
+Managed Packages
+
+Some scenarios require a two-step approach to component removal. For example, let's say you plan to remove a Visualforce page that
+contains a Visualforce component and replace it with a Lightning page that contains a Lightning component. Removing both the
+Visualforce page and Visualforce component in a single upgrade could cause issues for your subscribers. These issues occur because
+Visualforce components are deleted, and Visualforce pages are deprecated during package upgrade.
+
+To avoid issues for your subscribers in this example, remove the reference to the Visualforce component from the Visualforce page,
+create a package version, and push the upgrade. Then remove the Visualforce page from your package version, and push this upgrade
+to subscribers.
+
+Remove Dependencies Located in Other Packages
+
+Before you remove a metadata component, first remove all references to the metadata, including references in other packages that
+depend on that metadata component. For example, if you’re removing a public Apex class, ensure your other packages aren’t referencing
+that class using the Apex `@namespaceAccessible` annotation.
+
+In this section, PackageA refers to the package in which you plan to remove a metadata component. And PackageB is any package that
+depends on the metadata you’re removing from PackageA. If you have references to the metadata component or Apex class in PackageB,
+follow these steps:
+
+**1.** Remove the reference to the metadata component from PackageB.
+
+**2.** Create a version of PackageB.
+
+**3.** Push the new version of PackageB to your subscribers.
+
+**4.** Repeat these steps if any other packages include a reference to the metadata you plan to remove from PackageA.
+
+After you've removed all references to the metadata component, remove the metadata component’s source file from the Salesforce DX
+project of PackageA. Then create a version of PackageA. Before pushing this upgrade to subscribers, test the new package version to
+ensure it’s working properly.
+
 #### What to Consider Before Removing Metadata Components
 
 In most cases, removing metadata components from a second-generation managed package marks the component as deprecated
@@ -107,14 +241,17 @@ Packages
 
 You can transfer the ownership of a second-generation managed package (managed 2GP) from one Dev Hub org to another. These
 transfers can occur either internally between two Dev Hub orgs your company owns, or you can transfer a package externally to another
-Salesforce Partner or ISV. This change provides a way to sell a second-generation managed package to a different company.
+Salesforce Partner or ISV. This change provides a way to sell a managed 2GP package to a different company.
 
-Note: Package transfers are only available for second-generation managed packages that have passed AppExchange security
-review. If your managed 2GP package hasn’t passed security review, consider creating a new managed 2GP using your preferred
-Dev Hub.
+Note: Package transfers are only available for managed 2GP packages that have passed AppExchange security review. If your
+managed 2GP package hasn’t passed security review, consider creating a new managed 2GP package using your preferred Dev
+Hub.
 
-The package transfer feature is also available to unlocked packages. Dev Hub orgs aren’t used with first-generation managed
-packages or unmanaged packages, so this feature doesn’t apply to those package types.
+A managed 2GP package that has been converted from a first-generation managed package (1GP) can’t be transferred to another
+Dev Hub org. When you convert a package to 2GP, the association between the package and the Dev Hub org can’t be changed.
+
+The package transfer feature is also available to unlocked packages. Dev Hub orgs aren’t used with managed 1GP packages or
+unmanaged packages, so this feature doesn’t apply to those package types.
 
 
 Second-Generation Managed Packages Transfer a Second-Generation Managed Package to a
@@ -764,9 +901,9 @@ The LMA includes these custom objects:
 
 **•** [License](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/lma_license_details.htm)
 
-**•** Package on page 411
+**•** Package on page 414
 
-**•** Package Version on page 411
+**•** Package Version on page 414
 
 You can add custom fields to the objects as long as you don’t mark your custom fields as required.
 
@@ -970,13 +1107,13 @@ DLRS package installed, uninstall them before you install the LMA. Alternatively
 a different org.
 
 **1.** To remove the association between the LMA and the org where it’s currently installed, log a
-case with Salesforce Partner Support on page 403.
+case with Salesforce Partner Support on page 406.
 
-**2.** Install the LMA in the new org on page 406.
+**2.** Install the LMA in the new org on page 409.
 
-**3.** Associate your packages with the new org on page 406.
+**3.** Associate your packages with the new org on page 409.
 
-**4.** Refresh licenses for your packages on page 410.
+**4.** Refresh licenses for your packages on page 413.
 
 
 USER PERMISSIONS
@@ -1127,8 +1264,7 @@ To log in to a subscriber org, first request login access from the subscriber.
 After your subscriber has granted you login access, you can log in to the subscriber org to troubleshoot the issue.
 
 Debug Subscriber Orgs
-After logging in to a subscriber’s org, you can view logs, obfuscated code in your package, and initiate ISV Customer Debugger
-sessions.
+After logging in to a subscriber’s org, you can view logs and initiate ISV Customer Debugger sessions.
 
 #### Request Login Access from Subscribers
 
@@ -1181,10 +1317,10 @@ Log In to a Subscriber Org
 After you’ve logged in to the LMO using multi-factor authentication (MFA), and your subscriber has granted you login access, you’re
 ready to log in.
 
+**1.** In the License Management App (LMA), click the **Subscribers** tab.
+
 
 Second-Generation Managed Packages Troubleshoot Subscriber Issues
-
-**1.** In the License Management App (LMA), click the **Subscribers** tab.
 
 **2.** To find a subscriber org, enter a subscriber name or org ID in the search box, and click **Search** .
 
@@ -1211,11 +1347,11 @@ your LMO when you log in to a subscriber org, use the org’s My Domain login UR
 access to customer data and configurations, it’s vital to your reputation to preserve their security.
 
 **•** Control who has login access by giving the Log in to Subscriber Org user permission to specific support personnel via a profile or
-permission set. See Assign Permissions to the Subscriber Org Console on page 408.
+permission set. See Assign Permissions to the Subscriber Org Console on page 411.
 
 #### Debug Subscriber Orgs
 
-After logging in to a subscriber’s org, you can view logs, obfuscated code in your package, and initiate ISV Customer Debugger sessions.
+After logging in to a subscriber’s org, you can view logs and initiate ISV Customer Debugger sessions.
 
 Get Access to Debug Logs
 
@@ -1227,8 +1363,8 @@ App (LMA) to enable debug logs for a namespace.
 
 Important: Note these important considerations for enabling subscriber debug logs for a namespace.
 
-**•** When you enable debug logs for a namespace, the Apex code for the managed package becomes visible to the subscriber
-org.
+**•** When you enable debug logs for a namespace, the subscriber org displays debug statements from those managed packages.
+Logs from Apex code execution in that namespace become visible in the subscriber org.
 
 **•** Because multiple packages can share a namespace in second-generation managed packaging (2GP), enabling debug logs for
 2GP means enabling logs for all managed packages in the namespace. For example, a subscriber is reporting issues with
@@ -1244,15 +1380,15 @@ Follow these steps to enable debug logs for a namespace through the LMA.
 
 **3.** In the Packages & Licensing section, find the package that you want to troubleshoot.
 
+**4.** In the Subscriber Debug Logs column, click **Enable** .
+
 
 ## Second-Generation Managed Packages Manage Features in Second-Generation Managed Packages
 
-**4.** In the Subscriber Debug Logs column, click **Enable** .
-
 **5.** Review the confirmation message, then click **OK** .
 
-After you enable debug logs, your Apex code remains visible to the subscriber org until you disable debug logs. To disable debug logs,
-follow the same steps in the LMA.
+After you enable debug logs, the logs from Apex code execution remain visible to the subscriber org until you disable debug logs. To
+disable debug logs, follow the same steps in the LMA.
 
 Troubleshoot with Debug Logs
 
@@ -1264,7 +1400,7 @@ After you get access to a subscriber’s debug logs or you enable debug logs for
 
 **3.** Perform the operation, and view the debug log with your output.
 
-Subscribers are unable to see the logs you set up or generate because they contain your unobfuscated Apex code.
+Subscribers can see the debug logs you generate, and these logs contain your unobfuscated Apex code.
 
 You can also view and edit data contained in protected custom settings from your managed packages when logged in as a user.
 
@@ -6033,5 +6169,5 @@ packaging. We’re working to address these feature gaps.
 
 **•** A default language for labels in packages can’t be specified.
 
-[See the Metadata Coverage Report, for the latest information on supported metadata types.](https://developer.salesforce.com/docs/metadata-coverage)
+[See the Metadata Coverage Report, for the latest information on supported metadata types.](https://developer.salesforce.com/docs/success/metadata-coverage-report/references/coverage-report/metadata-coverage-report.html)
 

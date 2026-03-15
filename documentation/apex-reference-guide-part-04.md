@@ -1,3 +1,807 @@
+Create FulfillmentOrders for multiple OrderDeliveryGroups in a single request.
+
+createMultipleInvoices(invoicesInput)
+Create Invoices for multiple FulfillmentOrders.
+
+##### **`cancelFulfillmentOrderLineItems(fulfillmentOrderId,`**
+
+```
+  cancelFulfillmentOrderLineItemsInput)
+
+```
+
+Cancel FulfillmentOrderLineItems from a FulfillmentOrder. This action doesn’t cancel the associated OrderItemSummaries, so reallocate
+the canceled quantities to a new FulfillmentOrder.
+
+API Version
+
+48.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.FulfillmentOrderCancelLineItemsOutputRepresentation
+
+   cancelFulfillmentOrderLineItems(String fulfillmentOrderId,
+
+```
+
+
+Apex Reference Guide FulfillmentOrder Class
+
+```
+   ConnectApi.FulfillmentOrderLineItemsToCancelInputRepresentation
+
+   cancelFulfillmentOrderLineItemsInput)
+
+```
+
+Parameters
+
+```
+   fulfillmentOrderId
+```
+
+Type: String
+
+ID of the FulfilllmentOrder.
+
+```
+   cancelFulfillmentOrderLineItemsInput
+```
+
+Type: `ConnectApi.FulfillmentOrderLineItemsToCancelInputRepresentation`
+
+List of FulfillmentOrderLineItems to cancel.
+
+Return Value
+
+Type: `ConnectApi.FulfillmentOrderCancelLineItemsOutputRepresentation`
+
+Example
+
+```
+   String fulfillmentOrderId = '0a3xx0000000085AAA';
+
+   List<ConnectApi.FulfillmentOrderLineItemInputRepresentation> itemToCancelList = new
+
+   List<ConnectApi.FulfillmentOrderLineItemInputRepresentation>();
+
+   for(FulfillmentOrderLineItem fulfillmentOrderLineItem :
+
+   fulfillmentOrder.FulfillmentOrderLineItems){
+
+     ConnectApi.FulfillmentOrderLineItemInputRepresentation itemToCancel = new
+
+   ConnectApi.FulfillmentOrderLineItemInputRepresentation();
+
+     itemToCancel.fulfillmentOrderLineItemId = fulfillmentOrderLineItem.Id;
+
+     itemToCancel.quantity = 1;
+
+     itemToCancelList.add(itemToCancel);
+
+   }
+
+   ConnectAPI.FulfillmentOrderLineItemsToCancelInputRepresentation input = new
+
+   ConnectAPI.FulfillmentOrderLineItemsToCancelInputRepresentation();
+
+   input.fulfillmentOrderLineItemsToCancel = itemToCancelList;
+
+   ConnectAPI.FulfillmentOrderCancelLineItemsOutputRepresentation result =
+
+   ConnectAPI.FulfillmentOrder.cancelFulfillmentOrderLineItems(fulfillmentOrderId, input);
+
+##### **`createFulfillmentOrders(fulfillmentOrderInput)`**
+
+```
+
+Create one or more FulfillmentOrders and FulfillmentOrderLineItems for an OrderDeliveryGroupSummary, which defines a delivery
+method and recipient for an OrderSummary. You specify the OrderItemSummaries to allocate, which can be fulfilled from different
+locations. Specifying multiple fulfillment groups creates one FulfillmentOrder for each location. For each OrderItemSummary, a
+FulfillmentOrderLineItem is created and assigned to the corresponding FulfillmentOrder.
+
+API Version
+
+48.0
+
+
+Apex Reference Guide FulfillmentOrder Class
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.FulfillmentOrderOutputRepresentation
+
+   createFulfillmentOrders(ConnectApi.FulfillmentOrderInputRepresentation
+
+   fulfillmentOrderInput)
+
+```
+
+Parameters
+
+```
+   fulfillmentOrderInput
+```
+
+Type: `ConnectApi.FulfillmentOrderInputRepresentation`
+
+OrderItemSummaries to allocate, with location and delivery information.
+
+Return Value
+
+Type: `ConnectApi.FulfillmentOrderOutputRepresentation`
+
+Example
+
+```
+   String orderSummaryId = '1Osxx0000004CCG';
+
+   String fulfillmentType = 'warehouse';
+
+   String warehouseFromLocationId = [SELECT Id from Location WHERE LocationType='Warehouse'
+
+   LIMIT 1].Id;
+
+   ConnectApi.FulfillmentOrderInputRepresentation fulfillmentOrderInput = new
+
+   ConnectApi.FulfillmentOrderInputRepresentation();
+
+   fulfillmentOrderInput.orderSummaryId = orderSummaryId;
+
+   List<OrderDeliveryGroupSummary> orderDeliveryGroupSummaryList = [SELECT Id FROM
+
+   OrderDeliveryGroupSummary WHERE OrderSummaryId =: orderSummaryId];
+
+   for (OrderDeliveryGroupSummary orderDeliveryGroupSummary: orderDeliveryGroupSummaryList){
+
+     fulfillmentOrderInput.orderDeliveryGroupSummaryId = orderDeliveryGroupSummary.Id;
+
+     List<ConnectApi.FulfillmentGroupInputRepresentation> fulfillmentGroups = new
+
+   List<ConnectApi.FulfillmentGroupInputRepresentation>();
+
+     ConnectApi.FulfillmentGroupInputRepresentation fulfillmentGroup = new
+
+   ConnectApi.FulfillmentGroupInputRepresentation();
+
+     fulfillmentGroup.fulfilledFromLocationId = warehouseFromLocationId;
+
+     fulfillmentGroup.fulfillmentType = fulfillmentType;
+
+     List<ConnectApi.OrderItemSummaryInputRepresentation> orderItemSummaries = new
+
+   List<ConnectApi.OrderItemSummaryInputRepresentation>();
+
+    List<OrderItemSummary> orderItemSummaryList = [Select Id, quantity FROM OrderItemSummary
+
+    WHERE OrderSummaryId =: orderSummaryId AND OrderDeliveryGroupSummaryId =:
+
+   orderDeliveryGroupSummary.Id];
+
+     for(OrderItemSummary orderItemSummary : orderItemSummaryList){
+
+```
+
+
+Apex Reference Guide FulfillmentOrder Class
+
+```
+      ConnectApi.OrderItemSummaryInputRepresentation oisInputRepresentation = new
+
+   ConnectApi.OrderItemSummaryInputRepresentation();
+
+      oisInputRepresentation.orderItemSummaryId = orderItemSummary.Id;
+
+      oisInputRepresentation.quantity = orderItemSummary.quantity;
+
+      orderItemSummaries.add(oisInputRepresentation);
+
+     }
+
+     fulfillmentGroup.orderItemSummaries = orderItemSummaries;
+
+     fulfillmentGroups.add(fulfillmentGroup);
+
+     fulfillmentOrderInput.fulfillmentGroups = fulfillmentGroups;
+
+   }
+
+   ConnectApi.FulfillmentOrderOutputRepresentation result =
+
+   ConnectAPI.FulfillmentOrder.createFulfillmentOrders(fulfillmentOrderInput);
+
+##### **`createInvoice(fulfillmentOrderId, invoiceInput)`**
+
+```
+
+Create an invoice for a FulfillmentOrder that doesn’t have one.
+
+API Version
+
+48.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.FulfillmentOrderInvoiceOutputRepresentation createInvoice(String
+
+   fulfillmentOrderId, ConnectApi.FulfillmentOrderInvoiceInputRepresentation invoiceInput)
+
+```
+
+Parameters
+
+```
+   fulfillmentOrderId
+```
+
+Type: String
+
+ID of the FulfillmentOrder.
+
+```
+   invoiceInput
+```
+
+Type: `ConnectApi.FulfillmentOrderInvoiceInputRepresentation`
+
+Required input with no data.
+
+Return Value
+
+Type: `ConnectApi.FulfillmentOrderInvoiceOutputRepresentation`
+
+Example
+
+```
+   String fulfillmentOrderId = '0a3xx0000000085AAA';
+
+```
+
+
+Apex Reference Guide FulfillmentOrder Class
+
+```
+   ConnectApi.FulfillmentOrderInvoiceInputRepresentation input = new
+
+   ConnectApi.FulfillmentOrderInvoiceInputRepresentation();
+
+   ConnectAPI.FulfillmentOrderInvoiceOutputRepresentation result =
+
+   ConnectApi.FulfillmentOrder.createInvoice(fulfillmentOrderId, input);
+
+##### **`createMultipleFulfillmentOrder(multipleFulfillmentOrderInput)`**
+
+```
+
+Create FulfillmentOrders for multiple OrderDeliveryGroups in a single request.
+
+API Version
+
+50.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.MultipleFulfillmentOrderOutputRepresentation
+
+   createMultipleFulfillmentOrder(ConnectApi.MultipleFulfillmentOrderInputRepresentation
+
+   multipleFulfillmentOrderInput)
+
+```
+
+Parameters
+
+```
+   multipleFulfillmentOrderInput
+```
+
+Type: `ConnectApi.MultipleFulfillmentOrderInputRepresentation`
+
+Wraps a list of inputs for creating fulfillment orders.
+
+Return Value
+
+Type: `ConnectApi.MultipleFulfillmentOrderOutputRepresentation`
+
+##### **`createMultipleInvoices(invoicesInput)`**
+
+Create Invoices for multiple FulfillmentOrders.
+
+API Version
+
+52.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.MultipleFulfillmentOrderInvoicesOutputRepresentation
+
+   createMultipleInvoices(ConnectApi.MultipleFulfillmentOrderInvoicesInputRepresentation
+
+   invoicesInput)
+
+```
+
+
+### Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
+
+Parameters
+
+```
+   invoicesInput
+```
+
+Type: `ConnectApi.MultipleFulfillmentOrderInvoicesInputRepresentation`
+
+The FulfillmentOrders to create Invoices for.
+
+Return Value
+
+Type: `ConnectApi.MultipleFulfillmentOrderInvoicesOutputRepresentation`
+
+### IBusinessObjectivesAndRecsFamily Class
+
+Get and patch business objectives, or goals. Get, create, patch, and update recommended actions for business objectives.
+
+Namespace
+
+ConnectApi
+
+#### IBusinessObjectivesAndRecsFamily Methods
+
+### These methods are for IBusinessObjectivesAndRecsFamily . All methods are static.
+
+IN THIS SECTION:
+
+##### createRecommendations(busObjRecommendationInput)
+
+Create recommended actions for a business objective, or goal.
+
+getBusinessObjectives(webstoreId, channelId, kpiName, includeRecSummary, includeInsightSummary)
+Get business objectives, or goals, for a webstore.
+
+getRecommendations(businessObjectiveId, domain, channelId, externalName, state, secondaryState, tertiaryState, grouping)
+Get recommended actions for a business objective, or goal.
+
+patchBusinessObjective(busObjRecommendationInput)
+Partially update a business objective, or goal.
+
+patchRecommendations(busObjRecommendationInput)
+Partially update a recommended action associated with a business objective, or goal.
+
+updateRecommendations(busObjRecommendationInput)
+Update a recommended action for a business objective, or goal.
+
+##### **`createRecommendations(busObjRecommendationInput)`**
+
+Create recommended actions for a business objective, or goal.
+
+API Version
+
+60.0
+
+
+Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.RecRepresentation
+
+   createRecommendations(ConnectApi.BusObjRecommendationInputRepresentation
+
+   busObjRecommendationInput)
+
+```
+
+Parameters
+
+```
+   busObjRecommendationInput
+```
+
+Type: `ConnectApi.BusObjRecommendationInputRepresentation` on page 1992
+
+A `ConnectApi.BusObjRecommendationInputRepresentation` object representing a recommended action for a
+business objective.
+
+Return Value
+
+Type: `ConnectApi.RecRepresentation` on page 2507
+
+##### **`getBusinessObjectives(webstoreId, channelId, kpiName, includeRecSummary,`**
+
+```
+  includeInsightSummary)
+
+```
+
+Get business objectives, or goals, for a webstore.
+
+API Version
+
+59.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.BusinessObjectivesSummaryOutputRepresentation
+
+   getBusinessObjectives(String webstoreId, String channelId, String kpiName, Boolean
+
+   includeRecSummary, Boolean includeInsightSummary)
+
+```
+
+Parameters
+
+```
+   webstoreId
+```
+
+Type: String
+
+ID of the webstore.
+
+```
+   channelId
+```
+
+Type: String
+
+ID of the channel.
+
+
+Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
+
+```
+   kpiName
+```
+
+Type: String
+
+Name of the key performance indicator (KPI).
+
+```
+   includeRecSummary
+```
+
+Type: Boolean
+
+Specifies whether to include a summary of recommended actions in the response.
+
+```
+   includeInsightSummary
+```
+
+Type: Boolean
+
+Specifies whether to include insight summary information in the response.
+
+Return Value
+
+Type: `ConnectApi.BusinessObjectivesSummaryOutputRepresentation` on page 2206
+
+##### **`getRecommendations(businessObjectiveId, domain, channelId, externalName,`**
+
+```
+  state, secondaryState, tertiaryState, grouping)
+
+```
+
+Get recommended actions for a business objective, or goal.
+
+API Version
+
+59.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.RecommendationsOutputRepresentation getRecommendations(String
+
+   businessObjectiveId, String domain, String channelId, String externalName, String state,
+
+   String secondaryState, String tertiaryState, String grouping)
+
+```
+
+Parameters
+
+```
+   businessObjectiveId
+```
+
+Type: String
+
+ID of the business objective.
+
+```
+   domain
+```
+
+Type: String
+
+Recommendation domain.
+
+```
+   channelId
+```
+
+Type: String
+
+ID of the channel.
+
+```
+   externalName
+```
+
+Type: String
+
+
+Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
+
+External name of the recommended action.
+
+```
+   state
+```
+
+Type: String
+
+State of the recommended action.
+
+```
+   secondaryState
+```
+
+Type: String
+
+Secondary state of the recommended action.
+
+```
+   tertiaryState
+```
+
+Type: String
+
+Tertiary state of the recommended action.
+
+```
+   grouping
+```
+
+Type: String
+
+Grouping associated with the recommended action. This is a free-form categorization field.
+
+Return Value
+
+Type: `ConnectApi.RecommendationsOutputRepresentation` on page 2509
+
+##### **`patchBusinessObjective(busObjRecommendationInput)`**
+
+Partially update a business objective, or goal.
+
+API Version
+
+62.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.BusObjSummaryOutputRepresentation
+
+   patchBusinessObjective(ConnectApi.BusinessObjectivesInputRepresentation
+
+   busObjRecommendationInput)
+
+```
+
+Parameters
+
+```
+   busObjRecommendationInput
+```
+
+Type: `ConnectApi.BusinessObjectivesInputRepresentation` on page 1991
+
+A `ConnectApi.BusinessObjectivesInputRepresentation` object representing the business objective or objectives
+to update.
+
+Return Value
+
+Type: `ConnectApi.BusObjSummaryOutputRepresentation` on page 2205
+
+
+Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
+
+##### **`patchRecommendations(busObjRecommendationInput)`**
+
+Partially update a recommended action associated with a business objective, or goal.
+
+API Version
+
+61.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.RecRepresentation
+
+   patchRecommendations(ConnectApi.BusObjRecommendationInputRepresentation
+
+   busObjRecommendationInput)
+
+```
+
+Parameters
+
+```
+   busObjRecommendationInput
+```
+
+Type: `ConnectApi.BusObjRecommendationInputRepresentation` on page 1992
+
+A `ConnectApi.BusObjRecommendationInputRepresentation` object representing the recommended action to
+update.
+
+Return Value
+
+Type: `ConnectApi.RecRepresentation` on page 2507
+
+##### **`updateRecommendations(busObjRecommendationInput)`**
+
+Update a recommended action for a business objective, or goal.
+
+API Version
+
+60.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.RecRepresentation
+
+   updateRecommendations(ConnectApi.BusObjRecommendationInputRepresentation
+
+   busObjRecommendationInput)
+
+```
+
+Parameters
+
+```
+   busObjRecommendationInput
+```
+
+Type: `ConnectApi.BusObjRecommendationInputRepresentation` on page 1992
+
+
+### Apex Reference Guide Knowledge Class
+
+A `ConnectApi.BusObjRecommendationInputRepresentation` object representing the recommended action to
+update.
+
+Return Value
+
+Type: `ConnectApi.RecRepresentation` on page 2507
+
+### Knowledge Class
+
+Get information about trending articles in Experience Cloud sites.
+
+Namespace
+
+ConnectApi
+
+#### Knowledge Methods
+
+### These methods are for Knowledge . All methods are static.
+
+IN THIS SECTION:
+
+##### getTopViewedArticlesForTopic(communityId, topicId, maxResults)
+
+Get the top viewed articles for a topic.
+
+getTrendingArticles(communityId, maxResults)
+Get trending articles for an Experience Cloud site.
+
+getTrendingArticlesForTopic(communityId, topicId, maxResults)
+Get the trending articles for a topic in an Experience Cloud site.
+
+##### **`getTopViewedArticlesForTopic(communityId, topicId, maxResults)`**
+
+Get the top viewed articles for a topic.
+
+API Version
+
+41.0
+
+Available to Guest Users
+
+41.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.KnowledgeArticleVersionCollection
+
+   getTopViewedArticlesForTopic(String communityId, String topicId, Integer maxResults)
+
+```
+
+
+Apex Reference Guide Knowledge Class
+
+Parameters
+
+```
+   communityId
+```
+
+Type: String
+
+ID for an Experience Cloud site, `internal`, or `null` .
+
+```
+   topicId
+```
+
 Type: String
 
 ID of the topic.
@@ -4051,7 +4855,7 @@ This method returns content only if it's published in the default language of th
 the default language of the channel, you get a `ConnectApi.NotFoundException` . To get content for a channel in another
 ##### language use getManagedContentForChannel(channelId, contentKeyOrId, language, showAbsoluteUrl) or getManagedContentForChannel(channelId, contentKeyOrId, language,
 
-`showAbsoluteUrl, referenceDepth, expandReferences, referencesAsList)` on page 1659.
+`showAbsoluteUrl, referenceDepth, expandReferences, referencesAsList)` on page 1669.
 
 Example
 
@@ -8052,13 +8856,13 @@ Parameters
    requestBody
 ```
 
-Type: `ConnectApi.ExternalAuthIdentityProviderInput` on page 2036
+Type: `ConnectApi.ExternalAuthIdentityProviderInput` on page 2046
 
 A `ConnectApi.ExternalAuthIdentityProviderInput` input class.
 
 Return Value
 
-Type: `ConnectApi.ExternalAuthIdentityProvider` on page 2301
+Type: `ConnectApi.ExternalAuthIdentityProvider` on page 2315
 
 ##### **`createExternalAuthIdentityProviderCredentials(fullName, requestBody)`**
 
@@ -8097,13 +8901,13 @@ Full name of the external auth identity provider to create credentials for.
    requestBody
 ```
 
-Type: `ConnectApi.ExternalAuthIdentityProviderCredentialsInput` on page 2035
+Type: `ConnectApi.ExternalAuthIdentityProviderCredentialsInput` on page 2045
 
 A `ConnectApi.ExternalAuthIdentityProviderCredentialsInput` input class
 
 Return Value
 
-Type: `ConnectApi.ExternalAuthIdentityProviderCredentials` on page 2303
+Type: `ConnectApi.ExternalAuthIdentityProviderCredentials` on page 2316
 
 
 Apex Reference Guide NamedCredentials Class
@@ -8516,7 +9320,7 @@ Full name of the external auth identity provider.
 
 Return Value
 
-Type: `ConnectApi.ExternalAuthIdentityProvider` on page 2301
+Type: `ConnectApi.ExternalAuthIdentityProvider` on page 2315
 
 ##### **`getExternalAuthIdentityProviderCredentials(fullName)`**
 
@@ -8554,7 +9358,7 @@ Full name of the external auth identity provider.
 
 Return Value
 
-Type: `ConnectApi.ExternalAuthIdentityProviderCredentials` on page 2303
+Type: `ConnectApi.ExternalAuthIdentityProviderCredentials` on page 2316
 
 ##### **`getExternalAuthIdentityProviders()`**
 
@@ -8579,7 +9383,7 @@ Signature
 
 Return Value
 
-Type: `ConnectApi.ExternalAuthIdentityProviderList` on page 2303
+Type: `ConnectApi.ExternalAuthIdentityProviderList` on page 2317
 
 ##### **`getExternalCredential(developerName)`**
 
@@ -8928,13 +9732,13 @@ The external auth identity provider credentials to replace.
    requestBody
 ```
 
-Type: `ConnectApi.ExternalAuthIdentityProviderCredentialsInput` on page 2035
+Type: `ConnectApi.ExternalAuthIdentityProviderCredentialsInput` on page 2045
 
 A `ConnectApi.ExternalAuthIdentityProviderCredentialsInput` input class.
 
 Return Value
 
-Type: `ConnectApi.ExternalAuthIdentityProviderCredentials` on page 2303
+Type: `ConnectApi.ExternalAuthIdentityProviderCredentials` on page 2316
 
 ##### **`updateExternalCredential(developerName, requestBody)`**
 
@@ -10356,13 +11160,13 @@ Parameters
    updateReservationInputRepresentation
 ```
 
-Type: ConnectApi.OCIUpdateReservationInputRepresentation on page 2081
+Type: ConnectApi.OCIUpdateReservationInputRepresentation on page 2091
 
 Data to update one or more Omnichannel Inventory item reservations.
 
 Return Value
 
-Type: ConnectApi.OCIUpdateReservationOutputRepresentation on page 2422
+Type: ConnectApi.OCIUpdateReservationOutputRepresentation on page 2435
 
 ### OMSAnalytics Class
 
@@ -18517,7 +19321,7 @@ ID of the account for which the request is made.
 
 Return Value
 
-Type: `ConnectApi.RegisterGuestBuyerOutputRepresentation on page 2507`
+Type: `ConnectApi.RegisterGuestBuyerOutputRepresentation on page 2520`
 
 ### Repricing Class
 
@@ -18755,7 +19559,7 @@ A list of facet names to filter the search.For example, `["size_medium", "color_
 
 Return Value
 
-Type: `ConnectApi.ProductSearchOutputRepresentation` on page 2476
+Type: `ConnectApi.ProductSearchOutputRepresentation` on page 2489
 
 ### ReturnOrder Class
 
@@ -27557,7 +28361,7 @@ insightSummary
 
 `ConnectApi.BusObjInsights` A summary of insights about the business Optional 62.0
 `InputRepresentation` objective.
-on page 1982
+on page 1992
 
 #### ConnectApi.BusObjAssociationsInputRepresentation
 
@@ -27608,7 +28412,7 @@ associations
 InputRepresentation
 ```
 
-on page 1981>
+on page 1991>
 
 `description` String Description of the business objective. Optional 59.0
 
@@ -27646,7 +28450,7 @@ ConnectApi.ActionInfo
 InputRepresentation
 ```
 
-on page 1951
+on page 1961
 
 Name and parameters required for Optional 60.0
 processing and displaying the
@@ -27708,7 +28512,7 @@ output
 
 `ConnectApi.ActionInfo` Stores the last executed snapshot of the Optional 61.0
 `InputRepresentation` recommended action.
-on page 1951
+on page 1961
 
 `recommendationId` String 18-character unique identifier for the
 recommended action.
@@ -28188,7 +28992,7 @@ Cart delivery group input.
             DeliveryGroupInput
 ```
 
-`on page 1990`           
+`on page 2000`           
 
 `deliveryMethodId` String ID of the order delivery method. Optional 57.0—59.0
 
@@ -28310,7 +29114,7 @@ associated with Product2.
 `quantity` String Quantity of the cart item. Use a value that Required 49.0
 can be converted to BigDecimal.
 
-`subscriptionTerm` Integer on page 3819 The total number of terms in the Optional 59.0
+`subscriptionTerm` Integer on page 3836 The total number of terms in the Optional 59.0
 subscription period.
 
 #### subType ConnectApi. Subtype of item in a cart.Possible values are: Optional 64.0
@@ -30728,7 +31532,7 @@ distributed.
 `Criteria` quantities to orders.
 
 `quantities` <List `ConnectApi.ItemQuantityInputRepresentation` Quantities for each item picked. 58.0
-`PickedList` `on page 2056` 
+`PickedList` `on page 2066` 
 #### ConnectApi.DistributeToOrdersInputRepresentation
 
 Input representation of a single element within the Distribute To Orders list.
@@ -31192,15 +31996,15 @@ Delivery date estimation information.
 **Optional**
 
 `deliveryAddress` ConnectApi.DeliveryAddressInputRepresentation Delivery address. Optional 63.0
-on page 2024
+on page 2034
 
 `locations` String List of location external references. Optional 63.0
 
 `products` ConnectApi.DeliveryEstimationProductInputRepresentation List of products included in delivery Required 63.0
-on page 2025 estimation.
+on page 2035 estimation.
 
 `shippingCarrier` ConnectApi.ShippingCa **r** ierInputRepresentation Shipping carrier used to deliver the order. Required 63.0
-on page 2123
+on page 2133
 
 
 Apex Reference Guide ConnectApi Input Classes
@@ -31318,7 +32122,7 @@ SEE ALSO:
 #### <List ConnectApi.ExternalAuthIdentity List of external auth identity provider Required 62.0
 
 `ProviderCredentialInput` credentials to populate.
-on page 2035>
+on page 2045>
 
 createExternalAuthIdentityProviderCredentials(fullName, requestBody)
 
@@ -31348,7 +32152,7 @@ authenticationProtocol
 
 **•** `AuthorizationCode`
 
-page 2608
+page 2622
 
 #### ConnectApi. Authentication protocol required to access Required 62.0
 
@@ -31360,7 +32164,7 @@ AuthProtocol
 
 **•** `OAuth`
 
-on page 2608
+on page 2622
 
 `authorizeUrl` String Authorization endpoint URL for the external Required when the 62.0
 system. `authenticationProtocol`
@@ -33490,7 +34294,7 @@ SpaceChannel
 **•** `Add` —Add a channel to a managed
 `Operation` on
 content space.
-page 2609
+page 2623
 
 **•** `Remove` —Remove a channel from a
 managed content space.
@@ -34827,7 +35631,7 @@ updateRecords
 List
 #### ConnectApi.OCIUpdateReservationSingleInputRepresentation
 
-on page 2082 []
+on page 2092 []
 
 #### ConnectApi.OCIUpdateReservationSingleInputRepresentation
 
@@ -36285,7 +37089,7 @@ exchange order.
 `orderSummaryId` String Order summary ID. Required 60.0
 
 `paymentInfoList` <List `ConnectApi.PaymentInfoInputRepresentation`
-`on page 2087`        
+`on page 2097`        
 
 List of payment information when additional Optional 60.0
 funds are needed for the newly created
@@ -36301,7 +37105,7 @@ exchange cart, or None if there’s no
 reservation.
 
 `sequences` < `ConnectApi.sharedOrderPaymentSummarySequenceInputRepresentation` List
-`on page 2102`        
+`on page 2112`        
 
 Ordered list of order payment summaries Optional 60.0
 and reserved balance amounts to apply
@@ -36697,14 +37501,14 @@ The payment credit sequence, credit types, and refund sequence that provide info
 **Property** **Type** **Description** **Required or** **Available Version**
 **Optional**
 
-`paymentCreditSequenceItems` List< The Order Payment Summary ID, credit 65.0
+`paymentCreditSequenceItems` List< The Order Payment Summary ID, credit Required 65.0
 `ConnectApi.PaymentCreditSequenceItemInputRepresentation`                                 - amount, and credit type for individual
 
 payment credit items. Each item represents
 a specific payment method and the amount
 of credit to be applied to it.
 
-`refundSequenceItems` <List `ConnectApi.RefundSequenceItemInputRepresentation` - The Order Payment Summary ID and 65.0
+`refundSequenceItems` <List `ConnectApi.RefundSequenceItemInputRepresentation` - The Order Payment Summary ID and Required 65.0
 amount for the individual refund items in a
 
 sequence. Each item has a payment method
@@ -36808,7 +37612,13 @@ Data about products and delivery charges to return, as well as associated return
 **Property** **Type** **Description** **Required or** **Available Version**
 **Optional**
 
+The payment credit sequence, credit types, Optional 65.0
+and refund sequence that provide
+information for optimal refund processing.
+
 ```
+refundInstructionsHint
+
 returnOrderItem
 
 DeliveryCharges
@@ -36821,27 +37631,41 @@ returnOrderItems
 
 SEE ALSO:
 
-#### List< ConnectApi. List of ReturnOrderLineItems to return that Optional 52.0
+[List](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_list.htm) `<ConnectApi.`
 
+```
+RefundInstructionsHint
+
+InputRepresentation>
+
+```
+
+[List](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_list.htm) `<ConnectApi.` List of ReturnOrderLineItems to return that Optional 52.0
 `ReturnOrderItem` represent delivery charges.
 
 ```
 DeliveryCharge
+
+InputRepresentation>
+
 ```
 
-`InputRepresentation` 
-#### List< ConnectApi. List of ReturnOrderLineItems to process that Optional 56.0
-
+[List](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_list.htm) `<ConnectApi.` List of ReturnOrderLineItems to process that Optional 56.0
 `ReturnOrderItemFee` represent return fees.
-`InputRepresentation` 
 
-#### List< ConnectApi.
+```
+InputRepresentation>
+
+```
+
+[List](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_list.htm) `<ConnectApi.`
 
 ```
 ReturnOrderItem
-```
 
-`InputRepresentation` 
+InputRepresentation>
+
+```
 
 List of ReturnOrderLineItems to process that Required 52.0
 represent products, along with data about
@@ -36856,13 +37680,31 @@ Data for creating a ReturnOrder and ReturnOrderLineItems.
 **Property** **Type** **Description** **Required or** **Available Version**
 **Optional**
 
-`orderSummaryId` String
+`orderSummaryId` [String](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm)
 
 ID of the OrderSummary containing the Required 50.0
 items to be returned. The OrderSummary’s
 OrderLifeCycleType must be Managed.
 
-`returnOrder` String The LifeCycleType of the ReturnOrder. Required 51.0
+The payment credit sequence, credit types, Optional 65.0
+and refund sequence that provide
+information for optimal refund processing.
+
+```
+refundInstructionsHint
+
+```
+
+[List](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_list.htm) `<ConnectApi.`
+
+```
+RefundInstructionsHint
+
+InputRepresentation>
+
+```
+
+`returnOrder` [String](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm) The LifeCycleType of the ReturnOrder. Required 51.0
 `LifeCycleType` Possible values are:
 
 **•** Managed—Process the ReturnOrder
@@ -36872,12 +37714,6 @@ financial fields and rollup calculations.
 
 **•** Unmanaged—The ReturnOrder is for
 tracking purposes only. It isn’t involved
-in any financial calculations and doesn’t
-generate any change orders. The system
-doesn’t prevent the creation of
-duplicate ReturnOrderLineItems in an
-unmanaged ReturnOrder for the same
-OrderItem.
 
 
 Apex Reference Guide ConnectApi Input Classes
@@ -36885,17 +37721,27 @@ Apex Reference Guide ConnectApi Input Classes
 **Property** **Type** **Description** **Required or** **Available Version**
 **Optional**
 
+in any financial calculations and doesn’t
+generate any change orders. The system
+doesn’t prevent the creation of
+duplicate ReturnOrderLineItems in an
+unmanaged ReturnOrder for the same
+OrderItem.
+
 ```
 returnOrderLineItems
 
 ```
 
-#### List< ConnectApi. List of data for creating At least one element 50.0
-
+[List](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_list.htm) `<ConnectApi.` List of data for creating At least one element 50.0
 `ReturnOrderLineItem` ReturnOrderLineItems. is required
-`InputRepresentation` 
 
-`status` String
+```
+InputRepresentation>
+
+```
+
+`status` [String](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm)
 
 SEE ALSO:
 
@@ -36939,13 +37785,6 @@ process. When the fee is a fixed amount, the
 charge is determined by multiplying the
 total fee amount by this value divided by
 the expected quantity. For example, if the
-fee amount is $10 and the expected
-quantity is 2, then if the
-`quantityReturned` is 1, $5 is charged.
-This value normally equals the quantity
-returned of the ReturnOrderLineItem for the
-returned item that the fee applies to. The
-value must be greater than zero. If this value
 
 
 Apex Reference Guide ConnectApi Input Classes
@@ -36953,6 +37792,13 @@ Apex Reference Guide ConnectApi Input Classes
 **Property** **Type** **Description** **Required or** **Available Version**
 **Optional**
 
+fee amount is $10 and the expected
+quantity is 2, then if the
+`quantityReturned` is 1, $5 is charged.
+This value normally equals the quantity
+returned of the ReturnOrderLineItem for the
+returned item that the fee applies to. The
+value must be greater than zero. If this value
 plus `quantityToCancel` is less than
 the expected quantity, then the remaining
 quantity to be returned is added to a new
@@ -36995,6 +37841,12 @@ zero or greater. This value isn’t used by any
 standard features, but is provided for use in
 customizations.
 
+
+Apex Reference Guide ConnectApi Input Classes
+
+**Property** **Type** **Description** **Required or** **Available Version**
+**Optional**
+
 `quantityRejected` Double The quantity of the ReturnOrderLineItem Optional 52.0
 that has been rejected for return. The value
 
@@ -37006,13 +37858,6 @@ use in customizations.
 that has been returned. The value must be
 
 greater than zero. If this value plus
-
-
-Apex Reference Guide ConnectApi Input Classes
-
-**Property** **Type** **Description** **Required or** **Available Version**
-**Optional**
-
 quantityToCancel is less than the expected
 return quantity, then the remaining quantity
 to be returned is added to a new
@@ -37060,6 +37905,12 @@ charge.
 `orderItemSummaryId` String ID of the associated OrderItemSummary. If Required 50.0
 the OrderItemSummary already has an
 
+
+Apex Reference Guide ConnectApi Input Classes
+
+**Property** **Type** **Description** **Required or** **Available Version**
+**Optional**
+
 associated ReturnOrderLineItem, then you
 must specify a different
 `reasonForReturn` . Duplicating the
@@ -37072,12 +37923,6 @@ also applies to any fees specified in
 `returnOrderLineItemFees` .
 
 `quantityReceived` Double Quantity already physically returned. Optional 50.0
-
-
-Apex Reference Guide ConnectApi Input Classes
-
-**Property** **Type** **Description** **Required or** **Available Version**
-**Optional**
 
 `reasonForReturn` String
 
@@ -37124,6 +37969,13 @@ tax.
 
 **•** `AmountWithoutTax` —Value of
 `amount` is the fee amount, not
+
+
+Apex Reference Guide ConnectApi Input Classes
+
+**Property** **Type** **Description** **Required or** **Available Version**
+**Optional**
+
 including tax. Tax is calculated on the
 value and added.
 
@@ -37134,12 +37986,6 @@ and then multiplied by the TotalPrice
 and TotalTaxAmount of the associated
 OrderItemSummary, prorated for the
 quantity being returned.
-
-
-Apex Reference Guide ConnectApi Input Classes
-
-**Property** **Type** **Description** **Required or** **Available Version**
-**Optional**
 
 **•** `PercentageGross` —Value of
 `amount` is a percentage. To determine
@@ -37183,6 +38029,9 @@ Subclass of ConnectApi.BaseApiPaymentMethodRequest.
 
 `cardPaymentMethod` `ConnectApi.CardPaymentMethodRequest` Payment method used in a sale request. Required 54.0
 
+
+Apex Reference Guide ConnectApi Input Classes
+
 #### ConnectApi.SaleRequest
 
 Payment sale input consumed by the payment sale service.
@@ -37193,12 +38042,6 @@ Subclass of ConnectApi.BaseRequest.
 **Optional**
 
 `accountId` String Reference to account. Required 54.0
-
-
-Apex Reference Guide ConnectApi Input Classes
-
-**Property** **Type** **Description** **Required or** **Available Version**
-**Optional**
 
 `amount` Double The amount of the sale request. Required 54.0
 
@@ -37285,6 +38128,12 @@ recommendation
 use Experience Builder to determine
 where recommendations appear.
 
+
+Apex Reference Guide ConnectApi Input Classes
+
+**Property** **Type** **Description** **Required or** **Available Version**
+**Optional**
+
 **•** `CustomChannel2` —Custom
 recommendation channel. Not used by
 default. Work with your community
@@ -37292,13 +38141,6 @@ manager to define custom channels.
 
 **•** `CustomChannel3` —Custom
 recommendation channel. Not used by
-
-
-Apex Reference Guide ConnectApi Input Classes
-
-**Property** **Type** **Description** **Required or** **Available Version**
-**Optional**
-
 default. Work with your community
 manager to define custom channels.
 
@@ -37347,18 +38189,18 @@ whole numbers starting with 1.
 Setting the rank is comparable to an
 insertion into an ordered list. The scheduled
 
+
+Apex Reference Guide ConnectApi Input Classes
+
+**Property** **Type** **Description** **Required or** **Available Version**
+**Optional**
+
 custom recommendation is inserted into
 the position specified by the `rank` . The
 `rank` of all the scheduled custom
 recommendations after it is pushed down.
 See Ranking scheduled custom
 recommendations example.
-
-
-Apex Reference Guide ConnectApi Input Classes
-
-**Property** **Type** **Description** **Required or** **Available Version**
-**Optional**
 
 If the specified `rank` is larger than the size
 of the list, the scheduled custom
@@ -37417,14 +38259,14 @@ ScheduledRecommendationB 2
 
 ScheduledRecommendationC 3
 
+
+Apex Reference Guide ConnectApi Input Classes
+
 And you include this information in the Scheduled Custom Recommendation Input:
 
 **Scheduled Recommendation** **Rank**
 
 ScheduledRecommendationD 2
-
-
-Apex Reference Guide ConnectApi Input Classes
 
 The result is:
 
@@ -37483,17 +38325,14 @@ and all of its subcategories.
 
 Search request input for searching an object.
 
-**Property** **Type** **Description** **Required or** **Available Version**
-**Optional**
-
-`q` String Query term to search on. Query term must Required 63.0
-be two or more characters.
-
 
 Apex Reference Guide ConnectApi Input Classes
 
 **Property** **Type** **Description** **Required or** **Available Version**
 **Optional**
+
+`q` String Query term to search on. Query term must Required 63.0
+be two or more characters.
 
 `configurationName` String
 
@@ -37753,7 +38592,7 @@ Shipping carrier.
 shipping carrier used by external systems.
 
 `shippingCarrierMethods` ListConnectApi.ShippingCaierMethodInputRepresentation **r** List of shipping carrier methods. Required 63.0
-on page 2123
+on page 2133
 
 #### ConnectApi.ShippingCarrierMethodInputRepresentation
 
@@ -38994,7 +39833,7 @@ Apex Reference Guide ConnectApi Output Classes
 
 `cartItemId` String ID of the item. 49.0
 
-`childProduct` Integer on page 3819 Number of child products in the cart that are 62.0
+`childProduct` Integer on page 3836 Number of child products in the cart that are 62.0
 `Count` associated with the item. A cart item can have child
 products if the `productClass` of the item is
 `Bundle` . For nested bundles, which include a child
@@ -39082,7 +39921,7 @@ Apex Reference Guide ConnectApi Output Classes
 
 **•** `Gift` —A gift product.
 
-`subscriptionTerm` Integer on page 3819 Reserved for future use. 59.0
+`subscriptionTerm` Integer on page 3836 Reserved for future use. 59.0
 
 #### type ConnectApi. Type of item in a cart. Values are: 49.0
 
@@ -39796,7 +40635,7 @@ Superclass of:
 
 `contentBody` String Text of the file’s content if available, otherwise `null` . 43.0
 
-`contentItemSize` Long Class on page 3893 Length in bytes of the content of the file, including 65.0
+`contentItemSize` Long Class on page 3910 Length in bytes of the content of the file, including 65.0
 files that are larger than 2 GB.
 
 `contentSize` Integer Length in bytes of the content of the file, for files that 39.0
@@ -40699,841 +41538,79 @@ Represents an activation data source configuration output.
 
 `marketSegmentActivationId` String ID of the market segment activation. 60.0
 
-#### ConnectApi.ActivationTarget
+#### ConnectApi.ActivationExternalPlatformAttributeConfig
 
-Represents an activation target.
+Represents the attribute configuration for an activation external platform.
 
 **Property Name** **Type** **Description** **Available Version**
 
-`connector` `ConnectApi.DataConnector` Details about the connector that is used for the 60.0
-activation target.
+`attributes` List< List of attributes for the external platform. 64.0
+#### ConnectApi.ActivationExternalPlatformAttribute > ConnectApi.ActivationExternalPlatformAttribute
 
-`dataSpace` String Data space name for the activation target. 60.0
+Represents an attribute for an activation external platform.
 
-`description` String Description of the activation target. 60.0
+**Property Name** **Type** **Description** **Available Version**
 
-`egressProperties` `ConnectApi.EgressPropertiesRepresentation` Egress properties for the activation target, which are 60.0
-applicable only for file-based activation targets.
+`destinationName` String Destination name of the external platform attribute. 64.0
 
-`historyAudienceDmoApiName` String API name for the history audience DMO. 60.0
+`displayName` String
 
-`historyAudienceDmoLabel` String Name of the history audience DMO. 60.0
+Display name of the external platform attribute. This 64.0
+field is applicable only for ecoSystem external
+platforms.
 
-`isCappingEnabled` Boolean Indicates whether communication capping is enabled 60.0
-for the activation `(true)` or not `(false)` .
+#### ConnectApi.ActivationExternalPlatformCollection
 
-`isEnabled` Boolean Indicates whether the activation target is enabled 60.0
-`(true)` or not `(false)` .
+Represents a collection of activation external platforms.
 
-`latestAudienceDmoApiName` String API name for the latest audience DMO. 62.0
+**Property Name** **Type** **Description** **Available Version**
 
-`latestAudienceDmoLabel` String Name of the latest audience DMO. 62.0
+#### platforms <List ConnectApi.ActivationExternalPlatform > List of activation external platforms. 64.0
 
-`organizationId` String Organization ID of the activation target. 60.0
+SEE ALSO:
 
-`platformName` String Platform name for the activation target. 60.0
+getActivationExternalPlatforms()
 
-`platformPrivacyType` String Platform privacy type for the activation target. Derived 60.0
-from Activation Platform.
+getActivationExternalPlatformsPaginated(limit, offset, orderBy)
 
-`platformType` `DataConnectorTypeEnum` Data connector type of the activation target. 60.0
+#### ConnectApi.ActivationExternalPlatform
 
-**•** `AmazonS3`
-
-**•** `AzureBlob`
-
-**•** `DataCloud`
-
-**•** `GoogleCloudStorage`
+Represents information about an activation external platform.
 
 
 Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
-**•** `SalesforceMarketingCloud`
+`attributeConfig` `ConnectApi.ActivationExternalPlatformAttributeConfig` Attribute configuration for the external platform. 64.0
 
-**•** `Sftp`
+`createdBy` `ConnectApi.CdpUser` User who created the external platform. 57.0
 
-`status` `ActivationTargetStatusEnum` Status of the activation target. 60.0
+`createdDate` String When the external platform was created. 57.0
 
-**•** `Active`
+`creationType` `ActivationPlatformCreationTypeEnum` Creation type of the external platform. 64.0
 
-**•** `Processing`
+**•** `Json`
 
-**•** `Error`
+**•** `Manual`
 
-**•** `Inactive`
+`id` String The 18-character ID of the external platform. 57.0
 
-SEE ALSO:
+`keyPrefixName` String Namespace prefix of the external platform. 64.0
 
-createActivationTarget(input)
+`label` String Label of the external platform. 57.0
 
-getActivationTarget(activationTargetId)
+`lastModifiedBy` `ConnectApi.CdpUser` User who last modified the external platform. 57.0
 
-updateActivationTarget(activationTargetId, input)
+`lastModifiedDate` String When the external platform was last modified. 57.0
 
-#### ConnectApi.ActivationTargetCollection
+`name` String Name of the external platform. 57.0
 
-Represents a collection of activation targets.
+`namespace` String Name space of the external platform. 57.0
 
-**Property Name** **Type** **Description** **Available Version**
+`privacyType` `ActivationPlatformPrivacyTypeEnum` Privacy type of the external platform. 64.0
 
-#### activationTargets List< ConnectApi.ActivationTarget > List of activation targets. 60.0
+**•** `NotApplicable`
 
-`batchSize` Integer Number of results returned. Values are from `1` 60.0
-through `200` .
+**•** `ServiceProvider`
 
-`offset` Integer Start offset of the next batch of results. 60.0
-
-`orderByExpression` String Expression that determines the order of the results. 60.0
-
-SEE ALSO:
-
-getActivationTargets()
-
-getActivationTargetsPaginated(batchSize, offset, orderBy, filters)
-
-#### ConnectApi.ActivationTargetSubject
-
-Represents an activation target subject output.
-
-**Property Name** **Type** **Description** **Available Version**
-
-`developerName` String Developer name of the activation target subject. 60.0
-
-`masterLabel` String Master label of the activation target subject. 60.0
-
-#### queryPathConfigListRepresentation List< ConnectApi. Query path for the activation target. 60.0
-
-`QueryPathConfigList`               
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-ConnectApi.ActivitySharingResult
-
-The results of sharing a captured email or event.
-
-**Property Name** **Type** **Description** **Available Version**
-
-`success` Boolean Whether the share operation succeeded or not. 39.0
-
-#### ConnectApi.Actor
-
-Actor.
-
-This class is abstract.
-
-Superclass of:
-
-#### • ConnectApi.ActorWithId
-
-**•** ConnectApi.RecommendedObject
-
-**•** ConnectApi.UnauthenticatedUser
-
-**Name** **Type** **Description** **Available Version**
-
-`name` String Name of the actor, such as the group name. 28.0
-
-`type` String One of the following: 28.0
-
-**•** `file`
-
-**•** `group`
-
-**•** `recommendedObject` (version 34.0 and later)
-
-**•** `unauthenticateduser`
-
-**•** `user`
-
-**•** _`record type name`_ —the name of the record type, such
-as `myCustomObject__c` or Account
-
-SEE ALSO:
-
-ConnectApi.CaseCommentCapability
-
-ConnectApi.EntityRecommendation
-
-ConnectApi.EditCapability
-
-ConnectApi.FeedEntitySummary
-
-ConnectApi.FeedItem
-
-ConnectApi.FeedItemSummary
-
-ConnectApi.Subscription
-
-#### ConnectApi.ActorWithId
-
-Actor with ID.
-
-This class is abstract.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-Subclass of ConnectApi.Actor.
-
-Superclass of:
-
-**•** ConnectApi.AbstractRecordView
-
-**•** ConnectApi.ArticleSummary
-
-**•** ConnectApi.ChatterGroup
-
-**•** ConnectApi.ContentHubRepository
-
-**•** ConnectApi.File
-
-**•** ConnectApi.RelatedFeedPost
-
-**•** ConnectApi.User
-
-**Name** **Type** **Description** **Available Version**
-
-`id` String Actor’s 18-character ID 28.0
-
-#### `motif ConnectApi.`
-
-```
-         Motif
-
-```
-
-An icon that identifies the actor as a user, group, file, or custom 28.0
-object. The icon isn’t the user or group photo, and it isn’t a preview
-of the file. The motif can also contain the object’s base color.
-
-#### mySubscription ConnectApi. If the context user is following the item, this contains information 28.0
-
-`Reference` about the subscription, else returns `null` .
-
-`url` String Connect REST API URL for the resource 28.0
-
-SEE ALSO:
-
-ConnectApi.FeedElement
-
-ConnectApi.FeedEntitySummary
-
-ConnectApi.GroupRecord
-
-ConnectApi.MentionSegment
-
-ConnectApi.RecordSummaryList
-
-#### ConnectApi.Address
-
-Address.
-
-**Name** **Type** **Description** **Available Version**
-
-`city` String Name of the city 28.0
-
-`country` String Name of the country 28.0
-
-`formattedAddress` String Formatted address per the locale of the context user 28.0
-
-`state` String Name of the state, province, or so on 28.0
-
-`street` String Street number 28.0
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available Version**
-
-`zip` String Zip or postal code 28.0
-
-SEE ALSO:
-
-ConnectApi.DatacloudCompany
-
-ConnectApi.DatacloudContact
-
-ConnectApi.UserDetail
-
-#### ConnectApi.AdjustOrderSummaryOutputRepresentation
-
-Output representation of the financial changes for an adjust items action. For a preview action, these values are the expected output.
-For a submit action, these values are the actual output.
-
-Subclass of ConnectApi.BaseOutputRepresentation.
-
-**Property Name** **Type** **Description** **Available Version**
-
-```
-changeBalances
-
-```
-
-#### ConnectApi. Expected (for preview) or actual (for submit) financial 49.0
-
-`ChangeItem` values for the price adjustment action. Most of the
-`OutputRepresentation` values match the change order values. If two change
-
-orders are returned, then these values combine them.
-The sign of a value in this output is the opposite of
-the corresponding value on a change order record.
-For example, a discount is a positive value in
-`changeBalances` and a negative value on a
-change order record.
-
-`inFulfillment` String ID of the change Order that holds the financial 55.0
-`ChangeOrderId` changes applicable to OrderItemSummary quantities
-that are in the process of being fulfilled. This change
-Order is only created for a request that specified an
-`allocatedItemsChangeOrderType` of
-InFulfillment. For an adjustPreview call, this value is
-always null.
-
-`orderSummaryId` String ID of the OrderSummary. 49.0
-
-`postFulfillment` String ID of the change Order that holds the financial 49.0
-`ChangeOrderId` changes applicable to OrderItemSummary quantities
-that have been fulfilled. For an adjustPreview call,
-this value is always null.
-
-`preFulfillment` String ID of the change Order that holds the financial 49.0
-`ChangeOrderId` changes applicable to OrderItemSummary quantities
-that have not been fulfilled. If the request specified
-an `allocatedItemsChangeOrderType` of
-PreFulfillment, this change Order also includes the
-changes applicable to OrderItemSummary quantities
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-that are in the process of being fulfilled. For an
-adjustPreview call, this value is always null.
-
-#### ConnectApi.Alternative
-
-Alternative representation for an extension on a feed element.
-
-**Property Name** **Type** **Description** **Available Version**
-
-`text` String Text representation of the extension. 40.0
-
-```
-   Representation
-
-```
-
-`thumbnailUrl` String Thumbnail URL to the extension. 40.0
-
-`title` String Title of the extension. 40.0
-
-#### ConnectApi.AlternativePaymentMethodOutput
-
-Alternative payment method details output.
-
-**Property Name** **Type** **Description** **Available Version**
-
-`accountId` String Salesforce Payments account to which this payment 56.0
-method is linked.
-
-`comments` String Details about a record added by a user. Maximum of 56.0
-1,000 characters.
-
-`email` String Email address of the card holder. 56.0
-
-`gatewayToken` String A unique, alphanumeric ID, called a token, that a 56.0
-payment gateway generates when it first processes
-
-a payment. The token replaces the actual payment
-data so that the data is kept secure. This token is
-stored as encrypted text, and can be used for
-recurring payments.
-
-`gatewayToken` String Detailed information about the gateway token. 56.0
-
-```
-   Details
-
-```
-
-`name` String Name that you assign to the payment method object. 56.0
-
-#### ConnectApi.Announcement
-
-An announcement displays in a designated location in the Salesforce UI until 11:59 p.m. on its expiration date, unless it’s deleted or
-replaced by another announcement.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available Version**
-
-`expirationDate` Datetime The Salesforce UI displays an announcement until 11:59 31.0
-p.m. on this date unless another announcement is posted
-
-first. The Salesforce UI ignores the time value in the
-`expirationDate` . However, you can use the time value
-to create your own display logic in your own UI.
-
-#### `feedElement ConnectApi.`
-
-```
-         FeedElement
-
-```
-
-The feed element that contains the body of the 31.0
-announcement and its associated comments, likes, and so
-on.
-
-`id` String 18-character ID of the announcement. 31.0
-
-`isArchived` Boolean Specifies whether the announcement is archived. 36.0
-
-`sendEmails` Boolean Specifies whether the announcement is sent as an email 36.0
-to all group members.
-
-`url` String The URL to the announcement. 33.0
-
-SEE ALSO:
-
-#### ConnectApi.AnnouncementPage
-
-ConnectApi.ChatterGroup
-
-#### ConnectApi.AnnouncementPage
-
-A collection of announcements.
-
-**Name** **Type** **Description** **Available Version**
-
-#### announcements List<ConnectApi A collection of ConnectApi.Announcement objects. 31.0
-
-```
-         .Announcement>
-
-```
-
-`currentPageUrl` String Connect REST API URL identifying the current page. 31.0
-
-`nextPageUrl` String Connect REST API URL identifying the next page, or `null` 31.0
-if there isn’t a next page.
-
-`previousPageUrl` String Connect REST API URL identifying the previous page, or 31.0
-`null` if there isn’t a previous page.
-
-#### ConnectApi.SearchAppliedOrderBy
-
-The applied order for object search.
-
-**Property Name** **Type** **Description** **Available Version**
-
-`field` String Field used to sort the results. 63.0
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-#### order ConnectApi. Order direction. Values are: 63.0
-
-```
-             OrderDirection
-```
-
-**•** `Ascending`
-
-**•** `Descending`
-
-#### orderNulls ConnectApi. Null value order. Values are: 63.0
-
-```
-             OrderNulls
-```
-
-**•** `Firsts` —Null values are sorted first.
-
-**•** `Lasts` —Null values are sorted last.
-
-SEE ALSO:
-
-ConnectApi.ObjectQueryInfo
-
-ConnectApi.SearchObject
-
-#### ConnectApi.ApprovalCapability
-
-If a feed element has this capability, it includes information about an approval.
-
-Subclass of ConnectApi.FeedElementCapability.
-
-**Property Name** **Type** **Description** **Available Version**
-
-`id` String
-
-The work item ID. The work item ID is `null` if there 32.0
-isn’t a pending work item associated with the
-approval record.
-
-```
-postTemplate
-
-Fields
-
-```
-
-#### List< ConnectApi. The details of the approval post template field. 32.0
-
-```
-ApprovalPost
-```
-
-`TemplateField` 
-
-`processInstance` String The process instance step ID. The associated record 32.0
-`StepId` represents one step in an approval process.
-
-```
-status
-
-```
-
-SEE ALSO:
-
-#### ConnectApi. The status of the approval. 32.0
-
-```
-WorkflowProcess
-
-Status
-
-```
-
-ConnectApi.FeedElementCapabilities
-
-#### ConnectApi.ApprovalIntent
-
-Approval intent for a social post.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-`isRecallable` Boolean Specifies whether the social post can be recalled 45.0
-( `true` ) or not ( `false` ).
-
-SEE ALSO:
-
-ConnectApi.SocialPostIntents
-
-#### ConnectApi.ApprovalPostTemplateField
-
-Approval post template field.
-
-**Name** **Type** **Description** **Available Version**
-
-`displayName` String The field name. 28.0
-
-`displayValue` String The field value or `null` if the field is set to `null` . 28.0
-
-#### `record ConnectApi.`
-
-```
-         Reference
-
-```
-
-SEE ALSO:
-
-ConnectApi.ApprovalCapability
-
-#### ConnectApi.ArticleItem
-
-A record ID. 28.0
-
-If no record exists or if the reference is `null`, this value is `null` .
-
-Article item in question and answers suggestions.
-
-**Property Name** **Type** **Description** **Available Version**
-
-`id` String Id of the article. 32.0
-
-`rating` Double The rating of the article. 32.0
-
-`title` String Title of the article. 32.0
-
-`urlLink` String Link URL of the article. 32.0
-
-`viewCount` Integer Number of votes given to the article. 32.0
-
-SEE ALSO:
-
-ConnectApi.QuestionAndAnswersSuggestions
-
-#### ConnectApi.ArticleSummary
-
-A knowledge article summary.
-
-Subclass of ConnectApi.ActorWithId.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-`articleType` String Type of the knowledge article. 37.0
-
-`knowledgeArticle` String ID of the knowledge article version. 39.0
-
-```
-   VersionId
-
-```
-
-`lastPublishedDate` Datetime Last published date of the knowledge article. 37.0
-
-`rating` Double The rating of the article. 37.0
-
-`summary` String Summary of the knowledge article contents. 37.0
-
-`title` String Title of the knowledge article. 37.0
-
-`urlName` String URL name of the knowledge article. 37.0
-
-`viewCount` Integer Number of times the knowledge article has been 38.0
-viewed.
-
-#### ConnectApi.AssociatedActionsCapability
-
-If a feed element has this capability, it has platform actions associated with it.
-
-**Property Name** **Type** **Description** **Available Version**
-
-#### platformAction List< ConnectApi. The platform action groups associated with a feed 33.0
-
-`Groups` `PlatformActionGroup`   - element. Platform action groups are returned in the
-order specified in the
-
-#### `ConnectApi.AssociatedActions`
-
-`CapabilityInput` class.
-
-SEE ALSO:
-
-ConnectApi.FeedElementCapabilities
-
-#### ConnectApi.AsyncOutputRepresentation
-
-Output representation of the async operation.
-
-Subclass of ConnectApi.BaseAsyncOutputRepresentation.
-
-No additional properties.
-
-SEE ALSO:
-
-multipleEnsureFundsAsync(multipleEnsureFundsInput)
-
-ConnectApi.MultipleAsyncOutputRepresentation
-
-#### ConnectApi.AttributeFilter
-
-Represents the attribute filter output.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-`attributeId` String ID of the attribute. 60.0
-
-`attributeName` String Name of the attribute. 60.0
-
-`dateUnits` Datetime Date units for the attribute. 60.0
-
-`operator` String Operator for the attribute. 60.0
-
-`type` `FilterOperatorDataTypeEnum` Type of attribute. 60.0
-
-**•** `FilterOperatorDataTypeBoolean`
-
-**•** `FilterOperatorDataTypeDate`
-
-**•** `FilterOperatorDataTypeDateOnly`
-
-**•** `FilterOperatorDataTypeExactlyRelativeDate`
-
-**•** `FilterOperatorDataTypeNumber`
-
-**•** `FilterOperatorDataTypeRelateToNowDate`
-
-**•** `FilterOperatorDataTypeText`
-
-`values` List<String> Values for the attribute. 60.0
-
-#### ConnectApi.AttributeFilterExpression
-
-Represents the activation attribute filter expression.
-
-**Property Name** **Type** **Description** **Available Version**
-
-`conjunction` `FilterConjunctionEnum` Conjunction for the activation attribute filter 60.0
-expression.
-
-**•** `FilterConjunctionAnd`
-
-**•** `FilterConjunctionOr`
-
-#### filters List< ConnectApi.AttributeFilter > List of attribute filters. 60.0 ConnectApi.Audience
-
-A personalization audience.
-
-**Property Name** **Type** **Description** **Available Version**
-
-```
-criteria
-
-```
-
-#### List< ConnectApi. Criteria details for the audience. 48.0
-
-```
-AudienceCriteria
-```
-
-`Detail` 
-
-`customFormula` String Custom formula for the audience criteria. For 48.0
-example, (1 AND 2) OR 3.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-#### formulaFilterType ConnectApi. Formula filter type for the personalization audience. 48.0
-
-`FormulaFilterType` Values are:
-
-**•** `AllCriteriaMatch` —All audience criteria
-are true (AND operation).
-
-**•** `AnyCriterionMatches` —Any audience
-criterion is true (OR operation).
-
-**•** `CustomLogicMatches` —Audience criteria
-match the custom formula (for example, (1 AND
-2) OR 3).
-
-`id` String ID of the audience. 48.0
-
-`name` String Name of the audience. 48.0
-
-```
-targets
-
-```
-
-#### List< ConnectApi. Target assignments for the audience. 48.0
-
-```
-AudienceTarget
-```
-
-`Assignment` 
-
-`url` String URL to this audience. 48.0
-
-SEE ALSO:
-
-#### ConnectApi.AudienceCollection ConnectApi.AudienceCollection
-
-Collection of personalization audiences.
-
-**Property Name** **Type** **Description** **Available Version**
-
-#### audiences List< ConnectApi. Collection of audiences. 48.0
-
-`Audience`          
-#### ConnectApi.AudienceCriteria
-
-Custom recommendation audience criteria.
-
-This class is abstract.
-
-This class is a superclass of:
-
-**•** ConnectApi.CustomListAudienceCriteria
-
-**•** ConnectApi.NewUserAudienceCriteria
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-```
-type
-
-```
-
-SEE ALSO:
-
-#### ConnectApi. Specifies the custom recommendation audience 36.0
-
-`RecommendationAudience` criteria type. One of these values:
-
-```
-CriteriaType
-```
-
-**•** `CustomList` —A custom list of users makes
-up the audience.
-
-**•** `MaxDaysInCommunity` —New members
-make up the audience.
-
-ConnectApi.RecommendationAudience
-
-#### ConnectApi.AudienceCriteriaDetail
-
-Personalization audience criteria.
-
-**Property Name** **Type** **Description** **Available Version**
-
-```
-criterion
-
-```
-
-#### List< ConnectApi. List of mappings of audience criteria fields and values. 48.0
-
-```
-AudienceCriterion
-```
-
-`Detail` 
-
-`criterionNumber` Integer Number associated with the audience criterion in a 48.0
-formula. For example, (1 AND 2) OR 3. If unspecified,
-
-criteria are assigned numbers in the order that they’re
-added.
-
-```
-criterionOperator
-
-```
-
-#### ConnectApi. Operator used in the personalization audience 48.0
-
-`AudienceCriteria` criterion. Values are:
-
-```

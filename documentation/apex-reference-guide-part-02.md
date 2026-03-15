@@ -1,3 +1,17 @@
+Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+setId(id)
+Sets the ID of a notification sent by the payment gateway.
+
+setRetryCategory(retryCategory)
+Sets the retry category returned by the payment gateway for the failed payment.
+
+setRetryDecision(retryDecision)
+Sets the retry decision.
+
 setSalesforceResultCodeInfo(salesforceResultCodeInfo)
 Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
 uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
@@ -6915,6 +6929,11 @@ IN THIS SECTION:
 
 the information to define tax details.
 
+Tax Mappings for Quotes and Orders
+You can extend and customize the tax interface for quotes and orders by using custom metadata types and tax mappings. These
+customizations help you with unique business requirements such as the inclusion of specific data for accurate calculations and
+audits.
+
 #### TaxEngineAdapter Methods Learn more about the available methods with the TaxEngineAdapter class. The TaxEngineAdapter class includes these methods.
 
 IN THIS SECTION:
@@ -6954,12 +6973,12 @@ Generic interface representing a response from a tax engine.
 
 the information to define tax details.
 
+
+Apex Reference Guide TaxEngineAdapter Interface
+
 Namespace
 
 commercetax
-
-
-Apex Reference Guide TaxEngineAdapter Interface
 
 Usage
 
@@ -7044,6 +7063,12 @@ instance of `TaxEngineContext` class and returns a response with the calculated 
 
        1000, "taxCalculated": 72.5, "taxCode": "P0000000", "taxDate":
 
+```
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+```
        "2017-02-03T00:00:00", "taxIncluded": false, "details": [ {
 
           "id": -1, "transactionLineId": -1, "transactionId": -1,
@@ -7052,12 +7077,6 @@ instance of `TaxEngineContext` class and returns a response with the calculated 
 
         "jurisCode": "06", "jurisName": "CALIFORNIA", "stateAssignedNo":
 
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
         "", "jurisType": "STA", "nonTaxableAmount": 0, "rate":
 
         0.06, "tax": 60, "taxableAmount": 1000, "taxType":
@@ -7152,6 +7171,12 @@ Apex Reference Guide TaxEngineAdapter Interface
 
        0,"lineNumber": "1","discountAmount": 0,"exemptAmount": 0,"exemptCertId":
 
+```
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+```
        0,"isItemTaxable": true,"itemCode": "","lineAmount": 232,"quantity":
 
        1,"reportingDate": "2020-07-15","tax": 23.43,"taxableAmount": 232,"taxCalculated":
@@ -7160,12 +7185,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
        "2020-07-15","taxOverrideType": "None","taxOverrideAmount": 0,"taxIncluded":
 
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
        false,"details": [{"id": 0,"transactionLineId": 0,"transactionId": 0,"country":
 
        "US","region": "WA","exemptAmount": 0,"jurisCode": "53","jurisName":
@@ -7264,6 +7283,12 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                  if(Test.isRunningTest()){
 
+```
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+```
                    responseString = getTestResponseString();
 
                  } else{
@@ -7272,12 +7297,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                  }
 
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
                  //system.debug(sendHttpRequest.getResponse());
 
                  //system.debug('response'+responseString);
@@ -7356,6 +7375,12 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                    {
 
+```
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+```
                       commercetax.LineItemResponse lineItemResponse = new
 
        commercetax.LineItemResponse();
@@ -7364,12 +7389,6 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                       List<commercetax.TaxDetailsResponse> taxDetailsResponses =
 
-```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
-
-```
         new List<commercetax.TaxDetailsResponse>();
 
                       for(JsonSuccessParser.details linesDetails :
@@ -7450,16 +7469,16 @@ Apex Reference Guide TaxEngineAdapter Interface
 
         new commercetax.AmountDetailsResponse();
 
-       amountResponse.setTaxAmount(linesToProcess.taxCalculated);
-
-       amountResponse.setTotalAmount(linesToProcess.lineAmount);
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+       amountResponse.setTaxAmount(linesToProcess.taxCalculated);
+
+       amountResponse.setTotalAmount(linesToProcess.lineAmount);
+
        amountResponse.setTotalAmountWithTax(linesToProcess.lineAmount+linesToProcess.taxCalculated);
 
        amountResponse.setExemptAmount(linesToProcess.exemptAmount);
@@ -7544,14 +7563,17 @@ Apex Reference Guide TaxEngineAdapter Interface
 
             }
 
+```
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+```
           }
 
        }
 
 ```
-
-
-Apex Reference Guide TaxEngineAdapter Interface
 
 **•** In the `HttpService` class, replace the `test` value in the endpoint variable with the name of the
 `TaxTypedNamedCredential` record. This class contains the credentials that are required to access your Avalara account
@@ -7638,18 +7660,18 @@ through Salesforce.
 
           /**
 
-          * @name addHeader
-
-          * @description addHeader Methods to add all the defualt Header's required fo
-
-       rthe request
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+          * @name addHeader
+
+          * @description addHeader Methods to add all the defualt Header's required fo
+
+       rthe request
+
           */
 
           public void addHeader(String name, String value)
@@ -7744,18 +7766,18 @@ Apex Reference Guide TaxEngineAdapter Interface
 
           {
 
-            try
-
-            {
-
-               Http http = new Http();
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+            try
+
+            {
+
+               Http http = new Http();
+
                httpResponse = http.send(request);
 
             }
@@ -7852,16 +7874,16 @@ This example shows the `JsonSuccessParser` class.
 
          }
 
-          public class Addresses {
-
-            public String id {get;set;}
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+          public class Addresses {
+
+            public String id {get;set;}
+
             public String transactionId {get;set;}
 
             public String boundaryLevel {get;set;}
@@ -7960,18 +7982,18 @@ Apex Reference Guide TaxEngineAdapter Interface
 
             public String stateAssignedNo {get;set;}
 
-            public String jurisType {get;set;}
-
-            public Integer nonTaxableAmount {get;set;}
-
-            public Double rate {get;set;}
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+            public String jurisType {get;set;}
+
+            public Integer nonTaxableAmount {get;set;}
+
+            public Double rate {get;set;}
+
             public Double tax {get;set;}
 
             public Integer taxableAmount {get;set;}
@@ -8072,18 +8094,18 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                         rateType = parser.getText();
 
-                      } else {
-
-                        consumeObject(parser);
-
-                      }
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+                      } else {
+
+                        consumeObject(parser);
+
+                      }
+
                    }
 
                  }
@@ -8180,18 +8202,18 @@ Apex Reference Guide TaxEngineAdapter Interface
 
           public Double totalTaxCalculated {get;set;}
 
-          public String adjustmentReason {get;set;}
-
-          public Boolean locked {get;set;}
-
-          public Integer version {get;set;}
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+          public String adjustmentReason {get;set;}
+
+          public Boolean locked {get;set;}
+
+          public Integer version {get;set;}
+
           public String modifiedDate {get;set;}
 
           public Integer modifiedUserId {get;set;}
@@ -8292,18 +8314,18 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                    } else if (text == 'lines') {
 
-                      lines = new List<Lines>();
-
-                      while (parser.nextToken() != JSONToken.END_ARRAY) {
-
-                        lines.add(new Lines(parser));
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+                      lines = new List<Lines>();
+
+                      while (parser.nextToken() != JSONToken.END_ARRAY) {
+
+                        lines.add(new Lines(parser));
+
                       }
 
                    } else if (text == 'addresses') {
@@ -8402,18 +8424,18 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                       } else if (text == 'region') {
 
-                        region = parser.getText();
-
-                      } else if (text == 'jurisType') {
-
-                        jurisType = parser.getText();
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+                        region = parser.getText();
+
+                      } else if (text == 'jurisType') {
+
+                        jurisType = parser.getText();
+
                       } else if (text == 'jurisCode') {
 
                         jurisCode = parser.getText();
@@ -8514,18 +8536,18 @@ Apex Reference Guide TaxEngineAdapter Interface
 
             public Double taxCalculated {get;set;}
 
-            public String taxCode {get;set;}
-
-            public String taxDate {get;set;}
-
-            public Boolean taxIncluded {get;set;}
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+            public String taxCode {get;set;}
+
+            public String taxDate {get;set;}
+
+            public Boolean taxIncluded {get;set;}
+
             public List<Details> details {get;set;}
 
             public String itemCode {get;set;}
@@ -8628,18 +8650,18 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                  }
 
-               }
-
-            }
-
-          }
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+               }
+
+            }
+
+          }
+
           public static JsonSuccessParser parse(String json)
 
           {
@@ -8733,18 +8755,18 @@ Prepare your JSON request to call the Avalara endpoint by using the `AvalaraJSON
 
        calculateTaxRequest.documentcode);
 
-               }else if(calculateTaxRequest.referenceEntityId != null) {
-
-                 jsonGeneratorInstance.writeStringField('code',
-
-       calculateTaxRequest.referenceEntityId);
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+               }else if(calculateTaxRequest.referenceEntityId != null) {
+
+                 jsonGeneratorInstance.writeStringField('code',
+
+       calculateTaxRequest.referenceEntityId);
+
                }
 
               if(calculateTaxRequest.CustomerDetails.code == null && accountid !=null)
@@ -8837,16 +8859,16 @@ Apex Reference Guide TaxEngineAdapter Interface
 
                    jsonGeneratorInstance.writeEndObject();
 
-                   jsonGeneratorInstance.writeFieldName('ShipTo');
-
-                   jsonGeneratorInstance.writeStartObject();
-
 ```
 
 
 Apex Reference Guide TaxEngineAdapter Interface
 
 ```
+                   jsonGeneratorInstance.writeFieldName('ShipTo');
+
+                   jsonGeneratorInstance.writeStartObject();
+
                    jsonGeneratorInstance.writeStringField('line1',
 
        lineItem.addresses.shipto.street);
@@ -8935,16 +8957,16 @@ Apex Reference Guide TaxEngineAdapter Interface
 
             {
 
+```
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+```
                throw e;
 
             }
 
-```
-
-
-### Apex Reference Guide TaxEngineContext Class
-
-```
           }
 
        }
@@ -9002,9 +9024,307 @@ Apex Reference Guide TaxEngineAdapter Interface
 
        }
 
-### TaxEngineContext Class
+#### Tax Mappings for Quotes and Orders
 
 ```
+
+You can extend and customize the tax interface for quotes and orders by using custom metadata types and tax mappings. These
+customizations help you with unique business requirements such as the inclusion of specific data for accurate calculations and audits.
+
+Tax callout extensions are supported for the Quote, QuoteLineItem, Order, and OrderItem objects to include additional fields to tax
+[requests. You must manually write back tax response extensions to the objects. See custom metadata types to specify all your tax](https://help.salesforce.com/s/articleView?id=platform.custommetadatatypes_overview.htm&language=en_US)
+mapping definitions.
+
+Request Mappings for Header Attributes
+
+This table defines the request mappings between the header attributes of a tax callout and fields of applicable quote and order objects.
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+**Header Attributes** **Quote Mapping** **Order Mapping**
+
+currencyIsoCode
+
+If multi-currency is enabled, then this value
+is `Quote.CurrencyISOCode` .
+Otherwise, this value is NULL.
+
+If multi-currency is enabled, then this value
+is `Order.CurrencyISOCode` .
+Otherwise, this value is NULL.
+
+isCommit `False` `False`
+
+referenceEntityId Quote.ID Order.ID
+
+taxEngineId TaxTreatment.TaxEngine.ID TaxTreatment.TaxEngine.ID
+
+transactionDate Current System Date System Date
+
+**sellerDetails** NULL
+
+code TaxEngine.SellerCode
+
+**customerDetails**
+
+accountId Quote.AccountId Order.AccountId
+
+code NULL NULL
+
+exemptionNo NULL NULL
+
+exemptionReason NULL NULL
+
+taxType `Estimated` `Estimated`
+
+taxTransactionType NULL NULL
+
+effectiveDate NULL NULL
+
+**addresses**
+
+billTo NULL NULL
+
+shipTo NULL NULL
+
+shipFrom NULL NULL
+
+soldTo NULL NULL
+
+taxEngineAddress TaxEngine.Address TaxEngine.Address
+
+referenceDocumentCode NULL NULL
+
+description NULL NULL
+
+documentCode `Quote.ID-TaxEngineId` `Order.ID-TaxEngineId`
+
+shouldVoid `FALSE` `FALSE`
+
+lineItems Refer to the next line attributes section. Refer to the next line attributes section.
+
+Request Mappings for Line Attributes
+
+This table defines the request mappings between the line attributes of a tax callout and fields of applicable quote line items and order
+products.
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+**Line Attributes** **Quote Line Item Mapping** **Order Product Mapping**
+
+taxCode TaxTreatment.TaxCode TaxTreatment.TaxCode
+
+productCode TaxTreatment.ProductCode TaxTreatment.ProductCode
+
+productId QuoteLineItem.Product2.Id OrderItem.Product2.Id
+
+amount QuoteLineItem.TotalPrice OrderItem.TotalPrice
+
+effectiveDate Current System Date Current System Date
+
+lineNumber QuoteLineItem.Id OrderItem.Id
+
+description NULL NULL
+
+quantity QuoteLineItem.Quantity OrderItem.Quantity
+
+**addresses**
+
+billTo
+
+shipTo
+
+Quote.BillingAddress. If Quote.BillingAddress Order.BillingAddress
+is null, then this value is
+Quote.Account.BillingAddress.
+
+Quote.ShippingAddress. If Order.ShippingAddress
+Quote.ShippingAddress is null, then this
+value is Quote.Account.ShippingAddress.
+
+shipFrom NULL NULL
+
+soldTo NULL NULL
+
+productsku QuoteLineItem.Product2.ProductCode OrderItem.Product2.ProductCode
+
+referenceDocumentCode NULL NULL
+
+Response Mappings for Header Attributes
+
+This table defines the response mappings between the header attributes of a tax callout and fields of applicable objects. Most response
+data is used for tax calculation and isn’t persisted on quote or order records.
+
+**Header Attributes** **Quote Mapping** **Order Mapping**
+
+currencyIsoCode Quote.CurrencyISOCode Order.CurrencyISOCode
+
+isCommit Not returned. Not returned.
+
+referenceEntityId Quote.ID Order.ID
+
+taxEngineId TaxTreatment.TaxEngine.ID TaxTreatment.TaxEngine.ID
+
+transactionDate System Date System Date
+
+**sellerDetails** Not returned. Not returned.
+
+code Not returned. Not returned.
+
+**customerDetails** Not returned. Not returned.
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+**Header Attributes** **Quote Mapping** **Order Mapping**
+
+accountId Not returned. Not returned.
+
+code Not returned. Not returned.
+
+exemptionNo Not returned. Not returned.
+
+exemptionReason Not returned. Not returned.
+
+taxType `Estimated` `Estimated`
+
+taxTransactionType Not returned. Not returned.
+
+effectiveDate System Date System Date
+
+**addresses**
+
+billTo Not returned. Not returned.
+
+shipTo locationCode -> locationCode locationCode -> locationCode
+
+shipFrom Not returned. Not returned.
+
+soldTo Not returned. Not returned.
+
+taxEngineAddress Not returned. Not returned.
+
+referenceDocumentCode Not returned. Not returned.
+
+description Not returned. Not returned.
+
+documentCode `Quote.ID-TaxEngineId` `Order.ID-TaxEngineId`
+
+status `Uncommitted` `Uncommitted`
+
+taxEngineLogs Not returned. Not returned.
+
+resultCode Not returned. Not returned.
+
+transactionDate System Date System Date
+
+**amountDetails**
+
+exemptAmount Actual exemptAmount from response. Actual exemptAmount from response.
+
+taxAmount Actual taxAmount from response. Actual taxAmount from response.
+
+totalAmount Quote.Subtotal Order.Subtotal
+
+totalAmountWithTax TaxAmount + TotalAmount TaxAmount + TotalAmount
+
+lineItems Refer to the next line attributes section. Refer to the next line attributes section.
+
+Response Mappings for Line Attributes
+
+This table defines the response mappings between the line attributes of a tax callout and fields of applicable objects.
+
+
+Apex Reference Guide TaxEngineAdapter Interface
+
+**Line Attributes** **Quote Line Item Mapping** **Order Product Mapping**
+
+taxCode TaxTreatment.TaxCode TaxTreatment.TaxCode
+
+productCode TaxTreatment.ProductCode TaxTreatment.ProductCode
+
+productId Not returned. Not returned.
+
+**amountDetails**
+
+exemptAmount Actual exemptAmount from response Actual exemptAmount from response
+
+taxAmount Actual taxAmount from response Actual taxAmount from response
+
+totalAmount QuoteLineItem.Subtotal OrderItem.Subtotal
+
+totalAmountWithTax TaxAmount + TotalAmount TaxAmount + TotalAmount
+
+effectiveDate System Date System Date
+
+lineNumber QuoteLineItem.Id OrderItem.Id
+
+description Not returned. Not returned.
+
+quantity Not returned. Not returned.
+
+**addresses**
+
+billTo Not persisted. Not persisted.
+
+shipTo locationCode -> locationCode locationCode -> locationCode
+
+shipFrom Not returned. Not returned.
+
+soldTo Not returned. Not returned.
+
+productsku Not returned. Not returned.
+
+referenceDocumentCode Not returned. Not returned.
+
+taxes Refer to the next tax attributes section. Refer to the next tax attributes section.
+
+Response Mappings for Tax Attributes
+
+This table defines the response mappings between the tax attributes of a tax callout and fields of applicable objects.
+
+**Tax Attributes** **Quote Mapping** **Order Mapping**
+
+exemptAmount Not returned. Not returned.
+
+exemptReason Not returned. Not returned.
+
+**imposition**
+
+type Not returned. Not returned.
+
+Name Not returned. Not returned.
+
+**jurisdiction**
+
+
+### Apex Reference Guide TaxEngineContext Class
+
+**Tax Attributes** **Quote Mapping** **Order Mapping**
+
+country Not returned. Not returned.
+
+id Not returned. Not returned.
+
+level Not returned. Not returned.
+
+name Not returned. Not returned.
+
+region Not returned. Not returned.
+
+stateAssignedNo Not returned. Not returned.
+
+rate QuoteItemTaxItem.Rate OrderItemTaxItem.Rate
+
+tax QuoteItemTaxItem.amount OrderItemTaxItem.amount
+
+taxId Not returned. Not returned.
+
+taxableAmount Not returned. Not returned.
+
+### TaxEngineContext Class
 
 Wrapper class that stores details about the type of a tax calculation request.
 
@@ -9029,14 +9349,8 @@ Example
 
    (commercetax.CalculateTaxRequest)taxEngineContext.getRequest();
 
-```
+### Build the rest of your adapter based on the type of request that you got from TaxEngineContext class.
 
-
-Apex Reference Guide TaxEngineContext Class
-
-#### Build the rest of your adapter based on the type of request that you got from TaxEngineContext class.
-
-```
    if(requestType == commercetax.RequestType.CalculateTax){
 
            commercetax.calculatetaxtype type = request.taxtype;
@@ -9057,6 +9371,12 @@ Apex Reference Guide TaxEngineContext Class
 
            commercetax.CalculateTaxResponse response = new
 
+```
+
+
+Apex Reference Guide TaxEngineContext Class
+
+```
    commercetax.CalculateTaxResponse();
 
            if(request.isCommit == true) {
@@ -9102,9 +9422,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide TaxEngineContext Class
-
 Parameters
 
 ```
@@ -9131,6 +9448,9 @@ Type: String
 
 URI that was called as part of the tax calculation request.
 
+
+Apex Reference Guide TaxEngineContext Class
+
 #### TaxEngineContext Methods Learn more about the available methods with the TaxEngineContext class. The TaxEngineContext class includes these methods.
 
 IN THIS SECTION:
@@ -9141,7 +9461,7 @@ IN THIS SECTION:
 ##### getRequest()
 #### Gets the value of the TaxEngineContext 's Request field.
 
-getRequestType()
+##### getRequestType()
 #### Gets the value of the RequestType field of the TaxEngineContext class.
 
 ##### **`getNamedUri()`**
@@ -9170,9 +9490,6 @@ Signature
 
 ```
 
-
-### Apex Reference Guide TaxLineItemRequest Class
-
 Return Value
 
 Type: TaxEngineRequest
@@ -9183,7 +9500,7 @@ of a testing context.
 
 ##### **`getRequestType()`**
 
-Gets the value of the RequestType field of the `TaxEngineContext` class.
+#### Gets the value of the RequestType field of the TaxEngineContext class.
 
 Signature
 
@@ -9191,6 +9508,9 @@ Signature
    global commercetax.RequestType getRequestType()
 
 ```
+
+
+### Apex Reference Guide TaxLineItemRequest Class
 
 Return Value
 
@@ -9223,12 +9543,10 @@ TaxLineItemRequest Methods
 
 IN THIS SECTION:
 
-TaxLineItemRequest(addresses, amount, description, productCode, quantity, lineNumber, taxCode, effectiveDate)
+##### TaxLineItemRequest(addresses, amount, description, productCode, quantity, lineNumber, taxCode, effectiveDate)
+
 Initializes the request for the tax line item. This constructor is intended for test usage and throws an exception if used outside of the
 Apex test context.
-
-
-Apex Reference Guide TaxLineItemRequest Class
 
 ##### **`TaxLineItemRequest(addresses, amount, description, productCode, quantity,`**
 
@@ -9254,6 +9572,9 @@ Signature
     String, String, Double, String, String, Datetime], commercetax.TaxLineItemRequest
 
 ```
+
+
+Apex Reference Guide TaxLineItemRequest Class
 
 Parameters
 
@@ -9323,15 +9644,11 @@ This is a user-defined date used for reporting only. For negative invoice lines,
 original invoice. In other cases, it represents the date when the tax transaction takes effect on the line item. The previous tax transaction
 type is always `Debit` for negative invoice lines.
 
-
-Apex Reference Guide TaxLineItemRequest Class
-
 #### TaxLineItemRequest Properties Learn more about the available properties with the TaxLineItemRequest class. The TaxLineItemRequest class includes these properties.
 
 IN THIS SECTION:
 
-##### addresses
-
+addresses
 Contains the list of addresses of a line item.
 
 amount
@@ -9339,6 +9656,9 @@ Total amount (in a given currency) represented by a line item sent for tax calcu
 
 customTaxAttributes
 Customised tax contract to include additional attributes at the line item level.
+
+
+Apex Reference Guide TaxLineItemRequest Class
 
 description
 User-defined description for a tax line item.
@@ -9380,9 +9700,6 @@ Property Value
 
 Type: commercetax.LineTaxAddressesRequest
 
-
-Apex Reference Guide TaxLineItemRequest Class
-
 ##### **`amount`**
 
 Total amount (in a given currency) represented by a line item sent for tax calculation.
@@ -9401,6 +9718,9 @@ Type: Double
 ##### **`customTaxAttributes`**
 
 Customised tax contract to include additional attributes at the line item level.
+
+
+Apex Reference Guide TaxLineItemRequest Class
 
 Signature
 
@@ -9447,9 +9767,6 @@ Type: Datetime
 
 Unique number used to identify a tax line item.
 
-
-Apex Reference Guide TaxLineItemRequest Class
-
 Signature
 
 ```
@@ -9471,6 +9788,9 @@ Signature
    global String productCode {get; set;}
 
 ```
+
+
+Apex Reference Guide TaxLineItemRequest Class
 
 Property Value
 
@@ -9515,9 +9835,6 @@ For example, a referenceDocumentCode parameter value `3ttxx00000004Bh_Debit-4wAx
 `3ttxx00000004Bh` is the original invoice ID and `4wAxx0000000001EAA` is the tax engine ID. The previous tax transaction
 type is always `Debit` for negative invoice lines.
 
-
-Apex Reference Guide TaxLineItemRequest Class
-
 Signature
 
 ```
@@ -9540,6 +9857,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide TaxLineItemRequest Class
+
 Property Value
 
 Type: String
@@ -9553,7 +9873,7 @@ IN THIS SECTION:
 
 method is dynamic and is based on the `equals()` method in Java.
 
-hashCode()
+##### hashCode()
 #### Maintains the integrity of lists of type TaxLineItemRequest by determining the uniqueness of the external object records in
 
 a list.
@@ -9582,9 +9902,6 @@ Parameters
 
 Type: Object
 
-
-### Apex Reference Guide TaxSellerDetailsRequest Class
-
 External object whose key is to be validated.
 
 Return Value
@@ -9593,7 +9910,8 @@ Type: Boolean
 
 ##### **`hashCode()`**
 
-Maintains the integrity of lists of type `TaxLineItemRequest` by determining the uniqueness of the external object records in a
+#### Maintains the integrity of lists of type TaxLineItemRequest by determining the uniqueness of the external object records in a
+
 list.
 
 Signature
@@ -9602,6 +9920,9 @@ Signature
    global Integer hashCode()
 
 ```
+
+
+### Apex Reference Guide TaxSellerDetailsRequest Class
 
 Return Value
 
@@ -9632,7 +9953,7 @@ CommerceTax
 
 IN THIS SECTION:
 
-TaxSellerDetailsRequest Constructors
+#### TaxSellerDetailsRequest Constructors
 ### Learn more about the available constructors with the TaxSellerDetailsRequest class.
 
 TaxSellerDetailsRequest Properties
@@ -9641,10 +9962,9 @@ TaxSellerDetailsRequest Properties
 TaxSellerDetailsRequest Methods
 ### Learn more about the available methods with the TaxSellerDetailsRequest class.
 
+#### TaxSellerDetailsRequest Constructors
 
-Apex Reference Guide TaxSellerDetailsRequest Class
-
-#### TaxSellerDetailsRequest Constructors Learn more about the available constructors with the TaxSellerDetailsRequest class. The TaxSellerDetailsRequest class includes these constructors.
+### Learn more about the available constructors with the TaxSellerDetailsRequest class. The TaxSellerDetailsRequest class includes these constructors.
 
 IN THIS SECTION:
 
@@ -9657,6 +9977,9 @@ the Apex test context
 
 Initializes the request for the tax seller details. This constructor is intended for test usage and throws an exception if used outside of the
 Apex test context
+
+
+Apex Reference Guide TaxSellerDetailsRequest Class
 
 Signature
 
@@ -9696,19 +10019,16 @@ Property Value
 
 Type: String
 
-
-Apex Reference Guide TaxSellerDetailsRequest Class
-
 #### TaxSellerDetailsRequest Methods Learn more about the available methods with the TaxSellerDetailsRequest class. The TaxSellerDetailsRequest class includes these methods.
 
 IN THIS SECTION:
 
-##### equals(obj)
+equals(obj)
 #### Maintains the integrity of lists of type TaxSellerDetailsRequest by determining the equality of the external objects in a
 
 list. This method is dynamic and based on the `equals()` method in Java.
 
-##### hashCode()
+hashCode()
 #### Maintains the integrity of lists of type TaxSellerDetailsRequest by determining the uniqueness of the external objects
 
 in a list.
@@ -9716,10 +10036,12 @@ in a list.
 toString()
 Converts a value to a string.
 
+
+### Apex Reference Guide TaxTransactionRequest Class
+
 ##### **`equals(obj)`**
 
-#### Maintains the integrity of lists of type TaxSellerDetailsRequest by determining the equality of the external objects in a list.
-
+Maintains the integrity of lists of type `TaxSellerDetailsRequest` by determining the equality of the external objects in a list.
 This method is dynamic and based on the `equals()` method in Java.
 
 Signature
@@ -9745,8 +10067,7 @@ Type: Boolean
 
 ##### **`hashCode()`**
 
-#### Maintains the integrity of lists of type TaxSellerDetailsRequest by determining the uniqueness of the external objects in a
-
+Maintains the integrity of lists of type `TaxSellerDetailsRequest` by determining the uniqueness of the external objects in a
 list.
 
 Signature
@@ -9759,9 +10080,6 @@ Signature
 Return Value
 
 Type: Integer
-
-
-### Apex Reference Guide TaxTransactionRequest Class
 
 ##### **`toString()`**
 
@@ -9782,6 +10100,9 @@ Type: String
 
 Abstract class for storing customer details used in tax calculation and estimation requests.
 
+
+Apex Reference Guide TaxTransactionRequest Class
+
 Namespace
 
 CommerceTax
@@ -9789,33 +10110,28 @@ CommerceTax
 Usage
 
 Specify the `CommerceTax` namespace when creating an instance of this class. The constructor of this class takes no arguments. For
-### example, let's say you create an instance of CalculateTaxRequest class, which extends the TaxTransactionRequest
+#### example, let's say you create an instance of CalculateTaxRequest class, which extends the TaxTransactionRequest
 
 class.
 
 IN THIS SECTION:
 
-#### TaxTransactionRequest Constructors
-### Learn more about the available constructors with the TaxTransactionRequest class.
+#### TaxTransactionRequest Constructors Learn more about the available constructors with the TaxTransactionRequest class.
 
 TaxTransactionRequest Properties
-### Learn more about the available properties with the TaxTransactionRequest class.
+#### Learn more about the available properties with the TaxTransactionRequest class.
 
 TaxTransactionRequest Methods
 
-#### TaxTransactionRequest Constructors
-
-### Learn more about the available constructors with the TaxTransactionRequest class. The TaxTransactionRequest class includes these constructors.
+#### TaxTransactionRequest Constructors Learn more about the available constructors with the TaxTransactionRequest class. The TaxTransactionRequest class includes these constructors.
 
 IN THIS SECTION:
 
-TaxTransactionRequest(addresses, currencyIsoCode, customerDetails, description, documentCode, referenceDocumentCode,
+##### TaxTransactionRequest(addresses, currencyIsoCode, customerDetails, description, documentCode, referenceDocumentCode,
+
 transactionDate, effectiveDate, lineItems, referenceEntityId, sellerDetails, customTaxAttributes)
 Initializes the request for the tax transaction. This constructor is intended for test usage and throws an exception if used outside of
 the Apex test context.
-
-
-Apex Reference Guide TaxTransactionRequest Class
 
 ##### **`TaxTransactionRequest(addresses, currencyIsoCode, customerDetails,`**
 
@@ -9848,6 +10164,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide TaxTransactionRequest Class
+
 Parameters
 
 ```
@@ -9864,7 +10183,7 @@ Tax addresses, such as Ship To and Bill From.
 
 Type: String
 
-##### Three-letter ISO 4217 currency code associated with the TaxTransactionRequest .
+Three-letter ISO 4217 currency code associated with the `TaxTransactionRequest` .
 
 ```
    customerDetails
@@ -9914,9 +10233,6 @@ The date that the tax transaction occurred.
 
 Type: Datetime
 
-
-Apex Reference Guide TaxTransactionRequest Class
-
 The date that the tax transaction takes effect. User-defined and used only for reporting purposes.
 
 ```
@@ -9951,11 +10267,15 @@ Type: Map<String, Object>
 
 Customised tax contract to include additional attributes at the header level.
 
+
+Apex Reference Guide TaxTransactionRequest Class
+
 #### TaxTransactionRequest Properties Learn more about the available properties with the TaxTransactionRequest class. The TaxTransactionRequest class includes these properties.
 
 IN THIS SECTION:
 
-addresses
+##### addresses
+
 A list of addresses (such as Ship To and Sold To) used as part of the tax transaction.
 
 currencyIsoCode
@@ -9986,9 +10306,6 @@ invoice lines.
 referenceEntityId
 ID of an object related to the line items sent for tax calculation.
 
-
-Apex Reference Guide TaxTransactionRequest Class
-
 sellerDetails
 Contains tax code information used in a tax calculation request.
 
@@ -10009,6 +10326,9 @@ Signature
 Property Value
 
 Type: HeaderTaxAddressesRequest
+
+
+Apex Reference Guide TaxTransactionRequest Class
 
 ##### **`currencyIsoCode`**
 
@@ -10051,9 +10371,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide TaxTransactionRequest Class
-
 Property Value
 
 Type: Map<String, Object>
@@ -10076,6 +10393,9 @@ Type: String
 ##### **`documentCode`**
 
 Code for documents used to provide more information in the tax calculation process.
+
+
+Apex Reference Guide TaxTransactionRequest Class
 
 Signature
 
@@ -10118,9 +10438,6 @@ Property Value
 
 Type: List<TaxLineItemRequest>
 
-
-Apex Reference Guide TaxTransactionRequest Class
-
 ##### **`referenceDocumentCode`**
 
 Identifier that combines the original invoice ID, previous tax transaction type, and tax engine ID, used in tax calculations for negative
@@ -10143,6 +10460,9 @@ Type: String
 ##### **`referenceEntityId`**
 
 ID of an object related to the line items sent for tax calculation.
+
+
+Apex Reference Guide TaxTransactionRequest Class
 
 Signature
 
@@ -10185,31 +10505,29 @@ Property Value
 
 Type: Datetime
 
-
-Apex Reference Guide TaxTransactionRequest Class
-
 #### TaxTransactionRequest Methods The following are methods for TaxTransactionRequest .
 
 IN THIS SECTION:
 
-##### equals(obj)
+equals(obj)
 #### Maintains the integrity of lists of type TaxTransactionRequest by determining the equality of external objects in a list. This
 
 method is dynamic and based on the `equals()` method in Java.
 
-##### hashCode()
+hashCode()
 #### Maintains the integrity of lists of type TaxTransactionRequest by determining the uniqueness of the external object records
 
 in a list.
 
-##### toString()
-
+toString()
 Converts a value to a string.
+
+
+### Apex Reference Guide TaxTransactionStatus Enum
 
 ##### **`equals(obj)`**
 
-#### Maintains the integrity of lists of type TaxTransactionRequest by determining the equality of external objects in a list. This
-
+Maintains the integrity of lists of type `TaxTransactionRequest` by determining the equality of external objects in a list. This
 method is dynamic and based on the `equals()` method in Java.
 
 Signature
@@ -10233,8 +10551,7 @@ Type: Boolean
 
 ##### **`hashCode()`**
 
-#### Maintains the integrity of lists of type TaxTransactionRequest by determining the uniqueness of the external object records
-
+Maintains the integrity of lists of type `TaxTransactionRequest` by determining the uniqueness of the external object records
 in a list.
 
 Signature
@@ -10251,9 +10568,6 @@ Type: Integer
 ##### **`toString()`**
 
 Converts a value to a string.
-
-
-### Apex Reference Guide TaxTransactionStatus Enum
 
 Signature
 
@@ -10273,6 +10587,9 @@ Shows whether the tax transaction has been committed or uncommitted.
 Usage
 
 Used by the CalculateTaxResponse class method.
+
+
+### Apex Reference Guide TaxTransactionType Enum
 
 Enum Values
 
@@ -10305,8 +10622,7 @@ The `commercetax.TaxTransactionType` enum includes these values.
 `Void` Specifies that the tax engine has voided the document that's mentioned in the
 `referenceDocumentCode` property value.
 
-
-## Apex Reference Guide ComplianceMgmt Namespace ComplianceMgmt Namespace The ComplianceMgmt namespace provides classes and methods to implement rule processors for compliance control. The ComplianceMgmt namespace includes these classes.
+## ComplianceMgmt Namespace The ComplianceMgmt namespace provides classes and methods to implement rule processors for compliance control. The ComplianceMgmt namespace includes these classes.
 
 **•** [ComplianceEvaluation Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.industries_reference.meta/industries_reference/apex_interface_ComplianceMgmt_ComplianceEvaluation.htm)
 
@@ -10326,13 +10642,17 @@ The Compression namespace provides classes and methods to create and extract zip
 
 ## The following are the classes and enums in the Compression namespace.
 
+
+### Apex Reference Guide Level Enum
+
 IN THIS SECTION:
 
 ### Level Enum
 
 Specifies the compression level for creating a zip file.
 
-Method Enum
+### Method Enum
+
 Specifies the compression method for the zip entries.
 
 ZipEntry Class
@@ -10345,7 +10665,7 @@ ZipWriter Class
 Contains methods to add zip entries, generate a zipped archive, and return the result as an Apex blob.
 
 Compression Exceptions
-## The Compression namespace contains exception classes.
+The `Compression` namespace contains exception classes.
 
 ### Level Enum
 
@@ -10358,9 +10678,6 @@ Usage
 Enum Values
 
 The following are the values of the `Compression.Level` enum.
-
-
-### Apex Reference Guide Method Enum
 
 **Value** **Description**
 
@@ -10381,6 +10698,9 @@ Usage
 ### Use the Method enum with the getMethod() and setMethod(method) methods in the ZipEntry and ZipWriter
 
 classes.
+
+
+### Apex Reference Guide ZipEntry Class
 
 Enum Values
 
@@ -10411,9 +10731,6 @@ IN THIS SECTION:
 equals(obj)
 Compares this object with the specified object and returns `true` if both objects are equal; otherwise, returns `false` .
 
-
-Apex Reference Guide ZipEntry Class
-
 hashcode()
 Returns the hash code value for the zip entry.
 
@@ -10437,6 +10754,9 @@ Gets the compression method of the zip entry.
 
 getName()
 Gets the name of the zip entry.
+
+
+Apex Reference Guide ZipEntry Class
 
 getUncompressedSize()
 Gets the uncompressed size in bytes of the zip entry content.
@@ -10477,9 +10797,6 @@ Parameters
 
 Type: Object
 
-
-Apex Reference Guide ZipEntry Class
-
 Return Value
 
 Type: Boolean
@@ -10502,6 +10819,9 @@ Type: Integer
 ##### **`getComment()`**
 
 Gets the comment string for the zip entry.
+
+
+Apex Reference Guide ZipEntry Class
 
 Signature
 
@@ -10544,9 +10864,6 @@ Return Value
 
 Type: blob
 
-
-Apex Reference Guide ZipEntry Class
-
 ##### **`getCrc()`**
 
 Gets the cyclic redundancy check (CRC) value for the zip entry.
@@ -10572,6 +10889,9 @@ Signature
    public Datetime getLastModifiedTime()
 
 ```
+
+
+Apex Reference Guide ZipEntry Class
 
 Return Value
 
@@ -10609,9 +10929,6 @@ Return Value
 
 Type: string
 
-
-Apex Reference Guide ZipEntry Class
-
 ##### **`getUncompressedSize()`**
 
 Gets the uncompressed size in bytes of the zip entry content.
@@ -10637,6 +10954,9 @@ Signature
    public Compression.ZipEntry setComment(String comment)
 
 ```
+
+
+Apex Reference Guide ZipEntry Class
 
 Parameters
 
@@ -10677,9 +10997,6 @@ Type: Compression.ZipEntry
 
 Sets the last modification time of the zip entry that’s written to the Zip archive. This method doesn’t work with the `ZipReader` class.
 
-
-### Apex Reference Guide ZipReader Class
-
 Signature
 
 ```
@@ -10701,7 +11018,7 @@ Type: Compression.ZipEntry
 
 ##### **`setMethod(method)`**
 
-### Sets the compression method for the zip entry that’s written to the zip archive. This method doesn’t work with the ZipReader class.
+Sets the compression method for the zip entry that’s written to the zip archive. This method doesn’t work with the `ZipReader` class.
 
 Signature
 
@@ -10709,6 +11026,9 @@ Signature
    public Compression.ZipEntry setMethod(Compression.Method method)
 
 ```
+
+
+### Apex Reference Guide ZipReader Class
 
 Parameters
 
@@ -10747,21 +11067,27 @@ Namespace
 
 Compression
 
-
-Apex Reference Guide ZipReader Class
-
 IN THIS SECTION:
 
-#### ZipReader Constructors ZipReader Methods ZipReader Constructors The following are constructors for ZipReader .
+#### ZipReader Constructors
+
+ZipReader Methods
+
+#### ZipReader Constructors
+
+### The following are constructors for ZipReader .
 
 IN THIS SECTION:
 
 ##### ZipReader(data)
-#### Creates a new instance of the ZipReader class using the specified blob data.
+### Creates a new instance of the ZipReader class using the specified blob data.
 
 ##### **`ZipReader(data)`**
 
-#### Creates a new instance of the ZipReader class using the specified blob data.
+### Creates a new instance of the ZipReader class using the specified blob data.
+
+
+Apex Reference Guide ZipReader Class
 
 Signature
 
@@ -10784,7 +11110,8 @@ Apex blob that contains the compressed content.
 
 IN THIS SECTION:
 
-extract(name)
+##### extract(name)
+
 Extracts the bytes for the specified zip entry name and decompresses the content.
 
 extract(entry)
@@ -10801,9 +11128,6 @@ Gets a zip entry for the specified name from the zip file.
 
 getEntryNames()
 Gets a list of all the zip entry names from the zip file.
-
-
-Apex Reference Guide ZipReader Class
 
 ##### **`extract(name)`**
 
@@ -10831,6 +11155,9 @@ Return Value
 Type: blob
 
 Apex blob that contains the decompressed content.
+
+
+Apex Reference Guide ZipReader Class
 
 ##### **`extract(entry)`**
 
@@ -10874,9 +11201,6 @@ Return Value
 
 Type: List<Compression.ZipEntry>
 
-
-### Apex Reference Guide ZipWriter Class
-
 ##### **`getEntriesMap()`**
 
 Gets a map of names and the corresponding zip entries from the zip file.
@@ -10902,6 +11226,9 @@ Signature
    public compression.ZipEntry getEntry(string name)
 
 ```
+
+
+### Apex Reference Guide ZipWriter Class
 
 Parameters
 
@@ -10942,9 +11269,6 @@ Namespace
 
 Compression
 
-
-Apex Reference Guide ZipWriter Class
-
 Example
 
 This sample code compresses email attachments into a single file.
@@ -10972,6 +11296,12 @@ This sample code compresses email attachments into a single file.
 
    Messaging.EmailFileAttachment efa = new Messaging.EmailFileAttachment();
 
+```
+
+
+Apex Reference Guide ZipWriter Class
+
+```
    efa.setFileName('attachments.zip');
 
    efa.setBody(zipAttachment);
@@ -10994,11 +11324,7 @@ This sample code compresses email attachments into a single file.
 
 IN THIS SECTION:
 
-#### ZipWriter Constructors
-
-ZipWriter Methods
-
-#### ZipWriter Constructors The following are constructors for ZipWriter .
+#### ZipWriter Constructors ZipWriter Methods ZipWriter Constructors The following are constructors for ZipWriter .
 
 IN THIS SECTION:
 
@@ -11008,9 +11334,6 @@ IN THIS SECTION:
 ##### **`ZipWriter()`**
 
 #### Creates a new instance of the ZipWriter class.
-
-
-Apex Reference Guide ZipWriter Class
 
 Signature
 
@@ -11023,13 +11346,15 @@ Signature
 
 IN THIS SECTION:
 
-##### addEntry(name, data)
-
+addEntry(name, data)
 Adds an entry to the zip file with the specified name and content.
 
 addEntry(prototype)
 Adds a copy of the specified prototype entry to the zip file and includes details such as the zip entry name, comment, last modification
 time, and content.
+
+
+Apex Reference Guide ZipWriter Class
 
 addEntry(name, comment, modTime, method, data)
 Adds an entry to the zip file with the specified name, comment, last modification time, compression method, and content.
@@ -11072,9 +11397,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide ZipWriter Class
-
 Parameters
 
 ```
@@ -11098,6 +11420,9 @@ Return Value
 Type: Compression.ZipEntry
 
 Zip entry added to the zip file.
+
+
+Apex Reference Guide ZipWriter Class
 
 ##### **`addEntry(prototype)`**
 
@@ -11154,9 +11479,6 @@ The name of the zip entry.
 
 Type: String
 
-
-Apex Reference Guide ZipWriter Class
-
 The comment about the zip entry.
 
 ```
@@ -11182,6 +11504,9 @@ The compression method of the zip entry, which is either `DEFLATED` or `STORED` 
 Type: Blob
 
 The content of the zip entry.
+
+
+Apex Reference Guide ZipWriter Class
 
 Return Value
 
@@ -11232,9 +11557,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide ZipWriter Class
-
 Parameters
 
 ```
@@ -11249,6 +11571,9 @@ Return Value
 
 Type: Compression.ZipEntry
 
+
+Apex Reference Guide ZipWriter Class
+
 ##### **`getEntryNames()`**
 
 Gets a set of all the zip entry names in the zip file.
@@ -11262,7 +11587,7 @@ Signature
 
 Return Value
 
-Type: Set<String> on page 4038
+Type: Set<String> on page 4055
 
 ##### **`getLevel()`**
 
@@ -11299,9 +11624,6 @@ Type: Compression.Method
 
 Uses the `Method` enum values to indicate the compression method as `DEFLATED` or `STORED` .
 
-
-Apex Reference Guide ZipWriter Class
-
 ##### **`removeEntry(name)`**
 
 Removes the entry with the specified name from the zip file.
@@ -11320,6 +11642,9 @@ Parameters
 ```
 
 Type: string
+
+
+### Apex Reference Guide Compression Exceptions
 
 Name of the zip entry to be removed. If an entry with this name isn’t found, the method throws a `ZipException` exception.
 
@@ -11375,9 +11700,6 @@ Type: Compression.Method
 
 Uses the `Method` enum to set the compression method.
 
-
-### Apex Reference Guide Compression Exceptions
-
 Return Value
 
 Type: Compression.ZipWriter
@@ -11386,10 +11708,13 @@ Returns the zip file set with the specified compression method.
 
 ### Compression Exceptions The Compression namespace contains exception classes.
 
+
+## Apex Reference Guide ConnectApi Namespace
+
 All exception classes support built-in methods for returning the error message and exception type. See Exception Class and Built-In
 Exceptions.
 
-### The Compression namespace contains this exception:
+The `Compression` namespace contains this exception:
 
 **Exception** **Description**
 
@@ -11416,6 +11741,9 @@ Access and update activation information of a bot version.
 CdpActivation Class
 Get, create, update, and delete Data 360 activations.
 
+CdpActivationExternalPlatform Class
+Get Data 360 activation external platforms.
+
 CdpActivationTarget Class
 Get, create, and update Data 360 activation targets.
 
@@ -11431,14 +11759,14 @@ Get database schemas for a Data 360 connection.
 CdpDataSpace Class
 Get Data 360 data spaces.
 
-
-Apex Reference Guide ConnectApi Namespace
-
 CdpDataStreams Class
 Run Data 360 data streams.
 
 CdpIdentityResolution Class
 Create, delete, get, run, and update Data 360 identity resolution rulesets.
+
+
+Apex Reference Guide ConnectApi Namespace
 
 CdpMachineLearning Class
 Make a machine-learning prediction with Data 360.
@@ -11492,14 +11820,14 @@ Evaluate promotions for Commerce orders. Get coupon code redemption usage.
 CommerceSearch Class
 Get sort rules for the live search index. Get product search suggestions. Search products.
 
-
-Apex Reference Guide ConnectApi Namespace
-
 CommerceSearchConnectFamily Class
 Search products by search term or category in a webstore.
 
 CommerceSearchSettings Class
 Get indexes. Get index logs. Create an index of a product catalog.
+
+
+Apex Reference Guide ConnectApi Namespace
 
 CommerceStorePricing Class
 Get product prices.
@@ -11555,14 +11883,14 @@ Get the status and available actions for flow approval processes.
 FulfillmentOrder Class
 Fulfill orders in Order Management.
 
-
-Apex Reference Guide ConnectApi Namespace
-
 IBusinessObjectivesAndRecsFamily Class
 Get and patch business objectives, or goals. Get, create, patch, and update recommended actions for business objectives.
 
 Knowledge Class
 Get information about trending articles in Experience Cloud sites.
+
+
+Apex Reference Guide ConnectApi Namespace
 
 LightningScheduler Class
 Create and update service appointments.
@@ -11615,14 +11943,14 @@ external sources based on the product ids.
 Orchestration Class
 Get orchestration instances.
 
-
-Apex Reference Guide ConnectApi Namespace
-
 OrderPaymentSummary Class
 Work with payments in Order Management.
 
 OrderSummary Class
 Work with orders in Order Management.
+
+
+Apex Reference Guide ConnectApi Namespace
 
 OrderSummaryCreation Class
 Create Order Summaries in Order Management.
@@ -11678,14 +12006,14 @@ Access information about Automated Activity Capture, which is available in Einst
 Search Class
 Search objects using keywords or a natural language query.
 
-
-### Apex Reference Guide ActionLinks Class
-
 Sites Class
 Search an Experience Cloud site.
 
 SmartDataDiscovery Class
 Get predictions on Salesforce objects.
+
+
+### Apex Reference Guide ActionLinks Class
 
 SocialEngagement Class
 Manage information about social accounts or fan pages for social networks.
@@ -11737,13 +12065,14 @@ Namespace
 
 ConnectApi
 
-
-Apex Reference Guide ActionLinks Class
-
 Usage
 
 An action link is a button on a feed element. Clicking an action link can take a user to a Web page, initiate a file download, or invoke an
 API call to Salesforce or to an external server. An action link includes a URL and an HTTP method, and can include a request body and
+
+
+Apex Reference Guide ActionLinks Class
+
 header information, such as an OAuth token for authentication. Use action links to integrate Salesforce and third-party services into the
 feed so that users can drive productivity and accelerate innovation.
 
@@ -11796,9 +12125,6 @@ Get information about an action link group including state for the context user.
 getActionLinkGroupDefinition(communityId, actionLinkGroupId)
 Get information about an action link group definition.
 
-
-Apex Reference Guide ActionLinks Class
-
 ```
   createActionLinkGroupDefinition(communityId, actionLinkGroup)
 
@@ -11806,6 +12132,9 @@ Apex Reference Guide ActionLinks Class
 
 Create an action link group definition. To associate an action link group with a feed element, first create an action link group definition.
 Then post a feed element with an associated actions capability.
+
+
+Apex Reference Guide ActionLinks Class
 
 API Version
 
@@ -11864,9 +12193,6 @@ Note: Invoking `ApiAsync` action links from an app requires a call to set the st
 [the status of an action link using Apex. To set the status, use Connect REST API. See the Action Link resource in the Connect REST](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/)
 [API Developer Guidefor more information.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/)
 
-
-Apex Reference Guide ActionLinks Class
-
 Example for Defining an Action Link and Posting with a Feed Element
 
 [For more information about this example, see Define an Action Link and Post with a Feed Element.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_define_post_action_link.htm)
@@ -11880,6 +12206,12 @@ Example for Defining an Action Link and Posting with a Feed Element
 
    ConnectApi.ActionLinkDefinitionInput();
 
+```
+
+
+Apex Reference Guide ActionLinks Class
+
+```
    ConnectApi.RequestHeaderInput requestHeaderInput1 = new ConnectApi.RequestHeaderInput();
 
    ConnectApi.RequestHeaderInput requestHeaderInput2 = new ConnectApi.RequestHeaderInput();
@@ -11960,12 +12292,6 @@ Example for Defining an Action Link and Posting with a Feed Element
 
    ConnectApi.AssociatedActionsCapabilityInput associatedActionsCapabilityInput = new
 
-```
-
-
-Apex Reference Guide ActionLinks Class
-
-```
    ConnectApi.AssociatedActionsCapabilityInput();
 
    ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
@@ -11978,6 +12304,12 @@ Apex Reference Guide ActionLinks Class
 
    feedItemInput.capabilities = feedElementCapabilitiesInput;
 
+```
+
+
+Apex Reference Guide ActionLinks Class
+
+```
    feedItemInput.subjectId = 'me';
 
    // Create the text for the post.
@@ -12055,12 +12387,6 @@ Example for Defining an Action Link in a Template and Posting with a Feed Elemen
 
       bindingInputs.add(bindingInput);
 
-```
-
-
-Apex Reference Guide ActionLinks Class
-
-```
    }
 
    // Set the template Id and template binding values in the action link group definition.
@@ -12073,6 +12399,12 @@ Apex Reference Guide ActionLinks Class
 
    actionLinkGroupDefinitionInput.templateBindings = bindingInputs;
 
+```
+
+
+Apex Reference Guide ActionLinks Class
+
+```
    // Instantiate the action link group definition.
 
    ConnectApi.ActionLinkGroupDefinition actionLinkGroupDefinition =
@@ -12143,12 +12475,12 @@ API Version
 
 33.0
 
-
-Apex Reference Guide ActionLinks Class
-
 Requires Chatter
 
 No
+
+
+Apex Reference Guide ActionLinks Class
 
 Signature
 
@@ -12218,9 +12550,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-
-Apex Reference Guide ActionLinks Class
-
 ```
    actionLinkId
 ```
@@ -12228,6 +12557,9 @@ Apex Reference Guide ActionLinks Class
 Type: String
 
 The ID of the action link.
+
+
+Apex Reference Guide ActionLinks Class
 
 Return Value
 
@@ -12285,12 +12617,12 @@ API Version
 
 33.0
 
-
-Apex Reference Guide ActionLinks Class
-
 Requires Chatter
 
 No
+
+
+Apex Reference Guide ActionLinks Class
 
 Signature
 
@@ -12359,9 +12691,6 @@ Type: String
 
 ID for an Experience Cloud site, `internal`, or `null` .
 
-
-### Apex Reference Guide Announcements Class
-
 ```
    actionLinkGroupId
 ```
@@ -12369,6 +12698,9 @@ ID for an Experience Cloud site, `internal`, or `null` .
 Type: String
 
 The ID of the action link group.
+
+
+### Apex Reference Guide Announcements Class
 
 Return Value
 
@@ -12396,11 +12728,11 @@ highlight information. Users can discuss, like, and post comments on announcemen
 This image shows an announcement displayed in a group. Creating an announcement also creates a feed item with the announcement
 text.
 
-
-Apex Reference Guide Announcements Class
-
 An announcement displays in a designated location in the Salesforce UI until 11:59 p.m. on its expiration date, unless it’s deleted or
 replaced by another announcement.
+
+
+Apex Reference Guide Announcements Class
 
 #### Announcements Methods These methods are for Announcements . All methods are static.
 
@@ -12462,10 +12794,10 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: String
 
+An announcement ID, which has a prefix of 0BT.
+
 
 Apex Reference Guide Announcements Class
-
-An announcement ID, which has a prefix of 0BT.
 
 Return Value
 
@@ -12473,7 +12805,7 @@ Type: Void
 
 Usage
 
-To get a list of announcements in a group, call `getAnnouncements(communityId, parentId)` or
+##### To get a list of announcements in a group, call getAnnouncements(communityId, parentId) or
 
 `getAnnouncements(communityId, parentId, pageParam, pageSize)` .
 
@@ -12524,18 +12856,18 @@ Type: `ConnectApi.Announcement`
 
 Usage
 
-To get a list of announcements in a group, call `getAnnouncements(communityId, parentId)` or
+##### To get a list of announcements in a group, call getAnnouncements(communityId, parentId) or
 
 `getAnnouncements(communityId, parentId, pageParam, pageSize)` .
 
 To post an announcement to a group, call `postAnnouncement(communityId, announcement)` .
 
-
-Apex Reference Guide Announcements Class
-
 ##### **`getAnnouncements(communityId, parentId)`**
 
 Get the first page of announcements.
+
+
+Apex Reference Guide Announcements Class
 
 API Version
 
@@ -12596,9 +12928,6 @@ Requires Chatter
 
 Yes
 
-
-Apex Reference Guide Announcements Class
-
 Signature
 
 ```
@@ -12607,6 +12936,9 @@ Signature
    parentId, Integer pageParam, Integer pageSize)
 
 ```
+
+
+Apex Reference Guide Announcements Class
 
 Parameters
 
@@ -12683,10 +13015,10 @@ ID for an Experience Cloud site, `internal`, or `null` .
 
 Type: `ConnectApi.AnnouncementInput`
 
-
-Apex Reference Guide Announcements Class
-
 A `ConnectApi.AnnouncementInput` object.
+
+
+### Apex Reference Guide BotVersionActivation Class
 
 Return Value
 
@@ -12753,18 +13085,18 @@ To get a list of announcements in a group, call `getAnnouncements(communityId, p
 
 To post an announcement to a group, call `postAnnouncement(communityId, announcement)` .
 
-
-### Apex Reference Guide BotVersionActivation Class BotVersionActivation Class
+### BotVersionActivation Class
 
 Access and update activation information of a bot version.
+
+
+Apex Reference Guide BotVersionActivation Class
 
 Namespace
 
 ConnectApi
 
-#### BotVersionActivation Methods
-
-### These methods are for BotVersionActivation . All methods are static.
+#### BotVersionActivation Methods These methods are for BotVersionActivation . All methods are static.
 
 IN THIS SECTION:
 
@@ -12772,7 +13104,8 @@ IN THIS SECTION:
 
 Get the active or inactive status of the bot version.
 
-updateVersionStatus(botVersionId, status, postBody)
+##### updateVersionStatus(botVersionId, status, postBody)
+
 Update the status of the specified bot version.
 
 ##### **`getVersionActivationInfo(botVersionId)`**
@@ -12810,9 +13143,6 @@ Return Value
 
 Type: `ConnectApi.BotVersionActivationInfo`
 
-
-Apex Reference Guide BotVersionActivation Class
-
 Usage
 
 To access this method, enable the bot feature, and the user must be an admin or have the Manage Bots or Manage Bots Training Data
@@ -12821,6 +13151,9 @@ user permissions.
 ##### **`updateVersionStatus(botVersionId, status, postBody)`**
 
 Update the status of the specified bot version.
+
+
+### Apex Reference Guide CdpActivation Class
 
 API Version
 
@@ -12882,8 +13215,7 @@ Usage
 To access this method, enable the bot feature, and the user must be an admin or have the Manage Bots or Manage Bots Training Data
 user permissions.
 
-
-### Apex Reference Guide CdpActivation Class CdpActivation Class
+### CdpActivation Class
 
 Get, create, update, and delete Data 360 activations.
 
@@ -12891,9 +13223,10 @@ Namespace
 
 ConnectApi
 
-#### CdpActivation Methods
 
-### These methods are for CdpActivation . All methods are static.
+Apex Reference Guide CdpActivation Class
+
+#### CdpActivation Methods These methods are for CdpActivation . All methods are static.
 
 IN THIS SECTION:
 
@@ -12901,7 +13234,8 @@ IN THIS SECTION:
 
 Get activations.
 
-getActivationsPaginated(batchSize, offset, orderBy, filters)
+##### getActivationsPaginated(batchSize, offset, orderBy, filters)
+
 Get a paginated list of activations.
 
 createActivation(input)
@@ -12939,9 +13273,6 @@ Return Value
 
 Type: `ConnectApi.ActivationCollection`
 
-
-Apex Reference Guide CdpActivation Class
-
 ##### **`getActivationsPaginated(batchSize, offset, orderBy, filters)`**
 
 Get a paginated list of activations.
@@ -12949,6 +13280,9 @@ Get a paginated list of activations.
 API Version
 
 60.0
+
+
+Apex Reference Guide CdpActivation Class
 
 Requires Chatter
 
@@ -13016,9 +13350,6 @@ Type: `ConnectApi.ActivationCollection`
 
 Create an activation.
 
-
-Apex Reference Guide CdpActivation Class
-
 API Version
 
 60.0
@@ -13026,6 +13357,9 @@ API Version
 Requires Chatter
 
 No
+
+
+Apex Reference Guide CdpActivation Class
 
 Signature
 
@@ -13084,9 +13418,6 @@ Type: String
 
 The unique identifier (ID) or developer name of a specific activation target.
 
-
-Apex Reference Guide CdpActivation Class
-
 Return Value
 
 Type: Void
@@ -13094,6 +13425,9 @@ Type: Void
 ##### **`getActivation(activationId)`**
 
 Get an activation by ID.
+
+
+Apex Reference Guide CdpActivation Class
 
 API Version
 
@@ -13153,9 +13487,6 @@ Parameters
 
 Type: String
 
-
-### Apex Reference Guide CdpActivationTarget Class
-
 The unique identifier (ID) or developer name of a specific activation target.
 
 ```
@@ -13166,9 +13497,115 @@ Type: `ConnectApi.ActivationDefinitionInput`
 
 Input representation for an activation.
 
+
+### Apex Reference Guide CdpActivationExternalPlatform Class
+
 Return Value
 
 Type: `ConnectApi.Activation`
+
+### CdpActivationExternalPlatform Class
+
+Get Data 360 activation external platforms.
+
+Namespace
+
+ConnectApi
+
+#### CdpActivationExternalPlatform Methods
+
+### These methods are for CdpActivationExternalPlatform . All methods are static.
+
+IN THIS SECTION:
+
+##### getActivationExternalPlatforms()
+
+Get a list of all activation external platforms.
+
+##### getActivationExternalPlatformsPaginated(limit, offset, orderBy)
+
+Get a paginated list of activation external platforms. Repeat the call for additional external platform results.
+
+##### **`getActivationExternalPlatforms()`**
+
+Get a list of all activation external platforms.
+
+API Version
+
+64.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.ActivationExternalPlatformCollection
+
+##### `getActivationExternalPlatforms()`
+
+```
+
+Return Value
+
+Type: `ConnectApi.ActivationExternalPlatformCollection`
+
+##### **`getActivationExternalPlatformsPaginated(limit, offset, orderBy)`**
+
+Get a paginated list of activation external platforms. Repeat the call for additional external platform results.
+
+
+### Apex Reference Guide CdpActivationTarget Class
+
+API Version
+
+64.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.ActivationExternalPlatformCollection
+
+   getActivationExternalPlatformsPaginated(Integer limit, Integer offset, String orderBy)
+
+```
+
+Parameters
+
+```
+   limit
+```
+
+Type: Integer
+
+Maximum number of external platform to return. Valid values are from `1` to `20` .
+
+```
+   offset
+```
+
+Type: Integer
+
+Number of external platforms to skip before returning the first result. The value must be greater than or equal to `0` .
+
+```
+   orderBy
+```
+
+Type: String
+
+Order in which to sort the results based on the `createdDate` field. Specify the field name followed by `asc` for ascending order
+or `desc` for descending order. If you specify only the field name, results are sorted in ascending order. For example, `createdDate`
+`asc` and `createdDate` yield the same results.
+
+Return Value
+
+Type: `ConnectApi.ActivationExternalPlatformCollection`
 
 ### CdpActivationTarget Class
 
@@ -13184,11 +13621,14 @@ ConnectApi
 
 IN THIS SECTION:
 
-##### createActivationTarget(input)
-
+createActivationTarget(input)
 Create an activation target.
 
-getActivationTarget(activationTargetId)
+
+Apex Reference Guide CdpActivationTarget Class
+
+##### getActivationTarget(activationTargetId)
+
 Get an activation target by ID.
 
 getActivationTargets()
@@ -13211,9 +13651,6 @@ API Version
 Requires Chatter
 
 No
-
-
-Apex Reference Guide CdpActivationTarget Class
 
 Signature
 
@@ -13250,6 +13687,9 @@ Requires Chatter
 
 No
 
+
+Apex Reference Guide CdpActivationTarget Class
+
 Signature
 
 ```
@@ -13278,9 +13718,6 @@ Get a list of activation targets.
 API Version
 
 60.0
-
-
-Apex Reference Guide CdpActivationTarget Class
 
 Requires Chatter
 
@@ -13317,6 +13754,9 @@ Signature
    batchSize, Integer offset, String orderBy, String filters)
 
 ```
+
+
+Apex Reference Guide CdpActivationTarget Class
 
 Parameters
 
@@ -13358,9 +13798,6 @@ Filter the result set to a more narrow scope or specific type. These filters are
 **•** `targetStatus`     - Matches the field `status`, which is an enum that indicates the status of the activation target. Values must
 match those listed in the `status` response field.
 
-
-### Apex Reference Guide CdpAudienceDMO Class
-
 **•** `connectionType`     - Matches the field `platformType`, which is an enum that indicates the platform type of the activation
 target. Values must match those listed in the `platformType` response field.
 
@@ -13392,6 +13829,9 @@ API Version
 Requires Chatter
 
 No
+
+
+### Apex Reference Guide CdpAudienceDMO Class
 
 Signature
 
@@ -13428,14 +13868,13 @@ Type: `ConnectApi.ActivationTarget`
 
 Get activation records from Data 360 Audience Data Model Objects (DMOs).
 
-
-### Apex Reference Guide CdpCalculatedInsight Class
-
 Namespace
 
 ConnectApi
 
-#### CdpAudienceDMO Methods These methods are for CdpAudienceDMO . All methods are static.
+#### CdpAudienceDMO Methods
+
+### These methods are for CdpAudienceDMO . All methods are static.
 
 IN THIS SECTION:
 
@@ -13454,6 +13893,9 @@ API Version
 Requires Chatter
 
 No
+
+
+### Apex Reference Guide CdpCalculatedInsight Class
 
 Signature
 
@@ -13484,10 +13926,9 @@ Namespace
 
 ConnectApi
 
+#### CdpCalculatedInsight Methods
 
-Apex Reference Guide CdpCalculatedInsight Class
-
-#### CdpCalculatedInsight Methods These methods are for CdpCalculatedInsight . All methods are static.
+### These methods are for CdpCalculatedInsight . All methods are static.
 
 IN THIS SECTION:
 
@@ -13516,6 +13957,9 @@ Update a calculated insight.
 ##### **`createCalculatedInsight(input)`**
 
 Create a calculated insight.
+
+
+Apex Reference Guide CdpCalculatedInsight Class
 
 API Version
 
@@ -13547,9 +13991,6 @@ Input representation for a calculated insight.
 Return Value
 
 Type: `ConnectApi.CdpCalculatedInsightOutput`
-
-
-Apex Reference Guide CdpCalculatedInsight Class
 
 ##### **`deleteCalculatedInsight(apiName)`**
 
@@ -13584,6 +14025,9 @@ Return Value
 
 Type: Void
 
+
+Apex Reference Guide CdpCalculatedInsight Class
+
 ##### **`getCalculatedInsight(apiName)`**
 
 Get a calculated insight.
@@ -13616,9 +14060,6 @@ API name of the calculated insight to get.
 Return Value
 
 Type: `ConnectApi.CdpCalculatedInsightOutput`
-
-
-Apex Reference Guide CdpCalculatedInsight Class
 
 ##### **`getCalculatedInsights(definitionType, batchSize, offset, orderby, dataspace)`**
 
@@ -13654,6 +14095,9 @@ Definition type of the calculated insight. Values are:
 **•** `CALCULATED_METRIC`
 
 **•** `CALCULATED_METRIC`
+
+
+Apex Reference Guide CdpCalculatedInsight Class
 
 **•** `CALCULATED_METRIC`
 
@@ -13693,9 +14137,6 @@ Name of the data space.
 Return Value
 
 Type: `ConnectApi.CdpCalculatedInsightPage`
-
-
-Apex Reference Guide CdpCalculatedInsight Class
 
 ##### **`getCalculatedInsights(definitionType, batchSize, offset, orderby, dataspace,`**
 
@@ -13741,6 +14182,9 @@ Definition type of the calculated insight. Values are:
 
 **•** `CALCULATED_METRIC`
 
+
+Apex Reference Guide CdpCalculatedInsight Class
+
 ```
    batchSize
 ```
@@ -13783,9 +14227,6 @@ Type: String
 Specifies the page token to use to view a page of information. Page tokens are returned as part of the response class, such as
 `currentPageToken` or `nextPageToken` . If you pass in `null`, the first page is returned.
 
-
-Apex Reference Guide CdpCalculatedInsight Class
-
 Return Value
 
 Type: `ConnectApi.CdpCalculatedInsightPage`
@@ -13821,6 +14262,9 @@ Type: String
 
 API name of the calculated insight to run.
 
+
+### Apex Reference Guide CdpConnection Class
+
 Return Value
 
 Type: `ConnectApi.CdpCalculatedInsightStandardActionResponseRepresentation`
@@ -13845,9 +14289,6 @@ Signature
    apiName, ConnectApi.CdpCalculatedInsightInput input)
 
 ```
-
-
-### Apex Reference Guide CdpConnection Class
 
 Parameters
 
@@ -13883,6 +14324,9 @@ ConnectApi
 
 ### These methods are for CdpConnection . All methods are static.
 
+
+### Apex Reference Guide CdpDataSpace Class
+
 IN THIS SECTION:
 
 ##### getDatabaseSchemas(connectionId, getDatabaseSchemasInput)
@@ -13911,9 +14355,6 @@ Signature
    getDatabaseSchemasInput)
 
 ```
-
-
-### Apex Reference Guide CdpDataSpace Class
 
 Parameters
 
@@ -13949,13 +14390,17 @@ ConnectApi
 
 ### These methods are for CdpDataSpace . All methods are static.
 
+
+Apex Reference Guide CdpDataSpace Class
+
 IN THIS SECTION:
 
 ##### getAllDataSpaces(batchSize, offset, orderBy)
 
 Get a collection of all data spaces that a user is assigned to.
 
-getDataSpace(idOrName)
+##### getDataSpace(idOrName)
+
 Get a data space by ID or API name.
 
 ##### **`getAllDataSpaces(batchSize, offset, orderBy)`**
@@ -13978,9 +14423,6 @@ Signature
    batchSize, Integer offset, String orderBy)
 
 ```
-
-
-### Apex Reference Guide CdpDataStreams Class
 
 Parameters
 
@@ -14021,6 +14463,9 @@ API Version
 
 62.0
 
+
+### Apex Reference Guide CdpDataStreams Class
+
 Requires Chatter
 
 No
@@ -14050,14 +14495,13 @@ Type: `ConnectApi.DataSpaceInfoRepresentation`
 
 Run Data 360 data streams.
 
-
-### Apex Reference Guide CdpIdentityResolution Class
-
 Namespace
 
 ConnectApi
 
-#### CdpDataStreams Methods These methods are for CdpDataStreams . All methods are static.
+#### CdpDataStreams Methods
+
+### These methods are for CdpDataStreams . All methods are static.
 
 IN THIS SECTION:
 
@@ -14076,6 +14520,9 @@ API Version
 Requires Chatter
 
 No
+
+
+### Apex Reference Guide CdpIdentityResolution Class
 
 Signature
 
@@ -14112,19 +14559,17 @@ Type: `ConnectApi.DataStreamActionResponseOutput`
 
 Create, delete, get, run, and update Data 360 identity resolution rulesets.
 
-
-Apex Reference Guide CdpIdentityResolution Class
-
 Namespace
 
 ConnectApi
 
-#### CdpIdentityResolution Methods These methods are for CdpIdentityResolution . All methods are static.
+#### CdpIdentityResolution Methods
+
+### These methods are for CdpIdentityResolution . All methods are static.
 
 IN THIS SECTION:
 
-##### createIdentityResolution(input)
-
+createIdentityResolution(input)
 Create an identity resolution ruleset.
 
 deleteIdentityResolution(identityResolution)
@@ -14141,6 +14586,9 @@ Trigger an immediate identity resolution ruleset job run.
 
 updateIdentityResolution(identityResolution, input)
 Update an identity resolution ruleset.
+
+
+Apex Reference Guide CdpIdentityResolution Class
 
 ##### **`createIdentityResolution(input)`**
 
@@ -14172,9 +14620,6 @@ Parameters
 Type: `ConnectApi.CdpIdentityResolutionConfigInput`
 
 Input representation for creating an identity resolution ruleset.
-
-
-Apex Reference Guide CdpIdentityResolution Class
 
 Return Value
 
@@ -14209,6 +14654,9 @@ Type: String
 
 Developer name or ID of the ruleset.
 
+
+Apex Reference Guide CdpIdentityResolution Class
+
 Return Value
 
 Type: Void
@@ -14242,9 +14690,6 @@ Parameters
 
 Type: String
 
-
-Apex Reference Guide CdpIdentityResolution Class
-
 Developer name or ID of the ruleset.
 
 Return Value
@@ -14273,6 +14718,9 @@ Signature
 Return Value
 
 Type: `ConnectApi.CdpIdentityResolutionsOutput`
+
+
+Apex Reference Guide CdpIdentityResolution Class
 
 ##### **`runIdentityResolutionNow(identityResolution, input)`**
 
@@ -14307,9 +14755,6 @@ Type: String
 
 Developer name of the ruleset.
 
-
-### Apex Reference Guide CdpMachineLearning Class
-
 ```
    input
 ```
@@ -14343,6 +14788,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide CdpMachineLearning Class
+
 Parameters
 
 ```
@@ -14373,10 +14821,9 @@ Namespace
 
 ConnectApi
 
+#### CdpMachineLearning Methods
 
-### Apex Reference Guide CdpQuery Class
-
-#### CdpMachineLearning Methods These methods are for CdpMachineLearning . All methods are static.
+### These methods are for CdpMachineLearning . All methods are static.
 
 IN THIS SECTION:
 
@@ -14405,9 +14852,14 @@ Signature
 
 ```
 
+
+### Apex Reference Guide CdpQuery Class
+
 Parameters
 
-##### _`predict`_
+```
+   predict
+```
 
 Type: `ConnectApi.CdpMlBasePredictInput`
 
@@ -14428,9 +14880,6 @@ ConnectApi
 #### CdpQuery Methods
 
 ### These methods are for CdpQuery . All methods are static.
-
-
-Apex Reference Guide CdpQuery Class
 
 IN THIS SECTION:
 
@@ -14464,6 +14913,9 @@ Query a data graph by the primary key of either the primary Data Model Object (D
 from the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time data graph but falls
 back to the standard data graph if the real-time data graph is unavailable.
 
+
+Apex Reference Guide CdpQuery Class
+
 getDataGraphDataWithLookupKeys(dataGraphEntityName, lookupKeys, dataspace)
 Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data
 from a specified data space. For real-time data graphs, the method attempts to retrieve data from the real-time data graph but falls
@@ -14489,11 +14941,19 @@ Get Insight metadata, including Calculated Insight objects, their dimensions and
 getInsightsMetadata(ciName)
 Get metadata for a Calculated Insight object. Metadata includes dimensions and measures.
 
-
-Apex Reference Guide CdpQuery Class
-
 getInsightsMetadata(ciName, dataspace)
 Get metadata for a Calculated Insight object and specify the data space. Metadata includes dimensions and measures.
+
+getMetadataEntities()
+Get a list of metadata entities and retrieve only essential fields to optimize performance at scale.
+
+getMetadataEntities(entityCategory, entityType)
+Get a list of metadata entities and retrieve only essential fields to optimize performance at scale. Specify the entity category and
+type.
+
+getMetadataEntities(entityCategory, entityType, dataspace)
+Get a list of metadata entities and retrieve only essential fields to optimize performance at scale. Specify the entity category, type,
+and data space.
 
 getProfileMetadata()
 Get metadata for data model objects in the profile category, including Individual, Contact Point Email, Unified Individual, and Contact
@@ -14513,6 +14973,9 @@ Synchronously query data across data model, lake, unified, and linked objects. T
 queryANSISql(input, batchSize, offset, orderby)
 Synchronously query data across data model, lake, unified, and linked objects. Specify batch size, offset, and order of the results. This
 query returns up to 49,999 rows.
+
+
+Apex Reference Guide CdpQuery Class
 
 queryANSISql(input, batchSize, offset, orderby, dataspace)
 Synchronously query data across data model, lake, unified, and linked objects. Specify batch size, offset, order of the results, and data
@@ -14551,9 +15014,6 @@ querySqlRows(queryId, offset, rowLimit, dataspace)
 Get additional query results that weren’t returned in the initial request. Paginate through existing query results by specifying the
 offset and row limit. Also, specify the data space. Results are available for up to 24 hours.
 
-
-Apex Reference Guide CdpQuery Class
-
 querySqlRows(queryId, offset, rowLimit, omitSchema, dataspace)
 Get additional query results that weren't returned in the initial request. Paginate through existing query results by specifying the
 offset and row limit. Also, specify the data space and whether or not to exclude metadata from the response. Results are available
@@ -14574,6 +15034,9 @@ Delete the specified query and terminate long-running queries that are no longer
 cancelQuerySql(queryId, dataspace)
 Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption. Specify
 the data space.
+
+
+Apex Reference Guide CdpQuery Class
 
 cancelQuerySql(queryId, workloadName, dataspace)
 Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption. Specify
@@ -14612,9 +15075,6 @@ Query a Calculated Insight object within a specified time range and specify the 
 queryProfileApi(dataModelName, filters, fields, batchSize, offset, orderby)
 Query a Profile data model object using filters.
 
-
-Apex Reference Guide CdpQuery Class
-
 queryProfileApi(dataModelName, id, searchKey, filters, fields, batchSize, offset, orderby)
 Query a Profile data model object using filters and a search key.
 
@@ -14636,6 +15096,9 @@ Look up objects by source ID.
 
 universalIdLookupBySourceId(entityName, dataSourceId, dataSourceObjectId, sourceRecordId, dataspace)
 Look up objects by source ID and specify the data space.
+
+
+Apex Reference Guide CdpQuery Class
 
 ##### **`getAllMetadata()`**
 
@@ -14672,9 +15135,6 @@ Requires Chatter
 
 No
 
-
-Apex Reference Guide CdpQuery Class
-
 Signature
 
 ```
@@ -14709,6 +15169,9 @@ are returned.
 ```
 
 Type: String
+
+
+Apex Reference Guide CdpQuery Class
 
 Metadata name of the entity, for example `UnifiedIndividual__dlm` . If unspecified, a complete list of entities is returned.
 
@@ -14754,9 +15217,6 @@ If unspecified, all types are returned.
 
 Type: String
 
-
-Apex Reference Guide CdpQuery Class
-
 Category of the metadata entity. Valid values are `Profile`, `Engagement`, and `Related` . If unspecified, all category entities
 are returned.
 
@@ -14784,6 +15244,9 @@ Type: `ConnectApi.CdpQueryMetadataOutput`
 
 Query a data graph in the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time data
 graph but falls back to the standard data graph if the real-time data graph is unavailable.
+
+
+Apex Reference Guide CdpQuery Class
 
 API Version
 
@@ -14829,9 +15292,6 @@ Type: `ConnectApi.CdpQueryOutput`
 Query a data graph in a specified data space. For real-time data graphs, the method attempts to retrieve data from the real-time data
 graph but falls back to the standard data graph if the real-time data graph is unavailable.
 
-
-Apex Reference Guide CdpQuery Class
-
 API Version
 
 59.0
@@ -14858,6 +15318,9 @@ Parameters
 Type: String
 
 API name of the data graph to query.
+
+
+Apex Reference Guide CdpQuery Class
 
 ```
    id
@@ -14901,9 +15364,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide CdpQuery Class
-
 Parameters
 
 ```
@@ -14936,6 +15396,9 @@ of the complexity of its structure.
 Return Value
 
 Type: `ConnectApi.CdpQueryOutput`
+
+
+Apex Reference Guide CdpQuery Class
 
 ##### **`getDataGraphData(dataGraphEntityName, id, dataspace, live)`**
 
@@ -14983,9 +15446,6 @@ Record ID to query for. The ID is matched against the primary key field of the p
 
 Type: String
 
-
-Apex Reference Guide CdpQuery Class
-
 Name of the data space in which to query the data graph.
 
 ```
@@ -15008,6 +15468,9 @@ Type: `ConnectApi.CdpQueryOutput`
 Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data from
 the default data space. For real-time data graphs, the method attempts to retrieve data from the real-time data graph but falls back to
 the standard data graph if the real-time data graph is unavailable.
+
+
+Apex Reference Guide CdpQuery Class
 
 API Version
 
@@ -15057,9 +15520,6 @@ Return Value
 
 Type: `ConnectApi.CdpQueryOutput`
 
-
-Apex Reference Guide CdpQuery Class
-
 ##### **`getDataGraphDataWithLookupKeys(dataGraphEntityName, lookupKeys, dataspace)`**
 
 Query a data graph by the primary key of either the primary Data Model Object (DMO) or the Individual linked DMO. Get the data from
@@ -15082,6 +15542,9 @@ Signature
    dataGraphEntityName, String lookupKeys, String dataspace)
 
 ```
+
+
+Apex Reference Guide CdpQuery Class
 
 Parameters
 
@@ -15134,9 +15597,6 @@ API Version
 
 64.0
 
-
-Apex Reference Guide CdpQuery Class
-
 Requires Chatter
 
 No
@@ -15167,6 +15627,9 @@ API name of the data graph to query.
 Type: String
 
 Lookup key and value to search on. Specify one of these key-value pairs:
+
+
+Apex Reference Guide CdpQuery Class
 
 **•** The primary key of the primary DMO, for example, `lookupKeys=[id__c=def]`
 
@@ -15213,9 +15676,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide CdpQuery Class
-
 Return Value
 
 Type: `ConnectApi.CdpDgMetadata`
@@ -15238,6 +15698,9 @@ Signature
    public static ConnectApi.CdpDgMetadata getDataGraphMetadata(String dataGraphEntityName)
 
 ```
+
+
+Apex Reference Guide CdpQuery Class
 
 Parameters
 
@@ -15282,9 +15745,6 @@ Parameters
 
 Type: String
 
-
-Apex Reference Guide CdpQuery Class
-
 API name of the data graph to query.
 
 ```
@@ -15306,6 +15766,9 @@ Get Insight metadata, including Calculated Insight objects, their dimensions and
 API Version
 
 52.0
+
+
+Apex Reference Guide CdpQuery Class
 
 Requires Chatter
 
@@ -15351,9 +15814,6 @@ Type: String
 
 Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
 
-
-Apex Reference Guide CdpQuery Class
-
 Return Value
 
 Type: `ConnectApi.CdpQueryMetadataOutput`
@@ -15369,6 +15829,9 @@ API Version
 Requires Chatter
 
 No
+
+
+Apex Reference Guide CdpQuery Class
 
 Signature
 
@@ -15401,7 +15864,284 @@ Return Value
 
 Type: `ConnectApi.CdpQueryMetadataOutput`
 
+##### **`getMetadataEntities()`**
+
+Get a list of metadata entities and retrieve only essential fields to optimize performance at scale.
+
+API Version
+
+66.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.CdpQueryMetadataEntitiesOutput getMetadataEntities()
+
+```
+
+Return Value
+
+Type: `ConnectApi.CdpQueryMetadataEntitiesOutput`
+
+Example
+
+```
+   // Initial query
+
+   ConnectApi.MetadataEntityCollectionRepresentation entityCollection =
+
+   ConnectApi.CdpQuery.getMetadataEntities();
+
+   // Process the batch
+
+   System.debug('Processing initial batch:');
+
+   System.debug(entities);
+
+   processEntitiesBatch(entities);
+
+   // Process individual entity details
+
+   for (ConnectApi.MetadataEntityRepresentation entity : entityCollection.metadata) {
+
+```
+
+
+Apex Reference Guide CdpQuery Class
+
+```
+      System.debug('Entity details');
+
+      System.debug('Name: ' + entity.name);
+
+      System.debug('Display Name: ' + entity.displayName);
+
+      System.debug('Type: ' + entity.type);
+
+      System.debug('Category: ' + entity.category);
+
+      // Optional: Add specific processing based on entity category
+
+      switch on entity.category {
+
+        when 'Profile' {
+
+           System.debug('Found Profile entity: ' + entity.displayName);
+
+        }
+
+        when 'Engagement' {
+
+           System.debug('Found Engagement entity: ' + entity.displayName);
+
+        }
+
+        when 'Related' {
+
+           System.debug('Found Related entity: ' + entity.displayName);
+
+        }
+
+        when else {
+
+           System.debug('Other entity type: ' + entity.category);
+
+        }
+
+      }
+
+   }
+
+##### **`getMetadataEntities(entityCategory, entityType)`**
+
+```
+
+Get a list of metadata entities and retrieve only essential fields to optimize performance at scale. Specify the entity category and type.
+
+API Version
+
+66.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.CdpQueryMetadataEntitiesOutput getMetadataEntities(String
+
+   entityCategory, String entityType)
+
+```
+
+Parameters
+
+```
+   entityCategory
+```
+
+Type: String
+
+Category of the metadata entity. Supported values are:
+
+**•** `Activation_Audience`
+
+**•** `CG_Audience`
+
+**•** `Content`
+
+**•** `Directory_Table`
+
+**•** `Engagement`
+
+
+Apex Reference Guide CdpQuery Class
+
+**•** `Profile`
+
+**•** `Related`
+
+**•** `Segment_Membership`
+
+**•** `Vector_Embedding`
+
+```
+   entityType
+```
+
+Type: String
+
+Type of metadata entity. Supported values are:
+
+**•** `Calculated_Insight`
+
+**•** `DataLakeObject`
+
+**•** `DataModelObject`
+
+Return Value
+
+Type: `ConnectApi.CdpQueryMetadataEntitiesOutput`
+
+Example
+
+```
+   ConnectApi.MetadataEntityCollectionRepresentation entities =
+
+   ConnectApi.CdpQuery.getMetadataEntities('Profile', 'DataModelObject');
+
+   System.debug(entities);
+
+   System.debug(entities.metadata);
+
+   System.debug(entities.done);
+
+   System.debug(entities.nextBatchId);
+
+##### **`getMetadataEntities(entityCategory, entityType, dataspace)`**
+
+```
+
+Get a list of metadata entities and retrieve only essential fields to optimize performance at scale. Specify the entity category, type, and
+data space.
+
+API Version
+
+66.0
+
+Requires Chatter
+
+No
+
+Signature
+
+```
+   public static ConnectApi.CdpQueryMetadataEntitiesOutput getMetadataEntities(String
+
+   entityCategory, String entityType, String dataspace)
+
+```
+
+Parameters
+
+```
+   entityCategory
+```
+
+Type: String
+
+Category of the metadata entity. Supported values are:
+
+
+Apex Reference Guide CdpQuery Class
+
+**•** `Activation_Audience`
+
+**•** `CG_Audience`
+
+**•** `Content`
+
+**•** `Directory_Table`
+
+**•** `Engagement`
+
+**•** `Profile`
+
+**•** `Related`
+
+**•** `Segment_Membership`
+
+**•** `Vector_Embedding`
+
+```
+   entityType
+```
+
+Type: String
+
+Type of metadata entity. Supported values are:
+
+**•** `Calculated_Insight`
+
+**•** `DataLakeObject`
+
+**•** `DataModelObject`
+
+```
+   dataspace
+```
+
+Type: String
+
+Name of the data space in which to query the metadata entities.
+
+Return Value
+
+Type: `ConnectApi.CdpQueryMetadataEntitiesOutput`
+
+Example
+
+```
+   ConnectApi.MetadataEntityCollectionRepresentation entities =
+
+   ConnectApi.CdpQuery.getMetadataEntities('Profile', 'DataModelObject', 'default');
+
+   System.debug(entities);
+
+   System.debug(entities.metadata);
+
+   System.debug(entities.done);
+
+   System.debug(entities.nextBatchId);
+
 ##### **`getProfileMetadata()`**
+
+```
 
 Get metadata for data model objects in the profile category, including Individual, Contact Point Email, Unified Individual, and Contact
 Point Address objects. Metadata includes the objects, their fields, and category.
@@ -15414,15 +16154,15 @@ Requires Chatter
 
 No
 
+
+Apex Reference Guide CdpQuery Class
+
 Signature
 
 ```
    public static ConnectApi.CdpQueryMetadataOutput getProfileMetadata()
 
 ```
-
-
-Apex Reference Guide CdpQuery Class
 
 Return Value
 
@@ -15475,6 +16215,9 @@ Requires Chatter
 
 No
 
+
+Apex Reference Guide CdpQuery Class
+
 Signature
 
 ```
@@ -15483,9 +16226,6 @@ Signature
    String dataspace)
 
 ```
-
-
-Apex Reference Guide CdpQuery Class
 
 Parameters
 
@@ -15545,6 +16285,9 @@ Return Value
 
 Type: `ConnectApi.CdpQueryOutput`
 
+
+Apex Reference Guide CdpQuery Class
+
 ##### **`queryANSISql(input, batchSize, offset, orderby)`**
 
 Synchronously query data across data model, lake, unified, and linked objects. Specify batch size, offset, and order of the results. This
@@ -15552,9 +16295,6 @@ query returns up to 49,999 rows.
 
 Note: A newer version of the Query API is available. We recommend using `queryAnsiSqlV2(input)` and
 `nextBatchAnsiSqlV2(nextBatchId)` to take advantage of subsequent requests and larger response sizes.
-
-
-Apex Reference Guide CdpQuery Class
 
 API Version
 
@@ -15621,6 +16361,9 @@ space. This query returns up to 49,999 rows.
 Note: A newer version of the Query API is available. We recommend using `queryAnsiSqlV2(input)` and
 `nextBatchAnsiSqlV2(nextBatchId)` to take advantage of subsequent requests and larger response sizes.
 
+
+Apex Reference Guide CdpQuery Class
+
 API Version
 
 57.0
@@ -15628,9 +16371,6 @@ API Version
 Requires Chatter
 
 No
-
-
-Apex Reference Guide CdpQuery Class
 
 Signature
 
@@ -15701,15 +16441,15 @@ Requires Chatter
 
 No
 
+
+Apex Reference Guide CdpQuery Class
+
 Signature
 
 ```
    public static ConnectApi.CdpQueryOutputV2 queryAnsiSqlV2(ConnectApi.CdpQueryInput input)
 
 ```
-
-
-Apex Reference Guide CdpQuery Class
 
 Parameters
 
@@ -15774,16 +16514,13 @@ Return Value
 
 Type: `ConnectApi.CdpQueryOutputV2`
 
-Usage
-
-Use the `nextBatchId` in the `ConnectApi.CdpQueryOutputV2` output class as the _`nextBatchId`_ parameter in the
-
-`nextBatchAnsiSqlV2(nextBatchId)` method to continue getting batches of data for up to an hour.
-
 
 Apex Reference Guide CdpQuery Class
 
-##### **`nextBatchAnsiSqlV2(nextBatchId)`**
+Usage
+
+Use the `nextBatchId` in the `ConnectApi.CdpQueryOutputV2` output class as the _`nextBatchId`_ parameter in the
+##### nextBatchAnsiSqlV2(nextBatchId) method to continue getting batches of data for up to an hour. **`nextBatchAnsiSqlV2(nextBatchId)`**
 
 Get the next batch of data across data model, lake, unified, and linked objects.
 
@@ -15834,6 +16571,9 @@ Requires Chatter
 
 No
 
+
+Apex Reference Guide CdpQuery Class
+
 Signature
 
 ```
@@ -15842,9 +16582,6 @@ Signature
    dataspace)
 
 ```
-
-
-Apex Reference Guide CdpQuery Class
 
 Parameters
 
@@ -15907,13 +16644,13 @@ Return Value
 
 Type: `ConnectApi.QuerySqlOutput`
 
+
+Apex Reference Guide CdpQuery Class
+
 Usage
 
 [To get started with writing queries, see Write a Simple Query. For more information about creating SQL statements, see Data 360 SQL](https://developer.salesforce.com/docs/data/data-cloud-query-guide/guide/write-simple-query.html)
 [Syntax.](https://developer.salesforce.com/docs/data/data-cloud-query-guide/references/dc-sql-reference/syntax.html)
-
-
-Apex Reference Guide CdpQuery Class
 
 Example
 
@@ -15994,6 +16731,12 @@ Submit a query, check its status, then retrieve and process data in chunks until
 
       if (status.completionStatus != ConnectApi.QuerySqlStatusEnum.FINISHED) {
 
+```
+
+
+Apex Reference Guide CdpQuery Class
+
+```
         status = ConnectApi.CdpQuery.querySqlStatus(status.queryId, 'sample_workload',
 
    'default');
@@ -16002,12 +16745,6 @@ Submit a query, check its status, then retrieve and process data in chunks until
 
    }
 
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-```
    Long completionTime = System.currentTimeMillis();
 
    System.debug('Query and processing completed at: ' + completionTime + ', Total time: ' +
@@ -16068,6 +16805,9 @@ Usage
 [To get started with writing queries, see Write a Simple Query. For more information about creating SQL statements, see Data 360 SQL](https://developer.salesforce.com/docs/data/data-cloud-query-guide/guide/write-simple-query.html)
 [Syntax.](https://developer.salesforce.com/docs/data/data-cloud-query-guide/references/dc-sql-reference/syntax.html)
 
+
+Apex Reference Guide CdpQuery Class
+
 Example
 
 Submit a query with a data space:
@@ -16081,12 +16821,6 @@ Submit a query with a data space:
 
    System.debug(output);
 
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-```
    System.debug(output.dataRows);
 
    System.debug(output.metadata);
@@ -16149,13 +16883,13 @@ Return Value
 
 Type: `ConnectApi.QuerySqlOutput`
 
+
+Apex Reference Guide CdpQuery Class
+
 Usage
 
 [To get started with writing queries, see Write a Simple Query. For more information about creating SQL statements, see Data 360 SQL](https://developer.salesforce.com/docs/data/data-cloud-query-guide/guide/write-simple-query.html)
 [Syntax.](https://developer.salesforce.com/docs/data/data-cloud-query-guide/references/dc-sql-reference/syntax.html)
-
-
-Apex Reference Guide CdpQuery Class
 
 Example
 
@@ -16225,6 +16959,9 @@ Type: Long
 Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
 rows. If unspecified, no rows are skipped.
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    rowLimit
 ```
@@ -16233,9 +16970,6 @@ Type: Long
 
 Maximum number of rows to include in the response. The actual number of rows returned may be lower than the requested value
 if fewer are available or if the result set exceeds internal system size limits. Value must be greater than `0` .
-
-
-Apex Reference Guide CdpQuery Class
 
 Return Value
 
@@ -16300,6 +17034,9 @@ ID from the initial query to retrieve more results, for example
 `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
 ##### querySql response.
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    offset
 ```
@@ -16308,9 +17045,6 @@ Type: Long
 
 Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
 rows. If unspecified, no rows are skipped.
-
-
-Apex Reference Guide CdpQuery Class
 
 ```
    rowLimit
@@ -16372,6 +17106,9 @@ Requires Chatter
 
 No
 
+
+Apex Reference Guide CdpQuery Class
+
 Signature
 
 ```
@@ -16380,9 +17117,6 @@ Signature
    Long rowLimit, String dataspace)
 
 ```
-
-
-Apex Reference Guide CdpQuery Class
 
 Parameters
 
@@ -16457,12 +17191,12 @@ Get additional query results that weren't returned in the initial request. Pagin
 and row limit. Also, specify the data space and whether or not to exclude metadata from the response. Results are available for up to 24
 hours.
 
+
+Apex Reference Guide CdpQuery Class
+
 API Version
 
 62.0
-
-
-Apex Reference Guide CdpQuery Class
 
 Requires Chatter
 
@@ -16534,6 +17268,9 @@ Retrieve the _`queryId`_ from the initial query request. To submit an SQL query 
 
 `querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
 
+
+Apex Reference Guide CdpQuery Class
+
 Example
 
 Query additional rows with an offset, row limit, data space, and omitting the schema:
@@ -16545,12 +17282,6 @@ Query additional rows with an offset, row limit, data space, and omitting the sc
 
    System.debug(pageOutput);
 
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-```
    System.debug(pageOutput.dataRows);
 
    System.debug(pageOutput.metadata);
@@ -16620,6 +17351,9 @@ Type: String
 Description of the scenario, task, or application name that your query handles. Set this value to help Salesforce Customer Support
 assist you with debugging issues.
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    dataspace
 ```
@@ -16627,9 +17361,6 @@ assist you with debugging issues.
 Type: String
 
 Name of the data space to query. If unspecified, the `default` data space is used.
-
-
-Apex Reference Guide CdpQuery Class
 
 Return Value
 
@@ -16695,6 +17426,9 @@ ID from the initial query to retrieve more results, for example
 `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
 ##### querySql response.
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    offset
 ```
@@ -16703,9 +17437,6 @@ Type: Long
 
 Row number to start with when retrieving the next chunk of query results. Value must be less than the total number of available
 rows. If unspecified, no rows are skipped.
-
-
-Apex Reference Guide CdpQuery Class
 
 ```
    rowLimit
@@ -16777,6 +17508,9 @@ Query additional rows with an offset, row limit, workload name, data space, and 
 
 Delete the specified query and terminate long-running queries that are no longer needed to manage resource consumption.
 
+
+Apex Reference Guide CdpQuery Class
+
 API Version
 
 62.0
@@ -16784,9 +17518,6 @@ API Version
 Requires Chatter
 
 No
-
-
-Apex Reference Guide CdpQuery Class
 
 Signature
 
@@ -16847,6 +17578,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide CdpQuery Class
+
 Parameters
 
 ```
@@ -16857,9 +17591,6 @@ Type: String
 
 ID of the query to cancel, for example `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` .
 The query ID is returned in the `querySql` response.
-
-
-Apex Reference Guide CdpQuery Class
 
 ```
    dataspace
@@ -16921,6 +17652,9 @@ Type: String
 ID of the query to cancel, for example `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` .
 The query ID is returned in the `querySql` response.
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    workloadName
 ```
@@ -16935,9 +17669,6 @@ assist you with debugging issues.
 ```
 
 Type: String
-
-
-Apex Reference Guide CdpQuery Class
 
 Name of the data space to query. If unspecified, the `default` data space is used.
 
@@ -16993,6 +17724,9 @@ ID of the query to return the status for, for example
 `MTAuMjMuMTU2LjIwODo3NDg0_49169cf8-a6f4-738f-6544-c3a7ba2ff548` . The query ID is returned in the
 ##### querySql response.
 
+
+Apex Reference Guide CdpQuery Class
+
 Return Value
 
 Type: `ConnectApi.QuerySqlStatus`
@@ -17002,9 +17736,6 @@ Usage
 Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
 
 `querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-
-Apex Reference Guide CdpQuery Class
 
 Example
 
@@ -17066,14 +17797,14 @@ Return Value
 
 Type: `ConnectApi.QuerySqlStatus`
 
+
+Apex Reference Guide CdpQuery Class
+
 Usage
 
 Retrieve the _`queryId`_ from the initial query request. To submit an SQL query request for execution, call `querySql(input)`,
 
 `querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
-
-
-Apex Reference Guide CdpQuery Class
 
 Example
 
@@ -17137,6 +17868,9 @@ Retrieve the _`queryId`_ from the initial query request. To submit an SQL query 
 
 `querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
 
+
+Apex Reference Guide CdpQuery Class
+
 Example
 
 Get the status of a query with a data space:
@@ -17148,12 +17882,9 @@ Get the status of a query with a data space:
 
    System.debug(statusOutput);
 
-```
-
-
-Apex Reference Guide CdpQuery Class
-
 ##### **`querySqlStatus(queryId, dataspace, waitTimeMs)`**
+
+```
 
 Get the status of an SQL query request. Specify the data space and time to wait before returning the response. Results are available for
 up to 24 hours.
@@ -17214,6 +17945,9 @@ Retrieve the _`queryId`_ from the initial query request. To submit an SQL query 
 
 `querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
 
+
+Apex Reference Guide CdpQuery Class
+
 Example
 
 Get the status of a query with a data space and wait time:
@@ -17225,12 +17959,9 @@ Get the status of a query with a data space and wait time:
 
    System.debug(statusOutput);
 
-```
-
-
-Apex Reference Guide CdpQuery Class
-
 ##### **`querySqlStatus(queryId, workloadName, dataspace)`**
+
+```
 
 Get the status of an SQL query request. Specify the workload name and data space. Results are available for up to 24 hours.
 
@@ -17290,6 +18021,9 @@ Retrieve the _`queryId`_ from the initial query request. To submit an SQL query 
 
 `querySql(input, dataspace)`, or `querySql(input, workloadName, dataspace)` .
 
+
+Apex Reference Guide CdpQuery Class
+
 Example
 
 Get the status of a query with a workload name and data space:
@@ -17303,12 +18037,6 @@ Get the status of a query with a workload name and data space:
 
    System.debug(output);
 
-```
-
-
-Apex Reference Guide CdpQuery Class
-
-```
    ConnectApi.QuerySqlStatus statusOutput =
 
    ConnectApi.CdpQuery.querySqlStatus(output.status.queryId, 'workloadName', 'default');
@@ -17374,15 +18102,15 @@ Name of the data space to query. If unspecified, the `default` data space is use
 
 Type: Integer
 
+
+Apex Reference Guide CdpQuery Class
+
 Maximum time (in milliseconds) to wait for the result. Configure a wait time up to 10 seconds before returning the status . If unspecified,
 the status is returned immediately. Use this to avoid resource limits by delaying requests.
 
 Return Value
 
 Type: `ConnectApi.QuerySqlStatus`
-
-
-Apex Reference Guide CdpQuery Class
 
 Usage
 
@@ -17447,6 +18175,9 @@ Type: String
 Comma-separated list of up to 10 dimensions, such as `GenderId__c`, to project. If unspecified, this parameter includes all of the
 available dimensions.
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    measures
 ```
@@ -17461,9 +18192,6 @@ available measures.
 ```
 
 Type: String
-
-
-Apex Reference Guide CdpQuery Class
 
 Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
 order they are retrieved.
@@ -17534,6 +18262,9 @@ Type: String
 
 Name of the Calculated Insight object, for example, `IndividualChildrenCount__cio` .
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    dimensions
 ```
@@ -17548,9 +18279,6 @@ available dimensions.
 ```
 
 Type: String
-
-
-Apex Reference Guide CdpQuery Class
 
 Comma-separated list of up to 5 measures, such as `TotalSales__c`, to project. If unspecified, this parameter includes all of the
 available measures.
@@ -17625,12 +18353,12 @@ API Version
 
 57.0
 
+
+Apex Reference Guide CdpQuery Class
+
 Requires Chatter
 
 No
-
-
-Apex Reference Guide CdpQuery Class
 
 Signature
 
@@ -17720,6 +18448,9 @@ Time range for the measures. Values are:
 
 **•** `QUARTER`
 
+
+Apex Reference Guide CdpQuery Class
+
 **•** `YEAR`
 
 If unspecified, no time range is applied.
@@ -17729,9 +18460,6 @@ If unspecified, no time range is applied.
 ```
 
 Type: String
-
-
-Apex Reference Guide CdpQuery Class
 
 Name of the data space to query. If unspecified, the `default` data space is used.
 
@@ -17803,6 +18531,9 @@ Type: Integer
 
 Number of rows to skip before returning results. If unspecified, no rows are skipped.
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    orderby
 ```
@@ -17811,9 +18542,6 @@ Type: String
 
 Sort order for the result set, such as `GenderId__c ASC,Occupation__c DESC` . If unspecified, items are returned in the
 order they are retrieved.
-
-
-Apex Reference Guide CdpQuery Class
 
 Return Value
 
@@ -17890,6 +18618,9 @@ Type: String
 Comma-separated list of up to 50 field names that you want to include in the result, for example, `Id__c,FirstName__c,`
 `GenderId__c,Occupation__c` . If unspecified, `Id__c` is returned.
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    batchSize
 ```
@@ -17903,9 +18634,6 @@ Number of items to return. Values are from 1–4,999. If unspecified, the defaul
 ```
 
 Type: Integer
-
-
-Apex Reference Guide CdpQuery Class
 
 Number of rows to skip before returning results. If unspecified, no rows are skipped.
 
@@ -17976,6 +18704,9 @@ Type: String
 
 Name of the child data model object, for example, `UnifiedContactPointEmail__dlm` .
 
+
+Apex Reference Guide CdpQuery Class
+
 ```
    searchKey
 ```
@@ -17989,9 +18720,6 @@ If a field other than the primary key is used, name of the key field, for exampl
 ```
 
 Type: String
-
-
-Apex Reference Guide CdpQuery Class
 
 Comma-separated list of equality expressions within square brackets, for example, `[FirstName__c=DON]` . Filters are applied
 to the parent object only.
@@ -18062,6 +18790,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide CdpQuery Class
+
 Parameters
 
 ```
@@ -18071,9 +18802,6 @@ Parameters
 Type: String
 
 Name of the data model object, for example, `UnifiedIndividual__dlm` .
-
-
-Apex Reference Guide CdpQuery Class
 
 ```
    id
@@ -40033,630 +40761,3 @@ _Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.
 
 ```
   density, pageParam, pageSize, updatedSince, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, String updatedSince, ConnectApi.FeedElementPage
-
-   result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`, and
-`PendingReview` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, updatedSince, filter, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-32.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, String updatedSince, ConnectApi.FeedFilter filter,
-
-   ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince, filter)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, updatedSince, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize, String updatedSince,
-
-   ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-One of these values:
-
-**•** `Files`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `Groups`
-
-**•** `News`
-
-**•** `People`
-
-**•** `Record`
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `ConnectApi.Record`, _`subjectId`_ can be any record ID, including a group ID. Otherwise, it must be the
-context user or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-updatedSince)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, updatedSince,
-
-  showInternalOnly, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize, String updatedSince,
-
-   Boolean showInternalOnly, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, updatedSince,
-showInternalOnly)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  updatedSince, filter, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-35.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   String updatedSince, ConnectApi.FeedFilter filter, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.UserProfile` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of any user. To specify the context user, use the user ID or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-

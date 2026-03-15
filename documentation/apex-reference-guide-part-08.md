@@ -1,3 +1,1396 @@
+Returns the remainder of _`integerValue1`_ divided by _`integerValue2`_ .
+
+Signature
+
+```
+   public static Integer mod(Integer integerValue1, Integer integerValue2)
+
+```
+
+Parameters
+
+```
+   integerValue1
+```
+
+Type: Integer
+
+
+Apex Reference Guide Math Class
+
+```
+   integerValue2
+```
+
+Type: Integer
+
+Return Value
+
+Type: Integer
+
+Example
+
+```
+   Integer remainder = math.mod(12, 2);
+
+   system.assertEquals(remainder, 0);
+
+   Integer remainder2 = math.mod(8, 3);
+
+   system.assertEquals(remainder2, 2);
+
+##### mod(longValue1, longValue2)
+
+```
+
+Returns the remainder of _`longValue1`_ divided by _`longValue2`_ .
+
+Signature
+
+```
+   public static Long mod(Long longValue1, Long longValue2)
+
+```
+
+Parameters
+
+```
+   longValue1
+```
+
+Type: Long
+
+```
+   longValue2
+```
+
+Type: Long
+
+Return Value
+
+Type: Long
+
+##### pow(doubleValue, exponent)
+
+Returns the value of the first Double raised to the power of _`exponent`_ .
+
+Signature
+
+```
+   public static Double pow(Double doubleValue, Double exponent)
+
+```
+
+Parameters
+
+```
+   doubleValue
+```
+
+Type: Double
+
+```
+   exponent
+```
+
+Type: Double
+
+
+Apex Reference Guide Math Class
+
+Return Value
+
+Type: Double
+
+##### random()
+
+Returns a positive Double that is greater than or equal to 0.0 and less than 1.0.
+
+Signature
+
+```
+   public static Double random()
+
+```
+
+Return Value
+
+Type: Double
+
+##### rint(decimalValue)
+
+Returns the value that is closest in value to _`decimalValue`_ and is equal to a mathematical integer.
+
+Signature
+
+```
+   public static Decimal rint(Decimal decimalValue)
+
+```
+
+Parameters
+
+```
+   decimalValue
+```
+
+Type: Decimal
+
+Return Value
+
+Type: Decimal
+
+##### rint(doubleValue)
+
+Returns the value that is closest in value to _`doubleValue`_ and is equal to a mathematical integer.
+
+Signature
+
+```
+   public static Double rint(Double doubleValue)
+
+```
+
+Parameters
+
+```
+   doubleValue
+```
+
+Type: Double
+
+Return Value
+
+Type: Double
+
+
+Apex Reference Guide Math Class
+
+##### round(doubleValue)
+
+Do not use. This method is deprecated as of the Winter '08 release. Instead, use `Math.roundToLong` . Returns the closest Integer
+to the specified Double. If the result is less than -2,147,483,648 or greater than 2,147,483,647, Apex generates an error.
+
+Signature
+
+```
+   public static Integer round(Double doubleValue)
+
+```
+
+Parameters
+
+```
+   doubleValue
+```
+
+Type: Double
+
+Return Value
+
+Type: Integer
+
+##### round(decimalValue)
+
+Returns the rounded approximation of this Decimal. The number is rounded to zero decimal places using half-even rounding mode,
+that is, it rounds towards the “nearest neighbor” unless both neighbors are equidistant, in which case, this mode rounds towards the
+even neighbor. If the result is less than -2,147,483,648 or greater than 2,147,483,647, Apex generates an error.
+
+Signature
+
+```
+   public static Integer round(Decimal decimalValue)
+
+```
+
+Parameters
+
+```
+   decimalValue
+```
+
+Type: Decimal
+
+Return Value
+
+Type: Integer
+
+Usage
+
+Note that this rounding mode statistically minimizes cumulative error when applied repeatedly over a sequence of calculations.
+
+Example
+
+```
+   Decimal d1 = 4.5;
+
+   Integer i1 = Math.round(d1);
+
+   System.assertEquals(4, i1);
+
+   Decimal d2 = 5.5;
+
+   Integer i2 = Math.round(d2);
+
+   System.assertEquals(6, i2);
+
+```
+
+
+Apex Reference Guide Math Class
+
+##### roundToLong(decimalValue)
+
+Returns the rounded approximation of this Decimal. The number is rounded to zero decimal places using half-even rounding mode,
+that is, it rounds towards the “nearest neighbor” unless both neighbors are equidistant, in which case, this mode rounds towards the
+even neighbor.
+
+Signature
+
+```
+   public static Long roundToLong(Decimal decimalValue)
+
+```
+
+Parameters
+
+```
+   decimalValue
+```
+
+Type: Decimal
+
+Return Value
+
+Type: Long
+
+Usage
+
+Note that this rounding mode statistically minimizes cumulative error when applied repeatedly over a sequence of calculations.
+
+Example
+
+```
+   Decimal d1 = 4.5;
+
+   Long i1 = Math.roundToLong(d1);
+
+   System.assertEquals(4, i1);
+
+   Decimal d2 = 5.5;
+
+   Long i2 = Math.roundToLong(d2);
+
+   System.assertEquals(6, i2);
+
+##### roundToLong(doubleValue)
+
+```
+
+Returns the closest Long to the specified Double.
+
+Signature
+
+```
+   public static Long roundToLong(Double doubleValue)
+
+```
+
+Parameters
+
+```
+   doubleValue
+```
+
+Type: Double
+
+Return Value
+
+Type: Long
+
+
+Apex Reference Guide Math Class
+
+##### signum(decimalValue)
+
+Returns the signum function of the specified Decimal, which is 0 if _`decimalValue`_ is 0, 1.0 if _`decimalValue`_ is greater than 0,
+-1.0 if _`decimalValue`_ is less than 0.
+
+Signature
+
+```
+   public static Decimal signum(Decimal decimalValue)
+
+```
+
+Parameters
+
+```
+   decimalValue
+```
+
+Type: Decimal
+
+Return Value
+
+Type: Decimal
+
+##### signum(doubleValue)
+
+Returns the signum function of the specified Double, which is 0 if _`doubleValue`_ is 0, 1.0 if _`doubleValue`_ is greater than 0, -1.0
+if _`doubleValue`_ is less than 0.
+
+Signature
+
+```
+   public static Double signum(Double doubleValue)
+
+```
+
+Parameters
+
+```
+   doubleValue
+```
+
+Type: Double
+
+Return Value
+
+Type: Double
+
+##### sin(decimalAngle)
+
+Returns the trigonometric sine of the angle specified by _`decimalAngle`_ .
+
+Signature
+
+```
+   public static Decimal sin(Decimal decimalAngle)
+
+```
+
+Parameters
+
+```
+   decimalAngle
+```
+
+Type: Decimal
+
+
+Apex Reference Guide Math Class
+
+Return Value
+
+Type: Decimal
+
+##### sin(doubleAngle)
+
+Returns the trigonometric sine of the angle specified by _`doubleAngle`_ .
+
+Signature
+
+```
+   public static Double sin(Double doubleAngle)
+
+```
+
+Parameters
+
+```
+   doubleAngle
+```
+
+Type: Double
+
+Return Value
+
+Type: Double
+
+##### sinh(decimalAngle)
+
+Returns the hyperbolic sine of _`decimalAngle`_ . The hyperbolic sine of _`decimalAngle`_ is defined to be ( _e_ [x]     - _e_ [-x] )/2 where _e_ is Euler's
+number.
+
+Signature
+
+```
+   public static Decimal sinh(Decimal decimalAngle)
+
+```
+
+Parameters
+
+```
+   decimalAngle
+```
+
+Type: Decimal
+
+Return Value
+
+Type: Decimal
+
+##### sinh(doubleAngle)
+
+Returns the hyperbolic sine of _`doubleAngle`_ . The hyperbolic sine of _`doubleAngle`_ is defined to be ( _e_ [x]     - _e_ [-x] )/2 where _e_ is Euler's
+number.
+
+Signature
+
+```
+   public static Double sinh(Double doubleAngle)
+
+```
+
+
+Apex Reference Guide Math Class
+
+Parameters
+
+```
+   doubleAngle
+```
+
+Type: Double
+
+Return Value
+
+Type: Double
+
+##### sqrt(decimalValue)
+
+Returns the correctly rounded positive square root of _`decimalValue`_ .
+
+Signature
+
+```
+   public static Decimal sqrt(Decimal decimalValue)
+
+```
+
+Parameters
+
+```
+   decimalValue
+```
+
+Type: Decimal
+
+Return Value
+
+Type: Decimal
+
+##### sqrt(doubleValue)
+
+Returns the correctly rounded positive square root of _`doubleValue`_ .
+
+Signature
+
+```
+   public static Double sqrt(Double doubleValue)
+
+```
+
+Parameters
+
+```
+   doubleValue
+```
+
+Type: Double
+
+Return Value
+
+Type: Double
+
+##### tan(decimalAngle)
+
+Returns the trigonometric tangent of the angle specified by _`decimalAngle`_ .
+
+Signature
+
+```
+   public static Decimal tan(Decimal decimalAngle)
+
+```
+
+
+Apex Reference Guide Math Class
+
+Parameters
+
+```
+   decimalAngle
+```
+
+Type: Decimal
+
+Return Value
+
+Type: Decimal
+
+##### tan(doubleAngle)
+
+Returns the trigonometric tangent of the angle specified by _`doubleAngle`_ .
+
+Signature
+
+```
+   public static Double tan(Double doubleAngle)
+
+```
+
+Parameters
+
+```
+   doubleAngle
+```
+
+Type: Double
+
+Return Value
+
+Type: Double
+
+##### tanh(decimalAngle)
+
+Returns the hyperbolic tangent of _`decimalAngle`_ . The hyperbolic tangent of _`decimalAngle`_ is defined to be ( _e_ [x]    - _e_ [-x] )/( _e_ [x] + _e_ [-x] )
+##### where e is Euler's number. In other words, it is equivalent to sinh(x)/cosinh(x) . The absolute value of the exact tanh is always
+
+less than 1.
+
+Signature
+
+```
+   public static Decimal tanh(Decimal decimalAngle)
+
+```
+
+Parameters
+
+```
+   decimalAngle
+```
+
+Type: Decimal
+
+Return Value
+
+Type: Decimal
+
+##### tanh(doubleAngle)
+
+Returns the hyperbolic tangent of _`doubleAngle`_ . The hyperbolic tangent of _`doubleAngle`_ is defined to be ( _e_ [x]    - _e_ [-x] )/( _e_ [x] + _e_ [-x] )
+##### where e is Euler's number. In other words, it is equivalent to sinh(x)/cosinh(x) . The absolute value of the exact tanh is always
+
+less than 1.
+
+
+### Apex Reference Guide Messaging Class
+
+Signature
+
+```
+   public static Double tanh(Double doubleAngle)
+
+```
+
+Parameters
+
+```
+   doubleAngle
+```
+
+Type: Double
+
+Return Value
+
+Type: Double
+
+### Messaging Class
+
+Contains messaging methods used when sending a single or mass email.
+
+Namespace
+
+System
+
+Usage
+
+Important: Sending email by using Apex requires domain-level and user-level email verification. System-generated emails also
+[require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements to](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+
+#### Messaging Methods
+
+### The following are methods for Messaging . All are instance methods.
+
+IN THIS SECTION:
+
+extractInboundEmail(source, includeForwardedAttachments)
+Use this method in your email service code to control how to parse and process forwarded or attached emails. Returns an instance
+of `Messaging.InboundEmail` from a stream of data that is in RFC822 format. The data stream can be a forwarded email in
+an attachment to an existing InboundEmail, or a stream from another source.
+
+reserveMassEmailCapacity(amountReserved)
+Reserves email capacity to send mass email to the specified number of email addresses, after the current transaction commits.
+
+reserveSingleEmailCapacity(amountReserved)
+Reserves email capacity to send single email to the specified number of email addresses, after the current transaction commits.
+
+sendEmail(emails, allOrNothing)
+Sends the list of emails instantiated with either `SingleEmailMessage` or `MassEmailMessage` and returns a list of
+SendEmailResult objects. When org preferences are set to save EmailMessage objects and a trigger is defined for EmailMessage
+objects, the trigger is fired for each `SingleEmailMessage` individually. The `sendEmail` method can be called 10 times per
+Apex transaction and each method invocation can include up to 100 "To", 25 "Cc", and 25 "Bcc" recipients.
+
+sendEmailMessage(emailMessageIds, allOrNothing)
+Sends draft email messages as defined by the specified email message IDs and returns a list of SendEmailResult objects.
+
+
+Apex Reference Guide Messaging Class
+
+renderEmailTemplate(whoId, whatId, bodies)
+Replaces merge fields in text bodies of email templates with values from Salesforce records. Returns an array of
+`RenderEmailTemplateBodyResult` objects, each of which corresponds to an element in the supplied array of text bodies.
+Each `RenderEmailTemplateBodyResult` provides a success or failure indication, along with either an error code or the
+rendered text.
+
+renderStoredEmailTemplate(templateId, whoId, whatId)
+Renders a text, custom, HTML, or Visualforce email template that exists in the database into an instance of
+`Messaging.SingleEmailMessage` . Includes all attachment content in the returned email message.
+
+renderStoredEmailTemplate(templateId, whoId, whatId, attachmentRetrievalOption)
+Renders a text, custom, HTML, or Visualforce email template that exists in the database into an instance of
+`Messaging.SingleEmailMessage` . Provides options for including attachment metadata only, attachment metadata and
+content, or excluding attachments.
+
+renderStoredEmailTemplate(templateId, whoId, whatId, attachmentRetrievalOption, updateEmailTemplateUsage)
+Renders a text, custom, HTML, or Visualforce email template that exists in the database into an instance of
+`Messaging.SingleEmailMessage` . Provides options for including attachment metadata only, attachment metadata and
+content, or excluding attachments.
+
+##### extractInboundEmail(source, includeForwardedAttachments)
+
+Use this method in your email service code to control how to parse and process forwarded or attached emails. Returns an instance of
+`Messaging.InboundEmail` from a stream of data that is in RFC822 format. The data stream can be a forwarded email in an
+attachment to an existing InboundEmail, or a stream from another source.
+
+Signature
+
+```
+   public static Messaging.InboundEmail extractInboundEmail(Object source, Boolean
+
+   includeForwardedAttachments)
+
+```
+
+Parameters
+
+```
+   source
+```
+
+Type: Object
+
+An instance of `Messaging.InboundEmail.BinaryAttachment` whose MimeTypeSubtype is `message/rfc822`
+or a Blob. If _`source`_ is a Blob, then supply a byte array in RFC822 format.
+
+```
+   includeForwardedAttachments
+```
+
+Type: Boolean
+
+This parameter controls how attachments to embedded or forwarded emails are handled. Set to `true` to provide all attachments,
+even attachments in embedded emails in the `binaryAttachments` and `textAttachments` properties of the returned
+value. Set to `false` to provide only the attachments that are at the top level of the source email.
+
+Return Value
+
+Type: Messaging.InboundEmail
+
+##### reserveMassEmailCapacity(amountReserved)
+
+Reserves email capacity to send mass email to the specified number of email addresses, after the current transaction commits.
+
+
+Apex Reference Guide Messaging Class
+
+Signature
+
+```
+   public Void reserveMassEmailCapacity(Integer amountReserved)
+
+```
+
+Parameters
+
+```
+   amountReserved
+```
+
+Type: Integer
+
+Return Value
+
+Type: Void
+
+Usage
+
+This method can be called when you know in advance how many addresses emails will be sent to as a result of the transaction. If the
+transaction would cause the organization to exceed its daily email limit, using this method results in the following error:
+`System.HandledException: The daily limit for the org would be exceeded by this request.` If
+the organization doesn’t have permission to send API or mass email, using this method results in the following error:
+
+```
+   System.NoAccessException: The organization is not permitted to send email.
+
+##### reserveSingleEmailCapacity(amountReserved)
+
+```
+
+Reserves email capacity to send single email to the specified number of email addresses, after the current transaction commits.
+
+Signature
+
+```
+   public Void reserveSingleEmailCapacity(Integer amountReserved)
+
+```
+
+Parameters
+
+```
+   amountReserved
+```
+
+Type: Integer
+
+Return Value
+
+Type: Void
+
+Usage
+
+This method can be called when you know in advance how many addresses emails will be sent to as a result of the transaction. If the
+transaction would cause the organization to exceed its daily email limit, using this method results in the following error:
+`System.HandledException: The daily limit for the org would be exceeded by this request.` If
+the organization doesn’t have permission to send API or mass email, using this method results in the following error:
+
+```
+   System.NoAccessException: The organization is not permitted to send email.
+
+```
+
+
+Apex Reference Guide Messaging Class
+
+##### sendEmail(emails, allOrNothing)
+
+Sends the list of emails instantiated with either `SingleEmailMessage` or `MassEmailMessage` and returns a list of
+SendEmailResult objects. When org preferences are set to save EmailMessage objects and a trigger is defined for EmailMessage objects,
+##### the trigger is fired for each SingleEmailMessage individually. The sendEmail method can be called 10 times per Apex
+
+transaction and each method invocation can include up to 100 "To", 25 "Cc", and 25 "Bcc" recipients.
+
+Signature
+
+```
+   public Messaging.SendEmailResult[] sendEmail(Messaging.Email[] emails, Boolean
+
+   allOrNothing)
+
+```
+
+Parameters
+
+```
+   emails
+```
+
+Type: Messaging.Email[]
+
+```
+   allOrNothing
+```
+
+Type: Boolean
+
+##### The optional opt_allOrNone parameter specifies whether sendEmail prevents delivery of all other messages when any of
+
+the messages fail due to an error ( `true` ), or whether it allows delivery of the messages that don't have errors ( `false` ). The default
+is `true` .
+
+Return Value
+
+Type: Messaging.SendEmailResult[]
+
+##### **`sendEmailMessage(emailMessageIds, allOrNothing)`**
+
+Sends draft email messages as defined by the specified email message IDs and returns a list of SendEmailResult objects.
+
+Signature
+
+```
+   public Messaging.SendEmailResult[] sendEmailMessage(List<ID> emailMessageIds, Boolean
+
+   allOrNothing)
+
+```
+
+Parameters
+
+```
+   emailMessageIds
+```
+
+Type: List<ID>
+
+```
+   allOrNothing
+```
+
+Type: Boolean
+
+Return Value
+
+Type: Messaging.SendEmailResult[]
+
+If the _`emailMessageIds`_ parameter is null, the method throws a `System.IllegalArgumentException` exception.
+
+
+Apex Reference Guide Messaging Class
+
+Usage
+
+The `sendEmailMessage` method assumes that the optional _`allOrNothing`_ parameter is always `false` and ignores the
+value you set. Delivery of all messages is attempted even if some messages fail due to an error.
+
+The email address of the user calling the `sendEmailMessage` method is inserted in the From Address field of the email header and
+the Email Message record.
+
+Example
+
+This example shows how to send a draft email message. It creates a case and a new email message associated with the case. Next, the
+example sends a draft email message and checks the results. Before running this example, make sure to replace the email address with
+a valid address.
+
+```
+   Case c = new Case();
+
+   insert c;
+
+   EmailMessage e = new EmailMessage();
+
+   e.parentid = c.id;
+
+   // Set to draft status.
+
+   // This status is required
+
+   // for sendEmailMessage().
+
+   e.Status = '5';
+
+   e.TextBody =
+
+     'Sample email message.';
+
+   e.Subject = 'Apex sample';
+
+   e.ToAddress = 'customer@email.com';
+
+   insert e;
+
+   List<Messaging.SendEmailResult>
+
+     results =
+
+     Messaging.sendEmailMessage(new ID[]
+
+      { e.id });
+
+   System.assertEquals(1, results.size());
+
+   System.assertEquals(true,
+
+               results[0].success);
+
+```
+
+Versioned Behavior Changes
+
+In API version 54.0 and later, a null _`emailMessageIds`_ parameter results in a `System.IllegalArgumentException`
+exception. In API version 53.0 and earlier, a null _`emailMessageIds`_ parameter results in an error.
+
+##### renderEmailTemplate(whoId, whatId, bodies)
+
+Replaces merge fields in text bodies of email templates with values from Salesforce records. Returns an array of
+`RenderEmailTemplateBodyResult` objects, each of which corresponds to an element in the supplied array of text bodies.
+Each `RenderEmailTemplateBodyResult` provides a success or failure indication, along with either an error code or the
+rendered text.
+
+
+Apex Reference Guide Messaging Class
+
+Signature
+
+```
+   public static List<Messaging.RenderEmailTemplateBodyResult> renderEmailTemplate(String
+
+   whoId, String whatId, List<String> bodies)
+
+```
+
+Parameters
+
+```
+   whoId
+```
+
+Type: String
+
+The identifier of an object in the database, typically a contact, lead, or user. The database record for that object is read and used in
+merge field processing.
+
+```
+   whatId
+```
+
+Type: String
+
+Identifies an object in the database like an account or opportunity. The record for that object is read and used in merge field processing.
+
+```
+   bodies
+```
+
+Type: List<String>
+
+An array of strings that are examined for merge field references. The corresponding data from the object referenced by the `whoId`
+or `whatId` replaces the merge field reference.
+
+Return Value
+
+Type: List<Messaging.RenderEmailTemplateBodyResult>
+
+Usage
+
+Use this method in situations in which you want to dynamically compose blocks of text that are enriched with data from the database.
+You can then use the the rendered blocks of text to compose and send an email or update a text value in another database record.
+
+Executing the `renderEmailTemplate` method counts toward the SOQL governor limit. The number of SOQL queries that this
+method consumes is the number of elements in the list of strings passed in the _`bodies`_ parameter.
+
+SEE ALSO:
+
+[Execution Governors and Limits](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm)
+
+##### renderStoredEmailTemplate(templateId, whoId, whatId)
+
+Renders a text, custom, HTML, or Visualforce email template that exists in the database into an instance of
+`Messaging.SingleEmailMessage` . Includes all attachment content in the returned email message.
+
+Signature
+
+```
+   public static Messaging.SingleEmailMessage renderStoredEmailTemplate(String templateId,
+
+   String whoId, String whatId)
+
+```
+
+Parameters
+
+```
+   templateId
+```
+
+Type: String
+
+An email template that exists in the database, such as text, HTML, custom, and Visualforce templates.
+
+
+Apex Reference Guide Messaging Class
+
+```
+   whoId
+```
+
+Type: String
+
+The identifier of an object in the database, typically a contact, lead, or user. The database record for that object is read and used in
+merge field processing.
+
+```
+   whatId
+```
+
+Type: String
+
+Identifies an object in the database, like an account or opportunity. The record for that object is read and used in merge field
+processing.
+
+Return Value
+
+Type: Messaging.SingleEmailMessage
+
+Usage
+
+##### Executing the renderStoredEmailTemplate method counts toward the SOQL governor limit as one query.
+
+SEE ALSO:
+
+[Execution Governors and Limits](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm)
+
+##### renderStoredEmailTemplate(templateId, whoId, whatId, attachmentRetrievalOption)
+
+Renders a text, custom, HTML, or Visualforce email template that exists in the database into an instance of
+`Messaging.SingleEmailMessage` . Provides options for including attachment metadata only, attachment metadata and
+content, or excluding attachments.
+
+Signature
+
+```
+   public static Messaging.SingleEmailMessage renderStoredEmailTemplate(String templateId,
+
+   String whoId, String whatId, Messaging.AttachmentRetrievalOption
+
+   attachmentRetrievalOption)
+
+```
+
+Parameters
+
+```
+   templateId
+```
+
+Type: String
+
+An email template that exists in the database, such as text, HTML, custom, and Visualforce templates.
+
+```
+   whoId
+```
+
+Type: String
+
+The identifier of an object in the database, typically a contact, lead, or user. The database record for that object is read and used in
+merge field processing.
+
+```
+   whatId
+```
+
+Type: String
+
+Identifies an object in the database, like an account or opportunity. The record for that object is read and used in merge field
+processing.
+
+
+Apex Reference Guide Messaging Class
+
+```
+   attachmentRetrievalOption
+```
+
+Type: Messaging.AttachmentRetrievalOption
+
+Specifies options for including attachments in the `fileAttachments` property of the returned
+`Messaging.SingleEmailMessage` . Set to one of the Messaging.AttachmentRetrievalOption values to include attachment
+metadata only, attachment metadata and content, or to exclude attachments.
+
+Note: When the _`attachmentRetrievalOption`_ parameter is _not_ set to `NONE`, the `entityAttachments`
+property of `Messaging.SingleEmailMessage` contains the ID of the Salesforce content objects to attach
+(ContentVersion or Document). The `fileAttachments` property contains the IDs of attachments, in addition to all the
+IDs in the `entityAttachments` property. As a result, the ID values in `entityAttachments` are duplicates of the
+IDs in the `fileAttachments` property. If you call `renderStoredEmailTemplate()` by passing the
+`METADATA_WITH_BODY` option, and send the rendered email message, the email will contain duplicate attachments.
+Before using the returned email message with sendEmail(emails, allOrNothing), you can remove attachments from
+`fileAttachments` that are duplicated in `entityAttachments` .
+
+Return Value
+
+Type: Messaging.SingleEmailMessage
+
+Usage
+
+##### Executing the renderStoredEmailTemplate method counts toward the SOQL governor limit as one query. renderStoredEmailTemplate(templateId, whoId, whatId, attachmentRetrievalOption,
+
+updateEmailTemplateUsage)
+
+Renders a text, custom, HTML, or Visualforce email template that exists in the database into an instance of
+`Messaging.SingleEmailMessage` . Provides options for including attachment metadata only, attachment metadata and
+content, or excluding attachments.
+
+Signature
+
+```
+   public static Messaging.SingleEmailMessage renderStoredEmailTemplate(String templateId,
+
+   String whoId, String whatId, Messaging.AttachmentRetrievalOption
+
+   attachmentRetrievalOption, Boolean updateEmailTemplateUsage)
+
+```
+
+Parameters
+
+```
+   templateId
+```
+
+Type: String
+
+An email template that exists in the database, such as text, HTML, custom, and Visualforce templates.
+
+```
+   whoId
+```
+
+Type: String
+
+The identifier of an object in the database, typically a contact, lead, or user. The database record for that object is read and used in
+merge field processing.
+
+```
+   whatId
+```
+
+Type: String
+
+
+### Apex Reference Guide MultiStaticResourceCalloutMock Class
+
+Identifies an object in the database, like an account or opportunity. The record for that object is read and used in merge field
+processing.
+
+```
+   attachmentRetrievalOption
+```
+
+Type: Messaging.AttachmentRetrievalOption
+
+Specifies options for including attachments in the `fileAttachments` property of the returned
+`Messaging.SingleEmailMessage` . Set to one of the Messaging.AttachmentRetrievalOption values to include attachment
+metadata only, attachment metadata and content, or to exclude attachments.
+
+Note: When the _`attachmentRetrievalOption`_ parameter is _not_ set to `NONE`, the `entityAttachments`
+property of `Messaging.SingleEmailMessage` contains the ID of the Salesforce content objects to attach
+(ContentVersion or Document). The `fileAttachments` property contains the IDs of attachments, in addition to all the
+IDs in the `entityAttachments` property. As a result, the ID values in `entityAttachments` are duplicates of the
+IDs in the `fileAttachments` property. If you call `renderStoredEmailTemplate()` by passing the
+`METADATA_WITH_BODY` option, and send the rendered email message, the email will contain duplicate attachments.
+Before using the returned email message with sendEmail(emails, allOrNothing), you can remove attachments from
+`fileAttachments` that are duplicated in `entityAttachments` .
+
+```
+   updateEmailTemplateUsage
+```
+
+Type: Boolean
+
+Specifies whether the usage field in the EmailTemplate record is updated upon successful rendering.
+
+Return Value
+
+Type: Messaging.SingleEmailMessage
+
+Usage
+
+Executing the `renderStoredEmailTemplate` method counts toward the SOQL governor limit as one query.
+
+### MultiStaticResourceCalloutMock Class
+
+Utility class used to specify a fake response using multiple resources for testing HTTP callouts.
+
+Namespace
+
+System
+
+Usage
+
+Use the methods in this class to set the response properties for testing HTTP callouts. You can specify a resource for each endpoint.
+
+IN THIS SECTION:
+
+#### MultiStaticResourceCalloutMock Constructors
+
+MultiStaticResourceCalloutMock Methods
+
+#### MultiStaticResourceCalloutMock Constructors
+
+### The following are constructors for MultiStaticResourceCalloutMock .
+
+
+Apex Reference Guide MultiStaticResourceCalloutMock Class
+
+IN THIS SECTION:
+
+##### MultiStaticResourceCalloutMock()
+
+Creates a new instance of the `System.MultiStaticResourceCalloutMock` class.
+
+##### MultiStaticResourceCalloutMock()
+
+Creates a new instance of the `System.MultiStaticResourceCalloutMock` class.
+
+Signature
+
+```
+   public MultiStaticResourceCalloutMock()
+
+#### MultiStaticResourceCalloutMock Methods
+
+##### The following are methods for MultiStaticResourceCalloutMock . All are instance methods.
+
+```
+
+IN THIS SECTION:
+
+##### setHeader(headerName, headerValue)
+
+Sets the specified header name and value for the fake response.
+
+setStaticResource(endpoint, resourceName)
+Sets the specified static resource corresponding to the endpoint. The static resource contains the response body.
+
+setStatus(httpStatus)
+Sets the specified HTTP status for the response.
+
+setStatusCode(httpStatusCode)
+Sets the specified HTTP status code for the response.
+
+##### setHeader(headerName, headerValue)
+
+Sets the specified header name and value for the fake response.
+
+Signature
+
+```
+   public Void setHeader(String headerName, String headerValue)
+
+```
+
+Parameters
+
+```
+   headerName
+```
+
+Type: String
+
+```
+   headerValue
+```
+
+Type: String
+
+Return Value
+
+Type: Void
+
+
+Apex Reference Guide MultiStaticResourceCalloutMock Class
+
+##### setStaticResource(endpoint, resourceName)
+
+Sets the specified static resource corresponding to the endpoint. The static resource contains the response body.
+
+Signature
+
+```
+   public Void setStaticResource(String endpoint, String resourceName)
+
+```
+
+Parameters
+
+```
+   endpoint
+```
+
+Type: String
+
+```
+   resourceName
+```
+
+Type: String
+
+Return Value
+
+Type: Void
+
+##### setStatus(httpStatus)
+
+Sets the specified HTTP status for the response.
+
+Signature
+
+```
+   public Void setStatus(String httpStatus)
+
+```
+
+Parameters
+
+```
+   httpStatus
+```
+
+Type: String
+
+Return Value
+
+Type: Void
+
+##### setStatusCode(httpStatusCode)
+
+Sets the specified HTTP status code for the response.
+
+Signature
+
+```
+   public Void setStatusCode(Integer httpStatusCode)
+
+```
+
+Parameters
+
+```
+   httpStatusCode
+```
+
+Type: Integer
+
+
+### Apex Reference Guide Network Class
+
+Return Value
+
+Type: Void
+
+### Network Class
+
+Manage Experience Cloud sites.
+
+Namespace
+
+System
+
+IN THIS SECTION:
+
+#### Network Constructors
+
+Create an instance of the `System.Network` class.
+
+#### Network Methods
+
 Get the default landing page, login page, and self-registration page of a site. Asynchronously create site users and records. Get the
 login and logout URLs for a site. Get a user’s current site. Map dashboards and Insights reports.
 
@@ -5,7 +1398,7 @@ login and logout URLs for a site. Get a user’s current site. Map dashboards an
 
 Create an instance of the `System.Network` class.
 
-#### The following are constructors for Network .
+### The following are constructors for Network .
 
 IN THIS SECTION:
 
@@ -29,23 +1422,24 @@ Signature
 Get the default landing page, login page, and self-registration page of a site. Asynchronously create site users and records. Get the login
 and logout URLs for a site. Get a user’s current site. Map dashboards and Insights reports.
 
-#### The following are methods for Network . All methods are static.
+### The following are methods for Network . All methods are static.
 
 IN THIS SECTION:
 
 communitiesLanding()
 Returns a Page Reference to the default landing page for the Experience Cloud site. This is the first tab of the site.
 
-createExternalUserAsync(user, contact, account)
+
+Apex Reference Guide Network Class
+
+##### createExternalUserAsync(user, contact, account)
+
 Asynchronously creates an Experience Cloud site user for the given account or contact and associates it with the site. This method
 processes requests in batches and then sends an email with login information to the user.
 
 createRecordAsync(processType, mbObject)
 Asynchronously creates case, lead, and custom object records. This method collects record creation requests and processes them
 in batches.
-
-
-Apex Reference Guide Network Class
 
 forwardToAuthPage(startURL)
 Returns a Page Reference to the default login page. StartURL is included as a query paremeter for where to redirect after a successful
@@ -95,6 +1489,9 @@ If digital experiences isn’t enabled for the user’s org or the user is curre
 Asynchronously creates an Experience Cloud site user for the given account or contact and associates it with the site. This method
 processes requests in batches and then sends an email with login information to the user.
 
+
+Apex Reference Guide Network Class
+
 Signature
 
 ```
@@ -103,9 +1500,6 @@ Signature
    account)
 
 ```
-
-
-Apex Reference Guide Network Class
 
 Parameters
 
@@ -175,13 +1569,13 @@ Type: String
 
 Returns the UUID for the record created.
 
+
+Apex Reference Guide Network Class
+
 ##### forwardToAuthPage(startURL)
 
 Returns a Page Reference to the default login page. StartURL is included as a query paremeter for where to redirect after a successful
 login.
-
-
-Apex Reference Guide Network Class
 
 Signature
 
@@ -246,6 +1640,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide Network Class
+
 Parameters
 
 ```
@@ -253,9 +1650,6 @@ Parameters
 ```
 
 Type: String
-
-
-Apex Reference Guide Network Class
 
 The ID of the Experience Cloud site you’re retrieving this information for.
 
@@ -312,13 +1706,13 @@ Return Value
 
 Type: String
 
+
+### Apex Reference Guide Object Class
+
 Usage
 
 Returns the full URL for the Lightning Platform or Experience Builder page used as the self-registration page in the Experience Cloud
 site.
-
-
-### Apex Reference Guide Object Class
 
 ##### loadAllPackageDefaultNetworkDashboardSettings()
 
@@ -372,12 +1766,12 @@ If digital experiences isn’t enabled for the user’s org or the user is in th
 
 Contains methods that are implemented by all Apex types.
 
+
+Apex Reference Guide Object Class
+
 Namespace
 
 System
-
-
-Apex Reference Guide Object Class
 
 Usage
 
@@ -431,15 +1825,15 @@ Usage
 
 **•** Reflexive: `x.equals(x)`
 
+
+Apex Reference Guide Object Class
+
 **•** Symmetric: `x.equals(y)` returns `true` if and only if `y.equals(x)` returns `true`
 
 **•** Transitive: If `x.equals(y)` returns `true` and `y.equals(z)` returns `true`, then `x.equals(z)` returns `true`
 
 **•** Consistent: Multiple invocations of `x.equals(y)` consistently return `true` or consistently return `false`, provided the objects
 used in comparison are not modified.
-
-
-Apex Reference Guide Object Class
 
 **•** For any non-null reference value x, `x.equals(null)` returns `false`
 
@@ -500,12 +1894,12 @@ Signature
 
 ```
 
+
+### Apex Reference Guide OrgLimit Class
+
 Return Value
 
 Type: String
-
-
-### Apex Reference Guide OrgLimit Class
 
 Versioned Behavior Changes
 
@@ -555,15 +1949,15 @@ Returns the string representation of the org limit.
 
 Returns the maximum allowed limit value.
 
+
+Apex Reference Guide OrgLimit Class
+
 Signature
 
 ```
    public Integer getLimit()
 
 ```
-
-
-Apex Reference Guide OrgLimit Class
 
 Return Value
 
@@ -629,6 +2023,9 @@ Return Value
 
 Type: Integer
 
+
+### Apex Reference Guide OrgLimits Class
+
 Example
 
 ```
@@ -642,12 +2039,9 @@ Example
 
    }
 
-```
-
-
-### Apex Reference Guide OrgLimits Class
-
 ##### **`toString()`**
+
+```
 
 Returns the string representation of the org limit.
 
@@ -689,23 +2083,22 @@ Note: Limit values are updated asynchronously, in near-real-time.
 
 IN THIS SECTION:
 
-#### OrgLimits Methods
+OrgLimits Methods
 
 SEE ALSO:
 
 _[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_limits.htm)_ : Limits
 
-#### OrgLimits Methods
 
-### The following are methods for OrgLimits .
+### Apex Reference Guide PageReference Class
+
+#### OrgLimits Methods The following are methods for OrgLimits .
 
 IN THIS SECTION:
 
-getAll()
+##### getAll()
+
 Returns a list of OrgLimit instances.
-
-
-### Apex Reference Guide PageReference Class
 
 ##### getMap()
 
@@ -761,6 +2154,9 @@ Example
 A PageReference is a reference to an instantiation of a page. Among other attributes, PageReferences consist of a URL and a set of query
 parameter names and values.
 
+
+Apex Reference Guide PageReference Class
+
 Namespace
 
 System
@@ -770,9 +2166,6 @@ Use a PageReference object:
 **•** To view or set query string parameters and values for a page
 
 **•** To send the user to a different page as the result of an action method
-
-
-Apex Reference Guide PageReference Class
 
 Instantiation
 
@@ -827,6 +2220,11 @@ used instead of HTTP/1.1.
 
 Referer The URL that is either included or linked to the current request's URL. This header is optional.
 
+
+Apex Reference Guide PageReference Class
+
+**Header** **Description**
+
 User-Agent
 
 CipherSuite
@@ -838,11 +2236,6 @@ Therefore, this header can’t be relied upon.
 If this header exists and has a non-blank value, this means that the request is using HTTPS. Otherwise,
 the request is using HTTP. The contents of a non-blank value are not defined by this API, and can
 be changed without notice.
-
-
-Apex Reference Guide PageReference Class
-
-**Header** **Description**
 
 X-Salesforce-SIP The source IP address of the request. This header is always set on HTTP and HTTPS requests that
 are initiated outside of Salesforce's data centers.
@@ -859,32 +2252,32 @@ This example shows how to use a PageReference object to retrieve a query string 
 the `getAccount` method references the `id` query string parameter.
 
 ```
-   public with sharing class MyController {
+public with sharing class MyController {
 
-     public Account getAccount() {
+  public Account getAccount() {
 
-        return [SELECT Id, Name FROM Account WITH USER_MODE
+     return [SELECT Id, Name FROM Account WITH USER_MODE
 
-             WHERE Id = :ApexPages.currentPage().getParameters().get('Id')];
-
-      }
+          WHERE Id = :ApexPages.currentPage().getParameters().get('Id')];
 
    }
+
+}
 
 ```
 
 This page markup calls the `getAccount` method from that controller.
 
 ```
-   <apex:page controller="MyController">
+<apex:page controller="MyController">
 
-      <apex:pageBlock title="Retrieving Query String Parameters">
+   <apex:pageBlock title="Retrieving Query String Parameters">
 
-        You are viewing the {!account.name} account.
+     You are viewing the {!account.name} account.
 
-      </apex:pageBlock>
+   </apex:pageBlock>
 
-   </apex:page>
+</apex:page>
 
 ```
 
@@ -892,7 +2285,7 @@ Note: For this example to render properly, you must associate the Visualforce pa
 example, if `001D000000IRt53` is the account ID, the resulting URL should be:
 
 ```
-      https:// Visualforce_Url /apex/MyFirstPage?id=001D000000IRt53
+   https:// Visualforce_Url /apex/MyFirstPage?id=001D000000IRt53
 
 ```
 
@@ -907,13 +2300,13 @@ page. To access `id`, the `getAccount` method uses the `ApexPages` namespace.
 **•** First the `currentPage` method returns the `PageReference` instance for the current page. `PageReference` returns a
 reference to a Visualforce page, including its query string parameters.
 
+
+Apex Reference Guide PageReference Class
+
 **•** Using the page reference, use the `getParameters` method to return a map of the specified query string parameter names and
 values.
 
 **•** Then a call to the `get` method specifying `id` returns the value of the `id` parameter itself.
-
-
-Apex Reference Guide PageReference Class
 
 Example: Navigating to a New Page as the Result of an Action Method
 
@@ -990,6 +2383,9 @@ the account just created:
 
 ```
 
+
+Apex Reference Guide PageReference Class
+
 Example: Redirect Users to a Replacement Experience Cloud Site
 
 This example shows how to redirect a user attempting to access a retired feedback site to a self-service help site. If the `redirect`
@@ -1007,12 +2403,6 @@ attribute is set to `true` on the PageReference for the feedback site, the user 
 
         target.setRedirect(true);
 
-```
-
-
-Apex Reference Guide PageReference Class
-
-```
         // This is a permanent redirection
 
         target.setRedirectCode(301);
@@ -1063,6 +2453,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide PageReference Class
+
 Parameters
 
 ```
@@ -1080,9 +2473,6 @@ _`partialURL`_ parameter values:
 **•** `/` _`recordID`_ : refers to the detail page of a specified record.
 
 **•** `http://www.google.com` : refers to an external URL.
-
-
-Apex Reference Guide PageReference Class
 
 ##### PageReference(record) Generate a new instance of the PageReference class for the specified sObject record.
 
@@ -1130,6 +2520,9 @@ Returns the output of the page, as displayed to a user in a web browser.
 getContentAsPDF()
 Returns the page in PDF, regardless of the `<apex:page>` component’s `renderAs` attribute.
 
+
+Apex Reference Guide PageReference Class
+
 getCookies()
 Returns a map of cookie names and cookie objects, where the key is a String of the cookie name and the the value contains the
 cookie object with that name.
@@ -1144,9 +2537,6 @@ contains the name of the parameter, while the value string contains the value of
 
 getRedirect()
 Returns the current value of the PageReference object's `redirect` attribute.
-
-
-Apex Reference Guide PageReference Class
 
 getRedirectCode()
 Returns the HTTP redirect code used when getRedirect() is set to `true` for the PageReference object.
@@ -1197,6 +2587,9 @@ Type: String
 
 The resource path
 
+
+Apex Reference Guide PageReference Class
+
 Return Value
 
 Type: System.PageReference
@@ -1211,9 +2604,6 @@ Signature
    public static System.PageReference forResource(String resourceName)
 
 ```
-
-
-Apex Reference Guide PageReference Class
 
 Parameters
 
@@ -1262,6 +2652,9 @@ Return Value
 
 Type: Blob
 
+
+Apex Reference Guide PageReference Class
+
 Usage
 
 The content of the returned Blob depends on how the page is rendered. If the page is rendered as a PDF file, it returns the PDF document.
@@ -1277,9 +2670,6 @@ method. If the Visualforce page has an error, an `ExecutionException` is thrown.
 34.0 and later.
 
 **•** Apex email services
-
-
-Apex Reference Guide PageReference Class
 
 You also can’t use the method to retrieve the output of a different Visualforce page with the same controller and controller extensions.
 Instead, pass the base URL of the destination page.
@@ -1336,6 +2726,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide PageReference Class
+
 Return Value
 
 Type: Map<String, System.Cookie>
@@ -1348,9 +2741,6 @@ Used in conjunction with the `Cookie` class. Only returns cookies with the “ `
 
 Returns a map of the request headers, where the key string contains the name of the header, and the value string contains the value of
 the header.
-
-
-Apex Reference Guide PageReference Class
 
 Signature
 
@@ -1408,9 +2798,12 @@ Parameter keys are case-insensitive. For example:
 
       ApexPages.currentPage().getParameters().get('myparamname'));
 
-##### getRedirect()
-
 ```
+
+
+Apex Reference Guide PageReference Class
+
+##### getRedirect()
 
 Returns the current value of the PageReference object's `redirect` attribute.
 
@@ -1424,9 +2817,6 @@ Signature
 Return Value
 
 Type: Boolean
-
-
-Apex Reference Guide PageReference Class
 
 Usage
 
@@ -1475,6 +2865,9 @@ to update any references to the requested URL with the target location.
 Returns the relative URL associated with the PageReference when it was originally defined, including any query string parameters and
 anchors.
 
+
+Apex Reference Guide PageReference Class
+
 Signature
 
 ```
@@ -1489,9 +2882,6 @@ Type: String
 ##### setAnchor(anchor)
 
 Sets the URL’s anchor reference to the specified string.
-
-
-Apex Reference Guide PageReference Class
 
 Signature
 
@@ -1548,6 +2938,9 @@ hexadecimal representation.
 
 **•** After you create a cookie, the properties of the cookie can't be changed.
 
+
+Apex Reference Guide PageReference Class
+
 **•** Be careful when storing sensitive information in cookies. Pages are cached regardless of a cookie value. If you use a cookie
 [value to generate dynamic content, you should disable page caching. For more information, see Configure Site Caching in](https://help.salesforce.com/articleView?id=platform.sites_caching.htm&type=5&language=en_US)
 Salesforce Help.
@@ -1562,9 +2955,6 @@ Signature
    public System.PageReference setRedirect(Boolean redirect)
 
 ```
-
-
-Apex Reference Guide PageReference Class
 
 Parameters
 
@@ -1617,6 +3007,9 @@ redirected.
 **•** 301 — Moved Permanently. Redirect users by sending an HTTP GET request to the target location. Includes instructions to update
 any references to the requested URL with the target location.
 
+
+### Apex Reference Guide Packaging Class
+
 **•** 302 — Moved Temporarily. Redirect users by sending an HTTP GET request to the target location. Because the redirection is
 temporary, it doesn’t include update instructions.
 
@@ -1631,9 +3024,6 @@ instructions to update any references to the requested URL with the target locat
 
 If the redirect code contains an invalid integer, an error message is displayed when `PageReference` is used by Salesforce for
 redirection.
-
-
-### Apex Reference Guide Packaging Class
 
 Return Value
 
@@ -1674,6 +3064,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide Pattern Class
+
 Return Value
 
 Type: String
@@ -1687,14 +3080,13 @@ at runtime. Then, use `packageId` to confirm that the contextual user is license
 
 Represents a compiled representation of a regular expression.
 
-
-Apex Reference Guide Pattern Class
-
 Namespace
 
 System
 
-#### Pattern Methods The following are methods for Pattern .
+#### Pattern Methods
+
+### The following are methods for Pattern .
 
 IN THIS SECTION:
 
@@ -1702,8 +3094,7 @@ IN THIS SECTION:
 
 Compiles the regular expression into a Pattern object.
 
-##### matcher(stringtoMatch)
-
+matcher(stringtoMatch)
 Creates a Matcher object that matches the input string _`stringtoMatch`_ against this Pattern object.
 
 matches(regExp, stringtoMatch)
@@ -1734,6 +3125,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide Pattern Class
+
 Parameters
 
 ```
@@ -1749,9 +3143,6 @@ Type: System.Pattern
 ##### matcher(stringtoMatch)
 
 Creates a Matcher object that matches the input string _`stringtoMatch`_ against this Pattern object.
-
-
-Apex Reference Guide Pattern Class
 
 Signature
 
@@ -1806,6 +3197,9 @@ Usage
 
 If a pattern is to be used multiple times, compiling it once and reusing it is more efficient than invoking this method each time.
 
+
+Apex Reference Guide Pattern Class
+
 Example
 
 Note that the following code example:
@@ -1827,9 +3221,6 @@ produces the same result as this code example:
 ```
 
 Returns the regular expression from which this Pattern object was compiled.
-
-
-Apex Reference Guide Pattern Class
 
 Signature
 
@@ -1880,6 +3271,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide Pattern Class
+
 Parameters
 
 ```
@@ -1894,9 +3288,6 @@ Type: String[]
 
 Note: In API version 34.0 and earlier, a zero-width _`regExp`_ value produces an empty list item at the beginning of the method’s
 output.
-
-
-### Apex Reference Guide Queueable Interface
 
 Usage
 
@@ -1951,7 +3342,8 @@ Type: String[]
 Note: In API version 34.0 and earlier, a zero-width _`regExp`_ value produces an empty list item at the beginning of the method’s
 output.
 
-### Queueable Interface
+
+### Apex Reference Guide Queueable Interface Queueable Interface
 
 Enables the asynchronous execution of Apex jobs that can be monitored.
 
@@ -1959,15 +3351,12 @@ Namespace
 
 System
 
-
-Apex Reference Guide Queueable Interface
-
 Usage
 
-#### To execute Apex as an asynchronous job, implement the Queueable interface and add the processing logic in your implementation
+### To execute Apex as an asynchronous job, implement the Queueable interface and add the processing logic in your implementation
 ##### of the execute method.
 
-#### To implement the Queueable interface, you must first declare a class with the implements keyword as follows:
+### To implement the Queueable interface, you must first declare a class with the implements keyword as follows:
 
 ```
    public class MyQueueableClass implements Queueable {
@@ -1988,7 +3377,7 @@ Next, your class must provide an implementation for the following method:
 Your class and method implementation must be declared as `public` or `global` .
 
 To submit your class for asynchronous execution, call the `System.enqueueJob` by passing it an instance of your class implementation
-#### of the Queueable interface as follows:
+### of the Queueable interface as follows:
 
 ```
    ID jobID = System.enqueueJob(new MyQueueableClass());
@@ -2005,7 +3394,9 @@ SEE ALSO:
 
 _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_queueing_jobs.htm)_ : Queueable Apex
 
-#### Queueable Methods The following are methods for Queueable .
+#### Queueable Methods
+
+### The following are methods for Queueable .
 
 IN THIS SECTION:
 
@@ -2016,6 +3407,9 @@ Executes the queueable job.
 ##### execute(context)
 
 Executes the queueable job.
+
+
+Apex Reference Guide Queueable Interface
 
 Signature
 
@@ -2033,9 +3427,6 @@ Parameters
 Type: QueueableContext
 
 Contains the job ID.
-
-
-Apex Reference Guide Queueable Interface
 
 Return Value
 
@@ -2099,6 +3490,12 @@ created.
 
         // to run in the test.
 
+```
+
+
+### Apex Reference Guide QueueableContext Interface
+
+```
         Test.startTest();
 
         System.enqueueJob(new AsyncExecutionExample());
@@ -2119,12 +3516,6 @@ created.
 
         System.assertEquals('(415) 555-1212', acct.Phone);
 
-```
-
-
-### Apex Reference Guide QueueableContext Interface
-
-```
       }
 
    }
@@ -2171,16 +3562,14 @@ SEE ALSO:
 
 _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_queueing_jobs.htm)_ : Queueable Apex
 
-### QueueableDuplicateSignature Class
+
+### Apex Reference Guide QueueableDuplicateSignature Class QueueableDuplicateSignature Class
 
 Used in the `AsyncOptions` class to store the queueable job signature in the `DuplicateSignature` property.
 
 Namespace
 
 System
-
-
-### Apex Reference Guide QueueableDuplicateSignature.Builder Class
 
 IN THIS SECTION:
 
@@ -2190,7 +3579,9 @@ SEE ALSO:
 
 _Apex Developer Guide_ [: Detecting Duplicate Queueable Jobs](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dedupe_queueable.htm)
 
-#### QueueableDuplicateSignature Methods The following are methods for QueueableDuplicateSignature .
+#### QueueableDuplicateSignature Methods
+
+### The following are methods for QueueableDuplicateSignature .
 
 IN THIS SECTION:
 
@@ -2216,7 +3607,7 @@ Type: String
 ### QueueableDuplicateSignature.Builder Class
 
 Build a unique signature for your queueable job using this inner builder class. The `build()` class method builds a
-#### QueueableDuplicateSignature object, with input from the addId(), addInteger(), and addString() methods.
+### QueueableDuplicateSignature object, with input from the addId(), addInteger(), and addString() methods.
 
 Use the `DuplicateSignature` property in the `AsyncOptions` class to store the queueable job signature. Enqueue your job
 by using the `System.enqueueJob()` with the `AsyncOptions` parameter.
@@ -2224,6 +3615,9 @@ by using the `System.enqueueJob()` with the `AsyncOptions` parameter.
 Namespace
 
 System
+
+
+Apex Reference Guide QueueableDuplicateSignature.Builder Class
 
 Examples
 
@@ -2244,12 +3638,6 @@ This example builds the async job signature with UserId and the string `MyQueuea
 
       System.enqueueJob(new MyQueueable(), options);
 
-```
-
-
-Apex Reference Guide QueueableDuplicateSignature.Builder Class
-
-```
    } catch (DuplicateMessageException ex) {
 
       //Exception is thrown if there is already an enqueued job with the same signature
@@ -2305,6 +3693,9 @@ addString(inputString)
 Adds a string to build a unique signature for a queueable job. You can then enqueue the job by using the signature as the
 `AsyncOptions` parameter to `System.enqueueJob()` .
 
+
+Apex Reference Guide QueueableDuplicateSignature.Builder Class
+
 build()
 Builds a unique signature for a queueable job. You can then enqueue the job by using the signature as the `AsyncOptions`
 parameter to `System.enqueueJob()` .
@@ -2318,9 +3709,6 @@ maximum allowed number.
 
 getSize()
 Gets the size of the queueable job signature in bytes.
-
-
-Apex Reference Guide QueueableDuplicateSignature.Builder Class
 
 ##### **`addId(inputId)`**
 
@@ -2370,6 +3758,9 @@ Return Value
 
 Type: QueueableDuplicateSignature.Builder
 
+
+Apex Reference Guide QueueableDuplicateSignature.Builder Class
+
 ##### **`addString(inputString)`**
 
 Adds a string to build a unique signature for a queueable job. You can then enqueue the job by using the signature as the
@@ -2389,9 +3780,6 @@ Parameters
 ```
 
 Type: String
-
-
-Apex Reference Guide QueueableDuplicateSignature.Builder Class
 
 Return Value
 
@@ -2440,6 +3828,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide QuickAction Class
+
 Return Value
 
 Type: Integer
@@ -2454,9 +3845,6 @@ Signature
    public Integer getSize()
 
 ```
-
-
-### Apex Reference Guide QuickAction Class
 
 Return Value
 
@@ -2519,6 +3907,12 @@ This sample performs a global action— `QuickAction.CreateContact` –on the pa
 
       QuickAction.QuickActionResult res = QuickAction.performQuickAction(req);
 
+```
+
+
+Apex Reference Guide QuickAction Class
+
+```
       return c.id;
 
    }
@@ -2531,12 +3925,7 @@ QuickActionRequest Class
 
 QuickActionResult Class
 
-#### QuickAction Methods
-
-### The following are methods for QuickAction . All methods are static.
-
-
-Apex Reference Guide QuickAction Class
+#### QuickAction Methods The following are methods for QuickAction . All methods are static.
 
 IN THIS SECTION:
 
@@ -2589,6 +3978,9 @@ Type: List<QuickAction.DescribeAvailableQuickActionResult>
 
 The metadata information for the available quick actions of the parent object.
 
+
+Apex Reference Guide QuickAction Class
+
 Example
 
 ```
@@ -2604,12 +3996,9 @@ Example
 
       QuickAction.DescribeAvailableQuickActions('Global');
 
-```
-
-
-Apex Reference Guide QuickAction Class
-
 ##### describeQuickActions(sObjectNames)
+
+```
 
 Returns the metadata information for the provided quick actions.
 
@@ -2669,6 +4058,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide QuickAction Class
+
 Parameters
 
 ```
@@ -2680,9 +4072,6 @@ Type: QuickAction.QuickActionRequest
 Return Value
 
 Type: QuickAction.QuickActionResult
-
-
-Apex Reference Guide QuickAction Class
 
 ##### performQuickAction(quickActionRequest, allOrNothing)
 
@@ -2746,12 +4135,12 @@ Return Value
 
 Type: List<QuickAction.QuickActionResult>
 
+
+### Apex Reference Guide Quiddity Enum
+
 ##### performQuickActions(quickActionRequests, allOrNothing)
 
 Performs the quick actions specified in the quick action request list with the option for partial success, and returns action results.
-
-
-### Apex Reference Guide Quiddity Enum
 
 Signature
 
@@ -2815,16 +4204,16 @@ The following are the values of the `System.Quiddity` enum.
 `DISCOVERABLE_LOGIN` Execution event is Login Discoverable login page used by external users to log in
 to an Experience Cloud site.
 
+
+### Apex Reference Guide RemoteObjectController
+
+**Value** **Description**
+
 `EXTERNAL_SERVICE_CALLBACK` Execution event is an External Services asynchronous callback function.
 
 `FUNCTION_CALLBACK` Execution event is a callback function.
 
 `FUTURE` Execution event is a future method.
-
-
-### Apex Reference Guide RemoteObjectController
-
-**Value** **Description**
 
 `INBOUND_EMAIL_SERVICE` Execution event is an Apex inbound email service.
 
@@ -2872,10 +4261,8 @@ Usage
 
 pages.
 
-### RemoteObjectController Methods The following are methods for RemoteObjectController . All methods are static.
 
-
-Apex Reference Guide RemoteObjectController
+#### Apex Reference Guide RemoteObjectController RemoteObjectController Methods The following are methods for RemoteObjectController . All methods are static.
 
 IN THIS SECTION:
 
@@ -2941,15 +4328,15 @@ A map that contains a single element with the error message for the overall oper
 
 Delete records from the database.
 
+
+Apex Reference Guide RemoteObjectController
+
 Signature
 
 ```
    public static Map<String,Object> del(String type, List<String> recordIds)
 
 ```
-
-
-Apex Reference Guide RemoteObjectController
 
 Parameters
 
@@ -3027,10 +4414,10 @@ The fields to retrieve for each record.
 
 Type: Map<String,Object>
 
-The criteria to use when performing the query.
-
 
 Apex Reference Guide RemoteObjectController
+
+The criteria to use when performing the query.
 
 Return Value
 
@@ -3102,13 +4489,13 @@ was called and the results of the call.
 **Single Update—Success**
 A map that contains a single element with the ID of the record that was updated. For example, `{ id: '` _**`recordId`**_ `'` `}` .
 
+
+### Apex Reference Guide Request Class
+
 **Batch Update—Success**
 A map that contains a single element, an array of Map<String,Object> elements. Each element contains the ID of the record updated
 and an array of errors, if there were any, for that record’s individual update. For example, `{ results: [ { id: '` _**`recordId`**_ `',`
 `errors:` `['` _**`errorMessage`**_ `', ...]}, ...] }` .
-
-
-### Apex Reference Guide Request Class
 
 **Single and Batch Update—Failure**
 A map that contains a single element with the error message for the overall operation. For example, `{ error:`
@@ -3165,13 +4552,14 @@ IN THIS SECTION:
 
 ### The following are methods for Request .
 
-IN THIS SECTION:
-
-getCurrent()
-Returns the current Request object that contains the request ID and Quiddity value.
-
 
 ### Apex Reference Guide ResetPasswordResult Class
+
+IN THIS SECTION:
+
+##### getCurrent()
+
+Returns the current Request object that contains the request ID and Quiddity value.
 
 ##### getQuiddity()
 
@@ -3232,12 +4620,12 @@ Type: String
 
 Represents the result of a password reset.
 
+
+### Apex Reference Guide RestContext Class
+
 Namespace
 
 System
-
-
-### Apex Reference Guide RestContext Class
 
 #### ResetPasswordResult Methods The following are instance methods for ResetPasswordResult .
 
@@ -3295,6 +4683,12 @@ REST method.
 
         String accountId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
 
+```
+
+
+### Apex Reference Guide RestRequest Class
+
+```
         Account result = [SELECT Id, Name, Phone, Website FROM Account WHERE Id =
 
    :accountId];
@@ -3303,12 +4697,6 @@ REST method.
 
       }
 
-```
-
-
-### Apex Reference Guide RestRequest Class
-
-```
    }
 
 #### RestContext Properties The following are properties for RestContext .
@@ -6754,6 +8142,8 @@ Usage
 Calls to this method in API version 30.0 and later can’t commit the transaction automatically. Calls to this method before API version
 30.0 commit the transaction, making it impossible to roll back to a save point before the call.
 
+The password reset process doesn't verify the external user's email address.
+
 ##### createExternalUser(user, accountId)
 
 Creates a Salesforce Site or Experience Cloud site user for the given account and associates it with the site.
@@ -6791,10 +8181,10 @@ Return Value
 
 Type: Id
 
-The ID of the user that this method creates.
-
 
 Apex Reference Guide Site Class
+
+The ID of the user that this method creates.
 
 Usage
 
@@ -6864,11 +8254,11 @@ This method throws `Site.ExternalUserCreateException` when user creation fails.
 
 Note: This method is only valid when a site is associated with a Customer Portal.
 
-Calls to this method in API version 30.0 and later can’t commit the transaction automatically. Calls to this method before API version
-30.0 commit the transaction, making it impossible to roll back to a save point before the call.
-
 
 Apex Reference Guide Site Class
+
+Calls to this method in API version 30.0 and later can’t commit the transaction automatically. Calls to this method before API version
+30.0 commit the transaction, making it impossible to roll back to a save point before the call.
 
 ##### createExternalUser(user, accountId, password, sendEmailConfirmation)
 
@@ -6941,12 +8331,12 @@ Note: This method is only valid when a site is associated with a Customer Portal
 Calls to this method in API version 30.0 and later can’t commit the transaction automatically. Calls to this method before API version
 30.0 commit the transaction, making it impossible to roll back to a save point before the call.
 
+
+Apex Reference Guide Site Class
+
 ##### createPersonAccountPortalUser(user, ownerId, password)
 
 Creates a person account using the default record type defined on the guest user's profile, then enables it for the site's portal.
-
-
-Apex Reference Guide Site Class
 
 Signature
 
@@ -7028,12 +8418,12 @@ Type: String
 
 Type: String
 
+
+Apex Reference Guide Site Class
+
 Return Value
 
 Type: ID
-
-
-Apex Reference Guide Site Class
 
 Usage
 
@@ -7150,7 +8540,9 @@ Calls to this method in API version 30.0 and later can’t commit the transactio
 Calls to this method are subject to rate-limiting. If your rate of calls exceeds the limit, Salesforce doesn't send the password reset email.
 If you experience this issue, try waiting for an hour before you send another call.
 
-Note: `Site.forgotPassword` cannot be used with the `@future` method, which enables asynchronous execution.
+The password reset process doesn't verify the external user's email address.
+
+Note: You can't use `Site.forgotPassword` with the `@future` method, which enables asynchronous execution.
 
 ##### forgotPassword(username)
 
@@ -7172,12 +8564,12 @@ Parameters
 
 Type: String
 
+
+Apex Reference Guide Site Class
+
 Return Value
 
 Type: Boolean
-
-
-Apex Reference Guide Site Class
 
 Note: The return value is always true unless it’s called outside of a Visualforce page.
 
@@ -7189,7 +8581,9 @@ Calls to this method in API version 30.0 and later can’t commit the transactio
 Calls to this method are subject to rate-limiting. If your rate of calls exceeds the limit, Salesforce doesn't send the password reset email.
 If you experience this issue, try waiting for an hour before you send another call.
 
-Note: `Site.forgotPassword` cannot be used with the `@future` method, which enables asynchronous execution.
+The password reset process doesn't verify the external user's email address.
+
+Note: You can't use `Site.forgotPassword` with the `@future` method, which enables asynchronous execution.
 
 ##### getAdminEmail()
 
@@ -17943,6 +19337,8 @@ reset. When the user logs in with the new password in the email, they are prompt
 Salesforce using the new password is included in the email. Use `setPassword(userId, password)` if you don't want the user
 to be prompted to enter a new password when they log in.
 
+The password reset process doesn't verify an external user's email address.
+
 Warning: Be careful with this method, and do not expose this functionality to end-users.
 
 ##### **`resumeJobById(cronTriggerId)`**
@@ -20689,8 +22085,8 @@ Apex Reference Guide Trigger Class
 
 **Variable** **Usage**
 
-`isExecuting` Returns true if the current context for the Apex code is a trigger, not a Visualforce page, a Web service,
-or an `executeanonymous()` API call.
+`isExecuting` Returns `true` if the current context for the Apex code is a trigger, not a Visualforce page, a web
+service, or an `executeanonymous()` API call.
 
 `isInsert` Returns `true` if this trigger was fired due to an insert operation, from the Salesforce user interface,
 Apex, or the API.
@@ -20739,7 +22135,7 @@ A map of IDs to the old versions of the sObject records.
 
 This map is only available in `update` and `delete` triggers.
 
-Returns an enum of type System.TriggerOperation corresponding to the current operation.
+Returns an enum of type `System.TriggerOperation` corresponding to the current operation.
 
 Possible values of the System.TriggerOperation enum are: `BEFORE_INSERT`, `BEFORE_UPDATE`,
 `BEFORE_DELETE`, `AFTER_INSERT`, `AFTER_UPDATE`, `AFTER_DELETE`, and
@@ -20773,85 +22169,87 @@ For example, in this simple trigger, `Trigger.new` is a list of sObjects and can
 a bind variable in the `IN` clause of a SOQL query.
 
 ```
-   Trigger simpleTrigger on Account (after insert) {
+   trigger SimpleTrigger on Account(after insert) {
 
-      for (Account a : Trigger.new) {
+     for (Account a : Trigger.new) {
 
-        // Iterate over each sObject
+      // Iterate over each sObject
 
-      }
+     }
 
-      // This single query finds every contact that is associated with any of the
+     // This single query finds every contact that is associated with any of the
 
-      // triggering accounts. Note that although Trigger.new is a collection of
+     // triggering accounts. Note that although Trigger.new is a collection of
 
-      // records, when used as a bind variable in a SOQL query, Apex automatically
+     // records, when used as a bind variable in a SOQL query, Apex automatically
 
-      // transforms the list of records into a list of corresponding Ids.
+     // transforms the list of records into a list of corresponding Ids.
 
-      Contact[] cons = [SELECT LastName FROM Contact
+     Contact[] cons = [
 
-                 WHERE AccountId IN :Trigger.new];
+      SELECT LastName
+
+      FROM Contact
+
+      WHERE AccountId IN :Trigger.new
+
+      WITH USER_MODE
+
+     ];
 
    }
 
 ```
 
-This trigger uses Boolean context variables like `Trigger.isBefore` and `Trigger.isDelete` to define code that only executes
-for specific trigger conditions:
+This trigger uses Boolean context variables such as `Trigger.isBefore` and `Trigger.isDelete` to define code that only
+executes for specific trigger conditions:
 
 ```
-   trigger myAccountTrigger on Account(before delete, before insert, before update,
+   trigger MyAccountTrigger on Account(
 
-                         after delete, after insert, after update) {
+     before delete,
 
-   if (Trigger.isBefore) {
+     before insert,
+
+     before update,
+
+     after delete,
+
+     after insert,
+
+     after update
+
+   ) {
+
+     if (Trigger.isBefore) {
 
       if (Trigger.isDelete) {
 
-        // In a before delete trigger, the trigger accesses the records that will be
+       // In a before delete trigger, the trigger accesses the records that will be
 
-        // deleted with the Trigger.old list.
+       // deleted with the Trigger.old list.
 
-        for (Account a : Trigger.old) {
+       for (Account a : Trigger.old) {
 
-           if (a.name != 'okToDelete') {
+        if (a.name != 'okToDelete') {
 
-             a.addError('You can\'t delete this record!');
-
-           }
+         a.addError('You can\'t delete this record!');
 
         }
 
+       }
+
       } else {
 
-      // In before insert or before update triggers, the trigger accesses the new records
+       // In before insert or before update triggers, the trigger accesses the new records
 
-      // with the Trigger.new list.
+       // with the Trigger.new list.
 
-        for (Account a : Trigger.new) {
+       for (Account a : Trigger.new) {
 
-           if (a.name == 'bad') {
+        if (a.name == 'bad') {
 
-             a.name.addError('Bad name');
-
-           }
-
-      }
-
-      if (Trigger.isInsert) {
-
-        for (Account a : Trigger.new) {
-
-           System.assertEquals('xxx', a.accountNumber);
-
-           System.assertEquals('industry', a.industry);
-
-           System.assertEquals(100, a.numberofemployees);
-
-           System.assertEquals(100.0, a.annualrevenue);
-
-           a.accountNumber = 'yyy';
+         a.name.addError('Bad name');
 
 ```
 
@@ -20861,33 +22259,53 @@ for specific trigger conditions:
 ```
         }
 
-   // If the trigger is not a before trigger, it must be an after trigger.
+       }
 
-   } else {
-
-      if (Trigger.isInsert) {
-
-        List<Contact> contacts = new List<Contact>();
+       if (Trigger.isInsert) {
 
         for (Account a : Trigger.new) {
 
-           if(a.Name == 'makeContact') {
+         Assert.areEqual('xxx', a.accountNumber);
 
-             contacts.add(new Contact (LastName = a.Name,
+         Assert.areEqual('industry', a.industry);
 
-                             AccountId = a.Id));
+         Assert.areEqual(100, a.numberofemployees);
 
-           }
+         Assert.areEqual(100.0, a.annualrevenue);
+
+         a.accountNumber = 'yyy';
 
         }
 
-       insert contacts;
+        // If the trigger is not a before trigger, it must be an after trigger.
+
+       } else {
+
+        if (Trigger.isInsert) {
+
+         List<Contact> contacts = new List<Contact>();
+
+         for (Account a : Trigger.new) {
+
+           if (a.Name == 'makeContact') {
+
+            contacts.add(new Contact(LastName = a.Name, AccountId = a.Id));
+
+           }
+
+         }
+
+         insert as user contacts;
+
+        }
+
+       }
 
       }
 
      }
 
-   }}}
+   }
 
 ### TriggerOperation Enum
 
@@ -20921,6 +22339,9 @@ Namespace
 
 System
 
+
+Apex Reference Guide Type Class
+
 Usage
 
 Use the `forName` methods to retrieve the type of an Apex class, which can be a built-in or a user-defined class. You can use these
@@ -20929,9 +22350,6 @@ methods to retrieve the type of public and global classes, and not private class
 else, such as a subscriber of your package, provide the methods’ implementations.
 
 Note: A call to `Type.forName()` can cause the class to be compiled.
-
-
-Apex Reference Guide Type Class
 
 Example: Instantiating a Type Based on Its Name
 
@@ -21000,6 +22418,12 @@ value of _`VehicleImpl`_ .
 
         // Call the methods that have a custom implementation
 
+```
+
+
+Apex Reference Guide Type Class
+
+```
         System.debug('Max speed: ' + v.getMaxSpeed());
 
         System.debug('Vehicle type: ' + v.getType());
@@ -21014,9 +22438,6 @@ Class Property
 
 The `class` property returns the `System.Type` of the type it is called on. It’s exposed on all Apex built-in types including primitive
 data types and collections, sObject types, and user-defined classes. This property can be used instead of `forName` methods.
-
-
-Apex Reference Guide Type Class
 
 Call this property on the type name. For example:
 
@@ -21066,6 +22487,9 @@ Returns a string representation of the current type, which is the type name.
 
 Returns `true` if the specified type is equal to the current type; otherwise, returns `false` .
 
+
+Apex Reference Guide Type Class
+
 Signature
 
 ```
@@ -21082,9 +22506,6 @@ Parameters
 Type: Object
 
 The type to compare with the current type.
-
-
-Apex Reference Guide Type Class
 
 Return Value
 
@@ -21142,6 +22563,9 @@ method and specify an empty string or `null` for the namespace argument.
 
 **•** A call to `Type.forName()` can cause the class to be compiled.
 
+
+Apex Reference Guide Type Class
+
 ##### forName(namespace, name)
 
 Returns the type that corresponds to the specified namespace and class name.
@@ -21152,9 +22576,6 @@ Signature
    public static System.Type forName(String namespace, String name)
 
 ```
-
-
-Apex Reference Guide Type Class
 
 Parameters
 
@@ -21213,6 +22634,9 @@ class as a namespace such as `Type.forName('OuterClass', 'InnerClass')` with ind
 
 Returns the name of the current type.
 
+
+Apex Reference Guide Type Class
+
 Signature
 
 ```
@@ -21223,9 +22647,6 @@ Signature
 Return Value
 
 Type: String
-
-
-Apex Reference Guide Type Class
 
 Example
 
@@ -21288,6 +22709,9 @@ Return Value
 
 Type: Boolean
 
+
+Apex Reference Guide Type Class
+
 The method returns `true` when the method is invoked as parentType.isAssignableFrom(childType). When invoked in any of the
 following ways, the method returns `false` :
 
@@ -21296,9 +22720,6 @@ following ways, the method returns `false` :
 **•** typeA.isAssignableFrom(TypeB) where TypeB is a sibling of TypeA
 
 **•** typeA.isAssignableFrom(TypeB) where TypeB and TypeA are unrelated
-
-
-Apex Reference Guide Type Class
 
 Note: A childType is the child of a parentType when it implements an interface, extends a virtual or abstract class, or is the same
 `System.Type` as the parentType.
@@ -21368,6 +22789,12 @@ Then, it explores several type comparisons using `isAssignableFrom()` .
 
    global class B implements Callable {
 
+```
+
+
+Apex Reference Guide Type Class
+
+```
       global Object call(String action, Map<String, Object> args) { return null; }
 
    }
@@ -21376,12 +22803,6 @@ Then, it explores several type comparisons using `isAssignableFrom()` .
 
    Type listOfStrings = Type.forName('List<String>');
 
-```
-
-
-Apex Reference Guide Type Class
-
-```
    Type listOfIntegers = Type.forName('List<Integer>');
 
    boolean flagListTypes = listOfIntegers.isAssignableFrom(listOfStrings); // false
@@ -21455,13 +22876,13 @@ Usage
 
 value.
 
+
+### Apex Reference Guide UninstallHandler Interface
+
 This method enables you to instantiate a Type that implements an interface and call its methods while letting someone else provide
 the methods’ implementation. For example, a package developer can provide an interface that a subscriber who installs the package
 can implement. The code in the package calls the subscriber's implementation of the interface methods by instantiating the subscriber’s
 Type.
-
-
-### Apex Reference Guide UninstallHandler Interface
 
 Example
 
@@ -21521,13 +22942,13 @@ Namespace
 
 System
 
+
+Apex Reference Guide UninstallHandler Interface
+
 Usage
 
 App developers can implement this interface to specify Apex code that runs automatically after a subscriber uninstalls a managed
 package. This makes it possible to perform cleanup and notification tasks based on details of the subscriber’s organization.
-
-
-Apex Reference Guide UninstallHandler Interface
 
 The uninstall script is subject to default governor limits. It runs as a special system user that represents your package, so all operations
 performed by the script will appear to be done by your package. You can access this user by using UserInfo. You will only see this user
@@ -21590,15 +23011,15 @@ Specifies the actions to be performed on uninstall.
 
 Specifies the actions to be performed on uninstall.
 
+
+Apex Reference Guide UninstallHandler Interface
+
 Signature
 
 ```
    public Void onUninstall(UninstallContext context)
 
 ```
-
-
-Apex Reference Guide UninstallHandler Interface
 
 Parameters
 
@@ -21681,6 +23102,12 @@ This sample shows how to test an uninstall script implemented in the `UninstallC
 
      List<FeedItem> feedPostsAfter =
 
+```
+
+
+### Apex Reference Guide URL Class
+
+```
       [SELECT Id FROM FeedItem WHERE parentId=:UninstallerId AND CreatedDate=TODAY];
 
      System.assertEquals(feedPostsBefore.size() + 1, feedPostsAfter.size(),
@@ -21689,10 +23116,9 @@ This sample shows how to test an uninstall script implemented in the `UninstallC
 
    }
 
+### URL Class
+
 ```
-
-
-### Apex Reference Guide URL Class URL Class
 
 Represents a uniform resource locator (URL) and provides access to parts of the URL. Enables access to the base URL used to access your
 Salesforce org.
@@ -21712,7 +23138,7 @@ as an attachment to a Chatter post by concatenating the Salesforce base URL with
 
    ContentDocument doc = [SELECT Id FROM ContentDocument
 
-         WHERE Title = 'myfile'];
+         WHERE Title = 'myfile' WITH USER_MODE];
 
    // Create a link to the file.
 
@@ -21720,7 +23146,7 @@ as an attachment to a Chatter post by concatenating the Salesforce base URL with
 
      '/' + doc.id;
 
-   system.debug(fullFileURL);
+   System.debug(fullFileURL);
 
 ```
 
@@ -21728,7 +23154,7 @@ The following example creates a link to a Salesforce record. The full URL is cre
 record ID.
 
 ```
-   Account acct = [SELECT Id FROM Account WHERE Name = 'Acme' LIMIT 1];
+   Account acct = [SELECT Id FROM Account WHERE Name = 'Acme' WITH USER_MODE LIMIT 1];
 
    String fullRecordURL = URL.getOrgDomainURL().toExternalForm() + '/' + acct.Id;
 
@@ -21745,7 +23171,7 @@ the debug log output.
 
    Account myAccount = new Account(Name='Acme');
 
-   insert myAccount;
+   insert as user myAccount;
 
    // Get the base URL.
 
@@ -21759,6 +23185,12 @@ the debug log output.
 
    System.debug('Current request URL: ' + currentRequestURL);
 
+```
+
+
+Apex Reference Guide URL Class
+
+```
    // Create the account URL from the base URL.
 
    String accountURL = URL.getOrgDomainURL().toExternalForm() +
@@ -21769,12 +23201,6 @@ the debug log output.
 
    // Get some parts of the base URL.
 
-```
-
-
-Apex Reference Guide URL Class
-
-```
    System.debug('Host: ' + URL.getOrgDomainURL().getHost());
 
    System.debug('Protocol: ' + URL.getOrgDomainURL().getProtocol());
@@ -21824,15 +23250,15 @@ Url(protocol, host, port, file)
 
 #### Creates a new instance of the URL class using the specified string representation of the URL.
 
+
+Apex Reference Guide URL Class
+
 Signature
 
 ```
    public Url(String spec)
 
 ```
-
-
-Apex Reference Guide URL Class
 
 Parameters
 
@@ -21861,7 +23287,7 @@ Parameters
    context
 ```
 
-Type: URL on page 4254
+Type: URL on page 4271
 
 The context in which to parse the specification.
 
@@ -21906,6 +23332,9 @@ Parameters
 
 Type: String
 
+
+Apex Reference Guide URL Class
+
 The protocol name for this URL.
 
 ```
@@ -21913,9 +23342,6 @@ The protocol name for this URL.
 ```
 
 Type: String
-
-
-Apex Reference Guide URL Class
 
 The host name for this URL.
 
@@ -21985,14 +23411,14 @@ Returns the URL of an entire request on a Salesforce instance.
 getDefaultPort()
 Returns the default port number of the protocol associated with the current URL.
 
+
+Apex Reference Guide URL Class
+
 getFile()
 Returns the file name of the current URL.
 
 getFileFieldURL(entityId, fieldName)
 Returns the download URL for a file attachment.
-
-
-Apex Reference Guide URL Class
 
 getHost()
 Returns the host name of the current URL.
@@ -22048,15 +23474,15 @@ Type: String
 
 Returns the URL of an entire request on a Salesforce instance.
 
+
+Apex Reference Guide URL Class
+
 Signature
 
 ```
    public static System.URL getCurrentRequestUrl()
 
 ```
-
-
-Apex Reference Guide URL Class
 
 Return Value
 
@@ -22119,6 +23545,9 @@ Parameters
 
 Type: String
 
+
+Apex Reference Guide URL Class
+
 Specifies the ID of the entity that holds the file data.
 
 ```
@@ -22126,9 +23555,6 @@ Specifies the ID of the entity that holds the file data.
 ```
 
 Type: String
-
-
-Apex Reference Guide URL Class
 
 Specifies the API name of a file field component, such as `AttachmentBody` .
 
@@ -22193,12 +23619,12 @@ Usage
 
 for creating and customizing picklist value sets and custom fields, and more.
 
-##### getOrgDomainUrl() can access the domain URL only for the org in which the Apex code is running.
-
-You don't need a RemoteSiteSetting for your org to interact with the Salesforce APIs using domain URLs retrieved with this method.
-
 
 Apex Reference Guide URL Class
+
+`getOrgDomainUrl()` can access the domain URL only for the org in which the Apex code is running.
+
+You don't need a RemoteSiteSetting for your org to interact with the Salesforce APIs using domain URLs retrieved with this method.
 
 Example
 
@@ -22266,15 +23692,15 @@ Type: Integer
 
 Returns the protocol name of the current URL, such as, `https` .
 
+
+Apex Reference Guide URL Class
+
 Signature
 
 ```
    public String getProtocol()
 
 ```
-
-
-Apex Reference Guide URL Class
 
 Return Value
 
@@ -22331,12 +23757,12 @@ Signature
 
 ```
 
+
+Apex Reference Guide URL Class
+
 Return Value
 
 Type: `System.URL`
-
-
-Apex Reference Guide URL Class
 
 Returns the URL for the current connection: for example, `https://` _`MyDomainName`_ `.my.salesforce.com` or
 `https://` _`MyDomainName`_ `.lightning.force.com` .
@@ -23398,7 +24824,7 @@ isn’t an Experience Cloud site.
 
 Usage
 
-Use this method along with its paired `verifyRegisterVerificationMethod` on page 4288 to customize the process for
+Use this method along with its paired `verifyRegisterVerificationMethod` on page 4305 to customize the process for
 registering a user’s verification method using a Visualforce Verify page.
 
 ##### First call the initRegisterVerificationMethod method to get the verification code sent to the user as input, and validate
@@ -24158,7 +25584,7 @@ code correctly.
 Usage
 
 Call this method to complete the passwordless login authentication process. It validates the verification method and verification code.
-It also checks that the identifier is the same as the one returned by `initPasswordlessLogin` on page 4277.
+It also checks that the identifier is the same as the one returned by `initPasswordlessLogin` on page 4294.
 
 Example
 
@@ -24725,7 +26151,7 @@ during every major release. The _`patchNumber`_ is generated and updated only fo
 Apex Reference Guide Version Class
 
 A called component can check the version against which the caller was compiled using the `System.requestVersion` on page
-4201 method and behave differently depending on the caller’s expectations. This allows you to continue to support existing behavior in
+4218 method and behave differently depending on the caller’s expectations. This allows you to continue to support existing behavior in
 classes and triggers in previous package versions while continuing to evolve the code.
 
 The value returned by the `System.requestVersion` method is an instance of this class with a two-part version number containing
@@ -29642,7 +31068,7 @@ Add aggregate functions to the query, or define an alias.
 
 Namespace
 
-wave on page 4358
+wave on page 4375
 
 Usage
 
@@ -30008,7 +31434,7 @@ Parameters
    options
 ```
 
-Type: Wave.TemplatesSearchOptions on page 4372
+Type: Wave.TemplatesSearchOptions on page 4389
 
 The search options to use for filtering the template collection.
 

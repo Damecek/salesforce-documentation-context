@@ -1,3 +1,81 @@
+**1.** Create an Apex class in your org from Setup by entering _`Apex Classes`_ in the `Quick Find` box, then selecting **Apex Classes** .
+Click **New** and add the following code to your new class:
+
+```
+     @RestResource(urlMapping='/CaseManagement/v1/*')
+
+     global with sharing class CaseMgmtService
+
+     {
+
+       @HttpPost
+
+       global static String attachPic(){
+
+          RestRequest req = RestContext.request;
+
+          RestResponse res = Restcontext.response;
+
+          Id caseId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
+
+          Blob picture = req.requestBody;
+
+          Attachment a = new Attachment (ParentId = caseId,
+
+                            Body = picture,
+
+                            ContentType = 'image/jpg',
+
+                            Name = 'VehiclePicture');
+
+          insert a;
+
+          return a.Id;
+
+       }
+
+     }
+
+```
+
+**2.** Open a command-line window and execute the following `cURL` command to upload the attachment to a case:
+
+
+Apex Developer Guide Invoking Apex
+
+```
+    curl -H "Authorization: Bearer sessionId " -H "X-PrettyPrint: 1" -H "Content-Type:
+
+    image/jpeg" --data-binary @ file
+
+    "https:// MyDomainName .my.salesforce.com/services/apexrest/CaseManagement/v1/ caseId "
+
+```
+
+**•** Replace _`sessionId`_ with the `<sessionId>` element that you noted in the login response.
+
+**•** Replace _`MyDomainName`_ with the My Domain name for your org.
+
+**•** Replace _`caseId`_ with the ID of the case you want to add the attachment to.
+
+**•** Replace _`file`_ with the path and file name of the file you want to attach.
+
+Your command should look something like this (with the _`sessionId`_ replaced with your session ID and _`MyDomainName`_
+replaced with the My Domain Name for your org):
+
+```
+     curl -H "Authorization: Bearer sessionId "
+
+     -H "X-PrettyPrint: 1" -H "Content-Type: image/jpeg" --data-binary
+
+     @c:\test\vehiclephoto1.jpg
+
+     "https:// MyDomainName .my.salesforce.com/services/apexrest/CaseManagement/v1/500D0000003aCts"
+
+```
+
+Note: The `cURL` examples in this section don’t use a namespaced Apex class so you won’t see the namespace in the URL.
+
 The Apex class returns a JSON response that contains the attachment ID such as the following:
 
 ```
@@ -32,9 +110,6 @@ To use email services, from Setup, enter _`Email Services`_ in the `Quick Find` 
 
 **•** Click **Delete** to delete an email service.
 
-
-Apex Developer Guide Invoking Apex
-
 Note: Before deleting email services, you must delete all associated email service addresses.
 
 When defining email services, note the following:
@@ -44,6 +119,10 @@ When defining email services, note the following:
 **•** Salesforce limits the total number of messages that all email services combined, including On-Demand Email-to-Case, can process
 daily. Messages that exceed this limit are bounced, discarded, or queued for processing the next day, depending on how you
 configure the failure response settings for each email service. Salesforce calculates the limit by multiplying the number of user
+
+
+Apex Developer Guide Invoking Apex
+
 licenses by 1,000; maximum 1,000,000. For example, if you have 10 licenses, your org can process up to 10,000 email messages a
 day.
 
@@ -103,12 +182,6 @@ The following is an example of how you can look up a contact based on the inboun
 
         FROM Contact
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         WHERE Email = :email.fromAddress
 
         WITH USER_MODE
@@ -125,6 +198,12 @@ Apex Developer Guide Invoking Apex
 
           Subject = email.subject,
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
           IsReminderSet = true,
 
           ReminderDateTime = System.now()+1,
@@ -193,12 +272,6 @@ for the word “unsubscribe.” If the word is found, the code finds all contact
 
         List<Lead> ll = new List <lead>();
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         // Convert the subject line to lower case so the program can match on lower case.
 
         String mySubject = email.subject.toLowerCase();
@@ -211,6 +284,12 @@ Apex Developer Guide Invoking Apex
 
    line.
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         Boolean unsubMe;
 
         // Look for the word "unsubcribe" in the subject line.
@@ -285,12 +364,6 @@ Apex Developer Guide Invoking Apex
 
              System.debug('Lead Object: ' + l);
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
            }
 
            // Update all lead records in the query.
@@ -305,6 +378,12 @@ Apex Developer Guide Invoking Apex
 
         }
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         System.debug('Found the unsubscribe word in the subject line.');
 
          }
@@ -385,12 +464,6 @@ Apex Developer Guide Invoking Apex
 
         env.fromAddress = 'user@acme.com';
 
-```
-
-
-Apex Developer Guide Invoking Apex
-
-```
         // Call the class and test it with the data in the testMethod.
 
         unsubscribe unsubscribeObj = new unsubscribe();
@@ -401,6 +474,12 @@ Apex Developer Guide Invoking Apex
 
       static testMethod void testUnsubscribe2() {
 
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
         // Create a new email and envelope object.
 
         Messaging.InboundEmail email = new Messaging.InboundEmail();
@@ -471,9 +550,6 @@ _Apex Reference Guide_ [: InboundEnvelope Class](https://developer.salesforce.co
 
 _Apex Reference Guide_ [: InboundEmailResult Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_email_inbound_result.htm)
 
-
-Apex Developer Guide Invoking Apex
-
 #### Visualforce Classes
 
 In addition to giving developers the ability to add business logic to Salesforce system events such as button clicks and related record
@@ -486,6 +562,9 @@ that was already provided in a standard controller.
 
 Like other Apex classes, custom controllers execute entirely in system mode, in which the object and field-level permissions of the
 current user are ignored. You can specify whether a user can execute methods in a custom controller based on the user's profile.
+
+
+Apex Developer Guide Invoking Apex
 
 **•** A controller extension is a class written in Apex that adds to or overrides behavior in a standard or custom controller. Extensions
 allow you to leverage the functionality of another controller while adding your own custom logic.
@@ -536,9 +615,6 @@ differences from normal action methods.
 
 **•** The response handler callback function you add to or include in your Visualforce page, written in JavaScript.
 
-
-Apex Developer Guide Invoking Apex
-
 In your controller, your Apex method declaration is preceded with the `@RemoteAction` annotation like this:
 
 ```
@@ -546,9 +622,9 @@ In your controller, your Apex method declaration is preceded with the `@RemoteAc
 
    global static String getItemId(String objectName) { ... }
 
-#### Apex @RemoteAction methods must be static and either global or public .
-
 ```
+
+Apex `@RemoteAction` methods must be `static` and either `global` or `public` .
 
 Add the Apex class as a custom controller or a controller extension to your page.
 
@@ -560,6 +636,9 @@ Add the Apex class as a custom controller or a controller extension to your page
 Warning: Adding a controller or controller extension grants access to all `@RemoteAction` methods in that Apex class, even
 if those methods aren’t used in the page. Anyone who can view the page can execute all `@RemoteAction` methods and
 provide fake or malicious data to the controller.
+
+
+Apex Developer Guide Invoking Apex
 
 Then, add the request as a JavaScript function call. A simple JavaScript remoting invocation takes the following form.
 
@@ -595,9 +674,6 @@ To invoke Apex through anonymous blocks or public `webservice` methods, include 
 
 Note: For AJAX buttons, use the alternate forms of these includes.
 
-
-### Apex Developer Guide Apex Transactions and Governor Limits
-
 To invoke Apex, use one of the following two methods:
 
 **•** Execute anonymously via `sforce.apex.executeAnonymous (` _**`script`**_ `)` . This method returns a result similar to the API's
@@ -606,19 +682,22 @@ result type, but as a JavaScript structure.
 **•** Use a class WSDL. For example, you can call the following Apex class:
 
 ```
-     global class myClass {
+  global class myClass {
 
-      webservice static Id makeContact(String lastName, Account a) {
+   webservice static Id makeContact(String lastName, Account a) {
 
-          Contact c = new Contact(LastName = lastName, AccountId = a.Id);
+       Contact c = new Contact(LastName = lastName, AccountId = a.Id);
 
-          return c.id;
+       return c.id;
 
-       }
+    }
 
-     }
+  }
 
 ```
+
+
+### Apex Developer Guide Apex Transactions and Governor Limits
 
 By using the following JavaScript code:
 
@@ -687,18 +766,18 @@ efficient use of resources on the Lightning Platform multitenant platform.
 
 Most of the governor limits are per transaction, and some aren’t, such as 24-hour limits.
 
-
-#### Apex Developer Guide Apex Transactions and Governor Limits
-
 To make sure Apex adheres to governor limits, certain design patterns should be used, such as bulk calls and foreign key relationships
 in queries.
 
-#### Apex Transactions
+### Apex Transactions
 
 An _Apex transaction_ represents a set of operations that are executed as a single unit. All DML operations in a transaction must complete
 successfully. If an error occurs in one operation, the entire transaction is rolled back and no data is committed to the database. The
 boundary of a transaction can be a trigger, a class method, an anonymous block of code, a Visualforce page, or a custom Web service
 method.
+
+
+#### Apex Developer Guide Apex Transactions and Governor Limits
 
 Execution Governors and Limits
 Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces limits so that runaway Apex code or
@@ -741,9 +820,6 @@ funds from one bank account to another is a common scenario. It involves debitin
 with the amount to transfer. These two operations must be committed together to the database. If the debit operation succeeds and
 the credit operation fails, the account balances become inconsistent.
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 Example
 
 This example shows how all DML `insert` operations in a method are rolled back when the last operation causes a validation rule
@@ -756,6 +832,9 @@ enough to cover new purchases.
 Since this example attempts to purchase more pencils (5,000) than items in stock (1,000), the validation rule fails and throws an exception.
 Code execution halts at this point and all DML operations processed before this exception are rolled back. The invoice statement and
 the line item aren’t added to the database, and their `insert` DML operations are rolled back.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 In the Developer Console, execute the static `invoice` method.
 
@@ -828,12 +907,9 @@ the invoice statements and line items are rolled back and aren’t inserted into
 
    }
 
-```
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 #### Execution Governors and Limits
+
+```
 
 Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces limits so that runaway Apex code or processes
 don’t monopolize shared resources. If some Apex code exceeds a limit, the associated governor issues a runtime exception that can’t
@@ -850,6 +926,9 @@ The Apex limits, or _governors_, track, and enforce the statistics outlined in t
 **•** Static Apex Limits
 
 **•** Size-Specific Apex Limits
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 **•** Miscellaneous Apex Limits
 
@@ -896,12 +975,6 @@ Total stack depth for any Apex invocation that recursively fires triggers due to
 
 Total number of callouts (HTTP requests or web services calls) in a transaction 100 100
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
-**Description** **Synchronous** **Asynchronous**
-**Limit** **Limit**
-
 Maximum cumulative timeout for all callouts (HTTP requests or Web services calls) in a 120 seconds 120 seconds
 transaction
 
@@ -916,6 +989,12 @@ Maximum number of Apex jobs added to the queue with `System.enqueueJob` 50 1
 Total number of `sendEmail` methods allowed 10 10
 
 Total heap size [4] 6 MB 12 MB
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
+**Description** **Synchronous** **Asynchronous**
+**Limit** **Limit**
 
 Maximum CPU time on the Salesforce servers [5] 10,000 milliseconds 60,000 milliseconds
 
@@ -959,9 +1038,6 @@ of SOQL statements issued in a request.
 
 **•** `Database.query`, `Database.queryWithBinds`
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 2 Calls to the following methods count against the number of DML statements issued in a request.
 
 **•** `Approval.process`
@@ -979,6 +1055,9 @@ Apex Developer Guide Apex Transactions and Governor Limits
 **•** `insert` and `Database.insert`
 
 **•** `merge` and `Database.merge`
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 **•** `undelete` and `Database.undelete`
 
@@ -1025,9 +1104,6 @@ statements your org’s native code can execute. This limit increase means more 
 transaction if code from the managed package and your native org both executes. Similarly, the certified managed package gets its own
 100-SOQL-query limit for synchronous Apex, in addition to the org’s native code limit of 100 SOQL queries.
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 There’s no limit on the number of certified namespaces that can be invoked in a single transaction. However, the number of operations
 that can be performed in each namespace must not exceed the per-transaction limits. There’s also a limit on the cumulative number of
 operations that can be made across namespaces in a transaction. This cumulative limit is 11 times the per-namespace limit. For example,
@@ -1042,6 +1118,9 @@ Note:
 
 **•** Namespaces in non-certified packages don’t have their own separate governor limits. The resources that they use continue
 to count against the same governor limits used by the org's custom code.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 This table lists the cumulative cross-namespace limits.
 
@@ -1082,9 +1161,6 @@ Lightning Platform Apex Limits
 
 The limits in this table aren't specific to an Apex transaction; Lightning Platform enforces these limits.
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 **Description** **Limit**
 
 The maximum number of asynchronous Apex method executions (batch Apex, future methods,
@@ -1108,6 +1184,11 @@ transaction [9] .
 
 Maximum number of Apex classes scheduled concurrently 100. In Developer Edition orgs,
 the limit is 5.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
+**Description** **Limit**
 
 Maximum number of batch Apex jobs in the Apex flex queue that are in `Holding` status 100
 
@@ -1151,9 +1232,6 @@ To check how many asynchronous Apex executions are available, make a request to 
 `OrgLimits.getAll()` or `OrgLimits.getMap()` [. See List Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ [and OrgLimits](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm)
 [Class in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_OrgLimits.htm) _Apex Reference Guide_ .
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 7 If the number of asynchronous Apex executions needed by a job exceeds the available number that’s calculated using the 24-hour
 rolling limit, an exception is thrown. Batch Apex preemptively checks the required asynchronous job capacity when
 `Database.executeBatch` is called and the `start` method has returned the workload. The batch won’t start unless there is
@@ -1167,6 +1245,9 @@ Chatter Only users, Identity users, and Company Communities users.
 9 For example, if your org has 4,000 licenses, the concurrent long-running Apex requests limit is set at 40. If your org has 5,000 or more
 licenses, the concurrent long-running Apex requests limit is set at 50, which is the maximum capped limit. If your org has 1,000 or fewer
 licenses, the concurrent long-running Apex requests limit is set at 10, which is the minimum floor limit.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 Static Apex Limits
 
@@ -1205,9 +1286,6 @@ Maximum amount of code used by all Apex code in an org [1,3,4] 6 MB
 Method size limit [2] 65,535 bytecode instructions in
 compiled form
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 1 This limit doesn’t apply to Apex code in first generation(1GP) or second generation(2GP) managed packages. The code in those types
 of packages belongs to a namespace unique from the code in your org. This limit also doesn’t apply to any code included in a class
 defined with the `@isTest` annotation.
@@ -1225,6 +1303,10 @@ Miscellaneous Apex Limits
 **Connect in Apex**
 For classes in the `ConnectApi` namespace, every write operation costs one DML statement against the Apex governor limit.
 `ConnectApi` method calls are also subject to rate limits. `ConnectApi` rate limits match Connect REST API rate limits, and
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 have a per user, per namespace, per hour rate limit. When you exceed the rate limit, a `ConnectApi.RateLimitException`
 is thrown. Your Apex code must catch and handle this exception.
 
@@ -1265,9 +1347,6 @@ Email Services: Maximum Size of Email Message (Body and Attachments) 25 MB [1]
 
 On-Demand Email-to-Case: Maximum Email Attachment Size 25 MB
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 On-Demand Email-to-Case: Maximum Number of Email Messages Processed Number of user licenses multiplied by
 1,000; maximum 1,000,000
 
@@ -1284,6 +1363,10 @@ When defining email services, note the following:
 **•** Salesforce limits the total number of messages that all email services combined, including On-Demand Email-to-Case, can
 process daily. Messages that exceed this limit are bounced, discarded, or queued for processing the next day, depending on
 how you configure the failure response settings for each email service. Salesforce calculates the limit by multiplying the number
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
+
 of user licenses by 1,000; maximum 1,000,000. For example, if you have 10 licenses, your org can process up to 10,000 email
 messages a day.
 
@@ -1330,9 +1413,6 @@ day is calculated based on Greenwich Mean Time (GMT).
 **•** In Developer Edition orgs and orgs evaluating Salesforce during a trial period, you can send to no more than 10 external email
 recipients per org per day using mass email and list email.
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 **•** You can’t send mass email using a Visualforce email template.
 
 Push Notification Limits
@@ -1345,6 +1425,9 @@ count toward this limit.
 
 Each test push notification that is generated through the Test Push Notification page is limited to a single recipient. Test push notifications
 count toward an org’s hourly push notification limit.
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 When an org's hourly push notification limit is met, any additional notifications are still created for in-app display and retrieval via REST
 API.
@@ -1360,6 +1443,9 @@ _[Platform Events Developer Guide](https://developer.salesforce.com/docs/atlas.e
 You can specify users in your organization to receive an email notification when they invoke Apex code that surpasses 50% of allocated
 governor limits. Only per-request limits are checked for sending email warnings; per-org limits like concurrent long-running requests
 are not checked. These email notifications do not count against the daily single email limit.
+
+Important: System-generated emails from an unverified email-sending domain aren’t delivered, even if the From email address
+[is verified. See Requirements to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
 
 **1.** Log in to Salesforce as an administrator user.
 
@@ -1395,14 +1481,14 @@ Total number of `sendEmail` methods allowed
 
 Maximum number of methods with the `future` annotation allowed per Apex invocation
 
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
 Maximum number of Apex jobs added to the queue with `System.enqueueJob`
 
 Total number of records retrieved by `Database.getQueryLocator`
 
 Total number of mobile Apex push calls
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 #### Running Apex within Governor Execution Limits
 
@@ -1470,17 +1556,14 @@ new list and then, inside the loop, adds every update line item to the new list.
 
    }
 
-```
-
-
-Apex Developer Guide Apex Transactions and Governor Limits
-
-```
    // Once DML call for the entire list of line items
 
    update updatedList;
 
 ```
+
+
+Apex Developer Guide Apex Transactions and Governor Limits
 
 More Efficient SOQL Queries
 
@@ -1560,10 +1643,10 @@ SOQL For Loops
 Use SOQL for loops to operate on records in batches of 200. This helps avoid the heap size limit of 6 MB. Note that this limit is for code
 running synchronously and it is higher for asynchronous code execution.
 
+**Example:** Query without a for loop
+
 
 ### Apex Developer Guide Using Salesforce Features with Apex
-
-**Example:** Query without a for loop
 
 The following is an example of a SOQL query that retrieves all merchandise items and stores them in a List variable. If the returned
 merchandise items are large in size and a large number of them was returned, the heap size limit might be hit.
@@ -1785,19 +1868,19 @@ retried.
 Apex Cursor Example
 
 ```
-   public class QueryChunkingQueuable implements Queueable {
+   public with sharing class QueryChunkingQueueable implements Queueable {
 
       private Database.Cursor locator;
 
-      private integer position;
+      private Integer position;
 
-      public QueryChunkingQueuable() {
+      public QueryChunkingQueueable() {
 
-        locator = Database.getCursor
+        locator = Database.getCursor(
 
-              ('SELECT Id FROM Contact WHERE LastActivityDate = LAST_N_DAYS:400');
+           'SELECT Id FROM Contact WHERE LastActivityDate = LAST_N_DAYS:400',
 
-        position = 0;
+           AccessLevel.USER_MODE);
 
 ```
 
@@ -1805,9 +1888,23 @@ Apex Cursor Example
 Apex Developer Guide Using Salesforce Features with Apex
 
 ```
+        position = 0;
+
       }
 
       public void execute(QueueableContext ctx) {
+
+        Integer remainingRows = locator.getNumRecords() - position;
+
+        if (remainingRows == 0) {
+
+           return; // Nothing to do
+
+        }
+
+        // Take the minimum of batch size and remaining rows to avoid over-fetching
+
+        Integer fetchSize = Math.min(200, remainingRows);
 
         List<Contact> scope = locator.fetch(position, 200);
 
@@ -1815,7 +1912,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         // do something, like archive or delete the scope list records
 
-        if(position < locator.getNumRecords() ) {
+        if (position < locator.getNumRecords()) {
 
            // process the next chunk
 
@@ -1862,6 +1959,9 @@ for the next pagination call.
 
 **•** To retrieve the rows as a list of sObjects, call `CursorFetchResult.getRecords()` .
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **•** To retrieve the number of deleted rows that the cursor skipped in the `fetchPage()` operation, call
 `CursorFetchResult.getDeletedRows()` .
 
@@ -1872,9 +1972,6 @@ _`start`_ parameter in the next `fetchPage()` call.
 The method returns `true` if the specified _`pageSize`_ is reached, which indicates that a full page of results is retrieved. It also
 returns `true` if the pagination cursor reaches the end of a result set before the specified _`pageSize`_ is reached, which indicates
 that a partial, final page of results is retrieved.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Calling the `PaginationCursor.fetchPage()` and `PaginationCursor.fetchDeleted()` methods count against
 the SOQL query limit, and the rows fetched count against the SOQL query row limit.
@@ -1937,6 +2034,12 @@ Apex Cursor and Pagination Cursor Limits Example
 
    System.debug('Pagination Cursor Rows: ' + Limits.getApexPaginationCursorRows() + '/' +
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    Limits.getLimitApexPaginationCursorRows());
 
    // Fetch a page
@@ -1951,12 +2054,6 @@ Apex Cursor and Pagination Cursor Limits Example
 
    // Get daily limits map
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    Map<String, System.OrgLimit> limitMap = OrgLimits.getMap();
 
    // Standard cursor daily limit
@@ -2013,7 +2110,12 @@ Note: The `process` method counts against the DML limits for your organization. 
 
 For more information about approval processes, see “Set Up an Approval Process” in the Salesforce online help.
 
-##### Apex Approval Processing Example Apex Approval Processing Example
+Apex Approval Processing Example
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+##### Apex Approval Processing Example
 
 The following sample code initially submits a record for approval, then approves the request. This example assumes that a pre-existing
 approval process on Account exists and is valid for the Account record created.
@@ -2027,12 +2129,6 @@ approval process on Account exists and is valid for the Account record created.
 
         Account a = new Account(Name='Test',annualRevenue=100.0);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         insert a;
 
         User user1 = [SELECT Id FROM User WHERE Alias='SomeStandardUser'];
@@ -2099,6 +2195,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         Approval.ProcessResult result2 = Approval.process(req2);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         // Verify the results
 
         System.assert(result2.isSuccess(), 'Result Status:'+result2.isSuccess());
@@ -2113,12 +2215,9 @@ Apex Developer Guide Using Salesforce Features with Apex
 
    }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 #### Authentication
+
+```
 
 Salesforce provides various ways to authenticate users. Build a combination of authentication methods to fit the needs of your org and
 your users’ use patterns.
@@ -2165,6 +2264,12 @@ _Help_ . Alternatively, create custom methods for single logout.
 ```
    global class Concur extends Auth.AuthProviderPluginClass {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
             public String redirectUrl; // use this URL for the endpoint that the
 
    authentication provider calls back to for configuration
@@ -2187,12 +2292,6 @@ _Help_ . Alternatively, create custom methods for single logout.
 
             private String userAPIUrl; // api url to access the user in concur
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
             private String userAPIVersionUrl; // version of the user api url to access
 
     data from concur
@@ -2261,6 +2360,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                HTTPResponse res = http.send(req);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
                String responseBody = res.getBody();
 
                String accessToken = getTokenValueFromResponse(responseBody,
@@ -2281,12 +2386,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                //don’t hard-code the refresh token value!
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
              }
 
               global Auth.UserData getUserInfo(Map<string,string>
@@ -2365,6 +2464,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                String ret = null;
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
                dom.XmlNode xroot = docx.getrootelement() ;
 
                if(xroot != null){
@@ -2380,9 +2485,6 @@ Apex Developer Guide Using Salesforce Features with Apex
    }
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Sample Test Classes
 
@@ -2457,6 +2559,12 @@ The following example contains test classes for the Concur class.
 
           return authProviderConfiguration;
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       }
 
       static testMethod void testInitiateMethod() {
@@ -2475,12 +2583,6 @@ The following example contains test classes for the Concur class.
 
                                 authProviderConfiguration.get('Key__c')
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    +'&scope=USER,EXPRPT,LIST&redirect_uri='+
 
    authProviderConfiguration.get('Redirect_Url__c') + '&state=' +
@@ -2545,6 +2647,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
           Concur concurCls = new Concur();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
           Test.setMock(HttpCalloutMock.class, new ConcurMockHttpResponseGenerator());
 
           Auth.AuthProviderTokenResponse response = new
@@ -2561,12 +2669,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
           provMap.put('key2', 'value2');
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
           Auth.UserData expectedUserData = new Auth.UserData(LOGIN_ID, FIRST_NAME,
 
    LAST_NAME, FULL_NAME, EMAIL_ADDRESS,
@@ -2639,6 +2741,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
       }
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
      }
 
    }
@@ -2650,9 +2758,6 @@ SEE ALSO:
 _Apex Reference Guide_ [: AuthProviderPlugin Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_Auth_AuthProviderPlugin.htm)
 
 [Salesforce Help: Create a Custom External Authentication Provider](https://help.salesforce.com/HTViewHelpDoc?id=sso_provider_plugin_custom.htm&language=en_US)
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 ##### OAuth 2.0 Token Exchange Handler Examples
 
@@ -2722,34 +2827,34 @@ Client App
 
    }
 
-   //Second method called in the handler
-
-   global virtual User getUserForTokenSubject(Id networkId, Auth.TokenValidationResult
-
-result, Boolean canCreateUser, String appDeveloperName, Auth.IntegratingAppType appType)
-
-{
-
-      //This method must be overridden by the extending class
-
-     //To map the subject of the token to a Salesforce user, write code that does these
-
- things:
-
-     // Get data directly from the token, and query for the user in Salesforce
-
-     // Get data from the identity provider’s User Info endpoint using the token and
-
-query for the user in Salesforce
-
-     // Get data from the SAML assertion and query for the user in Salesforce
-
 ```
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
 ```
+      //Second method called in the handler
+
+      global virtual User getUserForTokenSubject(Id networkId, Auth.TokenValidationResult
+
+   result, Boolean canCreateUser, String appDeveloperName, Auth.IntegratingAppType appType)
+
+   {
+
+         //This method must be overridden by the extending class
+
+        //To map the subject of the token to a Salesforce user, write code that does these
+
+    things:
+
+        // Get data directly from the token, and query for the user in Salesforce
+
+        // Get data from the identity provider’s User Info endpoint using the token and
+
+   query for the user in Salesforce
+
+        // Get data from the SAML assertion and query for the user in Salesforce
+
         // If the user is not in Salesforce, and canCreateUser is true, set up a User
 
    object
@@ -2811,6 +2916,12 @@ doesn’t find a user, so it creates a User object. To finish creating the user,
 
         //If it’s a SAML assertion, validate it by checking the XML
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         //If it’s an ID Token or JWT, try using our JWT validation methods
 
         //This example assumes that the incoming token is a JWT and that there is a public
@@ -2829,12 +2940,6 @@ doesn’t find a user, so it creates a User object. To finish creating the user,
 
         //Standard user data structure
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         Auth.UserData userData;
 
         if (tokenType == Auth.OAuth2TokenExchangeType.JWT || tokenType ==
@@ -2915,6 +3020,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         }
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       }
 
       public override User getUserForTokenSubject(Id networkId, Auth.TokenValidationResult
@@ -2933,12 +3044,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         //If you don’t have any data from the token, you can perform a callout using the
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    incoming token
 
         String userToken = result.token;
@@ -3012,6 +3117,9 @@ Examples for Validating Different Token Types
 The custom logic for your implementation of the `validateIncomingToken` method depends on the token type. Here’s an
 overview of the options for different token types.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **•** For JWTs and ID tokens, use methods in the `[Auth.JWTUtil](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Auth_JWTUtil.htm)` class.
 
 **•** For opaque tokens, such as opaque access and refresh tokens, call out to the identity provider’s introspection or user info endpoints.
@@ -3030,12 +3138,6 @@ In this example, the handler validates a JWT from the identity provider. The han
 
         if (tokenType == Auth.OAuth2TokenExchangeType.JWT) {
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
           // Validates the JWT with a public key, but we also provide methods to validate
 
     it with a certificate (Auth.JWTUtil.validateJWTWithCert) or with a keys endpoint
@@ -3112,6 +3214,12 @@ response using the `validateIncomingToken` method.
 
                     String fieldName = parser.getText();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
                     if (fieldName == 'active') {
 
                        parser.nextToken();
@@ -3128,12 +3236,6 @@ response using the `validateIncomingToken` method.
 
                     if (fieldName == 'username') {
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
                        parser.nextToken();
 
                        username = parser.getText();
@@ -3194,6 +3296,9 @@ also set to `true` .
 If necessary, to get more information about the incoming subject, the handler can call out to the external identity provider or another
 external system.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 In this example implementation, the handler gets information about the user from the identity provider’s token and looks for an existing
 Salesforce user. If no user exists, it creates a User object.
 
@@ -3214,12 +3319,6 @@ Salesforce user. If no user exists, it creates a User object.
 
    'someProvider', 'someSiteLoginUrl', null);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
        return new Auth.TokenValidationResult(true, null, userData, incomingToken, tokenType,
 
     null);
@@ -3268,6 +3367,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         return u;
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       }
 
    }
@@ -3293,9 +3398,6 @@ _[Apex Reference Guide:](https://developer.salesforce.com/docs/atlas.en-us.260.0
 In Chatter Answers and Ideas, use zones to organize ideas and answers into groups. Each zone can have its own focus, with unique ideas
 and answers topics to match that focus.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 To work with zones in Apex, use the `Answers`, `Ideas`, and `ConnectApi.Zones` classes.
 
 SEE ALSO:
@@ -3312,8 +3414,7 @@ Review walkthroughs, use cases, and reference material for the `CommercePayments
 
 To review `CommercePayments` [class reference docs, go to CommercePayments Namespace.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_commercepayments.htm)
 
-##### Payment Gateway Adapters
-
+Payment Gateway Adapters
 Payment gateway adapters represent the bridge between your payments platform in Salesforce and an external payment gateway.
 
 Payment Authorization Reversal Service
@@ -3334,6 +3435,9 @@ methods include CashOnDeliver, Klarna, and Direct Debit. Alternative payment met
 Process Payments
 Process a payment in the payment gateway.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Process Refund
 Process a refund in the payment gateway.
 
@@ -3349,9 +3453,6 @@ CommercePayments namespace. Review the sample code if you need help with configu
 ##### Payment Gateway Adapters
 
 Payment gateway adapters represent the bridge between your payments platform in Salesforce and an external payment gateway.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 ###### Building a Synchronous Gateway Adapter
 
@@ -3388,6 +3489,9 @@ of the communication between the payment platform and the payment gateway.
 Note: Payment gateway adapters can’t make future calls, external callouts using `System.Http`, asynchronous calls, queueable
 calls, or execute DMLs using SOQL.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 PaymentGatewayAdapter
 
 All synchronous gateways must implement the `PaymentGatewayAdapter` interface. All PaymentGatewayAdapters are required
@@ -3415,9 +3519,6 @@ Processing an Initial Payment Request
 When the payments platform receives a payments API request, it passes the request to your gateway adapter for further evaluation. The
 adapter begins the request evaluation process by calling the `processRequest` method, which represents the first step in a
 synchronous payment flow. We can break the `processRequest` implementation into three parts.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 First, it builds a payment request object that the gateway can understand.
 
@@ -3484,6 +3585,12 @@ whether you originally made a payment capture request or a refund request.
 
       response = createCaptureResponse(res);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    } else if ( requestType == commercepayments.RequestType.ReferencedRefund) {
 
       response = createRefundResponse(res);
@@ -3508,9 +3615,6 @@ purchase orders don’t support `paymentsData` .
 [Similarly, the Post Authorization input payload has an](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_payment_post_auth.htm) `additionalData` property, which is also a map of type `<String, String>` .
 The `paymentsData` property is accepted for Auth and PostAuth requests and is transferred to the Payment APIs through the
 `additionalData` property.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 ###### Set Up a Synchronous Payment Gateway Adapter
 
@@ -3566,19 +3670,25 @@ Use this payload as the request body, replacing _`value`_ with the correct data.
 
         Example:
 
-        {
+```
 
-        "ApexAdapterId": "01pxx0000004UU8AAM",
 
-        "DeveloperName": "MyNewGatewayProvider",
+Apex Developer Guide Using Salesforce Features with Apex
 
-        "MasterLabel": "My New Gateway Provider",
+```
+           {
 
-        "IdempotencySupported": "Yes",
+           "ApexAdapterId": "01pxx0000004UU8AAM",
 
-        "Comments": "Custom made gateway provider."
+           "DeveloperName": "MyNewGatewayProvider",
 
-        }
+           "MasterLabel": "My New Gateway Provider",
+
+           "IdempotencySupported": "Yes",
+
+           "Comments": "Custom made gateway provider."
+
+           }
 
 ```
 
@@ -3590,9 +3700,6 @@ gateway. The record requires these field values.
 **•** Merchant Credential ID: ID of the named credential that you created.
 
 **•** Payment Gateway Provider ID: ID of the payment gateway provider that you created.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 **•** Status: Active
 
@@ -3639,6 +3746,12 @@ PaymentGatewayAdapter and the `processNotification` method for PaymentGatewayAsy
 
       global SampleAdapter() {}
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       global commercepayments.GatewayResponse
 
    processRequest(commercepayments.paymentGatewayContext gatewayContext) {
@@ -3662,9 +3775,6 @@ Processing an Initial Payment Request
 When the payments platform receives a payments API request, it passes the request to your gateway adapter for further evaluation. The
 adapter begins the request evaluation process by calling the **processRequest** method, which represents the first step in an asynchronous
 payment flow. We can break the processRequest implementation into three parts.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 First, it builds a payment request object that the gateway can understand.
 
@@ -3738,6 +3848,9 @@ whether you originally made a payment capture request or a refund request.
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Processing a Notification from the Payment Gateway
 
 After the customer bank processes the transaction and sends the results to the gateway, the gateway sends the adapter a notification
@@ -3766,12 +3879,6 @@ call the processNotification class. We can split the processNotification impleme
 
         + requestItem.eventCode + ':'
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         + requestItem.success;
 
       String myHMacKey = getHMacKey();
@@ -3833,6 +3940,12 @@ indicates that the gateway processed a refund transaction, the adapter builds a 
 
       notificationStatus = commercepayments.NotificationStatus.Failed;
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    }
 
    commercepayments.BaseNotification notification = null;
@@ -3863,9 +3976,6 @@ The adapter then requests that the payments platform records the results of the 
    commercepayments.NotificationClient.record(notification);
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 All asynchronous gateways require that the platform acknowledges that it received the notification, regardless of whether the platform
 successfully saved the notification’s data. The platform calls the `GatewayNotificationResponse` class to send the
@@ -3915,6 +4025,9 @@ Usually, Apex debug logs are available in the developer console. However, Salesf
 `processNotification` method in the developer console. To view this part of the method flow using system.debug, review the
 [Collect Debug Logs for Guest Users section of Set Up Debug Logging.](https://help.salesforce.com/articleView?id=code_add_users_debug_log.htm&type=5&language=en_US)
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 ###### Set Up an Asynchronous Payment Gateway Adapter
 
 For payments transactions, you can configure Salesforce to interface with an asynchronous payment
@@ -3945,9 +4058,6 @@ Building an Asynchronous Gateway Adapter and Building a Synchronous Gateway Adap
 
 **b.** Complete the required fields. For the URL, enter the URL of your payment gateway.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 **4.** Create a payment gateway provider. The PaymentGatewayProvider object stores details about the payment gateway that Salesforce
 Payments communicates with when processing a transaction.
 
@@ -3962,35 +4072,35 @@ The response includes the access token, specified in the `access_token` property
 Use this payload as the request body, replacing _`value`_ with the correct data.
 
 ```
-       {
+    {
 
-        "ApexAdapterId": " value ",
+     "ApexAdapterId": " value ",
 
-        "DeveloperName": " value ",
+     "DeveloperName": " value ",
 
-        "MasterLabel": " value ",
+     "MasterLabel": " value ",
 
-        "IdempotencySupported": " value ",
+     "IdempotencySupported": " value ",
 
-        "Comments": " value "
+     "Comments": " value "
 
-       }
+    }
 
-       Example:
+    Example:
 
-       {
+    {
 
-        "ApexAdapterId": "01pxx0000004UU8AAM",
+     "ApexAdapterId": "01pxx0000004UU8AAM",
 
-        "DeveloperName": "MyNewGatewayProvider",
+     "DeveloperName": "MyNewGatewayProvider",
 
-        "MasterLabel": "My New Gateway Provider",
+     "MasterLabel": "My New Gateway Provider",
 
-        "IdempotencySupported": "Yes",
+     "IdempotencySupported": "Yes",
 
-        "Comments": "Custom made gateway provider."
+     "Comments": "Custom made gateway provider."
 
-       }
+    }
 
 ```
 
@@ -4004,6 +4114,9 @@ gateway. The record requires these field values.
 **•** Payment Gateway Provider ID: ID of the payment gateway provider that you created.
 
 **•** Status: Active
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 **6.** Create a webhook by providing a URL in the standard notification transport settings of your external payment gateway. The external
 payment gateway uses the webhook to send notifications, as HTTP POST messages, to your asynchronous payment gateway adapter.
@@ -4027,9 +4140,6 @@ example,
       https:// MyDomainName .my.salesforce-sites.com/solutions/services/data/v58.0/commerce/payments/notify?provider=0cJR00000004CEhMAM
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 **c.** Enter the webhook in your external payment gateway’s standard notification settings.
 
@@ -4091,6 +4201,12 @@ Example:
 
           jsonGeneratorInstance.writeEndObject();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
           return jsonGeneratorInstance.getAsString();
 
        }
@@ -4116,12 +4232,6 @@ Example:
 
           if(statusCode == 200) {
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
             system.debug('Response - success - Capture received');
 
             commercepayments.CaptureResponse captureResponse = new
@@ -4162,8 +4272,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 An authorization reversal is a transaction that negates an authorization by releasing the hold on funds in a customer’s payment method.
 
-###### Authorization Reversal Apex Class Implementation
-
+Authorization Reversal Apex Class Implementation
 The Authorization Reversal Service uses the `AuthorizationReversalRequest` and
 `AuthorizationReversalResponse` classes to manage the creation and storage of authorization reversal information.
 Implement these classes in your payment gateway adapter.
@@ -4172,6 +4281,9 @@ Implement these classes in your payment gateway adapter.
 
 An authorization reversal is a transaction that negates an authorization by releasing the hold on funds in a customer’s payment
 method. Use the authorization reversal service to provide users with the ability to reverse an outstanding payment authorization.
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 ###### Authorization Reversal Apex Class Implementation
 
@@ -4191,9 +4303,6 @@ Represents the authorization reversal request. Extends `BaseRequest` and inherit
      CommercePayments.AuthorizationReversalRequest();
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 If you want to build a sample authorization reversal, you can also invoke a constructor with arguments for the reversal amount and
 payment authorization ID. However, the constructor would only work for test usage and would throw an exception if used outside
@@ -4252,6 +4361,9 @@ Add your reversal classes to your payment gateway adapter. We recommend adding `
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Then, add a class that sets the amount of the authorization reversal request, gateway information, and the Salesforce result code.
 
 ```
@@ -4279,12 +4391,6 @@ Then, add a class that sets the amount of the authorization reversal request, ga
 
            throw new SalesforceValidationException('Required Field Missing : Amount');
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         }
 
         system.debug('Response - success');
@@ -4349,6 +4455,9 @@ After the customer payment gateway authorizes a payment, Commerce Payments creat
 information about the authorization. When a user or process performs a reversal against the authorization, the authorization reversal
 service creates a payment authorization adjustment to store information. The adjustment is related to the authorization.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 If the payment authorization is associated with an order payment summary, then the reversal amount is added to the order payment
 summary’s `AuthorizationReversalAmount` and subtracted from its `AvailableToCaptureAmount` . But the
 `AvailableToCaptureAmount` is never below 0, even if a reversal makes its calculation a negative amount.
@@ -4365,38 +4474,29 @@ Call the authorization reversal service by making a POST request to the followin
 
 ```
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 The service accepts one authorization reversal request per call. The following payment authorization adjustment API parameters are
 accepted.
 
 **Table 8: Reversal Service Input Parameters**
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 Sample Request and Response
 
 This request calls a $150 reversal against an authorization.
 
 ```
-{
+   {
 
-```
+     "accountId":"",
 
-```
-"accountId":"",
+     "amount": "150",* "comments": "authorization reversal request",
 
-"amount": "150",* "comments": "authorization reversal request",
+     "effectiveDate":"2020-10-18T11:32:27.000Z",
 
-"effectiveDate":"2020-10-18T11:32:27.000Z",
+     "ipAddress": "202.95.77.70",
 
-"ipAddress": "202.95.77.70",
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
      "macAddress": "00-14-22-01-23-45",
 
      "phone": "100-456-67",
@@ -4485,6 +4585,9 @@ The resulting payment authorization adjustment in Salesforce would look like thi
 
 If an error is returned, the response contains the gateway's error code and error message.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **Sample Response - Error**
 
 ```
@@ -4496,12 +4599,9 @@ If an error is returned, the response contains the gateway's error code and erro
 
    }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 ##### Tokenization Service
+
+```
 
 The credit card tokenization process replaces sensitive customer information with a one-time algorithmically generated number, called
 a token, used during the payment transaction. Salesforce stores the token and then uses that token as a representation of the credit card
@@ -4552,6 +4652,9 @@ Your payment gateway adapter uses the `PaymentMethodTokenizationRequest` and
 Salesforce, and store the value on a payment method entity. Let's see how we can configure these classes in our payment gateway
 adapter.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Implementing Tokenization Classes in Your Gateway Adapter
 
 The following code is used within your `PaymentGatewayAdapter` Apex class.
@@ -4559,10 +4662,6 @@ The following code is used within your `PaymentGatewayAdapter` Apex class.
 Gateway tokens are created and encrypted when the `GatewayResponse` class's `processRequest` method receives a tokenization
 request. If the request type is `Tokenize`, `GatewayResponse` calls the `createTokenizeResponse` method and passes an
 instance of the `PaymentMethodTokenizationRequest` class. The passed `PaymentMethodTokenizationRequest`
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 object contains the address and cardPaymentMethod information that the payment gateway needs to manage the tokenization process.
 For example:
 
@@ -4647,6 +4746,9 @@ example, we call the `setGatewayTokenEncrypted` method to set the tokenized valu
 
 ```
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 The `setGatewayTokenEncrypted` method is available in Salesforce API v52.0 and later. It uses Salesforce classic encryption to
 set the encrypted token value that you can store in GatewayTokenEncrypted on a CardPaymentMethod or DigitalWallet, or in GatewayToken
 on an AlternativePaymentMethod. We recommend using `setGatewayTokenEncrypted` to ensure your tokenized payment
@@ -4657,12 +4759,6 @@ method values are encrypted and secure.
 
       global void setGatewayTokenEncrypted(String gatewayTokenEncrypted) {
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
          if (gatewayTokenSet) {
 
            throwTokenError();
@@ -4787,6 +4883,12 @@ This sample request provides a customer's credit card information for tokenizati
 
         "key1":"value1",
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         "key2":"value2",
 
         "key3":"value3",
@@ -4800,9 +4902,6 @@ This sample request provides a customer's credit card information for tokenizati
    }
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 A successful tokenization response updates the payment method and provides information about the gateway response and any
 payment gateway logs.
@@ -4878,26 +4977,23 @@ record types.
 AlternativePaymentMethod has the private sharing model enabled as default for both internal and external users. Only the record owner
 and users with higher ownership have Read, Edit, and Delete access.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Example: Let's say you wanted to make an alternative payment method for GiroPay. First, create an
 `AlternativePaymentMethod` record type.
 
 **New RecordType**
 
 ```
-   /services/data/v51.0/sobjects/RecordType
+      /services/data/v51.0/sobjects/RecordType
 
-   {
+      {
 
-   "Name" : "Giro Pay",
+      "Name" : "Giro Pay",
 
-   "DeveloperName" : "GiroPay",
+      "DeveloperName" : "GiroPay",
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       "SobjectType" : "AlternativePaymentMethod"
 
       }
@@ -4964,18 +5060,21 @@ Available in: Salesforce
 Spring ’20
 
 ```
-  commercepayments.CaptureRequest =
+commercepayments.CaptureRequest =
 
-  (commercepayments.CaptureRequest)gatewayContext.getPaymentRequest()
+(commercepayments.CaptureRequest)gatewayContext.getPaymentRequest()
 
 ```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 **2.** Set the HTTP request object.
 
 ```
-  HttpRequest req = new HttpRequest();
+     HttpRequest req = new HttpRequest();
 
-  req.setHeader('Content-Type', 'application/json');
+     req.setHeader('Content-Type', 'application/json');
 
 ```
 
@@ -4984,14 +5083,11 @@ Spring ’20
 **4.** Make the HTTP call to the gateway using the `[PaymentsHttp Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentsHttp.htm#apex_class_commerce_payments_PaymentsHttp)` .
 
 ```
-  commercepayments.PaymentsHttp http = new commercepayments.PaymentsHttp();
+     commercepayments.PaymentsHttp http = new commercepayments.PaymentsHttp();
 
-  HttpResponse res = http.send(req);
+     HttpResponse res = http.send(req);
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 **5.** Parse the `httpResponse` and prepare the `[CaptureResponse](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_CaptureResponse.htm#apex_class_commerce_payments_CaptureResponse)` object.
 
@@ -5067,18 +5163,21 @@ Spring ’20
 
   referencedRefundResponse.setGatewayReferenceNumber(“”);
 
-  referencedRefundResponse.setSalesforceResultCodeInfo(getSalesforceResultCodeInfo(commercepayments.SalesforceResultCode.SUCCESS.name()));
+```
 
-  referencedRefundResponse.setGatewayReferenceDetails(“”);
 
-  referencedRefundResponse.setAmount(double.valueOf(100);
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
+     referencedRefundResponse.setSalesforceResultCodeInfo(getSalesforceResultCodeInfo(commercepayments.SalesforceResultCode.SUCCESS.name()));
+
+     referencedRefundResponse.setGatewayReferenceDetails(“”);
+
+     referencedRefundResponse.setAmount(double.valueOf(100);
 
 ```
 
 **6.** Return the `referencedRefundResponse` .
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 ##### Idempotency Guidelines
 
@@ -5143,20 +5242,19 @@ has access to. It doesn’t run in system mode like other Apex code.
 
 [For Connect in Apex reference information, see ConnectApi Namespace.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_connect_api.htm)
 
-#### Connect in Apex Examples
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+##### Connect in Apex Examples
 
 Use these examples to perform common tasks with Connect in Apex.
 
-#### Connect in Apex Features
-
+Connect in Apex Features
 This topic describes which classes and methods to use to work with common Connect in Apex features.
 
 Using ConnectApi Input and Output Classes
 Some classes in the `ConnectApi` namespace contain static methods that access Connect REST API data. The `ConnectApi`
 namespace also contains input classes to pass as parameters and output classes that calls to the static methods return.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Understanding Limits for ConnectApi Classes
 Limits for methods in the `ConnectApi` namespace are different than the limits for other Apex classes.
@@ -5205,6 +5303,9 @@ Call a method or use the ConnectApiHelper repository to post a feed.
 Post a Feed Element with Existing Files
 Call a method to post a feed element with already uploaded files.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Post a Rich-Text Feed Element with Inline Image
 Call a method or use the ConnectApiHelper repository to post a feed element with an already uploaded, inline image.
 
@@ -5213,9 +5314,6 @@ Call a method to post a feed element with a code block.
 
 Post a Feed Element with a New File (Binary) Attachment
 Call a method to post a feed element with a new file.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Post a Batch of Feed Elements
 Use a trigger to call a method to bulk post to the feeds of accounts.
@@ -5268,6 +5366,9 @@ Make a call or use the ConnectApiHelper repository to post a comment with an alr
 Post a Rich-Text Feed Comment with a Code Block
 Call a method to post a comment with a code block.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Edit a Comment
 Call a method to edit a comment.
 
@@ -5276,9 +5377,6 @@ Call a method to follow a record.
 
 Unfollow a Record
 Call a method to stop following a record.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Get a Repository
 Call a method to get a repository.
@@ -5328,6 +5426,9 @@ Call a method to resolve a prompt template.
 Create a Cart and Cart Item with Custom Fields in a Commerce Store
 Create a cart with a cart item using custom fields for a buyer or guest user in your Commerce store.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 ###### Get Feed Elements From a Feed
 
 Call a method to get feed elements from a feed.
@@ -5343,9 +5444,6 @@ from the context user’s news feed.
    ConnectApi.FeedType.News, 'me');
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 The `getFeedElementsFromFeed` method is overloaded, which means that the method name has many different signatures. A
 signature is the name of the method and its parameters in order.
@@ -5400,6 +5498,9 @@ Call a method to display a user profile feed that contains only feed elements th
 Feed elements that have a User or a Group parent record are scoped to sites. Feed elements whose parents are record types other than
 User or Group are always visible in all sites. Other parent record types could be scoped to sites in the future.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 This example calls `[getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_7a)`
 `[density, pageParam, pageSize, sortParam, filter)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_getFeedElementsFromFeed_7a)` to get only site-specific feed elements.
 
@@ -5417,9 +5518,6 @@ This example calls `[getFeedElementsFromFeed(communityId, feedType, subjectId, r
 ```
 
 Make a call to post a feed element.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Call `[postFeedElement(communityId, subjectId, feedElementType, text)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_1)` to post a string of text.
 
@@ -5484,6 +5582,12 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    feedItemInput.subjectId = 'me';
 
    ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
@@ -5502,12 +5606,6 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    // The FeedElementCapabilitiesInput object holds the capabilities of the feed item.
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    // For this feed item, we define a files capability to hold the file(s).
 
    List<String> fileIds = new List<String>();
@@ -5572,6 +5670,12 @@ includes text and a mention.
 
    ConnectApi.FeedItemInput input = new ConnectApi.FeedItemInput();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    input.subjectId = targetUserOrGroupOrRecordId;
 
    input.feedElementType = ConnectApi.FeedElementType.FeedItem;
@@ -5590,12 +5694,6 @@ includes text and a mention.
 
    messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
 
    markupBeginSegment.markupType = ConnectApi.MarkupType.Bold;
@@ -5652,6 +5750,9 @@ _Apex Reference Guide_ [: ConnectApi.InlineImageSegmentInput](https://developer.
 
 Call a method to post a feed element with a code block.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElement_3)` to post a feed item with a code block.
 
 ```
@@ -5677,12 +5778,6 @@ Call `[postFeedElement(communityId, feedElement)](https://developer.salesforce.c
 
    messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
 
    markupBeginSegment.markupType = ConnectApi.MarkupType.Code;
@@ -5736,6 +5831,12 @@ item with a new file (binary) attachment.
 
    ConnectApi.FeedElementCapabilitiesInput();
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
    capabilities.content = contentInput;
 
    input.capabilities = capabilities;
@@ -5755,9 +5856,6 @@ item with a new file (binary) attachment.
 ```
 
 Use a trigger to call a method to bulk post to the feeds of accounts.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 This trigger calls `[postFeedElementBatch(communityId, feedElements)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElementBatch_1)` to bulk post to the feeds of newly inserted
 accounts.
@@ -5808,6 +5906,9 @@ Use a trigger to call a method to bulk post a new file to the feeds of accounts.
 Important: This example is valid in version 32.0–35.0. In version 36.0 and later, you can’t post a batch of feed elements with a
 new file in the same call. Upload the file to Salesforce first, and then specify the uploaded file when posting a batch of feed elements.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 This trigger calls `[postFeedElementBatch(communityId, feedElements)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_ConnectAPI_ChatterFeeds_static_methods.htm#apex_ConnectAPI_ChatterFeeds_postFeedElementBatch_1)` to bulk post to the feeds of newly inserted
 accounts. Each post has a new file (binary) attachment.
 
@@ -5830,12 +5931,6 @@ accounts. Each post has a new file (binary) attachment.
 
         body.messageSegments = new List<ConnectApi.MessageSegmentInput>();
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         ConnectApi.TextSegmentInput textSegment = new ConnectApi.TextSegmentInput();
 
         textSegment.text = 'Let\'s win the ' + a.name + ' account.';
@@ -10393,16 +10488,20 @@ See Apex Email Service.
 
 Use Apex to work with email sent from Salesforce.
 
+Important: Sending an email by using Apex requires domain-level and user-level email verification. System-generated emails
+[also require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+
 You can use Apex to send individual and mass email. The email can include all standard email attributes (such as subject line and blind
 carbon copy address), use Salesforce email templates, and be in plain text or HTML format, or those generated by Visualforce.
+
+
+Apex Developer Guide Using Salesforce Features with Apex
 
 Note: Visualforce email templates cannot be used for mass email.
 
 You can use Salesforce to track the status of email in HTML format, including the date the email was sent, first opened and last opened,
 and the total number of times it was opened.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 To send individual and mass email with Apex, use the following classes:
 
@@ -10480,13 +10579,13 @@ this limit is reached, calls to the `sendEmail` method using `MassEmailMessage` 
 
 **•** Any error returned in the SendEmailResult object indicates that no email was sent.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 `Messaging.SingleEmailMessage` has a method called `setOrgWideEmailAddressId` . It accepts an object ID to an
 `OrgWideEmailAddress` object. If `setOrgWideEmailAddressId` is passed a valid ID, the
 `OrgWideEmailAddress.DisplayName` field is used in the email header, instead of the logged-in user's `Display Name` .
 The sending email address in the header is also set to the field defined in `OrgWideEmailAddress.Address` .
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Note: If both `OrgWideEmailAddress.DisplayName` and `setSenderDisplayName` are defined, the user receives
 a `DUPLICATE_SENDER_DISPLAY_NAME` error.
@@ -10556,18 +10655,20 @@ Example
 
       'To view your case <a href=https:// MyDomainName .my.salesforce.com/'+case.Id+'>click
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
     here.</a>');
 
    // Send the email you have created.
 
    Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 #### External Services External Services connect your Salesforce org to a service outside of Salesforce, such as an employee banking service. After you register
+```
 
 the external service, you can call it natively in your Apex code. Objects and operations defined in the external service's registered API
 specification become Apex classes and methods in the `ExternalService` namespace. The registered service's schema types map
@@ -10613,6 +10714,10 @@ You can retrieve flow variables for a specific flow in Apex.
 The `Flow.Interview` Apex class provides the `getVariableValue` method for retrieving a flow variable, which can be in the
 flow embedded in the Visualforce page, or in a separate flow that is called by a subflow element. This example shows how to use this
 method to obtain breadcrumb (navigation) information from the flow embedded in the Visualforce page. If that flow contains subflow
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 elements, and each of the referenced flows also contains a _`vaBreadCrumb`_ variable, the Visualforce page can provide users with
 breadcrumbs regardless of which flow the interview is running.
 
@@ -10627,12 +10732,6 @@ breadcrumbs regardless of which flow the interview is running.
 
        String aBreadCrumb;
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
        if (myFlow==null) { return 'Home';}
 
        else aBreadCrumb = (String) myFlow.getVariableValue('vaBreadCrumb');
@@ -10684,6 +10783,9 @@ InvocableMethod Annotation
 Control the display order and grouping of input parameters for your Apex invocable actions in Flow Builder using the
 InvocableActionExtension metadata file.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Example: Sorting Booking Request Inputs
 
 An Apex class for a travel application, `BookingAction`, uses a custom input type, `BookingRequest`, to manage two required
@@ -10693,9 +10795,6 @@ file to define the logical order and group the fields under a relevant section h
 Create the Apex Invocable Action
 
 This section shows the Apex class structure required for the invocable action that exposes configurable input parameters to a flow.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 This Apex class creates an invocable action, `BookingAction`, designed to send a booking request to an external system. Note that
 the method accepts a `List` input to support bulk processing, a best practice for Apex development.
@@ -10773,6 +10872,12 @@ Note: Users who invoke the action from a flow must have the appropriate Apex cla
 
       public class BookingResult {
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         @InvocableVariable(
 
            label='Status Message'
@@ -10791,10 +10896,6 @@ Note: Users who invoke the action from a flow must have the appropriate Apex cla
 
 The `invoke` method uses the `@InvocableMethod` annotation to be callable from a flow. Input and output are defined by the
 inner classes, `BookingRequest` and `BookingResult`, ensuring data integrity. The individual input variables within
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 `BookingRequest` use the `@InvocableVariable` annotation, which allows them to be exposed as configurable fields in Flow
 Builder.
 
@@ -10846,6 +10947,12 @@ for at least one parameter, you must define an `Order` for all parameters within
 
         <targetType>ActionParameter</targetType>
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         <targetName>BookingAction.BookingRequest.endDate</targetName>
 
         <attributes>
@@ -10869,9 +10976,6 @@ for at least one parameter, you must define an `Order` for all parameters within
    </InvocableActionExtension>
 
 ```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 The `<targets>` elements identify the specific input parameters to be customized. The `<key>Order</key>` attribute explicitly
 controls the vertical display sequence of the input parameters in Flow Builder. The `<key>Group</key>` attribute is used to create
@@ -10908,20 +11012,20 @@ Apex action.
 
 **•** `[Process.PluginRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginRequest.htm)` passes input parameters from the class that implements the interface to the flow.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **•** `[Process.PluginResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginResult.htm)` returns output parameters from the class that implements the interface to the flow.
 
 **•** `[Process.PluginDescribeResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_Process_PluginDescribeResult.htm)` passes input parameters from a flow to the class that implements the interface. This
 class determines the input parameters and output parameters needed by the `Process.PluginResult` plug-in.
 
 When you write Apex unit tests, instantiate a class and pass it into the interface `invoke` method. To pass in the parameters that the
-system needs, create a map and use it in the constructor. For more information, see Using the Process.PluginRequest Class on page 482.
+system needs, create a map and use it in the constructor. For more information, see Using the Process.PluginRequest Class on page 485.
 
-Implementing the Process.Plugin Interface
+###### Implementing the Process.Plugin Interface
 
 `Process.Plugin` is a built-in interface that allows you to pass data between your organization and a specified flow.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Using the Process.PluginRequest Class
 The `Process.PluginRequest` class passes input parameters from the class that implements the interface to the flow.
@@ -10968,12 +11072,6 @@ invoke Process.PluginRequest Process.PluginResult
 
 ```
 
-Example Implementation
-
-```
-global class flowChat implements Process.Plugin {
-
-```
 
 Returns a
 
@@ -10987,21 +11085,21 @@ Primary method that the system invokes
 when the class that implements the
 interface is instantiated.
 
-```
-// The main method to be implemented. The Flow calls this at runtime.
-
-global Process.PluginResult invoke(Process.PluginRequest request) {
-
-     // Get the subject of the Chatter post from the flow
-
-     String subject = (String) request.inputParameters.get('subject');
-
-```
-
-
 Apex Developer Guide Using Salesforce Features with Apex
 
+Example Implementation
+
 ```
+   global class flowChat implements Process.Plugin {
+
+   // The main method to be implemented. The Flow calls this at runtime.
+
+   global Process.PluginResult invoke(Process.PluginRequest request) {
+
+        // Get the subject of the Chatter post from the flow
+
+        String subject = (String) request.inputParameters.get('subject');
+
         // Use the Chatter APIs to post it to the current user's feed
 
         FeedItem fItem = new FeedItem();
@@ -11073,6 +11171,12 @@ The following is a test class for the preceding class.
 
         Process.PluginRequest request = new Process.PluginRequest(inputParams);
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         plugin.invoke(request);
 
       }
@@ -11084,9 +11188,6 @@ The following is a test class for the preceding class.
 ```
 
 The `Process.PluginRequest` class passes input parameters from the class that implements the interface to the flow.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Tip: We recommend using the `@InvocableMethod` annotation instead of the `Process.Plugin` interface.
 
@@ -11158,6 +11259,12 @@ In this example, the code returns the subject of a Chatter post from a flow and 
 
         result.inputParameters = new List<Process.PluginDescribeResult.InputParameter>{
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
            new Process.PluginDescribeResult.InputParameter('subject',
 
            Process.PluginDescribeResult.ParameterType.STRING, true)
@@ -11174,12 +11281,9 @@ In this example, the code returns the subject of a Chatter post from a flow and 
 
    }
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
 ###### Using the Process.PluginResult Class
+
+```
 
 The `Process.PluginResult` class returns output parameters from the class that implements the interface to the flow.
 
@@ -11239,14 +11343,14 @@ The `Process.PluginDescribeResult` class doesn’t support the following functio
 
 **•** Queries
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **•** Data modification
 
 **•** Email
 
 **•** Apex nested callouts
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 **`Process.PluginDescribeResult`** Class and Subclass Properties
 
@@ -11334,6 +11438,12 @@ For example:
 
    List<Process.PluginDescribeResult.OutputParameter>{
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       new Process.PluginDescribeResult.OutputParameter( Name, Optional description string,
 
         Process.PluginDescribeResult.ParameterType. Enum )
@@ -11347,12 +11457,6 @@ For example:
 
    result.setDescription('this plugin gets the name of a user');
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
    result.setTag ('userinfo');
 
    result.outputParameters = new List<Process.PluginDescribeResult.OutputParameter>{
@@ -11420,6 +11524,9 @@ referenced from flows, processes, and the Custom Invocable Actions REST API endp
 **•** Legacy Apex actions aren’t supported in auto-layout in Flow Builder. Legacy Apex actions are only available to be added in
 free-form in Flow Builder. Existing actions can be edited in both auto-layout and free-form mode.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 **Flow Data Type** **Data Type**
 
 Number Decimal
@@ -11427,11 +11534,6 @@ Number Decimal
 Date Datetime/Date
 
 DateTime Datetime/Date
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**Flow Data Type** **Data Type**
 
 Boolean Boolean and numeric with 1 or 0 values only
 
@@ -11505,6 +11607,12 @@ free-form in Flow Builder. Existing actions can be edited in both auto-layout an
 
         if (overWriteLeadSource == null)
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
            overWriteLeadSource = false;
 
         if (createOpportunity == null)
@@ -11515,12 +11623,6 @@ free-form in Flow Builder. Existing actions can be edited in both auto-layout an
 
            sendEmailToOwner = false;
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         // Convert the lead by passing it to a helper method.
 
         Map<String,Object> result = new Map<String,Object>();
@@ -11611,6 +11713,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
              'ConvertedStatus',
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
              Process.PluginDescribeResult.ParameterType.STRING,
 
              true),
@@ -11621,12 +11729,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
              Process.PluginDescribeResult.ParameterType.STRING,
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
              false),
 
            new Process.PluginDescribeResult.InputParameter(
@@ -11716,6 +11818,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
       * sendEmailtoOwner - true if you are changing owners upon
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
       * conversion and want to notify the new Opportunity owner.
 
       *
@@ -11726,12 +11834,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
       * to upon conversion.
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
       * ContactID - ID of the Contact created or attached
 
       * to upon conversion.
@@ -11824,6 +11926,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
            }
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
            Database.LeadConvertResult lcr = Database.convertLead(
 
              lc, true);
@@ -11832,12 +11940,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
              result.put('AccountID', lcr.getAccountId());
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
              result.put('ContactID', lcr.getContactId());
 
              if (createOpportunity) {
@@ -11922,18 +12024,18 @@ Apex Developer Guide Using Salesforce Features with Apex
 
                  from Lead where id = :testLead.ID];
 
-        System.Assert(aLead.isConverted);
-
-      }
-
-      /*
-
 ```
 
 
 Apex Developer Guide Using Salesforce Features with Apex
 
 ```
+        System.Assert(aLead.isConverted);
+
+      }
+
+      /*
+
        * This tests lead conversion with
 
        * the Account ID specified.
@@ -12012,6 +12114,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
            Company='Test Lead',FirstName='John',LastName='Doe');
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         insert testLead;
 
         Account testAccount1 = new Account(name='Test Lead');
@@ -12020,12 +12128,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         Account testAccount2 = new Account(name='Test Lead');
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
         insert testAccount2;
 
           // System.debug('ACCOUNT BEFORE' + testAccount.ID);
@@ -12102,6 +12204,12 @@ Apex Developer Guide Using Salesforce Features with Apex
 
         Process.PluginResult result;
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
         try {
 
            result = aLeadPlugin.invoke(request);
@@ -12112,12 +12220,6 @@ Apex Developer Guide Using Salesforce Features with Apex
 
          System.debug('EXCEPTION' + e);
 
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
          System.AssertEquals(1,1);
 
         }
@@ -12178,15 +12280,15 @@ Formulas in Apex support these features.
 [Formula evaluation in Apex is bound by the formula field character limit, but not the compile size limit. A formula can contain up to](https://help.salesforce.com/s/articleView?id=platform.formula_field_limits.htm&type=5&language=en_US)
 3,900 characters including spaces, return characters, and comments.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 [Formula functions that are available to use in Apex are ones that can be used in validation rules. For details, see Formula Operators and](https://help.salesforce.com/s/articleView?id=platform.customize_functions.htm&type=5&language=en_US)
 [Functions by Context.](https://help.salesforce.com/s/articleView?id=platform.customize_functions.htm&type=5&language=en_US)
 
 SEE ALSO:
 
 _Apex Reference Guide:_ [FormulaEval Namespace](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_formulaeval.htm)
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 #### Metadata
 
@@ -12233,6 +12335,10 @@ of metadata component names that you want to retrieve. Salesforce returns a list
 
 Deployment is queued for asynchronous processing. When deploying metadata, you can create and update components but not delete
 them. There are limitations on which components that apps and packages can deploy and which types of apps and packages can deploy
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 to which types of orgs. There are also service protection limitations on how many deployments that you can enqueue at one time from
 Apex. For more information, see Security Considerations.
 
@@ -12240,10 +12346,7 @@ Use the full name of the metadata component when retrieving and deploying metada
 metadata type, and component name. If you’re updating components in a namespace, you must qualify the namespace for the component
 in the full name. For example, the full name for a custom metadata MDType1__mdt component named Component1 that is contained
 in the myPackage namespace is myPackage__MDType1__mdt.myPackage__Component1. For more information on the metadata
-#### component full name syntax, see Metadata base type in the Metadata API Developer Guide .
-
-
-Apex Developer Guide Using Salesforce Features with Apex
+[component full name syntax, see Metadata base type in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) _Metadata API Developer Guide_ .
 
 You can retrieve and deploy metadata in post install scripts. In uninstall scripts, you can only retrieve, not deploy, metadata from Apex
 code.
@@ -12298,6 +12401,9 @@ Apex code that accesses metadata must be properly tested.
 To provide Apex test coverage for metadata deployments, write tests that verify both the set up of the deployment request and handling
 of the deployment results.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Tests for deployment request code verify the metadata components and component values that get created and assert that the
 `DeployContainer` contains exactly what needs to be deployed.
 
@@ -12305,9 +12411,6 @@ Tests for deployment result code verify that your `DeployCallback` handles expec
 `DeployCallback` is normally called by Salesforce as part of the asynchronous deployment process. Therefore, to test your callback
 outside of the deployment process, create tests that use your callback class directly. You also must create test `DeployResults` and
 `DeployCallbackContext` instances to test your `DeployCallback.handleResults()` method.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 When creating a test instance of `DeployCallbackContext`, subclass `DeployCallbackContext` and provide your own
 implementation of `getCallbackJobId()` .
@@ -12372,6 +12475,12 @@ Set this test to run once in a Test setup method, then reuse the data in subsequ
 
       // additional tests to validate permissions granted by PSG
 
+```
+
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+```
      }
 
    }
@@ -12383,9 +12492,6 @@ SEE ALSO:
 [Salesforce Help: Permission Set Groups](https://help.salesforce.com/s/articleView?id=platform.perm_set_groups.htm&type=5&language=en_US)
 
 _[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 #### Platform Cache
 
@@ -12432,18 +12538,18 @@ methods instead.
 Use a Visualforce Global Variable for the Platform Cache
 You can access cached values stored in the session or org cache from a Visualforce page with global variables.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 Safely Cache Values with the CacheBuilder Interface
 A Platform Cache best practice is to ensure that your Apex code handles cache misses by testing for cache requests that return null.
 You can write this code yourself. Or, you can use the `Cache.CacheBuilder` interface, which makes it easy to safely store and
 retrieve values to a session or org cache.
 
-#### Platform Cache Best Practices Platform Cache can greatly improve performance in your applications. However, it’s important to follow these guidelines to get the
-
+Platform Cache Best Practices
+Platform Cache can greatly improve performance in your applications. However, it’s important to follow these guidelines to get the
 best cache performance. In general, it’s more efficient to cache a few large items than to cache many small items separately. Also
 be mindful of cache limits to prevent unexpected cache evictions.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 ##### Platform Cache Features
 
@@ -12493,14 +12599,14 @@ Testing the cache on a trial basis lets you make an informed decision about whet
 
 For more information about trial cache, see “Request a Platform Cache Trial” in Salesforce Help.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 You can request additional cache space to improve the performance of your application. For more information about requesting additional
 cache, see "Request Additional Platform Cache" in Salesforce Help.
 
 For more information about Provider Free capacity cache, see “Set Up a Platform Cache partition using Provider Free Capacity” in Salesforce
 Help.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
 
 Note: Platform Cache isn’t supported in Professional Edition.
 
@@ -12557,14 +12663,14 @@ makes to the database that cause Apex triggers to fire.
 values from the session cache. The session-cache restriction applies to Apex actions and to changes that the flow makes to the
 database that cause Apex triggers to fire.
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
 ##### Platform Cache Limits
 
 These limits apply when using Platform Cache.
 
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Platform Cache Limits
+##### Platform Cache Limits
 
 Key Size Limits
 
@@ -12611,16 +12717,16 @@ Org Cache Limits
 
 Maximum size of a single cached item (for `put()` methods) 100 KB
 
+
+Apex Developer Guide Using Salesforce Features with Apex
+
+**Limit** **Value**
+
 Maximum local cache size for a partition, per-request [1] 1,000 KB
 
 Minimum developer-assigned time-to-live 300 seconds (5 minutes)
 
 Maximum developer-assigned time-to-live 172,800 seconds (48 hours)
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**Limit** **Value**
 
 Default org cache time-to-live 86,400 seconds (24 hours)
 
@@ -15970,7 +16076,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 
 **–** Test methods don’t support web service callouts. Tests that perform web service callouts fail. For an example that shows how
 to avoid these failing tests by returning mock responses, see Google Drive [™] Custom Adapter for Salesforce Connect on page
-558.
+560.
 
 **•** In Apex tests, use dynamic SOQL to query external objects. Tests that perform static SOQL queries of external objects fail.
 
@@ -16031,7 +16137,7 @@ Apex Developer Guide Using Salesforce Features with Apex
 **•** Use Data Manipulation Language (DML) operations to insert, update, and delete external data.
 
 To improve unit tests for the Apex code in this example, you can also return mock records in a testing context. See Mock SOQL Tests for
-External Objects on page 522.
+External Objects on page 524.
 
 DataSource.Connection Class
 
@@ -21319,11 +21425,11 @@ Apex Developer Guide Integration and Apex Utilities
 
 To learn more about the types of callouts, see:
 
-**•** SOAP Services: Defining a Class from a WSDL Document on page 607
+**•** SOAP Services: Defining a Class from a WSDL Document on page 609
 
-**•** Invoking HTTP Callouts on page 620
+**•** Invoking HTTP Callouts on page 622
 
-**•** Asynchronous Callouts for Long-Running Requests on page 632
+**•** Asynchronous Callouts for Long-Running Requests on page 634
 
 Tip: Callouts enable Apex to invoke external web or HTTP services. Apex Web services allow an external application to invoke
 Apex methods through Web services.
@@ -21750,7 +21856,7 @@ header. To set HTTP headers, add `inputHttpHeaders_x` and `outputHttpHeaders_x` 
 Note: In API versions 16.0 and earlier, HTTP responses for callouts are always decoded using UTF-8, regardless of the Content-Type
 header. In API versions 17.0 and later, HTTP responses are decoded using the encoding specified in the Content-Type header.
 
-The following samples work with the sample WSDL file in Generated WSDL2Apex Code on page 613:
+The following samples work with the sample WSDL file in Generated WSDL2Apex Code on page 615:
 
 Sending HTTP Headers on a Web Service Callout
 
@@ -22667,7 +22773,7 @@ Understanding Runtime Events
 The following checks are performed when Apex code is making a callout to an external service.
 
 **•** For information on the timeout limits when making an HTTP request or a Web services call, see Callout Limits and Limitations on
-page 631.
+page 633.
 
 **•** Circular references in Apex classes are not allowed.
 
@@ -23640,7 +23746,7 @@ can toggle read-only mode on and verify your apps.
 Setting Callout Timeouts
 
 The following example sets a custom timeout for Web services callouts. The example works with the sample WSDL file and the generated
-`DocSamplePort` class described in Generated WSDL2Apex Code on page 613. Set the timeout value in milliseconds by assigning a
+`DocSamplePort` class described in Generated WSDL2Apex Code on page 615. Set the timeout value in milliseconds by assigning a
 value to the special `timeout_x` variable on the stub.
 
 ```
@@ -23684,7 +23790,7 @@ A typical Salesforce application that benefits from asynchronous callouts contai
 button to get data from an external Web service. For example, a Visualforce page that gets warranty information for a certain product
 from a Web service. Thousands of agents in the organization can use this page. Therefore, a hundred of those agents can click the same
 button to process warranty information for products at the same time. These hundred simultaneous actions exceed the limit of concurrent
-long-running requests on page 349 . But by using asynchronous callouts, the requests aren’t subjected to this limit and can be executed.
+long-running requests on page 351 . But by using asynchronous callouts, the requests aren’t subjected to this limit and can be executed.
 
 In the following example application, the button action is implemented in an Apex controller method. The action method creates a
 `Continuation` and returns it. After the request is sent to the service, the Visualforce request is suspended. The user must wait for
@@ -26709,90 +26815,3 @@ unhandled exceptions.
 Apex Developer Guide Debugging Apex
 
 2. Exceptions in Apex
-_Exceptions_ note errors and other events that disrupt the normal flow of code execution. `throw` statements are used to generate
-exceptions, while `try`, `catch`, and `finally` statements are used to gracefully recover from exceptions.
-
-#### Debug Log
-
-A debug log can record database operations, system processes, and errors that occur when executing a transaction or running unit tests.
-Debug logs can contain information about:
-
-**•** Database changes
-
-**•** HTTP callouts
-
-**•** Apex errors
-
-**•** Resources used by Apex
-
-**•** Automated workflow processes, such as:
-
-**–** Workflow rules
-
-**–** Assignment rules
-
-**–** Approval processes
-
-**–** Validation rules
-
-Note: The debug log doesn’t include information from actions triggered by time-based workflows. It also doesn’t include
-information from standard or custom controllers used in Visualforce email templates.
-
-You can retain and manage debug logs for specific users, including yourself, and for classes and triggers. Setting class and trigger trace
-flags doesn’t cause logs to be generated or saved. Class and trigger trace flags override other logging levels, including logging levels set
-by user trace flags, but they don’t cause logging to occur. If logging is enabled when classes or triggers execute, logs are generated at
-the time of execution.
-
-#### To view a debug log from Setup, enter Debug Logs in the Quick Find box, then select Debug Logs . Then click View next to
-
-the debug log that you want to examine. Click **Download** to download the debug log as a log file.
-
-#### Debug Log Limits
-
-Debug logs have the following limits.
-
-**•** Each debug log must be 20 MB or smaller. Debug logs that are larger than 20 MB are reduced in size by removing older log lines,
-such as log lines for earlier `System.debug` statements. The log lines can be removed from any location, not just the start of the
-debug log.
-
-**•** System debug logs are retained for 24 hours. Monitoring debug logs are retained for seven days.
-
-**•** If you generate more than 1,000 MB of debug logs in a 15-minute window, your trace flags are disabled. We send an email to the
-users who last modified the trace flags, informing them that they can re-enable the trace flag in 15 minutes.
-
-Warning: If the debug log trace flag is enabled on a frequently accessed Apex class or for a user executing requests often,
-the request can result in failure, regardless of the time window and the size of the debug logs.
-
-**•** When your org accumulates more than 1,000 MB of debug logs, we prevent users in the org from adding or editing trace flags. To
-add or edit trace flags so that you can generate more logs after you reach the limit, delete some debug logs.
-
-
-Apex Developer Guide Debugging Apex
-
-Inspecting the Debug Log Sections
-
-After you generate a debug log, the type and amount of information listed depends on the filter values you set for the user. However,
-the format for a debug log is always the same.
-
-Note: Session IDs are replaced with "SESSION_ID_REMOVED" in Apex debug logs
-
-A debug log has the following sections.
-
-**Header**
-The header contains the following information.
-
-**•** The version of the API used during the transaction.
-
-**•** The log category and level used to generate the log. For example:
-
-The following is an example of a header.
-
-```
-     66.0
-
-     APEX_CODE,DEBUG;APEX_PROFILING,INFO;CALLOUT,INFO;DB,INFO;SYSTEM,DEBUG;VALIDATION,INFO;VISUALFORCE,INFO;
-
-     WORKFLOW,INFO
-
-```
-

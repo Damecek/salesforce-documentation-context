@@ -1,3 +1,2407 @@
+**Refers To**
+LoginGeo
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The ID for the record of the user’s successful or unsuccessful login attempt.
+
+This is a relationship field.
+
+**Relationship Name**
+LoginHistory
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+LoginHistory
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+The identity verification security policy or setting. The label is Triggered By.
+Available values are:
+
+
+Standard Objects VerificationHistory
+
+**Field Name** **Details**
+
+**•** `CustomApex` —Identity verification made by a verification Apex method.
+
+**•** `DeviceActivation` —Identity verification required for users logging in
+from an unrecognized device or new IP address. This verification is part of
+Salesforce’s risk-based authentication.
+
+**•** `EnableLightningLogin` —Identity verification required for users
+enrolling in Lightning Login. This verification is triggered when the user
+attempts to enroll. Users are eligible to enroll if they have the Lightning Login
+User user permission and the org has enabled Allow Lightning Login in
+Session Settings.
+
+**•** `ExtraVerification` —Reserved for future use.
+
+**•** `HighAssurance` —High assurance session required for resource access.
+This verification is triggered when the user tries to access a resource, such as
+a connected app, report, or dashboard, that requires a high-assurance session
+level.
+
+**•** `LightningLogin` —Identity verification required for internal users logging
+in via Lightning Login. This verification is triggered when the enrolled user
+attempts to log in. Users are eligible to log in if they have the Lightning Login
+User user permission and have successfully enrolled in Lightning Login. Also,
+from Session Settings in Setup, Allow Lightning Login must be enabled.
+
+**•** `PageAccess` —Identity verification required for users attempting to
+perform an action, such as changing an email address or adding a verification
+method for multi-factor authentication (MFA).
+
+**•** `PasswordlessLogin` —Identity verification required for customers
+attempting to log in to an Experience Cloud site that is set up for passwordless
+login. The admin controls which registered verification methods can be used,
+for example, email, SMS, Salesforce Authenticator, or TOTP.
+
+**•** `ProfilePolicy` —Session security level required at login. This verification
+is triggered by the Session security level required at login setting on the user’s
+profile.
+
+**•** `TwoFactorAuthentication` —Multi-factor authentication (formerly
+called two-factor authentication) required at login. This verification is triggered
+by the Multi-Factor Authentication for User Interface Logins user permission
+assigned to a custom profile. Or the user permission is included in a
+permission set that is assigned to a user.
+
+```
+Remarks
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The text the user sees on the page or in Salesforce Authenticator when prompted
+to verify identity. For example, if identity verification is required for a user’s login,
+the user sees “You’re trying to Log In to Salesforce.” In this case, the Remarks
+value is “Log In to Salesforce.” But if the Activity value is Apex, the Remarks value
+
+
+Standard Objects VerificationHistory
+
+**Field Name** **Details**
+
+is a custom description passed by an Apex method. If the user is verifying identity
+using Salesforce Authenticator, the custom description also appears in the app.
+If the custom description isn’t specified, the value is the name of the Apex method.
+The label is Activity Message.
+
+```
+ResourceId
+
+SourceIp
+
+Status
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+If the `Activity` value is ConnectedApp, the `ResourceId` value is the ID
+of the connected app. The label is Connected App ID.
+
+This is a relationship field.
+
+**Relationship Name**
+Resource
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ConnectedApplication
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The IP address of the machine from which the user attempted the action that
+requires identity verification. For example, the IP address of the machine from
+where the user tried to log in or access reports. If it’s a non-login action that
+required verification, the IP address can be different from the address from where
+the user logged in. This address can be an IPv4 or IPv6 address.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+The status of the identity verification attempt. Available values are:
+
+**•** `AutomatedSuccess` —Salesforce Authenticator approved the request
+for access because the request came from a trusted location. After users
+enable location services in Salesforce Authenticator, they can designate
+trusted locations. When a user trusts a location for a particular activity, such
+as logging in from a recognized device, that activity is approved from the
+trusted location for as long as the location is trusted.
+
+
+Standard Objects VerificationHistory
+
+**Field Name** **Details**
+
+**•** `Denied` —The user denied the approval request in the authenticator app,
+such as Salesforce Authenticator.
+
+**•** `FailedGeneralError` —An error caused by something other than an
+invalid verification code, too many verification attempts, or authenticator
+app connectivity.
+
+**•** `FailedInvalidCode` —The user entered an invalid verification code.
+
+**•** `FailedInvalidPassword` —The user entered an invalid password.
+
+**•** `FailedPasswordLockout` —The user attempted to enter a password
+too many times.
+
+**•** `FailedTooManyAttempts` —The user attempted to verify identity too
+many times. For example, the user entered an invalid verification code
+repeatedly.
+
+**•** `Initiated` —Salesforce initiated identity verification but hasn’t yet
+challenged the user.
+
+**•** `InProgress` —Salesforce challenged the user to verify identity and is
+waiting for the user to respond or for Salesforce Authenticator to send an
+automated response.
+
+**•** `RecoverableError` —Salesforce can’t reach the authenticator app to
+verify identity, but it continues to retry.
+
+**•** `ReportedDenied` —The user denied the approval request in the
+authenticator app, such as Salesforce Authenticator, and also flagged the
+approval request to report to an administrator.
+
+**•** Succeeded—The user’s identity was verified.
+
+```
+UserId
+
+VerificationMethod
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+ID of the user verifying identity.
+
+This is a relationship field.
+
+**Relationship Name**
+User
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+User
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+
+Standard Objects VerificationHistory
+
+**Field Name** **Details**
+
+**Description**
+The method by which the user attempted to verify identity in the verification
+event. The label is Method. Available values are:
+
+**•** `BuiltInAuthenticator` —A built-in authenticator set up on the user’s
+device, such as Touch ID or Windows Hello, generated the required
+credentials. This value is available in API version 53.0 and later.
+
+**•** `Email` —Salesforce sent an email with a verification code to the address
+associated with the user’s account.
+
+**•** `EnableLL` —Salesforce Authenticator sent a notification to the user’s mobile
+device to enroll in Lightning Login. This value is available in API version 38.0
+and later.
+
+**•** `LL` —Salesforce Authenticator sent a notification to the user’s mobile device
+to approve login via Lightning Login. This value is available in API version
+38.0 and later.
+
+**•** `PwlessPasskey` (beta)—Salesforce prompted the user to use a passkey
+to perform passwordless login. This value is available in API version 66.0 and
+later.
+
+Passwordless login with passkeys is a pilot or beta service that is subject to
+[the Beta Services Terms at Agreements - Salesforce.com or a written Unified](https://www.salesforce.com/company/legal/agreements/)
+[Pilot Agreement if executed by Customer, and applicable terms in the Product](https://ptd.salesforce.com/?_ga=2.247987783.1372150065.1709219475-629000709.1639001992)
+[Terms Directory. Use of this pilot or beta service is at the Customer's sole](https://ptd.salesforce.com/?_ga=2.247987783.1372150065.1709219475-629000709.1639001992)
+discretion.
+
+**•** `SalesforceAuthenticator` —Salesforce Authenticator sent a
+notification to the user’s mobile device to verify account activity.
+
+**•** `Sms` —Salesforce sent a text message with a verification code to the user’s
+mobile device. SMS messaging requires a Salesforce add-on license for Identity
+Verification Credits.
+
+**•** `TempCode` —A Salesforce admin or a user with the Manage Multi-Factor
+Authentication in User Interface permission generated a temporary verification
+code for the user. This value is available in API version 37.0 and later.
+
+**•** `Totp` —An authenticator app generated a time-based, one-time password
+(TOTP) on the user’s mobile device.
+
+**•** `U2F` —A U2F security key generated required credentials for the user. This
+value is available in API version 38.0 and later.
+
+```
+VerificationTime
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Sort
+
+**Description**
+The date and time of the identity verification attempt, for example,
+`7/19/2025, 3:19:13 PM PDT.` The time zone is based on GMT. The
+label is Time.
+
+
+### Standard Objects VisualforceAccessMetrics
+
+Usage
+
+Here are two examples queries that you can perform on VerificationHistory.
+
+**Query** **String**
+
+Show verification history for a user’s login record `SELECT Activity, EventGroup, Policy,`
+
+```
+                             Remarks, Status, UserId,VerificationMethod,
+
+                             VerificationTime FROM VerificationHistory
+
+                             WHERE LoginHistoryId = '0YaD000#########'
+
+```
+
+Get detailed geographic location information for a user’s verification
+attempt
+
+### VisualforceAccessMetrics
+
+Represents summary statistics for Visualforce pages.
+
+Supported Calls
+
+```
+SELECT City, CountryIso, Latitude,
+
+Longitude, PostalCode FROM LoginGeo WHERE
+
+LoginGeoId = '0LE###############'
+
+```
+
+`count()`, `describeSObjects()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+As of Spring ’20 and later, to access VisualforceAccessMetrics, users must have the Customize Application permission.
+
+Fields
+
+**Field** **Details**
+
+```
+ApexPageId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Aggregate, Filter, Group, Sort
+
+**Description**
+The ID of the Visualforce page.
+
+This is a relationship field.
+
+**Relationship Name**
+ApexPage
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ApexPage
+
+
+Standard Objects VisualforceAccessMetrics
+
+**Field** **Details**
+
+```
+ProfileId
+
+DailyPageViewCount
+
+MetricsDate
+
+LogDate
+
+```
+
+Usage
+
+**Type**
+reference
+
+**Properties**
+Aggregate, Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the use who viewed the Visualforce page.
+
+This is a relationship field.
+
+**Relationship Name**
+Profile
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Profile
+
+**Type**
+int
+
+**Properties**
+Aggregate, Filter, Group, Nillable, Sort
+
+**Description**
+The number of views received by the specified Visualforce page.
+
+**Type**
+date
+
+**Properties**
+Aggregate, Filter, Group, Sort
+
+**Description**
+The date the metrics are queried.
+
+**Type**
+date
+
+**Properties**
+Aggregate, Filter, Group, Nillable, Sort
+
+**Description**
+The most recent page access date.
+
+Use this object to query information on the Visualforce pages in your org.
+
+```
+SELECT ApexPageId, DailyPageViewCount, Id, ProfileId, MetricsDate, LogDate FROM
+
+VisualforceAccessMetrics
+
+```
+
+
+### Standard Objects VisualforceRequestEventLog VisualforceRequestEventLog
+
+Visualforce Request events contain details of Visualforce requests. Requests can originate from the browser (UI). This object is available
+in API version 61.0 and later.
+
+[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
+
+Supported Calls
+
+`describeSObjects()`, `query()`
+
+Special Access Rules
+
+To access this object, you must have the View Event Log Object Data user permission.
+
+Note: This feature is a Beta Service. Customer may opt to try such Beta Service in its sole discretion. Any use of the Beta Service
+[is subject to the applicable Beta Services Terms provided at Agreements and Terms.](https://www.salesforce.com/company/legal/agreements/)
+
+Fields
+
+**Field** **Details**
+
+```
+ClientIp
+
+ControllerType
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
+a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The type of controller that’s used by the requested Visualforce page.
+
+Possible values are:
+
+**•** `0` —Not Specified
+
+**•** `1` —Standard
+
+**•** `2` —Standard Set
+
+**•** `3` —Custom
+
+**•** `4` —Java
+
+**•** `5` —Spring
+
+
+Standard Objects VisualforceRequestEventLog
+
+**Field** **Details**
+
+```
+CpuTime
+
+DatabaseBlocks
+
+DatabaseCpuTime
+
+DatabaseTotalTime
+
+HttpMethod
+
+```
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The CPU time in milliseconds used to complete the request. This field indicates the amount
+of activity taking place in the app server layer.
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Indicates how much activity is occurring in the database. A high value for this field suggests
+that adding indexes or filters on your queries benefits performance.
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The CPU time in milliseconds to complete the request. Indicates the amount of activity taking
+place in the database layer during the request.
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The time in nanoseconds for a database round trip. Includes time spent in the JDBC driver,
+network to the database, and `DatabaseCpuTime` . Compare this field to `CpuTime` to
+determine whether performance issues are occurring in the database layer or in your own
+code.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The HTTP method of the request. For example: `GET`, `POST`, `PUT`, and so on.
+
+
+Standard Objects VisualforceRequestEventLog
+
+**Field** **Details**
+
+```
+IsAjaxRequest
+
+IsFirstRequest
+
+LoginKey
+
+ManagedPackageNamespace
+
+PageName
+
+QueryString
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+The value is `true` if the request is a partial page request. The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+`1` if this page is the first Visualforce transaction in the request, or `0` if it isn't. The default
+value is `0` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The string that ties together all events in a given user’s login session. It starts with a login
+event and ends with either a logout event or the user session expiring. For example:
+`GeJCsym5eyvtEK2I` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+If the page is part of a managed package, the namespace of that package.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The name of the Visualforce page that was requested.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+
+Standard Objects VisualforceRequestEventLog
+
+**Field** **Details**
+
+**Description**
+The query string used to access the requested Visualforce page.
+
+**Example**
+Let’s assume that the requested Visualforce page
+( `/apex/myAccountDetailPage?id=001xx000003GYv6AAG` ) shows details
+of the account whose ID is in the URL. The value of `QueryString` in this case is
+`?id=001xx000003GYv6AAG` .
+
+```
+RequestIdentifier
+
+RequestSize
+
+RequestStatus
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The unique ID of a single transaction. A transaction can contain one or more events. Each
+event in a given transaction has the same `RequestIdentifier` . For example:
+`3nWgxWbDKWWDIk0FKfF5DV` .
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The size of the callout response, in bytes.
+
+**Type**
+String
+
+**Description**
+The status of the request for a page view or user interface action.
+
+For example:
+
+**•** `S` —Success. Salesforce handled the request successfully. If an Apex controller throws
+an exception, this status is also returned.
+
+**•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no permission to view page, page
+took too long to render, page is read-only.
+
+**•** `U` —Undefined
+
+**•** `A` —Authorization Error
+
+**•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated by an Apex controller in a
+Visualforce page.
+
+**•** `N` —Not Found. 404 error.
+
+This field can have a blank value.
+
+
+Standard Objects VisualforceRequestEventLog
+
+**Field** **Details**
+
+```
+RequestType
+
+ResponseSize
+
+RunTime
+
+SessionKey
+
+Timestamp
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The request type.
+
+Possible values are:
+
+**•** `page` —A normal request for a page
+
+**•** `content_UI` —A content request for a page that originated in the user interface
+
+**•** `content_apex` —A content request initiated by an Apex call
+
+**•** `PDF_UI` —A request for a page in PDF format through the user interface
+
+**•** `PDF_apex` —A request for PDF format by an Apex call (usually a Web Service call)
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The size of the callout request body, in bytes.
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The amount of time that the request took in milliseconds.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The user’s unique session ID. You can use this value to identify all user events within a session.
+When a user logs out and logs in again, a new session is started. For example:
+`d7DEq/ANa7nNZZVD` .
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects VisualforceRequestEventLog
+
+**Field** **Details**
+
+**Description**
+The access time of Salesforce services in GMT. For example,
+`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
+
+```
+Uri
+
+UserIdentifier
+
+UserType
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The 15-character ID of the user who’s using Salesforce services through the UI or the API.
+For example: `00530000009M943` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The category of user license.
+
+Possible values are:
+
+**•** `CsnOnly` —Users whose access to the application is limited to Chatter. This user type
+includes Chatter Free and Chatter moderator users.
+
+**•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
+they’re organization customers and access the application through a customer portal or
+an Experience Cloud site.
+
+**•** `CustomerSuccess` —Customer Success license. Users whose access is limited
+because they’re organization customers and access the application through a customer
+portal.
+
+**•** `Guest` —Users whose access is limited so that your customers can view and interact
+with your site without logging in.
+
+**•** `PowerCustomerSuccess` —Power Customer Success license. Users whose access
+is limited because they’re organization customers and access the application through a
+customer portal. Users with this license type can view and edit data they directly own
+or data owned by or shared with users below them in the customer portal role hierarchy.
+
+**•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
+partners and typically access the application through a partner portal or site.
+
+
+### Standard Objects VideoCall
+
+**Field** **Details**
+
+**•** `SelfService` —Users whose access is limited because they’re organization customers
+and access the application through a self-service portal.
+
+**•** `Standard` —Standard user license. This user type also includes Salesforce Platform
+and Salesforce Platform One user licenses, and admins for this org.
+
+```
+ViewStateSize
+
+### VideoCall
+
+```
+
+Represents a video call.
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The size of the Visualforce view state in bytes.
+
+### One VideoCall record can be related to several VideoCallRecording records — for example, a video call can have several
+
+video recordings and a transcript. As well, one video call record can be associated with several video call participant records.
+
+This object is available in API version 51.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `search()`, `update()`
+
+Fields
+
+**Field** **Details**
+
+AcceptanceTimeStamp
+
+ConsentedUserId
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort
+
+**Description**
+The timestamp when the user consented for uploading the video call recording. Reserved
+for future use.
+
+This field is available in API version 62.0 and later.
+
+**Type**
+reference
+
+
+Standard Objects VideoCall
+
+**Field** **Details**
+
+**Properties**
+Create, Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user who consented to upload the video call recording. Reserved for future
+use.
+
+This field is available in API version 62.0 and later.
+
+This field is a relationship field.
+
+**Relationship Name**
+ConsentedUser
+
+**Refers To**
+User
+
+```
+Description
+
+DurationInSeconds
+
+EndDateTime
+
+EventId
+
+```
+
+**Type**
+textarea
+
+**Properties**
+Nillable
+
+**Description**
+Description of the video call. Typically, the sales rep enters the description.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The video call duration in seconds.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Time the video call ended, in universal time coordinated (UTC).
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the event record associated with this video call. Reserved for future use.
+
+This is a relationship field.
+
+
+Standard Objects VideoCall
+
+**Field** **Details**
+
+**Relationship Name**
+Event
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Event
+
+```
+ExternalId
+
+HostId
+
+IntelligenceScore
+
+IsCallCoachingIncluded
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Nillable, Sort
+
+**Description**
+The ID of the video call, sent by the video call provider.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user who hosted the meeting.
+
+This is a relationship field.
+
+**Relationship Name**
+Host
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+User
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The Einstein Intelligence score for the video call. Video calls with higher scores are likely to
+contain more relevant information. For example, video calls where product names and
+competitor names are mentioned tend to have a higher score.
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+
+Standard Objects VideoCall
+
+**Field** **Details**
+
+**Description**
+Indicates whether Einstein Conversation Insights is available for this org and this user
+`(true)` or not `(false)` .
+
+```
+IsDiarizationOptIn
+
+IsRecorded
+
+LastReferencedDate
+
+LastViewedDate
+
+```
+
+MeetingType
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether optimal speaker separation (diarization) is opted in `(true)` or not
+`(false)` for the call.
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether the video call was recorded `(true)` or not `(false)` .
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last accessed this record, a record related to this record,
+or a list view.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last viewed this record or list view. If this value is
+`null`, the user might have only accessed this record or list view ( `LastReferencedDate` )
+but not viewed it.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The type of the call. Reserved for future use.
+
+
+Standard Objects VideoCall
+
+**Field** **Details**
+
+This field is available in API version 61.0 and later.
+
+Possible values are:
+
+**•** `EXTERNAL` —A call with two or more participants (default).
+
+**•** `MANUAL` —A call that is manually uploaded.
+
+**•** `SINGLE_USER` —A single user call where the sales rep is evaluated and coached.
+
+```
+Name
+
+OwnerId
+
+RelatedRecordId
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Sort
+
+**Description**
+The name of the video call. Typically entered by the sales rep.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort, Update
+
+**Description**
+The ID of the user who created the video call.
+
+This is a polymorphic relationship field.
+
+**Relationship Name**
+Owner
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Group, User
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort, Update
+
+**Description**
+The ID of the account or opportunity related to this video call.
+
+This is a polymorphic relationship field.
+
+**Relationship Name**
+RelatedRecord
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Account, Opportunity
+
+
+Standard Objects VideoCall
+
+**Field** **Details**
+
+```
+StartDateTime
+
+TranscribedLanguage
+
+```
+
+UsageType
+
+```
+VendorMeetingKey
+
+VendorMeetingUuid
+
+VendorName
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date and time that the video call started, in universal time coordinated (UTC).
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The language that is transcribed for this video call.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The cloud using the VideoCall.
+
+This field is available in API version 63.0 and later.
+
+Possible values are:
+
+**•** `Life Sciences` —Remote Engagement.
+
+**•** `Sales Cloud`
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The vendor's ID for this video call.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The vendor's unique identifier for this video call.
+
+**Type**
+picklist
+
+
+### Standard Objects VideoCallInsight
+
+**Field** **Details**
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The name of the vendor providing the video call software.
+
+Possible values are:
+
+**•** `ZOOM`
+
+Associated Objects
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+**VideoCallChangeEvent (API version 51.0)**
+Change events are available for the object.
+
+SEE ALSO:
+
+VideoCallParticipant
+
+VideoCallRecording
+
+### VideoCallInsight
+
+Represents the video call insight data associated with a video call. Each record represents the call insight of a specific recording or
+transcript within a call. This object is available in API version 66.0 and later.
+
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Supported Calls
+
+`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+Einstein Conversation Insight must be enabled and the user requires the Conversation Insights for Sales permission set.
+
+
+Standard Objects VideoCallInsight
+
+Fields
+
+**Field** **Details**
+
+```
+EngagementInsightType
+
+GenerationDateTime
+
+InsightConfigName
+
+InsightLanguage
+
+InsightModel
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+Required. The unique identifier of the platform setup entity that defines the configuration
+for this engagement insight type.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Sort
+
+**Description**
+Required. The timestamp when the call insight was generated.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The name of the insight configuration, or category, used to classify the insight.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+Required. The language associated with the insight type. Each insight type is currently limited
+to a single language. If the same insight type is mapped to a different language, a new insight
+type is created.
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+Required. The category of the insight type.
+
+Possible values are:
+
+**•** `GENERATIVE` —Generative
+
+
+Standard Objects VideoCallInsight
+
+**Field** **Details**
+
+**•** `KEYWORD` —Keyword
+
+**•** `SITUATIONAL` —Situational
+
+**•** `TIME_BASED` —Time-Based
+
+The default value is `KEYWORD` .
+
+```
+InsightOccurenceCount
+
+InsightSubject
+
+InsightText
+
+Name
+
+Scope
+
+```
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The number of times a particular insight occurred in the transcript.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The specific text, phrase, or subject identified in the video call transcript that serves as the
+basis for the insight.
+
+**Type**
+textarea
+
+**Properties**
+Nillable
+
+**Description**
+The text content of the insight derived from the video call transcript.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Nillable, Sort
+
+**Description**
+The display name of the insight type.
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+Required. The scope of the insight type.
+
+Possible values are:
+
+
+Standard Objects VideoCallInsight
+
+**Field** **Details**
+
+**•** `Organization`
+
+**•** `User`
+
+The default value is `Organization` .
+
+```
+VideoCallId
+
+VideoCallRecordingId
+
+VideoCallTranscriptId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+Required. ID of the associated parent VideoCall.
+
+This field is a relationship field.
+
+**Relationship Name**
+VideoCall
+
+**Relationship Type**
+Master-detail
+
+**Refers To**
+VideoCall (the master object)
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Required. ID of the associated parent VideoCallRecording.
+
+This field is a relationship field.
+
+**Relationship Name**
+VideoCallRecording
+
+**Refers To**
+VideoCallRecording
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Required. ID of the associated VideoCallTranscript record.
+
+**Relationship Name**
+VideoCallTranscript
+
+**Refers To**
+VideoCallTranscript
+
+
+### Standard Objects VideoCallInsightAction VideoCallInsightAction
+
+Represents a suggested follow-up action derived from a video call insight. VideoCallInsightAction manages recommended steps—such
+as sending an email, creating a task, or scheduling a meeting—that address specific moments, including competitor mentions, pricing
+discussions, or objections. This object is available in API version 66.0 and later.
+
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Supported Calls
+
+`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+Einstein Conversation Insight must be enabled and the user requires the Conversation Insights for Sales permission set.
+
+Fields
+
+**Field** **Details**
+
+```
+ActionCategory
+
+ActionReferenceId
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The category that classifies the purpose of the action.
+
+Possible values are:
+
+**•** `FollowUp`
+
+**•** `NeedsAttention`
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Required. ID of the reference record associated with the generated action.
+
+This field is a relationship field.
+
+
+Standard Objects VideoCallInsightAction
+
+**Field** **Details**
+
+**Relationship Name**
+ActionReference
+
+**Refers To**
+VideoCallInsightReason
+
+```
+ActionType
+
+CompletionDateTime
+
+Name
+
+Status
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The specific type of action to be performed for the insight.
+
+Possible values are:
+
+**•** `CreateCalendarEvent`
+
+**•** `CreateTaskWithDate`
+
+**•** `EciCreateCallback`
+
+**•** `EciScheduleMeetings`
+
+**•** `EciSendCallResponse`
+
+**•** `ViewContactProfile`
+
+The default value is `CreateTaskWithDate` .
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Required. The timestamp when the action was completed.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Sort
+
+**Description**
+The name of the insight action.
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The status of the insight action.
+
+
+### Standard Objects VideoCallInsightReason
+
+**Field** **Details**
+
+Possible values are:
+
+**•** `Active`
+
+**•** `Completed`
+
+The default value is `Active` .
+
+```
+VideoCallInsightId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+Required. ID of the VideoCallInsight record associated with a video call. Each record represents
+the call insight of a specific recording or transcript within a call.
+
+This field is a relationship field.
+
+**Relationship Name**
+### VideoCallInsight
+
+**Relationship Type**
+Master-detail
+
+**Refers To**
+VideoCallInsight (the master object)
+
+### VideoCallInsightReason
+
+Represents the video call insight reason that contains the insight keyword, insight moments associated with a keyword, and the number
+of keyword occurrences. This object is available in API version 66.0 and later.
+
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Supported Calls
+
+`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+Einstein Conversation Insight must be enabled and the user requires the Conversation Insights for Sales permission set.
+
+
+Standard Objects VideoCallInsightReason
+
+Fields
+
+**Field** **Details**
+
+```
+Name
+
+OccurrenceInfo
+
+OccurrenceSnippet
+
+VideoCallInsightId
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Sort
+
+**Description**
+The name of the insight reason.
+
+**Type**
+string
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The number of times the given keyword was mentioned in the call.
+
+**Type**
+textarea
+
+**Properties**
+Nillable
+
+**Description**
+The specific excerpt from the video call transcript that helped generate the insight. Reserved
+for future use.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+Required. ID of the VideoCallInsight record associated with a video call. Each record represents
+the call insight of a specific recording or transcript within a call.
+
+This field is a relationship field.
+
+**Relationship Name**
+VideoCallInsight
+
+**Relationship Type**
+Master-detail
+
+**Refers To**
+VideoCallInsight (the master object)
+
+
+### Standard Objects VideoCallParticipant VideoCallParticipant
+
+Represents a participant in a video call. Participant information can come from the video call provider (for example, Zoom), or Salesforce.
+This object is available in API version 51.0 and later.
+
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
+
+Fields
+
+**Field** **Details**
+
+```
+Email
+
+IsAllowed
+
+JoinDateTime
+
+LastReferencedDate
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Nillable, Sort
+
+**Description**
+The email address of the participant, from the video call provider.
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether the participant is admitted into the video call (true) or not (false).
+
+The default value is `false` .
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date and time when the participant joins the video call.
+
+**Type**
+dateTime
+
+
+Standard Objects VideoCallParticipant
+
+**Field** **Details**
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last accessed this record, a record related to this record,
+or a list view.
+
+```
+LastViewedDate
+
+LeaveDateTime
+
+Name
+
+ParticipantType
+
+RelatedPersonId
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last viewed this record or list view. If this value is
+`null`, the user might have only accessed this record or list view ( `LastReferencedDate` )
+but not viewed it.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date and time when the participant leaves the video call.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Nillable, Sort
+
+**Description**
+The participant's name or phone number. This information is provided by the video call
+provider.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The role of the participant in the video call. Available in API version 65.0 and later.
+
+Possible values are:
+
+**•** `Attendee`
+
+**•** `Organizer`
+
+**Type**
+reference
+
+
+Standard Objects VideoCallParticipant
+
+**Field** **Details**
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The Salesforce ID of the user, lead, or contact record for this participant.
+
+This is a polymorphic relationship field.
+
+**Relationship Name**
+RelatedPerson
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Contact, Lead, User
+
+```
+VideoCallId
+
+```
+
+Associated Objects
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The ID of the video call record.
+
+This is a relationship field.
+
+**Relationship Name**
+VideoCall
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+VideoCall
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+**VideoCallParticipantChangeEvent (API version 55.0)**
+Change events are available for the object.
+
+SEE ALSO:
+
+VideoCall
+
+VideoCallRecording
+
+
+### Standard Objects VideoCallRecording VideoCallRecording
+
+Represents a recording from a video call, such as a video recording, a voice recording, or a transcript. Video call recordings aren’t saved
+in Salesforce. This object is available in API version 51.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
+`search()`, `undelete()`, `update()`, `upsert()`
+
+Fields
+
+**Field** **Details**
+
+```
+DurationInSeconds
+
+EndDateTime
+
+ExpirationDateTime
+
+ExternalRecordingKey
+
+```
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The video call duration in seconds, not the recording duration.
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Time the call ended, in universal time coordinated (UTC).
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Reserved for internal use. This field is available in API version 59.0 and later.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Nillable, Sort, Update
+
+**Description**
+The ID of the video call recording, from the recording provider. For example, the Zoom ID
+of the recording. This value is unique.
+
+
+Standard Objects VideoCallRecording
+
+**Field** **Details**
+
+```
+ExternalRecordingKeyLong
+
+FileSizeInByte
+
+FileType
+
+LastReferencedDate
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+The ID of the video call recording, from the recording provider, that's more than 255
+characters. For example, the MS Team ID of the recording. This value is unique.
+
+If `ExternalRecordingKey` is null, this ID is used by default.
+
+Available in API version 61.0 and later.
+
+**Type**
+long
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The size of the video call recording, in bytes.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The file type of the video call recording.
+
+Possible values are:
+
+**•** `MP4` —Video file
+
+**•** `M4A` —Audio-only file
+
+**•** `TIMELINE` —Time stamp file in JSON format.
+
+**•** `TRANSCRIPT` —Transcription files in VTT format.
+
+**•** `CHAT` —Text file containing chat messages from the video call.
+
+**•** `CC` —File containing closed captions of the video call recording. The file is in VTT format.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last accessed this record, a record related to this record,
+or a list view.
+
+
+Standard Objects VideoCallRecording
+
+**Field** **Details**
+
+```
+LastViewedDate
+
+Name
+
+StartDateTime
+
+VideoCallRecordId
+
+```
+
+Associated Objects
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last viewed this record or list view. If this value is
+`null`, the user only accessed this record or list view ( `LastReferencedDate` ) but not
+viewed it.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Nillable, Sort, Update
+
+**Description**
+The name of the video call recording, entered by the sales rep.
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+The start time of the video call recording.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+ID of the VideoCall record (the parent record).
+
+This is a relationship field.
+
+**Relationship Name**
+VideoCallRecord
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+VideoCall
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+
+### Standard Objects VideoCallRecordingStructure
+
+**VideoCallRecordingChangeEvent (API version 51.0)**
+Change events are available for the object.
+
+SEE ALSO:
+
+VideoCallParticipant
+
+### VideoCall VideoCallRecordingStructure
+
+Represents the structure of a video call recording, having relation to a video call participant, speaking order, start offset, and end offset.
+This object is available in API version 65.0 and later.
+
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Supported Calls
+
+`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+Einstein Conversation Insight must be enabled and the user requires the Conversation Insights for Sales permission set.
+
+Fields
+
+**Field** **Details**
+
+```
+ListenRatio
+
+Name
+
+```
+
+**Type**
+double
+
+**Properties**
+Filter, Sort
+
+**Description**
+The ratio of the time the speaker spent listening versus talking on the call.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Nillable, Sort
+
+**Description**
+The name of the video call recording.
+
+
+Standard Objects VideoCallRecordingStructure
+
+**Field** **Details**
+
+```
+ParticipantSpeakingOrder
+
+TalkRatio
+
+TalkSegment
+
+VideoCallId
+
+VideoCallParticipantId
+
+```
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The sequence in which participants first spoke during the call. Only the initial speaking turn
+of each participant is captured.
+
+**Type**
+double
+
+**Properties**
+Filter, Sort
+
+**Description**
+The ratio of the time that the speaker spent talking versus listening on the call.
+
+**Type**
+textarea
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The transcript of specific segments that the participant was speaking.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+ID of the associated VideoCall.
+
+This field is a relationship field.
+
+**Relationship Name**
+VideoCall
+
+**Relationship Type**
+Master-detail
+
+**Refers To**
+VideoCall (the master object)
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+
+### Standard Objects VoiceCall
+
+**Field** **Details**
+
+**Description**
+ID of the associated VideoCallParticipant.
+
+This field is a relationship field.
+
+**Relationship Name**
+VideoCallParticipant
+
+**Refers To**
+VideoCallParticipant
+
+```
+VideoCallRecordingId
+
+### VoiceCall
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+ID of the associated VideoCallRecording.
+
+This field is a relationship field.
+
+**Relationship Name**
+VideoCallRecording
+
+**Refers To**
+VideoCallRecording
+
+Represents a call in Service Cloud Voice, Sales Dialer, or other supported voice connectors. For Service Cloud Voice, this can be a phone
 or Voice over Internet Protocol (VoIP) call. This object is available in API version 40.0 and later.
 
 [To manage VoiceCall records when using Service Cloud Voice, see the Telephony Integration REST API.](https://developer.salesforce.com/docs/atlas.en-us.260.0.voice_developer_guide.meta/voice_developer_guide/voice_rest_overview.htm)
@@ -20,8 +2424,12 @@ Special Access Rules
 
 Only users with the Modify All Data permission can delete call records.
 
+
+Standard Objects VoiceCall
+
 To edit voice call records, Sales Dialer or Service Cloud Voice permissions are required. This includes the Dialer Outbound permission set
-for Sales Dialer, or the Contact Center Agent or Contact Center Admin permission sets for Service Cloud Voice.
+for Sales Dialer, or the Contact Center Agent or Contact Center Admin permission sets for Service Cloud Voice, or Agentforce Contact
+Center Admin (Salesforce Voice) permission set.
 
 Fields
 
@@ -29,6 +2437,12 @@ Fields
 
 ```
 ActivityId
+
+AgentSentimentScore
+
+CallAcceptDateTime
+
+CallCenterId
 
 ```
 
@@ -46,26 +2460,8 @@ This is a relationship field.
 **Relationship Name**
 Activity
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Refers To**
 Task
-
-```
-AgentSentimentScore
-
-CallAcceptDateTime
-
-CallCenterId
-
-CallConnectDateTime
-
-CallDisposition
-
-```
 
 **Type**
 double
@@ -96,12 +2492,26 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
 **Description**
 If Service Cloud Voice is enabled, this field represents the unique ID of the call
 center (CallCenter `Id` ) where the activity took place. Available in API version 48.0
 and later.
 
 This is a relationship field.
+
+```
+CallConnectDateTime
+
+CallDisposition
+
+CallDurationInSeconds
+
+```
 
 **Type**
 datetime
@@ -115,11 +2525,6 @@ was connected.
 
 **Type**
 string
-
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort
@@ -148,15 +2553,6 @@ initiated) by an agent.
 of the transferred call.) If After Conversation Work (ACW) is enabled, that work
 begins after the call completes.
 
-```
-CallDurationInSeconds
-
-CallEndDateTime
-
-CallerId
-
-```
-
 **Type**
 int
 
@@ -165,6 +2561,22 @@ Create, Filter, Group, Nillable, Sort
 
 **Description**
 The total duration (in seconds) of the call.
+
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
+```
+CallEndDateTime
+
+CallerId
+
+CallerIdType
+
+CallOrigin
+
+```
 
 **Type**
 dateTime
@@ -188,11 +2600,6 @@ Experience, the value is null and the `EndUserId` field is used instead to
 determine the end user associated with this voice call. Available in API version
 48.0 and later.
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 This is a relationship field.
 
 **Relationship Name**
@@ -203,15 +2610,6 @@ Lookup
 
 **Refer To**
 ConversationParticipant
-
-```
-CallerIdType
-
-CallOrigin
-
-CallQueuedDateTime
-
-```
 
 **Type**
 picklist
@@ -236,6 +2634,11 @@ Available in API version 41.0 and later.
 **Type**
 picklist
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort
 
@@ -251,6 +2654,15 @@ values are:
 
 Available in API version 56.0 and later.
 
+```
+CallQueuedDateTime
+
+CallRecordingId
+
+CallResolution
+
+```
+
 **Type**
 dateTime
 
@@ -261,22 +2673,6 @@ Create, Filter, Nillable, Sort
 If Service Cloud Voice is enabled, this field represents the date and time (in UTC)
 when the call was added to a queue to be routed to an agent. Available in API
 version 48.0 and later.
-
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
-```
-CallRecordingId
-
-CallResolution
-
-CallStartDateTime
-
-CallStatus
-
-```
 
 **Type**
 reference
@@ -307,9 +2703,25 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
 **Description**
 The resolution outcome of the call. The default value is `Resolved`, meaning
 the call has been resolved. Available in API version 48.0 and later.
+
+```
+CallStartDateTime
+
+CallStatus
+
+CallSubtype
+
+CallType
+
+```
 
 **Type**
 dateTime
@@ -330,20 +2742,6 @@ Filter, Group, Nillable, Restricted picklist, Sort
 For internal use only.
 
 Available in API version 63.0 and later.
-
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
-```
-CallSubtype
-
-CallType
-
-CoachingDurationInSeconds
-
-```
 
 **Type**
 picklist
@@ -378,6 +2776,11 @@ For Sales Dialer, possible values are:
 
 **•** `Inbound`
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
 **•** `Internal`
 
 **•** `Outbound`
@@ -396,6 +2799,15 @@ For Service Cloud Voice, possible values are:
 
 **•** `Transfer`
 
+```
+CoachingDurationInSeconds
+
+ConferenceKey
+
+ConversationId
+
+```
+
 **Type**
 int
 
@@ -406,24 +2818,6 @@ Create, Filter, Group, Nillable, Sort
 For Sales Dialer, this field represents the total duration (in seconds) of the coaching
 session. This field only appears if call coaching is enabled. Available in API version
 41.0 and later.
-
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
-```
-ConferenceKey
-
-ConversationId
-
-CurrencyCode
-
-CustomerHoldDuration
-
-CustomerSentimentScore
-
-```
 
 **Type**
 string
@@ -454,8 +2848,26 @@ Conversation
 **Relationship Type**
 Lookup
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
 **Refers To**
 Conversation
+
+```
+CurrencyCode
+
+CustomerHoldDuration
+
+CustomerSentimentScore
+
+Description
+
+DisconnectReason
+
+```
 
 **Type**
 picklist
@@ -480,11 +2892,6 @@ version 49.0 and later.
 **Type**
 double
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
@@ -494,15 +2901,6 @@ customer’s overall sentiment score post-call in a conversation event. The valu
 must be between -5 (lowest negative sentiment score) and 5 (highest positive
 sentiment score), with 0 being a neutral sentiment score. Available in API version
 59.0 and later.
-
-```
-Description
-
-DisconnectReason
-
-EndUserId
-
-```
 
 **Type**
 textarea
@@ -520,6 +2918,11 @@ string
 **Properties**
 Create, Filter, Group, Nillable
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
 **Description**
 If Service Cloud Voice is enabled, this field represents the reason why the voice
 call was disconnected. The reason is provided by the partner telephony. For
@@ -530,6 +2933,15 @@ a list of possible reasons why a voice call may be disconnected. For all other
 partner telephony models, configure this feature through
 the `disconnectReason` parameter in the Update a Voice Call Record
 Telephony Integration API. Available in API version 59.0 and later.
+
+```
+EndUserId
+
+FromPhoneNumber
+
+IsDiarizationOptIn
+
+```
 
 **Type**
 reference
@@ -545,11 +2957,6 @@ version 53.0 and later.
 
 This is a relationship field.
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Relationship Name**
 EndUser
 
@@ -558,19 +2965,6 @@ Lookup
 
 **Refers To**
 MessagingEndUser
-
-```
-FromPhoneNumber
-
-IsDiarizationOptIn
-
-IsRecorded
-
-LastReferencedDate
-
-LastViewedDate
-
-```
 
 **Type**
 phone
@@ -591,6 +2985,27 @@ Defaulted on create, Filter, Group, Sort
 Indicates whether optimal speaker separation (diarization) is opted in ( `true` ) or
 not ( `false` ) for the call.
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
+```
+IsRecorded
+
+```
+
+IvrDuration
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+LongestHoldDuration
+
+```
+
 **Type**
 boolean
 
@@ -601,6 +3016,18 @@ Create, Defaulted on create, Filter, Group, Sort
 Indicates whether a Voice Call Recording record was created ( `true` ) or not
 ( `false` ) for this voice call. The default value is `false` . Available in API version
 44.0 and later.
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Total duration, in seconds, that a caller spends in the Interactive Voice Response
+(IVR) system. The duration includes time spent on automated prompts and
+responses before being placed in a queue or connected to a service rep. This
+field is available in API version 66.0 and later.
 
 **Type**
 dateTime
@@ -615,11 +3042,6 @@ to this voice call.
 **Type**
 dateTime
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
@@ -628,9 +3050,22 @@ The date and time (in UTC) when the current user last viewed this voice call. If
 the record has not been viewed before, this value is null. Referencing a record
 ( `LastReferencedDate` ) doesn’t count as viewing it.
 
-```
-LongestHoldDuration
+**Type**
+int
 
+**Properties**
+Create, Filter, Group, Nillable, Sort
+
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
+**Description**
+If Service Cloud Voice is enabled, this field represents the longest hold duration
+(in seconds) that occurred during the call. Available in API version 49.0 and later.
+
+```
 MediaProviderId
 
 Name
@@ -638,16 +3073,6 @@ Name
 NextCallId
 
 ```
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-If Service Cloud Voice is enabled, this field represents the longest hold duration
-(in seconds) that occurred during the call. Available in API version 49.0 and later.
 
 **Type**
 reference
@@ -686,11 +3111,6 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Description**
 If Service Cloud Voice is enabled, this field represents the unique ID of the next
 call if the call was transferred to another agent. If there is no other agent, this
@@ -703,6 +3123,11 @@ NextCall
 
 **Relationship Type**
 Lookup
+
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
 
 **Refers To**
 VoiceCall
@@ -752,11 +3177,6 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Description**
 If Service Cloud Voice is enabled, this field represents the unique ID of the previous
 call if the call was transferred from another agent. When there is no previous call,
@@ -772,6 +3192,11 @@ Lookup
 
 **Refers To**
 VoiceCall
+
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
 
 ```
 Price
@@ -821,11 +3246,6 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Description**
 For Service Cloud Voice, this field represents the unique ID of the participant who
 received the call. If “Match Callers to End User Records” is enabled in Lightning
@@ -843,10 +3263,17 @@ Lookup
 **Refers To**
 ConversationParticipant
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
 ```
 RecordyTypeId
 
 RelatedRecordId
+
+SourceType
 
 ```
 
@@ -890,27 +3317,11 @@ This is a polymorphic relationship field.
 **Relationship Name**
 RelatedRecord
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 Account, Case, CollectionPlan, Contact, ContactRequest, Lead, Opportunity
-
-```
-SourceType
-
-ToPhoneNumber
-
-TranscribedLanguage
-
-UserId
-
-```
 
 **Type**
 picklist
@@ -923,6 +3334,11 @@ The general purpose of the call. The permission sets assigned to the voice call
 owner determine the value. A call’s source type controls which insights Einstein
 Conversation Insights applies during analysis.
 
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
 Possible values are:
 
 **•** Sales
@@ -930,6 +3346,17 @@ Possible values are:
 **•** Service
 
 Available in API version 52.0 and later.
+
+```
+ToPhoneNumber
+
+TranscribedLanguage
+
+UserId
+
+VendorCallKey
+
+```
 
 **Type**
 phone
@@ -962,11 +3389,6 @@ an inbound call. If no one takes the call, this value defaults to null.
 
 This is a relationship field.
 
-
-Standard Objects VoiceCall
-
-**Field Name** **Details**
-
 **Relationship Name**
 User
 
@@ -976,9 +3398,22 @@ Lookup
 **Refers To**
 User
 
-```
-VendorCallKey
+**Type**
+string
 
+**Properties**
+Create, Filter, Group, Nillable, idLookup, Sort
+
+
+Standard Objects VoiceCall
+
+**Field Name** **Details**
+
+**Description**
+The unique ID of the child leg of the call that’s provided by the Sales Dialer vendor
+or Service Cloud Voice telephony provider.
+
+```
 VendorParentCallKey
 
 VendorType
@@ -987,15 +3422,7 @@ VoiceVendorLineId
 
 ```
 
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, idLookup, Sort
-
-**Description**
-The unique ID of the child leg of the call that’s provided by the Sales Dialer vendor
-or Service Cloud Voice telephony provider.
+Associated Objects
 
 **Type**
 string
@@ -1033,21 +3460,17 @@ This is a relationship field.
 **Relationship Name**
 VoiceVendorLine
 
-
-### Standard Objects VoiceCallInsight
-
-**Field Name** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 VoiceVendorLine
 
-Associated Objects
-
 This object has these associated objects. If the API version isn’t specified, they’re available in the same API versions as this object. Otherwise,
 they’re available in the specified API version and later.
+
+
+### Standard Objects VoiceCallInsight
 
 **VoiceCallChangeEvent (Available in API version 48.0 and later)**
 Change events are available for the object.
@@ -1068,6 +3491,11 @@ Sharing is available for the object.
 Represents the voice call insight data associated with a voice call. Each record represents the call insight of a specific recording or transcript
 within a call. This object is available in API version 66.0 and later.
 
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
+
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
@@ -1086,15 +3514,12 @@ Fields
 ```
 EngagementInsightType
 
+GenerationDateTime
+
 ```
 
 **Type**
 string
-
-
-Standard Objects VoiceCallInsight
-
-**Field** **Details**
 
 **Properties**
 Filter, Group, Sort
@@ -1103,25 +3528,30 @@ Filter, Group, Sort
 Required. The unique identifier of the platform setup entity that defines the configuration
 for this engagement insight type.
 
-```
-GenerationDateTime
-
-InsightConfigName
-
-InsightLanguage
-
-InsightModel
-
-```
-
 **Type**
 dateTime
+
+
+Standard Objects VoiceCallInsight
+
+**Field** **Details**
 
 **Properties**
 Filter, Sort
 
 **Description**
 Required. The timestamp when the call insight was generated.
+
+```
+InsightConfigName
+
+InsightLanguage
+
+InsightModel
+
+InsightOccurrenceCount
+
+```
 
 **Type**
 string
@@ -1164,24 +3594,6 @@ Possible values are:
 
 The default value is `KEYWORD` .
 
-
-Standard Objects VoiceCallInsight
-
-**Field** **Details**
-
-```
-InsightOccurrenceCount
-
-InsightSubject
-
-InsightText
-
-Name
-
-Scope
-
-```
-
 **Type**
 int
 
@@ -1190,6 +3602,24 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The number of times a particular insight occurred in the transcript.
+
+
+Standard Objects VoiceCallInsight
+
+**Field** **Details**
+
+```
+InsightSubject
+
+InsightText
+
+Name
+
+Scope
+
+VoiceCallId
+
+```
 
 **Type**
 string
@@ -1236,20 +3666,6 @@ Possible values are:
 
 The default value is `Organization` .
 
-
-### Standard Objects VoiceCallInsightAction
-
-**Field** **Details**
-
-```
-VoiceCallId
-
-VoiceCallRecordingId
-
-VoiceCallTranscript
-
-```
-
 **Type**
 reference
 
@@ -1261,6 +3677,11 @@ Required. ID of the associated parent VoiceCall.
 
 This field is a relationship field.
 
+
+### Standard Objects VoiceCallInsightAction
+
+**Field** **Details**
+
 **Relationship Name**
 ### VoiceCall
 
@@ -1269,6 +3690,13 @@ Master-detail
 
 **Refers To**
 VoiceCall (the master object)
+
+```
+VoiceCallRecordingId
+
+VoiceCallTranscript
+
+```
 
 **Type**
 reference
@@ -1302,11 +3730,16 @@ Represents a suggested follow-up action derived from a voice call insight. Voice
 as sending an email, creating a task, or scheduling a meeting—that address specific moments, including competitor mentions, pricing
 discussions, or objections. This object is available in API version 66.0 and later.
 
-
-Standard Objects VoiceCallInsightAction
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
 
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
+
+
+Standard Objects VoiceCallInsightAction
 
 Supported Calls
 
@@ -1370,14 +3803,14 @@ Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
 **Description**
 The specific type of action to be performed for the insight.
 
+Possible values are:
+
+**•** `CreateCalendarEvent`
+
 
 Standard Objects VoiceCallInsightAction
 
 **Field** **Details**
-
-Possible values are:
-
-**•** `CreateCalendarEvent`
 
 **•** `CreateTaskWithDate`
 
@@ -1443,16 +3876,16 @@ reference
 **Properties**
 Filter, Group, Sort
 
-
-### Standard Objects VoiceCallInsightReason
-
-**Field** **Details**
-
 **Description**
 Required. ID of the VoiceCallInsight record associated with a voice call. Each record represents
 the call insight of a specific recording or transcript within a call.
 
 This field is a relationship field.
+
+
+### Standard Objects VoiceCallInsightReason
+
+**Field** **Details**
 
 **Relationship Name**
 ### VoiceCallInsight
@@ -1467,6 +3900,11 @@ VoiceCallInsight (the master object)
 
 Represents the voice call insight reason that contains the insight keyword, insight moments associated with a keyword, and the number
 of keyword occurrences. This object is available in API version 66.0 and later.
+
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
 
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
@@ -18776,9 +21214,9 @@ INDEX
 
 A
 
-AccountInsight object 288
-AccountUserTerritory2View object 342
-AnalyticsLicensedAsset object 541
+AccountInsight object 289
+AccountUserTerritory2View object 343
+AnalyticsLicensedAsset object 546
 
 B
 
@@ -18793,157 +21231,157 @@ Overview 31
 
 C
 
-ContactSuggestionInsight object 1445
+ContactSuggestionInsight object 1457
 
 D
 
 Data access
 standard objects 27
-Delegated Account Objects 1839
+Delegated Account Objects 1852
 
 E
 
-Electronic_Media_Group_object 1902
-Electronic_Media_Use_object 1904
-External Account Hierarchy History Object 2474
-External_Account_Hierarchy_object 2472
-ExternalSocialAccount object 2492
+Electronic_Media_Group_object 1915
+Electronic_Media_Use_object 1917
+External Account Hierarchy History Object 2497
+External_Account_Hierarchy_object 2494
+ExternalSocialAccount object 2514
 
 F
 
-FormulaFunction object 2786
-FormulaFunctionCategory object 2790
-Freeze users 5597
+FormulaFunction object 2810
+FormulaFunctionCategory object 2813
+Freeze users 5631
 
 H
 
-HealthCareDiagnosis object 2874
-HealthCareProcedure object 2879
+HealthCareDiagnosis object 2902
+HealthCareProcedure object 2907
 
 # I
 
-IframeWhiteListUrl object 2905
+IframeWhiteListUrl object 2933
 
 L
 
-LandingPage object 3033
+LandingPage object 3061
 
 M
 
-Managed_Content 3347
-Managed_Content_Channel 3349
-Managed_Content_Channelobject 3349
-Managed_Content_Info_object 3352
-Managed_Content_object 3347
-Managed_Content_Variant 3354
-Managed_Content_Variant_object 3354
-MarketingForm object 3357
-MarketingLink object 3361
+Managed_Content 3375
+Managed_Content_Channel 3377
+Managed_Content_Channelobject 3377
+Managed_Content_Info_object 3380
+Managed_Content_object 3375
+Managed_Content_Variant 3382
+Managed_Content_Variant_object 3382
+MarketingForm object 3385
+MarketingLink object 3389
 
 O
 
-Object_name object 4769
-ObjectPermissions object 3564
+Object_name object 4803
+ObjectPermissions object 3592
 Objects
-AccountInsight 288
-AccountUserTerritory2View 342
-AnalyticsLicensedAsset 541
-ContactSuggestionInsight 1445
-Electronic_Media_Group 1902
-Electronic_Media_Use 1904
-External_Account_Hierarchy 2472
-ExternalSocialAccount 2492
-FormulaFunction 2786
-FormulaFunctionCategory 2790
-HealthCareDiagnosis 2874
-HealthCareProcedure 2879
-IframeWhiteListUrl 2905
-LandingPage 3033
-LightningExperienceTheme 3130
-Managed_Content_Info 3352
-MarketingForm 3357
-MarketingLink 3361
-Object_name 4769
-ObjectPermissions 3564
-OmniSupervisorConfig 3577
-OmniSupervisorConfigAction 3579
-OmniSupervisorConfigGroup 3580
-OmniSupervisorConfigProfile 3581
-OmniSupervisorConfigUser 3586
-OpportunityContactRoleSuggestionInsight 3623
-OpportunityInsight 3630
-PermissionSet 4109
-PermissionSetGroup 4096, 4099
-Product_Attribute 4293
+AccountInsight 289
+AccountUserTerritory2View 343
+AnalyticsLicensedAsset 546
+ContactSuggestionInsight 1457
+Electronic_Media_Group 1915
+Electronic_Media_Use 1917
+External_Account_Hierarchy 2494
+ExternalSocialAccount 2514
+FormulaFunction 2810
+FormulaFunctionCategory 2813
+HealthCareDiagnosis 2902
+HealthCareProcedure 2907
+IframeWhiteListUrl 2933
+LandingPage 3061
+LightningExperienceTheme 3158
+Managed_Content_Info 3380
+MarketingForm 3385
+MarketingLink 3389
+Object_name 4803
+ObjectPermissions 3592
+OmniSupervisorConfig 3605
+OmniSupervisorConfigAction 3607
+OmniSupervisorConfigGroup 3608
+OmniSupervisorConfigProfile 3609
+OmniSupervisorConfigUser 3614
+OpportunityContactRoleSuggestionInsight 3651
+OpportunityInsight 3658
+PermissionSet 4139
+PermissionSetGroup 4126, 4129
+Product_Attribute 4326
 
 
 **Index**
 
 Objects _(continued)_
-Product_Attribute_Set 4294
-Product_Attribute_Set_Item 4296
-Product_Attribute_Set_Product 4297
-Product_Category 4301, 4303
-Product_Media 4326
-Prompt 4439, 4452
-PromptAction 4430, 4434
-PromptActionOwnerSharingRule 4436
-PromptActionShare 4437, 4441
-Recommendation 4581
-Sales_Store_Catalog 4748
-SocialPersona 5054
-SocialPost 5060
-SurveyQuestionScore 5126
-UiFormulaCriterion 5422
-UiFormulaRule 5423
-VoiceCallQualityFeedback 5756
-WebStore 5821, 5845
-WebStoreCatalog 5833
-OmniSupervisorConfig object 3577
-OmniSupervisorConfigAction object 3579
-OmniSupervisorConfigGroup object 3580
-OmniSupervisorConfigProfile object 3581
-OmniSupervisorConfigUser object 3586
-OpportunityContactRoleSuggestionInsight object 3623
-OpportunityInsight object 3630
+Product_Attribute_Set 4327
+Product_Attribute_Set_Item 4329
+Product_Attribute_Set_Product 4330
+Product_Category 4334, 4337
+Product_Media 4359
+Prompt 4472, 4485
+PromptAction 4463, 4467
+PromptActionOwnerSharingRule 4469
+PromptActionShare 4470, 4474
+Recommendation 4616
+Sales_Store_Catalog 4782
+SocialPersona 5088
+SocialPost 5094
+SurveyQuestionScore 5160
+UiFormulaCriterion 5456
+UiFormulaRule 5457
+VoiceCallQualityFeedback 5791
+WebStore 5856, 5880
+WebStoreCatalog 5868
+OmniSupervisorConfig object 3605
+OmniSupervisorConfigAction object 3607
+OmniSupervisorConfigGroup object 3608
+OmniSupervisorConfigProfile object 3609
+OmniSupervisorConfigUser object 3614
+OpportunityContactRoleSuggestionInsight object 3651
+OpportunityInsight object 3658
 
 P
 
-PermissionSetGroup object 4096
+PermissionSetGroup object 4126
 
-PermissionSetGroupComponent object 4099
-PermissionSetTabSetting object 4109
-Product_Attribute_object 4293
-Product_Attribute_Set_Item_object 4296
-Product_Attribute_Set_object 4294
-Product_Attribute_Set_Product_object 4297
-Product_Category_object 4301, 4303
-Product_Media_object 4326
+PermissionSetGroupComponent object 4129
+PermissionSetTabSetting object 4139
+Product_Attribute_object 4326
+Product_Attribute_Set_Item_object 4329
+Product_Attribute_Set_object 4327
+Product_Attribute_Set_Product_object 4330
+Product_Category_object 4334, 4337
+Product_Media_object 4359
 
 R
 
-Recommendation object 4581
+Recommendation object 4616
 
 S
 
-Sales_Store_Catalog_object 4748
-SocialPersona object 5054
-SocialPost object 5060
+Sales_Store_Catalog_object 4782
+SocialPersona object 5088
+SocialPost object 5094
 Standard objects
 data access 27
-SurveyQuestionScore object 5126
+SurveyQuestionScore object 5160
 
 U
 
-UiFormulaCriterion object 5422
-UiFormulaRule object 5423
+UiFormulaCriterion object 5456
+UiFormulaRule object 5457
 
 V
 
-VoiceCallQualityFeedback object 5756
+VoiceCallQualityFeedback object 5791
 
 W
 
-WebStore object 5821, 5845
-WebStoreCatalog_object 5833
+WebStore object 5856, 5880
+WebStoreCatalog_object 5868
 

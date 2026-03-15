@@ -1,3 +1,2302 @@
+the sign-up request has been processed.
+
+
+Standard Objects SignupRequest
+
+**Field Name** **Details**
+
+```
+CreatedOrgInstance
+
+Edition
+
+ErrorCode
+
+FirstName
+
+LastName
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The server instance of the new trial org, for example, “na8.” This field is available in API version
+29.0 and later.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The Salesforce template that is used to create the trial org. Possible values are `Partner`
+`Group`, `Professional`, `Partner Professional`, `Sales Enterprise`,
+`Professional TSO`, `Enterprise`, `Partner Enterprise`, `Service`
+`Professional`, `Enterprise TSO`, `Developer`, and `Partner Developer` .
+This field is available in API version 35.0 and later.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The error code if the sign-up request isn’t successful. The system provides this read-only field
+for support purposes.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Nillable, Sort
+
+**Description**
+The first name of the admin user for the trial sign-up.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The last name of the admin user for the trial sign-up.
+
+
+Standard Objects SignupRequest
+
+**Field Name** **Details**
+
+```
+PreferredLanguage
+
+ResolvedTemplateId
+
+ShouldConnectToEnvHub
+
+SignupEmail
+
+SignupSource
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The language of the trial org being created. Specify the language using a language code listed
+[under Fully Supported Languages in Supported Languages in Salesforce Help. For example,](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5&language=en_US)
+use _`zh_CN`_ for simplified Chinese. The value you select overrides the language set by the
+locale. If you specify an invalid language, the org defaults to the default language of the country.
+Likewise, if you specify a language that isn’t supported by the Salesforce edition associated
+with your trial template, the trial org defaults to the default language of the country. This field
+is available in API version 35.0 and later.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Populated during the sign-up request and for internal use by Salesforce. This field is available
+in API version 35.0 and later.
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort
+
+**Description**
+When set to `true`, the trial org is connected to the Environment Hub. The sign-up must take
+place in the hub main org or a spoke org. This field is available in API version 35.0 and later.
+
+**Type**
+email
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The email address of the admin user for the trial sign-up.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort
+
+
+Standard Objects SignupRequest
+
+**Field Name** **Details**
+
+**Description**
+A user-specified description of the trial sign-up, up to 60 characters. This field is available in
+API version 36.0 and later.
+
+```
+Status
+
+Subdomain
+
+SuppressSignupEmails
+
+TemplateId
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+The status of the request. Possible values are `New`, `In Progress`, `Error`, or `Success` .
+The default is `New` .
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The My Domain name for the new trial org used in the org’s login and application URLs. In
+Developer Edition orgs, your name must contain at least 3 characters and no more than 27
+characters. In all other editions, it must be at least 3 characters and no more than 34 characters.
+It can include letters, numbers, and hyphens, but you can’t start the name with a hyphen.
+
+If you don’t choose a My Domain during sign-up, Salesforce assigns one for you based on your
+company name. If you don’t like the one we set, you can change it.
+
+[For details, see My Domain in Salesforce Help.](https://help.salesforce.com/articleView?id=domain_name_overview.htm&language=en_US)
+
+**Type**
+boolean
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+When set to `true`, no sign-up emails are sent when the trial org is created. This field is used
+for the Proxy Signup feature and is available in API version 29.0 and later.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort
+
+**Description**
+The 15-character ID of the Trialforce template that is the basis for the trial sign-up. Salesforce
+must approve the template. If you don’t specify an edition, a template ID is required.
+
+
+Standard Objects SignupRequest
+
+**Field Name** **Details**
+
+```
+TrialDays
+
+TrialSourceOrgId
+
+Username
+
+```
+
+Usage
+
+**Type**
+anyType
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort
+
+**Description**
+The duration of the trial sign-up in days. Must be equal to or less than the trial days for the
+approved Trialforce template. If not provided, it defaults to the trial duration specified for the
+Trialforce template.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The 15-character org ID of the Trialforce Source Organization (TSO) from which the Trialforce
+template was created.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The username of the admin user for the trial sign-up. It must follow the address convention
+[specified in RFC822: www.w3.org/Protocols/rfc822/#z10.](http://www.w3.org/Protocols/rfc822/#z10)
+
+The Java class uses REST API to create a SignupRequest object. It authenticates to the Trialforce Management Organization (TMO) and
+then posts a request to the SignupRequest object.
+
+Here are the variables to specify in this example.
+
+**•** SERVER—The name of the host server for the TMO, for example, _`yourInstance`_ .salesforce.com.
+
+**•** USERNAME—The admin username for the TMO.
+
+**•** PASSWORD—The concatenation of the admin password and the security token for the TMO. To get an email with the security token,
+from your personal settings in Salesforce, select **Reset My Security Token** and click **Reset Security Token** .
+
+**•** CLIENT_ID—From Setup in Salesforce, in the Quick Find box, enter _`Apps`_, and then select **Apps** . Under Connected Apps, click **New** .
+Enter values for the required fields (Callback URL is required, but you can initially set it to any valid URL because it’s not used). Grant
+full access for the OAuth scopes in the Selected OAuth Scopes selector, and click **Save** . Then copy the value of Consumer Key and
+use it for this variable.
+
+**•** CLIENT_SECRET—On the same page, click **Click to reveal** . Then copy the value of Consumer Secret and use it for this variable.
+
+```
+public class IsvSignupDriver {
+
+   private static final String SERVER = server_name : port ;
+
+```
+
+
+Standard Objects SignupRequest
+
+```
+      private static final String USERNAME = tmo_username ;
+
+      private static final String PASSWORD = tmo_passwordsecurity_token ;
+
+      private static final String CLIENT_ID = consumer_key ;
+
+      private static final String CLIENT_SECRET = consumer_secret ;
+
+      private static SignupRequestInfo signupRequest = null;
+
+      public static String createSignupRequest (SignupRequestInfo sr)
+
+       throws JSONException, IOException {
+
+        JSONObject createResponse = null;
+
+        signupRequest = sr;
+
+        JSONObject loginResponse = login(SERVER, USERNAME, PASSWORD);
+
+        String instanceUrl = loginResponse.getString("instance_url");
+
+        String accessToken = loginResponse.getString("access_token");
+
+        createResponse = create(instanceUrl, accessToken);
+
+        System.out.println("Created SignupRequest object: " + createResponse + "\n");
+
+        return createResponse.toString();
+
+      }
+
+      /* Authenticates to the TMO using the required credentials */
+
+      private static JSONObject login(String server, String username, String password)
+
+       throws ClientProtocolException, IOException, JSONException {
+
+        String authEndPoint = server + "/services/oauth2/token";
+
+        HttpClient httpclient = new DefaultHttpClient();
+
+        try {
+
+           HttpPost post = new HttpPost(authEndPoint);
+
+           List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+           params.add(new BasicNameValuePair("grant_type", "password"));
+
+           params.add(new BasicNameValuePair("client_id", CLIENT_ID));
+
+           params.add(new BasicNameValuePair("client_secret", CLIENT_SECRET));
+
+           params.add(new BasicNameValuePair("username", username));
+
+           params.add(new BasicNameValuePair("password", password));
+
+           post.setEntity(new UrlEncodedFormEntity(params, Consts.UTF_8));
+
+           BasicResponseHandler handler = new BasicResponseHandler();
+
+           String response = httpclient.execute(post, handler);
+
+           return new JSONObject(response);
+
+        } finally {
+
+           httpclient.getConnectionManager().shutdown();
+
+        }
+
+      }
+
+      /* Posts a request to the SignupRequest object */
+
+      private static JSONObject create(String instanceUrl, String accessToken)
+
+       throws ClientProtocolException, IOException, JSONException {
+
+        HttpClient httpClient = new DefaultHttpClient();
+
+        try {
+
+           HttpPost post = new HttpPost(instanceUrl +
+
+            "/services/data/v27.0/sobjects/SignupRequest/");
+
+             post.setHeader("Authorization", "Bearer " + accessToken);
+
+             post.setHeader("Content-Type", "application/json");
+
+```
+
+
+Standard Objects SignupRequest
+
+```
+             JSONObject requestBody = new JSONObject();
+
+             requestBody.put("TemplateId", signupRequest.getTemplateID());
+
+             requestBody.put("SignupEmail", signupRequest.getEmail());
+
+             requestBody.put("username", signupRequest.getUsername());
+
+             requestBody.put("Country", "US");
+
+             requestBody.put("Company", signupRequest.getCompanyName());
+
+             requestBody.put("lastName", signupRequest.getLastName());
+
+             StringEntity entity = new StringEntity(requestBody.toString());
+
+             post.setEntity(entity);
+
+             BasicResponseHandler handler = new BasicResponseHandler();
+
+             String response = httpClient.execute(post, handler);
+
+             return new JSONObject(response);
+
+        } finally {
+
+           httpClient.getConnectionManager().shutdown();
+
+        }
+
+      }
+
+   }
+
+```
+
+Error Codes
+
+If the sign-up fails, the system generates an error code that can help you identify the cause. This table shows the most important error
+codes.
+
+
+### Standard Objects Site
+
+Associated Objects
+
+This object has the following associated objects. Unless noted, they’re available in the same API version as this object.
+
+**•** SignupRequestFeed–Feed tracking is available for the object.
+
+**•** SignupRequestHistory–History is available for tracked fields of the object.
+
+**•** SignupRequestOwnerSharingRule–Sharing rules are available for the object
+
+**•** SignupRequestShare–Sharing is available for the object.
+
+### Site
+
+Represents a public website that is integrated with an org. This object is available in API version 16.0 and later.
+
+To access this object, Digital Experiences, Salesforce Sites, or Site.com must be enabled.
+
+Supported Calls
+
+`describeSObjects()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+**•** Customer Portal users can’t access this object.
+
+
+Standard Objects Site
+
+**•** To view this object, you must have the View Setup and Configuration permission.
+
+Fields
+
+**Field** **Description**
+
+```
+AdminId
+
+AnalyticsTrackingCode
+
+ArchiveStatus
+
+ArchivedById
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The site administrator designated as the contact for the site. This user receives
+site-related communications from site visitors and from Salesforce.
+
+This is a relationship field.
+
+**Relationship Name**
+Admin
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+User
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The tracking code associated with your site. This code can be used by services
+like Google Analytics to track page request data for your site.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The archived status of a site. Possible values are:
+
+**•** `NotArchived`
+
+**•** `TemporaritlyArchived`
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+
+Standard Objects Site
+
+**Field** **Description**
+
+**Description**
+The user that archived the site.
+
+**Relationship Name:**
+ArchivedBy
+
+**Relationship Type:**
+Lookup
+
+**Refers To:**
+User
+
+```
+ArchivedDate
+
+ClickjackProtectionLevel
+
+DailyBandwidthLimit
+
+DailyBandwidthUsed
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Date and time when the site was archived.
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+Sets the clickjack protection level. The options are:
+
+**•** `AllowAllFraming` —Allow framing by any page (no protection)
+
+**•** `SameOriginOnly` —Allow framing by the same origin only
+(recommended)
+
+**•** `NoFraming` —Don’t allow framing by any page (most protection)
+
+This field is available in API version 30.0 and later.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The rolling 24-hour daily bandwidth limit for the sites in your organization.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+
+Standard Objects Site
+
+**Field** **Description**
+
+**Description**
+The current rolling 24-hour daily bandwidth usage for the sites in your
+organization.
+
+```
+DailyRequestTimeLimit
+
+DailyRequestTimeUsed
+
+Description
+
+GuestRecordDefaultOwnerId
+
+```
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The rolling 24-hour daily service request time limit for the sites in your
+organization. Service request time is calculated as the total server time in minutes
+required to generate pages for the site.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The current rolling 24-hour daily service request time for the sites in your
+organization.
+
+**Type**
+textarea
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+An optional description of the site.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+A user in the Salesforce org that is the default owner of records created by
+unauthenticated (guest) users.
+
+This is a relationship field.
+
+**Relationship Name**
+GuestRecordDefaultOwner
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+User
+
+
+Standard Objects Site
+
+**Field** **Description**
+
+```
+GuestUserId
+
+MasterLabel
+
+MonthlyPageViewsEntitlement
+
+Name
+
+OptionsAllowGuestPaymentsApi
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The site or Experience Cloud sites specific user that anonymous, unauthenticated
+users run as when interacting with the site.
+
+This is a relationship field.
+
+**Relationship Name**
+GuestUser
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+User
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The name of the site as it appears in the user interface.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The number of page views allowed for the current calendar month for the sites
+in your organization.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The name used when referencing the site in the API.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+
+Standard Objects Site
+
+**Field** **Description**
+
+**Description**
+Indicates whether unauthenticated guest users can access the Payments API
+( `true` ) or not ( `false` ). The default is `false` . This field is available in API version
+49.0 and later.
+
+```
+OptionsAllowGuestSupportApi
+
+OptionsAllowHomePage
+
+OptionsAllowStandardAnswersPages
+
+OptionsAllowStandardIdeasPages
+
+OptionsAllowStandardLookups
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option to enable unauthenticated users to access the Support API.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option to enable the standard page associated with the Home tab
+( `/home/home.jsp` ).
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option to enable standard pages associated with an answers Experience
+Cloud site. If you want to use default Answers pages (such as AnswersHome),
+enable these pages.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option to enable standard pages associated with an Ideas Experience Cloud
+site. If you want to use default Ideas pages (such as IdeasHome), enable these
+pages.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+
+Standard Objects Site
+
+**Field** **Description**
+
+**Description**
+The option to enable the standard lookup pages. These are the windows
+associated with lookup fields on Visualforce pages.
+
+```
+OptionsAllowStandardPortalPages
+
+OptionsAllowStandardSearch
+
+OptionsBrowserXssProtection
+
+OptionsCachePublicVfPagesInProxies
+
+OptionsContentSniffingProtection
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option to enable authenticated users to access the standard Salesforce pages.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option to enable the standard search pages. To allow public users to perform
+standard searches, enable these pages.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option to enable the browser's cross-site scripting protection.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+Indicates whether proxy servers cache this site’s publicly available pages only for
+unauthenticated guest users ( `true` ) or not ( `false` ). When this field is `false`,
+this site’s cache-enabled Visualforce pages are cached in the web browser for
+both authenticated and unauthenticated users. The default is `true` . See
+[Configure Site Caching in Salesforce Help for more information.](https://help.salesforce.com/articleView?id=platform.sites_caching.htm&type=5&language=en_US)
+
+This field is available in API version 52.0 and later.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+
+Standard Objects Site
+
+**Field** **Description**
+
+**Description**
+The option to enable content-sniffing protection.
+
+```
+OptionsCookieConsent
+
+OptionsCspUpgradeInsecureRequests
+
+OptionsEnableFeeds
+
+OptionsHasStoredPathPrefix
+
+OptionsRedirectToCustomDomain
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+Indicates whether only required Salesforce-supplied cookies are allowed within
+the site ( `true` ) or all cookies types are allowed: required, functional, and
+advertising ( `false` ). The default is `false` . This field is available in API version
+52.0 and later.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+This field is removed in API version 52.0 and later. In API version 51.0 and earlier,
+the value in the field is ignored.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option that displays the Syndication Feeds related list, where you can create
+and manage syndication feeds for users on your public sites. This field is visible
+only if you have the feature enabled for your organization.
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+Indicates whether this Experience Cloud site has a customized urlPathPrefix
+( `true` ) or instead uses the Experience Cloud site's `UrlPathPrefix` plus `/s`
+( `false` ). The default is `false` . In other sites, this field has no effect. This field
+is available in API version 50.0 and later.
+
+**Type**
+boolean
+
+
+Standard Objects Site
+
+**Field** **Description**
+
+**Properties**
+Filter
+
+**Description**
+Indicates whether requests to this site’s system-managed URLs are redirected to
+the HTTPS custom domain serving this site ( `true` ) or not ( `false` ).
+System-managed site URLs end in `*.my.salesforce-sites.com` or
+`*.my.site.com` . In Experience Cloud sites, the default is `false` . In Salesforce
+Sites, the default is `true` .
+
+If multiple custom domains serve this site and this field is set to true, requests
+are routed to the site’s primary custom URL only if it’s an HTTPS custom domain.
+Otherwise, requests are redirected to the first HTTPS custom domain associated
+with this site, in alphanumeric order. If no HTTPS custom domain serves this site,
+this option has no effect.
+
+This field is available in API version 52.0 and later.
+
+```
+OptionsReferrerPolicyOriginWhenCrossOrigin
+
+OptionsRequireHttps
+
+SiteType
+
+Status
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+The option to enable referrer policy (origin-when-cross-origin).
+
+**Type**
+boolean
+
+**Properties**
+Filter
+
+**Description**
+This field is removed in API version 52.0 and later. In API version 51.0 and earlier,
+the value in the field is ignored.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+Identifies whether the site is a Visualforce (Salesforce Sites) or a Site.com site.
+`SiteType` is available in API version 21.0 and later. In API version 26.0 and
+later, if Experience Cloud sites are enabled for your Salesforce org, the site could
+also be a Network Visualforce or Network Site.com site.
+
+**Type**
+picklist
+
+
+Standard Objects Site
+
+**Field** **Description**
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+The status for the site. For example, `Active` or `In Maintenance` .
+
+```
+Subdomain
+
+TopLevelDomain
+
+UrlPathPrefix
+
+```
+
+Usage
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+If you enabled Salesforce Sites or Digital Experiences before you enabled enhanced
+domains on your My Domain, this field returns this site’s previous subdomain.
+For example, if your domain was `mycompany.force.com`, then
+`mycompany` is the subdomain.
+
+If you enabled Salesforce Sites or Digital Experiences after you enabled enhanced
+domains, this field returns a null value.
+
+**Type**
+url
+
+**Properties**
+Filter, Nillable
+
+**Description**
+The optional branded custom Web address that you registered with a third-party
+domain name registrar. The custom Web address acts as an alias to your Salesforce
+address.
+
+Beginning with API version 21.0, `TopLevelDomain` is no longer available.
+Instead, use the Domain and DomainSite objects.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The unique Salesforce URL that the public uses to access this site.
+
+Use this read-only object to query or retrieve information on your site.
+
+
+### Standard Objects SiteDetail
+
+Associated Objects
+
+This object has the following associated objects. Unless noted, these associated objects are available in the same API version as this
+object.
+
+**SiteFeed**
+
+Feed tracking is available for the object.
+
+**SiteHistory**
+
+History is available for tracked fields of the object.
+
+### SiteDetail
+
+Represents the details of a Salesforce site or Experience Cloud site. Available in API Version 38.0 and later.
+
+Supported SOAP Calls
+
+`describeSObjects()`, `query()`
+
+Supported REST HTTP Methods
+
+```
+   GET
+
+```
+
+Fields
+
+**Field** **Details**
+
+```
+DurableId
+
+IsRegistrationEnabled
+
+SecureUrl
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the Site object.
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether the site allows users to sign up.
+
+**Type**
+url
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+
+### Standard Objects SiteDomain
+
+**Field** **Details**
+
+**Description**
+The URL of the website.
+
+Note: SiteDetail fields are exposed in SOAP API version 45.0 and later. You can use Tooling API to query for SiteDetail fields in
+guest user mode in API version 44.0 and earlier. In API version 45.0 and later, use SOAP API to get this data in guest user mode.
+SiteDetail is still exposed in Tooling API to User Profiles with the ViewSetup permission.
+
+### SiteDomain SiteDomain is a read-only object, and a one-to-many replacement for the Site.TopLevelDomain field. This object is available in API version
+
+21.0, and has been deprecated as of API version 26.0. In API version 26.0 and later, use the Domain and DomainSite objects instead.
+
+To access this object, Digital Experiences, Salesforce Sites, or Site.com must be enabled.
+
+Supported Calls
+
+`describeSObjects()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+**•** Customer Portal users can’t access this object.
+
+**•** To view this object, you must have the View Setup and Configuration permission.
+
+Fields
+
+**Field** **Description**
+
+```
+Domain
+
+SiteId
+
+```
+
+**Type**
+url
+
+**Properties**
+Filter, Sort
+
+**Description**
+The branded custom Web address within the global namespace identified by
+this domain's type. In the Domain Name System (DNS) global namespace, this
+field is the custom Web address that you registered with a third-party domain
+name registrar. The custom Web address can be used to access the site of this
+domain.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+
+### Standard Objects SiteEventLog
+
+**Field** **Description**
+
+**Description**
+The ID of the associated Site.
+
+```
+DomainType
+
+```
+
+Usage
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Sort, Nillable
+
+**Description**
+The global namespace that this custom Web address belongs to. This value is
+set to DNS for custom Web addresses in the global DNS. This field is available in
+version 24.0 of the API.
+
+Use this read-only object to query the domains that are associated with each site in your organization.
+
+### SiteEventLog SiteEventLog stores details of Site.com requests. Requests can originate from the browser (UI). This object is available in API version 62.0
+
+and later.
+
+Supported Calls
+
+`describeSObjects()`, `query()`
+
+Special Access Rules
+
+To access this object, you must have the View Event Log Object Data user permission.
+
+Fields
+
+**Field** **Details**
+
+```
+ClientIp
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
+a login from AppExchange) is shown as “Salesforce.com IP”.
+
+For example: `96.43.144.26` .
+
+
+Standard Objects SiteEventLog
+
+**Field** **Details**
+
+```
+CpuTime
+
+DatabaseTotalTime
+
+HttpHeaders
+
+HttpMethod
+
+IsApi
+
+IsError
+
+```
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The CPU time in milliseconds used to complete the request. This field indicates the amount
+of activity taking place in the app server layer.
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The time in nanoseconds for a database round trip. Includes time spent in the JDBC driver,
+network to the database, and DB_CPU_TIME. Compare this field to CPU_TIME to determine
+whether performance issues are occurring in the database layer or in your own code.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The HTTP headers that were sent in the request.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The HTTP method of the request. For example: GET, POST, PUT, and so on.
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+
+The default value is `false` .
+
+**Type**
+boolean
+
+
+Standard Objects SiteEventLog
+
+**Field** **Details**
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+True if this page was an error page.
+
+The default value is `false` .
+
+```
+IsFirstRequest
+
+IsGuest
+
+IsSecure
+
+LoginKey
+
+PageName
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+True if this page is the first Visualforce transaction in the request.
+
+The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+True if this page was a guest (unauthenticated) request.
+
+The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+True if this request is secure.
+
+The default value is `false` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The string that ties together all events in a given user’s login session. It starts with a login
+event and ends with either a logout event or the user session expiring. For example:
+GeJCsym5eyvtEK2I.
+
+**Type**
+string
+
+
+Standard Objects SiteEventLog
+
+**Field** **Details**
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The name of the Visualforce page that was requested.
+
+```
+QueryString
+
+RequestIdentifier
+
+RequestStatus
+
+RequestType
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The SOQL query, if one was performed.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The unique ID of a single transaction. A transaction can contain one or more events. Each
+event in a given transaction has the same REQUEST_ID. For example:
+3nWgxWbDKWWDIk0FKfF5DV.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The status of the request for a page view or user interface action. This field can have a blank
+value.
+
+For example:
+
+**•** `S`  - Success. Salesforce handled the request successfully. If an Apex controller throws
+an exception, this status is also returned.
+
+**•** `F`  - Failure. Typically 4xx or 5xx HTTP codes, such as no permission to view page, page
+took too long to render, page is read-only.
+
+**•** `U`  - Undefined.
+
+**•** `A` —Authorization error.
+
+**•** `R`  - Redirect. Typically a 3xx HTTP code, possibly initiated by an Apex controller in a
+Visualforce page.
+
+**•** `N` —Not Found. 404 error.
+
+**Type**
+String
+
+
+Standard Objects SiteEventLog
+
+**Field** **Details**
+
+**Description**
+The request type.
+
+Possible values are:
+
+**•** `page` —a normal request for a page
+
+**•** `content_UI` —a content request for a page that originated in the user interface
+
+**•** `content_apex` —a content request initiated by an Apex call
+
+**•** `PDF_UI` —a request for a page in PDF format through the user interface
+
+**•** `PDF_apex` —a request for PDF format by an Apex call (usually a Web Service call)
+
+```
+RunTime
+
+SessionKey
+
+SiteIdentifier
+
+Timestamp
+
+Uri
+
+```
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The amount of time that the request took in milliseconds.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The user’s unique session ID. You can use this value to identify all user events within a session.
+When a user logs out and logs in again, a new session is started. For example:
+`d7DEq/ANa7nNZZVD` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The 15-character ID of the Site.com site.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The access time of Salesforce services in GMT. For example: `20130715233322.670` .
+
+**Type**
+string
+
+
+Standard Objects SiteEventLog
+
+**Field** **Details**
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The URI of the page that’s receiving the request. For example: `home/home.jsp` .
+
+```
+UserIdentifier
+
+UserType
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The 18-character ID of the user who’s using Salesforce services through the UI or the API.
+For example: `00530000009M943YAS` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The category of user license.
+
+Possible values are:
+
+**•** `CsnOnly` —Users whose access to the application is limited to Chatter. This user type
+includes Chatter Free and Chatter moderator users.
+
+**•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
+they’re organization customers and access the application through a customer portal or
+an Experience Cloud site.
+
+**•** `CustomerSuccess` —Customer Success license. Users whose access is limited
+because they’re organization customers and access the application through a customer
+portal.
+
+**•** `Guest` —Users whose access is limited so that your customers can view and interact
+with your site without logging in.
+
+**•** `PowerCustomerSuccess` —Power Customer Success license. Users whose access
+is limited because they’re organization customers and access the application through a
+customer portal. Users with this license type can view and edit data they directly own
+or data owned by or shared with users below them in the customer portal role hierarchy.
+
+**•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
+partners and typically access the application through a partner portal or site.
+
+**•** `SelfService` —Users whose access is limited because they’re organization customers
+and access the application through a self-service portal.
+
+**•** `Standard` —Standard user license. This user type also includes Salesforce Platform
+and Salesforce Platform One user licenses, and admins for this org.
+
+
+### Standard Objects SiteHistory SiteHistory
+
+Represents the history of changes to the values in the fields of a site. This object is generally available in API version 18.0 and later.
+
+To access this object, Salesforce Sites must be enabled for your organization.
+
+Supported Calls
+
+`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+You can also enable `delete()` [in API version 42.0 and later. See Enable delete of Field History and Field History Archive.](https://help.salesforce.com/articleView?id=000321814&type=1&mode=1&language=en_US)
+
+Special Access Rules
+
+**•** Customer Portal users can't access this object.
+
+**•** To view this object, you must have the “View Setup and Configuration” permission.
+
+Fields
+
+**Field** **Details**
+
+```
+DataType
+
+Field
+
+NewValue
+
+OldValue
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+Data type of the field that was changed.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+The name of the field that was changed.
+
+**Type**
+anyType
+
+**Properties**
+Nillable, Sort
+
+**Description**
+The new value of the field that was changed.
+
+**Type**
+anyType
+
+
+### Standard Objects SiteIframeWhitelistUrl
+
+**Field** **Details**
+
+**Properties**
+Nillable, Sort
+
+**Description**
+The last value of the field before it was changed.
+
+```
+SiteId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The ID of the associated Site.
+
+This is a relationship field.
+
+**Relationship Name**
+### Site
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+### Site
+
+### SiteIframeWhitelistUrl
+
+Represents a list of external domains that you allow to frame your Salesforce site or Experience Cloud site pages. This object is available
+in API version 44.0 and later.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
+terms in our code can break current implementations, we maintained this object’s name.
+
+Supported Calls
+
+`describeSObjects()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+**•** Customer Portal users can’t access this object.
+
+**•** To view this object, you must have the “View Setup and Configuration” permission.
+
+
+### Standard Objects SiteRedirectMapping
+
+Fields
+
+**Field Name** **Details**
+
+```
+SiteId
+
+Url
+
+### SiteRedirectMapping
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+ID of the site to include in the inline frame.
+
+This is a relationship field.
+
+**Relationship Name**
+### Site
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+### Site
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The domain allowed to frame your Salesforce site or Experience Cloud site page.
+Accepts these formats: example, example.com, *example.com, and
+https://example.com.
+
+Represents a site redirect from an external site to an Experience Cloud site. This object is available in API version 52.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
+
+Special Access Rules
+
+This object is available only if Digital Experiences is enabled for your org and Create and Set Up Experiences is enabled.
+
+
+Standard Objects SiteRedirectMapping
+
+Fields
+
+**Field** **Details**
+
+```
+Action
+
+IsActive
+
+IsDynamic
+
+SiteId
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+The type of the redirect.
+
+Possible values are:
+
+**•** `Permanent`
+
+**•** `Temporary`
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether the redirect is enabled.
+
+Default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether a redirect rule is dynamic.
+
+Default value is `false` . This field is available in API version 57.0 and later.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The ID of the site for the redirect.
+
+This field is a relationship field.
+
+**Relationship Name**
+Site
+
+**Relationship Type**
+Lookup
+
+
+### Standard Objects Skill
+
+**Field** **Details**
+
+**Refers To**
+Site
+
+```
+Source
+
+Target
+
+```
+
+Usage
+
+**Type**
+url
+
+**Properties**
+Create, Filter, Sort
+
+**Description**
+The URL of the site you want to redirect.
+
+**Type**
+url
+
+**Properties**
+Create, Filter, Sort
+
+**Description**
+The URL of the Experience Cloud site you want to users to visit.
+
+If you build a new site on Experience Cloud but you also have an old site on a different platform, ensure that users visit the new site. Use
+SiteRedirectMapping to redirect users from the external site to the Experience Cloud site.
+
+### Skill
+
+Represents a category or group of Chat users or service resources in Field Service or Workforce Engagement. This object is available in
+API version 24.0 and later.
+
+Note: For information about WDC skills on a user's profile, see the ProfileSkill topic.
+
+Supported Calls
+
+`create()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
+
+Fields
+
+**Field Name** **Details**
+
+```
+Description
+
+```
+
+**Type**
+textarea
+
+**Properties**
+Create, Nillable, Update
+
+
+Standard Objects Skill
+
+**Field Name** **Details**
+
+**Description**
+The description of the skill.
+
+```
+DeveloperName
+
+Language
+
+LastViewedDate
+
+MasterLabel
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+
+The unique name of the object in the API. This name can contain only underscores
+and alphanumeric characters, and must be unique in your org. It must begin with
+a letter, not include spaces, not end with an underscore, and not contain two
+consecutive underscores. In managed packages, this field prevents naming
+conflicts on package installations. With this field, a developer can change the
+object’s name in a managed package and the changes are reflected in a
+subscriber’s organization.
+
+When creating large sets of data, always specify a unique `DeveloperName`
+for each record. If no `DeveloperName` is specified, performance slows down
+while Salesforce generates one for each record.
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+
+The language of the skill.
+
+**Type**
+datetime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp for when the current user last viewed the skill.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Sort, Update
+
+**Description**
+
+The name of the skill.
+
+
+### Standard Objects SkillLevelDefinition
+
+**Field Name** **Details**
+
+```
+TypeId
+
+```
+
+Usage
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+
+The skill type associated with the skill.
+
+This field is a relationship field.
+
+This field is available in API version 58.0 and later.
+
+**Relationship Name**
+Type
+
+**Refers To**
+SkillType
+
+**Chat**
+Use this object to assign Chat users to groups based on their abilities. The skills associated with a LiveChatButton determine which
+agents receive chat requests that come in through that button.
+
+**Field Service**
+Use this object to track certifications and areas of expertise in your workforce. After you create a skill, you can:
+
+**•** Assign it to a service resource via the Skills related list on the resource’s detail page. When you assign a skill to a service resource,
+you can specify their skill level and the duration of the skill.
+
+**•** Add it as a required skill via the Skill Requirements related list on any work type, work order, or work order line item. When you
+add a required skill to a work record, you can specify the skill level.
+
+**Workforce Engagement**
+Use this object to specify areas of expertise in your workforce. After you create a skill, you can:
+
+**•** Assign it to a service resource via the Skills related list on the resource’s detail page.
+
+**•** Add it as a required skill via the Skill Requirements related list on a job profile.
+
+### SkillLevelDefinition
+
+Represents a skill which can be acquired by completing enablement site (myTrailhead) modules. This object is available in API version
+51.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `undelete()`, `update()`, `upsert()`
+
+
+Standard Objects SkillLevelDefinition
+
+Special Access Rules
+
+The org must have a Workforce Engagement license and an Enablement Sites (myTrailhead) license. User must have at least one Workforce
+Engagement permission set assigned to them: Workforce Engagement Analyst, Workforce Engagement Planner, Workforce Engagement
+Agent.
+
+Fields
+
+**Field** **Details**
+
+```
+Description
+
+IsAutoApproved
+
+LearningContent
+
+OwnerId
+
+```
+
+**Type**
+textarea
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Describes the mapping.
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Whether this mapping auto-approves.
+
+The default value is 'false'.
+
+**Type**
+string
+
+**Properties**
+Filter, Nillable
+
+**Description**
+The titles of the Trailhead modules associated to this mapping.
+
+**Type**
+reference
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+The user who owns the Skill Level Definition.
+
+This is a polymorphic relationship field.
+
+**Relationship Name**
+Owner
+
+**Relationship Type**
+Lookup
+
+
+### Standard Objects SkillLevelProgress
+
+**Field** **Details**
+
+**Refers To**
+Group, User
+
+```
+SkillId
+
+### `SkillLevel`
+
+```
+
+Associated Objects
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The skill that this mapping is for.
+
+This is a relationship field.
+
+**Relationship Name**
+### Skill
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+### Skill
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The level to assign for the skill.
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+**SkillLevelDefinitionOwnerSharingRule on page 65**
+Sharing rules are available for the object.
+
+**SkillLevelDefinitionShare on page 67**
+Sharing is available for the object.
+
+### SkillLevelProgress
+
+Represents training progress for a given user. This object is available in API version 51.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `undelete()`, `update()`, `upsert()`
+
+
+Standard Objects SkillLevelProgress
+
+Special Access Rules
+
+The org must have a Workforce Engagement license and an Enablement Sites (myTrailhead) license. User must have at least one Workforce
+Engagement permission set assigned to them: Workforce Engagement Analyst, Workforce Engagement Planner, Workforce Engagement
+Agent.
+
+Fields
+
+**Field** **Details**
+
+```
+CompletedCount
+
+CompletedDate
+
+OwnerId
+
+ServiceResourceId
+
+```
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+Number of modules that have been completed towards this Skill Mapping.
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+The date when this progress was completed.
+
+**Type**
+reference
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+The owner of skill level progress.
+
+This is a relationship field.
+
+**Relationship Name**
+Owner
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+User
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+
+Standard Objects SkillLevelProgress
+
+**Field** **Details**
+
+**Description**
+The Service Resource that will be granted a service resource skill when the progress is
+complete.
+
+This is a relationship field.
+
+**Relationship Name**
+ServiceResource
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ServiceResource
+
+```
+SkillLevelDefinitionId
+
+SkillMasterLabel
+
+Status
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
 The corresponding skill mapping for this progress.
 
 This is a relationship field.
@@ -11518,8 +13817,7 @@ Standard Objects TaxEngine
 
 **Description**
 [The compound form of the tax engine address. Read-only. See Address Compound Fields](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/compound_fields_address.htm)
-for details on compound address fields. Used in case the request doesn’t contain a Ship To
-address.
+for details on compound address fields.
 
 ```
 TaxEngineCity
@@ -22579,7 +24877,7 @@ AuthProvider
 Filter, Nillable, Sort
 
 **Description**
-The foreign key to the AuthProvider on page 877 of the third-party system.
+The foreign key to the AuthProvider on page 883 of the third-party system.
 
 **Type**
 reference
@@ -22664,30 +24962,33 @@ To make the ThirdPartyAccountLink standard object writable for Salesforce admins
 feature, you can easily add or delete third-party account links using the API, but you can’t update existing account links.
 
 In API version 34.0 and later, this object was enhanced to help manage high instance counts. A `query()` call returns up to 500 rows.
-A queryMore() call returns 500 more, up to 2500 total. No more records are returned after 2500. To make sure that you don’t miss any
+A queryMore() call returns 500 more, up to 2,500 total. No more records are returned after 2,500. To make sure that you don’t miss any
 records, issue a `COUNT()` query in a SELECT clause for ThirdPartyAccountLink. This query gives you the total number of records. If there
-are more than 2500 records, use these options to manage your results.
+are more than 2,500 records, use these options to manage your results.
 
-**•** Divide queries by filtering on fields like `UserId` to return subsets of less than 2500 records.
+**•** Divide queries by filtering on fields like `UserId` to return subsets of less than 2,500 records.
 
-**•** Use `OFFSET` to get batches of 2500 records. Start with an `OFFSET` of 0 and then increment by 2500. If you use this option, we
-recommend that you also use `LIMIT` to limit each query to 2500.
+**•** Use `[OFFSET](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_offset.htm)` to get batches of 2,000 records. Start with an `OFFSET` of 0 and then increment by 2,000. If you use this option, we
+recommend that you also use `[LIMIT](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_limit.htm)` to limit each query to 2,000.
+
+Note: The `OFFSET` clause is limited to 2,000 rows. Requesting an offset greater than 2,000 results in a
+NUMBER_OUTSIDE_VALID_RANGE error.
 
 For example, use an initial query with this structure.
 
 ```
-  SELECT <desired fields> FROM ThirdPartyAccountLink LIMIT 2500 OFFSET 0
+  SELECT <desired fields> FROM ThirdPartyAccountLink LIMIT 2000 OFFSET 0
 
 ```
 
-Then, run another query with an offset of 2500.
+Then, run another query with an offset of 2,000.
 
 ```
-  SELECT <desired fields> FROM ThirdPartyAccountLink LIMIT 2500 OFFSET 2500
+  SELECT <desired fields> FROM ThirdPartyAccountLink LIMIT 2000 OFFSET 2000
 
 ```
 
-Continue to increase the offset by 2500 until you have results for all records.
+Continue to increase the offset by 2,000 until you have results for all records.
 
 
 ### Standard Objects ThreatDetectionFeedback ThreatDetectionFeedback
@@ -24739,7 +27040,7 @@ in API version 57.0 and later.
 
 **•** `GuestUserAnomalyEventStore` —Tracks data access anomalies that are caused
 by guest user permission misconfiguration. GuestUserAnomalyEventStore is an object
-that stores the event data of GuestUserAnomalyEvent.This object is available in API
+that stores the event data of GuestUserAnomalyEvent. This object is available in API
 version 60.0 and later.
 
 **•** `ListViewEvent` —Tracks when users access data with list views using Lightning
@@ -25756,34 +28057,39 @@ Filter, Group, Nillable, Sort
 ID of the user who’s associated with the identity verification methods.
 
 In API version 34.0 and later, this object was enhanced to help manage high instance counts. A `[query()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_query.htm)` call returns up to 500 rows.
-A `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_querymore.htm)` call returns 500 more, up to 2500 total. No more records are returned after 2500.
+A `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_querymore.htm)` call returns 500 more, up to 2,500 total. No more records are returned after 2,500.
 
 To make sure that you don’t miss any records, issue a `COUNT()` query in a SELECT clause for TwoFactorMethodInfo. This query gives
-you the total number of records. If there are more than 2500 records, use these options to manage your results.
+you the total number of records. If there are more than 2,500 records, use these options to manage your results.
 
-**•** Divide queries by filtering on fields like `UserId` to return subsets of less than 2500 records.
+**•** Divide queries by filtering on fields like `UserId` to return subsets of less than 2,500 records.
 
-**•** Use `OFFSET` to get batches of 2500 records. Start with an `OFFSET` of 0 and then increment by 2500. If you use this option, we
-recommend that you also use `LIMIT` to limit each query to 2500.
+**•** Use `[OFFSET](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_offset.htm)` to get batches of 2,000 records. Start with an `OFFSET` of 0 and then increment by 2,000. If you use this option, we
+recommend that you also use `[LIMIT](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_limit.htm)` to limit each query to 2,000.
+
+Note: The `OFFSET` clause is limited to 2,000 rows. Requesting an offset greater than 2,000 results in a
+NUMBER_OUTSIDE_VALID_RANGE error.
 
 For example, use an initial query with this structure.
 
 ```
-  SELECT <desired fields> FROM TwoFactorMethodsInfo LIMIT 2500 OFFSET 0
+  SELECT <desired fields> FROM TwoFactorMethodsInfo LIMIT 2000 OFFSET 0
 
 ```
 
-Then, run another query with an offset of 2500.
+
+### Standard Objects TwoFactorTempCode
+
+Then, run another query with an offset of 2,000.
 
 ```
-  SELECT <desired fields> FROM TwoFactorMethodsInfo LIMIT 2500 OFFSET 2500
+     SELECT <desired fields> FROM TwoFactorMethodsInfo LIMIT 2000 OFFSET 2000
 
 ```
 
-Continue to increase the offset by 2500 until you have results for all records.
+Continue to increase the offset by 2,000 until you have results for all records.
 
-
-### Standard Objects TwoFactorTempCode TwoFactorTempCode
+### TwoFactorTempCode
 
 Stores information about a user’s temporary verification code for confirming their identity when logging in. This object is available in
 API version 37.0 and later.
@@ -25807,8 +28113,6 @@ Expiration
 Identifier
 
 TempCode
-
-UserId
 
 ```
 
@@ -25837,16 +28141,21 @@ any value.
 **Type**
 encryptedstring
 
-**Description**
-A request for this value always returns `null` .
-
-**Type**
-reference
-
 
 ### Standard Objects UiAgentInteractionEventLog
 
 **Field Name** **Details**
+
+**Description**
+A request for this value always returns `null` .
+
+```
+UserId
+
+```
+
+**Type**
+reference
 
 **Properties**
 Filter, Group, Sort
@@ -25876,8 +28185,6 @@ AgentType
 
 AppName
 
-BotIdentifier
-
 ```
 
 **Type**
@@ -25898,21 +28205,14 @@ Filter, Group, Nillable, Sort
 **Description**
 The app this logline has executed.
 
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
 
 Standard Objects UiAgentInteractionEventLog
 
 **Field** **Details**
 
-**Description**
-The unique identifier of the agent.
-
 ```
+BotIdentifier
+
 BotSessionIdentifier
 
 BrowserName
@@ -25924,6 +28224,15 @@ ButtonLabel
 Channel
 
 ```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The unique identifier of the agent.
 
 **Type**
 string
@@ -25968,16 +28277,16 @@ of the button the user selects.
 **Type**
 string
 
+
+Standard Objects UiAgentInteractionEventLog
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The name of the channel. For example, mobile, LEX, or Playground.
-
-
-Standard Objects UiAgentInteractionEventLog
-
-**Field** **Details**
 
 ```
 ClientGeolocation
@@ -25989,8 +28298,6 @@ ClientIp
 Components
 
 ConnectionType
-
-DeviceModel
 
 ```
 
@@ -26040,21 +28347,14 @@ Filter, Group, Nillable, Sort
 **Description**
 The type of connection. For example, WiFi.
 
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
 
 Standard Objects UiAgentInteractionEventLog
 
 **Field** **Details**
 
-**Description**
-The device model.
-
 ```
+DeviceModel
+
 DevicePlatform
 
 DeviceSessionIdentifier
@@ -26066,6 +28366,15 @@ HasToxicityWarning
 IsAgentPanelExited
 
 ```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The device model.
 
 **Type**
 string
@@ -26111,16 +28420,16 @@ boolean
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
+
+Standard Objects UiAgentInteractionEventLog
+
+**Field** **Details**
+
 **Description**
 A boolean field that is true if the user clicks on a button to navigate away from an agent
 panel.
 
 The default value is `false` .
-
-
-Standard Objects UiAgentInteractionEventLog
-
-**Field** **Details**
 
 ```
 LightningType
@@ -26185,16 +28494,16 @@ The mobile application type.
 **Type**
 string
 
+
+Standard Objects UiAgentInteractionEventLog
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The SDK version.
-
-
-Standard Objects UiAgentInteractionEventLog
-
-**Field** **Details**
 
 ```
 ObjectType
@@ -26259,16 +28568,16 @@ Object id, if any, of the record being displayed.
 **Type**
 string
 
+
+Standard Objects UiAgentInteractionEventLog
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Object type of the page being displayed.
-
-
-Standard Objects UiAgentInteractionEventLog
-
-**Field** **Details**
 
 ```
 PageUrl
@@ -26280,8 +28589,6 @@ SdkAppVersion
 SessionKey
 
 TaskName
-
-Timestamp
 
 ```
 
@@ -26331,21 +28638,14 @@ Filter, Group, Nillable, Sort
 **Description**
 This will describe the nature of the event being logged.
 
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
 
 Standard Objects UiAgentInteractionEventLog
 
 **Field** **Details**
 
-**Description**
-Timestamp at which the log event was generated.
-
 ```
+Timestamp
+
 UiEventElapsedTime
 
 UiEventTimestamp
@@ -26356,9 +28656,16 @@ UserIdentifier
 
 UserType
 
-VoiceOrText
-
 ```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp at which the log event was generated.
 
 **Type**
 double
@@ -26405,21 +28712,26 @@ Filter, Group, Nillable, Sort
 **Description**
 The type of user.
 
+
+### Standard Objects UiFormulaCriterion
+
+**Field** **Details**
+
+```
+VoiceOrText
+
+### UiFormulaCriterion
+
+```
+
 **Type**
 string
 
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects UiFormulaCriterion
-
-**Field** **Details**
-
 **Description**
 Whether the input by the user was “voice” or “text”.
-
-### UiFormulaCriterion
 
 Represents a filter that helps define component visibility on a Lightning page. This object is available in API version 47.0 and later.
 
@@ -26470,15 +28782,15 @@ Represents the filter operator. Valid values are:
 
 **•** `NE` —not equal
 
-This is a relationship field.
-
-**Relationship Name**
-Operator
-
 
 ### Standard Objects UiFormulaRule
 
 **Field** **Details**
+
+This is a relationship field.
+
+**Relationship Name**
+Operator
 
 **Relationship Type**
 Lookup
@@ -26655,7 +28967,7 @@ Represents the three-digit prefix for AssociatedElementId.
 ### UiTelemetryNavTmEventLog
 
 UI Telemetry Navigation Timing events capture network performance metrics related to page navigation. The event extends from the
-[UI Telemetry Resource Timing Event on page 2393 and includes requests initiated with either the Fetch API or the XMLHttpRequest API.](https://fetch.spec.whatwg.org/)
+[UI Telemetry Resource Timing Event on page 2413 and includes requests initiated with either the Fetch API or the XMLHttpRequest API.](https://fetch.spec.whatwg.org/)
 This object is available in API version 64.0 and later.
 
 [Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
@@ -44804,2398 +47116,3 @@ LoginGeo
 **Relationship Type**
 Lookup
 
-**Refers To**
-LoginGeo
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID for the record of the user’s successful or unsuccessful login attempt.
-
-This is a relationship field.
-
-**Relationship Name**
-LoginHistory
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-LoginHistory
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The identity verification security policy or setting. The label is Triggered By.
-Available values are:
-
-
-Standard Objects VerificationHistory
-
-**Field Name** **Details**
-
-**•** `CustomApex` —Identity verification made by a verification Apex method.
-
-**•** `DeviceActivation` —Identity verification required for users logging in
-from an unrecognized device or new IP address. This verification is part of
-Salesforce’s risk-based authentication.
-
-**•** `EnableLightningLogin` —Identity verification required for users
-enrolling in Lightning Login. This verification is triggered when the user
-attempts to enroll. Users are eligible to enroll if they have the Lightning Login
-User user permission and the org has enabled Allow Lightning Login in
-Session Settings.
-
-**•** `ExtraVerification` —Reserved for future use.
-
-**•** `HighAssurance` —High assurance session required for resource access.
-This verification is triggered when the user tries to access a resource, such as
-a connected app, report, or dashboard, that requires a high-assurance session
-level.
-
-**•** `LightningLogin` —Identity verification required for internal users logging
-in via Lightning Login. This verification is triggered when the enrolled user
-attempts to log in. Users are eligible to log in if they have the Lightning Login
-User user permission and have successfully enrolled in Lightning Login. Also,
-from Session Settings in Setup, Allow Lightning Login must be enabled.
-
-**•** `PageAccess` —Identity verification required for users attempting to
-perform an action, such as changing an email address or adding a verification
-method for multi-factor authentication (MFA).
-
-**•** `PasswordlessLogin` —Identity verification required for customers
-attempting to log in to an Experience Cloud site that is set up for passwordless
-login. The admin controls which registered verification methods can be used,
-for example, email, SMS, Salesforce Authenticator, or TOTP.
-
-**•** `ProfilePolicy` —Session security level required at login. This verification
-is triggered by the Session security level required at login setting on the user’s
-profile.
-
-**•** `TwoFactorAuthentication` —Multi-factor authentication (formerly
-called two-factor authentication) required at login. This verification is triggered
-by the Multi-Factor Authentication for User Interface Logins user permission
-assigned to a custom profile. Or the user permission is included in a
-permission set that is assigned to a user.
-
-```
-Remarks
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The text the user sees on the page or in Salesforce Authenticator when prompted
-to verify identity. For example, if identity verification is required for a user’s login,
-the user sees “You’re trying to Log In to Salesforce.” In this case, the Remarks
-value is “Log In to Salesforce.” But if the Activity value is Apex, the Remarks value
-
-
-Standard Objects VerificationHistory
-
-**Field Name** **Details**
-
-is a custom description passed by an Apex method. If the user is verifying identity
-using Salesforce Authenticator, the custom description also appears in the app.
-If the custom description isn’t specified, the value is the name of the Apex method.
-The label is Activity Message.
-
-```
-ResourceId
-
-SourceIp
-
-Status
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If the `Activity` value is ConnectedApp, the `ResourceId` value is the ID
-of the connected app. The label is Connected App ID.
-
-This is a relationship field.
-
-**Relationship Name**
-Resource
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ConnectedApplication
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The IP address of the machine from which the user attempted the action that
-requires identity verification. For example, the IP address of the machine from
-where the user tried to log in or access reports. If it’s a non-login action that
-required verification, the IP address can be different from the address from where
-the user logged in. This address can be an IPv4 or IPv6 address.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The status of the identity verification attempt. Available values are:
-
-**•** `AutomatedSuccess` —Salesforce Authenticator approved the request
-for access because the request came from a trusted location. After users
-enable location services in Salesforce Authenticator, they can designate
-trusted locations. When a user trusts a location for a particular activity, such
-as logging in from a recognized device, that activity is approved from the
-trusted location for as long as the location is trusted.
-
-
-Standard Objects VerificationHistory
-
-**Field Name** **Details**
-
-**•** `Denied` —The user denied the approval request in the authenticator app,
-such as Salesforce Authenticator.
-
-**•** `FailedGeneralError` —An error caused by something other than an
-invalid verification code, too many verification attempts, or authenticator
-app connectivity.
-
-**•** `FailedInvalidCode` —The user entered an invalid verification code.
-
-**•** `FailedInvalidPassword` —The user entered an invalid password.
-
-**•** `FailedPasswordLockout` —The user attempted to enter a password
-too many times.
-
-**•** `FailedTooManyAttempts` —The user attempted to verify identity too
-many times. For example, the user entered an invalid verification code
-repeatedly.
-
-**•** `Initiated` —Salesforce initiated identity verification but hasn’t yet
-challenged the user.
-
-**•** `InProgress` —Salesforce challenged the user to verify identity and is
-waiting for the user to respond or for Salesforce Authenticator to send an
-automated response.
-
-**•** `RecoverableError` —Salesforce can’t reach the authenticator app to
-verify identity, but it continues to retry.
-
-**•** `ReportedDenied` —The user denied the approval request in the
-authenticator app, such as Salesforce Authenticator, and also flagged the
-approval request to report to an administrator.
-
-**•** Succeeded—The user’s identity was verified.
-
-```
-UserId
-
-VerificationMethod
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-ID of the user verifying identity.
-
-This is a relationship field.
-
-**Relationship Name**
-User
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-
-Standard Objects VerificationHistory
-
-**Field Name** **Details**
-
-**Description**
-The method by which the user attempted to verify identity in the verification
-event. The label is Method. Available values are:
-
-**•** `BuiltInAuthenticator` —A built-in authenticator set up on the user’s
-device, such as Touch ID or Windows Hello, generated the required
-credentials. This value is available in API version 53.0 and later.
-
-**•** `Email` —Salesforce sent an email with a verification code to the address
-associated with the user’s account.
-
-**•** `EnableLL` —Salesforce Authenticator sent a notification to the user’s mobile
-device to enroll in Lightning Login. This value is available in API version 38.0
-and later.
-
-**•** `LL` —Salesforce Authenticator sent a notification to the user’s mobile device
-to approve login via Lightning Login. This value is available in API version
-38.0 and later.
-
-**•** `PwlessPasskey` (beta)—Salesforce prompted the user to use a passkey
-to perform passwordless login. This value is available in API version 66.0 and
-later.
-
-Passwordless login with passkeys is a pilot or beta service that is subject to
-[the Beta Services Terms at Agreements - Salesforce.com or a written Unified](https://www.salesforce.com/company/legal/agreements/)
-[Pilot Agreement if executed by Customer, and applicable terms in the Product](https://ptd.salesforce.com/?_ga=2.247987783.1372150065.1709219475-629000709.1639001992)
-[Terms Directory. Use of this pilot or beta service is at the Customer's sole](https://ptd.salesforce.com/?_ga=2.247987783.1372150065.1709219475-629000709.1639001992)
-discretion.
-
-**•** `SalesforceAuthenticator` —Salesforce Authenticator sent a
-notification to the user’s mobile device to verify account activity.
-
-**•** `Sms` —Salesforce sent a text message with a verification code to the user’s
-mobile device. SMS messaging requires a Salesforce add-on license for Identity
-Verification Credits.
-
-**•** `TempCode` —A Salesforce admin or a user with the Manage Multi-Factor
-Authentication in User Interface permission generated a temporary verification
-code for the user. This value is available in API version 37.0 and later.
-
-**•** `Totp` —An authenticator app generated a time-based, one-time password
-(TOTP) on the user’s mobile device.
-
-**•** `U2F` —A U2F security key generated required credentials for the user. This
-value is available in API version 38.0 and later.
-
-```
-VerificationTime
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Sort
-
-**Description**
-The date and time of the identity verification attempt, for example,
-`7/19/2025, 3:19:13 PM PDT.` The time zone is based on GMT. The
-label is Time.
-
-
-### Standard Objects VisualforceAccessMetrics
-
-Usage
-
-Here are two examples queries that you can perform on VerificationHistory.
-
-**Query** **String**
-
-Show verification history for a user’s login record `SELECT Activity, EventGroup, Policy,`
-
-```
-                             Remarks, Status, UserId,VerificationMethod,
-
-                             VerificationTime FROM VerificationHistory
-
-                             WHERE LoginHistoryId = '0YaD000#########'
-
-```
-
-Get detailed geographic location information for a user’s verification
-attempt
-
-### VisualforceAccessMetrics
-
-Represents summary statistics for Visualforce pages.
-
-Supported Calls
-
-```
-SELECT City, CountryIso, Latitude,
-
-Longitude, PostalCode FROM LoginGeo WHERE
-
-LoginGeoId = '0LE###############'
-
-```
-
-`count()`, `describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-As of Spring ’20 and later, to access VisualforceAccessMetrics, users must have the Customize Application permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ApexPageId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Aggregate, Filter, Group, Sort
-
-**Description**
-The ID of the Visualforce page.
-
-This is a relationship field.
-
-**Relationship Name**
-ApexPage
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ApexPage
-
-
-Standard Objects VisualforceAccessMetrics
-
-**Field** **Details**
-
-```
-ProfileId
-
-DailyPageViewCount
-
-MetricsDate
-
-LogDate
-
-```
-
-Usage
-
-**Type**
-reference
-
-**Properties**
-Aggregate, Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the use who viewed the Visualforce page.
-
-This is a relationship field.
-
-**Relationship Name**
-Profile
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Profile
-
-**Type**
-int
-
-**Properties**
-Aggregate, Filter, Group, Nillable, Sort
-
-**Description**
-The number of views received by the specified Visualforce page.
-
-**Type**
-date
-
-**Properties**
-Aggregate, Filter, Group, Sort
-
-**Description**
-The date the metrics are queried.
-
-**Type**
-date
-
-**Properties**
-Aggregate, Filter, Group, Nillable, Sort
-
-**Description**
-The most recent page access date.
-
-Use this object to query information on the Visualforce pages in your org.
-
-```
-SELECT ApexPageId, DailyPageViewCount, Id, ProfileId, MetricsDate, LogDate FROM
-
-VisualforceAccessMetrics
-
-```
-
-
-### Standard Objects VisualforceRequestEventLog VisualforceRequestEventLog
-
-Visualforce Request events contain details of Visualforce requests. Requests can originate from the browser (UI). This object is available
-in API version 61.0 and later.
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Note: This feature is a Beta Service. Customer may opt to try such Beta Service in its sole discretion. Any use of the Beta Service
-[is subject to the applicable Beta Services Terms provided at Agreements and Terms.](https://www.salesforce.com/company/legal/agreements/)
-
-Fields
-
-**Field** **Details**
-
-```
-ClientIp
-
-ControllerType
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of controller that’s used by the requested Visualforce page.
-
-Possible values are:
-
-**•** `0` —Not Specified
-
-**•** `1` —Standard
-
-**•** `2` —Standard Set
-
-**•** `3` —Custom
-
-**•** `4` —Java
-
-**•** `5` —Spring
-
-
-Standard Objects VisualforceRequestEventLog
-
-**Field** **Details**
-
-```
-CpuTime
-
-DatabaseBlocks
-
-DatabaseCpuTime
-
-DatabaseTotalTime
-
-HttpMethod
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Indicates how much activity is occurring in the database. A high value for this field suggests
-that adding indexes or filters on your queries benefits performance.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds to complete the request. Indicates the amount of activity taking
-place in the database layer during the request.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The time in nanoseconds for a database round trip. Includes time spent in the JDBC driver,
-network to the database, and `DatabaseCpuTime` . Compare this field to `CpuTime` to
-determine whether performance issues are occurring in the database layer or in your own
-code.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The HTTP method of the request. For example: `GET`, `POST`, `PUT`, and so on.
-
-
-Standard Objects VisualforceRequestEventLog
-
-**Field** **Details**
-
-```
-IsAjaxRequest
-
-IsFirstRequest
-
-LoginKey
-
-ManagedPackageNamespace
-
-PageName
-
-QueryString
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-The value is `true` if the request is a partial page request. The default value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-`1` if this page is the first Visualforce transaction in the request, or `0` if it isn't. The default
-value is `0` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If the page is part of a managed package, the namespace of that package.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the Visualforce page that was requested.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects VisualforceRequestEventLog
-
-**Field** **Details**
-
-**Description**
-The query string used to access the requested Visualforce page.
-
-**Example**
-Let’s assume that the requested Visualforce page
-( `/apex/myAccountDetailPage?id=001xx000003GYv6AAG` ) shows details
-of the account whose ID is in the URL. The value of `QueryString` in this case is
-`?id=001xx000003GYv6AAG` .
-
-```
-RequestIdentifier
-
-RequestSize
-
-RequestStatus
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier` . For example:
-`3nWgxWbDKWWDIk0FKfF5DV` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The size of the callout response, in bytes.
-
-**Type**
-String
-
-**Description**
-The status of the request for a page view or user interface action.
-
-For example:
-
-**•** `S` —Success. Salesforce handled the request successfully. If an Apex controller throws
-an exception, this status is also returned.
-
-**•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no permission to view page, page
-took too long to render, page is read-only.
-
-**•** `U` —Undefined
-
-**•** `A` —Authorization Error
-
-**•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated by an Apex controller in a
-Visualforce page.
-
-**•** `N` —Not Found. 404 error.
-
-This field can have a blank value.
-
-
-Standard Objects VisualforceRequestEventLog
-
-**Field** **Details**
-
-```
-RequestType
-
-ResponseSize
-
-RunTime
-
-SessionKey
-
-Timestamp
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The request type.
-
-Possible values are:
-
-**•** `page` —A normal request for a page
-
-**•** `content_UI` —A content request for a page that originated in the user interface
-
-**•** `content_apex` —A content request initiated by an Apex call
-
-**•** `PDF_UI` —A request for a page in PDF format through the user interface
-
-**•** `PDF_apex` —A request for PDF format by an Apex call (usually a Web Service call)
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The size of the callout request body, in bytes.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects VisualforceRequestEventLog
-
-**Field** **Details**
-
-**Description**
-The access time of Salesforce services in GMT. For example,
-`2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
-
-```
-Uri
-
-UserIdentifier
-
-UserType
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services through the UI or the API.
-For example: `00530000009M943` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The category of user license.
-
-Possible values are:
-
-**•** `CsnOnly` —Users whose access to the application is limited to Chatter. This user type
-includes Chatter Free and Chatter moderator users.
-
-**•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
-they’re organization customers and access the application through a customer portal or
-an Experience Cloud site.
-
-**•** `CustomerSuccess` —Customer Success license. Users whose access is limited
-because they’re organization customers and access the application through a customer
-portal.
-
-**•** `Guest` —Users whose access is limited so that your customers can view and interact
-with your site without logging in.
-
-**•** `PowerCustomerSuccess` —Power Customer Success license. Users whose access
-is limited because they’re organization customers and access the application through a
-customer portal. Users with this license type can view and edit data they directly own
-or data owned by or shared with users below them in the customer portal role hierarchy.
-
-**•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
-partners and typically access the application through a partner portal or site.
-
-
-### Standard Objects VideoCall
-
-**Field** **Details**
-
-**•** `SelfService` —Users whose access is limited because they’re organization customers
-and access the application through a self-service portal.
-
-**•** `Standard` —Standard user license. This user type also includes Salesforce Platform
-and Salesforce Platform One user licenses, and admins for this org.
-
-```
-ViewStateSize
-
-### VideoCall
-
-```
-
-Represents a video call.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The size of the Visualforce view state in bytes.
-
-### One VideoCall record can be related to several VideoCallRecording records — for example, a video call can have several
-
-video recordings and a transcript. As well, one video call record can be associated with several video call participant records.
-
-This object is available in API version 51.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `search()`, `update()`
-
-Fields
-
-**Field** **Details**
-
-AcceptanceTimeStamp
-
-ConsentedUserId
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort
-
-**Description**
-The timestamp when the user consented for uploading the video call recording. Reserved
-for future use.
-
-This field is available in API version 62.0 and later.
-
-**Type**
-reference
-
-
-Standard Objects VideoCall
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the user who consented to upload the video call recording. Reserved for future
-use.
-
-This field is available in API version 62.0 and later.
-
-This field is a relationship field.
-
-**Relationship Name**
-ConsentedUser
-
-**Refers To**
-User
-
-```
-Description
-
-DurationInSeconds
-
-EndDateTime
-
-EventId
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-Description of the video call. Typically, the sales rep enters the description.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The video call duration in seconds.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Time the video call ended, in universal time coordinated (UTC).
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the event record associated with this video call. Reserved for future use.
-
-This is a relationship field.
-
-
-Standard Objects VideoCall
-
-**Field** **Details**
-
-**Relationship Name**
-Event
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Event
-
-```
-ExternalId
-
-HostId
-
-IntelligenceScore
-
-IsCallCoachingIncluded
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Nillable, Sort
-
-**Description**
-The ID of the video call, sent by the video call provider.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the user who hosted the meeting.
-
-This is a relationship field.
-
-**Relationship Name**
-Host
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The Einstein Intelligence score for the video call. Video calls with higher scores are likely to
-contain more relevant information. For example, video calls where product names and
-competitor names are mentioned tend to have a higher score.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects VideoCall
-
-**Field** **Details**
-
-**Description**
-Indicates whether Einstein Conversation Insights is available for this org and this user
-`(true)` or not `(false)` .
-
-```
-IsDiarizationOptIn
-
-IsRecorded
-
-LastReferencedDate
-
-LastViewedDate
-
-```
-
-MeetingType
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether optimal speaker separation (diarization) is opted in `(true)` or not
-`(false)` for the call.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the video call was recorded `(true)` or not `(false)` .
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last accessed this record, a record related to this record,
-or a list view.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last viewed this record or list view. If this value is
-`null`, the user might have only accessed this record or list view ( `LastReferencedDate` )
-but not viewed it.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The type of the call. Reserved for future use.
-
-
-Standard Objects VideoCall
-
-**Field** **Details**
-
-This field is available in API version 61.0 and later.
-
-Possible values are:
-
-**•** `EXTERNAL` —A call with two or more participants (default).
-
-**•** `MANUAL` —A call that is manually uploaded.
-
-**•** `SINGLE_USER` —A single user call where the sales rep is evaluated and coached.
-
-```
-Name
-
-OwnerId
-
-RelatedRecordId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Sort
-
-**Description**
-The name of the video call. Typically entered by the sales rep.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort, Update
-
-**Description**
-The ID of the user who created the video call.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Group, User
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort, Update
-
-**Description**
-The ID of the account or opportunity related to this video call.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-RelatedRecord
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Account, Opportunity
-
-
-Standard Objects VideoCall
-
-**Field** **Details**
-
-```
-StartDateTime
-
-TranscribedLanguage
-
-```
-
-UsageType
-
-```
-VendorMeetingKey
-
-VendorMeetingUuid
-
-VendorName
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time that the video call started, in universal time coordinated (UTC).
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The language that is transcribed for this video call.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The cloud using the VideoCall.
-
-This field is available in API version 63.0 and later.
-
-Possible values are:
-
-**•** `Life Sciences` —Remote Engagement.
-
-**•** `Sales Cloud`
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The vendor's ID for this video call.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The vendor's unique identifier for this video call.
-
-**Type**
-picklist
-
-
-### Standard Objects VideoCallInsight
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The name of the vendor providing the video call software.
-
-Possible values are:
-
-**•** `ZOOM`
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**VideoCallChangeEvent (API version 51.0)**
-Change events are available for the object.
-
-SEE ALSO:
-
-VideoCallParticipant
-
-VideoCallRecording
-
-### VideoCallInsight
-
-Represents the video call insight data associated with a video call. Each record represents the call insight of a specific recording or
-transcript within a call. This object is available in API version 66.0 and later.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Einstein Conversation Insight must be enabled and the user requires the Conversation Insights for Sales permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-EngagementInsightType
-
-```
-
-**Type**
-string
-
-
-Standard Objects VideoCallInsight
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Required. The unique identifier of the platform setup entity that defines the configuration
-for this engagement insight type.
-
-```
-GenerationDateTime
-
-InsightConfigName
-
-InsightLanguage
-
-InsightModel
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Sort
-
-**Description**
-Required. The timestamp when the call insight was generated.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the insight configuration, or category, used to classify the insight.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Required. The language associated with the insight type. Each insight type is currently limited
-to a single language. If the same insight type is mapped to a different language, a new insight
-type is created.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-Required. The category of the insight type.
-
-Possible values are:
-
-**•** `GENERATIVE` —Generative
-
-**•** `KEYWORD` —Keyword
-
-**•** `SITUATIONAL` —Situational
-
-**•** `TIME_BASED` —Time-Based
-
-The default value is `KEYWORD` .
-
-
-Standard Objects VideoCallInsight
-
-**Field** **Details**
-
-```
-InsightOccurenceCount
-
-InsightSubject
-
-InsightText
-
-Name
-
-Scope
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of times a particular insight occurred in the transcript.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The specific text, phrase, or subject identified in the video call transcript that serves as the
-basis for the insight.
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The text content of the insight derived from the video call transcript.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Nillable, Sort
-
-**Description**
-The display name of the insight type.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-Required. The scope of the insight type.
-
-Possible values are:
-
-**•** `Organization`
-
-**•** `User`
-
-The default value is `Organization` .
-
-
-Standard Objects VideoCallInsight
-
-**Field** **Details**
-
-```
-VideoCallId
-
-VideoCallRecordingId
-
-VideoCallTranscriptId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Required. ID of the associated parent VideoCall.
-
-This field is a relationship field.
-
-**Relationship Name**
-VideoCall
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-VideoCall (the master object)
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Required. ID of the associated parent VideoCallRecording.
-
-This field is a relationship field.
-
-**Relationship Name**
-VideoCallRecording
-
-**Refers To**
-VideoCallRecording
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Required. ID of the associated VideoCallTranscript record.
-
-**Relationship Name**
-VideoCallTranscript
-
-**Refers To**
-VideoCallTranscript
-
-
-### Standard Objects VideoCallInsightAction VideoCallInsightAction
-
-Represents a suggested follow-up action derived from a video call insight. VideoCallInsightAction manages recommended steps—such
-as sending an email, creating a task, or scheduling a meeting—that address specific moments, including competitor mentions, pricing
-discussions, or objections. This object is available in API version 66.0 and later.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Einstein Conversation Insight must be enabled and the user requires the Conversation Insights for Sales permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-ActionCategory
-
-ActionReferenceId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The category that classifies the purpose of the action.
-
-Possible values are:
-
-**•** `FollowUp`
-
-**•** `NeedsAttention`
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Required. ID of the reference record associated with the generated action.
-
-This field is a relationship field.
-
-**Relationship Name**
-ActionReference
-
-**Refers To**
-VideoCallInsightReason
-
-
-Standard Objects VideoCallInsightAction
-
-**Field** **Details**
-
-```
-ActionType
-
-CompletionDateTime
-
-Name
-
-Status
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The specific type of action to be performed for the insight.
-
-Possible values are:
-
-**•** `CreateCalendarEvent`
-
-**•** `CreateTaskWithDate`
-
-**•** `EciCreateCallback`
-
-**•** `EciScheduleMeetings`
-
-**•** `EciSendCallResponse`
-
-**•** `ViewContactProfile`
-
-The default value is `CreateTaskWithDate` .
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Required. The timestamp when the action was completed.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Sort
-
-**Description**
-The name of the insight action.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The status of the insight action.
-
-Possible values are:
-
-**•** `Active`
-
-**•** `Completed`
-
-The default value is `Active` .
-
-
-### Standard Objects VideoCallInsightReason
-
-**Field** **Details**
-
-```
-VideoCallInsightId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Required. ID of the VideoCallInsight record associated with a video call. Each record represents
-the call insight of a specific recording or transcript within a call.
-
-This field is a relationship field.
-
-**Relationship Name**
-### VideoCallInsight
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-VideoCallInsight (the master object)
-
-### VideoCallInsightReason
-
-Represents the video call insight reason that contains the insight keyword, insight moments associated with a keyword, and the number
-of keyword occurrences. This object is available in API version 66.0 and later.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Einstein Conversation Insight must be enabled and the user requires the Conversation Insights for Sales permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-Name
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Sort
-
-**Description**
-The name of the insight reason.
-
-
-### Standard Objects VideoCallParticipant
-
-**Field** **Details**
-
-```
-OccurrenceInfo
-
-OccurrenceSnippet
-
-VideoCallInsightId
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The number of times the given keyword was mentioned in the call.
-
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-**Description**
-The specific excerpt from the video call transcript that helped generate the insight. Reserved
-for future use.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Required. ID of the VideoCallInsight record associated with a video call. Each record represents
-the call insight of a specific recording or transcript within a call.
-
-This field is a relationship field.
-
-**Relationship Name**
-VideoCallInsight
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-VideoCallInsight (the master object)
-
-### VideoCallParticipant
-
-Represents a participant in a video call. Participant information can come from the video call provider (for example, Zoom), or Salesforce.
-This object is available in API version 51.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects VideoCallParticipant
-
-Fields
-
-**Field** **Details**
-
-```
-Email
-
-IsAllowed
-
-JoinDateTime
-
-LastReferencedDate
-
-LastViewedDate
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Nillable, Sort
-
-**Description**
-The email address of the participant, from the video call provider.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the participant is admitted into the video call (true) or not (false).
-
-The default value is `false` .
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time when the participant joins the video call.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last accessed this record, a record related to this record,
-or a list view.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last viewed this record or list view. If this value is
-`null`, the user might have only accessed this record or list view ( `LastReferencedDate` )
-but not viewed it.
-
-
-Standard Objects VideoCallParticipant
-
-**Field** **Details**
-
-```
-LeaveDateTime
-
-Name
-
-ParticipantType
-
-RelatedPersonId
-
-VideoCallId
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time when the participant leaves the video call.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Nillable, Sort
-
-**Description**
-The participant's name or phone number. This information is provided by the video call
-provider.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-The role of the participant in the video call. Available in API version 65.0 and later.
-
-Possible values are:
-
-**•** `Attendee`
-
-**•** `Organizer`
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The Salesforce ID of the user, lead, or contact record for this participant.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-RelatedPerson
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Contact, Lead, User
-
-**Type**
-reference
-
-
-### Standard Objects VideoCallRecording
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the video call record.
-
-This is a relationship field.
-
-**Relationship Name**
-### VideoCall
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-### VideoCall
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**VideoCallParticipantChangeEvent (API version 55.0)**
-Change events are available for the object.
-
-SEE ALSO:
-
-### VideoCall VideoCallRecording VideoCallRecording
-
-Represents a recording from a video call, such as a video recording, a voice recording, or a transcript.
-
-Video call recordings aren’t saved in Salesforce.
-
-This object is available in API version 51.0 and later.
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `search()`,
-
-```
-   undelete()
-
-```
-
-Fields
-
-**Field** **Details**
-
-```
-DurationInSeconds
-
-```
-
-**Type**
-int
-
-
-Standard Objects VideoCallRecording
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The video call duration in seconds, not the recording duration.
-
-```
-EndDateTime
-
-ExpirationDateTime
-
-ExternalRecordingKey
-
-ExternalRecordingKeyLong
-
-FileSizeInByte
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Time the call ended, in universal time coordinated (UTC).
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Reserved for internal use. This field is available in API version 59.0 and later.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Nillable, Sort, Update
-
-**Description**
-The ID of the video call recording, from the recording provider. For example, the Zoom ID
-of the recording. This value is unique.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The ID of the video call recording, from the recording provider, that's more than 255
-characters. For example, the MS Team ID of the recording. This value is unique.
-
-If `ExternalRecordingKey` is null, this ID is used by default.
-
-Available in API version 61.0 and later.
-
-**Type**
-long
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects VideoCallRecording
-
-**Field** **Details**
-
-**Description**
-The size of the video call recording, in bytes.
-
-```
-FileType
-
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The file type of the video call recording.
-
-Possible values are:
-
-**•** `MP4` —Video file
-
-**•** `M4A` —Audio-only file
-
-**•** `TIMELINE` —Time stamp file in JSON format.
-
-**•** `TRANSCRIPT` —Transcription files in VTT format.
-
-**•** `CHAT` —Text file containing chat messages from the video call.
-
-**•** `CC` —File containing closed captions of the video call recording. The file is in VTT format.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last accessed this record, a record related to this record,
-or a list view.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp when the current user last viewed this record or list view. If this value is
-`null`, the user only accessed this record or list view ( `LastReferencedDate` ) but not
-viewed it.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Nillable, Sort, Update
-
-**Description**
-The name of the video call recording, entered by the sales rep.
-
-
-### Standard Objects VideoCallRecordingStructure
-
-**Field** **Details**
-
-```
-StartDateTime
-
-VideoCallRecordId
-
-```
-
-Associated Objects
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The start time of the video call recording.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the VideoCall record (the parent record).
-
-This is a relationship field.
-
-**Relationship Name**
-### VideoCallRecord
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-### VideoCall
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**VideoCallRecordingChangeEvent (API version 51.0)**
-Change events are available for the object.
-
-SEE ALSO:
-
-VideoCallParticipant
-
-### VideoCall VideoCallRecordingStructure
-
-Represents the structure of a video call recording, having relation to a video call participant, speaking order, start offset, and end offset.
-This object is available in API version 65.0 and later.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-
-Standard Objects VideoCallRecordingStructure
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Einstein Conversation Insight must be enabled and the user requires the Conversation Insights for Sales permission set.
-
-Fields
-
-**Field** **Details**
-
-```
-ListenRatio
-
-Name
-
-ParticipantSpeakingOrder
-
-TalkRatio
-
-TalkSegment
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Sort
-
-**Description**
-The ratio of the time the speaker spent listening versus talking on the call.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Nillable, Sort
-
-**Description**
-The name of the video call recording.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The sequence in which participants first spoke during the call. Only the initial speaking turn
-of each participant is captured.
-
-**Type**
-double
-
-**Properties**
-Filter, Sort
-
-**Description**
-The ratio of the time that the speaker spent talking versus listening on the call.
-
-**Type**
-textarea
-
-
-Standard Objects VideoCallRecordingStructure
-
-**Field** **Details**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The transcript of specific segments that the participant was speaking.
-
-```
-VideoCallId
-
-VideoCallParticipantId
-
-VideoCallRecordingId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-ID of the associated VideoCall.
-
-This field is a relationship field.
-
-**Relationship Name**
-VideoCall
-
-**Relationship Type**
-Master-detail
-
-**Refers To**
-VideoCall (the master object)
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the associated VideoCallParticipant.
-
-This field is a relationship field.
-
-**Relationship Name**
-VideoCallParticipant
-
-**Refers To**
-VideoCallParticipant
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-ID of the associated VideoCallRecording.
-
-This field is a relationship field.
-
-**Relationship Name**
-VideoCallRecording
-
-
-### Standard Objects VoiceCall
-
-**Field** **Details**
-
-**Refers To**
-VideoCallRecording
-
-### VoiceCall
-
-Represents a call in Service Cloud Voice, Sales Dialer, or other supported voice connectors. For Service Cloud Voice, this can be a phone

@@ -1,3 +1,2506 @@
+**ProductFeaturedProductChangeEvent**
+
+Change events are available for the object.
+
+### ProductItem
+
+Represents the stock of a particular product at a particular location in field service, such as all bolts stored in your main warehouse.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+Field Service must be enabled.
+
+Fields
+
+**Field Name** **Details**
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the product item was last modified. Its label in the user interface
+is Last Modified Date.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects ProductItem
+
+**Field Name** **Details**
+
+**Description**
+The date when the product item was last viewed.
+
+```
+LocationId
+
+OwnerId
+
+Product2Id
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+Location associated with the product item. This usually indicates where the
+product item is stored.
+
+This is a relationship field.
+
+**Relationship Name**
+Location
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Location
+
+**Type**
+reference
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+The product item’s owner.
+
+This is a polymorphic relationship field.
+
+**Relationship Name**
+Owner
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Group, User
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+Product associated with the product item, which represents the type of product
+in your inventory.
+
+This is a relationship field.
+
+
+Standard Objects ProductItem
+
+**Field Name** **Details**
+
+**Relationship Name**
+Product2
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Product2
+
+```
+ProductItemNumber
+
+ProductName
+
+QuantityOnHand
+
+QuantityUnitOfMeasure
+
+SerialNumber
+
+```
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+(Read Only) Auto-generated number identifying the product item.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+A name for the product item. Try to select a name that indicates what is being
+stored where; for example, Batteries in Warehouse A.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Sort, Update
+
+**Description**
+The quantity at the location. If you want to add a serial number, this value must
+be 1.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Units of the product item; for example, kilograms or liters. Quantity Unit of Measure
+picklist values are inherited from the Quantity Unit of Measure field on products.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+
+### Standard Objects ProductItemTransaction
+
+**Field Name** **Details**
+
+**Description**
+A unique number for identification purposes. If you want to enter a serial number,
+the Quantity on Hand must be 1.
+
+Usage
+
+Each product item is associated with a product and a location in Salesforce. If a product is stored at multiple locations, the product will
+be tracked in a different product item for each location.
+
+Associated Objects
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+**ProductItemChangeEvent (API version 48.0)**
+Change events are available for the object.
+
+**ProductItemFeed**
+
+Feed tracking is available for the object.
+
+**ProductItemHistory**
+
+History is available for tracked fields of the object.
+
+**ProductItemOwnerSharingRule**
+
+Sharing rules are available for the object.
+
+**ProductItemShare**
+
+Sharing is available for the object.
+
+### ProductItemTransaction
+
+Represents an action taken on a product item in field service. Product item transactions are auto-generated records that help you track
+when a product item is replenished, consumed, or adjusted.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `update()`, `undelete()`, `upsert()`
+
+Special Access Rules
+
+**•** Field Service must be enabled.
+
+**•** Only users with Modify All Data or Modify All Records permissions can delete this object.
+
+
+Standard Objects ProductItemTransaction
+
+Fields
+
+**Field Name** **Details**
+
+```
+Description
+
+LastReferencedDate
+
+LastViewedDate
+
+ProductItemId
+
+```
+
+**Type**
+textarea
+
+**Properties**
+Create, Nillable, Update
+
+**Description**
+A description of the transaction. The description is blank when the transaction
+record is created, but can be updated.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last interacted with this record, directly or
+indirectly. Some sample scenarios are:
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last viewed this record or list view. If this
+value is null, it’s possible that the user only accessed this record or list view
+( `LastReferencedDate` ), but not viewed it.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The associated product item.
+
+This is a relationship field.
+
+**Relationship Name**
+ProductItem
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ProductItem
+
+
+Standard Objects ProductItemTransaction
+
+**Field Name** **Details**
+
+```
+ProductItemTransactionNumber
+
+Quantity
+
+RelatedRecordId
+
+TransactionType
+
+```
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+(Read Only) Auto-generated number identifying the product item transaction.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Sort
+
+**Description**
+The quantity of the product item involved in the transaction. If inventory was
+consumed, the quantity is negative.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+(Read Only) The product consumed or product transfer related to the action. If
+the action wasn’t related to consumption or transfer, the related record is blank.
+
+This is a polymorphic relationship field.
+
+**Relationship Name**
+RelatedRecord
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ProductTransfer, Visit
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+The action that the transaction tracks.
+
+**•** Replenished: When a part is stocked at a location. A Replenished transaction
+is created when a product item is created.
+
+**•** Consumed: When parts are consumed to complete a work order. A Consumed
+transaction is created when a record is added to the Products Consumed
+related list on a work order or work order line item.
+
+
+### Standard Objects ProductMedia
+
+**Field Name** **Details**
+
+**•** Adjusted: When there’s a discrepancy or a change in consumption. An
+Adjusted transaction is created when a product item’s Quantity on Hand is
+edited, a product consumed is updated or delete, or a product transfer is
+deleted.
+
+**•** Transferred: When parts are transferred between locations.
+
+Associated Objects
+
+This object has these associated objects. Unless noted, they’re available in the same API version as this object.
+
+**ProductItemTransactionChangeEvent**
+
+Change events are available for the object.
+
+**ProductItemTransactionFeed**
+
+Feed tracking is available for the object.
+
+**ProductItemTransactionHistory**
+
+History is available for tracked fields of the object.
+
+### ProductMedia
+
+Represents the rich media, including images and attachments, that can be added to products.This object is available in API version 49.0
+and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+You must have the B2B Commerce license and a CMS workspace to access product media.
+
+Fields
+
+**Field** **Details**
+
+```
+CurrencyIsoCode
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+
+The default value is `USD` . Possible values are:
+
+**•** `USD` —U.S. Dollar
+
+
+Standard Objects ProductMedia
+
+**Field** **Details**
+
+```
+ElectronicMediaGroupId
+
+ElectronicMediaId
+
+LastReferencedDate
+
+LastViewedDate
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+Unique ID of the media group.
+
+This field is a relationship field.
+
+**Relationship Name**
+ElectronicMediaGroup
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ElectronicMediaGroup
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+Unique ID of the media record.
+
+This field is a polymorphic relationship field.
+
+**Relationship Name**
+ElectronicMedia
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ManagedContent, ManagedContentInfo
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp for when the current user last viewed a record related to this record.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects ProductMedia
+
+**Field** **Details**
+
+**Description**
+The timestamp for when the current user last viewed this record. If this value is null, this
+record might only have been referenced ( `LastReferencedDate` ) and not viewed.
+
+```
+Name
+
+ProductId
+
+SortOrder
+
+```
+
+Associated Objects
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+Name of the media.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The ID of the product that the media is associated with.
+
+This field is a relationship field.
+
+**Relationship Name**
+Product
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Product2
+
+**Type**
+int
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The order that product media is displayed in.
+
+**ProductMediaChangeEvent (API version 57.0)**
+Change events are available for the object.
+
+**ProductMediaHistory on page 63**
+History is available for tracked fields of the object.
+
+**ProductMediaOwnerSharingRule on page 65**
+Sharing rules are available for the object.
+
+
+### Standard Objects ProgramProduct
+
+**ProductMediaShare on page 67**
+Sharing is available for the object.
+
+### ProgramProduct
+
+Represents a junction between Program and Product2. This will hold Product2 values related to a Program. This object is available in
+API version 58.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+This object is available only with the EAndU Cloud Program Access permission set.
+
+Fields
+
+**Field** **Details**
+
+```
+Name
+
+ProductId
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Sort, Update
+
+**Description**
+The name of the ProgramProduct object.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The Product2 object associated with the Program.
+
+This field is a relationship field.
+
+**Relationship Name**
+Product
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Product2
+
+
+Standard Objects ProgramProduct
+
+**Field** **Details**
+
+```
+ProgramId
+
+Status
+
+```
+
+Associated Objects
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The Program parent object associated with the record.
+
+This field is a relationship field.
+
+**Relationship Name**
+Program
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Program
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Specifies the status of the ProgramProduct object.
+
+Possible values are:
+
+**•** `Active`
+
+**•** `Inactive`
+
+**•** `Pending For Approval`
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+**[ProgramProductChangeEvent](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_change_event.htm)**
+
+Change events are available for the object.
+
+**[ProgramProductFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
+
+Feed tracking is available for the object.
+
+**[ProgramProductHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
+
+History is available for tracked fields of the object.
+
+**[ProgramProductOwnerSharingRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_ownersharingrule.htm)**
+
+Sharing rules are available for the object.
+
+**[ProgramProductShare](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_share.htm)**
+
+Sharing is available for the object.
+
+
+### Standard Objects ProductQuantityRule ProductQuantityRule
+
+Represents the relationship between a quantity rule and a product. This object assigns quantity rules to a product. This object is available
+in API version 51.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+The ProductQuantityRule object is available only if the B2B Commerce license or Automotive Cloud license is enabled.
+
+Fields
+
+**Field** **Details**
+
+```
+CurrencyIsoCode
+
+Name
+
+ProductId
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The ISO code for the currency that’s specified on the buyer’s account. This field is exposed
+in orgs that have multicurrency enabled. Default value is `USD` .
+
+Possible values are:
+
+**•** `EUR` —Euro
+
+**•** `USD` —U.S. Dollar
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+Name of the product quantity rule.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+ID of the product.
+
+This field is a relationship field.
+
+
+### Standard Objects ProductRelatedComponent
+
+**Field** **Details**
+
+**Relationship Name**
+### Product
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Product2
+
+```
+PurchaseQuantityRuleId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+ID of the related purchase quantity rule.
+
+This field is a relationship field.
+
+**Relationship Name**
+PurchaseQuantityRule
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+PurchaseQuantityRule
+
+### ProductRelatedComponent
+
+Represents a product that is included in a product bundle, a set, or a product and an add-on. This object is available in API version 57.0
+and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+In version 58.0 and later, this object is available when B2B Commerce, B2C Commerce, Industries Automotive, Industries EPC, or Subscription
+Management is enabled.
+
+In version 57.0, this object is available when B2B Commerce, B2C Commerce, or Industries Automotive is enabled.
+
+
+Standard Objects ProductRelatedComponent
+
+Fields
+
+**Details**
+
+```
+ChildProductId
+
+ChildProductRole
+
+ChildSellingModelId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The unique identifier of the associated product.
+
+This field is a relationship field. In a bundle relationship, this item is the child product.
+
+**Relationship Name**
+ChildProduct
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Product2
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+The position of the associated product in the relationship.
+
+Possible values are:
+
+**•** `AddOnComponent` —The child product is an add-on to another product. Available
+in API version 58.0 and later.
+
+**•** `BundleComponent` —The child product is a component in a bundle.
+
+**•** `SetComponent` —The child product is a component in a set.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The unique identifier of the associated product’s sales model.
+
+This field is a relationship field.
+
+**Relationship Name**
+ChildSellingModel
+
+**Relationship Type**
+Lookup
+
+
+Standard Objects ProductRelatedComponent
+
+**Details**
+
+**Refers To**
+ProductSellingModel
+
+```
+DoesBundlePriceIncludeChild
+
+IsComponentRequired
+
+IsDefaultComponent
+
+IsQuantityEditable
+
+LastReferencedDate
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether the bundle price includes the associated product’s price.
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether the associated product is required for configuring a bundle or set.
+
+The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether the associated product is part of the product bundle or set automatically,
+or can be added after the bundle’s or set’s creation.
+
+The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether you can edit the component’s quantity in the bundle or set after the
+bundle’s or set’s creation.
+
+The default value is `false` .
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects ProductRelatedComponent
+
+**Details**
+
+**Description**
+The timestamp when the current user last accessed this record indirectly, for example, through
+a list view or related record.
+
+```
+LastViewedDate
+
+MaxQuantity
+
+MinQuantity
+
+Name
+
+ParentProductId
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last viewed this record or list view. If this value is null,
+it’s possible that the user accessed this record or list view ( `LastReferencedDate` )
+without viewing it.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+The associated product’s allowed maximum quantity.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+The associated product’s allowed minimum quantity.
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+The name of the associated product.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The unique identifier of the main product around which the bundle or set is built.
+
+This field is a relationship field.
+
+
+Standard Objects ProductRelatedComponent
+
+**Details**
+
+**Relationship Name**
+ParentProduct
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Product2
+
+```
+ParentProductRole
+
+ParentSellingModelId
+
+ProductComponentGroupId
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+Indicates the position of the main product in the relationship.
+
+Possible values are:
+
+**•** `AddOn` —The main product is the add-on parent. Available in API version 58.0 and later.
+
+**•** `Bundle` —The main product is the bundle parent.
+
+**•** `Set`  - The main product is the set parent.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort
+
+**Description**
+The unique identifier of the main product’s sales model.
+
+This field is a relationship field.
+
+**Relationship Name**
+ParentSellingModel
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ProductSellingModel
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The unique identifier of the group of a product bundle or set. This group contains the
+associated products that can be included in the main product’s bundle or set.
+
+This field is a relationship field.
+
+
+Standard Objects ProductRelatedComponent
+
+**Details**
+
+**Relationship Name**
+ProductComponentGroup
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ProductComponentGroup
+
+```
+ProductRelationshipTypeId
+
+Quantity
+
+QuantityScaleMethod
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The unique identifier of the record that describes the relationship between the main and
+associated products.
+
+This field is a relationship field.
+
+**Relationship Name**
+ProductRelationshipType
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ProductRelationshipType
+
+**Type**
+double
+
+**Properties**
+Create, Defaulted on create, Filter, Nillable, Sort, Update
+
+**Description**
+The unit count of the associated product.
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The scaling method is used to calculate the associated product’s quantity based on changes
+made to the main product’s quantity in a transaction.
+
+Possible values are:
+
+**•** `Constant`  - The associated product’s quantity remains the same in relation to the
+main product’s quantity. For example, the main product has a quantity of one and the
+associated component has a quantity of one. If you increase the quantity of the main
+product to two, the associated component’s quantity remains at one.
+
+
+### Standard Objects ProductRelationshipType
+
+**Details**
+
+**•** `Proportional`                   - The associated product’s quantity increases or decreases based
+on the main product’s quantity. For example, the main component has a quantity of one
+and the associated product has a quantity of two. If you increase the quantity of the main
+product to two, the associated product’s quantity increases to four.
+
+The default value is `Proportional` .
+
+```
+Sequence
+
+```
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Determines the arrangement of the order products when configuring a bundle or set.
+
+### ProductRelationshipType
+
+Defines the relationship between two sales transaction items. For example, defines a relationship between a bundle and a bundle
+component. This object is available in API version 57.0 and later.
+
+Supported Calls
+
+`create()`, `describeLayout()`, `describeSObjects()`, `getUpdated()`, `query()`, `retrieve()`, `search()`,
+`update()`, `upsert()`
+
+Special Access Rules
+
+In version 58.0 and later, this object is available when B2B Commerce, B2C Commerce, or Subscription Management is enabled.
+
+In version 57.0, this object is available when B2B Commerce or B2C Commerce is enabled.
+
+Fields
+
+**Field** **Details**
+
+```
+AssociatedProductRoleCat
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The position category that the associated product plays in the relationship.
+
+Possible values are:
+
+**•** `AddOnComponent` —The associated product is an add-on.
+
+
+Standard Objects ProductRelationshipType
+
+**Field** **Details**
+
+**•** `BundleComponent`                   - The associated product is part of a bundle.
+
+**•** `SetComponent`                   - The associated product is part of a set.
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+MainProductRoleCat
+
+Name
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last accessed this record indirectly, for example, through
+a list view or related record.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last viewed this record or list view. If this value is null,
+the user might have only accessed this record or list view ( `LastReferencedDate` ), but
+not viewed it.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+The position category that the main product plays in the relationship.
+
+Possible values are:
+
+**•** `AddOn` —The parent of the add-on.
+
+**•** `Bundle` —The bundle parent.
+
+**•** `Set` —The set parent.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Sort, Update
+
+**Description**
+The name of the relationship between two product items.
+
+
+### Standard Objects ProductRequest ProductRequest
+
+Represents an order for a part or parts in field service.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+Field Service must be enabled.
+
+Authenticated external users can create and update ProductRequest objects.
+
+Fields
+
+**Field Name** **Details**
+
+```
+AccountId
+
+CaseId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The account associated with the product request.
+
+This is a relationship field.
+
+**Relationship Name**
+Account
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Account
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The case associated with the product request.
+
+This is a relationship field.
+
+**Relationship Name**
+Case
+
+
+Standard Objects ProductRequest
+
+**Field Name** **Details**
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Case
+
+```
+CurrencyIsoCode
+
+Description
+
+DestinationLocationId
+
+LastReferencedDate
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+Available only if the multicurrency feature is enabled. Contains the ISO code for
+any currency allowed by the organization. The label in the user interface is
+`Currency ISO Code` .
+
+**Type**
+textarea
+
+**Properties**
+Create, Nillable, Update
+
+**Description**
+A text field for details not recorded in the provided fields.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Where the product is delivered.
+
+This is a relationship field.
+
+**Relationship Name**
+DestinationLocation
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Location
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects ProductRequest
+
+**Field Name** **Details**
+
+**Description**
+The date when the product request was last modified. Its label in the user interface
+is Last Modified Date.
+
+```
+LastViewedDate
+
+NeedByDate
+
+OwnerId
+
+ProductRequestNumber
+
+ShipToAddress
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the product request was last viewed.
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Date the product must be delivered by.
+
+**Type**
+reference
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+The owner of the shipment.
+
+This is a polymorphic relationship field.
+
+**Relationship Name**
+Owner
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Group, User
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+An auto-assigned number that identifies the shipment.
+
+**Type**
+address
+
+
+Standard Objects ProductRequest
+
+**Field Name** **Details**
+
+**Properties**
+Filter, Nillable
+
+**Description**
+The address that the product is to be delivered to.
+
+```
+ShipToCity
+
+ShipToCountry
+
+ShipToCountryCode
+
+ShipToGeocodeAccuracy
+
+ShipToLatitude
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The city that the product is to be delivered to.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The country that the product is to be delivered to.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+A two letter uppercase country code conforming to the ISO 3166-1 alpha-2
+standard.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+
+The accuracy of the geocode for the shipping address.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+The latitude of the location where the product is to be delivered to.
+
+
+Standard Objects ProductRequest
+
+**Field Name** **Details**
+
+```
+ShipToLongitude
+
+ShipToPostalCode
+
+ShipToState
+
+ShipToStateCode
+
+ShipToStreet
+
+ShipmentType
+
+```
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+The longitude of the location where the product is to be delivered to.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The postal code of the address where the product is to be delivered to.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The name of the state where the product is to be delivered to.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+A two letter uppercase state code conforming to the ISO 3166-1 alpha-2 standard.
+
+**Type**
+textarea
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The street address where the product is to be delivered to.
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The type of shipment. The picklist includes the following values by default:
+
+
+Standard Objects ProductRequest
+
+**Field Name** **Details**
+
+**•** None
+
+**•** Rush
+
+**•** Overnight
+
+**•** Next Business Day
+
+**•** Pick Up
+
+```
+SourceLocationId
+
+Status
+
+WorkOrderId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The location the product is shipped from.
+
+This is a relationship field.
+
+**Relationship Name**
+SourceLocation
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Location
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Status of the product transfer.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The work order that the product request is related to.
+
+This is a relationship field.
+
+**Relationship Name**
+WorkOrder
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+WorkOrder
+
+
+### Standard Objects ProductRequestLineItem
+
+**Field Name** **Details**
+
+```
+WorkOrderLineItemId
+
+```
+
+Associated Objects
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The work order line item that the product request is related to.
+
+This is a relationship field.
+
+**Relationship Name**
+WorkOrderLineItem
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+WorkOrderLineItem
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+**ProductRequestChangeEvent (API version 48.0)**
+Change events are available for the object.
+
+**ProductRequestFeed**
+
+Feed tracking is available for the object.
+
+**ProductRequestHistory**
+
+History is available for tracked fields of the object.
+
+**ProductRequestOwnerSharingRule**
+
+Sharing rules are available for the object.
+
+**ProductRequestShare**
+
+Sharing is available for the object.
+
+### ProductRequestLineItem
+
+Represents a request for a part in field service. Product request line items are components of product requests.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
+
+
+Standard Objects ProductRequestLineItem
+
+Special Access Rules
+
+Field Service must be enabled. You can't use product request line item as a master in an master detail relationship (through a custom
+field) with a custom object with data.
+
+Fields
+
+**Field Name** **Details**
+
+```
+AccountId
+
+CareProgramEnrolleeId
+
+CaseId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The account associated with the product request line item.
+
+This is a relationship field.
+
+**Relationship Name**
+Account
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Account
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The ID of the care program enrollee associated with the product request line
+item. This field is available from API version 49.0 and later.
+
+This is a relationship field.
+
+**Relationship Name**
+CareProgramEnrollee
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+CareProgramEnrollee
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+
+Standard Objects ProductRequestLineItem
+
+**Field Name** **Details**
+
+**Description**
+The case associated with the product request line item.
+
+This is a relationship field.
+
+**Relationship Name**
+Case
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Case
+
+```
+Description
+
+DestinationLocationId
+
+LastReferencedDate
+
+LastViewedDate
+
+```
+
+**Type**
+textarea
+
+**Properties**
+Create, Nillable, Update
+
+**Description**
+
+Details not recorded in the provided fields.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Where the product is delivered.
+
+This is a relationship field.
+
+**Relationship Name**
+DestinationLocation
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Location
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last interacted with this record, directly or
+indirectly.
+
+**Type**
+dateTime
+
+
+Standard Objects ProductRequestLineItem
+
+**Field Name** **Details**
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last viewed this record or list view. If this
+value is null, it’s possible that the user only accessed this record or list view
+( `LastReferencedDate` ), but not viewed it.
+
+```
+NeedByDate
+
+ParentId
+
+Product2Id
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Date the product must be delivered by.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The product request that the line item belongs to.
+
+This is a relationship field.
+
+**Relationship Name**
+Parent
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+ProductRequest
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The product associated with the product request line item.
+
+This is a relationship field.
+
+**Relationship Name**
+Product2
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Product2
+
+
+Standard Objects ProductRequestLineItem
+
+**Field Name** **Details**
+
+```
+ProductRequestLineItemNumber
+
+QuantityRequested
+
+QuantityUnitOfMeasure
+
+ShipToAddress
+
+ShipToCity
+
+ShipToCountry
+
+```
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+(Read Only) An auto-assigned number that identifies the product request line
+item.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Sort, Update
+
+**Description**
+The amount requested.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Units of the requested product; for example, grams, liters, or units. The picklist
+values can be customized.
+
+**Type**
+address
+
+**Properties**
+Filter, Nillable
+
+**Description**
+The physical address where the product is needed.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The city of the address where the product is needed.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+
+Standard Objects ProductRequestLineItem
+
+**Field Name** **Details**
+
+**Description**
+The country of the address where the product is needed.
+
+```
+ShipToGeocodeAccuracy
+
+ShipToLatitude
+
+ShipToLongitude
+
+ShipToPostalCode
+
+ShipToState
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+Accuracy level of the geocode for the address where the product is needed. See
+Compound Field Considerations and Limitations for details on geolocation
+compound fields. This field is available in the API only.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Used with Longitude to specify the precise geolocation of the address where the
+product is needed. Acceptable values are numbers between –90 and 90 with up
+to 15 decimal places. See Compound Field Considerations and Limitations for
+details on geolocation compound fields. This field is available in the API only.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Used with Latitude to specify the precise geolocation of the address where the
+product is needed. Acceptable values are numbers between –180 and 180 with
+up to 15 decimal places. See Compound Field Considerations and Limitations
+for details on geolocation compound fields. This field is available in the API only.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The postal code of the address where the product is needed.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+
+Standard Objects ProductRequestLineItem
+
+**Field Name** **Details**
+
+**Description**
+The state of the address where the product is needed.
+
+```
+ShipToStreet
+
+ShipmentType
+
+SourceLocationId
+
+Status
+
+```
+
+**Type**
+textarea
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The street of the address where the product is needed.
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The type of shipment. The picklist includes the following values, which can be
+customized:
+
+**•** `Rush`
+
+**•** `Overnight`
+
+**•** `Next Business Day`
+
+**•** `Pick Up`
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Where the product is at the time of the request.
+
+This is a relationship field.
+
+**Relationship Name**
+SourceLocation
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Location
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
+
+
+Standard Objects ProductRequestLineItem
+
+**Field Name** **Details**
+
+**Description**
+The status of the shipment. The picklist includes the following values, which can
+be customized:
+
+**•** `Draft`
+
+**•** `Submitted`
+
+**•** `Received`
+
+```
+WorkOrderId
+
+WorkOrderLineItemId
+
+```
+
+Associated Objects
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The work order for which the product is needed.
+
+This is a relationship field.
+
+**Relationship Name**
+WorkOrder
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+WorkOrder
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The work order line item for which the product is needed.
+
+This is a relationship field.
+
+**Relationship Name**
+WorkOrderLineItem
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+WorkOrderLineItem
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+
+### Standard Objects ProductRequired
+
+**ProductRequestLineItemChangeEvent (API version 48.0)**
+Change events are available for the object.
+
+**ProductRequestLineItemFeed**
+
+Feed tracking is available for the object.
+
+**ProductRequestLineItemHistory**
+
+History is available for tracked fields of the object.
+
+### ProductRequired
+
+Represents a product that is needed to complete a work order or work order line item in field service.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+Field Service must be enabled.
+
+Fields
+
+**Field Name** **Details**
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+ParentRecordId
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the product required was last modified. Its label in the user
+interface is Last Modified Date.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the product required was last viewed.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+
+Standard Objects ProductRequired
+
+**Field Name** **Details**
+
+**Description**
+The work order or work order line item that the product is required for.
+
+This is a polymorphic relationship field.
+
+**Relationship Name**
+ParentRecord
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Visit, WorkOrder, WorkOrderLineItem, WorkType
+
+```
+ParentRecordType
+
+Product2Id
+
+ProductName
+
+ProductRequiredNumber
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Indicates whether the parent record is a work order or a work order line item.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The required product.
+
+This is a relationship field.
+
+**Relationship Name**
+Product2
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Product2
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The name of the product required.
+
+**Type**
+string
+
+
+Standard Objects ProductRequired
+
+**Field Name** **Details**
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+(Read only) Auto-generated number identifying the product required.
+
+```
+QuantityRequired
+
+QuantityUnitOfMeasure
+
+```
+
+Usage
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Quantity required of the product.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Units of the required product; for example, kilograms or liters. Quantity Unit of
+Measure picklist values are inherited from the Quantity Unit of Measure field on
+products.
+
+Required products can be added to work types, work orders, and work order line items to ensure that the assigned service resource
+arrives with the right equipment.
+
+Adding required products to work types saves you time and keeps your business processes consistent. Work orders and work order line
+items inherit their work type’s required products. For example, if all light bulb replacement jobs require a ladder and a light bulb, add
+the ladder and light bulb as required products to your Light Bulb Replacement work type. When it’s time to create a work order for a
+customer’s light bulb replacement, applying that work type to the work order adds the required products.
+
+Associated Objects
+
+This object has the following associated objects. Unless noted, they are available in the same API version as this object.
+
+**ProductRequiredChangeEvent**
+
+Change events are available for the object.
+
+**ProductRequiredFeed**
+
+Feed tracking is available for the object.
+
+**ProductRequiredHistory**
+
+History is available for tracked fields of the object.
+
+
+### Standard Objects ProductSellingModel ProductSellingModel
+
+Defines one method by which a product can be sold; for example, as a one-time sale, an evergreen subscription, or a term-defined
 subscription. If the product is sold on subscription, this object defines the subscription’s term. A product can have multiple product
 selling models. This object is available in API version 55.0 and later.
 
@@ -11,9 +2514,6 @@ Special Access Rules
 This object is available with Revenue Cloud and Subscription Management. This object is available for Commerce when the Subscriptions
 (Beta) permission is enabled.
 
-
-Standard Objects ProductSellingModel
-
 Fields
 
 **Field** **Details**
@@ -24,8 +2524,6 @@ Name
 PricingTerm
 
 PricingTermUnit
-
-SellingModelType
 
 ```
 
@@ -61,6 +2559,11 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
+
+Standard Objects ProductSellingModel
+
+**Field** **Details**
+
 **Description**
 The unit of time used to define the pricing term. Used with `PricingTerm` to define the
 length of the pricing term. For example, if this field is `Months` and `PricingTerm` is 1,
@@ -71,6 +2574,13 @@ Possible values are:
 **•** `Annual` —UI label is `Years`
 
 **•** `Months`
+
+```
+SellingModelType
+
+Status
+
+```
 
 **Type**
 picklist
@@ -84,11 +2594,6 @@ subscription with a defined term.
 
 Possible values are:
 
-
-### Standard Objects ProductSellingModelOption
-
-**Field** **Details**
-
 **•** `Evergreen` —A subscription without an end date. An evergreen subscription continues
 until the customer affirmatively cancels it.
 
@@ -98,11 +2603,6 @@ until the customer affirmatively cancels it.
 for a specified time period. When the term ends, the subscription ends.
 
 The default value is `OneTime` .
-
-```
-Status
-
-```
 
 **Type**
 picklist
@@ -127,7 +2627,8 @@ back to draft.
 
 The default value is `Draft` .
 
-### ProductSellingModelOption
+
+### Standard Objects ProductSellingModelOption ProductSellingModelOption
 
 A junction object between Product Selling Model and Product2. This object is available in API version 55.0 and later.
 
@@ -141,9 +2642,6 @@ Special Access Rules
 This object is available when Subscription Management or Commerce Subscriptions is enabled. Some fields require Industries EPC to
 be enabled.
 
-
-Standard Objects ProductSellingModelOption
-
 Fields
 
 **Field** **Details**
@@ -156,10 +2654,6 @@ DisplayName
 Increment
 
 IsDefault
-
-LastReferencedDate
-
-LastViewedDate
 
 ```
 
@@ -196,11 +2690,29 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
+
+Standard Objects ProductSellingModelOption
+
+**Field** **Details**
+
 **Description**
 Indcates the default product selling model for a product. Setting a default is optional. A
 product can only have one default product selling model.
 
 The default value is `false` . This field requires Industries EPC.
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+Maximum
+
+Minimum
+
+Name
+
+```
 
 **Type**
 dateTime
@@ -215,28 +2727,12 @@ or a list view.
 **Type**
 dateTime
 
-
-Standard Objects ProductSellingModelOption
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The timestamp when the current user last viewed this record or list view. If this value is null,
 the user might have only accessed this record or list view but not viewed it.
-
-```
-Maximum
-
-Minimum
-
-Name
-
-Product2Id
-
-```
 
 **Type**
 int
@@ -265,6 +2761,20 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Description**
 The name of the product selling model.
 
+
+Standard Objects ProductSellingModelOption
+
+**Field** **Details**
+
+```
+Product2Id
+
+ProductSellingModelId
+
+ProrationPolicyId
+
+```
+
 **Type**
 reference
 
@@ -284,18 +2794,6 @@ Lookup
 
 **Refers To**
 Product2
-
-
-### Standard Objects ProductServiceCampaign
-
-**Field** **Details**
-
-```
-ProductSellingModelId
-
-ProrationPolicyId
-
-```
 
 **Type**
 reference
@@ -335,6 +2833,11 @@ ProrationPolicy
 **Relationship Type**
 Lookup
 
+
+### Standard Objects ProductServiceCampaign
+
+**Field** **Details**
+
 **Refers To**
 ProrationPolicy
 
@@ -347,9 +2850,6 @@ Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects ProductServiceCampaign
 
 Special Access Rules
 
@@ -365,10 +2865,6 @@ Description
 EndDate
 
 LastReferencedDate
-
-LastViewedDate
-
-OwnerId
 
 ```
 
@@ -399,6 +2895,24 @@ Filter, Nillable, Sort
 **Description**
 The date and time that the asset was last modified. The UI label is Last Modified Date.
 
+
+Standard Objects ProductServiceCampaign
+
+**Field** **Details**
+
+```
+LastViewedDate
+
+OwnerId
+
+Priority
+
+Product2Id
+
+ProductServiceCampaignName
+
+```
+
 **Type**
 dateTime
 
@@ -418,24 +2932,6 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 The product service campaign’s owner. By default, the product service campaign owner is
 the user who created the product service campaign record. The UI label is Product Service
 Campaign Owner.
-
-
-Standard Objects ProductServiceCampaign
-
-**Field** **Details**
-
-```
-Priority
-
-Product2Id
-
-ProductServiceCampaignName
-
-StartDate
-
-Status
-
-```
 
 **Type**
 picklist
@@ -474,6 +2970,22 @@ Create, Filter, Group, idLookup, Sort, Update
 **Description**
 The name of the product service campaign.
 
+
+Standard Objects ProductServiceCampaign
+
+**Field** **Details**
+
+```
+StartDate
+
+Status
+
+StatusCategory
+
+Type
+
+```
+
 **Type**
 date
 
@@ -495,11 +3007,6 @@ can be customized:
 
 **•** `New` —Product service campaign created, but there hasn’t yet been any activity.
 
-
-Standard Objects ProductServiceCampaign
-
-**Field** **Details**
-
 **•** `In Progress` —Product service campaign has begun.
 
 **•** `On Hold` —Work is paused.
@@ -511,15 +3018,6 @@ Standard Objects ProductServiceCampaign
 **•** `Closed` —All work and associated activity is complete.
 
 **•** `Canceled` —Work is canceled, typically before any work began.
-
-```
-StatusCategory
-
-Type
-
-WorkTypeId
-
-```
 
 **Type**
 picklist
@@ -543,6 +3041,11 @@ picklist
 **Properties**
 Create, Filter, Group, Sort, Update
 
+
+### Standard Objects ProductServiceCampaignItem
+
+**Field** **Details**
+
 **Description**
 The type of the product service campaign. The picklist includes the following values, which
 can be customized:
@@ -555,6 +3058,13 @@ can be customized:
 
 **•** `Upgrade` —The asset needs updating.
 
+```
+WorkTypeId
+
+```
+
+Associated Objects
+
 **Type**
 reference
 
@@ -565,11 +3075,6 @@ Create, Filter, Group, Nillable, Sort, Update
 The work type associated with the product service campaign. A customer uses this field as
 a guide when setting work type for work orders for the product service campaign.
 `Duration`, `Duration Type`, and required skills.
-
-
-### Standard Objects ProductServiceCampaignItem
-
-Associated Objects
 
 This object has the following associated objects. Unless noted, they are available in the same API version as this object.
 
@@ -602,6 +3107,9 @@ Special Access Rules
 
 Field Service must be enabled.
 
+
+Standard Objects ProductServiceCampaignItem
+
 Fields
 
 **Field** **Details**
@@ -610,6 +3118,14 @@ Fields
 AssetId
 
 LastReferencedDate
+
+LastViewedDate
+
+Product2Id
+
+ProductServiceCampaignId
+
+ProductServiceCampaignItemNumber
 
 ```
 
@@ -631,24 +3147,6 @@ Filter, Nillable, Sort
 
 **Description**
 The date and time that the asset was last modified. Its UI label is Last Modified Date.
-
-
-Standard Objects ProductServiceCampaignItem
-
-**Field** **Details**
-
-```
-LastViewedDate
-
-Product2Id
-
-ProductServiceCampaignId
-
-ProductServiceCampaignItemNumber
-
-Status
-
-```
 
 **Type**
 dateTime
@@ -681,11 +3179,25 @@ Required. The item’s parent product service campaign record.
 **Type**
 string
 
+
+Standard Objects ProductServiceCampaignItem
+
+**Field** **Details**
+
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
 **Description**
 The ID of the product service campaign item.
+
+```
+Status
+
+StatusCategory
+
+```
+
+Associated Objects
 
 **Type**
 picklist
@@ -707,22 +3219,10 @@ which can be customized:
 
 **•** `Cannot Complete` —Product service campaign item couldn’t be completed.
 
-
-### Standard Objects ProductServiceCampaignItemStatus
-
-**Field** **Details**
-
 **•** `Closed` —All product service campaign item and associated activity is complete.
 
 **•** `Canceled` —Product service campaign item is canceled, typically before any work
 began.
-
-```
-StatusCategory
-
-```
-
-Associated Objects
 
 **Type**
 picklist
@@ -750,6 +3250,9 @@ Feed tracking is available for the object.
 
 History is available for tracked fields of the object.
 
+
+### Standard Objects ProductServiceCampaignItemStatus
+
 **ProductServiceCampaignItemOwnerSharingRule**
 
 Sharing rules are available for the object.
@@ -770,9 +3273,6 @@ Special Access Rules
 
 Field Service must be enabled.
 
-
-Standard Objects ProductServiceCampaignItemStatus
-
 Fields
 
 **Field** **Details**
@@ -783,10 +3283,6 @@ ApiName
 IsDefault
 
 MasterLabel
-
-SortOrder
-
-StatusCode
 
 ```
 
@@ -818,6 +3314,20 @@ Filter, Group, Nillable, Sort
 **Description**
 The label for the picklist value in the UI.
 
+
+### Standard Objects ProductServiceCampaignStatus
+
+**Field** **Details**
+
+```
+SortOrder
+
+StatusCode
+
+```
+
+Usage
+
 **Type**
 int
 
@@ -836,11 +3346,6 @@ Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
 **Description**
 The status category that the value corresponds to. The Status Category field has seven values
 that are identical to the default Status values.
-
-
-### Standard Objects ProductServiceCampaignStatus
-
-Usage
 
 The Status field on product service campaign items comes with the following values:
 
@@ -875,6 +3380,9 @@ Supported Calls
 
 `describeSObjects()`, `query()`, `retrieve()`
 
+
+Standard Objects ProductServiceCampaignStatus
+
 Special Access Rules
 
 Field Service must be enabled.
@@ -887,6 +3395,12 @@ Fields
 ApiName
 
 IsDefault
+
+MasterLabel
+
+SortOrder
+
+StatusCode
 
 ```
 
@@ -902,28 +3416,12 @@ The API name of the status value.
 **Type**
 boolean
 
-
-Standard Objects ProductServiceCampaignStatus
-
-**Field** **Details**
-
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
 **Description**
 Indicates that the status value is the default status on product service campaigns when
 `true` . Only one status value can be the default.
-
-```
-MasterLabel
-
-SortOrder
-
-StatusCode
-
-```
-
-Usage
 
 **Type**
 string
@@ -953,6 +3451,11 @@ Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
 The status category that the value corresponds to. The Status Category field has seven values
 that are identical to the default Status values.
 
+
+### Standard Objects ProductTransfer
+
+Usage
+
 The Status field on product service campaigns comes with the following values:
 
 **•** New—Product service campaign created, but there hasn’t been any activity.
@@ -971,9 +3474,6 @@ The Status field on product service campaigns comes with the following values:
 
 The ProductServiceCampaignStatus object corresponds to the Status field. Adding a value to the Status field—for example, Canceled
 By Supplier—creates a product service campaign status record, and vice versa.
-
-
-### Standard Objects ProductTransfer
 
 Note: Product service campaigns also come with a Status Category field whose values are identical to the default status values.
 If you create custom status values, you must indicate which category it belongs to. For example, if you create a _`Customer`_
@@ -1017,6 +3517,11 @@ Details not recorded in the provided fields.
 **Type**
 reference
 
+
+Standard Objects ProductTransfer
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -1034,11 +3539,6 @@ Lookup
 **Refers To**
 Location
 
-
-Standard Objects ProductTransfer
-
-**Field Name** **Details**
-
 ```
 ExpectedPickupDate
 
@@ -1047,8 +3547,6 @@ IsReceived
 LastReferencedDate
 
 LastViewedDate
-
-OwnerId
 
 ```
 
@@ -1089,6 +3587,20 @@ Filter, Nillable, Sort
 **Description**
 The date when the product request was last viewed.
 
+
+Standard Objects ProductTransfer
+
+**Field Name** **Details**
+
+```
+OwnerId
+
+Product2Id
+
+Product2TransferRecordMode
+
+```
+
 **Type**
 reference
 
@@ -1106,22 +3618,8 @@ Owner
 **Relationship Type**
 Lookup
 
-
-Standard Objects ProductTransfer
-
-**Field Name** **Details**
-
 **Refers To**
 Group, User
-
-```
-Product2Id
-
-Product2TransferRecordMode
-
-ProductRequestId
-
-```
 
 **Type**
 reference
@@ -1162,11 +3660,25 @@ receiving.
 **Relationship Name**
 Product2.TransferRecordMode
 
+
+Standard Objects ProductTransfer
+
+**Field Name** **Details**
+
 **Relationship Type**
 Lookup
 
 **Refers To**
 Product2.TransferRecordMode
+
+```
+ProductRequestId
+
+ProductRequestLineItemId
+
+ProductTransferNumber
+
+```
 
 **Type**
 reference
@@ -1176,11 +3688,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 Lookup field for the product request associated with the product transfer.
-
-
-Standard Objects ProductTransfer
-
-**Field Name** **Details**
 
 This is a relationship field.
 
@@ -1192,17 +3699,6 @@ Lookup
 
 **Refers To**
 ProductRequest
-
-```
-ProductRequestLineItemId
-
-ProductTransferNumber
-
-QuantityReceived
-
-QuantitySent
-
-```
 
 **Type**
 reference
@@ -1233,6 +3729,24 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Description**
 An auto-assigned number that identifies the product transfer.
 
+
+Standard Objects ProductTransfer
+
+**Field Name** **Details**
+
+```
+QuantityReceived
+
+QuantitySent
+
+QuantityUnitOfMeasure
+
+ReceivedById
+
+ReturnOrderId
+
+```
+
 **Type**
 double
 
@@ -1248,24 +3762,8 @@ double
 **Properties**
 Create, Filter, Sort, Update
 
-
-Standard Objects ProductTransfer
-
-**Field Name** **Details**
-
 **Description**
 Amount of product sent from the source location.
-
-```
-QuantityUnitOfMeasure
-
-ReceivedById
-
-ReturnOrderId
-
-ReturnOrderLineItemId
-
-```
 
 **Type**
 picklist
@@ -1305,6 +3803,11 @@ Filter, Group, Nillable, Sort
 **Description**
 The return order associated with the product transfer.
 
+
+Standard Objects ProductTransfer
+
+**Field Name** **Details**
+
 This is a relationship field.
 
 **Relationship Name**
@@ -1316,13 +3819,17 @@ Lookup
 **Refers To**
 ReturnOrder
 
+```
+ReturnOrderLineItemId
+
+ShipmentExpectedDeliveryDate
+
+ShipmentId
+
+```
+
 **Type**
 reference
-
-
-Standard Objects ProductTransfer
-
-**Field Name** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -1340,15 +3847,6 @@ Lookup
 
 **Refers To**
 ReturnOrderLineItem
-
-```
-ShipmentExpectedDeliveryDate
-
-ShipmentId
-
-ShipmentStatus
-
-```
 
 **Type**
 dateTime
@@ -1376,24 +3874,17 @@ Shipment
 **Relationship Type**
 Lookup
 
-**Refers To**
-Shipment
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Nillable, Sort
-
-**Description**
-Lookup field for the shipment related to the product transfer.
-
 
 Standard Objects ProductTransfer
 
 **Field Name** **Details**
 
+**Refers To**
+Shipment
+
 ```
+ShipmentStatus
+
 ShipmentTrackingNumber
 
 ShipmentTrackingUrl
@@ -1403,6 +3894,15 @@ SourceLocationId
 SourceProductItemId
 
 ```
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Nillable, Sort
+
+**Description**
+Lookup field for the shipment related to the product transfer.
 
 **Type**
 string
@@ -1445,6 +3945,11 @@ Location
 **Type**
 reference
 
+
+### Standard Objects ProductWarrantyTerm
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -1459,11 +3964,6 @@ Lookup
 
 **Refers To**
 ProductItem
-
-
-### Standard Objects ProductWarrantyTerm
-
-**Field Name** **Details**
 
 ```
 Status
@@ -1507,6 +4007,9 @@ Sharing is available for the object.
 
 Defines the relationship between a product or product family and warranty term. This object is available in API version 50.0 and later.
 
+
+Standard Objects ProductWarrantyTerm
+
 Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
@@ -1519,23 +4022,6 @@ Fields
 ```
 CoveredProductFamily
 
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ProductWarrantyTerm
-
-**Field** **Details**
-
-**Description**
-The product family that the warranty term applies to.
-
-```
 CoveredProductId
 
 LastReferencedDate
@@ -1544,9 +4030,16 @@ LastViewedDate
 
 ProductWarrantyTermNumber
 
-WarrantyTermId
-
 ```
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The product family that the warranty term applies to.
 
 **Type**
 reference
@@ -1585,6 +4078,18 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Description**
 The identifier for this product warranty term.
 
+
+### Standard Objects Profile
+
+**Field** **Details**
+
+```
+WarrantyTermId
+
+```
+
+Associated Objects
+
 **Type**
 reference
 
@@ -1593,11 +4098,6 @@ Create, Filter, Group, Sort
 
 **Description**
 The ID of the warranty term.
-
-
-### Standard Objects Profile
-
-Associated Objects
 
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
@@ -1641,7 +4141,10 @@ Configuration permission is required.
 Starting in Winter ’21, only users with correct permissions can view profile names other than their own if the Profile Filtering setting is
 enabled.
 
-### Important: Profile names are also exposed when users with permissions to perform the following tasks take these actions:
+
+Standard Objects Profile
+
+Important: Profile names are also exposed when users with permissions to perform the following tasks take these actions:
 
 **•** Create a tab or record type with a wizard step that includes the assignment of tabs and record types to profiles.
 
@@ -1652,9 +4155,6 @@ enabled.
 **•** Administer an org as a delegated customer admin.
 
 **•** Administer an org as a delegated admin to view and assign profiles of the delegated group.
-
-
-Standard Objects Profile
 
 Fields
 
@@ -1668,10 +4168,6 @@ IsSsoEnabled
 LastReferencedDate
 
 LastViewedDate
-
-Name
-
-Permissions PermissionName
 
 ```
 
@@ -1714,6 +4210,22 @@ Filter, Nillable, Sort
 The timestamp for when the current user last viewed this profile. Available in API version 29.0
 and later.
 
+
+Standard Objects Profile
+
+**Field** **Details**
+
+```
+Name
+
+Permissions PermissionName
+
+UserLicenseId
+
+UserType
+
+```
+
 **Type**
 string
 
@@ -1726,11 +4238,6 @@ The name of the profile.
 **Type**
 boolean
 
-
-Standard Objects Profile
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Update
 
@@ -1740,13 +4247,6 @@ permission. The number of fields varies depending on the permissions for the org
 type.
 
 Tip: To get a list of available permissions in SOAP API, use `describeSObjects()` .
-
-```
-UserLicenseId
-
-UserType
-
-```
 
 **Type**
 reference
@@ -1780,6 +4280,11 @@ The category of user license. Each `UserType` is associated with one or more Use
 records. Each UserLicense is associated with one or more profiles. In API version 10.0 and later,
 valid values include:
 
+
+Standard Objects Profile
+
+**Field** **Details**
+
 **•** Standard: user license. This user type also includes Salesforce Platform and Salesforce
 Platform One user licenses. Label is **Standard** .
 
@@ -1795,11 +4300,6 @@ access the application through a Customer Portal. Label is **Customer Portal Use
 
 **•** PowerCustomerSuccess: user whose access is limited because they’re an org's customer
 and access the application through a Customer Portal. Label is **Customer Portal Manager** .
-
-
-Standard Objects Profile
-
-**Field** **Details**
 
 Users with this license type can view and edit data they directly own or data owned by or
 shared with users below them in the Customer Portal role hierarchy.
@@ -1845,6 +4345,9 @@ because it allows you to create empty profiles.
 You can also query the set of currently configured user profiles in your org. Your client application can use Profile objects to obtain valid
 profile IDs for use when querying or modifying users through the API.
 
+
+### Standard Objects ProfileSkill
+
 In the user interface, profiles can be used to assign user licenses from specific pools (Lightning Platform user license or Salesforce user
 license, for example). When users are reassigned to profiles with different license types, the number of available licenses in the old license
 type pool increases, one per user assignment updated. Also, the number of available licenses decreases by the same amount in the new
@@ -1856,8 +4359,7 @@ Overview of Salesforce Objects and Fields
 
 PermissionSet
 
-
-### Standard Objects ProfileSkill ProfileSkill
+### ProfileSkill
 
 Represents a profile skill, which describes a user’s professional knowledge. This is a global record for the organization, and users are
 associated through the ProfileSkillUser object.
@@ -1879,8 +4381,6 @@ Description
 LastReferencedDate
 
 LastViewedDate
-
-Name
 
 ```
 
@@ -1909,25 +4409,18 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-The timestamp indicating when the current user last viewed this profile skill.
-Available in API version 29.0 and later.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
 
 Standard Objects ProfileSkill
 
 **Field Name** **Details**
 
 **Description**
-The name of the profile skill.
+The timestamp indicating when the current user last viewed this profile skill.
+Available in API version 29.0 and later.
 
 ```
+Name
+
 OwnerId
 
 UserCount
@@ -1935,6 +4428,15 @@ UserCount
 ```
 
 Usage
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Sort, Update
+
+**Description**
+The name of the profile skill.
 
 **Type**
 reference
@@ -1973,6 +4475,9 @@ Associated Objects
 
 This object has the following associated objects. Unless noted, they are available in the same API version as this object.
 
+
+### Standard Objects ProfileSkillEndorsement
+
 **ProfileSkillFeed (API version 34.0)**
 Feed tracking is available for the object.
 
@@ -1988,8 +4493,7 @@ Sharing rules are available for the object.
 
 Sharing is available for the object.
 
-
-### Standard Objects ProfileSkillEndorsement ProfileSkillEndorsement
+### ProfileSkillEndorsement
 
 Represents a detail relationship of ProfileSkillUser. An endorsement of a profile skill shows approval and support of another user’s publicly
 declared skill.
@@ -2007,8 +4511,6 @@ Fields
 Name
 
 ProfileSkillUserId
-
-UserId
 
 ```
 
@@ -2041,6 +4543,18 @@ Lookup
 **Refers To**
 ProfileSkillUser
 
+
+### Standard Objects ProfileSkillShare
+
+**Field Name** **Details**
+
+```
+UserId
+
+```
+
+Usage
+
 **Type**
 reference
 
@@ -2052,11 +4566,6 @@ The user ID of the person giving the endorsement.
 
 This is a relationship field.
 
-
-### Standard Objects ProfileSkillShare
-
-**Field Name** **Details**
-
 **Relationship Name**
 User
 
@@ -2065,8 +4574,6 @@ Lookup
 
 **Refers To**
 User
-
-Usage
 
 Use the ProfileSkillEndorsement object to query about a single endorsement given to a user about a specific skill. Users can’t endorse
 themselves, they can only be endorsed by others unless they are administrators with the “Modify All Data” permission.
@@ -2097,6 +4604,9 @@ Note: While Salesforce currently maintains read-only sharing entries for multipl
 storing certain share records to improve performance. As a best practice, don’t create customizations that rely on the availability
 of these sharing entries. Any changes to sharing behavior will be communicated before they occur.
 
+
+Standard Objects ProfileSkillShare
+
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
@@ -2105,9 +4615,6 @@ Fields
 
 The properties available for some fields depend on the default organization-wide sharing settings. The properties listed are true for the
 default settings of such fields.
-
-
-Standard Objects ProfileSkillShare
 
 **Field Name** **Details**
 
@@ -2165,6 +4672,11 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort
 
+
+### Standard Objects ProfileSkillUser
+
+**Field Name** **Details**
+
 **Description**
 Reason that this sharing entry exists. If you’re creating a sharing entry, the only
 permitted value is `Manual` . If no value is specified, the field defaults to `Manual` .
@@ -2178,11 +4690,6 @@ manually shared the ProfileSkill with them.
 
 **•** `Owner` —The User is the owner of the ProfileSkill or is in a role above the
 ProfileSkill owner in the role hierarchy.
-
-
-### Standard Objects ProfileSkillUser
-
-**Field Name** **Details**
 
 ```
 UserOrGroupId
@@ -2223,12 +4730,21 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
 
+
+Standard Objects ProfileSkillUser
+
 Fields
 
 **Field Name** **Details**
 
 ```
 EndorsementCount
+
+Name
+
+ProfileSkillId
+
+UserId
 
 ```
 
@@ -2240,22 +4756,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The number of endorsements.
-
-
-Standard Objects ProfileSkillUser
-
-**Field Name** **Details**
-
-```
-Name
-
-ProfileSkillId
-
-UserId
-
-```
-
-Usage
 
 **Type**
 string
@@ -2303,15 +4803,19 @@ User
 **Relationship Type**
 Lookup
 
+
+### Standard Objects ProgramRebateType
+
+**Field Name** **Details**
+
 **Refers To**
 User
+
+Usage
 
 Use this object to assign specific skills to specific users. ProfileSkillUser appears on the Overview tab on the Chatter profile page. Users
 can only create a skill mapping for themselves, they can’t create skill mappings for others unless they are administrators with the “Modify
 All Data” permission. Additionally, users can only edit this object if they are the context user and are not editing the `UserId` field.
-
-
-### Standard Objects ProgramRebateType
 
 Associated Objects
 
@@ -2343,10 +4847,6 @@ Fields
 ```
 AccrualRate
 
-AggregateObjectName
-
-BenefitQualifierField
-
 ```
 
 **Type**
@@ -2359,6 +4859,22 @@ Create, Filter, Nillable, Sort, Update
 
 The rate of accrual based on the value selected in the Measure Type field. For example, when
 the measure type is percent and you enter 10, the accrual rate is 10%.
+
+
+Standard Objects ProgramRebateType
+
+**Field** **Details**
+
+```
+AggregateObjectName
+
+BenefitQualifierField
+
+CalcObjectId
+
+CalculationBasis
+
+```
 
 **Type**
 picklist
@@ -2376,24 +4892,10 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
-
-Standard Objects ProgramRebateType
-
-**Field** **Details**
-
 **Description**
 
 The field on the aggregation object used to define thresholds for qualifying benefits (minimum
 or maximum).
-
-```
-CalcObjectId
-
-CalculationBasis
-
-CalculationMethod
-
-```
 
 **Type**
 reference
@@ -2431,6 +4933,22 @@ Possible values are:
 
 The default value is `Payout` .
 
+
+Standard Objects ProgramRebateType
+
+**Field** **Details**
+
+```
+CalculationMethod
+
+CalculationType
+
+ExecutionProcedureId
+
+FilterAction
+
+```
+
 **Type**
 picklist
 
@@ -2447,22 +4965,6 @@ Possible values are:
 **•** `Stepped`
 
 The default value is `Retrospective` .
-
-
-Standard Objects ProgramRebateType
-
-**Field** **Details**
-
-```
-CalculationType
-
-ExecutionProcedureId
-
-FilterAction
-
-FilterCriteria
-
-```
 
 **Type**
 picklist
@@ -2506,6 +5008,11 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
+
+Standard Objects ProgramRebateType
+
+**Field** **Details**
+
 **Description**
 Logical operator to apply between filter conditions.
 
@@ -2519,34 +5026,27 @@ Possible values are:
 
 **•** `NoConditionsMet` —No Conditions Are Met
 
-**Type**
-textarea
-
-**Properties**
-Nillable
-
-
-Standard Objects ProgramRebateType
-
-**Field** **Details**
-
-**Description**
-
-Holds the filter conditions in textual format. Used to define eligibility criteria for rebate
-qualification.
-
 ```
+FilterCriteria
+
 FilterLogic
 
 IsIntegratable
 
 LastReferencedDate
 
-LastViewedDate
-
-MeasureField
-
 ```
+
+**Type**
+textarea
+
+**Properties**
+Nillable
+
+**Description**
+
+Holds the filter conditions in textual format. Used to define eligibility criteria for rebate
+qualification.
 
 **Type**
 string
@@ -2581,6 +5081,24 @@ Filter, Nillable, Sort
 Date and the timestamp when the record was last referenced by the user. Useful for user
 activity tracking.
 
+
+Standard Objects ProgramRebateType
+
+**Field** **Details**
+
+```
+LastViewedDate
+
+MeasureField
+
+Name
+
+OwnerId
+
+ProductFilterType
+
+```
+
 **Type**
 dateTime
 
@@ -2597,27 +5115,11 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
-
-Standard Objects ProgramRebateType
-
-**Field** **Details**
-
 **Description**
 
 The aggregation object field used with measure type and benefit value to calculate the
 rebate amount. This is required for the Amount per Unit and Percentage of Revenue measure
 types.
-
-```
-Name
-
-OwnerId
-
-ProductFilterType
-
-RebateMeasureType
-
-```
 
 **Type**
 string
@@ -2653,6 +5155,11 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
+
+Standard Objects ProgramRebateType
+
+**Field** **Details**
+
 **Description**
 Specifies whether the rebate applies to included or excluded products.
 
@@ -2662,16 +5169,20 @@ Possible values are:
 
 **•** `IncludeProducts` —Include Products
 
+```
+RebateMeasureType
+
+RebateProgramId
+
+Status
+
+```
+
 **Type**
 picklist
 
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-
-Standard Objects ProgramRebateType
-
-**Field** **Details**
 
 **Description**
 Specifies the method to measure benefit payout.
@@ -2685,15 +5196,6 @@ Possible values are:
 **•** `FixedAmount` —Fixed Amount
 
 **•** `PercentageOfRevenue` —Percentage of Revenue
-
-```
-RebateProgramId
-
-Status
-
-UnitOfMeasureId
-
-```
 
 **Type**
 reference
@@ -2728,9 +5230,25 @@ Possible values are:
 
 **•** `Active`
 
+
+### Standard Objects Promotion
+
+**Field** **Details**
+
 **•** `Inactive`
 
 The default value is `Inactive` .
+
+```
+UnitOfMeasureId
+
+ValidityDuration
+
+ValidityDurationType
+
+### Promotion
+
+```
 
 **Type**
 reference
@@ -2743,25 +5261,11 @@ Identifies the unit of measure associated with the rebate type.
 
 This field is a relationship field.
 
-
-### Standard Objects Promotion
-
-**Field** **Details**
-
 **Relationship Name**
 UnitOfMeasure
 
 **Refers To**
 UnitOfMeasure
-
-```
-ValidityDuration
-
-ValidityDurationType
-
-### Promotion
-
-```
 
 **Type**
 int
@@ -2793,6 +5297,9 @@ The default value is `Years` .
 
 Represents a promotion for B2B or D2C stores. This object is available in API version 52.0 and later.
 
+
+Standard Objects Promotion
+
 Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
@@ -2801,9 +5308,6 @@ Supported Calls
 Special Access Rules
 
 Some of the fields on the Promotion object are available only if the B2B Commerce or D2C Commerce license is enabled.
-
-
-Standard Objects Promotion
 
 Fields
 
@@ -2817,8 +5321,6 @@ CurrencyIsoCode
 Description
 
 DiscountOrder
-
-DiscountRestriction
 
 ```
 
@@ -2863,6 +5365,11 @@ expensive products.
 
 Possible values are:
 
+
+Standard Objects Promotion
+
+**Field** **Details**
+
 **•** `LeastExpensive`
 
 **•** `MostExpensive`
@@ -2871,13 +5378,19 @@ The default value is `MostExpensive` .
 
 This field is available in API version 56.0 and later.
 
+```
+DiscountRestriction
+
+DisplayName
+
+EndDateTime
+
+ExclusivityType
+
+```
+
 **Type**
 picklist
-
-
-Standard Objects Promotion
-
-**Field** **Details**
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
@@ -2895,15 +5408,6 @@ Possible values are:
 The default value is `None` .
 
 This field is available in API version 56.0 and later.
-
-```
-DisplayName
-
-EndDateTime
-
-ExclusivityType
-
-```
 
 **Type**
 string
@@ -2936,20 +5440,20 @@ Possible values are:
 
 **•** `No`  - Can be combined with other promotions.
 
-**•** `Class`  - Can’t be combined with a promotion of the same class (product, order, or
-shipment), but allows for promotions of separate classes to be combined. For example,
-an order discount on top of a product discount.
-
-**•** `Global`  - Only promotion that can be applied to the order, regardless of class.
-
-The default value is `Class` .
-
-This field is available in API version 58.0 and later.
-
 
 Standard Objects Promotion
 
 **Field** **Details**
+
+**•** `Class`                   - Can’t be combined with a promotion of the same class (product, order, or
+shipment), but allows for promotions of separate classes to be combined. For example,
+an order discount on top of a product discount.
+
+**•** `Global`                   - Only promotion that can be applied to the order, regardless of class.
+
+The default value is `Class` .
+
+This field is available in API version 58.0 and later.
 
 ```
 IsActive
@@ -2959,8 +5463,6 @@ IsApproachingDiscountApplicable
 IsAutomatic
 
 IsCommercePromotion
-
-IsTiered
 
 ```
 
@@ -3010,18 +5512,31 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 **Description**
 Indicates if the promotion is a B2B Commerce promotion (true) or not (false).
 
+
+Standard Objects Promotion
+
+**Field** **Details**
+
 The default value is false.
+
+```
+IsTiered
+
+LastReferencedDate
+
+LastViewedDate
+
+MaximumUsageCount
+
+Name
+
+```
 
 **Type**
 boolean
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects Promotion
-
-**Field** **Details**
 
 **Description**
 Indicates whether the promotion uses promotion tiers (true) or not (false). This value can’t
@@ -3032,19 +5547,6 @@ The default value is false.
 A tiered promotion can have up to 10 associated tiers.
 
 This field is available in API version 57.0 and later.
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-MaximumUsageCount
-
-Name
-
-Objective
-
-```
 
 **Type**
 dateTime
@@ -3081,8 +5583,24 @@ string
 **Properties**
 Create, Filter, Group, idLookup, Sort, Update
 
+
+Standard Objects Promotion
+
+**Field** **Details**
+
 **Description**
 Name of the promotion.
+
+```
+Objective
+
+OwnerId
+
+PriorityNumber
+
+QualifierCriteria
+
+```
 
 **Type**
 textarea
@@ -3090,24 +5608,8 @@ textarea
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
-
-Standard Objects Promotion
-
-**Field** **Details**
-
 **Description**
 More information, if any, about the purpose of the promotion.
-
-```
-OwnerId
-
-PriorityNumber
-
-QualifierCriteria
-
-StartDateTime
-
-```
 
 **Type**
 reference
@@ -3153,27 +5655,20 @@ Possible values are:
 
 **•** `All`
 
+
+Standard Objects Promotion
+
+**Field** **Details**
+
 **•** `Any`
 
 The default value is 'All'.
 
 This field is available in API version 53.0 and later.
 
-**Type**
-dateTime
-
-
-Standard Objects Promotion
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Date and time when the promotion begins.
-
 ```
+StartDateTime
+
 TargetCriteria
 
 TermsAndConditions
@@ -3181,6 +5676,15 @@ TermsAndConditions
 ```
 
 Associated Objects
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Date and time when the promotion begins.
 
 **Type**
 picklist
@@ -8376,7 +10880,7 @@ Required. The SOQL query statement that determines which record changes trigger 
 to be sent to the channel.
 
 
-### Standard Objects QueuedExecutionEventLog
+### Standard Objects PushUpgradeCustomization
 
 **Field** **Details**
 
@@ -8397,6 +10901,92 @@ SEE ALSO:
 
 _[Streaming API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_streaming.meta/api_streaming/intro_stream.htm)_
 
+### PushUpgradeCustomization
+
+Customized push upgrades allow a package subscriber to block push upgrades to their org. Package developers control which subscribers
+can opt into customized push upgrades. Each push upgrade customization maps to a specific package and to a specific subscriber org.
+This object is available in API version 60.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
+`undelete()`, `update()`, `upsert()`
+
+Fields
+
+**Field** **Details**
+
+```
+CustomUpgradeType
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
+
+**Description**
+The type of push upgrade customization.
+
+Possible values are:
+
+**•** `BlockedBySubscriber` —Blocked By Subscriber
+
+**•** `None`
+
+The default value is `None` .
+
+
+### Standard Objects QueuedExecutionEventLog
+
+**Field** **Details**
+
+```
+HasRestrictionEnabled
+
+IsCustomUpgradeAllowed
+
+IsRestrictionOverridden
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether the subscriber org has blocked push upgrades.
+
+The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether the package developer has allowed a subscriber to opt into customized
+push upgrades.
+
+The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether customized push upgrades have been overridden by Salesforce Customer
+Support for the subscriber org.
+
+The default value is `false` .
+
 ### QueuedExecutionEventLog
 
 Queued Execution events contain details about queued executions—for example, batch Apex. This object is available in API version
@@ -8410,6 +11000,9 @@ Special Access Rules
 
 To access this object, you must have the View Event Log Object Data user permission.
 
+
+Standard Objects QueuedExecutionEventLog
+
 Fields
 
 **Field** **Details**
@@ -8418,6 +11011,12 @@ Fields
 ClientIp
 
 CpuTime
+
+DatabaseTotalTime
+
+LoginKey
+
+RequestIdentifier
 
 ```
 
@@ -8434,28 +11033,12 @@ a login from AppExchange) is shown as “Salesforce.com IP”.
 **Type**
 double
 
-
-Standard Objects QueuedExecutionEventLog
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The CPU time in milliseconds used to complete the request. This field indicates the amount
 of activity taking place in the app server layer.
-
-```
-DatabaseTotalTime
-
-LoginKey
-
-RequestIdentifier
-
-RequestStatus
-
-```
 
 **Type**
 double
@@ -8488,6 +11071,22 @@ Filter, Group, Nillable, Sort
 The unique ID of a single transaction. A transaction can contain one or more events. Each
 event in a given transaction has the same REQUEST_ID.
 
+
+Standard Objects QueuedExecutionEventLog
+
+**Field** **Details**
+
+```
+RequestStatus
+
+RunTime
+
+SessionKey
+
+Timestamp
+
+```
+
 **Type**
 string
 
@@ -8505,11 +11104,6 @@ an exception, this status is also returned.
 **•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no permission to view page, page
 took too long to render, page is read-only.
 
-
-Standard Objects QueuedExecutionEventLog
-
-**Field** **Details**
-
 **•** `U` —Undefined
 
 **•** `A` —Authorization Error
@@ -8520,19 +11114,6 @@ Visualforce page.
 **•** `N` —Not Found. 404 error.
 
 This field can have a blank value.
-
-```
-RunTime
-
-SessionKey
-
-Timestamp
-
-Uri
-
-UserIdentifier
-
-```
 
 **Type**
 double
@@ -8564,7 +11145,21 @@ Filter, Nillable, Sort
 **Description**
 The access time of Salesforce services in GMT.
 
+
+Standard Objects QueuedExecutionEventLog
+
+**Field** **Details**
+
 For example: `20130715233322.670` .
+
+```
+Uri
+
+UserIdentifier
+
+UserType
+
+```
 
 **Type**
 string
@@ -8580,11 +11175,6 @@ For example: `/home/home.jsp` .
 **Type**
 string
 
-
-### Standard Objects QueueRoutingConfig
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
@@ -8592,11 +11182,6 @@ Filter, Group, Nillable, Sort
 The 15-character ID of the user who’s using Salesforce services through the UI or the API.
 
 For example: `00530000009M943`
-
-```
-UserType
-
-```
 
 **Type**
 string
@@ -8631,6 +11216,11 @@ or data owned by or shared with users below them in the customer portal role hie
 **•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
 partners and typically access the application through a partner portal or site.
 
+
+### Standard Objects QueueRoutingConfig
+
+**Field** **Details**
+
 **•** `SelfService` —Users whose access is limited because they’re organization customers
 and access the application through a self-service portal.
 
@@ -8644,9 +11234,6 @@ Represents the settings that determine how work items are routed to agents. This
 Supported Calls
 
 `create()`, `delete()`, `query()`, `retrieve()`, `update()`
-
-
-Standard Objects QueueRoutingConfig
 
 Special Access Rules
 
@@ -8662,8 +11249,6 @@ Fields
 CapacityPercentage
 
 CapacityWeight
-
-DeveloperName
 
 ```
 
@@ -8693,11 +11278,27 @@ Create, Filter, Nillable, Sort, Update
 The amount of an agent’s capacity for work items that’s consumed by a work item from this
 service channel.
 
+
+Standard Objects QueueRoutingConfig
+
+**Field** **Details**
+
 For example, if an agent has a capacity of _`6`_, and cases are assigned a capacity weight of _`2`_,
 an agent can be assigned up to 3 cases before the agent is at capacity and can’t receive new
 work items. Voice calls must use the entire capacity weight.
 
 This field is available in API version 33.0 and later.
+
+```
+DeveloperName
+
+DropAdditionalSkillsTimeout
+
+IsAttributeBased
+
+Language
+
+```
 
 **Type**
 string
@@ -8713,11 +11314,6 @@ In managed packages, this field prevents naming conflicts on package installatio
 this field, a developer can change the object’s name in a managed package and the changes
 are reflected in a subscriber’s organization.
 
-
-Standard Objects QueueRoutingConfig
-
-**Field** **Details**
-
 When creating large sets of data, always specify a unique `DeveloperName` for each
 record. If no `DeveloperName` is specified, performance slows down while Salesforce
 generates one for each record.
@@ -8727,19 +11323,6 @@ view, group, sort, and filter this field.
 
 Only users with View DeveloperName OR View Setup and Configuration permission can
 view, group, sort, and filter this field.
-
-```
-DropAdditionalSkillsTimeout
-
-IsAttributeBased
-
-Language
-
-MasterLabel
-
-OverflowAssigneeId
-
-```
 
 **Type**
 int
@@ -8765,11 +11348,29 @@ Indicates whether this routing is attribute-based. Available in API version 45.0
 **Type**
 picklist
 
+
+Standard Objects QueueRoutingConfig
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
 **Description**
 The language of the presence status.
+
+```
+MasterLabel
+
+OverflowAssigneeId
+
+PausedCapacityPercentage
+
+PausedCapacityWeight
+
+PushTimeout
+
+```
 
 **Type**
 string
@@ -8786,26 +11387,8 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects QueueRoutingConfig
-
-**Field** **Details**
-
 **Description**
 The ID of the user or queue that’s set as the Overflow Assignee.
-
-```
-PausedCapacityPercentage
-
-PausedCapacityWeight
-
-PushTimeout
-
-RoutingModel
-
-RoutingPriority
-
-```
 
 **Type**
 percent
@@ -8835,9 +11418,25 @@ int
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+### Standard Objects Question
+
+**Field** **Details**
+
 **Description**
 The number of seconds set for push timeout. **0** is returned when push timeout isn’t enabled.
 Available in API version 36.0 and later.
+
+```
+RoutingModel
+
+RoutingPriority
+
+ServiceChannelId
+
+### Question
+
+```
 
 **Type**
 picklist
@@ -8855,22 +11454,10 @@ int
 **Properties**
 Create, Filter, Group, Sort, Update
 
-
-### Standard Objects Question
-
-**Field** **Details**
-
 **Description**
 The priority in which work items from the service channels that are related to this routing
 configuration are routed to agents. Work items from routing configurations that have lower
 priority values (for example, _`0`_ ) are routed to agents first.
-
-```
-ServiceChannelId
-
-### Question
-
-```
 
 **Type**
 reference
@@ -8889,6 +11476,9 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
 
+
+Standard Objects Question
+
 Special Access Rules
 
 This object is only available if the Answers permission and AnswersEnabled preference or PortalFeed permission and PortalFeedEnabled
@@ -8902,6 +11492,12 @@ Fields
 BestReplyId
 
 BestReplySelectedById
+
+Body
+
+CommunityId
+
+CreatorFullPhotoUrl
 
 ```
 
@@ -8918,11 +11514,6 @@ the user interface to identify the best answer for a question.
 **Type**
 reference
 
-
-Standard Objects Question
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
@@ -8932,17 +11523,6 @@ The ID of the user who selected the best answer to the question.
 This field is available in API version 24.0 and later. In API version 24.0 through version
 29.0, you must update this field using the UI. In API version 30.0 and later, you can
 update this field using the API.
-
-```
-Body
-
-CommunityId
-
-CreatorFullPhotoUrl
-
-CreatorName
-
-```
 
 **Type**
 textarea
@@ -8966,6 +11546,11 @@ change the zone ID associated with that question.
 **Type**
 string
 
+
+Standard Objects Question
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
@@ -8973,6 +11558,17 @@ Filter, Group, Nillable, Sort
 
 URL of the user’s profile photo from the feed. Chatter Answers must be enabled to
 view this field. This field is available in API version 26.0 and later.
+
+```
+CreatorName
+
+CreatorSmallPhotoUrl
+
+HasSingleFieldForContent
+
+LastReferencedDate
+
+```
 
 **Type**
 string
@@ -8985,24 +11581,6 @@ Filter, Group, Nillable, Sort
 Name of the user who posted the question or reply. Only the first name of internal
 users (agents) appears to portal users in the feed. Chatter Answers must be enabled
 to view this field. This field is available in API version 26.0 and later.
-
-
-Standard Objects Question
-
-**Field** **Details**
-
-```
-CreatorSmallPhotoUrl
-
-HasSingleFieldForContent
-
-LastReferencedDate
-
-LastReplyDate
-
-LastReplyId
-
-```
 
 **Type**
 string
@@ -9041,8 +11619,26 @@ date
 **Properties**
 Filter, Nillable, Sort, Update
 
+
+Standard Objects Question
+
+**Field** **Details**
+
 **Description**
 The timestamp for when the current user last viewed a record related to this record.
+
+```
+LastReplyDate
+
+LastReplyId
+
+LastViewedDate
+
+MostReportAbusesOnReply
+
+NumReplies
+
+```
 
 **Type**
 dateTime
@@ -9059,26 +11655,8 @@ reference
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects Question
-
-**Field** **Details**
-
 **Description**
 Read only. The ID of the last reply (child Reply object) posted to the question.
-
-```
-LastViewedDate
-
-MostReportAbusesOnReply
-
-NumReplies
-
-NumReportAbuses
-
-NumSubscriptions
-
-```
 
 **Type**
 date
@@ -9111,6 +11689,26 @@ Filter, Group, Nillable, Sort
 **Description**
 The number of replies (child Reply object) that users have submitted for the question.
 
+
+Standard Objects Question
+
+**Field** **Details**
+
+```
+NumReportAbuses
+
+NumSubscriptions
+
+Origin
+
+Title
+
+UpVotes
+
+VoteScore
+
+```
+
 **Type**
 int
 
@@ -9131,27 +11729,7 @@ Filter, Group, Nillable, Sort
 **Description**
 Represents the number of users following the question.
 
-
-Standard Objects Question
-
-**Field** **Details**
-
 This field is available in API version 24.0 and later.
-
-```
-Origin
-
-Title
-
-UpVotes
-
-VoteScore
-
-```
-
-Usage
-
-Use this object to track questions in a zone.
 
 **Type**
 picklist
@@ -9185,6 +11763,11 @@ The total number of up votes for the question.
 **Type**
 double
 
+
+### Standard Objects QuestionDataCategorySelection
+
+**Field** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
@@ -9197,8 +11780,11 @@ score itself doesn’t display in the application user interface.
 Note: Unlike other fields of type double, you can't use a SOQL aggregate
 function with this field.
 
+Usage
 
-### Standard Objects QuestionDataCategorySelection QuestionDataCategorySelection
+Use this object to track questions in a zone.
+
+### QuestionDataCategorySelection
 
 A data category selection represents a data category that classifies a question.
 
@@ -9222,10 +11808,6 @@ Fields
 ```
 DataCategoryGroupName
 
-DataCategoryName
-
-ParentId
-
 ```
 
 **Type**
@@ -9237,6 +11819,20 @@ Create
 **Description**
 Unique name of the data category group which has a category associated with
 the question.
+
+
+Standard Objects QuestionDataCategorySelection
+
+**Field Name** **Details**
+
+```
+DataCategoryName
+
+ParentId
+
+```
+
+Usage
 
 **Type**
 DataCategoryGroupReference
@@ -9256,11 +11852,6 @@ Create, Filter
 **Description**
 ID of the question associated with the data category selection.
 
-
-Standard Objects QuestionDataCategorySelection
-
-Usage
-
 Every question can be categorized in a data category. You can use the QuestionDataCategorySelection object to query and manage
 question categorization. Client applications can create categorization for a question. They can also delete, query, and retrieve question
 categorization.
@@ -9276,34 +11867,40 @@ In the following example, the `selectCategory` method adds a category to a quest
 `retrieveCategorySelections` method returns all the categories from a question data category selection.
 
 ```
-   public void selectCategory(ID parentId, String categoryGroupName, String categoryName) {
+public void selectCategory(ID parentId, String categoryGroupName, String categoryName) {
 
-      try {
+   try {
 
-        QuestionDataCategorySelection categorySelection = new
+     QuestionDataCategorySelection categorySelection = new
 
-   QuestionDataCategorySelection();
+QuestionDataCategorySelection();
 
-        categorySelection.setParentId(parentId);
+     categorySelection.setParentId(parentId);
 
-        categorySelection.setDataCategoryGroupName(categoryGroupName);
+     categorySelection.setDataCategoryGroupName(categoryGroupName);
 
-        categorySelection.setDataCategoryName(categoryName);
+     categorySelection.setDataCategoryName(categoryName);
 
-        binding.create(new SObject[]{categorySelection});
+     binding.create(new SObject[]{categorySelection});
 
-      } catch (RemoteException e) {
+   } catch (RemoteException e) {
 
-        System.out.println("An unexpected error has occurred." + e.getMessage());
-
-      }
+     System.out.println("An unexpected error has occurred." + e.getMessage());
 
    }
 
-   public String[] retrieveCategorySelections(String parentId) {
+}
 
-      QueryResult qr = null;
+public String[] retrieveCategorySelections(String parentId) {
 
+   QueryResult qr = null;
+
+```
+
+
+### Standard Objects QuestionReportAbuse
+
+```
       try {
 
         qr = binding.query("SELECT DataCategoryName FROM QuestionDataCategorySelection
@@ -9332,9 +11929,6 @@ In the following example, the `selectCategory` method adds a category to a quest
 
 ```
 
-
-### Standard Objects QuestionReportAbuse
-
 Salesforce Knowledge uses a similar object for article data category selection. See Article Type __DataCategorySelection
 __DataCategorySelection for SOQL examples using this object.
 
@@ -9359,11 +11953,7 @@ Name
 
 QuestionId
 
-Reason
-
 ```
-
-Usage
 
 **Type**
 string
@@ -9380,8 +11970,20 @@ reference
 **Properties**
 Create, Filter, Group, Sort
 
+
+### Standard Objects QuestionSubscription
+
+**Field** **Details**
+
 **Description**
 The ID of the Question from which the user reported abuse.
+
+```
+Reason
+
+```
+
+Usage
 
 **Type**
 picklist
@@ -9395,8 +11997,7 @@ The reason the user reported abuse on the Question, such as `Spam`, `Hateful`, o
 
 Use this object to track user-reported abuse on questions created in a Chatter Answers zone.
 
-
-### Standard Objects QuestionSubscription QuestionSubscription
+### QuestionSubscription
 
 Represents a subscription for a user following a Question. This object is available in API version 24.0 and later.
 
@@ -9413,10 +12014,6 @@ Fields
 CommunityId
 
 Name
-
-QuestionCreatedDate
-
-QuestionId
 
 ```
 
@@ -9436,8 +12033,24 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, Sort
 
+
+### Standard Objects QueueSobject
+
+**Field** **Details**
+
 **Description**
 The name of the question subscription.
+
+```
+QuestionCreatedDate
+
+QuestionId
+
+SubscriberId
+
+```
+
+Usage
 
 **Type**
 dateTime
@@ -9457,18 +12070,6 @@ Create, Filter, Group, Sort, Update
 
 **Description**
 Required. ID of the Question which the user is following. This field can’t be updated.
-
-
-### Standard Objects QueueSobject
-
-**Field** **Details**
-
-```
-SubscriberId
-
-```
-
-Usage
 
 **Type**
 reference
@@ -9500,6 +12101,9 @@ Queries on QuestionSubscription:
 
 Represents the mapping between a queue Group and the types associated with the queue, including custom objects.
 
+
+Standard Objects QueueSobject
+
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
@@ -9508,27 +12112,26 @@ Special Access Rules
 
 As of Summer ’20 and later, only authenticated internal and external users can access this object.
 
-### A queue is a Group whose Type is Queue . To create a Group, you must have the Manage Users permission.
+A queue is a Group whose `Type` is `Queue` . To create a Group, you must have the Manage Users permission.
 
 Fields
 
 **Field** **Details**
 
 ```
-QueueId
+ QueueId
+
+ SobjectType
 
 ```
+
+Usage
 
 **Type**
 reference
 
 **Properties**
 Create, Filter, Group, Sort
-
-
-### Standard Objects QuickText
-
-**Field** **Details**
 
 **Description**
 The ID of a queue.
@@ -9543,13 +12146,6 @@ Lookup
 
 **Refers To**
 Group
-
-```
- SobjectType
-
-```
-
-Usage
 
 **Type**
 picklist
@@ -9568,7 +12164,8 @@ SEE ALSO:
 
 Overview of Salesforce Objects and Fields
 
-### QuickText
+
+### Standard Objects QuickText QuickText
 
 This object stores a snippet of text that allows users to send a quick response to a customer. Use quick text to create greetings, answers
 to common questions, short notes, and more. This object is available in API version 24.0 and later.
@@ -9577,9 +12174,6 @@ Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects QuickText
 
 Fields
 
@@ -9591,8 +12185,6 @@ Category
 Channel
 
 FolderId
-
-FolderName
 
 ```
 
@@ -9634,8 +12226,24 @@ Folder
 **Relationship Type**
 Lookup
 
+
+Standard Objects QuickText
+
+**Field Name** **Details**
+
 **Refers To**
 Folder
+
+```
+FolderName
+
+IsInsertable
+
+LastReferencedDate
+
+LastViewedDate
+
+```
 
 **Type**
 string
@@ -9646,24 +12254,6 @@ Filter, Nillable, Sort
 **Description**
 Name of the folder that contains the quick text. Available in API version 44.0 and
 later.
-
-
-Standard Objects QuickText
-
-**Field Name** **Details**
-
-```
-IsInsertable
-
-LastReferencedDate
-
-LastViewedDate
-
-Message
-
-Name
-
-```
 
 **Type**
 boolean
@@ -9703,6 +12293,22 @@ The timestamp when the current user last viewed this record or list view. If thi
 value is null, it’s possible that the user only accessed this record or list view
 ( `LastReferencedDate` ), but not viewed it.
 
+
+Standard Objects QuickText
+
+**Field Name** **Details**
+
+```
+Message
+
+Name
+
+OwnerId
+
+SourceType
+
+```
+
 **Type**
 textarea
 
@@ -9716,26 +12322,12 @@ The content of the quick text record
 **Type**
 string
 
-
-Standard Objects QuickText
-
-**Field Name** **Details**
-
 **Properties**
 Create, Filter (unavailable in API version 25.0 and later), Group, idLookup, Sort
 (unavailable in API version 25.0 and later), Update
 
 **Description**
 A descriptive label for the quick text record
-
-```
-OwnerId
-
-SourceType
-
-```
-
-Usage
 
 **Type**
 reference
@@ -9772,10 +12364,17 @@ Possible values are:
 **•** `EINSTEIN_GENERATED` —Text was generated by Einstein Reply
 Recommendations
 
+
+### Standard Objects QuickTextUsage
+
+**Field Name** **Details**
+
 **•** `USER_EDITED` —Text was generated by Einstein Reply Recommendations,
 and then edited by a user
 
 **•** `USER_GENERATED` —User wrote the text
+
+Usage
 
 Use this object to create and manage the quick text messages available to users. You can categorize multiple quick text records into
 groups using the Category field. The Category field can also be a parent to multiple custom-dependent Picklist fields to create a hierarchical
@@ -9783,10 +12382,6 @@ structure of categories.
 
 QuickText is also used in Einstein Reply Recommendations, a feature that recommends stock replies for support agents to use in chats
 in the Lightning Service Console. During setup, Einstein Reply Recommendations scans past chats to generate a list of commonly used
-
-
-### Standard Objects QuickTextUsage
-
 replies. Each generated reply is a ReplyText record. The admin then publishes, or converts, the replies to quick text, creating a corresponding
 QuickText record for each reply. Therefore, certain QuickText fields are used only on quick text records that originated as a ReplyText
 record.
@@ -9824,12 +12419,19 @@ Special Access Rules
 
 This object is always read-only.
 
+
+Standard Objects QuickTextUsage
+
 Fields
 
 **Field** **Details**
 
 ```
 AppContext
+
+Channel
+
+FolderId
 
 ```
 
@@ -9847,20 +12449,6 @@ Context in which the quick text was used. Possible values are:
 **•** `Lightning` —Lightning Experience
 
 **•** `Unknown`
-
-
-Standard Objects QuickTextUsage
-
-**Field** **Details**
-
-```
-Channel
-
-FolderId
-
-LaunchSource
-
-```
 
 **Type**
 picklist
@@ -9907,11 +12495,27 @@ This is a relationship field.
 **Relationship Name**
 Folder
 
+
+Standard Objects QuickTextUsage
+
+**Field** **Details**
+
 **Relationship Type**
 Lookup
 
 **Refers To**
 Folder
+
+```
+LaunchSource
+
+LoggedTime
+
+Name
+
+OwnerId
+
+```
 
 **Type**
 picklist
@@ -9926,25 +12530,9 @@ How the user started the quick text. Possible values are:
 
 **•** `Keyboard shortcut`
 
-
-Standard Objects QuickTextUsage
-
-**Field** **Details**
-
 **•** `Macro`
 
 **•** `Toolbar`
-
-```
-LoggedTime
-
-Name
-
-OwnerId
-
-QuickTextID
-
-```
 
 **Type**
 dateTime
@@ -9981,8 +12569,22 @@ Owner
 **Relationship Type**
 Lookup
 
+
+Standard Objects QuickTextUsage
+
+**Field** **Details**
+
 **Refers To**
 Group, User
+
+```
+QuickTextID
+
+UserId
+
+```
+
+Associated Objects
 
 **Type**
 reference
@@ -9998,23 +12600,11 @@ This is a relationship field.
 **Relationship Name**
 QuickText
 
-
-### Standard Objects Quote
-
-**Field** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 QuickText
-
-```
-UserId
-
-```
-
-Associated Objects
 
 **Type**
 reference
@@ -10049,7 +12639,8 @@ Sharing rules are available for the object.
 
 Sharing is available for the object.
 
-### Quote
+
+### Standard Objects Quote Quote
 
 Represents a quote, which is a record showing proposed prices for products and services. Available in API version 18.0 and later.
 
@@ -10059,9 +12650,6 @@ Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects Quote
 
 Fields
 
@@ -10075,10 +12663,6 @@ AdditionalAddress
 AdditionalCity
 
 AdditionalCountry
-
-AdditionalCountryCode
-
-AdditionalLatitude
 
 ```
 
@@ -10119,6 +12703,26 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 Country for the quote's additional address. Up to 80 characters allowed.
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
+```
+AdditionalCountryCode
+
+AdditionalLatitude
+
+AdditionalLongitude
+
+AdditionalName
+
+AdditionalPostalCode
+
+AdditionalState
+
+```
+
 **Type**
 picklist
 
@@ -10134,28 +12738,10 @@ double
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
-
-Standard Objects Quote
-
-**Field** **Details**
-
 **Description**
 Used with `AdditionalLongitude` to specify the precise geolocation of
 an additional address. Acceptable values are numbers between –90 and 90
 with up to 15 decimal places.
-
-```
-AdditionalLongitude
-
-AdditionalName
-
-AdditionalPostalCode
-
-AdditionalState
-
-AdditionalStateCode
-
-```
 
 **Type**
 double
@@ -10189,11 +12775,29 @@ Postal Code for the quote's additional address.
 **Type**
 string
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 State for the quote's additional address. Up to 80 characters allowed.
+
+```
+AdditionalStateCode
+
+AdditionalStreet
+
+BillToContactId
+
+BillingAddress
+
+BillingCity
+
+```
 
 **Type**
 picklist
@@ -10203,26 +12807,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 ISO state code for the quote’s additional address.
-
-
-Standard Objects Quote
-
-**Field** **Details**
-
-```
-AdditionalStreet
-
-BillToContactId
-
-BillingAddress
-
-BillingCity
-
-BillingCountry
-
-BillingCountryCode
-
-```
 
 **Type**
 textarea
@@ -10262,6 +12846,26 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 City for the quote's billing address. Up to 40 characters allowed.
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
+```
+BillingCountry
+
+BillingCountryCode
+
+BillingLatitude
+
+BillingLongitude
+
+BillingName
+
+BillingPostalCode
+
+```
+
 **Type**
 string
 
@@ -10277,26 +12881,8 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects Quote
-
-**Field** **Details**
-
 **Description**
 ISO country code for the quote’s billing address.
-
-```
-BillingLatitude
-
-BillingLongitude
-
-BillingName
-
-BillingPostalCode
-
-BillingState
-
-```
 
 **Type**
 double
@@ -10332,11 +12918,27 @@ Entity that the quote is billed to.
 **Type**
 string
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Postal Code for the quote's billing address.
+
+```
+BillingState
+
+BillingStateCode
+
+BillingStreet
+
+CalculationStatus
+
+```
 
 **Type**
 string
@@ -10346,20 +12948,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 State for the quote's billing address. Up to 80 characters allowed.
-
-
-Standard Objects Quote
-
-**Field** **Details**
-
-```
-BillingStateCode
-
-BillingStreet
-
-CalculationStatus
-
-```
 
 **Type**
 picklist
@@ -10401,6 +12989,11 @@ tax will now be calculated.
 **•** `CompletedWithTax` —Indicates that pricing and tax calculation are
 complete.
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **•** `CompletedWithoutPricing` —Indicates that pricing and tax
 calculation were skipped.
 
@@ -10417,11 +13010,6 @@ group ramps have failed. Available in API version 65.0 and later.
 
 **•** `PriceCalculationFailed` —Indicates that pricing failed. Available
 in API version 58.0 and later.
-
-
-Standard Objects Quote
-
-**Field** **Details**
 
 **•** `PriceCalculationInProgress` —Available in API version 58.0
 and later.
@@ -10462,10 +13050,6 @@ The default value is `NotStarted` .
 ```
 CanCreateQuoteLineItems
 
-ContactId
-
-ContractId
-
 ```
 
 **Type**
@@ -10476,6 +13060,24 @@ Create, Defaulted on create, Group
 
 **Description**
 This field isn’t used.
+
+
+Standard Objects Quote
+
+**Field** **Details**
+
+```
+ContactId
+
+ContractId
+
+CurrencyIsoCode
+
+Description
+
+Discount
+
+```
 
 **Type**
 reference
@@ -10492,26 +13094,8 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects Quote
-
-**Field** **Details**
-
 **Description**
 ID of the contract that’s associated with the quote.
-
-```
-CurrencyIsoCode
-
-Description
-
-Discount
-
-Email
-
-ExpirationDate
-
-```
 
 **Type**
 picklist
@@ -10548,6 +13132,24 @@ Filter, Nillable, Sort
 The difference between the QuoteLineItem record’s subtotal and its discounted
 total, divided by the QuoteLineItem’s subtotal. Expressed as a percentage.
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
+```
+Email
+
+ExpirationDate
+
+Fax
+
+GrandTotal
+
+IsSyncing
+
+```
+
 **Type**
 email
 
@@ -10563,26 +13165,8 @@ date
 **Properties**
 Create, Filter, Nillable, Update
 
-
-Standard Objects Quote
-
-**Field** **Details**
-
 **Description**
 The date when this quote is no longer valid.
-
-```
-Fax
-
-GrandTotal
-
-IsSyncing
-
-LastReferencedDate
-
-LastViewedDate
-
-```
 
 **Type**
 phone
@@ -10609,7 +13193,7 @@ referenceable or usable in custom formula fields on the Quote object. Attempts
 to do so result in an error message. For example, "Error: Field GrandTotal does
 not exist. Check spelling." To perform calculations based on the total value of
 a quote, consider using a **Roll-Up Summary** field from related Quote Line Items
-or performing calculations directly on the QuoteLineItem on page 4530 object.
+or performing calculations directly on the QuoteLineItem on page 4564 object.
 
 **Type**
 boolean
@@ -10619,6 +13203,26 @@ Defaulted on create, Filter
 
 **Description**
 Indicates whether the quote is syncing with an opportunity.
+
+
+Standard Objects Quote
+
+**Field** **Details**
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+LineItemCount
+
+Name
+
+OpportunityId
+
+Phone
+
+```
 
 **Type**
 date
@@ -10633,11 +13237,6 @@ to this record, or a list view.
 **Type**
 date
 
-
-Standard Objects Quote
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort, Update
 
@@ -10645,19 +13244,6 @@ Filter, Nillable, Sort, Update
 The timestamp when the current user last viewed this record or list view. If this
 value is null, the user might have only accessed this record or list view but not
 viewed it directly.
-
-```
-LineItemCount
-
-Name
-
-OpportunityId
-
-Phone
-
-Pricebook2Id
-
-```
 
 **Type**
 int
@@ -10692,8 +13278,26 @@ phone
 **Properties**
 Create, Filter, Nillable, Update
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **Description**
 The phone number of the contact who’s associated with the quote.
+
+```
+Pricebook2Id
+
+QuoteAccountId
+
+QuoteNumber
+
+QuoteToAddress
+
+QuoteToCity
+
+```
 
 **Type**
 reference
@@ -10703,24 +13307,6 @@ Create, Filter, Nillable, Update
 
 **Description**
 ID of the price book associated with the quote.
-
-
-Standard Objects Quote
-
-**Field** **Details**
-
-```
-QuoteAccountId
-
-QuoteNumber
-
-QuoteToAddress
-
-QuoteToCity
-
-QuoteToCountry
-
-```
 
 **Type**
 reference
@@ -10763,6 +13349,11 @@ Fields for details on compound address fields.
 **Type**
 string
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -10770,22 +13361,9 @@ Create, Filter, Group, Nillable, Sort, Update
 City for the address to send the quote to for approval, such as a third
 party-agency representing a buyer. Up to 40 characters allowed.
 
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects Quote
-
-**Field** **Details**
-
-**Description**
-Country for the address to send the quote to for approval. Up to 80 characters
-allowed.
-
 ```
+QuoteToCountry
+
 QuoteToLatitude
 
 QuoteToLongitude
@@ -10794,9 +13372,17 @@ QuoteToName
 
 QuoteToPostalCode
 
-QuoteToState
-
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Country for the address to send the quote to for approval. Up to 80 characters
+allowed.
 
 **Type**
 double
@@ -10833,28 +13419,20 @@ for approval. Limit: 255 characters.
 **Type**
 string
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Postal code for the address to send the quote to for approval.
 
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects Quote
-
-**Field** **Details**
-
-**Description**
-State for the address to send the quote to for approval. Up to 80 characters
-allowed.
-
 ```
+QuoteToState
+
 QuoteToStreet
 
 RecordSource
@@ -10863,9 +13441,17 @@ RecordTypeID
 
 RelatedWorkId
 
-ShippingAddress
-
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+State for the address to send the quote to for approval. Up to 80 characters
+allowed.
 
 **Type**
 textarea
@@ -10905,6 +13491,11 @@ ID of the record type assigned to the object.
 **Type**
 reference
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
@@ -10915,22 +13506,9 @@ from. When a mobile worker creates a quote using the New Quote action in
 the Field Service mobile app, this field is automatically populated. This field is
 used in the related list that shows all of the quotes related to the work order.
 
-**Type**
-address
-
-
-Standard Objects Quote
-
-**Field** **Details**
-
-**Properties**
-Filter, Nillable
-
-**Description**
-Compound form of the shipping address. Read-only. See Address Compound
-Fields for details on compound address fields.
-
 ```
+ShippingAddress
+
 ShippingCity
 
 ShippingCountry
@@ -10939,9 +13517,17 @@ ShippingCountryCode
 
 ShippingHandling
 
-ShippingLatitude
-
 ```
+
+**Type**
+address
+
+**Properties**
+Filter, Nillable
+
+**Description**
+Compound form of the shipping address. Read-only. See Address Compound
+Fields for details on compound address fields.
 
 **Type**
 string
@@ -10976,8 +13562,26 @@ currency
 **Properties**
 Create, Filter, Nillable, Update
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **Description**
 The total shipping and handling costs for the quote.
+
+```
+ShippingLatitude
+
+ShippingLongitude
+
+ShippingName
+
+ShippingPostalCode
+
+ShippingState
+
+```
 
 **Type**
 double
@@ -10989,26 +13593,6 @@ Create, Filter, Nillable, Sort, Update
 Used with `ShippingLongitude` to specify the precise geolocation of a
 shipping address. Acceptable values are numbers between –90 and 90 with up
 to 15 decimal places.
-
-
-Standard Objects Quote
-
-**Field** **Details**
-
-```
-ShippingLongitude
-
-ShippingName
-
-ShippingPostalCode
-
-ShippingState
-
-ShippingStateCode
-
-ShippingStreet
-
-```
 
 **Type**
 double
@@ -11049,6 +13633,24 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 State for the quote's shipping address. Up to 80 characters allowed.
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
+```
+ShippingStateCode
+
+ShippingStreet
+
+Status
+
+Subtotal
+
+Tax
+
+```
+
 **Type**
 picklist
 
@@ -11064,24 +13666,8 @@ textarea
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects Quote
-
-**Field** **Details**
-
 **Description**
 Street name for the quote's shipping address.
-
-```
-Status
-
-Subtotal
-
-Tax
-
-TotalPrice
-
-```
 
 **Type**
 picklist
@@ -11124,11 +13710,27 @@ discount.
 **Type**
 currency
 
+
+Standard Objects Quote
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Nillable, Update
 
 **Description**
 The total taxes for the quote.
+
+```
+TotalPrice
+
+TotalPriceWithTax
+
+TotalTaxAmount
+
+```
+
+Usage
 
 **Type**
 currency
@@ -11138,20 +13740,6 @@ Filter, Nillable
 
 **Description**
 The total of the quote line items after discounts and before taxes and shipping.
-
-
-Standard Objects Quote
-
-**Field** **Details**
-
-```
-TotalPriceWithTax
-
-TotalTaxAmount
-
-```
-
-Usage
 
 **Type**
 currency
@@ -11187,6 +13775,9 @@ Associated Objects
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
 
+
+### Standard Objects QuoteAction
+
 **QuoteChangeEvent (API version 44.0)**
 Change events are available for the object.
 
@@ -11198,9 +13789,6 @@ History is available for tracked fields of the object.
 
 **QuoteOwnerSharingRule (API version 41.0)**
 Sharing rules are available for the object.
-
-
-### Standard Objects QuoteAction
 
 **QuoteShare (API version 41.0)**
 Sharing is available for the object.
@@ -11237,8 +13825,6 @@ Fields
 ```
 CurrencyIsoCode
 
-LastReferencedDate
-
 ```
 
 **Type**
@@ -11246,6 +13832,11 @@ picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+
+Standard Objects QuoteAction
+
+**Field** **Details**
 
 **Description**
 ISO code of the currency. Use only one of the valid alphabetic, three-letter currency ISO codes
@@ -11257,13 +13848,19 @@ The default value is `USD` .
 [See Supported Currencies (ICU) for a list of currency codes Salesforce supports. This field is](https://help.salesforce.com/s/articleView?id=xcloud.admin_supported_currencies.htm&type=5&language=en_US)
 available in Revenue Cloud in API version 66.0 and later.
 
+```
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+QuoteId
+
+```
+
 **Type**
 dateTime
-
-
-Standard Objects QuoteAction
-
-**Field** **Details**
 
 **Properties**
 Filter, Nillable, Sort
@@ -11271,17 +13868,6 @@ Filter, Nillable, Sort
 **Description**
 The timestamp when the current user last accessed this record indirectly, for example, through
 a list view or related record.
-
-```
-LastViewedDate
-
-Name
-
-QuoteId
-
-SourceAssetId
-
-```
 
 **Type**
 dateTime
@@ -11316,22 +13902,29 @@ This field is a relationship field.
 **Relationship Name**
 Quote
 
+
+Standard Objects QuoteAction
+
+**Field** **Details**
+
 **Relationship Type**
 Lookup
 
 **Refers To**
 Quote
 
+```
+SourceAssetId
+
+Subtype
+
+```
+
 **Type**
 reference
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects QuoteAction
-
-**Field** **Details**
 
 **Description**
 The asset changed by this sales transaction. For example, if the quote action is a quantity
@@ -11347,13 +13940,6 @@ Lookup
 
 **Refers To**
 Asset
-
-```
-Subtype
-
-Type
-
-```
 
 **Type**
 picklist
@@ -11390,6 +13976,16 @@ Valid values are:
 
 This field is available with Revenue Cloud in API version 64.0 and later.
 
+
+### Standard Objects QuoteAdjustmentGroup
+
+**Field** **Details**
+
+```
+Type
+
+```
+
 **Type**
 picklist
 
@@ -11402,11 +13998,6 @@ The type of sales transaction that the related quote is for.
 Valid values are:
 
 **•** `Add`
-
-
-### Standard Objects QuoteAdjustmentGroup
-
-**Field** **Details**
 
 **•** `Amend`
 
@@ -11439,8 +14030,6 @@ Fields
 ```
 AdjustmentSource
 
-AdjustmentType
-
 ```
 
 **Type**
@@ -11456,6 +14045,11 @@ Possible values are:
 
 **•** `Discretionary` —The adjustment is entered manually; for example, by a sales rep.
 
+
+Standard Objects QuoteAdjustmentGroup
+
+**Field** **Details**
+
 **•** `Promotion` —The adjustment is part of a promotion; for example, a holiday sale
 discount.
 
@@ -11463,16 +14057,22 @@ discount.
 
 **•** `System` —The adjustment originates from the system, for example, a volume discount.
 
+```
+AdjustmentType
+
+AdjustmentValue
+
+Description
+
+Name
+
+```
+
 **Type**
 picklist
 
 **Properties**
 Filter, Group, Restricted picklist, Sort
-
-
-Standard Objects QuoteAdjustmentGroup
-
-**Field** **Details**
 
 **Description**
 Indicates the type of mathematical adjustment to be applied to the quote.
@@ -11487,17 +14087,6 @@ a 10% discount.
 
 **•** `OverrideAmount` —The adjustment is a manual price override. Available in API
 version 59.0 and later.
-
-```
-AdjustmentValue
-
-Description
-
-Name
-
-Priority
-
-```
 
 **Type**
 double
@@ -11528,28 +14117,17 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
-**Description**
-The user-defined name of the quote adjustment group.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
 
 Standard Objects QuoteAdjustmentGroup
 
 **Field** **Details**
 
 **Description**
-A numeric value that represents the order of precedence of the quote adjustment group. It
-can also represent the order of precedence when applying the `AdjustmentType` values.
-
-For example, a quote can have two adjustments: a $100 discount and a 10% discount. This
-field indicates which adjustment to apply first.
+The user-defined name of the quote adjustment group.
 
 ```
+Priority
+
 QuoteId
 
 TotalAmount
@@ -11557,6 +14135,19 @@ TotalAmount
 ```
 
 Associated Objects
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+A numeric value that represents the order of precedence of the quote adjustment group. It
+can also represent the order of precedence when applying the `AdjustmentType` values.
+
+For example, a quote can have two adjustments: a $100 discount and a 10% discount. This
+field indicates which adjustment to apply first.
 
 **Type**
 reference
@@ -11593,6 +14184,9 @@ Otherwise, they’re available in the specified API version and later.
 **QuoteAdjustmentGroupChangeEvent on page 68**
 Change events are available for the object.
 
+
+### Standard Objects QuoteDocument
+
 **QuoteAdjustmentGroupFeed on page 55**
 Feed tracking is available for the object.
 
@@ -11601,9 +14195,6 @@ History is available for tracked fields of the object.
 
 **QuoteAdjustmentGroupOwnerSharingRule on page 65**
 Sharing rules are available for the object.
-
-
-### Standard Objects QuoteDocument
 
 **QuoteAdjustmentGroupShare on page 67**
 Sharing is available for the object.
@@ -11627,8 +14218,6 @@ ContentVersionDocumentId
 CurrencyIsoCode
 
 Discount
-
-Document
 
 ```
 
@@ -11658,27 +14247,20 @@ PricebookEntry objects that are associated with any quote line items it has.
 **Type**
 percent
 
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The discount for the quote used in the document.
-
-**Type**
-base64
-
 
 Standard Objects QuoteDocument
 
 **Field** **Details**
 
 **Properties**
-Create, Nillable
+Filter, Nillable, Sort
 
 **Description**
-The binary data of the document stored in the QuoteDocument object.
+The discount for the quote used in the document.
 
 ```
+Document
+
 DocumentTemplate
 
 GrandTotal
@@ -11690,6 +14272,15 @@ QuoteId
 Status
 
 ```
+
+**Type**
+base64
+
+**Properties**
+Create, Nillable
+
+**Description**
+The binary data of the document stored in the QuoteDocument object.
 
 **Type**
 string
@@ -11730,6 +14321,11 @@ ID for the quote used for the document.
 **Type**
 picklist
 
+
+### Standard Objects QuoteLineGroup
+
+**Field** **Details**
+
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
@@ -11739,11 +14335,6 @@ The status of the document.
 Possible values are:
 
 **•** `Completed`
-
-
-### Standard Objects QuoteLineGroup
-
-**Field** **Details**
 
 **•** `Failed`
 
@@ -11786,21 +14377,10 @@ Fields
 ```
 Description
 
-EndDate
-
 ```
 
 **Type**
 string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The description of the group.
-
-**Type**
-date
 
 
 Standard Objects QuoteLineGroup
@@ -11811,18 +14391,27 @@ Standard Objects QuoteLineGroup
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
-Reserved for future use.
+The description of the group.
 
 ```
+EndDate
+
 Name
 
 QuoteId
 
 SortOrder
 
-StartDate
-
 ```
+
+**Type**
+date
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Reserved for future use.
 
 **Type**
 string
@@ -11862,6 +14451,22 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 Number indicating the sort order selected by the user.
 
+
+### Standard Objects QuoteLineItem
+
+**Field** **Details**
+
+```
+StartDate
+
+SummarySubtotal
+
+Type
+
+### QuoteLineItem
+
+```
+
 **Type**
 date
 
@@ -11870,20 +14475,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Reserved for future use.
-
-
-### Standard Objects QuoteLineItem
-
-**Field** **Details**
-
-```
-SummarySubtotal
-
-Type
-
-### QuoteLineItem
-
-```
 
 **Type**
 currency
@@ -11924,6 +14515,9 @@ permissions on quote records to delete a quote line item.
 
 Some of the fields are available when you turn on Subscription Management.
 
+
+Standard Objects QuoteLineItem
+
 Fields
 
 **Field** **Details**
@@ -11931,15 +14525,16 @@ Fields
 ```
 BatchIdentifier
 
+BillingFrequency
+
+BillingReference
+
+CurrencyIsoCode
+
 ```
 
 **Type**
 string
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -11947,17 +14542,6 @@ Filter, Group, Nillable, Sort
 **Description**
 Identifier for a product bundle in a transaction processing batch. This value makes sure that
 quote lines from the same bundles process together.
-
-```
-BillingFrequency
-
-BillingReference
-
-CurrencyIsoCode
-
-CustomProductName
-
-```
 
 **Type**
 picklist
@@ -12002,21 +14586,14 @@ currency of the PricebookEntry objects for any associated quote line items.
 
 This value comes from the related quote and can't be changed.
 
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
 
 Standard Objects QuoteLineItem
 
 **Field** **Details**
 
-**Description**
-Custom product name for the quote line item.
-
 ```
+CustomProductName
+
 Description
 
 Discount
@@ -12028,6 +14605,15 @@ DoesAutomaticallyRenew
 Division
 
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Custom product name for the quote line item.
 
 **Type**
 string
@@ -12072,18 +14658,17 @@ The default value is `false` .
 **Type**
 picklist
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Properties**
 Defaulted on create, Filter, Group, Restricted picklist, Sort
 
 **Description**
 A logical segment of your organization's data. For example, if your company is organized
 into different business units, you could create a division for each business unit, such as “North
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
 America,” “Healthcare,” or “Consulting.” Available only if the organization has the Division
 permission enabled.
 
@@ -12142,15 +14727,15 @@ double
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-If the quote line item is sold on a subscription, this field indicates the end quantity when
-the subscription ends. This field is available in API version 60.0 and later. This field is available
-with Subscription Management.
-
 
 Standard Objects QuoteLineItem
 
 **Field** **Details**
+
+**Description**
+If the quote line item is sold on a subscription, this field indicates the end quantity when
+the subscription ends. This field is available in API version 60.0 and later. This field is available
+with Subscription Management.
 
 ```
 EndTime
@@ -12211,6 +14796,11 @@ Read-only. Indicates whether the line item uses schedules.
 **Type**
 boolean
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Sort
 
@@ -12220,11 +14810,6 @@ Indicates whether the segment for the quote line item is a primary segment (true
 
 The default value is `false` .
 
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
 ```
 LastReferencedDate
 
@@ -12233,8 +14818,6 @@ LastViewedDate
 LegalEntityId
 
 LineNumber
-
-ListPrice
 
 ```
 
@@ -12282,28 +14865,18 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
-**Description**
-Read-only. An automatically generated number identifying the quote line item. In the form
-of `QL-XXXXX` .
-
-**Type**
-currency
-
-**Properties**
-Filter, Nillable, Sort
-
 
 Standard Objects QuoteLineItem
 
 **Field** **Details**
 
 **Description**
-Read-only. Corresponds to the `UnitPrice` on the PricebookEntry that is associated with
-this line item, which can be in the standard price book or a custom price book. A client app
-can use this information to show whether the unit price (or sales price) of the line item differs
-from the price book entry list price.
+Read-only. An automatically generated number identifying the quote line item. In the form
+of `QL-XXXXX` .
 
 ```
+ListPrice
+
 ListPriceTotal
 
 Margin
@@ -12312,9 +14885,19 @@ MarginAmount
 
 NetTotalPrice
 
-NetUnitPrice
-
 ```
+
+**Type**
+currency
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Read-only. Corresponds to the `UnitPrice` on the PricebookEntry that is associated with
+this line item, which can be in the standard price book or a custom price book. A client app
+can use this information to show whether the unit price (or sales price) of the line item differs
+from the price book entry list price.
 
 **Type**
 currency
@@ -12353,6 +14936,11 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Description**
 The price after all adjustments, inclusive of quantity, prorated for the duration of the
 subscription. This field is a calculated field equal to `TotalAdjustmentAmount` plus
@@ -12361,30 +14949,25 @@ subscription. This field is a calculated field equal to `TotalAdjustmentAmount` 
 This field is available in API version 56.0 and later. This field is available with Subscription
 Management.
 
-**Type**
-currency
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The unit price after all price adjustments are applied.
-
 ```
+NetUnitPrice
+
 OpportunityLineItemId
 
 ParentQuoteLineItemId
 
 PartnerDiscountPercent
 
-PartnerUnitPrice
-
 ```
+
+**Type**
+currency
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The unit price after all price adjustments are applied.
 
 **Type**
 reference
@@ -12424,16 +15007,6 @@ QuoteLineItem
 **Type**
 percent
 
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The partner’s discount percent applied to the quote lines. Available in API version 59.0 and
-later.
-
-**Type**
-currency
-
 
 Standard Objects QuoteLineItem
 
@@ -12443,15 +15016,25 @@ Standard Objects QuoteLineItem
 Create, Filter, Nillable, Sort, Update
 
 **Description**
-The unit price after applying the discount given to the partner for the quote line item.
-Available in API version 59.0 and later.
+The partner’s discount percent applied to the quote lines. Available in API version 59.0 and
+later.
 
 ```
+PartnerUnitPrice
+
 PeriodBoundary
 
-PeriodBoundaryDay
-
 ```
+
+**Type**
+currency
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+The unit price after applying the discount given to the partner for the quote line item.
+Available in API version 59.0 and later.
 
 **Type**
 picklist
@@ -12491,6 +15074,18 @@ the value of the `PeriodBoundary` field is automatically converted to
 **•** Start date adjustment operation on an asset preserves the original value without
 conversion.
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
+```
+PeriodBoundaryDay
+
+PeriodBoundaryStartMonth
+
+```
+
 **Type**
 int
 
@@ -12504,11 +15099,6 @@ month that marks the period boundary. Must be an integer from 1 through 31.
 This field is available in API version 55.0 and later. This field is available with Subscription
 Management and Revenue Cloud.
 
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
 Keep these considerations in mind for amendment, renewal, and cancellations of assets in
 Revenue Cloud.
 
@@ -12521,11 +15111,6 @@ field is automatically populated with the day value from AssetActionSource.Start
 
 **•** Start date adjustment operation on an asset preserves the original value without
 conversion.
-
-```
-PeriodBoundaryStartMonth
-
-```
 
 **Type**
 picklist
@@ -12562,6 +15147,11 @@ manual user entry. Possible values are:
 
 **•** `12-December`
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 Keep these considerations in mind for amendment, renewal, and cancellations of assets in
 Revenue Cloud.
 
@@ -12576,19 +15166,12 @@ by using AssetActionSource.StartDate.month.
 **•** Start date adjustment operation on an asset preserves the original value without
 conversion.
 
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
 ```
 PricebookEntryId
 
 PriceRevisionPolicyId
 
 PricingContractId
-
-PriceWaterfallIdentifier
 
 ```
 
@@ -12634,6 +15217,11 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The contract used for pricing that's associated with the quote line item.
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 This field is a relationship field.
 
 **Relationship Name**
@@ -12642,31 +15230,26 @@ PricingContract
 **Refers To**
 Contract
 
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
-**Description**
-The price waterfall identifier generated by Salesforce Pricing that's associated with the pricing
-of the detail record. Available in API version 60.0 and later.
-
 ```
+PriceWaterfallIdentifier
+
 PricingTerm
 
 PricingTermCount
 
 PricingTermUnit
 
-Product2Id
-
 ```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The price waterfall identifier generated by Salesforce Pricing that's associated with the pricing
+of the detail record. Available in API version 60.0 and later.
 
 **Type**
 int
@@ -12705,7 +15288,23 @@ Possible values are:
 
 **•** `Annual` —Available in API version 58.0 and later. UI label is `Years` .
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **•** `Months` .
+
+```
+Product2Id
+
+ProductInstanceIdentifier
+
+ProductSellingModelId
+
+ProrationPolicyId
+
+```
 
 **Type**
 reference
@@ -12718,22 +15317,6 @@ Required. ID of the Product2 associated with this QuoteLineItem. In API 38.0 and
 `Product2Id` is populated with `PricebookEntryId` data, you receive an error
 message. In API 39.0 and later, `Product2Id` is nulled, and `PricebookEntryId` is
 populated with the `PricebookEntryId` data.
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
-```
-ProductInstanceIdentifier
-
-ProductSellingModelId
-
-ProrationPolicyId
-
-Quantity
-
-```
 
 **Type**
 string
@@ -12776,6 +15359,11 @@ Filter, Group, Nillable, Sort
 The ID of the related proration policy. This field is available in API version 55.0 and later. This
 field is available with Subscription Management.
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 This field is a relationship field.
 
 **Relationship Name**
@@ -12787,30 +15375,23 @@ Lookup
 **Refers To**
 ProrationPolicy
 
+```
+Quantity
+
+QuantityUnitOfMeasureId
+
+QuoteActionId
+
+```
+
 **Type**
 double
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Sort, Update
 
 **Description**
 Required. The number of units for the line item.
-
-```
-QuantityUnitOfMeasureId
-
-QuoteActionId
-
-QuoteId
-
-QuoteLineGroupId
-
-```
 
 **Type**
 reference
@@ -12850,6 +15431,24 @@ Lookup
 **Refers To**
 QuoteAction
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
+```
+QuoteId
+
+QuoteLineGroupId
+
+QuoteLineItemRecipientId
+
+RampIdentifier
+
+RelatedQuoteLineItemId
+
+```
+
 **Type**
 reference
 
@@ -12861,11 +15460,6 @@ Required. ID of the associated quote.
 
 **Type**
 reference
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -12880,15 +15474,6 @@ QuoteLineGroup
 
 **Refers To**
 QuoteLineGroup
-
-```
-QuoteLineItemRecipientId
-
-RampIdentifier
-
-RelatedQuoteLineItemId
-
-```
 
 **Type**
 reference
@@ -12919,6 +15504,11 @@ The ramp ID used to group quote line item segments.
 **Type**
 reference
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
@@ -12932,11 +15522,6 @@ RelatedQuoteLineItem
 
 **Refers To**
 OrderItem
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
 
 This field is available in Revenue Cloud in API version 65.0 and later.
 
@@ -12991,6 +15576,11 @@ The default value is `Yearly` .
 **Type**
 picklist
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Properties**
 Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
 
@@ -13007,11 +15597,6 @@ Possible values are:
 
 **•** `TermDefined`
 
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
 The default value is `OneTime` .
 
 ```
@@ -13022,8 +15607,6 @@ SortOrder
 StartDate
 
 StartDateTime
-
-StartEndTimeZone
 
 ```
 
@@ -13065,6 +15648,11 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Description**
 The start date and time of the quote line item, which is derived from the Start Date and Start
 Time fields in the time zone specified in the Start and End Time Zone field. If the time zone
@@ -13072,23 +15660,9 @@ isn't specified, the default is Coordinated Universal Time (UTC).
 
 This field is available in Revenue Cloud in API version 65.0 and later.
 
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
-**Description**
-The time zone for the quote line item's start and end dates, times, and datetimes.
-
-This field is available in Revenue Cloud in API version 65.0 and later.
-
 ```
+StartEndTimeZone
+
 StartTime
 
 StartQuantity
@@ -13098,6 +15672,17 @@ StartingPriceTotal
 StartingUnitPriceSource
 
 ```
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The time zone for the quote line item's start and end dates, times, and datetimes.
+
+This field is available in Revenue Cloud in API version 65.0 and later.
 
 **Type**
 time
@@ -13133,6 +15718,11 @@ The starting unit price times the quantity.
 **Type**
 picklist
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Restricted picklist, Sort
 
@@ -13148,19 +15738,12 @@ Possible values are:
 
 **•** `Inherited`
 
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
 ```
 Status
 
 SubscriptionTerm
 
 SubscriptionTermUnit
-
-Subtotal
 
 ```
 
@@ -13206,6 +15789,11 @@ picklist
 **Properties**
 Filter, Group, Nillable, Restricted picklist, Sort
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Description**
 The unit of time used to define the subscription. This field is available in API version 55.0 and
 later. This field is available with Subscription Management.
@@ -13216,31 +15804,26 @@ Possible values are:
 
 **•** `Months`
 
-**Type**
-currency
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
-**Description**
-The line item's `Quantity` multiplied by the `UnitPrice` . In Revenue Cloud, `Subtotal`
-is set to `TotalLineAmount` when `TotalLineAmount` has a value.
-
 ```
+Subtotal
+
 TotalAdjustment
 
 TotalAdjustmentAmount
 
 TotalCost
 
-TotalLineAmount
-
 ```
+
+**Type**
+currency
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The line item's `Quantity` multiplied by the `UnitPrice` . In Revenue Cloud, `Subtotal`
+is set to `TotalLineAmount` when `TotalLineAmount` has a value.
 
 **Type**
 percent
@@ -13277,7 +15860,23 @@ Filter, Nillable, Sort
 The total cost of all products sold in the quote, calculated by multiplying the quantity by
 the unit cost.
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 This field is available in Revenue Cloud in API version 65.0 and later.
+
+```
+TotalLineAmount
+
+TotalMargin
+
+TotalMarginAmount
+
+TotalPrice
+
+```
 
 **Type**
 currency
@@ -13292,24 +15891,6 @@ times `Quantity` times `PricingTermCount` .
 
 This field is available in API version 56.0 and later. This field is available with Subscription
 Management.
-
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
-```
-TotalMargin
-
-TotalMarginAmount
-
-TotalPrice
-
-UnitCost
-
-UnitPrice
-
-```
 
 **Type**
 percent
@@ -13348,6 +15929,24 @@ insert the `TotalPrice` for a quote line item via the API (given only a unit pri
 quantity), calculate this field as the unit price multiplied by the quantity. This field is read
 only if the quote line item has a revenue schedule.
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
+```
+UnitCost
+
+UnitPrice
+
+UnitPriceUplift
+
+ValidationResult
+
+Visibility
+
+```
+
 **Type**
 currency
 
@@ -13365,22 +15964,8 @@ currency
 **Properties**
 Create, Filter, Sort, Update
 
-
-Standard Objects QuoteLineItem
-
-**Field** **Details**
-
 **Description**
 Required. The price per unit for the quote line item.
-
-```
-UnitPriceUplift
-
-ValidationResult
-
-Visibility
-
-```
 
 **Type**
 percent
@@ -13417,6 +16002,11 @@ picklist
 **Properties**
 Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
 
+
+Standard Objects QuoteLineItem
+
+**Field** **Details**
+
 **Description**
 Specifies how Salesforce shows a quote line item in the Transaction Line Editor and a quote
 document.
@@ -13435,9 +16025,6 @@ document, but not in the Transaction Line Editor.
 the Transaction Line Editor, but not in the quote document.
 
 The default value is `Always` .
-
-
-### Standard Objects QuoteLineItemRecipient
 
 Usage
 
@@ -13469,13 +16056,14 @@ History is available for tracked fields of the object.
 
 SEE ALSO:
 
-### Quote
+Quote
 
 QuoteDocument
 
 Opportunity
 
-### QuoteLineItemRecipient
+
+### Standard Objects QuoteLineItemRecipient QuoteLineItemRecipient
 
 Represents a site, employee, or other entity for which services are being quoted. This could include details such as the recipient's name,
 contact information, associated site or location, and any specific requirements or preferences for the quoted services. This object is
@@ -13493,34 +16081,22 @@ Fields
 ```
 BroadbandConnectionType
 
-```
-
-**Type**
-string
-
-
-Standard Objects QuoteLineItemRecipient
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The name of the broadband connection that's available at the address.
-
-```
 LastReferencedDate
 
 LastViewedDate
 
 MaxDownloadSpeed
 
-MaxUploadSpeed
-
-Name
-
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The name of the broadband connection that's available at the address.
 
 **Type**
 dateTime
@@ -13550,6 +16126,22 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The maximum download speed available at the address.
 
+
+Standard Objects QuoteLineItemRecipient
+
+**Field** **Details**
+
+```
+MaxUploadSpeed
+
+Name
+
+QuoteId
+
+RecipientType
+
+```
+
 **Type**
 string
 
@@ -13567,22 +16159,6 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 
 **Description**
 The name of the customer's site or location.
-
-
-Standard Objects QuoteLineItemRecipient
-
-**Field** **Details**
-
-```
-QuoteId
-
-RecipientType
-
-ServiceAddrValidationDate
-
-Service Account
-
-```
 
 **Type**
 reference
@@ -13621,6 +16197,24 @@ Possible values are:
 
 The default value is `Location` .
 
+
+Standard Objects QuoteLineItemRecipient
+
+**Field** **Details**
+
+```
+ServiceAddrValidationDate
+
+Service Account
+
+ServiceAddrValidationMsg
+
+ServiceAddrValidationResult
+
+ServiceAddress
+
+```
+
 **Type**
 dateTime
 
@@ -13638,24 +16232,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Reference to the Account Entity where the product is used, serviced, or installed.
-
-
-Standard Objects QuoteLineItemRecipient
-
-**Field** **Details**
-
-```
-ServiceAddrValidationMsg
-
-ServiceAddrValidationResult
-
-ServiceAddress
-
-ServiceCity
-
-ServiceCountry
-
-```
 
 **Type**
 string
@@ -13694,6 +16270,22 @@ Filter
 **Description**
 The address where the recipient receives the service.
 
+
+Standard Objects QuoteLineItemRecipient
+
+**Field** **Details**
+
+```
+ServiceCity
+
+ServiceCountry
+
+ServiceGeocodeAccuracy
+
+ServiceLatitude
+
+```
+
 **Type**
 string
 
@@ -13711,22 +16303,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The country where the recipient receives the service.
-
-
-Standard Objects QuoteLineItemRecipient
-
-**Field** **Details**
-
-```
-ServiceGeocodeAccuracy
-
-ServiceLatitude
-
-ServiceLongitude
-
-ServicePostalCode
-
-```
 
 **Type**
 picklist
@@ -13770,6 +16346,26 @@ Create, Filter, Nillable, Sort, Update
 **Description**
 The latitude of the location where the recipient receives the service.
 
+
+Standard Objects QuoteLineItemRecipient
+
+**Field** **Details**
+
+```
+ServiceLongitude
+
+ServicePostalCode
+
+ServiceState
+
+ServiceStreet
+
+ServiceabilityCheckDate
+
+ServiceabilityData
+
+```
+
 **Type**
 double
 
@@ -13787,26 +16383,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The postal code of the address.
-
-
-Standard Objects QuoteLineItemRecipient
-
-**Field** **Details**
-
-```
-ServiceState
-
-ServiceStreet
-
-ServiceabilityCheckDate
-
-ServiceabilityData
-
-SiteName
-
-```
-
-Associated Objects
 
 **Type**
 string
@@ -13841,9 +16417,21 @@ textarea
 **Properties**
 Create, Nillable, Update
 
+
+### Standard Objects QuoteLinePriceAdjustment
+
+**Field** **Details**
+
 **Description**
 The information about serviciability, such as broadband connection, download, and upload
 speeds available at the address.
+
+```
+SiteName
+
+```
+
+Associated Objects
 
 **Type**
 string
@@ -13856,9 +16444,6 @@ The name of the customer's site or location.
 
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
-
-
-### Standard Objects QuoteLinePriceAdjustment
 
 **[QuoteLineItemRecipientHistory](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_history.htm)**
 
@@ -13885,8 +16470,6 @@ Fields
 ```
 AdjustmentAmountScope
 
-AdjustmentSource
-
 ```
 
 **Type**
@@ -13894,6 +16477,11 @@ picklist
 
 **Properties**
 Filter, Group, Nillable, Restricted picklist, Sort
+
+
+Standard Objects QuoteLinePriceAdjustment
+
+**Field** **Details**
 
 **Description**
 Used with `AdjustmentValue` to determine the amount of the adjustment.
@@ -13910,6 +16498,15 @@ of the subscription.
 multiplied by the quantity. The adjustment amount isn’t prorated for the duration of the
 subscription.
 
+```
+AdjustmentSource
+
+AdjustmentType
+
+AdjustmentValue
+
+```
+
 **Type**
 picklist
 
@@ -13921,11 +16518,6 @@ The source of the adjustment.
 
 Possible values are:
 
-
-Standard Objects QuoteLinePriceAdjustment
-
-**Field** **Details**
-
 **•** `Discretionary` —The adjustment is entered manually; for example, by a sales rep.
 
 **•** `Promotion` —Reserved for future use.
@@ -13934,17 +16526,6 @@ Standard Objects QuoteLinePriceAdjustment
 
 **•** `System` —The adjustment is determined by the pricing configuration for the product;
 for example, as part of a discount schedule.
-
-```
-AdjustmentType
-
-AdjustmentValue
-
-AppliedPromotionDate
-
-CouponCode
-
-```
 
 **Type**
 picklist
@@ -13969,12 +16550,30 @@ version 59.0 and later.
 **Type**
 double
 
+
+Standard Objects QuoteLinePriceAdjustment
+
+**Field** **Details**
+
 **Properties**
 Filter, Sort
 
 **Description**
 The value of the adjustment. Used together with `AdjustmentAmountScope` to
 determine the amount of the adjustment.
+
+```
+AppliedPromotionDate
+
+CouponCode
+
+Description
+
+Name
+
+PriceAdjustmentCauseId
+
+```
 
 **Type**
 dateTime
@@ -13993,24 +16592,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The ID of the coupon code that was applied.
-
-
-Standard Objects QuoteLinePriceAdjustment
-
-**Field** **Details**
-
-```
-Description
-
-Name
-
-PriceAdjustmentCauseId
-
-Priority
-
-QuoteAdjustmentGroupId
-
-```
 
 **Type**
 textarea
@@ -14040,6 +16621,11 @@ Filter, Group, Nillable, Sort
 The ID of the record that caused the adjustment. `Null` if `AdjustmentSource` is
 `Discretionary`, indicating a manual adjustment.
 
+
+Standard Objects QuoteLinePriceAdjustment
+
+**Field** **Details**
+
 For example, if the price adjustment is due to a price adjustment tier, this field contains the
 ID of the `PriceAdjustmentTier` record.
 
@@ -14054,6 +16640,15 @@ Lookup
 **Refers To**
 PriceAdjustmentTier
 
+```
+Priority
+
+QuoteAdjustmentGroupId
+
+QuoteLineItemId
+
+```
+
 **Type**
 int
 
@@ -14065,11 +16660,6 @@ Reserved for future use.
 
 **reference**
 int
-
-
-### Standard Objects QuoteLineRelationship
-
-**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -14088,13 +16678,6 @@ Lookup
 **Refers To**
 QuoteAdjustmentGroup
 
-```
-QuoteLineItemId
-
-TotalAmount
-
-```
-
 **Type**
 reference
 
@@ -14109,11 +16692,21 @@ This field is a relationship field.
 **Relationship Name**
 QuoteLineItem
 
+
+### Standard Objects QuoteLineRelationship
+
+**Field** **Details**
+
 **Relationship Type**
 Lookup
 
 **Refers To**
 QuoteLineItem
+
+```
+TotalAmount
+
+```
 
 **Type**
 currency
@@ -14129,9 +16722,6 @@ prorated for the duration of the subscription.
 
 Describes the relationship between quote line items, such as items in a bundle. When you create a QuoteLineRelationship object, it’s
 immutable: it can’t be edited or removed. This object is available in API version 58.0 and later.
-
-
-Standard Objects QuoteLineRelationship
 
 Supported Calls
 
@@ -14149,8 +16739,6 @@ Fields
 ```
 AssociatedQuantScaleMethod
 
-AssociatedQuoteLineId
-
 ```
 
 **Type**
@@ -14167,15 +16755,30 @@ Possible values are:
 
 **•** `Constant`  - The associated quote’s line quantity remains the same in relation to the
 main quote line’s quantity. For example, the main quote line has a quantity of one and
+
+
+Standard Objects QuoteLineRelationship
+
+**Field** **Details**
+
 the associated quote line has a quantity of one. If you increase the quantity of the main
 quote line to two, the associated quote line’s quantity remains at one.
 
-**•** `Proportional`  - The associated order’s item quantity increases or decreases based
+**•** `Proportional`                   - The associated order’s item quantity increases or decreases based
 on the main quote line’s quantity. For example, the main quote line has a quantity of
 one and the associated quote line has a quantity of two. If you increase the quantity of
 the main quote line to two, the associated quote line’s quantity increases to four.
 
 The default value is `Proportional` .
+
+```
+AssociatedQuoteLineId
+
+AssociatedQuoteLinePricing
+
+AssociatedQuoteLineRole
+
+```
 
 **Type**
 reference
@@ -14195,24 +16798,8 @@ AssociatedQuoteLine
 **Relationship Type**
 Lookup
 
-
-Standard Objects QuoteLineRelationship
-
-**Field** **Details**
-
 **Refers To**
 QuoteLineItem
-
-```
-AssociatedQuoteLinePricing
-
-AssociatedQuoteLineRole
-
-IsPriceInclusive
-
-LastReferencedDate
-
-```
 
 **Type**
 picklist
@@ -14240,11 +16827,27 @@ Filter, Group, Restricted picklist, Sort
 **Description**
 Describes the position of the associated quote line item in the relationship.
 
+
+Standard Objects QuoteLineRelationship
+
+**Field** **Details**
+
 Possible values are:
 
 **•** `BundleComponent` —The associated quote line item is part of a bundle.
 
 **•** `SetComponent` —The associated quote line item is part of a set.
+
+```
+IsPriceInclusive
+
+LastReferencedDate
+
+LastViewedDate
+
+MainQuoteLineId
+
+```
 
 **Type**
 boolean
@@ -14267,22 +16870,6 @@ Filter, Nillable, Sort
 **Description**
 The timestamp when the current user last accessed this record indirectly, for example, through
 a list view or related record.
-
-
-Standard Objects QuoteLineRelationship
-
-**Field** **Details**
-
-```
-LastViewedDate
-
-MainQuoteLineId
-
-MainQuoteLineRole
-
-Name
-
-```
 
 **Type**
 dateTime
@@ -14312,8 +16899,24 @@ MainQuoteLine
 **Relationship Type**
 Lookup
 
+
+Standard Objects QuoteLineRelationship
+
+**Field** **Details**
+
 **Refers To**
 QuoteLineItem
+
+```
+MainQuoteLineRole
+
+Name
+
+ProductRelatedComponentId
+
+ProductRelationshipTypeId
+
+```
 
 **Type**
 picklist
@@ -14338,20 +16941,6 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 
 **Description**
 The name of the quote line relationship.
-
-
-Standard Objects QuoteLineRelationship
-
-**Field** **Details**
-
-```
-ProductRelatedComponentId
-
-ProductRelationshipTypeId
-
-QuoteId
-
-```
 
 **Type**
 reference
@@ -14382,6 +16971,11 @@ associated quote lines.
 
 This field is a relationship field.
 
+
+Standard Objects QuoteLineRelationship
+
+**Field** **Details**
+
 **Relationship Name**
 ProductRelationshipType
 
@@ -14390,6 +16984,15 @@ Lookup
 
 **Refers To**
 ProductRelationshipType
+
+```
+QuoteId
+
+RootQuoteLineId
+
+```
+
+Associated Objects
 
 **Type**
 reference
@@ -14410,18 +17013,6 @@ Lookup
 
 **Refers To**
 Quote
-
-
-### Standard Objects QuoteItemTaxItem
-
-**Field** **Details**
-
-```
-RootQuoteLineId
-
-```
-
-Associated Objects
 
 **Type**
 reference
@@ -14447,6 +17038,9 @@ This object has the following associated objects.
 
 Feed tracking is available for the object.
 
+
+### Standard Objects QuoteItemTaxItem
+
 **QuoteLineRelationshipHistory**
 
 History is available for tracked fields of the object.
@@ -14470,32 +17064,20 @@ Fields
 ```
 Amount
 
+CurrencyIsoCode
+
+Description
+
 ```
 
 **Type**
 currency
-
-
-Standard Objects QuoteItemTaxItem
-
-**Field** **Details**
 
 **Properties**
 Filter, Sort
 
 **Description**
 The tax amount for the quote line item.
-
-```
-CurrencyIsoCode
-
-Description
-
-Name
-
-QuoteLineItemId
-
-```
 
 **Type**
 picklist
@@ -14522,11 +17104,27 @@ The default value is 'USD'.
 **Type**
 textarea
 
+
+Standard Objects QuoteItemTaxItem
+
+**Field** **Details**
+
 **Properties**
 Nillable
 
 **Description**
 User-defined description of the tax. For example, state sales tax or value-added tax (VAT).
+
+```
+Name
+
+QuoteLineItemId
+
+Rate
+
+TaxEffectiveDate
+
+```
 
 **Type**
 string
@@ -14548,11 +17146,6 @@ ID of the related quote line item.
 
 This is a relationship field.
 
-
-### Standard Objects QuoteLineWorkSource
-
-**Field** **Details**
-
 **Relationship Name**
 QuoteLineItem
 
@@ -14561,15 +17154,6 @@ Lookup
 
 **Refers To**
 QuoteLineItem
-
-```
-Rate
-
-TaxEffectiveDate
-
-Type
-
-```
 
 **Type**
 percent
@@ -14589,6 +17173,16 @@ Filter, Group, Sort
 
 **Description**
 The date used to calculate the tax rate.
+
+
+### Standard Objects QuoteLineWorkSource
+
+**Field** **Details**
+
+```
+Type
+
+```
 
 **Type**
 picklist
@@ -14610,9 +17204,6 @@ Possible values are:
 Represents an association between a quote and work sources, such as assets, quote line items, order products, or work type groups. This
 object is available in API version 63.0 and later.
 
-
-Standard Objects QuoteLineWorkSource
-
 Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
@@ -14626,8 +17217,6 @@ Fields
 AssetId
 
 OrderItemId
-
-QuoteId
 
 ```
 
@@ -14654,6 +17243,11 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects QuoteLineWorkSource
+
+**Field** **Details**
+
 **Description**
 The order product associated with the quote work source.
 
@@ -14664,6 +17258,15 @@ OrderItem
 
 **Refers To**
 OrderItem
+
+```
+QuoteId
+
+QuoteLineItemId
+
+WorkTypeGroupId
+
+```
 
 **Type**
 reference
@@ -14679,23 +17282,11 @@ This field is a relationship field.
 **Relationship Name**
 Quote
 
-
-### Standard Objects QuoteRecipientGroup
-
-**Field** **Details**
-
 **Relationship Type**
 Master-detail
 
 **Refers To**
 Quote (the master object)
-
-```
-QuoteLineItemId
-
-WorkTypeGroupId
-
-```
 
 **Type**
 reference
@@ -14723,6 +17314,11 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The quote associated with the work source
 
+
+### Standard Objects QuoteRecipientGroup
+
+**Field** **Details**
+
 This field is a relationship field.
 
 **Relationship Name**
@@ -14741,9 +17337,6 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `undelete()`, `update()`, `upsert()`
 
-
-Standard Objects QuoteRecipientGroup
-
 Fields
 
 **Field** **Details**
@@ -14754,12 +17347,6 @@ ActualMemberCount
 Description
 
 ExpectedMemberCount
-
-LastReferencedDate
-
-LastViewedDate
-
-Name
 
 ```
 
@@ -14790,6 +17377,24 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The expected number of members in the quote recipient group.
 
+
+Standard Objects QuoteRecipientGroup
+
+**Field** **Details**
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+QuoteId
+
+Status
+
+```
+
 **Type**
 dateTime
 
@@ -14814,20 +17419,8 @@ string
 **Properties**
 Create, Filter, Group, idLookup, Sort, Update
 
-
-### Standard Objects QuoteRecipientGroupMember
-
-**Field** **Details**
-
 **Description**
 The name of the quote recipient group.
-
-```
-QuoteId
-
-Status
-
-```
 
 **Type**
 reference
@@ -14841,7 +17434,7 @@ The ID of a quote recipient group.
 This field is a relationship field.
 
 **Relationship Name**
-### Quote
+Quote
 
 **Relationship Type**
 Master-detail
@@ -14857,6 +17450,11 @@ Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort,
 
 **Description**
 Indicates whether the quote recipient group is active.
+
+
+### Standard Objects QuoteRecipientGroupMember
+
+**Field** **Details**
 
 Possible values are:
 
@@ -14876,9 +17474,6 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `undelete()`, `update()`, `upsert()`
 
-
-Standard Objects QuoteRecipientGroupMember
-
 Fields
 
 **Field** **Details**
@@ -14889,10 +17484,6 @@ LastReferencedDate
 LastViewedDate
 
 Name
-
-OwnerId
-
-QuoteLineItemRecipientId
 
 ```
 
@@ -14923,6 +17514,20 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Description**
 The name of the quote recipient group member.
 
+
+Standard Objects QuoteRecipientGroupMember
+
+**Field** **Details**
+
+```
+OwnerId
+
+QuoteLineItemRecipientId
+
+QuoteRecipientGroupId
+
+```
+
 **Type**
 reference
 
@@ -14949,11 +17554,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The quote line item recipient associated with the quote recipient group.
 
-
-### Standard Objects RecentFieldChange
-
-**Field** **Details**
-
 This field is a relationship field.
 
 **Relationship Name**
@@ -14961,13 +17561,6 @@ QuoteLineItemRecipient
 
 **Refers To**
 QuoteLineItemRecipient
-
-```
-QuoteRecipientGroupId
-
-### RecentFieldChange
-
-```
 
 **Type**
 reference
@@ -14985,6 +17578,9 @@ QuoteRecipientGroup
 
 **Refers To**
 QuoteRecipientGroup
+
+
+### Standard Objects RecentFieldChange RecentFieldChange
 
 Use this virtual object to see how an opportunity has changed in the past seven days. Learn the previous value of a field, who made the
 change, and when the change was made. This object is available in API version 52.0 and later.
@@ -15005,29 +17601,19 @@ Fields
 ```
 ChangeDate
 
+CurrencyIsoCode
+
+FieldName
+
 ```
 
 **Type**
 dateTime
 
-
-Standard Objects RecentFieldChange
-
-**Field** **Details**
-
 **Properties**
 
 **Description**
 The date and time that the specified field was changed.
-
-```
-CurrencyIsoCode
-
-FieldName
-
-ParentId
-
-```
 
 **Type**
 picklist
@@ -15058,7 +17644,25 @@ The name of the opportunity field that you want the previous value of. Possible 
 
 **•** `ForecastCategory`
 
+
+Standard Objects RecentFieldChange
+
+**Field** **Details**
+
 **•** `NextStep`
+
+```
+ParentId
+
+PreviousCurrencyValue
+
+PreviousDateOnlyValue
+
+PreviousTextValue
+
+ValueChangedById
+
+```
 
 **Type**
 reference
@@ -15079,24 +17683,6 @@ Lookup
 
 **Refers To**
 Opportunity
-
-
-Standard Objects RecentFieldChange
-
-**Field** **Details**
-
-```
-PreviousCurrencyValue
-
-PreviousDateOnlyValue
-
-PreviousTextValue
-
-ValueChangedById
-
-```
-
-Usage
 
 **Type**
 currency
@@ -15131,6 +17717,11 @@ reference
 **Properties**
 Group
 
+
+### Standard Objects RecentlyViewed
+
+**Field** **Details**
+
 **Description**
 The ID of the user who changed the specified field's value during the specified time period.
 
@@ -15145,11 +17736,10 @@ Lookup
 **Refers To**
 User
 
+Usage
+
 One recentFieldChange record is returned for each field that was changed in the past seven days. The supported fields are Amount,
 Close Date, Forecast Category, Next Step, and Stage Name. Only the most recent previous value is returned.
-
-
-### Standard Objects RecentlyViewed
 
 Example: To see the most recent previous amount for an opportunity, use the following query. Replace `006R0000XXXXXXXXXX`
 with the ID of the opportunity.
@@ -15188,6 +17778,9 @@ Supported Calls
 
 `describeSObjects()`, `query()`, `update()`
 
+
+Standard Objects RecentlyViewed
+
 Special Usage Rules
 
 The RecentlyViewed object doesn’t support the Event, Task, Report, KnowledgeArticle, and Article objects.
@@ -15205,6 +17798,14 @@ Fields
 ```
 Alias
 
+Email
+
+FirstName
+
+Id
+
+IsActive
+
 ```
 
 **Type**
@@ -15215,26 +17816,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The alias on the record.
-
-
-Standard Objects RecentlyViewed
-
-**Field** **Details**
-
-```
-Email
-
-FirstName
-
-Id
-
-IsActive
-
-LastName
-
-LastReferencedDate
-
-```
 
 **Type**
 email
@@ -15267,12 +17848,28 @@ The ID of the recently viewed record or list view.
 **Type**
 boolean
 
+
+Standard Objects RecentlyViewed
+
+**Field** **Details**
+
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
 **Description**
 Indicates whether the recently viewed record is an active user ( `true` ) or not ( `false` ). This
 field contains a value only if the recently viewed record is a user.
+
+```
+LastName
+
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+```
 
 **Type**
 string
@@ -15289,11 +17886,6 @@ dateTime
 **Properties**
 Filter, Nillable, Sort, Update
 
-
-Standard Objects RecentlyViewed
-
-**Field** **Details**
-
 **Description**
 The timestamp when the current user last interacted with this record, directly or indirectly.
 Some sample scenarios are:
@@ -15301,17 +17893,6 @@ Some sample scenarios are:
 **•** Viewing or opening a record.
 
 **•** Selecting a record in a lookup search or related list search.
-
-```
-LastViewedDate
-
-Name
-
-NetworkId
-
-Phone
-
-```
 
 **Type**
 dateTime
@@ -15335,6 +17916,24 @@ The name on the recently viewed record or list view. If the recently viewed reco
 contact, or lead, the value is a concatenation of the `firstname` and `lastname` field
 values.
 
+
+Standard Objects RecentlyViewed
+
+**Field** **Details**
+
+```
+NetworkId
+
+Phone
+
+ProfileId
+
+Title
+
+Type
+
+```
+
 **Type**
 reference
 
@@ -15356,22 +17955,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The phone number on the record.
-
-
-Standard Objects RecentlyViewed
-
-**Field** **Details**
-
-```
-ProfileId
-
-Title
-
-Type
-
-UserRoleId
-
-```
 
 **Type**
 reference
@@ -15406,12 +17989,24 @@ CEO.
 **Type**
 picklist
 
+
+Standard Objects RecentlyViewed
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Restricted picklist, Sort
 
 **Description**
 The object type for this recently viewed record or list view. Valid values include any standard
 or custom objects that RecentlyViewed supports.
+
+```
+UserRoleId
+
+```
+
+Usage
 
 **Type**
 reference
@@ -15430,15 +18025,8 @@ UserRole
 **Relationship Type**
 Lookup
 
-
-### Standard Objects Recommendation
-
-**Field** **Details**
-
 **Refers To**
 UserRole
-
-Usage
 
 This object provides a heterogeneous list of different object types. The list consists of recently viewed records, records that were recently
 referenced (a related record was viewed), or recently viewed list views. A record is considered viewed when the user sees the record
@@ -15451,28 +18039,31 @@ Use this query in your code to retrieve a list of all the records and list views
 to least recent.
 
 ```
-   SELECT Id, Name
+SELECT Id, Name
 
-   FROM RecentlyViewed
+FROM RecentlyViewed
 
-   WHERE LastViewedDate !=null
+WHERE LastViewedDate !=null
 
-   ORDER BY LastViewedDate DESC
+ORDER BY LastViewedDate DESC
 
 ```
 
 Use this query to retrieve data that was either viewed or referenced, but only for a limited set of objects.
 
 ```
-   SELECT Id, Name
+SELECT Id, Name
 
-   FROM RecentlyViewed
+FROM RecentlyViewed
 
-   WHERE Type IN ('Account', 'Contact', 'Plan__c')
+WHERE Type IN ('Account', 'Contact', 'Plan__c')
 
-   ORDER BY LastViewedDate DESC
+ORDER BY LastViewedDate DESC
 
 ```
+
+
+### Standard Objects Recommendation
 
 This query retrieves a list of all recently viewed contacts with contact-specific fields, such as the contact’s account name, and the custom
 website field. Records are ordered from most to least recent.
@@ -15502,9 +18093,6 @@ Special Access Rules
 
 You must have the Modify All Data or Manage Next Best Action Recommendations user permission to create and edit recommendations.
 
-
-Standard Objects Recommendation
-
 Fields
 
 **Field** **Details**
@@ -15515,10 +18103,6 @@ AcceptanceLabel
 ActionReference
 
 Description
-
-ExternalId
-
-ImageId
 
 ```
 
@@ -15547,8 +18131,24 @@ string
 **Properties**
 Create, Filter, Group, Sort, Update
 
+
+Standard Objects Recommendation
+
+**Field** **Details**
+
 **Description**
 Text description of the recommendation. Maximum size is 255 characters.
+
+```
+ExternalId
+
+ImageId
+
+IsActionActive
+
+LastReferencedDate
+
+```
 
 **Type**
 string
@@ -15574,29 +18174,11 @@ This is a relationship field.
 **Relationship Name**
 Image
 
-
-Standard Objects Recommendation
-
-**Field** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 ContentAsset
-
-```
-IsActionActive
-
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
-NetworkId
-
-```
 
 **Type**
 boolean
@@ -15616,6 +18198,26 @@ Filter, Nillable, Sort
 
 **Description**
 The date and time when the recommendation was last referenced.
+
+
+Standard Objects Recommendation
+
+**Field** **Details**
+
+```
+LastViewedDate
+
+Name
+
+NetworkId
+
+RecommendationKey
+
+RejectionLabel
+
+```
+
+Associated Objects
 
 **Type**
 dateTime
@@ -15644,20 +18246,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 ID of the Experience Cloud site associated with the recommendation (if applicable).
 
-
-### Standard Objects RecommendationResponse
-
-**Field** **Details**
-
-```
-RecommendationKey
-
-RejectionLabel
-
-```
-
-Associated Objects
-
 **Type**
 string
 
@@ -15681,6 +18269,9 @@ Label that appears as the reject option on the surfaced recommendation. Maximum 
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
 
+
+### Standard Objects RecommendationResponse
+
 **RecommendationChangeEvent (API version 48.0)**
 Change events are available for the object.
 
@@ -15703,9 +18294,6 @@ You must have one of these user permissions to read, delete, or update recommend
 
 **•** Manage Next Best Action Strategies
 
-
-Standard Objects RecommendationResponse
-
 Fields
 
 **Field** **Details**
@@ -15716,10 +18304,6 @@ ActionReference
 ContextRecord
 
 ContextRecordName
-
-ContextRecordType
-
-NetworkId
 
 ```
 
@@ -15747,11 +18331,27 @@ of the case record.
 **Type**
 string
 
+
+Standard Objects RecommendationResponse
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The name of the context record.
+
+```
+ContextRecordType
+
+NetworkId
+
+OnBehalfOf
+
+OnBehalfOfName
+
+```
 
 **Type**
 string
@@ -15773,11 +18373,6 @@ Create, Filter, Group, Nillable, Sort
 ID of the Experience Cloud site associated with the recommendation (if applicable). This is
 a relationship field.
 
-
-Standard Objects RecommendationResponse
-
-**Field** **Details**
-
 **Relationship Name**
 Network
 
@@ -15786,19 +18381,6 @@ Lookup
 
 **Refers To**
 Network
-
-```
-OnBehalfOf
-
-OnBehalfOfName
-
-OnBehalfOfType
-
-RecommendationKey
-
-RecommendationName
-
-```
 
 **Type**
 string
@@ -15817,6 +18399,24 @@ Filter, Group, Sort
 
 **Description**
 Name of the value stored for `OnBehalfOf` at time of response.
+
+
+Standard Objects RecommendationResponse
+
+**Field** **Details**
+
+```
+OnBehalfOfType
+
+RecommendationKey
+
+RecommendationName
+
+RecommendationType
+
+Response
+
+```
 
 **Type**
 string
@@ -15844,26 +18444,8 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
-
-Standard Objects RecommendationResponse
-
-**Field** **Details**
-
 **Description**
 Name of the recommendation returned from the recommendation strategy.
-
-```
-RecommendationType
-
-Response
-
-StrategyReference
-
-StrategyVersion
-
-```
-
-Usage
 
 **Type**
 string
@@ -15891,6 +18473,20 @@ Possible values are:
 
 **•** `Rejected`
 
+
+### Standard Objects RecordAction
+
+**Field** **Details**
+
+```
+StrategyReference
+
+StrategyVersion
+
+```
+
+Usage
+
 **Type**
 string
 
@@ -15913,8 +18509,7 @@ The recommendation strategy version that’s active at the time of the response.
 
 The RecommendationResponse object can’t be customized with additional fields.
 
-
-### Standard Objects RecordAction RecordAction
+### RecordAction
 
 Represents a relationship between a record and an action, such as a flow. Create a RecordAction for every action that you want to
 associate with a particular record. Available in API version 42.0 and later.
@@ -15930,6 +18525,9 @@ Special Access Rules
 
 As of Summer ’20 and later, only authenticated internal and external users can access this object.
 
+
+Standard Objects RecordAction
+
 Fields
 
 **Field** **Details**
@@ -15940,6 +18538,8 @@ ActionDefinition
 ActionType
 
 FlowDefinition
+
+FlowInterviewId
 
 ```
 
@@ -15974,11 +18574,6 @@ For versions of the API prior to version 46.0, this field is set to Flow.
 **Type**
 picklist
 
-
-Standard Objects RecordAction
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
@@ -15987,15 +18582,6 @@ Optional in Lightning Flow for Service implementations using version 42.0 or 43.
 An upgrade to Winter '19 or later, which uses API version 44.0 or later, copies FlowDefinition
 to ActionDefinition. For versions 42.0 and 43.0, this field is the API name of the flow that’s
 associated with the record.
-
-```
-FlowInterviewId
-
-IsMandatory
-
-IsUiRemoveHidden
-
-```
 
 **Type**
 reference
@@ -16009,6 +18595,11 @@ Process Builder.
 
 This is a relationship field.
 
+
+Standard Objects RecordAction
+
+**Field** **Details**
+
 **Relationship Name**
 FlowInterview
 
@@ -16017,6 +18608,17 @@ Lookup
 
 **Refers To**
 FlowInterview
+
+```
+IsMandatory
+
+IsUiRemoveHidden
+
+Order
+
+ParticipantRoleId
+
+```
 
 **Type**
 boolean
@@ -16041,22 +18643,6 @@ Optional. Specifies whether the ability to remove the action is hidden in the UI
 value is false. If true, the UI hides the ability to remove the action. However, actions can still
 be deleted using the API.
 
-
-Standard Objects RecordAction
-
-**Field** **Details**
-
-```
-Order
-
-ParticipantRoleId
-
-Pinned
-
-RecordId
-
-```
-
 **Type**
 int
 
@@ -16080,11 +18666,23 @@ This field is a polymorphic relationship field and is available in API version 5
 **Relationship Name**
 ParticipantRole
 
+
+Standard Objects RecordAction
+
+**Field** **Details**
+
 **Relationship Type**
 Lookup
 
 **Refers To**
 ParticipantRole
+
+```
+Pinned
+
+RecordId
+
+```
 
 **Type**
 picklist
@@ -16114,11 +18712,6 @@ Required. Record associated with the action. In version 46.0 and above, we suppo
 [object types. To learn about supported objects, see the Lightning Flow for Service Developer’s](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_guided_engagement.meta/salesforce_guided_engagement/guided_engagement_support.htm)
 [Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_guided_engagement.meta/salesforce_guided_engagement/guided_engagement_support.htm)
 
-
-Standard Objects RecordAction
-
-**Field** **Details**
-
 This is a relationship field.
 
 **Relationship Name**
@@ -16138,6 +18731,12 @@ ProductRequired, ProductTransfer, PurchaserPlan, PurchaserPlanAssn,
 RebateMemberAggregateItem, ResourceAbsence, ResourcePreference, ReturnOrder,
 ReturnOrderLineItem, ServiceAppointment, ServiceResource, ServiceResourceSkill,
 ServiceTerritory, ServiceTerritoryMember, Shipment, SkillRequirement, SocialPersona,
+
+
+Standard Objects RecordAction
+
+**Field** **Details**
+
 SocialPost, TimeSlot, User, Visit, VoiceCall, WorkOrder, WorkOrderLineItem, WorkType,
 WorkTypeGroup
 
@@ -16179,9 +18778,6 @@ The RecordAction object works with the Actions & Recommendations component in Li
 can be used to create relationships between records and actions in Salesforce Classic, those relationships can’t be displayed in Salesforce
 Classic.
 
-
-Standard Objects RecordAction
-
 Note: API version 44.0 added a field, ActionDefinition, so that a RecordAction in future releases can support other types of actions
 in addition to flows. API version 44.0 and later maintain the FlowDefinition field to support processes that reference this field in
 earlier API versions. Upgrading an org to Winter '19 or later, which uses API version 44.0 or later, copies the FlowDefinition field to
@@ -16195,6 +18791,9 @@ Deleted RecordActions are removed from the list when the page is refreshed.
 
 [For more information about the Actions & Recommendations component and how it works with RecordActions, see the Lightning Flow](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_guided_engagement.meta/salesforce_guided_engagement/salesforce_guided_engagement.htm)
 [for Service Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_guided_engagement.meta/salesforce_guided_engagement/salesforce_guided_engagement.htm)
+
+
+Standard Objects RecordAction
 
 Java Example
 
@@ -16229,14 +18828,12 @@ Here’s an example of how to associate flows to a record using the RecordAction
 
 Data Model
 
-
-### Standard Objects RecordActionHistory
-
 Associated Objects
 
 This object has the following associated objects. Unless noted, they are available in the same API version as this object.
 
-### **RecordActionHistory**
+
+### Standard Objects RecordActionHistory **RecordActionHistory**
 
 History is available for tracked fields of the object.
 
@@ -16254,9 +18851,6 @@ Special Access Rules
 
 This object is always read-only.
 
-
-Standard Objects RecordActionHistory
-
 Fields
 
 **Field** **Details**
@@ -16269,10 +18863,6 @@ ActionDefinitionLabel
 ActionType
 
 IsMandatory
-
-LoggedTime
-
-ParentRecordId
 
 ```
 
@@ -16306,11 +18896,25 @@ Required. The type of action associated with the record. Possible values are:
 **Type**
 boolean
 
+
+Standard Objects RecordActionHistory
+
+**Field** **Details**
+
 **Properties**
 Defaulted on create
 
 **Description**
 Optional. Specifies whether the action is mandatory. The default value is false.
+
+```
+LoggedTime
+
+ParentRecordId
+
+Pinned
+
+```
 
 **Type**
 dateTime
@@ -16326,11 +18930,6 @@ reference
 
 **Properties**
 Filter, Sort
-
-
-Standard Objects RecordActionHistory
-
-**Field** **Details**
 
 **Description**
 Required. The parent record for the associated action.
@@ -16357,15 +18956,6 @@ ChangeRequest, Incident, Problem are available in API version 53.0 and later.
 
 RebateMemberAggregateItem is available in API version 54.0 and later.
 
-```
-Pinned
-
-RecordActionId
-
-State
-
-```
-
 **Type**
 picklist
 
@@ -16376,11 +18966,27 @@ Defaulted on create, Nillable, Restricted picklist
 Optional. Specifies whether the action is pinned to the top or bottom, or unpinned. Possible
 values are:
 
+
+Standard Objects RecordActionHistory
+
+**Field** **Details**
+
 **•** None
 
 **•** Top
 
 **•** Bottom
+
+```
+RecordActionId
+
+State
+
+UserId
+
+```
+
+Usage
 
 **Type**
 string
@@ -16397,11 +19003,6 @@ picklist
 **Properties**
 Defaulted on create, Restricted picklist
 
-
-Standard Objects RecordActionHistory
-
-**Field** **Details**
-
 **Description**
 Required. The state of the action. A state change triggers the logging of a history event.
 Possible values are:
@@ -16416,13 +19017,6 @@ Possible values are:
 
 **•** `Unlinked` —The action was unlinked because the flow was paused and the current
 record for the flow interview changed.
-
-```
-UserId
-
-```
-
-Usage
 
 **Type**
 reference
@@ -16443,6 +19037,9 @@ User
 
 The RecordActionHistory object represents the lifecycle of an action on a record as it goes through different states.
 
+
+### Standard Objects RecordsetFilterCriteria
+
 The RecordActionHistory object is a big object. For this reason, when you use synchronous SOQL, SOAP, REST, Bulk, or Apex APIs to read
 this object, queries must follow a specific pattern or they fail. Queries must match one of these patterns and use fields in this precise
 order when more than one field is used.
@@ -16456,9 +19053,9 @@ order when more than one field is used.
 For example, this SOQL query follows the ParentRecordId, LoggedTime (DESC) pattern.
 
 ```
-SELECT ActionDefinitionApiName, User, State FROM RecordActionHistory WHERE
+   SELECT ActionDefinitionApiName, User, State FROM RecordActionHistory WHERE
 
-      ParentRecordId = {CaseId} ORDER BY ParentRecordId, LoggedTime DESC
+         ParentRecordId = {CaseId} ORDER BY ParentRecordId, LoggedTime DESC
 
 ```
 
@@ -16468,9 +19065,6 @@ Apex triggers cannot reference big object records. Use SOQL queries if you want 
 
 [For more information about the Actions & Recommendations component and how it works with RecordActions, see the Lightning Flow](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_guided_engagement.meta/salesforce_guided_engagement/salesforce_guided_engagement.htm)
 [for Service Developer Guide. Learn more about big objects and how to query them in the Query Big Objects module on Trailhead.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_guided_engagement.meta/salesforce_guided_engagement/salesforce_guided_engagement.htm)
-
-
-### Standard Objects RecordsetFilterCriteria
 
 Java Example
 
@@ -16528,6 +19122,9 @@ create recordset filter criteria so that only service appointments that satisfy 
 only maintenance work rules that satisfy your criteria are matched to assets. This object is available in API version 50.0 and later. Assets
 and maintenance work rules are available in API version 52.0 and later.
 
+
+Standard Objects RecordsetFilterCriteria
+
 Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
@@ -16544,34 +19141,22 @@ Fields
 ```
 Description
 
-```
-
-**Type**
-textarea
-
-
-Standard Objects RecordsetFilterCriteria
-
-**Field** **Details**
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-The description of the recordset filter criteria.
-
-```
 FilteredObject
 
 IsActive
 
 LastReferencedDate
 
-LastViewedDate
-
-LogicalOperator
-
 ```
+
+**Type**
+textarea
+
+**Properties**
+Create, Nillable, Update
+
+**Description**
+The description of the recordset filter criteria.
 
 **Type**
 picklist
@@ -16604,8 +19189,26 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects RecordsetFilterCriteria
+
+**Field** **Details**
+
 **Description**
 The date when the recordset filter criteria was last referenced.
+
+```
+LastViewedDate
+
+LogicalOperator
+
+Name
+
+OwnerId
+
+SourceObject
+
+```
 
 **Type**
 dateTime
@@ -16622,11 +19225,6 @@ picklist
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
-
-Standard Objects RecordsetFilterCriteria
-
-**Field** **Details**
-
 **Description**
 Defines the logic to evaluate multiple recordset filter criteria rules. Available in API version
 53.0 and later.
@@ -16636,17 +19234,6 @@ Possible values are:
 **•** `AND`
 
 **•** `OR`
-
-```
-Name
-
-OwnerId
-
-SourceObject
-
-```
-
-Usage Rate Field
 
 **Type**
 string
@@ -16672,6 +19259,11 @@ picklist
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort
 
+
+Standard Objects RecordsetFilterCriteria
+
+**Field** **Details**
+
 **Description**
 The source object that the filtered criteria are applied to. Shifts and maintenance work rules
 are available in API version 52.0 and later. Appointment bundle objects are available in API
@@ -16689,23 +19281,20 @@ Possible values are:
 
 **•** `MaintenanceWorkRule`
 
+Usage Rate Field
+
+Usage Rate Unit
+
+Usage
+
 **Type**
 picklist
 
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort
 
-
-### Standard Objects RecordsetFilterCriteriaRule
-
-**Field** **Details**
-
 **Description**
 Stores the daily usage rate of the asset. The unit for the usage rate must be per day.
-
-Usage Rate Unit
-
-Usage
 
 **Type**
 picklist
@@ -16722,7 +19311,7 @@ Possible values are:
 
 Let's say an employee is open to working a 9 am to 5 pm shift on a Sunday but only for emergency appointments. In this case, the
 `SourceObject` is `Shift` and the `FilteredObject` is `ServiceAppointment` . The service appointments available for
-### that shift are filtered for emergency appointments using the RecordsetFilterCriteriaRule object.
+that shift are filtered for emergency appointments using the `RecordsetFilterCriteriaRule` object.
 
 RecordSetFilterCriteria isn’t available for report types.
 
@@ -16733,6 +19322,9 @@ This object has the following associated objects. Unless noted, they are availab
 **RecordsetFilterCriteriaFeed**
 
 Feed tracking is available for the object.
+
+
+### Standard Objects RecordsetFilterCriteriaRule
 
 **RecordsetFilterCriteriaHistory**
 
@@ -16756,9 +19348,6 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
 
-
-Standard Objects RecordsetFilterCriteriaRule
-
 Special Access Rules
 
 Field Service must be enabled.
@@ -16771,10 +19360,6 @@ Fields
 CriteriaField
 
 LastReferencedDate
-
-LastViewedDate
-
-NextOccurence
 
 ```
 
@@ -16804,11 +19389,25 @@ custom fields are allowed except those with these field types:
 **Type**
 dateTime
 
+
+Standard Objects RecordsetFilterCriteriaRule
+
+**Field** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The date when the recordset filter criteria rule was last referenced.
+
+```
+LastViewedDate
+
+NextOccurence
+
+Operator
+
+```
 
 **Type**
 dateTime
@@ -16824,11 +19423,6 @@ picklist
 
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-
-Standard Objects RecordsetFilterCriteriaRule
-
-**Field** **Details**
 
 **Description**
 This field’s value is compared to the Usage Field to determine if the rule is true.
@@ -16846,15 +19440,6 @@ custom fields are allowed except those with these field types:
 **•** `textarea`
 
 **•** `url`
-
-```
-Operator
-
-RecordsetFilterCriteriaId
-
-RecordsetFilterCriteriaRuleNumber
-
-```
 
 **Type**
 picklist
@@ -16878,6 +19463,24 @@ Possible values are:
 
 **•** `LessThan`
 
+
+Standard Objects RecordsetFilterCriteriaRule
+
+**Field** **Details**
+
+```
+RecordsetFilterCriteriaId
+
+RecordsetFilterCriteriaRuleNumber
+
+Type
+
+Value
+
+Usage Rate Field
+
+```
+
 **Type**
 reference
 
@@ -16895,22 +19498,6 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 
 **Description**
 The automatically assigned number of the recordset filter criteria rule.
-
-
-Standard Objects RecordsetFilterCriteriaRule
-
-**Field** **Details**
-
-```
-Type
-
-Value
-
-Usage Rate Field
-
-Usage Rate Unit
-
-```
 
 **Type**
 picklist
@@ -16948,8 +19535,21 @@ Create, Filter, Group, Restricted picklist, Sort
 Stores the daily usage rate of the asset. The unit for the usage rate must be per day. Possible
 values are derived from the source object’s standard and custom fields. Possible standard
 source objects are `Asset` and `ServiceAppointment` . The format is, for example,
+
+
+### Standard Objects RecordsetFltrCritMonitor
+
+**Field** **Details**
+
 `Asset.PricingSource` or
 `ServiceAppointment.GroupAppointmentAccessType` .
+
+```
+Usage Rate Unit
+
+```
+
+Usage
 
 **Type**
 picklist
@@ -16963,11 +19563,6 @@ Defines the rate for Usage Rate Field.
 Possible values are:
 
 **•** DAYS
-
-
-### Standard Objects RecordsetFltrCritMonitor
-
-Usage
 
 If you want to create a filter rule for service appointments with a dispatched status, set `CriteriaField` to
 `ServiceAppointment.Status` and `Value` to `Dispatched` . Then add the ID from a RecordsetFilterCriteria record to
@@ -16994,8 +19589,6 @@ Fields
 ```
 AssetId
 
-Description
-
 ```
 
 **Type**
@@ -17003,6 +19596,11 @@ reference
 
 **Properties**
 Create, Filter, Group, Sort, Update
+
+
+Standard Objects RecordsetFltrCritMonitor
+
+**Field** **Details**
 
 **Description**
 The ID of the asset to link the RFC to.
@@ -17018,21 +19616,9 @@ Lookup
 **Refers To**
 Asset
 
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The description of the RFC associated with the recordset filter criteria monitor.
-
-
-Standard Objects RecordsetFltrCritMonitor
-
-**Field** **Details**
-
 ```
+Description
+
 IsWithinThreshold
 
 Name
@@ -17041,9 +19627,16 @@ LastReferencedDate
 
 LastViewedDate
 
-RecordsetFilterCriteriaId
-
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The description of the RFC associated with the recordset filter criteria monitor.
 
 **Type**
 boolean
@@ -17077,11 +19670,23 @@ The date the value was last referenced.
 **Type**
 dateTime
 
+
+### Standard Objects RecordType
+
+**Field** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The date the value was last viewed.
+
+```
+RecordsetFilterCriteriaId
+
+```
+
+Associated Objects
 
 **Type**
 reference
@@ -17100,15 +19705,8 @@ RecordsetFilterCriteria
 **Relationship Type**
 Lookup
 
-
-### Standard Objects RecordType
-
-**Field** **Details**
-
 **Refers To**
 RecordsetFilterCriteria
-
-Associated Objects
 
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
@@ -17133,6 +19731,9 @@ AttributePicklistValue
 
 Represents a record type.
 
+
+Standard Objects RecordType
+
 Supported Calls
 
 `create()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`, `upsert()`
@@ -17151,6 +19752,10 @@ access controls.
 ```
 BusinessProcessId
 
+Description
+
+DeveloperName
+
 ```
 
 **Type**
@@ -17159,25 +19764,9 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects RecordType
-
-**Field** **Details**
-
 **Description**
 Required for Opportunity and Lead record types in API version 17.0 and later. ID of an
 associated BusinessProcess.
-
-```
-Description
-
-DeveloperName
-
-IsActive
-
-IsPersonType
-
-```
 
 **Type**
 string
@@ -17206,6 +19795,22 @@ Note: When creating large sets of data, always specify a unique `DeveloperName`
 for each record. If no `DeveloperName` is specified, performance slows down while
 Salesforce generates one for each record.
 
+
+Standard Objects RecordType
+
+**Field** **Details**
+
+```
+IsActive
+
+IsPersonType
+
+Name
+
+NamespacePrefix
+
+```
+
 **Type**
 boolean
 
@@ -17225,22 +19830,6 @@ Defaulted on create, Filter, Group, Sort
 **Description**
 Indicates whether this record has been designated as a person account ( `true` ) or not
 ( `false` ). Visible only if the organization has the person account feature enabled.
-
-
-Standard Objects RecordType
-
-**Field** **Details**
-
-```
- Name
-
-NamespacePrefix
-
- SobjectType
-
-```
-
-Usage
 
 **Type**
 string
@@ -17276,6 +19865,18 @@ developer.
 that are part of an installed managed package. All other objects have no namespace
 prefix.
 
+
+### Standard Objects RecordTypeLocalization
+
+**Field** **Details**
+
+```
+ SobjectType
+
+```
+
+Usage
+
 **Type**
 picklist
 
@@ -17291,9 +19892,6 @@ application can describe or query RecordType records.
 Client applications can create or update values in `RecordTypeId` on these objects, specifying a valid record type ID associated with
 these objects.
 
-
-### Standard Objects RecordTypeLocalization
-
 Note: You can’t create or update the `RecordTypeId` field on the CampaignMember records. Set the CampaignMember
 record type using the `CampaignMemberRecordTypeId` field on Campaign.
 
@@ -17308,7 +19906,7 @@ Supported Calls
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`,
 
 ```
-   upsert()
+upsert()
 
 ```
 
@@ -17326,8 +19924,6 @@ Fields
 ```
 Language
 
-NamespacePrefix
-
 ```
 
 **Type**
@@ -17336,8 +19932,24 @@ string
 **Properties**
 Create, Filter, Nillable, Restricted picklist
 
+
+Standard Objects RecordTypeLocalization
+
+**Field** **Details**
+
 **Description**
 The language for this translated label.
+
+```
+NamespacePrefix
+
+ ParentId
+
+ Value
+
+```
+
+Usage
 
 **Type**
 string
@@ -17356,27 +19968,12 @@ The namespace prefix can have one of the following values.
 **•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix
 of the org for all objects that support it, unless an object is in an installed managed
 package. In that case, the object has the namespace prefix of the installed
-
-
-### Standard Objects RecordVisibility (Pilot)
-
-**Field** **Details**
-
 managed package. This field’s value is the namespace prefix of the Developer
 Edition org of the package developer.
 
 **•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only
 for objects that are part of an installed managed package. All other objects have
 no namespace prefix.
-
-```
- ParentId
-
- Value
-
-```
-
-Usage
 
 **Type**
 reference
@@ -17398,7 +19995,8 @@ The actual translated label for the record type. Label is **Translation** .
 
 Use this object to translate the labels of your record types into other supported languages.
 
-### RecordVisibility (Pilot)
+
+### Standard Objects RecordVisibility (Pilot) RecordVisibility (Pilot)
 
 Represents the visibility attributes that determine a record’s read access. This object is read only and is available in API version 46.0 and
 later.
@@ -17416,10 +20014,6 @@ Note: We provide the RecordVisibility object to selected customers through a pil
 terms and conditions. To be nominated to participate in the program, contact Salesforce. Pilot programs are subject to change,
 and we can’t guarantee acceptance. The RecordVisibility object isn’t generally available unless or until Salesforce announces its
 general availability in documentation or in press releases or public statements. We can’t guarantee general availability within any
-
-
-Standard Objects RecordVisibility (Pilot)
-
 particular time frame or at all. Make your purchase decisions only on the basis of generally available products and features. You
 [can provide feedback and suggestions for the RecordVisibility object in the group in the Trailblazer Community.](https://success.salesforce.com/_ui/core/chatter/groups/GroupProfilePage?g=0F93A000000DN7N)
 
@@ -17433,8 +20027,6 @@ RecordId
 VisibilityAttribute
 
 ```
-
-Usage
 
 **Type**
 picklist
@@ -17457,6 +20049,11 @@ example, a user ID, parent record ID, or group ID.
 
 The output of visibility attributes is in JSON format and must be deserialized.
 
+
+### Standard Objects RedirectWhitelistUrl
+
+Usage
+
 Use this object to query the attributes that determine the visibility of one or more records. You can’t create, delete, or update any records
 using this object.
 
@@ -17465,11 +20062,11 @@ Up to 200 record IDs can be queried. You can include an `ORDER BY` clause for an
 This sample query returns the visibility attributes for the indicated record.
 
 ```
-SELECT RecordId, VisibilityAttribute
+   SELECT RecordId, VisibilityAttribute
 
-FROM RecordVisibility
+   FROM RecordVisibility
 
-WHERE RecordId=[single ID] // or Record IN [list of IDs]
+   WHERE RecordId=[single ID] // or Record IN [list of IDs]
 
 ```
 
@@ -17479,9 +20076,9 @@ being used in the filter criteria as well.
 RecordVisibility is a foreign key on the records. This query returns the visibility attributes for Account records:
 
 ```
-SELECT Id, Name, RecordVisibility.VisibilityAttribute
+   SELECT Id, Name, RecordVisibility.VisibilityAttribute
 
-FROM Account
+   FROM Account
 
 ```
 
@@ -17490,8 +20087,7 @@ You can’t filter `RecordId` fields when using RecordVisibility as a lookup or 
 You can use `RecordVisibilityContext` to filter `WITH` clauses in queries. For more information, see `WITH` _[filteringExpression](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_with.htm)_
 in the _SOQL and SOSL Reference_ .
 
-
-### Standard Objects RedirectWhitelistUrl RedirectWhitelistUrl
+### RedirectWhitelistUrl
 
 Represents a trusted URL for external user redirections. Redirections to a different Salesforce org, including its publicly served pages and
 content, are allowed from your Salesforce org only when the URL is a RedirectWhitelistUrl. For non-Salesforce URLs, a session setting
@@ -17517,12 +20113,15 @@ Fields
 ```
 DeveloperName
 
-Language
-
 ```
 
 **Type**
 string
+
+
+Standard Objects RedirectWhitelistUrl
+
+**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort, Update
@@ -17541,6 +20140,15 @@ generates one for each record.
 Only users with View DeveloperName OR View Setup and Configuration permission can
 view, group, sort, and filter this field.
 
+```
+Language
+
+MasterLabel
+
+NamespacePrefix
+
+```
+
 **Type**
 picklist
 
@@ -17549,20 +20157,6 @@ Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort,
 
 **Description**
 Language of the label.
-
-
-Standard Objects RedirectWhitelistUrl
-
-**Field** **Details**
-
-```
-MasterLabel
-
-NamespacePrefix
-
-Url
-
-```
 
 **Type**
 string
@@ -17590,12 +20184,25 @@ The namespace prefix can have one of the following values.
 **•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
 org for all objects that support it, unless an object is in an installed managed package.
 In that case, the object has the namespace prefix of the installed managed package. This
+
+
+Standard Objects RedirectWhitelistUrl
+
+**Field** **Details**
+
 field’s value is the namespace prefix of the Developer Edition org of the package
 developer.
 
 **•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
 that are part of an installed managed package. All other objects have no namespace
 prefix.
+
+```
+ Url
+
+```
+
+Usage
 
 **Type**
 string
@@ -17615,11 +20222,6 @@ cannot be malformed. Examples of malformed URLs that fail a syntax check are
 
 To add a URL to a `RedirectWhitelistUrl` based on parameters, build the URL before
 you update the `Url` field.
-
-
-### Standard Objects Refund
-
-Usage
 
 Only redirections are restricted to the URLs in this object. A direct anchor link to an external URL is always allowed, even if that URL isn’t
 in the allowlist. An example of a direct anchor link is `<a href="` _**`targetUrl`**_ `">` _**`linkText`**_ `</a>` .
@@ -17647,6 +20249,9 @@ For non-Salesforce URLs, you can choose whether to alert users about untrusted e
 entirely via the `redirectBlockModeEnabled` and `redirectionWarning` fields on the SecuritySettings metadata API type.
 These restrictions apply only to redirections from pages and components built in Salesforce Classic.
 
+
+### Standard Objects Refund
+
 There’s one last special case to cover. For Salesforce org URLs, Salesforce always allows redirections to URLs within the same org, including
 redirections from previous My Domain URLs. When the `enableCrossOrgRedirect` field on the SecuritySettings metadata API
 type is `false`, Salesforce checks user redirections to other Salesforce orgs via a direct link, a post-action URL, or a post-login URL. If the
@@ -17671,9 +20276,6 @@ Special Access Rules
 To access Salesforce Payments objects with the API, your org must have one or more of these licenses: Salesforce Payments, Salesforce
 Order Management, B2B Commerce, or D2C Commerce. Salesforce Payments objects are available only in Lightning Experience.
 
-
-Standard Objects Refund
-
 Fields
 
 **Field** **Details**
@@ -17682,12 +20284,6 @@ Fields
 AccountId
 
 Amount
-
-Balance
-
-CancellationDate
-
-CancellationEffectiveDate
 
 ```
 
@@ -17714,11 +20310,29 @@ Account
 **Type**
 currency
 
+
+Standard Objects Refund
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Sort, Update
 
 **Description**
 Total amount of this refund.
+
+```
+Balance
+
+CancellationDate
+
+CancellationEffectiveDate
+
+CancellationGatewayDate
+
+CancellationGatewayRefNumber
+
+```
 
 **Type**
 currency
@@ -17742,29 +20356,11 @@ The date that the refund was canceled. This is a required parameter for void ser
 **Type**
 dateTime
 
-
-Standard Objects Refund
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
 **Description**
 The date that the cancellation of this refund takes effect.
-
-```
-CancellationGatewayDate
-
-CancellationGatewayRefNumber
-
-CancellationGatewayResultCode
-
-CancellationSfResultCode
-
-ClientContext
-
-```
 
 **Type**
 dateTime
@@ -17783,6 +20379,26 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Unique ID for the cancellation transaction. Generated by the payment gateway.
+
+
+Standard Objects Refund
+
+**Field** **Details**
+
+```
+CancellationGatewayResultCode
+
+CancellationSfResultCode
+
+ClientContext
+
+Comments
+
+CurrencyIsoCode
+
+Date
+
+```
 
 **Type**
 string
@@ -17811,29 +20427,9 @@ textarea
 **Properties**
 Nillable
 
-
-Standard Objects Refund
-
-**Field** **Details**
-
 **Description**
 Contains caller context for payment APIs. Useful for re-establishing context during an
 asynchronous payment transaction.
-
-```
-Comments
-
-CurrencyIsoCode
-
-Date
-
-EffectiveDate
-
-Email
-
-GatewayDate
-
-```
 
 **Type**
 textarea
@@ -17857,11 +20453,31 @@ Three-letter ISO 4217 currency code associated with the payment group record.
 **Type**
 dateTime
 
+
+Standard Objects Refund
+
+**Field** **Details**
+
 **Properties**
 Create, Defaulted on create, Filter, Nillable, Sort, Update
 
 **Description**
 The date and time that this refund was created.
+
+```
+EffectiveDate
+
+Email
+
+GatewayDate
+
+GatewayRefNumber
+
+GatewayResultCode
+
+GatewayResultCodeDescription
+
+```
 
 **Type**
 dateTime
@@ -17884,29 +20500,11 @@ Email address of the person who initiated the refund.
 **Type**
 dateTime
 
-
-Standard Objects Refund
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
 **Description**
 The date that a successful gateway communication caused the creation of this refund.
-
-```
-GatewayRefNumber
-
-GatewayResultCode
-
-GatewayResultCodeDescription
-
-ImpactAmount
-
-IpAddress
-
-```
 
 **Type**
 string
@@ -17929,12 +20527,30 @@ Gateway-specific result code. Must be mapped to a Salesforce-specific result cod
 **Type**
 string
 
+
+Standard Objects Refund
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Description of the GatewayResultCode. Useful for providing additional context as to why the
 gateway returned a specific result code.
+
+```
+ImpactAmount
+
+IpAddress
+
+LastReferencedDate
+
+LastViewedDate
+
+MacAddress
+
+```
 
 **Type**
 currency
@@ -17955,26 +20571,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The IP address of the person who initiated the payment.
-
-
-Standard Objects Refund
-
-**Field** **Details**
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-MacAddress
-
-NetApplied
-
-OrderPaymentSummaryId
-
-PaymentGatewayId
-
-```
 
 **Type**
 dateTime
@@ -18001,8 +20597,24 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects Refund
+
+**Field** **Details**
+
 **Description**
 The MAC address of the person who initiated the refund.
+
+```
+NetApplied
+
+OrderPaymentSummaryId
+
+PaymentGatewayId
+
+PaymentGroupId
+
+```
 
 **Type**
 currency
@@ -18029,11 +20641,6 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects Refund
-
-**Field** **Details**
-
 **Description**
 The payment gateway used to process this refund.
 
@@ -18047,15 +20654,6 @@ Lookup
 
 **Refers To**
 PaymentGateway
-
-```
-PaymentGroupId
-
-PaymentID
-
-PaymentIntentID
-
-```
 
 **Type**
 reference
@@ -18071,11 +20669,25 @@ This is a relationship field.
 **Relationship Name**
 PaymentGroup
 
+
+Standard Objects Refund
+
+**Field** **Details**
+
 **Relationship Type**
 Lookup
 
 **Refers To**
 PaymentGroup
+
+```
+PaymentID
+
+PaymentIntentID
+
+PaymentMethodId
+
+```
 
 **Type**
 reference
@@ -18100,11 +20712,6 @@ Payment
 **Type**
 reference
 
-
-Standard Objects Refund
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -18122,15 +20729,6 @@ Lookup
 **Refers To**
 PaymentIntent
 
-```
-PaymentMethodId
-
-Phone
-
-ProcessingMode
-
-```
-
 **Type**
 reference
 
@@ -18142,6 +20740,11 @@ The payment method used to create the payment being refunded.
 
 This is a relationship field.
 
+
+Standard Objects Refund
+
+**Field** **Details**
+
 **Relationship Name**
 PaymentMethod
 
@@ -18150,6 +20753,17 @@ Lookup
 
 **Refers To**
 PaymentMethod
+
+```
+Phone
+
+ProcessingMode
+
+RefundNumber
+
+SfResultCode
+
+```
 
 **Type**
 phone
@@ -18171,23 +20785,9 @@ Defines whether the payment has been made outside of the payment platform.
 
 Possible values are:
 
-
-Standard Objects Refund
-
-**Field** **Details**
-
 **•** `External` : Transactions happened outside of the Salesforce payments platform.
 
 **•** `Salesforce` : Salesforce made and recorded an external call to the payment gateway.
-
-```
-RefundNumber
-
-SfResultCode
-
-Status
-
-```
 
 **Type**
 string
@@ -18210,6 +20810,11 @@ recommend configuring the payment gateway adapter layer to map gateway result co
 to the appropriate Salesforce result code.
 
 Possible values are:
+
+
+Standard Objects Refund
+
+**Field** **Details**
 
 **•** `Decline` : The gateway call failed but the transaction can be attempted again. For
 example, the customer had insufficient funds or briefly lost their connection.
@@ -18236,16 +20841,18 @@ calls if it doesn’t receive a response from the gateway within two minutes.
 **•** `ValidationError` : Customer payment data was incorrect, such as a misspelling in
 the credit card address or an incorrect CVV.
 
+```
+Status
+
+TotalApplied
+
+```
+
 **Type**
 picklist
 
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort, Update
-
-
-### Standard Objects RefundLinePayment
-
-**Field** **Details**
 
 **Description**
 Defines the state of this refund.
@@ -18266,15 +20873,6 @@ Users can manually change the Status field’s values as follows:
 
 **•** Draft to Canceled
 
-```
-TotalApplied
-
-TotalUnapplied
-
-Type
-
-```
-
 **Type**
 currency
 
@@ -18283,6 +20881,18 @@ Filter, Nillable, Sort
 
 **Description**
 The sum of Amount fields across all of this refund’s applied refund lines.
+
+
+### Standard Objects RefundLinePayment
+
+**Field** **Details**
+
+```
+TotalUnapplied
+
+Type
+
+```
 
 **Type**
 currency
@@ -18312,9 +20922,6 @@ Possible values are:
 
 A refund line that has been applied to a payment. This object is available in API version 48.0 and later.
 
-
-Standard Objects RefundLinePayment
-
 Supported Calls
 
 `create()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
@@ -18332,12 +20939,6 @@ Fields
 ```
 Amount
 
-AppliedDate
-
-AssociatedAccountId
-
-AssociatedRefundLinePaymentId
-
 ```
 
 **Type**
@@ -18346,8 +20947,24 @@ currency
 **Properties**
 Create, Filter, Sort
 
+
+Standard Objects RefundLinePayment
+
+**Field** **Details**
+
 **Description**
 The total amount applied to or unapplied from a payment by the refund line.
+
+```
+AppliedDate
+
+AssociatedAccountId
+
+AssociatedRefundLinePaymentId
+
+Comments
+
+```
 
 **Type**
 dateTime
@@ -18381,11 +20998,6 @@ Account
 **Type**
 reference
 
-
-Standard Objects RefundLinePayment
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
@@ -18404,25 +21016,30 @@ Lookup
 **Refers To**
 RefundLinePayment
 
-```
-Comments
-
-Date
-
-EffectiveDate
-
-EffectiveImpactAmount
-
-```
-
 **Type**
 textarea
+
+
+Standard Objects RefundLinePayment
+
+**Field** **Details**
 
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
 **Description**
 Users can add comments to provide additional information on the refund line payment.
+
+```
+Date
+
+EffectiveDate
+
+EffectiveImpactAmount
+
+HasBeenUnapplied
+
+```
 
 **Type**
 dateTime
@@ -18450,11 +21067,6 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects RefundLinePayment
-
-**Field** **Details**
-
 **Description**
 Shows how this payment refund line impacts a customer’s accounts receivable. This value
 is positive when RefundLinePayment’s Type field is Applied, and negative when
@@ -18464,17 +21076,6 @@ EffectiveImpactAmount has a value of 0.
 Note: EffectiveImpactAmount evaluates only the applied and unapplied line pair.
 Therefore, the effective impact amount could be different for different lines within
 the same refund.
-
-```
-HasBeenUnapplied
-
-ImpactAmount
-
-PaymentBalance
-
-PaymentId
-
-```
 
 **Type**
 picklist
@@ -18487,7 +21088,23 @@ Shows whether this refund line has been unapplied.
 
 Possible values are:
 
+
+Standard Objects RefundLinePayment
+
+**Field** **Details**
+
 **•** `No`
+
+```
+ImpactAmount
+
+PaymentBalance
+
+PaymentId
+
+RefundBalance
+
+```
 
 **Type**
 currency
@@ -18519,11 +21136,6 @@ Create, Filter, Group, Sort
 The payment record that this refund line targets. Refund applications and unapplications
 are made against this payment.
 
-
-Standard Objects RefundLinePayment
-
-**Field** **Details**
-
 This is a relationship field.
 
 **Relationship Name**
@@ -18535,17 +21147,6 @@ Lookup
 **Refers To**
 Payment
 
-```
-RefundBalance
-
-RefundId
-
-RefundLinePaymentNumber
-
-Type
-
-```
-
 **Type**
 currency
 
@@ -18555,6 +21156,22 @@ Filter, Nillable, Sort
 **Description**
 The refund record’s balance following the application or unapplication of this payment
 refund line.
+
+
+Standard Objects RefundLinePayment
+
+**Field** **Details**
+
+```
+RefundId
+
+RefundLinePaymentNumber
+
+Type
+
+UnappliedDate
+
+```
 
 **Type**
 reference
@@ -18591,24 +21208,12 @@ picklist
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort
 
-
-### Standard Objects RegisteredExternalService
-
-**Field** **Details**
-
 **Description**
 Defines whether this line represents a refund that’s been applied or unapplied from a payment.
 
 Possible values are:
 
 **•** `Applied`
-
-```
- UnappliedDate
-
-```
-
-Usage
 
 **Type**
 dateTime
@@ -18618,6 +21223,11 @@ Create, Filter, Nillable, Sort
 
 **Description**
 The date that this refund line was unapplied from a payment.
+
+
+### Standard Objects RegisteredExternalService
+
+Usage
 
 When you’re ready to apply a refund’s balance to a payment, create a refund line ( `RefundLinePayment` ). The refund line represents
 the balance taken from the payment and applied toward the invoice. You can apply a refund’s balance when you create the refund
@@ -18640,9 +21250,6 @@ Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
 
-
-Standard Objects RegisteredExternalService
-
 Special Access Rules
 
 The RegisteredExternalService object is available only if the B2B Commerce license is enabled.
@@ -18654,12 +21261,6 @@ Fields
 ```
 ConfigUrl
 
-Description
-
-DeveloperName
-
-DocumentationUrl
-
 ```
 
 **Type**
@@ -18670,6 +21271,22 @@ Create, Filter, Nillable, Sort, Update
 
 **Description**
 Link to the configuration page for the integration.
+
+
+Standard Objects RegisteredExternalService
+
+**Field** **Details**
+
+```
+Description
+
+DeveloperName
+
+DocumentationUrl
+
+ExtensionPointName
+
+```
 
 **Type**
 string
@@ -18708,18 +21325,6 @@ Create, Filter, Nillable, Sort, Update
 **Description**
 Link to documentation for the registered external service.
 
-
-Standard Objects RegisteredExternalService
-
-**Field** **Details**
-
-```
-ExtensionPointName
-
-ExternalServiceProviderId
-
-```
-
 **Type**
 picklist
 
@@ -18740,6 +21345,11 @@ Possible values are:
 **•** `Commerce_Domain_Inventory_Service`
 
 **•** `Commerce_Domain_OrderManagement_Product`
+
+
+Standard Objects RegisteredExternalService
+
+**Field** **Details**
 
 **•** `Commerce_Domain_Pricing_CartCalculator`
 
@@ -18777,6 +21387,13 @@ in API version 62.0 and later.
 
 **•** `Commerce_Endpoint_Search_ProductsByCategory`
 
+```
+ExternalServiceProviderId
+
+ExternalServiceProviderType
+
+```
+
 **Type**
 reference
 
@@ -18786,11 +21403,6 @@ Create, Filter, Group, Sort, Update
 **Description**
 The ID of an Apex class functioning as a provider. The Apex class can either implement one
 of the following interfaces:
-
-
-Standard Objects RegisteredExternalService
-
-**Field** **Details**
 
 **•** sfdc_checkout.CartInventoryValidation
 
@@ -18802,15 +21414,6 @@ Standard Objects RegisteredExternalService
 
 [or the Apex class can extend one of the base classes for an extension. See Available Extensions.](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/available-extensions.html)
 
-```
-ExternalServiceProviderType
-
-IconUri
-
-IsApplication
-
-```
-
 **Type**
 picklist
 
@@ -18820,6 +21423,12 @@ Create, Filter, Group, Restricted picklist, Sort, Update
 **Description**
 The type of external service provider. For an extension, you set the type to `Extension`,
 and you specify an `extensionPointName` . For example, for a Pricing Cart Calculator
+
+
+Standard Objects RegisteredExternalService
+
+**Field** **Details**
+
 extension, you specify `Commerce_Domain_Pricing_CartCalculator` as the
 `extensionPointName` . For an integration, you set the type to one of the other possible
 values, such as `Price`, and you omit `extensionPointName` .
@@ -18837,6 +21446,15 @@ Possible values are:
 **•** `Shipment`
 
 **•** `Tax`
+
+```
+IconUri
+
+IsApplication
+
+Language
+
+```
 
 **Type**
 url
@@ -18862,20 +21480,6 @@ The default value is `false` .
 
 This field is available in API version 59.0 and later.
 
-
-Standard Objects RegisteredExternalService
-
-**Field** **Details**
-
-```
-Language
-
-MasterLabel
-
-NamespacePrefix
-
-```
-
 **Type**
 picklist
 
@@ -18895,6 +21499,11 @@ Possible values are:
 **•** `en_US` —English
 
 **•** `es` —Spanish
+
+
+Standard Objects RegisteredExternalService
+
+**Field** **Details**
 
 **•** `es_MX` —Spanish (Mexico)
 
@@ -18924,6 +21533,13 @@ Possible values are:
 
 **•** `zh_TW` —Chinese (Traditional)
 
+```
+MasterLabel
+
+NamespacePrefix
+
+```
+
 **Type**
 string
 
@@ -18938,11 +21554,6 @@ string
 
 **Properties**
 Filter, Group, Nillable, Sort
-
-
-### Standard Objects RelatedListColumnDefinition
-
-**Field** **Details**
 
 **Description**
 The namespace prefix that is associated with this object. Each Developer Edition org that
@@ -18962,7 +21573,8 @@ developer.
 that are part of an installed managed package. All other objects have no namespace
 prefix.
 
-### RelatedListColumnDefinition
+
+### Standard Objects RelatedListColumnDefinition RelatedListColumnDefinition
 
 Represents information about a column in a related list. A related list specifies a set of records for a related object, based on specific
 criteria. This object is available in API version 55.0 and later.
@@ -18984,6 +21596,10 @@ Alias
 
 ColumnSoql
 
+DataType
+
+DurableId
+
 ```
 
 **Type**
@@ -18998,27 +21614,11 @@ The unique alias of the column in the related list.
 **Type**
 string
 
-
-Standard Objects RelatedListColumnDefinition
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The SOQL query string used in a SELECT clause for the column.
-
-```
-DataType
-
-DurableId
-
-FieldDefinitionId
-
-IsDefault
-
-```
 
 **Type**
 string
@@ -19035,10 +21635,26 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+Standard Objects RelatedListColumnDefinition
+
+**Field** **Details**
+
 **Description**
 The unique identifier for the related list. Always retrieve this value before using it, as the value
 can change from one release to the next. Simplify queries by using this field instead of making
 multiple queries.
+
+```
+FieldDefinitionId
+
+IsDefault
+
+IsDescribable
+
+Label
+
+```
 
 **Type**
 string
@@ -19066,27 +21682,11 @@ boolean
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
-
-Standard Objects RelatedListColumnDefinition
-
-**Field** **Details**
-
 **Description**
 Indicates whether the column appears on the related list by default `(true)` or not
 `(false)` .
 
 The default value is `false` .
-
-```
-IsDescribable
-
-Label
-
-LookupId
-
-RelatedListDefinitionId
-
-```
 
 **Type**
 boolean
@@ -19106,8 +21706,22 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+### Standard Objects RelatedListDefinition
+
+**Field** **Details**
+
 **Description**
 The label for the column.
+
+```
+LookupId
+
+### `RelatedListDefinitionId`
+
+```
+
+Usage
 
 **Type**
 string
@@ -19130,23 +21744,18 @@ The ID of the RelatedListDefinition that contains the column.
 This is a relationship field.
 
 **Relationship Name**
-RelatedListDefinition
+### RelatedListDefinition
 
 **Relationship Type**
 Lookup
 
 **Refers To**
-RelatedListDefinition
-
-
-### Standard Objects RelatedListDefinition
-
-Usage
+### RelatedListDefinition
 
 **Find all available columns on a related list definition.**
 
 ```
-     SELECT Alias, ColumnSoql, DurableId FROM RelatedListColumnDefinition WHERE
+  SELECT Alias, ColumnSoql, DurableId FROM RelatedListColumnDefinition WHERE
 
 ### `RelatedListDefinitionId = 'Account.Opportunities'` RelatedListDefinition
 
@@ -19158,6 +21767,9 @@ object is available in API version 55.0 and later.
 Supported Calls
 
 `describeSObjects()`, `query()`
+
+
+Standard Objects RelatedListDefinition
 
 Special Access Rules
 
@@ -19173,6 +21785,8 @@ DefaultSort
 DurableId
 
 EntityDefinitionId
+
+IsCustomizable
 
 ```
 
@@ -19202,11 +21816,6 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects RelatedListDefinition
-
-**Field** **Details**
-
 **Description**
 The ID of the entity containing the related list.
 
@@ -19221,27 +21830,32 @@ Lookup
 **Refers To**
 EntityDefinition
 
-```
-IsCustomizable
-
-IsDescribable
-
-IsLayoutable
-
-Label
-
-```
-
 **Type**
 boolean
 
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
+
+Standard Objects RelatedListDefinition
+
+**Field** **Details**
+
 **Description**
 Indicates whether columns on the related list can be customized `(true)` or not `(false)` .
 
 The default value is `false` .
+
+```
+IsDescribable
+
+IsLayoutable
+
+Label
+
+ParentEntityDefinitionId
+
+```
 
 **Type**
 boolean
@@ -19275,22 +21889,6 @@ Filter, Group, Nillable, Sort
 **Description**
 The label for the related list.
 
-
-### Standard Objects RemoteKeyCalloutEvent
-
-**Field** **Details**
-
-```
-ParentEntityDefinitionId
-
-RelatedListId
-
-RelatedListName
-
-```
-
-Usage
-
 **Type**
 string
 
@@ -19310,6 +21908,20 @@ Lookup
 
 **Refers To**
 EntityDefinition
+
+
+### Standard Objects RemoteKeyCalloutEvent
+
+**Field** **Details**
+
+```
+RelatedListId
+
+RelatedListName
+
+```
+
+Usage
 
 **Type**
 string
@@ -19342,8 +21954,7 @@ The unique name of the related list in the API.
 
 [The documentation has moved to RemoteKeyCalloutEvent in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/sforce_api_objects_remotekeycalloutevent.htm) _Platform Events Developer Guide_ .
 
-
-### Standard Objects Reply Reply
+### Reply
 
 Represents a reply that a user has submitted to a question in an answers zone.
 
@@ -19359,22 +21970,34 @@ Fields
 ```
 Body
 
-CommunityId
-
-CreatorFullPhotoUrl
-
-CreatorName
-
 ```
 
 **Type**
 textarea
+
+
+Standard Objects Reply
+
+**Field** **Details**
 
 **Properties**
 Create, Update
 
 **Description**
 Body of this reply.
+
+```
+CommunityId
+
+CreatorFullPhotoUrl
+
+CreatorName
+
+CreatorSmallPhotoUrl
+
+DownVotes
+
+```
 
 **Type**
 reference
@@ -19403,29 +22026,11 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects Reply
-
-**Field** **Details**
-
 **Description**
 
 Name of the user who posted the question or reply. Only the first name of internal
 users (agents) appears to portal users in the feed. Chatter Answers must be enabled
 to view this field. This field is available in API version 26.0 and later
-
-```
-CreatorSmallPhotoUrl
-
-DownVotes
-
-Name
-
-NumReportAbuses
-
-QuestionId
-
-```
 
 **Type**
 string
@@ -19441,11 +22046,29 @@ to view this field. This field is available in API version 26.0 and later.
 **Type**
 int
 
+
+Standard Objects Reply
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The total number of down votes for a reply.
+
+```
+Name
+
+NumReportAbuses
+
+QuestionId
+
+UpVotes
+
+VoteTotal
+
+```
 
 **Type**
 string
@@ -19474,26 +22097,8 @@ reference
 **Properties**
 Create, Filter, Group, Sort
 
-
-### Standard Objects ReplyEmailSettings
-
-**Field** **Details**
-
 **Description**
 ID of the Question to which this reply was made.
-
-```
-UpVotes
-
-VoteTotal
-
-```
-
-Usage
-
-Use this object to track replies to a Question.
-
-### ReplyEmailSettings
 
 **Type**
 int
@@ -19513,6 +22118,15 @@ Filter, Nillable, Sort
 **Description**
 The total number of all votes for a reply, including up and down votes.
 
+
+### Standard Objects ReplyEmailSettings
+
+Usage
+
+Use this object to track replies to a Question.
+
+### ReplyEmailSettings
+
 Represents a reply mail management configuration, which is used to configure emails that are received by an email sending domain.
 This object is available in API version 62.0 and later.
 
@@ -19531,6 +22145,8 @@ Fields
 ```
 AutoReplyMessage
 
+DeveloperName
+
 ```
 
 **Type**
@@ -19539,26 +22155,10 @@ textarea
 **Properties**
 Create, Nillable, Update
 
-
-Standard Objects ReplyEmailSettings
-
-**Field** **Details**
-
 **Description**
 
 The content of the reply message. This reply is sent when a message is received at the sending
 address.
-
-```
-DeveloperName
-
-DomainName
-
-FwdEmailAddress
-
-IsAutoReplyEnabled
-
-```
 
 **Type**
 string
@@ -19582,9 +22182,27 @@ The unique name of the object in the API. The name:
 
 **•** can’t contain 2 consecutive underscores
 
+
+Standard Objects ReplyEmailSettings
+
+**Field** **Details**
+
 In managed packages, this field prevents naming conflicts on package installations. With
 this field, a developer can change the object’s name in a managed package and the changes
 are reflected in a subscriber’s organization.
+
+```
+DomainName
+
+FwdEmailAddress
+
+IsAutoReplyEnabled
+
+IsDeleteAutoRepliesEnabled
+
+IsEmailForwardingEnabled
+
+```
 
 **Type**
 string
@@ -19614,11 +22232,6 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
-
-Standard Objects ReplyEmailSettings
-
-**Field** **Details**
-
 **Description**
 
 Indicates whether to forward automatic replies, such as out-of-office messages, to the address
@@ -19626,17 +22239,6 @@ specified in the `FwdEmailAddress` field. This value is honored only if the valu
 `IsEmailForwardingEnabled` is `true` .
 
 The default value is `false` .
-
-```
-IsDeleteAutoRepliesEnabled
-
-IsEmailForwardingEnabled
-
-IsUnsubscribeManualRequestsEnabled
-
-Language
-
-```
 
 **Type**
 boolean
@@ -19654,6 +22256,11 @@ The default value is `false` .
 **Type**
 boolean
 
+
+### Standard Objects ReplyReportAbuse
+
+**Field** **Details**
+
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
@@ -19663,6 +22270,17 @@ Indicates whether to forward email replies to the address specified in the
 `FwdEmailAddress` field.
 
 The default value is `false` .
+
+```
+IsUnsubscribeManualRequestsEnabled
+
+Language
+
+MasterLabel
+
+### ReplyReportAbuse
+
+```
 
 **Type**
 boolean
@@ -19688,18 +22306,6 @@ Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort,
 The combined language and locale ISO code, which controls the language of the
 ReplyEmailSettings object.
 
-
-### Standard Objects ReplyReportAbuse
-
-**Field** **Details**
-
-```
-MasterLabel
-
-### ReplyReportAbuse
-
-```
-
 **Type**
 string
 
@@ -19717,6 +22323,9 @@ Supported Calls
 
 `create()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
 
+
+### Standard Objects ReplyText
+
 Fields
 
 **Field** **Details**
@@ -19729,6 +22338,8 @@ Reason
 ReplyId
 
 ```
+
+Usage
 
 **Type**
 string
@@ -19755,15 +22366,8 @@ reference
 **Properties**
 Create, Filter, Group, Sort
 
-
-### Standard Objects ReplyText
-
-**Field** **Details**
-
 **Description**
 The ID of the Reply from which the user reported abuse.
-
-Usage
 
 Use this object to track user-reported abuse on replies created in a Chatter Answers zone.
 
@@ -19781,9 +22385,12 @@ Supported Calls
 `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
 
 ```
-   update()
+update()
 
 ```
+
+
+Standard Objects ReplyText
 
 Fields
 
@@ -19795,6 +22402,10 @@ Language
 Name
 
 RawTextMessage
+
+Source
+
+Status
 
 ```
 
@@ -19820,24 +22431,10 @@ Eight-digit auto-generated number identifying the reply.
 **Type**
 textarea
 
-
-Standard Objects ReplyText
-
-**Field** **Details**
-
 **Properties**
 
 **Description**
 The text of the reply.
-
-```
-Source
-
-Status
-
-```
-
-Usage
 
 **Type**
 picklist
@@ -19867,14 +22464,21 @@ The status of the reply.
 
 Possible values are:
 
+
+### Standard Objects Report
+
+**Field** **Details**
+
 **•** `NEW` —Einstein has generated the reply and it hasn’t yet been published.
 
 **•** `PUBLISHED` —The reply has been published to quick text. When the reply
 recommendation model is activated, the reply can be recommended to support agents.
 
-**•** `PUBLISH_FAILED`  - An attempt to publish the reply to quick text failed. Publishing
+**•** `PUBLISH_FAILED`                   - An attempt to publish the reply to quick text failed. Publishing
 failure can be due to validation errors, access errors, or corrupted files. To hide the reply
 from the list of generated replies, delete it.
+
+Usage
 
 To get started with Einstein Reply Recommendations, create a predictive model that analyzes closed chats for frequently used text
 snippets. When the model is ready, Einstein generates a list of these snippets as ReplyText records for you to review and publish, or
@@ -19888,9 +22492,6 @@ When a reply is published, a corresponding QuickText record is created. During p
 to and make sure that agents have access to the folder. To edit a reply after it is published, edit the related quick text record.
 
 Einstein generates the list of replies only once, when your model finishes building. It’s not possible to generate a new list.
-
-
-### Standard Objects Report
 
 **Copyright**
 
@@ -19912,10 +22513,6 @@ Fields
 ```
 Description
 
-DeveloperName
-
-FolderName
-
 ```
 
 **Type**
@@ -19926,6 +22523,22 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The description of the report. Limit: 255 characters.
+
+
+Standard Objects Report
+
+**Field** **Details**
+
+```
+DeveloperName
+
+FolderName
+
+Format
+
+IsDeleted
+
+```
 
 **Type**
 string
@@ -19939,7 +22552,7 @@ and alphanumeric characters, and must be unique in your org. It must begin with 
 not include spaces, not end with an underscore, and not contain two consecutive underscores.
 In managed packages, this field prevents naming conflicts on package installations. With
 this field, a developer can change the object’s name in a managed package and the changes
-### are reflected in a subscriber’s organization. Label is Report Unique Name .
+are reflected in a subscriber’s organization. Label is **Report Unique Name** .
 
 Note: When creating large sets of data, always specify a unique `DeveloperName`
 for each record. If no `DeveloperName` is specified, performance slows down while
@@ -19951,26 +22564,8 @@ string
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects Report
-
-**Field** **Details**
-
 **Description**
 Name of the folder that contains the report. Available in API version 35.0 and later.
-
-```
-Format
-
-IsDeleted
-
-LastReferencedDate
-
-LastRunDate
-
-LastViewedDate
-
-```
 
 **Type**
 picklist
@@ -20000,6 +22595,24 @@ Defaulted on create, Filter
 Indicates whether the object has been moved to the Recycle Bin ( `true` ) or not ( `false` ).
 Label is **Deleted** .
 
+
+Standard Objects Report
+
+**Field** **Details**
+
+```
+LastReferencedDate
+
+LastRunDate
+
+LastViewedDate
+
+Name
+
+NamespacePrefix
+
+```
+
 **Type**
 datetime
 
@@ -20022,11 +22635,6 @@ Returns the date the report was last run. Label is **Last Run** .
 **Type**
 datetime
 
-
-Standard Objects Report
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
@@ -20034,15 +22642,6 @@ Filter, Nillable, Sort
 The timestamp when the current user last viewed this record or list view. If this value is null,
 the user might have only accessed this record or list view ( `LastReferencedDate` ) but
 not viewed it.
-
-```
-Name
-
-NamespacePrefix
-
-OwnerId
-
-```
 
 **Type**
 string
@@ -20067,6 +22666,11 @@ _**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
 
 The namespace prefix can have one of the following values.
 
+
+Standard Objects Report
+
+**Field** **Details**
+
 **•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
 org for all objects that support it, unless an object is in an installed managed package.
 In that case, the object has the namespace prefix of the installed managed package. This
@@ -20080,6 +22684,11 @@ prefix.
 This field can’t be accessed unless the logged-in user has the Customize Application
 permission.
 
+```
+OwnerId
+
+```
+
 **Type**
 reference
 
@@ -20090,11 +22699,6 @@ Filter, Group, Sort
 The ID of the folder that contains the report. There are 2 special folders:
 
 **•** Private, where the ID is the user ID
-
-
-Standard Objects Report
-
-**Field** **Details**
 
 **•** Public, where the ID is the org ID
 
@@ -20129,6 +22733,9 @@ All records except records saved in other users’ private folders.
 **mine**
 Records saved in the private folder of the user running the query.
 
+
+### Standard Objects ReportEventLog
+
 **organizationOwned**
 Records saved in Unfiled Public Reports. In Lightning Experience, the Unfiled Public Reports folder is called Public Reports.
 
@@ -20153,9 +22760,6 @@ This SOQL query returns reports saved in a specific user’s private folder.
    SELECT Id FROM Report USING SCOPE allPrivate WHERE OwnerId = ‘005A0000000Bc2deFG’
 
 ```
-
-
-### Standard Objects ReportEventLog
 
 Associated Objects
 
@@ -20187,6 +22791,9 @@ Special Access Rules
 
 To access this object, you must have the View Event Log Object Data user permission.
 
+
+Standard Objects ReportEventLog
+
 Fields
 
 **Field** **Details**
@@ -20195,6 +22802,12 @@ Fields
 AverageRowSize
 
 BucketCount
+
+ClientIp
+
+ColumnCount
+
+CpuTime
 
 ```
 
@@ -20216,26 +22829,8 @@ double
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects ReportEventLog
-
-**Field** **Details**
-
 **Description**
 The number of buckets that were used in the report.
-
-```
-ClientIp
-
-ColumnCount
-
-CpuTime
-
-DatabaseBlocks
-
-DatabaseCpuTime
-
-```
 
 **Type**
 string
@@ -20266,6 +22861,24 @@ Filter, Nillable, Sort
 The CPU time in milliseconds used to complete the request. This field indicates the amount
 of activity taking place in the app server layer.
 
+
+Standard Objects ReportEventLog
+
+**Field** **Details**
+
+```
+DatabaseBlocks
+
+DatabaseCpuTime
+
+DatabaseTotalTime
+
+DisplayType
+
+ExceptionFilterCount
+
+```
+
 **Type**
 double
 
@@ -20285,24 +22898,6 @@ Filter, Nillable, Sort
 **Description**
 The CPU time in milliseconds to complete the request. Indicates the amount of activity taking
 place in the database layer during the request.
-
-
-Standard Objects ReportEventLog
-
-**Field** **Details**
-
-```
-DatabaseTotalTime
-
-DisplayType
-
-ExceptionFilterCount
-
-LoginKey
-
-ObjectName
-
-```
 
 **Type**
 double
@@ -20339,8 +22934,22 @@ double
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects ReportEventLog
+
+**Field** **Details**
+
 **Description**
 The number of exception filters that are used in the report.
+
+```
+LoginKey
+
+ObjectName
+
+Origin
+
+```
 
 **Type**
 string
@@ -20359,18 +22968,8 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects ReportEventLog
-
-**Field** **Details**
-
 **Description**
 The name of the object referenced by the report.
-
-```
-Origin
-
-```
 
 **Type**
 string
@@ -20407,6 +23006,11 @@ asynchronous Apex API.
 **•** `ReportExported` : Report executed from a printable view or report export that was
 not asynchronous nor an API export.
 
+
+Standard Objects ReportEventLog
+
+**Field** **Details**
+
 **•** `ReportRunFromClassic` : Report executed from the Run Report option of Salesforce
 Classic.
 
@@ -20429,11 +23033,6 @@ the report builder.
 Analytics.
 
 **•** `ReportExportedAsynchronously` : Report was exported asynchronously.
-
-
-Standard Objects ReportEventLog
-
-**Field** **Details**
 
 **•** `ReportExportedUsingExcelConnector` : Report was exported using the
 Excel connector.
@@ -20465,8 +23064,6 @@ from Einstein Discovery.
 ```
 RenderingType
 
-ReportIdentifier
-
 ```
 
 **Type**
@@ -20483,6 +23080,11 @@ Possible values are:
 
 **•** `W` : Web (HTML)
 
+
+Standard Objects ReportEventLog
+
+**Field** **Details**
+
 **•** `E` : Email
 
 **•** `P` : Printable
@@ -20495,6 +23097,17 @@ Possible values are:
 
 **•** `D` : Dummy data
 
+```
+ReportIdentifier
+
+RequestIdentifier
+
+RequestStatus
+
+RowCount
+
+```
+
 **Type**
 string
 
@@ -20503,22 +23116,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The 15-character ID of the report that was run.
-
-
-Standard Objects ReportEventLog
-
-**Field** **Details**
-
-```
-RequestIdentifier
-
-RequestStatus
-
-RowCount
-
-RunTime
-
-```
 
 **Type**
 string
@@ -20559,6 +23156,11 @@ This field can have a blank value.
 **Type**
 int
 
+
+Standard Objects ReportEventLog
+
+**Field** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
@@ -20568,21 +23170,9 @@ with a high `AverageRowSize`, can indicate that a user is downloading informatio
 fraudulent purposes. For example, a salesperson who downloads all sales leads before
 departing for a competitor. For example: `150` .
 
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-
-Standard Objects ReportEventLog
-
-**Field** **Details**
-
 ```
+RunTime
+
 SessionKey
 
 SortOrder
@@ -20591,11 +23181,16 @@ Timestamp
 
 Uri
 
-UserIdentifier
-
-UserType
-
 ```
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The amount of time that the request took in milliseconds.
 
 **Type**
 string
@@ -20630,11 +23225,23 @@ The access time of Salesforce services in GMT. For example,
 **Type**
 string
 
+
+Standard Objects ReportEventLog
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
+
+```
+UserIdentifier
+
+UserType
+
+```
 
 **Type**
 string
@@ -20648,11 +23255,6 @@ For example: `00530000009M943` .
 
 **Type**
 string
-
-
-### Standard Objects ReportExportEventLog
-
-**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -20690,7 +23292,8 @@ and access the application through a self-service portal.
 **•** `Standard` —Standard user license. This user type also includes Salesforce Platform
 and Salesforce Platform One user licenses, and admins for this org.
 
-### ReportExportEventLog
+
+### Standard Objects ReportExportEventLog ReportExportEventLog
 
 Report Export events contain details about reports that a user exported. For example, this event type captures when a user exports a
 report as Details Only output. But it doesn’t capture reports that users export as Formatted Report or XLSX Detail output. For that data,
@@ -20704,9 +23307,6 @@ Special Access Rules
 
 To access this object, you must have the View Event Log Object Data user permission.
 
-
-Standard Objects ReportExportEventLog
-
 Fields
 
 **Field** **Details**
@@ -20719,10 +23319,6 @@ ClientIp
 CpuTime
 
 LoginKey
-
-ReportDescription
-
-RequestIdentifier
 
 ```
 
@@ -20758,12 +23354,30 @@ of activity taking place in the app server layer.
 **Type**
 string
 
+
+Standard Objects ReportExportEventLog
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The string that ties together all events in a given user’s login session. It starts with a login
 event and ends with either a logout event or the user session expiring.
+
+```
+ReportDescription
+
+RequestIdentifier
+
+RunTime
+
+SessionKey
+
+Timestamp
+
+```
 
 **Type**
 string
@@ -20777,30 +23391,12 @@ Information about the report that was run.
 **Type**
 string
 
-
-Standard Objects ReportExportEventLog
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The unique ID of a single transaction. A transaction can contain one or more events. Each
 event in a given transaction has the same REQUEST_ID.
-
-```
-RunTime
-
-SessionKey
-
-Timestamp
-
-Uri
-
-UserIdentifier
-
-```
 
 **Type**
 double
@@ -20829,10 +23425,24 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
+
+### Standard Objects ReportTag
+
+**Field** **Details**
+
 **Description**
 The access time of Salesforce services in GMT.
 
 For example: `20130715233322.670` .
+
+```
+Uri
+
+UserIdentifier
+
+### ReportTag
+
+```
 
 **Type**
 string
@@ -20848,11 +23458,6 @@ For example: `/home/home.jsp` .
 **Type**
 string
 
-
-### Standard Objects ReportTag
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
@@ -20860,8 +23465,6 @@ Filter, Group, Nillable, Sort
 The 15-character ID of the user who’s using Salesforce services through the UI or the API.
 
 For example: `00530000009M943`
-
-### ReportTag
 
 Associates a word or short phrase with a Report. This object is available in API version 20.0 and later.
 
@@ -20876,10 +23479,6 @@ Fields
 ```
 ItemId
 
-Name
-
-TagDefinitionId
-
 ```
 
 **Type**
@@ -20890,6 +23489,22 @@ Create, Filter
 
 **Description**
 ID of the tagged item.
+
+
+### Standard Objects ReputationLevel
+
+**Field Name** **Details**
+
+```
+Name
+
+TagDefinitionId
+
+Type
+
+```
+
+Usage
 
 **Type**
 string
@@ -20910,18 +23525,6 @@ Filter
 
 **Description**
 ID of the parent TagDefinition object that owns the tag.
-
-
-### Standard Objects ReputationLevel
-
-**Field Name** **Details**
-
-```
-Type
-
-```
-
-Usage
 
 **Type**
 picklist
@@ -20953,6 +23556,9 @@ Report
 
 Represents a reputation level defined for an Experience Cloud site. This object is available in API version 32.0 and later.
 
+
+Standard Objects ReputationLevel
+
 Supported Calls
 
 `describeSObjects()`, `query()`, `retrieve()`
@@ -20969,23 +23575,6 @@ Fields
 ```
 Label
 
-```
-
-**Type**
-string
-
-
-### Standard Objects ReputationLevelLocalization
-
-**Field Name** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The label for the reputation level.
-
-```
 LevelNumber
 
 ParentId
@@ -20993,6 +23582,15 @@ ParentId
 Threshold
 
 ```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The label for the reputation level.
 
 **Type**
 int
@@ -21022,7 +23620,8 @@ Filter, Sort
 The lower limit of reputation points associated with this reputation level. The
 maximum number of reputation points a user can accrue is 999,999,999,999,999.
 
-### ReputationLevelLocalization
+
+### Standard Objects ReputationLevelLocalization ReputationLevelLocalization
 
 Represents the translated value of a reputation level. Reputation level localization only applies for reputation levels in Experience Cloud
 sites. This object is available in API version 35.0 and later.
@@ -21032,7 +23631,7 @@ Supported Calls
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`,
 
 ```
-upsert()
+   upsert()
 
 ```
 
@@ -21040,17 +23639,12 @@ Special Access Rules
 
 This object is available only if digital experiences is enabled in your org and reputation is enabled in your Experience Cloud site.
 
-
-Standard Objects ReputationLevelLocalization
-
 Fields
 
 **Field Name** **Details**
 
 ```
 Language
-
-NamespacePrefix
 
 ```
 
@@ -21098,10 +23692,26 @@ following fully-supported languages:
 **•** Spanish (Mexico): `es_MX` Spanish (Mexico) defaults to Spanish for
 customer-defined translations.
 
+
+### Standard Objects ReputationPointsRule
+
+**Field Name** **Details**
+
 **•** Swedish: `sv`
 
 **•** Thai: `th` The Salesforce user interface is fully translated to Thai, but Help is
 in English.
+
+```
+NamespacePrefix
+
+ParentId
+
+Value
+
+### ReputationPointsRule
+
+```
 
 **Type**
 string
@@ -21117,11 +23727,6 @@ _**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
 
 The namespace prefix can have one of the following values.
 
-
-### Standard Objects ReputationPointsRule
-
-**Field Name** **Details**
-
 **•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace
 prefix of the org for all objects that support it, unless an object is in an installed
 managed package. In that case, the object has the namespace prefix of the
@@ -21131,15 +23736,6 @@ Developer Edition org of the package developer.
 **•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set
 only for objects that are part of an installed managed package. All other
 objects have no namespace prefix.
-
-```
-ParentId
-
-Value
-
-### ReputationPointsRule
-
-```
 
 **Type**
 reference
@@ -21163,6 +23759,9 @@ The translated text for the reputation level. Label is **Translation Text** .
 Represents the reputation point rules for an Experience Cloud site. Each rule specifies an action that members can earn points from and
 the points associated with those actions in a particular site. This object is available in API version 32.0 and later.
 
+
+Standard Objects ReputationPointsRule
+
 Supported Calls
 
 `describeSObjects()`, `query()`, `retrieve()`
@@ -21171,9 +23770,6 @@ Special Access Rules
 
 This object is available only if digital experiences is enabled in your org. Only users with permissions to create or manage an Experience
 Cloud site can view the ReputationPointsRule records.
-
-
-Standard Objects ReputationPointsRule
 
 Fields
 
@@ -21235,6 +23831,11 @@ The member action associated with this rule, limited to one of these actions:
 
 **•** Receive a mention ( `FeedItemReceiveAMention` )
 
+
+### Standard Objects ResourceAbsence
+
+**Field Name** **Details**
+
 **•** Ask a question ( `FeedItemPostQuestion` )
 
 **•** Answer a question ( `FeedItemAnswerAQuestion` )
@@ -21248,11 +23849,6 @@ The member action associated with this rule, limited to one of these actions:
 
 **•** Endorse someone for knowledge on a topic
 ( `EndorseSomeoneForKnowledgeOnATopic` )
-
-
-### Standard Objects ResourceAbsence
-
-**Field Name** **Details**
 
 **•** Someone endorses you for knowledge on a topic
 ( `EndorsedForKnowledgeOnATopic` )
@@ -21283,8 +23879,6 @@ AbsenceNumber
 
 Address
 
-City
-
 ```
 
 **Type**
@@ -21299,28 +23893,20 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Type**
 address
 
+
+Standard Objects ResourceAbsence
+
+**Field Name** **Details**
+
 **Properties**
 Filter
 
 **Description**
 The compound form of the address associated with the absence.
 
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ResourceAbsence
-
-**Field Name** **Details**
-
-**Description**
-The city of the address associated with the absence. Maximum length is 40
-characters.
-
 ```
+City
+
 Country
 
 Description
@@ -21329,9 +23915,17 @@ End
 
 GeocodeAccuracy
 
-LastReferencedDate
-
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The city of the address associated with the absence. Maximum length is 40
+characters.
 
 **Type**
 string
@@ -21367,6 +23961,11 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
+
+Standard Objects ResourceAbsence
+
+**Field Name** **Details**
+
 **Description**
 The level of accuracy of a location’s geographical coordinates compared with its
 physical address. Usually provided by a geocoding service based on the address’s
@@ -21374,33 +23973,26 @@ latitude and longitude coordinates.
 
 Note: This field is available in the API only.
 
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects ResourceAbsence
-
-**Field Name** **Details**
-
-**Description**
-The date when the resource absence was last modified. Its label in the user
-interface is `Last Modified Date` .
-
 ```
+LastReferencedDate
+
 LastViewedDate
 
 Latitude
 
 Longitude
 
-Postal Code
-
-ResourceId
-
 ```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the resource absence was last modified. Its label in the user
+interface is `Last Modified Date` .
 
 **Type**
 dateTime
@@ -21437,6 +24029,24 @@ associated with the absence. Acceptable values are numbers between –180 and
 
 Note: This field is available in the API only.
 
+
+Standard Objects ResourceAbsence
+
+**Field Name** **Details**
+
+```
+Postal Code
+
+ResourceId
+
+Start
+
+State
+
+Street
+
+```
+
 **Type**
 string
 
@@ -21449,11 +24059,6 @@ The postal code of the address associated with the absence. Maximum length is
 
 **Type**
 reference
-
-
-Standard Objects ResourceAbsence
-
-**Field Name** **Details**
 
 **Properties**
 Create, Filter, Group, Sort, Update
@@ -21471,17 +24076,6 @@ Lookup
 
 **Refers To**
 ServiceResource
-
-```
-Start
-
-State
-
-Street
-
-Type
-
-```
 
 **Type**
 dateTime
@@ -21508,8 +24102,20 @@ textarea
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+### Standard Objects ResourcePreference
+
+**Field Name** **Details**
+
 **Description**
 The street number and name of the address associated with the absence.
+
+```
+Type
+
+```
+
+Usage
 
 **Type**
 picklist
@@ -21517,17 +24123,10 @@ picklist
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
-
-### Standard Objects ResourcePreference
-
-**Field Name** **Details**
-
 **Description**
 The type of absence: _`Meeting`_, _`Training`_, _`Medical`_, or _`Vacation`_ . The
 default value is _`Vacation`_ . You can add custom values if needed, but the name
 _`Break`_ is reserved for the Field Service managed package.
-
-Usage
 
 Resource absences you define periods of time when a service resource is unavailable to work. Unless you’re using the Field Service
 managed package, service resources can still be assigned to appointments that conflict with their absences.
@@ -21565,12 +24164,12 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `update()`, `upsert()`
 
+
+Standard Objects ResourcePreference
+
 Special Access Rules
 
 Field Service must be enabled.
-
-
-Standard Objects ResourcePreference
 
 Fields
 
@@ -21636,15 +24235,15 @@ Create, Filter, Group, Sort
 **Description**
 The work order or account with the resource preference.
 
+
+Standard Objects ResourcePreference
+
+**Field Name** **Details**
+
 This field is a polymorphic relationship.
 
 **Relationship Name**
 RelatedRecord
-
-
-### Standard Objects RestApiEventLog
-
-**Field Name** **Details**
 
 **Relationship Type**
 Lookup
@@ -21703,12 +24302,10 @@ Feed tracking is available for the object.
 
 History is available for tracked fields of the object.
 
-### RestApiEventLog
+
+### Standard Objects RestApiEventLog RestApiEventLog
 
 REST API event logs contain details about REST-specific requests. This object is available in API version 61.0 and later.
-
-
-Standard Objects RestApiEventLog
 
 [Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
 
@@ -21769,14 +24366,14 @@ double
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
 
 Standard Objects RestApiEventLog
 
 **Field** **Details**
+
+**Description**
+The CPU time in milliseconds used to complete the request. This field indicates the amount
+of activity taking place in the app server layer.
 
 ```
 DatabaseBlocks
@@ -21840,13 +24437,13 @@ double
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-The number of fields or columns, where applicable.
-
 
 Standard Objects RestApiEventLog
 
 **Field** **Details**
+
+**Description**
+The number of fields or columns, where applicable.
 
 ```
 LoginKey
@@ -21858,8 +24455,6 @@ Method
 ObjectName
 
 PlannerIdentifier
-
-RequestIdentifier
 
 ```
 
@@ -21911,23 +24506,14 @@ Filter, Group, Nillable, Sort
 **Description**
 The ID of the agent planner.
 
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
 
 Standard Objects RestApiEventLog
 
 **Field** **Details**
 
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `RequestIdentifier` . For example:
-`3nWgxWbDKWWDIk0FKfF5DV` .
-
 ```
+RequestIdentifier
+
 RequestSize
 
 RequestStatus
@@ -21937,6 +24523,17 @@ ResponseSize
 RowsProcessed
 
 ```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The unique ID of a single transaction. A transaction can contain one or more events. Each
+event in a given transaction has the same `RequestIdentifier` . For example:
+`3nWgxWbDKWWDIk0FKfF5DV` .
 
 **Type**
 double
@@ -21984,16 +24581,16 @@ The size of the callout response, in bytes.
 **Type**
 int
 
+
+Standard Objects RestApiEventLog
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Numbers of rows that are processed by the REST API.
-
-
-Standard Objects RestApiEventLog
-
-**Field** **Details**
 
 ```
 RunTime
@@ -22005,8 +24602,6 @@ StatusCode
 Timestamp
 
 Uri
-
-UserIdentifier
 
 ```
 
@@ -22058,27 +24653,29 @@ Filter, Group, Nillable, Sort
 **Description**
 The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
 
+
+### Standard Objects ReturnOrder
+
+**Field** **Details**
+
+```
+UserIdentifier
+
+UserType
+
+### ReturnOrder
+
+```
+
 **Type**
 string
 
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects ReturnOrder
-
-**Field** **Details**
-
 **Description**
 The 15-character ID of the user who’s using Salesforce services through the UI or the API.
 For example: `00530000009M943` .
-
-```
-UserType
-
-### ReturnOrder
-
-```
 
 **Type**
 string
@@ -22122,11 +24719,11 @@ and Salesforce Platform One user licenses, and admins for this org.
 Represents the return or repair of inventory or products in Field Service, or the return of order products in Order Management. This object
 is available in API version 42.0 and later.
 
-Return orders are available in Lightning Experience, Salesforce Classic, the Salesforce mobile app, the Field Service mobile app for Android
-and iOS, and communities built using Salesforce Tabs + Visualforce.
-
 
 Standard Objects ReturnOrder
+
+Return orders are available in Lightning Experience, Salesforce Classic, the Salesforce mobile app, the Field Service mobile app for Android
+and iOS, and communities built using Salesforce Tabs + Visualforce.
 
 Supported Calls
 
@@ -22187,13 +24784,13 @@ Case
 **Relationship Type**
 Lookup
 
-**Refers To**
-Case
-
 
 Standard Objects ReturnOrder
 
 **Field Name** **Details**
+
+**Refers To**
+Case
 
 ```
 ContactId
@@ -22201,8 +24798,6 @@ ContactId
 CurrencyIsoCode
 
 Description
-
-DestinationLocationId
 
 ```
 
@@ -22259,16 +24854,27 @@ Create, Nillable, Update
 **Description**
 Notes or context about the return order.
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
+```
+DestinationLocationId
+
+ExpectedArrivalDate
+
+ExpirationDate
+
+GrandTotalAmount
+
+```
+
 **Type**
 reference
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 **Description**
 The location where the items are being returned to. For example, if the return
@@ -22285,17 +24891,6 @@ Lookup
 
 **Refers To**
 Location
-
-```
-ExpectedArrivalDate
-
-ExpirationDate
-
-GrandTotalAmount
-
-LastReferencedDate
-
-```
 
 **Type**
 dateTime
@@ -22332,22 +24927,14 @@ This is a calculated field.
 
 This field is available in API version 50.0 and later.
 
-**Type**
-dateTime
-
 
 Standard Objects ReturnOrder
 
 **Field Name** **Details**
 
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date when the return order was last modified. Its label in the user interface
-is `Last Modified Date` .
-
 ```
+LastReferencedDate
+
 LastViewedDate
 
 LifeCycleType
@@ -22355,6 +24942,16 @@ LifeCycleType
 OrderId
 
 ```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the return order was last modified. Its label in the user interface
+is `Last Modified Date` .
 
 **Type**
 dateTime
@@ -22400,16 +24997,16 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
 **Description**
 The order associated with the return order. When you associated a return order
 with an order, you can associate the return order’s line items with order products.
 
 This is a relationship field.
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 **Relationship Name**
 Order
@@ -22471,16 +25068,15 @@ The product request associated with the return order. When you associated a
 return order with a product request, you can associate the return order’s line
 items with the product request’s line items.
 
-A return order might be related to a product request if the return order tracks
-the return of unused products or products to be repaired or replaced. For example,
-a technician creates a product request for three motors to prepare for a field visit.
-If the technician finds that only two motors are needed, they can create a return
-
 
 Standard Objects ReturnOrder
 
 **Field Name** **Details**
 
+A return order might be related to a product request if the return order tracks
+the return of unused products or products to be repaired or replaced. For example,
+a technician creates a product request for three motors to prepare for a field visit.
+If the technician finds that only two motors are needed, they can create a return
 order to return the third to the original location, and list the product request in
 this field.
 
@@ -22543,16 +25139,16 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Type**
 reference
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 ID of the user returning the items.
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 This is a relationship field.
 
@@ -22612,13 +25208,13 @@ an item, the Ship From address is the customer’s address.
 **Type**
 picklist
 
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
 
 Standard Objects ReturnOrder
 
 **Field Name** **Details**
+
+**Properties**
+Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
 **Description**
 Accuracy level of the geocode for the return shipping address. See Compound
@@ -22677,15 +25273,15 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-**Description**
-The state of the return shipping address. This address tracks the location of the
-items at the start of the return or repair. For example, if a customer is returning
-an item, the Ship From address is the customer’s address.
-
 
 Standard Objects ReturnOrder
 
 **Field Name** **Details**
+
+**Description**
+The state of the return shipping address. This address tracks the location of the
+items at the start of the return or repair. For example, if a customer is returning
+an item, the Ship From address is the customer’s address.
 
 ```
 ShipFromStreet
@@ -22693,8 +25289,6 @@ ShipFromStreet
 ShipmentType
 
 SourceLocationId
-
-Status
 
 ```
 
@@ -22750,16 +25344,25 @@ Lookup
 **Refers To**
 Location
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
+```
+Status
+
+StatusCategory
+
+TaxLocaleType
+
+```
+
 **Type**
 picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 **Description**
 The status of the return order. Available values are:
@@ -22777,13 +25380,6 @@ The status of the return order. Available values are:
 If return orders are enabled by a Salesforce Order Management license, they must
 be created with a Status corresponding to the Status Category `Activated` .
 The default Statuses corresponding to Activated are Submitted and Approved.
-
-```
-StatusCategory
-
-TaxLocaleType
-
-```
 
 **Type**
 picklist
@@ -22824,16 +25420,16 @@ Possible values are:
 
 **•** `Automatic` (displays most prices and taxes as combined values)
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
 **•** `Gross` (displays most prices and taxes as combined values)
 
 **•** `Net` (displays most prices and taxes as separate values)
 
 This field is available in API version 50.0 and later.
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 ```
 TotalAmount
@@ -22897,17 +25493,17 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
 **Description**
 Tax on the TotalDeliveryAdjustAmount.
 
 This is a calculated field.
 
 This field is available in API version 50.0 and later.
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 ```
 TotalDeliveryAmount
@@ -22968,6 +25564,11 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
 **Description**
 Total amount of the price adjustments applied to the fees on the return order.
 This value only includes adjustments to return order line items of type Fee.
@@ -22975,11 +25576,6 @@ This value only includes adjustments to return order line items of type Fee.
 This is a calculated field.
 
 This field is available in API version 56.0 and later.
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 ```
 TotalFeeAdjustAmtWithTax
@@ -23041,6 +25637,11 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
 **Description**
 Total amount of the fees on the return order, inclusive of tax. This value only
 includes return order line items of type Fee. This amount is equal to
@@ -23049,11 +25650,6 @@ TotalFeeAmount + TotalFeeTaxAmount.
 This is a calculated field.
 
 This field is available in API version 56.0 and later.
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 ```
 TotalFeeTaxAmount
@@ -23113,6 +25709,11 @@ This field is available in API version 50.0 and later.
 **Type**
 currency
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
@@ -23122,11 +25723,6 @@ Tax on the TotalProductAdjustmentAmount.
 This is a calculated field.
 
 This field is available in API version 50.0 and later.
-
-
-Standard Objects ReturnOrder
-
-**Field Name** **Details**
 
 ```
 TotalProductAmount
@@ -23184,6 +25780,11 @@ This field is available in API version 50.0 and later.
 **Type**
 currency
 
+
+Standard Objects ReturnOrder
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
@@ -23193,9 +25794,6 @@ Tax on the TotalAmount.
 This is a calculated field.
 
 This field is available in API version 50.0 and later.
-
-
-Standard Objects ReturnOrder
 
 Usage
 
@@ -23263,6 +25861,12 @@ Example
 
        "Amount": 50,
 
+```
+
+
+### Standard Objects ReturnOrderItemAdjustment
+
+```
        "Rank": 2
 
       }
@@ -23286,9 +25890,6 @@ Example
    }
 
 ```
-
-
-### Standard Objects ReturnOrderItemAdjustment
 
 Associated Objects
 
@@ -23327,6 +25928,9 @@ Special Access Rules
 
 Order Management must be enabled.
 
+
+Standard Objects ReturnOrderItemAdjustment
+
 Fields
 
 **Field** **Details**
@@ -23335,6 +25939,12 @@ Fields
 Amount
 
 Description
+
+OrderItemAdjustLineSummaryId
+
+ReturnOrderId
+
+ReturnOrderItemAdjustmentNumber
 
 ```
 
@@ -23353,24 +25963,8 @@ textarea
 **Properties**
 Create, Nillable, Update
 
-
-Standard Objects ReturnOrderItemAdjustment
-
-**Field** **Details**
-
 **Description**
 Description of the adjustment.
-
-```
-OrderItemAdjustLineSummaryId
-
-ReturnOrderId
-
-ReturnOrderItemAdjustmentNumber
-
-ReturnOrderLineItemId
-
-```
 
 **Type**
 reference
@@ -23405,11 +25999,27 @@ ReturnOrder
 **Type**
 string
 
+
+Standard Objects ReturnOrderItemAdjustment
+
+**Field** **Details**
+
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
 **Description**
 ID of the return order item adjustment.
+
+```
+ReturnOrderLineItemId
+
+TotalAmtWithTax
+
+TotalTaxAmount
+
+```
+
+Associated Objects
 
 **Type**
 reference
@@ -23425,25 +26035,11 @@ This is a relationship field.
 **Relationship Name**
 ReturnOrderLineItem
 
-
-### Standard Objects ReturnOrderItemTax
-
-**Field** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 ReturnOrderLineItem
-
-```
-TotalAmtWithTax
-
-TotalTaxAmount
-
-```
-
-Associated Objects
 
 **Type**
 currency
@@ -23471,7 +26067,8 @@ Otherwise, they’re available in the specified API version and later.
 **ReturnOrderItemAdjustmentChangeEvent (API version 62.0)**
 Change events are available for the object.
 
-### ReturnOrderItemTax
+
+### Standard Objects ReturnOrderItemTax ReturnOrderItemTax
 
 Represents the tax on a return order line item or return order item adjustment. This object is available in API version 50.0 and later.
 
@@ -23483,9 +26080,6 @@ Supported Calls
 Special Access Rules
 
 Order Management must be enabled.
-
-
-Standard Objects ReturnOrderItemTax
 
 Fields
 
@@ -23499,8 +26093,6 @@ Description
 OrderItemTaxLineItemSummaryId
 
 Rate
-
-ReturnOrderId
 
 ```
 
@@ -23538,8 +26130,22 @@ percent
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects ReturnOrderItemTax
+
+**Field** **Details**
+
 **Description**
 Tax rate used to calculate the Amount.
+
+```
+ReturnOrderId
+
+ReturnOrderItemAdjustmentId
+
+ReturnOrderItemTaxNumber
+
+```
 
 **Type**
 reference
@@ -23555,25 +26161,11 @@ This is a relationship field.
 **Relationship Name**
 ReturnOrder
 
-
-Standard Objects ReturnOrderItemTax
-
-**Field** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 ReturnOrder
-
-```
-ReturnOrderItemAdjustmentId
-
-ReturnOrderItemTaxNumber
-
-ReturnOrderLineItemId
-
-```
 
 **Type**
 reference
@@ -23606,6 +26198,22 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Description**
 ID of the return order item tax.
 
+
+Standard Objects ReturnOrderItemTax
+
+**Field** **Details**
+
+```
+ReturnOrderLineItemId
+
+TaxEffectiveDate
+
+Type
+
+```
+
+Associated Objects
+
 **Type**
 reference
 
@@ -23625,22 +26233,8 @@ ReturnOrderLineItem
 **Relationship Type**
 Lookup
 
-
-### Standard Objects ReturnOrderLineItem
-
-**Field** **Details**
-
 **Refers To**
-### ReturnOrderLineItem
-
-```
-TaxEffectiveDate
-
-Type
-
-```
-
-Associated Objects
+ReturnOrderLineItem
 
 **Type**
 date
@@ -23674,7 +26268,8 @@ Otherwise, they’re available in the specified API version and later.
 **ReturnOrderItemTaxChangeEvent (API version 62.0)**
 Change events are available for the object.
 
-### ReturnOrderLineItem
+
+### Standard Objects ReturnOrderLineItem ReturnOrderLineItem
 
 Represents a specific product that is returned or repaired as part of a return order in Field service, or a specific order item that is returned
 as part of a return order in Order Management. This object is available in API version 42.0 and later.
@@ -23686,9 +26281,6 @@ Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects ReturnOrderLineItem
 
 Special Access Rules
 
@@ -23702,8 +26294,6 @@ Fields
 AssetId
 
 ChangeOrderItemId
-
-CurrencyIsoCode
 
 ```
 
@@ -23740,6 +26330,11 @@ ID of the change order item associated with the return order line item.
 
 This field is available in API version 50.0 and later.
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
 This is a relationship field.
 
 **Relationship Name**
@@ -23751,16 +26346,20 @@ Lookup
 **Refers To**
 OrderItem
 
+```
+CurrencyIsoCode
+
+Description
+
+DestinationLocationId
+
+```
+
 **Type**
 picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
 
 **Description**
 Available only for orgs with the multicurrency feature enabled. Contains the ISO
@@ -23780,15 +26379,6 @@ Possible values are:
 The default value is `USD` .
 
 This field is available in API version 49.0 and later.
-
-```
-Description
-
-DestinationLocationId
-
-GrossUnitPrice
-
-```
 
 **Type**
 textarea
@@ -23812,6 +26402,11 @@ warehouse is the destination location.
 
 This is a relationship field.
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
 **Relationship Name**
 DestinationLocation
 
@@ -23821,33 +26416,28 @@ Lookup
 **Refers To**
 Location
 
-**Type**
-currency
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
-
-**Description**
-Unit price, including tax, of the product represented by the associated order item
-summary.
-
-This field is available in API version 50.0 and later.
-
 ```
+GrossUnitPrice
+
 LastReferencedDate
 
 LastViewedDate
 
 OrderItemId
 
-OrderItemSummaryId
-
 ```
+
+**Type**
+currency
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Unit price, including tax, of the product represented by the associated order item
+summary.
+
+This field is available in API version 50.0 and later.
 
 **Type**
 dateTime
@@ -23881,6 +26471,11 @@ and ProductRequestLineItemId.
 
 This is a relationship field.
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
 **Relationship Name**
 OrderItem
 
@@ -23890,30 +26485,25 @@ Lookup
 **Refers To**
 OrderItem
 
+```
+OrderItemSummaryId
+
+ProcessingPlan
+
+Product2Id
+
+```
+
 **Type**
 reference
 
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
-
 **Description**
 ID of the order item summary associated with the return order line item.
 
 This field is available in API version 50.0 and later.
-
-```
-ProcessingPlan
-
-Product2Id
-
-ProductItemId
-
-```
 
 **Type**
 picklist
@@ -23952,8 +26542,22 @@ Product2
 **Relationship Type**
 Lookup
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
 **Refers To**
 Product2
+
+```
+ProductItemId
+
+ProductRequestLineItemId
+
+ProductServiceCampaignId
+
+```
 
 **Type**
 reference
@@ -23968,11 +26572,6 @@ Product2Id, ProductItemId, and ProductRequestLineItemId.
 
 This is a relationship field.
 
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
-
 **Relationship Name**
 ProductItem
 
@@ -23981,17 +26580,6 @@ Lookup
 
 **Refers To**
 ProductItem
-
-```
-ProductRequestLineItemId
-
-ProductServiceCampaignId
-
-ProductServiceCampaignItemId
-
-QuantityExpected
-
-```
 
 **Type**
 reference
@@ -24024,6 +26612,26 @@ Filter, Group, Nillable, Sort
 **Description**
 The product service campaign associated with the return order line item.
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
+```
+ProductServiceCampaignItemId
+
+QuantityExpected
+
+QuantityReceived
+
+QuantityRejected
+
+QuantityReturned
+
+QuantityUnitOfMeasure
+
+```
+
 **Type**
 reference
 
@@ -24039,28 +26647,10 @@ double
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
-
 **Description**
 The quantity of items expected to be returned.
 
 This field is available in API version 50.0 and later.
-
-```
-QuantityReceived
-
-QuantityRejected
-
-QuantityReturned
-
-QuantityUnitOfMeasure
-
-ReasonForRejection
-
-```
 
 **Type**
 double
@@ -24097,6 +26687,11 @@ returned, track each product in a different return order line item.
 **Type**
 picklist
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -24105,16 +26700,20 @@ Units of the returned items; for example, kilograms or liters. Quantity Unit of
 Measure picklist values are inherited from the Quantity Unit of Measure field on
 products.
 
+```
+ReasonForRejection
+
+ReasonForReturn
+
+ReasonForChangeText
+
+```
+
 **Type**
 picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
 
 **Description**
 Reason for rejecting returned items on this return order line item.
@@ -24132,15 +26731,6 @@ Possible values are:
 The default value is `Missing Item or Part` .
 
 This field is available in API version 50.0 and later.
-
-```
-ReasonForReturn
-
-ReasonForChangeText
-
-RepaymentMethod
-
-```
 
 **Type**
 picklist
@@ -24172,22 +26762,31 @@ The default value is `Damaged` .
 **Type**
 string
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Group, Sort
 
 **Description**
 Details about the reason for return change
 
+```
+RepaymentMethod
+
+ReturnOrderId
+
+ReturnOrderLineItemNumber
+
+```
+
 **Type**
 picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
 
 **Description**
 The method by which the customer or owner will be reimbursed for the items
@@ -24202,15 +26801,6 @@ them
 
 **•** `Return` —The items will be returned to the owner (for example, following
 their repair)
-
-```
-ReturnOrderId
-
-ReturnOrderLineItemNumber
-
-SourceLocationId
-
-```
 
 **Type**
 reference
@@ -24241,6 +26831,22 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Description**
 (Read only) Auto-generated number that identifies the return order line item.
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
+```
+SourceLocationId
+
+TotalAdjustmentAmount
+
+TotalAdjustmentAmountWithTax
+
+TotalAdjustmentTaxAmount
+
+```
+
 **Type**
 reference
 
@@ -24254,11 +26860,6 @@ warehouse, the service vehicle is the source location.
 
 This is a relationship field.
 
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
-
 **Relationship Name**
 SourceLocation
 
@@ -24267,17 +26868,6 @@ Lookup
 
 **Refers To**
 Location
-
-```
-TotalAdjustmentAmount
-
-TotalAdjustmentAmountWithTax
-
-TotalAdjustmentTaxAmount
-
-TotalAmount
-
-```
 
 **Type**
 currency
@@ -24313,6 +26903,11 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
 **Description**
 Tax on the TotalAdjustmentAmount.
 
@@ -24320,16 +26915,22 @@ This is a calculated field.
 
 This field is available in API version 50.0 and later.
 
+```
+TotalAmount
+
+TotalLineAmount
+
+TotalLineAmountWithTax
+
+TotalLineTaxAmount
+
+```
+
 **Type**
 currency
 
 **Properties**
 Filter, Nillable, Sort
-
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
 
 **Description**
 Total, including adjustments and tax, of the return order line item.
@@ -24337,17 +26938,6 @@ Total, including adjustments and tax, of the return order line item.
 This is a calculated field.
 
 This field is available in API version 50.0 and later.
-
-```
-TotalLineAmount
-
-TotalLineAmountWithTax
-
-TotalLineTaxAmount
-
-TotalPrice
-
-```
 
 **Type**
 currency
@@ -24387,6 +26977,22 @@ This is a calculated field.
 
 This field is available in API version 50.0 and later.
 
+
+Standard Objects ReturnOrderLineItem
+
+**Field Name** **Details**
+
+```
+TotalPrice
+
+TotalTaxAmount
+
+Type
+
+TypeCode
+
+```
+
 **Type**
 currency
 
@@ -24398,20 +27004,6 @@ Total, including adjustments but not tax, of the return order line item. Equal t
 UnitPrice times Quantity.
 
 This is a calculated field.
-
-
-Standard Objects ReturnOrderLineItem
-
-**Field Name** **Details**
-
-```
-TotalTaxAmount
-
-Type
-
-TypeCode
-
-```
 
 **Type**
 currency
@@ -24456,6 +27048,11 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
+
+### Standard Objects ReturnOrderOwnerSharingRule
+
+**Field Name** **Details**
+
 **Description**
 Type code of the return order line item. Matches the type code of the associated
 order item summary. Processing depends on this value. Charge indicates that
@@ -24470,11 +27067,6 @@ Possible values are:
 **•** `Product`
 
 This field is available in API version 50.0 and later.
-
-
-### Standard Objects ReturnOrderOwnerSharingRule
-
-**Field Name** **Details**
 
 ```
 UnitPrice
@@ -24517,6 +27109,9 @@ Note: To enable access to this object for your org, contact Salesforce customer 
 instead use Metadata API to programmatically update owner sharing rules because it triggers automatic sharing rule recalculation.
 [The SharingRules Metadata API type is enabled for all orgs.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_sharingrules.htm)
 
+
+Standard Objects ReturnOrderOwnerSharingRule
+
 Supported Calls
 
 `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
@@ -24524,9 +27119,6 @@ Supported Calls
 Special Access Rules
 
 Field Service must be enabled.
-
-
-Standard Objects ReturnOrderOwnerSharingRule
 
 Fields
 
@@ -24540,8 +27132,6 @@ DeveloperName
 GroupId
 
 Name
-
-ServiceResourceAccessLevel
 
 ```
 
@@ -24585,6 +27175,11 @@ triggers the rule to give access.
 **Type**
 string
 
+
+### Standard Objects RevenueAsyncOperation
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Sort, Update
 
@@ -24592,13 +27187,15 @@ Create, Filter, Group, Sort, Update
 Label of the sharing rule as it appears in the user interface. Limited to 80 characters.
 Corresponds to **Label** on the user interface.
 
+```
+ServiceResourceAccessLevel
+
+UserOrGroupId
+
+```
+
 **Type**
 picklist
-
-
-### Standard Objects RevenueAsyncOperation
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort, Update
@@ -24612,11 +27209,6 @@ possible values are:
 **•** `Edit`
 
 **•** `All`
-
-```
-UserOrGroupId
-
-```
 
 **Type**
 reference
@@ -24643,6 +27235,9 @@ Special Access Rules
 
 This object is available with Subscription Management.
 
+
+Standard Objects RevenueAsyncOperation
+
 Fields
 
 **Field** **Details**
@@ -24650,23 +27245,6 @@ Fields
 ```
 AsyncOperationNumber
 
-```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-
-Standard Objects RevenueAsyncOperation
-
-**Field** **Details**
-
-**Description**
-A unique identifier for this revenue async operation record.
-
-```
 CorrelationIdentifier
 
 ExpiresAt
@@ -24678,6 +27256,15 @@ FinishedAt
 JobType
 
 ```
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+A unique identifier for this revenue async operation record.
 
 **Type**
 string
@@ -24721,6 +27308,11 @@ picklist
 **Properties**
 Filter, Group, Restricted picklist, Sort
 
+
+Standard Objects RevenueAsyncOperation
+
+**Field** **Details**
+
 **Description**
 The REST request that initiated the asynchronous process.
 
@@ -24731,11 +27323,6 @@ Valid values are:
 **•** `ASMAdServerIntegration`
 
 **•** `ASMApplyMediaPlanTemplateJob`
-
-
-Standard Objects RevenueAsyncOperation
-
-**Field** **Details**
 
 **•** `ASMApplyTargetingTemplateJob`
 
@@ -24801,6 +27388,11 @@ Standard Objects RevenueAsyncOperation
 
 **•** `PlaceQuotePersistSync`
 
+
+Standard Objects RevenueAsyncOperation
+
+**Field** **Details**
+
 **•** `PlaceQuotePriceAsync`
 
 **•** `PlaceQuoteTaxAsync`
@@ -24812,11 +27404,6 @@ Standard Objects RevenueAsyncOperation
 **•** `QuoteToOrderJob`
 
 **•** `RuleLibraryDeployment`
-
-
-Standard Objects RevenueAsyncOperation
-
-**Field** **Details**
 
 **•** `StandaloneBillingSchedulesCreation`
 
@@ -24830,8 +27417,6 @@ LastReferencedDate
 LastViewedDate
 
 ParentOperationId
-
-ReferenceEntityId
 
 ```
 
@@ -24876,16 +27461,27 @@ Lookup
 **Refers To**
 RevenueAsyncOperation
 
+
+Standard Objects RevenueAsyncOperation
+
+**Field** **Details**
+
+```
+ReferenceEntityId
+
+StartedAt
+
+Status
+
+SubmittedAt
+
+```
+
 **Type**
 reference
 
 **Properties**
 Filter, Group, Nillable, Sort
-
-
-Standard Objects RevenueAsyncOperation
-
-**Field** **Details**
 
 **Description**
 Contains the ID of a record associated with the asynchronous request. For example, if the
@@ -24902,15 +27498,6 @@ Lookup
 
 **Refers To**
 CreditMemo, Order, Product2, Quote
-
-```
-StartedAt
-
-Status
-
-SubmittedAt
-
-```
 
 **Type**
 dateTime
@@ -24948,14 +27535,14 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-The timestamp indicating when the asynchronous process was submitted by the REST
-request.
-
 
 ### Standard Objects RevenueTransactionErrorLog
 
 **Field** **Details**
+
+**Description**
+The timestamp indicating when the asynchronous process was submitted by the REST
+request.
 
 ```
 SuccessfulJobItems
@@ -25011,13 +27598,13 @@ AsyncOperationTrackerId
 **Type**
 reference
 
-**Properties**
-Filter, Group, Nillable, Sort
-
 
 Standard Objects RevenueTransactionErrorLog
 
 **Field** **Details**
+
+**Properties**
+Filter, Group, Nillable, Sort
 
 **Description**
 The ID of the async operation tracker record created by the request. Async operation tracker
@@ -25086,14 +27673,14 @@ later
 
 **•** `InvoiceBatchRunRecovery`
 
-**•** `InvoiceBatchRunSelectionStep`
-
-**•** `InvoiceBatchRunSummarizer`
-
 
 Standard Objects RevenueTransactionErrorLog
 
 **Field** **Details**
+
+**•** `InvoiceBatchRunSelectionStep`
+
+**•** `InvoiceBatchRunSummarizer`
 
 **•** `InvoiceBatchRunTaxProcessor`
 
@@ -44125,2302 +46712,3 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The 15-character org ID of the trial org created. The system provides this read-only field after
-the sign-up request has been processed.
-
-
-Standard Objects SignupRequest
-
-**Field Name** **Details**
-
-```
-CreatedOrgInstance
-
-Edition
-
-ErrorCode
-
-FirstName
-
-LastName
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The server instance of the new trial org, for example, “na8.” This field is available in API version
-29.0 and later.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The Salesforce template that is used to create the trial org. Possible values are `Partner`
-`Group`, `Professional`, `Partner Professional`, `Sales Enterprise`,
-`Professional TSO`, `Enterprise`, `Partner Enterprise`, `Service`
-`Professional`, `Enterprise TSO`, `Developer`, and `Partner Developer` .
-This field is available in API version 35.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The error code if the sign-up request isn’t successful. The system provides this read-only field
-for support purposes.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Nillable, Sort
-
-**Description**
-The first name of the admin user for the trial sign-up.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The last name of the admin user for the trial sign-up.
-
-
-Standard Objects SignupRequest
-
-**Field Name** **Details**
-
-```
-PreferredLanguage
-
-ResolvedTemplateId
-
-ShouldConnectToEnvHub
-
-SignupEmail
-
-SignupSource
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The language of the trial org being created. Specify the language using a language code listed
-[under Fully Supported Languages in Supported Languages in Salesforce Help. For example,](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5&language=en_US)
-use _`zh_CN`_ for simplified Chinese. The value you select overrides the language set by the
-locale. If you specify an invalid language, the org defaults to the default language of the country.
-Likewise, if you specify a language that isn’t supported by the Salesforce edition associated
-with your trial template, the trial org defaults to the default language of the country. This field
-is available in API version 35.0 and later.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Populated during the sign-up request and for internal use by Salesforce. This field is available
-in API version 35.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-**Description**
-When set to `true`, the trial org is connected to the Environment Hub. The sign-up must take
-place in the hub main org or a spoke org. This field is available in API version 35.0 and later.
-
-**Type**
-email
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The email address of the admin user for the trial sign-up.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-
-Standard Objects SignupRequest
-
-**Field Name** **Details**
-
-**Description**
-A user-specified description of the trial sign-up, up to 60 characters. This field is available in
-API version 36.0 and later.
-
-```
-Status
-
-Subdomain
-
-SuppressSignupEmails
-
-TemplateId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The status of the request. Possible values are `New`, `In Progress`, `Error`, or `Success` .
-The default is `New` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The My Domain name for the new trial org used in the org’s login and application URLs. In
-Developer Edition orgs, your name must contain at least 3 characters and no more than 27
-characters. In all other editions, it must be at least 3 characters and no more than 34 characters.
-It can include letters, numbers, and hyphens, but you can’t start the name with a hyphen.
-
-If you don’t choose a My Domain during sign-up, Salesforce assigns one for you based on your
-company name. If you don’t like the one we set, you can change it.
-
-[For details, see My Domain in Salesforce Help.](https://help.salesforce.com/articleView?id=domain_name_overview.htm&language=en_US)
-
-**Type**
-boolean
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-When set to `true`, no sign-up emails are sent when the trial org is created. This field is used
-for the Proxy Signup feature and is available in API version 29.0 and later.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the Trialforce template that is the basis for the trial sign-up. Salesforce
-must approve the template. If you don’t specify an edition, a template ID is required.
-
-
-Standard Objects SignupRequest
-
-**Field Name** **Details**
-
-```
-TrialDays
-
-TrialSourceOrgId
-
-Username
-
-```
-
-Usage
-
-**Type**
-anyType
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-**Description**
-The duration of the trial sign-up in days. Must be equal to or less than the trial days for the
-approved Trialforce template. If not provided, it defaults to the trial duration specified for the
-Trialforce template.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character org ID of the Trialforce Source Organization (TSO) from which the Trialforce
-template was created.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The username of the admin user for the trial sign-up. It must follow the address convention
-[specified in RFC822: www.w3.org/Protocols/rfc822/#z10.](http://www.w3.org/Protocols/rfc822/#z10)
-
-The Java class uses REST API to create a SignupRequest object. It authenticates to the Trialforce Management Organization (TMO) and
-then posts a request to the SignupRequest object.
-
-Here are the variables to specify in this example.
-
-**•** SERVER—The name of the host server for the TMO, for example, _`yourInstance`_ .salesforce.com.
-
-**•** USERNAME—The admin username for the TMO.
-
-**•** PASSWORD—The concatenation of the admin password and the security token for the TMO. To get an email with the security token,
-from your personal settings in Salesforce, select **Reset My Security Token** and click **Reset Security Token** .
-
-**•** CLIENT_ID—From Setup in Salesforce, in the Quick Find box, enter _`Apps`_, and then select **Apps** . Under Connected Apps, click **New** .
-Enter values for the required fields (Callback URL is required, but you can initially set it to any valid URL because it’s not used). Grant
-full access for the OAuth scopes in the Selected OAuth Scopes selector, and click **Save** . Then copy the value of Consumer Key and
-use it for this variable.
-
-**•** CLIENT_SECRET—On the same page, click **Click to reveal** . Then copy the value of Consumer Secret and use it for this variable.
-
-```
-public class IsvSignupDriver {
-
-   private static final String SERVER = server_name : port ;
-
-```
-
-
-Standard Objects SignupRequest
-
-```
-      private static final String USERNAME = tmo_username ;
-
-      private static final String PASSWORD = tmo_passwordsecurity_token ;
-
-      private static final String CLIENT_ID = consumer_key ;
-
-      private static final String CLIENT_SECRET = consumer_secret ;
-
-      private static SignupRequestInfo signupRequest = null;
-
-      public static String createSignupRequest (SignupRequestInfo sr)
-
-       throws JSONException, IOException {
-
-        JSONObject createResponse = null;
-
-        signupRequest = sr;
-
-        JSONObject loginResponse = login(SERVER, USERNAME, PASSWORD);
-
-        String instanceUrl = loginResponse.getString("instance_url");
-
-        String accessToken = loginResponse.getString("access_token");
-
-        createResponse = create(instanceUrl, accessToken);
-
-        System.out.println("Created SignupRequest object: " + createResponse + "\n");
-
-        return createResponse.toString();
-
-      }
-
-      /* Authenticates to the TMO using the required credentials */
-
-      private static JSONObject login(String server, String username, String password)
-
-       throws ClientProtocolException, IOException, JSONException {
-
-        String authEndPoint = server + "/services/oauth2/token";
-
-        HttpClient httpclient = new DefaultHttpClient();
-
-        try {
-
-           HttpPost post = new HttpPost(authEndPoint);
-
-           List<NameValuePair> params = new ArrayList<NameValuePair>();
-
-           params.add(new BasicNameValuePair("grant_type", "password"));
-
-           params.add(new BasicNameValuePair("client_id", CLIENT_ID));
-
-           params.add(new BasicNameValuePair("client_secret", CLIENT_SECRET));
-
-           params.add(new BasicNameValuePair("username", username));
-
-           params.add(new BasicNameValuePair("password", password));
-
-           post.setEntity(new UrlEncodedFormEntity(params, Consts.UTF_8));
-
-           BasicResponseHandler handler = new BasicResponseHandler();
-
-           String response = httpclient.execute(post, handler);
-
-           return new JSONObject(response);
-
-        } finally {
-
-           httpclient.getConnectionManager().shutdown();
-
-        }
-
-      }
-
-      /* Posts a request to the SignupRequest object */
-
-      private static JSONObject create(String instanceUrl, String accessToken)
-
-       throws ClientProtocolException, IOException, JSONException {
-
-        HttpClient httpClient = new DefaultHttpClient();
-
-        try {
-
-           HttpPost post = new HttpPost(instanceUrl +
-
-            "/services/data/v27.0/sobjects/SignupRequest/");
-
-             post.setHeader("Authorization", "Bearer " + accessToken);
-
-             post.setHeader("Content-Type", "application/json");
-
-```
-
-
-Standard Objects SignupRequest
-
-```
-             JSONObject requestBody = new JSONObject();
-
-             requestBody.put("TemplateId", signupRequest.getTemplateID());
-
-             requestBody.put("SignupEmail", signupRequest.getEmail());
-
-             requestBody.put("username", signupRequest.getUsername());
-
-             requestBody.put("Country", "US");
-
-             requestBody.put("Company", signupRequest.getCompanyName());
-
-             requestBody.put("lastName", signupRequest.getLastName());
-
-             StringEntity entity = new StringEntity(requestBody.toString());
-
-             post.setEntity(entity);
-
-             BasicResponseHandler handler = new BasicResponseHandler();
-
-             String response = httpClient.execute(post, handler);
-
-             return new JSONObject(response);
-
-        } finally {
-
-           httpClient.getConnectionManager().shutdown();
-
-        }
-
-      }
-
-   }
-
-```
-
-Error Codes
-
-If the sign-up fails, the system generates an error code that can help you identify the cause. This table shows the most important error
-codes.
-
-
-### Standard Objects Site
-
-Associated Objects
-
-This object has the following associated objects. Unless noted, they’re available in the same API version as this object.
-
-**•** SignupRequestFeed–Feed tracking is available for the object.
-
-**•** SignupRequestHistory–History is available for tracked fields of the object.
-
-**•** SignupRequestOwnerSharingRule–Sharing rules are available for the object
-
-**•** SignupRequestShare–Sharing is available for the object.
-
-### Site
-
-Represents a public website that is integrated with an org. This object is available in API version 16.0 and later.
-
-To access this object, Digital Experiences, Salesforce Sites, or Site.com must be enabled.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-**•** Customer Portal users can’t access this object.
-
-
-Standard Objects Site
-
-**•** To view this object, you must have the View Setup and Configuration permission.
-
-Fields
-
-**Field** **Description**
-
-```
-AdminId
-
-AnalyticsTrackingCode
-
-ArchiveStatus
-
-ArchivedById
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The site administrator designated as the contact for the site. This user receives
-site-related communications from site visitors and from Salesforce.
-
-This is a relationship field.
-
-**Relationship Name**
-Admin
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The tracking code associated with your site. This code can be used by services
-like Google Analytics to track page request data for your site.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The archived status of a site. Possible values are:
-
-**•** `NotArchived`
-
-**•** `TemporaritlyArchived`
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects Site
-
-**Field** **Description**
-
-**Description**
-The user that archived the site.
-
-**Relationship Name:**
-ArchivedBy
-
-**Relationship Type:**
-Lookup
-
-**Refers To:**
-User
-
-```
-ArchivedDate
-
-ClickjackProtectionLevel
-
-DailyBandwidthLimit
-
-DailyBandwidthUsed
-
-```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Date and time when the site was archived.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-Sets the clickjack protection level. The options are:
-
-**•** `AllowAllFraming` —Allow framing by any page (no protection)
-
-**•** `SameOriginOnly` —Allow framing by the same origin only
-(recommended)
-
-**•** `NoFraming` —Don’t allow framing by any page (most protection)
-
-This field is available in API version 30.0 and later.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The rolling 24-hour daily bandwidth limit for the sites in your organization.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-Standard Objects Site
-
-**Field** **Description**
-
-**Description**
-The current rolling 24-hour daily bandwidth usage for the sites in your
-organization.
-
-```
-DailyRequestTimeLimit
-
-DailyRequestTimeUsed
-
-Description
-
-GuestRecordDefaultOwnerId
-
-```
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The rolling 24-hour daily service request time limit for the sites in your
-organization. Service request time is calculated as the total server time in minutes
-required to generate pages for the site.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The current rolling 24-hour daily service request time for the sites in your
-organization.
-
-**Type**
-textarea
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-An optional description of the site.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-A user in the Salesforce org that is the default owner of records created by
-unauthenticated (guest) users.
-
-This is a relationship field.
-
-**Relationship Name**
-GuestRecordDefaultOwner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-
-Standard Objects Site
-
-**Field** **Description**
-
-```
-GuestUserId
-
-MasterLabel
-
-MonthlyPageViewsEntitlement
-
-Name
-
-OptionsAllowGuestPaymentsApi
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The site or Experience Cloud sites specific user that anonymous, unauthenticated
-users run as when interacting with the site.
-
-This is a relationship field.
-
-**Relationship Name**
-GuestUser
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The name of the site as it appears in the user interface.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The number of page views allowed for the current calendar month for the sites
-in your organization.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The name used when referencing the site in the API.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-
-Standard Objects Site
-
-**Field** **Description**
-
-**Description**
-Indicates whether unauthenticated guest users can access the Payments API
-( `true` ) or not ( `false` ). The default is `false` . This field is available in API version
-49.0 and later.
-
-```
-OptionsAllowGuestSupportApi
-
-OptionsAllowHomePage
-
-OptionsAllowStandardAnswersPages
-
-OptionsAllowStandardIdeasPages
-
-OptionsAllowStandardLookups
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option to enable unauthenticated users to access the Support API.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option to enable the standard page associated with the Home tab
-( `/home/home.jsp` ).
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option to enable standard pages associated with an answers Experience
-Cloud site. If you want to use default Answers pages (such as AnswersHome),
-enable these pages.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option to enable standard pages associated with an Ideas Experience Cloud
-site. If you want to use default Ideas pages (such as IdeasHome), enable these
-pages.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-
-Standard Objects Site
-
-**Field** **Description**
-
-**Description**
-The option to enable the standard lookup pages. These are the windows
-associated with lookup fields on Visualforce pages.
-
-```
-OptionsAllowStandardPortalPages
-
-OptionsAllowStandardSearch
-
-OptionsBrowserXssProtection
-
-OptionsCachePublicVfPagesInProxies
-
-OptionsContentSniffingProtection
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option to enable authenticated users to access the standard Salesforce pages.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option to enable the standard search pages. To allow public users to perform
-standard searches, enable these pages.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option to enable the browser's cross-site scripting protection.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-Indicates whether proxy servers cache this site’s publicly available pages only for
-unauthenticated guest users ( `true` ) or not ( `false` ). When this field is `false`,
-this site’s cache-enabled Visualforce pages are cached in the web browser for
-both authenticated and unauthenticated users. The default is `true` . See
-[Configure Site Caching in Salesforce Help for more information.](https://help.salesforce.com/articleView?id=platform.sites_caching.htm&type=5&language=en_US)
-
-This field is available in API version 52.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-
-Standard Objects Site
-
-**Field** **Description**
-
-**Description**
-The option to enable content-sniffing protection.
-
-```
-OptionsCookieConsent
-
-OptionsCspUpgradeInsecureRequests
-
-OptionsEnableFeeds
-
-OptionsHasStoredPathPrefix
-
-OptionsRedirectToCustomDomain
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-Indicates whether only required Salesforce-supplied cookies are allowed within
-the site ( `true` ) or all cookies types are allowed: required, functional, and
-advertising ( `false` ). The default is `false` . This field is available in API version
-52.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-This field is removed in API version 52.0 and later. In API version 51.0 and earlier,
-the value in the field is ignored.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option that displays the Syndication Feeds related list, where you can create
-and manage syndication feeds for users on your public sites. This field is visible
-only if you have the feature enabled for your organization.
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-Indicates whether this Experience Cloud site has a customized urlPathPrefix
-( `true` ) or instead uses the Experience Cloud site's `UrlPathPrefix` plus `/s`
-( `false` ). The default is `false` . In other sites, this field has no effect. This field
-is available in API version 50.0 and later.
-
-**Type**
-boolean
-
-
-Standard Objects Site
-
-**Field** **Description**
-
-**Properties**
-Filter
-
-**Description**
-Indicates whether requests to this site’s system-managed URLs are redirected to
-the HTTPS custom domain serving this site ( `true` ) or not ( `false` ).
-System-managed site URLs end in `*.my.salesforce-sites.com` or
-`*.my.site.com` . In Experience Cloud sites, the default is `false` . In Salesforce
-Sites, the default is `true` .
-
-If multiple custom domains serve this site and this field is set to true, requests
-are routed to the site’s primary custom URL only if it’s an HTTPS custom domain.
-Otherwise, requests are redirected to the first HTTPS custom domain associated
-with this site, in alphanumeric order. If no HTTPS custom domain serves this site,
-this option has no effect.
-
-This field is available in API version 52.0 and later.
-
-```
-OptionsReferrerPolicyOriginWhenCrossOrigin
-
-OptionsRequireHttps
-
-SiteType
-
-Status
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-The option to enable referrer policy (origin-when-cross-origin).
-
-**Type**
-boolean
-
-**Properties**
-Filter
-
-**Description**
-This field is removed in API version 52.0 and later. In API version 51.0 and earlier,
-the value in the field is ignored.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-Identifies whether the site is a Visualforce (Salesforce Sites) or a Site.com site.
-`SiteType` is available in API version 21.0 and later. In API version 26.0 and
-later, if Experience Cloud sites are enabled for your Salesforce org, the site could
-also be a Network Visualforce or Network Site.com site.
-
-**Type**
-picklist
-
-
-Standard Objects Site
-
-**Field** **Description**
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The status for the site. For example, `Active` or `In Maintenance` .
-
-```
-Subdomain
-
-TopLevelDomain
-
-UrlPathPrefix
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-If you enabled Salesforce Sites or Digital Experiences before you enabled enhanced
-domains on your My Domain, this field returns this site’s previous subdomain.
-For example, if your domain was `mycompany.force.com`, then
-`mycompany` is the subdomain.
-
-If you enabled Salesforce Sites or Digital Experiences after you enabled enhanced
-domains, this field returns a null value.
-
-**Type**
-url
-
-**Properties**
-Filter, Nillable
-
-**Description**
-The optional branded custom Web address that you registered with a third-party
-domain name registrar. The custom Web address acts as an alias to your Salesforce
-address.
-
-Beginning with API version 21.0, `TopLevelDomain` is no longer available.
-Instead, use the Domain and DomainSite objects.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique Salesforce URL that the public uses to access this site.
-
-Use this read-only object to query or retrieve information on your site.
-
-
-### Standard Objects SiteDetail
-
-Associated Objects
-
-This object has the following associated objects. Unless noted, these associated objects are available in the same API version as this
-object.
-
-**SiteFeed**
-
-Feed tracking is available for the object.
-
-**SiteHistory**
-
-History is available for tracked fields of the object.
-
-### SiteDetail
-
-Represents the details of a Salesforce site or Experience Cloud site. Available in API Version 38.0 and later.
-
-Supported SOAP Calls
-
-`describeSObjects()`, `query()`
-
-Supported REST HTTP Methods
-
-```
-   GET
-
-```
-
-Fields
-
-**Field** **Details**
-
-```
-DurableId
-
-IsRegistrationEnabled
-
-SecureUrl
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of the Site object.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether the site allows users to sign up.
-
-**Type**
-url
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-
-### Standard Objects SiteDomain
-
-**Field** **Details**
-
-**Description**
-The URL of the website.
-
-Note: SiteDetail fields are exposed in SOAP API version 45.0 and later. You can use Tooling API to query for SiteDetail fields in
-guest user mode in API version 44.0 and earlier. In API version 45.0 and later, use SOAP API to get this data in guest user mode.
-SiteDetail is still exposed in Tooling API to User Profiles with the ViewSetup permission.
-
-### SiteDomain SiteDomain is a read-only object, and a one-to-many replacement for the Site.TopLevelDomain field. This object is available in API version
-
-21.0, and has been deprecated as of API version 26.0. In API version 26.0 and later, use the Domain and DomainSite objects instead.
-
-To access this object, Digital Experiences, Salesforce Sites, or Site.com must be enabled.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-**•** Customer Portal users can’t access this object.
-
-**•** To view this object, you must have the View Setup and Configuration permission.
-
-Fields
-
-**Field** **Description**
-
-```
-Domain
-
-SiteId
-
-```
-
-**Type**
-url
-
-**Properties**
-Filter, Sort
-
-**Description**
-The branded custom Web address within the global namespace identified by
-this domain's type. In the Domain Name System (DNS) global namespace, this
-field is the custom Web address that you registered with a third-party domain
-name registrar. The custom Web address can be used to access the site of this
-domain.
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-
-### Standard Objects SiteEventLog
-
-**Field** **Description**
-
-**Description**
-The ID of the associated Site.
-
-```
-DomainType
-
-```
-
-Usage
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Sort, Nillable
-
-**Description**
-The global namespace that this custom Web address belongs to. This value is
-set to DNS for custom Web addresses in the global DNS. This field is available in
-version 24.0 of the API.
-
-Use this read-only object to query the domains that are associated with each site in your organization.
-
-### SiteEventLog SiteEventLog stores details of Site.com requests. Requests can originate from the browser (UI). This object is available in API version 62.0
-
-and later.
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ClientIp
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”.
-
-For example: `96.43.144.26` .
-
-
-Standard Objects SiteEventLog
-
-**Field** **Details**
-
-```
-CpuTime
-
-DatabaseTotalTime
-
-HttpHeaders
-
-HttpMethod
-
-IsApi
-
-IsError
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The time in nanoseconds for a database round trip. Includes time spent in the JDBC driver,
-network to the database, and DB_CPU_TIME. Compare this field to CPU_TIME to determine
-whether performance issues are occurring in the database layer or in your own code.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The HTTP headers that were sent in the request.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The HTTP method of the request. For example: GET, POST, PUT, and so on.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-
-The default value is `false` .
-
-**Type**
-boolean
-
-
-Standard Objects SiteEventLog
-
-**Field** **Details**
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-True if this page was an error page.
-
-The default value is `false` .
-
-```
-IsFirstRequest
-
-IsGuest
-
-IsSecure
-
-LoginKey
-
-PageName
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-True if this page is the first Visualforce transaction in the request.
-
-The default value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-True if this page was a guest (unauthenticated) request.
-
-The default value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-True if this request is secure.
-
-The default value is `false` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-GeJCsym5eyvtEK2I.
-
-**Type**
-string
-
-
-Standard Objects SiteEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the Visualforce page that was requested.
-
-```
-QueryString
-
-RequestIdentifier
-
-RequestStatus
-
-RequestType
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The SOQL query, if one was performed.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same REQUEST_ID. For example:
-3nWgxWbDKWWDIk0FKfF5DV.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The status of the request for a page view or user interface action. This field can have a blank
-value.
-
-For example:
-
-**•** `S`  - Success. Salesforce handled the request successfully. If an Apex controller throws
-an exception, this status is also returned.
-
-**•** `F`  - Failure. Typically 4xx or 5xx HTTP codes, such as no permission to view page, page
-took too long to render, page is read-only.
-
-**•** `U`  - Undefined.
-
-**•** `A` —Authorization error.
-
-**•** `R`  - Redirect. Typically a 3xx HTTP code, possibly initiated by an Apex controller in a
-Visualforce page.
-
-**•** `N` —Not Found. 404 error.
-
-**Type**
-String
-
-
-Standard Objects SiteEventLog
-
-**Field** **Details**
-
-**Description**
-The request type.
-
-Possible values are:
-
-**•** `page` —a normal request for a page
-
-**•** `content_UI` —a content request for a page that originated in the user interface
-
-**•** `content_apex` —a content request initiated by an Apex call
-
-**•** `PDF_UI` —a request for a page in PDF format through the user interface
-
-**•** `PDF_apex` —a request for PDF format by an Apex call (usually a Web Service call)
-
-```
-RunTime
-
-SessionKey
-
-SiteIdentifier
-
-Timestamp
-
-Uri
-
-```
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started. For example:
-`d7DEq/ANa7nNZZVD` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the Site.com site.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The access time of Salesforce services in GMT. For example: `20130715233322.670` .
-
-**Type**
-string
-
-
-Standard Objects SiteEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The URI of the page that’s receiving the request. For example: `home/home.jsp` .
-
-```
-UserIdentifier
-
-UserType
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 18-character ID of the user who’s using Salesforce services through the UI or the API.
-For example: `00530000009M943YAS` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The category of user license.
-
-Possible values are:
-
-**•** `CsnOnly` —Users whose access to the application is limited to Chatter. This user type
-includes Chatter Free and Chatter moderator users.
-
-**•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
-they’re organization customers and access the application through a customer portal or
-an Experience Cloud site.
-
-**•** `CustomerSuccess` —Customer Success license. Users whose access is limited
-because they’re organization customers and access the application through a customer
-portal.
-
-**•** `Guest` —Users whose access is limited so that your customers can view and interact
-with your site without logging in.
-
-**•** `PowerCustomerSuccess` —Power Customer Success license. Users whose access
-is limited because they’re organization customers and access the application through a
-customer portal. Users with this license type can view and edit data they directly own
-or data owned by or shared with users below them in the customer portal role hierarchy.
-
-**•** `PowerPartner` —Power Partner license. Users whose access is limited because they’re
-partners and typically access the application through a partner portal or site.
-
-**•** `SelfService` —Users whose access is limited because they’re organization customers
-and access the application through a self-service portal.
-
-**•** `Standard` —Standard user license. This user type also includes Salesforce Platform
-and Salesforce Platform One user licenses, and admins for this org.
-
-
-### Standard Objects SiteHistory SiteHistory
-
-Represents the history of changes to the values in the fields of a site. This object is generally available in API version 18.0 and later.
-
-To access this object, Salesforce Sites must be enabled for your organization.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-You can also enable `delete()` [in API version 42.0 and later. See Enable delete of Field History and Field History Archive.](https://help.salesforce.com/articleView?id=000321814&type=1&mode=1&language=en_US)
-
-Special Access Rules
-
-**•** Customer Portal users can't access this object.
-
-**•** To view this object, you must have the “View Setup and Configuration” permission.
-
-Fields
-
-**Field** **Details**
-
-```
-DataType
-
-Field
-
-NewValue
-
-OldValue
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Data type of the field that was changed.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The name of the field that was changed.
-
-**Type**
-anyType
-
-**Properties**
-Nillable, Sort
-
-**Description**
-The new value of the field that was changed.
-
-**Type**
-anyType
-
-
-### Standard Objects SiteIframeWhitelistUrl
-
-**Field** **Details**
-
-**Properties**
-Nillable, Sort
-
-**Description**
-The last value of the field before it was changed.
-
-```
-SiteId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The ID of the associated Site.
-
-This is a relationship field.
-
-**Relationship Name**
-### Site
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-### Site
-
-### SiteIframeWhitelistUrl
-
-Represents a list of external domains that you allow to frame your Salesforce site or Experience Cloud site pages. This object is available
-in API version 44.0 and later.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
-terms in our code can break current implementations, we maintained this object’s name.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-**•** Customer Portal users can’t access this object.
-
-**•** To view this object, you must have the “View Setup and Configuration” permission.
-
-
-### Standard Objects SiteRedirectMapping
-
-Fields
-
-**Field Name** **Details**
-
-```
-SiteId
-
-Url
-
-### SiteRedirectMapping
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the site to include in the inline frame.
-
-This is a relationship field.
-
-**Relationship Name**
-### Site
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-### Site
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The domain allowed to frame your Salesforce site or Experience Cloud site page.
-Accepts these formats: example, example.com, *example.com, and
-https://example.com.
-
-Represents a site redirect from an external site to an Experience Cloud site. This object is available in API version 52.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-This object is available only if Digital Experiences is enabled for your org and Create and Set Up Experiences is enabled.
-
-
-Standard Objects SiteRedirectMapping
-
-Fields
-
-**Field** **Details**
-
-```
-Action
-
-IsActive
-
-IsDynamic
-
-SiteId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-The type of the redirect.
-
-Possible values are:
-
-**•** `Permanent`
-
-**•** `Temporary`
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether the redirect is enabled.
-
-Default value is `false` .
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Indicates whether a redirect rule is dynamic.
-
-Default value is `false` . This field is available in API version 57.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID of the site for the redirect.
-
-This field is a relationship field.
-
-**Relationship Name**
-Site
-
-**Relationship Type**
-Lookup
-
-
-### Standard Objects Skill
-
-**Field** **Details**
-
-**Refers To**
-Site
-
-```
-Source
-
-Target
-
-```
-
-Usage
-
-**Type**
-url
-
-**Properties**
-Create, Filter, Sort
-
-**Description**
-The URL of the site you want to redirect.
-
-**Type**
-url
-
-**Properties**
-Create, Filter, Sort
-
-**Description**
-The URL of the Experience Cloud site you want to users to visit.
-
-If you build a new site on Experience Cloud but you also have an old site on a different platform, ensure that users visit the new site. Use
-SiteRedirectMapping to redirect users from the external site to the Experience Cloud site.
-
-### Skill
-
-Represents a category or group of Chat users or service resources in Field Service or Workforce Engagement. This object is available in
-API version 24.0 and later.
-
-Note: For information about WDC skills on a user's profile, see the ProfileSkill topic.
-
-Supported Calls
-
-`create()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Fields
-
-**Field Name** **Details**
-
-```
-Description
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-
-Standard Objects Skill
-
-**Field Name** **Details**
-
-**Description**
-The description of the skill.
-
-```
-DeveloperName
-
-Language
-
-LastViewedDate
-
-MasterLabel
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-
-The unique name of the object in the API. This name can contain only underscores
-and alphanumeric characters, and must be unique in your org. It must begin with
-a letter, not include spaces, not end with an underscore, and not contain two
-consecutive underscores. In managed packages, this field prevents naming
-conflicts on package installations. With this field, a developer can change the
-object’s name in a managed package and the changes are reflected in a
-subscriber’s organization.
-
-When creating large sets of data, always specify a unique `DeveloperName`
-for each record. If no `DeveloperName` is specified, performance slows down
-while Salesforce generates one for each record.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-
-The language of the skill.
-
-**Type**
-datetime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp for when the current user last viewed the skill.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-**Description**
-
-The name of the skill.
-
-
-### Standard Objects SkillLevelDefinition
-
-**Field Name** **Details**
-
-```
-TypeId
-
-```
-
-Usage
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-
-The skill type associated with the skill.
-
-This field is a relationship field.
-
-This field is available in API version 58.0 and later.
-
-**Relationship Name**
-Type
-
-**Refers To**
-SkillType
-
-**Chat**
-Use this object to assign Chat users to groups based on their abilities. The skills associated with a LiveChatButton determine which
-agents receive chat requests that come in through that button.
-
-**Field Service**
-Use this object to track certifications and areas of expertise in your workforce. After you create a skill, you can:
-
-**•** Assign it to a service resource via the Skills related list on the resource’s detail page. When you assign a skill to a service resource,
-you can specify their skill level and the duration of the skill.
-
-**•** Add it as a required skill via the Skill Requirements related list on any work type, work order, or work order line item. When you
-add a required skill to a work record, you can specify the skill level.
-
-**Workforce Engagement**
-Use this object to specify areas of expertise in your workforce. After you create a skill, you can:
-
-**•** Assign it to a service resource via the Skills related list on the resource’s detail page.
-
-**•** Add it as a required skill via the Skill Requirements related list on a job profile.
-
-### SkillLevelDefinition
-
-Represents a skill which can be acquired by completing enablement site (myTrailhead) modules. This object is available in API version
-51.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects SkillLevelDefinition
-
-Special Access Rules
-
-The org must have a Workforce Engagement license and an Enablement Sites (myTrailhead) license. User must have at least one Workforce
-Engagement permission set assigned to them: Workforce Engagement Analyst, Workforce Engagement Planner, Workforce Engagement
-Agent.
-
-Fields
-
-**Field** **Details**
-
-```
-Description
-
-IsAutoApproved
-
-LearningContent
-
-OwnerId
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Describes the mapping.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-Whether this mapping auto-approves.
-
-The default value is 'false'.
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable
-
-**Description**
-The titles of the Trailhead modules associated to this mapping.
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The user who owns the Skill Level Definition.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-Owner
-
-**Relationship Type**
-Lookup
-
-
-### Standard Objects SkillLevelProgress
-
-**Field** **Details**
-
-**Refers To**
-Group, User
-
-```
-SkillId
-
-### `SkillLevel`
-
-```
-
-Associated Objects
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The skill that this mapping is for.
-
-This is a relationship field.
-
-**Relationship Name**
-### Skill
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-### Skill
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-The level to assign for the skill.
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**SkillLevelDefinitionOwnerSharingRule on page 65**
-Sharing rules are available for the object.
-
-**SkillLevelDefinitionShare on page 67**
-Sharing is available for the object.
-
-### SkillLevelProgress
-
-Represents training progress for a given user. This object is available in API version 51.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects SkillLevelProgress
-
-Special Access Rules
-
-The org must have a Workforce Engagement license and an Enablement Sites (myTrailhead) license. User must have at least one Workforce
-Engagement permission set assigned to them: Workforce Engagement Analyst, Workforce Engagement Planner, Workforce Engagement
-Agent.
-
-Fields
-
-**Field** **Details**
-
-```
-CompletedCount
-
-CompletedDate
-
-OwnerId
-
-ServiceResourceId
-
-```
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-Number of modules that have been completed towards this Skill Mapping.
-
-**Type**
-dateTime
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-The date when this progress was completed.
-
-**Type**
-reference
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The owner of skill level progress.
-
-This is a relationship field.
-
-**Relationship Name**
-Owner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-
-Standard Objects SkillLevelProgress
-
-**Field** **Details**
-
-**Description**
-The Service Resource that will be granted a service resource skill when the progress is
-complete.
-
-This is a relationship field.
-
-**Relationship Name**
-ServiceResource
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-ServiceResource
-
-```
-SkillLevelDefinitionId
-
-SkillMasterLabel
-
-Status
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**

@@ -1,3 +1,15 @@
+in the Authentication Provider User Registration standard flow.
+
+A default account is required to use a flow registration handler to create
+and update external users. You can specify a default account here or in the
+flow itself. If you use both, the default account that's configured in the flow
+takes precedent.
+
+Available in API version 64.0 and later.
+
+`flowDefaultProfile` string For authentication providers that use a flow registration handler, the default
+profile that new users are assigned to. If you include this field, Salesforce
+
 automatically uses it for the `defaultProfileId` variable in the
 Authentication Provider User Registration standard flow.
 
@@ -225,7 +237,7 @@ see “Usage.”
 
 Represents an allowlisted URL parameter that can be forwarded from authentication provider client configuration URLs to the authorization
 URL. Use this type to add custom functionality to authentication providers. For example, allowlist a `ui_locales` parameter and use
-it to send a user's language preference from Salesforce to the third-party provider's login page.
+it to send a user's language preference from Salesforce to the third-party provider's login page. You can allowlist up to 10 parameters.
 
 
 Metadata Types AuthProvider
@@ -5724,7 +5736,7 @@ The list of goals in this bot verion. Available in API version 57.0 and later.
 ConversationDefinitionPlanner[] on page 529
 
 **Description**
-Represents the API name of the Agent planner service GenAiPlanner on page 1358.
+Represents the API name of the Agent planner service GenAiPlanner on page 1359.
 
 Available in API version 60.0 and later.
 
@@ -13042,8 +13054,8 @@ CommunityTemplateDefinition.
 `enableExtendedCleanUp` boolean False by default. Determines if deleting this
 `OnDelete` CommunityTemplateDefinition attempts to delete other directly or
 indirectly referenced objects automatically, for example,
-CommunityThemeDefinition on page 608, Flexipage on page 1188, or
-StaticResource on page 2314. Values are true or false.
+CommunityThemeDefinition on page 608, Flexipage on page 1189, or
+StaticResource on page 2327. Values are true or false.
 
 `masterLabel` string Required. The label for this CommunityTemplateDefinition, which displays
 in Setup.
@@ -20832,7 +20844,7 @@ again. Required if `isServiceCloudConsole` is `true` .
 
 AppProfileActionOverride
 
-Represents a ProfileActionOverride for a custom app. This type inherits from ProfileActionOverride on page 1734 and extends it by one
+Represents a ProfileActionOverride for a custom app. This type inherits from ProfileActionOverride on page 1744 and extends it by one
 field, `profile` . Available for Lightning Experience in API version 39.0 and later. In API version 45.0 and later, you can override a home
 page for the custom app by profile.
 
@@ -22503,7 +22515,7 @@ Declarative Metadata File Suffix and Directory Location
 Master custom label values are stored in the `CustomLabels.labels` file. Translations for custom labels can be retrieved through
 Translations in Metadata API. Translations are stored in files under the `translations` folder with the name format of
 _`localeCode`_ `.translation`, where _`localeCode`_ is the locale code of the translation language. The supported locale codes
-are listed in Language on page 2377.
+are listed in Language on page 2390.
 
 Version
 
@@ -24583,7 +24595,7 @@ Represents the policy for archiving field history data. When you set a policy, y
 keep field history in Salesforce before archiving it. By default, when Field Audit Trail is enabled, all field history is retained.
 
 7. Index
-Represents an index defined within a custom big object. Use this metadata type to define the composite primary key (index) for a
+[Represents an index defined within a custom big object. Use this metadata type to define the composite primary key (index) for a](https://developer.salesforce.com/docs/atlas.en-us.260.0.bigobjects.meta/bigobjects/big_object.htm)
 custom big object. This type extends the Metadata metadata type and inherits its `fullName` field.
 
 8. ListView
@@ -26499,7 +26511,7 @@ This sample shows the definition of a history retention policy for a custom obje
 
 ```
 
-Represents an index defined within a custom big object. Use this metadata type to define the composite primary key (index) for a custom
+[Represents an index defined within a custom big object. Use this metadata type to define the composite primary key (index) for a custom](https://developer.salesforce.com/docs/atlas.en-us.260.0.bigobjects.meta/bigobjects/big_object.htm)
 big object. This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
@@ -27225,7 +27237,7 @@ This field is available in API version 37.0 and later.
 Indicates whether values are sorted ( `true` ), or not ( `false` ). By default
 this value is `false` .
 
-The following sample uses a picklist. For a complete sample of using a picklist with record types and profiles, see Profile on page 1716.
+The following sample uses a picklist. For a complete sample of using a picklist with record types and profiles, see Profile on page 1726.
 
 ```
 public void setPicklistValues() {
@@ -27736,7 +27748,7 @@ available in the record type that contains this component.
 
 Java Sample
 
-The following sample uses two record types. For the complete sample that includes profiles and picklists, see Profile on page 1716.
+The following sample uses two record types. For the complete sample that includes profiles and picklists, see Profile on page 1726.
 
 ```
    public void recordTypeSample() {
@@ -31578,32 +31590,34 @@ This field is available in API version 25.0 and later.
 
 **•** `Image`
 
+**•** `LightningWebComponent`
+
 **•** `Line`
 
-**•** `lineCumulative`
+**•** `LineCumulative`
 
 **•** `LineGrouped`
 
-**•** `lineGroupedCumulative`
+**•** `LineGroupedCumulative`
 
 **•** `Metric`
 
 **•** `Pie`
 
-**•** `PulseMetric`
+**•** `PulseMetricCard`
 
 **•** `RichText`
 
 **•** `Scatter`
-
-**•** `ScatterGrouped`
 
 
 Metadata Types Dashboard
 
 **Field** **Field Type** **Description**
 
-**•** `Scontrol`
+**•** `ScatterGrouped`
+
+**•** `SControl`
 
 **•** `Table`
 
@@ -31670,13 +31684,13 @@ or legend entries.
 This overrides the `drillToDetailEnabled` field.
 This field is available in API version 17.0 and later.
 
-`drillToDetailEnabled` boolean When enabled, users are taken to the record detail page
-when they click a record name, record owner, or feed post
-
 
 Metadata Types Dashboard
 
 **Field** **Field Type** **Description**
+
+`drillToDetailEnabled` boolean When enabled, users are taken to the record detail page
+when they click a record name, record owner, or feed post
 
 in a table or chart. When set to `true` users can click axis
 and legend values, chart elements, and table entries. The
@@ -35465,7 +35479,7 @@ string
 
 **Description**
 References the Lightning web component, represented by the
-LightningComponentBundle on page 1490 type, that implements the user interface for
+LightningComponentBundle on page 1491 type, that implements the user interface for
 the external content provider in Salesforce CMS.
 
 The LightningComponentBundle must be deployed and available before you reference
@@ -35634,7 +35648,7 @@ Metadata Types DigitalExperienceBundle
 Special Access Rules
 
 In Experience Cloud, you can use DigitalExperienceBundle for enhanced LWR sites created in Winter ’23 or later. For Aura sites and other
-LWR sites, use the ExperienceBundle (recommended) or the SiteDotCom on page 2308 metadata types. Packaging is unsupported for
+LWR sites, use the ExperienceBundle (recommended) or the SiteDotCom on page 2321 metadata types. Packaging is unsupported for
 enhanced LWR sites.
 
 In Salesforce CMS and in Marketing Cloud, you must have a contributor role in a workspace to retrieve it. For Marketing Cloud, you can
@@ -37266,46 +37280,4 @@ Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
        "ButtonColor" : "var(--dxp-g-brand)",
 
        "ButtonFocusColor" : "var(--dxp-s-button-color-1)",
-
-       "ButtonFont" : "Salesforce Sans",
-
-       "ButtonFontSize" : "1rem",
-
-       "ButtonFontStyle" : "normal",
-
-       "ButtonFontWeight" : "400",
-
-       "ButtonHoverColor" : "var(--dxp-s-button-color-1)",
-
-       "ButtonLargeBorderRadius" : "4px",
-
-       "ButtonLargeFontSize" : "1.25rem",
-
-       "ButtonLargePadding" : "1.25rem",
-
-       "ButtonLetterSpacing" : "0em",
-
-       "ButtonLineHeight" : "2",
-
-       "ButtonPadding" : "1rem",
-
-       "ButtonSmallBorderRadius" : "4px",
-
-       "ButtonSmallFontSize" : "0.75rem",
-
-       "ButtonSmallPadding" : "0.75rem",
-
-       "ButtonTextTransform" : "none",
-
-       "ColumnSpacerSizeDesktop" : "1rem",
-
-```
-
-
-Metadata Types DigitalExperienceBundle: Site Workspace Bundle and Folders
-
-```
-       "ColumnSpacerSizeMobile" : "0.75rem",
-
-       "ComponentSpacerSizeDesktop" : "1.5rem",
 

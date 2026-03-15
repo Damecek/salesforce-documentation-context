@@ -1,13 +1,13 @@
 # Second-Generation Managed Packaging Developer Guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/pkg2_dev.pdf
-> Fetched: 2026-02-19T08:10:55Z
+> Fetched: 2026-03-15T21:08:52Z
 Second-Generation Managed
 Packaging Developer Guide
 
 Version 66.0, Spring ’26
 
-Last updated: February 13, 2026
+Last updated: March 13, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -243,206 +243,211 @@ MktDataConnection **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 MktDataTranObject **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 236**
 Named Credential **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 237**
 Object Source Target Map **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 239**
-OcrSampleDocument **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 240**
-OcrTemplate **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 241**
-Outbound Network Connection **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 242**
-Page Layout **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 244**
+Object Integration Provider Definition Mapping **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 240**
+OcrSampleDocument **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 241**
+OcrTemplate **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 242**
+Outbound Network Connection **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 243**
 
 **Contents**
 
-Path Assistant **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 245**
+Page Layout **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 244**
+Path Assistant **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 246**
 Payment Gateway Provider **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 246**
 Permission Set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 247**
 Permission Set Groups **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 248**
 Platform Cache **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 249**
 Platform Event Channel **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 250**
-Platform Event Channel Member **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 250**
-Platform Event Subscriber Configuration **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251**
-Pricing Action Parameters **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252**
-Pricing Recipe **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 253**
-Procedure Output Resolution **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 254**
-Process **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 255**
-Process Flow Migration **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 255**
-Product Attribute Set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256**
-Product Specification Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257**
-Product Specification Record Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 258**
-Prompts (In-App Guidance) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 259**
+Platform Event Channel Member **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 251**
+Platform Event Subscriber Configuration **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 252**
+Pricing Action Parameters **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 253**
+Pricing Recipe **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 254**
+Procedure Output Resolution **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 255**
+Process **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256**
+Process Flow Migration **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 256**
+Product Attribute Set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 257**
+Product Specification Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 258**
+Product Specification Record Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 259**
+Prompts (In-App Guidance) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 260**
 Quick Action **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 260**
 Recommendation Strategy **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261**
-Record Action Deployment **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 261**
+Record Action Deployment **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 262**
 Record Alert Data Source Expression Set Definition **. . . . . . . . . . . . . . . . . . . . . . . . . . 263**
 Record Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 264**
-RedirectWhitelistUrl **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 265**
-Referenced Dashboard **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 266**
-Registered External Service **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267**
-RelationshipGraphDefinition **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
-Remote Site Setting **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269**
-Report **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 270**
-Report Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 271**
-ServiceProcess **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 272**
-Slack App (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 273**
-Service Catalog Category **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 274**
-Service Catalog Filter Criteria **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 275**
-Service Catalog Item Definition **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276**
-Service Catalog Fulfillment Flow **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 277**
-Stationary Asset Environmental Source Record Type Configuration **. . . . . . . . . . . . . . . 278**
-Static Resource **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 279**
-Streaming App Data Connector **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 280**
-Sustainability UOM **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 281**
-Sustainability UOM Conversion **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 282**
-Timeline Object Definition **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 283**
+RedirectWhitelistUrl **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 266**
+Referenced Dashboard **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 267**
+Registered External Service **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 268**
+RelationshipGraphDefinition **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 269**
+Remote Site Setting **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 270**
+Report **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 271**
+Report Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 272**
+ServiceProcess **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 273**
+Slack App (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 274**
+Service Catalog Category **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 275**
+Service Catalog Filter Criteria **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 276**
+Service Catalog Item Definition **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 277**
+Service Catalog Fulfillment Flow **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 278**
+Stationary Asset Environmental Source Record Type Configuration **. . . . . . . . . . . . . . . 279**
+Static Resource **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 280**
+Streaming App Data Connector **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 281**
+Sustainability UOM **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 282**
+Sustainability UOM Conversion **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 283**
+Timeline Object Definition **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 284**
 Timesheet Template **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 285**
-Transaction Processing Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 285**
-Translation **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 286**
+Transaction Processing Type **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 286**
 
 **Contents**
 
-UI Object Relation Config **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 287**
-User Access Policy **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 288**
-Validation Rule **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 289**
+Translation **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 287**
+UI Object Relation Config **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 288**
+User Access Policy **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 289**
+Validation Rule **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 290**
 Vehicle Asset Emissions Source Record Type Configuration **. . . . . . . . . . . . . . . . . . . . 291**
 View Definition (Beta) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 292**
-Virtual Visit Config **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 293**
-Visualforce Component **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 294**
-Visualforce Page **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 295**
-Wave Analytic Asset Collection **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 296**
-Wave Application **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 297**
-Wave Component **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298**
-Wave Dataflow **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 299**
-Wave Dashboard **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 300**
-Wave Dataset **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 301**
-Wave Lens **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 302**
-Wave Recipe **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 303**
-Wave Template Bundle **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 304**
-Wave Xmd **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 305**
-Web Store Template **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 306**
-Workflow Alert **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307**
-Workflow Field Update **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 308**
-Workflow Knowledge Publish **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 309**
-Workflow Outbound Message **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 310**
-Workflow Rule **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 311**
-Workflow Task **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 312**
+Virtual Visit Config **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 294**
+Visualforce Component **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 295**
+Visualforce Page **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 296**
+Wave Analytic Asset Collection **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 297**
+Wave Application **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298**
+Wave Component **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 299**
+Wave Dataflow **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 300**
+Wave Dashboard **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 301**
+Wave Dataset **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 302**
+Wave Lens **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 303**
+Wave Recipe **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 304**
+Wave Template Bundle **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 305**
+Wave Xmd **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 306**
+Web Store Template **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 307**
+Workflow Alert **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 308**
+Workflow Field Update **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 309**
+Workflow Knowledge Publish **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 310**
+Workflow Outbound Message **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 311**
+Workflow Rule **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 312**
+Workflow Task **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 313**
 Behavior of Specific Metadata in Second-Generation Managed Packages **. . . . . . . . . . . . . . 314**
 
-Package Agentforce Metadata Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 315**
-Develop and Package Agent Templates Using Scratch Orgs **. . . . . . . . . . . . . . . . . . . . 315**
-Package Data Cloud Metadata Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 319**
-Protected Components in Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 320**
-Set Up a Platform Cache Partition with Provider Free Capacity **. . . . . . . . . . . . . . . . . . . 321**
-Metadata Access in Apex Code **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 321**
-Permission Sets and Profile Settings in Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 322**
-Protecting Your Intellectual Property **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 327**
-Call Salesforce URLs Within a Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 327**
+Package Agentforce Metadata Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 316**
+Develop and Package Agent Templates Using Scratch Orgs **. . . . . . . . . . . . . . . . . . . . 316**
+Package Data Cloud Metadata Components **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 320**
+Protected Components in Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 321**
+Set Up a Platform Cache Partition with Provider Free Capacity **. . . . . . . . . . . . . . . . . . 322**
+Metadata Access in Apex Code **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 322**
+Permission Sets and Profile Settings in Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . 323**
+Protecting Your Intellectual Property **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 328**
+Call Salesforce URLs Within a Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 328**
 Namespace-Based Visibility for Apex Classes in Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 329**
-Work with Services Outside of Salesforce **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 330**
-Package Connected Apps in Second-Generation Managed Packaging **. . . . . . . . . . . . 331**
-Test and Respond to the New Order Save Behavior **. . . . . . . . . . . . . . . . . . . . . . . . . . 331**
-Develop Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 333**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 330**
+Work with Services Outside of Salesforce **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 331**
+Package Connected Apps in Second-Generation Managed Packaging **. . . . . . . . . . . 332**
+Test and Respond to the New Order Save Behavior **. . . . . . . . . . . . . . . . . . . . . . . . . 332**
+Develop Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 334**
 
-Create a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . 334**
-View Package Details for a Second-Generation Managed Package **. . . . . . . . . . . . . . 334**
-Create Versions of a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 335**
+Create a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . 335**
+View Package Details for a Second-Generation Managed Package **. . . . . . . . . . . . . . 335**
 
 **Contents**
 
-Guidance for Package Version Numbering **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 337**
-View Details about a Second-Generation Managed Package Version **. . . . . . . . . . . . . 339**
-Project Configuration File for a Second-Generation Managed Package **. . . . . . . . . . . . 341**
-Get Ready to Promote and Release a Second-Generation Managed Package Version **. . 345**
+Create Versions of a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 336**
+Guidance for Package Version Numbering **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 338**
+View Details about a Second-Generation Managed Package Version **. . . . . . . . . . . . . 340**
+Project Configuration File for a Second-Generation Managed Package **. . . . . . . . . . . . 342**
+Get Ready to Promote and Release a Second-Generation Managed Package Version **. . 346**
 Specify a Package Ancestor in the Project File for a Second-Generation Managed
-Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 345**
-Install and Uninstall Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . 347**
+Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 346**
+Install and Uninstall Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . 348**
 
-Use the CLI to Install a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 348**
-Use a URL to Install a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 349**
-Install Notifications for Unauthorized Managed Packages **. . . . . . . . . . . . . . . . . . . . . 350**
-Upgrade a Second-Generation Managed Package Version **. . . . . . . . . . . . . . . . . . . . 351**
-Resolve Apex Test Failures **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 351**
-Run Apex on Package Install/Upgrade **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 351**
+Use the CLI to Install a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 349**
+Use a URL to Install a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . 350**
+Install Notifications for Unauthorized Managed Packages **. . . . . . . . . . . . . . . . . . . . . 351**
+Upgrade a Second-Generation Managed Package Version **. . . . . . . . . . . . . . . . . . . . 352**
+Resolve Apex Test Failures **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 352**
+Run Apex on Package Install/Upgrade **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 352**
 Customize Second-Generation Managed Package Installs and Uninstalls Using Scripts
-**. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 355**
+**. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 356**
 Sample Script for Installing Second-Generation Managed Packages with
-Dependencies **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 356**
-Uninstall a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . 358**
-Prepare to Distribute Your Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . 359**
+Dependencies **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 357**
+Uninstall a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . 359**
+Prepare to Distribute Your Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . 360**
 
-Code Coverage for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . 359**
-Package Installation Key for Second-Generation Managed Packages **. . . . . . . . . . . . . 360**
-Release a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . 361**
+Code Coverage for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . 360**
+Package Installation Key for Second-Generation Managed Packages **. . . . . . . . . . . . . 361**
+Release a Second-Generation Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . 362**
 Share Release Notes and Post-Install Instructions for Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 361**
-Publishing Your App on AppExchange **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 362**
-Recommend a Specific Package Version to Your Subscribers **. . . . . . . . . . . . . . . . . . . 363**
-Push a Package Upgrade for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . 363**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 362**
+Publishing Your App on AppExchange **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 363**
+Recommend a Specific Package Version to Your Subscribers **. . . . . . . . . . . . . . . . . . . 364**
+Push a Package Upgrade for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . 364**
 
-Schedule a Push Upgrade Using CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 364**
+Schedule a Push Upgrade Using CLI **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 365**
 Schedule a Push Upgrade Using SOAP API for First- and Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 367**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 369**
+Enable a Package Subscriber to Restrict Push Upgrades **. . . . . . . . . . . . . . . . . . . . . . 369**
 Assign Access to New and Changed Features in First- and Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 368**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 370**
 Sample Post Install Script for a Push Upgrade for First- and Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 368**
-Push Upgrade Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 370**
-Advanced Features for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . 371**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 371**
+Push Upgrade Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 372**
+Advanced Features for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . 373**
 
-Package Ancestors for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . 372**
-Patch Versions for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . 376**
-Create Dependencies Between Second-Generation Managed Packages **. . . . . . . . . . . 377**
-Considerations for Promoting Packages with Dependencies **. . . . . . . . . . . . . . . . . . . 381**
+Package Ancestors for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . 375**
+Patch Versions for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . 379**
+Create Dependencies Between Second-Generation Managed Packages **. . . . . . . . . . . 380**
+Considerations for Promoting Packages with Dependencies **. . . . . . . . . . . . . . . . . . . 384**
 Advanced Project Configuration Parameters for Second-Generation Managed
-Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 382**
-Second-Generation Managed Packaging Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . 386**
+Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 385**
 
 **Contents**
 
+Second-Generation Managed Packaging Keywords **. . . . . . . . . . . . . . . . . . . . . . . . . 389**
 Target a Specific Release for Your Second-Generation Managed Packages During
-Salesforce Release Transitions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 387**
-Use Branches in Second-Generation Managed Packaging **. . . . . . . . . . . . . . . . . . . . 388**
+Salesforce Release Transitions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 390**
+Use Branches in Second-Generation Managed Packaging **. . . . . . . . . . . . . . . . . . . . 391**
 Specify Unpackaged Metadata or Apex Access for Package Version Creation Tests for
-Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 389**
-Package IDs and Aliases for Second-Generation Managed Packages **. . . . . . . . . . . . . 390**
-Avoid Namespace Collisions in Second-Generation Managed Packages **. . . . . . . . . . . 391**
-Remove Metadata Components from Second-Generation Managed Packages **. . . . . . 393**
-Delete a Second-Generation Managed Package or Package Version **. . . . . . . . . . . . . 397**
-Frequently Used Packaging Operations for Second-Generation Managed Packages **. . . 398**
-Transfer a Second-Generation Managed Package to a Different Dev Hub **. . . . . . . . . . 398**
-Contact Salesforce Partner Support to Enable Specific Packaging Features **. . . . . . . . . . 403**
-Best Practices for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . 404**
-Manage Licenses for Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 404**
+Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 392**
+Package IDs and Aliases for Second-Generation Managed Packages **. . . . . . . . . . . . . 393**
+Avoid Namespace Collisions in Second-Generation Managed Packages **. . . . . . . . . . . 394**
+Remove Metadata Components from Second-Generation Managed Packages **. . . . . . 396**
+Delete a Second-Generation Managed Package or Package Version **. . . . . . . . . . . . . 400**
+Frequently Used Packaging Operations for Second-Generation Managed Packages **. . . 401**
+Transfer a Second-Generation Managed Package to a Different Dev Hub **. . . . . . . . . . . 401**
+Contact Salesforce Partner Support to Enable Specific Packaging Features **. . . . . . . . . . 406**
+Best Practices for Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . 407**
+Manage Licenses for Managed Packages **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 407**
 
-Get Started with the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 405**
-Lead and License Records in the License Management App **. . . . . . . . . . . . . . . . . . . 409**
-Modify a License Record **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 409**
-Refresh Licenses for a Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 410**
-Extending the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 410**
-Move the License Management App to Another Salesforce Org **. . . . . . . . . . . . . . . . . 413**
-Troubleshoot the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 414**
-Best Practices for the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 415**
-Troubleshoot Subscriber Issues **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 415**
-Manage Features in Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . 418**
+Get Started with the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 408**
+Lead and License Records in the License Management App **. . . . . . . . . . . . . . . . . . . . 412**
+Modify a License Record **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 412**
+Refresh Licenses for a Managed Package **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 413**
+Extending the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 413**
+Move the License Management App to Another Salesforce Org **. . . . . . . . . . . . . . . . . 416**
+Troubleshoot the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 417**
+Best Practices for the License Management App **. . . . . . . . . . . . . . . . . . . . . . . . . . . . 418**
+Troubleshoot Subscriber Issues **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 418**
+Manage Features in Second-Generation Managed Packages **. . . . . . . . . . . . . . . . . . . . . . 421**
 
-Feature Parameter Metadata Types and Custom Objects **. . . . . . . . . . . . . . . . . . . . . . 419**
-Set Up Feature Parameters **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 420**
-Use LMO-to-Subscriber Feature Parameters to Enable and Disable Features **. . . . . . . . 422**
-Track Preferences and Activation Metrics with Subscriber-to-LMO Feature Parameters **. . 423**
-Hide Custom Objects and Custom Permissions in Your Subscribers’ Orgs **. . . . . . . . . . 423**
-Best Practices for Feature Management **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 424**
-Considerations for Feature Management **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 424**
-Get Started with AppExchange App Analytics **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 425**
+Feature Parameter Metadata Types and Custom Objects **. . . . . . . . . . . . . . . . . . . . . 422**
+Set Up Feature Parameters **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 423**
+Use LMO-to-Subscriber Feature Parameters to Enable and Disable Features **. . . . . . . . 425**
+Track Preferences and Activation Metrics with Subscriber-to-LMO Feature Parameters **. . 426**
+Hide Custom Objects and Custom Permissions in Your Subscribers’ Orgs **. . . . . . . . . . 426**
+Best Practices for Feature Management **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 427**
+Considerations for Feature Management **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 427**
+Get Started with AppExchange App Analytics **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 428**
 
-App Analytics Use Cases **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 426**
-Enable App Analytics on Your Second-Generation Managed Package **. . . . . . . . . . . . 429**
+App Analytics Use Cases **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 429**
+Enable App Analytics on Your Second-Generation Managed Package **. . . . . . . . . . . . 432**
 Download Package Usage Logs, Package Usage Summaries, and Subscriber
-Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 429**
-Considerations for Custom Interactions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 430**
-AppExchange App Analytics Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 435**
-Package Usage Summaries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 452**
-Package Usage Logs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 454**
-Subscriber Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 479**
-Test Custom Integrations **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 481**
-AppExchange App Analytics Developer Cookbook **. . . . . . . . . . . . . . . . . . . . . . . . . . 482**
-Gaps Between First-Generation and Second-Generation Managed Packaging **. . . . . . . . . . 502**
+Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 432**
+Considerations for Custom Interactions **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 433**
+AppExchange App Analytics Best Practices **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 438**
+Package Usage Summaries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 455**
+Package Usage Logs **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 457**
+Subscriber Snapshots **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 482**
+Test Custom Integrations **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 484**
+AppExchange App Analytics Developer Cookbook **. . . . . . . . . . . . . . . . . . . . . . . . . . 485**
+
+**Contents**
+
+Gaps Between First-Generation and Second-Generation Managed Packaging **. . . . . . . . . . 505**
 
 # CHAPTER 1 Second-Generation Managed Packages
 
@@ -2539,8 +2544,8 @@ Represents the metadata associated with a Lightning page. A Lightning page repre
 containing Lightning components.
 
 Lightning Type
-Represents a custom Lightning type. Use this type to override the default user interface to create a customized appearance of
-responses on the custom agent’s action input and output. Deploy this bundle to your organization to implement the overrides.
+Represents a custom Lightning type. Use this type to override the default user interface to create a customized appearance based
+on your business requirements. Deploy this bundle to your organization to implement the overrides.
 
 Lightning Web Component
 Represents a Lightning web component bundle. A bundle contains Lightning web component resources.
@@ -2598,6 +2603,9 @@ Contains the object-level mappings between the source and the target objects. Th
 MktDataLakeObject or an MktDataModelObject. For example, an Email source object can be mapped to the ContactPointEmail
 object.
 
+Object Integration Provider Definition Mapping
+Maps structured, logical data nodes in a context definition to actual Salesforce object fields or external data sources
+
 OcrSampleDocument
 Represents the details of a sample document or a document type that's used as a reference while extracting and mapping information
 from a customer form.
@@ -2618,13 +2626,13 @@ Represents Path records.
 Payment Gateway Provider
 Represents the metadata associated with a payment gateway provider.
 
-Permission Set
-Represents a set of permissions that's used to grant more access to one or more users without changing their profile or reassigning
-profiles. You can use permission sets to grant access but not to deny access.
-
 
 Second-Generation Managed Packages Components Available in Second-Generation Managed
 Packages
+
+Permission Set
+Represents a set of permissions that's used to grant more access to one or more users without changing their profile or reassigning
+profiles. You can use permission sets to grant access but not to deny access.
 
 Permission Set Groups
 Represents a group of permission sets and the permissions within them. Use permission set groups to organize permissions based
@@ -2680,12 +2688,12 @@ Recommendation Strategy
 Represents a recommendation strategy. Recommendation strategies are applications, similar to data flows, that determine a set of
 recommendations to be delivered to the client through data retrieval, branching, and logic operations.
 
-Record Action Deployment
-Represents configuration settings for the Actions & Recommendations, Action Launcher, and Bulk Action Panel components.
-
 
 Second-Generation Managed Packages Components Available in Second-Generation Managed
 Packages
+
+Record Action Deployment
+Represents configuration settings for the Actions & Recommendations, Action Launcher, and Bulk Action Panel components.
 
 Record Alert Data Source Expression Set Definition
 Represents information about the data source for a record alert and the association with an expression set definition.
@@ -2741,12 +2749,12 @@ Stationary Asset Environmental Source Record Type Configuration
 Represents the setup object that contains the mapping between the Stationary Asset Environmental Source record type and internal
 enums. You can primarily use this object for calculations across different record types.
 
-Static Resource
-Represents a static resource file, often a code library in a ZIP file.
-
 
 Second-Generation Managed Packages Components Available in Second-Generation Managed
 Packages
+
+Static Resource
+Represents a static resource file, often a code library in a ZIP file.
 
 Streaming App Data Connector
 Represents the connection information specific to Web and Mobile Connectors.
@@ -2804,11 +2812,11 @@ A CRM Analytics application.
 Wave Component
 A CRM Analytics dashboard component.
 
-Wave Dataflow
-A CRM Analytics data prep dataflow.
-
 
 ### Second-Generation Managed Packages Account Plan Objective Measure Calculation Definition
+
+Wave Dataflow
+A CRM Analytics data prep dataflow.
 
 Wave Dashboard
 A CRM Analytics dashboard.
@@ -2864,10 +2872,10 @@ Managed Packages (1GP)
 
 Component Is Updated During Package Upgrade Yes
 
-Subscriber Can Delete Component From Org No
-
 
 ### Second-Generation Managed Packages Account Relationship Share Rule
+
+Subscriber Can Delete Component From Org No
 
 Package Developer Can Remove Component From Package No
 
@@ -2923,10 +2931,10 @@ Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
 
-**•** Name
-
 
 ### Second-Generation Managed Packages Action Link Group Template
+
+**•** Name
 
 **•** Developer Name
 
@@ -2983,11 +2991,11 @@ Package Developer Can Remove Component From Package Yes. Supported in both 1GP a
 
 Component Has IP Protection No
 
-Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
-they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
-
 
 ### Second-Generation Managed Packages Action Plan Template
+
+Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
+they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
@@ -3139,7 +3147,7 @@ Package Developer Can Remove Component From Package Yes, Supported in both 1GP a
 
 Component Has IP Protection No
 
-[To confirm whether this component is available in managed 1GP, managed 2GP, or both package types, see Metadata Coverage Report.](https://developer.salesforce.com/docs/metadata-coverage)
+[To confirm whether this component is available in managed 1GP, managed 2GP, or both package types, see Metadata Coverage Report.](https://developer.salesforce.com/docs/success/metadata-coverage-report/references/coverage-report/metadata-coverage-report.html)
 
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
@@ -6422,7 +6430,7 @@ Package Developer Can Remove Component From Package Yes. Supported in 1GP packag
 
 Component Has IP Protection No
 
-[To confirm whether this component is available in managed 1GP, managed 2GP, or both package types, see Metadata Coverage Report.](https://developer.salesforce.com/docs/metadata-coverage)
+[To confirm whether this component is available in managed 1GP, managed 2GP, or both package types, see Metadata Coverage Report.](https://developer.salesforce.com/docs/success/metadata-coverage-report/references/coverage-report/metadata-coverage-report.html)
 
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
@@ -13806,8 +13814,8 @@ _Metadata API Developer Guide:_ [Flexipage](https://developer.salesforce.com/doc
 
 ### Lightning Type
 
-Represents a custom Lightning type. Use this type to override the default user interface to create a customized appearance of responses
-on the custom agent’s action input and output. Deploy this bundle to your organization to implement the overrides.
+Represents a custom Lightning type. Use this type to override the default user interface to create a customized appearance based on
+your business requirements. Deploy this bundle to your organization to implement the overrides.
 
 Component Manageability Rules
 
@@ -14814,7 +14822,7 @@ Only Package Developer Can Edit
 **•** DeveloperName
 
 
-### Second-Generation Managed Packages OcrSampleDocument
+### Second-Generation Managed Packages Object Integration Provider Definition Mapping
 
 **•** MasterLabel
 
@@ -14852,6 +14860,48 @@ Data Cloud must be provisioned.
 **Documentation**
 _Metadata API Developer Guide:_ [ObjectSourceTargetMap](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_objectsourcetargetmap.htm)
 
+### Object Integration Provider Definition Mapping
+
+Maps structured, logical data nodes in a context definition to actual Salesforce object fields or external data sources
+
+Component Manageability Rules
+
+Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
+promoted to the released state.
+
+Packageable In: Second-Generation Managed Packages (2GP)
+
+Component Is Updated During Package Upgrade No
+
+Subscriber Can Delete Component From Org Yes
+
+Package Developer Can Remove Component From Package Yes
+
+Component Has IP Protection Yes
+
+Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
+they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
+
+
+### Second-Generation Managed Packages OcrSampleDocument
+
+Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
+[removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
+
+Editable Properties After Package Promotion or Installation
+
+Only Package Developer Can Edit
+
+**•** None
+
+Both Package Developer and Subscriber Can Edit
+
+**•** None
+
+Neither Package Developer or Subscriber Can Edit
+
+**•** None
+
 ### OcrSampleDocument
 
 Represents the details of a sample document or a document type that's used as a reference while extracting and mapping information
@@ -14875,9 +14925,6 @@ Component Has IP Protection No
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
 
-
-### Second-Generation Managed Packages OcrTemplate
-
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
 
@@ -14894,6 +14941,9 @@ Both Package Developer and Subscriber Can Edit
 Neither Package Developer or Subscriber Can Edit
 
 **•** None
+
+
+### Second-Generation Managed Packages OcrTemplate
 
 More Information
 
@@ -14936,9 +14986,6 @@ Subscriber Can Delete Component From Org Yes
 
 Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
 
-
-### Second-Generation Managed Packages Outbound Network Connection
-
 Component Has IP Protection No
 
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
@@ -14952,6 +14999,9 @@ Editable Properties After Package Promotion or Installation
 Only Package Developer Can Edit
 
 **•** All
+
+
+### Second-Generation Managed Packages Outbound Network Connection
 
 Both Package Developer and Subscriber Can Edit
 
@@ -14995,9 +15045,6 @@ Component Manageability Rules
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
 
-
-Second-Generation Managed Packages Outbound Network Connection
-
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
 
@@ -15010,6 +15057,9 @@ Package Developer Can Remove Component From Package Yes
 Component Has IP Protection No
 
 Note: You can only delete connections that are in an unprovisioned state.
+
+
+### Second-Generation Managed Packages Page Layout
 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
@@ -15059,9 +15109,6 @@ practice, avoid changing the Region or Service Name of a packaged connection unl
 **•** If you package a Named Credential that references an Outbound Network Connection, the referenced Outbound Network Connection
 component is automatically added to the package.
 
-
-### Second-Generation Managed Packages Page Layout
-
 **License Requirements**
 This feature is available with the Private Connect license.
 
@@ -15073,6 +15120,9 @@ _Salesforce Help:_ [Establish an Outbound Connection with AWS](https://help.sale
 ### Page Layout
 
 Represents the metadata associated with a page layout.
+
+
+Second-Generation Managed Packages Page Layout
 
 Component Manageability Rules
 
@@ -15108,15 +15158,12 @@ Both Package Developer and Subscriber Can Edit
 
 Neither Package Developer or Subscriber Can Edit
 
-### • Page Layout Name
+**•** Page Layout Name
 
 More Information
 
 **Feature Name**
 Metadata Name: Layout
-
-
-### Second-Generation Managed Packages Path Assistant
 
 **Considerations**
 The page layout of the person uploading a package is the layout used for Group and Professional Edition orgs and becomes the
@@ -15132,7 +15179,8 @@ upgrade.
 **Documentation**
 _Metadata API Developer Guide:_ [Layout](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_layouts.htm)
 
-### Path Assistant
+
+### Second-Generation Managed Packages Path Assistant Path Assistant
 
 Represents Path records.
 
@@ -15169,9 +15217,6 @@ Neither Package Developer or Subscriber Can Edit
 
 **•** SobjectType, SobjectProcessField, and RecordType
 
-
-### Second-Generation Managed Packages Payment Gateway Provider
-
 More Information
 
 **Feature Name**
@@ -15185,6 +15230,9 @@ _Metadata API Developer Guide:_ [PathAssistant](https://developer.salesforce.com
 ### Payment Gateway Provider
 
 Represents the metadata associated with a payment gateway provider.
+
+
+### Second-Generation Managed Packages Permission Set
 
 Component Manageability Rules
 
@@ -15228,8 +15276,7 @@ the Payment Platform org permission required to use payments objects.
 **Documentation**
 _Salesforce Help:_ [Processing Payments with Payment Gateways](https://help.salesforce.com/s/articleView?id=sales.blng_payment_gateways.htm&type=5&language=en_US)
 
-
-### Second-Generation Managed Packages Permission Set Permission Set
+### Permission Set
 
 Represents a set of permissions that's used to grant more access to one or more users without changing their profile or reassigning
 profiles. You can use permission sets to grant access but not to deny access.
@@ -15241,6 +15288,9 @@ promoted to the released state.
 
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
+
+
+### Second-Generation Managed Packages Permission Set Groups
 
 Component Is Updated During Package Upgrade Yes
 
@@ -15287,9 +15337,6 @@ More Information
 **Feature Name**
 Metadata Name: PermissionSet
 
-
-### Second-Generation Managed Packages Permission Set Groups
-
 Component Type in 1GP Package Manager UI: Permission Set
 
 **Documentation**
@@ -15299,6 +15346,9 @@ _Metadata API Developer Guide:_ [PermissionSet](https://developer.salesforce.com
 
 Represents a group of permission sets and the permissions within them. Use permission set groups to organize permissions based on
 job functions or tasks. Then, you can package the groups as needed.
+
+
+### Second-Generation Managed Packages Platform Cache
 
 Component Manageability Rules
 
@@ -15345,9 +15395,6 @@ permissions.
 **Relationship to Other Components**
 This feature can only be used in conjunction with Permission Sets.
 
-
-### Second-Generation Managed Packages Platform Cache
-
 **Documentation**
 _Salesforce Help:_ [Permission Set Groups](https://help.salesforce.com/s/articleView?id=platform.perm_set_groups.htm&type=5&language=en_US)
 
@@ -15359,6 +15406,9 @@ Component Manageability Rules
 
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
+
+
+### Second-Generation Managed Packages Platform Event Channel
 
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
@@ -15404,10 +15454,9 @@ Component Type in 1GP Package Manager UI: Platform Cache Partition
 
 _Metadata API Developer Guide:_ [PlatformCachePartition](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_platformcachepartition.htm)
 
-### Apex Developer Guide: Platform Cache Partitions
+_Apex Developer Guide:_ [Platform Cache Partitions](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_cache_partition_setup.htm)
 
-
-### Second-Generation Managed Packages Platform Event Channel Platform Event Channel
+### Platform Event Channel
 
 Represents a channel that you can subscribe to in order to receive a stream of events.
 
@@ -15420,6 +15469,9 @@ Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
 
 Component Is Updated During Package Upgrade No
+
+
+### Second-Generation Managed Packages Platform Event Channel Member
 
 Subscriber Can Delete Component From Org No
 
@@ -15460,9 +15512,6 @@ Subscriber Can Delete Component From Org No
 
 Package Developer Can Remove Component From Package Yes
 
-
-### Second-Generation Managed Packages Platform Event Subscriber Configuration
-
 Component Has IP Protection No
 
 More Information
@@ -15477,6 +15526,9 @@ Component Type in 1GP Package Manager UI: Platform Event Channel Member
 **•** As of Winter ’22, installing a managed package that contains Change Data Capture entity selections no longer causes an installation
 error. Before Winter ’22, installing a managed package that contained Change Data Capture entity selections that were over the
 default allocation caused package installation errors.
+
+
+### Second-Generation Managed Packages Platform Event Subscriber Configuration
 
 **•** To package Change Data Capture entity selections, create a custom channel through the PlatformEventChannel metadata type.
 Then add entity selections to the custom channel through the PlatformEventChannelMember metadata type.
@@ -15516,9 +15568,6 @@ Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
 
-
-### Second-Generation Managed Packages Pricing Action Parameters
-
 **•** batchSize
 
 **•** numPartitions
@@ -15534,6 +15583,9 @@ Both Package Developer and Subscriber Can Edit
 Neither Package Developer or Subscriber Can Edit
 
 **•** None
+
+
+### Second-Generation Managed Packages Pricing Action Parameters
 
 More Information
 
@@ -15578,12 +15630,9 @@ Only Package Developer Can Edit
 
 **•** None
 
-
-### Second-Generation Managed Packages Pricing Recipe
-
 Both Package Developer and Subscriber Can Edit
 
-**•** Pricing Action Parameters Name
+### • Pricing Action Parameters Name
 
 Neither Package Developer or Subscriber Can Edit
 
@@ -15595,6 +15644,9 @@ More Information
 Metadata Name: PricingActionParameters
 
 Component Type in 1GP Package Manager UI: PricingActionParameters
+
+
+### Second-Generation Managed Packages Pricing Recipe
 
 **License Requirements**
 Salesforce Pricing permissions
@@ -15637,9 +15689,6 @@ Only Package Developer Can Edit
 
 **•** None
 
-
-### Second-Generation Managed Packages Procedure Output Resolution
-
 Both Package Developer and Subscriber Can Edit
 
 **•** Recipe Name
@@ -15654,6 +15703,9 @@ More Information
 Metadata Name: PricingRecipe
 
 Component Type in 1GP Package Manager UI: PricingRecipe
+
+
+### Second-Generation Managed Packages Procedure Output Resolution
 
 **Considerations When Packaging**
 There are two prerequisites currently. All the associated contexts aren’t exported. For decision tables, while exporting, column
@@ -15698,9 +15750,6 @@ Both Package Developer and Subscriber Can Edit
 
 **•** None
 
-
-### Second-Generation Managed Packages Process
-
 Neither Package Developer or Subscriber Can Edit
 
 **•** None
@@ -15714,6 +15763,9 @@ Component Type in 1GP Package Manager UI: ProcedureOutputResolution
 
 **Use Case**
 To determine the best price for a product if a pricing rule produces multiple outcomes.
+
+
+### Second-Generation Managed Packages Process
 
 **License Requirements**
 Salesforce Pricing permissions
@@ -15757,9 +15809,6 @@ Both Package Developer and Subscriber Can Edit
 
 **•** None
 
-
-### Second-Generation Managed Packages Product Attribute Set
-
 Neither Package Developer or Subscriber Can Edit
 
 **•** Description
@@ -15774,6 +15823,9 @@ More Information
 Metadata Name: ProcessFlowMigration
 
 Component Type in 1GP Package Manager UI: Process Flow Migration
+
+
+### Second-Generation Managed Packages Product Attribute Set
 
 **Use Case**
 
@@ -15818,9 +15870,6 @@ Only Package Developer Can Edit
 
 **•** None
 
-
-### Second-Generation Managed Packages Product Specification Type
-
 Both Package Developer and Subscriber Can Edit
 
 **•** Description
@@ -15835,6 +15884,9 @@ More Information
 
 **Feature Name**
 Metadata Name: ProductAttributeSet
+
+
+### Second-Generation Managed Packages Product Specification Type
 
 **License Requirements**
 A B2B Commerce or D2C Commerce license and access to Commerce objects is required.
@@ -15880,9 +15932,6 @@ Only Package Developer Can Edit
 
 Both Package Developer and Subscriber Can Edit
 
-
-### Second-Generation Managed Packages Product Specification Record Type
-
 **•** None
 
 Neither Package Developer or Subscriber Can Edit
@@ -15895,6 +15944,9 @@ More Information
 Metadata Name: ProductSpecificationType
 
 Component Type in 1GP Package Manager UI: ProductSpecificationType
+
+
+### Second-Generation Managed Packages Product Specification Record Type
 
 **License Requirements**
 Only Salesforce Admins can set up the product specification type. To create and edit product specification type, the Product Catalog
@@ -15942,9 +15994,6 @@ Both Package Developer and Subscriber Can Edit
 
 Neither Package Developer or Subscriber Can Edit
 
-
-### Second-Generation Managed Packages Prompts (In-App Guidance)
-
 **•** Name
 
 **•** Is Commercial
@@ -15955,6 +16004,9 @@ More Information
 Metadata Name: ProductSpecificationRecType
 
 Component Type in 1GP Package Manager UI: ProductSpecificationRecType
+
+
+### Second-Generation Managed Packages Prompts (In-App Guidance)
 
 **License Requirements**
 Only Salesforce admins can set up the product specification record type. To create and edit product specification record type, the
@@ -16001,17 +16053,17 @@ For 2GP packages, ensure that the scratch org definition file includes the `Guid
 **License Requirements**
 Enablement Admin permission set and Enablement permission set license are required.
 
-
-### Second-Generation Managed Packages Quick Action
-
 **Documentation**
-_Metadata API Developer Guide:_ [Prompt](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_prompt.htm)
+### Metadata API Developer Guide: Prompt
 
 _Salesforce Help:_ [Guidelines for In-App Guidance in Managed Packages](https://help.salesforce.com/s/articleView?id=sales.customhelp_iag_packages.htm&type=5&language=en_US)
 
 ### Quick Action
 
 Represents a specified create or update quick action for an object that then becomes available in the Chatter publisher.
+
+
+### Second-Generation Managed Packages Recommendation Strategy
 
 Component Manageability Rules
 
@@ -16057,9 +16109,6 @@ Metadata Name: QuickAction
 
 Component Type in 1GP Package Manager UI: Quick Action
 
-
-### Second-Generation Managed Packages Recommendation Strategy
-
 **Documentation**
 _Salesforce Help:_ [Quick Actions](https://help.salesforce.com/s/articleView?id=platform.actions_overview.htm&type=5&language=en_US)
 
@@ -16067,6 +16116,9 @@ _Salesforce Help:_ [Quick Actions](https://help.salesforce.com/s/articleView?id=
 
 Represents a recommendation strategy. Recommendation strategies are applications, similar to data flows, that determine a set of
 recommendations to be delivered to the client through data retrieval, branching, and logic operations.
+
+
+### Second-Generation Managed Packages Record Action Deployment
 
 Component Manageability Rules
 
@@ -16110,9 +16162,6 @@ _Salesforce Help:_ [Einstein Next Best Action](https://help.salesforce.com/s/art
 
 Represents configuration settings for the Actions & Recommendations, Action Launcher, and Bulk Action Panel components.
 
-
-Second-Generation Managed Packages Record Action Deployment
-
 Component Manageability Rules
 
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
@@ -16125,6 +16174,9 @@ Component Is Updated During Package Upgrade No
 Subscriber Can Delete Component From Org Yes
 
 Package Developer Can Remove Component From Package Yes
+
+
+### Second-Generation Managed Packages Record Alert Data Source Expression Set Definition
 
 Component Has IP Protection No
 
@@ -16173,9 +16225,6 @@ Component Type in 1GP Package Manager UI: RecordAction Deployment
 If the record action deployment component uses flows, quick actions, objects, or Next Best Action recommendations, include them
 in the package too.
 
-
-### Second-Generation Managed Packages Record Alert Data Source Expression Set Definition
-
 **Documentation**
 _Metadata API Developer Guide:_ [RecordActionDeployment](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_recordactiondeployment.htm)
 
@@ -16184,6 +16233,9 @@ _Salesforce Help:_ [Create an Actions & Recommendations Deployment](https://help
 ### Record Alert Data Source Expression Set Definition
 
 Represents information about the data source for a record alert and the association with an expression set definition.
+
+
+### Second-Generation Managed Packages Record Type
 
 Component Manageability Rules
 
@@ -16233,8 +16285,7 @@ Component Type in 1GP Package Manager UI: RecAlrtDataSrcExpSetDef
 
 [RecAlrtDataSrcExpSetDef in](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_object_reference.meta/financial_services_cloud_object_reference/sforce_api_objects_recalrtdatasrcexpsetdef.htm) _Financial Services Cloud Developer Guide_ .
 
-
-### Second-Generation Managed Packages Record Type Record Type
+### Record Type
 
 Represents the metadata associated with a record type. Record types let you offer different business processes, picklist values, and page
 layouts to different users. Use this metadata type to create, update, or delete record type definitions for a custom object.
@@ -16243,6 +16294,9 @@ Component Manageability Rules
 
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
+
+
+Second-Generation Managed Packages Record Type
 
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
@@ -16269,7 +16323,7 @@ Only Package Developer Can Edit
 
 **•** Description
 
-### • Record Type Label
+**•** Record Type Label
 
 Both Package Developer and Subscriber Can Edit
 
@@ -16292,9 +16346,6 @@ Component Type in 1GP Package Manager UI: Record Type
 
 **•** If record types are included in the package, the subscriber’s org must support record types to install the package.
 
-
-### Second-Generation Managed Packages RedirectWhitelistUrl
-
 **•** When a new picklist value is installed, it’s associated with all installed record types according to the mappings specified by the
 developer. A subscriber can change this association.
 
@@ -16308,6 +16359,9 @@ or doesn’t support record types, the column is dropped during installation.
 
 **•** If you install a custom report type that includes an object’s record type field as a column, that column is dropped if the org
 doesn’t support record types or the object doesn’t have record types defined.
+
+
+### Second-Generation Managed Packages RedirectWhitelistUrl
 
 **Documentation**
 _Metadata API Developer Guide:_ [RecordType](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_recordtype.htm)
@@ -16352,9 +16406,6 @@ Neither Package Developer or Subscriber Can Edit
 
 **•** None
 
-
-### Second-Generation Managed Packages Referenced Dashboard
-
 More Information
 
 **Feature Name**
@@ -16366,6 +16417,9 @@ Component Type in 1GP Package Manager UI: RedirectWhitelistUrl
 Customers can use a Salesforce security setting to specify what happens when a user clicks a hyperlink that redirects to an untrusted
 URL outside the salesforce.com domain. The customer can choose to block these redirections or alert the user that the link is taking
 them outside the Salesforce domain. The URLs in RedirectWhiteListURL are considered trusted for the purpose of that security setting.
+
+
+### Second-Generation Managed Packages Referenced Dashboard
 
 If the Experience Cloud site pages, Lightning Experience pages, or custom Visualforce pages in your package include hyperlinks to
 URLs outside the salesforce.com domain, use RedirectWhitelistURL to ensure that users can access those hyperlinks.
@@ -16412,9 +16466,6 @@ Package Developer Can Remove Component From Package Yes
 
 Component Has IP Protection No
 
-
-### Second-Generation Managed Packages Registered External Service
-
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
 
@@ -16424,6 +16475,9 @@ Removing components from managed 1GP or 2GP packages requires approval from Sale
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
+
+
+### Second-Generation Managed Packages Registered External Service
 
 **•** Label
 
@@ -16469,9 +16523,6 @@ Package Developer Can Remove Component From Package No
 
 Component Has IP Protection No
 
-
-### Second-Generation Managed Packages RelationshipGraphDefinition
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
@@ -16485,6 +16536,9 @@ Both Package Developer and Subscriber Can Edit
 Neither Package Developer or Subscriber Can Edit
 
 **•** None
+
+
+### Second-Generation Managed Packages RelationshipGraphDefinition
 
 More Information
 
@@ -16527,9 +16581,6 @@ Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
 
-
-### Second-Generation Managed Packages Remote Site Setting
-
 **•** All properties
 
 Both Package Developer and Subscriber Can Edit
@@ -16539,6 +16590,9 @@ Both Package Developer and Subscriber Can Edit
 Neither Package Developer or Subscriber Can Edit
 
 **•** None
+
+
+### Second-Generation Managed Packages Remote Site Setting
 
 More Information
 
@@ -16587,15 +16641,15 @@ Both Package Developer and Subscriber Can Edit
 
 Neither Package Developer or Subscriber Can Edit
 
-
-### Second-Generation Managed Packages Report
-
 **•** Remote Site Name
 
 More Information
 
 **Feature Name**
 Metadata Name: RemoteSiteSettings
+
+
+### Second-Generation Managed Packages Report
 
 **Documentation**
 _Metadata API Developer Guide:_ [RemoteSiteSettings](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_remotesitesetting.htm)
@@ -16644,9 +16698,6 @@ More Information
 **Feature Name**
 Metadata Name: Report
 
-
-### Second-Generation Managed Packages Report Type
-
 Component Type in 1GP Package Manager UI: Report
 
 **Considerations When Packaging**
@@ -16656,6 +16707,9 @@ example:
 **•** Hierarchy drill-downs are dropped from activity and opportunities reports.
 
 **•** Filters on unpackageable fields are automatically dropped (for example, in filters on standard object record types).
+
+
+### Second-Generation Managed Packages Report Type
 
 **•** Package upload fails if a report includes filter logic on an unpackageable field (for example, in filters on standard object record
 types).
@@ -16700,9 +16754,6 @@ they install the upgraded package. The admin of the subscriber’s org can then 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
 
-
-### Second-Generation Managed Packages ServiceProcess
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
@@ -16714,6 +16765,9 @@ Both Package Developer and Subscriber Can Edit
 **•** Development Status
 
 Neither Package Developer or Subscriber Can Edit
+
+
+### Second-Generation Managed Packages ServiceProcess
 
 **•** Report Type Name
 
@@ -16760,22 +16814,18 @@ Only Package Developer Can Edit
 
 Both Package Developer and Subscriber Can Edit
 
-
-### Second-Generation Managed Packages Slack App (Beta)
-
 **•** Status
 
 **•** Description
 
-**•** ServiceProcessAttribute
-
-**•** ServiceProcessDependency
-
-**•** ServiceProcessItemGroup
+### • ServiceProcessAttribute • ServiceProcessDependency • ServiceProcessItemGroup
 
 Neither Package Developer or Subscriber Can Edit
 
 **•** FullName
+
+
+### Second-Generation Managed Packages Slack App (Beta)
 
 More Information
 
@@ -16821,9 +16871,6 @@ Only Package Developer Can Edit
 
 Both Package Developer and Subscriber Can Edit
 
-
-### Second-Generation Managed Packages Service Catalog Category
-
 **•** None
 
 Neither Package Developer or Subscriber Can Edit
@@ -16834,6 +16881,9 @@ More Information
 
 **Feature Name**
 Metadata Name: SlackApp
+
+
+### Second-Generation Managed Packages Service Catalog Category
 
 Component Type in 1GP Package Manager UI: Slack App
 
@@ -16884,9 +16934,6 @@ Both Package Developer and Subscriber Can Edit
 
 **•** Image
 
-
-### Second-Generation Managed Packages Service Catalog Filter Criteria
-
 Neither Package Developer or Subscriber Can Edit
 
 **•** FullName
@@ -16897,6 +16944,9 @@ More Information
 Metadata Name: SvcCatalogCategory
 
 Component Type in 1GP Package Manager UI: Service Catalog Category
+
+
+### Second-Generation Managed Packages Service Catalog Filter Criteria
 
 **Use Case**
 Group your service catalog items together by associating them with a catalog category.
@@ -16944,9 +16994,6 @@ Both Package Developer and Subscriber Can Edit
 
 Neither Package Developer or Subscriber Can Edit
 
-
-### Second-Generation Managed Packages Service Catalog Item Definition
-
 **•** FullName
 
 More Information
@@ -16955,6 +17002,9 @@ More Information
 Metadata Name: SvcCatalogFilterCriteria
 
 Component Type in 1GP Package Manager UI: Service Catalog Item Definition
+
+
+### Second-Generation Managed Packages Service Catalog Item Definition
 
 **Use Case**
 Use the filter criteria to filter on catalog items.
@@ -17006,9 +17056,6 @@ Both Package Developer and Subscriber Can Edit
 
 **•** Image
 
-
-### Second-Generation Managed Packages Service Catalog Fulfillment Flow
-
 **•** IsFeatured
 
 **•** IsPublic
@@ -17016,6 +17063,9 @@ Both Package Developer and Subscriber Can Edit
 Neither Package Developer or Subscriber Can Edit
 
 **•** FullName
+
+
+### Second-Generation Managed Packages Service Catalog Fulfillment Flow
 
 More Information
 
@@ -17068,16 +17118,16 @@ Package Developer Can Remove Component From Package No
 
 Component Has IP Protection No
 
-
-### Second-Generation Managed Packages Stationary Asset Environmental Source Record Type
-
-Configuration
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
 
 **•** Description
+
+
+### Second-Generation Managed Packages Stationary Asset Environmental Source Record Type
+
+Configuration
 
 **•** Flow
 
@@ -17133,14 +17183,14 @@ Managed Packages (1GP)
 
 Component Is Updated During Package Upgrade Yes
 
-
-### Second-Generation Managed Packages Static Resource
-
 Subscriber Can Delete Component From Org No
 
 Package Developer Can Remove Component From Package No
 
 Component Has IP Protection No
+
+
+### Second-Generation Managed Packages Static Resource
 
 Editable Properties After Package Promotion or Installation
 
@@ -17195,9 +17245,6 @@ Component Manageability Rules
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
 
-
-### Second-Generation Managed Packages Streaming App Data Connector
-
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
 
@@ -17206,6 +17253,9 @@ Component Is Updated During Package Upgrade Yes
 Subscriber Can Delete Component From Org No
 
 Package Developer Can Remove Component From Package Yes. Supported in 1GP and 2GP packages.
+
+
+### Second-Generation Managed Packages Streaming App Data Connector
 
 Component Has IP Protection No
 
@@ -17252,9 +17302,6 @@ Component Manageability Rules
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
 
-
-### Second-Generation Managed Packages Sustainability UOM
-
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
 
@@ -17265,6 +17312,9 @@ Subscriber Can Delete Component From Org No
 Package Developer Can Remove Component From Package No
 
 Component Has IP Protection No
+
+
+### Second-Generation Managed Packages Sustainability UOM
 
 Editable Properties After Package Promotion or Installation
 
@@ -17311,9 +17361,6 @@ Component Manageability Rules
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
 
-
-### Second-Generation Managed Packages Sustainability UOM Conversion
-
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
 
@@ -17324,6 +17371,9 @@ Subscriber Can Delete Component From Org No
 Package Developer Can Remove Component From Package No
 
 Component Has IP Protection No
+
+
+### Second-Generation Managed Packages Sustainability UOM Conversion
 
 Editable Properties After Package Promotion or Installation
 
@@ -17372,9 +17422,6 @@ Component Manageability Rules
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
 
-
-### Second-Generation Managed Packages Timeline Object Definition
-
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
 
@@ -17385,6 +17432,9 @@ Subscriber Can Delete Component From Org No
 Package Developer Can Remove Component From Package No
 
 Component Has IP Protection No
+
+
+### Second-Generation Managed Packages Timeline Object Definition
 
 Editable Properties After Package Promotion or Installation
 
@@ -17434,9 +17484,6 @@ Component Manageability Rules
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
 
-
-Second-Generation Managed Packages Timeline Object Definition
-
 Packageable In: First-Generation Managed Packages (1GP)
 
 Component Is Updated During Package Upgrade Yes
@@ -17446,6 +17493,9 @@ Subscriber Can Delete Component From Org No
 Package Developer Can Remove Component From Package Yes. Supported in 1GP packages only.
 
 Component Has IP Protection No
+
+
+### Second-Generation Managed Packages Timesheet Template
 
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
@@ -17499,8 +17549,7 @@ There’s a legacy Timeline component in the Health Cloud Package which is being
 **Documentation**
 _Health Cloud Developer Guide_ [: TimelineObjectDefinition](https://developer.salesforce.com/docs/atlas.en-us.260.0.health_cloud_object_reference.meta/health_cloud_object_reference/meta_timelineobjectdefinition.htm)
 
-
-### Second-Generation Managed Packages Timesheet Template Timesheet Template
+### Timesheet Template
 
 Represents a template for creating time sheets in Field Service.
 
@@ -17508,6 +17557,9 @@ Component Manageability Rules
 
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
+
+
+### Second-Generation Managed Packages Transaction Processing Type
 
 Packageable In: First-Generation Managed Packages (1GP)
 
@@ -17550,9 +17602,6 @@ Package Developer Can Remove Component From Package No
 
 Component Has IP Protection No
 
-
-### Second-Generation Managed Packages Translation
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
@@ -17566,6 +17615,9 @@ Both Package Developer and Subscriber Can Edit
 Neither Package Developer or Subscriber Can Edit
 
 **•** None
+
+
+### Second-Generation Managed Packages Translation
 
 More Information
 
@@ -17611,9 +17663,6 @@ Only Package Developer Can Edit
 
 Both Package Developer and Subscriber Can Edit
 
-
-### Second-Generation Managed Packages UI Object Relation Config
-
 **•** None
 
 Neither Package Developer or Subscriber Can Edit
@@ -17624,6 +17673,9 @@ More Information
 
 **Feature Name**
 Metadata Name: Translation
+
+
+### Second-Generation Managed Packages UI Object Relation Config
 
 **Relationship to Other Components**
 When you add this component to a first-generation managed package, the Custom Object Translation component is automatically
@@ -17666,9 +17718,6 @@ Package Developer Can Remove Component From Package Yes
 
 Component Has IP Protection No
 
-
-### Second-Generation Managed Packages User Access Policy
-
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
 
@@ -17680,6 +17729,9 @@ Editable Properties After Package Promotion or Installation
 Only Package Developer Can Edit
 
 **•** Reference Name
+
+
+### Second-Generation Managed Packages User Access Policy
 
 **•** Developer Name
 
@@ -17727,18 +17779,18 @@ Subscriber Can Delete Component From Org No
 
 Package Developer Can Remove Component From Package Yes
 
-
-### Second-Generation Managed Packages Validation Rule
-
 Component Has IP Protection No
 
-[To confirm whether this component is available in managed 1GP, managed 2GP, or both package types, see Metadata Coverage Report.](https://developer.salesforce.com/docs/metadata-coverage)
+[To confirm whether this component is available in managed 1GP, managed 2GP, or both package types, see Metadata Coverage Report.](https://developer.salesforce.com/docs/success/metadata-coverage-report/references/coverage-report/metadata-coverage-report.html)
 
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
+
+
+### Second-Generation Managed Packages Validation Rule
 
 Editable Properties After Package Promotion or Installation
 
@@ -17790,9 +17842,6 @@ _Salesforce Help:_ [User Access Policies](https://help.salesforce.com/s/articleV
 
 Represents a validation rule, which is used to verify that the data a user enters in a record is valid and can be saved.
 
-
-Second-Generation Managed Packages Validation Rule
-
 Component Manageability Rules
 
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
@@ -17804,6 +17853,9 @@ Managed Packages (1GP)
 Component Is Updated During Package Upgrade Yes
 
 Subscriber Can Delete Component From Org No
+
+
+### Second-Generation Managed Packages Vehicle Asset Emissions Source Record Type Configuration
 
 Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
 
@@ -17850,8 +17902,7 @@ For custom objects that are packaged, any associated validation rules are implic
 **Documentation**
 _Metadata API Developer Guide:_ [ValidationRule](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_validationformulas.htm)
 
-
-### Second-Generation Managed Packages Vehicle Asset Emissions Source Record Type Configuration Vehicle Asset Emissions Source Record Type Configuration
+### Vehicle Asset Emissions Source Record Type Configuration
 
 Represents the setup object that contains the mapping between the Vehicle Asset Emissions Source record type and internal enums.
 You can primarily use this object for calculations across different record types.
@@ -17860,6 +17911,9 @@ Component Manageability Rules
 
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
+
+
+### Second-Generation Managed Packages View Definition (Beta)
 
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
@@ -17910,9 +17964,6 @@ Enable these org settings:
 
 **•** Manage Carbon Accounting
 
-
-### Second-Generation Managed Packages View Definition (Beta)
-
 **Documentation**
 
 **•** _Salesforce Help:_ [Set Up Record Types for Net Zero Cloud](https://help.salesforce.com/s/articleView?id=ind.netzero_setup_record_types.htm&type=5&language=en_US)
@@ -17922,6 +17973,9 @@ Enable these org settings:
 ### View Definition (Beta)
 
 Represents a view definition on a Slack app.
+
+
+Second-Generation Managed Packages View Definition (Beta)
 
 Component Manageability Rules
 
@@ -17969,9 +18023,6 @@ Component Type in 1GP Package Manager UI: View Definition
 **Use Case**
 Represents a view within a Slack application
 
-
-### Second-Generation Managed Packages Virtual Visit Config
-
 **License Requirements**
 Connect to Slack Permission
 
@@ -17982,7 +18033,8 @@ View definitions are referenced by Slack apps.
 
 [Apex SDK for Slack Developer Guide](https://developer.salesforce.com/docs/platform/salesforce-slack-sdk/overview)
 
-### Virtual Visit Config
+
+### Second-Generation Managed Packages Virtual Visit Config Virtual Visit Config
 
 Represents an external video provider configuration, which relays events from Salesforce to the provider.
 
@@ -18035,9 +18087,6 @@ Neither Package Developer or Subscriber Can Edit
 
 **•** Name
 
-
-### Second-Generation Managed Packages Visualforce Component
-
 More Information
 
 **Feature Name**
@@ -18046,7 +18095,8 @@ Metadata Name: VirtualVisitConfig
 **Documentation**
 _Salesforce Help_ [: Virtual Care](https://help.salesforce.com/s/articleView?id=ind.admin_virtual_care.htm&type=5&language=en_US)
 
-### Visualforce Component
+
+### Second-Generation Managed Packages Visualforce Component Visualforce Component
 
 Represents a Visualforce component.
 
@@ -18096,15 +18146,15 @@ Both Package Developer and Subscriber Can Edit
 
 Neither Package Developer or Subscriber Can Edit
 
-
-### Second-Generation Managed Packages Visualforce Page
-
 **•** Name
 
 More Information
 
 **Feature Name**
 Metadata Name: ApexComponent
+
+
+### Second-Generation Managed Packages Visualforce Page
 
 **Documentation**
 
@@ -18158,13 +18208,13 @@ Neither Package Developer or Subscriber Can Edit
 
 **•** Name
 
-
-### Second-Generation Managed Packages Wave Analytic Asset Collection
-
 More Information
 
 **Feature Name**
 Metadata Name: ApexPage
+
+
+### Second-Generation Managed Packages Wave Analytic Asset Collection
 
 Component Type in 1GP Package Manager UI: Visualforce Page
 
@@ -18216,15 +18266,15 @@ Neither Package Developer or Subscriber Can Edit
 
 **•** Collection Type
 
-
-### Second-Generation Managed Packages Wave Application
-
 More Information
 
 **Feature Name**
 Metadata Name: WaveAnalyticAssetCollection
 
 Component Type in 1GP Package Manager UI: Wave Analytic Asset Collection
+
+
+### Second-Generation Managed Packages Wave Application
 
 **Use Case**
 Represents a collection of CRM Analytics assets.
@@ -18274,9 +18324,6 @@ Only Package Developer Can Edit
 
 Both Package Developer and Subscriber Can Edit
 
-
-### Second-Generation Managed Packages Wave Component
-
 **•** Asset Icon
 
 **•** Description
@@ -18284,6 +18331,9 @@ Both Package Developer and Subscriber Can Edit
 **•** Shares
 
 Neither Package Developer or Subscriber Can Edit
+
+
+### Second-Generation Managed Packages Wave Component
 
 **•** Folder
 
@@ -18330,9 +18380,6 @@ they install the upgraded package. The admin of the subscriber’s org can then 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
 
-
-### Second-Generation Managed Packages Wave Dataflow
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
@@ -18342,6 +18389,9 @@ Only Package Developer Can Edit
 Both Package Developer and Subscriber Can Edit
 
 **•** Description
+
+
+### Second-Generation Managed Packages Wave Dataflow
 
 Neither Package Developer or Subscriber Can Edit
 
@@ -18388,9 +18438,6 @@ they install the upgraded package. The admin of the subscriber’s org can then 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
 
-
-### Second-Generation Managed Packages Wave Dashboard
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
@@ -18400,6 +18447,9 @@ Only Package Developer Can Edit
 Both Package Developer and Subscriber Can Edit
 
 **•** Description
+
+
+### Second-Generation Managed Packages Wave Dashboard
 
 Neither Package Developer or Subscriber Can Edit
 
@@ -18446,9 +18496,6 @@ they install the upgraded package. The admin of the subscriber’s org can then 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
 
-
-### Second-Generation Managed Packages Wave Dataset
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
@@ -18458,6 +18505,9 @@ Only Package Developer Can Edit
 Both Package Developer and Subscriber Can Edit
 
 **•** Description
+
+
+### Second-Generation Managed Packages Wave Dataset
 
 Neither Package Developer or Subscriber Can Edit
 
@@ -18506,9 +18556,6 @@ they install the upgraded package. The admin of the subscriber’s org can then 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
 
-
-### Second-Generation Managed Packages Wave Lens
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
@@ -18516,6 +18563,9 @@ Only Package Developer Can Edit
 **•** Label
 
 Both Package Developer and Subscriber Can Edit
+
+
+### Second-Generation Managed Packages Wave Lens
 
 **•** Description
 
@@ -18566,14 +18616,14 @@ they install the upgraded package. The admin of the subscriber’s org can then 
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
 
-
-### Second-Generation Managed Packages Wave Recipe
-
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
 
 **•** Label
+
+
+### Second-Generation Managed Packages Wave Recipe
 
 Both Package Developer and Subscriber Can Edit
 
@@ -18625,11 +18675,11 @@ Component Has IP Protection No
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
 
-
-### Second-Generation Managed Packages Wave Template Bundle
-
 Removing components from managed 1GP or 2GP packages requires approval from Salesforce. To request access to the component
 [removal feature, log a support case in the Salesforce Partner Community.](https://partners.salesforce.com/partnerSupport)
+
+
+### Second-Generation Managed Packages Wave Template Bundle
 
 Editable Properties After Package Promotion or Installation
 
@@ -18686,10 +18736,10 @@ Subscriber Can Delete Component From Org Yes
 
 Package Developer Can Remove Component From Package Yes
 
+Component Has IP Protection No
+
 
 ### Second-Generation Managed Packages Wave Xmd
-
-Component Has IP Protection No
 
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
@@ -18744,12 +18794,12 @@ Component Is Updated During Package Upgrade Yes
 
 Subscriber Can Delete Component From Org Yes
 
-
-### Second-Generation Managed Packages Web Store Template
-
 Package Developer Can Remove Component From Package Yes
 
 Component Has IP Protection No
+
+
+### Second-Generation Managed Packages Web Store Template
 
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
@@ -18806,13 +18856,13 @@ Manage CRM Analytics
 
 Represents a configuration for creating commerce stores.
 
-
-### Second-Generation Managed Packages Workflow Alert
-
 Component Manageability Rules
 
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
+
+
+### Second-Generation Managed Packages Workflow Alert
 
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
@@ -18862,9 +18912,6 @@ Only Package Developer Can Edit
 
 **•** None
 
-
-### Second-Generation Managed Packages Workflow Field Update
-
 Both Package Developer and Subscriber Can Edit
 
 **•** Additional Emails
@@ -18872,6 +18919,9 @@ Both Package Developer and Subscriber Can Edit
 **•** Email Template
 
 **•** From Email Address
+
+
+### Second-Generation Managed Packages Workflow Field Update
 
 **•** Recipients
 
@@ -18923,14 +18973,14 @@ Subscriber Can Delete Component From Org No
 Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages. Both protected
 and non-protected components can be removed.
 
-
-### Second-Generation Managed Packages Workflow Knowledge Publish
-
 Component Has IP Protection No
 
 Editable Properties After Package Promotion or Installation
 
 Only Package Developer Can Edit
+
+
+### Second-Generation Managed Packages Workflow Knowledge Publish
 
 **•** Description
 
@@ -18983,9 +19033,6 @@ Subscriber Can Delete Component From Org No
 
 Package Developer Can Remove Component From Package Yes, if protected
 
-
-### Second-Generation Managed Packages Workflow Outbound Message
-
 Component Has IP Protection No
 
 Editable Properties After Package Promotion or Installation
@@ -18993,6 +19040,9 @@ Editable Properties After Package Promotion or Installation
 Only Package Developer Can Edit
 
 **•** Action
+
+
+### Second-Generation Managed Packages Workflow Outbound Message
 
 **•** Description
 
@@ -19045,15 +19095,15 @@ Managed Packages (1GP)
 
 Component Is Updated During Package Upgrade Yes
 
-
-### Second-Generation Managed Packages Workflow Rule
-
 Subscriber Can Delete Component From Org No
 
 Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages. Both protected
 and non-protected components can be removed.
 
 Component Has IP Protection No
+
+
+### Second-Generation Managed Packages Workflow Rule
 
 Editable Properties After Package Promotion or Installation
 
@@ -19105,14 +19155,14 @@ Managed Packages (1GP)
 
 Component Is Updated During Package Upgrade Yes
 
-
-### Second-Generation Managed Packages Workflow Task
-
 Subscriber Can Delete Component From Org No
 
 Package Developer Can Remove Component From Package Yes. Supported in both 1GP and 2GP packages.
 
 Component Has IP Protection No
+
+
+### Second-Generation Managed Packages Workflow Task
 
 Note: When a package developer removes this component from a package, the component remains in a subscriber’s org after
 they install the upgraded package. The admin of the subscriber’s org can then delete the component, if desired.
@@ -19164,9 +19214,6 @@ package.
 
 This metadata type references an assigned workflow task.
 
-
-Second-Generation Managed Packages Workflow Task
-
 Component Manageability Rules
 
 Note: When creating a new package or package version, use the Flow component instead of Workflow components. If your
@@ -19174,6 +19221,11 @@ managed package already includes Workflow components, come up with a plan to mig
 
 Manageability rules determine whether you, or the subscriber, can edit or remove components after the package version is created and
 promoted to the released state.
+
+
+## Second-Generation Managed Packages Behavior of Specific Metadata in Second-Generation
+
+Managed Packages
 
 Packageable In: Second-Generation Managed Packages (2GP), First-Generation
 Managed Packages (1GP)
@@ -19225,11 +19277,6 @@ customize it as necessary.
 **•** [This component can be marked as protected. For more details, see Protected Components in the](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/packaging_protected_components.htm) _First-Generation Managed Packaging_
 _Developer Guide_ .
 
-
-## Second-Generation Managed Packages Behavior of Specific Metadata in Second-Generation
-
-Managed Packages
-
 ## Behavior of Specific Metadata in Second-Generation Managed
 
 Packages
@@ -19238,6 +19285,10 @@ Learn how profiles and namespace visibility are handled for second-generation ma
 
 Package Agentforce Metadata Components
 Bring the power of conversational AI to your apps with Agentforce.
+
+
+Second-Generation Managed Packages Behavior of Specific Metadata in Second-Generation
+Managed Packages
 
 Develop and Package Agent Templates Using Scratch Orgs
 At a high-level, agents are distributed by ISVs as agent templates. To package an agent template you first create and test an agent
@@ -19284,9 +19335,6 @@ namespaces, and needs no annotation.
 
 Work with Services Outside of Salesforce
 
-
-### Second-Generation Managed Packages Package Agentforce Metadata Components
-
 Package Connected Apps in Second-Generation Managed Packaging
 Add a connected app to a second-generation managed package.
 
@@ -19295,7 +19343,8 @@ To make sure custom application logic works accurately on records associated wit
 Save Behavior setting, and test the behavior. We recommend that you support both the new and old order save behavior during
 testing.
 
-### Package Agentforce Metadata Components
+
+### Second-Generation Managed Packages Package Agentforce Metadata Components Package Agentforce Metadata Components
 
 Bring the power of conversational AI to your apps with Agentforce.
 
@@ -19334,14 +19383,14 @@ At a high-level, agents are distributed by ISVs as agent templates. To package a
 namespaced scratch org, retrieve the agent to your Salesforce DX project, generate an agent template from the agent using Salesforce
 CLI, and finally package the agent template.
 
-
-Second-Generation Managed Packages Develop and Package Agent Templates Using Scratch Orgs
-
 [Important: If you’re packaging an agent template in October 2025 or later, follow the workaround instructions for packaging](https://help.salesforce.com/s/issue?id=a02Ka00000ji2nu)
 [agent templates. Due to a known issue with packaging local actions and topics, you must package agent templates using the](https://help.salesforce.com/s/issue?id=a02Ka00000ji2nu)
 workaround instructions at this time.
 
 Workflow for Agent Template Development
+
+
+Second-Generation Managed Packages Develop and Package Agent Templates Using Scratch Orgs
 
 Agent and Agent Template Metadata
 
@@ -20451,7 +20500,7 @@ Note: You can’t change the package namespace or package type after you create 
 
 After you promote at least one package version to the released state, you can also use the `sf package update` CLI command to
 recommend a specific version of the package to your subscribers. See Recommend a Specific Package Version to Your Subscribers on
-page 363 for more information.
+page 364 for more information.
 
 ### View Package Details for a Second-Generation Managed Package
 
@@ -20502,7 +20551,7 @@ Before you create a package version, first verify package details, such as the p
 parameter in the `sfdx-project.json` file. Verify that the metadata you want to change or add in the new package version is in
 the package’s main directory.
 
-Tip: Review Advanced Project Configuration Parameters for Second-Generation Managed Packages on page 382 for optional
+Tip: Review Advanced Project Configuration Parameters for Second-Generation Managed Packages on page 385 for optional
 features that you can enable in the new package version.
 
 When you create a package version, you have three options regarding how package validations are handled.
@@ -22444,7 +22493,7 @@ security review. The CLI push upgrade commands are available to second-generatio
 
 ### Second-Generation Managed Packages Schedule a Push Upgrade Using CLI
 
-enable push upgrades for your managed package, log a case with Salesforce Partner Support on page 403. For details on the security
+enable push upgrades for your managed package, log a case with Salesforce Partner Support on page 406. For details on the security
 [review process, see Pass the AppExchange Security Review in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.packagingGuide.meta/packagingGuide/security_review_guidelines.htm) _ISVforce Guide_ .
 
 **Table 4: Package Types and Push Upgrade Options**
@@ -22466,6 +22515,11 @@ second-generation managed packages installed in subscriber orgs, without asking 
 
 Schedule a Push Upgrade Using SOAP API for First- and Second-Generation Managed Packages
 After you’ve created an updated version of your package, you can automatically deploy it to customers using a push upgrade.
+
+Enable a Package Subscriber to Restrict Push Upgrades
+In certain scenarios, a Salesforce customer may require the ability to block push upgrades of managed packages that they have
+installed in their org. Customized push upgrades let Salesforce Partners give customers the ability to restrict push upgrades to a
+specific customer org for a specific package.
 
 Assign Access to New and Changed Features in First- and Second-Generation Managed Packages
 Determine how to provide existing non-admin users access to new and changed features. By default, any new components included
@@ -22489,13 +22543,13 @@ for a second-generation managed package, that package must have already passed t
 Push upgrades for unlocked packages are enabled by default. To enable push upgrades for your second-generation managed package,
 log a case with Salesforce Partner Support.
 
+
+Second-Generation Managed Packages Schedule a Push Upgrade Using CLI
+
 To initiate a push upgrade for an unlocked or second-generation managed package, the Create and Update Second-Generation Packages
 user permission is required.
 
 There are several aspects to scheduling a push upgrade for a package. At a high-level these include:
-
-
-Second-Generation Managed Packages Schedule a Push Upgrade Using CLI
 
 **•** Identifying the subscriber orgs and the org IDs that you want to upgrade
 
@@ -22505,6 +22559,9 @@ Second-Generation Managed Packages Schedule a Push Upgrade Using CLI
 
 In some scenarios you may also need to abort a scheduled push upgrade, or analyze errors that occurred. Let’s review each of these
 steps in more detail.
+
+Note: Partners can also grant select customers the ability to block push upgrades by setting up customized push upgrades. See
+Enable a Package Subscriber to Restrict Push Upgrades on page 369 for more information.
 
 Determine the Orgs to Be Upgraded
 
@@ -22565,15 +22622,15 @@ This query returns as CSV file that you can use when scheduling the push upgrade
 
 Query Example 3:
 
+
+Second-Generation Managed Packages Schedule a Push Upgrade Using CLI
+
 Compile a list of all orgs that have a package version lower than version 2.7 installed. This query requires two separate steps.
 
 Note: A single package has both a package ID (starts with 0Ho) and a subscriber package ID (starts with 033). For part one of this
 two-part query, you must specify the 0Ho ID. If you run the `package list` command with the `--verbose` flag, you can
 [determine both the 033 and 0Ho ID for a package. For more details on package IDs, see Package IDs and Aliases for](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_plan_pkg_types_pkg_ids.htm)
 [Second-Generation Managed Packages.](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_plan_pkg_types_pkg_ids.htm)
-
-
-Second-Generation Managed Packages Schedule a Push Upgrade Using CLI
 
 [First, query the Package2Version object to find all versions of your package that are numerically lower than the specified version (2.7).](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_tooling.meta/api_tooling/tooling_api_objects_package2version.htm)
 
@@ -22641,6 +22698,9 @@ Schedule a push upgrade that initiates as soon as possible using a list of orgs 
 Note: If you don't specify the `--start-time` flag, the push upgrade begins as soon as resources are available. When specfiying
 a start time, schedule during off peak hours. Specify start time in UTC.
 
+
+Second-Generation Managed Packages Schedule a Push Upgrade Using CLI
+
 Retrieve Details about Scheduled Package Push Upgrades
 
 Use the `package push-upgrade list` or `package push-upgrade report` commands to retrieve details about push
@@ -22654,11 +22714,6 @@ List all package push upgrade requests for a specified package:
    sf package push-upgrade list --package 033xyz --target-dev-hub myDevHub
 
 ```
-
-
-### Second-Generation Managed Packages Schedule a Push Upgrade Using SOAP API for First- and
-
-Second-Generation Managed Packages
 
 List all package push upgrade requests for a specified package scheduled in the last 30 days:
 
@@ -22724,12 +22779,21 @@ Example:
 
    WHERE PackagePushJob.PackagePushRequestId='$PUSH_REQUEST_ID'" --target-org myDevHub
 
-### Schedule a Push Upgrade Using SOAP API for First- and Second-Generation
 ```
+
+
+### Second-Generation Managed Packages Schedule a Push Upgrade Using SOAP API for First- and
+
+Second-Generation Managed Packages
+
+### Schedule a Push Upgrade Using SOAP API for First- and Second-Generation
 
 Managed Packages
 
 After you’ve created an updated version of your package, you can automatically deploy it to customers using a push upgrade.
+
+Note: Partners can also grant select customers the ability to block push upgrades by setting up customized push upgrades. See
+### Enable a Package Subscriber to Restrict Push Upgrades on page 369 for more information.
 
 For code samples and more detailed steps, see SOAP API object documentation linked in each step.
 
@@ -22738,11 +22802,6 @@ For code samples and more detailed steps, see SOAP API object documentation link
 **2.** [Query MetadataPackage to verify package details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_metadatapackage.htm)
 
 **3.** [Query MetadataPackageVersion to verify the package version to use for the push upgrade.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_metadatapackageversion.htm)
-
-
-### Second-Generation Managed Packages Assign Access to New and Changed Features in First- and
-
-Second-Generation Managed Packages
 
 **4.** [Query PackageSubscriber to retrieve details about subscriber orgs such as the org ID and installed package version. To retrieve](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_packagesubscriber.htm)
 information about more than 2,000 subscribers, use SOAP API `[queryMore()](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_calls_querymore.htm)` call.
@@ -22758,12 +22817,111 @@ step.
 Note: Scheduled push upgrades begin as soon as resources are available on the Salesforce instance, which is either at or after
 the start time you specify. In certain scenarios, the push upgrade could start a few hours after the scheduled start time.
 
+### Enable a Package Subscriber to Restrict Push Upgrades
+
+In certain scenarios, a Salesforce customer may require the ability to block push upgrades of managed packages that they have installed
+in their org. Customized push upgrades let Salesforce Partners give customers the ability to restrict push upgrades to a specific customer
+org for a specific package.
+
+Setting up customized push upgrades requires both the Salesforce Partner and Salesforce Customer to complete specific enablement
+steps.
+
+**1.** The Salesforce Partner enables customized push upgrades for a package installed in the customer org.
+
+**a.** As the Salesforce Partner, log in to either your 1GP packaging org, or your Dev Hub org (for managed 2GP packages) using the
+system administrator account.
+
+**b.** Click the gear icon and select **Developer Console** .
+
+**c.** In the Developer Console, select **Debug**, and then select **Open Execute Anonymous Window** .
+
+**d.** Enter the following code, but remember to replace the `packageID` (starts with _`033`_ ) and `subscriberOrgID` (starts
+with _`00D`_ ) text for the package ID and customer org you’re enabling.
+
+```
+       String pucId1 = PushUpgradeCustomizationRepository.create('packageID',
+
+       'subscriberOrgID', true);
+
+       System.debug('pucId1 =' + pucId1);
+
+```
+
+If the customer wants to block push upgrades to multiple production orgs, you must specify each org ID. Here’s an example of
+how to enable customized push upgrades for more than one org.
+
+```
+       String pucId1 = PushUpgradeCustomizationRepository.create('packageID',
+
+       'subscriberOrgID', true);
+
+```
+
+
+### Second-Generation Managed Packages Assign Access to New and Changed Features in First- and
+
+Second-Generation Managed Packages
+
+```
+       System.debug('pucId1 =' + pucId1);
+
+       String pucId2 = PushUpgradeCustomizationRepository.create('packageID',
+
+       'subscriberOrgID', true);
+
+       System.debug('pucId2 =' + pucId2);
+
+```
+
+**e.** Click **Open Log** and then click **Execute** .
+
+**f.** Click the **Debug Only** checkbox and verify that the push upgrade customization record was created.
+
+The record looks something like: `11:09:15:814 USER_DEBUG [2]|DEBUG|pucId1 =12COK000000000B`
+
+**g.** Contact the Salesforce Customer and let them know that customized push upgrades is enabled on your end.
+
+Note: Sandbox orgs automatically get the ability to block push upgrades if the parent production org has been granted the
+ability to block push upgrades by the Salesforce Partner.
+
+**2.** After the Salesforce Partner enables customized push upgrades, the Salesforce Customer blocks push upgrades from Setup in the
+customer org.
+
+**a.** As the Salesforce Customer, log in to your org.
+
+**b.** From Setup, enter _`Installed Packages`_ in the Quick Find box, and then select **Installed Packages** .
+
+**c.** Select the package you’ve requested to block push upgrades, and then select **Block Push Upgrades** .
+
+**d.** Verify that the **Push upgrades are now blocked** checkbox is selected.
+
+Salesforce Customers can resume push upgrades at any time by selecting the **Allow Push Upgrades** button. While the block is enabled,
+package upgrades can only be installed manually.
+
+Salesforce Partners can view and manage existing customized push upgrades by using the PushUpgradeCustomizationRepository Apex
+Class.
+
+Note these considerations for customized push upgrades.
+
+**•** [If your package is a managed 2GP and has customized push upgrades enabled, and you then transfer the ownership of the managed](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev2gp_package_transfer.htm)
+[2GP from one Dev Hub to another, the new Dev Hub won’t retain the required permissions. In addition, the](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev2gp_package_transfer.htm)
+PushUpgradeCustomizationRepository records for blocking push upgrades won’t be retained. To continue using customized push
+upgrades with the new Dev Hub org, repeat Steps 1 and 2.
+
+**•** It’s not possible to block push upgrades on a patch version of a package. If the customer has a patch version installed, they must
+upgrade to a non-patch version of the package before they can block push upgrades.
+
 ### Assign Access to New and Changed Features in First- and
 
 Second-Generation Managed Packages
 
 Determine how to provide existing non-admin users access to new and changed features. By default, any new components included
 in the push upgrade package version are assigned only to admins.
+
+
+### Second-Generation Managed Packages Sample Post Install Script for a Push Upgrade for First- and
+
+Second-Generation Managed Packages
 
 ### Sample Post Install Script for a Push Upgrade for First- and
 
@@ -22773,7 +22931,7 @@ Automate the assignment of new components to existing users of a package.
 
 Note: Post-install scripts can be used with first and second-generation managed packages only.
 
-For more information on writing a post-install Apex script, see Run Apex on Package Install/Upgrade on page 351.
+For more information on writing a post-install Apex script, see Run Apex on Package Install/Upgrade on page 352.
 
 In this sample script, the package upgrade contains new Visualforce pages and a new permission set that grants access to those pages.
 The script performs the following actions.
@@ -22784,53 +22942,55 @@ The script performs the following actions.
 
 **•** Gets the list of profiles associated with these permission sets
 
-
-Second-Generation Managed Packages Sample Post Install Script for a Push Upgrade for First- and
-Second-Generation Managed Packages
-
 **•** Gets the list of users who have those profiles assigned
 
 **•** Assigns the permission set in the new package to those users
 
 ```
-   global class PostInstallClass implements InstallHandler {
+global class PostInstallClass implements InstallHandler {
 
-      global void onInstall(InstallContext context) {
+   global void onInstall(InstallContext context) {
 
-        //Get the Id of the Visualforce pages
+     //Get the Id of the Visualforce pages
 
-        List<ApexPage> pagesList = [SELECT Id FROM ApexPage WHERE NamespacePrefix =
+     List<ApexPage> pagesList = [SELECT Id FROM ApexPage WHERE NamespacePrefix =
 
-           'TestPackage' AND Name = 'vfpage1'];
+        'TestPackage' AND Name = 'vfpage1'];
 
-        //Get the permission sets that have access to those pages
+     //Get the permission sets that have access to those pages
 
-        List<SetupEntityAccess> setupEntityAccessList = [SELECT Id,
+     List<SetupEntityAccess> setupEntityAccessList = [SELECT Id,
 
-           ParentId, SetupEntityId, SetupEntityType FROM SetupEntityAccess
+        ParentId, SetupEntityId, SetupEntityType FROM SetupEntityAccess
 
-           WHERE SetupEntityId IN :pagesList];
+        WHERE SetupEntityId IN :pagesList];
 
-        Set<ID> PermissionSetList = new Set<ID> ();
+     Set<ID> PermissionSetList = new Set<ID> ();
 
-        for (SetupEntityAccess sea : setupEntityAccessList) {
+     for (SetupEntityAccess sea : setupEntityAccessList) {
 
-           PermissionSetList.add(sea.ParentId);
+        PermissionSetList.add(sea.ParentId);
 
-        }
+     }
 
-        List<PermissionSet> PermissionSetWithProfileIdList =
+     List<PermissionSet> PermissionSetWithProfileIdList =
 
-           [SELECT id, Name, IsOwnedByProfile, Profile.Name,
+        [SELECT id, Name, IsOwnedByProfile, Profile.Name,
 
-           ProfileId FROM PermissionSet WHERE IsOwnedByProfile = true
+        ProfileId FROM PermissionSet WHERE IsOwnedByProfile = true
 
-           AND Id IN :PermissionSetList];
+        AND Id IN :PermissionSetList];
 
-        //Get the list of profiles associated with those permission sets
+     //Get the list of profiles associated with those permission sets
 
-        Set<ID> ProfileList = new Set<ID> ();
+     Set<ID> ProfileList = new Set<ID> ();
 
+```
+
+
+### Second-Generation Managed Packages Push Upgrade Best Practices
+
+```
         for (PermissionSet per : PermissionSetWithProfileIdList) {
 
            ProfileList.add(per.ProfileId);
@@ -22879,12 +23039,6 @@ Second-Generation Managed Packages
 
    private class PostInstallClassTest {
 
-```
-
-
-### Second-Generation Managed Packages Push Upgrade Best Practices
-
-```
       @isTest
 
       public static void test() {
@@ -22918,6 +23072,11 @@ issues? Do you have customers outside the United States who have different off-p
 any number of customer organizations at a time. Consider grouping organizations by time zone, if business hours vary widely across
 your customer base.
 
+
+## Second-Generation Managed Packages Advanced Features for Second-Generation Managed
+
+Packages
+
 **•** Don’t schedule push upgrades close to Salesforce-planned maintenance windows. In most cases, it might be better to wait 3-4
 weeks after a major Salesforce release before you push major upgrades.
 
@@ -22948,11 +23107,6 @@ metadata, by pushing an upgrade that has bugs.
 
 **•** Write an Apex test on install to do basic sanity testing to confirm that the upgraded app works as expected.
 
-
-## Second-Generation Managed Packages Advanced Features for Second-Generation Managed
-
-Packages
-
 **•** If you’re enhancing an existing feature, use a post-install script to automatically assign new components to existing users using
 permission sets.
 
@@ -22972,6 +23126,10 @@ Patch Versions for Second-Generation Managed Packages
 Patch versions are a way to fix small issues with your second-generation managed package without introducing major feature
 changes. Customers who are using an older version of your package can install a patch and not be forced to upgrade to a new major
 package version.
+
+
+Second-Generation Managed Packages Advanced Features for Second-Generation Managed
+Packages
 
 Create Dependencies Between Second-Generation Managed Packages
 To avoid monolithic package development practices, plan to develop smaller, modular packages that group similar functionality
@@ -23005,11 +23163,6 @@ For scenarios where you require metadata that isn’t part of your second-genera
 test runs, you can specify the path containing unpackaged metadata in the `sfdx-project.json` file. The unpackaged metadata
 isn’t included in the package and isn’t installed in subscriber orgs.
 
-
-### Second-Generation Managed Packages Package Ancestors for Second-Generation Managed
-
-Packages
-
 Package IDs and Aliases for Second-Generation Managed Packages
 During the package lifecycle, packages and package versions are identified by an ID or package alias. When you create a
 second-generation managed package or package version, Salesforce CLI creates a package alias based on the package name, and
@@ -23031,7 +23184,12 @@ Frequently Used Packaging Operations for Second-Generation Managed Packages
 Transfer a Second-Generation Managed Package to a Different Dev Hub
 You can transfer the ownership of a second-generation managed package (managed 2GP) from one Dev Hub org to another. These
 transfers can occur either internally between two Dev Hub orgs your company owns, or you can transfer a package externally to
-another Salesforce Partner or ISV. This change provides a way to sell a second-generation managed package to a different company.
+another Salesforce Partner or ISV. This change provides a way to sell a managed 2GP package to a different company.
+
+
+### Second-Generation Managed Packages Package Ancestors for Second-Generation Managed
+
+Packages
 
 Contact Salesforce Partner Support to Enable Specific Packaging Features
 Certain packaging features can only be enabled by Salesforce Partner Support.
@@ -23062,12 +23220,12 @@ Say your team creates version 1.0, then 1.1, then 1.2 and oops! 1.2 made a mess 
 version, you specify which package version is the ancestor. So you abandon 1.2, and make 1.1 the ancestor of 1.3. And this process can
 be repeated. For example, the illustration shows how to abandon 1.5, and build 1.6 off 1.4.
 
+This more complex and tree-like versioning has the added benefit of making it possible for two or more development teams to do
+parallel package development.
+
 
 Second-Generation Managed Packages Package Ancestors for Second-Generation Managed
 Packages
-
-This more complex and tree-like versioning has the added benefit of making it possible for two or more development teams to do
-parallel package development.
 
 With Great Power Comes Great Responsibility
 
@@ -23082,7 +23240,8 @@ Patch Versions and Package Ancestry
 the upgrade path of the non-patch version with the same major and minor number. For example, patch version 1.0.3 has the same
 upgrade path as 1.0.0.
 
-Understanding Package Upgrades with Ancestry
+#### Understanding Package Upgrades with Ancestry
+
 Review how package ancestry impacts which package version upgrades are allowed.
 
 View Package Ancestry
@@ -23090,15 +23249,11 @@ Use Salesforce CLI commands to quickly confirm your package’s ancestor, or to 
 
 SEE ALSO:
 
-[Understanding Package Upgrades with Ancestry](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_config_upgrades.htm)
+#### Understanding Package Upgrades with Ancestry
 
 [View Package Ancestry](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_view_ancestors.htm)
 
 [Namespace-Based Visibility for Apex Classes in Second-Generation Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_namespace_visibility.htm)
-
-
-Second-Generation Managed Packages Package Ancestors for Second-Generation Managed
-Packages
 
 #### Understanding Package Upgrades with Ancestry
 
@@ -23108,6 +23263,10 @@ Refer to this table and the package ancestry tree to understand whether your sub
 versions.
 
 **Example Package Ancestry Tree**
+
+
+Second-Generation Managed Packages Package Ancestors for Second-Generation Managed
+Packages
 
 
 Second-Generation Managed Packages Package Ancestors for Second-Generation Managed
@@ -23188,7 +23347,7 @@ number.
 
 Packages
 
-Note: To enable patch versioning, log a case with Salesforce Partner Support on page 403 and request that patch versioning be
+Note: To enable patch versioning, log a case with Salesforce Partner Support on page 406 and request that patch versioning be
 enabled in the org where you created the namespace for this package. Patch versioning is available to only to packages that have
 passed AppExchange security review.
 
@@ -23892,137 +24051,3 @@ run at package version creation.
 During the package lifecycle, packages and package versions are identified by an ID or package alias. When you create a second-generation
 managed package or package version, Salesforce CLI creates a package alias based on the package name, and stores that name in the
 packageAliases section of the `sfdx-project.json` file. When you run CLI commands or write scripts to automate packaging
-workflows, it’s often easier to reference the package alias, instead of the package ID or package version ID.
-
-
-### Second-Generation Managed Packages Avoid Namespace Collisions in Second-Generation Managed
-
-Packages
-
-Package aliases are stored in the `sfdx-project.json` file as name-value pairs, in which the name is the alias and the value is the
-ID. You can modify package aliases for existing packages and package versions in the project file.
-
-At the command line, you also see IDs for things like package members (a component in a package) and requests (like a `sf package`
-`version create` request).
-
-Note: As a shortcut, the documentation sometimes refers to an ID by its three-character prefix. For example, a package version
-ID always starts with `04t` .
-
-Here are the most commonly used IDs.
-
-### Avoid Namespace Collisions in Second-Generation Managed Packages
-
-Namespaces impact the combination of package types that you can install in an org.
-
-Important: When sharing a namespace, be intentional about managing component names across packages within that namespace.
-Ensure that packages associated with the same namespace don’t include components with the same API name. If two packages
-include a component with the same API name, you can’t install these packages into the same org.
-
-To understand how namespaces affect the types of packages you can install in a namespaced or no-namespace org, review this table.
-
-
-Second-Generation Managed Packages Avoid Namespace Collisions in Second-Generation Managed
-Packages
-
-To understand how namespaces affect the combination of packages that can be installed into one org, review this table.
-
-
-### Second-Generation Managed Packages Remove Metadata Components from Second-Generation
-
-Managed Packages
-
-SEE ALSO:
-
-[Namespaces for Second-Generation Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_plan_namespaces.htm)
-
-[Create and Register Your Namespace for Second-Generation Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_create_namespace.htm)
-
-[Link a Namespace to a Dev Hub Org](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_reg_namespace.htm)
-
-### Remove Metadata Components from Second-Generation Managed
-
-Packages
-
-Remove metadata components such as Apex classes that you no longer want in your second-generation managed packages.
-
-Impact of Component Removal in Subscriber Orgs
-
-During a package upgrade, only certain component types are hard deleted and removed from the subscriber org. Most metadata
-components that were removed from a package version remain in the subscriber org after package upgrade and are marked as deprecated.
-When a package is upgraded in the subscriber org, the Setup Audit Trail logs which components were removed. Admins of a subscriber
-org can delete deprecated metadata. If the subscriber uninstalls the package, deprecated metadata that was previously associated with
-the package is deleted.
-
-You can remove these metadata components from second-generation managed packages.
-
-
-Second-Generation Managed Packages Remove Metadata Components from Second-Generation
-Managed Packages
-
-
-Second-Generation Managed Packages Remove Metadata Components from Second-Generation
-Managed Packages
-
-How to Remove Metadata Components
-
-To request access to this feature, log a case with Salesforce Partner Support on page 403.
-
-After your request is approved, remove the metadata component’s source file from your Salesforce DX project, and create a package
-version. Test the new package version to ensure it’s working properly without the removed metadata.
-
-Before You Remove Metadata Components from Second-Generation Managed
-Packages
-
-To ensure you can successfully remove metadata components from a second-generation managed package, keep these details in mind.
-
-**•** Request access to the feature, if you haven’t already.
-
-**•** Familiarize yourself with the list of metadata components that can be removed.
-
-**•** Ensure that there aren’t dependencies on the metadata you plan to remove. If any component in the package depends on or
-references the component you're removing, the package version creation operation fails. After you remove a component, you can't
-access any customizations that depend on the removed component.
-
-Remove Metadata Dependencies Within a Package
-
-If there are dependencies to the metadata component you plan to remove, resolve the dependency before removing the metadata
-component.
-
-For example, before deleting a custom field that is referenced in a page layout, edit the page layout and remove the reference to the
-custom field. Then remove the custom field from your source file, and create a package version.
-
-
-Second-Generation Managed Packages Remove Metadata Components from Second-Generation
-Managed Packages
-
-Some scenarios require a two-step approach to component removal. For example, let's say you plan to remove a Visualforce page that
-contains a Visualforce component and replace it with a Lightning page that contains a Lightning component. Removing both the
-Visualforce page and Visualforce component in a single upgrade could cause issues for your subscribers. These issues occur because
-Visualforce components are deleted, and Visualforce pages are deprecated during package upgrade.
-
-To avoid issues for your subscribers in this example, remove the reference to the Visualforce component from the Visualforce page,
-create a package version, and push the upgrade. Then remove the Visualforce page from your package version, and push this upgrade
-to subscribers.
-
-Remove Dependencies Located in Other Packages
-
-Before you remove a metadata component, first remove all references to the metadata, including references in other packages that
-depend on that metadata component. For example, if you’re removing a public Apex class, ensure your other packages aren’t referencing
-that class using the Apex `@namespaceAccessible` annotation.
-
-In this section, PackageA refers to the package in which you plan to remove a metadata component. And PackageB is any package that
-depends on the metadata you’re removing from PackageA. If you have references to the metadata component or Apex class in PackageB,
-follow these steps:
-
-**1.** Remove the reference to the metadata component from PackageB.
-
-**2.** Create a version of PackageB.
-
-**3.** Push the new version of PackageB to your subscribers.
-
-**4.** Repeat these steps if any other packages include a reference to the metadata you plan to remove from PackageA.
-
-After you've removed all references to the metadata component, remove the metadata component’s source file from the Salesforce DX
-project of PackageA. Then create a version of PackageA. Before pushing this upgrade to subscribers, test the new package version to
-ensure it’s working properly.
-

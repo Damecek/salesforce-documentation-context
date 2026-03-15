@@ -1,3 +1,1532 @@
+API name of the parent object in the relationship that’s represented by this column. Applies only when the column’s data type is
+`LOOKUP_TYPE`, `EXTERNAL_LOOKUP_TYPE`, or `INDIRECT_LOOKUP_TYPE` . For other data types, this value is ignored.
+
+sortable
+Whether a result set can be sorted based on the values of the column via an `ORDER BY` clause.
+
+type
+Data type of the column.
+
+##### decimalPlaces
+
+If the data type is numeric, the number of decimal places to the right of the decimal point.
+
+Signature
+
+```
+   public Integer decimalPlaces {get; set;}
+
+```
+
+Property Value
+
+Type: Integer
+
+##### description
+
+Description of what the column represents.
+
+
+Apex Reference Guide Column Class
+
+Signature
+
+```
+   public String description {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### filterable
+
+Whether a result set can be filtered based on the values of the column.
+
+Signature
+
+```
+   public Boolean filterable {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+##### **`isPicklistAlphabeticallySorted`**
+
+Returns `true` if the picklist is sorted alphabetically, `false` otherwise.
+
+Signature
+
+```
+   public Boolean isPicklistAlphabeticallySorted {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+##### **`isPicklistRestricted`**
+
+Returns `true` if the picklist is restricted, `false` otherwise.
+
+Signature
+
+```
+   public Boolean isPicklistRestricted {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+##### label
+
+User-friendly name for the column that appears in the Salesforce user interface.
+
+Signature
+
+```
+   public String label {get; set;}
+
+```
+
+
+Apex Reference Guide Column Class
+
+Property Value
+
+Type: String
+
+##### length
+
+If the column is a string data type, the number of characters in the column. If the column is a numeric data type, the total number of
+digits on both sides of the decimal point, but excluding the decimal point.
+
+Signature
+
+```
+   public Integer length {get; set;}
+
+```
+
+Property Value
+
+Type: Integer
+
+##### name
+
+Name of the column in the external system.
+
+Signature
+
+```
+   public String name {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`picklistValues`**
+
+If the data type is a picklist, the picklist values.
+
+Signature
+
+```
+   public List<Map<String,String>> picklistValues {get; set;}
+
+```
+
+Property Value
+
+Type: List<Map<String,String>>
+
+##### referenceTargetField
+
+API name of the custom field on the parent object whose values are compared against this column’s values. Matching values identify
+related records in an indirect lookup relationship. Applies only when the column’s data type is `INDIRECT_LOOKUP_TYPE` . For other
+data types, this value is ignored.
+
+Signature
+
+```
+   public String referenceTargetField {get; set;}
+
+```
+
+
+Apex Reference Guide Column Class
+
+Property Value
+
+Type: String
+
+##### referenceTo
+
+API name of the parent object in the relationship that’s represented by this column. Applies only when the column’s data type is
+`LOOKUP_TYPE`, `EXTERNAL_LOOKUP_TYPE`, or `INDIRECT_LOOKUP_TYPE` . For other data types, this value is ignored.
+
+Signature
+
+```
+   public String referenceTo {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### sortable
+
+Whether a result set can be sorted based on the values of the column via an `ORDER BY` clause.
+
+Signature
+
+```
+   public Boolean sortable {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+##### type
+
+Data type of the column.
+
+Signature
+
+```
+   public DataSource.DataType type {get; set;}
+
+```
+
+Property Value
+
+Type: DataSource.DataType
+
+#### Column Methods The following are methods for Column .
+
+IN THIS SECTION:
+
+boolean(name)
+Returns a new column of data type `BOOLEAN_TYPE` .
+
+currency(name, length, decimalPlaces)
+Returns a new column of data type `CURRENCY_TYPE` .
+
+
+Apex Reference Guide Column Class
+
+date(name)
+Returns a new column of data type `DATE_TYPE` .
+
+datetime(name)
+Returns a new column of data type `DATETIME_TYPE` .
+
+email(name)
+Returns a new column of data type `EMAIL_TYPE` .
+
+externalLookup(name, domain)
+Returns a new column of data type `EXTERNAL_LOOKUP_TYPE` .
+
+get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces, referenceTo, referenceTargetField, picklistValuesObj,
+isPicklistAlphabeticallySorted, isPicklistRestricted)
+Returns a new column with the 13 specified `Column` property values.
+
+get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces, referenceTo, referenceTargetField)
+Returns a new column with the ten specified `Column` property values.
+
+get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces)
+Returns a new column with the eight specified `Column` property values.
+
+get(name, label, description, isSortable, isFilterable, type, length)
+Returns a new column with the seven specified `Column` property values.
+
+indirectLookup(name, domain, targetField)
+Returns a new column of data type `INDIRECT_LOOKUP_TYPE` .
+
+integer(name, length)
+Returns a new numeric column with no decimal places using the specified name and length.
+
+lookup(name, domain)
+Returns a new column of data type `LOOKUP_TYPE` .
+
+multipicklist(name, picklistValues, isPicklistAlphabeticallySorted, isPicklistRestricted)
+Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values. You can
+also specify whether the picklist is sorted alphabetically or if the picklist is restricted.
+
+multipicklist(name, picklistValues)
+Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values.
+
+number(name, length, decimalPlaces)
+Returns a new column of data type `NUMBER_TYPE` .
+
+percent(name, length, decimalPlaces)
+Returns a new column of data type `PERCENT_TYPE` .
+
+phone(name)
+Returns a new column of data type `PHONE_TYPE` .
+
+picklist(name, picklistValues, isPicklistAlphabeticallySorted, isPicklistRestricted)
+Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values. You can also specify whether
+the picklist is sorted alphabetically or if the picklist is restricted.
+
+picklist(name, picklistValues)
+Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values.
+
+
+Apex Reference Guide Column Class
+
+text(name, label, length)
+Returns a new column of data type `STRING_SHORT_TYPE` or `STRING_LONG_TYPE`, with the specified name, label, and
+length.
+
+text(name, length)
+Returns a new column of data type `STRING_SHORT_TYPE` or `STRING_LONG_TYPE`, with the specified name and length.
+
+text(name)
+Returns a new column of data type `STRING_SHORT_TYPE` with the specified name and the length of 255 characters.
+
+textarea(name)
+Returns a new column of data type `STRING_LONG_TYPE` with the specified name and the length of 32,000 characters.
+
+time(name)
+Returns a new column of data type `Time` with the specified name.
+
+url(name, length)
+Returns a new column of data type `URL_TYPE` with the specified name and length.
+
+url(name)
+Returns a new column of data type `URL_TYPE` with the specified name and the length of 1,000 characters.
+
+##### boolean(name)
+
+Returns a new column of data type `BOOLEAN_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column boolean(String name)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+Return Value
+
+Type: DataSource.Column
+
+##### **`currency(name, length, decimalPlaces)`**
+
+Returns a new column of data type `CURRENCY_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column currency(String name, Integer length, Integer
+
+   decimalPlaces)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+
+Apex Reference Guide Column Class
+
+Name of the column.
+
+```
+   length
+```
+
+Type: Integer
+
+Number of characters allowed in the column.
+
+```
+   decimalPlaces
+```
+
+Type: Integer
+
+Number of decimal places to the right of the decimal point.
+
+Return Value
+
+Type: DataSource.Column
+
+##### **`date(name)`**
+
+Returns a new column of data type `DATE_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column date(String name)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+Return Value
+
+Type: DataSource.Column
+
+##### **`datetime(name)`**
+
+Returns a new column of data type `DATETIME_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column datetime(String name)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+Return Value
+
+Type: DataSource.Column
+
+
+Apex Reference Guide Column Class
+
+##### **`email(name)`**
+
+Returns a new column of data type `EMAIL_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column email(String name)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+Return Value
+
+Type: DataSource.Column
+
+##### externalLookup(name, domain)
+
+Returns a new column of data type `EXTERNAL_LOOKUP_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column externalLookup(String name, String domain)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+```
+   domain
+```
+
+Type: String
+
+API name of the parent object in the external lookup relationship.
+
+Return Value
+
+Type: DataSource.Column
+
+The returned column has these property values.
+
+**Property** **Value**
+
+name _`name`_
+
+label _`name`_
+
+description _`name`_
+
+isSortable true
+
+isFilterable true
+
+
+Apex Reference Guide Column Class
+
+**Property** **Value**
+
+type DataSource.DataType.EXTERNAL_LOOKUP_TYPE
+
+length 255
+
+decimalPlaces 0
+
+referenceTo _`domain`_
+
+referenceTargetField null
+
+##### **`get(name, label, description, isSortable, isFilterable, type, length,`**
+
+```
+  decimalPlaces, referenceTo, referenceTargetField, picklistValuesObj,
+
+  isPicklistAlphabeticallySorted, isPicklistRestricted)
+
+```
+
+Returns a new column with the 13 specified `Column` property values.
+
+Signature
+
+```
+   public static DataSource.Column get(String name, String label, String description,
+
+   Boolean isSortable, Boolean isFilterable, DataSource.DataType type, Integer length,
+
+   Integer decimalPlaces, String referenceTo, String referenceTargetField, Object
+
+   picklistValuesObj, Boolean isPicklistAlphabeticallySorted, Boolean isPicklistRestricted)
+
+```
+
+Parameters
+
+See Column Properties on page 2720 for information about each parameter.
+
+```
+   name
+```
+
+Type: String
+
+```
+   label
+```
+
+Type: String
+
+```
+   description
+```
+
+Type: String
+
+```
+   isSortable
+```
+
+Type: Boolean
+
+```
+   isFilterable
+```
+
+Type: Boolean
+
+```
+   type
+```
+
+Type: DataSource.DataType
+
+```
+   length
+```
+
+Type: Integer
+
+```
+   decimalPlaces
+```
+
+Type: Integer
+
+```
+   referenceTo
+```
+
+Type: String
+
+
+Apex Reference Guide Column Class
+
+```
+   referenceTargetField
+```
+
+Type: String
+
+```
+   picklistValuesObj
+```
+
+Type: Object
+
+```
+   isPicklistAlphabeticallySorted
+```
+
+Type: Boolean
+
+```
+   isPicklistRestricted
+```
+
+Type: Boolean
+
+Return Value
+
+Type: DataSource.Column
+
+##### get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces, referenceTo,
+
+referenceTargetField)
+
+Returns a new column with the ten specified `Column` property values.
+
+Signature
+
+```
+   public static DataSource.Column get(String name, String label, String description,
+
+   Boolean isSortable, Boolean isFilterable, DataSource.DataType type, Integer length,
+
+   Integer decimalPlaces, String referenceTo, String referenceTargetField)
+
+```
+
+Parameters
+
+See Column Properties on page 2720 for information about each parameter.
+
+```
+   name
+```
+
+Type: String
+
+```
+   label
+```
+
+Type: String
+
+```
+   description
+```
+
+Type: String
+
+```
+   isSortable
+```
+
+Type: Boolean
+
+```
+   isFilterable
+```
+
+Type: Boolean
+
+```
+   type
+```
+
+Type: DataSource.DataType
+
+```
+   length
+```
+
+Type: Integer
+
+```
+   decimalPlaces
+```
+
+Type: Integer
+
+```
+   referenceTo
+```
+
+Type: String
+
+
+Apex Reference Guide Column Class
+
+```
+   referenceTargetField
+```
+
+Type: String
+
+Return Value
+
+Type: DataSource.Column
+
+##### get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces)
+
+Returns a new column with the eight specified `Column` property values.
+
+Signature
+
+```
+   public static DataSource.Column get(String name, String label, String description,
+
+   Boolean isSortable, Boolean isFilterable, DataSource.DataType type, Integer length,
+
+   Integer decimalPlaces)
+
+```
+
+Parameters
+
+See Column Properties on page 2720 for information about each parameter.
+
+```
+   name
+```
+
+Type: String
+
+```
+   label
+```
+
+Type: String
+
+```
+   description
+```
+
+Type: String
+
+```
+   isSortable
+```
+
+Type: Boolean
+
+```
+   isFilterable
+```
+
+Type: Boolean
+
+```
+   type
+```
+
+Type: DataSource.DataType
+
+```
+   length
+```
+
+Type: Integer
+
+```
+   decimalPlaces
+```
+
+Type: Integer
+
+Return Value
+
+Type: DataSource.Column
+
+##### get(name, label, description, isSortable, isFilterable, type, length)
+
+Returns a new column with the seven specified `Column` property values.
+
+
+Apex Reference Guide Column Class
+
+Signature
+
+```
+   public static DataSource.Column get(String name, String label, String description,
+
+   Boolean isSortable, Boolean isFilterable, DataSource.DataType type, Integer length)
+
+```
+
+Parameters
+
+See Column Properties on page 2720 for information about each parameter.
+
+```
+   name
+```
+
+Type: String
+
+```
+   label
+```
+
+Type: String
+
+```
+   description
+```
+
+Type: String
+
+```
+   isSortable
+```
+
+Type: Boolean
+
+```
+   isFilterable
+```
+
+Type: Boolean
+
+```
+   type
+```
+
+Type: DataSource.DataType
+
+```
+   length
+```
+
+Type: Integer
+
+Return Value
+
+Type: DataSource.Column
+
+##### indirectLookup(name, domain, targetField)
+
+Returns a new column of data type `INDIRECT_LOOKUP_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column indirectLookup(String name, String domain, String
+
+   targetField)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+```
+   domain
+```
+
+Type: String
+
+API name of the parent object in the indirect lookup relationship.
+
+```
+   targetField
+```
+
+Type: String
+
+
+Apex Reference Guide Column Class
+
+API name of the custom field on the parent object whose values are compared against this column’s values. Matching values identify
+related records in an indirect lookup relationship.
+
+Return Value
+
+Type: DataSource.Column
+
+The returned column has these property values.
+
+**Property** **Value**
+
+name _`name`_
+
+label _`name`_
+
+description _`name`_
+
+isSortable true
+
+isFilterable true
+
+type DataSource.DataType.INDIRECT_LOOKUP_TYPE
+
+length 255
+
+decimalPlaces 0
+
+referenceTo _`domain`_
+
+referenceTargetField _`targetField`_
+
+##### integer(name, length)
+
+Returns a new numeric column with no decimal places using the specified name and length.
+
+Signature
+
+```
+   public static DataSource.Column integer(String name, Integer length)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+The column name.
+
+```
+   length
+```
+
+Type: Integer
+
+The column length.
+
+Return Value
+
+Type: DataSource.Column
+
+
+Apex Reference Guide Column Class
+
+##### lookup(name, domain)
+
+Returns a new column of data type `LOOKUP_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column lookup(String name, String domain)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+```
+   domain
+```
+
+Type: String
+
+API name of the parent object in the lookup relationship.
+
+Return Value
+
+Type: DataSource.Column
+
+The returned column has these property values.
+
+**Property** **Value**
+
+name _`name`_
+
+label _`name`_
+
+description _`name`_
+
+isSortable true
+
+isFilterable true
+
+type DataSource.DataType.LOOKUP_TYPE
+
+length 255
+
+decimalPlaces 0
+
+referenceTo _`domain`_
+
+referenceTargetField null
+
+##### **`multipicklist(name, picklistValues, isPicklistAlphabeticallySorted,`**
+
+```
+  isPicklistRestricted)
+
+```
+
+Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values. You can also
+specify whether the picklist is sorted alphabetically or if the picklist is restricted.
+
+
+Apex Reference Guide Column Class
+
+Signature
+
+```
+   public static DataSource.Column multipicklist(String name, List<Map<String,String>>
+
+   picklistValues, Boolean isPicklistAlphabeticallySorted, Boolean isPicklistRestricted)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+```
+   picklistValues
+```
+
+Type: List<Map<String,String>>
+
+```
+   isPicklistAlphabeticallySorted
+```
+
+Indicates whether the picklist is sorted alphabetically.
+
+```
+   isPicklistRestricted
+```
+
+Type: Boolean
+
+Indicates whether the picklist is restricted.
+
+Return Value
+
+Type: DataSource.Column
+
+##### **`multipicklist(name, picklistValues)`**
+
+Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values.
+
+Signature
+
+```
+   public static DataSource.Column multipicklist(String name, List<Map<String,String>>
+
+   picklistValues)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+```
+   picklistValues
+```
+
+Type: List<Map<String,String>>
+
+List of picklist values.
+
+Return Value
+
+Type: DataSource.Column
+
+##### number(name, length, decimalPlaces)
+
+Returns a new column of data type `NUMBER_TYPE` .
+
+
+Apex Reference Guide Column Class
+
+Signature
+
+```
+   public static DataSource.Column number(String name, Integer length, Integer
+
+   decimalPlaces)
+
+```
+
+Parameters
+
+See Column Properties on page 2720 for information about each parameter.
+
+```
+   name
+```
+
+Type: String
+
+```
+   length
+```
+
+Type: Integer
+
+```
+   decimalPlaces
+```
+
+Type: Integer
+
+Return Value
+
+Type: DataSource.Column
+
+The returned column has these property values.
+
+**Property** **Value**
+
+name _`name`_
+
+label _`name`_
+
+description _`name`_
+
+isSortable true
+
+isFilterable true
+
+type DataSource.DataType.NUMBER_TYPE
+
+length _`length`_
+
+decimalPlaces _`decimalPlaces`_
+
+##### **`percent(name, length, decimalPlaces)`**
+
+Returns a new column of data type `PERCENT_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column percent(String name, Integer length, Integer
+
+   decimalPlaces)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+
+Apex Reference Guide Column Class
+
+```
+   length
+```
+
+Type: Integer
+
+Number of characters allowed in the column.
+
+```
+   decimalPlaces
+```
+
+Type: Integer
+
+Number of decimal places to the right of the decimal point.
+
+Return Value
+
+Type: DataSource.Column
+
+##### **`phone(name)`**
+
+Returns a new column of data type `PHONE_TYPE` .
+
+Signature
+
+```
+   public static DataSource.Column phone(String name)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+Return Value
+
+Type: DataSource.Column
+
+##### **`picklist(name, picklistValues, isPicklistAlphabeticallySorted,`**
+
+```
+  isPicklistRestricted)
+
+```
+
+Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values. You can also specify whether the
+picklist is sorted alphabetically or if the picklist is restricted.
+
+Signature
+
+```
+   public static DataSource.Column picklist(String name, List<Map<String,String>>
+
+   picklistValues, Boolean isPicklistAlphabeticallySorted, Boolean isPicklistRestricted)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+```
+   picklistValues
+```
+
+Type: List<Map<String,String>>
+
+
+Apex Reference Guide Column Class
+
+List of picklist values.
+
+```
+   isPicklistAlphabeticallySorted
+```
+
+Indicates whether the picklist is sorted alphabetically.
+
+```
+   isPicklistRestricted
+```
+
+Type: Boolean
+
+Indicates whether the picklist is restricted.
+
+Return Value
+
+Type: DataSource.Column
+
+##### **`picklist(name, picklistValues)`**
+
+Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values.
+
+Signature
+
+```
+   public static DataSource.Column picklist(String name, List<Map<String,String>>
+
+   picklistValues)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+```
+   picklistValues
+```
+
+Type: List<Map<String,String>>
+
+List of picklist values.
+
+Return Value
+
+Type: DataSource.Column
+
+##### text(name, label, length)
+
+Returns a new column of data type `STRING_SHORT_TYPE` or `STRING_LONG_TYPE`, with the specified name, label, and length.
+
+Signature
+
+```
+   public static DataSource.Column text(String name, String label, Integer length)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name of the column.
+
+```
+   label
+```
+
+Type: String
+
+
+Apex Reference Guide Column Class
+
+User-friendly name for the column that appears in the Salesforce user interface.
+
+```
+   length
+```
+
+Type: Integer
+
+Number of characters allowed in the column.
+
+Return Value
+
+Type: DataSource.Column
+
+The returned column has these property values.
+
+**Property** **Value**
+
+name _`name`_
+
+label _`label`_
+
+description _`label`_
+
+isSortable true
+
+isFilterable true
+
+type
+
+DataSource.DataType.STRING_SHORT_TYPE if _`length`_ is 255 or less
+
+DataSource.DataType.STRING_LONG_TYPE if _`length`_ is greater than 255
+
+length _`length`_
+
+decimalPlaces 0
+
+##### text(name, length)
+
+Returns a new column of data type `STRING_SHORT_TYPE` or `STRING_LONG_TYPE`, with the specified name and length.
+
+Signature
+
+```
+public static DataSource.Column text(String name, Integer length)
+
+```
+
+Parameters
+
+```
+name
+```
+
+Type: String
+
+Name of the column.
+
+```
+length
+```
+
+Type: Integer
+
+Number of characters allowed in the column.
+
+Return Value
+
+Type: DataSource.Column
+
+The returned column has these property values.
+
+
+Apex Reference Guide Column Class
+
+**Property** **Value**
+
+name _`name`_
+
+label _`name`_
+
+description _`name`_
+
+isSortable true
+
+isFilterable true
+
+type
+
+DataSource.DataType.STRING_SHORT_TYPE if _`length`_ is 255 or
+less
+
+DataSource.DataType.STRING_LONG_TYPE if _`length`_ is greater
+than 255
+
+length _`length`_
+
+decimalPlaces 0
+
+##### text(name)
+
+Returns a new column of data type `STRING_SHORT_TYPE` with the specified name and the length of 255 characters.
+
+Signature
+
+```
+public static DataSource.Column text(String name)
+
+```
+
+Parameters
+
+```
+name
+```
+
+Type: String
+
+Name of the column.
+
+Return Value
+
+Type: DataSource.Column
+
+The returned column has these property values.
+
+**Property** **Value**
+
+name _`name`_
+
+label _`name`_
+
+description _`name`_
+
+isSortable true
+
+isFilterable true
+
+type DataSource.DataType.STRING_SHORT_TYPE
+
+
+Apex Reference Guide Column Class
+
+**Property** **Value**
+
+length 255
+
+decimalPlaces 0
+
+##### textarea(name)
+
+Returns a new column of data type `STRING_LONG_TYPE` with the specified name and the length of 32,000 characters.
+
+Signature
+
+```
    public static DataSource.Column textarea(String name)
 
 ```
@@ -4995,7 +6524,7 @@ the record data is interpreted by embedded AI processing.
    recordData
 ```
 
-Type: List<embeddedai.ApexMap on page 2797>
+Type: List<embeddedai.ApexMap on page 2811>
 
 The field-level data for the primary record as a collection of key–value pairs. Each ApexMap entry corresponds to a field name and
 its associated value used to construct the record context.
@@ -5004,7 +6533,7 @@ its associated value used to construct the record context.
    relatedRecordData
 ```
 
-Type: List<embeddedai.RecordApexRepresentation on page 2800>
+Type: List<embeddedai.RecordApexRepresentation on page 2814>
 
 Related records associated with the primary record. Each entry represents a related object and its data, enabling hierarchical or
 relational record context to be passed to embedded AI logic.
@@ -9156,7 +10685,7 @@ during conversations. .
 
 Namespace
 
-ise_bots_apex on page 2859
+ise_bots_apex on page 2873
 
 
 Apex Reference Guide DynamicMenuItem Class
@@ -9449,7 +10978,7 @@ Signature
 
 Property Value
 
-Type: List<industriesNlpSvc.NlpSummarizationResult on page 2864>
+Type: List<industriesNlpSvc.NlpSummarizationResult on page 2878>
 
 ##### **`errors`**
 
@@ -9574,14 +11103,20 @@ Clears the existing invocations from the action.
 clone()
 Creates a copy of the `Invocable.Action` .
 
-createCustomAction(type, namespace, name)
-Creates a wrapper for a custom invocable action in a specified package namespace.
+createCustomAction(type, namespace, name, version)
+Creates a wrapper for the specified version of a custom invocable action in a specified package namespace.
 
 
 Apex Reference Guide Action Class
 
+createCustomAction(type, namespace, name)
+Creates a wrapper for a custom invocable action in a specified package namespace.
+
 createCustomAction(type, name)
 Creates a wrapper for a custom invocable action.
+
+createStandardAction(type, version)
+Creates a wrapper for a standard invocable action.
 
 createStandardAction(type)
 Creates a wrapper for a standard invocable action.
@@ -9621,7 +11156,7 @@ Signature
 
 Return Value
 
-Type: Invocable.Action on page 2866
+Type: Invocable.Action on page 2880
 
 ##### **`clearInvocations()`**
 
@@ -9634,12 +11169,12 @@ Signature
 
 ```
 
-Return Value
-
-Type: Invocable.Action on page 2866
-
 
 Apex Reference Guide Action Class
+
+Return Value
+
+Type: Invocable.Action on page 2880
 
 ##### **`clone()`**
 
@@ -9656,9 +11191,63 @@ Return Value
 
 Type: Object
 
+##### **`createCustomAction(type, namespace, name, version)`**
+
+Creates a wrapper for the specified version of a custom invocable action in a specified package namespace.
+
+Signature
+
+```
+   public static Invocable.Action createCustomAction(String type, String namespace, String
+
+   name)
+
+```
+
+Parameters
+
+```
+   type
+```
+
+Type: String
+
+Type of invocable action.
+
+```
+   namespace
+```
+
+Type: String
+
+Namespace where the invocable action is located.
+
+```
+   name
+```
+
+Type: String
+
+Name for the custom invocable action.
+
+```
+   version
+```
+
+Type: String
+
+Version of the invocable action.
+
+Return Value
+
+Type: Invocable.Action
+
 ##### **`createCustomAction(type, namespace, name)`**
 
 Creates a wrapper for a custom invocable action in a specified package namespace.
+
+
+Apex Reference Guide Action Class
 
 Signature
 
@@ -9718,9 +11307,6 @@ Parameters
 
 Type: String
 
-
-Apex Reference Guide Action Class
-
 Type of invocable action.
 
 ```
@@ -9730,6 +11316,42 @@ Type of invocable action.
 Type: String
 
 Name for the custom invocable action.
+
+Return Value
+
+Type: Invocable.Action
+
+##### **`createStandardAction(type, version)`**
+
+Creates a wrapper for a standard invocable action.
+
+
+Apex Reference Guide Action Class
+
+Signature
+
+```
+   public static Invocable.Action createStandardAction(String type)
+
+```
+
+Parameters
+
+```
+   type
+```
+
+Type: String
+
+Type of invocable action.
+
+```
+   version
+```
+
+Type: String
+
+Version of the invocable action.
 
 Return Value
 
@@ -9777,6 +11399,9 @@ Type: String
 
 Name of the invocable action.
 
+
+Apex Reference Guide Action Class
+
 ##### **`getNamespace()`**
 
 Gets the namespace of a custom invocable action.
@@ -9787,9 +11412,6 @@ Signature
    public String getNamespace()
 
 ```
-
-
-Apex Reference Guide Action Class
 
 Return Value
 
@@ -9846,12 +11468,12 @@ Type: Boolean
 
 This method returns `true` if the invocable action is a standard invocable action.
 
+
+### Apex Reference Guide Action.Error Class
+
 ##### **`setInvocationParameter(parameterName, parameterValue)`**
 
 Sets a value for an invocable action parameter.
-
-
-### Apex Reference Guide Action.Error Class
 
 Signature
 
@@ -9882,7 +11504,7 @@ Value to set the invocable action parameter to.
 
 Return Value
 
-Type: Invocable.Action on page 2866
+Type: Invocable.Action on page 2880
 
 ##### **`setInvocations(invocations)`**
 
@@ -9901,13 +11523,13 @@ Parameters
    invocations
 ```
 
-Type: List on page 3874<Map on page 3894<String on page 4107,ANY>>
+Type: List on page 3891<Map on page 3911<String on page 4124,ANY>>
 
 List of invocations for the invocable action.
 
 Return Value
 
-Type: Invocable.Action on page 2866
+Type: Invocable.Action on page 2880
 
 ### Action.Error Class
 
@@ -9917,14 +11539,12 @@ Namespace
 
 Invocable
 
-IN THIS SECTION:
-
-Action.Error Methods
-
 
 Apex Reference Guide Action.Error Class
 
-#### Action.Error Methods These methods are for Action.Error .
+IN THIS SECTION:
+
+#### Action.Error Methods Action.Error Methods These methods are for Action.Error .
 
 IN THIS SECTION:
 
@@ -9981,12 +11601,14 @@ Signature
 
 ```
 
+
+### Apex Reference Guide Action.Result Class
+
 Return Value
 
 Type: String
 
-
-### Apex Reference Guide Action.Result Class Action.Result Class
+### Action.Result Class
 
 Contains methods to retrieve results from invocable actions called from Apex code.
 
@@ -10054,7 +11676,7 @@ Signature
 
 Return Value
 
-Type: Invocable.Action on page 2866
+Type: Invocable.Action on page 2880
 
 ##### **`getErrors()`**
 
@@ -10063,13 +11685,13 @@ Gets a list of errors that were returned by an invocable action.
 Signature
 
 ```
-   public List on page 4107<Invocable.Action.Error on page 2871> getErrors()
+   public List on page 4124<Invocable.Action.Error on page 2886> getErrors()
 
 ```
 
 Return Value
 
-Type: List on page 4107<Invocable.Action.Error on page 2871>
+Type: List on page 4124<Invocable.Action.Error on page 2886>
 
 ##### **`getInvocationParameters()`**
 
@@ -10085,7 +11707,7 @@ Signature
 
 Return Value
 
-Type: Map on page 3894<String on page 4107,Object>
+Type: Map on page 3911<String on page 4124,Object>
 
 ##### **`getOutputParameters()`**
 
@@ -10101,7 +11723,7 @@ Signature
 
 Return Value
 
-Type: Map on page 3894<String on page 4107,Object>
+Type: Map on page 3911<String on page 4124,Object>
 
 
 ## Apex Reference Guide InvoiceWriteOff Namespace
@@ -14432,6 +16054,10 @@ Messaging
 
 Usage
 
+Important: Sending an email by using Apex requires domain-level and user-level email verification. System-generated emails
+[also require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+
 Use these enum values with the renderStoredEmailTemplate(templateId, whoId, whatId, attachmentRetrievalOption) method.
 
 Enum Values
@@ -14461,17 +16087,21 @@ the object ID in the `fileAttachments` property of
 
 Contains base email methods common to both single and mass email.
 
+
+Apex Reference Guide Email Class (Base Email Methods)
+
 Namespace
 
 Messaging
 
-
-Apex Reference Guide Email Class (Base Email Methods)
-
 Usage
 
-Note: If templates are not being used, all email content must be in plain text, HTML, or both.Visualforce email templates cannot
-be used for mass email.
+Important: Sending an email by using Apex requires domain-level and user-level email verification. System-generated emails
+[also require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+
+If templates are not being used, all email content must be in plain text, HTML, or both.Visualforce email templates cannot be used for
+mass email.
 
 #### Email Methods The following are methods for Email . All are instance methods.
 
@@ -14514,6 +16144,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide Email Class (Base Email Methods)
+
 Parameters
 
 ```
@@ -14525,9 +16158,6 @@ Type: Boolean
 Return Value
 
 Type: Void
-
-
-Apex Reference Guide Email Class (Base Email Methods)
 
 Usage
 
@@ -14582,6 +16212,9 @@ Return Value
 
 Type: Void
 
+
+Apex Reference Guide Email Class (Base Email Methods)
+
 Usage
 
 Note: `setHtmlBody` and `setPlainTextBody` apply only to single email methods, not to mass email methods.
@@ -14591,9 +16224,6 @@ Note: `setHtmlBody` and `setPlainTextBody` apply only to single email methods, n
 Optional. The default value is `true`, meaning the email is saved as an activity. This argument only applies if the recipient list is based
 on `targetObjectId` or `targetObjectIds` . If HTML email tracking is enabled for the organization, you will be able to track
 open rates.
-
-
-Apex Reference Guide Email Class (Base Email Methods)
 
 Signature
 
@@ -14650,6 +16280,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide EmailFileAttachment Class
+
 Parameters
 
 ```
@@ -14662,8 +16295,7 @@ Return Value
 
 Type: Void
 
-
-### Apex Reference Guide EmailFileAttachment Class EmailFileAttachment Class
+### EmailFileAttachment Class
 
 EmailFileAttachment is used in SingleEmailMessage to specify attachments passed in as part of the request, as opposed to existing
 documents in Salesforce.
@@ -14671,6 +16303,12 @@ documents in Salesforce.
 Namespace
 
 Messaging
+
+Usage
+
+Important: Sending an email by using Apex requires domain-level and user-level email verification. System-generated emails
+[also require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
 
 IN THIS SECTION:
 
@@ -14699,15 +16337,21 @@ Signature
 
 ```
 
+
+Apex Reference Guide EmailFileAttachment Class
+
 IN THIS SECTION:
 
-body
+##### body
+
 Gets or sets the attachment itself.
 
-contenttype
+##### contenttype
+
 Gets or sets the attachment's Content-Type.
 
-filename
+##### filename
+
 Gets or sets the name of the file to attach.
 
 id
@@ -14715,9 +16359,6 @@ Read-Only. Gets the attachment ID.
 
 inline
 Specifies a Content-Disposition of inline ( `true` ) or attachment ( `false` ).
-
-
-Apex Reference Guide EmailFileAttachment Class
 
 ##### body
 
@@ -14764,6 +16405,9 @@ Property Value
 
 Type: String
 
+
+### Apex Reference Guide InboundEmail Class
+
 ##### id
 
 Read-Only. Gets the attachment ID.
@@ -14782,9 +16426,6 @@ Type: Id
 ##### inline
 
 Specifies a Content-Disposition of inline ( `true` ) or attachment ( `false` ).
-
-
-### Apex Reference Guide InboundEmail Class
 
 Signature
 
@@ -14807,7 +16448,11 @@ Messaging
 
 IN THIS SECTION:
 
-#### InboundEmail Constructors InboundEmail Properties InboundEmail Constructors
+#### InboundEmail Constructors
+
+InboundEmail Properties
+
+#### InboundEmail Constructors
 
 ### The following are constructors for InboundEmail .
 
@@ -14821,14 +16466,15 @@ Creates a new instance of the `Messaging.InboundEmail` class.
 
 Creates a new instance of the `Messaging.InboundEmail` class.
 
+
+Apex Reference Guide InboundEmail Class
+
 Signature
 
 ```
    public InboundEmail()
 
-#### InboundEmail Properties
-
-### The following are properties for InboundEmail .
+#### InboundEmail Properties The following are properties for InboundEmail .
 
 ```
 
@@ -14839,9 +16485,6 @@ A list of authentication results received with the email, if any.
 
 binaryAttachments
 A list of binary attachments received with the email, if any.
-
-
-Apex Reference Guide InboundEmail Class
 
 ccAddresses
 A list of carbon copy (CC) addresses, if any.
@@ -14884,6 +16527,9 @@ The email address that appears in the reply-to header.
 subject
 The subject line of the email, if any.
 
+
+Apex Reference Guide InboundEmail Class
+
 textAttachments
 A list of text attachments received with the email, if any.
 
@@ -14900,9 +16546,6 @@ Signature
    public InboundEmail.AuthenticationResult[] authenticationResults {get; set;}
 
 ```
-
-
-Apex Reference Guide InboundEmail Class
 
 Property Value
 
@@ -14946,6 +16589,9 @@ Property Value
 
 Type: String[]
 
+
+Apex Reference Guide InboundEmail Class
+
 ##### fromAddress
 
 The email address that appears in the From field.
@@ -14964,9 +16610,6 @@ Type: String
 ##### fromName
 
 The name that appears in the From field, if any.
-
-
-Apex Reference Guide InboundEmail Class
 
 Signature
 
@@ -15010,6 +16653,9 @@ The list of the RFC 2822 headers includes:
 
 The HTML version of the email, if specified by the sender.
 
+
+Apex Reference Guide InboundEmail Class
+
 Signature
 
 ```
@@ -15031,9 +16677,6 @@ Signature
    public Boolean htmlBodyIsTruncated {get; set;}
 
 ```
-
-
-Apex Reference Guide InboundEmail Class
 
 Property Value
 
@@ -15074,6 +16717,9 @@ Type: String
 
 The plain text version of the email, if specified by the sender.
 
+
+Apex Reference Guide InboundEmail Class
+
 Signature
 
 ```
@@ -15095,9 +16741,6 @@ Signature
    public Boolean plainTextBodyIsTruncated {get; set;}
 
 ```
-
-
-Apex Reference Guide InboundEmail Class
 
 Property Value
 
@@ -15138,6 +16781,9 @@ Usage
 
 If there is no reply-to header, this field is identical to the `fromAddress` field.
 
+
+### Apex Reference Guide InboundEmail.AuthenticationResult Class
+
 ##### subject
 
 The subject line of the email, if any.
@@ -15157,9 +16803,6 @@ Type: String
 
 A list of text attachments received with the email, if any.
 
-
-### Apex Reference Guide InboundEmail.AuthenticationResult Class
-
 Signature
 
 ```
@@ -15175,7 +16818,7 @@ Usage
 
 The text attachments can be any of the following:
 
-**•** Attachments with a Multipurpose Internet Mail Extension (MIME) type of `text`
+##### • Attachments with a Multipurpose Internet Mail Extension (MIME) type of text
 
 **•** Attachments with a MIME type of `application/octet-stream` and a file name that ends with either a `.vcf` or `.vcs`
 extension. These are saved as `text/x-vcard` and `text/calendar` MIME types, respectively.
@@ -15203,23 +16846,18 @@ Namespace
 
 Messaging
 
-IN THIS SECTION:
-
-#### InboundEmail.AuthenticationResult Constructors
-
-InboundEmail.AuthenticationResult Properties
-
-#### InboundEmail.AuthenticationResult Constructors
-
-### The following are constructors for InboundEmail.AuthenticationResult .
-
-IN THIS SECTION:
-
-InboundEmail.AuthenticationResult()
-Creates a new instance of the `Messaging.InboundEmail.AuthenticationResult` class.
-
 
 Apex Reference Guide InboundEmail.AuthenticationResult Class
+
+IN THIS SECTION:
+
+#### InboundEmail.AuthenticationResult Constructors InboundEmail.AuthenticationResult Properties InboundEmail.AuthenticationResult Constructors The following are constructors for InboundEmail.AuthenticationResult .
+
+IN THIS SECTION:
+
+##### InboundEmail.AuthenticationResult()
+
+Creates a new instance of the `Messaging.InboundEmail.AuthenticationResult` class.
 
 ##### InboundEmail.AuthenticationResult()
 
@@ -15230,9 +16868,7 @@ Signature
 ```
    public InboundEmail.AuthenticationResult()
 
-#### InboundEmail.AuthenticationResult Properties
-
-##### The following are properties for InboundEmail.AuthenticationResult .
+#### InboundEmail.AuthenticationResult Properties The following are properties for InboundEmail.AuthenticationResult .
 
 ```
 
@@ -15243,8 +16879,7 @@ IN THIS SECTION:
 Additional information in authentication result headers. Examples include: `name: smtp.mailfrom` and `value:`
 `example.com` .
 
-##### method
-
+method
 The authentication method used for the security check. Possible values include `dkim`, `dmarc`, or `spf` .
 
 result
@@ -15266,6 +16901,9 @@ Property Value
 
 Type: InboundEmail.AuthenticationResultField[]
 
+
+### Apex Reference Guide InboundEmail.AuthenticationResultField Class
+
 ##### **`method`**
 
 The authentication method used for the security check. Possible values include `dkim`, `dmarc`, or `spf` .
@@ -15280,9 +16918,6 @@ Signature
 Property Value
 
 Type: String
-
-
-### Apex Reference Guide InboundEmail.AuthenticationResultField Class
 
 ##### **`result`**
 
@@ -15310,7 +16945,11 @@ Messaging
 
 IN THIS SECTION:
 
-#### InboundEmail.AuthenticationResultField Constructors InboundEmail.AuthenticationResultField Properties InboundEmail.AuthenticationResultField Constructors
+#### InboundEmail.AuthenticationResultField Constructors
+
+InboundEmail.AuthenticationResultField Properties
+
+#### InboundEmail.AuthenticationResultField Constructors
 
 ### The following are constructors for InboundEmail.AuthenticationResultField .
 
@@ -15324,19 +16963,17 @@ Creates a new instance of the `Messaging.InboundEmail.AuthenticationResultField`
 
 Creates a new instance of the `Messaging.InboundEmail.AuthenticationResultField` class.
 
+
+### Apex Reference Guide InboundEmail.BinaryAttachment Class
+
 Signature
 
 ```
    public InboundEmail.AuthenticationResultField()
 
-#### InboundEmail.AuthenticationResultField Properties
-
-### The following are properties for InboundEmail.AuthenticationResultField .
+#### InboundEmail.AuthenticationResultField Properties The following are properties for InboundEmail.AuthenticationResultField .
 
 ```
-
-
-### Apex Reference Guide InboundEmail.BinaryAttachment Class
 
 IN THIS SECTION:
 
@@ -15386,20 +17023,16 @@ Namespace
 
 Messaging
 
+
+Apex Reference Guide InboundEmail.BinaryAttachment Class
+
 Usage
 
 Examples of binary attachments include image, audio, application, and video files.
 
 IN THIS SECTION:
 
-InboundEmail.BinaryAttachment Constructors
-
-InboundEmail.BinaryAttachment Properties
-
-
-Apex Reference Guide InboundEmail.BinaryAttachment Class
-
-#### InboundEmail.BinaryAttachment Constructors The following are constructors for InboundEmail.BinaryAttachment .
+#### InboundEmail.BinaryAttachment Constructors InboundEmail.BinaryAttachment Properties InboundEmail.BinaryAttachment Constructors The following are constructors for InboundEmail.BinaryAttachment .
 
 IN THIS SECTION:
 
@@ -15426,8 +17059,7 @@ IN THIS SECTION:
 
 The body of the attachment.
 
-##### fileName
-
+fileName
 The name of the attached file.
 
 headers
@@ -15440,6 +17072,9 @@ The primary and sub MIME-type.
 ##### body
 
 The body of the attachment.
+
+
+### Apex Reference Guide InboundEmail.TextAttachment Class
 
 Signature
 
@@ -15455,9 +17090,6 @@ Type: Blob
 ##### fileName
 
 The name of the attached file.
-
-
-### Apex Reference Guide InboundEmail.TextAttachment Class
 
 Signature
 
@@ -15505,6 +17137,9 @@ Type: String
 
 An InboundEmail object stores text attachments in an InboundEmail.TextAttachment object.
 
+
+Apex Reference Guide InboundEmail.TextAttachment Class
+
 Namespace
 
 Messaging
@@ -15517,9 +17152,6 @@ The text attachments can be any of the following:
 
 **•** Attachments with a MIME type of `application/octet-stream` and a file name that ends with either a `.vcf` or `.vcs`
 extension. These are saved as `text/x-vcard` and `text/calendar` MIME types, respectively.
-
-
-Apex Reference Guide InboundEmail.TextAttachment Class
 
 IN THIS SECTION:
 
@@ -15546,12 +17178,10 @@ Signature
 
 IN THIS SECTION:
 
-##### body
-
+body
 The body of the attachment.
 
-##### bodyIsTruncated
-
+bodyIsTruncated
 Indicates whether the attachment body text is truncated ( `true` ) or not ( `false` .)
 
 charset
@@ -15559,6 +17189,9 @@ The original character set of the body field. The body is re-encoded as UTF-8 as
 
 fileName
 The name of the attached file.
+
+
+Apex Reference Guide InboundEmail.TextAttachment Class
 
 headers
 Any header values associated with the attachment. Examples of header names include `Content-Type`,
@@ -15570,9 +17203,6 @@ The primary and sub MIME-type.
 ##### body
 
 The body of the attachment.
-
-
-Apex Reference Guide InboundEmail.TextAttachment Class
 
 Signature
 
@@ -15626,6 +17256,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide InboundEmailResult Class
+
 Property Value
 
 Type: String
@@ -15634,9 +17267,6 @@ Type: String
 
 Any header values associated with the attachment. Examples of header names include `Content-Type`,
 `Content-Transfer-Encoding`, and `Content-ID` .
-
-
-### Apex Reference Guide InboundEmailResult Class
 
 Signature
 
@@ -15678,13 +17308,15 @@ Messaging
 
 IN THIS SECTION:
 
-##### message
-
+message
 A message that Salesforce returns in the body of a reply email. This field can be populated with text irrespective of the value returned
 by the `Success` field.
 
 success
 A value that indicates whether the email was successfully processed.
+
+
+### Apex Reference Guide InboundEnvelope Class
 
 ##### message
 
@@ -15697,9 +17329,6 @@ Signature
    public String message {get; set;}
 
 ```
-
-
-### Apex Reference Guide InboundEnvelope Class
 
 Property Value
 
@@ -15739,12 +17368,14 @@ Messaging
 
 IN THIS SECTION:
 
-##### fromAddress
-
+fromAddress
 The name that appears in the `From` field of the envelope, if any.
 
 toAddress
 The name that appears in the `To` field of the envelope, if any.
+
+
+### Apex Reference Guide MassEmailMessage Class
 
 ##### fromAddress
 
@@ -15756,9 +17387,6 @@ Signature
    public String fromAddress {get; set;}
 
 ```
-
-
-### Apex Reference Guide MassEmailMessage Class
 
 Property Value
 
@@ -15789,12 +17417,16 @@ Messaging
 
 Usage
 
+Important: Sending an email by using Apex requires domain-level and user-level email verification. System-generated emails
+[also require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+
 MassEmailMessage extends Email and inherits all of its methods. All base email ( `Email` class) methods are also available to the
 ### MassEmailMessage objects.
 
 IN THIS SECTION:
 
-#### MassEmailMessage Constructors
+MassEmailMessage Constructors
 
 MassEmailMessage Methods
 
@@ -15802,9 +17434,10 @@ SEE ALSO:
 
 Email Class (Base Email Methods)
 
-#### MassEmailMessage Constructors
 
-### The following are constructors for MassEmailMessage .
+Apex Reference Guide MassEmailMessage Class
+
+#### MassEmailMessage Constructors The following are constructors for MassEmailMessage .
 
 IN THIS SECTION:
 
@@ -15815,9 +17448,6 @@ Creates a new instance of the `Messaging.MassEmailMessage` class.
 ##### MassEmailMessage()
 
 Creates a new instance of the `Messaging.MassEmailMessage` class.
-
-
-Apex Reference Guide MassEmailMessage Class
 
 Signature
 
@@ -15834,8 +17464,7 @@ IN THIS SECTION:
 
 The description of the email.
 
-##### setTargetObjectIds(targetObjectIds)
-
+setTargetObjectIds(targetObjectIds)
 A list of IDs of the contacts, leads, or users to which the email will be sent. The IDs you specify set the context and ensure that merge
 fields in the template contain the correct data. The objects must be of the same type (all contacts, all leads, or all users).
 
@@ -15866,6 +17495,9 @@ Return Value
 
 Type: Void
 
+
+Apex Reference Guide MassEmailMessage Class
+
 ##### setTargetObjectIds(targetObjectIds)
 
 A list of IDs of the contacts, leads, or users to which the email will be sent. The IDs you specify set the context and ensure that merge
@@ -15885,9 +17517,6 @@ Parameters
 ```
 
 Type: ID[]
-
-
-### Apex Reference Guide InboundEmail.Header Class
 
 Return Value
 
@@ -15935,6 +17564,9 @@ Return Value
 
 Type: Void
 
+
+### Apex Reference Guide InboundEmail.Header Class
+
 Usage
 
 The values must be one of the following types:
@@ -15954,14 +17586,13 @@ error.
 
 An InboundEmail object stores RFC 2822 email header information in an InboundEmail.Header object with the following properties.
 
-
-### Apex Reference Guide PushNotification Class
-
 Namespace
 
 Messaging
 
-#### InboundEmail.Header Properties The following are properties for InboundEmail.Header .
+#### InboundEmail.Header Properties
+
+### The following are properties for InboundEmail.Header .
 
 IN THIS SECTION:
 
@@ -15999,6 +17630,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide PushNotification Class
+
 Property Value
 
 Type: String
@@ -16014,9 +17648,6 @@ _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.
 _[Internet Engineering Task Force (IETF) Data Tracker](https://datatracker.ietf.org/doc/html/rfc2822#section-3.6)_ : RFC 2822 Section 3.6
 
 ### PushNotification Class PushNotification is used to configure push notifications and send them from an Apex trigger.
-
-
-Apex Reference Guide PushNotification Class
 
 Namespace
 
@@ -16075,6 +17706,12 @@ the user who last modified the case.
 
         String userId1 = cs.OwnerId;
 
+```
+
+
+Apex Reference Guide PushNotification Class
+
+```
         String userId2 = cs.LastModifiedById;
 
         // Adding recipient users to list
@@ -16099,12 +17736,11 @@ the user who last modified the case.
 
 IN THIS SECTION:
 
-PushNotification Constructors
+#### PushNotification Constructors
 
+PushNotification Methods
 
-Apex Reference Guide PushNotification Class
-
-#### PushNotification Methods PushNotification Constructors The following are the constructors for PushNotification .
+#### PushNotification Constructors The following are the constructors for PushNotification .
 
 IN THIS SECTION:
 
@@ -16140,6 +17776,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide PushNotification Class
+
 Parameters
 
 ```
@@ -16154,17 +17793,15 @@ The payload, expressed as a map of key-value pairs.
 
 IN THIS SECTION:
 
-send(application, users)
+##### send(application, users)
+
 Sends a push notification message to the specified users.
 
-setPayload(payload)
+##### setPayload(payload)
+
 Sets the payload of the push notification message.
 
-
-Apex Reference Guide PushNotification Class
-
-##### setTtl(ttl)
-
+setTtl(ttl)
 Reserved for future use.
 
 ##### send(application, users)
@@ -16211,6 +17848,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide PushNotificationPayload Class
+
 Parameters
 
 ```
@@ -16233,9 +17873,6 @@ See the Push Notification Example.
 ##### setTtl(ttl)
 
 Reserved for future use.
-
-
-### Apex Reference Guide PushNotificationPayload Class
 
 Signature
 
@@ -16273,9 +17910,12 @@ See the Push Notification Example.
 
 IN THIS SECTION:
 
-#### PushNotificationPayload Methods PushNotificationPayload Methods
+PushNotificationPayload Methods
 
-### The following are the methods for PushNotificationPayload . All are global static methods.
+
+Apex Reference Guide PushNotificationPayload Class
+
+#### PushNotificationPayload Methods The following are the methods for PushNotificationPayload . All are global static methods.
 
 IN THIS SECTION:
 
@@ -16289,9 +17929,6 @@ Helper method that creates a valid Apple payload from the specified arguments.
 ##### apple(alert, sound, badgeCount, userData)
 
 Helper method that creates a valid Apple payload from the specified arguments.
-
-
-Apex Reference Guide PushNotificationPayload Class
 
 Signature
 
@@ -16347,6 +17984,9 @@ Usage
 
 To generate a valid payload, you must provide a value for at least one of the following parameters: `alert`, `sound`, `badgeCount` .
 
+
+Apex Reference Guide PushNotificationPayload Class
+
 Example
 
 See the Push Notification Example.
@@ -16373,9 +18013,6 @@ Parameters
 ```
 
 Type: String
-
-
-### Apex Reference Guide CustomNotification Class
 
 Text of the alert message.
 
@@ -16437,6 +18074,9 @@ Type: Map<String, Object>
 Map of key-value pairs that contains any additional data used to provide context for the notification. For example, it can contain IDs
 of the records that caused the notification to be sent. The mobile client app can use these IDs to display these records.
 
+
+### Apex Reference Guide CustomNotification Class
+
 Return Value
 
 Type: Map<String, Object>
@@ -16453,12 +18093,9 @@ Namespace
 
 Messaging
 
-
-Apex Reference Guide CustomNotification Class
-
 Usage
 
-`CustomNotification` allows two approaches to creating and configuring a custom notification.
+### CustomNotification allows two approaches to creating and configuring a custom notification.
 
 **•** Create an instance with the default constructor, and then set notification attributes using the various setter methods.
 
@@ -16486,9 +18123,13 @@ to find a `targetID` in the notification payload. If you can’t update a client
 
 **Execution Context and Notification Permissions**
 
-By default Apex code executes in system mode, and doesn’t require user permissions to send notifications with `CustomNotification` .
+### By default Apex code executes in system mode, and doesn’t require user permissions to send notifications with CustomNotification .
+
 However, if your Apex code runs in a user context—for example, by executing anonymous Apex in the Developer Console—the Send
 Custom Notifications user permission is checked, and `send()` fails if you don’t have the required permission.
+
+
+Apex Reference Guide CustomNotification Class
 
 Example
 
@@ -16524,12 +18165,6 @@ flow, or wherever you want to send a custom notification from Apex.
 
         notification.setNotificationTypeId(notificationType.Id);
 
-```
-
-
-Apex Reference Guide CustomNotification Class
-
-```
         notification.setTargetId(targetId);
 
         // Actually send the notification
@@ -16561,7 +18196,7 @@ error handling to code you plan to use in production.
 
 IN THIS SECTION:
 
-#### CustomNotification Constructors
+CustomNotification Constructors
 
 CustomNotification Methods
 
@@ -16573,6 +18208,9 @@ _Actions Developer Guide_ [: Custom Notification Actions](https://developer.sale
 
 _[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customnotificationtype.htm)_ : CustomNotificationType
 
+
+Apex Reference Guide CustomNotification Class
+
 #### CustomNotification Constructors The following are constructors for CustomNotification .
 
 IN THIS SECTION:
@@ -16581,7 +18219,8 @@ IN THIS SECTION:
 
 Creates a new instance of the `Messaging.CustomNotification` class.
 
-CustomNotification(typeId, sender, title, body, targetId, targetPageRef)
+##### CustomNotification(typeId, sender, title, body, targetId, targetPageRef)
+
 Creates an instance of the `Messaging.CustomNotification` class using the specified parameters. When you use this
 constructor, you don’t need to call the various setter methods to define the custom notification attributes.
 
@@ -16594,12 +18233,9 @@ Signature
 ```
    public CustomNotification()
 
-```
-
-
-Apex Reference Guide CustomNotification Class
-
 ##### CustomNotification(typeId, sender, title, body, targetId, targetPageRef)
+
+```
 
 Creates an instance of the `Messaging.CustomNotification` class using the specified parameters. When you use this constructor,
 you don’t need to call the various setter methods to define the custom notification attributes.
@@ -16655,6 +18291,9 @@ Type: String
 
 The Record ID for the target record of the notification.
 
+
+Apex Reference Guide CustomNotification Class
+
 You must specify either a `targetID` or a `targetPageRef` . See Custom Notification Usage.
 
 ```
@@ -16673,12 +18312,7 @@ Usage
 A client may see a truncated notification title or body depending on the delivery channel or app, and how the Connect API notification
 parameters are configured. For more information on the `trimMessages` [query parameter, see Notification .](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_notifications_list.htm)
 
-#### CustomNotification Methods
-
-##### The following are methods for CustomNotification .
-
-
-Apex Reference Guide CustomNotification Class
+#### CustomNotification Methods The following are methods for CustomNotification .
 
 IN THIS SECTION:
 
@@ -16723,6 +18357,9 @@ Parameters
 
 Type: Set<String>
 
+
+Apex Reference Guide CustomNotification Class
+
 Required. A set of recipient IDs. Each recipient ID corresponds to a recipient or recipient type that the notification should be sent to.
 Valid recipient or recipient type values are:
 
@@ -16745,9 +18382,6 @@ Values can be combined in a set, up to the maximum of 500 values.
 Return Value
 
 Type: void
-
-
-Apex Reference Guide CustomNotification Class
 
 Example
 
@@ -16788,6 +18422,9 @@ See the Custom Notification Example.
 
 Sets the title of the custom notification.
 
+
+Apex Reference Guide CustomNotification Class
+
 Signature
 
 ```
@@ -16814,9 +18451,6 @@ Type: void
 Example
 
 See the Custom Notification Example.
-
-
-Apex Reference Guide CustomNotification Class
 
 ##### setBody(body)
 
@@ -16860,6 +18494,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide CustomNotification Class
+
 Parameters
 
 ```
@@ -16883,9 +18520,6 @@ See the Custom Notification Example.
 ##### setTargetId(targetId)
 
 Sets the target record of the custom notification.
-
-
-### Apex Reference Guide RenderEmailTemplateBodyResult Class
 
 Signature
 
@@ -16933,6 +18567,9 @@ Parameters
 
 Type: String
 
+
+### Apex Reference Guide RenderEmailTemplateBodyResult Class
+
 The `PageReference` for the navigation target of the notification.
 
 Either a `targetID` or a `targetPageRef` is required to send a custom notification. See Custom Notification Usage.
@@ -16953,12 +18590,11 @@ Namespace
 
 Messaging
 
-
-Apex Reference Guide RenderEmailTemplateBodyResult Class
-
 IN THIS SECTION:
 
-#### RenderEmailTemplateBodyResult Methods RenderEmailTemplateBodyResult Methods The following are methods for RenderEmailTemplateBodyResult .
+#### RenderEmailTemplateBodyResult Methods RenderEmailTemplateBodyResult Methods
+
+### The following are methods for RenderEmailTemplateBodyResult .
 
 IN THIS SECTION:
 
@@ -16966,12 +18602,10 @@ IN THIS SECTION:
 
 If an error occurred during the `renderEmailTemplate` method, a `RenderEmailTemplateError` object is returned.
 
-##### getMergedBody()
-
+getMergedBody()
 Returns the rendered body text with merge field references replaced with the corresponding record data.
 
-##### getSuccess()
-
+getSuccess()
 Indicates whether the operation was successful.
 
 ##### getErrors()
@@ -16988,6 +18622,9 @@ Signature
 Return Value
 
 Type: List<Messaging.RenderEmailTemplateError>
+
+
+### Apex Reference Guide RenderEmailTemplateError Class
 
 ##### getMergedBody()
 
@@ -17015,9 +18652,6 @@ Signature
 
 ```
 
-
-### Apex Reference Guide RenderEmailTemplateError Class
-
 Return Value
 
 Type: Boolean
@@ -17038,18 +18672,20 @@ IN THIS SECTION:
 
 IN THIS SECTION:
 
-##### getFieldName()
-
+getFieldName()
 Returns the name of the merge field in the error.
 
-##### getMessage()
-
+getMessage()
 Returns a message describing the error.
 
 getOffset()
 Returns the offset within the supplied body text where the error was discovered. If the offset cannot be determined, -1 is returned.
 
-getStatusCode()
+
+Apex Reference Guide RenderEmailTemplateError Class
+
+##### getStatusCode()
+
 Returns a Salesforce API status code.
 
 ##### getFieldName()
@@ -17070,9 +18706,6 @@ Type: String
 ##### getMessage()
 
 Returns a message describing the error.
-
-
-### Apex Reference Guide SendEmailError Class
 
 Signature
 
@@ -17115,7 +18748,8 @@ Return Value
 
 Type: System.StatusCode
 
-### SendEmailError Class
+
+### Apex Reference Guide SendEmailError Class SendEmailError Class
 
 Represents an error that the SendEmailResult object may contain.
 
@@ -17123,27 +18757,30 @@ Namespace
 
 Messaging
 
+Usage
+
+Important: Sending an email by using Apex requires domain-level and user-level email verification. System-generated emails
+[also require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+
 #### SendEmailError Methods
 
 ### The following are methods for SendEmailError . All are instance methods.
 
 IN THIS SECTION:
 
-getFields()
+##### getFields()
+
 A list of one or more field names. Identifies which fields in the object, if any, affected the error condition.
 
-getMessage()
+##### getMessage()
+
 The text of the error message.
 
-
-Apex Reference Guide SendEmailError Class
-
-##### getStatusCode()
-
+getStatusCode()
 Returns a code that characterizes the error.
 
-##### getTargetObjectId()
-
+getTargetObjectId()
 The ID of the target record for which the error occurred.
 
 ##### getFields()
@@ -17171,6 +18808,9 @@ Signature
    public String getMessage()
 
 ```
+
+
+### Apex Reference Guide SendEmailResult Class
 
 Return Value
 
@@ -17200,9 +18840,6 @@ your organization, see _Downloading Salesforce WSDLs and Client Authentication C
 
 The ID of the target record for which the error occurred.
 
-
-### Apex Reference Guide SendEmailResult Class
-
 Signature
 
 ```
@@ -17222,9 +18859,18 @@ Namespace
 
 Messaging
 
+Usage
+
+Important: Sending an email by using Apex requires domain-level and user-level email verification. System-generated emails
+[also require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+
 #### SendEmailResult Methods
 
 ### The following are methods for SendEmailResult . All are instance methods.
+
+
+### Apex Reference Guide SingleEmailMessage Class
 
 IN THIS SECTION:
 
@@ -17264,9 +18910,6 @@ Signature
 
 ```
 
-
-### Apex Reference Guide SingleEmailMessage Class
-
 Return Value
 
 Type: Boolean
@@ -17281,8 +18924,15 @@ Messaging
 
 Usage
 
+Important: Sending an email by using Apex requires domain-level and user-level email verification. System-generated emails
+[also require verification of the From email address. Email delivery fails if any of these verifications is incomplete. See Requirements](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+[to Send Email from Salesforce.](https://help.salesforce.com/s/articleView?id=xcloud.security_email_verification_requirements.htm&language=en_US&type=5)
+
+
+Apex Reference Guide SingleEmailMessage Class
+
 SingleEmailMessage extends Email and inherits all of its methods. All base email ( `Email` class) methods are also available to the
-### SingleEmailMessage objects. Emails sent via SingleEmailMessage count against the sending organization's daily single email
+#### SingleEmailMessage objects. Emails sent via SingleEmailMessage count against the sending organization's daily single email
 
 limit.
 
@@ -17293,17 +18943,13 @@ methods are documented. However, the `getTemplateName()` method doesn’t have a
 
 IN THIS SECTION:
 
-#### SingleEmailMessage Constructors
-
-SingleEmailMessage Methods
+#### SingleEmailMessage Constructors SingleEmailMessage Methods
 
 SEE ALSO:
 
 Email Class (Base Email Methods)
 
-#### SingleEmailMessage Constructors
-
-### The following are constructors for SingleEmailMessage .
+#### SingleEmailMessage Constructors The following are constructors for SingleEmailMessage .
 
 IN THIS SECTION:
 
@@ -17320,12 +18966,9 @@ Signature
 ```
    public SingleEmailMessage()
 
-```
-
-
-Apex Reference Guide SingleEmailMessage Class
-
 #### SingleEmailMessage Methods The following are methods for SingleEmailMessage . All are instance methods. All base email ( Email class) methods are also available to the SingleEmailMessage objects. These methods are described in Email Class (Base Email Methods).
+
+```
 
 IN THIS SECTION:
 
@@ -17334,6 +18977,9 @@ Optional. Returns a boolean value based on the value set by the `setOneClickPost
 
 getTemplateName()
 The name of the template used to create the email.
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 setBccAddresses(bccAddresses)
 Optional. A list of blind carbon copy (BCC) addresses or object IDs of the contacts, leads, and users you’re sending the email to. The
@@ -17378,9 +19024,6 @@ Optional. If you added recipients by ID instead of email address and the `Email 
 the behavior of the `sendEmail()` call. If you add recipients by their email addresses, the opt-out settings for those recipients
 aren’t checked and those recipients always receive the email.
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 setPlainTextBody(plainTextBody)
 Optional. The text version of the email, specified by the sender. Specify a value for `setTemplateId`, `setHtmlBody`, or
 `setPlainTextBody` . Or, you can define both `setHtmlBody` and `setPlainTextBody` .
@@ -17393,6 +19036,9 @@ field cannot be set if the `setSenderDisplayName` field is already set.
 setReferences(references)
 Optional. The References field of the outgoing email. Identifies an email thread. Contains the parent emails' References and message
 IDs, and possibly the In-Reply-To fields.
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 setSubject(subject)
 Optional. The email subject line. If you are using an email template, the subject line of the template overrides this value.
@@ -17435,9 +19081,6 @@ that merge fields in the template contain the correct data.
 
 Optional. Returns a boolean value based on the value set by the `setOneClickPost` method. Default is `false` .
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 Signature
 
 ```
@@ -17452,6 +19095,9 @@ Type: Boolean
 Return Value
 
 Type: Boolean
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 Usage
 
@@ -17500,9 +19146,6 @@ Parameters
 
 Type: String[]
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 Return Value
 
 Type: Void
@@ -17518,6 +19161,9 @@ All emails must have a recipient value in at least one of the following fields:
 **•** `bccAddresses`
 
 **•** `targetObjectId`
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 If the BCC compliance option is set at the organization level, the user cannot add BCC addresses on standard messages. The following
 error code is returned: `BCC_NOT_ALLOWED_IF_BCC_ COMPLIANCE_ENABLED` . Contact your Salesforce representative for
@@ -17564,9 +19210,6 @@ All emails must have a recipient value in at least one of the following fields:
 
 Optional. The character set for the email. If this value is null, the user's default value is used.
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 Signature
 
 ```
@@ -17585,6 +19228,9 @@ Type: String
 Return Value
 
 Type: Void
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 ##### setDocumentAttachments(documentIds)
 
@@ -17637,9 +19283,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 ##### setFileAttachments(fileNames)
 
 Optional. A list containing the file names of the binary and text files you want to attach to the email.
@@ -17658,6 +19301,9 @@ Parameters
 ```
 
 Type: Messaging.EmailFileAttachment[]
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 Return Value
 
@@ -17703,9 +19349,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 Parameters
 
 ```
@@ -17719,6 +19362,9 @@ Contains one or more parent email message IDs.
 Return Value
 
 Type: Void
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 ##### **`setOneClickPost(oneClickPost)`**
 
@@ -17775,12 +19421,6 @@ using the `Messaging.sendEmail` method.
 
    List<String> unsubscribeUrls = new List<String>();
 
-```
-
-
-Apex Reference Guide SingleEmailMessage Class
-
-```
    unsubscribeUrls.add('https://example.com/unsubscribe.html?opaque=123456789');
 
    // Assign the unsubscribe URLs to the email message
@@ -17793,6 +19433,12 @@ Apex Reference Guide SingleEmailMessage Class
 
    Messaging.SingleEmailMessage[] messages =
 
+```
+
+
+Apex Reference Guide SingleEmailMessage Class
+
+```
       new List<Messaging.SingleEmailMessage> {message};
 
    Messaging.SendEmailResult[] results = Messaging.sendEmail(messages);
@@ -17849,9 +19495,6 @@ Return Value
 
 Type: void
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 Example
 
 This example shows how to send an email with the opt-out setting enforced. Recipients are specified by their IDs. The `FILTER` option
@@ -17869,6 +19512,12 @@ which is equivalent to using the set methods.
 
    message.optOutPolicy = 'FILTER';
 
+```
+
+
+Apex Reference Guide SingleEmailMessage Class
+
+```
    message.subject = 'Opt Out Test Message';
 
    message.plainTextBody = 'This is the message body.';
@@ -17930,9 +19579,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 Parameters
 
 ```
@@ -17945,6 +19591,9 @@ Usage
 
 After you create an org-wide email address, you’re sent a confirmation email to verify it. Copy the Id from the URL and use
 the _`setOrgWideEmailAddressId(Id)`_ method on your instance of _`Messaging.SingleEmailMessage`_ .
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 To avoid hard-coding an ID, after creating your org-wide email address, you can query them.
 
@@ -18010,12 +19659,12 @@ Parameters
 
 Type: String
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 Return Value
 
 Type: Void
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 ##### setTargetObjectId(targetObjectId)
 
@@ -18078,14 +19727,14 @@ Return Value
 
 Type: Void
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 ##### setToAddresses(toAddresses)
 
 Optional. A list of email addresses or object IDs of the contacts, leads, and users you’re sending the email to. The maximum size for this
 field is 4,000 bytes. The maximum total of `toAddresses`, `ccAddresses`, and `bccAddresses` per email is 150. All recipients
 in these three fields count against the limit for email sent using Apex or the API.
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 Signature
 
@@ -18147,15 +19796,15 @@ Type: void
 Optional. If set to `true`, the `targetObjectId` (a contact, lead, or user) is the recipient of the email. If set to `false`, the
 `targetObjectId` is supplied as the `WhoId` field for template rendering but isn’t a recipient of the email. The default is `true` .
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 Signature
 
 ```
    public void setTreatTargetObjectAsRecipient(Boolean treatAsRecipient)
 
 ```
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 Parameters
 
@@ -18219,16 +19868,16 @@ for the unsubscribe action.
 
    message.toAddresses = new String[] { '003D000000QDexS' };
 
+   message.subject = 'Test Message';
+
+   message.plainTextBody = 'This is the message body.';
+
 ```
 
 
 Apex Reference Guide SingleEmailMessage Class
 
 ```
-   message.subject = 'Test Message';
-
-   message.plainTextBody = 'This is the message body.';
-
    // Create a list to hold unsubscribe URLs
 
    List<String> unsubscribeUrls = new List<String>();
@@ -18297,12 +19946,12 @@ Each provided URL can use different protocols to allow for technical capacities 
 
 ##### All setUnsubscribeUrls must have a value of one of these types:
 
-
-Apex Reference Guide SingleEmailMessage Class
-
 **•** `Mailto` : Allows recipients to send an unsubscribe request via email.
 
 **–** Example: `mailto:listrequest@example.com?subject=unsubscribe`
+
+
+Apex Reference Guide SingleEmailMessage Class
 
 **•** `HTTP` : Directs recipients to a web page where they can unsubscribe.
 
@@ -21251,7 +22900,7 @@ Signature
 
 Property Value
 
-Type: Metadata.FeedLayoutComponentType on page 3041
+Type: Metadata.FeedLayoutComponentType on page 3057
 
 ##### height
 
@@ -28189,7 +29838,7 @@ Signature
 
 Property Value
 
-Type: List<Schema.DescribeColorResult> on page 3357
+Type: List<Schema.DescribeColorResult> on page 3374
 
 ##### contextsobjecttype
 
@@ -28302,7 +29951,7 @@ Signature
 
 Property Value
 
-Type: List<Schema.DescribeIconResult on page 3381>
+Type: List<Schema.DescribeIconResult on page 3397>
 
 If no custom icon was associated with the quick action and the quick action creates a specific object, the icons will correspond to the
 ##### icons used for the created object. For example, if the quick action creates an Account, the icon array will contain the icons used for
@@ -28340,7 +29989,7 @@ Signature
 
 Property Value
 
-Type: QuickAction.DescribeLayoutSection on page 3141
+Type: QuickAction.DescribeLayoutSection on page 3157
 
 ##### lightningcomponentbundleid
 
@@ -30790,7 +32439,7 @@ Signature
 
 Return Value
 
-Type: List on page 3874<Reports.BucketFieldValue>
+Type: List on page 3891<Reports.BucketFieldValue>
 
 ##### setBucketType(value)
 
@@ -30983,7 +32632,7 @@ Parameters
    values
 ```
 
-Type: List on page 3874<Reports.BucketFieldValue>
+Type: List on page 3891<Reports.BucketFieldValue>
 
 Return Value
 
@@ -31056,7 +32705,7 @@ The user-facing name of the bucket.
    sourceDimensionValues
 ```
 
-Type: List on page 3874<String>
+Type: List on page 3891<String>
 
 A list of the values from the source field included in this bucket category (in buckets of type `PICKLIST` and buckets of type `TEXT` ).
 
@@ -34137,7 +35786,7 @@ Type: String
    filterType
 ```
 
-Type: ReportFilterType Enum on page 3244
+Type: ReportFilterType Enum on page 3260
 
 ##### **`ReportFilter(column, operator, value, filterType, entityName)`**
 
@@ -34176,7 +35825,7 @@ Type: String
    filterType
 ```
 
-Type: ReportFilterType Enum on page 3244
+Type: ReportFilterType Enum on page 3260
 
 
 Apex Reference Guide ReportFilter Class
@@ -34276,7 +35925,7 @@ Syntax
 
 Return Value
 
-Type: ReportFilterType Enum on page 3244
+Type: ReportFilterType Enum on page 3260
 
 ##### getOperator()
 
@@ -38169,7 +39818,7 @@ Type: String
 ### Reports Exceptions The Reports namespace contains exception classes.
 
 All exception classes support built-in methods for returning the error message and exception type. See Exception Class and Built-In
-Exceptions on page 3767.
+Exceptions on page 3784.
 
 ### The Reports namespace contains these exceptions:
 
@@ -38588,7 +40237,7 @@ Use this interface to handle authorization request responses.
 
 Namespace
 
-RichMessaging on page 3302
+RichMessaging on page 3318
 
 Usage
 
@@ -38634,13 +40283,13 @@ Parameters
    var1
 ```
 
-Type: RichMessaging.AuthRequestResponse on page 3309
+Type: RichMessaging.AuthRequestResponse on page 3325
 
 The authorization response.
 
 Return Value
 
-Type: RichMessaging.AuthRequestResult on page 3311
+Type: RichMessaging.AuthRequestResult on page 3327
 
 #### AuthRequestHandler Example Implementation
 
@@ -38917,7 +40566,7 @@ Parameters
    redirectPageReference
 ```
 
-Type: System.PageReference on page 3967
+Type: System.PageReference on page 3984
 
 The reference to the redirect page.
 
@@ -38926,7 +40575,7 @@ Apex Reference Guide AuthRequestResult Class
 
 ##### _`resultStatus`_
 
-Type: RichMessaging.AuthRequestResultStatus on page 3313
+Type: RichMessaging.AuthRequestResultStatus on page 3329
 
 The result status value.
 
@@ -38980,7 +40629,7 @@ Signature
 
 Property Value
 
-Type: System.PageReference on page 3967
+Type: System.PageReference on page 3984
 
 ##### **`resultStatus`**
 
@@ -38998,7 +40647,7 @@ Signature
 
 Property Value
 
-Type: RichMessaging.AuthRequestResultStatus on page 3313
+Type: RichMessaging.AuthRequestResultStatus on page 3329
 
 ### AuthRequestResultStatus Enum
 
@@ -39226,7 +40875,7 @@ Signature
 
 Property Value
 
-Type: List on page 3874<Boolean>
+Type: List on page 3891<Boolean>
 
 ##### **`dateTimeValue`**
 
@@ -39259,7 +40908,7 @@ Signature
 
 Property Value
 
-Type: List on page 3874<Datetime>
+Type: List on page 3891<Datetime>
 
 ##### **`dateValue`**
 
@@ -39289,7 +40938,7 @@ Signature
 
 Property Value
 
-Type: List on page 3874<Date>
+Type: List on page 3891<Date>
 
 ##### **`name`**
 
@@ -39337,7 +40986,7 @@ Signature
 
 Property Value
 
-Type: List on page 3874<Double>
+Type: List on page 3891<Double>
 
 ##### **`recordIdValue`**
 
@@ -39367,7 +41016,7 @@ Signature
 
 Property Value
 
-Type: List on page 3874<String>
+Type: List on page 3891<String>
 
 
 ### Apex Reference Guide PaymentItemStatus Enum
@@ -39400,7 +41049,7 @@ Signature
 
 Property Value
 
-Type: List on page 3874<String>
+Type: List on page 3891<String>
 
 ### PaymentItemStatus Enum
 
@@ -41563,7 +43212,23 @@ in the _Revenue Cloud Developer Guide_ .
 **•** [RulesApplicationErrorResponse Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/apex_class_RulesAppln_RulesApplicationErrorResponse.htm)
 
 
-## Apex Reference Guide Schema Namespace Schema Namespace The Schema namespace provides classes and methods for schema metadata information. The following are the classes in the Schema namespace.
+## Apex Reference Guide runtime_industries_insurance Namespace runtime_industries_insurance Namespace The runtime_industries_insurance namespace provides options classes for insurance operations, such as creating and
+
+updating insurance quotes, generating insurance clauses, and running insurance rating.
+
+## The runtime_industries_insurance namespace includes these classes.
+
+**•** [AddEligibleInsuranceClausesOptions](https://developer.salesforce.com/docs/atlas.en-us.260.0.insurance_developer_guide.meta/insurance_developer_guide/apex_class_runtime_industries_insurance_AddEligibleInsuranceClausesOptions.htm)
+
+**•** [CreateInsuranceQuoteOptions](https://developer.salesforce.com/docs/atlas.en-us.260.0.insurance_developer_guide.meta/insurance_developer_guide/apex_class_runtime_industries_insurance_CreateInsuranceQuoteOptions.htm)
+
+**•** [CreateInsuranceRatingOptions](https://developer.salesforce.com/docs/atlas.en-us.260.0.insurance_developer_guide.meta/insurance_developer_guide/apex_class_runtime_industries_insurance_CreateInsuranceRatingOptions.htm)
+
+**•** [GenerateInsuranceClausesOptions](https://developer.salesforce.com/docs/atlas.en-us.260.0.insurance_developer_guide.meta/insurance_developer_guide/apex_class_runtime_industries_insurance_GenerateInsuranceClauseOptions.htm)
+
+**•** [UpdateInsuranceQuoteOptions](https://developer.salesforce.com/docs/atlas.en-us.260.0.insurance_developer_guide.meta/insurance_developer_guide/apex_class_runtime_industries_insurance_UpdateInsuranceQuoteOptions.htm)
+
+## Schema Namespace The Schema namespace provides classes and methods for schema metadata information. The following are the classes in the Schema namespace.
 
 IN THIS SECTION:
 
@@ -41600,6 +43265,9 @@ Contains tab metadata information for a tab in a standard or custom app availabl
 DescribeTabSetResult Class
 Contains metadata information about a Salesforce Classic standard or custom app available in the Salesforce user interface.
 
+
+### Apex Reference Guide ChildRelationship Class
+
 DisplayType Enum
 A `Schema.DisplayType` enum value is returned by the field describe result's `getType` method.
 
@@ -41617,9 +43285,6 @@ Represents a picklist entry.
 
 RecordTypeInfo Class
 Contains methods for accessing record type information for an sObject with associated record types.
-
-
-### Apex Reference Guide ChildRelationship Class
 
 SOAPType Enum
 A `Schema.SOAPType` enum value is returned by the field describe result `getSoapType` method.
@@ -41658,15 +43323,21 @@ A ChildRelationship object is returned from the sObject describe result using th
 
 ```
 
+
+Apex Reference Guide ChildRelationship Class
+
 IN THIS SECTION:
 
-getChildSObject()
+##### getChildSObject()
+
 Returns the token of the child sObject on which there is a foreign key back to the parent sObject.
 
-getField()
+##### getField()
+
 Returns the token of the field that has a foreign key back to the parent sObject.
 
-getRelationshipName()
+##### getRelationshipName()
+
 Returns the name of the relationship.
 
 isCascadeDelete()
@@ -41677,9 +43348,6 @@ Reserved for future use.
 
 isRestrictedDelete()
 Returns `true` if the parent object can't be deleted because it is referenced by a child object, `false` otherwise.
-
-
-Apex Reference Guide ChildRelationship Class
 
 ##### getChildSObject()
 
@@ -41722,6 +43390,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide DataCategory Class
+
 Return Value
 
 Type: String
@@ -41744,9 +43415,6 @@ Type: Boolean
 ##### isDeprecatedAndHidden()
 
 Reserved for future use.
-
-
-### Apex Reference Guide DataCategory Class
 
 Signature
 
@@ -41782,13 +43450,14 @@ Namespace
 
 Schema
 
+
+Apex Reference Guide DataCategory Class
+
 Usage
 
 The `Schema.DataCategory` object is returned by the `getTopCategories` method.
 
-#### DataCategory Methods
-
-### The following are methods for DataCategory . All are instance methods.
+#### DataCategory Methods The following are methods for DataCategory . All are instance methods.
 
 IN THIS SECTION:
 
@@ -41796,18 +43465,17 @@ IN THIS SECTION:
 
 Returns a recursive object that contains the visible sub categories in the data category.
 
-getLabel()
+##### getLabel()
+
 Returns the label for the data category used in the Salesforce user interface.
 
-getName()
+##### getName()
+
 Returns the unique name used by the API to access to the data category.
 
 ##### getChildCategories()
 
 Returns a recursive object that contains the visible sub categories in the data category.
-
-
-### Apex Reference Guide DataCategoryGroupSobjectTypePair Class
 
 Signature
 
@@ -41846,6 +43514,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide DataCategoryGroupSobjectTypePair Class
+
 Return Value
 
 Type: String
@@ -41865,14 +43536,9 @@ the categories available to this object.
 
 IN THIS SECTION:
 
-DataCategoryGroupSobjectTypePair Constructors
+#### DataCategoryGroupSobjectTypePair Constructors DataCategoryGroupSobjectTypePair Methods DataCategoryGroupSobjectTypePair Constructors
 
-DataCategoryGroupSobjectTypePair Methods
-
-
-Apex Reference Guide DataCategoryGroupSobjectTypePair Class
-
-#### DataCategoryGroupSobjectTypePair Constructors The following are constructors for DataCategoryGroupSobjectTypePair .
+### The following are constructors for DataCategoryGroupSobjectTypePair .
 
 IN THIS SECTION:
 
@@ -41889,24 +43555,29 @@ Signature
 ```
    public DataCategoryGroupSobjectTypePair()
 
-#### DataCategoryGroupSobjectTypePair Methods The following are methods for DataCategoryGroupSobjectTypePair . All are instance methods.
+#### DataCategoryGroupSobjectTypePair Methods
+
+### The following are methods for DataCategoryGroupSobjectTypePair . All are instance methods.
 
 ```
 
 IN THIS SECTION:
 
-##### getDataCategoryGroupName()
-
+getDataCategoryGroupName()
 Returns the unique name used by the API to access the data category group.
 
-##### getSobject()
-
+getSobject()
 Returns the object name associated with the data category group.
 
-setDataCategoryGroupName(name)
+
+Apex Reference Guide DataCategoryGroupSobjectTypePair Class
+
+##### setDataCategoryGroupName(name)
+
 Specifies the unique name used by the API to access the data category group.
 
-setSobject(sObjectName)
+##### setSobject(sObjectName)
+
 Sets the sObject associated with the data category group.
 
 ##### getDataCategoryGroupName()
@@ -41927,9 +43598,6 @@ Type: String
 ##### getSobject()
 
 Returns the object name associated with the data category group.
-
-
-### Apex Reference Guide DescribeColorResult Class
 
 Signature
 
@@ -41966,6 +43634,9 @@ Type: Void
 
 Sets the sObject associated with the data category group.
 
+
+### Apex Reference Guide DescribeColorResult Class
+
 Signature
 
 ```
@@ -41994,9 +43665,6 @@ Type: Void
 ### DescribeColorResult Class
 
 Contains color metadata information for a tab.
-
-
-Apex Reference Guide DescribeColorResult Class
 
 Namespace
 
@@ -42042,6 +43710,12 @@ This sample shows how to get the color information in the Sales app for the firs
 
       }
 
+```
+
+
+Apex Reference Guide DescribeColorResult Class
+
+```
    }
 
    // Example debug statement output
@@ -42058,17 +43732,17 @@ This sample shows how to get the color information in the Sales app for the firs
 
 IN THIS SECTION:
 
-getColor()
+##### getColor()
+
 Returns the Web RGB color code, such as `00FF00` .
 
-getContext()
+##### getContext()
+
 Returns the color context. The context determines whether the color is the main color for the tab or not.
 
-getTheme()
+##### getTheme()
+
 Returns the color theme.
-
-
-Apex Reference Guide DescribeDataCategoryGroupResult Class
 
 ##### getColor()
 
@@ -42104,6 +43778,9 @@ Type: String
 
 Returns the color theme.
 
+
+Apex Reference Guide DescribeDataCategoryGroupResult Class
+
 Signature
 
 ```
@@ -42130,9 +43807,6 @@ Contains the list of the category groups associated with KnowledgeArticleVersion
 Namespace
 
 Schema
-
-
-Apex Reference Guide DescribeDataCategoryGroupResult Class
 
 Usage
 
@@ -42163,17 +43837,21 @@ The following is an example of how to instantiate a data category group describe
 
 IN THIS SECTION:
 
-##### getCategoryCount()
-
+getCategoryCount()
 Returns the number of visible data categories in the data category group.
 
 getDescription()
 Returns the description of the data category group.
 
-getLabel()
+
+Apex Reference Guide DescribeDataCategoryGroupResult Class
+
+##### getLabel()
+
 Returns the label for the data category group used in the Salesforce user interface.
 
-getName()
+##### getName()
+
 Returns the unique name used by the API to access to the data category group.
 
 getSobject()
@@ -42193,9 +43871,6 @@ Signature
 Return Value
 
 Type: Integer
-
-
-Apex Reference Guide DescribeDataCategoryGroupStructureResult Class
 
 ##### getDescription()
 
@@ -42238,6 +43913,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide DescribeDataCategoryGroupStructureResult Class
+
 Return Value
 
 Type: String
@@ -42260,9 +43938,6 @@ Type: String
 DescribeDataCategoryGroupStructureResult Class
 
 Contains the category groups and categories associated with KnowledgeArticleVersion and Question.
-
-
-Apex Reference Guide DescribeDataCategoryGroupStructureResult Class
 
 Namespace
 
@@ -42305,6 +43980,12 @@ The following is an example of how to instantiate a data category group structur
 
    pairs.add(pair2);
 
+```
+
+
+Apex Reference Guide DescribeDataCategoryGroupStructureResult Class
+
+```
    List<Schema.DescribeDataCategoryGroupStructureResult>results =
 
        Schema.describeDataCategoryGroupStructures(pairs, true);
@@ -42315,20 +43996,20 @@ The following is an example of how to instantiate a data category group structur
 
 IN THIS SECTION:
 
-getDescription()
+##### getDescription()
+
 Returns the description of the data category group.
 
-getLabel()
+##### getLabel()
+
 Returns the label for the data category group used in the Salesforce user interface.
 
-getName()
+##### getName()
+
 Returns the unique name used by the API to access to the data category group.
 
 getSobject()
 Returns the name of object associated with the data category group.
-
-
-Apex Reference Guide DescribeDataCategoryGroupStructureResult Class
 
 getTopCategories()
 Returns a `Schema.DataCategory` object, that contains the top categories visible depending on the user's data category group
@@ -42368,6 +44049,9 @@ Type: String
 
 Returns the unique name used by the API to access to the data category group.
 
+
+### Apex Reference Guide DescribeFieldResult Class
+
 Signature
 
 ```
@@ -42393,9 +44077,6 @@ Signature
 Return Value
 
 Type: String
-
-
-### Apex Reference Guide DescribeFieldResult Class
 
 ##### getTopCategories()
 
@@ -42430,6 +44111,10 @@ Usage
 ### Instances of field describe results on the same DescribeFieldResult aren’t guaranteed to be equal because the state and
 
 behavior of a describe object is determined by various factors including the API version used. To compare describe results, call the
+
+
+Apex Reference Guide DescribeFieldResult Class
+
 `getSObjectField()` method on the field describe results and use the equality operator ( `==` ) to compare the `SObjectField`
 values.
 
@@ -42440,9 +44125,7 @@ The following is an example of how to instantiate a field describe result object
 ```
    Schema.DescribeFieldResult dfr = Account.Description.getDescribe();
 
-#### DescribeFieldResult Methods
-
-### The following are methods for DescribeFieldResult . All are instance methods.
+#### DescribeFieldResult Methods The following are methods for DescribeFieldResult . All are instance methods.
 
 ```
 
@@ -42453,9 +44136,6 @@ For variable-length fields (including binary fields), returns the maximum size o
 
 getCalculatedFormula()
 Returns the formula specified for this field.
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 getController()
 Returns the token of the controlling field.
@@ -42492,6 +44172,9 @@ getPrecision()
 For fields of type Double, returns the maximum number of digits that can be stored, including all numbers to the left and to the
 right of the decimal point (but excluding the decimal point character).
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 getReferenceTargetField()
 Returns the name of the custom field on the parent standard or custom object whose values are matched against the values of the
 child external object's indirect lookup relationship field. The match is done to determine which records are related to each other.
@@ -42514,9 +44197,6 @@ Returns one of the SoapType enum values, depending on the type of field.
 
 getSObjectField()
 Returns the token for this field.
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 getSObjectType()
 Returns the Salesforce object type from which this field originates.
@@ -42554,6 +44234,9 @@ Returns `true` if the field receives a default value when created, `false` other
 isDependentPicklist()
 Returns `true` if the picklist is a dependent picklist, `false` otherwise.
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 isDeprecatedAndHidden()
 Reserved for future use.
 
@@ -42577,9 +44260,6 @@ isHtmlFormatted()
 Returns `true` if the field has been formatted for HTML and should be encoded for display in HTML, `false` otherwise. One example
 of a field that returns `true` for this method is a hyperlink custom formula field. Another example is a custom formula field that has
 an `IMAGE` text function.
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 isIdLookup()
 Returns `true` if the field can be used to specify a record in an `upsert` method, `false` otherwise.
@@ -42614,6 +44294,9 @@ Returns `true` if a query can sort on the field, `false` otherwise
 isUnique()
 Returns `true` if the value for the field must be unique, `false` otherwise
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 isUpdateable()
 Returns `true` if the field can be edited by the current user, or child records in a master-detail relationship field on a custom object
 can be reparented to different parent records; `false` otherwise.
@@ -42639,9 +44322,6 @@ Type: Integer
 ##### getCalculatedFormula()
 
 Returns the formula specified for this field.
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Signature
 
@@ -42680,6 +44360,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Return Value
 
 Type: Object
@@ -42709,9 +44392,6 @@ Signature
    public Integer getDigits()
 
 ```
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Return Value
 
@@ -42747,14 +44427,19 @@ Signature
 
 ```
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Return Value
 
 Type: String
 
 Usage
 
-##### Note: For the Type field on standard objects, getLabel returns a label different from the default label. It returns a label of the form Object Type, where Object is the standard object label. For example, for the Type field on Account, getLabel returns Account Type instead of the default label Type . If the Type label is renamed, getLabel returns the new label. You can
+Note: For the Type field on standard objects, `getLabel` returns a label different from the default label. It returns a label of the
+form _`Object`_ `Type`, where _Object_ is the standard object label. For example, for the Type field on Account, `getLabel` returns
 
+`Account Type` instead of the default label `Type` . If the Type label is renamed, `getLabel` returns the new label. You can
 check or change the labels of all standard object fields from Setup by entering _`Rename Tabs and Labels`_ in the `Quick`
 `Find box`, then selecting **Rename Tabs and Labels** .
 
@@ -42772,9 +44457,6 @@ Signature
 Return Value
 
 Type: Integer
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 ##### getLocalName() Returns the name of the field, similar to the getName method. However, if the field is part of the current namespace, the namespace
 
@@ -42806,6 +44488,9 @@ Return Value
 
 Type: String
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 ##### getPicklistValues()
 
 Returns a list of active PicklistEntry objects. A runtime error is returned if the field isn’t a picklist. Only active picklist values are returned.
@@ -42836,9 +44521,6 @@ Signature
 Return Value
 
 Type: Integer
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 ##### getReferenceTargetField()
 
@@ -42872,14 +44554,16 @@ Signature
 
 ```
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Return Value
 
 Type: List<Schema.sObjectType>
 
 Versioned Behavior Changes
 
-##### In API version 51.0 and later, the getReferenceTo() method returns referenced objects that aren’t accessible to the context user.
-
+In API version 51.0 and later, the `getReferenceTo()` method returns referenced objects that aren’t accessible to the context user.
 If the context user has access to an object’s field that references another object, irrespective of the context user’s access to the
 cross-referenced object, the method returns references. In API version 50.0 and earlier, if the context user doesn’t have access to the
 cross-referenced object, the method returns an empty list.
@@ -42898,9 +44582,6 @@ Signature
 Return Value
 
 Type: String
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Usage
 
@@ -42937,6 +44618,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Return Value
 
 Type: Integer
@@ -42959,9 +44643,6 @@ Type: Schema.SOAPType
 ##### getSObjectField()
 
 Returns the token for this field.
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Signature
 
@@ -43004,6 +44685,9 @@ Example
 
 Returns one of the DisplayType enum values, depending on the type of field.
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Signature
 
 ```
@@ -43029,9 +44713,6 @@ Signature
 Return Value
 
 Type: Boolean
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 ##### isAiPredictionField() (Beta)
 
@@ -43069,6 +44750,9 @@ Return Value
 
 Type: Boolean
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Usage
 
 Analogous to a SQL IDENTITY type, Auto Number fields are read-only, non-createable text fields with a maximum length of 30 characters.
@@ -43093,9 +44777,6 @@ Type: Boolean
 ##### isCascadeDelete()
 
 Returns `true` if the child object is deleted when the parent object is deleted, `false` otherwise.
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Signature
 
@@ -43134,6 +44815,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Return Value
 
 Type: Boolean
@@ -43163,9 +44847,6 @@ Signature
    public Boolean isDefaultedOnCreate()
 
 ```
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Return Value
 
@@ -43197,6 +44878,9 @@ Type: Boolean
 
 Reserved for future use.
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Signature
 
 ```
@@ -43226,9 +44910,6 @@ Type: Boolean
 ##### isExternalID()
 
 Returns `true` if the field is used as an external ID, `false` otherwise.
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Signature
 
@@ -43267,6 +44948,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Return Value
 
 Type: Boolean
@@ -43292,9 +44976,6 @@ Type: Boolean
 Returns `true` if the field has been formatted for HTML and should be encoded for display in HTML, `false` otherwise. One example
 of a field that returns `true` for this method is a hyperlink custom formula field. Another example is a custom formula field that has an
 `IMAGE` text function.
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Signature
 
@@ -43333,6 +45014,9 @@ Signature
 
 ```
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 Return Value
 
 Type: Boolean
@@ -43343,7 +45027,9 @@ This method is used to identify the name field for standard objects (such as `Ac
 Objects can only have one name field, except where the `FirstName` and `LastName` fields are used instead (such as on the Contact
 object).
 
-##### If a compound name is present, for example, the Name field on a person account, isNameField is set to true for that record. isNamePointing()
+If a compound name is present, for example, the `Name` field on a person account, `isNameField` is set to `true` for that record.
+
+##### isNamePointing()
 
 Returns `true` if the field can have multiple types of objects as parents. For example, a task can have both the `Contact/Lead ID`
 ( `WhoId` ) field and the `Opportunity/Account ID` ( `WhatId` ) field return `true` for this method. because either of those objects
@@ -43355,9 +45041,6 @@ Signature
    public Boolean isNamePointing()
 
 ```
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Return Value
 
@@ -43394,6 +45077,9 @@ Return Value
 
 Type: Boolean
 
+
+Apex Reference Guide DescribeFieldResult Class
+
 ##### isRestrictedDelete()
 
 Returns `true` if the parent object can't be deleted because it is referenced by a child object, `false` otherwise.
@@ -43419,9 +45105,6 @@ Signature
    public Boolean isRestrictedPicklist()
 
 ```
-
-
-Apex Reference Guide DescribeFieldResult Class
 
 Return Value
 
@@ -43458,6 +45141,9 @@ Signature
 
 ```
 
+
+### Apex Reference Guide DescribeIconResult Class
+
 Return Value
 
 Type: Boolean
@@ -43484,9 +45170,6 @@ be reparented to different parent records; `false` otherwise.
 
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
-
-
-### Apex Reference Guide DescribeIconResult Class
 
 Signature
 
@@ -43522,6 +45205,9 @@ Namespace
 
 Schema
 
+
+Apex Reference Guide DescribeIconResult Class
+
 Usage
 
 The `getIcons` method of the `Schema.DescribeTabResult` class returns a list of `Schema.DescribeIconResult`
@@ -43556,12 +45242,6 @@ This sample shows how to get the icon information in the Sales app for the first
 
         System.debug('Height: ' + iconDesc[0].getHeight());
 
-```
-
-
-Apex Reference Guide DescribeIconResult Class
-
-```
         System.debug('Width: ' + iconDesc[0].getWidth());
 
       }
@@ -43580,12 +45260,10 @@ Apex Reference Guide DescribeIconResult Class
 
 IN THIS SECTION:
 
-##### getContentType()
-
+getContentType()
 Returns the tab icon’s content type, such as `image/png` .
 
-##### getHeight()
-
+getHeight()
 Returns the tab icon’s height in pixels.
 
 getTheme()
@@ -43596,6 +45274,9 @@ Returns the tab’s icon fully qualified URL.
 
 getWidth()
 Returns the tab’s icon width in pixels.
+
+
+Apex Reference Guide DescribeIconResult Class
 
 ##### getContentType()
 
@@ -43626,9 +45307,6 @@ Signature
 Return Value
 
 Type: Integer
-
-
-Apex Reference Guide DescribeIconResult Class
 
 Usage
 
@@ -43661,6 +45339,9 @@ Possible theme values include `theme3`, `theme4`, and `custom` .
 
 Returns the tab’s icon fully qualified URL.
 
+
+### Apex Reference Guide DescribeSObjectResult Class
+
 Signature
 
 ```
@@ -43691,8 +45372,7 @@ Usage
 
 Note: If the icon content type is SVG, the icon won’t have a size and its width is zero.
 
-
-### Apex Reference Guide DescribeSObjectResult Class DescribeSObjectResult Class
+### DescribeSObjectResult Class
 
 Contains methods for describing SObjects. None of the methods take an argument.
 
@@ -43715,6 +45395,9 @@ values.
 ##### **`accessible`**
 
 Indicates whether the current user has access to the SObject.
+
+
+Apex Reference Guide DescribeSObjectResult Class
 
 Signature
 
@@ -43753,9 +45436,6 @@ Signature
 
 ```
 
-
-Apex Reference Guide DescribeSObjectResult Class
-
 Property Value
 
 Type: String
@@ -43773,7 +45453,7 @@ Signature
 
 Property Value
 
-Type: List<Schema.ChildRelationship on page 3352>
+Type: List<Schema.ChildRelationship on page 3368>
 
 ##### **`createable`**
 
@@ -43785,6 +45465,9 @@ Signature
    public Boolean createable {get; set;}
 
 ```
+
+
+Apex Reference Guide DescribeSObjectResult Class
 
 Property Value
 
@@ -43820,9 +45503,6 @@ Property Value
 
 Type: Boolean
 
-
-Apex Reference Guide DescribeSObjectResult Class
-
 ##### **`datatranslationenabled`**
 
 Indicates whether data translation is enabled for the SObject. This property is available in API version 49.0 and later.
@@ -43852,6 +45532,9 @@ Signature
 Property Value
 
 Type: String
+
+
+Apex Reference Guide DescribeSObjectResult Class
 
 ##### **`deletable`**
 
@@ -43887,9 +45570,6 @@ Type: Boolean
 
 Indicates whether Chatter feeds are enabled for the SObject.
 
-
-Apex Reference Guide DescribeSObjectResult Class
-
 Signature
 
 ```
@@ -43918,9 +45598,12 @@ Type: Schema.SObjectTypeFields
 
 ##### Follow fields with the getMap method.
 
+
+Apex Reference Guide DescribeSObjectResult Class
+
 Example
 
-##### This sample code shows how to use fields . To get a custom field, specify the custom field name.
+This sample code shows how to use `fields` . To get a custom field, specify the custom field name.
 
 ```
    Schema.DescribeFieldResult dfr = Schema.SObjectType.Account.fields.Name;
@@ -43957,12 +45640,9 @@ Example
 
      d.fieldSets.getMap();
 
-```
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
 ##### **`hassubtypes`**
+
+```
 
 Reserved for future use.
 
@@ -43991,6 +45671,9 @@ Signature
 Property Value
 
 Type: String
+
+
+Apex Reference Guide DescribeSObjectResult Class
 
 ##### **`implementsinterfaces`**
 
@@ -44026,9 +45709,6 @@ Type: Boolean
 
 The three-character prefix code in the SObject ID.
 
-
-Apex Reference Guide DescribeSObjectResult Class
-
 Signature
 
 ```
@@ -44055,6 +45735,9 @@ Signature
 Property Value
 
 Type: String
+
+
+Apex Reference Guide DescribeSObjectResult Class
 
 ##### **`labelplural`**
 
@@ -44091,9 +45774,6 @@ Type: String
 Indicates whether the SObject can be merged with other objects of its type by the current user. This is set to `true` for leads, contacts,
 and accounts.
 
-
-Apex Reference Guide DescribeSObjectResult Class
-
 Signature
 
 ```
@@ -44115,1400 +45795,4 @@ Signature
    public Boolean mruenabled {get; set;}
 
 ```
-
-Property Value
-
-Type: Boolean
-
-##### **`name`**
-
-The name field of the SObject.
-
-Signature
-
-```
-   public String name {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`queryable`**
-
-Indicates whether the SObject can be queried by the current user.
-
-Signature
-
-```
-   public Boolean queryable {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### **`recordtypeinfos`**
-
-A list of the record types supported by the SObject.
-
-Signature
-
-```
-   public List<Schema.RecordTypeInfo> recordtypeinfos {get; set;}
-
-```
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-Property Value
-
-Type: List<Schema.RecordTypeInfo>
-
-##### **`recordtypeinfosbydevelopername`**
-
-A map that matches developer names to their associated record type.
-
-Signature
-
-```
-   public Map<String,Schema.RecordTypeInfo> recordtypeinfosbydevelopername {get; set;}
-
-```
-
-Property Value
-
-Type: Map<String, Schema.RecordTypeInfo>
-
-##### **`recordtypeinfosbyid`**
-
-A map that matches record IDs to their associated record types.
-
-Signature
-
-```
-   public Map<Id,Schema.RecordTypeInfo> recordtypeinfosbyid {get; set;}
-
-```
-
-Property Value
-
-Type: Map<ID, Schema.RecordTypeInfo>
-
-##### **`recordtypeinfosbyname`**
-
-A map that matches record labels to their associated record type.
-
-Signature
-
-```
-   public Map<String,Schema.RecordTypeInfo> recordtypeinfosbyname {get; set;}
-
-```
-
-Property Value
-
-Type: Map<String, Schema.RecordTypeInfo>
-
-##### **`searchable`**
-
-Indicates whether the SObject can be searched by the current user.
-
-Signature
-
-```
-   public Boolean searchable {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-##### **`sobjectdescribeoption`**
-
-The effective describe option used by the system for the SObject.
-
-Signature
-
-```
-   public Schema.SObjectDescribeOptions sobjectdescribeoption {get; set;}
-
-```
-
-Property Value
-
-Type: SObjectDescribeOptions Enum
-
-##### **`sobjecttype`**
-
-The Schema.SObjectType object for the SObject.
-
-Signature
-
-```
-   public Schema.SObjectType sobjecttype {get; set;}
-
-```
-
-Property Value
-
-Type: Schema.SObjectType
-
-##### **`undeletable`**
-
-Indicates whether the SObject can be undeleted by the current user.
-
-Signature
-
-```
-   public Boolean undeletable {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### **`updateable`**
-
-Indicates whether the SObject can be updated by the current user.
-
-Signature
-
-```
-   public Boolean updateable {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-#### DescribeSObjectResult Methods The following are methods for DescribeSObjectResult . All are instance methods.
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-IN THIS SECTION:
-
-equals(obj)
-Compares the SObject to the specified object and returns true if both are equal. Otherwise, returns false.
-
-getAssociateEntityType()
-Returns additional metadata for an associated object of a specified parent but only if it's a specific associated object type. Used in
-combination with the `getAssociateParentEntity()` method to get the parent object. For example, invoking the method
-on AccountHistory returns the parent object as `Account` and the type of associated object as `History` .
-
-getAssociateParentEntity()
-Returns additional metadata for an associated object but only if it's associated to a specific parent object. Used in combination with
-the `getAssociateEntityType()` method to get the type of associated object. For example, invoking the method on
-AccountHistory returns the parent object as `Account` and the type of associated object as `History` .
-
-getChildRelationships()
-Returns a list of child relationships, which are the names of the sObjects that have a foreign key to the sObject being described.
-
-getDataTranslationEnabled()
-Returns true if data translation is enabled for the SObject. Otherwise, returns false.
-
-getDefaultImplementation()
-Reserved for future use.
-
-getFields()
-Returns the fields that make up the SObject being described.
-
-getFieldSets()
-Returns field sets, which is a grouping of the SObject fields.
-
-getHasSubtypes()
-Reserved for future use.
-
-getImplementedBy()
-Reserved for future use.
-
-getImplementsInterfaces()
-Reserved for future use.
-
-getIsInterface()
-Reserved for future use.
-
-getKeyPrefix()
-Returns the three-character prefix code for the object. Record IDs are prefixed with three-character codes that specify the type of
-the object (for example, accounts have a prefix of `001` and opportunities have a prefix of `006` ).
-
-getLabel()
-Returns the object's label, which may or may not match the object name.
-
-getLabelPlural()
-Returns the object's plural label, which may or may not match the object name.
-
-getLocalName()
-Returns the name of the object, similar to the `getName` method. However, if the object is part of the current namespace, the
-namespace portion of the name is omitted.
-
-getName()
-Returns the name of the object.
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-getRecordTypeInfos()
-Returns a list of the record types supported by this object. The current user is not required to have access to a record type to see it
-in this list.
-
-getRecordTypeInfosByDeveloperName()
-Returns a map that matches developer names to their associated record type. The current user is not required to have access to a
-record type to see it in this map.
-
-getRecordTypeInfosById()
-Returns a map that matches record IDs to their associated record types. The current user is not required to have access to a record
-type to see it in this map.
-
-getRecordTypeInfosByName()
-Returns a map that matches record labels to their associated record type. The current user is not required to have access to a record
-type to see it in this map.
-
-getSObjectDescribeOption()
-Returns the effective describe option used by the system for the SObject.
-
-getSobjectType()
-Returns the Schema.SObjectType object for the sObject. You can use this to create a similar sObject.
-
-getHasSubtypes()
-Reserved for future use.
-
-hashCode()
-Returns the hash code for the SObject.
-
-isAccessible()
-Returns `true` if the current user can see this object, `false` otherwise.
-
-isCreateable()
-Returns `true` if the object can be created by the current user, `false` otherwise.
-
-isCustom()
-Returns `true` if the object is a custom object, `false` if it is a standard object.
-
-isCustomSetting()
-Returns `true` if the object is a custom setting, `false` otherwise.
-
-isDeletable()
-Returns `true` if the object can be deleted by the current user, `false` otherwise.
-
-isDeprecatedAndHidden()
-Reserved for future use.
-
-isFeedEnabled()
-Returns `true` if Chatter feeds are enabled for the object, `false` otherwise. This method is only available for Apex classes and
-triggers saved using SalesforceAPI version 19.0 and later.
-
-isMergeable()
-Returns `true` if the object can be merged with other objects of its type by the current user, `false` otherwise. `true` is returned
-for leads, contacts, and accounts.
-
-isMruEnabled()
-Returns `true` if Most Recently Used (MRU) list functionality is enabled for the object, `false` otherwise.
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-isQueryable()
-Returns `true` if the object can be queried by the current user, `false` otherwise
-
-isSearchable()
-Returns `true` if the object can be searched by the current user, `false` otherwise.
-
-isUndeletable()
-Returns `true` if the object can be undeleted by the current user, `false` otherwise.
-
-isUpdateable()
-Returns `true` if the object can be updated by the current user, `false` otherwise.
-
-toString()
-Returns a string that represents the SObject.
-
-##### **`equals(obj)`**
-
-Compares the SObject to the specified object and returns true if both are equal. Otherwise, returns false.
-
-Signature
-
-```
-   public Boolean equals(Object obj)
-
-```
-
-Parameters
-
-```
-   obj
-```
-
-Type: Object
-
-The object with which to compare.
-
-Return Value
-
-Type: Boolean
-
-##### **`getAssociateEntityType()`**
-
-Returns additional metadata for an associated object of a specified parent but only if it's a specific associated object type. Used in
-combination with the `getAssociateParentEntity()` method to get the parent object. For example, invoking the method
-on AccountHistory returns the parent object as `Account` and the type of associated object as `History` .
-
-Signature
-
-```
-   public String associateentitytype {get; set;}
-
-```
-
-Return Value
-
-Type: String
-
-SEE ALSO:
-
-DescribeSObjectResult Properties
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-##### **`getAssociateParentEntity()`**
-
-Returns additional metadata for an associated object but only if it's associated to a specific parent object. Used in combination with the
-`getAssociateEntityType()` method to get the type of associated object. For example, invoking the method on AccountHistory
-returns the parent object as `Account` and the type of associated object as `History` .
-
-Signature
-
-```
-   public String getAssociateParentEntity()
-
-```
-
-Return Value
-
-Type: String
-
-SEE ALSO:
-
-DescribeSObjectResult Properties
-
-##### getChildRelationships()
-
-Returns a list of child relationships, which are the names of the sObjects that have a foreign key to the sObject being described.
-
-Signature
-
-```
-   public Schema.ChildRelationship getChildRelationships()
-
-```
-
-Return Value
-
-Type: List<Schema.ChildRelationship>
-
-Example
-
-For example, the Account object includes `Contacts` and `Opportunities` as child relationships.
-
-##### **`getDataTranslationEnabled()`**
-
-Returns true if data translation is enabled for the SObject. Otherwise, returns false.
-
-Signature
-
-```
-   public Boolean getDataTranslationEnabled()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### getDefaultImplementation()
-
-Reserved for future use.
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-Signature
-
-```
-   public String getDefaultImplementation()
-
-```
-
-Return Value
-
-Type: String
-
-##### **`getFields()`**
-
-Returns the fields that make up the SObject being described.
-
-Signature
-
-```
-   public Schema.SObjectTypeFields getFields()
-
-```
-
-Return Value
-
-Type: Schema.SObjectTypeFields
-
-The return value is a special data type. Call the `getMap()` method to get a map of Strings and SObjectFields.
-
-Usage
-
-When you describe SObjects and their fields from within an Apex class, custom fields of new field types are returned regardless of the
-API version that the class is saved in. If a field type, such as the geolocation field type, is available only in a recent API version, components
-of a geolocation field are returned even if the class is saved in an earlier API version.
-
-SEE ALSO:
-
-_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dynamic_field_tokens.htm)_ : Using Field Tokens
-
-_Apex Developer Guide_ [: Describing sObjects Using Schema Method](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dynamic_describeSObject.htm)
-
-_Apex Developer Guide_ [: Understanding Apex Describe Information](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dynamic_describe_objects_understanding.htm)
-
-##### **`getFieldSets()`**
-
-Returns field sets, which is a grouping of the SObject fields.
-
-Signature
-
-```
-   public Schema.SObjectTypeFieldSets getFieldSets()
-
-```
-
-Return Value
-
-Type: Schema.SObjectTypeFieldSets
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-The return value is a special data type. Call the `getMap()` method to get a map of Strings and SObjectFieldSets.
-
-SEE ALSO:
-
-_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dynamic_field_tokens.htm)_ : Using Field Tokens
-
-_Apex Developer Guide_ [: Describing sObjects Using Schema Method](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dynamic_describeSObject.htm)
-
-_Apex Developer Guide_ [: Understanding Apex Describe Information](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dynamic_describe_objects_understanding.htm)
-
-##### getHasSubtypes()
-
-Reserved for future use.
-
-To check if Person Accounts are enabled for the current org, use this code snippet:
-
-```
-   Schema.SObjectType.Account.fields.getMap().containsKey( 'isPersonAccount' );
-
-```
-
-Signature
-
-```
-   public Boolean getHasSubtypes()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### getImplementedBy()
-
-Reserved for future use.
-
-Signature
-
-```
-   public String getImplementedBy()
-
-```
-
-Return Value
-
-Type: String
-
-##### getImplementsInterfaces()
-
-Reserved for future use.
-
-Signature
-
-```
-   public String getImplementsInterfaces()
-
-```
-
-Return Value
-
-Type: String
-
-##### getIsInterface()
-
-Reserved for future use.
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-Signature
-
-```
-   public Boolean getIsInterface()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### getKeyPrefix()
-
-Returns the three-character prefix code for the object. Record IDs are prefixed with three-character codes that specify the type of the
-object (for example, accounts have a prefix of `001` and opportunities have a prefix of `006` ).
-
-Signature
-
-```
-   public String getKeyPrefix()
-
-```
-
-Return Value
-
-Type: String
-
-Usage
-
-The DescribeSobjectResult object returns a value for objects that have a stable prefix. For object types that do not have a stable or
-predictable prefix, this field is blank. Client applications that rely on these codes can use this way of determining object type to ensure
-forward compatibility.
-
-##### getLabel()
-
-Returns the object's label, which may or may not match the object name.
-
-Signature
-
-```
-   public String getLabel()
-
-```
-
-Return Value
-
-Type: String
-
-Usage
-
-The object's label might not always match the object name. For example, an organization in the medical industry might change the
-label for Account to Patient. This label is then used in the Salesforce user interface. See the Salesforce online help for more information.
-
-##### getLabelPlural()
-
-Returns the object's plural label, which may or may not match the object name.
-
-Signature
-
-```
-   public String getLabelPlural()
-
-```
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-Return Value
-
-Type: String
-
-Usage
-
-The object's plural label might not always match the object name. For example, an organization in the medical industry might change
-the plural label for Account to Patients. This label is then used in the Salesforce user interface. See the Salesforce online help for more
-information.
-
-##### getLocalName() Returns the name of the object, similar to the getName method. However, if the object is part of the current namespace, the namespace
-
-portion of the name is omitted.
-
-Signature
-
-```
-   public String getLocalName()
-
-```
-
-Return Value
-
-Type: String
-
-##### getName()
-
-Returns the name of the object.
-
-Signature
-
-```
-   public String getName()
-
-```
-
-Return Value
-
-Type: String
-
-##### getRecordTypeInfos()
-
-Returns a list of the record types supported by this object. The current user is not required to have access to a record type to see it in
-this list.
-
-Signature
-
-```
-   public List<Schema.RecordTypeInfo> getRecordTypeInfos()
-
-```
-
-Return Value
-
-Type: List<Schema.RecordTypeInfo>
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-##### getRecordTypeInfosByDeveloperName()
-
-Returns a map that matches developer names to their associated record type. The current user is not required to have access to a record
-type to see it in this map.
-
-Signature
-
-```
-   public Map<String, Schema.RecordTypeInfo> getRecordTypeInfosByDeveloperName()
-
-```
-
-Return Value
-
-Type: Map<String, Schema.RecordTypeInfo>
-
-##### getRecordTypeInfosById()
-
-Returns a map that matches record IDs to their associated record types. The current user is not required to have access to a record type
-to see it in this map.
-
-Signature
-
-```
-   public Schema.RecordTypeInfo getRecordTypeInfosById()
-
-```
-
-Return Value
-
-Type: Map<ID, Schema.RecordTypeInfo>
-
-##### getRecordTypeInfosByName()
-
-Returns a map that matches record labels to their associated record type. The current user is not required to have access to a record type
-to see it in this map.
-
-Signature
-
-```
-   public Schema.RecordTypeInfo getRecordTypeInfosByName()
-
-```
-
-Return Value
-
-Type: Map<String, Schema.RecordTypeInfo>
-
-##### getSObjectDescribeOption()
-
-Returns the effective describe option used by the system for the SObject.
-
-Signature
-
-```
-   public Schema.SObjectDescribeOptions getSObjectDescribeOption()
-
-```
-
-Return Value
-
-Type: Schema.SObjectDescribeOptions
-
-Valid values are:
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-**•** `SObjectDescribeOptions.FULL` : Indicates eager-load all elements of the describe, including child relationships, up-front
-at the time of method invocation.
-
-**•** `SObjectDescribeOptions.DEFERRED` : Indicates lazy-load child relationships. This means that all child relationships will
-not be loaded at the time of first invocation of the method.
-
-##### getSobjectType()
-
-Returns the Schema.SObjectType object for the sObject. You can use this to create a similar sObject.
-
-Signature
-
-```
-   public Schema.SObjectType getSobjectType()
-
-```
-
-Return Value
-
-Type: Schema.SObjectType
-
-##### getHasSubtypes()
-
-Reserved for future use.
-
-To check if Person Accounts are enabled for the current org, use this code snippet:
-
-```
-   Schema.SObjectType.Account.fields.getMap().containsKey( 'isPersonAccount' );
-
-```
-
-Signature
-
-```
-   public Boolean getHasSubtypes()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### **`hashCode()`**
-
-Returns the hash code for the SObject.
-
-Signature
-
-```
-   public Integer hashCode()
-
-```
-
-Return Value
-
-Type: Integer
-
-##### isAccessible()
-
-Returns `true` if the current user can see this object, `false` otherwise.
-
-Signature
-
-```
-   public Boolean isAccessible()
-
-```
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-Return Value
-
-Type: Boolean
-
-Versioned Behavior Changes
-
-In API version 54.0 and later, for custom settings and custom metadata type objects,
-`DescribeSObjectResult.isAccessible()` returns `false` if the user doesn’t have permissions to access the queried
-objects. In API version 53.0 and earlier, the method returns `true` even if the user doesn't have the required permissions.
-
-##### isCreateable()
-
-Returns `true` if the object can be created by the current user, `false` otherwise.
-
-Signature
-
-```
-   public Boolean isCreateable()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isCustom()
-
-Returns `true` if the object is a custom object, `false` if it is a standard object.
-
-Signature
-
-```
-   public Boolean isCustom()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isCustomSetting()
-
-Returns `true` if the object is a custom setting, `false` otherwise.
-
-Signature
-
-```
-   public Boolean isCustomSetting()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isDeletable()
-
-Returns `true` if the object can be deleted by the current user, `false` otherwise.
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-Signature
-
-```
-   public Boolean isDeletable()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isDeprecatedAndHidden()
-
-Reserved for future use.
-
-Signature
-
-```
-   public Boolean isDeprecatedAndHidden()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isFeedEnabled()
-
-Returns `true` if Chatter feeds are enabled for the object, `false` otherwise. This method is only available for Apex classes and triggers
-saved using SalesforceAPI version 19.0 and later.
-
-Signature
-
-```
-   public Boolean isFeedEnabled()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isMergeable()
-
-Returns `true` if the object can be merged with other objects of its type by the current user, `false` otherwise. `true` is returned for
-leads, contacts, and accounts.
-
-Signature
-
-```
-   public Boolean isMergeable()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isMruEnabled()
-
-Returns `true` if Most Recently Used (MRU) list functionality is enabled for the object, `false` otherwise.
-
-
-Apex Reference Guide DescribeSObjectResult Class
-
-Signature
-
-```
-   public Boolean isMruEnabled()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isQueryable()
-
-Returns `true` if the object can be queried by the current user, `false` otherwise
-
-Signature
-
-```
-   public Boolean isQueryable()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isSearchable()
-
-Returns `true` if the object can be searched by the current user, `false` otherwise.
-
-Signature
-
-```
-   public Boolean isSearchable()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isUndeletable()
-
-Returns `true` if the object can be undeleted by the current user, `false` otherwise.
-
-Signature
-
-```
-   public Boolean isUndeletable()
-
-```
-
-Return Value
-
-Type: Boolean
-
-##### isUpdateable()
-
-Returns `true` if the object can be updated by the current user, `false` otherwise.
-
-Signature
-
-```
-   public Boolean isUpdateable()
-
-```
-
-
-### Apex Reference Guide DescribeTabResult Class
-
-Return Value
-
-Type: Boolean
-
-##### **`toString()`**
-
-Returns a string that represents the SObject.
-
-Signature
-
-```
-   public String toString()
-
-```
-
-Return Value
-
-Type: String
-
-### DescribeTabResult Class
-
-Contains tab metadata information for a tab in a standard or custom app available in the Salesforce user interface.
-
-Namespace
-
-Schema
-
-Usage
-
-The `getTabs` method of the `Schema.DescribeTabSetResult` returns a list of `Schema.DescribeTabResult` objects
-that describe the tabs of one app.
-
-The methods in the `Schema.DescribeTabResult` class can be called using their property counterparts. For each method starting
-with `get`, you can omit the `get` prefix and the ending parentheses `()` to call the property counterpart. For example,
-`tabResultObj.label` is equivalent to `tabResultObj.getLabel()` . Similarly, for each method starting with `is`, omit
-the `is` prefix and the ending parentheses `()` . For example, `tabResultObj.isCustom` is equivalent to
-`tabResultObj.custom` .
-
-#### DescribeTabResult Methods
-
-### The following are methods for DescribeTabResult . All are instance methods.
-
-IN THIS SECTION:
-
-getColors()
-Returns a list of color metadata information for all colors associated with this tab. Each color is associated with a theme and context.
-
-getIconUrl()
-Returns the URL for the main 32 x 32-pixel icon for a tab. This icon corresponds to the current theme (theme3) and appears next to
-the heading at the top of most pages.
-
-getIcons()
-Returns a list of icon metadata information for all icons associated with this tab. Each icon is associated with a theme and context.
-
-
-Apex Reference Guide DescribeTabResult Class
-
-getLabel()
-Returns the display label of this tab.
-
-getMiniIconUrl()
-Returns the URL for the 16 x 16-pixel icon that represents a tab. This icon corresponds to the current theme (theme3) and appears
-in related lists and other locations.
-
-getSobjectName()
-Returns the name of the sObject that is primarily displayed on this tab (for tabs that display a particular SObject).
-
-getUrl()
-Returns a fully qualified URL for viewing this tab.
-
-isCustom()
-Returns `true` if this is a custom tab, or `false` if this is a standard tab.
-
-##### getColors()
-
-Returns a list of color metadata information for all colors associated with this tab. Each color is associated with a theme and context.
-
-Signature
-
-```
-   public List<Schema.DescribeColorResult> getColors()
-
-```
-
-Return Value
-
-Type: List<Schema.DescribeColorResult>
-
-##### getIconUrl()
-
-Returns the URL for the main 32 x 32-pixel icon for a tab. This icon corresponds to the current theme (theme3) and appears next to the
-heading at the top of most pages.
-
-Signature
-
-```
-   public String getIconUrl()
-
-```
-
-Return Value
-
-Type: String
-
-##### getIcons()
-
-Returns a list of icon metadata information for all icons associated with this tab. Each icon is associated with a theme and context.
-
-Signature
-
-```
-   public List<Schema.DescribeIconResult> getIcons()
-
-```
-
-Return Value
-
-Type: List<Schema.DescribeIconResult>
-
-
-Apex Reference Guide DescribeTabResult Class
-
-##### getLabel()
-
-Returns the display label of this tab.
-
-Signature
-
-```
-   public String getLabel()
-
-```
-
-Return Value
-
-Type: String
-
-##### getMiniIconUrl()
-
-Returns the URL for the 16 x 16-pixel icon that represents a tab. This icon corresponds to the current theme (theme3) and appears in
-related lists and other locations.
-
-Signature
-
-```
-   public String getMiniIconUrl()
-
-```
-
-Return Value
-
-Type: String
-
-##### getSobjectName()
-
-Returns the name of the sObject that is primarily displayed on this tab (for tabs that display a particular SObject).
-
-Signature
-
-```
-   public String getSobjectName()
-
-```
-
-Return Value
-
-Type: String
-
-##### getUrl()
-
-Returns a fully qualified URL for viewing this tab.
-
-Signature
-
-```
-   public String getUrl()
-
-```
-
-Return Value
-
-Type: String
-
-
-### Apex Reference Guide DescribeTabSetResult Class
-
-##### isCustom()
-
-Returns `true` if this is a custom tab, or `false` if this is a standard tab.
-
-Signature
-
-```
-   public Boolean isCustom()
-
-```
-
-Return Value
-
-Type: Boolean
-
-### DescribeTabSetResult Class
-
-Contains metadata information about a Salesforce Classic standard or custom app available in the Salesforce user interface.
-
-Namespace
-
-Schema
-
-Usage
-
-The `Schema.describeTabs` method returns a list of `Schema.DescribeTabSetResult` objects that describe Salesforce
-Classic standard and custom apps.
-
-The methods in the `Schema.DescribeTabSetResult` class can be called using their property counterparts. For each method
-starting with `get`, you can omit the `get` prefix and the ending parentheses `()` to call the property counterpart. For example,
-`tabSetResultObj.label` is equivalent to `tabSetResultObj.getLabel()` . Similarly, for each method starting with
-##### is, omit the is prefix and the ending parentheses () . For example, tabSetResultObj.isSelected is equivalent to
-
-`tabSetResultObj.selected` .
-
-Example
-
-This example shows how to call the `Schema.describeTabs` method to get describe information for all available Salesforce Classic
-apps. This example iterates through each describe result and gets more metadata information for the Sales app.
-
-```
-   // App we're interested to get more info about
-
-   String appName = 'Sales';
-
-   // Get tab set describes for each app
-
-   List<Schema.DescribeTabSetResult> tabSetDesc = Schema.describeTabs();
-
-   // Iterate through each tab set describe for each app and display the info
-
-   for(Schema.DescribeTabSetResult tsr : tabSetDesc) {
-
-      // Get more information for the Sales app
-
-      if (tsr.getLabel() == appName) {
-
-        // Find out if the app is selected
-
-        if (tsr.isSelected()) {
-
-           System.debug('The ' + appName + ' app is selected. ');
-
-        }
-
-        // Get the app's Logo URL and namespace
-
-        String logo = tsr.getLogoUrl();
-
-```
-
-
-Apex Reference Guide DescribeTabSetResult Class
-
-```
-        System.debug('Logo URL: ' + logo);
-
-        String ns = tsr.getNamespace();
-
-        if (ns == '') {
-
-           System.debug('The ' + appName + ' app has no namespace defined.');
-
-        }
-
-        else {
-
-           System.debug('Namespace: ' + ns);
-
-        }
-
-        // Get the number of tabs
-
-        System.debug('The ' + appName + ' app has ' + tsr.getTabs().size() + ' tabs.');
-
-      }
-
-   }
-
-   // Example debug statement output
-
-   // DEBUG|The Sales app is selected.
-
-   // DEBUG|Logo URL:
-
-   https:// MyDomainName .my.salesforce.com/img/seasonLogos/2014_winter_aloha.png
-
-   // DEBUG|The Sales app has no namespace defined.
-
-   // DEBUG|The Sales app has 14 tabs.
-
-#### DescribeTabSetResult Methods The following are methods for DescribeTabSetResult . All are instance methods.
-
-```
-
-IN THIS SECTION:
-
-##### getDescription()
-
-Returns the display description for the standard or custom app.
-
-getLabel()
-Returns the display label for the standard or custom app.
-
-getLogoUrl()
-Returns a fully qualified URL to the logo image associated with the standard or custom app.
-
-getNamespace()
-Returns the developer namespace prefix of a Salesforce AppExchange managed package.
-
-getTabs()
-Returns metadata information about the standard or custom app’s displayed tabs.
-
-isSelected()
-Returns `true` if this standard or custom app is the user’s currently selected app in Salesforce Classic. Otherwise, returns `false` .
-
-##### getDescription()
-
-Returns the display description for the standard or custom app.
-
-Signature
-
-```
-   public String getDescription()
-
-```
-
-
-Apex Reference Guide DescribeTabSetResult Class
-
-Return Value
-
-Type: String
-
-##### getLabel()
-
-Returns the display label for the standard or custom app.
-
-Signature
-
-```
-   public String getLabel()
-
-```
-
-Return Value
-
-Type: String
-
-Usage
-
-The display label changes when tabs are renamed in the Salesforce user interface. See the Salesforce online help for more information.
-
-##### getLogoUrl()
-
-Returns a fully qualified URL to the logo image associated with the standard or custom app.
-
-Signature
-
-```
-   public String getLogoUrl()
-
-```
-
-Return Value
-
-Type: String
-
-##### getNamespace()
 

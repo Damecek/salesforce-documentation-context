@@ -1,7 +1,7 @@
 # SALESFORCE DEVELOPER LIMITS AND ALLOCATIONS
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf
-> Fetched: 2026-02-19T08:11:02Z
+> Fetched: 2026-03-15T21:09:14Z
 Summary
 
 Find the most critical limits
@@ -60,7 +60,7 @@ and asynchronous limits. For example, the maximum number of Bulk Apex jobs added
 queue with `System.enqueueJob` is the synchronous limit (50), which is higher than the
 asynchronous limit (1).
 
-Last updated: February 13, 2026
+Last updated: March 6, 2026
 
 Salesforce Developer Limits and Allocations Quick Reference Apex Governor Limits
 

@@ -1,12 +1,12 @@
 # SOQL and SOSL Reference
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_soql_sosl.pdf
-> Fetched: 2026-02-19T08:42:53Z
+> Fetched: 2026-03-15T21:08:46Z
 SOQL and SOSL Reference
 
 Version 66.0, Spring ’26
 
-Last updated: February 13, 2026
+Last updated: March 6, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -64,42 +64,40 @@ Using Relationship Queries with Data Category Selection Objects **. . . . . . . 
 Using Relationship Queries with the Partner WSDL **. . . . . . . . . . . . . . . . . . . . . . . . . . . 81**
 Change the Batch Size in Queries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 81**
 SOQL Object Limits and Limitations **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 82**
+Syndication Feed SOQL and Mapping Syntax **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 88**
+Location-Based SOQL Queries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 88**
+Considerations for Querying Currency Data Using SOQL **. . . . . . . . . . . . . . . . . . . . . . . . . . . 92**
 
-SOQL with Big Objects **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 88**
-Syndication Feed SOQL and Mapping Syntax **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 89**
-Location-Based SOQL Queries **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 90**
-Considerations for Querying Currency Data Using SOQL **. . . . . . . . . . . . . . . . . . . . . . . . . . . 94**
+**Chapter 3:** Salesforce Object Search Language (SOSL) **. . . . . . . . . . . . . . . . . . . . . . . . 93**
 
-**Chapter 3:** Salesforce Object Search Language (SOSL) **. . . . . . . . . . . . . . . . . . . . . . . . 95**
+Typographical Conventions in This Document **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 95**
+SOSL Limits on Search Results **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 95**
+SOSL Limits on External Object Search Results **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 97**
+SOSL Syntax **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 97**
+Example Text Searches **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 100**
+convertCurrency() **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 101**
+FIND {SearchQuery} **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 102**
+FORMAT() **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 106**
+IN SearchGroup **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 106**
+LIMIT n **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 107**
+OFFSET n **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 108**
+ORDER BY Clause **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 109**
+RETURNING FieldSpec **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 109**
+toLabel(fields) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 112**
+Update an Article’s Keyword Tracking with SOSL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 113**
+Update an Article’s Viewstat with SOSL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 113**
+USING Listview= **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 114**
+WHERE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 114**
+WITH DATA CATEGORY DataCategorySpec **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 118**
+WITH DivisionFilter **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 120**
+WITH HIGHLIGHT **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 120**
+WITH METADATA **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 122**
+WITH NETWORK NetworkIdSpec **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 122**
+WITH PricebookId **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 123**
+WITH SNIPPET **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 123**
+WITH SPELL_CORRECTION **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 126**
 
-Typographical Conventions in This Document **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 97**
-SOSL Limits on Search Results **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 97**
-SOSL Limits on External Object Search Results **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 99**
-SOSL Syntax **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 99**
-Example Text Searches **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 102**
-convertCurrency() **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 103**
-FIND {SearchQuery} **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 104**
-FORMAT() **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 108**
-IN SearchGroup **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 108**
-LIMIT n **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 109**
-OFFSET n **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 110**
-ORDER BY Clause **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 111**
-RETURNING FieldSpec **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 111**
-toLabel(fields) **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 114**
-Update an Article’s Keyword Tracking with SOSL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 115**
-Update an Article’s Viewstat with SOSL **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 115**
-USING Listview= **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 116**
-WHERE **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 116**
-WITH DATA CATEGORY DataCategorySpec **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 120**
-WITH DivisionFilter **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 122**
-WITH HIGHLIGHT **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 122**
-WITH METADATA **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 124**
-WITH NETWORK NetworkIdSpec **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 124**
-WITH PricebookId **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 125**
-WITH SNIPPET **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 125**
-WITH SPELL_CORRECTION **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 128**
-
-Index **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 129**
+Index **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 127**
 
 # CHAPTER 1 Introduction to SOQL and SOSL
 
@@ -172,7 +170,7 @@ Sending Queries and Searches
 Construct and execute queries and searches using one of several environments, including SOAP API,
 REST API, Apex, and more. For more information on which environments support queries and searches,
 see Salesforce Object Query Language (SOQL) on page 3 and Salesforce Object Search Language
-(SOSL) on page 95.
+(SOSL) on page 93.
 
 
 # CHAPTER 2 Salesforce Object Query Language (SOQL)
@@ -266,7 +264,7 @@ one another.
 helps ensure accurate results.
 
 Note: With archived data and big objects, you can use only some SOQL features. For more
-information, see SOQL with Big Objects on page 88.
+[information, see SOQL with Big Objects.](https://developer.salesforce.com/docs/atlas.en-us.260.0.bigobjects.meta/bigobjects/big_object_querying.htm)
 
 SEE ALSO:
 
@@ -6583,7 +6581,7 @@ the size limit, SOQL rejects the query and you can’t retrieve the results.
 fields are outside the aggregate functions.
 
 **•** For currency field query limitations, see Considerations for Querying Currency Data Using
-SOQL on page 94.
+SOQL on page 92.
 
 **•** These aggregate functions are available for querying data model objects (DMOs) and data
 lake objects (DLOs).
@@ -6947,7 +6945,7 @@ UserRecordAccess
 `MaxAccessLevel` .
 
 
-### Salesforce Object Query Language (SOQL) SOQL with Big Objects
+## Salesforce Object Query Language (SOQL) Syndication Feed SOQL and Mapping Syntax
 
 **Object** **Description**
 
@@ -6975,148 +6973,11 @@ Vote
 
 [For other SOQL limits, see SOQL and SOSL Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_soslsoql.htm) _Salesforce Developer Limits and Allocations Quick Reference_ .
 
-### SOQL with Big Objects
-
-You can query the fields in a big object’s index by using a subset of standard SOQL commands.
-
-Build an index query, starting from the first field defined in the index, without gaps between the first and last field in the query. You can
-use `=` or `IN` on any field in your query, although you can use `IN` only one time. You can use the range operations `<`, `>`, `<=`, or `>=`
-only on the last field of your query.
-
-Tip: When you use the `IN` clause with only one argument, such as `FirstName IN('Charlie')`, it’s equivalent to using
-`=`, such as `FirstName='Charlie'` . For clarity, we suggest you use the `=` form in this case.
-
-Subqueries aren’t supported. Don’t include more than one select statement in your query. For example, this query is not supported
-
-```
-   Select CreatedById, CreatedDate, Created_Date__c, Id, Legacy_Record_ID__c, Parent_Case__c,
-
-    SystemModstamp, Text_Body__c FROM Archived_Email_Message__b WHERE Parent_Case__c IN(select
-
-    id from case where owner.id in ('00580000008BBVUAA4'))
-
-```
-
-You can include the system fields `CreatedById`, `CreatedDate`, and `SystemModstamp` in queries.
-
-To guarantee the order of the query results, use the `ORDER BY` clause.
-
-These queries assume that you have a table where the index is defined by `LastName__c`, `FirstName__c`, and `PhoneNumber__c` .
-
-This query specifies all three fields in the index. In this case, the filter on `PhoneNumber__c` can use a range operator.
-
-```
-   SELECT LastName__c, FirstName__c, PhoneNumber__c
-
-   FROM Phone_Book__b
-
-   WHERE LastName__c='Kelly' AND FirstName__c='Charlie' AND PhoneNumber__c='2155555555'
-
-```
-
-This query specifies only the first two fields in the index. In this case, the filter on `FirstName__c` can use a range operator.
-
-```
-   SELECT LastName__c, FirstName__c, PhoneNumber__c
-
-   FROM Phone_Book__b
-
-   WHERE LastName__c='Kelly' AND FirstName__c='Charlie'
-
-```
-
-
-## Salesforce Object Query Language (SOQL) Syndication Feed SOQL and Mapping Syntax
-
-This query specifies only the first field in the index. The filter on `LastName__c` can use a range operator.
-
-```
-   SELECT LastName__c, FirstName__c, PhoneNumber__c
-
-   FROM Phone_Book__b
-
-   WHERE LastName__c='Kelly'
-
-```
-
-This query uses the `IN` operator on the first field in the index.
-
-```
-   SELECT LastName__c, FirstName__c, PhoneNumber__c
-
-   FROM Phone_Book__b
-
-   WHERE LastName__c IN ('Kelly','Jones','Capulet','Montague') AND FirstName__c='Charlie'
-
-```
-
-This query doesn’t work because of a gap in the query where `FirstName__c` is required.
-
-```
-   SELECT LastName__c, FirstName__c, PhoneNumber__c
-
-   FROM Phone_Book__b
-
-   WHERE LastName__c='Kelly' AND PhoneNumber__c='2155555555'
-
-```
-
-This query also doesn’t work because it uses the `IN` operator twice.
-
-```
-   SELECT LastName__c, FirstName__c, PhoneNumber__c
-
-   FROM Phone_Book__b
-
-   WHERE LastName__c IN ('Kelly','Jones') AND FirstName__c IN ('Charlie','Lisa')
-
-```
-
-This query works, even though it appears to have two `IN` operators in the `WHERE` clause. But because the second `IN` has only one
-argument, it’s equivalent to an equals operator, so it’s allowed.
-
-```
-   SELECT LastName__c, FirstName__c, PhoneNumber__c
-
-   FROM Phone_Book__b
-
-   WHERE LastName__c IN ('Kelly','Jones') AND FirstName__c IN ('Charlie')
-
-```
-
-For clarity, we suggest that you rewrite the preceding SOQL statement as shown.
-
-```
-   SELECT LastName__c, FirstName__c, PhoneNumber__c
-
-   FROM Phone_Book__b
-
-   WHERE LastName__c IN ('Kelly','Jones') AND FirstName__c='Charlie'
-
-```
-
-SOQL Operations Not Allowed with Big Objects
-
-**•** When building an index query, don’t leave gaps between the first and the last field in the query.
-
-**•** The operators `!=`, `LIKE`, `NOT IN`, `EXCLUDES`, and `INCLUDES` aren’t valid in any query.
-
-**•** Aggregate functions aren’t valid in any query.
-
-**•** To retrieve a list of results, don’t use the `Id` field in a query. Including `Id` in a query returns only results that have an empty ID
-(000000000000000 or 000000000000000AAA).
-
-Note: When you use Developer Console to generate a query from a resource, the `Id` field is included automatically. To query
-big objects in Developer Console, remove `Id` from the generated query.
-
 ## Syndication Feed SOQL and Mapping Syntax
 
 _Syndication feed_ services use a SOQL query and mapping specification that allows applications to point to sets of objects and individual
 objects and to traverse relationships between objects. Several options can be added as query string parameters to filter and control how
 the data is presented. Syndication feeds can be defined for public sites.
-
-
-## Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
 
 For full information about the limitations on SOQL in query feed definitions, see the Salesforce online help for syndication feeds.
 
@@ -7142,6 +7003,9 @@ address, you can also use latitude and longitude values directly from an address
 SOQL queries made using the SOAP and REST APIs also support using geolocation fields, including address fields that have a geolocation
 component, directly in SOQL statements. This often results in simpler SOQL statements. Compound fields can _only_ be used in SOQL
 queries made through the SOAP and REST APIs.
+
+
+Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
 
 SELECT Clause
 
@@ -7187,12 +7051,6 @@ combine the two primitive values. Here are sample results from a REST API reques
 
        "url" : "/services/data/v30.0/sobjects/Warehouse__c/a06D00000017O4nIAE"
 
-```
-
-
-Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
-
-```
       },
 
       "Name" : "Ferry Building Depot",
@@ -7240,6 +7098,9 @@ WHERE Clause
 Retrieve records with locations within or outside of a certain radius with distance conditions in the `WHERE` clause of the query. To
 construct an appropriate distance condition, use the following functions.
 
+
+Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
+
 **DISTANCE**
 Calculates the distance between two locations in miles or kilometers.
 
@@ -7278,12 +7139,6 @@ Sort records by distance using a distance condition in the `ORDER BY` clause. Fo
 
    WHERE DISTANCE(Location__c, GEOLOCATION(37.775,-122.418), 'mi') < 20
 
-```
-
-
-Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
-
-```
    ORDER BY DISTANCE(Location__c, GEOLOCATION(37.775,-122.418), 'mi')
 
    LIMIT 10
@@ -7320,6 +7175,11 @@ Values such as the ones in this table are returned from API calls.
 
 Ferry Building Depot _null_
 
+
+Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
+
+**Name** **Location__c**
+
 Aloha Warehouse (37.786108,-122.430152)
 
 Big Tech Warehouse _null_
@@ -7354,11 +7214,6 @@ Big Tech Warehouse _null_ _null_
 
 S H Frank & Company 37.763662 _null_
 
-
-Salesforce Object Query Language (SOQL) Location-Based SOQL Queries
-
-**Name** **Location__latitude__s** **Location__longitude__s**
-
 San Francisco Tech Mart 37.77587 -122.399902
 
 In these results, only one geolocation field is genuinely null. The other two, with partial nulls, are invalid.
@@ -7379,6 +7234,10 @@ flight from San Francisco to Sydney based on it.
 
 Another implication of this approximation is that geolocations and distances have no notion of “equal.” You can’t check locations or
 distances for equality. You can only determine whether one location is farther away or closer than another location, or one distance is
+
+
+## Salesforce Object Query Language (SOQL) Considerations for Querying Currency Data Using SOQL
+
 greater or smaller than another. To verify that two locations are “the same,” treat their distance as a floating point number and compare
 the difference to a tolerance value. For example, this `WHERE` clause finds other records within 25 feet of `testLocation` .
 
@@ -7420,8 +7279,7 @@ For example, `DISTANCE(warehouse_location__c, GEOLOCATION(37.775,-122.418), 'km'
 
 [For more information, see Compound Field Considerations and Limitations in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/compound_fields_limitations.htm) _Salesforce Object Reference_ .
 
-
-## Salesforce Object Query Language (SOQL) Considerations for Querying Currency Data Using SOQL Considerations for Querying Currency Data Using SOQL
+## Considerations for Querying Currency Data Using SOQL
 
 These considerations apply when using SOQL to query Data Cloud objects, such as data lake objects (DLOs) and data model objects
 (DMOs).
@@ -9911,30 +9769,25 @@ INDEX
 A
 
 Anti-join 20
-Apex and SOSL 107
-
-B
-
-Big Objects
-Querying 88
+Apex and SOSL 105
 
 C
 
-Characters reserved in SOSL FIND 106
+Characters reserved in SOSL FIND 104
 
 F
 
-FIND and Apex 107
+FIND and Apex 105
 
 R
 
-Reserved characters in SOSL FIND 106
+Reserved characters in SOSL FIND 104
 
 S
 
-SearchQuery character limit 106
+SearchQuery character limit 104
 Semi-join 20
 SOSL
-Apex syntax 107
-SOSL character limit 106
+Apex syntax 105
+SOSL character limit 104
 

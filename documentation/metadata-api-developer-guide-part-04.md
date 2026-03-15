@@ -1,3 +1,123 @@
+and moves through the other states automatically after an admin
+performs a Provision, Sync, or Teardown action. The valid values are:
+
+**•** `Unprovisioned`
+
+**•** `Allocating`
+
+**•** `PendingAcceptance`
+
+**•** `PendingActivation`
+
+**•** `RejectedRemotely`
+
+**•** `DeletedRemotely`
+
+**•** `TeardownInProgress`
+
+**•** `Ready`
+
+```
+status
+
+```
+
+ExternalConnectionStatus
+(enumeration of
+type string)
+
+InboundNetworkConnProperty
+
+Represents a name-value pair that describes the properties of the inbound network connection.
+
+**Field Name** **Field Type** **Description**
+
+```
+propertyName
+
+```
+
+InboundConnPropertyName Required. The name of a property used to establish an
+(enumeration of type InboundNetworkConnection. Valid values are:
+string)
+
+**•** `AwsVpcEndpointId` —The unique endpoint ID for connections to an
+AWS Virtual Private Cloud (VPC). The value is read-only when the `status`
+is `Ready` .
+
+**•** `Region` —The region in which the VPC is hosted.
+
+**•** `SourceIpRanges` —The ranges of source IP address allocated to this
+inbound connection by the Salesforce-managed VPC in your cloud provider.
+
+
+Metadata Types InboundNetworkConnection
+
+**Field Name** **Field Type** **Description**
+
+`propertyValue` string
+
+Required. The value of InboundConnPropertyName. An example of the
+`propertyValue` of `Region` is `us-west-2.`
+
+The `propertyValue` of `SourceIpRanges` is a JSON string that lists
+the start and end IP address for each range. This example shows two IP address
+ranges.
+
+```
+[
+
+  {
+
+   "startIp":"10.10.10.0",
+
+   "endIp":"10.10.10.3"
+
+  },
+
+  {
+
+   "startIp":"100.100.100.0",
+
+   "endIp":"100.100.100.15"
+
+  }
+
+]
+
+```
+
+Declarative Metadata Sample Definition
+
+The following sample definition has the suffix `.inboundNetworkConnection` .
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<InboundNetworkConnection xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <connectionType>AwsPrivateLink</connectionType>
+
+   <description>This is an Inbound Connection to make API calls into
+
+Salesforce</description>
+
+   <inboundNetworkConnProperties>
+
+     <propertyName>Region</propertyName>
+
+     <propertyValue>us-west-2</propertyValue>
+
+   </inboundNetworkConnProperties>
+
+   <inboundNetworkConnProperties>
+
+     <propertyName>AwsVpcEndpointId</propertyName>
+
+     <propertyValue>vpce-02ccb5fac2bacaceb</propertyValue>
+
+   </inboundNetworkConnProperties>
+
    <inboundNetworkConnProperties>
 
      <propertyName>SourceIpRanges</propertyName>
@@ -4331,7 +4451,7 @@ components in other namespaces ( `true` ) or not ( `false` ). The default
 value is `false` .
 
 `lightningMessageFields` LightningMessageField A list of message payload fields for a given Lightning Message Channel.
-on page 1497[]
+on page 1498[]
 
 `masterLabel` string Required. The label for a Lightning Message Channel.
 
@@ -4961,7 +5081,7 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 SEE ALSO:
 
-[Custom Lightning Types Developer Guide](https://developer.salesforce.com/docs/einstein/genai/guide/lightning-types.html)
+[Lightning Types Developer Guide](https://developer.salesforce.com/docs/platform/lightning-types/guide/lightning-types.html)
 
 [Custom Lightning Type Examples](https://developer.salesforce.com/docs/einstein/genai/guide/lightning-types-examples.html)
 
@@ -5269,13 +5389,13 @@ Chats routed with Omni-Channel aren’t supported in the Metadata API.
 
 File Suffix and Directory Location
 
-### LiveChatButton on page 1509 configurations are stored in the <developer_name>.liveChatButton file in the
+### LiveChatButton on page 1510 configurations are stored in the <developer_name>.liveChatButton file in the
 
 `liveChatButtons` directory.
 
 Version
 
-### LiveChatButton on page 1509 is available in API version 28.0 and later.
+### LiveChatButton on page 1510 is available in API version 28.0 and later.
 
 
 Metadata Types LiveChatButton
@@ -5920,7 +6040,7 @@ alphanumeric character.
 
 **Field Type**
 
-LoyaltyProgramProcess[] on page 1519
+LoyaltyProgramProcess[] on page 1520
 
 **Description**
 Collection of loyalty program processes associated with a loyalty program or a referral
@@ -6010,7 +6130,7 @@ This field isn’t applicable for referral programs.
 
 **Field Type**
 
-LoyaltyProgramProcessParameter[] on page 1521
+LoyaltyProgramProcessParameter[] on page 1522
 
 **Description**
 The parameters associated with the loyalty program process.
@@ -6036,7 +6156,7 @@ the process type is `TransactionJournal` .
 
 **Field Type**
 
-LoyaltyProgramProcessRule[] on page 1525
+LoyaltyProgramProcessRule[] on page 1526
 
 **Description**
 The rules associated with the loyalty program process.
@@ -6085,7 +6205,7 @@ decimalPlaces
 
 **Field Type**
 
-LoyaltyProgramProcessCondition on page 1523
+LoyaltyProgramProcessCondition on page 1524
 
 **Description**
 The filter condition that decides which records are stored in the parameter.
@@ -6242,7 +6362,7 @@ journal.
 
 **Field Type**
 
-LoyaltyProgramProcessConditionFilterCriteria[] on page 1523
+LoyaltyProgramProcessConditionFilterCriteria[] on page 1524
 
 **Description**
 The filter criteria that determines which records or transaction journals are filtered.
@@ -6383,14 +6503,14 @@ previousRule
 
 **Field Type**
 
-LoyaltyProgramProcessAction[] on page 1526
+LoyaltyProgramProcessAction[] on page 1527
 
 **Description**
 The actions associated with the rule.
 
 **Field Type**
 
-LoyaltyProgramProcessCondition[] on page 1523
+LoyaltyProgramProcessCondition[] on page 1524
 
 **Description**
 The conditions associated with the rule.
@@ -6471,7 +6591,7 @@ Possible values are:
 
 **Field Type**
 
-LoyaltyProgramProcessRuleStepMapping[] on page 1531
+LoyaltyProgramProcessRuleStepMapping[] on page 1532
 
 **Description**
 The list of step mappings associated with rule.
@@ -6509,7 +6629,7 @@ actionType
 
 **Field Type**
 
-LoyaltyProgramProcessActionParameter[] on page 1530
+LoyaltyProgramProcessActionParameter[] on page 1531
 
 **Description**
 The parameters of the action.
@@ -7130,7 +7250,7 @@ are indicated by a red asterisk. If a value isn’t added to the field in the cu
 content type, the form can’t be saved and a standard error is displayed. Default
 is `false` .
 
-Note: When `nodeType on page 1535` is set to `NAMEFIELD` on
+Note: When `nodeType on page 1536` is set to `NAMEFIELD` on
 a field, `isRequired` must also be set to `True` for that field.
 
 `nodeLabel` string
@@ -7834,14 +7954,14 @@ boolean
 
 **Field Type**
 
-MarketingAppExtAction on page 1547[]
+MarketingAppExtAction on page 1548[]
 
 **Description**
 This field is a related list of associated external actions.
 
 **Field Type**
 
-MarketingAppExtActivity on page 1544[]
+MarketingAppExtActivity on page 1545[]
 
 **Description**
 This field is a related list of associated external prospect activities.
@@ -9665,7 +9785,7 @@ Milestone types are stored in the `milestoneTypes` directory of the correspondin
 
 Version
 
-### MilestoneType on page 1570 is available in API version 27.0 and later.
+### MilestoneType on page 1571 is available in API version 27.0 and later.
 
 
 ### Metadata Types MlDomain
@@ -10881,7 +11001,7 @@ string
 
 **Description**
 The name of the mobile security assignment associated with the mobile security policy.
-See MobileSecurityAssignment on page 1583.
+See MobileSecurityAssignment on page 1584.
 
 **Field Type**
 string
@@ -11200,7 +11320,7 @@ string
 
 **Description**
 The name of the mobile security assignment associated with the mobile security policy.
-See MobileSecurityAssignment on page 1583.
+See MobileSecurityAssignment on page 1584.
 
 **Field Type**
 MobileSecurityPolicySeverityLevel (enumeration of type string)
@@ -11985,8 +12105,8 @@ This field is valid only when NamedCredentialType is set to `Legacy` .
 string
 
 **Description**
-The second part of the access key used to sign programmatic requests to AWS. Use
-when AWS Signature Version 4 is your authentication protocol.
+The second part of the access key that's used to sign programmatic requests to AWS.
+Use when AWS Signature Version 4 is your authentication protocol.
 
 This field is valid only when NamedCredentialType is set to `Legacy` .
 
@@ -12507,20 +12627,28 @@ of a header value that is evaluated at run time.
 
 **•** `ManagedByFeature` : Reserved for internal use.
 
+**•** `ManagedByNamespace` : Specifies the manageability capabilities for a packaged
+named credential. The `parameterValue` indicates whether the named
+credential uses subscriber-controlled or developer-controlled manageability.
+
+**•** `NamedCredentialOptions` : Reserved for internal use.
+
 **•** `OutboundNetworkConnection` : Specifies a lookup to an outbound network
 connection. When using this parameter type, the
 `outboundNetworkConnection` field is a string representing the lookup.
 Used when `namedCredentialType` is `PrivateEndpoint` .
 
-**•** `StandardNamedCredentialType` : Reserved for internal use.
-
-**•** `Url` : Specifies that this parameter configures the URL of the endpoint. Store the
-actual URL in the `parameterValue` field.
+**•** `SfHttpRequestExtensionName` : Reserved for internal use.
 
 
 Metadata Types NamedCredential
 
 **Field Name** **Description**
+
+**•** `StandardNamedCredentialType` : Reserved for internal use.
+
+**•** `Url` : Specifies that this parameter configures the URL of the endpoint. Store the
+actual URL in the `parameterValue` field.
 
 ```
 parameterValue
@@ -12595,22 +12723,22 @@ The following is an example of a NamedCredential component.
 
    </namedCredentialParameters>
 
-   <namedCredentialParameters>
-
-     <description>Cert</description>
-
-     <parameterName>DefaultCert</parameterName>
-
-     <parameterType>ClientCertificate</parameterType>
-
-     <certificate>MyCertificate</certificate>
-
 ```
 
 
 ### Metadata Types NavigationMenu
 
 ```
+      <namedCredentialParameters>
+
+        <description>Cert</description>
+
+        <parameterName>DefaultCert</parameterName>
+
+        <parameterType>ClientCertificate</parameterType>
+
+        <certificate>MyCertificate</certificate>
+
       </namedCredentialParameters>
 
       <allowMergeFieldsInBody>true</allowMergeFieldsInBody>
@@ -12677,12 +12805,12 @@ File Suffix and Directory Location
 
 ### NavigationMenu components have the suffix .navigationMenu and are stored in the navigationMenus folder.
 
-Version
-
-### NavigationMenu components are available in API version 47.0 and later.
-
 
 Metadata Types NavigationMenu
+
+Version
+
+NavigationMenu components are available in API version 47.0 and later.
 
 Special Access Rules
 
@@ -12737,16 +12865,15 @@ available in API 39.0 and later.
 `target` string Required if `type` is `ExternalLink`,
 `InternalLink`, or
 
-`SalesforceObject` . If `type` is
-`ExternalLink` or `InternalLink`,
-the target is the URL that the link points to.
-For `ExternalLink`, your entry looks like
-
 
 Metadata Types NavigationMenu
 
 **Field** **Field Type** **Description**
 
+`SalesforceObject` . If `type` is
+`ExternalLink` or `InternalLink`,
+the target is the URL that the link points to.
+For `ExternalLink`, your entry looks like
 this: _`https://salesforce.com`_ . For
 `InternalLink`, use a relative URL, such
 as _`/contactsupport`_ . If `type` is
@@ -12796,12 +12923,12 @@ You can’t nest other items of type
 `NavigationalTopic` under
 `MenuLabel` .
 
+
+Metadata Types NavigationMenu
+
 NavigationMenuItemBranding
 
 Branding for a menu item.
-
-
-Metadata Types NavigationMenu
 
 **Field** **Field Type** **Description**
 
@@ -12875,6 +13002,12 @@ The following is an example of a NavigationMenu component.
 
       <navigationMenuItem>
 
+```
+
+
+### Metadata Types Network
+
+```
         <label>All Objects</label>
 
         <position>3</position>
@@ -12883,12 +13016,6 @@ The following is an example of a NavigationMenu component.
 
         <subMenu>
 
-```
-
-
-### Metadata Types Network
-
-```
            <navigationMenuItem>
 
              <label>Leads</label>
@@ -14796,7 +14923,7 @@ Fields
 **Field Name** **Field Type** **Description**
 
 `notificationTypeSettings` NotificationTypeSettings on An array of delivery settings for an org’s notification types.
-page 1641[]
+page 1642[]
 
 NotificationTypeSettings
 
@@ -14815,10 +14942,10 @@ it includes the namespace prefix.
 Retrieve NotificationTypeConfig to see the API names of the notification types available
 in your org.
 
-`appSettings` AppSettings on page 1641[] An array of settings for the connected apps supported for a notification type.
+`appSettings` AppSettings on page 1642[] An array of settings for the connected apps supported for a notification type.
 
 `notificationChannels` NotificationChannels on Defines the delivery channels for a notification type.
-page 1641
+page 1642
 
 AppSettings
 
@@ -16103,7 +16230,7 @@ type string)
 `label` string Required. A user-friendly label for the connection.
 
 `outboundNetworkConnProperties` OutboundNetworkConnProperty Name-value pairs that describe the properties of an outbound network
-on page 1658[] connection. Specify a name-value pair for each of the properties.
+on page 1659[] connection. Specify a name-value pair for each of the properties.
 
 Required. Connection status. The connection is initially Unprovisioned
 and moves through the other statuses automatically after an admin
@@ -16240,14 +16367,815 @@ This metadata type supports the wildcard character `*` (asterisk) in the `packag
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 
-### Metadata Types Package Package
+### Metadata Types OnboardingDataObjectGroup OnboardingDataObjectGroup
+
+Represents a configuration that groups fields from one or more objects for a specific business purpose. For example, the Customer
+Contact Information onboarding data object group includes Name, Email, Phone Number, and Address.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### OnboardingDataObjectGroup components have the suffix .onboardingDataObjectGroup and are stored in the
+
+`onboardingDataObjectGroups` folder.
+
+Version
+
+### OnboardingDataObjectGroup components are available in API version 66.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+description
+
+masterLabel
+
+usageType
+
+```
+
+**Field Type**
+string
+
+**Description**
+Description of the onboarding data object group.
+
+**Field Type**
+string
+
+**Description**
+
+Required. A user-friendly name for OnboardingDataObjectGroup, which is defined
+when the OnboardingDataObjectGroup is created.
+
+**Field Type**
+OnboardingDataObjGrpUsageType (enumeration of type string)
+
+**Description**
+
+Required. Specifies the purpose of the onboarding data object group. Valid values are:
+
+**•** `DocumentValidation`
+
+**•** `ValidityPeriod`
+
+
+Metadata Types OnboardingDataObjectGroup
+
+**Field Name** **Description**
+
+```
+versionDetail
+
+```
+
+**Field Type**
+
+OnboardingDataObjGrpVer[]
+
+**Description**
+Versions of the onboarding data object group, which define the computation settings
+and related data objects.
+
+OnboardingDataObjGrpVer
+
+Represents a version of an onboarding data object group, containing computation settings and the related data objects.
+
+**Field Name** **Description**
+
+```
+computationSource
+
+computationType
+
+objectDetail
+
+onbrdDataObjGrpDocCatgMaps
+
+status
+
+```
+
+**string**
+
+**Description**
+Unique name of the component that contains the computation logic to
+determine the group's validity, such as a Flow ID or ExpressionSet ID.
+
+**Field Type**
+OnboardingDataObjGrpCompType (enumeration of type string)
+
+**Description**
+
+Specifies the type of computation that's used for validity calculations of
+the onboarding data object group version. Valid values are:
+
+**•** `Formula`
+
+**•** `StandardMinimumValidity`
+
+**Field Type**
+
+OnboardingDataObject[] on page 1663
+
+**Description**
+Details of the data objects within this version.
+
+**Field Type**
+
+OnbrdDataObjGrpDocCatgMap[] on page 1663
+
+**Description**
+Junction object that maps onboarding data category version, document
+type, and document category.
+
+**Field Type**
+OnboardingDataObjVerGrpStatus (enumeration of type string)
+
+**Description**
+Required. Status of the onboarding data object group version. Valid values
+are:
+
+
+Metadata Types OnboardingDataObjectGroup
+
+**Field Name** **Description**
+
+**•** `Active`
+
+**•** `Inactive`
+
+OnbrdDataObjGrpDocCatgMap
+
+Represents a configuration that maps a document type and a document category to a specific onboarding data object group version.
+
+**Field Name** **Description**
+
+```
+documentCategory
+
+documentType
+
+```
+
+OnboardingDataObject
+
+**Field Type**
+
+[DocumentCategory[]](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_documentcategory.htm)
+
+**Description**
+Required. Category that's used to group the document checklist items.
+
+**Field Type**
+
+[DocumentType[]](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_documenttype.htm)
+
+**Description**
+Type of file that's uploaded or attached in the document checklist item.
+
+Represents a data object within an onboarding data object group, specifying the target object and its field configurations. For example,
+Party Profile and Party Profile Address are objects within the Customer Information onboarding object data group.
+
+**Field Name** **Description**
+
+```
+businessContext
+
+fieldDetail
+
+name
+
+```
+
+**Field Type**
+OnboardingDataObjBusContext (enumeration of type string)
+
+**Description**
+Required. Specifies the business context or scenario in which this validity
+configuration is applicable. Valid values are:
+
+**•** `KYC_VALIDITY`
+
+**•** `DVC`
+
+**Field Type**
+
+OnboardingDataObjectField[] on page 1665
+
+**Description**
+Details of the fields within the data object.
+
+**Field Type**
+OnboardingDataObjGrpTgtObject (enumeration of type string)
+
+
+Metadata Types OnboardingDataObjectGroup
+
+**Field Name** **Description**
+
+**Description**
+Required. Target sObject type for this data object. Valid values are:
+
+**•** `Account`
+
+**•** `Applicant`
+
+**•** `ApplicationForm`
+
+**•** `ApplicationFormProduct`
+
+**•** `ApplicationFormSellerItem`
+
+**•** `Contact`
+
+**•** `IdentityDocument`
+
+**•** `Opportunity`
+
+**•** `PartyCreditProfile`
+
+**•** `PartyExpense`
+
+**•** `PartyFinancialAsset`
+
+**•** `PartyFinancialAssetLien`
+
+**•** `PartyFinancialLiability`
+
+**•** `PartyFinclAssetAddlOwner`
+
+**•** `PartyFinclLiabAddlBrwr`
+
+**•** `PartyIdentityVerification`
+
+**•** `PartyIdentityVerificationStep`
+
+**•** `PartyIncome`
+
+**•** `PartyProfile`
+
+**•** `PartyProfileAddress`
+
+**•** `PartyProfileRisk`
+
+**•** `PartyScreeningSummary`
+
+**•** `PersonEmployment`
+
+```
+partyProfileDataObjectValidityDefinition
+
+pathToRoot
+
+relatedObjectRole
+
+```
+
+**Field Type**
+string
+
+**Description**
+[Reference to the PartyProfileDataObjectValidityDefinition metadata type](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_partyprofiledataobjectvaliditydefinition.htm)
+that defines validity settings for this data object.
+
+**Field Type**
+string
+
+**Description**
+Relationship of the path from this data object to the root object in the
+hierarchy.
+
+**Field Type**
+RelatedOnboardingDataObjRole (enumeration of type string)
+
+
+Metadata Types OnboardingDataObjectGroup
+
+**Field Name** **Description**
+
+**Description**
+Specifies the type of relationship between this record and related
+onboarding data object record. Valid values are `Parent` and `Child` .
+
+```
+relatedOnboardingDataObjRecord
+
+targetObjectRelationshipField
+
+```
+
+OnboardingDataObjectField
+
+**Field Type**
+string
+
+**Description**
+Reference to a related onboarding data object record.
+
+**Field Type**
+string
+
+**Description**
+API name of the target object's field that links this record to the related
+onboarding data object record.
+
+Represents a field within an onboarding data object group. For example, Email Address of Party Profile is a field in the Customer Information
+group.
+
+**Field Name** **Description**
+
+```
+name
+
+```
+
+**string**
+
+**Description**
+Required. API name of the field on the target object.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an OnboardingDataObjectGroup component where usageType is ValidityPeriod.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OnboardingDataObjectGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <description>description text</description>
+
+   <masterLabel>Field Group Valid Configuration</masterLabel>
+
+   <usageType>ValidityPeriod</usageType>
+
+   <versionDetail>
+
+     <computationType>StandardMinimumValidity</computationType>
+
+     <objectDetail>
+
+        <businessContext>KYC_VALIDITY</businessContext>
+
+        <fieldDetail>
+
+          <name>Status</name>
+
+        </fieldDetail>
+
+        <name>PartyFinancialAssetLien</name>
+
+        <pathToRoot>PartyFinancialAsset.PartyProfile.Id</pathToRoot>
+
+        <relatedObjectRole>Parent</relatedObjectRole>
+
+```
+
+
+Metadata Types OnboardingDataObjectGroup
+
+```
+   <targetObjectRelationshipField>PartyFinancialAsset</targetObjectRelationshipField>
+
+        </objectDetail>
+
+        <objectDetail>
+
+           <businessContext>KYC_VALIDITY</businessContext>
+
+           <fieldDetail>
+
+             <name>ValuationAmount</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>VerificationStatus</name>
+
+           </fieldDetail>
+
+           <name>PartyFinancialAsset</name>
+
+           <pathToRoot>PartyProfile.Id</pathToRoot>
+
+           <relatedObjectRole>Parent</relatedObjectRole>
+
+           <targetObjectRelationshipField>PartyProfile</targetObjectRelationshipField>
+
+        </objectDetail>
+
+        <objectDetail>
+
+           <businessContext>KYC_VALIDITY</businessContext>
+
+           <fieldDetail>
+
+             <name>IncomeAmount</name>
+
+           </fieldDetail>
+
+           <name>PartyIncome</name>
+
+           <pathToRoot>Party.Id</pathToRoot>
+
+           <relatedObjectRole>Parent</relatedObjectRole>
+
+           <targetObjectRelationshipField>Party</targetObjectRelationshipField>
+
+        </objectDetail>
+
+        <objectDetail>
+
+           <businessContext>KYC_VALIDITY</businessContext>
+
+           <fieldDetail>
+
+             <name>CreditScore</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>EmploymentType</name>
+
+           </fieldDetail>
+
+           <name>PartyProfile</name>
+
+           <pathToRoot>Id</pathToRoot>
+
+        </objectDetail>
+
+        <status>Inactive</status>
+
+      </versionDetail>
+
+   </OnboardingDataObjectGroup>
+
+```
+
+This is an example of an OnboardingDataObjectGroup component where usageType is DocumentValidation.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <OnboardingDataObjectGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <description>description text</description>
+
+      <masterLabel>Application Form DVC Orig</masterLabel>
+
+      <usageType>DocumentValidation</usageType>
+
+      <versionDetail>
+
+        <objectDetail>
+
+           <businessContext>DVC</businessContext>
+
+           <fieldDetail>
+
+             <name>BureauReportedFirstName</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+```
+
+
+Metadata Types OnboardingDataObjectGroup
+
+```
+             <name>Name</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>Id</name>
+
+           </fieldDetail>
+
+           <name>PartyCreditProfile</name>
+
+           <pathToRoot>ReferenceObject.ApplicationForm.Id</pathToRoot>
+
+           <relatedObjectRole>Parent</relatedObjectRole>
+
+          <targetObjectRelationshipField>ReferenceObject</targetObjectRelationshipField>
+
+        </objectDetail>
+
+        <objectDetail>
+
+           <businessContext>DVC</businessContext>
+
+           <fieldDetail>
+
+             <name>ApplicantId</name>
+
+           </fieldDetail>
+
+           <name>PartyFinancialAsset</name>
+
+           <pathToRoot>Applicant.ApplicationForm.Id</pathToRoot>
+
+           <relatedObjectRole>Parent</relatedObjectRole>
+
+           <targetObjectRelationshipField>Applicant</targetObjectRelationshipField>
+
+        </objectDetail>
+
+        <objectDetail>
+
+           <businessContext>DVC</businessContext>
+
+           <fieldDetail>
+
+             <name>Name</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>ProductId</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>RequestedAmount</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>RequestedMonthlyPayment</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>RequestedTerm</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>Stage</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>SystemModstamp</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>TotalBrandOwnedItemAmt</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>TotalVendorOwnedItemAmt</name>
+
+           </fieldDetail>
+
+           <name>ApplicationFormProduct</name>
+
+           <pathToRoot>ApplicationForm.Id</pathToRoot>
+
+           <relatedObjectRole>Parent</relatedObjectRole>
+
+          <targetObjectRelationshipField>ApplicationForm</targetObjectRelationshipField>
+
+```
+
+
+Metadata Types OnboardingDataObjectGroup
+
+```
+        </objectDetail>
+
+        <objectDetail>
+
+           <businessContext>DVC</businessContext>
+
+           <fieldDetail>
+
+             <name>Name</name>
+
+           </fieldDetail>
+
+           <name>ApplicationForm</name>
+
+           <pathToRoot>Id</pathToRoot>
+
+        </objectDetail>
+
+        <objectDetail>
+
+           <businessContext>DVC</businessContext>
+
+           <fieldDetail>
+
+             <name>FirstName</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>LastName</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>Name</name>
+
+           </fieldDetail>
+
+           <name>Applicant</name>
+
+           <pathToRoot>ApplicationForm.Id</pathToRoot>
+
+           <relatedObjectRole>Parent</relatedObjectRole>
+
+          <targetObjectRelationshipField>ApplicationForm</targetObjectRelationshipField>
+
+        </objectDetail>
+
+        <objectDetail>
+
+           <businessContext>DVC</businessContext>
+
+           <fieldDetail>
+
+             <name>AccountId</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>ApplicantId</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>ApplicationFormId</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>InterestRate</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>LastReferencedDate</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>LastViewedDate</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>Lender</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>Name</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+```
+
+
+### Metadata Types Package
+
+```
+             <name>ShareType</name>
+
+           </fieldDetail>
+
+           <fieldDetail>
+
+             <name>SourceSystemIdentifier</name>
+
+           </fieldDetail>
+
+           <name>PartyFinancialLiability</name>
+
+           <pathToRoot>ApplicationForm.Id</pathToRoot>
+
+           <relatedObjectRole>Parent</relatedObjectRole>
+
+          <targetObjectRelationshipField>ApplicationForm</targetObjectRelationshipField>
+
+        </objectDetail>
+
+        <onbrdDataObjGrpDocCatgMaps>
+
+           <documentCategory>Id_Proof</documentCategory>
+
+           <documentType>Aadhaar</documentType>
+
+        </onbrdDataObjGrpDocCatgMaps>
+
+        <onbrdDataObjGrpDocCatgMaps>
+
+           <documentCategory>Address_Proof</documentCategory>
+
+           <documentType>Passport</documentType>
+
+        </onbrdDataObjGrpDocCatgMaps>
+
+        <onbrdDataObjGrpDocCatgMaps>
+
+           <documentCategory>Id_Proof</documentCategory>
+
+           <documentType>Passport</documentType>
+
+        </onbrdDataObjGrpDocCatgMaps>
+
+        <onbrdDataObjGrpDocCatgMaps>
+
+           <documentCategory>Id_Proof</documentCategory>
+
+           <documentType>Pan_Card</documentType>
+
+        </onbrdDataObjGrpDocCatgMaps>
+
+        <status>Inactive</status>
+
+      </versionDetail>
+
+   </OnboardingDataObjectGroup>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>OnboardingDataObjectGroup</name>
+
+      </types>
+
+      <version>66.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### Package
 
 Specifies which metadata components to retrieve as part of a `retrieve()` call or defines a package of components.
 
+
+Metadata Types Package
+
 **Name** **Type** **Description**
 
-### apiAccessLevel APIAccessLevel (enumeration of Package components have access via dynamic Apex and the
-
+`apiAccessLevel` APIAccessLevel (enumeration of Package components have access via dynamic Apex and the
 type string) API to standard and custom objects in the organization where
 
 they’re installed. Administrators who install packages can
@@ -16265,7 +17193,7 @@ objects in the current package if the user's permissions
 allow access to them.
 
 For more information, see “API and Dynamic Apex Access in
-### Packages” in Salesforce Help.
+Packages” in Salesforce Help.
 
 `description` string A short description of the package.
 
@@ -16298,16 +17226,16 @@ This field is available in API version 24.0 and later.
 
 `setupWeblink` string The weblink used to describe package installation.
 
+`types` PackageTypeMembers on page The type of component being retrieved.
+1671[]
+
+`uninstallClass` string The name of the Apex class that specifies the actions to execute
+after the package has been uninstalled. The Apex class must
+
 
 ### Metadata Types ParticipantRole
 
 **Name** **Type** **Description**
-
-`types` PackageTypeMembers on page The type of component being retrieved.
-1661[]
-
-`uninstallClass` string The name of the Apex class that specifies the actions to execute
-after the package has been uninstalled. The Apex class must
 
 be a member of the package and must implement the Apex
 `UninstallHandler` interface. In patch upgrades, you
@@ -16357,11 +17285,11 @@ Sample package.xml Manifest Files
 Represents details, such as the name and associated default access level, for a role that a participant can have in the context of a parent
 record.
 
-
-Metadata Types ParticipantRole
-
 [other]: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
+
+
+Metadata Types ParticipantRole
 
 Parent Type
 
@@ -16424,16 +17352,16 @@ Required. The parent object for the participant role.
 
 Valid values are:
 
-
-Metadata Types ParticipantRole
-
-**Field Name** **Description**
-
 **•** `Account`
 
 **•** `Budget`
 
 Available in API version 59.0 and later.
+
+
+Metadata Types ParticipantRole
+
+**Field Name** **Description**
 
 **•** `IndividualApplication`
 
@@ -16560,7 +17488,7 @@ updateable.
 
 ### pathAssistantSteps PathAssistantStep[]
 
-on page 1665
+on page 1675
 
 List of all the steps that have been configured with fields and guidance
 information. Note that a missing step in the .xml file means it has not
@@ -16978,7 +17906,7 @@ later. This field is never retrieved or deployed for inactive
 record types.
 
 `ServicePresenceStatusAccesses` PermissionSetServicePresenceStatusAccess[]
-on page 1675
+on page 1685
 
 Indicates which Service presence statuses that the user
 assigned to this profile can execute. Available in API
@@ -17016,7 +17944,7 @@ use the Agentforce Employee Agent ( `true` ) or not ( `false` ).
 
 PermissionSetApplicationVisibility
 
-PermissionSetApplicationVisibility on page 1670 determines whether an app is visible to a user assigned to this permission set.
+PermissionSetApplicationVisibility on page 1680 determines whether an app is visible to a user assigned to this permission set.
 
 
 Metadata Types PermissionSet
@@ -17030,7 +17958,7 @@ permission set ( `true` ) or not ( `false` ).
 
 PermissionSetApexClassAccess
 
-PermissionSetApexClassAccess on page 1671 represents the Apex class access for users assigned to a permission set.
+PermissionSetApexClassAccess on page 1681 represents the Apex class access for users assigned to a permission set.
 
 **Field** **Field Type** **Description**
 
@@ -17041,7 +17969,7 @@ can execute methods in the top-level class ( `true` ) or not ( `false` ).
 
 PermissionSetCustomMetadataTypeAccess
 
-PermissionSetCustomMetadataTypeAccess on page 1671 represents the custom metadata type access for users assigned to a permission
+PermissionSetCustomMetadataTypeAccess on page 1681 represents the custom metadata type access for users assigned to a permission
 set. Available in API version 47.0 and later.
 
 **Field** **Field Type** **Description**
@@ -17093,7 +18021,7 @@ address.
 
 PermissionSetExternalCredentialPrincipalAccess
 
-PermissionSetExternalCredentialPrincipalAccess on page 1672 represents the access to the external credential’s principals. Users assigned
+PermissionSetExternalCredentialPrincipalAccess on page 1682 represents the access to the external credential’s principals. Users assigned
 to the permission set can make callouts using a named credential that references the external credential. Available in API version 59.0
 and later.
 
@@ -17118,7 +18046,7 @@ external credential principal’s name.
 
 PermissionSetExternalDataSourceAccess
 
-PermissionSetExternalDataSourceAccess on page 1672 represents the data source access for users with identity type of `Per User` .
+PermissionSetExternalDataSourceAccess on page 1682 represents the data source access for users with identity type of `Per User` .
 Available in API version 27.0 and later.
 
 
@@ -17133,7 +18061,7 @@ not ( `false` ).
 
 PermissionSetFieldPermissions
 
-PermissionSetFieldPermissions on page 1673 represents the field permissions for users assigned to a permission set. In API version 30.0
+PermissionSetFieldPermissions on page 1683 represents the field permissions for users assigned to a permission set. In API version 30.0
 and later, permissions for required fields can’t be retrieved or deployed. In API version 54.0 and later, only field permissions enabled in
 the permission set are returned in queries.
 
@@ -17163,7 +18091,7 @@ this permission set ( `true` ) or not ( `false` ).
 
 PermissionSetFlowAccess
 
-PermissionSetFlowAccess on page 1673 represents which flows a permission set grants access to. Available in API version 47.0 and later.
+PermissionSetFlowAccess on page 1683 represents which flows a permission set grants access to. Available in API version 47.0 and later.
 
 **Field** **Field Type** **Description**
 
@@ -17235,7 +18163,7 @@ object level.
 
 PermissionSetApexPageAccess
 
-PermissionSetApexPageAccess on page 1674 represents the Visualforce page access for users assigned to a permission set.
+PermissionSetApexPageAccess on page 1684 represents the Visualforce page access for users assigned to a permission set.
 
 **Field** **Field Type** **Description**
 
@@ -17249,7 +18177,7 @@ Metadata Types PermissionSet
 
 PermissionSetRecordTypeVisibility
 
-PermissionSetRecordTypeVisibility on page 1675 represents the visibility of record types for this permission set.
+PermissionSetRecordTypeVisibility on page 1685 represents the visibility of record types for this permission set.
 
 **Field** **Field Type** **Description**
 
@@ -17261,7 +18189,7 @@ assigned to this permission set ( `true` ) or not ( `false` ).
 
 PermissionSetTabSetting
 
-PermissionSetTabSetting on page 1675 represents the tab settings for a permission set.
+PermissionSetTabSetting on page 1685 represents the tab settings for a permission set.
 
 **Field** **Field Type** **Description**
 
@@ -19221,13 +20149,13 @@ Required. The label for the service that appears to users.
 string
 
 **Description**
-Required. Foreign key to the permissionSet on page 1667 entity.
+Required. Foreign key to the permissionSet on page 1677 entity.
 
 **Field Type**
 string
 
 **Description**
-Required. Foreign key to the profile on page 1716 entity.
+Required. Foreign key to the profile on page 1726 entity.
 
 Declarative Metadata Sample Definition
 
@@ -20578,7 +21506,7 @@ This field is available in API versions 37.0 to 44.0.
 `recordTypeVisibilities` ProfileRecordTypeVisibility[]
 
 `ServicePresenceStatusAccesses` ProfileServicePresenceStatusAccess[]
-on page 1729
+on page 1739
 
 `tabVisibilities` ProfileTabVisibility[]
 
@@ -21614,7 +22542,7 @@ _Salesforce DX Developer Guide_ [: Retrieve Changes to Profiles with Source Trac
 Represents an override of an ActionOverride by a user profile. You can use it to override an ActionOverride on a standard Home tab or
 object record page in Lightning Experience. When a user logs in with a profile, a matching ProfileActionOverride assignment takes
 precedence over existing overrides for the Home tab or record page specified in ActionOverride. In API versions 39.0 to 44.0, you can
-access ProfileActionOverride by accessing its encompassing CustomApplication on page 698 or Profile on page 1716 metadata types. In
+access ProfileActionOverride by accessing its encompassing CustomApplication on page 698 or Profile on page 1726 metadata types. In
 API version 45.0 and later, you can access ProfileActionOverride only by accessing its encompassing CustomApplication on page 698.
 
 Note: ProfileActionOverrides aren’t supported in packaging. They’re supported in change sets, but you have to add them manually.
@@ -23739,7 +24667,7 @@ This field is available in API version 29.0 and later.
 `description` string The description of the action.
 
 `fieldOverrides` FieldOverride on The specific field that can be overridden within a QuickAction on page
-page 1766[] 1763.
+page 1776[] 1773.
 
 `flowDefinition` string If the custom action invokes a flow, this field represents the API name
 of the flow. Otherwise, this field is `null` .
@@ -23945,7 +24873,7 @@ the action pane.
 FieldOverride
 
 Represents the field names and their respective formulas and literal values that comprise predefined value settings for a QuickAction on
-page 1763. If a field on an action has both a predefined value and a default value set, the action uses the predefined value, not the default
+page 1773. If a field on an action has both a predefined value and a default value set, the action uses the predefined value, not the default
 value. A formula value takes precedence over a literal value if both are defined.
 
 
@@ -23989,27 +24917,27 @@ string)
 
 **•** `CustomLinks`
 
-`quickActionLayoutColumns` QuickActionLayoutColumn Specifies columns in a QuickActionLayout on page 1767.
-on page 1767[]
+`quickActionLayoutColumns` QuickActionLayoutColumn Specifies columns in a QuickActionLayout on page 1777.
+on page 1777[]
 
 QuickActionLayoutColumn
 
-A column defined for a QuickActionLayout on page 1767.
+A column defined for a QuickActionLayout on page 1777.
 
 **Field Name** **Field Type** **Description**
 
-`quickActionLayoutItems` QuickActionLayoutItem Specifies row items in a QuickActionLayoutColumn on page 1767.
-on page 1767 []
+`quickActionLayoutItems` QuickActionLayoutItem Specifies row items in a QuickActionLayoutColumn on page 1777.
+on page 1777 []
 
 QuickActionLayoutItem
 
-A row item comprised of fields and defined for a QuickActionLayoutColumn on page 1767.
+A row item comprised of fields and defined for a QuickActionLayoutColumn on page 1777.
 
 **Field Name** **Field Type** **Description**
 
 `emptySpace` boolean Controls if this layout item is a blank space ( `true` ) or not ( `false` ).
 
-`field` string Represents a specific field in QuickActionLayoutItem on page 1767.
+`field` string Represents a specific field in QuickActionLayoutItem on page 1777.
 
 
 Metadata Types QuickAction
@@ -24022,7 +24950,7 @@ uiBehavior
 ```
 
 UiBehavior Specifies user input behavior for specific fields in QuickActionLayoutItem
-(enumeration of type on page 1767. The valid values are:
+(enumeration of type on page 1777. The valid values are:
 string)
 
 **•** `Edit`
@@ -24052,7 +24980,7 @@ string)
 
 Declarative Metadata Sample Definition
 
-The following is an example of a QuickAction on page 1763 component:
+The following is an example of a QuickAction on page 1773 component:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -24471,6 +25399,13 @@ and later.
 **•** `findMatchingIndividuals` —Finds contact, lead, or employee
 records that match a search term.
 
+**•** `findPastCollaborators`
+
+—Leverages insights from Einstein Activity Capture to identify individuals
+with past collaborative ties, aiding in securing introductions to relevant
+parties in ongoing or future deals. This value is available in API version 63.0
+and later.
+
 **•** `flow` —Invokes an autolaunched flow. This action type isn’t available for
 flows with a processType of Flow or AutolaunchedFlow. To invoke an
 autolaunched flow from one of those types, use FlowSubflow. This value
@@ -24495,8 +25430,18 @@ given object and returns a list of matching policy names.
 **•** `getPoliciesByPolicyType` —Gets Policy Center policies of the
 type specified in the user input, such as Data Backup or Data Archive.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `getPolicyDetails` —Gets details about a policy in Policy Center,
 such as the policy type and the objects the policy targets.
+
+**•** `getProductPricing` —Gets the pricing information of a product,
+including relevant historical sale price data from previous won deals
+involving the same product. This value is available in API version 63.0 and
+later.
 
 **•** `goToCadenceStep` —Jumps to the specified step in the Sales cadence.
 This value is available in API version 57.0 and later.
@@ -24504,11 +25449,6 @@ This value is available in API version 57.0 and later.
 **•** `internalTestAction` —Reserved for internal use.
 
 **•** `internalTestConnectApiAction` —Reserved for internal use.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `limitRepetitions` —Limit the number of times the same
 recommendation or offer appears on the same record or for the same user
@@ -24533,6 +25473,10 @@ from article list views. This value is available in API version 44.0 and later.
 version of a knowledge article. This value is available in API version 45.0
 and later.
 
+**•** `reviewBuyingCommittee` —Identifies and reviews key contacts
+associated with a deal, their influence on that deal, and other deals that
+they’ve impacted. This value is available in API version 63.0 and later.
+
 **•** `sendAlert` —Sends Salesforce Anywhere alerts to users. This value is
 available in API version 49.0 and later.
 
@@ -24551,6 +25495,11 @@ available in API version 55.0 and later.
 used for Omni-Channel skills-based routing. This value is available in version
 44.0 and later.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `slackArchiveChannel` —Archives a Slack channel in a Slack
 workspace. This value is available in API version 54.0 and later.
 
@@ -24568,11 +25517,6 @@ value is available in API version 54.0 and later.
 **•** `slackInviteUsersToChannel` —Adds users who are connected
 to a given Slack app to a Slack channel or group direct message. This value
 is available in API version 54.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `slackPinMessage` —Pin or unpin a message in a Slack channel or
 group direct message. This value is available in API version 54.0 and later.
@@ -24617,6 +25561,11 @@ more products at one or more inventory locations or location groups.
 **•** `ociReleaseReservation` —Releases one or more inventory
 reservations.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `ociTransferReservation` —Transfers one or more inventory
 reservations between locations or location groups.
 
@@ -24633,11 +25582,6 @@ checkout. This value is available in API version 47.0 and later.
 **•** `checkoutSessionAction` —Initiates or retrieves an existing
 Checkout Session for Checkout Flows. Available to B2B Commerce. This
 value is available in API version 49.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `cancelCartAsyncOperation` —Cancels a WebCart’s async
 operation. Available to B2B Commerce. This value is available in API version
@@ -24684,6 +25628,11 @@ the value is available in API version 55.0 and later.
 
 **•** `deleteCart` —Deletes a cart during Commerce checkout.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 These values are used in Data 360. If no version is specified, the value is available
 in API version 64.0 and later.
 
@@ -24698,11 +25647,6 @@ is specified, the value is available in API version 58.0 and later.
 
 **•** `managedContentPublishVariant` —Publishes a content variant
 associated with a flow. This value is available in API version 59.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `managedContentRoleStepInteractive` —Assigns a content
 variant review to a CMS role.
@@ -24748,6 +25692,11 @@ set of user inputs that represent policy details.
 These values are used in Insurance Brokerage. If no version is specified, the
 value is available in API version 63.0 and later.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `computeProducerSplits` —Compute the producer splits for the
 producers associated with an Insurance Policy, for a Commission Statement
 Line Item.
@@ -24763,11 +25712,6 @@ update the status of the commission statement line item record.
 
 These values are used in Order Management. If no version is specified, the value
 is available in API version 48.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `addOrderItemSummarySubmit` —Adds order item summaries to
 an order summary. This value is available in API version 54.0 and later.
@@ -24811,6 +25755,12 @@ defines a recipient and delivery method.
 
 **•** `createFulfillmentOrders` —Creates fulfillment orders and
 fulfillment order products for multiple order delivery group summaries,
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 each of which defines a recipient and delivery method. This value is available
 in API version 51.0 and later.
 
@@ -24827,11 +25777,6 @@ summary for an authorization or payments belonging to an order summary.
 
 **•** `createReturnOrder` —Creates a return order and return order items
 for an order.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `ensureFundsOrderSummaryAsync` —Triggers an asynchronous
 background process to ensure funds through a payment provider for an
@@ -24876,6 +25821,11 @@ summaries from an order summary.
 
 **•** `returnReturnOrderItems` —Processes return order line items.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 [For values used in Financial Services Cloud, see Flow for Financial Services](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_object_reference.meta/financial_services_cloud_object_reference/fsc_meta_visual_workforce.htm)
 [Cloud.](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_object_reference.meta/financial_services_cloud_object_reference/fsc_meta_visual_workforce.htm)
 
@@ -24892,11 +25842,6 @@ This value is used in Omnistudio.
 **•** `executeIntegrationProcedure` —Executes an Integration
 Procedure with Agentforce configured. This value is available in API version
 64.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 These values are used in Rebate Management.
 
@@ -24942,6 +25887,11 @@ API version 51.0 and later.
 These values are used in B2B Referral Management. If no version is specified,
 the value is available in API version 64.0 and later.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `enrollAdvocateB2bReferralProm` —Enroll an existing or new
 customer as an advocate for a referral promotion.
 
@@ -24956,11 +25906,6 @@ advocate refers a friend, or when referred friends sign up or make a
 purchase. This value is available in API version 60.0 and later.
 
 These values are used in Loyalty Management.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `adjustPoints` —Adjusts loyalty points for a specified program member
 or journal transaction. This value is available in API version 51.0 and later.
@@ -25007,6 +25952,11 @@ program member. This value is available in API version 51.0 and later.
 **•** `getLoyaltyPromotion` —Gets active loyalty promotions based on
 a transaction journal. This value is available in API version 53.0 and later.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `getLoyaltyPromotionBasedOnSalesforceCDP` —Gets
 promotions for a member based on the market segment the member
 belongs to. This value is available in API version 53.0 and later.
@@ -25021,11 +25971,6 @@ This value is available in API version 56.0 and later.
 **•** `transferMemberPointsToGroups` —Transfers points from an
 individual member or a corporate member to the member’s associated
 group. This value is available in API version 53.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `transferPoints` —Transfers points from a source loyalty program
 member to a target loyalty program member, or to a group that the
@@ -25071,6 +26016,11 @@ definitions. This value is available in API version 51.0 and later.
 
 This value is used for Einstein Visit Recommendation.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `saveRecommendationDecision` —Save visit and task
 recommendation decisions. This value is available in API version 51.0 and
 later.
@@ -25087,11 +26037,6 @@ available in API version 52.0 and later.
 **•** `deleteWorkPlans` —Deletes all the work plans and work steps
 associated with a work order or work order line item. Available in API version
 52.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `generateWorkPlans` —Generates work plans based off rules defined
 in the work plan library. Available in API version 52.0 and later.
@@ -25134,6 +26079,11 @@ and if the list is linked to a service process.
 
 This value is used in the Get Opportunity Grounding Data flow.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `getContentNote`                        - Gets the content note data for a specified record.
 This value is available in API version 64.0 and later.
 
@@ -25152,11 +26102,6 @@ inventory. Available in API version 64.0 and later.
 
 **•** `adjustPartnerUnsoldInventory`                        - Adjusts the partner unsold
 inventory quantities and prices. Available in API version 64.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 This value is used in Einstein Conversation Insights.
 
@@ -25192,6 +26137,9 @@ themselves. StrategyNodeUnionBase extends StrategyNodeBase and inherits all of i
 
 `limit` int Maximum number of results to output.
 
+
+Metadata Types RecommendationStrategy
+
 StrategyNodeFilter
 
 Defines a filter element that filters recommendations. It extends StrategyNodeUnionBase and inherits all its fields.
@@ -25208,9 +26156,6 @@ the output, and inputs that result in `false` are excluded.
 
 Selects specific children to execute and combines their results. Executes and returns results of children based on the array of child node
 expressions. Extends StrategyNodeUnionBase and inherits all of its fields.
-
-
-Metadata Types RecommendationStrategy
 
 **Field Name** **Field Type** **Description**
 
@@ -25257,7 +26202,12 @@ string)
 
 set for the running user.
 
-**•** `activationSchema`         - Gets the activation schema for the specified
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
+**•** `activationSchema`                        - Gets the activation schema for the specified
 activation. This value is available in API version 64.0 and later.
 
 **•** `addMessageToChat` —Adds a message to an existing Salesforce
@@ -25276,11 +26226,6 @@ version 46.0 and later.
 
 **•** `addUsersToChat` —Adds users to an existing Salesforce Anywhere
 chat. This value is available in API version 49.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `addUsersToQuipDocument` —Adds users, identified by their email
 addresses, to an existing Quip document, spreadsheet, or slide. This value
@@ -25322,6 +26267,12 @@ value is available in API version 45.0 and later.
 
 **•** `component` —Invokes the Lightning component that implements the
 `lightning:availableForFlowActions` interface and that is
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 referenced by `actionName` . This value is available in API version 43.0
 and later.
 
@@ -25341,11 +26292,6 @@ from a published knowledge article. This value is available in API version
 **•** `createInvoiceFromFulfillmentOrder` —Creates an invoice
 from a purchase order. Available to B2B Commerce. This value is available
 in API version 49.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `createQuipChat` —Creates a Quip chat room. This value is available
 in API version 46.0 and later.
@@ -25389,6 +26335,18 @@ and later.
 **•** `findMatchingIndividuals` —Finds contact, lead, or employee
 records that match a search term.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
+**•** `findPastCollaborators`
+
+—Leverages insights from Einstein Activity Capture to identify individuals
+with past collaborative ties, aiding in securing introductions to relevant
+parties in ongoing or future deals. This value is available in API version 63.0
+and later.
+
 **•** `flow` —Invokes an autolaunched flow. This action type isn’t available for
 flows with a processType of Flow or AutolaunchedFlow. To invoke an
 autolaunched flow from one of those types, use FlowSubflow. This value
@@ -25406,11 +26364,6 @@ customer's email to verify their identity. This value is available in API versio
 between the agent and the customer. This value is available in API version
 50.0 and later.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 **•** `getArticleSmartLinkUrl` —Gets the Smart Link URL of the
 Salesforce Knowledge article. Smart links go to the right article and version,
 even when a new version is published or the URL name changes. This value
@@ -25424,6 +26377,11 @@ type specified in the user input, such as Data Backup or Data Archive.
 
 **•** `getPolicyDetails` —Gets details about a policy in Policy Center,
 such as the policy type and the objects the policy targets.
+
+**•** `getProductPricing` —Gets the pricing information of a product,
+including relevant historical sale price data from previous won deals
+involving the same product. This value is available in API version 63.0 and
+later.
 
 **•** `internalTestAction` —Reserved for internal use.
 
@@ -25442,6 +26400,11 @@ asynchronously. This value is available in API version 48.0 and later.
 
 **•** `quickAction` —Invokes a QuickAction.
 
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
+
 **•** `parseConvoAnalysis` —Parses conversation data to analyze
 sentiment or extract actionable insights. This value is available in API version
 51.0 and later.
@@ -25456,6 +26419,10 @@ from article list views. This value is available in API version 44.0 and later.
 version of a knowledge article. This value is available in API version 45.0
 and later.
 
+**•** `reviewBuyingCommittee` —Identifies and reviews key contacts
+associated with a deal, their influence on that deal, and other deals that
+they’ve impacted. This value is available in API version 63.0 and later.
+
 **•** `sendAlert` —Sends Salesforce Anywhere alerts to users. This value is
 available in API version 49.0 and later.
 
@@ -25469,11 +26436,6 @@ support case closes. This value is available in API version 47.0 and later.
 **•** `performSurveySentimentAnalysis` —Perform survey sentiment
 analysis to create or update the AI Sentiment Result records. This value is
 available in API version 55.0 and later.
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
 
 **•** `skillsBasedRouting` [—Creates a PendingServiceRouting record](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_pendingservicerouting.htm)
 used for Omni-Channel skills-based routing. This value is available in version
@@ -25502,6 +26464,11 @@ group direct message. This value is available in API version 54.0 and later.
 
 **•** `slackPostMessage` —Send a message to a Slack channel or group
 direct message. This value is available in API version 54.0 and later.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 **•** `slackSendMessageToLaunchFlow` —Send a message to a Slack
 channel, direct message, or the Messages tab of a Slack app that includes
@@ -25534,11 +26501,6 @@ reservations at a location or location group.
 **•** `ociFulfillReservation` —Fulfills one or more inventory
 reservations at a location.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 **•** `ociGetAvailability` —Gets inventory availability data for one or
 more products at one or more inventory locations or location groups.
 
@@ -25565,6 +26527,11 @@ value is available in API version 49.0 and later.
 **•** `cancelCartAsyncOperation` —Cancels a WebCart’s async
 operation. Available to B2B Commerce. This value is available in API version
 49.0 and later.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 **•** `calcCartPromotionsAction` —Requests a full cart promotion
 calculation of all applicable line items in the Web Cart during B2B
@@ -25598,11 +26565,6 @@ a context definition.
 **•** `updateContextAttributes` —Updates attributes on the context
 instance using context tags.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 These values are used in the Commerce Checkout Flow. If no version is specified,
 the value is available in API version 55.0 and later.
 
@@ -25630,6 +26592,11 @@ status of a content variant.
 
 **•** `managedContentVariantSetReadyStatus` —Sets the ready
 for publication status of a content variant.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 These values are used in Employee Service. If no version is specified, the value
 is available in API version 64.0 and later.
@@ -25666,11 +26633,6 @@ value is available in API version 63.0 and later.
 producers associated with an Insurance Policy, for a Commission Statement
 Line Item.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 **•** `createProducerCommissions` —Create records for the
 commissions that producers receive for the insurance policy associated
 with the specified commission statement line item, and update the
@@ -25694,6 +26656,11 @@ version 49.0 and later.
 **•** `adjustOrderItemSummariesSubmit` —Applies a price adjustment
 to order item summaries from an order summary. This value is available in
 API version 49.0 and later.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 **•** `authorizePayment` —Authorizes a card payment. This value is
 available in API version 55.0 and later.
@@ -25729,12 +26696,6 @@ defines a recipient and delivery method.
 
 **•** `createFulfillmentOrders` —Creates fulfillment orders and
 fulfillment order products for multiple order delivery group summaries,
-
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 each of which defines a recipient and delivery method. This value is available
 in API version 51.0 and later.
 
@@ -25759,6 +26720,11 @@ invoice belonging to an order summary.
 **•** `ensureRefundsOrderSummaryAsync` —Triggers an asynchronous
 background process to ensure refunds through a payment provider for an
 invoice belonging to an order summary.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 **•** `getFulfillmentOrderCapacityValues` —Gets fulfillment
 order capacity information. This value is available in API version 55.0 and
@@ -25795,11 +26761,6 @@ summaries from an order summary.
 
 **•** `returnReturnOrderItems` —Processes return order line items.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 These values are used in Financial Services Cloud.
 
 **•** `createFinancialRecords` —Creates person accounts, contacts,
@@ -25822,6 +26783,11 @@ These values are used in Rebate Management.
 
 **•** `addRebateMemberList` —Adds a list of members to a rebate program.
 This value is available in API version 51.0 and later.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 **•** `calculateProjectedRebateAmount` —Calculates the projected
 rebate amount for rebate types associated with a specified transaction ID.
@@ -25859,11 +26825,6 @@ value is available in API version 51.0 and later.
 rebate payout for the specified aggregate record. This value is available in
 API version 51.0 and later.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 These values are used in B2B Referral Management. If no version is specified,
 the value is available in API version 64.0 and later.
 
@@ -25884,6 +26845,11 @@ These values are used in Loyalty Management.
 
 **•** `adjustPoints` —Adjusts loyalty points for a specified program member
 or journal transaction. This value is available in API version 51.0 and later.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 **•** `assignTierBenefits`                        - Assigns Member Benefits to a member tier
 for benefits that are associated with a Benefit Action. This value is available
@@ -25924,11 +26890,6 @@ value is available in API version 51.0 and later.
 **•** `getPointsBalance` —Gets the loyalty points balance for a specified
 program member. This value is available in API version 51.0 and later.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 **•** `getLoyaltyPromotion` —Gets active loyalty promotions based on
 a transaction journal. This value is available in API version 53.0 and later.
 
@@ -25950,6 +26911,11 @@ group. This value is available in API version 53.0 and later.
 **•** `transferPoints` —Transfers points from a source loyalty program
 member to a target loyalty program member, or to a group that the
 member is a part of. This value is available in API version 64.0 and later.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 **•** `updateProgressForCumulativePromotionUsage` —Updates
 the progress a member has made towards attaining a cumulative type
@@ -25989,11 +26955,6 @@ This value is for Data Processing Engine.
 **•** `dataProcessingEngineAction` —Runs the data processing engine
 definitions. This value is available in API version 51.0 and later.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 This value is used for Einstein Visit Recommendation.
 
 **•** `saveRecommendationDecision` —Save visit and task
@@ -26015,6 +26976,11 @@ associated with a work order or work order line item.
 in the work plan library.
 
 For values used in Intelligent Form Reader, see Flow for Intelligent Form Reader.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 For values used in Intelligent Document Reader, see Flow for Intelligent
 Document Reader.
@@ -26054,11 +27020,6 @@ a field update suggestion from a field generation prompt template. Also
 enqueues requests to update a field based on the generated suggestion.
 This value is available in API version 64.0 and later.
 
-
-Metadata Types RecommendationStrategy
-
-**Field Name** **Field Type** **Description**
-
 This value is used in Einstein Conversation Insights.
 
 **•** `getConversationTranscript` —Gets the conversation transcript
@@ -26080,6 +27041,11 @@ These values are reserved for future use.
 **•** `thanks`
 
 **•** `metricRefresh`
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 **•** `exportSurveyResponses`
 
@@ -26120,9 +27086,6 @@ string)
 
 `maxRecommendationCount` int Maximum number of times recommendation has been accepted or rejected.
 
-
-Metadata Types RecommendationStrategy
-
 StrategyNodeRecommendationLoad
 
 Retrieves Recommendation objects. Extends StrategyNodeUnionBase and inherits all of its fields.
@@ -26141,6 +27104,9 @@ are loaded. For example, the field references `Account` or
 in API version 48.0 and later.
 
 `sortField` StrategyNodeSortField The field to sort on. Available in API version 48.0 and later.
+
+
+Metadata Types RecommendationStrategy
 
 RecommendationLoadCondition
 
@@ -26189,9 +27155,6 @@ RecommendationConditionValue
 
 Represents a value used as part of a RecommendationCondition.
 
-
-Metadata Types RecommendationStrategy
-
 **Field Name** **Field Type** **Description**
 
 Required.
@@ -26224,6 +27187,9 @@ string)
 StrategyNodeSortField
 
 Defines the field to sort on for StrategyNodeSort and StrategyNodeRecommendationLoad.
+
+
+Metadata Types RecommendationStrategy
 
 **Field Name** **Field Type** **Description**
 
@@ -26263,13 +27229,10 @@ StrategyNodeMap
 
 Set recommendation fields with values. Extends StrategyNodeUnionBase and inherits all of its fields.
 
-
-Metadata Types RecommendationStrategy
-
 **Field Name** **Field Type** **Description**
 
 `mapExpression` MapExpression on List of MaxExpressions.
-page 1802[]
+page 1812[]
 
 StrategyNodeExclusive
 
@@ -26285,6 +27248,11 @@ Sets the value for a recommendation field used by the strategy.
 data type specified in the `type` field.
 
 `name` string Required. Recommendation field name that the expression sets the value for.
+
+
+Metadata Types RecommendationStrategy
+
+**Field Name** **Field Type** **Description**
 
 `type` string
 
@@ -26334,52 +27302,52 @@ incidents</description>
 
      <childNode>IfModel</childNode>
 
+     <description>If Machine Down</description>
+
+     <label>RootNode</label>
+
+     <name>RootNode</name>
+
+     <childNodeExpression>
+
+        <childName>IfModel</childName>
+
+        <expression>ISPICKVAL($Record.Status, &quot;OutOfOrder&quot;)</expression>
+
+     </childNodeExpression>
+
+     <childNodeExpression>
+
+        <childName>IfNoEscaladeOrBetterSupport</childName>
+
+        <expression>ISPICKVAL($Record.Status, &quot;OutOfOrder&quot;)</expression>
+
+     </childNodeExpression>
+
+     <onlyFirstMatch>false</onlyFirstMatch>
+
+   </if>
+
+   <if>
+
+     <childNode>LoadEscalade</childNode>
+
+     <description>If Customer does not have escalade support plan</description>
+
+     <label>IfNoEscaladeOrBetterSupport</label>
+
+     <name>IfNoEscaladeOrBetterSupport</name>
+
+     <childNodeExpression>
+
+        <childName>LoadEscalade</childName>
+
 ```
 
 
 Metadata Types RecommendationStrategy
 
 ```
-        <description>If Machine Down</description>
-
-        <label>RootNode</label>
-
-        <name>RootNode</name>
-
-        <childNodeExpression>
-
-           <childName>IfModel</childName>
-
-           <expression>ISPICKVAL($Record.Status, &quot;OutOfOrder&quot;)</expression>
-
-        </childNodeExpression>
-
-        <childNodeExpression>
-
-           <childName>IfNoEscaladeOrBetterSupport</childName>
-
-           <expression>ISPICKVAL($Record.Status, &quot;OutOfOrder&quot;)</expression>
-
-        </childNodeExpression>
-
-        <onlyFirstMatch>false</onlyFirstMatch>
-
-      </if>
-
-      <if>
-
-        <childNode>LoadEscalade</childNode>
-
-        <description>If Customer does not have escalade support plan</description>
-
-        <label>IfNoEscaladeOrBetterSupport</label>
-
-        <name>IfNoEscaladeOrBetterSupport</name>
-
-        <childNodeExpression>
-
-           <childName>LoadEscalade</childName>
-
            <expression>NOT(ISPICKVAL($Record.Account.SLA__c, &quot;Gold&quot;) ||
 
    ISPICKVAL($Record.Account.SLA__c, &quot;Platinum&quot;))</expression>
@@ -26444,12 +27412,6 @@ Metadata Types RecommendationStrategy
 
              <value>Upgrade your Maintenance Package</value>
 
-```
-
-
-Metadata Types RecommendationStrategy
-
-```
            </value>
 
         </condition>
@@ -26490,6 +27452,12 @@ Metadata Types RecommendationStrategy
 
       <recommendationLoad>
 
+```
+
+
+Metadata Types RecommendationStrategy
+
+```
         <description>Load Maxi Coffee Roaster Diagnostic Troubleshooting
 
    proposition</description>
@@ -26558,12 +27526,6 @@ Metadata Types RecommendationStrategy
 
         <expression>
 
-```
-
-
-### Metadata Types RecordActionDeployment
-
-```
            <name>Name</name>
 
            <expression>'Hello' & $User.FirstName</expression>
@@ -26593,7 +27555,8 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### RecordActionDeployment
+
+### Metadata Types RecordActionDeployment RecordActionDeployment
 
 Represents configuration settings for the Actions & Recommendations, Action Launcher, and Bulk Action Panel components. For example,
 you can have a deployment that specifies which types of actions to display, default actions for channels, and the actions that users can
@@ -26628,11 +27591,6 @@ of type string)
 
 **•** `ActionsAndRecommendations` —0
 
-
-Metadata Types RecordActionDeployment
-
-**Field Name** **Field Type** **Description**
-
 **•** `ActionLauncher` —1
 
 **•** `BulkActionPanel` —2. This value is available in API
@@ -26642,7 +27600,8 @@ For example, a value of 1 indicates that 1 is stored in the database
 if Action Launcher is used to create a deployment. Available in API
 version 56.0 and later.
 
-`deploymentContexts` RecordActionDeploymentContext Specifies the object context for quick actions and Next Best Action
+### deploymentContexts RecordActionDeploymentContext Specifies the object context for quick actions and Next Best Action
+
 strategies. Available in API version 46.0 and later.
 
 `hasComponents` boolean
@@ -26653,6 +27612,11 @@ and later.
 
 `hasGuidedActions` boolean Specifies that the component shows standard actions; for example,
 flows and quick actions. Available in API version 46.0 and later.
+
+
+Metadata Types RecordActionDeployment
+
+**Field Name** **Field Type** **Description**
 
 hasOmniscripts boolean
 
@@ -26687,11 +27651,6 @@ flow, such as `Verify_Information` .
 
 `isUiRemoveHidden` boolean Specifies whether the remove option is hidden in the UI. The default value is
 false. If `true`, the UI hides the ability to remove the action from the list.
-
-
-Metadata Types RecordActionDeployment
-
-**Field Name** **Field Type** **Description**
 
 ```
 pinned
@@ -26729,6 +27688,9 @@ string)
 
 **•** `WebLink` (Available in API version 62.0 and later.)
 
+
+Metadata Types RecordActionDeployment
+
 RecordActionDeploymentChannel
 
 Specifies channel-specific defaults to show in the Actions & Recommendations component. The component displays the channel defaults
@@ -26763,11 +27725,6 @@ Note: We support a maximum of 10 objects that provide context within a deploymen
 
 `entityName` string Required. Specifies the API name of an object to use as context.
 
-
-Metadata Types RecordActionDeployment
-
-**Field Name** **Field Type** **Description**
-
 `recommendationStrategy` string Specifies the API name of a Next Best Action strategy that overrides the default
 strategy on this page. A strategy is a metadata type RecommendationStrategy.
 
@@ -26788,6 +27745,11 @@ metadata type, RecommendationStrategy.
 recommendation.
 
 `hasTitle` boolean Required. If `true`, display the title for the recommendation.
+
+
+Metadata Types RecordActionDeployment
+
+**Field Name** **Field Type** **Description**
 
 `maxDisplayRecommendations` int Required. Specifies the maximum number of recommendations to display.
 Valid values are 1–4.
@@ -26819,6 +27781,8 @@ string)
 
 `isFrequentAction` boolean
 
+frequentActionSequenceNbr integer
+
 **•** `OmniScript` (Available in API version 56.0 and later.)
 
 **•** `LWC` (Available in API version 62.0 and later.)
@@ -26831,13 +27795,6 @@ Indicates whether an action is frequently accessed by users ( `true` ) or not
 ( `false` ). Available in version 57.0 and later.
 
 This field applies only to Action Launcher.
-
-
-Metadata Types RecordActionDeployment
-
-**Field Name** **Field Type** **Description**
-
-frequentActionSequenceNbr integer
 
 The sequence number that's assigned to a frequently used action that's shown
 on Action Launcher. Available in version 57.0 and later.
@@ -26868,70 +27825,70 @@ The following is a sample of a `recordActionDeployment` file.
 
         <isUiRemoveHidden>false</isUiRemoveHidden>
 
-        <position>1</position>
-
-        <pinned>Top</pinned>
-
-        <type>Flow</type>
-
-     </channelItems>
-
-     <channelItems>
-
-        <action>Another_Sample_Flow</action>
-
-        <isMandatory>false</isMandatory>
-
-        <isUiRemoveHidden>true</isUiRemoveHidden>
-
-        <position>2</position>
-
-        <pinned>Top</pinned>
-
-        <type>Flow</type>
-
-     </channelItems>
-
-     <isAutopopEnabled>true</isAutopopEnabled>
-
-   </channelConfigurations>
-
-   <masterLabel>Sample Deployment</masterLabel>
-
-   <selectableItems>
-
-     <action>Sample_Flow</action>
-
-     <type>Flow</type>
-
-     <isFrequentAction>true</isFrequentAction>
-
-     <frequentActionSequenceNbr>1</frequentActionSequenceNbr>
-
-   </selectableItems>
-
-   <selectableItems>
-
-     <action>Sample_Flow_2</action>
-
-     <type>Flow</type>
-
-     <isFrequentAction>false</isFrequentAction>
-
-   </selectableItems>
-
-   <hasGuidedActions>true</hasGuidedActions>
-
-   <hasRecommendations>true</hasRecommendations>
-
-   <recommendation>
-
 ```
 
 
-### Metadata Types RecordAggregationDefinition
+Metadata Types RecordActionDeployment
 
 ```
+           <position>1</position>
+
+           <pinned>Top</pinned>
+
+           <type>Flow</type>
+
+        </channelItems>
+
+        <channelItems>
+
+           <action>Another_Sample_Flow</action>
+
+           <isMandatory>false</isMandatory>
+
+           <isUiRemoveHidden>true</isUiRemoveHidden>
+
+           <position>2</position>
+
+           <pinned>Top</pinned>
+
+           <type>Flow</type>
+
+        </channelItems>
+
+        <isAutopopEnabled>true</isAutopopEnabled>
+
+      </channelConfigurations>
+
+      <masterLabel>Sample Deployment</masterLabel>
+
+      <selectableItems>
+
+        <action>Sample_Flow</action>
+
+        <type>Flow</type>
+
+        <isFrequentAction>true</isFrequentAction>
+
+        <frequentActionSequenceNbr>1</frequentActionSequenceNbr>
+
+      </selectableItems>
+
+      <selectableItems>
+
+        <action>Sample_Flow_2</action>
+
+        <type>Flow</type>
+
+        <isFrequentAction>false</isFrequentAction>
+
+      </selectableItems>
+
+      <hasGuidedActions>true</hasGuidedActions>
+
+      <hasRecommendations>true</hasRecommendations>
+
+      <recommendation>
+
         <defaultStrategy>Sample_Global_Strategy</defaultStrategy>
 
         <maxDisplayRecommendations>4</maxDisplayRecommendations>
@@ -26983,6 +27940,12 @@ The following is an example `package.xml` that references the previous definitio
 
         <members>Sample_Flow_2</members>
 
+```
+
+
+### Metadata Types RecordAggregationDefinition
+
+```
         <name>Flow</name>
 
       </types>
@@ -27016,17 +27979,13 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-
-Metadata Types RecordAggregationDefinition
-
 File Suffix and Directory Location
 
-RecordAggregationDefinition components have the suffix `.RecordAggregationDefinition` and are stored in the
-`RecordAggregationDefinitions` folder.
+### RecordAggregationDefinition components have the suffix .RecordAggregationDefinition and are stored in the RecordAggregationDefinitions folder.
 
 Version
 
-RecordAggregationDefinition components are available in API version 59.0 and later.
+### RecordAggregationDefinition components are available in API version 59.0 and later.
 
 Special Access Rules
 
@@ -27040,12 +27999,6 @@ Fields
 ```
 aggregateFromObject
 
-aggregateToObject
-
-aggregationType
-
-batchProcessingDefinition
-
 ```
 
 **Field Type**
@@ -27055,7 +28008,29 @@ string
 
 Required.
 
+
+Metadata Types RecordAggregationDefinition
+
+**Field Name** **Description**
+
 API name of the object from which data is aggregated.
+
+```
+aggregateToObject
+
+aggregationType
+
+batchProcessingDefinition
+
+description
+
+displayName
+
+onDemandProcDefinition
+
+recordAggregationObject
+
+```
 
 **Field Type**
 string
@@ -27085,24 +28060,6 @@ string
 **Description**
 Data Processing Engine definition that aggregates data from one record to another.
 
-
-Metadata Types RecordAggregationDefinition
-
-**Field Name** **Description**
-
-```
-description
-
-displayName
-
-onDemandProcDefinition
-
-recordAggregationObject
-
-status
-
-```
-
 **Field Type**
 string
 
@@ -27129,8 +28086,18 @@ on demand. Available in API version 63.0 and later.
 
 RecordAggregationObject[]
 
+
+Metadata Types RecordAggregationDefinition
+
+**Field Name** **Description**
+
 **Description**
 List of record aggregation objects in the record aggregation join sequence.
+
+```
+status
+
+```
 
 **Field Type**
 RecordAggregationDefinitionStatus (enumeration of type string)
@@ -27158,33 +28125,19 @@ Represents an object in the record aggregation join sequence.
 ```
 associatedObject
 
+developerName
+
+filterLogic
+
 ```
 
 **Field Type**
 string
 
-
-Metadata Types RecordAggregationDefinition
-
-**Field Name** **Description**
-
 **Description**
 Required.
 
 API name of the object associated with this record aggregation object.
-
-```
-developerName
-
-filterLogic
-
-masterLabel
-
-recordAggregationJoinCondition
-
-recordAggregationObjectFilter
-
-```
 
 **Field Type**
 string
@@ -27205,6 +28158,20 @@ two or more record aggregation object filters, but don’t specify the sequence 
 to apply the filters, the filters are applied by using a logical AND expression.
 
 Available in API version 60.0 and later.
+
+
+Metadata Types RecordAggregationDefinition
+
+**Field Name** **Description**
+
+```
+masterLabel
+
+recordAggregationJoinCondition
+
+recordAggregationObjectFilter
+
+```
 
 **Field Type**
 string
@@ -27232,9 +28199,6 @@ List of filters that are applied to the records of this record aggregation objec
 
 Available in API version 60.0 and later.
 
-
-Metadata Types RecordAggregationDefinition
-
 RecordAggregationJoinCondition
 
 Represents a condition in a join between two record aggregation objects.
@@ -27247,10 +28211,6 @@ joinField
 navigationSequenceNumber
 
 relatedJoinField
-
-relatedRecordAggregationObject
-
-type
 
 ```
 
@@ -27275,11 +28235,23 @@ which the data is aggregated to the object that contains the data being aggregat
 **Field Type**
 string
 
+
+Metadata Types RecordAggregationDefinition
+
+**Field Name** **Description**
+
 **Description**
 Required.
 
 API name of the field on the related record aggregation object's associated object that
 is used in the join condition.
+
+```
+relatedRecordAggregationObject
+
+type
+
+```
 
 **Field Type**
 string
@@ -27306,9 +28278,6 @@ Valid values are:
 
 **•** `Intermediate`
 
-
-Metadata Types RecordAggregationDefinition
-
 RecordAggregationObjectFilter
 
 Represents a filter that is applied to the records of an object in the record aggregation join sequence. Available in API version 60.0 and
@@ -27320,10 +28289,6 @@ later.
 associatedObjectField
 
 operator
-
-sequenceNumber
-
-value
 
 ```
 
@@ -27343,6 +28308,11 @@ RecordAggregationObjectFilterOperator (enumeration of type string)
 **Description**
 
 Required.
+
+
+Metadata Types RecordAggregationDefinition
+
+**Field Name** **Description**
 
 Operator used in the filter expression.
 
@@ -27366,6 +28336,13 @@ Values are:
 
 **•** `NotIn`
 
+```
+sequenceNumber
+
+value
+
+```
+
 **Field Type**
 int
 
@@ -27385,40 +28362,43 @@ Required.
 Reference value with which the designated field's values are compared when the filter
 is applied on the associated object's records.
 
-
-Metadata Types RecordAggregationDefinition
-
 Declarative Metadata Sample Definition
 
 The following is an example of a RecordAggregationDefinition component.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <RecordAggregationDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+<RecordAggregationDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <aggregateToObject>PartyRelationshipGroup</aggregateToObject>
+   <aggregateToObject>PartyRelationshipGroup</aggregateToObject>
 
-      <aggregateFromObject>PartyIncome</aggregateFromObject>
+   <aggregateFromObject>PartyIncome</aggregateFromObject>
 
-      <status>Active</status>
+   <status>Active</status>
 
-      <aggregationType>Record</aggregationType>
+   <aggregationType>Record</aggregationType>
 
-      <description>Aggregate head of household's income to household</description>
+   <description>Aggregate head of household's income to household</description>
 
-      <displayName>Party Income to Party Relationship Group</displayName>
+   <displayName>Party Income to Party Relationship Group</displayName>
 
-      <recordAggregationObject>
+   <recordAggregationObject>
 
-        <associatedObject>PartyRelationshipGroup</associatedObject>
+     <associatedObject>PartyRelationshipGroup</associatedObject>
 
-        <masterLabel>Party Relationship Group Object</masterLabel>
+     <masterLabel>Party Relationship Group Object</masterLabel>
 
-        <developerName>PartyRelationshipGroupObject</developerName>
+     <developerName>PartyRelationshipGroupObject</developerName>
 
-        <recordAggregationJoinCondition>
+     <recordAggregationJoinCondition>
 
+```
+
+
+Metadata Types RecordAggregationDefinition
+
+```
            <joinField>Account</joinField>
 
            <navigationSequenceNumber>1</navigationSequenceNumber>
@@ -27489,12 +28469,6 @@ The following is an example of a RecordAggregationDefinition component.
 
         <developerName>PartyIncomeObject</developerName>
 
-```
-
-
-### Metadata Types RecordAlertCategory
-
-```
         <filterLogic>1 AND 2</filterLogic>
 
         <recordAggregationObjectFilter>
@@ -27526,6 +28500,9 @@ The following is an example of a RecordAggregationDefinition component.
    </RecordAggregationDefinition>
 
 ```
+
+
+### Metadata Types RecordAlertCategory
 
 The following is an example `package.xml` that references the previous definition.
 
@@ -27570,12 +28547,9 @@ File Suffix and Directory Location
 
 folder.
 
-
-Metadata Types RecordAlertCategory
-
 Version
 
-RecordAlertCategory components are available in API version 54.0 and later.
+### RecordAlertCategory components are available in API version 54.0 and later.
 
 Fields
 
@@ -27585,8 +28559,6 @@ Fields
 description
 
 masterLabel
-
-severity
 
 ```
 
@@ -27599,11 +28571,21 @@ The description of the record alert category.
 **Field Type**
 string
 
+
+Metadata Types RecordAlertCategory
+
+**Field Name** **Description**
+
 **Description**
 
 Required.
 
 The user-interface name of the record alert category.
+
+```
+severity
+
+```
 
 **Field Type**
 string
@@ -27642,38 +28624,35 @@ The following is an example of a RecordAlertCategory component.
 
    <masterLabel>Fraud</masterLabel>
 
-```
+   <severity>Error</severity>
 
-
-### Metadata Types RegisteredExternalService
-
-```
-      <severity>Error</severity>
-
-   </RecordAlertCategory>
+</RecordAlertCategory>
 
 ```
 
 The following is an example `package.xml` that references the previous definition.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <types>
+   <types>
 
-        <members>Fraud</members>
+     <members>Fraud</members>
 
-        <name>RecordAlertCategory</name>
+     <name>RecordAlertCategory</name>
 
-      </types>
+   </types>
 
-      <version>54.0</version>
+   <version>54.0</version>
 
-   </Package>
+</Package>
 
 ```
+
+
+### Metadata Types RegisteredExternalService
 
 Wildcard Support in the Manifest File
 
@@ -27709,27 +28688,17 @@ Fields
 ```
 configUrl
 
+description
+
+documentationUrl
+
 ```
 
 **Field Type**
 string
 
-
-Metadata Types RegisteredExternalService
-
-**Field Name** **Description**
-
 **Description**
 Link to the configuration page for the integration.
-
-```
-description
-
-documentationUrl
-
-extensionPointName
-
-```
 
 **Field Type**
 string
@@ -27742,8 +28711,20 @@ This field is available in API version 59.0 and later.
 **Field Type**
 string
 
+
+Metadata Types RegisteredExternalService
+
+**Field Name** **Description**
+
 **Description**
 Link to documentation for the registered external service.
+
+```
+extensionPointName
+
+externalServiceProvider
+
+```
 
 **Field Type**
 ExtensionPointName (enumeration of type string)
@@ -27792,11 +28773,6 @@ later.
 **•** `Commerce_Endpoint_Cart_ItemCollection` —Available in API
 version 62.0 and later.
 
-
-Metadata Types RegisteredExternalService
-
-**Field Name** **Description**
-
 **•** `Commerce_Endpoint_Catalog_Product`
 
 **•** `Commerce_Endpoint_Catalog_Products`
@@ -27810,17 +28786,13 @@ later.
 
 **•** `Commerce_Endpoint_Search_ProductsByCategory`
 
-```
-externalServiceProvider
-
-externalServiceProviderType
-
-iconUri
-
-```
-
 **Field Type**
 string
+
+
+Metadata Types RegisteredExternalService
+
+**Field Name** **Description**
 
 **Description**
 Required. The ID of an Apex class functioning as a provider. The Apex class can either
@@ -27836,6 +28808,15 @@ implement one of the following interfaces:
 
 [or the Apex class can extend one of the base classes for an extension. See Available](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/available-extensions.html)
 [Extensions.](https://developer.salesforce.com/docs/commerce/salesforce-commerce/guide/available-extensions.html)
+
+```
+externalServiceProviderType
+
+iconUri
+
+isApplication
+
+```
 
 **Field Type**
 RegistryProviderType (enumeration of type string)
@@ -27868,21 +28849,7 @@ string
 **Description**
 URI of icon for the extension provider.
 
-
-Metadata Types RegisteredExternalService
-
-**Field Name** **Description**
-
 This field is available in API version 59.0 and later.
-
-```
-isApplication
-
-isProtected
-
-masterLabel
-
-```
 
 **Field Type**
 boolean
@@ -27893,6 +28860,18 @@ Indicates if the extension provider is contained within a managed package.
 The default value is `false` .
 
 This field is available in API version 59.0 and later.
+
+
+### Metadata Types ReferencedDashboard
+
+**Field Name** **Description**
+
+```
+isProtected
+
+masterLabel
+
+```
 
 **Field Type**
 boolean
@@ -27955,15 +28934,9 @@ The following is an example `package.xml` that references the previous definitio
 
    </types>
 
-```
+   <version>60.0</version>
 
-
-### Metadata Types ReferencedDashboard
-
-```
-      <version>60.0</version>
-
-   </Package>
+</Package>
 
 ### ReferencedDashboard
 
@@ -27975,17 +28948,20 @@ dashboard.
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
+
+Metadata Types ReferencedDashboard
+
 Parent Type
 
 [This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
 
 File Suffix and Directory Location
 
-### ReferencedDashboard components have the suffix .refdash and are stored in the wave folder.
+`ReferencedDashboard` components have the suffix `.refdash` and are stored in the `wave` folder.
 
 Version
 
-### ReferencedDashboard components are available in API version 57.0 and later.
+ReferencedDashboard components are available in API version 57.0 and later.
 
 Special Access Rules
 
@@ -28007,9 +28983,6 @@ Fields
 created from a template.
 
 `visibility` string The visibility of the dashboard. Valid values are: `ALL` and `LIMITED` .
-
-
-### Metadata Types RelatedRecordAssocCriteria
 
 Declarative Metadata Sample Definition
 
@@ -28035,6 +29008,9 @@ The following is an example of a WaveDashboard component.
    </ReferencedDashboard>
 
 ```
+
+
+### Metadata Types RelatedRecordAssocCriteria
 
 Wildcard Support in the Manifest File
 
@@ -28066,23 +29042,12 @@ Special Access Rules
 
 To use this object, you must have the Financial Services Cloud Extension permission set.
 
-
-Metadata Types RelatedRecordAssocCriteria
-
 Fields
 
 **Field Name** **Description**
 
 ```
 associationHandlerApexClass
-
-associationType
-
-description
-
-eventType
-
-isProtected
 
 ```
 
@@ -28104,11 +29069,31 @@ specific association criteria. This class must:
 
 **–** `BranchUnitId` : Represents the current branch unit of the user or contact
 
+
+Metadata Types RelatedRecordAssocCriteria
+
+**Field Name** **Description**
+
 **–** `BusinessUnitMemberId` : The Banker ID of the user or contact
 
 **–** `RelatedRecordId` : The ID of the custom object to be related
 
 This field is a relationship field.
+
+```
+associationType
+
+description
+
+eventType
+
+isProtected
+
+masterLabel
+
+preCondition
+
+```
 
 **Field Type**
 AssociationType (enumeration of type string)
@@ -28143,27 +29128,9 @@ The type of reference object event that triggers creation of the association. Va
 **Field Type**
 boolean
 
-
-Metadata Types RelatedRecordAssocCriteria
-
-**Field Name** **Description**
-
 **Description**
 An auto-generated value that doesn’t impact the behavior of the metadata type. The
 default value is `false` .
-
-```
-masterLabel
-
-preCondition
-
-referenceObject
-
-selectedOwnerField
-
-status
-
-```
 
 **Field Type**
 string
@@ -28177,11 +29144,25 @@ The master label of the association criteria. This internal label doesn’t get 
 **Field Type**
 string
 
+
+Metadata Types RelatedRecordAssocCriteria
+
+**Field Name** **Description**
+
 **Description**
 
 Required.
 
 A formula that, when true, causes a new association to be created.
+
+```
+referenceObject
+
+selectedOwnerField
+
+status
+
+```
 
 **Field Type**
 string
@@ -28213,43 +29194,46 @@ The status of the association criteria. Values are:
 
 **•** `Inactive`
 
-
-### Metadata Types RelationshipGraphDefinition
-
 Declarative Metadata Sample Definition
 
 The following is an example of a RelatedRecordAssocCriteria component.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <RelatedRecordAssocCriteria xmlns="http://soap.sforce.com/2006/04/metadata">
+<RelatedRecordAssocCriteria xmlns="http://soap.sforce.com/2006/04/metadata">
 
-     <associationType>BranchManagement</associationType>
+  <associationType>BranchManagement</associationType>
 
-     <eventType>Create</eventType>
+  <eventType>Create</eventType>
 
-     <masterLabel>RevenueThreeMillion</masterLabel>
+  <masterLabel>RevenueThreeMillion</masterLabel>
 
-     <preCondition>[Account].AnnualRevenue > 3000000</preCondition>
+  <preCondition>[Account].AnnualRevenue > 3000000</preCondition>
 
-     <referenceObject>Account</referenceObject>
+  <referenceObject>Account</referenceObject>
 
-     <status>Active</status>
+  <status>Active</status>
 
-   </RelatedRecordAssocCriteria>
+</RelatedRecordAssocCriteria>
 
 ```
 
 The following is an example `package.xml` that references the previous definition.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <types>
+   <types>
 
+```
+
+
+### Metadata Types RelationshipGraphDefinition
+
+```
         <members>*</members>
 
         <name>RelatedRecordAssocCriteria</name>
@@ -28289,9 +29273,6 @@ Version
 
 ### RelationshipGraphDefinition components are available in API version 55.0 and later.
 
-
-Metadata Types RelationshipGraphDefinition
-
 Special Access Rules
 
 The Financial Services Cloud permission set license is required to access this object.
@@ -28303,12 +29284,6 @@ Fields
 ```
 isActive
 
-isTemplate
-
-masterLabel
-
-relationshipGraphDefVersions
-
 ```
 
 **Field Type**
@@ -28318,10 +29293,24 @@ boolean
 
 Required.
 
+
+Metadata Types RelationshipGraphDefinition
+
+**Field Name** **Description**
+
 Indicates whether the relationship graph is available for use ( `true` ) or not
 ( `false` ). The default value is `true` .
 
 Note: This field is read-only in API version 55.0.
+
+```
+isTemplate
+
+masterLabel
+
+relationshipGraphDefVersions
+
+```
 
 **Field Type**
 boolean
@@ -28354,9 +29343,6 @@ RelationshipGraphDefVersion
 
 The list of graph versions associated with the relationship graph definition.
 
-
-Metadata Types RelationshipGraphDefinition
-
 **Field Name** **Description**
 
 ```
@@ -28383,6 +29369,11 @@ string
 
 Required.
 
+
+Metadata Types RelationshipGraphDefinition
+
+**Field Name** **Description**
+
 Specifies the type of graph. In API version 55.0, only `HorizontalHierarchy` graph
 type is supported.
 
@@ -28391,68 +29382,62 @@ Declarative Metadata Sample Definition
 The following is an example of a RelationshipGraphDefinition component.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<RelationshipGraphDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+   <RelationshipGraphDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <isActive>false</isActive>
+      <isActive>false</isActive>
 
-   <isTemplate>true</isTemplate>
+      <isTemplate>true</isTemplate>
 
-   <masterLabel>Account Graph</masterLabel>
+      <masterLabel>Account Graph</masterLabel>
 
-   <relationshipGraphDefVersions>
+      <relationshipGraphDefVersions>
 
-      <graphDefinition>{
+         <graphDefinition>{
 
-  "graph" : {
+     "graph" : {
 
-   "rootNode" : {
+      "rootNode" : {
 
-     "object" : {
+        "object" : {
 
-      "entity" : "Account"
+         "entity" : "Account"
 
-     },
+        },
 
-     "configurationType" : "Primary",
+        "configurationType" : "Primary",
 
-     "sortFields" : [ {
+        "sortFields" : [ {
 
-      "field" : {
+         "field" : {
 
-       "field" : "LastModifiedDate",
+          "field" : "LastModifiedDate",
 
-       "whichEntity" : "TARGET"
+          "whichEntity" : "TARGET"
 
-      },
+         },
 
-      "order" : "DESC"
+         "order" : "DESC"
 
-     } ],
+        } ],
 
-     "nodeUiConfig" : {
+        "nodeUiConfig" : {
 
-      "fieldsToDisplay" : [ ],
+         "fieldsToDisplay" : [ ],
 
-      "showFieldLabels" : true,
+         "showFieldLabels" : true,
 
-      "actions" : { }
+         "actions" : { }
 
-     },
+        },
 
-     "childRelationships" : [ {
+        "childRelationships" : [ {
 
-      "OneToMany" : {
+         "OneToMany" : {
 
-       "targetObjectNode" : {
+          "targetObjectNode" : {
 
-```
-
-
-Metadata Types RelationshipGraphDefinition
-
-```
            "object" : {
 
             "entity" : "Contact"
@@ -28485,6 +29470,12 @@ Metadata Types RelationshipGraphDefinition
 
             }, {
 
+```
+
+
+Metadata Types RelationshipGraphDefinition
+
+```
               "field" : "Phone",
 
               "whichEntity" :"TARGET"
@@ -28561,12 +29552,6 @@ Metadata Types RelationshipGraphDefinition
 
         "borderColor" : "Green2",
 
-```
-
-
-### Metadata Types RemoteSiteSetting
-
-```
         "borderThickness" : "2px";,
 
         "colorShading" : "Black",
@@ -28600,6 +29585,12 @@ The following is an example `package.xml` that references the previous definitio
 
      <fullName>Package1</fullName>
 
+```
+
+
+### Metadata Types RemoteSiteSetting
+
+```
      <types>
 
         <members>*</members>
@@ -28624,20 +29615,17 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents a remote site setting. Before any Visualforce page, Apex callout, or JavaScript code using XmlHttpRequest in an s-control or
 custom button can call an external site, that site must be registered in the Remote Site Settings page, or the call fails.
 
-### RemoteSiteSetting on page 1831 extends the Metadata metadata type and inherits its fullName field.
+### RemoteSiteSetting on page 1842 extends the Metadata metadata type and inherits its fullName field.
 
 Declarative Metadata File Suffix and Directory Location
 
-### RemoteSiteSetting on page 1831 components are stored in the remoteSiteSettings directory of the corresponding package
+### RemoteSiteSetting on page 1842 components are stored in the remoteSiteSettings directory of the corresponding package
 
 directory. The file name matches the unique name of the remote site setting, and the extension is `.remoteSite` .
 
 Version
 
-### RemoteSiteSetting on page 1831 components are available in API version 19.0 and later.
-
-
-### Metadata Types Report
+### RemoteSiteSetting on page 1842 components are available in API version 19.0 and later.
 
 Fields
 
@@ -28660,6 +29648,11 @@ underscore (_) character. The name must start with a letter, and
 
 can’t end with an underscore or contain two consecutive
 underscore characters.
+
+
+### Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 Inherited from the Metadata component, this field isn’t defined
 in the WSDL for this component. It must be specified when
@@ -28701,12 +29694,10 @@ terms to avoid any effect on customer implementations.
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-
-Metadata Types Report
-
 Declarative Metadata File Suffix and Directory Location
 
-Reports are stored in the `reports` directory of the package directory. The file name consists of the report title with the extension
+### Reports are stored in the reports directory of the package directory. The file name consists of the report title with the extension
+
 `.report` .
 
 Retrieving Reports
@@ -28714,13 +29705,17 @@ Retrieving Reports
 You can’t use the wildcard (*) symbol with reports in `package.xml` .
 
 To retrieve the list of explicit report names to populate `package.xml` with, first call `listMetadata(ListMetadataQuery[])`
-with a `ListMetadataQuery` entry with the `type` field set to `ReportFolder` and the `folder` field to `*` (wildcard). This
+### with a ListMetadataQuery entry with the type field set to ReportFolder and the folder field to * (wildcard). This
+
 call returns an array of FileProperties objects with the names of report folders in the `fullName` field.
 
 Now call `listMetadata` with `ListMetadataQuery` entries where the `type` field is Report and the `folder` fields are the
 full name values from the first `listMetadata` call. These calls return `FileProperties` objects where the `fullName` field is
 the combination of the folder name and report name. Use these values in the `package.xml` to designate the members for the Report
 metadata type.
+
+
+Metadata Types Report
 
 ReportFolder isn’t returned as a type in `describeMetadata()` . Report is returned from `describeMetadata()` with an
 associated attribute of `inFolder` set to true. If that attribute is set to true, you can construct the type by using the component name
@@ -28787,12 +29782,6 @@ To correctly reference the nested folder, append a trailing slash (/) to its ful
 
       <types>
 
-```
-
-
-Metadata Types Report
-
-```
         <members>TopLevel/SubLevel/</members>
 
         <members>TopLevel/SubLevel/MyReport</members>
@@ -28813,6 +29802,9 @@ cannot be found".
 Version
 
 Report components are available in API version 14.0 and later.
+
+
+Metadata Types Report
 
 Fields
 
@@ -28860,11 +29852,6 @@ available in API version 66.0 and later.
 `currency` `CurrencyIsoCode` (enumeration of type When using multiple currencies, some reports
 string) allow you to display converted amounts by
 
-
-Metadata Types Report
-
-**Field** **Field Type** **Description**
-
 selecting the appropriate column to display. For
 example, in opportunity reports, you can include
 the Amount (converted) column on the report.
@@ -28883,6 +29870,11 @@ Specifies a general description, which is
 displayed with the report name. Maximum
 characters: 255 characters.
 
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
+
 `division` string If your organization uses divisions to segment
 data and the Affected by Divisions permission
 
@@ -28898,19 +29890,19 @@ opportunities for which the amount is greater
 than $1,000:
 
 ```
-                                   <filter>
+                                      <filter>
 
-                                   <criteriaItems>
+                                       <criteriaItems>
 
-                                    <column>AMOUNT</column>
+                                       <column>AMOUNT</column>
 
-                                   <operator>greaterThan</operator>
+                                      <operator>greaterThan</operator>
 
-                                    <value>1000</value>
+                                       <value>1000</value>
 
-                                   </criteriaItems>
+                                       </criteriaItems>
 
-                                   </filter>
+                                      </filter>
 
 ```
 
@@ -28933,12 +29925,6 @@ string) report data. Lightning Experience only.
 group and subtotal data across a matrix report
 
 (row headings). When grouping by a date field,
-
-
-Metadata Types Report
-
-**Field** **Field Type** **Description**
-
 you can further group the data by a specific time
 period such as days, weeks, or months.
 Maximum: 2 fields.
@@ -28954,6 +29940,11 @@ field, you can further group the data by a specific
 time period such as days, weeks, or months.
 Maximum for matrix reports: 2. Maximum for
 summary reports: 3
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 `historicalSelector` ReportHistoricalSelector
 
@@ -29008,11 +29999,6 @@ Defines the API Name for the report type.
 
 This field is available in API version 48.0 and later.
 
-
-Metadata Types Report
-
-**Field** **Field Type** **Description**
-
 `roleHierarchyFilter` string The role name for a report drill down. Some
 reports, such as opportunity and activity reports,
 
@@ -29030,6 +30016,12 @@ report. For example, whether you want to run
 
 the report against all opportunities,
 opportunities you own, or opportunities your
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
+
 team owns. Valid values depend on the
 `reportType` . For example, for Accounts
 reports:
@@ -29077,11 +30069,6 @@ territory hierarchy.
 
 This field is available in API version 17.0 and later.
 
-
-Metadata Types Report
-
-**Field** **Field Type** **Description**
-
 `timeFrameFilter` ReportTimeFrameFilter Limits report results to records within a specified
 time frame.
 
@@ -29093,6 +30080,9 @@ down to different datasets based on the user
 hierarchy.
 
 This field is available in API version 17.0 and later.
+
+
+Metadata Types Report
 
 ReportAggregateFilter
 
@@ -29139,11 +30129,6 @@ summary formula, for example, `FORMULA1` . This name is used
 to reference custom summary formulas from other report
 components, including conditional highlighting.
 
-
-Metadata Types Report
-
-**Field** **Field Type** **Description**
-
 `downGroupingContext` string
 
 Defines the column grouping level at which you want your
@@ -29162,6 +30147,11 @@ cross-block formula, which is available with joined reports.
 This field is available in API version 25.0 and later.
 
 `masterLabel` string Required. The custom summary formula label (name).
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 `reportType` string Required for joined reports. Specifies the `reportType` of the
 blocks to which the `aggregate` can be added.
@@ -29196,9 +30186,6 @@ globally grouping across the blocks.
 
 ReportAggregateReference defines the developer name used for custom summary formulas in joined reports.
 
-
-Metadata Types Report
-
 **Field** **Field Type** **Description**
 
 `aggregate` string
@@ -29221,6 +30208,11 @@ of a joined report.
 **•** number
 
 **•** picklist
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 `developerName` string Required. A unique name used as the `<field>` value to
 display a bucket field in the column list and other report
@@ -29255,9 +30247,6 @@ use, a bucket field contains multiple buckets.
 
 ReportBucketFieldValue defines a bucket value used in the bucket field.
 
-
-Metadata Types Report
-
 **Field** **Field Type** **Description**
 
 `sourceValues` ReportBucketFieldSourceValue The value of a bucket in the bucket field. Valid values:
@@ -29281,6 +30270,11 @@ be a number.
 In numeric buckets, the first value must only have `to` and last
 value must only have `from` . All other values must have both
 `to` and `from` .
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 `value` string Required. The name of a specific bucket value within the bucket
 field.
@@ -29319,11 +30313,6 @@ example, `CAMPAIGN_SOURCE`
 `sortByName` string The API name of the column, aggregate, or custom summary
 field used to order the grouping.
 
-
-Metadata Types Report
-
-**Field** **Field Type** **Description**
-
 `sortOrder` SortOrder Required. Whether to sort data in ascending or descending
 alphabetical and numerical order.
 
@@ -29344,6 +30333,11 @@ ReportHistoricalSelector defines a date range for historical data.
 
 `snapshot` string Represents the date value to apply a historical filter, either
 relative (in the format `N_DAYS_AGO:2` ) or absolute (in the
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 format `yyyy-MM-dd` ). If unspecified, it’s assumed that the
 filter is applied to all the columns the user sees.
@@ -29379,9 +30373,6 @@ highlighting.
 `scale` int The formula result is calculated to the specified number of
 decimal places. Valid values `0` through `18` .
 
-
-Metadata Types Report
-
 ReportCustomDetailFormulaDatatype
 
 An enumeration of type string that specifies the data type for formatting and display of row-level formula results. Valid values:
@@ -29402,6 +30393,9 @@ An enumeration of type string that specifies the data type for formatting and di
 SortOrder
 
 An enumeration of type string that defines the order in which data is sorted in the report fields. Valid values:
+
+
+Metadata Types Report
 
 **Field** **Description**
 
@@ -29440,9 +30434,6 @@ Salesforce Help.
 
 `FiscalWeek` When custom fiscal years are enabled: By fiscal week
 
-
-Metadata Types Report
-
 ReportSummaryType
 
 An enumeration of type string that defines how report fields are summarized. Valid values:
@@ -29462,6 +30453,11 @@ An enumeration of type string that defines how report fields are summarized. Val
 `Median` Median value
 
 `Noop` The summary is a no-op.
+
+
+Metadata Types Report
+
+**Enumeration Value** **Description**
 
 `None` The field isn’t summarized.
 
@@ -29502,9 +30498,6 @@ ReportColumn
 
 ReportColumn defines how fields (columns) are displayed in the report.
 
-
-Metadata Types Report
-
 **Field** **Field Type** **Description**
 
 `aggregateTypes` ReportSummaryType[] List that defines if and how each report field is summarized.
@@ -29513,11 +30506,21 @@ Metadata Types Report
 `field` string Required. The field name. For example, `AGE` or
 
 ```
-                              OPPORTUNITY_NAME
+                           OPPORTUNITY_NAME
 
 ```
 
 `isExtendedColumn` boolean
+
+Indicates whether the column is extended ( `true` ) or not
+( `false` ).
+
+Available in API version 65.0 and later.
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 `reverseColors` boolean
 
@@ -29526,11 +30529,6 @@ Metadata Types Report
 ReportFilter
 
 ReportFilter limits the report results by filtering data on specified fields.
-
-Indicates whether the column is extended ( `true` ) or not
-( `false` ).
-
-Available in API version 65.0 and later.
 
 In historical trend reports, displays greater Date values as green
 and greater Amount values as red, reversing the default colors.
@@ -29552,6 +30550,7 @@ Available in API version 29.0 and later.
 `language` Language (enumeration of type
 string)
 
+ReportFilterItem
 
 The criteria by which you want to filter report data, either by
 comparing historical values or by applying a date range.
@@ -29579,10 +30578,6 @@ The language used when a report filters against a picklist value
 using the operators `contains` or `startsWith` . For a list
 of valid language values, see Language.
 
-Metadata Types Report
-
-ReportFilterItem
-
 ReportFilterItem limits the report results by filtering data on specified fields.
 
 **Field** **Field Type** **Description**
@@ -29593,6 +30588,11 @@ ReportFilterItem limits the report results by filtering data on specified fields
 
 Indicates whether the filter is a column-to-column (field-to-field)
 filter.
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 Available in API version 29.0 and later for historical trending
 reports. Available in API version 48.0 and later for general reports.
@@ -29651,9 +30651,6 @@ example, in the Metadata API dates are always converted to the
 US date format and values entered in a non-US English language
 can be converted to a standard US English equivalent.
 
-
-Metadata Types Report
-
 ReportFormat
 
 An enumeration of type string that defines the report format. Valid values:
@@ -29661,6 +30658,11 @@ An enumeration of type string that defines the report format. Valid values:
 **Enumeration Value** **Description**
 
 `Matrix` Summarizes data in a grid. Use to compare related totals.
+
+
+Metadata Types Report
+
+**Enumeration Value** **Description**
 
 `Summary` Lists, sorts, and subtotals data.
 
@@ -29704,9 +30706,6 @@ ReportFormattingRuleValue
 Specifies the background colors and associated ranges for formatted data values. You can specify up to 3 background colors and 0–3
 range upper bounds. Valid values:
 
-
-Metadata Types Report
-
 **Field** **Field Type** **Description**
 
 `backgroundColor` string (Required) Specifies a highlighting color for the field in
@@ -29714,6 +30713,12 @@ Metadata Types Report
 
 #54C254. At least one color is required. You can optionally specify
 a different color for up to 3 ranges as determined by
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
+
 `rangeUpperBound` . If you don’t specify a color for a
 particular range, the background is transparent.
 
@@ -29767,12 +30772,12 @@ ReportParam represents settings specific to a report type, especially options th
 
 `value` string Required. The setting value.
 
-
-Metadata Types Report
-
 ReportAggregateDatatype
 
 An enumeration of type string that specifies the data type for formatting and display of custom summary formula results. Valid values:
+
+
+Metadata Types Report
 
 **Enumeration Value**
 
@@ -29830,14 +30835,13 @@ field is available in API version 17.0 and later.
 
 applies to pie, donut, and funnel charts. Set to `true` to show
 all values individually on the chart; set to `false` to combine
+small groups into 'Others.' This field is available in API version
+17.0 and later.
 
 
 Metadata Types Report
 
 **Field** **Field Type** **Description**
-
-small groups into 'Others.' This field is available in API version
-17.0 and later.
 
 `groupingColumn` string
 
@@ -29902,15 +30906,15 @@ of type string) specify the axis range manually or automatically.
 `summaryColumn` string Required. Specifies the field by which to summarize the chart
 data. Typically this field is displayed on the Y-axis. No longer
 
-
-Metadata Types Report
-
-**Field** **Field Type** **Description**
-
 supported in version API 17.0 and later. See
 `chartSummaries` .
 
 `textColor` string The color (in HTML format) of the chart text and labels.
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
 
 `textSize` int The size of the chart text and labels. Valid values:
 
@@ -29972,6 +30976,10 @@ Help. Valid values:
 
    HorizontalBarStacked
 
+   HorizontalBarStackedTo100
+
+   VerticalColumn
+
 ```
 
 
@@ -29980,10 +30988,6 @@ Metadata Types Report
 **Enumeration Value**
 
 ```
-   HorizontalBarStackedTo100
-
-   VerticalColumn
-
    VerticalColumnGrouped
 
    VerticalColumnStacked
@@ -30037,15 +31041,18 @@ ChartSummary
 
 ChartSummary defines how data in the chart is summarized. Valid values:
 
-
-Metadata Types Report
-
 **Field** **Field Type** **Description**
 
 `aggregate` ReportSummaryType Specifies the aggregation method—such as `Sum`, `Average`,
 `Min`, and `Max` —for the summary value. Use the `column`
 
 field to specify the summary value to use for the aggregation.
+
+
+Metadata Types Report
+
+**Field** **Field Type** **Description**
+
 You don't need to specify this field for RowCount or custom
 summary formulas.
 
@@ -30098,17 +31105,12 @@ An enumeration of type string that defines the report format. Valid values:
 ```
    Auto
 
+   Manual
+
 ```
 
 
 Metadata Types Report
-
-**Enumeration Value**
-
-```
-   Manual
-
-```
 
 ReportTimeFrameFilter
 
@@ -30167,12 +31169,6 @@ A sample XML snippet using cross filters to build an Accounts report for cases w
 
            <column>Status</column>
 
-```
-
-
-Metadata Types Report
-
-```
            <operator>notequal</operator>
 
            <value>Closed</value>
@@ -30183,6 +31179,12 @@ Metadata Types Report
 
         <primaryTableColumn>ACCOUNT_ID</primaryTableColumn>
 
+```
+
+
+Metadata Types Report
+
+```
         <relatedTable>Case</relatedTable>
 
         <relatedTableJoinColumn>Account</relatedTableJoinColumn>
@@ -30240,16 +31242,16 @@ time period's start date and end date.
 
 `INTERVAL_THISWEEK` This calendar week
 
-
-Metadata Types Report
-
-**Enumeration Value** **Description**
-
 `INTERVAL_NEXTWEEK` Next calendar week
 
 `INTERVAL_LASTMONTH` Last calendar month
 
 `INTERVAL_THISMONTH` This calendar month
+
+
+Metadata Types Report
+
+**Enumeration Value** **Description**
 
 `INTERVAL_NEXTMONTH` Next calendar month
 
@@ -30305,16 +31307,16 @@ Metadata Types Report
 
 `INTERVAL_NEXT120` Next 120 days
 
-
-Metadata Types Report
-
-**Enumeration Value** **Description**
-
 `LAST_FISCALWEEK` When custom fiscal years are enabled: Last fiscal week
 
 `THIS_FISCALWEEK` When custom fiscal years are enabled: This fiscal week
 
 `NEXT_FISCALWEEK` When custom fiscal years are enabled: Next fiscal week
+
+
+Metadata Types Report
+
+**Enumeration Value** **Description**
 
 `LAST_FISCALPERIOD` When custom fiscal years are enabled: Last fiscal period
 
@@ -30385,12 +31387,6 @@ A sample XML report definition:
 
              PARENTGROUPVAL(CRT_Object__c.Number__c:SUM, ROW_GRAND_SUMMARY,
 
-```
-
-
-Metadata Types Report
-
-```
              CRT_Object__c.Id)), 1000)</calculatedFormula>
 
         <datatype>number</datatype>
@@ -30403,6 +31399,12 @@ Metadata Types Report
 
         <masterLabel>numCSF</masterLabel>
 
+```
+
+
+Metadata Types Report
+
+```
         <scale>2</scale>
 
       </aggregates>
@@ -30499,12 +31501,6 @@ Metadata Types Report
 
            </sourceValues>
 
-```
-
-
-Metadata Types Report
-
-```
            <value>east</value>
 
         </values>
@@ -30517,6 +31513,12 @@ Metadata Types Report
 
         <backgroundColor2>#FFFFFF</backgroundColor2>
 
+```
+
+
+Metadata Types Report
+
+```
         <backgroundFadeDir>Diagonal</backgroundFadeDir>
 
         <chartSummaries>
@@ -30613,12 +31615,6 @@ Metadata Types Report
 
         <sortOrder>Asc</sortOrder>
 
-```
-
-
-Metadata Types Report
-
-```
       </groupingsAcross>
 
       <groupingsAcross>
@@ -30631,6 +31627,12 @@ Metadata Types Report
 
       </groupingsAcross>
 
+```
+
+
+Metadata Types Report
+
+```
       <groupingsDown>
 
         <dateGranularity>Day</dateGranularity>
@@ -30724,12 +31726,6 @@ A sample XML report definition:
 
         <scale>2</scale>
 
-```
-
-
-Metadata Types Report
-
-```
       </aggregates>
 
       <block>
@@ -30742,6 +31738,12 @@ Metadata Types Report
 
     B1.-->
 
+```
+
+
+Metadata Types Report
+
+```
         <aggregateReferences>
 
          <aggregate>FORMULA2</aggregate>
@@ -30838,12 +31840,6 @@ Metadata Types Report
 
         <joinTable>a</joinTable>
 
-```
-
-
-Metadata Types Report
-
-```
        </blockInfo>
 
        <columns>
@@ -30856,6 +31852,12 @@ Metadata Types Report
 
         <field>TYPE</field>
 
+```
+
+
+Metadata Types Report
+
+```
        </columns>
 
        <columns>
@@ -30952,12 +31954,6 @@ Metadata Types Report
 
         <showPercentage>false</showPercentage>
 
-```
-
-
-### Metadata Types ReportType
-
-```
         <showTotal>false</showTotal>
 
         <showValues>false</showValues>
@@ -30970,6 +31966,12 @@ Metadata Types Report
 
         <textSize>12</textSize>
 
+```
+
+
+### Metadata Types ReportType
+
+```
         <titleColor>#000000</titleColor>
 
         <titleSize>18</titleSize>
@@ -31403,19 +32405,21 @@ objects, and these objects are supported:
 
 **•** Event
 
+**•** Quote
+
 **•** Task
 
 **•** TimeSheet
 
 **•** TimeSheetEntry
 
-If `enforcementType` is set to `Scoping`, custom objects and these
-objects are supported:
-
 
 Metadata Types RestrictionRule
 
 **Field Name** **Field Type** **Description**
+
+If `enforcementType` is set to `Scoping`, custom objects and these
+objects are supported:
 
 **•** Account
 
@@ -31494,6 +32498,9 @@ The following is an example of a RestrictionRule component representing a scopin
 
 ```
 
+
+### Metadata Types RetrievalSummaryDefinition
+
 The following is an example `package.xml` that references the previous definition.
 
 ```
@@ -31505,12 +32512,6 @@ The following is an example `package.xml` that references the previous definitio
 
         <members>*</members>
 
-```
-
-
-### Metadata Types RetrievalSummaryDefinition
-
-```
         <name>RestrictionRule</name>
 
       </types>
@@ -31551,8 +32552,6 @@ masterLabel
 
 retrievalSummaryDefFields
 
-retrievalSummaryDefObjects
-
 ```
 
 **Field Type**
@@ -31573,25 +32572,27 @@ Collection of fields to retrieve from the root object of the retrieval definitio
 definition specifies which field from the target object should be included in the retrieval
 and the order in which it should be processed.
 
-**Field Type**
-
-RetrievalSummaryDefObject[]
-
 
 Metadata Types RetrievalSummaryDefinition
 
 **Field Name** **Description**
+
+```
+retrievalSummaryDefObjects
+
+rootObject
+
+```
+
+**Field Type**
+
+RetrievalSummaryDefObject[]
 
 **Description**
 Collection of rollup definitions that aggregate data from related objects. Each object
 definition specifies a related object, the aggregation logic to apply, and the fields to
 retrieve from that object. This enables hierarchical data aggregation across object
 relationships.
-
-```
-rootObject
-
-```
 
 **Field Type**
 string
@@ -31639,13 +32640,13 @@ Processing order of the field in the retrieval operation. Fields are processed i
 sequence number order. This allows you to control the order in which fields are
 displayed.
 
+
+Metadata Types RetrievalSummaryDefinition
+
 RetrievalSummaryDefObject
 
 Represents a rollup definition that aggregates data from a related object. Each rollup definition specifies the aggregation logic, the fields
 to retrieve, and the processing order for summarizing data across object relationships.
-
-
-Metadata Types RetrievalSummaryDefinition
 
 **Field Name** **Description**
 
@@ -31705,22 +32706,19 @@ decision-making.
 **•** Performance Optimization: Pre-define retrieval patterns to improve query performance when accessing related data across multiple
 objects.
 
+
+### Metadata Types Role
+
 Declarative Metadata Sample Definition
 
 The following is an example of a RetrievalSummaryDefinition component that retrieves data from an Account object and includes a
 rollup from related Opportunity records.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<RetrievalSummaryDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+   <RetrievalSummaryDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
 
-```
-
-
-### Metadata Types Role
-
-```
      <masterLabel>Account Revenue Summary</masterLabel>
 
      <rootObject>Account</rootObject>
@@ -31799,13 +32797,13 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents a role in your organization.
 
+
+### Metadata Types RoleOrTerritory
+
 Declarative Metadata File Suffix and Directory Location
 
 The file suffix for role components is `.role` and components are stored in the `roles` directory of the corresponding package
 directory.
-
-
-### Metadata Types RoleOrTerritory
 
 Version
 
@@ -31813,7 +32811,7 @@ Role components are available in API version 24.0 and later.
 
 Fields
 
-This metadata type extends to subtype RoleOrTerritory on page 1874.
+This metadata type extends to subtype RoleOrTerritory on page 1885.
 
 **Field Name** **Field Type** **Description**
 
@@ -31860,14 +32858,14 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 Represents the common base type and valid values for role or territory.
 
-Version
-
-### RoleOrTerritory components are available in API version 24.0 and later.
-
-Note: You can’t create a RoleOrTerritory component directly. Use the Role or Territory metadata types instead.
-
 
 Metadata Types RoleOrTerritory
+
+Version
+
+RoleOrTerritory components are available in API version 24.0 and later.
+
+Note: You can’t create a RoleOrTerritory component directly. Use the Role or Territory metadata types instead.
 
 Fields
 
@@ -31924,6 +32922,11 @@ associated with accounts the user owns. Valid values are:
 
 **•** `Edit`
 
+
+### Metadata Types RpaRobotPoolMetadata
+
+**Field Name** **Field Type** **Description**
+
 **•** `None`
 
 This field is not visible if your organization’s sharing model for
@@ -31931,9 +32934,6 @@ opportunities is Public Read/Write.
 
 If no value is set for this field, this field value uses the default access level
 that is specified in the Manage Territory page in Setup.
-
-
-### Metadata Types RpaRobotPoolMetadata
 
 Declarative Metadata Sample Definition
 
@@ -31995,7 +32995,8 @@ Territory
 
 Reserved for future use.
 
-### SalesWorkQueueSettings
+
+### Metadata Types SalesWorkQueueSettings SalesWorkQueueSettings
 
 Represents settings used to customize work queue options for third-party scoring. In Sales Engagement, you can add a custom number
 field on person accounts, contacts, or leads. Then, use the custom number field to sort the work queue. This type extends the Metadata
@@ -32010,9 +33011,6 @@ File Suffix and Directory Location
 Version
 
 ### SalesWorkQueueSettings components are available in API version 49.0 and later.
-
-
-Metadata Types SalesWorkQueueSettings
 
 Special Access Rules
 
@@ -32052,6 +33050,12 @@ as an example of a custom field ID. Replace this value with the ID of your custo
 
    <SalesWorkQueueSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
+```
+
+
+### Metadata Types SamlSsoConfig
+
+```
       <featureName>ThirdPartyScore</featureName>
 
       <targetEntity>Contact</targetEntity>
@@ -32082,9 +33086,6 @@ The following is an example `package.xml` that references the previous definitio
    </Package>
 
 ```
-
-
-### Metadata Types SamlSsoConfig
 
 Usage
 
@@ -32118,6 +33119,9 @@ Special Access Rules
 As of Summer ’20 and later, only users with the View Setup and Configuration permission or both the Customize Application and Modify
 All Data permissions can access this type.
 
+
+Metadata Types SamlSsoConfig
+
 Fields
 
 **Field Name** **Field Type** **Description**
@@ -32131,11 +33135,6 @@ Fields
 
 `attributeName` string The name of the identity provider’s application. Get this name from your
 identity provider.
-
-
-Metadata Types SamlSsoConfig
-
-**Field Name** **Field Type** **Description**
 
 `decryptionCertificate` string
 
@@ -32197,22 +33196,22 @@ must begin with a letter and use only alphanumeric characters and
 underscores. The name cannot end with an underscore or have two
 consecutive underscores.
 
+
+Metadata Types SamlSsoConfig
+
+**Field Name** **Field Type** **Description**
+
 `oauthTokenEndpoint` string For SAML 2.0 only: The ACS URL used with enabling Salesforce as an
 identity provider in the web single sign-on OAuth assertion flow.
 
 `redirectBinding` boolean Choose the binding mechanism your identity provider requests for your
 SAML messages. Values are:
 
-**•** `HTTP POST`                       - HTTP POST binding sends SAML messages using
+**•** `HTTP POST`                          - HTTP POST binding sends SAML messages using
 base64-encoded HTML forms.
 
-**•** `HTTP Redirect`                       - HTTP Redirect binding sends base64-encoded
+**•** `HTTP Redirect`                          - HTTP Redirect binding sends base64-encoded
 and URL-encoded SAML messages within URL parameters.
-
-
-Metadata Types SamlSsoConfig
-
-**Field Name** **Field Type** **Description**
 
 `requestSignatureMethod` string The method that’s used to sign the SAML request. Valid values are
 `RSA-SHA1` and `RSA-SHA256` .
@@ -32274,7 +33273,14 @@ string)
 `useConfigRequestMethod` boolean If `true`, applies the selected Request Signature Method (RSM) during
 single logout. If `false`, the default RSM (RSA-SHA1) is applied.
 
+
+Metadata Types SamlSsoConfig
+
+**Field Name** **Field Type** **Description**
+
 `useSameDigestAlgoForSigning` boolean
+
+`userProvisioning` boolean
 
 If `true`, uses a digest algorithm based on the selected Request Signature
 Method (RSM). For example, if the selected RSM is `RSA-SHA256`, the
@@ -32286,13 +33292,6 @@ selected RSM.
 This field is available in API version 55.0 and later. You can edit this field
 only for legacy SAML configurations created before Spring ’22. For
 configurations created after Spring ’22, this field is `true` by default.
-
-
-### Metadata Types SchedulingObjective
-
-**Field Name** **Field Type** **Description**
-
-`userProvisioning` boolean
 
 If `true`, Just-in-Time user provisioning is enabled, which creates users
 the first time they log in. Specify `Federation ID` for the
@@ -32364,6 +33363,9 @@ The following is an example of a SamlSsoConfig component. The validation certifi
 
 ```
 
+
+### Metadata Types SchedulingObjective
+
 Wildcard Support in the Manifest File
 
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
@@ -32374,9 +33376,6 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents a scheduling objective in Workforce Engagement. Scheduling objectives define business goals that the scheduling tools
 consider when identifying agents for shifts.
 
-
-Metadata Types SchedulingObjective
-
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
@@ -32386,12 +33385,11 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-`SchedulingObjective` components have the suffix `.SchedulingObjective` and are stored in the
-`SchedulingObjective` folder.
+### SchedulingObjective components have the suffix .SchedulingObjective and are stored in the SchedulingObjective folder.
 
 Version
 
-SchedulingObjective components are available in API version 55.0 and later.
+### SchedulingObjective components are available in API version 55.0 and later.
 
 Special Access Rules
 
@@ -32406,8 +33404,6 @@ Fields
 isProtected
 
 masterLabel
-
-schedulingCategory
 
 ```
 
@@ -32424,6 +33420,20 @@ string
 **Description**
 Required. The name of the objective.
 
+
+Metadata Types SchedulingObjective
+
+**Field Name** **Description**
+
+```
+schedulingCategory
+
+schedulingObjectiveParameters
+
+schedulingObjectiveType
+
+```
+
 **Field Type**
 SchedulingCategory (enumeration of type string)
 
@@ -32434,22 +33444,10 @@ Required. What the scheduling logic applies the objective to. The valid values a
 
 **•** `B` —Shift
 
-
-Metadata Types SchedulingObjective
-
-**Field Name** **Description**
-
-```
-schedulingObjectiveParameters
-
-schedulingObjectiveType
-
-```
-
 **Field Type**
 
 ```
-  SchedulingObjectiveParameter[] on page 1883
+  SchedulingObjectiveParameter[] on page 1894
 
 ```
 
@@ -32498,29 +33496,26 @@ string
 **Description**
 The scheduling objective parameter value.
 
+
+### Metadata Types SchedulingRule
+
 Declarative Metadata Sample Definition
 
 The following is an example of a `SchedulingObjective` component.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<SchedulingObjective xmlns="http://soap.sforce.com/2006/04/metadata">
+   <SchedulingObjective xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <masterLabel>Balance Shifts</masterLabel>
+      <masterLabel>Balance Shifts</masterLabel>
 
-   <schedulingCategory>B</schedulingCategory>
+      <schedulingCategory>B</schedulingCategory>
 
-   <schedulingObjectiveType>BalanceShifts</schedulingObjectiveType>
+      <schedulingObjectiveType>BalanceShifts</schedulingObjectiveType>
 
-   <schedulingObjectiveParameters>
+      <schedulingObjectiveParameters>
 
-```
-
-
-### Metadata Types SchedulingRule
-
-```
         <parameterKey>DaysAhead</parameterKey>
 
         <value>30</value>
@@ -32573,13 +33568,13 @@ Version
 
 ### SchedulingRule components are available in API version 53.0 and later.
 
+
+Metadata Types SchedulingRule
+
 Special Access Rules
 
 This type is available only if Workforce Engagement is enabled in your org. To view, create, edit, and delete records, the user requires
 the Workforce Engagement Planner permission set.
-
-
-Metadata Types SchedulingRule
 
 Fields
 
@@ -32624,7 +33619,7 @@ Required. What the scheduling logic applies the rule to. The valid values are:
 **Field Type**
 
 ```
-  SchedulingRuleParameter[] on page 1886
+  SchedulingRuleParameter[] on page 1897
 
 ```
 
@@ -32650,14 +33645,16 @@ Required. Specifies the type of rule. The valid values are:
 **•** `RestTimeMinutes` —Rest Time in Minutes. Available in API version 56.0 and
 later.
 
+
+Metadata Types SchedulingRule
+
+**Field Name** **Description**
+
 **•** `W` —Work Limit
 
 **•** `LimitNonstandardShifts` —Specifies a rule type that limits how many
 non-standard shifts can be assigned to each agent. Available in API version 54.0
 and later.
-
-
-Metadata Types SchedulingRule
 
 SchedulingRuleParameter
 
@@ -32723,30 +33720,30 @@ The following is an example of a `SchedulingRule` component.
 
    <schedulingRuleParameters>
 
-     <schedulingParameterKey>W</schedulingParameterKey>
-
-     <value>Shifts</value>
-
-   </schedulingRuleParameters>
-
-   <schedulingRuleParameters>
-
-     <schedulingParameterKey>R</schedulingParameterKey>
-
-     <value>Week</value>
-
-   </schedulingRuleParameters>
-
-   <schedulingRuleParameters>
-
-     <schedulingParameterKey>L</schedulingParameterKey>
-
 ```
 
 
 ### Metadata Types Scontrol
 
 ```
+        <schedulingParameterKey>W</schedulingParameterKey>
+
+        <value>Shifts</value>
+
+      </schedulingRuleParameters>
+
+      <schedulingRuleParameters>
+
+        <schedulingParameterKey>R</schedulingParameterKey>
+
+        <value>Week</value>
+
+      </schedulingRuleParameters>
+
+      <schedulingRuleParameters>
+
+        <schedulingParameterKey>L</schedulingParameterKey>
+
         <value>Max</value>
 
       </schedulingRuleParameters>
@@ -32800,6 +33797,9 @@ Version
 
 ### Scontrols are available in API version 10.0 and later.
 
+
+Metadata Types Scontrol
+
 Fields
 
 This metadata type contains the following fields:
@@ -32811,12 +33811,6 @@ an API call, client applications must encode the binary attachment
 
 data as base64. Upon receiving a response, client applications must
 decode the base64 data to binary. This conversion is handled for you
-
-
-Metadata Types Scontrol
-
-**Field Name** **Field Type** **Description**
-
 by a SOAP client. This field is inherited from the MetadataWithContent
 component.
 
@@ -32867,6 +33861,11 @@ are no longer allowed, the characters were stripped out of this field,
 and the previous value of the field was saved in the name field. This
 field is inherited from the Metadata component.
 
+
+### Metadata Types SearchCustomization
+
+**Field Name** **Field Type** **Description**
+
 `name` string
 
 Required. The unique name for the s-control. It must contain
@@ -32875,11 +33874,6 @@ alphanumeric characters only and begin with a letter. For example
 
 `supportsCaching` boolean Required. Indicates whether the s-control supports caching ( `true` )
 or not ( `false` ). Caching optimizes the page so that it remembers
-
-
-### Metadata Types SearchCustomization
-
-**Field Name** **Field Type** **Description**
 
 which s-controls are on the page when it reloads. This option only
 applies to HTML s-controls.
@@ -32892,28 +33886,28 @@ The corresponding `Myriad_Publishing.scf-meta.xml` metadata file follows the s-c
 `Myriad_Publishing.scf` file:
 
 ```
-   http://www.myriadpubs.com
+http://www.myriadpubs.com
 
 ```
 
 `Myriad_Publishing.scf-meta.xml` :
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <Scontrol xmlns="http://soap.sforce.com/2006/04/metadata">
+<Scontrol xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <contentSource>URL</contentSource>
+   <contentSource>URL</contentSource>
 
-      <description>s-control to open Myriad Publishing website.</description>
+   <description>s-control to open Myriad Publishing website.</description>
 
-      <encodingKey>UTF-8</encodingKey>
+   <encodingKey>UTF-8</encodingKey>
 
-      <name>Myriad Publishing</name>
+   <name>Myriad Publishing</name>
 
-      <supportsCaching>true</supportsCaching>
+   <supportsCaching>true</supportsCaching>
 
-   </Scontrol>
+</Scontrol>
 
 ```
 
@@ -32934,14 +33928,13 @@ Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-File Suffix and Directory Location
-
-### SearchCustomization components have the suffix .searchCustomization and are stored in the searchCustomizations
-
-folder.
-
 
 Metadata Types SearchCustomization
+
+File Suffix and Directory Location
+
+SearchCustomization components have the suffix `.searchCustomization` and are stored in the `searchCustomizations`
+folder.
 
 Version
 
@@ -32966,8 +33959,6 @@ objectOverride
 objectToAlwaysSearch
 
 profile
-
-selectedObject
 
 ```
 
@@ -33006,25 +33997,27 @@ is Einstein Global Search Bar.
 **Field Type**
 string
 
-**Description**
-Specifies user profile if the search channel is Einstein Global Search Bar.
-
-**Field Type**
-string[]
-
 
 Metadata Types SearchCustomization
 
 **Field Name** **Description**
 
 **Description**
-A list of the objects that are selected in the configuration if the search channel is LWR
-Experience Sites.
+Specifies user profile if the search channel is Einstein Global Search Bar.
 
 ```
+selectedObject
+
 selectedProfile
 
 ```
+
+**Field Type**
+string[]
+
+**Description**
+A list of the objects that are selected in the configuration if the search channel is LWR
+Experience Sites.
 
 **Field Type**
 string[]
@@ -33079,12 +34072,12 @@ boolean
 **Description**
 Indicates whether the object is searchable ( `true` ) or not ( `false` ).
 
+
+Metadata Types SearchCustomization
+
 SearchCustomizationFieldOverride
 
 Represents the configuration for a specific field within an object.
-
-
-Metadata Types SearchCustomization
 
 **Field Name** **Description**
 
@@ -33153,12 +34146,12 @@ SearchCustomizationRuleValue[]
 **Description**
 A list of rule values.
 
+
+Metadata Types SearchCustomization
+
 SearchCustomizationRuleValue
 
 Represents the value of a rule used to filter search results.
-
-
-Metadata Types SearchCustomization
 
 **Field Name** **Description**
 
@@ -33247,20 +34240,20 @@ The following is an example of a SearchCustomization component.
 
           <value>Warm</value>
 
-        </ruleValue>
-
-     </rule>
-
-   </objectOverride>
-
-   <objectOverride>
-
 ```
 
 
 ### Metadata Types SearchOrgWideObjectConfig
 
 ```
+           </ruleValue>
+
+        </rule>
+
+      </objectOverride>
+
+      <objectOverride>
+
         <objectApiName>Asset</objectApiName>
 
         <searchable>false</searchable>
@@ -33348,11 +34341,11 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents an object in the search index. The search index contains org-wide search settings created in Search Manager. Each object in
 the search index includes searchable fields and fields protected by field-level security in search.
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
 
 Metadata Types SearchOrgWideObjectConfig
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
 
 Parent Type
 
@@ -33409,12 +34402,12 @@ SearchOrgWideFieldConfig[]
 **Description**
 A list of field configurations.
 
+
+Metadata Types SearchOrgWideObjectConfig
+
 SearchOrgWideFieldConfig
 
 Represents the configuration in the search index for a field in an object.
-
-
-Metadata Types SearchOrgWideObjectConfig
 
 **Field Name** **Description**
 
@@ -33489,23 +34482,20 @@ The following is an example of a SearchOrgWideObjectConfig component.
 
 ```
 
-The following is an example `package.xml` that references the previous definition.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <types>
-
-     <members>*</members>
-
-```
-
 
 ### Metadata Types ServiceAISetupDefinition
 
+The following is an example `package.xml` that references the previous definition.
+
 ```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
         <name>SearchOrgWideObjectConfig</name>
 
       </types>
@@ -33566,14 +34556,14 @@ Recommendations
 
 **•** `UTTERANCE_RECOMMENDATION` —Einstein Bot utterances
 
+
+Metadata Types ServiceAISetupDefinition
+
+**Field Name** **Field Type** **Description**
+
 **•** `FAQ` —Einstein Bot frequently asked questions
 
 `name` string Required. A reference to the configuration.
-
-
-### Metadata Types ServiceAISetupField
-
-**Field Name** **Field Type** **Description**
 
 ```
 setupStatus
@@ -33652,22 +34642,21 @@ Usage
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### ServiceAISetupField
+
+### Metadata Types ServiceAISetupField ServiceAISetupField
 
 Represents a field on cases or knowledge articles that Einstein uses to identify relevant articles in Einstein Article Recommendations. This
 type extends the Metadata metadata type and inherits its `fullName` field.
 
-
-Metadata Types ServiceAISetupField
-
 File Suffix and Directory Location
 
-ServiceAISetupField components have the suffix `.serviceAiSetupField` and are stored in the `serviceAiSetupFields`
+### ServiceAISetupField components have the suffix .serviceAiSetupField and are stored in the serviceAiSetupFields
+
 folder.
 
 Version
 
-ServiceAISetupField components are available in API version 51.0 and later.
+### ServiceAISetupField components are available in API version 51.0 and later.
 
 Special Access Rules
 
@@ -33686,7 +34675,8 @@ fieldMappingType
 
 ```
 
-ServiceAISetupFieldType Required. The field type. Valid values are:
+### ServiceAISetupFieldType Required. The field type. Valid values are:
+
 (enumeration of
 
 **•** `CASE_DESC`
@@ -33720,24 +34710,27 @@ The following is an example of a ServiceAISetupField component.
 
 <ServiceAISetupField xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <entity>Case</entity>
-
-   <field>Subject</field>
-
-   <fieldMappingType>CASE_SUBJ</fieldMappingType>
-
-   <fieldPosition>1</fieldPosition>
-
-   <name>SF16039900475920</name>
-
-   <setupDefinition>4hQRM0000004CDK</setupDefinition>
-
-</ServiceAISetupField>
-
 ```
 
 
 ### Metadata Types ServiceChannel
+
+```
+      <entity>Case</entity>
+
+      <field>Subject</field>
+
+      <fieldMappingType>CASE_SUBJ</fieldMappingType>
+
+      <fieldPosition>1</fieldPosition>
+
+      <name>SF16039900475920</name>
+
+      <setupDefinition>4hQRM0000004CDK</setupDefinition>
+
+   </ServiceAISetupField>
+
+```
 
 The following is an example `package.xml` that references the previous definition.
 
@@ -33789,6 +34782,12 @@ Fields
 on After Conversation Work (ACW) each time they extend the timer. You
 
 must set this field if `hasAcwExtensionEnabled` is set to `true` .
+
+
+Metadata Types ServiceChannel
+
+**Field Name** **Field Type** **Description**
+
 Specify a value from 10 through 3600. Available only for service channels
 of type Messaging or Voice.
 
@@ -33798,11 +34797,6 @@ complete After Conversation Work (ACW). You must set this field if
 `hasAfterConvoWorkTimer` is set to `true` . Specify a value from
 10 through 3600. Available only for service channels of type Messaging
 or Voice.
-
-
-Metadata Types ServiceChannel
-
-**Field Name** **Field Type** **Description**
 
 For service channels of type Voice, this field is available in API version
 52.0 and later. For service channels of type Messaging, this field is
@@ -33851,6 +34845,11 @@ for the channel. If set to `true`, you must also set the
 `afterConvoWorkMaxTime` field. The default value is `false` .
 Available only for service channels of type Messaging or Voice.
 
+
+Metadata Types ServiceChannel
+
+**Field Name** **Field Type** **Description**
+
 For service channels of type Voice, this field is available in API version
 52.0 and later. For service channels of type messaging, this field is
 available in API version 56.0 and later.
@@ -33860,11 +34859,6 @@ workspace so that the agent doesn’t have to manually accept them.
 
 `interactionComponent` string The custom console component to open in the footer when an agent
 accepts a work item from this service channel.
-
-
-Metadata Types ServiceChannel
-
-**Field Name** **Field Type** **Description**
 
 `isInterruptible` boolean
 
@@ -33917,11 +34911,13 @@ Possible types are `IN_PROGRESS`, `PAUSED`, `COMPLETED` .
 
 `value` string Required. The value of Status Field defined in the parent ServiceChannel.
 
-`value` string Required. The value of the secondaryRoutingPriorityField field defined
-in the parent ServiceChannel.
-
 
 ### Metadata Types ServicePresenceStatus
+
+**Field Name** **Field Type** **Description**
+
+`value` string Required. The value of the secondaryRoutingPriorityField field defined
+in the parent ServiceChannel.
 
 Declarative Metadata Sample Definition
 
@@ -33993,18 +34989,17 @@ manifest file, see Deploying and Retrieving Metadata with the Zip File.
 Represents a presence status that can be assigned to a service channel. This type extends the Metadata metadata type and inherits its
 `fullName` field.
 
+
+Metadata Types ServicePresenceStatus
+
 File Suffix and Directory Location
 
-### ServicePresenceStatus components have the suffix .servicePresenceStatus and are stored in the
-
+ServicePresenceStatus components have the suffix `.servicePresenceStatus` and are stored in the
 `servicePresenceStatuses` folder.
 
 Version
 
-### ServicePresenceStatus components are available in API version 44.0 and later.
-
-
-Metadata Types ServicePresenceStatus
+ServicePresenceStatus components are available in API version 44.0 and later.
 
 Special Access Rules
 
@@ -34062,6 +35057,12 @@ The following is an example `package.xml` that references the previous definitio
 
       </types>
 
+```
+
+
+### Metadata Types ServiceProcess
+
+```
       <version>44.0</version>
 
    </Package>
@@ -34073,8 +35074,7 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-
-### Metadata Types ServiceProcess ServiceProcess
+### ServiceProcess
 
 Represents a process created in Service Process Studio and its associated attributes.
 
@@ -34103,10 +35103,6 @@ description
 
 processLabel
 
-serviceProcessAttributes
-
-serviceProcessDependencies
-
 ```
 
 **Field Type**
@@ -34124,24 +35120,16 @@ Required.
 
 A meaningful name for the service process.
 
-**Field Type**
-### ServiceProcessAttribute[]
-
-**Description**
-Custom attributes that store the data associated with the service process.
-
-**Field Type**
-### ServiceProcessDependency[]
-
 
 Metadata Types ServiceProcess
 
 **Field Name** **Description**
 
-**Description**
-Dependent components of the service process, such as OmniScripts or flows.
-
 ```
+serviceProcessAttributes
+
+serviceProcessDependencies
+
 serviceProcessItemGroups
 
 shortDescription
@@ -34151,6 +35139,20 @@ usageType
 ```
 
 ServiceProcessAttribute
+
+**Field Type**
+
+ServiceProcessAttribute[]
+
+**Description**
+Custom attributes that store the data associated with the service process.
+
+**Field Type**
+
+ServiceProcessDependency[]
+
+**Description**
+Dependent components of the service process, such as OmniScripts or flows.
 
 **Field Type**
 
@@ -34197,6 +35199,11 @@ attributeType
 **Field Type**
 SvcCtlgItemAttrAttributeType (enumeration of type string)
 
+
+Metadata Types ServiceProcess
+
+**Field Name** **Description**
+
 **Description**
 A `Base` attribute corresponds to a SvcCatalogRequest field, which is subject to
 field-level security. An `Extended` attribute is only a ServiceProcessAttribute object
@@ -34207,11 +35214,6 @@ Values are:
 **•** `Base`
 
 **•** `Extended`
-
-
-Metadata Types ServiceProcess
-
-**Field Name** **Description**
 
 The default is `Extended` .
 
@@ -34276,6 +35278,11 @@ Values are:
 
 **•** `Picklist`
 
+
+Metadata Types ServiceProcess
+
+**Field Name** **Description**
+
 **•** `Queue`
 
 **•** `RadioButton` (available in API version 65.0 and later)
@@ -34289,11 +35296,6 @@ Values are:
 **•** `Toggle` (available in API version 59.0 and later)
 
 **•** `Url`
-
-
-Metadata Types ServiceProcess
-
-**Field Name** **Description**
 
 The default is `Text` .
 
@@ -34312,8 +35314,6 @@ groupApiName
 inputVariableValue
 
 isRequired
-
-label
 
 ```
 
@@ -34354,8 +35354,22 @@ The default value of the attribute.
 **Field Type**
 boolean
 
+
+Metadata Types ServiceProcess
+
+**Field Name** **Description**
+
 **Description**
 Specifies whether the attribute is required. The default is `false` .
+
+```
+label
+
+parentAttribute
+
+sortOrder
+
+```
 
 **Field Type**
 string
@@ -34365,18 +35379,6 @@ string
 Required.
 
 A meaningful name for the attribute.
-
-
-Metadata Types ServiceProcess
-
-**Field Name** **Description**
-
-```
-parentAttribute
-
-sortOrder
-
-```
 
 **Field Type**
 string
@@ -34404,8 +35406,6 @@ dependencyReference
 
 processStepName
 
-type
-
 ```
 
 **Field Type**
@@ -34428,11 +35428,21 @@ Values are:
 
 **•** `FulfillmentFlow`
 
+
+Metadata Types ServiceProcess
+
+**Field Name** **Description**
+
 **•** `IntegrationDefinition`
 
 **•** `Preprocessor`
 
 **•** `RequestForm`
+
+```
+type
+
+```
 
 **Field Type**
 SvcCatalogItemDependencyType (enumeration of type string)
@@ -34440,11 +35450,6 @@ SvcCatalogItemDependencyType (enumeration of type string)
 **Description**
 
 Required.
-
-
-Metadata Types ServiceProcess
-
-**Field Name** **Description**
 
 The type of dependent component.
 
@@ -34454,556 +35459,3 @@ Values are:
 
 **•** `IntegrationProviderDef`
 
-**•** `OmniScriptConfig`
-
-**•** `PreprocessorApexClass`
-
-ServiceProcessItemGroup
-
-A group of related ServiceProcessAttribute records.
-
-**Field Name** **Description**
-
-```
-apiName
-
-groupName
-
-sortOrder
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The API Name of the group.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The name of the group.
-
-**Field Type**
-int
-
-**Description**
-
-Required.
-
-The group display order.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a ServiceProcess component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<ServiceProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-
-  <processLabel>EmailUpdate</processLabel>
-
-  <usageType>FinancialServices</usageType>
-
-  <serviceProcessAttributes>
-
-    <label>EmailAddress</label>
-
-```
-
-
-Metadata Types ServiceProcess
-
-```
-       <developerName>EmailAddress</developerName>
-
-       <dataType>Text</dataType>
-
-       <groupApiName>Info</groupApiName>
-
-     </serviceProcessAttributes>
-
-     <serviceProcessDependencies>
-
-       <dependencyReference>EmailPreprocessor</dependencyReference>
-
-       <type>PreprocessorApexClass</type>
-
-     </serviceProcessDependencies>
-
-     <serviceProcessItemGroups>
-
-        <apiName>Info</apiName>
-
-        <groupName>Info</groupName>
-
-        <sortOrder>1</sortOrder>
-
-      </serviceProcessItemGroups>
-
-   </ServiceProcess>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>ServiceProcess</name>
-
-      </types>
-
-      <version>57.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-Usage Type
-
-We recommend that you review these considerations before you retrieve or deploy service process metadata.
-
-**•** If you deploy metadata with the same name as the definition when your service process definition is active, you get an error message.
-Deactivate the service process definition and try again.
-
-**•** When your service process definition is inactive, consider these guidelines.
-
-**–** If a service process definition contains service catalog requests and service catalog request extended attribute values and you
-deploy metadata with the same name as the definition, you get an error message. You can’t delete or change a service process
-that has service catalog requests with attribute values in it. Make sure that all records are deleted in service catalog requests and
-service catalog request extended attribute values before you deploy the metadata.
-
-**–** If a service process definition contains service catalog requests but doesn’t contain service catalog request extended attribute
-values and you deploy the metadata with the same name, the deployment works as expected.
-
-**–** If a service process definition doesn’t contain service catalog requests and you deploy the metadata with the same name, the
-deployment works as expected.
-
-
-### Metadata Types Settings Settings
-
-Represents the organization settings related to a feature. For example, your password policies, session settings and network access
-controls are all available in the SecuritySettings component type.
-
-Not all feature settings are available in the Metadata API. See Unsupported Metadata Types on page 170 for information on which feature
-settings are not available.
-
-### Settings can be accessed using the specific component member or via wildcard. For example, in the package manifest file you would
-
-use the following section to access SecuritySettings:
-
-```
-      <types>
-
-        <members>Security</members>
-
-        <name>Settings</name>
-
-      </types>
-
-```
-
-The member format when used in the package manifest is the component metadata type name without the “Settings” suffix, so in the
-preceding example “Security” is used instead of “SecuritySettings”.
-
-File Suffix and Directory Location
-
-Each settings component gets stored in a single file in the `settings` directory of the corresponding package directory. The filename
-uses the format _`Setting feature`_ `.settings` . For example, the SecuritySettings file would be `Security.settings` . See
-“File Suffix and Directory Location” information for the individual settings components to determine the exact filename.
-
-Version
-
-### Settings is available in API version 27.0 and later. See the version information for the individual setting component to determine which
-
-API version the settings component became available.
-
-Declarative Metadata Sample Definition
-
-The following is an example package manifest used to deploy or retrieve only the MobileSettings for an organization:
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>Mobile</members>
-
-        <name>Settings</name>
-
-      </types>
-
-      <version>27.0</version>
-
-   </Package>
-
-```
-
-The following is an example package manifest used to deploy or retrieve all the available settings metadata for an organization, using
-a wildcard:
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>Settings</name>
-
-      </types>
-
-```
-
-
-Metadata Types Settings
-
-```
-      <version>27.0</version>
-
-   </Package>
-
-```
-
-AccountPlanSettings
-Represents an org’s account plan settings. These settings control features that make it easy for sales reps to set objectives with
-actionable metrics and to store account research and analysis.
-
-AccountSettings
-Represents an org’s account settings for account teams, account owner report, and the **View Hierarchy** link.
-
-AccountInsightsSettings
-Represents an org’s Einstein Account Insights settings. This setting controls features that help your reps maintain their relationships
-with their customers.
-
-AccountIntelligenceSettings
-Represents an org’s Account Intelligence settings. These settings control features that make it easy for sales reps to create accounts,
-see relevant news articles, and add logos to account records. This type extends the Metadata metadata type and inherits its
-`fullName` field.
-
-AccountingSettings
-Represents the settings for the Accounting Subledger feature.
-
-ActionsSettings
-Represents an org’s actions settings for default quick actions, multi-dimensional publisher, and third-party actions. This type extends
-the Metadata metadata type and inherits its `fullName` field.
-
-ActivitiesSettings
-Represents an org's activity settings, and its user interface settings for the calendar. This type extends the Metadata metadata type
-and inherits its `fullName` field.
-
-AddressSettings
-Represents the configuration of country/territory and state picklists. Use the AddressSettings component type to configure state
-and country/territory data in your organization so that you can convert text-based values into standard picklist values. To convert
-your state and country/territory values, from Setup, enter _`State and Country/Territory Picklists`_ in the Quick
-Find box, then select **State and Country/Territory Picklists** .
-
-AIReplyRecommendationsSettings
-Represents the metadata used to manage settings for Einstein Reply Recommendations. This type extends the Metadata metadata
-type and inherits its `fullName` field.
-
-AgentPlatformSettings
-Represents settings for Agentforce.
-
-AgentforceForDevelopersSettings
-Represents Agentforce for Developers settings.
-
-AnalyticsSettings
-Represents Analytics settings in Salesforce. CRM Analytics lets you explore all your data quickly and easily by providing AI-powered
-advanced Analytics right inside Salesforce. Manage your datasets, query data with Salesforce Analytics Query Language (SAQL), and
-customize dashboards. You can use these settings to configure which Analytics features are available to users in your organization.
-
-ApexSettings
-Represents Apex-related org settings. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-AppAnalyticsSettings
-Represents settings to retrieve AppExchange App Analytics usage data.
-
-
-Metadata Types Settings
-
-AppExperienceSettings
-Represents settings for the app experience.This type extends the Metadata metadata type and inherits its `fullName` field.
-
-AssociationEngineSettings
-Represents the record association builder settings for an org. This type extends the Metadata metadata type and inherits its
-`fullName` field.
-
-AutomatedContactsSettings
-Represents an org’s Einstein Automated Contacts settings. These settings let you find new contacts and opportunity contact roles.
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-BotSettings
-Represents an organization’s Einstein Bot settings, such as whether or not Einstein Bots is enabled. This type extends the Metadata
-metadata type and inherits its `fullName` field.
-
-BranchManagementSettings
-Represents the branch management settings for an org. This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-BusinessHoursSettings
-Represents the metadata used to manage settings for business hours and holidays in entitlements, entitlement templates, campaigns,
-and cases. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-CampaignSettings
-Represents an org’s Campaign Influence, Einstein Attribution, Einstein Key Accounts, and campaign member settings. These features
-help you understand how your campaigns and accounts are affecting your opportunity pipeline.
-
-CaseSettings
-Represents an organization’s case settings, such as the default case owner, which case-related features are enabled, and which
-Classic email templates are used for various case activities. This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-ChatterAnswersSettings
-Represents the metadata used to manage settings for Chatter Answers.
-
-ChatterEmailsMDSettings
-Represents an org’s settings for Chatter email when Chatter is enabled. This type extends the Metadata metadata type and inherits
-its `fullName` field.
-
-ChatterSettings
-Represents an org’s settings for their Chatter instance when Chatter is enabled for the org. This type extends the Metadata metadata
-type and inherits its `fullName` field.
-
-CodeBuilderSettings
-Represents Code Builder settings. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-CollectionsDashboardSettings
-Represents an org’s settings to add the Collections Dashboard application to an org.
-
-CommunitiesSettings
-Represents community settings for an org. Enable digital experiences and workspaces. Manage moderation, guest user and partner
-settings, and more. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-CompanySettings
-Represents global settings that affect multiple features in your organization. This type extends the Metadata metadata type and
-inherits its `fullName` field.
-
-
-Metadata Types Settings
-
-ConnectedAppSettings
-Represents settings for connected apps. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-ContentSettings
-Represents content settings for an org. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-ContractSettings
-Represents contract settings.
-
-ConversationalIntelligenceSettings
-Represents the org's Einstein Conversation Insights settings, such as whether Einstein Conversation Insights is enabled. Einstein
-Conversation Insights lets you analyze your rep's call recordings, and gives you the insights you need to optimize every call.
-
-ConversationChannelDefinition
-Represents the conversation channel definition that’s implemented for Interaction Service for Bring Your Own Channel for Messaging
-and Bring Your Own Channel for CCaaS messaging channels. This object is available in API version 60.0 and later.
-
-CurrencySettings
-Represents an organization’s currency settings, including supporting multiple currencies and currency effective dates. This type
-extends the Metadata metadata type and inherits its `fullName` field.
-
-CustomAddressFieldSettings
-Represents the settings for custom address fields.
-
-DataDotComSettings
-Represents the org's Data.com settings. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-DataImportManagementSettings
-Represents an org's contact and leads import settings.
-
-DeploymentSettings
-Represents the settings affecting how deployments behave in the org. This type extends the Metadata metadata type and inherits
-its `fullName` field.
-
-DevHubSettings
-Represents Dev Hub settings.
-
-DocumentGenerationSetting
-Represents an org's settings for automatic document generation from templates. This type extends the Metadata metadata type
-and inherits its `fullName` field.
-
-DynamicFormsSettings
-Represents the settings related to Dynamic Forms.
-
-EACSettings
-Represents the Einstein Activity Capture metadata type. Use Einstein Activity Capture to add emails and events from your Microsoft
-or Google account to the activity timeline of related Salesforce records. Automatically sync contact and event data between your
-Microsoft or Google account and Salesforce. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-EinsteinAISettings
-Represents Einstein AI settings, including AI feedback integration with Data 360 and PII masking for AI trust features.
-
-EinsteinAgentSettings
-Represents settings for Einstein classification apps, Einstein Case Classification and Einstein Case Wrap-Up, in an org. This type
-extends the Metadata metadata type and inherits its `fullName` field.
-
-
-Metadata Types Settings
-
-EinsteinGptSettings
-Represents settings for Einstein Generative AI features in an org. This type extends the Metadata metadata type and inherits its
-`fullName` field
-
-EmailAdministrationSettings
-Represents an organization’s email administration settings, including email deliverability, security compliance, relay configurations,
-and system notifications. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-EmailIntegrationSettings
-Represents an org’s settings for the Outlook integration, Gmail integration, and Salesforce Inbox. This type extends the Metadata
-metadata type and inherits its `fullName` field.
-
-EmailTemplateSettings
-Represents an org’s email template settings. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-EmployeeUserSettings
-Represents the employee-user settings used for automatically creating or syncing employee and user data in work.com orgs. This
-type extends the Metadata metadata type and inherits its `fullName` field.
-
-EnhancedNotesSettings
-Represents an org’s enhanced note settings, such as enabling enhanced notes and enabling tasks in enhanced notes.This type
-extends the Metadata metadata type and inherits its `fullName` field.
-
-EncryptionKeySettings
-Represents an org’s encryption key settings, such as customer-supplied keys options and key derivation settings. This type extends
-the Metadata metadata type and inherits its `fullName` field.
-
-EntitlementSettings
-Represents an organization’s entitlement settings.
-
-EventSettings
-Represents an org's platform event settings for Event Monitoring.
-
-ExperienceBundleSettings
-Represents the org setting that enables the ExperienceBundle metadata type for Aura sites in Experience Cloud. The setting doesn’t
-affect LWR sites, which use ExperienceBundle by default. This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-ExternalClientAppSettings
-Represents settings to enable the External Client App feature and provide access to the OAuth consumer secret.
-
-ExternalServicesSettings
-Represents settings for an External Services registration.
-
-FieldServiceSettings
-Represents an organization’s Field Service settings.
-
-FilesConnectSettings
-Represents the settings that modify the Files Connect feature.This type extends the Metadata metadata type and inherits its
-`fullName` field.
-
-FileUploadAndDownloadSecuritySettings
-Represents the security settings for uploading and downloading files. This type extends the Metadata metadata type and inherits
-its `fullName` field.
-
-FlowSettings
-Represents the Salesforce settings for processes and flows, such as whether Lightning runtime for flows is enabled.
-
-
-Metadata Types Settings
-
-ForecastingObjectListSettings
-Represents an org’s forecasting object list settings. Use these settings to control which object types and field types appear in the list
-of object details on the forecasts page. For example, pipeline forecasts use the Opportunity object, and the object list settings specify
-which fields from that object are available in the opportunity list section of the forecasts page. This type extends the Metadata
-metadata type and inherits its `fullName` field.
-
-ForecastingSettings
-Represents the Forecasts settings options. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-HighVelocitySalesSettings
-Represents an org’s Sales Engagement settings. With Sales Engagement, you can make your inside sales team as effective as possible.
-
-IdeasSettings
-Represents the metadata used to manage settings for Ideas.
-
-IdentityProviderSettings
-Represents the settings used to enable or disable Salesforce as a SAML identity provider for single sign-on (SSO).
-
-IframeWhiteListUrlSettings
-Represents settings related to the list of trusted external domains that you allow to frame your Visualforce pages or surveys. This
-type extends the Metadata metadata type and inherits its `fullName` field.
-
-IncidentMgmtSettings
-Represents settings for Customer Service Incident Management and Broadcast Communications.
-
-IndustriesEinsteinFeatureSettings
-Represents the settings for enabling the Industries Einstein feature.
-
-IndustriesLoyaltySettings
-Represents the settings to enable capabilities of Loyalty Management.
-
-IndustriesSettings
-Represents settings for industries verticals such as Financial Services Cloud, Consumer Goods Cloud, Public Sector Solutions, Education
-Cloud, Salesforce Scheduler, Life Sciences Cloud, and Health Cloud.
-
-InterestTaggingSettings
-Represents settings for Interest Tags, which your users can add to client records to capture client needs, interests, and prospecting
-opportunities.
-
-InventorySettings
-Represents options for the Salesforce Omnichannel Inventory product.This type extends the Metadata metadata type and inherits
-its `fullName` field.
-
-InvLatePymntRiskCalcSettings
-Represents the org’s settings to identify the level of risks associated with payment of invoices.
-
-InvocableActionSettings
-Represents the org’s invocable action settings, such as whether partial save is allowed.This type extends the Metadata metadata
-type and inherits its `fullName` field.
-
-KnowledgeSettings
-Represents the metadata used to manage settings for Salesforce Knowledge.
-
-LanguageSettings
-Represents an organization’s language settings. Language settings control end-user language selection, locale formats, and translation
-options. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-
-Metadata Types Settings
-
-LeadConfigSettings
-Represents configuration settings for Leads that control how they are converted and displayed, and what actions are available. This
-type extends the Metadata metadata type and inherits its `fullName` field.
-
-LeadConvertSettings
-Represents an organization’s custom field mappings for lead conversion. Custom fields can be mapped from Leads to Accounts,
-Contacts, and Opportunities. Options for creating opportunities during lead conversion can also be specified. This type extends the
-Metadata metadata type and inherits its `fullName` field.
-
-LiveAgentSettings
-Represents an organization’s Chat settings, such as whether Chat is enabled. This type extends the Metadata metadata type and
-inherits its `fullName` field.
-
-LightningExperienceSettings
-Represents the settings that modify an org’s Lightning Experience configuration. This type extends the Metadata metadata type and
-inherits its `fullName` field.
-
-LiveMessageSettings
-Represents an org’s LiveMessage settings.
-
-MacroSettings

@@ -1,3 +1,792 @@
+**•** You need the “Customize Application” permission to edit this object.
+
+**•** Your client application can't delete this object.
+
+Fields
+
+**Field** **Details**
+
+```
+ConversionRate
+
+DecimalPlaces
+
+IsActive
+
+IsCorporate
+
+```
+
+**Type**
+double
+
+**Properties**
+Filter
+
+**Description**
+Required. Conversion rate of this currency type against the corporate currency.
+
+**Type**
+int
+
+**Properties**
+Filter
+
+**Description**
+Required. For this currency, specifies the number of digits to the right of the decimal
+point, such as zero ( `0` ) for JPY or `2` for USD.
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter
+
+**Description**
+Indicates whether this currency type is active ( `true` ) or not ( `false` ). Inactive
+currency types do not appear in picklists in the user interface. Label is **Active** . This
+field defaults to `false` if no value is provided when updating or inserting a record.
+
+**Type**
+boolean
+
+
+### Standard Objects CustExpIntlTransfSetup
+
+**Field** **Details**
+
+**Properties**
+Defaulted on create, Filter
+
+**Description**
+Indicates whether this currency type is the corporate currency ( `true` ) or not ( `false` ).
+Label is **Corporate Currency** . All other currency conversion rates are applied against
+this corporate currency. If a currency is already defined as the corporate currency in
+the user interface, it can't be unset. When a non-corporate currency is set to a
+corporate currency, the system reconfigures all conversion rates based on the new
+corporate currency.
+
+```
+ IsoCode
+
+```
+
+Usage
+
+**Type**
+picklist
+
+**Properties**
+Filter, Restricted picklist
+
+**Description**
+Required. ISO code of the currency. Must be one of the valid alphabetic, three-letter
+currency ISO codes defined by the ISO 4217 standard, such as `USD`, `GBP`, or `JPY` .
+Must be unique within your organization. Label is **Currency ISO Code** .
+
+This object is for multicurrency organizations only. Use this object to define the currencies your organization uses.
+
+When updating an existing record, make sure to provide values for all fields to avoid undesired changes to the CurrencyType. For example,
+if a value for `IsActive` is not provided, the default ( `false` ) is used, which could result in a currently active CurrencyType becoming
+inactive.
+
+SEE ALSO:
+
+DatedConversionRate
+
+Overview of Salesforce Objects and Fields
+
+### CustExpIntlTransfSetup
+
+Stores information for different data sources that are processed for customer insights. This object is available in API version 65.0 and
+later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
+`undelete()`, `update()`, `upsert()`
+
+
+Standard Objects CustExpIntlTransfSetup
+
+Fields
+
+**Field** **Details**
+
+```
+DataSourceChannelName
+
+DataSourceChannelType
+
+IsDataProcessingPaused
+
+IsEnabled
+
+LastReferencedDate
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The name of the associated communication channel, such as Web, Email, Chat, or Voice.
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
+
+**Description**
+Specifies the channel type as standard or custom.
+
+Possible values are:
+
+**•** `Custom`
+
+**•** `Standard`
+
+The default value is `Standard` .
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether data processing for the channel is temporarily paused ( `true` ). Use this
+field to control channel operations without deactivating the channel.
+
+The default value is `false` .
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Indicates whether the channel is active for processing data ( `true` ).
+
+The default value is `false` .
+
+**Type**
+dateTime
+
+
+### Standard Objects CustomBrand
+
+**Field** **Details**
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Date and time when the current user last viewed or modified this record, a record related
+to this record, or a list view. If this value is null, the current user has never viewed or modified
+a record related to this object.
+
+```
+LastViewedDate
+
+Name
+
+ProcessingStartDate
+
+### CustomBrand
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Date and time when the current user last viewed or modified this record. If this value is null,
+the current user has never viewed or modified this record.
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+The name of the Customer Experience Intelligence Transformer Setup record.
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Sort, Update
+
+**Description**
+The date to start processing data in the specified communication channel.
+
+Represents a custom branding and color scheme. This object is available in API version 28.0 and later.
+
+Supported Calls
+
+`create()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
+
+Special Access Rules
+
+This object is available only when your org has digital experiences enabled.
+
+
+### Standard Objects CustomBrandAsset
+
+Fields
+
+**Field Name** **Details**
+
+```
+ParentId
+
+```
+
+Usage
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The ID of the parent entity that this branding applies to. The parent entity can
+be an Experience Cloud site, organization, topic, or reputation level.
+
+The branding applies to the entity that the `ParentId` references. For example,
+if the `ParentId` references a network ID, the branding applies to that
+Experience Cloud site only, and if the `ParentId` references an organization
+ID, the branding applies to the organization that it is accessed through, and so
+on. Label is `Branded Entity ID` .
+
+Use this object along with CustomBrandAsset to apply a custom branding scheme to your Experience Cloud site. The branding scheme
+for the site shows in both the user interface and in the Salesforce mobile app. You must have Create and Manage Experiences to customize
+site branding.
+
+You can also use this object to apply a custom branding scheme to your org when it is accessed through the Salesforce mobile app.
+
+SEE ALSO:
+
+Network
+
+### CustomBrandAsset
+
+Represents a branding element in a custom branding scheme. For example, a color, logo image, header image, or footer text. A
+### CustomBrandAsset can apply to an Experience Cloud site or to an org using the Salesforce mobile app. This object is available in API
+
+version 28.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
+
+Special Access Rules
+
+This object is available only when your org has digital experiences enabled.
+
+
+Standard Objects CustomBrandAsset
+
+Fields
+
+**Field Name** **Details**
+
+```
+AssetCategory
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Restricted picklist, Sort, Update
+
+**Description**
+
+Values include:
+
+**•** `MotifZeronaryColor` —The background color for the header. Label
+is `Zeronary motif color` .
+
+If this CustomBrandAsset is for a network, this is the header color for the
+network. If it is for an org, this is the header color when users access the
+Salesforce mobile app.
+
+**•** `MotifPrimaryColor` —The color used for the active tab. Label is
+`Primary motif color` .
+
+Not used for the Salesforce mobile app branding.
+
+**•** `MotifSecondaryColor` —The color used for the top borders of lists
+and tables. Label is `Secondary motif color` .
+
+Not used for the Salesforce mobile app branding.
+
+**•** `MotifTertiaryColor` —The background color for section headers on
+edit and detail pages. Label is `Tertiary motif color` .
+
+Not used for the Salesforce mobile app branding.
+
+**•** `MotifQuaternaryColor` —If this CustomBrandAsset is for a network,
+this is the background color for network pages. If it is for an org, this is the
+background color on a splash page. Label is `Quaternary motif`
+`color` .
+
+**•** `MotifZeronaryComplementColor` —Font color used with
+`zeronaryColor` . Label is `Zeronary motif colors`
+`complement color` .
+
+**•** `MotifPrimaryComplementColor` —Font color used with
+`primaryColor` . Label is `Primary motif colors complement`
+`color` .
+
+Not used for the Salesforce mobile app branding.
+
+**•** `MotifTertiaryComplementColor` —Font color used with
+`tertiaryColor` . Label is `Tertiary motif colors`
+`complement color` .
+
+Not used for the Salesforce mobile app branding.
+
+
+Standard Objects CustomBrandAsset
+
+**Field Name** **Details**
+
+**•** `MotifQuaternaryComplementColor` —Font color used with
+`quaternaryColor` . Label is `Quaternary motif colors`
+`complement color` .
+
+Not used for the Salesforce mobile app branding.
+
+**•** `PageHeader` —An image that appears on the header of the pages. Can
+be an .html, .gif, .jpg, or .png file. Label is `Page Header` .
+
+Not used for the Salesforce mobile app branding.
+
+**•** `PageFooter` —An image that appears on the footer of the pages. Must
+be an .html file. Label is `Page Footer` .
+
+Not used for the Salesforce mobile app branding.
+
+**•** `LoginFooterText` —The text that appears in the footer of the login
+page. Label is `Footer text displayed on the login page` .
+
+Not used for the Salesforce mobile app branding.
+
+**•** `LoginLogoImageId` —The logo that appears on the login page for
+external users. In the Salesforce mobile app, this logo also appears on the
+Experience Cloud site splash page. Label is `Logo image displayed`
+`on the login page` .
+
+**•** `LargeLogoImageId` —Only used for the Salesforce mobile app. The
+logo that appears on the splash page when you start the Salesforce mobile
+app. Label is `Large logo image` .
+
+**•** `SmallLogoImageId` —Only used for the Salesforce mobile app. The
+logo that appears on the publisher in the Salesforce mobile app. Label is
+`Small logo image` .
+
+**•** `StaticLogoImageURL` —The logo that appears on the login page for
+external users. Label is `Static logo image url` .
+
+**•** `LoginQuaternaryColor` —The background color that appears on the
+Experience Cloud site login page for external users. Label is `Login`
+`background color` .
+
+**•** `LoginRightFrameUrl` —The URL to the contents that appears on right
+side of the Experience Cloud site login page for external users. Label is `Login`
+`right frame url` .
+
+**•** `LogoAssetId` —Navigation tile menu item images. Label is `Logo`
+`asset image` .
+
+**•** `LoginPrimaryColor` —The background color of the login button. Label
+is `Login primary color` .
+
+**•** `LoginBackgroundImageUrl` —The path to the image URL that
+appears as the background on the Experience Cloud site’s login page. Label
+is `Background image url` .
+
+**•** `LargeLogoAssetId` —Navigational topic images. Label is `Large`
+`logo asset image` .
+
+
+Standard Objects CustomBrandAsset
+
+**Field Name** **Details**
+
+**•** `MediumLogoAssetId` —Featured topic images. Label is `Medium`
+`logo asset image` .
+
+```
+AssetSourceId
+
+CustomBrandId
+
+ForeignKeyAssetId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+
+ID of the document uploaded to the Documents folder if the value of
+`AssetCategory` is:
+
+**•** `PageHeader`
+
+**•** `PageFooter`
+
+**•** `LoginLogoImageId`
+
+**•** `LargeLogoImageId`
+
+**•** `SmallLogoImageId`
+
+ID of the content asset if the value of the `AssetCategory` is:
+
+**•** `LogoAssetId`
+
+**•** `LargeLogoAssetId`
+
+**•** `MediumLogoAssetId`
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+ID of the associated CustomBrand .
+
+This is a relationship field.
+
+**Relationship Name**
+CustomBrand
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+CustomBrand
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+
+### Standard Objects CustomFieldDisplayValue
+
+**Field Name** **Details**
+
+**Description**
+
+This field was removed in API version 41.0, and is available in earlier versions for
+backward compatibility only. Use `AssetSourceId` instead.
+
+ID of the document used if the value of `AssetCategory` is `PageHeader`,
+`PageFooter`, or `LoginLogoImageId` .
+
+```
+TextAsset
+
+```
+
+Usage
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Text used if the `AssetCategory` is `LoginFooterText` .
+
+Use this object to add basic branding elements—color scheme, header or footer images, login page logo, or footer text—to the branding
+scheme ( CustomBrand ) for your Experience Cloud site. You must have Create and Manage Experiences to customize site branding.
+
+If you’re using digital experiences in the Salesforce mobile app, the loading page shows the logo.
+
+SEE ALSO:
+
+Network
+
+### CustomFieldDisplayValue
+
+Stores variation details for the product attribute item view. This object is available in API version 63.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
+`undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+### CustomFieldDisplayValue is available only if the B2B or D2C Commerce license is enabled.
+
+
+Standard Objects CustomFieldDisplayValue
+
+Fields
+
+**Field** **Details**
+
+```
+Color
+
+CurrencyIsoCode
+
+CustomFieldDisplayId
+
+Name
+
+PickListApiValue
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The color variation in hexadecimal value format, for example `#FF0000` .
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The currency ISO code allowed by the organization. Possible value is:
+
+**•** `USD` —U.S. Dollar
+
+The default value is `USD` .
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The ID of the custom field display that this variation is associated with.
+
+This field is a relationship field.
+
+**Relationship Name**
+CustomFieldDisplay
+
+**Refers To**
+CustomFieldDisplay
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+Name of the custom field display value.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Sort, Update
+
+
+### Standard Objects CustomHelpMenuItem
+
+**Field** **Details**
+
+**Description**
+The API name of the color variation picklist value, for example, `red_c` .
+
+Usage
+
+This object only gets populated when display type in the CustomFieldDisplay object is ColorSwatch.
+
+Associated Objects
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as
+CustomFieldDisplayValue.
+
+**CustomFieldDisplayValueChangeEvent on page 68**
+Change events are available for the object.
+
+**CustomFieldDisplayValueFeed on page 55**
+Feed tracking is available for the object.
+
+**CustomFieldDisplayValueHistory on page 63**
+History is available for tracked fields of the object.
+
+### CustomHelpMenuItem
+
+Represents the items within a section of the Lightning Experience help menu that the admin added to display custom, org-specific help
+resources. This object is available in API version 44.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
+
+Packaging Considerations
+
+Although you can package custom Help Menu section information, the section won't appear in the Help Menu Setup page or the Help
+Menu user interface of orgs where the package is installed. Instead, customers must view the data in the CustomHelpMenuItem and
+CustomHelpMenuSection objects and then manually add resources on the Help Menu Setup page.
+
+Fields
+
+**Field** **Details**
+
+```
+LinkUrl
+
+```
+
+**Type**
+url
+
+**Properties**
+Create, Filter, Sort, Update
+
+
+### Standard Objects CustomHelpMenuSection
+
+**Field** **Details**
+
+**Description**
+Required. The URL for the resource. Specify up to 1,000 characters.
+
+```
+MasterLabel
+
+ParentId
+
+SortOrder
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+Required. The name of the resource. Specify up to 100 characters.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+The ID of the custom help section the item belongs to.
+
+This is a relationship field.
+
+**Relationship Name**
+Parent
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+### CustomHelpMenuSection
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+Required. The order of the item within the custom section. Valid values are 1 through 15.
+
+### CustomHelpMenuSection
+
+Represents a section of the Lightning Experience help menu that the admin added to display custom, org-specific help resources. This
+object is available in API version 44.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
+
+
+Standard Objects CustomHelpMenuSection
+
+Packaging Considerations
+
+Although you can package custom Help Menu section information, the section won't appear in the Help Menu Setup page or the Help
+Menu user interface of orgs where the package is installed. Instead, customers must view the data in the CustomHelpMenuItem and
+CustomHelpMenuSection objects and then manually add resources on the Help Menu Setup page.
+
+Fields
+
+**Field** **Details**
+
+```
+DeveloperName
+
+Language
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The unique name of the custom help section in the API. This name can contain only
+underscores and alphanumeric characters and must be unique in your organization. It must
+begin with a letter, not include spaces, not end with an underscore, and not contain two
+consecutive underscores. The label corresponds to section title in the user interface. Limit:
+80 characters.
+
+Note: When creating large sets of data, always specify a unique `DeveloperName`
+for each record. If no `DeveloperName` is specified, performance slows down while
+Salesforce generates one for each record.
+
+Note: Only users with View DeveloperName OR View Setup and Configuration
+permission can view, group, sort, and filter this field.
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
 Required. Language of the label. Possible values are:
 
 **•** da (Danish)
@@ -22,6 +811,11 @@ Required. Language of the label. Possible values are:
 
 **•** nl_NL (Dutch)
 
+
+### Standard Objects CustomHttpHeader
+
+**Field** **Details**
+
 **•** no (Norwegian)
 
 **•** pt_BR (Portuguese (Brazil))
@@ -36,6 +830,15 @@ Required. Language of the label. Possible values are:
 
 **•** zh_TW (Chinese (Traditional))
 
+```
+MasterLabel
+
+NamespacePrefix
+
+### CustomHttpHeader
+
+```
+
 **Type**
 string
 
@@ -47,11 +850,6 @@ Required. The name of the resource. Specify up to 100 characters.
 
 **Type**
 string
-
-
-### Standard Objects CustomHttpHeader
-
-**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -74,10 +872,11 @@ developer.
 that are part of an installed managed package. All other objects have no namespace
 prefix.
 
-### CustomHttpHeader
-
 Represents a custom HTTP header that provides context information from Salesforce such as region, org details, or the role of the person
 viewing the external object. This object is available in API version 43.0 and later.
+
+
+Standard Objects CustomHttpHeader
 
 Supported Calls
 
@@ -94,23 +893,6 @@ Fields
 ```
 Description
 
-```
-
-**Type**
-textarea
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-A text description of the header field’s purpose.
-
-
-Standard Objects CustomHttpHeader
-
-**Field Name** **Details**
-
-```
 HeaderFieldName
 
 HeaderFieldValue
@@ -121,7 +903,14 @@ ParentId
 
 ```
 
-Usage
+**Type**
+textarea
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+A text description of the header field’s purpose.
 
 **Type**
 string
@@ -155,6 +944,11 @@ Indicates whether the custom HTTP header is available to use.
 **Type**
 reference
 
+
+### Standard Objects CustomMsgChannel
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Group, Sort
 
@@ -172,10 +966,9 @@ Lookup
 **Refers To**
 ExternalDataSource, NamedCredential
 
+Usage
+
 For each OData external data source, define up 10 HTTP headers to request data.
-
-
-### Standard Objects CustomMsgChannel
 
 Note: HTTP headers aren’t supported on named credentials.
 
@@ -200,8 +993,6 @@ Fields
 ```
 ChannelDefinitionId
 
-EventCapabilitiesIsInboundAcknowledgementEnabled
-
 ```
 
 **Type**
@@ -209,6 +1000,11 @@ reference
 
 **Properties**
 Create, Filter, Group, Sort, Update
+
+
+Standard Objects CustomMsgChannel
+
+**Field** **Details**
 
 **Description**
 Specifies the ConversationChannelDefinition for the custom channel.
@@ -220,6 +1016,15 @@ ChannelDefinition
 
 **Refers To**
 ConversationChannelDefinition
+
+```
+EventCapabilitiesIsInboundAcknowledgementEnabled
+
+EventCapabilitiesIsProgressIndicatorEnabled
+
+EventCapabilitiesIsTypingIndicatorDisabled
+
+```
 
 **Type**
 boolean
@@ -235,22 +1040,6 @@ acknowledgments are disabled by default even if supported by the partner.
 
 This field is available in API version 65.0 and later. Use this field instead of
 `HasInboundReceipts` .
-
-
-Standard Objects CustomMsgChannel
-
-**Field** **Details**
-
-```
-EventCapabilitiesIsProgressIndicatorEnabled
-
-EventCapabilitiesIsTypingIndicatorDisabled
-
-HasInboundReceipts
-
-HasTypingIndicator
-
-```
 
 **Type**
 boolean
@@ -281,6 +1070,20 @@ are enabled by default.
 This field is available in API version 65.0 and later. Use this field instead of
 `HasTypingIndicator` .
 
+
+### Standard Objects CustomNotificationType
+
+**Field** **Details**
+
+```
+HasInboundReceipts
+
+HasTypingIndicator
+
+MessagingChannelId
+
+```
+
 **Type**
 boolean
 
@@ -305,23 +1108,12 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 **Description**
 Indicates whether the Salesforce admin has enabled typing indicators for outbound messages
 in the Messaging settings ( `true` ) or whether the admin hasn’t enabled outbound typing
-
-
-### Standard Objects CustomNotificationType
-
-**Field** **Details**
-
 indicators ( `false` ). The default value is `true`, meaning the outbound typing indicator
 feature is enabled by default if supported by the partner. To disable the outbound typing
 indicator feature, set this value to `false` .
 
 Available in API versions 63.0 to 65.0. In API version 66.0 and later, this field is removed. Use
 `EventCapabilitiesIsTypingIndicatorDisabled` instead.
-
-```
-MessagingChannelId
-
-```
 
 **Type**
 reference
@@ -345,6 +1137,9 @@ MessagingChannel
 
 Stores information about custom notification types. This object is available in API version 47.0 and later.
 
+
+Standard Objects CustomNotificationType
+
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
@@ -359,6 +1154,12 @@ Fields
 ```
 CustomNotifTypeName
 
+Description
+
+Desktop
+
+DeveloperName
+
 ```
 
 **Type**
@@ -367,28 +1168,10 @@ string
 **Properties**
 Create, Filter, Group, idLookup, Sort, Unique, Update
 
-
-Standard Objects CustomNotificationType
-
-**Field** **Details**
-
 **Description**
 Specifies a notification type name. The notification type name is unique within your
 organization. The notification type name isn’t namespaced, so it can’t be duplicated across
 installed packages. Maximum number of characters: 80.
-
-```
-Description
-
-Desktop
-
-DeveloperName
-
-IsSlack
-
-Language
-
-```
 
 **Type**
 textarea
@@ -419,6 +1202,26 @@ Create, Filter, Group, Sort, Update
 **Description**
 Specifies the API name of the notification type.
 
+
+### Standard Objects CustomPermission
+
+**Field** **Details**
+
+```
+IsSlack
+
+Language
+
+MasterLabel
+
+Mobile
+
+NamespacePrefix
+
+### CustomPermission
+
+```
+
 **Type**
 boolean
 
@@ -437,22 +1240,6 @@ Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort,
 **Description**
 Specifies the language of the custom notification type. The value for this field is the language
 value of the org.
-
-
-### Standard Objects CustomPermission
-
-**Field** **Details**
-
-```
-MasterLabel
-
-Mobile
-
-NamespacePrefix
-
-### CustomPermission
-
-```
 
 **Type**
 string
@@ -485,6 +1272,9 @@ Specifies the namespace of the notification type, if installed with a managed pa
 Represents a permission created to control access to a custom process or app, such as sending email. This object is available in API
 version 31.0 and later.
 
+
+Standard Objects CustomPermission
+
 Supported Calls
 
 `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`
@@ -499,9 +1289,6 @@ As of Summer ’20 and later, only users who have one of these permissions can a
 
 **•** Assign Permission Sets
 
-
-Standard Objects CustomPermission
-
 Fields
 
 **Field Name** **Details**
@@ -512,8 +1299,6 @@ Description
 DeveloperName
 
 IsLicensed
-
-IsProtected
 
 ```
 
@@ -552,10 +1337,22 @@ boolean
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
+
+Standard Objects CustomPermission
+
+**Field Name** **Details**
+
 **Description**
 When enabled (true) indicates that the appropriate Salesforce license is required
 before accessing the permission. This field is available in API version 50.0 and
 later.
+
+```
+IsProtected
+
+Language
+
+```
 
 **Type**
 boolean
@@ -567,24 +1364,11 @@ Defaulted on create, Filter, Group, Sort
 Indicates whether the custom permission is protected ( `true` ) or not ( `false` ).
 Protected components that have been installed in other organizations can’t be
 linked to or referenced by components created in the subscriber organization.
-
-
-Standard Objects CustomPermission
-
-**Field Name** **Details**
-
 A developer can delete a protected component contained in a managed package
 in a future release of the package without worrying about failing installations.
 However, after a component is marked as unprotected and is released globally,
 the developer can’t delete it. The default value is `false` . This field is available
 in API version 50.0 and later.
-
-```
-Language
-
-MasterLabel
-
-```
 
 **Type**
 picklist
@@ -625,6 +1409,11 @@ The language of the custom permission. Valid values are:
 
 **•** Spanish: `es`
 
+
+Standard Objects CustomPermission
+
+**Field Name** **Details**
+
 **•** Spanish (Mexico): `es_MX` Spanish (Mexico) defaults to Spanish for
 customer-defined translations.
 
@@ -632,6 +1421,15 @@ customer-defined translations.
 
 **•** Thai: `th` The Salesforce user interface is fully translated to Thai, but Help is
 in English.
+
+```
+MasterLabel
+
+NamespacePrefix
+
+```
+
+Usage
 
 **Type**
 string
@@ -642,18 +1440,6 @@ Filter, Group, Sort
 **Description**
 The custom permission label, which corresponds to **Label** in the user interface.
 Limit: 80 characters.
-
-
-Standard Objects CustomPermission
-
-**Field Name** **Details**
-
-```
-NamespacePrefix
-
-```
-
-Usage
 
 **Type**
 string
@@ -694,46 +1480,43 @@ WHERE DeveloperName = 'Button1'
 
 ```
 
+
+### Standard Objects CustomPermissionDependency
+
 To query all permission sets and profiles with custom permissions:
 
 ```
-SELECT Assignee.Name, PermissionSet.Id,
+   SELECT Assignee.Name, PermissionSet.Id,
 
-PermissionSet.Profile.Name,
+   PermissionSet.Profile.Name,
 
-PermissionSet.isOwnedByProfile,
+   PermissionSet.isOwnedByProfile,
 
-PermissionSet.Label
+   PermissionSet.Label
 
-FROM PermissionSetAssignment
+   FROM PermissionSetAssignment
 
-WHERE PermissionSetId
+   WHERE PermissionSetId
 
-IN (SELECT ParentId
+   IN (SELECT ParentId
 
-  FROM SetupEntityAccess
+     FROM SetupEntityAccess
 
-  WHERE SetupEntityType =
+     WHERE SetupEntityType =
 
-'CustomPermission')
+   'CustomPermission')
 
 ```
 
 To query for all SetupEntityAccess rows with custom permissions:
 
 ```
-SELECT Id,ParentId,Parent.Name, SetupEntityId
+   SELECT Id,ParentId,Parent.Name, SetupEntityId
 
-FROM SetupEntityAccess
+   FROM SetupEntityAccess
 
-WHERE SetupEntityType='CustomPermission'
+   WHERE SetupEntityType='CustomPermission'
 
-```
-
-
-### Standard Objects CustomPermissionDependency
-
-```
    AND ParentId
 
    IN (SELECT Id
@@ -779,6 +1562,11 @@ CustomPermissionId
 **Type**
 reference
 
+
+Standard Objects CustomPermissionDependency
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Group, Sort
 
@@ -789,18 +1577,13 @@ The ID of the custom permission that requires the permission that’s specified 
 This is a relationship field.
 
 **Relationship Name**
-### CustomPermission
+CustomPermission
 
 **Relationship Type**
 Lookup
 
 **Refers To**
-### CustomPermission
-
-
-Standard Objects CustomPermissionDependency
-
-**Field Name** **Details**
+CustomPermission
 
 ```
 RequiredCustomPermissionId
@@ -852,34 +1635,37 @@ public class CustomPermissionUtil {
 
                                 IN :customPermIds];
 
-    String[] requiredPermIds = new String[]{};
-
-    for (CustomPermissionDependency cpd : requiredPerms) {
-
-      requiredPermIds.add(cpd.RequiredCustomPermissionId);
-
-    }
-
-    if (requiredPermIds.size() > 0) {
-
-      customPermIds.addall(getAllRequiredHelper(requiredPermIds));
-
-      return customPermIds;
-
-    } else {
-
-      return customPermIds;
-
-    }
-
-  }
-
-}
-
 ```
 
 
 ### Standard Objects Customer
+
+```
+       String[] requiredPermIds = new String[]{};
+
+       for (CustomPermissionDependency cpd : requiredPerms) {
+
+         requiredPermIds.add(cpd.RequiredCustomPermissionId);
+
+       }
+
+       if (requiredPermIds.size() > 0) {
+
+         customPermIds.addall(getAllRequiredHelper(requiredPermIds));
+
+         return customPermIds;
+
+       } else {
+
+         return customPermIds;
+
+       }
+
+     }
+
+   }
+
+```
 
 [For more information about using Apex classes, see the Apex Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dev_guide.htm)
 
@@ -906,8 +1692,6 @@ Fields
 ```
 LastReferencedDate
 
-LastViewedDate
-
 ```
 
 **Type**
@@ -928,11 +1712,27 @@ Possible values are:
 **Type**
 dateTime
 
+
+Standard Objects Customer
+
+**Field** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The timestamp for when the current user last viewed a record related to this record.
+
+```
+LastViewedDate
+
+Name
+
+OwnerId
+
+PartyId
+
+```
 
 **Type**
 dateTime
@@ -943,22 +1743,6 @@ Filter, Nillable, Sort
 **Description**
 The timestamp for when the current user last viewed this record. If this value is null, it’s
 possible that this record was referenced (LastReferencedDate) and not viewed.
-
-
-Standard Objects Customer
-
-**Field** **Details**
-
-```
-Name
-
-OwnerId
-
-PartyId
-
-TotalLifeTimeValue
-
-```
 
 **Type**
 string
@@ -1000,6 +1784,11 @@ Required. Represents the individual object related to this customer record.
 
 This is a relationship field.
 
+
+### Standard Objects DandBCompany
+
+**Field** **Details**
+
 **Relationship Name**
 Party
 
@@ -1009,6 +1798,13 @@ Lookup
 **Refers To**
 Individual
 
+```
+TotalLifeTimeValue
+
+### DandBCompany
+
+```
+
 **Type**
 int
 
@@ -1017,9 +1813,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The total revenue amount gained from this customer.
-
-
-### Standard Objects DandBCompany DandBCompany
 
 Represents a Dun & Bradstreet [®] company record, which is associated with an account added from Data.com. This object is available in
 API version 25.0 and later.
@@ -1044,6 +1837,9 @@ Special Access Rules
 
 Only organizations with Data.com Premium Prospector or Data.com Premium Clean can access this object.
 
+
+Standard Objects DandBCompany
+
 Fields
 
 **Field Name** **Details**
@@ -1054,6 +1850,10 @@ Address
 City
 
 CompanyCurrencyIsoCode
+
+Country
+
+CountryAccessCode
 
 ```
 
@@ -1079,11 +1879,6 @@ The city where a company is physically located. Maximum size is 40 characters.
 **Type**
 picklist
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
@@ -1092,19 +1887,6 @@ The code used to represent a company’s local currency. This data is provided b
 the International Organization for Standardization (ISO) and is based on their
 three-letter currency codes. For example, USD is the ISO code for United States
 Dollar. Maximum size is 3 characters.
-
-```
-Country
-
-CountryAccessCode
-
-CurrencyCode
-
-Description
-
-DomesticUltimateBusinessName
-
-```
 
 **Type**
 string
@@ -1123,6 +1905,24 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The required code for international calls. Maximum size is 4 characters.
+
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
+```
+CurrencyCode
+
+Description
+
+DomesticUltimateBusinessName
+
+DomesticUltimateDunsNumber
+
+DunsNumber
+
+```
 
 **Type**
 picklist
@@ -1149,11 +1949,6 @@ Maximum size is 32000 characters.
 **Type**
 string
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -1161,17 +1956,6 @@ Create, Filter, Group, Nillable, Sort, Update
 The primary name of the Domestic Ultimate, which is the highest ranking
 subsidiary, specified by country, within an organization’s corporate structure.
 Maximum size is 255 characters.
-
-```
-DomesticUltimateDunsNumber
-
-DunsNumber
-
-EmployeeQuantityGrowthRate
-
-EmployeesHere
-
-```
 
 **Type**
 string
@@ -1190,12 +1974,28 @@ string
 **Properties**
 Create, Filter, Group, Sort, Update
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **Description**
 The Data Universal Numbering System (D-U-N-S) number is a unique, nine-digit
 number assigned to every business location in the Dun & Bradstreet database
 that has a unique, separate, and distinct operation. D-U-N-S numbers are used
 by industries and organizations around the world as a global standard for business
 identification and tracking. Maximum size is 9 characters.
+
+```
+EmployeeQuantityGrowthRate
+
+EmployeesHere
+
+EmployeesHereReliability
+
+EmployeesTotal
+
+```
 
 **Type**
 double
@@ -1217,22 +2017,6 @@ Create, Filter, Nillable, Sort, Update
 **Description**
 The number of employees at a specified location, such as a branch location.
 Maximum size is 15 characters.
-
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
-```
-EmployeesHereReliability
-
-EmployeesTotal
-
-EmployeesTotalReliability
-
-FamilyMembers
-
-```
 
 **Type**
 picklist
@@ -1260,8 +2044,27 @@ Create, Filter, Nillable, Sort, Update
 **Description**
 The total number of employees in the company, including all subsidiary and
 branch locations. This data is only available on records that have a value of
+
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 _`Headquarters/Parent`_ in the `LocationStatus` field. Maximum size
 is 15 characters.
+
+```
+EmployeesTotalReliability
+
+FamilyMembers
+
+Fax
+
+FifthNaics
+
+FifthNaicsDesc
+
+```
 
 **Type**
 picklist
@@ -1293,26 +2096,6 @@ The total number of family members, worldwide, within an organization, including
 the Global Ultimate, its subsidiaries (if any), and its branches (if any). Maximum
 size is 5 characters.
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
-```
-Fax
-
-FifthNaics
-
-FifthNaicsDesc
-
-FifthSic
-
-FifthSic8
-
-FifthSic8Desc
-
-```
-
 **Type**
 phone
 
@@ -1335,36 +2118,6 @@ Maximum size is 6 characters.
 **Type**
 string
 
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A brief description of an organization’s line of business, based on the
-corresponding NAICS code. Maximum size is 120 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional SIC code used to further classify an organization by industry.
-Maximum size is 8 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional SIC code used to further classify an organization by industry.
-Maximum size is 8 characters.
-
-**Type**
-string
-
 
 Standard Objects DandBCompany
 
@@ -1375,20 +2128,40 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 A brief description of an organization’s line of business, based on the
-corresponding SIC code. Maximum size is 80 characters.
+corresponding NAICS code. Maximum size is 120 characters.
 
 ```
+FifthSic
+
+FifthSic8
+
+FifthSic8Desc
+
 FifthSicDesc
 
 FipsMsaCode
 
-FipsMsaDesc
-
-FortuneRank
-
-FourthNaics
-
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+An additional SIC code used to further classify an organization by industry.
+Maximum size is 8 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+An additional SIC code used to further classify an organization by industry.
+Maximum size is 8 characters.
 
 **Type**
 string
@@ -1407,10 +2180,38 @@ string
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
+A brief description of an organization’s line of business, based on the
+corresponding SIC code. Maximum size is 80 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
+**Description**
 The Federal Information Processing Standards (FIPS) and the Metropolitan
 Statistical Area (MSA) codes identify the organization’s location. The MSA codes
 are defined by the US Office of Management and Budget. Maximum size is 5
 characters.
+
+```
+FipsMsaDesc
+
+FortuneRank
+
+FourthNaics
+
+FourthNaicsDesc
+
+FourthSic
+
+```
 
 **Type**
 string
@@ -1435,30 +2236,12 @@ means that the company isn’t ranked as a Fortune 1000 company.
 **Type**
 string
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 An additional NAICS code used to further classify an organization by industry.
 Maximum size is 6 characters.
-
-```
-FourthNaicsDesc
-
-FourthSic
-
-FourthSic8
-
-FourthSic8Desc
-
-FourthSicDesc
-
-```
 
 **Type**
 string
@@ -1476,53 +2259,55 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-**Description**
-An additional SIC code used to further classify an organization by industry.
-Maximum size is 8 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional SIC code used to further classify an organization by industry.
-Maximum size is 8 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A brief description of an organization’s line of business, based on the
-corresponding SIC code. Maximum size is 80 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
 
 Standard Objects DandBCompany
 
 **Field Name** **Details**
 
 **Description**
+An additional SIC code used to further classify an organization by industry.
+Maximum size is 8 characters.
+
+```
+FourthSic8
+
+FourthSic8Desc
+
+FourthSicDesc
+
+GeoCodeAccuracy
+
+```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+An additional SIC code used to further classify an organization by industry.
+Maximum size is 8 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
 A brief description of an organization’s line of business, based on the
 corresponding SIC code. Maximum size is 80 characters.
 
-```
-GeoCodeAccuracy
+**Type**
+string
 
-GlobalUltimateBusinessName
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
 
-GlobalUltimateDunsNumber
-
-```
+**Description**
+A brief description of an organization’s line of business, based on the
+corresponding SIC code. Maximum size is 80 characters.
 
 **Type**
 picklist
@@ -1546,6 +2331,11 @@ physical address. Available values include:
 
 **•** M – _`Mailing address level`_
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **•** N – _`Not matched`_
 
 **•** P – _`PO BOX location`_
@@ -1557,6 +2347,17 @@ physical address. Available values include:
 **•** Z – _`ZIP code level`_
 
 **•** 0 (zero)– _`Geocode could not be assigned`_
+
+```
+GlobalUltimateBusinessName
+
+GlobalUltimateDunsNumber
+
+GlobalUltimateTotalEmployees
+
+ImportExportAgent
+
+```
 
 **Type**
 string
@@ -1579,22 +2380,6 @@ Create, Filter, Group, Nillable, Sort, Update
 The D-U-N-S Number of the Global Ultimate, which is the highest entity within
 an organization’s corporate structure and may oversee branches and subsidiaries.
 Maximum size is 9 characters.
-
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
-```
-GlobalUltimateTotalEmployees
-
-ImportExportAgent
-
-IncludedInSnP500
-
-Latitude
-
-```
 
 **Type**
 double
@@ -1619,6 +2404,11 @@ and/or is an agent for goods. Available values include:
 
 **•** A—Importer/exporter/agent
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **•** B—Importer/exporter
 
 **•** C—Importer
@@ -1632,6 +2422,17 @@ and/or is an agent for goods. Available values include:
 **•** G—None or data not available
 
 **•** H—Exporter
+
+```
+IncludedInSnP500
+
+Latitude
+
+LegalStatus
+
+LocationStatus
+
+```
 
 **Type**
 string
@@ -1652,24 +2453,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 Used with longitude to specify a precise location, which is then used to assess
 the Geocode Accuracy. Maximum size is 11 characters.
-
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
-```
-LegalStatus
-
-LocationStatus
-
-Longitude
-
-MailingAddress
-
-MailingCity
-
-```
 
 **Type**
 picklist
@@ -1695,7 +2478,25 @@ include:
 
 **•** 1—Headquarters/parent (branches and/or subsidiaries report to the business)
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **•** 2—Branch (secondary location to a headquarters location)
+
+```
+Longitude
+
+MailingAddress
+
+MailingCity
+
+MailingCountry
+
+MailingPostalCode
+
+```
 
 **Type**
 string
@@ -1726,24 +2527,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The city where a company has its mail delivered. Maximum size is 40 characters.
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
-```
-MailingCountry
-
-MailingPostalCode
-
-MailingState
-
-MailingStreet
-
-MarketingPreScreen
-
-```
-
 **Type**
 string
 
@@ -1763,6 +2546,24 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The postal code that a company uses on its mailing address. Maximum size is 20
 characters.
+
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
+```
+MailingState
+
+MailingStreet
+
+MarketingPreScreen
+
+MarketingSegmentationCluster
+
+MinorityOwned
+
+```
 
 **Type**
 string
@@ -1800,26 +2601,8 @@ and ranges from low risk to high risk. Available values include:
 
 **•** H— _`High risk of delinquency`_
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 Important: Use this information for marketing pre-screening purposes
 only.
-
-```
-MarketingSegmentationCluster
-
-MinorityOwned
-
-Name
-
-NationalId
-
-NationalIdType
-
-```
 
 **Type**
 picklist
@@ -1837,6 +2620,11 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **Description**
 Indicates whether an organization is owned or controlled by a member of a
 minority group. Available values include:
@@ -1844,6 +2632,19 @@ minority group. Available values include:
 **•** Y—Minority owned
 
 **•** N—Not minority owned
+
+```
+Name
+
+NationalId
+
+NationalIdType
+
+OutOfBusiness
+
+OwnOrRent
+
+```
 
 **Type**
 string
@@ -1870,26 +2671,10 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Description**
 A code value that identifies the type of national identification number used. The
 full list of resources can be found at the Optimizer Resources page maintained
 by Dun & Bradstreet. Maximum size is 5 characters.
-
-```
-OutOfBusiness
-
-OwnOrRent
-
-ParentOrHqBusinessName
-
-ParentOrHqDunsNumber
-
-```
 
 **Type**
 picklist
@@ -1908,6 +2693,11 @@ operations. Available values include:
 **Type**
 picklist
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
@@ -1920,6 +2710,19 @@ values include:
 **•** 1—Owns
 
 **•** 2—Rents
+
+```
+ParentOrHqBusinessName
+
+ParentOrHqDunsNumber
+
+Phone
+
+PostalCode
+
+PremisesMeasure
+
+```
 
 **Type**
 string
@@ -1939,26 +2742,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The D-U-N-S Number for the parent or headquarters. Maximum size is 9 characters.
-
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
-```
-Phone
-
-PostalCode
-
-PremisesMeasure
-
-PremisesMeasureReliability
-
-PremisesMeasureUnit
-
-PrimaryNaics
-
-```
 
 **Type**
 phone
@@ -1982,11 +2765,29 @@ size is 20 characters.
 **Type**
 int
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 A numeric value for the measurement of the premises.
+
+```
+PremisesMeasureReliability
+
+PremisesMeasureUnit
+
+PrimaryNaics
+
+PrimaryNaicsDesc
+
+PrimarySic
+
+```
 
 **Type**
 string
@@ -2012,11 +2813,6 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Description**
 The six-digit North American Industry Classification System (NAICS) code is the
 standard used by business and government to classify business establishments
@@ -2024,17 +2820,6 @@ according to their economic activity for the purpose of collecting, analyzing, a
 publishing statistical data related to the US business economy. The full list of
 values can be found at the Optimizer Resources page maintained by Dun &
 Bradstreet. Maximum size is 6 characters.
-
-```
-PrimaryNaicsDesc
-
-PrimarySic
-
-PrimarySic8
-
-PrimarySic8Desc
-
-```
 
 **Type**
 string
@@ -2049,6 +2834,11 @@ Maximum size is 120 characters.
 **Type**
 string
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -2057,6 +2847,17 @@ The four-digit Standard Industrial Classification (SIC) code is used to categori
 business establishments by industry. The full list of values can be found at the
 Optimizer Resources page maintained by Dun & Bradstreet. Maximum size is 4
 characters.
+
+```
+PrimarySic8
+
+PrimarySic8Desc
+
+PrimarySicDesc
+
+PriorYearEmployees
+
+```
 
 **Type**
 string
@@ -2076,28 +2877,10 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Description**
 A brief description of an organization’s line of business, based on its SIC code.
 The full list of values can be found at the Optimizer Resources page maintained
 by Dun & Bradstreet. Maximum size is 80 characters.
-
-```
-PrimarySicDesc
-
-PriorYearEmployees
-
-PriorYearRevenue
-
-PublicIndicator
-
-SalesTurnoverGrowthRate
-
-```
 
 **Type**
 string
@@ -2117,6 +2900,24 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The total number of employees for the prior year.
+
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
+```
+PriorYearRevenue
+
+PublicIndicator
+
+SalesTurnoverGrowthRate
+
+SalesVolume
+
+SalesVolumeReliability
+
+```
 
 **Type**
 double
@@ -2147,27 +2948,9 @@ double
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Description**
 The increase in annual revenue from the previous value for an equivalent period
 expressed as a decimal percentage.
-
-```
-SalesVolume
-
-SalesVolumeReliability
-
-SecondNaics
-
-SecondNaicsDesc
-
-SecondSic
-
-```
 
 **Type**
 double
@@ -2191,12 +2974,30 @@ The reliability of the `SalesVolume` figure. Available values include:
 
 **•** 0—Actual number
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **•** 1—Low
 
 **•** 2—Estimated (for all records)
 
 **•** 3—Modeled (for non-US records)
 
+```
+SecondNaics
+
+SecondNaicsDesc
+
+SecondSic
+
+SecondSic8
+
+SecondSic8Desc
+
+```
+
 **Type**
 string
 
@@ -2220,10 +3021,15 @@ corresponding NAICS code. Maximum size is 120 characters.
 **Type**
 string
 
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
 
-Standard Objects DandBCompany
+**Description**
+An additional SIC code used to further classify an organization by industry.
+Maximum size is 8 characters.
 
-**Field Name** **Details**
+**Type**
+string
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -2232,38 +3038,33 @@ Create, Filter, Group, Nillable, Sort, Update
 An additional SIC code used to further classify an organization by industry.
 Maximum size is 8 characters.
 
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
+**Description**
+A brief description of an organization’s line of business, based on the
+corresponding SIC code. Maximum size is 80 characters.
+
 ```
-SecondSic8
-
-SecondSic8Desc
-
 SecondSicDesc
 
 SixthNaics
 
 SixthNaicsDesc
 
+SixthSic
+
+SixthSic8
+
 ```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional SIC code used to further classify an organization by industry.
-Maximum size is 8 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A brief description of an organization’s line of business, based on the
-corresponding SIC code. Maximum size is 80 characters.
 
 **Type**
 string
@@ -2291,47 +3092,47 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+**Description**
+A brief description of an organization’s line of business, based on the
+corresponding NAICS code. Maximum size is 120 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+An additional SIC code used to further classify an organization by industry.
+Maximum size is 8 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
 
 Standard Objects DandBCompany
 
 **Field Name** **Details**
 
 **Description**
-A brief description of an organization’s line of business, based on the
-corresponding NAICS code. Maximum size is 120 characters.
+An additional SIC code used to further classify an organization by industry.
+Maximum size is 8 characters.
 
 ```
-SixthSic
-
-SixthSic8
-
 SixthSic8Desc
 
 SixthSicDesc
 
 SmallBusiness
 
+State
+
+StockExchange
+
 ```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional SIC code used to further classify an organization by industry.
-Maximum size is 8 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional SIC code used to further classify an organization by industry.
-Maximum size is 8 characters.
 
 **Type**
 string
@@ -2359,11 +3160,6 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the company is designated a small business as defined by the
 Small Business Administration of the US government. Available values include:
@@ -2371,19 +3167,6 @@ Small Business Administration of the US government. Available values include:
 **•** Y—Small business site
 
 **•** N—Not small business site
-
-```
-State
-
-StockExchange
-
-StockSymbol
-
-Street
-
-Subsidiary
-
-```
 
 **Type**
 string
@@ -2400,9 +3183,27 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **Description**
 The corresponding exchange for a company’s stock symbol. For example: NASDAQ
 or NYSE. Maximum size is 16 characters.
+
+```
+StockSymbol
+
+Street
+
+Subsidiary
+
+ThirdNaics
+
+ThirdNaicsDesc
+
+```
 
 **Type**
 string
@@ -2430,11 +3231,6 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether a company is more than 50 percent owned by another
 organization. Available values include:
@@ -2442,19 +3238,6 @@ organization. Available values include:
 **•** 0—Not subsidiary of another organization
 
 **•** 3—Subsidiary of another organization
-
-```
-ThirdNaics
-
-ThirdNaicsDesc
-
-ThirdSic
-
-ThirdSic8
-
-ThirdSic8Desc
-
-```
 
 **Type**
 string
@@ -2472,10 +3255,28 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects DandBCompany
+
+**Field Name** **Details**
+
 **Description**
 A brief description of an organization’s line of business, based on the
 corresponding NAICS code. Maximum size is 120 characters.
 
+```
+ThirdSic
+
+ThirdSic8
+
+ThirdSic8Desc
+
+ThirdSicDesc
+
+TradeStyle1
+
+```
+
 **Type**
 string
 
@@ -2495,6 +3296,26 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 An additional SIC code used to further classify an organization by industry.
 Maximum size is 8 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+A brief description of an organization’s line of business, based on the
+corresponding SIC code. Maximum size is 80 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+A brief description of an organization’s line of business, based on the
+corresponding SIC code. Maximum size is 80 characters.
 
 **Type**
 string
@@ -2508,86 +3329,50 @@ Standard Objects DandBCompany
 **Field Name** **Details**
 
 **Description**
-A brief description of an organization’s line of business, based on the
-corresponding SIC code. Maximum size is 80 characters.
+A name, different from its legal name, that an organization may use for conducting
+business. Similar to “Doing business as” or “DBA”. Maximum size is 255 characters.
 
 ```
-ThirdSicDesc
-
-TradeStyle1
-
 TradeStyle2
 
 TradeStyle3
 
 TradeStyle4
 
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A brief description of an organization’s line of business, based on the
-corresponding SIC code. Maximum size is 80 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-A name, different from its legal name, that an organization may use for conducting
-business. Similar to “Doing business as” or “DBA”. Maximum size is 255 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional tradestyle used by the organization. Maximum size is 255 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional tradestyle used by the organization. Maximum size is 255 characters.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-An additional tradestyle used by the organization. Maximum size is 255 characters.
-
-
-Standard Objects DandBCompany
-
-**Field Name** **Details**
-
-```
 TradeStyle5
 
 URL
 
 UsTaxId
 
-WomenOwned
-
-YearStarted
-
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+An additional tradestyle used by the organization. Maximum size is 255 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+An additional tradestyle used by the organization. Maximum size is 255 characters.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+An additional tradestyle used by the organization. Maximum size is 255 characters.
 
 **Type**
 string
@@ -2610,6 +3395,11 @@ An organization’s primary website address. Maximum size is 104 characters.
 **Type**
 string
 
+
+### Standard Objects Dashboard
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -2617,6 +3407,15 @@ Create, Filter, Group, Nillable, Sort, Update
 The identification number for the company used by the Internal Revenue Service
 (IRS) in the administration of tax laws. Also referred to as Federal Taxpayer
 Identification Number. Maximum size is 9 characters.
+
+```
+WomenOwned
+
+YearStarted
+
+```
+
+Usage
 
 **Type**
 picklist
@@ -2642,11 +3441,6 @@ Create, Filter, Group, Nillable, Sort, Update
 The year the company was established or the year when current ownership or
 management assumed control of the company. Maximum size is 4 characters.
 
-
-### Standard Objects Dashboard
-
-Usage
-
 Use this object to manage D&B Company records in your organization.
 
 ### Dashboard
@@ -2658,6 +3452,9 @@ Supported Calls
 
 `describeSObjects()`, `describeLayout()`, `query()`, `retrieve()`, `search()`
 
+
+Standard Objects Dashboard
+
 Fields
 
 **Field** **Details**
@@ -2668,6 +3465,10 @@ BackgroundDirection
 BackgroundEnd
 
 BackgroundStart
+
+ChartTheme
+
+ColorPalette
 
 ```
 
@@ -2706,20 +3507,6 @@ Filter, Group, Sort
 **Description**
 Returns the starting fade color in hexadecimal. Label is `Starting Color` .
 
-
-Standard Objects Dashboard
-
-**Field** **Details**
-
-```
-ChartTheme
-
-ColorPalette
-
-DashboardResultRefreshedDate
-
-```
-
 **Type**
 picklist
 
@@ -2737,6 +3524,11 @@ Possible values are:
 
 **Type**
 picklist
+
+
+Standard Objects Dashboard
+
+**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Restricted picklist, Sort
@@ -2780,30 +3572,23 @@ Possible values are:
 
 **•** `watermelon` —Watermelon Palette
 
+```
+DashboardResultRefreshedDate
+
+DashboardResultRunningUser
+
+Description
+
+```
+
 **Type**
 string
 
 **Properties**
 Nillable
 
-
-Standard Objects Dashboard
-
-**Field** **Details**
-
 **Description**
 Returns the date on which the dashboard results were last refreshed.
-
-```
-DashboardResultRunningUser
-
-Description
-
-DeveloperName
-
-FolderId
-
-```
 
 **Type**
 string
@@ -2817,11 +3602,25 @@ The user whose security settings were used to generate the dashboard results.
 **Type**
 string
 
+
+Standard Objects Dashboard
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Returns the description of the dashboard. Limit: 255 characters.
+
+```
+DeveloperName
+
+FolderId
+
+FolderName
+
+```
 
 **Type**
 string
@@ -2854,11 +3653,6 @@ Required. Returns the ID of the Folder that contains the dashboard. See Folder.
 
 This is a relationship field.
 
-
-Standard Objects Dashboard
-
-**Field** **Details**
-
 **Relationship Name**
 Folder
 
@@ -2868,9 +3662,22 @@ Lookup
 **Refers To**
 Folder, User
 
-```
-FolderName
+**Type**
+string
 
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects Dashboard
+
+**Field** **Details**
+
+**Description**
+Name of the folder that contains the dashboard. Available in API version 35.0
+and later.
+
+```
 IsDeleted
 
 LastReferencedDate
@@ -2880,16 +3687,6 @@ LastViewedDate
 LeftSize
 
 ```
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Name of the folder that contains the dashboard. Available in API version 35.0
-and later.
 
 **Type**
 boolean
@@ -2925,11 +3722,6 @@ value is null, the user might have only accessed this record or list view
 **Type**
 picklist
 
-
-Standard Objects Dashboard
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Restricted picklist, Sort
 
@@ -2945,10 +3737,17 @@ Available values are:
 
 **•** `Wide`
 
+
+Standard Objects Dashboard
+
+**Field** **Details**
+
 ```
 MiddleSize
 
 NamespacePrefix
+
+RightSize
 
 ```
 
@@ -2994,22 +3793,6 @@ Developer Edition org of the package developer.
 only for objects that are part of an installed managed package. All other
 objects have no namespace prefix.
 
-
-Standard Objects Dashboard
-
-**Field** **Details**
-
-```
-RightSize
-
-RunningUserId
-
-TextColor
-
-Title
-
-```
-
 **Type**
 picklist
 
@@ -3027,6 +3810,24 @@ Available values are:
 **•** `Medium`
 
 **•** `Wide`
+
+
+Standard Objects Dashboard
+
+**Field** **Details**
+
+```
+RunningUserId
+
+TextColor
+
+Title
+
+TitleColor
+
+TitleSize
+
+```
 
 **Type**
 reference
@@ -3069,24 +3870,8 @@ string
 **Properties**
 Filter, Group, idLookup, Sort
 
-
-Standard Objects Dashboard
-
-**Field** **Details**
-
 **Description**
 Returns the title of the dashboard. Limit: 80 characters.
-
-```
-TitleColor
-
-TitleSize
-
-Type
-
-```
-
-Supported Query Scopes
 
 **Type**
 int
@@ -3100,11 +3885,23 @@ Returns the title text color in hexadecimal. Label is `Title Color` .
 **Type**
 int
 
+
+Standard Objects Dashboard
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Sort
 
 **Description**
 Returns the title font size in points. Label is `Title Size` .
+
+```
+Type
+
+```
+
+Supported Query Scopes
 
 **Type**
 picklist
@@ -3137,9 +3934,6 @@ later.
 **created**
 Records created by the user running the query.
 
-
-### Standard Objects DashboardComponent
-
 **everything**
 All records except records saved in other users’ private folders.
 
@@ -3149,6 +3943,9 @@ Records saved in the private folder of the user running the query.
 Usage
 
 Provides read-only access to the current values in the dashboard fields.
+
+
+### Standard Objects DashboardComponent
 
 Example: Dashboards in an Inactive User’s Private Folder
 
@@ -3189,6 +3986,8 @@ Fields
 ```
 CustomReportId
 
+DashboardId
+
 ```
 
 **Type**
@@ -3197,23 +3996,9 @@ reference
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects DashboardTag
-
-**Field** **Details**
-
 **Description**
 Requires the user permission "Manage All Private Reports and Dashboards." The ID of the
 report that provides data for the dashboard component. See Report.
-
-```
-DashboardId
-
-Name
-
-```
-
-Usage
 
 **Type**
 reference
@@ -3226,6 +4011,11 @@ The ID of the dashboard that contains the dashboard component. See Dashboard.
 
 This is a relationship field.
 
+
+### Standard Objects DashboardTag
+
+**Field** **Details**
+
 **Relationship Name**
 ### Dashboard
 
@@ -3234,6 +4024,13 @@ Lookup
 
 **Refers To**
 ### Dashboard
+
+```
+Name
+
+```
+
+Usage
 
 **Type**
 string
@@ -3258,9 +4055,6 @@ Feed tracking is available for the object.
 
 Associates a word or short phrase with a Dashboard. This object is available in API version 20.0 and later.
 
-
-Standard Objects DashboardTag
-
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`
@@ -3272,12 +4066,6 @@ Fields
 ```
 ItemId
 
-Name
-
-TagDefinitionId
-
-Type
-
 ```
 
 **Type**
@@ -3286,8 +4074,24 @@ reference
 **Properties**
 Create, Filter
 
+
+Standard Objects DashboardTag
+
+**Field Name** **Details**
+
 **Description**
 ID of the tagged item.
+
+```
+Name
+
+TagDefinitionId
+
+Type
+
+```
+
+Usage
 
 **Type**
 string
@@ -3325,11 +4129,6 @@ Valid values:
 **•** `Personal` —The tag can be viewed or manipulated only by a user with a matching
 `OwnerId` .
 
-
-### Standard Objects DataAssessmentFieldMetric
-
-Usage
-
 DashboardTag stores the relationship between its parent TagDefinition and the Dashboard being tagged. Tag objects act as metadata,
 allowing users to describe and organize their data.
 
@@ -3340,7 +4139,8 @@ SEE ALSO:
 
 Dashboard
 
-### DataAssessmentFieldMetric
+
+### Standard Objects DataAssessmentFieldMetric DataAssessmentFieldMetric
 
 Represents summary statistics for matched, blank, and differing fields in account records of an org compared to records in Data.com.
 This object is available in API version 37.0 and later.
@@ -3367,6 +4167,8 @@ Fields
 ```
 DataAssessmentMetricId
 
+FieldName
+
 ```
 
 **Type**
@@ -3386,17 +4188,24 @@ DataAssessmentMetric
 **Relationship Type**
 Lookup
 
-
-Standard Objects DataAssessmentFieldMetric
-
-**Field Name** **Details**
-
 **Refers To**
 DataAssessmentMetric
 
-```
-FieldName
+**Type**
+string
 
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The name of the assessed field.
+
+
+### Standard Objects DataAssessmentMetric
+
+**Field Name** **Details**
+
+```
 Name
 
 NumMatchedBlanks
@@ -3407,16 +4216,9 @@ NumMatchedInSync
 
 NumUnmatchedBlanks
 
+### DataAssessmentMetric
+
 ```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the assessed field.
 
 **Type**
 string
@@ -3460,18 +4262,14 @@ int
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects DataAssessmentMetric
-
-**Field Name** **Details**
-
 **Description**
 The number of unmatched records that contain blank fields.
 
-### DataAssessmentMetric
-
 Represents a summary of statistics for fields matched and unmatched in your account records with Data.com account records. This
 object is available in API version 37.0 and later.
+
+
+Standard Objects DataAssessmentMetric
 
 Note: When your Data.com Prospector or Data.com Clean contract expires, Data.com features, objects, and fields will be removed
 from your org.
@@ -3495,6 +4293,8 @@ Name
 NumDuplicates
 
 NumMatched
+
+NumMatchedDifferent
 
 ```
 
@@ -3522,24 +4322,8 @@ int
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects DataAssessmentValueMetric
-
-**Field Name** **Details**
-
 **Description**
 The number of matched records.
-
-```
-NumMatchedDifferent
-
-NumProcessed
-
-NumTotal
-
-NumUnmatched
-
-```
 
 **Type**
 int
@@ -3550,6 +4334,20 @@ Filter, Group, Nillable, Sort
 **Description**
 The number of records in your org matched with a Data.com record that have
 different fields.
+
+
+### Standard Objects DataAssessmentValueMetric
+
+**Field Name** **Details**
+
+```
+NumProcessed
+
+NumTotal
+
+NumUnmatched
+
+```
 
 **Type**
 int
@@ -3589,9 +4387,6 @@ from your org.
 To support customers’ needs around compliance and to remain a leader in trust and privacy, Salesforce removed all contact data
 from the Data.com service on February 1, 2021.
 
-
-Standard Objects DataAssessmentValueMetric
-
 [For more information, see Data.com Prospector and Clean Retirement.](https://help.salesforce.com/articleView?id=000270376&language=en_US&type=1)
 
 Supported Calls
@@ -3599,7 +4394,10 @@ Supported Calls
 `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
 
 **Child Relationships**
-DataAssessmentValueMetric is a child of DataAssessementFieldMetric.
+### DataAssessmentValueMetric is a child of DataAssessementFieldMetric.
+
+
+### Standard Objects DatabaseSaveEventLog
 
 Fields
 
@@ -3613,6 +4411,8 @@ FieldValue
 Name
 
 ValueCount
+
+### DatabaseSaveEventLog
 
 ```
 
@@ -3657,20 +4457,16 @@ An optional field used to name your record.
 **Type**
 int
 
-
-### Standard Objects DatabaseSaveEventLog
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The number of times this value appears in this field.
 
-### DatabaseSaveEventLog
-
 Database Save events track when records are created,updated, or deleted This object is available in API version 64.0 and later.
+
+
+Standard Objects DatabaseSaveEventLog
 
 [Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
 
@@ -3692,6 +4488,8 @@ BotIdentifier
 BotSessionIdentifier
 
 DmlType
+
+FirstObjectIdentifier
 
 ```
 
@@ -3719,17 +4517,25 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+**Description**
+The type of DML operation.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Only the first object ID is logged upon an update. During record updates, the ID of that
+specific row is logged. When multiple rows are updated, only a single ID is logged.
+
 
 Standard Objects DatabaseSaveEventLog
 
 **Field** **Details**
 
-**Description**
-The type of DML operation.
-
 ```
-FirstObjectIdentifier
-
 KeyPrefix
 
 LoginKey
@@ -3741,17 +4547,11 @@ PlannerIdentifier
 ```
 RequestIdentifier
 
+RowCount
+
+SampleFactor
+
 ```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Only the first object ID is logged upon an update. During record updates, the ID of that
-specific row is logged. When multiple rows are updated, only a single ID is logged.
 
 **Type**
 string
@@ -3792,24 +4592,6 @@ Filter, Group, Nillable, Sort
 The unique ID of a single transaction. A transaction can contain one or more events. Each
 event in a given transaction has the same RequestIdentifier.
 
-
-### Standard Objects DatacloudCompany
-
-**Field** **Details**
-
-```
-RowCount
-
-SampleFactor
-
-SessionKey
-
-Timestamp
-
-UserIdentifier
-
-```
-
 **Type**
 int
 
@@ -3825,9 +4607,23 @@ double
 **Properties**
 Filter, Nillable, Sort
 
+
+### Standard Objects DatacloudCompany
+
+**Field** **Details**
+
 **Description**
 Rate at which entities are logged. If the sample factor is 1 that means every entity saved was
 logged. If it is 100 that means that 1/100 logs.
+
+```
+SessionKey
+
+Timestamp
+
+UserIdentifier
+
+```
 
 **Type**
 string
@@ -3861,9 +4657,6 @@ The 15-character ID of the user who’s using Salesforce services through the UI
 
 Represents the fields for Data.com company records. This object is available in API version 30.0 or later.
 
-
-Standard Objects DatacloudCompany
-
 Note: When your Data.com Prospector or Data.com Clean contract expires, Data.com features, objects, and fields are removed
 from your org.
 
@@ -3875,6 +4668,9 @@ from the Data.com service on February 1, 2021.
 Supported Calls
 
 `describeLayout()`, `describeSObjects()`, `query()`
+
+
+Standard Objects DatacloudCompany
 
 Fields
 
@@ -3888,6 +4684,8 @@ AnnualRevenue
 City
 
 CompanyId
+
+Country
 
 ```
 
@@ -3928,28 +4726,10 @@ string
 **Properties**
 Filter, Nillable
 
-
-Standard Objects DatacloudCompany
-
-**Field Name** **Details**
-
 **Description**
 
 A unique numerical identifier for the company and theData.com identifier for a
 company.
-
-```
-Country
-
-CountryCode
-
-Description
-
-DunsNumber
-
-EmployeeQuantityGrowthRate
-
-```
 
 **Type**
 string
@@ -3961,6 +4741,24 @@ Filter, Nillable, Sort
 
 A string that represents the standard abbreviation for the country where the
 company is located.
+
+
+Standard Objects DatacloudCompany
+
+**Field Name** **Details**
+
+```
+CountryCode
+
+Description
+
+DunsNumber
+
+EmployeeQuantityGrowthRate
+
+ExternalId
+
+```
 
 **Type**
 picklist
@@ -4000,28 +4798,10 @@ double
 **Properties**
 Nillable
 
-
-Standard Objects DatacloudCompany
-
-**Field Name** **Details**
-
 **Description**
 The yearly growth rate of the number of employees in a company expressed as
 a decimal percentage. The data includes the total employee growth rate for the
 past two years.
-
-```
-ExternalId
-
-Fax
-
-FortuneRank
-
-FullAddress
-
-IncludedInSnP500
-
-```
 
 **Type**
 string
@@ -4033,6 +4813,26 @@ Filter, Nillable, Sort
 
 A unique numerical identifier for the company. The `ExternalId` is a
 system-generated number.
+
+
+Standard Objects DatacloudCompany
+
+**Field Name** **Details**
+
+```
+Fax
+
+FortuneRank
+
+FullAddress
+
+IncludedInSnP500
+
+Industry
+
+IsInCrm
+
+```
 
 **Type**
 phone
@@ -4069,27 +4869,9 @@ string
 **Properties**
 Group, Nillable
 
-
-Standard Objects DatacloudCompany
-
-**Field Name** **Details**
-
 **Description**
 A true or false value. If `true`, the company is listed in the S&P 500 Index. If
 `false`, the company isn’t listed in the S&P 500 Index.
-
-```
-Industry
-
-IsInCrm
-
-IsInactive
-
-IsOwned
-
-NaicsCode
-
-```
 
 **Type**
 string
@@ -4104,12 +4886,30 @@ or Electronics.
 **Type**
 boolean
 
+
+Standard Objects DatacloudCompany
+
+**Field Name** **Details**
+
 **Properties**
 Defaulted on create, Group
 
 **Description**
 
 Whether the record is in Salesforce (true) or not (false).
+
+```
+IsInactive
+
+IsOwned
+
+NaicsCode
+
+NaicsDesc
+
+Name
+
+```
 
 **Type**
 boolean
@@ -4139,29 +4939,11 @@ string
 **Properties**
 Filter, Nillable
 
-
-Standard Objects DatacloudCompany
-
-**Field Name** **Details**
-
 **Description**
 
 A value that represents the North American Industry Classification System (NAICS)
 code. NAICS was created to provide details about a business’s service orientation.
 The code descriptions are focused on what a business does.
-
-```
-NaicsDesc
-
-Name
-
-NumberOfEmployees
-
-Ownership
-
-Phone
-
-```
 
 **Type**
 string
@@ -4176,12 +4958,30 @@ A description of the NAICS classification.
 **Type**
 string
 
+
+Standard Objects DatacloudCompany
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 
 The company’s name.
+
+```
+NumberOfEmployees
+
+Ownership
+
+Phone
+
+PremisesMeasure
+
+PremisesMeasureReliability
+
+```
 
 **Type**
 int
@@ -4214,30 +5014,12 @@ The type of ownership of the company:
 **Type**
 phone
 
-
-Standard Objects DatacloudCompany
-
-**Field Name** **Details**
-
 **Properties**
 Nillable
 
 **Description**
 
 A numeric string containing the primary telephone number for the company.
-
-```
-PremisesMeasure
-
-PremisesMeasureReliability
-
-PremisesMeasureUnit
-
-PriorYearEmployees
-
-PriorYearRevenue
-
-```
 
 **Type**
 int
@@ -4251,11 +5033,29 @@ A numeric value for the measurement of the premises.
 **Type**
 string
 
+
+Standard Objects DatacloudCompany
+
+**Field Name** **Details**
+
 **Properties**
 Group, Nillable
 
 **Description**
 A descriptive accuracy of the measurement such as actual, estimated, or modeled.
+
+```
+PremisesMeasureUnit
+
+PriorYearEmployees
+
+PriorYearRevenue
+
+SalesTurnoverGrowthRate
+
+Sic
+
+```
 
 **Type**
 string
@@ -4286,24 +5086,6 @@ Nillable
 
 The annual revenue for the prior year.
 
-
-Standard Objects DatacloudCompany
-
-**Field Name** **Details**
-
-```
-SalesTurnoverGrowthRate
-
-Sic
-
-SicCodeDesc
-
-SicDesc
-
-Site
-
-```
-
 **Type**
 double
 
@@ -4320,11 +5102,29 @@ string
 **Properties**
 Filter, Nillable
 
+
+Standard Objects DatacloudCompany
+
+**Field Name** **Details**
+
 **Description**
 
 A numeric value that represents the Standard Industrial Codes (SIC). SIC is a
 numbering convention that indicates what type of service a business provides.
 It is a four-digit value.
+
+```
+SicCodeDesc
+
+SicDesc
+
+Site
+
+State
+
+StateCode
+
+```
 
 **Type**
 string
@@ -4361,24 +5161,6 @@ An organizational status of the company.
 
 **•** Single Location: a single business with no subsidiaries or branches
 
-
-Standard Objects DatacloudCompany
-
-**Field Name** **Details**
-
-```
-State
-
-StateCode
-
-Street
-
-TickerSymbol
-
-TradeStyle
-
-```
-
 **Type**
 string
 
@@ -4395,12 +5177,30 @@ picklist
 **Properties**
 Filter, Group, Nillable, Restricted picklist
 
+
+Standard Objects DatacloudCompany
+
+**Field Name** **Details**
+
 **Description**
 
 A standard two-letter abbreviation for states and territories of the United States.
 The state where the company is located. The abbreviation can also be a province
 or other equivalent to a state, depending on the country where the company is
 located.
+
+```
+Street
+
+TickerSymbol
+
+TradeStyle
+
+UpdatedDate
+
+Website
+
+```
 
 **Type**
 string
@@ -4433,24 +5233,6 @@ Nillable
 
 A legal name under which a company conducts business.
 
-
-### Standard Objects DatacloudContact
-
-**Field Name** **Details**
-
-```
-UpdatedDate
-
-Website
-
-YearStarted
-
-Zip
-
-```
-
-Usage
-
 **Type**
 dateTime
 
@@ -4467,9 +5249,23 @@ url
 **Properties**
 Nillable
 
+
+### Standard Objects DatacloudContact
+
+**Field Name** **Details**
+
 **Description**
 
 The standard URL for the company’s home page.
+
+```
+YearStarted
+
+Zip
+
+```
+
+Usage
 
 **Type**
 string
@@ -4502,9 +5298,6 @@ it. These calls are not allowed in Apex test methods.
 
 The fields and properties for Data.com contact records. This object is available in API version 30.0 or later.
 
-
-Standard Objects DatacloudContact
-
 Note: When your Data.com Prospector or Data.com Clean contract expires, Data.com features, objects, and fields are removed
 from your org.
 
@@ -4516,6 +5309,9 @@ from the Data.com service on February 1, 2021.
 Supported Calls
 
 `describeSObjects()`, `query()`
+
+
+Standard Objects DatacloudContact
 
 Fields
 
@@ -4529,6 +5325,8 @@ CompanyId
 CompanyName
 
 ContactId
+
+Country
 
 ```
 
@@ -4573,22 +5371,6 @@ Filter, Nillable
 
 The unique numeric identifier for this contact.
 
-
-Standard Objects DatacloudContact
-
-**Field Name** **Details**
-
-```
-Country
-
-Department
-
-Email
-
-ExternalId
-
-```
-
 **Type**
 string
 
@@ -4602,6 +5384,22 @@ The standard abbreviation or name for the country where the company is located.
 Note: You can enter a comma-separated list of countries; however, for
 a country that uses a comma in its name, leave out the comma. For
 example, enter “Taiwan, ROC” as `Taiwan ROC` .
+
+
+Standard Objects DatacloudContact
+
+**Field Name** **Details**
+
+```
+Department
+
+Email
+
+ExternalId
+
+FirstName
+
+```
 
 **Type**
 picklist
@@ -4648,27 +5446,9 @@ string
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects DatacloudContact
-
-**Field Name** **Details**
-
 **Description**
 
 A unique system-generated numerical identifier for the contact.
-
-```
-FirstName
-
-IsInCrm
-
-IsInactive
-
-IsOwned
-
-LastName
-
-```
 
 **Type**
 string
@@ -4679,6 +5459,24 @@ Filter, Nillable
 **Description**
 
 The first name of the contact.
+
+
+Standard Objects DatacloudContact
+
+**Field Name** **Details**
+
+```
+IsInCrm
+
+IsInactive
+
+IsOwned
+
+LastName
+
+Level
+
+```
 
 **Type**
 boolean
@@ -4720,24 +5518,6 @@ Filter, Nillable, Sort
 
 The last name of the contact.
 
-
-Standard Objects DatacloudContact
-
-**Field Name** **Details**
-
-```
-Level
-
-Phone
-
-SocialHandles
-
-State
-
-Street
-
-```
-
 **Type**
 picklist
 
@@ -4757,9 +5537,27 @@ values of this field are fixed enumerated values.
 
 **•** `Manager`
 
+
+Standard Objects DatacloudContact
+
+**Field Name** **Details**
+
 **•** `Staff`
 
 **•** `Other`
+
+```
+Phone
+
+SocialHandles
+
+State
+
+Street
+
+Title
+
+```
 
 **Type**
 phone
@@ -4794,28 +5592,12 @@ equivalent to a state, depending on the country where the company is located.
 **Type**
 string
 
-
-### Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Properties**
 Nillable
 
 **Description**
 
 The street address for the company where the contact works.
-
-```
-Title
-
-UpdatedDate
-
-Zip
-
-```
-
-Usage
 
 **Type**
 string
@@ -4826,6 +5608,20 @@ Filter, Group, Nillable, Sort
 **Description**
 
 Title of the contact such as CEO or Vice President.
+
+
+### Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+UpdatedDate
+
+Zip
+
+```
+
+Usage
 
 **Type**
 dateTime
@@ -4858,9 +5654,6 @@ These calls are not allowed in Apex test methods.
 Represents a set of read-only fields that are used to return D&B company data from Data.com API calls. This object is available in API
 version 30.0 or later.
 
-
-Standard Objects DatacloudDandBCompany
-
 Note: When your Data.com Prospector or Data.com Clean contract expires, Data.com features, objects, and fields will be removed
 from your org.
 
@@ -4872,6 +5665,9 @@ from the Data.com service on February 1, 2021.
 Supported Calls
 
 `describeSObjects()`, `query()`
+
+
+Standard Objects DatacloudDandBCompany
 
 Fields
 
@@ -4885,6 +5681,8 @@ CompanyCurrencyIsoCode
 CompanyId
 
 Country
+
+CountryAccessCode
 
 ```
 
@@ -4927,27 +5725,9 @@ string
 **Properties**
 Nillable
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 The country where a company is physically located.
-
-```
-CountryAccessCode
-
-CurrencyCode
-
-Description
-
-DomesticUltimateBusinessName
-
-DomesticUltimateDunsNumber
-
-```
 
 **Type**
 string
@@ -4958,6 +5738,24 @@ Nillable
 **Description**
 
 The required code for international calls.
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+CurrencyCode
+
+Description
+
+DomesticUltimateBusinessName
+
+DomesticUltimateDunsNumber
+
+DunsNumber
+
+```
 
 **Type**
 picklist
@@ -5002,24 +5800,6 @@ Nillable
 The D-U-N-S number for the Domestic Ultimate, which is the highest-ranking
 subsidiary, specified by country, within an organization’s corporate structure.
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
-```
-DunsNumber
-
-EmployeeQuantityGrowthRate
-
-EmployeesHere
-
-EmployeesHereReliability
-
-EmployeesTotal
-
-```
-
 **Type**
 string
 
@@ -5033,6 +5813,24 @@ number assigned to every business location in the Dun & Bradstreet database
 that has a unique, separate, and distinct operation. D-U-N-S numbers are used
 by industries and organizations around the world as a global standard for business
 identification and tracking.
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+EmployeeQuantityGrowthRate
+
+EmployeesHere
+
+EmployeesHereReliability
+
+EmployeesTotal
+
+EmployeesTotalReliability
+
+```
 
 **Type**
 double
@@ -5073,6 +5871,18 @@ double
 **Properties**
 Nillable
 
+**Description**
+
+The total number of employees in the company, including all subsidiary and
+branch locations. This data is available only on records that have a value of
+_`Headquarters/Parent`_ in the `LocationStatus` field.
+
+**Type**
+picklist
+
+**Properties**
+Nillable, Restricted picklist
+
 
 Standard Objects DatacloudDandBCompany
 
@@ -5080,13 +5890,11 @@ Standard Objects DatacloudDandBCompany
 
 **Description**
 
-The total number of employees in the company, including all subsidiary and
-branch locations. This data is available only on records that have a value of
-_`Headquarters/Parent`_ in the `LocationStatus` field.
+The reliability of the `EmployeesTotal` figure. Available values are _`Actual`_
+_`number`_, _`Low`_, _`Estimated (for all records)`_, _`Modeled (for`_
+_`non-US records)`_ . A blank value indicates this data is unavailable.
 
 ```
-EmployeesTotalReliability
-
 ExternalId
 
 FamilyMembers
@@ -5095,19 +5903,9 @@ Fax
 
 FifthNaics
 
+FifthNaicsDesc
+
 ```
-
-**Type**
-picklist
-
-**Properties**
-Nillable, Restricted picklist
-
-**Description**
-
-The reliability of the `EmployeesTotal` figure. Available values are _`Actual`_
-_`number`_, _`Low`_, _`Estimated (for all records)`_, _`Modeled (for`_
-_`non-US records)`_ . A blank value indicates this data is unavailable.
 
 **Type**
 string
@@ -5146,6 +5944,16 @@ string
 **Properties**
 Nillable
 
+**Description**
+
+A NAICS code that’s used to further classify an organization by industry.
+
+**Type**
+string
+
+**Properties**
+Nillable
+
 
 Standard Objects DatacloudDandBCompany
 
@@ -5153,11 +5961,10 @@ Standard Objects DatacloudDandBCompany
 
 **Description**
 
-A NAICS code that’s used to further classify an organization by industry.
+A brief description of an organization’s line of business, based on the
+corresponding NAICS code.
 
 ```
-FifthNaicsDesc
-
 FifthSic
 
 FifthSic8
@@ -5166,18 +5973,9 @@ FifthSic8Desc
 
 FifthSicDesc
 
+FipsMsaCode
+
 ```
-
-**Type**
-string
-
-**Properties**
-Nillable
-
-**Description**
-
-A brief description of an organization’s line of business, based on the
-corresponding NAICS code.
 
 **Type**
 string
@@ -5216,6 +6014,17 @@ string
 **Properties**
 Nillable
 
+**Description**
+
+A brief description of an organization’s line of business, based on the
+corresponding SIC code.
+
+**Type**
+string
+
+**Properties**
+Nillable
+
 
 Standard Objects DatacloudDandBCompany
 
@@ -5223,12 +6032,11 @@ Standard Objects DatacloudDandBCompany
 
 **Description**
 
-A brief description of an organization’s line of business, based on the
-corresponding SIC code.
+The Federal Information Processing Standards (FIPS) and the Metropolitan
+Statistical Area (MSA) codes identify the organization’s location. The MSA codes
+are defined by the US Office of Management and Budget.
 
 ```
-FipsMsaCode
-
 FipsMsaDesc
 
 FortuneRank
@@ -5237,19 +6045,9 @@ FourthNaics
 
 FourthNaicsDesc
 
+FourthSic
+
 ```
-
-**Type**
-string
-
-**Properties**
-Nillable
-
-**Description**
-
-The Federal Information Processing Standards (FIPS) and the Metropolitan
-Statistical Area (MSA) codes identify the organization’s location. The MSA codes
-are defined by the US Office of Management and Budget.
 
 **Type**
 string
@@ -5287,6 +6085,17 @@ string
 **Properties**
 Nillable
 
+**Description**
+
+A brief description of an organization’s line of business, based on the
+corresponding NAICS code.
+
+**Type**
+string
+
+**Properties**
+Group, Nillable
+
 
 Standard Objects DatacloudDandBCompany
 
@@ -5294,12 +6103,9 @@ Standard Objects DatacloudDandBCompany
 
 **Description**
 
-A brief description of an organization’s line of business, based on the
-corresponding NAICS code.
+A SIC code used to further classify an organization by industry.
 
 ```
-FourthSic
-
 FourthSic8
 
 FourthSic8Desc
@@ -5309,16 +6115,6 @@ FourthSicDesc
 GeoCodeAccuracy
 
 ```
-
-**Type**
-string
-
-**Properties**
-Group, Nillable
-
-**Description**
-
-A SIC code used to further classify an organization by industry.
 
 **Type**
 string
@@ -5357,11 +6153,6 @@ picklist
 **Properties**
 Nillable, Restricted picklist
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 The level of accuracy of a location’s geographical coordinates compared with its
@@ -5373,6 +6164,11 @@ _`State or Province Centroid`_, _`Street intersection`_, _`PO`_
 _`BOX location`_, _`Non-US rooftop accuracy`_, _`County Centroid`_,
 _`Sub Locality-Street Level`_, and _`Locality Centroid`_
 
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 ```
 GlobalUltimateBusinessName
 
@@ -5381,6 +6177,8 @@ GlobalUltimateDunsNumber
 GlobalUltimateTotalEmployees
 
 ImportExportAgent
+
+IncludedInSnP500
 
 ```
 
@@ -5425,28 +6223,10 @@ picklist
 **Properties**
 Nillable, Restricted picklist
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 Identifies whether a business imports goods or services, exports goods or services,
 and/or is an agent for goods.
-
-```
-IncludedInSnP500
-
-Industry
-
-IsOwned
-
-IsParent
-
-Latitude
-
-```
 
 **Type**
 string
@@ -5457,6 +6237,24 @@ Group, Nillable
 **Description**
 A true or false value. If `true`, the company is listed in the S&P 500 Index. If
 `false`, the company isn’t listed in the S&P 500 Index.
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+Industry
+
+IsOwned
+
+IsParent
+
+Latitude
+
+LegalStatus
+
+```
 
 **Type**
 string
@@ -5495,24 +6293,10 @@ string
 **Properties**
 Nillable
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 Used with longitude to specify a precise location, which is used to assess the
 Geocode Accuracy.
-
-```
-LegalStatus
-
-LocationStatus
-
-Longitude
-
-```
 
 **Type**
 picklist
@@ -5525,6 +6309,22 @@ Nillable, Restricted picklist
 Identifies the legal structure of an organization. Available values include
 _`Cooperative`_, _`Nonprofit organization`_, _`Local government`_
 _`body`_, _`Partnership of unknown type`_, and _`Foreign company`_ .
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+LocationStatus
+
+Longitude
+
+MailingCity
+
+MailingCountry
+
+```
 
 **Type**
 picklist
@@ -5545,28 +6345,10 @@ string
 **Properties**
 Nillable
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 Used with latitude to specify a precise location, which is used to assess the
 Geocode Accuracy.
-
-```
-MailingCity
-
-MailingCountry
-
-MailingState
-
-MailingStreet
-
-MailingZip
-
-```
 
 **Type**
 string
@@ -5581,12 +6363,28 @@ The city where a company has its mail delivered.
 **Type**
 string
 
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 **Properties**
 Nillable
 
 **Description**
 
 The country where a company has its mail delivered.
+
+```
+MailingState
+
+MailingStreet
+
+MailingZip
+
+MarketingPreScreen
+
+```
 
 **Type**
 string
@@ -5618,24 +6416,6 @@ Nillable
 
 The postal zip code for the company.
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
-```
-MarketingPreScreen
-
-MarketingSegmentationCluster
-
-MinorityOwned
-
-Name
-
-NationalId
-
-```
-
 **Type**
 picklist
 
@@ -5652,6 +6432,24 @@ _`of delinquency`_ .
 
 Important: Use this information for marketing pre-screening purposes
 only.
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+MarketingSegmentationCluster
+
+MinorityOwned
+
+Name
+
+NationalId
+
+NationalIdType
+
+```
 
 **Type**
 picklist
@@ -5694,11 +6492,6 @@ The primary or registered name of a company.
 **Type**
 string
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Properties**
 Nillable
 
@@ -5706,19 +6499,6 @@ Nillable
 
 The identification number used in some countries for business registration and
 tax collection.
-
-```
-NationalIdType
-
-OutOfBusiness
-
-OwnOrRent
-
-ParentOrHqBusinessName
-
-ParentOrHqDunsNumber
-
-```
 
 **Type**
 picklist
@@ -5729,6 +6509,26 @@ Nillable, Restricted picklist
 **Description**
 
 A code value that identifies the type of national identification number that’s used.
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+OutOfBusiness
+
+OwnOrRent
+
+ParentOrHqBusinessName
+
+ParentOrHqDunsNumber
+
+Phone
+
+PremisesMeasure
+
+```
 
 **Type**
 picklist
@@ -5767,27 +6567,9 @@ string
 **Properties**
 Filter, Nillable
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 The D-U-N-S number for the parent or headquarters.
-
-```
-Phone
-
-PremisesMeasure
-
-PremisesMeasureReliability
-
-PremisesMeasureUnit
-
-PrimaryNaics
-
-```
 
 **Type**
 phone
@@ -5804,8 +6586,26 @@ int
 **Properties**
 Group, Nillable
 
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 **Description**
 A numeric value for the measurement of the premises.
+
+```
+PremisesMeasureReliability
+
+PremisesMeasureUnit
+
+PrimaryNaics
+
+PrimaryNaicsDesc
+
+PrimarySic
+
+```
 
 **Type**
 string
@@ -5838,24 +6638,6 @@ standard used by business and government to classify business establishments
 according to their economic activity for the purpose of collecting, analyzing, and
 publishing statistical data related to the US business economy.
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
-```
-PrimaryNaicsDesc
-
-PrimarySic
-
-PrimarySic8
-
-PrimarySic8Desc
-
-PrimarySicDesc
-
-```
-
 **Type**
 string
 
@@ -5876,6 +6658,26 @@ Nillable
 
 The four-digit SIC code that’s used to categorize business establishments by
 industry.
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+PrimarySic8
+
+PrimarySic8Desc
+
+PrimarySicDesc
+
+PriorYearEmployees
+
+PriorYearRevenue
+
+PublicIndicator
+
+```
 
 **Type**
 string
@@ -5909,26 +6711,6 @@ Nillable
 
 A brief description of an organization’s line of business, based on its SIC code.
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
-```
-PriorYearEmployees
-
-PriorYearRevenue
-
-PublicIndicator
-
-Revenue
-
-SalesTurnoverGrowthRate
-
-SalesVolume
-
-```
-
 **Type**
 int
 
@@ -5952,12 +6734,30 @@ The annual revenue for the prior year.
 **Type**
 picklist
 
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 **Properties**
 Nillable, Restricted picklist
 
 **Description**
 
 Indicates whether ownership of the company is public or private.
+
+```
+Revenue
+
+SalesTurnoverGrowthRate
+
+SalesVolume
+
+SalesVolumeReliability
+
+SecondNaics
+
+```
 
 **Type**
 double
@@ -5985,29 +6785,11 @@ double
 **Properties**
 Nillable
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 The total annual sales revenue in the headquarters’ local currency. Dun &
 Bradstreet tracks revenue data for publicly traded companies, Global Ultimates,
 Domestic Ultimates, and some headquarters.
-
-```
-SalesVolumeReliability
-
-SecondNaics
-
-SecondNaicsDesc
-
-SecondSic
-
-SecondSic8
-
-```
 
 **Type**
 picklist
@@ -6025,9 +6807,27 @@ string
 **Properties**
 Nillable
 
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 **Description**
 
 A NAICS code used to further classify an organization by industry.
+
+```
+SecondNaicsDesc
+
+SecondSic
+
+SecondSic8
+
+SecondSic8Desc
+
+SecondSicDesc
+
+```
 
 **Type**
 string
@@ -6056,27 +6856,9 @@ string
 **Properties**
 Group, Nillable
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 An additional SIC code used to further classify an organization by industry.
 Maximum size is 8 characters.
-
-```
-SecondSic8Desc
-
-SecondSicDesc
-
-SixthNaics
-
-SixthNaicsDesc
-
-SixthSic
-
-```
 
 **Type**
 string
@@ -6098,6 +6880,26 @@ Nillable
 
 A brief description of an organization’s line of business, based on the
 corresponding SIC code.
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
+```
+SixthNaics
+
+SixthNaicsDesc
+
+SixthSic
+
+SixthSic8
+
+SixthSic8Desc
+
+SixthSicDesc
+
+```
 
 **Type**
 string
@@ -6130,26 +6932,6 @@ Nillable
 
 A SIC code used to further classify an organization by industry.
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
-```
-SixthSic8
-
-SixthSic8Desc
-
-SixthSicDesc
-
-SmallBusiness
-
-State
-
-StockExchange
-
-```
-
 **Type**
 string
 
@@ -6173,6 +6955,11 @@ corresponding SIC code. Maximum size is 80 characters.
 **Type**
 string
 
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 **Properties**
 Nillable
 
@@ -6180,6 +6967,19 @@ Nillable
 
 A brief description of an organization’s line of business, based on the
 corresponding SIC code.
+
+```
+SmallBusiness
+
+State
+
+StockExchange
+
+StockSymbol
+
+Street
+
+```
 
 **Type**
 picklist
@@ -6205,11 +7005,6 @@ The state where a company is physically located.
 **Type**
 string
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Properties**
 Nillable
 
@@ -6217,19 +7012,6 @@ Nillable
 
 The corresponding exchange for a company’s stock symbol, for example, NASDAQ
 or NYSE.
-
-```
-StockSymbol
-
-Street
-
-Subsidiary
-
-ThirdNaics
-
-ThirdNaicsDesc
-
-```
 
 **Type**
 string
@@ -6245,12 +7027,30 @@ stock.
 **Type**
 string
 
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 **Properties**
 Nillable
 
 **Description**
 
 The street address where a company is physically located.
+
+```
+Subsidiary
+
+ThirdNaics
+
+ThirdNaicsDesc
+
+ThirdSic
+
+ThirdSic8
+
+```
 
 **Type**
 picklist
@@ -6279,28 +7079,10 @@ string
 **Properties**
 Nillable
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 A brief description of an organization’s line of business, based on the
 corresponding NAICS code.
-
-```
-ThirdSic
-
-ThirdSic8
-
-ThirdSic8Desc
-
-ThirdSicDesc
-
-TradeStyle1
-
-```
 
 **Type**
 string
@@ -6318,9 +7100,27 @@ string
 **Properties**
 Group, Nillable
 
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 **Description**
 An additional SIC code used to further classify an organization by industry.
 Maximum size is 8 characters.
+
+```
+ThirdSic8Desc
+
+ThirdSicDesc
+
+TradeStyle1
+
+TradeStyle2
+
+TradeStyle3
+
+```
 
 **Type**
 string
@@ -6349,48 +7149,50 @@ string
 **Properties**
 Nillable
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
 **Description**
 
 A name, different from its legal name, that an organization may use for conducting
 business. Similar to “Doing business as” or “DBA”.
 
+**Type**
+string
+
+**Properties**
+Nillable
+
+**Description**
+
+A tradestyle used by the organization.
+
+**Type**
+string
+
+**Properties**
+Nillable
+
+**Description**
+
+A tradestyle used by the organization.
+
+
+Standard Objects DatacloudDandBCompany
+
+**Field Name** **Details**
+
 ```
-TradeStyle2
-
-TradeStyle3
-
 TradeStyle4
 
 TradeStyle5
 
 UsTaxId
 
+Website
+
+WomenOwned
+
+YearStarted
+
 ```
-
-**Type**
-string
-
-**Properties**
-Nillable
-
-**Description**
-
-A tradestyle used by the organization.
-
-**Type**
-string
-
-**Properties**
-Nillable
-
-**Description**
-
-A tradestyle used by the organization.
 
 **Type**
 string
@@ -6424,24 +7226,6 @@ The identification number for the company used by the Internal Revenue Service
 (IRS) in the administration of tax laws. Also referred to as Federal Taxpayer
 Identification Number.
 
-
-Standard Objects DatacloudDandBCompany
-
-**Field Name** **Details**
-
-```
-Website
-
-WomenOwned
-
-YearStarted
-
-Zip
-
-```
-
-Usage
-
 **Type**
 url
 
@@ -6466,6 +7250,11 @@ a woman.
 **Type**
 string
 
+
+### Standard Objects DatacloudOwnedEntity
+
+**Field Name** **Details**
+
 **Properties**
 Nillable
 
@@ -6473,6 +7262,13 @@ Nillable
 
 The year when the company was established or the year when current ownership
 or management assumed control of the company.
+
+```
+Zip
+
+```
+
+Usage
 
 **Type**
 string
@@ -6489,8 +7285,7 @@ Use this object to return D&B Company information. These fields are read-only.
 Important: DatacloudDandBCompany can’t be used in Apex test methods, because an external web service call is required to
 access it. These calls are not allowed in Apex test methods.
 
-
-### Standard Objects DatacloudOwnedEntity DatacloudOwnedEntity
+### DatacloudOwnedEntity
 
 Represents fields in the DatacloudOwnedEntity object. The DatacloudOwnedEntity object tracks user-purchased records. This object is
 available in API version 30.0 or later.
@@ -6514,14 +7309,15 @@ Fields
 ```
 DataDotComKey
 
-DatacloudEntityType
-
-Name
-
 ```
 
 **Type**
 string
+
+
+Standard Objects DatacloudOwnedEntity
+
+**Field Name** **Details**
 
 **Properties**
 Create, Filter, Sort
@@ -6531,6 +7327,17 @@ Create, Filter, Sort
 The Data.com contact or company record identification number used by the
 DatacloudPurchaseUsage object to keep track of purchased records. This is
 equivalent to the Data.com record ID for a contact or company.
+
+```
+DatacloudEntityType
+
+Name
+
+PurchaseType
+
+PurchaseUsageId
+
+```
 
 **Type**
 picklist
@@ -6552,25 +7359,9 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, Sort
 
-
-### Standard Objects DatacloudPurchaseUsage
-
-**Field Name** **Details**
-
 **Description**
 
 An optional field used to name your record.
-
-```
-PurchaseType
-
-PurchaseUsageId
-
-UserId
-
-```
-
-Usage
 
 **Type**
 picklist
@@ -6599,9 +7390,21 @@ Create, Filter, Group, Nillable, Sort
 The unique identification number for the DatacloudPurchaseUsage object created
 by making a REST POST request.
 
+
+### Standard Objects DatacloudPurchaseUsage
+
+**Field Name** **Details**
+
 **•** 0—contact
 
 **•** 1—company
+
+```
+UserId
+
+```
+
+Usage
 
 **Type**
 reference
@@ -6618,9 +7421,6 @@ The Datacloud object that tracks records that are purchased and owned by a speci
 ### DatacloudPurchaseUsage
 
 Represents an object used to identify and track Data.com record purchases. This object is available in API version 30.0 or later.
-
-
-Standard Objects DatacloudPurchaseUsage
 
 Note: When your Data.com Prospector or Data.com Clean contract expires, Data.com features, objects, and fields are removed
 from your org.
@@ -6642,12 +7442,6 @@ Fields
 ```
 DatacloudEntityType
 
-Description
-
-Name
-
-PurchaseType
-
 ```
 
 **Type**
@@ -6662,7 +7456,25 @@ The type of Data.com record you want to purchase.
 
 **•** 0—indicates contact entity type.
 
+
+Standard Objects DatacloudPurchaseUsage
+
+**Field Name** **Details**
+
 **•** 1—indicates company entity type.
+
+```
+Description
+
+Name
+
+PurchaseType
+
+Usage
+
+UserId
+
+```
 
 **Type**
 string
@@ -6690,11 +7502,6 @@ picklist
 **Properties**
 Filter, Group, Restricted picklist, Sort
 
-
-### Standard Objects DataDetectJobObjectSession
-
-**Field Name** **Details**
-
 **Description**
 
 A read only field set by the API to identify the purchase type.
@@ -6704,17 +7511,6 @@ A read only field set by the API to identify the purchase type.
 **•** Export
 
 **•** API
-
-```
-Usage
-
-UserId
-
-UserType
-
-```
-
-Usage
 
 **Type**
 double
@@ -6737,6 +7533,18 @@ Filter, Group, Sort
 
 A read only field set by the API that identifies the user purchasing the records.
 
+
+### Standard Objects DataDetectJobObjectSession
+
+**Field Name** **Details**
+
+```
+UserType
+
+```
+
+Usage
+
 **Type**
 picklist
 
@@ -6758,9 +7566,6 @@ The DatacloudPurchaseUsage object allows you to track Data.com record purchases 
 Represents an object-specific job session that's created whenever a DataDetect scan policy job session runs on a scan policy object. This
 object is available in API version 63.0 and later.
 
-
-Standard Objects DataDetectJobObjectSession
-
 Supported Calls
 
 `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `undelete()`
@@ -6773,10 +7578,6 @@ Fields
 CurrentObject
 
 DataDetectJobSessionId
-
-SessionEndTime
-
-ScannedRecordsCount
 
 ```
 
@@ -6800,6 +7601,11 @@ ID of the job session associated with a scan policy data scan.
 
 This field is a relationship field.
 
+
+Standard Objects DataDetectJobObjectSession
+
+**Field** **Details**
+
 **Relationship Name**
 DataDetectJobSession
 
@@ -6808,6 +7614,17 @@ Master-Detail
 
 **Refers To**
 DataDetectJobSession
+
+```
+SessionEndTime
+
+ScannedRecordsCount
+
+LastScannedRecord
+
+JobStatus
+
+```
 
 **Type**
 dateTime
@@ -6826,18 +7643,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The number of records already scanned while the overall job is in progress.
-
-
-Standard Objects DataDetectJobObjectSession
-
-**Field** **Details**
-
-```
-LastScannedRecord
-
-JobStatus
-
-```
 
 **Type**
 String
@@ -6880,10 +7685,15 @@ Status of the scan policy object scan. Possible values are:
 
 ```
 
+
+Standard Objects DataDetectJobObjectSession
+
+**Field** **Details**
+
 **•** `Cancelled and CsvUploadSuccess - Scan cancelled. Results`
 
 ```
-   upload completed successfully.
+                     upload completed successfully.
 
 ```
 
@@ -6892,28 +7702,28 @@ Status of the scan policy object scan. Possible values are:
 **•** `Completed and CsvNoPiiData - Scan completed. No sensitive`
 
 ```
-   data detected.
+                     data detected.
 
 ```
 
 **•** `Completed and CsvUploadFailed - Scan completed. Results`
 
 ```
-   upload failed.
+                     upload failed.
 
 ```
 
 **•** `Completed and CsvUploadInProgress - Scan completed.`
 
 ```
-   Results upload in progress.
+                     Results upload in progress.
 
 ```
 
 **•** `Completed and CsvUploadSuccess - Scan completed. Results`
 
 ```
-   upload completed successfully.
+                     upload completed successfully.
 
 ```
 
@@ -6922,292 +7732,9 @@ Status of the scan policy object scan. Possible values are:
 **•** `Failed and CsvNoPiiData - Scan failed. No sensitive data`
 
 ```
-   detected.
+                     detected.
 
 ```
-
-**•** `Failed and CsvUploadFailed - Scan failed. Results upload`
-
-```
-   failed.
-
-```
-
-**•** `Failed and CsvUploadInProgress - Scan failed. Results`
-
-```
-   upload in progress.
-
-```
-
-**•** `Failed and CsvUploadSuccess - Scan failed. Results upload`
-
-```
-   completed successfully.
-
-```
-
-**•** `PartialSuccess`
-
-
-### Standard Objects DataDetectJobSession
-
-**Field** **Details**
-
-**•** `PartialSuccess and CsvNoPiiData - Scan partially`
-
-```
-                     successful. No sensitive data detected.
-
-```
-
-**•** `PartialSuccess and CsvUploadFailed - Scan partially`
-
-```
-                     successful. Results upload failed.
-
-```
-
-**•** `PartialSuccess and CsvUploadInProgress - Scan partially`
-
-```
-                     successful. Results upload in progress.
-
-```
-
-**•** `PartialSuccess and CsvUploadSuccess - Scan partially`
-
-```
-                     successful. Results upload completed successfully.
-
-```
-
-**•** `Running`
-
-**•** `Scheduled`
-
-**•** `TimedOut`
-
-The default value is `Scheduled` .
-
-```
-Name
-
-SessionStartTime
-
-```
-
-SEE ALSO:
-
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-Auto-generated name of the job object session.
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Time and date when the scan policy object scan begins. Scan policy object scan can start
-anytime within a 30-day window from the current date.
-
-### DataDetectJobSession
-
-Represents a run of a DataDetect scan policy that's triggered manually. This object is available in API version 63.0 and later.
-
-To opt in for beta, contact your Salesforce account executive. After the org permission is enabled, users can access the Data Detect app
-from the App launcher.
-
-
-Standard Objects DataDetectJobSession
-
-Supported Calls
-
-`delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
-`search()`, `undelete()`
-
-Fields
-
-**Field** **Details**
-
-```
-DataDetectPolicyId
-
-DataDetectPolicySnapshotId
-
-SessionEndTime
-
-```
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the scan policy associated with this job session.
-
-This field is a relationship field.
-
-**Relationship Name**
-DataDetectPolicy
-
-**Refers To**
-DataDetectPolicy
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-ID of the snapshot of the scan policy associated with this job session.
-
-This field is a relationship field.
-
-**Relationship Name**
-DataDetectPolicySnapshot
-
-**Relationship Type**
-Master-Detail
-
-**Refers To**
-DataDetectPolicySnapshot
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Time and date when the data scan completes.
-
-
-Standard Objects DataDetectJobSession
-
-**Field** **Details**
-
-```
-Name
-
-NamedEntityCount
-
-PolicyJobStatus
-
-```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-Auto-generated name of the job session.
-
-**Type**
-int
-
-**Properties**
-Create, Filter, Nillable, Update
-
-**Description**
-Aggregate count of PII found during the data scan.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Status of the data scan. Valid values are:
-
-**•** `Cancelled`
-
-**•** `Cancelled and CsvNoPiiData - Scan cancelled. No sensitive`
-
-```
-   data detected.
-
-```
-
-**•** `Cancelled and CsvUploadFailed - Scan cancelled. Results`
-
-```
-   upload failed.
-
-```
-
-**•** `Cancelled and CsvUploadInProgress - Scan cancelled.`
-
-```
-   Results upload in progress.
-
-```
-
-**•** `Cancelled and CsvUploadSuccess - Scan cancelled. Results`
-
-```
-   upload completed successfully.
-
-```
-
-**•** `Completed`
-
-**•** `Completed and CsvNoPiiData - Scan completed. No sensitive`
-
-```
-   data detected.
-
-```
-
-**•** `Completed and CsvUploadFailed - Scan completed. Results`
-
-```
-   upload failed.
-
-```
-
-**•** `Completed and CsvUploadInProgress - Scan completed.`
-
-```
-   Results upload in progress.
-
-```
-
-**•** `Completed and CsvUploadSuccess - Scan completed. Results`
-
-```
-   upload completed successfully.
-
-```
-
-**•** `Failed`
-
-**•** `Failed and CsvNoPiiData - Scan failed. No sensitive data`
-
-```
-   detected.
-
-```
-
-
-Standard Objects DataDetectJobSession
-
-**Field** **Details**
 
 **•** `Failed and CsvUploadFailed - Scan failed. Results upload`
 
@@ -7269,6 +7796,294 @@ Standard Objects DataDetectJobSession
 The default value is `Scheduled` .
 
 ```
+Name
+
+```
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+Auto-generated name of the job object session.
+
+
+### Standard Objects DataDetectJobSession
+
+**Field** **Details**
+
+```
+SessionStartTime
+
+```
+
+SEE ALSO:
+
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Time and date when the scan policy object scan begins. Scan policy object scan can start
+anytime within a 30-day window from the current date.
+
+### DataDetectJobSession
+
+Represents a run of a DataDetect scan policy that's triggered manually. This object is available in API version 63.0 and later.
+
+To opt in for beta, contact your Salesforce account executive. After the org permission is enabled, users can access the Data Detect app
+from the App launcher.
+
+Supported Calls
+
+`delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
+`search()`, `undelete()`
+
+Fields
+
+**Field** **Details**
+
+```
+DataDetectPolicyId
+
+DataDetectPolicySnapshotId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+ID of the scan policy associated with this job session.
+
+This field is a relationship field.
+
+**Relationship Name**
+DataDetectPolicy
+
+**Refers To**
+DataDetectPolicy
+
+**Type**
+reference
+
+
+Standard Objects DataDetectJobSession
+
+**Field** **Details**
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+ID of the snapshot of the scan policy associated with this job session.
+
+This field is a relationship field.
+
+**Relationship Name**
+DataDetectPolicySnapshot
+
+**Relationship Type**
+Master-Detail
+
+**Refers To**
+DataDetectPolicySnapshot
+
+```
+SessionEndTime
+
+Name
+
+NamedEntityCount
+
+PolicyJobStatus
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Time and date when the data scan completes.
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+Auto-generated name of the job session.
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Nillable, Update
+
+**Description**
+Aggregate count of PII found during the data scan.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+Status of the data scan. Valid values are:
+
+**•** `Cancelled`
+
+
+Standard Objects DataDetectJobSession
+
+**Field** **Details**
+
+**•** `Cancelled and CsvNoPiiData - Scan cancelled. No sensitive`
+
+```
+                     data detected.
+
+```
+
+**•** `Cancelled and CsvUploadFailed - Scan cancelled. Results`
+
+```
+                     upload failed.
+
+```
+
+**•** `Cancelled and CsvUploadInProgress - Scan cancelled.`
+
+```
+                     Results upload in progress.
+
+```
+
+**•** `Cancelled and CsvUploadSuccess - Scan cancelled. Results`
+
+```
+                     upload completed successfully.
+
+```
+
+**•** `Completed`
+
+**•** `Completed and CsvNoPiiData - Scan completed. No sensitive`
+
+```
+                     data detected.
+
+```
+
+**•** `Completed and CsvUploadFailed - Scan completed. Results`
+
+```
+                     upload failed.
+
+```
+
+**•** `Completed and CsvUploadInProgress - Scan completed.`
+
+```
+                     Results upload in progress.
+
+```
+
+**•** `Completed and CsvUploadSuccess - Scan completed. Results`
+
+```
+                     upload completed successfully.
+
+```
+
+**•** `Failed`
+
+**•** `Failed and CsvNoPiiData - Scan failed. No sensitive data`
+
+```
+                     detected.
+
+```
+
+**•** `Failed and CsvUploadFailed - Scan failed. Results upload`
+
+```
+                     failed.
+
+```
+
+**•** `Failed and CsvUploadInProgress - Scan failed. Results`
+
+```
+                     upload in progress.
+
+```
+
+**•** `Failed and CsvUploadSuccess - Scan failed. Results upload`
+
+```
+                     completed successfully.
+
+```
+
+**•** `PartialSuccess`
+
+**•** `PartialSuccess and CsvNoPiiData - Scan partially`
+
+```
+                     successful. No sensitive data detected.
+
+```
+
+**•** `PartialSuccess and CsvUploadFailed - Scan partially`
+
+```
+                     successful. Results upload failed.
+
+```
+
+**•** `PartialSuccess and CsvUploadInProgress - Scan partially`
+
+```
+                     successful. Results upload in progress.
+
+```
+
+**•** `PartialSuccess and CsvUploadSuccess - Scan partially`
+
+```
+                     successful. Results upload completed successfully.
+
+```
+
+**•** `Running`
+
+**•** `Scheduled`
+
+**•** `TimedOut`
+
+The default value is `Scheduled` .
+
+
+### Standard Objects DataDetectPolicy
+
+**Field** **Details**
+
+```
 RunByUser
 
 SessionStartTime
@@ -7298,9 +8113,6 @@ Time and date when the data scan begins.
 This object has this associated object. If the API version isn’t specified, it's available in the same API version as this object. Otherwise, it's
 available in the specified API version and later.
 
-
-### Standard Objects DataDetectPolicy
-
 **[DataDetectJobSessionFeed](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_associated_objects_feed.htm)**
 
 Feed tracking is available for the object.
@@ -7327,20 +8139,34 @@ Fields
 ```
 Description
 
-EndTime
-
-Name
-
 ```
 
 **Type**
 string
+
+
+Standard Objects DataDetectPolicy
+
+**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Description of the scan policy.
+
+```
+EndTime
+
+Name
+
+OwnerId
+
+ScanType
+
+StartTime
+
+```
 
 **Type**
 dateTime
@@ -7359,22 +8185,6 @@ Create, Filter, Group, idLookup, Sort, Update
 
 **Description**
 Name of the scan policy.
-
-
-### Standard Objects DataDetectPolicyObject
-
-**Field** **Details**
-
-```
-OwnerId
-
-ScanType
-
-StartTime
-
-```
-
-Associated Objects
 
 **Type**
 reference
@@ -7405,12 +8215,19 @@ The default value is `PatternMatching` .
 **Type**
 dateTime
 
+
+### Standard Objects DataDetectPolicyObject
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
 **Description**
 Time and date when the data scan begins. Data scans can start anytime within a 30-day
 window from the current date.
+
+Associated Objects
 
 This object has this associated object. If the API version isn't specified, it's available in the same API version as this object. Otherwise, it's
 available in the specified API version and later.
@@ -7427,9 +8244,6 @@ _[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_
 
 Represents an object of the DataDetect scan policy to be scanned. This object is available in API version 62.0 and later.
 
-
-Standard Objects DataDetectPolicyObject
-
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
@@ -7442,15 +8256,7 @@ Fields
 ```
 DataDetectPolicyId
 
-Name
-
-ObjectReference
-
 ```
-
-SEE ALSO:
-
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 **Type**
 reference
@@ -7464,13 +8270,29 @@ ID of the scan policy associated with this scan policy object.
 This field is a relationship field.
 
 **Relationship Name**
-DataDetectPolicy
+### DataDetectPolicy
 
 **Relationship Type**
 Master-Detail
 
+
+### Standard Objects DataDetectScanResult
+
+**Field** **Details**
+
 **Refers To**
 DataDetectPolicy
+
+```
+Name
+
+ObjectReference
+
+```
+
+SEE ALSO:
+
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 **Type**
 string
@@ -7490,8 +8312,7 @@ Create, Filter, Group, Sort, Update
 **Description**
 Name of the scan policy object to be scanned.
 
-
-### Standard Objects DataDetectScanResult DataDetectScanResult
+### DataDetectScanResult
 
 Represents the results of a DataDetect scan policy data scan. This object is available in API version 63.0 and later.
 
@@ -7506,12 +8327,6 @@ Fields
 ```
 CreatedDate
 
-DataDetectJobSessionId
-
-FieldName
-
-NamedEntityCount
-
 ```
 
 **Type**
@@ -7522,6 +8337,24 @@ Filter, Nillable, Sort
 
 **Description**
 Time and date when an instance of PII is added to the scan result.
+
+
+Standard Objects DataDetectScanResult
+
+**Field** **Details**
+
+```
+DataDetectJobSessionId
+
+FieldName
+
+NamedEntityCount
+
+NamedEntityType
+
+ObjectName
+
+```
 
 **Type**
 reference
@@ -7555,29 +8388,11 @@ UDD name from standard fields, or custom field ID from custom fields.
 **Type**
 int
 
-
-### Standard Objects DataDetectPolicyObjField
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Sort
 
 **Description**
 Number of times PII is found.
-
-```
-NamedEntityType
-
-ObjectName
-
-RecordIdentifier
-
-```
-
-SEE ALSO:
-
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 **Type**
 string
@@ -7597,6 +8412,20 @@ Filter, Group, Sort
 **Description**
 KeyPrefix of the scan policy object that contains PII.
 
+
+### Standard Objects DataDetectPolicyObjField
+
+**Field** **Details**
+
+```
+RecordIdentifier
+
+```
+
+SEE ALSO:
+
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
+
 **Type**
 string
 
@@ -7615,9 +8444,6 @@ Supported Calls
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
 `undelete()`, `update()`, `upsert()`
 
-
-### Standard Objects DataDetectPolicySnapshot
-
 Fields
 
 **Field** **Details**
@@ -7628,10 +8454,6 @@ DataDetectPolicyObjectId
 FieldName
 
 ```
-
-SEE ALSO:
-
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 **Type**
 reference
@@ -7656,11 +8478,20 @@ DataDetectPolicyObject
 **Type**
 string
 
+
+### Standard Objects DataDetectPolicySnapshot
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Sort, Update
 
 **Description**
 Name of the scan policy object field.
+
+SEE ALSO:
+
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 ### DataDetectPolicySnapshot
 
@@ -7672,9 +8503,6 @@ Supported Calls
 `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
 `search()`, `undelete()`,
 
-
-Standard Objects DataDetectPolicySnapshot
-
 Fields
 
 **Field** **Details**
@@ -7683,10 +8511,6 @@ Fields
 DataDetectPolicyId
 
 Name
-
-OwnerId
-
-RevisionNumber
 
 ```
 
@@ -7702,13 +8526,13 @@ ID of the scan policy associated with the scan policy snapshot.
 This field is a relationship field.
 
 **Relationship Name**
-DataDetectPolicy
+### DataDetectPolicy
 
 **Relationship Type**
 Lookup
 
 **Refers To**
-DataDetectPolicy
+### DataDetectPolicy
 
 **Type**
 string
@@ -7716,8 +8540,26 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
+
+### Standard Objects DataDetPlcyDataSrchExps
+
+**Field** **Details**
+
 **Description**
 Name of the scan policy snapshot.
+
+```
+OwnerId
+
+RevisionNumber
+
+SerializedPolicy
+
+```
+
+SEE ALSO:
+
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 **Type**
 reference
@@ -7743,20 +8585,6 @@ Filter, Group, Nillable, Sort
 **Description**
 Revision number of the scan policy snapshot associated with the scan policy.
 
-
-### Standard Objects DataDetPlcyDataSrchExps
-
-**Field** **Details**
-
-```
-SerializedPolicy
-
-```
-
-SEE ALSO:
-
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
-
 **Type**
 textarea
 
@@ -7773,6 +8601,9 @@ and later.
 
 Note: When working with regex, Salesforce recommends Java 17 or later.
 
+
+Standard Objects DataDetPlcyDataSrchExps
+
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
@@ -7784,6 +8615,12 @@ Fields
 
 ```
 DataDetectPolicyId
+
+Expression
+
+IsCaseSensitive
+
+IsKeywordSearch
 
 ```
 
@@ -7806,26 +8643,6 @@ Master-Detail
 
 **Refers To**
 DataDetectPolicy
-
-
-### Standard Objects DataDetPlcyMdatScanCrit
-
-**Field** **Details**
-
-```
-Expression
-
-IsCaseSensitive
-
-IsKeywordSearch
-
-Name
-
-```
-
-SEE ALSO:
-
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 **Type**
 string
@@ -7853,11 +8670,25 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
+
+### Standard Objects DataDetPlcyMdatScanCrit
+
+**Field** **Details**
+
 **Description**
 Designates whether the expression can be used as a search keyword `(true)` or not
 `(false)` .
 
 The default value is `false` .
+
+```
+Name
+
+```
+
+SEE ALSO:
+
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 **Type**
 string
@@ -7873,9 +8704,6 @@ Name of the expression.
 Represents inclusion and exclusion criteria that filter what DataDetect scan policy object fields are to be scanned based on metadata
 tags. This object is available in API version 64.0 and later.
 
-
-Standard Objects DataDetPlcyMdatScanCrit
-
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
@@ -7887,10 +8715,6 @@ Fields
 
 ```
 Criteria
-
-DataDetectPolicyId
-
-Name
 
 ```
 
@@ -7909,8 +8733,28 @@ field's data.
 
 **•** `DataSensitivity` —Level of data sensitivity related to the field's data.
 
+
+Standard Objects DataDetPlcyMdatScanCrit
+
+**Field** **Details**
+
 **•** `FieldUsage` —Data planned for deprecation, or intended to be hidden, related to
 the active and visible field's data.
+
+```
+DataDetectPolicyId
+
+Name
+
+Type
+
+Value
+
+```
+
+SEE ALSO:
+
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
 
 **Type**
 reference
@@ -7941,22 +8785,6 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Description**
 Name of the criteria.
 
-
-### Standard Objects DataDetPlcySstvDataCatg
-
-**Field** **Details**
-
-```
-Type
-
-Value
-
-```
-
-SEE ALSO:
-
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
-
 **Type**
 picklist
 
@@ -7976,7 +8804,8 @@ Create, Filter, Group, Sort, Update
 **Description**
 Value of the criteria applied to filters.
 
-### DataDetPlcySstvDataCatg
+
+### Standard Objects DataDetPlcySstvDataCatg DataDetPlcySstvDataCatg
 
 Represents the sensitive data categories that the DataDetect scan policy is required to scan. This object is available in API version 64.0
 and later.
@@ -7995,6 +8824,8 @@ DataCategory
 
 DataDetectPolicyId
 
+Name
+
 ```
 
 **Type**
@@ -8008,11 +8839,6 @@ Sensitive data category associated with the scan policy.
 
 **Type**
 reference
-
-
-### Standard Objects DataEncryptionKey
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort
@@ -8031,25 +8857,25 @@ Master-Detail
 **Refers To**
 DataDetectPolicy
 
-```
-Name
-
-```
-
-SEE ALSO:
-
-_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
-
-### DataEncryptionKey
-
 **Type**
 string
 
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
+
+### Standard Objects DataEncryptionKey
+
+**Field** **Details**
+
 **Description**
 Name of the sensitive data category.
+
+SEE ALSO:
+
+_[Salesforce Help](https://help.salesforce.com/s/articleView?id=xcloud.einstein_data_detect.htm&type=5&language=en_US)_ : Data Detect
+
+### DataEncryptionKey
 
 The DataEncryptionKey object is part of the Bring Your Own Key (BYOK) feature, which allows users to upload a data encryption key
 (DEK) using a public key generated by the Salesforce Shield Key Management Service (KMS). Customers create their own DEKs and
@@ -8067,9 +8893,6 @@ Special Access Rules
 
 This object is available as part of the Shield and Salesforce Platform Encryption add-on subscriptions.
 
-
-Standard Objects DataEncryptionKey
-
 Fields
 
 **Field** **Details**
@@ -8077,13 +8900,7 @@ Fields
 ```
 CreatedBy
 
-DataEncryptionKeyCertName
-
-Description
-
-DoesUseKeyDerivation
-
-LastModifiedBy
+### `DataEncryptionKeyCertName`
 
 ```
 
@@ -8105,9 +8922,28 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The name of the certificate whose public key is used to encrypt the `DEK` during a remote
 key callout. When you want to create a BYOK-compatible certificate, use this property in a
+
+
+Standard Objects DataEncryptionKey
+
+**Field** **Details**
+
 call to create() to name the certificate. You need to know the name to retrieve the certificate
 later. Specify only the file name. Salesforce will add the .crt extension when it creates the
 file.
+
+```
+Description
+
+DoesUseKeyDerivation
+
+LastModifiedBy
+
+RootKeyIdentifier
+
+RootKeyKmsIdentifier
+
+```
 
 **Type**
 string
@@ -8136,27 +8972,9 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects DataEncryptionKey
-
-**Field** **Details**
-
 **Description**
 The email address of the user who most recently modified the key. For example,
 `user@example.com` .
-
-```
-RootKeyIdentifier
-
-RootKeyKmsIdentifier
-
-SecretValue
-
-SessionToken
-
-Source
-
-```
 
 **Type**
 string
@@ -8173,12 +8991,28 @@ string
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
+
+Standard Objects DataEncryptionKey
+
+**Field** **Details**
+
 **Description**
 The unique key identifier from the external KMS, such as an AWS Amazon Resource Name
 (ARN). For example,
 
 ```
-  arn:aws:kms:us-west-2:123456789000:key/123ab456-7cd8-9012-3e4f-5gh678i901j2
+                   arn:aws:kms:us-west-2:123456789000:key/123ab456-7cd8-9012-3e4f-5gh678i901j2
+
+```
+
+```
+SecretValue
+
+SessionToken
+
+Source
+
+Status
 
 ```
 
@@ -8211,25 +9045,11 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The source of the encryption key material. Values are:
 
-
-Standard Objects DataEncryptionKey
-
-**Field** **Details**
-
 **•** `AWS` —A tenant secret or DEK fetched from the Amazon Key Management Service DEKs
 with a `Source` value of `AWS` are listed as Fetched on the Key Management page in
 Setup.
 
 **•** `Salesforce` —A Salesforce-generated DEK.
-
-```
-Status
-
-Type
-
-Version
-
-```
 
 **Type**
 string
@@ -8247,12 +9067,26 @@ in the external key store.
 
 **•** `Active` —Can be used to encrypt new DEKs and decrypt existing DEKs.
 
+
+Standard Objects DataEncryptionKey
+
+**Field** **Details**
+
 **•** `Archived` —Can’t encrypt new DEKs. Can be used to decrypt previously created DEKs.
 
 **•** `Canceled` —Root key activation canceled by a user.
 
 **•** `Inactive` —The root key, and the DEKs that it encrypts, are inaccessible. Inaccessible
 DEKs can’t be used to decrypt data, which renders that data also inaccessible.
+
+```
+Type
+
+Version
+
+```
+
+Usage
 
 **Type**
 string
@@ -8282,11 +9116,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The version number of this secret. The version number is unique within your org.
 
-
-Standard Objects DataEncryptionKey
-
-Usage
-
 Four functions are available: `describe()`, `create()`, `query()` and `queryAll()` .
 
 **•** Use `create()` to create BYOK-compatible certificates and DEKs.
@@ -8304,6 +9133,9 @@ a Type of `Search Index` and a name for the certificate file.
 **•** Use `queryAll()` to list your DEKs. The temporary DEK will include the name of your certificate file in the
 `DataEncryptionKeyCertName` attribute. It will also include a session token in the `sessionToken` attribute. Save this
 value for later.
+
+
+Standard Objects DataEncryptionKey
 
 **•** Downlad the certificate using the metadata object API. Specify _`Certificate`_ for the object name node, and the
 _`DataEncryptionKeyCertName`_ for the members node. The certificate file will be in the zip file returned by the metadata
@@ -8355,12 +9187,6 @@ certificate to retrieve it later. Specify just the name. Salesforce will add the
 
              "Type": "search index",
 
-```
-
-
-Standard Objects DataEncryptionKey
-
-```
              "DataEncryptionKeyCertName": "my-byok-compatible-cert"
 
             }'
@@ -8394,6 +9220,12 @@ DEKs are retrieved, including archived DEKs. You use `queryAll` to get the sessi
 
        <types>
 
+```
+
+
+Standard Objects DataEncryptionKey
+
+```
          <members>DataEncryptionKeyCertName</members>
 
          <name>Certificate</name>
@@ -8453,9 +9285,6 @@ To get information about the DataEncryptionKey sObject, use `describe` .
 
 On success, the response is the full JSON description of the DataEncryptionKey sObject.
 
-
-### Standard Objects DataIntegrationRecordPurchasePermission
-
 **Return Values for Create()**
 
 The response for creating a certificate or DEK are the same. On success, the response is be similar to
@@ -8498,6 +9327,12 @@ On error, the response is similar to
 
          "errorCode": "ERROR CODE"
 
+```
+
+
+### Standard Objects DataIntegrationRecordPurchasePermission
+
+```
        }
 
      ]
@@ -8525,6 +9360,10 @@ Fields
 ```
 ExternalObject
 
+UserId
+
+UserRecordPurchaseLimit
+
 ```
 
 **Type**
@@ -8535,20 +9374,6 @@ Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
 **Description**
 Indicates the name of the data service record matched to the Salesforce record.
-
-
-### Standard Objects DataKitDeployEvent
-
-**Field Name** **Details**
-
-```
-UserId
-
-UserRecordPurchaseLimit
-
-### DataKitDeployEvent
-
-```
 
 **Type**
 reference
@@ -8573,11 +9398,18 @@ User
 **Type**
 int
 
+
+### Standard Objects DataKitDeployEvent
+
+**Field Name** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Represents the number of purchase credits assigned to a user.
+
+### DataKitDeployEvent
 
 Represents a data kit deployment event that notifies subscribers of the status of the data kit component deployment. This object is
 available in API version 61.0 or later.
@@ -8597,15 +9429,12 @@ Fields
 ```
 DataKitDeployStatus
 
+DataKitName
+
 ```
 
 **Type**
 picklist
-
-
-Standard Objects DataKitDeployEvent
-
-**Field** **Details**
 
 **Properties**
 Create, Nillable, Restricted picklist
@@ -8624,9 +9453,21 @@ API version 63.0 and later. Possible values are:
 
 **•** `Processing`
 
-```
-DataKitName
+**Type**
+string
 
+**Properties**
+Create, Nillable
+
+
+Standard Objects DataKitDeployEvent
+
+**Field** **Details**
+
+**Description**
+Name of the data kit from which a component is deployed.
+
+```
 DataspaceName
 
 DeployStartTime
@@ -8635,16 +9476,11 @@ ErrorDetails
 
 EventCreationDate
 
+EventPublishDate
+
+EventType
+
 ```
-
-**Type**
-string
-
-**Properties**
-Create, Nillable
-
-**Description**
-Name of the data kit from which a component is deployed.
 
 **Type**
 string
@@ -8676,29 +9512,11 @@ Explanation of the error.
 **Type**
 dateTime
 
-
-Standard Objects DataKitDeployEvent
-
-**Field** **Details**
-
 **Properties**
 Create, Nillable
 
 **Description**
 The date and time the data kit deploy creation event was created.
-
-```
-EventPublishDate
-
-EventType
-
-EventUuid
-
-IsDataKitDeployStatusSuccess
-
-JobIdentifier
-
-```
 
 **Type**
 dateTime
@@ -8715,6 +9533,11 @@ picklist
 **Properties**
 Create, Nillable, Restricted picklist
 
+
+Standard Objects DataKitDeployEvent
+
+**Field** **Details**
+
 **Description**
 The event type action of the data kit components. Available in API version 66.0 and later.
 Possible values are:
@@ -8722,6 +9545,19 @@ Possible values are:
 **•** `Deploy`
 
 **•** `Undeploy`
+
+```
+EventUuid
+
+IsDataKitDeployStatusSuccess
+
+JobIdentifier
+
+ReplayId
+
+TemplateName
+
+```
 
 **Type**
 string
@@ -8748,23 +9584,11 @@ Status of the data kit component deployment. Possible values are:
 **Type**
 string
 
-
-### Standard Objects DataKitDeploymentLog
-
-**Field** **Details**
-
 **Properties**
 Create, Nillable
 
 **Description**
 Data kit component deployment job identifier.
-
-```
-ReplayId
-
-TemplateName
-
-```
 
 **Type**
 string
@@ -8780,6 +9604,11 @@ string
 
 **Properties**
 Create, Nillable
+
+
+### Standard Objects DataKitDeploymentLog
+
+**Field** **Details**
 
 **Description**
 The template name from which the data kit deploy event is created.
@@ -8804,6 +9633,10 @@ Fields
 ```
 BundleName
 
+ComponentName
+
+ComponentTemplateId
+
 ```
 
 **Type**
@@ -8812,22 +9645,8 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-Standard Objects DataKitDeploymentLog
-
-**Field** **Details**
-
 **Description**
 Name of the data stream bundle if a data stream is deployed from a data kit.
-
-```
-ComponentName
-
-ComponentTemplateId
-
-ComponentType
-
-```
 
 **Type**
 string
@@ -8848,11 +9667,21 @@ Create, Filter, Group, Nillable, Sort, Update
 ID of the data kit template from which the component is deployed. This field is a polymorphic
 relationship field.
 
+
+Standard Objects DataKitDeploymentLog
+
+**Field** **Details**
+
 **Relationship Name**
 ComponentTemplate
 
 **Refers To**
 DataSourceBundle
+
+```
+ComponentType
+
+```
 
 **Type**
 picklist
@@ -8887,11 +9716,6 @@ Possible values available in API version 63.0 and later are:
 
 **•** `DataSemanticSearch`
 
-
-Standard Objects DataKitDeploymentLog
-
-**Field** **Details**
-
 **•** `EngagementSignal`
 
 **•** `ExtDataShare`
@@ -8922,6 +9746,11 @@ Possible values available in API version 64.0 and later are:
 
 **•** `MktDataTransform`
 
+
+Standard Objects DataKitDeploymentLog
+
+**Field** **Details**
+
 **•** `PersonalizationPoint`
 
 **•** `PersonalizationSchema`
@@ -8936,6 +9765,12 @@ Possible values available in API version 66.0 and later are:
 DataKitName
 
 DataPackageKitDefinition
+
+DataSpaceName
+
+DeployJob
+
+DeploymentAction
 
 ```
 
@@ -8967,24 +9802,6 @@ Possible values are:
 
 **•** `1dk.sf_mktg_ae__Marketing_Account_Engagement_CRM_Data`
 
-
-Standard Objects DataKitDeploymentLog
-
-**Field** **Details**
-
-```
-DataSpaceName
-
-DeployJob
-
-DeploymentAction
-
-DeploymentError
-
-DeploymentStatus
-
-```
-
 **Type**
 string
 
@@ -9006,6 +9823,11 @@ The deployment job ID.
 **Type**
 picklist
 
+
+Standard Objects DataKitDeploymentLog
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
@@ -9017,6 +9839,17 @@ Possible values are:
 **•** `Deploy`
 
 **•** `Undeploy`
+
+```
+DeploymentError
+
+DeploymentStatus
+
+FileBasedComponentTemplate
+
+FlowInterviewIdentifier
+
+```
 
 **Type**
 textarea
@@ -9042,27 +9875,7 @@ Possible values are:
 
 **•** `Started`
 
-
-Standard Objects DataKitDeploymentLog
-
-**Field** **Details**
-
 **•** `Successful`
-
-```
-FileBasedComponentTemplate
-
-FlowInterviewIdentifier
-
-JobIdentifier
-
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
-```
 
 **Type**
 string
@@ -9082,6 +9895,24 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Identifier of the flow interview if the deployment was triggered using a flow.
+
+
+Standard Objects DataKitDeploymentLog
+
+**Field** **Details**
+
+```
+JobIdentifier
+
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+OwnerId
+
+```
 
 **Type**
 string
@@ -9116,22 +9947,8 @@ string
 **Properties**
 Create, Filter, Group, idLookup, Nillable, Sort, Update
 
-
-Standard Objects DataKitDeploymentLog
-
-**Field** **Details**
-
 **Description**
 The name of the deployment log.
-
-```
-OwnerId
-
-PublisherOrgComponentId
-
-SubscriberOrgComponentId
-
-```
 
 **Type**
 reference
@@ -9149,6 +9966,22 @@ Owner
 
 **Refers To**
 Group, User
+
+
+Standard Objects DataKitDeploymentLog
+
+**Field** **Details**
+
+```
+PublisherOrgComponentId
+
+SubscriberOrgComponentId
+
+TemplateVersion
+
+```
+
+Usage
 
 **Type**
 reference
@@ -9186,18 +10019,6 @@ SubscriberOrgComponent
 ActivationTarget, DataGraph, DataStream, ExtDataShare, IdentityResolution, MarketSegment,
 MarketSegmentActivation, MktCalculatedInsight, MktDataTransform
 
-
-### Standard Objects DatasetExport
-
-**Field** **Details**
-
-```
-TemplateVersion
-
-```
-
-Usage
-
 **Type**
 double
 
@@ -9209,7 +10030,8 @@ The version of the template from which the deployment was done.
 
 Use the DataKitDeploymentLog object to track the deployment of a data kit component.
 
-### DatasetExport
+
+### Standard Objects DatasetExport DatasetExport
 
 Represents a dataset exported from CRM Analytics. When a dataset is exported, the data is converted into a .csv file and the schema is
 stored in a separate JSON file. These files are stored in two objects: DatasetExport and DatasetExportPart. DatasetExport acts as the header
@@ -9227,6 +10049,10 @@ Fields
 CompressedMetadataLength
 
 Metadata
+
+MetadataLength
+
+Owner
 
 ```
 
@@ -9250,24 +10076,6 @@ Nillable
 Contains the JSON schema that describes the data in the CSV. This schema includes column
 metadata such as type, format, and defaultValue.
 
-
-Standard Objects DatasetExport
-
-**Field** **Details**
-
-```
-MetadataLength
-
-Owner
-
-PublisherInfo
-
-PublisherType
-
-Status
-
-```
-
 **Type**
 int
 
@@ -9284,9 +10092,23 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+Standard Objects DatasetExport
+
+**Field** **Details**
+
 **Description**
 User ID of the owner, as specified in the `userId` parameter in the export node of the
 dataflow that created the record. Only the specified owner can read the content of the record.
+
+```
+PublisherInfo
+
+PublisherType
+
+Status
+
+```
 
 **Type**
 string
@@ -9321,11 +10143,6 @@ Filter, Group, Restricted picklist, Sort
 **Description**
 Status of the export. The possible values are:
 
-
-### Standard Objects DatasetExportPart
-
-**Field** **Details**
-
 **•** New
 
 **•** InProgress
@@ -9338,6 +10155,9 @@ Status of the export. The possible values are:
 
 Note: The content of the Metadata field can be downloaded when the status is
 Completed.
+
+
+### Standard Objects DatasetExportPart
 
 Usage
 
@@ -9365,6 +10185,8 @@ CompressedDataFileLength
 
 DataFile
 
+DataFileLength
+
 ```
 
 **Type**
@@ -9380,26 +10202,8 @@ In the DataExportPart object, DataFile is the BLOB field.
 **Type**
 base64
 
-
-Standard Objects DatasetExportPart
-
-**Field** **Details**
-
 **Description**
 Contains a part of the dataset data from the generated .csv file. Maximum size is 32 MB.
-
-```
- DataFileLength
-
- DatasetExportId
-
- Owner
-
- PartNumber
-
-```
-
-Usage
 
 **Type**
 int
@@ -9410,6 +10214,22 @@ Filter, Group, Sort
 **Description**
 This field is required when a record in an object contains a BLOB (binary large object) field.
 In the DataExportPart object, DataFile is the BLOB field.
+
+
+### Standard Objects DataMaskCustomValueLibrary
+
+**Field** **Details**
+
+```
+ DatasetExportId
+
+ Owner
+
+ PartNumber
+
+```
+
+Usage
 
 **Type**
 reference
@@ -9447,8 +10267,7 @@ SEE ALSO:
 
 DatasetExport
 
-
-### Standard Objects DataMaskCustomValueLibrary DataMaskCustomValueLibrary
+### DataMaskCustomValueLibrary
 
 Represents a set of user-inputted values in a custom library in Data Mask. This object is available in API version 64.0 and later.
 
@@ -9456,6 +10275,9 @@ Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
+
+
+Standard Objects DataMaskCustomValueLibrary
 
 Special Access Rules
 
@@ -9471,6 +10293,8 @@ ContentType
 Description
 
 IsActive
+
+LastReferencedDate
 
 ```
 
@@ -9513,25 +10337,7 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 **Description**
 Represents whether the library is active or inactive for use.
 
-
-Standard Objects DataMaskCustomValueLibrary
-
-**Field** **Details**
-
 The default value is `false` .
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
-OwnerId
-
-Type
-
-```
 
 **Type**
 dateTime
@@ -9541,6 +10347,24 @@ Filter, Nillable, Sort
 
 **Description**
 The timestamp for when the current user last viewed a record related to this record.
+
+
+Standard Objects DataMaskCustomValueLibrary
+
+**Field** **Details**
+
+```
+LastViewedDate
+
+Name
+
+OwnerId
+
+Type
+
+Values
+
+```
 
 **Type**
 dateTime
@@ -9586,23 +10410,11 @@ Filter, Group, Restricted picklist, Sort
 **Description**
 Represents how the values were added to the library.
 
-
-### Standard Objects DataStatistics
-
-**Field** **Details**
-
 Possible values are:
 
 **•** `default`
 
 **•** `user_defined`
-
-```
-Values
-
-```
-
-Associated Objects
 
 **Type**
 textarea
@@ -9610,8 +10422,15 @@ textarea
 **Properties**
 Create, Nillable, Update
 
+
+### Standard Objects DataStatistics
+
+**Field** **Details**
+
 **Description**
 The content of the value field for masking data.
+
+Associated Objects
 
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
@@ -9639,23 +10458,12 @@ Special Access Rules
 
 This object is available if Data Protection and Privacy is enabled.
 
-
-Standard Objects DataUseLegalBasis
-
 Fields
 
 **Field Name** **Details**
 
 ```
 Description
-
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
-OwnerId
 
 ```
 
@@ -9667,6 +10475,24 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Description of the data use legal basis.
+
+
+Standard Objects DataUseLegalBasis
+
+**Field Name** **Details**
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+OwnerId
+
+Source
+
+```
 
 **Type**
 dateTime
@@ -9709,11 +10535,6 @@ The ID of the owner of the account associated with this customer.
 
 This is a polymorphic relationship field.
 
-
-### Standard Objects DataUsePurpose
-
-**Field Name** **Details**
-
 **Relationship Name**
 Owner
 
@@ -9723,21 +10544,21 @@ Lookup
 **Refers To**
 Group, User
 
-```
-Source
-
-```
-
-Associated Objects
-
 **Type**
 string
+
+
+### Standard Objects DataUsePurpose
+
+**Field Name** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Indicates the source of the legal basis. For example, the URL of a contract.
+
+Associated Objects
 
 This object has the following associated objects. Unless noted, they are available in the same API version as this object.
 
@@ -9770,23 +10591,12 @@ Special Access Rules
 
 This object is available if Data Protection and Privacy is enabled.
 
-
-Standard Objects DataUsePurpose
-
 Fields
 
 **Field Name** **Details**
 
 ```
 CanDataSubjectOptOut
-
-Description
-
-LastReferencedDate
-
-LastViewedDate
-
-LegalBasisId
 
 ```
 
@@ -9796,9 +10606,25 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
+
+Standard Objects DataUsePurpose
+
+**Field Name** **Details**
+
 **Description**
 Required. Indicates whether the customer can decline contact for the described
 purpose.
+
+```
+Description
+
+LastReferencedDate
+
+LastViewedDate
+
+LegalBasisId
+
+```
 
 **Type**
 string
@@ -9841,11 +10667,6 @@ Identifies the legal basis record associated with the data use purpose.
 
 This is a relationship field.
 
-
-Standard Objects DataUsePurpose
-
-**Field Name** **Details**
-
 **Relationship Name**
 LegalBasis
 
@@ -9855,6 +10676,11 @@ Lookup
 **Refers To**
 DataUseLegalBasis
 
+
+Standard Objects DataUsePurpose
+
+**Field Name** **Details**
+
 ```
 Name
 
@@ -9863,6 +10689,8 @@ OwnerId
 PurposeId
 
 ```
+
+Associated Objects
 
 **Type**
 string
@@ -9911,17 +10739,13 @@ Purpose
 **Relationship Type**
 Lookup
 
-
-### Standard Objects DataWeaveResource
-
-**Field Name** **Details**
-
 **Refers To**
 Asset, CareProgram, CareRegisteredDevice, or Product2
 
-Associated Objects
-
 This object has the following associated objects. Unless noted, they’re available in the same API version as this object.
+
+
+### Standard Objects DataWeaveResource
 
 **DataUsePurposeChangeEvent (API version 62.0)**
 Change events are available for the object.
@@ -9959,6 +10783,8 @@ ApiVersion
 
 BodyLength
 
+ContentType
+
 ```
 
 **Type**
@@ -9973,20 +10799,29 @@ The API version of this component.
 **Type**
 int
 
-
-Standard Objects DataWeaveResource
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Sort
 
 **Description**
 Size of the DataWeave script (in bytes).
 
-```
-ContentType
+**Type**
+picklist
 
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+
+Standard Objects DataWeaveResource
+
+**Field** **Details**
+
+**Description**
+Possible value:
+
+**•** `dwl` : The metadata file for the DataWeave scripts that are deployed to an org.
+
+```
 DeveloperName
 
 IsGlobal
@@ -9995,18 +10830,11 @@ IsProtected
 
 Language
 
+MasterLabel
+
+NamespacePrefix
+
 ```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-Possible value:
-
-**•** `dwl` : The metadata file for the DataWeave scripts that are deployed to an org.
 
 **Type**
 string
@@ -10045,20 +10873,6 @@ Filter, Group, Restricted picklist, Sort
 **Description**
 The language of the MasterLabel.
 
-
-### Standard Objects DatedConversionRate
-
-**Field** **Details**
-
-```
-MasterLabel
-
-NamespacePrefix
-
-```
-
-Usage
-
 **Type**
 string
 
@@ -10070,6 +10884,11 @@ Required. The name of the resource.
 
 **Type**
 string
+
+
+### Standard Objects DatedConversionRate
+
+**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -10092,6 +10911,8 @@ developer.
 that are part of an installed managed package. All other objects have no namespace
 prefix.
 
+Usage
+
 Although the `DataWeaveResource` object supports the create and update field properties, a runtime exception occurs if you try
 to create, update, or delete using the API. Instead, use the Salesforce Extensions for Visual Studio Code.
 
@@ -10104,9 +10925,6 @@ Supported Calls
 
 `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`,
 
-
-Standard Objects DatedConversionRate
-
 Special Access Rules
 
 Customer Portal users can't access this object.
@@ -10118,6 +10936,23 @@ Fields
 ```
 ConversionRate
 
+```
+
+**Type**
+double
+
+
+### Standard Objects DealIndirectPartner
+
+**Field** **Details**
+
+**Properties**
+Filter, Update
+
+**Description**
+Required. Conversion rate of this currency type against the corporate currency.
+
+```
 IsoCode
 
 NextStartDate
@@ -10126,14 +10961,7 @@ StartDate
 
 ```
 
-**Type**
-double
-
-**Properties**
-Filter, Update
-
-**Description**
-Required. Conversion rate of this currency type against the corporate currency.
+Usage
 
 **Type**
 picklist
@@ -10166,11 +10994,6 @@ Filter
 The date on which the effective dated exchange rate starts. The timestamp is determined
 by the base calendar of the API.
 
-
-### Standard Objects DealIndirectPartner
-
-Usage
-
 This object is for multicurrency organizations with advanced currency management enabled. Use this object to define the exchange
 rates your organization uses for a date range. This object is not available in single-currency organizations, nor is it available if the
 organization does not have advanced currency management enabled.
@@ -10181,6 +11004,9 @@ Represents an indirect partner’s involvement in a deal. This object is availab
 
 A DealIndirectPartner record can be created manually or through automation when a partner is associated with an opportunity, lead,
 or account, capturing role and contact information.
+
+
+Standard Objects DealIndirectPartner
 
 Supported Calls
 
@@ -10197,6 +11023,8 @@ AccountId
 LastReferencedDate
 
 LastViewedDate
+
+LeadId
 
 ```
 
@@ -10229,28 +11057,12 @@ The timestamp when the record was last referenced by the user or system.
 **Type**
 dateTime
 
-
-Standard Objects DealIndirectPartner
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 Date and the timestamp when the record was last viewed in the Salesforce UI. Helps monitor
 user access and engagement.
-
-```
-LeadId
-
-Name
-
-OpportunityId
-
-OwnerId
-
-```
 
 **Type**
 reference
@@ -10263,11 +11075,27 @@ Reference to a lead associated with this indirect partner record.
 
 This field is a relationship field.
 
+
+Standard Objects DealIndirectPartner
+
+**Field** **Details**
+
 **Relationship Name**
 Lead
 
 **Refers To**
 Lead
+
+```
+Name
+
+OpportunityId
+
+OwnerId
+
+PartnerName
+
+```
 
 **Type**
 string
@@ -10301,11 +11129,6 @@ reference
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
-
-Standard Objects DealIndirectPartner
-
-**Field** **Details**
-
 **Description**
 User or group that owns this record.
 
@@ -10317,9 +11140,22 @@ Owner
 **Refers To**
 Group, User
 
-```
-PartnerName
+**Type**
+string
 
+**Properties**
+Create, Filter, Group, Sort, Update
+
+
+Standard Objects DealIndirectPartner
+
+**Field** **Details**
+
+**Description**
+Name of the indirect partner participating in the deal. This field captures the business or
+entity name.
+
+```
 PartnerRoleType
 
 PrimaryContactFirstName
@@ -10328,17 +11164,9 @@ PrimaryContactLastName
 
 PrimaryContactName
 
+PrimaryContactSalutation
+
 ```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-Name of the indirect partner participating in the deal. This field captures the business or
-entity name.
 
 **Type**
 picklist
@@ -10372,22 +11200,12 @@ Last name of the primary contact at the partner organization.
 **Type**
 string
 
-
-### Standard Objects DeclinedEventRelation
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Full name of the primary contact. This field may be auto-generated by combining first and
 last names or used for reporting purposes.
-
-```
-PrimaryContactSalutation
-
-```
 
 **Type**
 picklist
@@ -10399,6 +11217,11 @@ Create, Filter, Group, Nillable, Sort, Update
 Salutation for the primary contact.
 
 Possible values are:
+
+
+### Standard Objects DeclinedEventRelation
+
+**Field** **Details**
 
 **•** `Dr.`
 
@@ -10427,6 +11250,8 @@ Fields
 ```
 EventId
 
+RelationId
+
 ```
 
 **Type**
@@ -10437,11 +11262,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 Indicates the ID of the event.
-
-
-Standard Objects DeclinedEventRelation
-
-**Field Name** **Details**
 
 This is a relationship field.
 
@@ -10454,17 +11274,6 @@ Lookup
 **Refers To**
 Event
 
-```
-RelationId
-
-RespondedDate
-
-Response
-
-Type
-
-```
-
 **Type**
 reference
 
@@ -10473,6 +11282,11 @@ Filter, Group, Nillable, Sort
 
 **Description**
 Indicates the ID of the invitee.
+
+
+Standard Objects DeclinedEventRelation
+
+**Field Name** **Details**
 
 This is a polymorphic relationship field.
 
@@ -10484,6 +11298,17 @@ Lookup
 
 **Refers To**
 Calendar, Contact, Lead, User
+
+```
+RespondedDate
+
+Response
+
+Type
+
+```
+
+Usage
 
 **Type**
 dateTime
@@ -10510,20 +11335,13 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects DelegatedAccount
-
-**Field Name** **Details**
-
 **Description**
 Indicates whether the invitee is a user, lead or contact, or resource.
-
-Usage
 
 **Query invitees who have declined an invitation to an event**
 
 ```
-     SELECT eventId, type, response FROM DeclinedEventRelation WHERE eventid='00UTD000000ZH5LA'
+  SELECT eventId, type, response FROM DeclinedEventRelation WHERE eventid='00UTD000000ZH5LA'
 
 ```
 
@@ -10533,7 +11351,8 @@ AcceptedEventRelation
 
 UndecidedEventRelation
 
-### DelegatedAccount
+
+### Standard Objects DelegatedAccount DelegatedAccount
 
 Represents the external managed account. This object is available in API version 49.0 and later.
 
@@ -10555,6 +11374,8 @@ AccessBuyFor
 
 AccessManageUsers
 
+LastReferencedDate
+
 ```
 
 **Type**
@@ -10571,11 +11392,6 @@ AccessBuyFor.
 **Type**
 boolean
 
-
-Standard Objects DelegatedAccount
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Update
 
@@ -10585,17 +11401,6 @@ accounts. This includes managing permission sets, membership, passwords, and act
 This field is available in API version 50.0 and later. Delegated External User Administrator
 permission is required to use AccessManageUsers.
 
-```
-LastReferencedDate
-
-LastViewedDate
-
-ManagedById
-
-Name
-
-```
-
 **Type**
 dateTime
 
@@ -10604,6 +11409,22 @@ Filter, Nillable, Sort
 
 **Description**
 The timestamp for when the current user last viewed a record related to this record.
+
+
+Standard Objects DelegatedAccount
+
+**Field** **Details**
+
+```
+LastViewedDate
+
+ManagedById
+
+Name
+
+OwnerId
+
+```
 
 **Type**
 dateTime
@@ -10641,22 +11462,8 @@ string
 **Properties**
 Create, Filter, Group, idLookup, Sort, Update
 
-
-Standard Objects DelegatedAccount
-
-**Field** **Details**
-
 **Description**
 Name of the external managed account.
-
-```
-OwnerId
-
-ParentId
-
-TargetId
-
-```
 
 **Type**
 reference
@@ -10675,8 +11482,22 @@ Owner
 **Relationship Type**
 Lookup
 
+
+### Standard Objects DeleteEvent
+
+**Field** **Details**
+
 **Refers To**
 Group, User
+
+```
+ParentId
+
+TargetId
+
+### DeleteEvent
+
+```
 
 **Type**
 reference
@@ -10712,18 +11533,11 @@ This is a relationship field.
 **Relationship Name**
 Target
 
-
-### Standard Objects DeleteEvent
-
-**Field** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 Account
-
-### DeleteEvent
 
 Represents a record that has been soft deleted. Search on this object was available in API version 48.0, then removed in API version 50.0.
 
@@ -10735,6 +11549,9 @@ Supported Calls
 
 `describeSObjects()`, `query()`, `retrieve()`
 
+
+Standard Objects DeleteEvent
+
 Fields
 
 **Field** **Details**
@@ -10743,6 +11560,12 @@ Fields
 DeletedById
 
 DeletedDate
+
+Record
+
+RecordName
+
+SobjectName
 
 ```
 
@@ -10775,20 +11598,6 @@ Filter, Nillable, Sort
 **Description**
 The date and time when the record was deleted.
 
-
-### Standard Objects DeliveryEstimationSetup
-
-**Field** **Details**
-
-```
-Record
-
-RecordName
-
-SobjectName
-
-```
-
 **Type**
 string
 
@@ -10813,6 +11622,11 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+### Standard Objects DeliveryEstimationSetup
+
+**Field** **Details**
+
 **Description**
 The type of record that was deleted, for example, Account.
 
@@ -10836,30 +11650,16 @@ Fields
 
 `Channel` Id
 
+`DefaultBusinessHours` Id
+
 **Type**
 reference
-
-
-Standard Objects DeliveryEstimationSetup
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort, Update
 
 **Description**
 ID for the web store or sales channel associated with the delivery estimation configuration.
-
-`DefaultBusinessHours` Id
-
-```
-DefaultPickupTime
-
-DefaultProcessingTime
-
-DefaultProcessingTimeUnit
-
-```
 
 **Type**
 reference
@@ -10877,6 +11677,24 @@ DefaultBusinessHours
 
 **Refers To**
 BusinessHours
+
+
+Standard Objects DeliveryEstimationSetup
+
+**Field** **Details**
+
+```
+DefaultPickupTime
+
+DefaultProcessingTime
+
+DefaultProcessingTimeUnit
+
+ExternalReference
+
+isEnabled
+
+```
 
 **Type**
 time
@@ -10911,24 +11729,6 @@ Default processing time unit. Possible values are:
 
 **•** `Weeks`
 
-
-Standard Objects DeliveryEstimationSetup
-
-**Field** **Details**
-
-```
-ExternalReference
-
-isEnabled
-
-LastReferencedDate
-
-LastSyncedById
-
-LastSyncedDate
-
-```
-
 **Type**
 string
 
@@ -10952,6 +11752,24 @@ Defaulted on create, Filter, Group, Sort
 Indicates whether the given delivery estimation configuration is active.
 
 The default value is `false` .
+
+
+Standard Objects DeliveryEstimationSetup
+
+**Field** **Details**
+
+```
+LastReferencedDate
+
+LastSyncedById
+
+LastSyncedDate
+
+LastSyncedMessage
+
+LastViewedDate
+
+```
 
 **Type**
 dateTime
@@ -10984,30 +11802,12 @@ User
 **Type**
 dateTime
 
-
-Standard Objects DeliveryEstimationSetup
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 Date the delivery estimation configuration was last synced. This field is available in API version
 62.0 and later.
-
-```
-LastSyncedMessage
-
-LastViewedDate
-
-LocationGroupId
-
-Name
-
-OwnerId
-
-```
 
 **Type**
 textarea
@@ -11024,8 +11824,24 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects DeliveryEstimationSetup
+
+**Field** **Details**
+
 **Description**
 Last time the delivery estimation configuration was viewed.
+
+```
+LocationGroupId
+
+Name
+
+OwnerId
+
+RoutingType
+
+```
 
 **Type**
 reference
@@ -11056,11 +11872,6 @@ Name of the delivery estimation setup configuration.
 **Type**
 reference
 
-
-Standard Objects DeliveryEstimationSetup
-
-**Field** **Details**
-
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
@@ -11076,20 +11887,16 @@ Owner
 **Refers To**
 Group, User
 
-```
-RoutingType
-
-ServiceRegion
-
-SyncStatus
-
-```
-
 **Type**
 picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+
+### Standard Objects DigitalSignature
+
+**Field** **Details**
 
 **Description**
 Determines an order's route and calculates delivery estimations. This field is available in API
@@ -11104,6 +11911,15 @@ Possible values are:
 **•** `Standard`
 
 The default value is `None` .
+
+```
+ServiceRegion
+
+SyncStatus
+
+### DigitalSignature
+
+```
 
 **Type**
 string
@@ -11128,11 +11944,6 @@ Sync status of the delivery estimation setup configuration.
 
 Possible values are:
 
-
-### Standard Objects DigitalSignature
-
-**Field** **Details**
-
 **•** `Deleting`
 
 **•** `Deprovisioned`
@@ -11147,9 +11958,10 @@ Possible values are:
 
 The default value is `NONE` . This field is available in API version 62.0 and later.
 
-### DigitalSignature
-
 Represents a signature captured on a service report in field service.
+
+
+Standard Objects DigitalSignature
 
 Supported Calls
 
@@ -11168,10 +11980,12 @@ Fields
 
 **Field Name** **Details**
 
-### `DigitalSignatureNumber`
-
 ```
+DigitalSignatureNumber
+
 DocumentBody
+
+DocumentContentType
 
 ```
 
@@ -11193,22 +12007,6 @@ Create
 **Description**
 The captured signature image.
 
-
-Standard Objects DigitalSignature
-
-**Field Name** **Details**
-
-```
-DocumentContentType
-
-DocumentLength
-
-DocumentName
-
-ParentId
-
-```
-
 **Type**
 picklist
 
@@ -11217,6 +12015,10 @@ Create, Filter, Group, Restricted picklist, Sort
 
 **Description**
 The data type of the captured signature. Possible values are:
+
+**•** `audio/acc`
+
+**•** `audio/amr`
 
 **•** `audio/ogg`
 
@@ -11231,6 +12033,24 @@ The data type of the captured signature. Possible values are:
 **•** `audio/x-caf`
 
 **•** `image/webp`
+
+
+Standard Objects DigitalSignature
+
+**Field Name** **Details**
+
+```
+DocumentLength
+
+DocumentName
+
+ParentId
+
+Place
+
+SignatureType
+
+```
 
 **Type**
 int
@@ -11268,25 +12088,9 @@ Parent
 **Relationship Type**
 Lookup
 
-
-Standard Objects DigitalSignature
-
-**Field Name** **Details**
-
 **Refers To**
 AuthorizationFormConsent, Order, ServiceAppointment, WorkOrder,
 WorkOrderLineItem
-
-```
-Place
-
-SignatureType
-
-SignedBy
-
-SignedDate
-
-```
 
 **Type**
 string
@@ -11302,6 +12106,11 @@ picklist
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Sort
+
+
+Standard Objects DigitalSignature
+
+**Field Name** **Details**
 
 **Description**
 The role of the person signing the service report. Your org comes with one
@@ -11321,6 +12130,15 @@ service report templates. When you deactivate a type, it still appears on
 service report templates that used it, but you can’t use it on new service
 report templates.
 
+```
+SignedBy
+
+SignedDate
+
+```
+
+Usage
+
 **Type**
 string
 
@@ -11336,15 +12154,8 @@ dateTime
 **Properties**
 Create, Filter, Nillable, Sort
 
-
-### Standard Objects DigitalWallet
-
-**Field Name** **Details**
-
 **Description**
 The date and time of the signing.
-
-Usage
 
 Add signature blocks to service report templates to determine which signatures need to be gathered on reports that use the template.
 Service report templates can contain up to 20 signatures, and each signature must use a different Signature Type. For example, create
@@ -11359,7 +12170,8 @@ This object has the following associated objects. Unless noted, they’re availa
 **DigitalSignatureChangeEvent (Available in API version 57.0)**
 Change events are available for the object.
 
-### DigitalWallet
+
+### Standard Objects DigitalWallet DigitalWallet
 
 Represents a customer’s digital wallet service. Salesforce Payments can use a digital wallet as a payment source when processing
 payments through a payment gateway. This object is available in API version 48.0 and later.
@@ -11381,6 +12193,8 @@ Fields
 ```
 AccountId
 
+AuditEmail
+
 ```
 
 **Type**
@@ -11392,11 +12206,6 @@ Create, Filter, Group, Nillable, Sort, Update
 **Description**
 The account of the customer owns the digital wallet.
 
-
-Standard Objects DigitalWallet
-
-**Field** **Details**
-
 This field is a relationship field.
 
 **Relationship Name**
@@ -11407,19 +12216,6 @@ Lookup
 
 **Refers To**
 Account
-
-```
-AuditEmail
-
-BillingName
-
-Comments
-
-CompanyName
-
-Customer
-
-```
 
 **Type**
 email
@@ -11433,6 +12229,26 @@ Email address of the digital wallet owner where audit information about payments
 This field is available in API v49.0 and later. It doesn’t appear in the UI by default for Salesforce
 orgs that upgraded from v48.0. Users must add it to the DigitalWallet page layout on their
 own.
+
+
+Standard Objects DigitalWallet
+
+**Field** **Details**
+
+```
+BillingName
+
+Comments
+
+CompanyName
+
+Customer
+
+DigitalWalletNumber
+
+Email
+
+```
 
 **Type**
 string
@@ -11465,29 +12281,11 @@ Company of the digital wallet owner.
 **Type**
 string
 
-
-Standard Objects DigitalWallet
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
 **Description**
 Customer name of the digital wallet owner.
-
-```
-DigitalWalletNumber
-
-Email
-
-ExtendedPaymentMethodType
-
-GatewayToken
-
-GatewayTokenDetails
-
-```
 
 **Type**
 string
@@ -11504,8 +12302,26 @@ email
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
+
+Standard Objects DigitalWallet
+
+**Field** **Details**
+
 **Description**
 Email of the digital wallet owner.
+
+```
+ExtendedPaymentMethodType
+
+GatewayToken
+
+GatewayTokenDetails
+
+GatewayTokenEncrypted
+
+IpAddress
+
+```
 
 **Type**
 string
@@ -11536,27 +12352,11 @@ GatewayTokenEncrypted value, Salesforce throws an error.
 **Type**
 textarea
 
-
-Standard Objects DigitalWallet
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
 **Description**
 Unique ID generated by the payment gateway for the card for future transactions.
-
-```
-GatewayTokenEncrypted
-
-IpAddress
-
-IsAutoPayEnabled
-
-LastReferencedDate
-
-```
 
 **Type**
 encryptedstring
@@ -11573,6 +12373,11 @@ Available in API v52.0 and later.
 **Type**
 string
 
+
+Standard Objects DigitalWallet
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -11582,6 +12387,17 @@ The IP address of the digital wallet owner.
 This field is available in API v49.0 and later. It doesn’t appear in the UI by default for Salesforce
 orgs that upgraded from v48.0. Users must add it to the DigitalWallet page layout on their
 own.
+
+```
+IsAutoPayEnabled
+
+LastReferencedDate
+
+LastViewedDate
+
+MacAddress
+
+```
 
 **Type**
 boolean
@@ -11603,24 +12419,6 @@ Filter, Nillable, Sort
 
 **Description**
 The timestamp for when the current user last viewed a record related to this record.
-
-
-Standard Objects DigitalWallet
-
-**Field** **Details**
-
-```
-LastViewedDate
-
-MacAddress
-
-NickName
-
-PaymentGatewayId
-
-PaymentMethodAddress
-
-```
 
 **Type**
 dateTime
@@ -11644,6 +12442,24 @@ The MAC address of the digital wallet owner.
 This field is available in API v49.0 and later. It doesn’t appear in the UI by default for Salesforce
 orgs that upgraded from v48.0. Users must add it to the DigitalWallet page layout on their
 own.
+
+
+Standard Objects DigitalWallet
+
+**Field** **Details**
+
+```
+NickName
+
+PaymentGatewayId
+
+PaymentMethodAddress
+
+PaymentMethodCity
+
+PaymentMethodCountry
+
+```
 
 **Type**
 string
@@ -11677,11 +12493,6 @@ PaymentGateway
 **Type**
 address
 
-
-Standard Objects DigitalWallet
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable
 
@@ -11689,34 +12500,37 @@ Filter, Nillable
 Full address associated with the digital wallet payment method. For more information about
 address fields, see Address Compound Fields
 
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Part of the address for the payment method.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+
+Standard Objects DigitalWallet
+
+**Field** **Details**
+
+**Description**
+Part of the address for the payment method.
+
 ```
-PaymentMethodCity
-
-PaymentMethodCountry
-
 PaymentMethodDetails
 
 PaymentMethodGeocodeAccuracy
 
+PaymentMethodLatitude
+
 ```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Part of the address for the payment method.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Part of the address for the payment method.
 
 **Type**
 string
@@ -11749,11 +12563,6 @@ Possible values are:
 
 **•** `County`
 
-
-Standard Objects DigitalWallet
-
-**Field** **Details**
-
 **•** `ExtendedZip`
 
 **•** `NearAddress`
@@ -11768,19 +12577,6 @@ Standard Objects DigitalWallet
 
 **•** `Zip`
 
-```
-PaymentMethodLatitude
-
-PaymentMethodLongitude
-
-PaymentMethodPostalCode
-
-PaymentMethodState
-
-PaymentMethodStreet
-
-```
-
 **Type**
 double
 
@@ -11791,6 +12587,26 @@ Create, Filter, Nillable, Sort, Update
 Latitude of the payment method address. Used with the PaymentMethodLongitude to
 specify the precise geolocation of the address. For details on geolocation compound fields,
 see Compound Field Considerations and Limitations.
+
+
+Standard Objects DigitalWallet
+
+**Field** **Details**
+
+```
+PaymentMethodLongitude
+
+PaymentMethodPostalCode
+
+PaymentMethodState
+
+PaymentMethodStreet
+
+PaymentMethodSubType
+
+PaymentMethodType
+
+```
 
 **Type**
 double
@@ -11824,27 +12640,11 @@ Part of the address for the payment method.
 **Type**
 textarea
 
-
-Standard Objects DigitalWallet
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Part of the address for the payment method.
-
-```
-PaymentMethodSubType
-
-PaymentMethodType
-
-Phone
-
-ProcessingMode
-
-```
 
 **Type**
 string
@@ -11862,11 +12662,25 @@ picklist
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
+
+Standard Objects DigitalWallet
+
+**Field** **Details**
+
 **Description**
 Payment method used for the transaction. Possible values include credit cards such as Visa
 and American Express, digital wallets like Apple Pay and PayPal, direct debits such as ACH,
 BECS, Bacs, non-card payments methods such as EPS, SEPA, and iDEAL, extended alternate
 payments methods, and extended wallets. This field is available in API version 57.0 and later.
+
+```
+Phone
+
+ProcessingMode
+
+SavedPaymentMethodId
+
+```
 
 **Type**
 phone
@@ -11895,11 +12709,6 @@ Possible values are:
 
 **•** `External` —Transactions happened outside of the Salesforce payments platform.
 
-
-### Standard Objects DirectMessage
-
-**Field** **Details**
-
 **•** `Salesforce` —Salesforce made and recorded an external call to the payment platform.
 
 This field is available in API v49.0 and later. It doesn’t appear in the UI by default for Salesforce
@@ -11907,15 +12716,6 @@ orgs that upgraded from v48.0. Users must add it to the DigitalWallet page layou
 own.
 
 Important: `ProcessingMode` is required to create a DigitalWallet entity.
-
-```
-SavedPaymentMethodId
-
-Status
-
-### DirectMessage
-
-```
 
 **Type**
 reference
@@ -11932,8 +12732,20 @@ SavedPaymentMethod
 **Relationship Type**
 Lookup
 
+
+### Standard Objects DirectMessage
+
+**Field** **Details**
+
 **Refers To**
 SavedPaymentMethod
+
+```
+Status
+
+### DirectMessage
+
+```
 
 **Type**
 picklist
@@ -11960,9 +12772,6 @@ Supported Calls
 
 `describeSObjects()`, `query()`, `retrieve()`, `update()`
 
-
-### Standard Objects Division
-
 Special Access Rules
 
 You must have the Manage Chatter Messages and Direct Messages permission enabled to access the DirectMessage object.
@@ -11972,13 +12781,9 @@ Fields
 **Field** **Details**
 
 ```
- Name
-
- Subject
+Name
 
 ```
-
-Usage
 
 **Type**
 string
@@ -11988,6 +12793,18 @@ Filter, Group, idLookup, Sort, Update
 
 **Description**
 A default value that isn’t visible to users.
+
+
+### Standard Objects Division
+
+**Field** **Details**
+
+```
+ Subject
+
+```
+
+Usage
 
 **Type**
 string
@@ -12021,9 +12838,6 @@ and this field (the field is named Division in objects other than User and Group
 
 **•** Customer Portal users can’t access this object.
 
-
-Standard Objects Division
-
 Fields
 
 **Field** **Details**
@@ -12031,15 +12845,7 @@ Fields
 ```
 IsActive
 
-IsGlobalDivision
-
-Name
-
-SortOrder
-
 ```
-
-Usage
 
 **Type**
 boolean
@@ -12049,6 +12855,22 @@ Create, Defaulted on create, Filter, Update
 
 **Description**
 Indicates whether the division is active ( `true` ) or not ( `false` ). Label is **Active** .
+
+
+Standard Objects Division
+
+**Field** **Details**
+
+```
+IsGlobalDivision
+
+Name
+
+SortOrder
+
+```
+
+Usage
 
 **Type**
 boolean
@@ -12087,9 +12909,7 @@ has very large data sets. For more information, see the Salesforce online help, 
 
 You can use WITH in SOSL to pre-filter results based on division. This is faster than specifying the division in a WHERE clause.
 
-
-### Standard Objects DivisionLocalization Note: The User object has a Division field that is unrelated to this object. The Division field is a standard text field similar
-
+Note: The User object has a `Division` field that is unrelated to this object. The `Division` field is a standard text field similar
 to Company or Department that has no special properties. Do not confuse it with the `DefaultDivision` field, which does
 relate to this object.
 
@@ -12097,7 +12917,8 @@ SEE ALSO:
 
 Overview of Salesforce Objects and Fields
 
-### DivisionLocalization
+
+### Standard Objects DivisionLocalization DivisionLocalization
 
 When the Translation Workbench is enabled for your organization, the DivisionLocalization object provides the translation of the label
 for a division.
@@ -12150,11 +12971,6 @@ that creates a managed package has a unique namespace prefix. Limit: 15 characte
 You can refer to a component in a managed package by using the
 _**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
 
-
-### Standard Objects DocAtchDownloadEventLog
-
-**Field** **Details**
-
 The namespace prefix can have one of the following values.
 
 **•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix
@@ -12162,6 +12978,11 @@ of the org for all objects that support it, unless an object is in an installed 
 package. In that case, the object has the namespace prefix of the installed
 managed package. This field’s value is the namespace prefix of the Developer
 Edition org of the package developer.
+
+
+### Standard Objects DocAtchDownloadEventLog
+
+**Field** **Details**
 
 **•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only
 for objects that are part of an installed managed package. All other objects have
@@ -12209,9 +13030,6 @@ Special Access Rules
 
 To access this object, you must have the View Event Log Object Data user permission.
 
-
-Standard Objects DocAtchDownloadEventLog
-
 Fields
 
 **Field** **Details**
@@ -12219,6 +13037,23 @@ Fields
 ```
 FileType
 
+```
+
+**Type**
+string
+
+
+### Standard Objects Document
+
+**Field** **Details**
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The type of the file or attachment.
+
+```
 ObjectIdentifier
 
 RequestIdentifier
@@ -12227,16 +13062,9 @@ Timestamp
 
 UserIdentifier
 
+### Document
+
 ```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of the file or attachment.
 
 **Type**
 string
@@ -12277,10 +13105,10 @@ The 15-character ID of the user who’s using Salesforce services through the UI
 
 For example: `00530000009M943`
 
-
-### Standard Objects Document Document
-
 Represents a file that a user has uploaded. Unlike Attachment records, documents are not attached to a parent object.
+
+
+Standard Objects Document
 
 Supported Calls
 
@@ -12302,6 +13130,8 @@ AuthorId
 Body
 
 BodyLength
+
+ContentType
 
 ```
 
@@ -12340,27 +13170,16 @@ int
 **Properties**
 Filter, Group, Sort
 
+**Description**
+Size of the file (in bytes).
+
+**Type**
+string
+
 
 Standard Objects Document
 
 **Field** **Details**
-
-**Description**
-Size of the file (in bytes).
-
-```
-ContentType
-
-Description
-
-DeveloperName
-
-FolderId
-
-```
-
-**Type**
-string
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -12372,6 +13191,15 @@ If the `Don't allow HTML uploads as attachments or document`
 `records` security setting is enabled for your organization, you cannot upload files with
 the following file extensions: `.htm`, `.html`, `.htt`, `.htx`, `.mhtm`, `.mhtml`, `.shtm`,
 `.shtml`, `.acgi`, `.svg` .
+
+```
+Description
+
+DeveloperName
+
+FolderId
+
+```
 
 **Type**
 textarea
@@ -12409,11 +13237,6 @@ Create, Filter, Group, Sort, Update
 **Description**
 Required. ID of the Folder that contains the document.
 
-
-Standard Objects Document
-
-**Field** **Details**
-
 This is a relationship field.
 
 **Relationship Name**
@@ -12421,6 +13244,11 @@ Folder
 
 **Relationship Type**
 Lookup
+
+
+Standard Objects Document
+
+**Field** **Details**
 
 **Refers To**
 Folder, User
@@ -12481,16 +13309,16 @@ Indicates whether the object is available for external use ( `true` ) or not ( `
 **Type**
 string
 
-
-Standard Objects Document
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Keywords. Limit: 255 characters.
+
+
+Standard Objects Document
+
+**Field** **Details**
 
 ```
 LastReferencedDate
@@ -12551,14 +13379,14 @@ In that case, the object has the namespace prefix of the installed managed packa
 field’s value is the namespace prefix of the Developer Edition org of the package
 developer.
 
+**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
+that are part of an installed managed package. All other objects have no namespace
+prefix.
+
 
 ### Standard Objects DocumentAttachmentMap
 
 **Field** **Details**
-
-**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
-that are part of an installed managed package. All other objects have no namespace
-prefix.
 
 ```
  Type
@@ -12609,12 +13437,12 @@ Overview of Salesforce Objects and Fields
 
 Maps the relationship between an EmailTemplate and its attachment, which is stored as a Document.
 
-
-Standard Objects DocumentAttachmentMap
-
 Supported Calls
 
 `create()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
+
+
+### Standard Objects DocumentRecipient
 
 Special Access Rules
 
@@ -12672,10 +13500,12 @@ SEE ALSO:
 
 EmailTemplate
 
-
-### Standard Objects DocumentRecipient DocumentRecipient
+### DocumentRecipient
 
 Connects a Service Report to a Digital Signature. This object is available in API version 55.0 and later.
+
+
+Standard Objects DocumentRecipient
 
 Supported Calls
 
@@ -12736,18 +13566,18 @@ The document sent to the recipient.
 This field is a polymorphic relationship field.
 
 **Relationship Name**
-### Document
-
-
-Standard Objects DocumentRecipient
-
-**Field** **Details**
+Document
 
 **Relationship Type**
 Lookup
 
 **Refers To**
 ServiceReport
+
+
+Standard Objects DocumentRecipient
+
+**Field** **Details**
 
 ```
 DocumentRecipient
@@ -12759,6 +13589,8 @@ LastViewedDate
 OwnerId
 
 ```
+
+QuoteDocumentId
 
 **Type**
 string
@@ -12807,27 +13639,16 @@ Owner
 **Relationship Type**
 Lookup
 
+**Refers To**
+Group, User
+
+**Type**
+reference
+
 
 Standard Objects DocumentRecipient
 
 **Field** **Details**
-
-**Refers To**
-Group, User
-
-QuoteDocumentId
-
-```
-RecipientId
-
-SignatureIdentifier
-
-SignatureStatus
-
-```
-
-**Type**
-reference
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -12842,6 +13663,15 @@ QuoteDocument
 
 **Refers To**
 QuoteDocument
+
+```
+RecipientId
+
+SignatureIdentifier
+
+SignatureStatus
+
+```
 
 **Type**
 reference
@@ -12877,11 +13707,6 @@ signature goes.
 **Type**
 picklist
 
-
-Standard Objects DocumentRecipient
-
-**Field** **Details**
-
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
@@ -12891,6 +13716,11 @@ The status of the signature. The default value is `Completed` . Possible values 
 **•** `Completed`
 
 **•** `Skipped`
+
+
+Standard Objects DocumentRecipient
+
+**Field** **Details**
 
 ```
 SignatureStatusReason
@@ -12947,9 +13777,6 @@ The final status reason.
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
 
-
-### Standard Objects DocumentTag
-
 **DocumentRecipientFeed on page 55**
 Feed tracking is available for the object.
 
@@ -12959,7 +13786,8 @@ Sharing rules are available for the object.
 **DocumentRecipientShare on page 67**
 Sharing is available for the object.
 
-### DocumentTag
+
+### Standard Objects DocumentTag DocumentTag
 
 Associates a word or short phrase with a Document.
 
@@ -12977,6 +13805,8 @@ ItemId
 Name
 
 TagDefinitionId
+
+Type
 
 ```
 
@@ -13009,18 +13839,6 @@ Filter
 **Description**
 ID of the parent TagDefinition object that owns the tag.
 
-
-### Standard Objects Domain
-
-**Field Name** **Details**
-
-```
-Type
-
-```
-
-Usage
-
 **Type**
 picklist
 
@@ -13034,8 +13852,15 @@ Valid values:
 
 **•** `Public` —The tag can be viewed and manipulated by all users in an organization.
 
+
+### Standard Objects Domain
+
+**Field Name** **Details**
+
 **•** `Personal` —The tag can be viewed or manipulated only by a user with a matching
 `OwnerId` .
+
+Usage
 
 DocumentTag stores the relationship between its parent TagDefinition and the Document being tagged. Tag objects act as metadata,
 allowing users to describe and organize their data.
@@ -13066,21 +13891,12 @@ Special Access Rules
 
 **•** Site.com Publisher users have read-only API access to the Domain and DomainSite objects.
 
-
-Standard Objects Domain
-
 Fields
 
 **Field** **Description**
 
 ```
 CnameTarget
-
-Domain
-
-DomainType
-
-HttpsOption
 
 ```
 
@@ -13095,6 +13911,20 @@ The canonical name (CNAME) of the external host or server. If you use a custom
 domain with a non-Salesforce provider, such as your own external server or CDN
 provider, to serve your domain, this field points to the CNAME of the external
 provider. This field is available in API version 43.0 and later.
+
+
+Standard Objects Domain
+
+**Field** **Description**
+
+```
+Domain
+
+DomainType
+
+HttpsOption
+
+```
 
 **Type**
 string
@@ -13136,11 +13966,6 @@ Current HTTPS option. Values include:
 `https://www.example.com`, with the Salesforce Content Delivery
 Network (CDN) partner.
 
-
-Standard Objects Domain
-
-**Field** **Description**
-
 **•** `Community` —The system-managed Experience Cloud sites domain that
 ends in `.force.com` . This option applies only to orgs without enhanced
 domains.
@@ -13154,6 +13979,11 @@ such as `https://www.example.com` .
 
 **•** `LegacyDomain` —A previous system-managed domain for this org. This
 option is rarely used.
+
+
+### Standard Objects DomainSite
+
+**Field** **Description**
 
 **•** `NoHttps` —Salesforce serves the custom domain, such as
 `http://www.example.com`, via HTTP. Used to configure your custom
@@ -13182,6 +14012,8 @@ OptionsHstsPreload
 
 ```
 
+Usage
+
 **Type**
 boolean
 
@@ -13201,11 +14033,6 @@ We only modify the HSTS headers of domains that are eligible for registration.
 Domain names can consist of a public suffix plus one additional label. For more
 [information, see Add a Domain in Salesforce Help.](https://help.salesforce.com/articleView?id=platform.domain_mgmt.htm&type=5&language=en_US)
 
-
-### Standard Objects DomainSite
-
-Usage
-
 Use this read-only object to query the domains that are associated with each site in your organization.
 
 ### DomainSite
@@ -13215,6 +14042,10 @@ Read-only junction object that joins the Site and Domain objects. This object is
 ### To access this object, Salesforce Sites, Digital Experiences, or Site.com must be enabled. DomainSite contains records for domains
 
 that serve your Experience Cloud sites only when enhanced domains are deployed. The system-managed site hostnames for those
+
+
+Standard Objects DomainSite
+
 Experience Cloud sites end in `.my.site.com` . This object doesn’t contain records for legacy domains that serve Experience Cloud
 sites with hostnames that end in `.force.com` .
 
@@ -13239,6 +14070,8 @@ DomainId
 
 PathPrefix
 
+SiteId
+
 ```
 
 **Type**
@@ -13254,21 +14087,16 @@ The ID of the associated Domain.
 This is a relationship field.
 
 **Relationship Name**
-### Domain
+Domain
 
 **Relationship Type**
 Lookup
 
 **Refers To**
-### Domain
+Domain
 
 **Type**
 string
-
-
-### Standard Objects DsarPolicy
-
-**Field** **Description**
 
 **Properties**
 Filter, Group, Sort
@@ -13277,18 +14105,16 @@ Filter, Group, Sort
 Shows where a site’s root exists on a domain. Can only be set for custom Web
 addresses. Always begins with a `/` .
 
-```
-SiteId
-
-```
-
-Usage
-
 **Type**
 reference
 
 **Properties**
 Filter, Group, Sort
+
+
+### Standard Objects DsarPolicy
+
+**Field** **Description**
 
 **Description**
 
@@ -13305,6 +14131,8 @@ Lookup
 **Refers To**
 Site
 
+Usage
+
 Use this read-only object to query or retrieve information about your sites.
 
 ### DsarPolicy
@@ -13320,9 +14148,6 @@ Special Access Rules
 
 This object is for Privacy Center customers with the ReadAllData or PrivacyDataAccess permissions.
 
-
-Standard Objects DsarPolicy
-
 Fields
 
 **Field** **Details**
@@ -13331,10 +14156,6 @@ Fields
 Description
 
 DeveloperName
-
-IsActive
-
-Language
 
 ```
 
@@ -13350,6 +14171,11 @@ Description of the policy. The description is limited to 255 characters.
 **Type**
 string
 
+
+Standard Objects DsarPolicy
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Sort
 
@@ -13358,6 +14184,13 @@ Developer name of the policy.
 
 Note: Only users with View DeveloperName OR View Setup and Configuration
 permission can view, group, sort, and filter this field.
+
+```
+IsActive
+
+Language
+
+```
 
 **Type**
 boolean
@@ -13394,11 +14227,6 @@ Possible values are:
 
 **•** `fr` —French
 
-
-### Standard Objects DsarPolicyLog
-
-**Field** **Details**
-
 **•** `it` —Italian
 
 **•** `ja` —Japanese
@@ -13418,6 +14246,11 @@ Possible values are:
 **•** `th` —Thai
 
 **•** `zh_CN` —Chinese (Simplified)
+
+
+### Standard Objects DsarPolicyLog
+
+**Field** **Details**
 
 **•** `zh_TW` —Chinese (Traditional)
 
@@ -13456,23 +14289,12 @@ Special Access Rules
 
 This object is for Privacy Center customers with the ReadAllData or PrivacyDataAccess permissions.
 
-
-Standard Objects DsarPolicyLog
-
 Fields
 
 **Field** **Details**
 
 ```
 CompletionDateTime
-
-DataSubjectId
-
-DeletedDateTime
-
-DeveloperName
-
-DownloadedDateTime
 
 ```
 
@@ -13485,6 +14307,24 @@ Filter, Nillable, Sort
 **Description**
 The date and time when the data subject access request was completed. Available in API
 version 51.0 and later.
+
+
+Standard Objects DsarPolicyLog
+
+**Field** **Details**
+
+```
+DataSubjectId
+
+DeletedDateTime
+
+DeveloperName
+
+DownloadedDateTime
+
+DsarError
+
+```
 
 **Type**
 reference
@@ -13528,22 +14368,6 @@ Filter, Nillable, Sort
 The most recent date and time when the data subject downloaded the file generated at
 their request. Available in API version 51.0 and later.
 
-
-Standard Objects DsarPolicyLog
-
-**Field** **Details**
-
-```
-DsarError
-
-DsarPolicyId
-
-FileURL
-
-Language
-
-```
-
 **Type**
 picklist
 
@@ -13553,6 +14377,20 @@ Filter, Group, Nillable, Restricted picklist, Sort
 **Description**
 Represents an error in generating the file for the data subject access request. Available in
 API version 51.0 and later.
+
+
+Standard Objects DsarPolicyLog
+
+**Field** **Details**
+
+```
+DsarPolicyId
+
+FileURL
+
+Language
+
+```
 
 **Type**
 reference
@@ -13604,11 +14442,6 @@ Possible values are:
 
 **•** `ko` —Korean
 
-
-Standard Objects DsarPolicyLog
-
-**Field** **Details**
-
 **•** `nl_NL` —Dutch
 
 **•** `no` —Norwegian
@@ -13622,6 +14455,11 @@ Standard Objects DsarPolicyLog
 **•** `th` —Thai
 
 **•** `zh_CN` —Chinese (Simplified)
+
+
+Standard Objects DsarPolicyLog
+
+**Field** **Details**
 
 **•** `zh_TW` —Chinese (Traditional)
 
@@ -13681,17 +14519,15 @@ Possible values are:
 **Type**
 reference
 
-
-### Standard Objects DuplicateJob
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The ID of the org employee or admin making the request on behalf of the data subject.
 Available in API version 51.0 and later.
+
+
+### Standard Objects DuplicateJob
 
 Associated Objects
 
@@ -13724,6 +14560,11 @@ Fields
 
 ### `DuplicateJobDefinitionId` `DuplicateJobStatus`
 
+```
+EndDateTime
+
+```
+
 **Type**
 reference
 
@@ -13736,11 +14577,6 @@ The ID of the corresponding duplicate job definition.
 **Type**
 picklist
 
-
-Standard Objects DuplicateJob
-
-**Field Name** **Details**
-
 **Properties**
 Defaulted on create, Filter, Group, Restricted picklist, Sort
 
@@ -13748,9 +14584,21 @@ Defaulted on create, Filter, Group, Restricted picklist, Sort
 The current status of a duplicate job. Valid values are `Not Started`, `In`
 `Progress`, `Completed`, `Canceled`, `Failed`, `Results Deleted` .
 
-```
-EndDateTime
+**Type**
+dateTime
 
+
+Standard Objects DuplicateJob
+
+**Field Name** **Details**
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date and time when a duplicate job was completed.
+
+```
 LastReferencedDate
 
 LastViewedDate
@@ -13759,16 +14607,9 @@ Name
 
 NumDuplicateRecordItems
 
+NumDuplicateRecordSets
+
 ```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The date and time when a duplicate job was completed.
 
 **Type**
 dateTime
@@ -13807,24 +14648,6 @@ Filter, Group, Sort
 The total number of duplicate records identified as a result of invoking a duplicate
 job.
 
-
-### Standard Objects DuplicateJobDefinition
-
-**Field Name** **Details**
-
-```
-NumDuplicateRecordSets
-
-NumRecordsScanned
-
-ResultListViewId
-
-StartDateTime
-
-### DuplicateJobDefinition
-
-```
-
 **Type**
 int
 
@@ -13834,6 +14657,22 @@ Filter, Group, Sort
 **Description**
 The number of duplicate record sets identified as a result of invoking a duplicate
 job.
+
+
+### Standard Objects DuplicateJobDefinition
+
+**Field Name** **Details**
+
+```
+NumRecordsScanned
+
+ResultListViewId
+
+StartDateTime
+
+### DuplicateJobDefinition
+
+```
 
 **Type**
 int
@@ -13871,12 +14710,12 @@ Supported Calls
 
 `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
 
-
-Standard Objects DuplicateJobDefinition
-
 Special Access Rules
 
 As of Summer ’20 and later, only users with the View Setup and Configuration permission can access this object.
+
+
+Standard Objects DuplicateJobDefinition
 
 Fields
 
@@ -13940,15 +14779,11 @@ picklist
 **Properties**
 Filter, Group, Restricted picklist, Sort
 
-
-### Standard Objects DuplicateJobMatchingRule
-
-**Field Name** **Details**
-
 **Description**
 The object type: account, contact, or lead.
 
-### DuplicateJobMatchingRule
+
+### Standard Objects DuplicateJobMatchingRule DuplicateJobMatchingRule
 
 Represents a MatchingRule to be used with a DuplicateJob sharing the corresponding DuplicateJobMatchingRuleDefinition.
 
@@ -13972,6 +14807,8 @@ DuplicateJobId
 DuplicateJobMatchRuleDefId
 
 MatchingRuleBooleanFilter
+
+MatchingRuleDescription
 
 ```
 
@@ -14000,20 +14837,8 @@ textarea
 **Properties**
 Filter, Sort
 
-
-### Standard Objects DuplicateJobMatchingRuleDefinition
-
-**Field Name** **Details**
-
 **Description**
 Boolean logic of the MatchingRule for this DuplicateJobMatchingRule.
-
-```
-MatchingRuleDescription
-
-MatchingRuleName
-
-```
 
 **Type**
 textarea
@@ -14021,8 +14846,18 @@ textarea
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+### Standard Objects DuplicateJobMatchingRuleDefinition
+
+**Field Name** **Details**
+
 **Description**
 Description of the matching rule for this DuplicateJobMatchingRule.
+
+```
+MatchingRuleName
+
+```
 
 **Type**
 string
@@ -14057,6 +14892,8 @@ Fields
 ```
 DuplicateJobDefinitionId
 
+MatchingRuleId
+
 ```
 
 **Type**
@@ -14065,30 +14902,25 @@ reference
 **Properties**
 Filter, Group, Sort
 
-
-### Standard Objects DuplicateRecordItem
-
-**Field Name** **Details**
-
 **Description**
 ID of DuplicateJobDefinition (master) for this DuplicateJobMatchingRuleDefinition
 (detail).
 
-```
-MatchingRuleId
-
-### DuplicateRecordItem
-
-```
-
 **Type**
 reference
+
+
+### Standard Objects DuplicateRecordItem
+
+**Field Name** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 ID of the MatchingRule to be used with this DuplicateJobMatchingRuleDefinition.
+
+### DuplicateRecordItem
 
 Represents a record that’s been identified as a duplicate. DuplicateRecordItems are included in a DuplicateRecordSet, which are processed
 in duplicate jobs. Use this object to create custom report types for duplicates.
@@ -14110,6 +14942,8 @@ Fields
 ```
 DuplicateRecordSetId
 
+Name
+
 ```
 
 **Type**
@@ -14127,28 +14961,19 @@ This is a relationship field.
 **Relationship Name**
 DuplicateRecordSet
 
-
-### Standard Objects DuplicateRecordSet
-
-**Field Name** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
-### DuplicateRecordSet
-
-```
-Name
-
-RecordId
-
-### DuplicateRecordSet
-
-```
+DuplicateRecordSet
 
 **Type**
 string
+
+
+### Standard Objects DuplicateRecordSet
+
+**Field Name** **Details**
 
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
@@ -14158,6 +14983,13 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 ### The autogenerated name that’s given to the Duplicate Record Item. Label is Duplicate
 
 `Record Item Name` .
+
+```
+RecordId
+
+### DuplicateRecordSet
+
+```
 
 **Type**
 reference
@@ -14192,9 +15024,6 @@ Special Access Rules
 
 To access this object, activate duplicate rules. A Salesforce admin must give users read and write access.
 
-
-Standard Objects DuplicateRecordSet
-
 Fields
 
 **Field Name** **Details**
@@ -14202,16 +15031,15 @@ Fields
 ```
 DuplicateRuleId
 
-LastReferencedDate
-
-LastViewedDate
-
-Name
-
 ```
 
 **Type**
 reference
+
+
+Standard Objects DuplicateRecordSet
+
+**Field Name** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -14234,6 +15062,17 @@ Lookup
 
 **Refers To**
 DuplicateRule
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+RecordCount
+
+```
 
 **Type**
 dateTime
@@ -14263,27 +15102,18 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
-
-### Standard Objects DuplicateRule
-
-**Field Name** **Details**
-
 **Description**
 
 The autogenerated name that’s given to the duplicate record set. Label is `Duplicate Record`
 `Set Name` .
 
-```
-RecordCount
-
-ParentId
-
-### DuplicateRule
-
-```
-
 **Type**
 int
+
+
+### Standard Objects DuplicateRule
+
+**Field Name** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -14291,6 +15121,13 @@ Filter, Group, Nillable, Sort
 **Description**
 
 The number of record items in the set.
+
+```
+ParentId
+
+### DuplicateRule
+
+```
 
 **Type**
 reference
@@ -14319,6 +15156,8 @@ Fields
 ```
 DeveloperName
 
+IsActive
+
 ```
 
 **Type**
@@ -14327,20 +15166,28 @@ string
 **Properties**
 Filter, Group, Sort
 
-
-Standard Objects DuplicateRule
-
-**Field Name** **Details**
-
 **Description**
 The developer name for the duplicate rule.
 
 Note: Only users with View DeveloperName OR View Setup and
 Configuration permission can view, group, sort, and filter this field.
 
-```
-IsActive
+**Type**
+boolean
 
+
+Standard Objects DuplicateRule
+
+**Field Name** **Details**
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether a duplicate rule is active ( `true` ) or not ( `false` ). This field is
+read only.
+
+```
 Language
 
 LastViewedDate
@@ -14350,16 +15197,6 @@ MasterLabel
 NamespacePrefix
 
 ```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether a duplicate rule is active ( `true` ) or not ( `false` ). This field is
-read only.
 
 **Type**
 picklist
@@ -14398,12 +15235,6 @@ Filter, Group, Nillable, Sort
 **Description**
 The namespace prefix that is associated with this object. Each Developer Edition
 org that creates a managed package has a unique namespace prefix. Limit: 15
-
-
-Standard Objects DuplicateRule
-
-**Field Name** **Details**
-
 characters. You can refer to a component in a managed package by using the
 _**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
 
@@ -14412,6 +15243,12 @@ The namespace prefix can have one of the following values.
 **•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace
 prefix of the org for all objects that support it, unless an object is in an installed
 managed package. In that case, the object has the namespace prefix of the
+
+
+### Standard Objects DynamicDataCapture
+
+**Field Name** **Details**
+
 installed managed package. This field’s value is the namespace prefix of the
 Developer Edition org of the package developer.
 
@@ -14469,14 +15306,14 @@ You can use the API to view a duplicate rule’s details. To create, edit, or de
 
 Use DuplicateRule to get the sObject type.
 
-
-### Standard Objects DynamicDataCapture
-
 DuplicateRule is unavailable in some orgs.
 
 ### DynamicDataCapture DynamicDataCapture is a junction object that adds a Form tab to Work Order Overview, and to the related list of a work order, work
 
 order line item, or service appointment in the Field Service mobile app. This object is available in API version 62.0 and later.
+
+
+Standard Objects DynamicDataCapture
 
 Supported Calls
 
@@ -14495,6 +15332,8 @@ ActionType
 Description
 
 ExecutionOrder
+
+IsRequired
 
 ```
 
@@ -14534,11 +15373,6 @@ The description of the form.
 **Type**
 int
 
-
-Standard Objects DynamicDataCapture
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -14546,19 +15380,13 @@ Create, Filter, Group, Nillable, Sort, Update
 The order in which the Data Capture flow is executed. Positive integer values or null are
 supported.
 
-```
-IsRequired
-
-LastReferencedDate
-
-Name
-
-OwnerId
-
-```
-
 **Type**
 boolean
+
+
+Standard Objects DynamicDataCapture
+
+**Field** **Details**
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
@@ -14566,6 +15394,17 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 **Description**
 Boolean value that specifies if this form needs to be completed before moving on to the
 next form.
+
+```
+LastReferencedDate
+
+Name
+
+OwnerId
+
+ParentRecordId
+
+```
 
 **Type**
 dateTime
@@ -14603,22 +15442,6 @@ Owner
 **Refers To**
 ServiceAppointment, WorkOrder, WorkOrderLineItem (the parent object), Timesheet
 
-
-Standard Objects DynamicDataCapture
-
-**Field** **Details**
-
-```
-ParentRecordId
-
-ParentRecordType
-
-PausedFlowInterviewId
-
-ProcessType
-
-```
-
 **Type**
 reference
 
@@ -14631,6 +15454,11 @@ as the parent record for junction object.
 
 This field is a polymorphic relationship field.
 
+
+Standard Objects DynamicDataCapture
+
+**Field** **Details**
+
 **Relationship Name**
 ParentRecord
 
@@ -14639,6 +15467,15 @@ Parent-child
 
 **Refers To**
 ServiceAppointment, WorkOrder, WorkOrderLineItem (the parent object)
+
+```
+ParentRecordType
+
+PausedFlowInterviewId
+
+ProcessType
+
+```
 
 **Type**
 string
@@ -14677,11 +15514,6 @@ FlowInterview
 **Type**
 picklist
 
-
-Standard Objects DynamicDataCapture
-
-**Field** **Details**
-
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
@@ -14693,6 +15525,11 @@ Possible values are:
 **•** `DataCaptureFlow` —Data Capture Flow
 
 The default value is `DataCaptureFlow` .
+
+
+Standard Objects DynamicDataCapture
+
+**Field** **Details**
 
 ```
 ServiceDocumentTemplate
@@ -14747,9 +15584,6 @@ The default value is `New` .
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
 
-
-### Standard Objects ElectronicMediaGroup
-
 **DynamicDataCaptureChangeEvent on page 68(API Version 64.0)**
 Change events are available for the object.
 
@@ -14759,7 +15593,8 @@ Sharing rules are available for the object.
 **DynamicDataCaptureShare on page 67(API Version 64.0)**
 Sharing is available for the object.
 
-### ElectronicMediaGroup
+
+### Standard Objects ElectronicMediaGroup ElectronicMediaGroup
 
 Represents the type of media that you can associate with a product or category.This object is available in API version 49.0 and later.
 
@@ -14781,6 +15616,8 @@ CurrencyIsoCode
 Description
 
 DeveloperName
+
+LastReferencedDate
 
 ```
 
@@ -14809,11 +15646,6 @@ string
 **Properties**
 Filter, Group, Sort
 
-
-Standard Objects ElectronicMediaGroup
-
-**Field** **Details**
-
 **Description**
 The unique name of the object in the API. This name can contain only underscores and
 alphanumeric characters, and must be unique in your org. It must begin with a letter, not
@@ -14822,9 +15654,21 @@ In managed packages, this field prevents naming conflicts on package installatio
 this field, a developer can change the object’s name in a managed package and the changes
 are reflected in a subscriber’s organization.
 
-```
-LastReferencedDate
+**Type**
+dateTime
 
+
+Standard Objects ElectronicMediaGroup
+
+**Field** **Details**
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp for when the current user last viewed a record related to this record.
+
+```
 LastViewedDate
 
 Name
@@ -14834,15 +15678,6 @@ OwnerId
 UsageType
 
 ```
-
-**Type**
-dateTime
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp for when the current user last viewed a record related to this record.
 
 **Type**
 dateTime
@@ -14880,11 +15715,6 @@ picklist
 **Properties**
 Filter, Group, Restricted picklist, Sort
 
-
-### Standard Objects ElectronicMediaUse
-
-**Field** **Details**
-
 **Description**
 Possible values are:
 
@@ -14898,7 +15728,8 @@ Possible values are:
 
 **•** `Tile`
 
-### ElectronicMediaUse
+
+### Standard Objects ElectronicMediaUse ElectronicMediaUse
 
 Represents the usage of media. This object is available in API version 49.0 and later.
 
@@ -14918,6 +15749,10 @@ Fields
 CurrencyIsoCode
 
 ElectronicMediaGroupId
+
+ElectronicMediaId
+
+ImplementorType
 
 ```
 
@@ -14942,22 +15777,6 @@ Filter, Group, Nillable, Sort
 **Description**
 The ID of the electronic media group.
 
-
-### Standard Objects EmailContent
-
-**Field** **Details**
-
-```
-ElectronicMediaId
-
-ImplementorType
-
-SortOrder
-
-### EmailContent
-
-```
-
 **Type**
 reference
 
@@ -14973,12 +15792,24 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+### Standard Objects EmailContent
+
+**Field** **Details**
+
 **Description**
 The type of implementor. Available implementors of ElectronicMediaUse include:
 
 **•** ProductMedia
 
 **•** ProductCategoryMedia
+
+```
+SortOrder
+
+### EmailContent
+
+```
 
 **Type**
 int
@@ -15002,9 +15833,6 @@ Special Access Rules
 
 need the CRM User, Sales, or Service User permission set. EmailContent isn’t available for custom portal or guest users.
 
-
-Standard Objects EmailContent
-
 Fields
 
 **Field** **Details**
@@ -15013,14 +15841,6 @@ Fields
 ClickThroughRate
 
 ClickToOpenRatio
-
-DeliveryRate
-
-Description
-
-HtmlBody
-
-LastReferencedDate
 
 ```
 
@@ -15037,11 +15857,29 @@ to them. Multiple clicks for a same link are counted.
 **Type**
 percent
 
+
+Standard Objects EmailContent
+
+**Field** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The number of unique clicks divided by unique HTML opens.
+
+```
+DeliveryRate
+
+Description
+
+HtmlBody
+
+LastReferencedDate
+
+LastViewedDate
+
+```
 
 **Type**
 percent
@@ -15075,29 +15913,11 @@ The body of the email in HTML format. The field is read-only.
 **Type**
 dateTime
 
-
-Standard Objects EmailContent
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The timestamp that indicates when the current user last viewed the record.
-
-```
-LastViewedDate
-
-Name
-
-OpenRate
-
-OptOutRate
-
-SpamComplaintRate
-
-```
 
 **Type**
 dateTime
@@ -15108,6 +15928,26 @@ Filter, Nillable, Sort
 **Description**
 The timestamp for when the current user last viewed this record. If this value is null, the
 record could have been referenced (LastReferencedDate) and not viewed.
+
+
+Standard Objects EmailContent
+
+**Field** **Details**
+
+```
+Name
+
+OpenRate
+
+OptOutRate
+
+SpamComplaintRate
+
+Subject
+
+TemplateId
+
+```
 
 **Type**
 string
@@ -15146,26 +15986,6 @@ Filter, Nillable, Sort
 **Description**
 The percentage of spam complaints compared to the total number emails sent.
 
-
-Standard Objects EmailContent
-
-**Field** **Details**
-
-```
-Subject
-
-TemplateId
-
-TextBody
-
-TotalDelivered
-
-TotalHardBounced
-
-TotalOpens
-
-```
-
 **Type**
 textarea
 
@@ -15181,9 +16001,27 @@ reference
 **Properties**
 Create, Filter, Group, Nillable, Sort
 
+
+Standard Objects EmailContent
+
+**Field** **Details**
+
 **Description**
 The Email Template field is mostly read-only. You can populate the Email Template field only
 during record create to prevent overwriting data on the email content record.
+
+```
+TextBody
+
+TotalDelivered
+
+TotalHardBounced
+
+TotalOpens
+
+TotalSent
+
+```
 
 **Type**
 textarea
@@ -15218,11 +16056,6 @@ recipient is unknown.
 **Type**
 int
 
-
-Standard Objects EmailContent
-
-**Field** **Details**
-
 **Properties**
 Defaulted on create, Filter, Group, Nillable, Sort
 
@@ -15233,9 +16066,22 @@ email without downloading images. A click indicates that they viewed the message
 email clients (Outlook, Apple Mail, Thunderbird) do not display images by default. Account
 Engagement counts an open each time the images load.
 
-```
-TotalSent
+**Type**
+int
 
+**Properties**
+Defaulted on create, Filter, Group, Nillable, Sort
+
+
+Standard Objects EmailContent
+
+**Field** **Details**
+
+**Description**
+Read-only field. The total number of list emails sent, including bounced, opted-out, and
+invalid To: addresses.
+
+```
 TotalSoftBounced
 
 TotalSpamComplaints
@@ -15244,17 +16090,9 @@ TotalTrackedLinkClicks
 
 UniqueClickThroughRate
 
+UniqueOpens
+
 ```
-
-**Type**
-int
-
-**Properties**
-Defaulted on create, Filter, Group, Nillable, Sort
-
-**Description**
-Read-only field. The total number of list emails sent, including bounced, opted-out, and
-invalid To: addresses.
 
 **Type**
 int
@@ -15289,27 +16127,11 @@ Read-only field. The number of times prospects clicked a link in the email.
 **Type**
 percent
 
-
-### Standard Objects EmailDomainFilter
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 Read-only field. The percentage of visitors who clicked a link contained in an email
-
-```
-UniqueOpens
-
-UniqueOptOuts
-
-UniqueTrackedLinkClicks
-
-### EmailDomainFilter
-
-```
 
 **Type**
 int
@@ -15317,10 +16139,24 @@ int
 **Properties**
 Defaulted on create, Filter, Group, Nillable, Sort
 
+
+### Standard Objects EmailDomainFilter
+
+**Field** **Details**
+
 **Description**
 Read-only field. The number of prospects who loaded the images in the HTML version of
 the email. The Unique Opens category counts each recipient only one time, even if the
 prospect loaded images more than once.
+
+```
+UniqueOptOuts
+
+UniqueTrackedLinkClicks
+
+### EmailDomainFilter
+
+```
 
 **Type**
 int
@@ -15350,14 +16186,14 @@ Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
 
-
-Standard Objects EmailDomainFilter
-
 Special Access Rules
 
 You must have the “Email Administration,” “Customize Application,” and “View Setup” user permissions to use this object.
 
-You must create an email relay in Setup or through the EmailRelay object before you can use the `EmailDomainFilter` object.
+### You must create an email relay in Setup or through the EmailRelay object before you can use the EmailDomainFilter object.
+
+
+Standard Objects EmailDomainFilter
 
 Fields
 
@@ -15421,11 +16257,6 @@ this field to enable or disable the email domain filter.
 **Type**
 int
 
-
-### Standard Objects EmailDomainKey
-
-**Field Name** **Details**
-
 **Properties**
 Create, Filter, Group, idLookup, Nillable, Sort, Update
 
@@ -15433,6 +16264,12 @@ Create, Filter, Group, idLookup, Nillable, Sort, Update
 
 Indicates the order in which the email domain filter is processed. Filters are
 evaluated in ascending order. The priority number must be unique. If this field
+
+
+### Standard Objects EmailDomainKey
+
+**Field Name** **Details**
+
 is left blank, it is assigned the next available number and is processed last.
 Processing stops after the first matching filter is applied.
 
@@ -15475,23 +16312,12 @@ As of Summer ’20 and later, only authenticated internal and external users can
 We’ve upgraded and replaced the original DKIM (DomainKeys Identified Mail) key feature, so that you can create a DKIM key with
 [increased email security. For more information, see Setting Up More Secure DKIM Keys.](https://help.salesforce.com/articleView?id=emailadmin_setup_dkim_key.htm&type=0&language=en_US)
 
-
-Standard Objects EmailDomainKey
-
 Fields
 
 **Field Name** **Details**
 
 ```
 AlternatePublicKey
-
-AlternateSelector
-
-AlternateTxtRecordName
-
-Domain
-
-DomainMatch
 
 ```
 
@@ -15501,11 +16327,27 @@ textarea
 **Properties**
 Nillable
 
+
+Standard Objects EmailDomainKey
+
+**Field Name** **Details**
+
 **Description**
 
 Read-only. Alternate public keys are used by Salesforce to auto-rotate domain
 keys. This field is available in API version 44.0 and later after activating the Critical
 Update.
+
+```
+AlternateSelector
+
+AlternateTxtRecordName
+
+Domain
+
+DomainMatch
+
+```
 
 **Type**
 string
@@ -15547,11 +16389,6 @@ picklist
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort, Update
 
-
-Standard Objects EmailDomainKey
-
-**Field Name** **Details**
-
 **Description**
 
 The specificity of match required on the sending domain name before signing
@@ -15563,6 +16400,11 @@ with this DKIM key. Valid values are:
 **•** `SubdomainsOnly` —Sign if sending domain matches at the subdomain
 level only (mail.example.com but not example.com)
 
+
+Standard Objects EmailDomainKey
+
+**Field Name** **Details**
+
 **•** `DomainAndSubdomains` —Sign if sending domain matches at the
 domain and subdomain levels (example.com and mail.example.com)
 
@@ -15572,6 +16414,8 @@ IsActive
 KeySize
 
 PrivateKey
+
+PublicKey
 
 ```
 
@@ -15621,16 +16465,26 @@ key in our system. Therefore:
 
 **•** The actual private key can’t be leaked.
 
+**•** You can’t use the value to do your own email signing.
+
+**Type**
+textarea
+
+**Properties**
+Create, Nillable, Update
+
 
 Standard Objects EmailDomainKey
 
 **Field Name** **Details**
 
-**•** You can’t use the value to do your own email signing.
+**Description**
+
+Part of the domain key pair that mail recipients retrieve to decrypt the DKIM
+header and verify your domain. Add the `PublicKey` value to your domain’s
+DNS records before you start signing with this domain key.
 
 ```
-PublicKey
-
 Selector
 
 TxtRecordName
@@ -15639,17 +16493,9 @@ TxtRecordsPublishState
 
 ```
 
-**Type**
-textarea
+Usage
 
-**Properties**
-Create, Nillable, Update
-
-**Description**
-
-Part of the domain key pair that mail recipients retrieve to decrypt the DKIM
-header and verify your domain. Add the `PublicKey` value to your domain’s
-DNS records before you start signing with this domain key.
+**Create DKIM Keys with Increased Security**
 
 **Type**
 string
@@ -15693,16 +16539,12 @@ The possible values are:
 This field is available in API version 44.0 and later after activating the Critical
 Update.
 
-
-### Standard Objects EmailInsight
-
-Usage
-
-**Create DKIM Keys with Increased Security**
-
 **1.** If your Salesforce org was created before Winter ’19, enable the Critical Update. From Setup, enter _`Critical Updates`_ in the
 Quick Find box, and then select **Critical Updates** . For Enable Redesigned DomainKeys Identified Mail (DKIM) Key Feature with
 Increased Email Security, click **Activate** .
+
+
+### Standard Objects EmailInsight
 
 **2.** Insert `Domain`, `DomainMatch`, `Selector`, and `AlternateSelector` . Salesforce publishes your TXT record to DNS.
 
@@ -15756,14 +16598,14 @@ Supported Calls
 
 `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
 
-
-Standard Objects EmailInsight
-
 Special Access Rules
 
 EmailStream and SiqC2CProvisioned permissions must be enabled.
 
 EmailStreamPref, SiqOrgProvisioned, and SyncEmailToCoreActivity Org prefs must be enabled.
+
+
+Standard Objects EmailInsight
 
 To be able to see SyncEmailToCoreActivity pref, EACLegacyEmailSyncAWS Org perm, AnalyticsActivity, UnifiedActivities, and ActivityMetrics
 must be disabled. In addition, license to Standard Einstein Activity Capture and turning on Einstein Activity Capture and EmailInsights
@@ -15781,6 +16623,8 @@ GeneratedDate
 InsightTypeDescription
 
 InsightTypeIdentifier
+
+InsightTypeLabel
 
 ```
 
@@ -15825,17 +16669,24 @@ string
 **Properties**
 Filter, Group, Sort
 
+**Description**
+Required. The ID of the insight type based on which the insight is generated.
+
+**Type**
+string
+
 
 Standard Objects EmailInsight
 
 **Field** **Details**
 
+**Properties**
+Filter, Group, Sort
+
 **Description**
-Required. The ID of the insight type based on which the insight is generated.
+Required. The display name of the insight type.
 
 ```
-InsightTypeLabel
-
 IsLocked
 
 LegacyInsightIdentifier
@@ -15844,16 +16695,9 @@ MayEdit
 
 RowVersion
 
+Status
+
 ```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Required. The display name of the insight type.
 
 **Type**
 boolean
@@ -15897,23 +16741,16 @@ A system-generated, read-only field that tracks the version of a record. Each ti
 is created or updated, the RowVersion value increments, providing a mechanism to detect
 changes and manage concurrency.
 
-
-### Standard Objects EmailInsightAction
-
-**Field** **Details**
-
-```
-Status
-
-### EmailInsightAction
-
-```
-
 **Type**
 picklist
 
 **Properties**
 Defaulted on create, Filter, Group, Restricted picklist, Sort
+
+
+### Standard Objects EmailInsightAction
+
+**Field** **Details**
 
 **Description**
 Required. The status of the insight record.
@@ -15929,6 +16766,8 @@ Possible values are:
 **•** `Dismissed`
 
 The default value is `Active` .
+
+### EmailInsightAction
 
 Represents the actions that have been taken, or could be taken, in relation to email insights. It logs different types of actions and associated
 metadata, helping to track and manage the activities and decisions made based on email insights. This object is available in API version
@@ -15955,6 +16794,8 @@ Fields
 ```
 ActionMetadata
 
+EmailInsightId
+
 ```
 
 **Type**
@@ -15963,25 +16804,16 @@ textarea
 **Properties**
 Nillable
 
+**Description**
+The metadata for the action.
+
+**Type**
+reference
+
 
 Standard Objects EmailInsightAction
 
 **Field** **Details**
-
-**Description**
-The metadata for the action.
-
-```
-EmailInsightId
-
-InsightAction
-
-IsLocked
-
-```
-
-**Type**
-reference
 
 **Properties**
 Filter, Group, Sort
@@ -15996,6 +16828,13 @@ EmailInsight
 
 **Refers To**
 EmailInsight
+
+```
+InsightAction
+
+IsLocked
+
+```
 
 **Type**
 picklist
@@ -16040,15 +16879,15 @@ boolean
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
-
-### Standard Objects EmailMessage
-
-**Field** **Details**
-
 **Description**
 Indicates whether the email insight action record is locked or not.
 
 The default value is false.
+
+
+### Standard Objects EmailMessage
+
+**Field** **Details**
 
 ```
 MayEdit
@@ -16100,9 +16939,6 @@ The `Status` field is mostly read-only. You can change the status only from _`Ne
 The `HtmlBody` and `RelatedToId` fields are supported in Classic list views but not in Lightning list views. In related lists and search
 results in Lightning Experience, these fields either don’t appear, show blank values, or result in an error.
 
-
-Standard Objects EmailMessage
-
 `update()` is supported when an email record is in `Draft` status, and `IsPrivateDraft` is `false` . It’s also supported if the
 email status is `Draft`, `IsPrivateDraft` is `true,` and `CreatedBy` is associated with the current user. When the email record
 isn’t in `Draft` status, the `IsExternallyVisible` field and custom fields only can be updated.
@@ -16111,6 +16947,9 @@ Set the Update Email Messages user permission for users, such as an Automated Ca
 email message-related records. With the Update Email Message permission set, users’ processes can modify EmailMessageRelation and
 ContentDocumentLink records that are related to an email message that isn’t in Draft status. Don’t set this user permission for other
 users.
+
+
+Standard Objects EmailMessage
 
 Access to an email message depends on the associated object. The user who created the email is specified in `CreatedById` and
 always has access, unless that user is a guest user. Guest users have read access if the message is marked as `IsExternallyVisible` .
@@ -16136,6 +16975,8 @@ Fields
 ActivityId
 
 AttachmentIds
+
+AutomationType
 
 ```
 
@@ -16165,22 +17006,6 @@ A comma-separated list of email attachments. This is used by the Send Email quic
 action when you use Salesforce Classic email templates. Maximum length is 32, 768
 characters.
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
-```
-AutomationType
-
-BccAddress
-
-BccIds
-
-CcAddress
-
-```
-
 **Type**
 picklist
 
@@ -16191,6 +17016,11 @@ Create, Filter, Group, Nillable, Restricted picklist, Sort
 A picklist value that determines if an outgoing email was manually created or
 AI-generated.
 
+
+Standard Objects EmailMessage
+
+**Field** **Details**
+
 Possible values are:
 
 **•** `AiAssisted` –Email is AI-generated, but sent by human.
@@ -16198,6 +17028,15 @@ Possible values are:
 **•** `AiAutomated` –Email is generated and sent by AI.
 
 **•** `Null` –Email is created and sent by human.
+
+```
+BccAddress
+
+BccIds
+
+CcAddress
+
+```
 
 **Type**
 string
@@ -16235,11 +17074,6 @@ all related junction records. This action can’t be undone.
 **Type**
 string
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
@@ -16251,6 +17085,11 @@ ID to the `CcIds` field instead of adding their email address to the `CcAddress`
 field. Then the email message is automatically associated with the contact, lead, or
 user.
 
+
+Standard Objects EmailMessage
+
+**Field** **Details**
+
 You can’t send emails unless there’s at least one recipient.
 
 ```
@@ -16259,6 +17098,8 @@ CcIds
 ClientThreadIdentifier
 
 ContentDocumentIds
+
+Division
 
 ```
 
@@ -16301,22 +17142,8 @@ associated with an email. Each ID is linked to a `ContentDocumentLink` record,
 which represents the relationship between an email message and a content document
 record.
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
 Adding a `JunctionIdList` field name to the `fieldsToNull` property deletes
 all related junction records. This action can’t be undone.
-
-```
-Division
-
-EmailRoutingAddressId
-
-EmailTemplateId
-
-```
 
 **Type**
 picklist
@@ -16327,8 +17154,23 @@ Defaulted on create, Filter, Group, Restricted picklist, Sort
 **Description**
 A logical segment of your organization's data. For example, if your company is
 organized into different business units, you could create a division for each business
+
+
+Standard Objects EmailMessage
+
+**Field** **Details**
+
 unit, such as “North America,” “Healthcare,” or “Consulting.” Available only if the
 organization has the Division permission enabled.
+
+```
+EmailRoutingAddressId
+
+EmailTemplateId
+
+FirstOpenedDate
+
+```
 
 **Type**
 reference
@@ -16371,24 +17213,6 @@ Lookup
 **Refers To**
 EmailTemplate
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
-```
-FirstOpenedDate
-
-FromAddress
-
-FromId
-
-FromName
-
-HasAttachment
-
-```
-
 **Type**
 dateTime
 
@@ -16399,6 +17223,24 @@ Create, Filter, Nillable, Sort, Update
 The date the email was first opened.
 
 To see this field, enable email tracking in your org.
+
+
+Standard Objects EmailMessage
+
+**Field** **Details**
+
+```
+FromAddress
+
+FromId
+
+FromName
+
+HasAttachment
+
+Headers
+
+```
 
 **Type**
 email
@@ -16442,24 +17284,6 @@ Defaulted on create, Filter, Group, Sort
 **Description**
 Indicates whether the email was sent with an attachment ( `true` ) or not ( `false` ).
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
-```
-Headers
-
-HtmlBody
-
-Incoming
-
-IsBounced
-
-IsClientManaged
-
-```
-
 **Type**
 textarea
 
@@ -16469,6 +17293,22 @@ Create, Nillable, Update
 **Description**
 The Internet message headers of the incoming email. Used for debugging and tracing
 purposes. Doesn’t apply to outgoing emails.
+
+
+Standard Objects EmailMessage
+
+**Field** **Details**
+
+```
+HtmlBody
+
+Incoming
+
+IsBounced
+
+IsClientManaged
+
+```
 
 **Type**
 textarea
@@ -16517,11 +17357,6 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
 **Description**
 If EmailMessage is created with `IsClientManaged` set to `true`, users can modify
 `EmailMessage.ContentDocumentIds` to link file attachments even when
@@ -16529,12 +17364,19 @@ the `Status` of the EmailMessage isn’t set to `Draft` . When this field is set
 and Enhanced Email is enabled, a Task record is created for the EmailMessage
 regardless of Email-to-Case settings.
 
+
+Standard Objects EmailMessage
+
+**Field** **Details**
+
 ```
 IsDeleted
 
 IsExternallyVisible
 
 IsOpened
+
+IsPrivateDraft
 
 ```
 
@@ -16584,29 +17426,18 @@ boolean
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
 **Description**
 Indicates whether the email has been opened.
 
 To see this field, enable email tracking in your org.
 
-```
-IsPrivateDraft
-
-IsTracked
-
-LastOpenedDate
-
-MessageDate
-
-```
-
 **Type**
 boolean
+
+
+Standard Objects EmailMessage
+
+**Field** **Details**
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort
@@ -16617,6 +17448,17 @@ view, update, and send this email draft. If `IsPrivateDraft` is set to `false`,
 then any user with permissions to work on the case can see these drafts. After the
 email is sent, then this field is updated to be `false` . Public drafts are loaded and
 visible in Salesforce Classic while Private Drafts are only used in Lightning Experience.
+
+```
+IsTracked
+
+LastOpenedDate
+
+MessageDate
+
+MessageIdentifier
+
+```
 
 **Type**
 boolean
@@ -16652,22 +17494,6 @@ The date the email was created.
 For inbound emails, Email-to-Case sets this field using the Date header. The Date
 header is set by the email client and is subject to the sender's time preferences.
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
-```
-MessageIdentifier
-
-Name
-
-ParentId
-
-RelatedToId
-
-```
-
 **Type**
 string
 
@@ -16676,6 +17502,20 @@ Create, Filter, Group, idLookup, Nillable, Sort, Update
 
 **Description**
 The ID of the email message.
+
+
+Standard Objects EmailMessage
+
+**Field** **Details**
+
+```
+Name
+
+ParentId
+
+RelatedToId
+
+```
 
 **Type**
 string
@@ -16725,11 +17565,6 @@ You must have access to at least one entity listed under Refers To to access Rel
 
 You can update `RelatedToId` when `IsClientManaged` is set to `true` .
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
 `RelatedtoId` and `ParentId` should have the same value when `ParentId`
 is set. You might see unexpected results otherwise.
 
@@ -16737,6 +17572,11 @@ This is a polymorphic relationship field.
 
 **Relationship Name**
 RelatedTo
+
+
+Standard Objects EmailMessage
+
+**Field** **Details**
 
 **Relationship Type**
 Lookup
@@ -16787,11 +17627,6 @@ to. It’s not possible to reply to a message whose `Status` is `Draft` .
 
 This is a relationship field.
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
 This is only set for Case related Email replies at setup.
 
 **Relationship Name**
@@ -16799,6 +17634,11 @@ ReplyToEmailMessage
 
 **Relationship Type**
 Lookup
+
+
+Standard Objects EmailMessage
+
+**Field** **Details**
 
 **Refers To**
 EmailMessage
@@ -16857,11 +17697,6 @@ Possible values are:
 
 **•** `0` (New)
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
 **•** `1` (Read)
 
 **•** `2` (Replied)
@@ -16872,6 +17707,11 @@ Standard Objects EmailMessage
 
 **•** `5` (Draft)
 
+
+Standard Objects EmailMessage
+
+**Field** **Details**
+
 For emails not sent as part of a case, only the status `3` (Sent) is valid.
 
 ```
@@ -16880,6 +17720,8 @@ Subject
 TextBody
 
 ThreadIdentifier
+
+ToAddress
 
 ```
 
@@ -16931,29 +17773,16 @@ The ID of the email thread the email message belongs to. This field is used by f
 that sync emails directly from an inbox into Salesforce. This field is not used by
 On-Demand Email-to-Case.
 
-
-Standard Objects EmailMessage
-
-**Field** **Details**
-
-```
-ToAddress
-
-ToIds
-
-ValidatedFromAddress
-
-```
-
-Usage
-
-EmailMessage is limited to 50 custom fields.
-
 **Type**
 string
 
 **Properties**
 Create, Filter, Nillable, Sort, Update
+
+
+Standard Objects EmailMessage
+
+**Field** **Details**
 
 **Description**
 A string array of email addresses for recipients who were sent the email message.
@@ -16963,6 +17792,17 @@ field instead of adding their email address to the `ToAddress` field. Then the e
 message is automatically associated with the contact, lead, or user.
 
 You can’t send emails unless there’s at least one recipient.
+
+```
+ToIds
+
+ValidatedFromAddress
+
+```
+
+Usage
+
+EmailMessage is limited to 50 custom fields.
 
 **Type**
 JunctionIdList
@@ -16997,14 +17837,14 @@ Use `FromAddress` instead.
 If your org uses Email-to-Case, a case is created when an email is sent to one of your company’s addresses. The email, which is related
 to the case by the `ParentID` field, is stored as an EmailMessage record. When users view the email, they see the EmailMessage record.
 
-
-Standard Objects EmailMessage
-
 If your org uses Enhanced Email, each email is stored as an EmailMessage record and a Task record. When users view an email, they see
 the EmailMessage record.
 
 Note: In an org with Email-to-Case enabled, an inbound (Incoming = true) email with case as the parent record won’t create a
 task automatically. This functionality respects the Create Task from Email setting for each Email-to-Case routing address.
+
+
+### Standard Objects EmailMessageMigration
 
 If you would like to change the recipients or contents of an outbound email, don’t use automation tools, like Flows or Apex triggers, to
 update EmailMessage records. Unless they are for a draft, updates to EmailMessage records will not be reflected in the actual sent email.
@@ -17078,12 +17918,12 @@ Case
 
 Overview of Salesforce Objects and Fields
 
-
-### Standard Objects EmailMessageMigration EmailMessageMigration
+### EmailMessageMigration
 
 For internal use only.
 
-### EmailMessageRelation
+
+### Standard Objects EmailMessageRelation EmailMessageRelation
 
 Represents the relationship between an email and contacts, leads, and users. This object is available in API version 37.0 and later.
 
@@ -17142,15 +17982,15 @@ Create, Filter, Group, Nillable, Sort
 **Description**
 The email address of the sender or recipient.
 
-
-Standard Objects EmailMessageRelation
-
-**Field Name** **Details**
-
 Note: If a record relates an email to an existing contact, lead, or user record
 in Salesforce, the value of `RelationAddress` is the current value of
 the email address. If the value is not set, it is auto-populated from
 `RelationId` .
+
+
+Standard Objects EmailMessageRelation
+
+**Field Name** **Details**
 
 ```
 RelationId
@@ -17213,15 +18053,13 @@ Possible values include:
 
 **•** `FromAddress`
 
-
-### Standard Objects EmailRelay
-
-**Field Name** **Details**
-
 **•** `OtherAddress`
 
 For an Experience Cloud site user who is not the sender of the email, no
 `BccAddress` relations are returned.
+
+
+### Standard Objects EmailRelay
 
 Usage
 
@@ -17249,6 +18087,8 @@ AuthType
 
 Host
 
+IsRequireAuth
+
 ```
 
 **Type**
@@ -17272,11 +18112,6 @@ This field is available in API version 52.0 and later.
 **Type**
 string
 
-
-Standard Objects EmailRelay
-
-**Field Name** **Details**
-
 **Properties**
 Create, Filter, Group, idLookup, Sort, Update
 
@@ -17284,19 +18119,13 @@ Create, Filter, Group, idLookup, Sort, Update
 
 Indicates the host name or IP address of your company's SMTP server.
 
-```
-IsRequireAuth
-
-Password
-
-Port
-
-TlsSetting
-
-```
-
 **Type**
 boolean
+
+
+Standard Objects EmailRelay
+
+**Field Name** **Details**
 
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
@@ -17306,6 +18135,15 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 Indicates whether (true) or not (false) authentication is required. When setting
 this field to true, the `TlsSetting` must be set to **`RequiredVerify`** . This
 field is available in API version 44.0 and later.
+
+```
+Password
+
+Port
+
+TlsSetting
+
+```
 
 **Type**
 encryptedstring
@@ -17347,17 +18185,17 @@ Create, Filter, Group, Restricted picklist, Sort, Update
 
 Specifies whether Salesforce uses TLS for SMTP sessions.
 
-
-Standard Objects EmailRelay
-
-**Field Name** **Details**
-
 **•** `Off` : TLS is turned off. SMTP session continues through an insecure
 connection.
 
 **•** `Preferred` : If the remote server supports TLS, Salesforce upgrades the
 current SMTP session to use TLS. If TLS is unavailable, Salesforce continues
 the session without TLS.
+
+
+### Standard Objects EmailRoutingAddress
+
+**Field Name** **Details**
 
 **•** `Required` : Salesforce continues the session only if the remote server
 supports TLS. If TLS is unavailable, Salesforce terminates the session without
@@ -17410,11 +18248,13 @@ EmailServicesFunction
 
 EmailDomainFilter
 
-
-### Standard Objects EmailRoutingAddress EmailRoutingAddress
+### EmailRoutingAddress
 
 An email address used for Email-to-Case. Email routing addresses store a unique email services address provided by Salesforce and
 configuration options for emails received by this address.
+
+
+### Standard Objects EmailServicesAddress
 
 Supported Calls
 
@@ -17433,13 +18273,13 @@ PersonalName
 
 Address
 
-EmailServicesAddress
+### `EmailServicesAddress`
 
 ```
 
 SEE ALSO:
 
-EmailServicesAddress
+### EmailServicesAddress
 
 **Type**
 string
@@ -17470,13 +18310,15 @@ Create, Filter, Group, Nillable, Sort, Update
 A unique, Salesforce-generated email address. This field value is read-only and can't be
 modified. Emails are forwarded to this address.
 
-
-### Standard Objects EmailServicesAddress EmailServicesAddress
+### EmailServicesAddress
 
 An email service address.
 
 Each email service has one or more email addresses to which users can send messages for processing. An email service only processes
 messages it receives at one of its addresses.
+
+
+Standard Objects EmailServicesAddress
 
 Supported Calls
 
@@ -17499,6 +18341,8 @@ Fields
 AuthorizedSenders
 
 DeveloperName
+
+EmailDomainName
 
 ```
 
@@ -17533,28 +18377,17 @@ is automatically generated, but you can supply your own value if you create the 
 the API. With this field, a developer can change the object’s name in a managed package
 and the changes are reflected in a subscriber’s organization.
 
-
-Standard Objects EmailServicesAddress
-
-**Field** **Details**
-
 Note: When creating large sets of data, always specify a unique `DeveloperName`
 for each record. If no `DeveloperName` is specified, performance might be slow
 while Salesforce generates one for each record.
 
-```
-EmailDomainName
-
-FunctionId
-
-IsActive
-
-LocalPart
-
-```
-
 **Type**
 string
+
+
+Standard Objects EmailServicesAddress
+
+**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -17563,6 +18396,15 @@ Filter, Group, Nillable, Sort
 A read only field you can query that contains the system-generated domain part of this email
 service address. The system generates a unique domain-part for each email service address
 to ensure that no two email service addresses are identical.
+
+```
+FunctionId
+
+IsActive
+
+LocalPart
+
+```
 
 **Type**
 reference
@@ -17603,22 +18445,22 @@ Create, Filter, Group, idLookup, Sort, Update
 The local-part of the email service address. The local-part of the address is the string that
 comes before the @ symbol.
 
-
-### Standard Objects EmailServicesFunction
-
-**Field** **Details**
-
 For the local-part of a Salesforce email address, all alphanumeric characters are valid, plus
 the following special characters:
 
 ```
-                   ! # $ % & amp; ' * / = ? ^ _ + - ` { | } ~,
+  ! # $ % & amp; ' * / = ? ^ _ + - ` { | } ~,
 
 ```
 
 The dot character (.) is also valid as long as it's not the first or last character.
 
 Email addresses aren’t case-sensitive.
+
+
+### Standard Objects EmailServicesFunction
+
+**Field** **Details**
 
 ```
 RunAsUserId
@@ -17660,19 +18502,12 @@ Special Access Rules
 
 As of Summer ’20 and later, only authenticated internal and external users can access this object.
 
-
-Standard Objects EmailServicesFunction
-
 Fields
 
 **Field** **Details**
 
 ```
 AddressInactiveAction
-
-ApexClassId
-
-AttachmentOption
 
 ```
 
@@ -17685,6 +18520,11 @@ Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort,
 **Description**
 Indicates what the email service does with messages received at an email address that is
 inactive.
+
+
+Standard Objects EmailServicesFunction
+
+**Field** **Details**
 
 One of the following values:
 
@@ -17702,6 +18542,13 @@ API version 41.0 and earlier, the value specified for this choice is `2` .)
 If the message is not processed within 24 hours, the email service returns the message
 to the sender with a notification that explains why the message was rejected. (In API
 version 41.0 and earlier, the value specified for this choice is `3` .)
+
+```
+ApexClassId
+
+AttachmentOption
+
+```
 
 **Type**
 reference
@@ -17730,11 +18577,6 @@ version 41.0 and earlier, the value specified for this choice is `0` .)
 to the Apex class, but the body is set to `null` . There was no previous numeric value for
 this choice.
 
-
-Standard Objects EmailServicesFunction
-
-**Field** **Details**
-
 **•** `TextOnly` —The email service only accepts the following types of attachments:
 
 **–** Attachments with a Multipurpose Internet Mail Extension (MIME) type of text.
@@ -17748,6 +18590,11 @@ MIME types, respectively.
 **•** `BinaryOnly` —The email service only accepts binary attachments, such as image,
 audio, application, and video files. (In API version 41.0 and earlier, the value specified for
 this choice is `2` .)
+
+
+Standard Objects EmailServicesFunction
+
+**Field** **Details**
 
 **•** `All` —The email service accepts any type of attachment. (In API version 41.0 and earlier,
 the value specified for this choice is `3` .)
@@ -17799,11 +18646,6 @@ address.
 
 One of the following values:
 
-
-Standard Objects EmailServicesFunction
-
-**Field** **Details**
-
 **•** `UseSystemDefault` —The system default is used. (In API version 41.0 and earlier,
 the value specified for this choice is `0` .)
 
@@ -17816,6 +18658,12 @@ API version 41.0 and earlier, the value specified for this choice is `2` .)
 
 **•** `Requeue` —The email service queues the message for processing in the next 24 hours.
 If the message is not processed within 24 hours, the email service returns the message
+
+
+Standard Objects EmailServicesFunction
+
+**Field** **Details**
+
 to the sender with a notification that explains why the message was rejected. (In API
 version 41.0 and earlier, the value specified for this choice is `3` .)
 
@@ -17866,11 +18714,6 @@ One of the following values:
 **•** `UseSystemDefault` —The system default is used. (In API version 41.0 and earlier,
 the value specified for this choice is `0` .)
 
-
-Standard Objects EmailServicesFunction
-
-**Field** **Details**
-
 **•** `Bounce` —The email service returns the message to the sender with a notification that
 explains why the message was rejected. (In API version 41.0 and earlier, the value specified
 for this choice is `1` .)
@@ -17883,6 +18726,11 @@ If the message is not processed within 24 hours, the email service returns the m
 to the sender with a notification that explains why the message was rejected. (In API
 version 41.0 and earlier, the value specified for this choice is `3` .)
 
+
+Standard Objects EmailServicesFunction
+
+**Field** **Details**
+
 ```
 FunctionName
 
@@ -17891,6 +18739,8 @@ IsActive
 IsAuthenticationRequired
 
 IsErrorRoutingEnabled
+
+IsTextAttachmentsAsBinary
 
 ```
 
@@ -17936,22 +18786,6 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 When incoming email messages can’t be processed, indicates whether error notification
 email messages are routed to a chosen address or to the senders.
 
-
-Standard Objects EmailServicesFunction
-
-**Field** **Details**
-
-```
-IsTextAttachmentsAsBinary
-
-IsTextTruncated
-
-IsTlsRequired
-
-OverLimitAction
-
-```
-
 **Type**
 boolean
 
@@ -17961,8 +18795,23 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 **Description**
 If `true`, text attachments are supplied to the Apex code as a
 `Messaging.BinaryAttachment` instead of as a
+
+
+Standard Objects EmailServicesFunction
+
+**Field** **Details**
+
 `Messaging.TextAttachment` . This means that the body is supplied as an Apex Blob
 instead of as an Apex String.
+
+```
+IsTextTruncated
+
+IsTlsRequired
+
+OverLimitAction
+
+```
 
 **Type**
 boolean
@@ -18006,11 +18855,6 @@ the value specified for this choice is `0` .)
 explains why the message was rejected. (In API version 41.0 and earlier, the value specified
 for this choice is `1` .)
 
-
-### Standard Objects EmailStatus
-
-**Field** **Details**
-
 **•** `Discard` —The email service deletes the message without notifying the sender. (In
 API version 41.0 and earlier, the value specified for this choice is `2` .)
 
@@ -18020,6 +18864,9 @@ to the sender with a notification that explains why the message was rejected. (I
 version 41.0 and earlier, the value specified for this choice is `3` .)
 
 The system calculates the limit by multiplying the number of user licenses by 1,000.
+
+
+### Standard Objects EmailStatus
 
 Usage
 
@@ -18053,6 +18900,10 @@ Fields
 ```
 EmailTemplateName
 
+FirstOpenDate
+
+LastOpenDate
+
 ```
 
 **Type**
@@ -18063,24 +18914,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The name of the EmailTemplate.
-
-
-Standard Objects EmailStatus
-
-**Field** **Details**
-
-```
-FirstOpenDate
-
-LastOpenDate
-
-TaskId
-
-TimesOpened
-
-WhoId
-
-```
 
 **Type**
 dateTime
@@ -18097,8 +18930,22 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects EmailStatus
+
+**Field** **Details**
+
 **Description**
 Date when the email was last opened by recipient.
+
+```
+TaskId
+
+TimesOpened
+
+WhoId
+
+```
 
 **Type**
 reference
@@ -18135,11 +18982,6 @@ reference
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects EmailTemplate
-
-**Field** **Details**
-
 **Description**
 The WhoId represents a human such as a lead or a contact. WhoIds are polymorphic.
 Polymorphic means a WhoId is equivalent to a contact’s ID or a lead’s ID. The label is `Name`
@@ -18152,6 +18994,11 @@ Who
 
 **Relationship Type**
 Lookup
+
+
+### Standard Objects EmailTemplate
+
+**Field** **Details**
 
 **Refers To**
 Contact, Lead
@@ -18181,6 +19028,8 @@ Fields
 ```
 ApiVersion
 
+Body
+
 ```
 
 **Type**
@@ -18192,14 +19041,21 @@ Create, Filter, Nillable, Sort, Update
 **Description**
 The API version for this class. Every class has an API version specified at creation.
 
+**Type**
+textarea
+
+**Properties**
+Create, Nillable, Update
+
+**Description**
+Content of the email. Limit: 384 KB.
+
 
 Standard Objects EmailTemplate
 
 **Field** **Details**
 
 ```
-Body
-
 BrandTemplateId
 
 DeliveryRate
@@ -18209,15 +19065,6 @@ Description
 DeveloperName
 
 ```
-
-**Type**
-textarea
-
-**Properties**
-Create, Nillable, Update
-
-**Description**
-Content of the email. Limit: 384 KB.
 
 **Type**
 reference
@@ -18264,12 +19111,6 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 **Description**
 The unique name of the object in the API. This name can contain only underscores and
 alphanumeric characters, and must be unique in your org. It must begin with a letter, not
-
-
-Standard Objects EmailTemplate
-
-**Field** **Details**
-
 include spaces, not end with an underscore, and not contain two consecutive underscores.
 In managed packages, this field prevents naming conflicts on package installations. With
 this field, a developer can change the object’s name in a managed package and the changes
@@ -18279,12 +19120,19 @@ Note: When creating large sets of data, always specify a unique `DeveloperName`
 for each record. If no `DeveloperName` is specified, performance may slow while
 Salesforce generates one for each record.
 
+
+Standard Objects EmailTemplate
+
+**Field** **Details**
+
 ```
 Encoding
 
 EnhancedLetterheadId
 
 EntityType
+
+FolderId
 
 ```
 
@@ -18334,24 +19182,6 @@ for opportunity, and 00Q for lead, 500 for case, and 701 for campaign.
 
 This field has been removed in API version 39.0. Use `RelatedEntityType` instead.
 
-
-Standard Objects EmailTemplate
-
-**Field** **Details**
-
-```
-FolderId
-
-FolderName
-
-HasSalesforceFiles
-
-HtmlValue
-
-IsActive
-
-```
-
 **Type**
 reference
 
@@ -18363,6 +19193,11 @@ ID of the folder that contains the template.
 
 This is a relationship field.
 
+
+Standard Objects EmailTemplate
+
+**Field** **Details**
+
 **Relationship Name**
 Folder
 
@@ -18371,6 +19206,19 @@ Lookup
 
 **Refers To**
 Folder, Organization, User
+
+```
+FolderName
+
+HasSalesforceFiles
+
+HtmlValue
+
+IsActive
+
+IsBuilderContent
+
+```
 
 **Type**
 string
@@ -18406,17 +19254,24 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
+**Description**
+Indicates that this template is active if `true`, or inactive if `false` .
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
 
 Standard Objects EmailTemplate
 
 **Field** **Details**
 
 **Description**
-Indicates that this template is active if `true`, or inactive if `false` .
+If the email template was made in Email Template Builder. The default value is false.
 
 ```
-IsBuilderContent
-
 LastUsedDate
 
 Markup
@@ -18426,15 +19281,6 @@ Name
 NamespacePrefix
 
 ```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-If the email template was made in Email Template Builder. The default value is false.
 
 **Type**
 dateTime
@@ -18477,12 +19323,6 @@ Filter, Group, Nillable, Sort
 **Description**
 The namespace prefix that is associated with this object. Each Developer Edition org that
 creates a managed package has a unique namespace prefix. Limit: 15 characters. You can
-
-
-Standard Objects EmailTemplate
-
-**Field** **Details**
-
 refer to a component in a managed package by using the
 _**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
 
@@ -18493,6 +19333,11 @@ org for all objects that support it, unless an object is in an installed managed
 In that case, the object has the namespace prefix of the installed managed package. This
 field’s value is the namespace prefix of the Developer Edition org of the package
 developer.
+
+
+Standard Objects EmailTemplate
+
+**Field** **Details**
 
 **•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
 that are part of an installed managed package. All other objects have no namespace
@@ -18548,11 +19393,6 @@ No restrictions exist at the schema level.
 **Type**
 string
 
-
-Standard Objects EmailTemplate
-
-**Field** **Details**
-
 **Properties**
 Create, Nillable, Sort, Update
 
@@ -18562,12 +19402,19 @@ Content of the subject line.
 The limit is 1,000 characters for Lightning email templates and 230 characters for Classic
 email templates.
 
+
+Standard Objects EmailTemplate
+
+**Field** **Details**
+
 ```
 TemplateStyle
 
 TemplateType
 
 TimesUsed
+
+TotalDelivered
 
 ```
 
@@ -18624,26 +19471,17 @@ Filter, Group, Nillable, Sort
 **Description**
 Number of times this email template has been used.
 
-
-Standard Objects EmailTemplate
-
-**Field** **Details**
-
 Used with Salesforce Classic templates.
 
 Not typically used with Lightning Experience templates.
 
-```
-TotalDelivered
-
-TotalHardBounced
-
-TotalOpens
-
-```
-
 **Type**
 int
+
+
+Standard Objects EmailTemplate
+
+**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -18657,6 +19495,15 @@ This field is available in API version 46.0 and later. To access this field, you
 Engagement and users need the Sales Engagement User or Sales Engagement Cadence
 Creator permission set. This field value includes emails sent via the ListEmail object or Sales
 Engagement cadences.
+
+```
+TotalHardBounced
+
+TotalOpens
+
+TotalSent
+
+```
 
 **Type**
 int
@@ -18694,27 +19541,16 @@ Engagement and users need the Sales Engagement User or Sales Engagement Cadence
 Creator permission set. This field value includes emails sent via the ListEmail object or Sales
 Engagement cadences.
 
-
-Standard Objects EmailTemplate
-
-**Field** **Details**
-
-```
-TotalSent
-
-TotalSoftBounced
-
-UIType
-
-```
-
-Usage
-
 **Type**
 int
 
 **Properties**
 Filter, Group, Nillable, Sort
+
+
+Standard Objects EmailTemplate
+
+**Field** **Details**
 
 **Description**
 Read-only. The total number of emails sent, including bounced, opted-out, and invalid To:
@@ -18724,6 +19560,15 @@ This field is available in API version 46.0 and later. To access this field, you
 Engagement and users need the Sales Engagement User or Sales Engagement Cadence
 Creator permission set. This field value includes emails sent via the ListEmail object or Sales
 Engagement cadences.
+
+```
+TotalSoftBounced
+
+UIType
+
+```
+
+Usage
 
 **Type**
 int
@@ -23698,7 +24543,7 @@ Create, Filter, Group, idLookup, Sort, Update
 Required. Name of the communication subscription consent record.
 
 
-### Standard Objects EnhancedLetterhead
+### Standard Objects EngagementSignal
 
 **Field** **Details**
 
@@ -23750,18 +24595,487 @@ Sharing rules are available for the object.
 
 Sharing is available for the object.
 
+### EngagementSignal
+
+Represents data about an individual’s engagement action, such as a web click, an email response, or a PDF download. This object is
+available in API version 62.0 and later.
+
+Supported Calls
+
+`describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+
+Standard Objects EngagementSignal
+
+Fields
+
+**Field** **Details**
+
+```
+DataSpaceId
+
+Description
+
+DeveloperName
+
+IsRemote
+
+LastReferencedDate
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+Required. Unique identifier that refers to the data space where the engagement signal
+originates.
+
+This field is a relationship field.
+
+**Relationship Name**
+DataSpace
+
+**Refers To**
+DataSpace
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+An optional text description of the engagement signal.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+Required. API name for the engagement signal that's system-or user-generated.
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates if the engagement signal object is owned by a different org in Data 360.
+
+The default value is `false` .
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects EngagementSignal
+
+**Field** **Details**
+
+**Description**
+Timestamp that indicates the last time the engagement signal was referenced by the current
+user.
+
+```
+LastViewedDate
+
+Name
+
+Status
+
+```
+
+Usage
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp that indicates the last time the current user viewed the engagement signal record.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Sort
+
+**Description**
+Required. Text label that identifies the engagement signal.
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+Picklist value that indicates the current status of the engagement signal.
+
+Possible values are:
+
+**•** `Active`
+
+**•** `CreateError` —Error
+
+**•** `DeleteError` —Error
+
+**•** `Deleting`
+
+**•** `EditError` —Error
+
+**•** `Preparing`
+
+**•** `Processing`
+
+The default value is `Processing` .
+
+Use this object to define foundational data for your business objectives and recommendations in Salesforce Personalization. Use mapped
+data model object (DMO) fields to identify and track an individual’s engagement actions. For example, use data about a web click, an
+email response, or a PDF download to help achieve your personalization goals.
+
+
+### Standard Objects EngagementSignalCmpndMetric EngagementSignalCmpndMetric
+
+Represents a rate metric that measures the ratio between two engagement signal metrics, such as product orders and product views
+to calculate a conversion rate, or email clicks and email opens to determine a click-through rate. Use this object to create complex
+measurements for A/B testing and web experimentation. This object is available in API version 62.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `undelete()`, `update()`, `upsert()`
+
+Fields
+
+**Field** **Details**
+
+```
+CompoundMetricFormula
+
+DenomEngmtSignalMetricId
+
+IsRemote
+
+```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Nillable, Sort
+
+**Description**
+A read-only formula field that concatenates the three core components of a Compound
+Metric—the primary metric, the operator, and the secondary metric—into a single string.
+This field is unique within your Salesforce org.
+
+This field is a calculated field.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+Points to the `EngagementSignalMetric` record that serves as the denominator of
+the compound metric.
+
+This field is a relationship field.
+
+**Relationship Name**
+DenomEngmtSignalMetric
+
+**Refers To**
+EngagementSignalMetric
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+
+Standard Objects EngagementSignalCmpndMetric
+
+**Field** **Details**
+
+**Description**
+Indicates if the engagement signal compound metric object is owned by a different org in
+Data 360.
+
+The default value is `false` .
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+NumerEngmtSignalMetricId
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp that indicates the last time the engagement signal compound metric was
+referenced by the current user.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp that indicates the last time the current user viewed the engagement signal
+compound metric record.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Sort
+
+**Description**
+Required. Text label that identifies the engagement signal compound metric.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Points to the `EngagementSignalMetric` record that serves as the numerator of the
+compound metric.
+
+This field is a relationship field.
+
+**Relationship Name**
+NumerEngmtSignalMetric
+
+**Refers To**
+EngagementSignalMetric
+
+
+Standard Objects EngagementSignalCmpndMetric
+
+**Field** **Details**
+
+```
+Operator
+
+OwnerId
+
+```
+
+Usage
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+Represents the mathematical operation that combines the numerator and denominator
+metrics in the compound metric formula.
+
+Possible values are:
+
+**•** `Ratio`
+
+The default value is `Ratio` .
+
+**Type**
+reference
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+
+Represents the ID of the user or group that owns the engagement signal compound metric.
+
+This field is a polymorphic relationship field.
+
+**Relationship Name**
+Owner
+
+**Refers To**
+Group, User
+
+Use this object to create rate metrics for A/B testing and web experimentation. To measure the effectiveness of personalization experiences,
+divide the numerator metric by the denominator metric. These metrics help you make data-driven decisions to compare content
+performance. This object is used for measurement and isn’t used for machine learning model training.
+
+Associated Objects
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+**EngagementSignalCmpndMetricShare on page 67**
+Sharing is available for the object.
+
+
+### Standard Objects EngagementSignalMetric EngagementSignalMetric
+
+Represents a measurable quantity that’s derived from an engagement signal, such as the sum of revenue or a count of clicks. Use this
+object to track user engagement for A/B tests, machine learning model training, and attribution configurations. This object is available
+in API version 62.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `undelete()`, `update()`, `upsert()`
+
+Fields
+
+**Field** **Details**
+
+```
+AggregateFunction
+
+EngagementSignalId
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+Defines the type of calculation used on the metric field.
+
+Possible values are:
+
+**•** `Avg`
+
+**•** `Count`
+
+**•** `Distinct`
+
+**•** `Select`
+
+**•** `Sum`
+
+The default value is `Count` .
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+Required. Represents the ID of the engagement signal that’s associated with the metric.
+
+This field is a relationship field.
+
+**Relationship Name**
+### EngagementSignal
+
+**Relationship Type**
+Master-detail
+
+**Refers To**
+EngagementSignal (the master object)
+
+
+### Standard Objects EnhancedLetterhead
+
+**Field** **Details**
+
+```
+IsRemote
+
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+```
+
+Usage
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates if the engagement signal metric object is owned by a different org in Data 360.
+
+The default value is `false` .
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp that indicates the last time the engagement signal metric was referenced by the
+current user.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp that indicates the last time the current user viewed the engagement signal metric
+record.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, idLookup, Sort
+
+**Description**
+Required. Text label that identifies the engagement signal metric.
+
+These derived metrics serve as the core unit of measurement across the personalization platform. Use them to train machine learning
+models, measure performance in A/B tests, track outcomes in attribution models, and define custom objectives or compound metrics.
+
 ### EnhancedLetterhead
 
 Represents an enhanced letterhead that can be associated with a Lightning email template that doesn’t use the Salesforce Merge
 Language (SML). This object is available in API version 46.0 and later.
 
+
+Standard Objects EnhancedLetterhead
+
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `describeLayout()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects EnhancedLetterhead
 
 Fields
 
@@ -23777,8 +25091,6 @@ LastViewedDate
 LetterheadFooter
 
 LetterheadHeader
-
-Name
 
 ```
 
@@ -23827,21 +25139,26 @@ Create, Nillable, Update
 **Description**
 The contents of the enhanced letterhead’s header.
 
+
+### Standard Objects Entitlement
+
+**Field** **Details**
+
+```
+Name
+
+```
+
+Associated Objects
+
 **Type**
 string
 
 **Properties**
 Create, Filter, Group, idLookup, Sort, Update
 
-
-### Standard Objects Entitlement
-
-**Field** **Details**
-
 **Description**
 The name of the enhanced letterhead, such as Standard Company Letterhead.
-
-Associated Objects
 
 This object has the following associated objects. Unless noted, they are available in the same API version as this object.
 
@@ -23868,8 +25185,6 @@ AccountId
 
 AssetId
 
-AssetWarrantyID
-
 ```
 
 **Type**
@@ -23890,22 +25205,14 @@ Filter, Group, Nillable, Sort
 **Description**
 Required. ID of the Asset associated with the entitlement. Must be a valid asset ID.
 
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
 
 Standard Objects Entitlement
 
 **Field** **Details**
 
-**Description**
-The identifier of the asset warranty record. Must be a valid asset warranty ID.
-AssetWarranty is available only with Field Service.
-
 ```
+AssetWarrantyID
+
 BusinessHoursId
 
 CasesPerEntitlement
@@ -23917,6 +25224,16 @@ EndDate
 IsPerIncident
 
 ```
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+The identifier of the asset warranty record. Must be a valid asset warranty ID.
+AssetWarranty is available only with Field Service.
 
 **Type**
 reference
@@ -23961,17 +25278,17 @@ The last day the entitlement is in effect.
 **Type**
 boolean
 
+
+Standard Objects Entitlement
+
+**Field** **Details**
+
 **Properties**
 Defaulted on create, Filter, Update
 
 **Description**
 Indicates whether the entitlement is limited to supporting a specific number of cases
 ( `true` ) or not ( `false` ).
-
-
-Standard Objects Entitlement
-
-**Field** **Details**
 
 ```
 LastReferencedDate
@@ -23983,8 +25300,6 @@ LocationID
 Name
 
 SvcApptBookingWindowsId
-
-RemainingCases
 
 ```
 
@@ -24033,17 +25348,30 @@ reference
 **Properties**
 Create, Filter, Group, Sort, Nillable, Update
 
-**Description**
-The operating hours that the entitlement’s work orders should respect. The label in
-the user interface is `Operating Hours` . Available only if Field Service is enabled.
-
-**Type**
-int
-
 
 Standard Objects Entitlement
 
 **Field** **Details**
+
+**Description**
+The operating hours that the entitlement’s work orders should respect. The label in
+the user interface is `Operating Hours` . Available only if Field Service is enabled.
+
+```
+RemainingCases
+
+RemainingWorkOrders
+
+ServiceContractId
+
+SlaProcessId
+
+StartDate
+
+```
+
+**Type**
+int
 
 **Properties**
 Create, Filter, Nillable, Update
@@ -24053,19 +25381,6 @@ The number of cases the entitlement can support. This field decreases in value b
 one each time a case is created with the entitlement.
 
 This field is only available if `IsPerIncident` is selected.
-
-```
-RemainingWorkOrders
-
-ServiceContractId
-
-SlaProcessId
-
-StartDate
-
-Status
-
-```
 
 **Type**
 int
@@ -24105,21 +25420,14 @@ Create, Filter, Nillable, Update
 **Description**
 The first date the entitlement is in effect.
 
-**Type**
-picklist
-
-**Properties**
-Filter, Nillable
-
 
 Standard Objects Entitlement
 
 **Field** **Details**
 
-**Description**
-Status of the entitlement, such as `Expired` .
-
 ```
+Status
+
 SvcApptBookingWindows
 
 Type
@@ -24129,6 +25437,15 @@ WorkOrdersPerEntitlement
 ```
 
 Associated Objects
+
+**Type**
+picklist
+
+**Properties**
+Filter, Nillable
+
+**Description**
+Status of the entitlement, such as `Expired` .
 
 **Type**
 reference
@@ -24167,18 +25484,20 @@ Change events are available for the object.
 **EntitlementFeed (API version 23.0)**
 Feed tracking is available for the object.
 
+
+### Standard Objects EntitlementContact
+
 **EntitlementHistory**
 
 History is available for tracked fields of the object.
 
 SEE ALSO:
 
-EntitlementContact
+### EntitlementContact
 
 SlaProcess
 
-
-### Standard Objects EntitlementContact EntitlementContact
+### EntitlementContact
 
 Represents a Contact eligible to receive customer support via an Entitlement. This object is available in API version 18.0 and later.
 
@@ -24201,8 +25520,6 @@ ContactId
 EntitlementId
 
 IsDeleted
-
-Name
 
 ```
 
@@ -24235,6 +25552,18 @@ Defaulted on create, Filter
 Indicates whether the object has been moved to the Recycle Bin ( `true` ) or not
 ( `false` ). Label is **Deleted** .
 
+
+### Standard Objects EntitlementTemplate
+
+**Field** **Details**
+
+```
+Name
+
+```
+
+Usage
+
 **Type**
 string
 
@@ -24243,11 +25572,6 @@ Autonumber, Defaulted on create, Filter, idLookup, Nillable
 
 **Description**
 Required. Name of the entitlement contact.
-
-
-### Standard Objects EntitlementTemplate
-
-Usage
 
 Use to query and manage entitlement contacts.
 
@@ -24275,8 +25599,6 @@ BusinessHoursId
 
 CasesPerEntitlement
 
-IsPerIncident
-
 ```
 
 **Type**
@@ -24292,6 +25614,11 @@ business hours ID.
 **Type**
 int
 
+
+Standard Objects EntitlementTemplate
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Nillable, Update
 
@@ -24300,13 +25627,17 @@ The total number of cases the entitlement template supports.
 
 This field is only available if `IsPerIncident` is `true` .
 
+```
+IsPerIncident
+
+Name
+
+NamespacePrefix
+
+```
+
 **Type**
 boolean
-
-
-Standard Objects EntitlementTemplate
-
-**Field** **Details**
 
 **Properties**
 Create, Defaulted on create, Filter, Update
@@ -24314,15 +25645,6 @@ Create, Defaulted on create, Filter, Update
 **Description**
 Indicates whether the entitlement template is limited to supporting a specific number
 of cases ( `true` ) or not ( `false` ).
-
-```
-Name
-
-NamespacePrefix
-
-SlaProcessId
-
-```
 
 **Type**
 string
@@ -24359,6 +25681,22 @@ no namespace prefix.
 
 Available in version 34.0 and later.
 
+
+### Standard Objects EntityHistory
+
+**Field** **Details**
+
+```
+SlaProcessId
+
+Term
+
+Type
+
+```
+
+Usage
+
 **Type**
 reference
 
@@ -24368,20 +25706,6 @@ Create, Filter, Nillable, Update
 **Description**
 ID of the SlaProcess associated with the entitlement template. This field is available
 in API version 19.0 and later.
-
-
-### Standard Objects EntityHistory
-
-**Field** **Details**
-
-```
-Term
-
-Type
-
-```
-
-Usage
 
 **Type**
 int
@@ -24414,6 +25738,9 @@ Supported Calls
 
 You can also enable `delete()` [in API version 42.0 and later. See Enable delete of Field History and Field History Archive.](https://help.salesforce.com/articleView?id=000321814&type=1&mode=1&language=en_US)
 
+
+Standard Objects EntityHistory
+
 Fields
 
 **Field** **Details**
@@ -24421,24 +25748,7 @@ Fields
 ```
 FieldName
 
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Restricted picklist
-
-**Description**
-ID of the standard or custom field.
-
-
-Standard Objects EntityHistory
-
-**Field** **Details**
-
-```
- IsDeleted
+IsDeleted
 
 NewValue
 
@@ -24450,7 +25760,14 @@ ParentSobjectType
 
 ```
 
-Usage
+**Type**
+picklist
+
+**Properties**
+Filter, Restricted picklist
+
+**Description**
+ID of the standard or custom field.
 
 **Type**
 boolean
@@ -24495,15 +25812,19 @@ picklist
 **Properties**
 Filter, Restricted picklist
 
+
+### Standard Objects EntityMilestone
+
+**Field** **Details**
+
 **Description**
 The kind of object that contains the field.
+
+Usage
 
 In API version 7.0 and later, this object works with Case, Contract, and Solution objects:
 
 **•** This object is always read-only in the online application.
-
-
-### Standard Objects EntityMilestone
 
 **•** When a field is modified, this object records both the old and new field values. There are exceptions to this behavior for certain fields
 such as long text areas and multi-select picklists. These fields appear in this object to indicate that the field was changed, but the
@@ -24548,12 +25869,21 @@ the View Setup and Configuration permission can access this object.
 
 **•** Work orders or Field Service must be enabled.
 
+
+Standard Objects EntityMilestone
+
 Fields
 
 **Field Name** **Details**
 
 ```
 ActualElapsedTimeInDays
+
+ActualElapsedTimeInHrs
+
+ActualElapsedTimeInMins
+
+BusinessHoursId
 
 ```
 
@@ -24567,25 +25897,9 @@ Filter, Nillable, Sort
 The number of days that it took to complete a milestone. (Elapsed Time) –
 (Stopped Time) = (Actual Elapsed Time)
 
-
-Standard Objects EntityMilestone
-
-**Field Name** **Details**
-
 Note: To display this field, select **Enable stopped time and actual**
 **elapsed time** on the Entitlement Settings page and add the field to the
 object milestone page layout.
-
-```
-ActualElapsedTimeInHrs
-
-ActualElapsedTimeInMins
-
-BusinessHoursId
-
-CompletionDate
-
-```
 
 **Type**
 double
@@ -24621,10 +25935,28 @@ reference
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+Standard Objects EntityMilestone
+
+**Field Name** **Details**
+
 **Description**
 The business hours on the milestone. If business hours aren’t specified, the
 entitlement process business hours are used. If business hours are also not
 specified on the entitlement process, the business hours on the record are used.
+
+```
+CompletionDate
+
+CurrencyIsoCode
+
+ElapsedTimeInDays
+
+ElapsedTimeInHrs
+
+ElapsedTimeInMins
+
+```
 
 **Type**
 dateTime
@@ -24634,24 +25966,6 @@ Filter, Nillable, Sort, Update
 
 **Description**
 The date and time the milestone was completed.
-
-
-Standard Objects EntityMilestone
-
-**Field Name** **Details**
-
-```
-CurrencyIsoCode
-
-ElapsedTimeInDays
-
-ElapsedTimeInHrs
-
-ElapsedTimeInMins
-
-IsCompleted
-
-```
 
 **Type**
 picklist
@@ -24690,6 +26004,11 @@ Date field is populated. (Elapsed Time) – (Stopped Time) = (Actual Elapsed Tim
 **Type**
 int
 
+
+Standard Objects EntityMilestone
+
+**Field Name** **Details**
+
 **Properties**
 Filter, Group, Nillable, Sort
 
@@ -24699,21 +26018,9 @@ which the milestone was stopped. Automatically calculated to include the
 business hours on the record. Elapsed time is calculated only after the Completion
 Date field is populated. (Elapsed Time) – (Stopped Time) = (Actual Elapsed Time).
 
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects EntityMilestone
-
-**Field Name** **Details**
-
-**Description**
-Green checkmark icon that indicates a milestone completion.
-
 ```
+IsCompleted
+
 IsViolated
 
 MilestoneTypeId
@@ -24722,11 +26029,16 @@ Name
 
 ParentEntityId
 
-SlaProcessId
-
-StartDate
-
 ```
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Green checkmark icon that indicates a milestone completion.
 
 **Type**
 boolean
@@ -24762,8 +26074,24 @@ reference
 **Properties**
 Filter, Group, Sort
 
+
+Standard Objects EntityMilestone
+
+**Field Name** **Details**
+
 **Description**
 The ID of the record—for example, a work order—that contains the milestone.
+
+```
+SlaProcessId
+
+StartDate
+
+StoppedTimeInDays
+
+StoppedTimeInHrs
+
+```
 
 **Type**
 reference
@@ -24777,25 +26105,11 @@ The entitlement process associated with the milestone.
 **Type**
 dateTime
 
-
-Standard Objects EntityMilestone
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Nillable, Sort, Update
 
 **Description**
 The date and time that milestone tracking started.
-
-```
-StoppedTimeInDays
-
-StoppedTimeInHrs
-
-StoppedTimeInMins
-
-```
 
 **Type**
 double
@@ -24827,6 +26141,24 @@ Note: To display this field, select **Enable stopped time and actual**
 **elapsed time** on the Entitlement Settings page and add the field to the
 object milestone page layout.
 
+
+Standard Objects EntityMilestone
+
+**Field Name** **Details**
+
+```
+StoppedTimeInMins
+
+TargetDate
+
+TargetResponseInDays
+
+TargetResponseInHrs
+
+TargetResponseInMins
+
+```
+
 **Type**
 int
 
@@ -24841,26 +26173,6 @@ more information.
 Note: To display this field, select **Enable stopped time and actual**
 **elapsed time** on the Entitlement Settings page and add the field to the
 object milestone page layout.
-
-
-Standard Objects EntityMilestone
-
-**Field Name** **Details**
-
-```
-TargetDate
-
-TargetResponseInDays
-
-TargetResponseInHrs
-
-TargetResponseInMins
-
-TimeRemainingInDays
-
-TimeRemainingInHrs
-
-```
 
 **Type**
 dateTime
@@ -24901,6 +26213,26 @@ Filter, Group, Nillable, Sort
 The number of minutes to complete the milestone. Automatically calculated to
 include the business hours on the record.
 
+
+Standard Objects EntityMilestone
+
+**Field Name** **Details**
+
+```
+TimeRemainingInDays
+
+TimeRemainingInHrs
+
+TimeRemainingInMins
+
+TimeSinceTargetInDays
+
+TimeSinceTargetInHrs
+
+TimeSinceTargetInMins
+
+```
+
 **Type**
 string
 
@@ -24914,30 +26246,12 @@ include the business hours on the record.
 **Type**
 string
 
-
-Standard Objects EntityMilestone
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The hours that remain before a milestone violation. Automatically calculated to
 include the business hours on the record.
-
-```
-TimeRemainingInMins
-
-TimeSinceTargetInDays
-
-TimeSinceTargetInHrs
-
-TimeSinceTargetInMins
-
-```
-
-Usage
 
 **Type**
 string
@@ -24972,6 +26286,11 @@ to include the business hours on the record.
 **Type**
 string
 
+
+### Standard Objects EntitySubscription
+
+**Field Name** **Details**
+
 **Properties**
 Group, Nillable, Sort
 
@@ -24979,12 +26298,10 @@ Group, Nillable, Sort
 The minutes that have elapsed since a milestone violation. Automatically
 calculated to include the business hours on the record.
 
+Usage
+
 When you create an entitlement process, you select its type based on the type of record that you want the process to run on: Case or
 Work Order. Processes created before Summer ’16 use the Case type. When a Work Order entitlement process runs on a work order, the
-
-
-### Standard Objects EntitySubscription
-
 resulting milestones on the work order are object milestones. Conversely, when a Case entitlement process runs on a case, the resulting
 milestones are case milestones, a separate standard object.
 
@@ -25021,6 +26338,9 @@ Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
 
+
+Standard Objects EntitySubscription
+
 Fields
 
 **Field** **Details**
@@ -25044,11 +26364,6 @@ available in API version 26.0 and later, if digital experiences is enabled for y
 
 **Type**
 reference
-
-
-Standard Objects EntitySubscription
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Sort
@@ -25087,6 +26402,12 @@ CreditMemoLine, Dashboard, DashboardComponent, DataStream, DelegatedAccount,
 DocumentChecklistItem, EngagementChannelType, EnhancedLetterhead,
 EnrollmentEligibilityCriteria, Event, HealthcareFacility, HealthcareFacilityNetwork,
 HealthcarePayerNetwork, HealthcarePractitionerFacility, HealthcareProvider,
+
+
+Standard Objects EntitySubscription
+
+**Field** **Details**
+
 HealthcareProviderNpi, HealthcareProviderSpecialty, HealthcareProviderTaxonomy, Identifier,
 Image, IndividualApplication, Invoice, InvoiceLine, Lead, Location, MarketSegment,
 MarketSegmentActivation, MemberPlan, MessagingSession, MktCalculatedInsight,
@@ -25100,12 +26421,6 @@ ResourcePreference, ReturnOrder, ReturnOrderLineItem, ServiceAppointment, Servic
 ServiceResourceSkill, ServiceTerritory, ServiceTerritoryMember, ServiceTerritoryWorkType,
 SessionHijackingEventStore, Shift, Shipment, ShipmentItem, Site, SkillRequirement, SocialPost,
 Solution, Task, ThreatDetectionFeedback, Topic, User, Visit, VisitedParty, Visitor, VoiceCall,
-
-
-Standard Objects EntitySubscription
-
-**Field** **Details**
-
 VolunteerProject, WorkBadgeDefinition, WorkOrder, WorkOrderLineItem, WorkType,
 WorkTypeGroup, WorkTypeGroupMember
 
@@ -25152,6 +26467,10 @@ field.
 
 **•** If you deactivate a user, any EntitySubscription where the user is associated with the ParentId or SubscriberId field, meaning all
 subscriptions both to and from the user, are soft deleted. If the user is reactivated, the subscriptions are restored. However, if you
+
+
+### Standard Objects EnvironmentHubMember
+
 deactivate multiple users at once and these users follow each other, their subscriptions are hard deleted. In this case, the user-to-user
 EntitySubscription is deleted twice (double deleted). Such subscriptions can’t be restored upon user reactivation.
 
@@ -25167,9 +26486,6 @@ or `SubscriberId` . Otherwise, the query behavior at run time is undefined, mean
 from invocation to invocation. For an unconstrained query, the sharing check limits imposed on a non-adminstrative user are likely
 to be exceeded before the query completes, because access checks are run against both parent and subject, for each row of the
 result set. We recommend using the Connect REST API to query EntitySubscription data instead of running a SOQL query.
-
-
-### Standard Objects EnvironmentHubMember
 
 **•** Users without the “View All Data” permission
 
@@ -25218,6 +26534,9 @@ Represents a member organization in the Environment Hub. This object is availabl
 [Note: You can create only 20 member orgs per day. If you need to create additional orgs, log a support case in the Salesforce](https://partners.salesforce.com)
 [Partner Community. For product, specify](https://partners.salesforce.com) **Platform** . For topic, specify **AppExchange & Managed Packages** .
 
+
+Standard Objects EnvironmentHubMember
+
 Supported Calls
 
 `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
@@ -25230,23 +26549,6 @@ Fields
 ```
 Description
 
-```
-
-**Type**
-textarea
-
-**Properties**
-Nillable, Update
-
-
-Standard Objects EnvironmentHubMember
-
-**Field Name** **Details**
-
-**Description**
-A brief description of this org.
-
-```
 DisplayName
 
 EnvironmentHubId
@@ -25255,11 +26557,16 @@ Instance
 
 IsFedIdSsoMatchAllowed
 
-IsSandbox
-
-MemberEntity
-
 ```
+
+**Type**
+textarea
+
+**Properties**
+Nillable, Update
+
+**Description**
+A brief description of this org.
 
 **Type**
 string
@@ -25298,6 +26605,24 @@ Defaulted on create, Filter, Group, Sort, Update
 Indicates if single sign-on (SSO) has been enabled based on matching the Federation
 ID. The default is `false` .
 
+
+Standard Objects EnvironmentHubMember
+
+**Field Name** **Details**
+
+```
+IsSandbox
+
+MemberEntity
+
+MemberType
+
+Name
+
+OrgEdition
+
+```
+
 **Type**
 boolean
 
@@ -25311,27 +26636,11 @@ in API version 36.0 and later.
 **Type**
 string
 
-
-Standard Objects EnvironmentHubMember
-
-**Field Name** **Details**
-
 **Properties**
 Filter, Group, idLookup, Sort
 
 **Description**
 The unique Org ID of the member org for this record.
-
-```
-MemberType
-
-Name
-
-OrgEdition
-
-OrgStatus
-
-```
 
 **Type**
 picklist
@@ -25368,22 +26677,14 @@ Filter, Group, Nillable, Restricted picklist, Sort
 **Description**
 The org’s edition, for example, Enterprise Edition or Unlimited Edition.
 
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The licensing or creation status of this org. Possible values include `Active`, `Demo`,
-`Deleted`, `Free`, `Inactive`, and `Trial` .
-
 
 Standard Objects EnvironmentHubMember
 
 **Field Name** **Details**
 
 ```
+OrgStatus
+
 Origin
 
 SSOMappedUsers
@@ -25394,9 +26695,17 @@ ShouldAddRelatedOrgs
 
 ShouldEnableSSO
 
-SsoStatus
-
 ```
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The licensing or creation status of this org. Possible values include `Active`, `Demo`,
+`Deleted`, `Free`, `Inactive`, and `Trial` .
 
 **Type**
 picklist
@@ -25441,19 +26750,28 @@ Status of the connection of related orgs to the hub. Possible values are `done`,
 **Type**
 boolean
 
+
+### Standard Objects Event
+
+**Field Name** **Details**
+
 **Properties**
 Defaulted on create, Filter, Group, Sort, Update
 
 **Description**
 If SSO should be enabled when this member org is added. The default is `false` .
 
+```
+SsoStatus
+
+SsoUsernameFormula
+
+```
+
+Usage
+
 **Type**
 picklist
-
-
-### Standard Objects Event
-
-**Field Name** **Details**
 
 **Properties**
 Defaulted on create, Filter, Group, Sort, Update
@@ -25469,13 +26787,6 @@ If SSO has been enabled for this org. Possible values are:
 
 **•** `Failed` —Single sign-on enablement failed. Contact Salesforce support for
 assistance.
-
-```
-SsoUsernameFormula
-
-```
-
-Usage
 
 **Type**
 string
@@ -25504,6 +26815,9 @@ and earlier.
 
 **•** `create()` and `update()` aren’t available for read-only fields on Lightning Experience event series.
 
+
+Standard Objects Event
+
 **•** `upsert()` and `undelete()` aren’t supported for syncing changes made to events through the API using the feature
 Lightning Sync.
 
@@ -25511,9 +26825,6 @@ Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects Event
 
 Fields
 
@@ -25523,8 +26834,6 @@ Fields
 AcceptedEventInviteeIds
 
 AccountId
-
-ActivityDate
 
 ```
 
@@ -25574,19 +26883,28 @@ This is a relationship field.
 **Relationship Name**
 Account
 
+
+Standard Objects Event
+
+**Field** **Details**
+
 **Relationship Type**
 Lookup
 
 **Refers To**
 Account
 
+```
+ActivityDate
+
+ActivityDateTime
+
+ClientGuid
+
+```
+
 **Type**
 date
-
-
-Standard Objects Event
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -25603,15 +26921,6 @@ This field is required in API versions 12.0 and earlier if the `IsAllDayEvent` f
 `true` .
 
 The value for this field and `StartDateTime` must match, or one of them must be `null` .
-
-```
-ActivityDateTime
-
-ClientGuid
-
-CurrencyIsoCode
-
-```
 
 **Type**
 dateTime
@@ -25640,22 +26949,14 @@ Filter, Group, Nillable, Sort
 The client globally unique identifier identifies the external API client used to create the event.
 Label is **Client GUID** .
 
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Available only for orgs with the multicurrency feature enabled. Contains the ISO code for
-any currency allowed by the organization.
-
 
 Standard Objects Event
 
 **Field** **Details**
 
 ```
+CurrencyIsoCode
+
 DeclinedEventInviteeIds
 
 Description
@@ -25665,6 +26966,16 @@ Division
 DurationInMinutes
 
 ```
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+Available only for orgs with the multicurrency feature enabled. Contains the ISO code for
+any currency allowed by the organization.
 
 **Type**
 JunctionIdLIst
@@ -25710,6 +27021,11 @@ Create, Filter, Group, Nillable, Sort, Update
 Contains the event length, in minutes. Even though this field represents a temporal value,
 it’s an integer type—not a Date/Time type.
 
+
+Standard Objects Event
+
+**Field** **Details**
+
 Required in API versions 12.0 and earlier if `IsAllDayEvent` is false.
 
 In API versions 13.0 and later, this field is optional, depending on the following:
@@ -25717,11 +27033,6 @@ In API versions 13.0 and later, this field is optional, depending on the followi
 **•** If `IsAllDayEvent` is true, you can supply a value for either `DurationInMinutes`
 or `EndDateTime` . Supplying values in both fields is allowed if the values add up to
 the same amount of time. If both fields are `null`, the duration defaults to one day.
-
-
-Standard Objects Event
-
-**Field** **Details**
 
 **•** If `IsAllDayEvent` is false, a value must be supplied for either
 `DurationInMinutes` or `EndDateTime` . Supplying values in both fields is allowed
@@ -25776,6 +27087,11 @@ This field is optional, depending on the following:
 or `EndDateTime` . Supplying values in both fields is allowed if the values add up to
 the same amount of time. If both fields are `null`, the duration defaults to one day.
 
+
+Standard Objects Event
+
+**Field** **Details**
+
 **•** If `IsAllDayEvent` is false, a value must be supplied for either
 `DurationInMinutes` or `EndDateTime` . Supplying values in both fields is allowed
 if the values add up to the same amount of time.
@@ -25784,11 +27100,6 @@ Depending on your API version, errors with the `DurationInMinutes` and
 `EndDateTime` fields may appear in different places.
 
 **•** Versions 38.0 and before—Errors always appear in the `DurationInMinutes` field.
-
-
-Standard Objects Event
-
-**Field** **Details**
 
 **•** Versions 39.0 and later—If there’s no value for the `DurationInMinutes` field, errors
 appear in the `EndDateTime` field. Otherwise, they appear in the
@@ -25846,17 +27157,18 @@ The possible values are:
 
 **•** `2` (Proposed event)—An event created when a user requests a meeting with a contact,
 lead, or person account using the Salesforce user interface. When the user confirms the
+
+
+Standard Objects Event
+
+**Field** **Details**
+
 meeting, the proposed event becomes a group event. You can’t create, edit, or delete
 proposed events in the API. This value is no longer used in API version 41.0 and later.
 
 **•** `3` (IsRecurrence2 Series Pattern)—An event representing a template for a series
 recurrence pattern in Lightning Experience. You can't view, create, edit, or delete these
 events in the API.
-
-
-Standard Objects Event
-
-**Field** **Details**
 
 ```
 IsAllDayEvent
@@ -25866,8 +27178,6 @@ IsArchived
 IsChild
 
 IsClientManaged
-
-IsGroupEvent
 
 ```
 
@@ -25918,22 +27228,14 @@ the event isn’t owned or managed by an external client, and Salesforce can be 
 it. If the value is true, Salesforce can be used to change only noncritical fields on the event.
 Label is **Is Client Managed** .
 
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
 
 Standard Objects Event
 
 **Field** **Details**
 
-**Description**
-Indicates whether the event is a group event—that is, whether it has invitees ( `true` ) or not
-( `false` ).
-
 ```
+IsGroupEvent
+
 IsPrivate
 
 IsRecurrence
@@ -25943,6 +27245,16 @@ IsRecurrence2
 IsRecurrence2Exception
 
 ```
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether the event is a group event—that is, whether it has invitees ( `true` ) or not
+( `false` ).
 
 **Type**
 boolean
@@ -25986,13 +27298,13 @@ field value is true, then `Recurrence2PatternText` and
 **Type**
 boolean
 
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
 
 Standard Objects Event
 
 **Field** **Details**
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
 
 **Description**
 Read-only. This field is available in API version 44.0 and later. Indicates whether an individual
@@ -26056,13 +27368,13 @@ OR
 **Type**
 string
 
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
 
 Standard Objects Event
 
 **Field** **Details**
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Contains the location of the event.
@@ -26124,13 +27436,13 @@ Supports a subset of the RFC 5545 standard for internet calendaring and scheduli
 Event Series section in this topic for usage examples. This field has a maximum length of 512
 characters.
 
-This field is available in API version 44.0 and later, and has the `Create` property in API
-version 52.0 and later.
-
 
 Standard Objects Event
 
 **Field** **Details**
+
+This field is available in API version 44.0 and later, and has the `Create` property in API
+version 52.0 and later.
 
 ```
 Recurrence2PatternTimeZone
@@ -26196,14 +27508,14 @@ This field contains a bitmask. The values are as follows:
 
 **•** Sunday = `1`
 
-**•** Monday = `2`
-
-**•** Tuesday = `4`
-
 
 Standard Objects Event
 
 **Field** **Details**
+
+**•** Monday = `2`
+
+**•** Tuesday = `4`
 
 **•** Wednesday = `8`
 
@@ -26224,8 +27536,6 @@ RecurrenceInstance
 RecurrenceInterval
 
 RecurrenceMonthOfYear
-
-RecurrenceStartDateTime
 
 ```
 
@@ -26269,24 +27579,14 @@ Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 **Description**
 Indicates the month in which the Salesforce Classic recurring event repeats.
 
-**Type**
-dateTime
-
 
 Standard Objects Event
 
 **Field** **Details**
 
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-Indicates the date and time when the Salesforce Classic recurring event begins. The value
-must precede the `RecurrenceEndDateOnly` . The time portion of this field is always
-transferred in the Coordinated Universal Time (UTC) time zone. Translate the time portion
-to or from a local time zone for the user or the application, as appropriate.
-
 ```
+RecurrenceStartDateTime
+
 RecurrenceTimeZoneSidKey
 
 RecurrenceType
@@ -26296,6 +27596,18 @@ ReminderDateTime
 ShowAs
 
 ```
+
+**Type**
+dateTime
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Indicates the date and time when the Salesforce Classic recurring event begins. The value
+must precede the `RecurrenceEndDateOnly` . The time portion of this field is always
+transferred in the Coordinated Universal Time (UTC) time zone. Translate the time portion
+to or from a local time zone for the user or the application, as appropriate.
 
 **Type**
 picklist
@@ -26335,14 +27647,14 @@ picklist
 **Properties**
 Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
-**Description**
-Indicates how this event appears when another user views the calendar: Busy, Out of Office,
-or Free. Label is **Show Time As** .
-
 
 Standard Objects Event
 
 **Field** **Details**
+
+**Description**
+Indicates how this event appears when another user views the calendar: Busy, Out of Office,
+or Free. Label is **Show Time As** .
 
 ```
 StartDateTime
@@ -26403,17 +27715,17 @@ JunctionIdList
 **Properties**
 Create, Update
 
+
+Standard Objects Event
+
+**Field** **Details**
+
 **Description**
 A string array of contact, lead, or user IDs who are undecided about this event. This
 `JunctionIdList` is linked to the `UndecidedEventRelation` child relationship.
 
 Warning: Adding a `JunctionIdList` field name to the `fieldsToNull`
 property deletes all related junction records. This action can’t be undone.
-
-
-Standard Objects Event
-
-**Field** **Details**
 
 ```
 WhatCount
@@ -26467,6 +27779,12 @@ CareRegisteredDevice, CareRequest, CareRequestDrug, CareRequestExtension,
 CareRequestItem, CareSpecialty, CareSpecialtyTaxonomy, CareTaxonomy, Case,
 CommSubscriptionConsent, ContactEncounter, ContactEncounterParticipant, ContactRequest,
 Contract, CoverageBenefit, CoverageBenefitItem, CreditMemo, DelegatedAccount,
+
+
+Standard Objects Event
+
+**Field** **Details**
+
 DocumentChecklistItem, EnrollmentEligibilityCriteria, HealthcareFacility,
 HealthcareFacilityNetwork, HealthcarePayerNetwork, HealthcarePractitionerFacility,
 HealthcareProvider, HealthcareProviderNpi, HealthcareProviderSpecialty,
@@ -26474,12 +27792,6 @@ HealthcareProviderTaxonomy, IdentityDocument, Image, IndividualApplication, Invo
 ListEmail, Location, MemberPlan, Opportunity, Order, OtherComponentTask, PartyConsent,
 PersonLifeEvent, PlanBenefit, PlanBenefitItem, ProcessException, Product2, ProductItem,
 ProductRequest, ProductRequestLineItem, ProductTransfer, PurchaserPlan,
-
-
-Standard Objects Event
-
-**Field** **Details**
-
 ReceivedDocument, ResourceAbsence, ReturnOrder, ReturnOrderLineItem,
 ServiceAppointment, ServiceResource, Shift, Shipment, ShipmentItem, Solution, Visit,
 VisitedParty, VolunteerProject, WorkOrder, WorkOrderLineItem
@@ -26490,8 +27802,6 @@ WhoCount
 WhoId
 
 ```
-
-Usage
 
 **Type**
 int
@@ -26537,12 +27847,14 @@ Lookup
 **Refers To**
 Contact, Lead
 
+
+Standard Objects Event
+
+Usage
+
 Use Event to manage calendar appointments.
 
 **Querying and Filtering Events**
-
-
-Standard Objects Event
 
 Queries on events are denied before they time out if they involve amounts of data that are deemed too large. In such cases, the exception
 code `OPERATION_TOO_LARGE` is returned. If you receive `OPERATION_TOO_LARGE`, refactor your query to return or scan a
@@ -26599,6 +27911,9 @@ through the user interface, only future occurrences are removed.
 **•** For Lightning Experience event series in API version 58.0 and later, when you change a future event, events in the entire series also
 change. When you change a past event, `IsRecurrence2Exception` is set to `true` and only that past event changes.
 
+
+Standard Objects Event
+
 **•** When creating a Salesforce Classic recurring event series, the duration of the event must be 24 hours or less. When the Salesforce
 Classic recurring event series is created, you can extend the length of individual occurrences beyond 24 hours if Multiday events are
 enabled; see **Multiday Events** .
@@ -26606,9 +27921,6 @@ enabled; see **Multiday Events** .
 **•** For Salesforce Classic recurring events, `RecurrenceStartDateTime`, `RecurrenceEndDateOnly`, `RecurrenceType`,
 and any properties associated with the given recurrence type (see the Recurrence Field Usage for Salesforce Classic Recurring Events
 table) must be populated.
-
-
-Standard Objects Event
 
 **•** When updating a Salesforce Classic recurring event series, it’s not possible to update the `EventRelation` for the event series
 object and the EventRelation for the series object occurrences at the same time.
@@ -26645,6 +27957,9 @@ Standard Objects Event
 
 Standard Objects Event
 
+
+Standard Objects Event
+
 **Salesforce Classic Event Series and Recurring Events**
 
 This table describes the usage of recurrence fields for Salesforce Classic recurring events. Each recurrence type must have all of its
@@ -26653,11 +27968,6 @@ properties set. All unused properties must be set to null.
 **RecurrenceType Value** **Properties** **Example Pattern**
 
 RecursDaily RecurrenceInterval Every second day
-
-
-Standard Objects Event
-
-**RecurrenceType Value** **Properties** **Example Pattern**
 
 RecursEveryWeekday RecurrenceDayOfWeekMask Every weekday - can’t be Saturday or Sunday
 
@@ -26726,14 +28036,14 @@ records are created in one API call. If the `EventRelation` fails, the event is 
 
 **Syncing Events with Lightning Sync**
 
+
+### Standard Objects EventLogFile
+
 Attendee statuses (Accepted or Maybe, Declined, or No Response) sync from Microsoft [®] Exchange or Google to Salesforce, but not from
 Salesforce to Exchange or Google. Be wary of creating API flows that update attendee status in Salesforce for users set up to sync both
 ways. Eventually the original Exchange or Google status overrides the update made in Salesforce.
 
 **Shared Field-Level Security for Event and Task Objects**
-
-
-### Standard Objects EventLogFile
 
 Metadata deployments for the Event object must include the field-level security for the Task object. Shared field-level security prevents
 each object from changing the field-level security of the associated object.
@@ -26785,10 +28095,10 @@ all Event Monitoring logs. To correlate logs pertaining to an API request call, 
 character OTEL compatible TraceId or a 22 -character alphanumeric Id. Using SOQL, search for the Event Monitoring logs with this
 RequestId to correlate the logs and see the unit of work performed as a part of the API transaction.
 
-[For details about event monitoring, see the Trailhead Event Monitoring module.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
 
 Standard Objects EventLogFile
+
+[For details about event monitoring, see the Trailhead Event Monitoring module.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
 Special Access Rules
 
@@ -26811,8 +28121,6 @@ ApiVersion
 EventType
 
 Interval
-
-LogDate
 
 ```
 
@@ -26852,13 +28160,26 @@ The generation schedule for the event log file. Possible values are:
 This field is available in API version 37.0 and later. This field is available in API version 37.0
 and later to customers with hourly Event Log Files.
 
-**Type**
-dateTime
-
 
 Standard Objects EventLogFile
 
 **Field** **Details**
+
+```
+LogDate
+
+LogFile
+
+LogFileContentType
+
+LogFileFieldNames
+
+LogFileFieldTypes
+
+```
+
+**Type**
+dateTime
 
 **Properties**
 Filter, Sort
@@ -26871,17 +28192,6 @@ the hour in which the log file was generated. For example, for events that occur
 
 Note: For hourly event log files, we recommend using `CreatedDate` to query
 the date and time that an EventLogFile object was created.
-
-```
-LogFile
-
-LogFileContentType
-
-LogFileFieldNames
-
-LogFileFieldTypes
-
-```
 
 **Type**
 base64
@@ -26920,14 +28230,14 @@ Nillable
 **Description**
 The ordered list of field types in the log file data ( `String`, `Id`, and so forth).
 
-Note: `LogFileFieldNames` and `LogFileFieldTypes` are specific to
-each `EventType` . For example, `LogFileFieldTypes` has a different value
-for an API `EventType` and a Login `EventType` .
-
 
 #### Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
+
+Note: `LogFileFieldNames` and `LogFileFieldTypes` are specific to
+each `EventType` . For example, `LogFileFieldTypes` has a different value
+for an API `EventType` and a Login `EventType` .
 
 ```
 LogFileLength
@@ -26981,14 +28291,14 @@ Note: The Apex Unexpected Exception, API Total Usage, CORS Violation Record, CSP
 External Assets, Login, and Logout events are available in supported Salesforce editions at no additional cost. To purchase the
 remaining event types, contact Salesforce.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Apex Callout Event Type
 Apex Callout events contain details about callouts (external requests) during Apex code execution.
 
 Apex Execution Event Type
 Apex Execution events contain details about Apex classes that are used.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Apex Inline Event Type
 This event type is reserved for future use. This object is available in API version 66.0 and later.
@@ -27039,14 +28349,14 @@ Composite API Event Type
 Composite API events contain details about composite API requests. One composite API event is generated for each composite API
 and composite graph API call. This event type is available in API version 64.0 and later.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Composite API Subrequest Event Type
 Composite API subrequest events contain details about composite API subrequests. One composite API subrequest event is generated
 for each subrequest or collated set of subrequests. For example, if a composite API request contains five subrequests and four of the
 subrequests are collated, then two composite API subrequest events are generated. This example also applies to composite graph
 API. This event type is available in API version 64.0 and later.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Concurrent Long-Running Apex Limit Event Type
 Concurrent Long-Running Apex Limit events contain information about long-running concurrent Apex requests in your org that
@@ -27097,6 +28407,9 @@ External Cross-Org Callout Event Type
 External Cross-Org Callout events represent external data callouts via the cross-org adapter for Salesforce Connect. This event type
 is available in the EventLogFile object in API version 40.0 and later.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 External Custom Apex Callout Event Type
 External Custom Apex Callout events represent external data callouts via custom adapters for Salesforce Connect. This event type is
 available in the EventLogFile object in API version 40.0 and later.
@@ -27104,9 +28417,6 @@ available in the EventLogFile object in API version 40.0 and later.
 External Data Source Callout Event Type
 External Data Source Callout events represent external data callouts via the Salesforce Connect adapters for Amazon DynamoDB
 and Amazon Athena. This event type is available in the EventLogFile object in API version 56.0 and later.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 External OData Callout Event Type
 External OData Callout events represent external data callouts via the OData 2.0 and OData 4.0 adapters for Salesforce Connect. This
@@ -27154,6 +28464,9 @@ Lightning Logger Event Type
 Lightning Logger events contain information from observed Lightning component logs. This event type is available in the EventLogFile
 object in API version 58.0 and later.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Lightning Page View Event Type
 Lightning Page View events represent information about the page on which the event occurred in Lightning Experience and the
 Salesforce mobile app, such as the page's load time. This event type is available in the EventLogFile object in API version 39.0 and
@@ -27162,9 +28475,6 @@ later.
 Lightning Performance Event Type
 Lightning Performance events track trends in Lightning Experience and Salesforce mobile app performance. This event type is
 available in the EventLogFile object in API version 39.0 and later.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Login Event Type
 Login events contain details about your org’s user login history.
@@ -27215,6 +28525,9 @@ Report events contain information about what happened when a user ran a report. 
 Report Export event type, plus more. For example, it has user activity for reports exported as both Formatted Report and Details Only
 output.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Report Export Event Type
 Report Export events contain details about reports that a user exported. For example, this event type captures when a user exports
 a report as Details Only output. But it doesn’t capture reports that users export as Formatted Report or XLSX Detail output. For that
@@ -27222,9 +28535,6 @@ data, see the Report event type.
 
 REST API Event Type
 REST API events contain details about REST-specific requests.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Sandbox Event Type
 Sandbox events contain details about sandbox copies.
@@ -27252,7 +28562,7 @@ Transaction Security events contain details about policy execution. This event t
 
 UI Telemetry Navigation Timing Event Type
 UI Telemetry Navigation Timing events capture network performance metrics related to page navigation. The event extends from
-[the UI Telemetry Resource Timing Event on page 2393 and includes requests initiated with either the Fetch API or the XMLHttpRequest](https://fetch.spec.whatwg.org/)
+[the UI Telemetry Resource Timing Event on page 2413 and includes requests initiated with either the Fetch API or the XMLHttpRequest](https://fetch.spec.whatwg.org/)
 [API. This object is available in API version 61.0 and later.](https://xhr.spec.whatwg.org/)
 
 UI Telemetry Resource Timing Event
@@ -27274,6 +28584,9 @@ Wave Change events represent route or page changes made in the CRM Analytics use
 captured every time the user opens a new CRM Analytics asset or tab, switches between tabs, or changes dashboard pages. Wave
 Change events are logged when opening new tabs and switching back to previously opened tabs.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Wave Download Event Type
 Wave Download events represent downloads made from lens explorations and dashboard widgets in the CRM Analytics user interface.
 A Wave Download event type is captured when a user downloads images ( .png ), Microsoft [®] Excel [®] data ( .xls ), or comma-separated
@@ -27283,9 +28596,6 @@ Wave Interaction Event Type
 Wave Interaction events represent route or page changes made in the CRM Analytics user interface. A Wave Interaction event type
 is captured when a tab is closed. It also collates the interaction statistics over the life of the tab, including total open time, read time,
 and so on. These statistics are aggregated as you go to other tabs and return, and logged only once when the tab is closed.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Wave Performance Event Type
 Wave Performance events help you track trends in your Analytics performance.
@@ -27312,8 +28622,6 @@ BOT_SESSION_IDENTIFIER
 CLIENT_IP
 
 CPU_TIME
-
-EVENT_TYPE
 
 ```
 
@@ -27342,21 +28650,17 @@ For example: `96.43.144.26` .
 **Type**
 Number
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The CPU time in milliseconds used to complete the request.
 This field indicates the amount of activity taking place in the
 app server layer.
 
-**Type**
-String
-
-**Description**
-The type of event. The value is always `ApexCallout` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
 ```
+EVENT_TYPE
+
 LOGIN_KEY
 
 METHOD
@@ -27367,11 +28671,13 @@ PLANNER_IDENTIFIER
 
 REQUEST_ID
 
-REQUEST_SIZE
-
-RESPONSE_SIZE
-
 ```
+
+**Type**
+String
+
+**Description**
+The type of event. The value is always `ApexCallout` .
 
 **Type**
 String
@@ -27416,22 +28722,14 @@ same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
-**Type**
-Number
-
-**Description**
-The size of the callout request body, in bytes.
-
-**Type**
-Number
-
-**Description**
-The size of the callout response, in bytes.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 ```
+REQUEST_SIZE
+
+RESPONSE_SIZE
+
 RUN_TIME
 
 SESSION_KEY
@@ -27444,9 +28742,19 @@ TIME
 
 TIMESTAMP
 
-TIMESTAMP_DERIVED
-
 ```
+
+**Type**
+Number
+
+**Description**
+The size of the callout request body, in bytes.
+
+**Type**
+Number
+
+**Description**
+The size of the callout response, in bytes.
 
 **Type**
 Number
@@ -27489,22 +28797,14 @@ String
 **Description**
 The access time of Salesforce services in GMT.
 
-For example: `20130715233322.670` .
-
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2015-07-27T11:32:59.555Z` . Timezone
-is GMT.
-
 
 Standard Objects EventLogFile Supported Event Types
 
+For example: `20130715233322.670` .
+
 ```
+TIMESTAMP_DERIVED
+
 TYPE
 
 URI
@@ -27515,15 +28815,17 @@ URL
 
 USER_ID
 
-USER_ID_DERIVED
-
 ```
 
-SEE ALSO:
+**Type**
+DateTime
 
-EventLogFile Supported Event Types
+**Description**
+The access time of Salesforce services in ISO8601-compatible
+format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 
-EventLogFile
+For example: `2015-07-27T11:32:59.555Z` . Timezone
+is GMT.
 
 **Type**
 String
@@ -27570,6 +28872,22 @@ through the UI or the API.
 
 For example: `00530000009M943`
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+USER_ID_DERIVED
+
+```
+
+SEE ALSO:
+
+EventLogFile Supported Event Types
+
+EventLogFile
+
+##### Apex Execution Event Type
+
 **Type**
 Id
 
@@ -27578,11 +28896,6 @@ The 18-character case insensitive ID of the user who’s using
 Salesforce services through the UI or the API.
 
 For example: `00590000000I1SNIA0` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-##### Apex Execution Event Type
 
 Apex Execution events contain details about Apex classes that are used.
 
@@ -27600,10 +28913,6 @@ BOT_SESSION_IDENTIFIER
 CALLOUT_TIME
 
 CLIENT_IP
-
-CPU_TIME
-
-DB_TOTAL_TIME
 
 ```
 
@@ -27634,6 +28943,24 @@ Salesforce internal IP (such as a login from AppExchange) is
 shown as “Salesforce.com IP”. If the user’s session context isn't
 available, this field returns a blank value.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+CPU_TIME
+
+DB_TOTAL_TIME
+
+ENTRY_POINT
+
+EVENT_TYPE
+
+EXEC_TIME
+
+IS_LONG_RUNNING_REQUEST
+
+```
+
 **Type**
 Number
 
@@ -27648,27 +28975,8 @@ Number
 **Description**
 Time (in milliseconds) spent waiting for database processing
 in aggregate for all operations in the request. Compare this
-
-
-Standard Objects EventLogFile Supported Event Types
-
 field to `CPU_TIME` to determine whether performance issues
 are occurring in the database layer or in your own code.
-
-```
-ENTRY_POINT
-
-EVENT_TYPE
-
-EXEC_TIME
-
-IS_LONG_RUNNING_REQUEST
-
-LOGIN_KEY
-
-NUMBER_SOQL_QUERIES
-
-```
 
 **Type**
 String
@@ -27707,6 +29015,22 @@ scheduled, and future), background processes, and bulk
 API requests aren’t counted against the concurrent
 long-running limit.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+LOGIN_KEY
+
+NUMBER_SOQL_QUERIES
+
+ORGANIZATION_ID
+
+PLANNER_IDENTIFIER
+
+QUIDDITY
+
+```
+
 **Type**
 String
 
@@ -27720,9 +29044,6 @@ For example: `GeJCsym5eyvtEK2I` .
 **Type**
 Number
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 The number of SOQL queries that were executed during the
 event.
@@ -27733,15 +29054,6 @@ aggregate total value across all test methods executed in the
 request is used. If you’re using this value to track limit
 consumption, consider filtering out test execution quiddities
 (indicated by the QUIDDITY field).
-
-```
-ORGANIZATION_ID
-
-PLANNER_IDENTIFIER
-
-QUIDDITY
-
-```
 
 **Type**
 Id
@@ -27775,7 +29087,10 @@ The type of outer execution associated with this event.
 
 **•** `CI` –Commerce Integration
 
-**•** `DL`    - Discoverable Login page
+**•** `DL`   - Discoverable Login page
+
+
+Standard Objects EventLogFile Supported Event Types
 
 **•** `E` –Inbound Email Service
 
@@ -27794,9 +29109,6 @@ The type of outer execution associated with this event.
 **•** `M` –Remote Action
 
 **•** `P` –Not used in API version 63.0 and later.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `PEPC` –Platform Event Publish Callback
 
@@ -27837,8 +29149,6 @@ REQUEST_ID
 
 RUN_TIME
 
-SESSION_KEY
-
 ```
 
 **Type**
@@ -27854,6 +29164,9 @@ For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 **Type**
 Number
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The amount of time that the request took in milliseconds.
 
@@ -27865,20 +29178,9 @@ Note: HTTP callout processing time isn't included when
 calculating the 5-second limit. We pause the timer for
 the callout and resume it when the callout completes.
 
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The user’s unique session ID. You can use this value to identify
-all user events within a session. When a user logs out and logs
-in again, a new session is started.
-
-For example: `d7DEq/ANa7nNZZVD` .
-
 ```
+SESSION_KEY
+
 TIMESTAMP
 
 TIMESTAMP_DERIVED
@@ -27887,11 +29189,17 @@ URI
 
 URI_ID_DERIVED
 
-USER_ID
-
-USER_ID_DERIVED
-
 ```
+
+**Type**
+String
+
+**Description**
+The user’s unique session ID. You can use this value to identify
+all user events within a session. When a user logs out and logs
+in again, a new session is started.
+
+For example: `d7DEq/ANa7nNZZVD` .
 
 **Type**
 String
@@ -27926,6 +29234,24 @@ ID
 The 18-character case insensitive ID of the URI of the page
 that’s receiving the request.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+USER_ID
+
+USER_ID_DERIVED
+
+```
+
+SEE ALSO:
+
+EventLogFile Supported Event Types
+
+EventLogFile
+
+##### Apex Inline Event Type
+
 **Type**
 Id
 
@@ -27938,22 +29264,11 @@ For example: `00530000009M943`
 **Type**
 Id
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 The 18-character case insensitive ID of the user who’s using
 Salesforce services through the UI or the API.
 
 For example: `00590000000I1SNIA0` .
-
-SEE ALSO:
-
-EventLogFile Supported Event Types
-
-EventLogFile
-
-##### Apex Inline Event Type
 
 This event type is reserved for future use. This object is available in API version 66.0 and later.
 
@@ -27973,10 +29288,6 @@ Fields
 ```
 CLIENT_IP
 
-CONNECTED_APP_ID
-
-CLIENT_NAME
-
 ```
 
 **Type**
@@ -27988,6 +29299,26 @@ Salesforce internal IP (such as a login from AppExchange) is
 shown as “Salesforce.com IP”.
 
 For example: `96.43.144.26` .
+
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+CONNECTED_APP_ID
+
+CLIENT_NAME
+
+CPU_TIME
+
+DB_BLOCKS
+
+DB_CPU_TIME
+
+DB_TOTAL_TIME
+
+ENTITY_NAME
+
+```
 
 **Type**
 String
@@ -28001,26 +29332,6 @@ String
 
 **Description**
 The name of the client that’s using Salesforce services.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-CPU_TIME
-
-DB_BLOCKS
-
-DB_CPU_TIME
-
-DB_TOTAL_TIME
-
-ENTITY_NAME
-
-EVENT_TYPE
-
-EXCEPTION_MESSAGE
-
-```
 
 **Type**
 Number
@@ -28059,29 +29370,20 @@ database layer or in your own code.
 **Type**
 Set
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 API objects that are accessed.
 
 For example: `Account`, `Opportunity`, `Contact`, and
 so on.
 
-**Type**
-String
-
-**Description**
-The type of event. The value is always `ApexRestApi` .
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The returned exception message, used to debug issues. Provide
-this message when seeking support.
-
 ```
+EVENT_TYPE
+
+EXCEPTION_MESSAGE
+
 LOGIN_KEY
 
 MEDIA_TYPE
@@ -28092,11 +29394,20 @@ NUMBER_FIELDS
 
 ORGANIZATION_ID
 
-QUERY
-
-REQUEST_SIZE
-
 ```
+
+**Type**
+String
+
+**Description**
+The type of event. The value is always `ApexRestApi` .
+
+**Type**
+String
+
+**Description**
+The returned exception message, used to debug issues. Provide
+this message when seeking support.
 
 **Type**
 String
@@ -28131,10 +29442,26 @@ The number of fields or columns, where applicable.
 **Type**
 Id
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The 15-character ID of the organization.
 
 For example: `00D000000000123` .
+
+```
+QUERY
+
+REQUEST_SIZE
+
+REQUEST_STATUS
+
+REQUEST_ID
+
+RESPONSE_SIZE
+
+```
 
 **Type**
 String
@@ -28147,22 +29474,6 @@ Number
 
 **Description**
 The size of the callout request body, in bytes.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-REQUEST_STATUS
-
-REQUEST_ID
-
-RESPONSE_SIZE
-
-ROWS_PROCESSED
-
-RUN_TIME
-
-```
 
 **Type**
 String
@@ -28205,8 +29516,28 @@ For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 **Type**
 Number
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The size of the callout response, in bytes.
+
+```
+ROWS_PROCESSED
+
+RUN_TIME
+
+SESSION_KEY
+
+STATUS_CODE
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+URI
+
+```
 
 **Type**
 Number
@@ -28221,26 +29552,6 @@ Number
 
 **Description**
 The amount of time that the request took in milliseconds.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-SESSION_KEY
-
-STATUS_CODE
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-URI
-
-URI_ID_DERIVED
-
-USER_AGENT
-
-```
 
 **Type**
 String
@@ -28279,10 +29590,26 @@ is GMT.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The URI of the page that’s receiving the request.
 
 For example: `/home/home.jsp` .
+
+```
+URI_ID_DERIVED
+
+USER_AGENT
+
+USER_ID
+
+USER_ID_DERIVED
+
+USER_TYPE
+
+```
 
 **Type**
 ID
@@ -28294,21 +29621,9 @@ that’s receiving the request.
 **Type**
 Number
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 The numeric code for the type of client used to make the
 request (for example, the browser, application, or API).
-
-```
-USER_ID
-
-USER_ID_DERIVED
-
-USER_TYPE
-
-```
 
 **Type**
 Id
@@ -28345,6 +29660,9 @@ access is limited because they’re organization customers
 and access the application through a customer portal or
 an Experience Cloud site.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `CustomerSuccess` —Customer Success license. Users
 whose access is limited because they’re organization
 customers and access the application through a customer
@@ -28361,9 +29679,6 @@ a customer portal. Users with this license type can view
 and edit data they directly own or data owned by or shared
 with users below them in the customer portal role
 hierarchy.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `PowerPartner` —Power Partner license. Users whose
 access is limited because they’re partners and typically
@@ -28396,10 +29711,6 @@ Fields
 ```
 CLASS_NAME
 
-CLIENT_IP
-
-CLIENT_NAME
-
 ```
 
 **Type**
@@ -28408,6 +29719,26 @@ String
 **Description**
 The Apex class name. If the class is part of a managed package,
 this string includes the package namespace.
+
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+CLIENT_IP
+
+CLIENT_NAME
+
+CPU_TIME
+
+DB_TOTAL_TIME
+
+EVENT_TYPE
+
+LIMIT_USAGE_PERCENT
+
+LOGIN_KEY
+
+```
 
 **Type**
 String
@@ -28425,29 +29756,8 @@ String
 **Description**
 The name of the client that’s using Salesforce services. This
 field is an optional parameter that can be passed in API calls.
-
-
-Standard Objects EventLogFile Supported Event Types
-
 If blank, the caller didn't specify a client in the CallOptions
 header.
-
-```
-CPU_TIME
-
-DB_TOTAL_TIME
-
-EVENT_TYPE
-
-LIMIT_USAGE_PERCENT
-
-LOGIN_KEY
-
-METHOD_NAME
-
-ORGANIZATION_ID
-
-```
 
 **Type**
 Number
@@ -28482,12 +29792,28 @@ the organization’s limit.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The string that ties together all events in a given user’s login
 session. It starts with a login event and ends with either a
 logout event or the user session expiring.
 
 For example: `GeJCsym5eyvtEK2I` .
+
+```
+METHOD_NAME
+
+ORGANIZATION_ID
+
+QUERY
+
+REQUEST_ID
+
+REQUEST_STATUS
+
+```
 
 **Type**
 String
@@ -28498,24 +29824,10 @@ The name of the calling Apex method.
 **Type**
 Id
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 The 15-character ID of the organization.
 
 For example: `00D000000000123` .
-
-```
-QUERY
-
-REQUEST_ID
-
-REQUEST_STATUS
-
-RUN_TIME
-
-```
 
 **Type**
 String
@@ -28552,6 +29864,9 @@ page is read-only.
 
 **•** `U` —Undefined
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `A` —Authorization Error
 
 **•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated
@@ -28560,6 +29875,19 @@ by an Apex controller in a Visualforce page.
 **•** `N` —Not Found. 404 error.
 
 This field can have a blank value.
+
+```
+RUN_TIME
+
+SESSION_KEY
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+URI
+
+```
 
 **Type**
 Number
@@ -28571,27 +29899,9 @@ Requests with a value over five seconds are considered
 long-running requests for the purposes of the Concurrent
 Long-Running Apex Limit.
 
-
-Standard Objects EventLogFile Supported Event Types
-
 Note: HTTP callout processing time isn't included when
 calculating the 5-second limit. We pause the timer for
 the callout and resume it when the callout completes.
-
-```
-SESSION_KEY
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-URI
-
-URI_ID_DERIVED
-
-USER_ID
-
-```
 
 **Type**
 String
@@ -28627,7 +29937,21 @@ String
 **Description**
 The URI of the page that’s receiving the request.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 For example: `/home/home.jsp` .
+
+```
+URI_ID_DERIVED
+
+USER_ID
+
+USER_ID_DERIVED
+
+USER_TYPE
+
+```
 
 **Type**
 ID
@@ -28643,17 +29967,7 @@ Id
 The 15-character ID of the user who’s using Salesforce services
 through the UI or the API.
 
-
-Standard Objects EventLogFile Supported Event Types
-
 For example: `00530000009M943`
-
-```
-USER_ID_DERIVED
-
-USER_TYPE
-
-```
 
 **Type**
 Id
@@ -28693,6 +30007,10 @@ logging in.
 **•** `PowerCustomerSuccess` —Power Customer Success
 license. Users whose access is limited because they’re
 organization customers and access the application through
+
+
+Standard Objects EventLogFile Supported Event Types
+
 a customer portal. Users with this license type can view
 and edit data they directly own or data owned by or shared
 with users below them in the customer portal role
@@ -28705,9 +30023,6 @@ access the application through a partner portal or site.
 **•** `SelfService` —Users whose access is limited because
 they’re organization customers and access the application
 through a self-service portal.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `Standard` —Standard user license. This user type also
 includes Salesforce Platform and Salesforce Platform One
@@ -28736,8 +30051,6 @@ BOT_SESSION_IDENTIFIER
 
 CLIENT_IP
 
-CPU_TIME
-
 ```
 
 **Type**
@@ -28760,20 +30073,14 @@ The IP address of the client that is using Salesforce services. A
 Salesforce internal IP (such as a login from AppExchange) is
 shown as “Salesforce.com IP”.
 
-For example: `96.43.144.26` .
-
-**Type**
-Number
-
-**Description**
-The CPU time in milliseconds is used to complete the request.
-This field indicates the amount of activity taking place in the
-app server layer.
-
 
 Standard Objects EventLogFile Supported Event Types
 
+For example: `96.43.144.26` .
+
 ```
+CPU_TIME
+
 DB_TOTAL_TIME
 
 ENTITY_NAME
@@ -28786,9 +30093,15 @@ LOGIN_KEY
 
 ORGANIZATION_ID
 
-PLANNER_IDENTIFIER
-
 ```
+
+**Type**
+Number
+
+**Description**
+The CPU time in milliseconds is used to complete the request.
+This field indicates the amount of activity taking place in the
+app server layer.
 
 **Type**
 Number
@@ -28833,18 +30146,14 @@ ID
 **Description**
 The 15-character ID of the organization.
 
-For example: `00D000000000123` .
-
-**Type**
-String
-
-**Description**
-The ID of the agent planner.
-
 
 Standard Objects EventLogFile Supported Event Types
 
+For example: `00D000000000123` .
+
 ```
+PLANNER_IDENTIFIER
+
 REQUEST_ID
 
 REQUEST_STATUS
@@ -28853,9 +30162,13 @@ RUN_TIME
 
 SESSION_KEY
 
-TIMESTAMP
-
 ```
+
+**Type**
+String
+
+**Description**
+The ID of the agent planner.
 
 **Type**
 String
@@ -28905,6 +30218,9 @@ time (in milliseconds), refer to the `EXEC_TIME` field.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The user’s unique session ID. You can use this value to identify
 all user events within a session. When a user logs out and logs
@@ -28912,18 +30228,9 @@ in again, a new session is started.
 
 For example: `d7DEq/ANa7nNZZVD` .
 
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The access time of Salesforce services in GMT.
-
-For example: `20130715233322.670` .
-
 ```
+TIMESTAMP
+
 TIMESTAMP_DERIVED
 
 TRIGGER_ID
@@ -28932,9 +30239,15 @@ TRIGGER_NAME
 
 TRIGGER_TYPE
 
-URI
-
 ```
+
+**Type**
+String
+
+**Description**
+The access time of Salesforce services in GMT.
+
+For example: `20130715233322.670` .
 
 **Type**
 DateTime
@@ -28973,6 +30286,9 @@ String
 **Description**
 The type of this trigger.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Possible Values**
 
 **•** AfterInsert
@@ -28983,18 +30299,9 @@ The type of this trigger.
 
 **•** BeforeUpdate
 
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The URI of the page that’s receiving the request.
-
-For example: `/home/home.jsp` .
-
 ```
+URI
+
 URI_ID_DERIVED
 
 USER_ID
@@ -29004,6 +30311,14 @@ USER_ID_DERIVED
 USER_TYPE
 
 ```
+
+**Type**
+String
+
+**Description**
+The URI of the page that’s receiving the request.
+
+For example: `/home/home.jsp` .
 
 **Type**
 ID
@@ -29044,6 +30359,10 @@ Chatter moderator users.
 
 **•** `CspLitePortal` —CSP Lite Portal license. Users whose
 access is limited because they’re organization customers
+
+
+Standard Objects EventLogFile Supported Event Types
+
 and access the application through a customer portal or
 an Experience Cloud site.
 
@@ -29055,9 +30374,6 @@ portal.
 **•** `Guest` —Users whose access is limited so that your
 customers can view and interact with your site without
 logging in.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `PowerCustomerSuccess` —Power Customer Success
 license. Users whose access is limited because they’re
@@ -29100,15 +30416,27 @@ Fields
 ```
 EVENT_TYPE
 
-EXCEPTION_CATEGORY
-
 ```
 
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The type of event. The value is always `ApexUnexpectedException` .
+
+```
+EXCEPTION_CATEGORY
+
+EXCEPTION_MESSAGE
+
+EXCEPTION_TYPE
+
+```
 
 **Type**
 String
@@ -29118,11 +30446,6 @@ The category of the unexpected Apex exception. Provides a breakdown of unhandled
 exceptions based on the type. For example, the `LimitException` exception type is
 split into subcategories that indicate if you exceeded a limit, such as the total heap size or
 CPU time.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 Possible values:
 
@@ -29155,16 +30478,7 @@ This field is available in API version 57.0 and later.
 **Example**
 
 ```
-                   LimitException: CpuTime
-
-```
-
-```
-EXCEPTION_MESSAGE
-
-EXCEPTION_TYPE
-
-ORGANIZATION_ID
+  LimitException: CpuTime
 
 ```
 
@@ -29183,27 +30497,21 @@ String
 **Description**
 The class type of the unexpected exception.
 
-**Example**
-
-```
-  System.MathException
-
-```
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the org.
-
-For example: `00D000000000123` .
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
+**Example**
+
 ```
+                   System.MathException
+
+```
+
+```
+ORGANIZATION_ID
+
 REQUEST_ID
 
 STACK_TRACE
@@ -29214,9 +30522,15 @@ TIMESTAMP_DERIVED
 
 USER_ID
 
-USER_ID_DERIVED
-
 ```
+
+**Type**
+Id
+
+**Description**
+The 15-character ID of the org.
+
+For example: `00D000000000123` .
 
 **Type**
 String
@@ -29265,9 +30579,21 @@ For example: `2015-07-27T11:32:59.555Z` . Timezone is GMT.
 **Type**
 Id
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The 15-character ID of the user who’s using Salesforce services through the UI or the API.
 For example: `00530000009M943` .
+
+```
+USER_ID_DERIVED
+
+```
+
+SEE ALSO:
 
 **Type**
 Id
@@ -29276,14 +30602,7 @@ Id
 The 18-character case-insensitive ID of the user who’s using Salesforce services through the
 UI or the API.
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 For example: `00590000000I1SNIA0` .
-
-SEE ALSO:
 
 EventLogFile Supported Event Types
 
@@ -29303,8 +30622,6 @@ API_CLIENT_CATEGORY
 
 ```
 API_FAMILY
-
-API_RESOURCE
 
 ```
 
@@ -29332,28 +30649,17 @@ app or service.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The API family. Possible values are `REST`, `SOAP`, `Bulk`, or
 `ApexREST` . `ApexREST` indicates Apex REST, Agentforce
 Apex REST, or Agentforce AuraEnabled calls.
 
-**Type**
-String
-
-**Description**
-The API method or resource. For example,
-`describeSObjects` for SOAP, or
-
-
-Standard Objects EventLogFile Supported Event Types
-
 ```
-                              /v21.0/sobjects/Account/001xx000003DGQW
-```
+API_RESOURCE
 
-for REST.
-
-```
 API_VERSION
 
 BOT_IDENTIFIER
@@ -29367,6 +30673,19 @@ CLIENT_NAME
 CONNECTED_APP_ID
 
 ```
+
+**Type**
+String
+
+**Description**
+The API method or resource. For example,
+`describeSObjects` for SOAP, or
+
+```
+   /v21.0/sobjects/Account/001xx000003DGQW
+```
+
+for REST.
 
 **Type**
 Number
@@ -29406,6 +30725,9 @@ passed via the Sforce-Call-Options header.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The ID of the connected app making the API request.
 
@@ -29415,9 +30737,6 @@ details
 ( `https://` _**`MyDomainName`**_ `.my.salesforce.com/` _**`0H4`**_ `xxxxxxxxxxxx` ).
 If, however, the connected app ID uses the prefix _`888`_, contact
 Salesforce Customer Support for app details.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ```
 CONNECTED_APP_NAME
@@ -29431,10 +30750,6 @@ EVENT_TYPE
 HTTP_METHOD
 
 ORGANIZATION_ID
-
-PLANNER_IDENTIFIER
-
-REQUEST_ID
 
 ```
 
@@ -29480,26 +30795,14 @@ The 15-character ID of the organization.
 
 For example: `00D000000000123` .
 
-**Type**
-string
-
-**Description**
-The ID of the agent planner.
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
-**Description**
-The unique ID of a single transaction. A transaction can contain
-one or more events. Each event in a given transaction has the
-same `REQUEST_ID` .
-
-For example: `3nWgxWbDKWWDIk0FKfF5DV` .
-
 ```
+PLANNER_IDENTIFIER
+
+REQUEST_ID
+
 STATUS_CODE
 
 TIMESTAMP
@@ -29510,9 +30813,23 @@ USER_ID
 
 USER_NAME
 
-##### Asynchronous Report Run Event Type
-
 ```
+
+**Type**
+string
+
+**Description**
+The ID of the agent planner.
+
+**Type**
+String
+
+**Description**
+The unique ID of a single transaction. A transaction can contain
+one or more events. Each event in a given transaction has the
+same `REQUEST_ID` .
+
+For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
 **Type**
 Number
@@ -29550,17 +30867,19 @@ For example: `00530000009M943`
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The username of the user who's using Salesforce services
 through the API.
+
+##### Asynchronous Report Run Event Type
 
 Asynchronous Report Run events are created for reporting requests that are scheduled. This category includes dashboard refreshes,
 asynchronous reports, schedule reports, and analytics snapshots.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Fields
 
@@ -29574,8 +30893,6 @@ CLIENT_IP
 CPU_TIME
 
 DASHBOARD_ID
-
-DB_TOTAL_TIME
 
 ```
 
@@ -29613,23 +30930,15 @@ app server layer.
 **Type**
 String
 
-**Description**
-The 15-character ID of the dashboard that was run.
-
-**Type**
-Number
-
-**Description**
-The time in nanoseconds for a database round trip. Includes
-time spent in the JDBC driver, network to the database, and
-`DB_CPU_TIME` . Compare this field to `CPU_TIME` to
-determine whether performance issues are occurring in the
-database layer or in your own code.
-
 
 Standard Objects EventLogFile Supported Event Types
 
+**Description**
+The 15-character ID of the dashboard that was run.
+
 ```
+DB_TOTAL_TIME
+
 DB_BLOCKS
 
 DB_CPU_TIME
@@ -29640,9 +30949,17 @@ ENTITY_NAME
 
 EVENT_TYPE
 
-LOGIN_KEY
-
 ```
+
+**Type**
+Number
+
+**Description**
+The time in nanoseconds for a database round trip. Includes
+time spent in the JDBC driver, network to the database, and
+`DB_CPU_TIME` . Compare this field to `CPU_TIME` to
+determine whether performance issues are occurring in the
+database layer or in your own code.
 
 **Type**
 Number
@@ -29683,24 +31000,16 @@ The name of the object affected by the trigger.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The type of event. The value is always
 `AsynchronousReportRun` .
 
-**Type**
-String
-
-**Description**
-The string that ties together all events in a given user’s login
-session. It starts with a login event and ends with either a
-logout event or the user session expiring.
-
-For example: `GeJCsym5eyvtEK2I` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
 ```
+LOGIN_KEY
+
 NUMBER_BUCKETS
 
 NUMBER_COLUMNS
@@ -29712,6 +31021,16 @@ ORGANIZATION_ID
 ORIGIN
 
 ```
+
+**Type**
+String
+
+**Description**
+The string that ties together all events in a given user’s login
+session. It starts with a login event and ends with either a
+logout event or the user session expiring.
+
+For example: `GeJCsym5eyvtEK2I` .
 
 **Type**
 Number
@@ -29753,6 +31072,9 @@ asynchronous, Apex), or through a dashboard.
 executed when a user clicked a dashboard component on
 a mobile device and drilled down to a report.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `DashboardComponentUpdated` : Report executed
 when a user refreshed a dashboard component.
 
@@ -29770,9 +31092,6 @@ executed from the synchronous Apex API.
 
 **•** `ReportRunUsingApexAsynchronousApi` : Report
 executed from the asynchronous Apex API.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `ReportExported` : Report executed from a printable
 view or report export that was not asynchronous nor an
@@ -29820,6 +31139,9 @@ executed through the notifications API.
 **•** `ChartRenderedOnHomePage` : Report executed from
 a rendered chart on the home page.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `ReportResultsAddedToWaveTrending` : Report
 executed when a user trended a report in CRM Analytics.
 
@@ -29836,13 +31158,16 @@ Report executed synchronously from Einstein Discovery.
 ```
 RENDERING_TYPE
 
+REPORT_ID
+
+REPORT_ID_DERIVED
+
+REQUEST_ID
+
 ```
 
 **Type**
 String
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **Description**
 Describes the format of the report output in Salesforce Classic.
@@ -29864,17 +31189,6 @@ blank.
 **•** `J` : JavaScript Object Notation (JSON)
 
 **•** `D` : Dummy data
-
-```
-REPORT_ID
-
-REPORT_ID_DERIVED
-
-REQUEST_ID
-
-REQUEST_STATUS
-
-```
 
 **Type**
 Id
@@ -29898,6 +31212,20 @@ same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+REQUEST_STATUS
+
+ROW_COUNT
+
+RUN_TIME
+
+SESSION_KEY
+
+```
+
 **Type**
 String
 
@@ -29910,9 +31238,6 @@ For example:
 **•** `S` —Success. Salesforce handled the request successfully.
 If an Apex controller throws an exception, this status is also
 returned.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no
 permission to view page, page took too long to render,
@@ -29928,19 +31253,6 @@ by an Apex controller in a Visualforce page.
 **•** `N` —Not Found. 404 error.
 
 This field can have a blank value.
-
-```
-ROW_COUNT
-
-RUN_TIME
-
-SESSION_KEY
-
-SORT
-
-TIMESTAMP
-
-```
 
 **Type**
 Number
@@ -29971,6 +31283,26 @@ in again, a new session is started.
 
 For example: `d7DEq/ANa7nNZZVD` .
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+SORT
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+URI
+
+URI_ID_DERIVED
+
+USER_ID
+
+USER_ID_DERIVED
+
+```
+
 **Type**
 String
 
@@ -29983,25 +31315,7 @@ String
 **Description**
 The access time of Salesforce services in GMT.
 
-
-Standard Objects EventLogFile Supported Event Types
-
 For example: `20130715233322.670` .
-
-```
-TIMESTAMP_DERIVED
-
-URI
-
-URI_ID_DERIVED
-
-USER_ID
-
-USER_ID_DERIVED
-
-USER_TYPE
-
-```
 
 **Type**
 DateTime
@@ -30044,7 +31358,21 @@ Id
 The 18-character case insensitive ID of the user who’s using
 Salesforce services through the UI or the API.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 For example: `00590000000I1SNIA0` .
+
+```
+USER_TYPE
+
+```
+
+SEE ALSO:
+
+EventLogFile Supported Event Types
+
+EventLogFile
 
 **Type**
 String
@@ -30053,9 +31381,6 @@ String
 The category of user license.
 
 Possible values are:
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `CsnOnly` —Users whose access to the application is
 limited to Chatter. This user type includes Chatter Free and
@@ -30095,11 +31420,8 @@ through a self-service portal.
 includes Salesforce Platform and Salesforce Platform One
 user licenses, and admins for this org.
 
-SEE ALSO:
 
-EventLogFile Supported Event Types
-
-EventLogFile
+Standard Objects EventLogFile Supported Event Types
 
 ##### Aura Request Event Type
 
@@ -30111,9 +31433,6 @@ benchmark request time or identify the URI of an unsuccessful request.
 Fields
 
 **Field** **Details**
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ```
 ACTION_MESSAGE
@@ -30171,6 +31490,9 @@ database layer or in your own code.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The org’s Small Business Suite Edition, if applicable. This field
 populates only for Small Business Suite editions and Salesforce
@@ -30187,9 +31509,6 @@ For example:
 
 **•** `C360SuiteEE` —Salesforce Foundations
 
-
-Standard Objects EventLogFile Supported Event Types
-
 ```
 EVENT_TYPE
 
@@ -30200,8 +31519,6 @@ ORGANIZATION_ID
 REQUEST_ID
 
 REQUEST_METHOD
-
-REQUEST_STATUS
 
 ```
 
@@ -30247,6 +31564,22 @@ String
 **Description**
 The HTTP method of the request, such as GET or POST.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+REQUEST_STATUS
+
+RUN_TIME
+
+SESSION_KEY
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+```
+
 **Type**
 String
 
@@ -30259,9 +31592,6 @@ For example:
 **•** `S` —Success. Salesforce handled the request successfully.
 If an Apex controller throws an exception, this status is also
 returned.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no
 permission to view page, page took too long to render,
@@ -30277,19 +31607,6 @@ by an Apex controller in a Visualforce page.
 **•** `N` —Not Found. 404 error.
 
 This field can have a blank value.
-
-```
-RUN_TIME
-
-SESSION_KEY
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-URI
-
-```
 
 **Type**
 Number
@@ -30318,6 +31635,9 @@ For example: `20130715233322.670` .
 **Type**
 DateTime
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The access time of Salesforce services in ISO8601-compatible
 format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
@@ -30325,18 +31645,9 @@ format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 For example: `2015-07-27T11:32:59.555Z` . Timezone
 is GMT.
 
-**Type**
-String
-
-**Description**
-The URI of the resource that’s receiving the request.
-
-For example: `/aura` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
 ```
+URI
+
 URI_ID_DERIVED
 
 USER_AGENT
@@ -30348,6 +31659,14 @@ USER_ID_DERIVED
 USER_TYPE
 
 ```
+
+**Type**
+String
+
+**Description**
+The URI of the resource that’s receiving the request.
+
+For example: `/aura` .
 
 **Type**
 ID
@@ -30389,6 +31708,9 @@ The category of user license.
 
 Possible values are:
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `CsnOnly` —Users whose access to the application is
 limited to Chatter. This user type includes Chatter Free and
 Chatter moderator users.
@@ -30402,9 +31724,6 @@ an Experience Cloud site.
 whose access is limited because they’re organization
 customers and access the application through a customer
 portal.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `Guest` —Users whose access is limited so that your
 customers can view and interact with your site without
@@ -30449,6 +31768,9 @@ Event Monitoring Analytics app.
 Blocked redirect events capture these redirections when the target URL isn’t a RedirectWhitelistUrl or when the target URL fails a syntax
 check.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** An anchor link within a page or component that includes a redirection. For example, `<a`
 
 `href="/?startURL=targetUrl">linkText</a>` includes a redirection via the startURL parameter.
@@ -30463,9 +31785,6 @@ redirect event. An example of a direct anchor link is `<a` `href="targetUrl">lin
 For hyperlinks within URL and Long Text Area fields, blocked redirections to untrusted URLs are captured as blocked redirect events only
 when the user who clicked the hyperlink accessed Salesforce via Salesforce Classic. If those users see a warning message and can proceed
 to the untrusted URL, that event isn’t captured as a blocked redirect event.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Note: To help preserve performance, Salesforce uses throttling, a technique that limits the number of generated blocked redirect
 events when the volume is exceptionally high. Therefore, if your org generates a high volume of blocked redirections over a short
@@ -30483,8 +31802,6 @@ BLOCKED_URI_DOMAIN
 EVENT_TYPE
 
 MALFORMED_URL
-
-ORIGIN
 
 ```
 
@@ -30522,24 +31839,18 @@ Indicates whether this redirection was blocked because the target URL failed a s
 
 Here are examples of malformed URLs.
 
-**•** https://www.example.com/$t61'3
-
-**•** https://malformed^url.example.com
-
-**Type**
-String
-
-**Description**
-The origin that caused the request to the `BLOCKED_URI` . For example, if a form on an
-Experience Cloud Visualforce site page redirects a user to an untrusted URL via the `saveURL`
-parameter, `ORIGIN` contains the base URL of that site.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
+**•** https://www.example.com/$t61'3
+
+**•** https://malformed^url.example.com
+
 ```
+ORIGIN
+
 REFERRER
 
 REMOTE_ADDRESS
@@ -30552,7 +31863,13 @@ TIMESTAMP_DERIVED
 
 ```
 
-Usage
+**Type**
+String
+
+**Description**
+The origin that caused the request to the `BLOCKED_URI` . For example, if a form on an
+Experience Cloud Visualforce site page redirects a user to an untrusted URL via the `saveURL`
+parameter, `ORIGIN` contains the base URL of that site.
 
 **Type**
 String
@@ -30601,21 +31918,25 @@ DateTime
 The access time of Salesforce services in ISO8601-compatible format
 ( `YYYY-MM-DDTHH:MM:SS.sssZ` ). The time zone is always GMT.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Example**
 
 ```
-  2022-07-27T11:32:59.555Z.
+                   2022-07-27T11:32:59.555Z.
 
 ```
+
+Usage
 
 Only one blocked redirect log file is available at a time. When the daily incremental event log file is generated during the daily background
 process, the new file replaces the existing file.
 
 If the log file doesn’t exist, either the log generation process hasn’t run yet or there’s no redirection data to report for that 24-hour
 window. The log file is generated only when at least one redirection occurred for the day.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 To collect blocked redirect logs for multiple days, schedule a daily query of the Blocked Redirect event type via REST API. For example,
 you can configure a cron job in Unix or a scheduled task in Windows to run the query.
@@ -30631,7 +31952,7 @@ EventLogFile
 Bulk API events contain details about Bulk API requests.
 
 Note: This event type does not include Bulk API 2.0 requests. For information about the BulkApi2 event type, see Bulk API 2.0
-Event Type on page 2143.
+Event Type on page 2163.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
@@ -30643,10 +31964,6 @@ Fields
 BATCH_ID
 
 CLIENT_IP
-
-CPU_TIME
-
-ENTITY_TYPE
 
 ```
 
@@ -30666,6 +31983,28 @@ shown as “Salesforce.com IP”.
 
 For example: `96.43.144.26` .
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+CPU_TIME
+
+ENTITY_TYPE
+
+EVENT_TYPE
+
+JOB_ID
+
+LOGIN_KEY
+
+MESSAGE
+
+NUMBER_FAILURES
+
+OPERATION_TYPE
+
+```
+
 **Type**
 Number
 
@@ -30679,28 +32018,6 @@ String
 
 **Description**
 The type of entity that the Bulk API used.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-EVENT_TYPE
-
-JOB_ID
-
-LOGIN_KEY
-
-MESSAGE
-
-NUMBER_FAILURES
-
-OPERATION_TYPE
-
-ORGANIZATION_ID
-
-REQUEST_ID
-
-```
 
 **Type**
 String
@@ -30739,8 +32056,28 @@ The number of failures that were returned with the request.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The type of Bulk API operation that was performed.
+
+```
+ORGANIZATION_ID
+
+REQUEST_ID
+
+ROWS_PROCESSED
+
+RUN_TIME
+
+SESSION_KEY
+
+SUCCESS
+
+TIMESTAMP
+
+```
 
 **Type**
 Id
@@ -30753,30 +32090,12 @@ For example: `00D000000000123` .
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 The unique ID of a single transaction. A transaction can contain
 one or more events. Each event in a given transaction has the
 same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
-
-```
-ROWS_PROCESSED
-
-RUN_TIME
-
-SESSION_KEY
-
-SUCCESS
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-```
 
 **Type**
 Number
@@ -30811,25 +32130,17 @@ Whether the batch was successful.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The access time of Salesforce services in GMT.
 
 For example: `20130715233322.670` .
 
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2015-07-27T11:32:59.555Z` . Timezone
-is GMT.
-
-
-Standard Objects EventLogFile Supported Event Types
-
 ```
+TIMESTAMP_DERIVED
+
 URI
 
 URI_ID_DERIVED
@@ -30846,7 +32157,15 @@ EventLogFile Supported Event Types
 
 EventLogFile
 
-##### Bulk API Request Event Type
+**Type**
+DateTime
+
+**Description**
+The access time of Salesforce services in ISO8601-compatible
+format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
+
+For example: `2015-07-27T11:32:59.555Z` . Timezone
+is GMT.
 
 **Type**
 String
@@ -30881,20 +32200,22 @@ Salesforce services through the UI or the API.
 
 For example: `00590000000I1SNIA0` .
 
+
+Standard Objects EventLogFile Supported Event Types
+
+##### Bulk API Request Event Type
+
 The Bulk API request event captures when Bulk API requests are received to create a job, update a job, create a batch, update a batch,
 and when a job completes.
 
 Note: This event type doesn’t include Bulk API 2.0 requests. For information about the BulkApi2 event types, see Bulk API 2.0
-Event Type on page 2143.
+Event Type on page 2163.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
 Fields
 
 **Field** **Details**
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ```
 API_VERSION
@@ -30908,10 +32229,6 @@ CLIENT_NAME
 CONCURRENCY_MODE
 
 CONNECTED_APP_ID
-
-CPU_TIME
-
-ERROR_MESSAGE
 
 ```
 
@@ -30955,24 +32272,14 @@ String
 **Description**
 The ID of the connected app making a request.
 
-**Type**
-Number
-
-**Description**
-The CPU time in milliseconds used to complete the request.
-This field indicates the amount of activity taking place in the
-app server layer.
-
-**Type**
-EscapedString
-
 
 Standard Objects EventLogFile Supported Event Types
 
-**Description**
-The type of entity that the Bulk API used.
-
 ```
+CPU_TIME
+
+ERROR_MESSAGE
+
 EVENT_TYPE
 
 JOB_ID
@@ -30985,9 +32292,21 @@ ORGANIZATION_ID
 
 REQUEST_ID
 
-REQUEST_PATH
-
 ```
+
+**Type**
+Number
+
+**Description**
+The CPU time in milliseconds used to complete the request.
+This field indicates the amount of activity taking place in the
+app server layer.
+
+**Type**
+EscapedString
+
+**Description**
+The type of entity that the Bulk API used.
 
 **Type**
 String
@@ -31028,6 +32347,9 @@ For example: `00D000000000123` .
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The unique ID of a single transaction. A transaction can contain
 one or more events. Each event in a given transaction has the
@@ -31035,16 +32357,9 @@ same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The path of the request.
-
 ```
+REQUEST_PATH
+
 RUN_TIME
 
 SESSION_KEY
@@ -31057,9 +32372,13 @@ TIMESTAMP
 
 TIMESTAMP_DERIVED
 
-URI
-
 ```
+
+**Type**
+String
+
+**Description**
+The path of the request.
 
 **Type**
 Number
@@ -31101,6 +32420,9 @@ For example: `20130715233322.670` .
 **Type**
 DateTime
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The access time of Salesforce services in ISO8601-compatible
 format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
@@ -31108,18 +32430,9 @@ format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 For example: `2015-07-27T11:32:59.555Z` . The
 timezone is GMT.
 
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The URI of the page that’s receiving the request.
-
-For example: `/home/home.jsp` .
-
 ```
+URI
+
 URI_ID_DERIVED
 
 USER_ID
@@ -31131,6 +32444,14 @@ USER_ID_DERIVED
 ```
 
 BulkApi2 events contain details about Bulk API 2.0 requests.
+
+**Type**
+String
+
+**Description**
+The URI of the page that’s receiving the request.
+
+For example: `/home/home.jsp` .
 
 **Type**
 Id
@@ -31155,7 +32476,7 @@ Salesforce services through the UI or the API.
 For example: `00590000000I1SNIA0` .
 
 Note: This event type does not include Bulk API requests. For information about the BulkApi event type, see Bulk API Event Type
-on page 2136.
+on page 2156.
 
 You can monitor the following Bulk API 2.0 parameters:
 
@@ -31168,6 +32489,9 @@ You can monitor the following Bulk API 2.0 parameters:
 **•** Understand users and the operations they performed.
 
 **•** Detailed errors and failures.
+
+
+Standard Objects EventLogFile Supported Event Types
 
 BulkApi2 events represent the steps in the Bulk API 2.0 workflow and changes in job state.
 
@@ -31182,9 +32506,6 @@ For a Bulk API 2.0 **Ingest** job, an event is emitted when a job is marked:
 **•** inProgress
 
 **•** with a processing update
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** complete
 
@@ -31221,10 +32542,6 @@ CPU_TIME
 
 ENTITY_TYPE
 
-EVENT_TYPE
-
-JOB_ID
-
 ```
 
 **Type**
@@ -31249,24 +32566,16 @@ String
 **Description**
 The type of entity that Bulk API 2.0 used.
 
-For example, `Account` or `Contact` .
-
-**Type**
-String
-
-**Description**
-The type of event. The value is always `BulkApi2` .
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
-**Description**
-The 15-character ID of the Bulk API 2.0 job.
+For example, `Account` or `Contact` .
 
 ```
+EVENT_TYPE
+
+JOB_ID
+
 JOB_STATUS
 
 LOGIN_KEY
@@ -31280,6 +32589,18 @@ RECORDS_FAILED
 RECORDS_PROCESSED
 
 ```
+
+**Type**
+String
+
+**Description**
+The type of event. The value is always `BulkApi2` .
+
+**Type**
+String
+
+**Description**
+The 15-character ID of the Bulk API 2.0 job.
 
 **Type**
 String
@@ -31321,6 +32642,9 @@ For example: `150` .
 **Type**
 Number
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 Number of records processed for this event.
 
@@ -31333,9 +32657,6 @@ For _ingest_ jobs:
 
 **•** Events with a status of `InProgress` report (if applicable) the number
 of records processed.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 For _query_ jobs:
 
@@ -31352,8 +32673,6 @@ RUN_TIME
 SESSION_KEY
 
 TIMESTAMP
-
-TIMESTAMP_DERIVED
 
 ```
 
@@ -31395,24 +32714,17 @@ For example: `d7DEq/ANa7nNZZVD` .
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The access time of Salesforce services in GMT.
 
 For example: `20130715233322.670` .
 
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible format
-( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-
-Standard Objects EventLogFile Supported Event Types
-
-For example: `2015-07-27T11:32:59.555Z` . Timezone is GMT.
-
 ```
+TIMESTAMP_DERIVED
+
 URI
 
 URI_ID_DERIVED
@@ -31422,6 +32734,15 @@ USER_ID
 USER_ID_DERIVED
 
 ```
+
+**Type**
+DateTime
+
+**Description**
+The access time of Salesforce services in ISO8601-compatible format
+( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
+
+For example: `2015-07-27T11:32:59.555Z` . Timezone is GMT.
 
 **Type**
 String
@@ -31461,6 +32782,9 @@ Change Set Operation events contain information from change set migrations.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Fields
 
 **Field** **Details**
@@ -31469,6 +32793,14 @@ Fields
 CHANGE_SET_NAME
 
 CLIENT_IP
+
+CPU_TIME
+
+EVENT_TYPE
+
+LOGIN_KEY
+
+OPERATION
 
 ```
 
@@ -31481,28 +32813,12 @@ The name of the change set.
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 The IP address of the client that’s using Salesforce services. A
 Salesforce internal IP (such as a login from AppExchange) is
 shown as “Salesforce.com IP”.
 
 For example: `96.43.144.26` .
-
-```
-CPU_TIME
-
-EVENT_TYPE
-
-LOGIN_KEY
-
-OPERATION
-
-ORGANIZATION_ID
-
-```
 
 **Type**
 Number
@@ -31539,24 +32855,18 @@ The operation that’s being performed.
 
 **•** DELETE
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** DEPLOY
 
 **•** UPLOAD
 
 **•** VALIDATE
 
-**Type**
-Id
-
-**Description**
-The 15-character ID of the organization.
-
-For example: `00D000000000123` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
 ```
+ORGANIZATION_ID
+
 REQUEST_ID
 
 RUN_TIME
@@ -31567,11 +32877,15 @@ TARGET_ORG_ID
 
 TIMESTAMP
 
-TIMESTAMP_DERIVED
-
-URI
-
 ```
+
+**Type**
+Id
+
+**Description**
+The 15-character ID of the organization.
+
+For example: `00D000000000123` .
 
 **Type**
 String
@@ -31614,28 +32928,14 @@ The access time of Salesforce services in GMT.
 
 For example: `20130715233322.670` .
 
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2015-07-27T11:32:59.555Z` . Timezone
-is GMT.
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
-**Description**
-The URI of the page that’s receiving the request.
-
-For example: `/home/home.jsp` .
-
 ```
+TIMESTAMP_DERIVED
+
+URI
+
 URI_ID_DERIVED
 
 USER_ID
@@ -31651,6 +32951,24 @@ EventLogFile Supported Event Types
 EventLogFile
 
 ##### Composite API Event Type
+
+**Type**
+DateTime
+
+**Description**
+The access time of Salesforce services in ISO8601-compatible
+format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
+
+For example: `2015-07-27T11:32:59.555Z` . Timezone
+is GMT.
+
+**Type**
+String
+
+**Description**
+The URI of the page that’s receiving the request.
+
+For example: `/home/home.jsp` .
 
 **Type**
 ID
@@ -31680,24 +32998,14 @@ For example: `00590000000I1SNIA0` .
 Composite API events contain details about composite API requests. One composite API event is generated for each composite API and
 composite graph API call. This event type is available in API version 64.0 and later.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Fields
 
 **Field** **Details**
 
 ALL_OR_NONE
-
-**Type**
-boolean
-
-**Description**
-Indicates whether the entire request is rolled back when the update of any object fails (true),
-or if the call should continue with the independent update of other objects in the request
-(false). The default is false. If true, it overrides the ALL_OR_NONE setting in subrequests.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 CLIENT_IP
 
@@ -31713,7 +33021,13 @@ LOGIN_KEY
 
 NUM_GRAPH_DEPTH
 
-NUM_RETRIES
+**Type**
+boolean
+
+**Description**
+Indicates whether the entire request is rolled back when the update of any object fails (true),
+or if the call should continue with the independent update of other objects in the request
+(false). The default is false. If true, it overrides the ALL_OR_NONE setting in subrequests.
 
 **Type**
 String
@@ -31760,20 +33074,16 @@ ends with either a logout event or the user session expiring. For example:
 **Type**
 Number
 
-**Description**
-The depth of the graph. When multiple graphs are present, this number is the depth of the
-deepest graph.
-
-**Type**
-Number
-
-**Description**
-Number of attempted retries while processing the graph.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
+
+**Description**
+The depth of the graph. When multiple graphs are present, this number is the depth of the
+deepest graph.
+
+NUM_RETRIES
 
 ORGANIZATION_ID
 
@@ -31787,9 +33097,11 @@ TIMESTAMP
 
 TIMESTAMP_DERIVED
 
-URI
+**Type**
+Number
 
-URI_ID_DERIVED
+**Description**
+Number of attempted retries while processing the graph.
 
 **Type**
 Id
@@ -31839,6 +33151,21 @@ event was generated. The timezone is GMT. For example:
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+URI
+
+URI_ID_DERIVED
+
+USER_ID
+
+USER_ID_DERIVED
+
+SEE ALSO:
+
 **Type**
 String
 
@@ -31848,19 +33175,8 @@ The resource URI.
 **Type**
 ID
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The 18-character case insensitive ID of the URI of the page that’s receiving the request.
-
-USER_ID
-
-USER_ID_DERIVED
-
-SEE ALSO:
 
 **Type**
 Id
@@ -31898,32 +33214,20 @@ Fields
 
 CANCELLED_REASON
 
-CLIENT_IP
-
-CPU_TIME
-
 **Type**
 String
 
 **Description**
 If the subrequest was canceled, shows the reason.
 
-**Type**
-String
-
-**Description**
-The IP address of the client that’s using the API.
-
-**Type**
-Number
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
-**Description**
-The CPU time in milliseconds to complete the request.
+CLIENT_IP
+
+CPU_TIME
 
 DB_TOTAL_TIME
 
@@ -31937,7 +33241,17 @@ LOGIN_KEY
 
 METHOD
 
-ORGANIZATION_ID
+**Type**
+String
+
+**Description**
+The IP address of the client that’s using the API.
+
+**Type**
+Number
+
+**Description**
+The CPU time in milliseconds to complete the request.
 
 **Type**
 Number
@@ -31980,24 +33294,15 @@ ends with either a logout event or the user session expiring. For example:
 **Type**
 String
 
-**Description**
-The HTTP method of the request.
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the organization that made the request. For example:
-
-```
-  00D000000000123
-
-```
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
+
+**Description**
+The HTTP method of the request.
+
+ORGANIZATION_ID
 
 REQUEST_ID
 
@@ -32009,7 +33314,16 @@ SESSION_KEY
 
 STATUS_CODE
 
-SUCCESS
+**Type**
+Id
+
+**Description**
+The 15-character ID of the organization that made the request. For example:
+
+```
+  00D000000000123
+
+```
 
 **Type**
 String
@@ -32056,19 +33370,15 @@ For example: `20130715233322.670`
 **Type**
 Number
 
-**Description**
-The HTTP status code for the response.
-
-**Type**
-boolean
-
-**Description**
-True if the subrequest call succeeded.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
+
+**Description**
+The HTTP status code for the response.
+
+SUCCESS
 
 TIMESTAMP
 
@@ -32082,7 +33392,11 @@ USER_ID
 
 USER_ID_DERIVED
 
-USER_TYPE
+**Type**
+boolean
+
+**Description**
+True if the subrequest call succeeded.
 
 **Type**
 String
@@ -32131,6 +33445,15 @@ The 18-character case insensitive ID of the user that’s using the API. For exa
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+USER_TYPE
+
+SEE ALSO:
+
 **Type**
 String
 
@@ -32143,11 +33466,6 @@ includes Chatter Free and Chatter moderator users.
 **•** CspLitePortal—CSP Lite Portal license. Users whose access is limited because they’re
 organization customers and they access the application through a customer portal or
 an Experience Cloud site.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 **•** CustomerSuccess—Customer Success license. Users whose access is limited because
 they’re organization customers and they access the application through a customer
@@ -32171,8 +33489,6 @@ they access the application through a self-service portal.
 **•** Standard—Standard user license. This user type also includes Salesforce Platform and
 Salesforce Platform One user licenses and admins for this org.
 
-SEE ALSO:
-
 _[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_composite_composite.htm)_ : Composite
 
 _[REST API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/resources_composite_graph.htm)_ : Composite Graph
@@ -32189,6 +33505,9 @@ EventLogFile object in API version 45.0 and later.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Fields
 
 **Field** **Details**
@@ -32197,6 +33516,14 @@ Fields
 EVENT_TYPE
 
 NUMBER_REQUESTS
+
+ORGANIZATION_ID
+
+REQUEST_ID
+
+REQUEST_URI
+
+REQUESTS_LIMIT
 
 ```
 
@@ -32209,29 +33536,9 @@ The type of event. The value is always `ConcurrentLongRunningApexLimit` .
 **Type**
 Number
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 Count of requests with an established Apex context executing for longer than 5 seconds in
 your org.
-
-```
-ORGANIZATION_ID
-
-REQUEST_ID
-
-REQUEST_URI
-
-REQUESTS_LIMIT
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-```
 
 **Type**
 Id
@@ -32271,6 +33578,22 @@ See _Apex Developer Guide_ [: Lightning Platform Apex Limits.](https://developer
 
 **Example**
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+USER_ID
+
+```
+
+Usage
+
 **Type**
 String
 
@@ -32282,23 +33605,11 @@ For example: `20130715233322.670` .
 **Type**
 DateTime
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The access time of Salesforce services in ISO8601-compatible format
 ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 
 For example: `2015-07-27T11:32:59.555Z` . Timezone is GMT.
-
-```
-USER_ID
-
-```
-
-Usage
 
 **Type**
 Id
@@ -32333,25 +33644,12 @@ Fields
 
 **Field** **Details**
 
-```
-CLIENT_IP
-
-```
-
-**Type**
-String
-
-**Description**
-The IP address of the client that’s using Salesforce services. A
-Salesforce internal IP (such as a login from AppExchange) is
-shown as “Salesforce.com IP”.
-
-For example: `96.43.144.26` .
-
 
 Standard Objects EventLogFile Supported Event Types
 
 ```
+CLIENT_IP
+
 COMPONENT_ID
 
 COMPONENT_ID_DERIVED
@@ -32364,11 +33662,17 @@ CPU_TIME
 
 DB_TOTAL_TIME
 
-EVENT_TYPE
-
-LICENSE_CONTEXT
-
 ```
+
+**Type**
+String
+
+**Description**
+The IP address of the client that’s using Salesforce services. A
+Salesforce internal IP (such as a login from AppExchange) is
+shown as “Salesforce.com IP”.
+
+For example: `96.43.144.26` .
 
 **Type**
 Id
@@ -32412,25 +33716,14 @@ time spent in the JDBC driver, network to the database, and
 determine whether performance issues are occurring in the
 database layer or in your own code.
 
-**Type**
-String
-
-**Description**
-The type of event. The value is always `Console` .
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
-**Description**
-The license context in which a user is using a console.
-
-**Example**
-service, salesandservice, sales
-
 ```
+EVENT_TYPE
+
+LICENSE_CONTEXT
+
 LOGIN_KEY
 
 ORGANIZATION_ID
@@ -32441,9 +33734,22 @@ RECORD_ID_DERIVED
 
 REQUEST_ID
 
-REQUEST_STATUS
-
 ```
+
+**Type**
+String
+
+**Description**
+The type of event. The value is always `Console` .
+
+**Type**
+String
+
+**Description**
+The license context in which a user is using a console.
+
+**Example**
+service, salesandservice, sales
 
 **Type**
 String
@@ -32480,6 +33786,9 @@ associated with the console.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The unique ID of a single transaction. A transaction can contain
 one or more events. Each event in a given transaction has the
@@ -32487,11 +33796,19 @@ same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
+```
+REQUEST_STATUS
+
+RUN_TIME
+
+SESSION_KEY
+
+TIMESTAMP
+
+```
+
 **Type**
 String
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **Description**
 The status of the request for a page view or user interface
@@ -32518,17 +33835,6 @@ by an Apex controller in a Visualforce page.
 
 This field can have a blank value.
 
-```
-RUN_TIME
-
-SESSION_KEY
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-```
-
 **Type**
 Number
 
@@ -32553,20 +33859,12 @@ The access time of Salesforce services in GMT.
 
 For example: `20130715233322.670` .
 
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2015-07-27T11:32:59.555Z` . Timezone
-is GMT.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 ```
+TIMESTAMP_DERIVED
+
 URI
 
 URI_ID_DERIVED
@@ -32578,6 +33876,16 @@ USER_ID_DERIVED
 USER_TYPE
 
 ```
+
+**Type**
+DateTime
+
+**Description**
+The access time of Salesforce services in ISO8601-compatible
+format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
+
+For example: `2015-07-27T11:32:59.555Z` . Timezone
+is GMT.
 
 **Type**
 String
@@ -32624,6 +33932,9 @@ Possible values are:
 limited to Chatter. This user type includes Chatter Free and
 Chatter moderator users.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `CspLitePortal` —CSP Lite Portal license. Users whose
 access is limited because they’re organization customers
 and access the application through a customer portal or
@@ -32633,9 +33944,6 @@ an Experience Cloud site.
 whose access is limited because they’re organization
 customers and access the application through a customer
 portal.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `Guest` —Users whose access is limited so that your
 customers can view and interact with your site without
@@ -32685,6 +33993,9 @@ ACTION
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The action that’s used when a delivery is viewed.
 
@@ -32695,9 +34006,6 @@ The action that’s used when a delivery is viewed.
 **•** `INSERT`
 
 **•** `UPDATE`
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ```
 DELIVERY_ID
@@ -32711,8 +34019,6 @@ ORGANIZATION_ID
 RELATED_ENTITY_ID
 
 REQUEST_ID
-
-TIMESTAMP
 
 ```
 
@@ -32760,18 +34066,12 @@ same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
-**Type**
-String
-
-**Description**
-The access time of Salesforce services in GMT.
-
-For example: `20130715233322.670` .
-
 
 Standard Objects EventLogFile Supported Event Types
 
 ```
+TIMESTAMP
+
 TIMESTAMP_DERIVED
 
 USER_ID
@@ -32789,6 +34089,14 @@ EventLogFile Supported Event Types
 EventLogFile
 
 ##### Content Document Link Event Type
+
+**Type**
+String
+
+**Description**
+The access time of Salesforce services in GMT.
+
+For example: `20130715233322.670` .
 
 **Type**
 DateTime
@@ -32828,6 +34136,9 @@ Content Document Link events contain sharing information for content documents.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Fields
 
 **Field** **Details**
@@ -32835,18 +34146,6 @@ Fields
 ```
 DOCUMENT_ID
 
-```
-
-**Type**
-Id
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The 15-character ID of the document that’s being shared.
-
-```
 EVENT_TYPE
 
 ORGANIZATION_ID
@@ -32857,9 +34156,13 @@ SHARED_WITH_ENTITY_ID
 
 SHARING_OPERATION
 
-SHARING_PERMISSION
-
 ```
+
+**Type**
+Id
+
+**Description**
+The 15-character ID of the document that’s being shared.
 
 **Type**
 String
@@ -32906,14 +34209,27 @@ The type of sharing operation on the document.
 
 **•** `DELETE`
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+SHARING_PERMISSION
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+USER_ID
+
+USER_ID_DERIVED
+
+```
+
 **Type**
 String
 
 **Description**
 What permissions the document was shared with.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **Possible Values**
 
@@ -32928,23 +34244,6 @@ to the document itself. Or, a document can be a part of a
 content collection, and the viewer has sharing permissions
 to the collection rather than explicit permissions to the
 document directly.
-
-```
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-USER_ID
-
-USER_ID_DERIVED
-
-```
-
-SEE ALSO:
-
-EventLogFile Supported Event Types
-
-EventLogFile
 
 **Type**
 String
@@ -32980,10 +34279,16 @@ Id
 The 18-character case insensitive ID of the user who’s using
 Salesforce services through the UI or the API.
 
-For example: `00590000000I1SNIA0` .
-
 
 Standard Objects EventLogFile Supported Event Types
+
+For example: `00590000000I1SNIA0` .
+
+SEE ALSO:
+
+EventLogFile Supported Event Types
+
+EventLogFile
 
 ##### Content Transfer Event Type
 
@@ -33006,10 +34311,6 @@ EVENT_TYPE
 FILE_PREVIEW_TYPE
 
 FILE_TYPE
-
-ORGANIZATION_ID
-
-REQUEST_ID
 
 ```
 
@@ -33044,6 +34345,24 @@ String
 **Description**
 The content type of the file version.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+ORGANIZATION_ID
+
+REQUEST_ID
+
+SIZE_BYTES
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+TRANSACTION_TYPE
+
+```
+
 **Type**
 Id
 
@@ -33055,28 +34374,12 @@ For example: `00D000000000123` .
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 The unique ID of a single transaction. A transaction can contain
 one or more events. Each event in a given transaction has the
 same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
-
-```
-SIZE_BYTES
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-TRANSACTION_TYPE
-
-USER_ID
-
-```
 
 **Type**
 Number
@@ -33116,24 +34419,17 @@ operations in the Attachments related list on a case.
 `VersionDownloadApi` represent downloads via the
 user interface and API respectively.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `VersionRenditionDownload` represents a file
 preview action.
 
 **•** `saveVersion` represents a file that’s being uploaded.
 
-**Type**
-Id
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services
-through the UI or the API.
-
-For example: `00530000009M943`
-
 ```
+USER_ID
+
 USER_ID_DERIVED
 
 VERSION_ID
@@ -33149,6 +34445,15 @@ EventLogFile Supported Event Types
 EventLogFile
 
 ##### Continuation Callout Summary Event Type
+
+**Type**
+Id
+
+**Description**
+The 15-character ID of the user who’s using Salesforce services
+through the UI or the API.
+
+For example: `00530000009M943`
 
 **Type**
 Id
@@ -33177,6 +34482,9 @@ version 43.0 and later.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or the REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Fields
 
 **Field** **Details**
@@ -33184,23 +34492,6 @@ Fields
 ```
 CONTINUATION_ID
 
-```
-
-**Type**
-String
-
-**Description**
-A unique ID identifying a sequence of events within a request.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Example**
-SFDC-Continuation-14e3cg85-961d-389e-7bz1-3d171543162a
-
-```
 DURATION
 
 EVENT_TYPE
@@ -33213,9 +34504,16 @@ REQUEST_FORM_SIZE
 
 REQUEST_ID
 
-RESPONSE_SIZE
-
 ```
+
+**Type**
+String
+
+**Description**
+A unique ID identifying a sequence of events within a request.
+
+**Example**
+SFDC-Continuation-14e3cg85-961d-389e-7bz1-3d171543162a
 
 **Type**
 Number
@@ -33256,25 +34554,20 @@ in a continuation, this field can contain up to three space-separated values.
 **Type**
 String
 
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `REQUEST_ID` .
-
-For example: `3nWgxWbDKWWDIk0FKfF5DV` .
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
 **Description**
-The size of the callout response, in bytes. Depending on how many HTTP requests were used
-in a continuation, this field can contain up to three space-separated values.
+The unique ID of a single transaction. A transaction can contain one or more events. Each
+event in a given transaction has the same `REQUEST_ID` .
+
+For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
 ```
+RESPONSE_SIZE
+
 STATUS_CODE
 
 SUCCESS
@@ -33283,9 +34576,14 @@ TIMESTAMP
 
 TIMESTAMP_DERIVED
 
-URL
-
 ```
+
+**Type**
+String
+
+**Description**
+The size of the callout response, in bytes. Depending on how many HTTP requests were used
+in a continuation, this field can contain up to three space-separated values.
 
 **Type**
 String
@@ -33330,24 +34628,16 @@ DateTime
 The access time of Salesforce services in ISO8601-compatible format
 ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 
-For example: `2015-07-27T11:32:59.555Z` . Timezone is GMT.
-
-**Type**
-String
-
-**Description**
-The callout endpoint URL. Depending on how many HTTP requests were used in a
-continuation, this field can contain up to three space-separated values.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
-**Example**
-http://prod.location.amazonaws.com:1000/orders/order/_search
+For example: `2015-07-27T11:32:59.555Z` . Timezone is GMT.
 
 ```
+URL
+
 USER_ID
 
 USER_ID_DERIVED
@@ -33357,6 +34647,16 @@ VF_CONTROLLER_SIZE
 ```
 
 SEE ALSO:
+
+**Type**
+String
+
+**Description**
+The callout endpoint URL. Depending on how many HTTP requests were used in a
+continuation, this field can contain up to three space-separated values.
+
+**Example**
+http://prod.location.amazonaws.com:1000/orders/order/_search
 
 **Type**
 Id
@@ -33393,6 +34693,9 @@ Lightning apps are blocked unless the request comes from a URL listed in your CO
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Fields
 
 **Field** **Details**
@@ -33400,18 +34703,6 @@ Fields
 ```
 EVENT_TYPE
 
-```
-
-**Type**
-String
-
-**Description**
-The type of event. The value is always `CorsViolation` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
 HOST
 
 ORGANIZATION_ID
@@ -33420,11 +34711,13 @@ ORIGIN
 
 REQUEST_ID
 
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
 ```
+
+**Type**
+String
+
+**Description**
+The type of event. The value is always `CorsViolation` .
 
 **Type**
 String
@@ -33469,6 +34762,18 @@ same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+##### CSP Violation Event Type
+
+```
+
 **Type**
 String
 
@@ -33480,17 +34785,12 @@ For example: `20130715233322.670` .
 **Type**
 DateTime
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 The access time of Salesforce services in ISO8601-compatible
 format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 
 For example: `2015-07-27T11:32:59.555Z` . Timezone
 is GMT.
-
-##### CSP Violation Event Type
 
 CSP violation events capture details about blocked resource requests from Lightning Experience pages based on your content security
 policy (CSP). The CSP Violation event type is available in the EventLogFile object in API version 63.0 and later.
@@ -33534,6 +34834,11 @@ directives, `inline` or `eval` .
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 If `BLOCKED_URI` is a URL, the domain for that URL. To allow resources to be loaded from
 the `BLOCKED_URI`, `BLOCKED_URI_DOMAIN` is the `endpointUrl` value to add or
@@ -33541,11 +34846,6 @@ update in the CspTrustedSite Metadata API.
 
 **Example**
 www.example.com
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 ```
 COLUMN_NUMBER
@@ -33606,6 +34906,11 @@ The CSP directive that blocked the resource request.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The CSP violation handling instruction for the user agent at the time of the violation.
 
@@ -33613,11 +34918,6 @@ The CSP violation handling instruction for the user agent at the time of the vio
 
 **•** `enforce` —Enforce the policy violation. For violations with this `DISPOSITION`, the
 resource request was blocked.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 **•** `report` —Report the policy violation. For violations with this `DISPOSITION`, the
 resource request wasn’t blocked, but the violation was reported.
@@ -33630,8 +34930,6 @@ LINE_NUMBER
 REQUEST_ID
 
 RESOURCE_SAMPLE
-
-SOURCE
 
 ```
 
@@ -33673,39 +34971,21 @@ empty string.
 
 **Example**
 
-```
-  var lastRow = 4;greyLink('fRemoveRowLink
-
-  var SFDCSessionVars={\"server\":\"https:\\/\\
-
-  LoginHint.getSavedIdentities(false);
-
-  LoginHint.saveHintEdit();
-
-  function handleLogin(){document.login.un…
-
-```
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
-**Description**
-The page where this CSP violation originated. For example, if your CSP policy prevented an
-image from loading on a Visualforce page, `SOURCE` contains the URL of that page.
-
-**Example**
-
 ```
-                   https:// MyDomainName .my.salesforce.com/apex/HelloWorld
+                    LoginHint.saveHintEdit();
+
+                    function handleLogin(){document.login.un…
 
 ```
 
 ```
+SOURCE
+
 SOURCE_FILE
 
 TIMESTAMP
@@ -33715,6 +34995,20 @@ TIMESTAMP_DERIVED
 ```
 
 Usage
+
+**Type**
+String
+
+**Description**
+The page where this CSP violation originated. For example, if your CSP policy prevented an
+image from loading on a Visualforce page, `SOURCE` contains the URL of that page.
+
+**Example**
+
+```
+  https:// MyDomainName .my.salesforce.com/apex/HelloWorld
+
+```
 
 **Type**
 String
@@ -33759,6 +35053,9 @@ background process, the new file replaces the existing file.
 If the event log file doesn’t exist, either the log generation process hasn’t run yet or there’s no violation data to report for that 24-hour
 window. The event log file is generated only when at least one violation occurred for the day.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 To collect CSP violation logs for multiple days, schedule a daily query of the CSP Violation event type via REST API. For example, you can
 configure a cron job in Unix or a scheduled task in Windows to run the query.
 
@@ -33767,9 +35064,6 @@ SEE ALSO:
 EventLogFile Supported Event Types
 
 EventLogFile
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ##### Dashboard Event Type
 
@@ -33792,8 +35086,6 @@ DASHBOARD_COMPONENT_ID
 DASHBOARD_ID
 
 DASHBOARD_ID_DERIVED
-
-DASHBOARD_TYPE
 
 ```
 
@@ -33830,28 +35122,16 @@ The 15-character ID of the dashboard that was run.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The 18-character case insensitive ID of the dashboard that was
 run.
 
-**Type**
-String
-
-**Description**
-The type of dashboard.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Possible Values**
-
-**•** `R` : Run as running user
-
-**•** `C` : Run as context user
-
-**•** `S` : Run as specific user
-
 ```
+DASHBOARD_TYPE
+
 EVENT_TYPE
 
 IS_SCHEDULED
@@ -33862,11 +35142,21 @@ LOGIN_KEY
 
 ORGANIZATION_ID
 
-REPORT_ID
-
-REPORT_ID_DERIVED
-
 ```
+
+**Type**
+String
+
+**Description**
+The type of dashboard.
+
+**Possible Values**
+
+**•** `R` : Run as running user
+
+**•** `C` : Run as context user
+
+**•** `S` : Run as specific user
 
 **Type**
 String
@@ -33904,6 +35194,26 @@ The 15-character ID of the organization.
 
 For example: `00D000000000123` .
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+REPORT_ID
+
+REPORT_ID_DERIVED
+
+REQUEST_ID
+
+RUN_TIME
+
+SESSION_KEY
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+```
+
 **Type**
 Id
 
@@ -33915,26 +35225,6 @@ Id
 
 **Description**
 The 18-character case insensitive ID of the report that was run.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-REQUEST_ID
-
-RUN_TIME
-
-SESSION_KEY
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-URI
-
-URI_ID_DERIVED
-
-```
 
 **Type**
 String
@@ -33977,28 +35267,17 @@ DateTime
 The access time of Salesforce services in ISO8601-compatible
 format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 
-For example: `2015-07-27T11:32:59.555Z` . Timezone
-is GMT.
-
-**Type**
-String
-
-**Description**
-The URI of the page that’s receiving the request.
-
-For example: `/home/home.jsp` .
-
-**Type**
-ID
-
 
 Standard Objects EventLogFile Supported Event Types
 
-**Description**
-The 18-character case insensitive ID of the URI of the page
-that’s receiving the request.
+For example: `2015-07-27T11:32:59.555Z` . Timezone
+is GMT.
 
 ```
+URI
+
+URI_ID_DERIVED
+
 USER_ID
 
 USER_ID_DERIVED
@@ -34014,6 +35293,21 @@ EventLogFile Supported Event Types
 EventLogFile
 
 ##### Database Save Event Type
+
+**Type**
+String
+
+**Description**
+The URI of the page that’s receiving the request.
+
+For example: `/home/home.jsp` .
+
+**Type**
+ID
+
+**Description**
+The 18-character case insensitive ID of the URI of the page
+that’s receiving the request.
 
 **Type**
 Id
@@ -34042,6 +35336,9 @@ Database Save events track when records are created, updated, or deleted. This o
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Fields
 
 **Field** **Details**
@@ -34051,26 +35348,6 @@ DML_TYPE
 
 EVENT_TYPE
 
-```
-
-**Type**
-String
-
-**Description**
-The type of DML statement.
-
-**Type**
-Id
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Description**
-The type of event.
-
-```
 FIRST_ENTITY_ID
 
 KEY_PREFIX
@@ -34083,11 +35360,19 @@ ORGANIZATION_ID
 
 REQUEST_ID
 
-SAMPLE_FACTOR
-
-SESSION_KEY
-
 ```
+
+**Type**
+String
+
+**Description**
+The type of DML statement.
+
+**Type**
+Id
+
+**Description**
+The type of event.
 
 **Type**
 String
@@ -34126,6 +35411,24 @@ String
 **Description**
 Globally unique id for a given request.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+SAMPLE_FACTOR
+
+SESSION_KEY
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+USER_ID
+
+```
+
 **Type**
 Number
 
@@ -34136,11 +35439,6 @@ A value of 100 means that 1 out of 100 entities saved was logged.
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The user’s unique session ID. You can use this value to identify all user events within a session.
 When a user logs out and logs in again, a new session is started.
@@ -34148,16 +35446,7 @@ When a user logs out and logs in again, a new session is started.
 **Example**
 
 ```
-                   d7DEq/ANa7nNZZVD
-
-```
-
-```
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-USER_ID
+  d7DEq/ANa7nNZZVD
 
 ```
 
@@ -34200,6 +35489,9 @@ Document Attachment Downloads events contain details of document and attachment 
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
+
+Standard Objects EventLogFile Supported Event Types
+
 Fields
 
 **Field** **Details**
@@ -34207,19 +35499,6 @@ Fields
 ```
 ENTITY_ID
 
-```
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the entity that’s associated with the
-document or attachment.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
 EVENT_TYPE
 
 FILE_TYPE
@@ -34232,9 +35511,14 @@ TIMESTAMP
 
 TIMESTAMP_DERIVED
 
-USER_ID
-
 ```
+
+**Type**
+Id
+
+**Description**
+The 15-character ID of the entity that’s associated with the
+document or attachment.
 
 **Type**
 String
@@ -34278,6 +35562,9 @@ For example: `20130715233322.670` .
 **Type**
 DateTime
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The access time of Salesforce services in ISO8601-compatible
 format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
@@ -34285,19 +35572,9 @@ format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 For example: `2015-07-27T11:32:59.555Z` . Timezone
 is GMT.
 
-**Type**
-Id
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services
-through the UI or the API.
-
-For example: `00530000009M943`
-
 ```
+USER_ID
+
 USER_ID_DERIVED
 
 ```
@@ -34309,6 +35586,15 @@ EventLogFile Supported Event Types
 EventLogFile
 
 ##### External Cross-Org Callout Event Type
+
+**Type**
+Id
+
+**Description**
+The 15-character ID of the user who’s using Salesforce services
+through the UI or the API.
+
+For example: `00530000009M943`
 
 **Type**
 Id
@@ -34333,8 +35619,6 @@ Fields
 ```
 ACTION
 
-ENTITY
-
 ```
 
 **Type**
@@ -34347,25 +35631,18 @@ Action performed by the callout.
 
 **•** query
 
-**•** upsert
-
-**•** delete
-
-**Type**
-String
-
-**Description**
-Name of the external object being accessed.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
-**Example**
-Order
+**•** upsert
+
+**•** delete
 
 ```
+ENTITY
+
 EVENT_TYPE
 
 EXECUTE_MS
@@ -34376,9 +35653,16 @@ FILTER
 
 HAVING
 
-LIMIT
-
 ```
+
+**Type**
+String
+
+**Description**
+Name of the external object being accessed.
+
+**Example**
+Order
 
 **Type**
 String
@@ -34419,20 +35703,14 @@ Text
 **Description**
 Reserved for future use.
 
-**Type**
-Number
-
-**Description**
-Maximum number of rows to return for a query. Corresponds to `LIMIT` in SOQL queries.
-
-**Example**
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
 ```
+LIMIT
+
 MESSAGE
 
 OFFSET
@@ -34441,9 +35719,15 @@ ORDERBY
 
 ORGANIZATION_ID
 
-REQUEST_ID
-
 ```
+
+**Type**
+Number
+
+**Description**
+Maximum number of rows to return for a query. Corresponds to `LIMIT` in SOQL queries.
+
+**Example**
 
 **Type**
 String
@@ -34490,22 +35774,14 @@ Id
 **Example**
 00D000000000123
 
-**Type**
-String
-
-**Description**
-Unique ID of a transaction. A transaction can contain one or more events. All events in a
-transaction have the same REQUEST_ID.
-
-**Example**
-4A13-HSKv3CKs-0FKfceaV
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
 ```
+REQUEST_ID
+
 ROWS
 
 ROWS_FETCHED
@@ -34516,11 +35792,17 @@ STATUS
 
 SUBQUERIES
 
-THROUGHPUT
-
-TIMESTAMP
-
 ```
+
+**Type**
+String
+
+**Description**
+Unique ID of a transaction. A transaction can contain one or more events. All events in a
+transaction have the same REQUEST_ID.
+
+**Example**
+4A13-HSKv3CKs-0FKfceaV
 
 **Type**
 Number
@@ -34563,6 +35845,26 @@ Number
 **Description**
 The number of subqueries that the query is split into.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+THROUGHPUT
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+TOTAL_MS
+
+USER_ID
+
+USING_MRU
+
+```
+
 **Type**
 Number
 
@@ -34575,25 +35877,7 @@ String
 **Description**
 The access time of Salesforce services in GMT.
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 For example: `20130715233322.670` .
-
-```
-TIMESTAMP_DERIVED
-
-TOTAL_MS
-
-USER_ID
-
-USING_MRU
-
-```
-
-SEE ALSO:
 
 **Type**
 DateTime
@@ -34625,8 +35909,15 @@ Id
 **Type**
 Boolean
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 Reserved for future use.
+
+SEE ALSO:
 
 EventLogFile Supported Event Types
 
@@ -34638,9 +35929,6 @@ External Custom Apex Callout events represent external data callouts via custom 
 available in the EventLogFile object in API version 40.0 and later.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Fields
 
@@ -34654,10 +35942,6 @@ ENTITY
 EVENT_TYPE
 
 EXECUTE_MS
-
-FETCH_MS
-
-FILTER
 
 ```
 
@@ -34693,11 +35977,29 @@ Type of event. Value is always `ExternalCustomApexCallout` .
 **Type**
 Number
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 How long it took (in milliseconds) for Salesforce to prepare and execute the query. Available
 in API version 42.0 and later.
 
 **Example**
+
+```
+FETCH_MS
+
+FILTER
+
+LIMIT
+
+MESSAGE
+
+OFFSET
+
+```
 
 **Type**
 Number
@@ -34711,30 +36013,12 @@ Available in API version 42.0 and later.
 **Type**
 Text
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 Field expressions to filter which rows to return. Corresponds to `WHERE` in SOQL queries.
 
 **Example**
 Filter:[columnName=CustomerID, columnValue=537, subfilters=null, tableName=Order,
 type=EQUALS]
-
-```
-LIMIT
-
-MESSAGE
-
-OFFSET
-
-ORDERBY
-
-ORGANIZATION_ID
-
-```
 
 **Type**
 Number
@@ -34761,8 +36045,26 @@ Number
 Number of rows to skip when paging through a result set. Corresponds to `OFFSET` in SOQL
 queries.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Example**
 0 (default)
+
+```
+ORDERBY
+
+ORGANIZATION_ID
+
+REQUEST_ID
+
+ROWS
+
+ROWS_FETCHED
+
+```
 
 **Type**
 String
@@ -34780,26 +36082,8 @@ Id
 **Description**
 15-character ID of the organization.
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Example**
 00D000000000123
-
-```
-REQUEST_ID
-
-ROWS
-
-ROWS_FETCHED
-
-SELECT
-
-STATUS
-
-```
 
 **Type**
 String
@@ -34830,6 +36114,26 @@ Number of rows fetched by the callout. Available in API version 42.0 and later.
 
 **Example**
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+SELECT
+
+STATUS
+
+THROUGHPUT
+
+TIMESTAMP
+
+SUBQUERIES
+
+TIMESTAMP_DERIVED
+
+```
+
 **Type**
 String
 
@@ -34847,11 +36151,6 @@ Boolean
 **Description**
 Whether the query was successful.
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Possible Values**
 
 **•** 1—Success
@@ -34859,21 +36158,6 @@ Standard Objects EventLogFile Supported Event Types
 **•** 0—Failed
 
 **•** Empty—Failed with no logged status or message
-
-```
-THROUGHPUT
-
-TIMESTAMP
-
-SUBQUERIES
-
-TIMESTAMP_DERIVED
-
-TOTAL_MS
-
-USER_ID
-
-```
 
 **Type**
 Number
@@ -34905,7 +36189,21 @@ DateTime
 The access time of Salesforce services in ISO8601-compatible format
 ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 For example: `2015-07-27T11:32:59.555Z` . Timezone is GMT.
+
+```
+TOTAL_MS
+
+USER_ID
+
+```
+
+SEE ALSO:
 
 **Type**
 Number
@@ -34919,18 +36217,11 @@ results.
 **Type**
 Id
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 15-character ID of the user accessing the external system.
 
 **Example**
 00530000009M943
-
-SEE ALSO:
 
 EventLogFile Supported Event Types
 
@@ -34949,10 +36240,6 @@ Fields
 
 ```
 ACTION
-
-DATA_SOURCE_NAME
-
-EVENT_TYPE
 
 ```
 
@@ -34973,30 +36260,22 @@ For Amazon DynamoDB data source:
 
 **•** update
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **•** upsert
 
 For Amazon Athena data source:
 
 **•** query
 
-**Type**
-String
-
-**Description**
-Name of the external data source being accessed.
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Description**
-Type of event. Value is always `ExternalDataSourceCallout` .
-
 ```
+DATA_SOURCE_NAME
+
+EVENT_TYPE
+
 EXTERNAL_OBJECT
 
 FETCH_MS
@@ -35007,11 +36286,19 @@ LIMIT
 
 MESSAGE
 
-NEXT_LINK
-
-OFFSET
-
 ```
+
+**Type**
+String
+
+**Description**
+Name of the external data source being accessed.
+
+**Type**
+String
+
+**Description**
+Type of event. Value is always `ExternalDataSourceCallout` .
 
 **Type**
 String
@@ -35046,6 +36333,26 @@ String
 **Description**
 Error or warning message associated with the failed call.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+NEXT_LINK
+
+OFFSET
+
+OPERATION
+
+ORDERBY
+
+ORGANIZATION_ID
+
+PARENT_CALLOUT
+
+```
+
 **Type**
 String
 
@@ -35059,27 +36366,9 @@ a unique hash string.
 **Type**
 Number
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 Number of rows to skip when paging through a result set. Corresponds to `OFFSET` in
 queries to Amazon Athena. This field is not supported by queries to Amazon DynamoDB.
-
-```
-OPERATION
-
-ORDERBY
-
-ORGANIZATION_ID
-
-PARENT_CALLOUT
-
-PROVIDER_TYPE
-
-```
 
 **Type**
 String
@@ -35119,6 +36408,26 @@ whose request resulted in the multi-page result set.
 **Example**
 4EoZtuBzzRIXSk-ysRdf1F-1
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+PROVIDER_TYPE
+
+REQUEST_ID
+
+RESPONSE_SIZE
+
+ROWS_FETCHED
+
+SEARCH
+
+SELECT
+
+```
+
 **Type**
 String
 
@@ -35131,26 +36440,6 @@ Amazon Athena.
 **•** `amazonDynamodb`
 
 **•** `amazonAthena`
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-REQUEST_ID
-
-RESPONSE_SIZE
-
-ROWS_FETCHED
-
-SEARCH
-
-SELECT
-
-STATUS
-
-```
 
 **Type**
 String
@@ -35192,8 +36481,28 @@ Comma-separated list of fields being queried. Corresponds to `SELECT` in queries
 To query, Salesforce Connect adapter uses PartiQL with Amazon DynamoDB and SQL with
 Amazon Athena.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Example**
 CustomerID,OrderDate,OrderID,ShipCity,ShipCountry
+
+```
+STATUS
+
+STATUS_CODE
+
+TABLE_NAME
+
+THROUGHPUT
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+```
 
 **Type**
 Boolean
@@ -35205,29 +36514,7 @@ Whether the query was successful.
 
 **•** 1—Success
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **•** 0—Failed
-
-```
-STATUS_CODE
-
-TABLE_NAME
-
-THROUGHPUT
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-TOTAL_MS
-
-USER_ID
-
-```
 
 **Type**
 Number
@@ -35267,6 +36554,18 @@ The access time of Salesforce services in ISO8601-compatible format
 
 For example: `2015-07-27T11:32:59.555Z` . Timezone is GMT.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+TOTAL_MS
+
+USER_ID
+
+```
+
 **Type**
 Number
 
@@ -35279,11 +36578,6 @@ Id
 
 **Description**
 15-character ID of the user accessing the external data source.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 **Example**
 00530000009M943
@@ -35305,10 +36599,6 @@ ACTION
 BYTES
 
 ENTITY
-
-EVENT_TYPE
-
-EXECUTE_MS
 
 ```
 
@@ -35338,8 +36628,28 @@ String
 **Description**
 Name of the external object being accessed.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Example**
 Order
+
+```
+EVENT_TYPE
+
+EXECUTE_MS
+
+EXPAND
+
+FETCH_MS
+
+FILTER
+
+LIBRARY
+
+```
 
 **Type**
 String
@@ -35350,31 +36660,11 @@ Type of event. Value is always `ExternalODataCallout` .
 **Type**
 Number
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 How long it took (in milliseconds) for Salesforce to prepare and execute the query. Available
 in API version 42.0 and later.
 
 **Example**
-
-```
-EXPAND
-
-FETCH_MS
-
-FILTER
-
-LIBRARY
-
-LIMIT
-
-MESSAGE
-
-```
 
 **Type**
 String
@@ -35407,6 +36697,24 @@ String
 **Description**
 Reserved for future use.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+LIMIT
+
+MESSAGE
+
+NEXT_LINK
+
+OFFSET
+
+ORDERBY
+
+```
+
 **Type**
 Number
 
@@ -35419,27 +36727,11 @@ and `$top` in OData queries.
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 Error or warning message associated with the failed call.
 
 **Example**
 The OData query result was too large, so the external data didn’t load.
-
-```
-NEXT_LINK
-
-OFFSET
-
-ORDERBY
-
-ORGANIZATION_ID
-
-```
 
 **Type**
 String
@@ -35474,11 +36766,29 @@ Field or column to use for sorting query results, and whether to sort the result
 (default) or descending order. Corresponds to `ORDER BY` in SOQL queries and `$orderby`
 in OData queries.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Examples**
 
 **•** ShipName
 
 **•** ShipName desc
+
+```
+ORGANIZATION_ID
+
+PARENT_CALLOUT
+
+PROVIDER_TYPE
+
+RATE_LIMIT_USAGE_PERCENT
+
+REQUEST_ID
+
+```
 
 **Type**
 Id
@@ -35488,26 +36798,6 @@ Id
 
 **Example**
 00D000000000123
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-PARENT_CALLOUT
-
-PROVIDER_TYPE
-
-RATE_LIMIT_USAGE_PERCENT
-
-REQUEST_ID
-
-REQUESTS
-
-ROWS
-
-```
 
 **Type**
 String
@@ -35550,8 +36840,28 @@ String
 Unique ID of a transaction. A transaction can contain one or more events. All events in a
 transaction have the same REQUEST_ID.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Example**
 4A13-HSKv3CKs-0FKfceaV
+
+```
+REQUESTS
+
+ROWS
+
+ROWS_FETCHED
+
+SEARCH
+
+SELECT
+
+STATUS
+
+```
 
 **Type**
 Number
@@ -35562,28 +36872,10 @@ Reserved for future use.
 **Type**
 Number
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 Total number of records in the result set. Available in API version 42.0 and later.
 
 **Example**
-
-```
-ROWS_FETCHED
-
-SEARCH
-
-SELECT
-
-STATUS
-
-THROUGHPUT
-
-```
 
 **Type**
 Number
@@ -35619,6 +36911,11 @@ CustomerID,OrderDate,OrderID,ShipCity,ShipCountry
 **Type**
 Boolean
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 Whether the query was successful.
 
@@ -35628,24 +36925,9 @@ Whether the query was successful.
 
 **•** 0—Failed
 
-**Type**
-Number
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Description**
-Number of records retrieved in one second.
-
-Available in API version 42.0 and later. However, this field isn’t supported for the OData 2.0
-adapter on orgs created before Spring ’18.
-
-**Example**
-3025.67
-
 ```
+THROUGHPUT
+
 TIMESTAMP
 
 TIMESTAMP_DERIVED
@@ -35656,7 +36938,17 @@ USER_ID
 
 ```
 
-SEE ALSO:
+**Type**
+Number
+
+**Description**
+Number of records retrieved in one second.
+
+Available in API version 42.0 and later. However, this field isn’t supported for the OData 2.0
+adapter on orgs created before Spring ’18.
+
+**Example**
+3025.67
 
 **Type**
 String
@@ -35688,8 +36980,15 @@ Id
 **Description**
 15-character ID of the user accessing the external system.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Example**
 00530000009M943
+
+SEE ALSO:
 
 EventLogFile Supported Event Types
 
@@ -35699,9 +36998,6 @@ EventLogFile
 
 Flow Execution events contain information about flows that were executed including details such as total execution time, number of
 interviews, and number of errors.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
@@ -35719,10 +37015,6 @@ EVENT_TYPE
 TIMESTAMP
 
 REQUEST_ID
-
-ORGANIZATION_ID
-
-USER_ID
 
 ```
 
@@ -35755,11 +37047,27 @@ For example: `20210606032436.520` .
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The unique ID of a single transaction. A transaction can contain one or more events. Each
 event in a given transaction has the same `REQUEST_ID` .
 
 For example: `TID:000000000000c00fff` .
+
+```
+ORGANIZATION_ID
+
+USER_ID
+
+PLANNER_IDENTIFIER
+
+PROCESS_TYPE
+
+```
 
 **Type**
 Id
@@ -35775,19 +37083,7 @@ Id
 **Description**
 The 15-character ID of the user who executed the flow through the UI or the API.
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 For example: `00530000009M943`
-
-```
-PLANNER_IDENTIFIER
-
-PROCESS_TYPE
-
-```
 
 **Type**
 string
@@ -35824,6 +37120,11 @@ value is available in API version 63.0 and later.
 
 **•** `AutoLaunchedFlow` —A flow that doesn’t require user interaction.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **•** `CheckoutFlow` —A flow used in Lightning B2B Commerce to create a checkout in a
 store. This value is available in API version 48.0 and later.
 
@@ -35838,18 +37139,12 @@ questions with different stages in customer lifecycles. This value is available 
 **•** `CustomEvent` —A process that is invoked when it receives a platform event message.
 In the UI, it’s an event process. This value is available in API version 41.0 and later.
 
-**•** `DataCaptureFlow`  - In the UI, Data Capture flows configure the Form tab in the
+**•** `DataCaptureFlow`                   - In the UI, Data Capture flows configure the Form tab in the
 Field Service mobile app. When the Data Capture flow is launched, its Flow metadata is
 publicly available in JavaScript format. This value is available in API version 62.0 and later.
 
 **•** `DcvrFrameworkDataCaptureFlow` —A screen flow that presents assessment
 questions from Discovery Framework. Launches when invoked by a user on a mobile
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 device. This type of flow collects or displays information, requires user interaction, and
 works offline or online. This value is available in API version 62.0 and later.
 
@@ -35890,6 +37185,11 @@ resource in REST API invokes. This value is available in API version 38.0 and la
 **•** `Journey` —An audience-driven flow for Marketing Cloud. This value is available in API
 version 57.0 and later.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **•** `LoginFlow` —A flow for login. This value is available in API version 51.0 and later.
 
 **•** `LoyaltyManagementFlow` —A flow for the Loyalty Management app that’s
@@ -35908,11 +37208,6 @@ recommendation launches its assigned flow. This value is available in API versio
 
 **•** `RoutingFlow` —A flow for Salesforce Omni-Channel routing and other business logic.
 This value is available in API version 52.0 and later.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 **•** `Survey` —A flow for Salesforce Surveys. From the UI, this type of flow is created in
 Survey Builder. This value is available in API version 42.0 and later.
@@ -35954,12 +37249,6 @@ These values are reserved for future use.
 ```
 FLOW_VERSION_ID
 
-FLOW_LOAD_TIME
-
-TOTAL_EXECUTION_TIME
-
-NUMBER_OF_INTERVIEWS
-
 ```
 
 **Type**
@@ -35967,6 +37256,24 @@ Id
 
 **Description**
 The ID of the flow version that was executed.
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+FLOW_LOAD_TIME
+
+TOTAL_EXECUTION_TIME
+
+NUMBER_OF_INTERVIEWS
+
+NUMBER_OF_ERRORS
+
+TIMESTAMP_DERIVED
+
+```
 
 **Type**
 Number
@@ -35985,18 +37292,6 @@ Number
 
 **Description**
 The number of flow interviews that started after the flow version was executed.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-NUMBER_OF_ERRORS
-
-TIMESTAMP_DERIVED
-
-```
 
 **Type**
 Number
@@ -36027,10 +37322,6 @@ Fields
 ```
 CLIENT_IP
 
-CPU_TIME
-
-EVENT_TYPE
-
 ```
 
 **Type**
@@ -36039,10 +37330,30 @@ String
 **Description**
 The IP address of the client that’s using Salesforce services.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Example**
 
 ```
-  96.43.144.26
+                   96.43.144.26
+
+```
+
+```
+CPU_TIME
+
+EVENT_TYPE
+
+GROUP_ID
+
+GROUP_TYPE
+
+LOGIN_KEY
+
+MEMBER_ID
 
 ```
 
@@ -36058,24 +37369,6 @@ String
 
 **Description**
 The type of event. The value is always `GroupMembership` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-GROUP_ID
-
-GROUP_TYPE
-
-LOGIN_KEY
-
-MEMBER_ID
-
-OPERATION
-
-```
 
 **Type**
 Id
@@ -36124,6 +37417,11 @@ event and ends with either a logout event or the user session expiring.
 **Type**
 Id
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The ID of the member added to or removed from the group. Public groups can contain
 individual users, other groups, or users in a specified role or territory. Queues can contain
@@ -36131,6 +37429,19 @@ individual users, roles, public groups, territories, connections, or partner use
 
 **Example**
 `005XXXXXXXXXXXX` or `00GXXXXXXXXXXXX`
+
+```
+OPERATION
+
+ORGANIZATION_ID
+
+REQUEST_ID
+
+RUN_TIME
+
+SESSION_KEY
+
+```
 
 **Type**
 String
@@ -36143,30 +37454,10 @@ Valid values are:
 
 **•** `DeletedGroupMember`
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Example**
 
 ```
-                   DeletedGroupMember
-
-```
-
-```
-ORGANIZATION_ID
-
-REQUEST_ID
-
-RUN_TIME
-
-SESSION_KEY
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
+  DeletedGroupMember
 
 ```
 
@@ -36208,6 +37499,11 @@ The amount of time that the request took in milliseconds.
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The user’s unique session ID. You can use this value to identify all user events within a session.
 When a user logs out and logs in again, a new session is started.
@@ -36215,7 +37511,20 @@ When a user logs out and logs in again, a new session is started.
 **Example**
 
 ```
-  d7DEq/ANa7nNZZVD
+                   d7DEq/ANa7nNZZVD
+
+```
+
+```
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+URI
+
+URI_ID_DERIVED
+
+USER_ID
 
 ```
 
@@ -36235,11 +37544,6 @@ The access time of Salesforce services in GMT.
 **Type**
 DateTime
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The access time of Salesforce services in ISO8601-compatible format
 ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
@@ -36247,22 +37551,9 @@ The access time of Salesforce services in ISO8601-compatible format
 **Example**
 
 ```
-                   2015-07-27T11:32:59.555Z
+  2015-07-27T11:32:59.555Z
 
 ```
-
-```
-URI
-
-URI_ID_DERIVED
-
-USER_ID
-
-USER_ID_DERIVED
-
-```
-
-SEE ALSO:
 
 **Type**
 String
@@ -36303,6 +37594,18 @@ The 15-character ID of the user who’s using Salesforce services through the UI
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+USER_ID_DERIVED
+
+```
+
+SEE ALSO:
+
 **Type**
 Id
 
@@ -36320,9 +37623,6 @@ UI or the API.
 EventLogFile Supported Event Types
 
 EventLogFile
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ##### Hostname Redirects Event Type
 
@@ -36348,10 +37648,6 @@ EVENT_TYPE
 
 TIMESTAMP
 
-REQUEST_ID
-
-ORGANIZATION_ID
-
 ```
 
 **Type**
@@ -36370,6 +37666,30 @@ The access time of Salesforce services in GMT.
 
 ```
   20220715233322.670
+
+```
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+REQUEST_ID
+
+ORGANIZATION_ID
+
+USER_ID
+
+RUN_TIME
+
+CPU_TIME
+
+URI
+
+SESSION_KEY
+
+LOGIN_KEY
 
 ```
 
@@ -36396,30 +37716,6 @@ The 15-character ID of the org.
 
 ```
   00D000000000345
-
-```
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-USER_ID
-
-RUN_TIME
-
-CPU_TIME
-
-URI
-
-SESSION_KEY
-
-LOGIN_KEY
-
-MESSAGE
-
-DOMAIN
 
 ```
 
@@ -36456,8 +37752,26 @@ This field is unused in the HostnameRedirects event type. The value is always nu
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 This field is unused in the HostnameRedirects event type. The value is always null.
+
+```
+MESSAGE
+
+DOMAIN
+
+SOURCE_HOSTNAME
+
+TARGET_HOSTNAME
+
+PATH
+
+```
 
 **Type**
 String
@@ -36473,22 +37787,6 @@ Filter, Sort
 
 **Description**
 This field is unused in the HostnameRedirects event type. The value is always null.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-SOURCE_HOSTNAME
-
-TARGET_HOSTNAME
-
-PATH
-
-REDIRECT_REASON
-
-```
 
 **Type**
 String
@@ -36531,8 +37829,21 @@ present.
 **Example**
 If the user is redirected from
 `https://MyOldCompany.my.site.com/shop?q=sneakers` to
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 `https://MyNewCompany.my.site.com/shop?q=sneakers`, the value of
 this field is `/shop` .
+
+```
+REDIRECT_REASON
+
+IS_BLOCKED_REDIRECTION
+
+```
 
 **Type**
 String
@@ -36550,12 +37861,6 @@ was redirected to the current My Domain equivalent.
 [use with Lightning Out. To prevent issues, the original URL was processed as-is. To avoid](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.lightning_out)
 issues after `*.force.com` site hostname redirections are stopped, update hard-coded
 references to the hostname in your Lightning Out integrations. For a Lightning Out code
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 [example that uses a site hostname, see Share Lightning Out Apps with Unauthenticated](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.lightning_out_public_apps)
 [Users in the Salesforce Lightning Component Library.](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.lightning_out_public_apps)
 
@@ -36583,24 +37888,31 @@ until enhanced domains were deployed. The `SOURCE_HOSTNAME` is one of those
 hostnames. For non-production orgs, redirections for those hostnames stopped in Winter
 ’25.
 
-```
-IS_BLOCKED_REDIRECTION
-
-REFERRER
-
-```
-
 **Type**
 Boolean
 
 **Description**
 Indicates whether the redirection was blocked.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Possible Values**
 
 **•** `1` —The redirection was blocked and returned an HTTP 404 response.
 
 **•** `0` —The redirection proceeded and returned an HTTP 301 or 307 response.
+
+```
+REFERRER
+
+ORIGIN
+
+TIMESTAMP_DERIVED
+
+```
 
 **Type**
 String
@@ -36612,11 +37924,6 @@ is shared.
 
 For example, if a user clicked a link to the `SOURCE_HOSTNAME` from a web page, and
 that web page is on a different domain:
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 **•** if the `Referrer-Policy` HTTP Header is `no-referrer-when-downgrade`,
 `REFERRER` includes the origin, path, and query-string parameters up to the first hash
@@ -36634,17 +37941,6 @@ Standard Objects EventLogFile Supported Event Types
 **•** https://www.example.com/page/page/index.htm
 
 **•** https://www.example.com/page/index.htm?q="Salesforce"
-
-```
-ORIGIN
-
-TIMESTAMP_DERIVED
-
-USER_ID_DERIVED
-
-CLIENT_IP
-
-```
 
 **Type**
 String
@@ -36670,6 +37966,11 @@ of `no-cors`, `ORIGIN` is null.
 **Type**
 DateTime
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The access time of Salesforce services in ISO8601-compatible format
 ( `YYYY-MM-DDTHH:MM:SS.sssZ` ). The time zone is always GMT.
@@ -36677,9 +37978,20 @@ The access time of Salesforce services in ISO8601-compatible format
 **Example**
 
 ```
-  2022-07-27T11:32:59.555Z.
+                   2022-07-27T11:32:59.555Z.
 
 ```
+
+```
+USER_ID_DERIVED
+
+CLIENT_IP
+
+URI_ID_DERIVED
+
+```
+
+Usage
 
 **Type**
 String
@@ -36690,27 +38002,15 @@ This field is unused in the HostnameRedirects event type. The value is always nu
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The IP address of the client that made this request.
 
 **Possible Values/Example**
 
 ```
-                   111.43.144.26
+  111.43.144.26
 
 ```
-
-```
-URI_ID_DERIVED
-
-```
-
-Usage
 
 **Type**
 String
@@ -36738,6 +38038,10 @@ within each hour.
 For example, if `https://MyCompany.my.site.com/shop` is redirected at 02:01 PM and
 `https://MyCompany.my.site.com/shop?q=sneakers` is redirected for another user at 02:02 PM, only the
 redirection that occurred at 02:01 PM is captured for `MyCompany.my.site.com/shop` for that hour. But if
+
+
+Standard Objects EventLogFile Supported Event Types
+
 `https://MyCompany.my.site.com/help` is redirected at 2:05 PM, that redirection is captured on a new line because
 the `MyCompany.my.site.com/help` hostname and path combination differs from `MyCompany.my.site.com/shop` .
 
@@ -36754,9 +38058,6 @@ window. The log file is generated only when at least one redirection occurred fo
 
 To collect hostname redirection logs for multiple days, schedule a daily query of the Hostname Redirects event type via REST API. For
 example, you can configure a cron job in Unix or a scheduled task in Windows to run the query.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 Salesforce CLI Example
 
@@ -36815,6 +38116,9 @@ Salesforce CLI.
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Example CSV formatted response**
 
 ```
@@ -36854,12 +38158,6 @@ Salesforce CLI.
 
      "","0","https://www.example.com/login_hub.htm","https://www.example.com",
 
-```
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
      "2022-08-03T02:52:30.015Z","","203.0.113.0",""
 
      "HostnameRedirects","20220803081241","4kTkSZ1PzwSTHDkCagbl9-","00D000000000aIW",
@@ -36914,6 +38212,9 @@ with your access token. In a production org, replace `MyDomainName` with your My
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Example raw response**
 
 ```
@@ -36937,9 +38238,6 @@ SEE ALSO:
 EventLogFile Supported Event Types
 
 EventLogFile
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ##### Insecure External Assets Event Type
 
@@ -36966,8 +38264,6 @@ Fields
 ```
 ASSET_TYPE
 
-CLIENT_IP
-
 ```
 
 **Type**
@@ -36990,6 +38286,11 @@ Type of insecure asset.
 
 **•** `Image`
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **•** `Media`
 
 **•** `Object`
@@ -37002,21 +38303,9 @@ Type of insecure asset.
 
 **•** `Style`
 
-**Type**
-String
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”.
-
-For example: `96.43.144.26` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 ```
+CLIENT_IP
+
 CPU_TIME
 
 DISPOSITION
@@ -37025,9 +38314,16 @@ DOCUMENT_URI
 
 EVENT_TYPE
 
-INSECURE_URI
-
 ```
+
+**Type**
+String
+
+**Description**
+The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
+a login from AppExchange) is shown as “Salesforce.com IP”.
+
+For example: `96.43.144.26` .
 
 **Type**
 Number
@@ -37065,8 +38361,26 @@ https://company.my.salesforce.com/00XXXXXXXXX
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The type of event. The value is always `InsecureExternalAssets` .
+
+```
+INSECURE_URI
+
+LOGIN_KEY
+
+NETWORK_ID
+
+ORGANIZATION_ID
+
+REQUEST_ID
+
+```
 
 **Type**
 String
@@ -37080,28 +38394,6 @@ instead.
 
 **Example**
 http://pbs.twimg.com/profile_images/5699091412070816/Z4Stwts_normal.jpeg
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-LOGIN_KEY
-
-NETWORK_ID
-
-ORGANIZATION_ID
-
-REQUEST_ID
-
-RUN_TIME
-
-SESSION_KEY
-
-TIMESTAMP
-
-```
 
 **Type**
 String
@@ -37138,6 +38430,24 @@ event in a given transaction has the same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+RUN_TIME
+
+SESSION_KEY
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+TYPE
+
+```
+
 **Type**
 Number
 
@@ -37156,26 +38466,10 @@ For example: `d7DEq/ANa7nNZZVD` .
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The access time of Salesforce services in GMT.
 
 For example: `20130715233322.670` .
-
-```
-TIMESTAMP_DERIVED
-
-TYPE
-
-UNIQUE_ID
-
-URI
-
-```
 
 **Type**
 DateTime
@@ -37212,6 +38506,26 @@ https://mycompany.my.salesforce.com)
 
 **•** `Unknown` —other type of page
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+UNIQUE_ID
+
+URI
+
+URI_ID_DERIVED
+
+USER_ID
+
+USER_ID_DERIVED
+
+```
+
+Usage
+
 **Type**
 String
 
@@ -37229,22 +38543,6 @@ String
 The URI of the page that’s receiving the request.
 
 For example: `/home/home.jsp` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-URI_ID_DERIVED
-
-USER_ID
-
-USER_ID_DERIVED
-
-```
-
-Usage
 
 **Type**
 ID
@@ -37277,6 +38575,9 @@ EventLogFile Supported Event Types
 
 EventLogFile
 
+
+Standard Objects EventLogFile Supported Event Types
+
 ##### Insufficient Access Event Type
 
 Insufficient Access events contain details about errors relating to insufficient account, case, contact, and opportunity record access, so
@@ -37298,9 +38599,6 @@ new parent account or the owner of the case, contact, or opportunity doesn’t h
 
 Insufficient access errors resulting from bulk operations involving two or more records aren’t logged.
 
-
-Standard Objects EventLogFile Supported Event Types
-
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
 [For more information on interpreting Insufficient Access events, see this knowledge article.](https://help.salesforce.com/s/articleView?id=000396437&type=1&language=en_US)
@@ -37313,10 +38611,6 @@ Fields
 ACCESS_ERROR
 
 ACTUAL_LOGGED_IN_USER_ID
-
-ENTITY_TYPE
-
-ERROR_DESCRIPTION
 
 ```
 
@@ -37358,6 +38652,26 @@ operation fails because the teammate doesn’t have the required access. In this
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+ENTITY_TYPE
+
+ERROR_DESCRIPTION
+
+ERROR_TIMESTAMP
+
+EVENT_TYPE
+
+ORGANIZATION_ID
+
+RECORD_ID
+
+```
+
 **Type**
 String
 
@@ -37376,26 +38690,6 @@ Description of the insufficient access error that the user received.
 
 **Example**
 User 005XXXXXXXXXXXX doesn't have full access for the record 001XXXXXXXXXXXX.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-ERROR_TIMESTAMP
-
-EVENT_TYPE
-
-ORGANIZATION_ID
-
-RECORD_ID
-
-REQUEST_ID
-
-REQUESTED_ACCESS_LEVEL
-
-```
 
 **Type**
 String
@@ -37442,6 +38736,24 @@ The ID of the record that the user doesn’t have access to.
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+REQUEST_ID
+
+REQUESTED_ACCESS_LEVEL
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+USER_ID
+
+```
+
 **Type**
 String
 
@@ -37468,11 +38780,6 @@ The access level required by the user’s attempted action on the record. Valid 
 
 **•** `READ`
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **•** `TRANSFER`
 
 **•** `WRITE`
@@ -37480,18 +38787,7 @@ Standard Objects EventLogFile Supported Event Types
 **Example**
 
 ```
-                   FULL
-
-```
-
-```
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-USER_ID
-
-USER_ID_DERIVED
+  FULL
 
 ```
 
@@ -37528,15 +38824,28 @@ Id
 **Description**
 The 15-character ID of the user for whom the insufficient access error occurred, either when
 the user couldn’t access a record, the user couldn’t complete an operation, or the user was
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 the intended recipient of a record transfer that failed because the user didn’t have the required
 access.
 
 **Example**
 
 ```
-  005XXXXXXXXXXXX
+                   005XXXXXXXXXXXX
 
 ```
+
+```
+USER_ID_DERIVED
+
+```
+
+SEE ALSO:
 
 **Type**
 Id
@@ -37546,19 +38855,12 @@ The 18-character case-insensitive ID of the user for whom the insufficient acces
 occurred, either when the user couldn’t access a record or the user was the intended recipient
 of a record transfer that wasn’t completed.
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Example**
 
 ```
-                   005XXXXXXXXXXXXIA0
+  005XXXXXXXXXXXXIA0
 
 ```
-
-SEE ALSO:
 
 EventLogFile Supported Event Types
 
@@ -37584,10 +38886,6 @@ ACTION_TYPE
 
 ACTION_VERSION
 
-API_CALLER
-
-BOT_IDENTIFIER
-
 ```
 
 **Type**
@@ -37605,26 +38903,17 @@ InvocableActionType being referenced.
 **Type**
 String
 
-**Description**
-The invocable action version.
-
-**Type**
-String
-
-**Description**
-Identifier of the API caller. This is only populated when the
-action is invoked from a REST API call
-
-**Type**
-string
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Description**
-The ID of the bot.
+The invocable action version.
 
 ```
+API_CALLER
+
+BOT_IDENTIFIER
+
 BOT_SESSION_IDENTIFIER
 
 DURATION
@@ -37637,11 +38926,20 @@ FLOW_VERSION_ID
 
 ORGANIZATION_ID
 
-PLANNER_IDENTIFIER
-
-REQUEST_COUNT
-
 ```
+
+**Type**
+String
+
+**Description**
+Identifier of the API caller. This is only populated when the
+action is invoked from a REST API call
+
+**Type**
+string
+
+**Description**
+The ID of the bot.
 
 **Type**
 string
@@ -37679,22 +38977,14 @@ Id
 **Description**
 The number of invoked requests.
 
-**Type**
-string
-
-**Description**
-The ID of the agent planner.
-
-**Type**
-Number
-
-**Description**
-The number of invoked requests.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 ```
+PLANNER_IDENTIFIER
+
+REQUEST_COUNT
+
 REQUEST_ID
 
 TIMESTAMP
@@ -37706,6 +38996,18 @@ USER_ID
 ##### Knowledge Article View Event Type
 
 ```
+
+**Type**
+string
+
+**Description**
+The ID of the agent planner.
+
+**Type**
+Number
+
+**Description**
+The number of invoked requests.
 
 **Type**
 String
@@ -37744,10 +39046,21 @@ Fields
 
 **Field** **Details**
 
+
+Standard Objects EventLogFile Supported Event Types
+
 ```
 ARTICLE_ID
 
 ARTICLE_STATUS
+
+ARTICLE_VERSION
+
+ARTICLE_VERSION_ID
+
+CONTEXT
+
+ENTITY
 
 ```
 
@@ -37762,9 +39075,6 @@ For example: `00Dxx0000001gEb` .
 **Type**
 Character
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 Possible values are:
 
@@ -37773,21 +39083,6 @@ Possible values are:
 **•** `O` —Online
 
 **•** `A` —Archived
-
-```
-ARTICLE_VERSION
-
-ARTICLE_VERSION_ID
-
-CONTEXT
-
-ENTITY
-
-EVENT_TYPE
-
-LANGUAGE
-
-```
 
 **Type**
 Number
@@ -37828,6 +39123,24 @@ Entity requested.
 
 For example: `Knowledge__kav` .
 
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+EVENT_TYPE
+
+LANGUAGE
+
+LARGE_LANGUAGE_MODEL
+
+LAST_VERSION
+
+ORGANIZATION_ID
+
+REQUEST_ID
+
+```
+
 **Type**
 String
 
@@ -37838,28 +39151,12 @@ The type of event. The value is always
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
 **Description**
 iso-code of the language.
 
 For example: `en_US` /
 
 **Example**
-
-```
-LARGE_LANGUAGE_MODEL
-
-LAST_VERSION
-
-ORGANIZATION_ID
-
-REQUEST_ID
-
-SESSION_ID
-
-```
 
 **Type**
 String
@@ -37898,21 +39195,12 @@ same `REQUEST_ID` .
 
 For example: `3nWgxWbDKWWDIk0FKfF5DV` .
 
-**Type**
-String
-
-**Description**
-Session ID of the request.
-
-For example:
-`gV7pCSW2vGaaJNFi3GSpuPIjNbKVbSxRvx34LJsIvuc=` .
-
-**Example**
-
 
 Standard Objects EventLogFile Supported Event Types
 
 ```
+SESSION_ID
+
 TIMESTAMP
 
 TIMESTAMP_DERIVED
@@ -37924,6 +39212,17 @@ USER_ID_DERIVED
 USER_TYPE
 
 ```
+
+**Type**
+String
+
+**Description**
+Session ID of the request.
+
+For example:
+`gV7pCSW2vGaaJNFi3GSpuPIjNbKVbSxRvx34LJsIvuc=` .
+
+**Example**
 
 **Type**
 String
@@ -37971,6 +39270,9 @@ Possible values are:
 
 **•** `A` —App
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `C` —Customer Portal
 
 **•** `P` —Partner Portal
@@ -37978,9 +39280,6 @@ Possible values are:
 **•** `G` —guest
 
 **•**
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ##### Lightning Error Event Type
 
@@ -38003,8 +39302,6 @@ BROWSER_VERSION
 CLIENT_GEO
 
 CLIENT_ID
-
-CLIENT_IP
 
 ```
 
@@ -38046,16 +39343,27 @@ The geolocation of the client in the form of `<Country>/<State|Province>` .
 **Type**
 String
 
-**Description**
-The API client ID.
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
+
+**Description**
+The API client ID.
+
+```
+CLIENT_IP
+
+COMPONENT_NAME
+
+CONNECTION_TYPE
+
+DEVICE_ID
+
+```
+
+**Type**
+String
 
 **Description**
 The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
@@ -38064,18 +39372,7 @@ a login from AppExchange) is shown as “Salesforce.com IP”.
 **Example**
 
 ```
-                   96.43.144.26
-
-```
-
-```
-COMPONENT_NAME
-
-CONNECTION_TYPE
-
-DEVICE_ID
-
-DEVICE_MODEL
+  96.43.144.26
 
 ```
 
@@ -38124,25 +39421,18 @@ The type of connection.
 **Type**
 String
 
-**Description**
-The unique identifier used to identify a device when tracking events. `DEVICE_ID` is a
-generated value that’s created when the mobile app is initially run after installation.
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
 **Description**
-The name of the device model.
-
-**Example**
-`iPad`, `iPhone`
+The unique identifier used to identify a device when tracking events. `DEVICE_ID` is a
+generated value that’s created when the mobile app is initially run after installation.
 
 ```
+DEVICE_MODEL
+
 DEVICE_PLATFORM
 
 DEVICE_SESSION_ID
@@ -38151,9 +39441,16 @@ EVENT_TYPE
 
 LOGIN_KEY
 
-MESSAGE
-
 ```
+
+**Type**
+String
+
+**Description**
+The name of the device model.
+
+**Example**
+`iPad`, `iPhone`
 
 **Type**
 String
@@ -38203,18 +39500,14 @@ and ends with either a logout event or the user session expiring.
 
 ```
 
-**Type**
-String
-
-**Description**
-The error message generated.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
 ```
+MESSAGE
+
 ORGANIZATION_ID
 
 OS_NAME
@@ -38228,6 +39521,12 @@ PAGE_CONTEXT
 PAGE_ENTITY_ID
 
 ```
+
+**Type**
+String
+
+**Description**
+The error message generated.
 
 **Type**
 String
@@ -38286,20 +39585,20 @@ Context of the page where the event occurred.
 **Type**
 Id
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 The unique entity identifier of the event.
 
 **Example**
 
 ```
-  0013000000I3zJAAAZ
+                   0013000000I3zJAAAZ
 
 ```
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 ```
 PAGE_ENTITY_TYPE
@@ -38371,6 +39670,11 @@ String
 **Description**
 The mobile SDK application type.
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Possible Values**
 
 **•** `HYBRID`
@@ -38383,11 +39687,6 @@ The mobile SDK application type.
 
 **•** `REACTNATIVE`
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 ```
 SDK_APP_VERSION
 
@@ -38398,8 +39697,6 @@ SESSION_KEY
 STACK_TRACE
 
 TIMESTAMP
-
-TIMESTAMP_DERIVED
 
 ```
 
@@ -38463,6 +39760,22 @@ The access time of Salesforce services in GMT.
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+TIMESTAMP_DERIVED
+
+UI_EVENT_ID
+
+UI_EVENT_SEQUENCE_NUM
+
+UI_EVENT_SOURCE
+
+```
+
 **Type**
 DateTime
 
@@ -38472,24 +39785,6 @@ The access time of Salesforce services in ISO8601-compatible format
 
 **Example**
 `2015-07-27T11:32:59.555Z` . The timezone is GMT.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-UI_EVENT_ID
-
-UI_EVENT_SEQUENCE_NUM
-
-UI_EVENT_SOURCE
-
-UI_EVENT_TIMESTAMP
-
-UI_EVENT_TYPE
-
-```
 
 **Type**
 String
@@ -38540,6 +39835,26 @@ Here are some examples of error flags returned in this field.
 
 **•** `unknown`
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+UI_EVENT_TIMESTAMP
+
+UI_EVENT_TYPE
+
+USER_AGENT
+
+USER_ID
+
+USER_ID_DERIVED
+
+USER_TYPE
+
+```
+
 **Type**
 Number
 
@@ -38556,27 +39871,11 @@ The time at which this event occurred, measured in milliseconds.
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The type of error event.
 
 **Example**
 `error`, `info`, `warn`
-
-```
-USER_AGENT
-
-USER_ID
-
-USER_ID_DERIVED
-
-USER_TYPE
-
-```
 
 **Type**
 String
@@ -38622,6 +39921,11 @@ The category of user license of the user accessing Salesforce services through t
 
 **•** `A` : Automated Process
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **•** `b` : High Volume Portal
 
 **•** `C` : Customer Portal User
@@ -38632,18 +39936,13 @@ The category of user license of the user accessing Salesforce services through t
 
 **•** `G` : Guest
 
-**•** `L` : Package License Manager
+##### • L : Package License Manager
 
 **•** `N` : Salesforce to Salesforce
 
 **•** `n` : CSN Only
 
 **•** `O` : Power Custom
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 **•** `o` : Custom
 
@@ -38680,8 +39979,6 @@ APP_NAME
 
 BROWSER_NAME
 
-BROWSER_VERSION
-
 ```
 
 **Type**
@@ -38696,22 +39993,17 @@ String
 **Description**
 The name of the browser that the user accessed.
 
-**Example**
-`Chrome`, `Safari`
-
-**Type**
-String
-
-**Description**
-The version of the browser that the user accessed in `major.minor version` format.
-Some browsers don’t provide a minor version.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
+**Example**
+`Chrome`, `Safari`
+
 ```
+BROWSER_VERSION
+
 CLIENT_GEO
 
 CLIENT_ID
@@ -38723,6 +40015,13 @@ COMPONENT_NAME
 CONNECTION_TYPE
 
 ```
+
+**Type**
+String
+
+**Description**
+The version of the browser that the user accessed in `major.minor version` format.
+Some browsers don’t provide a minor version.
 
 **Type**
 String
@@ -38773,1269 +40072,10 @@ String
 **Description**
 The type of connection.
 
-**Possible Values**
-
-**•** `CDMA1x`
-
-**•** `CDMA`
-
-**•** `EDGE`
-
-**•** `EVDO0`
-
-**•** `EVDOA`
-
-**•** `EVDOB`
-
-**•** `GPRS`
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
-
-**•** `HRPD`
-
-**•** `HSDPA`
-
-**•** `HSUPA`
-
-**•** `LTE`
-
-**•** `WIFI`
-
-```
-DEVICE_ID
-
-DEVICE_MODEL
-
-DEVICE_PLATFORM
-
-DEVICE_SESSION_ID
-
-DURATION
-
-```
-
-**Type**
-String
-
-**Description**
-The unique identifier used to identify a device when tracking events. `DEVICE_ID` is a
-generated value that’s created when the mobile app is initially run after installation.
-
-**Type**
-String
-
-**Description**
-The name of the device model.
-
-**Example**
-`iPad`, `iPhone`
-
-**Type**
-String
-
-**Description**
-The type of application experience in `name:experience:form` format.
-
-**Possible Values**
-
-**•** `name` : `APP_BUILDER`, `CUSTOM`, `S1`, `SFX`
-
-**•** `experience` : `BROWSER`, `HYBRID`
-
-**•** `form` : `DESKTOP`, `PHONE`, `TABLET`
-
-**Type**
-Id
-
-**Description**
-The unique identifier of the user’s session based on page load time. When the user reloads
-a page, a new session is started.
-
-**Example**
-
-```
-  321a1ddfaf924803a075f1e69fc87bc06f53ccd0
-
-```
-
-**Type**
-Number
-
-**Description**
-The duration in milliseconds since the page start time.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-EVENT_TYPE
-
-GRANDPARENT_UI_ELEMENT
-
-LOGIN_KEY
-
-ORGANIZATION_ID
-
-OS_NAME
-
-OS_VERSION
-
-PAGE_APP_NAME
-
-```
-
-**Type**
-String
-
-**Description**
-The type of event. The value is always `LightningInteraction` .
-
-**Type**
-String
-
-**Description**
-Grandparent scope of the page element where the event occurred.
-
-**Type**
-String
-
-**Description**
-The string that ties together all events in a user’s login session. It starts with a login event
-and ends with either a logout event or the user session expiring.
-
-**Example**
-
-```
-  GeJCsym5eyvtEK2I
-
-```
-
-**Type**
-String
-
-**Description**
-The 15-character ID of the org.
-
-**Example**
-
-```
-  00D000000000123
-
-```
-
-**Type**
-String
-
-**Description**
-The operating system name, derived from `USER_AGENT` .
-
-**Example**
-`Android`, `iOS`, `OSX`, `Windows`
-
-**Type**
-String
-
-**Description**
-The operating system version, derived from `USER_AGENT` .
-
-**Type**
-String
-
-**Description**
-The internal name of the application that the user accessed from the App Launcher.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Example**
-
-```
-                   LightningSales
-
-```
-
-```
-PAGE_CONTEXT
-
-PAGE_ENTITY_ID
-
-PAGE_ENTITY_TYPE
-
-PAGE_START_TIME
-
-PAGE_URL
-
-```
-
-**Type**
-String
-
-**Description**
-Context of the page where the event occurred.
-
-**Example**
-
-```
-  clients:cardsContainer
-
-```
-
-Note: A value of `UNKNOWN` means that the page hasn't finished loading, so the
-context can't be identified.
-
-**Type**
-Id
-
-**Description**
-The unique entity identifier of the event.
-
-**Example**
-
-```
-  0013000000I3zJAAAZ
-
-```
-
-**Type**
-String
-
-**Description**
-The entity type of the event.
-
-**Example**
-`task`, `contacts`
-
-Note: A value of `UNKNOWN` means that the page hasn't finished loading or the
-page isn't displaying a record, so the entity type can't be identified.
-
-**Type**
-Number
-
-**Description**
-The time when the page was initially loaded, measured in milliseconds.
-
-**Example**
-
-```
-  1471564788642
-
-```
-
-**Type**
-String
-
-**Description**
-Relative URL of the top-level Lightning Experience or Salesforce mobile app page that the
-user opened. The page can contain one or more Lightning components. Multiple record
-IDs can be associated with `PAGE_URL` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Example**
-
-```
-                   /sObject/0064100000JXITSAA5/view
-
-```
-
-Note: A value of `UNKNOWN` means that the page hasn't finished loading, so the
-URL can't be identified.
-
-```
-PARENT_UI_ELEMENT
-
-RECORD_ID
-
-RECORD_TYPE
-
-RELATED_LIST
-
-REQUEST_ID
-
-```
-
-**Type**
-String
-
-**Description**
-Parent scope of the page element where the event occurred.
-
-**Type**
-String array
-
-**Description**
-The IDs of one or more records that the user interacted with. For more information on the
-user interaction, see `UI_EVENT_TYPE` and `UI_EVENT_SOURCE` fields.
-
-**Example**
-
-```
-  ["5004100000JaGGLAA3", "5004100000Dn79CAAR",
-
-  "50041000007KeugAAC"]
-
-```
-
-**Type**
-String
-
-**Description**
-The type of record object that the user interacted with.
-
-**Example**
-`Account`, `Opportunity`
-
-**Type**
-String
-
-**Description**
-The type of related list that the user clicked.
-
-**Example**
-
-```
-  Opportunity
-
-```
-
-**Type**
-String
-
-**Description**
-The unique ID of a single transaction. A transaction can contain one or more events. Each
-event in a given transaction has the same `REQUEST_ID` .
-
-**Example**
-
-```
-  3nWgxWbDKWWDIk0FKfF5DV
-
-```
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-SDK_APP_TYPE
-
-SDK_APP_VERSION
-
-SDK_VERSION
-
-SESSION_KEY
-
-TARGET_UI_ELEMENT
-
-```
-
-**Type**
-String
-
-**Description**
-The mobile SDK application type.
-
-**Possible Values**
-
-**•** `HYBRID`
-
-**•** `HYBRIDLOCAL`
-
-**•** `HYBRIDREMOTE`
-
-**•** `NATIVE`
-
-**•** `REACTNATIVE`
-
-**Type**
-String
-
-**Description**
-The mobile SDK application version number.
-
-**Example**
-
-```
-  5.0
-
-```
-
-**Type**
-String
-
-**Description**
-The mobile SDK version number.
-
-**Example**
-
-```
-  2.1.0
-
-```
-
-**Type**
-String
-
-**Description**
-The user’s unique session ID. You can use this value to identify all events in Lightning
-Experience within a session. When the user logs out and logs in again, a new session is
-started.
-
-**Example**
-
-```
-  cdd09305cb6babf34059e27f70e47f1b11dec868
-
-```
-
-**Type**
-String
-
-**Description**
-The target page element where the event occurred.
-
-**Example**
-
-```
-  tabitem-link
-
-```
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-UI_EVENT_ID
-
-UI_EVENT_SEQUENCE_NUM
-
-UI_EVENT_SOURCE
-
-```
-
-**Type**
-String
-
-**Description**
-The access time of Salesforce services in GMT.
-
-For example: `20130715233322.670` .
-
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible format
-( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-**Example**
-`2015-07-27T11:32:59.555Z` . The timezone is GMT.
-
-**Type**
-String
-
-**Description**
-Id of the Lightning event type.
-
-**Possible Values**
-
-**•** `ltng:error`
-
-**•** `ltng:interaction`
-
-**•** `ltng:pageView`
-
-**•** `ltng:performance`
-
-**Type**
-Number
-
-**Description**
-An auto-incremented sequence number of the current event since the session started.
-
-**Type**
-String
-
-**Description**
-The user action on the record or records in `RECORD_ID` . This field’s value indicates whether
-the user’s action was on a single record or multiple records. For example, `read` indicates
-that one record was read (such as on a record detail page); `reads` indicates that multiple
-records were read (such as in a list view).
-
-**Examples**
-
-**•** `click`
-
-**•** `create`
-
-**•** `delete`
-
-**•** `hover`
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**•** `read`
-
-**•** `update`
-
-```
-UI_EVENT_TIMESTAMP
-
-UI_EVENT_TYPE
-
-USER_AGENT
-
-USER_ID
-
-USER_ID_DERIVED
-
-USER_TYPE
-
-```
-
-**Type**
-Number
-
-**Description**
-The time at which this event occurred, measured in milliseconds.
-
-**Example**
-
-```
-  1479769912796
-
-```
-
-**Type**
-String
-
-**Description**
-The type of interaction with the records in `RECORD_ID` .
-
-**Example**
-`crud`, `system`, `user`, `userInteraction`
-
-**Type**
-String
-
-**Description**
-The numeric code for the type of client used to make the request (for example, the browser,
-application, or API) as a string.
-
-**Type**
-String
-
-**Description**
-The 15-character ID of the user accessing Salesforce services through the UI or API.
-
-**Example**
-
-```
-  00530000009M943
-
-```
-
-**Type**
-Id
-
-**Description**
-The 18-character case-insensitive ID of the user who’s using Salesforce services through
-the UI or the API.
-
-**Example**
-
-```
-  00590000000I1SNIA0
-
-```
-
-**Type**
-String
-
-**Description**
-The category of user license of the user accessing Salesforce services through the UI or API.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Possible Values**
-
-**•** `A` : Automated Process
-
-**•** `b` : High Volume Portal
-
-**•** `C` : Customer Portal User
-
-**•** `D` : External Who
-
-**•** `F` : Self Service
-
-**•** `G` : Guest
-
-##### • L : Package License Manager
-
-**•** `N` : Salesforce to Salesforce
-
-**•** `n` : CSN Only
-
-**•** `O` : Power Custom
-
-**•** `o` : Custom
-
-**•** `P` : Partner
-
-**•** `p` : Customer Portal Manager
-
-**•** `S` : Standard
-
-**•** `X` : Salesforce Administrator
-
-SEE ALSO:
-
-EventLogFile Supported Event Types
-
-EventLogFile
-
-##### Lightning Logger Event Type
-
-Lightning Logger events contain information from observed Lightning component logs. This event type is available in the EventLogFile
-object in API version 58.0 and later.
-
-To enable Lightning Logger events, from Setup, in the Quick Find box, enter _`event`_, and then select **Event Monitoring Settings** . Turn
-on Lightning Logger Events.
-
-Note: The browser sends Lightning Logger event logs to the server in batches. Batches are sent when the user interacts with the
-page and when the page closes or refreshes. If the user experiences connectivity issues or if their login session expires due to
-browser inactivity, any pending Lightning Logger event logs on the browser are erased. There isn’t a way to retrieve these lost
-logs.
-
-The limit for Lightning Logger events is 30,000 events per minute per organization. Burst capacity may support up to 45,000-50,000
-events per minute, but this is not guaranteed. The `MESSAGE` field shows details about what's logged when the limit is hit.
-
-[For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
-Fields
-
-**Field** **Details**
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-APP_NAME
-
-BROWSER_NAME
-
-BROWSER_VERSION
-
-CLIENT_GEO
-
-CLIENT_ID
-
-CLIENT_IP
-
-CONNECTION_TYPE
-
-```
-
-**Type**
-String
-
-**Description**
-The name of the application the user accessed.
-
-**Type**
-String
-
-**Description**
-The name of the browser that the user accessed.
-
-**Example**
-Chrome, IE, Safari, Gecko
-
-**Type**
-String
-
-**Description**
-The user’s browser version in `major.minor` format. Some
-browsers don’t provide a minor version.
-
-**Type**
-String
-
-**Description**
-The geolocation of the client in the form of
-<Country>/<State|Province>.
-
-**Example**
-United States/California
-
-**Type**
-String
-
-**Description**
-The API client ID.
-
-**Type**
-String
-
-**Description**
-The IP address of the client that’s using Salesforce services. A
-Salesforce internal IP, such as a login from AppExchange, is
-shown as “Salesforce.com IP”.
-
-**Example**
-
-```
-   96.43.144.26
-
-```
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The type of connection.
-
-**Possible Values**
-
-**•** `CDMA1x`
-
-**•** `CDMA`
-
-**•** `EDGE`
-
-**•** `EVDO0`
-
-**•** `EVDOA`
-
-**•** `EVDOB`
-
-**•** `GPRS`
-
-**•** `HRPD`
-
-**•** `HSDPA`
-
-**•** `HSUPA`
-
-**•** `LTE`
-
-**•** `WIFI`
-
-```
-DEVICE_MODEL
-
-DEVICE_PLATFORM
-
-```
-
-**Type**
-String
-
-**Description**
-The name of the device model.
-
-**Example**
-iPad, iPhone
-
-**Type**
-String
-
-**Description**
-The type of application experience in
-`name:experience:form` format.
-
-**Possible Values**
-Name
-
-**•** `APP_BUILDER`
-
-**•** `CUSTOM`
-
-**•** `S1`
-
-**•** `SFX`
-
-Experience
-
-**•** `BROWSER`
-
-**•** `HYBRID`
-
-Form
-
-**•** `DESKTOP`
-
-**•** `PHONE`
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**•** `TABLET`
-
-```
-DEVICE_SESSION_ID
-
-EVENT_TYPE
-
-LOGIN_KEY
-
-MESSAGE
-
-ORGANIZATION_ID
-
-```
-
-**Type**
-Id
-
-**Description**
-The unique identifier of the user’s session based on page load
-time. When the user reloads a page, a new session is started.
-
-**Example**
-321a1ddfaf924803a075f1e69fc87bc06f53ccd0
-
-**Type**
-String
-
-**Description**
-The type of event. The value is always `LightningLogger` .
-
-**Type**
-String
-
-**Description**
-The string that ties together all events in a user’s login session.
-It starts with a login event and ends with either a logout event
-or the user session expiring.
-
-**Example**
-GeJCsym5eyvtEK2I
-
-**Type**
-String
-
-**Description**
-The message passed to the `lightning/logger log()`
-method. The message can be a JSON object or a string. String
-length is limited to 4 KB (4096 characters).
-
-If you hit the logger limit, subsequent events are muted for a
-minute. During this time, the message field is replaced with
-this text: `Rate limiting hit for this`
-`organization.` Lightning Logger events resume when
-the limit resets in the next minute.
-
-**Type**
-String
-
-**Description**
-The 15-character ID of the org.
-
-**Example**
-00D000000000123
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-OS_NAME
-
-OS_VERSION
-
-PAGE_CONTEXT
-
-PAGE_ENTITY_ID
-
-PAGE_ENTITY_TYPE
-
-PAGE_URL
-
-```
-
-**Type**
-String
-
-**Description**
-The operating system name, derived from the User Agent.
-
-**Example**
-Android, iOS, OSX, Windows
-
-**Type**
-String
-
-**Description**
-The operating system version, derived from the User Agent.
-
-**Type**
-String
-
-**Description**
-The name of the component hosting the main page content.
-
-**Example**
-clients:cardsContainer
-
-**Type**
-Id
-
-**Description**
-The entity ID (if any) of the record being displayed.
-
-**Example**
-0013000000I3zJAAAZ
-
-**Type**
-String
-
-**Description**
-The entity type of the page being displayed.
-
-**Example**
-Task, contacts
-
-**Type**
-String
-
-**Description**
-Relative URL of the top-level Lightning Experience or Salesforce
-mobile app page that the user opened. The page can contain
-one or more Lightning components. Multiple record IDs can
-be associated with `PAGE_URL` .
-
-**Example**
-/sObject/0064100000JXITSAA5/view
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-REQUEST_ID
-
-SDK_APP_TYPE
-
-SDK_APP_VERSION
-
-SDK_VERSION
-
-SEQUENCE
-
-SESSION_KEY
-
-```
-
-**Type**
-String
-
-**Description**
-The unique ID of a single transaction. A transaction can contain
-one or more events. Each event in a given transaction has the
-same `REQUEST_ID` .
-
-**Example**
-3nWgxWbDKWWDIk0FKfF5DV
-
-**Type**
-String
-
-**Description**
-The mobile SDK application type.
-
-**Possible Values**
-
-**•** `HYBRID`
-
-**•** `HYBRIDLOCAL`
-
-**•** `HYBRIDREMOTE`
-
-**•** `NATIVE`
-
-**•** `REACTNATIVE`
-
-**Type**
-String
-
-**Description**
-The mobile SDK application version number.
-
-**Example**
-5.0
-
-**Type**
-String
-
-**Description**
-The mobile SDK version number.
-
-**Example**
-2.1.0
-
-**Type**
-Number
-
-**Description**
-An auto-incremented sequence number of the current event
-since the session started.
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The user’s unique session ID. Use this value to identify all events
-in Lightning Experience within a session. When the user logs
-out and logs in again, a new session is started.
-
-**Example**
-cdd09305cb6babf34059e27f70e47f1b11dec868
-
-```
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-UI_EVENT_RELATIVE_TIMESTAMP
-
-UI_EVENT_TIMESTAMP
-
-USER_ID
-
-```
-
-**Type**
-String
-
-**Description**
-The access time of Salesforce services in GMT.
-
-**Example**
-20130715233322.670
-
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format (YYYY-MM-DDTHH:MM:SS.sssZ).
-
-**Example**
-2015-07-27T11:32:59.555Z. The timezone is GMT.
-
-**Type**
-Number
-
-**Description**
-Difference in milliseconds between when the message was
-logged and when the browser tab was opened.
-
-**Example**
-29322.23
-
-**Type**
-Number
-
-**Description**
-The time at which this event occurred, measured in
-milliseconds.
-
-**Example**
-
-**Type**
-String
-
-**Description**
-The 15-character ID of the user accessing Salesforce services
-through the UI or API.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Example**
-00530000009M943
-
-```
-USER_ID_DERIVED
-
-USER_TYPE
-
-##### Lightning Page View Event Type
-
-```
-
-**Type**
-Id
-
-**Description**
-The 18-character case-insensitive ID of the user who’s using
-Salesforce services through the UI or the API.
-
-**Example**
-00590000000I1SNIA0
-
-**Type**
-String
-
-**Description**
-The category of user license of the user accessing Salesforce
-services through the UI or API.
-
-**Possible Values**
-
-**•** `A` : Automated Process
-
-**•** `b` : High Volume Portal
-
-**•** `C` : Customer Portal User
-
-**•** `D` : External Who
-
-**•** `F` : Self-Service
-
-**•** `G` : Guest
-
-##### • L : Package License Manager
-
-**•** `N` : Salesforce to Salesforce
-
-**•** `n` : CSN Only
-
-**•** `O` : Power Custom
-
-**•** `o` : Custom
-
-**•** `P` : Partner
-
-**•** `p` : Customer Portal Manager
-
-**•** `S` : Standard
-
-**•** `X` : Salesforce Administrator
-
-Lightning Page View events represent information about the page on which the event occurred in Lightning Experience and the Salesforce
-mobile app, such as the page's load time. This event type is available in the EventLogFile object in API version 39.0 and later.
-
-[For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
-
-Standard Objects EventLogFile Supported Event Types
-
-Fields
-
-**Field** **Details**
-
-```
-APP_NAME
-
-BROWSER_NAME
-
-BROWSER_VERSION
-
-CLIENT_GEO
-
-CLIENT_ID
-
-CLIENT_IP
-
-CONNECTION_TYPE
-
-```
-
-**Type**
-String
-
-**Description**
-The name of the application that the user accessed.
-
-**Type**
-String
-
-**Description**
-The name of the browser that the user accessed.
-
-**Example**
-`Chrome`, `Safari`
-
-**Type**
-String
-
-**Description**
-The version of the browser that the user accessed in `major.minor version` format.
-Some browsers don’t provide a minor version.
-
-**Type**
-String
-
-**Description**
-The geolocation of the client in the form of `<Country>/<State|Province>` .
-
-**Example**
-
-```
-  United States/California
-
-```
-
-**Type**
-String
-
-**Description**
-The API client ID.
-
-**Type**
-String
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as `Salesforce.com IP` .
-
-**Example**
-
-```
-  96.43.144.26
-
-```
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Description**
-The type of connection.
 
 **Possible Values**
 
@@ -40126,88 +40166,6 @@ a page, a new session is started.
 ```
 DURATION
 
-EFFECTIVE_PAGE_TIME
-
-EFFECTIVE_PAGE_TIME_DEVIATION
-
-EFFECTIVE_PAGE_TIME_DEVIATION_ERROR_TYPE
-
-EFFECTIVE_PAGE_TIME_DEVIATION_REASON
-
-```
-
-**Type**
-Number
-
-**Description**
-
-If the page completes loading, then `DURATION` indicates the duration of time in milliseconds
-between `PAGE_START_TIME` and when the loading completes. In this case, `DURATION`
-corresponds to `EFFECTIVE_PAGE_TIME` .
-
-If the page doesn't complete loading, then `DURATION` indicates the duration of time in
-milliseconds between `PAGE_START_TIME` and when the user navigates to another page.
-
-**Type**
-Double
-
-**Description**
-Indicates how many milliseconds it takes for the page to load before a user can interact with
-the page. Multiple factors can affect effective page time (EPT), such as network speed,
-hardware performance, or page complexity.
-
-**Type**
-Boolean
-
-**Description**
-When a deviation is detected, `EFFECTIVE_PAGE_TIME_DEVIATION` records `true` .
-The default value is `false` .
-
-**Type**
-String
-
-**Description**
-Indicates the origin of an error. This field is populated when
-EFFECTIVE_PAGE_TIME_DEVIATION_REASON contains the PAGE_HAS_ERROR value.
-
-**Possible Values**
-
-**•** `CUSTOM` —An error originating from the customer's system or network.
-
-**•** `SYSTEM` —An error originating in Salesforce.
-
-**Type**
-String
-
-**Description**
-The reason for deviation in page loading time.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Possible Values**
-
-**•** `PageHasError` —An undefined page loading error occurred.
-
-**•** `PageNotLoaded` —If a customer navigates away from a page while loading processes
-are in progress, the page doesn't finish loading.
-
-**•** `PreviousPageNotLoaded` —When navigating to a new page, and the previous
-page hasn't completed loading, the next page is considered to have a deviation.
-Incomplete loading processes on a previous page can affect how the next page loads.
-
-**•** `InteractionsBeforePageLoaded` —A user interacts with a page element
-before the page is fully loaded.
-
-**•** `PageInBackgroundBeforeLoaded` —A background loading process runs on a
-page. Background processes run when a user navigates away from a page to another
-browser tab. The browser de-prioritizes the page in the background until the user activates
-the page’s tab. Because a user can leave a page in the background for a long time, the
-page is expected to have a high Effective Page Time (EPT).
-
-```
 EVENT_TYPE
 
 GRANDPARENT_UI_ELEMENT
@@ -40221,16 +40179,22 @@ OS_NAME
 ```
 
 **Type**
-String
+Number
 
 **Description**
-The type of event. The value is always `LightningPageView` .
+The duration in milliseconds since the page start time.
 
 **Type**
 String
 
 **Description**
-The grandparent scope of the page element where the event occurred.
+The type of event. The value is always `LightningInteraction` .
+
+**Type**
+String
+
+**Description**
+Grandparent scope of the page element where the event occurred.
 
 **Type**
 String
@@ -40262,16 +40226,16 @@ The 15-character ID of the org.
 **Type**
 String
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The operating system name, derived from `USER_AGENT` .
 
 **Example**
 `Android`, `iOS`, `OSX`, `Windows`
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
 
 ```
 OS_VERSION
@@ -40284,7 +40248,7 @@ PAGE_ENTITY_ID
 
 PAGE_ENTITY_TYPE
 
-PAGE_FLEXI_PAGE_NAME_OR_ID
+PAGE_START_TIME
 
 ```
 
@@ -40311,7 +40275,7 @@ The internal name of the application that the user accessed from the App Launche
 String
 
 **Description**
-The name of the component hosting the main content of the page.
+Context of the page where the event occurred.
 
 **Example**
 
@@ -40320,11 +40284,14 @@ The name of the component hosting the main content of the page.
 
 ```
 
+Note: A value of `UNKNOWN` means that the page hasn't finished loading, so the
+context can't be identified.
+
 **Type**
 Id
 
 **Description**
-The ID of the record that the user accessed which triggered the event on the page.
+The unique entity identifier of the event.
 
 **Example**
 
@@ -40340,64 +40307,39 @@ String
 The entity type of the event.
 
 **Example**
-`Task`, `contacts`
+`task`, `contacts`
+
+Note: A value of `UNKNOWN` means that the page hasn't finished loading or the
+page isn't displaying a record, so the entity type can't be identified.
 
 **Type**
-String
+Number
+
+**Description**
+The time when the page was initially loaded, measured in milliseconds.
 
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
-**Description**
-The page name or identifier.
-
 **Example**
 
 ```
-                   runtime_sales_seller_home__SellerHome_L
+                   1471564788642
 
 ```
 
 ```
-PAGE_FLEXI_PAGE_TYPE
-
-PAGE_START_TIME
-
 PAGE_URL
 
 PARENT_UI_ELEMENT
 
-PREVPAGE_APP_NAME
+RECORD_ID
 
-PREVPAGE_CONTEXT
+RECORD_TYPE
 
-```
-
-**Type**
-String
-
-**Description**
-The page type.
-
-**Example**
-
-```
-  HomePage
-
-```
-
-**Type**
-Number
-
-**Description**
-The time when the page starts loading, measured in milliseconds.
-
-**Example**
-
-```
-  1471564788642
+RELATED_LIST
 
 ```
 
@@ -40406,8 +40348,8 @@ String
 
 **Description**
 Relative URL of the top-level Lightning Experience or Salesforce mobile app page that the
-user opened. The page can contain one or more Lightning components. Multiple record IDs
-can be associated with `PAGE_URL` .
+user opened. The page can contain one or more Lightning components. Multiple record
+IDs can be associated with `PAGE_URL` .
 
 **Example**
 
@@ -40416,82 +40358,68 @@ can be associated with `PAGE_URL` .
 
 ```
 
-**Type**
-String
-
-**Description**
-The parent scope of the page element where the event occurred.
+Note: A value of `UNKNOWN` means that the page hasn't finished loading, so the
+URL can't be identified.
 
 **Type**
 String
 
 **Description**
-The internal name of the previous application that the user accessed from the App Launcher.
+Parent scope of the page element where the event occurred.
+
+**Type**
+String array
+
+**Description**
+The IDs of one or more records that the user interacted with. For more information on the
+user interaction, see `UI_EVENT_TYPE` and `UI_EVENT_SOURCE` fields.
 
 **Example**
 
 ```
-  LightningSales
+  ["5004100000JaGGLAA3", "5004100000Dn79CAAR",
+
+  "50041000007KeugAAC"]
 
 ```
 
 **Type**
 String
+
+**Description**
+The type of record object that the user interacted with.
+
+**Example**
+`Account`, `Opportunity`
+
+**Type**
+String
+
+**Description**
+The type of related list that the user clicked.
+
+**Example**
+
+```
+  Opportunity
+
+```
 
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
-**Description**
-The context of the previous page where the event occurred.
-
-**Example**
-
 ```
-                   clients:cardsContainer
-
-```
-
-```
-PREVPAGE_ENTITY_ID
-
-PREVPAGE_ENTITY_TYPE
-
-PREVPAGE_URL
-
 REQUEST_ID
 
 SDK_APP_TYPE
 
-```
+SDK_APP_VERSION
 
-**Type**
-Id
+SDK_VERSION
 
-**Description**
-The unique previous page entity identifier of the event.
-
-**Type**
-String
-
-**Description**
-The previous page entity type of the event.
-
-**Example**
-`Task`, `contacts`
-
-**Type**
-String
-
-**Description**
-The relative URL of the previous Lightning Experience or Salesforce mobile app page that
-the user opened.
-
-**Example**
-
-```
-  /sObject/006410000
+SESSION_KEY
 
 ```
 
@@ -40523,29 +40451,9 @@ The mobile SDK application type.
 
 **•** `HYBRIDREMOTE`
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **•** `NATIVE`
 
 **•** `REACTNATIVE`
-
-```
-SDK_APP_VERSION
-
-SDK_VERSION
-
-SESSION_KEY
-
-TARGET_UI_ELEMENT
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-```
 
 **Type**
 String
@@ -40588,6 +40496,26 @@ started.
 
 ```
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+TARGET_UI_ELEMENT
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+UI_EVENT_ID
+
+UI_EVENT_SEQUENCE_NUM
+
+UI_EVENT_SOURCE
+
+```
+
 **Type**
 String
 
@@ -40612,31 +40540,12 @@ For example: `20130715233322.670` .
 **Type**
 DateTime
 
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
 **Description**
 The access time of Salesforce services in ISO8601-compatible format
 ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
 
-For example: `2015-07-27T11:32:59.555Z` . The timezone is GMT.
-
-```
-UI_EVENT_ID
-
-UI_EVENT_SEQUENCE_NUM
-
-UI_EVENT_SOURCE
-
-UI_EVENT_TIMESTAMP
-
-USER_AGENT
-
-USER_ID
-
-```
+**Example**
+`2015-07-27T11:32:59.555Z` . The timezone is GMT.
 
 **Type**
 String
@@ -40664,8 +40573,43 @@ An auto-incremented sequence number of the current event since the session start
 String
 
 **Description**
-This field is being deprecated and is mostly null, except in mobile app views where it indicates
-the page type of views where the context is “native.”
+The user action on the record or records in `RECORD_ID` . This field’s value indicates whether
+the user’s action was on a single record or multiple records. For example, `read` indicates
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+that one record was read (such as on a record detail page); `reads` indicates that multiple
+records were read (such as in a list view).
+
+**Examples**
+
+**•** `click`
+
+**•** `create`
+
+**•** `delete`
+
+**•** `hover`
+
+**•** `read`
+
+**•** `update`
+
+```
+UI_EVENT_TIMESTAMP
+
+UI_EVENT_TYPE
+
+USER_AGENT
+
+USER_ID
+
+USER_ID_DERIVED
+
+```
 
 **Type**
 Number
@@ -40684,16 +40628,20 @@ The time at which this event occurred, measured in milliseconds.
 String
 
 **Description**
-The type of client used to make the request (for example, the browser, application, or API)
-as a string.
+The type of interaction with the records in `RECORD_ID` .
+
+**Example**
+`crud`, `system`, `user`, `userInteraction`
 
 **Type**
 String
 
+**Description**
+The numeric code for the type of client used to make the request (for example, the browser,
+application, or API) as a string.
 
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
+**Type**
+String
 
 **Description**
 The 15-character ID of the user accessing Salesforce services through the UI or API.
@@ -40701,13 +40649,30 @@ The 15-character ID of the user accessing Salesforce services through the UI or 
 **Example**
 
 ```
-                   00530000009M943
+  00530000009M943
+
+```
+
+**Type**
+Id
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+**Description**
+The 18-character case-insensitive ID of the user who’s using Salesforce services through
+the UI or the API.
+
+**Example**
+
+```
+                   00590000000I1SNIA0
 
 ```
 
 ```
-USER_ID_DERIVED
-
 USER_TYPE
 
 ```
@@ -40715,16 +40680,85 @@ USER_TYPE
 SEE ALSO:
 
 **Type**
-Id
+String
 
 **Description**
-The 18-character case-insensitive ID of the user who’s using Salesforce services through the
-UI or the API.
+The category of user license of the user accessing Salesforce services through the UI or API.
 
-**Example**
+**Possible Values**
+
+**•** `A` : Automated Process
+
+**•** `b` : High Volume Portal
+
+**•** `C` : Customer Portal User
+
+**•** `D` : External Who
+
+**•** `F` : Self Service
+
+**•** `G` : Guest
+
+##### • L : Package License Manager
+
+**•** `N` : Salesforce to Salesforce
+
+**•** `n` : CSN Only
+
+**•** `O` : Power Custom
+
+**•** `o` : Custom
+
+**•** `P` : Partner
+
+**•** `p` : Customer Portal Manager
+
+**•** `S` : Standard
+
+**•** `X` : Salesforce Administrator
+
+EventLogFile Supported Event Types
+
+EventLogFile
+
+##### Lightning Logger Event Type
+
+Lightning Logger events contain information from observed Lightning component logs. This event type is available in the EventLogFile
+object in API version 58.0 and later.
+
+To enable Lightning Logger events, from Setup, in the Quick Find box, enter _`event`_, and then select **Event Monitoring Settings** . Turn
+on Lightning Logger Events.
+
+Note: The browser sends Lightning Logger event logs to the server in batches. Batches are sent when the user interacts with the
+page and when the page closes or refreshes. If the user experiences connectivity issues or if their login session expires due to
+
+
+Standard Objects EventLogFile Supported Event Types
+
+browser inactivity, any pending Lightning Logger event logs on the browser are erased. There isn’t a way to retrieve these lost
+logs.
+
+The limit for Lightning Logger events is 30,000 events per minute per organization. Burst capacity may support up to 45,000-50,000
+events per minute, but this is not guaranteed. The `MESSAGE` field shows details about what's logged when the limit is hit.
+
+[For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
+
+Fields
+
+**Field** **Details**
 
 ```
-  00590000000I1SNIA0
+APP_NAME
+
+BROWSER_NAME
+
+BROWSER_VERSION
+
+CLIENT_GEO
+
+CLIENT_ID
+
+CLIENT_IP
 
 ```
 
@@ -40732,7 +40766,451 @@ UI or the API.
 String
 
 **Description**
-The category of user license of the user accessing Salesforce services through the UI or API.
+The name of the application the user accessed.
+
+**Type**
+String
+
+**Description**
+The name of the browser that the user accessed.
+
+**Example**
+Chrome, IE, Safari, Gecko
+
+**Type**
+String
+
+**Description**
+The user’s browser version in `major.minor` format. Some
+browsers don’t provide a minor version.
+
+**Type**
+String
+
+**Description**
+The geolocation of the client in the form of
+<Country>/<State|Province>.
+
+**Example**
+United States/California
+
+**Type**
+String
+
+**Description**
+The API client ID.
+
+**Type**
+String
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Description**
+The IP address of the client that’s using Salesforce services. A
+Salesforce internal IP, such as a login from AppExchange, is
+shown as “Salesforce.com IP”.
+
+**Example**
+
+```
+                              96.43.144.26
+
+```
+
+```
+CONNECTION_TYPE
+
+DEVICE_MODEL
+
+DEVICE_PLATFORM
+
+```
+
+**Type**
+String
+
+**Description**
+The type of connection.
+
+**Possible Values**
+
+**•** `CDMA1x`
+
+**•** `CDMA`
+
+**•** `EDGE`
+
+**•** `EVDO0`
+
+**•** `EVDOA`
+
+**•** `EVDOB`
+
+**•** `GPRS`
+
+**•** `HRPD`
+
+**•** `HSDPA`
+
+**•** `HSUPA`
+
+**•** `LTE`
+
+**•** `WIFI`
+
+**Type**
+String
+
+**Description**
+The name of the device model.
+
+**Example**
+iPad, iPhone
+
+**Type**
+String
+
+**Description**
+The type of application experience in
+`name:experience:form` format.
+
+**Possible Values**
+Name
+
+**•** `APP_BUILDER`
+
+**•** `CUSTOM`
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**•** `S1`
+
+**•** `SFX`
+
+Experience
+
+**•** `BROWSER`
+
+**•** `HYBRID`
+
+Form
+
+**•** `DESKTOP`
+
+**•** `PHONE`
+
+**•** `TABLET`
+
+```
+DEVICE_SESSION_ID
+
+EVENT_TYPE
+
+LOGIN_KEY
+
+MESSAGE
+
+```
+
+**Type**
+Id
+
+**Description**
+The unique identifier of the user’s session based on page load
+time. When the user reloads a page, a new session is started.
+
+**Example**
+321a1ddfaf924803a075f1e69fc87bc06f53ccd0
+
+**Type**
+String
+
+**Description**
+The type of event. The value is always `LightningLogger` .
+
+**Type**
+String
+
+**Description**
+The string that ties together all events in a user’s login session.
+It starts with a login event and ends with either a logout event
+or the user session expiring.
+
+**Example**
+GeJCsym5eyvtEK2I
+
+**Type**
+String
+
+**Description**
+The message passed to the `lightning/logger log()`
+method. The message can be a JSON object or a string. String
+length is limited to 4 KB (4096 characters).
+
+If you hit the logger limit, subsequent events are muted for a
+minute. During this time, the message field is replaced with
+this text: `Rate limiting hit for this`
+`organization.` Lightning Logger events resume when
+the limit resets in the next minute.
+
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+ORGANIZATION_ID
+
+OS_NAME
+
+OS_VERSION
+
+PAGE_CONTEXT
+
+PAGE_ENTITY_ID
+
+PAGE_ENTITY_TYPE
+
+PAGE_URL
+
+```
+
+**Type**
+String
+
+**Description**
+The 15-character ID of the org.
+
+**Example**
+00D000000000123
+
+**Type**
+String
+
+**Description**
+The operating system name, derived from the User Agent.
+
+**Example**
+Android, iOS, OSX, Windows
+
+**Type**
+String
+
+**Description**
+The operating system version, derived from the User Agent.
+
+**Type**
+String
+
+**Description**
+The name of the component hosting the main page content.
+
+**Example**
+clients:cardsContainer
+
+**Type**
+Id
+
+**Description**
+The entity ID (if any) of the record being displayed.
+
+**Example**
+0013000000I3zJAAAZ
+
+**Type**
+String
+
+**Description**
+The entity type of the page being displayed.
+
+**Example**
+Task, contacts
+
+**Type**
+String
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Description**
+Relative URL of the top-level Lightning Experience or Salesforce
+mobile app page that the user opened. The page can contain
+one or more Lightning components. Multiple record IDs can
+be associated with `PAGE_URL` .
+
+**Example**
+/sObject/0064100000JXITSAA5/view
+
+```
+REQUEST_ID
+
+SDK_APP_TYPE
+
+SDK_APP_VERSION
+
+SDK_VERSION
+
+```
+
+**Type**
+String
+
+**Description**
+The unique ID of a single transaction. A transaction can contain
+one or more events. Each event in a given transaction has the
+same `REQUEST_ID` .
+
+**Example**
+3nWgxWbDKWWDIk0FKfF5DV
+
+**Type**
+String
+
+**Description**
+The mobile SDK application type.
+
+**Possible Values**
+
+**•** `HYBRID`
+
+**•** `HYBRIDLOCAL`
+
+**•** `HYBRIDREMOTE`
+
+**•** `NATIVE`
+
+**•** `REACTNATIVE`
+
+**Type**
+String
+
+**Description**
+The mobile SDK application version number.
+
+**Example**
+5.0
+
+**Type**
+String
+
+**Description**
+The mobile SDK version number.
+
+**Example**
+2.1.0
+
+
+Standard Objects EventLogFile Supported Event Types
+
+```
+SEQUENCE
+
+SESSION_KEY
+
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+UI_EVENT_RELATIVE_TIMESTAMP
+
+UI_EVENT_TIMESTAMP
+
+```
+
+**Type**
+Number
+
+**Description**
+An auto-incremented sequence number of the current event
+since the session started.
+
+**Type**
+String
+
+**Description**
+The user’s unique session ID. Use this value to identify all events
+in Lightning Experience within a session. When the user logs
+out and logs in again, a new session is started.
+
+**Example**
+cdd09305cb6babf34059e27f70e47f1b11dec868
+
+**Type**
+String
+
+**Description**
+The access time of Salesforce services in GMT.
+
+**Example**
+20130715233322.670
+
+**Type**
+DateTime
+
+**Description**
+The access time of Salesforce services in ISO8601-compatible
+format (YYYY-MM-DDTHH:MM:SS.sssZ).
+
+**Example**
+2015-07-27T11:32:59.555Z. The timezone is GMT.
+
+**Type**
+Number
+
+**Description**
+Difference in milliseconds between when the message was
+logged and when the browser tab was opened.
+
+**Example**
+29322.23
+
+**Type**
+Number
+
+**Description**
+The time at which this event occurred, measured in
+milliseconds.
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Example**
+
+```
+USER_ID
+
+USER_ID_DERIVED
+
+USER_TYPE
+
+```
+
+**Type**
+String
+
+**Description**
+The 15-character ID of the user accessing Salesforce services
+through the UI or API.
+
+**Example**
+00530000009M943
+
+**Type**
+Id
+
+**Description**
+The 18-character case-insensitive ID of the user who’s using
+Salesforce services through the UI or the API.
+
+**Example**
+00590000000I1SNIA0
+
+**Type**
+String
+
+**Description**
+The category of user license of the user accessing Salesforce
+services through the UI or API.
 
 **Possible Values**
 
@@ -40766,17 +41244,13 @@ The category of user license of the user accessing Salesforce services through t
 
 **•** `X` : Salesforce Administrator
 
-EventLogFile Supported Event Types
-
-EventLogFile
-
 
 Standard Objects EventLogFile Supported Event Types
 
-##### Lightning Performance Event Type
+##### Lightning Page View Event Type
 
-Lightning Performance events track trends in Lightning Experience and Salesforce mobile app performance. This event type is available
-in the EventLogFile object in API version 39.0 and later.
+Lightning Page View events represent information about the page on which the event occurred in Lightning Experience and the Salesforce
+mobile app, such as the page's load time. This event type is available in the EventLogFile object in API version 39.0 and later.
 
 [For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
 
@@ -40850,9 +41324,14 @@ Standard Objects EventLogFile Supported Event Types
 
 **Description**
 The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”.
+a login from AppExchange) is shown as `Salesforce.com IP` .
 
-For example: `96.43.144.26` .
+**Example**
+
+```
+                   96.43.144.26
+
+```
 
 ```
 CONNECTION_TYPE
@@ -40916,13 +41395,13 @@ The name of the device model.
 **Type**
 String
 
-**Description**
-The type of application experience in `name:experience:form` format.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
+
+**Description**
+The type of application experience in `name:experience:form` format.
 
 **Possible Values**
 
@@ -40937,15 +41416,840 @@ DEVICE_SESSION_ID
 
 DURATION
 
+EFFECTIVE_PAGE_TIME
+
+EFFECTIVE_PAGE_TIME_DEVIATION
+
+EFFECTIVE_PAGE_TIME_DEVIATION_ERROR_TYPE
+
+```
+
+**Type**
+Id
+
+**Description**
+The unique identifier of the user’s session based on page load time. When the user reloads
+a page, a new session is started.
+
+**Example**
+
+```
+  321a1ddfaf924803a075f1e69fc87bc06f53ccd0
+
+```
+
+**Type**
+Number
+
+**Description**
+
+If the page completes loading, then `DURATION` indicates the duration of time in milliseconds
+between `PAGE_START_TIME` and when the loading completes. In this case, `DURATION`
+corresponds to `EFFECTIVE_PAGE_TIME` .
+
+If the page doesn't complete loading, then `DURATION` indicates the duration of time in
+milliseconds between `PAGE_START_TIME` and when the user navigates to another page.
+
+**Type**
+Double
+
+**Description**
+Indicates how many milliseconds it takes for the page to load before a user can interact with
+the page. Multiple factors can affect effective page time (EPT), such as network speed,
+hardware performance, or page complexity.
+
+**Type**
+Boolean
+
+**Description**
+When a deviation is detected, `EFFECTIVE_PAGE_TIME_DEVIATION` records `true` .
+The default value is `false` .
+
+**Type**
+String
+
+**Description**
+Indicates the origin of an error. This field is populated when
+EFFECTIVE_PAGE_TIME_DEVIATION_REASON contains the PAGE_HAS_ERROR value.
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+**Possible Values**
+
+**•** `CUSTOM` —An error originating from the customer's system or network.
+
+**•** `SYSTEM` —An error originating in Salesforce.
+
+```
+EFFECTIVE_PAGE_TIME_DEVIATION_REASON
+
+EVENT_TYPE
+
+GRANDPARENT_UI_ELEMENT
+
+LOGIN_KEY
+
+```
+
+**Type**
+String
+
+**Description**
+The reason for deviation in page loading time.
+
+**Possible Values**
+
+**•** `PageHasError` —An undefined page loading error occurred.
+
+**•** `PageNotLoaded` —If a customer navigates away from a page while loading processes
+are in progress, the page doesn't finish loading.
+
+**•** `PreviousPageNotLoaded` —When navigating to a new page, and the previous
+page hasn't completed loading, the next page is considered to have a deviation.
+Incomplete loading processes on a previous page can affect how the next page loads.
+
+**•** `InteractionsBeforePageLoaded` —A user interacts with a page element
+before the page is fully loaded.
+
+**•** `PageInBackgroundBeforeLoaded` —A background loading process runs on a
+page. Background processes run when a user navigates away from a page to another
+browser tab. The browser de-prioritizes the page in the background until the user activates
+the page’s tab. Because a user can leave a page in the background for a long time, the
+page is expected to have a high Effective Page Time (EPT).
+
+**Type**
+String
+
+**Description**
+The type of event. The value is always `LightningPageView` .
+
+**Type**
+String
+
+**Description**
+The grandparent scope of the page element where the event occurred.
+
+**Type**
+String
+
+**Description**
+The string that ties together all events in a user’s login session. It starts with a login event
+and ends with either a logout event or the user session expiring.
+
+**Example**
+
+```
+  GeJCsym5eyvtEK2I
+
+```
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+ORGANIZATION_ID
+
+OS_NAME
+
+OS_VERSION
+
+PAGE_APP_NAME
+
+PAGE_CONTEXT
+
+PAGE_ENTITY_ID
+
+```
+
+**Type**
+String
+
+**Description**
+The 15-character ID of the org.
+
+**Example**
+
+```
+  00D000000000123
+
+```
+
+**Type**
+String
+
+**Description**
+The operating system name, derived from `USER_AGENT` .
+
+**Example**
+`Android`, `iOS`, `OSX`, `Windows`
+
+**Type**
+String
+
+**Description**
+The operating system version, derived from `USER_AGENT` .
+
+**Type**
+String
+
+**Description**
+The internal name of the application that the user accessed from the App Launcher.
+
+**Example**
+
+```
+  LightningSales
+
+```
+
+**Type**
+String
+
+**Description**
+The name of the component hosting the main content of the page.
+
+**Example**
+
+```
+  clients:cardsContainer
+
+```
+
+**Type**
+Id
+
+**Description**
+The ID of the record that the user accessed which triggered the event on the page.
+
+**Example**
+
+```
+  0013000000I3zJAAAZ
+
+```
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+PAGE_ENTITY_TYPE
+
+PAGE_FLEXI_PAGE_NAME_OR_ID
+
+PAGE_FLEXI_PAGE_TYPE
+
+PAGE_START_TIME
+
+PAGE_URL
+
+PARENT_UI_ELEMENT
+
+```
+
+**Type**
+String
+
+**Description**
+The entity type of the event.
+
+**Example**
+`Task`, `contacts`
+
+**Type**
+String
+
+**Description**
+The page name or identifier.
+
+**Example**
+
+```
+  runtime_sales_seller_home__SellerHome_L
+
+```
+
+**Type**
+String
+
+**Description**
+The page type.
+
+**Example**
+
+```
+  HomePage
+
+```
+
+**Type**
+Number
+
+**Description**
+The time when the page starts loading, measured in milliseconds.
+
+**Example**
+
+```
+  1471564788642
+
+```
+
+**Type**
+String
+
+**Description**
+Relative URL of the top-level Lightning Experience or Salesforce mobile app page that the
+user opened. The page can contain one or more Lightning components. Multiple record IDs
+can be associated with `PAGE_URL` .
+
+**Example**
+
+```
+  /sObject/0064100000JXITSAA5/view
+
+```
+
+**Type**
+String
+
+**Description**
+The parent scope of the page element where the event occurred.
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+PREVPAGE_APP_NAME
+
+PREVPAGE_CONTEXT
+
+PREVPAGE_ENTITY_ID
+
+PREVPAGE_ENTITY_TYPE
+
+PREVPAGE_URL
+
+REQUEST_ID
+
+```
+
+**Type**
+String
+
+**Description**
+The internal name of the previous application that the user accessed from the App Launcher.
+
+**Example**
+
+```
+  LightningSales
+
+```
+
+**Type**
+String
+
+**Description**
+The context of the previous page where the event occurred.
+
+**Example**
+
+```
+  clients:cardsContainer
+
+```
+
+**Type**
+Id
+
+**Description**
+The unique previous page entity identifier of the event.
+
+**Type**
+String
+
+**Description**
+The previous page entity type of the event.
+
+**Example**
+`Task`, `contacts`
+
+**Type**
+String
+
+**Description**
+The relative URL of the previous Lightning Experience or Salesforce mobile app page that
+the user opened.
+
+**Example**
+
+```
+  /sObject/006410000
+
+```
+
+**Type**
+String
+
+**Description**
+The unique ID of a single transaction. A transaction can contain one or more events. Each
+event in a given transaction has the same `REQUEST_ID` .
+
+**Example**
+
+```
+  3nWgxWbDKWWDIk0FKfF5DV
+
+```
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+SDK_APP_TYPE
+
+SDK_APP_VERSION
+
+SDK_VERSION
+
+SESSION_KEY
+
+TARGET_UI_ELEMENT
+
+```
+
+**Type**
+String
+
+**Description**
+The mobile SDK application type.
+
+**Possible Values**
+
+**•** `HYBRID`
+
+**•** `HYBRIDLOCAL`
+
+**•** `HYBRIDREMOTE`
+
+**•** `NATIVE`
+
+**•** `REACTNATIVE`
+
+**Type**
+String
+
+**Description**
+The mobile SDK application version number.
+
+**Example**
+
+```
+  5.0
+
+```
+
+**Type**
+String
+
+**Description**
+The mobile SDK version number.
+
+**Example**
+
+```
+  2.1.0
+
+```
+
+**Type**
+String
+
+**Description**
+The user’s unique session ID. You can use this value to identify all events in Lightning
+Experience within a session. When the user logs out and logs in again, a new session is
+started.
+
+**Example**
+
+```
+  cdd09305cb6babf34059e27f70e47f1b11dec868
+
+```
+
+**Type**
+String
+
+**Description**
+The target page element where the event occurred.
+
+**Example**
+
+```
+  tabitem-link
+
+```
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+TIMESTAMP
+
+TIMESTAMP_DERIVED
+
+UI_EVENT_ID
+
+UI_EVENT_SEQUENCE_NUM
+
+UI_EVENT_SOURCE
+
+UI_EVENT_TIMESTAMP
+
+```
+
+**Type**
+String
+
+**Description**
+The access time of Salesforce services in GMT.
+
+For example: `20130715233322.670` .
+
+**Type**
+DateTime
+
+**Description**
+The access time of Salesforce services in ISO8601-compatible format
+( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
+
+For example: `2015-07-27T11:32:59.555Z` . The timezone is GMT.
+
+**Type**
+String
+
+**Description**
+Id of the Lightning event type.
+
+**Possible Values**
+
+**•** `ltng:error`
+
+**•** `ltng:interaction`
+
+**•** `ltng:pageView`
+
+**•** `ltng:performance`
+
+**Type**
+Number
+
+**Description**
+An auto-incremented sequence number of the current event since the session started.
+
+**Type**
+String
+
+**Description**
+This field is being deprecated and is mostly null, except in mobile app views where it indicates
+the page type of views where the context is “native.”
+
+**Type**
+Number
+
+**Description**
+The time at which this event occurred, measured in milliseconds.
+
+**Example**
+
+```
+  1479769912796
+
+```
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+USER_AGENT
+
+USER_ID
+
+USER_ID_DERIVED
+
+USER_TYPE
+
+```
+
+**Type**
+String
+
+**Description**
+The type of client used to make the request (for example, the browser, application, or API)
+as a string.
+
+**Type**
+String
+
+**Description**
+The 15-character ID of the user accessing Salesforce services through the UI or API.
+
+**Example**
+
+```
+  00530000009M943
+
+```
+
+**Type**
+Id
+
+**Description**
+The 18-character case-insensitive ID of the user who’s using Salesforce services through the
+UI or the API.
+
+**Example**
+
+```
+  00590000000I1SNIA0
+
+```
+
+**Type**
+String
+
+**Description**
+The category of user license of the user accessing Salesforce services through the UI or API.
+
+**Possible Values**
+
+**•** `A` : Automated Process
+
+**•** `b` : High Volume Portal
+
+**•** `C` : Customer Portal User
+
+**•** `D` : External Who
+
+**•** `F` : Self-Service
+
+**•** `G` : Guest
+
+**•** `L` : Package License Manager
+
+**•** `N` : Salesforce to Salesforce
+
+**•** `n` : CSN Only
+
+**•** `O` : Power Custom
+
+**•** `o` : Custom
+
+**•** `P` : Partner
+
+**•** `p` : Customer Portal Manager
+
+**•** `S` : Standard
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+**•** `X` : Salesforce Administrator
+
+SEE ALSO:
+
+EventLogFile Supported Event Types
+
+EventLogFile
+
+##### Lightning Performance Event Type
+
+Lightning Performance events track trends in Lightning Experience and Salesforce mobile app performance. This event type is available
+in the EventLogFile object in API version 39.0 and later.
+
+[For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
+
+Fields
+
+**Field** **Details**
+
+```
+APP_NAME
+
+BROWSER_NAME
+
+BROWSER_VERSION
+
+CLIENT_GEO
+
+```
+
+**Type**
+String
+
+**Description**
+The name of the application that the user accessed.
+
+**Type**
+String
+
+**Description**
+The name of the browser that the user accessed.
+
+**Example**
+`Chrome`, `Safari`
+
+**Type**
+String
+
+**Description**
+The version of the browser that the user accessed in `major.minor version` format.
+Some browsers don’t provide a minor version.
+
+**Type**
+String
+
+**Description**
+The geolocation of the client in the form of `<Country>/<State|Province>` .
+
+**Example**
+
+```
+  United States/California
+
+```
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+```
+CLIENT_ID
+
+CLIENT_IP
+
+CONNECTION_TYPE
+
+DEVICE_ID
+
+DEVICE_MODEL
+
+```
+
+**Type**
+String
+
+**Description**
+The API client ID.
+
+**Type**
+String
+
+**Description**
+The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
+a login from AppExchange) is shown as “Salesforce.com IP”.
+
+For example: `96.43.144.26` .
+
+**Type**
+String
+
+**Description**
+The type of connection.
+
+**Possible Values**
+
+**•** `CDMA1x`
+
+**•** `CDMA`
+
+**•** `EDGE`
+
+**•** `EVDO0`
+
+**•** `EVDOA`
+
+**•** `EVDOB`
+
+**•** `GPRS`
+
+**•** `HRPD`
+
+**•** `HSDPA`
+
+**•** `HSUPA`
+
+**•** `LTE`
+
+**•** `WIFI`
+
+**Type**
+String
+
+**Description**
+The unique identifier used to identify a device when tracking events. `DEVICE_ID` is a
+generated value that’s created when the mobile app is initially run after installation.
+
+**Type**
+String
+
+**Description**
+The name of the device model.
+
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
+**Example**
+`iPad`, `iPhone`
+
+```
+DEVICE_PLATFORM
+
+DEVICE_SESSION_ID
+
+DURATION
+
 EVENT_TYPE
 
 LOGIN_KEY
 
 ORGANIZATION_ID
 
-OS_NAME
-
 ```
+
+**Type**
+String
+
+**Description**
+The type of application experience in `name:experience:form` format.
+
+**Possible Values**
+
+**•** `name` : `APP_BUILDER`, `CUSTOM`, `S1`, `SFX`
+
+**•** `experience` : `BROWSER`, `HYBRID`
+
+**•** `form` : `DESKTOP`, `PHONE`, `TABLET`
 
 **Type**
 Id
@@ -40990,31 +42294,24 @@ and ends with either a logout event or the user session expiring.
 **Type**
 String
 
-**Description**
-The 15-character ID of the org.
-
-**Example**
-
-```
-  00D000000000123
-
-```
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
 **Description**
-The operating system name, derived from `USER_AGENT` .
+The 15-character ID of the org.
 
 **Example**
-`Android`, `iOS`, `OSX`, `Windows`
 
 ```
+                   00D000000000123
+
+```
+
+```
+OS_NAME
+
 OS_VERSION
 
 PAGE_START_TIME
@@ -41023,9 +42320,16 @@ REQUEST_ID
 
 SDK_APP_TYPE
 
-SDK_APP_VERSION
-
 ```
+
+**Type**
+String
+
+**Description**
+The operating system name, derived from `USER_AGENT` .
+
+**Example**
+`Android`, `iOS`, `OSX`, `Windows`
 
 **Type**
 String
@@ -41076,27 +42380,16 @@ The mobile SDK application type.
 
 **•** `NATIVE`
 
-**•** `REACTNATIVE`
-
-**Type**
-String
-
-**Description**
-The mobile SDK application version number.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
 
-**Example**
+**•** `REACTNATIVE`
 
 ```
-                   5.0
+SDK_APP_VERSION
 
-```
-
-```
 SDK_VERSION
 
 SESSION_KEY
@@ -41106,6 +42399,19 @@ TIMESTAMP
 TIMESTAMP_DERIVED
 
 UI_EVENT_ID
+
+```
+
+**Type**
+String
+
+**Description**
+The mobile SDK application version number.
+
+**Example**
+
+```
+  5.0
 
 ```
 
@@ -41163,6 +42469,11 @@ The access time of Salesforce services in ISO8601-compatible format
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **Description**
 Id of the Lightning event type.
 
@@ -41171,11 +42482,6 @@ Id of the Lightning event type.
 **•** `ltng:error`
 
 **•** `ltng:interaction`
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
 
 **•** `ltng:pageView`
 
@@ -41191,8 +42497,6 @@ UI_EVENT_TIMESTAMP
 UI_EVENT_TYPE
 
 USER_AGENT
-
-USER_ID
 
 ```
 
@@ -41244,17 +42548,26 @@ The type of performance event.
 **Type**
 String
 
-**Description**
-The numeric code for the type of client used to make the request (for example, browser,
-application, or API) as a string.
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Field** **Details**
+
+**Description**
+The numeric code for the type of client used to make the request (for example, browser,
+application, or API) as a string.
+
+```
+USER_ID
+
+USER_ID_DERIVED
+
+USER_TYPE
+
+```
+
+**Type**
+String
 
 **Description**
 The 15-character ID of the user accessing Salesforce services through the UI or API.
@@ -41262,18 +42575,9 @@ The 15-character ID of the user accessing Salesforce services through the UI or 
 **Example**
 
 ```
-                   00530000009M943
+  00530000009M943
 
 ```
-
-```
-USER_ID_DERIVED
-
-USER_TYPE
-
-```
-
-SEE ALSO:
 
 **Type**
 Id
@@ -41325,14 +42629,18 @@ The category of user license of the user accessing Salesforce services through t
 
 **•** `S` : Standard
 
+
+Standard Objects EventLogFile Supported Event Types
+
+**Field** **Details**
+
 **•** `X` : Salesforce Administrator
+
+SEE ALSO:
 
 EventLogFile Supported Event Types
 
 EventLogFile
-
-
-Standard Objects EventLogFile Supported Event Types
 
 ##### Login Event Type
 
@@ -41353,8 +42661,6 @@ API_TYPE
 API_VERSION
 
 AUTHENTICATION_METHOD_REFERENCE
-
-AUTHENTICATION_SERVICE_ID
 
 ```
 
@@ -41395,16 +42701,27 @@ For example: `36.0` .
 **Type**
 String
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **Description**
 The authentication method used by a third-party identification
 provider for an OpenID Connect single sign-on protocol. This
 field is available in API version 51.0 and later.
 
+```
+AUTHENTICATION_SERVICE_ID
+
+BROWSER_TYPE
+
+CIPHER_SUITE
+
+CLIENT_IP
+
+```
+
 **Type**
 Id
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **Description**
 The 15-character ID for the authentication service used to log
@@ -41415,17 +42732,6 @@ in. This field stores IDs for these authentication services.
 **•** Token exchange handlers
 
 Available in API version 60.0 and later.
-
-```
-BROWSER_TYPE
-
-CIPHER_SUITE
-
-CLIENT_IP
-
-COUNTRY_CODE
-
-```
 
 **Type**
 String
@@ -41476,17 +42782,12 @@ shown as “Salesforce.com IP”.
 
 For example: `96.43.144.26` .
 
-**Type**
-String
-
-**Description**
-The country code associated with the IP address of the user
-logging in.
-
 
 Standard Objects EventLogFile Supported Event Types
 
 ```
+COUNTRY_CODE
+
 CPU_TIME
 
 DB_TOTAL_TIME
@@ -41497,9 +42798,14 @@ FORWARDED_FOR_IP
 
 HTTP_REFERER
 
-LOGIN_KEY
-
 ```
+
+**Type**
+String
+
+**Description**
+The country code associated with the IP address of the user
+logging in.
 
 **Type**
 Number
@@ -41545,23 +42851,15 @@ Available in API version 61.0 and later.
 **Type**
 String
 
-**Description**
-The referring URI of the page that’s receiving the request.
-
-**Type**
-String
-
 
 Standard Objects EventLogFile Supported Event Types
 
 **Description**
-The string that ties together all events in a given user’s login
-session. It starts with a login event and ends with either a
-logout event or the user session expiring.
-
-For example: `GeJCsym5eyvtEK2I` .
+The referring URI of the page that’s receiving the request.
 
 ```
+LOGIN_KEY
+
 LOGIN_STATUS
 
 LOGIN_SUB_TYPE
@@ -41574,10 +42872,20 @@ LOGIN_TYPE
 String
 
 **Description**
+The string that ties together all events in a given user’s login
+session. It starts with a login event and ends with either a
+logout event or the user session expiring.
+
+For example: `GeJCsym5eyvtEK2I` .
+
+**Type**
+String
+
+**Description**
 The status of the login attempt. For successful logins, the value
 is LOGIN_NO_ERROR. All other values indicate errors or
 authentication issues. For details, see Login Event Type —
-LOGIN_STATUS Values on page 2287.
+LOGIN_STATUS Values on page 2307.
 
 **Type**
 picklist
@@ -41616,6 +42924,9 @@ Possible values are:
 
 **•** `z` —Lightning Login
 
+
+Standard Objects EventLogFile Supported Event Types
+
 **•** `l` —Networks Portal API Only
 
 **•** `6` —Remote Access Client
@@ -41625,9 +42936,6 @@ Possible values are:
 **•** `I` —Other Apex API
 
 **•** `R` —Partner Product
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `w` —Passwordless Login
 
@@ -41695,14 +43003,14 @@ String
 The status of the request for a page view or user interface
 action.
 
+
+Standard Objects EventLogFile Supported Event Types
+
 For example:
 
 **•** `S` —Success. Salesforce handled the request successfully.
 If an Apex controller throws an exception, this status is also
 returned.
-
-
-Standard Objects EventLogFile Supported Event Types
 
 **•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no
 permission to view page, page took too long to render,
@@ -41727,8 +43035,6 @@ SESSION_KEY
 SOURCE_IP
 
 TIMESTAMP
-
-TIMESTAMP_DERIVED
 
 ```
 
@@ -41768,22 +43074,14 @@ String
 **Description**
 The access time of Salesforce services in GMT.
 
-For example: `20130715233322.670` .
-
-**Type**
-DateTime
-
 
 Standard Objects EventLogFile Supported Event Types
 
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2015-07-27T11:32:59.555Z` . Time zone
-is GMT.
+For example: `20130715233322.670` .
 
 ```
+TIMESTAMP_DERIVED
+
 TLS_PROTOCOL
 
 URI
@@ -41794,9 +43092,17 @@ USE_API_TOKEN
 
 USER_ID
 
-USER_ID_DERIVED
-
 ```
+
+**Type**
+DateTime
+
+**Description**
+The access time of Salesforce services in ISO8601-compatible
+format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
+
+For example: `2015-07-27T11:32:59.555Z` . Time zone
+is GMT.
 
 **Type**
 String
@@ -41843,24 +43149,26 @@ through the UI or the API.
 
 For example: `00530000009M943`
 
-**Type**
-Id
-
 
 Standard Objects EventLogFile Supported Event Types
+
+```
+USER_ID_DERIVED
+
+USER_NAME
+
+USER_TYPE
+
+```
+
+**Type**
+Id
 
 **Description**
 The 18-character case insensitive ID of the user who’s using
 Salesforce services through the UI or the API.
 
 For example: `00590000000I1SNIA0` .
-
-```
-USER_NAME
-
-USER_TYPE
-
-```
 
 **Type**
 String
@@ -44626,1442 +45934,3 @@ For example: `Completed or Failed` .
 String
 
 **Description**
-The unique ID of a single transaction. A transaction can contain
-one or more events. Each event in a given transaction has the
-same `REQUEST_ID` .
-
-**Type**
-Number
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-For example: `1851629863` .
-
-**Type**
-String
-
-**Description**
-The user’s unique session ID. You can use this value to identify
-all user events within a session. When a user logs out and logs
-in again, a new session is started.
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The time that the pricing was executed in GMT.
-
-For example: `20170606170000.000` .
-
-```
-TIMESTAMP_DERIVED
-
-URI
-
-URI_ID_DERIVED
-
-USER_ID
-
-USER_ID_DERIVED
-
-##### Queued Execution Event Type
-
-```
-
-**Type**
-DateTime
-
-**Description**
-The time that the pricing was executed in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2017-06-06T1700.000Z` . Timezone is
-GMT.
-
-**Type**
-String
-
-**Description**
-The URI of the page that’s receiving the request.
-
-For example: `/home/home.jsp` .
-
-**Type**
-ID
-
-**Description**
-The 18-character case insensitive ID of the URI of the page
-that’s receiving the request.
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the user who executed pricing through
-the UI or the API.
-
-For example: `005SG000000eu6j`
-
-**Type**
-Id
-
-**Description**
-The 18-character case insensitive ID of the user who’s using
-Salesforce services through the UI or the API.
-
-For example: `001xx0000000useAAA` .
-
-Queued Execution events contain details about queued executions—for example, batch Apex.
-
-[For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
-
-Standard Objects EventLogFile Supported Event Types
-
-Fields
-
-**Field** **Details**
-
-```
-CLIENT_IP
-
-CPU_TIME
-
-DB_TOTAL_TIME
-
-ENTRY_POINT
-
-EVENT_TYPE
-
-```
-
-**Type**
-String
-
-**Description**
-The IP address of the client that’s using Salesforce services. A
-Salesforce internal IP (such as a login from AppExchange) is
-shown as “Salesforce.com IP”.
-
-For example: `96.43.144.26` .
-
-**Type**
-Number
-
-**Description**
-The CPU time in milliseconds that it took to complete the batch
-apex request. This field indicates the amount of activity taking
-place in the app server layer, allowing you to identify pieces
-of Apex or Visualforce code that need refactoring.
-
-**Type**
-Number
-
-**Description**
-The time in nanoseconds for a database round trip. Includes
-time spent in the JDBC driver, network to the database, and
-`DB_CPU_TIME` . Compare this field to `CPU_TIME` to
-determine whether performance issues are occurring in the
-database layer or in your own code.
-
-**Type**
-String
-
-**Description**
-The name of the Apex class that serves as the execution point
-for the batch job.
-
-[Note: This field contains data only for Batch Apex. It is](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_batch.htm)
-unpopulated for Future and Queueable processes.
-
-**Example**
-TaskPhoneExtensionBatchUpdate
-
-**Type**
-String
-
-**Description**
-The type of event. The value is always `QueuedExecution` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-```
-JOB_ID
-
-LOGIN_KEY
-
-ORGANIZATION_ID
-
-REQUEST_ID
-
-REQUEST_STATUS
-
-```
-
-**Type**
-String
-
-**Description**
-The ID of the batch Apex job.
-
-**Example**
-7073000000lDquo
-
-**Type**
-String
-
-**Description**
-The string that ties together all events in a given user’s login
-session. It starts with a login event and ends with either a
-logout event or the user session expiring.
-
-For example: `GeJCsym5eyvtEK2I` .
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the organization.
-
-For example: `00D000000000123` .
-
-**Type**
-String
-
-**Description**
-The unique ID of a single transaction. A transaction can contain
-one or more events. Each event in a given transaction has the
-same `REQUEST_ID` .
-
-For example: `3nWgxWbDKWWDIk0FKfF5DV` .
-
-**Type**
-String
-
-**Description**
-The status of the request for a page view or user interface
-action.
-
-For example:
-
-**•** `S` —Success. Salesforce handled the request successfully.
-If an Apex controller throws an exception, this status is also
-returned.
-
-**•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no
-permission to view page, page took too long to render,
-page is read-only.
-
-**•** `U` —Undefined
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**•** `A` —Authorization Error
-
-**•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated
-by an Apex controller in a Visualforce page.
-
-**•** `N` —Not Found. 404 error.
-
-This field can have a blank value.
-
-```
-RUN_TIME
-
-SESSION_KEY
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-URI
-
-URI_ID_DERIVED
-
-```
-
-**Type**
-Number
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-**Type**
-String
-
-**Description**
-The user’s unique session ID. You can use this value to identify
-all user events within a session. When a user logs out and logs
-in again, a new session is started.
-
-For example: `d7DEq/ANa7nNZZVD` .
-
-**Type**
-String
-
-**Description**
-The access time of Salesforce services in GMT.
-
-For example: `20130715233322.670` .
-
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2015-07-27T11:32:59.555Z` . Timezone
-is GMT.
-
-**Type**
-String
-
-**Description**
-The URI of the page that’s receiving the request.
-
-For example: `/home/home.jsp` .
-
-**Type**
-ID
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-**Description**
-The 18-character case insensitive ID of the URI of the page
-that’s receiving the request.
-
-```
-USER_ID
-
-USER_ID_DERIVED
-
-USER_TYPE
-
-```
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services
-through the UI or the API.
-
-For example: `00530000009M943`
-
-**Type**
-Id
-
-**Description**
-The 18-character case insensitive ID of the user who’s using
-Salesforce services through the UI or the API.
-
-For example: `00590000000I1SNIA0` .
-
-**Type**
-String
-
-**Description**
-The category of user license.
-
-Possible values are:
-
-**•** `CsnOnly` —Users whose access to the application is
-limited to Chatter. This user type includes Chatter Free and
-Chatter moderator users.
-
-**•** `CspLitePortal` —CSP Lite Portal license. Users whose
-access is limited because they’re organization customers
-and access the application through a customer portal or
-an Experience Cloud site.
-
-**•** `CustomerSuccess` —Customer Success license. Users
-whose access is limited because they’re organization
-customers and access the application through a customer
-portal.
-
-**•** `Guest` —Users whose access is limited so that your
-customers can view and interact with your site without
-logging in.
-
-**•** `PowerCustomerSuccess` —Power Customer Success
-license. Users whose access is limited because they’re
-organization customers and access the application through
-a customer portal. Users with this license type can view
-and edit data they directly own or data owned by or shared
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Field** **Details**
-
-with users below them in the customer portal role
-hierarchy.
-
-**•** `PowerPartner` —Power Partner license. Users whose
-access is limited because they’re partners and typically
-access the application through a partner portal or site.
-
-**•** `SelfService` —Users whose access is limited because
-they’re organization customers and access the application
-through a self-service portal.
-
-**•** `Standard` —Standard user license. This user type also
-includes Salesforce Platform and Salesforce Platform One
-user licenses, and admins for this org.
-
-SEE ALSO:
-
-EventLogFile Supported Event Types
-
-EventLogFile
-
-##### Report Event Type
-
-Report events contain information about what happened when a user ran a report. This event type includes all activity that's in the
-Report Export event type, plus more. For example, it has user activity for reports exported as both Formatted Report and Details Only
-output.
-
-Note: Exporting a report directly from the report result captures the event in both the Report and Report Export logs.
-
-[For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
-Fields
-
-**Field** **Details**
-
-```
-AVERAGE_ROW_SIZE
-
-CLIENT_IP
-
-```
-
-**Type**
-Number
-
-**Description**
-The average row size of all rows in the Report event, in bytes.
-A large average size, coupled with a high `ROW_COUNT`, can
-indicate that a user is downloading information for fraudulent
-purposes. For example, a salesperson who downloads all sales
-leads before departing for a competitor.
-
-**Example**
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The IP address of the client that’s using Salesforce services. A
-Salesforce internal IP (such as a login from AppExchange) is
-shown as “Salesforce.com IP”.
-
-For example: `96.43.144.26` .
-
-```
-CPU_TIME
-
-DB_BLOCKS
-
-DB_CPU_TIME
-
-DB_TOTAL_TIME
-
-DISPLAY_TYPE
-
-```
-
-**Type**
-Number
-
-**Description**
-The CPU time in milliseconds used to complete the request.
-This field indicates the amount of activity taking place in the
-app server layer.
-
-**Type**
-Number
-
-**Description**
-Indicates how much activity is occurring in the database. A
-high value for this field suggests that adding indexes or filters
-on your queries would benefit performance.
-
-**Type**
-Number
-
-**Description**
-The CPU time in milliseconds to complete the request. Indicates
-the amount of activity taking place in the database layer during
-the request.
-
-**Type**
-Number
-
-**Description**
-The time in nanoseconds for a database round trip. Includes
-time spent in the JDBC driver, network to the database, and
-`DB_CPU_TIME` . Compare this field to `CPU_TIME` to
-determine whether performance issues are occurring in the
-database layer or in your own code.
-
-**Type**
-String
-
-**Description**
-The report display type, indicating the run mode of the report.
-
-Possible values are:
-
-**•** `D` —Dashboard
-
-**•** `S` —Show Details
-
-**•** `H` —Hide Details
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-ENTITY_NAME
-
-EVENT_TYPE
-
-LOGIN_KEY
-
-NUMBER_BUCKETS
-
-NUMBER_COLUMNS
-
-NUMBER_EXCEPTION_FILTERS
-
-ORGANIZATION_ID
-
-ORIGIN
-
-```
-
-**Type**
-String
-
-**Description**
-The name of the object affected by the trigger.
-
-**Type**
-String
-
-**Description**
-The type of event. The value is always `Report` .
-
-**Type**
-String
-
-**Description**
-The string that ties together all events in a given user’s login
-session. It starts with a login event and ends with either a
-logout event or the user session expiring.
-
-For example: `GeJCsym5eyvtEK2I` .
-
-**Type**
-Number
-
-**Description**
-The number of buckets that were used in the report.
-
-**Type**
-Number
-
-**Description**
-The number of columns in the report.
-
-**Type**
-Number
-
-**Description**
-The number of exception filters that are used in the report.
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the organization.
-
-For example: `00D000000000123` .
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The context in which the report executed, such as from a UI
-(Classic, Lightning, Mobile), through an API (synchronous,
-asynchronous, Apex), or through a dashboard.
-
-**Possible Values**
-
-**•** `ReportOpenedFromMobileDashboard` : Report
-executed when a user clicked a dashboard component on
-a mobile device and drilled down to a report.
-
-**•** `DashboardComponentUpdated` : Report executed
-when a user refreshed a dashboard component.
-
-**•** `DashboardComponentPreviewed` : Report
-executed from a Lightning dashboard component preview.
-
-**•** `ReportRunUsingSynchronousApi` : Report
-executed from a synchronous API.
-
-**•** `ReportRunUsingAsynchronousApi` : Report
-executed from an asynchronous API.
-
-**•** `ReportRunUsingApexSynchronousApi` : Report
-executed from the synchronous Apex API.
-
-**•** `ReportRunUsingApexAsynchronousApi` : Report
-executed from the asynchronous Apex API.
-
-**•** `ReportExported` : Report executed from a printable
-view or report export that was not asynchronous nor an
-API export.
-
-**•** `ReportRunFromClassic` : Report executed from the
-Run Report option of Salesforce Classic.
-
-**•** `ReportRunFromMobile` : Report executed from the
-Run Report option of the mobile Salesforce app.
-
-**•** `ReportRunFromLightning` : Report executed from
-the Run option in Lightning Experience from a non-mobile
-browser.
-
-**•** `ReportRunFromRestApi` : Report executed from
-REST API.
-
-**•** `ReportPreviewed` : Report executed when a user got
-preview results while using the report builder.
-
-**•** `ReportScheduled` : Report was scheduled.
-
-**•** `ProbeQuery` : Report executed from a probe query.
-
-**•** `ReportRunFromReportingSnapshot` : Report
-executed through Snapshot Analytics.
-
-**•** `ReportExportedAsynchronously` : Report was
-exported asynchronously.
-
-**•** `ReportExportedUsingExcelConnector` : Report
-was exported using the Excel connector.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**•** `ChartRenderedOnVisualforcePage` : Report
-executed from a rendered chart on a VisualForce Page.
-
-**•** `ChartRenderedInEmbeddedAnalyticsApp` :
-Report executed from a rendered chart in an embedded
-Analytics app.
-
-**•** `ReportRunAndNotificationSent` : Report
-executed through the notifications API.
-
-**•** `ChartRenderedOnHomePage` : Report executed from
-a rendered chart on the home page.
-
-**•** `ReportResultsAddedToWaveTrending` : Report
-executed when a user trended a report in CRM Analytics.
-
-**•** `ReportAddedToCampaign` : Report was added from
-an Add to Campaign action.
-
-**•** `ReportResultsAddedToEinsteinDiscovery` :
-Report executed synchronously from Einstein Discovery.
-
-**•** `Unknown` : Report execution origin is unknown.
-
-**•** `Test` : Report execution resulted from a test.
-
-```
-RENDERING_TYPE
-
-REPORT_ID
-
-REPORT_ID_DERIVED
-
-```
-
-**Type**
-String
-
-**Description**
-Describes the format of the report output in Salesforce Classic.
-If the report was exported in Lightning Experience, this field is
-blank.
-
-**Possible Values**
-
-**•** `W` : Web (HTML)
-
-**•** `E` : Email
-
-**•** `P` : Printable
-
-**•** `X` : Excel
-
-**•** `C` : Comma-separated values (CSV)
-
-**•** `J` : JavaScript Object Notation (JSON)
-
-**•** `D` : Dummy data
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the report that was run.
-
-**Type**
-Id
-
-**Description**
-The 18-character case insensitive ID of the report that was run.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-REQUEST_ID
-
-REQUEST_STATUS
-
-ROW_COUNT
-
-RUN_TIME
-
-```
-
-**Type**
-String
-
-**Description**
-The unique ID of a single transaction. A transaction can contain
-one or more events. Each event in a given transaction has the
-same `REQUEST_ID` .
-
-For example: `3nWgxWbDKWWDIk0FKfF5DV` .
-
-**Type**
-String
-
-**Description**
-The status of the request for a page view or user interface
-action.
-
-For example:
-
-**•** `S` —Success. Salesforce handled the request successfully.
-If an Apex controller throws an exception, this status is also
-returned.
-
-**•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no
-permission to view page, page took too long to render,
-page is read-only.
-
-**•** `U` —Undefined
-
-**•** `A` —Authorization Error
-
-**•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated
-by an Apex controller in a Visualforce page.
-
-**•** `N` —Not Found. 404 error.
-
-This field can have a blank value.
-
-**Type**
-Number
-
-**Description**
-The number of rows that were processed in the Report event.
-High row counts, coupled with a high
-`AVERAGE_ROW_SIZE`, can indicate that a user is
-downloading information for fraudulent purposes. For example,
-a salesperson who downloads all sales leads before departing
-for a competitor.
-
-**Example**
-
-**Type**
-Number
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-SESSION_KEY
-
-SORT
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-UI_NUMBER_COLUMNS
-
-URI
-
-URI_ID_DERIVED
-
-```
-
-**Type**
-String
-
-**Description**
-The user’s unique session ID. You can use this value to identify
-all user events within a session. When a user logs out and logs
-in again, a new session is started.
-
-For example: `d7DEq/ANa7nNZZVD` .
-
-**Type**
-String
-
-**Description**
-The sort column and order that was used in the report.
-
-**Type**
-String
-
-**Description**
-The access time of Salesforce services in GMT.
-
-For example: `20130715233322.670` .
-
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2015-07-27T11:32:59.555Z` . Timezone
-is GMT.
-
-**Type**
-Number
-
-**Description**
-The number of columns in the report. The fields that have
-multiple components (for example, addresses) are considered
-as a single column.
-
-**Type**
-String
-
-**Description**
-The URI of the page that’s receiving the request.
-
-For example: `/home/home.jsp` .
-
-**Type**
-ID
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The 18-character case insensitive ID of the URI of the page
-that’s receiving the request.
-
-```
-USER_ID
-
-USER_ID_DERIVED
-
-USER_TYPE
-
-```
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services
-through the UI or the API.
-
-For example: `00530000009M943`
-
-**Type**
-Id
-
-**Description**
-The 18-character case insensitive ID of the user who’s using
-Salesforce services through the UI or the API.
-
-For example: `00590000000I1SNIA0` .
-
-**Type**
-String
-
-**Description**
-The category of user license.
-
-Possible values are:
-
-**•** `CsnOnly` —Users whose access to the application is
-limited to Chatter. This user type includes Chatter Free and
-Chatter moderator users.
-
-**•** `CspLitePortal` —CSP Lite Portal license. Users whose
-access is limited because they’re organization customers
-and access the application through a customer portal or
-an Experience Cloud site.
-
-**•** `CustomerSuccess` —Customer Success license. Users
-whose access is limited because they’re organization
-customers and access the application through a customer
-portal.
-
-**•** `Guest` —Users whose access is limited so that your
-customers can view and interact with your site without
-logging in.
-
-**•** `PowerCustomerSuccess` —Power Customer Success
-license. Users whose access is limited because they’re
-organization customers and access the application through
-a customer portal. Users with this license type can view
-and edit data they directly own or data owned by or shared
-with users below them in the customer portal role
-hierarchy.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**•** `PowerPartner` —Power Partner license. Users whose
-access is limited because they’re partners and typically
-access the application through a partner portal or site.
-
-**•** `SelfService` —Users whose access is limited because
-they’re organization customers and access the application
-through a self-service portal.
-
-**•** `Standard` —Standard user license. This user type also
-includes Salesforce Platform and Salesforce Platform One
-user licenses, and admins for this org.
-
-Usage
-
-**Example: Identify Large Report Exports by User**
-
-Get Report event type data from the EventLogFile object using REST:
-
-```
-   /services/data/v40.0/query?q=SELECT+Id+,+EventType+,+LogFile+,+LogDate+,+LogFileLength+FROM+EventLogFile+WHERE+
-
-      LogDate+>+Yesterday+AND+EventType+=+'Report'
-
-```
-
-After you download the report data to a ReportData database table, query it and filter on reports that were exported with high row
-counts and size:
-
-```
-   SELECT USER_ID FROM ReportData WHERE (RENDERING_TYPE=C OR RENDERING_TYPE=X OR
-
-   RENDERING_TYPE=P) AND ROW_COUNT>150000 AND AVERAGE_ROW_SIZE>1500
-
-```
-
-SEE ALSO:
-
-EventLogFile Supported Event Types
-
-EventLogFile
-
-##### Report Export Event Type
-
-Report Export events contain details about reports that a user exported. For example, this event type captures when a user exports a
-report as Details Only output. But it doesn’t capture reports that users export as Formatted Report or XLSX Detail output. For that data,
-see the Report event type.
-
-[For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
-Fields
-
-**Field** **Details**
-
-```
-CLIENT_IP
-
-```
-
-**Type**
-String
-
-**Description**
-The IP address of the client that’s using Salesforce services. A
-Salesforce internal IP (such as a login from AppExchange) is
-shown as “Salesforce.com IP”.
-
-
-Standard Objects EventLogFile Supported Event Types
-
-For example: `96.43.144.26` .
-
-```
-CLIENT_INFO
-
-CPU_TIME
-
-EVENT_TYPE
-
-LOGIN_KEY
-
-ORGANIZATION_ID
-
-REPORT_DESCRIPTION
-
-REQUEST_ID
-
-```
-
-**Type**
-String
-
-**Description**
-Information about the client that’s using Salesforce services.
-
-**Type**
-Number
-
-**Description**
-The CPU time in milliseconds used to complete the request.
-This field indicates the amount of activity taking place in the
-app server layer.
-
-**Type**
-String
-
-**Description**
-The type of event. The value is always `ReportExport` .
-
-**Type**
-String
-
-**Description**
-The string that ties together all events in a given user’s login
-session. It starts with a login event and ends with either a
-logout event or the user session expiring.
-
-For example: `GeJCsym5eyvtEK2I` .
-
-**Type**
-Id
-
-**Description**
-The 15-character ID of the organization.
-
-For example: `00D000000000123` .
-
-**Type**
-String
-
-**Description**
-Information about the report that was run.
-
-**Type**
-String
-
-**Description**
-The unique ID of a single transaction. A transaction can contain
-one or more events. Each event in a given transaction has the
-same `REQUEST_ID` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-For example: `3nWgxWbDKWWDIk0FKfF5DV` .
-
-```
-RUN_TIME
-
-SESSION_KEY
-
-TIMESTAMP
-
-TIMESTAMP_DERIVED
-
-URI
-
-URI_ID_DERIVED
-
-USER_ID
-
-```
-
-**Type**
-Number
-
-**Description**
-The amount of time that the request took in milliseconds.
-
-**Type**
-String
-
-**Description**
-The user’s unique session ID. You can use this value to identify
-all user events within a session. When a user logs out and logs
-in again, a new session is started.
-
-For example: `d7DEq/ANa7nNZZVD` .
-
-**Type**
-String
-
-**Description**
-The access time of Salesforce services in GMT.
-
-For example: `20130715233322.670` .
-
-**Type**
-DateTime
-
-**Description**
-The access time of Salesforce services in ISO8601-compatible
-format ( `YYYY-MM-DDTHH:MM:SS.sssZ` ).
-
-For example: `2015-07-27T11:32:59.555Z` . Timezone
-is GMT.
-
-**Type**
-String
-
-**Description**
-The URI of the page that’s receiving the request.
-
-For example: `/home/home.jsp` .
-
-**Type**
-ID
-
-**Description**
-The 18-character case insensitive ID of the URI of the page
-that’s receiving the request.
-
-**Type**
-Id
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The 15-character ID of the user who’s using Salesforce services
-through the UI or the API.
-
-For example: `00530000009M943`
-
-```
-USER_ID_DERIVED
-
-```
-
-SEE ALSO:
-
-EventLogFile Supported Event Types
-
-EventLogFile
-
-##### REST API Event Type
-
-REST API events contain details about REST-specific requests.
-
-**Type**
-Id
-
-**Description**
-The 18-character case insensitive ID of the user who’s using
-Salesforce services through the UI or the API.
-
-For example: `00590000000I1SNIA0` .
-
-[For details about event monitoring, see the Trailhead Event Monitoring module or REST API Developer’s Guide.](https://trailhead.salesforce.com/en/modules/event_monitoring/units/event_monitoring_intro)
-
-Fields
-
-**Field** **Details**
-
-```
-BOT_IDENTIFIER
-
-BOT_SESSION_IDENTIFIER
-
-CLIENT_IP
-
-```
-
-**Type**
-string
-
-**Description**
-The ID of the bot.
-
-**Type**
-string
-
-**Description**
-The bot session ID.
-
-**Type**
-String
-
-**Description**
-The IP address of the client that’s using Salesforce services. A
-Salesforce internal IP (such as a login from AppExchange) is
-shown as “Salesforce.com IP”.
-
-For example: `96.43.144.26` .
-
-
-Standard Objects EventLogFile Supported Event Types
-
-```
-CLIENT_NAME
-
-CONNECTED_APP_ID
-
-CPU_TIME
-
-DB_BLOCKS
-
-DB_CPU_TIME
-
-DB_TOTAL_TIME
-
-ENTITY_NAME
-
-```
-
-**Type**
-String
-
-**Description**
-The name of the client that’s using Salesforce services. This
-field is an optional parameter that can be passed in API calls.
-
-**Type**
-Reference
-
-**Description**
-The 15-character ID of the connected app associated with the
-API call. For example, `0H4RM00000000Kr0AI` .
-
-**Type**
-Number
-
-**Description**
-The CPU time in milliseconds used to complete the request.
-This field indicates the amount of activity taking place in the
-app server layer.
-
-**Type**
-Number
-
-**Description**
-Indicates how much activity is occurring in the database. A
-high value for this field suggests that adding indexes or filters
-on your queries would benefit performance.
-
-**Type**
-Number
-
-**Description**
-The CPU time in milliseconds to complete the request. Indicates
-the amount of activity taking place in the database layer during
-the request.
-
-**Type**
-Number
-
-**Description**
-The time in nanoseconds for a database round trip. Includes
-time spent in the JDBC driver, network to the database, and
-`DB_CPU_TIME` . Compare this field to `CPU_TIME` to
-determine whether performance issues are occurring in the
-database layer or in your own code.
-
-**Type**
-Set
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The name of the object accessed by the API request.
-
-For example: `Account`, `Opportunity`, `Contact`, and
-so on.
-
-```
-EVENT_TYPE
-
-EXCEPTION_MESSAGE
-
-LOGIN_KEY
-
-MEDIA_TYPE
-
-METHOD
-
-NUMBER_FIELDS
-
-ORGANIZATION_ID
-
-```
-
-**Type**
-String
-
-**Description**
-The type of event. The value is always `RestApi` .
-
-**Type**
-String
-
-**Description**
-The returned exception message, used to debug issues. Provide
-this message when seeking support.
-
-**Type**
-String
-
-**Description**
-The string that ties together all events in a given user’s login
-session. It starts with a login event and ends with either a
-logout event or the user session expiring.
-
-For example: `GeJCsym5eyvtEK2I` .
-
-**Type**
-String
-
-**Description**
-The media type of the response.
-
-**Type**
-String
-
-**Description**
-The HTTP method of the request.
-
-For example: `GET`, `POST`, `PUT`, and so on.
-
-**Type**
-Number
-
-**Description**
-The number of fields or columns, where applicable.
-
-**Type**
-Id
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The 15-character ID of the organization.
-
-For example: `00D000000000123` .
-
-```
-PLANNER_IDENTIFIER
-
-QUERY
-
-REQUEST_SIZE
-
-REQUEST_STATUS
-
-REQUEST_ID
-
-```
-
-**Type**
-string
-
-**Description**
-The ID of the agent planner.
-
-**Type**
-String
-
-**Description**
-The data that was queried.
-
-**Type**
-Number
-
-**Description**
-The size of the callout request body, in bytes.
-
-**Type**
-String
-
-**Description**
-The status of the request for a page view or user interface
-action.
-
-For example:
-
-**•** `S` —Success. Salesforce handled the request successfully.
-If an Apex controller throws an exception, this status is also
-returned.
-
-**•** `F` —Failure. Typically 4xx or 5xx HTTP codes, such as no
-permission to view page, page took too long to render,
-page is read-only.
-
-**•** `U` —Undefined
-
-**•** `A` —Authorization Error
-
-**•** `R` —Redirect. Typically a 3xx HTTP code, possibly initiated
-by an Apex controller in a Visualforce page.
-
-**•** `N` —Not Found. 404 error.
-
-This field can have a blank value.
-
-**Type**
-String
-
-
-Standard Objects EventLogFile Supported Event Types
-
-**Description**
-The unique ID of a single transaction. A transaction can contain

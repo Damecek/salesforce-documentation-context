@@ -1,12 +1,12 @@
 # Salesforce DX Developer Guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/sfdx_dev.pdf
-> Fetched: 2026-02-19T08:08:03Z
+> Fetched: 2026-03-15T21:08:25Z
 Salesforce DX Developer Guide
 
 Version 66.0, Spring ’26
 
-Last updated: February 13, 2026
+Last updated: March 13, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -4636,7 +4636,7 @@ purposes. The Metadata Coverage report is the ultimate source of truth for metad
 several channels. These channels include Metadata API, scratch org source tracking, unlocked packages,
 second-generation managed packages, classic managed packages, and more.
 
-[View the Metadata Coverage report.](https://dx-extended-coverage.my.salesforce-sites.com/docs/metadata-coverage)
+[View the Metadata Coverage report.](https://developer.salesforce.com/docs/success/metadata-coverage-report/references/coverage-report/metadata-coverage-report.html)
 
 [For more information, see Metadata Types in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_types_list.htm) _Metadata API Developer Guide_ .
 
@@ -13408,7 +13408,7 @@ Source Tracking
 or retrieving source.
 
 To see which metadata components support source tracking, check the Source Tracking column of the
-[Metadata Coverage Report.](https://developer.salesforce.com/docs/metadata-coverage/)
+[Metadata Coverage Report.](https://developer.salesforce.com/docs/success/metadata-coverage-report/references/coverage-report/metadata-coverage-report.html)
 
 
 ## Track Changes Between Your Project and Org Manage Source Tracking for Your org Manage Source Tracking for Your org
@@ -14967,13 +14967,14 @@ These are the high-level types of MCP tools included in the DX MCP Server:
 
 **•** **Core DX** : Usual DX tools for working with orgs, deploying and retrieving metadata, and so on.
 
+**•** **Code Analysis** : Run a static analysis of your code using Salesforce Code Analyzer.
+
 **•** **DevOps** : Manage work items, resolve merge conflicts, and troubleshoot deployment problems
 within DevOps Center.
 
-**•** **Code Analysis** : Run a static analysis of your code using Salesforce Code Analyzer.
-
-**•** **Mobile** : Help LWC developers create Lightning web components that integrate with device-native
-features and adhere to Mobile Offline design patterns.
+**•** **Lightning Types** : Create and enhance custom Lightning types to define complex data structures
+and build custom user interfaces for Agentforce, Prompt Builder, and other Salesforce applications.
+[See the Lightning Types MCP Tool documentation.](https://developer.salesforce.com/docs/platform/lightning-types/guide/lightning-types-mcp-tool.html)
 
 **•** **Lightning Web Components (LWC) and Aura** : Help you design, build, test, and optimize LWC
 code and facilitate Aura migration to LWC.
@@ -14981,9 +14982,10 @@ code and facilitate Aura migration to LWC.
 
 Salesforce DX MCP Server and Tools (Beta)
 
-**•** **Lightning Types** : Create and enhance custom Lightning types to define complex data structures
-and build custom user interfaces for Agentforce, Prompt Builder, and other Salesforce applications.
-[See the Lightning Types MCP Tool documentation.](https://developer.salesforce.com/docs/platform/lightning-types/guide/lightning-types-mcp-tool.html)
+**•** **Mobile** : Help LWC developers create Lightning web components that integrate with device-native
+features and adhere to Mobile Offline design patterns.
+
+**•** **Scale Products** : Use ApexGuru to detect and fix Apex performance issues.
 
 MCP Terminology
 
@@ -15001,6 +15003,10 @@ DX MCP Server has `metadata` and `orgs` toolsets.
 **•** **MCP Client**               - The interface (such as Agentforce) or IDE (such as Cursor) that can host an MCP server
 and act as an interface to the LLM. Also called MCP Host, although this document uses the term
 MCP client.
+
+SEE ALSO:
+
+_GitHub_ [: Salesforce DX MCP Server Repository](https://github.com/salesforcecli/mcp)
 
 
 ## Salesforce DX MCP Server and Tools (Beta) Quick Start Using the VS Code With Copilot MCP Client (Beta) Quick Start Using the VS Code With Copilot MCP Client (Beta)
@@ -15104,6 +15110,10 @@ Try out these sample prompts:
 **6.** To stop, restart, or view the DX MCP Server configuration, run the **MCP: List Servers** command, click **Salesforce DX**, then click the
 appropriate option.
 
+SEE ALSO:
+
+_GitHub_ [: Salesforce DX MCP Server Repository](https://github.com/salesforcecli/mcp)
+
 ## Install and Configure the Salesforce DX MCP Server (Beta)
 
 Install the Salesforce DX MCP Server in your MCP client to start using the tools.
@@ -15123,8 +15133,7 @@ involves updating a JSON file that tells the MCP client how to run the `@salesfo
 `args` option to configure the DX MCP Server. We recommend that you also use the `@latest` tag ( `@salesforce/mcp@latest` )
 so you always get the latest version of the DX MCP Server.
 
-While each MCP client has different JSON files, the format of the `args` option is always the same. Here are instructions for some popular
-MCP clients.
+While each MCP client has different JSON files, the format of the `args` option is always the same.
 
 Agentforce Vibes
 
@@ -15141,72 +15150,10 @@ topic includes details about which JSON file to update and an example JSON snipp
 
 (Beta)
 
-Cursor
-
-[To configure Cursor to work with Salesforce DX MCP Server, add this snippet to your Cursor](https://cursor.com/docs/context/mcp) `mcp.json` file:
-
-```
-   {
-
-     "mcpServers": {
-
-      "Salesforce DX": {
-
-       "command": "npx",
-
-       "args": ["-y", "@salesforce/mcp@latest",
-
-            "--orgs", "DEFAULT_TARGET_ORG",
-
-            "--toolsets", "orgs,metadata,data,users,testing"]
-
-      }
-
-     }
-
-   }
-
-```
-
-Cline
-
-[To configure Cline, add this snippet to your Cline](https://docs.cline.bot/mcp/mcp-overview) `cline_mcp_settings.json` file:
-
-```
-   {
-
-     "mcpServers": {
-
-      "Salesforce DX": {
-
-       "command": "npx",
-
-       "args": ["-y", "@salesforce/mcp@latest",
-
-            "--orgs", "DEFAULT_TARGET_ORG",
-
-            "--toolsets", "orgs,metadata,data,users,testing"]
-
-      }
-
-     }
-
-   }
-
-```
-
 Other MCP Clients
 
-For these other clients, refer to their documentation for adding MCP servers and follow the same pattern as in the preceding VS Code
-and Cursor JSON snippets:
-
-**•** [Claude Code](https://docs.claude.com/en/docs/claude-code/mcp)
-
-**•** [Windsurf](https://docs.windsurf.com/windsurf/cascade/mcp)
-
-**•** [Zed](https://github.com/zed-industries/zed)
-
-**•** [Trae](https://docs.trae.ai/ide/model-context-protocol?_lang=en)
+[To configure the Salesforce DX MCP Server in other MCP clients, such as Claude Code and Cursor, see the README for the Salesforce DX](https://github.com/salesforcecli/mcp/blob/main/README.md)
+MCP Server GitHub repository.
 
 ### Configure the Salesforce DX MCP Server for Your Environment (Beta)
 
@@ -15218,10 +15165,6 @@ value.
 
 Let’s just run through some examples so you get the idea. Then see later sections for the full list of values you can specify for the `args`
 option and its flags.
-
-
-Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
-(Beta)
 
 This basic example (for the VS Code with Copilot MCP client) configures the DX MCP Server to access your default org and enables the
 core DX toolsets.
@@ -15292,6 +15235,10 @@ words, this enables everything! Only do this if you truly need everything.
 
 ```
 
+
+Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
+(Beta)
+
 This example enables five tool sets ( `data`, `orgs`, `metadata`, `lwc-experts`, and `code-analysis` ) and a specific tool
 ( `run_apex_test` ) from a different toolset.
 
@@ -15319,10 +15266,6 @@ toolsets. The `core` toolset is always enabled, even if you don't specify it in 
          "--tools", "list_all_orgs,deploy_metadata,run_apex_test"]
 
 ```
-
-
-Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
-(Beta)
 
 This example enables the `orgs` toolset and the specific tool `deploy_metadata` .
 
@@ -15364,11 +15307,11 @@ CLI command or the **VS Code SFDX: Authorize an Org** command from the command p
 
 These are the available values for the `--orgs` flag.
 
-**Table 2: Valid values for the --orgs Flag**
-
 
 Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
 (Beta)
+
+**Table 2: Valid values for the --orgs Flag**
 
 Valid Values for the **`--toolsets`** Flag
 
@@ -15383,7 +15326,8 @@ as indicated.
 **Table 3: Valid values for the --toolsets Flag**
 
 
-### Salesforce DX MCP Server and Tools (Beta) Manage the Salesforce DX MCP Server (Beta)
+Salesforce DX MCP Server and Tools (Beta) Configure the Salesforce DX MCP Server for Your Environment
+(Beta)
 
 Valid Values for the **`--tools`** Flag
 
@@ -15391,11 +15335,16 @@ You can use the `--tools` flag to enable specific tools. Use the `--toolsets` an
 example, all the tools in the `orgs` toolset and just one tool ( `run_apex_test` ) in the testing toolset. Separate multiple tools with
 commas.
 
+
+### Salesforce DX MCP Server and Tools (Beta) Manage the Salesforce DX MCP Server (Beta)
+
 Tip: If you enable an MCP tool with the `--tools` or `--toolsets` flag, you can then disable it in your MCP client, which
 takes precedence.
 
 The easiest way to find the name of a specific MCP tool is using your MCP client. For example, in VS Code with GitHub Copilot, click the
 **Configure Tools** button in the bottom-right of the chat window to see all the available tools, including the Salesforce DX ones.
+
+[The Salesforce DX MCP Server GitHub repository README also has a list of the available MCP tools.](https://github.com/salesforcecli/mcp/blob/main/README.md)
 
 You can also refer to the documentation for the different types of MCP tools:
 
@@ -15409,14 +15358,13 @@ You can also refer to the documentation for the different types of MCP tools:
 
 **•** [LWC MCP Tools Documentation](https://developer.salesforce.com/docs/platform/lwc/guide/mcp-intro.html)
 
+**•** [ApexGuru MCP Tools Documentation](https://help.salesforce.com/s/articleView?id=xcloud.apexguru_salesforce_dx_mcp.htm&type=5&language=en_US)
+
 ### Manage the Salesforce DX MCP Server (Beta)
 
 The exact steps to manage the Salesforce DX MCP Server depends on your MCP client.
 
 But most clients allow you to:
-
-
-## Salesforce DX MCP Server and Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta)
 
 **•** Stop and restart the server. If a new version of the DX MCP Server `npm` package ( `@salesforce/mcp` ) was released, then it’s
 automatically updated.
@@ -15425,7 +15373,24 @@ automatically updated.
 
 Check your MCP client documentation for details.
 
-## Use the Core Salesforce DX MCP Tools (Beta)
+MCP Server Updates and Feedback
+
+[Release notes are available at the issue-only Github repository for the Salesforce DX MCP server. In this GitHub repository, you can also](https://github.com/forcedotcom/mcp/tree/main/releasenotes)
+report bugs and suggest feedback.
+
+[To report bugs, first check if someone else already reported the issue. If you don’t see your bug listed, open a new issue.](https://github.com/forcedotcom/mcp/issues)
+
+[For feature requests and other related topics, first review the existing discussions before you open a new discussion.](https://github.com/forcedotcom/mcp/discussions)
+
+Note: GitHub isn’t a mechanism for receiving support under any agreement or SLA. If you require immediate assistance, contact
+[Salesforce Customer Support.](https://help.salesforce.com/s/articleView?id=000384365&type=1&language=en_US)
+
+SEE ALSO:
+
+_GitHub_ [: Salesforce DX MCP Server Repository](https://github.com/salesforcecli/mcp)
+
+
+## Salesforce DX MCP Server and Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta)
 
 Use the core Salesforce DX MCP tools to run classic DX tasks, such as work with orgs, retrieve and deploy metadata, run Apex tests, and
 more.
@@ -15480,9 +15445,6 @@ before it runs a tool that makes a real change in your local DX project or in yo
 
 Tips:
 
-
-Salesforce DX MCP Server and Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta)
-
 **•** If the MCP client doesn’t list the authorized orgs that you want to use, update the `--orgs` flag in your DX MCP Server configuration
 and either add the org’s alias or username or specify `ALLOW_ALL_ORGS` .
 
@@ -15490,6 +15452,9 @@ and either add the org’s alias or username or specify `ALLOW_ALL_ORGS` .
 all LLM usage.
 
 **Open your org in a browser:**
+
+
+Salesforce DX MCP Server and Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta)
 
 **•** _Open my org in a browser._
 
@@ -15553,10 +15518,14 @@ so you understand what kinds of tasks these tools can accomplish; you don’t ca
 The tools marked NON-GA are not yet generally available, specify the `--allow-non-ga-tools` flag in your DX MCP Server
 configuration to use them. See Configure the Salesforce DX MCP Server for Your Environment.
 
+**Table 4: Core DX MCP Tools**
+
 
 Salesforce DX MCP Server and Tools (Beta) Use the Core Salesforce DX MCP Tools (Beta)
 
-**Table 4: Core DX MCP Tools**
+SEE ALSO:
+
+_GitHub_ [: Salesforce DX MCP Server Repository](https://github.com/salesforcecli/mcp)
 
 
 # CHAPTER 11 Development

@@ -1,3 +1,90 @@
+_Exceptions_ note errors and other events that disrupt the normal flow of code execution. `throw` statements are used to generate
+exceptions, while `try`, `catch`, and `finally` statements are used to gracefully recover from exceptions.
+
+#### Debug Log
+
+A debug log can record database operations, system processes, and errors that occur when executing a transaction or running unit tests.
+Debug logs can contain information about:
+
+**•** Database changes
+
+**•** HTTP callouts
+
+**•** Apex errors
+
+**•** Resources used by Apex
+
+**•** Automated workflow processes, such as:
+
+**–** Workflow rules
+
+**–** Assignment rules
+
+**–** Approval processes
+
+**–** Validation rules
+
+Note: The debug log doesn’t include information from actions triggered by time-based workflows. It also doesn’t include
+information from standard or custom controllers used in Visualforce email templates.
+
+You can retain and manage debug logs for specific users, including yourself, and for classes and triggers. Setting class and trigger trace
+flags doesn’t cause logs to be generated or saved. Class and trigger trace flags override other logging levels, including logging levels set
+by user trace flags, but they don’t cause logging to occur. If logging is enabled when classes or triggers execute, logs are generated at
+the time of execution.
+
+#### To view a debug log from Setup, enter Debug Logs in the Quick Find box, then select Debug Logs . Then click View next to
+
+the debug log that you want to examine. Click **Download** to download the debug log as a log file.
+
+#### Debug Log Limits
+
+Debug logs have the following limits.
+
+**•** Each debug log must be 20 MB or smaller. Debug logs that are larger than 20 MB are reduced in size by removing older log lines,
+such as log lines for earlier `System.debug` statements. The log lines can be removed from any location, not just the start of the
+debug log.
+
+**•** System debug logs are retained for 24 hours. Monitoring debug logs are retained for seven days.
+
+**•** If you generate more than 1,000 MB of debug logs in a 15-minute window, your trace flags are disabled. We send an email to the
+users who last modified the trace flags, informing them that they can re-enable the trace flag in 15 minutes.
+
+Warning: If the debug log trace flag is enabled on a frequently accessed Apex class or for a user executing requests often,
+the request can result in failure, regardless of the time window and the size of the debug logs.
+
+**•** When your org accumulates more than 1,000 MB of debug logs, we prevent users in the org from adding or editing trace flags. To
+add or edit trace flags so that you can generate more logs after you reach the limit, delete some debug logs.
+
+
+Apex Developer Guide Debugging Apex
+
+Inspecting the Debug Log Sections
+
+After you generate a debug log, the type and amount of information listed depends on the filter values you set for the user. However,
+the format for a debug log is always the same.
+
+Note: Session IDs are replaced with "SESSION_ID_REMOVED" in Apex debug logs
+
+A debug log has the following sections.
+
+**Header**
+The header contains the following information.
+
+**•** The version of the API used during the transaction.
+
+**•** The log category and level used to generate the log. For example:
+
+The following is an example of a header.
+
+```
+     66.0
+
+     APEX_CODE,DEBUG;APEX_PROFILING,INFO;CALLOUT,INFO;DB,INFO;SYSTEM,DEBUG;VALIDATION,INFO;VISUALFORCE,INFO;
+
+     WORKFLOW,INFO
+
+```
+
 In this example, the API version is 66.0, and the following debug log categories and levels have been set.
 
 Apex Code DEBUG
@@ -3354,7 +3441,7 @@ run the code or receive error messages.
 
 Note: Conditional and ternary operators are not considered executed unless both the positive and negative branches are executed.
 
-For examples of these types of tests, see Testing Example on page 734.
+For examples of these types of tests, see Testing Example on page 736.
 
 
 Apex Developer Guide Testing Apex
@@ -3905,7 +3992,7 @@ New and changed records are still rolled back in Apex tests even when using the 
 Warning: By annotating your class with `@isTest(SeeAllData=true)`, you allow test methods to access all org records.
 The best practice, however, is to run Apex tests with data silo using `@isTest(SeeAllData=false)` . For data access
 considerations in Salesforce API version 23.0 and earlier, see Isolation of Test Data from Organization Data in Unit Tests on page
-718.
+720.
 
 This example shows how to define a test class with the `@IsTest(SeeAllData=true)` annotation. All the test methods in this
 class have access to all data in the organization.
@@ -4805,7 +4892,7 @@ Apex Developer Guide Testing Apex
 
 There’s another overload of the `runAs` method ( `runAs(System.Version)` ) that takes a package version as an argument. This
 method causes the code of a specific version of a managed package to be used. For information on using the `runAs` method and
-specifying a package version context, see Testing Behavior in Package Versions on page 753.
+specifying a package version context, see Testing Behavior in Package Versions on page 755.
 
 SEE ALSO:
 
@@ -6111,19 +6198,19 @@ transaction. It’s therefore included in the number of namespaces accessed in a
 **•** You can use the `@Deprecated` on page 94 annotation to identify methods, classes, exceptions, enums, interfaces, and variables
 that can no longer be referenced in subsequent releases of the managed package in which they reside. This annotation is useful
 when you’re refactoring code in managed packages as the requirements evolve. See Deprecate Apex in Managed Packages on page
-753.
+755.
 
 **•** For 1GP and migrated 2GP managed packages, you can write test methods that change the package version context to a different
-package version by using the `System.runAs()` method. See Testing Behavior in Package Versions on page 753.
+package version by using the `System.runAs()` method. See Testing Behavior in Package Versions on page 755.
 
 **•** You can’t add a method to a global interface or an abstract method to a global class after you upload that interface or class in a
 Managed - Released package version. If the class in the Managed - Released package is virtual, the method that you can add to it
 must also be virtual and must have an implementation. If the class in the Managed - Release package extends another class, you
-can’t remove the existing class’s contract. See Best Practices for Using Global Apex in Managed Packages on page 755.
+can’t remove the existing class’s contract. See Best Practices for Using Global Apex in Managed Packages on page 757.
 
 Note: If a `ConnectApi` class has a dependency on Chatter, the code can be compiled and installed in orgs that don’t have
 Chatter enabled. However, if Chatter isn’t enabled, the code throws an error at run time. See Packaging `ConnectApi` Classes
-on page 458.
+on page 460.
 
 Apex Versioning in Managed Packages
 A managed package component can exhibit different behavior in different package versions. By versioning managed Apex, you can
@@ -6310,7 +6397,7 @@ Note: You can’t deprecate `webservice` methods or variables in managed package
 
 If a package upgrade includes an explicit global constructor for a released global class that previously only had an implicit constructor,
 then the new, explicit constructor will be called from the subscriber. Also, you can’t reduce the access modifier on the default constructor
-on a released global class in a package. See Best Practices for Using Global Apex in Managed Packages on page 755.
+on a released global class in a package. See Best Practices for Using Global Apex in Managed Packages on page 757.
 
 ##### Deprecate Managed Apex
 
@@ -6340,7 +6427,7 @@ expected in the different package versions. You can write test methods that chan
 version by using the `System.runAs` method. You can only use `System.runAs` in a test method.
 
 This sample shows a trigger with different behavior for different package versions. For more information about defining different behavior
-for package versions, see Version Apex Behavior on page 751.
+for package versions, see Version Apex Behavior on page 753.
 
 ```
    trigger oppValidation on Opportunity (before insert, before update) {
@@ -6581,7 +6668,7 @@ return type. You can add new methods that overload existing `global` methods.
 **•** You can’t change the data type of a `global` variable to an incompatible one.
 
 **•** You can’t change most annotations or modifiers on `global` members. For example, you can’t add or remove the `@AuraEnabled`
-annotation or any Apex REST annotation on page 327 from a `global` method. Similarly, you can’t add or remove the `static`
+annotation or any Apex REST annotation on page 329 from a `global` method. Similarly, you can’t add or remove the `static`
 or `final` keyword from a `global` method.
 
 **•** You can’t remove a zero-argument constructor from a `global` class. This restriction applies both to explicitly deleting a constructor
@@ -6927,7 +7014,7 @@ For a single-purpose action that accepts unstructured inputs, a custom method su
 is clearer and safer.
 
 Instead of using the Map pattern, prefer strongly-typed parameter objects as shown in the Use Parameter Objects for Global Method
-Inputs and Return Types on page 758 section. Reserve the Map pattern for advanced use cases where the inputs are truly unpredictable
+Inputs and Return Types on page 760 section. Reserve the Map pattern for advanced use cases where the inputs are truly unpredictable
 and its risks are acceptable, but always return a strongly-typed object.
 
 Use Global Interfaces with Factory Methods
@@ -7002,7 +7089,7 @@ Apex Developer Guide Apex in Managed Packages
 
 Strategies for Retiring Global Apex
 
-Even though deprecating Apex on page 753 only affects future versions of your package, phasing out a `global` Apex member requires
+Even though deprecating Apex on page 755 only affects future versions of your package, phasing out a `global` Apex member requires
 careful planning and clear communication to prevent subscriber disruption.
 
 Here’s some recommendations for effectively retiring a `global` Apex member.
@@ -7087,11 +7174,11 @@ namespace. By definition, this means that Apex agent actions don’t have access
 part of a managed package and does have a namespace.
 
 Importantly, managed `global` Apex is subject to stricter manageability rules than managed non- `global` Apex. See the Global Apex
-Manageability Rules on page 756 section of Best Practices for Using Global Apex in Managed Packages on page 755.
+Manageability Rules on page 758 section of Best Practices for Using Global Apex in Managed Packages on page 757.
 
 Although `global` Apex is required for any direct entry point to an agent action, delegate any business logic or heavy lifting to `public`
-classes and methods. See the Delegate from Thin Global Entry Points on page 757 section of Best Practices for Using Global Apex in
-Managed Packages on page 755.
+classes and methods. See the Delegate from Thin Global Entry Points on page 759 section of Best Practices for Using Global Apex in
+Managed Packages on page 757.
 
 Use @InvocableMethod to Define the Action
 
@@ -7124,8 +7211,8 @@ Structure Inputs and Outputs with Global Wrapper Classes
 In addition to the requirements of using `global` Apex and the `@InvocableMethod` annotation, we also recommend using
 custom `global` classes to structure input and output parameters. By using parameter objects, you avoid changing the `global`
 method signature when you modify the parameters of the agent action. To learn how to use this pattern, see the Use Parameter Objects
-for Global Method Inputs and Return Types on page 758 section of Best Practices for Using Global Apex in Managed Packages on page
-755. Then review these targeted guidelines to implement Apex agent actions using this pattern.
+for Global Method Inputs and Return Types on page 760 section of Best Practices for Using Global Apex in Managed Packages on page
+757. Then review these targeted guidelines to implement Apex agent actions using this pattern.
 
 Because you can’t change managed `global` method signatures, make signatures flexible.
 
@@ -7411,7 +7498,7 @@ trigger views the package’s global Apex as if that version was installed. Expl
 Apex Developer Guide Apex in Managed Packages
 
 relies on an older shape of a packaged component. For an example where overriding the default package version is vital to maintain
-backwards compatibility, see Safely Upgrade Packages from Developer and Subscriber Perspectives on page 769.
+backwards compatibility, see Safely Upgrade Packages from Developer and Subscriber Perspectives on page 771.
 
 SEE ALSO:
 
@@ -7872,7 +7959,7 @@ expose the `getShippingCost()` method to the subscriber. Therefore, the Apex com
 `getShippingCost()` method as needing to override the method in the managed package.
 
 To override the default package version for an Apex class or trigger, use the Salesforce Setup UI or the `packageVersions` field of
-the class’s ApexClass metadata type. See Set Package Versions for Apex Classes and Triggers on page 766.
+the class’s ApexClass metadata type. See Set Package Versions for Apex Classes and Triggers on page 768.
 
 Note: In Spring ’25 and earlier, setting Apex classes and triggers to a package version was available for only first-generation
 managed packages (1GP). In Summer ’25 and later, package version setting is also available for migrated 2GP managed packages.

@@ -1,5 +1,3 @@
-you refresh or reload the page. Then the form redisplays the record fields without data, ready to create a new record.
-
 Alternatively, use the `Full` layout type, which loads all fields from the full layout to display a form that creates a record. The `columns`
 attribute displays the record fields in two columns that are evenly sized.
 
@@ -4276,7 +4274,7 @@ bypass this security restriction.
 The restrictions on API-enabled sessions aren’t accidental. Carefully review any code that uses a named credential to ensure you’re
 not creating a vulnerability.
 
-For information about making API calls from Apex, see the _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_callouts.htm)_ .
+[For information about making API calls from Apex, see the Apex Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_callouts.htm)
 
 SEE ALSO:
 
@@ -5239,10 +5237,14 @@ Guide provides information on system-level tags that are not available elsewhere
 **Component Library** **Reference Section in Lightning Aura Components**
 **Developer Guide**
 
-Component documentation (Documentation tab)
+Component documentation
 and code samples
 
-Interactive examples (Example tab)
+(Documentation tab)
+
+Interactive examples
+
+(Example tab)
 
 Lightning Design System
 support
@@ -5252,7 +5254,9 @@ namespaces and packages
 
 JavaScript API
 
-System tags ( `aura:method`, `aura:set`, etc.)
+System tags
+
+( `aura:method`, `aura:set`, etc.)
 
 Event documentation
 
@@ -5267,9 +5271,13 @@ Library displayed in an org. Components in managed and unmanaged packages displa
 
 System tags represent framework definitions and are not available in the Component Library.
 
+
+### Reference aura:application
+
 IN THIS SECTION:
 
-aura:application
+### aura:application
+
 An app is a special top-level component whose markup is in a `.app` resource.
 
 aura:dependency
@@ -5290,8 +5298,7 @@ a parent component to call a method on a child component that it contains.
 aura:set
 Use `<aura:set>` in markup to set the value of an attribute inherited from a component or event.
 
-
-### Reference aura:application aura:application
+### aura:application
 
 An app is a special top-level component whose markup is in a `.app` resource.
 
@@ -5328,6 +5335,11 @@ by creating your own component that extends the default template. For example:
 
 ```
 
+
+### Reference aura:dependency
+
+**System Attribute** **Type** **Description**
+
 `tokens` String A comma-separated list of tokens bundles for the application. For example,
 `tokens="ns:myAppTokens"` . Tokens make it easy to ensure that your
 
@@ -5344,12 +5356,8 @@ If you don’t currently set `useAppcache` in an `<aura:application>` tag,
 you don’t have to do anything because the default value of `useAppcache` is
 `false` .
 
-### aura:application also includes a body attribute defined in a <aura:attribute> tag. Attributes usually control the output
-
+`aura:application` also includes a `body` attribute defined in a `<aura:attribute>` tag. Attributes usually control the output
 or behavior of a component, but not the configuration information in system attributes.
-
-
-### Reference aura:dependency
 
 **Attribute** **Type** **Description**
 
@@ -5391,38 +5399,40 @@ using `<aura:registerEvent>` . Using an `<aura:registerEvent>` tag is the prefer
 
 The `<aura:dependency>` tag includes these system attributes.
 
+
+### Reference aura:event
+
 **System Attribute** **Description**
 
 ```
 resource
 
+type
+
 ```
+
+SEE ALSO:
 
 The resource that the component depends on, such as a component or event. For example,
 `resource="markup://sampleNamespace:sampleComponent"` refers to the
 `sampleComponent` in the `sampleNamespace` namespace.
 
-Note: Using an asterisk ( `*` ) for wildcard matching is deprecated. Instead, add an
-`<aura:dependency>` tag for each resource that’s not directly referenced in the
-component’s markup. Wildcard matching can cause save validation errors when no
-resources match. Wildcard matching can also slow page load time because it sends more
-definitions than needed to the client.
+Using an asterisk ( `*` ) for wildcard matching is deprecated. Instead, add an
+`<aura:dependency>` tag for each resource that’s not directly referenced in the component’s
 
-`type` The type of resource that the component depends on. The default value is `COMPONENT` .
+markup. Wildcard matching can cause save validation errors when no resources match. Wildcard
+matching can also slow page load time because it sends more definitions than needed to the
+client.
 
-Note: Using an asterisk ( `*` ) for wildcard matching is deprecated. Instead, add an
-`<aura:dependency>` tag for each resource that’s not directly referenced in the
-component’s markup. Be as selective as possible in the types of definitions that you send
-to the client.
+The type of resource that the component depends on. The default value is `COMPONENT` .
+
+Using an asterisk ( `*` ) for wildcard matching is deprecated. Instead, add an
+`<aura:dependency>` tag for each resource that’s not directly referenced in the component’s
+markup. Be as selective as possible in the types of definitions that you send to the client.
 
 The most commonly used values are:
 
 **•** `COMPONENT`
-
-
-### Reference aura:event
-
-**System Attribute** **Description**
 
 **•** `EVENT`
 
@@ -5433,8 +5443,6 @@ The most commonly used values are:
 **•** `MODULE` —Use this type to add a dependency for a Lightning web component
 
 Use a comma-separated list for multiple types; for example: `COMPONENT,APPLICATION` .
-
-SEE ALSO:
 
 Dynamically Creating Components
 
@@ -5456,6 +5464,11 @@ own namespace. Possible values are `public` (default), and
 
 `extends` Component The event to be extended. For example,
 `extends="namespace:myEvent"` .
+
+
+### Reference aura:interface
+
+**Attribute** **Type** **Description**
 
 `type` String Required. Possible values are `COMPONENT` or `APPLICATION` .
 
@@ -5479,11 +5492,6 @@ contexts, such as on a record page or in Lightning App Builder.
 Indicates whether the interface can be extended or used outside of
 its own namespace. Possible values are `public` (default), and
 `global` .
-
-
-### Reference aura:method
-
-**Attribute** **Type** **Description**
 
 `description` String A description of the interface.
 
@@ -5517,16 +5525,21 @@ The method name. Use the method name to call the method in
 JavaScript code. For example:
 
 ```
-cmp.sampleMethod(param1);
+  cmp.sampleMethod(param1);
 
 ```
 
 The client-side controller action to execute. For example:
 
 ```
-action="{!c.sampleAction}"
+  action="{!c.sampleAction}"
 
 ```
+
+
+Reference aura:method
+
+**Attribute** **Type** **Description**
 
 `sampleAction` is an action in the client-side controller. If you
 don’t specify an `action` value, the controller action defaults to
@@ -5548,16 +5561,10 @@ An `<aura:method>` can optionally include parameters. Use an `<aura:attribute>` 
 declare a parameter for the method. For example:
 
 ```
-<aura:method name="sampleMethod" action="{!c.doAction}"
+   <aura:method name="sampleMethod" action="{!c.doAction}"
 
-  description="Sample method with parameters">
+     description="Sample method with parameters">
 
-```
-
-
-### Reference aura:set
-
-```
       <aura:attribute name="param1" type="String" default="parameter 1"/>
 
       <aura:attribute name="param2" type="Object" />
@@ -5605,6 +5612,9 @@ Returning a Value
 **•** A synchronous method finishes executing before it returns. Use the `return` statement to return a value from synchronous JavaScript
 code. See Return Result for Synchronous Code.
 
+
+### Reference aura:set
+
 **•** An asynchronous method may continue to execute after it returns. Use a callback to return a value from asynchronous JavaScript
 code. See Return Result for Asynchronous Code.
 
@@ -5620,14 +5630,11 @@ Use `<aura:set>` in markup to set the value of an attribute inherited from a com
 
 IN THIS SECTION:
 
-Setting Attributes Inherited from a Super Component
+#### Setting Attributes Inherited from a Super Component
 
 Setting Attributes on a Component Reference
 
 Setting Attributes Inherited from an Interface
-
-
-Reference aura:set
 
 #### Setting Attributes Inherited from a Super Component
 
@@ -5681,7 +5688,10 @@ Here is the `c:setTagSub` component that extends `c:setTagSuper` .
 `c:setTagSuper` .
 
 Warning: This usage of `<aura:set>` works for components and abstract components, but it doesn’t work for interfaces. For
-more information, see Setting Attributes Inherited from an Interface on page 473.
+more information, see Setting Attributes Inherited from an Interface on page 474.
+
+
+Reference aura:set
 
 If you’re using a component by making a reference to it in your component, you can set the attribute value directly in the markup. For
 example, `c:setTagSuperRef` makes a reference to `c:setTagSuper` and sets the `address1` attribute directly without using
@@ -5711,12 +5721,7 @@ Component Body
 
 Inherited Component Attributes
 
-Setting Attributes on a Component Reference
-
-
-Reference aura:set
-
-#### Setting Attributes on a Component Reference
+#### Setting Attributes on a Component Reference Setting Attributes on a Component Reference
 
 When you include another component, such as `<lightning:button>`, in a component, we call that a component reference to
 `<lightning:button>` . You can use `<aura:set>` to set an attribute on the component reference. For example, if your component
@@ -5769,6 +5774,9 @@ SEE ALSO:
 
 Setting Attributes Inherited from a Super Component
 
+
+## Reference JavaScript API
+
 #### Setting Attributes Inherited from an Interface
 
 To set the value of an attribute inherited from an interface, redefine the attribute in the component and set its default value. Let’s look
@@ -5798,10 +5806,9 @@ This component implements the interface and sets `myBoolean` to `false` .
 
    </aura:component>
 
+## JavaScript API
+
 ```
-
-
-## Reference JavaScript API JavaScript API
 
 The JavaScript API lists the publicly accessible methods for each object that you can use in JavaScript code, such as a controller or helper.
 ### The $A namespace is the entry point for using the framework in JavaScript code.
@@ -5833,6 +5840,9 @@ Util
 
 ### $A namespace The $A namespace is the entry point for using the framework in JavaScript code.
 
+
+Reference $A namespace
+
 Methods
 
 IN THIS SECTION:
@@ -5854,9 +5864,6 @@ error()
 Deprecated. For a serious error that has no recovery path, throw a standard JavaScript error instead by using `throw new`
 
 `Error(msg)` .
-
-
-Reference $A namespace
 
 get()
 Returns a value from the specified global value provider using property syntax.
@@ -5894,6 +5901,9 @@ Deprecated. Use `getCallback()` instead.
 set()
 Sets a value on the specified global value provider using property syntax.
 
+
+Reference $A namespace
+
 warning()
 Deprecated. Logs a warning to the browser's JavaScript console, if it is available.
 
@@ -5918,9 +5928,6 @@ Parameters
 Type: `String`
 
 The type of component to create. For example, `"lightning:button"` .
-
-
-Reference $A namespace
 
 ```
    attributes
@@ -5971,6 +5978,9 @@ Parameters
 
 Type: `Array`
 
+
+Reference $A namespace
+
 The list of components to create. For example, `["lightning:button",`
 
 ```
@@ -5994,9 +6004,6 @@ is `SUCCESS` before you try to use the components.
 SEE ALSO:
 
 Dynamically Creating Components
-
-
-Reference $A namespace
 
 #### enqueueAction()
 
@@ -6044,6 +6051,9 @@ Calling a Server-Side Action
 
 Deprecated. For a serious error that has no recovery path, throw a standard JavaScript error instead by using `throw new Error(msg)` .
 
+
+Reference $A namespace
+
 Signature
 
 ```
@@ -6061,7 +6071,9 @@ Type: `String`
 
 The error message to display to the user.
 
-#### _`e`_
+```
+   e
+```
 
 Type: `Error`
 
@@ -6070,9 +6082,6 @@ The error message to display to the user.
 #### get()
 
 Returns a value from the specified global value provider using property syntax.
-
-
-Reference $A namespace
 
 Signature
 
@@ -6117,6 +6126,9 @@ any enqueued actions.
 Don't use `$A.getCallback()` if your code is executed as part of the framework's call stack. For example, your code is handling an
 event or in the callback for an Apex controller action.
 
+
+Reference $A namespace
+
 Run async operations with a `$A.getCallback()` wrapper. For example, use `setTimeout()` and `setInterval()` with
 `$A.getCallback()` . Use Promise resolve or reject handlers with `$A.getCallback()` .
 
@@ -6147,12 +6159,6 @@ When using `$A.getCallback(function callback)` with a Promise, the function runs
 
              var userName = result.name;
 
-```
-
-
-Reference $A namespace
-
-```
              var userId = result.id;
 
              // Use the data to update a component attribute
@@ -6207,6 +6213,12 @@ Use `$A.getCallback()` with component validity check.
 
         cmp.set("v.value", data);
 
+```
+
+
+Reference $A namespace
+
+```
       }), 5000
 
    );
@@ -6235,9 +6247,6 @@ Modifying Components Outside the Framework Lifecycle
 #### getComponent()
 
 Gets an instance of a component from either a global ID or a DOM element that was created by a rendered component.
-
-
-Reference $A namespace
 
 Signature
 
@@ -6282,6 +6291,9 @@ Returns
 **Type:** **`PropertyReferenceValue`**
 The reference to the global value requested.
 
+
+Reference $A namespace
+
 #### getRoot()
 
 Gets the root component or application. For example, `$A.getRoot().get("v.attrName")` returns the value of the `attrName`
@@ -6300,9 +6312,6 @@ Signature
    getToken (String token)
 
 ```
-
-
-Reference $A namespace
 
 Parameters
 
@@ -6349,6 +6358,9 @@ Type: `Object`
 
 The error message to log in the stack trace.
 
+
+Reference $A namespace
+
 Returns
 
 **Type:** **`String`**
@@ -6375,9 +6387,6 @@ Parameters
 Type: `String`
 
 The error message.
-
-
-Reference $A namespace
 
 ```
    error
@@ -6427,6 +6436,9 @@ Signature
 
 ```
 
+
+### Reference Action
+
 Parameters
 
 ```
@@ -6443,7 +6455,9 @@ The data key to change on the global value provider.
 
 Type: `Object`
 
-#### The value to set for the key. If the global value provider doesn’t implement set(), this method throws an exception. warning()
+The value to set for the key. If the global value provider doesn’t implement `set()`, this method throws an exception.
+
+#### warning()
 
 Deprecated. Logs a warning to the browser's JavaScript console, if it is available.
 
@@ -6454,14 +6468,9 @@ Signature
 
 ```
 
-
-### Reference Action
-
 Parameters
 
-```
-   w
-```
+#### _`w`_
 
 Type: `String`
 
@@ -6496,6 +6505,9 @@ Returns the name of an action.
 getParam()
 Returns an action parameter value for a parameter name.
 
+
+Reference Action
+
 getParams()
 Returns the collection of parameters for an action.
 
@@ -6512,9 +6524,6 @@ setAbortable()
 Sets an action as abortable. If the component is not valid, abortable actions are not sent to the server. A component is automatically
 destroyed and marked invalid by the framework when it is unrendered. Actions not marked abortable are always sent to the server
 regardless of the validity of the component.
-
-
-Reference Action
 
 setBackground()
 Sets the action to run as a background action. This cannot be unset. Background actions are usually long running and lower priority
@@ -6551,6 +6560,9 @@ Returns
 **Type:** **`Object[]`**
 An array of error objects. Each error object has a message field.
 
+
+Reference Action
+
 #### getName()
 
 Returns the name of an action.
@@ -6567,9 +6579,6 @@ The action name.
 #### getParam()
 
 Returns an action parameter value for a parameter name.
-
-
-Reference Action
 
 Signature
 
@@ -6610,9 +6619,15 @@ The key-value pairs for the action parameters.
 
 Gets the return value of an Apex action. An Apex action can return any object containing serializable JSON data.
 
+
+Reference Action
+
 Signature
 
-#### `getReturnValue()`
+```
+   getReturnValue()
+
+```
 
 Returns
 
@@ -6627,15 +6642,9 @@ Calling a Server-Side Action
 
 Returns the current state of an action. Check the state of the action in the callback after an Apex action completes.
 
-
-Reference Action
-
 Signature
 
-```
-   getState()
-
-```
+#### `getState()`
 
 Returns
 
@@ -6668,9 +6677,15 @@ regardless of the validity of the component.
 For example, a save or edit action should not be set as abortable to ensure that it’s always sent to the server even if the component is
 deleted. Setting an action as abortable can’t be undone.
 
+
+Reference Action
+
 Signature
 
-#### `setAbortable()`
+```
+   setAbortable()
+
+```
 
 SEE ALSO:
 
@@ -6682,17 +6697,9 @@ Sets the action to run as a background action. This cannot be unset. Background 
 actions. A background action is useful when you want your app to remain responsive to a user while it executes a low priority, long-running
 action. A rough guideline is to use a background action if it takes more than five seconds for the response to return from the server.
 
-
-Reference Action
-
 Signature
 
-```
-   setBackground()
-
-#### setCallback()
-
-```
+#### `setBackground()` setCallback()
 
 Sets the callback function that is executed after an Apex action returns.
 
@@ -6739,6 +6746,9 @@ Action States
 
 Sets a single parameter for an action. Use parameters to pass data to an Apex action.
 
+
+Reference Action
+
 Signature
 
 ```
@@ -6761,9 +6771,6 @@ The parameter name.
 ```
 
 Type: `Object`
-
-
-Reference Action
 
 The parameter value.
 
@@ -6813,6 +6820,9 @@ Signature
 
 ```
 
+
+### Reference AuraLocalizationService
+
 Parameters
 
 ```
@@ -6831,8 +6841,7 @@ SEE ALSO:
 
 Storable Actions
 
-
-### Reference AuraLocalizationService AuraLocalizationService AuraLocalizationService provides methods for formatting and localizing dates. Use $A.localizationService to use the methods in AuraLocalizationService .
+### AuraLocalizationService AuraLocalizationService provides methods for formatting and localizing dates. Use $A.localizationService to use the methods in AuraLocalizationService .
 
 Methods
 
@@ -6871,6 +6880,9 @@ Returns an object representing a length of time.
 endOf()
 Returns a date that is the end of a unit of time for the given date.
 
+
+Reference AuraLocalizationService
+
 formatCurrency()
 Returns a currency number based on the default currency format.
 
@@ -6885,9 +6897,6 @@ Returns a formatted date time in UTC.
 
 formatDateUTC()
 Returns a formatted date in UTC.
-
-
-Reference AuraLocalizationService
 
 formatNumber()
 Returns a formatted number with the default number format.
@@ -6934,6 +6943,9 @@ Returns the number of months in a duration.
 getNumberFormat()
 Returns a `NumberFormat` object.
 
+
+Reference AuraLocalizationService
+
 getSecondsInDuration()
 Returns the number of seconds in a duration.
 
@@ -6948,9 +6960,6 @@ Checks if `date1` is after `date2` .
 
 isBefore()
 Checks if `date1` is before `date2` .
-
-
-Reference AuraLocalizationService
 
 isBetween()
 Checks if `date` is between `fromDate` and `toDate`, where the match is inclusive.
@@ -6993,6 +7002,9 @@ SEE ALSO:
 
 Formatting Dates in JavaScript
 
+
+Reference AuraLocalizationService
+
 #### UTCToWallTime()
 
 Converts a datetime from UTC to a specified timezone.
@@ -7013,9 +7025,6 @@ Parameters
 Type: `Date`
 
 A JavaScript `Date` object.
-
-
-Reference AuraLocalizationService
 
 ```
    timezone
@@ -7080,6 +7089,9 @@ A JavaScript `Date` object.
 
 Type: `String`
 
+
+Reference AuraLocalizationService
+
 A time zone ID based on the class, for example, `"America/Los_Angeles"` .
 
 ```
@@ -7100,9 +7112,6 @@ Signature
    displayDuration (Duration duration, boolean withSuffix)
 
 ```
-
-
-Reference AuraLocalizationService
 
 Parameters
 
@@ -7153,6 +7162,9 @@ Signature
 
 ```
 
+
+Reference AuraLocalizationService
+
 Parameters
 
 ```
@@ -7167,9 +7179,6 @@ Returns
 
 **Type:** **`number`**
 The length of time in days.
-
-
-Reference AuraLocalizationService
 
 Sample Code
 
@@ -7227,6 +7236,9 @@ SEE ALSO:
 
 duration()
 
+
+Reference AuraLocalizationService
+
 #### displayDurationInMilliseconds()
 
 Displays a length of time in milliseconds.
@@ -7237,9 +7249,6 @@ Signature
    displayDurationInMilliseconds (Duration duration)
 
 ```
-
-
-Reference AuraLocalizationService
 
 Parameters
 
@@ -7297,6 +7306,9 @@ Returns
 **Type:** **`number`**
 The length of time in minutes.
 
+
+Reference AuraLocalizationService
+
 Sample Code
 
 ```
@@ -7311,9 +7323,6 @@ Sample Code
 SEE ALSO:
 
 duration()
-
-
-Reference AuraLocalizationService
 
 #### displayDurationInMonths()
 
@@ -7367,11 +7376,12 @@ Signature
 
 ```
 
+
+Reference AuraLocalizationService
+
 Parameters
 
-```
-   duration
-```
+#### _`duration`_
 
 Type: `Duration`
 
@@ -7381,9 +7391,6 @@ Returns
 
 **Type:** **`number`**
 The length of time in seconds.
-
-
-Reference AuraLocalizationService
 
 Sample Code
 
@@ -7437,9 +7444,12 @@ Sample Code
 ```
    var dur = $A.localizationService.duration(2, 'days');
 
-#### endOf()
-
 ```
+
+
+Reference AuraLocalizationService
+
+#### endOf()
 
 Returns a date that is the end of a unit of time for the given date.
 
@@ -7457,9 +7467,6 @@ Parameters
 ```
 
 Type: `string | number | Date`
-
-
-Reference AuraLocalizationService
 
 A datetime string in ISO8601 format, or a timestamp in milliseconds, or a `Date` object.
 
@@ -7515,6 +7522,9 @@ Returns
 **Type:** **`number`**
 The formatted currency.
 
+
+Reference AuraLocalizationService
+
 Sample Code
 
 ```
@@ -7529,9 +7539,6 @@ Sample Code
 ```
 
 Returns a formatted date.
-
-
-Reference AuraLocalizationService
 
 Signature
 
@@ -7597,6 +7604,9 @@ Signature
 
 ```
 
+
+Reference AuraLocalizationService
+
 Parameters
 
 ```
@@ -7613,9 +7623,6 @@ format to avoid parsing warnings. If no timezone is specified, defaults to the b
 ```
 
 Type: `string`
-
-
-Reference AuraLocalizationService
 
 Optional. A string containing tokens to format the given date. For example, `"yyyy-MM-dd"` formats 15th January, 2017 as
 "2017-01-15". The default format string comes from the `$Locale` value provider. For details on available tokens, see Formatting
@@ -7678,6 +7685,9 @@ Optional. A string containing tokens to format the given date. For example, `"yy
 "2017-01-15". The default format string comes from the `$Locale` value provider. For details on available tokens, see Formatting
 Dates in JavaScript.
 
+
+Reference AuraLocalizationService
+
 ```
    locale
 ```
@@ -7691,9 +7701,6 @@ Returns
 
 **Type:** **`string`**
 A formatted and localized date time string.
-
-
-Reference AuraLocalizationService
 
 Sample Code
 
@@ -7752,6 +7759,9 @@ Returns
 **Type:** **`string`**
 A formatted and localized date string.
 
+
+Reference AuraLocalizationService
+
 Sample Code
 
 ```
@@ -7773,9 +7783,6 @@ Signature
    formatNumber (number number)
 
 ```
-
-
-Reference AuraLocalizationService
 
 Parameters
 
@@ -7829,6 +7836,9 @@ Returns
 **Type:** **`number`**
 The formatted percentage.
 
+
+Reference AuraLocalizationService
+
 Sample Code
 
 ```
@@ -7850,9 +7860,6 @@ Signature
    formatTime (string | number | Date date, string formatString, string locale)
 
 ```
-
-
-Reference AuraLocalizationService
 
 Parameters
 
@@ -7911,6 +7918,9 @@ Signature
 
 ```
 
+
+Reference AuraLocalizationService
+
 Parameters
 
 ```
@@ -7931,9 +7941,6 @@ Type: `string`
 Optional. A string containing tokens to format the given date. For example, `"yyyy-MM-dd"` formats 15th January, 2017 as
 "2017-01-15". The default format string comes from the `$Locale` value provider. For details on available tokens, see Formatting
 Dates in JavaScript.
-
-
-Reference AuraLocalizationService
 
 ```
    locale
@@ -7994,6 +8001,9 @@ Type: `function`
 
 A function to call after the date string is returned. Access the date string in the first parameter of the callback.
 
+
+Reference AuraLocalizationService
+
 Sample Code
 
 ```
@@ -8009,12 +8019,9 @@ Sample Code
 
    });
 
-```
-
-
-Reference AuraLocalizationService
-
 #### getDaysInDuration()
+
+```
 
 Returns the number of days in a duration.
 
@@ -8068,6 +8075,9 @@ Returns
 **Type:** **`NumberFormat`**
 The currency format returned by `$Locale.currencyFormat` .
 
+
+Reference AuraLocalizationService
+
 Sample Code
 
 ```
@@ -8080,9 +8090,6 @@ Sample Code
 SEE ALSO:
 
 $Locale
-
-
-Reference AuraLocalizationService
 
 #### getDefaultNumberFormat()
 
@@ -8123,6 +8130,9 @@ Returns
 **Type:** **`NumberFormat`**
 The percentage format returned by `$Locale.percentFormat` .
 
+
+Reference AuraLocalizationService
+
 Sample Code
 
 ```
@@ -8139,9 +8149,6 @@ $Locale
 #### getHoursInDuration()
 
 Returns a length of time in hours.
-
-
-Reference AuraLocalizationService
 
 Signature
 
@@ -8193,6 +8200,9 @@ Returns
 **Type:** **`Object`**
 The localized set of labels.
 
+
+Reference AuraLocalizationService
+
 #### getMillisecondsInDuration()
 
 Returns the number of milliseconds in a duration.
@@ -8211,9 +8221,6 @@ Parameters
 ```
 
 Type: `Duration`
-
-
-Reference AuraLocalizationService
 
 The duration object returned by `$A.localizationService.duration` .
 
@@ -8252,6 +8259,9 @@ Returns
 **Type:** **`number`**
 The number of minutes in the duration.
 
+
+Reference AuraLocalizationService
+
 Sample Code
 
 ```
@@ -8277,9 +8287,6 @@ Signature
    getMonthsInDuration(Duration duration)
 
 ```
-
-
-Reference AuraLocalizationService
 
 Parameters
 
@@ -8322,6 +8329,9 @@ Signature
 
 ```
 
+
+Reference AuraLocalizationService
+
 Parameters
 
 ```
@@ -8356,12 +8366,6 @@ Sample Code
 
    var formatted = nf.format(num);
 
-```
-
-
-Reference AuraLocalizationService
-
-```
    // Returns 10,000
 
    var formatted = $A.localizationService.formatNumber(num);
@@ -8393,6 +8397,9 @@ Returns
 
 **Type:** **`number`**
 The number of seconds in the duration.
+
+
+Reference AuraLocalizationService
 
 Sample Code
 
@@ -8435,9 +8442,6 @@ Type: `function`
 
 A function to call after the date is returned. Access the date in the first parameter of the callback.
 
-
-Reference AuraLocalizationService
-
 Sample Code
 
 ```
@@ -8473,6 +8477,9 @@ Parameters
 Type: `Duration`
 
 The duration object returned by `$A.localizationService.duration` .
+
+
+Reference AuraLocalizationService
 
 Returns
 
@@ -8513,9 +8520,6 @@ Parameters
 
 Type: `string | number | Date`
 
-
-Reference AuraLocalizationService
-
 A datetime string in ISO8601 format, or a timestamp in milliseconds, or a `Date` object.
 
 ```
@@ -8551,9 +8555,12 @@ Sample Code
 
    $A.localizationService.isAfter(date, day);
 
-#### isBefore()
-
 ```
+
+
+Reference AuraLocalizationService
+
+#### isBefore()
 
 Checks if `date1` is before `date2` .
 
@@ -8596,9 +8603,6 @@ Returns
 
 Returns `true` if `date1` is before `date2`, or `false` otherwise.
 
-
-Reference AuraLocalizationService
-
 Sample Code
 
 ```
@@ -8634,6 +8638,9 @@ Parameters
 Type: `string | number | Date`
 
 A datetime string in ISO8601 format, or a timestamp in milliseconds, or a `Date` object.
+
+
+Reference AuraLocalizationService
 
 ```
    fromDate
@@ -8682,12 +8689,9 @@ Sample Code
 
    "day");
 
-```
-
-
-Reference AuraLocalizationService
-
 #### isPeriodTimeView()
+
+```
 
 Deprecated. Do not use. Checks if a datetime pattern string uses a 24-hour or 12-hour time view.
 
@@ -8717,6 +8721,9 @@ Returns `true` if the pattern uses a 12-hour period time view.
 #### isSame()
 
 Checks if `date1` is the same as `date2` .
+
+
+Reference AuraLocalizationService
 
 Signature
 
@@ -8756,9 +8763,6 @@ Returns
 **Type:** **`boolean`**
 
 Returns `true` if `date1` is the same as `date2`, or `false` otherwise.
-
-
-Reference AuraLocalizationService
 
 Sample Code
 
@@ -8808,6 +8812,9 @@ Type: `string`
 
 An optional Java format string used to parse the datetime. The default is from the `$Locale` global value provider.
 
+
+Reference AuraLocalizationService
+
 ```
    locale
 ```
@@ -8839,9 +8846,6 @@ Signature
    parseDateTimeISO8601(string dateTimeString)
 
 ```
-
-
-Reference AuraLocalizationService
 
 Parameters
 
@@ -8887,6 +8891,9 @@ A datetime string.
 
 Type: `string`
 
+
+Reference AuraLocalizationService
+
 An optional Java format string used to parse the datetime. The default is from the `$Locale` global value provider.
 
 ```
@@ -8919,12 +8926,9 @@ Sample Code
 
    $A.localizationService.parseDateTimeUTC(date);
 
-```
-
-
-Reference AuraLocalizationService
-
 #### startOf()
+
+```
 
 Returns a date that is the start of a unit of time for the given date.
 
@@ -8967,9 +8971,12 @@ Sample Code
 
    $A.localizationService.startOf(date, 'month');
 
-#### toISOString()
-
 ```
+
+
+Reference AuraLocalizationService
+
+#### toISOString()
 
 Deprecated. Use `Date.toISOString()` instead.
 
@@ -8997,9 +9004,6 @@ A `Date` object.
 Type: `string`
 
 A datetime unit. Options are 'year', 'month', 'week', 'day', 'hour', 'minute', or 'second'.
-
-
-Reference AuraLocalizationService
 
 Returns
 
@@ -9037,6 +9041,9 @@ A string with Arabic digits.
 Translates the input date from another calendar system (for example, the Buddhist calendar) to the Gregorian calendar based on the
 locale.
 
+
+Reference AuraLocalizationService
+
 Signature
 
 ```
@@ -9062,9 +9069,6 @@ Returns a translated `Date` object.
 #### translateToLocalizedDigits()
 
 Translate the input string to a string with localized digits, if there is any.
-
-
-### Reference Component
 
 Signature
 
@@ -9109,6 +9113,9 @@ Type: `Date`
 
 A `Date` object.
 
+
+### Reference Component
+
 Returns
 
 **Type:** **`Date`**
@@ -9125,9 +9132,6 @@ Dynamically adds an event handler for a component or application event.
 
 addHandler()
 Deprecated. Use `addEventHandler()` instead.
-
-
-Reference Component
 
 addValueHandler()
 Adds handlers to values owned by the component.
@@ -9164,6 +9168,9 @@ If the component renders only a single element, return it. Otherwise, use `getEl
 getElements()
 Returns a map of the elements rendered by the component.
 
+
+Reference Component
+
 getEvent()
 Returns a new event instance of the named component event.
 
@@ -9186,9 +9193,6 @@ Returns the super component.
 
 getType()
 Returns the component’s canonical type; for example, `'lightning:button'` .
-
-
-Reference Component
 
 getVersion()
 Returns the component’s version number.
@@ -9228,6 +9232,9 @@ Parameters
 
 Type: `String`
 
+
+Reference Component
+
 The name of the event to handle. For a component event, set this argument to match the name attribute of the
 `aura:registerEvent` tag. For an application event, set this argument to match the event descriptor,
 `namespace:eventName` .
@@ -9259,9 +9266,6 @@ Optional. The event bubbling phase for which to add the handler. The default val
 Type: `Boolean`
 
 If `true`, attempts to catch events generated by components transcluded by facets; for example `v.body` .
-
-
-Reference Component
 
 Sample Code
 
@@ -9313,6 +9317,9 @@ Parameters
 
 Type: `String`
 
+
+Reference Component
+
 The name of the event to handle. For a component event, set this argument to match the name attribute of the
 `aura:registerEvent` tag. For an application event, set this argument to match the event descriptor,
 `namespace:eventName` .
@@ -9348,9 +9355,6 @@ If `true`, put the handler at the beginning instead of the end of the handler ar
 Type: `String`
 
 Optional. The event bubbling phase for which to add the handler. The default value is `"bubble"` .
-
-
-Reference Component
 
 ```
    includeFacets
@@ -9396,6 +9400,9 @@ Signature
 
 ```
 
+
+Reference Component
+
 Parameters
 
 ```
@@ -9422,9 +9429,6 @@ Value Providers
 
 Sets a flag to tell the rendering service whether or not to destroy this component when it is removed from its rendering facet.
 
-
-Reference Component
-
 Signature
 
 ```
@@ -9434,7 +9438,9 @@ Signature
 
 Parameters
 
-#### _`destroy`_
+```
+   destroy
+```
 
 Type: `Boolean`
 
@@ -9464,6 +9470,9 @@ Type: `String`
 
 The data key for which to clear the reference. For example, `"v.attributeName"` .
 
+
+Reference Component
+
 #### destroy()
 
 Destroys the component and cleans up memory. After a component that is declared in markup is no longer in use, the framework
@@ -9485,9 +9494,6 @@ Returns different types depending on the result.
 **2.** If there are multiple components with the same local ID, returns an array of the components.
 
 **3.** If there is no matching local ID, returns `undefined` .
-
-
-Reference Component
 
 Signature
 
@@ -9531,6 +9537,9 @@ Type: `String`
 
 The data key to look up on the component.
 
+
+Reference Component
+
 #### getConcreteComponent()
 
 Gets the concrete implementation of a component. If the component is concrete, the method returns the component itself. For example,
@@ -9544,18 +9553,11 @@ SEE ALSO:
 
 Favor Composition Over Inheritance
 
-#### getElement()
-
-If the component renders only a single element, return it. Otherwise, use `getElements()` .
+#### getElement() If the component renders only a single element, return it. Otherwise, use getElements() .
 
 Signature
 
-#### `getElement()`
-
-
-Reference Component
-
-#### getElements()
+#### `getElement()` getElements()
 
 Returns a map of the elements rendered by the component.
 
@@ -9589,9 +9591,12 @@ Sample Code
 
    cmp.getEvent("evtName");
 
-#### getGlobalId()
-
 ```
+
+
+Reference Component
+
+#### getGlobalId()
 
 Gets the global ID, which is the generated globally unique id of the component. It can be used to locate the instance later, but will
 change across page loads.
@@ -9608,15 +9613,9 @@ Component IDs
 
 Gets the ID set using the `aura:id` attribute. Pass the local ID into `find()` on the parent component to locate this child component.
 
-
-Reference Component
-
 Signature
 
-```
-   getLocalId()
-
-```
+#### `getLocalId()`
 
 SEE ALSO:
 
@@ -9654,6 +9653,9 @@ Parameters
 
 Type: `String`
 
+
+Reference Component
+
 The data key for which to return a reference.
 
 Returns
@@ -9668,9 +9670,6 @@ Returns the super component.
 Signature
 
 #### `getSuper()`
-
-
-Reference Component
 
 Returns
 
@@ -9707,9 +9706,15 @@ The component name.
 
 Returns `true` if the component is concrete, or `false` otherwise. A concrete component is a sub-component in an inheritance chain.
 
+
+Reference Component
+
 Signature
 
-#### `isConcrete()`
+```
+   isConcrete()
+
+```
 
 Returns
 
@@ -9721,9 +9726,6 @@ SEE ALSO:
 getConcreteComponent()
 
 Favor Composition Over Inheritance
-
-
-Reference Component
 
 #### isInstanceOf()
 
@@ -9768,6 +9770,9 @@ Returns `true` if the component has not been destroyed, or `false` otherwise.
 
 Dynamically removes a component event handler for the specified event.
 
+
+### Reference Event
+
 Signature
 
 ```
@@ -9792,9 +9797,6 @@ The name of the event to remove; for example, `'c:myEvent'` .
 Type: `function`
 
 A reference to the function or action to remove; for example., `'cmp.getReference("c.handleMyEvent");'` .
-
-
-### Reference Event
 
 ```
    phase
@@ -9843,6 +9845,9 @@ get()
 
 ### Event Event contains methods to work with events. Use an event to communicate between components.
 
+
+Reference Event
+
 Methods
 
 IN THIS SECTION:
@@ -9858,9 +9863,6 @@ Returns an event’s name.
 
 getParam()
 Returns the value of an event’s parameter.
-
-
-Reference Event
 
 getParams()
 Returns the value of all an event’s parameters.
@@ -9902,6 +9904,9 @@ Sets parameters for an event. This method doesn’t modify an event that has alr
 stopPropagation()
 Sets whether the event can bubble or not. This method throws an error if called in the `"default"` phase.
 
+
+Reference Event
+
 #### fire()
 
 Fires an event.
@@ -9922,9 +9927,6 @@ Parameters
 Type: `Object`
 
 An optional set of parameters for the event. Any previous parameters of the same name are overwritten.
-
-
-Reference Event
 
 #### getEventType()
 
@@ -9963,6 +9965,9 @@ Signature
 
 ```
 
+
+Reference Event
+
 Parameters
 
 ```
@@ -9983,15 +9988,9 @@ The parameter value.
 
 Returns the value of all an event’s parameters.
 
-
-Reference Event
-
 Signature
 
-```
-   getParams()
-
-```
+#### `getParams()`
 
 Returns
 
@@ -10021,6 +10020,9 @@ Signature
 
 #### `getSource()`
 
+
+Reference Event
+
 Returns
 
 **Type:** **`Object`**
@@ -10038,9 +10040,6 @@ Returns
 
 **Type:** **`Object`**
 The source event that fired the event.
-
-
-Reference Event
 
 #### getType()
 
@@ -10069,7 +10068,12 @@ Prevents the default phase execution for this event. This method throws an error
 
 Signature
 
-#### `preventDefault()` resume()
+#### `preventDefault()`
+
+
+Reference Event
+
+#### resume()
 
 Resumes event handling for this event from the same position in the event handler processing sequence from which it was previously
 paused. If the event isn’t paused, this method does nothing. This method throws an error if it’s called in the `"default"` phase. Any
@@ -10088,9 +10092,6 @@ Signature
    setParam(String key, Object value)
 
 ```
-
-
-### Reference Util
 
 Parameters
 
@@ -10135,17 +10136,24 @@ The event’s parameter.
 
 Sets whether the event can bubble or not. This method throws an error if called in the `"default"` phase.
 
+
+### Reference Util
+
 Signature
 
-#### `stopPropagation()`
+```
+   stopPropagation()
 
 ### Util Util contains utility methods.
+
+```
 
 Methods
 
 IN THIS SECTION:
 
-addClass()
+#### addClass()
+
 Adds a CSS class to a component.
 
 getBooleanValue()
@@ -10153,9 +10161,6 @@ Coerces truthy and falsy values into a native boolean.
 
 hasClass()
 Checks whether the component has the specified CSS class.
-
-
-Reference Util
 
 isArray()
 Checks whether the specified object is an array.
@@ -10191,6 +10196,9 @@ Signature
 
 ```
 
+
+Reference Util
+
 Parameters
 
 ```
@@ -10223,9 +10231,6 @@ Sample Code
 ```
 
 Coerces truthy and falsy values into a native boolean.
-
-
-Reference Util
 
 Signature
 
@@ -10270,6 +10275,9 @@ Type: `Object`
 
 The component to check.
 
+
+Reference Util
+
 ```
    className
 ```
@@ -10297,9 +10305,6 @@ Sample Code
 ```
 
 Checks whether the specified object is an array.
-
-
-Reference Util
 
 Signature
 
@@ -10345,6 +10350,9 @@ Type: `Object`
 
 The object to check.
 
+
+Reference Util
+
 Returns
 
 **Type:** **`Boolean`**
@@ -10371,9 +10379,6 @@ Parameters
 Type: `Object`
 
 The object to check.
-
-
-Reference Util
 
 Returns
 
@@ -10410,6 +10415,9 @@ Returns `true` if the object is undefined, or `false` otherwise.
 
 Checks if the object is `undefined` or `null` .
 
+
+Reference Util
+
 Signature
 
 ```
@@ -10435,9 +10443,6 @@ Returns `true` if the object is `undefined` or `null`, or `false` otherwise.
 #### removeClass()
 
 Removes a CSS class from a component.
-
-
-Reference Util
 
 Signature
 
@@ -10486,6 +10491,9 @@ Signature
 
 ```
 
+
+Reference Util
+
 Parameters
 
 ```
@@ -10528,16 +10536,10 @@ saving records 415
 standard objects 420
 application, creating 7
 Aura components
-action override 155–158
-interfaces 157
-Lightning Experience 155–157
-markup 157
+action override 155–156, 158
+Lightning Experience 155–156
 packaging 158
-Salesforce 155–157
-Aura components interfaces
-force:hasRecordId 157
-force:hasSObjectName 157
-lightning:actionOverride 157
+Salesforce 155–156
 
 C
 
@@ -10553,18 +10555,16 @@ create dynamic picklists for components on Lightning Pages
 
 tips for configuring for Lightning App Builder 199
 Components
-action override 155–158
+action override 155–156, 158
 actions 144, 146, 148
 custom app integration 241
 flow, finish behavior 232
 flow, resume 233
-markup 157
 packaging 158
 tabs 144–145
 using 140, 144–146, 148, 155, 210, 454
 Custom Actions
 components 146, 148
-
 Custom Lightning page template component
 best practices 196
 Custom Tabs
@@ -10574,6 +10574,7 @@ D
 
 data access 382, 401, 407, 414
 deleteRecord 398
+
 Developer Edition organization, sign up 7
 
 E
@@ -10615,11 +10616,6 @@ lightning:recordEditForm 381
 lightning:recordForm 381
 lightning:recordViewForm 381
 load record 383
-
-
-**Index**
-
-Lightning Data Service _(continued)_
 saveRecord 387
 Lightning Out 246, 248
 lightning:flexipageRegionInfo 197
@@ -10627,6 +10623,9 @@ lightning:formattedUrl 160
 lightning:hasPageReference 159
 lightning:isUrlAddressable 159, 165
 lightning:navigation 159–160, 164–165
+
+
+**Index**
 
 N
 
@@ -10653,8 +10652,8 @@ S
 SaveRecordResult 414
 SharePoint 248
 Standard Actions
-Lightning components 155–158
-override 155–158
+Lightning components 155–156, 158
+override 155–156, 158
 packaging 158
 standard controller 382, 401, 407, 414
 

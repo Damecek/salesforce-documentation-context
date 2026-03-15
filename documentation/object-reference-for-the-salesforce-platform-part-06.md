@@ -1,3 +1,1933 @@
+The order item or adjustment item that created the invoice line.
+
+This field is a polymorphic relationship field.
+
+**Relationship Name**
+ReferenceEntityItem
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+OrderItem, OrderItemAdjustmentLineItem
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The type of transaction that created the invoice line.
+
+Possible values are:
+
+**•** `DeliveryCharge` —Charge
+
+**•** `Fee` —Charge. This value is available in API version 56.0 and later.
+
+**•** `OrderProduct` —Product
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The type of object that created the invoice line.
+
+Possible values are:
+
+**•** `Charge`
+
+**•** `Product`
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort, Update
+
+
+Standard Objects InvoiceLine
+
+**Field** **Details**
+
+**Description**
+The original invoice line that was adjusted or taxed.
+
+This field is a relationship field.
+
+**Relationship Name**
+RelatedLine
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+InvoiceLine
+
+```
+ShippingAddressId
+
+TaxAmount
+
+TaxCode
+
+TaxDocumentNumber
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the shipping address associated with the invoice line.
+
+This field is a relationship field. This field is available in API version 55.0 and later.
+
+**Relationship Name**
+ShippingAddress
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+InvoiceAddressGroup
+
+**Type**
+currency
+
+**Properties**
+Filter, Nillable, Sort, Update
+
+**Description**
+Total tax for the invoice line.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort, Update
+
+**Description**
+The code used to calculate tax rate for the invoice line.
+
+**Type**
+string
+
+
+Standard Objects InvoiceLine
+
+**Field** **Details**
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Represents the latest record in the external tax engine in which this invoice line item is
+included.
+
+This field is available in API version 55.0 and later.
+
+```
+TaxEffectiveDate
+
+TaxName
+
+TaxRate
+
+TaxTransactionNumber
+
+TaxTreatmentId
+
+```
+
+**Type**
+date
+
+**Properties**
+Filter, Group, Nillable, Sort, Update
+
+**Description**
+The date used to calculate the invoice line’s `TaxAmount` .
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort, Update
+
+**Description**
+User-defined name for the applied tax.
+
+**Type**
+percent
+
+**Properties**
+Filter, Nillable, Sort, Update
+
+**Description**
+Percentage value used for calculating tax.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Represents the transaction in the external tax engine in which the taxes for the line were
+calculated for the invoice line.
+
+This field is available in API version 55.0 and later.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+
+Standard Objects InvoiceLine
+
+**Field** **Details**
+
+**Description**
+The tax treatment used on this invoice line.
+
+This field is a relationship field. This field is available in API version 55.0 and later.
+
+**Relationship Name**
+TaxTreatment
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+TaxTreatment
+
+```
+ Type
+
+ UnitPrice
+
+```
+
+Associated Objects
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+Shows the type of transaction for the invoice line.
+
+Possible values are:
+
+**•** `Adjustment`
+
+**•** `Charge`
+
+**•** `Tax`
+
+**Type**
+currency
+
+**Properties**
+Filter, Nillable, Sort, Update
+
+**Description**
+Price for one unit of the item on the invoice line.
+
+This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
+Otherwise, they’re available in the specified API version and later.
+
+**InvoiceLineFeed on page 55**
+Feed tracking is available for the object.
+
+**InvoiceLineHistory on page 63**
+History is available for tracked fields of the object.
+
+**InvoiceLineOwnerSharingRule on page 65**
+Sharing rules are available for the object.
+
+**InvoiceLineShare on page 67**
+Sharing is available for the object.
+
+
+### Standard Objects JobProfile JobProfile
+
+Represents a job profile used for shift scheduling. This object is available in API versions 47.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
+`retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
+
+Special Access Rules
+
+Field Service or Workforce Engagement must be enabled.
+
+Fields
+
+**Field** **Details**
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+Name
+
+OwnerId
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date and time when the current user last viewed a related record.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date and time when the current user last viewed this record.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Sort, Update
+
+**Description**
+The name of the job profile.
+
+**Type**
+reference
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+
+### Standard Objects JobProfileQueueGroup
+
+**Field** **Details**
+
+**Description**
+The ID of the owner of the job profile.
+
+Associated Objects
+
+This object has the following associated objects. Unless noted, they’re available in the same API version as this object.
+
+**JobProfileFeed**
+
+Feed tracking is available for the object.
+
+**JobProfileHistory**
+
+History is available for tracked fields of the object.
+
+**JobProfileOwnerSharingRule**
+
+Sharing rules are available for the object.
+
+**JobProfileShare**
+
+Sharing is available for the object.
+
+### JobProfileQueueGroup JobProfileQueueGroup defines the mapping between Queue and JobProfile and configurations for capacity plans in Workforce Engagement.
+
+This object is available in API version 53.0 and later.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
+`update()`, `upsert()`
+
+Special Access Rules
+
+Org must have the Workforce Engagement, Workforce Engagement Configuration, and Omni org preferences enabled. User must have
+the Workforce Engagement Analyst or Planner user permission set.
+
+Fields
+
+**Field** **Details**
+
+```
+AnswerTime
+
+```
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The answer time (in seconds) for a specific group.
+
+
+Standard Objects JobProfileQueueGroup
+
+**Field** **Details**
+
+```
+CapacityPerJobProfile
+
+GroupCapacity
+
+GroupId
+
+JobProfileId
+
+```
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The max number of work units that an agent can handle for a specific job profile.
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The distributed number of work units among groups to which a specific job profile is
+associated.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+Identifies the group or queue record.
+
+This is a relationship field.
+
+**Relationship Name**
+Group
+
+**Relationship Type**
+Lookup
+
+**Refers To**
+Group
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+Identifies the job profile record.
+
+This is a relationship field.
+
+**Relationship Name**
+JobProfile
+
+**Relationship Type**
+Lookup
+
+
+### Standard Objects Knowledge__Feed
+
+**Field** **Details**
+
+**Refers To**
+JobProfile
+
+```
+JobProfileShrinkage
+
+Priority
+
+ServiceLevelAgreementPerc
+
+WorkType
+
+### Knowledge__Feed
+
+```
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Sort, Update
+
+**Description**
+The shrinkage for a specific job profile.
+
+**Type**
+int
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The priority of a group per job profile.
+
+**Type**
+double
+
+**Properties**
+Create, Filter, Sort, Update
+
+**Description**
+The expected SLA percentage for a specific group.
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Restricted picklist, Sort, Update
+
+**Description**
+A type of group, indicating whether a queue is synchronous or asynchronous.
+
+Possible values are:
+
+**•** `A` —Async
+
+**•** `S` —Sync
+
+The default value is 'S'.
+
+Represents the feed for a knowledge article. This object is available in API version 39.0 and later.
+
+For additional information about feeds, see FeedItem on page 2549.
+
+
+Standard Objects Knowledge__Feed
+
+Note: By default, the prefix for this object name is `Knowledge` and that is the value shown in this reference. However, this
+prefix can be modified by changing the **Object Name** for the Knowledge__kav object in Object Manager.
+
+Supported Calls
+
+`delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+Lightning Knowledge must be enabled in your org.
+
+Fields
+
+**Field** **Details**
+
+```
+BestCommentId
+
+Body
+
+CommentCount
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the comment marked as best answer on a question post.
+
+**Type**
+textarea
+
+**Properties**
+Nillable, Sort
+
+**Description**
+The body of the feed item. Required when `Type` is `TextPost` or `AdvancedTextPost` .
+Optional when `Type` is `ContentPost` or `LinkPost` .
+
+Although a value for `Body` is not required for the `ContentPost` type, an attachment
+is required. If an attachment isn’t present, the type changes to `TextPost` or
+`AdvancedTextPost`, depending on the API version. `TextPost` and
+`AdvancedTextPost` do require a value for `Body` .
+
+Tip: See the `IsRichText` field for a list of HTML tags supported in the body of
+rich text posts.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The number of comments associated with this feed item.
+
+
+Standard Objects Knowledge__Feed
+
+**Field** **Details**
+
+Tip: In a feed that supports pre-moderation, `CommentCount` isn’t updated until a
+comment is published. For example, say that you comment on a post that already has
+one published comment and your comment triggers moderation. Now there are two
+comments on the post, but the count says there's only one. In a moderated feed,
+comments aren’t counted until approved by an admin or someone with Can Approve
+Feed Post and Comment or Modify All Data.
+
+Feed moderation has implications on how you retrieve feed comments. In a moderated
+feed, rather than retrieving comments by looping through `CommentCount`, go through
+pagination until the end of comments is returned.
+
+```
+InsertedById
+
+IsRichText
+
+```
+
+**Type**
+reference
+
+**Properties**
+Group, Nillable, Sort
+
+**Description**
+ID of the user who added this item to the feed. For example, if an application migrates posts
+and comments from another application into a feed, the `InsertedBy` value is set to the
+ID of the context user.
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether the feed item `Body` contains rich text. If you post a rich text feed comment
+using SOAP API, set `IsRichText` to `true` and escape HTML entities from the body.
+Otherwise, the post is rendered as plain text.
+
+Rich text supports the following HTML tags:
+
+**•** `<p>`
+
+Tip: Though the `<br>` tag isn’t supported, you can use `<p>&nbsp;</p>`
+to create lines.
+
+**•** `<a>`
+
+**•** `<b>`
+
+**•** `<code>`
+
+**•** `<i>`
+
+**•** `<u>`
+
+**•** `<s>`
+
+**•** `<ul>`
+
+**•** `<ol>`
+
+**•** `<li>`
+
+
+Standard Objects Knowledge__Feed
+
+**Field** **Details**
+
+**•** `<img>`
+
+The `<img>` tag is accessible only through the API and must reference files in Salesforce
+similar to this example: `<img src="sfdc://069B0000000omjh"></img>`
+
+Note: In API version 35.0 and later, the system replaces special characters in rich text
+with escaped HTML. In API version 34.0 and prior, all rich text appears as a plain-text
+representation.
+
+```
+LikeCount
+
+LinkUrl
+
+ParentId
+
+RelatedRecordId
+
+Title
+
+```
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The number of likes associated with this feed item.
+
+**Type**
+url
+
+**Properties**
+Nillable, Sort
+
+**Description**
+The URL of a `LinkPost` .
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+ID of the Knowledge article to which the feed item is related.
+
+**Type**
+reference
+
+**Properties**
+Group, Nillable, Sort
+
+**Description**
+ID of the ContentVersion record associated with a `ContentPost` . For WDC thanks posts,
+it’s the ID of the WorkThanks object associated with a `RypplePost` . This field is typically
+null for all posts except `ContentPost` and `RypplePost` .
+
+For example, set this field to an existing ContentVersion ID and post it to a feed with `Type`
+set to `ContentPost` .
+
+**Type**
+string
+
+
+Standard Objects Knowledge__Feed
+
+**Field** **Details**
+
+**Properties**
+Group, Nillable, Sort
+
+**Description**
+The title of the feed item. When the `Type` is `LinkPost`, the `LinkUrl` is the URL and
+this field is the link name. The `Title` field can be updated on posts of `Type`
+`QuestionPost` .
+
+```
+Type
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+**Description**
+The type of feed item. Except for `ContentPost`, `LinkPost`, and `TextPost`, don’t
+create feed items of other types directly from the API.
+
+**•** `ActivityEvent` —indirectly generated event when a user or the API adds a Task
+associated with a feed-enabled parent record (excluding email tasks on cases). Also
+occurs when a user or the API adds or updates a Task or Event associated with a case
+record (excluding email and call logging).
+
+For a recurring Task with CaseFeed disabled, one event is generated for the series only.
+For a recurring Task with CaseFeed enabled, events are generated for the series and each
+occurrence.
+
+**•** `AdvancedTextPost` —created when a user posts a group announcement and, in
+Lightning Experience as of API version 39.0 and later, when a user shares a post.
+
+**•** `AnnouncementPost` —Not used.
+
+**•** `ApprovalPost` —generated when a user submits an approval.
+
+**•** `BasicTemplateFeedItem` —Not used.
+
+**•** `CanvasPost` —a post made by a canvas app posted on a feed.
+
+**•** `CollaborationGroupCreated` —generated when a user creates a public group.
+
+**•** `CollaborationGroupUnarchived` —Not used.
+
+**•** `ContentPost` —a post with an attached file.
+
+**•** `CreatedRecordEvent` —generated when a user creates a record from the publisher.
+
+**•** `DashboardComponentAlert` —generated when a dashboard metric or gauge
+exceeds a user-defined threshold.
+
+**•** `DashboardComponentSnapshot` —created when a user posts a dashboard
+snapshot on a feed.
+
+**•** `LinkPost` —a post with an attached URL.
+
+**•** `PollPost` —a poll posted on a feed.
+
+**•** `ProfileSkillPost` —generated when a skill is added to a user’s Chatter profile.
+
+**•** `QuestionPost` —generated when a user posts a question.
+
+**•** `ReplyPost` —generated when Chatter Answers posts a reply.
+
+
+### Standard Objects Knowledge__ka
+
+**Field** **Details**
+
+**•** `RypplePost` —generated when a user creates a Thanks badge in WDC.
+
+**•** `TextPost` —a direct text entry on a feed.
+
+**•** `TrackedChange` —a change or group of changes to a tracked field.
+
+**•** `UserStatus` —automatically generated when a user adds a post. Deprecated.
+
+The following values appear in the `Type` picklist for all feed objects but apply only to
+CaseFeed:
+
+**•** `AttachArticleEvent` —generated event when a user attaches an article to a case.
+
+**•** `CallLogPost` —generated event when a user logs a call for a case through the user
+interface. CTI calls also generate this event.
+
+**•** `CaseCommentPost` —generated event when a user adds a case comment for a case
+object.
+
+**•** `ChangeStatusPost` —generated event when a user changes the status of a case.
+
+**•** `ChatTranscriptPost` —generated event when Chat transcript is saved to a case.
+
+**•** `EmailMessageEvent` —generated event when an email related to a case object is
+sent or received.
+
+**•** `FacebookPost` —generated when a Facebook post is created from a case. Deprecated.
+
+**•** `MilestoneEvent` —generated when a case milestone is completed or reaches
+violation status.
+
+**•** `SocialPost` —generated when a social post is created from a case.
+
+Note: If you set `Type` to `ContentPost`, also specify `ContentData` and
+`ContentFileName` .
+
+### Knowledge__ka
+
+Provides access to the concrete object that represents a Knowledge article, the parent object for article versions. This object is available
+in API version 39.0 and later.
+
+### Note: By default, the prefix for this object name is Knowledge and that is the value shown in this reference. However, this
+
+prefix can be modified by changing the **Object Name** for the Knowledge__kav object in Object Manager.
+
+This object is derived from KnowledgeArticle on page 3032.
+
+Supported Calls
+
+`delete()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`, `undelete()`
+
+Special Access Rules
+
+Lightning Knowledge must be enabled in your org. A user must have the View Articles permission enabled. Salesforce Knowledge users,
+unlike customer and partner users, must also be granted the `Knowledge User` feature license.
+
+
+Standard Objects Knowledge__ka
+
+Fields
+
+**Field** **Details**
+
+```
+ArchivedById
+
+ArchivedDate
+
+ArticleNumber
+
+CaseAssociationCount
+
+FirstPublishedDate
+
+LastPublishedDate
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user who archived the article.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the article was archived.
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+The unique number automatically assigned to the article when it's created. You can't change
+the format or value for this field.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The number of cases attached to the article.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the article was first published.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects Knowledge__ka
+
+**Field** **Details**
+
+**Description**
+The date when the article was last published.
+
+```
+LastReferencedDate
+
+LastViewedDate
+
+MasterLanguage
+
+MigratedToFromArticle
+
+TotalViewCount
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last accessed this record, a record related to this record,
+or a list view.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp when the current user last viewed this record or list view. If this value is null,
+the user might have only accessed this record or list view ( `LastReferencedDate` ) but
+not viewed it.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Restricted picklist, Sort
+
+**Description**
+The article's original language. Only accessible if your knowledge base supports multiple
+languages.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID for the corresponding pre- or post-migration article. Contains values only in orgs that
+migrate from Knowledge in Salesforce Classic to Lightning Knowledge. This field is available
+in API version 45.0 and later.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+
+### Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+**Description**
+Total number of views for this article. This field is available in API version 39.0 and later.
+
+### Knowledge__kav
+
+Provides access to the concrete object that represents a Knowledge article version. This object is available in API version 39.0 and later.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+### Note: By default, the prefix for this object name is Knowledge and that is the value shown in this reference. However, this
+
+prefix can be modified by changing the **Object Name** for the Knowledge__kav object in Object Manager.
+
+This object is derived from KnowledgeArticleVersion on page 3044.
+
+Supported Calls
+
+`create()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`, `search()`, `update()`, `upsert()`
+
+This object doesn’t retrieve `<ActionOverrides>` .
+
+Special Access Rules
+
+Lightning Knowledge must be enabled in your org. A user must have the View Articles permission enabled. Salesforce Knowledge users,
+unlike customer and partner users, must also be granted the `Knowledge User` feature license.
+
+Fields
+
+**Field** **Details**
+
+```
+ArchivedById
+
+ArchivedDate
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user who archived the article.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date the article version was archived.
+
+
+Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+```
+ArticleArchivedById
+
+ArticleArchivedDate
+
+ArticleCaseAttachCount
+
+ArticleCreatedById
+
+ArticleCreatedDate
+
+ArticleMasterLanguage
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user who archived the article.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date the article was archived.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The number of cases where this article is attached.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user who created the article.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date the article was created.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+
+Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+**Description**
+The article's original language. Only accessible if your knowledge base supports multiple
+languages.
+
+```
+ArticleNumber
+
+ArticleTotalViewCount
+
+AssignedById
+
+AssignedToId
+
+AssignmentDate
+
+AssignmentDueDate
+
+```
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, Sort
+
+**Description**
+The unique number automatically assigned to the article when it's created. You can't change
+the format or value for this field.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Total number of views for the article.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user who assigned the article.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user assigned to the article.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date the article was assigned to a user.
+
+**Type**
+dateTime
+
+
+Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The due date when an article is assigned.
+
+```
+AssignmentNote
+
+ExternalRef
+
+ExternalSourceId
+
+ExternalUrl
+
+FirstPublishedDate
+
+```
+
+**Type**
+textarea
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Notes to the assignee from the user who assigned the article.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the item being referenced on the external system. For example, the ID of a document
+on a Google Drive or a page on Confluence.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Reference to the external Knowledge data source object.
+
+**Type**
+url
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The URL of the knowledge content referenced in an external system. For example, the ID of
+a document in Google Drive or a page in Confluence.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the article was first published.
+
+
+Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+```
+IsExternalData
+
+IsLatestVersion
+
+IsMasterLanguage
+
+IsOutOfDate
+
+IsVisibleInApp
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether the data is external to the customer’s knowledge base ( `true` ) or not
+( `false` ).
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether the article is the most current version. ( `true` ) or not ( `false` ). This field
+can be `true` on the online or published version, a draft version in the primary language, a
+draft version in a translation, and the latest archived version. However, you can’t filter by
+(PublishState=’Online’) and (IsLatestVersion=false) because the online version is also the
+latest version. This field is available in API version 24.0 and later.
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether the article has one or more translations associated with it ( `true` ) or not
+( `false` ).
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Indicates whether the source article has been updated since this translated version was
+created ( `true` ) or not ( `false` ).
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+Required. Indicates whether the article is visible in the Articles tab ( `true` ) or not ( `false` ).
+
+
+Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+```
+IsVisibleInCsp
+
+IsVisibleInPkb
+
+IsVisibleInPrm
+
+KnowledgeArticleId
+
+Language
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Required. Indicates whether the article is visible in the Customer Portal ( `true` ) or not
+( `false` ).
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Required. Indicates whether the article is visible in the public knowledge base ( `true` ) or
+not ( `false` ).
+
+**Type**
+boolean
+
+**Properties**
+Create, Defaulted on create, Filter, Group, Sort, Update
+
+**Description**
+Required. Indicates whether the article is visible in the partner portal ( `true` ) or not ( `false` ).
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The ID of the article independent from its version. The value for this field is retrieved from
+the `Id` field of the KnowledgeArticle object.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+The language that the article is written in, such as `French` or `Chinese`
+`(Traditional)` .
+
+Querying or searching articles in SOSL require that you specify the `Language` field in the
+WHERE clause. The language must be the same for all article types.
+
+
+Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+Before API version 47.0, you must include the `Language` field to filter queries on Knowledge
+article versions. In API version 47.0 and later, you can filter queries on Knowledge article
+versions with or without `Language` depending on what you are querying.
+
+```
+LastPublishedDate
+
+MasterVersionId
+
+MigratedToFromArticleVersion
+
+NextReviewDate
+
+OwnerId
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the article was last published.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+ID of the source article, if the article is the translation of a source article. Only accessible if
+your knowledge base supports multiple languages.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID for the corresponding pre- or post-migration article version. Contains values only in
+orgs that migrate from Classic to Lightning Knowledge. Available in API version 43.0 and
+later.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the article must next be reviewed for accuracy. Available in API version 58.0
+and later.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The ID of the article's owner.
+
+
+Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+```
+PublishStatus
+
+RecordTypeId
+
+SourceId
+
+Summary
+
+Title
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Defaulted on create, Filter, Group, Restricted picklist, Sort
+
+**Description**
+
+The publication status for the article:
+
+**•** `Draft` : any draft articles.
+
+**•** `Online` : articles published in Salesforce Knowledge.
+
+**•** `Archived` : archived articles.
+
+A user must have the “Manage Articles” permission enabled to use `Online` .
+
+Article queries and searches in SOQL or SOSL require that you specify either the
+`PublishStatus` or the `Id` field in the WHERE clause. You can search for only one
+publication status per article type in a single SOSL query. When searching for articles with a
+`PublishStatus` of `Archived`, also check that `IsLatestVersion` equals `false`
+in your WHERE clause.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
+
+**Description**
+Indicates the API Name that describes the type of article. Use the record type to determine
+the article structure and other settings for different types of content.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+ID of the source from which the article was created (Case or Reply). This field is only accessible
+from the API and isn’t visible in the Salesforce UI.
+
+**Type**
+textarea
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+Summary of the article. Maximum size is 1000 characters.
+
+**Type**
+string
+
+
+Standard Objects Knowledge__kav
+
+**Field** **Details**
+
+**Properties**
+Create, Defaulted on create, Filter, Group, idLookup, Sort, Update
+
+**Description**
+Required. Article's title. Maximum size is 255 characters.
+
+```
+TranslationCompletedDate
+
+TranslationExportedDate
+
+TranslationImportedDate
+
+UrlName
+
+ValidationStatus
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Date and time when the article was last translated. Only accessible if your knowledge base
+supports multiple languages.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Date and time when the article was last exported for translation. Only accessible if your
+knowledge base supports multiple languages.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Date and time when the article was last imported for translation. Only accessible if your
+knowledge base supports multiple languages.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Sort, Update
+
+**Description**
+Required. Represents the article's URL. Can contain alphanumeric characters and hyphens
+but can't begin or end with a hyphen. Use a unique value regardless of context. (For example,
+a unique value allows you to get expected results when running an Apex test with
+`SeeAllData` set to `false` .) `UrlName` is case-sensitive and its maximum size is 255
+characters.
+
+**Type**
+picklist
+
+
+### Standard Objects Knowledge__DataCategorySelection
+
+**Field** **Details**
+
+**Properties**
+Defaulted on create, Filter, Group
+
+**Description**
+
+Shows whether the content of the article has been validated. Possible values are
+`Validated` and `Not Validated` . The default value is `Not Validated` . This field
+is available in API version 24.0 or later.
+
+```
+VersionNumber
+
+```
+
+**Type**
+int
+
+**Properties**
+Group, Sort
+
+**Description**
+The number assigned to a version of an article. This field is available in API version 24.0 and
+later.
+
+### Knowledge__DataCategorySelection
+
+Represents a data category that classifies an article. This object is available in API version 39.0 and later.
+
+### Note: By default, the prefix for this object name is Knowledge and that is the value shown in this reference. However, this
+
+prefix can be modified by changing the **Object Name** for the Knowledge__kav object in Object Manager.
+
+Supported Calls
+
+`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+Lightning Knowledge must be enabled in your org.
+
+Fields
+
+**Field** **Details**
+
+```
+DataCategoryGroupName
+
+```
+
+**Type**
+datacategorygroupreference
+
+**Properties**
+Create
+
+**Description**
+Unique name of the data category group which has categories associated with the article.
+
+
+### Standard Objects KnowledgeableUser
+
+**Field** **Details**
+
+```
+ DataCategoryName
+
+ ParentId
+
+```
+
+Usage
+
+**Type**
+datacategorygroupreference
+
+**Properties**
+Create
+
+**Description**
+Unique name of the data category associated with the article.
+
+**Type**
+reference
+
+**Properties**
+Create, Filter, Group, Sort
+
+**Description**
+ID of the article associated with the data category selection.
+
+Every article in Salesforce Knowledge can be categorized. A data category selection represents a category that has been selected to
+classify an article. You can use this object to query and manage article categorization in your organization. Client applications can create
+a categorization for an article with a Draft status. They can also delete and query article categorizations.
+
+Note: When using this object to classify an article, you can't select both a category (for example USA) and one of its descendants
+(California) or ascendant categories (North America). In this case, only the first category is selected.
+
+### KnowledgeableUser
+
+Represents a user identified as knowledgeable about a specific topic, and ranks them relative to other knowledgeable users. This object
+is available in API version 31.0 and later.
+
+Supported Calls
+
+`describeSObjects()`, `query()`, `retrieve()`
+
+Fields
+
+**Field Name** **Details**
+
+```
+NetworkId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+
+### Standard Objects KnowledgeArticle
+
+**Field Name** **Details**
+
+**Description**
+ID of the Experience Cloud site the topic exists in. This field is available only if
+digigal experiences is enabled for your org.
+
+```
+RawRank
+
+TopicId
+
+UserId
+
+### KnowledgeArticle
+
+```
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Rank of this user’s knowledge on the topic relative to other users.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+Unique ID for the topic in Salesforce.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+Unique ID for the user in Salesforce.
+
+Provides read-only access to an article and the ability to delete the primary article. This object is available in API version 19.0 and later.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Unlike KnowledgeArticleVersion, the ID of a KnowledgeArticle record is identical irrespective of the article's version (status).
+
+Knowledge__ka on page 3018 is derived from this object.
+
+Supported Calls
+
+`describeSObjects()`, `query()`, `retrieve()`
+
+
+Standard Objects KnowledgeArticle
+
+Special Access Rules
+
+Knowledge must be enabled in your org. A user must have the View Articles permission enabled. Salesforce Knowledge users, unlike
+customer and partner users, must also be granted the `Knowledge User` feature license.
+
+Fields
+
+**Field Name** **Details**
+
+```
+ArchivedById
+
+ArchivedDate
+
+ArticleNumber
+
+CaseAssociationCount
+
+FirstPublishedDate
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of the user who archived the article.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the article was archived.
+
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+The unique number automatically assigned to the article when it's created. You can't
+change the format or value for this field.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+The number of cases attached to the article.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The date when the article was first published.
+
+
+Standard Objects KnowledgeArticle
+
+**Field Name** **Details**
+
+```
+IsGeneratedByLlm
+
+LastPublishedDate
+
+LastReferencedDate
+
+LastViewedDate
+
+MasterLanguage
+
+MigratedToFromArticle
+
+```
+
+**Type**
+boolean
+
+**Properties**
+Defaulted on create, Filter, Group, Sort
+
+**Description**
+True if the first version of an article was created with an LLM. This object is available
+in API version 59.0 and later.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
 **Description**
 The date when the article was last published.
 
@@ -673,7 +2603,7 @@ Use this object to:
 
 When you query on the archived article, the results include both the article and the article’s archived versions.
 
-Knowledge__kav on page 2993 is derived from this object.
+Knowledge__kav on page 3021 is derived from this object.
 
 Supported Calls
 
@@ -1303,7 +3233,7 @@ groups and the category structure associated with Salesforce Knowledge.
 To access an article independent of its version, use the KnowledgeArticle object.
 
 In Lightning Knowledge, the type of article is determined by the `RecordType` field on the concrete derived object (for example,
-Knowledge__kav on page 2993). For Knowledge in Salesforce Classic, the type of article is determined by the `ArticleType` field and
+Knowledge__kav on page 3021). For Knowledge in Salesforce Classic, the type of article is determined by the `ArticleType` field and
 the concrete derived object uses the prefix of the article type name (for example, FAQ__kav for the FAQ article type).
 
 SOQL Samples
@@ -6475,9 +8405,9 @@ Filter, Group, Nillable, Sort
 Number used to sort this value in the lead status picklist. These numbers are not guaranteed
 to be sequential, as some previous lead status values might have been deleted.
 
-This object represents a value in the lead status picklist (see Lead on page 3039). The lead status picklist provides additional information
-about the status of a Lead on page 3039, such as whether a given status value represents a converted Lead on page 3039. Query this object
-to retrieve the set of values in the lead status picklist, and then use that information while processing Lead on page 3039 objects to
+This object represents a value in the lead status picklist (see Lead on page 3067). The lead status picklist provides additional information
+about the status of a Lead on page 3067, such as whether a given status value represents a converted Lead on page 3067. Query this object
+to retrieve the set of values in the lead status picklist, and then use that information while processing Lead on page 3067 objects to
 determine more information about a given lead. For example, the application could test whether a given lead is converted based on its
 Status value and the value of the `IsConverted` property in the associated LeadStatus record.
 
@@ -11296,7 +13226,7 @@ History is available for tracked fields of the object.
 
 Represents the comment feed on a linked article. This object is available in API version 39.0 and later.
 
-For additional information about feeds, see FeedItem on page 2526.
+For additional information about feeds, see FeedItem on page 2549.
 
 Supported Calls
 
@@ -19683,7 +21613,7 @@ Filter, Nillable, Sort
 **Description**
 The status of the login attempt. For successful logins, the value is LOGIN_NO_ERROR. All
 other values indicate errors or authentication issues. For details, see Login Event Type —
-LOGIN_STATUS Values on page 2287.
+LOGIN_STATUS Values on page 2307.
 
 **Type**
 string
@@ -26050,7 +27980,7 @@ Create, Defaulted on create, Nillable, Update
 
 Automated response to the end user when they opt in to messaging. Available
 in API versions 48.0 and 49.0. Use the `OptInConfirmation` field of the
-MsgChannelLanguageKeyword on page 3463 object instead.
+MsgChannelLanguageKeyword on page 3491 object instead.
 
 **Type**
 boolean
@@ -26230,7 +28160,7 @@ reference
 Create, Filter, Group, Sort
 
 **Description**
-ID of the MessagingChannel on page 3377.
+ID of the MessagingChannel on page 3405.
 
 This is a relationship field.
 
@@ -26250,7 +28180,7 @@ reference
 Create, Filter, Group, Sort, Update
 
 **Description**
-ID of the Skill on page 5029.
+ID of the Skill on page 5063.
 
 This is a relationship field.
 
@@ -26718,7 +28648,7 @@ reference
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
-ID of the MessagingChannel on page 3377.
+ID of the MessagingChannel on page 3405.
 
 This is a relationship field.
 
@@ -26821,13 +28751,18 @@ The kind of event that occurred. Possible values include:
 Represents a single address—such as a phone number or Facebook page—communicating with a single Messaging channel. This
 object is available in API version 40.0 and later.
 
+Note: This object is available for Einstein Conversation Insights customers whose data is stored natively on the Salesforce Platform.
+If you turned on Einstein Conversation Insights for the first time starting in Spring ’26, this object is available to query and access
+using Salesforce tools. For existing ECI customers, data migration and access to related Salesforce Platform objects is scheduled
+to begin in Summer ’26.
+
+
+Standard Objects MessagingEndUser
+
 Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
-
-
-Standard Objects MessagingEndUser
 
 Fields
 
@@ -26839,8 +28774,6 @@ AccountId
 ContactId
 
 HasInitialResponseSent
-
-IsFullyOptedIn
 
 ```
 
@@ -26891,17 +28824,30 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
-**Description**
-Indicates whether an initial response has been sent to the Messaging end user ( `true` ) or
-not ( `false` ).
-
-**Type**
-boolean
-
 
 Standard Objects MessagingEndUser
 
 **Field** **Details**
+
+**Description**
+Indicates whether an initial response has been sent to the Messaging end user ( `true` ) or
+not ( `false` ).
+
+```
+IsFullyOptedIn
+
+IsOptedOut
+
+IsoCountryCode
+
+LastReferencedDate
+
+LastViewedDate
+
+```
+
+**Type**
+boolean
 
 **Properties**
 Defaulted on create, Filter, Sort
@@ -26911,19 +28857,6 @@ Indicates whether the Messaging end user has opted in to receiving messages ( `t
 not ( `false` ). This field compares the related messaging channel’s consent requirement to
 the user’s consent status; if the user’s status meets the channel’s required consent level,
 `IsFullyOptedIn` is set to `true` . Available in API version 48.0 and later.
-
-```
-IsOptedOut
-
-IsoCountryCode
-
-LastReferencedDate
-
-LastViewedDate
-
-LeadId
-
-```
 
 **Type**
 boolean
@@ -26960,17 +28893,28 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-The timestamp for when the current user last viewed this record. If this value is null, this
-record might only have been referenced (LastReferencedDate) and not viewed.
-
-**Type**
-reference
-
 
 Standard Objects MessagingEndUser
 
 **Field** **Details**
+
+**Description**
+The timestamp for when the current user last viewed this record. If this value is null, this
+record might only have been referenced (LastReferencedDate) and not viewed.
+
+```
+LeadId
+
+Locale
+
+Language
+
+MessageType
+
+```
+
+**Type**
+reference
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -26988,15 +28932,6 @@ Lookup
 
 **Refers To**
 Lead
-
-```
-Locale
-
-Language
-
-MessageType
-
-```
 
 **Type**
 string
@@ -27030,6 +28965,11 @@ Type of message. Possible values are:
 
 **•** `Custom` —Represents Bring Your Own Channel. Available in API version 58.0 and later.
 
+
+Standard Objects MessagingEndUser
+
+**Field** **Details**
+
 **•** `EmbeddedMessaging` —Represents Messaging for In-App and Web. Available in
 API version 50.0 and later.
 
@@ -27041,11 +28981,6 @@ API version 50.0 and later.
 
 **•** `Voice`
 
-
-Standard Objects MessagingEndUser
-
-**Field** **Details**
-
 **•** `WhatsApp`
 
 ```
@@ -27054,8 +28989,6 @@ MessagingChannelId
 MessagingConsentStatus
 
 MessagingPlatformKey
-
-Name
 
 ```
 
@@ -27103,27 +29036,19 @@ string
 **Properties**
 Create, Filter, Group, Sort
 
+
+Standard Objects MessagingEndUser
+
+**Field** **Details**
+
 **Description**
 
 The phone number, Facebook page ID, or unique key associated with this Messaging end
 user.
 
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, idLookup, Sort, Update
-
-
-### Standard Objects MessagingLink
-
-**Field** **Details**
-
-**Description**
-The name of the Messaging end user. Because this field is editable, we don’t recommend
-referencing it in automation. Instead, use the Messaging Platform Key.
-
 ```
+ Name
+
  OwnerId
 
  ProfilePictureUrl
@@ -27131,6 +29056,16 @@ referencing it in automation. Instead, use the Messaging Platform Key.
 ```
 
 Associated Objects
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, idLookup, Sort, Update
+
+**Description**
+The name of the Messaging end user. Because this field is editable, we don’t recommend
+referencing it in automation. Instead, use the Messaging Platform Key.
 
 **Type**
 reference
@@ -27170,6 +29105,9 @@ Change events are available for the object.
 
 History is available for tracked fields of the object.
 
+
+### Standard Objects MessagingLink
+
 **MessagingEndUserOwnerSharingRule**
 
 Sharing rules are available for the object.
@@ -27181,9 +29119,6 @@ Sharing is available for the object.
 ### MessagingLink
 
 Represents the link between a Messaging Channel and where it's shared. This object is available in API version 47.0 and later.
-
-
-Standard Objects MessagingLink
 
 Supported Calls
 
@@ -27202,8 +29137,6 @@ Fields
 EntityType
 
 MessagingChannelId
-
-RecordTypeId
 
 ```
 
@@ -27243,8 +29176,24 @@ MessagingChannel
 **Relationship Type**
 Lookup
 
+
+### Standard Objects MessagingSession
+
+**Field** **Details**
+
 **Refers To**
 MessagingChannel
+
+```
+ RecordTypeId
+
+ ShouldAttemptAutoLink
+
+ ShouldPromptCreate
+
+### MessagingSession
+
+```
 
 **Type**
 reference
@@ -27258,25 +29207,11 @@ This is a relationship field.
 **Relationship Name**
 RecordType
 
-
-### Standard Objects MessagingSession
-
-**Field** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 RecordType
-
-```
- ShouldAttemptAutoLink
-
- ShouldPromptCreate
-
-### MessagingSession
-
-```
 
 **Type**
 boolean
@@ -27305,12 +29240,23 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
 
+
+Standard Objects MessagingSession
+
 Fields
 
 **Field** **Details**
 
 ```
 AcceptTime
+
+AgentMessageCount
+
+AgentType
+
+CaseId
+
+ChannelEndUserFormula
 
 ```
 
@@ -27322,24 +29268,6 @@ Create, Filter, Nillable, Sort, Update
 
 **Description**
 The time when an agent accepts an incoming Messaging session.
-
-
-Standard Objects MessagingSession
-
-**Field** **Details**
-
-```
-AgentMessageCount
-
-AgentType
-
-CaseId
-
-ChannelEndUserFormula
-
-ChannelKey
-
-```
 
 **Type**
 int
@@ -27385,6 +29313,22 @@ Filter, Group, idLookup, Nillable, Sort
 **Description**
 A concatenation of the Messaging channel and Messaging user.
 
+
+Standard Objects MessagingSession
+
+**Field** **Details**
+
+```
+ChannelKey
+
+ChannelLocale
+
+ChannelName
+
+ChannelType
+
+```
+
 **Type**
 string
 
@@ -27393,22 +29337,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The unique identifier for the associated Messaging channel.
-
-
-Standard Objects MessagingSession
-
-**Field** **Details**
-
-```
-ChannelLocale
-
-ChannelName
-
-ChannelType
-
-ConversationId
-
-```
 
 **Type**
 string
@@ -27463,6 +29391,22 @@ The type of the associated Messaging channel. Possible values are:
 
 **•** `WhatsApp`
 
+
+Standard Objects MessagingSession
+
+**Field** **Details**
+
+```
+ConversationId
+
+EndedByType
+
+EndTime
+
+EndUserAccountId
+
+```
+
 **Type**
 reference
 
@@ -27471,11 +29415,6 @@ Create, Filter, Group, Nillable, Sort
 
 **Description**
 The ID of the related conversation. Available in API version 55.0 and later.
-
-
-Standard Objects MessagingSession
-
-**Field** **Details**
 
 This field is a relationship field.
 
@@ -27487,15 +29426,6 @@ Lookup
 
 **Refers To**
 Conversation
-
-```
-EndedByType
-
-EndTime
-
-EndUserAccountId
-
-```
 
 **Type**
 picklist
@@ -27535,6 +29465,11 @@ reference
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+Standard Objects MessagingSession
+
+**Field** **Details**
+
 **Description**
 The ID of the end user's account record.
 
@@ -27545,11 +29480,6 @@ EndUserAccount
 
 **Relationship Type**
 Lookup
-
-
-Standard Objects MessagingSession
-
-**Field** **Details**
 
 **Refers To**
 Account
@@ -27562,8 +29492,6 @@ EndUserLanguage
 EndUserMessageCount
 
 LastReferencedDate
-
-LastViewedDate
 
 ```
 
@@ -27608,15 +29536,6 @@ The number of messages sent by the Messaging end user.
 **Type**
 dateTime
 
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The timestamp for when the current user last viewed a record related to this record.
-
-**Type**
-dateTime
-
 
 Standard Objects MessagingSession
 
@@ -27626,10 +29545,11 @@ Standard Objects MessagingSession
 Filter, Nillable, Sort
 
 **Description**
-The timestamp for when the current user last viewed this record. If this value is null, this
-record might only have been referenced (LastReferencedDate) and not viewed.
+The timestamp for when the current user last viewed a record related to this record.
 
 ```
+LastViewedDate
+
 LeadId
 
 MessagingChannelId
@@ -27637,6 +29557,16 @@ MessagingChannelId
 MessagingEndUserId
 
 ```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The timestamp for when the current user last viewed this record. If this value is null, this
+record might only have been referenced (LastReferencedDate) and not viewed.
 
 **Type**
 reference
@@ -27678,6 +29608,11 @@ The ID of the Messaging end user associated with this Messaging session.
 
 This is a relationship field.
 
+
+Standard Objects MessagingSession
+
+**Field** **Details**
+
 **Relationship Name**
 MessagingEndUser
 
@@ -27686,11 +29621,6 @@ Lookup
 
 **Refers To**
 MessagingEndUser
-
-
-Standard Objects MessagingSession
-
-**Field** **Details**
 
 ```
 Name
@@ -27753,6 +29683,11 @@ customer initiation or by using Process Builder, flows, or the Start Conversatio
 **Type**
 reference
 
+
+Standard Objects MessagingSession
+
+**Field** **Details**
+
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
@@ -27760,11 +29695,6 @@ Create, Defaulted on create, Filter, Group, Sort, Update
 The ID of the owner associated with this Messaging session.
 
 This is a polymorphic relationship field.
-
-
-Standard Objects MessagingSession
-
-**Field** **Details**
 
 **Relationship Name**
 Owner
@@ -27826,6 +29756,11 @@ The status of the Messaging session. Possible values are:
 
 **•** `Active`
 
+
+Standard Objects MessagingSession
+
+**Field** **Details**
+
 **•** `Consent` (enhanced channels only)
 
 **•** `Waiting`
@@ -27835,11 +29770,6 @@ The status of the Messaging session. Possible values are:
 **•** `Inactive` (enhanced channels only)
 
 **•** `Ended`
-
-
-Standard Objects MessagingSession
-
-**Field** **Details**
 
 **•** `Error` (enhanced channels only)
 
@@ -27872,7 +29802,7 @@ Lookup
 **Refers To**
 User
 
-To monitor messaging session activity, report on the MessagingSession and MessagingSessionMetrics on page 3409 objects.
+To monitor messaging session activity, report on the MessagingSession and MessagingSessionMetrics on page 3437 objects.
 [MessagingSessionMetrics captures metrics about a messaging session, such as agent and end user response time. See Report on](https://help.salesforce.com/s/articleView?id=service.messaging_reporting.htm&type=5&language=en_US)
 [Messaging Activity in Service Cloud.](https://help.salesforce.com/s/articleView?id=service.messaging_reporting.htm&type=5&language=en_US)
 
@@ -27895,12 +29825,14 @@ History is available for tracked fields of the object.
 
 Sharing rules are available for the object.
 
+
+### Standard Objects MessagingSessionMetrics
+
 **MessagingSessionShare**
 
 Sharing is available for the object.
 
-
-### Standard Objects MessagingSessionMetrics MessagingSessionMetrics
+### MessagingSessionMetrics
 
 Represents a metric gathered about a specific enhanced messaging session, such as average agent response time. This object is available
 starting in October 2024 in API version 62.0 and later.
@@ -27957,15 +29889,15 @@ picklist
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort
 
-**Description**
-The metric that this record captures.
-
-Possible values are:
-
 
 ### Standard Objects MessagingTemplate
 
 **Field** **Details**
+
+**Description**
+The metric that this record captures.
+
+Possible values are:
 
 **•** `AgentMessageCount` —The number of messages sent by the agent in the session.
 
@@ -28020,13 +29952,13 @@ An autogenerated number identifying the MessagingSessionMetrics record.
 
 Represents a Messaging template used to send pre-formatted messages. This object is available in API version 47.0 and later.
 
+
+Standard Objects MessagingTemplate
+
 Supported Calls
 
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`, `search()`,
 `update()`, `upsert()`
-
-
-Standard Objects MessagingTemplate
 
 Fields
 
@@ -28090,11 +30022,15 @@ textarea
 **Properties**
 Create, Update
 
+
+### Standard Objects MetadataApiOpEventLog
+
+**Field** **Details**
+
 **Description**
 The body text of the Messaging template.
 
-
-### Standard Objects MetadataApiOpEventLog MetadataApiOpEventLog MetadataApiOpEventLog stores details of Metadata API retrieval and deployment requests. This object is available in API version 62.0
+### MetadataApiOpEventLog MetadataApiOpEventLog stores details of Metadata API retrieval and deployment requests. This object is available in API version 62.0
 
 and later.
 
@@ -28116,8 +30052,6 @@ ClientIdentifier
 ClientIp
 
 CpuTime
-
-LoginKey
 
 ```
 
@@ -28148,17 +30082,28 @@ double
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-string
-
 
 Standard Objects MetadataApiOpEventLog
 
 **Field** **Details**
+
+**Description**
+The CPU time in milliseconds used to complete the request. This field indicates the amount
+of activity taking place in the app server layer.
+
+```
+LoginKey
+
+OperationType
+
+RequestIdentifier
+
+RunTime
+
+```
+
+**Type**
+string
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -28168,17 +30113,6 @@ The string that ties together all events in a given user’s login session. It s
 event and ends with either a logout event or the user session expiring.
 
 For example: `GeJCsym5eyvtEK2I` .
-
-```
-OperationType
-
-RequestIdentifier
-
-RunTime
-
-SessionKey
-
-```
 
 **Type**
 string
@@ -28220,27 +30154,17 @@ double
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-The amount of time that the request took in milliseconds.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
 
 ### Standard Objects MetadataPackage
 
 **Field** **Details**
 
 **Description**
-The user’s unique session ID. You can use this value to identify all user events within a session.
-When a user logs out and logs in again, a new session is started.
-
-For example: `d7DEq/ANa7nNZZVD` .
+The amount of time that the request took in milliseconds.
 
 ```
+SessionKey
+
 Timestamp
 
 Uri
@@ -28250,6 +30174,18 @@ UserIdentifier
 ### MetadataPackage
 
 ```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The user’s unique session ID. You can use this value to identify all user events within a session.
+When a user logs out and logs in again, a new session is started.
+
+For example: `d7DEq/ANa7nNZZVD` .
 
 **Type**
 dateTime
@@ -28287,12 +30223,12 @@ For example: `00530000009M943YAS`
 Represents a package that has been developed in the org you’re logged in to. Applies to unlocked, unmanaged, first-generation, and
 second-generation managed packages.
 
+
+Standard Objects MetadataPackage
+
 Supported Calls
 
 `describeSObjects()`, `query()`, `retrieve()`
-
-
-Standard Objects MetadataPackage
 
 Fields
 
@@ -28306,8 +30242,6 @@ NamespacePrefix
 PackageCategory
 
 ```
-
-Usage
 
 **Type**
 string
@@ -28354,10 +30288,12 @@ The default value is Package.
 
 This field is available in API version 49.0 and later.
 
-Here are examples of the types of API queries you can perform.
-
 
 ### Standard Objects MetadataPackageVersion
+
+Usage
+
+Here are examples of the types of API queries you can perform.
 
 **Query** **String**
 
@@ -28422,13 +30358,13 @@ Indicates whether the package version is deprecated. Available in API version
 **Type**
 int
 
-**Properties**
-Filter, Group, Nillable, Sort
-
 
 Standard Objects MetadataPackageVersion
 
 **Field Name** **Details**
+
+**Properties**
+Filter, Group, Nillable, Sort
 
 **Description**
 The first number in a package version number. A version number either has an
@@ -28492,13 +30428,13 @@ version, `y` the minor version, and `z` the patch version.
 **Type**
 picklist
 
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
 
 Standard Objects MetadataPackageVersion
 
 **Field Name** **Details**
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
 
 **Description**
 If the package version is a beta version, the value is `Beta` . Otherwise, the value
@@ -28579,16 +30515,16 @@ QueryResult results = conn.query(String.format(METADATA_PACKAGE_VERSION_QUERY,
 
 PACKAGE_SUBSCRIBER_ORG_KEY_QUERY));
 
-// This list will hold all of the PackageSubscriber objects that are eligible for upgrade
-
-// to the given version
-
 ```
 
 
 ### Standard Objects Metric
 
 ```
+   // This list will hold all of the PackageSubscriber objects that are eligible for upgrade
+
+   // to the given version
+
    List<PackageSubscriber> subscribers = new ArrayList<>();
 
    for (SObject mpvso : results.getRecords()) {
@@ -28655,13 +30591,13 @@ double
 **Properties**
 Create, Defaulted on create, Filter, Nillable, Sort, Update
 
-**Description**
-The current value of the metric.
-
 
 Standard Objects Metric
 
 **Field Name** **Details**
+
+**Description**
+The current value of the metric.
 
 ```
 Description
@@ -28728,13 +30664,13 @@ value.
 **Type**
 textarea
 
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
 
 Standard Objects Metric
 
 **Field Name** **Details**
+
+**Properties**
+Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 A comment that provides more context about the metric, such as its status or
@@ -28798,13 +30734,13 @@ percent
 **Properties**
 Filter, Nillable, Sort
 
-**Description**
-Read only. The overall progress of the metric.
-
 
 Standard Objects Metric
 
 **Field Name** **Details**
+
+**Description**
+Read only. The overall progress of the metric.
 
 ```
 RecordTypeId
@@ -28874,13 +30810,13 @@ The target value of the metric.
 **Type**
 double
 
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
 
 ### Standard Objects MetricDataLink
 
 **Field Name** **Details**
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
 
 **Description**
 The weight of the metric. The sum of the weights should equal 100%.
@@ -28938,13 +30874,13 @@ string
 **Properties**
 Create, Filter, Group, Sort, Update
 
-**Description**
-The field name of the data source, such as a report summary field.
 
-
-### Standard Objects MigratedEmail
+Standard Objects MetricDataLink
 
 **Field Name** **Details**
+
+**Description**
+The field name of the data source, such as a report summary field.
 
 ```
 DataSourceId
@@ -29004,12 +30940,12 @@ History is available for tracked fields of the object.
 The original WDC feature is unavailable as of Spring ’22. This object isn’t available as of API version 54.0. For more information, see
 [Phased WDC (legacy Work.com) Feature Retirement.](https://help.salesforce.com/s/articleView?id=000356306&type=1&language=en_US)
 
-### MigratedEmail
+
+### Standard Objects MigratedEmail MigratedEmail
 
 For internal use only.
 
-
-### Standard Objects MilestoneType MilestoneType
+### MilestoneType
 
 Represents a milestone (required step in a customer support process). This object is available in API version 18.0 and later.
 
@@ -37732,30 +39668,33 @@ the URL `https://` _`MyDomainName`_ `.my.salesforce.com/services/oauth2/revoke?t
 `Token)` causes the deletion of the token.
 
 In API version 34.0 and later, this object was enhanced to help manage high instance counts. A `query()` call returns up to 500 rows.
-A `queryMore()` call returns 500 more, up to 2500 total. No more records are returned after 2500. To make sure that you don’t miss
+A `queryMore()` call returns 500 more, up to 2,500 total. No more records are returned after 2,500. To make sure that you don’t miss
 any records, issue a `COUNT()` query in a SELECT clause for OauthToken. This query gives you the total number of records. If there are
-more than 2500 records, use these options to manage your results.
+more than 2,500 records, use these options to manage your results.
 
-**•** Divide queries by filtering on fields like `UserId` to return subsets of less than 2500 records.
+**•** Divide queries by filtering on fields like `UserId` to return subsets of less than 2,500 records.
 
-**•** Use `OFFSET` to get batches of 2500 records. Start with an `OFFSET` of 0 and then increment by 2500. If you use this option, we
-recommend that you also use `LIMIT` to limit each query to 2500.
+**•** Use `[OFFSET](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_offset.htm)` to get batches of 2,000 records. Start with an `OFFSET` of 0 and then increment by 2,000. If you use this option, we
+recommend that you also use `[LIMIT](https://developer.salesforce.com/docs/atlas.en-us.260.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_limit.htm)` to limit each query to 2,000.
+
+Note: The `OFFSET` clause is limited to 2,000 rows. Requesting an offset greater than 2,000 results in a
+NUMBER_OUTSIDE_VALID_RANGE error.
 
 For example, use an initial query with this structure.
 
 ```
-     SELECT <desired fields> FROM OauthToken LIMIT 2500 OFFSET 0
+     SELECT <desired fields> FROM OauthToken LIMIT 2000 OFFSET 0
 
 ```
 
-Then, run another query with an offset of 2500.
+Then, run another query with an offset of 2,000.
 
 ```
-     SELECT <desired fields> FROM OauthToken LIMIT 2500 OFFSET 2500
+     SELECT <desired fields> FROM OauthToken LIMIT 2000 OFFSET 2000
 
 ```
 
-Continue to increase the offset by 2500 until you have results for all records.
+Continue to increase the offset by 2,000 until you have results for all records.
 
 ### OauthTokenExchangeHandler
 
@@ -37763,12 +39702,12 @@ Represents a token exchange handler. The token exchange handler also consists of
 flow, the token exchange handler is used to validate tokens from an external identity provider and to map users to Salesforce. This object
 is available in API version 60.0 and later.
 
+
+Standard Objects OauthTokenExchangeHandler
+
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-
-Standard Objects OauthTokenExchangeHandler
 
 Special Access Rules
 
@@ -37833,16 +39772,15 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
-**Description**
-Indicates whether the handler can set up new users. During the token exchange flow, the
-Apex handler maps users from the identity provider to Salesforce. If the
-`IsUserCreationAllowed` field is `true`, the `canCreateUser` boolean in the
-
 
 Standard Objects OauthTokenExchangeHandler
 
 **Field** **Details**
 
+**Description**
+Indicates whether the handler can set up new users. During the token exchange flow, the
+Apex handler maps users from the identity provider to Salesforce. If the
+`IsUserCreationAllowed` field is `true`, the `canCreateUser` boolean in the
 `getUserForTokenSubject` method is `true`, and the user doesn’t exist in Salesforce,
 the handler sets up a new User object, which Salesforce automatically inserts to finish creating
 the user.
@@ -37853,8 +39791,6 @@ The default value is `false` .
 Language
 
 MasterLabel
-
-NamespacePrefix
 
 ```
 
@@ -37911,16 +39847,27 @@ string
 **Properties**
 Create, Filter, Group, Sort, Update
 
-**Description**
-The label of the token exchange handler record.
-
-**Type**
-string
-
 
 Standard Objects OauthTokenExchangeHandler
 
 **Field** **Details**
+
+**Description**
+The label of the token exchange handler record.
+
+```
+NamespacePrefix
+
+SupportedTokenTypesAccessToken
+
+SupportedTokenTypesIdToken
+
+SupportedTokenTypesJwt
+
+```
+
+**Type**
+string
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -37941,17 +39888,6 @@ developer.
 **•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
 that are part of an installed managed package. All other objects have no namespace
 prefix.
-
-```
-SupportedTokenTypesAccessToken
-
-SupportedTokenTypesIdToken
-
-SupportedTokenTypesJwt
-
-SupportedTokenTypesRefreshToken
-
-```
 
 **Type**
 boolean
@@ -37981,26 +39917,28 @@ Create, Filter, Update
 Indicates whether the handler supports tokens from the identity provider that are in JWT
 format, such as JWT-based access tokens.
 
+
+### Standard Objects OauthTokenExchHandlerApp
+
+**Field** **Details**
+
+```
+SupportedTokenTypesRefreshToken
+
+SupportedTokenTypesSaml2
+
+TokenHandlerApexId
+
+```
+
 **Type**
 boolean
 
 **Properties**
 Create, Filter, Update
 
-
-### Standard Objects OauthTokenExchHandlerApp
-
-**Field** **Details**
-
 **Description**
 Indicates whether the handler supports OAuth 2.0 refresh tokens from the identity provider.
-
-```
-SupportedTokenTypesSaml2
-
-TokenHandlerApexId
-
-```
 
 **Type**
 boolean
@@ -43985,1751 +45923,3 @@ Effects on Opportunities and Opportunity Line Items
 ```
 
 Opportunity. Deleting an `OpportunityLineItemSchedule` decrements the `OpportunityLineItemTotalPrice`
-by the deleted `OpportunityLineItemSchedule Quantity` or `Revenue` amount. The Opportunity `Amount` is also
-decremented by the `OpportunityLineItemSchedule Quantity` or `Revenue` amount, and the Opportunity
-`ExpectedRevenue` is reduced by `OpportunityLineItemSchedule Quantity` or `Revenue` amount multiplied
-by the Opportunity `Probability` .
-
-Deleting an Opportunity Line Item Schedule
-
-Deleting the last remaining schedule will set the corresponding `HasQuantitySchedule` or `HasRevenueSchedule` flags (or
-both) to `false` on the parent line item.
-
-SEE ALSO:
-
-### OpportunityLineItem
-
-Product2
-
-### OpportunityLineItemSplit
-
-Represents information about an opportunity product split, including percentages, amounts, and owner. This object is available in API
-version 58.0 and later.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `update()`, `upsert()`
-
-
-Standard Objects OpportunityLineItemSplit
-
-Special Access Rules
-
-Before creating OpportunityLineItemSplit records, enable Team Selling, set up opportunity splits, and enable product splits on at least
-one opportunity split type in Setup.
-
-Fields
-
-**Field** **Details**
-
-```
-ArchivedTerritoryName
-
-CurrencyIsoCode
-
-OpportunityLineItemId
-
-```
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the associated territory that’s on an archived territory model. If the
-OpportunityLineItemSplit isn’t associated with a territory on an archived territory model, the
-field value is null. This field is available in API version 62.0 and later.
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-Available only for organizations with the multicurrency feature enabled. Contains the ISO
-code for any currency allowed by the organization.
-
-If the organization has multicurrency enabled, and a Pricebook2 is specified on the opportunity
-(that is, the Pricebook2Id field isn’t blank on the opportunity referenced by this object’s
-OpportunityId), then the value of this field must match the currency of the CurrencyIsoCode
-field on the PricebookEntry records that are associated with this object.
-
-Possible values are:
-
-**•** `BRL` —Brazilian Real
-
-**•** `CAD` —Canadian Dollar
-
-**•** `EUR` —Euro
-
-**•** `USD` —U.S. Dollar
-
-The default value is `USD` .
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-Required. ID of the associated parent OpportunityLineItem. This field is a relationship field.
-
-
-Standard Objects OpportunityLineItemSplit
-
-**Field** **Details**
-
-**Relationship Name**
-OpportunityLineItem
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-OpportunityLineItem
-
-```
-Split
-
-SplitAmount
-
-SplitNote
-
-SplitOwnerId
-
-```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-Read-only. Automatically generated number identifying the split within the opportunity.
-
-**Type**
-currency
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount or value of the split.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Optional text about the split.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the user who is the owner of the split. This field is a relationship field.
-
-**Relationship Name**
-SplitOwner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-
-Standard Objects OpportunityLineItemSplit
-
-**Field** **Details**
-
-```
-SplitPercentage
-
-SplitTypeId
-
-Territory2Id
-
-```
-
-Usage
-
-**Type**
-percent
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-The percentage of the OpportunityLineItem's value that the split represents.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the associated OpptyLineItemSplitType. This field is a relationship field.
-
-**Relationship Name**
-SplitType
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-OpptyLineItemSplitType
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-ID of the associated territory. This field is a relationship field, and is available in API version
-62.0 and later.
-
-**Relationship Name**
-Territory2
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Territory2
-
-Use the OpportunityLineItemSplit object to manage opportunity product splits for an opportunity.
-
-
-### Standard Objects OpportunityOwnerSharingRule
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**OpportunityLineItemSplitHistory on page 63 (API version 59.0)**
-History is available for tracked fields of the object.
-
-### OpportunityOwnerSharingRule
-
-Represents a rule for sharing an opportunity with users other than the owner.
-
-Note: To enable access to this object for your org, contact Salesforce customer support. However, we recommend that you
-instead use Metadata API to programmatically update owner sharing rules because it triggers automatic sharing rule recalculation.
-[The SharingRules Metadata API type is enabled for all orgs.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_sharingrules.htm)
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `update()`,
-
-```
-   upsert()
-
-```
-
-Fields
-
-**Field** **Details**
-
-```
-Description
-
-DeveloperName
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Nillable, Sort, Update
-
-**Description**
-A description of the sharing rule. Maximum size is 1000 characters. This field is available
-in API version 29.0 and later.
-
-**Type**
-string
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-**Description**
-The unique name of the object in the API. This name can contain only underscores
-and alphanumeric characters, and must be unique in your org. It must begin with a
-letter, not include spaces, not end with an underscore, and not contain two
-consecutive underscores. In managed packages, this field prevents naming conflicts
-on package installations. With this field, a developer can change the object’s name
-in a managed package and the changes are reflected in a subscriber’s organization.
-Corresponds to **Rule Name** in the user interface.
-
-This field is available in API version 24.0 and later.
-
-
-Standard Objects OpportunityOwnerSharingRule
-
-**Field** **Details**
-
-When creating large sets of data, always specify a unique `DeveloperName` for
-each record. If no `DeveloperName` is specified, performance slows down while
-Salesforce generates one for each record.
-
-```
-GroupId
-
-Name
-
-OpportunityAccessLevel
-
-UserOrGroupId
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID representing the source group. Opportunities owned by users in the source
-group trigger the rule to give access.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-Label of the sharing rule as it appears in the user interface. Limited to 80 characters.
-Corresponds to **Label** on the user interface.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-A value that represents the type of sharing being allowed. The possible values are:
-
-**•** `Read`
-
-**•** `Edit`
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The ID representing the target user or group. The target user or group is being given
-access.
-
-
-### Standard Objects OpportunityPartner
-
-Usage
-
-Use this object to manage the sharing rules for opportunities. General sharing and Territory-related sharing use this object.
-
-SEE ALSO:
-
-Case
-
-_[Metadata API Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_sharingrules.htm)_ : SharingRules
-
-### OpportunityPartner
-
-This object represents a partner relationship between an Account and an Opportunity. An OpportunityPartner record is created
-automatically when a Partner record is created for a partner relationship between an account and an opportunity.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Customer Portal users can't access this object.
-
-Fields
-
-**Field** **Details**
-
-```
-AccountToId
-
-IsPrimary
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the partner Account in the partner relationship.
-
-This is a relationship field.
-
-**Relationship Name**
-AccountTo
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Account
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-
-Standard Objects OpportunityPartner
-
-**Field** **Details**
-
-**Description**
-Indicates whether the account is the opportunity’s primary partner ( `true` ) or not ( `false` ).
-Label is **Primary** .
-
-```
-OpportunityId
-
-ReversePartnerId
-
-Role
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the Opportunity that is in the partner relationship.
-
-This is a relationship field.
-
-**Relationship Name**
-Opportunity
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Opportunity
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the reciprocal OpportunityPartner record in a partner relationship.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-The UserRole that the Account has on the Opportunity. For example, `Reseller` or
-`Manufacturer` .
-
-Creating an Account-Opportunity Partner Relationship
-
-When you create a partner relationship between an account and an opportunity (when you create a Partner record and specify the
-`OpportunityId` field), the API automatically creates two OpportunityPartner records, one for the forward relationship and one for
-the reverse.
-
-**•** The value of the Partner field `AccountToId` maps to the value of the OpportunityPartner field `AccountToId` .
-
-**•** The values of the `OpportunityId`, `Role`, and `IsPrimary` fields in both the Partner and OpportunityParnter records are the
-same.
-
-
-### Standard Objects OpportunityRelatedDeleteLog
-
-**•** If you set the `IsPrimary` value to 1 ( `true` ) upon insert of a new OpportunityPartner, the `IsPrimary` value is automatically
-set to 0 ( `false` ) for any existing primary partners for that opportunity.
-
-This mapping allows the API to manage the records and their relationships efficiently.
-
-SEE ALSO:
-
-Partner
-
-AccountPartner
-
-### OpportunityRelatedDeleteLog
-
-Represents an audit log of the deletion of opportunity-related child records, such as opportunity team members, product splits, or
-opportunity splits. This object is available in API version 59.0 and later.
-
-Supported Calls
-
-`describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-CurrencyIsoCode
-
-DataType
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-Available only when the multicurrency feature is enabled. Contains the ISO code for any
-currency allowed by the organization.
-
-When multicurrency is enabled, and a Pricebook2 is specified on the parent opportunity
-(that is, the `Pricebook2Id` field isn’t blank on the opportunity record referenced by this
-object’s `OpportunityId` ), then the value must match the currency of the
-`CurrencyIsoCode` field on the PricebookEntry records that are associated with this
-object.
-
-Possible values are:
-
-**•** `AED` —UAE Dirham
-
-**•** `CAD` —Canadian Dollar
-
-**•** `INR` —Indian Rupee
-
-**•** `USD` —U.S. Dollar
-
-The default value is `USD` .
-
-**Type**
-picklist
-
-
-Standard Objects OpportunityRelatedDeleteLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Data type of the field that was deleted.
-
-Possible values are:
-
-**•** `Double`
-
-**•** `DynamicEnum`
-
-**•** `EntityId`
-
-**•** `StaticEnum`
-
-**•** `Text`
-
-```
-DeleteLog
-
-FieldName
-
-OpportunityId
-
-```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The name of the field that was deleted.
-
-Possible values are:
-
-**•** `OpportunityLineItemSplit.SplitOwnerId`
-
-**•** `OpportunityLineItemSplit.SplitPercentage`
-
-**•** `OpportunityLineItemSplit.SplitTypeId`
-
-**•** `OpportunitySplit.SplitOwnerId`
-
-**•** `OpportunitySplit.SplitPercentage`
-
-**•** `OpportunitySplit.SplitTypeId`
-
-**•** `OpportunityTeamMember.TeamMemberRole`
-
-**•** `OpportunityTeamMember.UserId`
-
-**•** `Product2.Name`
-
-**Type**
-reference
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-Required. ID of the associated opportunity.
-
-
-### Standard Objects OpportunityShare
-
-**Field** **Details**
-
-This field is a relationship field.
-
-**Relationship Name**
-### Opportunity
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-### Opportunity
-
-```
-Parent
-
-SobjectType
-
-Value
-
-### OpportunityShare
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-ID of the record that was deleted. Records with the same Parent text indicate that the value
-shown in the Value field came from the same record that was previously deleted. Refer to
-the FieldName field to see which field is being tracked.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The object that’s being recorded for this row of data. Possible values are:
-
-**•** `OpportunityLineItemSplit`
-
-**•** `OpportunitySplit`
-
-**•** `OpportunityTeamMember`
-
-**Type**
-anyType
-
-**Properties**
-Nillable, Sort
-
-**Description**
-The value of the field that was deleted.
-
-Represents a sharing entry on an Opportunity.
-
-You can only create, edit, and delete sharing entries for standard objects whose `RowCause` field is set to `Manual` . Sharing entries
-for standard objects with different `RowCause` values are created as a result of your Salesforce org’s sharing configuration and are
-read-only. For some sharing mechanisms, such as sharing sets, sharing entries aren’t stored at all.
-
-
-Standard Objects OpportunityShare
-
-Note: While Salesforce currently maintains read-only sharing entries for multiple sharing mechanisms, it’s possible that we’ll stop
-storing certain share records to improve performance. As a best practice, don’t create customizations that rely on the availability
-of these sharing entries. Any changes to sharing behavior will be communicated before they occur.
-
-Supported Calls
-
-`describeSObjects()`, `create()`, `delete()`, `query()`, `retrieve()`, `update()`, `upsert()`
-
-Special Access Rules
-
-As of Summer ’20 and later, only users with access to the Opportunity object can access this object.
-
-Fields
-
-The properties available for some fields depend on the default organization-wide sharing settings. The properties listed are true for the
-default settings of such fields.
-
-**Field** **Details**
-
-```
-IsDeleted
-
-OpportunityAccessLevel
-
-OpportunityId
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter
-
-**Description**
-Indicates whether the object has been moved to the Recycle Bin ( `true` ) or not ( `false` ).
-Label is **Deleted** .
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort, Update
-
-**Description**
-Level of access that the user or group has to the opportunity. The possible values are:
-
-**•** `Read`
-
-**•** `Edit`
-
-**•** `All` —This value is not valid when creating, updating, or deleting records.
-
-This field must be set to an access level that’s higher than the org’s default access level for
-opportunities.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-
-Standard Objects OpportunityShare
-
-**Field** **Details**
-
-**Description**
-ID of the opportunity associated with this sharing entry. This field can’t be updated.
-
-This is a relationship field.
-
-**Relationship Name**
-Opportunity
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Opportunity
-
-```
-RowCause
-
-UserOrGroupId
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Reason that this sharing entry exists. If you’re creating a sharing entry, the only permitted
-value is `Manual` . If no value is specified, the field defaults to `Manual` . All other `RowCause`
-values are read-only. After the sharing entry is created, this field can’t be edited.
-
-Valid values include:
-
-**•** `Owner` —The User is the owner of the opportunity.
-
-**•** `Manual` —The User or Group has access because a user with “All” access manually
-shared the opportunity with the user or group.
-
-**•** `Rule` —The User or Group has access via an opportunity sharing rule.
-
-**•** `GuestRule` —The User or Group has access via an opportunity guest user sharing
-rule.
-
-**•** `ImplicitChild` —The User or Group has access to the opportunity on the account
-associated with this opportunity. After faster account sharing recalculation is enabled,
-sharing entries with this value aren’t returned in queries. Instead of storing implicit child
-shares, record access is determined dynamically.
-
-**•** `LpuImplicit` —The User has access to records owned by high-volume Experience
-Cloud site users via a share group.
-
-**•** `ARImplicit` —The User, who belongs to a partner or customer account, has access
-to the opportunity via an account relationship data sharing rule.
-
-**•** `Sales Team` —The User has access to the opportunity because the user is on the
-opportunity sales team for the opportunity. The OpportunityTeamMember object sets
-the access level. See OpportunityTeamMember for more information.
-
-**•** `Territory` —The forecast manager has access because they are assigned to a territory
-above the territory that is assigned the opportunity.
-
-**Type**
-reference
-
-
-### Standard Objects OpportunitySplit
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the user or group that has been given access to the opportunity. This field can’t be
-updated.
-
-This is a polymorphic relationship field.
-
-**Relationship Name**
-UserOrGroup
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Group, User
-
-Usage
-
-This object allows you to determine which users and groups can view or edit opportunities owned by other users.
-
-Note: After faster account sharing recalculation is enabled for your org, we no longer store implicit share records between accounts
-and their child opportunity records. Sharing entries that have a value of `ImplicitChild` in the `RowCause` field aren’t
-returned when you query this object. Instead, the system dynamically determines whether users can access child opportunity
-records when they try to access them. This change speeds up ownership and sharing recalculation for accounts.
-
-[For more information, see the Faster Account Sharing Recalculation knowledge article.](https://help.salesforce.com/s/articleView?id=000394638&type=1&language=en_US)
-
-If you attempt to create a record that matches an existing record, any modified fields are updated, the system returns the existing record.
-
-If an opportunity is shared in multiple ways with a user, you don’t always see multiple sharing records. If a user has access to an opportunity
-for one or more of the following RowCause values, the records in the OpportunityShare object are compressed into one record with the
-highest level of access.
-
-**•** `Manual`
-
-**•** `Owner`
-
-SEE ALSO:
-
-Overview of Salesforce Objects and Fields
-
-### OpportunitySplit OpportunitySplit credits one or more opportunity team members with a portion of the opportunity amount. This object is available in
-
-API version 16.0 and later for pilot customers, and version 28.0 and later for others.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `update()`, `upsert()`
-
-
-Standard Objects OpportunitySplit
-
-Fields
-
-**Field** **Details**
-
-```
-ArchivedTerritoryName
-
-HasOpportunityLineItemSplit
-
-OpportunityId
-
-Split
-
-```
-
-**Type**
-String
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The name of the associated territory that’s on an archived territory model. If the
-OpportunityLineItemSplit isn’t associated with a territory on an archived territory
-model, the field value is null. This field is available in API version 62.0 and later.
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Read-only. Indicates whether the opportunity split has a split on the opportunity
-line item level ( `true` ) or not ( `false` ).
-
-The default value is `false` . This field is available in API version 58.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-ID of the opportunity for which the split is being created.
-
-This field is a relationship field.
-
-**Relationship Name**
-Opportunity
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Opportunity
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-Read-only. Automatically generated number identifying the split within the
-opportunity.
-
-
-Standard Objects OpportunitySplit
-
-**Field** **Details**
-
-```
-SplitAmount
-
-SplitNote
-
-SplitOwnerId
-
-SplitPercentage
-
-```
-
-**Type**
-currency
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-Monetary amount of the split.
-
-Label is `Split Amount` .
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Enter any notes or comments about the split. The character limit is 255.
-
-Label is `Split Note` .
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The opportunity owner.
-
-This field is a relationship field.
-
-**Relationship Name**
-SplitOwner
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-User
-
-**Type**
-percent
-
-**Properties**
-Create, Filter, Sort, Update
-
-**Description**
-Split percentage that this team member receives. If the split type is validated to
-a 100% total, this number can range from 0 to 100. If the total isn’t validated, this
-number can range from 0 to 1,000.
-
-Label is `Split (%)` .
-
-
-Standard Objects OpportunitySplit
-
-**Field** **Details**
-
-```
-SplitTypeId
-
-Territory2Id
-
-```
-
-Usage
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-Auto-generated, numeric ID for the split type defined by the OpportunitySplitType
-object. This field is available in API version 28 and later.
-
-If this field is blank, the system automatically specifies the default split type for
-the opportunity amount, which is validated to 100%.
-
-This field is a relationship field.
-
-**Relationship Name**
-SplitType
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-OpportunitySplitType
-
-**Type**
-reference
-
-**Properties**
-Create, Filter, Group, Nillable, Sort, Update
-
-**Description**
-ID of the associated territory. This field is a relationship field, and is available in
-API version 62.0 and later.
-
-**Relationship Name**
-Territory2
-
-**Relationship Type**
-Lookup
-
-**Refers To**
-Territory2
-
-Use the OpportunitySplit object to manage splits for an opportunity.
-
-If you change the opportunity owner using the API, the old owner remains on the opportunity team with either Read-only access, or
-the level of access specified in your organization-wide defaults.
-
-Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-
-### Standard Objects OpportunitySplitType
-
-**OpportunitySplitChangeEvent (API version 48.0)**
-Change events are available for the object.
-
-**OpportunitySplitHistory on page 63 (API version 59.0)**
-History is available for tracked fields of the object.
-
-### OpportunitySplitType OpportunitySplitType provides unique labels and behavior for each split type. This object is available in API version 28.0 and later.
-
-There are two default split types: revenue splits, which must total 100%, and overlay splits, which can total any percentage.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`, `update()`
-
-Fields
-
-**Field Name** **Details**
-
-```
-Description
-
-DeveloperName
-
-IsActive
-
-```
-
-**Type**
-textarea
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-Describes the purpose of the split type, providing context to future developers.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-Required. The unique name of the object in the API. In managed packages, this
-field prevents naming conflicts on package installations. With this field, a
-developer can change the object’s name in a managed package and the changes
-are reflected in a subscriber’s organization.
-
-Note: When creating large sets of data, always specify a unique
-`DeveloperName` for each record. If no `DeveloperName` is
-specified, performance slows down while Salesforce generates one for
-each record.
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort, Update
-
-
-Standard Objects OpportunitySplitType
-
-**Field Name** **Details**
-
-**Description**
-Enables or disables the split type.
-
-```
-IsTotalValidated
-
-Language
-
-ManageableState
-
-MasterLabel
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Sort
-
-**Description**
-If `true`, the split must total 100%. If `false`, the split can total any percentage.
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Nillable, Restricted picklist, Sort, Update
-
-**Description**
-Indicates language of split labels in the user interface.
-
-**Type**
-ManageableState enumerated list
-
-**Properties**
-Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-Indicates the manageable state of the specified component that is contained in
-a package:
-
-**•** `beta`
-
-**•** `deleted`
-
-**•** `deprecated`
-
-**•** `deprecatedEditable`
-
-**•** `installed`
-
-**•** `installedEditable`
-
-**•** `released`
-
-**•** `unmanaged`
-
-This field is available in API version 38.0 and later.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort, Update
-
-**Description**
-The user-interface label for the split type.
-
-
-Standard Objects OpportunitySplitType
-
-**Field Name** **Details**
-
-```
-NamespacePrefix
-
-SplitEntity
-
-SplitField
-
-SplitDataStatus
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The namespace prefix that is associated with this object. Each Developer Edition
-org that creates a managed package has a unique namespace prefix. Limit: 15
-characters. You can refer to a component in a managed package by using the
-_**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
-
-The namespace prefix can have one of the following values.
-
-**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace
-prefix of the org for all objects that support it, unless an object is in an installed
-managed package. In that case, the object has the namespace prefix of the
-installed managed package. This field’s value is the namespace prefix of the
-Developer Edition org of the package developer.
-
-**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set
-only for objects that are part of an installed managed package. All other
-objects have no namespace prefix.
-
-This field can’t be accessed unless the logged-in user has the Customize
-Application permission.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-The containing record type, such as an opportunity. Available in API version 30
-and later.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-Indicates which currency field of the opportunity object is split. Available in API
-version 30 and later.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Nillable,Restricted picklist, Sort,Update
-
-
-### Standard Objects OpportunityStage
-
-**Field Name** **Details**
-
-**Description**
-Indicates the status of the split type. Available in API version 30 and later.
-
-### OpportunityStage
-
-Represents the stage of an Opportunity in the sales pipeline, such as New Lead, Negotiating, Pending, Closed, and so on.
-
-Supported Calls
-
-`describeSObjects()`, `query()`, `retrieve()`
-
-Fields
-
-**Field** **Details**
-
-```
-ApiName
-
-DefaultProbability
-
-Description
-
-ForecastCategory
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, idLookup, Sort
-
-**Description**
-Uniquely identifies a picklist value so it can be retrieved without using an id or master label.
-
-**Type**
-percent
-
-**Properties**
-Filter, Nillable, Sort,
-
-**Description**
-The default percentage estimate of the confidence in closing a specific opportunity for this
-opportunity stage value. Label is **Probability (%)** .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Description of this opportunity stage value. Limit: 255 characters.
-
-**Type**
-picklist
-
-
-Standard Objects OpportunityStage
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-The default forecast category for this opportunity stage value. The forecast category
-automatically determines how opportunities are tracked and totaled in a forecast.
-
-Possible values are:
-
-**•** `BestCase`
-
-**•** `Closed`
-
-**•** `Forecast`
-
-**•** `MostLikely`
-
-**•** `Omitted`
-
-**•** `Pipeline`
-
-```
-ForecastCategoryName
-
-IsActive
-
-IsClosed
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Filter, Group, Restricted picklist, Sort
-
-**Description**
-Available in API version 12.0 and later. The default forecast category value for this opportunity
-stage value.
-
-Possible values are:
-
-**•** `Best Case`
-
-**•** `Closed`
-
-**•** `Commit`
-
-**•** `Most Likely`
-
-**•** `Omitted`
-
-**•** `Pipeline`
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether this opportunity stage value is active ( `true` ) or not ( `false` ). Inactive
-opportunity stage values are not available in the picklist and are retained for historical
-purposes only.
-
-**Type**
-boolean
-
-
-Standard Objects OpportunityStage
-
-**Field** **Details**
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether this opportunity stage value represents a closed opportunity ( `true` ) or
-not ( `false` ). Multiple opportunity stage values can represent a closed opportunity. Label
-is **Closed** .
-
-```
- IsWon
-
- MasterLabel
-
- SortOrder
-
-```
-
-Usage
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter, Group, Sort
-
-**Description**
-Indicates whether this opportunity stage value represents a won opportunity ( `true` ) or not
-( `false` ). Multiple opportunity stage values can represent a won opportunity. Label is **Won** .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Master label for this opportunity stage value. This display value is the internal label that does
-not get translated. Limit: 255 characters.
-
-**Type**
-int
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Number used to sort this value in the opportunity stage picklist. These numbers are not
-guaranteed to be sequential, as some previous opportunity stage values might have been
-deleted.
-
-This object represents a value in the opportunity stage picklist, which provides additional information about the stage of an Opportunity,
-such as its probability or forecast category. Query this object to retrieve the set of values in the opportunity stage picklist, and then use
-that information while processing Opportunity records to determine more information about a given opportunity. For example, the
-application could test whether a given opportunity is won or not based on its `StageName` value and the value of the `IsWon` property
-in the associated OpportunityStage object.
-
-
-### Standard Objects OpportunityTag
-
-This object is read-only via the API.
-
-SEE ALSO:
-
-Overview of Salesforce Objects and Fields
-
-### OpportunityTag
-
-Associates a word or short phrase with an Opportunity.
-
-Supported Calls
-
-`create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`
-
-Fields
-
-**Field Name** **Details**
-
-```
-ItemId
-
-Name
-
-TagDefinitionId
-
-Type
-
-```
-
-**Type**
-reference
-
-**Properties**
-Create, Filter
-
-**Description**
-ID of the tagged item.
-
-**Type**
-string
-
-**Properties**
-Create, Filter
-
-**Description**
-Name of the tag. If this value does not already exist, a new TagDefinition is created and
-becomes the parent of this Tag object. Otherwise, a TagDefinition with the same name
-becomes the parent of this Tag object. Parent relationships are created automatically.
-
-**Type**
-reference
-
-**Properties**
-Filter
-
-**Description**
-ID of the parent TagDefinition object that owns the tag.
-
-**Type**
-picklist
-
-
-### Standard Objects OpportunityTeamMember
-
-**Field Name** **Details**
-
-**Properties**
-Create, Filter, Restricted picklist
-
-**Description**
-Defines the visibility of a tag.
-
-Valid values:
-
-**•** `Public` —The tag can be viewed and manipulated by all users in an organization.
-
-**•** `Personal` —The tag can be viewed or manipulated only by a user with a matching
-`OwnerId` .
-
-Usage
-
-OpportunityTag stores the relationship between its parent TagDefinition and the Opportunity being tagged. Tag objects act as metadata,
-allowing users to describe and organize their data.
-
-When a tag is deleted, its parent TagDefinition will also be deleted if the name is not being used; otherwise, the parent remains. Deleting
-a TagDefinition sends it to the Recycle Bin, along with any associated tag entries.
-
-### OpportunityTeamMember
-
-Represents a User on the opportunity team of an Opportunity.
-
-See also UserTeamMember, which represents a User who is on the default Opportunity team of another user.
-
-Supported Calls
-
-`create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
-`retrieve()`, `update()`, `upsert()`
-
-Fields
-
-**Field** **Details**
-
-```
-IsDeleted
-
-```
-
-**Type**
-boolean
-
-**Properties**
-Defaulted on create, Filter
-
-**Description**
-Indicates whether the object has been moved to the Recycle Bin ( `true` ) or not
-( `false` ). Label is **Deleted** .
-
-Note: An OpportunityTeamMember that is deleted isn’t moved to the Recycle
-Bin and can’t be undeleted, unless the record was cascade-deleted when deleting
-a related Opportunity. For directly deleted OpportunityTeamMember records,
-
-
-Standard Objects OpportunityTeamMember
-
-**Field** **Details**
-
-don't use the `isDeleted` field to detect deleted records in SOQL queries.
-Instead, use `getDeleted()` .
-
-```
-Name
-
-OpportunityAccessLevel
-
-OpportunityId
-
-PhotoURL
-
-TeamMemberRole
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The team member name. This read-only field is available in API version 30.0 and later.
-
-**Type**
-picklist
-
-**Properties**
-Filter, Nillable, Restricted picklist
-
-**Description**
-Opportunity access level for this team member. Valid values:
-
-**•** `Read`
-
-**•** `Edit`
-
-**•** `All`
-
-This field is supported in triggers, but not in workflows or validation rules. It’s editable
-in API version 36.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter
-
-**Description**
-Required. ID of the Opportunity associated with this opportunity team. This field can’t
-be updated.
-
-**Type**
-URL
-
-**Properties**
-Filter, Nillable, Sort, Group
-
-**Description**
-Read only. Retrieves the users Chatter photo URL. This field is available in API version
-32.0 and later.
-
-**Type**
-picklist
-
-
-Standard Objects OpportunityTeamMember
-
-**Field** **Details**
-
-**Properties**
-Create, Filter, Nillable, Update
-
-**Description**
-Role that the team member has on the opportunity. The org’s admin sets the valid
-values in the Opportunity Team Roles picklist. Label is **Team Role** .
-
-```
-Title
-
-UserId
-
-```
-
-Usage
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort, Group
-
-**Description**
-Read only. Retrieves the user’s title. This field is available in API version 36.0 and later.
-
-**Type**
-reference
-
-**Properties**
-Create, Filter
-
-**Description**
-Required. ID of the User who is a member of the opportunity team. This field can’t
-be updated.
-
-If you create a record for this object and the `OpportunityId` and `UserId` combination matches an existing record, the system
-updates any modified fields and returns the existing record.
-
-In the user interface, users can set up an opportunity team for the opportunities they own. The opportunity team includes other users
-that are working on the opportunity with them. This object is available only in organizations that have enabled team selling.
-
-Note: The behavior for changing ownership of opportunities is different using the user interface when the previous owner is on
-an opportunity team. For example, when you change the owner of an opportunity using the API, the previous owner's access
-becomes Read Only or the access specified in your organization-wide default for opportunities, whichever is greater. However,
-performing this same action in the user interface allows you to select the access level for the previous owner when the previous
-owner is on an opportunity team.
-
-Associated Objects
-

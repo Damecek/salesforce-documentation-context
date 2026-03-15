@@ -1,3 +1,1285 @@
+**Field Type**
+string
+
+**Description**
+
+Required. The name of the field in the reference object used to define stages.
+
+**Field Type**
+string
+
+**Description**
+The record type of a reference object associated with the stage definition.
+
+**Field Type**
+
+StageTransition[]
+
+**Description**
+A collection of fields to set up transitions between two states.
+
+**Field Type**
+
+StageValue[]
+
+**Description**
+A collection of fields to set up the field values of an object for which stages are defined.
+
+Represents a collection of fields to set up transitions between two states.
+
+
+Metadata Types StageDefinition
+
+**Field Name** **Description**
+
+```
+criteria
+
+customPermission
+
+fromStageValue
+
+stepGroup
+
+toStageValue
+
+userPermission
+
+```
+
+**Field Type**
+
+StageCriteria[]
+
+**Description**
+A collection of fields to set up the criteria for the object stage transition and object
+stage change.
+
+**Field Type**
+string
+
+**Description**
+The custom permission associated with the stage transition. The custom permission
+required to initiate a stage change.
+
+**Field Type**
+string
+
+**Description**
+
+Required. The `From Stage` that's associated with the referenced object's stage
+transition.
+
+**Field Type**
+
+StgFulfillmentStepDefGrp[]
+
+**Description**
+A collection of fields to set up the stage fulfillment step definition.
+
+**Field Type**
+string
+
+**Description**
+
+Required. The `To Stage` that's associated with the referenced object's stage
+transition.
+
+**Field Type**
+StageUserPermission (enumeration of type string)
+
+**Description**
+Specifies the type of user permission needed to initiate a stage change.
+
+Values are:
+
+**•** `CoordinateClinicalTrials`
+
+**•** `CoordinateClnclTrialExprcUsr`
+
+**•** `ManageClinicalTrials`
+
+**•** `ParticipateClinicalTrials`
+
+**•** `ProcessOrder`
+
+
+Metadata Types StageDefinition
+
+StageCriteria
+
+Represents a collection of fields to set up the criteria for the object stage transition and object stage change.
+
+**Field Name** **Description**
+
+```
+condition
+
+criteriaType
+
+errorMessage
+
+executionType
+
+flowDefinitionName
+
+```
+
+**Field Type**
+
+StageCondition[]
+
+**Description**
+A collection of fields to set up the rules in transition criteria and stage change, including
+the object state, logic, and values.
+
+**Field Type**
+StageCriteriaType (enumeration of type string)
+
+**Description**
+
+Specifies the criteria type used to execute the transition.
+
+Values are:
+
+**•** `AND`
+
+**•** `CUSTOMLOGIC`
+
+**•** `OR`
+
+**Field Type**
+string
+
+**Description**
+
+A custom error message that's displayed when stage transition criteria evaluation fails.
+
+Available in API version 64.0 and later.
+
+**Field Type**
+StageCriteriaExecType (enumeration of type string)
+
+**Description**
+
+Required. Specifies the type of logic used to execute the criteria.
+
+Values are:
+
+**•** `CONDITION`
+
+**•** `FLOW`
+
+**Field Type**
+string
+
+**Description**
+
+Specifies the developer name of the Flow that executes when the criteria execution
+type is set to `FLOW` .
+
+Available in API version 63.0 and later.
+
+
+Metadata Types StageDefinition
+
+**Field Name** **Description**
+
+```
+isChildObject
+
+logicalExpression
+
+targetFieldName
+
+targetObject
+
+```
+
+StageCondition
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the target object in the stage criteria represents a child object in a
+parent-child relationship ( `true` ) or not ( `false` ).
+
+Available in API version 63.0 and later.
+
+**Field Type**
+string
+
+**Description**
+
+Formula to specify custom logic. Compares the Criteria field to the Value field.
+
+**Field Type**
+string
+
+**Description**
+
+Specifies the field name on the target object that's used in the stage transition criteria
+evaluation.
+
+Available in API version 63.0 and later.
+
+**Field Type**
+string
+
+**Description**
+
+Object that's used in a Parent-Child object relationship condition.
+
+Represents a collection of fields to set up the rules in transition criteria and stage change, including the object state, logic, and values.
+
+**Field Name** **Description**
+
+```
+operator
+
+```
+
+**Field Type**
+StageConditionOperator (enumeration of type string)
+
+**Description**
+
+Required. Specifies the operator used in the transition criteria.
+
+Values are:
+
+**•** `Contains`
+
+**•** `DoesNotContain`
+
+**•** `Equals`
+
+**•** `GreaterOrEqual`
+
+
+Metadata Types StageDefinition
+
+**Field Name** **Description**
+
+**•** `GreaterThan`
+
+**•** `LessOrEqual`
+
+**•** `LessThan`
+
+**•** `NotEqualTo`
+
+**•** `StartsWith`
+
+```
+sequenceNumber
+
+sourceField
+
+value
+
+```
+
+**Field Type**
+int
+
+**Description**
+
+Required. Specifies the order of the object state transition condition in a sequence.
+
+**Field Type**
+string
+
+**Description**
+
+Required. The object field to define filter conditions.
+
+**Field Type**
+string
+
+**Description**
+
+Required. Value of the field used in the transition criteria.
+
+StgFulfillmentStepDefGrp
+
+Represents a collection of fields to set up the stage fulfillment step definition.
+
+**Field Name** **Description**
+
+```
+name
+
+step
+
+```
+
+StgFulfillmentStepDef
+
+**Field Type**
+string
+
+**Description**
+
+Required. The name of the stage fulfillment step definition group.
+
+**Field Type**
+
+StgFulfillmentStepDef[]
+
+**Description**
+A collection of fields to set up fullfillment step definitions for stages and transitions.
+
+Represents a collection of fields to set up fullfillment step definitions for stages and transitions.
+
+
+Metadata Types StageDefinition
+
+**Field Name** **Description**
+
+```
+apiName
+
+assignedToQueue
+
+assignedToUser
+
+dependency
+
+executeOnRule
+
+flowDefinitionName
+
+integrationDefinitionName
+
+name
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required. The developer name of the stage fulfillment step definition.
+
+**Field Type**
+string
+
+**Description**
+The queue associated with the stage fulfillment step definition.
+
+**Field Type**
+string
+
+**Description**
+The user associated with the stage fulfillment step definition.
+
+**Field Type**
+
+StgFulfillmentStepDpndDef[]
+
+**Description**
+A collection of fields to set up the stage fulfillment step dependency between two
+steps.
+
+**Field Type**
+string
+
+**Description**
+
+Specifies the expression set for the fulfillment step. The step is executed only when
+the corresponding expression set is set to `true` .
+
+Available in API version 62.0 and later.
+
+**Field Type**
+string
+
+**Description**
+The name of the flow added to the step definition.
+
+**Field Type**
+string
+
+**Description**
+The ID associated with the integration provider definition.
+
+**Field Type**
+string
+
+
+Metadata Types StageDefinition
+
+**Field Name** **Description**
+
+**Description**
+
+Required. The name of the stage fulfillment step definition.
+
+```
+omniscriptName
+
+runAsUser
+
+stepType
+
+```
+
+**Field Type**
+string
+
+**Description**
+The name of the Omniscript defined in step definition.
+
+**Field Type**
+string
+
+**Description**
+The ID of the user associated with the step definition. The user required to execute
+the step definition.
+
+**Field Type**
+string
+
+**Description**
+
+Required. Specifies the type of fulfillment step.
+
+StgFulfillmentStepDpndDef
+
+Represents a collection of fields to set up the stage fulfillment step dependency between two steps.
+
+**Field Name** **Description**
+
+```
+step
+
+```
+
+StageValue
+
+**Field Type**
+string
+
+**Description**
+
+Required. The step definition for the fulfillment step.
+
+Represents a collection of fields to set up the field values of an object for which stages are defined.
+
+**Field Name** **Description**
+
+```
+criteria
+
+```
+
+**Field Type**
+
+StageCriteria[]
+
+**Description**
+A collection of fields to set up the criteria for the object stage transition and object
+stage change.
+
+
+Metadata Types StageDefinition
+
+**Field Name** **Description**
+
+```
+stepGroup
+
+value
+
+```
+
+**Field Type**
+
+StgFulfillmentStepDefGrp[]
+
+**Description**
+A collection of fields to set up the stage fulfillment step definition.
+
+**Field Type**
+string
+
+**Description**
+
+Required. The value of the field used in the transition criteria.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a StageDefinition component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<StageDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <active>false</active>
+
+   <description>Application form Stage transitions</description>
+
+   <masterLabel>basic</masterLabel>
+
+   <referenceObject>ApplicationForm</referenceObject>
+
+   <referenceObjectField>Stage</referenceObjectField>
+
+   <stageTransition>
+
+     <criteria>
+
+        <condition>
+
+          <operator>Equals</operator>
+
+          <sequenceNumber>1</sequenceNumber>
+
+          <sourceField>ApplicationForm.Name</sourceField>
+
+          <value>test</value>
+
+        </condition>
+
+        <criteriaType>AND</criteriaType>
+
+        <executionType>CONDITION</executionType>
+
+        <logicalExpression>1</logicalExpression>
+
+        <targetObject>ApplicationForm</targetObject>
+
+     </criteria>
+
+     <userPermission>ProcessOrder</userPermission>
+
+     <fromStageValue>Initiated</fromStageValue>
+
+     <toStageValue>On Hold</toStageValue>
+
+     <stepGroup>
+
+        <name>Initiated-On Hold</name>
+
+        <step>
+
+          <apiName>Autotask_step_defn</apiName>
+
+         <flowDefinitionName>disputemanagement__InvokeAsyncAction</flowDefinitionName>
+
+          <name>Autotask step defn</name>
+
+          <runAsUser>testuser@salesforce.com</runAsUser>
+
+          <stepType>AutoTask</stepType>
+
+        </step>
+
+        <step>
+
+```
+
+
+Metadata Types StageDefinition
+
+```
+             <apiName>testScreenFlow</apiName>
+
+             <assignedToUser>testuser@salesforce.com</assignedToUser>
+
+             <flowDefinitionName>cms_orch__CMS_NotifyRequester</flowDefinitionName>
+
+             <name>testScreenFlow</name>
+
+             <stepType>ManualTask</stepType>
+
+             <dependency>
+
+               <step>Autotask_step_defn</step>
+
+             </dependency>
+
+           </step>
+
+        </stepGroup>
+
+      </stageTransition>
+
+      <stageValue>
+
+        <value>Initiated</value>
+
+        <criteria>
+
+           <condition>
+
+             <operator>Equals</operator>
+
+             <sequenceNumber>1</sequenceNumber>
+
+             <sourceField>ApplicationForm.Name</sourceField>
+
+             <value>test</value>
+
+           </condition>
+
+           <criteriaType>AND</criteriaType>
+
+           <executionType>CONDITION</executionType>
+
+           <logicalExpression>1</logicalExpression>
+
+           <targetObject>ApplicationForm</targetObject>
+
+        </criteria>
+
+        <stepGroup>
+
+           <name>Initiated</name>
+
+           <step>
+
+             <apiName>Autotask_step_defn</apiName>
+
+            <flowDefinitionName>disputemanagement__InvokeAsyncAction</flowDefinitionName>
+
+             <name>Autotask step defn</name>
+
+             <runAsUser>testuser@salesforce.com</runAsUser>
+
+             <stepType>AutoTask</stepType>
+
+           </step>
+
+           <step>
+
+             <apiName>testScreenFlow</apiName>
+
+             <assignedToUser>testuser@salesforce.com</assignedToUser>
+
+             <flowDefinitionName>cms_orch__CMS_NotifyRequester</flowDefinitionName>
+
+             <name>testScreenFlow</name>
+
+             <stepType>ManualTask</stepType>
+
+             <dependency>
+
+               <step>Autotask_step_defn</step>
+
+             </dependency>
+
+           </step>
+
+        </stepGroup>
+
+      </stageValue>
+
+      <stageValue>
+
+        <value>On Hold</value>
+
+      </stageValue>
+
+   </StageDefinition>
+
+```
+
+
+### Metadata Types SustainabilityUom
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>StageDefinition</name>
+
+      </types>
+
+      <version>62.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+### SustainabilityUom
+
+Represents the unit of measure (UOM) values for custom fuel types in an org. Track fuel consumption and emission results with the
+flexibility to add custom fuel types and UOM values.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### SustainabilityUom components have the suffix .sustainabilityUom and are stored in the sustainabilityUoms folder.
+
+Version
+
+### SustainabilityUom components are available in API version 56.0 and later.
+
+Special Access Rules
+
+The Net Zero Cloud permission set license is required to access this object along with the user access for carbon accounting and org
+access for custom fuels and UOMs.
+
+Fields
+
+**Field Name** **Description**
+
+```
+description
+
+```
+
+**Field Type**
+string
+
+**Description**
+The description of the unit of measure.
+
+
+Metadata Types SustainabilityUom
+
+**Field Name** **Description**
+
+```
+isProductUom
+
+isProtected
+
+isStationaryAssetUom
+
+isVehicleAssetUom
+
+masterLabel
+
+unitType
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+
+Indicates whether the unit of measure is for a product that the company has procured
+in its supply chain operations ( `true` ) or not ( `false` ).
+
+The default value is `false` .
+
+**Field Type**
+boolean
+
+**Description**
+An auto-generated value that doesn’t impact the behavior of the metadata type.
+
+The default value is `false` .
+
+**Field Type**
+boolean
+
+**Description**
+
+Indicates whether the unit of measure is used in the stationary asset calculations
+( `true` ) or ( `false` ).
+
+The default value is `false` .
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the unit of measure is used in the vehicle asset calculations ( `true` )
+or ( `false` ).
+
+The default value is `false` .
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The label assigned to this object.
+
+**Field Type**
+UnitType (enumeration of type string)
+
+**Description**
+
+Required.
+
+The type of unit used for conversions or calculations.
+
+Values are:
+
+
+### Metadata Types SustnUomConversion
+
+**Field Name** **Description**
+
+**•** `Energy`
+
+**•** `Other`
+
+**•** `Volume`
+
+**•** `Weight`
+
+Declarative Metadata Sample Definition
+
+The following is an example of a SustainabilityUom component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <SustainabilityUom xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <description>Weight in Grams</description>
+
+     <isProductUom>true</isProductUom>
+
+     <isProtected>false</isProtected>
+
+     <isStationaryAssetUom>false</isStationaryAssetUom>
+
+     <isVehicleAssetUom>false</isVehicleAssetUom>
+
+     <masterLabel>Grams</masterLabel>
+
+     <unitType>Weight</unitType>
+
+   </SustainabilityUom>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <fullName>Pkg</fullName>
+
+     <types>
+
+      <members>Grams</members>
+
+      <name>SustainabilityUom</name>
+
+     </types>
+
+     <version>66.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### SustnUomConversion
+
+Represents information about the unit of measure (UOM) conversion for the custom fuel types defined by a customer in an org.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types SustnUomConversion
+
+File Suffix and Directory Location
+
+SustnUomConversion components have the suffix `sustnUomConversion` and are stored in the `sustnUomConversions`
+folder.
+
+Version
+
+SustnUomConversion components are available in API version 57.0 and later.
+
+Special Access Rules
+
+The Net Zero Cloud permission set license is required to access this object along with the user access for carbon accounting and org
+access for custom fuels and UOMs.
+
+Fields
+
+**Field Name** **Description**
+
+```
+conversionFactor
+
+fuelType
+
+```
+
+**Field Type**
+double
+
+**Description**
+
+Required.
+
+The conversion factor that's used to convert values from one unit of measure to another
+for the fuel type.
+
+**Field Type**
+string
+
+**Description**
+The name of the fuel type.
+
+Possible values are:
+
+**•** `AutogasLPG`
+
+**•** `Biodiesel`
+
+**•** `Biomass`
+
+**•** `CityGas`
+
+**•** `CompressedNaturalGasCNG`
+
+**•** `Cooling`
+
+**•** `Diesel`
+
+**•** `Electricity`
+
+**•** `Ethanol`
+
+**•** `FuelOil`
+
+**•** `Gasoline`
+
+**•** `Heat`
+
+
+Metadata Types SustnUomConversion
+
+**Field Name** **Description**
+
+**•** `HeavyOil`
+
+**•** `ITElectricity`
+
+**•** `JetFuel`
+
+**•** `Kerosene`
+
+**•** `LightOil`
+
+**•** `LiquidNaturalGasLNG`
+
+**•** `MobileDiesel`
+
+**•** `NaturalGas`
+
+**•** `Propane`
+
+**•** `Refrigerant`
+
+**•** `Steam`
+
+```
+isProtected
+
+masterLabel
+
+sourceUom
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+An auto-generated value that doesn’t impact the behavior of the metadata type.
+
+The default value is `false` .
+
+**Field Type**
+string
+
+**Description**
+A user-friendly name for SustnUomConversion, which is defined when the
+SustnUomConversion is created.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The source unit of measure for the fuel type.
+
+Possible values are:
+
+**•** `1000m3`
+
+**•** `GJ`
+
+**•** `GWh`
+
+**•** `Kiloliters`
+
+**•** `Liters`
+
+**•** `MJ`
+
+**•** `MMBtu`
+
+**•** `MWh`
+
+**•** `Therms`
+
+
+Metadata Types SustnUomConversion
+
+**Field Name** **Description**
+
+**•** `Tonnes`
+
+**•** `UkGallons`
+
+**•** `UsGallons`
+
+**•** `ccf`
+
+**•** `kG`
+
+**•** `kWh`
+
+**•** `kcal`
+
+**•** `lbs`
+
+**•** `longTons`
+
+**•** `m3`
+
+**•** `shortTons`
+
+```
+targetUom
+
+uomsKey
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The target unit of measure for the fuel type.
+
+**Field Type**
+string
+
+**Description**
+The key associated with a unit of measure for the fuel type.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a SustnUomConversion component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SustnUomConversion xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <conversionFactor>0.9</conversionFactor>
+
+   <fuelType>Diesel</fuelType>
+
+   <isProtected>false</isProtected>
+
+   <masterLabel>KG_Liters</masterLabel>
+
+   <sourceUom>KG</sourceUom>
+
+   <targetUom>Liters</targetUom>
+
+   <uomsKey>uomsKey</uomsKey>
+
+</SustnUomConversion>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <fullName>Pkg</fullName>
+
+   <types>
+
+```
+
+
+### Metadata Types SvcCatalogCategory
+
+```
+        <members>US_UK_Gallons</members>
+
+        <members>Therms_kWh</members>
+
+        <members>KG_Liters</members>
+
+        <name>SustnUomConversion</name>
+
+      </types>
+
+      <version>57.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+### SvcCatalogCategory
+
+Represents the grouping of individual catalog items in Service Catalog.
+
+File Suffix and Directory Location
+
+### SvcCatalogCategory components have the suffix category and are stored in the svcCatalogCategories folder.
+
+Version
+
+### SvcCatalogCategory components are available in API version 53.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+image
+
+isActive
+
+isProtected
+
+```
+
+**Field Type**
+string
+
+**Description**
+The developer name of a content document to be displayed in the Service Catalog
+for this category.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates if a catalog category is active.
+
+**Field Type**
+boolean
+
+**Description**
+An auto-generated value. This value currently has no impact.
+
+
+### Metadata Types SvcCatalogFulfillmentFlow
+
+**Field Name** **Description**
+
+```
+masterLabel
+
+parentCategory
+
+sortOrder
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required. The primary label for the catalog category record.
+
+**Field Type**
+string
+
+**Description**
+If provided, the name of another SvcCatalogCategory that this category should appear
+under. The parent category in this field can’t have its own parent category. Categories
+can’t have more than one level of nesting.
+
+**Field Type**
+int
+
+**Description**
+Displays a set order for catalog category entities.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a SvcCatalogCategory component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SvcCatalogCategory xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <image>AdobeStock_287068722</image>
+
+   <isActive>true</isActive>
+
+   <isProtected>false</isProtected>
+
+   <masterLabel>Workplace Services</masterLabel>
+
+   <sortOrder>4</sortOrder>
+
+</SvcCatalogCategory>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### SvcCatalogFulfillmentFlow
+
 Represents the flow associated with a specific catalog item in the Service Catalog.
 
 File Suffix and Directory Location
@@ -58,7 +1340,7 @@ An auto-generated value. This value currently has no impact.
 
 **Field Type**
 
-SvcCatalogFulfillFlowItem on page 2339[]
+SvcCatalogFulfillFlowItem on page 2352[]
 
 **Description**
 The list of variables in the flow that can accept a value as input.
@@ -446,7 +1728,7 @@ The screen flow associated with the catalog item. Available in API version 53.0 
 string
 
 **Description**
-Name of the related `SvcCatalogFulfillmentFlow` on page 2338, which
+Name of the related `SvcCatalogFulfillmentFlow` on page 2351, which
 represents the flow associated with a specific catalog item in the Service Catalog.
 Available in API version 56.0 and later.
 
@@ -528,7 +1810,7 @@ Required. The primary label for the catalog item record.
 
 **Field Type**
 
-SharedTo on page 2279
+SharedTo on page 2292
 
 **Description**
 Describes how the catalog item is shared across multiple catalog categories.
@@ -1045,7 +2327,7 @@ Represents a group of synonymous words or phrases.
 **Field Name** **Field Type** **Description**
 
 `languages` Language on page Required. Specifies the languages the synonym group applies to. If synonyms
-2377 are specific to a single language, specify only that language. If the synonyms
+2390 are specific to a single language, specify only that language. If the synonyms
 
 apply to multiple languages, specify multiple languages for one synonym
 group.
@@ -1764,7 +3046,7 @@ Numbering must start at 1 and must be contiguous.
 only available object is Account.
 
 `ruleItems` Territory2RuleItem The items that define a rule’s the selection criteria, such as `Billing`
-on page 2362 `State equals California` .
+on page 2375 `State equals California` .
 
 Territory2RuleItem
 
@@ -3511,10 +4793,10 @@ BotVariableOperationTranslation contains details for a translation of a bot vari
 **Field** **Field Type** **Description**
 
 `botMessages` BotMessageTranslation on page A translated list of bot messages used as prompt messages by
-2387[] a BotVariableOperation of type `Collect` .
+2400[] a BotVariableOperation of type `Collect` .
 
 `botQuickReplyOptions` BotQuickReplyOptionTranslation
-on page 2388[]
+on page 2401[]
 
 A translated list of static choice options used by a
 BotVariableOperation of type `Collect` and
@@ -3524,10 +4806,10 @@ BotVariableOperation of type `Collect` and
 Dynamic choice options of type `Object` .
 
 `retryMessages` BotMessageTranslation on page [In Conversation Repair, the translated messages assigned to](https://help.salesforce.com/s/articleView?id=service.bots_service_setup_dialog_question_text.htm&type=5&language=en_US)
-2387[] repair attempts.
+2400[] repair attempts.
 
 `successMessages` BotMessageTranslation on page
-2387[]
+2400[]
 
 In a File dialog step, the translated message displayed to the
 customer as part of type CollectAttachment to confirm a
@@ -3736,15 +5018,15 @@ the version number.
 `label` string A translated label for the flow version.
 
 `orchestrationStages` FlowOrchestrationStageTranslation A list of orchestration stage translations for the flow version.
-on page 2392 Available in API version 63.0 and later.
+on page 2405 Available in API version 63.0 and later.
 
 `orchestrationSteps` FlowOrchestrationStepTranslation A list of orchestration step translations for the flow version.
-on page 2392 Available in API version 63.0 and later.
+on page 2405 Available in API version 63.0 and later.
 
 `screens` FlowScreenTranslation[] A list of screen translations for the flow version.
 
 `stages` FlowStageTranslation on page A list of stage translations for the flow version. Available in API
-2394[] version 43.0 and later.
+2407[] version 43.0 and later.
 
 FlowChoiceTranslation
 
@@ -10793,15 +12075,15 @@ INDEX
 
 C
 
-ChatterEmailsMDSettings component 1983
+ChatterEmailsMDSettings component 1995
 Components
-ChatterEmailsMDSettings 1983
+ChatterEmailsMDSettings 1995
 
 P
 
-Prompt component 1740
+Prompt component 1750
 
 U
 
-UserEngagementSettings component 2261
+UserEngagementSettings component 2274
 

@@ -1,3 +1,872 @@
+**•** `ThirdParty`
+
+**•** `UpdateFailed`
+
+`status` `ActivationPlatformStatusEnum` Status of the external platform. 64.0
+
+**•** `Active`
+
+**•** `Error`
+
+**•** `Inactive`
+
+**•** `Processing`
+
+`type` `ActivationPlatformTypeEnum` Platform type of the external platform. 64.0
+
+**•** `Advertising`
+
+**•** `Analytics`
+
+**•** `Marketing`
+
+**•** `Publishing`
+
+**•** `Technology`
+
+`url` String URL of the external platform. 57.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+#### ConnectApi.ActivationTarget
+
+Represents an activation target.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`connector` `ConnectApi.DataConnector` Details about the connector that is used for the 60.0
+activation target.
+
+`dataSpace` String Data space name for the activation target. 60.0
+
+`description` String Description of the activation target. 60.0
+
+`egressProperties` `ConnectApi.EgressPropertiesRepresentation` Egress properties for the activation target, which are 60.0
+applicable only for file-based activation targets.
+
+`historyAudienceDmoApiName` String API name for the history audience DMO. 60.0
+
+`historyAudienceDmoLabel` String Name of the history audience DMO. 60.0
+
+`isCappingEnabled` Boolean Indicates whether communication capping is enabled 60.0
+for the activation `(true)` or not `(false)` .
+
+`isEnabled` Boolean Indicates whether the activation target is enabled 60.0
+`(true)` or not `(false)` .
+
+`latestAudienceDmoApiName` String API name for the latest audience DMO. 62.0
+
+`latestAudienceDmoLabel` String Name of the latest audience DMO. 62.0
+
+`organizationId` String Organization ID of the activation target. 60.0
+
+`platformName` String Platform name for the activation target. 60.0
+
+`platformPrivacyType` String Platform privacy type for the activation target. Derived 60.0
+from Activation Platform.
+
+`platformType` `DataConnectorTypeEnum` Data connector type of the activation target. 60.0
+
+**•** `AmazonS3`
+
+**•** `AzureBlob`
+
+**•** `DataCloud`
+
+**•** `GoogleCloudStorage`
+
+**•** `SalesforceMarketingCloud`
+
+**•** `Sftp`
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+`status` `ActivationTargetStatusEnum` Status of the activation target. 60.0
+
+**•** `Active`
+
+**•** `Processing`
+
+**•** `Error`
+
+**•** `Inactive`
+
+SEE ALSO:
+
+createActivationTarget(input)
+
+getActivationTarget(activationTargetId)
+
+updateActivationTarget(activationTargetId, input)
+
+#### ConnectApi.ActivationTargetCollection
+
+Represents a collection of activation targets.
+
+**Property Name** **Type** **Description** **Available Version**
+
+#### activationTargets List< ConnectApi.ActivationTarget > List of activation targets. 60.0
+
+`batchSize` Integer Number of results returned. Values are from `1` 60.0
+through `200` .
+
+`offset` Integer Start offset of the next batch of results. 60.0
+
+`orderByExpression` String Expression that determines the order of the results. 60.0
+
+SEE ALSO:
+
+getActivationTargets()
+
+getActivationTargetsPaginated(batchSize, offset, orderBy, filters)
+
+#### ConnectApi.ActivationTargetSubject
+
+Represents an activation target subject output.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`developerName` String Developer name of the activation target subject. 60.0
+
+`masterLabel` String Master label of the activation target subject. 60.0
+
+#### queryPathConfigListRepresentation List< ConnectApi. Query path for the activation target. 60.0
+
+`QueryPathConfigList`               
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+ConnectApi.ActivitySharingResult
+
+The results of sharing a captured email or event.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`success` Boolean Whether the share operation succeeded or not. 39.0
+
+#### ConnectApi.Actor
+
+Actor.
+
+This class is abstract.
+
+Superclass of:
+
+#### • ConnectApi.ActorWithId
+
+**•** ConnectApi.RecommendedObject
+
+**•** ConnectApi.UnauthenticatedUser
+
+**Name** **Type** **Description** **Available Version**
+
+`name` String Name of the actor, such as the group name. 28.0
+
+`type` String One of the following: 28.0
+
+**•** `file`
+
+**•** `group`
+
+**•** `recommendedObject` (version 34.0 and later)
+
+**•** `unauthenticateduser`
+
+**•** `user`
+
+**•** _`record type name`_ —the name of the record type, such
+as `myCustomObject__c` or Account
+
+SEE ALSO:
+
+ConnectApi.CaseCommentCapability
+
+ConnectApi.EntityRecommendation
+
+ConnectApi.EditCapability
+
+ConnectApi.FeedEntitySummary
+
+ConnectApi.FeedItem
+
+ConnectApi.FeedItemSummary
+
+ConnectApi.Subscription
+
+#### ConnectApi.ActorWithId
+
+Actor with ID.
+
+This class is abstract.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+Subclass of ConnectApi.Actor.
+
+Superclass of:
+
+**•** ConnectApi.AbstractRecordView
+
+**•** ConnectApi.ArticleSummary
+
+**•** ConnectApi.ChatterGroup
+
+**•** ConnectApi.ContentHubRepository
+
+**•** ConnectApi.File
+
+**•** ConnectApi.RelatedFeedPost
+
+**•** ConnectApi.User
+
+**Name** **Type** **Description** **Available Version**
+
+`id` String Actor’s 18-character ID 28.0
+
+#### `motif ConnectApi.`
+
+```
+         Motif
+
+```
+
+An icon that identifies the actor as a user, group, file, or custom 28.0
+object. The icon isn’t the user or group photo, and it isn’t a preview
+of the file. The motif can also contain the object’s base color.
+
+#### mySubscription ConnectApi. If the context user is following the item, this contains information 28.0
+
+`Reference` about the subscription, else returns `null` .
+
+`url` String Connect REST API URL for the resource 28.0
+
+SEE ALSO:
+
+ConnectApi.FeedElement
+
+ConnectApi.FeedEntitySummary
+
+ConnectApi.GroupRecord
+
+ConnectApi.MentionSegment
+
+ConnectApi.RecordSummaryList
+
+#### ConnectApi.Address
+
+Address.
+
+**Name** **Type** **Description** **Available Version**
+
+`city` String Name of the city 28.0
+
+`country` String Name of the country 28.0
+
+`formattedAddress` String Formatted address per the locale of the context user 28.0
+
+`state` String Name of the state, province, or so on 28.0
+
+`street` String Street number 28.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available Version**
+
+`zip` String Zip or postal code 28.0
+
+SEE ALSO:
+
+ConnectApi.DatacloudCompany
+
+ConnectApi.DatacloudContact
+
+ConnectApi.UserDetail
+
+#### ConnectApi.AdjustOrderSummaryOutputRepresentation
+
+Output representation of the financial changes for an adjust items action. For a preview action, these values are the expected output.
+For a submit action, these values are the actual output.
+
+Subclass of ConnectApi.BaseOutputRepresentation.
+
+**Property Name** **Type** **Description** **Available Version**
+
+```
+changeBalances
+
+```
+
+#### ConnectApi. Expected (for preview) or actual (for submit) financial 49.0
+
+`ChangeItem` values for the price adjustment action. Most of the
+`OutputRepresentation` values match the change order values. If two change
+
+orders are returned, then these values combine them.
+The sign of a value in this output is the opposite of
+the corresponding value on a change order record.
+For example, a discount is a positive value in
+`changeBalances` and a negative value on a
+change order record.
+
+`inFulfillment` String ID of the change Order that holds the financial 55.0
+`ChangeOrderId` changes applicable to OrderItemSummary quantities
+that are in the process of being fulfilled. This change
+Order is only created for a request that specified an
+`allocatedItemsChangeOrderType` of
+InFulfillment. For an adjustPreview call, this value is
+always null.
+
+`orderSummaryId` String ID of the OrderSummary. 49.0
+
+`postFulfillment` String ID of the change Order that holds the financial 49.0
+`ChangeOrderId` changes applicable to OrderItemSummary quantities
+that have been fulfilled. For an adjustPreview call,
+this value is always null.
+
+`preFulfillment` String ID of the change Order that holds the financial 49.0
+`ChangeOrderId` changes applicable to OrderItemSummary quantities
+that have not been fulfilled. If the request specified
+an `allocatedItemsChangeOrderType` of
+PreFulfillment, this change Order also includes the
+changes applicable to OrderItemSummary quantities
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+that are in the process of being fulfilled. For an
+adjustPreview call, this value is always null.
+
+#### ConnectApi.Alternative
+
+Alternative representation for an extension on a feed element.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`text` String Text representation of the extension. 40.0
+
+```
+   Representation
+
+```
+
+`thumbnailUrl` String Thumbnail URL to the extension. 40.0
+
+`title` String Title of the extension. 40.0
+
+#### ConnectApi.AlternativePaymentMethodOutput
+
+Alternative payment method details output.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`accountId` String Salesforce Payments account to which this payment 56.0
+method is linked.
+
+`comments` String Details about a record added by a user. Maximum of 56.0
+1,000 characters.
+
+`email` String Email address of the card holder. 56.0
+
+`gatewayToken` String A unique, alphanumeric ID, called a token, that a 56.0
+payment gateway generates when it first processes
+
+a payment. The token replaces the actual payment
+data so that the data is kept secure. This token is
+stored as encrypted text, and can be used for
+recurring payments.
+
+`gatewayToken` String Detailed information about the gateway token. 56.0
+
+```
+   Details
+
+```
+
+`name` String Name that you assign to the payment method object. 56.0
+
+#### ConnectApi.Announcement
+
+An announcement displays in a designated location in the Salesforce UI until 11:59 p.m. on its expiration date, unless it’s deleted or
+replaced by another announcement.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available Version**
+
+`expirationDate` Datetime The Salesforce UI displays an announcement until 11:59 31.0
+p.m. on this date unless another announcement is posted
+
+first. The Salesforce UI ignores the time value in the
+`expirationDate` . However, you can use the time value
+to create your own display logic in your own UI.
+
+#### `feedElement ConnectApi.`
+
+```
+         FeedElement
+
+```
+
+The feed element that contains the body of the 31.0
+announcement and its associated comments, likes, and so
+on.
+
+`id` String 18-character ID of the announcement. 31.0
+
+`isArchived` Boolean Specifies whether the announcement is archived. 36.0
+
+`sendEmails` Boolean Specifies whether the announcement is sent as an email 36.0
+to all group members.
+
+`url` String The URL to the announcement. 33.0
+
+SEE ALSO:
+
+#### ConnectApi.AnnouncementPage
+
+ConnectApi.ChatterGroup
+
+#### ConnectApi.AnnouncementPage
+
+A collection of announcements.
+
+**Name** **Type** **Description** **Available Version**
+
+#### announcements List<ConnectApi A collection of ConnectApi.Announcement objects. 31.0
+
+```
+         .Announcement>
+
+```
+
+`currentPageUrl` String Connect REST API URL identifying the current page. 31.0
+
+`nextPageUrl` String Connect REST API URL identifying the next page, or `null` 31.0
+if there isn’t a next page.
+
+`previousPageUrl` String Connect REST API URL identifying the previous page, or 31.0
+`null` if there isn’t a previous page.
+
+#### ConnectApi.SearchAppliedOrderBy
+
+The applied order for object search.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`field` String Field used to sort the results. 63.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+#### order ConnectApi. Order direction. Values are: 63.0
+
+```
+             OrderDirection
+```
+
+**•** `Ascending`
+
+**•** `Descending`
+
+#### orderNulls ConnectApi. Null value order. Values are: 63.0
+
+```
+             OrderNulls
+```
+
+**•** `Firsts` —Null values are sorted first.
+
+**•** `Lasts` —Null values are sorted last.
+
+SEE ALSO:
+
+ConnectApi.ObjectQueryInfo
+
+ConnectApi.SearchObject
+
+#### ConnectApi.ApprovalCapability
+
+If a feed element has this capability, it includes information about an approval.
+
+Subclass of ConnectApi.FeedElementCapability.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`id` String
+
+The work item ID. The work item ID is `null` if there 32.0
+isn’t a pending work item associated with the
+approval record.
+
+```
+postTemplate
+
+Fields
+
+```
+
+#### List< ConnectApi. The details of the approval post template field. 32.0
+
+```
+ApprovalPost
+```
+
+`TemplateField` 
+
+`processInstance` String The process instance step ID. The associated record 32.0
+`StepId` represents one step in an approval process.
+
+```
+status
+
+```
+
+SEE ALSO:
+
+#### ConnectApi. The status of the approval. 32.0
+
+```
+WorkflowProcess
+
+Status
+
+```
+
+ConnectApi.FeedElementCapabilities
+
+#### ConnectApi.ApprovalIntent
+
+Approval intent for a social post.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+`isRecallable` Boolean Specifies whether the social post can be recalled 45.0
+( `true` ) or not ( `false` ).
+
+SEE ALSO:
+
+ConnectApi.SocialPostIntents
+
+#### ConnectApi.ApprovalPostTemplateField
+
+Approval post template field.
+
+**Name** **Type** **Description** **Available Version**
+
+`displayName` String The field name. 28.0
+
+`displayValue` String The field value or `null` if the field is set to `null` . 28.0
+
+#### `record ConnectApi.`
+
+```
+         Reference
+
+```
+
+SEE ALSO:
+
+ConnectApi.ApprovalCapability
+
+#### ConnectApi.ArticleItem
+
+A record ID. 28.0
+
+If no record exists or if the reference is `null`, this value is `null` .
+
+Article item in question and answers suggestions.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`id` String Id of the article. 32.0
+
+`rating` Double The rating of the article. 32.0
+
+`title` String Title of the article. 32.0
+
+`urlLink` String Link URL of the article. 32.0
+
+`viewCount` Integer Number of votes given to the article. 32.0
+
+SEE ALSO:
+
+ConnectApi.QuestionAndAnswersSuggestions
+
+#### ConnectApi.ArticleSummary
+
+A knowledge article summary.
+
+Subclass of ConnectApi.ActorWithId.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+`articleType` String Type of the knowledge article. 37.0
+
+`knowledgeArticle` String ID of the knowledge article version. 39.0
+
+```
+   VersionId
+
+```
+
+`lastPublishedDate` Datetime Last published date of the knowledge article. 37.0
+
+`rating` Double The rating of the article. 37.0
+
+`summary` String Summary of the knowledge article contents. 37.0
+
+`title` String Title of the knowledge article. 37.0
+
+`urlName` String URL name of the knowledge article. 37.0
+
+`viewCount` Integer Number of times the knowledge article has been 38.0
+viewed.
+
+#### ConnectApi.AssociatedActionsCapability
+
+If a feed element has this capability, it has platform actions associated with it.
+
+**Property Name** **Type** **Description** **Available Version**
+
+#### platformAction List< ConnectApi. The platform action groups associated with a feed 33.0
+
+`Groups` `PlatformActionGroup`   - element. Platform action groups are returned in the
+order specified in the
+
+#### `ConnectApi.AssociatedActions`
+
+`CapabilityInput` class.
+
+SEE ALSO:
+
+ConnectApi.FeedElementCapabilities
+
+#### ConnectApi.AsyncOutputRepresentation
+
+Output representation of the async operation.
+
+Subclass of ConnectApi.BaseAsyncOutputRepresentation.
+
+No additional properties.
+
+SEE ALSO:
+
+multipleEnsureFundsAsync(multipleEnsureFundsInput)
+
+ConnectApi.MultipleAsyncOutputRepresentation
+
+#### ConnectApi.AttributeFilter
+
+Represents the attribute filter output.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+`attributeId` String ID of the attribute. 60.0
+
+`attributeName` String Name of the attribute. 60.0
+
+`dateUnits` Datetime Date units for the attribute. 60.0
+
+`operator` String Operator for the attribute. 60.0
+
+`type` `FilterOperatorDataTypeEnum` Type of attribute. 60.0
+
+**•** `FilterOperatorDataTypeBoolean`
+
+**•** `FilterOperatorDataTypeDate`
+
+**•** `FilterOperatorDataTypeDateOnly`
+
+**•** `FilterOperatorDataTypeExactlyRelativeDate`
+
+**•** `FilterOperatorDataTypeNumber`
+
+**•** `FilterOperatorDataTypeRelateToNowDate`
+
+**•** `FilterOperatorDataTypeText`
+
+`values` List<String> Values for the attribute. 60.0
+
+#### ConnectApi.AttributeFilterExpression
+
+Represents the activation attribute filter expression.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`conjunction` `FilterConjunctionEnum` Conjunction for the activation attribute filter 60.0
+expression.
+
+**•** `FilterConjunctionAnd`
+
+**•** `FilterConjunctionOr`
+
+#### filters List< ConnectApi.AttributeFilter > List of attribute filters. 60.0 ConnectApi.Audience
+
+A personalization audience.
+
+**Property Name** **Type** **Description** **Available Version**
+
+```
+criteria
+
+```
+
+#### List< ConnectApi. Criteria details for the audience. 48.0
+
+```
+AudienceCriteria
+```
+
+`Detail` 
+
+`customFormula` String Custom formula for the audience criteria. For 48.0
+example, (1 AND 2) OR 3.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+#### formulaFilterType ConnectApi. Formula filter type for the personalization audience. 48.0
+
+`FormulaFilterType` Values are:
+
+**•** `AllCriteriaMatch` —All audience criteria
+are true (AND operation).
+
+**•** `AnyCriterionMatches` —Any audience
+criterion is true (OR operation).
+
+**•** `CustomLogicMatches` —Audience criteria
+match the custom formula (for example, (1 AND
+2) OR 3).
+
+`id` String ID of the audience. 48.0
+
+`name` String Name of the audience. 48.0
+
+```
+targets
+
+```
+
+#### List< ConnectApi. Target assignments for the audience. 48.0
+
+```
+AudienceTarget
+```
+
+`Assignment` 
+
+`url` String URL to this audience. 48.0
+
+SEE ALSO:
+
+#### ConnectApi.AudienceCollection ConnectApi.AudienceCollection
+
+Collection of personalization audiences.
+
+**Property Name** **Type** **Description** **Available Version**
+
+#### audiences List< ConnectApi. Collection of audiences. 48.0
+
+`Audience`          
+#### ConnectApi.AudienceCriteria
+
+Custom recommendation audience criteria.
+
+This class is abstract.
+
+This class is a superclass of:
+
+**•** ConnectApi.CustomListAudienceCriteria
+
+**•** ConnectApi.NewUserAudienceCriteria
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+```
+type
+
+```
+
+SEE ALSO:
+
+#### ConnectApi. Specifies the custom recommendation audience 36.0
+
+`RecommendationAudience` criteria type. One of these values:
+
+```
+CriteriaType
+```
+
+**•** `CustomList` —A custom list of users makes
+up the audience.
+
+**•** `MaxDaysInCommunity` —New members
+make up the audience.
+
+ConnectApi.RecommendationAudience
+
+#### ConnectApi.AudienceCriteriaDetail
+
+Personalization audience criteria.
+
+**Property Name** **Type** **Description** **Available Version**
+
+```
+criterion
+
+```
+
+#### List< ConnectApi. List of mappings of audience criteria fields and values. 48.0
+
+```
+AudienceCriterion
+```
+
+`Detail` 
+
+`criterionNumber` Integer Number associated with the audience criterion in a 48.0
+formula. For example, (1 AND 2) OR 3. If unspecified,
+
+criteria are assigned numbers in the order that they’re
+added.
+
+```
+criterionOperator
+
+```
+
+#### ConnectApi. Operator used in the personalization audience 48.0
+
+`AudienceCriteria` criterion. Values are:
+
+```
 Operator
 ```
 
@@ -892,7 +1761,7 @@ Bonus product for a promotion.
              CartItemKey on
 ```
 
-`page 2205`            
+`page 2217`            
 
 
 Apex Reference Guide ConnectApi Output Classes
@@ -1341,7 +2210,7 @@ ConnectApi.FeedElementCapabilities
 
 ID of the asynchronous background operation.
 
-Subclass of ConnectApi.BaseAsyncOutputRepresentation on page 2184.
+Subclass of ConnectApi.BaseAsyncOutputRepresentation on page 2196.
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -1627,7 +2496,7 @@ Cart delivery group method for a promotion.
              Adjustment on
 ```
 
-`page 2483`            
+`page 2496`            
 
 `cartDelivery` String ID of the cart delivery method. 60.0
 
@@ -1668,7 +2537,7 @@ Apex Reference Guide ConnectApi Output Classes
              DeliveryGroupMethod
 ```
 
-`on page 2200`            
+`on page 2212`            
 
 `id` String ID of the cart. 60.0
 
@@ -1916,7 +2785,7 @@ Represents the result of a cart request.
 #### cartItem ConnectApi.CartItemBasic Item in a cart. 60.0
 
 ```
-             on page 2203
+             on page 2215
 
 ```
 
@@ -3657,7 +4526,9 @@ Metadata item.
 
 SEE ALSO:
 
-#### ConnectApi.CdpQueryOutputV2 ConnectApi.CdpQueryMetadataOutput
+ConnectApi.CdpQueryOutputV2
+
+#### ConnectApi.CdpQueryMetadataOutput
 
 Query metadata result.
 
@@ -3684,6 +4555,71 @@ getProfileMetadata()
 getProfileMetadata(dataModelName)
 
 getProfileMetadata(dataModelName, dataspace)
+
+#### ConnectApi.CdpQueryMetadataEntitiesOutput
+
+Represents a list of metadata entities.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+`done` Boolean Indicates whether all metadata entities have been 66.0
+retrieved ( `true` ) or not ( `false` ).
+
+#### metadata List< ConnectApi. List of metadata entities. 66.0
+
+`QueryMetadataEntityOutput`                   
+
+`nextBatchId` String ID for the next batch of metadata entities. 66.0
+
+SEE ALSO:
+
+getMetadataEntities()
+
+getMetadataEntities(entityCategory, entityType)
+
+getMetadataEntities(entityCategory, entityType, dataspace)
+
+#### ConnectApi.CdpQueryMetadataEntityOutput
+
+Represents a metadata entity.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`category` String Category of the metadata entity. Supported values 66.0
+are:
+
+**•** `Activation_Audience`
+
+**•** `CG_Audience`
+
+**•** `Content`
+
+**•** `Directory_Table`
+
+**•** `Engagement`
+
+**•** `Profile`
+
+**•** `Related`
+
+**•** `Segment_Membership`
+
+**•** `Vector_Embedding`
+
+`displayName` String Display name of the entity. 66.0
+
+`name` String Name of the entity. 66.0
+
+`type` String Type of metadata entity. Supported values are: 66.0
+
+**•** `Calculated_Insight`
+
+**•** `DataLakeObject`
+
+**•** `DataModelObject`
 
 #### ConnectApi.CdpQueryOutput
 
@@ -4121,6 +5057,18 @@ SEE ALSO:
 
 ConnectApi.CdpSegmentContainerOutput
 
+#### ConnectApi.CdpUser
+
+Represents information about a user.
+
+**Property Name** **Type** **Description** **Available Version**
+
+`id` String The 18-character ID of the user. 57.0
+
+`name` String Name of the user. 57.0
+
+`profilePhotoUrl` String Profile photo of the user, 57.0
+
 #### ConnectApi.ChangeItemOutputRepresentation
 
 The financial changes resulting from a change to one or more OrderItemSummaries. Most of the values represent the deltas of the values
@@ -4152,41 +5100,41 @@ AmtWithTax
 
 ```
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `totalAdjusted` Double Change to the TotalAdjustedDeliveryAmount field. 48.0
 
 ```
-DeliveryAmount
+   DeliveryAmount
 
 ```
 
 `totalAdjusted` Double Change to the TotalAdjustedDeliveryTaxAmount field. 48.0
 
 ```
-DeliveryTaxAmount
+   DeliveryTaxAmount
 
 ```
 
 `totalAdjusted` Double Change to the TotalAdjustedProductAmount field. 48.0
 
 ```
-ProductAmount
+   ProductAmount
 
 ```
 
 `totalAdjusted` Double Change to the TotalAdjustedProductTaxAmount field. 48.0
 
 ```
-ProductTaxAmount
+   ProductTaxAmount
 
 ```
 
 `totalAdjustment` Double Change to the TotalAdjustmentDistributedAmount 48.0
 `DistributedAmount` field.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 `totalAdjustment` Double Change to the 48.0
 `DistributedTaxAmount` TotalAdjustmentDistributedTaxAmount field.
@@ -4222,6 +5170,11 @@ current change.
 `totalRequired` Double The required funds associated with added order 54.0
 `FundsAmount` items.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `totalTaxAmount` Double Change to the TotalTaxAmount field. 48.0
 
 SEE ALSO:
@@ -4239,9 +5192,6 @@ ConnectApi.SubmitReturnOutputRepresentation
 List of IDs of invoices created for change orders.
 
 Subclass of ConnectApi.BaseInvoiceOutputRepresentation.
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 No additional properties.
 
@@ -4282,6 +5232,9 @@ Summary of Chatter activity.
 
 Subclass of ConnectApi.UserFeedEntityActivitySummary.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 `commentCount` Integer Total number of comments in the org or site made 42.0
@@ -4308,9 +5261,6 @@ user.
 
 Chatter conversation.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Name** **Type** **Description** **Available Version**
 
 `conversationId` String ID for the conversation. 29.0
@@ -4320,7 +5270,7 @@ Apex Reference Guide ConnectApi Output Classes
 `members` `List<ConnectApi.` List of users in the conversation. 29.0
 
 ```
-            UserSummary>
+         UserSummary>
 
 ```
 
@@ -4362,6 +5312,12 @@ Chatter conversation page.
 `nextPageToken` String Token identifying the next page, or `null` if there isn’t 29.0
 a next page.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
+
 `nextPageUrl` String Connect REST API URL identifying the next page, or 29.0
 `null` if there isn’t a next page.
 
@@ -4380,12 +5336,6 @@ Chatter conversation summary.
 
 `read` Boolean Specifies if the conversation is read ( `true` ) or not read 29.0
 ( `false` ).
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
 
 `url` String Connect REST API URL to the conversation summary. 29.0
 
@@ -4424,14 +5374,23 @@ unless it’s deleted or replaced by another announcement.
 
 `bannerPhoto` `ConnectApi.BannerPhoto` The banner photo for the group. 36.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
+
 `canHave` Boolean `true` if this group allows Chatter guests. 28.0
 
 ```
-ChatterGuests
+   ChatterGuests
 
-#### community ConnectApi. Information about the Experience Cloud site the group is in. 28.0
+```
 
-         Reference
+`community` `ConnectApi.` Information about the Experience Cloud site the group is in. 28.0
+
+```
+            Reference
 
 ```
 
@@ -4457,12 +5416,6 @@ enabled in your organization.
 `isBroadcast` Boolean Specifies whether the group is a broadcast group ( `true` ) or not ( `false` ). 36.0
 In a broadcast group, only group owners and managers can post to the group.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
-
 `lastFeedElement` Datetime ISO 8601 date string, for example, 2011-02-25T18:24:31.000Z, of the most 31.0
 `PostDate` recent feed element posted to the group.
 
@@ -4480,7 +5433,7 @@ Use `lastFeedElementPosted` .
 
 `memberCount` Integer Total number of group members. 28.0
 
-#### myRole ConnectApi. Type of membership the user has with the group. 28.0
+`myRole` `ConnectApi.` Type of membership the user has with the group. 28.0
 
 ```
          GroupMembershipType
@@ -4496,13 +5449,12 @@ Use `lastFeedElementPosted` .
 
 **•** `StandardMember`
 
-#### mySubscription ConnectApi. If the context user is a member of this group, contains information about that 28.0
-
+`mySubscription` `ConnectApi.` If the context user is a member of this group, contains information about that 28.0
 `Reference` subscription; otherwise, returns `null` .
 
 `name` String Name of the group. 28.0
 
-#### owner ConnectApi. Information about the owner of the group. 28.0
+`owner` `ConnectApi.` Information about the owner of the group. 28.0
 
 ```
          UserSummary
@@ -4525,6 +5477,12 @@ GroupVisibility
 **•** `PrivateAccess` —Only members of the group can see posts to this
 
 `Type` group.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
 
 **•** `PublicAccess` —All users within the Experience Cloud site can see
 posts to this group.
@@ -4550,25 +5508,14 @@ information
 #### ConnectApi. Describes the Information section of the group. If the group is private, this 28.0
 
 `Group` section is visible only to members. If the context user is not a member of
+`Information` the group or does not have Modify All Data or View All Data permission,
 
-```
-Information
-
-```
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
-
-the group or does not have Modify All Data or View All Data permission,
 this value is `null` .
 
 `pending` Integer The number of requests to join a group that are in a pending state. 29.0
 
 ```
-   Requests
+Requests
 
 ```
 
@@ -4590,11 +5537,11 @@ Page of groups.
 `groups` `List<ConnectApi.` List of group details. 28.0
 
 ```
-            Chatter
+         Chatter
 
-            Group
+         Group
 
-            Detail>
+         Detail>
 
 ```
 
@@ -4603,6 +5550,9 @@ next page.
 
 `previous` String Connect REST API URL identifying the previous page, or `null` if there isn’t 28.0
 `PageUrl` a previous page.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.ChatterGroupSummary
 
@@ -4620,9 +5570,6 @@ SEE ALSO:
 #### ConnectApi.ChatterGroupSummaryPage
 
 ConnectApi.UserGroupPage
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.ChatterGroupSummaryPage
 
@@ -4671,10 +5618,16 @@ Chatter like information.
 
 `url` String Like’s Connect REST API URL 28.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
+
 `user` `ConnectApi.User` Like’s creator 28.0
 
 ```
-         Summary
+            Summary
 
 ```
 
@@ -4694,15 +5647,9 @@ Page of Chatter likes.
 `items` `List<ConnectApi.` List of likes. 32.0
 
 ```
-         ChatterLike>
+            ChatterLike>
 
 ```
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
 
 `likes` `List<ConnectApi.` List of likes. 28.0–31.0
 
@@ -4739,6 +5686,9 @@ If a feed element has this capability, the context user can like it. Exposes inf
 
 Subclass of ConnectApi.FeedElementCapability.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 `isLikedBy` Boolean Indicates whether the feed element is liked by the 32.0
@@ -4765,16 +5715,13 @@ SEE ALSO:
 
 ConnectApi.FeedElementCapabilities
 
-If the context user has liked the feed element, this 32.0
-property is a reference to the specific like, `null`
-otherwise.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.ChatterMessage
 
 Chatter message.
+
+If the context user has liked the feed element, this 32.0
+property is a reference to the specific like, `null`
+otherwise.
 
 **Name** **Type** **Description** **Available**
 **Version**
@@ -4811,7 +5758,12 @@ SEE ALSO:
 
 ConnectApi.ChatterConversationSummary
 
-#### ConnectApi.ChatterMessagePage ConnectApi.ChatterMessagePage
+#### ConnectApi.ChatterMessagePage
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+#### ConnectApi.ChatterMessagePage
 
 Chatter message page.
 
@@ -4826,12 +5778,6 @@ Chatter message page.
 
 `nextPageToken` String Token identifying the next page, or `null` if there 29.0
 isn’t a next page.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
 
 `nextPageUrl` String Connect REST API URL identifying the next page, or 29.0
 `null` if there isn’t a next page.
@@ -4870,6 +5816,11 @@ A collection of Chatter feed streams.
 
 `currentPageUrl` String URL to the current page of streams. 39.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 #### items List< ConnectApi. List of streams. 39.0
 
 `ChatterStream`            
@@ -4883,9 +5834,6 @@ In version 39.0, all streams are included in
 `null` .
 
 `total` Integer Total number of streams in the collection. 39.0
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.Chunk
 
@@ -4924,6 +5872,9 @@ remove it as best answer.
 Admins and moderators can edit and delete closed feed elements and comments on closed feed elements. Admins and moderators
 can select or remove the best answer status on comments on closed feed elements.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 `canContextUser` Boolean
@@ -4943,9 +5894,6 @@ or not ( `false` ).
 SEE ALSO:
 
 ConnectApi.FeedElementCapabilities
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.Comment
 
@@ -5000,6 +5948,19 @@ Important: As of version 32.0, use the
 ```
 Restricted
 
+```
+
+If this property is `true`, the context user can’t delete the 28.0
+comment. If this property is `false`, the context user might
+be able to delete the comment.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
+
+```
 likes ConnectApi.Chatter
 
          LikePage
@@ -5017,10 +5978,6 @@ Flags ModerationFlags
          Reference
 
 ```
-
-If this property is `true`, the context user can’t delete the 28.0
-comment. If this property is `false`, the context user might
-be able to delete the comment.
 
 The first page of likes for the comment. 28.0
 
@@ -5044,16 +6001,10 @@ reference to the specific like, `null` otherwise.
 
 This property is `null` for comments on direct messages.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
-
 #### parent ConnectApi. Information about the parent feed-item for this comment. 28.0
 
 ```
-            Reference
+         Reference
 
 ```
 
@@ -5072,7 +6023,7 @@ and a parent post. The UI is limited to these three levels.
 #### type ConnectApi. Type of comment. 28.0
 
 ```
-            CommentType
+         CommentType
 ```
 
 **•** `ContentComment` —Comment holds a content
@@ -5085,7 +6036,7 @@ capability.
 `user` `ConnectApi.User` Information about the comment author. 28.0
 
 ```
-            Summary
+         Summary
 
 ```
 
@@ -5098,6 +6049,9 @@ ConnectApi.QuestionAndAnswersCapability
 #### ConnectApi.CommentCapabilities
 
 A set of capabilities on a comment.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -5120,11 +6074,6 @@ to private.
 
 `edit` `ConnectApi.EditCapability` If a comment has this capability, users who have 34.0
 permission can edit it.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 `feedEntityShare` `ConnectApi.FeedEntityShareCapability` If a comment has this capability, a feed entity is 42.0
 shared with it.
@@ -5152,7 +6101,7 @@ A page of comments.
 
 #### comments List< ConnectApi. Collection of comments. 28.0–31.0
 
-`Comment`           
+`Comment`        
 Important: As of version 32.0, use the `items` property.
 
 `currentPageToken` String Token identifying the current page. 28.0
@@ -5161,7 +6110,13 @@ Important: As of version 32.0, use the `items` property.
 
 #### items List< ConnectApi. Collection of comments for this feed element. 32.0
 
-`Comment`           
+`Comment`        
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
 
 `nextPageToken` String
 
@@ -5183,12 +6138,6 @@ comments in the thread are refreshed, not just the ones that match the
 
 search term. Avoid using `nextPageUrl` until the comments are
 refreshed.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
 
 `previousPageToken` String Token identifying the previous page, or `null` if there isn’t a previous 44.0
 page.
@@ -5216,6 +6165,9 @@ If a feed element or comment has this capability, the context user can add a com
 
 Subclass of ConnectApi.FeedElementCapability.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 ```
@@ -5242,11 +6194,6 @@ Result of executing a commerce action.
 `isSuccess` Boolean Specifies whether the action is a success ( `true` ) or 53.0
 not ( `false` ).
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `message` String Action result message. 53.0
 
 #### ConnectApi.CommerceAddressCollection
@@ -5261,7 +6208,7 @@ A collection of Commerce addresses.
 
 `currentPageUrl` String URL to the current page of addresses. 54.0
 
-#### items <List ConnectApi.CommerceAddressOutput > Address Details 54.0
+`items` <List `ConnectApi.CommerceAddressOutput` - Address Details 54.0
 
 `nextPageToken` String Token to the next page of addresses. 54.0
 
@@ -5283,6 +6230,11 @@ order of created date.
 
 **•** `NameAsc` —Sort in ascending order of name.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 **•** `NameDesc` —Sort in descending order of name.
 
 #### ConnectApi.CommerceAddressOutput
@@ -5302,11 +6254,6 @@ Address for a Commerce account.
 `country` String The address country. 54.0
 
 `countryCode` String Two-character country code. 54.0–58.0
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 `fields` Map<String, Record A list of custom address fields, if any. 54.0
 Field>
@@ -5348,18 +6295,23 @@ Product search results information.
 
 ```
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `correlationId` String Reserved for future use. 55.0
 
 #### facets List< ConnectApi. Facets from the search results. 52.0
 
-`SearchFacet`          
+`SearchFacet`            
 
 `locale` String Locale of the search results. 52.0
 
 #### productsPage ConnectApi. Page of products from the search results. 52.0
 
 ```
-           ProductSummaryPage
+             ProductSummaryPage
 
 #### ConnectApi.CommerceProductSellingModel
 
@@ -5371,9 +6323,6 @@ Product selling model information.
 
 `isSubscriptionProduct` Boolean Indicates whether the product selling model is a 59.0
 subscription product or not.
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.CommerceProductSummary
 
@@ -5425,13 +6374,6 @@ LineItem
 
 **•** `Bundle`
 
-```
-productSelling
-
-ModelInformation
-
-```
-
 **•** `Set`
 
 **•** `Simple`
@@ -5439,6 +6381,18 @@ ModelInformation
 **•** `Variation`
 
 **•** `VariationParent`
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+```
+productSelling
+
+ModelInformation
+
+```
 
 #### ConnectApi. Product selling model information. 59.0
 
@@ -5450,7 +6404,7 @@ SellingModel
 ```
 
 `productVariation` ConnectApi.ProductVariationInfo Product variation attributes, metadata, and mappings 63.0
-`Info` on page 2481 of attribute combinations to variation product IDs.
+`Info` on page 2494 of attribute combinations to variation product IDs.
 This field isn't available in stores with displayable
 fields enabled.
 
@@ -5488,14 +6442,11 @@ SetSummary
 
 Collection of product summary representations in product search results.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 `pageSize` Integer Number of products per page in search results. 55.0
 
-`products` <List `ConnectApi.CommerceProductSummary`   - Collection of product summaries. 55.0
+#### products <List ConnectApi.CommerceProductSummary > Collection of product summaries. 55.0
 
 `total` Long Number of products in search results across all pages. 55.0
 
@@ -5518,6 +6469,9 @@ asynchronous processing is enabled for the store.
 
 This property returns `Completed` in Apex, because
 Apex operations always run synchronously.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.CommerceSearchIndex
 
@@ -5557,6 +6511,8 @@ indexBuildType
 
 indexStatus
 
+indexUsage
+
 ```
 
 #### ConnectApi. Build type of the index. Values are: 57.0
@@ -5571,6 +6527,22 @@ IndexBuildType
 
 ```
 
+#### ConnectApi. Usage of the index. Values are: 52.0
+
+```
+CommerceSearch
+```
+
+**•** `Live`
+```
+IndexUsage
+
+```
+
+**•** `Full`
+
+**•** `Incremental`
+
 #### ConnectApi. Status of the index. Values are: 52.0
 
 ```
@@ -5583,37 +6555,11 @@ IndexStatus
 
 ```
 
-**•** `Full`
-
-**•** `Incremental`
-
 **•** `Completed`
 
 **•** `Failed`
 
 **•** `InProgress`
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-```
-indexUsage
-
-```
-
-#### ConnectApi. Usage of the index. Values are: 52.0
-
-```
-CommerceSearch
-```
-
-**•** `Live`
-```
-IndexUsage
-
-```
 
 **•** `Live`
 
@@ -5638,6 +6584,7 @@ List of up to two indexes. Returns the completed, live 52.0
 index and either the in-progress, out-of-use index or
 the most-recently-failed, out-of-use index.
 
+
 ```
 indexes
 
@@ -5651,6 +6598,8 @@ CommerceSearch
 
 `Index` 
 
+Apex Reference Guide ConnectApi Output Classes
+
 #### ConnectApi.CommerceSearchIndexLog
 
 Search index log information.
@@ -5660,7 +6609,7 @@ Search index log information.
 `catalog` Datetime Catalog snapshot time of the index build. 57.0
 
 ```
-SnapshotTime
+   SnapshotTime
 
 ```
 
@@ -5709,11 +6658,6 @@ IndexBuildType
 
 **•** `Incremental`
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `indexId` String ID of the index build. 57.0
 
 `message` String Detailed message for the index build status. 57.0
@@ -5751,10 +6695,16 @@ AccessWithoutLogin
 
 ```
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
+
 `allowMembers` Boolean Specifies if members can flag content. 30.0
 
 ```
-ToFlag
+   ToFlag
 
 ```
 
@@ -5793,12 +6743,6 @@ sites using Salesforce's CDN for Digital Experiences ( `true` ) or not
 
 `invitationsEnabled` Boolean Specifies whether users can invite other external users. 28.0
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
-
 `knowledgeable` Boolean Specifies whether knowledgeable people and endorsements are available 30.0
 `Enabled` for topics ( `true` ), or not ( `false` ).
 
@@ -5812,7 +6756,7 @@ Apex Reference Guide ConnectApi Output Classes
 `nicknameDisplay` Boolean Specifies whether nicknames are displayed. 32.0
 
 ```
-   Enabled
+Enabled
 
 ```
 
@@ -5834,7 +6778,7 @@ status
 
 ```
 
-#### ConnectApi. Status of the Experience Cloud site. 28.0
+`ConnectApi.` Status of the Experience Cloud site. 28.0
 
 ```
 CommunityStatus
@@ -5847,6 +6791,12 @@ Enum
 **•** `Live`
 
 **•** `Inactive`
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
 
 **•** `UnderConstruction`
 
@@ -5873,11 +6823,6 @@ Page of Experience Cloud sites.
 `communities` `List<ConnectApi.` List of Experience Cloud sites the context user has access 28.0
 `Community>` to.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available Version**
-
 `total` Integer Total number of Experience Cloud sites. 28.0
 
 #### ConnectApi.CommunitySummary
@@ -5901,6 +6846,9 @@ Company verify summary.
 Subclass of ConnectApi.UserFeedEntityActivitySummary.
 
 No additional properties.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.ComplexSegment
 
@@ -5933,11 +6881,6 @@ Details of a composite product.
 
 `productId` String ID of the product record created. 61.0
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `success` Boolean Indicates whether the product was successfully 61.0
 created ( `true` ) or not ( `false` ).
 
@@ -5961,6 +6904,9 @@ successfully created ( `true` ) or not ( `false` ).
 Record field that is a composite of subfields.
 
 Subclass of ConnectApi.LabeledRecordField.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 **Name** **Type** **Description** **Available Version**
 
@@ -6007,9 +6953,6 @@ CapacityResponse
 
 Response to a request to confirm held fulfillment order capacity at one or more locations.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 ```
@@ -6042,9 +6985,14 @@ Represents an activation contact point configuration output.
 
 `activationContactPointFieldConfig` `ConnectApi.ActivationContactPointsFieldConfig` Contact point field configurations. 60.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `activationContactPointSourcesConfig` `ConnectApi.ActivationContactPointsSourceConfig` Contact point source configurations. 60.0
 
-`contactPointFilterExpression` `ConnectApi.ContactPointFilterExpression` Contact point filter expression. 60.0
+#### contactPointFilterExpression ConnectApi.ContactPointFilterExpression Contact point filter expression. 60.0
 
 `contactPointPath` String Contact point path. 60.0
 
@@ -6072,11 +7020,7 @@ Represents an activation contact point configuration output.
 
 #### queryPathConfigList List< ConnectApi. List of query path configurations. 60.0
 
-`QueryPathConfigList`            
-
-
-Apex Reference Guide ConnectApi Output Classes
-
+`QueryPathConfigList`               
 #### ConnectApi.ContactPointFilterExpression
 
 Represents an activation contact point filter expression output.
@@ -6101,6 +7045,11 @@ A file attached to a feed item.
 
 `checksum` String MD5 checksum for the file. 36.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `contentUrl` String URL of the content for links. 36.0
 
 `description` String Description of the attachment. 36.0
@@ -6119,7 +7068,7 @@ otherwise.
 
 `id` String 18-character ID of the content. 36.0
 
-#### imageDetails ConnectApi.ContentImageFileDetails Image details, or null if the file isn’t an image. 40.0
+`imageDetails` `ConnectApi.ContentImageFileDetails` Image details, or `null` if the file isn’t an image. 40.0
 
 `isInMyFileSync` Boolean `true` if the file is synced with Salesforce Files Sync. 36.0
 
@@ -6132,12 +7081,6 @@ May 25, 2018.
 files, renditions process asynchronously after upload.
 
 For private files, renditions process when the first file
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 preview is requested, and aren’t available
 immediately after the file is uploaded.
 
@@ -6167,6 +7110,11 @@ file is uploaded.
 restricted.
 
 `textPreview` String Text preview of the file if available; `null` otherwise. 36.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `thumb120By90` String Specifies the rendering status of the 120 x 90 preview 36.0
 `RenditionStatus` image of the file. One of these values:
@@ -6201,11 +7149,6 @@ restricted.
 
 **•** `Na` —Rendering is not available for this image.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `title` String Title of the file. 36.0
 
 `versionId` String Version ID of the file. 36.0
@@ -6232,6 +7175,11 @@ If content is deleted from a feed element after it’s posted or if the access t
 `contentUrl` String URL of the content for links and Google docs. 32.0
 
 `description` String Description of the attachment. 32.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `downloadUrl` String URL to the content. 32.0
 
@@ -6261,11 +7209,6 @@ are processed asynchronously and may not be
 available immediately after the file has been
 uploaded.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `renditionUrl240By180` String URL to the 240x180 size rendition resource for the 32.0
 file. Renditions are processed asynchronously and
 
@@ -6278,7 +7221,7 @@ file. Renditions are processed asynchronously and
 may not be available immediately after the file has
 been uploaded.
 
-#### sharingOption ConnectApi. Sharing option of the file. Values are: 35.0
+`sharingOption` `ConnectApi.` Sharing option of the file. Values are: 35.0
 
 ```
              FileSharingOption
@@ -6306,13 +7249,6 @@ RenditionStatus
 
 ```
 
-`thumb720By480` String
-
-```
-RenditionStatus
-
-```
-
 The status of the rendering of the 120x90 pixel sized 32.0
 preview image of the file. Should be either
 Processing, Failed, Success, or Na if unavailable.
@@ -6320,6 +7256,18 @@ Processing, Failed, Success, or Na if unavailable.
 The status of the rendering of the 240x180 pixel sized 32.0
 preview image of the file. Should be either
 Processing, Failed, Success, or Na if unavailable.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+`thumb720By480` String
+
+```
+RenditionStatus
+
+```
 
 The status of the rendering of the 720x480 pixel sized 32.0
 preview image of the file. Should be either
@@ -6349,9 +7297,6 @@ allowedItemTypes
 `ContentHub` allowed to create in a repository folder.
 `ItemTypeSummary` 
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.ContentHubFieldDefinition
 
 A field definition.
@@ -6366,6 +7311,11 @@ type.
 `maxLength` Integer Maximum length of the value of this field. 39.0
 
 `name` String Name of the field. 39.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 ```
 type
@@ -6428,9 +7378,6 @@ The summary of an item type associated with a repository folder.
 
 Subclass of ConnectApi.AbstractContentHubItemType.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 No additional properties.
 
 SEE ALSO:
@@ -6444,6 +7391,11 @@ A permission type.
 **Property Name** **Type** **Description** **Available Version**
 
 `id` String Internal ID of the permission type in the repository. 39.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `label` String Label as returned by the repository. 39.0
 
@@ -6485,11 +7437,6 @@ Subclass of ConnectApi.ActorWithId.
 
 #### authentication ConnectApi.ContentHubRepositoryAuthentication Repository authentication information. 40.0
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 ```
 features
 
@@ -6522,13 +7469,16 @@ ProviderType
 
 ```
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `rootFolderItemsUrl` String URL to the list of items in the repository root folder. 39.0
 
 SEE ALSO:
 
-ConnectApi.ContentHubRepositoryCollection
-
-#### ConnectApi.ContentHubRepositoryAuthentication
+#### ConnectApi.ContentHubRepositoryCollection ConnectApi.ContentHubRepositoryAuthentication
 
 Authentication information for a repository.
 
@@ -6537,7 +7487,7 @@ Authentication information for a repository.
 `authFlowUrl` String 40.0
 Depends on the `authProtocol` .
 
-**•** `NoAuthentication`                     - `null` .
+**•** `NoAuthentication`                       - `null` .
 
 **•** `Oauth` —URL to start the OAuth flow.
 
@@ -6570,12 +7520,7 @@ Otherwise, `false` .
 
 SEE ALSO:
 
-#### ConnectApi.ContentHubRepository
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-#### ConnectApi.ContentHubRepositoryCollection
+#### ConnectApi.ContentHubRepository ConnectApi.ContentHubRepositoryCollection
 
 A collection of repositories.
 
@@ -6585,6 +7530,11 @@ A collection of repositories.
 
 `nextPageUrl` String URL to the next page of repositories, or `null` if there 39.0
 isn’t a next page.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `previousPageUrl` String URL to the previous page of repositories, or `null` 39.0
 if there isn’t a previous page.
@@ -6634,16 +7584,16 @@ SEE ALSO:
 
 ConnectApi.InlineImageSegment
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.ContractOutputRepresentation
 
 Contract list.
 
 **Property Name** **Type** **Description** **Available Version**
 
-`data` List< `String`   - Record IDs of the contacts. 56.0
+`data` List< `String` - Record IDs of the contacts. 56.0
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.ConversationApplicationDefinitionDetailRespresentation
 
@@ -6709,11 +7659,6 @@ Coupon code redemption result.
 `errorMsg` String Error message when coupon code redemption isn’t 58.0
 successful.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `isSuccess` Boolean
 
 Specifies whether increasing or decreasing the 58.0
@@ -6721,6 +7666,9 @@ coupon code redemption is successful ( `true` ) or
 not ( `false` ).
 
 `redemptionLimit` Integer Number of coupon code redemptions allowed. 58.0
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.CreateCreditMemoOutputRepresentation
 
@@ -6780,9 +7728,6 @@ SummaryId
 
 Result of a creating a named credential for a social external channel.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 `authUrl` String Authentication URL. 64.0
@@ -6793,6 +7738,9 @@ Apex Reference Guide ConnectApi Output Classes
 
 `status` `ConnectApi.SocialStatusRepresentation` Status response specifiying whether the Webstore 64.0
 Meta Config entity was successfully created.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.CreateWebStoreMetaConfiguration
 
@@ -6860,11 +7808,6 @@ are sent in the callout’s request body.
 are sent in the callout’s authorization header, as
 with Basic authentication.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 **•** `ClientCredentialsJwtAssertion` —OAuth
 2.0 Client Credentials JSON Web Token assertion.
 
@@ -6876,6 +7819,11 @@ bearer flow.
 **•** `RolesAnywhere` —AWS Signature Version 4
 with Identity and Access Management (IAM)
 Roles Anywhere.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 #### authentication ConnectApi. Status of the credential authentication. Values are: 56.0
 
@@ -6945,11 +7893,6 @@ Credential custom header.
 
 `id` String ID of the customer header parameter. 58.0
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `sequenceNumber` Integer Sequence number of the header. The sequence 57.0
 number determines the order of the header.
 
@@ -6963,6 +7906,9 @@ ConnectApi.NamedCredential
 
 Credential value.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 `encrypted` Boolean Specifies whether the credential value is encrypted 56.0
@@ -6974,7 +7920,9 @@ Credential value.
 
 SEE ALSO:
 
-#### ConnectApi.Credential ConnectApi.CurrencyRecordField
+ConnectApi.Credential
+
+#### ConnectApi.CurrencyRecordField
 
 Record field containing a currency value.
 
@@ -6997,9 +7945,6 @@ recommendation audience.
 
 Represents both dashboard component snapshots and alerts you receive when a dashboard component value crosses a threshold.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 `componentId` String 18-character ID of the dashboard component. 32.0
@@ -7018,6 +7963,11 @@ text.
 
 `fullSizeImageUrl` String The source URL to retrieve the full-size image of a 32.0
 snapshot. Access this URL with OAuth credentials.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `lastRefreshDate` Datetime ISO 8601 date specifying when this dashboard 32.0
 component was last refreshed.
@@ -7053,16 +8003,13 @@ Subclass of ConnectApi.FeedElementCapability.
 #### dashboardComponent ConnectApi.DashboardComponentSnapshot The dashboard component snapshot. 32.0
 
 ```
-Snapshot
+   Snapshot
 
 ```
 
 SEE ALSO:
 
 ConnectApi.FeedElementCapabilities
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.DataCategoryMetadata
 
@@ -7073,6 +8020,11 @@ Data category metadata for the object.
 `groupName` String Group name of the data category. 63.0
 
 `label` String Label of the data category. 63.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `values` Map<String, Map of values for the current data category. 63.0
 
@@ -7122,11 +8074,6 @@ Represents a field of a data graph.
 
 **•** `Measure`
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 **•** `ObjectTypeUnspecified`
 
 `dataGraphFieldDevName` String Developer name of the field. 61.0
@@ -7134,6 +8081,11 @@ Apex Reference Guide ConnectApi Output Classes
 `dataType` String Data type of the field. 59.0
 
 `developerName` String Developer name of the data graph. 59.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `isProjected` String Indicates whether the field needs to be projected in 59.0
 output JSON ( `true` ) or not ( `false` ).
@@ -7174,9 +8126,6 @@ Represents the fields of the Data Model Object (DMO) that contains the ID table 
 
 Represents object metadata for a data graph.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 `dataGraphSourceDevName` String Developer name of the source data graph for the 61.0
@@ -7187,6 +8136,11 @@ data object.
 `fields` List< `ConnectApi.DataGraphField`   - List of fields for the data object of the data graph. 59.0
 
 `filterCriteria` String Filter criteria for the data object of the data graph. 59.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `memberDmoName` String Name of the member Data Model Object (DMO) for 59.0
 the data graph.
@@ -7241,9 +8195,6 @@ graph.
 
 Represents the relationship of a field of the object data for the data graph.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 `cardinality` `RelationshipCardinality` Cardinality of the relationship of a field for object data 59.0
@@ -7256,6 +8207,11 @@ of the data graph.
 **•** `OneToMany`
 
 **•** `OneToOne`
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `fieldName` String Field name of the object data for the data graph. 59.0
 
@@ -7288,14 +8244,11 @@ Represents a collection of all data spaces that a user is assigned to.
 
 **Property Name** **Type** **Description** **Available Version**
 
-`dataSpaces` <List `ConnectApi.DataSpaceInfoRepresentation`   - List of all data spaces. 62.0
+#### dataSpaces <List ConnectApi.DataSpaceInfoRepresentation > List of all data spaces. 62.0
 
 SEE ALSO:
 
 getAllDataSpaces(batchSize, offset, orderBy)
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.DataSpaceInfoRepresentation
 
@@ -7306,6 +8259,11 @@ Represents a data space.
 `description` String Description of the data space. 62.0
 
 `prefix` String Prefix of the data space. 62.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `status` `DataSpaceStatusEnum` Status of the data space. 62.0
 
@@ -7350,27 +8308,27 @@ Record field containing a date.
 
 Subclass of ConnectApi.LabeledRecordField.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Name** **Type** **Description** **Available Version**
 
 `dateValue` Datetime
 
-#### ConnectApi.DeleteIntent
-
-Delete intent for a social post.
-
 Date that a machine can read. 29.0
 
 Ignore the trailing `00:00:00.000Z` characters.
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+#### ConnectApi.DeleteIntent
+
+Delete intent for a social post.
 
 **Property Name** **Type** **Description** **Available Version**
 
 #### managedSocialAccount ConnectApi. Managed social account that deletes the social post. 45.0
 
 ```
-           ManagedSocialAccount
+             ManagedSocialAccount
 
 ```
 
@@ -7384,7 +8342,7 @@ List of delete intents for a social post.
 
 #### deletes List< ConnectApi. List of delete intents for the social post. 45.0
 
-`DeleteIntent`          
+`DeleteIntent`            
 
 SEE ALSO:
 
@@ -7404,21 +8362,20 @@ Delete intent for the social post.
 
 Delivery estimation information for products.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
-#### error ConnectApi.DeliveryEstimationE r orOutputRepresentation Any error that was returned, including the error code 63.0
-
-on page 2280 and error message.
+`error` ConnectApi.DeliveryEstimationE **r** orOutputRepresentation Any error that was returned, including the error code 63.0
+on page 2294 and error message.
 
 `location` String Location external reference. 63.0
 
 `productDeliverEstimations` ListConnectApi.ProductDeliverEstimationOutputRepresentation List of product delivery estimations. 63.0
-on page 2468
+on page 2481
 
 `shippingCarrierMethodExternalReference` String Shipping carrier method external reference. 63.0
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.DeliveryEstimationErrorOutputRepresentation
 
@@ -7452,11 +8409,14 @@ If a feed element has this capability, it’s a direct message.
 
 **Property Name** **Type** **Description** **Available Version**
 
-`memberChanges` `ConnectApi.DirectMessageMemberActivityPage` Member activities of the direct message, with the 40.0
+#### memberChanges ConnectApi.DirectMessageMemberActivityPage Member activities of the direct message, with the 40.0
+
 most recent activity first.
 
 ```
 members
+
+originalMembers
 
 ```
 
@@ -7467,21 +8427,8 @@ DirectMessage
 
 MemberPage
 
-```
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-```
-originalMembers
-
-```
-
 #### ConnectApi. Original members of the direct message. 40.0
 
-```
 DirectMessage
 
 MemberPage
@@ -7498,6 +8445,9 @@ ConnectApi.FeedElementCapabilities
 
 Direct message member activity.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 `activityDate` Datetime Direct message member activity date. 40.0
@@ -7505,7 +8455,7 @@ Direct message member activity.
 #### actor ConnectApi. User who changed the direct message membership. 40.0
 
 ```
-           UserSummary
+             UserSummary
 
 ```
 
@@ -7561,11 +8511,6 @@ DirectMessage
 `nextPageToken` String Token identifying the next page, or `null` if there 40.0
 isn’t a next page.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `nextPageUrl` String Connect REST API URL identifying the next page, or 40.0
 `null` if there isn’t a next page.
 
@@ -7583,6 +8528,11 @@ A collection of direct message members.
 message members.
 
 `currentPageUrl` String URL to the current page of direct message members. 39.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `nextPageToken` String Page token to access the next page of direct message 39.0
 members.
@@ -7623,9 +8573,6 @@ locations
 `rank` Integer This result’s rank among all results by average 51.0
 distance to the order recipient.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.DistinctFacetValue
 
 Distinct facet value.
@@ -7643,11 +8590,16 @@ displayMetadata
 
 `DisplayMetadata` value.
 `Representation` on
-page 2283
+page 2297
 
 `displayName` String Display name of the facet value. 52.0
 
 `nameOrId` String Developer name of the attribute. 52.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `productCount` Long Number of products in the search result that match 52.0
 the facet value.
@@ -7673,7 +8625,7 @@ This class is a subclass of ConnectApi.SearchFacet.
 
 #### values List< ConnectApi. Values of the facet found in the search result. Sorted 52.0
 
-`DistinctFacetValue`           - by display name in alphabetical order.
+`DistinctFacetValue`              - by display name in alphabetical order.
 
 #### ConnectApi.DistributePickedQuantitiesOutputRepresentation
 
@@ -7681,17 +8633,12 @@ Output representation of where the quantities were distributed in orders and any
 
 **Property Name** **Type** **Description** **Available Version**
 
-`fullyDistributed` <List `ConnectApi.OrderQuantitiesOutputRepresentation` - Orders that have all quantities distributed. 58.0
+`fullyDistributed` <List `ConnectApi.OrderQuantitiesOutputRepresentation`   - Orders that have all quantities distributed. 58.0
 
 ```
-OrdersList
+   OrdersList
 
 ```
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 `notDistributed` <List `ConnectApi.OrderQuantitiesOutputRepresentation`   - Orders that have no quantities available after 58.0
 `OrdersList` distribution.
@@ -7709,9 +8656,12 @@ Apex Reference Guide ConnectApi Output Classes
 ```
    RemainingList
 
-#### ConnectApi.DmoFilter
-
 ```
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+#### ConnectApi.DmoFilter
 
 Represents a DMO filter output.
 
@@ -7751,9 +8701,6 @@ Represents a DMO filter limit output.
 
 **•** `FilterSortOrderDesc`
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.DmoFilterConfig
 
 Represents a DMO filter configuration output.
@@ -7767,6 +8714,9 @@ Summary of a downvote.
 Subclass of ConnectApi.UserFeedEntityActivitySummary.
 
 No additional properties.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.EditCapability
 
@@ -7819,9 +8769,6 @@ ConnectApi.CommentCapabilities
 
 ConnectApi.FeedElementCapabilities
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.EgressPropertiesRepresentation
 
 Represents the details for egress properties of the activation target.
@@ -7841,6 +8788,11 @@ Custom name of the output file. Either 60.0
 **•** `Custom`
 
 **•** `Predetermined`
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `filenameDateSuffixFormat` String Date suffix format for the output file name. 60.0
 
@@ -7885,11 +8837,6 @@ Custom name of the output file. Either 60.0
 
 `outputMaxRecordsPerFile` Long Maximum number of records in the output file. 60.0
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 ```
 predeterminedFilename PreDeterminedFileNameEnum
 
@@ -7908,6 +8855,9 @@ Predetermined name of the output file. Either 60.0
 #### ConnectApi.EinsteinLlmGenAiSourceReference
 
 Source from a data provider.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -7971,9 +8921,6 @@ Quality information about the generated response.
 `isToxicityDetected` Boolean Specifies whether the generated response contains 61.0
 toxic language `(true)` or not `(false)` .
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.EinsteinLlmGenerationGenAiCitedReference
 
 Metadata from an input source that is cited in a generated response.
@@ -7988,6 +8935,9 @@ response.
 
 `sourceObject` String ID of the source record that is cited in a generated 62.0
 `RecordId` response.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 #### ConnectApi.EinsteinLlmGenerationGenAiSourceContentInfo
 
@@ -8029,9 +8979,6 @@ Metadata from a source from a data provider.
 ConnectApi.EinsteinLLMGenerationItemOutput
 
 Generated response from the LLM provider.
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -8079,6 +9026,9 @@ Output
 
 `text` String Text of generated response. 60.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 ConnectApi.EinsteinLlmGenerationSafetyScoreOutput
 
 Safety score information related to the LLM response.
@@ -8116,11 +9066,6 @@ Minimum value of `0.0` . Maximum value of `1.0` .
 `sexualScore` Double A higher value means the generated response is more 60.0
 likely to contain text meant to arouse sexual
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 excitement or promote sexual services. Minimum
 value of `0.0` . Maximum value of `1.0` .
 
@@ -8140,6 +9085,9 @@ others. Minimum value of `0.0` . Maximum value of
 #### ConnectApi.EinsteinPromptRecordCollectionOutputRepresentation
 
 List of prompt template records.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -8179,11 +9127,6 @@ Prompt template record.
 
 `apiName` String API name of the prompt template record. 62.0
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 ```
 childRelationships
 
@@ -8222,6 +9165,9 @@ prompt template `(false)` .
 
 Data for file attachments to prompts.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 `fileExtension` String Extension of the file attachment. 63.0
@@ -8231,7 +9177,7 @@ Data for file attachments to prompts.
 `latestPublished` String Content version ID of the file attachment. 63.0
 
 ```
-Version
+   Version
 
 ```
 
@@ -8250,15 +9196,12 @@ Error response to a prompt template generation request.
 `localized` String Translated error message, if available. 60.0
 
 ```
-ErrorMessage
+   ErrorMessage
 
 ```
 
 `messageCode` String Message code associated with the error message, if 60.0
 any.
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 ConnectApi.EinsteinPromptTemplateGenerationsRepresentation
 
@@ -8311,6 +9254,11 @@ Template
 `isSummarized` Boolean Specifies whether the generated response contains 61.0
 summarized text `(true)` or not `(false)` .
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 #### parameters ConnectApi. Map of parameters and values for the LLM provider 60.0
 
 `WrappedMapObject` parameters.
@@ -8320,7 +9268,7 @@ summarized text `(true)` or not `(false)` .
 `promptTemplate` String Developer name or ID of the prompt template record. 60.0
 
 ```
-DevName
+   DevName
 
 ```
 
@@ -8370,9 +9318,6 @@ ConnectApi.EinsteinPromptTemplateMaskContentRepresentation
 
 Generated response with masked data and masking information for a prompt template.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 `content` String Text of generated response or resolved prompt 61.0
@@ -8409,6 +9354,11 @@ Information about masked data for a prompt template.
 
 `placeHolder` String Placeholder value of the masked data. 61.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `recognizers` List<String> Reserved for internal use. 61.0
 
 ConnectApi.EinsteinPromptTemplateMaskSettingsRepresentation
@@ -8437,9 +9387,6 @@ SEE ALSO:
 
 ConnectApi.EmailMessageCapability
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.EmailAttachment
 
 An email attachment in an email message.
@@ -8459,9 +9406,14 @@ An email attachment in an email message.
 
 SEE ALSO:
 
-#### ConnectApi.EmailMessageCapability ConnectApi.EmailMergeFieldCollectionInfo
+ConnectApi.EmailMessageCapability
+
+#### ConnectApi.EmailMergeFieldCollectionInfo
 
 The merge fields for an object.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -8503,11 +9455,6 @@ Subclass of ConnectApi.FeedElementCapability.
 
 `EmailAttachment`          
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `automationType` String Automation type of the email message. 63.0
 
 **•** `aiAssisted` —The email message was
@@ -8516,18 +9463,19 @@ created with the assistance of AI.
 **•** `aiAutomated` —The email message was
 created automatically by AI.
 
-`bccAddresses` List< `ConnectApi.` BCC addresses for the email message. 36.0
-`EmailAddress`            
+#### bccAddresses List< ConnectApi. BCC addresses for the email message. 36.0
+
+`EmailAddress`          
 
 `body` String Body of the email message. 36.0
 
-`ccAddresses` List< `ConnectApi.` CC addresses for the email message. 36.0
-`EmailAddress`            
+#### ccAddresses List< ConnectApi. CC addresses for the email message. 36.0
 
-`direction` `ConnectApi.` Direction of the email message. Values are: 32.0
+`EmailAddress`          
+#### direction ConnectApi. Direction of the email message. Values are: 32.0
 
 ```
-             EmailMessageDirection
+           EmailMessageDirection
 ```
 
 **•** `Inbound` —An inbound message (sent by a
@@ -8536,9 +9484,14 @@ customer).
 **•** `Outbound` —An outbound message (sent to a
 customer by a support agent).
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `emailMessageId` String ID of the email message. 32.0
 
-`emailSize` `ConnectApi.` Size of a case’s email message HTML body. 66.0
+#### emailSize ConnectApi. Size of a case’s email message HTML body. 66.0
 
 ```
              EmailMessageSize
@@ -8563,7 +9516,7 @@ HTML email display is enabled.
 `isRichText` Boolean Indicates whether the body of the email message is 36.0
 in rich text format.
 
-`status` `ConnectApi.` Status of an email message on a case. Values are: 47.0
+#### status ConnectApi. Status of an email message on a case. Values are: 47.0
 
 ```
              EmailMessageStatus
@@ -8582,11 +9535,6 @@ in rich text format.
 **•** `SentStatus`
 
 `subject` String Subject of the email message. 32.0
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 `textBody` String Body of the email message. 32.0–35.0
 
@@ -8610,6 +9558,11 @@ An emoji.
 **Property Name** **Type** **Description** **Available Version**
 
 `category` String Emoji category. 39.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 `shortcut` String Emoji shortcut. 39.0
 
@@ -8635,9 +9588,6 @@ If a feed element has this capability, it has a link that may contain supplement
 
 Subclass of ConnectApi.FeedElementCapability.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 `description` String A description with a 500 character limit. 32.0
@@ -8662,6 +9612,9 @@ ID of the asynchronous background operation. This output only includes the opera
 external payment gateway. It doesn’t include any errors from the operation.
 
 Subclass of ConnectApi.BaseAsyncOutputRepresentation.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 No additional properties.
 
@@ -8691,9 +9644,6 @@ SEE ALSO:
 
 ensureRefundsAsync(orderSummaryId, ensureRefundsInput)
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.EntityLabel
 
 An entity's label.
@@ -8713,6 +9663,9 @@ ConnectApi.RecordSummary
 Entity link segment.
 
 Subclass of ConnectApi.MessageSegment.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 **Name** **Type** **Description** **Available**
 **Version**
@@ -8777,11 +9730,6 @@ ActionType
 
 **•** `join` —Join a group.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 **•** `view` —View a file, group, article, record, user,
 custom, or static recommendation.
 
@@ -8802,6 +9750,9 @@ SEE ALSO:
 
 ConnectApi.BaseOutputRepresentation
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 #### ConnectApi.EstimateDeliveryDateOutputRepresentation
 
 Estimated delivery dates.
@@ -8809,7 +9760,7 @@ Estimated delivery dates.
 **Property Name** **Type** **Description** **Available Version**
 
 `deliveryEstimates` ListConnectApi.DeliveryEstimateOutputRepresentation List of delivery estimations. 63.0
-on page 2279
+on page 2293
 
 `estimatedDeliveryReference` String Unique code, reference, or identifier for the estimated 63.0
 delivery used by external systems.
@@ -8833,19 +9784,12 @@ An extension.
 
 `payload` String Payload associated with the extension. 40.0
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `payloadVersion` String Payload version that identifies the structure of the 40.0
 payload associated with the extension.
 
 SEE ALSO:
 
-ConnectApi.ExtensionsCapability
-
-#### ConnectApi.ExtensionDefinition
+#### ConnectApi.ExtensionsCapability ConnectApi.ExtensionDefinition
 
 An extension's definition.
 
@@ -8864,6 +9808,11 @@ with the extension in the org.
 `iconUrl` String URL to the icon for the extension. 40.0
 
 `id` String ID of the extension. 40.0
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
 
 ```
 information
@@ -8897,9 +9846,6 @@ SEE ALSO:
 
 A collection of extension definitions.
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 **Property Name** **Type** **Description** **Available Version**
 
 `currentPageToken` String Token identifying the current page. 40.0
@@ -8908,7 +9854,7 @@ Apex Reference Guide ConnectApi Output Classes
 
 #### extension List< ConnectApi. Collection of extension definitions. 40.0
 
-`Definitions` `ExtensionDefinition`   
+`Definitions` `ExtensionDefinition` 
 
 `nextPageToken` String Token identifying the next page, or `null` if there 40.0
 isn’t a next page.
@@ -8923,6 +9869,9 @@ isn’t a next page.
 If a feed element has this capability, it has one or more extension attachments.
 
 Subclass of ConnectApi.FeedElementCapability.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -8971,28 +9920,23 @@ AuthProtocol
 
 `callbackUrl` String
 
-For the Authorization Code authentication flow, the 62.0
-callback URL that's used by the external system after
-authorization.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 ```
 clientAuthentication
 
 ```
 
-```
-ConnectApi.
+#### `ConnectApi.`
 
+```
 IdentityProvider
 
 ClientAuth
 
 ```
+
+For the Authorization Code authentication flow, the 62.0
+callback URL that's used by the external system after
+authorization.
 
 Client authentication method that describes how 63.0
 credentials are sent to the authorization server. Values
@@ -9005,7 +9949,7 @@ are:
 `createdByNamespace` String Namespace of the package that created the external 62.0
 auth identity provider.
 
-`credentials` List< `ConnectApi.` List of the external auth identity provider credentials. 62.0
+#### credentials List< ConnectApi. List of the external auth identity provider credentials. 62.0
 
 ```
           ExternalAuth
@@ -9024,15 +9968,20 @@ full name can include a namespace prefix.
 
 `label` String External auth identity provider label. 62.0
 
-`parameters` List< `ConnectApi.` List of custom request parameters. 63.0
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+#### parameters List< ConnectApi. List of custom request parameters. 63.0
 
 ```
-          ExternalAuth
+             ExternalAuth
 
-          IdentityProvider
+             IdentityProvider
 ```
 
-`Parameter`         
+`Parameter`            
 
 `standardExternal` String Reference to a standard external auth identity 63.0
 `IdentityProvider` provider.
@@ -9059,9 +10008,6 @@ getExternalAuthIdentityProvider(fullName)
 
 updateExternalAuthIdentityProvider(developerName, requestBody)
 
-
-Apex Reference Guide ConnectApi Output Classes
-
 #### ConnectApi.ExternalAuthIdentityProviderCredential
 
 External auth identity provider credential.
@@ -9082,11 +10028,13 @@ SEE ALSO:
 
 List of an external auth identity provider's credentials.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
-#### credentials <List ConnectApi.ExternalAuthIdentityProviderCredential List of external auth identity provider credentials. 62.0
-
-on page 2303>
+`credentials` <List `ConnectApi.ExternalAuthIdentityProviderCredential` List of external auth identity provider credentials. 62.0
+on page 2316>
 
 SEE ALSO:
 
@@ -9104,7 +10052,7 @@ List of external auth identity providers in the org.
 
 #### externalAuthIdentityProviders <List ConnectApi.ExternalAuthIdentityProvider List of external auth identity providers. 62.0
 
-on page 2301>
+on page 2315>
 
 SEE ALSO:
 
@@ -9113,9 +10061,6 @@ getExternalAuthIdentityProviders()
 #### ConnectApi.ExternalAuthIdentityProviderParameter
 
 External auth identity provider parameter.
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -9161,6 +10106,11 @@ ParameterType
 
 **•** `TokenRequestQueryParameter`
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `parameterValue` String If `parameterType` describes a literal value then 63.0
 the literal value is stored in this property.
 
@@ -9188,6 +10138,10 @@ terms to avoid any effect on customer implementations.
 ```
 authenticationProtocol
 
+authenticationProtocol
+
+Variant
+
 ```
 
 #### ConnectApi. Authentication protocol of the external credential. 56.0
@@ -9206,23 +10160,10 @@ Protocol
 
 **•** `Jwt`
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 **•** `OAuth`
 
-```
-authenticationProtocol
+#### ConnectApi. Authentication protocol variant of the external 57.0
 
-Variant
-
-authenticationStatus
-
-```
-
-`ConnectApi.` Authentication protocol variant of the external 57.0
 `CredentialAuthentication` credential. Values are:
 
 ```
@@ -9247,13 +10188,23 @@ with Basic authentication.
 **•** `JwtBearer` —OAuth 2.0 JSON Web Token
 bearer flow.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 **•** `NoAuthentication` —No authentication.
 
 **•** `RolesAnywhere` —AWS Signature Version 4
 with Identity and Access Management (IAM)
 Roles Anywhere.
 
-`ConnectApi.` Status of the credential authentication. Values are: 56.0
+```
+authenticationStatus
+
+```
+
+#### ConnectApi. Status of the credential authentication. Values are: 56.0
 
 ```
 CredentialAuthentication
@@ -9278,7 +10229,7 @@ customHeaders
 
 ```
 
-List< `ConnectApi.` List of custom headers. 57.0
+#### List< ConnectApi. List of custom headers. 57.0
 
 ```
 CredentialCustom
@@ -9292,11 +10243,6 @@ credential.
 `id` String External credential ID. 58.0
 
 `masterLabel` String External credential label. 56.0
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 ```
 parameters
@@ -9336,11 +10282,14 @@ ConnectApi.NamedCredential
 
 List of external credentials.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 #### external List< ConnectApi. List of external credentials. 56.0
 
-`Credentials` `ExternalCredential` 
+`Credentials` `ExternalCredential`   
 #### ConnectApi.ExternalCredentialParameter
 
 External credential parameter.
@@ -9365,11 +10314,6 @@ RolesAnywhere.
 
 **•** `AwsStsDuration` —Valid for AwsSv4 with
 STS or RolesAnywhere.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 **•** `AwsStsExternalId` —Valid for AwsSv4 with
 STS.
@@ -9418,6 +10362,11 @@ ParameterType
 
 **•** `SigningCertificate`
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `parameterValue` String Parameter value. If the `parameterType` is 57.0
 `JwtBodyClaim` or `JwtHeaderClaim`, the
 
@@ -9454,11 +10403,6 @@ CredentialAuthentication
 
 **•** `NotConfigured` —Credential isn’t
 configured.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 **•** `Unknown` —Credential status can’t be
 determined because the authentication protocol
@@ -9510,6 +10454,11 @@ Type
 
 **•** `PerUserPrincipal`
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 `sequenceNumber` Integer Sequence number of the external credential principal. 58.0
 
 SEE ALSO:
@@ -9545,12 +10494,7 @@ PrincipalAccessType
 
 **•** `Profile`
 
-#### ConnectApi.ExternalCredentialPrincipal
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-#### ConnectApi.ExternalFilePermissionInformation
+#### ConnectApi.ExternalCredentialPrincipal ConnectApi.ExternalFilePermissionInformation
 
 External file permission information.
 
@@ -9559,10 +10503,10 @@ External file permission information.
 #### external List< ConnectApi. Available permission types for the parent folder of 39.0
 
 `FilePermission` `ContentHub` the external file, or `null` for non-external files or
-`Types` `PermissionType`   - when
+`Types` `PermissionType` - when
 
 ```
-                        includeExternalFilePermissionsInfo
+                     includeExternalFilePermissionsInfo
 ```
 
 is `false` .
@@ -9571,7 +10515,7 @@ is `false` .
 `FilePermissions` or if
 
 ```
-   Failure includeExternalFilePermissionsInfo
+Failure includeExternalFilePermissionsInfo
 ```
 
 is `false` ; `false` otherwise.
@@ -9593,17 +10537,22 @@ includeExternalFilePermissionsInfo
 
 is `true` ; `null` otherwise.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 #### external ConnectApi. Sharing status for the external file. Values are: 39.0
 
 ```
-FileSharing ContentHub
+   FileSharing ContentHub
 ```
 
 **•** `DomainSharing` —File is shared with the
 
 `Status` `ExternalItem` domain.
 ```
-          SharingType
+             SharingType
 ```
 
 **•** `PrivateSharing` —File is private or shared
@@ -9614,17 +10563,17 @@ only with individuals.
 Value is `null` for non-external files or when
 
 ```
-                     includeExternalFilePermissionsInfo
+                        includeExternalFilePermissionsInfo
 ```
 
 is `false` .
 
 #### repository List< ConnectApi. Available public groups in the external repository or 39.0
 
-`PublicGroups` `RepositoryGroupSummary` - `null` for non-external files or when
+`PublicGroups` `RepositoryGroupSummary`   - `null` for non-external files or when
 
 ```
-                     includeExternalFilePermissionsInfo
+                        includeExternalFilePermissionsInfo
 ```
 
 is `false` .
@@ -9643,11 +10592,6 @@ Default shipping address for an externally managed account.
 
 `country` String Country of the external managed account record. 53.0
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `geolocationAccuracy` String Geolocation accuracy of the external managed 53.0
 account record.
 
@@ -9663,9 +10607,14 @@ account record.
 
 SEE ALSO:
 
-#### ConnectApi.ExternalManagedAccountOutput ConnectApi.ExternalManagedAccountCollectionOutput
+ConnectApi.ExternalManagedAccountOutput
+
+#### ConnectApi.ExternalManagedAccountCollectionOutput
 
 Collection of externally managed accounts.
+
+
+Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -9722,11 +10671,6 @@ AccountId
 
 ```
 
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
 `isMyAccount` Boolean Specifies whether the account is the context user’s 53.0
 account ( `true` ) or not ( `false` ).
 
@@ -9767,15 +10711,18 @@ FacetType
 
 Features available to the context user in the org.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property** **Type** **Description** **Available**
 **Version**
 
 `activityReminder` Boolean Reserved for future use. 37.0
 
 ```
-Notifications
+   Notifications
 
-Enabled
+   Enabled
 
 ```
 
@@ -9795,22 +10742,16 @@ updates are scheduled to end. We recommend transitioning to
 `chatter` Boolean Specifies whether user details include global Chatter activity. 28.0
 
 ```
-GlobalInfluence
+   GlobalInfluence
 
 ```
 
 `chatterGroup` Boolean Specifies whether Chatter groups can have records associated with them. 30.0
 
 ```
-Records
+   Records
 
 ```
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property** **Type** **Description** **Available**
-**Version**
 
 `chatterGroup` Boolean Specifies whether Chatter records are implicitly shared among group 30.0
 `RecordSharing` members when records are added to groups.
@@ -9873,6 +10814,12 @@ Apex Reference Guide ConnectApi Output Classes
 
 `defaultLocale` String Specifies the Default locale. 63.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property** **Type** **Description** **Available**
+**Version**
+
 `einstein` Boolean Reserved for future use. 46.0
 
 ```
@@ -9920,12 +10867,6 @@ Apex Reference Guide ConnectApi Output Classes
    Enabled
 
 ```
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property** **Type** **Description** **Available**
-**Version**
 
 `files` Boolean Specifies whether files can act as resources for Connect REST API. 28.0
 
@@ -9990,17 +10931,23 @@ PeriodType PeriodType
 
 `ideas` Boolean Specifies whether Ideas is enabled. 29.0
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property** **Type** **Description** **Available**
+**Version**
+
 `liveAgent` String Live Agent host name configured for the org. 41.0
 
 ```
-HostName
+   HostName
 
 ```
 
 `managedTopics` Boolean Specifies whether managed topics are enabled. 32.0
 
 ```
-Enabled
+   Enabled
 
 ```
 
@@ -10008,38 +10955,32 @@ Enabled
 `Subscriptions` subscribed to in a Chatter stream.
 
 ```
-PerStream
+   PerStream
 
 ```
 
 `maxFiles` Integer Specifies the maximum number of files that can be added to a feed item. 36.0
 
 ```
-PerFeedItem
+   PerFeedItem
 
 ```
 
 `maxStreams` Integer Specifies the maximum number of Chatter streams that a user can have. 39.0
 
 ```
-PerPerson
+   PerPerson
 
 ```
 
 `mobile` Boolean Reserved for future use. 29.0
 
 ```
-Notifications
+   Notifications
 
-Enabled
+   Enabled
 
 ```
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property** **Type** **Description** **Available**
-**Version**
 
 `multiCurrency` Boolean
 
@@ -10079,6 +11020,12 @@ is `false` .
 `viralInvites` Boolean Specifies whether existing Chatter users can invite people in their 28.0
 `Allowed` company to use Chatter.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property** **Type** **Description** **Available**
+**Version**
+
 `wave` Boolean Specifies whether CRM Analytics is enabled. 36.0
 
 SEE ALSO:
@@ -10097,7 +11044,7 @@ Chatter feed.
 `feedElement` String Connect REST API URL to post feed elements to this subject. 31.0
 
 ```
-PostUrl
+   PostUrl
 
 #### feedElements ConnectApi.FeedElementPage Page of feed elements for the feed specified in 40.0
 ```
@@ -10107,12 +11054,6 @@ PostUrl
 `feedElementsUrl` String Connect REST API URL to feed elements. 31.0
 
 `feedItemsUrl` String Connect REST API URL to feed items. 28.0–31.0
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
 
 `isModifedUrl` String Connect REST API URL with a _`since`_ request parameter that contains 28.0
 an opaque token that describes when the feed was last modified. Returns
@@ -10160,6 +11101,9 @@ shows the ability to mute or unmute each element, depending on the
 value of `isMutedByMe` ; `null` if the mute feature is disabled for the
 organization.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 #### ConnectApi.FeedBody
 
 Feed body.
@@ -10179,9 +11123,6 @@ ConnectApi.FeedEntitySummary
 #### ConnectApi.FeedDirectory
 
 Directory of feeds and favorites.
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 **Name** **Type** **Description** **Available**
 **Version**
@@ -10237,6 +11178,12 @@ direct messages.
 
 **•** `Draft` —Contains all the feed items that the context user drafted.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
+
 **•** `Files` —Contains all feed items that contain files posted by people
 or groups that the context user follows.
 
@@ -10255,12 +11202,6 @@ isolated.
 **•** `Landing` —Contains all feed items that best drive user engagement
 when the feed is requested. Allows clients to avoid an empty feed
 when there aren’t many personalized feed items.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
 
 **•** `Moderation` —Contains all feed items that are flagged for
 moderation, except direct messages. The moderation feed is available
@@ -10301,6 +11242,13 @@ created by the context user that are commented on.
 records that can be tracked in a feed. Contains feed items whose
 parent is the user and feed items that @mention the user. This feed
 is different than the news feed, which returns more feed items,
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Name** **Type** **Description** **Available**
+**Version**
+
 including group updates. You can get another user’s user profile
 feed.
 
@@ -10316,12 +11264,6 @@ used to filter this feed. All feed items in this feed have a parent whose
 
 object type matches this key prefix value. For non-filter feeds, this value
 is `null` .
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Name** **Type** **Description** **Available**
-**Version**
 
 `label` String Localized label of the feed 30.0
 
@@ -10346,7 +11288,7 @@ Superclass of:
 #### body ConnectApi. Information about the feed element. 22.0
 
 ```
-             FeedBody
+           FeedBody
 ```
 
 Important: Use the `header.text`
@@ -10378,6 +11320,11 @@ Capabilities
 characteristics of that feed element. One of these
 values:
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 **•** `Bundle` —A container of feed elements. A
 bundle also has a body made up of message
 segments that can always be gracefully degraded
@@ -10390,11 +11337,6 @@ have capabilities such as bookmarks, canvas,
 content, comment, link, poll. Feed items have a
 body made up of message segments that can
 always be gracefully degraded to text-only values.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 **•** `Recommendation` —A recommendation is a
 feed element with a recommendations capability.
@@ -10440,10 +11382,12 @@ ConnectApi.QuestionAndAnswersSuggestions
 
 A container for all capabilities that can be included with a feed element.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
-#### approval ConnectApi. If a feed element has this capability, it includes 32.0
-
+`approval` `ConnectApi.` If a feed element has this capability, it includes 32.0
 `ApprovalCapability` information about an approval.
 
 ```
@@ -10453,8 +11397,7 @@ Actions
 
 ```
 
-#### ConnectApi. If a feed element has this capability, it has platform 33.0
-
+`ConnectApi.` If a feed element has this capability, it has platform 33.0
 `AssociatedActions` actions associated with it.
 
 ```
@@ -10462,18 +11405,11 @@ Capability
 
 ```
 
-#### banner ConnectApi. If a feed element has this capability, it has a banner 31.0
-
+`banner` `ConnectApi.` If a feed element has this capability, it has a banner 31.0
 `BannerCapability` motif and style.
 
-#### bookmarks ConnectApi. If a feed element has this capability, the context user 31.0
-
+`bookmarks` `ConnectApi.` If a feed element has this capability, the context user 31.0
 `BookmarksCapability` can bookmark it.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 `bundle` `ConnectApi.` If a feed element has this capability, it has a container 31.0
 `BundleCapability` of feed elements called a _bundle_ .
@@ -10549,6 +11485,11 @@ Important: In version 36.0 and later, use the
 
 point in time.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
 ```
 directMessage
 
@@ -10568,6 +11509,8 @@ Capability
 ```
 emailMessage
 
+enhancedLink
+
 ```
 
 `ConnectApi.` If a feed element has this capability, it has an email 32.0
@@ -10575,16 +11518,6 @@ emailMessage
 
 ```
 Capability
-
-```
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-```
-enhancedLink
 
 ```
 
@@ -10670,7 +11603,13 @@ If a feed element has this capability, it has a question 31.0
 and comments on the feed element are answers to
 the question.
 
-`readBy` `ConnectApi.` If a feed element has this capability, the context user 40.0
+
+Apex Reference Guide ConnectApi Output Classes
+
+**Property Name** **Type** **Description** **Available Version**
+
+#### readBy ConnectApi. If a feed element has this capability, the context user 40.0
+
 `ReadByCapability` can mark it as read.
 
 ```
@@ -10678,36 +11617,16 @@ recommendations
 
 recordSnaphot
 
+socialPost
+
 ```
 
-`ConnectApi.` If a feed element has this capability, it has a 32.0
+#### ConnectApi. If a feed element has this capability, it has a 32.0
+
 `Recommendations` recommendation.
 
 ```
 Capability
-
-```
-
-```
-ConnectApi.
-
-RecordSnapshot
-
-Capability
-
-```
-
-If a feed element has this capability, it contains all the 32.0
-snapshotted fields of a record for a single create
-record event.
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
-
-```
-socialPost
 
 ```
 
@@ -10719,6 +11638,19 @@ socialPost
 Capability
 
 ```
+
+#### `ConnectApi.`
+
+```
+RecordSnapshot
+
+Capability
+
+```
+
+If a feed element has this capability, it contains all the 32.0
+snapshotted fields of a record for a single create
+record event.
 
 #### status ConnectApi. If a feed post or comment has this capability, it has 37.0
 
@@ -10784,6 +11716,9 @@ This class is a superclass of:
 
 **•** ConnectApi.ApprovalCapability
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **•** ConnectApi.BannerCapability
 
 **•** ConnectApi.BookmarksCapability
@@ -10799,9 +11734,6 @@ This class is a superclass of:
 **•** ConnectApi.ChatterLikesCapability
 
 **•** ConnectApi.CloseCapability
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 **•** ConnectApi.CommentsCapability
 
@@ -10863,20 +11795,17 @@ This class doesn’t have any properties.
 
 #### ConnectApi.FeedElementPage A paged collection of ConnectApi.FeedElement objects.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 **Property Name** **Type** **Description** **Available Version**
 
 `currentPageToken` String Token identifying the current page. 31.0
 
 `currentPageUrl` String Connect REST API URL identifying the current page. 31.0
 
-#### elements List< ConnectApi. Collection of feed elements. 31.0
-
+`elements` List< `ConnectApi.` Collection of feed elements. 31.0
 `FeedElement`            
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 `isModifiedToken` String Opaque polling token to use in the _`since`_ 31.0
 parameter of the `ChatterFeeds.isModified`
@@ -10928,18 +11857,18 @@ SEE ALSO:
 
 ConnectApi.BundleCapability
 
-#### ConnectApi.Feed ConnectApi.FeedEnabledEntity
+ConnectApi.Feed
+
+
+Apex Reference Guide ConnectApi Output Classes
+
+#### ConnectApi.FeedEnabledEntity
 
 An entity that can have feeds associated with it.
 
 **Property Name** **Type** **Description** **Available Version**
 
 `id` String The 18-character ID of the record. 39.0
-
-
-Apex Reference Guide ConnectApi Output Classes
-
-**Property Name** **Type** **Description** **Available Version**
 
 `motif` `ConnectApi.Motif` Small, medium, and large icons indicating the 39.0
 record's type.
@@ -10993,14 +11922,14 @@ Subclass of ConnectApi.UserFeedEntityActivitySummary.
 
 No additional properties.
 
+
+Apex Reference Guide ConnectApi Output Classes
+
 #### ConnectApi.FeedEntityShareCapability
 
 If a feed element or comment has this capability, a feed entity is shared with it.
 
 Subclass of ConnectApi.FeedElementCapability.
-
-
-Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
 
@@ -11073,15 +12002,16 @@ always be gracefully degraded to text-only values.
 **•** `Recommendation` —A recommendation is a
 feed element with a recommendations capability.
 A recommendation suggests records to follow,
-groups to join, or applications that are helpful to
-the context user.
-
-`id` String 18-character ID of the feed entity. 39.0
 
 
 Apex Reference Guide ConnectApi Output Classes
 
 **Property Name** **Type** **Description** **Available Version**
+
+groups to join, or applications that are helpful to
+the context user.
+
+`id` String 18-character ID of the feed entity. 39.0
 
 `isEntityAvailable` Boolean
 
@@ -11145,12 +12075,12 @@ otherwise, an empty string.
 
 **•** `Topic`
 
-`url` String Connect REST API URL to this favorite. 28.0
-
 
 Apex Reference Guide ConnectApi Output Classes
 
 **Name** **Type** **Description** **Available Version**
+
+`url` String Connect REST API URL to this favorite. 28.0
 
 `user` `ConnectApi.User` Information about the user who saved this favorite. 28.0
 
@@ -12854,7 +13784,7 @@ emailFrequency
 `GroupEmailFrequency` email from a group.
 
 ```
-on page 2607
+on page 2620
 
 ```
 
@@ -15494,7 +16424,7 @@ SpaceChannel
 
 **•** `Added` —Channel was added to the managed
 
-`Status` on page 2610
+`Status` on page 2623
 
 content space.
 
@@ -18567,7 +19497,7 @@ fields
 Map<String, Map of requested order delivery group summary 58.0
 
 `ConnectApi.RecordField` ConnectApi.RecordField fields.
-on page 2501>
+on page 2514>
 
 `id` String ID of the order delivery group summary. 58.0
 
@@ -20457,22 +21387,22 @@ Apex Reference Guide ConnectApi Output Classes
 `balanceStateExchangeWebCart` `ConnectApi.BalanceStatePreviewOutput` The balance state preview for the exchange web cart. Big, 61.0
 
 ```
-              on page 2182
+              on page 2194
 
 ```
 
 `balanceStateOriginalOrderSummary` `ConnectApi.BalanceStatePreviewOutput` The balance state preview for the original order Big, 61.0
-`on page 2182` summary.
+`on page 2194` summary.
 
 `balanceStateReturnOrder` `ConnectApi.BalanceStatePreviewOutput` The balance state preview for the return order. Big, 61.0
 
 ```
-              on page 2182
+              on page 2194
 
 ```
 
 `changeBalances` `ConnectApi.ChangeItemOutputRepresentation` Change order financial values for a preview order Big, 60.0
-`on page 2234` action.
+`on page 2247` action.
 
 #### errors List< ConnectApi. Any errors that were returned. Big, 60.0
 
@@ -20917,14 +21847,14 @@ product
 #### List< ConnectApi. Items in a cart. 60.0
 
 `CartItemResult` on
-page 2206>
+page 2218>
 
 #### ConnectApi. Product summary for a cart item. 60.0
 
 ```
 CartItemProduct
 
-on page 2205
+on page 2217
 
 ```
 
@@ -20962,7 +21892,7 @@ products
 ProductCartItem
 ```
 
-on page 2463>
+on page 2476>
 
 `totalItemCount` Integer Total number of unique products in the cart. 60.0
 
@@ -21250,7 +22180,7 @@ Delivery estimation information for each product.
 **Property Name** **Type** **Description** **Available Version**
 
 `estimatedDeliveryDate` DatetimeConnectApi.EstimateDeliveryDateOutputRepresentation Estimated delivery date. 63.0
-on page 2299
+on page 2313
 
 `estimatedShipDate` Datetime Estimated shipping date. 63.0
 
@@ -23001,7 +23931,7 @@ are:
 **•** `PricebookEntry`
 
 `displayMetadata` `ConnectApi.RangeFacetDisplayMetadataRepresentation` Metadata required for rendering the range facet. 64.0
-on page 2491
+on page 2504
 
 `displayName` String Display name of the facet. 64.0
 
@@ -23148,7 +24078,7 @@ actionInfo
 
 `ConnectApi.ActionInfo` Name and parameters required for processing and 60.0
 `OutputRepresentation` displaying the recommended action.
-on page 2155
+on page 2165
 
 `businessObjectiveId` String 18-character business objective ID associated with 59.0
 the recommended action.
@@ -23195,7 +24125,7 @@ output
 
 `ConnectApi.ActionInfo` Stores the last executed snapshot of the 61.0
 `OutputRepresentation` recommended action.
-on page 2155
+on page 2165
 
 `rejectionLabel` String Text indicating user rejection of the recommended 59.0
 action.
@@ -23286,7 +24216,7 @@ recommendations
 #### List< ConnectApi.Rec List of recommended actions. 59.0
 
 `Representation` on
-page 2494>
+page 2507>
 
 #### ConnectApi.RecommendationAudience
 
@@ -24934,7 +25864,7 @@ SEE ALSO:
 #### List< ConnectApi. List of search results. 64.0
 
 `SearchResult` on
-page 2519>
+page 2532>
 
 #### ConnectApi.SearchResultGroups ConnectApi.SearchResultGroups
 
@@ -25496,12 +26426,12 @@ Exhange order summary resulting from a submit cart to exchange order action.
 `balanceStateExchangeWebCart` `ConnectApi.BalanceStatePreviewOutput` The balance state preview for the exchange web cart. Big, 61.0
 
 ```
-           on page 2182
+           on page 2194
 
 ```
 
 `balanceStateOriginalOrderSummary` `ConnectApi.BalanceStatePreviewOutput` The balance state preview for the original order Big, 61.0
-`on page 2182` summary.
+`on page 2194` summary.
 
 
 Apex Reference Guide ConnectApi Output Classes
@@ -25511,12 +26441,12 @@ Apex Reference Guide ConnectApi Output Classes
 `balanceStateReturnOrder` `ConnectApi.BalanceStatePreviewOutput` The balance state preview for the return order. Big, 61.0
 
 ```
-              on page 2182
+              on page 2194
 
 ```
 
 `changeBalances` `ConnectApi.ChangeItemOutputRepresentation` Change order financial values for a preview order Big, 60.0
-`on page 2234` action.
+`on page 2247` action.
 
 #### errors List< ConnectApi. Any errors that were returned. Big, 60.0
 
@@ -29074,6 +30004,12 @@ complete.
 
 **•** `Ui` —The action link takes the user to a web page at the action URL.
 
+`ConnectApi.ActivationPlatformCreationType` Creation type of the external platform.
+
+**•** `Json`
+
+**•** `Manual`
+
 `ConnectApi.` Customer file source of the activation platform.
 
 ```
@@ -29084,6 +30020,43 @@ complete.
 **•** `First_Party`
 
 **•** `Third_Party`
+
+`ConnectApi.ActivationPlatformPrivacyType` Privacy type of the external platform.
+
+**•** `NotApplicable`
+
+**•** `ServiceProvider`
+
+**•** `ThirdParty`
+
+**•** `UpdateFailed`
+
+`ConnectApi.ActivationPlatformStatus` Status of the external platform.
+
+**•** `Active`
+
+**•** `Error`
+
+**•** `Inactive`
+
+**•** `Processing`
+
+`ConnectApi.ActivationPlatformType` Platform type of the external platform.
+
+**•** `Advertising`
+
+**•** `Analytics`
+
+**•** `Marketing`
+
+**•** `Publishing`
+
+**•** `Technology`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.ActivationStatus` Status of the activation.
 
@@ -29129,11 +30102,6 @@ complete.
 
 **•** `Business`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `Individual`
 
 `ConnectApi.AccountType` Bank account type.
@@ -29167,6 +30135,11 @@ Apex Reference Guide ConnectApi Enums
 `ConnectApi.Application` Application that initiated the payment request.
 
 **•** `RLM`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Type of operation to perform on articles and topics.
 
@@ -29219,11 +30192,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `Audience` —Criterion based on audience.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `Default` —Audience has no criteria.
 
 **•** `Domain` —Criterion based on domain.
@@ -29253,6 +30221,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `BACS` —Bankers' Automated Clearing Services transaction
 
 **•** `BECS` —Bulk Electronic Clearing System transaction
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `SepaDebit` —Single Euro Payments Area transaction
 
@@ -29300,17 +30273,12 @@ DefinitionTypeEnum
 
 **•** `CALCULATED_METRIC`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `CALCULATED_METRIC`
 
 `ConnectApi.` Type of tax calculation.
 
 ```
-   CalculateTaxType
+CalculateTaxType
 ```
 
 **•** `Actual` —Calculated tax represents the final taxed amount for the transaction.
@@ -29335,6 +30303,11 @@ is finalized.
 **•** `AmericanExpress`
 
 **•** `DinersClub`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `JCB`
 
@@ -29386,11 +30359,6 @@ is finalized.
 
 **•** `Error`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `Info`
 
 **•** `Warning`
@@ -29420,6 +30388,11 @@ cart can’t be modified. This value is available in API version 57.0 and later.
 
 **•** `PendingDelete—` Cart is marked for delete, but the request isn't completed yet. The cart
 can’t be modified.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `Processing—` Cart is processing. For example, taxes are being calculated. The cart can’t
 be modified.
@@ -29465,11 +30438,6 @@ using the Pay Now feature.
 published.
 
 **•** `PublishExisting` —An existing case comment that was republished.
-
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
 
 **•** `PublishExistingByCustomer` —An existing case comment by a customer that
 was republished.
@@ -29517,6 +30485,11 @@ MatchMethodType
 **•** `Fuzzy` —Fuzzy match with medium precision.
 
 **•** `FuzzyHigh` —Fuzzy match with high precision.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `FuzzyLow` —Fuzzy match with low precision.
 
@@ -29575,15 +30548,10 @@ CdpMlPredictAggregateFunctionStatusEnum
 
 **•** `Success`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` Type of the prediction aggregate function.
 
 ```
-   CdpMlPredictAggregateFunctionTypeEnum
+CdpMlPredictAggregateFunctionTypeEnum
 ```
 **•** `Average`
 
@@ -29594,7 +30562,7 @@ Apex Reference Guide ConnectApi Enums
 `ConnectApi.` Status of the prediction.
 
 ```
-   CdpMlPredictStatusEnum
+CdpMlPredictStatusEnum
 ```
 
 **•** `Error`
@@ -29604,7 +30572,7 @@ Apex Reference Guide ConnectApi Enums
 `ConnectApi.` Type of input data for the prediction.
 
 ```
-   CdpMlPredictTypeEnum
+CdpMlPredictTypeEnum
 ```
 
 **•** `RawData` -Raw data.
@@ -29618,6 +30586,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `ContentComment` —Comment holds a content capability.
 
 **•** `TextComment` —Comment contains only text.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Sort order for Commerce addresses.
 
@@ -29686,15 +30659,10 @@ CommerceSearchFacetType
 
 **•** `Range`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` Grouping option for search results.
 
 ```
-   CommerceSearch
+CommerceSearch
 ```
 
 **•** `BestMatch` —Search results are grouped by the best-match product of the variation
@@ -29752,6 +30720,11 @@ IndexStatus
 **•** `Completed`
 
 **•** `Failed`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `InProgress`
 
@@ -29823,11 +30796,6 @@ LabelSuffix
 
 **•** `LowHigh` —Label suffix for 'Low-High'
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `LowestHighest` —Label suffix for 'Lowest-Highest'
 
 **•** `ManyFew` —Label suffix for 'Many-Few'
@@ -29857,6 +30825,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `Za` —Label suffix for 'Z-A'
 
 **•** `ZeroNine` —Label suffix for '0-9'
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Type of sort rule.
 `CommerceSearch` **•**
@@ -29918,18 +30891,13 @@ CommunityFlagVisibility
 **•** `ModeratorsOnly` —The flag is visible only to users with moderation permissions on the
 flagged element or item.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `SelfAndModerators` —The flag is visible to the creator of the flag and to users with
 moderation permissions on the flagged element or item.
 
 `ConnectApi.` Status of the Experience Cloud site.
 
 ```
-   CommunityStatus
+CommunityStatus
 ```
 
 **•** `Live`
@@ -29955,6 +30923,11 @@ moderation permissions on the flagged element or item.
 **•** `Dollar`
 
 **•** `Number`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `Percent`
 
@@ -29997,11 +30970,6 @@ moderation permissions on the flagged element or item.
 **•** `Oauth` —Repository uses OAuth authentication protocol.
 
 **•** `Password` —Repository uses user name and password authentication protocol.
-
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
 
 `ConnectApi.ContentHub` Type of directory entry.
 
@@ -30047,6 +31015,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `FilesOnly` —Includes files only.
 
 **•** `FoldersOnly` —Includes folders only.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.ContentHub` Support for content streaming.
 
@@ -30108,11 +31081,6 @@ CreateCredentialAction
 
 **•** `Refresh`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` Authentication protocol of the external credential.
 
 ```
@@ -30161,6 +31129,11 @@ Token assertion.
 **•** `JwtBearer` —OAuth 2.0 JSON Web Token bearer flow.
 
 **•** `NoAuthentication` —No authentication.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `RolesAnywhere` —AWS Signature Version 4 with Identity and Access Management
 (IAM) Roles Anywhere.
@@ -30218,11 +31191,6 @@ DataCategoryOperator
 
 **•** `Above` —Queries the data category and all of its parent categories.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `AboveOrBelow` —Queries the data category, all of its parent categories, and all of its
 subcategories.
 
@@ -30249,6 +31217,11 @@ subcategories.
 **•** `Direct`
 
 **•** `Related`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.DataExportAttributeType` Type of activation attribute.
 
@@ -30294,11 +31267,6 @@ subcategories.
 
 **•** `Adg`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `AdgActivationAudience`
 
 **•** `AdgExternal`
@@ -30330,6 +31298,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `System`
 
 **•** `Transform`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.DataGraphStatus` Status of the data graph.
 
@@ -30381,11 +31354,6 @@ an org allows the addition of duplicate records in its CRM.
 
 **•** `Active` —The data space is active.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `Error` —The data space has an error.
 
 **•** `Processing` —The data space is being processed.
@@ -30405,7 +31373,7 @@ Apex Reference Guide ConnectApi Enums
 `ConnectApi.EmailMessage` Automation type of the email message.
 
 ```
-   AutomationType
+AutomationType
 ```
 
 **•** `aiAssisted` —The email message was created with the assistance of AI.
@@ -30415,12 +31383,17 @@ Apex Reference Guide ConnectApi Enums
 `ConnectApi.EmailMessage` Direction of an email message on a case.
 
 ```
-   Direction
+Direction
 ```
 
 **•** `Inbound` —An inbound message (sent by a customer).
 
 **•** `Outbound` —An outbound message (sent to a customer by a support agent).
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.EmailMessage` Size of a case’s email message HTML body.
 
@@ -30480,11 +31453,6 @@ ProviderParamType
 
 **•** `RefreshRequestBodyParameter`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `RefreshRequestHttpHeader`
 
 **•** `RefreshRequestQueryParameter`
@@ -30526,6 +31494,11 @@ ParameterType
 **•** `ManagedByFeature`
 
 **•** `SigningCertificate`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Access type of the external credential principal.
 
@@ -30583,11 +31556,6 @@ exist, it isn’t available.
 **•** `AssociatedActions` —The feed element includes information about actions associated
 with it.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `Approval` —The feed element includes information about an approval.
 
 **•** `Banner` —The body of the feed element has an icon and border.
@@ -30619,6 +31587,11 @@ snapshot.
 **•** `DirectMessage` —The feed element is a direct message.
 
 **•** `Edit` —Users who have permission can edit the feed element.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `EmailMessage` —The feed element has an email message from a case.
 
@@ -30659,11 +31632,6 @@ to the feed element instead of comments. Users can also select the best answer.
 **•** `RecordSnapshot` —The feed element has all the snapshot fields of a record for a single
 create record event.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `SocialPost` —The feed element can interact with a social post on a social network.
 
 **•** `Status` —The feed element has a status that determines its visibility.
@@ -30691,6 +31659,11 @@ that can always be gracefully degraded to text-only values.
 **•** `Recommendation` —A recommendation is a feed element with a recommendations
 capability. A recommendation suggests records to follow, groups to join, or applications
 that are helpful to the context user.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.FeedEntity` Status of the feed post or comment.
 
@@ -30732,11 +31705,6 @@ these feed elements have a User or a Group parent record. However, other parent 
 types could be scoped to sites in the future. Feed elements that are always visible in all sites
 are filtered out. This value is valid only for the `UserProfile` feed.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have
 candidate answers associated with them. This value is valid only for users with the Access
 Einstein-Generated Answers permission.
@@ -30763,6 +31731,11 @@ for the context user. This value is valid only for the `Record` feed of a group.
 
 **•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best
 answer.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.FeedItem` Attachment type for feed item output objects.
 
@@ -30806,11 +31779,6 @@ with a parent record with a feed enabled is created or updated.
 **•** `AdvancedTextPost` —A feed item with advanced text formatting, such as a group
 announcement post.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `ApprovalPost` —Feed item with an approval capability. Approvers can act on the feed
 item parent.
 
@@ -30839,6 +31807,11 @@ is created. Contains a link to the new group.
 archived group is activated.
 
 **•** `ContentPost` —Feed item with a content capability.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `CreateRecordEvent` —Feed item that describes a record created in the publisher.
 
@@ -30877,11 +31850,6 @@ Feed.
 
 **•** `TextPost` —Feed item containing text only.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `TrackedChange` —Feed item created when one or more fields on a record have been
 changed.
 
@@ -30917,6 +31885,11 @@ feeds when the `ConnectApi.FeedFilter` is `UnansweredQuestions` .
 **•** `Relevance` —Sorts by most relevant content. This sort order is available only for
 `Company`, `Home`, and `Topics` feeds.
 
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
+
 `ConnectApi.FeedType` Type of feed.
 
 **•** `Bookmarks` —Contains all feed items saved as bookmarks by the context user.
@@ -30950,11 +31923,6 @@ site.
 requested. Allows clients to avoid an empty feed when there aren’t many personalized feed
 items.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `Moderation` —Contains all feed items that are flagged for moderation, except direct
 messages. The moderation feed is available only to users with Moderate Experiences Feeds
 permissions.
@@ -30983,6 +31951,11 @@ context user commented on and feed items created by the context user that are co
 on.
 
 **•** `Topics` —Contains all feed items that include the specified topic.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `UserProfile` —Contains feed items created when a user changes records that can be
 tracked in a feed. Contains feed items whose parent is the user and feed items that @mention
@@ -31025,11 +31998,6 @@ group updates. You can get another user’s user profile feed.
 
 **•** `Email`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `EncryptedString`
 
 **•** `ExtensionEntityLookup`
@@ -31063,6 +32031,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `Picklist`
 
 **•** `PlainTextArea`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `Reference`
 
@@ -31104,11 +32077,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `Underscore`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` Format of the file preview.
 
 ```
@@ -31144,6 +32112,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `NotAvailable` —Preview is unavailable.
 
 **•** `NotScheduled` —Generation of the preview isn’t scheduled yet.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Publish status of the file.
 
@@ -31200,11 +32173,6 @@ new version of a file.
 
 **•** `FilterConjunctionOr`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` Filter operator.
 
 ```
@@ -31236,6 +32204,11 @@ Apex Reference Guide ConnectApi Enums
 `ConnectApi.FilterOperatorDataType` Type of attribute.
 
 **•** `FilterOperatorDataTypeBoolean`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `FilterOperatorDataTypeDate`
 
@@ -31287,11 +32260,6 @@ Apex Reference Guide ConnectApi Enums
 
 **•** `AnyCriterionMatches` —Any audience criterion is true (OR operation).
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `CustomLogicMatches` —Audience criteria match the custom formula (for example,
 (1 AND 2) OR 3).
 
@@ -31327,6 +32295,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `WeeklyDigest`
 
 **•** `Never`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `UseDefault`
 
@@ -31383,15 +32356,10 @@ the invitation.
 
 **•** `Unhandled` —The user couldn’t be added to the group for an unknown reason.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` Group visibility type.
 
 ```
-   GroupVisibilityType
+GroupVisibilityType
 ```
 
 **•** `PrivateAccess` —Only members of the group can see posts to this group.
@@ -31403,7 +32371,7 @@ Apex Reference Guide ConnectApi Enums
 `ConnectApi.HttpRequest` HTTP method.
 
 ```
-   Method
+Method
 ```
 
 **•** `HttpDelete` —Returns HTTP 204 on success. Response body or output class is empty.
@@ -31421,6 +32389,11 @@ class is empty. Exceptions are the batch posting resources and methods, which re
 
 **•** `HttpPut` —Return HTTP 200 on success or HTTP 204 if the response body or output class
 is empty.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Authentication flow to get tokens to call protected APIs.
 
@@ -31474,11 +32447,6 @@ is empty.
 **•** `Unknown` —Link metadata was retrieved, but the type is unknown.
 
 **•** `Video` —Represents a video.
-
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
 
 `ConnectApi.` Type of maintenance.
 
@@ -31535,10 +32503,15 @@ CloneStatus
 
 **•** `Success`
 
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
+
 `ConnectApi.` Type of managed content media.
 
 ```
-ManagedContentMediaType
+   ManagedContentMediaType
 ```
 **•** `Document`
 
@@ -31547,7 +32520,7 @@ ManagedContentMediaType
 `ConnectApi.` Type of managed content node.
 
 ```
-ManagedContentNodeType
+   ManagedContentNodeType
 ```
 
 **•** `Date`
@@ -31571,12 +32544,12 @@ ManagedContentNodeType
 `ConnectApi.` Type of managed content provider.
 
 ```
-ManagedContent
+   ManagedContent
 ```
 
 **•** `DigitalAssetManager`
 ```
-ProviderType
+   ProviderType
 
 ```
 
@@ -31595,11 +32568,6 @@ SpaceChannelOperation
 **•** `Add` —Add a channel to a managed content space.
 
 **•** `Remove` —Remove a channel from a managed content space.
-
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
 
 `ConnectApi.` Status of the add or remove operation for a channel and managed content space.
 
@@ -31657,6 +32625,11 @@ Type
 
 **•** `Content` —Topics that are associated with native content.
 
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
+
 **•** `Featured` —Topics that are featured, for example, on the Experience Cloud site home
 page, but don’t provide overall navigation.
 
@@ -31688,7 +32661,7 @@ site.
 `ConnectApi.` Status of sharing a managed content space folder.
 
 ```
-MCSFolderShareStatus
+   MCSFolderShareStatus
 ```
 
 **•** `PendingShare`
@@ -31696,11 +32669,6 @@ MCSFolderShareStatus
 **•** `PendingUnshare`
 
 **•** `Shared`
-
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
 
 `ConnectApi.` Type of mention completion.
 
@@ -31742,6 +32710,11 @@ mentioned isn’t notified. They don't have access to the parent record that’s
 **•** `FieldChangeName`
 
 **•** `FieldChangeValue`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `Hashtag`
 
@@ -31793,13 +32766,7 @@ NavigationMenuItem
 **•** `Event` —Event-based navigation.
 ```
 ActionType
-
 ```
-
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
 
 Note: `Event` is internal only and can’t be used in custom components.
 
@@ -31847,6 +32814,11 @@ NavigationMenuItemType
 
 **•** `NavigationalTopic` —Dropdown list with links to the navigational topics in your site.
 
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
+
 **•** `SalesforceObject` —Objects such as accounts, cases, contacts, and custom objects.
 
 **•** `SystemLink` —System link, such as a link to Builder, Workspaces, or Setup.
@@ -31854,7 +32826,7 @@ NavigationMenuItemType
 `ConnectApi.` Type of action.
 
 ```
-NBAActionType
+   NBAActionType
 ```
 
 **•** `Flow` —Automated process tool with multiple subtypes.
@@ -31868,7 +32840,7 @@ NBAActionType
 `ConnectApi.` Type of target.
 
 ```
-NBATargetType
+   NBATargetType
 ```
 
 **•** `Recommendation`
@@ -31876,7 +32848,7 @@ NBATargetType
 `ConnectApi.` Operation to carry out on the file.
 
 ```
-OperationType
+   OperationType
 ```
 
 **•** `Add` —Adds the file to the feed element.
@@ -31886,7 +32858,7 @@ OperationType
 `ConnectApi.` Status of the orchestration instance.
 
 ```
-OrchestrationInstanceStatus
+   OrchestrationInstanceStatus
 ```
 **•** `Canceled`
 
@@ -31895,11 +32867,6 @@ OrchestrationInstanceStatus
 **•** `Discontinued`
 
 **•** `Error`
-
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
 
 **•** `InProgress`
 
@@ -31941,6 +32908,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `Assigned`
 
 **•** `Completed`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Sort order for order delivery group summaries.
 
@@ -31998,11 +32970,6 @@ OrderShipmentSort
 
 **•** `ShipmentNumberDesc` —Sorts by shipment number in descending order (9–0).
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.OrderSummary` Order summary adjustment aggregate job status.
 
 ```
@@ -32057,7 +33024,13 @@ PicklistAttributes
 **•** `CaseStatus`
 ```
 ValueType
+
 ```
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `LeadStatus`
 
@@ -32109,15 +33082,10 @@ for `Api` and `ApiAsync` action links.
 
 **•** `SuccessfulStatus` —The action link executed successfully.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` Type of platform action.
 
 ```
-   PlatformActionType
+PlatformActionType
 ```
 
 **•** `ActionLink` —An indicator on a feed element that targets an API, a web page, or a file,
@@ -32146,9 +33114,14 @@ News. Except for the Call action, you can’t edit productivity actions.
 `ConnectApi.` Type of price adjustment for the tier.
 
 ```
-   PriceAdjustmentTierType
+PriceAdjustmentTierType
 ```
 **•** `AmountBasedAdjustment` —Price is adjusted by a specified amount.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `PercentageBasedAdjustment` —Price is adjusted by a specified percentage.
 
@@ -32197,11 +33170,6 @@ News. Except for the Call action, you can’t edit productivity actions.
 
 **•** `Video`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` Usage type of a product media item within a media group.
 
 ```
@@ -32241,6 +33209,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `Draft`
 
 **•** `Live`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Swatch display metadata type.
 
@@ -32303,11 +33276,6 @@ MemberOperationType
 
 **•** `Remove` —Removes specified members from the audience.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.` A way to tie custom recommendations together. For example, display recommendations in
 `RecommendationChannel` specific places in the UI or show recommendations based on time of day or geographic locations.
 
@@ -32335,9 +33303,14 @@ and anywhere community managers add recommendations using Experience Builder.
 `ConnectApi.` Reason for a Chatter recommendation.
 
 ```
-   RecommendationExplanationType
+RecommendationExplanationType
 ```
 **•** `ArticleHasRelatedContent` —Articles with related content to a context article.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `ArticleViewedTogether` —Articles often viewed together with the article that the
 context user just viewed.
@@ -32375,11 +33348,6 @@ the context user views.
 **•** `TopicFollowedTogether` —Topics often followed together with the record that the
 context user just followed.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `TopicFollowedTogetherWithFollowees` —Topics often followed together with
 other records that the context user follows.
 
@@ -32412,6 +33380,11 @@ context user followed .
 **•** `Accepted`
 
 **•** `Rejected`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Type of record being recommended.
 
@@ -32466,11 +33439,6 @@ recommendation.
 
 **•** `Compound`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `CreatedBy`
 
 **•** `Date`
@@ -32508,6 +33476,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `Answered` —Related questions that have at least one answer.
 
 **•** `BestAnswer` —Related questions that have a best answer.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `Generic` —All types of related questions, including answered, with a best answer, and
 unanswered.
@@ -32547,11 +33520,6 @@ unanswered.
 
 **•** `AnyOf` —Any-of operation.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 `ConnectApi.SearchOrder` Order direction.
 
 **•** `Ascending`
@@ -32585,6 +33553,11 @@ a specified time period. When the term ends, the subscription ends.
 **•** `ContentPage`
 
 **•** `SitePage`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 `ConnectApi.` Social network provider.
 
@@ -32634,11 +33607,6 @@ a specified time period. When the term ends, the subscription ends.
 
 **•** `WhatsApp`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `YouTube`
 
 `ConnectApi.SocialPost` Message type of the social post.
@@ -32676,6 +33644,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `Deleted`
 
 **•** `Failed`
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `Hidden`
 
@@ -32719,11 +33692,6 @@ sort order is valid only for Chatter feed streams.
 
 **•** `Group`                  - Service appointment mode is Group.
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `Regular`                  - Default mode of service appointment.
 
 `ConnectApi.TargetType` Target type of a promotion discount.
@@ -32755,6 +33723,11 @@ Apex Reference Guide ConnectApi Enums
 **•** `Credit` —Transaction is a credit transaction.
 
 **•** `Debit` —Transaction is a debit transaction.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `Void` —Reserved for internal use in case of input. In case of output, this value specifies that
 the tax engine has voided the document that's mentioned as the
@@ -32799,11 +33772,6 @@ default.
 
 **•** `Unspecified`
 
-
-Apex Reference Guide ConnectApi Enums
-
-**Enum** **Description**
-
 **•** `Varchar`
 
 `ConnectApi.` Type of vote for a feed element or comment.
@@ -32832,6 +33800,11 @@ received for a user.
 **•** `CompanyVerify` —User verified comment.
 
 **•** `DownVote` —User downvoted a post or comment.
+
+
+Apex Reference Guide ConnectApi Enums
+
+**Enum** **Description**
 
 **•** `FeedEntityRead` —User read a post.
 
@@ -32885,11 +33858,6 @@ page.
 
 **•** `Element` —Tab that displays generic content inline.
 
-
-### Apex Reference Guide ConnectApi Exceptions
-
-**Enum** **Description**
-
 **•** `Feed` —Tab that displays the Chatter feed.
 
 **•** `Overview` —Tab that displays user details.
@@ -32919,6 +33887,11 @@ page.
 **•** `CreatedDateAsc` —Sorts by oldest creation date.
 
 **•** `CreatedDateDesc` —Sorts by most recent creation date.
+
+
+### Apex Reference Guide ConnectApi Exceptions
+
+**Enum** **Description**
 
 `ConnectApi.` Status of a workflow process.
 
@@ -32964,11 +33937,8 @@ page.
 
 ### ConnectApi Exceptions The ConnectApi namespace contains exception classes.
 
-
-### Apex Reference Guide ConnectApi Utilities
-
 All exceptions classes support built-in methods for returning the error message and exception type. See Exception Class and Built-In
-Exceptions on page 3767.
+Exceptions on page 3784.
 
 ### The ConnectApi namespace contains these exceptions:
 
@@ -32991,6 +33961,9 @@ equivalent to receiving a 404 error from Connect REST API.
 503 Service Unavailable error from Connect REST API.
 
 ### ConnectApi Utilities The ConnectApi namespace contains a utility class.
+
+
+### Apex Reference Guide ConnectApi Release Notes
 
 **Utility** **Description**
 
@@ -33039,23 +34012,17 @@ Map<String,Object> Image =
 
 (Map<String,Object>)ConnectApi.ConnectUtilities.unwrapApexWrapper(contentBody.get('Image'));
 
-```
+//after image field ApexWrapper is unwrapped
 
+system.debug(Image);
 
-### Apex Reference Guide ConnectApi Release Notes
+//replace wrapped primary_image in contentBody with unwrapped version
 
-```
-   //after image field ApexWrapper is unwrapped
+contentBody.put('Image', Image);
 
-   system.debug(Image);
+//after contentBody field ApexWrapper is unwrapped, with image field also unwrapped
 
-   //replace wrapped primary_image in contentBody with unwrapped version
-
-   contentBody.put('Image', Image);
-
-   //after contentBody field ApexWrapper is unwrapped, with image field also unwrapped
-
-   system.debug(contentBody);
+system.debug(contentBody);
 
 ### ConnectApi Release Notes
 
@@ -33068,7 +34035,8 @@ Use the Salesforce Release Notes to learn about the most recent updates and chan
 [For new and changed ConnectApi classes and enums, see ConnectApi (Connect in Apex): New and Changed Classes and Enums in the](https://help.salesforce.com/s/articleView?id=release-notes.rn_connect_in_apex.htm&language=en_US)
 Salesforce Release Notes.
 
-## Context Namespace The Context namespace provides classes and methods to manage the sharing and consumption of business application data by
+
+## Apex Reference Guide Context Namespace Context Namespace The Context namespace provides classes and methods to manage the sharing and consumption of business application data by
 
 using Context Service.
 
@@ -33094,9 +34062,6 @@ a method that indicates whether the pagination cursor has fetched all available 
 DeletedRecord Class
 Contains information about a deleted record.
 
-
-Apex Reference Guide Database Namespace
-
 DeleteResult Class
 Represents the result of a delete DML operation returned by the `Database.delete` method.
 
@@ -33119,6 +34084,9 @@ has set up duplicate rules, which are part of the Duplicate Management feature.
 
 EmptyRecycleBinResult Class
 The result of the emptyRecycleBin DML operation returned by the `Database.emptyRecycleBin` method.
+
+
+### Apex Reference Guide Batchable Interface
 
 Error Class
 Represents information about an error that occurred during a DML operation when using a Database method.
@@ -33157,8 +34125,7 @@ The result of an undelete DML operation returned by the `Database.undelete` meth
 UpsertResult Class
 The result of an upsert DML operation returned by the `Database.upsert` method.
 
-
-### Apex Reference Guide Batchable Interface Batchable Interface
+### Batchable Interface
 
 The class that implements this interface can be executed as a batch Apex job.
 
@@ -33174,6 +34141,9 @@ _[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.
 
 ### The following are methods for Batchable .
 
+
+Apex Reference Guide Batchable Interface
+
 IN THIS SECTION:
 
 ##### execute(jobId, recordList)
@@ -33181,7 +34151,8 @@ IN THIS SECTION:
 Gets invoked when the batch job executes and operates on one batch of records. Contains or calls the main execution logic for the
 batch job.
 
-finish(jobId)
+##### finish(jobId)
+
 Gets invoked when the batch job finishes. Place any clean up code in this method.
 
 start(jobId)
@@ -33220,9 +34191,6 @@ Type: List<sObject>
 
 Contains the batch of records to process.
 
-
-Apex Reference Guide Batchable Interface
-
 Return Value
 
 Type: Void
@@ -33247,6 +34215,9 @@ Parameters
 Type: Database.BatchableContext
 
 Contains the job ID.
+
+
+### Apex Reference Guide BatchableContext Interface
 
 Return Value
 
@@ -33288,9 +34259,6 @@ Signature
 
 ```
 
-
-### Apex Reference Guide BatchableContext Interface
-
 Parameters
 
 ```
@@ -33309,6 +34277,9 @@ Type: Database.QueryLocator
 
 Represents the parameter type of a batch job method and contains the batch job ID. This interface is implemented internally by Apex.
 
+
+### Apex Reference Guide Cursor Class
+
 Namespace
 
 Database
@@ -33317,9 +34288,7 @@ SEE ALSO:
 
 Batchable Interface
 
-#### BatchableContext Methods
-
-### The following are methods for BatchableContext .
+#### BatchableContext Methods The following are methods for BatchableContext .
 
 IN THIS SECTION:
 
@@ -33350,9 +34319,6 @@ Type: ID
 
 Returns the batch job ID.
 
-
-### Apex Reference Guide Cursor Class
-
 Signature
 
 ```
@@ -33372,6 +34338,9 @@ Namespace
 
 Database
 
+
+Apex Reference Guide Cursor Class
+
 Usage
 
 A cursor is created when a SOQL query is executed on a `Database.getCursor()` or a `Database.getCursorWithBinds()`
@@ -33381,17 +34350,19 @@ is 50 million, regardless of the operation being synchronous or asynchronous.
 Example
 
 ```
-   public class QueryChunkingQueuable implements Queueable {
+   public with sharing class QueryChunkingQueueable implements Queueable {
 
       private Database.Cursor locator;
 
-      private integer position;
+      private Integer position;
 
-      public QueryChunkingQueuable() {
+      public QueryChunkingQueueable() {
 
-        locator = Database.getCursor
+        locator = Database.getCursor(
 
-              ('SELECT Id FROM Contact WHERE LastActivityDate = LAST_N_DAYS:400');
+           'SELECT Id FROM Contact WHERE LastActivityDate = LAST_N_DAYS:400',
+
+           AccessLevel.USER_MODE);
 
         position = 0;
 
@@ -33399,13 +34370,25 @@ Example
 
       public void execute(QueueableContext ctx) {
 
+        Integer remainingRows = locator.getNumRecords() - position;
+
+        if (remainingRows == 0) {
+
+           return; // Nothing to do
+
+        }
+
+        // Take the minimum of batch size and remaining rows to avoid over-fetching
+
+        Integer fetchSize = Math.min(200, remainingRows);
+
         List<Contact> scope = locator.fetch(position, 200);
 
         position += scope.size();
 
         // do something, like archive or delete the scope list records
 
-        if(position < locator.getNumRecords() ) {
+        if (position < locator.getNumRecords()) {
 
            // process the next chunk
 
@@ -33421,20 +34404,17 @@ Example
 
 IN THIS SECTION:
 
-Cursor Methods
-
-
-Apex Reference Guide Cursor Class
-
-#### Cursor Methods The following are methods for Cursor .
+#### Cursor Methods Cursor Methods The following are methods for Cursor .
 
 IN THIS SECTION:
 
-##### fetch(position, count)
-
+fetch(position, count)
 Fetches cursor rows that correspond to the offset position and the specified record count. The maximum number of rows per cursor
 is 50 million, regardless of the operation being synchronous or asynchronous. Calling the `Cursor.fetch()` method counts
 against the SOQL query limit, and the rows fetched count against the SOQL query row limit.
+
+
+### Apex Reference Guide CursorFetchResult Class
 
 ##### getNumRecords()
 
@@ -33473,7 +34453,7 @@ The number of sObjects to fetch from the cursor, up to a maximum of 2,000.
 
 Return Value
 
-Type: List on page 3874<sObject>
+Type: List on page 3891<sObject>
 
 The list of sObjects from the SOQL query, starting from the specified position.
 
@@ -33492,8 +34472,7 @@ Return Value
 
 Type: Integer
 
-
-### Apex Reference Guide CursorFetchResult Class CursorFetchResult Class
+### CursorFetchResult Class
 
 This class encapsulates the result of a `PaginationCursor.fetchPage()` call. It contains methods that get the rows for the
 current page, the start index of the next page, and the number of deleted rows skipped during the fetch operation. It also contains a
@@ -33503,11 +34482,12 @@ Namespace
 
 Database
 
+
+Apex Reference Guide CursorFetchResult Class
+
 IN THIS SECTION:
 
-#### CursorFetchResult Methods CursorFetchResult Methods
-
-### The following are methods for CursorFetchResult .
+#### CursorFetchResult Methods CursorFetchResult Methods The following are methods for CursorFetchResult .
 
 IN THIS SECTION:
 
@@ -33520,7 +34500,8 @@ Gets the start index required to fetch the next page of results. Use this value 
 
 Gets the number of deleted rows that were skipped during the fetch operation.
 
-getRecords()
+##### getRecords()
+
 Gets the list of records that comprise the rows on the current page.
 
 isDone()
@@ -33547,9 +34528,6 @@ Type: Integer
 
 Gets the number of deleted rows that were skipped during the fetch operation.
 
-
-### Apex Reference Guide DeletedRecord Class
-
 Signature
 
 ```
@@ -33565,6 +34543,9 @@ Type: Integer
 
 Gets the list of records that comprise the rows on the current page.
 
+
+### Apex Reference Guide DeletedRecord Class
+
 Signature
 
 ```
@@ -33574,7 +34555,7 @@ Signature
 
 Return Value
 
-Type: List on page 3874<sObject>
+Type: List on page 3891<sObject>
 
 The list of sObjects from the SOQL query for the current page.
 
@@ -33610,16 +34591,18 @@ Namespace
 
 Database
 
-
-### Apex Reference Guide DeleteResult Class
-
 Usage
 
 The `getDeletedRecords` method of the `Database.GetDeletedResult` class returns a list of
 `Database.DeletedRecord` objects. Use the methods in the `Database.DeletedRecord` class to retrieve details about
 each deleted record.
 
-#### DeletedRecord Methods The following are methods for DeletedRecord . All are instance methods.
+#### DeletedRecord Methods
+
+### The following are methods for DeletedRecord . All are instance methods.
+
+
+### Apex Reference Guide DeleteResult Class
 
 IN THIS SECTION:
 
@@ -33669,15 +34652,15 @@ Namespace
 
 Database
 
-
-Apex Reference Guide DeleteResult Class
-
 Usage
 
 An array of `Database.DeleteResult` objects is returned with the `delete` database method. Each element in the DeleteResult
 array corresponds to the sObject array passed as the _`sObject[]`_ parameter in the `delete` Database method; that is, the first
 element in the DeleteResult array matches the first element passed in the sObject array, the second element corresponds with the second
 element, and so on. If only one sObject is passed in, the DeleteResult array contains a single element.
+
+
+Apex Reference Guide DeleteResult Class
 
 Example
 
@@ -33731,7 +34714,8 @@ that was processed successfully to the debug log, or error messages and fields o
 
 IN THIS SECTION:
 
-getErrors()
+##### getErrors()
+
 If an error occurred, returns an array of one or more database error objects providing the error code and description. If no error
 occurred, returns an empty set.
 
@@ -33740,9 +34724,6 @@ Returns the ID of the sObject you were trying to delete.
 
 isSuccess()
 A Boolean value that is set to `true` if the DML operation was successful for this object, `false` otherwise.
-
-
-### Apex Reference Guide DMLOptions Class
 
 ##### getErrors()
 
@@ -33755,6 +34736,9 @@ Signature
    public Database.Error[] getErrors()
 
 ```
+
+
+### Apex Reference Guide DMLOptions Class
 
 Return Value
 
@@ -33804,15 +34788,15 @@ Usage
 only for record operations performed using Apex DML and not through the Salesforce user interface. The DMLOptions class has three
 child options.
 
-
-Apex Reference Guide DMLOptions Class
-
 **DML Child Options**
 
 DmlOptions.AssignmentRuleHeader—Enables setting assignment rule options.
 
 DmlOptions.DuplicateRuleHeader—Determines options for using duplicate rules to detect duplicate records. Duplicate rules are
 part of the Duplicate Management feature.
+
+
+Apex Reference Guide DMLOptions Class
 
 DmlOptions.EmailHeader—Enables setting email options.
 
@@ -33830,7 +34814,8 @@ IN THIS SECTION:
 
 Specifies the truncation behavior of large strings.
 
-assignmentRuleHeader
+##### assignmentRuleHeader
+
 Specifies the assignment rule to be used when creating a case or lead.
 
 emailHeader
@@ -33865,12 +34850,12 @@ For API version 15.0 and later, if a value is specified that is too large, the o
 
 behavior in Apex saved against API versions 15.0 and later.
 
-
-Apex Reference Guide DMLOptions Class
-
 ##### assignmentRuleHeader
 
 Specifies the assignment rule to be used when creating a case or lead.
+
+
+Apex Reference Guide DMLOptions Class
 
 Signature
 
@@ -33934,12 +34919,12 @@ Signature
 
 ```
 
-
-### Apex Reference Guide DmlOptions.AssignmentRuleHeader Class
-
 Property Value
 
 Type: Database.DMLOptions.LocaleOptions
+
+
+### Apex Reference Guide DmlOptions.AssignmentRuleHeader Class
 
 Usage
 
@@ -33997,16 +34982,19 @@ The following example uses the `useDefaultRule` option:
 
 ```
 
-
-Apex Reference Guide DmlOptions.AssignmentRuleHeader Class
-
-##### The following example uses the assignmentRuleID option:
+The following example uses the `assignmentRuleID` option:
 
 ```
    Database.DMLOptions dmo = new Database.DMLOptions();
 
    dmo.assignmentRuleHeader.assignmentRuleId= '01QD0000000EqAn';
 
+```
+
+
+Apex Reference Guide DmlOptions.AssignmentRuleHeader Class
+
+```
    Lead l = new Lead(company='ABC', lastname='Smith');
 
    l.setOptions(dmo);
@@ -34482,7 +35470,7 @@ Example
 
 This example shows the code used to get the possible duplicates and related match information after saving a new contact. This code
 is part of a custom application that implements duplicate management when users add a contact. See DuplicateResult Class on page
-2681 to check out the entire sample applicaton.
+2695 to check out the entire sample applicaton.
 
 ```
    Datacloud.DuplicateResult duplicateResult =
@@ -35861,8 +36849,8 @@ Database
 
 Usage
 
-A pagination cursor is created when a SOQL query is executed on a `Database.getPaginationCursor()` on page 3634 or a
-`Database.getPaginationCursorWithBinds()` on page 3635 call. When the SOQL query is invoked, the corresponding
+A pagination cursor is created when a SOQL query is executed on a `Database.getPaginationCursor()` on page 3651 or a
+`Database.getPaginationCursorWithBinds()` on page 3652 call. When the SOQL query is invoked, the corresponding
 rows are returned from the pagination cursor.
 
 Use a pagination cursor for traversing human-viewable data, such as a list of records in a UI. The maximum number of rows per pagination
@@ -35968,7 +36956,7 @@ The maximum number of rows to include on the current page.
 
 Return Value
 
-Type: Database.CursorFetchResult on page 2633
+Type: Database.CursorFetchResult on page 2646
 
 Contains the rows for the current page and the information used to fetch the next page.
 
@@ -36335,7 +37323,7 @@ Example
 
 This example shows the code used to process duplicate records, which are detected when there is an unsuccessful save due to an error.
 This code is part of a custom application that implements duplicate management when users add a contact. See DuplicateResult Class
-on page 2681 to check out the entire sample applicaton.
+on page 2695 to check out the entire sample applicaton.
 
 ```
    if (!saveResult.isSuccess()) { ... }
@@ -36975,7 +37963,7 @@ Example
 
 This example shows the code used to display the error message when duplicates are found while saving a new contact. This code is part
 of a custom application that lets users add a contact. When a contact is saved, an alert displays if there are duplicate records. Review
-DuplicateResult Class on page 2681 to check out the entire sample applicaton.
+DuplicateResult Class on page 2695 to check out the entire sample applicaton.
 
 ```
    ApexPages.Message errorMessage = new ApexPages.Message(
@@ -37010,7 +37998,7 @@ Example
 
 This example shows the code used to return duplicate record and match information and assign it to the `matchResults` variable.
 This code is part of a custom application that implements duplicate management when users add a contact. See DuplicateResult Class
-on page 2681 to check out the entire sample applicaton.
+on page 2695 to check out the entire sample applicaton.
 
 ```
    Datacloud.MatchResult[] matchResults =
@@ -37158,11 +38146,11 @@ duplicate rules.
 order. The output objects encapsulate record IDs for duplicate records. The output objects also contain values from the duplicate
 records.
 
-**•** Each element contains an array of `DuplicateResult` on page 2681 objects, which each represent a duplicate rule that
-`FindDuplicates` applied. Within each `DuplicateResult` object is an array of `MatchResult` on page 2697 objects,
+**•** Each element contains an array of `DuplicateResult` on page 2695 objects, which each represent a duplicate rule that
+`FindDuplicates` applied. Within each `DuplicateResult` object is an array of `MatchResult` on page 2711 objects,
 which each represent a matching rule that the duplicate rule applied. If `FindDuplicates` doesn’t find any duplicates for
-that matching rule, then the `MatchResult.getMatchRecords()` on page 2698 array is empty. Otherwise, the
-`MatchResult.getMatchRecords()` array contains `MatchRecord` on page 2695 elements, which each represent a
+that matching rule, then the `MatchResult.getMatchRecords()` on page 2712 array is empty. Otherwise, the
+`MatchResult.getMatchRecords()` array contains `MatchRecord` on page 2709 elements, which each represent a
 duplicate record.
 
 **•** If no duplicate rule is active for the object type in the input array, a `System.HandledException` exception is thrown
@@ -37370,11 +38358,11 @@ Apex Reference Guide FindDuplicatesByIds Class
 the same order. The output objects encapsulate record IDs for duplicate records. The output objects also contain values from
 the duplicate records.
 
-**•** Each element contains an array of `DuplicateResult` on page 2681 objects, which each represent a duplicate rule that
-`FindDuplicatesByIds` applied. Within each `DuplicateResult` object is an array of `MatchResult` on page 2697
+**•** Each element contains an array of `DuplicateResult` on page 2695 objects, which each represent a duplicate rule that
+`FindDuplicatesByIds` applied. Within each `DuplicateResult` object is an array of `MatchResult` on page 2711
 objects, which each represent a matching rule that the duplicate rule applied. If `FindDuplicatesByIds` doesn’t find any
-duplicates for that matching rule, then the `MatchResult.getMatchRecords()` on page 2698 array is empty. Otherwise,
-the `MatchResult.getMatchRecords()` array contains `MatchRecord` on page 2695 objects, which each represent
+duplicates for that matching rule, then the `MatchResult.getMatchRecords()` on page 2712 array is empty. Otherwise,
+the `MatchResult.getMatchRecords()` array contains `MatchRecord` on page 2709 objects, which each represent
 a duplicate record.
 
 **•** If no duplicate rule is active for the object type of the record IDs in the input array, a `System.HandledException`
@@ -38410,1532 +39398,3 @@ related records in an indirect lookup relationship. Applies only when the column
 other data types, this value is ignored.
 
 referenceTo
-API name of the parent object in the relationship that’s represented by this column. Applies only when the column’s data type is
-`LOOKUP_TYPE`, `EXTERNAL_LOOKUP_TYPE`, or `INDIRECT_LOOKUP_TYPE` . For other data types, this value is ignored.
-
-sortable
-Whether a result set can be sorted based on the values of the column via an `ORDER BY` clause.
-
-type
-Data type of the column.
-
-##### decimalPlaces
-
-If the data type is numeric, the number of decimal places to the right of the decimal point.
-
-Signature
-
-```
-   public Integer decimalPlaces {get; set;}
-
-```
-
-Property Value
-
-Type: Integer
-
-##### description
-
-Description of what the column represents.
-
-
-Apex Reference Guide Column Class
-
-Signature
-
-```
-   public String description {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### filterable
-
-Whether a result set can be filtered based on the values of the column.
-
-Signature
-
-```
-   public Boolean filterable {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### **`isPicklistAlphabeticallySorted`**
-
-Returns `true` if the picklist is sorted alphabetically, `false` otherwise.
-
-Signature
-
-```
-   public Boolean isPicklistAlphabeticallySorted {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### **`isPicklistRestricted`**
-
-Returns `true` if the picklist is restricted, `false` otherwise.
-
-Signature
-
-```
-   public Boolean isPicklistRestricted {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### label
-
-User-friendly name for the column that appears in the Salesforce user interface.
-
-Signature
-
-```
-   public String label {get; set;}
-
-```
-
-
-Apex Reference Guide Column Class
-
-Property Value
-
-Type: String
-
-##### length
-
-If the column is a string data type, the number of characters in the column. If the column is a numeric data type, the total number of
-digits on both sides of the decimal point, but excluding the decimal point.
-
-Signature
-
-```
-   public Integer length {get; set;}
-
-```
-
-Property Value
-
-Type: Integer
-
-##### name
-
-Name of the column in the external system.
-
-Signature
-
-```
-   public String name {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### **`picklistValues`**
-
-If the data type is a picklist, the picklist values.
-
-Signature
-
-```
-   public List<Map<String,String>> picklistValues {get; set;}
-
-```
-
-Property Value
-
-Type: List<Map<String,String>>
-
-##### referenceTargetField
-
-API name of the custom field on the parent object whose values are compared against this column’s values. Matching values identify
-related records in an indirect lookup relationship. Applies only when the column’s data type is `INDIRECT_LOOKUP_TYPE` . For other
-data types, this value is ignored.
-
-Signature
-
-```
-   public String referenceTargetField {get; set;}
-
-```
-
-
-Apex Reference Guide Column Class
-
-Property Value
-
-Type: String
-
-##### referenceTo
-
-API name of the parent object in the relationship that’s represented by this column. Applies only when the column’s data type is
-`LOOKUP_TYPE`, `EXTERNAL_LOOKUP_TYPE`, or `INDIRECT_LOOKUP_TYPE` . For other data types, this value is ignored.
-
-Signature
-
-```
-   public String referenceTo {get; set;}
-
-```
-
-Property Value
-
-Type: String
-
-##### sortable
-
-Whether a result set can be sorted based on the values of the column via an `ORDER BY` clause.
-
-Signature
-
-```
-   public Boolean sortable {get; set;}
-
-```
-
-Property Value
-
-Type: Boolean
-
-##### type
-
-Data type of the column.
-
-Signature
-
-```
-   public DataSource.DataType type {get; set;}
-
-```
-
-Property Value
-
-Type: DataSource.DataType
-
-#### Column Methods The following are methods for Column .
-
-IN THIS SECTION:
-
-boolean(name)
-Returns a new column of data type `BOOLEAN_TYPE` .
-
-currency(name, length, decimalPlaces)
-Returns a new column of data type `CURRENCY_TYPE` .
-
-
-Apex Reference Guide Column Class
-
-date(name)
-Returns a new column of data type `DATE_TYPE` .
-
-datetime(name)
-Returns a new column of data type `DATETIME_TYPE` .
-
-email(name)
-Returns a new column of data type `EMAIL_TYPE` .
-
-externalLookup(name, domain)
-Returns a new column of data type `EXTERNAL_LOOKUP_TYPE` .
-
-get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces, referenceTo, referenceTargetField, picklistValuesObj,
-isPicklistAlphabeticallySorted, isPicklistRestricted)
-Returns a new column with the 13 specified `Column` property values.
-
-get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces, referenceTo, referenceTargetField)
-Returns a new column with the ten specified `Column` property values.
-
-get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces)
-Returns a new column with the eight specified `Column` property values.
-
-get(name, label, description, isSortable, isFilterable, type, length)
-Returns a new column with the seven specified `Column` property values.
-
-indirectLookup(name, domain, targetField)
-Returns a new column of data type `INDIRECT_LOOKUP_TYPE` .
-
-integer(name, length)
-Returns a new numeric column with no decimal places using the specified name and length.
-
-lookup(name, domain)
-Returns a new column of data type `LOOKUP_TYPE` .
-
-multipicklist(name, picklistValues, isPicklistAlphabeticallySorted, isPicklistRestricted)
-Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values. You can
-also specify whether the picklist is sorted alphabetically or if the picklist is restricted.
-
-multipicklist(name, picklistValues)
-Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values.
-
-number(name, length, decimalPlaces)
-Returns a new column of data type `NUMBER_TYPE` .
-
-percent(name, length, decimalPlaces)
-Returns a new column of data type `PERCENT_TYPE` .
-
-phone(name)
-Returns a new column of data type `PHONE_TYPE` .
-
-picklist(name, picklistValues, isPicklistAlphabeticallySorted, isPicklistRestricted)
-Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values. You can also specify whether
-the picklist is sorted alphabetically or if the picklist is restricted.
-
-picklist(name, picklistValues)
-Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values.
-
-
-Apex Reference Guide Column Class
-
-text(name, label, length)
-Returns a new column of data type `STRING_SHORT_TYPE` or `STRING_LONG_TYPE`, with the specified name, label, and
-length.
-
-text(name, length)
-Returns a new column of data type `STRING_SHORT_TYPE` or `STRING_LONG_TYPE`, with the specified name and length.
-
-text(name)
-Returns a new column of data type `STRING_SHORT_TYPE` with the specified name and the length of 255 characters.
-
-textarea(name)
-Returns a new column of data type `STRING_LONG_TYPE` with the specified name and the length of 32,000 characters.
-
-time(name)
-Returns a new column of data type `Time` with the specified name.
-
-url(name, length)
-Returns a new column of data type `URL_TYPE` with the specified name and length.
-
-url(name)
-Returns a new column of data type `URL_TYPE` with the specified name and the length of 1,000 characters.
-
-##### boolean(name)
-
-Returns a new column of data type `BOOLEAN_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column boolean(String name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-Return Value
-
-Type: DataSource.Column
-
-##### **`currency(name, length, decimalPlaces)`**
-
-Returns a new column of data type `CURRENCY_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column currency(String name, Integer length, Integer
-
-   decimalPlaces)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-
-Apex Reference Guide Column Class
-
-Name of the column.
-
-```
-   length
-```
-
-Type: Integer
-
-Number of characters allowed in the column.
-
-```
-   decimalPlaces
-```
-
-Type: Integer
-
-Number of decimal places to the right of the decimal point.
-
-Return Value
-
-Type: DataSource.Column
-
-##### **`date(name)`**
-
-Returns a new column of data type `DATE_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column date(String name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-Return Value
-
-Type: DataSource.Column
-
-##### **`datetime(name)`**
-
-Returns a new column of data type `DATETIME_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column datetime(String name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-Return Value
-
-Type: DataSource.Column
-
-
-Apex Reference Guide Column Class
-
-##### **`email(name)`**
-
-Returns a new column of data type `EMAIL_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column email(String name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-Return Value
-
-Type: DataSource.Column
-
-##### externalLookup(name, domain)
-
-Returns a new column of data type `EXTERNAL_LOOKUP_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column externalLookup(String name, String domain)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-```
-   domain
-```
-
-Type: String
-
-API name of the parent object in the external lookup relationship.
-
-Return Value
-
-Type: DataSource.Column
-
-The returned column has these property values.
-
-**Property** **Value**
-
-name _`name`_
-
-label _`name`_
-
-description _`name`_
-
-isSortable true
-
-isFilterable true
-
-
-Apex Reference Guide Column Class
-
-**Property** **Value**
-
-type DataSource.DataType.EXTERNAL_LOOKUP_TYPE
-
-length 255
-
-decimalPlaces 0
-
-referenceTo _`domain`_
-
-referenceTargetField null
-
-##### **`get(name, label, description, isSortable, isFilterable, type, length,`**
-
-```
-  decimalPlaces, referenceTo, referenceTargetField, picklistValuesObj,
-
-  isPicklistAlphabeticallySorted, isPicklistRestricted)
-
-```
-
-Returns a new column with the 13 specified `Column` property values.
-
-Signature
-
-```
-   public static DataSource.Column get(String name, String label, String description,
-
-   Boolean isSortable, Boolean isFilterable, DataSource.DataType type, Integer length,
-
-   Integer decimalPlaces, String referenceTo, String referenceTargetField, Object
-
-   picklistValuesObj, Boolean isPicklistAlphabeticallySorted, Boolean isPicklistRestricted)
-
-```
-
-Parameters
-
-See Column Properties on page 2706 for information about each parameter.
-
-```
-   name
-```
-
-Type: String
-
-```
-   label
-```
-
-Type: String
-
-```
-   description
-```
-
-Type: String
-
-```
-   isSortable
-```
-
-Type: Boolean
-
-```
-   isFilterable
-```
-
-Type: Boolean
-
-```
-   type
-```
-
-Type: DataSource.DataType
-
-```
-   length
-```
-
-Type: Integer
-
-```
-   decimalPlaces
-```
-
-Type: Integer
-
-```
-   referenceTo
-```
-
-Type: String
-
-
-Apex Reference Guide Column Class
-
-```
-   referenceTargetField
-```
-
-Type: String
-
-```
-   picklistValuesObj
-```
-
-Type: Object
-
-```
-   isPicklistAlphabeticallySorted
-```
-
-Type: Boolean
-
-```
-   isPicklistRestricted
-```
-
-Type: Boolean
-
-Return Value
-
-Type: DataSource.Column
-
-##### get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces, referenceTo,
-
-referenceTargetField)
-
-Returns a new column with the ten specified `Column` property values.
-
-Signature
-
-```
-   public static DataSource.Column get(String name, String label, String description,
-
-   Boolean isSortable, Boolean isFilterable, DataSource.DataType type, Integer length,
-
-   Integer decimalPlaces, String referenceTo, String referenceTargetField)
-
-```
-
-Parameters
-
-See Column Properties on page 2706 for information about each parameter.
-
-```
-   name
-```
-
-Type: String
-
-```
-   label
-```
-
-Type: String
-
-```
-   description
-```
-
-Type: String
-
-```
-   isSortable
-```
-
-Type: Boolean
-
-```
-   isFilterable
-```
-
-Type: Boolean
-
-```
-   type
-```
-
-Type: DataSource.DataType
-
-```
-   length
-```
-
-Type: Integer
-
-```
-   decimalPlaces
-```
-
-Type: Integer
-
-```
-   referenceTo
-```
-
-Type: String
-
-
-Apex Reference Guide Column Class
-
-```
-   referenceTargetField
-```
-
-Type: String
-
-Return Value
-
-Type: DataSource.Column
-
-##### get(name, label, description, isSortable, isFilterable, type, length, decimalPlaces)
-
-Returns a new column with the eight specified `Column` property values.
-
-Signature
-
-```
-   public static DataSource.Column get(String name, String label, String description,
-
-   Boolean isSortable, Boolean isFilterable, DataSource.DataType type, Integer length,
-
-   Integer decimalPlaces)
-
-```
-
-Parameters
-
-See Column Properties on page 2706 for information about each parameter.
-
-```
-   name
-```
-
-Type: String
-
-```
-   label
-```
-
-Type: String
-
-```
-   description
-```
-
-Type: String
-
-```
-   isSortable
-```
-
-Type: Boolean
-
-```
-   isFilterable
-```
-
-Type: Boolean
-
-```
-   type
-```
-
-Type: DataSource.DataType
-
-```
-   length
-```
-
-Type: Integer
-
-```
-   decimalPlaces
-```
-
-Type: Integer
-
-Return Value
-
-Type: DataSource.Column
-
-##### get(name, label, description, isSortable, isFilterable, type, length)
-
-Returns a new column with the seven specified `Column` property values.
-
-
-Apex Reference Guide Column Class
-
-Signature
-
-```
-   public static DataSource.Column get(String name, String label, String description,
-
-   Boolean isSortable, Boolean isFilterable, DataSource.DataType type, Integer length)
-
-```
-
-Parameters
-
-See Column Properties on page 2706 for information about each parameter.
-
-```
-   name
-```
-
-Type: String
-
-```
-   label
-```
-
-Type: String
-
-```
-   description
-```
-
-Type: String
-
-```
-   isSortable
-```
-
-Type: Boolean
-
-```
-   isFilterable
-```
-
-Type: Boolean
-
-```
-   type
-```
-
-Type: DataSource.DataType
-
-```
-   length
-```
-
-Type: Integer
-
-Return Value
-
-Type: DataSource.Column
-
-##### indirectLookup(name, domain, targetField)
-
-Returns a new column of data type `INDIRECT_LOOKUP_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column indirectLookup(String name, String domain, String
-
-   targetField)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-```
-   domain
-```
-
-Type: String
-
-API name of the parent object in the indirect lookup relationship.
-
-```
-   targetField
-```
-
-Type: String
-
-
-Apex Reference Guide Column Class
-
-API name of the custom field on the parent object whose values are compared against this column’s values. Matching values identify
-related records in an indirect lookup relationship.
-
-Return Value
-
-Type: DataSource.Column
-
-The returned column has these property values.
-
-**Property** **Value**
-
-name _`name`_
-
-label _`name`_
-
-description _`name`_
-
-isSortable true
-
-isFilterable true
-
-type DataSource.DataType.INDIRECT_LOOKUP_TYPE
-
-length 255
-
-decimalPlaces 0
-
-referenceTo _`domain`_
-
-referenceTargetField _`targetField`_
-
-##### integer(name, length)
-
-Returns a new numeric column with no decimal places using the specified name and length.
-
-Signature
-
-```
-   public static DataSource.Column integer(String name, Integer length)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-The column name.
-
-```
-   length
-```
-
-Type: Integer
-
-The column length.
-
-Return Value
-
-Type: DataSource.Column
-
-
-Apex Reference Guide Column Class
-
-##### lookup(name, domain)
-
-Returns a new column of data type `LOOKUP_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column lookup(String name, String domain)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-```
-   domain
-```
-
-Type: String
-
-API name of the parent object in the lookup relationship.
-
-Return Value
-
-Type: DataSource.Column
-
-The returned column has these property values.
-
-**Property** **Value**
-
-name _`name`_
-
-label _`name`_
-
-description _`name`_
-
-isSortable true
-
-isFilterable true
-
-type DataSource.DataType.LOOKUP_TYPE
-
-length 255
-
-decimalPlaces 0
-
-referenceTo _`domain`_
-
-referenceTargetField null
-
-##### **`multipicklist(name, picklistValues, isPicklistAlphabeticallySorted,`**
-
-```
-  isPicklistRestricted)
-
-```
-
-Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values. You can also
-specify whether the picklist is sorted alphabetically or if the picklist is restricted.
-
-
-Apex Reference Guide Column Class
-
-Signature
-
-```
-   public static DataSource.Column multipicklist(String name, List<Map<String,String>>
-
-   picklistValues, Boolean isPicklistAlphabeticallySorted, Boolean isPicklistRestricted)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-```
-   picklistValues
-```
-
-Type: List<Map<String,String>>
-
-```
-   isPicklistAlphabeticallySorted
-```
-
-Indicates whether the picklist is sorted alphabetically.
-
-```
-   isPicklistRestricted
-```
-
-Type: Boolean
-
-Indicates whether the picklist is restricted.
-
-Return Value
-
-Type: DataSource.Column
-
-##### **`multipicklist(name, picklistValues)`**
-
-Returns a new column of data type `PICKLIST_MULTISELECT_TYPE` with the specified name and picklist values.
-
-Signature
-
-```
-   public static DataSource.Column multipicklist(String name, List<Map<String,String>>
-
-   picklistValues)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-```
-   picklistValues
-```
-
-Type: List<Map<String,String>>
-
-List of picklist values.
-
-Return Value
-
-Type: DataSource.Column
-
-##### number(name, length, decimalPlaces)
-
-Returns a new column of data type `NUMBER_TYPE` .
-
-
-Apex Reference Guide Column Class
-
-Signature
-
-```
-   public static DataSource.Column number(String name, Integer length, Integer
-
-   decimalPlaces)
-
-```
-
-Parameters
-
-See Column Properties on page 2706 for information about each parameter.
-
-```
-   name
-```
-
-Type: String
-
-```
-   length
-```
-
-Type: Integer
-
-```
-   decimalPlaces
-```
-
-Type: Integer
-
-Return Value
-
-Type: DataSource.Column
-
-The returned column has these property values.
-
-**Property** **Value**
-
-name _`name`_
-
-label _`name`_
-
-description _`name`_
-
-isSortable true
-
-isFilterable true
-
-type DataSource.DataType.NUMBER_TYPE
-
-length _`length`_
-
-decimalPlaces _`decimalPlaces`_
-
-##### **`percent(name, length, decimalPlaces)`**
-
-Returns a new column of data type `PERCENT_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column percent(String name, Integer length, Integer
-
-   decimalPlaces)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-
-Apex Reference Guide Column Class
-
-```
-   length
-```
-
-Type: Integer
-
-Number of characters allowed in the column.
-
-```
-   decimalPlaces
-```
-
-Type: Integer
-
-Number of decimal places to the right of the decimal point.
-
-Return Value
-
-Type: DataSource.Column
-
-##### **`phone(name)`**
-
-Returns a new column of data type `PHONE_TYPE` .
-
-Signature
-
-```
-   public static DataSource.Column phone(String name)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-Return Value
-
-Type: DataSource.Column
-
-##### **`picklist(name, picklistValues, isPicklistAlphabeticallySorted,`**
-
-```
-  isPicklistRestricted)
-
-```
-
-Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values. You can also specify whether the
-picklist is sorted alphabetically or if the picklist is restricted.
-
-Signature
-
-```
-   public static DataSource.Column picklist(String name, List<Map<String,String>>
-
-   picklistValues, Boolean isPicklistAlphabeticallySorted, Boolean isPicklistRestricted)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-```
-   picklistValues
-```
-
-Type: List<Map<String,String>>
-
-
-Apex Reference Guide Column Class
-
-List of picklist values.
-
-```
-   isPicklistAlphabeticallySorted
-```
-
-Indicates whether the picklist is sorted alphabetically.
-
-```
-   isPicklistRestricted
-```
-
-Type: Boolean
-
-Indicates whether the picklist is restricted.
-
-Return Value
-
-Type: DataSource.Column
-
-##### **`picklist(name, picklistValues)`**
-
-Returns a new column of data type `PICKLIST_TYPE` with the specified name and picklist values.
-
-Signature
-
-```
-   public static DataSource.Column picklist(String name, List<Map<String,String>>
-
-   picklistValues)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-```
-   picklistValues
-```
-
-Type: List<Map<String,String>>
-
-List of picklist values.
-
-Return Value
-
-Type: DataSource.Column
-
-##### text(name, label, length)
-
-Returns a new column of data type `STRING_SHORT_TYPE` or `STRING_LONG_TYPE`, with the specified name, label, and length.
-
-Signature
-
-```
-   public static DataSource.Column text(String name, String label, Integer length)
-
-```
-
-Parameters
-
-```
-   name
-```
-
-Type: String
-
-Name of the column.
-
-```
-   label
-```
-
-Type: String
-
-
-Apex Reference Guide Column Class
-
-User-friendly name for the column that appears in the Salesforce user interface.
-
-```
-   length
-```
-
-Type: Integer
-
-Number of characters allowed in the column.
-
-Return Value
-
-Type: DataSource.Column
-
-The returned column has these property values.
-
-**Property** **Value**
-
-name _`name`_
-
-label _`label`_
-
-description _`label`_
-
-isSortable true
-
-isFilterable true
-
-type
-
-DataSource.DataType.STRING_SHORT_TYPE if _`length`_ is 255 or less
-
-DataSource.DataType.STRING_LONG_TYPE if _`length`_ is greater than 255
-
-length _`length`_
-
-decimalPlaces 0
-
-##### text(name, length)
-
-Returns a new column of data type `STRING_SHORT_TYPE` or `STRING_LONG_TYPE`, with the specified name and length.
-
-Signature
-
-```
-public static DataSource.Column text(String name, Integer length)
-
-```
-
-Parameters
-
-```
-name
-```
-
-Type: String
-
-Name of the column.
-
-```
-length
-```
-
-Type: Integer
-
-Number of characters allowed in the column.
-
-Return Value
-
-Type: DataSource.Column
-
-The returned column has these property values.
-
-
-Apex Reference Guide Column Class
-
-**Property** **Value**
-
-name _`name`_
-
-label _`name`_
-
-description _`name`_
-
-isSortable true
-
-isFilterable true
-
-type
-
-DataSource.DataType.STRING_SHORT_TYPE if _`length`_ is 255 or
-less
-
-DataSource.DataType.STRING_LONG_TYPE if _`length`_ is greater
-than 255
-
-length _`length`_
-
-decimalPlaces 0
-
-##### text(name)
-
-Returns a new column of data type `STRING_SHORT_TYPE` with the specified name and the length of 255 characters.
-
-Signature
-
-```
-public static DataSource.Column text(String name)
-
-```
-
-Parameters
-
-```
-name
-```
-
-Type: String
-
-Name of the column.
-
-Return Value
-
-Type: DataSource.Column
-
-The returned column has these property values.
-
-**Property** **Value**
-
-name _`name`_
-
-label _`name`_
-
-description _`name`_
-
-isSortable true
-
-isFilterable true
-
-type DataSource.DataType.STRING_SHORT_TYPE
-
-
-Apex Reference Guide Column Class
-
-**Property** **Value**
-
-length 255
-
-decimalPlaces 0
-
-##### textarea(name)
-
-Returns a new column of data type `STRING_LONG_TYPE` with the specified name and the length of 32,000 characters.
-
-Signature
-
-```

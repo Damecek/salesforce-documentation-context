@@ -1,13 +1,13 @@
 # Lightning Aura Components Developer Guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/lightning.pdf
-> Fetched: 2026-02-19T08:11:54Z
+> Fetched: 2026-03-15T21:11:22Z
 Lightning Aura Components
 Developer Guide
 
 Version 66.0, Spring ’26
 
-Last updated: January 23, 2026
+Last updated: March 6, 2026
 
 © Copyright 2000–2026 Salesforce, Inc. All rights reserved. Salesforce is a registered trademark of Salesforce, Inc., as are other
 names and marks. Other marks appearing herein may be trademarks of their respective owners.
@@ -351,19 +351,19 @@ System Tag Reference **. . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 aura:application **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 467**
 aura:dependency **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 468**
 aura:event **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 469**
-aura:interface **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 469**
+aura:interface **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 470**
 aura:method **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 470**
-aura:set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 471**
+aura:set **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 472**
 JavaScript API **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 474**
 
 $A namespace **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 474**
 Action **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 483**
 AuraLocalizationService **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 489**
-Component **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 519**
+Component **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 520**
 Event **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 530**
-Util **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 535**
+Util **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 536**
 
-**INDEX . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 541**
+**INDEX . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 542**
 
 # CHAPTER 1 Introducing Aura Components
 
@@ -1317,7 +1317,7 @@ The Developer Console is a convenient, built-in tool you can use to create new a
 
 **1.** Open the Developer Console.
 
-Select **Developer Console** from the _Your Name_ or the quick access menu ( ).
+Select **Developer Console** from the _Your Name_ or the quick access menu.
 
 **2.** Open the New Lightning Bundle panel for an Aura component.
 
@@ -1670,8 +1670,8 @@ See Namespace Usage Examples and Reference on page 26 for examples of all of the
 
 ### Creating Components Using Your Organization’s Namespace Using Your Organization’s Namespace
 
-If your organization has set a namespace prefix, use that namespace to reference Lightning components, events, custom objects and
-fields, and other items in your Lightning markup.
+If your organization has set a namespace prefix, use that namespace to reference components, events, custom objects and fields, and
+other items in your Lightning Lightning markup.
 
 The following items use your organization’s namespace when your organization has a namespace prefix set.
 
@@ -1694,8 +1694,8 @@ use the `c` namespace if you prefer to use the shortcut, but it’s not currentl
 
 **•** References to events that you’ve defined when used in Lightning markup, but not in expressions or JavaScript
 
-**•** References to custom objects when used in component and event `type` and `default` system attributes, but not in
-expressions or JavaScript
+**•** References to custom objects when used in component and event `type` and `default` system attributes, but not in expressions
+or JavaScript
 
 See Namespace Usage Examples and Reference on page 26 for examples of the preceding items.
 
@@ -1731,10 +1731,10 @@ For example, `myNp123` and `my_np` are valid namespaces, but `123Company` and `m
 
 To register a namespace:
 
+**1.** From Setup, enter _`Package Manager`_ in the Quick Find box and select **Package Manager** .
+
 
 ### Creating Components Namespace Usage Examples and Reference
-
-**1.** From Setup, enter _`Package Manager`_ in the Quick Find box and select **Package Manager** .
 
 **2.** In the Namespace Settings panel, click **Edit** .
 
@@ -3264,8 +3264,8 @@ used by the component. Whitespace is ignored.
 Creating Components Using Expressions
 
 Note: If you're familiar with other languages, you may be tempted to read the `!` as the “bang” operator, which negates boolean
-values in many programming languages. In the Aura Components programming model, `{!` is simply the delimiter used to begin
-an expression.
+values in many programming languages. In the `Aura Components programming model`, `{!` is simply the delimiter
+used to begin an expression.
 
 If you're familiar with Visualforce, this syntax will look familiar.
 
@@ -4923,14 +4923,19 @@ two are ignored. than two arguments, you can
 chain multiple `&amp;&amp;`
 operations.
 
-`or` `or(hasPermission,` Returns `true` if either one of
-`hasVIPPass)` the arguments is true.
+```
+or or(hasPermission,
 
-Note: This function
-supports only two
-arguments. Any
-arguments after the first
-two are ignored.
+             hasVIPPass)
+
+```
+
+Returns `true` if either one of
+the arguments is true.
+
+This function supports only two
+arguments. Any arguments after
+the first two are ignored.
 
 ```
 ||
@@ -4989,17 +4994,14 @@ Here is the source for `helloHTML.cmp` .
 
    <li class="green">I'm green.</li>
 
+  </ul>
+
+</aura:component>
+
 ```
 
 
 Creating Components Component Composition
-
-```
-     </ul>
-
-   </aura:component>
-
-```
 
 **CSS source**
 
@@ -5583,12 +5585,17 @@ Possible values are listed below.
 
 **Access** **Description**
 
-`private` Available within the component, app, interface, or event, or method and can’t be referenced outside
+```
+private
+
+```
+
+Available within the component, app, interface, or event, or method and can’t be referenced outside
 the resource.
 
-Note: Accessing a private attribute returns `undefined` unless you reference it from the
-component in which it’s declared. You can’t access a private attribute from a sub-component
-that extends the component containing the private attribute.
+Accessing a private attribute returns `undefined` unless you reference it from the component in
+which it’s declared. You can’t access a private attribute from a sub-component that extends the
+component containing the private attribute.
 
 `public` Available within your org only. This is the default access value.
 
@@ -17439,10 +17446,10 @@ The `flowStages` component uses `lightning:progressindicator` to display the flo
 
 ```
 
+**2.** Create the design resource for the `flowStages` component.
+
 
 Using Components Display Flow Stages with an Aura Component
-
-**2.** Create the design resource for the `flowStages` component.
 
 The design resource includes the `stages` and `currentStage` attributes so that they’re available in Flow Builder.
 
@@ -17542,10 +17549,10 @@ For each item in the `stages` attribute, the `init` method adds a `lightning:pro
 
 **a.** From Setup, in the Quick Find box, enter _`Flows`_, and then select **Flows** . Then click **New Flow** .
 
+**b.** Select **Start From Scratch**, and then click **Next** .
+
 
 Using Components Display Flow Stages with an Aura Component
-
-**b.** Select **Start From Scratch**, and then click **Next** .
 
 **c.** Select **Screen Flow** as the flow type, and then click **Create** .
 
@@ -21825,7 +21832,7 @@ If your component uses Lightning message service to publish a message, that mess
 work around this limitation, use the `sforce.one.subscribe()` and `[sforce.one.unsubscribe()](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/message_channel_subscribe.htm)` methods.
 
 **Avoid Dynamically Creating lightning:messageChannel Components in Aura**
-Do not use `createComponent()` on page 475 to dynamically create a `lightning:messageChannel` component in
+Do not use `createComponent()` on page 476 to dynamically create a `lightning:messageChannel` component in
 Aura. Dynamically created components may not work as expected. For information on supported ways to create a
 `lightning:messageChannel` component, see Create a Message Channel on page 300.
 
@@ -24244,7 +24251,7 @@ Click the buttons to get the value or increment it.
 
 Our counter library shares the counter value between any components that use the library. If you need each component to have a
 separate counter, you could modify the counter implementation. To see the per-component code and for more details, see this blog
-post about _[Modularizing Code in Lightning Components](https://developer.salesforce.com/blogs/developer-relations/2016/12/lightning-components-code-sharing.html)_ .
+[post about Modularizing Code in Lightning Components.](https://developer.salesforce.com/blogs/developer-relations/2016/12/lightning-components-code-sharing.html)
 
 SEE ALSO:
 
@@ -24816,8 +24823,6 @@ Using JavaScript Working with Attribute Values in JavaScript
 ```
 
 In the following examples, `cmp` is a reference to a component in your JavaScript code.
-
-Get an Attribute Value
 
 To get the value of a component’s `label` attribute:
 
@@ -27976,3 +27981,5 @@ of the form.
 ```
 
 When the record saves successfully, the fields display pencil icons to denote that inline editing is available. This view is displayed until
+you refresh or reload the page. Then the form redisplays the record fields without data, ready to create a new record.
+

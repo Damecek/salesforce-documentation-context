@@ -1,3 +1,630 @@
+
+```
+
+Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
+with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
+
+API Version
+
+31.0
+
+Signature
+
+```
+   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
+
+   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
+
+   String pageParam, Integer pageSize, String updatedSince, ConnectApi.FeedElementPage
+
+   result)
+
+```
+
+Parameters
+
+```
+   communityId
+```
+
+Type: String
+
+ID for an Experience Cloud site, `internal`, or `null` .
+
+```
+   feedType
+```
+
+Type: `ConnectApi.FeedType`
+
+Type of feed. Valid values are `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`, and
+`PendingReview` .
+
+```
+   recentCommentCount
+```
+
+Type: Integer
+
+Maximum number of comments to return with each feed element. The default value is 3.
+
+```
+   density
+```
+
+Type: `ConnectApi.FeedDensity`
+
+Specify the amount of content in a feed.
+
+**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
+custom recommendations.
+
+**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
+displays custom recommendations, but hides some system-generated updates from records.
+
+
+Apex Reference Guide ChatterFeeds Class
+
+```
+   pageParam
+```
+
+Type: String
+
+Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
+or `nextPageToken` . If you pass in `null`, the first page is returned.
+
+```
+   pageSize
+```
+
+Type: Integer
+
+Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
+
+```
+   updatedSince
+```
+
+Type: String
+
+An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
+from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
+
+The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
+
+```
+   result
+```
+
+Type: `ConnectApi.FeedElementPage`
+
+Object containing test data.
+
+Return Value
+
+Type: Void
+
+SEE ALSO:
+
+getFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince)
+
+_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
+
+##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, recentCommentCount,`**
+
+```
+  density, pageParam, pageSize, updatedSince, filter, result)
+
+```
+
+Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
+with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
+
+API Version
+
+32.0
+
+Signature
+
+```
+   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
+
+   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
+
+   String pageParam, Integer pageSize, String updatedSince, ConnectApi.FeedFilter filter,
+
+   ConnectApi.FeedElementPage result)
+
+```
+
+Parameters
+
+```
+   communityId
+```
+
+Type: String
+
+
+Apex Reference Guide ChatterFeeds Class
+
+ID for an Experience Cloud site, `internal`, or `null` .
+
+```
+   feedType
+```
+
+Type: `ConnectApi.FeedType`
+
+Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
+`Moderation`, and `PendingReview` .
+
+```
+   recentCommentCount
+```
+
+Type: Integer
+
+Maximum number of comments to return with each feed element. The default value is 3.
+
+```
+   density
+```
+
+Type: `ConnectApi.FeedDensity`
+
+Specify the amount of content in a feed.
+
+**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
+custom recommendations.
+
+**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
+displays custom recommendations, but hides some system-generated updates from records.
+
+```
+   pageParam
+```
+
+Type: String
+
+Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
+or `nextPageToken` . If you pass in `null`, the first page is returned.
+
+```
+   pageSize
+```
+
+Type: Integer
+
+Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
+
+```
+   updatedSince
+```
+
+Type: String
+
+An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
+from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
+
+The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
+
+```
+   filter
+```
+
+Type: `ConnectApi.FeedFilter`
+
+Specifies the feed filters.
+
+**•** `AllQuestions` —Feed elements that are questions.
+
+**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
+
+**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
+or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
+always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
+
+**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
+them. This value is valid only for users with the Access Einstein-Generated Answers permission.
+
+**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
+answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
+permission.
+
+**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
+when the context user joined the group. This value is valid only for the `Record` feed of a group.
+
+
+Apex Reference Guide ChatterFeeds Class
+
+**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
+
+**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
+
+**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
+have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
+permission.
+
+**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
+only for the `Record` feed of a group.
+
+**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
+
+```
+   result
+```
+
+Type: `ConnectApi.FeedElementPage`
+
+Object containing test data.
+
+Return Value
+
+Type: Void
+
+SEE ALSO:
+
+getFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince, filter)
+
+_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
+
+##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
+
+```
+  recentCommentCount, density, pageParam, pageSize, updatedSince, result)
+
+```
+
+Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
+with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
+
+API Version
+
+31.0
+
+Signature
+
+```
+   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
+
+   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
+
+   ConnectApi.FeedDensity density, String pageParam, Integer pageSize, String updatedSince,
+
+   ConnectApi.FeedElementPage result)
+
+```
+
+Parameters
+
+```
+   communityId
+```
+
+Type: String
+
+ID for an Experience Cloud site, `internal`, or `null` .
+
+```
+   feedType
+```
+
+Type: `ConnectApi.FeedType`
+
+One of these values:
+
+**•** `Files`
+
+
+Apex Reference Guide ChatterFeeds Class
+
+**•** `Groups`
+
+**•** `News`
+
+**•** `People`
+
+**•** `Record`
+
+```
+   subjectId
+```
+
+Type: String
+
+If _`feedType`_ is `ConnectApi.Record`, _`subjectId`_ can be any record ID, including a group ID. Otherwise, it must be the
+context user or the alias `me` .
+
+```
+   recentCommentCount
+```
+
+Type: Integer
+
+Maximum number of comments to return with each feed item. The default value is 3.
+
+```
+   density
+```
+
+Type: `ConnectApi.FeedDensity`
+
+Specify the amount of content in a feed.
+
+**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
+custom recommendations.
+
+**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
+displays custom recommendations, but hides some system-generated updates from records.
+
+```
+   pageParam
+```
+
+Type: String
+
+Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
+or `nextPageToken` . If you pass in `null`, the first page is returned.
+
+```
+   pageSize
+```
+
+Type: Integer
+
+Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
+
+```
+   updatedSince
+```
+
+Type: String
+
+An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
+from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
+
+The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
+
+```
+   result
+```
+
+Type: `ConnectApi.FeedElementPage`
+
+Object containing test data.
+
+Return Value
+
+Type: Void
+
+SEE ALSO:
+
+getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
+updatedSince)
+
+_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
+
+
+Apex Reference Guide ChatterFeeds Class
+
+##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
+
+```
+  recentCommentCount, density, pageParam, pageSize, updatedSince,
+
+  showInternalOnly, result)
+
+```
+
+Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
+with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
+
+API Version
+
+31.0
+
+Signature
+
+```
+   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
+
+   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
+
+   ConnectApi.FeedDensity density, String pageParam, Integer pageSize, String updatedSince,
+
+   Boolean showInternalOnly, ConnectApi.FeedElementPage result)
+
+```
+
+Parameters
+
+```
+   communityId
+```
+
+Type: String
+
+ID for an Experience Cloud site, `internal`, or `null` .
+
+```
+   feedType
+```
+
+Type: `ConnectApi.FeedType`
+
+Value must be `ConnectApi.FeedType.Record` .
+
+```
+   subjectId
+```
+
+Type: String
+
+Any record ID, including a group ID.
+
+```
+   recentCommentCount
+```
+
+Type: Integer
+
+Maximum number of comments to return with each feed element. The default value is 3.
+
+```
+   density
+```
+
+Type: `ConnectApi.FeedDensity`
+
+Specify the amount of content in a feed.
+
+**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
+custom recommendations.
+
+**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
+displays custom recommendations, but hides some system-generated updates from records.
+
+```
+   pageParam
+```
+
+Type: String
+
+Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
+or `nextPageToken` . If you pass in `null`, the first page is returned.
+
+```
+   pageSize
+```
+
+Type: Integer
+
+
+Apex Reference Guide ChatterFeeds Class
+
+Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
+
+```
+   updatedSince
+```
+
+Type: String
+
+An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
+from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
+
+The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
+
+```
+   showInternalOnly
+```
+
+Type: Boolean
+
+Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
+value is `false` .
+
+```
+   result
+```
+
+Type: `ConnectApi.FeedElementPage`
+
+Object containing test data.
+
+Return Value
+
+Type: Void
+
+SEE ALSO:
+
+getFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, updatedSince,
+showInternalOnly)
+
+_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
+
+##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
+
+```
+  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
+
+  updatedSince, filter, result)
+
+```
+
+Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
+with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
+
+API Version
+
+35.0
+
+Signature
+
+```
+   public static Void setTestGetFeedElementsUpdatedSince(String communityId,
+
+   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
+
+   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
+
+   String updatedSince, ConnectApi.FeedFilter filter, ConnectApi.FeedElementPage result)
+
+```
+
+Parameters
+
+```
+   communityId
+```
+
+Type: String
+
+ID for an Experience Cloud site, `internal`, or `null` .
+
+
+Apex Reference Guide ChatterFeeds Class
+
+```
+   feedType
+```
+
+Type: `ConnectApi.FeedType`
+
+Value must be `ConnectApi.FeedType.UserProfile` .
+
+```
+   subjectId
+```
+
+Type: String
+
+ID of any user. To specify the context user, use the user ID or the alias `me` .
+
+```
+   recentCommentCount
+```
+
+Type: Integer
+
+Maximum number of comments to return with each feed element. The default value is 3.
+
+```
+   elementsPerBundle
+```
+
+Type: Integer
+
+Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
+
+```
+   density
+```
+
+Type: `ConnectApi.FeedDensity`
+
 Specify the amount of content in a feed.
 
 **•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
@@ -20357,13 +20984,13 @@ Parameters
    contractInputPayload
 ```
 
-Type: `ConnectApi.ContractInputRepresentation on page 2017`
+Type: `ConnectApi.ContractInputRepresentation on page 2027`
 
 Input payload to create contract.
 
 Return Value
 
-Type: `ConnectApi.ContractOutputRepresentation on page 2268`
+Type: `ConnectApi.ContractOutputRepresentation on page 2281`
 
 
 ### Apex Reference Guide CommerceBuyerExperience Class
@@ -20395,13 +21022,13 @@ Parameters
    contractInputPayload
 ```
 
-Type: `ConnectApi.ContractInputRepresentation on page 2017`
+Type: `ConnectApi.ContractInputRepresentation on page 2027`
 
 Input payload to update contract.
 
 Return Value
 
-Type: `ConnectApi.ContractOutputRepresentation on page 2268`
+Type: `ConnectApi.ContractOutputRepresentation on page 2281`
 
 ### CommerceBuyerExperience Class
 
@@ -26242,7 +26869,7 @@ Type of the cloned cart. Value is `PayNowReadOnly` .
 
 Return Value
 
-Type: `ConnectApi.CartSummary on page 2210`
+Type: `ConnectApi.CartSummary on page 2222`
 
 Usage
 
@@ -28397,7 +29024,7 @@ ID of the product.
 
 Return Value
 
-Type: `ConnectApi.ProductCartItem on page 2463`
+Type: `ConnectApi.ProductCartItem on page 2476`
 
 ##### **`getProductCartItems(webstoreId, effectiveAccountId, activeCartOrId, pageSize,`**
 
@@ -28488,7 +29115,7 @@ ID of the web store.
 
 Return Value
 
-Type: `ConnectApi.ProductCartItemCollection on page 2463`
+Type: `ConnectApi.ProductCartItemCollection on page 2476`
 
 ##### **`makeCartPrimary(webstoreId, activeCartOrId, effectiveAccountId)`**
 
@@ -28616,7 +29243,7 @@ The currency ISO code of the cart.
 
 Return Value
 
-Type: `ConnectApi.PreserveCart` on page 2456
+Type: `ConnectApi.PreserveCart` on page 2469
 
 ##### **`setCartMessagesVisibility(webstoreId, activeCartOrId, effectiveAccountId,`**
 
@@ -29245,7 +29872,7 @@ Publish status of the storefront.
 
 Return Value
 
-Type: ConnectApi.NavigationMenuItemCollection on page 2410
+Type: ConnectApi.NavigationMenuItemCollection on page 2423
 
 ##### **`getProduct(webstoreId, productId, effectiveAccountId, fields, excludeFields,`**
 
@@ -31544,13 +32171,13 @@ Parameters
    couponCodeRedemption
 ```
 
-Type: `ConnectApi.CouponCodeRedemptionInput on page 2018`
+Type: `ConnectApi.CouponCodeRedemptionInput on page 2028`
 
 Tracks each coupon code redemption.
 
 Return Value
 
-Type: `ConnectApi.CouponCodeRedemptionCollection on page 2268`
+Type: `ConnectApi.CouponCodeRedemptionCollection on page 2282`
 
 ##### **`evaluate(salesTransaction)`**
 
@@ -31628,13 +32255,13 @@ Parameters
    couponCodeRedemption
 ```
 
-Type: `ConnectApi.CouponCodeRedemptionInput on page 2018`
+Type: `ConnectApi.CouponCodeRedemptionInput on page 2028`
 
 Tracks each coupon code redemption.
 
 Return Value
 
-Type: `ConnectApi.CouponCodeRedemptionCollection on page 2268`
+Type: `ConnectApi.CouponCodeRedemptionCollection on page 2282`
 
 ### CommerceSearch Class
 
@@ -43676,13 +44303,13 @@ Parameters
    previewCartToExchangeOrderInput
 ```
 
-Type: `ConnectApi.PreviewCartToExchangeOrderInputRepresentation on page 2091`
+Type: `ConnectApi.PreviewCartToExchangeOrderInputRepresentation on page 2101`
 
 Information required to preview a cart to exchange order.
 
 Return Value
 
-Type: `ConnectApi.PreviewCartToExchangeOrderOutputRepresentation on page 2456`
+Type: `ConnectApi.PreviewCartToExchangeOrderOutputRepresentation on page 2469`
 
 ##### **`submitCartToExchangeOrder(submitCartToExchangeOrderInput)`**
 
@@ -43718,13 +44345,13 @@ Parameters
    submitCartToExchangeOrderInput
 ```
 
-Type: `ConnectApi.SubmitCartToExchangeOrderInputRepresentation on page 2102`
+Type: `ConnectApi.SubmitCartToExchangeOrderInputRepresentation on page 2112`
 
 Information required to submit a cart to exchange order.
 
 Return Value
 
-Type: `ConnectApi.SubmitCartToExchangeOrderOutputRepresentation on page 2528`
+Type: `ConnectApi.SubmitCartToExchangeOrderOutputRepresentation on page 2541`
 
 ### ExtendedCommerceDelivery Class
 
@@ -43784,7 +44411,7 @@ Parameters
 
 Type: Datetime
 
-ConnectApi.EstimateDeliveryDateInputRepresentation on page 2033
+ConnectApi.EstimateDeliveryDateInputRepresentation on page 2043
 
 Estimated delivery date.
 
@@ -43798,7 +44425,7 @@ Delivery estimation setup external reference ID.
 
 Return Value
 
-Type: ConnectApi.EstimateDeliveryDateOutputRepresentation on page 2299
+Type: ConnectApi.EstimateDeliveryDateOutputRepresentation on page 2313
 
 ### ExternalEmailServices Class
 
@@ -44263,807 +44890,3 @@ createInvoice(fulfillmentOrderId, invoiceInput)
 Create an invoice for a FulfillmentOrder that doesn’t have one.
 
 createMultipleFulfillmentOrder(multipleFulfillmentOrderInput)
-Create FulfillmentOrders for multiple OrderDeliveryGroups in a single request.
-
-createMultipleInvoices(invoicesInput)
-Create Invoices for multiple FulfillmentOrders.
-
-##### **`cancelFulfillmentOrderLineItems(fulfillmentOrderId,`**
-
-```
-  cancelFulfillmentOrderLineItemsInput)
-
-```
-
-Cancel FulfillmentOrderLineItems from a FulfillmentOrder. This action doesn’t cancel the associated OrderItemSummaries, so reallocate
-the canceled quantities to a new FulfillmentOrder.
-
-API Version
-
-48.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.FulfillmentOrderCancelLineItemsOutputRepresentation
-
-   cancelFulfillmentOrderLineItems(String fulfillmentOrderId,
-
-```
-
-
-Apex Reference Guide FulfillmentOrder Class
-
-```
-   ConnectApi.FulfillmentOrderLineItemsToCancelInputRepresentation
-
-   cancelFulfillmentOrderLineItemsInput)
-
-```
-
-Parameters
-
-```
-   fulfillmentOrderId
-```
-
-Type: String
-
-ID of the FulfilllmentOrder.
-
-```
-   cancelFulfillmentOrderLineItemsInput
-```
-
-Type: `ConnectApi.FulfillmentOrderLineItemsToCancelInputRepresentation`
-
-List of FulfillmentOrderLineItems to cancel.
-
-Return Value
-
-Type: `ConnectApi.FulfillmentOrderCancelLineItemsOutputRepresentation`
-
-Example
-
-```
-   String fulfillmentOrderId = '0a3xx0000000085AAA';
-
-   List<ConnectApi.FulfillmentOrderLineItemInputRepresentation> itemToCancelList = new
-
-   List<ConnectApi.FulfillmentOrderLineItemInputRepresentation>();
-
-   for(FulfillmentOrderLineItem fulfillmentOrderLineItem :
-
-   fulfillmentOrder.FulfillmentOrderLineItems){
-
-     ConnectApi.FulfillmentOrderLineItemInputRepresentation itemToCancel = new
-
-   ConnectApi.FulfillmentOrderLineItemInputRepresentation();
-
-     itemToCancel.fulfillmentOrderLineItemId = fulfillmentOrderLineItem.Id;
-
-     itemToCancel.quantity = 1;
-
-     itemToCancelList.add(itemToCancel);
-
-   }
-
-   ConnectAPI.FulfillmentOrderLineItemsToCancelInputRepresentation input = new
-
-   ConnectAPI.FulfillmentOrderLineItemsToCancelInputRepresentation();
-
-   input.fulfillmentOrderLineItemsToCancel = itemToCancelList;
-
-   ConnectAPI.FulfillmentOrderCancelLineItemsOutputRepresentation result =
-
-   ConnectAPI.FulfillmentOrder.cancelFulfillmentOrderLineItems(fulfillmentOrderId, input);
-
-##### **`createFulfillmentOrders(fulfillmentOrderInput)`**
-
-```
-
-Create one or more FulfillmentOrders and FulfillmentOrderLineItems for an OrderDeliveryGroupSummary, which defines a delivery
-method and recipient for an OrderSummary. You specify the OrderItemSummaries to allocate, which can be fulfilled from different
-locations. Specifying multiple fulfillment groups creates one FulfillmentOrder for each location. For each OrderItemSummary, a
-FulfillmentOrderLineItem is created and assigned to the corresponding FulfillmentOrder.
-
-API Version
-
-48.0
-
-
-Apex Reference Guide FulfillmentOrder Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.FulfillmentOrderOutputRepresentation
-
-   createFulfillmentOrders(ConnectApi.FulfillmentOrderInputRepresentation
-
-   fulfillmentOrderInput)
-
-```
-
-Parameters
-
-```
-   fulfillmentOrderInput
-```
-
-Type: `ConnectApi.FulfillmentOrderInputRepresentation`
-
-OrderItemSummaries to allocate, with location and delivery information.
-
-Return Value
-
-Type: `ConnectApi.FulfillmentOrderOutputRepresentation`
-
-Example
-
-```
-   String orderSummaryId = '1Osxx0000004CCG';
-
-   String fulfillmentType = 'warehouse';
-
-   String warehouseFromLocationId = [SELECT Id from Location WHERE LocationType='Warehouse'
-
-   LIMIT 1].Id;
-
-   ConnectApi.FulfillmentOrderInputRepresentation fulfillmentOrderInput = new
-
-   ConnectApi.FulfillmentOrderInputRepresentation();
-
-   fulfillmentOrderInput.orderSummaryId = orderSummaryId;
-
-   List<OrderDeliveryGroupSummary> orderDeliveryGroupSummaryList = [SELECT Id FROM
-
-   OrderDeliveryGroupSummary WHERE OrderSummaryId =: orderSummaryId];
-
-   for (OrderDeliveryGroupSummary orderDeliveryGroupSummary: orderDeliveryGroupSummaryList){
-
-     fulfillmentOrderInput.orderDeliveryGroupSummaryId = orderDeliveryGroupSummary.Id;
-
-     List<ConnectApi.FulfillmentGroupInputRepresentation> fulfillmentGroups = new
-
-   List<ConnectApi.FulfillmentGroupInputRepresentation>();
-
-     ConnectApi.FulfillmentGroupInputRepresentation fulfillmentGroup = new
-
-   ConnectApi.FulfillmentGroupInputRepresentation();
-
-     fulfillmentGroup.fulfilledFromLocationId = warehouseFromLocationId;
-
-     fulfillmentGroup.fulfillmentType = fulfillmentType;
-
-     List<ConnectApi.OrderItemSummaryInputRepresentation> orderItemSummaries = new
-
-   List<ConnectApi.OrderItemSummaryInputRepresentation>();
-
-    List<OrderItemSummary> orderItemSummaryList = [Select Id, quantity FROM OrderItemSummary
-
-    WHERE OrderSummaryId =: orderSummaryId AND OrderDeliveryGroupSummaryId =:
-
-   orderDeliveryGroupSummary.Id];
-
-     for(OrderItemSummary orderItemSummary : orderItemSummaryList){
-
-```
-
-
-Apex Reference Guide FulfillmentOrder Class
-
-```
-      ConnectApi.OrderItemSummaryInputRepresentation oisInputRepresentation = new
-
-   ConnectApi.OrderItemSummaryInputRepresentation();
-
-      oisInputRepresentation.orderItemSummaryId = orderItemSummary.Id;
-
-      oisInputRepresentation.quantity = orderItemSummary.quantity;
-
-      orderItemSummaries.add(oisInputRepresentation);
-
-     }
-
-     fulfillmentGroup.orderItemSummaries = orderItemSummaries;
-
-     fulfillmentGroups.add(fulfillmentGroup);
-
-     fulfillmentOrderInput.fulfillmentGroups = fulfillmentGroups;
-
-   }
-
-   ConnectApi.FulfillmentOrderOutputRepresentation result =
-
-   ConnectAPI.FulfillmentOrder.createFulfillmentOrders(fulfillmentOrderInput);
-
-##### **`createInvoice(fulfillmentOrderId, invoiceInput)`**
-
-```
-
-Create an invoice for a FulfillmentOrder that doesn’t have one.
-
-API Version
-
-48.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.FulfillmentOrderInvoiceOutputRepresentation createInvoice(String
-
-   fulfillmentOrderId, ConnectApi.FulfillmentOrderInvoiceInputRepresentation invoiceInput)
-
-```
-
-Parameters
-
-```
-   fulfillmentOrderId
-```
-
-Type: String
-
-ID of the FulfillmentOrder.
-
-```
-   invoiceInput
-```
-
-Type: `ConnectApi.FulfillmentOrderInvoiceInputRepresentation`
-
-Required input with no data.
-
-Return Value
-
-Type: `ConnectApi.FulfillmentOrderInvoiceOutputRepresentation`
-
-Example
-
-```
-   String fulfillmentOrderId = '0a3xx0000000085AAA';
-
-```
-
-
-Apex Reference Guide FulfillmentOrder Class
-
-```
-   ConnectApi.FulfillmentOrderInvoiceInputRepresentation input = new
-
-   ConnectApi.FulfillmentOrderInvoiceInputRepresentation();
-
-   ConnectAPI.FulfillmentOrderInvoiceOutputRepresentation result =
-
-   ConnectApi.FulfillmentOrder.createInvoice(fulfillmentOrderId, input);
-
-##### **`createMultipleFulfillmentOrder(multipleFulfillmentOrderInput)`**
-
-```
-
-Create FulfillmentOrders for multiple OrderDeliveryGroups in a single request.
-
-API Version
-
-50.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.MultipleFulfillmentOrderOutputRepresentation
-
-   createMultipleFulfillmentOrder(ConnectApi.MultipleFulfillmentOrderInputRepresentation
-
-   multipleFulfillmentOrderInput)
-
-```
-
-Parameters
-
-```
-   multipleFulfillmentOrderInput
-```
-
-Type: `ConnectApi.MultipleFulfillmentOrderInputRepresentation`
-
-Wraps a list of inputs for creating fulfillment orders.
-
-Return Value
-
-Type: `ConnectApi.MultipleFulfillmentOrderOutputRepresentation`
-
-##### **`createMultipleInvoices(invoicesInput)`**
-
-Create Invoices for multiple FulfillmentOrders.
-
-API Version
-
-52.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.MultipleFulfillmentOrderInvoicesOutputRepresentation
-
-   createMultipleInvoices(ConnectApi.MultipleFulfillmentOrderInvoicesInputRepresentation
-
-   invoicesInput)
-
-```
-
-
-### Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
-
-Parameters
-
-```
-   invoicesInput
-```
-
-Type: `ConnectApi.MultipleFulfillmentOrderInvoicesInputRepresentation`
-
-The FulfillmentOrders to create Invoices for.
-
-Return Value
-
-Type: `ConnectApi.MultipleFulfillmentOrderInvoicesOutputRepresentation`
-
-### IBusinessObjectivesAndRecsFamily Class
-
-Get and patch business objectives, or goals. Get, create, patch, and update recommended actions for business objectives.
-
-Namespace
-
-ConnectApi
-
-#### IBusinessObjectivesAndRecsFamily Methods
-
-### These methods are for IBusinessObjectivesAndRecsFamily . All methods are static.
-
-IN THIS SECTION:
-
-##### createRecommendations(busObjRecommendationInput)
-
-Create recommended actions for a business objective, or goal.
-
-getBusinessObjectives(webstoreId, channelId, kpiName, includeRecSummary, includeInsightSummary)
-Get business objectives, or goals, for a webstore.
-
-getRecommendations(businessObjectiveId, domain, channelId, externalName, state, secondaryState, tertiaryState, grouping)
-Get recommended actions for a business objective, or goal.
-
-patchBusinessObjective(busObjRecommendationInput)
-Partially update a business objective, or goal.
-
-patchRecommendations(busObjRecommendationInput)
-Partially update a recommended action associated with a business objective, or goal.
-
-updateRecommendations(busObjRecommendationInput)
-Update a recommended action for a business objective, or goal.
-
-##### **`createRecommendations(busObjRecommendationInput)`**
-
-Create recommended actions for a business objective, or goal.
-
-API Version
-
-60.0
-
-
-Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.RecRepresentation
-
-   createRecommendations(ConnectApi.BusObjRecommendationInputRepresentation
-
-   busObjRecommendationInput)
-
-```
-
-Parameters
-
-```
-   busObjRecommendationInput
-```
-
-Type: `ConnectApi.BusObjRecommendationInputRepresentation` on page 1982
-
-A `ConnectApi.BusObjRecommendationInputRepresentation` object representing a recommended action for a
-business objective.
-
-Return Value
-
-Type: `ConnectApi.RecRepresentation` on page 2494
-
-##### **`getBusinessObjectives(webstoreId, channelId, kpiName, includeRecSummary,`**
-
-```
-  includeInsightSummary)
-
-```
-
-Get business objectives, or goals, for a webstore.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.BusinessObjectivesSummaryOutputRepresentation
-
-   getBusinessObjectives(String webstoreId, String channelId, String kpiName, Boolean
-
-   includeRecSummary, Boolean includeInsightSummary)
-
-```
-
-Parameters
-
-```
-   webstoreId
-```
-
-Type: String
-
-ID of the webstore.
-
-```
-   channelId
-```
-
-Type: String
-
-ID of the channel.
-
-
-Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
-
-```
-   kpiName
-```
-
-Type: String
-
-Name of the key performance indicator (KPI).
-
-```
-   includeRecSummary
-```
-
-Type: Boolean
-
-Specifies whether to include a summary of recommended actions in the response.
-
-```
-   includeInsightSummary
-```
-
-Type: Boolean
-
-Specifies whether to include insight summary information in the response.
-
-Return Value
-
-Type: `ConnectApi.BusinessObjectivesSummaryOutputRepresentation` on page 2194
-
-##### **`getRecommendations(businessObjectiveId, domain, channelId, externalName,`**
-
-```
-  state, secondaryState, tertiaryState, grouping)
-
-```
-
-Get recommended actions for a business objective, or goal.
-
-API Version
-
-59.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.RecommendationsOutputRepresentation getRecommendations(String
-
-   businessObjectiveId, String domain, String channelId, String externalName, String state,
-
-   String secondaryState, String tertiaryState, String grouping)
-
-```
-
-Parameters
-
-```
-   businessObjectiveId
-```
-
-Type: String
-
-ID of the business objective.
-
-```
-   domain
-```
-
-Type: String
-
-Recommendation domain.
-
-```
-   channelId
-```
-
-Type: String
-
-ID of the channel.
-
-```
-   externalName
-```
-
-Type: String
-
-
-Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
-
-External name of the recommended action.
-
-```
-   state
-```
-
-Type: String
-
-State of the recommended action.
-
-```
-   secondaryState
-```
-
-Type: String
-
-Secondary state of the recommended action.
-
-```
-   tertiaryState
-```
-
-Type: String
-
-Tertiary state of the recommended action.
-
-```
-   grouping
-```
-
-Type: String
-
-Grouping associated with the recommended action. This is a free-form categorization field.
-
-Return Value
-
-Type: `ConnectApi.RecommendationsOutputRepresentation` on page 2496
-
-##### **`patchBusinessObjective(busObjRecommendationInput)`**
-
-Partially update a business objective, or goal.
-
-API Version
-
-62.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.BusObjSummaryOutputRepresentation
-
-   patchBusinessObjective(ConnectApi.BusinessObjectivesInputRepresentation
-
-   busObjRecommendationInput)
-
-```
-
-Parameters
-
-```
-   busObjRecommendationInput
-```
-
-Type: `ConnectApi.BusinessObjectivesInputRepresentation` on page 1981
-
-A `ConnectApi.BusinessObjectivesInputRepresentation` object representing the business objective or objectives
-to update.
-
-Return Value
-
-Type: `ConnectApi.BusObjSummaryOutputRepresentation` on page 2193
-
-
-Apex Reference Guide IBusinessObjectivesAndRecsFamily Class
-
-##### **`patchRecommendations(busObjRecommendationInput)`**
-
-Partially update a recommended action associated with a business objective, or goal.
-
-API Version
-
-61.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.RecRepresentation
-
-   patchRecommendations(ConnectApi.BusObjRecommendationInputRepresentation
-
-   busObjRecommendationInput)
-
-```
-
-Parameters
-
-```
-   busObjRecommendationInput
-```
-
-Type: `ConnectApi.BusObjRecommendationInputRepresentation` on page 1982
-
-A `ConnectApi.BusObjRecommendationInputRepresentation` object representing the recommended action to
-update.
-
-Return Value
-
-Type: `ConnectApi.RecRepresentation` on page 2494
-
-##### **`updateRecommendations(busObjRecommendationInput)`**
-
-Update a recommended action for a business objective, or goal.
-
-API Version
-
-60.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.RecRepresentation
-
-   updateRecommendations(ConnectApi.BusObjRecommendationInputRepresentation
-
-   busObjRecommendationInput)
-
-```
-
-Parameters
-
-```
-   busObjRecommendationInput
-```
-
-Type: `ConnectApi.BusObjRecommendationInputRepresentation` on page 1982
-
-
-### Apex Reference Guide Knowledge Class
-
-A `ConnectApi.BusObjRecommendationInputRepresentation` object representing the recommended action to
-update.
-
-Return Value
-
-Type: `ConnectApi.RecRepresentation` on page 2494
-
-### Knowledge Class
-
-Get information about trending articles in Experience Cloud sites.
-
-Namespace
-
-ConnectApi
-
-#### Knowledge Methods
-
-### These methods are for Knowledge . All methods are static.
-
-IN THIS SECTION:
-
-##### getTopViewedArticlesForTopic(communityId, topicId, maxResults)
-
-Get the top viewed articles for a topic.
-
-getTrendingArticles(communityId, maxResults)
-Get trending articles for an Experience Cloud site.
-
-getTrendingArticlesForTopic(communityId, topicId, maxResults)
-Get the trending articles for a topic in an Experience Cloud site.
-
-##### **`getTopViewedArticlesForTopic(communityId, topicId, maxResults)`**
-
-Get the top viewed articles for a topic.
-
-API Version
-
-41.0
-
-Available to Guest Users
-
-41.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.KnowledgeArticleVersionCollection
-
-   getTopViewedArticlesForTopic(String communityId, String topicId, Integer maxResults)
-
-```
-
-
-Apex Reference Guide Knowledge Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   topicId
-```
-

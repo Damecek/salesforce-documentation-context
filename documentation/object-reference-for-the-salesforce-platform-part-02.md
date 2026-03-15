@@ -1,3 +1,161 @@
+**•** `Order.OwnerId`
+
+**•** `PartnerFundAllocation.CreatedById`
+
+**•** `PartnerFundAllocation.ChannelPartnerId`
+
+**•** `PartnerFundAllocation.OwnerId`
+
+**•** `PartnerFundClaim.CreatedById`
+
+**•** `PartnerFundClaim.OwnerId`
+
+**•** `PartnerFundRequest.ChannelPartnerId`
+
+**•** `PartnerFundRequest.CreatedById`
+
+**•** `PartnerFundRequest.OwnerId`
+
+**•** `PartnerMarketingBudget.CreatedById`
+
+**•** `PartnerMarketingBudget.ChannelPartnerId`
+
+**•** `PartnerMarketingBudget.OwnerId`
+
+
+Standard Objects AccountRelationshipShareRule
+
+**Field** **Details**
+
+```
+Description
+
+DeveloperName
+
+EntityType
+
+```
+
+**Type**
+textarea
+
+**Properties**
+Create, Filter, Nillable, Sort, Update
+
+**Description**
+A meaningful explanation of the sharing rule.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The unique name of the record in the API. This name can contain only underscores and
+alphanumeric characters, and must be unique in your org. It must begin with a letter, not
+include spaces, not end with an underscore, and not contain two consecutive underscores.
+This field is automatically generated but you can supply your own value if you create the
+record using the API.
+
+Note: When creating large sets of data, always specify a unique `DeveloperName`
+for each record. If no `DeveloperName` is specified, performance may slow while
+Salesforce generates one for each record.
+
+Note: Only users with View DeveloperName OR View Setup and Configuration
+permission can view, group, sort, and filter this field.
+
+**Type**
+picklist
+
+**Properties**
+Create, Filter, Group, Restricted picklist, Sort, Update
+
+**Description**
+The type of data shared by this rule. Values are:
+
+**•** `Account`
+
+**•** `Campaign`
+
+**•** `Case`
+
+**•** `Contact`
+
+**•** `Lead`
+
+**•** `Order`
+
+**•** `PartnerFundAllocation`
+
+**•** `PartnerFundClaim`
+
+**•** `PartnerFundRequest`
+
+**•** `PartnerMarketingBudget`
+
+
+Standard Objects AccountRelationshipShareRule
+
+**Field** **Details**
+
+```
+Language
+
+MasterLabel
+
+NamespacePrefix
+
+StaticFormulaCriteria
+
+```
+
+**Type**
+picklist
+
+**Properties**
+Create, Defaulted on create. Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+**Description**
+The language of the account relationship share rule.
+
+**Type**
+string
+
+**Properties**
+Create, Filter, Group, Sort, Update
+
+**Description**
+The label assigned to the sharing rule to identify it.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The namespace prefix that is associated with this object. Each Developer Edition org that
+creates a managed package has a unique namespace prefix. Limit: 15 characters. You can
+refer to a component in a managed package by using the
+_**`namespacePrefix`**_ `__` _**`componentName`**_ notation.
+
+The namespace prefix can have one of the following values.
+
+**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix of the
+org for all objects that support it, unless an object is in an installed managed package.
+In that case, the object has the namespace prefix of the installed managed package. This
+field’s value is the namespace prefix of the Developer Edition org of the package
+developer.
+
+**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for objects
+that are part of an installed managed package. All other objects have no namespace
+prefix.
+
+**Type**
+string
+
+**Properties**
 Create, Filter, Nillable, Sort, Update
 
 **Description**
@@ -10224,7 +10382,7 @@ Standard Objects AgentWork
 **Field** **Details**
 
 **Description**
-The ID of the PendingServiceRouting on page 4073 from which the AgentWork was created.
+The ID of the PendingServiceRouting on page 4102 from which the AgentWork was created.
 This field is a relationship field. This field is available in API version 50.0 and later.
 
 **Relationship Name**
@@ -10568,7 +10726,7 @@ When `AgentWork` records are created, they have the status Assigned. After a rec
 assigned agent.
 
 
-### Standard Objects AgentWorkSkill While the metadata for AgentWork indicates support for upsert() and update(), these calls aren’t used with AgentWork
+### Standard Objects AgentWorkConversationalData While the metadata for AgentWork indicates support for upsert() and update(), these calls aren’t used with AgentWork
 
 because none of its fields can be updated.
 
@@ -10592,6 +10750,342 @@ Sharing is available for the object.
 SEE ALSO:
 
 _Salesforce Help_ [: Understand the Details of the Routing Lifecycle](https://help.salesforce.com/s/articleView?id=service.omnichannel_psr_lifecycle.htm&type=5&language=en_US)
+
+### AgentWorkConversationalData
+
+Stores conversation data for agent work sessions, such as agent interactions, transfer information, and operational metrics. This object
+is available in API version 66.0 and later.
+
+Supported Calls
+
+`describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`
+
+Special Access Rules
+
+You must have the Agentforce Contact Center Admin (Salesforce Voice) permission set enabled in your org.
+
+Fields
+
+**Field** **Details**
+
+```
+AgentChannelRecordingId
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Identifier for the recording associated with the agent channel conversation.
+
+This field is a relationship field.
+
+**Relationship Name**
+AgentChannelRecording
+
+
+Standard Objects AgentWorkConversationalData
+
+**Field** **Details**
+
+**Refers To**
+VoiceCallRecording
+
+```
+AgentConnectDateTime
+
+AgentCustomerMergeTime
+
+AgentDisconnectDateTime
+
+AgentId
+
+AgentType
+
+```
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp for when the agent connected to the conversation.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp when the service rep and customer conversations are merged after consultation.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp for when the agent disconnected from the conversation.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+ID of an agent or a rep involved in the conversation.
+
+This field is a polymorphic relationship field.
+
+**Relationship Name**
+Agent
+
+**Refers To**
+BotDefinition, ExternalConversationBotDef, User
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+
+Standard Objects AgentWorkConversationalData
+
+**Field** **Details**
+
+**Description**
+Type of agent handling the conversation.
+
+Possible values are:
+
+**•** `ExternalBot`
+
+**•** `Human`
+
+**•** `InternalBot`
+
+```
+AgentWorkId
+
+ChannelSessionRecordId
+
+LongestPauseDuration
+
+Name
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+ID of the `AgentWork` record associated with the conversational data.
+
+This field is a relationship field.
+
+**Relationship Name**
+AgentWork
+
+**Refers To**
+AgentWork
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Identifier of the channel session for the conversation.
+
+This field is a relationship field.
+
+**Relationship Name**
+ChannelSessionRecord
+
+**Refers To**
+VoiceCall
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Duration of the longest pause during the conversation, measured in seconds.
+
+**Type**
+string
+
+
+Standard Objects AgentWorkConversationalData
+
+**Field** **Details**
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+Name of the agent work conversational data record.
+
+```
+NextAgentWorkConvId
+
+OwnerId
+
+OwnershipEndDateTime
+
+OwnershipStartDateTime
+
+```
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+ID of the next record in a sequence of conversations.
+
+This field is a relationship field.
+
+**Relationship Name**
+NextAgentWorkConv
+
+**Refers To**
+AgentWorkConversationalData
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Sort
+
+**Description**
+ID of the owner of the conversational data record.
+
+This field is a polymorphic relationship field.
+
+**Relationship Name**
+Owner
+
+**Refers To**
+Group, User
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Timestamp for when ownership of the conversation ended.
+
+**Type**
+dateTime
+
+**Properties**
+Filter, Nillable, Sort
+
+
+Standard Objects AgentWorkConversationalData
+
+**Field** **Details**
+
+**Description**
+Timestamp for when ownership of this conversation started.
+
+```
+PauseCount
+
+PrevAgentWorkConvId
+
+QualityScore
+
+TotalPauseDuration
+
+TransferType
+
+```
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Total number of times the conversation was paused.
+
+**Type**
+reference
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+ID of the previous record in a sequence of conversations.
+
+This field is a relationship field.
+
+**Relationship Name**
+PrevAgentWorkConv
+
+**Refers To**
+AgentWorkConversationalData
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+Value of the Mean Opinion Score (MOS) that measures voice call quality.
+
+**Type**
+int
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+Total duration of all pauses during the conversation, measured in seconds.
+
+**Type**
+picklist
+
+**Properties**
+Filter, Group, Nillable, Restricted picklist, Sort
+
+
+### Standard Objects AgentWorkSkill
+
+**Field** **Details**
+
+**Description**
+Type of transfer for the conversation.
+
+Possible values are:
+
+**•** `Cold`
+
+**•** `Warm`
 
 ### AgentWorkSkill
 
@@ -10629,11 +11123,6 @@ The AgentWork object associated with this skill.
 **Type**
 boolean
 
-
-Standard Objects AgentWorkSkill
-
-**Field** **Details**
-
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
@@ -10641,6 +11130,11 @@ Defaulted on create, Filter, Group, Sort
 After a designated timeout period, a skill marked as additional is dropped from Omni-Channel
 routing. The case is then routed to the best-matched agent, even if the agent doesn’t have
 all the skills. The default value is false. Available in API version 48.0 and later.
+
+
+Standard Objects AgentWorkSkill
+
+**Field** **Details**
 
 ```
 Name
@@ -10700,11 +11194,6 @@ Apex code.
 **Type**
 boolean
 
-
-### Standard Objects AIApplication
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Sort
 
@@ -10712,6 +11201,9 @@ Filter, Group, Sort
 For skills marked as additional, indicates if the skill was dropped from Omni-Channel routing
 because an agent with this skill was not available. The default value is false. Available in API
 version 48.0 and later.
+
+
+### Standard Objects AIApplication
 
 Associated Objects
 
@@ -10736,6 +11228,8 @@ Fields
 ```
 DeveloperName
 
+Language
+
 ```
 
 **Type**
@@ -10755,20 +11249,6 @@ are reflected in a subscriber’s organization.
 Note: Only users with View DeveloperName OR View Setup and Configuration
 permission can view, group, sort, and filter this field.
 
-
-Standard Objects AIApplication
-
-**Field** **Details**
-
-```
-Language
-
-MasterLabel
-
-NamespacePrefix
-
-```
-
 **Type**
 picklist
 
@@ -10785,6 +11265,11 @@ The language of the application. Possible values are:
 **•** `en_US` —English
 
 **•** `es` —Spanish
+
+
+Standard Objects AIApplication
+
+**Field** **Details**
 
 **•** `es_MX` —Spanish (Mexico)
 
@@ -10814,6 +11299,15 @@ The language of the application. Possible values are:
 
 **•** `zh_TW` —Chinese (Traditional)
 
+```
+MasterLabel
+
+NamespacePrefix
+
+Status
+
+```
+
 **Type**
 string
 
@@ -10832,20 +11326,6 @@ Filter, Group, Nillable, Sort
 **Description**
 Specifies the namespace of the application if installed with a managed package.
 
-
-### Standard Objects AIApplicationConfig
-
-**Field** **Details**
-
-```
-Status
-
-Type
-
-### AIApplicationConfig
-
-```
-
 **Type**
 picklist
 
@@ -10860,6 +11340,18 @@ Status of the AI application. Possible values are:
 **•** `Enabled`
 
 **•** `Migrated`
+
+
+### Standard Objects AIApplicationConfig
+
+**Field** **Details**
+
+```
+Type
+
+### AIApplicationConfig
+
+```
 
 **Type**
 picklist
@@ -10885,6 +11377,8 @@ Fields
 ```
 DeveloperName
 
+Language
+
 ```
 
 **Type**
@@ -10898,26 +11392,11 @@ The unique name of the object in the API. This name can contain only underscores
 alphanumeric characters, and must be unique in your org. It must begin with a letter, not
 include spaces, not end with an underscore, and not contain two consecutive underscores.
 In managed packages, this field prevents naming conflicts on package installations. With
-
-
-Standard Objects AIApplicationConfig
-
-**Field** **Details**
-
 this field, a developer can change the object’s name in a managed package and the changes
 are reflected in a subscriber’s organization.
 
 Note: Only users with View DeveloperName OR View Setup and Configuration
 permission can view, group, sort, and filter this field.
-
-```
-Language
-
-MasterLabel
-
-NamespacePrefix
-
-```
 
 **Type**
 picklist
@@ -10927,6 +11406,11 @@ Filter, Group, Restricted picklist, Sort
 
 **Description**
 The language of the application. Possible values are:
+
+
+### Standard Objects AiGenActionItem
+
+**Field** **Details**
 
 **•** `da` —Danish
 
@@ -10964,6 +11448,15 @@ The language of the application. Possible values are:
 
 **•** `zh_TW` —Chinese (Traditional)
 
+```
+MasterLabel
+
+NamespacePrefix
+
+### AiGenActionItem
+
+```
+
 **Type**
 string
 
@@ -10976,22 +11469,18 @@ Label that identifies the AI application throughout the Salesforce user interfac
 **Type**
 string
 
-
-### Standard Objects AiGenActionItem
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 Specifies the namespace of the application config, if installed with a managed package.
 
-### AiGenActionItem
-
 Represents business actions suggested by generative AI. AI-generated action items are sent to either agents for automatic execution or
 human users for review, depending on org preference and if there are any errors in the process. This object is available in API version
 64.0 and later.
+
+
+Standard Objects AiGenActionItem
 
 Supported Calls
 
@@ -11011,7 +11500,11 @@ ActionItemOwnerId
 
 ActionResult
 
+AgentType
+
 ```
+
+BotDefinitionId
 
 **Type**
 reference
@@ -11035,30 +11528,11 @@ Group, User
 **Type**
 textarea
 
-
-Standard Objects AiGenActionItem
-
-**Field** **Details**
-
 **Properties**
 Create, Nillable, Update
 
 **Description**
 The result generated when the agent action is executed.
-
-```
-AgentType
-
-```
-
-BotDefinitionId
-
-BotVersionId
-
-```
-Description
-
-```
 
 **Type**
 picklist
@@ -11071,6 +11545,11 @@ The specific agent that processes the AI-generated action item.
 
 **Type**
 reference
+
+
+Standard Objects AiGenActionItem
+
+**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -11086,6 +11565,15 @@ BotDefinition
 
 **Refers To**
 BotDefinition
+
+BotVersionId
+
+```
+Description
+
+ExpirationDate
+
+```
 
 **Type**
 reference
@@ -11108,28 +11596,12 @@ BotVersion
 **Type**
 string
 
-
-Standard Objects AiGenActionItem
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
 **Description**
 The explanation of why the action item has been suggested. The description provides
 additional context to guide human users and agents in their decision-making.
-
-```
-ExpirationDate
-
-GeneratedResponseIdRef
-
-OwnerId
-
-Status
-
-```
 
 **Type**
 dateTime
@@ -11140,6 +11612,24 @@ Create, Filter, Sort, Update
 **Description**
 The date that the action item expires and is deleted. AI-generated action items are no longer
 visible to users after 14 days and removed from records after 30 days.
+
+
+Standard Objects AiGenActionItem
+
+**Field** **Details**
+
+```
+GeneratedResponseIdRef
+
+OwnerId
+
+Status
+
+Subject
+
+Type
+
+```
 
 **Type**
 string
@@ -11177,24 +11667,6 @@ Create, Filter, Group, Restricted picklist, Sort, Update
 **Description**
 The status of the AI-generated action item.
 
-
-### Standard Objects AIInsightAction
-
-**Field** **Details**
-
-```
-Subject
-
-Type
-
-UnmodActionItemOutput
-
-WhatId
-
-### AIInsightAction
-
-```
-
 **Type**
 string
 
@@ -11213,6 +11685,20 @@ Filter, Group, Nillable, Restricted picklist, Sort
 **Description**
 The category that the action item falls under. This field can be used to search for specific
 action items, such as field updates or follow-up sales emails.
+
+
+### Standard Objects AIInsightAction
+
+**Field** **Details**
+
+```
+UnmodActionItemOutput
+
+WhatId
+
+### AIInsightAction
+
+```
 
 **Type**
 textarea
@@ -11246,12 +11732,10 @@ Represents an Einstein prediction insight action. This object is available in AP
 An Einstein insight is created every time an Einstein feature, such as Prediction Builder, makes a prediction. An insight is represented by
 a root AIRecordInsight and the following child objects: AIInsightAction, AIInsightFeedback, AIInsightReason, and AIInsightValue.
 
+### AIInsightAction is a one-to-many child of AIRecordInsight. AIInsightAction contains information about predicted actions for this particular
 
-Standard Objects AIInsightAction
-
-AIInsightAction is a one-to-many child of AIRecordInsight. AIInsightAction contains information about predicted actions for this particular
 insight. AIInsightAction has one or more AIInsightValue children which contain predicted values for the action. For example, an
-AIInsightAction could represent a quick action, and have a child AIInsightValue with the recommended value used by the quick action.
+### AIInsightAction could represent a quick action, and have a child AIInsightValue with the recommended value used by the quick action.
 
 Supported Calls
 
@@ -11260,6 +11744,9 @@ Supported Calls
 Special Access Rules
 
 Prediction insight objects are only available in orgs that have Einstein features, such as Prediction Builder or Case Classification, enabled.
+
+
+Standard Objects AIInsightAction
 
 Fields
 
@@ -11271,6 +11758,8 @@ ActionId
 ActionName
 
 AiRecordInsightId
+
+Confidence
 
 ```
 
@@ -11313,11 +11802,6 @@ Filter, Group, Sort
 **Description**
 The unique ID of the associated AIRecordInsight.
 
-
-Standard Objects AIInsightAction
-
-**Field** **Details**
-
 This is a relationship field.
 
 **Relationship Name**
@@ -11329,19 +11813,13 @@ Lookup
 **Refers To**
 AIRecordInsight
 
-```
- Confidence
-
- Name
-
- Type
-
-```
-
-Usage
-
 **Type**
 double
+
+
+Standard Objects AIInsightAction
+
+**Field** **Details**
 
 **Properties**
 Filter, Nillable, Sort
@@ -11349,6 +11827,15 @@ Filter, Nillable, Sort
 **Description**
 Relative confidence strength of the generated prediction insight. Higher values (near 1.0)
 indicate stronger confidence.
+
+```
+ Name
+
+ Type
+
+```
+
+Usage
 
 **Type**
 string
@@ -11384,9 +11871,6 @@ and AIInsightValue records are also created and made children of the AIRecordIns
 
 **•** If the Einstein feature uses AI prediction fields, prediction result values are written to the target AI prediction field.
 
-
-### Standard Objects AIInsightFeedback
-
 **•** An AIPredictionEvent platform event is created, and any subscriber to AIPredictionEvent is notified.
 
 When Einstein writes prediction results back to AI prediction fields, record save custom logic, such as Apex triggers, workflow rules, and
@@ -11399,7 +11883,8 @@ Einstein insights contain information about target fields and predicted value. Y
 associated with target fields with field-level security restrictions. To control how users access Einstein insights records, use Salesforce
 data access features such as user profiles and permission sets.
 
-### AIInsightFeedback
+
+### Standard Objects AIInsightFeedback AIInsightFeedback
 
 Represents an Einstein prediction insight feedback. This object is available in API version 47.0 and later.
 
@@ -11427,6 +11912,8 @@ ActualValue
 
 AiFeedback
 
+AiInsightFeedbackType
+
 ```
 
 **Type**
@@ -11449,25 +11936,9 @@ The feedback user sentiment. Possible values are:
 
 **•** `Negative` —Negative feedback
 
-
-Standard Objects AIInsightFeedback
-
-**Field** **Details**
-
 **•** `Neutral` —Neutral feedback
 
 **•** `Positive` —Positive feedback
-
-```
-AiInsightFeedbackType
-
-AiRecordInsightId
-
-Name
-
-Rank
-
-```
 
 **Type**
 picklist
@@ -11478,11 +11949,27 @@ Filter, Group, Restricted picklist, Sort
 **Description**
 The nature of the feedback. Possible values are:
 
+
+Standard Objects AIInsightFeedback
+
+**Field** **Details**
+
 **•** `Explicit` —Explicit feedback. For example, a user applies and saves an Einstein
 recommendation on a case.
 
 **•** `Implicit` —Implicit feedback. For example, a user edits or updates a case field without
 viewing or applying field recommendations from Einstein.
+
+```
+AiRecordInsightId
+
+Name
+
+Rank
+
+ValueId
+
+```
 
 **Type**
 reference
@@ -11522,18 +12009,6 @@ Filter, Group, Nillable, Sort
 **Description**
 The feedback score.
 
-
-### Standard Objects AIInsightReason
-
-**Field** **Details**
-
-```
- ValueId
-
-```
-
-Usage
-
 **Type**
 reference
 
@@ -11545,6 +12020,11 @@ The unique ID of the associated AIInsightValue.
 
 This is a polymorphic relationship field.
 
+
+### Standard Objects AIInsightReason
+
+**Field** **Details**
+
 **Relationship Name**
 Value
 
@@ -11553,6 +12033,8 @@ Lookup
 
 **Refers To**
 AIInsightAction, AIInsightValue
+
+Usage
 
 Salesforce creates AIInsightFeedback records based on user responses to predictions after the prediction has been created. User feedback,
 such as a thumbs up/down response or accepting a recommended value, results in the creation of a feedback record in which the
@@ -11578,23 +12060,12 @@ Special Access Rules
 
 Prediction insight objects are only available in orgs that have Einstein features, such as Prediction Builder or Case Classification, enabled.
 
-
-Standard Objects AIInsightReason
-
 Fields
 
 **Field** **Details**
 
 ```
 AiInsightValueId
-
-Contribution
-
-FeatureType
-
-FeatureValue
-
-FieldName
 
 ```
 
@@ -11607,6 +12078,11 @@ Filter, Group, Sort
 **Description**
 The unique ID of the associated AIInsightValue.
 
+
+Standard Objects AIInsightReason
+
+**Field** **Details**
+
 This is a relationship field.
 
 **Relationship Name**
@@ -11617,6 +12093,19 @@ Lookup
 
 **Refers To**
 AIInsightValue
+
+```
+Contribution
+
+FeatureType
+
+FeatureValue
+
+FieldName
+
+FieldValue
+
+```
 
 **Type**
 double
@@ -11651,17 +12140,24 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+**Description**
+The name of the field the insight uses for its evaluation.
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
 
 Standard Objects AIInsightReason
 
 **Field** **Details**
 
 **Description**
-The name of the field the insight uses for its evaluation.
+The value for the field the insight uses for its evaluation.
 
 ```
-FieldValue
-
 Intensity
 
 Name
@@ -11670,16 +12166,11 @@ Operator
 
 ReasonLabelKey (Beta)
 
+RelatedInsightReasonId
+
+(Beta)
+
 ```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The value for the field the insight uses for its evaluation.
 
 **Type**
 double
@@ -11720,24 +12211,6 @@ Filter, Group, Nillable, Sort
 The key used to map an Einstein Key Accounts Identification (Beta) insight phrase or phrases
 to the correct messaging template.
 
-
-Standard Objects AIInsightReason
-
-**Field** **Details**
-
-```
-RelatedInsightReasonId
-
-(Beta)
-
-SortOrder (Beta)
-
- Variance
-
-```
-
-Usage
-
 **Type**
 reference
 
@@ -11750,6 +12223,11 @@ Identification (Beta) feature.
 
 This is a relationship field.
 
+
+### Standard Objects AIInsightValue
+
+**Field** **Details**
+
 **Relationship Name**
 RelatedInsightReason
 
@@ -11758,6 +12236,15 @@ Lookup
 
 **Refers To**
 AIInsightReason
+
+```
+SortOrder (Beta)
+
+ Variance
+
+```
+
+Usage
 
 **Type**
 int
@@ -11791,9 +12278,6 @@ When Einstein writes prediction results back to AI prediction fields, record sav
 assignment rules, aren’t run. To add custom logic based on Einstein prediction results, use a platform event subscriber, such as Process
 Builder, to get notifications for AIPredictionEvents that contain references to Einstein insight objects.
 
-
-### Standard Objects AIInsightValue
-
 Custom fields can’t be added to Einstein insight objects.
 
 Einstein insights contain information about target fields and predicted value. Your org may have created Einstein predictions that are
@@ -11804,10 +12288,13 @@ data access features such as user profiles and permission sets.
 
 Represents an Einstein prediction insight value. This object is available in API version 47.0 and later.
 
+
+Standard Objects AIInsightValue
+
 An Einstein insight is created every time an Einstein feature, such as Prediction Builder, makes a prediction. An insight is represented by
 a root AIRecordInsight and the following child objects: AIInsightAction, AIInsightFeedback, AIInsightReason, and AIInsightValue.
 
-### AIInsightValue is a one-to-many child of AIRecordInsight. AIInsightValue represents a predicted value of a predicted insight.
+AIInsightValue is a one-to-many child of AIRecordInsight. AIInsightValue represents a predicted value of a predicted insight.
 
 Supported Calls
 
@@ -11853,11 +12340,6 @@ AIInsightAction
 **Type**
 reference
 
-
-Standard Objects AIInsightValue
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Sort
 
@@ -11872,6 +12354,11 @@ AiRecordInsight
 **Relationship Type**
 Lookup
 
+
+Standard Objects AIInsightValue
+
+**Field** **Details**
+
 **Refers To**
 AIRecordInsight
 
@@ -11883,6 +12370,10 @@ Field
 FieldValueLowerBound
 
 FieldValueUpperBound
+
+Name
+
+SobjectLookupValueId
 
 ```
 
@@ -11923,18 +12414,6 @@ Nillable
 **Description**
 The upper bound value.
 
-
-Standard Objects AIInsightValue
-
-**Field** **Details**
-
-```
-Name
-
-SobjectLookupValueId
-
-```
-
 **Type**
 string
 
@@ -11946,6 +12425,11 @@ The name of the AIInsightValue.
 
 **Type**
 reference
+
+
+Standard Objects AIInsightValue
+
+**Field** **Details**
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -11987,12 +12471,6 @@ CoverageBenefitItem, CredentialStuffingEventStore, CreditMemo, CreditMemoLine,
 DataUseLegalBasis, DataUsePurpose, DelegatedAccount, DigitalWallet,
 DocumentChecklistItem, DuplicateRecordItem, DuplicateRecordSet, EmailMessage,
 EngagementChannelType, EnrollmentEligibilityCriteria, Event, HealthCareDiagnosis,
-
-
-Standard Objects AIInsightValue
-
-**Field** **Details**
-
 HealthCareProcedure, HealthcareFacility, HealthcareFacilityNetwork, HealthcarePayerNetwork,
 HealthcarePractitionerFacility, HealthcareProvider, HealthcareProviderNpi,
 HealthcareProviderSpecialty, HealthcareProviderTaxonomy, Idea, Identifier, IdentityDocument,
@@ -12003,6 +12481,12 @@ PartyConsent, Payment, PaymentAuthAdjustment, PaymentAuthorization, PaymentGatew
 PaymentGroup, PaymentLineInvoice, PersonEducation, PersonLanguage, PersonLifeEvent,
 PersonName, PlanBenefit, PlanBenefitItem, Pricebook2, PricebookEntry, ProcessException,
 Product2, ProductConsumptionSchedule, ProductFulfillmentLocation, ProductItem,
+
+
+Standard Objects AIInsightValue
+
+**Field** **Details**
+
 ProductItemTransaction, ProductRequest, ProductRequestLineItem, ProductRequired,
 ProductTransfer, ProfileSkill, ProfileSkillEndorsement, ProfileSkillUser, PurchaserPlan,
 PurchaserPlanAssn, QuickText, ReceivedDocument, Recommendation, Refund,
@@ -12054,11 +12538,6 @@ The data type of the prediction result insight value. Possible values are:
 
 **•** `Boolean` —Boolean
 
-
-### Standard Objects AiJobRun
-
-**Field** **Details**
-
 **•** `Currency` —Currency
 
 **•** `DateTime` —DateTime
@@ -12070,6 +12549,9 @@ The data type of the prediction result insight value. Possible values are:
 **•** `Number` —Number
 
 **•** `String` —String
+
+
+### Standard Objects AiJobRun
 
 Usage
 
@@ -12109,6 +12591,8 @@ Fields
 ```
 EndTime
 
+ErrorCode
+
 ```
 
 **Type**
@@ -12117,26 +12601,8 @@ dateTime
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
-
-Standard Objects AiJobRun
-
-**Field** **Details**
-
 **Description**
 The time when the job run ends.
-
-```
-ErrorCode
-
-ErrorMessage
-
-JobType
-
-Label
-
-Name
-
-```
 
 **Type**
 string
@@ -12146,6 +12612,24 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 If the job run fails, this field indicates the specific error that occurred.
+
+
+Standard Objects AiJobRun
+
+**Field** **Details**
+
+```
+ErrorMessage
+
+JobType
+
+Label
+
+Name
+
+OwnerId
+
+```
 
 **Type**
 string
@@ -12187,22 +12671,6 @@ Autonumber, Defaulted on create, Filter, idLookup, Sort
 **Description**
 A unique, system-generated identifier for the `AiJobRun` record.
 
-
-Standard Objects AiJobRun
-
-**Field** **Details**
-
-```
-OwnerId
-
-StartTime
-
-Status
-
-Target
-
-```
-
 **Type**
 reference
 
@@ -12219,6 +12687,22 @@ Owner
 
 **Refers To**
 Group, User
+
+
+### Standard Objects AiJobRunItem
+
+**Field** **Details**
+
+```
+StartTime
+
+Status
+
+Target
+
+### AiJobRunItem
+
+```
 
 **Type**
 dateTime
@@ -12260,17 +12744,10 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-### Standard Objects AiJobRunItem
-
-**Field** **Details**
-
 **Description**
 A metadata field used to specify job-specific details, such as a `PromptTemplateId`,
 `PromptTemplateName`, or `ModelId` . This provides further context for the job
 execution.
-
-### AiJobRunItem
 
 Stores an individual item associated with a parent AiJobRun, including the inputs and resulting response. This object is available in API
 version 63.0 and later.
@@ -12279,6 +12756,9 @@ Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`,
 `undelete()`, `update()`, `upsert()`
+
+
+Standard Objects AiJobRunItem
 
 Fields
 
@@ -12290,6 +12770,10 @@ AiJobRunId
 ErrorCode
 
 ErrorMessage
+
+Input
+
+Name
 
 ```
 
@@ -12305,10 +12789,10 @@ A required reference to the parent AiJobRun record that this item belongs to.
 This field is a relationship field.
 
 **Relationship Name**
-### AiJobRun
+AiJobRun
 
 **Refers To**
-### AiJobRun
+AiJobRun
 
 **Type**
 string
@@ -12322,28 +12806,12 @@ If processing for this item fails, this field contains a numeric code indicating
 **Type**
 string
 
-
-Standard Objects AiJobRunItem
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Contains a detailed, human-readable message that explains the reason for the job run item
 failure.
-
-```
-Input
-
-Name
-
-OwnerId
-
-PreprocessedInput
-
-```
 
 **Type**
 textarea
@@ -12361,8 +12829,24 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
+
+Standard Objects AiJobRunItem
+
+**Field** **Details**
+
 **Description**
 A unique, system-generated identifier for the AiJobRunItem record.
+
+```
+OwnerId
+
+PreprocessedInput
+
+Response
+
+Status
+
+```
 
 **Type**
 reference
@@ -12391,20 +12875,6 @@ Create, Nillable, Update
 Stores an intermediate version of the input data after the preprocessing step. For example,
 this field could be a hydrated JSON prompt.
 
-
-### Standard Objects AiModelLanguage
-
-**Field** **Details**
-
-```
-Response
-
-Status
-
-### AiModelLanguage
-
-```
-
 **Type**
 textarea
 
@@ -12429,6 +12899,9 @@ Tracks the status of the individual job item. Valid values are:
 
 **•** `Failed` : Processing for the job run item failed.
 
+
+### Standard Objects AiModelLanguage AiModelLanguage
+
 An object that stores language related information that is generated for each AI model. This object is available in API version 55.0 and
 later.
 
@@ -12450,6 +12923,8 @@ Fields
 ```
 ApplicationType
 
+ExternalAiModelId
+
 ```
 
 **Type**
@@ -12457,11 +12932,6 @@ picklist
 
 **Properties**
 Filter, Group, Restricted picklist, Sort
-
-
-Standard Objects AiModelLanguage
-
-**Field** **Details**
 
 **Description**
 Type of application using the AI model.
@@ -12482,13 +12952,6 @@ Possible values are:
 
 **•** `UTTERANCE_RECOMMENDATION`
 
-```
-ExternalAiModelId
-
-Language
-
-```
-
 **Type**
 reference
 
@@ -12500,6 +12963,11 @@ ID of the AI model used to generate predictions.
 
 This field is a relationship field.
 
+
+Standard Objects AiModelLanguage
+
+**Field** **Details**
+
 **Relationship Name**
 ExternalAiModel
 
@@ -12508,6 +12976,15 @@ Lookup
 
 **Refers To**
 ExternalAIModel
+
+```
+Language
+
+Name
+
+ServingStatus
+
+```
 
 **Type**
 picklist
@@ -12534,11 +13011,6 @@ Possible values are:
 
 **•** `German`
 
-
-### Standard Objects AIRecordInsight
-
-**Field** **Details**
-
 **•** `Italian`
 
 **•** `Japanese`
@@ -12557,17 +13029,6 @@ Possible values are:
 
 **•** `Turkish`
 
-```
-Name
-
-ServingStatus
-
-TranscriptCount
-
-### AIRecordInsight
-
-```
-
 **Type**
 string
 
@@ -12580,11 +13041,23 @@ AI model name.
 **Type**
 picklist
 
+
+### Standard Objects AIRecordInsight
+
+**Field** **Details**
+
 **Properties**
 Filter, Group, Restricted picklist, Sort, Update
 
 **Description**
 Determines if the language is enabled or disabled for this AI model.
+
+```
+TranscriptCount
+
+### AIRecordInsight
+
+```
 
 **Type**
 int
@@ -12604,9 +13077,6 @@ a root AIRecordInsight and the following child objects: AIInsightAction, AIInsig
 
 such as the type of prediction.
 
-
-Standard Objects AIRecordInsight
-
 Supported Calls
 
 `delete()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`, `retrieve()`, `undelete()`
@@ -12622,10 +13092,6 @@ Fields
 ```
 AiApplicationId
 
-Confidence
-
-MlPredictionDefinitionId
-
 ```
 
 **Type**
@@ -12639,6 +13105,11 @@ The unique ID of the AiApplication that generated this prediction.
 
 This is a relationship field.
 
+
+Standard Objects AIRecordInsight
+
+**Field** **Details**
+
 **Relationship Name**
 AiApplication
 
@@ -12647,6 +13118,15 @@ Lookup
 
 **Refers To**
 AIApplication
+
+```
+Confidence
+
+MlPredictionDefinitionId
+
+ModelId
+
+```
 
 **Type**
 double
@@ -12670,27 +13150,11 @@ This field is a relationship field.
 **Relationship Name**
 MlPredictionDefinition
 
-
-Standard Objects AIRecordInsight
-
-**Field** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 MLPredictionDefinition
-
-```
-ModelId
-
-Name
-
-PredictionField
-
-RunGuid
-
-```
 
 **Type**
 reference
@@ -12711,6 +13175,24 @@ Lookup
 
 **Refers To**
 MLModel
+
+
+Standard Objects AIRecordInsight
+
+**Field** **Details**
+
+```
+Name
+
+PredictionField
+
+RunGuid
+
+RunStartTime
+
+Status
+
+```
 
 **Type**
 string
@@ -12739,22 +13221,6 @@ Filter, Group, Sort
 **Description**
 A unique identifier for the Einstein process that made the prediction.
 
-
-Standard Objects AIRecordInsight
-
-**Field** **Details**
-
-```
-RunStartTime
-
-Status
-
-TargetField
-
-TargetId
-
-```
-
 **Type**
 dateTime
 
@@ -12780,6 +13246,18 @@ recommendation. This behavior ensures that the same recommendation isn’t prese
 multiple times to the user.
 
 **•** `New` —The insight hasn’t been consumed by the Einstein feature.
+
+
+Standard Objects AIRecordInsight
+
+**Field** **Details**
+
+```
+TargetField
+
+TargetId
+
+```
 
 **Type**
 picklist
@@ -12810,12 +13288,6 @@ Lookup
 **Refers To**
 Account, Accreditation, ActivationTarget, Address, AlternativePaymentMethod,
 ApiAnomalyEventStore, AssessmentIndicatorDefinition, AssessmentTask,
-
-
-Standard Objects AIRecordInsight
-
-**Field** **Details**
-
 AssessmentTaskContentDocument, AssessmentTaskDefinition, AssessmentTaskIndDefinition,
 AssessmentTaskOrder, Asset, AssetRelationship, AssignedResource, AssociatedLocation,
 AuthorizationForm, AuthorizationFormConsent, AuthorizationFormDataUse,
@@ -12839,6 +13311,12 @@ CoverageBenefitItem, CredentialStuffingEventStore, CreditMemo, CreditMemoLine,
 DataUseLegalBasis, DataUsePurpose, DelegatedAccount, DigitalWallet,
 DocumentChecklistItem, DuplicateRecordItem, DuplicateRecordSet, EmailMessage,
 EngagementChannelType, EnrollmentEligibilityCriteria, Event, HealthCareDiagnosis,
+
+
+Standard Objects AIRecordInsight
+
+**Field** **Details**
+
 HealthCareProcedure, HealthcareFacility, HealthcareFacilityNetwork, HealthcarePayerNetwork,
 HealthcarePractitionerFacility, HealthcareProvider, HealthcareProviderNpi,
 HealthcareProviderSpecialty, HealthcareProviderTaxonomy, Idea, Identifier, IdentityDocument,
@@ -12864,30 +13342,20 @@ WorkOrderLineItem, WorkThanks, WorkType, WorkTypeGroup, WorkTypeGroupMember
 ```
 TargetSobjectType
 
+Type
+
+ValidUntil
+
 ```
 
 **Type**
 picklist
-
-
-Standard Objects AIRecordInsight
-
-**Field** **Details**
 
 **Properties**
 Filter, Group, Restricted picklist, Sort
 
 **Description**
 The type of the target object, such as Account or Case.
-
-```
- Type
-
- ValidUntil
-
-```
-
-Usage
 
 **Type**
 picklist
@@ -12912,6 +13380,11 @@ object and field.
 **Type**
 dateTime
 
+
+### Standard Objects AIResearchPromptResult
+
+**Field** **Details**
+
 **Properties**
 Filter, Nillable, Sort
 
@@ -12919,6 +13392,8 @@ Filter, Nillable, Sort
 The day and time this insight is valid until. After this day and time, the insight might no longer
 be valid due to new prediction results from new or changed data. If this field is `null`, this
 insight never expires.
+
+Usage
 
 When an Einstein feature makes a prediction and saves the results, the following events happen in a single atomic operation:
 
@@ -12934,9 +13409,6 @@ assignment rules, aren’t run. To add custom logic based on Einstein prediction
 Builder, to get notifications for AIPredictionEvents that contain references to Einstein insight objects.
 
 Custom fields can’t be added to Einstein insight objects.
-
-
-### Standard Objects AIResearchPromptResult
 
 Einstein insights contain information about target fields and predicted value. Your org may have created Einstein predictions that are
 associated with target fields with field-level security restrictions. To control how users access Einstein insights records, use Salesforce
@@ -12965,6 +13437,9 @@ to Positive; if the agent applies a different value, AiFeedback is Negative.
 Represents the research result generated by Agentforce or by Einstein from a standard or custom prompt template. This object is
 available in API version 64.0 and later.
 
+
+Standard Objects AIResearchPromptResult
+
 When an Agentforce or an Einstein feature researches a record and saves the results, an AIResearchPromptResult record is created and
 populated with information about the researched record.
 
@@ -12983,16 +13458,18 @@ Fields
 
 AiGenActionItemId
 
+IsToxicityDetected
+
+```
+LatestErrorMessage
+
+```
+
 **Type**
 reference
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
-
-
-Standard Objects AIResearchPromptResult
-
-**Field** **Details**
 
 **Description**
 The business action suggested by generative AI.
@@ -13004,19 +13481,6 @@ AiGenActionItem
 
 **Refers To**
 AiGenActionItem
-
-IsToxicityDetected
-
-```
-LatestErrorMessage
-
-LatestGenResponseIdRef
-
-LatestGenerationDate
-
-LatestResult
-
-```
 
 **Type**
 boolean
@@ -13036,6 +13500,24 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The error message that displays if the result can't be generated.
+
+
+Standard Objects AIResearchPromptResult
+
+**Field** **Details**
+
+```
+LatestGenResponseIdRef
+
+LatestGenerationDate
+
+LatestResult
+
+LatestSafetyScore
+
+LatestStatus
+
+```
 
 **Type**
 string
@@ -13059,27 +13541,11 @@ The date and time that the result was most recently generated.
 **Type**
 textarea
 
-
-Standard Objects AIResearchPromptResult
-
-**Field** **Details**
-
 **Properties**
 Create, Nillable, Update
 
 **Description**
 The AI-generated result.
-
-```
-LatestSafetyScore
-
-LatestStatus
-
-OwnerId
-
-ReferenceRecordId
-
-```
 
 **Type**
 double
@@ -13108,6 +13574,22 @@ Possible values are:
 
 **•** `Failed`
 
+
+Standard Objects AIResearchPromptResult
+
+**Field** **Details**
+
+```
+OwnerId
+
+ReferenceRecordId
+
+StandardPromptTemplate
+
+```
+
+Version
+
 **Type**
 reference
 
@@ -13131,11 +13613,6 @@ reference
 **Properties**
 Create, Filter, Group, Sort, Update
 
-
-### Standard Objects AllowedEmailDomain
-
-**Field** **Details**
-
 **Description**
 The record ID that the research result was generated for.
 
@@ -13146,15 +13623,6 @@ ReferenceRecord
 
 **Refers To**
 Account, Lead, Opportunity
-
-```
-StandardPromptTemplate
-
-```
-
-Version
-
-Associated Objects
 
 **Type**
 string
@@ -13173,6 +13641,11 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The prompt template version number.
+
+
+### Standard Objects AllowedEmailDomain
+
+Associated Objects
 
 This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
 Otherwise, they’re available in the specified API version and later.
@@ -13193,9 +13666,6 @@ Sharing is available for the object.
 
 Represents an allowed email domain for users in your organization. You can define an allowlist to restrict the email domains allowed in
 a user’s `Email` field. This object is available in API version 29.0 and later.
-
-
-### Standard Objects AlternativePaymentMethod
 
 Supported Calls
 
@@ -13225,7 +13695,8 @@ Create, Filter, Group, idLookup, Sort, Update
 **Description**
 An allowed email domain for users.
 
-### AlternativePaymentMethod
+
+### Standard Objects AlternativePaymentMethod AlternativePaymentMethod
 
 Represents a payment method that isn’t cash, a debit card, or a credit card. This object defines methods that aren’t defined by the
 CardPaymentMethod or DigitalWallet objects. Examples of alternative payment methods include CashOnDeliver, Klarna, and Direct
@@ -13250,15 +13721,16 @@ Fields
 ```
 AccountId
 
+### `AlternativePaymentMethod`
+
+Number
+
+AuditEmail
+
 ```
 
 **Type**
 reference
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
@@ -13277,19 +13749,6 @@ Lookup
 **Refers To**
 Account
 
-```
-AlternativePaymentMethod
-
-Number
-
-AuditEmail
-
-BankAccountHolderType
-
-BankAccountType
-
-```
-
 **Type**
 string
 
@@ -13302,11 +13761,29 @@ Salesforce ID number for the alternative payment method.
 **Type**
 email
 
+
+Standard Objects AlternativePaymentMethod
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 The email address of the payment owner where audit information about payments is sent.
+
+```
+BankAccountHolderType
+
+BankAccountType
+
+BillingFirstName
+
+BillingLastName
+
+BillingName
+
+```
 
 **Type**
 picklist
@@ -13329,26 +13806,8 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
 **Description**
 Type of bank account such as a checking or savings account.
-
-```
-BillingFirstName
-
-BillingLastName
-
-BillingName
-
-Comments
-
-CompanyName
-
-```
 
 **Type**
 string
@@ -13375,6 +13834,11 @@ This field is available in API version 58.0 and later.
 **Type**
 string
 
+
+Standard Objects AlternativePaymentMethod
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
@@ -13382,6 +13846,22 @@ Create, Filter, Group, Nillable, Sort, Update
 The first and last name of the payment method owner, based on their billing address details.
 
 This field is available in API version 58.0 and later.
+
+```
+Comments
+
+CompanyName
+
+Email
+
+```
+
+ExtendedPaymentMethodType
+
+```
+GatewayToken
+
+```
 
 **Type**
 textarea
@@ -13401,29 +13881,6 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Company name for this payment method. Part of the payment method’s address.
-
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-```
-Email
-
-```
-
-ExtendedPaymentMethodType
-
-```
-GatewayToken
-
-GatewayTokenDetails
-
-IpAddress
-
-IsAutoPayEnabled
-
-```
 
 **Type**
 email
@@ -13450,9 +13907,27 @@ encryptedstring
 **Properties**
 Create, Nillable, Update
 
+
+Standard Objects AlternativePaymentMethod
+
+**Field** **Details**
+
 **Description**
 Tokenized form of the alternative payment method, returned by the gateway. Stored as
 encrypted text.
+
+```
+GatewayTokenDetails
+
+IpAddress
+
+IsAutoPayEnabled
+
+LastReferencedDate
+
+LastViewedDate
+
+```
 
 **Type**
 textarea
@@ -13479,11 +13954,6 @@ boolean
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
 **Description**
 Indicates whether the payment method can be used for recurring payments (True) or not
 (False). The default value is False.
@@ -13491,19 +13961,6 @@ Indicates whether the payment method can be used for recurring payments (True) o
 This field is available in API v55.0 and later. For orgs that upgraded from v54.0, you must add
 this field to the Alternative Payment Method page layout in the UI. It isn't automatically
 added.
-
-```
-LastReferencedDate
-
-LastViewedDate
-
-MacAddress
-
-NickName
-
-OwnerId
-
-```
 
 **Type**
 dateTime
@@ -13521,10 +13978,26 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects AlternativePaymentMethod
+
+**Field** **Details**
+
 **Description**
 The timestamp when the current user last viewed this record or list view. If this value is null,
 it's possible the user only accessed this record or list view (LastReferencedDate) but not
 viewed it.
+
+```
+MacAddress
+
+NickName
+
+OwnerId
+
+PaymentGatewayId
+
+```
 
 **Type**
 string
@@ -13550,11 +14023,6 @@ reference
 **Properties**
 Create, Defaulted on create, Filter, Group, Sort, Update
 
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
 **Description**
 The user who owns the alternative payment method.
 
@@ -13569,17 +14037,6 @@ Lookup
 **Refers To**
 Group, User
 
-```
-PaymentGatewayId
-
-PaymentMethodAddress
-
-PaymentMethodCity
-
-PaymentMethodCountry
-
-```
-
 **Type**
 reference
 
@@ -13591,6 +14048,11 @@ ID of the payment gateway entity used to handle transactions from this payment m
 
 This field is a relationship field.
 
+
+Standard Objects AlternativePaymentMethod
+
+**Field** **Details**
+
 **Relationship Name**
 PaymentGateway
 
@@ -13599,6 +14061,21 @@ Lookup
 
 **Refers To**
 PaymentGateway
+
+```
+PaymentMethodAddress
+
+PaymentMethodCity
+
+PaymentMethodCountry
+
+PaymentMethodDetails
+
+PaymentMethodGeocode
+
+Accuracy
+
+```
 
 **Type**
 address
@@ -13622,27 +14099,11 @@ Payment method address details.
 **Type**
 string
 
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Payment method address details.
-
-```
-PaymentMethodDetails
-
-PaymentMethodGeocode
-
-Accuracy
-
-PaymentMethodLatitude
-
-```
 
 **Type**
 string
@@ -13659,6 +14120,11 @@ picklist
 
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
+
+
+Standard Objects AlternativePaymentMethod
+
+**Field** **Details**
 
 **Description**
 Accuracy level of the geocode for the payment method address. An accuracy level contains
@@ -13689,34 +14155,25 @@ Possible values are:
 
 **•** `Zip`
 
+```
+PaymentMethodLatitude
+
+PaymentMethodLongitude
+
+PaymentMethodPostalCode
+
+```
+
 **Type**
 double
 
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
 **Description**
 Latitude of the payment method address. Used with the PaymentMethodLongitude to
 specify the precise geolocation of the address. For details about geolocation compound
 fields, see Compound Field Considerations and Limitations.
-
-```
-PaymentMethodLongitude
-
-PaymentMethodPostalCode
-
-PaymentMethodState
-
-PaymentMethodStreet
-
-PaymentMethodSubType
-
-```
 
 **Type**
 double
@@ -13737,6 +14194,26 @@ Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
 Details of the address for this payment method.
+
+
+Standard Objects AlternativePaymentMethod
+
+**Field** **Details**
+
+```
+PaymentMethodState
+
+PaymentMethodStreet
+
+PaymentMethodSubType
+
+PaymentMethodType
+
+Phone
+
+ProcessingMode
+
+```
 
 **Type**
 string
@@ -13766,22 +14243,6 @@ Create, Filter, Group, Nillable, Sort
 More information about the payment method. For example, if the PaymentMethodType is
 Visa, this field can be a digital wallet. This field is available in API version 57.0 and later.
 
-
-Standard Objects AlternativePaymentMethod
-
-**Field** **Details**
-
-```
-PaymentMethodType
-
-Phone
-
-ProcessingMode
-
-SavedPaymentMethodId
-
-```
-
 **Type**
 picklist
 
@@ -13807,6 +14268,11 @@ picklist
 **Properties**
 Create, Filter, Group, Restricted picklist, Sort
 
+
+Standard Objects AlternativePaymentMethod
+
+**Field** **Details**
+
 **Description**
 Indicates whether the payment method was created in Salesforce or externally. Required.
 
@@ -13817,6 +14283,15 @@ through any method other than the Salesforce Payments Connect API.
 
 **•** `Salesforce` : Select this value if you use Salesforce Payments Connect API to create
 the alternative payment method record.
+
+```
+SavedPaymentMethodId
+
+StandardEntryClassCode
+
+Status
+
+```
 
 **Type**
 reference
@@ -13835,18 +14310,6 @@ Lookup
 
 **Refers To**
 SavedPaymentMethod
-
-
-### Standard Objects AnalyticsChangeEventLog
-
-**Field** **Details**
-
-```
-StandardEntryClassCode
-
-Status
-
-```
 
 **Type**
 picklist
@@ -13877,6 +14340,11 @@ Create, Filter, Group, Restricted picklist, Sort, Update
 **Description**
 The state of the payment method. Required.
 
+
+### Standard Objects AnalyticsChangeEventLog
+
+**Field** **Details**
+
 Possible values are:
 
 **•** `Active` —The Payments platform can use the alternative payment method to make
@@ -13899,9 +14367,6 @@ Supported Calls
 
 `describeSObjects()`, `query()`
 
-
-Standard Objects AnalyticsChangeEventLog
-
 Special Access Rules
 
 To access this object, you must have the View Event Log Object Data user permission.
@@ -13914,12 +14379,6 @@ Fields
 AnalyticsMode
 
 AnalyticsSessionIdentifier
-
-AnalyticsTimestamp
-
-ClientIp
-
-CpuTime
 
 ```
 
@@ -13939,9 +14398,27 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+Standard Objects AnalyticsChangeEventLog
+
+**Field** **Details**
+
 **Description**
 The ID of a particular session of CRM Analytics. Use this field to determine which log lines
 originated from a particular session.
+
+```
+AnalyticsTimestamp
+
+ClientIp
+
+CpuTime
+
+IsMobile
+
+IsNew
+
+```
 
 **Type**
 double
@@ -13968,27 +14445,9 @@ double
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects AnalyticsChangeEventLog
-
-**Field** **Details**
-
 **Description**
 The CPU time in milliseconds used to complete the request. This field indicates the amount
 of activity taking place in the app server layer.
-
-```
-IsMobile
-
-IsNew
-
-LoginKey
-
-PageContext
-
-PageIdentifier
-
-```
 
 **Type**
 boolean
@@ -14010,6 +14469,26 @@ The field indicates that this action opens a new tab ( `true` ) or goes back to 
 opened tab ( `false` ).
 
 The default value is `false` .
+
+
+Standard Objects AnalyticsChangeEventLog
+
+**Field** **Details**
+
+```
+LoginKey
+
+PageContext
+
+PageIdentifier
+
+RecordIdentifier
+
+ReopenCount
+
+RequestIdentifier
+
+```
 
 **Type**
 string
@@ -14038,28 +14517,8 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects AnalyticsChangeEventLog
-
-**Field** **Details**
-
 **Description**
 The ID of the CRM Analytics dashboard page.
-
-```
-RecordIdentifier
-
-ReopenCount
-
-RequestIdentifier
-
-RunTime
-
-SavedViewIdentifier
-
-SessionKey
-
-```
 
 **Type**
 string
@@ -14085,10 +14544,28 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+Standard Objects AnalyticsChangeEventLog
+
+**Field** **Details**
+
 **Description**
 The unique ID of a single transaction. A transaction can contain one or more events. Each
 event in a given transaction has the same `RequestIdentifier.` For example:
 3nWgxWbDKWWDIk0FKfF5DV.
+
+```
+RunTime
+
+SavedViewIdentifier
+
+SessionKey
+
+TabIdentifier
+
+Timestamp
+
+```
 
 **Type**
 double
@@ -14111,11 +14588,6 @@ The ID of the CRM Analytics dashboard saved view.
 **Type**
 string
 
-
-Standard Objects AnalyticsChangeEventLog
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
@@ -14123,19 +14595,6 @@ Filter, Group, Nillable, Sort
 The user’s unique session ID. You can use this value to identify all user events within a session.
 When a user logs out and logs in again, a new session is started. For example:
 `d7DEq/ANa7nNZZVD` .
-
-```
-TabIdentifier
-
-Timestamp
-
-Type
-
-Uri
-
-UserIdentifier
-
-```
 
 **Type**
 string
@@ -14155,6 +14614,22 @@ Filter, Nillable, Sort
 **Description**
 The access time of Salesforce services in GMT. For example,
 `2020-01-20T19:12:26.965Z` . Milliseconds are the most granular setting.
+
+
+### Standard Objects AnalyticsDashboard
+
+**Field** **Details**
+
+```
+Type
+
+Uri
+
+UserIdentifier
+
+ViewMode
+
+```
 
 **Type**
 string
@@ -14180,19 +14655,9 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-### Standard Objects AnalyticsDashboard
-
-**Field** **Details**
-
 **Description**
 The 15-character Identifier of the user who’s using Salesforce services through the UI or the
 API. For example: `00530000009M943` .
-
-```
-ViewMode
-
-```
 
 **Type**
 string
@@ -14219,6 +14684,9 @@ Supported Calls
 
 `describeSObjects()`, `query()`, `retrieve()`, `search()`
 
+
+Standard Objects AnalyticsDashboard
+
 Special Access Rules
 
 To access this object, you must have Tableau Next enabled in your org and a Tableau Next permission set.
@@ -14229,6 +14697,12 @@ Fields
 
 ```
 AnalyticsWorkspaceId
+
+Description
+
+DeveloperName
+
+Language
 
 ```
 
@@ -14246,28 +14720,8 @@ This field is a relationship field.
 **Relationship Name**
 AnalyticsWorkspace
 
-
-Standard Objects AnalyticsDashboard
-
-**Field** **Details**
-
 **Refers To**
 AnalyticsWorkspace
-
-```
-Description
-
-DeveloperName
-
-Language
-
-LastDraftModifiedDate
-
-LastPublishedDate
-
-MasterLabel
-
-```
 
 **Type**
 textarea
@@ -14297,6 +14751,24 @@ Filter, Group, Restricted picklist, Sort
 The supported languages for the visualization. There are over 50+ supported language and
 dialect values.
 
+
+Standard Objects AnalyticsDashboard
+
+**Field** **Details**
+
+```
+LastDraftModifiedDate
+
+LastPublishedDate
+
+MasterLabel
+
+NamespacePrefix
+
+OwnerId
+
+```
+
 **Type**
 dateTime
 
@@ -14318,29 +14790,11 @@ The last published date for the dashboard.
 **Type**
 string
 
-
-Standard Objects AnalyticsDashboard
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, idLookup, Sort
 
 **Description**
 The label for the dashboard.
-
-```
-NamespacePrefix
-
-OwnerId
-
-Style
-
-TemplateAssetSourceName
-
-TemplateSource
-
-```
 
 **Type**
 string
@@ -14368,6 +14822,22 @@ Owner
 **Refers To**
 User
 
+
+### Standard Objects AnalyticsDownloadEventLog
+
+**Field** **Details**
+
+```
+Style
+
+TemplateAssetSourceName
+
+TemplateSource
+
+Version
+
+```
+
 **Type**
 textarea
 
@@ -14394,21 +14864,11 @@ If the dashboard was created from a template, this is name of the asset source.
 **Type**
 string
 
-
-### Standard Objects AnalyticsDownloadEventLog
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 If the dashboard was created from a template, this is name of the template.
-
-```
-Version
-
-```
 
 **Type**
 double
@@ -14427,6 +14887,9 @@ Supported Calls
 
 `describeSObjects()`, `query()`
 
+
+Standard Objects AnalyticsDownloadEventLog
+
 Special Access Rules
 
 To access this object, you must have the View Event Log Object Data user permission.
@@ -14439,6 +14902,12 @@ Fields
 AnalyticsSessionIdentifier
 
 AnalyticsTimestamp
+
+AssetIdentifier
+
+AssetType
+
+ClientIp
 
 ```
 
@@ -14458,28 +14927,8 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects AnalyticsDownloadEventLog
-
-**Field** **Details**
-
 **Description**
 The time when this log line was generated.
-
-```
-AssetIdentifier
-
-AssetType
-
-ClientIp
-
-CpuTime
-
-DatasetIdentifiers
-
-DownloadFormat
-
-```
 
 **Type**
 string
@@ -14509,6 +14958,26 @@ Filter, Group, Nillable, Sort
 The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
 a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
 
+
+Standard Objects AnalyticsDownloadEventLog
+
+**Field** **Details**
+
+```
+CpuTime
+
+DatasetIdentifiers
+
+DownloadFormat
+
+LoginKey
+
+RecordCount
+
+RequestIdentifier
+
+```
+
 **Type**
 double
 
@@ -14531,29 +15000,11 @@ A comma-separated list of used dataset IDs.
 **Type**
 string
 
-
-Standard Objects AnalyticsDownloadEventLog
-
-**Field** **Details**
-
 **Properties**
 Filter, Group, Nillable, Sort
 
 **Description**
 The format of the data for export.
-
-```
-LoginKey
-
-RecordCount
-
-RequestIdentifier
-
-RunTime
-
-SessionKey
-
-```
 
 **Type**
 string
@@ -14581,8 +15032,26 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+Standard Objects AnalyticsDownloadEventLog
+
+**Field** **Details**
+
 **Description**
 Globally unique identifier for a given request.
+
+```
+RunTime
+
+SessionKey
+
+Timestamp
+
+Uri
+
+UserIdentifier
+
+```
 
 **Type**
 double
@@ -14599,26 +15068,10 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects AnalyticsDownloadEventLog
-
-**Field** **Details**
-
 **Description**
 The user’s unique session ID. You can use this value to identify all user events within a session.
 When a user logs out and logs in again, a new session is started. For example:
 `d7DEq/ANa7nNZZVD` .
-
-```
-Timestamp
-
-Uri
-
-UserIdentifier
-
-UserType
-
-```
 
 **Type**
 dateTime
@@ -14649,6 +15102,16 @@ Filter, Group, Nillable, Sort
 The ID of the user who’s using Salesforce services through the UI or the API. For example:
 `00530000009M943` .
 
+
+### Standard Objects AnalyticsInteractEventLog
+
+**Field** **Details**
+
+```
+UserType
+
+```
+
 **Type**
 string
 
@@ -14666,11 +15129,6 @@ includes Chatter Free and Chatter moderator users.
 **•** `CspLitePortal` —CSP Lite Portal license. Users whose access is limited because
 they’re organization customers and access the application through a customer portal or
 an Experience Cloud site.
-
-
-### Standard Objects AnalyticsInteractEventLog
-
-**Field** **Details**
 
 **•** `CustomerSuccess` —Customer Success license. Users whose access is limited
 because they’re organization customers and access the application through a customer
@@ -14704,6 +15162,9 @@ Supported Calls
 
 `describeSObjects()`, `query()`
 
+
+Standard Objects AnalyticsInteractEventLog
+
 Special Access Rules
 
 To access this object, you must have the View Event Log Object Data user permission.
@@ -14714,6 +15175,14 @@ Fields
 
 ```
 AnalyticsSessionIdentifier
+
+AnalyticsTimestamp
+
+ClickCount
+
+ClientIp
+
+CpuTime
 
 ```
 
@@ -14726,26 +15195,6 @@ Filter, Group, Nillable, Sort
 **Description**
 The ID of a particular session of CRM Analytics. Use this field to determine which log lines
 originated from a particular session.
-
-
-Standard Objects AnalyticsInteractEventLog
-
-**Field** **Details**
-
-```
-AnalyticsTimestamp
-
-ClickCount
-
-ClientIp
-
-CpuTime
-
-LoginKey
-
-ReadTime
-
-```
 
 **Type**
 datetime
@@ -14781,9 +15230,27 @@ double
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects AnalyticsInteractEventLog
+
+**Field** **Details**
+
 **Description**
 The CPU time in milliseconds used to complete the request. This field indicates the amount
 of activity taking place in the app server layer.
+
+```
+LoginKey
+
+ReadTime
+
+RecordIdentifier
+
+RequestIdentifier
+
+RunTime
+
+```
 
 **Type**
 string
@@ -14799,29 +15266,11 @@ event and ends with either a logout event or the user session expiring. For exam
 **Type**
 double
 
-
-Standard Objects AnalyticsInteractEventLog
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The amount of time a user spent on a particular tab.
-
-```
-RecordIdentifier
-
-RequestIdentifier
-
-RunTime
-
-SessionCount
-
-SessionKey
-
-```
 
 **Type**
 string
@@ -14852,6 +15301,26 @@ Filter, Nillable, Sort
 **Description**
 The amount of time that the request took in milliseconds.
 
+
+Standard Objects AnalyticsInteractEventLog
+
+**Field** **Details**
+
+```
+SessionCount
+
+SessionKey
+
+TabIdentifier
+
+Timestamp
+
+TotalTime
+
+Type
+
+```
+
 **Type**
 int
 
@@ -14867,28 +15336,10 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-
-Standard Objects AnalyticsInteractEventLog
-
-**Field** **Details**
-
 **Description**
 The user’s unique session ID. You can use this value to identify all user events within a session.
 When a user logs out and logs in again, a new session is started. For example:
 `d7DEq/ANa7nNZZVD` .
-
-```
-TabIdentifier
-
-Timestamp
-
-TotalTime
-
-Type
-
-Uri
-
-```
 
 **Type**
 string
@@ -14924,8 +15375,24 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
+
+### Standard Objects AnalyticsLicensedAsset
+
+**Field** **Details**
+
 **Description**
 The CRM Analytics object type.
+
+```
+Uri
+
+UserIdentifier
+
+ViewMode
+
+```
+
+Usage
 
 **Type**
 string
@@ -14935,20 +15402,6 @@ Filter, Group, Nillable, Sort
 
 **Description**
 The URI of the page that’s receiving the request. For example: `/home/home.jsp` .
-
-
-### Standard Objects AnalyticsLicensedAsset
-
-**Field** **Details**
-
-```
-UserIdentifier
-
-ViewMode
-
-```
-
-Usage
 
 **Type**
 string
@@ -14985,6 +15438,9 @@ read time, and so on. These statistics are aggregated as you go to other tabs an
 Represents a licensed Analytics asset. In this context, Analytics is CRM Analytics, Sonic, or Mulesoft Data Path. Available in API version
 52.0 and later.
 
+
+### Standard Objects AnalyticsPerfEventLog
+
 Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
@@ -14996,15 +15452,12 @@ Fields
 ```
 ConsumerNamespace
 
+LicenseType
+
 ```
 
 **Type**
 picklist
-
-
-### Standard Objects AnalyticsPerfEventLog
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
@@ -15013,11 +15466,6 @@ Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 The consumer namespace for the asset. The possible values are:
 
 **•** `Industries`
-
-```
-LicenseType
-
-```
 
 **Type**
 picklist
@@ -15052,6 +15500,9 @@ Supported Calls
 
 `describeSObjects()`, `query()`
 
+
+Standard Objects AnalyticsPerfEventLog
+
 Special Access Rules
 
 To access this object, you must have the View Event Log Object Data user permission.
@@ -15063,24 +15514,6 @@ Fields
 ```
 AnalyticsSessionIdentifier
 
-```
-
-**Type**
-string
-
-
-Standard Objects AnalyticsPerfEventLog
-
-**Field** **Details**
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The ID of a particular session of CRM Analytics. Use this field to determine which log lines
-originated from a particular session.
-
-```
 AnalyticsTimestamp
 
 ClientIp
@@ -15089,9 +15522,17 @@ CpuTime
 
 EffectivePageTime
 
-IsInitialLoad
-
 ```
+
+**Type**
+string
+
+**Properties**
+Filter, Group, Nillable, Sort
+
+**Description**
+The ID of a particular session of CRM Analytics. Use this field to determine which log lines
+originated from a particular session.
 
 **Type**
 datetime
@@ -15128,8 +15569,26 @@ double
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects AnalyticsPerfEventLog
+
+**Field** **Details**
+
 **Description**
 The experienced page time in milliseconds.
+
+```
+IsInitialLoad
+
+LoginKey
+
+QueriedName
+
+RecordIdentifier
+
+RequestIdentifier
+
+```
 
 **Type**
 boolean
@@ -15140,25 +15599,7 @@ Defaulted on create, Filter, Group, Sort
 **Description**
 Indicates whether the event is for the initial load of the Dashboard ( `true` ) or not ( `false` ).
 
-
-Standard Objects AnalyticsPerfEventLog
-
-**Field** **Details**
-
 The default value is `false` .
-
-```
-LoginKey
-
-QueriedName
-
-RecordIdentifier
-
-RequestIdentifier
-
-RunTime
-
-```
 
 **Type**
 string
@@ -15200,21 +15641,14 @@ The unique ID of a single transaction. A transaction can contain one or more eve
 event in a given transaction has the same `RequestIdentifier.` For example:
 3nWgxWbDKWWDIk0FKfF5DV.
 
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The amount of time that the request took in milliseconds.
-
 
 Standard Objects AnalyticsPerfEventLog
 
 **Field** **Details**
 
 ```
+RunTime
+
 SessionKey
 
 TabIdentifier
@@ -15225,9 +15659,16 @@ Uri
 
 UserIdentifier
 
-ViewMode
-
 ```
+
+**Type**
+double
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The amount of time that the request took in milliseconds.
 
 **Type**
 string
@@ -15274,17 +15715,22 @@ string
 **Properties**
 Filter, Group, Nillable, Sort
 
-**Description**
-The ID of the user who’s using Salesforce services through the UI or the API. For example:
-`00530000009M943` .
-
-**Type**
-string
-
 
 ### Standard Objects AnalyticsVisualization
 
 **Field** **Details**
+
+**Description**
+The ID of the user who’s using Salesforce services through the UI or the API. For example:
+`00530000009M943` .
+
+```
+ViewMode
+
+```
+
+**Type**
+string
 
 **Properties**
 Filter, Group, Nillable, Sort
@@ -15319,8 +15765,6 @@ Fields
 ```
 AnalyticsWorkspaceId
 
-Description
-
 ```
 
 **Type**
@@ -15337,24 +15781,17 @@ This field is a relationship field.
 **Relationship Name**
 AnalyticsWorkspace
 
-**Refers To**
-AnalyticsWorkspace
-
-**Type**
-string
-
 
 Standard Objects AnalyticsVisualization
 
 **Field** **Details**
 
-**Properties**
-Create, Nillable, Update
-
-**Description**
-The description of the visualization.
+**Refers To**
+AnalyticsWorkspace
 
 ```
+Description
+
 DeveloperName
 
 Language
@@ -15366,6 +15803,15 @@ LastPublishedDate
 MasterLabel
 
 ```
+
+**Type**
+string
+
+**Properties**
+Create, Nillable, Update
+
+**Description**
+The description of the visualization.
 
 **Type**
 string
@@ -15407,16 +15853,16 @@ The last published date for the visualization.
 **Type**
 string
 
+
+Standard Objects AnalyticsVisualization
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, idLookup, Sort, Update
 
 **Description**
 The label for the visualization.
-
-
-Standard Objects AnalyticsVisualization
-
-**Field** **Details**
 
 ```
 NamespacePrefix
@@ -15478,14 +15924,18 @@ If the visualization was created from a template, this is name of the template.
 **Type**
 double
 
+
+### Standard Objects AnalyticsVizField
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Nillable, Sort, Update
 
 **Description**
 The API version for the visualization.
 
-
-### Standard Objects AnalyticsVizField AnalyticsVizField
+### AnalyticsVizField
 
 Represents a Tableau Next viusalization field. This object is available in API version 65.0 and later.
 
@@ -15507,8 +15957,6 @@ AdHocCalc
 DisplayCategory
 
 FieldKey
-
-Function
 
 ```
 
@@ -15539,19 +15987,24 @@ Possible values are:
 **Type**
 string
 
+
+Standard Objects AnalyticsVizField
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Sort, Update
 
 **Description**
 The key for for the visualization field.
 
+```
+Function
+
+```
+
 **Type**
 picklist
-
-
-Standard Objects AnalyticsVizField
-
-**Field** **Details**
 
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
@@ -15613,6 +16066,11 @@ Possible values are:
 
 **•** `Min`
 
+
+Standard Objects AnalyticsVizField
+
+**Field** **Details**
+
 **•** `My`
 
 **•** `Stdev`
@@ -15626,11 +16084,6 @@ Possible values are:
 **•** `Var`
 
 **•** `Varp`
-
-
-Standard Objects AnalyticsVizField
-
-**Field** **Details**
 
 ```
 Label
@@ -15690,6 +16143,11 @@ The API name for object the field belongs to in the semantic model.
 **Type**
 picklist
 
+
+### Standard Objects AnalyticsVizViewDef
+
+**Field** **Details**
+
 **Properties**
 Create, Filter, Group, Nillable, Restricted picklist, Sort, Update
 
@@ -15701,11 +16159,6 @@ Possible values are:
 **•** `Field`
 
 **•** `MeasureNames`
-
-
-### Standard Objects AnalyticsVizViewDef
-
-**Field** **Details**
 
 **•** `MeasureValues`
 
@@ -15755,12 +16208,12 @@ Supported Calls
 
 `create()`, `delete()`, `describeSObjects()`, `query()`, `retrieve()`, `update()`, `upsert()`
 
+
+Standard Objects AnalyticsVizViewDef
+
 Special Access Rules
 
 To access this object, you must have Tableau Next enabled in your org and a Tableau Next permission set.
-
-
-Standard Objects AnalyticsVizViewDef
 
 Fields
 
@@ -15830,16 +16283,16 @@ Possible values are:
 
 **•** `no` —Norwegian
 
+
+Standard Objects AnalyticsVizViewDef
+
+**Field** **Details**
+
 **•** `pt_BR` —Portuguese (Brazil)
 
 **•** `ru` —Russian
 
 **•** `sv` —Swedish
-
-
-Standard Objects AnalyticsVizViewDef
-
-**Field** **Details**
 
 **•** `th` —Thai
 
@@ -15855,8 +16308,6 @@ NamespacePrefix
 OwnerId
 
 Version
-
-VisualizationId
 
 ```
 
@@ -15904,16 +16355,21 @@ Create, Filter, Nillable, Sort, Update
 **Description**
 The API version for the visualization view definition.
 
+
+### Standard Objects AnalyticsWorkspace
+
+**Field** **Details**
+
+```
+VisualizationId
+
+```
+
 **Type**
 reference
 
 **Properties**
 Create, Filter, Group, Sort, Update
-
-
-### Standard Objects AnalyticsWorkspace
-
-**Field** **Details**
 
 **Description**
 
@@ -15946,8 +16402,6 @@ Description
 
 DeveloperName
 
-Language
-
 ```
 
 **Type**
@@ -15968,13 +16422,22 @@ Filter, Group, Sort
 **Description**
 The API name for the workspace.
 
-**Type**
-picklist
-
 
 Standard Objects AnalyticsWorkspace
 
 **Field** **Details**
+
+```
+Language
+
+MasterLabel
+
+NamespacePrefix
+
+```
+
+**Type**
+picklist
 
 **Properties**
 Filter, Group, Restricted picklist, Sort
@@ -16019,13 +16482,6 @@ Possible values are:
 **•** `zh_CN` —Chinese (Simplified)
 
 **•** `zh_TW` —Chinese (Traditional)
-
-```
-MasterLabel
-
-NamespacePrefix
-
-```
 
 **Type**
 string
@@ -19318,7 +19774,7 @@ execution.
 
 represents the Apex class.
 
-Each ApexTestResult record has an associated ApexTestResultLimits on page 605 record, which captures the Apex limits used during
+Each ApexTestResult record has an associated ApexTestResultLimits on page 610 record, which captures the Apex limits used during
 execution of the test method.
 
 ### ApexTestResultLimits
@@ -23855,7 +24311,7 @@ textarea
 Nillable, Update
 
 **Description**
-The comments about the request that's submitted for approval.
+The comments that the user adds when they submit the request for approval.
 
 **Type**
 boolean
@@ -24279,8 +24735,7 @@ textarea
 Nillable, Update
 
 **Description**
-The comments added by the assignee or the reviewer when a submission is cancelled,
-reviewed, recalled, or reassigned.
+The comments that the user adds when they cancel, review, reassign or recall the request.
 
 **Type**
 string
@@ -24406,8 +24861,7 @@ textarea
 Nillable, Update
 
 **Description**
-The comments added by the assignee or the reviewer when an approval work item is reviewed
-or overridden.
+The comments that the user adds when they review or override the work item.
 
 **Type**
 reference
@@ -28852,7 +29306,7 @@ Filter, Group, Nillable, Restricted picklist, Sort
 **Description**
 The business category of the asset action, for use in reporting. Asset action totals are broken
 out by the picklist values on this required field, and those totals are in turn reflected on assets.
-The following categories are available. They aren’t customizable. Label is **Business Category** .
+These categories are available and aren’t customizable. Label is **Business Category** .
 
 Possible values are:
 
@@ -28871,7 +29325,7 @@ price with no change in quantity.
 
 **•** `Renewals`
 
-**•** `Swaps` Indicates the exchange of one asset for another. Thispplies to both swapped-out
+**•** `Swaps` Indicates the exchange of one asset for another. Applies to both swapped-out
 and swapped-in actions.
 
 **•** `Terms And Conditions Changes`
@@ -28955,8 +29409,8 @@ reference
 Create, Filter, Group, Nillable, Sort, Update
 
 **Description**
-The last asset action that was rolled back in the current rollback transaction. This field is
-available in API version 65.0 and later.
+The last asset action rolled back in the current rollback transaction. This field is available in
+API version 65.0 and later.
 
 **Type**
 currency
@@ -28984,8 +29438,6 @@ TotalCancellationsAmount
 
 TotalCrossSellsAmount
 
-TotalDownsellsAmount
-
 ```
 
 **Type**
@@ -28999,15 +29451,27 @@ The subtype of the action on the asset.
 
 Valid values are:
 
+**•** `DowngradeFrom` —Available in API version 66.0 and later.
+
+**•** `DowngradeTo` —Available in API version 66.0 and later.
+
 **•** `FieldAmendment`
 
 **•** `Rollback`
 
 **•** `StartDateAdjustment`
 
+**•** `SwapIn` —Available in API version 66.0 and later.
+
+**•** `SwapOut` —Available in API version 66.0 and later.
+
 **•** `TransferFrom`
 
 **•** `TransferTo`
+
+**•** `UpgradeFrom` —Available in API version 66.0 and later.
+
+**•** `UpgradeTo` —Available in API version 66.0 and later.
 
 This field is available in API version 65.0 and later.
 
@@ -29036,16 +29500,6 @@ This field is populated by the system.
 **Type**
 currency
 
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The sum of current and previous asset action amounts categorized as `Cross-Sells` . This
-field is populated by the system.
-
-**Type**
-currency
-
 
 Standard Objects AssetAction
 
@@ -29055,21 +29509,41 @@ Standard Objects AssetAction
 Filter, Nillable, Sort
 
 **Description**
-The sum of current and previous asset action amounts categorized as `Downsells` . This
+The sum of current and previous asset action amounts categorized as `Cross-Sells` . This
 field is populated by the system.
 
 ```
+TotalDowngradesAmount
+
+TotalDownsellsAmount
+
 TotalInitialSaleAmount
 
 TotalMrr
 
 TotalOtherAmount
 
-TotalQuantity
-
-TotalRenewalsAmount
-
 ```
+
+**Type**
+currency
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The sum of current and previous asset action amounts categorized as `Downgrades` . This
+field is populated by the system and is available in API version 66.0 and later.
+
+**Type**
+currency
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The sum of current and previous asset action amounts categorized as `Downsells` . This
+field is populated by the system.
 
 **Type**
 currency
@@ -29097,9 +29571,27 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
+
+Standard Objects AssetAction
+
+**Field** **Details**
+
 **Description**
 The sum of current and previous asset action amounts categorized as `Other` . This field is
 populated by the system.
+
+```
+TotalQuantity
+
+TotalRenewalsAmount
+
+TotalSwapsAmount
+
+TotalTermsAndConditionsAmount
+
+TotalTransfersAmount
+
+```
 
 **Type**
 double
@@ -29117,25 +29609,19 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
-
-Standard Objects AssetAction
-
-**Field** **Details**
-
 **Description**
 The sum of current and previous asset action amounts categorized as `Renewals` . This field
 is populated by the system.
 
-```
-TotalTermsAndConditionsAmount
+**Type**
+currency
 
-TotalTransfersAmount
+**Properties**
+Filter, Nillable, Sort
 
-TotalUpsellsAmount
-
-Type
-
-```
+**Description**
+The sum of current and previous asset action amounts categorized as `Swaps` . This field is
+populated by the system and is available in API version 66.0 and later.
 
 **Type**
 currency
@@ -29154,9 +29640,35 @@ currency
 **Properties**
 Filter, Nillable, Sort
 
+
+### Standard Objects AssetActionSource
+
+**Field** **Details**
+
 **Description**
 The sum of current and previous asset action amounts categorized as `Transfers` . This
 field is populated by the system.
+
+```
+TotalUpgradesAmount
+
+TotalUpsellsAmount
+
+Type
+
+### AssetActionSource
+
+```
+
+**Type**
+currency
+
+**Properties**
+Filter, Nillable, Sort
+
+**Description**
+The sum of current and previous asset action amounts categorized as `Upgrades` . This field
+is populated by the system and is available in API version 66.0 and later.
 
 **Type**
 currency
@@ -29187,12 +29699,12 @@ Valid values are:
 
 **•** `Generate`
 
-
-### Standard Objects AssetActionSource AssetActionSource
-
 Represents an optional way to record what transactions caused changes to lifecycle-managed assets. Use it to trace financial and other
 information about asset actions. This object supports Salesforce order products and work order line items, and transaction IDs from other
 systems. The fields can’t be edited. This object is available in API version 50.0 and later.
+
+
+Standard Objects AssetActionSource
 
 Supported Calls
 
@@ -29248,11 +29760,6 @@ The related asset action, that is, the change caused by an asset action source t
 
 This field is a relationship field.
 
-
-Standard Objects AssetActionSource
-
-**Field** **Details**
-
 **Relationship Name**
 AssetAction
 
@@ -29261,6 +29768,11 @@ Lookup
 
 **Refers To**
 AssetAction
+
+
+Standard Objects AssetActionSource
+
+**Field** **Details**
 
 ```
 AssetActionSourceNumber
@@ -29319,11 +29831,6 @@ This field is available in API version 62.0 and later.
 **Type**
 dateTime
 
-
-Standard Objects AssetActionSource
-
-**Field** **Details**
-
 **Properties**
 Createable, Filter, Nillable, Sort, Updateable
 
@@ -29333,6 +29840,11 @@ The date when the resources associated with the asset were granted.
 This field is available in orgs that have Revenue Cloud when Rate Management is enabled.
 
 This field is available in API version 62.0 and later.
+
+
+Standard Objects AssetActionSource
+
+**Field** **Details**
 
 ```
 EndDate
@@ -29392,11 +29904,6 @@ Createable, Filter, Group, Nillable, Sort, Updateable
 **Description**
 The ID of the legal entity record associated with the asset action source transaction.
 
-
-Standard Objects AssetActionSource
-
-**Field** **Details**
-
 This field is a relationship field.
 
 This field is available in API version 62.0 and later.
@@ -29406,6 +29913,11 @@ LegalEntity
 
 **Relationship Type**
 Lookup
+
+
+Standard Objects AssetActionSource
+
+**Field** **Details**
 
 **Refers To**
 LegalEntity
@@ -29464,16 +29976,16 @@ later.
 **Relationship Name**
 OrderItemDetail
 
-
-Standard Objects AssetActionSource
-
-**Field** **Details**
-
 **Relationship Type**
 Lookup
 
 **Refers To**
 LineNumber
+
+
+Standard Objects AssetActionSource
+
+**Field** **Details**
 
 ```
 PeriodBoundary
@@ -29539,11 +30051,6 @@ when BillingFrequency2 is Annual or by manual user entry. Possible values are:
 
 8-August
 
-
-Standard Objects AssetActionSource
-
-**Field** **Details**
-
 9-September
 
 10-October
@@ -29551,6 +30058,11 @@ Standard Objects AssetActionSource
 11-November
 
 12-December
+
+
+Standard Objects AssetActionSource
+
+**Field** **Details**
 
 ```
 PricebookEntryId
@@ -29562,6 +30074,8 @@ ProductAmount
 ProductSellingModelId
 
 ProrationPolicyId
+
+Quantity
 
 ```
 
@@ -29611,14 +30125,22 @@ Creatable, Filter, Group, Nillable, Sort, Updateable
 **Description**
 The ID of the ProrationPolicy used for pricing.
 
+**Type**
+double
+
+**Properties**
+Creatable, Filter, Nillable, Sort, Updateable
+
 
 Standard Objects AssetActionSource
 
 **Field** **Details**
 
-```
-Quantity
+**Description**
+The product quantity or the change in product quantity after the asset action source
+transaction.
 
+```
 ReferenceEntityItemId
 
 SegmentIdentifier
@@ -29628,16 +30150,6 @@ StartDate
 Subtotal
 
 ```
-
-**Type**
-double
-
-**Properties**
-Creatable, Filter, Nillable, Sort, Updateable
-
-**Description**
-The product quantity or the change in product quantity after the asset action source
-transaction.
 
 **Type**
 reference
@@ -29683,11 +30195,6 @@ The start date of the service or change.
 **Type**
 currency
 
-
-Standard Objects AssetActionSource
-
-**Field** **Details**
-
 **Properties**
 Filter, Nillable, Sort
 
@@ -29695,6 +30202,11 @@ Filter, Nillable, Sort
 The sum of the product amount and the adjustment amount.
 
 This field is a calculated field.
+
+
+Standard Objects AssetActionSource
+
+**Field** **Details**
 
 ```
 TaxTreatmentId
@@ -29755,15 +30267,11 @@ currency
 **Properties**
 Createable, Filter, Nillable, Sort, Updateable
 
-
-### Standard Objects AssetAttribute
-
-**Field** **Details**
-
 **Description**
 The unit price of the item before any discounts or tax calculation.
 
-### AssetAttribute
+
+### Standard Objects AssetAttribute AssetAttribute
 
 Stores asset attributes to track and analyze asset conditions to improve their uptime. This object is available in API version 57.0 and later.
 
@@ -29817,16 +30325,16 @@ The ID of the attribute definition for this asset attribute.
 
 This field is a relationship field.
 
-
-Standard Objects AssetAttribute
-
-**Field** **Details**
-
 **Relationship Name**
 AttributeDefinition
 
 **Relationship Type**
 Lookup
+
+
+Standard Objects AssetAttribute
+
+**Field** **Details**
 
 **Refers To**
 AttributeDefinition
@@ -29886,14 +30394,12 @@ string
 **Properties**
 Create, Filter, Group, Nillable, Sort, Update
 
-
-### Standard Objects AssetContractRelationship
-
-**Field** **Details**
-
 **Description**
 An auto-generated ID of the attribute record saved in an external system (for example an
 HBase database). This field is reserved and used for internal purpose.
+
+
+### Standard Objects AssetContractRelationship
 
 Usage
 
@@ -29943,19 +30449,19 @@ The ID of the asset related to the contract.
 
 This field is a relationship field.
 
-
-Standard Objects AssetContractRelationship
-
-**Field** **Details**
-
 **Relationship Name**
-Asset
+### Asset
 
 **Relationship Type**
 Lookup
 
 **Refers To**
-Asset
+### Asset
+
+
+Standard Objects AssetContractRelationship
+
+**Field** **Details**
 
 ```
 ContractId
@@ -29965,6 +30471,8 @@ EndDate
 LastReferencedDate
 
 LastViewedDate
+
+Name
 
 ```
 
@@ -30013,23 +30521,9 @@ dateTime
 **Properties**
 Filter, Nillable, Sort
 
-
-### Standard Objects AssetDowntimePeriod
-
-**Field** **Details**
-
 **Description**
 The timestamp when the current user last viewed this record or list view. If this value is null,
 the user accessed this record or list view ( `LastReferencedDate` ) but didn’t view it.
-
-```
-Name
-
-StartDate
-
-```
-
-Associated Objects
 
 **Type**
 string
@@ -30037,8 +30531,20 @@ string
 **Properties**
 Autonumber, Defaulted on create, Filter, idLookup, Sort
 
+
+### Standard Objects AssetDowntimePeriod
+
+**Field** **Details**
+
 **Description**
 The auto-generated number assigned to AssetContractRelationship. (Read Only)
+
+```
+StartDate
+
+```
+
+Associated Objects
 
 **Type**
 dateTime
@@ -30070,16 +30576,27 @@ Supported Calls
 `create()`, `delete()`, `describeLayout()`, `describeSObjects()`, `getDeleted()`, `getUpdated()`, `query()`,
 `retrieve()`, `search()`, `undelete()`, `update()`, `upsert()`
 
-
-Standard Objects AssetDowntimePeriod
-
 Fields
 
 **Field** **Details**
 
-```
-AssetDowntimePeriodNumber
+### `AssetDowntimePeriodNumber`
 
+**Type**
+string
+
+**Properties**
+Autonumber, Defaulted on create, Filter, idLookup, Sort
+
+**Description**
+The unique number of this asset downtime period record.
+
+
+Standard Objects AssetDowntimePeriod
+
+**Field** **Details**
+
+```
 AssetId
 
 Description
@@ -30090,16 +30607,9 @@ EndTime
 
 IsExcluded
 
+LastReferencedDate
+
 ```
-
-**Type**
-string
-
-**Properties**
-Autonumber, Defaulted on create, Filter, idLookup, Sort
-
-**Description**
-The unique number of this asset downtime period record.
 
 **Type**
 reference
@@ -30144,11 +30654,6 @@ The time this asset downtime period ended.
 **Type**
 boolean
 
-
-### Standard Objects AssetOwnerSharingRule
-
-**Field** **Details**
-
 **Properties**
 Defaulted on create, Filter, Group, Sort
 
@@ -30157,23 +30662,26 @@ Whether this asset downtime period is excluded from the calculation of accumulat
 downtime and accumulated unplanned downtime, and therefore not included in availability
 and reliability calculations.
 
-```
-LastReferencedDate
-
-LastViewedDate
-
-StartTime
-
-```
-
 **Type**
 dateTime
+
+
+### Standard Objects AssetOwnerSharingRule
+
+**Field** **Details**
 
 **Properties**
 Filter, Nillable, Sort
 
 **Description**
 The timestamp for when the current user last viewed a record related to this record.
+
+```
+LastViewedDate
+
+StartTime
+
+```
 
 **Type**
 dateTime
@@ -30211,12 +30719,12 @@ upsert()
 
 ```
 
-
-Standard Objects AssetOwnerSharingRule
-
 Special Access Rules
 
 Customer Portal users can’t access this object.
+
+
+Standard Objects AssetOwnerSharingRule
 
 Fields
 
@@ -30280,14 +30788,14 @@ reference
 **Properties**
 Create, Filter, Group, Sort
 
+**Description**
+The ID representing the source group. Cases owned by users in the source group
+trigger the rule to give access.
+
 
 ### Standard Objects AssetRateAdjustment
 
 **Field** **Details**
-
-**Description**
-The ID representing the source group. Cases owned by users in the source group
-trigger the rule to give access.
 
 ```
 Name
@@ -45701,348 +46209,4 @@ Network
 ### Standard Objects BrowserPolicyViolation
 
 Associated Objects
-
-This object has the following associated objects. If the API version isn’t specified, they’re available in the same API versions as this object.
-Otherwise, they’re available in the specified API version and later.
-
-**BroadcastTopicNetworkChangeEvent on page 68**
-Change events are available for the object.
-
-### BrowserPolicyViolation
-
-Represents a violation that occurred within the last seven days related to the Trusted URLs and Trusted URLs for External Redirects
-allowlists. These violations include blocked resource requests based on your content security policy (CSP) and blocked redirections. This
-object is available in API version 61.0 and later.
-
-[We recommend that you manage this object through the Trusted URL and Browser Policy Violations list in Setup. See Manage Trusted](https://help.salesforce.com/s/articleView?id=xcloud.security_trusted_urls_csp_violations.htm&type=5&language=en_US)
-[URL and Browser Policy Violations in Salesforce Help.](https://help.salesforce.com/s/articleView?id=xcloud.security_trusted_urls_csp_violations.htm&type=5&language=en_US)
-
-Note: To help preserve performance, Salesforce uses throttling, a technique that limits the number of generated violations when
-the volume is exceptionally high. Therefore, if your org generates a high volume of violations over a short period of time, some of
-those violations can fail to generate a BrowserPolicyViolation.
-
-To see detailed information about the captured CSP violations for your org, use the CSP Violation Event Type.
-
-[To understand when Salesforce captures blocked redirections, see External Redirection Restrictions in Salesforce in Salesforce Help. For](https://help.salesforce.com/s/articleView?id=xcloud.security_trusted_urls_external_redirections_understand.htm&language=en_US)
-detailed information about each blocked redirection, use the Blocked Redirect Event Type.
-
-When you delete a BrowserPolicyViolation, only the logged event is removed. If your allowlists still block those requests, a new
-### BrowserPolicyViolation is generated the next time a matching request occurs.
-
-To help you manage the list, a daily process deletes violations that haven’t occurred within the last seven days. To track browser policy
-violations over time, schedule daily queries of the Blocked Redirect and CSP Violations event types.
-
-Supported Calls
-
-`delete()`, `describeSObjects()`, `query()`, `retrieve()`
-
-Special Access Rules
-
-Only users with the Customize Application and Modify All Data permissions can access this object.
-
-Fields
-
-**Field** **Details**
-
-```
-DeveloperName
-
-```
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-The developer name of the violation.
-
-
-Standard Objects BrowserPolicyViolation
-
-**Field** **Details**
-
-Only users with View DeveloperName or View Setup and Configuration permission can view,
-group, sort, and filter this field.
-
-```
-Language
-
-MasterLabel
-
-NamespacePrefix
-
-UntrustedUrl
-
-ViolationContext
-
-```
-
-**Type**
-picklist
-
-**Properties**
-Create, Defaulted on create, Filter, Group, Restricted picklist, Sort
-
-**Description**
-The language for the blocked request.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Sort
-
-**Description**
-Master label for this violation.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-Namespace prefix for this violation.
-
-**Type**
-string
-
-**Properties**
-Create, Filter, Group, Nillable, Sort
-
-**Description**
-The URL associated with the blocked request, without the path. For example, if a blocked
-requested resource is an image with the URL
-`https://www.example.com/images/image1.png`, the `UntrustedUrl` is
-`https://www.example.com` .
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-If the `ViolationType` is `img-src (image)`, `font-src (fonts)`, or
-`frame-src (iframe content)`, the content security policy (CSP) context for the
-request. The CSP context controls which pages can load content from a CspTrustedSite.
-
-
-### Standard Objects BulkApi2EventLog
-
-**Field** **Details**
-
-Possible values are:
-
-**•** `Lightning` —The blocked request is related to a Lightning Experience page.
-
-**•** `Not Applicable`                   - `ViolationContext` isn’t applicable to this violation. For
-example, violations with a `ViolationType` of `Redirection` .
-
-```
-ViolationImpact
-
-ViolationType
-
-### BulkApi2EventLog
-
-```
-
-**Type**
-String
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-
-The impact of this violation. Possible values are:
-
-**•** `Blocked` –The policy was enforced and prevented the resource from loading. The
-impact of blocked redirections and malformed URLs is always `Blocked` .
-
-**•** `Reported` –This violation is blocked only after stricter CSP settings are configured.
-
-For example, some resource requests associated with the `frame-src`, `font-src`,
-and `img-src ViolationType` are blocked only when the Adopt updated CSP
-directives setting is enabled in Session Settings.
-
-**Type**
-picklist
-
-**Properties**
-Create, Filter, Group, Nillable, Restricted picklist, Sort
-
-**Description**
-The violation type. Possible values are:
-
-**•** `img-src` –At least one request to load an image file from the URL was blocked because
-the `UntrustedUrl` [isn’t a CspTrustedSite object with this CSP directive.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_csptrustedsite.htm)
-
-**•** `font-src` –At least one request to load a font from the URL was blocked because the
-`UntrustedUrl` [isn’t a CspTrustedSite object with this CSP directive.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_csptrustedsite.htm)
-
-**•** `frame-src` –At least one request to load content in an iframe that originated from
-the URL was blocked because the `UntrustedUrl` [isn’t a CspTrustedSite object with](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_csptrustedsite.htm)
-this CSP directive.
-
-**•** `MalformedUrl` –At least one redirection to this URL failed because the
-`UntrustedUrl` is malformed.
-
-**•** `Redirect` –At least one redirection to this URL was blocked because the
-`UntrustedUrl` [isn’t a RedirectWhitelistUrl object.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_redirectwhitelisturl.htm)
-
-Bulk API 2 event logs contain details about Bulk API 2.0 requests. This object is available in API version 61.0 and later.
-
-
-Standard Objects BulkApi2EventLog
-
-[Note: This object stores event data that's queryable from platform APIs. For event data stored in event log files, see EventLogFile.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_eventlogfile.htm)
-
-Supported Calls
-
-`describeSObjects()`, `query()`
-
-Special Access Rules
-
-To access this object, you must have the View Event Log Object Data user permission.
-
-Fields
-
-**Field** **Details**
-
-```
-ClientIp
-
-CpuTime
-
-FailedRecordCount
-
-ErrorMessage
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The IP address of the client that’s using Salesforce services. A Salesforce internal IP (such as
-a login from AppExchange) is shown as “Salesforce.com IP”. For example: `96.43.144.26` .
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The CPU time in milliseconds used to complete the request. This field indicates the amount
-of activity taking place in the app server layer.
-
-**Type**
-int
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The total number of records that failed. For example: `150` .
-
-**Type**
-string
-
-**Properties**
-Filter, Nillable, Sort
-
-**Description**
-The error message returned on failure.
-
-
-Standard Objects BulkApi2EventLog
-
-**Field** **Details**
-
-```
-JobIdentifier
-
-JobStatus
-
-LoginKey
-
-ObjectType
-
-OperationType
-
-ProcessedRecordCount
-
-```
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The 15-character ID of the Bulk API 2.0 job.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The job’s current status.
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The string that ties together all events in a given user’s login session. It starts with a login
-event and ends with either a logout event or the user session expiring. For example:
-`GeJCsym5eyvtEK2I` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of event. The value is always `BulkApi2` .
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Nillable, Sort
-
-**Description**
-The type of Bulk API 2.0 operation that was performed.
-
-**Type**
-double
-
-**Properties**
-Filter, Nillable, Sort
-
-
-Standard Objects BulkApi2EventLog
-
-**Field** **Details**
-
-**Description**
-Number of records processed for this event. For example: `980` .The number of records
-processed is reported differently for ingest and query jobs.
-
-For _ingest_ jobs:
 
