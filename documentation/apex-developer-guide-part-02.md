@@ -1,3 +1,5359 @@
+There are two types of triggers.
+
+**•** _Before triggers_ are used to update or validate record values before they’re saved to the database.
+
+**•** _After triggers_ are used to access field values that are set by the system (such as a record's `Id` or `LastModifiedDate` field), and
+to affect changes in other records, such as logging into an audit table or firing asynchronous events with a queue. The records that
+fire the _after trigger_ are read-only.
+
+Triggers can also modify other records of the same type as the records that initially fired the trigger. For example, if a trigger fires after
+an update of contact _`A`_, the trigger can also modify contacts _`B`_, _`C`_, and _`D`_ . Because triggers can cause other records to change, and
+because these changes can, in turn, fire more triggers, the Apex runtime engine considers all such operations a single unit of work and
+sets limits on the number of operations that can be performed to prevent infinite recursion. See Execution Governors and Limits on page
+348.
+
+Additionally, if you update or delete a record in its before trigger, or delete a record in its after trigger, you will receive a runtime error.
+This includes both direct and indirect operations. For example, if you update account _`A`_, and the before update trigger of account _`A`_
+inserts contact _`B`_, and the after insert trigger of contact _`B`_ queries for account _`A`_ and updates it using the DML `update` statement or
+database method, then you are indirectly updating account _`A`_ in its before trigger, and you will receive a runtime error.
+
+Implementation Considerations
+
+Before creating triggers, consider the following:
+
+**•** `upsert` triggers fire both before and after `insert` or before and after `update` triggers as appropriate.
+
+**•** `merge` triggers fire both before and after `delete` for the losing records, and both before and after `update` triggers for the
+winning record. See Triggers and Merge Statements on page 275.
+
+**•** Triggers that execute after a record has been undeleted only work with specific objects. See Triggers and Recovered Records on
+page 276.
+
+**•** Field history is not recorded until the end of a trigger. If you query field history in a trigger, you don’t see any history for the current
+transaction.
+
+**•** Field history tracking honors the permissions of the current user. If the current user doesn’t have permission to directly edit an object
+or field, but the user activates a trigger that changes an object or field with history tracking enabled, no history of the change is
+recorded.
+
+**•** Callouts must be made asynchronously from a trigger so that the trigger process isn’t blocked while waiting for the external service's
+response. The asynchronous callout is made in a background process, and the response is received when the external service returns
+it. To make an asynchronous callout, use asynchronous Apex such as a future method. See Invoking Callouts Using Apex for more
+information.
+
+**•** In API version 20.0 and earlier, if a Bulk API request causes a trigger to fire, each chunk of 200 records for the trigger to process is split
+into chunks of 100 records. In Salesforce API version 21.0 and later, no further splits of API chunks occur. If a Bulk API request causes
+a trigger to fire multiple times for chunks of 200 records, governor limits are reset between these trigger invocations for the same
+HTTP request.
+
+1. Bulk Triggers
+
+2. Trigger Syntax
+
+3. Trigger Context Variables
+All triggers define implicit variables that allow developers to access run-time context. These variables are contained in the
+`System.Trigger` class.
+
+
+Apex Developer Guide Invoking Apex
+
+4. Context Variable Considerations
+
+5. Common Bulk Trigger Idioms
+
+6. Defining Triggers
+Trigger code is stored as metadata under the object with which they are associated.
+
+7. Triggers and Merge Statements
+
+8. Triggers and Recovered Records
+
+9. Triggers and Order of Execution
+When you save a record with an `insert`, `update`, or `upsert` statement, Salesforce performs a sequence of events in a certain
+order.
+
+10. Operations That Don't Invoke Triggers
+
+Some operations don’t invoke triggers.
+
+11. Entity and Field Considerations in Triggers
+
+When you create triggers, consider the behavior of certain entities, fields, and operations.
+
+12. Triggers for Chatter Objects
+
+You can write triggers for the FeedItem and FeedComment objects.
+
+13. Trigger Considerations for Knowledge Articles
+
+You can write triggers for KnowledgeArticleVersion objects. Learn when you can use triggers, and which actions don’t fire triggers,
+like archiving articles.
+
+14. Trigger Exceptions
+
+15. Trigger and Bulk Request Best Practices
+
+##### Bulk Triggers
+
+All triggers are _bulk triggers_ by default, and can process multiple records at a time. You should always plan on processing more than one
+record at a time.
+
+Note: An Event object that is defined as recurring is not processed in bulk for `insert`, `delete`, or `update` triggers.
+
+Bulk triggers can handle both single record updates and bulk operations like:
+
+**•** Data import
+
+**•** Lightning Platform Bulk API calls
+
+**•** Mass actions, such as record owner changes and deletes
+
+**•** Recursive Apex methods and triggers that invoke bulk DML statements
+
+##### Trigger Syntax
+
+To define a trigger, use the following syntax:
+
+```
+   trigger TriggerName on ObjectName ( trigger_events ) {
+
+               code_block
+
+                }
+
+```
+
+where _`trigger_events`_ can be a comma-separated list of one or more of the following events:
+
+
+Apex Developer Guide Invoking Apex
+
+For example, the following code defines a trigger for the `before insert` and `before update` events on the Account object:
+
+```
+   trigger myAccountTrigger on Account (before insert, before update) {
+
+      // Your code here
+
+   }
+
+```
+
+The code block of a trigger cannot contain the `static` keyword. Triggers can only contain keywords applicable to an inner class. In
+addition, you do not have to manually commit any database changes made by a trigger. If your Apex trigger completes successfully,
+any database changes are automatically committed. If your Apex trigger does not complete successfully, any changes made to the
+database are rolled back.
+
+##### Trigger Context Variables
+
+All triggers define implicit variables that allow developers to access run-time context. These variables are contained in the
+`System.Trigger` class.
+
+Here are the trigger context variables.
+
+**Variable** **Usage**
+
+`isExecuting` Returns `true` if the current context for the Apex code is a trigger, not a Visualforce page, a web
+service, or an `executeanonymous()` API call.
+
+`isInsert` Returns `true` if this trigger was fired due to an insert operation, from the Salesforce user interface,
+Apex, or the API.
+
+`isUpdate` Returns `true` if this trigger was fired due to an update operation, from the Salesforce user interface,
+Apex, or the API.
+
+`isDelete` Returns `true` if this trigger was fired due to a delete operation, from the Salesforce user interface,
+Apex, or the API.
+
+`isBefore` Returns `true` if this trigger was fired before any record was saved.
+
+`isAfter` Returns `true` if this trigger was fired after all records were saved.
+
+`isUndelete` Returns `true` if this trigger was fired after a record is recovered from the Recycle Bin. This recovery
+can occur after an undelete operation from the Salesforce user interface, Apex, or the API.
+
+```
+new
+
+newMap
+
+old
+
+oldMap
+
+```
+
+Returns a list of the new versions of the sObject records.
+
+This sObject list is only available in `insert`, `update`, and `undelete` triggers, and the records
+can only be modified in `before` triggers.
+
+A map of IDs to the new versions of the sObject records.
+
+This map is only available in `before update`, `after insert`, `after update`, and
+`after undelete` triggers.
+
+Returns a list of the old versions of the sObject records.
+
+This sObject list is only available in `update` and `delete` triggers.
+
+A map of IDs to the old versions of the sObject records.
+
+This map is only available in `update` and `delete` triggers.
+
+
+Apex Developer Guide Invoking Apex
+
+**Variable** **Usage**
+
+```
+operationType
+
+```
+
+Returns an enum of type `System.TriggerOperation` corresponding to the current operation.
+
+Possible values of the System.TriggerOperation enum are: `BEFORE_INSERT`, `BEFORE_UPDATE`,
+`BEFORE_DELETE`, `AFTER_INSERT`, `AFTER_UPDATE`, `AFTER_DELETE`, and
+
+`AFTER_UNDELETE` . If you vary your programming logic based on different trigger types, consider
+using the `switch` statement with different permutations of unique trigger execution enum states.
+
+`size` The number of records processed in a trigger invocation. DML operations that include over 200
+records are processed in batches, and the trigger is invoked for each batch. `Trigger.size`
+
+includes only the number of records in the current batch, not the total number of records in the DML
+operation.
+
+Note: The record firing a trigger can include an invalid field value, such as a formula that divides by zero. In this case, the field
+value is set to `null` in these variables:
+
+**•** `new`
+
+**•** `newMap`
+
+**•** `old`
+
+**•** `oldMap`
+
+For example, in this simple trigger, `Trigger.new` is a list of sObjects and can be iterated over in a `for` loop. It can also be used as
+a bind variable in the `IN` clause of a SOQL query.
+
+```
+trigger SimpleTrigger on Account(after insert) {
+
+  for (Account a : Trigger.new) {
+
+   // Iterate over each sObject
+
+  }
+
+  // This single query finds every contact that is associated with any of the
+
+  // triggering accounts. Note that although Trigger.new is a collection of
+
+  // records, when used as a bind variable in a SOQL query, Apex automatically
+
+  // transforms the list of records into a list of corresponding Ids.
+
+  Contact[] cons = [
+
+   SELECT LastName
+
+   FROM Contact
+
+   WHERE AccountId IN :Trigger.new
+
+   WITH USER_MODE
+
+  ];
+
+}
+
+```
+
+This trigger uses Boolean context variables such as `Trigger.isBefore` and `Trigger.isDelete` to define code that only
+executes for specific trigger conditions:
+
+```
+trigger MyAccountTrigger on Account(
+
+  before delete,
+
+  before insert,
+
+  before update,
+
+  after delete,
+
+  after insert,
+
+  after update
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+   ) {
+
+     if (Trigger.isBefore) {
+
+      if (Trigger.isDelete) {
+
+       // In a before delete trigger, the trigger accesses the records that will be
+
+       // deleted with the Trigger.old list.
+
+       for (Account a : Trigger.old) {
+
+        if (a.name != 'okToDelete') {
+
+         a.addError('You can\'t delete this record!');
+
+        }
+
+       }
+
+      } else {
+
+       // In before insert or before update triggers, the trigger accesses the new records
+
+       // with the Trigger.new list.
+
+       for (Account a : Trigger.new) {
+
+        if (a.name == 'bad') {
+
+         a.name.addError('Bad name');
+
+        }
+
+       }
+
+       if (Trigger.isInsert) {
+
+        for (Account a : Trigger.new) {
+
+         Assert.areEqual('xxx', a.accountNumber);
+
+         Assert.areEqual('industry', a.industry);
+
+         Assert.areEqual(100, a.numberofemployees);
+
+         Assert.areEqual(100.0, a.annualrevenue);
+
+         a.accountNumber = 'yyy';
+
+        }
+
+        // If the trigger is not a before trigger, it must be an after trigger.
+
+       } else {
+
+        if (Trigger.isInsert) {
+
+         List<Contact> contacts = new List<Contact>();
+
+         for (Account a : Trigger.new) {
+
+           if (a.Name == 'makeContact') {
+
+            contacts.add(new Contact(LastName = a.Name, AccountId = a.Id));
+
+           }
+
+         }
+
+         insert as user contacts;
+
+        }
+
+       }
+
+      }
+
+     }
+
+   }
+
+```
+
+SEE ALSO:
+
+_Apex Reference Guide_ [: TriggerOperation Enum](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_System_TriggerOperation.htm)
+
+Switch Statements
+
+##### Context Variable Considerations
+
+Be aware of the following considerations for trigger context variables:
+
+**•** `trigger.new` and `trigger.old` cannot be used in Apex DML operations.
+
+
+Apex Developer Guide Invoking Apex
+
+**•** You can use an object to change its own field values using `trigger.new`, but only in before triggers. In all after triggers,
+
+`trigger.new` is not saved, so a runtime exception is thrown.
+
+**•** `trigger.old` is always read-only.
+
+**•** You cannot delete `trigger.new` .
+
+The following table lists considerations about certain actions in different trigger events:
+
+**Trigger Event** **Can change fields using**
+
+```
+             trigger.new
+
+```
+
+**Can update original object**
+**using an update DML**
+**operation**
+
+**Can delete original object**
+**using a delete DML**
+**operation**
+
+`before insert` Allowed. Not applicable. The original Not applicable. The original
+object has not been created; object has not been created;
+
+nothing can reference it, so nothing can reference it, so
+nothing can update it. nothing can update it.
+
+Allowed, but unnecessary. The
+object is deleted immediately
+after being inserted.
+
+```
+after insert
+
+```
+
+Not allowed. A runtime error is Allowed.
+thrown, as `trigger.new` is
+already saved.
+
+`before update` Allowed. Not allowed. A runtime error is Not allowed. A runtime error is
+thrown. thrown.
+
+```
+after update
+
+before delete
+
+after delete
+
+```
+
+Not allowed. A runtime error is Allowed. Even though bad code Allowed. The updates are saved
+thrown, as `trigger.new` is could cause an infinite recursion before the object is deleted, so
+already saved. doing this incorrectly, the error if the object is undeleted, the
+
+would be found by the governor updates become visible.
+limits.
+
+Not allowed. A runtime error is Not applicable. The object has Not applicable. The object has
+thrown. `trigger.new` is not already been deleted. already been deleted.
+available in after delete triggers.
+
+Not allowed. A runtime error is
+thrown. `trigger.new` is not
+available in before delete
+triggers.
+
+Allowed. The updates are saved
+before the object is deleted, so
+if the object is undeleted, the
+updates become visible.
+
+Not allowed. A runtime error is
+thrown. The deletion is already
+in progress.
+
+`after undelete` Not allowed. A runtime error is Allowed.
+thrown.
+
+##### Common Bulk Trigger Idioms
+
+Allowed, but unnecessary. The
+object is deleted immediately
+after being inserted.
+
+Although bulk triggers allow developers to process more records without exceeding execution governor limits, they can be more difficult
+for developers to understand and code because they involve processing batches of several records at a time. The following sections
+provide examples of idioms that should be used frequently when writing in bulk.
+
+Using Maps and Sets in Bulk Triggers
+
+Set and map data structures are critical for successful coding of bulk triggers. Sets can be used to isolate distinct records, while maps
+can be used to hold query results organized by record ID.
+
+
+Apex Developer Guide Invoking Apex
+
+For example, this bulk trigger from the sample quoting application first adds each pricebook entry associated with the OpportunityLineItem
+records in `Trigger.new` to a set, ensuring that the set contains only distinct elements. It then queries the PricebookEntries for their
+associated product color, and places the results in a map. Once the map is created, the trigger iterates through the OpportunityLineItems
+in `Trigger.new` and uses the map to assign the appropriate color.
+
+```
+   // When a new line item is added to an opportunity, this trigger copies the value of the
+
+   // associated product's color to the new record.
+
+   trigger oppLineTrigger on OpportunityLineItem (before insert) {
+
+      // For every OpportunityLineItem record, add its associated pricebook entry
+
+      // to a set so there are no duplicates.
+
+      Set<Id> pbeIds = new Set<Id>();
+
+      for (OpportunityLineItem oli : Trigger.new)
+
+        pbeIds.add(oli.pricebookentryid);
+
+      // Query the PricebookEntries for their associated product color and place the results
+
+      // in a map.
+
+      Map<Id, PricebookEntry> entries = new Map<Id, PricebookEntry>(
+
+        [select product2.color__c from pricebookentry
+
+         where id in :pbeIds]);
+
+      // Now use the map to set the appropriate color on every OpportunityLineItem processed
+
+      // by the trigger.
+
+      for (OpportunityLineItem oli : Trigger.new)
+
+        oli.color__c = entries.get(oli.pricebookEntryId).product2.color__c;
+
+   }
+
+```
+
+Correlating Records with Query Results in Bulk Triggers
+
+Use the `Trigger.newMap` and `Trigger.oldMap` ID-to-sObject maps to correlate records with query results. For example, this
+trigger from the sample quoting app uses `Trigger.oldMap` to create a set of unique IDs ( `Trigger.oldMap.keySet()` ).
+The set is then used as part of a query to create a list of quotes associated with the opportunities being processed by the trigger. For
+every quote returned by the query, the related opportunity is retrieved from `Trigger.oldMap` and prevented from being deleted:
+
+```
+   trigger oppTrigger on Opportunity (before delete) {
+
+      for (Quote__c q : [SELECT opportunity__c FROM quote__c
+
+                 WHERE opportunity__c IN :Trigger.oldMap.keySet()]) {
+
+        Trigger.oldMap.get(q.opportunity__c).addError('Cannot delete
+
+                                    opportunity with a quote');
+
+      }
+
+   }
+
+```
+
+Using Triggers to Insert or Update Records with Unique Fields
+
+When an `insert` or `upsert` event causes a record to duplicate the value of a unique field in another new record in that batch, the
+error message for the duplicate record includes the ID of the first record. However, it is possible that the error message may not be correct
+by the time the request is finished.
+
+When there are triggers present, the retry logic in bulk operations causes a rollback/retry cycle to occur. That retry cycle assigns new
+keys to the new records. For example, if two records are inserted with the same value for a unique field, and you also have an `insert`
+event defined for a trigger, the second duplicate record fails, reporting the ID of the first record. However, once the system rolls back the
+
+
+Apex Developer Guide Invoking Apex
+
+changes and re-inserts the first record by itself, the record receives a new ID. That means the error message reported by the second
+record is no longer valid.
+
+##### Defining Triggers
+
+Trigger code is stored as metadata under the object with which they are associated.
+
+To define a trigger in Salesforce:
+
+**1.** From the object management settings for the object whose triggers you want to access, go to Triggers.
+
+Tip: For the Attachment, ContentDocument, and Note standard objects, you can’t create a trigger in the Salesforce user
+interface. For these objects, create a trigger using development tools, such as the Developer Console or the Salesforce extensions
+for Visual Studio Code. Alternatively, you can also use the Metadata API.
+
+**2.** In the Triggers list, click **New** .
+
+**3.** To specify the version of Apex and the API used with this trigger, click Version Settings. If your organization has installed managed
+packages from the AppExchange, you can also specify which version of each managed package to use with this trigger. Associate
+the trigger with the most recent version of Apex and the API and each managed package by using the default values for all versions.
+You can specify an older version of a managed package if you want to access components or functionality that differs from the most
+recent package version.
+
+**4.** Click Apex Trigger and select the `Is Active` checkbox if you want to compile and enable the trigger. Leave this checkbox
+deselected if you only want to store the code in your organization's metadata. This checkbox is selected by default.
+
+**5.** In the `Body` text box, enter the Apex for the trigger. A single trigger can be up to 1 million characters in length.
+
+To define a trigger, use the following syntax:
+
+```
+     trigger TriggerName on ObjectName ( trigger_events ) {
+
+                 code_block
+
+                  }
+
+```
+
+where _`trigger_events`_ can be a comma-separated list of one or more of the following events:
+
+**•** `before insert`
+
+**•** `before update`
+
+**•** `before delete`
+
+**•** `after insert`
+
+**•** `after update`
+
+**•** `after delete`
+
+**•** `after undelete`
+
+Note:
+
+**•** A trigger invoked by an `insert`, `delete`, or `update` of a recurring event or recurring task results in a runtime error
+when the trigger is called in bulk from the Lightning Platform API.
+
+**•** Suppose that you use an after-insert or after-update trigger to change ownership of leads, contacts, or opportunities. If
+you use the API to change record ownership, or if a Lightning Experience user changes a record’s owner, no email notification
+is sent. To send email notifications to a record’s new owner, set the `triggerUserEmail` property in DMLOptions to
+
+`true` .
+
+**6.** Click **Save** .
+
+
+Apex Developer Guide Invoking Apex
+
+Note: Triggers are stored with an `isValid` flag that is set to `true` as long as dependent metadata has not changed since
+the trigger was last compiled. If any changes are made to object names or fields that are used in the trigger, including superficial
+changes such as edits to an object or field description, the `isValid` flag is set to `false` until the Apex compiler reprocesses
+the code. Recompiling occurs when the trigger is next executed, or when a user resaves the trigger in metadata.
+
+If a lookup field references a record that has been deleted, Salesforce clears the value of the lookup field by default. Alternatively,
+you can choose to prevent records from being deleted if they’re in a lookup relationship.
+
+The Apex Trigger Editor
+
+The Apex and Visualforce editor has the following functionality:
+
+**Syntax highlighting**
+The editor automatically applies syntax highlighting for keywords and all functions and operators.
+
+**Search (** **)**
+Search enables you to search for text within the current page, class, or trigger. To use search, enter a string in the `Search` textbox
+and click **Find Next** .
+
+**•** To replace a found search string with another string, enter the new string in the `Replace` textbox and click **replace** to replace
+just that instance, or **Replace All** to replace that instance and all other instances of the search string that occur in the page, class,
+or trigger.
+
+**•** To make the search operation case sensitive, select the **Match Case** option.
+
+**•** To use a regular expression as your search string, select the **Regular Expressions** option. The regular expressions follow
+JavaScript's regular expression rules. A search using regular expressions can find strings that wrap over more than one line.
+
+If you use the replace operation with a string found by a regular expression, the replace operation can also bind regular expression
+group variables ( `$1`, `$2`, and so on) from the found search string. For example, to replace an `<h1>` tag with an `<h2>` tag and
+keep all the attributes on the original `<h1>` intact, search for `<h1(\s+)(.*)>` and replace it with `<h2$1$2>` .
+
+**Go to line (** **)**
+This button allows you to highlight a specified line number. If the line is not currently visible, the editor scrolls to that line.
+
+**Undo (** **) and Redo (** **)**
+Use undo to reverse an editing action and redo to recreate an editing action that was undone.
+
+**Font size**
+Select a font size from the drop-down list to control the size of the characters displayed in the editor.
+
+**Line and column position**
+The line and column position of the cursor is displayed in the status bar at the bottom of the editor. This can be used with go to line
+
+( ) to quickly navigate through the editor.
+
+**Line and character count**
+The total number of lines and characters is displayed in the status bar at the bottom of the editor.
+
+##### Triggers and Merge Statements
+
+Merge events do not fire their own trigger events. Instead, they fire delete and update events as follows:
+
+**Deletion of losing records**
+A single merge operation fires a single delete event for all records that are deleted in the merge. To determine which records were
+deleted as a result of a merge operation use the `MasterRecordId` field in `Trigger.old` . When a record is deleted after
+losing a merge operation, its `MasterRecordId` field is set to the ID of the winning record. The `MasterRecordId` field is
+
+
+Apex Developer Guide Invoking Apex
+
+only set in `after delete` trigger events. If your application requires special handling for deleted records that occur as a result
+of a merge, you need to use the `after delete` trigger event.
+
+**Update of the winning record**
+A single merge operation fires a single update event for the winning record only. Any child records that are reparented as a result
+of the merge operation do not fire triggers.
+
+For example, if two contacts are merged, only the delete and update contact triggers fire. No triggers for records related to the contacts,
+such as accounts or opportunities, fire.
+
+The following is the order of events when a merge occurs:
+
+**1.** The `before delete` trigger fires.
+
+**2.** The system deletes the necessary records due to the merge, assigns new parent records to the child records, and sets the
+`MasterRecordId` field on the deleted records.
+
+**3.** The `after delete` trigger fires.
+
+**4.** The system does the specific updates required for the master record. Normal update triggers apply.
+
+##### Triggers and Recovered Records
+
+The `after undelete` trigger event only works with recovered records—that is, records that were deleted and then recovered
+from the Recycle Bin through the `undelete` DML statement. These are also called undeleted records.
+
+The `after undelete` trigger events only run on top-level objects. For example, if you delete an Account, an Opportunity may also
+be deleted. When you recover the Account from the Recycle Bin, the Opportunity is also recovered. If there is an `after undelete`
+trigger event associated with both the Account and the Opportunity, only the Account `after undelete` trigger event executes.
+
+The `after undelete` trigger event only fires for custom objects and these standard objects.
+
+**•** Account
+
+**•** Asset
+
+**•** Campaign
+
+**•** Case
+
+**•** Contact
+
+**•** ContentDocument
+
+**•** Contract
+
+**•** Event
+
+**•** Lead
+
+**•** Opportunity
+
+**•** Product
+
+**•** Solution
+
+**•** Task
+
+##### Triggers and Order of Execution
+
+When you save a record with an `insert`, `update`, or `upsert` statement, Salesforce performs a sequence of events in a certain
+order.
+
+Before Salesforce executes these events on the server, the browser runs JavaScript validation if the record contains any dependent picklist
+fields. The validation limits each dependent picklist field to its available values. No other validation occurs on the client side.
+
+
+Apex Developer Guide Invoking Apex
+
+[Note: For a diagrammatic representation of the order of execution, see the Order of Execution Flowchart in the](http://developer.salesforce.com/docs/platform/data-models/guide/order-of-execution.html) _Salesforce Data_
+_Model Gallery_ . The diagram is specific to the API version indicated on it, and can be out-of-sync with the information here. This
+_Apex Developer Guide_ page contains the most up-to-date information on the order of execution for this API version. To access a
+[different API version, use the version picker for the Apex Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_dev_guide.htm)
+
+On the server, Salesforce performs events in this sequence.
+
+Note: During a recursive save, Salesforce skips steps 9 (assignment rules) through 17 (roll-up summary field in the grandparent
+record).
+
+**1.** Loads the original record from the database or initializes the record for an `upsert` statement.
+
+**2.** Loads the new record field values from the request and overwrites the old values.
+
+Salesforce performs different validation checks depending on the type of request.
+
+**•** For requests from a standard UI edit page, Salesforce runs these system validation checks on the record:
+
+**–** Compliance with layout-specific rules
+
+**–** Required values at the layout level and field-definition level
+
+**–** Valid field formats
+
+**–** Maximum field length
+
+Additionally, if the request is from a User object on a standard UI edit page, Salesforce runs custom validation rules.
+
+**•** For requests from multiline item creation such as quote line items and opportunity line items, Salesforce runs custom validation
+rules.
+
+**•** For requests from other sources such as an Apex application or a SOAP API call, Salesforce validates foreign keys, field formats,
+maximum field lengths, and restricted picklists. Before executing a trigger, Salesforce verifies that any custom foreign keys don’t
+refer to the object itself.
+
+**3.** Executes record-triggered flows that are configured to run before the record is saved.
+
+**4.** Executes all `before` triggers.
+
+**5.** Runs most system validation steps again, such as verifying that all required fields have a non- `null` value, and runs any custom
+validation rules. The only system validation that Salesforce doesn't run a second time (when the request comes from a standard UI
+edit page) is the enforcement of layout-specific rules.
+
+**6.** Executes duplicate rules. If the duplicate rule identifies the record as a duplicate and uses the block action, the record isn’t saved
+and no further steps, such as `after` triggers and workflow rules, are taken.
+
+**7.** Saves the record to the database, but doesn't commit yet.
+
+**8.** Executes all `after` triggers.
+
+**9.** Executes assignment rules.
+
+**10.** Executes auto-response rules.
+
+**11.** Executes workflow rules. If there are workflow field updates:
+
+Note: This sequence applies only to workflow rules.
+
+**a.** Updates the record again.
+
+**b.** Runs system validations again. Custom validation rules, flows, duplicate rules, processes built with Process Builder, and escalation
+rules aren’t run again.
+
+**c.** Executes `before update` triggers and `after update` triggers, regardless of the record operation (insert or update),
+one more time (and only one more time)
+
+
+Apex Developer Guide Invoking Apex
+
+**12.** Executes escalation rules.
+
+**13.** Executes these Salesforce Flow automations, but not in a guaranteed order.
+
+**•** Processes built with Process Builder
+
+**•** Flows launched by workflow rules (flow trigger workflow actions pilot)
+
+[Note: To control the order of execution of Salesforce Flow automations, use record-triggered flows. See Manage](https://help.salesforce.com/s/articleView?id=platform.flow_trigger_explorer.htm&type=5&language=en_US)
+[Record-Triggered Flows](https://help.salesforce.com/s/articleView?id=platform.flow_trigger_explorer.htm&type=5&language=en_US)
+
+When a process or flow executes a DML operation, the affected record goes through the save procedure.
+
+**14.** Executes record-triggered flows that are configured to run after the record is saved
+
+**15.** Executes entitlement rules.
+
+**16.** If the record contains a roll-up summary field or is part of a cross-object workflow, performs calculations and updates the roll-up
+summary field in the parent record. Parent record goes through save procedure.
+
+**17.** If the parent record is updated, and a grandparent record contains a roll-up summary field or is part of a cross-object workflow,
+performs calculations and updates the roll-up summary field in the grandparent record. Grandparent record goes through save
+procedure.
+
+**18.** Executes Criteria Based Sharing evaluation.
+
+**19.** Commits all DML operations to the database.
+
+**20.** After the changes are committed to the database, executes post-commit logic. Examples of post-commit logic (in no particular
+order) include:
+
+**•** Sending email
+
+**•** Enqueued asynchronous Apex jobs, including queueable jobs and future methods
+
+**•** Asynchronous paths in record-triggered flows
+
+Additional Considerations
+
+Note these considerations when working with triggers.
+
+**•** If a workflow rule field update is triggered by a record update, `Trigger.old` doesn’t hold the newly updated field by the workflow
+after the update. Instead, `Trigger.old` holds the object before the initial record update was made. For example, an existing
+record has a number field with an initial value of 1. A user updates this field to 10, and a workflow rule field update fires and increments
+it to 11. In the `update` trigger that fires after the workflow field update, the field value of the object obtained from `Trigger.old`
+[is the original value of 1, and not 10. See Trigger.old values before and after update triggers.](https://help.salesforce.com/apex/HTViewSolution?urlname=Understanding-Trigger-old-and-Trigger-new-values-in-before-after-update-triggers-1327108323938&language=en_US)
+
+**•** If a DML call is made with partial success allowed, triggers are fired during the first attempt and are fired again during subsequent
+attempts. Because these trigger invocations are part of the same transaction, static class variables that are accessed by the trigger
+aren't reset. See Bulk DML Exception Handling.
+
+**•** If more than one trigger is defined on an object for the same event, the order of trigger execution isn't guaranteed. For example, if
+you have two `before insert` triggers for Case and a new Case record is inserted. The firing order of these two triggers isn’t
+guaranteed.
+
+**•** To learn about the order of execution when you insert a non-private contact in your org that associates a contact to multiple accounts,
+[see AccountContactRelation.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_accountcontactrelation.htm)
+
+**•** To learn about the order of execution when you’re using `before` triggers to set `Stage` and `Forecast Category`, see
+[Opportunity.](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_opportunity.htm)
+
+
+Apex Developer Guide Invoking Apex
+
+**•** In API version 53.0 and earlier, after-save record-triggered flows run after entitlements are executed.
+
+SEE ALSO:
+
+_Salesforce Help_ [: Triggers for Autolaunched Flows](https://help.salesforce.com/s/articleView?id=platform.flow_concepts_trigger.htm&type=5&language=en_US)
+
+##### Operations That Don't Invoke Triggers
+
+Some operations don’t invoke triggers.
+
+Triggers are invoked for Data Manipulation Language (DML) operations that the Java application server initiates or processes. Therefore,
+some system bulk operations don't invoke triggers. Some examples include:
+
+Note: Inserts, updates, and deletes on person accounts fire Account triggers, not Contact triggers.
+
+**•** Cascading delete operations. Only records that initiate a `delete` cause trigger evaluation.
+
+**•** Cascading updates of child records that are reparented as a result of a merge operation
+
+**•** Mass campaign status changes
+
+**•** Mass division transfers
+
+**•** Mass address updates
+
+**•** Mass approval request transfers
+
+**•** Mass email actions
+
+**•** Modifying custom field data types
+
+**•** Renaming or replacing picklists
+
+**•** Managing price books
+
+**•** Changing a user's default division with the transfer division option checked
+
+**•** Changes to these objects:
+
+**–** BrandTemplate
+
+**–** MassEmailTemplate
+
+**–** Folder
+
+**•** Update account triggers don't fire before or after a business account record type changes to person account. They also don’t fire
+before or after a person account record type changes to business account.
+
+**•** Update triggers don’t fire on `FeedItem` when the `LikeCount` counter increases.
+
+The `before` triggers associated with these operations fire during lead conversion only if validation and triggers for lead conversion
+are enabled in the organization:
+
+**•** `insert` of accounts, contacts, and opportunities
+
+**•** `update` of accounts and contacts
+
+Opportunity triggers don’t fire when:
+
+**•** The account owner changes as a result of the associated opportunity’s owner changing.
+
+**•** The opportunity owner changes as a result of the associated account’s owner changing.
+
+The `before` and `after` triggers and the validation rules don't fire for an opportunity when:
+
+**•** You modify an opportunity product on an opportunity.
+
+**•** An opportunity product schedule changes an opportunity product, even if the opportunity product changes the opportunity.
+
+However, roll-up summary fields do get updated, and workflow rules associated with the opportunity do run.
+
+
+Apex Developer Guide Invoking Apex
+
+The `getContent` and `getContentAsPDF` PageReference methods aren't allowed in triggers.
+
+Note the following for the ContentVersion object:
+
+**•** Content pack operations involving the ContentVersion object, including slides and slide autorevision, don't invoke triggers.
+
+Note: Content packs are revised when a slide inside the pack is revised.
+
+**•** Values for the `TagCsv` and `VersionData` fields are only available in triggers if the request to create or update ContentVersion
+records originates from the API.
+
+**•** You can't use `before` or `after delete` triggers with the ContentVersion object.
+
+Triggers on the Attachment object don’t fire when:
+
+**•** The attachment is created via Case Feed publisher.
+
+**•** The user sends email via the Email related list and adds an attachment file.
+
+Triggers fire when the Attachment object is created via Email-to-Case or via the UI.
+
+##### Entity and Field Considerations in Triggers
+
+When you create triggers, consider the behavior of certain entities, fields, and operations.
+
+QuestionDataCategorySelection Entity Not Available in After Insert Triggers
+
+The `after insert` trigger that fires after inserting one or more `Question` records doesn’t have access to the
+`QuestionDataCategorySelection` records that are associated with the inserted `Question` s. For example, the following
+query doesn’t return any results in an `after insert` trigger:
+
+```
+   QuestionDataCategorySelection[] dcList =
+
+   [select Id,DataCategoryName from QuestionDataCategorySelection where ParentId IN :questions];
+
+```
+
+Fields Not Updateable in Before Triggers
+
+Some field values are set during the system save operation, which occurs after `before` triggers have fired. As a result, these fields
+cannot be modified or accurately detected in `before insert` or `before update` triggers. Some examples include:
+
+**•** `Task.isClosed`
+
+**•** `Opportunity.amount`   
+
+**•** `Opportunity.ForecastCategory`
+
+**•** `Opportunity.isWon`
+
+**•** `Opportunity.isClosed`
+
+**•** `Contract.activatedDate`
+
+**•** `Contract.activatedById`
+
+**•** `Case.isClosed`
+
+**•** `Solution.isReviewed`
+
+**•** `Id` (for all records)**
+
+**•** `createdDate` (for all records)**
+
+**•** `lastUpdated` (for all records)
+
+**•** `Event.WhoId` (when Shared Activities is enabled)
+
+
+Apex Developer Guide Invoking Apex
+
+**•** `Task.WhoId` (when Shared Activities is enabled)
+
+   - When `Opportunity` has no `lineitems`, `Amount` can be modified by a `before` trigger.
+
+** `Id` and `createdDate` can be detected in `before update` triggers, but cannot be modified.
+
+Fields Not Updateable in After Triggers
+
+The following fields can’t be updated by `after insert` or `after update` triggers.
+
+**•** `Event.WhoId`
+
+**•** `Task.WhoId`
+
+Considerations for Event DateTime Fields in Insert and Update Triggers
+
+We recommend using the following date and time fields to create or update events.
+
+**•** When creating or updating a timed Event, use `ActivityDateTime` to avoid issues with inconsistent date and time values.
+
+**•** When creating or updating an all-day Event, use `ActivityDate` to avoid issues with inconsistent date and time values.
+
+**•** We recommend that you use `DurationInMinutes` because it works with all updates and creates for Events.
+
+Operations Not Supported in Insert and Update Triggers
+
+The following operations aren’t supported in `insert` and `update` triggers.
+
+**•** Manipulating an activity relation through the `TaskRelation` or `EventRelation` object, if Shared Activities is enabled
+
+**•** Manipulating an invitee relation on a group event through the `Invitee` object, whether or not Shared Activities is enabled
+
+Entities Not Supported in After Undelete Triggers
+
+Certain objects can’t be restored, and therefore, shouldn’t have `after undelete` triggers.
+
+**•** CollaborationGroup
+
+**•** CollaborationGroupMember
+
+**•** FeedItem
+
+**•** FeedComment
+
+Considerations for Update Triggers
+
+Field history tracking honors the permissions of the current user. If the current user doesn’t have permission to directly edit an object or
+field, but the user activates a trigger that changes an object or field with history tracking enabled, no history of the change is recorded.
+
+Considerations for the Salesforce Side Panel for Salesforce for Outlook
+
+When an email is associated to a record using the Salesforce Side Panel for Salesforce for Outlook, the email associations are represented
+in the `WhoId` or `WhatId` fields on a task record. Associations are completed after the task is created, so the `Task.WhoId` and
+`Task.WhatId` fields aren’t immediately available in `before` or `after` Task triggers for insert and update events, and their values
+are initially `null` . The `WhoId` and `WhatId` fields are set on the saved task record in a subsequent operation, however, so their values
+can be retrieved later.
+
+SEE ALSO:
+
+Triggers for Chatter Objects
+
+
+Apex Developer Guide Invoking Apex
+
+##### Triggers for Chatter Objects
+
+You can write triggers for the FeedItem and FeedComment objects.
+
+Trigger Considerations for FeedItem, FeedAttachment, and FeedComment
+
+**•** Only FeedItems of type `TextPost`, `QuestionPost`, `LinkPost`, `HasLink`, `ContentPost`, and `HasContent` can be
+inserted, and therefore invoke the `before` or `after insert` trigger. User status updates don't cause the FeedItem triggers
+to fire.
+
+**•** While FeedPost objects were supported for API versions 18.0, 19.0, and 20.0, don't use any insert or delete triggers saved against
+versions before 21.0.
+
+**•** For FeedItem, the following fields aren’t available in the `before insert` trigger:
+
+**–** `ContentSize`
+
+**–** `ContentType`
+
+In addition, the `ContentData` field isn’t available in any delete trigger.
+
+**•** Triggers on FeedItem objects run before their attachment and capabilities information is saved, which means that
+`ConnectApi.FeedItem.attachment` information and `ConnectApi.FeedElement.capabilities` information
+may not be available in the trigger.
+
+The attachment and capabilities information may not be available from these methods:
+`ConnectApi.ChatterFeeds.getFeedItem`, `ConnectApi.ChatterFeeds.getFeedElement`,
+`ConnectApi.ChatterFeeds.getFeedPoll`, `ConnectApi.ChatterFeeds.getFeedElementPoll`,
+`ConnectApi.ChatterFeeds.postFeedItem`, `ConnectApi.ChatterFeeds.postFeedElement`,
+`ConnectApi.ChatterFeeds.shareFeedItem`, `ConnectApi.ChatterFeeds.shareFeedElement`,
+`ConnectApi.ChatterFeeds.voteOnFeedPoll`, and `ConnectApi.ChatterFeeds.voteOnFeedElementPoll`
+
+**•** FeedAttachment isn’t a triggerable object. You can access feed attachments in FeedItem _update_ triggers through a SOQL query. For
+example:
+
+```
+     trigger FeedItemTrigger on FeedItem (after update) {
+
+       List<FeedAttachment> attachments = [SELECT Id, Title, Type, FeedEntityId
+
+                              FROM FeedAttachment
+
+                              WHERE FeedEntityId IN :Trigger.new ];
+
+       for (FeedAttachment attachment : attachments) {
+
+          System.debug(attachment.Type);
+
+       }
+
+     }
+
+```
+
+**•** When you insert a feed item with associated attachments, the FeedItem is inserted first, then the FeedAttachment records are
+created. On update of a feed item with associated attachments, the FeedAttachment records are inserted first, then the FeedItem
+is updated. As a result of this sequence of operations, in Salesforce Classic FeedAttachment is available in `Update` and
+`AfterInsert` triggers. When the attachment is done through Lightning Experience, it’s available in both the `Update` and
+`AfterInsert` triggers; but in the `AfterInsert` trigger, use the future method to access FeedAttachments.
+
+**•** The following feed attachment operations cause the FeedItem _update_ triggers to fire.
+
+**–** A FeedAttachment is added to a FeedItem and causes the FeedItem type to change.
+
+**–** A FeedAttachment is removed from a FeedItem and causes the FeedItem type to change.
+
+**•** FeedItem triggers aren’t fired when inserting or updating a FeedAttachment that doesn’t cause a change on the associated FeedItem.
+
+
+Apex Developer Guide Invoking Apex
+
+**•** You can’t insert, update, or delete FeedAttachments in _before update_ and _after update_ FeedItem triggers.
+
+**•** For FeedComment _before insert_ and _after insert_ triggers, the fields of a ContentVersion associated with the FeedComment (obtained
+through `FeedComment.RelatedRecordId` ) aren’t available.
+
+Other Chatter Trigger Considerations
+
+**•** Apex code uses extra security when executing in a Chatter context. To post to a private group, the user running the code must be
+a member of that group. If the running user isn't a member, you can set the `CreatedById` field to be a member of the group in
+the FeedItem record.
+
+**•** When CollaborationGroupMember is updated, CollaborationGroup is automatically updated as well to ensure that the member
+count is correct. As a result, when CollaborationGroupMember `update` or `delete` triggers run, CollaborationGroup `update`
+triggers run as well.
+
+SEE ALSO:
+
+Entity and Field Considerations in Triggers
+
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_feeditem.htm)_ : FeedItem
+
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_feedattachment.htm)_ : FeedAttachment
+
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_feedcomment.htm)_ : FeedComment
+
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_collaborationgroup.htm)_ : CollaborationGroup
+
+_[Object Reference for Salesforce and Lightning Platform](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_collaborationgroupmember.htm)_ : CollaborationGroupMember
+
+##### Trigger Considerations for Knowledge Articles
+
+You can write triggers for KnowledgeArticleVersion objects. Learn when you can use triggers, and which actions don’t fire triggers, like
+archiving articles.
+
+In general, KnowledgeArticleVersion (KAV) records can use these triggers:
+
+**•** Creating a KAV record calls the `before insert` and `after insert` triggers. This includes creating an article, and creating
+drafts from archived, published, and master-language articles using the Restore, Edit as Draft, and Submit for Translation actions.
+
+**•** Editing an existing KAV record calls the `before update` and `after update` triggers.
+
+**•** Deleting a KAV record calls the `before delete` and `after delete` triggers.
+
+**•** Importing articles calls the `before insert` and `after insert` triggers. Importing articles with translations also calls the
+`before update` and `after update` triggers.
+
+Actions that change the publication status of a KAV record, such as Publish and Archive, do not fire Apex or flow triggers. However,
+sometimes publishing an article from the UI causes the article to be saved, and in these instances the `before update` and `after`
+`update` triggers are called.
+
+Knowledge Actions and Apex Triggers
+
+Consider the following when writing Apex triggers for actions on KnowledgeArticleVersion:
+
+**Save, Save and Close**
+When an article is saved, the `before update` and `after update` triggers are called. When a new article is saved for the
+first time, the `before insert` and `after insert` triggers work instead.
+
+**Edit, Edit as Draft**
+
+**•** When a draft translation is edited, you can use the `before update` and `after update` triggers.
+
+
+Apex Developer Guide Invoking Apex
+
+**•** The Edit as Draft action creates a draft from a published article, so the `before insert` and `after insert` triggers fire.
+
+**•** In Salesforce Classic, no triggers fire when a draft master-language article is edited.
+
+**•** In Salesforce Classic, the `before insert` and `after insert` triggers are called when editing an archived article from
+the Article Management tab. This creates a draft KAV record.
+
+**Cancel, Delete**
+
+The `before delete` and `after delete` triggers are called in these cases:
+
+**•** When deleting a translation draft.
+
+**•** From the Article Management or Knowledge tab in Salesforce Classic, after editing a published article and then clicking Cancel.
+This deletes the new draft.
+
+**Submit for Translation**
+This action creates a draft translation, so you can generally use the `before insert` and `after insert` triggers. In Salesforce
+Classic, you can use the `before update` and `after update` triggers when you create a new article from the Knowledge
+tab, save it, and then submit for translation. The `before update` and `after update` triggers fire when the master-language
+article is currently being edited, but not from list views or when viewing the article.
+
+**Assign**
+The `before update` and `after update` triggers are called only when doing so causes a record save first. This happens
+when the article is being edited before the Assign button is clicked.
+
+Actions That Don’t Fire Triggers
+
+These actions can’t fire Apex triggers:
+
+**•** Undelete articles from the recycle bin.
+
+**•** Preview and archive articles.
+
+Impact on Lightning Migration
+
+Migrating from Knowledge in Salesforce Classic to Lightning Knowledge affects Apex triggers. Writing an Apex trigger on
+KnowledgeArticleVersion objects creates dependencies and prevents the KAV object from being deleted. When you migrate an org with
+multiple article types to Lightning Knowledge, you must remove any Apex triggers that reference the KAV article types. During migration,
+admins see an error message if Apex triggers still reference the article type KAV objects that are deleted during migration. If you cancel
+Lightning Knowledge migration while Apex triggers exist that refer to the new KAV object, admins are notified and you must remove
+the Apex code.
+
+Sample Knowledge Trigger
+
+For example, you can define a trigger that enters summary text when an article is created.
+
+```
+   trigger KAVTrigger on KAV_Type__kav (before insert) {
+
+      for (KAV_Type__kav kav : Trigger.New) {
+
+        kav.Summary__c = 'Updated article summary before insert';
+
+      }
+
+   }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+##### Trigger Exceptions
+
+Triggers can be used to prevent DML operations from occurring by calling the `addError()` method on a record or field. When used
+on `Trigger.new` records in `insert` and `update` triggers, and on `Trigger.old` records in `delete` triggers, the custom
+error message is displayed in the application interface and logged.
+
+Note: Users experience less of a delay in response time if errors are added to `before` triggers.
+
+A subset of the records being processed can be marked with the `addError()` method:
+
+**•** If the trigger was spawned by a DML statement in Apex, any one error results in the entire operation rolling back. However, the
+runtime engine still processes every record in the operation to compile a comprehensive list of errors.
+
+**•** If the trigger was spawned by a bulk DML call in the Lightning Platform API, the runtime engine sets aside the bad records and
+attempts to do a partial save of the records that did not generate errors. See Bulk DML Exception Handling on page 165.
+
+If a trigger ever throws an unhandled exception, all records are marked with an error and no further processing takes place.
+
+SEE ALSO:
+
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject.htm)_ : SObject.addError()
+
+##### Trigger and Bulk Request Best Practices
+
+A common development pitfall is the assumption that trigger invocations never include more than one record. Apex triggers are optimized
+to operate in bulk, which, by definition, requires developers to write logic that supports bulk operations.
+
+This is an example of a flawed programming pattern. It assumes that only one record is pulled in during a trigger invocation. While this
+might support most user interface events, it does not support bulk operations invoked through SOAP API or Visualforce.
+
+```
+   trigger MileageTrigger on Mileage__c (before insert, before update) {
+
+     User c = [SELECT Id FROM User WHERE mileageid__c = :Trigger.new[0].id];
+
+   }
+
+```
+
+This is another example of a flawed programming pattern. It assumes that fewer than 100 records are in scope during a trigger invocation.
+If more than 100 queries are issued, the trigger would exceed the SOQL query limit.
+
+```
+   trigger MileageTrigger on Mileage__c (before insert, before update) {
+
+     for(mileage__c m : Trigger.new){
+
+       User c = [SELECT Id FROM user WHERE mileageid__c = :m.Id];
+
+     }
+
+   }
+
+```
+
+For more information on governor limits, see Execution Governors and Limits.
+
+This example demonstrates the correct pattern to support the bulk nature of triggers while respecting the governor limits:
+
+```
+   Trigger MileageTrigger on Mileage__c (before update) {
+
+     Set<ID> ids = Trigger.newMap.keySet();
+
+     List<User> c = [SELECT Id FROM user WHERE mileageid__c in :ids];
+
+   }
+
+```
+
+This pattern respects the bulk nature of the trigger by passing the `Trigger.new` collection to a set, then using the set in a single
+SOQL query. This pattern captures all incoming records within the request while limiting the number of SOQL queries.
+
+Best Practices for Designing Bulk Programs
+
+The following are the best practices for this design pattern:
+
+
+Apex Developer Guide Invoking Apex
+
+**•** Minimize the number of data manipulation language (DML) operations by adding records to collections and performing DML
+operations against these collections.
+
+**•** Minimize the number of SOQL statements by preprocessing records and generating sets, which can be placed in single SOQL
+statement used with the `IN` clause.
+
+SEE ALSO:
+
+Developing Code in the Cloud
+
+#### Asynchronous Apex
+
+Apex offers multiple ways for running your Apex code asynchronously. Choose the asynchronous Apex feature that best suits your needs.
+
+This table lists the asynchronous Apex features and when to use each.
+
+Queueable Apex
+Take control of your asynchronous Apex processes by using the `Queueable` interface. Salesforce recommends that you use
+Queueable Apex instead of Apex future methods. Queueables have the same use cases as future methods but offer extra benefits,
+including job IDs, support for non-primitive types, and job chaining.
+
+Apex Scheduler
+Use the Apex Scheduler to delay execution so that you can run Apex classes at a specified time. This is ideal for daily or weekly
+maintenance tasks using Batch Apex.
+
+Batch Apex
+
+
+Apex Developer Guide Invoking Apex
+
+Future Methods
+A future method runs asynchronously. You can call a future method to run long-running operations, such as callouts to external
+web services or any operation that you want to run in its own thread. You can also use future methods to isolate Data Manipulation
+Language (DML) operations on different sObject types to prevent the mixed DML error. Each future method is queued and runs
+when system resources become available. That way, the execution of your code doesn’t wait for the completion of a long-running
+operation. A benefit of future methods is that some governor limits are higher, such as SOQL query limits and heap size limits.
+
+##### Queueable Apex Take control of your asynchronous Apex processes by using the Queueable interface. Salesforce recommends that you use Queueable
+
+Apex instead of Apex future methods. Queueables have the same use cases as future methods but offer extra benefits, including job
+IDs, support for non-primitive types, and job chaining.
+
+Apex processes that run for a long time, such as extensive database operations or external web service callouts, can be run asynchronously
+##### by implementing the Queueable interface and adding a job to the Apex job queue. In this way, your asynchronous Apex job runs
+
+in the background in its own thread and doesn’t delay the execution of your main Apex logic. Each queued job runs when system
+##### resources become available. A benefit of using the Queueable interface methods is that some governor limits are higher than for
+
+synchronous Apex, such as heap size limits.
+
+Important: If an Apex transaction rolls back, any queueable jobs queued for execution by the transaction aren’t processed.
+
+Queueable jobs are similar to future methods in that they’re both queued for execution, but they provide you with these additional
+benefits.
+
+**•** Getting an ID for your job: When you submit your job by invoking the `System.enqueueJob` method, the method returns the
+ID of the new job. This ID corresponds to the ID of the AsyncApexJob record. Use this ID to identify and monitor your job, either
+through the Salesforce UI (Apex Jobs page), or programmatically by querying your record from AsyncApexJob.
+
+**•** Using non-primitive types: Your queueable class can contain member variables of non-primitive data types, such as sObjects or
+custom Apex types. Those objects can be accessed when the job executes.
+
+**•** Chaining jobs: You can chain one job to another job by starting a second job from a running job. Chaining jobs is useful if your
+process depends on another process to have run first.
+
+You can set a maximum stack depth of chained Queueable jobs, overriding the default limit of five in Developer and Trial Edition
+organizations.
+
+Note: Variables that are declared `transient` are ignored by serialization and deserialization and the value is set to null in
+##### Queueable Apex.
+
+Adding a Queueable Job to the Asynchronous Execution Queue
+
+##### This example implements the Queueable interface. The execute method in this example inserts a new account. The
+
+`System.enqueueJob(queueable)` method is used to add the job to the queue.
+
+```
+   public with sharing class AsyncExecutionExample implements Queueable {
+
+      public void execute(QueueableContext context) {
+
+        Account a = new Account(Name='Acme',Phone='(415) 555-1212');
+
+        insert as user a;
+
+      }
+
+   }
+
+```
+
+To add this class as a job on the queue, call this method:
+
+```
+   ID jobID = System.enqueueJob(new AsyncExecutionExample());
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+Important: When you call `System.enqueueJob`, Salesforce adds the process to the queue. Actual execution can be delayed
+based on service availability.
+
+After you submit your queueable class for execution, the job is added to the queue and will be processed when system resources become
+available. You can monitor the status of your job programmatically by querying AsyncApexJob or through the user interface in Setup
+by entering _`Apex Jobs`_ in the `Quick Find` box, then selecting **Apex Jobs** .
+
+To query information about your submitted job, perform a SOQL query on AsyncApexJob by filtering on the job ID that the
+`System.enqueueJob` method returns. This example uses the jobID variable that was obtained in the previous example.
+
+```
+   AsyncApexJob jobInfo = [SELECT Status,NumberOfErrors FROM AsyncApexJob WHERE Id = :jobID
+
+   WITH USER_MODE];
+
+```
+
+Similar to future jobs, queueable jobs don’t process batches, and so the number of processed batches and the number of total batches
+are always zero.
+
+Adding a Queueable Job with a Specified Minimum Delay
+
+Use the `System.enqueueJob(queueable, delay)` method to add queueable jobs to the asynchronous execution queue
+with a specified minimum delay (0–10 minutes). The delay is ignored during Apex testing.
+
+See `[System.enqueueJob(queueable, delay)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_System_enqueueJob_2)` in the _Apex Reference Guide_ .
+
+Warning: When you set the delay to 0 (zero), the queueable job is run as quickly as possible. With chained queueable jobs,
+implement a mechanism to slow down or halt the job if necessary. Without such a fail-safe mechanism in place, you can rapidly
+reach the daily async Apex limit.
+
+In the following cases, it would be beneficial to adjust the timing before the queueable job is run.
+
+**•** If the external system is rate-limited and can be overloaded by chained queueable jobs that are making rapid callouts.
+
+**•** When polling for results, and executing too fast can cause wasted usage of the daily async Apex limits.
+
+This example adds a job for delayed asynchronous execution by passing in an instance of your class implementation of the `Queueable`
+interface for execution. There’s a minimum delay of 5 minutes before the job is executed.
+
+```
+   Integer delayInMinutes = 5;
+
+   ID jobID = System.enqueueJob(new MyQueueableClass(), delayInMinutes);
+
+```
+
+Admins can define a default org-wide delay (1–600 seconds) in scheduling queueable jobs that were scheduled without a delay parameter.
+Use the delay setting as a mechanism to slow default queueable job execution. If the setting is omitted, Apex uses the standard queueable
+timing with no added delay.
+
+Note: Using the `System.enqueueJob(queueable, delay)` method ignores any org-wide enqueue delay setting.
+
+Define the org-wide delay in one of these ways.
+
+**•** From Setup, in the Quick Find box, enter _`Apex Settings`_, and then enter a value (1–600 seconds) for **Default minimum**
+**enqueue delay (in seconds) for queueable jobs that do not have a delay parameter**
+
+**•** [To enable this feature programmatically with Metadata API, see ApexSettings in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_apexsettings.htm) _Metadata API Developer Guide_ .
+
+Adding a Queueable Job with a Specified Stack Depth
+
+Use the `System.enqueueJob(queueable, asyncOptions)` method where you can specify the maximum stack depth
+and the minimum queue delay in the asyncOptions parameter.
+
+The `[System.AsyncInfo](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_AsyncOptions.htm)` class properties contain the current and maximum stack depths and the minimum queueable delay.
+
+
+Apex Developer Guide Invoking Apex
+
+The `[System.AsyncInfo](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_AsyncInfo.htm)` class has methods to help you determine if maximum stack depth is set in your Queueable request and
+to get the stack depths and queue delay for your queueables that are currently running. Use information about the current queueable
+execution to make decisions on adjusting delays on subsequent calls.
+
+These are methods in the `System.AsyncInfo` class.
+
+**•** `hasMaxStackDepth()`
+
+**•** `getCurrentQueueableStackDepth()`
+
+**•** `getMaximumQueueableStackDepth()`
+
+**•** `getMinimumQueueableDelayInMinutes()`
+
+This example uses stack depth to terminate a chained job and prevent it from reaching the daily maximum number of asynchronous
+Apex method executions.
+
+```
+   // Fibonacci
+
+   public with sharing class FibonacciDepthQueueable implements Queueable {
+
+      private long nMinus1, nMinus2;
+
+      public static void calculateFibonacciTo(integer depth) {
+
+        AsyncOptions asyncOptions = new AsyncOptions();
+
+        asyncOptions.MaximumQueueableStackDepth = depth;
+
+        System.enqueueJob(new FibonacciDepthQueueable(null, null), asyncOptions);
+
+      }
+
+      private FibonacciDepthQueueable(long nMinus1param, long nMinus2param) {
+
+        nMinus1 = nMinus1param;
+
+        nMinus2 = nMinus2param;
+
+      }
+
+      public void execute(QueueableContext context) {
+
+        integer depth = AsyncInfo.getCurrentQueueableStackDepth();
+
+        // Calculate step
+
+        long fibonacciSequenceStep;
+
+        switch on (depth) {
+
+           when 1, 2 {
+
+             fibonacciSequenceStep = 1;
+
+           }
+
+           when else {
+
+             fibonacciSequenceStep = nMinus1 + nMinus2;
+
+           }
+
+        }
+
+       System.debug('depth: ' + depth + ' fibonacciSequenceStep: ' + fibonacciSequenceStep);
+
+        if(System.AsyncInfo.hasMaxStackDepth() &&
+
+          AsyncInfo.getCurrentQueueableStackDepth() >=
+
+          AsyncInfo.getMaximumQueueableStackDepth()) {
+
+           // Reached maximum stack depth
+
+           Fibonacci__c result = new Fibonacci__c(
+
+             Depth__c = depth,
+
+             Result = fibonacciSequenceStep
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+             );
+
+           insert as user result;
+
+        } else {
+
+         System.enqueueJob(new FibonacciDepthQueueable(fibonacciSequenceStep, nMinus1));
+
+        }
+
+      }
+
+   }
+
+```
+
+Testing Queueable Jobs
+
+This example shows how to test the execution of a queueable job in a test method. A queueable job is an asynchronous process. To
+make sure that this process runs within the test method, the job is submitted to the queue between the `Test.startTest` and
+`Test.stopTest` block. The system executes all asynchronous processes started in a test method synchronously after the
+`Test.stopTest` statement. Next, the test method verifies the results of the queueable job by querying the account that the job
+created.
+
+```
+   @IsTest
+
+   public with sharing class AsyncExecutionExampleTest {
+
+      @IsTest
+
+      static void test1() {
+
+        // startTest/stopTest block to force async processes
+
+        // to run in the test.
+
+        Test.startTest();
+
+        System.enqueueJob(new AsyncExecutionExample());
+
+        Test.stopTest();
+
+        // Validate that the job has run
+
+        // by verifying that the record was created.
+
+        // This query returns only the account created in test context by the
+
+        // Queueable class method.
+
+        Account acct = [SELECT Name,Phone FROM Account WHERE Name='Acme' LIMIT 1 WITH
+
+   USER_MODE];
+
+        Assert.isNotNull(acct);
+
+        Assert.areEqual('(415) 555-1212', acct.Phone);
+
+      }
+
+   }
+
+```
+
+Chaining Jobs
+
+To run a job after some other processing is done first by another job, you can chain queueable jobs. To chain a job to another job, submit
+the second job from the `execute()` method of your queueable class. You can add only one job from an executing job, which means
+that only one child job can exist for each parent job. For example, if you have a second class called `SecondJob` that implements the
+`Queueable` interface, you can add this class to the queue in the `execute()` method as follows:
+
+```
+   public with sharing class AsyncExecutionExample implements Queueable {
+
+      public void execute(QueueableContext context) {
+
+        // Your processing logic here
+
+        // Chain this job to next job by submitting the next job
+
+        System.enqueueJob(new SecondJob());
+
+      }
+
+   }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+Note: Apex allows HTTP and web service callouts from queueable jobs, if they implement the `Database.AllowsCallouts`
+marker interface. In queueable jobs that implement this interface, callouts are also allowed in chained queueable jobs.
+
+You can test chained queueable jobs by using appropriate stack depths, but be aware of applicable Apex governor limits. See Adding
+a Queueable Job with a Specified Stack Depth.
+
+Queueable Apex Limits
+
+**•** The execution of a queued job counts one time against the shared limit for asynchronous Apex method executions. See Lightning
+Platform Apex Limits.
+
+**•** You can add up to 50 jobs to the queue with `System.enqueueJob` in a single transaction. In asynchronous transactions (for
+example, from a batch Apex job), you can add only one job to the queue with `System.enqueueJob` . To check how many
+queueable jobs have been added in one transaction, call `[Limits.getQueueableJobs()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_limits.htm)` .
+
+**•** Because no limit is enforced on the depth of chained jobs, you can chain one job to another. You can repeat this process with each
+new child job to link it to a new child job. For Developer Edition and Trial organizations, the maximum stack depth for chained jobs
+is 5, which means that you can chain jobs four times. The maximum number of jobs in the chain is 5, including the initial parent
+queueable job.
+
+**•** When chaining jobs with `System.enqueueJob`, you can add only one job from an executing job. Only one child job can exist
+for each parent queueable job. Starting multiple child jobs from the same queueable job isn’t supported.
+
+###### Detecting Duplicate Queueable Jobs
+
+Reduce resource contention and race conditions by enqueuing only a single instance of your async Queueable job based on its
+signature. Attempting to add more than one Queueable job to the processing queue with the same signature results in a
+DuplicateMessageException when you try to enqueue subsequent jobs.
+
+Transaction Finalizers
+The Transaction Finalizers feature enables you to attach actions, using the `System.Finalizer` interface, to asynchronous Apex
+jobs that use the Queueable framework. A specific use case is to design recovery actions when a Queueable job fails.
+
+Transaction Finalizers Error Messages
+Troubleshoot both semantic and run-time issues by analyzing these error messages.
+
+SEE ALSO:
+
+_Apex Reference Guide_ [: Queueable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Queueable.htm)
+
+_Apex Reference Guide_ [: QueueableContext Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_system_queueablecontext.htm)
+
+###### Detecting Duplicate Queueable Jobs
+
+Reduce resource contention and race conditions by enqueuing only a single instance of your async Queueable job based on its signature.
+Attempting to add more than one Queueable job to the processing queue with the same signature results in a DuplicateMessageException
+when you try to enqueue subsequent jobs.
+
+Build a Queueable Signature
+
+To create a unique queuable signature, first declare an instance of the `[AsyncOptions](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_AsyncOptions.htm)` class. Then set the value of the instance’s
+`DuplicateSignature` property to a `[QueueableDuplicateSignature](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_QueueableDuplicateSignature.htm)` object, which is built using the inner
+`[QueueableDuplicateSignature.Builder](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_QueueableDuplicateSignature_Builder.htm)` class.
+
+To build the queueable signature, add different strings, IDs, or integers using these methods from
+`QueueableDuplicateSignature.Builder` .
+
+
+Apex Developer Guide Invoking Apex
+
+**•** `addString(inputString)`
+
+**•** `addId(inputId)`
+
+**•** `addInteger(inputInteger)`
+
+As you build the signature, you can find the size, remaining size, and maximum size of the queueable job signature in bytes using these
+methods from the `QueueableDuplicateSignature.Builder` class.
+
+**•** `getSize()`
+
+**•** `getRemainingSize()`
+
+**•** `getMaxSize()`
+
+When the signature has the required components, call the `.build()` method and assign the signature to the
+`DuplicateSignature` property.
+
+Enqueue a Job with a Queueable Signature
+
+After you build a queuable signature, enqueue a new job using the `[System.enqueueJob(queueable, asyncOptions)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm#apex_System_system_enqueueJob)`
+method. Set the `asyncOptions` parameter to the `AsyncOptions` instance with the queueable signature that identifies the
+unique job. When the new job is enqueued, the system checks for existing enqueued jobs with the same signature. If other enqueued
+jobs with the same signature are found, then the enqueue operation for the new job fails, and a DuplicateMessageException is thrown.
+
+However, if other jobs with the same signature are already running when the new job is enqueued, then the enqueue operation for the
+new job succeeds. Therefore, duplicates of already running jobs can still occur in this case. This behavior occurs because the queuable
+signature is removed from the job when it’s first dequeued, so a running job no longer has a signature. This removal guarantees that at
+least one job instance for a given signature runs.
+
+Examples
+
+This example builds the async job signature using the User Id and the string `MyQueueable` .
+
+```
+   AsyncOptions options = new AsyncOptions();
+
+   options.DuplicateSignature = QueueableDuplicateSignature.Builder()
+
+                       .addId(UserInfo.getUserId())
+
+                       .addString('MyQueueable')
+
+                       .build();
+
+   try {
+
+      System.enqueueJob(new MyQueueable(), options);
+
+   } catch (DuplicateMessageException ex) {
+
+      //Exception is thrown if there is already an enqueued job with the same
+
+      //signature
+
+      Assert.areEqual('Attempt to enqueue job with duplicate queueable signature',
+
+        ex.getMessage());
+
+   }
+
+```
+
+This example builds the async job signature using the ApexClass Id and the hash value of an sObject.
+
+```
+   AsyncOptions options = new AsyncOptions();
+
+   options.DuplicateSignature = QueueableDuplicateSignature.Builder()
+
+                       .addInteger(System.hashCode(someAccount))
+
+                       .addId([SELECT Id FROM ApexClass
+
+                          WHERE Name='MyQueueable'].Id)
+
+                       .build();
+
+   System.enqueueJob(new MyQueueable(), options);
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+###### Transaction Finalizers
+
+The Transaction Finalizers feature enables you to attach actions, using the `System.Finalizer` interface, to asynchronous Apex
+jobs that use the Queueable framework. A specific use case is to design recovery actions when a Queueable job fails.
+
+The Transaction Finalizers feature provides a direct way for you to specify actions to be taken when asynchronous jobs succeed or fail.
+Before Transaction Finalizers, you could only take these two actions for asynchronous job failures:
+
+**•** Poll the status of `AsyncApexJob` using a SOQL query and re-enqueue the job if it fails
+
+**•** Fire BatchApexErrorEvents when a batch Apex method encounters an unhandled exception
+
+With transaction finalizers, you can attach a post-action sequence to a Queueable job and take relevant actions based on the job execution
+result.
+
+A Queueable job that failed due to an unhandled exception can be successively re-enqueued five times by a transaction finalizer. This
+limit applies to a series of consecutive Queueable job failures. The counter is reset when the Queueable job completes without an
+unhandled exception.
+
+Finalizers can be implemented as an inner class. Also, you can implement both Queueable and Finalizer interfaces with the same class.
+
+The Queueable job and the Finalizer run in separate Apex and Database transactions. For example, the Queueable can include DML, and
+the Finalizer can include REST callouts. Using a finalizer doesn’t count as an extra execution against your daily Async Apex limit. Synchronous
+governor limits apply for the Finalizer transaction, except in these cases where asynchronous limits apply:
+
+**•** Total heap size
+
+**•** Maximum number of Apex jobs added to the queue with `System.enqueueJob`
+
+**•** Maximum number of methods with the `future` annotation allowed per Apex invocation
+
+For more information on governor limits, see Execution Governors and Limits.
+
+System.Finalizer Interface
+
+The `System.Finalizer` interface includes the `execute` method:
+
+```
+   global void execute(System.FinalizerContext ctx ) {}
+
+```
+
+This method is called on the provided FinalizerContext instance for every enqueued job with a finalizer attached. Within the `execute`
+method, you can define the actions to be taken at the end of the Queueable job. An instance of `System.FinalizerContext` is
+injected by the Apex runtime engine as an argument to the execute method.
+
+System.FinalizerContext Interface
+
+The `System.FinalizerContext` interface contains four methods.
+
+**•** `getAsyncApexJobId` method:
+
+```
+     global Id getAsyncApexJobId {}
+
+```
+
+Returns the ID of the Queueable job for which this finalizer is defined.
+
+**•** `getRequestId` method:
+
+```
+     global String getRequestId {}
+
+```
+
+Returns the request ID, a string that uniquely identifies the request, and can be correlated with Event Monitoring logs. To correlate
+with the AsyncApexJob table, use the `getAsyncApexJobId` method instead. The Queueable job and the Finalizer execution
+both share the (same) request ID.
+
+
+Apex Developer Guide Invoking Apex
+
+**•** `getResult` method:
+
+```
+     global System.ParentJobResult getResult {}
+
+```
+
+Returns the `System.ParentJobResult` enum, which represents the result of the parent asynchronous Apex Queueable job
+to which the finalizer is attached. The enum takes these values: `SUCCESS`, `UNHANDLED_EXCEPTION` .
+
+**•** `getException` method:
+
+```
+     global System.Exception getException {}
+
+```
+
+Returns the exception with which the Queueable job failed when `getResult` is `UNHANDLED_EXCEPTION`, null otherwise.
+
+Attach the finalizer to your Queueable jobs using the `System.attachFinalizer` method.
+
+**1.** Define a class that implements the `System.Finalizer` interface.
+
+**2.** Attach a finalizer within a Queueable job’s `execute` method. To attach the finalizer, invoke the `System.attachFinalizer`
+method, using as argument the instantiated class that implements the System.Finalizer interface.
+
+```
+     global void attachFinalizer(Finalizer finalizer) {}
+
+```
+
+Implementation Details
+
+**•** Only one finalizer instance can be attached to any Queueable job.
+
+**•** You can enqueue a single asynchronous Apex job (Queueable, Future, or Batch) in the finalizer’s implementation of the `execute`
+method.
+
+**•** Callouts are allowed in finalizer implementations.
+
+**•** The Finalizer framework uses the state of the Finalizer object (if attached) at the end of Queueable execution. Mutation of the Finalizer
+state, after it’s attached, is therefore supported.
+
+**•** Variables that are declared `transient` are ignored by serialization and deserialization, and therefore don’t persist in the Transaction
+Finalizer.
+
+Logging Finalizer Example
+
+This example demonstrates the use of Transaction Finalizers in logging messages from a Queueable job, regardless of whether the job
+succeeds or fails. The LoggingFinalizer class here implements both Queueable and Finalizer interfaces. The Queueable implementation
+instantiates the finalizer, attaches it, and then invokes the addLog() method to buffer log messages. The Finalizer implementation of
+LoggingFinalizer includes the addLog(message, source) method that allows buffering log messages from the Queueable job into finalizer's
+state. When the Queueable job completes, the finalizer instance commits the buffered log. The finalizer state is preserved even if the
+Queueable job fails, and can be accessed for use in DML in finalizer implementation or execution.
+
+```
+   public class LoggingFinalizer implements Finalizer, Queueable {
+
+     // Queueable implementation
+
+     // A queueable job that uses LoggingFinalizer to buffer the log
+
+     // and commit upon exit, even if the queueable execution fails
+
+      public void execute(QueueableContext ctx) {
+
+        String jobId = '' + ctx.getJobId();
+
+        System.debug('Begin: executing queueable job: ' + jobId);
+
+        try {
+
+           // Create an instance of LoggingFinalizer and attach it
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+           // Alternatively, System.attachFinalizer(this) can be used instead of
+
+   instantiating LoggingFinalizer
+
+           LoggingFinalizer f = new LoggingFinalizer();
+
+           System.attachFinalizer(f);
+
+           // While executing the job, log using LoggingFinalizer.addLog()
+
+           // Note that addlog() modifies the Finalizer's state after it is attached
+
+           DateTime start = DateTime.now();
+
+           f.addLog('About to do some work...', jobId);
+
+           while (true) {
+
+            // Results in limit error
+
+           }
+
+        } catch (Exception e) {
+
+           System.debug('Error executing the job [' + jobId + ']: ' + e.getMessage());
+
+        } finally {
+
+           System.debug('Completed: execution of queueable job: ' + jobId);
+
+        }
+
+      }
+
+     // Finalizer implementation
+
+    // Logging finalizer provides a public method addLog(message,source) that allows buffering
+
+    log lines from the Queueable job.
+
+    // When the Queueable job completes, regardless of success or failure, the LoggingFinalizer
+
+    instance commits this buffered log.
+
+     // Custom object LogMessage__c has four custom fields-see addLog() method.
+
+      // internal log buffer
+
+      private List<LogMessage__c> logRecords = new List<LogMessage__c>();
+
+      public void execute(FinalizerContext ctx) {
+
+        String parentJobId = ctx.getAsyncApexJobId();
+
+       System.debug('Begin: executing finalizer attached to queueable job: ' + parentJobId);
+
+        // Update the log records with the parent queueable job id
+
+        System.Debug('Updating job id on ' + logRecords.size() + ' log records');
+
+        for (LogMessage__c log : logRecords) {
+
+           log.Request__c = parentJobId; // or could be ctx.getRequestId()
+
+        }
+
+        // Commit the buffer
+
+        System.Debug('committing log records to database');
+
+        Database.insert(logRecords, false);
+
+        if (ctx.getResult() == ParentJobResult.SUCCESS) {
+
+           System.debug('Parent queueable job [' + parentJobId + '] completed
+
+   successfully.');
+
+        } else {
+
+          System.debug('Parent queueable job [' + parentJobId + '] failed due to unhandled
+
+    exception: ' + ctx.getException().getMessage());
+
+           System.debug('Enqueueing another instance of the queueable...');
+
+        }
+
+        System.debug('Completed: execution of finalizer attached to queueable job: ' +
+
+   parentJobId);
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+      }
+
+      public void addLog(String message, String source) {
+
+        // append the log message to the buffer
+
+        logRecords.add(new LogMessage__c(
+
+           DateTime__c = DateTime.now(),
+
+           Message__c = message,
+
+           Request__c = 'setbeforecommit',
+
+           Source__c = source
+
+        ));
+
+      }
+
+   }
+
+```
+
+Retry Queueable Example
+
+This example demonstrates how to re-enqueue a failed Queueable job in its finalizer. It also shows that jobs can be re-enqueued up to
+a queueable chaining limit of 5 retries.
+
+```
+   public class RetryLimitDemo implements Finalizer, Queueable {
+
+     // Queueable implementation
+
+     public void execute(QueueableContext ctx) {
+
+      String jobId = '' + ctx.getJobId();
+
+      System.debug('Begin: executing queueable job: ' + jobId);
+
+      try {
+
+        Finalizer finalizer = new RetryLimitDemo();
+
+        System.attachFinalizer(finalizer);
+
+        System.debug('Attached finalizer');
+
+        Integer accountNumber = 1;
+
+        while (true) { // results in limit error
+
+         Account a = new Account();
+
+         a.Name = 'Account-Number-' + accountNumber;
+
+         insert a;
+
+         accountNumber++;
+
+        }
+
+      } catch (Exception e) {
+
+        System.debug('Error executing the job [' + jobId + ']: ' + e.getMessage());
+
+      } finally {
+
+        System.debug('Completed: execution of queueable job: ' + jobId);
+
+      }
+
+     }
+
+     // Finalizer implementation
+
+     public void execute(FinalizerContext ctx) {
+
+      String parentJobId = '' + ctx.getAsyncApexJobId();
+
+      System.debug('Begin: executing finalizer attached to queueable job: ' + parentJobId);
+
+      if (ctx.getResult() == ParentJobResult.SUCCESS) {
+
+        System.debug('Parent queueable job [' + parentJobId + '] completed successfully.');
+
+      } else {
+
+        System.debug('Parent queueable job [' + parentJobId + '] failed due to unhandled
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+   exception: ' + ctx.getException().getMessage());
+
+        System.debug('Enqueueing another instance of the queueable...');
+
+        String newJobId = '' + System.enqueueJob(new RetryLimitDemo()); // This call fails
+
+    after 5 times when it hits the chaining limit
+
+        System.debug('Enqueued new job: ' + newJobId);
+
+      }
+
+      System.debug('Completed: execution of finalizer attached to queueable job: ' +
+
+   parentJobId);
+
+     }
+
+   }
+
+```
+
+Considerations
+
+If a job request is terminated unexpectedly, such as a database shutdown during system upgrade, the transaction finalizer can fail to
+execute.
+
+Best Practices
+
+We urge ISVs to exercise caution in using global Finalizers with state-mutating methods in packages. If a subscriber org’s implementation
+invokes such methods in the global Finalizer, it can result in unexpected behavior. Examine all state-mutating methods to see how they
+affect the finalizer state and overall behavior.
+
+###### Transaction Finalizers Error Messages
+
+Troubleshoot both semantic and run-time issues by analyzing these error messages.
+
+This table provides information about error messages in your Apex debug log.
+
+**Table 5: Troubleshooting Errors in Apex Debug Log**
+
+[If you have a Splunk Add-On for Salesforce, you can analyze error messages in your Splunk log. This table provides information about](https://splunkbase.splunk.com/)
+error messages in the Splunk log.
+
+
+Apex Developer Guide Invoking Apex
+
+**Table 6: Troubleshooting Errors in Splunk Log**
+
+##### Apex Scheduler
+
+Use the Apex Scheduler to delay execution so that you can run Apex classes at a specified time. This is ideal for daily or weekly maintenance
+tasks using Batch Apex.
+
+To invoke Apex classes to run at specific times, first implement the `Schedulable` interface for the class, then specify the schedule
+using either the Schedule Apex page in the Salesforce user interface, or the `System.schedule` method.
+
+Important: Salesforce schedules the class for execution at the specified time. Actual execution can be delayed based on service
+availability.
+
+You can only have 100 scheduled Apex jobs at one time. You can evaluate your current count by viewing the Scheduled Jobs
+page in Salesforce and creating a custom view with a type filter equal to “Scheduled Apex”. You can also programmatically query
+the CronTrigger and CronJobDetail objects to get the count of Apex scheduled jobs.
+
+Use extreme care if you’re planning to schedule a class from a trigger. You must be able to guarantee that the trigger won’t add
+more scheduled classes than the limit. In particular, consider API bulk updates, import wizards, mass record changes through the
+user interface, and all cases where more than one record can be updated at a time.
+
+If there are one or more active scheduled jobs for an Apex class, you can’t update the class or any classes referenced by this class
+through the Salesforce user interface. However, you can enable deployments to update the class with active scheduled jobs by
+using the Metadata API (for example, when using the Salesforce extensions for Visual Studio Code). See “Deployment Connections
+for Change Sets” in Salesforce Help.
+
+Implementing the **`Schedulable`** Interface
+
+To schedule an Apex class to run at regular intervals, first write an Apex class that implements the Salesforce-provided interface
+`Schedulable` .
+
+The scheduler runs as system—all classes are executed, whether the user has permission to execute the class or not.
+
+To monitor or stop the execution of a scheduled Apex job using the Salesforce user interface, from Setup, enter _`Scheduled Jobs`_
+in the `Quick Find` box, then select **Scheduled Jobs** .
+
+The `Schedulable` interface contains one `execute` method that must be implemented.
+
+```
+public void execute(SchedulableContext sc ){}
+
+```
+
+The implemented method must be declared as `global` or `public` .
+
+Use this method to instantiate the class you want to schedule.
+
+Tip: Though it’s possible to do additional processing in the `execute` method, we recommend that all processing take place
+in a separate class.
+
+
+Apex Developer Guide Invoking Apex
+
+This example implements the `Schedulable` interface for a class called `MergeNumbers` :
+
+```
+   public with sharing class ScheduledMerge implements Schedulable {
+
+     public void execute(SchedulableContext SC) {
+
+       MergeNumbers M = new MergeNumbers();
+
+     }
+
+   }
+
+```
+
+To schedule the class, execute this example in the Developer Console.
+
+```
+   ScheduledMerge m = new ScheduledMerge();
+
+   String sch = '20 30 8 10 2 ?';
+
+   String jobID = System.schedule('Merge Job', sch, m);
+
+```
+
+You can also use the `Schedulable` interface with batch Apex classes. The following example illustrates how to implement the
+`Schedulable` interface for a batch Apex class called `Batchable` :
+
+```
+   public with sharing class ScheduledBatchable implements Schedulable {
+
+     global void execute(SchedulableContext sc) {
+
+       Batchable b = new Batchable();
+
+       Database.executeBatch(b);
+
+     }
+
+   }
+
+```
+
+An easier way to schedule a batch job is to call the `[System.scheduleBatch](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_batch_interface.htm#apex_batch_scheduleBatch_section)` method without having to implement the
+`Schedulable` interface.
+
+Use the SchedulableContext object to track the scheduled job when it's scheduled. The SchedulableContext `getTriggerID` method
+[returns the ID of the CronTrigger object associated with this scheduled job as a string. You can query](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_crontrigger.htm) `CronTrigger` to track the
+progress of the scheduled job.
+
+To stop execution of a job that was scheduled, use the `System.abortJob` method with the ID returned by the `getTriggerID`
+method.
+
+Tracking the Progress of a Scheduled Job Using Queries
+
+After the Apex job has been scheduled, you can obtain more information about it by running a SOQL query on CronTrigger. You can
+retrieve the number of times the job has run, and the date and time when the job is scheduled to run again, as shown in this example.
+
+```
+   CronTrigger ct =
+
+      [SELECT TimesTriggered, NextFireTime
+
+      FROM CronTrigger WHERE Id = :jobID WITH USER_MODE];
+
+```
+
+The previous example assumes you have a `jobID` variable holding the ID of the job. The `System.schedule` method returns the
+job ID. If you’re performing this query inside the `execute` method of your schedulable class, you can obtain the ID of the current job
+by calling `getTriggerId` on the SchedulableContext argument variable. Assuming this variable name is `sc`, the modified example
+becomes:
+
+```
+   CronTrigger ct =
+
+      [SELECT TimesTriggered, NextFireTime
+
+      FROM CronTrigger WHERE Id = :sc.getTriggerId() WITH USER_MODE];
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+You can also get the job’s name and the job’s type from the CronJobDetail record associated with the CronTrigger record. To do so, use
+the `CronJobDetail` relationship when performing a query on CronTrigger. This example retrieves the most recent CronTrigger
+record with the job name and type from CronJobDetail.
+
+```
+   CronTrigger job =
+
+      [SELECT Id, CronJobDetail.Id, CronJobDetail.Name, CronJobDetail.JobType
+
+      FROM CronTrigger WITH USER_MODE ORDER BY CreatedDate DESC LIMIT 1];
+
+```
+
+Alternatively, you can query CronJobDetail directly to get the job’s name and type. This next example gets the job’s name and type for
+the CronTrigger record queried in the previous example. The corresponding CronJobDetail record ID is obtained by the
+`CronJobDetail.Id` expression on the CronTrigger record.
+
+```
+   CronJobDetail ctd =
+
+      [SELECT Id, Name, JobType
+
+      FROM CronJobDetail WHERE Id = :job.CronJobDetail.Id WITH USER_MODE];
+
+```
+
+To obtain the total count of all Apex scheduled jobs, excluding all other scheduled job types, perform the this query. Note the value '7'
+is specified for the job type, which corresponds to the scheduled Apex job type.
+
+```
+   SELECT COUNT() FROM CronTrigger WHERE CronJobDetail.JobType = '7' WITH USER_MODE
+
+```
+
+Testing the Apex Scheduler
+
+Here’s an example of how to test using the Apex scheduler.
+
+The `System.schedule` method starts an asynchronous process. When you test scheduled Apex, you must ensure that the scheduled
+job is finished before testing against the results. Use the Test methods `startTest` and `stopTest` around the `System.schedule`
+method to ensure it finishes before continuing your test. All asynchronous calls made after the `startTest` method are collected by
+the system. When `stopTest` is executed, all asynchronous processes are run synchronously. If you don’t include the
+`System.schedule` method within the `startTest` and `stopTest` methods, the scheduled job executes at the end of your
+test method for Apex saved using Salesforce API version 25.0 and later, but not in earlier versions.
+
+This example defines a class to be tested.
+
+```
+   public with sharing class TestScheduledApexFromTestMethod implements Schedulable {
+
+   // This test runs a scheduled job at midnight Sept. 3rd. 2042
+
+     public static String CRON_EXP = '0 0 0 3 9 ? 2042';
+
+     public void execute(SchedulableContext ctx) {
+
+       CronTrigger ct = [SELECT Id, CronExpression, TimesTriggered, NextFireTime
+
+             FROM CronTrigger WHERE Id = :ctx.getTriggerId() WITH USER_MODE];
+
+       Assert.areEqual(CRON_EXP, ct.CronExpression);
+
+       Assert.areEqual(0, ct.TimesTriggered);
+
+       Assert.areEqual('2042-09-03 00:00:00', String.valueOf(ct.NextFireTime));
+
+       Account a = [SELECT Id, Name FROM Account WHERE Name =
+
+              'testScheduledApexFromTestMethod' WITH USER_MODE];
+
+       a.name = 'testScheduledApexFromTestMethodUpdated';
+
+       update as user a;
+
+     }
+
+   }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+This code tests the class:
+
+```
+   @IsTest
+
+   private with sharing class TestClass {
+
+     @IsTest
+
+     static void test() {
+
+      Test.startTest();
+
+      Account a = new Account();
+
+      a.Name = 'testScheduledApexFromTestMethod';
+
+      insert as user a;
+
+      // Schedule the test job
+
+      String jobId = System.schedule(
+
+       'testBasicScheduledApex',
+
+       TestScheduledApexFromTestMethod.CRON_EXP,
+
+       new TestScheduledApexFromTestMethod()
+
+      );
+
+      // Get the information from the CronTrigger API object
+
+      CronTrigger ct = [
+
+       SELECT Id, CronExpression, TimesTriggered, NextFireTime
+
+       FROM CronTrigger
+
+       WHERE Id = :jobId
+
+       WITH USER_MODE
+
+      ];
+
+      // Verify the expressions are the same
+
+      Assert.areEqual(
+
+       TestScheduledApexFromTestMethod.CRON_EXP,
+
+       ct.CronExpression
+
+      );
+
+      // Verify the job has not run
+
+      Assert.areEqual(0, ct.TimesTriggered);
+
+      // Verify the next time the job will run
+
+      Assert.areEqual('2042-09-03 00:00:00', String.valueOf(ct.NextFireTime));
+
+      Assert.areNotEqual(
+
+       'testScheduledApexFromTestMethodUpdated',
+
+       [SELECT Id, Name FROM Account WHERE Id = :a.Id WITH USER_MODE].Name
+
+      );
+
+      Test.stopTest();
+
+      Assert.areEqual(
+
+       'testScheduledApexFromTestMethodUpdated',
+
+       [SELECT Id, Name FROM Account WHERE Id = :a.Id WITH USER_MODE].Name
+
+      );
+
+     }
+
+   }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+Using the **`System.schedule`** Method
+
+After you implement a class with the `Schedulable` interface, use the `System.schedule` method to execute it. The scheduler
+runs as system—all classes are executed, whether the user has permission to execute the class or not.
+
+Note: Use extreme care if you’re planning to schedule a class from a trigger. You must be able to guarantee that the trigger won’t
+add more scheduled classes than the limit. In particular, consider API bulk updates, import wizards, mass record changes through
+the user interface, and all cases where more than one record can be updated at a time.
+
+The `System.schedule` method takes three arguments: a name for the job, a cron expression used to represent the time and date
+the job is scheduled to run, and the name of the class.
+
+The name for the job must be unique among the jobs scheduled for execution. If you attempt to schedule another job with the same
+name, you see the error `System.AsyncException: The Apex job named "` _`jobName`_ `" is already scheduled`
+`for execution` .
+
+The cron expression has this syntax:
+
+```
+   Seconds Minutes Hours Day_of_month Month Day_of_week Optional_year
+
+```
+
+Note: Salesforce schedules the class for execution at the specified time. Actual execution can be delayed based on service
+availability.
+
+The `System.schedule` method uses the user's time zone as the basis of all schedules.
+
+These are the values for the expression:
+
+**Name** **Values** **Special Characters**
+
+_`Seconds`_ 0–59 None
+
+_`Minutes`_ 0–59 None
+
+_`Hours`_ 0–23 `, - * /`
+
+_`Day_of_month`_ 1–31 `, - * ? / L W`
+
+_`Month`_ 1–12 or the following: `, - * /`
+
+**•** `JAN`
+
+**•** `FEB`
+
+**•** `MAR`
+
+**•** `APR`
+
+**•** `MAY`
+
+**•** `JUN`
+
+**•** `JUL`
+
+**•** `AUG`
+
+**•** `SEP`
+
+**•** `OCT`
+
+**•** `NOV`
+
+**•** `DEC`
+
+
+Apex Developer Guide Invoking Apex
+
+**Name** **Values** **Special Characters**
+
+_`Day_of_week`_ 1–7 or the following: `, - * ? / L #`
+
+**•** `SUN`
+
+**•** `MON`
+
+**•** `TUE`
+
+**•** `WED`
+
+**•** `THU`
+
+**•** `FRI`
+
+**•** `SAT`
+
+_`optional_year`_ null or 1970–2099 `, - * /`
+
+The special characters are defined as follows:
+
+**Special Character** **Description**
+
+`,` Delimits values. For example, use `JAN, MAR, APR` to specify more than one month.
+
+`-` Specifies a range. For example, use `JAN-MAR` to specify more than one month.
+
+`*` Specifies all values. For example, if _`Month`_ is specified as `*`, the job is scheduled for
+every month.
+
+`?` Specifies no specific value. This option is only available for _`Day_of_month`_ and
+_`Day_of_week`_ . It’s typically used when specifying a value for one and not the other.
+
+`/` Specifies increments. The number before the slash specifies when the intervals will
+begin, and the number after the slash is the interval amount. For example, if you specify
+
+`1/5` for _`Day_of_month`_, the Apex class runs every fifth day of the month, starting
+on the first of the month.
+
+`L` Specifies the end of a range (last). This option is only available for _`Day_of_month`_
+and _`Day_of_week`_ . When used with _`Day of month`_, `L` always means the last
+
+day of the month, such as January 31, February 29 (for leap years), and so on. When
+used with _`Day_of_week`_ by itself, it always means `7` or `SAT` . When used with a
+_`Day_of_week`_ value, it means the last of that type of day in the month. For example,
+if you specify `2L`, you’re specifying the last Monday of the month. Don’t use a range
+of values with `L` as the results can be unexpected.
+
+`W` Specifies the nearest weekday (Monday-Friday) of the given day. This option is only
+available for _`Day_of_month`_ . For example, if you specify `20W`, and the 20th is a
+
+Saturday, the class runs on the 19th. If you specify `1W`, and the first is a Saturday, the
+class doesn’t run in the previous month, but on the third, which is the following
+Monday.
+
+Tip: Use the `L` and `W` together to specify the last weekday of the month.
+
+
+Apex Developer Guide Invoking Apex
+
+**Special Character** **Description**
+
+`#` Specifies the _`nth`_ day of the month, in the format _**`weekday`**_ `#` _**`day_of_month`**_ .
+This option is only available for _`Day_of_week`_ . The number before the `#` specifies
+
+weekday ( `SUN-SAT` ). The number after the `#` specifies the day of the month. For
+example, specifying `2#1` means the class runs on the first Monday of every month.
+
+The following are some examples of how to use the expression.
+
+**Expression** **Description**
+
+`0 0 13 * * ?` The class runs every day at 1 PM.
+
+`0 5 * * * ?` The class runs every hour at 5 minutes past the hour.
+
+Note: Apex doesn’t allow for a job to be scheduled more
+than once an hour.
+
+`0 0 22 ? * 6L` The class runs on the last Friday of every month at 10 PM.
+
+`0 0 10 ? * MON-FRI` The class runs Monday through Friday at 10 AM.
+
+`0 0 20 * * ? 2010` The class runs every day at 8 PM during the year 2010.
+
+In the following example, the class `Proschedule` implements the `Schedulable` interface. The class is scheduled to run at 8 AM
+on the 13 February.
+
+```
+   Proschedule p = new Proschedule();
+
+        String sch = '0 0 8 13 2 ?';
+
+        System.schedule('One Time Pro', sch, p);
+
+```
+
+Using the **`System.scheduleBatch`** Method for Batch Jobs
+
+You can call the `System.scheduleBatch` method to schedule a batch job to run one time at a specified time in the future. This
+method is available only for batch classes and doesn’t require the implementation of the `Schedulable` interface. It’s therefore easy
+to schedule a batch job for one execution. For more details on how to use the `System.scheduleBatch` method, see Using the
+`System.scheduleBatch` Method.
+
+Apex Scheduler Limits
+
+**•** You can only have 100 scheduled Apex jobs at one time. You can evaluate your current count by viewing the Scheduled Jobs page
+in Salesforce and creating a custom view with a type filter equal to “Scheduled Apex”. You can also programmatically query the
+CronTrigger and CronJobDetail objects to get the count of Apex scheduled jobs.
+
+**•** The maximum number of scheduled Apex executions per a 24-hour period is 250,000 or the number of user licenses in your
+organization multiplied by 200, whichever is greater. This limit is for your entire org and is shared with all asynchronous Apex: Batch
+Apex, Queueable Apex, scheduled Apex, and future methods. To check how many asynchronous Apex executions are available,
+make a request to REST API `limits` [resource. See List Organization Limits in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm) _REST API Developer Guide_ . If the number of
+asynchronous Apex executions needed by a job exceeds the available number that’s calculated using the 24-hour rolling limit, an
+exception is thrown. For example, if your async job requires 10,000 method executions and the available 24-hour rolling limit is
+9,500, you get AsyncApexExecutions Limit exceeded exception. The license types that count toward this limit include full Salesforce
+
+
+Apex Developer Guide Invoking Apex
+
+and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only users, Identity users, and Company Communities
+users.
+
+Apex Scheduler Notes and Best Practices
+
+**•** Salesforce schedules the class for execution at the specified time. Actual execution can be delayed based on service availability.
+
+**•** Use extreme care if you’re planning to schedule a class from a trigger. You must be able to guarantee that the trigger won’t add
+more scheduled classes than the limit. In particular, consider API bulk updates, import wizards, mass record changes through the
+user interface, and all cases where more than one record can be updated at a time.
+
+**•** Though it's possible to do additional processing in the `execute` method, we recommend that all processing must take place in
+a separate class.
+
+**•** Synchronous Web service callouts aren’t supported from scheduled Apex. To make asynchronous callouts, use Queueable Apex,
+implementing the `Database.AllowsCallouts` marker interface. If your scheduled Apex executes a batch job using the
+`Database.AllowsCallouts` marker interface, callouts are supported from the batch class. See Using Batch Apex.
+
+**•** Apex jobs scheduled to run during a Salesforce service maintenance downtime will be scheduled to run after the service comes
+back up, when system resources become available. If a scheduled Apex job was running when downtime occurred, the job is rolled
+back and scheduled again after the service comes back up. After major service upgrades, there can be longer delays than usual for
+starting scheduled Apex jobs because of system usage spikes.
+
+**•** When you refresh a sandbox, scheduled jobs from the source org aren't copied. You must reschedule any jobs that you need in the
+refreshed sandbox.
+
+**•** Scheduled job objects, along with their member variables and properties, persist from initialization to subsequent scheduled runs.
+The object state at the time of invocation of `System.schedule()` persists in subsequent job executions.
+
+With Batch Apex, it’s possible to force a new serialized state for new jobs by using `Database.Stateful` . With Scheduled Apex,
+use the `transient` keyword so that member variables and properties aren’t persisted. See Using the transient Keyword on page
+88..
+
+**•** If you attempt to deploy changes to a class or its dependent code when the class is scheduled for execution, you see the error `This`
+`schedulable class has jobs pending or in progress - CronTrigger IDs (` _`ids`_ `)` . You can also
+see the message `You can bypass this error by allowing deployments with Apex jobs in the`
+`Deployment Settings page in Setup.` If you enable this setting, be aware that the job can fail. Instead, we recommend
+that you first delete the scheduled job, and then deploy your changes. After deployment, create a new scheduled job with the
+updated class.
+
+**•** If you resume a paused scheduled job, the job immediately runs one time. Subsequent executions of the job run according to the
+established schedule. Any scheduled executions that were missed while the job was paused don’t run.
+
+SEE ALSO:
+
+_Apex Reference Guide_ [: Schedulable Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_system_schedulable.htm)
+
+##### Batch Apex
+
+A developer can now employ batch Apex to build complex, long-running processes that run on thousands of records on the Lightning
+Platform. Batch Apex operates over small batches of records, covering your entire record set and breaking the processing down to
+manageable chunks. For example, a developer could build an archiving solution that runs on a nightly basis, looking for records past a
+certain date and adding them to an archive. Or a developer could build a data cleansing operation that goes through all Accounts and
+Opportunities on a nightly basis and updates them if necessary, based on custom criteria.
+
+##### Batch Apex is exposed as an interface that must be implemented by the developer. Batch jobs can be programmatically invoked at
+
+runtime using Apex.
+
+
+Apex Developer Guide Invoking Apex
+
+You can only have five queued or active batch jobs at one time. You can evaluate your current count by viewing the Scheduled Jobs
+page in Salesforce or programmatically using SOAP API to query the `AsyncApexJob` object.
+
+Warning: Use extreme care if you are planning to invoke a batch job from a trigger. You must be able to guarantee that the
+trigger does not add more batch jobs than the limit. In particular, consider API bulk updates, import wizards, mass record changes
+through the user interface, and all cases where more than one record can be updated at a time.
+
+Batch jobs can also be programmatically scheduled to run at specific times using the Apex scheduler, or scheduled using the Schedule
+Apex page in the Salesforce user interface. For more information on the Schedule Apex page, see “Schedule Apex Jobs” in the Salesforce
+online help.
+
+The batch Apex interface is also used for Apex managed sharing recalculations.
+
+For more information on batch jobs, continue to Using Batch Apex on page 306.
+
+For more information on Apex managed sharing, see Understanding Apex Managed Sharing on page 223.
+
+For more information on firing platform events from batch Apex, see Firing Platform Events from Batch Apex
+
+###### Use Batch Apex
+
+To use batch Apex, write an Apex class that implements the Salesforce-provided interface `Database.Batchable` and then
+invoke the class programmatically. To monitor or stop the execution of the batch Apex job, from Setup, enter _`Apex Jobs`_ in the
+Quick Find box and then select **Apex Jobs** .
+
+Firing Platform Events from Batch Apex
+Batch Apex classes can fire platform events when encountering an error or exception. Clients listening on an event can obtain
+actionable information, such as how often the event failed and which records were in scope at the time of failure. Events are also
+fired for Salesforce Platform internal errors and other uncatchable Apex exceptions such as LimitExceptions, which are caused by
+reaching governor limits.
+
+###### Use Batch Apex
+
+To use batch Apex, write an Apex class that implements the Salesforce-provided interface `Database.Batchable` and then invoke
+the class programmatically. To monitor or stop the execution of the batch Apex job, from Setup, enter _`Apex Jobs`_ in the Quick Find
+box and then select **Apex Jobs** .
+
+Implement the **`Database.Batchable`** Interface
+
+The `Database.Batchable` interface contains three methods that must be implemented.
+
+**•** `start` method:
+
+```
+     public (Database.QueryLocator | Iterable<sObject>) start(Database.BatchableContext bc )
+
+      {}
+
+```
+
+The `start` method is called at the beginning of a batch Apex job. In the `start` method, you can include code that collects
+records or objects to pass to the interface method `execute` . This method returns either a `Database.QueryLocator` object
+or an iterable that contains the records or objects passed to the job.
+
+When you’re using a simple query ( `SELECT` ) to generate the scope of objects in the batch job, use the
+`Database.QueryLocator` object. If you use a `QueryLocator` object, the governor limit for the total number of records
+retrieved by SOQL queries is bypassed. For example, a batch Apex job for the Account object can return a `QueryLocator` for all
+account records (up to 50 million records) in an org. Another example is a sharing recalculation for the Contact object that returns
+a `QueryLocator` for all account records in an org.
+
+
+Apex Developer Guide Invoking Apex
+
+Use the iterable to create a complex scope for the batch job. You can also use the iterable to create your own custom process for
+iterating through the list.
+
+Important: If you use an iterable, the governor limit for the total number of records retrieved by SOQL queries is still enforced.
+For more information on using iterables for batch jobs, see Batch Apex Considerations and Best Practices.
+
+**•** `execute` method:
+
+```
+     public void execute(Database.BatchableContext bc, list<P>){}
+
+```
+
+The `execute` method is called for each batch of records that you pass to it and takes these parameters.
+
+**–** A reference to the `Database.BatchableContext` object.
+
+**–** A list of sObjects, such as `List<sObject>`, or a list of parameterized types. If you’re using a `Database.QueryLocator`,
+use the returned list.
+
+Batches of records tend to execute in the order in which they’re received from the `start` method. However, the order in which
+batches of records execute depends on various factors. The order of execution isn’t guaranteed.
+
+**•** `finish` method:
+
+```
+     public void finish(Database.BatchableContext bc ){}
+
+```
+
+The `finish` method is called after all batches are processed and can be used to send confirmation emails or execute post-processing
+operations.
+
+Each execution of a batch Apex job is considered a discrete transaction. For example, a batch Apex job that contains 1,000 records and
+is executed without the optional _`scope`_ parameter from `Database.executeBatch` is considered five transactions of 200 records
+each. The Apex governor limits are reset for each transaction. If the first transaction succeeds but the second fails, the database updates
+made in the first transaction aren’t rolled back.
+
+Use Database.BatchableContext
+
+All the methods in the `Database.Batchable` interface require a reference to a `Database.BatchableContext` object.
+Use this object to track the progress of the batch job.
+
+The following is the instance method with the `Database.BatchableContext` object:
+
+**Name** **Arguments** **Returns** **Description**
+
+`getJobID` ID [Returns the ID of the AsyncApexJob object associated with](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm)
+this batch job as a string. Use this method to track the
+
+progress of records in the batch job. You can also use this
+ID with the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
+
+The following example uses the `Database.BatchableContext` to query the `AsyncApexJob` associated with the batch job.
+
+```
+   public void finish(Database.BatchableContext bc){
+
+     // Get the ID of the AsyncApexJob representing this batch job
+
+     // from Database.BatchableContext.
+
+     // Query the AsyncApexJob object to retrieve the current job's information.
+
+     AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed,
+
+       TotalJobItems, CreatedBy.Email
+
+       FROM AsyncApexJob WHERE Id =
+
+       :bc.getJobId() WITH USER_MODE];
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+     // Send an email to the Apex job's submitter notifying of job completion.
+
+     Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+
+     String[] toAddresses = new String[] {a.CreatedBy.Email};
+
+     mail.setToAddresses(toAddresses);
+
+     mail.setSubject('Apex Sharing Recalculation ' + a.Status);
+
+     mail.setPlainTextBody
+
+     ('The batch Apex job processed ' + a.TotalJobItems +
+
+     ' batches with '+ a.NumberOfErrors + ' failures.');
+
+     Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+
+   }
+
+```
+
+Using Database.QueryLocator to Define Scope
+
+The `start` method can return either a `Database.QueryLocator` object that contains the records to use in the batch job or
+an iterable.
+
+The following example uses a `Database.QueryLocator` :
+
+```
+   public with sharing class SearchAndReplace implements Database.Batchable<sObject>{
+
+     public final String Query;
+
+     public final String Entity;
+
+     public final String Field;
+
+     public final String Value;
+
+     public SearchAndReplace(String q, String e, String f, String v){
+
+       Query=q; Entity=e; Field=f;Value=v;
+
+     }
+
+     public Database.QueryLocator start(Database.BatchableContext bc){
+
+       return Database.getQueryLocator(query, AccessLevel.USER_MODE);
+
+     }
+
+     public void execute(Database.BatchableContext bc, List<sObject> scope){
+
+      for(sobject s : scope){
+
+      s.put(Field,Value);
+
+      }
+
+      update as user scope;
+
+      }
+
+     public void finish(Database.BatchableContext bc){
+
+     }
+
+   }
+
+```
+
+Using an Iterable in Batch Apex to Define Scope
+
+The `start` method can return either a `Database.QueryLocator` object that contains the records to use in the batch job or
+an iterable. Use an iterable to step through the returned items more easily.
+
+```
+   public with sharing class BatchClass implements Database.Batchable<Account> {
+
+     public Iterable<Account> start(Database.BatchableContext info) {
+
+      return new CustomAccountIterable();
+
+     }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+     public void execute(Database.BatchableContext info, List<Account> scope) {
+
+      List<Account> accsToUpdate = new List<Account>();
+
+      for (Account a : scope) {
+
+       a.Name = 'true';
+
+       a.NumberOfEmployees = 70;
+
+       accsToUpdate.add(a);
+
+      }
+
+      update as user accsToUpdate;
+
+     }
+
+     public void finish(Database.BatchableContext info) {
+
+     }
+
+   }
+
+```
+
+Using the **`Database.executeBatch`** Method to Submit Batch Jobs
+
+You can use the `Database.executeBatch` method to programmatically begin a batch job.
+
+Important: When you call `Database.executeBatch`, Salesforce adds the process to the queue. Actual execution can be
+delayed based on service availability.
+
+The `Database.executeBatch` method takes two parameters:
+
+**•** An instance of a class that implements the `Database.Batchable` interface.
+
+**•** An optional parameter _`scope`_ . This parameter specifies the number of records to pass into the `execute` method. Use this
+parameter when you have many operations for each record being passed in and are running into governor limits. By limiting the
+number of records, you’re limiting the operations per transaction. This value must be greater than zero. If the `start` method of
+the batch class returns a QueryLocator, the optional scope parameter of `Database.executeBatch` can have a maximum
+value of 2,000. If set to a higher value, Salesforce chunks the records returned by the QueryLocator into smaller batches of up to
+records. If the `start` method of the batch class returns an iterable, the scope parameter value has no upper limit. However, if you
+use a high number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100, 200, 400 and so on.
+
+The `Database.executeBatch` method returns the ID of the AsyncApexJob object, which you can use to track the progress of
+the job. For example:
+
+```
+   ID batchprocessid = Database.executeBatch(reassign);
+
+   AsyncApexJob aaj = [SELECT Id, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors
+
+               FROM AsyncApexJob WHERE ID = :batchprocessid WITH USER_MODE];
+
+```
+
+You can also use this ID with the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
+
+[For more information, see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
+
+Holding Batch Jobs in the Apex Flex Queue
+
+With the Apex flex queue, you can submit up to 100 batch jobs.
+
+The outcome of `Database.executeBatch` is as follows.
+
+**•** The batch job is placed in the Apex flex queue, and its status is set to `Holding` .
+
+**•** If the Apex flex queue has the maximum number of 100 jobs, `Database.executeBatch` throws a `LimitException`
+and doesn't add the job to the queue.
+
+**•** If your org doesn’t have Apex flex queue enabled, `Database.executeBatch` adds the batch job to the batch job queue with
+the `Queued` status. If the concurrent limit of queued or active batch jobs has been reached, a `LimitException` is thrown,
+and the job isn’t queued.
+
+
+Apex Developer Guide Invoking Apex
+
+**•** It is possible that the number of jobs in the Apex flex queue sometimes exceeds the maximum limit, resulting from parallel requests
+to enqueue batch Apex jobs. Further attempts to enqueue batch jobs will encounter a `LimitException` until the queue size
+drops below the maximum limit.
+
+**Reordering Jobs in the Apex Flex Queue**
+
+While submitted jobs have a status of `Holding`, you can reorder them in the Salesforce user interface to control which batch jobs are
+processed first. To do so, from Setup, enter _`Apex Flex Queue`_ in the `Quick Find` box, then select **Apex Flex Queue** .
+
+Alternatively, you can use Apex methods to reorder batch jobs in the flex queue. To move a job to a new position, call one of the
+`[System.FlexQueue](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_flexqueue.htm)` methods. Pass the method the job ID and, if applicable, the ID of the job next to the moved job’s new position.
+For example:
+
+```
+   Boolean isSuccess = System.FlexQueue.moveBeforeJob(jobToMoveId, jobInQueueId);
+
+```
+
+You can reorder jobs in the Apex flex queue to prioritize jobs. For example, you can move a batch job up to the first position in the
+holding queue to be processed first when resources become available. Otherwise, jobs are processed “first-in, first-out”—in the order
+in which they’re submitted.
+
+When system resources become available, the system picks up the next job from the top of the Apex flex queue and moves it to the
+batch job queue. The system can process up to five queued or active jobs simultaneously for each organization. The status of these
+moved jobs changes from `Holding` to `Queued` . Queued jobs get executed when the system is ready to process new jobs. You can
+monitor queued jobs on the Apex Jobs page.
+
+Batch Job Statuses
+
+The following table lists all possible statuses for a batch job along with a description of each.
+
+**Status** **Description**
+
+Holding Job has been submitted and is held in the Apex flex queue until
+system resources become available to queue the job for processing.
+
+Queued Job is awaiting execution.
+
+Preparing The `start` method of the job has been invoked. This status can
+last a few minutes depending on the size of the batch of records.
+
+Processing Job is being processed.
+
+Aborted Job aborted by a user.
+
+Completed Job completed with or without failure.
+
+Failed Job experienced a system failure.
+
+Using the **`System.scheduleBatch`** Method
+
+You can use the `System.scheduleBatch` method to schedule a batch job to run once at a future time.
+
+The `System.scheduleBatch` method takes these parameters.
+
+**•** An instance of a class that implements the `Database.Batchable` interface.
+
+**•** The job name.
+
+**•** The time interval, in minutes, after which the job starts executing.
+
+
+Apex Developer Guide Invoking Apex
+
+**•** An optional scope value. This parameter specifies the number of records to pass into the `execute` method. Use this parameter
+when you have many operations for each record being passed in and are running into governor limits. By limiting the number of
+records, you’re limiting the operations per transaction. This value must be greater than zero.If the `start` method of the batch class
+returns a QueryLocator, the optional scope parameter of `Database.executeBatch` can have a maximum value of . If set to
+a higher value, Salesforce chunks the records returned by the QueryLocator into smaller batches of up to 2,000 records. If the `start`
+method of the batch class returns an iterable, the scope parameter value has no upper limit. However, if you use a high number,
+you can run into other limits. The optimal scope size is a factor of 2000, for example, 100, 200, 400 and so on.
+
+The `System.scheduleBatch` method returns the scheduled job ID (CronTrigger ID).
+
+This example schedules a batch job to run 60 minutes from now by calling `System.scheduleBatch` . The example passes this
+method an instance of a batch class (the `reassign` variable), a job name, and a time interval of 60 minutes. The optional _`scope`_
+parameter has been omitted. The method returns the scheduled job ID, which is used to query CronTrigger to get the status of the
+corresponding scheduled job.
+
+```
+   String cronID = System.scheduleBatch(reassign, 'job example', 60);
+
+   CronTrigger ct = [SELECT Id, TimesTriggered, NextFireTime
+
+             FROM CronTrigger WHERE Id = :cronID WITH USER_MODE];
+
+   // TimesTriggered should be 0 because the job hasn't started yet.
+
+   Assert.areEqual(0, ct.TimesTriggered);
+
+   System.debug('Next fire time: ' + ct.NextFireTime);
+
+   // For example:
+
+   // Next fire time: 2013-06-03 13:31:23
+
+```
+
+[For more information, see CronTrigger in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_crontrigger.htm) _Object Reference for Salesforce._
+
+Note: Some things to note about `System.scheduleBatch` :
+
+**•** When you call `System.scheduleBatch`, Salesforce schedules the job for execution at the specified time. Actual execution
+occurs at or after that time, depending on service availability.
+
+**•** The scheduler runs as system—all classes are executed, whether the user has permission to execute the class or not.
+
+**•** When the job’s schedule is triggered, the system queues the batch job for processing. If Apex flex queue is enabled in your
+org, the batch job is added at the end of the flex queue. For more information, see Holding Batch Jobs in the Apex Flex Queue.
+
+**•** All scheduled Apex limits apply for batch jobs scheduled using `System.scheduleBatch` . After the batch job is queued
+(with a status of `Holding` or `Queued` ), all batch job limits apply and the job no longer counts toward scheduled Apex
+limits.
+
+**•** After calling this method and before the batch job starts, you can use the returned scheduled job ID to abort the scheduled
+job using the `[System.abortJob](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_system.htm)` method.
+
+Batch Apex Examples
+
+The following example uses a `Database.QueryLocator` :
+
+```
+   public with sharing class UpdateAccountFields implements Database.Batchable<sObject> {
+
+     public final String Query;
+
+     public final String Entity;
+
+     public final String Field;
+
+     public final String Value;
+
+     public UpdateAccountFields(String q, String e, String f, String v) {
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+      Query = q;
+
+      Entity = e;
+
+      Field = f;
+
+      Value = v;
+
+     }
+
+     public Database.QueryLocator start(Database.BatchableContext bc) {
+
+      return Database.getQueryLocator(query, AccessLevel.USER_MODE);
+
+     }
+
+     public void execute(Database.BatchableContext bc, List<sObject> scope) {
+
+      for (Sobject s : scope) {
+
+       s.put(Field, Value);
+
+      }
+
+      update as user scope;
+
+     }
+
+     public void finish(Database.BatchableContext bc) {
+
+     }
+
+   }
+
+```
+
+You can use this code to call the previous class.
+
+```
+   // Query for 10 accounts
+
+   String q = 'SELECT Industry FROM Account LIMIT 10';
+
+   String e = 'Account';
+
+   String f = 'Industry';
+
+   String v = 'Consulting';
+
+   Id batchInstanceId = Database.executeBatch(new UpdateAccountFields(q,e,f,v), 5);
+
+```
+
+To exclude accounts or invoices that were deleted but are still in the Recycle Bin, include `isDeleted=false` in the SOQL query
+WHERE clause, as shown in these modified samples.
+
+```
+   // Query for accounts that aren't in the Recycle Bin
+
+   String q = 'SELECT Industry FROM Account WHERE isDeleted=false LIMIT 10';
+
+   String e = 'Account';
+
+   String f = 'Industry';
+
+   String v = 'Consulting';
+
+   Id batchInstanceId = Database.executeBatch(new UpdateAccountFields(q,e,f,v), 5);
+
+   // Query for invoices that aren't in the Recycle Bin
+
+   String q =
+
+     'SELECT Description__c FROM Invoice_Statement__c WHERE isDeleted=false LIMIT 10';
+
+   String e = 'Invoice_Statement__c';
+
+   String f = 'Description__c';
+
+   String v = 'Updated description';
+
+   Id batchInstanceId = Database.executeBatch(new UpdateInvoiceFields(q,e,f,v), 5);
+
+```
+
+The following class uses batch Apex to reassign all accounts owned by a specific user to a different user.
+
+```
+   public with sharing class OwnerReassignment implements Database.Batchable<sObject> {
+
+     public String query;
+
+     public String email;
+
+     public Id toUserId;
+
+     public Id fromUserId;
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+     public Database.querylocator start(Database.BatchableContext bc) {
+
+      return Database.getQueryLocator(query, AccessLevel.USER_MODE);
+
+     }
+
+     public void execute(Database.BatchableContext bc, List<sObject> scope) {
+
+      List<Account> accns = new List<Account>();
+
+      for (sObject s : scope) {
+
+       Account a = (Account) s;
+
+       if (a.OwnerId == fromUserId) {
+
+        a.OwnerId = toUserId;
+
+        accns.add(a);
+
+       }
+
+      }
+
+      update as user accns;
+
+     }
+
+     public void finish(Database.BatchableContext bc) {
+
+      Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+
+      mail.setToAddresses(new List<String>{ email });
+
+      mail.setReplyTo('batch@acme.com');
+
+      mail.setSenderDisplayName('Batch Processing');
+
+      mail.setSubject('Batch Process Completed');
+
+      mail.setPlainTextBody('Batch Process has completed');
+
+      Messaging.sendEmail(new List<Messaging.SingleEmailMessage>{ mail });
+
+     }
+
+   }
+
+```
+
+Use this code to execute the `OwnerReassignment` class in the previous example.
+
+```
+   OwnerReassignment reassign = new OwnerReassignment();
+
+   reassign.query = 'SELECT Id, Name, Ownerid FROM Account ' +
+
+             'WHERE ownerid=\'' + u.id + '\'';
+
+   reassign.email='admin@acme.com';
+
+   reassign.fromUserId = u;
+
+   reassign.toUserId = u2;
+
+   ID batchprocessid = Database.executeBatch(reassign);
+
+```
+
+The following is an example of a batch Apex class for deleting records.
+
+```
+   public with sharing class BatchDelete implements Database.Batchable<sObject> {
+
+     public String query;
+
+     public Database.QueryLocator start(Database.BatchableContext bc) {
+
+      return Database.getQueryLocator(query, AccessLevel.USER_MODE);
+
+     }
+
+     public void execute(Database.BatchableContext bc, List<sObject> scope) {
+
+      delete as user scope;
+
+      DataBase.emptyRecycleBin(scope);
+
+     }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+     public void finish(Database.BatchableContext bc) {
+
+     }
+
+   }
+
+```
+
+This code calls the `BatchDelete` batch Apex class to delete old documents. The specified query selects documents to delete for all
+documents that are in a specified folder and that are older than a specified date. Next, the sample invokes the batch job.
+
+```
+   BatchDelete BDel = new BatchDelete();
+
+   Datetime d = Datetime.now();
+
+   d = d.addDays(-1);
+
+   // Replace this value with the folder ID that contains
+
+   // the documents to delete.
+
+   String folderId = '00lD000000116lD';
+
+   // Query for selecting the documents to delete
+
+   BDel.query = 'SELECT Id FROM Document WHERE FolderId=\'' + folderId +
+
+      '\' AND CreatedDate < '+d.format('yyyy-MM-dd')+'T'+
+
+      d.format('HH:mm')+':00.000Z';
+
+   // Invoke the batch job.
+
+   ID batchprocessid = Database.executeBatch(BDel);
+
+   System.debug('Returned batch process ID: ' + batchProcessId);
+
+```
+
+Using Callouts in Batch Apex
+
+To use a callout in batch Apex, specify `Database.AllowsCallouts` in the class definition. For example:
+
+```
+   public with sharing class SearchAndReplace implements Database.Batchable<sObject>,
+
+     Database.AllowsCallouts{
+
+   }
+
+```
+
+Callouts include HTTP requests and methods defined with the `webservice` keyword.
+
+Using State in Batch Apex
+
+Each execution of a batch Apex job is considered a discrete transaction. For example, a batch Apex job that contains 1,000 records and
+is executed without the optional _`scope`_ parameter is considered five transactions of 200 records each.
+
+If you specify `Database.Stateful` in the class definition, you can maintain state across these transactions. When using
+`Database.Stateful`, only instance member variables retain their values between transactions. Static member variables don’t
+retain their values and are reset between transactions. Maintaining state is useful for counting or summarizing records as they’re processed.
+For example, suppose your job processes opportunity records. You can define a method in `execute` to aggregate the totals of the
+opportunity amounts as they are processed.
+
+If you don’t specify `Database.Stateful`, all static and instance member variables are set back to their original values.
+
+The following example summarizes a custom field `total__c` as the records are processed.
+
+```
+   public with sharing class SummarizeAccountTotal implements Database.Batchable<sObject>,
+
+   Database.Stateful {
+
+     public final String Query;
+
+     public integer Summary;
+
+     public SummarizeAccountTotal(String q) {
+
+      Query = q;
+
+      Summary = 0;
+
+     }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+     public Database.QueryLocator start(Database.BatchableContext bc) {
+
+      return Database.getQueryLocator(query, AccessLevel.USER_MODE);
+
+     }
+
+     public void execute(Database.BatchableContext bc, List<sObject> scope) {
+
+      for (sObject s : scope) {
+
+       Summary = Integer.valueOf(s.get('total__c')) + Summary;
+
+      }
+
+     }
+
+     public void finish(Database.BatchableContext bc) {
+
+     }
+
+   }
+
+```
+
+In addition, you can specify a variable to access the initial state of the class. You can use this variable to share the initial state with all
+instances of the `Database.Batchable` methods. For example:
+
+```
+   // Implement the interface using a list of Account sObjects
+
+   // Note that the initialState variable is declared as final
+
+   public with sharing class MyBatchable implements Database.Batchable<sObject> {
+
+     private final String initialState;
+
+     String query;
+
+     public MyBatchable(String intialState) {
+
+      this.initialState = initialState;
+
+     }
+
+     public Database.QueryLocator start(Database.BatchableContext bc) {
+
+      // Access initialState here
+
+      return Database.getQueryLocator(query, AccessLevel.USER_MODE);
+
+     }
+
+     public void execute(Database.BatchableContext bc, List<sObject> batch) {
+
+      // Access initialState here
+
+     }
+
+     public void finish(Database.BatchableContext bc) {
+
+      // Access initialState here
+
+     }
+
+   }
+
+```
+
+The `initialState` stores only the _initial_ state of the class. You can’t use it to pass information between instances of the class during
+execution of the batch job. For example, if you change the value of `initialState` in `execute`, the second chunk of processed
+records can’t access the new value. Only the initial value is accessible.
+
+Testing Batch Apex
+
+When testing your batch Apex, you can test only one execution of the `execute` method. Use the _`scope`_ parameter of the
+`executeBatch` method to limit the number of records passed into the `execute` method to ensure that you aren’t running into
+governor limits.
+
+The `executeBatch` method starts an asynchronous process. When you test batch Apex, make certain that the asynchronously
+processed batch job is finished before testing against the results. Use the Test methods `startTest` and `stopTest` around the
+
+
+Apex Developer Guide Invoking Apex
+
+`executeBatch` method to ensure that it finishes before continuing your test. All asynchronous calls made after the `startTest`
+method are collected by the system. When `stopTest` is executed, all asynchronous processes are run synchronously. If you don’t
+include the `executeBatch` method within the `startTest` and `stopTest` methods, the batch job executes at the end of your
+test method. This execution order applies for Apex saved using API version 25.0 and later, but not for earlier versions.
+
+For Apex saved using API version 22.0 and later, exceptions that occur during the execution of a batch Apex job invoked by a test method
+are passed to the calling test method. As a result, these exceptions cause the test method to fail. If you want to handle exceptions in the
+test method, enclose the code in `try` and `catch` statements. Place the `catch` block after the `stopTest` method. However, with
+Apex saved using Apex version 21.0 and earlier, such exceptions don’t get passed to the test method and don’t cause test methods to
+fail.
+
+Note: Asynchronous calls, such as `@future` or `executeBatch`, called in a `startTest`, `stopTest` block, don’t count
+against your limits for the number of queued jobs.
+
+The following example tests the `OwnerReassignment` class.
+
+```
+   @IsTest
+
+   private with sharing class OwnerReassignmentTest {
+
+     @IsTest
+
+     public static void testBatch() {
+
+      user u = [
+
+       SELECT ID, UserName
+
+       FROM User
+
+       WHERE username = 'testuser1@acme.com'
+
+       WITH USER_MODE
+
+      ];
+
+      user u2 = [
+
+       SELECT ID, UserName
+
+       FROM User
+
+       WHERE username = 'testuser2@acme.com'
+
+       WITH USER_MODE
+
+      ];
+
+      String u2id = u2.id;
+
+      // Create 200 test accounts - this simulates one execute.
+
+      // Important - the Salesforce test framework only allows you to
+
+      // test one execute.
+
+      List<Account> accns = new List<Account>();
+
+      for (integer i = 0; i < 200; i++) {
+
+       Account a = new Account(Name = 'testAccount' + i, Ownerid = u.ID);
+
+       accns.add(a);
+
+      }
+
+      insert as user accns;
+
+      Test.StartTest();
+
+      OwnerReassignment reassign = new OwnerReassignment();
+
+      reassign.query =
+
+       'SELECT ID, Name, Ownerid ' +
+
+       'FROM Account ' +
+
+       'WHERE OwnerId=\'' +
+
+       u.Id +
+
+       '\'' +
+
+       ' LIMIT 200';
+
+      reassign.email = 'admin@acme.com';
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+      reassign.fromUserId = u.Id;
+
+      reassign.toUserId = u2.Id;
+
+      ID batchprocessid = Database.executeBatch(reassign);
+
+      Test.StopTest();
+
+      Assert.areEqual(
+
+       Database.countquery(
+
+        'SELECT COUNT()' + ' FROM Account WHERE OwnerId=\'' + u2.Id + '\'',
+
+        AccessLevel.USER_MODE
+
+       ),
+
+       200
+
+      );
+
+     }
+
+   }
+
+```
+
+Use the `System.Test.enqueueBatchJobs` and `System.Test.getFlexQueueOrder` methods to enqueue and
+reorder no-operation jobs within the context of tests.
+
+Batch Apex Limitations
+
+Keep in mind these governor limits and other limitations for batch Apex.
+
+**•** Up to 5 batch jobs can be queued or active concurrently.
+
+**•** Up to 100 `Holding` batch jobs can be held in the Apex flex queue.
+
+**•** In a running test, you can submit a maximum of 5 batch jobs.
+
+**•** The maximum number of batch Apex method executions per 24-hour period is 250,000, or the number of user licenses in your org
+multiplied by 200—whichever is greater. Method executions include executions of the `start`, `execute`, and `finish` methods.
+This limit is for your entire org and is shared with all asynchronous Apex: Batch Apex, Queueable Apex, scheduled Apex, and future
+methods. To check how many asynchronous Apex executions are available, make a request to REST API `limits` [resource. See List](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm)
+[Organization Limits in the REST API Developer Guide. If the number of asynchronous Apex executions needed by a job exceeds the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm)
+available number that’s calculated using the 24-hour rolling limit, an exception is thrown. Batch Apex preemptively checks the
+required asynchronous job capacity when `Database.executeBatch` is called and the `start` method has returned the
+workload. The batch won’t start unless there is sufficient capacity for the entire job available. For example, if the batch requires 10,000
+executions and the remaining asynchronous limit is 9,500 executions, an `AsyncApexExecutions Limit exceeded`
+exception is thrown, and the remaining executions are left unchanged. The license types that count toward this limit include full
+Salesforce and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only users, Identity users, and Company
+Communities users.
+
+**•** A maximum of 50 million records can be returned in the `Database.QueryLocator` object. If more than 50 million records
+are returned, the batch job is immediately terminated and marked as Failed.
+
+**•** If the `start` method of the batch class returns a QueryLocator, the optional scope parameter of `Database.executeBatch`
+can have a maximum value of 2,000. If set to a higher value, Salesforce chunks the records returned by the QueryLocator into smaller
+batches of up to 2,000 records. If the `start` method of the batch class returns an iterable, the scope parameter value has no upper
+limit. However, if you use a high number, you can run into other limits. The optimal scope size is a factor of 2000, for example, 100,
+200, 400 and so on.
+
+**•** If no size is specified with the optional _`scope`_ parameter of `Database.executeBatch`, Salesforce chunks the records returned
+by the `start` method into batches of 200 records. The system then passes each batch to the `execute` method. Apex governor
+limits are reset for each execution of `execute` .
+
+**•** The `start`, `execute`, and `finish` methods can implement up to 100 callouts each.
+
+
+Apex Developer Guide Invoking Apex
+
+**•** Only one batch Apex job's `start` method can run at a time in an org. Batch jobs that haven’t started yet remain in the queue until
+they're started. This limit doesn’t cause any batch job to fail and `execute` methods of batch Apex jobs still run in parallel if more
+than one job is running.
+
+**•** Enqueued batch Apex jobs are processed when system resources become available. There’s no guarantee on how long it takes to
+start, execute, and finish the queued jobs. You can use the Apex flex queue to prioritize jobs.
+
+**•** Using `FOR UPDATE` in SOQL queries to lock records during update isn’t applicable to Batch Apex.
+
+**•** `Database.QueryLocator` objects and related query results are available for 2 days, including results in nested queries. For
+[more information, see API Query Cursor Limits.](https://developer.salesforce.com/docs/atlas.en-us.260.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_apicursors.htm)
+
+Batch Apex Considerations and Best Practices
+
+**•** Use extreme caution if you’re planning to invoke a batch job from a trigger. You must be able to guarantee that the trigger doesn’t
+add more batch jobs than the limit. In particular, consider API bulk updates, import wizards, mass record changes through the user
+interface, and all cases where more than one record can be updated at a time.
+
+**•** When you call `Database.executeBatch`, Salesforce only places the job in the queue. Actual execution can be delayed based
+on service availability and flex queue priority.
+
+**•** When testing your batch Apex, you can test only one execution of the `execute` method. Use the _`scope`_ parameter of the
+`executeBatch` method to limit the number of records passed into the `execute` method to ensure that you aren’t running
+into governor limits.
+
+**•** The `executeBatch` method starts an asynchronous process. When you test batch Apex, make certain that the asynchronously
+processed batch job is finished before testing against the results. Use the Test methods `startTest` and `stopTest` around
+the `executeBatch` method to ensure that it finishes before continuing your test.
+
+**•** Use `Database.Stateful` with the class definition if you want to share instance member variables or data across job transactions.
+Otherwise, all member variables are reset to their initial state at the start of each transaction.
+
+**•** Methods declared as `future` aren’t allowed in classes that implement the `Database.Batchable` interface.
+
+**•** Methods declared as `future` can’t be called from a batch Apex class.
+
+**•** When a batch Apex job is run, email notifications are sent to the user who submitted the batch job. If the code is included in a
+managed package and the subscribing org is running the batch job, notifications are sent to the recipient listed in the `Apex`
+`Exception Notification Recipient` field.
+
+**•** Each method execution uses the standard governor limits anonymous block, Visualforce controller, or WSDL method.
+
+**•** Each batch Apex invocation creates an `AsyncApexJob` record. To construct a SOQL query to retrieve the job’s status, number
+of errors, progress, and submitter, use the `AsyncApexJob` record’s ID. For more information about the `AsyncApexJob` object,
+[see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
+
+**•** For each 10,000 `AsyncApexJob` records, Apex creates an `AsyncApexJob` record of type `BatchApexWorker` for internal
+use. When querying for all `AsyncApexJob` records, we recommend that you filter out records of type `BatchApexWorker`
+using the `JobType` field. Otherwise, the query returns one more record for every 10,000 `AsyncApexJob` records. For more
+information about the `AsyncApexJob` [object, see AsyncApexJob in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.object_reference.meta/object_reference/sforce_api_objects_asyncapexjob.htm) _Object Reference for Salesforce._
+
+**•** All implemented `Database.Batchable` interface methods must be defined as `public` or `global` .
+
+**•** For a sharing recalculation, we recommend that the `execute` method delete and then re-create all Apex managed sharing for
+the records in the batch. This process ensures that sharing is accurate and complete.
+
+**•** Batch jobs queued before a Salesforce service maintenance downtime remain in the queue. After service downtime ends and when
+system resources become available, the queued batch jobs are executed. If a batch job is running when downtime occurred, the
+batch execution is rolled back and restarted after the service comes back up. Because execute methods can therefore run multiple
+[times, any non-transactional operations, such as callouts, can be retried. All non-transactional operations must follow Idempotent](https://developer.salesforce.com/docs/atlas.en-us.260.0.integration_patterns_and_practices.meta/integration_patterns_and_practices/integ_pat_remote_process_invocation_state.htm#idempotent_design_header)
+[Design Considerations to maintain data integrity.](https://developer.salesforce.com/docs/atlas.en-us.260.0.integration_patterns_and_practices.meta/integration_patterns_and_practices/integ_pat_remote_process_invocation_state.htm#idempotent_design_header)
+
+
+Apex Developer Guide Invoking Apex
+
+**•** Minimize the number of batches, if possible. Salesforce uses a queue-based framework to handle asynchronous processes from such
+sources as future methods and batch Apex. This queue is used to balance request workload across organizations. If more than 2,000
+unprocessed requests from a single organization are in the queue, any additional requests from the same organization are delayed
+while the queue handles requests from other organizations.
+
+**•** Salesforce recommends that you design your asynchronous Apex jobs to handle variations in processing time. For example, to
+handle potential processing overlaps, consider chaining batch jobs on page 319 instead of scheduling jobs at fixed intervals.
+
+**•** Ensure that batch jobs execute as fast as possible. To ensure fast execution of batch jobs, minimize Web service callout times and
+tune the queries used in your batch Apex code. The longer the batch job executes, the more likely other queued jobs are delayed
+when many jobs are in the queue.
+
+**•** If you use batch Apex with `Database.QueryLocator` to access external objects via an OData adapter for Salesforce Connect:
+
+**–** Enable Request Row Counts on the external data source, and each response from the external system must include the total
+row count of the result set.
+
+**–** We recommend enabling Server-Driven Pagination on the external data source and having the external system determine page
+sizes and batch boundaries for large result sets. Typically, server-driven paging can adjust batch boundaries to accommodate
+changing datasets more effectively than client-driven paging.
+
+When Server-Driven Pagination is disabled on the external data source, the OData adapter controls the paging behavior
+(client-driven). If external object records are added to the external system while a job runs, other records can be processed twice.
+If external object records are deleted from the external system while a job runs, other records can be skipped.
+
+**–** When Server-Driven Pagination is enabled on the external data source, the batch size at runtime is the smaller of these two sizes:
+
+**•** Batch size specified in the `scope` parameter of `Database.executeBatch` . The default is 200 records.
+
+**•** Page size returned by the external system. We recommend that you set up your external system to return page sizes of 200
+or fewer records.
+
+**•** Batch Apex jobs run faster when the `start` method returns a `QueryLocator` object that doesn't include related records via
+a subquery. Avoiding relationship subqueries in a `QueryLocator` allows batch jobs to run using a faster, chunked implementation.
+If the `start` method returns an iterable or a `QueryLocator` object with a relationship subquery, the batch job uses a slower,
+non-chunking, implementation. For example, if this query is used in the `QueryLocator`, the batch job uses a slower implementation
+because of the relationship subquery:
+
+```
+     SELECT Id, (SELECT id FROM Contacts) FROM Account
+
+```
+
+A better strategy is to perform the subquery separately, from within the `execute` method, which allows the batch job to run
+using the faster, chunking implementation.
+
+**•** To implement record locking as part of the batch job, you can requery records inside the `execute` method, using FOR UPDATE.
+Requerying records in this manner ensures that conflicting updates aren’t overwritten by DML in the batch job. To requery records,
+simply select the `Id` field in the batch job's main query locator.
+
+**•** The Salesforce Platform's flow control mechanism and fair-usage algorithm can cause a delay in running batch jobs.
+
+Chaining Batch Jobs
+
+Starting with API version 26.0, you can start another batch job from an existing batch job to chain jobs together. Chaining enforces strict
+sequential execution, ensuring that one job fully completes before the next one starts. This sequencing prevents situations where multiple
+batch jobs attempt to concurrently process the same records, which can lead to race conditions or data inconsistencies. Use chained
+batch jobs if you require sequential execution and batch processing, such as processing large data volumes. Otherwise, if batch processing
+isn’t needed, consider using Queueable Apex.
+
+You can chain a batch job by calling `Database.executeBatch` or `System.scheduleBatch` from the `finish` method
+of the current batch class. The new batch job starts after the current batch job finishes.
+
+
+Apex Developer Guide Invoking Apex
+
+A potential failure point in chained batch jobs is an unhandled exception within the job’s `finish` method. The unhandled exception
+prevents the next job from being enqueued and breaks the sequence. To safeguard against this point of failure, consider implementing
+a separate scheduled Apex job that periodically checks the status of the chain. The scheduled job queries the `AsyncApexJob` object
+for records where the `JobType` is `'BatchApex'` and the `ApexClass.Name` matches the class expected to be currently running
+or queued within the chain. If this query returns no results, the expected job is neither running nor queued, which signifies that the chain
+has been unexpectedly interrupted. The scheduled job then restarts the entire batch chain, which prevents unprocessed records from
+accumulating and possibly reaching governor limits.
+
+When creating a long chain of batch jobs, account for workload variations. If there's currently no further work to perform either in the
+current job’s `finish` method or because your business is entering an off-peak period, use `System.scheduleBatch` to add a
+delay before the execution of next chained batch job. This delay optimizes the usage of available batch jobs and the flex queue by
+preventing jobs that don't have any work from repeatedly starting.
+
+Note: For API version 25.0 and earlier, you can’t call `Database.executeBatch` or `System.scheduleBatch` from
+any batch Apex method.
+
+The API version that’s used is the version of the running batch class that starts or schedules another batch job. If the `finish`
+method in the running batch class calls a method in a helper class to start the next batch job, the API version of the helper class
+doesn’t matter.
+
+SEE ALSO:
+
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_database_batchable.htm)_ : Batchable Interface
+
+_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_FlexQueue.htm)_ :FlexQueue Class
+
+_Apex Reference Guide_ [: Test.enqueueBatchJobs()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)
+
+_Apex Reference Guide_ [: Test.getFlexQueueOrder()](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)
+
+_Salesforce Help_ [: Client-driven and Server-driven Paging for Salesforce Connect—OData 2.0 and 4.0 Adapters](https://help.salesforce.com/articleView?id=odata_paging.htm&language=en_US)
+
+_Salesforce Help_ [: Define an External Data Source for Salesforce Connect—OData 2.0 or 4.0 Adapter](https://help.salesforce.com/articleView?id=platform_connect_add_external_data_source.htm&language=en_US)
+
+###### Firing Platform Events from Batch Apex
+
+Batch Apex classes can fire platform events when encountering an error or exception. Clients listening on an event can obtain actionable
+information, such as how often the event failed and which records were in scope at the time of failure. Events are also fired for Salesforce
+Platform internal errors and other uncatchable Apex exceptions such as LimitExceptions, which are caused by reaching governor limits.
+
+An event message provides more granular error tracking than the Apex Jobs UI. It includes the record IDs being processed, exception
+type, exception message, and stack trace. You can also incorporate custom handling and retry logic for failures. You can invoke custom
+Apex logic from any trigger on this type of event, so Apex developers can build functionality like custom logging or automated retry
+handling.
+
+[For information on subscribing to platform events, see Subscribing to Platform Events.](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_subscribe.htm)
+
+The BatchApexErrorEvent object represents a platform event associated with a batch Apex class. This object is available in API version
+44.0 and later. If the `start`, `execute`, or `finish` method of a batch Apex job encounters an unhandled exception, a
+`BatchApexErrorEvent` [platform event is fired. For more details, see BatchApexErrorEvent in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/sforce_api_objects_batchapexerrorevent.htm) _Platform Events Developer Guide_ .
+
+To fire a platform event, a batch Apex class declaration must implement the Database.RaisesPlatformEvents interface.
+
+```
+   public with sharing class YourSampleBatchJob implements Database.Batchable<SObject>,
+
+     Database.RaisesPlatformEvents {
+
+     // class implementation
+
+   }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+Example: This example creates a trigger to determine which accounts failed in the batch transaction. Custom field Dirty__c
+indicates that the account was one of a failing batch and ExceptionType__c indicates the exception that was encountered.
+JobScope and ExceptionType are fields in the BatchApexErrorEvent object.
+
+```
+      trigger MarkDirtyIfFail on BatchApexErrorEvent (after insert) {
+
+        Set<Id> asyncApexJobIds = new Set<Id>();
+
+        for(BatchApexErrorEvent evt:Trigger.new){
+
+           asyncApexJobIds.add(evt.AsyncApexJobId);
+
+        }
+
+        Map<Id,AsyncApexJob> jobs = new Map<Id,AsyncApexJob>(
+
+           [SELECT id, ApexClass.Name FROM AsyncApexJob WHERE Id IN :asyncApexJobIds]
+
+        );
+
+        List<Account> records = new List<Account>();
+
+        for(BatchApexErrorEvent evt:Trigger.new){
+
+           //only handle events for the job(s) we care about
+
+           if(jobs.get(evt.AsyncApexJobId).ApexClass.Name == 'AccountUpdaterJob'){
+
+             for (String item : evt.JobScope.split(',')) {
+
+               Account a = new Account(
+
+                  Id = (Id)item,
+
+                  ExceptionType__c = evt.ExceptionType,
+
+                  Dirty__c = true
+
+               );
+
+               records.add(a);
+
+             }
+
+           }
+
+        }
+
+        update records;
+
+      }
+
+```
+
+Testing BatchApexErrorEvent Messages Published from Batch Apex Jobs
+
+Use the `Test.getEventBus().deliver()` method to deliver event messages that are published by failed batch Apex jobs.
+Use the `Test.startTest()` and `Test.stopTest()` statement block to execute the batch job.
+
+This snippet shows how to execute a batch Apex job and deliver event messages. It executes the batch job after `Test.stopTest()` .
+This batch job publishes a BatchApexErrorEvent message when a failure occurs through the implementation of
+`Database.RaisesPlatformEvents` . After `Test.stopTest()` runs, a separate `Test.getEventBus().deliver()`
+statement is added so that it can deliver the BatchApexErrorEvent.
+
+```
+   try {
+
+      Test.startTest();
+
+      Database.executeBatch(new SampleBatchApex());
+
+      Test.stopTest();
+
+      // Batch Apex job executes here
+
+   } catch(Exception e) {
+
+      // Catch any exceptions thrown in the batch job
+
+   }
+
+   // The batch job fires BatchApexErrorEvent if it fails, so deliver the event.
+
+   Test.getEventBus().deliver();
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+Note: If further platform events are published by downstream processes, add `Test.getEventBus().deliver();` to
+deliver the event messages for each process. For example, if a platform event trigger, which processes the event from the Apex
+job, publishes another platform event, add a `Test.getEventBus().deliver();` statement to deliver the event message.
+
+SEE ALSO:
+
+_[Platform Events Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_test_deliver.htm)_ : Deliver Test Event Messages
+
+_Platform Events Developer Guide_ [: Event and Event Bus Properties in Test Context](https://developer.salesforce.com/docs/atlas.en-us.260.0.platform_events.meta/platform_events/platform_events_test_events.htm)
+
+##### Future Methods
+
+A future method runs asynchronously. You can call a future method to run long-running operations, such as callouts to external web
+services or any operation that you want to run in its own thread. You can also use future methods to isolate Data Manipulation Language
+(DML) operations on different sObject types to prevent the mixed DML error. Each future method is queued and runs when system
+resources become available. That way, the execution of your code doesn’t wait for the completion of a long-running operation. A benefit
+of future methods is that some governor limits are higher, such as SOQL query limits and heap size limits.
+
+Important: Salesforce now recommends that you use Queueable Apex instead of Apex future methods. Queueables have the
+same use cases as future methods but offer more benefits, including job IDs, support for non-primitive types, and job chaining.
+
+See Queueable Apex.
+
+##### To define a future method, annotate it with the Future annotation.
+
+```
+   public with sharing class FutureClass {
+
+      @Future
+
+      public static void myFutureMethod()
+
+      {
+
+         // Perform some operations
+
+      }
+
+   }
+
+##### Methods with the Future annotation must be static methods, and can only return a void type. The specified parameters must be primitive data types, arrays of primitive data types, or collections of primitive data types. Methods with the Future annotation can’t
+```
+
+take sObjects or objects as arguments.
+
+The reason why sObjects can’t be passed as arguments to future methods is because the sObject can change between the time that
+you call the method and the time that it executes. In this case, the future method gets the old sObject values and can overwrite them.
+To work with sObjects that already exist in the database, pass the sObject ID or the collection of IDs instead. Then use the ID to perform
+a query for the most up-to-date record. This example shows how to do so with a list of IDs.
+
+```
+   public with sharing class FutureMethodRecordProcessing {
+
+      @Future
+
+      public static void processRecords(List<ID> recordIds)
+
+      {
+
+         // Get those records based on the IDs
+
+         List<Account> accts = [SELECT Name FROM Account WHERE Id IN :recordIds WITH
+
+   USER_MODE];
+
+         // Process records
+
+      }
+
+   }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+Here’s a skeletal example of a future method that makes a callout to an external service. Notice that the annotation takes an extra
+parameter ( `callout=true` ) to indicate that callouts are allowed. To learn more about callouts, see Invoking Callouts Using Apex.
+
+```
+   public with sharing class FutureMethodExample {
+
+      @Future(callout=true)
+
+      public static void getStockQuotes(String acctName)
+
+      {
+
+         // Perform a callout to an external service
+
+      }
+
+   }
+
+```
+
+Insert a user with a non-null role in a separate thread from DML operations on other sObjects. In this example, the future method,
+`insertUserWithRole`, which is defined in the `Util` class, performs the insertion of a user with the COO role. This future method
+requires the COO role to be defined in the org. The `useFutureMethod` method in `MixedDMLFuture` inserts an account and
+calls the future method `insertUserWithRole` .
+
+This `Util` class contains the future method for inserting a user with a non-null role.
+
+```
+   public with sharing class Util {
+
+      @Future
+
+      public static void insertUserWithRole(
+
+        String uname, String al, String em, String lname) {
+
+        Profile p = [SELECT Id FROM Profile WHERE Name='Standard User' WITH USER_MODE];
+
+        UserRole r = [SELECT Id FROM UserRole WHERE Name='COO' WITH USER_MODE];
+
+        // Create new user with a non-null user role ID
+
+        User newUser = new User(alias = al, email=em,
+
+           emailencodingkey='UTF-8', lastname=lname,
+
+           languagelocalekey='en_US',
+
+           localesidkey='en_US', profileid = p.Id, userroleid = r.Id,
+
+           timezonesidkey='America/Los_Angeles',
+
+           username=uname);
+
+        insert as user newUser;
+
+      }
+
+   }
+
+```
+
+This class contains the main method that calls the future method.
+
+```
+   public with sharing class MixedDMLFuture {
+
+      public static void useFutureMethod() {
+
+        // First DML operation
+
+        Account a = new Account(Name='Acme');
+
+        insert as user a;
+
+        // This next operation (insert a user with a role)
+
+        // can't be mixed with the previous insert unless
+
+        // it is within a future method.
+
+        // Call future method to insert a user with a role.
+
+        Util.insertUserWithRole(
+
+           'mruiz@awcomputing.com', 'mruiz',
+
+           'mruiz@awcomputing.com', 'Ruiz');
+
+      }
+
+   }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+You can invoke future methods the same way that you invoke any other method. However, a future method can’t invoke another future
+method.
+
+Future Method Limits
+
+Methods with the `Future` annotation have these limits.
+
+**•** No more than 0 in batch and future contexts; 50 in queueable context method calls per Apex invocation. Asynchronous calls, such
+as `Future` or `executeBatch`, that are called in a `startTest` or `stopTest` block don’t count against your limits for the
+number of queued jobs.
+
+Note: Having multiple future methods fan out from a queueable job isn’t a recommended practice as it can rapidly add many
+future methods to the asynchronous queue. Request processing can be delayed and you can quickly hit the daily maximum
+[limit for asynchronous Apex method executions. See Future Method Performance Best Practices and Lightning Platform Apex](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_invoking_future_methods.htm)
+[Limits.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_gov_limits.htm#in_topic_non_transactional_gov_limits_section)
+
+**•** The maximum number of `Future` method invocations per a 24-hour period is 250,000 or the number of user licenses in your
+organization multiplied by 200, whichever is greater. This limit is for your entire org and is shared with all asynchronous Apex: Batch
+Apex, Queueable Apex, scheduled Apex, and future methods. To check how many asynchronous Apex executions are available,
+make a request to REST API `limits` [resource. See List Organization Limits in the REST API Developer Guide. If the number of](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/dome_limits.htm)
+asynchronous Apex executions needed by a job exceeds the available number that’s calculated by using the 24-hour rolling limit,
+an exception is thrown. For example, if your async job requires 10,000 method executions and the available 24-hour rolling limit is
+9,500, you get the AsyncApexExecutions Limit exceeded exception. The license types that count toward this limit include full
+Salesforce and Salesforce Platform user licenses, App Subscription user licenses, Chatter Only users, Identity users, and Company
+Communities users.
+
+Note:
+
+**•** Future jobs queued by a transaction aren’t processed if the transaction rolls back.
+
+**•** Future method jobs queued before a Salesforce service maintenance downtime remain in the queue. After service downtime
+ends and when system resources become available, the queued future method jobs are executed. If a future method was
+running when downtime occurred, the future method execution is rolled back and restarted after the service comes back up.
+
+Testing Future Methods
+
+To test methods defined with the `Future` [annotation, call the class containing the method in a startTest(), stopTest() code block. All](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_startTest)
+asynchronous calls made after the `startTest` method are collected by the system. When `stopTest` is executed, all asynchronous
+processes are run synchronously.
+
+For our example, here’s the test class.
+
+```
+   @IsTest
+
+   private class MixedDMLFutureTest {
+
+      @IsTest static void test1() {
+
+        User thisUser = [SELECT Id FROM User WHERE Id = :UserInfo.getUserId() WITH
+
+   USER_MODE];
+
+        // System.runAs() allows mixed DML operations in test context
+
+        System.runAs(thisUser) {
+
+           // startTest/stopTest block to run future method synchronously
+
+           Test.startTest();
+
+           MixedDMLFuture.useFutureMethod();
+
+           Test.stopTest();
+
+        }
+
+        // The future method will run after Test.stopTest();
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+        // Verify account is inserted
+
+        Account[] accts = [SELECT Id from Account WHERE Name='Acme' WITH USER_MODE];
+
+        Assert.areEqual(1, accts.size());
+
+        // Verify user is inserted
+
+        List<User> users = [SELECT Id from User WHERE username='mruiz@awcomputing.com'
+
+   WITH USER_MODE];
+
+        Assert.areEqual(1, users.size());
+
+      }
+
+   }
+
+```
+
+Future Method Performance Best Practices
+
+Salesforce uses a queue-based framework to handle asynchronous processes from such sources as future methods and batch Apex. This
+queue is used to balance request workload across organizations.To ensure that your organization is efficiently using the queue for your
+asynchronous processes:
+
+**•** Avoid adding large numbers of future methods to the asynchronous queue, if possible. If more than 2,000 unprocessed requests
+from a single organization are in the queue, any additional requests from the same organization will be delayed while the queue
+handles requests from other organizations.
+
+**•** Make sure that future methods run as fast as possible. To ensure fast execution of batch jobs, minimize web service callout times
+and tune queries used in your future methods. The longerthe future method runs, the more likely other queued requests are delayed
+when there are many requests in the queue.
+
+**•** Test your future methods at scale. To help determine if delays can occur, test by using an environment that generates the maximum
+number of future methods that you expect to handle.
+
+**•** Consider using batch Apex instead of future methods to process large numbers of records.
+
+#### Exposing Apex Methods as SOAP Web Services
+
+You can expose your Apex methods as SOAP web services so that external applications can access your code and your application.
+
+To expose your Apex methods, use Webservice Methods.
+
+Tip:
+
+**•** Apex SOAP web services allow an external application to invoke Apex methods through SOAP Web services. Apex callouts
+enable Apex to invoke external web or HTTP services.
+
+**•** Apex REST API exposes your Apex classes and methods as REST web services. See Exposing Apex Classes as REST Web Services.
+
+Webservice Methods
+
+Exposing Data with Webservice Methods
+
+Considerations for Using the webservice Keyword
+
+Overloading Web Service Methods
+
+
+Apex Developer Guide Invoking Apex
+
+##### Webservice Methods
+
+Apex class methods can be exposed as custom SOAP Web service calls. This allows an external application to invoke an Apex Web service
+to perform an action in Salesforce. Use the `webservice` keyword to define these methods. For example:
+
+```
+   global class MyWebService {
+
+      webservice static Id makeContact(String contactLastName, Account a) {
+
+        Contact c = new Contact(lastName = contactLastName, AccountId = a.Id);
+
+        insert c;
+
+        return c.id;
+
+      }
+
+   }
+
+```
+
+A developer of an external application can integrate with an Apex class containing `webservice` methods by generating a WSDL for
+the class. To generate a WSDL from an Apex class detail page:
+
+**1.** In the application from Setup, enter “Apex Classes” in the `Quick Find` box, then select **Apex Classes** .
+
+**2.** Click the name of a class that contains `webservice` methods.
+
+**3.** Click **Generate WSDL** .
+
+##### Exposing Data with Webservice Methods
+
+Invoking a custom `webservice` method always uses system context. Consequently, the current user's credentials are not used, and
+any user who has access to these methods can use their full power, regardless of permissions, field-level security, or sharing rules.
+Developers who expose methods with the `webservice` keyword should therefore take care that they are not inadvertently exposing
+any sensitive data.
+
+Warning: Apex class methods that are exposed through the API with the `webservice` keyword don't enforce object permissions
+and field-level security by default. We recommend that you make use of the appropriate object or field describe result methods
+[to check the current user’s access level on the objects and fields that the webservice method is accessing. See DescribeSObjectResult](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[Class and DescribeFieldResult Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+
+Also, sharing rules (record-level access) are enforced only when declaring a class with the `with sharing` keyword. This
+requirement applies to all Apex classes, including to classes that contain webservice methods. To enforce sharing rules for webservice
+methods, declare the class that contains these methods with the `with sharing` keyword. See Use the with sharing, without
+sharing, and inherited sharing Keywords.
+
+##### Considerations for Using the webservice Keyword
+
+When using the `webservice` keyword, keep the following considerations in mind:
+
+**•** Use the `webservice` keyword to define top-level methods and outer class methods. You can’t use the `webservice` keyword
+to define a class or an inner class method.
+
+**•** You cannot use the `webservice` keyword to define an interface, or to define an interface's methods and variables.
+
+**•** System-defined enums cannot be used in Web service methods.
+
+**•** You cannot use the `webservice` keyword in a trigger.
+
+**•** All classes that contain methods defined with the `webservice` keyword must be declared as `global` . If a method or inner
+class is declared as `global`, the outer, top-level class must also be defined as `global` .
+
+**•** Methods defined with the `webservice` keyword are inherently global. Any Apex code that has access to the class can use these
+methods. You can consider the `webservice` keyword as a type of access modifier that enables more access than `global` .
+
+**•** Define any method that uses the `webservice` keyword as `static` .
+
+
+Apex Developer Guide Invoking Apex
+
+**•** You cannot deprecate `webservice` methods or variables in managed package code.
+
+**•** Because there are no SOAP analogs for certain Apex elements, methods defined with the `webservice` keyword cannot take the
+following elements as parameters. While these elements can be used within the method, they also cannot be marked as return
+values.
+
+**–** Maps
+
+**–** Sets
+
+**–** Pattern objects
+
+**–** Matcher objects
+
+**–** Exception objects
+
+**•** Use the `webservice` keyword with any member variables that you want to expose as part of a Web service. Do not mark these
+member variables as `static` .
+
+Considerations for calling Apex SOAP Web service methods:
+
+**•** Salesforce denies access to Web service and `executeanonymous` requests from an AppExchange package that has
+`Restricted` access.
+
+**•** Apex classes and triggers saved (compiled) using API version 15.0 and higher produce a runtime error if you assign a String value
+that is too long for the field.
+
+**•** If a login call is made from the API for a user with an expired or temporary password, subsequent API calls to custom Apex SOAP
+Web service methods aren't supported and result in the INVALID_OPERATION_WITH_EXPIRED_PASSWORD error. Reset the user's
+password and make a call with an unexpired password to be able to call Apex Web service methods.
+
+The following example shows a class with Web service member variables and a Web service method:
+
+```
+   global class SpecialAccounts {
+
+     global class AccountInfo {
+
+      webservice String AcctName;
+
+      webservice Integer AcctNumber;
+
+     }
+
+     webservice static Account createAccount(AccountInfo info) {
+
+      Account acct = new Account();
+
+      acct.Name = info.AcctName;
+
+      acct.AccountNumber = String.valueOf(info.AcctNumber);
+
+      insert acct;
+
+      return acct;
+
+     }
+
+     webservice static Id [] createAccounts(Account parent,
+
+        Account child, Account grandChild) {
+
+        insert parent;
+
+        child.parentId = parent.Id;
+
+        insert child;
+
+        grandChild.parentId = child.Id;
+
+        insert grandChild;
+
+        Id [] results = new Id[3];
+
+        results[0] = parent.Id;
+
+        results[1] = child.Id;
+
+        results[2] = grandChild.Id;
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+        return results;
+
+      }
+
+   }
+
+   // Test class for the previous class.
+
+   @isTest
+
+   private class SpecialAccountsTest {
+
+     testMethod static void testAccountCreate() {
+
+      SpecialAccounts.AccountInfo info = new SpecialAccounts.AccountInfo();
+
+      info.AcctName = 'Manoj Cheenath';
+
+      info.AcctNumber = 12345;
+
+      Account acct = SpecialAccounts.createAccount(info);
+
+      System.assert(acct != null);
+
+     }
+
+   }
+
+```
+
+You can invoke this Web service using AJAX. For more information, see Apex in AJAX on page 345.
+
+##### Overloading Web Service Methods
+
+SOAP and WSDL do not provide good support for overloading methods. Consequently, Apex does not allow two methods marked with
+the `webservice` keyword to have the same name. Web service methods that have the same name in the same class generate a
+compile-time error.
+
+#### Exposing Apex Classes as REST Web Services
+
+You can expose your Apex classes and methods so that external applications can access your code and your application through the
+REST architecture.
+
+This is an overview of how to expose your Apex classes as REST web services. You'll learn about the class and method annotations and
+see code samples that show you how to implement this functionality.
+
+Tip: Apex SOAP web services allow an external application to invoke Apex methods through SOAP web services. See Exposing
+Apex Methods as SOAP Web Services.
+
+##### Introduction to Apex REST
+
+Apex REST Annotations
+
+Apex REST Methods
+
+Exposing Data with Apex REST Web Service Methods
+Invoking a custom Apex REST Web service method always uses system context. Consequently, the current user's credentials are not
+used, and any user who has access to these methods can use their full power, regardless of permissions, field-level security, or sharing
+rules. Developers who expose methods using the Apex REST annotations should therefore take care that they are not inadvertently
+exposing any sensitive data.
+
+Apex REST Code Samples
+
+##### Introduction to Apex REST
+
+You can expose your Apex class and methods so that external applications can access your code and your application through the REST
+architecture. This is done by defining your Apex class with the `@RestResource` annotation to expose it as a REST resource. Similarly,
+add annotations to your methods to expose them through REST. For example, you can add the `@HttpGet` annotation to your method
+
+
+Apex Developer Guide Invoking Apex
+
+to expose it as a REST resource that can be called by an HTTP `GET` request. For more information, see Apex REST Annotations on page
+
+These are the classes containing methods and properties you can use with Apex REST.
+
+**Class** **Description**
+
+[RestContext Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_restcontext.htm) Contains the `RestRequest` and `RestResponse` objects.
+
+`[request](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_restcontext.htm)` Use the `System.RestRequest` class to access and pass
+request data in a RESTful Apex method.
+
+`[response](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_restcontext.htm)` Represents an object used to pass data from an Apex RESTful Web
+service method to an HTTP response.
+
+Governor Limits
+
+Calls to Apex REST classes count against the organization's API governor limits. All standard Apex governor limits apply to Apex REST
+classes. For example, the maximum request or response size is 6 MB for synchronous Apex or 12 MB for asynchronous Apex. For more
+information, see Execution Governors and Limits.
+
+Authentication
+
+Apex REST supports these authentication mechanisms:
+
+**•** OAuth 2.0
+
+**•** Session ID
+
+See _[Step Two: Set Up Authorization](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/quickstart_oauth.htm)_ in the _REST API Developer Guide_ .
+
+##### Apex REST Annotations
+
+Use these annotations to expose an Apex class as a RESTful Web service.
+
+**•** `@ReadOnly`
+
+**•** `@RestResource(urlMapping='/` _**`yourUrl`**_ `')`
+
+**•** `@HttpDelete`
+
+**•** `@HttpGet`
+
+**•** `@HttpPatch`
+
+**•** `@HttpPost`
+
+**•** `@HttpPut`
+
+##### Apex REST Methods
+
+Apex REST supports two formats for representations of resources: JSON and XML. JSON representations are passed by default in the
+body of a request or response, and the format is indicated by the `Content-Type` property in the HTTP header. You can retrieve the
+body as a Blob from the HttpRequest object if there are no parameters to the Apex method. If parameters are defined in the Apex method,
+an attempt is made to deserialize the request body into those parameters. If the Apex method has a non-void return type, the resource
+representation is serialized into the response body.
+
+These return and parameter types are allowed:
+
+**•** Apex primitives (excluding sObject and Blob).
+
+
+Apex Developer Guide Invoking Apex
+
+**•** sObjects
+
+**•** Lists or maps of Apex primitives or sObjects (only maps with String keys are supported).
+
+**•** User-defined types that contain member variables of the types listed above.
+
+Note: Apex REST doesn’t support XML serialization and deserialization of Connect in Apex objects. Apex REST does support JSON
+serialization and deserialization of Connect in Apex objects. Also, some collection types, such as maps and lists, aren’t supported
+with XML. See Request and Response Data Considerations for details.
+
+Methods annotated with `@HttpGet` or `@HttpDelete` must have no parameters. This is because GET and DELETE requests have
+no request body, so there's nothing to deserialize.
+
+The @ReadOnly annotation supports the Apex REST annotations for all the HTTP requests: `@HttpDelete`, `@HttpGet`, `@HttpPatch`,
+
+`@HttpPost`, and `@HttpPut` .
+
+A single Apex class annotated with `@RestResource` can't have multiple methods annotated with the same HTTP request method.
+For example, the same class can't have two methods annotated with `@HttpGet` .
+
+Note: Apex REST currently doesn't support requests of Content-Type `multipart/form-data` .
+
+Apex REST Method Considerations
+
+Here are a few points to consider when you define Apex REST methods.
+
+**•** `RestRequest` and `RestResponse` objects are available by default in your Apex methods through the static `RestContext`
+object. This example shows how to access these objects through `RestContext` :
+
+```
+     RestRequest req = RestContext.request;
+
+     RestResponse res = RestContext.response;
+
+```
+
+**•** If the Apex method has no parameters, Apex REST copies the HTTP request body into the `RestRequest.requestBody`
+property. If the method has parameters, then Apex REST attempts to deserialize the data into those parameters and the data won't
+be deserialized into the `RestRequest.requestBody` property.
+
+**•** Apex REST uses similar serialization logic for the response. An Apex method with a non-void return type has the return value serialized
+into `RestResponse.responseBody` . If the return type includes fields with null values, those fields aren’t serialized into the
+response body.
+
+**•** Apex REST methods can be used in managed and unmanaged packages. When calling Apex REST methods that are contained in a
+managed package, you must include the managed package namespace in the REST call URL. For example, if the class is contained
+in a managed package namespace called `packageNamespace` and the Apex REST methods use a URL mapping of
+`/MyMethod/*`, the URL used via REST to call these methods would be of the form
+`https://` _`instance`_ `.salesforce.com/services/apexrest/packageNamespace/MyMethod/` . For more
+information about managed packages, see What is a Package?.
+
+**•** If a login call is made from the API for a user with an expired or temporary password, subsequent API calls to custom Apex REST Web
+service methods aren't supported and result in the MUTUAL_AUTHENTICATION_FAILED error. Reset the user's password and make
+a call with an unexpired password to be able to call Apex Web service methods.
+
+**•** If the heap limit is exceeded in the process of serialization, an `HTTP 200` code is returned and the error `{"status":"some`
+`error occurred"}` is appended to the partial JSON response. Returning a collection of sObjects from a REST method involves
+buffering the JSON serialized form of each sObject. Heap and CPU limits may not be encountered until after the HTTP response
+header and initial data has started streaming back to the client. To gain control of the statusCode and the `responseBody`, use
+a `RestResponse` instead of directly returning sObjects.
+
+
+Apex Developer Guide Invoking Apex
+
+User-Defined Types
+
+You can use user-defined types for parameters in your Apex REST methods. Apex REST deserializes request data into `public`, `private`,
+or `global` class member variables of the user-defined type, unless the variable is declared as `static` or `transient` . For example,
+an Apex REST method that contains a user-defined type parameter might look like the following:
+
+```
+   @RestResource(urlMapping='/user_defined_type_example/*')
+
+   global with sharing class MyOwnTypeRestResource {
+
+      @HttpPost
+
+      global static MyUserDefinedClass echoMyType(MyUserDefinedClass ic) {
+
+        return ic;
+
+      }
+
+      global class MyUserDefinedClass {
+
+        global String string1;
+
+        global String string2 { get; set; }
+
+        private String privateString;
+
+        global transient String transientString;
+
+      }
+
+   }
+
+```
+
+Valid JSON and XML request data for this method would look like:
+
+```
+   {
+
+      "ic" : {
+
+             "string1" : "value for string1",
+
+             "string2" : "value for string2",
+
+             "privateString" : "value for privateString"
+
+           }
+
+   }
+
+   <request>
+
+      <ic>
+
+        <string1>value for string1</string1>
+
+        <string2>value for string2</string2>
+
+        <privateString>value for privateString</privateString>
+
+      </ic>
+
+   </request>
+
+```
+
+The `public`, `private`, or `global` class member variables must be types allowed by Apex REST:
+
+**•** Apex primitives (excluding sObject and Blob).
+
+**•** sObjects
+
+**•** Lists or maps of Apex primitives or sObjects (only maps with String keys are supported).
+
+When creating user-defined types used as Apex REST method parameters, avoid introducing any class member variable definitions that
+result in cycles (definitions that depend on each other) at run time in your user-defined types. Here's a simple example:
+
+```
+   @RestResource(urlMapping='/CycleExample/*')
+
+   global with sharing class ApexRESTCycleExample {
+
+      @HttpGet
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+      global static MyUserDef1 doCycleTest() {
+
+        MyUserDef1 def1 = new MyUserDef1();
+
+        MyUserDef2 def2 = new MyUserDef2();
+
+        def1.userDef2 = def2;
+
+        def2.userDef1 = def1;
+
+        return def1;
+
+      }
+
+      global class MyUserDef1 {
+
+        MyUserDef2 userDef2;
+
+      }
+
+      global class MyUserDef2 {
+
+        MyUserDef1 userDef1;
+
+      }
+
+   }
+
+```
+
+The code in the previous example compiles, but at run time when a request is made, Apex REST detects a cycle between instances of
+`def1` and `def2`, and generates an HTTP 400 status code error response.
+
+Request and Response Data Considerations
+
+Some additional things to keep in mind for the request data for your Apex REST methods:
+
+**•** The names of the Apex parameters matter, although the order doesn’t. For example, valid requests in both XML and JSON look like
+the following:
+
+```
+     @HttpPost
+
+     global static void myPostMethod(String s1, Integer i1, Boolean b1, String s2)
+
+     {
+
+      "s1" : "my first string",
+
+      "i1" : 123,
+
+      "s2" : "my second string",
+
+      "b1" : false
+
+     }
+
+     <request>
+
+      <s1>my first string</s1>
+
+      <i1>123</i1>
+
+      <s2>my second string</s2>
+
+      <b1>false</b1>
+
+     </request>
+
+```
+
+**•** The URL patterns _`URLpattern`_ and _`URLpattern`_ /* match the same URL. If one class has a `urlMapping` of _`URLpattern`_
+and another class has a `urlMapping` of _`URLpattern`_ /*, a REST request for this URL pattern resolves to the class that was saved
+first.
+
+**•** Some parameter and return types can't be used with XML as the Content-Type for the request or as the accepted format for the
+response, and hence, methods with these parameter or return types can't be used with XML. Lists, maps, or collections of collections,
+for example, `List<List<String>>` aren't supported. However, you can use these types with JSON. If the parameter list
+includes a type that's invalid for XML and XML is sent, an HTTP 415 status code is returned. If the return type is a type that's invalid
+for XML and XML is the requested response format, an HTTP 406 status code is returned.
+
+
+Apex Developer Guide Invoking Apex
+
+**•** For request data in either JSON or XML, valid values for Boolean parameters are: `true`, `false` (both are treated as case-insensitive),
+`1` and `0` (the numeric values, not strings of “1” or “0”). Any other values for Boolean parameters result in an error.
+
+**•** If the JSON or XML request data contains multiple parameters of the same name, this results in an HTTP 400 status code error response.
+For example, if your method specifies an input parameter named `x`, the following JSON request data results in an error:
+
+```
+     {
+
+       "x" : "value1",
+
+       "x" : "value2"
+
+     }
+
+```
+
+Similarly, for user-defined types, if the request data includes data for the same user-defined type member variable multiple times,
+this results in an error. For example, given this Apex REST method and user-defined type:
+
+```
+     @RestResource(urlMapping='/DuplicateParamsExample/*')
+
+     global with sharing class ApexRESTDuplicateParamsExample {
+
+       @HttpPost
+
+       global static MyUserDef1 doDuplicateParamsTest(MyUserDef1 def) {
+
+          return def;
+
+       }
+
+       global class MyUserDef1 {
+
+          Integer i;
+
+       }
+
+     }
+
+```
+
+The following JSON request data also results in an error:
+
+```
+     {
+
+       "def" : {
+
+             "i" : 1,
+
+             "i" : 2
+
+            }
+
+     }
+
+```
+
+**•** If you must specify a null value for one of your parameters in your request data, you can either omit the parameter entirely or specify
+a null value. In JSON, you can specify `null` as the value. In XML, you must use the
+`http://www.w3.org/2001/XMLSchema-instance` namespace with a nil value.
+
+**•** For XML request data, you must specify an XML namespace that references any Apex namespace your method uses. So, for example,
+if you define an Apex REST method such as:
+
+```
+     @RestResource(urlMapping='/namespaceExample/*')
+
+     global class MyNamespaceTest {
+
+       @HttpPost
+
+       global static MyUDT echoTest(MyUDT def, String extraString) {
+
+          return def;
+
+       }
+
+       global class MyUDT {
+
+          Integer count;
+
+       }
+
+     }
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+You can use the following XML request data:
+
+```
+     <request>
+
+      <def xmlns:MyUDT="http://soap.sforce.com/schemas/class/MyNamespaceTest">
+
+       <MyUDT:count>23</MyUDT:count>
+
+      </def>
+
+      <extraString>test</extraString>
+
+     </request>
+
+```
+
+Response Status Codes
+
+The status code of a response is set automatically. This table lists some HTTP status codes and what they mean in the context of the
+HTTP request method. For the full list of response status codes, see `[statusCode](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_restresponse.htm#apex_System_RestResponse_statusCode)` .
+
+**Request Method** **Response Status** **Description**
+**Code**
+
+GET 200 The request was successful.
+
+PATCH 200 The request was successful and the return type is non-void.
+
+PATCH 204 The request was successful and the return type is void.
+
+DELETE, GET, PATCH, POST, PUT 400 An unhandled user exception occurred.
+
+DELETE, GET, PATCH, POST, PUT 403 You don't have access to the specified Apex class.
+
+DELETE, GET, PATCH, POST, PUT 404 The URL is unmapped in an existing `@RestResource`
+annotation.
+
+DELETE, GET, PATCH, POST, PUT 404 The URL extension is unsupported.
+
+DELETE, GET, PATCH, POST, PUT 404 The Apex class with the specified namespace couldn't be found.
+
+DELETE, GET, PATCH, POST, PUT 405 The request method doesn't have a corresponding Apex method.
+
+DELETE, GET, PATCH, POST, PUT 406 The Content-Type property in the header was set to a value other
+than JSON or XML.
+
+DELETE, GET, PATCH, POST, PUT 406 The header specified in the HTTP request isn’t supported.
+
+GET, PATCH, POST, PUT 406 The XML return type specified for format is unsupported.
+
+DELETE, GET, PATCH, POST, PUT 415 The XML parameter type is unsupported.
+
+DELETE, GET, PATCH, POST, PUT 415 The Content-Header Type specified in the HTTP request header
+is unsupported.
+
+DELETE, GET, PATCH, POST, PUT 500 An unhandled Apex exception occurred.
+
+SEE ALSO:
+
+JSON Support
+
+XML Support
+
+
+Apex Developer Guide Invoking Apex
+
+##### Exposing Data with Apex REST Web Service Methods
+
+Invoking a custom Apex REST Web service method always uses system context. Consequently, the current user's credentials are not
+used, and any user who has access to these methods can use their full power, regardless of permissions, field-level security, or sharing
+rules. Developers who expose methods using the Apex REST annotations should therefore take care that they are not inadvertently
+exposing any sensitive data.
+
+Apex class methods that are exposed through the Apex REST API don’t enforce object permissions and field-level security by default. To
+enforce object or field-level security while using SOQL SELECT statements in Apex, use the `WITH USER_MODE` clause. You can strip
+user-inaccessible fields from query and subquery results, or remove inaccessible sObject fields before DML operations by using the
+`Security.stripInaccessible` method. You can also use the appropriate object or field describe result methods to check the
+[current user’s access level on the objects and fields that the Apex REST API method is accessing. See DescribeSObjectResult Class and](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_sobject_describe.htm)
+[DescribeFieldResult Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_fields_describe.htm)
+
+Also, sharing rules (record-level access) are enforced only when declaring a class with the `with sharing` keyword. This requirement
+applies to all Apex classes, including to classes that are exposed through Apex REST API. To enforce sharing rules for Apex REST API
+methods, declare the class that contains these methods with the `with sharing` keyword. See Using the `with sharing` or
+`without sharing` Keywords.
+
+SEE ALSO:
+
+Apex Security and Sharing
+
+##### Apex REST Code Samples
+
+These code samples show you how to expose Apex classes and methods through the REST architecture and how to call those resources
+from a client.
+
+###### Apex REST Basic Code Sample
+
+This sample shows how to implement a simple REST API in Apex with three HTTP request methods to delete, retrieve, and update
+a record.
+
+Apex REST Code Sample Using RestRequest
+This sample shows you how to add an attachment to a record by using the RestRequest object.
+
+###### Apex REST Basic Code Sample
+
+This sample shows how to implement a simple REST API in Apex with three HTTP request methods to delete, retrieve, and update a
+record.
+
+For more information about authenticating with `cURL` [, see the Quick Start section of the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/quickstart.htm) _REST API Developer Guide_ .
+
+**1.** Create an Apex class in your instance from Setup. Enter _`Apex Classes`_ in the `Quick Find` box, select **Apex Classes**, and
+then click **New** . Add this code to the new Apex class:
+
+```
+     @RestResource(urlMapping='/Account/*')
+
+     global with sharing class MyRestResource {
+
+       @HttpDelete
+
+       global static void doDelete() {
+
+          RestRequest req = RestContext.request;
+
+          RestResponse res = RestContext.response;
+
+         String accountId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
+
+```
+
+
+Apex Developer Guide Invoking Apex
+
+```
+          Account account = [SELECT Id FROM Account WHERE Id = :accountId];
+
+          delete account;
+
+       }
+
+       @HttpGet
+
+       global static Account doGet() {
+
+          RestRequest req = RestContext.request;
+
+          RestResponse res = RestContext.response;
+
+         String accountId = req.requestURI.substring(req.requestURI.lastIndexOf('/')+1);
+
+          Account result = [SELECT Id, Name, Phone, Website FROM Account WHERE Id =
+
+     :accountId];
+
+          return result;
+
+       }
+
+      @HttpPost
+
+       global static String doPost(String name,
+
+          String phone, String website) {
+
+          Account account = new Account();
+
+          account.Name = name;
+
+          account.phone = phone;
+
+          account.website = website;
+
+          insert account;
+
+          return account.Id;
+
+       }
+
+     }
+
+```
+
+**2.** To call the `doGet` method from a client, open a command-line window and execute the following `cURL` command to retrieve
+an account by ID:
+
+```
+    curl -H "Authorization: Bearer sessionId "
+
+    "https:// instance .salesforce.com/services/apexrest/Account/ accountId "
+
+```
+
+**•** Replace _`sessionId`_ with the `<sessionId>` element that you noted in the login response.
+
+**•** Replace _`instance`_ with your `<serverUrl>` element.
+
+**•** Replace _`accountId`_ with the ID of an account which exists in your organization.
+
+After calling the `doGet` method, Salesforce returns a JSON response with data such as the following:
+
+```
+     {
+
+      "attributes" :
+
+       {
+
+         "type" : "Account",
+
+         "url" : "/services/data/v22.0/sobjects/Account/ accountId "
+
+       },
+
+      "Id" : " accountId ",
+
+      "Name" : "Acme"
+
+     }
+
+```
+
+Note: The `cURL` examples in this section don't use a namespaced Apex class so you don’t see the namespace in the URL.
+
+
+Apex Developer Guide Invoking Apex
+
+**3.** Create a file called `account.txt` to contain the data for the account you will create in the next step.
+
+```
+     {
+
+      "name" : "Wingo Ducks",
+
+      "phone" : "707-555-1234",
+
+      "website" : "www.wingo.ca.us"
+
+     }
+
+```
+
+**4.** Using a command-line window, execute the following `cURL` command to create a new account:
+
+```
+    curl -H "Authorization: Bearer sessionId " -H "Content-Type: application/json" -d
+
+    @account.txt "https:// instance .salesforce.com/services/apexrest/Account/"
+
+```
+
+After calling the `doPost` method, Salesforce returns a response with data such as the following:
+
+```
+     " accountId "
+
+```
+
+The _`accountId`_ is the ID of the account you just created with the POST request.
+
+**5.** Using a command-line window, execute the following `cURL` command to delete an account by specifying the ID:
+
+```
+    curl —X DELETE —H "Authorization: Bearer sessionId "
+
+    "https:// instance .salesforce.com/services/apexrest/Account/ accountId "
+
+###### Apex REST Code Sample Using RestRequest
+
+```
+
+This sample shows you how to add an attachment to a record by using the RestRequest object.
+
+For more information about authenticating with `cURL` [, see the Quick Start section of the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/quickstart.htm) _REST API Developer Guide_ . In this code, the
+binary file data is stored in the RestRequest object, and the Apex service class accesses the binary data in the RestRequest object .
+
 **1.** Create an Apex class in your org from Setup by entering _`Apex Classes`_ in the `Quick Find` box, then selecting **Apex Classes** .
 Click **New** and add the following code to your new class:
 
@@ -13214,13604 +18570,3 @@ To retrieve the User record from the org cache, execute the `Org.get(cacheBuilde
 
 When you run the `get()` method, Salesforce searches the cache using a unique key that consists of the strings 00541000000ek4c and
 UserInfoCache. If Salesforce finds a cached value, it returns it. For this example, the cached value is a User record associated with the ID
-00541000000ek4c. If Salesforce doesn’t find a value, it executes the `doLoad(String var)` method of `UserInfoCache` again
-(and reruns the SOQL query), caches the User record, and then returns it.
-
-CacheBuilder Coding Requirements
-
-Follow these requirements when you code a class that implements the `CacheBuilder` interface.
-
-**•** The `doLoad(String var)` method must take a `String` parameter, even if you do not use the parameter in the method’s
-code. Salesforce uses the string, along with the class name, to build a unique key for the cached value.
-
-**•** The `doLoad(String var)` method can return any value, including null. If a null value is returned, it is delivered directly to the
-CacheBuilder consumer and **not** cached. CacheBuilder consumers are expected to handle null values gracefully. We recommend
-using null values to reflect a temporary failure to re-build the cache key.
-
-**•** The class that implements `CacheBuilder` must be non-static because Salesforce instantiates a new instance of the class and
-runs the `doLoad(String var)` method to create the cached value.
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
-
-##### Platform Cache Best Practices
-
-Platform Cache can greatly improve performance in your applications. However, it’s important to follow these guidelines to get the best
-cache performance. In general, it’s more efficient to cache a few large items than to cache many small items separately. Also be mindful
-of cache limits to prevent unexpected cache evictions.
-
-Evaluate the Performance Impact
-
-To test whether Platform Cache improves performance in your application, calculate the elapsed time with and without using the cache.
-Don’t rely on the Apex debug log timestamp for the execution time. Use the `System.currentTimeMillis()` method instead.
-For example, first call `System.currentTimeMillis()` to get the start time. Perform application logic, fetching the data from
-either the cache or another data source. Then calculate the elapsed time.
-
-```
-   long startTime = System.currentTimeMillis();
-
-   // Your code here
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-   long elapsedTime = System.currentTimeMillis() - startTime;
-
-   System.debug(elapsedTime);
-
-```
-
-Handle Cache Misses Gracefully
-
-Ensure that your code handles cache misses by testing cache requests that return null. To help with debugging, add logging information
-for cache operations.
-
-Alternatively, use the `Cache.CacheBuilder` interface, which checks for cache misses.
-
-```
-   public class CacheManager {
-
-      private Boolean cacheEnabled;
-
-      public void CacheManager() {
-
-        cacheEnabled = true;
-
-      }
-
-      public Boolean toggleEnabled() { // Use for testing misses
-
-        cacheEnabled = !cacheEnabled;
-
-        return cacheEnabled;
-
-      }
-
-      public Object get(String key) {
-
-        if (!cacheEnabled) return null;
-
-        Object value = Cache.Session.get(key);
-
-        if (value != null) System.debug(LoggingLevel.DEBUG, 'Hit for key ' + key);
-
-        return value;
-
-      }
-
-      public void put(String key, Object value, Integer ttl) {
-
-        if (!cacheEnabled) return;
-
-        Cache.Session.put(key, value, ttl);
-
-        // for redundancy, save to DB
-
-        System.debug(LoggingLevel.DEBUG, 'put() for key ' + key);
-
-      }
-
-      public Boolean remove(String key) {
-
-        if (!cacheEnabled) return false;
-
-        Boolean removed = Cache.Session.remove(key);
-
-        if (removed) {
-
-           System.debug(LoggingLevel.DEBUG, 'Removed key ' + key);
-
-           return true;
-
-        } else return false;
-
-      }
-
-   }
-
-```
-
-Group Cache Requests
-
-When possible, group cache requests, but be aware of caching limits. To help improve performance, perform cache operations on a list
-of keys rather than on individual keys. For example, if you know which keys are necessary to invoke a Visualforce page or perform a task
-in Apex, retrieve all keys at once. To retrieve multiple keys, call `get(keys)` in an initialization method.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Cache Larger Items
-
-It’s more efficient to cache a few large items than to cache many small items separately. Caching many small items decreases performance
-and increases overhead, including total serialization size, serialization time, cache commit time, and cache capacity usage.
-
-Don’t add many small items to the Platform Cache within one request. Instead, wrap data in larger items, such as lists. If a list is large,
-consider breaking it into multiple items. Here’s an example of what to avoid.
-
-```
-   // Don't do this!
-
-   public class MyController {
-
-      public void initCache() {
-
-        List<Account> accts = [SELECT Id, Name, Phone, Industry, Description FROM
-
-           Account limit 1000];
-
-        for (Integer i=0; i<accts.size(); i++) {
-
-           Cache.Org.put('acct' + i, accts.get(i));
-
-        }
-
-      }
-
-   }
-
-```
-
-Instead, wrap the data in a few reasonably large items without exceeding the limit on the size of single cached items.
-
-```
-   // Do this instead.
-
-   public class MyController {
-
-   public void initCache() {
-
-      List<Account> accts = [SELECT Id, Name, Phone, Industry, Description FROM
-
-        Account limit 1000];
-
-      Cache.Org.put('accts', accts);
-
-      }
-
-   }
-
-```
-
-Another good example of caching larger items is to encapsulate data in an Apex class. For example, you can create a class that wraps
-session data, and cache an instance of the class rather than the individual data items. Caching the class instance improves overall
-serialization size and performance.
-
-Be Aware of Cache Limits
-
-When you add items to the cache, be aware of the following limits.
-
-**Cache Partition Size Limit**
-When the cache partition limit is reached, keys are evicted until the cache is reduced to 100% capacity. Platform Cache uses a least
-recently used (LRU) algorithm to evict keys from the cache.
-
-**Local Cache Size Limit**
-
-When you add items to the cache, make sure that you are not exceeding local cache limits within a request. The local cache limit
-for the session cache is 500 KB and 1,000 KB for the org cache. If you exceed the local cache limit, items can be evicted from the local
-cache before the request has been committed. This eviction can cause unexpected misses and long serialization time and can waste
-resources.
-
-**Single Cached Item Size Limit**
-The size of individual cached items is limited to 100 KB. If the serialized size of an item exceeds this limit, the
-`Cache.ItemSizeLimitExceededException` exception is thrown. It’s a good practice to catch this exception and reduce
-the size of the cached item.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Use the Cache Diagnostics Page (Sparingly)
-
-To determine how much of the cache is used, check the Platform Cache Diagnostics page. To reach the Diagnostics page:
-
-**1.** Make sure that Cache Diagnostics is enabled for the user (on the User Detail page).
-
-**2.** On the Platform Cache Partition page, click the partition name.
-
-**3.** Click the link to the Diagnostics page for the partition.
-
-The Diagnostics page provides valuable information, including the capacity usage, keys, and serialized and compressed sizes of the
-cached items. The session cache and org cache have separate diagnostics pages. The session cache diagnostics are per session, and they
-don’t provide insight across all active sessions.
-
-Note: Generating the diagnostics page gathers all partition-related information and is an expensive operation. Use it sparingly.
-
-Minimize Expensive Operations
-
-Consider the following guidelines to minimize expensive operations.
-
-**•** Use `Cache.Org.getKeys()` and `Cache.Org.getCapacity()` sparingly. Both methods are expensive, because they
-traverse all partition-related information looking for or making calculations for a given partition.
-
-Note: `Cache.Session` usage is not expensive.
-
-**•** Avoid calling the `contains(key)` method followed by the `get(key)` method. If you intend to use the key value, simply call
-the `get(key)` method and make sure that the value is not equal to null.
-
-**•** Clear the cache only when necessary. Clearing the cache traverses all partition-related cache space, which is expensive. After clearing
-the cache, your application will likely regenerate the cache by invoking database queries and computations. This regeneration can
-be complex and extensive and impact your application’s performance.
-
-SEE ALSO:
-
-Platform Cache Limits
-
-_Apex Reference Guide_ [: CacheBuilder Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_cache_CacheBuilder.htm)
-
-#### Salesforce Knowledge Salesforce Knowledge is a knowledge base where users can easily create and manage content, known as articles, and quickly find and
-
-view the articles they need.
-
-Use Apex to access these Salesforce Knowledge features:
-
-Knowledge Management
-Users can write, publish, archive, and manage articles using Apex in addition to the Salesforce user interface.
-
-Promoted Search Terms
-Promoted search terms are useful for promoting a Salesforce Knowledge article that you know is commonly used to resolve a support
-issue when an end user’s search contains certain keywords. Users can promote an article in search results by associating keywords
-with the article in Apex (by using the SearchPromotionRule sObject) in addition to the Salesforce user interface.
-
-Suggest Salesforce Knowledge Articles
-Provide users with shortcuts to navigate to relevant articles before they perform a search. Call `Search.suggest(searchText,`
-`objectType, options)` to return a list of Salesforce Knowledge articles whose titles match a user’s search query string.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-##### Knowledge Management
-
-Users can write, publish, archive, and manage articles using Apex in addition to the Salesforce user interface.
-
-Use the methods in the `KbManagement.PublishingService` class to manage the following parts of the lifecycle of an article
-and its translations:
-
-**•** Publishing
-
-**•** Updating
-
-**•** Retrieving
-
-**•** Deleting
-
-**•** Submitting for translation
-
-**•** Setting a translation to complete or incomplete status
-
-**•** Archiving
-
-**•** Assigning review tasks for draft articles or translations
-
-Note: Date values are based on GMT.
-
-[To use the methods in this class, you must enable Salesforce Knowledge. See Salesforce Knowledge Implementation Guide for more](https://resources.docs.salesforce.com/260/latest/en-us/sfdc/pdf/salesforce_knowledge_implementation_guide.pdf)
-information on setting up Salesforce Knowledge.
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: PublishingService Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_knowledge_kbManagement.htm)
-
-##### Promoted Search Terms
-
-Promoted search terms are useful for promoting a Salesforce Knowledge article that you know is commonly used to resolve a support
-issue when an end user’s search contains certain keywords. Users can promote an article in search results by associating keywords with
-the article in Apex (by using the SearchPromotionRule sObject) in addition to the Salesforce user interface.
-
-Articles must be in published status (with a `PublishSatus` field value of `Online` ) for you to manage their promoted terms.
-
-Example: This code sample shows how to add a search promotion rule. This sample performs a query to get published articles
-of type MyArticle__kav. Next, the sample creates a SearchPromotionRule sObject to promote articles that contain the word
-“Salesforce” and assigns the first returned article to it. Finally, the sample inserts this new sObject.
-
-```
-      // Identify the article to promote in search results
-
-      List<MyArticle__kav> articles = [SELECT Id FROM MyArticle__kav WHERE
-
-      PublishStatus='Online' AND Language='en_US' AND Id=' Article Id '];
-
-      // Define the promotion rule
-
-      SearchPromotionRule s = new SearchPromotionRule(
-
-        Query='Salesforce',
-
-        PromotedEntity=articles[0]);
-
-      // Save the new rule
-
-      insert s;
-
-```
-
-To perform DML operations on the SearchPromotionRule sObject, you must enable Salesforce Knowledge.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-##### Suggest Salesforce Knowledge Articles
-
-Provide users with shortcuts to navigate to relevant articles before they perform a search. Call `Search.suggest(searchText,`
-`objectType, options)` to return a list of Salesforce Knowledge articles whose titles match a user’s search query string.
-
-[To return suggestions, enable Salesforce Knowledge. See Salesforce Knowledge Implementation Guide for more information on setting](https://resources.docs.salesforce.com/260/latest/en-us/sfdc/pdf/salesforce_knowledge_implementation_guide.pdf)
-up Salesforce Knowledge.
-
-This Visualforce page has an input field for searching articles or accounts. When the user presses the Suggest button, suggested records
-are displayed. If there are more than five results, the More results button appears. To display more results, click the button.
-
-```
-   <apex:page controller="SuggestionDemoController">
-
-      <apex:form >
-
-        <apex:pageBlock mode="edit" id="block">
-
-           <h1>Article and Record Suggestions</h1>
-
-           <apex:pageBlockSection >
-
-             <apex:pageBlockSectionItem >
-
-               <apex:outputPanel >
-
-                  <apex:panelGroup >
-
-                    <apex:selectList value="{!objectType}" size="1">
-
-                      <apex:selectOption itemLabel="Account" itemValue="Account"
-
-    />
-
-                       <apex:selectOption itemLabel="Article"
-
-   itemValue="KnowledgeArticleVersion" />
-
-                       <apex:actionSupport event="onchange" rerender="block"/>
-
-                    </apex:selectList>
-
-                  </apex:panelGroup>
-
-                  <apex:panelGroup >
-
-                    <apex:inputHidden id="nbResult" value="{!nbResult}" />
-
-                  <apex:outputLabel for="searchText">Search Text</apex:outputLabel>
-
-                    &nbsp;
-
-                    <apex:inputText id="searchText" value="{!searchText}"/>
-
-                    <apex:commandButton id="suggestButton" value="Suggest"
-
-   action="{!doSuggest}"
-
-                                rerender="block"/>
-
-                    <apex:commandButton id="suggestMoreButton" value="More
-
-   results..." action="{!doSuggestMore}"
-
-                              rerender="block" style="{!IF(hasMoreResults,
-
-    '', 'display: none;')}"/>
-
-                  </apex:panelGroup>
-
-               </apex:outputPanel>
-
-             </apex:pageBlockSectionItem>
-
-           </apex:pageBlockSection>
-
-           <apex:pageBlockSection title="Results" id="results" columns="1"
-
-   rendered="{!results.size>0}">
-
-             <apex:dataList value="{!results}" var="w" type="1">
-
-               Id: {!w.SObject['Id']}
-
-               <br />
-
-               <apex:panelGroup rendered="{!objectType=='KnowledgeArticleVersion'}">
-
-                  Title: {!w.SObject['Title']}
-
-               </apex:panelGroup>
-
-               <apex:panelGroup rendered="{!objectType!='KnowledgeArticleVersion'}">
-
-                  Name: {!w.SObject['Name']}
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-               </apex:panelGroup>
-
-               <hr />
-
-             </apex:dataList>
-
-           </apex:pageBlockSection>
-
-           <apex:pageBlockSection id="noresults" rendered="{!results.size==0}">
-
-             No results
-
-           </apex:pageBlockSection>
-
-           <apex:pageBlockSection rendered="{!LEN(searchText)>0}">
-
-             Search text: {!searchText}
-
-           </apex:pageBlockSection>
-
-        </apex:pageBlock>
-
-      </apex:form>
-
-   </apex:page>
-
-```
-
-This code is the custom Visualforce controller for the page:
-
-```
-   public class SuggestionDemoController {
-
-      public String searchText;
-
-      public String language = 'en_US';
-
-      public String objectType = 'Account';
-
-      public Integer nbResult = 5;
-
-      public Transient Search.SuggestionResults suggestionResults;
-
-      public String getSearchText() {
-
-        return searchText;
-
-      }
-
-      public void setSearchText(String s) {
-
-        searchText = s;
-
-      }
-
-      public Integer getNbResult() {
-
-        return nbResult;
-
-      }
-
-      public void setNbResult(Integer n) {
-
-        nbResult = n;
-
-      }
-
-      public String getLanguage() {
-
-        return language;
-
-      }
-
-      public void setLanguage(String language) {
-
-        this.language = language;
-
-      }
-
-      public String getObjectType() {
-
-        return objectType;
-
-      }
-
-      public void setObjectType(String objectType) {
-
-        this.objectType = objectType;
-
-      }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      public List<Search.SuggestionResult> getResults() {
-
-        if (suggestionResults == null) {
-
-           return new List<Search.SuggestionResult>();
-
-        }
-
-        return suggestionResults.getSuggestionResults();
-
-      }
-
-      public Boolean getHasMoreResults() {
-
-        if (suggestionResults == null) {
-
-           return false;
-
-        }
-
-        return suggestionResults.hasMoreResults();
-
-      }
-
-      public PageReference doSuggest() {
-
-        nbResult = 5;
-
-        suggestAccounts();
-
-        return null;
-
-      }
-
-      public PageReference doSuggestMore() {
-
-        nbResult += 5;
-
-        suggestAccounts();
-
-        return null;
-
-      }
-
-      private void suggestAccounts() {
-
-        Search.SuggestionOption options = new Search.SuggestionOption();
-
-        Search.KnowledgeSuggestionFilter filters = new Search.KnowledgeSuggestionFilter();
-
-        if (objectType=='KnowledgeArticleVersion') {
-
-           filters.setLanguage(language);
-
-           filters.setPublishStatus('Online');
-
-        }
-
-        options.setFilter(filters);
-
-        options.setLimit(nbResult);
-
-        suggestionResults = Search.suggest(searchText, objectType, options);
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-[Search.suggest(searchQuery,sObjectType,suggestions)](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_search.htm)
-
-#### Salesforce Files
-
-Use Apex to customize the behavior of Salesforce Files.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-##### Customize File Downloads
-
-You can customize the behavior of files when users attempt to download them using an Apex callback. ContentVersion supports
-modified file behavior, such as antivirus scanning and information rights management (IRM), after the download operation. File
-download customization is available in API version 39.0 and later.
-
-##### Custom File Download Examples
-
-You can use Apex to customize the behavior of files upon attempted download. These examples assume that only one file is being
-downloaded. File download customization is available in API version 39.0 and later.
-
-##### Customize File Downloads
-
-You can customize the behavior of files when users attempt to download them using an Apex callback. ContentVersion supports modified
-file behavior, such as antivirus scanning and information rights management (IRM), after the download operation. File download
-customization is available in API version 39.0 and later.
-
-Customization code runs before download and determines whether the download can proceed.
-
-The `Sfc` namespace contains Apex objects for customizing the behavior of Salesforce Files before they are downloaded.
-`ContentDownloadHandlerFactory` provides an interface for customizing file downloads. The `ContentDownloadHandler`
-class defines values related to whether download is allowed, and what to do otherwise. The `ContentDownloadContext` enum
-is the context in which the download takes place.
-
-You can use Apex to customize multiple-file downloads from the Content tab in Salesforce Classic. The Apex function parameter List<ID>
-handles a list of ContentVersion IDs.
-
-Customization also works on content packs and content deliveries. List<ID> is a list of the version IDs in a ContentPack. Setting
-`isDownloadAllowed = false` on a multi-file or ContentPack download causes the entire download to fail. You can pass a list
-of the problem files back to an error page via URL parameters in `redirectUrl` .
-
-Example:
-
-**•** Prevent a file from downloading based on the user profile, device being used, or file type and size.
-
-**•** Apply IRM control to track information, such as the number of times a file has been downloaded.
-
-**•** Flag suspicious files before download, and redirect them for antivirus scanning.
-
-Flow Execution
-
-When a download is triggered either from the UI, Connect API, or an sObject call retrieving `ContentVersion.VersionData`,
-implementations of the `Sfc.ContentDownloadHandlerFactory` are looked up. If no implementation is found, download
-proceeds. Otherwise, the user is redirected to what has been defined in the `ContentDownloadHandler#redirectUrl`
-property. If several implementations are found, they are cascade handled (ordered by name) and the first one for which the download
-isn’t allowed is considered.
-
-Note: If a SOAP API operation triggers a download, it goes through the Apex class that checks whether the download is allowed.
-If a download isn’t allowed, a redirection can’t be handled, and an exception containing an error message is returned instead.
-
-##### Custom File Download Examples
-
-You can use Apex to customize the behavior of files upon attempted download. These examples assume that only one file is being
-downloaded. File download customization is available in API version 39.0 and later.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Example: This example demonstrates a system that requires downloads to go through IRM control for some users. For a Modify
-All Data (MAD) user who’s allowed to download files, and whose user ID is `005xx` :
-
-```
-      // Allow customization of the content Download experience
-
-      public class ContentDownloadHandlerFactoryImpl implements
-
-      Sfc.ContentDownloadHandlerFactory {
-
-      public Sfc.ContentDownloadHandler getContentDownloadHandler(List<ID> ids,
-
-      Sfc.ContentDownloadContext context) {
-
-        Sfc.ContentDownloadHandler contentDownloadHandler = new Sfc.ContentDownloadHandler();
-
-        if(UserInfo.getUserId() == '005xx') {
-
-           contentDownloadHandler.isDownloadAllowed = true;
-
-           return contentDownloadHandler;
-
-        }
-
-        contentDownloadHandler.isDownloadAllowed = false;
-
-        contentDownloadHandler.downloadErrorMessage = 'This file needs to be IRM controlled.
-
-      You're not allowed to download it';
-
-        contentDownloadHandler.redirectUrl ='/apex/IRMControl?Id='+ids.get(0);
-
-        return contentDownloadHandler;
-
-      }
-
-      }
-
-```
-
-Note: To refer to a MAD user profile, you can use `UserInfo.getProfileId()` instead of
-`UserInfo.getUserId()` .
-
-In this example, `IRMControl` is a Visualforce page created for displaying a link to download a file from the IRM system. You
-need a controller for this page that calls your IRM system. As it’s processing the file, it gives an endpoint to download the file when
-it’s controlled. Your IRM system uses the sObject API to get the `VersionData` of this `ContentVersion` . Therefore, the IRM
-system needs the VersionID and must retrieve the VersionData using the MAD user.
-
-Your IRM system is at `http://irmsystem` and is expecting the VersionID as a query parameter. The IRM system returns a
-JSON response with the download endpoint in a `downloadEndpoint` value.
-
-```
-      public class IRMController {
-
-      private String downloadEndpoint;
-
-      public IRMController() {
-
-        downloadEndpoint = '';
-
-      }
-
-      public void applyIrmControl() {
-
-        String versionId = ApexPages.currentPage().getParameters().get('id');
-
-        Http h = new Http();
-
-        //Instantiate a new HTTP request, specify the method (GET) as well as the endpoint
-
-        HttpRequest req = new HttpRequest();
-
-        req.setEndpoint('http://irmsystem?versionId=' + versionId);
-
-        req.setMethod('GET');
-
-        // Send the request, and retrieve a response
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        HttpResponse r = h.send(req);
-
-        JSONParser parser = JSON.createParser(r.getBody());
-
-         while (parser.nextToken() != null) {
-
-           if ((parser.getCurrentToken() == JSONToken.FIELD_NAME) &&
-
-             (parser.getText() == 'downloadEndpoint')) {
-
-               parser.nextToken();
-
-               downloadEndpoint = parser.getText();
-
-               break;
-
-           }
-
-        }
-
-      }
-
-      public String getDownloadEndpoint() {
-
-        return downloadEndpoint;
-
-      }
-
-      }
-
-```
-
-Example: The following example creates a class that implements the `ContentDownloadHandlerFactory` interface
-and returns a download handler that prevents downloading a file to a mobile device.
-
-```
-      // Allow customization of the content Download experience
-
-      public class ContentDownloadHandlerFactoryImpl implements
-
-      Sfc.ContentDownloadHandlerFactory {
-
-      public Sfc.ContentDownloadHandler getContentDownloadHandler(List<ID> ids,
-
-      Sfc.ContentDownloadContext context) {
-
-        Sfc.ContentDownloadHandler contentDownloadHandler = new Sfc.ContentDownloadHandler();
-
-        if(context == Sfc.ContentDownloadContext.MOBILE) {
-
-           contentDownloadHandler.isDownloadAllowed = false;
-
-          contentDownloadHandler.downloadErrorMessage = 'Downloading a file from a mobile
-
-      device isn't allowed.';
-
-           return contentDownloadHandler;
-
-        }
-
-        contentDownloadHandler.isDownloadAllowed = true;
-
-        return contentDownloadHandler;
-
-      }
-
-```
-
-Example: You can also prevent downloading a file from a mobile device and require that a file must go through IRM control.
-
-```
-      // Allow customization of the content Download experience
-
-      public class ContentDownloadHandlerFactoryImpl implements
-
-      Sfc.ContentDownloadHandlerFactory {
-
-      public Sfc.ContentDownloadHandler getContentDownloadHandler(List<ID> ids,
-
-      Sfc.ContentDownloadContext context) {
-
-        Sfc.ContentDownloadHandler contentDownloadHandler = new Sfc.ContentDownloadHandler();
-
-        if(UserInfo.getUserId() == '005xx000001SvogAAC') {
-
-           contentDownloadHandler.isDownloadAllowed = true;
-
-           return contentDownloadHandler;
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        }
-
-        if(context == Sfc.ContentDownloadContext.MOBILE) {
-
-           contentDownloadHandler.isDownloadAllowed = false;
-
-          contentDownloadHandler.downloadErrorMessage = 'Downloading a file from a mobile
-
-      device isn't allowed.';
-
-           return contentDownloadHandler;
-
-        }
-
-        contentDownloadHandler.isDownloadAllowed = false;
-
-        contentDownloadHandler.downloadErrorMessage = 'This file needs to be IRM controlled.
-
-      You're not allowed to download it';
-
-        contentDownloadHandler.redirectUrl ='/apex/IRMControl?Id='+id.get(0);
-
-        return contentDownloadHandler;
-
-      }
-
-      }
-
-#### Salesforce Connect
-
-```
-
-Apex code can access external object data via any Salesforce Connect adapter. Use the Apex Connector Framework to develop a custom
-adapter for Salesforce Connect. The custom adapter can retrieve data from external systems and synthesize data locally. Salesforce
-Connect represents that data in Salesforce external objects, enabling users and the Lightning Platform to seamlessly interact with data
-that’s stored outside the Salesforce org.
-
-Apex Considerations for Salesforce Connect External Objects
-Apex code can access external object data via any Salesforce Connect adapter, but some requirements and limitations apply.
-
-Writable External Objects
-By default, external objects are read only, but you can make them writable. Doing so lets Salesforce users and APIs create, update,
-and delete data that’s stored outside the org by interacting with external objects within the org. For example, users can see all the
-orders that reside in an SAP system that are associated with an account in Salesforce. Then, without leaving the Salesforce user
-interface, they can place a new order or route an existing order. The relevant data is automatically created or updated in the SAP
-system.
-
-External Change Data Capture Packaging and Testing
-You can distribute External Change Data Capture components in managed packages, including a framework for testing your Apex
-triggers. Special behaviors and limitations apply to packaging and package installation.
-
-Mock SOQL Tests for External Objects
-You can mock SOQL query responses for external objects in Apex testing by using SOQL stub methods and a new test class. Use
-basic and joined SOQL queries against external objects and return mock records in a testing context.
-
-Get Started with the Apex Connector Framework
-To get started with your first custom adapter for Salesforce Connect, create two Apex classes: one that extends the
-`DataSource.Connection` class, and one that extends the `DataSource.Provider` class.
-
-Key Concepts About the Apex Connector Framework
-The `DataSource` namespace provides the classes for the Apex Connector Framework. Use the Apex Connector Framework to
-develop a custom adapter for Salesforce Connect. Then connect your Salesforce org to any data anywhere via the Salesforce Connect
-custom adapter.
-
-Considerations for the Apex Connector Framework
-Understand the limits and considerations for creating Salesforce Connect custom adapters with the Apex Connector Framework.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Apex Connector Framework Examples
-These examples illustrate how to use the Apex Connector Framework to create custom adapters for Salesforce Connect.
-
-SEE ALSO:
-
-_Salesforce Help_ [: Access External Data With Salesforce Connect](https://help.salesforce.com/s/articleView?id=platform.salesforce_connect.htm&type=5&language=en_US)
-
-[Salesforce Connect Learning Map](https://salesforceconnect-learningmap.herokuapp.com/)
-
-##### Apex Considerations for Salesforce Connect External Objects
-
-Apex code can access external object data via any Salesforce Connect adapter, but some requirements and limitations apply.
-
-**•** These features aren’t available for external objects.
-
-**–** Apex-managed sharing
-
-**–** Apex triggers (However, you can create triggers on external change data capture events from OData 4.0 connections.)
-
-**•** When developers use Apex to manipulate external object records, asynchronous timing and an active background queue minimize
-potential save conflicts. A specialized set of Apex methods and keywords handles potential timing issues with write execution. Apex
-also lets you retrieve the results of delete and upsert operations. Use the BackgroundOperation object to monitor job progress for
-write operations via the API or SOQL.
-
-**•** `Database.insertAsync()` methods can’t be executed in the context of a portal user, even when the portal user is a
-community member. To add external object records via Apex, use `Database.insertImmediate()` methods.
-
-Important: When running an iterable batch Apex job against an external data source, the external records are stored in Salesforce
-while the job is running. The data is removed from storage when the job completes, whether or not the job was successful. No
-external data is stored during batch Apex jobs that use `Database.QueryLocator` .
-
-**•** If you use batch Apex with `Database.QueryLocator` to access external objects via an OData adapter for Salesforce Connect:
-
-**–** Enable Request Row Counts on the external data source, and each response from the external system must include the total
-row count of the result set.
-
-**–** We recommend enabling Server Driven Pagination on the external data source and having the external system determine page
-sizes and batch boundaries for large result sets. Typically, server-driven paging can adjust batch boundaries to accommodate
-changing datasets more effectively than client-driven paging.
-
-When Server Driven Pagination is disabled on the external data source, the OData adapter controls the paging behavior
-(client-driven). If external object records are added to the external system while a job runs, other records can be processed twice.
-If external object records are deleted from the external system while a job runs, other records can be skipped.
-
-**–** When Server Driven Pagination is enabled on the external data source, the batch size at runtime is the smaller of the following:
-
-**•** Batch size specified in the `scope` parameter of `Database.executeBatch` . Default is 200 records.
-
-**•** Page size returned by the external system. We recommend that you set up your external system to return page sizes of 200
-or fewer records.
-
-SEE ALSO:
-
-Use Batch Apex
-
-_Salesforce Help_ [: Client-driven and Server-driven Paging for Salesforce Connect—OData 2.0 and 4.0 Adapters](https://help.salesforce.com/articleView?id=odata_paging.htm&language=en_US)
-
-_Salesforce Help_ [: Define an External Data Source for Salesforce Connect—OData 2.0 or 4.0 Adapter](https://help.salesforce.com/articleView?id=platform_connect_add_external_data_source.htm&language=en_US)
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-##### Writable External Objects
-
-By default, external objects are read only, but you can make them writable. Doing so lets Salesforce users and APIs create, update, and
-delete data that’s stored outside the org by interacting with external objects within the org. For example, users can see all the orders
-that reside in an SAP system that are associated with an account in Salesforce. Then, without leaving the Salesforce user interface, they
-can place a new order or route an existing order. The relevant data is automatically created or updated in the SAP system.
-
-Access to external data depends on the connections between Salesforce and the external systems that store the data. Network latency
-and the availability of the external systems can introduce timing issues with Apex write or delete operations on external objects.
-
-Because of the complexity of these connections, Apex can’t execute standard `insert()`, `update()`, or `create()` operations
-on external objects. Instead, Apex provides a specialized set of database methods and keywords to work around potential issues with
-write execution. DML insert, update, create, and delete operations on external objects are either asynchronous or executed when specific
-criteria are met.
-
-This example uses the `Database.insertAsync()` method to insert a new order into a database table asynchronously. It returns
-a `SaveResult` object that contains a unique identifier for the insert job.
-
-```
-   public void createOrder () {
-
-      SalesOrder__x order = new SalesOrder__x ();
-
-      Database.SaveResult sr = Database.insertAsync (order);
-
-      if (! sr.isSuccess ()) {
-
-        String locator = Database.getAsyncLocator ( sr );
-
-        completeOrderCreation(locator);
-
-      }
-
-   }
-
-```
-
-Note: Writes performed on external objects through the Salesforce user interface or the API are synchronous and work the same
-way as for standard and custom objects.
-
-You can perform the following DML operations on external objects, either asynchronously or based on criteria: insert records, update
-records, upsert records, or delete records. Use classes in the `DataSource` namespace to get the unique identifiers for asynchronous
-jobs, or to retrieve results lists for upsert, delete, or save operations.
-
-When you initiate an Apex method on an external object, a job is scheduled and placed in the background jobs queue. The
-BackgroundOperation object lets you view the job status for write operations via the API or SOQL. Monitor job progress and related
-errors in the org, extract statistics, process batch jobs, or see how many errors occur in a specified time period.
-
-[For usage information and examples, see Database Namespace and DataSource Namespace.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_Database.htm)
-
-SEE ALSO:
-
-_Salesforce Help_ [: Writable External Objects Considerations for Salesforce Connect—All Adapters](https://help.salesforce.com/HTViewHelpDoc?id=platform_connect_considerations_writable_external_objects.htm&language=en_US)
-
-##### External Change Data Capture Packaging and Testing
-
-You can distribute External Change Data Capture components in managed packages, including a framework for testing your Apex
-triggers. Special behaviors and limitations apply to packaging and package installation.
-
-**•** Include External Change Data Tracking components in a managed package by selecting your test from the Apex Class Component
-Type list. The trigger, test, external data source, external object, and other related assets are brought into the package for distribution.
-
-**•** Certificates aren’t packageable. If you package an external data source that specifies a certificate, make sure that the subscriber org
-has a valid certificate with the same name.
-
-To help you test your External Change Data Capture–triggered Apex classes, here is a unit test code example of a trigger reacting to a
-simulated external change.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**Example Trigger**
-
-```
-   trigger OnExternalProductChangeEventForAudit on Products__ChangeEvent (after insert) {
-
-      if (Trigger.new.size() != 1) return;
-
-      for (Products__ChangeEvent event: Trigger.new) {
-
-         Product_Audit__c audit = new Product_Audit__c();
-
-         audit.Name = 'ProductChangeOn' + event.ExternalId;
-
-         audit.Change_Type__c = event.ChangeEventHeader.getChangeType();
-
-         audit.Audit_Price__c = event.Price__c;
-
-         audit.Product_Name__c = event.Name__c;
-
-         insert(audit);
-
-      }
-
-   }
-
-```
-
-**Apex Test**
-
-```
-   @isTest
-
-   public class testOnExternalProductChangeEventForAudit {
-
-      static testMethod void testExternalProductChangeTrigger() {
-
-           // Create Change Event
-
-          Products__ChangeEvent event = new Products__ChangeEvent();
-
-           // Set Change Event Header Fields
-
-          EventBus.ChangeEventHeader header = new EventBus.ChangeEventHeader();
-
-          header.changeType='CREATE';
-
-          header.entityName='Products__x';
-
-          header.changeOrigin='here';
-
-          header.transactionKey = 'some';
-
-          header.commitUser = 'me';
-
-          event.changeEventHeader = header;
-
-          event.put('ExternalId', 'ParentExternalId');
-
-          event.put('Price__c', 5500);
-
-          event.put('Name__c', 'Coat');
-
-           // Publish the event to the EventBus
-
-          EventBus.publish(event);
-
-          Test.getEventBus().deliver();
-
-           // Perform assertion that the trigger was run
-
-          Product_Audit__c audit = [SELECT name, Audit_Price__c, Product_Name__c FROM
-
-   Product_Audit__c WHERE name = : 'ProductChangeOn'+ event.ExternalId LIMIT 1];
-
-          System.assertEquals('ProductChangeOn'+ event.ExternalId, audit.Name);
-
-          System.assertEquals(5500, audit.Audit_Price__c);
-
-          System.assertEquals('Coat', audit.Product_Name__c);
-
-      }
-
-   }
-
-##### Mock SOQL Tests for External Objects
-
-```
-
-You can mock SOQL query responses for external objects in Apex testing by using SOQL stub methods and a new test class. Use basic
-and joined SOQL queries against external objects and return mock records in a testing context.
-
-Create mock test classes by extending the new `System.SoqlStubProvider` class and overriding the `handleSoqlQuery()`
-class method. Create external object records using either `Test.createStubQueryRow()` or
-`Test.createStubQueryRows()` . Register the mock provider in the test using `Test.createSoqlStub()` and execute
-the test code.
-
-Note: Apex governor limits apply to the stubbed records.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-The SOQL query must be against an external object, either directly with a FROM clause or via a subquery. These features aren’t allowed
-within a stub implementation.
-
-**•** SOQL
-
-**•** SOSL
-
-**•** Callouts
-
-**•** Future methods
-
-**•** Queueable Jobs
-
-**•** Batch Jobs
-
-**•** DML
-
-**•** Platform events
-
-This example shows a mock test class for the _`GithubIssueTest`_ class with joined and basic queries.
-
-```
-   /**
-
-    * Test class that utilizes the SoqlStubProvider classes.
-
-    * Each test sets the appropriate SoqlStubProvider
-
-    * and runs validation against the mocked query results.
-
-    **/
-
-   @isTest
-
-   public class GithubIssueTest {
-
-      @isTest
-
-      static void testGithubIssueQuery() {
-
-        QueryIssueUtil queryIssueUtil = new QueryIssueUtil();
-
-        SObjectType type = queryIssueUtil.getSObjectTypeForDynamicSoql('GithubIssues__x');
-
-        Test.createSoqlStub(type, new IssueStubProvider());
-
-        Test.startTest();
-
-        Assert.isTrue(Test.isSoqlStubDefined(type));
-
-        Assert.isTrue(queryIssueUtil.queryGithubIssuesAndCheckForId());
-
-        Assert.areEqual(Limits.getQueries(), 1);
-
-        Assert.areEqual(Limits.getQueryRows(), 1);
-
-        Assert.areEqual(Limits.getAggregateQueries(), 0);
-
-        Assert.isTrue(queryIssueUtil.queryGithubIssuesAndVerifyResultSize(1));
-
-        Assert.areEqual(Limits.getQueries(), 2);
-
-        Assert.areEqual(Limits.getQueryRows(), 2);
-
-        Assert.areEqual(Limits.getAggregateQueries(), 0);
-
-        Test.stopTest();
-
-      }
-
-      @isTest
-
-      static void testIssueToCommentJoinQuery() {
-
-        QueryIssueUtil queryIssueUtil = new QueryIssueUtil();
-
-       Test.createSoqlStub(GithubIssues__x.SObjectType, new IssueCommentJoinStubProvider());
-
-        Test.startTest();
-
-        Assert.isTrue(Test.isSoqlStubDefined(GithubIssues__x.SObjectType));
-
-        Assert.isTrue(queryIssueUtil.queryIssueToCommentJoinAndCheckForCommentId());
-
-        Assert.areEqual(Limits.getQueries(), 1);
-
-        Assert.areEqual(Limits.getQueryRows(), 3);
-
-        Assert.areEqual(Limits.getAggregateQueries(), 1);
-
-        Assert.isTrue(queryIssueUtil.queryIssueToCommentJoinAndVerifyResultSize(1, 2));
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        Assert.areEqual(Limits.getQueries(), 2);
-
-        Assert.areEqual(Limits.getQueryRows(), 6);
-
-        Assert.areEqual(Limits.getAggregateQueries(), 2);
-
-        Test.stopTest();
-
-      }
-
-   }
-
-   /**
-
-    * SoqlStubProvider class that returns a mocked query result
-
-    * for joined queries between the Github Issues object and
-
-    * the associated Comments object.
-
-    **/
-
-   public class IssueCommentJoinStubProvider extends SoqlStubProvider {
-
-     public override List<SObject> handleSoqlQuery(SObjectType sobjectType, String rawQuery,
-
-    Map<String,Object> binds) {
-
-        if (sobjectType.equals(GithubIssues__x.SObjectType)) {
-
-           Assert.areEqual(binds.size(), 0);
-
-           List<GithubIssues__x> issues = new List<GithubIssues__x>();
-
-           List<Map<String,Object>> commentMaps = new List<Map<String,Object>>();
-
-           Map<String, Object> comment1 = new Map<String, Object> {
-
-             'Id' => 'x09xx000000brk9AAA'
-
-           };
-
-           Map<String, Object> comment2 = new Map<String, Object> {
-
-             'Id' => 'x09xx000001brk9AAA'
-
-           };
-
-           commentMaps.add(comment1);
-
-           commentMaps.add(comment2);
-
-           List<IssueComments__x> comments = (List<IssueComments__x>)
-
-   Test.createStubQueryRows(IssueComments__x.SObjectType, commentMaps);
-
-           Map<String, Object> issueMap = new Map<String, Object> {
-
-             'Id' => 'x08xx000002HNZ6AAO',
-
-             'Title__c' => 'Sample Issue 1',
-
-             'IssueComments__r' => comments
-
-           };
-
-          GithubIssues__x obj = (GithubIssues__x) Test.createStubQueryRow(sobjectType,
-
-   issueMap);
-
-           issues.add(obj);
-
-           return issues;
-
-        }
-
-        return null;
-
-      }
-
-   }
-
-   /**
-
-    * SoqlStubProvider class that returns a mocked query result
-
-    * for queries against the Github Issues object.
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-    **/
-
-   public class IssueStubProvider extends SoqlStubProvider {
-
-     public override List<SObject> handleSoqlQuery(SObjectType sobjectType, String rawQuery,
-
-    Map<String,Object> binds) {
-
-        if (sobjectType.equals(GithubIssues__x.SObjectType)) {
-
-        Assert.areEqual(binds.size(), 1);
-
-        Assert.areEqual(binds.get('tmpVar1'), 'x08xx000002HNZ6AAO');
-
-           List<SObject> objs = new List<SObject>();
-
-           Map<String, Object> individualMap = new Map<String, Object> {
-
-             'Id' => 'x08xx000002HNZ6AAO'
-
-           };
-
-          GithubIssues__x obj = (GithubIssues__x) Test.createStubQueryRow(sobjectType,
-
-   individualMap);
-
-           objs.add(obj);
-
-           return objs;
-
-        }
-
-        return null;
-
-      }
-
-   }
-
-   /**
-
-    * Utility class that runs queries to be mocked
-
-    * in the Apex tests.
-
-    **/
-
-   public class QueryIssueUtil {
-
-      public boolean queryGithubIssuesAndCheckForId() {
-
-        // BINDS WITH USER_MODE DYNAMIC QUERY
-
-        Map<String, Object> binds = new Map<String, Object>{'tmpVar1' =>
-
-   'x08xx000002HNZ6AAO'};
-
-        List<GithubIssues__x> issues = Database.queryWithBinds('SELECT Id FROM
-
-   GithubIssues__x WHERE Id = :tmpVar1', binds, AccessLevel.USER_MODE);
-
-        for (GithubIssues__x issue : issues ) {
-
-           if (issue.Id.equals('x08xx000002HNZ6AAO')) {
-
-             return true;
-
-           }
-
-        }
-
-        return false;
-
-      }
-
-      public boolean queryGithubIssuesAndVerifyResultSize(Integer size) {
-
-        // BINDS WITH SYSTEM_MODE STATIC QUERY
-
-        String issueId = 'x08xx000002HNZ6AAO';
-
-       List<GithubIssues__x> issues = [SELECT Id FROM GithubIssues__x WHERE Id = :issueId];
-
-        if(issues.size() == size) {
-
-           return true;
-
-        }
-
-           return false;
-
-      }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      public boolean queryIssueToCommentJoinAndCheckForCommentId() {
-
-        // DYNAMIC QUERY
-
-        List<GithubIssues__x> issues = Database.query('SELECT Id, Title__c, (SELECT Id
-
-   FROM IssueComments__r) FROM GithubIssues__x WHERE Id = \'003000000000000\'');
-
-        for (GithubIssues__x issue : issues) {
-
-           List<IssueComments__x> comments = issue.IssueComments__r;
-
-           System.debug(comments);
-
-           if(!comments.get(0).Id.equals('x09xx000000brk9AAA') &&
-
-   !comments.get(1).Id.equals('x09xx000001brk9AAA'))return false;
-
-        }
-
-        return true;
-
-      }
-
-      public boolean queryIssueToCommentJoinAndVerifyResultSize(Integer parentSize, Integer
-
-    childSize) {
-
-        // STATIC QUERY
-
-        List<GithubIssues__x> issues = [SELECT Id, Title__c, (SELECT Id FROM
-
-   IssueComments__r) FROM GithubIssues__x WHERE Id = '003000000000000'];
-
-       if(issues.size() == parentSize && issues.get(0).IssueComments__r.size() == childSize)
-
-    {
-
-           return true;
-
-        }
-
-        return false;
-
-      }
-
-      public SObjectType getSObjectTypeForDynamicSoql(String name) {
-
-        Schema.DescribeSObjectResult[] descResult = Schema.describeSobjects(new
-
-   List<String>{name});
-
-        SObjectType type = descResult.get(0).getSobjectType();
-
-        return type;
-
-      }
-
-   }
-
-##### Get Started with the Apex Connector Framework
-
-```
-
-To get started with your first custom adapter for Salesforce Connect, create two Apex classes: one that extends the
-`DataSource.Connection` class, and one that extends the `DataSource.Provider` class.
-
-Note: The `DataSource.Connection` class requires a Salesforce Connect add-on license. For more information, see
-[Salesforce Connect Adapters Included per Add-On License.](https://help.salesforce.com/s/articleView?id=sf.platform_connect_license.htm&language=en_US)
-
-Let’s step through the code of a sample custom adapter.
-
-1. Create a Sample DataSource.Connection Class Class
-First, create a `DataSource.Connection` class to enable Salesforce to obtain the external system’s schema and to handle
-queries and searches of the external data.
-
-2. Create a Sample DataSource.Provider Class Class
-Now you need a class that extends and overrides a few methods in `DataSource.Provider` .
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-3. Set Up Salesforce Connect to Use Your Custom Adapter
-After you create your `DataSource.Connection` and `DataSource.Provider` classes, the Salesforce Connect custom
-adapter becomes available in Setup.
-
-###### Create a Sample DataSource.Connection Class Class
-
-First, create a `DataSource.Connection` class to enable Salesforce to obtain the external system’s schema and to handle queries
-and searches of the external data.
-
-```
-   global class SampleDataSourceConnection
-
-      extends DataSource.Connection {
-
-      global SampleDataSourceConnection(DataSource.ConnectionParams
-
-        connectionParams) {
-
-      }
-
-   // Add implementation of abstract methods
-
-   // ...
-
-```
-
-The `DataSource.Connection` class contains these methods.
-
-**•** query
-
-**•** search
-
-**•** sync
-
-**•** upsertRows
-
-**•** deleteRows
-
-```
-   sync
-
-```
-
-The `sync()` method is invoked when an administrator clicks the **Validate and Sync** button on the external data source detail page.
-It returns information that describes the structural metadata on the external system.
-
-Note: Changing the `sync` method on the `DataSource.Connection` class doesn’t automatically resync any external
-objects.
-
-```
-   // ...
-
-      override global List<DataSource.Table> sync() {
-
-        List<DataSource.Table> tables =
-
-           new List<DataSource.Table>();
-
-        List<DataSource.Column> columns;
-
-        columns = new List<DataSource.Column>();
-
-        columns.add(DataSource.Column.text('Name', 255));
-
-        columns.add(DataSource.Column.text('ExternalId', 255));
-
-        columns.add(DataSource.Column.url('DisplayUrl'));
-
-        tables.add(DataSource.Table.get('Sample', 'Title',
-
-           columns));
-
-        return tables;
-
-      }
-
-   // ...
-
-   query
-
-```
-
-The `query` method is invoked when a SOQL query is executed on an external object. A SOQL query is automatically generated and
-executed when a user opens an external object’s list view or detail page in Salesforce. The `DataSource.QueryContext` is always
-only for a single table.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-This sample custom adapter uses a helper method in the `DataSource.QueryUtils` class to filter and sort the results based on
-the `WHERE` and `ORDER BY` clauses in the SOQL query.
-
-The `DataSource.QueryUtils` class and its helper methods can process query results locally within your Salesforce org. This class
-is provided for your convenience to simplify the development of your Salesforce Connect custom adapter for initial tests. However, the
-`DataSource.QueryUtils` class and its methods aren’t supported for use in production environments that use callouts to retrieve
-data from external systems. Complete the filtering and sorting on the external system before sending the query results to Salesforce.
-When possible, use server-driven paging or another technique to have the external system determine the appropriate data subsets
-according to the limit and offset clauses in the query.
-
-```
-   // ...
-
-      override global DataSource.TableResult query(
-
-        DataSource.QueryContext context) {
-
-        if (context.tableSelection.columnsSelected.size() == 1 &&
-
-           context.tableSelection.columnsSelected.get(0).aggregation ==
-
-             DataSource.QueryAggregation.COUNT) {
-
-             List<Map<String,Object>> rows = getRows(context);
-
-             List<Map<String,Object>> response =
-
-               DataSource.QueryUtils.filter(context, getRows(context));
-
-             List<Map<String, Object>> countResponse =
-
-               new List<Map<String, Object>>();
-
-             Map<String, Object> countRow =
-
-               new Map<String, Object>();
-
-             countRow.put(
-
-               context.tableSelection.columnsSelected.get(0).columnName,
-
-               response.size());
-
-             countResponse.add(countRow);
-
-             return DataSource.TableResult.get(context,
-
-               countResponse);
-
-        } else {
-
-           List<Map<String,Object>> filteredRows =
-
-             DataSource.QueryUtils.filter(context, getRows(context));
-
-           List<Map<String,Object>> sortedRows =
-
-             DataSource.QueryUtils.sort(context, filteredRows);
-
-           List<Map<String,Object>> limitedRows =
-
-             DataSource.QueryUtils.applyLimitAndOffset(context,
-
-               sortedRows);
-
-           return DataSource.TableResult.get(context, limitedRows);
-
-        }
-
-      }
-
-   // ...
-
-   search
-
-```
-
-The `search` method is invoked by a SOSL query of an external object or when a user performs a Salesforce global search that also
-searches external objects. Because search can be federated over multiple objects, the `DataSource.SearchContext` can have
-multiple tables selected. In this example, however, the custom adapter knows about only one table.
-
-```
-   // ...
-
-      override global List<DataSource.TableResult> search(
-
-           DataSource.SearchContext context) {
-
-        List<DataSource.TableResult> results =
-
-           new List<DataSource.TableResult>();
-
-        for (DataSource.TableSelection tableSelection :
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-           context.tableSelections) {
-
-           results.add(DataSource.TableResult.get(tableSelection,
-
-             getRows(context)));
-
-        }
-
-        return results;
-
-      }
-
-   // ...
-
-```
-
-The following is the `getRows` helper method that the search sample calls to get row values from the external system. The `getRows`
-method makes use of other helper methods:
-
-**•** `makeGetCallout` makes a callout to the external system.
-
-**•** `foundRow` populates a row based on values from the callout result. The `foundRow` method is used to make any modifications
-to the returned field values, such as changing a field name or modifying a field value.
-
-[These methods aren’t included in this snippet but are available in the full example included in Connection Class. Typically, the filter from](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)
-`SearchContext` or `QueryContext` would be used to reduce the result set, but for simplicity this example doesn’t make use of
-the context object.
-
-```
-   // ...
-
-      // Helper method to get record values from the external system for the Sample table.
-
-      private List<Map<String, Object>> getRows () {
-
-       // Get row field values for the Sample table from the external system via a callout.
-
-        HttpResponse response = makeGetCallout();
-
-        // Parse the JSON response and populate the rows.
-
-        Map<String, Object> m = (Map<String, Object>)JSON.deserializeUntyped(
-
-             response.getBody());
-
-        Map<String, Object> error = (Map<String, Object>)m.get('error');
-
-        if (error != null) {
-
-           throwException(string.valueOf(error.get('message')));
-
-        }
-
-        List<Map<String,Object>> rows = new List<Map<String,Object>>();
-
-        List<Object> jsonRows = (List<Object>)m.get('value');
-
-        if (jsonRows == null) {
-
-           rows.add(foundRow(m));
-
-        } else {
-
-           for (Object jsonRow : jsonRows) {
-
-             Map<String,Object> row = (Map<String,Object>)jsonRow;
-
-             rows.add(foundRow(row));
-
-           }
-
-        }
-
-        return rows;
-
-      }
-
-   // ...
-
-   upsertRows
-
-```
-
-The `upsertRows` method is invoked when external object records are created or updated. You can create or update external object
-records through the Salesforce user interface or DML. The following example provides a sample implementation for the `upsertRows`
-method. The example uses the passed-in `UpsertContext` to determine what table was selected and performs the upsert only if
-the name of the selected table is `Sample` . The upsert operation is broken up into either an insert of a new record or an update of an
-existing record. These operations are performed in the external system using callouts. An array of `DataSource.UpsertResult`
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-is populated from the results obtained from the callout responses. Note that because a callout is made for each row, this example might
-hit the Apex callouts limit.
-
-```
-   // ...
-
-      global override List<DataSource.UpsertResult> upsertRows(DataSource.UpsertContext
-
-           context) {
-
-        if (context.tableSelected == 'Sample') {
-
-          List<DataSource.UpsertResult> results = new List<DataSource.UpsertResult>();
-
-          List<Map<String, Object>> rows = context.rows;
-
-          for (Map<String, Object> row : rows){
-
-            // Make a callout to insert or update records in the external system.
-
-            HttpResponse response;
-
-            // Determine whether to insert or update a record.
-
-            if (row.get('ExternalId') == null){
-
-              // Send a POST HTTP request to insert new external record.
-
-              // Make an Apex callout and get HttpResponse.
-
-              response = makePostCallout(
-
-                '{"name":"' + row.get('Name') + '","ExternalId":"' +
-
-                row.get('ExternalId') + '"');
-
-            }
-
-            else {
-
-              // Send a PUT HTTP request to update an existing external record.
-
-              // Make an Apex callout and get HttpResponse.
-
-              response = makePutCallout(
-
-                '{"name":"' + row.get('Name') + '","ExternalId":"' +
-
-                row.get('ExternalId') + '"',
-
-                String.valueOf(row.get('ExternalId')));
-
-            }
-
-            // Check the returned response.
-
-            // Deserialize the response.
-
-            Map<String, Object> m = (Map<String, Object>)JSON.deserializeUntyped(
-
-                 response.getBody());
-
-            if (response.getStatusCode() == 200){
-
-              results.add(DataSource.UpsertResult.success(
-
-                   String.valueOf(m.get('id'))));
-
-            }
-
-            else {
-
-              results.add(DataSource.UpsertResult.failure(
-
-                  String.valueOf(m.get('id')),
-
-                  'The callout resulted in an error: ' +
-
-                  response.getStatusCode()));
-
-            }
-
-          }
-
-          return results;
-
-        }
-
-        return null;
-
-      }
-
-   // ...
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-   deleteRows
-
-```
-
-The `deleteRows` method is invoked when external object records are deleted. You can delete external object records through the
-Salesforce user interface or DML. The following example provides a sample implementation for the `deleteRows` method. The example
-uses the passed-in `DeleteContext` to determine what table was selected and performs the deletion only if the name of the selected
-table is `Sample` . The deletion is performed in the external system using callouts for each external ID. An array of
-`DataSource.DeleteResult` is populated from the results obtained from the callout responses. Note that because a callout is
-made for each ID, this example might hit the Apex callouts limit.
-
-```
-   // ...
-
-      global override List<DataSource.DeleteResult> deleteRows(DataSource.DeleteContext
-
-           context) {
-
-        if (context.tableSelected == 'Sample'){
-
-          List<DataSource.DeleteResult> results = new List<DataSource.DeleteResult>();
-
-          for (String externalId : context.externalIds){
-
-            HttpResponse response = makeDeleteCallout(externalId);
-
-            if (response.getStatusCode() == 200){
-
-              results.add(DataSource.DeleteResult.success(externalId));
-
-            }
-
-            else {
-
-              results.add(DataSource.DeleteResult.failure(externalId,
-
-                  'Callout delete error:'
-
-                  + response.getBody()));
-
-            }
-
-          }
-
-          return results;
-
-        }
-
-        return null;
-
-      }
-
-   // ...
-
-```
-
-SEE ALSO:
-
-Execution Governors and Limits
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)_ : Connection Class
-
-Filters in the Apex Connector Framework
-
-###### Create a Sample DataSource.Provider Class Class
-
-Now you need a class that extends and overrides a few methods in `DataSource.Provider` .
-
-Your `DataSource.Provider` class informs Salesforce of the authentication and functional capabilities that are supported by or
-required to connect to the external system.
-
-```
-   global class SampleDataSourceProvider extends DataSource.Provider {
-
-```
-
-If the external system requires authentication, Salesforce can provide the authentication credentials from the external data source
-definition or users’ personal settings. This example specifies that the external system doesn’t require authentication, but also supports
-OAuth authentication. To do so, it returns `AuthenticationCapability.ANONYMOUS` and
-`AuthenticationCapability.OAUTH` in the list of authentication capabilities.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-The `getAuthenticationCapabilities` method should always return the same list of authentication types regardless of user,
-org, or context.
-
-```
-   global override List<DataSource.AuthenticationCapability>
-
-        getAuthenticationCapabilities() {
-
-        // Best Practice: Always return a static list of authentication types
-
-        // Don't query the database, make callouts, or use dynamic logic
-
-        List<DataSource.AuthenticationCapability> capabilities =
-
-           new List<DataSource.AuthenticationCapability>();
-
-        capabilities.add(DataSource.AuthenticationCapability.ANONYMOUS);
-
-        capabilities.add(DataSource.AuthenticationCapability.OAUTH);
-
-        return capabilities;
-
-      }
-
-```
-
-This example also specifies that the external system allows SOQL queries, SOSL queries, Salesforce searches, upserting data, and deleting
-data.
-
-**•** To allow SOQL, the example declares the `DataSource.Capability.ROW_QUERY` capability.
-
-**•** To allow SOSL and Salesforce searches, the example declares the `DataSource.Capability.SEARCH` capability.
-
-**•** To allow upserting external data, the example declares the `DataSource.Capability.ROW_CREATE` and
-`DataSource.Capability.ROW_UPDATE` capabilities.
-
-**•** To allow deleting external data, the example declares the `DataSource.Capability.ROW_DELETE` capability.
-
-The `getCapabilities` method should always return the same list of capabilities regardless of configuration or data.The returned
-capabilities should never change based on runtime conditions, user context, dynamic queries, or any other conditions.
-
-```
-   global override List<DataSource.Capability> getCapabilities() {
-
-        // Best Practice: Return a static list of functional capabilities
-
-        // Don't query the database, make callouts, or use dynamic logic
-
-        List<DataSource.Capability> capabilities = new
-
-        List<DataSource.Capability>();
-
-        capabilities.add(DataSource.Capability.ROW_QUERY);
-
-        capabilities.add(DataSource.Capability.SEARCH);
-
-        capabilities.add(DataSource.Capability.ROW_CREATE);
-
-        capabilities.add(DataSource.Capability.ROW_UPDATE);
-
-        capabilities.add(DataSource.Capability.ROW_DELETE);
-
-        return capabilities;
-
-      }
-
-```
-
-Warning: When you call the `getAuthenticationCapabilities` or `getCapabilities` methods, be sure the
-returned list always contains the same values. Never use a SOQL query, callout, or any conditional logic that changes the returned
-values based on runtime conditions. Returning varying lists of authentication capabilities or capabilities for an external system can
-lead to errors that are difficult to troubleshoot.
-
-Lastly, the example identifies the `SampleDataSourceConnection` class that obtains the external system’s schema and handles
-the queries and searches of the external data.
-
-```
-   global override DataSource.Connection getConnection(
-
-        DataSource.ConnectionParams connectionParams) {
-
-        return new SampleDataSourceConnection(connectionParams);
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Provider.htm)_ : Provider Class
-
-###### Set Up Salesforce Connect to Use Your Custom Adapter
-
-After you create your `DataSource.Connection` and `DataSource.Provider` classes, the Salesforce Connect custom
-adapter becomes available in Setup.
-
-[Complete the tasks that are described in “Set Up Salesforce Connect to Access External Data with a Custom Adapter” in the Salesforce](https://help.salesforce.com/apex/HTViewHelpDoc?id=apex_adapter_setup.htm&language=en_US)
-Help.
-
-To add write capability for external objects to your adapter:
-
-**1.** [Make the external data source for this adapter writable. See “Define an External Data Source for Salesforce Connect—Custom Adapter”](https://help.salesforce.com/articleView?id=apex_add_external_data_source.htm&language=en_US)
-in the Salesforce Help.
-
-**2.** Implement the `DataSource.Connection.upsertRows()` and `DataSource.Connection.deleteRows()`
-[methods for the adapter. For details, see Connection Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)
-
-##### Key Concepts About the Apex Connector Framework
-
-The `DataSource` namespace provides the classes for the Apex Connector Framework. Use the Apex Connector Framework to develop
-a custom adapter for Salesforce Connect. Then connect your Salesforce org to any data anywhere via the Salesforce Connect custom
-adapter.
-
-We recommend that you learn about some key concepts to help you use the Apex Connector Framework effectively.
-
-External IDs for Salesforce Connect External Objects
-When you access external data with a custom adapter for Salesforce Connect, the values of the External ID standard field on an
-external object come from the `DataSource.Column` named `ExternalId` .
-
-Authentication for Salesforce Connect Custom Adapters
-Your `DataSource.Provider` class declares what types of credentials can be used to authenticate to the external system.
-
-Callouts for Salesforce Connect Custom Adapters
-Just like any other Apex code, a Salesforce Connect custom adapter can make callouts. If the connection to the external system
-requires authentication, incorporate the authentication parameters into the callout.
-
-Paging with the Apex Connector Framework
-When displaying a large set of records in the user interface, Salesforce breaks the set into batches and displays one batch. You can
-then page through those batches. However, custom adapters for Salesforce Connect don’t automatically support paging of any
-kind. To support paging through external object data that’s obtained by a custom adapter, implement server-driven or client-driven
-paging.
-
-queryMore with the Apex Connector Framework with the Apex Connector Framework
-Custom adapters for Salesforce Connect don’t automatically support the `queryMore` method in API queries. However, your
-implementation must be able to break up large result sets into batches and iterate over them by using the `queryMore` method
-in the SOAP API. The default batch size is 500 records, but the query developer can adjust that value programmatically in the query
-call.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Aggregation for Salesforce Connect Custom Adapters
-If you receive a `COUNT()` query, the selected column has the value `QueryAggregation.COUNT` in its `aggregation`
-property. The selected column is provided in the `columnsSelected` property on the `tableSelection` for the
-`DataSource.QueryContext` .
-
-Filters in the Apex Connector Framework
-The `DataSource.QueryContext` contains one `DataSource.TableSelection` . The
-`DataSource.SearchContext` can have more than one `TableSelection` . Each `TableSelection` has a `filter`
-property that represents the `WHERE` clause in a SOQL or SOSL query.
-
-###### External IDs for Salesforce Connect External Objects
-
-When you access external data with a custom adapter for Salesforce Connect, the values of the External ID standard field on an external
-object come from the `DataSource.Column` named `ExternalId` .
-
-###### Each external object has an External ID standard field. Its values uniquely identify each external object record in your org. When
-
-the external object is the parent in an external lookup relationship, the External ID standard field is used to identify the child records.
-
-Important:
-
-**•** The custom adapter’s Apex code must declare the `DataSource.Column` named `ExternalId` and provide its values.
-
-**•** Don’t use sensitive data as the values of the External ID standard field or fields designated as name fields, because Salesforce
-sometimes stores those values.
-
-**–** External lookup relationship fields on child records store and display the External ID values of the parent records.
-
-**–** For internal use only, Salesforce stores the External ID value of each row that’s retrieved from the external system. This
-behavior doesn’t apply to external objects that are associated with high-data-volume external data sources.
-
-Example: This excerpt from a sample `DataSource.Connection` class shows the `DataSource.Column` named
-`ExternalId` .
-
-```
-        override global List<DataSource.Table> sync() {
-
-           List<DataSource.Table> tables =
-
-           new List<DataSource.Table>();
-
-        List<DataSource.Column> columns;
-
-        columns = new List<DataSource.Column>();
-
-        columns.add(DataSource.Column.text('title', 255));
-
-        columns.add(DataSource.Column.text('description',255));
-
-        columns.add(DataSource.Column.text('createdDate',255));
-
-        columns.add(DataSource.Column.text('modifiedDate',255));
-
-        columns.add(DataSource.Column.url('selfLink'));
-
-        columns.add(DataSource.Column.url('DisplayUrl'));
-
-        columns.add(DataSource.Column.text(' ExternalId ',255));
-
-        tables.add(DataSource.Table.get('googleDrive','title',
-
-           columns));
-
-        return tables;
-
-        }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Column.htm)_ : Column Class
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-###### Authentication for Salesforce Connect Custom Adapters
-
-Your `DataSource.Provider` class declares what types of credentials can be used to authenticate to the external system.
-
-If your extension of the `[DataSource.Provider](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Provider.htm)` class returns `[DataSource.AuthenticationCapability](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_DataSource_AuthenticationCapability.htm)` values that
-indicate support for authentication, the `[DataSource.Connection](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Connection.htm)` class is instantiated with a
-`[DataSource.ConnectionParams](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_ConnectionParams.htm)` instance in the constructor.
-
-The authentication credentials in the `DataSource.ConnectionParams` instance depend on the `Identity Type` field of
-the external data source definition in Salesforce.
-
-**•** If `Identity Type` is set to `Named Principal`, the credentials come from the external data source definition.
-
-**•** If `Identity Type` is set to `Per User` :
-
-**–** For queries and searches, the credentials are specific to the current user who invokes the query or search. The credentials come
-from the user’s authentication settings for the external system.
-
-**–** For administrative connections, such as syncing the external system’s schema, the credentials come from the external data
-source definition.
-
-####### OAuth for Salesforce Connect Custom Adapters
-
-If you use OAuth 2.0 to access external data, learn how to avoid access interruptions caused by expired access tokens.
-
-SEE ALSO:
-
-####### OAuth for Salesforce Connect Custom Adapters OAuth for Salesforce Connect Custom Adapters
-
-If you use OAuth 2.0 to access external data, learn how to avoid access interruptions caused by expired access tokens.
-
-Some external systems use OAuth access tokens that expire and need to be refreshed. We can automatically refresh access tokens as
-needed when:
-
-**•** The user or external data source has a valid refresh token from a previous OAuth flow.
-
-**•** The sync, query, or search method in your `DataSource.Connection` class throws a
-`DataSource.OAuthTokenExpiredException` .
-
-We use the relevant OAuth credentials for the user or external data source to negotiate with the remote service and refresh the token.
-The `DataSource.Connection` class is reconstructed with the new OAuth token in the `DataSource.ConnectionParams`
-that we supply to the constructor. The search or query is then reinvoked.
-
-If the authentication provider doesn’t provide a refresh token, access to the external system is lost when the current access token expires.
-If a warning message appears on the external data source detail page, consult your OAuth provider for information about requesting
-offline access or a refresh token.
-
-For some authentication providers, requesting offline access is as simple as adding a scope. For example, to request offline access from
-a Salesforce authentication provider, add _`refresh_token`_ to the `Default Scopes` field on the authentication provider definition
-in your Salesforce organization.
-
-For other authentication providers, you must request offline access in the authentication URL as a query parameter. For example, with
-Google, append _`?access_type=offline`_ to the `Authorize Endpoint URL` field on the authentication provider definition
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-in your Salesforce organization. To edit the authorization endpoint, select **Open ID Connect** in the `Provider Type` field of the
-authentication provider. For details, see “Configure an OpenID Connect Authentication Provider” in the Salesforce Help.
-
-SEE ALSO:
-
-Authentication for Salesforce Connect Custom Adapters
-
-###### Callouts for Salesforce Connect Custom Adapters
-
-Just like any other Apex code, a Salesforce Connect custom adapter can make callouts. If the connection to the external system requires
-authentication, incorporate the authentication parameters into the callout.
-
-Authentication parameters are encapsulated in a `ConnectionParams` object and provided to your `DataSource.Connection`
-class’s constructor.
-
-For example, if your connection requires an OAuth access token, use code similar to the following.
-
-```
-   public HttpResponse getResponse(String url) {
-
-      Http httpProtocol = new Http();
-
-      HttpRequest request = new HttpRequest();
-
-      request.setEndPoint(url);
-
-      request.setMethod('GET');
-
-      request.setHeader('Authorization', 'Bearer ' +
-
-           this.connectionInfo.oauthToken);
-
-      HttpResponse response = httpProtocol.send(request);
-
-      return response;
-
-   }
-
-```
-
-If your connection requires basic password authentication, use code similar to the following.
-
-```
-   public HttpResponse getResponse(String url) {
-
-      Http httpProtocol = new Http();
-
-      HttpRequest request = new HttpRequest();
-
-      request.setEndPoint(url);
-
-      request.setMethod('GET');
-
-      string encodedHeaderValue = EncodingUtil.base64Encode(Blob.valueOf(
-
-           this.connectioninfo.username + ':' +
-
-           this.connectionInfo.password));
-
-      request.setHeader('Authorization', 'Basic ' + encodedHeaderValue);
-
-      HttpResponse response = httpProtocol.send(request);
-
-      return response;
-
-   }
-
-```
-
-Named Credentials as Callout Endpoints for Salesforce Connect Custom Adapters
-
-A Salesforce Connect custom adapter obtains the relevant credentials that are stored in Salesforce whenever they’re needed. However,
-your Apex code must apply those credentials to all callouts, except those that specify named credentials as the callout endpoints. A
-named credential lets Salesforce handle the authentication logic for you so that your code doesn’t have to.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-If all your custom adapter’s callouts use named credentials, you can set the external data source’s `Authentication Protocol`
-field to **No Authentication** . The named credentials add the appropriate certificates and can add standard authorization headers to the
-callouts. You also don’t need to define a remote site for an Apex callout endpoint that’s defined as a named credential.
-
-SEE ALSO:
-
-Named Credentials as Callout Endpoints
-
-###### Paging with the Apex Connector Framework
-
-When displaying a large set of records in the user interface, Salesforce breaks the set into batches and displays one batch. You can then
-page through those batches. However, custom adapters for Salesforce Connect don’t automatically support paging of any kind. To
-support paging through external object data that’s obtained by a custom adapter, implement server-driven or client-driven paging.
-
-With server-driven paging, the external system controls the paging and ignores any batch boundaries or page sizes that are specified
-in queries. To enable server-driven paging, declare the `QUERY_PAGINATION_SERVER_DRIVEN` capability in your
-`DataSource.Provider` class. Also, your Apex code must generate a query token and use it to determine and fetch the next batch
-of results.
-
-With client-driven paging, you use `LIMIT` and `OFFSET` clauses to page through result sets. Factor in the `offset` and `maxResults`
-properties in the `DataSource.QueryContext` to determine which rows to return. For example, suppose that the result set has
-20 rows with numeric `ExternalID` values from 1 to 20. If we ask for an `offset` of `5` and `maxResults` of `5`, we expect to get
-the rows with IDs `6`     - `10` . We recommend that you do all filtering in the external system, outside of Apex, using methods that the external
-system supports.
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_QueryContext.htm)_ : QueryContext Class
-
-###### queryMore with the Apex Connector Framework with the Apex Connector Framework Custom adapters for Salesforce Connect don’t automatically support the queryMore method in API queries. However, your implementation must be able to break up large result sets into batches and iterate over them by using the queryMore method in
-
-the SOAP API. The default batch size is 500 records, but the query developer can adjust that value programmatically in the query call.
-
-###### To support queryMore, your implementation must indicate whether more data exists than what’s in the current batch. When the
-
-Lightning Platform knows that more data exists, your API queries return a `QueryResult` object that’s similar to the following.
-
-```
-   {
-
-         "totalSize" => -1,
-
-            "done" => false,
-
-      "nextRecordsUrl" => "/services/data/v32.0/query/01gxx000000B5OgAAK-2000",
-
-          "records" => [
-
-        [ 0] {
-
-           "attributes" => {
-
-             "type" => "Sample__x",
-
-              "url" =>
-
-                "/services/data/v32.0/sobjects/Sample__x/x06xx0000000001AAA"
-
-           },
-
-           "ExternalId" => "id0"
-
-        },
-
-        [ 1] {
-
-           "attributes" => {
-
-             "type" => "Sample__x",
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-              "url" =>
-
-                "/services/data/v32.0/sobjects/Sample__x/x06xx0000000002AAA"
-
-           },
-
-   …
-
-   }
-
-####### Support queryMore by Using Server-Driven Paging by Using Server-Driven Paging
-```
-
-With server-driven paging, the external system controls the paging and ignores any batch boundaries or page sizes that are specified
-in queries. To enable server-driven paging, declare the `QUERY_PAGINATION_SERVER_DRIVEN` capability in your
-`DataSource.Provider` class.
-
-####### Support queryMore by Using Client-Driven Paging
-
-With client-driven paging, you use `LIMIT` and `OFFSET` clauses to page through result sets.
-
-####### Support queryMore by Using Server-Driven Paging by Using Server-Driven Paging
-
-With server-driven paging, the external system controls the paging and ignores any batch boundaries or page sizes that are specified
-in queries. To enable server-driven paging, declare the `QUERY_PAGINATION_SERVER_DRIVEN` capability in your
-`DataSource.Provider` class.
-
-When the returned `DataSource.TableResult` doesn’t contain the entire result set, the `TableResult` must provide a
-`queryMoreToken` value. The query token is an arbitrary string that we store temporarily. When we request the next batch of results,
-we pass the query token back to your custom adapter in the `DataSource.QueryContext` . Your Apex code must use that query
-token to determine which rows belong to the next batch of results.
-
-When your custom adapter returns the final batch, it must not return a `queryMoreToken` value in the `TableResult` .
-
-The Apex Connector Framework doesn't support server-driven pagination for list views.
-
-SEE ALSO:
-
-queryMore with the Apex Connector Framework with the Apex Connector Framework
-
-####### Support queryMore by Using Client-Driven Paging
-
-With client-driven paging, you use `LIMIT` and `OFFSET` clauses to page through result sets.
-
-If the external system can return the total size of the result set for each query, declare the `QUERY_TOTAL_SIZE` capability in your
-`DataSource.Provider` class. Make sure that each search or query returns the `totalSize` value in the
-`DataSource.TableResult` . If the total size is larger than the number of rows that are returned in the batch, we generate a
-`nextRecordsUrl` link and set the `done` flag to `false` . We also set the `totalSize` in the `TableResult` to the value that
-you supply.
-
-If the external system can’t return the total size for each query, don’t declare the `QUERY_TOTAL_SIZE` capability in your
-`DataSource.Provider` class. Whenever we do a query through your custom adapter, we ask for one extra row. For example, if
-you run the query `SELECT ExternalId FROM Sample LIMIT 5`, we call the `query` method on the
-`DataSource.Connection` object with a `DataSource.QueryContext` that has the `maxResults` property set to 6.
-The presence or absence of that sixth row in the result set indicates whether more data is available. We assume, however, that the data
-set we query against doesn’t change between queries. If the data set changes between queries, you might see repeated rows or not
-get all results.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Ultimately, accessing external data works most efficiently when you retrieve small amounts of data and the data set that you query
-against changes infrequently.
-
-SEE ALSO:
-
-queryMore with the Apex Connector Framework with the Apex Connector Framework
-
-###### Aggregation for Salesforce Connect Custom Adapters
-
-If you receive a `COUNT()` query, the selected column has the value `QueryAggregation.COUNT` in its `aggregation` property.
-The selected column is provided in the `columnsSelected` property on the `tableSelection` for the
-`DataSource.QueryContext` .
-
-The following example illustrates how to apply the value of the `aggregation` property to handle `COUNT()` queries.
-
-```
-   // Handle COUNT() queries
-
-   if (context.tableSelection.columnsSelected.size() == 1 &&
-
-      context.tableSelection.columnsSelected.get(0).aggregation ==
-
-        QueryAggregation.COUNT) {
-
-      List<Map<String, Object>> countResponse = new List<Map<String, Object>>();
-
-      Map<String, Object> countRow = new Map<String, Object>();
-
-      countRow.put(context.tableSelection.columnsSelected.get(0).columnName,
-
-      response.size());
-
-      countResponse.add(countRow);
-
-      return countResponse;
-
-   }
-
-```
-
-An aggregate query can still have filters, so your query method can be implemented like the following example to support basic
-`aggregation` queries, with or without filters.
-
-```
-   override global DataSource.TableResult query(DataSource.QueryContext context) {
-
-      List<Map<String,Object>> rows = retrieveData(context);
-
-      List<Map<String,Object>> response = postFilterRecords(
-
-           context.tableSelection.filter, rows);
-
-      if (context.tableSelection.columnsSelected.size() == 1 &&
-
-        context.tableSelection.columnsSelected.get(0).aggregation ==
-
-             DataSource.QueryAggregation.COUNT) {
-
-        List<Map<String, Object>> countResponse = new List<Map<String,
-
-             Object>>();
-
-        Map<String, Object> countRow = new Map<String, Object>();
-
-        countRow.put(context.tableSelection.columnsSelected.get(0).columnName,
-
-             response.size());
-
-        countResponse.add(countRow);
-
-        return DataSource.TableResult.get(context, countResponse);
-
-      }
-
-      return DataSource.TableResult.get(context, response);
-
-   }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_QueryContext.htm)_ : QueryContext Class
-
-Create a Sample DataSource.Connection Class Class
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-###### Filters in the Apex Connector Framework
-
-The `DataSource.QueryContext` contains one `DataSource.TableSelection` . The `DataSource.SearchContext`
-can have more than one `TableSelection` . Each `TableSelection` has a `filter` property that represents the `WHERE`
-clause in a SOQL or SOSL query.
-
-For example, when a user goes to an external object’s record detail page, your `DataSource.Connection` is executed. Behind
-the scenes, we generate a SOQL query similar to the following.
-
-```
-   SELECT columnNames
-
-   FROM externalObjectApiName
-
-   WHERE ExternalId = ' selectedExternalObjectExternalId '
-
-```
-
-This SOQL query causes the `query` method on your `DataSource.Connection` class to be invoked. The following code can
-detect this condition.
-
-```
-   if (context.tableSelection.filter != null) {
-
-      if (context.tableSelection.filter.type == DataSource.FilterType.EQUALS
-
-        && 'ExternalId' == context.tableSelection.filter.columnName
-
-        && context.tableSelection.filter.columnValue instanceOf String) {
-
-        String selection = (String)context.tableSelection.filter.columnValue;
-
-        return DataSource.TableResult.get(true, null,
-
-             tableSelection.tableSelected, findSingleResult(selection));
-
-      }
-
-   }
-
-```
-
-This code example assumes that you implemented a `findSingleResult` method that returns a single record, given the selected
-`ExternalId` . Make sure that your code obtains the record that matches the requested `ExternalId` .
-
-####### Evaluating Filters in the Apex Connector Framework
-
-A filter evaluates to true for a row if that row matches the conditions that the filter describes.
-
-Compound Filters in the Apex Connector Framework
-Filters can have child filters, which are stored in the `subfilters` property.
-
-####### Evaluating Filters in the Apex Connector Framework
-
-A filter evaluates to true for a row if that row matches the conditions that the filter describes.
-
-For example, suppose that a `DataSource.Filter` has `columnName` set to `meaningOfLife`, `columnValue` set to `42`,
-and `type` set to `EQUALS` . Any row in the remote table whose `meaningOfLife` column entry equals 42 is returned.
-
-Suppose, instead, that the filter has `type` set to `LESS_THAN`, `columnValue` set to `3`, and `columnName` set to `numericCol` .
-We’d construct a `DataSource.TableResult` object that contains all the rows that have a `numericCol` value less than 3.
-
-###### To improve performance, do all the filtering in the external system. You can, for example, translate the Filter object into a SQL or
-
-OData query, or map it to parameters on a SOAP query. If the external system returns a large set of data, and you do the filtering in your
-Apex code, you quickly exceed your governor limits.
-
-If you can’t do all the filtering in the external system, do as much as possible there and return as little data as possible. Then filter the
-smaller collection of data in your Apex code.
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Filter.htm)_ : Filter Class
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-####### Compound Filters in the Apex Connector Framework
-
-Filters can have child filters, which are stored in the `subfilters` property.
-
-If a filter has children, the filter `type` must be one of the following.
-
-**Filter Type** **Description**
-
-`AND_` We return all rows that match _all_ of the subfilters.
-
-`OR_` We return all rows that match _any_ of the subfilters.
-
-`NOT_` The filter reverses how its child filter evaluates rows. Filters of this type can have only one subfilter.
-
-This code example illustrates how to deal with compound filters.
-
-```
-   override global DataSource.TableResult query(DataSource.QueryContext context) {
-
-      // Call out to an external data source and retrieve a set of records.
-
-      // We should attempt to get as much information as possible about the
-
-      // query from the QueryContext, to minimize the number of records
-
-      // that we return.
-
-      List<Map<String,Object>> rows = retrieveData(context);
-
-      // This only filters the results. Anything in the query that we don’t
-
-      // currently support, such as aggregation or sorting, is ignored.
-
-      return DataSource.TableResult.get(context, postFilterRecords(
-
-        context.tableSelection.filter, rows));
-
-   }
-
-   private List<Map<String,Object>> retrieveData(DataSource.QueryContext context) {
-
-      // Call out to an external data source. Form the callout so that
-
-      // it filters as much as possible on the remote site,
-
-      // based on the parameters in the QueryContext.
-
-      return ...;
-
-   }
-
-   private List<Map<String,Object>> postFilterRecords(
-
-      DataSource.Filter filter, List<Map<String,Object>> rows) {
-
-      if (filter == null) {
-
-        return rows;
-
-      }
-
-      DataSource.FilterType type = filter.type;
-
-      List<Map<String,Object>> retainedRows = new List<Map<String,Object>>();
-
-      if (type == DataSource.FilterType.NOT_) {
-
-        // We expect one Filter in the subfilters.
-
-        DataSource.Filter subfilter = filter.subfilters.get(0);
-
-        for (Map<String,Object> row : rows) {
-
-           if (!evaluate(filter, row)) {
-
-             retainedRows.add(row);
-
-           }
-
-        }
-
-        return retainedRows;
-
-      } else if (type == DataSource.FilterType.AND_) {
-
-        // For each filter, find all matches; anything that matches ALL filters
-
-        // is returned.
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        retainedRows = rows;
-
-        for (DataSource.Filter subfilter : filter.subfilters) {
-
-           retainedRows = postFilterRecords(subfilter, retainedRows);
-
-        }
-
-        return retainedRows;
-
-      } else if (type == DataSource.FilterType.OR_) {
-
-        // For each filter, find all matches. Anything that matches
-
-        // at least one filter is returned.
-
-        for (DataSource.Filter subfilter : filter.subfilters) {
-
-           List<Map<String,Object>> matchedRows = postFilterRecords(
-
-             subfilter, rows);
-
-           retainedRows.addAll(matchedRows);
-
-        }
-
-        return retainedRows;
-
-      } else {
-
-        // Find all matches for this filter in our collection of records.
-
-        for (Map<String,Object> row : rows) {
-
-           if (evaluate(filter, row)) {
-
-             retainedRows.add(row);
-
-           }
-
-        }
-
-        return retainedRows;
-
-      }
-
-   }
-
-   private Boolean evaluate(DataSource.Filter filter, Map<String,Object> row) {
-
-      if (filter.type == DataSource.FilterType.EQUALS) {
-
-        String columnName = filter.columnName;
-
-        Object expectedValue = filter.columnValue;
-
-        Object foundValue = row.get(columnName);
-
-        return expectedValue.equals(foundValue);
-
-      } else {
-
-        // Throw an exception; implementing other filter types is left
-
-        // as an exercise for the reader.
-
-        throwException('Unexpected filter type: ' + filter.type);
-
-      }
-
-      return false;
-
-   }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_DataSource_Filter.htm)_ : Filter Class
-
-##### Considerations for the Apex Connector Framework
-
-Understand the limits and considerations for creating Salesforce Connect custom adapters with the Apex Connector Framework.
-
-**•** If you change and save a `DataSource.Connection` class, resave the corresponding `DataSource.Provider` class.
-Otherwise, when you define the external data source, the custom adapter doesn’t appear as an option for the `Type` field. Also, the
-associated external objects’ custom tabs no longer appear in the Salesforce UI.
-
-**•** DML operations aren’t allowed in the Apex code that comprises the custom adapter.
-
-**•** Make sure that you understand the limits of the external system’s APIs. For example, some external systems accept only requests
-for up to 40 rows.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**•** Apex data type limitations:
-
-**–** Double—The value loses precision beyond 18 significant digits. For higher precision, use decimals instead of doubles.
-
-**–** String—If the length is greater than 255 characters, the string is mapped to a long text area field in Salesforce.
-
-**•** Custom adapters for Salesforce Connect are subject to the same limitations as any other Apex code. For example:
-
-**–** All Apex governor limits apply.
-
-**–** Test methods don’t support web service callouts. Tests that perform web service callouts fail. For an example that shows how
-to avoid these failing tests by returning mock responses, see Google Drive [™] Custom Adapter for Salesforce Connect on page
-560.
-
-**•** In Apex tests, use dynamic SOQL to query external objects. Tests that perform static SOQL queries of external objects fail.
-
-SEE ALSO:
-
-Dynamic SOQL
-
-##### Apex Connector Framework Examples
-
-These examples illustrate how to use the Apex Connector Framework to create custom adapters for Salesforce Connect.
-
-###### GitHub Issues Custom Adapter for Salesforce Connect
-
-This example creates a custom adapter that links GitHub Issues to products in Salesforce using an indirect lookup relationship. An
-external lookup relationship also links GitHub Issues to the comments on each issue.
-
-GitHub Custom Adapter for Salesforce Connect
-This example illustrates how to support indirect lookup relationships. An indirect lookup relationship links a child external object to
-a parent standard or custom object.
-
-Google Drive [™] Custom Adapter for Salesforce Connect
-This example illustrates how to use callouts and OAuth to connect to an external system, which in this case is the Google Drive [™]
-
-online storage service. The example also shows how to avoid failing tests from web service callouts by returning mock responses
-for test methods.
-
-Google Books [™] Custom Adapter for Salesforce Connect
-This example illustrates how to work around the requirements and limits of an external system’s APIs: in this case, the Google Books
-API Family.
-
-Loopback Custom Adapter for Salesforce Connect
-This example illustrates how to handle filtering in queries. For simplicity, this example connects the Salesforce org to itself as the
-external system.
-
-Stack Overflow Custom Adapter for Salesforce Connect
-This example illustrates how to support external lookup relationships and multiple tables. An external lookup relationship links a
-child standard, custom, or external object to a parent external object. Each table can become an external object in the Salesforce
-org.
-
-###### GitHub Issues Custom Adapter for Salesforce Connect
-
-This example creates a custom adapter that links GitHub Issues to products in Salesforce using an indirect lookup relationship. An external
-lookup relationship also links GitHub Issues to the comments on each issue.
-
-This example illustrates a range of common use cases for custom adapters, including how to:
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**•** Query external data.
-
-**•** Work with a range of external object field types, such as Date and Picklist fields.
-
-**•** Use indirect lookup relationships, which link a child external object to a parent standard or custom object.
-
-**•** Use external lookup relationships, which link a child standard, custom, or external object to a parent external object.
-
-**•** Use Data Manipulation Language (DML) operations to insert, update, and delete external data.
-
-To improve unit tests for the Apex code in this example, you can also return mock records in a testing context. See Mock SOQL Tests for
-External Objects on page 524.
-
-DataSource.Connection Class
-
-This example creates a class named `GitHubDataSourceConnection` . For this example to work, create a custom field on the
-Product2 standard object. Specify the name of the custom text field as Repository, and select the External ID and Unique attributes.
-
-```
-   /**
-
-    * Defines the connection to GitHub REST API v3 to support
-
-    * querying of GitHub profiles.
-
-    * Extends the DataSource.Connection class to enable
-
-    * Salesforce to sync the external system’s schema
-
-    * and to handle queries and searches of the external data.
-
-    **/
-
-   global class GitHubDataSourceConnection extends DataSource.Connection {
-
-      private DataSource.ConnectionParams connectionInfo;
-
-      /**
-
-      * Constructor for GitHubDataSourceConnection
-
-      **/
-
-      global GitHubDataSourceConnection(DataSource.ConnectionParams connectionInfo) {
-
-        this.connectionInfo = connectionInfo;
-
-      }
-
-      /**
-
-      * Called to query and get results from the external
-
-      * system for SOQL queries, list views, and detail pages
-
-      * for an external object that’s associated with the
-
-      * external data source.
-
-      *
-
-      * The queryContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns a list of rows as the query results.
-
-      **/
-
-      override global DataSource.TableResult query(DataSource.QueryContext context) {
-
-        DataSource.Filter filter = context.tableSelection.filter;
-
-        String url, tableName;
-
-        if(context.tableSelection.tableSelected.equals('GithubIssues')) {
-
-           tableName = 'GithubIssues';
-
-           if (filter != null) {
-
-             String thisColumnName = filter.columnName;
-
-             if (thisColumnName != null &&
-
-               (thisColumnName.equals('ExternalId') ||
-
-               thisColumnName.equals('number')))
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-               url = 'callout:GithubNC/issues/' + filter.columnValue;
-
-             else
-
-               url = 'callout:GithubNC/issues';
-
-           } else {
-
-             url = 'callout:GithubNC/issues';
-
-           }
-
-        } else if(context.tableSelection.tableSelected.equals('IssueComments')) {
-
-           tableName = 'IssueComments';
-
-           if (filter != null) {
-
-             String thisColumnName = filter.columnName;
-
-             if (thisColumnName != null &&
-
-               (thisColumnName.equals('ExternalId') ||
-
-               thisColumnName.equals('id')))
-
-               url = 'callout:GithubNC/issues/comments/' + filter.columnValue;
-
-             else
-
-               url = 'callout:GithubNC/issues/comments';
-
-           } else {
-
-             url = 'callout:GithubNC/issues/comments';
-
-           }
-
-        }
-
-        /**
-
-         * Filters, sorts, and applies limit and offset clauses.
-
-         **/
-
-       List<Map<String, Object>> rows = DataSource.QueryUtils.process(context, getData(url,
-
-    tableName));
-
-        return DataSource.TableResult.get(true, null, context.tableSelection.tableSelected,
-
-    rows);
-
-      }
-
-      /**
-
-      * Defines the schema for the external system.
-
-      * Called when the Salesforce admin clicks “Validate and Sync”
-
-      * in the user interface for the external data source.
-
-      **/
-
-      override global List<DataSource.Table> sync() {
-
-        List<DataSource.Table> tables =new List<DataSource.Table>();
-
-        List<DataSource.Column> columns, commentsColumns;
-
-        columns = new List<DataSource.Column>();
-
-        commentsColumns = new List<DataSource.Column>();
-
-        // Defines the external lookup field.
-
-        commentsColumns.add(DataSource.Column.externalLookup('issue_number',
-
-   'GithubIssues__x'));
-
-        commentsColumns.add(DataSource.Column.text('ExternalId', 255));
-
-        commentsColumns.add(DataSource.Column.url('DisplayUrl'));
-
-        commentsColumns.add(DataSource.Column.text('Body'));
-
-        commentsColumns.add(DataSource.Column.text('Created_By'));
-
-        commentsColumns.add(DataSource.Column.datetime('Created'));
-
-        commentsColumns.add(DataSource.Column.datetime('Updated'));
-
-        tables.add(DataSource.Table.get('IssueComments','id', commentsColumns));
-
-       //================================================================================
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        // Defines the indirect lookup field. (For this to work,
-
-        // make sure your Product2 standard object has a
-
-        // custom unique, external ID field called Repository.)
-
-        columns.add(DataSource.Column.indirectLookup( 'repository_url', 'Product2',
-
-   'Repository__c'));
-
-        columns.add(DataSource.Column.text('ExternalId',255));
-
-        columns.add(DataSource.Column.url('DisplayUrl'));
-
-        columns.add(DataSource.Column.text('Title',255));
-
-        columns.add(DataSource.Column.text('Description'));
-
-        columns.add(DataSource.Column.text('Repo_Name'));
-
-        columns.add(DataSource.Column.url('Repo_URL'));
-
-        List<Map<String,String>> stateList = new List<Map<String, String>>();
-
-        Map<String, String> open = new Map<String,String>();
-
-        open.put('Open', 'Open');
-
-        stateList.add(open);
-
-        Map<String, String> closed = new Map<String,String>();
-
-        closed.put('Closed', 'Closed');
-
-        stateList.add(closed);
-
-        columns.add(DataSource.Column.picklist('State',stateList));
-
-        List<Map<String,String>> stateReasonList = new List<Map<String, String>>();
-
-        Map<String, String> completed = new Map<String,String>();
-
-        completed.put('Completed', 'completed');
-
-        stateReasonList.add(completed);
-
-        Map<String, String> reopened = new Map<String,String>();
-
-        reopened.put('Reopened', 'reopened');
-
-        stateReasonList.add(reopened);
-
-        Map<String, String> notPlanned = new Map<String,String>();
-
-        notPlanned.put('Not Planned', 'not_planned');
-
-        stateReasonList.add(notPlanned);
-
-        columns.add(DataSource.Column.picklist('State_Reason',stateReasonList));
-
-        columns.add(DataSource.Column.boolean('Locked'));
-
-        columns.add(DataSource.Column.text('Lock_Reason', 255));
-
-        columns.add(DataSource.Column.datetime('Created'));
-
-        columns.add(DataSource.Column.datetime('Updated'));
-
-        columns.add(DataSource.Column.datetime('Closed_At'));
-
-        tables.add(DataSource.Table.get('GithubIssues','repository_url', columns));
-
-        return tables;
-
-      }
-
-      /**
-
-      * Called to do a full text search and get results from
-
-      * the external system for SOSL queries and Salesforce
-
-      * global searches.
-
-      *
-
-      * The SearchContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns results for each table that the SearchContext
-
-      * requested to be searched.
-
-      **/
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      override global List<DataSource.TableResult> search(
-
-           DataSource.SearchContext context) {
-
-        List<DataSource.TableResult> results =
-
-             new List<DataSource.TableResult>();
-
-        for (Integer i =0;i< context.tableSelections.size();i++) {
-
-           String entity = context.tableSelections[i].tableSelected;
-
-           String url = 'callout:GithubNC/issues/' + context.searchPhrase;
-
-           results.add(DataSource.TableResult.get(true, null, entity, getData(url,
-
-   entity)));
-
-        }
-
-        return results;
-
-      }
-
-      global override List<DataSource.UpsertResult> upsertRows(DataSource.UpsertContext
-
-   context) {
-
-        List<DataSource.UpsertResult> results = new List<DataSource.UpsertResult>();
-
-        String tableName = context.tableSelected;
-
-        // Calls the GitHub API to create and update issues.
-
-        List<Map<String, Object>> rows = context.rows;
-
-        for(Integer i = 0; i < rows.size(); i++) {
-
-           Map<String,Object> row = rows[i];
-
-           Map<String,Object> obj = new Map<String,Object>();
-
-           String externalId = (String) row.get('ExternalId');
-
-           String url, httpMethod;
-
-           if(tableName.equals('GithubIssues')) {
-
-             url = 'callout:GithubNC/issues';
-
-             httpMethod = 'POST';
-
-             if(!String.isBlank(externalId)){
-
-               httpMethod = 'PATCH';
-
-               url = url+'/'+externalId;
-
-             }
-
-             obj.put('title', row.get('Title'));
-
-             obj.put('body', row.get('Description'));
-
-             obj.put('state', row.get('State'));
-
-             obj.put('state_reason', String.isBlank((String) row.get('State_Reason'))?
-
-    null: row.get('State_Reason'));
-
-             obj.put('closed_at', row.get('Closed_At'));
-
-           }
-
-           else if(tableName.equals('IssueComments')) {
-
-             url = 'callout:GithubNC/issues';
-
-             if(!String.isBlank(externalId)){
-
-               httpMethod = 'PATCH';
-
-               url = url+'/comments/'+externalId;
-
-             } else {
-
-               httpMethod = 'POST';
-
-               url = url+'/' + row.get('issue_number') + '/comments';
-
-             }
-
-             obj.put('body', row.get('Body'));
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-           }
-
-           HttpResponse response = getResponse(url, httpMethod, obj);
-
-           if (response.getStatusCode() != 200){
-
-             results.add(DataSource.UpsertResult.failure(
-
-               String.valueOf(row.get('ExternalId')), 'The callout resulted in an
-
-   error: ' + response.getStatusCode()+' - '+response.getBody()));
-
-           }
-
-           System.debug(response.getBody());
-
-           if(tableName.equals('GithubIssues')) {
-
-             HttpResponse responseForLock = null;
-
-             if(!String.isBlank(externalId)) {
-
-               Boolean currentlyLocked = isIssueLockedCurrently(url);
-
-               Boolean isLocked = (Boolean) row.get('Locked');
-
-               Boolean lockStatusChanged = currentlyLocked != isLocked;
-
-               if(lockStatusChanged) {
-
-                  url = url + '/lock';
-
-                  if(isLocked) {
-
-                    Map<String, Object> lockReasonObj = new Map<String, Object>();
-
-                    lockReasonObj.put('lock_reason', row.get('Lock_Reason'));
-
-                    responseForLock = getResponse(url, 'PUT', lockReasonObj);
-
-                  }
-
-                  else {
-
-                    responseForLock = getResponse(url, 'DELETE', null);
-
-                  }
-
-                  if (responseForLock.getStatusCode() != 200) {
-
-                    results.add(DataSource.UpsertResult.failure(
-
-                     String.valueOf(row.get('ExternalId')), 'The callout resulted
-
-    in an error: ' + responseForLock.getStatusCode()+' - '+responseForLock.getBody()));
-
-                  }
-
-                  System.debug(responseForLock.getBody());
-
-               }
-
-             }
-
-           }
-
-           results.add(DataSource.UpsertResult.success(String.valueOf(externalId)));
-
-        }
-
-        return results;
-
-      }
-
-      global override List<DataSource.DeleteResult> deleteRows(DataSource.DeleteContext
-
-   context) {
-
-        List<DataSource.DeleteResult> results = new List<DataSource.DeleteResult>();
-
-        String tableName = context.tableSelected;
-
-        // Calls the GitHub API to delete issues.
-
-        if(tableName.equals('IssueComments')) {
-
-           for(String externalId: context.externalIds) {
-
-             String httpMethod = 'DELETE';
-
-             String url = 'callout:GithubNC/issues/comments/'+externalId;
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-             HttpResponse response = getResponse(url, httpMethod, null);
-
-             if (response.getStatusCode() != 204){
-
-               results.add(DataSource.DeleteResult.failure(
-
-                  externalId, 'The callout resulted in an error: ' +
-
-   response.getStatusCode()+' - '+response.getBody()));
-
-             }
-
-             System.debug(response.getBody());
-
-             results.add(DataSource.DeleteResult.success(String.valueOf(externalId)));
-
-           }
-
-        } else if(tableName.equals('GithubIssues')) {
-
-           System.debug('Deletion not supported for GitHub Issues.');
-
-          results.add(DataSource.DeleteResult.failure(String.valueOf(context.externalIds),
-
-    'Deletion not supported for GitHub Issues.'));
-
-        }
-
-        return results;
-
-      }
-
-      /**
-
-      * Helper method to parse the data.
-
-      * The url argument is the URL of the external system.
-
-      * Returns a list of rows from the external system.
-
-      **/
-
-      public List<Map<String, Object>> getData(String url, String tableName) {
-
-        String response = getResponse(url, 'GET', null).getBody();
-
-        // Standardize response string
-
-        if (!response.contains('"items":')) {
-
-           if (response.substring(0,1).equals('{')) {
-
-             response = '[' + response + ']';
-
-           }
-
-           response = '{"items": ' + response + '}';
-
-        }
-
-        List<Map<String, Object>> rows = new List<Map<String, Object>>();
-
-        Map<String, Object> responseBodyMap = (Map<String, Object>)
-
-   JSON.deserializeUntyped(response);
-
-        /**
-
-         * Checks errors.
-
-         **/
-
-        Map<String, Object> error = (Map<String, Object>)responseBodyMap.get('error');
-
-        if (error!=null) {
-
-           List<Object> errorsList = (List<Object>)error.get('errors');
-
-           Map<String, Object> errors = (Map<String, Object>)errorsList[0];
-
-           String errorMessage = (String)errors.get('message');
-
-           throw new DataSource.OAuthTokenExpiredException(errorMessage);
-
-        }
-
-        List<Object> fileItems = (List<Object>)responseBodyMap.get('items');
-
-        if (fileItems != null) {
-
-           for (Integer i=0; i < fileItems.size(); i++) {
-
-             Map<String, Object> item = (Map<String, Object>)fileItems[i];
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-             rows.add(createRow(item, tableName));
-
-           }
-
-        } else {
-
-           rows.add(createRow(responseBodyMap, tableName));
-
-        }
-
-        return rows;
-
-      }
-
-      /**
-
-      * Helper method to populate the External ID and Display
-
-      * URL fields on external object records based on the 'id'
-
-      * value that’s sent by the external system.
-
-      *
-
-      * The Map<String, Object> item parameter maps to the data
-
-      * that represents a row.
-
-      *
-
-      * Returns an updated map with the External ID and
-
-      * Display URL values.
-
-      **/
-
-      public Map<String, Object> createRow(Map<String, Object> item, String tableName) {
-
-        Map<String, Object> row = new Map<String, Object>();
-
-        for ( String key : item.keySet() ) {
-
-           if(tableName.equals('GithubIssues')) {
-
-             if (key == 'number') {
-
-               row.put('ExternalId', item.get(key));
-
-             } else if (key=='title') {
-
-               row.put('Title', item.get(key));
-
-             } else if (key=='body') {
-
-               row.put('Description', item.get(key));
-
-             } else if (key=='url') {
-
-               row.put('DisplayUrl', item.get(key));
-
-             } else if (key=='repository_url') {
-
-               String repoUrl = (String) item.get(key);
-
-               row.put('Repo_URL', repoUrl);
-
-               //extract repository name from the URL and add it to the Repo_Name
-
-   field
-
-               String repoName = repoUrl.substring(repoUrl.lastIndexOf('/')+1);
-
-               row.put('Repo_Name', repoName);
-
-               row.put(key, item.get(key));
-
-             } else if (key=='state') {
-
-               row.put('State', item.get(key));
-
-             } else if (key=='state_reason') {
-
-               row.put('State_Reason', item.get(key));
-
-             } else if (key=='locked') {
-
-               row.put('Locked', item.get(key));
-
-             } else if (key=='active_lock_reason') {
-
-               row.put('Lock_Reason', item.get(key));
-
-             } else if (key=='created_at' && item.get(key) != null) {
-
-               DateTime createdDateTime =
-
-   (DateTime)Json.deserialize('"'+item.get(key)+'"', DateTime.class);
-
-               row.put('Created', createdDateTime);
-
-             } else if (key=='updated_at' && item.get(key) != null) {
-
-               DateTime updatedDateTime =
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-   (DateTime)Json.deserialize('"'+item.get(key)+'"', DateTime.class);
-
-               row.put('Updated', updatedDateTime);
-
-             } else if (key=='closed_at' && item.get(key) != null) {
-
-               DateTime closedDateTime =
-
-   (DateTime)Json.deserialize('"'+item.get(key)+'"', DateTime.class);
-
-               row.put('Closed_At', closedDateTime);
-
-             } else {
-
-               row.put(key, item.get(key));
-
-             }
-
-           }
-
-           else if (tableName.equals('IssueComments')) {
-
-             if (key=='id') {
-
-               row.put('ExternalId', item.get(key));
-
-             } else if (key=='url') {
-
-               row.put('DisplayUrl', item.get(key));
-
-             } else if (key == 'body') {
-
-               row.put('Body', item.get(key));
-
-             } else if (key=='user') {
-
-               Map<String, Object> ownerMap = (Map<String, Object>)item.get(key);
-
-               row.put('Created_By', ownerMap.get('login'));
-
-             } else if (key=='created_at' && item.get(key) != null) {
-
-               DateTime createdDateTime =
-
-   (DateTime)Json.deserialize('"'+item.get(key)+'"', DateTime.class);
-
-               row.put('Created', createdDateTime);
-
-             } else if (key=='updated_at' && item.get(key) != null) {
-
-               DateTime updatedDateTime =
-
-   (DateTime)Json.deserialize('"'+item.get(key)+'"', DateTime.class);
-
-               row.put('Updated', updatedDateTime);
-
-             } else if (key=='issue_url') {
-
-               String issueUrl = (String) item.get(key);
-
-              row.put('issue_number', issueUrl.substring(issueUrl.lastIndexOf('/')+1));
-
-             } else {
-
-              row.put(key, item.get(key));
-
-             }
-
-           }
-
-        }
-
-        return row;
-
-      }
-
-      public Boolean isIssueLockedCurrently(String url) {
-
-        String existingIssue = getResponse(url, 'GET', null).getBody();
-
-        Map<String, Object> existingIssueBodyMap = (Map<String, Object>)
-
-   JSON.deserializeUntyped(existingIssue);
-
-        /**
-
-         * Checks errors.
-
-         **/
-
-       Map<String, Object> error = (Map<String, Object>) existingIssueBodyMap.get('error');
-
-        if (error!=null) {
-
-           List<Object> errorsList = (List<Object>)error.get('errors');
-
-           Map<String, Object> errors = (Map<String, Object>)errorsList[0];
-
-           String errorMessage = (String)errors.get('message');
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-           throw new DataSource.OAuthTokenExpiredException(errorMessage);
-
-        }
-
-        return (Boolean) existingIssueBodyMap.get('locked');
-
-      }
-
-      /**
-
-      * The url argument is the URL of the external system.
-
-      * Returns the response from the external system.
-
-      **/
-
-      public HttpResponse getResponse(String url, String httpMethod, Map<String,Object>
-
-   issue) {
-
-        // Perform callouts for production (non-test) results.
-
-        Http httpProtocol = new Http();
-
-        HttpRequest request = new HttpRequest();
-
-        request.setEndpoint(url);
-
-        request.setMethod(httpMethod);
-
-        if(issue != null)
-
-           request.setBody(JSON.serialize(issue));
-
-        return httpProtocol.send(request);
-
-      }
-
-   }
-
-```
-
-DataSource.Provider Class
-
-This example creates a class named `GitHubDataSourceProvider` .
-
-```
-   /**
-
-    * Extends the DataSource.Provider base class to create a
-
-    * custom adapter for Salesforce Connect. The class informs
-
-    * Salesforce of the functional and authentication
-
-    * capabilities that are supported by or required to connect
-
-    * to an external system.
-
-    **/
-
-   global class GitHubDataSourceProvider extends DataSource.Provider {
-
-      /**
-
-      * For simplicity, this example declares that the external
-
-      * system doesn’t require authentication by returning
-
-      * AuthenticationCapability.ANONYMOUS as the sole entry
-
-      * in the list of authentication capabilities.
-
-      **/
-
-     override global List<DataSource.AuthenticationCapability> getAuthenticationCapabilities()
-
-    {
-
-        List<DataSource.AuthenticationCapability> capabilities = new
-
-   List<DataSource.AuthenticationCapability>();
-
-        capabilities.add(DataSource.AuthenticationCapability.ANONYMOUS);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the functional capabilities that the
-
-      * external system supports, in this case
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      * only SOQL queries.
-
-      **/
-
-      override global List<DataSource.Capability> getCapabilities() {
-
-        List<DataSource.Capability> capabilities = new List<DataSource.Capability>();
-
-        capabilities.add(DataSource.Capability.ROW_QUERY);
-
-        capabilities.add(DataSource.Capability.ROW_CREATE);
-
-        capabilities.add(DataSource.Capability.ROW_UPDATE);
-
-        capabilities.add(DataSource.Capability.ROW_DELETE);
-
-        capabilities.add(DataSource.Capability.PICKLIST);
-
-        capabilities.add(DataSource.Capability.MULTI_PICKLIST);
-
-        capabilities.add(DataSource.Capability.SEARCH);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the associated DataSource.Connection class.
-
-      **/
-
-      override global DataSource.Connection getConnection(DataSource.ConnectionParams
-
-   connectionParams) {
-
-        return new GitHubDataSourceConnection(connectionParams);
-
-      }
-
-   }
-
-###### GitHub Custom Adapter for Salesforce Connect
-
-```
-
-This example illustrates how to support indirect lookup relationships. An indirect lookup relationship links a child external object to a
-parent standard or custom object.
-
-For this example to work, create a custom field on the Contact standard object. Name the custom field _`github_username`_, make
-it a text field of length 39, and select the `External ID` and `Unique` attributes. Also, add https://api.github.com to your remote
-site settings.
-
-GitHubDataSourceConnection Class
-
-```
-   /**
-
-    * Defines the connection to GitHub REST API v3 to support
-
-    * querying of GitHub profiles.
-
-    * Extends the DataSource.Connection class to enable
-
-    * Salesforce to sync the external system’s schema
-
-    * and to handle queries and searches of the external data.
-
-    **/
-
-   global class GitHubDataSourceConnection extends
-
-        DataSource.Connection {
-
-      private DataSource.ConnectionParams connectionInfo;
-
-      /**
-
-      * Constructor for GitHubDataSourceConnection
-
-      **/
-
-      global GitHubDataSourceConnection(
-
-           DataSource.ConnectionParams connectionInfo) {
-
-        this.connectionInfo = connectionInfo;
-
-      }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      /**
-
-      * Called to query and get results from the external
-
-      * system for SOQL queries, list views, and detail pages
-
-      * for an external object that’s associated with the
-
-      * external data source.
-
-      *
-
-      * The queryContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns a list of rows as the query results.
-
-      **/
-
-      override global DataSource.TableResult query(
-
-           DataSource.QueryContext context) {
-
-        DataSource.Filter filter = context.tableSelection.filter;
-
-        String url;
-
-        if (filter != null) {
-
-           String thisColumnName = filter.columnName;
-
-           if (thisColumnName != null &&
-
-            (thisColumnName.equals('ExternalId') ||
-
-             thisColumnName.equals('login')))
-
-             url = 'https://api.github.com/users/'
-
-                  + filter.columnValue;
-
-           else
-
-               url = 'https://api.github.com/users';
-
-        } else {
-
-           url = 'https://api.github.com/users';
-
-        }
-
-        /**
-
-         * Filters, sorts, and applies limit and offset clauses.
-
-         **/
-
-        List<Map<String, Object>> rows =
-
-             DataSource.QueryUtils.process(context, getData(url));
-
-        return DataSource.TableResult.get(true, null,
-
-             context.tableSelection.tableSelected, rows);
-
-      }
-
-      /**
-
-      * Defines the schema for the external system.
-
-      * Called when the administrator clicks “Validate and Sync”
-
-      * in the user interface for the external data source.
-
-      **/
-
-      override global List<DataSource.Table> sync() {
-
-        List<DataSource.Table> tables =
-
-             new List<DataSource.Table>();
-
-        List<DataSource.Column> columns;
-
-        columns = new List<DataSource.Column>();
-
-        // Defines the indirect lookup field. (For this to work,
-
-        // make sure your Contact standard object has a
-
-        // custom unique, external ID field called github_username.)
-
-        columns.add(DataSource.Column.indirectLookup(
-
-             'login', 'Contact', 'github_username__c'));
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        columns.add(DataSource.Column.text('id', 255));
-
-        columns.add(DataSource.Column.text('name',255));
-
-        columns.add(DataSource.Column.text('company',255));
-
-        columns.add(DataSource.Column.text('bio',255));
-
-        columns.add(DataSource.Column.text('followers',255));
-
-        columns.add(DataSource.Column.text('following',255));
-
-        columns.add(DataSource.Column.url('html_url'));
-
-        columns.add(DataSource.Column.url('DisplayUrl'));
-
-        columns.add(DataSource.Column.text('ExternalId',255));
-
-        tables.add(DataSource.Table.get('githubProfile','login',
-
-             columns));
-
-        return tables;
-
-      }
-
-      /**
-
-      * Called to do a full text search and get results from
-
-      * the external system for SOSL queries and Salesforce
-
-      * global searches.
-
-      *
-
-      * The SearchContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns results for each table that the SearchContext
-
-      * requested to be searched.
-
-      **/
-
-      override global List<DataSource.TableResult> search(
-
-           DataSource.SearchContext context) {
-
-        List<DataSource.TableResult> results =
-
-             new List<DataSource.TableResult>();
-
-        for (Integer i =0;i< context.tableSelections.size();i++) {
-
-           String entity = context.tableSelections[i].tableSelected;
-
-           // Search usernames
-
-           String url = 'https://api.github.com/users/'
-
-                    + context.searchPhrase;
-
-           results.add(DataSource.TableResult.get(
-
-               true, null, entity, getData(url)));
-
-        }
-
-        return results;
-
-      }
-
-      /**
-
-      * Helper method to parse the data.
-
-      * The url argument is the URL of the external system.
-
-      * Returns a list of rows from the external system.
-
-      **/
-
-      public List<Map<String, Object>> getData(String url) {
-
-        String response = getResponse(url);
-
-        // Standardize response string
-
-        if (!response.contains('"items":')) {
-
-           if (response.substring(0,1).equals('{')) {
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-             response = '[' + response + ']';
-
-           }
-
-           response = '{"items": ' + response + '}';
-
-        }
-
-        List<Map<String, Object>> rows =
-
-             new List<Map<String, Object>>();
-
-        Map<String, Object> responseBodyMap = (Map<String, Object>)
-
-             JSON.deserializeUntyped(response);
-
-        /**
-
-         * Checks errors.
-
-         **/
-
-        Map<String, Object> error =
-
-             (Map<String, Object>)responseBodyMap.get('error');
-
-        if (error!=null) {
-
-           List<Object> errorsList =
-
-               (List<Object>)error.get('errors');
-
-           Map<String, Object> errors =
-
-               (Map<String, Object>)errorsList[0];
-
-           String errorMessage = (String)errors.get('message');
-
-           throw new
-
-               DataSource.OAuthTokenExpiredException(errorMessage);
-
-        }
-
-        List<Object> fileItems =
-
-           (List<Object>)responseBodyMap.get('items');
-
-        if (fileItems != null) {
-
-           for (Integer i=0; i < fileItems.size(); i++) {
-
-             Map<String, Object> item =
-
-                  (Map<String, Object>)fileItems[i];
-
-             rows.add(createRow(item));
-
-           }
-
-        } else {
-
-           rows.add(createRow(responseBodyMap));
-
-        }
-
-        return rows;
-
-      }
-
-      /**
-
-      * Helper method to populate the External ID and Display
-
-      * URL fields on external object records based on the 'id'
-
-      * value that’s sent by the external system.
-
-      *
-
-      * The Map<String, Object> item parameter maps to the data
-
-      * that represents a row.
-
-      *
-
-      * Returns an updated map with the External ID and
-
-      * Display URL values.
-
-      **/
-
-      public Map<String, Object> createRow(
-
-           Map<String, Object> item){
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        Map<String, Object> row = new Map<String, Object>();
-
-        for ( String key : item.keySet() ) {
-
-           if (key == 'login') {
-
-             row.put('ExternalId', item.get(key));
-
-           } else if (key=='html_url') {
-
-             row.put('DisplayUrl', item.get(key));
-
-           }
-
-           row.put(key, item.get(key));
-
-        }
-
-        return row;
-
-      }
-
-      /**
-
-      * Helper method to make the HTTP GET call.
-
-      * The url argument is the URL of the external system.
-
-      * Returns the response from the external system.
-
-      **/
-
-      public String getResponse(String url) {
-
-        // Perform callouts for production (non-test) results.
-
-        Http httpProtocol = new Http();
-
-        HttpRequest request = new HttpRequest();
-
-        request.setEndPoint(url);
-
-        request.setMethod('GET');
-
-        HttpResponse response = httpProtocol.send(request);
-
-        return response.getBody();
-
-      }
-
-   }
-
-```
-
-GitHubDataSourceProvider Class
-
-```
-   /**
-
-    * Extends the DataSource.Provider base class to create a
-
-    * custom adapter for Salesforce Connect. The class informs
-
-    * Salesforce of the functional and authentication
-
-    * capabilities that are supported by or required to connect
-
-    * to an external system.
-
-    **/
-
-   global class GitHubDataSourceProvider
-
-        extends DataSource.Provider {
-
-      /**
-
-      * For simplicity, this example declares that the external
-
-      * system doesn’t require authentication by returning
-
-      * AuthenticationCapability.ANONYMOUS as the sole entry
-
-      * in the list of authentication capabilities.
-
-      **/
-
-      override global List<DataSource.AuthenticationCapability>
-
-      getAuthenticationCapabilities() {
-
-        List<DataSource.AuthenticationCapability> capabilities =
-
-             new List<DataSource.AuthenticationCapability>();
-
-        capabilities.add(
-
-             DataSource.AuthenticationCapability.ANONYMOUS);
-
-        return capabilities;
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      }
-
-      /**
-
-      * Declares the functional capabilities that the
-
-      * external system supports, in this case
-
-      * only SOQL queries.
-
-      **/
-
-      override global List<DataSource.Capability>
-
-      getCapabilities() {
-
-        List<DataSource.Capability> capabilities =
-
-             new List<DataSource.Capability>();
-
-        capabilities.add(DataSource.Capability.ROW_QUERY);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the associated DataSource.Connection class.
-
-      **/
-
-      override global DataSource.Connection getConnection(
-
-           DataSource.ConnectionParams connectionParams) {
-
-        return new GitHubDataSourceConnection(connectionParams);
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-Adding Remote Site Settings
-
-###### Google Drive [™] Custom Adapter for Salesforce Connect
-
-This example illustrates how to use callouts and OAuth to connect to an external system, which in this case is the Google Drive [™] online
-storage service. The example also shows how to avoid failing tests from web service callouts by returning mock responses for test
-methods.
-
-For this example to work reliably, request offline access when setting up OAuth so that Salesforce can obtain and maintain a refresh
-token for your connections.
-
-DriveDataSourceConnection Class
-
-```
-   /**
-
-    * Extends the DataSource.Connection class to enable
-
-    * Salesforce to sync the external system’s schema
-
-    * and to handle queries and searches of the external data.
-
-    **/
-
-   global class DriveDataSourceConnection extends
-
-      DataSource.Connection {
-
-      private DataSource.ConnectionParams connectionInfo;
-
-      /**
-
-      * Constructor for DriveDataSourceConnection.
-
-      **/
-
-      global DriveDataSourceConnection(
-
-        DataSource.ConnectionParams connectionInfo) {
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        this.connectionInfo = connectionInfo;
-
-      }
-
-      /**
-
-      * Called when an external object needs to get a list of
-
-      * schema from the external data source, for example when
-
-      * the administrator clicks “Validate and Sync” in the
-
-      * user interface for the external data source.
-
-      **/
-
-      override global List<DataSource.Table> sync() {
-
-        List<DataSource.Table> tables =
-
-           new List<DataSource.Table>();
-
-        List<DataSource.Column> columns;
-
-        columns = new List<DataSource.Column>();
-
-        columns.add(DataSource.Column.text('title', 255));
-
-        columns.add(DataSource.Column.text('description',255));
-
-        columns.add(DataSource.Column.text('createdDate',255));
-
-        columns.add(DataSource.Column.text('modifiedDate',255));
-
-        columns.add(DataSource.Column.url('selfLink'));
-
-        columns.add(DataSource.Column.url('DisplayUrl'));
-
-        columns.add(DataSource.Column.text('ExternalId',255));
-
-        tables.add(DataSource.Table.get('googleDrive','title',
-
-           columns));
-
-        return tables;
-
-      }
-
-      /**
-
-      * Called to query and get results from the external
-
-      * system for SOQL queries, list views, and detail pages
-
-      * for an external object that’s associated with the
-
-      * external data source.
-
-      *
-
-      * The QueryContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns a list of rows as the query results.
-
-      **/
-
-      override global DataSource.TableResult query(
-
-        DataSource.QueryContext context) {
-
-        DataSource.Filter filter = context.tableSelection.filter;
-
-        String url;
-
-        if (filter != null) {
-
-           String thisColumnName = filter.columnName;
-
-           if (thisColumnName != null &&
-
-               thisColumnName.equals('ExternalId'))
-
-             url = 'https://www.googleapis.com/drive/v2/'
-
-             + 'files/' + filter.columnValue;
-
-           else
-
-             url = 'https://www.googleapis.com/drive/v2/'
-
-             + 'files';
-
-        } else {
-
-           url = 'https://www.googleapis.com/drive/v2/'
-
-           + 'files';
-
-        }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        /**
-
-         * Filters, sorts, and applies limit and offset clauses.
-
-         **/
-
-        List<Map<String, Object>> rows =
-
-           DataSource.QueryUtils.process(context, getData(url));
-
-        return DataSource.TableResult.get(true, null,
-
-           context.tableSelection.tableSelected, rows);
-
-      }
-
-      /**
-
-      * Called to do a full text search and get results from
-
-      * the external system for SOSL queries and Salesforce
-
-      * global searches.
-
-      *
-
-      * The SearchContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns results for each table that the SearchContext
-
-      * requested to be searched.
-
-      **/
-
-      override global List<DataSource.TableResult> search(
-
-        DataSource.SearchContext context) {
-
-        List<DataSource.TableResult> results =
-
-           new List<DataSource.TableResult>();
-
-        for (Integer i =0;i< context.tableSelections.size();i++) {
-
-           String entity = context.tableSelections[i].tableSelected;
-
-           String url =
-
-             'https://www.googleapis.com/drive/v2/files'+
-
-             '?q=fullText+contains+\''+context.searchPhrase+'\'';
-
-           results.add(DataSource.TableResult.get(
-
-             true, null, entity, getData(url)));
-
-        }
-
-        return results;
-
-      }
-
-      /**
-
-      * Helper method to parse the data.
-
-      * The url argument is the URL of the external system.
-
-      * Returns a list of rows from the external system.
-
-      **/
-
-      public List<Map<String, Object>> getData(String url) {
-
-        String response = getResponse(url);
-
-        List<Map<String, Object>> rows =
-
-           new List<Map<String, Object>>();
-
-        Map<String, Object> responseBodyMap = (Map<String, Object>)
-
-           JSON.deserializeUntyped(response);
-
-        /**
-
-         * Checks errors.
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-         **/
-
-        Map<String, Object> error =
-
-           (Map<String, Object>)responseBodyMap.get('error');
-
-        if (error!=null) {
-
-           List<Object> errorsList =
-
-             (List<Object>)error.get('errors');
-
-           Map<String, Object> errors =
-
-             (Map<String, Object>)errorsList[0];
-
-           String errorMessage = (String)errors.get('message');
-
-           throw new DataSource.OAuthTokenExpiredException(errorMessage);
-
-        }
-
-        List<Object> fileItems=(List<Object>)responseBodyMap.get('items');
-
-        if (fileItems != null) {
-
-           for (Integer i=0; i < fileItems.size(); i++) {
-
-             Map<String, Object> item =
-
-               (Map<String, Object>)fileItems[i];
-
-             rows.add(createRow(item));
-
-           }
-
-        } else {
-
-           rows.add(createRow(responseBodyMap));
-
-        }
-
-        return rows;
-
-      }
-
-      /**
-
-      * Helper method to populate the External ID and Display
-
-      * URL fields on external object records based on the 'id'
-
-      * value that’s sent by the external system.
-
-      *
-
-      * The Map<String, Object> item parameter maps to the data
-
-      * that represents a row.
-
-      *
-
-      * Returns an updated map with the External ID and
-
-      * Display URL values.
-
-      **/
-
-      public Map<String, Object> createRow(
-
-        Map<String, Object> item){
-
-        Map<String, Object> row = new Map<String, Object>();
-
-        for ( String key : item.keySet() ) {
-
-           if (key == 'id') {
-
-             row.put('ExternalId', item.get(key));
-
-           } else if (key=='selfLink') {
-
-             row.put(key, item.get(key));
-
-             row.put('DisplayUrl', item.get(key));
-
-           } else {
-
-             row.put(key, item.get(key));
-
-           }
-
-        }
-
-        return row;
-
-      }
-
-      static String mockResponse = '{' +
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-       ' "kind": "drive#file",' +
-
-       ' "id": "12345",' +
-
-       ' "selfLink": "files/12345",' +
-
-       ' "title": "Mock File",' +
-
-       ' "mimeType": "application/text",' +
-
-       ' "description": "Mock response that’s used during tests",' +
-
-       ' "createdDate": "2016-04-20",' +
-
-       ' "modifiedDate": "2016-04-20",' +
-
-       ' "version": 1' +
-
-       '}';
-
-      /**
-
-      * Helper method to make the HTTP GET call.
-
-      * The url argument is the URL of the external system.
-
-      * Returns the response from the external system.
-
-      **/
-
-      public String getResponse(String url) {
-
-        if (System.Test.isRunningTest()) {
-
-         // Avoid callouts during tests. Return mock data instead.
-
-         return mockResponse;
-
-        } else {
-
-         // Perform callouts for production (non-test) results.
-
-         Http httpProtocol = new Http();
-
-         HttpRequest request = new HttpRequest();
-
-         request.setEndPoint(url);
-
-         request.setMethod('GET');
-
-         request.setHeader('Authorization', 'Bearer '+
-
-            this.connectionInfo.oauthToken);
-
-         HttpResponse response = httpProtocol.send(request);
-
-         return response.getBody();
-
-        }
-
-      }
-
-   }
-
-```
-
-DriveDataSourceProvider Class
-
-```
-   /**
-
-    * Extends the DataSource.Provider base class to create a
-
-    * custom adapter for Salesforce Connect. The class informs
-
-    * Salesforce of the functional and authentication
-
-    * capabilities that are supported by or required to connect
-
-    * to an external system.
-
-    **/
-
-   global class DriveDataSourceProvider
-
-      extends DataSource.Provider {
-
-      /**
-
-      * Declares the types of authentication that can be used
-
-      * to access the external system.
-
-      **/
-
-      override global List<DataSource.AuthenticationCapability>
-
-        getAuthenticationCapabilities() {
-
-        List<DataSource.AuthenticationCapability> capabilities =
-
-           new List<DataSource.AuthenticationCapability>();
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        capabilities.add(
-
-           DataSource.AuthenticationCapability.OAUTH);
-
-        capabilities.add(
-
-           DataSource.AuthenticationCapability.ANONYMOUS);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the functional capabilities that the
-
-      * external system supports.
-
-      **/
-
-      override global List<DataSource.Capability>
-
-        getCapabilities() {
-
-        List<DataSource.Capability> capabilities =
-
-           new List<DataSource.Capability>();
-
-        capabilities.add(DataSource.Capability.ROW_QUERY);
-
-        capabilities.add(DataSource.Capability.SEARCH);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the associated DataSource.Connection class.
-
-      **/
-
-      override global DataSource.Connection getConnection(
-
-        DataSource.ConnectionParams connectionParams) {
-
-        return new DriveDataSourceConnection(connectionParams);
-
-      }
-
-   }
-
-###### Google Books [™] Custom Adapter for Salesforce Connect
-
-```
-
-This example illustrates how to work around the requirements and limits of an external system’s APIs: in this case, the Google Books API
-Family.
-
-To integrate with the Google Books [™] service, we set up Salesforce Connect as follows.
-
-**•** The Google Books API allows a maximum of 40 returned results, so we develop our custom adapter to handle result sets with more
-than 40 rows.
-
-**•** The Google Books API can sort only by search relevance and publish dates, so we develop our custom adapter to disable sorting on
-columns.
-
-**•** To support OAuth, we set up our authentication settings in Salesforce so that the requested scope of permissions for access tokens
-includes _`https://www.googleapis.com/auth/books`_ .
-
-**•** To allow Apex callouts, we define these remote sites in Salesforce:
-
-**–** https://www.googleapis.com
-
-**–** https://books.google.com
-
-BooksDataSourceConnection Class
-
-```
-   /**
-
-    * Extends the DataSource.Connection class to enable
-
-    * Salesforce to sync the external system metadata
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-    * schema and to handle queries and searches of the external
-
-    * data.
-
-    **/
-
-   global class BooksDataSourceConnection extends
-
-      DataSource.Connection {
-
-      private DataSource.ConnectionParams connectionInfo;
-
-      // Constructor for BooksDataSourceConnection.
-
-      global BooksDataSourceConnection(DataSource.ConnectionParams
-
-                         connectionInfo) {
-
-        this.connectionInfo = connectionInfo;
-
-      }
-
-      /**
-
-      * Called when an external object needs to get a list of
-
-      * schema from the external data source, for example when
-
-      * the administrator clicks “Validate and Sync” in the
-
-      * user interface for the external data source.
-
-      **/
-
-      override global List<DataSource.Table> sync() {
-
-        List<DataSource.Table> tables =
-
-           new List<DataSource.Table>();
-
-        List<DataSource.Column> columns;
-
-        columns = new List<DataSource.Column>();
-
-        columns.add(getColumn('title'));
-
-        columns.add(getColumn('description'));
-
-        columns.add(getColumn('publishedDate'));
-
-        columns.add(getColumn('publisher'));
-
-        columns.add(DataSource.Column.url('DisplayUrl'));
-
-        columns.add(DataSource.Column.text('ExternalId', 255));
-
-        tables.add(DataSource.Table.get('googleBooks', 'title',
-
-                           columns));
-
-        return tables;
-
-      }
-
-      /**
-
-      * Google Books API v1 doesn't support sorting,
-
-      * so we create a column with sortable = false.
-
-      **/
-
-      private DataSource.Column getColumn(String columnName) {
-
-        DataSource.Column column = DataSource.Column.text(columnName,
-
-                                     255);
-
-        column.sortable = false;
-
-        return column;
-
-      }
-
-      /**
-
-      * Called to query and get results from the external
-
-      * system for SOQL queries, list views, and detail pages
-
-      * for an external object that's associated with the
-
-      * external data source.
-
-      *
-
-      * The QueryContext argument represents the query to run
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      * against a table in the external system.
-
-      *
-
-      * Returns a list of rows as the query results.
-
-      **/
-
-      override global DataSource.TableResult query(
-
-               DataSource.QueryContext contexts) {
-
-        DataSource.Filter filter = contexts.tableSelection.filter;
-
-        String url;
-
-        if (contexts.tableSelection.columnsSelected.size() == 1 &&
-
-        contexts.tableSelection.columnsSelected.get(0).aggregation ==
-
-           DataSource.QueryAggregation.COUNT) {
-
-           return getCount(contexts);
-
-        }
-
-        if (filter != null) {
-
-           String thisColumnName = filter.columnName;
-
-           if (thisColumnName != null &&
-
-             thisColumnName.equals('ExternalId')) {
-
-             url = 'https://www.googleapis.com/books/v1/' +
-
-               'volumes?q=' + filter.columnValue +
-
-               '&maxResults=1&id=' + filter.columnValue;
-
-             return DataSource.TableResult.get(true, null,
-
-                    contexts.tableSelection.tableSelected,
-
-                    getData(url));
-
-           }
-
-           else {
-
-             url = 'https://www.googleapis.com/books/' +
-
-               'v1/volumes?q=' + filter.columnValue +
-
-               '&id=' + filter.columnValue +
-
-               '&maxResults=40' + '&startIndex=';
-
-           }
-
-        } else {
-
-           url = 'https://www.googleapis.com/books/v1/' +
-
-             'volumes?q=america&' + '&maxResults=40' +
-
-             '&startIndex=';
-
-        }
-
-        /**
-
-         * Google Books API v1 supports maxResults of 40
-
-         * so we handle pagination explicitly in the else statement
-
-         * when we handle more than 40 records per query.
-
-         **/
-
-        if (contexts.maxResults < 40) {
-
-           return DataSource.TableResult.get(true, null,
-
-               contexts.tableSelection.tableSelected,
-
-               getData(url + contexts.offset));
-
-        }
-
-        else {
-
-           return fetchData(contexts, url);
-
-        }
-
-      }
-
-      /**
-
-      * Helper method to fetch results when maxResults is
-
-      * greater than 40 (the max value for maxResults supported
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      * by Google Books API v1).
-
-      **/
-
-      private DataSource.TableResult fetchData(
-
-        DataSource.QueryContext contexts, String url) {
-
-        Integer fetchSlot = (contexts.maxResults / 40) + 1;
-
-        List<Map<String, Object>> data =
-
-           new List<Map<String, Object>>();
-
-        Integer startIndex = contexts.offset;
-
-        for(Integer count = 0; count < fetchSlot; count++) {
-
-           data.addAll(getData(url + startIndex));
-
-           if(count == 0)
-
-             contexts.offset = 41;
-
-           else
-
-             contexts.offset += 40;
-
-        }
-
-        return DataSource.TableResult.get(true, null,
-
-                  contexts.tableSelection.tableSelected, data);
-
-      }
-
-      /**
-
-      * Helper method to execute count() query.
-
-      **/
-
-      private DataSource.TableResult getCount(
-
-        DataSource.QueryContext contexts) {
-
-        String url = 'https://www.googleapis.com/books/v1/' +
-
-               'volumes?q=america&projection=full';
-
-        List<Map<String,Object>> response =
-
-           DataSource.QueryUtils.filter(contexts, getData(url));
-
-        List<Map<String, Object>> countResponse =
-
-           new List<Map<String, Object>>();
-
-        Map<String, Object> countRow =
-
-           new Map<String, Object>();
-
-        countRow.put(
-
-           contexts.tableSelection.columnsSelected.get(0).columnName,
-
-           response.size());
-
-        countResponse.add(countRow);
-
-        return DataSource.TableResult.get(contexts, countResponse);
-
-      }
-
-      /**
-
-      * Called to do a full text search and get results from
-
-      * the external system for SOSL queries and Salesforce
-
-      * global searches.
-
-      *
-
-      * The SearchContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns results for each table that the SearchContext
-
-      * requested to be searched.
-
-      **/
-
-      override global List<DataSource.TableResult> search(
-
-        DataSource.SearchContext contexts) {
-
-        List<DataSource.TableResult> results =
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-           new List<DataSource.TableResult>();
-
-        for (Integer i =0; i< contexts.tableSelections.size();i++) {
-
-           String entity = contexts.tableSelections[i].tableSelected;
-
-           String url = 'https://www.googleapis.com/books/v1' +
-
-                  '/volumes?q=' + contexts.searchPhrase;
-
-           results.add(DataSource.TableResult.get(true, null,
-
-                                entity,
-
-                                getData(url)));
-
-        }
-
-        return results;
-
-      }
-
-      /**
-
-      * Helper method to parse the data.
-
-      * Returns a list of rows from the external system.
-
-      **/
-
-      public List<Map<String, Object>> getData(String url) {
-
-        HttpResponse response = getResponse(url);
-
-        String body = response.getBody();
-
-        List<Map<String, Object>> rows =
-
-           new List<Map<String, Object>>();
-
-        Map<String, Object> responseBodyMap =
-
-           (Map<String, Object>)JSON.deserializeUntyped(body);
-
-      /**
-
-      * Checks errors.
-
-      **/
-
-        Map<String, Object> error =
-
-           (Map<String, Object>)responseBodyMap.get('error');
-
-        if (error!=null) {
-
-           List<Object> errorsList =
-
-             (List<Object>)error.get('errors');
-
-           Map<String, Object> errors =
-
-             (Map<String, Object>)errorsList[0];
-
-           String messages = (String)errors.get('message');
-
-           throw new DataSource.OAuthTokenExpiredException(messages);
-
-        }
-
-        List<Object> sItems = (List<Object>)responseBodyMap.get('items');
-
-        if (sItems != null) {
-
-           for (Integer i=0; i< sItems.size(); i++) {
-
-             Map<String, Object> item =
-
-               (Map<String, Object>)sItems[i];
-
-             rows.add(createRow(item));
-
-           }
-
-        } else {
-
-           rows.add(createRow(responseBodyMap));
-
-        }
-
-        return rows;
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      }
-
-      /**
-
-      * Helper method to populate a row based on source data.
-
-      *
-
-      * The item argument maps to the data that
-
-      * represents a row.
-
-      *
-
-      * Returns an updated map with the External ID and
-
-      * Display URL values.
-
-      **/
-
-      public Map<String, Object> createRow(
-
-        Map<String, Object> item) {
-
-        Map<String, Object> row = new Map<String, Object>();
-
-        for ( String key : item.keySet() ){
-
-           if (key == 'id') {
-
-             row.put('ExternalId', item.get(key));
-
-           } else if (key == 'volumeInfo') {
-
-             Map<String, Object> volumeInfoMap =
-
-               (Map<String, Object>)item.get(key);
-
-             row.put('title', volumeInfoMap.get('title'));
-
-             row.put('description',
-
-                  volumeInfoMap.get('description'));
-
-             row.put('DisplayUrl',
-
-                  volumeInfoMap.get('infoLink'));
-
-             row.put('publishedDate',
-
-                  volumeInfoMap.get('publishedDate'));
-
-             row.put('publisher',
-
-                  volumeInfoMap.get('publisher'));
-
-           }
-
-        }
-
-        return row;
-
-      }
-
-      /**
-
-      * Helper method to make the HTTP GET call.
-
-      * The url argument is the URL of the external system.
-
-      * Returns the response from the external system.
-
-      **/
-
-      public HttpResponse getResponse(String url) {
-
-        Http httpProtocol = new Http();
-
-        HttpRequest request = new HttpRequest();
-
-        request.setEndPoint(url);
-
-        request.setMethod('GET');
-
-        request.setHeader('Authorization', 'Bearer '+
-
-                  this.connectionInfo.oauthToken);
-
-        HttpResponse response = httpProtocol.send(request);
-
-        return response;
-
-      }
-
-   }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-BooksDataSourceProvider Class
-
-```
-   /**
-
-    * Extends the DataSource.Provider base class to create a
-
-    * custom adapter for Salesforce Connect. The class informs
-
-    * Salesforce of the functional and authentication
-
-    * capabilities that are supported by or required to connect
-
-    * to an external system.
-
-    **/
-
-   global class BooksDataSourceProvider extends
-
-      DataSource.Provider {
-
-      /**
-
-      * Declares the types of authentication that can be used
-
-      * to access the external system.
-
-      **/
-
-      override global List<DataSource.AuthenticationCapability>
-
-        getAuthenticationCapabilities() {
-
-        List<DataSource.AuthenticationCapability> capabilities =
-
-           new List<DataSource.AuthenticationCapability>();
-
-        capabilities.add(
-
-           DataSource.AuthenticationCapability.OAUTH);
-
-        capabilities.add(
-
-           DataSource.AuthenticationCapability.ANONYMOUS);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the functional capabilities that the
-
-      * external system supports.
-
-      **/
-
-      override global List<DataSource.Capability>
-
-        getCapabilities() {
-
-        List<DataSource.Capability> capabilities = new
-
-           List<DataSource.Capability>();
-
-        capabilities.add(DataSource.Capability.ROW_QUERY);
-
-        capabilities.add(DataSource.Capability.SEARCH);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the associated DataSource.Connection class.
-
-      **/
-
-      override global DataSource.Connection getConnection(
-
-        DataSource.ConnectionParams connectionParams) {
-
-        return new BooksDataSourceConnection(connectionParams);
-
-      }
-
-   }
-
-###### Loopback Custom Adapter for Salesforce Connect
-
-```
-
-This example illustrates how to handle filtering in queries. For simplicity, this example connects the Salesforce org to itself as the external
-system.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-LoopbackDataSourceConnection Class
-
-```
-   /**
-
-    * Extends the DataSource.Connection class to enable
-    * Salesforce to sync the external systemâ€ [™] s schema
-
-    * and to handle queries and searches of the external data.
-
-    **/
-
-   global class LoopbackDataSourceConnection
-
-      extends DataSource.Connection {
-
-      /**
-
-      * Constructors.
-
-      **/
-
-      global LoopbackDataSourceConnection(
-
-        DataSource.ConnectionParams connectionParams) {
-
-      }
-
-      global LoopbackDataSourceConnection() {}
-
-      /**
-
-      * Called when an external object needs to get a list of
-
-      * schema from the external data source, for example when
-
-      * the administrator clicks â€œValidate and Syncâ€ � in the
-
-      * user interface for the external data source.
-
-      **/
-
-      override global List<DataSource.Table> sync() {
-
-        List<DataSource.Table> tables =
-
-           new List<DataSource.Table>();
-
-        List<DataSource.Column> columns;
-
-        columns = new List<DataSource.Column>();
-
-        columns.add(DataSource.Column.text('ExternalId', 255));
-
-        columns.add(DataSource.Column.url('DisplayUrl'));
-
-        columns.add(DataSource.Column.text('Name', 255));
-
-        columns.add(
-
-           DataSource.Column.number('NumberOfEmployees', 18, 0));
-
-        tables.add(
-
-           DataSource.Table.get('Looper', 'Name', columns));
-
-        return tables;
-
-      }
-
-      /**
-
-      * Called to query and get results from the external
-
-      * system for SOQL queries, list views, and detail pages
-      * for an external object thatâ€ [™] s associated with the
-
-      * external data source.
-
-      *
-
-      * The QueryContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns a list of rows as the query results.
-
-      **/
-
-      override global DataSource.TableResult
-
-        query(DataSource.QueryContext context) {
-
-        if (context.tableSelection.columnsSelected.size() == 1 &&
-
-           context.tableSelection.columnsSelected.get(0).aggregation ==
-
-             DataSource.QueryAggregation.COUNT) {
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-           integer count = execCount(getCountQuery(context));
-
-           List<Map<String, Object>> countResponse =
-
-             new List<Map<String, Object>>();
-
-           Map<String, Object> countRow =
-
-             new Map<String, Object>();
-
-           countRow.put(
-
-             context.tableSelection.columnsSelected.get(0).columnName,
-
-             count);
-
-           countResponse.add(countRow);
-
-           return DataSource.TableResult.get(context,countResponse);
-
-        } else {
-
-           List<Map<String,Object>> rows = execQuery(
-
-             getSoqlQuery(context));
-
-           return DataSource.TableResult.get(context,rows);
-
-        }
-
-      }
-
-      /**
-
-      * Called to do a full text search and get results from
-
-      * the external system for SOSL queries and Salesforce
-
-      * global searches.
-
-      *
-
-      * The SearchContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns results for each table that the SearchContext
-
-      * requested to be searched.
-
-      **/
-
-      override global List<DataSource.TableResult>
-
-        search(DataSource.SearchContext context) {
-
-        return DataSource.SearchUtils.searchByName(context, this);
-
-      }
-
-      /**
-
-      * Helper method to execute the SOQL query and
-
-      * return the results.
-
-      **/
-
-      private List<Map<String,Object>>
-
-        execQuery(String soqlQuery) {
-
-        List<Account> objs = Database.query(soqlQuery);
-
-        List<Map<String,Object>> rows =
-
-           new List<Map<String,Object>>();
-
-        for (Account obj : objs) {
-
-           Map<String,Object> row = new Map<String,Object>();
-
-           row.put('Name', obj.Name);
-
-           row.put('NumberOfEmployees', obj.NumberOfEmployees);
-
-           row.put('ExternalId', obj.Id);
-
-           row.put('DisplayUrl',
-
-             URL.getOrgDomainUrl().toExternalForm() +
-
-               obj.Id);
-
-           rows.add(row);
-
-        }
-
-        return rows;
-
-      }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      /**
-
-      * Helper method to get aggregate count.
-
-      **/
-
-      private integer execCount(String soqlQuery) {
-
-        integer count = Database.countQuery(soqlQuery);
-
-        return count;
-
-      }
-
-      /**
-
-      * Helper method to create default aggregate query.
-
-      **/
-
-      private String getCountQuery(DataSource.QueryContext context) {
-
-        String baseQuery = 'SELECT COUNT() FROM Account';
-
-        String filter = getSoqlFilter('',
-
-           context.tableSelection.filter);
-
-        if (filter.length() > 0)
-
-           return baseQuery + ' WHERE ' + filter;
-
-        return baseQuery;
-
-      }
-
-      /**
-
-      * Helper method to create default query.
-
-      **/
-
-      private String getSoqlQuery(DataSource.QueryContext context) {
-
-        String baseQuery =
-
-           'SELECT Id,Name,NumberOfEmployees FROM Account';
-
-        String filter = getSoqlFilter('',
-
-           context.tableSelection.filter);
-
-        if (filter.length() > 0)
-
-           return baseQuery + ' WHERE ' + filter;
-
-        return baseQuery;
-
-      }
-
-      /**
-
-      * Helper method to handle query filter.
-
-      **/
-
-      private String getSoqlFilter(String query,
-
-        DataSource.Filter filter) {
-
-        if (filter == null) {
-
-           return query;
-
-        }
-
-        String append;
-
-        DataSource.FilterType type = filter.type;
-
-        List<Map<String,Object>> retainedRows =
-
-           new List<Map<String,Object>>();
-
-        if (type == DataSource.FilterType.NOT_) {
-
-           DataSource.Filter subfilter = filter.subfilters.get(0);
-
-           append = getSoqlFilter('NOT', subfilter);
-
-        } else if (type == DataSource.FilterType.AND_) {
-
-           append =
-
-             getSoqlFilterCompound('AND', filter.subfilters);
-
-        } else if (type == DataSource.FilterType.OR_) {
-
-           append =
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-             getSoqlFilterCompound('OR', filter.subfilters);
-
-        } else {
-
-           append = getSoqlFilterExpression(filter);
-
-        }
-
-        return query + ' ' + append;
-
-      }
-
-      /**
-
-      * Helper method to handle query subfilters.
-
-      **/
-
-      private String getSoqlFilterCompound(String operator,
-
-        List<DataSource.Filter> subfilters) {
-
-        String expression = ' (';
-
-        boolean first = true;
-
-        for (DataSource.Filter subfilter : subfilters) {
-
-           if (first)
-
-             first = false;
-
-           else
-
-             expression += ' ' + operator + ' ';
-
-           expression += getSoqlFilter('', subfilter);
-
-        }
-
-        expression += ') ';
-
-        return expression;
-
-      }
-
-      /**
-
-      * Helper method to handle query filter expressions.
-
-      **/
-
-      private String getSoqlFilterExpression(
-
-        DataSource.Filter filter) {
-
-        String columnName = filter.columnName;
-
-        String operator;
-
-        Object expectedValue = filter.columnValue;
-
-        if (filter.type == DataSource.FilterType.EQUALS) {
-
-           operator = '=';
-
-        } else if (filter.type ==
-
-           DataSource.FilterType.NOT_EQUALS) {
-
-           operator = '<>';
-
-        } else if (filter.type ==
-
-           DataSource.FilterType.LESS_THAN) {
-
-           operator = '<';
-
-        } else if (filter.type ==
-
-           DataSource.FilterType.GREATER_THAN) {
-
-           operator = '>';
-
-        } else if (filter.type ==
-
-           DataSource.FilterType.LESS_THAN_OR_EQUAL_TO) {
-
-           operator = '<=';
-
-        } else if (filter.type ==
-
-           DataSource.FilterType.GREATER_THAN_OR_EQUAL_TO) {
-
-           operator = '>=';
-
-        } else if (filter.type ==
-
-           DataSource.FilterType.STARTS_WITH) {
-
-           return mapColumnName(columnName) +
-
-           ' LIKE \'' + String.valueOf(expectedValue) + '%\'';
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        } else if (filter.type ==
-
-           DataSource.FilterType.ENDS_WITH) {
-
-           return mapColumnName(columnName) +
-
-           ' LIKE \'%' + String.valueOf(expectedValue) + '\'';
-
-        } else if (filter.type ==
-
-           DataSource.FilterType.LIKE_) {
-
-           return mapColumnName(columnName) +
-
-           ' LIKE \'' + String.valueOf(expectedValue) + '\'';
-
-        } else {
-
-           throwException(
-
-           'Implementing other filter types is left as an exercise for the reader: '
-
-           + filter.type);
-
-        }
-
-        return mapColumnName(columnName) +
-
-           ' ' + operator + ' ' + wrapValue(expectedValue);
-
-      }
-
-      /**
-
-      * Helper method to map column names.
-
-      **/
-
-      private String mapColumnName(String apexName) {
-
-        if (apexName.equalsIgnoreCase('ExternalId'))
-
-           return 'Id';
-
-        if (apexName.equalsIgnoreCase('DisplayUrl'))
-
-           return 'Id';
-
-        return apexName;
-
-      }
-
-      /**
-
-      * Helper method to wrap expression Strings with quotes.
-
-      **/
-
-      private String wrapValue(Object foundValue) {
-
-        if (foundValue instanceof String)
-
-           return '\'' + String.valueOf(foundValue) + '\'';
-
-        return String.valueOf(foundValue);
-
-      }
-
-   }
-
-```
-
-LoopbackDataSourceProvider Class
-
-```
-   /**
-
-    * Extends the DataSource.Provider base class to create a
-
-    * custom adapter for Salesforce Connect. The class informs
-
-    * Salesforce of the functional and authentication
-
-    * capabilities that are supported by or required to connect
-
-    * to an external system.
-
-    **/
-
-   global class LoopbackDataSourceProvider
-
-      extends DataSource.Provider {
-
-      /**
-
-      * Declares the types of authentication that can be used
-
-      * to access the external system.
-
-      **/
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      override global List<DataSource.AuthenticationCapability>
-
-        getAuthenticationCapabilities() {
-
-        List<DataSource.AuthenticationCapability> capabilities =
-
-           new List<DataSource.AuthenticationCapability>();
-
-        capabilities.add(
-
-           DataSource.AuthenticationCapability.ANONYMOUS);
-
-        capabilities.add(
-
-           DataSource.AuthenticationCapability.BASIC);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the functional capabilities that the
-
-      * external system supports.
-
-      **/
-
-      override global List<DataSource.Capability>
-
-        getCapabilities() {
-
-        List<DataSource.Capability> capabilities =
-
-           new List<DataSource.Capability>();
-
-        capabilities.add(DataSource.Capability.ROW_QUERY);
-
-        capabilities.add(DataSource.Capability.SEARCH);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the associated DataSource.Connection class.
-
-      **/
-
-      override global DataSource.Connection
-
-        getConnection(DataSource.ConnectionParams connectionParams) {
-
-        return new LoopbackDataSourceConnection();
-
-      }
-
-   }
-
-###### Stack Overflow Custom Adapter for Salesforce Connect
-
-```
-
-This example illustrates how to support external lookup relationships and multiple tables. An external lookup relationship links a child
-standard, custom, or external object to a parent external object. Each table can become an external object in the Salesforce org.
-
-For this example to work, create a custom field on the Contact standard object. Name the custom field “github_username” and select
-the `External ID` and `Unique` attributes.
-
-StackOverflowDataSourceConnection Class
-
-```
-   /**
-
-    * Defines the connection to Stack Exchange API v2.2 to support
-
-    * querying of Stack Overflow users (stackoverflowUser)
-
-    * and posts (stackoverflowPost).
-
-    * Extends the DataSource.Connection class to enable
-
-    * Salesforce to sync the external system’s schema
-
-    * and to handle queries of the external data.
-
-    **/
-
-   global class StackOverflowDataSourceConnection extends
-
-        DataSource.Connection {
-
-      private DataSource.ConnectionParams connectionInfo;
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      /**
-
-      * Constructor for StackOverflowDataSourceConnection
-
-      **/
-
-      global StackOverflowDataSourceConnection(
-
-           DataSource.ConnectionParams connectionInfo) {
-
-        this.connectionInfo = connectionInfo;
-
-      }
-
-      /**
-
-      * Defines the schema for the external system.
-
-      * Called when the administrator clicks “Validate and Sync”
-
-      * in the user interface for the external data source.
-
-      **/
-
-      override global List<DataSource.Table> sync() {
-
-        List<DataSource.Table> tables =
-
-             new List<DataSource.Table>();
-
-        // Defines columns for the table of Stack OverFlow posts
-
-        List<DataSource.Column> postColumns =
-
-         new List<DataSource.Column>();
-
-        // Defines the external lookup field.
-
-        postColumns.add(DataSource.Column.externalLookup(
-
-         'owner_id', 'stackoverflowUser__x'));
-
-        postColumns.add(DataSource.Column.text('title', 255));
-
-        postColumns.add(DataSource.Column.text('view_count', 255));
-
-        postColumns.add(DataSource.Column.text('question_id',255));
-
-        postColumns.add(DataSource.Column.text('creation_date',255));
-
-        postColumns.add(DataSource.Column.text('score',255));
-
-        postColumns.add(DataSource.Column.url('link'));
-
-        postColumns.add(DataSource.Column.url('DisplayUrl'));
-
-        postColumns.add(DataSource.Column.text('ExternalId',255));
-
-        tables.add(DataSource.Table.get('stackoverflowPost','title',
-
-         postColumns));
-
-        // Defines columns for the table of Stack OverFlow users
-
-        List<DataSource.Column> userColumns =
-
-         new List<DataSource.Column>();
-
-        userColumns.add(DataSource.Column.text('user_id', 255));
-
-        userColumns.add(DataSource.Column.text('display_name', 255));
-
-        userColumns.add(DataSource.Column.text('location',255));
-
-        userColumns.add(DataSource.Column.text('creation_date',255));
-
-        userColumns.add(DataSource.Column.url('website_url',255));
-
-        userColumns.add(DataSource.Column.text('reputation',255));
-
-        userColumns.add(DataSource.Column.url('link'));
-
-        userColumns.add(DataSource.Column.url('DisplayUrl'));
-
-        userColumns.add(DataSource.Column.text('ExternalId',255));
-
-        tables.add(DataSource.Table.get('stackoverflowUser',
-
-             'Display_name', userColumns));
-
-        return tables;
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      }
-
-      /**
-
-      * Called to query and get results from the external
-
-      * system for SOQL queries, list views, and detail pages
-
-      * for an external object that’s associated with the
-
-      * external data source.
-
-      *
-
-      * The QueryContext argument represents the query to run
-
-      * against a table in the external system.
-
-      *
-
-      * Returns a list of rows as the query results.
-
-      **/
-
-      override global DataSource.TableResult query(
-
-           DataSource.QueryContext context) {
-
-        DataSource.Filter filter = context.tableSelection.filter;
-
-        String url;
-
-        // Sets the URL to query Stack Overflow posts
-
-        if (context.tableSelection.tableSelected
-
-   .equals('stackoverflowPost')) {
-
-           if (filter != null) {
-
-             String thisColumnName = filter.columnName;
-
-             if (thisColumnName != null &&
-
-                  thisColumnName.equals('ExternalId'))
-
-               url = 'https://api.stackexchange.com/2.2/'
-
-                    + 'questions/' + filter.columnValue
-
-                    + '?order=desc&sort=activity'
-
-                    + '&site=stackoverflow';
-
-             else
-
-                  url = 'https://api.stackexchange.com/2.2/'
-
-                       + 'questions'
-
-                       + '?order=desc&sort=activity'
-
-                       + '&site=stackoverflow';
-
-           } else {
-
-             url = 'https://api.stackexchange.com/2.2/'
-
-                  + 'questions'
-
-                  + '?order=desc&sort=activity'
-
-                  + '&site=stackoverflow';
-
-           }
-
-        // Sets the URL to query Stack Overflow users
-
-        } else if (context.tableSelection.tableSelected
-
-   .equals('stackoverflowUser')) {
-
-           if (filter != null) {
-
-             String thisColumnName = filter.columnName;
-
-             if (thisColumnName != null &&
-
-                  thisColumnName.equals('ExternalId'))
-
-               url = 'https://api.stackexchange.com/2.2/'
-
-                    + 'users/' + filter.columnValue
-
-                    + '?order=desc&sort=reputation'
-
-                    + '&site=stackoverflow';
-
-             else
-
-               url = 'https://api.stackexchange.com/2.2/'
-
-                    + 'users' +
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-   '?order=desc&sort=reputation&site=stackoverflow';
-
-           } else {
-
-             url = 'https://api.stackexchange.com/2.2/'
-
-                  + 'users' + '?order=desc&sort=reputation'
-
-                  + '&site=stackoverflow';
-
-           }
-
-        }
-
-        /**
-
-         * Filters, sorts, and applies limit and offset clauses.
-
-         **/
-
-        List<Map<String, Object>> rows =
-
-             DataSource.QueryUtils.process(context, getData(url));
-
-        return DataSource.TableResult.get(true, null,
-
-             context.tableSelection.tableSelected, rows);
-
-      }
-
-      /**
-
-      * Helper method to parse the data.
-
-      * The url argument is the URL of the external system.
-
-      * Returns a list of rows from the external system.
-
-      **/
-
-      public List<Map<String, Object>> getData(String url) {
-
-        String response = getResponse(url);
-
-        List<Map<String, Object>> rows =
-
-             new List<Map<String, Object>>();
-
-        Map<String, Object> responseBodyMap = (Map<String, Object>)
-
-             JSON.deserializeUntyped(response);
-
-        /**
-
-         * Checks errors.
-
-         **/
-
-        Map<String, Object> error =
-
-             (Map<String, Object>)responseBodyMap.get('error');
-
-        if (error!=null) {
-
-           List<Object> errorsList =
-
-               (List<Object>)error.get('errors');
-
-           Map<String, Object> errors =
-
-               (Map<String, Object>)errorsList[0];
-
-           String errorMessage = (String)errors.get('message');
-
-           throw new
-
-               DataSource.OAuthTokenExpiredException(errorMessage);
-
-        }
-
-        List<Object> fileItems=
-
-           (List<Object>)responseBodyMap.get('items');
-
-        if (fileItems != null) {
-
-           for (Integer i=0; i < fileItems.size(); i++) {
-
-             Map<String, Object> item =
-
-                  (Map<String, Object>)fileItems[i];
-
-             rows.add(createRow(item));
-
-           }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        } else {
-
-           rows.add(createRow(responseBodyMap));
-
-        }
-
-        return rows;
-
-      }
-
-      /**
-
-      * Helper method to populate the External ID and Display
-
-      * URL fields on external object records based on the 'id'
-
-      * value that’s sent by the external system.
-
-      *
-
-      * The Map<String, Object> item parameter maps to the data
-
-      * that represents a row.
-
-      *
-
-      * Returns an updated map with the External ID and
-
-      * Display URL values.
-
-      **/
-
-      public Map<String, Object> createRow(
-
-           Map<String, Object> item) {
-
-        Map<String, Object> row = new Map<String, Object>();
-
-        for ( String key : item.keySet() ) {
-
-           if (key.equals('question_id') || key.equals('user_id')) {
-
-             row.put('ExternalId', item.get(key));
-
-           } else if (key.equals('link')) {
-
-             row.put('DisplayUrl', item.get(key));
-
-           } else if (key.equals('owner')) {
-
-             Map<String, Object> ownerMap =
-
-             (Map<String, Object>)item.get(key);
-
-             row.put('owner_id', ownerMap.get('user_id'));
-
-           }
-
-           row.put(key, item.get(key));
-
-        }
-
-        return row;
-
-      }
-
-      /**
-
-      * Helper method to make the HTTP GET call.
-
-      * The url argument is the URL of the external system.
-
-      * Returns the response from the external system.
-
-      **/
-
-      public String getResponse(String url) {
-
-        // Perform callouts for production (non-test) results.
-
-        Http httpProtocol = new Http();
-
-        HttpRequest request = new HttpRequest();
-
-        request.setEndPoint(url);
-
-        request.setMethod('GET');
-
-        HttpResponse response = httpProtocol.send(request);
-
-        return response.getBody();
-
-      }
-
-   }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-StackOverflowPostDataSourceProvider Class
-
-```
-   /**
-
-    * Extends the DataSource.Provider base class to create a
-
-    * custom adapter for Salesforce Connect. The class informs
-
-    * Salesforce of the functional and authentication
-
-    * capabilities that are supported by or required to connect
-
-    * to an external system.
-
-    **/
-
-   global class StackOverflowPostDataSourceProvider
-
-        extends DataSource.Provider {
-
-      /**
-
-      * For simplicity, this example declares that the external
-
-      * system doesn’t require authentication by returning
-
-      * AuthenticationCapability.ANONYMOUS as the sole entry
-
-      * in the list of authentication capabilities.
-
-      **/
-
-      override global List<DataSource.AuthenticationCapability>
-
-      getAuthenticationCapabilities() {
-
-        List<DataSource.AuthenticationCapability> capabilities =
-
-             new List<DataSource.AuthenticationCapability>();
-
-        capabilities.add(
-
-             DataSource.AuthenticationCapability.ANONYMOUS);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the functional capabilities that the
-
-      * external system supports, in this case
-
-      * only SOQL queries.
-
-      **/
-
-      override global List<DataSource.Capability>
-
-      getCapabilities() {
-
-        List<DataSource.Capability> capabilities =
-
-             new List<DataSource.Capability>();
-
-        capabilities.add(DataSource.Capability.ROW_QUERY);
-
-        return capabilities;
-
-      }
-
-      /**
-
-      * Declares the associated DataSource.Connection class.
-
-      **/
-
-      override global DataSource.Connection getConnection(
-
-           DataSource.ConnectionParams connectionParams) {
-
-        return new
-
-           StackOverflowDataSourceConnection(connectionParams);
-
-      }
-
-   }
-
-#### Salesforce Reports and Dashboards API via Apex
-
-```
-
-The Salesforce Reports and Dashboards API via Apex gives you programmatic access to your report data as defined in the report builder.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-The API enables you to integrate report data into any web or mobile application, inside or outside the Salesforce platform. For example,
-you might use the API to trigger a Chatter post with a snapshot of top-performing reps each quarter.
-
-The Salesforce Reports and Dashboards API via Apex revolutionizes the way that you access and visualize your data. You can:
-
-**•** Integrate report data into custom objects.
-
-**•** Integrate report data into rich visualizations to animate the data.
-
-**•** Build custom dashboards.
-
-**•** Automate reporting tasks.
-
-At a high level, the API resources enable you to query and filter report data. You can:
-
-**•** Run tabular, summary, or matrix reports synchronously or asynchronously.
-
-**•** Filter for specific data on the fly.
-
-**•** Query report data and metadata.
-
-##### Requirements and Limitations
-
-The Salesforce Reports and Dashboards API via Apex is available for organizations that have API enabled.
-
-Run Reports
-You can run a report synchronously or asynchronously through the Salesforce Reports and Dashboards API via Apex.
-
-List Asynchronous Runs of a Report
-You can retrieve up to 2,000 instances of a report that you ran asynchronously.
-
-Get Report Metadata
-You can retrieve report metadata to get information about a report and its report type.
-
-Get Report Data
-You can use the `ReportResults` class to get the fact map, which contains data that’s associated with a report.
-
-Filter Reports
-To get specific results on the fly, you can filter reports through the API.
-
-Decode the Fact Map
-The fact map contains the summary and record-level data values for a report.
-
-Test Reports
-Like all Apex code, Salesforce Reports and Dashboards API via Apex code requires test coverage.
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: Reports Namespace](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_Reports.htm)
-
-##### Requirements and Limitations
-
-The Salesforce Reports and Dashboards API via Apex is available for organizations that have API enabled.
-
-The following restrictions apply to the Reports and Dashboards API via Apex, in addition to general API limits.
-
-**•** Cross filters, standard report filters, and filtering by row limit are unavailable when filtering data.
-
-**•** Historical tracking reports are only supported for matrix reports.
-
-**•** Subscriptions aren't supported for historical tracking reports.
-
-**•** The API can process only reports that contain up to 100 fields selected as columns.
-
-**•** A list of up to 200 recently viewed reports can be returned.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**•** Your org can request up to 500 synchronous report runs per hour.
-
-**•** The API supports up to 20 synchronous report run requests at a time.
-
-**•** A list of up to 2,000 instances of a report that was run asynchronously can be returned.
-
-**•** The API supports up to 200 requests at a time to get results of asynchronous report runs.
-
-**•** Your organization can request up to 1,200 asynchronous requests per hour.
-
-**•** Asynchronous report run results are available within a 24-hour rolling period.
-
-**•** The API returns up to the first 2,000 report rows. You can narrow results using filters.
-
-**•** You can add up to 20 custom field filters when you run a report.
-
-**•** If a report is run on a standard or custom object as an automated process user from an Apex test class, only the required custom
-fields are returned. Non-required custom fields aren’t shown in the results.
-
-**•** **–** Your org can request up to 200 dashboard refreshes per hour.
-
-**–** Your org can request results for up to 5,000 dashboards per hour.
-
-In addition, the following restrictions apply to the Reports and Dashboards API via Apex.
-
-**•** Asynchronous report calls are not allowed in batch Apex.
-
-**•** Report calls are not allowed in Apex triggers.
-
-**•** There is no Apex method to list recently run reports.
-
-**•** The number of report rows processed during a synchronous report run count towards the governor limit that restricts the total
-number of rows retrieved by SOQL queries to 50,000 rows per transaction. This limit is not imposed when reports are run
-asynchronously.
-
-**•** In Apex tests, report runs always ignore the `SeeAllData` annotation, regardless of whether the annotation is set to `true` or
-
-`false` . This means that report results will include pre-existing data that the test didn’t create. There is no way to disable the
-`SeeAllData` annotation for a report execution. To limit results, use a filter on the report.
-
-**•** In Apex tests, asynchronous report runs will execute only after the test is stopped using the `Test.stopTest` method.
-
-Note: All limits that apply to reports created in the report builder also apply to the API. For more information, see “Analytics Limits”
-in the Salesforce online help.
-
-##### Run Reports
-
-You can run a report synchronously or asynchronously through the Salesforce Reports and Dashboards API via Apex.
-
-Reports can be run with or without details and can be filtered by setting report metadata. When you run a report, the API returns data
-for the same number of records that are available when the report is run in the Salesforce user interface.
-
-Run a report synchronously if you expect it to finish running quickly. Otherwise, we recommend that you run reports through the
-Salesforce API asynchronously for these reasons:
-
-**•** Long-running reports have a lower risk of reaching the timeout limit when they are run asynchronously.
-
-**•** The Salesforce Reports and Dashboards API via Apex can handle a higher number of asynchronous run requests at a time.
-
-**•** Because the results of an asynchronously run report are stored for a 24-hour rolling period, they’re available for recurring access.
-
-Example: **Run a Report Synchronously**
-
-To run a report synchronously, use one of the `ReportManager.runReport()` methods. For example:
-
-```
-      // Get the report ID
-
-      List <Report> reportList = [SELECT Id,DeveloperName FROM Report where
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        DeveloperName = 'Closed_Sales_This_Quarter'];
-
-      String reportId = (String)reportList.get(0).get('Id');
-
-      // Run the report
-
-      Reports.ReportResults results = Reports.ReportManager.runReport(reportId, true);
-
-      System.debug('Synchronous results: ' + results);
-
-```
-
-Example: **Run a Report Asynchronously**
-
-To run a report asynchronously, use one of the `ReportManager.runAsyncReport()` methods. For example:
-
-```
-      // Get the report ID
-
-      List <Report> reportList = [SELECT Id,DeveloperName FROM Report where
-
-        DeveloperName = 'Closed_Sales_This_Quarter'];
-
-      String reportId = (String)reportList.get(0).get('Id');
-
-      // Run the report
-
-      Reports.ReportInstance instance = Reports.ReportManager.runAsyncReport(reportId, true);
-
-      System.debug('Asynchronous instance: ' + instance);
-
-##### List Asynchronous Runs of a Report
-
-```
-
-You can retrieve up to 2,000 instances of a report that you ran asynchronously.
-
-The instance list is sorted by the date and time when the report was run. Report results are stored for a rolling 24-hour period. During
-this time, based on your user access level, you can access results for each instance of the report that was run.
-
-Example: You can get the instance list by calling the `ReportManager.getReportInstances` method. For example:
-
-```
-      // Get the report ID
-
-      List <Report> reportList = [SELECT Id,DeveloperName FROM Report where
-
-        DeveloperName = 'Closed_Sales_This_Quarter'];
-
-      String reportId = (String)reportList.get(0).get('Id');
-
-      // Run a report asynchronously
-
-      Reports.ReportInstance instance = Reports.ReportManager.runAsyncReport(reportId, true);
-
-      System.debug('List of asynchronous runs: ' +
-
-        Reports.ReportManager.getReportInstances(reportId));
-
-##### Get Report Metadata
-
-```
-
-You can retrieve report metadata to get information about a report and its report type.
-
-Metadata includes information about fields that are used in the report for filters, groupings, detailed data, and summaries. You can use
-the metadata to do several things:
-
-**•** Find out what fields and values you can filter on in the report type.
-
-**•** Build custom chart visualizations by using the metadata information on fields, groupings, detailed data, and summaries.
-
-**•** Change filters in the report metadata when you run a report.
-
-Use the `ReportResults.getReportMetadata` method to retrieve report metadata. You can then use the “get” methods on
-the `ReportMetadata` class to access metadata values.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Example: The following example retrieves metadata for a report.
-
-```
-      // Get the report ID
-
-      List <Report> reportList = [SELECT Id,DeveloperName FROM Report where
-
-        DeveloperName = 'Closed_Sales_This_Quarter'];
-
-      String reportId = (String)reportList.get(0).get('Id');
-
-      // Run a report
-
-      Reports.ReportResults results = Reports.ReportManager.runReport(reportId);
-
-      // Get the report metadata
-
-      Reports.ReportMetadata rm = results.getReportMetadata();
-
-      System.debug('Name: ' + rm.getName());
-
-      System.debug('ID: ' + rm.getId());
-
-      System.debug('Currency code: ' + rm.getCurrencyCode());
-
-      System.debug('Developer name: ' + rm.getDeveloperName());
-
-      // Get grouping info for first grouping
-
-      Reports.GroupingInfo gInfo = rm.getGroupingsDown()[0];
-
-      System.debug('Grouping name: ' + gInfo.getName());
-
-      System.debug('Grouping sort order: ' + gInfo.getSortOrder());
-
-      System.debug('Grouping date granularity: ' + gInfo.getDateGranularity());
-
-      // Get aggregates
-
-      System.debug('First aggregate: ' + rm.getAggregates()[0]);
-
-      System.debug('Second aggregate: ' + rm.getAggregates()[1]);
-
-      // Get detail columns
-
-      System.debug('Detail columns: ' + rm.getDetailColumns());
-
-      // Get report format
-
-      System.debug('Report format: ' + rm.getReportFormat());
-
-##### Get Report Data
-
-```
-
-You can use the `ReportResults` class to get the fact map, which contains data that’s associated with a report.
-
-Example: To access data values of the fact map, you can map grouping value keys to the corresponding fact map keys. In the
-following example, imagine that you have an opportunity report that’s grouped by close month, and you’ve summarized the
-amount field. To get the value for the summary amount for the first grouping in the report:
-
-**1.** Get the first down-grouping in the report by using the `ReportResults.getGroupingsDown` method and accessing
-the first `GroupingValue` object.
-
-**2.** Get the grouping key value from the `GroupingValue` object by using the `getKey` method.
-
-**3.** Construct a fact map key by appending `'!T'` to this key value. The resulting fact map key represents the summary value for
-the first down-grouping.
-
-**4.** Get the fact map from the report results by using the fact map key.
-
-**5.** Get the first summary amount value by using the `ReportFact.getAggregates` method and accessing the first
-`SummaryValue` object.
-
-**6.** Get the field value from the first data cell of the first row of the report by using the `ReportFactWithDetails.getRows`
-method.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      // Get the report ID
-
-      List <Report> reportList = [SELECT Id,DeveloperName FROM Report where
-
-        DeveloperName = 'Closed_Sales_This_Quarter'];
-
-      String reportId = (String)reportList.get(0).get('Id');
-
-      // Run a report synchronously
-
-      Reports.reportResults results = Reports.ReportManager.runReport(reportId, true);
-
-      // Get the first down-grouping in the report
-
-      Reports.Dimension dim = results.getGroupingsDown();
-
-      Reports.GroupingValue groupingVal = dim.getGroupings()[0];
-
-      System.debug('Key: ' + groupingVal.getKey());
-
-      System.debug('Label: ' + groupingVal.getLabel());
-
-      System.debug('Value: ' + groupingVal.getValue());
-
-      // Construct a fact map key, using the grouping key value
-
-      String factMapKey = groupingVal.getKey() + '!T';
-
-      // Get the fact map from the report results
-
-      Reports.ReportFactWithDetails factDetails =
-
-        (Reports.ReportFactWithDetails)results.getFactMap().get(factMapKey);
-
-      // Get the first summary amount from the fact map
-
-      Reports.SummaryValue sumVal = factDetails.getAggregates()[0];
-
-      System.debug('Summary Value: ' + sumVal.getLabel());
-
-      // Get the field value from the first data cell of the first row of the report
-
-      Reports.ReportDetailRow detailRow = factDetails.getRows()[0];
-
-      System.debug(detailRow.getDataCells()[0].getLabel());
-
-##### Filter Reports
-
-```
-
-To get specific results on the fly, you can filter reports through the API.
-
-Changes to filters that are made through the API don’t affect the source report definition. Using the API, you can filter with up to 20
-custom field filters and add filter logic (such as AND and OR). But standard filters (such as range), filtering by row limit, and cross filters
-are unavailable.
-
-Before you filter a report, it’s helpful to check the following filter values in the metadata.
-
-**•** The `ReportTypeColumn.getFilterable` method tells you whether a field can be filtered.
-
-**•** The `ReportTypeColumn.filterValues` method returns all filter values for a field.
-
-**•** The `ReportManager.dataTypeFilterOperatorMap` method lists the field data types that you can use to filter the
-report.
-
-**•** The `ReportMetadata.getReportFilters` method lists all filters that exist in the report.
-
-You can filter reports during synchronous or asynchronous report runs.
-
-Example: To filter a report, set filter values in the report metadata and then run the report. The following example retrieves the
-report metadata, overrides the filter value, and runs the report. The example:
-
-**1.** Retrieves the report filter object from the metadata by using the `ReportMetadata.getReportFilters` method.
-
-**2.** Sets the value in the filter to a specific date by using the `ReportFilter.setValue` method and runs the report.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**3.** Overrides the filter value to a different date and runs the report again.
-
-The output for the example shows the differing grand total values, based on the date filter that was applied.
-
-```
-      // Get the report ID
-
-      List <Report> reportList = [SELECT Id,DeveloperName FROM Report where
-
-        DeveloperName = 'Closed_Sales_This_Quarter'];
-
-      String reportId = (String)reportList.get(0).get('Id');
-
-      // Get the report metadata
-
-      Reports.ReportDescribeResult describe = Reports.ReportManager.describeReport(reportId);
-
-      Reports.ReportMetadata reportMd = describe.getReportMetadata();
-
-      // Override filter and run report
-
-      Reports.ReportFilter filter = reportMd.getReportFilters()[0];
-
-      filter.setValue('2013-11-01');
-
-      Reports.ReportResults results = Reports.ReportManager.runReport(reportId, reportMd);
-
-      Reports.ReportFactWithSummaries factSum =
-
-        (Reports.ReportFactWithSummaries)results.getFactMap().get('T!T');
-
-      System.debug('Value for November: ' + factSum.getAggregates()[0].getLabel());
-
-      // Override filter and run report
-
-      filter = reportMd.getReportFilters()[0];
-
-      filter.setValue('2013-10-01');
-
-      results = Reports.ReportManager.runReport(reportId, reportMd);
-
-      factSum = (Reports.ReportFactWithSummaries)results.getFactMap().get('T!T');
-
-      System.debug('Value for October: ' + factSum.getAggregates()[0].getLabel());
-
-##### Decode the Fact Map
-
-```
-
-The fact map contains the summary and record-level data values for a report.
-
-Depending on how you run a report, the fact map in the report results can contain values for only summary or both summary and
-detailed data. The fact map values are expressed as keys, which you can programmatically use to visualize the report data. Fact map
-keys provide an index into each section of a fact map, from which you can access summary and detailed data.
-
-The pattern for the fact map keys varies by report format as shown in this table.
-
-**Report** **Fact map key pattern**
-**format**
-
-Tabular
-`T!T` : The grand total of a report. Both record data values and the grand total are represented by this key.
-
-Summary
-
-Matrix
-
-```
-<First level row grouping_second level row grouping_third level row
-```
-
-_**`grouping>`**_ `!T` : T refers to the row grand total.
-
-```
-<First level row grouping_second level row grouping>!<First level column
-```
-
-_**`grouping_second level column grouping>`**_ .
-
-Each item in a row or column grouping is numbered starting with `0` . Here are some examples of fact map keys:
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**Fact Map** **Description**
-**Key**
-
-`0!T` The first item in the first-level grouping.
-
-`1!T` The second item in the first-level grouping.
-
-`0_0!T` The first item in the first-level grouping and the first item in the second-level grouping.
-
-`0_1!T` The first item in the first-level grouping and the second item in the second-level grouping.
-
-Let’s look at examples of how fact map keys represent data as it appears in a Salesforce tabular, summary, or matrix report.
-
-Tabular Report Fact Map
-
-Here’s an example of an opportunities report in tabular format. Since tabular reports don’t have groupings, all of the record level data
-and summaries are expressed by the `T!T` key, which refers to the grand total.
-
-Summary Report Fact Map
-
-This example shows how the values in a summary report are represented in the fact map.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**Fact Map Key** **Description**
-
-`0!T` Summary for the value of opportunities in the Prospecting stage.
-
-`1_0!T` Summary of the probabilities for the Manufacturing opportunities in the Needs Analysis stage.
-
-Matrix Report Fact Map
-
-Here’s an example of some fact map keys for data in a matrix opportunities report with a couple of row and column groupings.
-
-**Fact Map Key** **Description**
-
-`0!0` Total opportunity amount in the Prospecting stage in Q4 2010.
-
-`0_0!0_0` Total opportunity amount in the Prospecting stage in the Manufacturing sector in October 2010.
-
-`2_1!1_1` Total value of opportunities in the Value Proposition stage in the Technology sector in February 2011.
-
-`T!T` Grand total summary for the report.
-
-##### Test Reports
-
-Like all Apex code, Salesforce Reports and Dashboards API via Apex code requires test coverage.
-
-The Reporting Apex methods don’t run in system mode, they run in the context of the current user (also called the _context user_ or the
-_logged-in_ user). The methods have access to whatever the current user has access to.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-In Apex tests, report runs always ignore the `SeeAllData` annotation, regardless of whether the annotation is set to `true` or `false` .
-This means that report results will include pre-existing data that the test didn’t create. There is no way to disable the `SeeAllData`
-annotation for a report execution. To limit results, use a filter on the report.
-
-Example: **Create a Reports Test Class**
-
-The following example tests asynchronous and synchronous reports. Each method:
-
-**•** Creates a new Opportunity object and uses it to set a filter on the report.
-
-**•** Runs the report.
-
-**•** Calls assertions to validate the data.
-
-Note: In Apex tests, asynchronous reports execute only after the test is stopped using the `Test.stopTest` method.
-
-```
-      @isTest
-
-      public class ReportsInApexTest{
-
-        @isTest(SeeAllData='true')
-
-        public static void testAsyncReportWithTestData() {
-
-         List <Report> reportList = [SELECT Id,DeveloperName FROM Report where
-
-            DeveloperName = 'Closed_Sales_This_Quarter'];
-
-         String reportId = (String)reportList.get(0).get('Id');
-
-         // Create an Opportunity object.
-
-         Opportunity opp = new Opportunity(Name='ApexTestOpp', StageName='stage',
-
-            Probability = 95, CloseDate=system.today());
-
-         insert opp;
-
-         Reports.ReportMetadata reportMetadata =
-
-            Reports.ReportManager.describeReport(reportId).getReportMetadata();
-
-         // Add a filter.
-
-         List<Reports.ReportFilter> filters = new List<Reports.ReportFilter>();
-
-         Reports.ReportFilter newFilter = new Reports.ReportFilter();
-
-         newFilter.setColumn('OPPORTUNITY_NAME');
-
-         newFilter.setOperator('equals');
-
-         newFilter.setValue('ApexTestOpp');
-
-         filters.add(newFilter);
-
-         reportMetadata.setReportFilters(filters);
-
-         Test.startTest();
-
-         Reports.ReportInstance instanceObj =
-
-            Reports.ReportManager.runAsyncReport(reportId,reportMetadata,false);
-
-         String instanceId = instanceObj.getId();
-
-         // Report instance is not available yet.
-
-         Test.stopTest();
-
-         // After the stopTest method, the report has finished executing
-
-         // and the instance is available.
-
-         instanceObj = Reports.ReportManager.getReportInstance(instanceId);
-
-         System.assertEquals(instanceObj.getStatus(),'Success');
-
-         Reports.ReportResults result = instanceObj.getReportResults();
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-         Reports.ReportFact grandTotal = (Reports.ReportFact)result.getFactMap().get('T!T');
-
-         System.assertEquals(1,(Decimal)grandTotal.getAggregates().get(1).getValue());
-
-        }
-
-        @isTest(SeeAllData='true')
-
-        public static void testSyncReportWithTestData() {
-
-         // Create an Opportunity Object.
-
-         Opportunity opp = new Opportunity(Name='ApexTestOpp', StageName='stage',
-
-            Probability = 95, CloseDate=system.today());
-
-         insert opp;
-
-         List <Report> reportList = [SELECT Id,DeveloperName FROM Report where
-
-            DeveloperName = 'Closed_Sales_This_Quarter'];
-
-         String reportId = (String)reportList.get(0).get('Id');
-
-         Reports.ReportMetadata reportMetadata =
-
-            Reports.ReportManager.describeReport(reportId).getReportMetadata();
-
-         // Add a filter.
-
-         List<Reports.ReportFilter> filters = new List<Reports.ReportFilter>();
-
-         Reports.ReportFilter newFilter = new Reports.ReportFilter();
-
-         newFilter.setColumn('OPPORTUNITY_NAME');
-
-         newFilter.setOperator('equals');
-
-         newFilter.setValue('ApexTestOpp');
-
-         filters.add(newFilter);
-
-         reportMetadata.setReportFilters(filters);
-
-         Reports.ReportResults result =
-
-            Reports.ReportManager.runReport(reportId,reportMetadata,false);
-
-         Reports.ReportFact grandTotal = (Reports.ReportFact)result.getFactMap().get('T!T');
-
-         System.assertEquals(1,(Decimal)grandTotal.getAggregates().get(1).getValue());
-
-        }
-
-      }
-
-#### Salesforce Sites Salesforce Sites lets you build custom pages and Web applications by inheriting Lightning Platform capabilities including analytics,
-```
-
-workflow and approvals, and programmable logic.
-
-You can manage your Salesforce sites in Apex using the methods of the `Site` and `Cookie` classes.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-##### Rewrite URLs for Salesforce Sites
-
-Sites provides built-in logic that helps you display user-friendly URLs and links to site visitors. Create rules to rewrite URL requests
-typed into the address bar, launched from bookmarks, or linked from external websites. You can also create rules to rewrite the URLs
-for links within site pages. URL rewriting not only makes URLs more descriptive and intuitive for users, it allows search engines to
-better index your site pages.
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_sites.htm)_ : Site Class
-
-##### Rewrite URLs for Salesforce Sites
-
-Sites provides built-in logic that helps you display user-friendly URLs and links to site visitors. Create rules to rewrite URL requests typed
-into the address bar, launched from bookmarks, or linked from external websites. You can also create rules to rewrite the URLs for links
-within site pages. URL rewriting not only makes URLs more descriptive and intuitive for users, it allows search engines to better index
-your site pages.
-
-For example, let's say that you have a blog site. Without URL rewriting, a blog entry's URL might look like this:
-
-```
-   https://myblog.my.salesforce-sites.com/posts?id=003D000000Q0PcN
-
-```
-
-With URL rewriting, your users can access blog posts by date and title, say, instead of by record ID. The URL for one of your New Year's
-Eve posts might be: `https://myblog.my.salesforce-sites.com/posts/2019/12/31/auld-lang-syne`
-
-You can also rewrite URLs for links shown within a site page. If your New Year's Eve post contained a link to your Valentine's Day post,
-the link URL might show: `https://myblog.my.salesforce-sites.com/posts/2019/02/14/last-minute-roses`
-
-To rewrite URLs for a site, create an Apex class that maps the original URLs to user-friendly URLs, and then add the Apex class to your
-site.
-
-To learn about the methods in the `Site.UrlRewriter interface` [, see UrlRewriter Interface.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_site_urlRewriter_reference.htm)
-
-Creating the Apex Class
-
-The Apex class that you create must implement the provided interface `Site.UrlRewriter` . In general, it must have the following
-form:
-
-```
-   global class yourClass implements Site.UrlRewriter {
-
-      global PageReference mapRequestUrl(PageReference
-
-           yourFriendlyUrl)
-
-      global PageReference[] generateUrlFor(PageReference[]
-
-           yourSalesforceUrls);
-
-   }
-
-```
-
-Consider the following restrictions and recommendations as you create your Apex class:
-
-**Class and Methods Must Be Global**
-The Apex class and methods must all be `global` .
-
-**Class Must Include Both Methods**
-The Apex class must implement both the `mapRequestUrl` and `generateUrlFor` methods. If you don't want to use one
-of the methods, simply have it return `null` .
-
-**Rewriting Only Works for Visualforce Site Pages**
-Incoming URL requests can only be mapped to Visualforce pages associated with your site. You can't map to standard pages, images,
-or other entities.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-To rewrite URLs for links on your site's pages, use the `!URLFOR` function with the `$Page` merge variable. For example, the
-following links to a Visualforce page named myPage:
-
-```
-     <apex:outputLink value="{!URLFOR($Page.myPage)}"></apex:outputLink>
-
-```
-
-Note: Visualforce `<apex:form>` elements with `forceSSL=”true”` aren't affected by the `urlRewriter` .
-
-See the “Functions” appendix of the _[Visualforce Developer's Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)_ .
-
-**Encoded URLs**
-The URLs you get from using the `Site.urlRewriter` interface are encoded. If you need to access the unencoded values of
-your URL, use the `urlDecode` [method of the EncodingUtil Class.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)
-
-**Restricted Characters**
-User-friendly URLs must be distinct from Salesforce URLs. URLs with a 3-character entity prefix or a 15- or 18-character ID aren’t
-rewritten.
-
-You can’t use periods in your user-friendly or rewritten URLs, except for the `.well-known` path component, which can’t be used
-at the end of a URL.
-
-**Restricted Strings**
-You can’t use the following reserved strings as the first path component after a site’s base URL in either a user-friendly URL or a
-rewritten URL. Some examples of the first past component after a site’s base URL are baseURL in
-https:// _`MyDomainName`_ .my.salesforce-sites.com/baseURL, https:// _`MyDomainName`_ .my.salesforce-sites.com/pathPrefix/baseURL,
-https://custom-domain/pathPrefix/baseURL, and https:// _`MyDomainName`_ .my.salesforce-sites.com/pathPrefix/baseURL/another/path.
-
-**•** `apexcomponent`
-
-**•** `apexpages`
-
-**•** `aura`
-
-**•** `chatter`
-
-**•** `chatteranswers`
-
-**•** `chatterservice`
-
-**•** `cometd`
-
-**•** `ex`
-
-**•** `faces`
-
-**•** `flash`
-
-**•** `flex`
-
-**•** `google`
-
-**•** `home`
-
-**•** `id`
-
-**•** `ideas`
-
-**•** `idp`
-
-**•** `images`
-
-**•** `img`
-
-**•** `javascript`
-
-**•** `js`
-
-**•** `knowledge`
-
-**•** `lightning`
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**•** `login`
-
-**•** `m`
-
-**•** `mobile`
-
-**•** `ncsphoto`
-
-**•** `nui`
-
-**•** `push`
-
-**•** `resource`
-
-**•** `saml`
-
-**•** `sccommunities`
-
-**•** `search`
-
-**•** `secur`
-
-**•** `services`
-
-**•** `servlet`
-
-**•** `setup`
-
-**•** `sfc`
-
-**•** `sfdc`
-
-**•** `sfdc_ns`
-
-**•** `sfsites`
-
-**•** `site`
-
-**•** `style`
-
-**•** `vote`
-
-**•** `WEB-INF`
-
-**•** `widg`
-
-You can't use the following reserved strings at the end of a rewritten URL path:
-
-**•** /aura
-
-**•** /auraFW
-
-**•** /auraResource
-
-**•** /AuraJLoggingRPCService
-
-**•** /AuraJLVRPCService
-
-**•** /AuraJRPCService
-
-**•** /dbcthumbnail
-
-**•** /HelpAndTrainingDoor
-
-**•** /htmldbcthumbnail
-
-**•** /l
-
-**•** /m
-
-**•** /mobile
-
-**Relative Paths Only**
-[The PageReference.getUrl() method only returns the part of the URL immediately following the host name or site prefix (if any). For](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_System_PageReference_getUrl.htm)
-example, if your URL is `https://mycompany.my.salesforce-sites.com/sales/MyPage?id=12345`, where
-“sales” is the site prefix, only `/MyPage?id=12345` is returned.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-You can't rewrite the domain or site prefix.
-
-**Unique Paths Only**
-You can't map a URL to a directory that has the same name as your site prefix. For example, if your site URL is
-`https://acme.my.salesforce-sites.com/help`, where “help” is the site prefix, you can't point the URL to
-`help/page` . The resulting path, `https://acme.my.salesforce-sites.com/help/help/page`, would be
-returned instead as `https://acme.my.salesforce-sites.com/help/page` .
-
-**Query in Bulk**
-For better performance with page generation, perform tasks in bulk rather than one at a time for the `generateUrlFor` method.
-
-**Enforce Field Uniqueness**
-Make sure the fields you choose for rewriting URLs are unique. Using unique or indexed fields in SOQL for your queries may improve
-performance.
-
-Adding URL Rewriting to a Site
-
-Once you've created the URL rewriting Apex class, follow these steps to add it to your site:
-
-**1.** From Setup, enter _`Sites`_ in the `Quick Find` box, then select **Sites** .
-
-**2.** Click **New** or click **Edit** for an existing site.
-
-**3.** On the Site Edit page, choose an Apex class for `URL Rewriter Class` .
-
-**4.** Click **Save** .
-
-Note: If you have URL rewriting enabled on your site, all PageReferences are passed through the URL rewriter. PageReferences
-with `redirect` set to `true` and a `redirectCode` other than 0 return redirected URLs instead of rewritten URLs.
-
-Code Example
-
-In this example, we have a simple site consisting of two Visualforce pages: mycontact and myaccount. Be sure you have “Read” permission
-enabled for both before trying the sample. Each page uses the standard controller for its object type. The contact page includes a link
-to the parent account, plus contact details.
-
-Before implementing rewriting, the address bar and link URLs showed the record ID (a random 15-digit string), illustrated in the “before”
-figure. Once rewriting was enabled, the address bar and links show more user-friendly rewritten URLs, illustrated in the “after” figure.
-
-The Apex class used to rewrite the URLs for these pages is shown in Example URL Rewriting Apex Class, with detailed comments.
-
-Example Site Pages
-
-This section shows the Visualforce for the account and contact pages used in this example.
-
-The account page uses the standard controller for accounts and is nothing more than a standard detail page. This page should be named
-myaccount.
-
-```
-   <apex:page standardController="Account">
-
-      <apex:detail relatedList="false"/>
-
-   </apex:page>
-
-```
-
-The contact page uses the standard controller for contacts and consists of two parts. The first part links to the parent account using the
-`URLFOR` function and the `$Page` merge variable; the second simply provides the contact details. Notice that the Visualforce page
-doesn't contain any rewriting logic except `URLFOR` . This page should be named mycontact.
-
-```
-   <apex:page standardController="contact">
-
-      <apex:pageBlock title="Parent Account">
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        <apex:outputLink value="{!URLFOR($Page.mycontact,null,
-
-             [id=contact.account.id])}">{!contact.account.name}
-
-             </apex:outputLink>
-
-      </apex:pageBlock>
-
-      <apex:detail relatedList="false"/>
-
-   </apex:page>
-
-```
-
-Example URL Rewriting Apex Class
-
-The Apex class used as the URL rewriter for the site uses the `mapRequestUrl` method to map incoming URL requests to the right
-Salesforce record. It also uses the `generateUrlFor` method to rewrite the URL for the link to the account page in a more user-friendly
-form.
-
-```
-   global with sharing class myRewriter implements Site.UrlRewriter {
-
-      //Variables to represent the user-friendly URLs for
-
-      //account and contact pages
-
-      String ACCOUNT_PAGE = '/myaccount/';
-
-      String CONTACT_PAGE = '/mycontact/';
-
-      //Variables to represent my custom Visualforce pages
-
-      //that display account and contact information
-
-      String ACCOUNT_VISUALFORCE_PAGE = '/myaccount?id=';
-
-      String CONTACT_VISUALFORCE_PAGE = '/mycontact?id=';
-
-      global PageReference mapRequestUrl(PageReference
-
-           myFriendlyUrl){
-
-        String url = myFriendlyUrl.getUrl();
-
-        if(url.startsWith(CONTACT_PAGE)){
-
-           //Extract the name of the contact from the URL
-
-           //For example: /mycontact/Ryan returns Ryan
-
-           String name = url.substring(CONTACT_PAGE.length(),
-
-               url.length());
-
-           //Select the ID of the contact that matches
-
-           //the name from the URL
-
-           Contact con = [SELECT Id FROM Contact WHERE Name =:
-
-               name LIMIT 1];
-
-           //Construct a new page reference in the form
-
-           //of my Visualforce page
-
-           return new PageReference(CONTACT_VISUALFORCE_PAGE + con.id);
-
-        }
-
-        if(url.startsWith(ACCOUNT_PAGE)){
-
-           //Extract the name of the account
-
-           String name = url.substring(ACCOUNT_PAGE.length(),
-
-               url.length());
-
-           //Query for the ID of an account with this name
-
-           Account acc = [SELECT Id FROM Account WHERE Name =:name LIMIT 1];
-
-          //Return a page in Visualforce format
-
-           return new PageReference(ACCOUNT_VISUALFORCE_PAGE + acc.id);
-
-        }
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-        //If the URL isn't in the form of a contact or
-
-        //account page, continue with the request
-
-        return null;
-
-      }
-
-      global List<PageReference> generateUrlFor(List<PageReference>
-
-           mySalesforceUrls){
-
-        //A list of pages to return after all the links
-
-        //have been evaluated
-
-        List<PageReference> myFriendlyUrls = new List<PageReference>();
-
-        //a list of all the ids in the urls
-
-        List<id> accIds = new List<id>();
-
-        // loop through all the urls once, finding all the valid ids
-
-        for(PageReference mySalesforceUrl : mySalesforceUrls){
-
-        //Get the URL of the page
-
-        String url = mySalesforceUrl.getUrl();
-
-           //If this looks like an account page, transform it
-
-           if(url.startsWith(ACCOUNT_VISUALFORCE_PAGE)){
-
-             //Extract the ID from the query parameter
-
-             //and store in a list
-
-             //for querying later in bulk.
-
-                  String id= url.substring(ACCOUNT_VISUALFORCE_PAGE.length(),
-
-                  url.length());
-
-                  accIds.add(id);
-
-           }
-
-        }
-
-      // Get all the account names in bulk
-
-      List <account> accounts = [SELECT Name FROM Account WHERE Id IN :accIds];
-
-      // make the new urls
-
-      Integer counter = 0;
-
-      // it is important to go through all the urls again, so that the order
-
-      // of the urls in the list is maintained.
-
-      for(PageReference mySalesforceUrl : mySalesforceUrls) {
-
-        //Get the URL of the page
-
-        String url = mySalesforceUrl.getUrl();
-
-        if(url.startsWith(ACCOUNT_VISUALFORCE_PAGE)){
-
-        myFriendlyUrls.add(new PageReference(ACCOUNT_PAGE + accounts.get(counter).name));
-
-         counter++;
-
-        } else {
-
-         //If this doesn't start like an account page,
-
-         //don't do any transformations
-
-         myFriendlyUrls.add(mySalesforceUrl);
-
-        }
-
-      }
-
-      //Return the full list of pages
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-      return myFriendlyUrls;
-
-     }
-
-   }
-
-```
-
-Before and After Rewriting
-
-Here is a visual example of the results of implementing the Apex class to rewrite the original site URLs. Notice the ID-based URLs in the
-first figure, and the user-friendly URLs in the second.
-
-**Site URLs Before Rewriting**
-
-The numbered elements in this figure are:
-
-**1.** The original URL for the contact page before rewriting
-
-**2.** The link to the parent account page from the contact page
-
-**3.** The original URL for the link to the account page before rewriting, shown in the browser's status bar
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-**Site URLs After Rewriting**
-
-The numbered elements in this figure are:
-
-**1.** The rewritten URL for the contact page after rewriting
-
-**2.** The link to the parent account page from the contact page
-
-**3.** The rewritten URL for the link to the account page after rewriting, shown in the browser's status bar
-
-#### Support Classes
-
-Support classes allow you to interact with records commonly used by support centers, such as business hours and cases.
-
-Working with Business Hours
-
-Business hours are used to specify the hours at which your customer support team operates, including multiple business hours in multiple
-time zones.
-
-This example finds the time one business hour from startTime, returning the Datetime in the local time zone. It gets the default business
-hours by querying BusinessHours. Also, it calls the `BusinessHours add` method.
-
-```
-   // Get the default business hours
-
-   BusinessHours bh = [SELECT Id FROM BusinessHours WHERE IsDefault=true];
-
-   // Create Datetime on May 28, 2008 at 1:06:08 AM in local timezone.
-
-   Datetime startTime = Datetime.newInstance(2008, 5, 28, 1, 6, 8);
-
-   // Find the time it will be one business hour from May 28, 2008, 1:06:08 AM using the
-
-   // default business hours. The returned Datetime will be in the local timezone.
-
-   Datetime nextTime = BusinessHours.add(bh.id, startTime, 60 * 60 * 1000L);
-
-```
-
-This example finds the time one business hour from startTime, returning the Datetime in GMT:
-
-```
-   // Get the default business hours
-
-   BusinessHours bh = [SELECT Id FROM BusinessHours WHERE IsDefault=true];
-
-```
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-```
-   // Create Datetime on May 28, 2008 at 1:06:08 AM in local timezone.
-
-   Datetime startTime = Datetime.newInstance(2008, 5, 28, 1, 6, 8);
-
-   // Find the time it will be one business hour from May 28, 2008, 1:06:08 AM using the
-
-   // default business hours. The returned Datetime will be in GMT.
-
-   Datetime nextTimeGmt = BusinessHours.addGmt(bh.id, startTime, 60 * 60 * 1000L);
-
-```
-
-The next example finds the difference between startTime and nextTime:
-
-```
-   // Get the default business hours
-
-   BusinessHours bh = [select id from businesshours where IsDefault=true];
-
-   // Create Datetime on May 28, 2008 at 1:06:08 AM in local timezone.
-
-   Datetime startTime = Datetime.newInstance(2008, 5, 28, 1, 6, 8);
-
-   // Create Datetime on May 28, 2008 at 4:06:08 PM in local timezone.
-
-   Datetime endTime = Datetime.newInstance(2008, 5, 28, 16, 6, 8);
-
-   // Find the number of business hours milliseconds between startTime and endTime as
-
-   // defined by the default business hours. Will return a negative value if endTime is
-
-   // before startTime, 0 if equal, positive value otherwise.
-
-   Long diff = BusinessHours.diff(bh.id, startTime, endTime);
-
-```
-
-Working with Cases
-
-Incoming and outgoing email messages can be associated with their corresponding cases using the `Cases` class
-`getCaseIdFromEmailThreadId` method. This method is used with Email-to-Case, which is an automated process that turns
-emails received from customers into customer service cases.
-
-The following example uses an email thread ID to retrieve the related case ID.
-
-```
-   public class GetCaseIdController {
-
-     public static void getCaseIdSample() {
-
-        // Get email thread ID
-
-        String emailThreadId = '_00Dxx1gEW._500xxYktg';
-
-        // Call Apex method to retrieve case ID from email thread ID
-
-        ID caseId = Cases.getCaseIdFromEmailThreadId(emailThreadId);
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: BusinessHours Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_businesshours.htm)
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_system_cases.htm)_ : Cases Class
-
-#### Territory Management 2.0
-
-With trigger support for the Territory2 and UserTerritory2Association standard objects, you can automate actions and processes related
-to changes in these territory management records.
-
-
-Apex Developer Guide Using Salesforce Features with Apex
-
-Sample Trigger for Territory2
-
-This example trigger fires after Territory2 records have been created or deleted. This example trigger assumes that an organization has
-a custom field called `TerritoryCount__c` defined on the Territory2Model object to track the net number of territories in each
-territory model. The trigger code increments or decrements the value in the `TerritoryCount__c` field each time a territory is
-created or deleted.
-
-```
-   trigger maintainTerritoryCount on Territory2 (after insert, after delete) {
-
-      // Track the effective delta for each model
-
-      Map<Id, Integer> modelMap = new Map<Id, Integer>();
-
-      for(Territory2 terr : (Trigger.isInsert ? Trigger.new : Trigger.old)) {
-
-        Integer offset = 0;
-
-        if(modelMap.containsKey(terr.territory2ModelId)) {
-
-          offset = modelMap.get(terr.territory2ModelId);
-
-        }
-
-        offset += (Trigger.isInsert ? 1 : -1);
-
-        modelMap.put(terr.territory2ModelId, offset);
-
-      }
-
-      // We have a custom field on Territory2Model called TerritoryCount__c
-
-      List<Territory2Model> models = [SELECT Id, TerritoryCount__c FROM
-
-                    Territory2Model WHERE Id IN :modelMap.keySet()];
-
-      for(Territory2Model tm : models) {
-
-        // In case the field is not defined with a default of 0
-
-        if(tm.TerritoryCount__c == null) {
-
-          tm.TerritoryCount__c = 0;
-
-        }
-
-        tm.TerritoryCount__c += modelMap.get(tm.Id);
-
-      }
-
-      // Bulk update the field on all the impacted models
-
-      update(models);
-
-   }
-
-```
-
-Sample Trigger for UserTerritory2Association
-
-This example trigger fires after UserTerritory2Association records have been created. This example trigger sends an email notification to
-the Sales Operations group letting them know that users have been added to territories. It identifies the user who added users to
-territories. Then, it identifies each added user along with which territory the user was added to and which territory model the territory
-belongs to.
-
-```
-   trigger notifySalesOps on UserTerritory2Association (after insert) {
-
-      // Query the details of the users and territories involved
-
-      List<UserTerritory2Association> utaList = [SELECT Id, User.FirstName, User.LastName,
-
-        Territory2.Name, Territory2.Territory2Model.Name
-
-        FROM UserTerritory2Association WHERE Id IN :Trigger.New];
-
-      // Email message to send
-
-      Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-
-      mail.setToAddresses(new String[]{'salesOps@acme.com'});
-
-      mail.setSubject('Users added to territories notification');
-
-      // Build the message body
-
-      List<String> msgBody = new List<String>();
-
-      String addedToTerrStr = '{0}, {1} added to territory {2} in model {3} \n';
-
-```
-
-
-### Apex Developer Guide Integration and Apex Utilities
-
-```
-      msgBody.add('The following users were added to territories by ' +
-
-        UserInfo.getFirstName() + ', ' + UserInfo.getLastName() + '\n');
-
-      for(UserTerritory2Association uta : utaList) {
-
-        msgBody.add(String.format(addedToTerrStr,
-
-          new String[]{uta.User.FirstName, uta.User.LastName,
-
-                  uta.Territory2.Name, uta.Territory2.Territory2Model.Name}));
-
-      }
-
-      // Set the message body and send the email
-
-      mail.setPlainTextBody(String.join(msgBody,''));
-
-      Messaging.sendEmail(new Messaging.Email[] { mail });
-
-   }
-
-### Integration and Apex Utilities
-
-```
-
-Apex allows you to integrate with external SOAP and REST Web services using callouts. You can use utilities for JSON, XML, data security,
-and encoding. A general-purpose utility for regular expressions with text strings is also provided.
-
-#### Invoking Callouts Using Apex
-
-JSON Support
-JavaScript Object Notation (JSON) support in Apex enables the serialization of Apex objects into JSON format and the deserialization
-of serialized JSON content.
-
-XML Support
-Apex provides utility classes that enable the creation and parsing of XML content using streams and the DOM.
-
-ZIP Support
-Take advantage of a native Apex Zip library to create and extract ZIP archive files by using the class methods in the `Compression`
-namespace.
-
-Securing Your Data
-You can secure your data by using the methods provided by the `Crypto` class.
-
-Encoding Your Data
-You can encode and decode URLs and convert strings to hexadecimal format by using the methods provided by the `EncodingUtil`
-class.
-
-Using Patterns and Matchers
-Apex provides patterns and matchers that enable you to search text using regular expressions.
-
-#### Invoking Callouts Using Apex
-
-An Apex callout enables you to tightly integrate your Apex with an external service by making a call to an external Web service or sending
-a HTTP request from Apex code and then receiving the response. Apex provides integration with Web services that utilize SOAP and
-WSDL, or HTTP services (RESTful services).
-
-Note: Before any Apex callout can call an external site, that site must be registered in the Remote Site Settings page, or the callout
-fails. Salesforce prevents calls to unauthorized network addresses.
-
-If the callout specifies a named credential as the endpoint, you don’t need to configure remote site settings. A named credential
-specifies the URL of a callout endpoint and its required authentication parameters in one definition. To set up named credentials,
-see “Define a Named Credential” in the Salesforce Help.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-To learn more about the types of callouts, see:
-
-**•** SOAP Services: Defining a Class from a WSDL Document on page 609
-
-**•** Invoking HTTP Callouts on page 622
-
-**•** Asynchronous Callouts for Long-Running Requests on page 634
-
-Tip: Callouts enable Apex to invoke external web or HTTP services. Apex Web services allow an external application to invoke
-Apex methods through Web services.
-
-##### 1. Adding Remote Site Settings
-
-2. Named Credentials as Callout Endpoints
-A named credential specifies the URL of a callout endpoint and its required authentication parameters in one definition. Salesforce
-manages all authentication for Apex callouts that specify a named credential as the callout endpoint so that your code doesn’t have
-to. You can also skip remote site settings, which are otherwise required for callouts to external sites, for the site defined in the named
-credential.
-
-3. SOAP Services: Defining a Class from a WSDL Document
-
-4. Invoking HTTP Callouts
-
-5. Using Certificates
-
-6. Callout Limits and Limitations
-
-7. Make Long-Running Callouts with Continuations
-Use asynchronous callouts to make long-running requests from a Visualforce page or a Lightning component to an external Web
-service and process responses in callback methods.
-
-##### Adding Remote Site Settings
-
-Before any Apex callout can call an external site, that site must be registered in the Remote Site Settings page, or the callout fails. Salesforce
-prevents calls to unauthorized network addresses.
-
-Note: If the callout specifies a named credential as the endpoint, you don’t need to configure remote site settings. A named
-credential specifies the URL of a callout endpoint and its required authentication parameters in one definition. To set up named
-credentials, see “Define a Named Credential” in the Salesforce Help.
-
-To add a remote site setting:
-
-**1.** From Setup, enter _`Remote Site Settings`_ in the `Quick Find` box, then select **Remote Site Settings** .
-
-**2.** Click **New Remote Site** .
-
-**3.** Enter a descriptive term for the `Remote Site Name` .
-
-**4.** Enter the URL for the remote site.
-
-**5.** Optionally, enter a description of the site.
-
-**6.** Click **Save** .
-
-Tip: For best performance, verify that your remote HTTPS encrypted sites have OCSP (Online Certificate Status Protocol) stapling
-turned on.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-##### Named Credentials as Callout Endpoints
-
-A named credential specifies the URL of a callout endpoint and its required authentication parameters in one definition. Salesforce
-manages all authentication for Apex callouts that specify a named credential as the callout endpoint so that your code doesn’t have to.
-You can also skip remote site settings, which are otherwise required for callouts to external sites, for the site defined in the named
-credential.
-
-Named Credentials also include an OutboundNetworkConnection field that you can use to route callouts through a private connection.
-By separating the endpoint URL and authentication from the callout definition, named credentials make callouts easier to maintain. For
-example, if an endpoint URL changes, you update only the named credential. All callouts that reference the named credential simply
-continue to work.
-
-If you have multiple orgs, you can create a named credential with the same name but with a different endpoint URL in each org. You
-can then package and deploy—on all the orgs—one callout definition that references the shared name of those named credentials.
-For example, the named credential in each org can have a different endpoint URL to accommodate differences in development and
-production environments. If an Apex callout specifies the shared name of those named credentials, the Apex class that defines the callout
-can be packaged and deployed on all those orgs without programmatically checking the environment.
-
-To reference a named credential from a callout definition, use the named credential URL. A named credential URL contains the scheme
-`callout:`, the name of the named credential, and an optional path. For example:
-`callout:` _`My_Named_Credential`_ `/` _`some_path`_ .
-
-You can append a query string to a named credential URL. Use a question mark (?) as the separator between the named credential URL
-and the query string. For example: `callout:` _`My_Named_Credential`_ `/` _`some_path`_ `?format=json` .
-
-Example: In the following Apex code, a named credential and an appended path specify the callout’s endpoint.
-
-```
-      HttpRequest req = new HttpRequest();
-
-      req.setEndpoint( ' callout: My_Named_Credential / some_path ' );
-
-      req.setMethod('GET');
-
-      Http http = new Http();
-
-      HTTPResponse res = http.send(req);
-
-      System.debug(res.getBody());
-
-```
-
-The referenced named credential specifies the endpoint URL and an external credential that specifies authentication settings.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-The Apex code remains the same no matter what authentication you use. The authentication settings differ in the external credential,
-which references an authentication provider that’s defined in the org.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-In contrast, let’s see what the Apex code looks like without a named credential. Notice that the code becomes more complex to
-handle authentication, even if we stick with basic password authentication. Coding OAuth is even more complex and is an ideal
-use case for named credentials.
-
-```
-      HttpRequest req = new HttpRequest();
-
-      req.setEndpoint( ' https://my_endpoint.example.com/some_path ' );
-
-      req.setMethod('GET');
-
-      // Because we didn't set the endpoint as a named credential,
-
-      // our code has to specify:
-
-      // - The required username and password to access the endpoint
-
-      // - The header and header information
-
-      String username = ' myname ';
-
-      String password = ' mypwd ';
-
-      Blob headerValue = Blob.valueOf(username + ':' + password);
-
-      String authorizationHeader = 'BASIC ' +
-
-      EncodingUtil.base64Encode(headerValue);
-
-      req.setHeader('Authorization', authorizationHeader);
-
-      // Create a new http object to send the request object
-
-      // A response object is generated as a result of the request
-
-      Http http = new Http();
-
-      HTTPResponse res = http.send(req);
-
-      System.debug(res.getBody());
-
-###### 1. Custom Headers and Bodies of Apex Callouts That Use Named Credentials
-```
-
-Salesforce generates a standard authorization header for each callout to a named-credential-defined endpoint, but you can disable
-this option. Your Apex code can also use merge fields to construct each callout’s HTTP header and body.
-
-2. Merge Fields for Apex Callouts That Use Named Credentials
-To construct the HTTP headers and request bodies of callouts to endpoints that are specified as named credentials, use these merge
-fields in your Apex code.
-
-SEE ALSO:
-
-Invoking Callouts Using Apex
-
-_Salesforce Help:_ [Named Credentials](https://help.salesforce.com/HTViewHelpDoc?id=named_credentials_about.htm&language=en_US)
-
-_Salesforce Help:_ [Authentication Providers](https://help.salesforce.com/apex/HTViewHelpDoc?id=sso_authentication_providers.htm&language=en_US)
-
-_Named Credentials Developer Guide_ [: Get Started with Named Credentials](https://developer.salesforce.com/docs/platform/named-credentials/guide/get-started.html)
-
-_[Named Credentials Developer Guide](https://developer.salesforce.com/docs/platform/named-credentials/references/named-credentials-reference/nc-api-links.html)_ : Named Credential API Links
-
-###### Custom Headers and Bodies of Apex Callouts That Use Named Credentials
-
-Salesforce generates a standard authorization header for each callout to a named-credential-defined endpoint, but you can disable this
-option. Your Apex code can also use merge fields to construct each callout’s HTTP header and body.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-This flexibility enables you to use named credentials in special situations. For example, some remote endpoints require security tokens
-or encrypted credentials in request headers. Some remote endpoints expect usernames and passwords in XML or JSON message bodies.
-Customize the callout headers and bodies as needed.
-
-The Salesforce admin must set up the named credential to allow Apex code to construct headers or use merge fields in HTTP headers
-or bodies. The following table describes these callout options for the named credential.
-
-**Field** **Description**
-
-```
-Generate Authorization Header
-
-Allow Merge Fields in HTTP Header
-
-Allow Merge Fields in HTTP Body
-
-```
-
-SEE ALSO:
-
-By default, Salesforce generates an authorization header and applies it to
-each callout that references the named credential.
-
-Deselect this option only if one of the following statements applies.
-
-**•** The remote endpoint doesn’t support authorization headers.
-
-**•** The authorization headers are provided by other means. For example, in
-Apex callouts, the developer can have the code construct a custom
-authorization header for each callout.
-
-This option is required if you reference the named credential from an external
-data source.
-
-In each Apex callout, the code specifies how the HTTP header and request
-body are constructed. For example, the Apex code can set the value of a
-cookie in an authorization header.
-
-These options enable the Apex code to use merge fields to populate the
-HTTP header and request body with org data when the callout is made.
-
-These options aren’t available if you reference the named credential from an
-external data source.
-
-###### Merge Fields for Apex Callouts That Use Named Credentials
-
-_Salesforce Help_ [: Named Credentials](https://help.salesforce.com/HTViewHelpDoc?id=named_credentials_about.htm&language=en_US)
-
-###### Merge Fields for Apex Callouts That Use Named Credentials
-
-To construct the HTTP headers and request bodies of callouts to endpoints that are specified as named credentials, use these merge
-fields in your Apex code.
-
-###### **Merge Field Description**
-
-```
-{!$Credential.Username}
-
-{!$Credential.Password}
-
-```
-
-Username and password of the running user. Available only if the named
-credential uses password authentication.
-
-```
-// non-standard authentication
-
-req.setHeader('X-Username',
-
-'{!$Credential.Username}');
-
-req.setHeader('X-Password',
-
-'{!$Credential.Password}');
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**Merge Field** **Description**
-
-```
-{!$Credential.OAuthToken}
-
-```
-
-OAuth token of the running user. Available only if the named credential uses
-OAuth authentication.
-
-```
-req.setHeader('Authorization',
-
-'{!$Credential.OAuthToken}');
-
-```
-
-`{!$Credential.AuthorizationMethod}` Valid values depend on the authentication protocol of the named credential.
-
-**•** `Basic` —password authentication
-
-**•** `Bearer` —OAuth 2.0
-
-**•** `null` —no authentication
-
-`{!$Credential.AuthorizationHeaderValue}` Valid values depend on the authentication protocol of the named credential.
-
-**•** _**`Base-64 encoded username and password`**_ —password
-authentication
-
-**•** _**`OAuth token`**_ —OAuth 2.0
-
-**•** `null` —no authentication
-
-`{!$Credential.OAuthConsumerKey}` Consumer key. Available only if the named credential uses OAuth
-authentication.
-
-When you use merge fields to construct HTTP headers and request bodies, keep these considerations in mind.
-
-**•** To allow Apex code to use merge fields to populate the HTTP header and request body with org data when the callout is made, a
-Salesforce admin must enable **Allow Merge Fields in HTTP Header** and **Allow Merge Fields in HTTP Body** on the named
-[credential. See Create or Edit a Named Credential in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.nc_create_edit_named_credential.htm&language=en_US)
-
-**•** [To access or input custom headers, use Connect REST API. See Named Credentials Resources in the Connect REST API Developer](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/connect_resources_named_credentials_resources.htm)
-Guide.
-
-**•** When you use these merge fields in HTTP request bodies of callouts, you can apply the `HTMLENCODE` formula function to escape
-special characters. The formula must start with HTMLENCODE, and other formula functions aren't supported. `HTMLENCODE` can’t
-be used on merge fields in HTTP headers. This example escapes special characters that are in the credentials.
-
-```
-  req.setBody('Username:{!HTMLENCODE($Credential.Username)}')
-
-  req.setBody('Password:{!HTMLENCODE($Credential.Password)}')
-
-```
-
-**•** When you use these merge fields in SOAP API calls, OAuth access tokens aren’t refreshed.
-
-SEE ALSO:
-
-Custom Headers and Bodies of Apex Callouts That Use Named Credentials
-
-Named Credentials as Callout Endpoints
-
-_Knowledge Article_ [: Named credential OAuth token doesn't get automatically refreshed with Salesforce SOAP API endpoint](https://help.salesforce.com/articleView?id=Named-credential-oauth-token-doesn-t-get-automatically-refreshed-with-Salesforce-SOAP-API-end-point&type=1&language=en_US)
-
-##### SOAP Services: Defining a Class from a WSDL Document
-
-Classes can be automatically generated from a WSDL document that is stored on a local hard drive or network. Creating a class by
-consuming a WSDL document allows developers to make callouts to the external Web service in their Apex code.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Note: Use Outbound Messaging to handle integration solutions when possible. Use callouts to third-party Web services only
-when necessary.
-
-To generate an Apex class from a WSDL:
-
-**1.** In the application, from Setup, enter _`Apex Classes`_ in the `Quick Find` box, then select **Apex Classes** .
-
-**2.** Click **Generate from WSDL** .
-
-**3.** Click **Browse** to navigate to a WSDL document on your local hard drive or network, or type in the full path. This WSDL document is
-the basis for the Apex class you are creating.
-
-Note: The WSDL document that you specify might contain a SOAP endpoint location that references an outbound port.
-
-For security reasons, Salesforce restricts the outbound ports you can specify to one of the following:
-
-**•** 80: This port only accepts HTTP connections.
-
-**•** 443: This port only accepts HTTPS connections.
-
-**•** 1024–66535 (inclusive): These ports accept HTTP or HTTPS connections.
-
-**4.** Click **Parse WSDL** to verify the WSDL document contents. The application generates a default class name for each namespace in
-the WSDL document and reports any errors. Parsing fails if the WSDL contains schema types or constructs that aren’t supported by
-Apex classes, or if the resulting classes exceed the 1 million character limit on Apex classes. For example, the Salesforce SOAP API
-WSDL cannot be parsed.
-
-**5.** Modify the class names as desired. While you can save more than one WSDL namespace into a single class by using the same class
-name for each namespace, Apex classes can be no more than 1 million characters total.
-
-**6.** Click **Generate Apex** . The final page of the wizard shows which classes were successfully generated, along with any errors from
-other classes. The page also provides a link to view successfully generated code.
-
-The successfully generated Apex classes include stub and type classes for calling the third-party Web service represented by the WSDL
-document. These classes allow you to call the external Web service from Apex. For each generated class, a second class is created with
-the same name and with a prefix of `Async` . The first class is for synchronous callouts. The second class is for asynchronous callouts. For
-more information about asynchronous callouts, see Make Long-Running Callouts with Continuations.
-
-Note the following about the generated Apex:
-
-**•** If a WSDL document contains an Apex reserved word, the word is appended with `_x` when the Apex class is generated. For example,
-`limit` in a WSDL document converts to `limit_x` in the generated Apex class. See Reserved Keywords. For details on handling
-characters in element names in a WSDL that are not supported in Apex variable names, see Considerations Using WSDLs.
-
-**•** If an operation in the WSDL has an output message with more than one element, the generated Apex wraps the elements in an
-inner class. The Apex method that represents the WSDL operation returns the inner class instead of the individual elements.
-
-**•** Since periods ( `.` ) are not allowed in Apex class names, any periods in WSDL names used to generate Apex classes are replaced by
-underscores ( `_` ) in the generated Apex code.
-
-After you have generated a class from the WSDL, you can invoke the external service referenced by the WSDL.
-
-Note: Before you can use the samples in the rest of this topic, you must copy the Apex class `docSampleClass` from Generated
-WSDL2Apex Code and add it to your organization.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Invoking an External Service
-
-To invoke an external service after using its WSDL document to generate an Apex class, create an instance of the stub in your Apex code
-[and call the methods on it. For example, to invoke the StrikeIron IP address lookup service from Apex, you could write code similar to](http://ws.strikeiron.com/relauto/iplookup?WSDL)
-the following:
-
-```
-     // Create the stub
-
-     strikeironIplookup.DNSSoap dns = new strikeironIplookup.DNSSoap();
-
-     // Set up the license header
-
-     dns.LicenseInfo = new strikeiron.LicenseInfo();
-
-     dns.LicenseInfo.RegisteredUser = new strikeiron.RegisteredUser();
-
-     dns.LicenseInfo.RegisteredUser.UserID = 'you@company.com';
-
-     dns.LicenseInfo.RegisteredUser.Password = 'your-password';
-
-     // Make the Web service call
-
-     strikeironIplookup.DNSInfo info = dns.DNSLookup('www.myname.com');
-
-```
-
-HTTP Header Support
-
-You can set the HTTP headers on a Web service callout. For example, you can use this feature to set the value of a cookie in an authorization
-header. To set HTTP headers, add `inputHttpHeaders_x` and `outputHttpHeaders_x` to the stub.
-
-Note: In API versions 16.0 and earlier, HTTP responses for callouts are always decoded using UTF-8, regardless of the Content-Type
-header. In API versions 17.0 and later, HTTP responses are decoded using the encoding specified in the Content-Type header.
-
-The following samples work with the sample WSDL file in Generated WSDL2Apex Code on page 615:
-
-Sending HTTP Headers on a Web Service Callout
-
-```
-   docSample.DocSamplePort stub = new docSample.DocSamplePort();
-
-   stub.inputHttpHeaders_x = new Map<String, String>();
-
-   //Setting a basic authentication header
-
-   // Tip: Use named credentials instead.
-
-   stub.inputHttpHeaders_x.put('Authorization', 'Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==');
-
-   //Setting a cookie header
-
-   stub.inputHttpHeaders_x.put('Cookie', 'name=value');
-
-   //Setting a custom HTTP header
-
-   stub.inputHttpHeaders_x.put('myHeader', 'myValue');
-
-   String input = 'This is the input string';
-
-   String output = stub.EchoString(input);
-
-```
-
-If a value for `inputHttpHeaders_x` is specified, it overrides the standard headers set.
-
-Tip: Instead of hardcoding the `Authorization` header value, use named credentials. Named credentials offer a declarative
-and secure way to store and manage the credentials needed for HTTP callouts so that Salesforce can authenticate with external
-[APIs. For more information, see Named Credentials in](https://help.salesforce.com/s/articleView?id=sf.named_credentials_about.htm&language=en_US) _Salesforce Help_ .
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Accessing HTTP Response Headers from a Web Service Callout Response
-
-```
-   docSample.DocSamplePort stub = new docSample.DocSamplePort();
-
-   stub.outputHttpHeaders_x = new Map<String, String>();
-
-   String input = 'This is the input string';
-
-   String output = stub.EchoString(input);
-
-   //Getting cookie header
-
-   String cookie = stub.outputHttpHeaders_x.get('Set-Cookie');
-
-   //Getting custom header
-
-   String myHeader = stub.outputHttpHeaders_x.get('My-Header');
-
-```
-
-The value of `outputHttpHeaders_x` is null by default. You must set `outputHttpHeaders_x` before you have access to the
-content of headers in the response.
-
-Supported WSDL Features
-
-Apex supports only the document literal wrapped WSDL style and the following primitive and built-in datatypes:
-
-**Schema Type** **Apex Type**
-
-`xsd:anyURI` String
-
-`xsd:boolean` Boolean
-
-`xsd:date` Date
-
-`xsd:dateTime` Datetime
-
-`xsd:double` Double
-
-`xsd:float` Double
-
-`xsd:int` Integer
-
-`xsd:integer` Integer
-
-`xsd:language` String
-
-`xsd:long` Long
-
-`xsd:Name` String
-
-`xsd:NCName` String
-
-`xsd:nonNegativeInteger` Integer
-
-`xsd:NMTOKEN` String
-
-`xsd:NMTOKENS` String
-
-`xsd:normalizedString` String
-
-`xsd:NOTATION` String
-
-`xsd:positiveInteger` Integer
-
-`xsd:QName` String
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**Schema Type** **Apex Type**
-
-`xsd:short` Integer
-
-`xsd:string` String
-
-`xsd:time` Datetime
-
-`xsd:token` String
-
-`xsd:unsignedInt` Integer
-
-`xsd:unsignedLong` Long
-
-`xsd:unsignedShort` Integer
-
-Note: The Salesforce datatype anyType is not supported in WSDLs used to generate Apex code that is saved using API version
-15.0 and later. For code saved using API version 14.0 and earlier, anyType is mapped to String.
-
-Apex also supports the following schema constructs:
-
-**•** `xsd:all`, in Apex code saved using API version 15.0 and later
-
-**•** `xsd:annotation`, in Apex code saved using API version 15.0 and later
-
-**•** `xsd:attribute`, in Apex code saved using API version 15.0 and later
-
-**•** `xsd:choice`, in Apex code saved using API version 15.0 and later
-
-**•** `xsd:element` . In Apex code saved using API version 15.0 and later, the `ref` attribute is also supported with the following
-restrictions:
-
-**–** You cannot call a `ref` in a different namespace.
-
-**–** A global element cannot use `ref` .
-
-**–** If an element contains `ref`, it cannot also contain `name` or `type` .
-
-**•** `xsd:sequence`
-
-The following data types are only supported when used as _call ins_, that is, when an external Web service calls an Apex Web service
-method. These data types are not supported as _callouts_, that is, when an Apex Web service method calls an external Web service.
-
-**•** blob
-
-**•** decimal
-
-**•** enum
-
-Apex does not support any other WSDL constructs, types, or services, including:
-
-**•** RPC/encoded services
-
-**•** WSDL files with multiple `portTypes`, multiple services, or multiple bindings
-
-**•** WSDL files that import external schemas. For example, the following WSDL fragment imports an external schema, which is not
-supported:
-
-```
-      <wsdl:types>
-
-       <xsd:schema
-
-        elementFormDefault="qualified"
-
-        targetNamespace="http://s3.amazonaws.com/doc/2006-03-01/">
-
-         <xsd:include schemaLocation="AmazonS3.xsd"/>
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-       </xsd:schema>
-
-      </wsdl:types>
-
-```
-
-However, an import within the same schema is supported. In the following example, the external WSDL is pasted into the WSDL
-you are converting:
-
-```
-      <wsdl:types>
-
-       <xsd:schema
-
-         xmlns:tns="http://s3.amazonaws.com/doc/2006-03-01/"
-
-         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-
-         elementFormDefault="qualified"
-
-         targetNamespace="http://s3.amazonaws.com/doc/2006-03-01/">
-
-         <xsd:element name="CreateBucket">
-
-          <xsd:complexType>
-
-           <xsd:sequence>
-
-        [...]
-
-       </xsd:schema>
-
-      </wsdl:types>
-
-```
-
-**•** Any schema types not documented in the previous table
-
-**•** WSDLs that exceed the size limit, including the Salesforce WSDLs
-
-**•** WSDLs that don’t use the document literal wrapped style. The following WSDL snippet doesn’t use document literal wrapped style
-and results in an “Unable to find complexType” error when imported.
-
-```
-      <wsdl:types>
-
-       <xsd:schema targetNamespace="http://test.org/AccountPollInterface/"
-
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
-         <xsd:element name="SFDCPollAccountsResponse" type="tns:SFDCPollResponse"/>
-
-         <xsd:simpleType name="SFDCPollResponse">
-
-           <xsd:restriction base="xsd:string" />
-
-         </xsd:simpleType>
-
-       </xsd:schema>
-
-      </wsdl:types>
-
-```
-
-This modified version wraps the `simpleType` element as a `complexType` that contains a sequence of elements. This follows
-the document literal style and is supported.
-
-```
-      <wsdl:types>
-
-       <xsd:schema targetNamespace="http://test.org/AccountPollInterface/"
-
-     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
-         <xsd:element name="SFDCPollAccountsResponse" type="tns:SFDCPollResponse" />
-
-         <xsd:complexType name="SFDCPollResponse">
-
-          <xsd:sequence>
-
-           <xsd:element name="SFDCOutput" type="xsd:string" />
-
-          </xsd:sequence>
-
-         </xsd:complexType>
-
-       </xsd:schema>
-
-      </wsdl:types>
-
-```
-
-1. Generated WSDL2Apex Code
-You can generate Apex classes from a WSDL document using the WSDL2Apex tool. The WSDL2Apex tool is open source and available
-on GitHub.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-2. Test Web Service Callouts
-Generated code is saved as an Apex class containing the methods you can invoke for calling the web service. To deploy or package
-this Apex class and other accompanying code, 75% of the code must have test coverage, including the methods in the generated
-class. By default, test methods don’t support web service callouts, and tests that perform web service callouts fail. To prevent tests
-from failing and to increase code coverage, Apex provides the built-in `WebServiceMock` interface and the `Test.setMock`
-method. Use `WebServiceMock` and `Test.setMock` to receive fake responses in a test method.
-
-3. Performing DML Operations and Mock Callouts
-
-4. Considerations Using WSDLs
-
-###### Generated WSDL2Apex Code
-
-You can generate Apex classes from a WSDL document using the WSDL2Apex tool. The WSDL2Apex tool is open source and available
-on GitHub.
-
-[You can find and contribute to the WSDL2Apex source code in the WSDL2Apex repository on GitHub.](https://github.com/forcedotcom/WSDL2Apex)
-
-The following example shows how an Apex class is created from a WSDL document. The Apex class is auto-generated for you when you
-import the WSDL.
-
-The following code shows a sample WSDL document.
-
-```
-   <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
-
-   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-
-   xmlns:s="http://www.w3.org/2001/XMLSchema"
-
-   xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-
-   xmlns:tns="http://doc.sample.com/docSample"
-
-   targetNamespace="http://doc.sample.com/docSample"
-
-   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-
-   <!-- Above, the schema targetNamespace maps to the Apex class name. -->
-
-   <!-- Below, the type definitions for the parameters are listed.
-
-      Each complexType and simpleType parameteris mapped to an Apex class inside the parent
-
-    class for the WSDL. Then, each element in the complexType is mapped to a public field
-
-   inside the class. -->
-
-   <wsdl:types>
-
-   <s:schema elementFormDefault="qualified"
-
-   targetNamespace="http://doc.sample.com/docSample">
-
-   <s:element name="EchoString">
-
-   <s:complexType>
-
-   <s:sequence>
-
-   <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
-
-   </s:sequence>
-
-   </s:complexType>
-
-   </s:element>
-
-   <s:element name="EchoStringResponse">
-
-   <s:complexType>
-
-   <s:sequence>
-
-   <s:element minOccurs="0" maxOccurs="1" name="EchoStringResult"
-
-   type="s:string" />
-
-   </s:sequence>
-
-   </s:complexType>
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-   </s:element>
-
-   </s:schema>
-
-   </wsdl:types>
-
-   <!--The stub below defines operations. -->
-
-   <wsdl:message name="EchoStringSoapIn">
-
-   <wsdl:part name="parameters" element="tns:EchoString" />
-
-   </wsdl:message>
-
-   <wsdl:message name="EchoStringSoapOut">
-
-   <wsdl:part name="parameters" element="tns:EchoStringResponse" />
-
-   </wsdl:message>
-
-   <wsdl:portType name="DocSamplePortType">
-
-   <wsdl:operation name="EchoString">
-
-   <wsdl:input message="tns:EchoStringSoapIn" />
-
-   <wsdl:output message="tns:EchoStringSoapOut" />
-
-   </wsdl:operation>
-
-   </wsdl:portType>
-
-   <!--The code below defines how the types map to SOAP. -->
-
-   <wsdl:binding name="DocSampleBinding" type="tns:DocSamplePortType">
-
-   <wsdl:operation name="EchoString">
-
-   <soap:operation soapAction="urn:dotnet.callouttest.soap.sforce.com/EchoString"
-
-   style="document" />
-
-   <wsdl:input>
-
-   <soap:body use="literal" />
-
-   </wsdl:input>
-
-   <wsdl:output>
-
-   <soap:body use="literal" />
-
-   </wsdl:output>
-
-   </wsdl:operation>
-
-   </wsdl:binding>
-
-   <!-- Finally, the code below defines the endpoint, which maps to the endpoint in the class
-
-    -->
-
-   <wsdl:service name="DocSample">
-
-   <wsdl:port name="DocSamplePort" binding="tns:DocSampleBinding">
-
-   <soap:address location="http://YourServer/YourService" />
-
-   </wsdl:port>
-
-   </wsdl:service>
-
-   </wsdl:definitions>
-
-```
-
-From this WSDL document, the following Apex class is auto-generated. The class name `docSample` is the name you specify when
-importing the WSDL.
-
-```
-   //Generated by wsdl2apex
-
-   public class docSample {
-
-      public class EchoStringResponse_element {
-
-        public String EchoStringResult;
-
-        private String[] EchoStringResult_type_info = new String[]{
-
-                    'EchoStringResult',
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-                    'http://doc.sample.com/docSample',
-
-                     null,'0','1','false'};
-
-        private String[] apex_schema_type_info = new String[]{
-
-                     'http://doc.sample.com/docSample',
-
-                     'true','false'};
-
-        private String[] field_order_type_info = new String[]{
-
-                     'EchoStringResult'};
-
-      }
-
-      public class EchoString_element {
-
-        public String input;
-
-        private String[] input_type_info = new String[]{
-
-                     'input',
-
-                     'http://doc.sample.com/docSample',
-
-                      null,'0','1','false'};
-
-        private String[] apex_schema_type_info = new String[]{
-
-                      'http://doc.sample.com/docSample',
-
-                      'true','false'};
-
-        private String[] field_order_type_info = new String[]{'input'};
-
-      }
-
-      public class DocSamplePort {
-
-        public String endpoint_x = 'http://YourServer/YourService';
-
-        public Map<String,String> inputHttpHeaders_x;
-
-        public Map<String,String> outputHttpHeaders_x;
-
-        public String clientCertName_x;
-
-        public String clientCert_x;
-
-        public String clientCertPasswd_x;
-
-        public Integer timeout_x;
-
-        private String[] ns_map_type_info = new String[]{
-
-                   'http://doc.sample.com/docSample', 'docSample'};
-
-        public String EchoString(String input) {
-
-           docSample.EchoString_element request_x = new
-
-                             docSample.EchoString_element();
-
-           request_x.input = input;
-
-           docSample.EchoStringResponse_element response_x;
-
-           Map<String, docSample.EchoStringResponse_element> response_map_x =
-
-                 new Map<String, docSample.EchoStringResponse_element>();
-
-           response_map_x.put('response_x', response_x);
-
-           WebServiceCallout.invoke(
-
-            this,
-
-            request_x,
-
-            response_map_x,
-
-            new String[]{endpoint_x,
-
-            'urn:dotnet.callouttest.soap.sforce.com/EchoString',
-
-            'http://doc.sample.com/docSample',
-
-            'EchoString',
-
-            'http://doc.sample.com/docSample',
-
-            'EchoStringResponse',
-
-            'docSample.EchoStringResponse_element'}
-
-           );
-
-           response_x = response_map_x.get('response_x');
-
-           return response_x.EchoStringResult;
-
-        }
-
-      }
-
-   }
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Note the following mappings from the original WSDL document:
-
-**•** The WSDL target namespace maps to the Apex class name.
-
-**•** Each complex type becomes a class. Each element in the type is a public field in the class.
-
-**•** The WSDL port name maps to the stub class.
-
-**•** Each operation in the WSDL maps to a public method.
-
-You can use the auto-generated `docSample` class to invoke external Web services. The following code calls the `echoString`
-method on the external server.
-
-```
-   docSample.DocSamplePort stub = new docSample.DocSamplePort();
-
-   String input = 'This is the input string';
-
-   String output = stub.EchoString(input);
-
-###### Test Web Service Callouts
-
-```
-
-Generated code is saved as an Apex class containing the methods you can invoke for calling the web service. To deploy or package this
-Apex class and other accompanying code, 75% of the code must have test coverage, including the methods in the generated class. By
-default, test methods don’t support web service callouts, and tests that perform web service callouts fail. To prevent tests from failing
-and to increase code coverage, Apex provides the built-in `WebServiceMock` interface and the `Test.setMock` method. Use
-`WebServiceMock` and `Test.setMock` to receive fake responses in a test method.
-
-Specify a Mock Response for Testing Web Service Callouts
-
-When you create an Apex class from a WSDL, the methods in the auto-generated class call `WebServiceCallout.invoke`, which
-performs the callout to the external service. When testing these methods, you can instruct the Apex runtime to generate a fake response
-whenever `WebServiceCallout.invoke` is called. To do so, implement the `WebServiceMock` interface and specify a fake
-response for the Apex runtime to send. Here are the steps in more detail.
-
-First, implement the `WebServiceMock` interface and specify the fake response in the `doInvoke` method.
-
-```
-   global class YourWebServiceMockImpl implements WebServiceMock {
-
-     global void doInvoke(
-
-          Object stub,
-
-          Object request,
-
-          Map<String, Object> response,
-
-          String endpoint,
-
-          String soapAction,
-
-          String requestName,
-
-          String responseNS,
-
-          String responseName,
-
-          String responseType) {
-
-        // Create response element from the autogenerated class.
-
-        // Populate response element.
-
-        // Add response element to the response parameter, as follows:
-
-        response.put('response_x', responseElement );
-
-     }
-
-   }
-
-```
-
-Note:
-
-**•** The class implementing the `WebServiceMock` interface can be either global or public.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**•** You can annotate this class with `@isTest` because it is used only in a test context. In this way, you can exclude it from your
-org’s code size limit of 6 MB.
-
-Now that you have specified the values of the fake response, instruct the Apex runtime to send this fake response by calling
-`Test.setMock` in your test method. For the first argument, pass `WebServiceMock.class`, and for the second argument,
-pass a new instance of your interface implementation of `WebServiceMock`, as follows:
-
-```
-   Test.setMock(WebServiceMock.class, new YourWebServiceMockImpl ());
-
-```
-
-After this point, if a web service callout is invoked in test context, the callout is not made. You receive the mock response specified in
-your `doInvoke` method implementation.
-
-Note: To mock a callout if the code that performs the callout is in a managed package, call `Test.setMock` from a test method
-in the same package with the same namespace.
-
-This example shows how to test a web service callout. The implementation of the `WebServiceMock` interface is listed first. This
-example implements the `doInvoke` method, which returns the response you specify. In this case, the response element of the
-auto-generated class is created and assigned a value. Next, the response Map parameter is populated with this fake response. This
-example is based on the WSDL listed in Generated WSDL2Apex Code. Import this WSDL and generate a class called `docSample`
-before you save this class.
-
-```
-   @isTest
-
-   global class WebServiceMockImpl implements WebServiceMock {
-
-     global void doInvoke(
-
-          Object stub,
-
-          Object request,
-
-          Map<String, Object> response,
-
-          String endpoint,
-
-          String soapAction,
-
-          String requestName,
-
-          String responseNS,
-
-          String responseName,
-
-          String responseType) {
-
-        docSample.EchoStringResponse_element respElement =
-
-          new docSample.EchoStringResponse_element();
-
-        respElement.EchoStringResult = 'Mock response';
-
-        response.put('response_x', respElement);
-
-     }
-
-   }
-
-```
-
-This method makes a web service callout.
-
-```
-   public class WebSvcCallout {
-
-      public static String callEchoString(String input) {
-
-        docSample.DocSamplePort sample = new docSample.DocSamplePort();
-
-        sample.endpoint_x = 'https://example.com/example/test';
-
-        // This invokes the EchoString method in the generated class
-
-        String echo = sample.EchoString(input);
-
-        return echo;
-
-      }
-
-   }
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-This test class contains the test method that sets the mock callout mode. It calls the `callEchoString` method in the previous class
-and verifies that a mock response is received.
-
-```
-   @isTest
-
-   private class WebSvcCalloutTest {
-
-      @isTest static void testEchoString() {
-
-        // This causes a fake response to be generated
-
-        Test.setMock(WebServiceMock.class, new WebServiceMockImpl());
-
-        // Call the method that invokes a callout
-
-        String output = WebSvcCallout.callEchoString('Hello World!');
-
-        // Verify that a fake result is returned
-
-        System.assertEquals('Mock response', output);
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: WebServiceMock Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_webservicemock.htm)
-
-###### Performing DML Operations and Mock Callouts
-
-By default, callouts aren’t allowed after DML operations in the same transaction because DML operations result in pending uncommitted
-work that prevents callouts from executing. Sometimes, you might want to insert test data in your test method using DML before making
-a callout. To enable this, enclose the portion of your code that performs the callout within `Test.startTest` and `Test.stopTest`
-statements. The `Test.startTest` statement must appear before the `Test.setMock` statement. Also, the calls to DML operations
-must not be part of the `Test.startTest` / `Test.stopTest` block.
-
-DML operations that occur after mock callouts are allowed and don’t require any changes in test methods.
-
-Performing DML Before Mock Callouts
-
-This example is based on the previous example. The example shows how to use `Test.startTest` and `Test.stopTest`
-statements to allow DML operations to be performed in a test method before mock callouts. The test method ( `testEchoString` )
-first inserts a test account, calls `Test.startTest`, sets the mock callout mode using `Test.setMock`, calls a method that performs
-the callout, verifies the mock response values, and finally, calls `Test.stopTest` .
-
-```
-   @isTest
-
-   private class WebSvcCalloutTest {
-
-      @isTest static void testEchoString() {
-
-        // Perform some DML to insert test data
-
-        Account testAcct = new Account('Test Account');
-
-        insert testAcct;
-
-        // Call Test.startTest before performing callout
-
-        // but after setting test data.
-
-        Test.startTest();
-
-        // Set mock callout class
-
-        Test.setMock(WebServiceMock.class, new WebServiceMockImpl());
-
-        // Call the method that invokes a callout
-
-        String output = WebSvcCallout.callEchoString('Hello World!');
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-        // Verify that a fake result is returned
-
-        System.assertEquals('Mock response', output);
-
-        Test.stopTest();
-
-      }
-
-   }
-
-```
-
-Asynchronous Apex and Mock Callouts
-
-Similar to DML, asynchronous Apex operations result in pending uncommitted work that prevents callouts from being performed later
-in the same transaction. Examples of asynchronous Apex operations are calls to future methods, batch Apex, or scheduled Apex. These
-asynchronous calls are typically enclosed within `Test.startTest` and `Test.stopTest` statements in test methods so that
-they execute after `Test.stopTest` . In this case, mock callouts can be performed after the asynchronous calls and no changes are
-necessary. But if the asynchronous calls aren’t enclosed within `Test.startTest` and `Test.stopTest` statements, you’ll get
-an exception because of uncommitted work pending. To prevent this exception, do either of the following:
-
-**•** Enclose the asynchronous call within `Test.startTest` and `Test.stopTest` statements.
-
-```
-     Test.startTest();
-
-     MyClass.asyncCall();
-
-     Test.stopTest();
-
-     Test.setMock(..); // Takes two arguments
-
-     MyClass.mockCallout();
-
-```
-
-**•** Follow the same rules as with DML calls: Enclose the portion of your code that performs the callout within `Test.startTest`
-and `Test.stopTest` statements. The `Test.startTest` statement must appear before the `Test.setMock` statement.
-Also, the asynchronous calls must not be part of the `Test.startTest` / `Test.stopTest` block.
-
-```
-     MyClass.asyncCall();
-
-     Test.startTest();
-
-     Test.setMock(..); // Takes two arguments
-
-     MyClass.mockCallout();
-
-     Test.stopTest();
-
-```
-
-Asynchronous calls that occur after mock callouts are allowed and don’t require any changes in test methods.
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
-
-###### Considerations Using WSDLs
-
-Be aware of the following when generating Apex classes from a WSDL.
-
-SOAP Web Service Callout
-
-For WSDLs that require namespace changes within the SOAP requests, you must manually construct the HTTP request body and invoke
-the endpoint as a POST request from Apex.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Mapping Headers
-
-Headers defined in the WSDL document become public fields on the stub in the generated class. This is similar to how the AJAX Toolkit
-and .NET works.
-
-Understanding Runtime Events
-
-The following checks are performed when Apex code is making a callout to an external service.
-
-**•** For information on the timeout limits when making an HTTP request or a Web services call, see Callout Limits and Limitations on
-page 633.
-
-**•** Circular references in Apex classes are not allowed.
-
-**•** More than one loopback connection to Salesforce domains is not allowed.
-
-**•** To allow an endpoint to be accessed, register it from Setup by entering _`Remote Site Settings`_ in the `Quick Find` box,
-then selecting **Remote Site Settings** .
-
-**•** To prevent database connections from being held up, no transactions can be open.
-
-Understanding Unsupported Characters in Variable Names
-
-A WSDL file can include an element name that is not allowed in an Apex variable name. The following rules apply when generating
-Apex variable names from a WSDL file:
-
-**•** If the first character of an element name is not alphabetic, an `x` character is prepended to the generated Apex variable name.
-
-**•** If the last character of an element name is not allowed in an Apex variable name, an `x` character is appended to the generated Apex
-variable name.
-
-**•** If an element name contains a character that is not allowed in an Apex variable name, the character is replaced with an underscore
-( `_` ) character.
-
-**•** If an element name contains two characters in a row that are not allowed in an Apex variable name, the first character is replaced
-with an underscore ( `_` ) character and the second one is replaced with an `x` character. This avoids generating a variable name with
-two successive underscores, which is not allowed in Apex.
-
-**•** Suppose you have an operation that takes two parameters, `a_` and `a_x` . The generated Apex has two variables, both named `a_x` .
-The class doesn’t compile. Manually edit the Apex and change one of the variable names.
-
-Debugging Classes Generated from WSDL Files
-
-Salesforce tests code with SOAP API, .NET, and Axis. If you use other tools, you can encounter issues.
-
-You can use the debugging header to return the XML in request and response SOAP messages to help you diagnose problems. For more
-information, see _SOAP API Developer Guide_ [: DebuggingHeader.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api.meta/api/sforce_api_header_debuggingheader.htm)
-
-##### Invoking HTTP Callouts
-
-Apex provides several built-in classes to work with HTTP services and create HTTP requests like GET, POST, PUT, and DELETE.
-
-You can use these HTTP classes to integrate to REST-based services. They also allow you to integrate to SOAP-based web services as an
-alternate option to generating Apex code from a WSDL. By using the HTTP classes, instead of starting with a WSDL, you take on more
-responsibility for handling the construction of the SOAP message for the request and response.
-
-1. HTTP Classes
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-2. Testing HTTP Callouts
-To deploy or package Apex, 75% of your code must have test coverage. By default, test methods don’t support HTTP callouts, so
-tests that perform callouts fail. Enable HTTP callout testing by instructing Apex to generate mock responses in tests, using
-`Test.setMock` .
-
-###### HTTP Classes
-
-These classes expose the HTTP request and response functionality.
-
-**•** `[Http Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_http.htm)` . Use this class to initiate an HTTP request and response.
-
-**•** [HttpRequest Class: Use this class to programmatically create HTTP requests like GET, POST, PATCH, PUT, and DELETE.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
-
-###### • HttpResponse Class: Use this class to handle the HTTP response returned by HTTP .
-
-The `HttpRequest` and `HttpResponse` classes support these elements.
-
-**•** HttpRequest
-
-**–** HTTP request types, such as GET, POST, PATCH, PUT, DELETE, TRACE, CONNECT, HEAD, and OPTIONS
-
-**–** Request headers if needed
-
-**–** Read and connection timeouts
-
-**–** Redirects if needed
-
-**–** Content of the message body
-
-**•** `HttpResponse`
-
-**–** The HTTP status code
-
-**–** Response headers if needed
-
-**–** Content of the response body
-
-This example makes an HTTP GET request to the external server passed to the `getCalloutResponseContents` method in the
-_`url`_ parameter. This example also accesses the body of the returned response.
-
-```
-   public class HttpCalloutSample {
-
-     // Pass in the endpoint to be used using the string url
-
-     public String getCalloutResponseContents(String url) {
-
-      // Instantiate a new Http object
-
-      Http h = new Http();
-
-      // Instantiate a new HTTP request, specify the method (GET) as well as the endpoint
-
-      HttpRequest req = new HttpRequest();
-
-      req.setEndpoint(url);
-
-      req.setMethod('GET');
-
-      // Send the request, and return a response
-
-      HttpResponse res = h.send(req);
-
-      return res.getBody();
-
-     }
-
-   }
-
-```
-
-The previous example runs synchronously, meaning no further processing happens until the external web service returns a response.
-Alternatively, you can use the @future annotation to make the callout run asynchronously.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-This example makes an HTTP POST request to the external server passed to the `getPostCalloutResponseContents` method
-in the _`url`_ parameter. Replace _`Your_JSON_Content`_ with the JSON content that you want to send in the callout.
-
-```
-   public class HttpPostCalloutSample {
-
-     // Pass in the endpoint to be used using the string url
-
-     public String getPostCalloutResponseContents(String url) {
-
-      // Instantiate a new Http object
-
-      Http h = new Http();
-
-      // Instantiate a new HTTP request
-
-      // Specify request properties such as the endpoint, the POST method, etc.
-
-      HttpRequest req = new HttpRequest();
-
-      req.setEndpoint(url);
-
-      req.setMethod('POST');
-
-      req.setHeader('Content-Type', 'application/json');
-
-      req.setBody('{ Your_JSON_Content }');
-
-      // Send the request, and return a response
-
-      HttpResponse res = h.send(req);
-
-      return res.getBody();
-
-     }
-
-   }
-
-```
-
-To access an external server from an endpoint or a redirect endpoint, add the remote site to a list of authorized remote sites. Log in to
-Salesforce and from Setup, in the Quick Find box, enter _`Remote Site Settings`_, and then select **Remote Site Settings** .
-
-Use the XML classes or JSON classes to parse XML or JSON content in the body of a request created by `[HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)`, or a response
-accessed by `[HttpResponse](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm)` .
-
-Considerations
-
-**•** The AJAX proxy handles redirects and authentication challenges (401/407 responses) automatically. For more information about
-[the AJAX proxy, see AJAX Toolkit documentation.](https://developer.salesforce.com/docs/atlas.en-us.260.0.ajax.meta/ajax/sforce_api_ajax_queryresultiterator.htm#ajax_proxy)
-
-**•** You can set the endpoint as a named credential URL. A named credential URL contains the scheme `callout:`, the name of the
-named credential, and an optional path. For example: `callout:` _`My_Named_Credential`_ `/` _`some_path`_ . A named credential
-specifies the URL of a callout endpoint and its required authentication parameters in one definition. Salesforce manages all
-authentication for Apex callouts that specify a named credential as the callout endpoint so that your code doesn’t have to. You can
-also skip remote site settings, which are otherwise required for callouts to external sites, for the site defined in the named credential.
-[See Named Credentials as Callout Endpoints.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_callouts_named_credentials.htm)
-
-**•** When you set a request body in the callout, set the method to `POST` . If you set a request body and the request method is `GET`, a
-`POST` request is performed.
-
-**•** Callouts are blocked if you have pending uncommitted transactions from DML operations, queueable jobs (that are queued with
-`System.enqueueJob` ), `Database.executeBatch`, or future methods.
-
-###### Testing HTTP Callouts
-
-To deploy or package Apex, 75% of your code must have test coverage. By default, test methods don’t support HTTP callouts, so tests
-that perform callouts fail. Enable HTTP callout testing by instructing Apex to generate mock responses in tests, using `Test.setMock` .
-
-Specify the mock response in one of the following ways.
-
-**•** By implementing the `HttpCalloutMock` interface
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**•** By using Static Resources with `StaticResourceCalloutMock` or `MultiStaticResourceCalloutMock`
-
-To enable running DML operations before mock callouts in your test methods, see Performing DML Operations and Mock Callouts.
-
-####### Testing HTTP Callouts by Implementing the HttpCalloutMock Interface Interface
-
-Testing HTTP Callouts Using Static Resources
-
-Performing DML Operations and Mock Callouts
-
-####### Testing HTTP Callouts by Implementing the HttpCalloutMock Interface Interface
-
-Provide an implementation for the `HttpCalloutMock` interface to specify the response sent in the `respond` method, which the
-Apex runtime calls to send a response for a callout.
-
-```
-   global class YourHttpCalloutMockImpl implements HttpCalloutMock {
-
-      global HTTPResponse respond(HTTPRequest req) {
-
-        // Create a fake response.
-
-        // Set response values, and
-
-        // return response.
-
-      }
-
-   }
-
-```
-
-Note:
-
-**•** The class that implements the `HttpCalloutMock` interface can be either global or public.
-
-**•** You can annotate this class with `@isTest` since it will be used only in test context. In this way, you can exclude it from your
-organization’s code size limit of 6 MB.
-
-Now that you have specified the values of the fake response, instruct the Apex runtime to send this fake response by calling
-`Test.setMock` in your test method. For the first argument, pass `HttpCalloutMock.class`, and for the second argument,
-pass a new instance of your interface implementation of `HttpCalloutMock`, as follows:
-
-```
-   Test.setMock(HttpCalloutMock.class, new YourHttpCalloutMockImpl ());
-
-```
-
-After this point, if an HTTP callout is invoked in test context, the callout is not made and you receive the mock response you specified in
-the _`respond`_ method implementation.
-
-Note: To mock a callout if the code that performs the callout is in a managed package, call `Test.setMock` from a test method
-in the same package with the same namespace.
-
-This is a full example that shows how to test an HTTP callout. The interface implementation ( `MockHttpResponseGenerator` ) is
-listed first. It is followed by a class containing the test method and another containing the method that the test calls. The `testCallout`
-test method sets the mock callout mode by calling `Test.setMock` before calling `getInfoFromExternalService` . It then
-verifies that the response returned is what the implemented `respond` method sent. Save each class separately and run the test in
-`CalloutClassTest` .
-
-```
-   @isTest
-
-   global class MockHttpResponseGenerator implements HttpCalloutMock {
-
-      // Implement this interface method
-
-      global HTTPResponse respond(HTTPRequest req) {
-
-        // Optionally, only send a mock response for a specific endpoint
-
-        // and method.
-
-        System.assertEquals('https://example.com/example/test', req.getEndpoint());
-
-        System.assertEquals('GET', req.getMethod());
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-        // Create a fake response
-
-        HttpResponse res = new HttpResponse();
-
-        res.setHeader('Content-Type', 'application/json');
-
-        res.setBody('{"example":"test"}');
-
-        res.setStatusCode(200);
-
-        return res;
-
-      }
-
-   }
-
-   public class CalloutClass {
-
-      public static HttpResponse getInfoFromExternalService() {
-
-        HttpRequest req = new HttpRequest();
-
-        req.setEndpoint('https://example.com/example/test');
-
-        req.setMethod('GET');
-
-        Http h = new Http();
-
-        HttpResponse res = h.send(req);
-
-        return res;
-
-      }
-
-   }
-
-   @isTest
-
-   private class CalloutClassTest {
-
-      @isTest static void testCallout() {
-
-        // Set mock callout class
-
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
-
-        // Call method to test.
-
-        // This causes a fake response to be sent
-
-        // from the class that implements HttpCalloutMock.
-
-        HttpResponse res = CalloutClass.getInfoFromExternalService();
-
-        // Verify response received contains fake values
-
-        String contentType = res.getHeader('Content-Type');
-
-        System.assert(contentType == 'application/json');
-
-        String actualValue = res.getBody();
-
-        String expectedValue = '{"example":"test"}';
-
-        System.assertEquals(actualValue, expectedValue);
-
-        System.assertEquals(200, res.getStatusCode());
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: HttpCalloutMock Interface](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_interface_httpcalloutmock.htm)
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
-
-####### Testing HTTP Callouts Using Static Resources
-
-You can test HTTP callouts by specifying the body of the response you’d like to receive in a static resource and using one of two built-in
-classes— `StaticResourceCalloutMock` or `MultiStaticResourceCalloutMock` .
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**Testing HTTP Callouts Using** **`StaticResourceCalloutMock`**
-
-Apex provides the built-in `StaticResourceCalloutMock` class that you can use to test callouts by specifying the response
-body in a static resource. When using this class, you don’t have to provide your own implementation of the `HttpCalloutMock`
-interface. Instead, just create an instance of `StaticResourceCalloutMock` and set the static resource to use for the response
-body, along with other response properties, like the status code and content type.
-
-First, you must create a static resource from a text file to contain the response body:
-
-**1.** Create a text file that contains the response body to return. The response body can be an arbitrary string, but it must match the
-content type, if specified. For example, if your response has no content type specified, the file can include the arbitrary string _`abc`_ .
-If you specify a content type of application/json for the response, the file content should be a JSON string, such as {"hah":"fooled
-you"}.
-
-**2.** Create a static resource for the text file:
-
-**a.** From Setup, enter _`Static Resources`_ in the `Quick Find` box, then select **Static Resources** .
-
-**b.** Click **New** .
-
-**c.** Name your static resource.
-
-**d.** Choose the file to upload.
-
-**e.** Click **Save** .
-
-To learn more about static resources, see “Defining Static Resources” in the Salesforce online help.
-
-Next, create an instance of `StaticResourceCalloutMock` and set the static resource, and any other properties.
-
-```
-   StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
-
-   mock.setStaticResource('myStaticResourceName');
-
-   mock.setStatusCode(200);
-
-   mock.setHeader('Content-Type', 'application/json');
-
-```
-
-In your test method, call `Test.setMock` to set the mock callout mode and pass it `HttpCalloutMock.class` as the first
-argument, and the variable name that you created for `StaticResourceCalloutMock` as the second argument.
-
-```
-   Test.setMock(HttpCalloutMock.class, mock );
-
-```
-
-After this point, if your test method performs a callout, the callout is not made and the Apex runtime sends the mock response you
-specified in your instance of `StaticResourceCalloutMock` .
-
-Note: To mock a callout if the code that performs the callout is in a managed package, call `Test.setMock` from a test method
-in the same package with the same namespace.
-
-This is a full example containing the test method ( `testCalloutWithStaticResources` ) and the method it is testing
-( `getInfoFromExternalService` ) that performs the callout. Before running this example, create a static resource named
-_`mockResponse`_ based on a text file with the content _`{"hah":"fooled you"}`_ . Save each class separately and run the test in
-`CalloutStaticClassTest` .
-
-```
-   public class CalloutStaticClass {
-
-      public static HttpResponse getInfoFromExternalService(String endpoint) {
-
-        HttpRequest req = new HttpRequest();
-
-        req.setEndpoint(endpoint);
-
-        req.setMethod('GET');
-
-        Http h = new Http();
-
-        HttpResponse res = h.send(req);
-
-        return res;
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-      }
-
-   }
-
-   @isTest
-
-   private class CalloutStaticClassTest {
-
-      @isTest static void testCalloutWithStaticResources() {
-
-        // Use StaticResourceCalloutMock built-in class to
-
-        // specify fake response and include response body
-
-        // in a static resource.
-
-        StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
-
-        mock.setStaticResource('mockResponse');
-
-        mock.setStatusCode(200);
-
-        mock.setHeader('Content-Type', 'application/json');
-
-        // Set the mock callout mode
-
-        Test.setMock(HttpCalloutMock.class, mock);
-
-        // Call the method that performs the callout
-
-        HTTPResponse res = CalloutStaticClass.getInfoFromExternalService(
-
-           'https://example.com/example/test');
-
-        // Verify response received contains values returned by
-
-        // the mock response.
-
-        // This is the content of the static resource.
-
-        System.assertEquals('{"hah":"fooled you"}', res.getBody());
-
-        System.assertEquals(200,res.getStatusCode());
-
-        System.assertEquals('application/json', res.getHeader('Content-Type'));
-
-      }
-
-   }
-
-```
-
-**Testing HTTP Callouts Using** **`MultiStaticResourceCalloutMock`**
-
-Apex provides the built-in `MultiStaticResourceCalloutMock` class that you can use to test callouts by specifying the
-response body in a static resource for each endpoint. This class is similar to `StaticResourceCalloutMock` except that it allows
-you to specify multiple response bodies. When using this class, you don’t have to provide your own implementation of the
-`HttpCalloutMock` interface. Instead, just create an instance of `MultiStaticResourceCalloutMock` and set the static
-resource to use per endpoint. You can also set other response properties like the status code and content type.
-
-First, you must create a static resource from a text file to contain the response body. See the procedure outlined in Testing HTTP Callouts
-Using `StaticResourceCalloutMock` .
-
-Next, create an instance of `MultiStaticResourceCalloutMock` and set the static resource, and any other properties.
-
-```
-   MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-
-   multimock.setStaticResource('https://example.com/example/test', 'mockResponse');
-
-   multimock.setStaticResource('https://example.com/example/sfdc', 'mockResponse2');
-
-   multimock.setStatusCode(200);
-
-   multimock.setHeader('Content-Type', 'application/json');
-
-```
-
-In your test method, call `Test.setMock` to set the mock callout mode and pass it `HttpCalloutMock.class` as the first
-argument, and the variable name that you created for `MultiStaticResourceCalloutMock` as the second argument.
-
-```
-   Test.setMock(HttpCalloutMock.class, multimock );
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-After this point, if your test method performs an HTTP callout to one of the endpoints `https://example.com/example/test`
-or `https://example.com/example/sfdc`, the callout is not made and the Apex runtime sends the corresponding mock
-response you specified in your instance of `MultiStaticResourceCalloutMock` .
-
-This is a full example containing the test method ( `testCalloutWithMultipleStaticResources` ) and the method it is
-testing ( `getInfoFromExternalService` ) that performs the callout. Before running this example, create a static resource named
-_`mockResponse`_ based on a text file with the content _`{"hah":"fooled you"}`_ and another named _`mockResponse2`_
-based on a text file with the content _`{"hah":"fooled you twice"}`_ . Save each class separately and run the test in
-`CalloutMultiStaticClassTest` .
-
-```
-   public class CalloutMultiStaticClass {
-
-      public static HttpResponse getInfoFromExternalService(String endpoint) {
-
-        HttpRequest req = new HttpRequest();
-
-        req.setEndpoint(endpoint);
-
-        req.setMethod('GET');
-
-        Http h = new Http();
-
-        HttpResponse res = h.send(req);
-
-        return res;
-
-      }
-
-   }
-
-   @isTest
-
-   private class CalloutMultiStaticClassTest {
-
-      @isTest static void testCalloutWithMultipleStaticResources() {
-
-        // Use MultiStaticResourceCalloutMock to
-
-        // specify fake response for a certain endpoint and
-
-        // include response body in a static resource.
-
-        MultiStaticResourceCalloutMock multimock = new MultiStaticResourceCalloutMock();
-
-        multimock.setStaticResource(
-
-           'https://example.com/example/test', 'mockResponse');
-
-        multimock.setStaticResource(
-
-           'https://example.com/example/sfdc', 'mockResponse2');
-
-        multimock.setStatusCode(200);
-
-        multimock.setHeader('Content-Type', 'application/json');
-
-        // Set the mock callout mode
-
-        Test.setMock(HttpCalloutMock.class, multimock);
-
-        // Call the method for the first endpoint
-
-        HTTPResponse res = CalloutMultiStaticClass.getInfoFromExternalService(
-
-           'https://example.com/example/test');
-
-        // Verify response received
-
-        System.assertEquals('{"hah":"fooled you"}', res.getBody());
-
-        // Call the method for the second endpoint
-
-        HTTPResponse res2 = CalloutMultiStaticClass.getInfoFromExternalService(
-
-           'https://example.com/example/sfdc');
-
-        // Verify response received
-
-        System.assertEquals('{"hah":"fooled you twice"}', res2.getBody());
-
-      }
-
-   }
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-####### Performing DML Operations and Mock Callouts
-
-By default, callouts aren’t allowed after DML operations in the same transaction because DML operations result in pending uncommitted
-work that prevents callouts from executing. Sometimes, you might want to insert test data in your test method using DML before making
-a callout. To enable this, enclose the portion of your code that performs the callout within `Test.startTest` and `Test.stopTest`
-statements. The `Test.startTest` statement must appear before the `Test.setMock` statement. Also, the calls to DML operations
-must not be part of the `Test.startTest` / `Test.stopTest` block.
-
-DML operations that occur after mock callouts are allowed and don’t require any changes in test methods.
-
-The DML operations support works for all implementations of mock callouts using: the `HttpCalloutMock` interface and static
-resources ( `StaticResourceCalloutMock` or `MultiStaticResourceCalloutMock` ). The following example uses an
-implemented `HttpCalloutMock` interface but you can apply the same technique when using static resources.
-
-**Performing DML Before Mock Callouts**
-
-This example is based on the HttpCalloutMock example provided earlier. The example shows how to use `Test.startTest` and
-`Test.stopTest` statements to allow DML operations to be performed in a test method before mock callouts. The test method
-( `testCallout` ) first inserts a test account, calls `Test.startTest`, sets the mock callout mode using `Test.setMock`, calls a
-method that performs the callout, verifies the mock response values, and finally, calls `Test.stopTest` .
-
-```
-   @isTest
-
-   private class CalloutClassTest {
-
-      @isTest static void testCallout() {
-
-        // Perform some DML to insert test data
-
-        Account testAcct = new Account('Test Account');
-
-        insert testAcct;
-
-        // Call Test.startTest before performing callout
-
-        // but after setting test data.
-
-        Test.startTest();
-
-        // Set mock callout class
-
-        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator());
-
-        // Call method to test.
-
-        // This causes a fake response to be sent
-
-        // from the class that implements HttpCalloutMock.
-
-        HttpResponse res = CalloutClass.getInfoFromExternalService();
-
-        // Verify response received contains fake values
-
-        String contentType = res.getHeader('Content-Type');
-
-        System.assert(contentType == 'application/json');
-
-        String actualValue = res.getBody();
-
-        String expectedValue = '{"example":"test"}';
-
-        System.assertEquals(actualValue, expectedValue);
-
-        System.assertEquals(200, res.getStatusCode());
-
-        Test.stopTest();
-
-      }
-
-   }
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**Asynchronous Apex and Mock Callouts**
-
-Similar to DML, asynchronous Apex operations result in pending uncommitted work that prevents callouts from being performed later
-in the same transaction. Examples of asynchronous Apex operations are calls to future methods, batch Apex, or scheduled Apex. These
-asynchronous calls are typically enclosed within `Test.startTest` and `Test.stopTest` statements in test methods so that
-they execute after `Test.stopTest` . In this case, mock callouts can be performed after the asynchronous calls and no changes are
-necessary. But if the asynchronous calls aren’t enclosed within `Test.startTest` and `Test.stopTest` statements, you’ll get
-an exception because of uncommitted work pending. To prevent this exception, do either of the following:
-
-**•** Enclose the asynchronous call within `Test.startTest` and `Test.stopTest` statements.
-
-```
-     Test.startTest();
-
-     MyClass.asyncCall();
-
-     Test.stopTest();
-
-     Test.setMock(..); // Takes two arguments
-
-     MyClass.mockCallout();
-
-```
-
-**•** Follow the same rules as with DML calls: Enclose the portion of your code that performs the callout within `Test.startTest`
-and `Test.stopTest` statements. The `Test.startTest` statement must appear before the `Test.setMock` statement.
-Also, the asynchronous calls must not be part of the `Test.startTest` / `Test.stopTest` block.
-
-```
-     MyClass.asyncCall();
-
-     Test.startTest();
-
-     Test.setMock(..); // Takes two arguments
-
-     MyClass.mockCallout();
-
-     Test.stopTest();
-
-```
-
-Asynchronous calls that occur after mock callouts are allowed and don’t require any changes in test methods.
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm)_ : Test Class
-
-##### Using Certificates
-
-To use two-way SSL authentication, send a certificate with your callout that was either generated in Salesforce or signed by a certificate
-authority (CA). Sending a certificate enhances security because the target of the callout receives the certificate and can use it to authenticate
-the request against its keystore.
-
-To enable two-way SSL authentication for a callout:
-
-**1.** Generate a certificate.
-
-**2.** Integrate the certificate with your code. See Using Certificates with SOAP Services and Using Certificates with HTTP Requests.
-
-**3.** If you’re connecting to a third party and using a self-signed certificate, share the Salesforce certificate with them so that they can
-add the certificate to their keystore. If you’re connecting to another application, generate and integrate the certificate with your
-code, and then ensure that the Web or application server is configured to accept the certificate. This process depends on the type
-of Web or application server you use.
-
-**4.** Configure the remote site settings for the callout. Before any Apex callout can call an external site, that site must be registered in
-the Remote Site Settings page, or the callout fails.
-
-If the callout specifies a named credential as the endpoint, you don’t need to configure remote site settings. To set up named
-[credentials, see Named Credentials and External Credentials in Salesforce Help.](https://help.salesforce.com/s/articleView?id=sf.nc_named_creds_and_ext_creds.htm&language=en_US)
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-###### 1. Generating Certificates 2. Using Certificates with SOAP Services
-
-To support two-way authentication for a callout to a SOAP web service, generate a certificate in Salesforce or import a key pair from
-a keystore into Salesforce. Then integrate the certificate with your Apex.
-
-###### 3. Using Certificates with HTTP Requests Generating Certificates
-
-You can use a self-signed certificate generated in Salesforce or a certificate signed by a certificate authority (CA). To generate a certificate
-[for a callout, see Generate a Certificate.](https://help.salesforce.com/apex/HTViewHelpDoc?id=security_keys_creating.htm&language=en_US)
-
-After you successfully save a Salesforce certificate, the certificate and corresponding keys are automatically generated.
-
-After you create a CA-signed certificate, you must upload the signed certificate before you can use it. See “Generate a Certificate Signed
-by a Certificate Authority” in the Salesforce online help.
-
-###### Using Certificates with SOAP Services
-
-To support two-way authentication for a callout to a SOAP web service, generate a certificate in Salesforce or import a key pair from a
-keystore into Salesforce. Then integrate the certificate with your Apex.
-
-Important: We recommend storing mutual authentication certificates for external web services in a Java keystore. For more
-[information, see Certificates and Keys.](https://help.salesforce.com/articleView?id=security_keys_about.htm&language=en_US)
-
-To integrate the certificate with your Apex:
-
-**1.** Receive the WSDL for the web service from the third party, or generate it from the application you want to connect to.
-
-**2.** Generate Apex classes from the WSDL for the web service. See SOAP Services: Defining a Class from a WSDL Document.
-
-**3.** The generated Apex classes include a stub for calling the third-party web service represented by the WSDL document. Edit the Apex
-classes, and assign a value to a `clientCertName_x` variable on an instance of the stub class. The value must match the `Unique`
-`Name` of the certificate that you generated on the Certificate and Key Management page.
-
-This example illustrates editing the Apex classes and works with the sample WSDL file in Generated WSDL2Apex Code. The example
-assumes that you generated a certificate with the `Unique Name` of `DocSampleCert` .
-
-```
-   docSample.DocSamplePort stub = new docSample.DocSamplePort();
-
-   stub.clientCertName_x = 'DocSampleCert';
-
-   String input = 'This is the input string';
-
-   String output = stub.EchoString(input);
-
-###### Using Certificates with HTTP Requests
-
-```
-
-After you have generated a certificate in Salesforce, you can use it to support two-way authentication for a callout to an HTTP request.
-
-To integrate the certificate with your Apex:
-
-**1.** Generate a certificate. Note the `Unique Name` of the certificate.
-
-**2.** In your Apex, use the `setClientCertificateName` method of the `HttpRequest` class. The value used for the argument
-for this method must match the `Unique Name` of the certificate that you generated in the previous step.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-The following example illustrates the last step of the previous procedure. This example assumes that you previously generated a certificate
-with a `Unique Name` of `DocSampleCert` .
-
-```
-   HttpRequest req = new HttpRequest();
-
-   req.setClientCertificateName('DocSampleCert');
-
-##### Callout Limits and Limitations
-
-```
-
-The following limits and limitations apply when Apex code makes a callout to an HTTP request or a web services call. The web services
-call can be a SOAP API call or any external web services call.
-
-**•** A single Apex transaction can make a maximum of 100 callouts to an HTTP request or an API call.
-
-**•** In Developer Edition orgs, you can only make up to 20 concurrent callouts to endpoints outside of your Salesforce org’s domain.
-This limit doesn’t apply to non-Developer Edition orgs.
-
-**•** The default timeout is 10 seconds. A custom timeout can be defined for each callout. The minimum is 1 millisecond and the maximum
-is 120,000 milliseconds. See the examples in the next section for how to set custom timeouts for Web services or HTTP callouts.
-
-**•** The maximum cumulative timeout for callouts by a single Apex transaction is 120 seconds. This time is additive across all callouts
-invoked by the Apex transaction.
-
-**•** Every org has a limit on long-running requests that run for more than 5 seconds (total execution time). HTTP callout processing time
-is not included when calculating this limit. We pause the timer for the callout and resume it when the callout completes. See Execution
-Governors and Limits for Lightning Platform Apex limits.
-
-**•** You can’t make a callout when there are pending operations in the same transaction. Things that result in pending operations are
-DML statements, asynchronous Apex (such as future methods and batch Apex jobs), scheduled Apex, or sending email. You can
-make callouts before performing these types of operations.
-
-**•** Pending operations can occur before mock callouts in the same transaction. See Performing DML Operations and Mock Callouts for
-WSDL-based callouts or Performing DML Operations and Mock Callouts for HTTP callouts.
-
-**•** When the header `Expect: 100-Continue` is added to a callout request and a `HTTP/1.1 100 Continue` response
-isn’t returned by the external server, a timeout occurs.
-
-Apex Callouts in Read-Only Mode
-
-During read-only mode, Apex callouts to external services execute and aren’t blocked by the system. Typically, you execute some
-follow-up operations in the same transaction after receiving a response from a callout. For example, you can make a DML call to update
-a Salesforce record. But write operations in Salesforce, such as record updates, are blocked during read-only mode. This inconsistency
-in behavior in read-only mode can break your program flow and causes issues. To avoid incorrect program behavior, we recommend
-that you prevent making callouts in read-only mode. To check whether the org is in read-only mode, call
-`System.getApplicationReadWriteMode()` .
-
-The following example checks the return value of `System.getApplicationReadWriteMode()` . If the return value is equal
-to `ApplicationReadWriteMode.READ_ONLY` enum value, the org is in read-only mode and the callout is skipped. Otherwise
-( `ApplicationReadWriteMode.DEFAULT` value), the callout is performed.
-
-Note: This class uses Apex HTTP classes to make a callout as an example. You can also make a callout using an imported WSDL
-through WSDL2Apex. The process for checking for read-only mode is the same in either case.
-
-```
-   public class HttpCalloutSampleReadOnly {
-
-      public class MyReadOnlyException extends Exception {}
-
-      // Pass in the endpoint to be used using the string url
-
-      public String getCalloutResponseContents(String url) {
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-        // Get Read-only mode status
-
-        ApplicationReadWriteMode mode = System.getApplicationReadWriteMode();
-
-        String returnValue = '';
-
-        if (mode == ApplicationReadWriteMode.READ_ONLY) {
-
-           // Prevent the callout
-
-           throw new MyReadOnlyException('Read-only mode. Skipping callouts!');
-
-        } else if (mode == ApplicationReadWriteMode.DEFAULT) {
-
-           // Instantiate a new http object
-
-           Http h = new Http();
-
-           // Instantiate a new HTTP request, specify the method (GET)
-
-           // as well as the endpoint.
-
-           HttpRequest req = new HttpRequest();
-
-           req.setEndpoint(url);
-
-           req.setMethod('GET');
-
-           // Send the request, and return a response
-
-           HttpResponse res = h.send(req);
-
-           returnValue = res.getBody();
-
-        }
-
-        return returnValue;
-
-      }
-
-   }
-
-```
-
-Your Salesforce org is in read-only mode during some Salesforce maintenance activities, such as planned site switches and instance
-refreshes. As part of Continuous Site Switching, your Salesforce org is switched to its ready site approximately once every six months.
-[For more information about site switching, see Continuous Site Switching.](https://help.salesforce.com/articleView?id=Continuous-Site-Switching&type=1&language=en_US)
-
-To test read-only mode in sandbox, contact Salesforce to enable the read-only mode test option. Once the test option is enabled, you
-can toggle read-only mode on and verify your apps.
-
-Setting Callout Timeouts
-
-The following example sets a custom timeout for Web services callouts. The example works with the sample WSDL file and the generated
-`DocSamplePort` class described in Generated WSDL2Apex Code on page 615. Set the timeout value in milliseconds by assigning a
-value to the special `timeout_x` variable on the stub.
-
-```
-   docSample.DocSamplePort stub = new docSample.DocSamplePort();
-
-   stub.timeout_x = 2000; // timeout in milliseconds
-
-```
-
-The following is an example of setting a custom timeout for HTTP callouts:
-
-```
-   HttpRequest req = new HttpRequest();
-
-   req.setTimeout(2000); // timeout in milliseconds
-
-##### Make Long-Running Callouts with Continuations
-
-```
-
-Use asynchronous callouts to make long-running requests from a Visualforce page or a Lightning component to an external Web service
-and process responses in callback methods.
-
-An asynchronous callout is a callout that is made from a Visualforce page or a Lightning component for which the response is returned
-through a callback method. An asynchronous callout is also referred to as a _continuation_ .
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Visualforce Example
-
-This diagram shows the execution path of an asynchronous callout, starting from a Visualforce page. A user invokes an action on a
-Visualforce page that requests information from a Web service (step 1). The app server hands the callout request to the Continuation
-server before returning to the Visualforce page (steps 2–3). The Continuation server sends the request to the Web service and receives
-the response (steps 4–7), then hands the response back to the app server (step 8). Finally, the response is returned to the Visualforce
-page (step 9).
-
-**Execution Flow of an Asynchronous Callout**
-
-A typical Salesforce application that benefits from asynchronous callouts contains a Visualforce page with a button. Users click that
-button to get data from an external Web service. For example, a Visualforce page that gets warranty information for a certain product
-from a Web service. Thousands of agents in the organization can use this page. Therefore, a hundred of those agents can click the same
-button to process warranty information for products at the same time. These hundred simultaneous actions exceed the limit of concurrent
-long-running requests on page 351 . But by using asynchronous callouts, the requests aren’t subjected to this limit and can be executed.
-
-In the following example application, the button action is implemented in an Apex controller method. The action method creates a
-`Continuation` and returns it. After the request is sent to the service, the Visualforce request is suspended. The user must wait for
-the response to be returned before proceeding with using the page and invoking new actions. When the external service returns a
-response, the Visualforce request resumes and the page receives this response.
-
-This is the Visualforce page of our sample application. This page contains a button that invokes the `startRequest` method of the
-controller that’s associated with this page. After the continuation result is returned and the callback method is invoked, the button
-renders the `outputText` component again to display the body of the response.
-
-```
-   <apex:page controller="ContinuationController" showChat="false" showHeader="false">
-
-     <apex:form >
-
-       <!-- Invokes the action method when the user clicks this button. -->
-
-       <apex:commandButton action="{!startRequest}"
-
-            value="Start Request" reRender="result"/>
-
-     </apex:form>
-
-     <!-- This output text component displays the callout response body. -->
-
-     <apex:outputText id="result" value="{!result}" />
-
-   </apex:page>
-
-```
-
-The following is the Apex controller that’s associated with the Visualforce page. This controller contains the action and callback methods.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Note: Before you can call an external service, you must add the remote site to a list of authorized remote sites in the Salesforce
-user interface. From Setup, enter _`Remote Site Settings`_ in the `Quick Find` box, then select **Remote Site Settings**,
-and then click **New Remote Site** .
-
-If the callout specifies a named credential as the endpoint, you don’t need to configure remote site settings. A named credential
-specifies the URL of a callout endpoint and its required authentication parameters in one definition. To set up named credentials,
-see Define a Named Credential in Salesforce Help. In your code, specify the named credential URL instead of the long-running
-service URL. A named credential URL contains the scheme `callout:`, the name of the named credential, and an optional path.
-For example: `callout:` _`My_Named_Credential`_ `/` _`some_path`_ .
-
-```
-   public with sharing class ContinuationController {
-
-      // Unique label corresponding to the continuation
-
-      public String requestLabel;
-
-      // Result of callout
-
-      public String result {get;set;}
-
-      // Callout endpoint as a named credential URL
-
-      // or, as shown here, as the long-running service URL
-
-      private static final String LONG_RUNNING_SERVICE_URL =
-
-        '<Insert your service URL>';
-
-     // Action method
-
-      public Object startRequest() {
-
-       // Create continuation with a timeout
-
-       Continuation con = new Continuation(40);
-
-       // Set callback method
-
-       con.continuationMethod='processResponse';
-
-       // Create callout request
-
-       HttpRequest req = new HttpRequest();
-
-       req.setMethod('GET');
-
-       req.setEndpoint(LONG_RUNNING_SERVICE_URL);
-
-       // Add callout request to continuation
-
-       this.requestLabel = con.addHttpRequest(req);
-
-       // Return the continuation
-
-       return con;
-
-      }
-
-      // Callback method
-
-      public Object processResponse() {
-
-       // Get the response by using the unique label
-
-       HttpResponse response = Continuation.getResponse(this.requestLabel);
-
-       // Set the result variable that is displayed on the Visualforce page
-
-       this.result = response.getBody();
-
-       // Return null to re-render the original Visualforce page
-
-       return null;
-
-      }
-
-   }
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Note:
-
-**•** You can make up to three asynchronous callouts in a single continuation. Add these callout requests to the same continuation
-by using the `addHttpRequest` method of the `Continuation` class. The callouts run in parallel for this continuation
-and suspend the Visualforce request. Only after the external service returns all callouts, the Visualforce process resumes.
-
-**•** Asynchronous callouts are supported only through a Visualforce page. Making an asynchronous callout by invoking the action
-method outside a Visualforce page, such as in the Developer Console, isn’t supported.
-
-**•** Asynchronous callouts are available for Apex controllers and Visualforce pages saved in version 30.0 and later. If JavaScript
-remoting is used, version 31.0 or later is required.
-
-**•** Asynchronous callouts, including callouts that specify named credentials as the callout endpoint, aren’t supported over Private
-Connect.
-
-###### Process for Using Asynchronous Callouts
-
-To use asynchronous callouts, create a `Continuation` object in an action method of a controller, and implement a callback
-method.
-
-Testing Asynchronous Callouts
-Write tests to test your controller and meet code coverage requirements for deploying or packaging Apex. Because Apex tests don’t
-support making callouts, you can simulate callout requests and responses. When you’re simulating a callout, the request doesn’t
-get sent to the external service, and a mock response is used.
-
-Asynchronous Callout Limits
-When a continuation is executing, the continuation-specific limits apply. When the continuation returns and the request resumes,
-a new Apex transaction starts. All Apex and Visualforce limits apply and are reset in the new transaction, including the Apex callout
-limits.
-
-Making Multiple Asynchronous Callouts
-To make multiple callouts to a long-running service simultaneously from a Visualforce page, you can add up to three requests to
-the Continuation instance. An example of when to make simultaneous callouts is when you’re making independent requests to a
-service, such as getting inventory statistics for two products.
-
-Chaining Asynchronous Callouts
-If the order of the callouts matters, or when a callout is conditional on the response of another callout, you can chain callout requests.
-Chaining callouts means that the next callout is made only after the response of the previous callout returns. For example, you might
-need to chain a callout to get warranty extension information after the warranty service response indicates that the warranty expired.
-You can chain up to three callouts.
-
-Making an Asynchronous Callout from an Imported WSDL
-In addition to `HttpRequest` -based callouts, asynchronous callouts are supported in Web service calls that are made from
-WSDL-generated classes. The process of making asynchronous callouts from a WSDL-generated class is similar to the process for
-using the `HttpRequest` class.
-
-SEE ALSO:
-
-Named Credentials as Callout Endpoints
-
-_Lightning Web Components Developer Guide_ [: Make Long-Running Callouts with Continuations](https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.apex_continuations)
-
-###### Process for Using Asynchronous Callouts
-
-To use asynchronous callouts, create a `Continuation` object in an action method of a controller, and implement a callback method.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Invoking an Asynchronous Callout in an Action Method
-
-To invoke an asynchronous callout, call the external service by using a `Continuation` instance in your Visualforce action method.
-When you create a continuation, you can specify a timeout value and the name of the callback method. For example, the following
-creates a continuation with a 60-second timeout and a callback method name of `processResponse` .
-
-```
-   Continuation cont = new Continuation(60);
-
-   cont.continuationMethod = 'processResponse';
-
-```
-
-Next, associate the `Continuation` object to an external callout. To do so, create the HTTP request, and then add this request to the
-continuation as follows:
-
-```
-   String requestLabel = cont.addHttpRequest(request);
-
-```
-
-Note: This process is based on making callouts with the HttpRequest class. For an example that uses a WSDL-based class, see
-Making an Asynchronous Callout from an Imported WSDL.
-
-The method that invokes the callout (the action method) must return the `Continuation` object to instruct Visualforce to suspend
-the current request after the system sends the callout and waits for the callout response. The `Continuation` object holds the details
-of the callout to be executed.
-
-This is the signature of the method that invokes the callout. The Object return type represents a `Continuation` .
-
-```
-   public Object calloutActionMethodName ()
-
-```
-
-Defining a Callback Method
-
-The response is returned after the external service finishes processing the callout. You can specify a callback method for asynchronous
-execution after the callout returns. This callback method must be defined in the controller class where the callout invocation method is
-defined. You can define a callback method to process the returned response, such as retrieving the response for display on a Visualforce
-page.
-
-The callback method doesn’t take any arguments and has this signature.
-
-```
-   public Object callbackMethodName ()
-
-```
-
-The Object return type represents a `Continuation`, a `PageReference`, or `null` . To render the original Visualforce page and
-finish the Visualforce request, return `null` in the callback method.
-
-If the action method uses JavaScript remoting (is annotated with `@RemoteAction` ), the callback method must be static and has the
-following supported signatures.
-
-```
-   public static Object callbackMethodName (List< String> labels, Object state )
-
-```
-
-Or:
-
-```
-   public static Object callbackMethodName (Object state )
-
-```
-
-The _`labels`_ parameter is supplied by the system when it invokes the callback method and holds the labels associated with the callout
-requests made. The _`state`_ [parameter is supplied by setting the Continuation.state property in the controller.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Continuation.htm#apex_System_Continuation_state)
-
-This table lists the return values for the callback method. Each return value corresponds to a different behavior.
-
-**Table 10: Possible Return Values for the Callback Method**
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-Note: If the `continuationMethod` property isn’t set for a continuation, the same action method that made the callout is
-called again when the callout response returns.
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Continuation.htm)_ : Continuation Class
-
-###### Testing Asynchronous Callouts
-
-Write tests to test your controller and meet code coverage requirements for deploying or packaging Apex. Because Apex tests don’t
-support making callouts, you can simulate callout requests and responses. When you’re simulating a callout, the request doesn’t get
-sent to the external service, and a mock response is used.
-
-The following example shows how to invoke a mock asynchronous callout in a test for a Web service call that uses `HTTPRequest` .
-###### To simulate callouts in continuations, call these methods of the Test class: Test.setContinuationResponse() and
-
-[Test.invokeContinuationMethod().](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_invokeContinuationMethod)
-
-The controller class to test is listed first, followed by the test class. The controller class from Make Long-Running Callouts with Continuations
-is reused here.
-
-```
-public with sharing class ContinuationController {
-
-   // Unique label corresponding to the continuation request
-
-   public String requestLabel;
-
-   // Result of callout
-
-   public String result {get;set;}
-
-   // Endpoint of long-running service
-
-   private static final String LONG_RUNNING_SERVICE_URL =
-
-     '<Insert your service URL>';
-
-  // Action method
-
-   public Object startRequest() {
-
-    // Create continuation with a timeout
-
-    Continuation con = new Continuation(40);
-
-    // Set callback method
-
-    con.continuationMethod='processResponse';
-
-    // Create callout request
-
-    HttpRequest req = new HttpRequest();
-
-    req.setMethod('GET');
-
-    req.setEndpoint(LONG_RUNNING_SERVICE_URL);
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-       // Add callout request to continuation
-
-       this.requestLabel = con.addHttpRequest(req);
-
-       // Return the continuation
-
-       return con;
-
-      }
-
-      // Callback method
-
-      public Object processResponse() {
-
-       // Get the response by using the unique label
-
-       HttpResponse response = Continuation.getResponse(this.requestLabel);
-
-       // Set the result variable that is displayed on the Visualforce page
-
-       this.result = response.getBody();
-
-       // Return null to re-render the original Visualforce page
-
-       return null;
-
-      }
-
-   }
-
-```
-
-This example shows the test class corresponding to the controller. This test class contains a test method for testing an asynchronous
-callout. In the test method, `Test.setContinuationResponse` sets a mock response, and
-`Test.invokeContinuationMethod` causes the callback method for the continuation to be executed. The test ensures that
-the callback method processed the mock response by verifying that the controller’s result variable is set to the expected response.
-
-```
-   @isTest
-
-   public class ContinuationTestingForHttpRequest {
-
-      public static testmethod void testWebService() {
-
-        ContinuationController controller = new ContinuationController();
-
-        // Invoke the continuation by calling the action method
-
-        Continuation conti = (Continuation)controller.startRequest();
-
-        // Verify that the continuation has the proper requests
-
-        Map<String, HttpRequest> requests = conti.getRequests();
-
-        system.assert(requests.size() == 1);
-
-        system.assert(requests.get(controller.requestLabel) != null);
-
-        // Perform mock callout
-
-        // (i.e. skip the callout and call the callback method)
-
-        HttpResponse response = new HttpResponse();
-
-        response.setBody('Mock response body');
-
-        // Set the fake response for the continuation
-
-        Test.setContinuationResponse(controller.requestLabel, response);
-
-        // Invoke callback method
-
-        Object result = Test.invokeContinuationMethod(controller, conti);
-
-        // result is the return value of the callback
-
-        System.assertEquals(null, result);
-
-        // Verify that the controller's result variable
-
-        // is set to the mock response.
-
-        System.assertEquals('Mock response body', controller.result);
-
-      }
-
-   }
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-###### Asynchronous Callout Limits
-
-When a continuation is executing, the continuation-specific limits apply. When the continuation returns and the request resumes, a
-new Apex transaction starts. All Apex and Visualforce limits apply and are reset in the new transaction, including the Apex callout limits.
-
-Continuation-Specific Limits
-
-The following are Apex and Visualforce limits that are specific to a continuation.
-
-**Description** **Limit**
-
-Maximum number of parallel Apex callouts in a single continuation 3
-
-Maximum number of chained Apex callouts 3
-
-Maximum timeout for a single continuation [1] 120 seconds
-
-Maximum Visualforce controller-state size [2] 80 KB
-
-Maximum HTTP response size 1 MB
-
-Maximum HTTP POST form size—the size of all keys and values in the form [3] 1 MB
-
-Maximum number of keys in the HTTP POST form [3] 500
-
-1 The timeout that is specified in the autogenerated Web service stub and in the HttpRequest objects is ignored. Only this timeout limit
-is enforced for a continuation.
-
-2 When the continuation is executed, the Visualforce controller is serialized. When the continuation is completed, the controller is
-deserialized and the callback is invoked. Use the Apex `transient` modifier to designate a variable that is not to be serialized. The
-framework uses only serialized members when it resumes. The controller-state size limit is separate from the view state limit. See
-Differences Between Continuation Controller State and Visualforce View State.
-
-3 This limit is for HTTP POST forms with the following content type headers:
-`content-type='application/x-www-form-urlencoded'` and `content-type='multipart/form-data'`
-
-Differences Between Continuation Controller State and Visualforce View State
-
-Controller state and view state are distinct. Controller state for a continuation consists of the serialization of all controllers that are involved
-in the request, not only the controller that invokes the continuation. The serialized controllers include controller extensions, and custom
-and internal component controllers. The controller state size is logged in the debug log as a `USER_DEBUG` event.
-
-View state holds more data than the controller state and has a higher maximum size (170KB). The view state contains state and component
-structure. State is serialization of all controllers and all the attributes of each component on a page, including subpages and subcomponents
-. Component structure is the parent-child relationship of components that are in the page. You can monitor the view state size in the
-Developer Console or in the footer of a Visualforce page when development mode is enabled. For more information, see “View State
-[Tab” in the Salesforce Help or refer to the Visualforce Developer’s Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/)
-
-###### Making Multiple Asynchronous Callouts
-
-To make multiple callouts to a long-running service simultaneously from a Visualforce page, you can add up to three requests to the
-Continuation instance. An example of when to make simultaneous callouts is when you’re making independent requests to a service,
-such as getting inventory statistics for two products.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-When you’re making multiple callouts in the same continuation, the callout requests run in parallel and suspend the Visualforce request.
-Only after all callout responses are returned does the Visualforce process resume.
-
-The following Visualforce and Apex examples show how to make two asynchronous callouts simultaneously by using a single continuation.
-The Visualforce page is shown first. The Visualforce page contains a button that invokes the action method
-`startRequestsInParallel` in the controller. When the Visualforce process resumes, the `outputPanel` component is
-rendered again. This panel displays the responses of the two asynchronous callouts.
-
-```
-   <apex:page controller="MultipleCalloutController" showChat="false" showHeader="false">
-
-     <apex:form >
-
-       <!-- Invokes the action method when the user clicks this button. -->
-
-       <apex:commandButton action="{!startRequestsInParallel}" value="Start Request"
-
-   reRender="panel"/>
-
-     </apex:form>
-
-     <apex:outputPanel id="panel">
-
-        <!-- Displays the response body of the initial callout. -->
-
-        <apex:outputText value="{!result1}" />
-
-        <br/>
-
-        <!-- Displays the response body of the chained callout. -->
-
-        <apex:outputText value="{!result2}" />
-
-     </apex:outputPanel>
-
-   </apex:page>
-
-```
-
-This example shows the controller class for the Visualforce page. The `startRequestsInParallel` method adds two requests
-to the Continuation. After all callout responses are returned, the callback method ( `processAllResponses` ) is invoked and processes
-the responses.
-
-```
-   public with sharing class MultipleCalloutController {
-
-      // Unique label for the first request
-
-      public String requestLabel1;
-
-      // Unique label for the second request
-
-      public String requestLabel2;
-
-      // Result of first callout
-
-      public String result1 {get;set;}
-
-     // Result of second callout
-
-      public String result2 {get;set;}
-
-      // Endpoints of long-running service
-
-      private static final String LONG_RUNNING_SERVICE_URL1 =
-
-        '<Insert your first service URL>';
-
-      private static final String LONG_RUNNING_SERVICE_URL2 =
-
-        '<Insert your second service URL>';
-
-      // Action method
-
-      public Object startRequestsInParallel() {
-
-       // Create continuation with a timeout
-
-       Continuation con = new Continuation(60);
-
-       // Set callback method
-
-       con.continuationMethod='processAllResponses';
-
-       // Create first callout request
-
-       HttpRequest req1 = new HttpRequest();
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-       req1.setMethod('GET');
-
-       req1.setEndpoint(LONG_RUNNING_SERVICE_URL1);
-
-       // Add first callout request to continuation
-
-       this.requestLabel1 = con.addHttpRequest(req1);
-
-       // Create second callout request
-
-       HttpRequest req2 = new HttpRequest();
-
-       req2.setMethod('GET');
-
-       req2.setEndpoint(LONG_RUNNING_SERVICE_URL2);
-
-       // Add second callout request to continuation
-
-       this.requestLabel2 = con.addHttpRequest(req2);
-
-       // Return the continuation
-
-       return con;
-
-      }
-
-      // Callback method.
-
-      // Invoked only when responses of all callouts are returned.
-
-      public Object processAllResponses() {
-
-       // Get the response of the first request
-
-       HttpResponse response1 = Continuation.getResponse(this.requestLabel1);
-
-       this.result1 = response1.getBody();
-
-       // Get the response of the second request
-
-       HttpResponse response2 = Continuation.getResponse(this.requestLabel2);
-
-       this.result2 = response2.getBody();
-
-       // Return null to re-render the original Visualforce page
-
-       return null;
-
-      }
-
-   }
-
-###### Chaining Asynchronous Callouts
-
-```
-
-If the order of the callouts matters, or when a callout is conditional on the response of another callout, you can chain callout requests.
-Chaining callouts means that the next callout is made only after the response of the previous callout returns. For example, you might
-need to chain a callout to get warranty extension information after the warranty service response indicates that the warranty expired.
-You can chain up to three callouts.
-
-The following Visualforce and Apex examples show how to chain one callout to another. The Visualforce page is shown first. The Visualforce
-page contains a button that invokes the action method `invokeInitialRequest` in the controller. The Visualforce process is
-suspended each time a continuation is returned. The Visualforce process resumes after each response is returned and renders each
-response in the `outputPanel` component.
-
-```
-   <apex:page controller="ChainedContinuationController" showChat="false" showHeader="false">
-
-     <apex:form >
-
-       <!-- Invokes the action method when the user clicks this button. -->
-
-       <apex:commandButton action="{!invokeInitialRequest}" value="Start Request"
-
-   reRender="panel"/>
-
-     </apex:form>
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-     <apex:outputPanel id="panel">
-
-        <!-- Displays the response body of the initial callout. -->
-
-        <apex:outputText value="{!result1}" />
-
-        <br/>
-
-        <!-- Displays the response body of the chained callout. -->
-
-        <apex:outputText value="{!result2}" />
-
-     </apex:outputPanel>
-
-   </apex:page>
-
-```
-
-This example show the controller class for the Visualforce page. The `invokeInitialRequest` method creates the first continuation.
-The callback method ( `processInitialResponse` ) processes the response of the first callout. If this response meets a certain
-condition, the method chains another callout by returning a second continuation. After the response of the chained continuation is
-returned, the second callback method ( `processChainedResponse` ) is invoked and processes the second response.
-
-```
-   public with sharing class ChainedContinuationController {
-
-      // Unique label for the initial callout request
-
-      public String requestLabel1;
-
-      // Unique label for the chained callout request
-
-      public String requestLabel2;
-
-      // Result of initial callout
-
-      public String result1 {get;set;}
-
-      // Result of chained callout
-
-      public String result2 {get;set;}
-
-      // Endpoint of long-running service
-
-      private static final String LONG_RUNNING_SERVICE_URL1 =
-
-        '<Insert your first service URL>';
-
-      private static final String LONG_RUNNING_SERVICE_URL2 =
-
-        '<Insert your second service URL>';
-
-      // Action method
-
-      public Object invokeInitialRequest() {
-
-       // Create continuation with a timeout
-
-       Continuation con = new Continuation(60);
-
-       // Set callback method
-
-       con.continuationMethod='processInitialResponse';
-
-       // Create first callout request
-
-       HttpRequest req = new HttpRequest();
-
-       req.setMethod('GET');
-
-       req.setEndpoint(LONG_RUNNING_SERVICE_URL1);
-
-       // Add initial callout request to continuation
-
-       this.requestLabel1 = con.addHttpRequest(req);
-
-       // Return the continuation
-
-       return con;
-
-      }
-
-      // Callback method for initial request
-
-      public Object processInitialResponse() {
-
-       // Get the response by using the unique label
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-       HttpResponse response = Continuation.getResponse(this.requestLabel1);
-
-       // Set the result variable that is displayed on the Visualforce page
-
-       this.result1 = response.getBody();
-
-       Continuation chainedContinuation = null;
-
-       // Chain continuation if some condition is met
-
-       if (response.getBody().toLowerCase().contains('expired')) {
-
-         // Create a second continuation
-
-         chainedContinuation = new Continuation(60);
-
-         // Set callback method
-
-         chainedContinuation.continuationMethod='processChainedResponse';
-
-         // Create callout request
-
-         HttpRequest req = new HttpRequest();
-
-         req.setMethod('GET');
-
-         req.setEndpoint(LONG_RUNNING_SERVICE_URL2);
-
-         // Add callout request to continuation
-
-         this.requestLabel2 = chainedContinuation.addHttpRequest(req);
-
-       }
-
-       // Start another continuation
-
-       return chainedContinuation;
-
-      }
-
-      // Callback method for chained request
-
-      public Object processChainedResponse() {
-
-       // Get the response for the chained request
-
-       HttpResponse response = Continuation.getResponse(this.requestLabel2);
-
-       // Set the result variable that is displayed on the Visualforce page
-
-       this.result2 = response.getBody();
-
-       // Return null to re-render the original Visualforce page
-
-       return null;
-
-      }
-
-   }
-
-```
-
-Note: The response of a continuation must be retrieved before you create a new continuation and before the Visualforce request
-is suspended again. You can’t retrieve an old response from an earlier continuation in the chain of continuations.
-
-###### Making an Asynchronous Callout from an Imported WSDL
-
-In addition to `HttpRequest` -based callouts, asynchronous callouts are supported in Web service calls that are made from
-WSDL-generated classes. The process of making asynchronous callouts from a WSDL-generated class is similar to the process for using
-the `HttpRequest` class.
-
-When you import a WSDL in Salesforce, Salesforce autogenerates two Apex classes for each namespace in the imported WSDL. One
-class is the service class for the synchronous service, and the other is a modified version for the asynchronous service. The autogenerated
-asynchronous class name starts with the `Async` prefix and has the format `Async` _`ServiceName`_ . _`ServiceName`_ is the name of
-the original unmodified service class. The asynchronous class differs from the standard class in the following ways.
-
-**•** The public service methods contain an extra `Continuation` parameter as the first parameter.
-
-**•** The Web service operations are invoked asynchronously and their responses are obtained with the `getValue` method of the
-response element.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**•** The `WebServiceCallout.beginInvoke` and `WebServiceCallout.endInvoke` are used to invoke the service
-and get the response respectively.
-
-You can generate Apex classes from a WSDL in the Salesforce user interface. From Setup, enter **Apex Classes** in the `Quick Find`
-box, then select **Apex Classes** .
-
-To make asynchronous Web service callouts, call the methods on the autogenerated asynchronous class by passing your `Continuation`
-instance to these methods. The following example is based on a hypothetical stock-quote service. This example assumes that the
-organization has a class, called `AsyncSOAPStockQuoteService`, that was autogenerated via a WSDL import. The example shows
-how to make an asynchronous callout to the service by using the autogenerated `AsyncSOAPStockQuoteService` class. First,
-this example creates a continuation with a 60-second timeout and sets the callback method. Next, the code example invokes the
-`beginStockQuote` method by passing it the Continuation instance. The `beginStockQuote` method call corresponds to an
-asynchronous callout execution.
-
-```
-   public Continuation startRequest() {
-
-     Integer TIMEOUT_INT_SECS = 60;
-
-     Continuation cont = new Continuation(TIMEOUT_INT_SECS);
-
-     cont.continuationMethod = 'processResponse';
-
-     AsyncSOAPStockQuoteService.AsyncStockQuoteServiceSoap
-
-       stockQuoteService =
-
-        new AsyncSOAPStockQuoteService.AsyncStockQuoteServiceSoap();
-
-     stockQuoteFuture = stockQuoteService.beginStockQuote(cont,'CRM');
-
-     return cont;
-
-   }
-
-```
-
-When the external service returns the response of the asynchronous callout (the `beginStockQuote` method), this callback method
-is executed. It gets the response by calling the `getValue` method on the response object.
-
-```
-   public Object processResponse() {
-
-     result = stockQuoteFuture.getValue();
-
-     return null;
-
-   }
-
-```
-
-The following is the entire controller with the action and callback methods.
-
-```
-   public class ContinuationSOAPController {
-
-      AsyncSOAPStockQuoteService.GetStockQuoteResponse_elementFuture
-
-          stockQuoteFuture;
-
-      public String result {get;set;}
-
-      // Action method
-
-      public Continuation startRequest() {
-
-        Integer TIMEOUT_INT_SECS = 60;
-
-        Continuation cont = new Continuation(TIMEOUT_INT_SECS);
-
-        cont.continuationMethod = 'processResponse';
-
-        AsyncSOAPStockQuoteService.AsyncStockQuoteServiceSoap
-
-         stockQuoteService =
-
-           new AsyncSOAPStockQuoteService.AsyncStockQuoteServiceSoap();
-
-          stockQuoteFuture = stockQuoteService.beginGetStockQuote(cont,'CRM');
-
-        return cont;
-
-      }
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-      // Callback method
-
-      public Object processResponse() {
-
-        result = stockQuoteFuture.getValue();
-
-        // Return null to re-render the original Visualforce page
-
-        return null;
-
-      }
-
-   }
-
-```
-
-This example shows the corresponding Visualforce page that invokes the `startRequest` method and displays the result field.
-
-```
-   <apex:page controller="ContinuationSOAPController" showChat="false" showHeader="false">
-
-     <apex:form >
-
-       <!-- Invokes the action method when the user clicks this button. -->
-
-       <apex:commandButton action="{!startRequest}"
-
-            value="Start Request" reRender="result"/>
-
-     </apex:form>
-
-     <!-- This output text component displays the callout response body. -->
-
-     <apex:outputText value="{!result}" />
-
-   </apex:page>
-
-```
-
-Testing WSDL-Based Asynchronous Callouts
-
-Testing asynchronous callouts that are based on Apex classes from a WSDL is similar to the process that’s used with callouts that are
-based on the `HttpRequest` class. Before you test `ContinuationSOAPController.cls`, create a class that implements
-`WebServiceMock` . This class enables safe testing for `ContinuationTestForWSDL.cls`, which we'll create in a moment,
-by enabling a mock continuation and making sure that the test has no real effect.
-
-```
-   public class AsyncSOAPStockQuoteServiceMockImpl implements WebServiceMock {
-
-      public void doInvoke(
-
-        Object stub,
-
-        Object request,
-
-        Map<String, Object> response,
-
-        String endpoint,
-
-        String soapAction,
-
-        String requestName,
-
-        String responseNS,
-
-        String responseName,
-
-        String responseType) {
-
-        // do nothing
-
-      }
-
-   }
-
-```
-
-This example is the test class that corresponds to the `ContinuationSOAPController` controller. The test method in the class
-sets a fake response and invokes a mock continuation. The callout isn’t sent to the external service. To perform a mock callout, the test
-calls these methods of the `Test` [class: Test.setContinuationResponse() and Test.invokeContinuationMethod().](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_test.htm#apex_System_Test_setContinuationResponse)
-
-```
-   @isTest
-
-   public class ContinuationTestingForWSDL {
-
-      public static testmethod void testWebService() {
-
-        ContinuationSOAPController demoWSDLClass =
-
-           new ContinuationSOAPController();
-
-        // Invoke the continuation by calling the action method
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-        Continuation conti = demoWSDLClass.startRequest();
-
-        // Verify that the continuation has the proper requests
-
-        Map<String, HttpRequest> requests = conti.getRequests();
-
-        System.assertEquals(requests.size(), 1);
-
-        // Perform mock callout
-
-        // (i.e. skip the callout and call the callback method)
-
-        HttpResponse response = new HttpResponse();
-
-        response.setBody('<SOAP:Envelope'
-
-           + ' xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/">'
-
-           + '<SOAP:Body>'
-
-           + '<m:getStockQuoteResponse '
-
-           + 'xmlns:m="http://soap.sforce.com/schemas/class/StockQuoteServiceSoap">'
-
-           + '<m:result>Mock response body</m:result>'
-
-           + '</m:getStockQuoteResponse>'
-
-           + '</SOAP:Body>'
-
-           + '</SOAP:Envelope>');
-
-        // Set the fake response for the continuation
-
-        String requestLabel = requests.keyset().iterator().next();
-
-        Test.setContinuationResponse(requestLabel, response);
-
-        // Invoke callback method
-
-        Object result = Test.invokeContinuationMethod(demoWSDLClass, conti);
-
-        System.debug(demoWSDLClass);
-
-        // result is the return value of the callback
-
-        System.assertEquals(null, result);
-
-        // Verify that the controller's result variable
-
-        // is set to the mock response.
-
-        System.assertEquals('Mock response body', demoWSDLClass.result);
-
-      }
-
-   }
-
-#### JSON Support
-
-```
-
-JavaScript Object Notation (JSON) support in Apex enables the serialization of Apex objects into JSON format and the deserialization of
-serialized JSON content.
-
-Apex provides a set of classes that expose methods for JSON serialization and deserialization. The following table describes the classes
-available.
-
-**Class** **Description**
-
-```
-System.JSON
-
-```
-
-Contains methods for serializing Apex objects into JSON format
-and deserializing JSON content that was serialized using the
-`serialize` method in this class.
-
-`[System.JSONGenerator](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonGenerator.htm)` Contains methods used to serialize objects into JSON content using
-the standard JSON encoding.
-
-`[System.JSONParser](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)` Represents a parser for JSON-encoded content.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-The `System.JSONToken` enumeration contains the tokens used for JSON parsing.
-
-Methods in these classes throw a `JSONException` if an issue is encountered during execution.
-
-**JSON Support Considerations**
-
-**•** JSON serialization and deserialization support is available for sObjects (standard objects and custom objects), Apex primitive
-and collection types, return types of Database methods (such as SaveResult and DeleteResult), and instances of your Apex classes.
-
-**•** Only custom objects, which are `sObject` types of managed packages can be serialized from code that is external to the
-managed package. Objects that are instances of Apex classes defined in the managed package can't be serialized.
-
-**•** A Map object is serializable into JSON only if it uses one of the following data types as a key.
-
-**–** [Boolean](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_boolean.htm)
-
-**–** [Date](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_date.htm)
-
-**–** [DateTime](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_datetime.htm)
-
-**–** [Decimal](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_decimal.htm)
-
-**–** [Double](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_double.htm)
-
-**–** [Enum](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_enum.htm)
-
-**–** [Id](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_id.htm)
-
-**–** [Integer](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_integer.htm)
-
-**–** [Long](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_long.htm)
-
-**–** [String](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_string.htm)
-
-**–** [Time](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_time.htm)
-
-**•** When an object is declared as the parent type but is set to an instance of the subtype, some data can be lost. The object gets
-serialized and deserialized as the parent type and any fields that are specific to the subtype are lost.
-
-**•** An object that has a reference to itself won’t get serialized and causes a `JSONException` to be thrown.
-
-**•** Reference graphs that reference the same object twice are deserialized and cause multiple copies of the referenced object to
-be generated.
-
-**•** The `System.JSONParser` data type isn’t serializable. If you try to create an instance of a serializable class, such as a Visualforce
-controller, that has a member variable of type `System.JSONParser`, you receive an exception. To use `JSONParser` in
-a serializable class, use a local variable instead in your method.
-
-Versioned Behavior Changes
-
-In API version 63.0 and later, JSON serialization of custom exceptions and most built-in exceptions isn't supported. Attempting to serialize
-an exception throws an error: `Type unsupported in JSON: MyException` .
-
-In API version 53.0 and later, DateTime format and processing has been updated. The API correctly handles DateTime values in JSON
-requests that use more than 3 digits after the decimal point. Requests that use an unsupported DateTime format (such as `123456000` )
-[result in an error. Salesforce recommends that you strictly adhere to DateTime formats specified in Valid Date and DateTime Formats.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_rest.meta/api_rest/intro_valid_date_formats.htm)
-
-Roundtrip Serialization and Deserialization
-Use the `JSON` class methods to perform roundtrip serialization and deserialization of your JSON content. These methods enable
-you to serialize objects into JSON-formatted strings and to deserialize JSON strings back into objects.
-
-JSON Generator
-Using the `JSONGenerator` class methods, you can generate standard JSON-encoded content.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-JSON Parsing
-Use the `JSONParser` class methods to parse JSON-encoded content. These methods enable you to parse a JSON-formatted
-response that's returned from a call to an external service, such as a web service callout.
-
-##### Roundtrip Serialization and Deserialization
-
-Use the `JSON` class methods to perform roundtrip serialization and deserialization of your JSON content. These methods enable you
-to serialize objects into JSON-formatted strings and to deserialize JSON strings back into objects.
-
-Example: Serialize and Deserialize a List of Invoices
-
-This example creates a list of `InvoiceStatement` objects and serializes the list. Next, the serialized JSON string is used to deserialize
-the list again and the sample verifies that the new list contains the same invoices that were present in the original list.
-
-```
-   public class JSONRoundTripSample {
-
-      public class InvoiceStatement {
-
-        Long invoiceNumber;
-
-        Datetime statementDate;
-
-        Decimal totalPrice;
-
-        public InvoiceStatement(Long i, Datetime dt, Decimal price)
-
-        {
-
-           invoiceNumber = i;
-
-           statementDate = dt;
-
-           totalPrice = price;
-
-        }
-
-      }
-
-      public static void SerializeRoundtrip() {
-
-        Datetime dt = Datetime.now();
-
-        // Create a few invoices.
-
-        InvoiceStatement inv1 = new InvoiceStatement(1,Datetime.valueOf(dt),1000);
-
-        InvoiceStatement inv2 = new InvoiceStatement(2,Datetime.valueOf(dt),500);
-
-        // Add the invoices to a list.
-
-        List<InvoiceStatement> invoices = new List<InvoiceStatement>();
-
-        invoices.add(inv1);
-
-        invoices.add(inv2);
-
-        // Serialize the list of InvoiceStatement objects.
-
-        String JSONString = JSON.serialize(invoices);
-
-        System.debug('Serialized list of invoices into JSON format: ' + JSONString);
-
-        // Deserialize the list of invoices from the JSON string.
-
-        List<InvoiceStatement> deserializedInvoices =
-
-        (List<InvoiceStatement>)JSON.deserialize(JSONString, List<InvoiceStatement>.class);
-
-        System.assertEquals(invoices.size(), deserializedInvoices.size());
-
-        Integer i=0;
-
-        for (InvoiceStatement deserializedInvoice :deserializedInvoices) {
-
-           system.debug('Deserialized:' + deserializedInvoice.invoiceNumber + ','
-
-           + deserializedInvoice.statementDate.formatGmt('MM/dd/yyyy HH:mm:ss.SSS')
-
-           + ', ' + deserializedInvoice.totalPrice);
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-           system.debug('Original:' + invoices[i].invoiceNumber + ','
-
-           + invoices[i].statementDate.formatGmt('MM/dd/yyyy HH:mm:ss.SSS')
-
-           + ', ' + invoices[i].totalPrice);
-
-           i++;
-
-        }
-
-      }
-
-   }
-
-```
-
-JSON Serialization Considerations
-
-The behavior of the `serialize` method differs depending on the Salesforce API version of the Apex code saved.
-
-**Serialization of queried sObject with additional fields set**
-For Apex saved using Salesforce API version 27.0 and earlier, if queried sObjects have additional fields set, these fields aren’t included
-in the serialized JSON string returned by the `serialize` method. Starting with Apex saved using Salesforce API version 28.0, the
-additional fields are included in the serialized JSON string.
-
-This example adds a field to a contact after it has been queried, and then serializes the contact. The assertion statement verifies that
-the JSON string contains the additional field. The assertion passes for Apex saved using Salesforce API version 28.0 and later.
-
-```
-     Contact con = [SELECT Id, LastName, AccountId FROM Contact LIMIT 1];
-
-     // Set additional field
-
-     con.FirstName = 'Joe';
-
-     String jsonstring = Json.serialize(con);
-
-     System.debug(jsonstring);
-
-     System.assert(jsonstring.contains('Joe') == true);
-
-```
-
-**Serialization of aggregate query result fields**
-For Apex saved using Salesforce API version 27.0, results of aggregate queries don’t include the fields in the SELECT statement when
-serialized using the `serialize` method. For earlier API versions or for API version 28.0 and later, serialized aggregate query results
-include all fields in the SELECT statement.
-
-This aggregate query returns two fields: the count of ID fields and the account name.
-
-```
-     String jsonString = JSON.serialize(
-
-       Database.query('SELECT Count(Id),Account.Name FROM Contact WHERE Account.Name !=
-
-     null GROUP BY Account.Name LIMIT 1'));
-
-       System.debug(jsonString);
-
-     // Expected output in API v 26 and earlier or v28 and later
-
-     // [{"attributes":{"type":"AggregateResult"},"expr0":2,"Name":"acct1"}]
-
-```
-
-**Serialization of empty fields**
-Starting with API version 28.0, null fields aren’t serialized and aren’t included in the JSON string, unlike in earlier versions. This change
-[doesn’t affect deserializing JSON strings with JSON methods, such as Json.deserialize(). This change is noticeable when you inspect](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Json.htm#apex_System_Json_deserialize)
-the JSON string. For example:
-
-```
-     String jsonString = JSON.serialize(
-
-               [SELECT Id, Name, Website FROM Account WHERE Website = null LIMIT 1]);
-
-     System.debug(jsonString);
-
-     // In v27.0 and earlier, the string includes the null field and looks like the following.
-
-     // {"attributes":{...},"Id":"001D000000Jsm0WIAR","Name":"Acme","Website":null}
-
-     // In v28.0 and later, the string doesn’t include the null field and looks like
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-     // the following.
-
-     // {"attributes":{...},"Name":"Acme","Id":"001D000000Jsm0WIAR"}}
-
-```
-
-**Serialization of IDs**
-In API version 34.0 and earlier, ID comparison using `==` fails for IDs that have been through roundtrip JSON serialization and
-deserialization.
-
-JSON Deserialization Considerations
-
-JSON from aggregate results can’t be deserialized back into Apex AggregateResult objects because they have no named fields.
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_Json.htm)_ : JSON Class
-
-##### JSON Generator
-
-Using the `JSONGenerator` class methods, you can generate standard JSON-encoded content.
-
-You can construct JSON content, element by element, using the standard JSON encoding. To do so, use the methods in the
-`JSONGenerator` class.
-
-JSONGenerator Sample
-
-This example generates a JSON string in pretty print format by using the methods of the `JSONGenerator` class. The example first
-adds a number field and a string field, and then adds a field to contain an object field of a list of integers, which gets deserialized properly.
-Next, it adds the `A` object into the `Object A` field, which also gets deserialized.
-
-```
-   public class JSONGeneratorSample{
-
-      public class A {
-
-        String str;
-
-        public A(String s) { str = s; }
-
-      }
-
-      static void generateJSONContent() {
-
-        // Create a JSONGenerator object.
-
-        // Pass true to the constructor for pretty print formatting.
-
-        JSONGenerator gen = JSON.createGenerator(true);
-
-        // Create a list of integers to write to the JSON string.
-
-        List<integer> intlist = new List<integer>();
-
-        intlist.add(1);
-
-        intlist.add(2);
-
-        intlist.add(3);
-
-        // Create an object to write to the JSON string.
-
-        A x = new A('X');
-
-        // Write data to the JSON string.
-
-        gen.writeStartObject();
-
-        gen.writeNumberField('abc', 1.21);
-
-        gen.writeStringField('def', 'xyz');
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-        gen.writeFieldName('ghi');
-
-        gen.writeStartObject();
-
-        gen.writeObjectField('aaa', intlist);
-
-        gen.writeEndObject();
-
-        gen.writeFieldName('Object A');
-
-        gen.writeObject(x);
-
-        gen.writeEndObject();
-
-        // Get the JSON string.
-
-        String pretty = gen.getAsString();
-
-        System.assertEquals('{\n' +
-
-        ' "abc" : 1.21,\n' +
-
-        ' "def" : "xyz",\n' +
-
-        ' "ghi" : {\n' +
-
-        ' "aaa" : [ 1, 2, 3 ]\n' +
-
-        ' },\n' +
-
-        ' "Object A" : {\n' +
-
-        ' "str" : "X"\n' +
-
-        ' }\n' +
-
-        '}', pretty);
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: JSONGenerator Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonGenerator.htm)
-
-##### JSON Parsing
-
-Use the `JSONParser` class methods to parse JSON-encoded content. These methods enable you to parse a JSON-formatted response
-that's returned from a call to an external service, such as a web service callout.
-
-The following are samples that show how to parse JSON strings.
-
-Example: Parsing a JSON Response from a Web Service Callout
-
-This example parses a JSON-formatted response using `JSONParser` methods. It makes a callout to a web service that returns a
-response in JSON format. Next, the response is parsed to build up a map from api version numbers to the release labels.
-
-```
-   public class JSONParserUtil {
-
-      public static void parseJSONResponse() {
-
-        // Create HTTP request to send.
-
-        HttpRequest request = new HttpRequest();
-
-        // Set the endpoint URL.
-
-        String endpoint = URL.getOrgDomainUrl().toExternalForm() + '/services/data';
-
-        request.setEndPoint(endpoint);
-
-        // Set the HTTP verb to GET.
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-        request.setMethod('GET');
-
-        // Set the request header for JSON content type
-
-        request.setHeader('Accept', 'application/json');
-
-        // Send the HTTP request and get the response.
-
-        // The response is in JSON format.
-
-        Http httpProtocol = new Http();
-
-        HttpResponse response = httpProtocol.send(request);
-
-        System.debug(response.getBody());
-
-        /* The JSON response returned is the following:
-
-           {"label":"Summer '14","url":"/services/data/v31.0","version":"31.0"},
-
-           {"label":"Winter '15","url":"/services/data/v32.0","version":"32.0"},
-
-           {"label":"Spring '15","url":"/services/data/v33.0","version":"33.0"},
-
-        */
-
-        // Parse JSON response to build a map from API version numbers to labels
-
-        JSONParser parser = JSON.createParser(response.getBody());
-
-        Map<double, string> apiVersionToReleaseNameMap = new Map<double, string>();
-
-        string label = null;
-
-        double version = null;
-
-        while (parser.nextToken() != null) {
-
-           if (parser.getCurrentToken() == JSONToken.FIELD_NAME) {
-
-             switch on parser.getText() {
-
-               when 'label' {
-
-               // Advance to the label value.
-
-               parser.nextToken();
-
-                  label = parser.getText();
-
-               }
-
-               when 'version' {
-
-                  // Advance to the version value.
-
-                  parser.nextToken();
-
-                  version = Double.valueOf(parser.getText());
-
-               }
-
-             }
-
-           }
-
-           if(version != null && String.isNotEmpty(label)) {
-
-             apiVersionToReleaseNameMap.put(version, label);
-
-             version = null;
-
-             label = null;
-
-           }
-
-        }
-
-        system.debug('Release with Rainbow logo = ' +
-
-           apiVersionToReleaseNameMap.get(39.0D));
-
-      }
-
-   }
-
-```
-
-Example: Parse a JSON String and Deserialize It into Objects
-
-This example uses a hardcoded JSON string, which is the same JSON string returned by the callout in the previous example. In this
-example, the entire string is parsed into `Invoice` objects using the `readValueAs` method. This code also uses the `skipChildren`
-method to skip the child array and child objects and parse the next sibling invoice in the list. The parsed objects are instances of the
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-`Invoice` class that is defined as an inner class. Because each invoice contains line items, the class that represents the corresponding
-line item type, the `LineItem` class, is also defined as an inner class. Add this sample code to a class to use it.
-
-```
-   public static void parseJSONString() {
-
-      String jsonStr =
-
-        '{"invoiceList":[' +
-
-        '{"totalPrice":5.5,"statementDate":"2011-10-04T16:58:54.858Z","lineItems":[' +
-
-           '{"UnitPrice":1.0,"Quantity":5.0,"ProductName":"Pencil"},' +
-
-           '{"UnitPrice":0.5,"Quantity":1.0,"ProductName":"Eraser"}],' +
-
-             '"invoiceNumber":1},' +
-
-        '{"totalPrice":11.5,"statementDate":"2011-10-04T16:58:54.858Z","lineItems":[' +
-
-           '{"UnitPrice":6.0,"Quantity":1.0,"ProductName":"Notebook"},' +
-
-           '{"UnitPrice":2.5,"Quantity":1.0,"ProductName":"Ruler"},' +
-
-           '{"UnitPrice":1.5,"Quantity":2.0,"ProductName":"Pen"}],"invoiceNumber":2}' +
-
-        ']}';
-
-      // Parse entire JSON response.
-
-      JSONParser parser = JSON.createParser(jsonStr);
-
-      while (parser.nextToken() != null) {
-
-        // Start at the array of invoices.
-
-        if (parser.getCurrentToken() == JSONToken.START_ARRAY) {
-
-           while (parser.nextToken() != null) {
-
-             // Advance to the start object marker to
-
-             // find next invoice statement object.
-
-             if (parser.getCurrentToken() == JSONToken.START_OBJECT) {
-
-               // Read entire invoice object, including its array of line items.
-
-               Invoice inv = (Invoice)parser.readValueAs(Invoice.class);
-
-               system.debug('Invoice number: ' + inv.invoiceNumber);
-
-               system.debug('Size of list items: ' + inv.lineItems.size());
-
-               // For debugging purposes, serialize again to verify what was parsed.
-
-               String s = JSON.serialize(inv);
-
-               system.debug('Serialized invoice: ' + s);
-
-               // Skip the child start array and start object markers.
-
-               parser.skipChildren();
-
-             }
-
-           }
-
-        }
-
-      }
-
-   }
-
-   // Inner classes used for serialization by readValuesAs().
-
-   public class Invoice {
-
-      public Double totalPrice;
-
-      public DateTime statementDate;
-
-      public Long invoiceNumber;
-
-      List<LineItem> lineItems;
-
-      public Invoice(Double price, DateTime dt, Long invNumber, List<LineItem> liList) {
-
-        totalPrice = price;
-
-        statementDate = dt;
-
-        invoiceNumber = invNumber;
-
-        lineItems = liList.clone();
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-      }
-
-   }
-
-   public class LineItem {
-
-      public Double unitPrice;
-
-      public Double quantity;
-
-      public String productName;
-
-   }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_System_JsonParser.htm)_ : JSONParser Class
-
-#### XML Support
-
-Apex provides utility classes that enable the creation and parsing of XML content using streams and the DOM.
-
-This section contains details about XML support.
-
-##### Reading and Writing XML Using Streams
-
-Apex provides classes for reading and writing XML content using streams.
-
-Reading and Writing XML Using the DOM
-Apex provides classes that enable you to work with XML content using the DOM (Document Object Model).
-
-##### Reading and Writing XML Using Streams
-
-Apex provides classes for reading and writing XML content using streams.
-
-The XMLStreamReader class enables you to read XML content and the XMLStreamWriter class enables you to write XML content.
-
-###### Reading XML Using Streams
-
-The XMLStreamReader class methods enable forward, read-only access to XML data.
-
-Writing XML Using Streams
-The XmlStreamWriter class methods enable the writing of XML data.
-
-###### Reading XML Using Streams
-
-The XMLStreamReader class methods enable forward, read-only access to XML data.
-
-Those methods are used in conjunction with HTTP callouts to parse XML data or skip unwanted events. You can parse nested XML
-content that’s up to 50 nodes deep. The following example shows how to instantiate a new XmlStreamReader object:
-
-```
-   String xmlString = '<books><book>My Book</book><book>Your Book</book></books>';
-
-   XmlStreamReader xsr = new XmlStreamReader(xmlString);
-
-```
-
-These methods work on the following XML events:
-
-**•** An _attribute_ event is specified for a particular element. For example, the element `<book>` has an attribute `title` : `<book`
-
-`title="Salesforce.com for Dummies">` .
-
-**•** A _start element_ event is the opening tag for an element, for example `<book>` .
-
-**•** An _end element_ event is the closing tag for an element, for example `</book>` .
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**•** A _start document_ event is the opening tag for a document.
-
-**•** An _end document_ event is the closing tag for a document.
-
-**•** An _entity reference_ is an entity reference in the code, for example `!ENTITY title = "My Book Title"` .
-
-**•** A _characters_ event is a text character.
-
-**•** A _comment_ event is a comment in the XML file.
-
-Use the `next` and `hasNext` methods to iterate over XML data. Access data in XML using `get` methods such as the `getNamespace`
-method.
-
-When iterating over the XML data, always check that stream data is available using `hasNext` before calling `next` to avoid attempting
-to read past the end of the XML data.
-
-XmlStreamReader Example
-
-The following example processes an XML string.
-
-```
-   public class XmlStreamReaderDemo {
-
-      // Create a class Book for processing
-
-      public class Book {
-
-        String name;
-
-        String author;
-
-      }
-
-      public Book[] parseBooks(XmlStreamReader reader) {
-
-        Book[] books = new Book[0];
-
-        boolean isSafeToGetNextXmlElement = true;
-
-        while(isSafeToGetNextXmlElement) {
-
-           // Start at the beginning of the book and make sure that it is a book
-
-           if (reader.getEventType() == XmlTag.START_ELEMENT) {
-
-             if ('Book' == reader.getLocalName()) {
-
-               // Pass the book to the parseBook method (below)
-
-               Book book = parseBook(reader);
-
-               books.add(book);
-
-             }
-
-           }
-
-           // Always use hasNext() before calling next() to confirm
-
-           // that we have not reached the end of the stream
-
-           if (reader.hasNext()) {
-
-             reader.next();
-
-           } else {
-
-             isSafeToGetNextXmlElement = false;
-
-             break;
-
-           }
-
-        }
-
-        return books;
-
-      }
-
-      // Parse through the XML, determine the author and the characters
-
-      Book parseBook(XmlStreamReader reader) {
-
-        Book book = new Book();
-
-        book.author = reader.getAttributeValue(null, 'author');
-
-        boolean isSafeToGetNextXmlElement = true;
-
-        while(isSafeToGetNextXmlElement) {
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-           if (reader.getEventType() == XmlTag.END_ELEMENT) {
-
-             break;
-
-           } else if (reader.getEventType() == XmlTag.CHARACTERS) {
-
-             book.name = reader.getText();
-
-           }
-
-           // Always use hasNext() before calling next() to confirm
-
-           // that we have not reached the end of the stream
-
-           if (reader.hasNext()) {
-
-             reader.next();
-
-           } else {
-
-             isSafeToGetNextXmlElement = false;
-
-             break;
-
-           }
-
-        }
-
-        return book;
-
-      }
-
-   }
-
-   @isTest
-
-   private class XmlStreamReaderDemoTest {
-
-      // Test that the XML string contains specific values
-
-      static testMethod void testBookParser() {
-
-        XmlStreamReaderDemo demo = new XmlStreamReaderDemo();
-
-        String str = '<books><book author="Chatty">Alpha beta</book>' +
-
-           '<book author="Sassy">Baz</book></books>';
-
-        XmlStreamReader reader = new XmlStreamReader(str);
-
-        XmlStreamReaderDemo.Book[] books = demo.parseBooks(reader);
-
-        System.debug(books.size());
-
-        for (XmlStreamReaderDemo.Book book : books) {
-
-           System.debug(book);
-
-        }
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: XmlStreamReader Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_XmlStream_reader.htm)
-
-###### Writing XML Using Streams
-
-The XmlStreamWriter class methods enable the writing of XML data.
-
-Those methods are used in conjunction with HTTP callouts to construct an XML document to send in the callout request to an external
-service. The following example shows how to instantiate a new XmlStreamReader object:
-
-```
-   String xmlString = '<books><book>My Book</book><book>Your Book</book></books>';
-
-   XmlStreamReader xsr = new XmlStreamReader(xmlString);
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-XML Writer Methods Example
-
-The following example writes an XML document and tests its validity.
-
-This Hello World sample requires custom objects. You can either create these objects on your own, or download the objects and Apex
-[code as an unmanaged package from AppExchange. To obtain the sample assets in your org, install the Apex Tutorials Package. This](https://appexchange.salesforce.com/listingDetail?listingId=a0N30000001saDCEAY)
-package also contains sample code and objects for the Shipping Invoice example.
-
-```
-   public class XmlWriterDemo {
-
-      public String getXml() {
-
-         XmlStreamWriter w = new XmlStreamWriter();
-
-         w.writeStartDocument(null, '1.0');
-
-         w.writeProcessingInstruction('target', 'data');
-
-         w.writeStartElement('m', 'Library', 'http://www.book.com');
-
-         w.writeNamespace('m', 'http://www.book.com');
-
-         w.writeComment('Book starts here');
-
-         w.setDefaultNamespace('http://www.defns.com');
-
-         w.writeCData('<Cdata> I like CData </Cdata>');
-
-         w.writeStartElement(null, 'book', null);
-
-         w.writedefaultNamespace('http://www.defns.com');
-
-         w.writeAttribute(null, null, 'author', 'Manoj');
-
-         w.writeCharacters('This is my book');
-
-         w.writeEndElement(); //end book
-
-         w.writeEmptyElement(null, 'ISBN', null);
-
-         w.writeEndElement(); //end library
-
-         w.writeEndDocument();
-
-         String xmlOutput = w.getXmlString();
-
-         w.close();
-
-         return xmlOutput;
-
-        }
-
-   }
-
-   @isTest
-
-   private class XmlWriterDemoTest {
-
-      static TestMethod void basicTest() {
-
-        XmlWriterDemo demo = new XmlWriterDemo();
-
-        String result = demo.getXml();
-
-        String expected = '<?xml version="1.0"?><?target data?>' +
-
-           '<m:Library xmlns:m="http://www.book.com">' +
-
-           '<!--Book starts here-->' +
-
-           '<![CDATA[<Cdata> I like CData </Cdata>]]>' +
-
-   '<book xmlns="http://www.defns.com" author="Manoj">This is my
-
-   book</book><ISBN/></m:Library>';
-
-        System.assert(result == expected);
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: XmlStreamWriter Class](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_XmlStream_writer.htm)
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-##### Reading and Writing XML Using the DOM
-
-Apex provides classes that enable you to work with XML content using the DOM (Document Object Model).
-
-DOM classes help you parse or generate XML content. You can use these classes to work with any XML content. One common application
-[is to use the classes to generate the body of a request created by HttpRequest or to parse a response accessed by HttpResponse. The](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
-DOM represents an XML document as a hierarchy of nodes. Some nodes may be branch nodes and have child nodes, while others are
-leaf nodes with no children. You can parse nested XML content that’s up to 50 nodes deep.
-
-The DOM classes are contained in the `Dom` namespace.
-
-[Use the Document Class to process the content in the body of the XML document.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_dom_document.htm)
-
-[Use the XmlNode Class to work with a node in the XML document.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_dom_xmlnode.htm)
-
-[Use the Document Class class to process XML content. One common application is to use it to create the body of a request for HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm)
-[or to parse a response accessed by HttpResponse.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm)
-
-XML Namespaces
-
-An XML namespace is a collection of names identified by a URI reference and used in XML documents to uniquely identify element types
-and attribute names. Names in XML namespaces may appear as qualified names, which contain a single colon, separating the name
-into a namespace prefix and a local part. The prefix, which is mapped to a URI reference, selects a namespace. The combination of the
-universally managed URI namespace and the document's own namespace produces identifiers that are universally unique.
-
-The following XML element has a namespace of `http://my.name.space` and a prefix of `myprefix` .
-
-```
-   <sampleElement xmlns:myprefix="http://my.name.space" />
-
-```
-
-In the following example, the XML element has two attributes:
-
-**•** The first attribute has a key of `dimension` ; the value is `2` .
-
-**•** The second attribute has a key namespace of `http://ns1` ; the value namespace is `http://ns2` ; the key is `example` ; the
-value is `test` .
-
-```
-   <square dimension="2" ns1:example="ns2:test" xmlns:ns1="http://ns1" xmlns:ns2="http://ns2"
-
-    />
-
-```
-
-**`Document`** Example
-
-For the purposes of the sample below, assume that the `url` argument passed into the `parseResponseDom` method returns this
-XML response:
-
-```
-   <address>
-
-      <name>Kirk Stevens</name>
-
-      <street1>808 State St</street1>
-
-      <street2>Apt. 2</street2>
-
-      <city>Palookaville</city>
-
-      <state>PA</state>
-
-      <country>USA</country>
-
-   </address>
-
-```
-
-The following example illustrates how to use DOM classes to parse the XML response returned in the body of a `GET` request:
-
-```
-   public class DomDocument {
-
-      // Pass in the URL for the request
-
-      // For the purposes of this sample,assume that the URL
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-      // returns the XML shown above in the response body
-
-      public void parseResponseDom(String url){
-
-        Http h = new Http();
-
-        HttpRequest req = new HttpRequest();
-
-        // url that returns the XML in the response body
-
-        req.setEndpoint(url);
-
-        req.setMethod('GET');
-
-        HttpResponse res = h.send(req);
-
-        Dom.Document doc = res.getBodyDocument();
-
-        //Retrieve the root element for this document.
-
-        Dom.XMLNode address = doc.getRootElement();
-
-        String name = address.getChildElement('name', null).getText();
-
-        String state = address.getChildElement('state', null).getText();
-
-        // print out specific elements
-
-        System.debug('Name: ' + name);
-
-        System.debug('State: ' + state);
-
-        // Alternatively, loop through the child elements.
-
-        // This prints out all the elements of the address
-
-        for(Dom.XMLNode child : address.getChildElements()) {
-
-          System.debug(child.getText());
-
-        }
-
-      }
-
-   }
-
-```
-
-Using XML Nodes
-
-Use the `XmlNode` class to work with a node in an XML document. The DOM represents an XML document as a hierarchy of nodes.
-Some nodes may be branch nodes and have child nodes, while others are leaf nodes with no children.
-
-There are different types of DOM nodes available in Apex. `XmlNodeType` is an enum of these different types. The values are:
-
-**•** COMMENT
-
-**•** ELEMENT
-
-**•** TEXT
-
-It is important to distinguish between elements and nodes in an XML document. The following is a simple XML example:
-
-```
-   <name>
-
-      <firstName>Suvain</firstName>
-
-      <lastName>Singh</lastName>
-
-   </name>
-
-```
-
-This example contains three XML elements: `name`, `firstName`, and `lastName` . It contains five nodes: the three `name`, `firstName`,
-and `lastName` element nodes, as well as two text nodes— `Suvain` and `Singh` . Note that the text within an element node is
-considered to be a separate text node.
-
-[For more information about the methods shared by all enums, see Enum Methods.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_methods_system_enum.htm)
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-**`XmlNode`** Example
-
-This example shows how to use `XmlNode` methods and namespaces to create an XML request.
-
-```
-   public class DomNamespaceSample
-
-   {
-
-      public void sendRequest(String endpoint)
-
-      {
-
-        // Create the request envelope
-
-        DOM.Document doc = new DOM.Document();
-
-        String soapNS = 'http://schemas.xmlsoap.org/soap/envelope/';
-
-        String xsi = 'http://www.w3.org/2001/XMLSchema-instance';
-
-        String serviceNS = 'http://www.myservice.com/services/MyService/';
-
-        dom.XmlNode envelope
-
-           = doc.createRootElement('Envelope', soapNS, 'soapenv');
-
-        envelope.setNamespace('xsi', xsi);
-
-        envelope.setAttributeNS('schemaLocation', soapNS, xsi, null);
-
-        dom.XmlNode body
-
-           = envelope.addChildElement('Body', soapNS, null);
-
-        body.addChildElement('echo', serviceNS, 'req').
-
-          addChildElement('category', serviceNS, null).
-
-          addTextNode('classifieds');
-
-        System.debug(doc.toXmlString());
-
-        // Send the request
-
-        HttpRequest req = new HttpRequest();
-
-        req.setMethod('POST');
-
-        req.setEndpoint(endpoint);
-
-        req.setHeader('Content-Type', 'text/xml');
-
-        req.setBodyDocument(doc);
-
-        Http http = new Http();
-
-        HttpResponse res = http.send(req);
-
-        System.assertEquals(200, res.getStatusCode());
-
-        dom.Document resDoc = res.getBodyDocument();
-
-        envelope = resDoc.getRootElement();
-
-        String wsa = 'http://schemas.xmlsoap.org/ws/2004/08/addressing';
-
-        dom.XmlNode header = envelope.getChildElement('Header', soapNS);
-
-        System.assert(header != null);
-
-        String messageId
-
-           = header.getChildElement('MessageID', wsa).getText();
-
-        System.debug(messageId);
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-        System.debug(resDoc.toXmlString());
-
-        System.debug(resDoc);
-
-        System.debug(header);
-
-        System.assertEquals(
-
-         'http://schemas.xmlsoap.org/ws/2004/08/addressing/role/anonymous',
-
-         header.getChildElement(
-
-          'ReplyTo', wsa).getChildElement('Address', wsa).getText());
-
-        System.assertEquals(
-
-         envelope.getChildElement('Body', soapNS).
-
-            getChildElement('echo', serviceNS).
-
-            getChildElement('something', 'http://something.else').
-
-            getChildElement(
-
-             'whatever', serviceNS).getAttribute('bb', null),
-
-             'cc');
-
-        System.assertEquals('classifieds',
-
-         envelope.getChildElement('Body', soapNS).
-
-            getChildElement('echo', serviceNS).
-
-            getChildElement('category', serviceNS).getText());
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_xml_dom_document.htm)_ : Document Class
-
-#### ZIP Support
-
-Take advantage of a native Apex Zip library to create and extract ZIP archive files by using the class methods in the `Compression`
-namespace.
-
-You can compress multiple attachments or documents into an Apex blob that contains the ZIP archive. You can also specify the data to
-be extracted from the zip archive, without uncompressing the entire ZIP archive. To optimize compression, you can specify a compression
-method and compression level.
-
-This example code extracts a JSON translation file from a callout response containing a ZIP archive by getting and extracting the specified
-entry from the ZIP archive.
-
-```
-   HttpRequest request = new HttpRequest();
-
-   request.setEndpoint('callout:My_Named_Credential/translationService');
-
-   request.setMethod('POST');
-
-   // Set request payload to translate...
-
-   HttpResponse response = new Http().send(request);
-
-   Blob translationZip = response.getBodyAsBlob();
-
-   ZipReader reader = new ZipReader(translationZip);
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-   ZipEntry frTranslation = reader.getEntry('translations/fr.json');
-
-   Blob frTranslationData = reader.extractEntry(frTranslation);
-
-```
-
-SEE ALSO:
-
-_Apex Reference Guide_ [: Compression NameSpace](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_namespace_Compression.htm)
-
-#### Securing Your Data
-
-You can secure your data by using the methods provided by the `Crypto` class.
-
-The methods in the `Crypto` class provide standard algorithms for creating digests, message authentication codes, and signatures, as
-well as encrypting and decrypting information. These alogorithms can be used for securing content in Salesforce or for integrating with
-external services such as Google or Amazon WebServices (AWS).
-
-Note: The code excerpts on this page are written to highlight the use of the Crypto class. A production-level implementation
-would incorporate more plaintext key security. Refer to Strengthen Your Data’s Security with Shield Platform Encryption in Salesforce
-Help.
-
-Example Integrating Amazon WebServices
-
-This example demonstrates an integration of Amazon WebServices with Salesforce.
-
-```
-   public class HMacAuthCallout {
-
-     public void testAlexaWSForAmazon() {
-
-     // The date format is yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
-
-       DateTime d = System.now();
-
-       String timestamp = ''+ d.year() + '-' +
-
-       d.month() + '-' +
-
-       d.day() + '\'T\'' +
-
-       d.hour() + ':' +
-
-       d.minute() + ':' +
-
-       d.second() + '.' +
-
-       d.millisecond() + '\'Z\'';
-
-       String timeFormat = d.formatGmt(timestamp);
-
-       String urlEncodedTimestamp = EncodingUtil.urlEncode(timestamp, 'UTF-8');
-
-       String action = 'UrlInfo';
-
-       String inputStr = action + timeFormat;
-
-       String algorithmName = 'HMacSHA1';
-
-       Blob mac = Crypto.generateMac(algorithmName, Blob.valueOf(inputStr),
-
-                                   Blob.valueOf('your_signing_key'));
-
-       String macUrl = EncodingUtil.urlEncode(EncodingUtil.base64Encode(mac), 'UTF-8');
-
-       String urlToTest = 'amazon.com';
-
-       String version = '2005-07-11';
-
-       String endpoint = 'http://awis.amazonaws.com/';
-
-       String accessKey = 'your_key';
-
-       HttpRequest req = new HttpRequest();
-
-       req.setEndpoint(endpoint +
-
-                 '?AWSAccessKeyId=' + accessKey +
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-                 '&Action=' + action +
-
-                 '&ResponseGroup=Rank&Version=' + version +
-
-                 '&Timestamp=' + urlEncodedTimestamp +
-
-                 '&Url=' + urlToTest +
-
-                 '&Signature=' + macUrl);
-
-       req.setMethod('GET');
-
-       Http http = new Http();
-
-       try {
-
-         HttpResponse res = http.send(req);
-
-         System.debug('STATUS:'+res.getStatus());
-
-         System.debug('STATUS_CODE:'+res.getStatusCode());
-
-         System.debug('BODY: '+res.getBody());
-
-       } catch(System.CalloutException e) {
-
-         System.debug('ERROR: '+ e);
-
-       }
-
-     }
-
-   }
-
-```
-
-Example Encrypting and Decrypting
-
-This example uses the `encryptWithManagedIV` and `decryptWithManagedIV` methods and the `generateAesKey`
-method of the `Crypto` class.
-
-```
-   // Use generateAesKey to generate the private key
-
-   Blob cryptoKey = Crypto.generateAesKey(256);
-
-   // Generate the data to be encrypted.
-
-   Blob data = Blob.valueOf('Test data to encrypted');
-
-   // Encrypt the data and have Salesforce generate the initialization vector
-
-   Blob encryptedData = Crypto.encryptWithManagedIV('AES256', cryptoKey, data);
-
-   // Decrypt the data
-
-   Blob decryptedData = Crypto.decryptWithManagedIV('AES256', cryptoKey, encryptedData);
-
-```
-
-This example shows how to write a unit test for the `encryptWithManagedIV` and `decryptWithManagedIV` Crypto methods.
-
-```
-   @isTest
-
-   private class CryptoTest {
-
-      static testMethod void testValidDecryption() {
-
-        // Use generateAesKey to generate the private key
-
-        Blob key = Crypto.generateAesKey(128);
-
-        // Generate the data to be encrypted.
-
-        Blob data = Blob.valueOf('Test data');
-
-        // Generate an encrypted form of the data using base64 encoding
-
-        String b64Data = EncodingUtil.base64Encode(data);
-
-        // Encrypt and decrypt the data
-
-        Blob encryptedData = Crypto.encryptWithManagedIV('AES128', key, data);
-
-        Blob decryptedData = Crypto.decryptWithManagedIV('AES128', key, encryptedData);
-
-        String b64Decrypted = EncodingUtil.base64Encode(decryptedData);
-
-        // Verify that the strings still match
-
-        System.assertEquals(b64Data, b64Decrypted);
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-      }
-
-      static testMethod void testInvalidDecryption() {
-
-        // Verify that you must use the same key size for encrypting data
-
-        // Generate two private keys, using different key sizes
-
-        Blob keyOne = Crypto.generateAesKey(128);
-
-        Blob keyTwo = Crypto.generateAesKey(256);
-
-        // Generate the data to be encrypted.
-
-        Blob data = Blob.valueOf('Test data');
-
-        // Encrypt the data using the first key
-
-        Blob encryptedData = Crypto.encryptWithManagedIV('AES128', keyOne, data);
-
-        try {
-
-         // Try decrypting the data using the second key
-
-           Crypto.decryptWithManagedIV('AES256', keyTwo, encryptedData);
-
-           System.assert(false);
-
-        } catch(SecurityException e) {
-
-          System.assertEquals('Given final block not properly padded', e.getMessage());
-
-        }
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_crypto.htm)_ : Crypto Class
-
-_Salesforce Help_ [: Strengthen Your Data’s Security with Shield Platform Encryption](https://help.salesforce.com/s/articleView?id=xcloud.security_pe_overview.htm&type=5&language=en_US)
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)_ : EncodingUtil Class
-
-#### Encoding Your Data
-
-You can encode and decode URLs and convert strings to hexadecimal format by using the methods provided by the `EncodingUtil`
-class.
-
-This example shows how to URL encode a timestamp value in UTF-8 by calling `urlEncode` .
-
-```
-   DateTime d = System.now();
-
-   String timestamp = ''+ d.year() + '-' +
-
-      d.month() + '-' +
-
-      d.day() + '\'T\'' +
-
-      d.hour() + ':' +
-
-      d.minute() + ':' +
-
-      d.second() + '.' +
-
-      d.millisecond() + '\'Z\'';
-
-   System.debug(timestamp);
-
-   String urlEncodedTimestamp = EncodingUtil.urlEncode(timestamp, 'UTF-8');
-
-   System.debug(urlEncodedTimestamp);
-
-```
-
-This next example shows how to use `convertToHex` to compute a client response for HTTP Digest Authentication (RFC2617).
-
-```
-   @isTest
-
-   private class SampleTest {
-
-     static testmethod void testConvertToHex() {
-
-       String myData = 'A Test String';
-
-       Blob hash = Crypto.generateDigest('SHA1',Blob.valueOf( myData ));
-
-       String hexDigest = EncodingUtil.convertToHex(hash);
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-       System.debug(hexDigest);
-
-      }
-
-   }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_encodingUtil.htm)_ : EncodingUtil Class
-
-#### Using Patterns and Matchers
-
-Apex provides patterns and matchers that enable you to search text using regular expressions.
-
-A pattern is a compiled representation of a regular expression. Patterns are used by matchers to perform match operations on a character
-string.
-
-A _regular expression_ is a string that is used to match another string, using a specific syntax. Apex supports the use of regular expressions
-through its _Pattern_ and _Matcher_ classes.
-
-Note: In Apex, Patterns and Matchers, as well as regular expressions, are based on their counterparts in Java. See
-`[http://java.sun.com/j2se/1.5.0/docs/api/index.html?java/util/regex/Pattern.html](http://java.sun.com/j2se/1.5.0/docs/api/index.html?java/util/regex/Pattern.html)` .
-
-Many Matcher objects can share the same Pattern object, as shown in the following illustration:
-
-**Many Matcher objects can be created from the same Pattern object**
-
-Regular expressions in Apex follow the standard syntax for regular expressions used in Java. Any Java-based regular expression strings
-can be easily imported into your Apex code.
-
-Note: Salesforce limits the number of times an input sequence for a regular expression can be accessed to 1,000,000 times. If you
-reach that limit, you receive a runtime error.
-
-All regular expressions are specified as strings. Most regular expressions are first compiled into a Pattern object: only the String `split`
-method takes a regular expression that isn't compiled.
-
-Generally, after you compile a regular expression into a Pattern object, you only use the Pattern object once to create a Matcher object.
-All further actions are then performed using the Matcher object. For example:
-
-```
-   // First, instantiate a new Pattern object "MyPattern"
-
-   Pattern MyPattern = Pattern.compile('a*b');
-
-```
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-```
-   // Then instantiate a new Matcher object "MyMatcher"
-
-   Matcher MyMatcher = MyPattern.matcher('aaaaab');
-
-   // You can use the system static method assert to verify the match
-
-   System.assert(MyMatcher.matches());
-
-```
-
-If you are only going to use a regular expression once, use the `Pattern` class `matches` method to compile the expression and
-match a string against it in a single invocation. For example, the following is equivalent to the code above:
-
-```
-   Boolean Test = Pattern.matches('a*b', 'aaaaab');
-
-##### Using Regions Using Match Operations
-
-```
-
-Using Bounds
-
-Understanding Capturing Groups
-
-Pattern and Matcher Example
-
-##### Using Regions
-
-A Matcher object finds matches in a subset of its input string called a _region_ . The default region for a Matcher object is always the entirety
-of the input string. However, you can change the start and end points of a region by using the `region` method, and you can query
-the region's end points by using the `regionStart` and `regionEnd` methods.
-
-The `region` method requires both a start and an end value. The following table provides examples of how to set one value without
-setting the other.
-
-**Start of the Region** **End of the Region** **Code Example**
-
-Specify explicitly Leave unchanged
-```
-                         MyMatcher.region(start, MyMatcher.regionEnd());
-
-```
-
-Leave unchanged Specify explicitly
-```
-                         MyMatcher.region(MyMatcher.regionStart(), end);
-
-```
-
-Reset to the default Specify explicitly
-```
-                         MyMatcher.region(0, end);
-
-##### Using Match Operations
-
-```
-
-A _Matcher object_ performs match operations on a character sequence by interpreting a Pattern.
-
-A Matcher object is instantiated from a Pattern by the Pattern's `matcher` method. Once created, a Matcher object can be used to
-perform the following types of match operations:
-
-**•** Match the Matcher object's entire input string against the pattern using the `matches` method
-
-**•** Match the Matcher object's input string against the pattern, starting at the beginning but without matching the entire region, using
-the `lookingAt` method
-
-**•** Scan the Matcher object's input string for the next substring that matches the pattern using the `find` method
-
-Each of these methods returns a Boolean indicating success or failure.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-After you use any of these methods, you can find out more information about the previous match, that is, what was found, by using the
-following Matcher class methods:
-
-**•** `end` : Once a match is made, this method returns the position in the match string after the last character that was matched.
-
-**•** `start` : Once a match is made, this method returns the position in the string of the first character that was matched.
-
-**•** `group` : Once a match is made, this method returns the subsequence that was matched.
-
-##### Using Bounds
-
-By default, a region is delimited by _anchoring bounds_, which means that the line anchors (such as `^` or `$` ) match at the region boundaries,
-even if the region boundaries have been moved from the start and end of the input string. You can specify whether a region uses
-anchoring bounds with the `useAnchoringBounds` method. By default, a region always uses anchoring bounds. If you set
-`useAnchoringBounds` to `false`, the line anchors match only the true ends of the input string.
-
-By default, all text located outside of a region is not searched, that is, the region has _opaque bounds_ . However, using _transparent bounds_
-it is possible to search the text outside of a region. Transparent bounds are only used when a region no longer contains the entire input
-string. You can specify which type of bounds a region has by using the `useTransparentBounds` method.
-
-Suppose you were searching the following string, and your region was only the word “STRING”:
-
-```
-   This is a concatenated STRING of cats and dogs.
-
-```
-
-If you searched for the word “cat”, you wouldn't receive a match unless you had transparent bounds set.
-
-##### Understanding Capturing Groups
-
-During a matching operation, each substring of the input string that matches the pattern is saved. These matching substrings are called
-_capturing groups_ .
-
-Capturing groups are numbered by counting their opening parentheses from left to right. For example, in the regular expression string
-`((A)(B(C)))`, there are four capturing groups:
-
-**1.** `((A)(B(C)))`
-
-**2.** `(A)`
-
-**3.** `(B(C))`
-
-**4.** `(C)`
-
-Group zero always stands for the entire expression.
-
-The captured input associated with a group is always the substring of the group most recently matched, that is, that was returned by
-one of the Matcher class match operations.
-
-If a group is evaluated a second time using one of the match operations, its previously captured value, if any, is retained if the second
-evaluation fails.
-
-##### Pattern and Matcher Example
-
-The Matcher class `end` method returns the position in the match string after the last character that was matched. You would use this
-when you are parsing a string and want to do additional work with it after you have found a match, such as find the next match.
-
-In regular expression syntax, `?` means match once or not at all, and `+` means match 1 or more times.
-
-
-Apex Developer Guide Integration and Apex Utilities
-
-In the following example, the string passed in with the Matcher object matches the pattern since `(a(b)?)` matches the string `'ab'`
-
-      - `'a'` followed by `'b'` once. It then matches the last `'a'`      - `'a'` followed by `'b'` not at all.
-
-```
-   pattern myPattern = pattern.compile('(a(b)?)+');
-
-   matcher myMatcher = myPattern.matcher('aba');
-
-   System.assert(myMatcher.matches() && myMatcher.hitEnd());
-
-   // We have two groups: group 0 is always the whole pattern, and group 1 contains
-
-   // the substring that most recently matched--in this case, 'a'.
-
-   // So the following is true:
-
-   System.assert(myMatcher.groupCount() == 2 &&
-
-            myMatcher.group(0) == 'aba' &&
-
-            myMatcher.group(1) == 'a');
-
-   // Since group 0 refers to the whole pattern, the following is true:
-
-   System.assert(myMatcher.end() == myMatcher.end(0));
-
-   // Since the offset after the last character matched is returned by end,
-
-   // and since both groups used the last input letter, that offset is 3
-
-   // Remember the offset starts its count at 0. So the following is also true:
-
-   System.assert(myMatcher.end() == 3 &&
-
-            myMatcher.end(0) == 3 &&
-
-            myMatcher.end(1) == 3);
-
-```
-
-In the following example, email addresses are normalized and duplicates are reported if there is a different top-level domain name or
-subdomain for similar email addresses. For example, `john@fairway.smithco` is normalized to `john@smithco` .
-
-```
-   class normalizeEmailAddresses{
-
-      public void hasDuplicatesByDomain(Lead[] leads) {
-
-          // This pattern reduces the email address to 'john@smithco'
-
-          // from 'john@*.smithco.com' or 'john@smithco.*'
-
-        Pattern emailPattern = Pattern.compile('(?<=@)((?![\\w]+\\.[\\w]+$)
-
-                                [\\w]+\\.)|(\\.[\\w]+$)');
-
-          // Define a set for emailkey to lead:
-
-        Map<String,Lead> leadMap = new Map<String,Lead>();
-
-             for(Lead lead:leads) {
-
-               // Ignore leads with a null email
-
-               if(lead.Email != null) {
-
-                    // Generate the key using the regular expression
-
-                 String emailKey = emailPattern.matcher(lead.Email).replaceAll('');
-
-                    // Look for duplicates in the batch
-
-                 if(leadMap.containsKey(emailKey))
-
-                    lead.email.addError('Duplicate found in batch');
-
-                 else {
-
-                    // Keep the key in the duplicate key custom field
-
-                    lead.Duplicate_Key__c = emailKey;
-
-                    leadMap.put(emailKey, lead);
-
-                 }
-
-              }
-
-           }
-
-```
-
-
-## Apex Developer Guide Debugging, Testing, and Deploying Apex
-
-```
-             // Now search the database looking for duplicates
-
-             for(Lead[] leadsCheck:[SELECT Id, duplicate_key__c FROM Lead WHERE
-
-             duplicate_key__c IN :leadMap.keySet()]) {
-
-            for(Lead lead:leadsCheck) {
-
-            // If there's a duplicate, add the error.
-
-               if(leadMap.containsKey(lead.Duplicate_Key__c))
-
-                leadMap.get(lead.Duplicate_Key__c).email.addError('Duplicate found
-
-                  in salesforce(Id: ' + lead.Id + ')');
-
-           }
-
-        }
-
-      }
-
-    }
-
-```
-
-SEE ALSO:
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_pattern_and_matcher_pattern_methods.htm)_ : Pattern Class
-
-_[Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_pattern_and_matcher_matcher_methods.htm)_ : Matcher Class
-
-## Debugging, Testing, and Deploying Apex
-
-Develop your Apex code in a sandbox and debug it with the Developer Console and debug logs. Unit-test your code, then distribute it
-to customers using packages.
-
-### Debugging Apex
-
-Apex provides debugging support. You can debug your Apex code using the Developer Console and debug logs.
-
-Testing Apex
-Apex provides a testing framework that allows you to write unit tests, run your tests, check test results, and have code coverage
-results.
-
-Deploying Apex
-You can't develop Apex in your Salesforce production org. Your development work is done in a sandbox, in a scratch org, or in a
-Developer Edition org.
-
-Apex in Managed Packages
-Learn how to develop, distribute, and use managed Apex. Apex in managed packages can behave differently than Apex in unmanaged
-packages or Apex deployed directly to an org. Managed package developers and subscribers must understand these differences so
-that they can safely evolve their packages and integrations.
-
-### Debugging Apex
-
-Apex provides debugging support. You can debug your Apex code using the Developer Console and debug logs.
-
-To aid debugging in your code, Apex supports exception statements and custom exceptions. Also, Apex sends emails to developers for
-unhandled exceptions.
-
-1. Debug Log
-
-
-Apex Developer Guide Debugging Apex
-
-2. Exceptions in Apex

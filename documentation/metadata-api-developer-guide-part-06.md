@@ -1,696 +1,1470 @@
-**Field Type**
-string
-
-**Description**
-
-Required. The name of the field in the reference object used to define stages.
-
-**Field Type**
-string
-
-**Description**
-The record type of a reference object associated with the stage definition.
-
-**Field Type**
-
-StageTransition[]
-
-**Description**
-A collection of fields to set up transitions between two states.
-
-**Field Type**
-
-StageValue[]
-
-**Description**
-A collection of fields to set up the field values of an object for which stages are defined.
-
-Represents a collection of fields to set up transitions between two states.
-
-
-Metadata Types StageDefinition
-
-**Field Name** **Description**
-
-```
-criteria
-
-customPermission
-
-fromStageValue
-
-stepGroup
-
-toStageValue
-
-userPermission
+   CHART_BOTTOM
 
 ```
 
-**Field Type**
+ChartSummary
 
-StageCriteria[]
+ChartSummary defines how data in the chart is summarized. Valid values:
 
-**Description**
-A collection of fields to set up the criteria for the object stage transition and object
-stage change.
+**Field** **Field Type** **Description**
 
-**Field Type**
-string
+`aggregate` ReportSummaryType Specifies the aggregation method—such as `Sum`, `Average`,
+`Min`, and `Max` —for the summary value. Use the `column`
 
-**Description**
-The custom permission associated with the stage transition. The custom permission
-required to initiate a stage change.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The `From Stage` that's associated with the referenced object's stage
-transition.
-
-**Field Type**
-
-StgFulfillmentStepDefGrp[]
-
-**Description**
-A collection of fields to set up the stage fulfillment step definition.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The `To Stage` that's associated with the referenced object's stage
-transition.
-
-**Field Type**
-StageUserPermission (enumeration of type string)
-
-**Description**
-Specifies the type of user permission needed to initiate a stage change.
-
-Values are:
-
-**•** `CoordinateClinicalTrials`
-
-**•** `CoordinateClnclTrialExprcUsr`
-
-**•** `ManageClinicalTrials`
-
-**•** `ParticipateClinicalTrials`
-
-**•** `ProcessOrder`
+field to specify the summary value to use for the aggregation.
 
 
-Metadata Types StageDefinition
+Metadata Types Report
 
-StageCriteria
+**Field** **Field Type** **Description**
 
-Represents a collection of fields to set up the criteria for the object stage transition and object stage change.
+You don't need to specify this field for RowCount or custom
+summary formulas.
 
-**Field Name** **Description**
+`axisBinding` ChartAxis Specifies the axis or axes to use on the chart. Use the `column`
+field to specify the summary value to use for the axis.
+
+`column` string Required. Specifies the summary field for the chart data. If all
+columns are invalid, RowCount is used by default for the axis
+
+value. For vertical column and horizontal bar combination charts,
+you can specify up to four values.
+
+ChartAxis
+
+An enumeration of type string that specifies the axis or axes to be used in charts. Valid values:
+
+**Enumeration Value** **Description**
+
+`x` The summary value to use for the X-axis of a scatter chart.
+
+`y` The Y-axis for the chart.
+
+`y2` The secondary Y-axis for vertical column combination charts with a line added.
+
+ReportChartSize
+
+An enumeration of type string that specifies the chart size. Valid values:
+
+**Enumeration Value**
 
 ```
-condition
+   Tiny
 
-criteriaType
+   Small
 
-errorMessage
+   Medium
 
-executionType
+   Large
 
-flowDefinitionName
+   Huge
 
 ```
 
-**Field Type**
+ChartRangeType
 
-StageCondition[]
+An enumeration of type string that defines the report format. Valid values:
 
-**Description**
-A collection of fields to set up the rules in transition criteria and stage change, including
-the object state, logic, and values.
-
-**Field Type**
-StageCriteriaType (enumeration of type string)
-
-**Description**
-
-Specifies the criteria type used to execute the transition.
-
-Values are:
-
-**•** `AND`
-
-**•** `CUSTOMLOGIC`
-
-**•** `OR`
-
-**Field Type**
-string
-
-**Description**
-
-A custom error message that's displayed when stage transition criteria evaluation fails.
-
-Available in API version 64.0 and later.
-
-**Field Type**
-StageCriteriaExecType (enumeration of type string)
-
-**Description**
-
-Required. Specifies the type of logic used to execute the criteria.
-
-Values are:
-
-**•** `CONDITION`
-
-**•** `FLOW`
-
-**Field Type**
-string
-
-**Description**
-
-Specifies the developer name of the Flow that executes when the criteria execution
-type is set to `FLOW` .
-
-Available in API version 63.0 and later.
-
-
-Metadata Types StageDefinition
-
-**Field Name** **Description**
+**Enumeration Value**
 
 ```
-isChildObject
+   Auto
 
-logicalExpression
-
-targetFieldName
-
-targetObject
+   Manual
 
 ```
 
-StageCondition
 
-**Field Type**
-boolean
+Metadata Types Report
 
-**Description**
-Indicates whether the target object in the stage criteria represents a child object in a
-parent-child relationship ( `true` ) or not ( `false` ).
+ReportTimeFrameFilter
 
-Available in API version 63.0 and later.
+ReportTimeFrameFilter represents the report time period.
 
-**Field Type**
-string
+**Field** **Field Type** **Description**
 
-**Description**
-
-Formula to specify custom logic. Compares the Criteria field to the Value field.
-
-**Field Type**
-string
-
-**Description**
-
-Specifies the field name on the target object that's used in the stage transition criteria
-evaluation.
-
-Available in API version 63.0 and later.
-
-**Field Type**
-string
-
-**Description**
-
-Object that's used in a Parent-Child object relationship condition.
-
-Represents a collection of fields to set up the rules in transition criteria and stage change, including the object state, logic, and values.
-
-**Field Name** **Description**
+`dateColumn` string Required. The date field on which to filter data. For example,
 
 ```
-operator
+                              CLOSE_DATE
 
 ```
 
-**Field Type**
-StageConditionOperator (enumeration of type string)
+`endDate` date When `interval` is `INTERVAL_CUSTOM`, specifies the end
+of the custom time period.
 
-**Description**
+`interval` UserDateInterval (enumeration Required. Specifies the period.
+of type string)
 
-Required. Specifies the operator used in the transition criteria.
+`startDate` date When `interval` is `INTERVAL_CUSTOM`, specifies the
+start of the custom time period.
 
-Values are:
+ReportCrossFilter
 
-**•** `Contains`
+ReportCrossFilter represents the cross filter functionality in reports.
 
-**•** `DoesNotContain`
+**Field** **Field Type** **Description**
 
-**•** `Equals`
+`criteriaItems` ReportFilterItem Represents the subfilters of a cross filter. There can be up to five
+subfilters. This field requires the following attributes.
 
-**•** `GreaterOrEqual`
+**•** `Column`
 
+**•** `Operator`
 
-Metadata Types StageDefinition
+**•** `Value`
 
-**Field Name** **Description**
+`operation` ObjectFilterOperator The action indicating whether to include or exclude an object.
+(Enumeration of type string) Valid values: `with` and `without` .
 
-**•** `GreaterThan`
+`primaryTableColumn` string The field from the parent object used for the cross filter.
 
-**•** `LessOrEqual`
+`relatedTable` string The child object used for the cross filter.
 
-**•** `LessThan`
-
-**•** `NotEqualTo`
-
-**•** `StartsWith`
-
-```
-sequenceNumber
-
-sourceField
-
-value
-
-```
-
-**Field Type**
-int
-
-**Description**
-
-Required. Specifies the order of the object state transition condition in a sequence.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The object field to define filter conditions.
-
-**Field Type**
-string
-
-**Description**
-
-Required. Value of the field used in the transition criteria.
-
-StgFulfillmentStepDefGrp
-
-Represents a collection of fields to set up the stage fulfillment step definition.
-
-**Field Name** **Description**
-
-```
-name
-
-step
-
-```
-
-StgFulfillmentStepDef
-
-**Field Type**
-string
-
-**Description**
-
-Required. The name of the stage fulfillment step definition group.
-
-**Field Type**
-
-StgFulfillmentStepDef[]
-
-**Description**
-A collection of fields to set up fullfillment step definitions for stages and transitions.
-
-Represents a collection of fields to set up fullfillment step definitions for stages and transitions.
-
-
-Metadata Types StageDefinition
-
-**Field Name** **Description**
-
-```
-apiName
-
-assignedToQueue
-
-assignedToUser
-
-dependency
-
-executeOnRule
-
-flowDefinitionName
-
-integrationDefinitionName
-
-name
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required. The developer name of the stage fulfillment step definition.
-
-**Field Type**
-string
-
-**Description**
-The queue associated with the stage fulfillment step definition.
-
-**Field Type**
-string
-
-**Description**
-The user associated with the stage fulfillment step definition.
-
-**Field Type**
-
-StgFulfillmentStepDpndDef[]
-
-**Description**
-A collection of fields to set up the stage fulfillment step dependency between two
-steps.
-
-**Field Type**
-string
-
-**Description**
-
-Specifies the expression set for the fulfillment step. The step is executed only when
-the corresponding expression set is set to `true` .
-
-Available in API version 62.0 and later.
-
-**Field Type**
-string
-
-**Description**
-The name of the flow added to the step definition.
-
-**Field Type**
-string
-
-**Description**
-The ID associated with the integration provider definition.
-
-**Field Type**
-string
-
-
-Metadata Types StageDefinition
-
-**Field Name** **Description**
-
-**Description**
-
-Required. The name of the stage fulfillment step definition.
-
-```
-omniscriptName
-
-runAsUser
-
-stepType
-
-```
-
-**Field Type**
-string
-
-**Description**
-The name of the Omniscript defined in step definition.
-
-**Field Type**
-string
-
-**Description**
-The ID of the user associated with the step definition. The user required to execute
-the step definition.
-
-**Field Type**
-string
-
-**Description**
-
-Required. Specifies the type of fulfillment step.
-
-StgFulfillmentStepDpndDef
-
-Represents a collection of fields to set up the stage fulfillment step dependency between two steps.
-
-**Field Name** **Description**
-
-```
-step
-
-```
-
-StageValue
-
-**Field Type**
-string
-
-**Description**
-
-Required. The step definition for the fulfillment step.
-
-Represents a collection of fields to set up the field values of an object for which stages are defined.
-
-**Field Name** **Description**
-
-```
-criteria
-
-```
-
-**Field Type**
-
-StageCriteria[]
-
-**Description**
-A collection of fields to set up the criteria for the object stage transition and object
-stage change.
-
-
-Metadata Types StageDefinition
-
-**Field Name** **Description**
-
-```
-stepGroup
-
-value
-
-```
-
-**Field Type**
-
-StgFulfillmentStepDefGrp[]
-
-**Description**
-A collection of fields to set up the stage fulfillment step definition.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The value of the field used in the transition criteria.
+`relatedTableJoinColumn` string The field from the child object that is used to join the parent.
 
 Declarative Metadata Sample Definition
 
-The following is an example of a StageDefinition component.
+A sample XML snippet using cross filters to build an Accounts report for cases where case status isn’t closed:
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+      <crossFilters>
 
-<StageDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+        <criteriaItems>
 
-   <active>false</active>
+           <column>Status</column>
 
-   <description>Application form Stage transitions</description>
+           <operator>notequal</operator>
 
-   <masterLabel>basic</masterLabel>
+           <value>Closed</value>
 
-   <referenceObject>ApplicationForm</referenceObject>
+        </criteriaItems>
 
-   <referenceObjectField>Stage</referenceObjectField>
+        <operation>with</operation>
 
-   <stageTransition>
-
-     <criteria>
-
-        <condition>
-
-          <operator>Equals</operator>
-
-          <sequenceNumber>1</sequenceNumber>
-
-          <sourceField>ApplicationForm.Name</sourceField>
-
-          <value>test</value>
-
-        </condition>
-
-        <criteriaType>AND</criteriaType>
-
-        <executionType>CONDITION</executionType>
-
-        <logicalExpression>1</logicalExpression>
-
-        <targetObject>ApplicationForm</targetObject>
-
-     </criteria>
-
-     <userPermission>ProcessOrder</userPermission>
-
-     <fromStageValue>Initiated</fromStageValue>
-
-     <toStageValue>On Hold</toStageValue>
-
-     <stepGroup>
-
-        <name>Initiated-On Hold</name>
-
-        <step>
-
-          <apiName>Autotask_step_defn</apiName>
-
-         <flowDefinitionName>disputemanagement__InvokeAsyncAction</flowDefinitionName>
-
-          <name>Autotask step defn</name>
-
-          <runAsUser>testuser@salesforce.com</runAsUser>
-
-          <stepType>AutoTask</stepType>
-
-        </step>
-
-        <step>
+        <primaryTableColumn>ACCOUNT_ID</primaryTableColumn>
 
 ```
 
 
-Metadata Types StageDefinition
+Metadata Types Report
 
 ```
-             <apiName>testScreenFlow</apiName>
+        <relatedTable>Case</relatedTable>
 
-             <assignedToUser>testuser@salesforce.com</assignedToUser>
+        <relatedTableJoinColumn>Account</relatedTableJoinColumn>
 
-             <flowDefinitionName>cms_orch__CMS_NotifyRequester</flowDefinitionName>
-
-             <name>testScreenFlow</name>
-
-             <stepType>ManualTask</stepType>
-
-             <dependency>
-
-               <step>Autotask_step_defn</step>
-
-             </dependency>
-
-           </step>
-
-        </stepGroup>
-
-      </stageTransition>
-
-      <stageValue>
-
-        <value>Initiated</value>
-
-        <criteria>
-
-           <condition>
-
-             <operator>Equals</operator>
-
-             <sequenceNumber>1</sequenceNumber>
-
-             <sourceField>ApplicationForm.Name</sourceField>
-
-             <value>test</value>
-
-           </condition>
-
-           <criteriaType>AND</criteriaType>
-
-           <executionType>CONDITION</executionType>
-
-           <logicalExpression>1</logicalExpression>
-
-           <targetObject>ApplicationForm</targetObject>
-
-        </criteria>
-
-        <stepGroup>
-
-           <name>Initiated</name>
-
-           <step>
-
-             <apiName>Autotask_step_defn</apiName>
-
-            <flowDefinitionName>disputemanagement__InvokeAsyncAction</flowDefinitionName>
-
-             <name>Autotask step defn</name>
-
-             <runAsUser>testuser@salesforce.com</runAsUser>
-
-             <stepType>AutoTask</stepType>
-
-           </step>
-
-           <step>
-
-             <apiName>testScreenFlow</apiName>
-
-             <assignedToUser>testuser@salesforce.com</assignedToUser>
-
-             <flowDefinitionName>cms_orch__CMS_NotifyRequester</flowDefinitionName>
-
-             <name>testScreenFlow</name>
-
-             <stepType>ManualTask</stepType>
-
-             <dependency>
-
-               <step>Autotask_step_defn</step>
-
-             </dependency>
-
-           </step>
-
-        </stepGroup>
-
-      </stageValue>
-
-      <stageValue>
-
-        <value>On Hold</value>
-
-      </stageValue>
-
-   </StageDefinition>
+      </crossFilters>
 
 ```
 
+Note: This sample was generated using the API version 23.0.
 
-### Metadata Types SustainabilityUom
+UserDateInterval
+
+An enumeration of type string that defines the period. Valid values:
+
+**Enumeration Value** **Description**
+
+`INTERVAL_CURRENT` Current fiscal quarter
+
+`INTERVAL_CURNEXT1` Current and next fiscal quarters
+
+`INTERVAL_CURPREV1` Current and previous fiscal quarters
+
+`INTERVAL_NEXT1` Next fiscal quarter
+
+`INTERVAL_PREV1` Previous fiscal quarter
+
+`INTERVAL_CURNEXT3` Current and next three fiscal quarters
+
+`INTERVAL_CURFY` Current fiscal year
+
+`INTERVAL_PREVFY` Previous fiscal year
+
+`INTERVAL_PREV2FY` Previous two fiscal years
+
+`INTERVAL_AGO2FY` Two fiscal years ago
+
+`INTERVAL_NEXTFY` Next fiscal year
+
+`INTERVAL_PREVCURFY` Current and previous fiscal years
+
+`INTERVAL_PREVCUR2FY` Current and previous two fiscal years
+
+`INTERVAL_CURNEXTFY` Current and next fiscal year
+
+`INTERVAL_CUSTOM` A custom time period. Use `startDate` and `endDate` fields to specify the
+time period's start date and end date.
+
+`INTERVAL_YESTERDAY` Yesterday
+
+`INTERVAL_TODAY` Today
+
+`INTERVAL_TOMORROW` Tomorrow
+
+`INTERVAL_LASTWEEK` Last calendar week
+
+`INTERVAL_THISWEEK` This calendar week
+
+`INTERVAL_NEXTWEEK` Next calendar week
+
+`INTERVAL_LASTMONTH` Last calendar month
+
+`INTERVAL_THISMONTH` This calendar month
+
+
+Metadata Types Report
+
+**Enumeration Value** **Description**
+
+`INTERVAL_NEXTMONTH` Next calendar month
+
+`INTERVAL_LASTTHISMONTH` Current and previous calendar months
+
+`INTERVAL_THISNEXTMONTH` Current and next calendar months
+
+`INTERVAL_CURRENTQ` Current calendar quarter
+
+`INTERVAL_CURNEXTQ` Current and next calendar quarters
+
+`INTERVAL_CURPREVQ` Current and previous calendar quarters
+
+`INTERVAL_NEXTQ` Next calendar quarter
+
+`INTERVAL_PREVQ` Previous calendar quarter
+
+`INTERVAL_CURNEXT3Q` Current and next three calendar quarters
+
+`INTERVAL_CURY` Current calendar year
+
+`INTERVAL_PREVY` Previous calendar year
+
+`INTERVAL_PREV2Y` Previous two calendar years
+
+`INTERVAL_AGO2Y` Two calendar years ago
+
+`INTERVAL_NEXTY` Next calendar year
+
+`INTERVAL_PREVCURY` Current and previous calendar years
+
+`INTERVAL_PREVCUR2Y` Current and previous two calendar years
+
+`INTERVAL_CURNEXTY` Current and next calendar years
+
+`INTERVAL_LAST7` Last 7 days
+
+`INTERVAL_LAST30` Last 30 days
+
+`INTERVAL_LAST60` Last 60 days
+
+`INTERVAL_LAST90` Last 90 days
+
+`INTERVAL_LAST120` Last 120 days
+
+`INTERVAL_NEXT7` Next 7 days
+
+`INTERVAL_NEXT30` Next 30 days
+
+`INTERVAL_NEXT60` Next 60 days
+
+`INTERVAL_NEXT90` Next 90 days
+
+`INTERVAL_NEXT120` Next 120 days
+
+`LAST_FISCALWEEK` When custom fiscal years are enabled: Last fiscal week
+
+`THIS_FISCALWEEK` When custom fiscal years are enabled: This fiscal week
+
+`NEXT_FISCALWEEK` When custom fiscal years are enabled: Next fiscal week
+
+
+Metadata Types Report
+
+**Enumeration Value** **Description**
+
+`LAST_FISCALPERIOD` When custom fiscal years are enabled: Last fiscal period
+
+`THIS_FISCALPERIOD` When custom fiscal years are enabled: This fiscal period
+
+`NEXT_FISCALPERIOD` When custom fiscal years are enabled: Next fiscal period
+
+`LASTTHIS_FISCALPERIOD` When custom fiscal years are enabled: This fiscal period and last fiscal period
+
+`THISNEXT_FISCALPERIOD` When custom fiscal years are enabled: This fiscal period and next fiscal period
+
+`CURRENT_ENTITLEMENT_PERIOD` Current entitlement period
+
+`PREVIOUS_ENTITLEMENT_PERIOD` Previous entitlement period
+
+`PREVIOUS_TWO_ENTITLEMENT_PERIODS` Previous two entitlement periods
+
+`TWO_ENTITLEMENT_PERIODS_AGO` Two entitlement periods ago
+
+`CURRENT_AND_PREVIOUS_ENTITLEMENT_PERIOD` Current and previous entitlement period
+
+`CURRENT_AND_PREVIOUS_TWO_ENTITLEMENT_PERIODS` Current and previous two entitlement periods
+
+Declarative Metadata Sample Definition
+
+A sample XML report definition:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <aggregates>
+
+        <acrossGroupingContext>CRT_Object__c$Id</acrossGroupingContext>
+
+        <calculatedFormula>PREVGROUPVAL(CRT_Object__c.Currency__c:AVG, CRT_Object__c.Id)
+
+   *
+
+             PARENTGROUPVAL(CRT_Object__c.Number__c:MAX, CRT_Object__c.CreatedBy.Name,
+
+             COLUMN_GRAND_SUMMARY)/RowCount</calculatedFormula>
+
+        <datatype>number</datatype>
+
+        <developerName>FORMULA1</developerName>
+
+        <downGroupingContext>CRT_Object__c$CreatedBy</downGroupingContext>
+
+        <isActive>true</isActive>
+
+        <masterLabel>CurrCSF</masterLabel>
+
+        <scale>2</scale>
+
+      </aggregates>
+
+      <aggregates>
+
+        <acrossGroupingContext>CRT_Object__c$LastModifiedDate</acrossGroupingContext>
+
+        <calculatedFormula>IF(RowCount&gt;10,
+
+             BLANKVALUE(ROUND(PREVGROUPVAL(CRT_Object__c.Currency__c:SUM,
+
+             CRT_Object__c.LastModifiedDate),3),
+
+             PARENTGROUPVAL(CRT_Object__c.Number__c:SUM, ROW_GRAND_SUMMARY,
+
+             CRT_Object__c.Id)), 1000)</calculatedFormula>
+
+        <datatype>number</datatype>
+
+        <developerName>FORMULA2</developerName>
+
+        <downGroupingContext>GRAND_SUMMARY</downGroupingContext>
+
+        <isActive>true</isActive>
+
+        <masterLabel>numCSF</masterLabel>
+
+```
+
+
+Metadata Types Report
+
+```
+        <scale>2</scale>
+
+      </aggregates>
+
+      <buckets>
+
+        <bucketType>number</bucketType>
+
+        <developerName>BucketField_BusinessSize</developerName>
+
+        <masterLabel>NumericBucket</masterLabel>
+
+        <nullTreatment>z</nullTreatment>
+
+        <sourceColumnName>SALES</sourceColumnName>
+
+        <values>
+
+           <sourceValues>
+
+             <to>10000</to>
+
+           </sourceValues>
+
+           <value>low</value>
+
+        </values>
+
+        <values>
+
+           <sourceValues>
+
+             <from>10000</from>
+
+             <to>25000</to>
+
+           </sourceValues>
+
+           <value>mid</value>
+
+        </values>
+
+        <values>
+
+           <sourceValues>
+
+             <from>25000</from>
+
+           </sourceValues>
+
+           <value>high</value>
+
+        </values>
+
+      </buckets>
+
+      <buckets>
+
+        <bucketType>text</bucketType>
+
+        <developerName>BucketField_Region</developerName>
+
+        <masterLabel>TextBucket</masterLabel>
+
+        <nullTreatment>n</nullTreatment>
+
+        <otherBucketLabel>Other</otherBucketLabel>
+
+        <sourceColumnName>ADDRESS1_STATE</sourceColumnName>
+
+        <values>
+
+           <sourceValues>
+
+             <sourceValue>CA</sourceValue>
+
+           </sourceValues>
+
+           <value>west</value>
+
+        </values>
+
+        <values>
+
+           <sourceValues>
+
+             <sourceValue>NY</sourceValue>
+
+           </sourceValues>
+
+           <sourceValues>
+
+             <sourceValue>Ontario</sourceValue>
+
+           </sourceValues>
+
+           <value>east</value>
+
+        </values>
+
+      </buckets>
+
+      <chart>
+
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+
+```
+
+
+Metadata Types Report
+
+```
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+
+        <chartSummaries>
+
+           <axisBinding>y</axisBinding>
+
+           <column>FORMULA1</column>
+
+        </chartSummaries>
+
+        <chartSummaries>
+
+           <axisBinding>y</axisBinding>
+
+           <column>FORMULA2</column>
+
+        </chartSummaries>
+
+        <chartSummaries>
+
+           <aggregate>Maximum</aggregate>
+
+           <axisBinding>y</axisBinding>
+
+           <column>CRT_Object__c$Number__c</column>
+
+        </chartSummaries>
+
+        <chartSummaries>
+
+           <axisBinding>y</axisBinding>
+
+           <column>RowCount</column>
+
+        </chartSummaries>
+
+        <chartType>VerticalColumn</chartType>
+
+        <groupingColumn>CRT_Object__c$LastModifiedDate</groupingColumn>
+
+        <legendPosition>Right</legendPosition>
+
+        <location>CHART_TOP</location>
+
+        <size>Medium</size>
+
+        <summaryAxisRange>Auto</summaryAxisRange>
+
+        <textColor>#000000</textColor>
+
+        <textSize>12</textSize>
+
+        <titleColor>#000000</titleColor>
+
+        <titleSize>18</titleSize>
+
+      </chart>
+
+      <columns>
+
+        <field>CRT_Object__c$Name</field>
+
+      </columns>
+
+      <columns>
+
+        <aggregateTypes>Average</aggregateTypes>
+
+        <field>CRT_Object__c$Currency__c</field>
+
+      </columns>
+
+      <columns>
+
+        <aggregateTypes>Maximum</aggregateTypes>
+
+        <field>CRT_Object__c$Number__c</field>
+
+      </columns>
+
+      <columns>
+
+        <field>BucketField__Region</field>
+
+      </columns>
+
+      <format>Matrix</format>
+
+      <groupingsAcross>
+
+        <dateGranularity>Day</dateGranularity>
+
+        <field>CRT_Object__c$Id</field>
+
+        <sortOrder>Asc</sortOrder>
+
+      </groupingsAcross>
+
+      <groupingsAcross>
+
+        <dateGranularity>Year</dateGranularity>
+
+        <field>CRT_Object__c$LastModifiedDate</field>
+
+        <sortOrder>Asc</sortOrder>
+
+      </groupingsAcross>
+
+```
+
+
+Metadata Types Report
+
+```
+      <groupingsDown>
+
+        <dateGranularity>Day</dateGranularity>
+
+        <field>CRT_Object__c$CreatedBy</field>
+
+        <sortOrder>Asc</sortOrder>
+
+      </groupingsDown>
+
+      <groupingsDown>
+
+        <dateGranularity>Day</dateGranularity>
+
+        <field>CRT_Object__c$Currency__c</field>
+
+        <sortOrder>Desc</sortOrder>
+
+      </groupingsDown>
+
+      <name>CrtMMVC</name>
+
+      <reportType>CRT1__c</reportType>
+
+      <scope>organization</scope>
+
+      <showDetails>false</showDetails>
+
+      <timeFrameFilter>
+
+        <dateColumn>CRT_Object__c$CreatedDate</dateColumn>
+
+        <interval>INTERVAL_CUSTOM</interval>
+
+      </timeFrameFilter>
+
+   </Report>
+
+```
+
+Declarative Metadata Sample Definition for a Joined Report
+
+A sample XML report definition:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <!-- This is a cross-block custom summary formula. Note that the calculated formula reference
+
+    for a blocks reference uses the BlockId#Aggregate. -->
+
+      <aggregates>
+
+        <calculatedFormula>B1#AMOUNT:SUM+B2#EMPLOYEES:SUM</calculatedFormula>
+
+        <datatype>number</datatype>
+
+        <developerName>FORMULA</developerName>
+
+        <isActive>true</isActive>
+
+        <isCrossBlock>true</isCrossBlock>
+
+        <masterLabel>Cross-Block CSF Example</masterLabel>
+
+        <scale>2</scale>
+
+      </aggregates>
+
+   <!-- This is a standard custom summary formula. Note that the calculated formula reference
+
+    does not have block reference but just the aggregate name of the report type associated
+
+   (Opportunity).-->
+
+      <aggregates>
+
+        <calculatedFormula>AMOUNT:SUM</calculatedFormula>
+
+        <developerName>FORMULA2</developerName>
+
+        <isActive>true</isActive>
+
+        <isCrossBlock>false</isCrossBlock>
+
+        <masterLabel>Standard CSF Example</masterLabel>
+
+        <reportType>Opportunity</reportType>
+
+        <scale>2</scale>
+
+      </aggregates>
+
+      <block>
+
+       <blockInfo>
+
+   <!-- This is how the block defines that the custom summary formula should be referenced.
+
+   In this example, it’s the in standard FORMULA 2 defined above. This block report has blockID
+
+    B1.-->
+
+```
+
+
+Metadata Types Report
+
+```
+        <aggregateReferences>
+
+         <aggregate>FORMULA2</aggregate>
+
+        </aggregateReference>
+
+        <blockId>B1</blockId>
+
+        <joinTable>a</joinTable>
+
+       </blockInfo>
+
+       <columns>
+
+        <field>TYPE</field>
+
+       </columns>
+
+       <format>Summary</format>
+
+       <name>Opportunities BLock 3</name>
+
+       <params>
+
+        <name>role_territory</name>
+
+        <value>role</value>
+
+       </params>
+
+       <params>
+
+        <name>terr</name>
+
+        <value>all</value>
+
+       </params>
+
+       <params>
+
+        <name>open</name>
+
+        <value>all</value>
+
+       </params>
+
+       <params>
+
+        <name>probability</name>
+
+        <value>0</value>
+
+       </params>
+
+       <params>
+
+        <name>co</name>
+
+        <value>1</value>
+
+       </params>
+
+       <reportType>Opportunity</reportType>
+
+       <scope>organization</scope>
+
+       <timeFrameFilter>
+
+        <dateColumn>CLOSE_DATE</dateColumn>
+
+        <interval>INTERVAL_CUSTOM</interval>
+
+       </timeFrameFilter>
+
+      </block>
+
+      <block>
+
+       <blockInfo>
+
+   <!-- This is how the block defines that the custom summary formula should be referenced.
+
+   In this example, it’s the cross-block custom summary formula FORMULA 1 defined above. This
+
+    block report has blockId B2.-->
+
+        <aggregateReferences>
+
+         <aggregate>FORMULA1</aggregate>
+
+        </aggregateReferences>
+
+        <blockId>B2</blockId>
+
+        <joinTable>a</joinTable>
+
+       </blockInfo>
+
+       <columns>
+
+        <field>USERS.NAME</field>
+
+       </columns>
+
+       <columns>
+
+        <field>TYPE</field>
+
+```
+
+
+Metadata Types Report
+
+```
+       </columns>
+
+       <columns>
+
+         <field>DUE_DATE</field>
+
+       </columns>
+
+       <columns>
+
+        <field>LAST_UPDATE</field>
+
+       </columns>
+
+       <columns>
+
+        <field>ADDRESS1_STATE</field>
+
+       </columns>
+
+       <format>Summary</format
+
+       <name>Accounts block 5</name>
+
+       <params>
+
+        <name>terr</name>
+
+        <value>all</value>
+
+       </params>
+
+       <params>
+
+        <name>co</name>
+
+        <value>1</value>
+
+       </params>
+
+       <reportType>AccountList</reportType>
+
+       <scope>organization</scope>
+
+       <timeFrameFilter>
+
+        <dateColumn>CREATED_DATE</dateColumn>
+
+        <interval>INTERVAL_CUSTOM</interval>
+
+       </timeFrameFilter>
+
+      </block>
+
+      <blockInfo>
+
+       <blockId xsi:nil="true"/>
+
+       <joinTable>a</joinTable>
+
+      </blockInfo>
+
+   <chart>
+
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+
+        <chartSummaries>
+
+           <axisBinding>y</axisBinding>
+
+   <!-- This is how chart aggregates are designed in multiblock. We're using RowCount from
+
+   Block 1.-->
+
+           <column>B1#RowCount</column>
+
+        </chartSummaries>
+
+        <chartType>HorizontalBar</chartType>
+
+        <enableHoverLabels>false</enableHoverLabels>
+
+        <expandOthers>true</expandOthers>
+
+        <groupingColumn>ACCOUNT_NAME</groupingColumn>
+
+        <location>CHART_TOP</location>
+
+        <showAxisLabels>true</showAxisLabels>
+
+        <showPercentage>false</showPercentage>
+
+        <showTotal>false</showTotal>
+
+        <showValues>false</showValues>
+
+        <size>Medium</size>
+
+        <summaryAxisRange>Auto</summaryAxisRange>
+
+        <textColor>#000000</textColor>
+
+        <textSize>12</textSize>
+
+```
+
+
+### Metadata Types ReportType
+
+```
+        <titleColor>#000000</titleColor>
+
+        <titleSize>18</titleSize>
+
+      </chart>
+
+      <format>MultiBlock</format>
+
+      <groupingsDown>
+
+        <dateGranularity>Day</dateGranularity>
+
+        <field>ACCOUNT_NAME</field>
+
+        <sortOrder>Asc</sortOrder>
+
+      </groupingsDown>
+
+      <name>mb_mbapi</name>
+
+      <reportType>Opportunity</reportType>
+
+      <showDetails>true</showDetails>
+
+   </Report>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
+using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+SEE ALSO:
+
+Dashboard
+
+### ReportType
+
+Represents the metadata associated with a custom report type. Custom report types allow you to build a framework from which users
+can create and customize reports.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+Declarative Metadata File Suffix and Directory Location
+
+The file suffix is `.reportType` for the custom report type definition. There’s one file per custom report type. Report types are stored
+in the `reportTypes` directory of the corresponding package directory.
+
+Version
+
+Custom report types are available in API version 14.0 and later.
+
+
+Metadata Types ReportType
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`autogenerated` boolean
+
+`baseObject` string
+
+Indicates that the report type was automatically generated when historical
+trending was enabled for an entity.
+
+Available in API version 29 and later.
+
+Required. The primary object for the custom report type, for example,
+Account. All objects, including custom and external objects, are supported.
+You can’t edit this field after initial creation.
+
+Support for external objects is available in API version 38.0 and later.
+
+`category` ReportTypeCategory This field controls the category for the report. The valid values are:
+(enumeration of type string)
+
+**•** `accounts`
+
+**•** `opportunities`
+
+**•** `forecasts`
+
+**•** `cases`
+
+**•** `leads`
+
+**•** `campaigns`
+
+**•** `activities`
+
+**•** `busop`
+
+**•** `products`
+
+**•** `admin`
+
+**•** `territory`
+
+**•** `territory2` (This value is available in API version 31.0 and later.)
+
+**•** `usage_entitlement`
+
+**•** `wdc` (This value is available in API version 29.0 and later.)
+
+**•** `calibration` (This value is available in API version 29.0 and later.)
+
+**•** `other`
+
+**•** `content`
+
+**•** `quotes`
+
+**•** `individual` (This value is available in API version 45.0 and later.)
+
+**•** `employee` (This value is available in API version 46.0 and later.)
+
+**•** `data_cloud` (This value is available in API version 55.0 and later.)
+
+**•** `commerce` (This value is available in API version 60.0 and later.)
+
+**•** `flow` (This value is available in API version 60.0 and later.)
+
+**•** `semantic_model` (This value is available in API version 60.0 and
+later.)
+
+`deployed` boolean Required. Indicates whether the report type is available to users ( `true` )
+or whether it's still in development ( `false` ).
+
+
+Metadata Types ReportType
+
+**Field Name** **Field Type** **Description**
+
+`description` string The description of the custom report type.
+
+`fullName` string The report type developer name used as a unique identifier for API access.
+The `fullName` can contain only underscores and alphanumeric
+
+characters. It must be unique, begin with a letter, not include spaces, not
+end with an underscore, and not contain two consecutive underscores.
+
+`join` ObjectRelationship The object joined to the `baseObject` . For example, Contacts can be
+joined to the primary Accounts object.
+
+`label` string Required. The report type label.
+
+`sections` ReportLayoutSection[] The groups of columns available for the report type. Though columns
+aren’t strictly required, a report without columns isn’t useful.
+
+ObjectRelationship
+
+ObjectRelationship represents a join to another object.
+
+**Field Name** **Field Type** **Description**
+
+`join` ObjectRelationship This field is a recursive reference that allows you to join more than two objects.
+A maximum of four objects can be joined in a custom report type. When more
+
+than two objects are joined, an inner join isn’t allowed if there has been an outer
+join earlier in the join sequence. The `baseObject` is first joined to the object
+specified in `relationship` ; the resulting dataset is then joined with any
+objects specified in this field.
+
+`outerJoin` boolean
+
+Required. Indicates whether it’s an outer join ( `true` ) or not ( `false` ). An outer
+join returns a row even if the joined table doesn’t contain a matching value in
+the join column.
+
+`relationship` string Required. The object joined to the primary object; for example, Contacts.
+
+ReportLayoutSection
+
+ReportLayoutSection represents a group of columns used in the custom report type.
+
+**Field Name** **Field Type** **Description**
+
+`columns` ReportTypeColumn[] The list of columns projected from the query, defined by
+this custom report type.
+
+`masterLabel` string Required. The label for this group of columns in the report
+wizard.
+
+
+Metadata Types ReportType
+
+ReportTypeColumn
+
+ReportTypeColumn represents a column in the custom report type.
+
+**Field Name** **Field Type** **Description**
+
+`checkedByDefault` boolean Required. Indicates whether this column is selected by default ( `true` ) or not
+( `false` ).
+
+`displayNameOverride` string A customized column name, if desired.
+
+`field` string Required. The field name associated with the report column.
+
+`table` string Required. The table associated with the field; for example, Account.
+
+Declarative Metadata Sample Definition
+
+The definition of a custom report type is shown in this example. Account is joined to Contacts and the resulting dataset is joined with
+Assets.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <baseObject>Account</baseObject>
+
+      <category>accounts</category>
+
+      <deployed>true</deployed>
+
+      <description>Account linked to Contacts and Assets</description>
+
+      <join>
+
+        <join>
+
+           <outerJoin>false</outerJoin>
+
+           <relationship>Assets</relationship>
+
+        </join>
+
+        <outerJoin>false</outerJoin>
+
+        <relationship>Contacts</relationship>
+
+      </join>
+
+      <label>Account Contacts and Assets</label>
+
+      <sections>
+
+        <columns>
+
+           <checkedByDefault>true</checkedByDefault>
+
+           <field>obj_lookup__c.Id</field>
+
+           <table>Account</table>
+
+        </columns>
+
+        <columns>
+
+           <checkedByDefault>false</checkedByDefault>
+
+           <field>obj_lookup__c.Name</field>
+
+           <table>Account</table>
+
+        </columns>
+
+        <columns>
+
+           <checkedByDefault>false</checkedByDefault>
+
+           <field>Opportunity__c.Amount</field>
+
+           <table>Account</table>
+
+        </columns>
+
+        <columns>
+
+           <checkedByDefault>false</checkedByDefault>
+
+           <field>Owner.IsActive</field>
+
+```
+
+
+### Metadata Types RestrictionRule
+
+```
+           <table>Account</table>
+
+        </columns>
+
+        <masterLabel>Accounts</masterLabel>
+
+      </sections>
+
+      <sections>
+
+        <columns>
+
+           <checkedByDefault>false</checkedByDefault>
+
+           <field>Owner.Email</field>
+
+           <table>Account.Contacts</table>
+
+        </columns>
+
+        <columns>
+
+           <checkedByDefault>false</checkedByDefault>
+
+           <field>byr__c</field>
+
+           <table>Account.Contacts</table>
+
+        </columns>
+
+        <columns>
+
+           <checkedByDefault>true</checkedByDefault>
+
+           <field>ReportsTo.CreatedBy.Contact.Owner.MobilePhone</field>
+
+           <table>Account.Contacts</table>
+
+        </columns>
+
+        <masterLabel>Contacts</masterLabel>
+
+      </sections>
+
+   </ReportType>
+
+```
+
+Usage
+
+The custom report type refers to fields by using their API names. For a historical field (one that has `trackTrending` set to `true` )
+the API name includes `hst`, such as `Field2__c_hst` .
+
+```
+   <sections>
+
+      <columns>
+
+        <checkedByDefault>false</checkedByDefault>
+
+        <field>Field2__c_hst</field>
+
+        <table>CustomTrendedObject__c.CustomTrendedObject__c_hst</table>
+
+      </columns>
+
+      <masterLabel>History</masterLabel>
+
+   </sections>
+
+```
+
+For more information, see `trackTrending` on page 771.
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### RestrictionRule Represents a restriction rule or a scoping rule. A restriction rule has enforcementType set to Restrict and controls the access
+
+that specified users have to designated records. A scoping rule has `enforcementType` set to `Scoping` and controls the default
+records that your users see without restricting access. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types RestrictionRule
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+File Suffix and Directory Location
+
+RestrictionRule components have the suffix `.rule` and are stored in the `restrictionRules` folder.
+
+Version
+
+RestrictionRule components are available in API version 52.0 and later.
+
+Special Access Rules
+
+Only users with the View Restriction and Scoping Rules permission can view restriction rules and scoping rules via the API. Only users
+with the Manage Sharing permission can view, create, update, and delete restriction rules and scoping rules.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`active` boolean Indicates whether the rule is active ( `true` ) or not ( `false` ). The default
+value is `false` .
+
+`description` string Required. The description of the rule.
+
+```
+enforcementType
+
+```
+
+EnforcementType Required. The type of rule. Valid values are:
+(enumeration of
+
+**•** `FieldRestrict` —Don’t use.
+
+type string)
+
+**•** `FieldRestrict` —Don’t use.
+
+**•** `Restrict` —Restriction rule.
+
+**•** `Scoping` —Scoping rule.
+
+`masterLabel` string Required. The name of the rule.
+
+`recordFilter` string Required. The criteria that determine which records are accessible via
+the rule.
+
+`targetEntity` string
+
+Required. The object for which you're creating the rule. We recommend
+that you don’t edit this field after the rule is created.
+
+If `enforcementType` is set to `Restrict`, custom objects, external
+objects, and these objects are supported:
+
+**•** Contract
+
+**•** Event
+
+**•** Quote
+
+**•** Task
+
+**•** TimeSheet
+
+**•** TimeSheetEntry
+
+
+Metadata Types RestrictionRule
+
+**Field Name** **Field Type** **Description**
+
+If `enforcementType` is set to `Scoping`, custom objects and these
+objects are supported:
+
+**•** Account
+
+**•** Case
+
+**•** Contact
+
+**•** Event
+
+**•** Lead
+
+**•** Opportunity
+
+**•** Task
+
+`userCriteria` string Required. The users that this rule applies to, such as all active users or
+users with a specified role or profile.
+
+`version` int Required. The rule's version number.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a RestrictionRule component representing a restriction rule.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <RestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <active>true</active>
+
+      <description>Allows users with a specific profile to see only tasks that they
+
+   own.</description>
+
+      <enforcementType>Restrict</enforcementType>
+
+      <masterLabel>Tasks You Own</masterLabel>
+
+      <recordFilter>OwnerId = $User.Id</recordFilter>
+
+      <targetEntity>Task</targetEntity>
+
+      <userCriteria>$User.ProfileId = '00exxxxxxxxxxxx'</userCriteria>
+
+      <version>1</version>
+
+   </RestrictionRule>
+
+```
+
+The following is an example of a RestrictionRule component representing a scoping rule.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <RestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <active>true</active>
+
+      <description>View tasks contacts from Department A.</description>
+
+      <enforcementType>Scoping</enforcementType>
+
+      <masterLabel>SR for Department A contacts</masterLabel>
+
+      <recordFilter>Department=$User.Department</recordFilter>
+
+      <targetEntity>Contact</targetEntity>
+
+      <userCriteria>$User.UserRoleId = '00Exxxxxxxxxxxx'</userCriteria>
+
+      <version>1</version>
+
+   </RestrictionRule>
+
+```
+
+
+### Metadata Types RetrievalSummaryDefinition
 
 The following is an example `package.xml` that references the previous definition.
 
@@ -703,25 +1477,20 @@ The following is an example `package.xml` that references the previous definitio
 
         <members>*</members>
 
-        <name>StageDefinition</name>
+        <name>RestrictionRule</name>
 
       </types>
 
-      <version>62.0</version>
+      <version>55.0</version>
 
    </Package>
 
+### RetrievalSummaryDefinition
+
 ```
 
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### SustainabilityUom
-
-Represents the unit of measure (UOM) values for custom fuel types in an org. Track fuel consumption and emission results with the
-flexibility to add custom fuel types and UOM values.
+Represents a metadata type that stores the header information of a retrieval definition. It enables the configuration of data retrieval
+patterns for summarizing related records across object relationships.
 
 Parent Type
 
@@ -729,88 +1498,26 @@ This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-### SustainabilityUom components have the suffix .sustainabilityUom and are stored in the sustainabilityUoms folder.
+### RetrievalSummaryDefinition components have the suffix .retrievalSummaryDefinition and are stored in the
+
+`.retrievalSummaryDefinitions` folder.
 
 Version
 
-### SustainabilityUom components are available in API version 56.0 and later.
+### RetrievalSummaryDefinition components are available in API version 61.0 and later. Individual fields may have specific minimum API
 
-Special Access Rules
-
-The Net Zero Cloud permission set license is required to access this object along with the user access for carbon accounting and org
-access for custom fuels and UOMs.
+version requirements as mentioned in the field descriptions.
 
 Fields
 
 **Field Name** **Description**
 
 ```
-description
-
-```
-
-**Field Type**
-string
-
-**Description**
-The description of the unit of measure.
-
-
-Metadata Types SustainabilityUom
-
-**Field Name** **Description**
-
-```
-isProductUom
-
-isProtected
-
-isStationaryAssetUom
-
-isVehicleAssetUom
-
 masterLabel
 
-unitType
+retrievalSummaryDefFields
 
 ```
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether the unit of measure is for a product that the company has procured
-in its supply chain operations ( `true` ) or not ( `false` ).
-
-The default value is `false` .
-
-**Field Type**
-boolean
-
-**Description**
-An auto-generated value that doesn’t impact the behavior of the metadata type.
-
-The default value is `false` .
-
-**Field Type**
-boolean
-
-**Description**
-
-Indicates whether the unit of measure is used in the stationary asset calculations
-( `true` ) or ( `false` ).
-
-The default value is `false` .
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the unit of measure is used in the vehicle asset calculations ( `true` )
-or ( `false` ).
-
-The default value is `false` .
 
 **Field Type**
 string
@@ -819,56 +1526,209 @@ string
 
 Required.
 
-The label assigned to this object.
+A user-friendly name when RetrievalSummaryDefinition is created.
 
 **Field Type**
-UnitType (enumeration of type string)
+
+RetrievalSummaryDefField[]
+
+**Description**
+Collection of fields to retrieve from the root object of the retrieval definition. Each field
+definition specifies which field from the target object should be included in the retrieval
+and the order in which it should be processed.
+
+
+Metadata Types RetrievalSummaryDefinition
+
+**Field Name** **Description**
+
+```
+retrievalSummaryDefObjects
+
+rootObject
+
+```
+
+**Field Type**
+
+RetrievalSummaryDefObject[]
+
+**Description**
+Collection of rollup definitions that aggregate data from related objects. Each object
+definition specifies a related object, the aggregation logic to apply, and the fields to
+retrieve from that object. This enables hierarchical data aggregation across object
+relationships.
+
+**Field Type**
+string
 
 **Description**
 
 Required.
 
-The type of unit used for conversions or calculations.
+API name of the primary object that serves as the starting point for the retrieval
+definition. This object serves as the anchor point for all retrieval and rollup operations
+defined in this metadata. The value must be a valid Salesforce object API name.
 
-Values are:
+RetrievalSummaryDefField
 
-
-### Metadata Types SustnUomConversion
+Represents a field definition that specifies a single field to retrieve from a target object. Each field definition includes the field API name
+and a sequence number that determines the processing order.
 
 **Field Name** **Description**
 
-**•** `Energy`
+```
+field
 
-**•** `Other`
+sequenceNumber
 
-**•** `Volume`
+```
 
-**•** `Weight`
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+API name of the field to retrieve from the target object. This must be a valid field API
+name on the specified object.
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+Processing order of the field in the retrieval operation. Fields are processed in ascending
+sequence number order. This allows you to control the order in which fields are
+displayed.
+
+
+Metadata Types RetrievalSummaryDefinition
+
+RetrievalSummaryDefObject
+
+Represents a rollup definition that aggregates data from a related object. Each rollup definition specifies the aggregation logic, the fields
+to retrieve, and the processing order for summarizing data across object relationships.
+
+**Field Name** **Description**
+
+```
+recordAggregationDefinition
+
+retrievalSummaryDefFields
+
+sequenceNumber
+
+```
+
+Usage
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+Reference to the aggregation definition that specifies how data from the related object
+must be aggregated. This parameter references a RecordAggregationDefinition.
+
+**Field Type**
+
+RetrievalSummaryDefField[]
+
+**Description**
+Collection of fields to retrieve from this related object. Each field definition specifies
+which field should be included and in what order. This is an optional array that allows
+you to specify additional fields beyond those defined in the aggregation definition.
+
+**Field Type**
+int
+
+**Description**
+
+Required.
+
+Processing order of the rollup operation. Rollups are processed in ascending sequence
+number order, allowing you to control the hierarchy of data aggregation when multiple
+related objects are involved.
+
+RetrievalSummaryDefinition is commonly used in Financial Services Cloud to define patterns for retrieving and summarizing data across
+related objects. Typical use cases include:
+
+**•** Rollup Summarization: Aggregate data from child records to parent records, such as summing transaction amounts or counting
+related activities.
+
+**•** Hierarchical Data Aggregation: Retrieve and summarize data across multiple levels of object relationships, enabling complex reporting
+and analytics.
+
+**•** Data Consolidation: Combine information from multiple related objects into a single summary view for easier analysis and
+decision-making.
+
+**•** Performance Optimization: Pre-define retrieval patterns to improve query performance when accessing related data across multiple
+objects.
+
+
+### Metadata Types Role
 
 Declarative Metadata Sample Definition
 
-The following is an example of a SustainabilityUom component.
+The following is an example of a RetrievalSummaryDefinition component that retrieves data from an Account object and includes a
+rollup from related Opportunity records.
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
-   <SustainabilityUom xmlns="http://soap.sforce.com/2006/04/metadata">
+   <RetrievalSummaryDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
 
-     <description>Weight in Grams</description>
+     <masterLabel>Account Revenue Summary</masterLabel>
 
-     <isProductUom>true</isProductUom>
+     <rootObject>Account</rootObject>
 
-     <isProtected>false</isProtected>
+     <retrievalSummaryDefFields>
 
-     <isStationaryAssetUom>false</isStationaryAssetUom>
+       <field>Name</field>
 
-     <isVehicleAssetUom>false</isVehicleAssetUom>
+       <sequenceNumber>1</sequenceNumber>
 
-     <masterLabel>Grams</masterLabel>
+     </retrievalSummaryDefFields>
 
-     <unitType>Weight</unitType>
+     <retrievalSummaryDefFields>
 
-   </SustainabilityUom>
+       <field>Industry</field>
+
+       <sequenceNumber>2</sequenceNumber>
+
+     </retrievalSummaryDefFields>
+
+     <retrievalSummaryDefObjects>
+
+       <recordAggregationDefinition>OpportunityRevenueRollup</recordAggregationDefinition>
+
+       <sequenceNumber>1</sequenceNumber>
+
+       <retrievalSummaryDefFields>
+
+         <field>Amount</field>
+
+         <sequenceNumber>1</sequenceNumber>
+
+       </retrievalSummaryDefFields>
+
+       <retrievalSummaryDefFields>
+
+         <field>CloseDate</field>
+
+         <sequenceNumber>2</sequenceNumber>
+
+       </retrievalSummaryDefFields>
+
+     </retrievalSummaryDefObjects>
+
+   </RetrievalSummaryDefinition>
 
 ```
 
@@ -879,17 +1739,15 @@ The following is an example `package.xml` that references the previous definitio
 
    <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-     <fullName>Pkg</fullName>
+      <types>
 
-     <types>
+        <members>*</members>
 
-      <members>Grams</members>
+        <name>RetrievalSummaryDefinition</name>
 
-      <name>SustainabilityUom</name>
+      </types>
 
-     </types>
-
-     <version>66.0</version>
+      <version>61.0</version>
 
    </Package>
 
@@ -900,117 +1758,617 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### SustnUomConversion
+### Role
 
-Represents information about the unit of measure (UOM) conversion for the custom fuel types defined by a customer in an org.
+Represents a role in your organization.
+
+
+### Metadata Types RoleOrTerritory
+
+Declarative Metadata File Suffix and Directory Location
+
+The file suffix for role components is `.role` and components are stored in the `roles` directory of the corresponding package
+directory.
+
+Version
+
+Role components are available in API version 24.0 and later.
+
+Fields
+
+This metadata type extends to subtype RoleOrTerritory on page 1885.
+
+**Field Name** **Field Type** **Description**
+
+`fullName` string The unique identifier for API access. The `fullName` can contain only
+underscores and alphanumeric characters. It must be unique, begin with
+
+a letter, not include spaces, not end with an underscore, and not contain
+two consecutive underscores. This field is inherited from the Metadata
+component. Corresponds to **Role Name** in the user interface.
+
+`parentRole` string The role above this role in the hierarchy.
+
+Declarative Metadata Sample Definition
+
+The following is the definition of a role.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Role xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <caseAccessLevel>Edit</caseAccessLevel>
+
+      <contactAccessLevel>Edit</contactAccessLevel>
+
+      <description>Sample Role</description>
+
+      <mayForecastManagerShare>false</mayForecastManagerShare>
+
+      <name>R22</name>
+
+      <opportunityAccessLevel>Read</opportunityAccessLevel>
+
+   </Role>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### RoleOrTerritory
+
+Represents the common base type and valid values for role or territory.
+
+
+Metadata Types RoleOrTerritory
+
+Version
+
+RoleOrTerritory components are available in API version 24.0 and later.
+
+Note: You can’t create a RoleOrTerritory component directly. Use the Role or Territory metadata types instead.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`caseAccessLevel` string Specifies whether a user can access other users’ cases that are associated
+with accounts the user owns. Valid values are:
+
+**•** `Read`
+
+**•** `Edit`
+
+**•** `None`
+
+This field is not visible if your organization’s sharing model for cases is
+Public Read/Write.
+
+If no value is set for this field, this field value uses the default access level
+that is specified in the Manage Territory page in Setup.
+
+`contactAccessLevel` string Specifies whether a user can access other users’ contacts that are
+associated with accounts the user owns. Valid values are:
+
+**•** `Read`
+
+**•** `Edit`
+
+**•** `None`
+
+This field is not visible if your organization’s sharing model for contacts
+is Public Read/Write or Controlled by Parent.
+
+If no value is set for this field, this field value uses the default access level
+that is specified in the Manage Territory page in Setup.
+
+`description` string The description of the role or territory.
+
+`fullName` string The unique identifier for API access. The `fullName` can contain only
+underscores and alphanumeric characters. It must be unique, begin with
+
+a letter, not include spaces, not end with an underscore, and not contain
+two consecutive underscores. This field is inherited from the Metadata
+component.
+
+`mayForecastManagerShare` boolean Indicates whether the forecast manager can manually share their own
+forecast.
+
+`name` string Required. The name of the role or territory.
+
+`opportunityAccessLevel` string Specifies whether a user can access other users’ opportunities that are
+associated with accounts the user owns. Valid values are:
+
+**•** `Read`
+
+**•** `Edit`
+
+
+### Metadata Types RpaRobotPoolMetadata
+
+**Field Name** **Field Type** **Description**
+
+**•** `None`
+
+This field is not visible if your organization’s sharing model for
+opportunities is Public Read/Write.
+
+If no value is set for this field, this field value uses the default access level
+that is specified in the Manage Territory page in Setup.
+
+Declarative Metadata Sample Definition
+
+The following is the definition of a role.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Role xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <caseAccessLevel>Edit</caseAccessLevel>
+
+      <contactAccessLevel>Edit</contactAccessLevel>
+
+      <description>Sample Role</description>
+
+      <mayForecastManagerShare>false</mayForecastManagerShare>
+
+      <name>R22</name>
+
+      <opportunityAccessLevel>Read</opportunityAccessLevel>
+
+   </Role>
+
+```
+
+The following is the definition of a territory.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Territory xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <accountAccessLevel>Edit</accountAccessLevel>
+
+      <caseAccessLevel>Edit</caseAccessLevel>
+
+      <contactAccessLevel>Edit</contactAccessLevel>
+
+      <description>Sample Territory</description>
+
+      <mayForecastManagerShare>false</mayForecastManagerShare>
+
+      <name>T22name</name>
+
+      <opportunityAccessLevel>Read</opportunityAccessLevel>
+
+   </Territory>
+
+```
+
+SEE ALSO:
+
+Role
+
+Territory
+
+### RpaRobotPoolMetadata
+
+Reserved for future use.
+
+
+### Metadata Types SalesWorkQueueSettings SalesWorkQueueSettings
+
+Represents settings used to customize work queue options for third-party scoring. In Sales Engagement, you can add a custom number
+field on person accounts, contacts, or leads. Then, use the custom number field to sort the work queue. This type extends the Metadata
+metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### SalesWorkQueueSettings components have the suffix .salesworkqueuesetting and are stored in the
+
+`salesworkqueuesettings` folder.
+
+Version
+
+### SalesWorkQueueSettings components are available in API version 49.0 and later.
+
+Special Access Rules
+
+You must be a Sales Engagement customer to access this metadata type.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`featureName` string The feature that the SalesWorkQueueSettings record is configuring. The allowed
+value is `ThirdPartyScore` .
+
+`targetEntity` string The type that the SalesWorkQueueSettings record is configuring. Possible values
+are:
+
+**•** `Contact`
+
+**•** `Lead`
+
+**•** `PersonAccount`
+
+`targetField` string The developer name or ID of the custom number field that is used to sort the
+work queue. Custom fields must have a custom number data type.
+
+**•** To use Einstein Intelligence Score for lead scoring, use
+`ScoreIntelligence.Score` for the developer name.
+
+**•** To remove custom number fields from the work queue, use `None` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a SalesWorkQueueSettings component. The value for `targetField` is set to `00NRM000001g55D`
+as an example of a custom field ID. Replace this value with the ID of your custom field.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <SalesWorkQueueSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+```
+
+
+### Metadata Types SamlSsoConfig
+
+```
+      <featureName>ThirdPartyScore</featureName>
+
+      <targetEntity>Contact</targetEntity>
+
+      <targetField>00NRM000001g55D</targetField>
+
+   </SalesWorkQueueSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>SalesWorkQueueSettings</name>
+
+      </types>
+
+      <version>49.0</version>
+
+   </Package>
+
+```
+
+Usage
+
+Create one SalesWorkQueueSettings record for each type. For example, suppose that you want to create a work queue to sort leads by
+your custom field called `customLeadScore` . Create a SalesWorkQueueSettings record and set `featureName` to
+`ThirdPartyScore`, `targetEntity` to `Lead`, and `targetField` to `customLeadScore` .
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### SamlSsoConfig
+
+Represents a SAML Single Sign-On configuration. This type extends the Metadata metadata type and inherits its `fullName` field.
+Single sign-on (SSO) is an authentication method that enables users to access multiple applications with one login and one set of
+credentials. For example, after users log in to your org, they can automatically access all apps from the App Launcher. You can set up
+your Salesforce org to trust a third-party identity provider to authenticate users. Or you can configure a third-party app to rely on your
+org for authentication.
+
+File Suffix and Directory Location
+
+### SamlSsoConfig components have the suffix .samlssoconfig and are stored in the samlssoconfigs folder.
+
+Version
+
+### SamlSsoConfig components are available in API version 28.0 and later.
+
+Special Access Rules
+
+As of Summer ’20 and later, only users with the View Setup and Configuration permission or both the Customize Application and Modify
+All Data permissions can access this type.
+
+
+Metadata Types SamlSsoConfig
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`attributeNameIdFormat` string For SAML 2.0, only and when `identityLocation` is set to
+`Attribute` . Possible values include `unspecified`,
+
+`emailAddress`, or `persistent` . All legal values can be found in
+[the “Name Identifier Format Identifiers” section of the Assertions and](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)
+[Protocols SAML 2.0 specification.](http://docs.oasis-open.org/security/saml/v2.0/saml-core-2.0-os.pdf)
+
+`attributeName` string The name of the identity provider’s application. Get this name from your
+identity provider.
+
+`decryptionCertificate` string
+
+`errorUrl` string
+
+The name of the certificate to use for decrypting incoming SAML
+assertions. This certificate is saved in the organization’s Certificate and
+Key Management list. Available in API version 30.0 and later.
+
+When there's an error during login, specify the URL of the page where
+users are directed. It must be publicly accessible, such as a public site
+Visualforce page. The URL can be absolute or relative.
+
+`executionUserId` string The user that runs the Apex handler class. The user must have the Manage
+Users permission. If you specify a SAML JIT handler class, a user is required.
+
+```
+identityLocation
+
+identityMapping
+
+```
+
+SamlIdentityLocationType The location in the assertion where a user is identified. Valid values are:
+(enumeration of type
+
+**•** `SubjectNameId`           - The identity is in the `<Subject>`
+
+string)
+
+statement of the assertion.
+
+**•** `Attribute`           - The identity is specified in an
+`<AttributeValue>`, located in the `<Attribute>` of the
+assertion.
+
+SamlIdentityType The identifier the service provider uses for the user during Just-in-Time
+(enumeration of type user provisioning. Valid values are:
+string)
+
+**•** `Username`           - The user’s Salesforce username.
+
+**•** `FederationId`           - The federation ID from the user object; the
+identifier used by the service provider for the user.
+
+**•** `UserId`           - The user ID from the user’s Salesforce organization.
+
+`issuer` string The identification string for the Identity Provider.
+
+`loginUrl` string For SAML 2.0 only: The URL where Salesforce sends a SAML request to
+start the login sequence.
+
+`logoutUrl` string For SAML 2.0 only: The URL to direct the user to when they click the
+Logout link. The default is `https://salesforce.com` .
+
+`name` string The unique name used by the API and managed packages. The name
+must begin with a letter and use only alphanumeric characters and
+
+underscores. The name cannot end with an underscore or have two
+consecutive underscores.
+
+
+Metadata Types SamlSsoConfig
+
+**Field Name** **Field Type** **Description**
+
+`oauthTokenEndpoint` string For SAML 2.0 only: The ACS URL used with enabling Salesforce as an
+identity provider in the web single sign-on OAuth assertion flow.
+
+`redirectBinding` boolean Choose the binding mechanism your identity provider requests for your
+SAML messages. Values are:
+
+**•** `HTTP POST`                          - HTTP POST binding sends SAML messages using
+base64-encoded HTML forms.
+
+**•** `HTTP Redirect`                          - HTTP Redirect binding sends base64-encoded
+and URL-encoded SAML messages within URL parameters.
+
+`requestSignatureMethod` string The method that’s used to sign the SAML request. Valid values are
+`RSA-SHA1` and `RSA-SHA256` .
+
+`requestSigningCertId` string
+
+The 18-digit ID for the certificate used to generate the signature on a
+SAML request to the identity provider. The certificate is saved in the
+Certificate and Key Management page in Setup.
+
+`salesforceLoginUrl` string The URL associated with login for the web single sign-on flow.
+
+Note: When encryption is enabled, the URL has a parameter
+containing the ID of the SAML configuration,
+
+`sc=` _**`samlSsoConfigId`**_ . For example,
+`https://mycompany.my.salesforce.com?sc=0LEB0000000CCC` .
+This change applies to API Version 47.0 and later.
+
+`samlEntityId` string
+
+The issuer in SAML requests generated by Salesforce, and is also the
+expected audience of any inbound SAML Responses. Salesforce
+recommends that you use your My Domain login URL.
+
+`samlJitHandlerId` string The name of an existing Apex class that implements the
+`Auth.SamlJitHandler` interface.
+
+`samlVersion` SamlType (enumeration of The SAML version in use. Valid values are:
+type string)
+
+**•** `SAML1_1`                       - SAML 1.1
+
+**•** `SAML2_0`                       - SAML 2.0
+
+The HTTP binding type. This value determines where to put the
+LogoutRequest or LogoutResponse in the SAML request during single
+logout (SLO). The value is base64 encoded. Valid values are:
+
+**•** `RedirectBinding` - Sent in the query string, deflated.
+
+**•** `PostBinding` - Sent in the POST body, not deflated.
+
+The SAML single logout endpoint. This URL is the endpoint where
+Salesforce sends LogoutRequests (when Salesforce initiates a logout), or
+LogoutResponses (when the identity provider initiates a logout).
+
+```
+singleLogoutBinding
+
+```
+
+SamlSpSLOBinding
+(enumeration of type
+string)
+
+`singleLogoutUrl` string
+
+`useConfigRequestMethod` boolean If `true`, applies the selected Request Signature Method (RSM) during
+single logout. If `false`, the default RSM (RSA-SHA1) is applied.
+
+
+Metadata Types SamlSsoConfig
+
+**Field Name** **Field Type** **Description**
+
+`useSameDigestAlgoForSigning` boolean
+
+`userProvisioning` boolean
+
+If `true`, uses a digest algorithm based on the selected Request Signature
+Method (RSM). For example, if the selected RSM is `RSA-SHA256`, the
+digest algorithm is set to `SHA-256` .
+
+If `false`, uses the default digest algorithm ( `SHA-1` ), regardless of the
+selected RSM.
+
+This field is available in API version 55.0 and later. You can edit this field
+only for legacy SAML configurations created before Spring ’22. For
+configurations created after Spring ’22, this field is `true` by default.
+
+If `true`, Just-in-Time user provisioning is enabled, which creates users
+the first time they log in. Specify `Federation ID` for the
+`identityMapping` value to use this feature.
+
+`validationCert` string The certificate used to validate the request. Get this certificate from your
+identity provider.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a SamlSsoConfig component. The validation certificate string has been truncated for readability.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <identityLocation>SubjectNameId</identityLocation>
+
+  <identityMapping>FederationId</identityMapping>
+
+  <issuer>https://my-idp.my.salesforce.com</issuer>
+
+  <loginUrl>
+
+   https://my-idp.my.salesforce.com/idp/endpoint/HttpRedirect
+
+  </loginUrl>
+
+  <logoutUrl>https://www.salesforce.com</logoutUrl>
+
+  <name>SomeCompany</name>
+
+  <oauthTokenEndpoint>
+
+   https://login.salesforce.com/services/oauth2/token?so=00DD0000000
+
+  </oauthTokenEndpoint>
+
+  <redirectBinding>true</redirectBinding>
+
+  <requestSignatureMethod>RSA-SHA1</requestSignatureMethod>
+
+  <salesforceLoginUrl>
+
+   https://login.salesforce.com?so=00DD0000000JxeI
+
+  </salesforceLoginUrl>
+
+  <samlEntityId>
+
+   https://saml.salesforce.com/customPath
+
+  </samlEntityId>
+
+  <samlVersion>SAML2_0</samlVersion>
+
+  <useConfigRequestMethod>true</useConfigRequestMethod>
+
+  <userProvisioning>false</userProvisioning>
+
+  <validationCert>
+
+   MIIEojCCA4qgAwIBAgIOATtxsoBFAAAAAD4...
+
+  </validationCert>
+
+</SamlSsoConfig>
+
+```
+
+
+### Metadata Types SchedulingObjective
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### SchedulingObjective
+
+Represents a scheduling objective in Workforce Engagement. Scheduling objectives define business goals that the scheduling tools
+consider when identifying agents for shifts.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
 
 Parent Type
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-
-Metadata Types SustnUomConversion
-
 File Suffix and Directory Location
 
-SustnUomConversion components have the suffix `sustnUomConversion` and are stored in the `sustnUomConversions`
-folder.
+### SchedulingObjective components have the suffix .SchedulingObjective and are stored in the SchedulingObjective folder.
 
 Version
 
-SustnUomConversion components are available in API version 57.0 and later.
+### SchedulingObjective components are available in API version 55.0 and later.
 
 Special Access Rules
 
-The Net Zero Cloud permission set license is required to access this object along with the user access for carbon accounting and org
-access for custom fuels and UOMs.
+This type is available only if Workforce Engagement is enabled in your org. To view, create, edit, and delete records, the user requires
+the Workforce Engagement Planner permission set.
 
 Fields
 
 **Field Name** **Description**
 
 ```
-conversionFactor
-
-fuelType
-
-```
-
-**Field Type**
-double
-
-**Description**
-
-Required.
-
-The conversion factor that's used to convert values from one unit of measure to another
-for the fuel type.
-
-**Field Type**
-string
-
-**Description**
-The name of the fuel type.
-
-Possible values are:
-
-**•** `AutogasLPG`
-
-**•** `Biodiesel`
-
-**•** `Biomass`
-
-**•** `CityGas`
-
-**•** `CompressedNaturalGasCNG`
-
-**•** `Cooling`
-
-**•** `Diesel`
-
-**•** `Electricity`
-
-**•** `Ethanol`
-
-**•** `FuelOil`
-
-**•** `Gasoline`
-
-**•** `Heat`
-
-
-Metadata Types SustnUomConversion
-
-**Field Name** **Description**
-
-**•** `HeavyOil`
-
-**•** `ITElectricity`
-
-**•** `JetFuel`
-
-**•** `Kerosene`
-
-**•** `LightOil`
-
-**•** `LiquidNaturalGasLNG`
-
-**•** `MobileDiesel`
-
-**•** `NaturalGas`
-
-**•** `Propane`
-
-**•** `Refrigerant`
-
-**•** `Steam`
-
-```
 isProtected
 
 masterLabel
-
-sourceUom
 
 ```
 
@@ -1018,119 +2376,1210 @@ sourceUom
 boolean
 
 **Description**
-An auto-generated value that doesn’t impact the behavior of the metadata type.
-
-The default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-A user-friendly name for SustnUomConversion, which is defined when the
-SustnUomConversion is created.
+Indicates whether the component is protected ( `true` ) or not ( `false` ). The default
+value is `false` .
 
 **Field Type**
 string
 
 **Description**
-
-Required.
-
-The source unit of measure for the fuel type.
-
-Possible values are:
-
-**•** `1000m3`
-
-**•** `GJ`
-
-**•** `GWh`
-
-**•** `Kiloliters`
-
-**•** `Liters`
-
-**•** `MJ`
-
-**•** `MMBtu`
-
-**•** `MWh`
-
-**•** `Therms`
+Required. The name of the objective.
 
 
-Metadata Types SustnUomConversion
+Metadata Types SchedulingObjective
 
 **Field Name** **Description**
 
-**•** `Tonnes`
+```
+schedulingCategory
 
-**•** `UkGallons`
+schedulingObjectiveParameters
 
-**•** `UsGallons`
-
-**•** `ccf`
-
-**•** `kG`
-
-**•** `kWh`
-
-**•** `kcal`
-
-**•** `lbs`
-
-**•** `longTons`
-
-**•** `m3`
-
-**•** `shortTons`
+schedulingObjectiveType
 
 ```
-targetUom
 
-uomsKey
+**Field Type**
+SchedulingCategory (enumeration of type string)
+
+**Description**
+Required. What the scheduling logic applies the objective to. The valid values are:
+
+**•** `A` —Service Appointment
+
+**•** `B` —Shift
+
+**Field Type**
 
 ```
+  SchedulingObjectiveParameter[] on page 1894
+
+```
+
+**Description**
+Parameters associated with a scheduling objective, such as the number of days before
+and after a shift that the logic considers when balancing assignments.
+
+**Field Type**
+SchedulingObjectiveType (enumeration of type string)
+
+**Description**
+Required. Specifies the type of objective. Possible values are:
+
+**•** `AgentPreference` —In the UI, this value appears as Maximized Preferences.
+
+**•** `BalanceNonStandardShifts`
+
+**•** `BalanceShifts`
+
+SchedulingObjectiveParameter
+
+Represents a parameter that’s associated with a scheduling objective.
+
+**Field Name** **Description**
+
+```
+parameterKey
+
+value
+
+```
+
+**Field Type**
+ObjectiveParameterKey (enumeration of type string)
+
+**Description**
+Required. The scheduling objective parameter key. Possible values are:
+
+**•** `DaysAhead`
+
+**•** `DaysBack`
 
 **Field Type**
 string
 
 **Description**
+The scheduling objective parameter value.
 
-Required.
 
-The target unit of measure for the fuel type.
-
-**Field Type**
-string
-
-**Description**
-The key associated with a unit of measure for the fuel type.
+### Metadata Types SchedulingRule
 
 Declarative Metadata Sample Definition
 
-The following is an example of a SustnUomConversion component.
+The following is an example of a `SchedulingObjective` component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <SchedulingObjective xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <masterLabel>Balance Shifts</masterLabel>
+
+      <schedulingCategory>B</schedulingCategory>
+
+      <schedulingObjectiveType>BalanceShifts</schedulingObjectiveType>
+
+      <schedulingObjectiveParameters>
+
+        <parameterKey>DaysAhead</parameterKey>
+
+        <value>30</value>
+
+      </schedulingObjectiveParameters>
+
+   </SchedulingObjective>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <name>SchedulingObjective</name>
+
+    <members>Balance Shifts</members>
+
+      </types>
+
+      <version>55.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### SchedulingRule
+
+Represents a scheduling rule in Workforce Engagement Management. Scheduling rules determine when agents are assigned to shifts.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### SchedulingRule components have the suffix .schedulingRule and are stored in the SchedulingRules folder.
+
+Version
+
+### SchedulingRule components are available in API version 53.0 and later.
+
+
+Metadata Types SchedulingRule
+
+Special Access Rules
+
+This type is available only if Workforce Engagement is enabled in your org. To view, create, edit, and delete records, the user requires
+the Workforce Engagement Planner permission set.
+
+Fields
+
+**Field Name** **Description**
+
+```
+isProtected
+
+masterLabel
+
+schedulingCategory
+
+schedulingRuleParameters
+
+schedulingRuleType
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the component is protected ( `true` ) or not ( `false` ). The default
+value is `false` .
+
+**Field Type**
+string
+
+**Description**
+Required. The name of the rule.
+
+**Field Type**
+SchedulingCategory (enumeration of type string)
+
+**Description**
+Required. What the scheduling logic applies the rule to. The valid values are:
+
+**•** `A` —Service Appointment
+
+**•** `B` —Shift
+
+**Field Type**
+
+```
+  SchedulingRuleParameter[] on page 1897
+
+```
+
+**Description**
+Parameters associated with a scheduling rule, such as work limits.
+
+**Field Type**
+SchedulingRuleType (enumeration of type string)
+
+**Description**
+Required. Specifies the type of rule. The valid values are:
+
+**•** `A` —Active Resources
+
+**•** `B` —Match Skills
+
+**•** `C` —Availability
+
+**•** `M` —Match Territory
+
+**•** `Q` —Match Queue
+
+**•** `RestTimeMinutes` —Rest Time in Minutes. Available in API version 56.0 and
+later.
+
+
+Metadata Types SchedulingRule
+
+**Field Name** **Description**
+
+**•** `W` —Work Limit
+
+**•** `LimitNonstandardShifts` —Specifies a rule type that limits how many
+non-standard shifts can be assigned to each agent. Available in API version 54.0
+and later.
+
+SchedulingRuleParameter
+
+Represents a scheduling rule parameter, such as a work limit, that’s associated with a scheduling rule.
+
+**Field Name** **Description**
+
+```
+schedulingParameterKey
+
+value
+
+```
+
+**Field Type**
+SchedulingParameterKey (enumeration of type string)
+
+**Description**
+Required. The scheduling rule parameter key.
+
+**•** `C` —Constraint Field Name
+
+**•** `L` —Limit Type
+
+**•** `R` —Resolution
+
+**•** `T` —Time Resolution
+
+**•** `W` —Work Unit
+
+**•** `ConsiderAbsence` —Consider resource absences when evaluating availability.
+Available in API version 56.0 and later.
+
+**•** `ConsiderSTM` —Consider service territory membership, which defines working
+hours, when evaluating availability. Available in API version 56.0 and later.
+
+**Field Type**
+string
+
+**Description**
+The scheduling rule parameter value.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a `SchedulingRule` component.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
-<SustnUomConversion xmlns="http://soap.sforce.com/2006/04/metadata">
+<SchedulingRule xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <conversionFactor>0.9</conversionFactor>
+   <masterLabel>Max Shifts Per Week</masterLabel>
 
-   <fuelType>Diesel</fuelType>
+   <schedulingCategory>B</schedulingCategory>
 
-   <isProtected>false</isProtected>
+   <schedulingRuleParameters>
 
-   <masterLabel>KG_Liters</masterLabel>
+     <schedulingParameterKey>C</schedulingParameterKey>
 
-   <sourceUom>KG</sourceUom>
+     <value>MaxShiftsPerWeek</value>
 
-   <targetUom>Liters</targetUom>
+   </schedulingRuleParameters>
 
-   <uomsKey>uomsKey</uomsKey>
+   <schedulingRuleParameters>
 
-</SustnUomConversion>
+```
+
+
+### Metadata Types Scontrol
+
+```
+        <schedulingParameterKey>W</schedulingParameterKey>
+
+        <value>Shifts</value>
+
+      </schedulingRuleParameters>
+
+      <schedulingRuleParameters>
+
+        <schedulingParameterKey>R</schedulingParameterKey>
+
+        <value>Week</value>
+
+      </schedulingRuleParameters>
+
+      <schedulingRuleParameters>
+
+        <schedulingParameterKey>L</schedulingParameterKey>
+
+        <value>Max</value>
+
+      </schedulingRuleParameters>
+
+      <schedulingRuleType>W</schedulingRuleType>
+
+   </SchedulingRule>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <name>SchedulingRule</name>
+
+    <members>MaxShiftsPerWeek</members>
+
+      </types>
+
+      <version>53.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### Scontrol
+
+Deprecated. Represents an Scontrol component, corresponding to an s-control in the Salesforce user interface.
+
+Important: Visualforce pages supersede s-controls. Organizations that haven't previously used s-controls can’t create them.
+Existing s-controls are unaffected and can still be edited.
+
+This type extends the MetadataWithContent metadata type and inherits its `content` and `fullName` fields.
+
+Declarative Metadata File Suffix and Directory Location
+
+### The file suffix is .scf for the s-control file. The accompanying metadata file is named ScontrolName -meta.xml . Scontrol components are stored in the scontrols folder in the corresponding package directory.
+
+Version
+
+### Scontrols are available in API version 10.0 and later.
+
+
+Metadata Types Scontrol
+
+Fields
+
+This metadata type contains the following fields:
+
+**Field Name** **Field Type** **Description**
+
+`content` base64Binary Content of the s-control. Base 64-encoded binary data. Before making
+an API call, client applications must encode the binary attachment
+
+data as base64. Upon receiving a response, client applications must
+decode the base64 data to binary. This conversion is handled for you
+by a SOAP client. This field is inherited from the MetadataWithContent
+component.
+
+`contentSource` SControlContentSource (enumeration Required. Determines how you plan to use the s-control:
+of type string)
+
+**•** `HTML` : Select this option if you want to enter the content for your
+s-control in `content` .
+
+**•** `URL` : Select this option if you want to enter the link or URL of an
+external website in `content` .
+
+**•** `Snippet` : Snippets are s-controls that are designed to be
+included in other s-controls. Select this option if you want to enter
+the content for your s-control snippet in `content` .
+
+`description` string Optional text that describes the s-control. This only displays to users
+with View All Data permission (administrator).
+
+`encodingKey` Encoding (enumeration of type string) Required. The default encoding setting is Unicode: `UTF-8` . Change
+it if you’re passing information to a URL that requires data in a different
+
+format. This option is available when you select `URL` as the value for
+`contentSource` .
+
+`fileContent` base64 File contents displayed if you add this s-control to a custom link. The
+file can contain a Java applet, Active-X control, or any other type of
+
+content you want. This option only applies to s-controls with a value
+of `HTML` for `contentSource` .
+
+`fileName` string The unique name for the s-control. This name can contain only
+underscores and alphanumeric characters, and must be unique in
+
+your org. It must begin with a letter, not include spaces, not end with
+an underscore, and not contain two consecutive underscores. This
+field can’t be changed for components installed by a managed
+package. It’s only relevant if the `fileContent` field also has a value.
+This field is available in API version 14.0.
+
+`fullName` string The s-control developer name used as a unique identifier for API access.
+The `fullName` can contain only underscores and alphanumeric
+
+characters. It must be unique, begin with a letter, not include spaces,
+not end with an underscore, and not contain two consecutive
+underscores. If this field contained characters before version 14.0 that
+are no longer allowed, the characters were stripped out of this field,
+and the previous value of the field was saved in the name field. This
+field is inherited from the Metadata component.
+
+
+### Metadata Types SearchCustomization
+
+**Field Name** **Field Type** **Description**
+
+`name` string
+
+Required. The unique name for the s-control. It must contain
+alphanumeric characters only and begin with a letter. For example
+`example_s_control` .
+
+`supportsCaching` boolean Required. Indicates whether the s-control supports caching ( `true` )
+or not ( `false` ). Caching optimizes the page so that it remembers
+
+which s-controls are on the page when it reloads. This option only
+applies to HTML s-controls.
+
+Declarative Metadata Sample Definition
+
+The following sample creates the `Myriad_Publishing.scf` s-control, which creates a link to the website specified in the s-control.
+The corresponding `Myriad_Publishing.scf-meta.xml` metadata file follows the s-control file.
+
+`Myriad_Publishing.scf` file:
+
+```
+http://www.myriadpubs.com
+
+```
+
+`Myriad_Publishing.scf-meta.xml` :
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Scontrol xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <contentSource>URL</contentSource>
+
+   <description>s-control to open Myriad Publishing website.</description>
+
+   <encodingKey>UTF-8</encodingKey>
+
+   <name>Myriad Publishing</name>
+
+   <supportsCaching>true</supportsCaching>
+
+</Scontrol>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### SearchCustomization
+
+Represents the configuration of search settings created in Search Manager. The configuration includes the search channel, searchable
+objects and fields, and rules to filter search results.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types SearchCustomization
+
+File Suffix and Directory Location
+
+SearchCustomization components have the suffix `.searchCustomization` and are stored in the `searchCustomizations`
+folder.
+
+Version
+
+SearchCustomization components are available in API version 61.0 and later.
+
+Special Access Rules
+
+Only users with the View Setup and Configuration permission can access this object, and only users with the Customize Application
+permission can edit it.
+
+Fields
+
+**Field Name** **Description**
+
+```
+channel
+
+masterLabel
+
+objectOverride
+
+objectToAlwaysSearch
+
+profile
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The search channel that the configuration applies to.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the configuration.
+
+**Field Type**
+
+SearchCustomizationObjectOverride[]
+
+**Description**
+A list of object configurations.
+
+**Field Type**
+string[]
+
+**Description**
+A list of the objects that are always searched for the user profile if the search channel
+is Einstein Global Search Bar.
+
+**Field Type**
+string
+
+
+Metadata Types SearchCustomization
+
+**Field Name** **Description**
+
+**Description**
+Specifies user profile if the search channel is Einstein Global Search Bar.
+
+```
+selectedObject
+
+selectedProfile
+
+```
+
+**Field Type**
+string[]
+
+**Description**
+A list of the objects that are selected in the configuration if the search channel is LWR
+Experience Sites.
+
+**Field Type**
+string[]
+
+**Description**
+Specifies all user profiles that are associated with a Search configuration if the search
+channel is Einstein Global Search Bar. This field is available in API version 62.0 and later.
+
+SearchCustomizationObjectOverride
+
+Represents the configuration for a specific object.
+
+**Field Name** **Description**
+
+```
+fieldOverride
+
+objectApiName
+
+rule
+
+searchable
+
+```
+
+**Field Type**
+
+SearchCustomizationFieldOverride[]
+
+**Description**
+A list of field configurations.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The API name of the object that the configuration is applied to.
+
+**Field Type**
+
+SearchCustomizationRule[]
+
+**Description**
+A list of rules applied to filter search results.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the object is searchable ( `true` ) or not ( `false` ).
+
+
+Metadata Types SearchCustomization
+
+SearchCustomizationFieldOverride
+
+Represents the configuration for a specific field within an object.
+
+**Field Name** **Description**
+
+```
+fieldApiName
+
+searchable
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The API name of the field that the configuration is applied to.
+
+**Field Type**
+boolean
+
+**Description**
+
+Required.
+
+Indicates whether the field is searchable ( `true` ) or not ( `false` ).
+
+SearchCustomizationRule
+
+Represents the rules defined in an object to filter search results.
+
+**Field Name** **Description**
+
+```
+fieldApiName
+
+operator
+
+ruleValue
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The field that the rule applies to.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The operator for the rule.
+
+**Field Type**
+
+SearchCustomizationRuleValue[]
+
+**Description**
+A list of rule values.
+
+
+Metadata Types SearchCustomization
+
+SearchCustomizationRuleValue
+
+Represents the value of a rule used to filter search results.
+
+**Field Name** **Description**
+
+```
+targetObjectApiName
+
+value
+
+```
+
+**Field Type**
+string
+
+**Description**
+The API name of the target object, in case the rule applies to a lookup field.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The value of the rule.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a SearchCustomization component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SearchCustomization xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <channel>GlobalSearch</channel>
+
+   <masterLabel>My_Standard_User_Configuration</masterLabel>
+
+   <objectOverride>
+
+     <fieldOverride>
+
+        <fieldApiName>Description</fieldApiName>
+
+        <searchable>false</searchable>
+
+     </fieldOverride>
+
+     <fieldOverride>
+
+        <fieldApiName>Rating</fieldApiName>
+
+        <searchable>true</searchable>
+
+     </fieldOverride>
+
+     <objectApiName>Account</objectApiName>
+
+     <rule>
+
+        <fieldApiName>My_Custom_Field__c</fieldApiName>
+
+        <operator>ne</operator>
+
+        <ruleValue>
+
+          <value>Other</value>
+
+        </ruleValue>
+
+     </rule>
+
+     <rule>
+
+        <fieldApiName>Rating</fieldApiName>
+
+        <operator>in</operator>
+
+        <ruleValue>
+
+          <value>Hot</value>
+
+        </ruleValue>
+
+        <ruleValue>
+
+          <value>Warm</value>
+
+```
+
+
+### Metadata Types SearchOrgWideObjectConfig
+
+```
+           </ruleValue>
+
+        </rule>
+
+      </objectOverride>
+
+      <objectOverride>
+
+        <objectApiName>Asset</objectApiName>
+
+        <searchable>false</searchable>
+
+      </objectOverride>
+
+      <objectOverride>
+
+        <objectApiName>Contact</objectApiName>
+
+        <rule>
+
+           <fieldApiName>AccountId</fieldApiName>
+
+           <operator>ne</operator>
+
+           <ruleValue>
+
+             <targetObjectApiName>Account</targetObjectApiName>
+
+             <value>A Company</value>
+
+           </ruleValue>
+
+        </rule>
+
+        <rule>
+
+           <fieldApiName>DoNotCall</fieldApiName>
+
+           <operator>eq</operator>
+
+           <ruleValue>
+
+             <value>false</value>
+
+           </ruleValue>
+
+        </rule>
+
+      </objectOverride>
+
+      <objectToAlwaysSearch>Account</objectToAlwaysSearch>
+
+      <objectToAlwaysSearch>Contact</objectToAlwaysSearch>
+
+      <objectToAlwaysSearch>My_Custom_Object__c</objectToAlwaysSearch>
+
+      <objectToAlwaysSearch>Product2</objectToAlwaysSearch>
+
+      <profile>standard</profile>
+
+   </SearchCustomization>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>SearchCustomization</name>
+
+      </types>
+
+      <version>61.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### SearchOrgWideObjectConfig
+
+Represents an object in the search index. The search index contains org-wide search settings created in Search Manager. Each object in
+the search index includes searchable fields and fields protected by field-level security in search.
+
+
+Metadata Types SearchOrgWideObjectConfig
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+SearchOrgWideObjectConfig components have the suffix `.searchOrgWideObjectConfig` and are stored in the
+`searchOrgWideConfiguration` folder.
+
+Version
+
+SearchOrgWideObjectConfig components are available in API version 61.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+masterLabel
+
+objectReference
+
+searchOrgWideFieldConfig
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The name of the configuration.
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The API name of the object.
+
+**Field Type**
+
+SearchOrgWideFieldConfig[]
+
+**Description**
+A list of field configurations.
+
+
+Metadata Types SearchOrgWideObjectConfig
+
+SearchOrgWideFieldConfig
+
+Represents the configuration in the search index for a field in an object.
+
+**Field Name** **Description**
+
+```
+fieldReference
+
+isSearchable
+
+isSecure
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The API name of the field.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates if the field is searchable ( `true` ) or not ( `false` ). If `true`, the field is shown
+in search results and used to match results.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates if the field is protected by field-level security in search ( `true` ) or not ( `false` ).
+If `true`, the search engine uses this field to match results only for users with
+permissions. If `false`, the search engine uses this field to match results even if the
+user doesn’t have permissions to view this field.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a SearchOrgWideObjectConfig component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SearchOrgWideObjectConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <masterLabel>CustomerLabel</masterLabel>
+
+   <objectReference>Customer</objectReference>
+
+   <searchOrgWideFieldConfig>
+
+     <fieldReference>Custom_Field_1__c</fieldReference>
+
+     <isSearchable>false</isSearchable>
+
+     <isSecure>false</isSecure>
+
+   </searchOrgWideFieldConfig>
+
+   <searchOrgWideFieldConfig>
+
+     <fieldReference>Custom_Field_2__c</fieldReference>
+
+     <isSearchable>true</isSearchable>
+
+     <isSecure>true</isSecure>
+
+   </searchOrgWideFieldConfig>
+
+</SearchOrgWideObjectConfig>
+
+```
+
+
+### Metadata Types ServiceAISetupDefinition
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>SearchOrgWideObjectConfig</name>
+
+      </types>
+
+      <version>61.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+### ServiceAISetupDefinition
+
+Represents settings for an Einstein for Service feature such as Einstein Article Recommendations. This type extends the Metadata metadata
+type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### ServiceAISetupDefinition components have the suffix .serviceAISetupDescription and are stored in the
+
+`serviceAISetupDescriptions` folder.
+
+Version
+
+### ServiceAISetupDefinition components are available in API version 51.0 and later.
+
+Special Access Rules
+
+This type is available only when an org is configured to access the application in the `appSourceType` field. For example, if
+`appSourceType` is set to ARTICLE_RECOMMENDATION, this type is available only if Einstein Article Recommendations is enabled
+in the org and the Main Services Agreement has been accepted.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+```
+appSourceType
+
+```
+
+ApplicationSourceType Required. The target application for the configuration. Valid values are:
+(enumeration of
+
+**•** `REPLY_RECOMMENDATION` —Einstein Reply Recommendations
+
+type string)
+
+**•** `REPLY_RECOMMENDATION` —Einstein Reply Recommendations
+
+**•** `ARTICLE_RECOMMENDATION` —Einstein Article
+Recommendations
+
+**•** `UTTERANCE_RECOMMENDATION` —Einstein Bot utterances
+
+
+Metadata Types ServiceAISetupDefinition
+
+**Field Name** **Field Type** **Description**
+
+**•** `FAQ` —Einstein Bot frequently asked questions
+
+`name` string Required. A reference to the configuration.
+
+```
+setupStatus
+
+```
+
+ServiceAISetupDefStatus Required. The status of the configuration. Valid values are:
+(enumeration of
+
+**•** `FIELDS_SELECTED`
+
+type string)
+
+**•** `FIELDS_SELECTED`
+
+**•** `TRAINING`
+
+`supportedLanguages` string
+
+**•** `READY_TO_ACTIVATE`
+
+**•** `SERVING`
+
+**•** `RETIRED`
+
+**•** `ARCHIVED`
+
+**•** `READY_FOR_REVIEW`
+
+Required when `appSourceType` is
+`ARTICLE_RECOMMENDATION` . Language codes for selected and
+supported languages.
+
+Declarative Metadata Sample Definition
+
+Here’s an example of a ServiceAISetupDefinition component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ServiceAISetupDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <appSourceType>ARTICLE_RECOMMENDATION</appSourceType>
+
+   <name>SA1601228426202</name>
+
+   <setupStatus>ARCHIVED</setupStatus>
+
+   <supportedLanguages>en,de,fr,it,es,pt,nl</supportedLanguages>
+
+</ServiceAISetupDefinition>
 
 ```
 
@@ -1141,27 +3590,355 @@ The following is an example `package.xml` that references the previous definitio
 
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <fullName>Pkg</fullName>
-
    <types>
 
+     <members>*</members>
+
+     <name>ServiceAISetupDefinition</name>
+
+   </types>
+
+</Package>
+
+```
+
+Usage
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+### Metadata Types ServiceAISetupField ServiceAISetupField
+
+Represents a field on cases or knowledge articles that Einstein uses to identify relevant articles in Einstein Article Recommendations. This
+type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### ServiceAISetupField components have the suffix .serviceAiSetupField and are stored in the serviceAiSetupFields
+
+folder.
+
+Version
+
+### ServiceAISetupField components are available in API version 51.0 and later.
+
+Special Access Rules
+
+This type is available only if Einstein Article Recommendations is enabled in your org and the Main Services Agreement has been accepted.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`entity` string Required. The Case or KnowledgeArticle object for the field.
+
+`field` string Required. The API name of the field.
+
+```
+fieldMappingType
+
+```
+
+### ServiceAISetupFieldType Required. The field type. Valid values are:
+
+(enumeration of
+
+**•** `CASE_DESC`
+
+type string)
+
+**•** `CASE_SUBJ`
+
+`fieldPosition` int
+
+**•** `ARTICLE_TITLE`
+
+**•** `ARTICLE_CONTENT`
+
+**•** `ARTICLE_SUMMARY`
+
+Required. A positive number used to rank the field’s importance. The
+value 1 is most important; higher numbers indicate less important fields.
+Einstein considers fields in the order of importance.
+
+`name` string Required. A reference to the field.
+
+`setupDefinition` string Required. A reference to the parent ServiceAISetupDefinition.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a ServiceAISetupField component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ServiceAISetupField xmlns="http://soap.sforce.com/2006/04/metadata">
+
 ```
 
 
-### Metadata Types SvcCatalogCategory
+### Metadata Types ServiceChannel
 
 ```
-        <members>US_UK_Gallons</members>
+      <entity>Case</entity>
 
-        <members>Therms_kWh</members>
+      <field>Subject</field>
 
-        <members>KG_Liters</members>
+      <fieldMappingType>CASE_SUBJ</fieldMappingType>
 
-        <name>SustnUomConversion</name>
+      <fieldPosition>1</fieldPosition>
+
+      <name>SF16039900475920</name>
+
+      <setupDefinition>4hQRM0000004CDK</setupDefinition>
+
+   </ServiceAISetupField>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>ServiceAISetupField</name>
 
       </types>
 
-      <version>57.0</version>
+   </Package>
+
+```
+
+Usage
+
+This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+### ServiceChannel
+
+Represents a channel of work items that are received from your organization—for example, cases, chats, or leads.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+### ServiceChannel components have the suffix .serviceChannel and are stored in the serviceChannels folder.
+
+Version
+
+### ServiceChannel components are available in API version 44.0 and later.
+
+Special Access Rules
+
+This type is available only if Omni-Channel is enabled in your org.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`acwExtensionDuration` int The maximum length of time, measured in seconds, an agent can spend
+on After Conversation Work (ACW) each time they extend the timer. You
+
+must set this field if `hasAcwExtensionEnabled` is set to `true` .
+
+
+Metadata Types ServiceChannel
+
+**Field Name** **Field Type** **Description**
+
+Specify a value from 10 through 3600. Available only for service channels
+of type Messaging or Voice.
+
+`afterConvoMaxTime` int The maximum length of time, measured in seconds, an agent has to
+complete After Conversation Work (ACW). You must set this field if
+
+`hasAfterConvoWorkTimer` is set to `true` . Specify a value from
+10 through 3600. Available only for service channels of type Messaging
+or Voice.
+
+For service channels of type Voice, this field is available in API version
+52.0 and later. For service channels of type Messaging, this field is
+available in API version 56.0 and later.
+
+`capacityModel` picklist The method that determines when an agent's capacity for a work item
+is released. With the status-based capacity routing model, work remains
+
+assigned and applied to an agent’s capacity until the work is completed
+or reassigned to a different agent. In contrast, the tab-based capacity
+routing model releases an agent’s capacity when a work tab is closed in
+the service console. This field is available in API version 65.0 and later.
+
+Values are:
+
+**•** `STATUS_BASED`
+
+**•** `TAB_BASED`
+
+`doesCheckCapOnOwnerChange` boolean Indicates whether the override for capacity check is on (true) or not
+(false). If it is on, when work is reassigned to another agent it overrides
+
+it and keeps the work assigned to the specific agent. The default value
+is false.This field is available in API version 65.0 and later.
+
+`doesCheckCapOnStatusChange` boolean Indicates whether the override for capacity check is on (true) or not
+(false). If it is on, when work is reopened it is re-assigned to a specific
+
+agent. The default value is false. This field is available in API version 65.0
+and later.
+
+`doesMinimizeWidgetOnAccept` boolean Automatically minimizes the Omni-Channel widget when an agent
+accepts work. This field is available in API version 48.0 and later.
+
+`hasAcwExtensionEnabled` Boolean If set to `true`, agents can extend their After Conversation Work (ACW)
+time. Available only if `hasAfterConvoWorkTimer` is set to `true` .
+
+If set to `true`, you must also set the `acwExtensionDuration`
+and `maxExtensions` fields. The default value is `false` . Available
+only for service channels of type Messaging or Voice. This field is available
+in API version 56.0 and later.
+
+`hasAfterConvoWorkTimer` Boolean If set to `true`, After Conversation Work (ACW) time can be configured
+for the channel. If set to `true`, you must also set the
+
+`afterConvoWorkMaxTime` field. The default value is `false` .
+Available only for service channels of type Messaging or Voice.
+
+
+Metadata Types ServiceChannel
+
+**Field Name** **Field Type** **Description**
+
+For service channels of type Voice, this field is available in API version
+52.0 and later. For service channels of type messaging, this field is
+available in API version 56.0 and later.
+
+`hasAutoAcceptEnabled` Boolean Work items in a service channel open automatically in the agent’s
+workspace so that the agent doesn’t have to manually accept them.
+
+`interactionComponent` string The custom console component to open in the footer when an agent
+accepts a work item from this service channel.
+
+`isInterruptible` boolean
+
+Indicates whether a work item consumes interruptible or primary
+capacity. The default value is false. Available in API version 57.0 and later
+when the Interruptible Capacity feature is enabled.
+
+`label` string Required. The label of the service channel.
+
+`maxExtensions` picklist The maximum number of times an agent can extend their After Work
+Conversation (ACW) time. Specify a value from 1 through 10. You must
+
+set this field if `hasAcwExtensionEnabled` is set to `true` .
+Available only for service channels of type Messaging or Voice. This field
+is available in API version 56.0 and later.
+
+`relatedEntityType` string Required. The type of object that’s associated with this service channel.
+
+`secondaryRoutingPriorityField` string
+
+`serviceChannelStatusFieldMappings` ServiceChannelFieldPriority
+
+The name of the standard field or the ID of the custom field that is used
+for secondary routing priority. This field is available in API version 47.0
+and later.
+
+Represents the value to indicate completed and in-progress work item
+status in the Status-Based Capacity routing model. This field is available
+in API version 65.0 and later.
+
+`serviceChannelFieldPriorities` ServiceChannelFieldPriority[] Required. A set of mappings between secondary routing priority field
+values and priorities. This field is available in API version 47.0 and later.
+
+`statusField` picklist The field that you use to track work status in the Status-Based capacity
+routing model. Use `ServiceChannelStatusField` to specify
+
+the values that indicate completed and in-progress work-item status.
+This field is available in API version 65.0 and later.
+
+ServiceChannelFieldPriority
+
+Represents a secondary routing priority field value mapping. Available in API version 47.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`priority` int Required. The priority number assigned to the mapped field value.
+
+`type` picklist Required. The work item status assigned to the mapped field value.
+Possible types are `IN_PROGRESS`, `PAUSED`, `COMPLETED` .
+
+`value` string Required. The value of Status Field defined in the parent ServiceChannel.
+
+
+### Metadata Types ServicePresenceStatus
+
+**Field Name** **Field Type** **Description**
+
+`value` string Required. The value of the secondaryRoutingPriorityField field defined
+in the parent ServiceChannel.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a ServiceChannel component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ServiceChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <doesMinimizeWidgetOnAccept>true</doesMinimizeWidgetOnAccept>
+
+      <interactionComponent>ConsoleComponent</interactionComponent>
+
+      <label>Case</label>
+
+      <relatedEntityType>Case</relatedEntityType>
+
+      <secondaryRoutingPriorityField>Status</secondaryRoutingPriorityField>
+
+      <serviceChannelFieldPriorities>
+
+        <priority>1</priority>
+
+        <value>Escalated</value>
+
+      </serviceChannelFieldPriorities>
+
+      <serviceChannelFieldPriorities>
+
+        <priority>2</priority>
+
+        <value>On Hold</value>
+
+      </serviceChannelFieldPriorities>
+
+   </ServiceChannel>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>ServiceChannel</name>
+
+      </types>
+
+      <version>44.0</version>
 
    </Package>
 
@@ -1170,106 +3947,90 @@ The following is an example `package.xml` that references the previous definitio
 Wildcard Support in the Manifest File
 
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### SvcCatalogCategory
+### ServicePresenceStatus
 
-Represents the grouping of individual catalog items in Service Catalog.
+Represents a presence status that can be assigned to a service channel. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+
+Metadata Types ServicePresenceStatus
 
 File Suffix and Directory Location
 
-### SvcCatalogCategory components have the suffix category and are stored in the svcCatalogCategories folder.
+ServicePresenceStatus components have the suffix `.servicePresenceStatus` and are stored in the
+`servicePresenceStatuses` folder.
 
 Version
 
-### SvcCatalogCategory components are available in API version 53.0 and later.
+ServicePresenceStatus components are available in API version 44.0 and later.
+
+Special Access Rules
+
+This type is available only if Omni-Channel is enabled in your org.
 
 Fields
 
-**Field Name** **Description**
+**Field Name** **Field Type** **Description**
 
-```
-image
+`channels` ServiceChannelStatus Represents the status that’s associated with a specific service channel.
 
-isActive
+`label` string The label of the presence status.
 
-isProtected
+ServiceChannelStatus
 
-```
+Represents the status that’s associated with a specific service channel.
 
-**Field Type**
-string
+**Field Name** **Field Type** **Description**
 
-**Description**
-The developer name of a content document to be displayed in the Service Catalog
-for this category.
-
-**Field Type**
-boolean
-
-**Description**
-Indicates if a catalog category is active.
-
-**Field Type**
-boolean
-
-**Description**
-An auto-generated value. This value currently has no impact.
-
-
-### Metadata Types SvcCatalogFulfillmentFlow
-
-**Field Name** **Description**
-
-```
-masterLabel
-
-parentCategory
-
-sortOrder
-
-```
-
-**Field Type**
-string
-
-**Description**
-Required. The primary label for the catalog category record.
-
-**Field Type**
-string
-
-**Description**
-If provided, the name of another SvcCatalogCategory that this category should appear
-under. The parent category in this field can’t have its own parent category. Categories
-can’t have more than one level of nesting.
-
-**Field Type**
-int
-
-**Description**
-Displays a set order for catalog category entities.
+`channel` string Represents the channels assigned to the presence status.
 
 Declarative Metadata Sample Definition
 
-The following is an example of a SvcCatalogCategory component.
+The following is an example of a ServicePresenceStatus component.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<SvcCatalogCategory xmlns="http://soap.sforce.com/2006/04/metadata">
+   <ServicePresenceStatus xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <image>AdobeStock_287068722</image>
+      <channels>
 
-   <isActive>true</isActive>
+        <channel>Case</channel>
 
-   <isProtected>false</isProtected>
+      </channels>
 
-   <masterLabel>Workplace Services</masterLabel>
+      <label>Available for Cases</label>
 
-   <sortOrder>4</sortOrder>
+   </ServicePresenceStatus>
 
-</SvcCatalogCategory>
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>ServicePresenceStatus</name>
+
+      </types>
+
+```
+
+
+### Metadata Types ServiceProcess
+
+```
+      <version>44.0</version>
+
+   </Package>
 
 ```
 
@@ -1278,22 +4039,25 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### SvcCatalogFulfillmentFlow
+### ServiceProcess
 
-Represents the flow associated with a specific catalog item in the Service Catalog.
+Represents a process created in Service Process Studio and its associated attributes.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-### SvcCatalogFulfillmentFlow components have the suffix fulfillmentFlow and are stored in the
-
-`svcCatalogFulfillmentFlows` folder.
-
-
-Metadata Types SvcCatalogFulfillmentFlow
+### ServiceProcess components have the suffix .serviceprocess and are stored in the .serviceprocess folder.
 
 Version
 
-SvcCatalogFulfillmentFlows components are available in API version 53.0 and later.
+### ServiceProcess components are available in API version 57.0 and later.
+
+Special Access Rules
+
+Access to the ServiceProcess type requires the AccessToServiceProcess permission.
 
 Fields
 
@@ -1302,15 +4066,7 @@ Fields
 ```
 description
 
-flow
-
-icon
-
-isProtected
-
-items
-
-masterLabel
+processLabel
 
 ```
 
@@ -1318,60 +4074,7 @@ masterLabel
 string
 
 **Description**
-Required. Free-text description of the fulfillment flow.
-
-**Field Type**
-string
-
-**Description**
-Required. The name of the flow represented by this SvcCatalogFulfillmentFlow.
-
-**Field Type**
-string
-
-**Description**
-Represents the details of an icon.
-
-**Field Type**
-boolean
-
-**Description**
-An auto-generated value. This value currently has no impact.
-
-**Field Type**
-
-SvcCatalogFulfillFlowItem on page 2352[]
-
-**Description**
-The list of variables in the flow that can accept a value as input.
-
-**Field Type**
-string
-
-**Description**
-Required. The primary label for the fulfillment flow record.
-
-SvcCatalogFulfillFlowItem
-
-Represents a variable in a fulfillment flow that can accept input. Describes what type of value it accepts.
-
-
-Metadata Types SvcCatalogFulfillmentFlow
-
-**Field Name** **Description**
-
-```
-catalogInputVariable
-
-displayType
-
-fieldDefinition
-
-fieldLookupDomain
-
-isAdditionalQuestionsInputVariable
-
-```
+A meaningful explanation of the service process.
 
 **Field Type**
 string
@@ -1380,578 +4083,115 @@ string
 
 Required.
 
-The FlowVariable the fulfillment flow property represents.
-
-**Field Type**
-PropertyDisplayType (enumeration of type string)
-
-**Description**
-
-The display options available.
-
-Values are:
-
-**•** `Checkbox`
-
-**•** `Date` (available in API version 59.0 and later)
-
-**•** `DateTime` (available in API version 59.0 and later)
-
-**•** `Lookup`
-
-**•** `Number`
-
-**•** `Picklist`
-
-**•** `Queue` (available in API version 57.0 and later)
-
-**•** `Text`
-
-**Field Type**
-string
-
-**Description**
-The name of a field in the object provided in `objectLookupDomain` that specifies
-the value for this variable. If `displayType` is `Picklist`, this value must be the
-name of a picklist field. If `displayType` is `Lookup` and `fieldLookupDomain`
-is `FieldDefinition`, this value must be the name of a relationship field.
-
-**Field Type**
-string
-
-**Description**
-The name of a standard or custom object that specifies the domain of that lookup or
-picklist. This value is relevant only if `displayType` is `Lookup` or `Picklist` .
-
-**Field Type**
-boolean
-
-**Description**
-Determines if this variable accepts input for all additional questions that were asked
-to a user. This value can only be `true` if the `displayType` for this item is `Text` .
-Only one item per SvcCatalogFulfillmentFlow component can set this attribute to
-`true` .
+A meaningful name for the service process.
 
 
-Metadata Types SvcCatalogFulfillmentFlow
+Metadata Types ServiceProcess
 
 **Field Name** **Description**
 
 ```
-isRequired
+serviceProcessAttributes
 
-lookupDomainFieldType
+serviceProcessDependencies
 
-masterLabel
+serviceProcessItemGroups
 
-objectLookupDomain
+shortDescription
+
+usageType
 
 ```
 
+ServiceProcessAttribute
+
 **Field Type**
-boolean
+
+ServiceProcessAttribute[]
 
 **Description**
-Determines if the field is required for the related fulfillment flow to be executed.
+Custom attributes that store the data associated with the service process.
+
+**Field Type**
+
+ServiceProcessDependency[]
+
+**Description**
+Dependent components of the service process, such as OmniScripts or flows.
+
+**Field Type**
+
+ServiceProcessItemGroup[]
+
+**Description**
+Groups of related ServiceProcessAttribute records.
 
 **Field Type**
 string
 
 **Description**
-This value specifies the fields for the object specified by `objectLookupDomain`
-that are displayed in the Catalog Builder by type. This value is only relevant if
-`displayType` is `Lookup` and `fieldLookupDomain` is
-`FieldDefinition` .
+A brief meaningful explanation of the service process.
 
 **Field Type**
-string
+SvcCatalogItemUsageType (enumeration of type string)
 
 **Description**
 
 Required.
 
-The primary label for the fulfillment flow record.
-
-**Field Type**
-string
-
-**Description**
-The name of a custom or standard object. If `displayType` is `Lookup` or
-`Picklist`, this value filters the available options to a specific object.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a SvcCatalogFulfillmentFlow component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<SvcCatalogFulfillmentFlow xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <description>Creates a Case record related to the Contact belonging to the current
-
-User. If this will be used by Users without related Contacts, provide an Account Id below.
-
- This Account Id will be used instead of a Contact.</description>
-
-   <flow>Create_Case_by_Record_Type</flow>
-
-   <isProtected>false</isProtected>
-
-   <items>
-
-     <catalogInputVariable>Input_RecordTypeApiName</catalogInputVariable>
-
-     <displayType>Text</displayType>
-
-     <isAdditionalQuestionsInputVariable>false</isAdditionalQuestionsInputVariable>
-
-     <isRequired>true</isRequired>
-
-     <masterLabel>Record Type Developer Name</masterLabel>
-
-   </items>
-
-   <items>
-
-```
-
-
-Metadata Types SvcCatalogFulfillmentFlow
-
-```
-        <catalogInputVariable>Input_AccountId</catalogInputVariable>
-
-        <displayType>Lookup</displayType>
-
-        <fieldDefinition>AccountId</fieldDefinition>
-
-        <fieldLookupDomain>Account</fieldLookupDomain>
-
-        <isAdditionalQuestionsInputVariable>false</isAdditionalQuestionsInputVariable>
-
-        <isRequired>false</isRequired>
-
-        <masterLabel>(Optional) Related Account</masterLabel>
-
-        <objectLookupDomain>Contact</objectLookupDomain>
-
-      </items>
-
-      <items>
-
-        <catalogInputVariable>Input_Origin</catalogInputVariable>
-
-        <displayType>Picklist</displayType>
-
-        <fieldDefinition>Origin</fieldDefinition>
-
-        <isAdditionalQuestionsInputVariable>false</isAdditionalQuestionsInputVariable>
-
-        <isRequired>true</isRequired>
-
-        <masterLabel>Case Origin</masterLabel>
-
-        <objectLookupDomain>Case</objectLookupDomain>
-
-      </items>
-
-      <items>
-
-        <catalogInputVariable>Input_Priority</catalogInputVariable>
-
-        <displayType>Picklist</displayType>
-
-        <fieldDefinition>Priority</fieldDefinition>
-
-        <isAdditionalQuestionsInputVariable>false</isAdditionalQuestionsInputVariable>
-
-        <isRequired>false</isRequired>
-
-        <masterLabel>Case Priority</masterLabel>
-
-        <objectLookupDomain>Case</objectLookupDomain>
-
-      </items>
-
-      <items>
-
-        <catalogInputVariable>Input_Status</catalogInputVariable>
-
-        <displayType>Picklist</displayType>
-
-        <fieldDefinition>Status</fieldDefinition>
-
-        <isAdditionalQuestionsInputVariable>false</isAdditionalQuestionsInputVariable>
-
-        <isRequired>true</isRequired>
-
-        <masterLabel>Case Status</masterLabel>
-
-        <objectLookupDomain>Case</objectLookupDomain>
-
-      </items>
-
-      <items>
-
-        <catalogInputVariable>Input_Subject</catalogInputVariable>
-
-        <displayType>Text</displayType>
-
-        <isAdditionalQuestionsInputVariable>false</isAdditionalQuestionsInputVariable>
-
-        <isRequired>true</isRequired>
-
-        <masterLabel>Case Subject</masterLabel>
-
-      </items>
-
-      <items>
-
-        <catalogInputVariable>Input_Description</catalogInputVariable>
-
-        <displayType>Text</displayType>
-
-        <isAdditionalQuestionsInputVariable>true</isAdditionalQuestionsInputVariable>
-
-        <isRequired>false</isRequired>
-
-        <masterLabel>Case Description</masterLabel>
-
-      </items>
-
-      <masterLabel>Create Case by Record Type</masterLabel>
-
-   </SvcCatalogFulfillmentFlow>
-
-```
-
-
-### Metadata Types SvcCatalogItemDef
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### SvcCatalogItemDef
-
-Represents the entity associated with a specific, individual service available in the Service Catalog.
-
-File Suffix and Directory Location
-
-### SvcCatalogItemDef components have the suffix catalogItem and are stored in the svcCatalogItems folder.
-
-Version
-
-### SvcCatalogItemDef components are available in API version 53.0 and later.
-
-Fields
-
-**Field Name** **Description**
-
-```
-apiVersion
-
-catalogFilterCriteria
-
-categories
-
-dataCategories
-
-```
-
-**Field Type**
-double
-
-**Description**
-The API version in which this catalog item was created. The value for this field updates
-based on the value of `fulfillmentFlow` . For catalog items created before version
-57.0, the value for this field is `null` . Available in version 57.0 and later.
-
-**Field Type**
-### SvcCatalogItemDefFiltrCrit[]
-
-**Description**
-The eligibility rule associated with a catalog item. Eligibility rules customize access to
-catalog items for different audiences, based on the User object. Available in API version
-59.0 and later.
-
-**Field Type**
-
-SvcCatalogCategoryItem[]
-
-**Description**
-A list of catalog categories that contain this catalog item.
-
-**Field Type**
-### SvcCatalogItemDefDataCategorySelection[]
-
-**Description**
-A list of data categories for this catalog item. Available in API version 59.0 and later.
-
-
-Metadata Types SvcCatalogItemDef
-
-**Field Name** **Description**
-
-```
-description
-
-flow
-
-fulfillmentFlow
-
-image
-
-inputs
-
-internalNotes
-
-isAvailableToAllCustomers
-
-```
-
-**Field Type**
-string
-
-**Description**
-Description of the catalog item.
-
-**Field Type**
-string
-
-**Description**
-The screen flow associated with the catalog item. Available in API version 53.0 to 58.0.
-
-**Field Type**
-string
-
-**Description**
-Name of the related `SvcCatalogFulfillmentFlow` on page 2351, which
-represents the flow associated with a specific catalog item in the Service Catalog.
-Available in API version 56.0 and later.
-
-**Field Type**
-string
-
-**Description**
-The developer name of a content document to be displayed in the Service Catalog
-for this item.
-
-**Field Type**
-
-SvcCatalogItemAttribute[]
-
-**Description**
-Represents attributes of a catalog item version. Available in API version 57.0 and later.
-
-**Field Type**
-string
-
-**Description**
-Intended to describe what the catalog item does and its implementation. That value
-is meant for other catalog builders.
-
-**Field Type**
-boolean
-
-**Description**
-Required. Controls catalog item access for internal users. To share with all internal
-users, set the value to `True` . This value corresponds to the **Allow Access for All**
-**Users** option for Internal Access in the Catalog Item Builder. Available in API version
-61.0 and later.
-
-
-Metadata Types SvcCatalogItemDef
-
-**Field Name** **Description**
-
-```
-isFeatured
-
-isGuestAccessible
-
-isProtected
-
-masterLabel
-
-sharedTo
-
-status
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-Determines if the catalog item is part of the featured catalog items.
-
-**Field Type**
-boolean
-
-**Description**
-Required. Controls catalog item access for guest users. To share with guests, set the
-value to `True` . This value corresponds to **Guest Visibility** option for External Access
-in the Catalog Item Builder. Available in API version 61.0 and later.
-
-**Field Type**
-boolean
-
-**Description**
-An auto-generated value. This value has no impact.
-
-**Field Type**
-string
-
-**Description**
-Required. The primary label for the catalog item record.
-
-**Field Type**
-
-SharedTo on page 2292
-
-**Description**
-Describes how the catalog item is shared across multiple catalog categories.
-SvcCatalogItemDef only supports sharing with groups.
-
-**Field Type**
-PublishStatusType (enumeration of type string)
-
-**Description**
-
-Required. Displays the publishing status of a catalog item.
+The Cloud that uses this service process.
 
 Values are:
 
-**•** `Deprecated`
+**•** `CustomerService`
 
-**•** `Draft`
+**•** `Employee`
 
-**•** `PendingChanges`
+**•** `FinancialServices`
 
-**•** `Published`
+**•** `Industry (available in version 58.0 and later)`
 
-
-Metadata Types SvcCatalogItemDef
-
-SvcCatalogItemDefFiltrCrit
-
-Represents the association of an eligibility rule with a catalog item. Eligibility rules customize access to catalog items for different
-audiences, based on the User object. Available in version 59.0 and later.
+A custom attribute that stores data associated with a service process. For example, a service process that reverses a fee can have a Fee
+Type attribute.
 
 **Field Name** **Description**
 
 ```
-svcCatalogFilterCriteria
+attributeType
 
 ```
 
 **Field Type**
-string
-
-**Description**
-The name of the associated `catalogFilerCriteria` eligibility filter.
-
-SvcCatalogCategoryItem
-
-Represents the assignment of this service to a category within the Service Catalog.
-
-**Field Name** **Description**
-
-```
-isPrimaryCategory
-
-sortOrder
-
-svcCatalogCategory
-
-```
-
-**Field Type**
-boolean
-
-**Description**
-Determines if the catalog category ( `svcCatalogCategory` ) is the primary category
-for this catalog item. Exactly one category per SvcCatalogItemDef component must
-set this attribute to true.
-
-**Field Type**
-int
-
-**Description**
-The position of the catalog item relative to other catalog items in the catalog category.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The catalog category the catalog item is assigned to.
-
-SvcCatalogItemDefDataCategorySelection
-
-Represents a list of data categories for this catalog item. This subtype is available in API version 59.0 and later.
-
-**Field Name** **Description**
-
-```
-category
-
-```
-
-**Field Type**
-string
+SvcCtlgItemAttrAttributeType (enumeration of type string)
 
 
-Metadata Types SvcCatalogItemDef
+Metadata Types ServiceProcess
 
 **Field Name** **Description**
 
 **Description**
+A `Base` attribute corresponds to a SvcCatalogRequest field, which is subject to
+field-level security. An `Extended` attribute is only a ServiceProcessAttribute object
+record, which isn't subject to field-level security.
 
-API name of a data category.
+Values are:
 
-```
-categoryGroup
+**•** `Base`
 
-```
+**•** `Extended`
 
-SvcCatalogItemAttribute
-
-**Field Type**
-string
-
-**Description**
-
-API Name of a data category group.
-
-Represents an attribute of a catalog item version. It can be a static input filled by the catalog builder user or additional questions that
-end users answer at runtime. Available in API version 57.0 and later.
-
-**Field Name** **Description**
+The default is `Extended` .
 
 ```
-field
-
-inputType
+dataType
 
 ```
-
-**Field Type**
-string
-
-**Description**
-
-Applicable when the display type is Lookup/Reference.
 
 **Field Type**
 SvcCatalogItemAttrDataType (enumeration of type string)
 
 **Description**
-
-Required.
+The data type of the attribute.
 
 Values are:
 
@@ -1983,11 +4223,6 @@ Values are:
 
 **•** `ListOfMaps`
 
-
-Metadata Types SvcCatalogItemDef
-
-**Field Name** **Description**
-
 **•** `ListOfString`
 
 **•** `Lookup`
@@ -2008,6 +4243,11 @@ Metadata Types SvcCatalogItemDef
 
 **•** `Picklist`
 
+
+Metadata Types ServiceProcess
+
+**Field Name** **Description**
+
 **•** `Queue`
 
 **•** `RadioButton` (available in API version 65.0 and later)
@@ -2022,258 +4262,282 @@ Metadata Types SvcCatalogItemDef
 
 **•** `Url`
 
+The default is `Text` .
+
+Note: Selecting `Currency` doesn't cause an error, but currency conversions
+aren't supported.
+
 ```
-inputVariable
+description
+
+developerName
+
+fieldIdentifier
+
+groupApiName
+
+inputVariableValue
 
 isRequired
 
-label
-
-maxValue
-
 ```
 
 **Field Type**
 string
 
 **Description**
+A meaningful explanation of the attribute.
 
-References the input variable to which the attribute value is forwarded.
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+A system name for the attribute.
+
+**Field Type**
+string
+
+**Description**
+For a `Base` attribute, the Developer Name of the SvcCatalogRequest field. This field
+can be standard or custom.
+
+**Field Type**
+string
+
+**Description**
+The `apiName` of the ServiceProcessItemGroup to which this attribute belongs.
+
+**Field Type**
+string
+
+**Description**
+The default value of the attribute.
 
 **Field Type**
 boolean
 
-**Description**
 
-Determines if an answer is required for this question.
+Metadata Types ServiceProcess
+
+**Field Name** **Description**
+
+**Description**
+Specifies whether the attribute is required. The default is `false` .
+
+```
+label
+
+parentAttribute
+
+sortOrder
+
+```
 
 **Field Type**
 string
 
 **Description**
 
-A translatable label for rendering the attribute to users.
+Required.
+
+A meaningful name for the attribute.
 
 **Field Type**
-double
+string
 
 **Description**
+The parent attribute of this attribute. For example, a Latitude attribute can have
+GeoLocation as a parent.
 
-Applicable when the display type is slider.
+**Field Type**
+int
 
+**Description**
+The position of the attribute in the payload relative to other attributes having no parent
+or the same parent.
 
-Metadata Types SvcCatalogItemDef
+ServiceProcessDependency
+
+A dependent component of the service process, which can be a flow, an OmniScript, an Integration Definition, or a preprocessor Apex
+class.
 
 **Field Name** **Description**
 
 ```
-minValue
+dependencyReference
 
-name
-
-object
-
-options
-
-type
-
-value
+processStepName
 
 ```
 
 **Field Type**
-double
-
-**Description**
-
-Applicable when the display type is slider.
-
-**Field Type**
 string
 
 **Description**
 
-Required. Applicable when the display type is Lookup/Reference.
+Required.
+
+The Developer Name of the flow, OmniScript, Integration Definition, or preprocessor
+Apex class.
 
 **Field Type**
-string
+SvcCtlgItemDpndProcType (enumeration of type string)
 
 **Description**
-A picklist object’s custom API Name. Applies when `inputType` is set to `Picklist` .
-
-**Field Type**
-SvcCatalogItemAttrDetail
-
-**Description**
-The values attached to an attribute of an item version.
-
-**Field Type**
-SvcCatalogItemAttrType (enumeration of type string)
-
-**Description**
-
-Required. Type of the attribute; used to determine if it's a pre-filled input or questions
-to ask users.
+Name of the step in a service process.
 
 Values are:
 
-**•** `FulfillmentInput`
+**•** `FulfillmentFlow`
 
-**•** `UserQuestion`
+
+Metadata Types ServiceProcess
+
+**Field Name** **Description**
+
+**•** `IntegrationDefinition`
+
+**•** `Preprocessor`
+
+**•** `RequestForm`
+
+```
+type
+
+```
 
 **Field Type**
-string
+SvcCatalogItemDependencyType (enumeration of type string)
 
 **Description**
 
-Attribute value defined by the catalog builder.
+Required.
 
-SvcCatalogItemAttrDetail
+The type of dependent component.
 
-Represents the details for an attribute of an item version. Used for options displayed in picklist or checkbox groups.
+Values are:
 
+**•** `FlowDefinition`
 
-Metadata Types SvcCatalogItemDef
+**•** `IntegrationProviderDef`
+
+**•** `OmniScriptConfig`
+
+**•** `PreprocessorApexClass`
+
+ServiceProcessItemGroup
+
+A group of related ServiceProcessAttribute records.
 
 **Field Name** **Description**
 
 ```
-isDefault
+apiName
 
-label
+groupName
 
-value
+sortOrder
 
 ```
 
 **Field Type**
-boolean
+string
 
 **Description**
 
-Required. Marks the attribute detail as the default. Applicable when the input display
-type is picklist or checkbox.
+Required.
+
+The API Name of the group.
 
 **Field Type**
 string
 
 **Description**
 
-Required. Picklist option label when the input type is picklist or checkbox.
+Required.
+
+The name of the group.
 
 **Field Type**
-string
+int
 
 **Description**
 
-Attribute value defined by the catalog builder.
+Required.
+
+The group display order.
+
+
+Metadata Types ServiceProcess
 
 Declarative Metadata Sample Definition
 
-The following is an example of a SvcCatalogItemDef component.
+The following is an example of a ServiceProcess component.
 
 ```
-<SvcCatalogItemDef xmlns="http://soap.sforce.com/2006/04/metadata">
+   <?xml version="1.0" encoding="UTF-8"?>
 
-   <apiVersion>57.0</apiVersion>
+   <ServiceProcess xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <categories>
+     <processLabel>EmailUpdate</processLabel>
 
-     <isPrimaryCategory>true</isPrimaryCategory>
+     <usageType>FinancialServices</usageType>
 
-     <sortOrder>3</sortOrder>
+     <serviceProcessAttributes>
 
-     <svcCatalogCategory>Category1</svcCatalogCategory>
+       <label>EmailAddress</label>
 
-   </categories>
+       <developerName>EmailAddress</developerName>
 
-   <dataCategories>
+       <dataType>Text</dataType>
 
-     <category>France</category>
+       <groupApiName>Info</groupApiName>
 
-     <categoryGroup>World</categoryGroup>
+     </serviceProcessAttributes>
 
-   </dataCategories>
+     <serviceProcessDependencies>
 
-   <masterLabel>Item Draft Update</masterLabel>
+       <dependencyReference>EmailPreprocessor</dependencyReference>
 
-   <description>Item with a Draft state</description>
+       <type>PreprocessorApexClass</type>
 
-   <fulfillmentFlow>TestQuestions</fulfillmentFlow>
+     </serviceProcessDependencies>
 
-   <isFeatured>false</isFeatured>
+     <serviceProcessItemGroups>
 
-   <isProtected>false</isProtected>
+        <apiName>Info</apiName>
 
-   <status>Published</status>
+        <groupName>Info</groupName>
 
-   <inputs>
+        <sortOrder>1</sortOrder>
 
-     <name>Input1</name>
+      </serviceProcessItemGroups>
 
-     <type>FulfillmentInput</type>
-
-     <inputVariable>input1</inputVariable>
-
-     <label>Input Static</label>
-
-     <inputType>Text</inputType>
-
-     <isRequired>false</isRequired>
-
-   </inputs>
-
-   <inputs>
+   </ServiceProcess>
 
 ```
 
-
-### Metadata Types SynonymDictionary
+The following is an example `package.xml` that references the previous definition.
 
 ```
-        <type>UserQuestion</type>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-        <inputType>Picklist</inputType>
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-        <isRequired>false</isRequired>
+      <types>
 
-        <label>My First Question</label>
+        <members>*</members>
 
-        <name>first_question</name>
+        <name>ServiceProcess</name>
 
-        <options>
+      </types>
 
-           <label>Option 1</label>
+      <version>57.0</version>
 
-           <value>option_1</value>
-
-           <isDefault>true</isDefault>
-
-        </options>
-
-        <options>
-
-           <label>Option 2</label>
-
-           <value>option_2</value>
-
-           <isDefault>false</isDefault>
-
-        </options>
-
-        <options>
-
-           <label>Option 3</label>
-
-           <value>option_3</value>
-
-           <isDefault>false</isDefault>
-
-        </options>
-
-      </inputs>
-
-   </SvcCatalogItemDef>
+   </Package>
 
 ```
 
@@ -2282,1137 +4546,1178 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### SynonymDictionary
+Usage Type
 
-Represents a set of synonym groups, which are groups of words or phrases that are treated as equivalent in users’ searches. You can
-define synonym groups to optimize search results for acronyms, variations of product names, and other terminology unique to your
-organization.
+We recommend that you review these considerations before you retrieve or deploy service process metadata.
 
-Synonyms are available in Service Cloud features such as Salesforce Knowledge. This type extends the Metadata metadata type and
+**•** If you deploy metadata with the same name as the definition when your service process definition is active, you get an error message.
+Deactivate the service process definition and try again.
+
+**•** When your service process definition is inactive, consider these guidelines.
+
+**–** If a service process definition contains service catalog requests and service catalog request extended attribute values and you
+deploy metadata with the same name as the definition, you get an error message. You can’t delete or change a service process
+that has service catalog requests with attribute values in it. Make sure that all records are deleted in service catalog requests and
+service catalog request extended attribute values before you deploy the metadata.
+
+
+### Metadata Types Settings
+
+**–** If a service process definition contains service catalog requests but doesn’t contain service catalog request extended attribute
+values and you deploy the metadata with the same name, the deployment works as expected.
+
+**–** If a service process definition doesn’t contain service catalog requests and you deploy the metadata with the same name, the
+deployment works as expected.
+
+### Settings
+
+Represents the organization settings related to a feature. For example, your password policies, session settings and network access
+controls are all available in the SecuritySettings component type.
+
+Not all feature settings are available in the Metadata API. See Unsupported Metadata Types on page 170 for information on which feature
+settings are not available.
+
+### Settings can be accessed using the specific component member or via wildcard. For example, in the package manifest file you would
+
+use the following section to access SecuritySettings:
+
+```
+      <types>
+
+        <members>Security</members>
+
+        <name>Settings</name>
+
+      </types>
+
+```
+
+The member format when used in the package manifest is the component metadata type name without the “Settings” suffix, so in the
+preceding example “Security” is used instead of “SecuritySettings”.
+
+File Suffix and Directory Location
+
+Each settings component gets stored in a single file in the `settings` directory of the corresponding package directory. The filename
+uses the format _`Setting feature`_ `.settings` . For example, the SecuritySettings file would be `Security.settings` . See
+“File Suffix and Directory Location” information for the individual settings components to determine the exact filename.
+
+Version
+
+### Settings is available in API version 27.0 and later. See the version information for the individual setting component to determine which
+
+API version the settings component became available.
+
+Declarative Metadata Sample Definition
+
+The following is an example package manifest used to deploy or retrieve only the MobileSettings for an organization:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>Mobile</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>27.0</version>
+
+   </Package>
+
+```
+
+
+Metadata Types Settings
+
+The following is an example package manifest used to deploy or retrieve all the available settings metadata for an organization, using
+a wildcard:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>*</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>27.0</version>
+
+   </Package>
+
+```
+
+AccountPlanSettings
+Represents an org’s account plan settings. These settings control features that make it easy for sales reps to set objectives with
+actionable metrics and to store account research and analysis.
+
+AccountSettings
+Represents an org’s account settings for account teams, account owner report, and the **View Hierarchy** link.
+
+AccountInsightsSettings
+Represents an org’s Einstein Account Insights settings. This setting controls features that help your reps maintain their relationships
+with their customers.
+
+AccountIntelligenceSettings
+Represents an org’s Account Intelligence settings. These settings control features that make it easy for sales reps to create accounts,
+see relevant news articles, and add logos to account records. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+AccountingSettings
+Represents the settings for the Accounting Subledger feature.
+
+ActionsSettings
+Represents an org’s actions settings for default quick actions, multi-dimensional publisher, and third-party actions. This type extends
+the Metadata metadata type and inherits its `fullName` field.
+
+ActivitiesSettings
+Represents an org's activity settings, and its user interface settings for the calendar. This type extends the Metadata metadata type
+and inherits its `fullName` field.
+
+AddressSettings
+Represents the configuration of country/territory and state picklists. Use the AddressSettings component type to configure state
+and country/territory data in your organization so that you can convert text-based values into standard picklist values. To convert
+your state and country/territory values, from Setup, enter _`State and Country/Territory Picklists`_ in the Quick
+Find box, then select **State and Country/Territory Picklists** .
+
+AIReplyRecommendationsSettings
+Represents the metadata used to manage settings for Einstein Reply Recommendations. This type extends the Metadata metadata
+type and inherits its `fullName` field.
+
+AgentPlatformSettings
+Represents settings for Agentforce.
+
+AgentforceForDevelopersSettings
+Represents Agentforce for Developers settings.
+
+
+Metadata Types Settings
+
+AnalyticsSettings
+Represents Analytics settings in Salesforce. CRM Analytics lets you explore all your data quickly and easily by providing AI-powered
+advanced Analytics right inside Salesforce. Manage your datasets, query data with Salesforce Analytics Query Language (SAQL), and
+customize dashboards. You can use these settings to configure which Analytics features are available to users in your organization.
+
+ApexSettings
+Represents Apex-related org settings. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+AppAnalyticsSettings
+Represents settings to retrieve AppExchange App Analytics usage data.
+
+AppExperienceSettings
+Represents settings for the app experience.This type extends the Metadata metadata type and inherits its `fullName` field.
+
+AssociationEngineSettings
+Represents the record association builder settings for an org. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+AutomatedContactsSettings
+Represents an org’s Einstein Automated Contacts settings. These settings let you find new contacts and opportunity contact roles.
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+BotSettings
+Represents an organization’s Einstein Bot settings, such as whether or not Einstein Bots is enabled. This type extends the Metadata
+metadata type and inherits its `fullName` field.
+
+BranchManagementSettings
+Represents the branch management settings for an org. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+BusinessHoursSettings
+Represents the metadata used to manage settings for business hours and holidays in entitlements, entitlement templates, campaigns,
+and cases. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+CampaignSettings
+Represents an org’s Campaign Influence, Einstein Attribution, Einstein Key Accounts, and campaign member settings. These features
+help you understand how your campaigns and accounts are affecting your opportunity pipeline.
+
+CaseSettings
+Represents an organization’s case settings, such as the default case owner, which case-related features are enabled, and which
+Classic email templates are used for various case activities. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+ChatterAnswersSettings
+Represents the metadata used to manage settings for Chatter Answers.
+
+ChatterEmailsMDSettings
+Represents an org’s settings for Chatter email when Chatter is enabled. This type extends the Metadata metadata type and inherits
+its `fullName` field.
+
+ChatterSettings
+Represents an org’s settings for their Chatter instance when Chatter is enabled for the org. This type extends the Metadata metadata
+type and inherits its `fullName` field.
+
+CodeBuilderSettings
+Represents Code Builder settings. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types Settings
+
+CollectionsDashboardSettings
+Represents an org’s settings to add the Collections Dashboard application to an org.
+
+CommunitiesSettings
+Represents community settings for an org. Enable digital experiences and workspaces. Manage moderation, guest user and partner
+settings, and more. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+CompanySettings
+Represents global settings that affect multiple features in your organization. This type extends the Metadata metadata type and
 inherits its `fullName` field.
 
-File Suffix and Directory Location
+ConnectedAppSettings
+Represents settings for connected apps. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-### SynonymDictionary components have the suffix .synonymDictionary and are stored in the synonymDictionaries folder.
+ContentSettings
+Represents content settings for an org. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Version
+ContractSettings
+Represents contract settings.
 
-### SynonymDictionary components are available in API version 29.0 and later.
+ConversationalIntelligenceSettings
+Represents the org's Einstein Conversation Insights settings, such as whether Einstein Conversation Insights is enabled. Einstein
+Conversation Insights lets you analyze your rep's call recordings, and gives you the insights you need to optimize every call.
 
-Special Access Rules
+ConversationChannelDefinition
+Represents the conversation channel definition that’s implemented for Interaction Service for Bring Your Own Channel for Messaging
+and Bring Your Own Channel for CCaaS messaging channels. This object is available in API version 60.0 and later.
 
-Synonyms must be enabled in your organization. Only users with the “Manage Synonyms” permission can access this object.
+CurrencySettings
+Represents an organization’s currency settings, including supporting multiple currencies and currency effective dates. This type
+extends the Metadata metadata type and inherits its `fullName` field.
 
+CustomAddressFieldSettings
+Represents the settings for custom address fields.
 
-Metadata Types SynonymDictionary
+DataDotComSettings
+Represents the org's Data.com settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Fields
+DataImportManagementSettings
+Represents an org's contact and leads import settings.
 
-**Field Name** **Field Type** **Description**
+DeploymentSettings
+Represents the settings affecting how deployments behave in the org. This type extends the Metadata metadata type and inherits
+its `fullName` field.
 
-`groups` SynonymGroup The synonym groups defined in this dictionary.
+DevHubSettings
+Represents Dev Hub settings.
 
-`isProtected` boolean
+DocumentGenerationSetting
+Represents an org's settings for automatic document generation from templates. This type extends the Metadata metadata type
+and inherits its `fullName` field.
 
-Indicates whether this component is protected ( `true` ) or not ( `false` ).
-Protected components cannot be linked to or referenced by components
-created in the installing organization.
+DynamicFormsSettings
+Represents the settings related to Dynamic Forms.
 
-`label` string Required. Specifies the display name of the synonym dictionary.
 
-SynonymGroup
+Metadata Types Settings
 
-Represents a group of synonymous words or phrases.
+EACSettings
+Represents the Einstein Activity Capture metadata type. Use Einstein Activity Capture to add emails and events from your Microsoft
+or Google account to the activity timeline of related Salesforce records. Automatically sync contact and event data between your
+Microsoft or Google account and Salesforce. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-**Field Name** **Field Type** **Description**
+EinsteinAISettings
+Represents Einstein AI settings, including AI feedback integration with Data 360 and PII masking for AI trust features.
 
-`languages` Language on page Required. Specifies the languages the synonym group applies to. If synonyms
-2390 are specific to a single language, specify only that language. If the synonyms
+EinsteinAgentSettings
+Represents settings for Einstein classification apps, Einstein Case Classification and Einstein Case Wrap-Up, in an org. This type
+extends the Metadata metadata type and inherits its `fullName` field.
 
-apply to multiple languages, specify multiple languages for one synonym
-group.
+EinsteinGptSettings
+Represents settings for Einstein Generative AI features in an org. This type extends the Metadata metadata type and inherits its
+`fullName` field
 
-`terms` string
+EmailAdministrationSettings
+Represents an organization’s email administration settings, including email deliverability, security compliance, relay configurations,
+and system notifications. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Required. A word or phrase synonymous with other terms in the group.
-Maximum of 50 characters. Minimum of two `terms` per group.
+EmailIntegrationSettings
+Represents an org’s settings for the Outlook integration, Gmail integration, and Salesforce Inbox. This type extends the Metadata
+metadata type and inherits its `fullName` field.
 
-Synonym groups are symmetric, which means that if oranges and apples are
-defined in a synonym group, a search for _`oranges`_ will return a match for
-_`apples`_, and vice versa for a search for _`apples`_ .
+EmailTemplateSettings
+Represents an org’s email template settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Declarative Metadata Sample Definition
+EmployeeUserSettings
+Represents the employee-user settings used for automatically creating or syncing employee and user data in work.com orgs. This
+type extends the Metadata metadata type and inherits its `fullName` field.
 
-The following is an example of a SynonymDictionary component:
+EnhancedNotesSettings
+Represents an org’s enhanced note settings, such as enabling enhanced notes and enabling tasks in enhanced notes.This type
+extends the Metadata metadata type and inherits its `fullName` field.
 
-```
-<?xml version="1.0" encoding="UTF-8"?>
+EncryptionKeySettings
+Represents an org’s encryption key settings, such as customer-supplied keys options and key derivation settings. This type extends
+the Metadata metadata type and inherits its `fullName` field.
 
-<SynonymDictionary xmlns="http://soap.sforce.com/2006/04/metadata">
+EntitlementSettings
+Represents an organization’s entitlement settings.
 
-   <groups>
+EventSettings
+Represents an org's platform event settings for Event Monitoring.
 
-     <languages>en_US</languages>
+ExperienceBundleSettings
+Represents the org setting that enables the ExperienceBundle metadata type for Aura sites in Experience Cloud. The setting doesn’t
+affect LWR sites, which use ExperienceBundle by default. This type extends the Metadata metadata type and inherits its `fullName`
+field.
 
-     <terms>Salesforce</terms>
+ExternalClientAppSettings
+Represents settings to enable the External Client App feature and provide access to the OAuth consumer secret.
 
-     <terms>salesforce.com</terms>
+ExternalServicesSettings
+Represents settings for an External Services registration.
 
-     <terms>The Customer Company</terms>
 
-     <terms>SFDC</terms>
+Metadata Types Settings
 
-   </groups>
+FieldServiceSettings
+Represents an organization’s Field Service settings.
 
-   <groups>
+FilesConnectSettings
+Represents the settings that modify the Files Connect feature.This type extends the Metadata metadata type and inherits its
+`fullName` field.
 
-     <languages>fr</languages>
+FileUploadAndDownloadSecuritySettings
+Represents the security settings for uploading and downloading files. This type extends the Metadata metadata type and inherits
+its `fullName` field.
 
-     <terms>renault</terms>
+FlowSettings
+Represents the Salesforce settings for processes and flows, such as whether Lightning runtime for flows is enabled.
 
-     <terms>clio</terms>
+ForecastingObjectListSettings
+Represents an org’s forecasting object list settings. Use these settings to control which object types and field types appear in the list
+of object details on the forecasts page. For example, pipeline forecasts use the Opportunity object, and the object list settings specify
+which fields from that object are available in the opportunity list section of the forecasts page. This type extends the Metadata
+metadata type and inherits its `fullName` field.
 
-   </groups>
+ForecastingSettings
+Represents the Forecasts settings options. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-   <label>Sample Dictionary</label>
+HighVelocitySalesSettings
+Represents an org’s Sales Engagement settings. With Sales Engagement, you can make your inside sales team as effective as possible.
 
-</SynonymDictionary>
+IdeasSettings
+Represents the metadata used to manage settings for Ideas.
 
-```
+IdentityProviderSettings
+Represents the settings used to enable or disable Salesforce as a SAML identity provider for single sign-on (SSO).
 
+IframeWhiteListUrlSettings
+Represents settings related to the list of trusted external domains that you allow to frame your Visualforce pages or surveys. This
+type extends the Metadata metadata type and inherits its `fullName` field.
 
-### Metadata Types Territory
+IncidentMgmtSettings
+Represents settings for Customer Service Incident Management and Broadcast Communications.
 
-The following is an example `package.xml` that references the SynonymDictionary component.
+IndustriesEinsteinFeatureSettings
+Represents the settings for enabling the Industries Einstein feature.
 
-```
-   <?xml version="1.0" encoding="UTF-8"?>
+IndustriesLoyaltySettings
+Represents the settings to enable capabilities of Loyalty Management.
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+IndustriesSettings
+Represents settings for industries verticals such as Financial Services Cloud, Consumer Goods Cloud, Public Sector Solutions, Education
+Cloud, Salesforce Scheduler, Life Sciences Cloud, and Health Cloud.
 
-      <types>
+InterestTaggingSettings
+Represents settings for Interest Tags, which your users can add to client records to capture client needs, interests, and prospecting
+opportunities.
 
-        <members>Sample Dictionary</members>
+InventorySettings
+Represents options for the Salesforce Omnichannel Inventory product.This type extends the Metadata metadata type and inherits
+its `fullName` field.
 
-        <name>SynonymDictionary</name>
 
-      </types>
+Metadata Types Settings
 
-      <version>66.0</version>
+InvLatePymntRiskCalcSettings
+Represents the org’s settings to identify the level of risks associated with payment of invoices.
 
-   </Package>
+InvocableActionSettings
+Represents the org’s invocable action settings, such as whether partial save is allowed.This type extends the Metadata metadata
+type and inherits its `fullName` field.
 
-```
+KnowledgeSettings
+Represents the metadata used to manage settings for Salesforce Knowledge.
 
-Usage
+LanguageSettings
+Represents an organization’s language settings. Language settings control end-user language selection, locale formats, and translation
+options. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-If you have existing synonym groups defined before API version 29.0, your existing groups are associated with a default dictionary called
-`_Default` .
+LeadConfigSettings
+Represents configuration settings for Leads that control how they are converted and displayed, and what actions are available. This
+type extends the Metadata metadata type and inherits its `fullName` field.
 
-If you have a set of synonyms that require frequent updates, we recommend assigning the synonym group or groups to a dedicated
-dictionary with a small number of groups. Each time you deploy an existing dictionary, all of its synonym groups are overwritten. We
-don’t support deploying updates to only a single synonym group within a dictionary.
+LeadConvertSettings
+Represents an organization’s custom field mappings for lead conversion. Custom fields can be mapped from Leads to Accounts,
+Contacts, and Opportunities. Options for creating opportunities during lead conversion can also be specified. This type extends the
+Metadata metadata type and inherits its `fullName` field.
 
-Wildcard Support in the Manifest File
+LiveAgentSettings
+Represents an organization’s Chat settings, such as whether Chat is enabled. This type extends the Metadata metadata type and
+inherits its `fullName` field.
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
+LightningExperienceSettings
+Represents the settings that modify an org’s Lightning Experience configuration. This type extends the Metadata metadata type and
+inherits its `fullName` field.
 
-### Territory
+LiveMessageSettings
+Represents an org’s LiveMessage settings.
 
-Represents a territory.
+MacroSettings
+Represents an organization’s Macro settings, such as whether or not folders is enabled. This type extends the Metadata metadata
+type and inherits its `fullName` field.
 
-Declarative Metadata File Suffix and Directory Location
+MailMergeSettings
+Represents the settings for Extended Mail Merge functionality.
 
-The file suffix for territory components is `.territory` and components are stored in the `territories` directory of the
-corresponding package directory.
+MapAndLocationSettings
+Represents an org’s map and location settings.
 
-Version
+MeetingsSettings
+Represents the settings to enable Salesforce Meetings and the integration with Zoom video conferencing.
 
-### Territory components are available in API version 24.0 and later.
+MobileSettings
+Represents an organization’s mobile settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Fields
+MyDomainSettings
+Represents your org’s My Domain settings. With My Domain, you can include your company name in your URLs, for example,
+`https://yourcompanyname.my.salesforce.com` . This type extends the Metadata metadata type and inherits its
+`fullName` field.
 
-This metadata type extends to subtype RoleOrTerritory.
 
-**Field Name** **Field Type** **Description**
+Metadata Types Settings
 
-`accountAccessLevel` string Specifies whether users in this territory can access accounts that are
-assigned to this territory and are otherwise inaccessible. Valid values are:
+MfgServiceConsoleSettings
+Represents the settings to access the Service Console for Manufacturing.This type extends the Metadata metadata type and inherits
+its `fullName` field.
 
-**•** `Read`
+NameSettings
+Enables or disables the formal name, middle name, and suffix attributes for these person objects: Contact, Lead, Person Account,
+and User. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-**•** `Edit`
+NotificationsSettings
+Represents an organization’s mobile settings.
 
+OauthOidcSettings
+Represents org settings for disabling OAuth OpenID Connect authorization flows.
 
-### Metadata Types Territory2
+ObjectHierarchyRelationship
+Represents an organization’s custom field mappings for sales agreement conversion. Fields can be mapped from Opportunity and
+Quotes to SalesAgreement and SalesAgreementProduct.
 
-**Field Name** **Field Type** **Description**
+ObjectLinkingSettings (Beta)
+Represents the channel-object linking settings for an org.This type extends the Metadata metadata type and inherits its `fullName`
+field.
 
-**•** `All`
+OpportunityInsightsSettings
+Represents an org’s Einstein Opportunity Insights settings. This setting controls features that give you relevant updates about your
+opportunities.
 
-If your organization’s sharing model for accounts is Public Read/Write,
-valid values are only `Edit` and `All` .
+OpportunitySettings
+Represents org preferences for features such as automatic opportunity updates and similar-opportunity filters.
 
-If no value is set for this field, this field value uses the default access level
-that is specified in the Manage Territory page in Setup.
+OpportunityScoreSettings
+Represents an org’s Einstein Opportunity Scoring settings, such as whether or not Einstein Opportunity Scoring is enabled. Einstein
+Opportunity Scoring helps determine the likelihood of an opportunity being won. This type extends the Metadata metadata type
+and inherits its `fullName` field.
 
-This field is available in API version 31.0 and later.
+OrderManagementSettings
+Represents options for the Salesforce Order Management product. This type extends the Metadata metadata type and inherits its
+`fullName` field.
 
-`fullName` string The unique identifier for API access. The `fullName` can contain only
-underscores and alphanumeric characters. It must be unique, begin with
+OrderSettings
+Represents order settings.
 
-a letter, not include spaces, not end with an underscore, and not contain
-two consecutive underscores. This field is inherited from the Metadata
-component. Corresponds to **Territory Name** in the user interface.
+OrgPreferenceSettings
+Removed in API version 48.0. Represents the unique org preference settings in a Salesforce org.
 
-`parentTerritory` string The territory above this territory in the territory hierarchy.
+OrgSettings
+Represents the settings for org-wide functionality that isn’t associated with any specific feature.This type extends the Metadata
+metadata type and inherits its `fullName` field.
 
-Declarative Metadata Sample Definition
+PartyDataModelSettings
+Represents an organization’s party data model settings, including options around the Individual object and consent enablement.
+This type extends the Metadata metadata type and inherits its `fullName` field.
 
-The following is the definition of a territory.
+PardotSettings
+Represents Marketing Cloud Account Engagement settings in your Salesforce org. Account Engagement, formerly known as Pardot,
+is a B2B marketing automation solution that helps you create meaningful connections, generate more pipeline, and close more
+deals. Use these settings to configure how Account Engagement collects and displays data.
 
-```
-   <?xml version="1.0" encoding="UTF-8"?>
 
-   <Territory xmlns="http://soap.sforce.com/2006/04/metadata">
+Metadata Types Settings
 
-      <accountAccessLevel>Edit</accountAccessLevel>
+PardotEinsteinSettings
+Represents PardotEinsteinSettings. Use these settings to learn what factors drive your campaign performance, and get the best
+possible engagement score for your prospects. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-      <caseAccessLevel>Edit</caseAccessLevel>
+PathAssistantSettings
+Represents the Path preference setting. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-      <contactAccessLevel>Edit</contactAccessLevel>
+PaymentsSettings
+Represents the Salesforce Payments settings when this feature is enabled for the org.
 
-      <description>Sample Territory</description>
+PicklistSettings
+Represents an org’s picklist settings. These settings control the behavior of a picklist. This type extends the Metadata metadata type
+and inherits its `fullName` field.
 
-      <mayForecastManagerShare>false</mayForecastManagerShare>
+PlatformEncryptionSettings
+Represents an org’s Platform Encryption settings, such as settings for available encryption schemes, permissions, encryption policy
+access, and which fields can be encrypted. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-      <name>T22name</name>
+PlatformEventSettings
+Represents settings for platform events and change data capture events.
 
-      <opportunityAccessLevel>Read</opportunityAccessLevel>
+PredictionBuilderSettings
+Represents the settings that determine how a user can interact with Einstein Prediction Builder. This type extends the Metadata
+metadata type and inherits its `fullName` field.
 
-   </Territory>
+PrivacySettings
+Represents an organization’s settings for data privacy and consent management. This type extends the Metadata metadata type
+and inherits its `fullName` field.
 
-```
+ProcessFlowMigration
+Represents a process's migrated criteria and the resulting migrated flow.
 
-Wildcard Support in the Manifest File
+ProductSettings
+Represents organization preferences for quantity schedules, revenue schedules, and active flag interaction with prices. This type
+extends the Metadata metadata type and inherits its `fullName` field.
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
+QuoteSettings
+Represents an org’s quotes settings, such as enabling quotes or creating quotes without an associated opportunity. This type extends
+the Metadata metadata type and inherits its `fullName` field.
 
-### Territory2
+RealTimeEventSettings
+Represents the list of Real-Time Event entities that you want to enable or disable. This type extends the Metadata metadata type
+and inherits its `fullName` field.
 
-Represents the metadata associated with a sales territory. This type extends the Metadata metadata type and inherits its `fullName`
-field. Available if Sales Territories has been enabled.
+RecordPageSettings
+Represents an org’s record page settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-File Suffix and Directory Location
+RetailExecutionSettings
+Represents settings to manage your inventory, promotions, planograms, and in-store activities.
 
-### Territory2 components have the suffix territory2 and are stored in the territories folder under the folder for the corresponding Territory2Model.
+SalesAgreementSettings
+Represents settings that control the display of agreement terms metrics in sales agreements and the calculation of the actual quantity
+of products in sales agreements. These settings also control the approval of sales agreements.
 
+SandboxSettings
+Represents Sandbox settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Metadata Types Territory2
 
-Version
+Metadata Types Settings
 
-Territory2 components are available in API version 32.0 and later.
+SchemaSettings
+Represents an org’s schema settings, which manage the availability of custom settings and custom metadata type values. This type
+extends the Metadata metadata type and inherits its `fullName` field.
 
-Special Access Rules
+SearchSettings
+Represents an org's search settings.
 
-The Territory2Model object has a `State` field in the SOAP API. States include `Planning`, `Active`, `Archived`, and several other
-states, such as `Cloning`, that indicate that a process is underway. Users who do not have the Manage Territories permission can access
-territories that belong to the model in `Active` state. The Manage Territories permission is required for `deploy()` calls for all territory
-management entities. Using `retrieve()` without the Manage Territories permission returns only entities that belong to a
-Territory2Model in `Active` state. We recommend against retrieving without the Manage Territories permission because the call
-retrieves only partial data.
+SecuritySettings
+Represents an org’s security settings. For example, settings define trusted IP ranges for network access, password and login
+requirements, session expiration, and single sign-on settings.
 
-Fields
+ServiceCloudVoiceSettings
+Represents an organization’s Service Cloud Voice settings.
 
-**Field Name** **Field Type** **Description**
+ServiceSetupAssistantSettings
+Represents an organization’s Service Setup Assistant settings. The Service Setup Assistant can be used to set up a basic service
+console app.
 
-`accountAccessLevel` string
+SharingSettings
+Represents an organization’s sharing, visibility, and data access settings. This type extends the Metadata metadata type and inherits
+its `fullName` field.
 
-`caseAccessLevel` string
+SiteSettings
+[Represents the settings for Experience Cloud sites and for Salesforce Sites.](https://help.salesforce.com/articleView?id=sites_overview.htm&type=5&language=en_US)
 
-`contactAccessLevel` string
+SocialCustomerServiceSettings
+Represents Social Customer Service settings such as how to format inbound content from social posts to cases. This type extends
+the Metadata metadata type and inherits its `fullName` field.
 
-Specifies whether users in this territory can access accounts that are
-assigned to this territory and are otherwise inaccessible. Valid values
-are:
+SocialProfileSettings
+Represents org preferences for social media features such as enabling Twitter and Facebook.Represents org preferences for social
+media features such as enabling Twitter and Facebook. This type extends the Metadata metadata type and inherits the fullName
+field.
 
-**•** `Read`
+SourceTrackingSettings (Beta)
+Represents settings for source tracking, so that changes you make in your Developer and Developer Pro sandboxes or local workspace
+can be tracked. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-**•** `Edit`
+SubscriptionManagementSettings
+Represents the settings used to manage recurring subscriptions.
 
-**•** `All`
+SurveySettings
+Represents an org’s survey settings. Use the SurveySettings component to enable Salesforce Surveys, enable Customer Lifecycle
+Maps, and choose whether the owner of a survey can manage the responses.
 
-If your organization’s sharing model for accounts is Public Read/Write,
-valid values are only `Edit` and `All` . If no value is set for this field,
-this field value uses the default access level that is specified in
-Territory2Settings as permitted by the organization’s sharing settings.
+Territory2Settings
+Represents an org’s Territory2 settings. Use Territory2 settings to set the access level that Sales Territories users have to records
+associated with sales territories, and to enable features. The standard record access settings apply to accounts and opportunities.
+With _`Private`_ default internal access for contacts or cases, you can also set access for those records.
 
-Specifies whether users in this territory can access cases that are
-assigned to this territory and are otherwise inaccessible. Valid values
-are:
+TrailheadSettings
+Represents an org’s integration with Trailhead for Learning Paths or Enablement programs, including access to enablement sites
+(formerly myTrailhead).
 
-**•** `None`
+TrialOrgSettings
+Represents the settings in a trial user’s org. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-**•** `Read`
 
-**•** `Edit`
+#### Metadata Types AccountPlanSettings
 
-Specify no value if your organization’s sharing model for
-cases/opportunities is Public Read/Write. If no value is set for this field,
-this field value uses the default access level that is specified in
-Territory2Settings as permitted by the organization’s sharing settings.
+UserEngagementSettings
+Represents the metadata associated with various feature settings around Lightning Experience transition and adoption, user
+engagement and adoption assistance, and adoption apps.
 
-Specifies whether users in this territory can access contacts that are
-assigned to this territory and are otherwise inaccessible. Valid values
-are:
+UserInterfaceSettings
+Represents the settings that modify the behavior of the org’s user interface.
 
-**•** `None`
+UserManagementSettings
+Represents a selection of user management options that appear on the User Management Settings Setup page. This type extends
+the Metadata metadata type and inherits its `fullName` field.
 
-**•** `Read`
+VoiceSettings
+Represents an org’s Sales Dialer settings, such as call recording, conferencing, and voicemail.
 
-**•** `Edit`
+WarrantyLifeCycleMgmtSettings
+Represents settings that control the Warranty Administration for your org.
 
+WorkDotComSettings
+Represents WorkDotCom settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Metadata Types Territory2
+WorkforceEngagementSettings
+Represents settings for Workforce Engagement Management.
 
-**Field Name** **Field Type** **Description**
+#### AccountPlanSettings
 
-Specify no value if your organization’s sharing model for contacts is
-Public Read/Write or Controlled By Parent.
+Represents an org’s account plan settings. These settings control features that make it easy for sales reps to set objectives with actionable
+metrics and to store account research and analysis.
 
-`customFields` FieldValue
-
-Values for custom fields defined on the Territory2 object and used by
-this territory. Their metadata is captured separately in CustomObject.
-Note the following:
-
-**•** Territory2 and Territory2Model objects do not handle values for
-Text Area (Long), Text Area (Rich), and text-encrypted custom fields.
-
-**•** Fields are referenced using their API names. Compound field types
-like Location appear as their constituent column fields. For example,
-`nnn_Latitude__s`, `nnn_Longitude__s` where “nnn” is
-the field name and the suffixes are the geolocation components.
-
-**•** Values of required custom fields are enforced during the
-`deploy()` operation.
-
-`description` string A description of the territory.
-
-`name` string Required. The user interface label for the territory.
-
-`objectAccessLevels` Territory2AccessLevel Represents the user access levels of an object associated to a territory.
-Available in API version 57.0 and later.
-
-`opportunityAccessLevel` string
-
-Specifies whether users in this territory can access opportunities that
-are assigned to this territory and are otherwise inaccessible. Valid values
-are:
-
-**•** `None`
-
-**•** `Read`
-
-**•** `Edit`
-
-Specify no value if your organization’s sharing model for
-cases/opportunities is Public Read/Write. If no value is set for this field,
-this field value uses the default access level that is specified in
-Territory2Settings as permitted by the organization’s sharing settings.
-
-`parentTerritory` string The name of the territory’s parent. When you specify the parent territory,
-use the developer name. Do not use the “fully qualified” name. Custom
-
-fields with no values are retrieved with values of type: `<value`
-`xsi:nil="true"/>` . You can also use `<value`
-`xsi:nil="true"/>` syntax to remove existing values in custom
-fields.
-
-`ruleAssociations` Territory2RuleAssociation[] Represents an object assignment rule and its association to a territory.
-Use the developer name of the rule.
-
-`territory2Type` string Required. The territory type that the territory belongs to.
-
-FieldValue
-
-Represents the values of custom fields on the Territory2 object. Available in API version 32.0 and later.
-
-
-Metadata Types Territory2
-
-**Field Name** **Field Type** **Description**
-
-`name` string Required. The user interface label for the territory.
-
-`value` any type The value of the field, which can also be `null` . The field type is specified in
-the XML and depends on the field value.
-
-Territory2AccessLevel
-
-Represents the association of an object access level to a territory. Available in API version 57.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`accessLevel` string Required. Valid values are:
-
-**•** `Read`
-
-**•** `Edit`
-
-**•** `Transfer`
-
-**•** `All`
-
-If your organization’s sharing model for accounts is Public Read/Write, valid
-values are only `Edit` and `All` . If no value is set for this field, this field value
-uses the default access level that is specified in Territory2Settings as permitted
-by the organization’s sharing settings.
-
-`objectType` string Required. The type of object associated to the territory. For example, Lead.
-
-Territory2RuleAssociation
-
-Represents the association of an object assignment rule to a territory. Available in API version 32.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`inherited` boolean
-
-`ruleName` string
-
-Required. Indicates whether the rule is inherited from a parent territory ( `true` )
-or local to the current territory ( `false` ).
-
-Rule inheritance flows from the parent territory where the rule is created to
-the rule’s descendent territories, if any, in the territory model hierarchy. A local
-rule is created within a single territory and affects that territory only.
-
-Required. The name of a rule associated with the territory. It isn’t necessary to
-fully qualify `ruleName` because Metadata API assumes that the rule belongs
-to the same model as the territory.
-
-Declarative Metadata Sample Definition
-
-The following example shows the definition of a Territory2 component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Territory2 xmlns="http://soap.sforce.com/2006/04/metadata"
-
-```
-
-
-Metadata Types Territory2
-
-```
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
-      <name>USA</name>
-
-      <description>United States sales</description>
-
-      <accountAccessLevel>Edit</accountAccessLevel>
-
-      <opportunityAccessLevel>Read</opportunityAccessLevel>
-
-      <caseAccessLevel>Edit</caseAccessLevel>
-
-      <contactAccessLevel>Edit</contactAccessLevel>
-
-      <parentTerritory>Worldwide_Sales</parentTerritory>
-
-      <territory2Type>Geo</territory2Type>
-
-      <objectAccessLevels>
-
-        <accessLevel>All</accessLevel>
-
-        <objectType>Lead</objectType>
-
-      </objectAccessLevels>
-
-      <ruleAssociations>
-
-        <ruleName>AccRule1</name>
-
-        <inherited>True</inherited>
-
-      </ruleAssociations>
-
-      <ruleAssociations>
-
-        <ruleName>AccRule2</name>
-
-        <inherited>False</inherited>
-
-      </ruleAssociations>
-
-      <customFields>
-
-        <name>Activation_DateTime__c</name>
-
-        <value xsi:type="xsd:dateTime">2014-07-16T05:05:00.000Z</value>
-
-      </customFields>
-
-      <customFields>
-
-        <name>AutoNumber__c</name>
-
-        <value xsi:type="xsd:string">T# 000001</value>
-
-      </customFields>
-
-      <customFields>
-
-        <name>DeactivationDate__c</name>
-
-        <value xsi:type="xsd:date">2016-07-12</value>
-
-      </customFields>
-
-      <customFields>
-
-        <name>External_Id__c</name>
-
-        <value xsi:type="xsd:string">AB2345</value>
-
-      </customFields>
-
-      <customFields>
-
-        <name>ManagersPhone__c</name>
-
-        <value xsi:nil="true"/>
-
-      </customFields>
-
-   </Territory2>
-
-```
-
-The following is a `package.xml` sample. _`FY13`_ and _`FY14`_ represent the names of territory models and demonstrate that rules
-can have identical developer names within different models. A wildcard character (*) in place of the model name can be used to retrieve
-all rules in all models in an organization.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>FY13</members>
-
-        <members>FY14</members>
-
-        <name>Territory2Model</name>
-
-```
-
-
-### Metadata Types Territory2Model
-
-```
-      </types>
-
-      <types>
-
-        <members>FY13.USA</members>
-
-        <members>FY13.Worldwide_Sales</members>
-
-        <members>FY14.APAC</members>
-
-        <members>FY14.USA</members>
-
-        <name>Territory2</name>
-
-      </types>
-
-      <version>66.0</version>
-
-   </Package>
-
-```
-
-Usage
-
-**•** Triggers defined on Territory2 do _not_ fire during a `deploy()` operation unless there is a deployment failure. For example, when
-a child territory references a parent and deploys before the parent territory, the failed components try to deploy again one at a time,
-allowing triggers to run.
-
-**•** Sales Territories components don’t support packaging or change sets and aren’t supported in CRUD calls.
-
-### • For unlocked packaging, Territory2 requires packages without a namespace.
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### Territory2Model
-
-Represents the metadata associated with a territory model in Sales Territories.This type extends the Metadata metadata type and inherits
-its `fullName` field. Available if Sales Territories has been enabled.
-
-File Suffix and Directory Location
-
-### Territory2Model components have the suffix territory2Model and are stored in the territory2Models folder.
-
-Version
-
-### Territory2Model components are available in API version 32.0 and later.
-
-Special Access Rules
-
-The Territory2Model object has a `State` field in the SOAP API. States include `Planning`, `Active`, `Archived`, and several other
-states, such as `Cloning`, that indicate that a process is underway. Users who do not have the Manage Territories permission can access
-models in `Active` state. The Manage Territories permission is required for `deploy()` calls for all territory management entities.
-Using `retrieve()` without the Manage Territories permission returns only entities that belong to a Territory2Model in `Active`
-state. We recommend against retrieving without the Manage Territories permission because the call retrieves only partial data.
-
-
-Metadata Types Territory2Model
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`customFields` FieldValue Custom fields defined on the Territory2Model object and used by this
-model. Their metadata is captured separately.
-
-**•** Territory2 and Territory2Model objects do not handle values for Text
-Area (Long), Text Area (Rich), and text-encrypted custom fields.
-
-**•** Fields are referenced using their API names. Compound field types
-like Location appear as their constituent column fields. For example,
-`nnn_Latitude__s`, `nnn_Longitude__s` where “nnn” is
-the field name and the suffixes are the geolocation components.
-
-**•** Values of required custom fields are enforced during the
-`deploy()` operation.
-
-`description` string A description for the territory model.
-
-`name` string Required. The user interface label for the territory model.
-
-Declarative Metadata Sample Definition
-
-The following example shows the definition of a Territory2Model component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-      <Territory2Model xmlns="http://soap.sforce.com/2006/04/metadata"
-
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
-      <name>FY13</name>
-
-      <description>Geographic allocation</description>
-
-      <customFields>
-
-        <name>Activation_DateTime__c</name>
-
-        <value xsi:type="xsd:dateTime">2014-07-16T05:05:00.000Z</value>
-
-      </customFields>
-
-      <customFields>
-
-        <name>AutoNumber__c</name>
-
-        <value xsi:type="xsd:string">M# 000001</value>
-
-      </customFields>
-
-      <customFields>
-
-        <name>DeactivationDate__c</name>
-
-        <value xsi:type="xsd:date">2016-07-12</value>
-
-      </customFields>
-
-      <customFields>
-
-        <name>External_Id__c</name>
-
-        <value xsi:nil="true"/>
-
-      </customFields>
-
-   </Territory2Model>
-
-```
-
-
-### Metadata Types Territory2Rule
-
-Usage
-
-**•** The `retrieve()` call _does not_ return models in these four states: `Cloning`, `Cloning Failed`, `Deleting`, and `Deletion`
-`Failed` .
-
-**•** Whenever a model is created, its initial state is `Planning` . You can only do a `deploy()` operation for models in `Planning`
-or `Active` state. The same requirement applies to territories and rules associated with those models. For example, sometimes
-you can have a model in `Planning` state on a sandbox org, and a model with the same developer name in `Archived` state
-on your production org. The `deploy()` operation on production fails because that model’s state is `Archived` and that state
-prevents changes to the model.
-
-**•** Because of the state restrictions, if you have territory models in different orgs with identical developer names and you attempt a
-`deploy()` operation, Metadata API attempts to create new models. However, that operation fails because of the developer name
-conflict. For example, sometimes you can have a model in `Planning` state on a sandbox org, and a model with the same developer
-name in `Archived` state on your production org. The `deploy()` operation on production fails because that model’s state is
-`Archived` and that state prevents changes to the model.
-
-**•** If you try to delete a model that has territories, then the `delete()` call changes the model’s state to `Deleting` and cascade
-deletes all territories, rules, and user associations in the model. Deleting can take some time depending on the number of territories
-in the model.
-
-**•** Whenever a model is created, its initial state is `Planning` . If a model with the same developer name already exists, it already has
-a state, so we do not include the `State` field in Territory2.
-
-**•** Sales Territories components don’t support packaging or change sets and aren’t supported in CRUD calls.
-
-**•** Namespaces aren’t supported for unlocked packages.
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### Territory2Rule
-
-Represents the metadata associated with a territory assignment rule associated with an object, such as Account. Available if Sales
-Territories has been enabled.
+Parent Type and Manifest Access
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
 File Suffix and Directory Location
 
-### Territory2Rule components have the suffix territory2Rule and are stored in the rules folder under the folder for the
+#### AccountPlanSettings values are stored in the AccountPlan.settings file in the settings folder. The .settings
 
-corresponding Territory2Model.
+files are different from other named components, because there is only one settings file for each settings component.
 
 Version
 
-### Territory2Rule components are available in API version 32.0 and later.
-
-
-Metadata Types Territory2Rule
-
-Special Access
-
-The Territory2Model object has a `State` field in SOAP API. States include `Planning`, `Active`, `Archived`, and several other
-states, such as `Cloning`, that indicate that a process is underway. Users who don’t have the Manage Territories permission can access
-rules that belong to the model in `Active` state. The Manage Territories permission is required for `deploy()` calls for all territory
-management entities, in addition to the permissions required by Metadata API. Using `retrieve()` without the Manage Territories
-permission returns only entities that belong to a Territory2Model in `Active` state. We recommend against retrieving without the
-Manage Territories permission because the call retrieves only partial data.
-
-The SOAP API and the user interface require that a user attempting to create or edit a rule has field-level security access to the fields
-referenced in the rule item. This restriction is relaxed for Metadata API `deploy()` operations, as they require both Manage Territories
-and either the Modify Metadata Through Metadata API Functions or Modify All Data permissions.
+#### AccountPlanSettings components are available in API version 63.0 and later.
 
 Fields
 
-**Field Name** **Field Type** **Description**
-
-`active` boolean Required. Indicates whether the rule is active ( `true` ) or inactive
-( `false` ). Via the API, active rules run automatically when object records
-
-are created and edited. The exception is when the value of the
-`IsExcludedFromRealign` field on an object record is `true`,
-which prevents record assignment rules from evaluating that record.
-
-`booleanFilter` string An advanced filter condition. For example: `(1 AND 2) OR 3` .
-Numbering must start at 1 and must be contiguous.
-
-`name` string Required. The user interface label for the rule.
-
-`objectType` string Required. The object that the rule is defined for. For API version 32.0, the
-only available object is Account.
-
-`ruleItems` Territory2RuleItem The items that define a rule’s the selection criteria, such as `Billing`
-on page 2375 `State equals California` .
-
-Territory2RuleItem
-
-Represents the association of a rule item to a rule. Available in API version 32.0 and later.
-
-**Field Name** **Field Type** **Description**
-
-`field` string The standard or custom object field that the rule item operates on.
+**Field Name** **Description**
 
 ```
-operation
+enableAccountPlan
 
 ```
 
-FilterOperation The criterion to apply for the rule item. For example: _`equals`_ or _`starts`_
-(enumeration of type _`with`_ . Valid values are:
-string)
-
-**•** `equals`
-
-**•** `notEqual`
-
-**•** `lessThan`
-
-**•** `greaterThan`
-
-**•** `lessOrEqual`
+**Field Type**
+boolean
 
 
-Metadata Types Territory2Rule
+#### Metadata Types AccountSettings
 
-**Field Name** **Field Type** **Description**
+**Field Name** **Description**
 
-**•** `greaterOrEqual`
-
-**•** `contains`
-
-**•** `notContain`
-
-**•** `startsWith`
-
-**•** `includes`
-
-**•** `excludes`
-
-**•** `within` ( `DISTANCE` criteria only)
-
-`value` string The field value or values to evaluate. For example: if the field is `Billing`
-`ZIP/Postal Code`, a value could be `94105` .
+**Description**
+Indicates whether Account Plans is enabled `(true)` or not `(false)` . The default
+value is false.
 
 Declarative Metadata Sample Definition
 
-The following example shows the definition of a Territory2RuleItem component.
+The following is an example of an AccountPlanSettings component.
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
-   <Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
+   <AccountPlanSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <label>Northern CA</label>
+    <enableAccountPlan>true</enableAccountPlan>
 
-      <description>To capture northern CA based accounts</description>
-
-      <objectType>Account</objectType>
-
-      <active>True</active>
-
-      <ruleItems>
-
-        <field>BillingZip</field>
-
-        <operation>contains</operation>
-
-        <value><94105,94404,94536/value>
-
-      </ruleItems>
-
-      <ruleItems>
-
-        <field>Industry</field>
-
-        <operation>equals</operation>
-
-        <value>IT</value>
-
-      </ruleItems>
-
-      <ruleItems>
-
-        <field>someCustomField__c</field>
-
-        <operation>greater_than</operation>
-
-        <value>50000</value>
-
-      </ruleItems>
-
-      <booleanFilter>(1 OR 2) AND 3</booleanFilter>
-
-   </Territory2Rule>
+   </AccountPlanSettings>
 
 ```
 
-The following is a `package.xml` sample. _`FY13`_ and _`FY14`_ represent names of territory models and demonstrate that rules can
-have _identical_ developer names within _different_ models. A wildcard character (*) in place of the model name can be used to retrieve all
-rules in all models in an org.
+The following is an example `package.xml` that references the previous definition.
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
    <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-        <types>
+      <types>
 
-           <members>FY13</members>
+         <members>AccountPlan</members>
 
-```
+         <name>Settings</name>
 
+      </types>
 
-### Metadata Types Territory2Type
-
-```
-           <members>FY14</members>
-
-           <name>Territory2Model</name>
-
-        </types>
-
-        <types>
-
-           <members>FY13.AccRule1</members>
-
-           <members>FY14.AccRule1</members>
-
-           <name>Territory2Rule</name>
-
-        </types>
-
-        <version>66.0</version>
+      <version>63.0</version>
 
    </Package>
 
 ```
 
-Usage
-
-**•** A territory rule can have up to 10 rule items.
-
-**•** The sort order of rule items is implicitly derived from the position of the rule items in the XML
-
-**•** Rules can’t be run via Metadata API.
-
-**•** Territory Management 2.0 components don’t support packaging or change sets and aren’t supported in CRUD calls.
-
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### Territory2Type
+#### AccountSettings
 
-Represents the metadata for a category of territories in Sales Territories. Every Territory2 must have a Territory2Type. This type extends
-the Metadata metadata type and inherits its `fullName` field. Available if Sales Territories has been enabled.
+Represents an org’s account settings for account teams, account owner report, and the **View Hierarchy** link.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-### Territory2Type components have the suffix territory2Type and are stored in the territory2Types folder.
+#### AccountSettings values are stored in the Account.settings file in the settings folder. The .settings files are different
+
+from other named components because there’s only one settings file for each settings component.
 
 Version
 
-### Territory2Type components are available in API version 32.0 and later.
-
-Special Access Rules
-
-The Manage Territories permission is required for the `deploy()` operation, but not `retrieve()` . The `retrieve()` operation
-retrieves all the Territory2Type components in the org.
+#### AccountSettings is available in API versions 29.0 and later.
 
 
-### Metadata Types TimelineObjectDefinition
+Metadata Types AccountSettings
 
 Fields
 
 **Field Name** **Field Type** **Description**
 
-`description` string A description of the territory type.
+`enableAccountDiscovery` boolean When `true`, sets up Einstein Account Management dashboards and
+installs the related CRM Analytics and Customer Insights apps. The
 
-`name` string Required. The user interface label for the territory type.
+dashboards give users access to account health analytics including
+metrics on open pipeline, risk, and engagement scores.
 
-`priority` int Required. Used for Filter-Based Opportunity Territory Assignment
-(Pilot in Spring ’15 / Metadata API version 33). Lets you specify a
+Einstein Account Management is part of Revenue Intelligence, which is
+available for an additional cost.
 
-priority for a territory type. For opportunity assignments, the filter
-examines all territories assigned to the account that the opportunity
-is assigned to. The account-assigned territory whose territory type
-priority is highest is then assigned to the opportunity. The
-`priority` field value on each territory type must be unique.
-Further, if there are multiple territories with the same territory type,
-and therefore the same priority, assigned to the account, no territory
-is not assigned to the opportunity.
+Available in API version 57.0 and later.
+
+`enableAccountHistoryTracking` boolean Indicates whether history tracking is enabled for accounts ( `true` ) or
+not ( `false` ). The default value is `false` . If history tracking is disabled,
+
+the History related list is removed from account page layouts. However,
+history data is still available for reporting up to the date and time when
+tracking was disabled. Available in API version 47.0 and later.
+
+`enableAccountInsightsInMobile` boolean Deprecated in API version 59.0 and later because the feature is no longer
+available. Indicates whether users can see Einstein Account Insights on
+
+their mobile device ( `true` ) or not ( `false` ). Insights appear in the
+Einstein Insights component, which is on account records and the Home
+page.
+
+To use this feature, users must have the Einstein Account Insights
+permission.
+
+Available in API version 47.0 to 58.0.
+
+`enableAccountOwnerReport` boolean Indicates whether the Account Owner Report can ( `true` ) or can’t
+( `false` ) be run by all users.
+
+`enableAccountTeams` boolean
+
+Indicates whether account teams are enabled ( `true` ) or not ( `false` ).
+
+The Metadata API can’t be used to disable account teams.
+
+`enableContactHistoryTracking` boolean Indicates whether history tracking is enabled for contacts ( `true` ) or not
+( `false` ). Available in API version 46.0 and later.
+
+`enableRelateContactToMultipleAccounts` boolean Indicates whether users can relate a contact to multiple accounts ( `true` )
+or only one account ( `false` ). The default value is `false` . If this feature
+
+(Contacts to Multiple Accounts) is disabled, secondary contact–account
+relationships created while the feature was enabled are deleted. Available
+in API version 47.0 and later.
+
+Avoid using the Metadata API to enable this feature. Use the Account
+Settings page in Setup to enable Contacts to Multiple Accounts.
+
+`enableReportsToOnPersonAccount` boolean Indicates whether the **Reports To** field on Person Account, which
+corresponds to the `PersonReportsToId` field on the Account
+
+object, is enabled. The field allows users to associate person accounts
+and contacts with other person accounts or contacts that they report
+to.
+
+
+#### Metadata Types AccountInsightsSettings
+
+**Field Name** **Field Type** **Description**
+
+Available in API version 62.0 and later.
+
+`showViewHierarchyLink` boolean Indicates whether the default **View Hierarchy** link on all business
+account detail pages is visible ( `true` ) or hidden ( `false` ).
 
 Declarative Metadata Sample Definition
 
-The following example shows the definition of a Territory2Type component.
+The following is an example of the Account.settings file:
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
-   <Territory2Type xmlns="http://soap.sforce.com/2006/04/metadata">
+   <AccountSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <name>Geo</name>
+    <enableAccountDiscovery>true</enableAccountDiscovery>
 
-      <description>Geographic allocation</description>
+    <enableAccountHistoryTracking>true</enableAccountHistoryTracking>
 
-   </Territory2Type>
+    <enableAccountInsightsInMobile>false</enableAccountInsightsInMobile>
+
+    <enableAccountOwnerReport>true</enableAccountOwnerReport>
+
+    <enableAccountTeams>true</enableAccountTeams>
+
+    <enableContactHistoryTracking>true</enableContactHistoryTracking>
+
+    <enableRelateContactToMultipleAccounts>true</enableRelateContactToMultipleAccounts>
+
+    <enableReportsToOnPersonAccount>true</enableReportsToOnPersonAccount>
+
+    <showViewHierarchyLink>true</showViewHierarchyLink>
+
+   </AccountSettings>
 
 ```
 
-Usage
+Example Package Manifest
 
-Sales Territories components don’t support packaging or change sets and aren’t supported in CRUD calls.
+The following is an example package manifest used to deploy or retrieve the Account settings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>Account</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>29.0</version>
+
+   </Package>
+
+```
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### TimelineObjectDefinition
+#### AccountInsightsSettings
 
-Represents the container that stores the details of a timeline configuration. You can use this resource with Salesforce objects to see their
-records' related events in a linear time-sorted view.
+Represents an org’s Einstein Account Insights settings. This setting controls features that help your reps maintain their relationships with
+their customers.
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
+Note: This metadata type has been deprecated as of API version 59.0.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
 
 
-Metadata Types TimelineObjectDefinition
+Metadata Types AccountInsightsSettings
 
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-TimelineObjectDefinition components have the suffix `.timelineObjectDefinition` and are stored in the
-`timelineObjectDefinitions` folder.
+AccountInsightsSettings values are stored in the `AccountInsights.settings` file in the `settings` folder. The `.settings`
+files are different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-TimelineObjectDefinition components are available in API version 55.0 and later.
+AccountInsightsSettings is available in API versions 48.0 to 58.0.
 
-Special Access Rules
+Fields
 
-TimelineObjectDefinition is available in any org that has the Timeline org preference enabled.
+**Field Name** **Field Type** **Description**
+
+`enableAccountInsights` boolean Indicates whether Einstein Account Insights is enabled ( `true` ) or not
+( `false` ). The default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of the AccountInsights.settings file:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <AccountInsightsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <enableAccountInsights>true</enableAccountInsights>
+
+   </AccountInsightsSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the AccountInsights settings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>AccountInsights</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>29.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types AccountIntelligenceSettings AccountIntelligenceSettings
+
+Represents an org’s Account Intelligence settings. These settings control features that make it easy for sales reps to create accounts, see
+relevant news articles, and add logos to account records. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### AccountIntelligenceSettings values are stored in the AccountIntelligence.settings file in the settings folder. The
+
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### AccountIntelligenceSettings is available in API versions 48.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableAccountLogos` boolean
+
+Indicates whether your sales reps can see available company logos
+( `true` ) or not ( `false` ). The logos are for US-based companies only.
+The default value is `false` .
+
+`enableAutomatedAccountFields` must be `true` to use this
+setting.
+
+`enableAutomatedAccountFields` boolean Indicates whether Automated Account Fields is enabled ( `true` ) or not
+( `false` ). The default value is `false` .
+
+`enableNewsStories` boolean
+
+Indicates whether News is enabled ( `true` ) or not ( `false` ). The default
+value is `false` .
+
+`enableAutomatedAccountFields` must be `true` to use this
+setting.
+
+Declarative Metadata Sample Definition
+
+The following is an example of the AccountIntelligence.settings file:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AccountIntelligenceSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <enableAccountLogos>true</enableAccountLogos>
+
+ <enableAutomatedAccountFields>true</enableAutomatedAccountFields>
+
+ <enableNewsStories>true</enableNewsStories>
+
+</AccountIntelligenceSettings>
+
+```
+
+
+#### Metadata Types AccountingSettings
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the AccountIntelligence settings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>AccountIntelligence</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>48.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### AccountingSettings
+
+Represents the settings for the Accounting Subledger feature.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### AccountingSettings values are stored in the AccountingSettings.settings file in the settings folder. The
+
+`.settings` files are different from other named components, because there is only one settings file for each settings component.
+
+Version
+
+#### AccountingSettings components are available in API version 57.0 and later.
 
 Fields
 
 **Field Name** **Description**
 
 ```
-baseObject
-
-definition
-
-isActive
-
-masterLabel
+enableAccountingSubledger
 
 ```
-
-**Field Type**
-string
-
-**Description**
-Required.
-
-The object on which a timeline is based. Information displayed in a timeline comes
-from objects that are related to the base object. The base object can be a Salesforce
-object or custom object.
-
-**Field Type**
-string
-
-**Description**
-Required.
-
-The timeline definition in JSON format.
 
 **Field Type**
 boolean
 
 **Description**
-Indicates whether the timeline is active ( `true` ) or not ( `false` ).
-
-**Field Type**
-string
-
-**Description**
-Required.
+Indicates whether Transaction Journal creation is enabled for the organization ( `true` )
+or not ( `false` ).
 
 
-Metadata Types TimelineObjectDefinition
+Metadata Types AccountingSettings
 
 **Field Name** **Description**
 
-The user interface label of the timeline object definition record.
+```
+enableAslDataCloud
+
+enableFinancePeriod
+
+enablePaymentMethodAdjust
+
+enableScheduledJob
+
+enableSkipReversalLogicEnabled
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Requires Data Cloud and Accounting Subledger access.
+
+Indicates whether Data Cloud Runtime for Accounting Subledger feature is enabled
+for the organization ( `true` ) or not ( `false` ).
+
+This field is available in API version 66.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Reserved for internal use.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether changes to the Payment Method generate adjustments on
+Transaction Journal records ( `true` ) or not ( `false` ).
+
+**Field Type**
+boolean
+
+**Description**
+Reserved for internal use.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Skip Reversal Logic is enabled ( `true` ) or not ( `false` ).
 
 Declarative Metadata Sample Definition
 
-The following is an example of a TimelineObjectDefinition component.
+The following is an example of an AccountingSettings component.
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-   <TimelineObjectDefinition
+<AccountingSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-    xmlns="http://soap.sforce.com/2006/04/metadata">
+ <enableAccountingSubledger>true</enableAccountingSubledger>
 
-    <baseObject>Account</baseObject>
+ <enableAslDataCloud>true</enableAslDataCloud>
 
-   <definition>{&quot;timeline&quot;:{&quot;anchorObject&quot;:{&quot;object&quot;:{&quot;entity&quot;:&quot;Account&quot;,&quot;label&quot;:&quot;Account&quot;,&quot;source&quot;:&quot;&quot;,&quot;icon&quot;:&quot;&quot;}},&quot;age&quot;:{&quot;field&quot;:&quot;EffectiveDate&quot;,&quot;label&quot;:&quot;Effective
+ <enablePaymentMethodAdjust>true</enablePaymentMethodAdjust>
 
-   Date&quot;,&quot;type&quot;:&quot;DateTime&quot;},&quot;events&quot;:[{&quot;oneToMany&quot;:{&quot;eventObject&quot;:{&quot;name&quot;:&quot;Case&quot;,&quot;label&quot;:&quot;Case&quot;,&quot;recordTypes&quot;:[],&quot;fieldsToDisplay&quot;:[{&quot;field&quot;:&quot;Description&quot;,&quot;label&quot;:&quot;Description&quot;,&quot;type&quot;:&quot;StringPlusClob&quot;},{&quot;field&quot;:&quot;Priority&quot;,&quot;label&quot;:&quot;Priority&quot;,&quot;type&quot;:&quot;DynamicEnum&quot;},{&quot;field&quot;:&quot;Status&quot;,&quot;label&quot;:&quot;Status&quot;,&quot;type&quot;:&quot;DynamicEnum&quot;},{&quot;field&quot;:&quot;Subject&quot;,&quot;label&quot;:&quot;Subject&quot;,&quot;type&quot;:&quot;Text&quot;}],&quot;relatedlistsToDisplay&quot;:[{&quot;entity&quot;:&quot;CaseCo m ents&quot;,&quot;label&quot;:&quot;Case
+ <enableSkipReversalLogicEnabled>false</enableSkipReversalLogicEnabled>
 
-   Comments&quot;},{&quot;entity&quot;:&quot;CombinedAttachments&quot;,&quot;label&quot;:&quot;Attachments&quot;},{&quot;entity&quot;:&quot;AttachedContentDocuments&quot;,&quot;label&quot;:&quot;Files&quot;}],&quot;title&quot;:{&quot;field&quot;:&quot;CaseNumber&quot;,&quot;label&quot;:&quot;Case
-
-   Number&quot;,&quot;type&quot;:&quot;AutoNumber&quot;},&quot;subTitle&quot;:{&quot;field&quot;:&quot;Comments&quot;,&quot;label&quot;:&quot;Internal
-
-   Comments&quot;,&quot;type&quot;:&quot;MultiLineText&quot;}},&quot;filters&quot;:[{&quot;field&quot;:{&quot;field&quot;:&quot;Status&quot;,&quot;label&quot;:&quot;Status&quot;,&quot;type&quot;:&quot;DynamicEnum&quot;},&quot;operator&quot;:&quot;EQ&quot;,&quot;values&quot;:[&quot;New&quot;],&quot;order&quot;:1}],&quot;sort&quot;:{&quot;field&quot;:&quot;CreatedDate&quot;,&quot;label&quot;:&quot;Created
-
-   Date&quot;,&quot;type&quot;:&quot;DateTime&quot;},&quot;anchorReferenceField&quot;:{&quot;field&quot;:&quot;AccountId&quot;,&quot;label&quot;:&quot;Account
-
-   ID&quot;,&quot;type&quot;:&quot;EntityId&quot;}}},{&quot;oneToMany&quot;:{&quot;eventObject&quot;:{&quot;name&quot;:&quot;Event&quot;,&quot;label&quot;:&quot;Event&quot;,&quot;recordTypes&quot;:[],&quot;fieldsToDisplay&quot;:[{&quot;field&quot;:&quot;ActivityDate&quot;,&quot;label&quot;:&quot;Due
-
-    Date
-
-   Only&quot;,&quot;type&quot;:&quot;DueDate&quot;},{&quot;field&quot;:&quot;A t end e s&quot;,&quot;label&quot;:&quot;A t end e s&quot;,&quot;type&quot;:&quot;StringPlusClob&quot;}],&quot;relatedlistsToDisplay&quot;:[],&quot;title&quot;:{&quot;field&quot;:&quot;Description&quot;,&quot;label&quot;:&quot;Description&quot;,&quot;type&quot;:&quot;StringPlusClob&quot;},&quot;subTitle&quot;:{&quot;field&quot;:&quot;Location&quot;,&quot;label&quot;:&quot;Location&quot;,&quot;type&quot;:&quot;Text&quot; },&quot;filters&quot;:[],&quot;sort&quot;:{&quot;field&quot;:&quot;ActivityDate&quot;,&quot;label&quot;:&quot;Due
-
-    Date
-
-   Only&quot;,&quot;type&quot;:&quot;DueDate&quot;},&quot;anchorReferenceField&quot;:{&quot;field&quot;:&quot;WhatId&quot;,&quot;label&quot;:&quot;Related
-
-    To
-
-   ID&quot;,&quot;type&quot;:&quot;EntityId&quot;}}},{&quot;oneToMany&quot;:{&quot;eventObject&quot;:{&quot;name&quot;:&quot;Task&quot;,&quot;label&quot;:&quot;Task&quot;,&quot;recordTypes&quot;:[],&quot;fieldsToDisplay&quot;:[{&quot;field&quot;:&quot;CallDisposition&quot;,&quot;label&quot;:&quot;Call
-
-   Result&quot;,&quot;type&quot;:&quot;Text&quot;},{&quot;field&quot;:&quot;CallObject&quot;,&quot;label&quot;:&quot;Call
-
-    Object
-
-   Identifier&quot;,&quot;type&quot;:&quot;Text&quot;},{&quot;field&quot;:&quot;CallType&quot;,&quot;label&quot;:&quot;Call
-
-   Type&quot;,&quot;type&quot;:&quot;StaticEnum&quot;}],&quot;relatedlistsToDisplay&quot;:[],&quot;title&quot;:{&quot;field&quot;:&quot;Description&quot;,&quot;label&quot;:&quot;Description&quot;,&quot;type&quot;:&quot;StringPlusClob&quot;},&quot;subTitle&quot;:{&quot;field&quot;:&quot;Priority&quot;,&quot;label&quot;:&quot;Priority&quot;,&quot;type&quot;:&quot;DynamicEnum&quot;}},&quot;filters&quot;:[],&quot;sort&quot;:{&quot;field&quot;:&quot;ActivityDate&quot;,&quot;label&quot;:&quot;Due
-
-    Date
-
-   Only&quot;,&quot;type&quot;:&quot;DueDate&quot;},&quot;anchorReferenceField&quot;:{&quot;field&quot;:&quot;WhatId&quot;,&quot;label&quot;:&quot;Related
-
-    To ID&quot;,&quot;type&quot;:&quot;EntityId&quot;}}}]}}</definition>
-
-    <isActive>true</isActive>
-
-    <masterLabel>HealthTimeline</masterLabel>
-
-   </TimelineObjectDefinition>
+</AccountingSettings>
 
 ```
+
+
+#### Metadata Types ActionsSettings
 
 The following is an example `package.xml` that references the previous definition.
 
@@ -3425,201 +5730,13 @@ The following is an example `package.xml` that references the previous definitio
 
     <types>
 
-     <members>*</members>
+     <members>Accounting</members>
 
-```
-
-
-### Metadata Types TimeSheetTemplate
-
-```
-     <name>TimelineObjectDefinition</name>
+     <name>Settings</name>
 
     </types>
 
-    <version>55.0</version>
-
-   </Package>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
-
-### TimeSheetTemplate
-
-Represents a template for creating time sheets in Field Service. This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### TimeSheetTemplate components have the suffix timeSheetTemplate and are stored in the timeSheetTemplates folder.
-
-Version
-
-### TimeSheetTemplate components are available in API version 46.0 and later.
-
-Special Access Rules
-
-Field Service must be enabled. Users must have the Customize Application and Time Sheet Template permissions.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`active` boolean Required. Indicates whether the time sheet template is active ( `true` )
-or not ( `false` ).
-
-`description` string The time sheet template's description.
-
-```
-frequency
-
-```
-
-TimeSheetFrequency Required. Defines the frequency of the time sheet creation period. One
-(enumeration of of the following values:
-type string)
-
-**•** `Daily`
-
-**•** `Weekly`
-
-**•** `EveryTwoWeeks`
-
-**•** `TwiceAMonth`
-
-**•** `Monthly`
-
-
-Metadata Types TimeSheetTemplate
-
-**Field Name** **Field Type** **Description**
-
-`masterLabel` string Required. The name of the time sheet template.
-
-`startDate` date Required. The date when the time sheet takes effect.
-
-`timeSheetTemplateAssignments` TimeSheetTemplateAssignment A list of profiles that the template is assigned to.
-
-```
-workWeekEndDay
-
-workWeekStartDay
-
-```
-
-DaysOfWeek Required. The end day of the template's work week. One of the following
-(enumeration of values:
-type string)
-
-**•** `Monday`
-
-**•** `Tuesday`
-
-**•** `Wednesday`
-
-**•** `Thursday`
-
-**•** `Friday`
-
-**•** `Saturday`
-
-**•** `Sunday`
-
-DaysOfWeek Required. The start day of the template's work week. One of the following
-(enumeration of values:
-type string)
-
-**•** `Monday`
-
-**•** `Tuesday`
-
-**•** `Wednesday`
-
-**•** `Thursday`
-
-**•** `Friday`
-
-**•** `Saturday`
-
-**•** `Sunday`
-
-TimeSheetTemplateAssignment
-
-Returns a quick action that’s associated with an EmbeddedServiceLiveAgent setup. The quick action includes the pre-chat form fields
-that the embedded chat window displays and shows the order in which the fields are displayed.
-
-**Field Name** **Field Type** **Description**
-
-`assignedTo` string The IDs of the user profiles that a time sheet template is assigned to.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a TimeSheetTemplate file.
-
-```
-<?xml version=“1.0” encoding=“UTF-8"?>
-
-<TimeSheetTemplate xmlns=“http://soap.sforce.com/2006/04/metadata“>
-
-  <active>true</active>
-
-  <description>Time Sheet Template description</description>
-
-  <frequency>Daily</frequency>
-
-```
-
-
-### Metadata Types TopicsForObjects
-
-```
-     <masterLabel>label</masterLabel>
-
-     <startDate>2018-10-18</startDate>
-
-     <timeSheetTemplateAssignments>
-
-        <assignedTo>admin</assignedTo>
-
-     </timeSheetTemplateAssignments>
-
-     <timeSheetTemplateAssignments>
-
-        <assignedTo>standard</assignedTo>
-
-     </timeSheetTemplateAssignments>
-
-     <workWeekEndDay>Tuesday</workWeekEndDay>
-
-     <workWeekStartDay>Monday</workWeekStartDay>
-
-   </TimeSheetTemplate>
-
-```
-
-The following is an example `package.xml` that references the previous definition.
-
-```
-   <?xml version=“1.0” encoding=“UTF-8"?>
-
-   <Package xmlns=“http://soap.sforce.com/2006/04/metadata“>
-
-     <types>
-
-        <members>*</members>
-
-        <name>TimeSheetTemplate</name>
-
-     </types>
-
-     <version>46.0</version>
+    <version>57.0</version>
 
    </Package>
 
@@ -3630,458 +5747,320 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### TopicsForObjects
+#### ActionsSettings
 
-Represents the ability to assign topics to objects or to remove topic assignments.
+Represents an org’s actions settings for default quick actions, multi-dimensional publisher, and third-party actions. This type extends
+the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-### TopicsForObjects components have the suffix .topicsForObjects and are stored in the topicsForObjects folder of the
+#### ActionsSettings values are stored in the Actions.settings file in the settings folder. The .settings files are different
 
-corresponding package directory.
+from other named components because there’s only one settings file for each settings component.
 
 Version
 
-### TopicsForObjects components are available in API version 41.0 and later.
-
-
-Metadata Types TopicsForObjects
+Components are available in API version 47.0 and later.
 
 Fields
 
 **Field Name** **Field Type** **Description**
 
-`enableTopics` boolean
+`enableDefaultQuickActionsOn` boolean Indicates whether default quick actions are created in the org ( `true`,
+the default setting) or not ( `false` ).
 
-Required. When true, indicates whether users can assign topics or remove
-topic assignments. When false, users can’t assign or remove topics.
+`enableMdpEnabled` boolean Indicates whether multi-dimensional publisher is enabled ( `true`, the
+default setting) or not ( `false` ).
 
-Upon org creation, this value is true for the following objects:
+`enableThirdPartyActions` boolean Indicates whether third-party actions are displayed in the
+multi-dimensional publisher ( `true` ) or not ( `false`, the default setting).
 
-**•** Account
+`enableOfflineWebLinks` boolean Indicates whether a button or link is available offline ( `true` ), or if it's
+only available online ( `false`, the default setting).
 
-**•** Asset
 
-**•** Campaign
-
-**•** Case
-
-**•** Contact
-
-**•** Content Document
-
-**•** Contract
-
-**•** Event
-
-**•** Lead
-
-**•** Opportunity
-
-**•** Order
-
-**•** Solution
-
-**•** Task
-
-For all remaining standard objects and custom objects, the default is
-false.
-
-`entityApiName` string Required. Indicates the object’s API name for enabling topics.
+#### Metadata Types ActivitiesSettings
 
 Declarative Metadata Sample Definition
 
-The following is an example of a TopicsForObjects component.
+The following is an example of an ActionsSettings component.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<TopicsForObjects xmlns="http://soap.sforce.com/2006/04/metadata">
+   <ActionsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-     <enableTopics>false</enableTopics>
+    <DefaultQuickActionsOn>true</DefaultQuickActionsOn>
 
-     <entityApiName>Account</entityApiName>
+    <MdpEnabled>true</MdpEnabled>
 
-</TopicsForObjects>
+    <ThirdPartyActions>true</ThirdPartyActions>
 
-```
-
-The following is an example `package.xml` that references the previous definition.
+   </ActionsSettings>
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-<types>
-
-<members>*</members>
-
-<name>TopicsForObjects</name>
-
-</types>
-
-<version>41.0</version>
-
-</Package>
-
-```
-
-
-### Metadata Types TransactionSecurityPolicy
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### TransactionSecurityPolicy
+#### ActivitiesSettings
 
-Represents a transaction security policy definition. Transaction security policies give you a way to look through events in your organization
-and specify actions to take when certain combinations occur.
+Represents an org's activity settings, and its user interface settings for the calendar. This type extends the Metadata metadata type and
+inherits its `fullName` field.
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
+Use the ActivitiesSettings component type to control the following activity settings:
 
-This type extends the Metadata metadata type and inherits its `fullName` field.
+**•** Configure group and recurring tasks, recurring and multiday events, and email tracking
+
+**•** Relate multiple contacts to tasks and events (shared activities)
+
+**•** Display custom logos in meeting requests
+
+Also use the ActivitiesSettings component type to control user interface settings for the calendar, including hover links and drag-and-drop
+editing.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-### TransactionSecurityPolicy components have the suffix .transactionSecurityPolicy and are stored in the
+#### ActivitiesSettings values are stored in the Activities.settings file in the settings directory. The .settings files are
 
-`transactionSecurityPolicies` folder.
+different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-### TransactionSecurityPolicy components are available in API version 35.0 and later.
+#### ActivitiesSettings is available in API versions 28.0 and later.
 
 Fields
 
-**Field Name** **Field Type** **Description**
-
-`action` TransactionSecurityAction Required. Describes the action to take when the matching
-Transaction Security policy is triggered.
-
-`active` boolean Required. If `true`, the policy is enabled and actively monitors its
-event.
-
-`apexClass` string Required for Apex-based policies, and optional for all other policies.
-The name of the class that implements the
-
-`TxnSecurity.PolicyCondition` or
-`TxnSecurity.EventCondition` interface for this policy.
-Available in API version 46.0 and later.
-
-`blockMessage` string The custom message sent to a user when a policy blocks their
-action. Used in Real-Time Event Monitoring only. Maximum of 1000
-
-characters. This field is null when the default message option is
-selected in the UI. Available only when `eventName` is set to
-`ApiEvent`, `ListViewEvent`,
-`BulkApiResultEventStore`, or `ReportEvent` . Available
-in API version 49.0 and later.
-
-Include org- or policy-specific information in your custom message,
-such as the name of the responsible administrator or the business
+Settings for all types listed below are controlled on the Activity Settings page or the User Interface settings page as noted.
 
 
-Metadata Types TransactionSecurityPolicy
+Metadata Types ActivitiesSettings
 
 **Field Name** **Field Type** **Description**
 
-unit. Be careful about what you include. Too much information on
-how the policy was designed. can aid a malicious user.
+`allowUsersToRelateMultipleContactsToTasksAndEvents` boolean This field indicates whether Shared Activities is enabled. When the value
+is true, allows users to relate multiple contacts to a task or event.
 
-Two-factor authentication (2FA) isn’t supported in Lightning
-Experience, so events like `ListView` and `ReportEvent` are
-upgraded to Block in Lightning.
+Important: Beginning with API v36.0, this field is read-only in
+all versions of the API. You can’t change the value of this field.
+Even though this field was updateable before Spring '16, changing
+this field’s value wasn't supported and could have resulted in an
+incorrect integration. If you have code in older API versions that
+changes the value of this field, ensure that you update that code
+to prevent any errors.
 
-Custom messages aren’t translatable.
+`autoRelateEventAttendees` boolean
 
-`customEmailContent` string The administrator-created custom email content sent when a policy
-is triggered. Used in Real-Time Event Monitoring only. Maximum
+`enableActivityReminders` boolean
 
-of 1333 characters. This field is null when the Custom Email Content
-setting is selected in the UI but no message content is entered.
-Available in API version 54.0 and later.
+`enableCalendarHomeLWC` boolean
 
-Custom messages aren’t translatable.
+When users add attendees to events, events are automatically related
+to up to 50 contacts or one lead. An attendee is matched by their email
+address to a contact or lead.
 
-`description` string A description of the policy.
+Admins control this field on the Activity Settings page.
 
-`developerName` string This unique name prevents conflicts with other policies that have
-the same `masterLabel` . This name can contain only
+Available in API version 42.0 and later.
 
-underscores and alphanumeric characters, and must be unique in
-your org. It must begin with a letter, not include spaces, not end
-with an underscore, and not contain two consecutive underscores.
+Enables popup activity reminders for an organization.
 
-Only users with View DeveloperName OR View Setup and
-Configuration permission can view, group, sort, and filter this field.
+Admins control this field on the Activity Settings page.
 
-`eventName` TransactionSecurityEventName
-(enumeration of type string)
+Enables Lightning Web Components for Calendar. Increases the default
+item limit in Calendar Home and applies styling enhancements to
+improve readability.
 
-Used in Real-Time Event Monitoring only. Indicates the name of
-the event the policy monitors. This field is available in API 45.0 and
-later. Valid values are:
+Admins control this field on the Activity Settings page.
 
-**•** `ApiEvent` —Tracks these user-initiated read-only API calls:
-`query()`, `queryMore()`, and `count()` . Captures API
-requests through SOAP API and Bulk API for the Enterprise and
-Partner WSDLs. Tooling API calls and API calls originating from
-a Salesforce mobile app aren’t captured.
+`enableClickCreateEvents` boolean Lets users create events in day and weekly calendar views by
+double-clicking a specific time slot and entering the details of the event
 
-**•** `ApiAnomalyEventStore` —Tracks anomalies in how
-users make API calls. ApiAnomalyEventStore is an object that
-stores the event data of ApiAnomalyEvent. This object is
-available in API version 50.0 and later.
+in an overlay. Hovering over an event displays an overlay where users
+can view the event details or delete the event without leaving the page.
+Admins use a mini page layout to configure the fields shown in the
+overlays. Doesn’t support recurring events or multi-person events.
 
-**•** `BulkApiResultEventStore` —Tracks when a user
-downloads the results of a Bulk API request.
-BulkApiResultEventStore is a big object that stores the event
-data of BulkApiResultEvent. This object is available in API
+Admins control this field on the User Interface settings page.
+
+`enableDragAndDropScheduling` boolean Lets users create events associated with records by dragging a record
+from a list view onto a calendar view and entering the details of the
+
+event in an overlay. Hovering over an event displays an overlay where
+users can view the event details or delete the event without leaving the
+page. Admins use a mini page layout to configure the fields shown in
+the overlays.
+
+Admins control this field on the User Interface settings page.
+
+`enableEmailTracking` boolean
+
+Enables tracking of outbound HTML emails if an organization uses HTML
+email templates.
+
+Admins control this field on the Activity Settings page.
+
+
+Metadata Types ActivitiesSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableFlowTaskNotifsViaApex` boolean If Apex invokes Process Builder to create a task, determines whether an
+email is sent ( `true` ) or not ( `false` ).
+
+`enableGroupTasks` boolean
+
+Lets users assign independent copies of a new task to multiple users.
+
+Admins control this field on the Activity Settings page.
+
+`enableHideChildEventsPreference` boolean Enables hiding child events from the calendar or activity views. This
+setting is useful if you have complex event hierarchies and want to
+
+simplify the views by hiding less relevant details. This field is available in
+API version 50.0 and later.
+
+Admins control this field on the Activity Settings page.
+
+`enableListViewScheduling` boolean
+
+Extends the functionality of `enableDragAndDropScheduling`
+and `enableClickCreateEvents` to list view calendars.
+
+Admins control this field on the User Interface settings page.
+
+`enableLogNote` boolean Enables the option to create and associate a note on an existing record.
+
+`enableMLSingleClientProfile` boolean Enable creating a client profile using machine learning. When this setting
+is enabled, Salesforce uses machine learning algorithms to analyze and
+
+consolidate client data, providing a more comprehensive client profile.
+This can help sales and service teams to better understand their clients
+and provide more personalized interactions. This field is available in API
 version 50.0 and later.
 
-**•** `CredentialStuffingEventStore` —Tracks when a
-user successfully logs into Salesforce during an identified
-credential stuffing attack. Credential stuffing refers to
+Admins control this field on the Activity Settings page.
+
+`enableMultidayEvents` boolean
+
+`enableRecurringEvents` boolean
+
+`enableRecurringTasks` boolean
+
+`enableRollUpActivToContactsAcct` boolean
+
+`enableSidebarCalendarShortcut` boolean
+
+`enableSimpleTaskCreateUI` boolean
+
+Enables creation of events that end more than 24 hours after they start.
+
+Admins control this field on the Activity Settings page.
+
+Enables creation of events that repeat at specified intervals.
+
+Admins control this field on the Activity Settings page.
+
+Enables creation of tasks that repeat at specified intervals.
+
+Admins control this field on the Activity Settings page.
+
+Enables a contact’s activities to be rolled up and displayed on the
+contact’s primary account. Default value is `true` .
+
+Available in API versions 47.0 and later.
+
+In the sidebar, displays a shortcut link to a user’s last-used calendar view.
+
+Admins control this field on the Activity Settings page.
+
+Allows admins to specify whether tapping New Task in Salesforce opens
+a regular task record edit page or a page that displays key task fields first.
+
+Admins control this field on the Activity Settings page.
 
 
-Metadata Types TransactionSecurityPolicy
-
-**Field Name** **Field Type** **Description**
-
-large-scale automated login requests using stolen user
-credentials.This value is available in API version 49.0 and later.
-
-**•** `FileEventStore` (beta)—Tracks when a user downloads,
-previews, or uploads a file. FileEventStore is a big object that
-stores the event data of FileEvent. This object is available in
-API version 57.0 and later.
-
-**•** `GuestUserAnomalyEventStore` —Tracks data access
-anomalies that are caused by guest user permission
-misconfiguration. This object is available in API version 60.0
-and later.
-
-**•** `ListViewEvent` —Tracks when users access data with list
-views using Lightning Experience, Salesforce Classic, or the
-API. It doesn’t track list views of Setup entities.
-
-**•** `LoginAsEvent` —Tracks the login activity of admins who
-log in to Salesforce as other users. This object is available in
-API version 46.0 and later.
-
-**•** `LoginEvent` —LoginEvent tracks the login activity of users
-who log in to Salesforce.
-
-**•** `PermissionSetEventStore` —Tracks changes to
-permission sets and permission set groups.
-
-**•** `ReportAnomalyEventStore` —Tracks anomalies in
-how users run or export reports, including unsaved reports.
-This value is available in API version 49.0 and later.
-
-**•** `ReportEvent` —Tracks when reports are run in your org.
-
-**•** `SessionHijackingEventStore` —Tracks when
-unauthorized users gain ownership of a Salesforce user’s
-session with a stolen session identifier. To detect such an event,
-Salesforce evaluates how significantly a user’s current browser
-fingerprint diverges from the previously known fingerprint
-using a probabilistically inferred significance of change.
-Available in API version 49.0 and later.
-
-`eventType` MonitoredEvents (enumeration
-of type string)
-
-Used in Legacy Transaction Security only. Required for Apex-based
-policies, and optional for all other policies. Indicates which type of
-event is being monitored. Valid values are:
-
-**•** `AccessResource` —Notifies you when the selected
-resource has been accessed.
-
-**•** `AuditTrail` —Reserved for future use.
-
-**•** `DataExport` —Notifies you when the selected object type
-has been exported using the Data Loader API client.
-
-**•** `Entity` —Notifies you on use of an object type such as an
-authentication provider or Chatter comment.
-
-**•** `Login` —Notifies you when a user logs in.
-
-
-Metadata Types TransactionSecurityPolicy
+Metadata Types ActivitiesSettings
 
 **Field Name** **Field Type** **Description**
 
-As of Summer '20, Legacy Transaction Security is a retired feature
-in all Salesforce orgs.
+`enableTimelineCompDateSort` boolean
 
-`executionUser` string
+`enableUNSTaskDelegatedToNotifications` boolean
 
-Used in Legacy Transaction Security only. The name or ID of an
-active user who is assigned the Modify All Data and View Setup
-user permissions.
+Allows admins to sort past activities by completed date ( `true` ). If
+`false`, activities are sorted by due date.
 
-As of Summer '20, Legacy Transaction Security is a retired feature
-in all Salesforce orgs.
+Admins control this field on the Activity Settings page.
 
-`flowId` string Required only for policies of type
-`CustomConditionBuilderPolicy` . The ID of the Flow
+On the Activity Settings page, exposes a setting for Admins to hide or
+show a user setting that lets individual users enable or disable email
+notifications when tasks are assigned to them.
 
-object that contains the logic the Condition Builder transaction
-security policy. Available in API version 46.0 and later.
+`enableUserListViewCalendars` boolean Allows users to create and view user list view calendars in Lightning
+Experience. Available in API versions 47.0 and later
 
-`masterLabel` string
+`meetingRequestsLogo` string
 
-The label for this object. This display value is the internal label that
-is’t translated.
+`showCustomLogoMeetingRequests` boolean
 
-Where possible, we changed noninclusive terms to align with our
-company value of Equality. We maintained certain terms to avoid
-any effect on customer implementations.
+`showEventDetailsMultiUserCalendar` boolean
 
-`resourceName` string Used in Legacy Transaction Security only. Required for Apex-based
-policies, and optional for all other policies. A resource used to
+Available when `showCustomLogoMeetingRequests` is enabled.
+Uploads a custom logo. An administrator can select only a logo that has
+been uploaded to certain folders in the Documents tab.
 
-narrow down the conditions under which the policy triggers. For
-example, with a `DataExport` event, you can select a resource
-Lead to specifically monitor export activity occurring on your Lead
-entities. The resources available depend on the `Event Type`
-field. The following valid resources are grouped by event type.
+Admins control this field on the Activity Settings page.
 
-**•** AccessResource—ConnectedApplication, Reports
+Displays a custom logo in meeting request emails and on a meeting’s
+Web page. Invitees see the logo when a user either invites them to an
+event or requests a meeting.
 
-**•** DataExport—Account, Case, Contact, Lead, Opportunity
+Admins control this field on the Activity Settings page.
 
-**•** Entity—AuthProvider, ChatterMessage, FeedComment,
-FeedItem, Idea, Question
+Displays event details on-screen rather than in hover text.
 
-**•** Login—LoginHistory
+Admins control this field on the Activity Settings page.
 
-As of Summer '20, Legacy Transaction Security is a retired feature
-in all Salesforce orgs.
+`showHomePageHoverLinksForEvents` boolean In the calendar section of the Home tab:
 
-`type` TxnSecurityPolicyType The type of validation that the policy uses. The valid values are:
-(enumeration of type string)
+**•** When a user hovers over the subject of an event, a hover link displays
+an overlay with selected event details. (Hover links are always
+available in other calendar views.)
 
-**•** `CustomApexPolicy`                         - Created with Apex editor.
+**•** When a user clicks the subject of an event, displays the event detail
+page.
 
-**•** `CustomConditionBuilderPolicy`                         - Created with
-Condition Builder.
+Admins use a mini page layout to configure the fields shown in the
+overlay.
 
-The default value is `CustomApexPolicy` .
+Admins control this field on the User Interface settings page.
 
-TransactionSecurityAction
+`showMyTasksHoverLinks` boolean In the My Tasks section of the Home tab and on the calendar day view:
 
-Describes the action to take when the matching Transaction Security policy is triggered.
+**•** When a user hovers over the subject of a task, a hover link displays
+an overlay with selected task details.
 
+**•** When a user clicks the subject of a task, displays the task detail page.
 
-Metadata Types TransactionSecurityPolicy
+Admins use a mini page layout to configure the fields shown in the
+overlay.
 
-**Field Name** **Field Type** **Description**
+Admins control this field on the User Interface settings page.
 
-`block` boolean If `true`, the requested operation is blocked. This action only
-applies to Login and AccessResource events.
 
-`endSession` boolean
+Metadata Types ActivitiesSettings
 
-`freezeUser` boolean
+Example Package Manifest
 
-Used in Legacy Transaction Security only. If `true`, a current session
-must be closed before a new session can be started. This action
-only applies to Login events.
-
-As of Summer '20, Legacy Transaction Security is a retired feature
-in all Salesforce orgs.
-
-Used in Legacy Transaction Security only. If `true`, the user that
-triggered the policy is frozen. This action only applies to Chatter
-resources for Entity events.
-
-As of Summer '20, Legacy Transaction Security is a retired feature
-in all Salesforce orgs.
-
-`notifications` TransactionSecurityNotification[] Specifies how to notify the Salesforce administrator when the
-action is triggered. There can be none, one, or multiple notifications.
-
-`twoFactorAuthentication` boolean
-
-TransactionSecurityNotification
-
-If `true`, multi-factor authentication (MFA) is required for a higher
-level of access before the requested operation can continue. This
-action only applies to Login and AccessResource events.
-
-Multi-factor authentication was formerly called two-factor
-authentication.
-
-Describes who to notify and how to notify them when the matching Transaction Security policy is triggered.
-
-**Field Name** **Field Type** **Description**
-
-`inApp` boolean True if an in-app notification is selected.
-
-`sendEmail` boolean True if an email notification is selected.
-
-`user` string The user to receive the notification.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a Real-Time Event Monitoring TransactionSecurityPolicy component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<TransactionSecurityPolicy xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <action>
-
-     <block>true</block>
-
-     <notifications>
-
-        <inApp>true</inApp>
-
-        <sendEmail>true</sendEmail>
-
-```
-
-
-### Metadata Types Translations
-
-```
-           <user>user@your.org</user>
-
-        </notifications>
-
-        <twoFactorAuthentication>false</twoFactorAuthentication>
-
-      </action>
-
-      <active>true</active>
-
-      <apexClass>TxnSecMDApiPolicyEventCondition</apexClass>
-
-      <blockMessage>You cannot view this report.</blockMessage>
-
-      <developerName>TxnSecPolicyMDApi</developerName>
-
-      <eventName>ReportEvent</eventName>
-
-      <masterLabel>Txn Sec MD Api Policy</masterLabel>
-
-      <type>CustomApexPolicy</type>
-
-   </TransactionSecurityPolicy>
-
-```
-
-The following is an example package manifest used to deploy or retrieve the transaction security metadata for an organization.
+The following is an example package manifest used to deploy or retrieve the activity settings metadata for an organization:
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
@@ -4090,2008 +6069,527 @@ The following is an example package manifest used to deploy or retrieve the tran
 
       <types>
 
-        <members>MySecurityPolicy</members>
+        <members>Activities</members>
 
-        <name>TransactionSecurityPolicy</name>
+        <name>Settings</name>
 
       </types>
 
-      <version>35.0</version>
+      <version>28.0</version>
 
    </Package>
 
 ```
 
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### Translations
-
-Metadata type that enables work with translations for various supported languages. The ability to translate component labels is part of
-the Translation Workbench.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-Language
-
-A two-character language code identifies each language, such as `en` . A five-character code is used for languages that differ depending
-on location. For example, en_AU.
-
-Note: Setting a default language is different from setting a default locale. For more information, see Select Your Language, Locale,
-and Currency in Salesforce Help.
-
-Salesforce offers full support for these languages.
-
-**•** Chinese (Simplified): `zh_CN`
-
-**•** Chinese (Traditional): `zh_TW`
-
-**•** Danish: `da`
-
-
-Metadata Types Translations
-
-**•** Dutch: `nl_NL`
-
-**•** English: `en_US`
-
-**•** Finnish: `fi`
-
-**•** French: `fr`
-
-**•** German: `de`
-
-**•** Italian: `it`
-
-**•** Japanese: `ja`
-
-**•** Korean: `ko`
-
-**•** Norwegian: `no`
-
-**•** Portuguese (Brazil): `pt_BR`
-
-**•** Russian: `ru`
-
-**•** Spanish: `es`
-
-**•** Spanish (Mexico): `es_MX` Spanish (Mexico) defaults to Spanish for customer-defined translations.
-
-**•** Swedish: `sv`
-
-**•** Thai: `th` The Salesforce user interface is fully translated to Thai, but Help is in English.
-
-End-user languages are useful if you have a multilingual organization or partners who speak languages other than your company’s
-default language. For end-user languages, Salesforce provides translated labels for standard objects and pages, except admin pages,
-Setup, and Help. Some clouds and features support a subset of these languages in the UI. For details, see User Interface Language Support
-in Salesforce Help. When you select an end-user language, labels that aren’t translated and Salesforce Help appear in English. End-user
-languages are intended only for personal use by end users. Don’t use end-user languages as corporate languages. Salesforce doesn’t
-provide customer support in end-user languages.
-
-End-user languages include:
-
-**•** Arabic: `ar`
-
-**•** Bulgarian: `bg`
-
-**•** Croatian: `hr`
-
-**•** Czech: `cs`
-
-**•** English (UK): `en_GB`
-
-**•** Greek: `el`
-
-**•** Hebrew: `iw`
-
-**•** Hungarian: `hu`
-
-**•** Indonesian: `in`
-
-**•** Polish: `pl`
-
-**•** Portuguese (European): `pt_PT`
-
-**•** Romanian: `ro`
-
-**•** Slovak: `sk`
-
-**•** Slovenian: `sl`
-
-**•** Turkish: `tr`
-
-**•** Ukrainian: `uk`
-
-**•** Vietnamese: `vi`
-
-Important: Before enabling end-user languages Arabic and Hebrew, review the right-to-left language support limitations.
-
-
-Metadata Types Translations
-
-In situations where Salesforce doesn’t provide default translations, use platform-only languages to localize apps and custom functionality
-that you build on the Salesforce Platform. You can translate items such as custom labels, custom objects, and field names. You can also
-rename most standard objects, labels, and fields. Informational text and non-field label text aren’t translatable.
-
-Platform-only languages are available in all places where you can select a language in the application. However, when you select a
-platform-only language, all standard Salesforce labels default to English or, in select cases, to an end-user or fully supported language.
-
-Note: Language support is closely tied to the API version. For example, we introduced support for Belgian Dutch (nl_BE) in API
-version 40.0. To take advantage of this language, you must use API version 40.0 or later. In general, we recommend using the most
-recent version of the API to make the most of our language features.
-
-Platform-only languages include:
-
-**•** Albanian: `sq`
-
-**•** Afrikaans: `af`
-
-**•** Amharic: `am`
-
-**•** Arabic (Algeria): `ar_DZ`
-
-**•** Arabic (Bahrain): `ar_BH`
-
-**•** Arabic (Egypt): `ar_EG`
-
-**•** Arabic (Iraq): `ar_IQ`
-
-**•** Arabic (Jordan): `ar_JO`
-
-**•** Arabic (Kuwait): `ar_KW`
-
-**•** Arabic (Lebanon): `ar_LB`
-
-**•** Arabic (Libya): `ar_LY`
-
-**•** Arabic (Morocco): `ar_MA`
-
-**•** Arabic (Oman): `ar_OM`
-
-**•** Arabic (Qatar): `ar_QA`
-
-**•** Arabic (Saudi Arabia): `ar_SA`
-
-**•** Arabic (Sudan): `ar_SD`
-
-**•** Arabic (Syria): `ar_SY`
-
-**•** Arabic (Tunisia): `ar_TN`
-
-**•** Arabic (United Arab Emirates): `ar_AE`
-
-**•** Arabic (Yemen): `ar_YE`
-
-**•** Armenian: `hy`
-
-**•** Basque: `eu`
-
-**•** Bosnian: `bs`
-
-**•** Bengali: `bn`
-
-**•** Burmese: `my`
-
-**•** Catalan: `ca`
-
-**•** Chinese (Hong Kong): `zh_HK`
-
-**•** Chinese (Singapore): `zh_SG`
-
-**•** Chinese (Malaysia): `zh_MY`
-
-**•** Dutch (Belgium): `nl_BE`
-
-**•** English (Australia): `en_AU`
-
-
-Metadata Types Translations
-
-**•** English (Belgium): `en_BE`
-
-**•** English (Canada): `en_CA`
-
-**•** English (Cyprus): `en_CY`
-
-**•** English (Germany): `en_DE`
-
-**•** English (Hong Kong): `en_HK`
-
-**•** English (India): `en_IN`
-
-**•** English (Ireland): `en_IE`
-
-**•** English (Israel): `en_IL`
-
-**•** English (Malaysia): `en_MY`
-
-**•** English (Malta): `en_MT`
-
-**•** English (Netherlands): `en_NL`
-
-**•** English (New Zealand): `en_NZ`
-
-**•** English (Philippines): `en_PH`
-
-**•** English (Singapore): `en_SG`
-
-**•** English (South Africa): `en_ZA`
-
-**•** English (United Arab Emirates): `en_AE`
-
-**•** Estonian: `et`
-
-**•** Farsi: `fa`
-
-**•** French (Belgium): `fr_BE`
-
-**•** French (Canada): `fr_CA`
-
-**•** French (Luxembourg): `fr_LU`
-
-**•** French (Morocco): `fr_MA`
-
-**•** French (Switzerland): `fr_CH`
-
-**•** Georgian: `ka`
-
-**•** German (Austria): `de_AT`
-
-**•** German (Belgium): `de_BE`
-
-**•** German (Luxembourg): `de_LU`
-
-**•** German (Switzerland): `de_CH`
-
-**•** Greek (Cyprus): `el_CY`
-
-**•** Greenlandic: `kl`
-
-**•** Gujarati: `gu`
-
-**•** Hawaiian: `haw`
-
-**•** Haitian Creole: `ht`
-
-**•** Hindi: `hi`
-
-**•** Hmong: `hmn`
-
-**•** Icelandic: `is`
-
-**•** Irish: `ga`
-
-**•** Italian (Switzerland): `it_CH`
-
-**•** Kannada: `kn`
-
-**•** Kazakh: `kk`
-
-
-Metadata Types Translations
-
-**•** Khmer: `km`
-
-**•** Latvian: `lv`
-
-**•** Lithuanian: `lt`
-
-**•** Luxembourgish: `lb`
-
-**•** Macedonian: `mk`
-
-**•** Malay: `ms`
-
-**•** Malayalam: `ml`
-
-**•** Maltese: `mt`
-
-**•** Marathi: `mr`
-
-**•** Montenegrin: `sh_ME`
-
-**•** Punjabi: `pa`
-
-**•** Romanian (Moldova): `ro_MD`
-
-**•** Romansh: `rm`
-
-**•** Russian (Armenia): `ru_AM`
-
-**•** Russian (Belarus): `ru_BY`
-
-**•** Russian (Kazakhstan): `ru_KZ`
-
-**•** Russian (Kyrgyzstan): `ru_KG`
-
-**•** Russian (Lithuania): `ru_LT`
-
-**•** Russian (Moldova): `ru_MD`
-
-**•** Russian (Poland): `ru_PL`
-
-**•** Russian (Ukraine): `ru_UA`
-
-**•** Samoan: `sm`
-
-**•** Serbian (Cyrillic): `sr`
-
-**•** Serbian (Latin): `sh`
-
-**•** Spanish (Argentina): `es_AR`
-
-**•** Spanish (Bolivia): `es_BO`
-
-**•** Spanish (Chile): `es_CL`
-
-**•** Spanish (Colombia): `es_CO`
-
-**•** Spanish (Costa Rica): `es_CR`
-
-**•** Spanish (Dominican Republic): `es_DO`
-
-**•** Spanish (Ecuador): `es_EC`
-
-**•** Spanish (El Salvador): `es_SV`
-
-**•** Spanish (Guatemala): `es_GT`
-
-**•** Spanish (Honduras): `es_HN`
-
-**•** Spanish (Nicaragua): `es_NI`
-
-**•** Spanish (Panama): `es_PA`
-
-**•** Spanish (Paraguay): `es_PY`
-
-**•** Spanish (Peru): `es_PE`
-
-**•** Spanish (Puerto Rico): `es_PR`
-
-**•** Spanish (United States): `es_US`
-
-
-Metadata Types Translations
-
-**•** Spanish (Uruguay): `es_UY`
-
-**•** Spanish (Venezuela): `es_VE`
-
-**•** Swahili: `sw`
-
-**•** Tagalog: `tl`
-
-**•** Tamil: `ta`
-
-**•** Te reo: `mi`
-
-**•** Telugu: `te`
-
-**•** Urdu: `ur`
-
-**•** Welsh: `cy`
-
-**•** Xhosa: `xh`
-
-**•** Yiddish: `ji`
-
-**•** Zulu: `zu`
-
-Important: Before enabling Urdu as a platform-only language, review the right-to-left language support limitations.
-
-Declarative Metadata File Suffix and Directory Location
-
-Local translations are stored in a file with a format of _`localeCode`_ `.translation`, where _`localeCode`_ is the locale code of
-the translation language. For example, the file name for German translations is `de.translation` . Packaged translations are stored
-in a file with a format of _`pkgNamespace`_ `_ _` _`localeCode`_ `.translation` . For example, if the package namespace is Acme,
-the file name for German translations installed by the package is `Acme_ _de.translation` . The supported locale codes are listed
-in Language.
-
-Custom object translations are stored in the `objectTranslations` folder in the corresponding package directory.
-
-Version
-
-Translations components are available in API version 14.0 and later.
-
-Fields
-
-**Field** **Field Type** **Description**
-
-`aiCoachAgentScnrDefs` AiCoachAgentScnrDefTranslation[] A list of AI Coach agent scenario definition translations.
-Available in API version 64.0 and later.
-
-`botBlocks` BotBlockTranslation[] A list of bot block translations. Available in API version
-59.0 and later.
-
-`botTemplates` BotTemplateTranslation[] A list of bot template translations. Available in API version
-59.0 and later.
-
-`bots` BotTranslation[] A list of bot translations. Available in API version 53.0 and
-later.
-
-`conversationMessageDefinitions` ConversationMessageDefinitionTranslation[] A list of conversation message definition translations.
-Available in API version 61.0 and later.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`customApplications` CustomApplicationTranslation[] A list of custom application translations.
-
-`customLabels` CustomLabelTranslation[] A list of custom label translations.
-
-`customPageWebLinks` CustomPageWebLinkTranslation[] A list of translations for web links defined in a home page
-component.
-
-`customTabs` CustomTabTranslation[] A list of custom tab translations.
-
-`dataConnectors` DataConnectorTranslation[] A list of data connector translations. Available in API
-version 64.0 and later.
-
-`desFieldTemplateMessages` ExplainabilityMsgTemplateFieldTranslation[] A list of admin-configured explainability message
-templates.
-
-`flowDefinitions` FlowDefinitionTranslation[]
-
-A list of flow translations.
-
-Only Flow and AutolaunchedFlow types are supported
-for translation.
-
-This field is available in API version 41.0 and later.
-
-`identityVerificationCustomFieldLabels` IdentityVerificationFieldTranslation
-A list of identity verification translation fields.
-
-This field is available in API version 54.0 and later.
-
-`fullName` string
-
-`globalPicklists` GlobalPicklistTranslation[]
-
-`pipelineInspMetricConfigs` PipelineInspMetricConfigTranslation
-
-Required. The language code. For example, `de` for
-German.
-
-Inherited from Metadata, this field is defined in the WSDL
-for this metadata type. It must be specified when
-
-creating, updating, or deleting. For an example of this
-field specified for a call, see `createMetadata()` .
-
-A list of global picklist translations. A global picklist’s
-value set is inherited by all the custom picklist fields that
-are based on it.
-
-This field is available in API version 37.0 only and is
-removed from later versions.
-
-A list of translations of Pipeline Inspection forecast
-category metric settings. This field is available in API
-version 57.0 and later.
-
-`productSpecificationTypes` ProductSpecificationTypeTranslation A list of product specification type translations. This field
-is available in API version 66.0 and later.
-
-`prompts` PromptTranslation A list of In-App Guidance prompt translations. This field
-is available in API version 48.0 and later.
-
-`quickActions` GlobalQuickActionTranslation[] A list of global rather than object-specific quick actions.
-
-`recordAlertCategories` RecordAlertCategoryTranslation[] A list of record alert category translations. Available in
-API version 66.0 and later.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`recordAlertTemplates` RecordAlertTemplateTranslation[] A list of record alert template translations. Available in
-API version 66.0 and later.
-
-`reportTypes` ReportTypeTranslation[] A list of report type translations.
-
-`scontrols` ScontrolTranslation[] A list of s-control translations.
-
-`svcCatalogItemAttributes` ServiceProcessAttributeTranslation[] A list of service catalog item attribute translations.
-Available in API version 64.0 and later.
-
-`svcCatalogItemGroups` ServiceProcessItemGroupTranslation[] A list of service catalog item group translations. Available
-in API version 64.0 and later.
-
-`timelineObjectDefinitions` TimelineObjectDefinitionTranslation[] A list of timeline object definition translations. Available
-in API version 66.0 and later.
-
-AiCoachAgentScnrDefTranslation
-
-AiCoachAgentScnrDefTranslation contains details for the translation of Agentforce Sales Coach scenarios. Available in API version 64.0
-and later.
-
-**Field** **Field Type** **Description**
-
-`description` string The description of the coaching scenario.
-
-`label` string The title of the coaching scenario.
-
-`name` string Required. Name of the coaching scenario.
-
-`infoMessage` string The instructions that the rep has to follow before starting the
-coaching session.
-
-BotBlockTranslation
-
-BotBlockTranslation contains details for a translation of a bot block. Available in API version 59.0 and later.
-
-**Field** **Field Type** **Description**
-
-`botBlockVersions` BotBlockVersionTranslation[] A list of bot block version translations.
-
-`fullName` string Required. The name of the bot block.
-
-BotBlockVersionTranslation
-
-BotBlockVersionTranslation contains details for a translation of a bot block version. Available in API version 59.0 and later.
-
-**Field** **Field Type** **Description**
-
-`botDialogs` BotDialogTranslation[] A list of bot dialog translations for the bot block version.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`fullName` string Required. The name of the bot block version.
-
-BotTemplateTranslation
-
-BotTemplateTranslation contains details for a translation of a bot template. Available in API version 59.0 and later.
-
-**Field** **Field Type** **Description**
-
-`botDialogs` BotDialogTranslation[] A list of bot dialog translations for the bot template.
-
-`fullName` string Required. The name of the bot template.
-
-BotTranslation
-
-BotTranslation contains details for a translation of a bot. Available in API version 53.0 and later.
-
-**Field** **Field Type** **Description**
-
-`botVersions` BotVersionTranslation[] A list of bot version translations.
-
-`fullName` string
-
-BotVersionTranslation
-
-Required. Name of the bot.
-
-The `fullName` for the translation must match the `fullName`
-inherited by the original Bot type.
-
-BotVersionTranslation contains details for a translation of a bot version. Available in API version 53.0 and later.
-
-**Field** **Field Type** **Description**
-
-`botDialogs` BotDialogTranslation[] A translated list of dialogs in this bot version.
-
-`fullName` string
-
-BotDialogTranslation
-
-Required. Name of a bot version.
-
-The `fullName` for the translation must match the
-`fullName` inherited by the original BotVersion type.
-
-BotDialogTranslation contains details for a translation of a bot dialog. Available in API version 53.0 and later.
-
-**Field** **Field Type** **Description**
-
-`botSteps` BotStepTranslation[] A translated list of steps that are executed as part of the dialog.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`developerName` string
-
-Required. This unique name prevents conflicts with other dialogs
-associated with the same bot version.
-
-The `developerName` for the translation must match the
-`developerName` on the original BotDialog subtype of
-BotVersion.
-
-`label` string A translated label that identifies the dialog throughout the
-Salesforce user interface.
-
-Note: In Metadata Deployment of Translations, it's expected that blank values cannot be used to delete existing translations. If a
-translation label is left blank, it's skipped during deployment, and no error will be shown.
-
-BotStepTranslation
-
-BotStepTranslation contains details for a translation of a bot step. Available in API version 53.0 and later.
-
-**Field** **Field Type** **Description**
-
-`botMessages` BotMessageTranslation[] A translated list of bot messages used by a BotStep of type
-`Message` .
-
-`botSteps` BotStepTranslation[] A translated list of bot steps associated with a BotStep of type
-`Group` .
-
-`botVariableOperation` BotVariableOperationTranslation A translated bot variable operation used by a BotStep of type
-`VariableOperation` .
-
-`stepIdentifier` string Required. A unique key that identifies a step within a dialog. This
-key is used to link translated labels to labels within the step. This
-
-field is recommended for all step records and is required for
-translated step labels.
-
-The `stepIdentifier` for the translation must match the
-`stepIdentifier` on the original BotStep subtype of
-BotVersion.
-
-`type` BotStepType (enumeration of Required. Valid values are:
-type string)
-
-**•** `Navigation`
-
-**•** `Invocation`
-
-**•** `VariableOperation`
-
-**•** `Message`
-
-**•** `Wait`
-
-**•** `Group`
-
-**•** `RecordLookup` (Available in API version 48.0 and later.)
-
-The `type` for the translation must match the `type` on the
-original BotStep subtype of BotVersion.
-
-
-Metadata Types Translations
-
-BotMessageTranslation
-
-BotMessageTranslation contains details for a translation of a bot message step. Available in API version 53.0 and later.
-
-**Field** **Field Type** **Description**
-
-`message` string A translated message to display as part of an outgoing message
-from the bot to the customer.
-
-`messageIdentifier` string Required. A unique key that identifies a message within a dialog.
-This key is used to link translated labels to labels within the
-
-message. This field is recommended for all message records and
-is required for translated message labels.
-
-The `messageIdentifier` for the translation must match
-the `messageIdentifier` on the original BotMessage
-subtype of BotVersion.
-
-BotVariableOperationTranslation
-
-BotVariableOperationTranslation contains details for a translation of a bot variable operation (question) step. Available in API version
-53.0 and later.
-
-**Field** **Field Type** **Description**
-
-`botMessages` BotMessageTranslation on page A translated list of bot messages used as prompt messages by
-2400[] a BotVariableOperation of type `Collect` .
-
-`botQuickReplyOptions` BotQuickReplyOptionTranslation
-on page 2401[]
-
-A translated list of static choice options used by a
-BotVariableOperation of type `Collect` and
-`quickReplyType` of `Static` .
-
-`quickReplyOptionTemplate` string A translated formula template used to resolve a label for
-Dynamic choice options of type `Object` .
-
-`retryMessages` BotMessageTranslation on page [In Conversation Repair, the translated messages assigned to](https://help.salesforce.com/s/articleView?id=service.bots_service_setup_dialog_question_text.htm&type=5&language=en_US)
-2400[] repair attempts.
-
-`successMessages` BotMessageTranslation on page
-2400[]
-
-In a File dialog step, the translated message displayed to the
-customer as part of type CollectAttachment to confirm a
-successful file upload. Available in API version 57.0 and later.
-
-`type` BotVariableOperationType Required. Valid values are:
-(enumeration of type string)
-
-**•** `Set`
-
-**•** `Unset`
-
-**•** `Collect`
-
-**•** `SetConversationLanguage`
-
-`variableOperationIdentifier` string Required. A unique key that identifies a variable operation within
-a dialog. This key is used to link translated labels to labels within
-
-the variable operation. This field is recommended for all variable
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-operation records and is required for translated variable
-operation labels.
-
-The `variableOperationIdentifier` for the
-translation must match the
-`variableOperationIdentifier` on the original
-BotVariableOperation subtype of BotVersion.
-
-BotQuickReplyOptionTranslation
-
-BotQuickReplyOptionTranslation contains details for a translation of a bot quick reply option within a bot variable operation (question)
-step. Available in API version 53.0 and later.
-
-**Field** **Field Type** **Description**
-
-`literalValue` string A translated value to be displayed as a menu or button choice
-to your customer.
-
-`quickReplyOptionIdentifier` string Required. A unique key that identifies a quick reply option within
-a dialog. This key is used to link translated labels to labels within
-
-the quick reply option. This field is recommended for all quick
-reply option records and is required for translated quick reply
-option labels.
-
-The `quickReplyOptionIdentifier` for the translation
-must match the `quickReplyOptionIdentifier` on
-the original BotQuickReplyOption subtype of BotVersion.
-
-CustomApplicationTranslation
-
-CustomApplicationTranslation contains details for a custom application translation. For more details, see CustomApplication.
-
-**Field** **Field Type** **Description**
-
-`description` string Description text for the application translation.
-
-`label` string The translated custom application name. Maximum of 765
-characters.
-
-`name` string Required. The name of the custom application.
-
-CustomLabelTranslation
-
-CustomLabelTranslation contains details for a custom label translation. For more details, see CustomLabels.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated custom label name. Maximum of 765
-characters.
-
-`name` string Required. The custom label name.
-
-CustomPageWebLinkTranslation
-
-CustomPageWebLinkTranslation contains details for a translation of a web link defined in a home page component. For more details,
-see CustomPageWebLink.
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated web link.
-
-`name` string Required. The name of the web link.
-
-CustomTabTranslation
-
-CustomTabTranslation contains details for a translation of a custom tab. For more details, see CustomTab.
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated custom tab name.
-
-`name` string Required. The custom tab name.
-
-ExplainabilityMsgTemplateFieldTranslation
-
-Represents the template that contains the decision explanation message for a specified step element type.
-
-**Field Name** **Field Type** **Description**
-
-`description` string The explainability message field description.
-
-`label` string A user-friendly name for
-ExplainabilityMsgTemplateFieldTranslation.
-
-`name` string
-Required.
-
-The name of the decision explanation message for a specified
-step element type.
-
-`templateMessage` string The message associated with the template for a specific
-expression set step type.
-
-
-Metadata Types Translations
-
 Declarative Metadata Sample Definition
 
-This is an example of an ExplainabilityMsgTemplateFieldTranslation component.
+The following is an example of an activity settings file:
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
-   <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+   <ActivitiesSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <desFieldTemplateMessages>
+      <enableActivityReminders>true</enableActivityReminders>
 
-        <description>Calc Blitz Message</description>
+      <autoRelateEventAttendees>true</autoRelateEventAttendees>
 
-        <label>CALBLITZ</label>
+      <enableClickCreateEvents>true</enableClickCreateEvents>
 
-        <name>CALBLITZ</name>
+      <enableDragAndDropScheduling>true</enableDragAndDropScheduling>
 
-        <templateMessage>CALBLITZ</templateMessage>
+      <enableEmailTracking>true</enableEmailTracking>
 
-      </desFieldTemplateMessages>
+      <enableGroupTasks>true</enableGroupTasks>
 
-   </Translations>
+      <enableListViewScheduling>true</enableListViewScheduling>
 
-```
+      <enableMultidayEvents>true</enableMultidayEvents>
 
-FlowDefinitionTranslation
+      <enableRecurringEvents>true</enableRecurringEvents>
 
-FlowDefinitionTranslation contains details for a translation of a flow definition. For more details, see FlowDefinition.
+      <enableRollUpActivToContactsAcct>true</enableRollUpActivToContactsAcct>
 
-Available in API version 41.0 and later.
+      <enableRecurringTasks>true</enableRecurringTasks>
 
-**Field** **Field Type** **Description**
+      <enableTimelineCompDateSort>true</enableTimelineCompDateSort>
 
-`flows` FlowTranslation[] A list of flow version translations for the flow definition.
+      <enableUserListViewCalendars>true</enableUserListViewCalendars>
 
-`fullName` string Required. The API name for the flow definition.
+      <enableSidebarCalendarShortcut>true</enableSidebarCalendarShortcut>
 
-`label` string
+      <meetingRequestsLogo>Folder02/logo03.png</meetingRequestsLogo>
 
-FlowTranslation
+      <showCustomLogoMeetingRequests>true</showCustomLogoMeetingRequests>
 
-A translated label for the flow definition.
+      <showEventDetailsMultiUserCalendar>true</showEventDetailsMultiUserCalendar>
 
-By default, flow definitions inherit the label of the active flow
-version. If you provide a label here, the definition label no longer
-inherits changes to the active version label.
+      <showHomePageHoverLinksForEvents>true</showHomePageHoverLinksForEvents>
 
-FlowTranslation contains details for a translation of a flow version. For more details, see Flow.
+      <showMyTasksHoverLinks>true</showMyTasksHoverLinks>
 
-Available in API version 41.0 and later.
-
-**Field** **Field Type** **Description**
-
-`choices` FlowChoiceTranslation[] A list of choice translations for the flow version.
-
-`fullName` string
-
-The API name for the flow version.
-
-A unique name for the flow that contains only underscores and
-alphanumeric characters. The name must be unique across the
-
-org, begin with a letter, not include spaces, not end with an
-underscore, and not contain two consecutive underscores.
-
-To deploy or retrieve a version, you can specify the version
-number. For example, `sampleFlow-3` specifies version 3 of
-the flow whose unique name is sampleFlow. If you don't specify
-a version number, the flow is the latest version.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-In API version 43.0 and earlier, this field included the version
-number. In API version 44 and later, this field no longer includes
-the version number.
-
-`label` string A translated label for the flow version.
-
-`orchestrationStages` FlowOrchestrationStageTranslation A list of orchestration stage translations for the flow version.
-on page 2405 Available in API version 63.0 and later.
-
-`orchestrationSteps` FlowOrchestrationStepTranslation A list of orchestration step translations for the flow version.
-on page 2405 Available in API version 63.0 and later.
-
-`screens` FlowScreenTranslation[] A list of screen translations for the flow version.
-
-`stages` FlowStageTranslation on page A list of stage translations for the flow version. Available in API
-2407[] version 43.0 and later.
-
-FlowChoiceTranslation
-
-FlowChoiceTranslation contains details for a translation of a choice in a flow version. For more details, see FlowChoice in Flow.
-
-Available in API version 41.0 and later.
-
-**Field** **Field Type** **Description**
-
-`choiceText` string A translated label for the choice.
-
-`name` string Required. A unique name for the choice.
-
-`userInput` FlowChoiceUserInputTranslation A translated choice input for the choice.
-
-FlowChoiceUserInputTranslation
-
-FlowChoiceUserInputTranslation contains details for a translation of a choice input. For more details, see FlowChoiceUserInput in Flow.
-
-Available in API version 41.0 and later.
-
-**Field** **Field Type** **Description**
-
-`promptText` string A translated label for the choice input.
-
-`validationRule` FlowInputValidationRuleTranslation A translated validation rule for the choice input.
-
-FlowInputValidationRuleTranslation
-
-FlowInputValidationRuleTranslation contains details for a translation of a validation rule. For more details, see FlowInputValidationRule
-in Flow.
-
-Available in API version 41.0 and later.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`errorMessage` string A translated error message for the validation rule.
-
-FlowOrchestrationStageTranslation
-
-FlowOrchestrationStageTranslation contains details for a translation of an orchestration stage in an orchestration version. For more
-details, see FlowOrchestratedStage in Flow.
-
-Available in API version 64.0 and later.
-
-**Field** **Field Type** **Description**
-
-`name` string Required. The unique name of the orchestration stage
-translation.
-
-`stageLabel` string A translated label for the orchestration stage.
-
-FlowOrchestrationStepTranslation
-
-FlowOrchestrationStepTranslation contains details for a translation of an orchestration step in an orchestration version. For more details,
-see FlowStageStep in Flow.
-
-Available in API version 63.0 and later.
-
-**Field** **Field Type** **Description**
-
-`name` string Required. The unique name of the orchestration step translation.
-
-`stepLabel` string A translated label for the orchestration step.
-
-FlowScreenTranslation
-
-FlowScreenTranslation contains details for a translation of a screen. For more details, see FlowScreen in Flow.
-
-Available in API version 41.0 and later.
-
-**Field** **Field Type** **Description**
-
-`backButtonLabel` string A translated label for the Back button. Available in API version
-54.0 and later.
-
-`fields` FlowScreenFieldTranslation[] A list of screen component translations for the screen.
-
-`helpText` string Translated help text for the screen.
-
-`name` string Required. An API name for the screen.
-
-`nextOrFinishButtonLabel` string A translated label for the Next or Finish button. Available in API
-version 54.0 and later.
-
-`pauseButtonLabel` string A translated label for the Pause button. Available in API version
-54.0 and later.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`pausedText` string A translated pause confirmation message for the screen.
-
-FlowScreenFieldTranslation
-
-FlowScreenFieldTranslation contains details for a translation of a screen component. For more details, see FlowScreenField in Flow.
-
-Available in API version 41.0 and later.
-
-Note: Translation isn’t supported for screen components that require Lightning runtime.
-
-**Field** **Field Type** **Description**
-
-`fieldText` string A translated label for the screen component.
-
-`helpText` string Translated help text for the screen component.
-
-`inputParameters` FlowInputParameterTranslation Reserved for internal use.
-
-`name` string Required. An API name for the screen component.
-
-`validationRule` FlowInputValidationRuleTranslation Translated validation rule for the screen component.
-
-FlowInputParameterTranslation
-
-FlowInputParameterTranslation is reserved for internal use.
-
-**Field** **Field Type** **Description**
-
-`name` string Reserved for internal use.
-
-`value` FlowFerovTranslation Reserved for internal use.
-
-FlowFerovTranslation
-
-FlowFerovTranslation is reserved for internal use.
-
-**Field** **Field Type** **Description**
-
-`complexValues` FlowComplexLiteralTranslation Reserved for internal use.
-
-`stringValues` string Reserved for internal use.
-
-FlowComplexLiteralTranslation
-
-FlowComplexLiteralTranslation is reserved for internal use.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`customAspectKey` string Reserved for internal use.
-
-`value` string Reserved for internal use.
-
-FlowStageTranslation
-
-FlowStageTranslation contains details for a translation of a stage in a flow version. For more details, see FlowStage in Flow.
-
-Available in API version 43.0 and later.
-
-**Field** **Field Type** **Description**
-
-`label` string A translated label for the stage.
-
-`name` string Required. An API name for the stage.
-
-FlowTextTemplateTranslation
-
-FlowTextTemplateTranslation is available only in flows created via Salesforce Surveys and represents the translation details for the text
-on all the pages of a survey.
-
-Available in API version 45.0 and later.
-
-**Field** **Field Type** **Description**
-
-`name` string Required. Unique name for the text template.
-
-`text` string Translated text for the text template.
-
-IdentityVerificationFieldTranslation
-
-Translates the UI components associated with identity verification fields.
-
-Available in API version 54.0 and later.
-
-**Field** **Field Type** **Description**
-
-`customFieldLabel` string The custom label for the field that contains the verification data.
-
-`description` string The identity verification field description.
-
-`label` string A user-friendly name for IdentityVerificationFieldTranslation.
-
-`name` string Required. The name of the identity verification field.
-
-TimelineObjectDefinitionTranslation
-
-Contains details for a translation of a timeline object definition. Available in API version 66.0 and later.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`label` string Translated label for the timeline object definition.
-
-`name` string Required. Name of the timeline object definition.
-
-Declarative Metadata Sample Definition
-
-This is an example of an IdentityVerificationFieldTranslation component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Translations
-
-      xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <identityVerificationCustomFieldLabels>
-
-        <description>Telefono Numero</description>
-
-        <label>Telefono Numero</label>
-
-        <name>Sample93Phone</name>
-
-      </identityVerificationCustomFieldLabels>
-
-      <identityVerificationCustomFieldLabels>
-
-        <description>Nombre de la Cuenta</description>
-
-        <label>Nombre de la Cuenta</label>
-
-        <name>Sample93Account</name>
-
-      </identityVerificationCustomFieldLabels>
-
-      <identityVerificationCustomFieldLabels>
-
-        <name>Sample93PostalCode</name>
-
-      </identityVerificationCustomFieldLabels>
-
-      <identityVerificationCustomFieldLabels>
-
-        <name>Sample93AccountName</name>
-
-        <description>Nombre</description>
-
-        <label>Nombre</label>
-
-      </identityVerificationCustomFieldLabels>
-
-   </Translations>
-
-```
-
-GlobalPicklistTranslation
-
-Note: GlobalPicklistTranslation is available in API version 37.0 only and is removed from later versions.
-
-GlobalPicklistTranslation contains details for a global picklist translation.
-
-Translations are stored in a file with a format of _`globalPicklistName__e`_ `-` _`lang`_ `.objectTranslation`, where
-_`globalPicklistName__e`_ is the global picklist name and _`lang`_ is the translation language. To reference a global picklist
-translation value, use _`globalPicklistName__e.value1`_, where _`value1`_ is the translated value for the user interface.
-
-Here’s what translations look like for a global picklist.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <globalPicklists>
-
-      <name>transpicklist</name>
-
-      <picklistValues>
-
-        <masterLabel>Three</masterLabel>
-
-        <translation>Trois</translation>
-
-      </picklistValues>
-
-```
-
-
-Metadata Types Translations
-
-```
-      <picklistValues>
-
-        <masterLabel>Four</masterLabel>
-
-        <translation>Quatre</translation>
-
-      </picklistValues>
-
-   </globalPicklists>
-
-   </Translations>
-
-```
-
-**Field** **Field Type** **Description**
-
-`name` string Required. Represents the name of a global picklist to be
-translated.
-
-`picklistValues` PicklistValueTranslation[] A list of picklist values from global picklists to be translated.
-
-GlobalQuickActionTranslation
-
-GlobalQuickActionTranslation contains details for the global translation of a quick action. For more information, see QuickAction.
-
-**Field** **Field Type** **Description**
-
-`aspect` string Identifies which quick action label the translated text belongs
-to. Use this field only when you want to use different strings for
-
-the quick action’s field label and informational message. Valid
-values are `Master` and `InfoMessage` . Available in API
-version 53.0 and later.
-
-`label` string Required. The translated quick action name, globally.
-
-`name` string Required. The quick action name.
-
-PipelineInspMetricConfigTranslation
-
-PipelineInspMetricConfigTranslation contains details for the translation of Pipeline Inspection forecast category metric settings. Available
-in API version 57.0 and later.
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated Pipeline Inspection metric
-configuration name.
-
-`name` string Required. The name of the Pipeline Inspection metric
-configuration.
-
-ProductSpecificationTypeTranslation
-
-ProductSpecificationTypeTranslation contains details for a translation of a product specification type. For more details, see
-[ProductSpecificationType. Available in API version 66.0 and later.](https://developer.salesforce.com/docs/atlas.en-us.260.0.revenue_lifecycle_management_dev_guide.meta/revenue_lifecycle_management_dev_guide/meta_productspecificationtype.htm)
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`description` string The translated product specification type description.
-
-`label` string The translated product specification type name.
-
-`name` string Required. The name of the product specification type.
-
-PromptTranslation
-
-PromptTranslation contains metadata for the translation of a prompt, which is part of In-App Guidance. Available in API Version 48.0
-and later.
-
-**Field** **Field Type** **Description**
-
-`description` string The prompt description.
-
-`label` string The translated prompt name.
-
-`name` string Required. The name of the prompt.
-
-`promptVersions` PromptVersionTranslation A list of the prompt version translations.
-
-PromptVersionTranslation
-
-PromptVersionTranslation contains details for translation of a prompt, which is part of In-App Guidance. Available in API Version 48.0
-and later.
-
-**Field** **Field Type** **Description**
-
-`actionButtonLabel` string The label for the prompt’s action button.
-
-`actionButtonLink` string The URL for the prompt’s action button.
-
-`body` string The body text of the prompt.
-
-`description` string The prompt description.
-
-`dismissButtonLabel` string The label for the floating prompt’s dismiss button.
-
-`header` string The header for the docked prompt.
-
-`imageAltText` string The alt text for a prompt’s image. Available in API version 53.0
-and later.
-
-`imageLink` string The URL for a prompt’s image. Available in API version 53.0 and
-later.
-
-`label` string The translated prompt name.
-
-`name` string Required. The name of the prompt.
-
-`title` string The title of the prompt.
-
-`videoLink` string The URL for the docked prompt’s video.
-
-
-Metadata Types Translations
-
-ReportTypeTranslation
-
-ReportTypeTranslation contains details for a translation of a custom report type. For more details, see ReportType.
-
-**Field** **Field Type** **Description**
-
-`description` string The translated report type description.
-
-`label` string The translated report type name.
-
-`name` string Required. The name of the report type.
-
-`sections` ReportTypeSectionTranslation[] A list of report type section translations.
-
-ReportTypeSectionTranslation
-
-ReportTypeSectionTranslation contains details for a report type section translation.
-
-**Field** **Field Type** **Description**
-
-`columns` ReportTypeColumnTranslation[] A list of report type column translations.
-
-`label` string The translated report type section name.
-
-`name` string Required. The name of the report type section.
-
-ReportTypeColumnTranslation
-
-ReportTypeColumnTranslation contains details for a report type column translation.
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated report type column name.
-
-`name` string Required. The report type column name.
-
-ScontrolTranslation
-
-Important: Visualforce pages supersede s-controls. Organizations that haven't previously used s-controls can’t create them.
-Existing s-controls are unaffected and can still be edited.
-
-ScontrolTranslation contains details for a translation of an s-control. For more information, see “About S-Controls” in Salesforce Help.
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated s-control name.
-
-`name` string Required. The name of the s-control.
-
-
-Metadata Types Translations
-
-ConversationMessageDefinitionTranslation
-
-ConversationMessageDefinitionTranslation contains details for a translation of a conversation message definition. Available in API version
-61.0 and later.
-
-**Field** **Field Type** **Description**
-
-`constantValueTranslations` ConversationMessageConstantValueTranslation[] A list of conversation message constant value translations.
-
-`label` string Required. The translated label for the conversation message
-definition.
-
-`name` string Required. The name of the conversation message definition.
-
-ConversationMessageConstantValueTranslation
-
-ConversationMessageConstantValueTranslation contains details for a translation of a conversation message constant value. Available in
-API version 61.0 and later.
-
-**Field** **Field Type** **Description**
-
-`name` string Required. The name of the conversation message constant value.
-
-`value` string Required. The translated constant value.
-
-DataConnectorTranslation
-
-DataConnectorTranslation contains details for a translation of a data connector. Available in API version 64.0 and later.
-
-**Field** **Field Type** **Description**
-
-`attributes` DataConnectorAttributeTranslation[] A list of data connector attribute translations.
-
-`description` string The translated description for the data connector.
-
-`errors` DataConnectorErrorTranslation[] A list of data connector error translations.
-
-`help` string The translated help text for the data connector.
-
-`label` string The translated label for the data connector.
-
-`language` string The language for the data connector translation.
-
-`name` string The name of the data connector.
-
-DataConnectorAttributeTranslation
-
-DataConnectorAttributeTranslation contains details for a translation of a data connector attribute. Available in API version 64.0 and later.
-
-**Field** **Field Type** **Description**
-
-`errorMessage` string The translated error message for the attribute.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`infoMessage` string The translated info message for the attribute.
-
-`inputLabel` string The translated input label for the attribute.
-
-`label` string Required. The translated label for the attribute.
-
-`name` string Required. The name of the attribute.
-
-`options` DataConnectorAttributeOptTranslation[] A list of data connector attribute option translations.
-
-DataConnectorAttributeOptTranslation
-
-DataConnectorAttributeOptTranslation contains details for a translation of a data connector attribute option. Available in API version
-64.0 and later.
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated label for the attribute option.
-
-`name` string Required. The name of the attribute option.
-
-DataConnectorErrorTranslation
-
-DataConnectorErrorTranslation contains details for a translation of a data connector error. Available in API version 64.0 and later.
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated label for the error.
-
-`name` string Required. The name of the error.
-
-RecordAlertCategoryTranslation
-
-RecordAlertCategoryTranslation contains details for a translation of a record alert category. Available in API version 66.0 and later.
-
-**Field** **Field Type** **Description**
-
-`description` string The translated description for the record alert category.
-
-`label` string Required. The translated label for the record alert category.
-
-`name` string Required. The name of the record alert category.
-
-RecordAlertTemplateTranslation
-
-RecordAlertTemplateTranslation contains details for a translation of a record alert template. Available in API version 66.0 and later.
-
-
-Metadata Types Translations
-
-**Field** **Field Type** **Description**
-
-`description` string The translated description for the record alert template.
-
-`label` string The translated label for the record alert template.
-
-`name` string Required. The name of the record alert template.
-
-`subject` string The translated subject for the record alert template.
-
-ServiceProcessAttributeTranslation
-
-ServiceProcessAttributeTranslation contains details for a translation of a service process attribute. Available in API version 64.0 and later.
-
-**Field** **Field Type** **Description**
-
-`label` string Required. The translated label for the service process attribute.
-
-`name` string Required. The name of the service process attribute.
-
-`serviceProcessName` string Required. The name of the service process.
-
-ServiceProcessItemGroupTranslation
-
-ServiceProcessItemGroupTranslation contains details for a translation of a service process item group. Available in API version 64.0 and
-later.
-
-**Field** **Field Type** **Description**
-
-`groupName` string Required. The name of the service process item group.
-
-`name` string Required. The name of the service process item group
-translation.
-
-`serviceProcessName` string Required. The name of the service process.
-
-Declarative Metadata Sample Definition
-
-This sample XML definition shows a translations component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <customApplications>
-
-      <label>Angebot-Manager</label>
-
-        <name>Quote Manager</name>
-
-      </customApplications>
-
-      <customLabels>
-
-      <label>Dieses ist ein manuelles Angebot</label>
-
-        <name>quoteManual</name>
-
-      </customLabels>
-
-   </Translations>
-
-```
-
-
-Metadata Types Translations
-
-Usage
-
-When you use the `retrieve()` call to get translations, the files returned in the `.translations` folder only include translations
-for the other metadata types referenced in `package.xml` . For example, this `package.xml` file contains `types` elements that
-match all custom applications, custom labels, web links defined in home page components, custom tabs, report types, and s-controls.
-Translations for all these metadata types are returned because each metadata type is explicitly listed in `package.xml` .
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-
-      <types>
-
-        <members>*</members>
-
-        <name>CustomApplication</name>
-
-      </types>
-
-      <types>
-
-        <members>*</members>
-
-        <name>CustomLabels</name>
-
-      </types>
-
-      <types>
-
-        <members>*</members>
-
-        <name>CustomPageWebLink</name>
-
-      </types>
-
-      <types>
-
-        <members>*</members>
-
-        <name>CustomTab</name>
-
-      </types>
-
-      <types>
-
-        <members>*</members>
-
-        <name>ReportType</name>
-
-      </types>
-
-      <types>
-
-        <members>*</members>
-
-        <name>Scontrol</name>
-
-      </types>
-
-      <types>
-
-        <members>*</members>
-
-        <name>Translations</name>
-
-      </types>
-
-      <version>66.0</version>
-
-   </Package>
+   </ActivitiesSettings>
 
 ```
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
 SEE ALSO:
 
-CustomLabels
+Document
 
 
-### Metadata Types UiFormatSpecificationSet UiFormatSpecificationSet
+#### Metadata Types AddressSettings AddressSettings
 
-Represents a set of rules that define the style and visibility of conditional field formatting on Dynamic Forms-enabled Lightning page
-field instances.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
+Represents the configuration of country/territory and state picklists. Use the AddressSettings component type to configure state and
+country/territory data in your organization so that you can convert text-based values into standard picklist values. To convert your state
+and country/territory values, from Setup, enter _`State and Country/Territory Picklists`_ in the Quick Find box, then
+select **State and Country/Territory Picklists** .
 
 This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Note: A UiFormatSpecificationSet is referred to as a conditional formatting ruleset in the rest of the Salesforce documentation
-and UI.
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-File Suffix and Directory Location
+Declarative Metadata File Suffix and Directory Location
 
-### UiFormatSpecificationSet components have the suffix .uiFormatSpecificationSet and are stored in the
+#### AddressSettings values are stored in a single file named Address.settings in the settings directory. The .settings files
 
-`uiFormatSpecificationSets` folder.
+are different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-### UiFormatSpecificationSet components are available in API version 62.0 and later.
+#### AddressSettings is available in API versions 27.0 and later.
+
+Salesforce CLI Usage
+
+When working with the Salesforce CLI, use the metadata type `Settings:Address` to deploy or retrieve address settings.
+
+CountriesAndStates
+
+This complex metadata type represents valid definitions of states and countries/territories in picklists.
+
+Note: You can use the Metadata API to edit existing states, countries, and territories in state and country/territory picklists. You
+can’t use the Metadata API to create or delete new states, countries, or territories.
+
+**Field** **Field Type** **Description**
+
+`countries` Country[] The countries and territories available in picklists.
+
+Country
+
+This metadata type provides the definition for a country/territory in a picklist.
+
+**Field** **Field Type** **Description**
+
+`active` boolean Determines whether the value is available in the API.
+
+Important: After you enable state and country/territory
+picklists in your Salesforce organization, you can’t set the
+`active` status to _`false`_ .
+
+`integrationValue` string
+
+A customizable text value that is linked to a state or
+country/territory code. Integration values for standard states,
+
+countries, and territories default to the full ISO-standard state,
+country, and territory names. Integration values function similarly
+
+
+Metadata Types AddressSettings
+
+**Field** **Field Type** **Description**
+
+to the API names of custom fields and objects. Configuring
+integration values allows integrations that you set up before
+enabling state and country/territory picklists to continue to work.
+
+Important: If you don’t specify integration values before
+enabling state and country/territory picklists in your
+organization, records use the default value provided by
+Salesforce. If you change integration values later, records
+created or updated from that point on use your edited
+values.
+
+`isoCode` string The ISO-standard code populates this field when you issue a
+`retrieve()` call. This field is read only in the API but you
+
+can edit the label in Setup. You can’t edit the `isoCode` of
+`standard` states, countries, and territories.
+
+`label` string The label is what users see in picklists in Salesforce. This field is
+read only in the API but you can edit the label in Setup.
+
+`orgDefault` boolean Sets a country or territory as the default value for new records
+in the Salesforce organization.
+
+`standard` boolean
+
+Standard states and countries are states and countries that are
+included with Salesforce. You can’t edit the `standard`
+attribute.
+
+`states` State[] The states or provinces that are part of the country or territory.
+
+`visible` boolean
+
+State
+
+This metadata type provides the definition for a state in a picklist.
+
+Makes the state, country, or territory available to users in
+Salesforce. States, countries, or territories that are `visible`
+must also be `active` .
+
+**Field** **Field Type** **Description**
+
+`active` boolean Determines whether the value is available in the API.
+
+Important: After you enable state and country/territory
+picklists in your Salesforce organization, you can’t set the
+`active` status to _`false`_ .
+
+`integrationValue` string
+
+A customizable text value that is linked to a state or
+country/territory code. Integration values for standard states,
+
+countries, and territories default to the full ISO-standard state,
+country, and territory names. Integration values function similarly
+to the API names of custom fields and objects. Configuring
+
+
+Metadata Types AddressSettings
+
+**Field** **Field Type** **Description**
+
+integration values allows integrations that you set up before
+enabling state and country/territory picklists to continue to work.
+
+Important: If you don’t specify integration values before
+enabling state and country/territory picklists in your
+organization, records use the default value provided by
+Salesforce. If you change integration values later, records
+created or updated from that point on use your edited
+values.
+
+`isoCode` string
+
+The ISO-standard code populates this field when you issue a
+`retrieve()` call. This field is read only in the API but you
+can edit the label in Setup.
+
+`label` string The label is what users see in picklists in Salesforce. This field is
+read only in the API but you can edit the label in Setup.
+
+`standard` boolean
+
+`visible` boolean
+
+Declarative Metadata Sample Definition
+
+Standard states and countries are states and countries that are
+included with Salesforce. You can’t edit the `standard`
+attribute.
+
+Makes the state, country, or territory available to users in
+Salesforce. States, countries, or territories that are `visible`
+must also be `active` .
+
+The following is sample XML that configures state and country picklists for the United States and Canada for use in an organization. It
+also makes the country of Greenland available only in the API. This example is supported in API version 66.0.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AddressSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <countriesAndStates>
+
+   <countries>
+
+    <country>
+
+     <active>true</active>
+
+     <integrationValue>United States</integrationValue>
+
+     <isoCode>US</isoCode>
+
+     <label>United States</label>
+
+     <orgDefault>true</orgDefault>
+
+     <standard>true</standard>
+
+     <states>
+
+      <state>
+
+        <active>true</active>
+
+        <integrationValue>Alabama</integrationValue>
+
+        <isoCode>AL</isoCode>
+
+        <label>Alabama</label>
+
+        <standard>true</standard>
+
+        <visible>true</visible>
+
+      </state>
+
+      <state>
+
+```
+
+
+Metadata Types AddressSettings
+
+```
+           <active>true</active>
+
+           <integrationValue>Alaska</integrationValue>
+
+           <isoCode>AK</isoCode>
+
+           <label>Alaska</label>
+
+           <standard>true</standard>
+
+           <visible>true</visible>
+
+         </state>
+
+        </states>
+
+        <visible>true</visible>
+
+       </country>
+
+       <country>
+
+        <active>true</active>
+
+        <integrationValue>Canada</integrationValue>
+
+        <isoCode>CA</isoCode>
+
+        <label>Canada</label>
+
+        <orgDefault>false</orgDefault>
+
+        <states>
+
+         <state>
+
+           <active>true</active>
+
+           <integrationValue>Alberta</integrationValue>
+
+           <isoCode>AB</isoCode>
+
+           <label>Alberta</label>
+
+           <standard>true</standard>
+
+           <visible>true</visible>
+
+         </state>
+
+         <state>
+
+           <active>true</active>
+
+           <integrationValue>British Columbia</integrationValue>
+
+           <isoCode>BC</isoCode>
+
+           <label>British Columbia</label>
+
+           <standard>true</standard>
+
+           <visible>true</visible>
+
+         </state>
+
+        </states>
+
+        <visible>true</visible>
+
+       </country>
+
+       <country>
+
+        <active>true</active>
+
+        <integrationValue>Greenland</integrationValue>
+
+        <isoCode>GL</isoCode>
+
+        <label>Greenland</label>
+
+        <standard>true</standard>
+
+        <visible>false</visible>
+
+       </country>
+
+      </countries>
+
+     </countriesAndStates>
+
+   </AddressSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types AIReplyRecommendationsSettings AIReplyRecommendationsSettings
+
+Represents the metadata used to manage settings for Einstein Reply Recommendations. This type extends the Metadata metadata type
+and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+Einstein Reply Recommendations settings are stored in a single file named `aireplyrecommendations.settings` in the
+`settings` folder. The `.settings` files are different from other named components because there’s only one settings file for each
+settings component.
+
+Version
+
+#### AIReplyRecommendationsSettings is available in API version 49.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableAIReplyRecommendations` boolean If `true` (default), Einstein Reply Recommendations is enabled. If
+`false`, it is disabled.
+
+`enableGenReplyRecommendations` boolean If `true` (default), Einstein Service Replies is enabled. If `false`, it is
+disabled. Available in API version 58.0 or later.
+
+`enableServiceEinsteinGPTGrounding` boolean If `true` (default), Service AI Grounding is enabled. If `false`, it is
+disabled. Available in API version 58.0 or later.
+
+Declarative Metadata Sample Definition
+
+The following is an example aireplyrecommendations.settings metadata file:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <AIReplyRecommendationsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <enableAIReplyRecommendations>true</enableAIReplyRecommendations>
+
+   </AIReplyRecommendationsSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package.xml manifest that references the AIReplyRecommendationsSettings definitions:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>AIReplyRecommendations</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>49.0</version>
+
+   </Package>
+
+```
+
+
+#### Metadata Types AgentPlatformSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+Copyright
+
+Rights of ALBERT EINSTEIN are used with permission of The Hebrew University of Jerusalem. Represented exclusively by Greenlight.
+
+#### AgentPlatformSettings
+
+Represents settings for Agentforce.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### AgentPlatformSettings values are stored in the AgentPlatformSettings.settings file in the settings folder.
+
+The `.settings` files are different from other named components, because there is only one settings file for each settings component.
+
+Version
+
+#### AgentPlatformSettings components are available in API version 64.0 and later.
 
 Special Access Rules
 
-There are no additional access requirements that are specific to this type.
+Einstein Generative AI ( `EinsteinGptSettings.enableEinsteinGptPlatform` ) must be enabled for your org.
 
 Fields
 
 **Field Name** **Description**
 
 ```
-field
-
-formatType
+enableAgentPlatform
 
 ```
 
 **Field Type**
-string
+boolean
 
 **Description**
+Indicates whether Agentforce is turned on. The default value is `false` .
 
-Required. The object field that the conditional formatting is associated with.
 
-**Field Type**
-FormatType (enumeration of type string)
-
-**Description**
-
-Required. The type of conditional formatting associated with the field.
-
-Values are:
-
-**•** `ICON`
-
-
-Metadata Types UiFormatSpecificationSet
-
-**Field Name** **Description**
-
-```
-masterLabel
-
-sobjectType
-
-uiFormatSpecifications
-
-```
-
-UiFormatSpecification
-
-A single rule in the ruleset.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The label for the conditional formatting ruleset, which displays in Setup.
-
-**Field Type**
-string
-
-**Description**
-
-Required. The object the ruleset is associated with.
-
-**Field Type**
-
-UiFormatSpecification[]
-
-**Description**
-The list of rules contained in the ruleset.
-
-**Field Name** **Description**
-
-```
-formatProperties
-
-formatType
-
-order
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required. The properties for a given `formatType` in JSON format.
-
-**Field Type**
-FormatType (enumeration of type string)
-
-**Description**
-
-Required. The type of conditional formatting associated with the field when the rule
-evaluates to `true` .
-
-Values are:
-
-**•** `ICON`
-
-**Field Type**
-int
-
-**Description**
-
-Required. A numerical value representing the conditional formatting rule’s position in
-the evaluation order.
-
-
-Metadata Types UiFormatSpecificationSet
-
-**Field Name** **Description**
-
-```
-visibilityRule
-
-```
-
-UiFormulaRule
-
-**Field Type**
-
-UiFormulaRule
-
-**Description**
-A set of one or more filters that define the conditions under which the conditional
-formatting appears on the field.
-
-If the visibility rule evaluates to `true`, the formatting displays on the field. If `false`,
-it doesn’t display. If this field is `null`, the formatting displays by default.
-
-A set of one or more filters that define the conditions under which conditional field formatting displays on a Dynamic Forms-enabled
-Lightning page field instance. For example, you could construct a filter that causes conditional formatting to display only when the
-Amount field is greater than $1,000,000.
-
-**Field Name** **Description**
-
-```
-booleanFilter
-
-criteria
-
-```
-
-UiFormulaCriterion
-
-**Field Type**
-string
-
-**Description**
-Specifies advanced filter conditions such as `1 AND 2` .
-
-**Field Type**
-
-UiFormulaCriterion[]
-
-**Description**
-List of one or more filters that, when evaluated, determine conditional field formatting
-visibility.
-
-A single filter that when evaluated, helps define conditional formatting visibility on a Dynamic Forms-enabled Lightning page field
-instance.
-
-**Field Name** **Description**
-
-```
-leftValue
-
-operator
-
-```
-
-**Field Type**
-string
-
-**Description**
-Required. The field upon which the filter is based. For example, `AMOUNT` .
-
-**Field Type**
-string
-
-
-Metadata Types UiFormatSpecificationSet
-
-**Field Name** **Description**
-
-**Description**
-Required. Defines the operator used to filter the data. Valid values are:
-
-**•** `CONTAINS`
-
-**•** `EQUAL`
-
-**•** `NE` —not equal
-
-**•** `GT` —greater than
-
-**•** `GE` —greater than or equal
-
-**•** `LE` —less than or equal
-
-**•** `LT` —less than
-
-```
-rightValue
-
-```
-
-**Field Type**
-string
-
-**Description**
-The value by which you want to evaluate the formatting visibility. For example,
-`1000000` .
+#### Metadata Types AgentforceForDevelopersSettings
 
 Declarative Metadata Sample Definition
 
-The following is an example of an UiFormatSpecificationSet component.
+The following is an example of an AgentPlatformSettings component.
 
 ```
-<?xml version="1.0" encoding="UTF-8"?>
+   <?xml version="1.0" encoding="UTF-8"?>
 
-<UiFormatSpecificationSet xmlns="http://soap.sforce.com/2006/04/metadata">
+   <AgentPlatformSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <field>Contact.Customer_Sentiment__c</field>
+      <enableAgentPlatform>true</enableAgentPlatform>
 
-   <formatType>ICON</formatType>
-
-   <masterLabel>Sentiment Score</masterLabel>
-
-   <sobjectType>Contact</sobjectType>
-
-   <uiFormatSpecifications>
-
-     <formatProperties>{&quot;icon&quot;:&quot;happy_face&quot;,
-
-&quot;iconColor&quot;:&quot;green&quot;}</formatProperties>
-
-     <formatType>ICON</formatType>
-
-     <order>1</order>
-
-     <visibilityRule>
-
-        <criteria>
-
-          <leftValue>{!Record.Customer_Sentiment__c}</leftValue>
-
-          <operator>EQUAL</operator>
-
-          <rightValue>Happy</rightValue>
-
-        </criteria>
-
-     </visibilityRule>
-
-   </uiFormatSpecifications>
-
-   <uiFormatSpecifications>
-
-     <formatProperties>{&quot;icon&quot;:&quot;neutral_face&quot;,
-
-&quot;iconColor&quot;:&quot;gray&quot;}</formatProperties>
-
-     <formatType>ICON</formatType>
-
-     <order>2</order>
-
-     <visibilityRule>
-
-        <criteria>
-
-```
-
-
-### Metadata Types UIObjectRelationConfig
-
-```
-             <leftValue>{!Record.Customer_Sentiment__c}</leftValue>
-
-             <operator>EQUAL</operator>
-
-             <rightValue>Neutral</rightValue>
-
-           </criteria>
-
-        </visibilityRule>
-
-      </uiFormatSpecifications>
-
-      <uiFormatSpecifications>
-
-        <formatProperties>{&quot;icon&quot;:&quot;sad_face&quot;,
-
-   &quot;iconColor&quot;:&quot;red&quot;}</formatProperties>
-
-        <formatType>ICON</formatType>
-
-        <order>3</order>
-
-        <visibilityRule>
-
-           <criteria>
-
-             <leftValue>{!Record.Customer_Sentiment__c}</leftValue>
-
-             <operator>EQUAL</operator>
-
-             <rightValue>Unhappy</rightValue>
-
-           </criteria>
-
-        </visibilityRule>
-
-      </uiFormatSpecifications>
-
-   </UiFormatSpecificationSet>
+   </AgentPlatformSettings>
 
 ```
 
@@ -6104,9 +6602,85 @@ The following is an example `package.xml` that references the previous definitio
 
       <types>
 
-        <members>Sentiment_Score</members>
+        <members>AgentPlatform</members>
 
-        <name>UiFormatSpecificationSet</name>
+        <name>Settings</name>
+
+      </types>
+
+      <version>64.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### AgentforceForDevelopersSettings
+
+Represents Agentforce for Developers settings.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all org settings metadata types are accessed using the Settings name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### AgentforceForDevelopersSettings values are stored in the AgentforceForDevelopers.settings file in the settings
+
+folder. The `.settings` files are different from other named components because there’s only one settings file for each settings
+component.
+
+Version
+
+#### AgentforceForDevelopersSettings are available in API versions 62.0 and later.
+
+
+#### Metadata Types AnalyticsSettings
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`agentforceForDevelopersOptOut` boolean Indicates whether Agentforce for Developers is enabled: `true` or .
+`false` . If `true`, Agentforce for Developers isn't enabled in your org,
+
+which means that you've opted out of using it. If `false`, Agentforce
+for Developers is enabled. The default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of the `AgentforceForDevelopers.settings` file:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+        <AgentforceForDevelopersSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+        <agentforceForDevelopersOptOut>false</agentforceForDevelopersOptOut>
+
+        </AgentforceForDevelopersSettings>
+
+```
+
+The following is an example `package.xml` manifest that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+         <members>AgentforceForDevelopersSettings</members>
+
+         <name>Settings</name>
 
       </types>
 
@@ -6118,439 +6692,1479 @@ The following is an example `package.xml` that references the previous definitio
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### UIObjectRelationConfig
+#### AnalyticsSettings
 
-Represents the admin-created configuration of the object relation UI component.
+Represents Analytics settings in Salesforce. CRM Analytics lets you explore all your data quickly and easily by providing AI-powered
+advanced Analytics right inside Salesforce. Manage your datasets, query data with Salesforce Analytics Query Language (SAQL), and
+customize dashboards. You can use these settings to configure which Analytics features are available to users in your organization.
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
-
-
-Metadata Types UIObjectRelationConfig
+This type extends the Metadata metadata type and inherits its `fullName` field.
 
 File Suffix and Directory Location
 
-UIObjectRelationConfig components have the suffix `.uiObjectRelationConfig` and are stored in the
-`uiObjectRelationConfigs` folder.
+#### AnalyticsSettings values are stored in the Analytics.settings file in the settings folder. The .settings files are different
+
+from other named components because there’s only one settings file for each settings component.
+
+
+Metadata Types AnalyticsSettings
 
 Version
 
-UIObjectRelationConfig components are available in API version 54.0 and later.
+AnalyticsSettings components are available in API version 46.0 and later.
 
 Special Access Rules
 
-You must be a Health Cloud or Life Sciences Cloud customer to use this metadata type
+The AnalyticsSettings metadata type is accessible in all organizations. The fields that pertain to Reports and Dashboards are available in
+all organizations, but fields that pertain to CRM Analytics are only available in organizations with CRM Analytics enabled.
 
 Fields
 
-**Field Name** **Description**
+**Field Name** **Field Type** **Description**
+
+`alwaysGenPreviews` boolean
+
+`analyticsAdoptionMetadata` boolean
+
+`analyticsCalendarApp` boolean
+
+`autoInstallApps` boolean
+
+`bundleCachingOptOut` boolean
+
+`canAccessAnalyticsViaAPI` boolean
+
+`canAnnotateDashboards` boolean
+
+`canEnableBYOMZeroDay` boolean
 
 ```
-contextObject
-
-contextObjectRecordType
-
-directRelationshipField
-
-indirectObjectContextField
-
-indirectObjectRelatedField
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The object that provides the context for this object relation configuration.
-
-**Field Type**
-string
-
-**Description**
-The record type of the context object for this configuration, if applicable.
-
-**Field Type**
-string
-
-**Description**
-For direct relationships, the child relationship field on the related object that matches
-the context object.
-
-**Field Type**
-string
-
-**Description**
-For indirect relationships, the field on the junction object that matches the context
-object.
-
-**Field Type**
-string
-
-
-Metadata Types UIObjectRelationConfig
-
-**Field Name** **Description**
-
-**Description**
-For indirect relationships, the field on the junction object that matches the related
-object.
-
-```
-indirectRelationshipObject
-
-isActive
-
-masterLabel
-
-relatedObject
-
-relatedObjectRecordType
-
-relationshipType
+Scoring
 
 ```
 
-**Field Type**
-string
+`canEnableLiveMetrics` boolean
 
-**Description**
-For indirect relationships, the junction object representing the relationship between
-the related object and its context object.
+Indicates whether Analytics asset previews are generated ( `true` ) or not
+( `false` ). Available in API version 47.0 and later.
 
-**Field Type**
-boolean
+Indicates whether Adoption Analytics metadata collection can be
+installed via a dataflow in Salesforce ( `true` ) or not ( `false` ). Available
+in API version 47.0 and later.
 
-**Description**
-Indicates whether the configuration is active ( `true` ) or not ( `false` ).
+Indicates whether the Analytics Calendar app for Industry templates can
+be installed in Salesforce ( `true` ) or not ( `false` ). Available in API version
+49.0. Removed in API version 50.0.
 
-**Field Type**
-string
+Indicates whether CRM Analytics apps can be auto-installed in Salesforce
+( `true` ) or not ( `false` ). Available in API version 54.0 and later.
 
-**Description**
+Indicates whether the default CRM Analytics dashboard bundle caching
+behavior is disabled ( `true` ) or enabled ( `false` ). Available in API version
+58.0 and later.
 
-Required.
+Indicates whether Analytics assets can be accessed via the Analytics REST
+API in Salesforce ( `true` ) or not ( `false` ). Available in API version 47.0
+and later.
 
-Label for the UIObjectRelationConfig. In the UI, this field is UI Object Relation Config.
+Indicates whether the Analytics dashboards Chatter annotation feature
+is enabled in Salesforce ( `true` ) or not ( `false` ). Available in API version
+47.0 and later.
 
-**Field Type**
-string
+Indicates whether zero day scoring on user uploaded Einstein Discover
+model is enabled in Salesforce ( `true` ) or not ( `false` ). Available in API
+version 54.0 to 56.0. Removed in API version 57.0.
 
-**Description**
-
-Required.
-
-The object containing the data that this object relation configuration displays.
-
-**Field Type**
-string
-
-**Description**
-The record type of the related object for this configuration.
-
-**Field Type**
-ObjectRelationshipType (enumeration of type string)
-
-**Description**
-
-Required.
-
-A string indicating the type of relationship between the related object and context
-object.
-
-Valid values are:
-
-**•** `Direct`
+Indicates whether the Data Discovery live model metrics calculation
+feature is enabled in Salesforce ( `true` ) or not ( `false` ). Available in API
+version 48.0 and 49.0. Removed in API version 50.0.
 
 
-Metadata Types UIObjectRelationConfig
+Metadata Types AnalyticsSettings
 
-**Field Name** **Description**
+**Field Name** **Field Type** **Description**
 
-**•** `Indirect`
+`canEnableSavedView` boolean
 
-**•** `InverseDirect`
-
-**•** `Self`
+`canExploreData` boolean
 
 ```
-UIObjectRelationFieldConfigs
+Conversationally
 
 ```
 
-**Field Type**
-
-UIObjectRelationFieldConfig[]
-
-**Description**
-Provides a configuration for an object relation field on a specific row of content.
-
-UIObjectRelationFieldConfig
-
-Represents a configuration for a single row of content on a specific object relation configuration.
-
-**Field Name** **Description**
+`canShareAppsWith` boolean
 
 ```
-displayLabel
-
-queryText
-
-rowOrder
+Communities
 
 ```
 
-**Field Type**
-string
+`canSubscribeDashboard` boolean
 
-**Description**
+```
+Widgets
 
-Required.
+```
 
-A string containing the user-defined label for this field, to be displayed on each object
-relation of this type.
+`canViewThumbnailAssets` boolean
 
-**Field Type**
-string
+`cdpQueryCachingOptIn` boolean
 
-**Description**
+`concurrencyLimitSharing` boolean
 
-Required.
+`disableIncrementalDataset` boolean
 
-A case-insensitive template query for generating the content in this field.
+```
+Creation
 
-**Field Type**
-int
+```
 
-**Description**
+`enableAmazonRedshift` boolean
 
-Required.
+```
+OutputConnector
 
-Determines the top-to-bottom display order of this field on the object relation UI.
+```
+
+`enableAnalyticsEncryption` boolean
+
+`enableAnalyticsSharing` boolean
+
+```
+Enable
+
+```
+
+`enableAutoCompleteCombo` boolean
+
+Indicates whether the saved view feature for Analytics dashboards is
+enabled in Salesforce ( `true` ) or not ( `false` ). Available in API version
+47.0 and later.
+
+Indicates whether Analytics data can be explored via NLQ ( `true` ) rather
+than using strict SAQL statements ( `false` ). For example, "Show me all
+accounts that are closed won". Available in API version 47.0 and later.
+
+Indicates whether Analytics apps can be shared with Experience Builder
+sites and their users, outside of the standard Analytics Studio experience
+( `true` ) or not ( `false` ). Available in API version 47.0 and later.
+
+Indicates whether a user can subscribe to Analytics dashboard widgets
+in Salesforce ( `true` ) or not ( `false` ). Available in API version 47.0 to
+50.0. Removed in API version 51.0.
+
+Indicates whether the thumbnail representations of Analytics lenses and
+dashboards are viewable ( `true` ) or not ( `false` ). Available in API version
+47.0 and later.
+
+Indicates whether caching is enabled for direct queries to Data 360
+( `true` ) or not ( `false` ). Available in API version 65.0 and later.
+
+Indicates whether the concurrency limits of Data Prep dataflows and
+recipes can be shared ( `true` ) or not ( `false` ). Available in API version
+60.0 and later.
+
+Indicates whether incremental dataset optimization is disabled ( `true` )
+or not ( `false` ). Available in API version 65.0 and later.
+
+Indicates whether the Amazon Redshift Output connector is enabled in
+Salesforce ( `true` ) or not ( `false` ). Available in API version 58.0 and
+later.
+
+Indicates whether encryption is enabled for Analytics in Salesforce
+( `true` ) or not ( `false` ). Available in API version 48.0 and later.
+
+Indicates whether the Analytics sharing is enabled in Salesforce ( `true` )
+or not ( `false` ). Available in API version 48.0 and later.
+
+Indicates whether using auto-complete when choosing reports and
+dashboards is enabled in Salesforce ( `true` ) or not ( `false` ). Available
+in API version 47.0 and later.
+
+
+Metadata Types AnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableAutonomous` boolean
+
+```
+Experience
+
+```
+
+`enableAzureDLGen2Output` boolean
+
+```
+Connector
+
+```
+
+`enableC360GlobalProfile` boolean
+
+```
+Data
+
+```
+
+`enableCreateLegacy` boolean
+
+```
+Dataflows
+
+```
+
+`enableCrmaDataCloud` boolean
+
+```
+Integration
+
+```
+
+`enableCrtSetupLightning` boolean
+
+```
+UiPref
+
+```
+
+`enableDashboardChange` boolean
+
+```
+OwnerPref
+
+```
+
+`enableDashboardCmpRefresh` boolean
+
+```
+Pref
+
+```
+
+`enableDashboardComponent` boolean
+
+```
+Snapshot
+
+```
+
+`enableDashboardFlexiTable` boolean
+
+`enableDashboardToPDF` boolean
+
+```
+Enable
+
+```
+
+Indicates whether Ask Salesforce for Data is enabled in Salesforce ( `true` )
+or not ( `false` ). Available as Beta in API version 54.0 and later.
+
+Indicates whether the Azure DL Gen2 output connector is enabled in
+Salesforce ( `true` ) or not ( `false` ). Available in API version 54.0 and
+later.
+
+Indicates whether the Customer 360 data validation dashboard connector
+is enabled in Salesforce ( `true` ) or not ( `false` ). Available in API version
+48.0 or later.
+
+Indicates whether access to creating dataflows is available in Salesforce
+( `true` ) or not ( `false` ). Available in API version 55.0 and later.
+
+Indicates whether platform integration between CRM Analytics and Data
+360 is enabled ( `true` ) or not ( `false` ). Available in API version 58.0
+and later.
+
+Indicates whether the enhanced custom report type setup pages is
+enabled in Salesforce ( `true` ) or not ( `false` ). Available in API version
+64.0 and later.
+
+Indicates whether changing ownership of Lightning Experience
+dashboards from one owner to another owner is enabled in Salesforce
+
+( `true` ) or not ( `false` ). Available in API version 59.0. Removed in API
+version 60.0.
+
+Indicates whether Lightning Experience dashboard component refresh
+is enabled in Salesforce ( `true` ) or not ( `false` ). Available in API version
+64.0. Removed in API 65.0.
+
+Indicates whether posting dashboard component snapshots to feeds
+that are visible to all users is enabled in Salesforce ( `true` ) or not
+( `false` ). Available in API version 47.0 and later.
+
+Indicates whether access is enabled to flexible dashboard tables for all
+users in Salesforce ( `true` ) or not ( `false` ). Available in API version 47.0
+and later.
+
+Indicates whether a dashboard can be exported to a PDF in Salesforce
+( `true` ) or not ( `false` ). Available in API version 48.0 and later.
+
+
+Metadata Types AnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableDashboardSubOrg` boolean
+
+```
+EmailPref
+
+```
+
+`enableDataCloudReporting` boolean
+
+```
+Pref
+
+```
+
+`enableDataBlending` boolean
+
+`enableEmailReportsTo` boolean
+
+```
+PortalUsers
+
+```
+
+`enableFirebirdEditor` boolean
+
+`enableFloatingReport` boolean
+
+```
+Headers
+
+```
+
+`enableIncludeDisclaimer` boolean
+
+```
+Message
+
+```
+
+`enableIncrementalUpsert` boolean
+
+`enableInsights` boolean
+
+`enableInsightsHCMode` boolean
+
+`enableLightningReport` boolean
+
+```
+Builder
+
+```
+
+`enableLotusNotesImages` boolean
+
+Indicates whether the unique org email for Lightning Experience
+dashboard subscriptions is enabled ( `true` ) or not ( `false` ). Available
+in API version 64.0 and later.
+
+Indicates whether Data 360 reporting with the analytics query engine
+is enabled ( `true` ) or not ( `false` ). Available in API version 59.0 and
+later.
+
+Indicates whether the Analytics Explorer data blending feature is available
+in Salesforce ( `true` ) or not ( `false` ). Available in API version 48.0 and
+49.0. Removed in API version 50.0.
+
+Indicates whether this org allows Classic reports and dashboards to be
+sent to Portal Users ( `true` ) or not ( `false` ). Available in API version
+47.0 and later.
+
+Indicates whether the Firebird editor is available in Salesforce ( `true` )
+or not ( `false` ). Available in API version 48.0 and later.
+
+Indicates whether report results display floating headers when scrolling
+( `true` ) or not ( `false` ). Available in API version 47.0 and later.
+
+Indicates whether confidental data disclaimers are included with analytics
+assets ( `true` ) or not ( `false` ). Available in API version 64.0 and later.
+
+Indicates whether the incremental upsert operation is enabled for CRM
+Analytics recipe output nodes ( `true` ) or not ( `false` ). Available in API
+version 66.0 and later.
+
+Indicates whether CRM Analytics is enabled in Salesforce ( `true` ) or not
+( `false` ).
+
+Indicates whether CRM Analytics for Public Cloud is enabled in Salesforce
+( `true` ) or not ( `false` ). Available in API version 58.0 and later.
+
+Indicates whether the Lightning Report Builder feature can be enabled
+or disabled on the Setup page in Salesforce ( `true` ) or not ( `false` ).
+Available in API version 47.0 and later.
+
+Indicates whether the use of Lotus Notes-friendly images in dashboards
+and report emails is available in Salesforce ( `true` ) or not ( `false` ).
+Available in API version 47.0 and later.
+
+
+Metadata Types AnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableLwcInDashboards` boolean
+
+`enableMassEnableReport` boolean
+
+```
+Builder
+
+```
+
+`enableNewChartsEngine` boolean
+
+`enableNullDimension` boolean
+
+`enableOrgCanSeeLive` boolean
+
+```
+Previews
+
+```
+
+`enableOrgCanViewTableau` boolean
+
+`enableOrgCanViewThumbnail` boolean
+
+```
+ForOA
+
+```
+
+`enableOrgHaMobileOffline` boolean
+
+```
+Enabled
+
+```
+
+`enableOrgHasWatchlist` boolean
+
+```
+Enabled
+
+```
+
+`enableOrgWideEmail` boolean
+
+```
+Notification
+
+```
+
+`enablePowerInsights` boolean
+
+`enablePupparazziFor` boolean
+
+```
+Notifications
+
+```
+
+Indicates whether Lightning Web Components are enabled for use in
+CRM Analytics Dashboards ( `true` ) or not ( `false` ). Available as Beta
+in API version 53.0. Removed for GA in API version 54.0.
+
+Indicates whether the Report Builder is available in Salesforce ( `true` ),
+overriding profile level settings, or not ( `false` ). Available in API version
+47.0 and later.
+
+Indicates whether the New Charts Engine for reports and dashboards is
+available in Salesforce ( `true` ) or not ( `false` ). Available in API version
+47.0 and later.
+
+Indicates whether null values are supported as a grouping key value in
+a SAQL query in Salesforce ( `true` ) or not ( `false` ). Available in API
+version 48.0 and later.
+
+Indicates whether admins can enable live previews of data in Salesforce
+( `true` ) or not ( `false` ). Available in API version 57.0 and later.
+
+Indicates whether admins can enable Tableau dashboards in Salesforce
+( `true` ) or not ( `false` ). Available in API version 55.0 and later.
+
+Indicates whether admins can enable thumbnails for Lightning
+Experience reports and dashboards in Salesforce ( `true` ) or not ( `false` ).
+Available in API version 57.0 and later.
+
+Indicates whether admins can enable mobile offline access in Salesforce
+( `true` ) or not ( `false` ). Available in API version 51.0 and later.
+
+Indicates whether admins can turn on watchlists for assets in Salesforce
+( `true` ) or not ( `false` ). Available in API version 50.0 and later.
+
+Indicates whether a unique org email for CRM Analytics dashboard
+subscriptions and notifications is enabled ( `true` ) or not ( `false` ).
+Available in API version 65.0 and later.
+
+Indicates whether admins can turn on Power Insights for this org ( `true` )
+or not ( `false` ). Removed in API version 51.0.
+
+Indicates whether the CRM Analytics Hyperforce headless browser service
+is enabled ( `true` ) or not ( `false` ). Available in API version 66.0 and
+above.
+
+
+Metadata Types AnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableQueryLiveConnectors` boolean
+
+`enableRecommendedReport` boolean
+
+```
+TypePref
+
+```
+
+`enableRemoveFooterForRep` boolean
+
+```
+Display
+
+```
+
+`enableRemoveFooterFromRep` boolean
+
+```
+Exp
+
+```
+
+`enableReportCdnPref` boolean
+
+`enableReportCustomText` boolean
+
+```
+ExportPref
+
+```
+
+`enableReportEscapeChars` boolean
+
+```
+Pref
+
+```
+
+`enableReportFieldToField` boolean
+
+```
+Pref
+
+```
+
+`enableReportCrtAutoAdd` boolean
+
+```
+Pref
+
+```
+
+`enableReportHideXlsExport` boolean
+
+```
+Pref
+
+```
+
+Indicates whether querying live connectors is available in Salesforce
+( `true` ) or not ( `false` ). Available in API version 48.0 and later.
+
+Indicates whether recommended report types for Lightning Reports are
+available in Salesforce ( `true` ) or not ( `false` ). Available in API version
+54.0 to 56.0. Removed in API version 57.0.
+
+Indicates whether the default disclaimer for the report run page and
+printable view page is removed ( `true` ) or not ( `false` ) in Salesforce.
+Available in API version 47.0 and later.
+
+Indicates whether the default footer from the exported (csv/excel) report
+is removed ( `true` ) or not ( `false` ) in Salesforce. Available in API version
+47.0 and later.
+
+Indicates whether the content delivery network (CDN) feature in
+Lightning Experience Reports is available in Salesforce ( `true` ) or not
+( `false` ). Available in API version 64.0 and later.
+
+Indicates whether the export of custom text in Lightning Experience
+Reports is available in Salesforce ( `true` ) or not ( `false` ). Available in
+API version 66.0 and later.
+
+Indicates whether the sanitization of malicious characters in CSV exports
+to prevent formula injection feature in Lightning Experience Reports is
+
+available in Salesforce ( `true` ) or not ( `false` ). Available in API version
+65.0 and later.
+
+Indicates whether the field-to-field filters feature in Lightning Experience
+Reports is available in Salesforce ( `true` ) or not ( `false` ). Available in
+API version 47.0. Removed in API version 48.0.
+
+Indicates whether the feature to automatically add new fields to relevant
+custom Lightning Experience report types when they’re created is
+
+available in Salesforce ( `true` ) or not ( `false` ). Available in API version
+50.0 and 51.0. Removed in API version 52.0.
+
+Indicates whether the XLS export feature for Lightning Experience Reports
+is visible in Salesforce ( `true` ) or not ( `false` ). Available in API version
+51.0 and later.
+
+Note: To manage this setting, users must have the Export Reports
+user permission.
+
+
+Metadata Types AnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableReportInlineEdit` boolean
+
+```
+Pref
+
+```
+
+Indicates whether the inline editing feature for Lightning Experience
+Reports is available in Salesforce ( `true` ) or not ( `false` ). Available in
+API version 53.0 and later.
+
+`enableReportInterfacePref` boolean Indicates whether interfaces on Data 360 reports during packaging are
+enabled ( `true` ) or not ( `false` ). Available in API version 66.0 and later.
+
+`enableReportNotifications` boolean
+
+```
+Enable
+
+```
+
+`enableReportSubOrgEmail` boolean
+
+```
+Pref
+
+```
+
+`enableReportUniqueRow` boolean
+
+```
+CountPref
+
+```
+
+`enableRequestPriority` boolean
+
+```
+Schdl
+
+```
+
+`enableS1AnalyticsEclair` boolean
+
+```
+Enable
+
+```
+
+`enableS3OutputConnector` boolean
+
+`enableSFXJoinedReports` boolean
+
+```
+Enable
+
+```
+
+`enableSalesforceOutput` boolean
+
+```
+Connector
+
+```
+
+`enableSecureImageSharing` boolean
+
+`enableSmartDataDiscovery` boolean
+
+Indicates whether the notification feature for Lightning Experience
+Reports is available in Salesforce ( `true` ) or not ( `false` ). Available in
+API version 48.0 and later.
+
+Indicates whether the unique org email for Lightning Experience Report
+subscriptions is enabled ( `true` ) or not ( `false` ). Available in API version
+61.0 and later.
+
+Indicates whether the unique row count aggregate feature in Lightning
+Experience Reports is available in Salesforce ( `true` ) or not ( `false` ).
+Available in API version 47.0. Removed in API version 48.0.
+
+Indicates whether priority-based dataflow request scheduling is available
+in Salesforce ( `true` ) or not ( `false` ). Available in API version 50.0 and
+later.
+
+Indicates whether EclairNG charts can be enabled for S1 Mobile Analytics
+in Salesforce ( `true` ) or not ( `false` ). Available in API version 48.0 and
+later.
+
+Indicates whether the S3 output data connector is available in Salesforce
+( `true` ) or not ( `false` ). Available in API version 49.0 and later.
+
+Indicates whether the Lightning Experience joined report feature can
+be enabled or disabled on the Setup page in Salesforce ( `true` ) or not
+( `false` ). Available in API version 47.0 and later.
+
+Indicates whether the Salesforce output data connector is available in
+Salesforce ( `true` ) or not ( `false` ). Available in API version 51.0 and
+later.
+
+Indicates whether secure image sharing and downloading is enabled in
+Salesforce ( `true` ) or not ( `false` ). Available in API version 50.0 and
+later.
+
+Indicates whether the org admin can enable Einstein Discovery in
+Salesforce ( `true` ) or not ( `false` ). Available in API version 49.0 and
+50.0. Removed in API version 51.0.
+
+
+Metadata Types AnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableSnowflakeOutput` boolean
+
+```
+Connector
+
+```
+
+`enableSummaryFilterOrg` boolean
+
+```
+Pref
+
+```
+
+`enableSqlDataset` boolean
+
+`enableSqlLiveDataset` boolean
+
+`enableTableauHyperOutput` boolean
+
+```
+Connector
+
+```
+
+`enableUseOldChartsLookAnd` boolean
+
+```
+Feel
+
+```
+
+`enableWaveAssetsNewDate` boolean
+
+```
+Version
+
+```
+
+`enableWaveCustomFiscal` boolean
+
+`enableWaveIndexMVDim` boolean
+
+`enableWaveIndexMVDimV2` boolean
+
+`enableWaveMulticurrency` boolean
+
+`enableWaveLwcDashboards` boolean
+
+Indicates whether the Snowflake output data connector is available in
+Salesforce ( `true` ) or not ( `false` ). Available in API version 49.0 and
+later.
+
+Indicates whether Lightning Experience Report summary filters are
+enabled ( `true` ) or not ( `false` ). Available in API version 60.0 and later.
+
+Indicates whether SQL datasets are available in Salesforce ( `true` ) or not
+( `false` ). Available in API version 52.0. Removed in API version 53.0.
+
+Indicates whether SQL live datasets are available in Salesforce ( `true` )
+or not ( `false` ). Available in API version 51.0 and 52.0. Removed in API
+version 53.0.
+
+Indicates whether the Tableau hyper output data connector is available
+in Salesforce ( `true` ) or not ( `false` ). Available in API version 51.0 and
+later.
+
+Indicates whether this org allows the old charts look and feel for
+Lightning Experience reports and dashboards ( `true` ) or not ( `false` ).
+Available in API version 47.0 and later.
+
+Indicates whether the new date version for timezone support in Analytics
+assets is enabled in Salesforce ( `true` ) or not ( `false` ). Available in API
+version 51.0 and later.
+
+Indicates whether custom fiscal year is enabled for Analytics in Salesforce
+( `true` ) or not ( `false` ). When enabled, custom fiscal year lets admins
+
+import custom fiscal year definitions from Salesforce to Analytics.
+Available in API version 50.0 and later.
+
+Indicates whether multivalve dimension indexing is enabled in Salesforce
+( `true` ) or not ( `false` ). Available in API version 50.0 and later.
+
+Indicates whether version 2 multivalve dimension indexing is enabled
+in Salesforce ( `true` ) or not ( `false` ). Available in API version 52.0 and
+later.
+
+Indicates whether CRM Analytics multiple currencies is enabled ( `true` )
+or not ( `false` ). Available in API version 56.0 and later. (Beta)
+
+Indicates whether embedded Analytics dashboards are rendered in
+Lightning Experience using a Lightning Web Component ( `true` ) or the
+
+
+Metadata Types AnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+legacy Aura Component ( `false` ). Available in API version 55.0 and 56.0.
+Removed in API version 57.0.
+
+`enableWaveRecord` boolean
+
+```
+Navigation
+
+```
+
+`enableWaveReplication` boolean
+
+`enableWaveSharing` boolean
+
+```
+Inheritance
+
+```
+
+`enableWaveSqlCFIndexing` boolean
+
+`enableWaveSqlInQueryApi` boolean
+
+`enableWaveTemplate` boolean
+
+`enableWaveTrendedDataset` boolean
+
+```
+Cleanup
+
+```
+
+`enableWriteToDataCloud` boolean
+
+`etlOrchestrationPref` boolean
+
+`incrementalUpsertEnabled` boolean
+
+`inheritSharingForNonOppty` boolean
+
+```
+Objects
+
+```
+
+Indicates whether browser tab navigation for record actions from
+Analytics is enabled in Salesforce ( `true` ) or not ( `false` ). Available in
+API version 48.0 and later.
+
+Indicates whether replication (extract) for Salesforce objects is enabled
+in Salesforce ( `true` ) instead of SFDC Digest ( `false` ). Available in API
+version 47.0 and later.
+
+Indicates whether Analytics data can inherit sharing and security settings
+for their source object in Salesforce ( `true` ) or not ( `false` ). Available
+in API version 47.0 and later.
+
+Indicates whether indexing for custom fiscal dates in SQL queries is
+enabled in Salesforce ( `true` ) or not ( `false` ). Available in API version
+58.0 and later.
+
+Indicates whether SQL is enabled for CRM Analytics in the Query API in
+Salesforce ( `true` ) or not ( `false` ). Available as Beta in API version 53.0.
+Removed for GA in API version 54.0.
+
+Indicates whether Analytics templates are enabled for this org ( `true` )
+or not ( `false` ). Removed in API version 51.0.
+
+Indicates whether this org allows automatic deletion of inactive trended
+datasets ( `true` ) or not ( `false` ). Available in API version 47.0 and later.
+
+Indicates whether CRM Analytics recipe output to Data 360 is enabled
+( `true` ) or not ( `false` ). Available in API version 60.0 and later. (Beta)
+
+Indicates whether Data Prep recipe orchestration is enabled ( `true` ) or
+not ( `false` ). Available in API version 54.0 and later. (Beta)
+
+Indicates whether the incremental upsert operation is enabled for CRM
+Analytics recipe output nodes ( `true` ) or not ( `false` ). Available in API
+version 66.0 and later.
+
+Indicates whether medium visibility support for Analytics sharing
+inheritance for all Salesforce objects besides the Opportunity object is
+
+available in Salesforce ( `true` ) or not ( `false` ). Available in API version
+48.0 and 49.0. Removed in API version 50.0.
+
+
+Metadata Types AnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+`inheritSharingForOppty` boolean
+
+```
+Object
+
+```
+
+`isDiscoveryOptimization` boolean
+
+```
+Enabled
+
+```
+
+`isHighVolumePushback` boolean
+
+```
+Enabled
+
+```
+
+`maxHoursAppInProgress` integer
+
+Indicates whether medium visibility support for Analytics sharing
+inheritance for the Opportunity object is available in Salesforce ( `true` )
+
+or not ( `false` ). Available in API version 48.0 and 49.0. Removed in API
+version 50.0.
+
+Indicates whether Einstein Discovery optimization is enabled ( `true` ) or
+not ( `false` ). Available in API version 58.0 and later. (Beta)
+
+Indicates whether Einstein Discovery high volume push back is enabled
+in Salesforce ( `true` ) or not ( `false` ). Available in API version 58.0 and
+later.
+
+The maximum number of hours an embedded application can have the
+status `InProgress` before it’s canceled. Available in API version 50.0
+and later.
+
+`queryCachingOptOut` boolean Indicates whether the option to cache query results is enabled ( `true` )
+or not ( `false` ). Available in API version 59.0 and later.
+
+`recipeDirectDataPref` boolean
+
+`recipeFiscalPref` boolean
+
+`recipePreCachingOptOut` boolean
+
+`recipeStagedDataPref` boolean
+
+`replaceBlankMeasuresWith` boolean
+
+```
+Nulls
+
+```
+
+`setWaveIsYearEndFiscal` boolean
+
+```
+Year
+
+```
+
+Indicates whether the option to enable Data Prep recipe direct data
+loading is available ( `true` ) or not ( `false` ). Available in API version 53.0
+and later.
+
+Indicates whether the option to enable Data Prep recipe custom fiscal
+settings is available ( `true` ) or not ( `false` ). Available in API version
+53.0 and later.
+
+Indicates whether the option to disable Data Prep recipe pre-step caching
+is available ( `true` ) or not ( `false` ). Available in API version 53.0 and
+later.
+
+Indicates whether staged data for Data Prep recipes is available in
+Salesforce ( `true` ) or not ( `false` ). Available in API version 53.0 and
+later.
+
+Indicates whether null values are supported in measures ( `true` ) or not
+( `false` ). If enabled ( `true` ), the implicit default value for blank measures
+is null. Available in API version 48.0 and later.
+
+Indicates whether the Analytics year end is the fiscal year end ( `true` )
+or not ( `false` ). This preference is only applicable when
+
+`enableWaveCustomFiscal` is `true` . If `false`, the fiscal year
+end is the calendar year end. Available in API version 50.0 and later.
+
+
+#### Metadata Types ApexSettings
+
+**Field Name** **Field Type** **Description**
+
+`sonicEnabled` boolean
+
+`turnOnTimeZones` boolean
+
+Indicates whether the Sonic feature is available in Salesforce ( `true` ) or
+not ( `false` ). Available in API version 51.0 and later.
+
+Indicates whether the timezone feature is available in Salesforce ( `true` )
+or not ( `false` ). Available in API version 48.0 and later.
 
 Declarative Metadata Sample Definition
 
-This is an example of a UIObjectRelationConfig component.
+The following is an example of the Analytics.settings file:
 
 ```
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
- <UIObjectRelationConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+<AnalyticsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <UIObjectRelationFieldConfigs>
+   <enableWaveTemplate>true</enableWaveTemplate>
 
-```
+   <enableInsights>true</enableInsights>
 
+   <canAccessAnalyticsViaAPI>true</canAccessAnalyticsViaAPI>
 
-Metadata Types UIObjectRelationConfig
-
-```
-         <displayLabel>Address:</displayLabel>
-
-         <queryText>{
-
-      "startNode": {
-
-         "initialObject": "RelatedObject"
-
-      },
-
-      "traversalNodes": [],
-
-      "fieldNode": {
-
-         "fieldEnumOrId": "ShippingAddress"
-
-      }
-
-    }</queryText>
-
-         <rowOrder>1</rowOrder>
-
-      </UIObjectRelationFieldConfigs>
-
-      <UIObjectRelationFieldConfigs>
-
-         <displayLabel>Phone:</displayLabel>
-
-         <queryText>{
-
-      "startNode": {
-
-         "initialObject": "RelatedObject"
-
-      },
-
-      "traversalNodes": [],
-
-      "fieldNode": {
-
-         "fieldEnumOrId": "Phone"
-
-      }
-
-    }</queryText>
-
-         <rowOrder>2</rowOrder>
-
-      </UIObjectRelationFieldConfigs>
-
-      <UIObjectRelationFieldConfigs>
-
-         <displayLabel>Fax:</displayLabel>
-
-         <queryText>{
-
-      "startNode": {
-
-         "initialObject": "RelatedObject"
-
-      },
-
-      "traversalNodes": [],
-
-      "fieldNode": {
-
-         "fieldEnumOrId": "Fax"
-
-      }
-
-    }</queryText>
-
-         <rowOrder>3</rowOrder>
-
-      </UIObjectRelationFieldConfigs>
-
-      <UIObjectRelationFieldConfigs>
-
-         <displayLabel>Parent Organization:</displayLabel>
-
-         <queryText>{
-
-      "startNode": {
-
-         "initialObject": "RelatedObject"
-
-      },
-
-      "traversalNodes": [
-
-         {
-
-           "destinationObjectEnumOrId": "Account",
-
-           "fieldEnumOrId": "ParentId",
-
-           "traversalDirection": "parent"
-
-         }
-
-      ],
-
-      "fieldNode": {
-
-         "fieldEnumOrId": "Name"
-
-      }
+</AnalyticsSettings>
 
 ```
 
+Example Package Manifest
 
-### Metadata Types UiPreviewMessageTabDef
-
-```
-    }</queryText>
-
-         <rowOrder>4</rowOrder>
-
-      </UIObjectRelationFieldConfigs>
-
-      <contextObject>Contact</contextObject>
-
-      <directRelationshipField>AccountId</directRelationshipField>
-
-      <isActive>true</isActive>
-
-      <masterLabel>Sample Primary Account Configuration</masterLabel>
-
-      <relatedObject>Account</relatedObject>
-
-      <relationshipType>Direct</relationshipType>
-
-      <indirectObjectRelatedField></indirectObjectRelatedField>
-
-      <indirectObjectContextField></indirectObjectContextField>
-
-      <contextObjectRecordType></contextObjectRecordType>
-
-      <indirectRelationshipObject></indirectRelationshipObject>
-
-      <relatedObjectRecordType></relatedObjectRecordType>
-
-    </UIObjectRelationConfig>
+The following is an example package manifest used to deploy or retrieve the Analytics settings metadata:
 
 ```
+<?xml version="1.0" encoding="UTF-8"?>
 
-This is an example `package.xml` that references the previous definition.
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-```
-   <?xml version="1.0" encoding="UTF-8"?>
+   <types>
 
-   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+     <members>Analytics</members>
 
-     <types>
+     <name>Settings</name>
 
-       <members>*</members>
+   </types>
 
-       <name>UIObjectRelationConfig</name>
+   <version>47.0</version>
 
-     </types>
-
-      <version>54.0</version>
-
-   </Package>
+</Package>
 
 ```
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### UiPreviewMessageTabDef
+#### ApexSettings
 
-Represents the registration of a custom Marketing Cloud Preview and Test modal tab, created using custom Lightning web components.
-You can register and show multiple tabs in the Preview and Test experience.
+Represents Apex-related org settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-Parent Type
-
-[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-### UiPreviewMessageTabDef components have the suffix .uiPreviewMessageTabDef and are stored in the
+#### ApexSettings values are stored in the Apex.settings file in the settings directory of the corresponding package directory.
 
-`uiPreviewMessageTabDef` folder.
+The `.settings` files are different from other named components, because there’s only one settings file for each settings component.
 
 
-Metadata Types UiPreviewMessageTabDef
+Metadata Types ApexSettings
 
 Version
 
-UiPreviewMessageTabDef components are available in API version 63.0 and later.
+ApexSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`DefaultQueueableDelay` integer Indicates the admin-controlled minimum delay (in
+seconds) that applies to all enqueued jobs that
+
+were scheduled without a delay parameter. The
+minimum delay is one second and the maximum
+is 600 seconds. The default behavior, when the
+setting is omitted, is no delay in scheduling
+enqueued jobs.
+
+`enableAggregateCodeCoverageOnly` boolean
+
+Indicates whether aggregate (not detailed) totals
+are tracked for Apex test coverage data ( `true` ) or
+not ( `false` ). The default value is `false` .
+
+`enableApexAccessRightsPref` boolean Deprecated.
+
+`enableApexApprovalLockUnlock` boolean
+
+Indicates whether approval process lock and unlock
+operations from Apex code are allowed ( `true` ) or
+not ( `false` ). The default value is `false` .
+
+`enableApexCtrlImplicitWithSharingPref` boolean Indicates whether the Use `with sharing` for
+`@AuraEnabled` Apex Controllers with Implicit
+
+Sharing critical update is activated ( `true` ) or not
+( `false` [). For more details, see the Winter ’20](http://releasenotes.docs.salesforce.com/en-us/winter20/release-notes/rn_lc_apex_with_sharing_cruc.htm)
+[Release Notes.](http://releasenotes.docs.salesforce.com/en-us/winter20/release-notes/rn_lc_apex_with_sharing_cruc.htm)
+
+`enableApexPropertyGetterPref` boolean Indicates whether the Enforce Access Modifiers on
+Apex Properties in Lightning Component Markup
+
+critical update is activated ( `true` ) or not ( `false` ).
+[For more details, see the Winter ’20 Release Notes.](http://releasenotes.docs.salesforce.com/en-us/winter20/release-notes/rn_lc_enforce_prop_modifiers_cruc.htm)
+
+`enableAuraApexCtrlAuthUserAccessCheckPref` boolean Indicates whether the Restrict Access to
+`@AuraEnabled` Apex Methods for
+
+Authenticated Users Based on User Profile critical
+update is activated ( `true` ) or not ( `false` ). For
+[more details, see the Winter ’20 Release Notes.](http://releasenotes.docs.salesforce.com/en-us/winter20/release-notes/rn_lc_restrict_apex_authenticated_users.htm)
+
+`enableAuraApexCtrlGuestUserAccessCheckPref` boolean Indicates whether the Restrict Access to
+`@AuraEnabled` Apex Methods for Guest and
+
+Portal Users Based on User Profile critical update is
+activated ( `true` ) or not ( `false` ). For more details,
+[see the Winter ’20 Release Notes.](http://releasenotes.docs.salesforce.com/en-us/winter20/release-notes/rn_lc_restrict_apex_guest_users.htm)
+
+`enableCompileOnDeploy` boolean Indicates whether Apex code is automatically
+recompiled ( `true` ) or not ( `false` ). When set to
+
+`true`, code is recompiled before completing a
+
+
+Metadata Types ApexSettings
+
+**Field Name** **Field Type** **Description**
+
+metadata deployment, change set deployment,
+package installation, or package upgrade. For
+production orgs and full sandboxes, the default
+value is `true` . For all other orgs, the default value
+is `false` .
+
+Note: This setting can’t be disabled in
+production orgs.
+
+`enableDisableParallelApexTesting` boolean
+
+Indicates whether Apex tests are serially executed
+( `true` ) or not ( `false` ). The default value is
+`false` .
+
+Note: Even when parallel testing is enabled
+by setting this value to `false`, tests that
+are run during deployments are always run
+serially.
+
+`enableDebugLogsDuringDeployment` boolean Indicates whether debug logs are enabled during
+metadata deployment ( `true` ) or not ( `false` ), in
+
+conjunction with an active debug log trace flag. If
+this setting is `true` but the trace flag is not active,
+debug logs are not enabled during metadata
+deployment. The default value is `false` .
+
+Note: Enabling the debug log in the
+`DebuggingHeader` overrides this
+setting.
+
+`enableGaplessTestAutoNum` boolean Indicates whether autonumbering gaps are
+prevented by Apex test executions not
+
+incrementing autonumber fields for non-test
+records ( `true` ) or not ( `false` ). The default value
+is `true` .
+
+`enableMngdCtrlActionAccessPref` boolean Indicates whether the Disable Access to Non-global
+Apex Controller Methods in Managed Packages
+
+critical update is activated ( `true` ) or not ( `false` ).
+[For more details, see the Winter ’20 Release Notes.](http://releasenotes.docs.salesforce.com/en-us/winter20/release-notes/rn_lc_apex_methods_packages_cruc.htm)
+
+`enableNonCertifiedApexMdCrud` boolean Indicates whether Apex classes can access
+metadata, public or protected, through classes in
+
+the `Metadata` namespace ( `true` ) or not
+( `false` ). The default value is `false` .
+
+`enableRestrictCommunityExecAnon` boolean Indicates whether guest users are restricted from
+executing anonymous Apex. The restriction applies
+
+regardless of whether the `Author Apex`
+permission is set. The default value is `true` .
+
+
+#### Metadata Types AppAnalyticsSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableSecureNoArgConstructorPref` boolean
+
+`enableTestSetupSkipTestResults` boolean
+
+Declarative Metadata Sample Definition
+
+The following is an example of ApexSettings components.
+
+Not used. Critical update is automatically enforced.
+[See Restrict Reflective Access to Non-Global](https://help.salesforce.com/s/articleView?id=release-notes.rn_apex_publicConstructorsInMgdPackages.htm&release=224&language=en_US)
+[Constructors in Packages (Critical Update).](https://help.salesforce.com/s/articleView?id=release-notes.rn_apex_publicConstructorsInMgdPackages.htm&release=224&language=en_US)
+
+Indicates whether Apex test results are generated
+for @TestSetup methods ( `false` ) or not ( `true` ).
+Available in API version 61.0 and later.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ApexSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <enableDisableParallelApexTesting>true</enableDisableParallelApexTesting>
+
+</ApexSettings>
+
+```
+
+The following is an example `package.xml` manifest that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>Apex</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>47.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### AppAnalyticsSettings
+
+Represents settings to retrieve AppExchange App Analytics usage data.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### AppAnalyticsSettings values are stored in the AppAnalytics.settings file in the settings folder. The .settings files
+
+are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### AppAnalyticsSettings is available in API versions 50.0 and later.
+
+
+#### Metadata Types AppExperienceSettings
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableAppAnalyticsOptOut` boolean
+
+`enableSimulationMode` boolean
+
+Indicates whether the collection of AppExchange App Analytics package
+usage data from this org is disabled ( `true` ) or not ( `false` ). Available
+in API version 60.0 and later. Default is `false` .
+
+Indicates whether AppExchange App Analytics simulation mode is
+enabled ( `true` ) or disabled ( `false` ). Available in API version 50.0 and
+later. Default is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of the AppAnalytics.settings file:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AppAnalyticsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <enableSimulationMode>true</enableSimulationMode>
+
+ <enableAppAnalyticsOptOut>false</enableAppAnalyticsOptOut>
+
+</AppAnalyticsSettings>
+
+```
+
+Example Package Manifest
+
+This example package manifest deploys or retrieves AppAnalytics settings metadata.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <types>
+
+  <members>AppAnalytics</members>
+
+  <name>Settings</name>
+
+ </types>
+
+ <version>50.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### AppExperienceSettings
+
+Represents settings for the app experience.This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+
+#### Metadata Types AssociationEngineSettings
+
+File Suffix and Directory Location
+
+AppExperienceSettings values are stored in the `.settings` file in the `settings` directory. The .settings files are different from
+other named components because there is only one settings file for each settings component.
+
+Version
+
+AppExperienceSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`doesHideAllAppsInAppLauncher` boolean
+
+If set to `false` (default), all standard and custom apps show up on the
+App Launcher. If set to `true`, the admin must select which standard
+and custom apps to display on the App Launcher.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an AppExperienceSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AppExperienceSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <doesHideAllAppsInAppLauncher>false</doesHideAllAppsInAppLauncher>
+
+</AppExperienceSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the AppExperienceSettings metadata for an organization:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>AppExperience</members>
+
+     <name>Settings</name>
+
+   </types>
+
+<version>47.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### AssociationEngineSettings
+
+Represents the record association builder settings for an org. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+
+Metadata Types AssociationEngineSettings
+
+Parent Type and Manifest Access
+
+[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+
+[In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)
+
+File Suffix and Directory Location
+
+`AssociationEngineSettings` values are stored in the `AssociationEngine.settings` file in the `settings` folder.
+The `.settings` files are different from other named components, because there is only one settings file for each settings component.
+
+Version
+
+AssociationEngineSettings components are available in API version 52.0 and later.
 
 Special Access Rules
 
@@ -6561,15 +8175,7 @@ Fields
 **Field Name** **Description**
 
 ```
-isActive
-
-isProtected
-
-label
-
-lightningComponentDef
-
-supportedChannel
+enableAssociationEngine
 
 ```
 
@@ -6577,218 +8183,265 @@ supportedChannel
 boolean
 
 **Description**
-
-Required.
-
-Indicates whether the tab is enabled and is customer controlled ( `true` ) or not
-( `false` ).
-
-**Field Type**
-boolean
-
-**Description**
-Indicates whether the configuration is protected ( `true` ) or not ( `false` ).
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-Label for the tab.
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The customer-created Lightning web component that displays in the Preview and
-Test tabs.
-
-**Field Type**
-SupportedChannel (enumeration of type string)
-
-**Description**
-
-Required.
-
-A string indicating the type of channel.
-
-
-Metadata Types UiPreviewMessageTabDef
-
-**Field Name** **Description**
-
-Values are:
-
-**•** `Email`
-
-**•** `Sms`
-
-**•** `WhatsApp`
-
-```
-tabName
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required.
-
-The case-sensitive, user-defined label displayed as the name of the tab. Maximum
-length is 255 characters.
+Automatically associates new accounts with the user’s current branch by creating
+branch unit customer records. The default value is `false` .
 
 Declarative Metadata Sample Definition
 
-This example is a custom Lightning web component’s HTML file.
-
-```
-<template>
-
-   <div>A custom tab</div>
-
-   <div>Preview data</div>
-
-   <div>{previewData}</div>
-
-</template>
-
-```
-
-Here’s the component’s JavaScript file.
-
-```
-import { LightningElement, api } from "lwc";
-
-export default class CustomTab extends LightningElement {
-
-   @api previewData;
-
-}
-
-```
-
-Here’s the component’s configuration file.
+The following is an example of an AssociationEngineSettings component.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
-<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+<AssociationEngineSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <apiVersion>63.0</apiVersion>
+  <enableAssociationEngine>true</enableAssociationEngine>
 
-   <isExposed>true</isExposed>
-
-   <capabilities>
-
-     <capability>lightning__dynamicComponent</capability>
-
-   </capabilities>
-
-</LightningComponentBundle>
+</AssociationEngineSettings>
 
 ```
 
-This example `package.xml` references the component’s definition.
+The following is an example `package.xml` that references the previous definition.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
-<UiPreviewMessageTabDef xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <isActive>true</isActive>
+  <types>
 
-   <label>TestUiPreviewMessageTab</label>
+   <members>AssociationEngine</members>
 
-   <lightningComponentDef>customTab</lightningComponentDef>
+   <name>Settings</name>
 
-```
+  </types>
 
-
-### Metadata Types UserAccessPolicy
-
-```
-      <supportedChannel>Email</supportedChannel>
-
-      <tabName>My Tab</tabName>
-
-      <isProtected>false</isProtected>
-
-   </UiPreviewMessageTabDef>
-
-### UserAccessPolicy
+</Package>
 
 ```
 
-Represents a user access policy.
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
+#### Metadata Types AutomatedContactsSettings
 
-Parent Type
+Wildcard Support in the Manifest File
 
-This type extends the Metadata metadata type and inherits its `fullName` field.
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+[wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+#### AutomatedContactsSettings
+
+Represents an org’s Einstein Automated Contacts settings. These settings let you find new contacts and opportunity contact roles. This
+type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-### UserAccessPolicy components have the suffix .useraccesspolicy and are stored in the useraccesspolicies folder.
+#### AutomatedContactsSettings values are stored in the AutomatedContacts.settings file in the settings folder. The
+
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-### UserAccessPolicy components are available in API version 57.0 and later.
+#### AutomatedContactsSettings is available in API versions 48.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableAddContactAutomatically` boolean
+
+`enableAddContactRoleAutomatically` boolean
+
+`enableAddContactRoleWithSuggestion` boolean
+
+Indicates whether new contacts are automatically added from external
+email accounts (such as Microsoft and Google) to Salesforce ( `true` ) or
+not ( `false` ). The default value is `false` .
+
+`enableAddContactWithSuggestion` must be `true` to use
+this setting.
+
+Note: When this feature is enabled, users do not see new
+contacts as suggestions. The contacts are added automatically.
+
+Indicates whether opportunity contact roles from external accounts are
+automatically added to Salesforce ( `true` ) or not ( `false` ). The default
+value is `false` .
+
+Note: When this feature is enabled, users do not see new contact
+roles as suggestions. The contact roles are added automatically.
+
+Indicates whether opportunity contact roles from external accounts are
+suggested as new Salesforce opportunity contact roles ( `true` ) or not
+( `false` ). The default value is `true` .
+
+
+#### Metadata Types BotSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableAddContactWithSuggestion` boolean
+
+Indicates whether new contacts from external accounts (such as Microsoft
+and Google) are suggested as new Salesforce contacts ( `true` ) or not
+( `false` ). The default value is `true` .
+
+`enableAddContactRoleWithSuggestion` must be `true`
+to use this setting.
+
+Declarative Metadata Sample Definition
+
+The following is an example of the AutomatedContactsSettings.settings file:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AutomatedContactsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <enableAddContactAutomatically>true</enableAddContactAutomatically>
+
+ <enableAddContactRoleAutomatically>true</enableAddContactRoleAutomatically>
+
+ <enableAddContactRoleWithSuggestion>true</enableAddContactRoleWithSuggestion>
+
+ <enableAddContactWithSuggestion>true</enableAddContactWithSuggestion>
+
+</AutomatedContactsSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the AutomatedContacts settings metadata:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <types>
+
+  <members>AutomatedContactsSettings</members>
+
+  <name>Settings</name>
+
+ </types>
+
+ <version>29.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### BotSettings
+
+Represents an organization’s Einstein Bot settings, such as whether or not Einstein Bots is enabled. This type extends the Metadata
+metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+Bot components have the suffix `.bot` and are stored in the `bot` folder.
+
+
+#### Metadata Types BranchManagementSettings
+
+Version
+
+Bot components are available in API version 46.0 and later.
 
 Special Access Rules
 
-To create or modify user access policies, users must have the Manage User Access Policies permission.
+Bot metadata deployment and retrieval are not supported for Lead Nurturing and Sales Coach Agents.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableBots` boolean Indicates whether Einstein Bots is enabled ( `true` ) or not ( `false` ).
+
+Declarative Metadata Sample Definition
+
+The following is an example of a BotSetting. This example has been trimmed to make it easier to read.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <BotSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableBots>true</enableBots>
+
+   </BotSettings>
+
+```
+
+The following is an example `package.xml` manifest that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>Bot</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>46.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### BranchManagementSettings
+
+Represents the branch management settings for an org. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+Parent Type and Manifest Access
+
+[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+
+[In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)
+
+
+Metadata Types BranchManagementSettings
+
+File Suffix and Directory Location
+
+`BranchManagementSettings` values are stored in the `BranchManagement.settings` file in the `settings` folder.
+The `.settings` files are different from other named components, because there is only one settings file for each settings component.
+
+Version
+
+BranchManagementSettings components are available in API version 51.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
 
 Fields
 
 **Field Name** **Description**
 
 ```
-booleanFilter
-
-description
-
-```
-
-**Field Type**
-string
-
-**Description**
-Required. The logic that determines how your user criteria filters are applied in the
-user access policy. For example, if you have two user access policy filters with the
-`sortOrder` equal to `1` and `2`, respectively, the `booleanFilter` can be `1`
-`AND 2` or `1 OR 2` .
-
-**Field Type**
-string
-
-**Description**
-Description of the user access policy.
-
-
-Metadata Types UserAccessPolicy
-
-**Field Name** **Description**
-
-```
-isProtected
-
-masterLabel
-
-order
-
-status
-
-triggerType
+associateAccountWithBranch
 
 ```
 
@@ -6796,384 +8449,1290 @@ triggerType
 boolean
 
 **Description**
-An auto-generated value that doesn’t impact the behavior of the metadata type. The
-default value is `false` .
-
-**Field Type**
-string
-
-**Description**
-
-Required. A user-friendly name for the user access policy, which is defined when the
-user access policy is created.
-
-**Field Type**
-int
-
-**Description**
-Indicates the order for which active policy is applied when a user meets the criteria
-for multiple policies. Must be an integer from 0 to 10,000. Only the active policy with
-the lowest `order` value is applied. This field is required only if the `status` field is
-set to `Active` .
-
-Available in API version 61.0 and later.
-
-**Field Type**
-UserAccessPolicyStatus (enumeration of type string)
-
-**Description**
-
-Required. The status of the user access policy.
-
-Values are:
-
-**•** `Active`
-
-**•** `Completed`
-
-**•** `Design`
-
-**•** `Failed`
-
-**•** `Migrate`
-
-**•** `Testing`
-
-**•** `Updating`
-
-If you deploy a policy with a status of `Active`, the status is changed to `Design` . A
-Salesforce admin can then set the status to `Active` by automating the policy in
-Setup.
-
-**Field Type**
-UserAccessPolicyTriggerType (enumeration of type string)
-
-
-Metadata Types UserAccessPolicy
-
-**Field Name** **Description**
-
-**Description**
-
-The type of user record trigger for which this user access policy runs.
-
-Values are:
-
-**•** `Create` —The user access policy runs when a user who matches the policy criteria
-is created.
-
-**•** `CreateAndUpdate` —The user access policy runs when a user who matches
-the policy criteria is either created or updated.
-
-**•** `Update` —The user access policy runs when a user who matches the policy criteria
-is updated.
-
-```
-userAccessPolicyActions
-
-userAccessPolicyFilters
-
-```
-
-UserAccessPolicyAction
-
-**Field Type**
-
-UserAccessPolicyAction[]
-
-**Description**
-The actions applied by the user access policy to grant access to or revoke access from
-an access mechanism.
-
-**Field Type**
-
-UserAccessPolicyFilter[]
-
-**Description**
-The filters used to define the users that the user access policy is applied to.
-
-Represents an action applied by a user access policy.
-
-**Field Name** **Description**
-
-```
-action
-
-target
-
-```
-
-**Field Type**
-UserAccessPolicyActionType (enumeration of type string)
-
-**Description**
-
-Required. Indicates whether the user access policy grants or revokes the target access
-mechanism.
-
-Values are:
-
-**•** `Grant`
-
-**•** `Revoke`
-
-**Field Type**
-string
-
-**Description**
-
-Required. Developer name of the access mechanism that the user access policy applies.
-
-
-Metadata Types UserAccessPolicy
-
-**Field Name** **Description**
-
-```
-type
-
-```
-
-UserAccessPolicyFilter
-
-**Field Type**
-UserAccessPolicyActionTargetType (enumeration of type string)
-
-**Description**
-
-Required. The type of access mechanism that the user access policy applies.
-
-Values are:
-
-**•** `Group`
-
-**•** `PackageLicense`
-
-**•** `PermissionSet`
-
-**•** `PermissionSetGroup`
-
-**•** `PermissionSetLicense`
-
-**•** `Queue`
-
-Represents a user criteria filter for a user access policy.
-
-**Field Name** **Description**
-
-```
-columnName
-
-operation
-
-sortOrder
-
-```
-
-**Field Type**
-string
-
-**Description**
-If `type` is set to `User`, this is the user field that your user criteria filter is based on.
-If you set `type` to any value other than `User`, then this field isn’t used.
-
-**Field Type**
-UserAccessPolicyFilterOperation (enumeration of type string)
-
-**Description**
-
-Required. The operator of the user criteria filter.
-
-Values are:
-
-**•** `equals`
-
-**•** `equalsIgnoreCase` —Available in API version 59.0 and later.
-
-**•** `in`  - Available in API version 58.0 and later.
-
-**•** `includes` —Available in API version 59.0 and later.
-
-**•** `notEquals`
-
-Select `in` if you want to reference multiple profiles or roles in the same user criteria
-filter via the `target` field.
-
-**Field Type**
-int
-
-
-Metadata Types UserAccessPolicy
-
-**Field Name** **Description**
-
-**Description**
-
-Required. The numeric reference used to identify the specific user criteria filter.
-
-```
-target
-
-type
-
-value
-
-```
-
-**Field Type**
-string
-
-**Description**
-
-Required. If `type` is set to `User`, then set this field to `User` as well. If `type` is set
-to any other value, then set this field to the developer name of the specific resource
-used in the user criteria filter.
-
-**Field Type**
-UserAccessPolicyFilterTargetType (enumeration of type string)
-
-**Description**
-
-Required. The type of resource that the user criteria filter is based on.
-
-Values are:
-
-**•** `Group`
-
-**•** `PackageLicense`
-
-**•** `PermissionSet`
-
-**•** `PermissionSetGroup`
-
-**•** `PermissionSetLicense`
-
-**•** `Profile`
-
-**•** `Queue`
-
-**•** `User`
-
-**•** `UserRole`
-
-**Field Type**
-string
-
-**Description**
-If `type` is set to `User`, this field is the value of the user field specified in
-`columnName` that your user filter is operating on. If you set `type` to any value other
-than `User`, then this field isn’t used.
+Automatically associates new accounts with the user’s current branch by creating
+branch unit customer records. The default value is `false` .
 
 Declarative Metadata Sample Definition
 
-The following is an example of a UserAccessPolicy component.
+The following is an example of a BranchManagementSettings component.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
-<UserAccessPolicy xmlns="http://soap.sforce.com/2006/04/metadata">
+<BranchManagementSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <booleanFilter>1 AND 2</booleanFilter>
+  <associateAccountWithBranch>true</associateAccountWithBranch>
 
-   <description>Policy to assign Sales Rep PSG to active Sales Reps.</description>
+</BranchManagementSettings>
 
-   <masterLabel>Sales Rep Migration</masterLabel>
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>BranchManagement</members>
+
+     <name>Settings</name>
+
+   </types>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+[wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+
+#### Metadata Types BusinessHoursSettings BusinessHoursSettings
+
+Represents the metadata used to manage settings for business hours and holidays in entitlements, entitlement templates, campaigns,
+and cases. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+Business hours and holidays settings are stored in a single file named `businessHours.settings` in the `settings` directory.
+The `.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### BusinessHoursSettings is available in API version 29.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`businessHours` BusinessHoursEntry[] Represents the application of business hours to entitlements,
+entitlement templates, campaigns, and cases.
+
+`holidays` Holidays[] Represents a holiday and its usage in `businessHours` .
+
+BusinessHoursEntry
+
+Represents the application of business hours to entitlements, entitlement templates, campaigns, and cases.
+
+**Field Name** **Field Type** **Description**
+
+`timeZoneId` string The time zone for the time that defines business hours.
+
+`name` string Name of the business hours. This name should be unique.
+
+`active` string Indicates whether the business hours are active.
+
+`default` string Indicates whether the business hours are used as the default business
+hours.
+
+`mondayStartTime` string Start time for the business hours on Monday. Uses the format
+`HH:mm:ss.SSSZ` .
+
+`mondayEndTime` string
+
+End time for the business hours on Monday. Uses the format
+`HH:mm:ss.SSSZ` . The value `00:00:00.000Z` specifies midnight
+on Monday.
+
+`tuesdayStartTime` string Start time for the business hours on Tuesday. Uses the format
+`HH:mm:ss.SSSZ` .
+
+
+Metadata Types BusinessHoursSettings
+
+**Field Name** **Field Type** **Description**
+
+`tuesdayEndTime` string
+
+End time for the business hours on Tuesday. Uses the format
+`HH:mm:ss.SSSZ` . The value `00:00:00.000Z` specifies midnight
+on Tuesday.
+
+`wednesdayStartTime` string Start time for the business hours on Wednesday. Uses the format
+`HH:mm:ss.SSSZ` .
+
+`wednesdayEndTime` string
+
+End time for the business hours on Wednesday. Uses the format
+`HH:mm:ss.SSSZ` . The value `00:00:00.000Z` specifies midnight
+on Wednesday.
+
+`thursdayStartTime` string Start time for the business hours on Thursday. Uses the format
+`HH:mm:ss.SSSZ` .
+
+`thursdayEndTime` string
+
+End time for the business hours on Thursday. Uses the format
+`HH:mm:ss.SSSZ` . The value `00:00:00.000Z` specifies midnight
+on Thursday.
+
+`fridayStartTime` string Start time for the business hours on Friday. Uses the format
+`HH:mm:ss.SSSZ` .
+
+`fridayEndTime` string
+
+End time for the business hours on Friday. Uses the format
+`HH:mm:ss.SSSZ` . The value `00:00:00.000Z` specifies midnight
+on Friday.
+
+`saturdayStartTime` string Start time for the business hours on Saturday. Uses the format
+`HH:mm:ss.SSSZ` .
+
+`saturdayEndTime` string
+
+End time for the business hours on Saturday. Uses the format
+`HH:mm:ss.SSSZ` . The value `00:00:00.000Z` specifies midnight
+on Saturday.
+
+`sundayStartTime` string Start time for the business hours on Sunday. Uses the format
+`HH:mm:ss.SSSZ` .
+
+`sundayEndTime` string
+
+Holidays
+
+Represents a holiday and its usage in `businessHours` .
+
+End time for the business hours on Sunday. Uses the format
+`HH:mm:ss.SSSZ` . The value `00:00:00.000Z` specifies midnight
+on Sunday.
+
+**Field Name** **Field Type** **Description**
+
+`name` string Name of the holiday. This name does not have to be unique.
+
+`description` string The description of the holiday.
+
+`isRecurring` string Indicates whether the holiday is recurring.
+
+
+Metadata Types BusinessHoursSettings
+
+**Field Name** **Field Type** **Description**
+
+`activityDate` string The date of the holiday. Use for non-recurring holidays. Uses the format
+`HH:mm:ss.SSSZ` .
+
+`recurrenceStartDate` string The date the holiday starts recurring. Uses the format `yyyy-mm-dd` .
+
+`recurrenceEndDate` string The date the holiday stops recurring. Uses the format `yyyy-mm-dd` .
+Optional.
+
+`startTime` string
+
+`endTime` string
+
+`recurrenceType` string
+
+The start time on the date of the holiday. Uses the format
+`HH:mm:ss.SSSZ` . `startTime` and `endTime` must be both null
+or both not null. If they are both null, indicates the whole day.
+
+The end time on the date of the holiday. Uses the format
+`HH:mm:ss.SSSZ` . `startTime` and `endTime` must be both null
+or both not null. If they are both null, indicates the whole day.
+
+The recurrence type of the holiday. Valid values are: RecursDaily,
+RecursEveryWeekday, RecursMonthly, RecursMonthlyNth, RecursWeekly,
+RecursYearly, RecursYealyNth.
+
+`recurrenceInterval` string The interval of weeks, months, or years the holiday recurs.
+
+`recurrenceDayOfWeek` string The day of week the holiday recurs. Valid values: Monday, Tuesday,
+Wednesday, Thursday, Friday, Saturday, Sunday.
+
+`recurrenceDayOfMonth` string The day of month the holiday recurs. Valid values: integers 1-31.
+
+`recurrenceInstance` string Valid values: First, Second, Third, Fourth, Last. Only used for
+recurrenceType RecursMonthlyNth and RecursYearlyNth. For example,
+
+if the recurenceInstance value is First, the holiday recurs on the
+first Monday of the month every 3 months.
+
+`recurrenceMonthOfYear` string Valid values: January, February, March, April, May, June, July, August,
+September, October, November, December.
+
+`businessHours` string The name of the business hours setting that applies to this holiday.
+
+Declarative Metadata Sample Definition
+
+The following is an example `businesshours.settings` metadata file:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BusinessHoursSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <businessHours>
+
+     <active>true</active>
+
+     <default>true</default>
+
+     <fridayEndTime>00:00:00.000Z</fridayEndTime>
+
+     <fridayStartTime>00:00:00.000Z</fridayStartTime>
+
+     <mondayEndTime>00:00:00.000Z</mondayEndTime>
+
+     <mondayStartTime>00:00:00.000Z</mondayStartTime>
+
+     <name>Default</name>
+
+     <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
+
+     <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
 
 ```
 
 
-Metadata Types UserAccessPolicy
+Metadata Types BusinessHoursSettings
 
 ```
-      <order>3</order>
+        <sundayEndTime>00:00:00.000Z</sundayEndTime>
 
-      <status>Design</status>
+        <sundayStartTime>00:00:00.000Z</sundayStartTime>
 
-      <triggerType>CreateAndUpdate</triggerType>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
 
-      <userAccessPolicyActions>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
 
-        <action>Grant</action>
+        <timeZoneId>America/Los_Angeles</timeZoneId>
 
-        <target>SalesRepPSG</target>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
 
-        <type>PermissionSetGroup</type>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
 
-      </userAccessPolicyActions>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
 
-      <userAccessPolicyFilters>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
 
-        <operation>equals</operation>
+      </businessHours>
 
-        <sortOrder>1</sortOrder>
+      <businessHours>
 
-        <target>SalesRepCustomProfile</target>
+        <active>true</active>
 
-        <type>Profile</type>
+        <default>false</default>
 
-      </userAccessPolicyFilters>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
 
-      <userAccessPolicyFilters>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
 
-        <columnName>IsActive</columnName>
+        <mondayEndTime>15:00:00.000Z</mondayEndTime>
 
-        <operation>equals</operation>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
 
-        <sortOrder>2</sortOrder>
+        <name>bh1</name>
 
-        <target>User</target>
+        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
 
-        <type>User</type>
+        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
 
-        <value>true</value>
+        <sundayEndTime>00:00:00.000Z</sundayEndTime>
 
-      </userAccessPolicyFilters>
+        <sundayStartTime>00:00:00.000Z</sundayStartTime>
 
-   </UserAccessPolicy>
+        <thursdayEndTime>17:00:00.000Z</thursdayEndTime>
+
+        <thursdayStartTime>10:50:00.000Z</thursdayStartTime>
+
+        <timeZoneId>America/Los_Angeles</timeZoneId>
+
+        <tuesdayEndTime>13:00:00.000Z</tuesdayEndTime>
+
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+
+        <wednesdayEndTime>15:00:00.000Z</wednesdayEndTime>
+
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+
+      </businessHours>
+
+      <holidays>
+
+        <activityDate>2013-09-02</activityDate>
+
+        <businessHours>Default</businessHours>
+
+        <businessHours>bh1</businessHours>
+
+        <isRecurring>false</isRecurring>
+
+        <name>Labor Day</name>
+
+      </holidays>
+
+      <holidays>
+
+        <businessHours>bh1</businessHours>
+
+        <isRecurring>true</isRecurring>
+
+        <name>Christmas</name>
+
+        <recurrenceDayOfMonth>25</recurrenceDayOfMonth>
+
+        <recurrenceMonthOfYear>December</recurrenceMonthOfYear>
+
+        <recurrenceStartDate>2013-12-25</recurrenceStartDate>
+
+        <recurrenceType>RecursYearly</recurrenceType>
+
+      </holidays>
+
+   </BusinessHoursSettings>
 
 ```
 
-To reference multiple profiles or roles, in UserAccessPolicyFilter, set the `operator` field to `in` . Then, reference the resources’ developer
-names in the `target` field, separated by commas.
+The following is an example `package.xml` manifest that references the BusinessHoursSettings definitions:
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
-   <UserAccessPolicy xmlns="http://soap.sforce.com/2006/04/metadata">
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <booleanFilter>1</booleanFilter>
+      <types>
 
-      <description>Policy to remove AMER Sales group from employees with one of two
+        <members>BusinessHours</members>
 
-   roles</description>
+        <name>Settings</name>
 
-      <masterLabel>Remove AMER Sales Group</masterLabel>
+```
 
-      <status>Design</status>
 
-      <userAccessPolicyActions>
+#### Metadata Types CampaignSettings
 
-        <action>Revoke</action>
+```
+      </types>
 
-        <target>AMERSalesPublicGroup</target>
+      <version>29.0</version>
 
-        <type>Group</type>
+   </Package>
 
-      </userAccessPolicyActions>
+```
 
-      <userAccessPolicyFilters>
+Wildcard Support in the Manifest File
 
-        <operation>in</operation>
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-        <sortOrder>1</sortOrder>
+#### CampaignSettings
 
-        <target>SalesOps,InsideSalesRep</target>
+Represents an org’s Campaign Influence, Einstein Attribution, Einstein Key Accounts, and campaign member settings. These features
+help you understand how your campaigns and accounts are affecting your opportunity pipeline.
 
-        <type>UserRole</type>
+This type extends the Metadata metadata type and inherits its `fullName` field.
 
-      </userAccessPolicyFilters>
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-   </UserAccessPolicy>
+File Suffix and Directory Location
+
+#### CampaignSettings values are stored in the Campaign.settings file in the settings folder. The .settings files are different
+
+from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### CampaignSettings is available in API versions 48.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`aiAttributionTimeframe` int Indicates the number of months between the opportunity creation date
+and an engagement activity, during which Einstein scans for influential
+
+campaigns. The value must be a multiple of three, up to 24. Available in
+API version 49.0 and later.
+
+This field supports Einstein Attribution.
+
+`enableAIAttribution` boolean
+
+`enableAccountsAsCM` boolean
+
+Indicates whether the Einstein Attribution feature is enabled ( `true` ) or
+not ( `false` ). The default value is `false` . Available in API version 49.0
+and later.
+
+Indicates whether accounts can be used as campaign members ( `true` )
+or not ( `false` ). The default value is `false` . Available in API version
+51.0 and later.
+
+
+Metadata Types CampaignSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableAutoCampInfluenceDisabled` boolean
+
+`enableB2bmaCampaignInfluence2` boolean
+
+Indicates whether Salesforce creates Campaign Influence information
+( `true` ) or not ( `false` ). `enableCampaignInfluence2` must
+be `false` to use this setting.
+
+The default value is `false` .
+
+Indicates whether your org can access campaign influence models from
+other systems, such as Pardot ( `true` ) or not ( `false` ).
+`enableCampaignInfluence2` must be `true` to use this setting.
+
+The default value is `false` .
+
+`enableCampaignHistoryTrackEnabled` boolean This read-only field is reserved for system use.
+
+`enableCampaignInfluence2` boolean
+
+Indicates whether Customizable Campaign Influence is enabled ( `true` )
+or not ( `false` ). When `true`, Campaign Influence 1.0 is hidden from
+users and is no longer active.
+
+The default value is `true` .
+
+`enableCampaignMemberTWCF` boolean This read-only field is reserved for system use.
+
+`enableEKAI` boolean
+
+Indicates whether Einstein Key Accounts Identification is enabled ( `true` )
+or not ( `false` ). The default value is `false` . Available in API version
+53.0 and later.
+
+`enableOpportunityInfluence` Indicates whether Opportunity Influence campaign attribution is enabled
+( `true` ) or not ( `false` ). When enabled, Opportunity Influence connects
+
+opportunity revenue to specific campaigns. The default value is `false` .
+Available with Marketing Cloud Growth and Advanced editions in API
+version 63.0 and higher.
+
+`enableSuppressNoValueCI2` boolean This read-only field is reserved for system use.
+
+Declarative Metadata Sample Definition
+
+The following is an example of the Campaign.settings file:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CampaignSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <enableCampaignInfluence2>true</enableCampaignInfluence2>
+
+   <enableSuppressNoValueCI2>true</enableSuppressNoValueCI2>
+
+   <enableCampaignHistoryTrackEnabled>true</enableCampaignHistoryTrackEnabled>
+
+   <enableAutoCampInfluenceDisabled>true</enableAutoCampInfluenceDisabled>
+
+   <enableCampaignMemberTWCF>true</enableCampaignMemberTWCF>
+
+   <enableB2bmaCampaignInfluence2>true</enableB2bmaCampaignInfluence2>
+
+   <enableAccountsAsCM>true</enableAccountsAsCM>
+
+   <enableAIAttribution>true</enableAIAttribution>
+
+   <aiAttributionTimeframe>9</aiAttributionTimeframe>
+
+   <enableEKAI>true</enableEKAI>
+
+</CampaignSettings>
+
+```
+
+
+#### Metadata Types CaseSettings
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the Campaign settings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>Campaign</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>29.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### CaseSettings
+
+Represents an organization’s case settings, such as the default case owner, which case-related features are enabled, and which Classic
+email templates are used for various case activities. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### CaseSettings on page 1982 values are stored in the Case.settings file in the settings directory. The .settings files are
+
+different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### CaseSettings on page 1982 is available in API version 27.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`caseAssignNotificationTemplate` string
+
+Specifies the email template used for case assignment
+notifications. The format must be
+`folderName` / `emailTemplateName` .
+
+Lightning email templates aren’t packageable. We
+recommend using a Classic email template.
+
+`caseAutoProcUser` boolean Indicates whether to create an automated response record
+after a customer’s initial email ( `true` ) or not ( `false` ).
+
+
+Metadata Types CaseSettings
+
+**Field Name** **Field Type** **Description**
+
+`caseCloseNotificationTemplate` string
+
+`caseCommentNotificationTemplate` string
+
+`caseCreateNotificationTemplate` string
+
+Specifies the email template used for case close notifications.
+The format must be
+`folderName` / `emailTemplateName` .
+
+Lightning email templates aren’t packageable. We
+recommend using a Classic email template.
+
+Specifies the email template used for case comment
+notifications. The format must be
+`folderName` / `emailTemplateName` .
+
+Lightning email templates aren’t packageable. We
+recommend using a Classic email template.
+
+Specifies the email template used for case create
+notifications. The format must be
+`folderName` / `emailTemplateName` .
+
+Lightning email templates aren’t packageable. We
+recommend using a Classic email template.
+
+`caseFeedItemSettings` FeedItemSettings[] Specifies the settings for feed items in feed-based case page
+layouts. This field is available in API version 32.0 and later.
+
+`caseFeedReadUnreadLtng` boolean Indicates whether unread feed items are shown in bold in
+Lightning Experience ( `true` ) or not ( `false` ).
+
+`caseMergeInLightning` boolean Indicates whether Case Merge is enabled in Lightning
+Experience ( `true` ) or not ( `false` ).
+
+`closeCaseThroughStatusChange` boolean Indicates whether `Closed` is included in the Case Status
+field on case edit pages ( `true` ) or not ( `false` ).
+
+`defaultCaseFeedLayoutOn` boolean Indicates whether the default Case Feed layout is used in
+the org ( `true` ) or not ( `false` ).
+
+`defaultCaseOwner` string Specifies the default owner of a case when assignment rules
+fail to locate an owner.
+
+`defaultCaseOwnerType` string Specifies whether the default case owner is a user or a queue.
+
+`defaultCaseUser` string Specifies the user listed in the Case History related list for
+automated case changes from:
+
+**•** Assignment rules
+
+**•** Escalation rules
+
+**•** On-Demand Email-to-Case
+
+**•** Cases logged in the Self-Service portal
+
+Lightning email templates aren’t packageable. We
+recommend using a Classic email template.
+
+
+Metadata Types CaseSettings
+
+**Field Name** **Field Type** **Description**
+
+`emailActionDefaultsHandlerClass` string Use this Apex class name to provide default values for the
+email action.
+
+`emailToCase` EmailToCaseSettings The organization's Email-to-Case settings.
+
+`enableCaseFeed` boolean Indicates whether Case Feed is enabled ( `true` ) or not
+( `false` ).
+
+`enableCollapseEmailThread` boolean
+
+`enableDraftEmails` boolean
+
+Indicates whether earlier messages in an email thread are
+removed from email feed items ( `true` ) or not ( `false` ).
+Available in API version 47.0 and later.
+
+Indicates whether draft emails are enabled ( `true` ) or not
+( `false` ). Enabling email drafts requires that Case Feed and
+Email-to-Case are also enabled.
+
+`enableEarlyEscalationRuleTriggers` boolean Indicates whether early triggers on escalation rules are
+enabled ( `true` ) or not ( `false` ).
+
+`enableEmailActionDefaultsHandler` boolean Indicates whether the Email Action Default Handler setting
+is enabled ( `true` ) or not ( `false` ). Use this setting to select
+
+an Apex class to load a default template or to specify the
+default target fields for the email action.
+
+`enableEmailContactOnCasePost` boolean
+
+If `true`, the case contact is notified by email when someone
+makes an externally visible post on a case in an Experience
+Builder site.
+
+`enableEscalateQfiToCaseInternal` boolean If `true`, moderators can create cases from Question feed
+items in Chatter in your organization.
+
+`enableEscalateQfiToCaseNetworks` boolean
+
+If `true`, moderators can create cases from Question feed
+items in Chatter in all Experience Builder sites where Chatter
+Questions is enabled.
+
+`enableExtNetworksCaseFeedEnabled` boolean If `true`, site members can see case-related emails,
+comments, and updates in the case feed.
+
+`enableMultiLangSolnSrchCSS` boolean Indicates whether multilingual searching for Solutions in
+self-service portals is enabled ( `true` ) or not ( `false` ).
+
+`enableMultiLangSolnSrchPKB` boolean Indicates whether multilingual searching for public Solutions
+is enabled ( `true` ) or not ( `false` ).
+
+`enableMultiLangSolution` boolean Indicates whether multilingual Solutions are enabled ( `true` )
+or not ( `false` ).
+
+`enableNewEmailDefaultTemplate` boolean
+
+Indicates whether default email templates are enabled
+( `true` ) or not ( `false` ). Default email templates are
+available only if draft emails are enabled.
+
+Lightning email templates aren’t packageable. We
+recommend using a Classic email template.
+
+
+Metadata Types CaseSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableSolutionCategory` boolean Indicates whether browsing for Solutions is enabled ( `true` )
+or not ( `false` ).
+
+`enableSolutionInlineCategory` boolean Indicates whether using inline Solutions category
+breadcrumbs is enabled ( `true` ) or not ( `false` ).
+
+`enableSolutionShortSummary` boolean Indicates whether Solutions summaries are enabled ( `true` )
+or not ( `false` ).
+
+`enableSuggestedArticlesApplication` boolean
+
+`enableSuggestedArticlesCustomerPortal` boolean
+
+`enableSuggestedArticlesPartnerPortal` boolean
+
+Indicates whether the Suggested Articles list appears on case
+pages. ( `true` ) or not ( `false` ). Is only valid if
+`enableSuggestedSolutions` = `false` .
+
+Indicates whether the Suggested Articles list appears on
+customer portal pages ( `true` ) or not ( `false` ). Is only valid
+if `enableSuggestedSolutions` = `false` .
+
+Indicates whether the Suggested Articles list appears on
+partner portal pages ( `true` ) or not ( `false` ). Is only valid if
+`enableSuggestedSolutions` = `false` .
+
+`enableSuggestedSolutions` boolean Indicates whether the View Suggested Solutions or Find
+Articles button appears on case detail pages ( `true` ) or not
+
+( `false` ). Is only valid if
+`enableSuggestedArticlesApplication`,
+`enableSuggestedArticlesCustomerPortal`,
+and
+`enableSuggestedArticlesPartnerPortal` = `false` .
+
+`escalateCaseBefore` boolean Indicates whether early triggers are enabled to escalate a
+case ( `true` ) or not ( `false` ).
+
+`genericMessageEnabled` boolean Indicates whether generic messages are enabled ( `true` ) or
+not ( `false` ).
+
+`keepCaseMergeRecords` boolean If `true`, duplicate cases aren’t deleted after a case merge.
+
+`keepRecordTypeOnAssignmentRule` boolean When applying assignment rules to manually created records,
+indicates whether to keep the existing record type ( `true` )
+
+or to override the existing record type with the assignee’s
+default record type ( `false` ).
+
+`newEmailDefaultTemplateClass` string Specifies the Apex class that defines the default email
+template for new email messages in Case Feed. This field
+
+appears only when
+`enableNewEmailDefaultTemplate=true` .Lightning
+email templates aren’t packageable. We recommend using
+a Classic email template.
+
+`notifyContactOnCaseComment` boolean
+
+Indicates whether contacts who aren’t members of your
+Self-Service portal can be notified when a new comment is
+added to a case ( `true` ) or not ( `false` ).
+
+
+Metadata Types CaseSettings
+
+**Field Name** **Field Type** **Description**
+
+`notifyDefaultCaseOwner` boolean Indicates whether the default case owner is notified when
+assigned a new case ( `true` ) or not ( `false` ).
+
+`notifyOwnerOnCaseComment` boolean Indicates whether the case owner is notified when a
+comment is added to a case ( `true` ) or not ( `false` ).
+
+`notifyOwnerOnCaseOwnerChange` boolean
+
+Indicates whether the `Send Notification Email`
+checkbox on cases is automatically selected when users
+change a case owner to another user ( `true` ).
+
+`predictiveSupportEnabled` boolean Indicates whether predictive support is enabled ( `true` ) or
+not ( `false` ).
+
+`showEmailAttachmentsInCase` boolean Indicates whether the case Attachments related list shows
+`AttachmentsRL` email attachments. If `true`, the page displays an email icon
+next to each attachment from an email in the Attachments
+related list for cases. The related list’s list view also includes
+a Source column that identifies the attachment’s origin. If
+`false`, email attachments aren’t displayed in the
+Attachments related list for cases.
+
+This field is available in API version 40.0 and later.
+
+`showFewerCloseActions` boolean
+
+Indicates whether the **Save & Close** button on case edit
+pages and the **Cls** link on Cases related lists are hidden
+( `true` ) or shown ( `false` ).
+
+`systemUserEmail` string Specifies the email address used when the default case user
+is the system user.
+
+`useSystemEmailAddress` boolean Indicates whom case comment, case attachment, and case
+assignment email notifications appear to be sent from. Use
+
+`true` to show notifications as sent from a system address.
+Use `false` to show notifications as sent from the user or
+contact who is updating the case.
+
+`useSystemUserAsDefaultCaseUser` boolean
+
+`visibleInCssCheckbox` boolean
+
+Indicates whether the system user is used as the automated
+case user ( `true` ) or not ( `false` ). If false, then you must
+specify a value for the `defaultCaseUser` field.
+
+Sets the default visibility of a case as indicated by the Visible
+in CSS option on the case edit page. If `false`, the case is
+visible in CSS by default. If `true`, CSS visibility is off.
+
+`webToCase` WebToCaseSettings The organization's Web-to-Case settings.
+
+EmailToCaseSettings
+
+Represents an organization's Email-to-Case settings.
+
+
+Metadata Types CaseSettings
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableEmailToCase` boolean
+
+Indicates whether Email-to-Case is enabled ( `true` ) or not
+( `false` ). **Note:** After Email-to-Case is enabled, it can't be
+disabled.
+
+`enableE2CAttachmentAsFile` boolean Indicates whether to save attachments sent using
+Email-to-Case as Salesforce Files ( `true` ) or not ( `false` ).
+
+`enableE2CDeduplicateAttachments` boolean When Email-to-Case receives an inbound email to thread to
+an existing case, attachments in the email that already exist
+
+on the case are not saved as new records and are instead
+linked to the new email ( `true` ).
+
+`enableE2CExternalServer` boolean Indicates whether emails can be sent via an external service
+such as Gmail or Outlook, rather than the Salesforce email
+
+service ( `true` ). External outbound email services are available
+in Lightning Experience only.
+
+`enableE2CSourceTracking` boolean Indicates whether Set Case Source to Email is enabled ( `true` )
+or not ( `false` ). After you enable this setting, the **Case**
+
+**Source** field is updated to `Email` for all cases that originate
+from Email-to-Case. Associated emails are marked as `Read`
+when the agent opens the case.
+
+`enableHtmlEmail` boolean Indicates whether HTML email is enabled ( `true` ) or not
+( `false` ).
+
+`enableNewtoReadTriggers` boolean
+
+Indicates whether the email status change invokes triggers
+when emails open in Case feeds or from Email Message
+records in Lightning ( `true` ) or not ( `false` ).
+
+`enableOnDemandEmailToCase` boolean Indicates whether On-Demand Email-to-Case is enabled
+( `true` ) or not ( `false` ).
+
+`enableThreadIDInBody` boolean
+
+`enableThreadIDInSubject` boolean
+
+Indicates whether the Thread ID for a case is inserted in the
+body of an email ( `true` ) or not ( `false` ). This is applicable
+only to orgs that do not use Lightning Threading.
+
+Indicates whether the Thread ID for a case is inserted in the
+subject line of an email ( `true` ) or not ( `false` ). This is
+applicable only to orgs that do not use Lightning Threading.
+
+`enableThreadTokenInBody` boolean Indicates whether a threading token is appended in the email
+body when agents send an email from a Lightning email
+
+composer ( `true` ) or not ( `false` ). This is applicable only to
+orgs using Lightning Threading.
+
+`enableThreadTokenInSubject` boolean Indicates whether a threading token is appended in the email
+subject when agents send an email from a Lightning email
+
+
+Metadata Types CaseSettings
+
+**Field Name** **Field Type** **Description**
+
+composer ( `true` ) or not ( `false` ). This is applicable only to
+orgs using Lightning Threading.
+
+`notifyOwnerOnNewCaseEmail` boolean
+
+`overEmailLimitAction` EmailToCaseOnFailureActionType
+(enumeration of type string)
+
+`preQuoteSignature` boolean
+
+`routingAddresses` EmailToCaseRoutingAddress[]
+
+`replyWithNewContentOnly` boolean
+
+Indicates whether the owner of a case receives a notification
+when a new email related to the case is received ( `true` ) or
+not ( `false` ).
+
+Specifies what happens to email messages that are received
+after an organization exceeds its daily Email-to-Case limits.
+Valid values are:
+
+**•** `Bounce`
+
+**•** `Discard`
+
+**•** `Requeue`
+
+Indicates whether the user signature is inserted after the reply
+but before the email thread in an outbound email ( `true` ) or
+at the end of the email ( `false` ).
+
+The organization's Email-to-Case routing addresses and their
+attributes. Removing an address from this list deletes it from
+the target org.
+
+Indicates whether previous thread content in excluded from
+replies, to reduce the size of outgoing emails ( `true` ) or not
+( `false` ).
+
+`showGeneratedEmailCheckbox` boolean Indicates whether senders are required to confirm that they
+reviewed emails written by Einstein ( `true` ) or not ( `false` ).
+
+`unauthorizedSenderAction` EmailToCaseOnFailureActionType Specifies what happens to email messages received from
+(enumeration of type string) invalid senders. Valid values are:
+
+**•** `Bounce`
+
+**•** `Discard`
+
+`useEmailHeadersForThreading` boolean
+
+EmailToCaseRoutingAddress
+
+Represents an organization's Email-to-Case routing address.
+
+Indicates whether metadata from incoming emails is used to
+match replies with cases if token-based threading doesn't
+produce a match ( `true` ) or not ( `false` ).
+
+
+Metadata Types CaseSettings
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`addressType` EmailToCaseRoutingAddressType Specifies the type of Email-to-Case routing address. Valid
+(enumeration of type string) values are:
+
+**•** `EmailToCase` —A routing address used with
+Email-to-Case or On-Demand Email-to-Case.
+
+**•** `Outlook` —A routing address used with
+Salesforce for Outlook to create cases from Outlook.
+Requires that On-Demand Email-to-Case is enabled.
+
+`authorizedSenders` string
+
+Specifies the email addresses or domains from which
+On-Demand Email-to-Case can receive email. Include multiple
+entries in a comma-separated list.
+
+`caseOrigin` string Specifies the default case origin for cases created through this
+routing address.
+
+`caseOwner` string
+
+Specifies the default owner of cases created through this
+routing address. The case owner can be either a user or a
+queue. Specify the case owner using a Salesforce username.
+
+Specifying a case owner here in the routing address sets a
+value of `defaultCaseOwner` in CaseSettings.
+
+`caseOwnerType` string Specifies whether the default case owner is a user or a queue.
+
+`casePriority` string Specifies the default case priority for cases created through
+this routing address.
+
+`createTask` boolean
+
+Indicates whether a task is automatically assigned to the case
+owner when a case is created through an email ( `true` ) or
+not ( `false` ).
+
+`emailAddress` string Specifies the email address used to route email messages that
+are submitted as cases.
+
+`emailServicesAddress` string
+
+`fallbackQueue` string
+
+Specifies the Salesforce-generated routing address used for
+setting up Email-to-Case forwarding. This field value is
+read-only and can't be modified.
+
+Defines which queue to use when emails can’t be routed with
+the specified Omni-Channel flow. This queue must use Case
+as the service channel object.
+
+Available in API version 56.0 and later.
+
+`isPermsetControlled` boolean Indicates whether users’ access to the email routing address
+is controlled by a permission set. If `true`, only users with
+
+access via a permission set can use the routing address to
+send emails.
+
+
+Metadata Types CaseSettings
+
+**Field Name** **Field Type** **Description**
+
+`isVerified` boolean
+
+`newEntityRecordType` string
+
+`routingFlow` string
+
+Indicates whether the customer has verified the routing
+address (typically by clicking a confirmation email). This field
+value is read-only and can't be modified.
+
+Sets the Case Record Type used for new Cases that are created
+from emails sent to that specific routing address.
+
+If not provided, Salesforce uses the org’s default Case Record
+Type for the user/context handling Email-to-Case. Ensure the
+record type exists and is active on Case.
+
+Specifies the name of an Omni-Channel flow that routes cases
+generated in Email-to-Case.
+
+Available in API version 56.0 and later.
+
+`routingName` string Specifies the name of the Email-to-Case routing address.
+
+`saveEmailHeaders` boolean Indicates whether email routing and envelope information
+are saved ( `true` ) or not ( `false` ).
+
+`taskStatus` string
+
+FeedItemSettings
+
+Specifies the default status on tasks automatically assigned
+to the case owner when email is submitted as a case. Only
+applies if `createTask` is set to `true` .
+
+Represents an organization's feed item settings. Available in API version 32.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`characterLimit` int Specifies the maximum number of characters displayed for
+each feed item.
+
+`collapseThread` boolean
+
+Removed. Indicates whether earlier messages in an email
+thread are removed from email feed items ( `true` ) or not
+( `false` ).
+
+Available in API versions 27.0 to 46.0.
+
+`displayFormat` FeedItemDisplayFormat Indicates how email feed items are displayed. Valid values are:
+(enumeration of type string)
+
+**•** `Default` —Blank lines in email feed items are displayed.
+
+`feedItemType` FeedItemType (enumeration of
+type string)
+
+
+**•** `HideBlankLines` —Blank lines in email feed items
+aren’t displayed.
+
+The type of feed item to which the settings apply. For
+`FeedItemSettings`, the only valid `feedItemType`
+value is `EmailMessageEvent` .
+
+Metadata Types CaseSettings
+
+WebToCaseSettings
+
+Represents an organization's Web-to-Case settings.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`caseOrigin` string Specifies the default case origin for cases created through this web form.
+Applies only if `enableWebToCase` is set to `true` .
+
+`defaultResponseTemplate` string
+
+Specifies the default template used for email responses to cases that are
+submitted through a Self-Service portal. Applies only if
+`enableWebToCase` is set to `true` .
+
+Lightning email templates aren’t packageable. We recommend using a
+Classic email template.
+
+`enableWebToCase` boolean Indicates whether Web-to-Case is enabled ( `true` ) or not ( `false` ).
+
+Declarative Metadata Sample Definition
+
+This code sample is an example of a case settings file.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CaseSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <caseAssignNotificationTemplate>
+
+     unfiled$public/SupportCaseAssignmentNotification
+
+   </caseAssignNotificationTemplate>
+
+   <caseCloseNotificationTemplate>
+
+     unfiled$public/SupportCaseCloseNotification
+
+   </caseCloseNotificationTemplate>
+
+   <caseCommentNotificationTemplate>
+
+     unfiled$public/SupportCaseCommentNotification
+
+   </caseCommentNotificationTemplate>
+
+   <caseCreateNotificationTemplate>
+
+     unfiled$public/SupportCaseCreateNotification
+
+   </caseCreateNotificationTemplate>
+
+   <closeCaseThroughStatusChange>true</closeCaseThroughStatusChange>
+
+   <defaultCaseOwner>admin@acme.com</defaultCaseOwner>
+
+   <defaultCaseOwnerType>User</defaultCaseOwnerType>
+
+   <defaultCaseUser>admin@acme.com</defaultCaseUser>
+
+   <emailToCase>
+
+     <enableEmailToCase>true</enableEmailToCase>
+
+     <enableHtmlEmail>false</enableHtmlEmail>
+
+     <enableOnDemandEmailToCase>true</enableOnDemandEmailToCase>
+
+     <enableThreadIDInBody>true</enableThreadIDInBody>
+
+     <enableThreadIDInSubject>true</enableThreadIDInSubject>
+
+     <notifyOwnerOnNewCaseEmail>false</notifyOwnerOnNewCaseEmail>
+
+     <overEmailLimitAction>Bounce</overEmailLimitAction>
+
+     <preQuoteSignature>true</preQuoteSignature>
+
+     <routingAddresses>
+
+        <addressType>EmailToCase</addressType>
+
+```
+
+
+Metadata Types CaseSettings
+
+```
+           <authorizedSenders>user@acme.com</authorizedSenders>
+
+           <caseOrigin>Email</caseOrigin>
+
+           <casePriority>Medium</casePriority>
+
+           <createTask>true</createTask>
+
+           <emailAddress>support@acme.com</emailAddress>
+
+           <routingName>EmailToCaseRoutingAddress1</routingName>
+
+           <saveEmailHeaders>true</saveEmailHeaders>
+
+           <taskStatus>Not Started</taskStatus>
+
+        </routingAddresses>
+
+        <routingAddresses>
+
+           <addressType>Outlook</addressType>
+
+           <authorizedSenders>user@acme.com</authorizedSenders>
+
+           <caseOrigin>Email</caseOrigin>
+
+           <caseOwner>admin@acme.com</caseOwner>
+
+           <caseOwnerType>User</caseOwnerType>
+
+           <casePriority>High</casePriority>
+
+           <routingName>OutlookRoutingAddress1</routingName>
+
+        </routingAddresses>
+
+        <unauthorizedSenderAction>Discard</unauthorizedSenderAction>
+
+      </emailToCase>
+
+      <enableCaseFeed>true</enableCaseFeed>
+
+      <enableDraftEmails>true</enableDraftEmails>
+
+      <enableEarlyEscalationRuleTriggers>true</enableEarlyEscalationRuleTriggers>
+
+      <enableNewEmailDefaultTemplate>true</enableNewEmailDefaultTemplate>
+
+      <enableSuggestedArticlesApplication>true</enableSuggestedArticlesApplication>
+
+      <enableSuggestedArticlesCustomerPortal>true</enableSuggestedArticlesCustomerPortal>
+
+      <enableSuggestedArticlesPartnerPortal>false</enableSuggestedArticlesPartnerPortal>
+
+      <enableSuggestedSolutions>false</enableSuggestedSolutions>
+
+      <keepRecordTypeOnAssignmentRule>true</keepRecordTypeOnAssignmentRule>
+
+      <newEmailDefaultTemplateClass>CaseTemplateController</newEmailDefaultTemplateClass>
+
+      <notifyContactOnCaseComment>true</notifyContactOnCaseComment>
+
+      <notifyDefaultCaseOwner>true</notifyDefaultCaseOwner>
+
+      <notifyOwnerOnCaseComment>true</notifyOwnerOnCaseComment>
+
+      <notifyOwnerOnCaseOwnerChange>false</notifyOwnerOnCaseOwnerChange>
+
+      <showFewerCloseActions>false</showFewerCloseActions>
+
+      <useSystemEmailAddress>true</useSystemEmailAddress>
+
+      <webToCase>
+
+        <caseOrigin>Web</caseOrigin>
+
+       <defaultResponseTemplate>unfiled$public/SupportCaseResponse</defaultResponseTemplate>
+
+        <enableWebToCase>true</enableWebToCase>
+
+      </webToCase>
+
+   </CaseSettings>
 
 ```
 
@@ -7186,19 +9745,516 @@ The following is an example `package.xml` that references the previous definitio
 
       <types>
 
-        <members>*</members>
+        <members>Case</members>
 
-        <name>UserAccessPolicy</name>
+        <name>Settings</name>
 
       </types>
 
+      <version>47.0</version>
+
+   </Package>
+
 ```
 
 
-### Metadata Types UserAuthCertificate
+#### Metadata Types ChatterAnswersSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ChatterAnswersSettings
+
+Represents the metadata used to manage settings for Chatter Answers.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+Chatter Answers settings are stored in a single file named `ChatterAnswers.settings` in the `settings` directory. The
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### ChatterAnswersSettings is available in API version 27.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`emailFollowersOnBestAnswer` boolean Indicates whether users are notified when a best answer is selected for
+a question that they’re following ( `true` ) or not ( `false` ).
+
+`emailFollowersOnReply` boolean Indicates whether users are notified when other users reply to questions
+that they’re following ( `true` ) or not ( `false` ).
+
+`emailOwnerOnPrivateReply` boolean Indicates whether users are notified when customer support responds
+to their questions privately ( `true` ) or not ( `false` ).
+
+`emailOwnerOnReply` boolean Indicates whether users are notified when other users reply to their
+questions ( `true` ) or not ( `false` ).
+
+`enableAnswerViaEmail` boolean
+
+Indicates whether users can post answers by replying to email
+notifications ( `true` ) or not ( `false` ). This field is available in API version
+29.0 and later.
+
+`enableChatterAnswers` boolean Indicates whether the Chatter Answers feature is enabled in the
+organization ( `true` ) or not ( `false` ).
+
+`enableFacebookSSO` boolean Indicates whether users can sign in to your Chatter Answers forums with
+their Facebook logins ( `true` ) or not ( `false` ). To enable this feature,
+
+you must define and enable a Facebook authentication provider in your
+organization’s security controls and enable Auth Providers in your
+organization.
+
+`enableInlinePublisher` boolean Indicates whether users can filter search results by articles or questions
+before they post a question to any of your Chatter Answers forums
+
+
+Metadata Types ChatterAnswersSettings
+
+**Field Name** **Field Type** **Description**
+
+( `true` ) or not ( `false` ). Also, adds `Title` and `Body` fields to
+questions for easier text input and scanning. This field is available in API
+version 29.0 and later.
+
+`enableReputation` boolean Indicates whether user reputations appear as hover text on their profile
+pictures ( `true` ) or not ( `false` ). Reputation is enabled across all zones.
+
+To enable the reputation setting, you must enable Reputation in your
+organization.
+
+`enableRichTextEditor` boolean
+
+`facebookAuthProvider` string
+
+Indicates whether the rich text editor is enabled for users to format text
+and upload images when posting questions ( `true` ) or not ( `false` ).
+To enable rich text editor, you must enable Optimize Question Flow.
+
+The name of an existing Facebook authentication provider. To implement
+Facebook Single Sign On for your Chatter Answers forums, you must
+choose a Facebook authentication provider.
+
+`showInPortals` boolean Indicates whether Chatter Answers can be added as a tab to your
+Customer portal or partner portal ( `true` ) or not ( `false` ).
+
+Declarative Metadata Sample Definition
+
+The following is an example `chatteranswers.settings` metadata file:
 
 ```
-      <version>61.0</version>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ChatterAnswersSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <emailFollowersOnBestAnswer>true</emailFollowersOnBestAnswer>
+
+   <emailFollowersOnReply>true</emailFollowersOnReply>
+
+   <emailOwnerOnPrivateReply>true</emailOwnerOnPrivateReply>
+
+   <emailOwnerOnReply>true</emailOwnerOnReply>
+
+   <enableChatterAnswers>true</enableChatterAnswers>
+
+   <enableFacebookSSO>true</enableFacebookSSO>
+
+   <enableInlinePublisher>true</enableInlinePublisher>
+
+   <enableReputation>true</enableReputation>
+
+   <enableRichTextEditor>true</enableRichTextEditor>
+
+   <facebookAuthProvider>FacebookAuthProvider</facebookAuthProvider>
+
+   <showInPortals>true</showInPortals>
+
+</ChatterAnswersSettings>
+
+```
+
+The following is an example `package.xml` manifest that references the ChatterAnswersSettings definitions:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>ChatterAnswers</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>29.0</version>
+
+</Package>
+
+```
+
+
+#### Metadata Types ChatterEmailsMDSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ChatterEmailsMDSettings
+
+Represents an org’s settings for Chatter email when Chatter is enabled. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+The ChatterEmailsMDSettings component appears in the `ChatterEmailsMD.settings` file, and is stored in the `settings`
+folder. The `.settings` files are different from other named components because there is only one settings file for each settings
+component.
+
+Version
+
+#### ChatterEmailsMDSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableChatterDigestEmailsApiOnly` boolean Indicates whether Chatter digests can be sent via the API, rather than
+according to the regular schedule, for your org ( `true` ) or not ( `false` ).
+
+`enableChatterEmailAttachment` boolean Indicates whether attachments can be included on posts to chatter feeds
+via email replies ( `true` ) or not ( `false` ).
+
+`enableCollaborationEmail` boolean Indicates whether collaboration email notifications can be sent ( `true` )
+or not ( `false` ).
+
+`enableDisplayAppDownloadBadges` boolean Indicates whether iOS and Android app download badges display in
+Chatter notifications ( `true` ) or not ( `false` ).
+
+`enableEmailReplyToChatter` boolean Indicates whether users can reply to chatter notifications through an
+email response ( `true` ) or not ( `false` ).
+
+`enableEmailToChatter` boolean Indicates whether users can post to chatter feeds via email ( `true` ) or
+not ( `false` ).
+
+`noQnOwnNotifyOnCaseCmt` boolean Indicates whether a user is notified when a question is posted on their
+case comment ( `false` ) or not ( `true` ).
+
+`noQnOwnNotifyOnRep` boolean Indicates whether a user is notified when a reply is posted on their
+question ( `false` ) or not `true` .
+
+
+#### Metadata Types ChatterSettings
+
+**Field Name** **Field Type** **Description**
+
+`noQnSubNotifyOnBestR` boolean Indicates whether a user is notified when a best reply is selected on a
+question they follow ( `false` ) or not ( `true` ).
+
+`noQnSubNotifyOnRep` boolean Indicates whether a user is notified when a reply is posted on a question
+they follow ( `false` ) or not ( `true` ).
+
+Declarative Metadata Sample Definition
+
+The following is an example of a `chatteremailmd.settings` metadata file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ChatterEmailsMDSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableChatterDigestEmailsApiOnly>false</enableChatterDigestEmailsApiOnly>
+
+      <enableChatterEmailAttachment>false</enableChatterEmailAttachment>
+
+      <enableCollaborationEmail>true</enableCollaborationEmail>
+
+      <enableDisplayAppDownloadBadges>true</enableDisplayAppDownloadBadges>
+
+      <enableEmailReplyToChatter>false</enableEmailReplyToChatter>
+
+      <enableEmailToChatter>true</enableEmailToChatter>
+
+      <noQnOwnNotifyOnCaseCmt>false</noQnOwnNotifyOnCaseCmt>
+
+      <noQnOwnNotifyOnRep>false</noQnOwnNotifyOnRep>
+
+      <noQnSubNotifyOnBestR>false</noQnSubNotifyOnBestR>
+
+      <noQnSubNotifyOnRep>false</noQnSubNotifyOnRep>
+
+   </ChatterEmailsMDSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ChatterSettings
+
+Represents an org’s settings for their Chatter instance when Chatter is enabled for the org. This type extends the Metadata metadata
+type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+The ChatterSettings component appears in the `Chatter.settings` file, and is stored in the `settings` folder. The `.settings`
+files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### ChatterSettings components are available in API version 47.0 and later.
+
+
+Metadata Types ChatterSettings
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`allowChatterGroupArchiving` boolean
+
+`allowRecordsInChatterGroup` boolean
+
+Indicates whether manual and automatic group archiving are allowed
+on all Chatter groups ( `true` ) or aren’t allowed ( `false` ).
+
+In Setup, `allowChatterGroupArchiving` equates to the Chatter
+setting **Allow Group Archiving** .
+
+Indicates whether records can be associated with groups ( `true` ), or not
+( `false` ). If groups already have record data, setting this field to `false`
+doesn’t delete it.
+
+In Setup, `allowRecordsInChatterGroup` equates to the Chatter
+setting **Allow Records in Groups** .
+
+`allowSharingInChatterGroup` boolean Removed. The setting of this field has no effect on the org. Available in
+API version 47.0 only.
+
+`enableApprovalRequest` boolean Indicates whether Approvals in Chatter are enabled for the org. When
+the value is `true`, users see approval requests as posts in Chatter feeds.
+
+Users can update their own Chatter feeds settings to opt out of receiving
+approval requests as Chatter posts. When the value is `false`, approval
+requests aren’t posted to Chatter. The default value is `false` .
+
+In Setup, `enableApprovalRequest` equates to the Chatter setting
+**Allow Approvals** .
+
+`enableCaseFeedRelativeTimestamps` boolean In Case feeds, indicates whether to use relative ( `true` ) or absolute
+( `false` ) date and time stamp formats on Case feed items. When the
+
+value is `true`, Case feed items show a relative timestamp (for example,
+`10m ago` ). When the value is `true`, users can hover over the relative
+timestamp to see the absolute. When the value is `false`, Case feed
+items show an absolute timestamp (for example, `January 7, 2020`
+`at 12:15PM` ). When you change this setting, all timestamps in Case
+feeds reflect that change. The default value is `true` . This field is available
+in API version 48.0 and later.
+
+In Setup, `enableCaseFeedRelativeTimestamps` equates to
+the Chatter setting **Show relative timestamp** .
+
+`enableChatter` boolean Indicates whether Chatter is enabled for your org ( `true` ) or not
+( `false` ).
+
+`enableChatterEmoticons` boolean
+
+Indicates whether the automatic conversion of text characters, such as
+:), into a graphic emoticon is allowed in Chatter ( `true` ) or isn’t allowed
+( `false` ).
+
+In Setup, `enableChatter` equates to the Chatter setting **Allow**
+**Emoticons** .
+
+
+Metadata Types ChatterSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableFeedEdit` boolean Indicates whether qualified users can edit feed posts and comments
+( `true` ) or not ( `false` ). Qualified users include:
+
+**•** The author of the post or comment
+
+**•** The person who owns the record that was posted to or commented
+on
+
+**•** The Chatter or site moderator
+
+In Setup, `enableFeedEdit` equates to the Chatter setting **Allow**
+**users to edit posts and comments** .
+
+`enableFeedPinning` boolean Indicates whether to allow the pinning of posts in a feed ( `true` ) or not
+( `false` ). When set to `true` :
+
+**•** Authorized users can pin posts to the top of the feed.
+
+**•** The feed supports up to three pinned posts.
+
+**•** Pinned posts stay pinned until they’re unpinned.
+
+After post pinning is enabled, authorized users include admins and group
+owners and managers. Admins can also assign post pinning permission
+through permission sets or user profiles.
+
+In Setup, `enableFeedPinning` equates to the Chatter setting
+**Allow post pinning** .
+
+`enableFeedsDraftPosts` boolean Indicates whether draft posts are automatically saved every seven
+seconds ( `true` ) or not ( `false` ). When set to `true` :
+
+**•** Adds the My Drafts feed to the Chatter tab
+
+**•** Saves draft posts automatically every seven seconds
+
+**•** Makes drafts available in the My Drafts feed
+
+When the user posts the entry, the draft is automatically removed from
+the My Drafts feed.
+
+In Setup, `enableFeedsDraftPosts` equates to the Chatter setting
+**Allow draft posts** .
+
+`enableFeedsRichText` boolean
+
+Indicates whether to use the Rich Text Editor in the Chatter Publisher
+( `true` ) or not ( `false` ). The rich text editor supports text formats, inline
+images, hyperlinks, and, when enabled for the org, code snippets.
+
+In Setup, `enableFeedsRichText` equates to the Chatter setting
+**Allow users to compose rich text posts** .
+
+`enableInviteCsnUsers` boolean Indicates whether a licensed user can invite customers to private groups
+that the licensed user owns or manages ( `true` ) or not ( `false` ). When
+
+the value is set to `true`, licensed users can invite customers who are
+from outside org email domains. Invited customers can see information
+only in the groups that they're invited to. They can interact only with
+members of those groups.
+
+
+Metadata Types ChatterSettings
+
+**Field Name** **Field Type** **Description**
+
+In Setup, `enableInviteCsnUsers` equates to the Chatter setting
+**Allow customer invitations** .
+
+`enableOutOfOfficeEnabledPref` boolean Indicates whether to add an Out of Office setting to a user profile page
+( `true` ), or to omit it ( `false` ). When the value is set to `true`, this
+
+option adds a control to user profile pages for setting a personal
+out-of-office message.
+
+In Setup, `enableOutOfOfficeEnabledPref` equates to the
+Chatter setting **Users can set Out of Office message** .
+
+`enableRichLinkPreviewsInFeed` boolean
+
+Indicates whether to convert links in posts into embedded videos,
+images, and article previews ( `true` ) or not to convert the links ( `false` ).
+
+In Setup, `enableRichLinkPreviewsInFeed` equates to the
+Chatter setting **Allow Rich Link Previews** .
+
+`enableTodayRecsInFeed` boolean Indicates whether to allow the posting of recommendations for using
+the Salesforce Today app in users’ feeds ( `true` ) or not ( `false` ). When
+
+set to `true`, automatically posts recommendations for using the
+Salesforce Today app in users’ feeds.
+
+In Setup, `enableTodayRecsInFeed` equates to the Chatter setting
+**Allow Today Recommendations** .
+
+`unlistedGroupsEnabled` boolean Indicates whether to allow the creation of unlisted groups ( `true` ) or to
+prevent their creation ( `false` ). When the value is set to `true`, users
+
+can create unlisted groups. Unlisted groups don’t appear on the Groups
+list page. Membership in unlisted groups is by invitation only.
+
+In Setup, `unlistedGroupsEnabled` equates to the Chatter setting
+**Enable Unlisted Groups** .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a Chatter.settings file.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <ChatterSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <allowChatterGroupArchiving>true</allowChatterGroupArchiving>
+
+   <allowRecordsInChatterGroup>true</allowRecordsInChatterGroup>
+
+   <enableApprovalRequest>true</enableApprovalRequest>
+
+   <enableChatter>true</enableChatter>
+
+   <enableChatterEmoticons>true</enableChatterEmoticons>
+
+   <enableFeedEdit>true</enableFeedEdit>
+
+   <enableFeedsDraftPosts>false</enableFeedsDraftPosts>
+
+   <enableFeedsRichText>true</enableFeedsRichText>
+
+   <enableInviteCsnUsers>true</enableInviteCsnUsers>
+
+   <enableOutOfOfficeEnabledPref>false</enableOutOfOfficeEnabledPref>
+
+   <enableRichLinkPreviewsInFeed>true</enableRichLinkPreviewsInFeed>
+
+   <enableTodayRecsInFeed>true</enableTodayRecsInFeed>
+
+```
+
+
+#### Metadata Types CodeBuilderSettings
+
+```
+      <unlistedGroupsEnabled>true</unlistedGroupsEnabled>
+
+    </ChatterSettings>
+
+```
+
+The following is an example `package.xml` manifest that references the ChatterSettings definitions:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>Chatter</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>47.0</version>
 
    </Package>
 
@@ -7206,90 +10262,1539 @@ The following is an example `package.xml` that references the previous definitio
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### UserAuthCertificate
+#### CodeBuilderSettings
 
-Represents a PEM-encoded user certificate. These certificates are associated with a user, and externally uploaded. The uploaded certificate
-is used to authenticate the user.
+Represents Code Builder settings. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-### UserAuthCertificate components have the suffix .userAuthCertificate and are stored in the userAuthCertificates
+#### CodeBuilderSettings values are stored in the CodeBuilder.settings file in the settings folder. The .settings files are
 
-folder.
+different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-### UserAuthCertificate components are available in API version 50.0 and later.
+#### CodeBuilderSettings is available in API versions 58.0 and later.
 
 Fields
 
 **Field Name** **Field Type** **Description**
 
-`developerName` string Required: The name of the certificate with an underscore between words.
-
-Note: Only users with View DeveloperName OR View Setup and
-Configuration permission can view, group, sort, and filter this
-field.
-
-`expirationDate` dateTime Required. The date on which the certificate expires.
-
-`masterLabel` string Required. A user-friendly name that you create for the certificate. Limited
-to 64 characters.
-
-`serialNumber` string Required. The serial number for the certificate.
-
-`user` string Required: The user’s name.
-
-
-### Metadata Types UserCriteria
+`enableCodeBuilder` boolean
 
 Declarative Metadata Sample Definition
 
-The following is an example of a UserAuthCertificate component.
+The following is an example of the `CodeBuilder.settings` file:
+
+Indicates whether Code Builder is enabled (true) or not (false).
+When enabled, you can install and use the generally available
+(GA) Code Builder package in the org.
 
 ```
-   <UserAuthCertificate xmlns="http://soap.sforce.com/2006/04/metadata"
+<?xml version="1.0" encoding="UTF-8"?>
 
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<CodeBuilderSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <content xsi:nil="true"/>
+```
 
-      <developerName>ND_user_cert</developerName>
 
-      <expirationDate>2030-10-01T08:30:00.000Z</expirationDate>
+#### Metadata Types CollectionsDashboardSettings
 
-      <masterLabel>ND user cert</masterLabel>
+```
+      <enableCodeBuilder>true</enableCodeBuilder>
 
-      <serialNumber>1401</serialNumber>
+   </CodeBuilderSettings>
 
-      <user>005RM000001Zn1E</user>
+```
 
-   </UserAuthCertificate>
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### CollectionsDashboardSettings
+
+Represents an org’s settings to add the Collections Dashboard application to an org.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### CollectionsDashboardSettings values are stored in the CollectionsDashboard.settings file in the settings
+
+folder. The `.settings` files are different from other named components, because there’s only one settings file for each settings
+component.
+
+Version
+
+#### CollectionsDashboardSettings components are available in API version 56.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableCollectionsDashboard
+
+```
+
+Declarative Metadata Sample Definition
+
+Thisexample shows a sample CollectionsDashboardSettings component.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether to add the Collections Dashboard
+application to an org ( `true` ) or not ( `false` ). The
+default value is `false` .
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CollectionsDashboardSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+```
+
+
+#### Metadata Types CommunitiesSettings
+
+```
+      <enableCollectionsDashboard>true</enableCollectionsDashboard>
+
+   </CollectionsDashboardSettings>
+
+```
+
+Theis example shows a sample `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>CollectionsDashboard</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version> 66.0 </version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### CommunitiesSettings
+
+Represents community settings for an org. Enable digital experiences and workspaces. Manage moderation, guest user and partner
+settings, and more. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### CommunitiesSettings values are stored in the Communities.settings file in the settings folder. The .settings
+
+files are different from other named components, because there’s only one settings file for each settings component.
+
+Version
+
+#### CommunitiesSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`applyLoginPageTypeToEmbeddedLogin` boolean When `true`, applies the Experience Cloud site login page type (default,
+Login Discovery, Experience Builder, or Visualforce) to all Embedded
+
+Login implementations. When `false`, applies the username and
+password login page type to all Embedded Login implementations.
+
+For orgs created before the Salesforce Summer ‘20 release, the default
+setting is `false` . For new orgs, the default setting is `true` . Available
+in API version 49.0 and later.
+
+`blockEmbeddedLoginUnknownURLRedirect` boolean When `true`, blocks redirects to unknown URLs that are provided in the
+state parameter of the OAuth response during a server-side callback.
+
+
+Metadata Types CommunitiesSettings
+
+**Field Name** **Field Type** **Description**
+
+Redirects are allowed when the URL is in the same host or domain as
+the site, or is allow-listed in the Embedded Login
+salesforce-allowed-domains meta tag. When `false`, all redirects are
+allowed.
+
+For orgs created before the Salesforce Summer ‘21 release, the default
+setting is `false` . For new orgs, the default setting is `true` . Available
+in API version 52.0 and later.
+
+`canModerateAllFeedPosts` boolean When `true`, allows moderation features, such as flags and rules, to be
+set on all feed posts including posts that are visible in Experience Cloud
+
+sites. When set to `false`, only feed posts in sites can be moderated.
+Default is `false` .
+
+`canModerateInternalFeedPosts` boolean
+
+`embeddedVisualforcePages` boolean
+
+When `true`, allows moderation features, such as flags and rules, to be
+set on record feed posts created by internal users. Such posts can also
+be visible in multiple sites. Default is `false` .
+
+When `true`, allows links to Visualforce pages from other Visualforce
+pages in Salesforce via the API. Default is `false` . Available in API version
+48.0 and later.
+
+`enableCommunityWorkspaces` boolean When `true`, allows admins to enable Experience Workspaces. Available
+in API version 48.0 and later.
+
+`enableCspContactVisibilityPref` boolean
+
+`enableCspNotesOnAccConPref` boolean
+
+When `true`, allows users to see contacts from private accounts that
+they have read access to, when the contact is controlled by the parent
+record. Available in API version 48.0 and later.
+
+When `true`, allows customer users to access notes and attachments
+associated with accounts and contacts. Available in API version 48.0 and
+later.
+
+`enableEnablePRM` boolean When `true`, allows admins to enable partner users. Available in API
+version 48.0 and later.
+
+`enableExternalAccHierPref` boolean When `true`, enables the External Account Hierarchy object. Available
+in API version 48.0 and later.
+
+`enableGuestRecordReassignOrgPref` boolean
+
+Deprecated in API version 63.0 and later. When `true`, allows admins
+to set a default owner for records created by guest users. Available in
+API version 48.0 through 63.0.
+
+`enableGuvSecurityOptOutPref` boolean When `true`, guest user visibility can be turned off. Available in API
+version 49.0 and later.
+
+`enableInviteChatterGuestEnabled` boolean When `true`, allows guest users to be invited to use Chatter. Available
+in API version 48.0 and later.
+
+`enableNetPortalUserReportOpts` boolean When `true`, allows external users in Experience Cloud sites, with
+permission, to run reports. Available in API version 48.0 and later.
+
+
+Metadata Types CommunitiesSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableNetworksEnabled` boolean When `true`, allows users to enable digital experiences. Available in API
+version 47.0 and later.
+
+`enableOotbProfExtUserOpsEnable` boolean When `true`, allows use of standard external profiles for self-registration
+and user creation. Available in API version 48.0 and later.
+
+`enablePreventBadgeGuestAccess` boolean When `true`, hides badges from guest users in Experience Builder sites.
+Available in API version 53.0 and later.
+
+`enablePowerCustomerCaseStatus` boolean When `true`, allows users with Customer Community Plus licenses to
+change case status. Available in API version 48.0 and later.
+
+`enablePRMAccRelPref` boolean
+
+When `true`, enables Account Relationship object and Account
+Relationship Data Sharing Rule setup options. Available in API version
+48.0 and later.
+
+`enableRelaxPartnerAccountFieldPref` boolean When `true`, allows editing for partner account fields on and
+opportunities and leads. Available in API version 48.0 and later.
+
+`enableUnsupportedBrowserModalPref` boolean When `true`, warnings about unsupported browsers are displayed in
+Experience Cloud sites. Available in API version 48.0 and later.
+
+`enableUsernameUniqForOrgPref` boolean When `true`, username uniqueness is set at the org level. Available in
+API version 48.0 and later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a CommunitiesSettings component.
+
+```
+<CommunitiesSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <canModerateAllFeedPosts>true</canModerateAllFeedPosts>
+
+   <canModerateInternalFeedPosts>true</canModerateInternalFeedPosts>
+
+</CommunitiesSettings>
 
 ```
 
 The following is an example `package.xml` that references the previous definition.
 
 ```
-   Package xmlns="http://soap.sforce.com/2006/04/metadata">
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+<types>
+
+<members>Communities</members>
+
+<name>Settings</name>
+
+</types>
+
+<version>47.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types CompanySettings CompanySettings
+
+Represents global settings that affect multiple features in your organization. This type extends the Metadata metadata type and inherits
+its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+Declarative Metadata File Suffix and Directory Location
+
+#### CompanySettings values are stored in a single file named Company.settings in the settings directory of the corresponding
+
+package directory. The `.settings` files are different from other named components because there’s only one settings file for each
+settings component.
+
+Version
+
+Company Profile Settings are available in API version 27.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableCustomFiscalYear` boolean If a custom fiscal period is set up, this field is used to determine
+whether the custom fiscal period is used for forecasts. If `true`,
+
+the custom fiscal period is used. If `false` (default), standard
+periods are used. Available in API version 47.0 and later.
+
+`fiscalYear` FiscalYearSetting The organization’s fiscal year setting based on year and start
+month. Not available if Custom Fiscal Year or Forecasts (Classic)
+
+is enabled. When changing fiscal year settings, quotas and
+adjustments can be purged. For example changing your start
+month results in purging this data.
+
+FiscalYearSetting
+
+Represents your organization’s fiscal year setting.
+
+**Field** **Field Type** **Description**
+
+`fiscalYearNameBasedOn` string This field is used to determine the fiscal year name. Valid values
+are `endingMonth` or `startingMonth` . For example, if
+
+your fiscal year starts in April 2012 and ends in March 2013, and
+this value is:
+
+**•** `endingMonth`, then 2013 is used for the fiscal year name.
+
+**•** `startingMonth`, then 2012 is used for the fiscal year
+name.
+
+`startMonth` string The month on which the fiscal year is based.
+
+
+#### Metadata Types ConnectedAppSettings
+
+Declarative Metadata Sample Definition — Fiscal Year Setting
+
+A sample XML definition of a fiscal year setting is shown below. Note that this example is supported in API version 27.0 and later.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <CompanySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <fiscalYear>
+
+        <fiscalYearNameBasedOn>endingMonth</fiscalYearNameBasedOn>
+
+        <startMonth>January</startMonth>
+
+      </fiscalYear>
+
+   </CompanySettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ConnectedAppSettings
+
+Represents settings for connected apps. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### ConnectedAppSettings values are stored in a single file named ConnectedApp.settings in the settings directory. The
+
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### ConnectedAppSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableAdminApprovedAppsOnly` boolean If `false` (default), any connected app can call the Salesforce API. If
+`true`, only apps that have been approved or installed by the admin
+
+can call the Salesforce API. To access this field, you must contact
+Salesforce Customer Support to enable API Access Control.
+
+`enableAdminApprovedAppsOnlyForExternalUser` boolean If `false` (default), authenticated customers or partners can use any
+unblocked connected app to access the Salesforce API. If `true`,
+
+authenticated customers and partners can’t access the Salesforce API
+unless they use a connected app that is installed in the org and
+unblocked. Install and unblock connected apps on the Connected Apps
+OAuth Usage page. To access this field, you must contact Salesforce
+Customer Support to enable API Access Control.
+
+`enableSkipUserProvisioningWizardWelcomePage` boolean If `false` (default), the User Provisioning Wizard Welcome page shows
+up when you access the wizard. To skip the welcome page in the future,
+
+
+#### Metadata Types ContentSettings
+
+**Field Name** **Field Type** **Description**
+
+you can select **Do not show me this next time** . If `true`, the Welcome
+page doesn’t show up the next time that you access the wizard.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a ConnectedAppSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ConnectedAppSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableAdminApprovedAppsOnly>false</enableAdminApprovedAppsOnly>
+
+   <enableAdminApprovedAppsOnlyForExternalUser>false</enableAdminApprovedAppsOnlyForExternalUser>
+
+   <enableSkipUserProvisioningWizardWelcomePage>true</enableSkipUserProvisioningWizardWelcomePage>
+
+   </ConnectedAppSettings>
+
+```
+
+The following is an example `package.xml` manifest that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
       <types>
 
-        <members>*</members>
+        <members>ConnectedApp</members>
 
-        <name>UserAuthCertificate</name>
+        <name>Settings</name>
 
       </types>
 
-      <version>50.0</version>
+      <version>47.0</version>
+
+   </Package>
+
+#### ContentSettings
+
+```
+
+Represents content settings for an org. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### ContentSettings values are stored in the contentsettings.settings file in the settings folder. The .settings
+
+files are different from other named components, because there’s only one settings file for each settings component.
+
+Version
+
+#### ContentSettings components are available in API version 48.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableChatterFileLink` boolean When `true`, allows users to share files via links. When set to `false`,
+users can’t use file sharing. Default is `true` .
+
+
+Metadata Types ContentSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableCMSC2CConnections` boolean When `true`, allows org to enable Salesforce CMS Cloud to Cloud
+Connections.
+
+`enableContent` boolean When `true`, allows org to enable Content.
+
+`enableContentAutoAssign` boolean When `true`, allows org to auto assign Content feature licenses to users.
+
+`enableContentDistForPortalUsers` boolean When `true`, allows portal users to create Content Deliveries for
+managed files in a library.
+
+`enableContentDistPwOptionsBit1` boolean
+
+`enableContentDistPwOptionsBit2` boolean
+
+`enableContentDistribution` boolean
+
+When `true`, allow using with
+`ContentDistPasswordOptionsBit2` to set up one of three
+possible delivery security options.
+
+When `true`, allow using with
+`ContentDistPasswordOptionsBit1` to set up one of three
+possible delivery security options.
+
+When `true`, allows the Content Delivery user permission to be enabled
+for users. Content deliveries let users create links to share files externally,
+with optional security settings.
+
+`enableContentSupportMultiLanguage` boolean When `true`, enables content to support multiple languages.
+
+`enableContentWorkspaceAccess` boolean
+
+`enableDeleteFileInContentPacks` boolean
+
+When `true`, content libraries are visible in the API and UI for users who
+have read access to libraries, even if they don't have access to the original
+Salesforce CRM Content app.
+
+When `true`, enables an org preference that allows a file's owner to
+delete the file, which is included in one or more content packs. The
+default setting is based on the org.
+
+`enableFileShareSetByRecord` boolean When `true`, files shared to records default to Set by Record.
+
+`enableFilesUsrShareNetRestricted` boolean
+
+When `true`, files respect user sharing settings. Files shared with users
+with **SharedUsers** visibility are only accessible to users who are members
+of the Experience Cloud site the file was created in.
+
+`enableJPGPreviews` boolean When `true`, attempts to use other SVG alternative formats such as JPG
+as preview images.
+
+`enableLibraryManagedFiles` boolean When `true`, controls the ability to publish files created in Chatter with
+a Content Library (ContentWorkspace). The library can manage the file.
+
+`enableShowChatterFilesInContent` boolean When `true`, allows users to search for Chatter files in content.
+
+`enableSiteGuestUserToUploadFiles` boolean When `true`, site guest users can upload files.
+
+`enableUploadFilesOnAttachments` boolean When `true`, shows the **New File** button on the Attachments related
+lists to upload files, rather than legacy Attachments.
+
+`setValidContentTypeForAtchDocDownload` boolean When `true`, enables an org preference that controls whether the
+Content-Type HTTP response header is set to a valid content type during
+
+file and attachment downloads. If `false` the response header is set
+
+
+Metadata Types ContentSettings
+
+**Field Name** **Field Type** **Description**
+
+to the value that the user provided during file upload. Values provided
+by the user can be invalid. If the content type provided by the user isn’t
+a valid content type, the system tries to determine a valid content type
+based on the file name extension. This field is available in API version
+50.0 and later.
+
+`skipContentAssetTriggers` boolean When `true`, disables content trigger execution and custom validation
+on content assets.
+
+`skipContentAssetTriggersOnDeploy` boolean When `true`, disables content trigger execution when deploying content
+assets.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a Content.settings file.
+
+```
+   <ContentSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableChatterFileLink>true</enableChatterFileLink>
+
+      <enableCMSC2CConnections>true</enableCMSC2CConnections>
+
+      <enableContent>true</enableContent>
+
+      <enableContentAutoAssign>true</enableContentAutoAssign>
+
+      <enableContentDistForPortalUsers>true</enableContentDistForPortalUsers>
+
+      <enableContentDistribution>true</enableContentDistribution>
+
+      <enableContentSupportMultiLanguage>false</enableContentSupportMultiLanguage>
+
+      <enableContentWorkspaceAccess>true</enableContentWorkspaceAccess>
+
+      <enableFileShareSetByRecord>true</enableFileShareSetByRecord>
+
+      <enableFilesUsrShareNetRestricted>true</enableFilesUsrShareNetRestricted>
+
+      <enableJPGPreviews>true</enableJPGPreviews>
+
+      <enableLibraryManagedFiles>true</enableLibraryManagedFiles>
+
+      <enableShowChatterFilesInContent>true</enableShowChatterFilesInContent>
+
+      <enableSiteGuestUserToUploadFiles>true</enableSiteGuestUserToUploadFiles>
+
+      <enableUploadFilesOnAttachments>true</enableUploadFilesOnAttachments>
+
+      <skipContentAssetTriggers>true</skipContentAssetTriggers>
+
+      <skipContentAssetTriggersOnDeploy>true</skipContentAssetTriggersOnDeploy>
+
+   </ContentSettings>
+
+```
+
+The following is an example `ContentSettings.xml` manifest that references the ContentSettings definitions:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ContentSettings xmlns=
+
+      <types>
+
+        <members>Content</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>48.0</version>
+
+   </ContentSettings>
+
+```
+
+
+#### Metadata Types ContractSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ContractSettings
+
+Represents contract settings.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+There is one contract settings file stored in a file named `Contract.settings` in the `settings` directory. The `.settings`
+files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### ContractSettings is available in API version 27.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`autoCalculateEndDate` boolean Indicates whether the end date of a contract is automatically calculated
+( `true` ) or not ( `false` ).
+
+`notifyOwnersOnContractExpiration` boolean Indicates whether account and contract owners are automatically sent
+email notifications when a contract expires ( `true` ) or not ( `false` ).
+
+Declarative Metadata Sample Definition
+
+This is a sample contract settings file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ContractSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <autoCalculateEndDate>true</autoCalculateEndDate>
+
+      <notifyOwnersOnContractExpiration>false</notifyOwnersOnContractExpiration>
+
+   </ContractSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types ConversationalIntelligenceSettings ConversationalIntelligenceSettings
+
+Represents the org's Einstein Conversation Insights settings, such as whether Einstein Conversation Insights is enabled. Einstein Conversation
+Insights lets you analyze your rep's call recordings, and gives you the insights you need to optimize every call.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### ConversationalIntelligenceSettings values are stored in the ConversationalIntelligence.settings file in the settings
+
+folder.
+
+Version
+
+#### ConversationalIntelligenceSettings components are available in API version 49.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableCallCoaching
+
+enableCallCoachingZoom
+
+```
+
+enableCallExplorer
+
+enableCallSummarization
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Einstein Conversation Insights is enabled ( `true` ) or not ( `false` ).
+The default value is `false` . Available in API version 49.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Zoom video calls are enabled for Einstein Conversation Insights
+( `true` ) or not ( `false` ). The default value is `false` . Available in API version 51.0
+and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Call Explorer is enabled ( `true` ) or not ( `false` ). The default value
+is `false` . Available in API version 60.0 and later.
+
+**Field Type**
+boolean
+
+
+Metadata Types ConversationalIntelligenceSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether Call Summary is enabled ( `true` ) or not ( `false` ). The default value
+is `false` . Available in API version 59.0 and later.
+
+enableConversationMining
+
+```
+enableDiarizationPref
+
+enableECIOOTBFlows
+
+```
+
+enableGenerativeConvInsights
+
+enableManualUpload
+
+```
+enableOpptyMatching
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Einstein Conversation Mining is enabled ( `true` ) or not ( `false` ).
+The default value is `false` . Available in API version 61.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether optimal speaker separation is enabled ( `true` ) or not ( `false` ). The
+default value is `false` . Available in API version 58.0 and later.
+
+Optimal speaker separation lets Einstein Conversation Insights use acoustic features
+of speaker voices to separate an audio stream into separate segments.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the out-of-the-box (OOTB) flow templates for Einstein Conversation
+Insights are enabled ( `true` ) or not ( `false` ). The default value is `false` . Available
+in API version 65.0 and later.
+
+These flow templates provide examples of how to use ECI-generated transcripts and
+insights for common actions, such as drafting follow-up emails or creating next steps.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Generative Conversation Insights is enabled ( `true` ) or not ( `false` ).
+The default value is `false` . Available in API version 61.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Video Call Upload is enabled ( `true` ) or not ( `false` ). The default
+value is `false` . Available in API version 62.0 and later.
+
+Reserved for future use.
+
+**Field Type**
+boolean
+
+
+Metadata Types ConversationalIntelligenceSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether voice and video calls are related to opportunities automatically
+( `true` ) or not ( `false` ). The default value is `false` . Available in API version 53.0
+and later.
+
+enableRealtimeInsights
+
+```
+enableUnifiedActivities
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Realtime Insights is enabled ( `true` ) or not ( `false` ). The default
+value is `false` . Available in API version 62.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Activity 360 Reporting is enabled ( `true` ) or not ( `false` ). The
+default value is `false` . Available in API version 58.0 and later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a ConversationalIntelligenceSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ConversationalIntelligenceSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <enableCallCoaching>true</enableCallCoaching>
+
+</ConversationalIntelligenceSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <types>
+
+  <members>ConversationalIntelligence</members>
+
+  <name>Settings</name>
+
+ </types>
+
+ <version>49.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types ConversationChannelDefinition ConversationChannelDefinition
+
+Represents the conversation channel definition that’s implemented for Interaction Service for Bring Your Own Channel for Messaging
+and Bring Your Own Channel for CCaaS messaging channels. This object is available in API version 60.0 and later.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+Parent Type
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### ConversationChannelDefinition components have the suffix .ConversationChannelDefinition and are stored in the
+
+`conversationChannelDefinitions` folder.
+
+Version
+
+#### ConversationChannelDefinition components are available in API version 60.0 and later.
+
+Special Access Rules
+
+Interaction service must be configured. Access to tooling objects requires Salesforce administrator privileges or the Customize Application
+permission.
+
+Fields
+
+**Field Name** **Description**
+
+```
+connectedAppOauthLink
+
+connectedAppType
+
+```
+
+**Field Type**
+string
+
+**Description**
+
+DO NOT SET OR CHANGE THIS VALUE. This value is automatically generated. This field
+represents the OAuth link for the external client app (ECA) or connected app if the
+connectedAppType value is `Partner` . This is a string identifier to the ECA or
+connected app containing the partner Org ID and the consumer ID minus the key
+prefixes. Used to identify the ECA or connected app to use for the channel definition
+and channel at runtime.
+
+**Field Type**
+CustomChannelConnectedAppType
+
+**Description**
+The owner of the external client app (ECA) or connected app used to manage
+authentication between Salesforce Interaction Service and the Messaging or CCaaS
+partner’s system.
+
+Possible values are:
+
+
+Metadata Types ConversationChannelDefinition
+
+**Field Name** **Description**
+
+**•** `Partner`
+
+**•** `Customer`
+
+The default value is `Partner` .
+
+If set to _`Partner`_, the partner creates the ECA or connected app and includes it in
+their managed package. If set to _`Customer`_, the admin creates the ECA or connected
+app.
+
+Available in API version 62.0 and later.
+
+```
+consentOwner
+
+conversationVendorInfo
+
+customEventChnlAddrIdField
+
+customEventPayloadField
+
+```
+
+**Field Type**
+ConsentOwner (enumeration of type string)
+
+**Description**
+The system the customer uses to manage consent levels.
+
+Possible values are:
+
+**•** `Partner`
+
+**•** `Salesforce`
+
+The default value is `Salesforce` .
+
+For example, if set to _`Salesforce`_, consent levels are managed by the Salesforce
+system. If set to _`Partner`_, consent levels are managed by the partner’s telephony
+system.
+
+For Bring Your Own Channel for Messaging, this value must be set to _`Salesforce`_ .
+
+**Field Type**
+string
+
+**Description**
+The _`ConversationVendorInfo.developerName`_ used to link this record
+to the ConversationVendorInfo record. For example, PartnerName.
+
+**Field Type**
+string
+
+**Description**
+The mapping field that points to the custom field used to point to the
+`ChannelAddressIdentifier` field.
+
+This field is available in API version 60.0 and earlier. Use a combination of
+`customEventTypeField` and `customEventPayloadField` in API version
+61.0 and later instead.
+
+**Field Type**
+string
+
+**Description**
+Required. The mapping field that points to the custom field used to point to the
+`Payload` field in the format _`<orgNamespace>`_ __ _`<CustomFieldName>`_ __c.
+
+
+Metadata Types ConversationChannelDefinition
+
+**Field Name** **Description**
+
+This is the API name of the custom Payload field in the custom platform event. For
+example, devorg__Payload__c.
+
+```
+customEventRecipientField
+
+customEventTypeField
+
+customIcon
+
+customPlatformEvent
+
+customerConnectedAppOauthLink
+
+```
+
+**Field Type**
+string
+
+**Description**
+The mapping field that points to the custom field used to point to the Recipient field.
+
+This field is available in API version 60.0 and earlier. Use a combination of
+`customEventTypeField` and `customEventPayloadField` in API version
+61.0 and later instead.
+
+**Field Type**
+string
+
+**Description**
+The mapping field that points to the custom field used to point to the Platform event
+type (EventType) field, in the format
+_`<orgNamespace>`_ __ _`<CustomFieldName>`_ __c. This is the API name of the
+custom EventType field in the custom platform event. For example,
+devorg__EventType__c.
+
+**Field Type**
+string
+
+**Description**
+For Bring Your Own Channel for Messaging and Bring Your Own Channel for CCaaS,
+this field represents the name of the status resource image used to identify the channel
+integration, such as a channel logo. For the best results, set the image size to 50px x
+50px and save the image in SVG file format. This field is optional. This field is a
+relationship field. Available in API version 61.0 and later.
+
+**Field Type**
+string
+
+**Description**
+Required. The API name of the custom platform event created for the Interaction
+Service API in the format
+_`<orgNamespace>`_ __ _`<CustomPlatformEventName>`_ __e. For example,
+devorg__TestEvent__e.
+
+**Field Type**
+string
+
+**Description**
+DO NOT SET OR CHANGE THIS VALUE. This value is automatically generated. This field
+represents the OAuth link for the external client app or connected app created by an
+admin if the ConnectedAppType is `Customer` . Available in API version 62.0 and
+later.
+
+
+Metadata Types ConversationChannelDefinition
+
+**Field Name** **Description**
+
+```
+developerName
+
+isConferenceSupported
+
+isInboundAcknwOptionExposed
+
+isInboundReceiptsEnabled
+
+isProgressIndicatorOptExposed
+
+```
+
+**Field Type**
+string
+
+**Description**
+The unique name of the custom metadata type object in the API in the format
+_`<Prefix>`_ _ _`<ConversationChannelDefinition>`_, where _`Prefix`_
+matches the prefix you gave to the name of the Interaction Service external client app
+or connected app. For example, Partner1_ChannelDefinition1, where Partner1 is the
+prefix and ChannelDefinition1 is the given name.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the partner supports conferencing for Bring Your Own Channel
+( `true` ), or not ( `false` ). With conferencing, more than two participants are allowed
+in a messaging session. The default is `false` .
+
+This field is available in API version 64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the partner supports read receipts and delivery receipts for inbound
+messages ( `true` ) or whether the partner doesn’t support these inbound
+acknowledgments and the functionality is hidden from the Salesforce admin in the
+Messaging settings ( `false` ). The default value is `false` .
+
+This field is available in API version 65.0 and later. Use this field instead of
+`isInboundReceiptsEnabled` .
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the partner supports read receipts and delivery receipts for inbound
+messages ( `true` ) or whether the partner doesn’t support these inbound
+acknowledgements and the functionality is hidden from the Salesforce admin in the
+Messaging settings ( `false` ). The default value is `false` .
+
+Available in API versions 63.0 to 65.0. In API version 66.0 and later, this field is removed.
+Use `isInboundAcknwOptionExposed` instead.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the partner supports progress indicators for AI agents ( `true` ) or
+whether the partner doesn’t support them and the functionality is hidden from the
+Salesforce admin in the Messaging settings ( `false` ). The default value is `false` .
+
+
+Metadata Types ConversationChannelDefinition
+
+**Field Name** **Description**
+
+This field is available in API version 65.0 and later.
+
+```
+isRoutingWorkResultEnabled
+
+isRoutingWorkResultSupported
+
+isTypingIndicatorDisabled
+
+isTypingIndicatorOptionHidden
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Routing Work Result event is sent as a Custom Platform event
+or not.
+
+The default value is `false` .
+
+Available in API versions 64.0 and 65.0. In API version 66.0 and later, this field is removed.
+Use `isRoutingWorkResultSupported` instead.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Routing Work Result event is sent as a Custom Platform event
+( `true` ) or not ( `false` ). The default value is `false` .
+
+This field is available in API version 65.0 and later. Use this field instead of
+`isRoutingWorkResultEnabled` .
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the partner doesn’t support typing indicators for outbound messages
+and the functionality is hidden from the Salesforce admin in the Messaging settings
+( `true` ) or whether outbound typing indicators are supported by the partner ( `false` ).
+The default value is `false`, meaning the outbound typing indicator feature is
+supported by default. To disable the outbound typing indicator feature, set this value
+to `true` .
+
+Available in API versions 63.0 to 65.0. In API version 66.0 and later, this field is removed.
+Use `isTypingIndicatorOptionHidden` instead.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the partner doesn’t support typing indicators for outbound messages
+and the functionality is hidden from the Salesforce admin in the Messaging settings
+( `true` ) or whether outbound typing indicators are supported by the partner ( `false` ).
+The default value is `false`, meaning the outbound typing indicator feature is
+supported by default. To disable the outbound typing indicator feature, set this value
+to `true` .
+
+This field is available in API version 65.0 and later. Use this field instead of
+`isTypingIndicatorDisabled` .
+
+
+Metadata Types ConversationChannelDefinition
+
+**Field Name** **Description**
+
+```
+masterLabel
+
+maxParticipantsForCnfrOverride
+
+routingOwner
+
+```
+
+**Field Type**
+string
+
+**Description**
+The namespace prefix that is associated with this object. Each Developer Edition org
+that creates a managed package has a unique namespace prefix. Limit: 15 characters.
+You can refer to a component in a managed package by using the
+_`namespacePrefix`_ __ _`componentName`_ notation. The namespace prefix can
+have one of the following values.
+
+**•** In Developer Edition orgs, `NamespacePrefix` is set to the namespace prefix
+of the org for all objects that support it, unless an object is in an installed managed
+package. In that case, the object has the namespace prefix of the installed managed
+package. This field’s value is the namespace prefix of the Developer Edition org of
+the package developer.
+
+**•** In orgs that are not Developer Edition orgs, `NamespacePrefix` is set only for
+objects that are part of an installed managed package. All other objects have no
+namespace prefix.
+
+`NamespacePrefix` is null if the publisher is Salesforce.
+
+**Field Type**
+int
+
+**Description**
+Specifies the limit for how many participants can be in a messaging conference. If set,
+this field overrides the platform limit for the number of participants in a conference.
+If not set, the limit defaults to the messaging platform limit of how many participants
+can be in a messaging conference at one time.
+
+This field is available in API version 64.0 and later.
+
+**Field Type**
+RoutingOwner (enumeration of type string)
+
+**Description**
+The system the customer uses to manage routing for Bring Your Own Channel for
+Messaging or Bring Your Own Channel for CCaaS.
+
+Possible values are:
+
+**•** `Partner`
+
+**•** `Salesforce`
+
+The default value is `Salesforce` .
+
+For example, if set to _`Salesforce`_, routing is managed by the Salesforce system.
+If set to _`Partner`_, routing is managed by the partner’s telephony or Contact Center
+as a Service (CCaaS) system.
+
+For Bring Your Own Channel for Messaging, this value must be set to _`Salesforce`_ .
+
+
+Metadata Types ConversationChannelDefinition
+
+**Field Name** **Description**
+
+```
+supportsCustomChannelParameters
+
+supportsDoubleOptInConsent
+
+supportsExplicitConsent
+
+supportsImplicitConsent
+
+supportsIsoCountryCode
+
+supportsKeywords
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether admins can configure custom parameters and parameter mappings
+for messaging channels. Custom parameters and parameter mappings are used to
+pass additional information at runtime to Omni-Channel flows. The default value is
+false.
+
+This field is available in API version 61.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the channel supports ( _`true`_ ) the Double Opt-In consent level. The
+default value is _`false`_ . If set to true, then
+`capabilitiesSupportsExplicitConsent` must also be set to true. This
+field is optional and isn’t supported for Bring Your Own Channel for Messaging. It's
+only supported for Bring Your Own Channel for CCaaS.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the channel supports ( _`true`_ ) the Explicit Opt-In consent level. This
+field is optional.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the channel supports ( _`true`_ ) the Implicit Opt-In consent level. This
+value is required and must always be set to true. The default value is false.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the channel supports ( _`true`_ ) ISO country codes. The default value
+is false.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the channel supports ( _`true`_ ) keywords. The default value is false.
+
+
+#### Metadata Types CurrencySettings
+
+Declarative Metadata Sample Definition
+
+The following is an example of a ConversationChannelDefinition component.
+
+The following is an example `package.xml` that references the previous definition.
+
+#### CurrencySettings
+
+Represents an organization’s currency settings, including supporting multiple currencies and currency effective dates. This type extends
+the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### CurrencySettings values are stored in the Currency.settings file in the settings directory. The .settings files are
+
+different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### CurrencySettings is available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableCurrencyEffectiveDates` boolean
+
+`enableCurrencySymbolWithMultiCurrency` boolean
+
+Indicates whether effective dated currency is enabled ( `true` ) or not
+( `false` ). This field has a default value of `false` . To enable this
+preference, `enableMultiCurrency` must be set to `true`
+
+Indicates whether the currency symbol ( `true` ) or ISO code ( `false` )
+displays in multi-currency orgs. This field has a default value of `false` .
+This field has no effect if `enableMultiCurrency` is set to `false` .
+
+`enableMultiCurrency` boolean Indicates whether multiple currencies are enabled ( `true` ) or not
+( `false` ). This field has a default value of `false` .
+
+Note: After set to `true`, this field can’t be set to `false` . See
+[Considerations for Enabling Multiple Currencies for more](https://help.salesforce.com/articleView?id=admin_enable_multicurrency_implications.htm&language=en_US)
+information.
+
+`isMultiCurrencyActivationAllowed` boolean
+
+Deprecated in API version 49.0 and later. Regardless of the value in this
+field, a Salesforce admin can activate multiple currencies.
+
+In API version 48.0 and earlier, if Customizable Forecasting was enabled,
+this field indicated whether Salesforce Customer Support could activate
+multiple currencies ( `true` ) or the feature couldn't be activated ( `false` ).
+
+This field is only visible if multiple currencies are disabled. It has a default
+of `false` to provide an extra layer of protection against accidentally
+enabling multiple currencies when Customizable Forecasting was
+
+
+Metadata Types CurrencySettings
+
+**Field Name** **Field Type** **Description**
+
+enabled. In API version 48.0 and earlier, customers with Customizable
+Forecasting enabled in their orgs had to contact Salesforce Customer
+Support to activate multiple currencies. Customers set this field to `true`
+when Salesforce Customer Support requested that they do so to validate
+their request to activate multiple currencies.
+
+Note: Customizable Forecasting was retired in Summer ’20.
+Users can’t access the Customizable Forecasting feature and its
+underlying data via the user interface or API. To predict sales
+revenue and quantities from your opportunity pipeline, use
+Salesforce Forecasting.
+
+`isParenCurrencyConvDisabled` boolean Indicates whether parenthetical currency conversion is disabled ( `true` )
+or enabled ( `false` ). This field has a default value of `true` . When this
+
+field is set to `false`, Salesforce displays converted currency amounts
+to users whose personal currency differs from the currency of the record
+they’re viewing.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a CurrencySettings file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <CurrencySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableCurrencyEffectiveDates>false</enableCurrencyEffectiveDates>
+
+      <enableCurrencySymbolWithMultiCurrency>false</enableCurrencySymbolWithMultiCurrency>
+
+      <enableMultiCurrency>false</enableMultiCurrency>
+
+      <isMultiCurrencyActivationAllowed>false</isMultiCurrencyActivationAllowed>
+
+      <isParenCurrencyConvDisabled>false</isParenCurrencyConvDisabled>
+
+   </CurrencySettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>Currency</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>47.0</version>
 
    </Package>
 
@@ -7297,213 +11802,62 @@ The following is an example `package.xml` that references the previous definitio
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### UserCriteria
 
-Represents the member criteria to use in Experience Cloud site moderation rules. This type extends the Metadata metadata type and
-inherits its `fullName` field..
+#### Metadata Types CustomAddressFieldSettings CustomAddressFieldSettings
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
+Represents the settings for custom address fields.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
 
 File Suffix and Directory Location
 
-### UserCriteria components have the suffix site_name.user_criteria_developer_name.userCriteria and are stored in the UserCriteria folder.
+#### CustomAddressFieldSettings values are stored in the CustomAddressField.settings file in the settings
+
+folder. The `.settings` files are different from other named components, because there is only one settings file for each settings
+component.
 
 Version
 
-### UserCriteria components are available in API version 39.0 and later.
-
-Special Access Rules
-
-To view, create, edit, and delete moderation rules, you need the Manage Experiences or Create and Set Up Experiences permission. As
-of Spring ’20 and later, only users with permission to edit moderation rules can access this object.
-
-
-### Metadata Types UserProfileSearchScope
+#### CustomAddressFieldSettings components are available in API version 55.0 and later.
 
 Fields
 
 **Field Name** **Field Type** **Description**
 
-`creationAgeInSeconds` int If specified, includes only users that were created within a specific time
-frame.
-
-`description` string The description of the user criteria.
-
-`lastChatterActivityAgeInSeconds` int If specified, includes only members that have posted or commented in
-the Experience Cloud site within a specific time frame.
-
-`masterLabel` string Name of the user criteria.
-
-```
-userTypes
-
-```
-
-NetworkUserType The member type to use in moderation rules. Valid values are:
-enumeration ( of
-
-**•** Internal
-
-type string)
-
-**•** Internal
-
-**•** Customer
-
-**•** Partner
+`enableCustomAddressField` boolean
 
 Declarative Metadata Sample Definition
 
-The following is an example of a UserCriteria component.
+Indicates whether the `Address` Field Type is available for
+custom fields ( `true` ) or not ( `false` ). The default value is
+`false` .
+
+Custom Address Fields can’t be disabled. When
+`enableCustomAddressField` is set to `true`, you can’t
+change the value to `false` .
+
+Note: Before you set this field to `true` [, review Custom](https://help.salesforce.com/s/articleView?id=platform.fields_caf_requirements.htm&type=5&language=en_US)
+[Address Fields Requirements and Limitations in Salesforce](https://help.salesforce.com/s/articleView?id=platform.fields_caf_requirements.htm&type=5&language=en_US)
+Help.
+
+The following is an example of a CustomAddressFieldSettings component.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
-<UserCriteria xmlns="http://soap.sforce.com/2006/04/metadata">
+<CustomAddressFieldSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <masterLabel>Customer and Partner Members</masterLabel>
+   <enableCustomAddressField>true</enableCustomAddressField>
 
-   <description>Member criteria matches customer and partner member</description>
-
-   <userTypes>Partner</userTypes>
-
-   <userTypes>Customer</userTypes>
-
-</UserCriteria>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### UserProfileSearchScope
-
-Reserved for internal use.
-
-### UserProvisioningConfig
-
-Represents information to use during a user provisioning request flow, such as the attributes for an update.This type extends the Metadata
-metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-
-Metadata Types UserProvisioningConfig
-
-File Suffix and Directory Location
-
-UserProvisioningConfig components have the suffix `.userProvisioningConfig` and are stored in the
-`UserProvisioningConfigs` directory.
-
-Version
-
-UserProvisioningConfig components are available in API version 49.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`approvalRequired` string Indicates whether approvals are required for provisioning users for the
-associated connected app. If the value is null, no approval is required.
-
-`connectedApp` string The ID of the connected app for which users are being provisioned.
-
-`enabled` boolean Indicates whether user provisioning is enabled for the associated
-connected app ( `true` ) or not ( `false` ). Default setting is `false` .
-
-`enabledOperations` string
-
-`flow` string
-
-Lists the operations, as comma-separated values, that create a user
-provisioning request for the associated connected app. Allowed values
-are:
-
-**•** `Create`
-
-**•** `Update`
-
-**•** `EnableAndDisable` (activation and deactivation)
-
-**•** `SuspendAndRestore` (freeze and unfreeze)
-
-User Provisioning flow type which includes a reference to the Apex
-`UserProvisioningPlugin` class. The flow calls the third-party
-service’s API to manage user account provisioning on that system.
-
-`masterLabel` string The primary label for this object. This value is the internal label that
-doesn’t get translated.
-
-`namedCredential` string
-
-`notes` string
-
-The Salesforce ID of the named credential that’s used for a request. The
-named credential identifies the third-party system and the third-party
-authentication settings.
-
-Serves as a place for admins to add any additional information about
-the configuration. This field is for internal reference only, and is not used
-by any process.
-
-`onUpdateAttributes` string Lists the user attributes, as comma-separated values, that generate a
-user provisioning request during an update.
-
-`reconFilter` string When collecting and analyzing users on a third-party system, the plug-in
-uses this filter to limit the scope of the collection.
-
-
-### Metadata Types VirtualVisitConfig
-
-**Field Name** **Field Type** **Description**
-
-`userAccountMapping` string
-
-Stores the attributes used to link the Salesforce user to the account on
-the third-party system, in JSON format. For example:
-
-```
-{"linkingSalesforceUserAttribute":"Username",
-
-"linkingTargetUserAttribute":"Email"}
-
-```
-
-Declarative Metadata Sample Definition
-
-The following is an example of a UserProvisioningConfig component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<UserProvisioningConfig xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <approvalRequired>True</approvalRequired>
-
-   <enabled>true</enabled>
-
-   <enabledOperations>NA</enabledOperations>
-
-   <connectedApp>ExampleApp</connectedApp>
-
-   <masterLabel>label</masterLabel>
-
-   <notes>note</notes>
-
-   <onUpdateAttributes>attri</onUpdateAttributes>
-
-   <reconFilter>filter</reconFilter>
-
-   <userAccountMapping>mapping</userAccountMapping>
-
-</UserProvisioningConfig>
+</CustomAddressFieldSettings>
 
 ```
 
@@ -7516,13 +11870,193 @@ The following is an example `package.xml` that references the previous definitio
 
    <types>
 
-     <members>UPC</members>
+     <members>CustomAddressField</members>
 
-     <name>UserProvisioningConfig</name>
+```
 
-   </types>
 
-   <version>49.0</version>
+#### Metadata Types DataDotComSettings
+
+```
+        <name>Settings</name>
+
+      </types>
+
+      <version>55.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DataDotComSettings
+
+Represents the org's Data.com settings. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### DataDotComSettings values are stored in the DataDotCom.settings file in the settings folder.
+
+Version
+
+#### DataDotComSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableAccountExportButtonOff` boolean Indicates whether Account Export to Excel is enabled for Prospector
+( `true` ) or not ( `false` ). Default value is `false` .
+
+`enableAccountImportButtonOff` boolean Indicates whether Account Import to CRM is enabled for Prospector
+( `true` ) or not ( `false` ). Default value is `false` .
+
+`enableAllowDupeContactFromLead` boolean Indicates whether Prospector Lead Import Duplicate Check is enabled
+( `true` ) or not ( `false` ). Default value is `false` .
+
+`enableAllowDupeLeadFromContact` boolean Indicates whether Prospector Contact Import Duplicate Check is enabled
+( `true` ) or not ( `false` ). Default value is `false` .
+
+`enableCleanUpgradeRequested` boolean This field is no longer in use.
+
+`enableContactExportButtonOff` boolean Indicates whether Contact Export to Excel is enabled for Prospector
+( `true` ) or not ( `false` ). Default value is `false` .
+
+`enableContactImportButtonOff` boolean Indicates whether Contact Import to CRM is enabled for Prospector
+( `true` ) or not ( `false` ). Default value is `false` .
+
+
+#### Metadata Types DataImportManagementSettings
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataDotComSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <DataDotComSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <enableAccountExportButtonOff>true</enableAccountExportButtonOff>
+
+    <enableAccountImportButtonOff>true</enableAccountImportButtonOff>
+
+    <enableAllowDupeContactFromLead>true</enableAllowDupeContactFromLead>
+
+    <enableAllowDupeLeadFromContact>true</enableAllowDupeLeadFromContact>
+
+    <enableContactExportButtonOff>true</enableContactExportButtonOff>
+
+    <enableContactImportButtonOff>true</enableContactImportButtonOff>
+
+   </DataDotComSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>DataDotCom</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>29.0</version>
+
+   </Package>
+
+#### DataImportManagementSettings
+
+```
+
+Represents an org's contact and leads import settings.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### DataImportManagementSettings values are stored in the DataImportManagement.settings file in the settings
+
+folder. The `.settings` files are different from other named components, because there is only one settings file for each settings
+component.
+
+Version
+
+#### DataImportManagementSettings components are available in API version 57.0 and later.
+
+Special Access Rules
+
+#### DataImportManagementSettings is available when your org enables the DataImportManagement permission, which is only available
+
+for particular editions.
+
+
+#### Metadata Types DeploymentSettings
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableEasyImport
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Basic Data Import is enabled ( `true` ) or not ( `false` ). When `true`,
+users are guided step by step to select how they want to import contacts and leads
+to Salesforce.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DataImportManagementSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DataImportManagementSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableEasyImport>true</enableEasyImport>
+
+</DataImportManagementSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+         <members>DataImportManagement</members>
+
+         <name>Settings</name>
+
+      </types>
+
+      <version>57.0</version>
 
 </Package>
 
@@ -7530,169 +12064,8766 @@ The following is an example `package.xml` that references the previous definitio
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
 
-### VirtualVisitConfig
+#### DeploymentSettings
 
-Represents an external video provider configuration, which relays events from Salesforce to the provider.
+Represents the settings affecting how deployments behave in the org. This type extends the Metadata metadata type and inherits its
+`fullName` field.
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-
-Metadata Types VirtualVisitConfig
-
-Parent Type
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-VirtualVisitConfig components have the suffix `.virtualVisitConfig` and are stored in the `VirtualVisitConfigs` folder.
+#### DeploymentSettings values are stored in the Deployment.settings file in the settings directory. The .settings files
+
+are different from other named components, because there is only one settings file for each settings component.
+
+
+#### Metadata Types DevHubSettings
 
 Version
 
-VirtualVisitConfig components are available in API version 54.0 and later.
+DeploymentSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`doesSkipAsyncApexValidation` boolean
+
+Indicates whether deployments from this org skip asynchronous Apex
+validations ( `true` ) or not ( `false` ). The default value is `true` .
+
+Set this field to `false` when an Apex class in the package you’re
+deploying is used by an Apex batch job that could run during the
+
+deployment. The deployment of a package containing an Apex class
+that is used by a running batch job fails without validation.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DeploymentSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DeploymentSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <doesSkipAsyncApexValidation>true</doesSkipAsyncApexValidation>
+
+</DeploymentSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <types>
+
+    <members>Deployment</members>
+
+    <name>Settings</name>
+
+  </types>
+
+  <version>47.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DevHubSettings
+
+Represents Dev Hub settings.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all org settings metadata types are accessed using the Settings name. See Settings for more details.
+
+
+Metadata Types DevHubSettings
+
+File Suffix and Directory Location
+
+DevHubSettings values are stored in the `DevHub.settings` file in the `settings` folder. The `.settings` files are different
+from other named components because there is only one settings file for each settings component.
+
+Version
+
+DevHubSettings are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableALMDevopsCorePref` boolean Indicates whether the next-generation DevOps Center (Beta) is enabled:
+`true` or `false` . When enabled, you can access the AI-powered,
+
+next-generation DevOps Center for change and release management
+in the org.
+
+Available in API version 65.0 and later.
+
+Note: enableALMDevopsCorePref is a pilot or beta service that
+[is subject to the Beta Services Terms at Agreements -](https://www.salesforce.com/company/legal/agreements/)
+[Salesforce.com or a written Unified Pilot Agreement if executed](https://www.salesforce.com/company/legal/agreements/)
+[by Customer, and applicable terms in the Product Terms Directory.](https://ptd.salesforce.com/)
+Use of this pilot or beta service is at the Customer's sole discretion.
+
+`enableDevOpsCenterGA` boolean Indicates whether DevOps Center managed package is enabled: `true`
+or `false` . When enabled, you can install and use the generally available
+
+(GA) DevOps Center package in the org. This is an older version of DevOps
+Center.
+
+Available in API version 56.0 and later.
+
+`enableALMSimpleDeployDataPref` boolean
+
+Indicates whether configuration data migration to a target org is enabled:
+`true` or `false` . When enabled, you can migrate configuration data
+from a Salesforce org to a target org.
+
+To enable `enableALMSimpleDeployDataPref`, first enable
+`enableALMSimpleDeployPref` .
+
+Available in API version 65.0 and later.
+
+Note: enableALMSimpleDeployDataPref is available as a
+developer preview. Feature isn’t generally available unless or until
+Salesforce announces its general availability in documentation
+or in press releases or public statements. All commands,
+parameters, and other features are subject to change or
+deprecation at any time, with or without notice. Don't implement
+functionality developed with these commands or tools.
+
+
+Metadata Types DevHubSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableALMSimpleDeployPref` boolean
+
+`enablePackaging2` boolean
+
+Indicates whether metadata deployment to a target org is enabled:
+`true` or `false` . When enabled, you can deploy the metadata from
+a Salesforce org to a target org.
+
+Available in API version 65.0 and later.
+
+Note: enableALMSimpleDeployPref is a pilot or beta service that
+[is subject to the Beta Services Terms at Agreements -](https://www.salesforce.com/company/legal/agreements/)
+[Salesforce.com or a written Unified Pilot Agreement if executed](https://www.salesforce.com/company/legal/agreements/)
+[by Customer, and applicable terms in the Product Terms Directory.](https://ptd.salesforce.com/)
+Use of this pilot or beta service is at the Customer's sole discretion.
+
+Indicates whether unlocked and second-generation managed packaging
+is enabled: `true` or `false` .
+
+To enable `enablePackaging2`, first enable
+`enableScratchOrgManagementPref` .
+
+`enableScratchOrgManagementPref` boolean Indicates whether Dev Hub is enabled: `true` or `false` . When enabled,
+a Dev Hub allows you to create and manage scratch orgs.
+
+`enableScratchOrgSnapshotPref` boolean Indicates whether Scratch Org Snapshots is enabled: `true` or `false` .
+When enabled, you can create snapshots of a fully configured scratch
+
+org. A snapshot is a point-in-time copy of a scratch org that you can use
+to create additional scratch orgs.
+
+Available in API version 61.0 and later.
+
+`enableShapeExportPref` boolean
+
+Indicates whether Org Shape is enabled: `true` or `false` . When
+enabled, you can create org shapes as the basis for scratch orgs.
+
+Available in API version 55.0 and later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DevHubSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DevHubSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <enablePackaging2>true</enablePackaging2>
+
+   <enableScratchOrgManagementPref>true</enableScratchOrgManagementPref>
+
+</DevHubSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types DocumentGenerationSetting DocumentGenerationSetting
+
+Represents an org's settings for automatic document generation from templates. This type extends the Metadata metadata type and
+inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### DocumentGenerationSetting components have the suffix documentGenerationSetting and are stored in the
+
+`documentGenerationSettings` folder. The `.settings` files are different from other named components because there’s
+only one settings file for each settings component.
+
+Version
+
+#### DocumentGenerationSetting components are available in API version 52.0 and later.
 
 Special Access Rules
 
-Access to this metadata type requires at least one of these preferences:
+#### DocumentGenerationSetting is available if your org has the DocGen platform license and related addon and user licenses.
 
-**•** Video Calls: Org Pref (VideoVisits) Org preference
+Server-side document generation isn't enabled by default, and selecting `isServerSideDocGenEnabled` isn't sufficient. To
+[enable this feature, see the Request Access to Server-Side Document Generation knowledge article.](https://help.salesforce.com/apex/HTViewSolution?urlname=Request-Access-to-Server-Side-Document-Generation&language=en_US)
 
-**•** Industries Einstein: Intelligent Form Reader (EinsteinDocReader)
+Fields
 
-**•** Industries Einstein: Sentiment Insights Account (IESentimentAnalysis)
+**Field Name** **Field Type** **Description**
 
-**•** Natural Language Processing: Key phrase extraction and entity detection (NLPServiceEnabled) Org Preference and the NLP: Key
-phrase extraction (KeyPhrasePrefEnabled) Org Preference
+`documentTemplateLibraryName` String Required. The name of the library that stores the document templates
+to which this setting applies.
 
-**•** Natural Language Processing (NLPServicePrefEnabled) Org Preference
+```
+generationMechanism
+
+```
+
+GenerationMechanism Specifies how and where a document is generated. Valid values are:
+(enumeration of
+
+**•** `ClientSide` —Generates documents in the browser with an
+
+type string)
+
+optional preview.
+
+**•** `ServerSide` —Generates documents on the server and attaches
+them to the objects for which they're generated.
+
+The default is `ClientSide` .
+
+`guestAccessNamedCredential` String Specifies the named credential that lets guest users generate documents.
+
+`inProgDocGenRqstTmot` Integer The time interval (in hours) after which
+InProgress `DocumentGenerationProcess` records (single point
+
+or batch request) are terminated and the request status is updated to
+Failed. Specify a valid whole number between 1 and 24. The default
+value is set to 6.
+
+`isInProgRqstTmotEnab` Boolean Indicates whether the InProgress DocGen Request Time Out (hrs) is
+enabled ( `true` ) or not ( `false` ).
+
+`isServerSideDocGenEnabled` Boolean Enables server-side document generation if the prerequisite license is
+present in the org.
+
+
+#### Metadata Types DynamicFormsSettings
+
+**Field Name** **Field Type** **Description**
+
+`masterLabel` String Required. Specifies a name for the setting, such as `DocGen` .
+
+```
+previewType
+
+```
+
+PreviewType Specifies the format of previews of generated documents. Valid values
+(enumeration of are:
+type string)
+
+**•** `PDF` —Displays how the generated document looks in PDF format.
+
+**•** `Thumbnail` —Displays a miniature representation of the generated
+document.
+
+The default is `PDF` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DocumentGenerationSetting component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DocumentGenerationSetting xmlns="http://soap.sforce.com/2021/10/metadata">
+
+  <documentTemplateLibraryName>DocgenDocumentTemplateLibrary</documentTemplateLibraryName>
+
+  <masterLabel>DocGen</masterLabel>
+
+</DocumentGenerationSetting>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2021/10/metadata">
+
+   <types>
+
+     <members>DocumentGeneration</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>53.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
+using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### DynamicFormsSettings
+
+Represents the settings related to Dynamic Forms.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+
+Metadata Types DynamicFormsSettings
+
+File Suffix and Directory Location
+
+`DynamicFormsSettings` values are stored in the `DynamicForms.settings` file in the `settings` folder. The `.settings`
+files are different from other named components, because there is only one settings file for each settings component.
+
+Version
+
+DynamicFormsSettings components are available in API version 58.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
 
 Fields
 
 **Field Name** **Description**
 
 ```
-comprehendServiceType
-
-developerName
+enableFormsOnMobile
 
 ```
-
-**Field Type**
-VirtualVisitComprehendServiceType (enumeration of type string)
-
-**Description**
-Specifies the type of service used to convert speech into text or to analyze the converted
-speech text.
-
-Valid values are:
-
-**•** `ComprehendMedicalService`
-
-**•** `ComprehendService`
-
-**Type**
-string
-
-**Properties**
-Filter, Group, Sort
-
-**Description**
-The unique name of the object in the API. This name can contain only underscores
-and alphanumeric characters, and must be unique in your org. It must begin with a
-letter, not include spaces, not end with an underscore, and not contain two consecutive
-underscores. In managed packages, this field prevents naming conflicts on package
-
-
-Metadata Types VirtualVisitConfig
-
-**Field Name** **Description**
-
-installations. With this field, a developer can change the object’s name in a managed
-package and the changes are reflected in a subscriber’s organization. Label is Record
-Type Name. This field is automatically generated, but you can supply your own value
-if you create the record using the API.
-
-```
-experienceCloudSiteUrl
-
-externalMsgServiceIdentifier
-
-externalRoleIdentifier
-
-externalUserIdentifier
-
-fullName
-
-isProtected
-
-```
-
-**Field Type**
-string
-
-**Description**
-The URL of the Digital Experience site where the Video Call component is available to
-portal or guest users.
-
-**Field Type**
-string
-
-**Description**
-For internal use only.
-
-**Field Type**
-string
-
-**Description**
-The ID of the role that's used to allow users to join a video call and to grant them
-temporary access to certain functions needed to participate in the call.
-
-**Field Type**
-string
-
-**Description**
-For internal use only.
-
-**Type**
-string
-
-**Properties**
-Create, Group, Nillable
-
-**Description**
-The full name of the VirtualVisitConfig type in Metadata API. The full name can include
-a namespace prefix. Query this field only if the query result contains no more than one
-record. Otherwise, an error is returned. If more than one record exists, use multiple
-queries to retrieve the records. This limit protects performance.
 
 **Field Type**
 boolean
 
 **Description**
-An auto-generated value that doesn’t currently impact the behavior of the metadata
-type.
+Determines whether an org has Dynamic Forms for Mobile (Beta) enabled ( `true` ) or
+not ( `false` ).
+
+Note: This feature is a Beta Service. Customer may opt to try such Beta Service
+in its sole discretion. Any use of the Beta Service is subject to the applicable
+[Beta Services Terms provided at Agreements and Terms.](https://www.salesforce.com/company/legal/agreements/)
+
+Declarative Metadata Sample Definition
+
+The following is an example of a DynamicFormsSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DynamicFormsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <enableFormsOnMobile>true</enableFormsOnMobile>
+
+</DynamicFormsSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>DynamicForms</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>58.0</version>
+
+</Package>
+
+```
 
 
-Metadata Types VirtualVisitConfig
+#### Metadata Types EACSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### EACSettings
+
+Represents the Einstein Activity Capture metadata type. Use Einstein Activity Capture to add emails and events from your Microsoft or
+Google account to the activity timeline of related Salesforce records. Automatically sync contact and event data between your Microsoft
+or Google account and Salesforce. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### EACSettings components have the suffix EAC and are stored in the Settings folder.
+
+Version
+
+#### EACSettings components are available in API version 48.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`addRcCompToFlexiPages` boolean
+
+`autoContactCreationPref` boolean
+
+`autoContactEnrichmentPref` boolean
+
+`automatedEmailFilter` boolean
+
+Indicates whether the Recommended Connections component is
+automatically added ( `true` ) to standard contact, lead, and person
+account Lightning record pages or not ( `false` ).
+
+Default value is `false` .
+
+Available in API version 53.0 and later.
+
+Indicates whether Automatic Contact Creation is enabled ( `true` ) or not
+( `false` ).
+
+Default value is `false` .
+
+Available in API version 61.0 and later.
+
+Indicates whether Automatic Contact Enhancements is enabled ( `true` )
+or not ( `false` ).
+
+Default value is `false` .
+
+Available in API version 61.0 and later.
+
+Indicates whether the setting to prevent automated emails from being
+shared is on ( `true` ) or not ( `false` ).
+
+Available in API version 54.0 and later.
+
+
+Metadata Types EACSettings
+
+**Field Name** **Field Type** **Description**
+
+`autoPopulateGoogleMeetLinks` boolean Indicates whether the details to join with Google Meet are added ( `true` )
+to the Google version of the event or not ( `false` ) when sales reps
+
+create events in Salesforce. The Google Meet details don’t sync back to
+Salesforce.
+
+Default value is `false` .
+
+Available in API version 53.0 and later.
+
+`enableActivityAnalyticsPref` boolean
+
+Indicates whether the Activities dashboard is enabled ( `true` ) or not
+( `false` ).
+
+For orgs that enable Einstein Activity Capture after the Summer ‘21
+release, the default value is `false` .
+
+Available in API version 53.0 and later.
+
+`enableActivityCapture` boolean Indicates whether Einstein Activity Capture is enabled ( `true` ) or not
+( `false` ). `provisionProductivityFeatures` must be `true`
+
+to use this feature. To ensure that your org's requirements for handling
+[sensitive data are met, see Einstein Activity Capture Considerations.](https://help.salesforce.com/s/articleView?id=sales.aac_setup_things_to_know.htm&type=5&language=en_US)
+
+Default value is `false` .
+
+`enableActivityMetrics` boolean
+
+`enableActivitySyncEngine` boolean
+
+`enableEACForEveryonePref` boolean
+
+Indicates whether Activity Metrics are enabled ( `true` ) or not ( `false` ).
+`enableActivityCapture` must be `true` to use this feature.
+[Before enabling this feature, see Considerations for Using Activity Metrics.](https://help.salesforce.com/s/articleView?id=sales.aac_activity_metrics_considerations.htm&type=5&language=en_US)
+
+Default value is `false` .
+
+Indicates whether combined sync and capture is enabled for events,
+contacts, and emails ( `true` ) or not ( `false` ).
+
+Default value is `false` .
+
+Indicates whether users who have the `enableActivityCapture`
+set to `false` can still see emails and events in their Salesforce timeline
+( `true` ) or not ( `false` ).
+
+Default value is `true` .
+
+`enableEnforceEacSharingPref` boolean Indicates whether new Einstein Activity Capture users are required to
+keep their activity sharing setting as Don’t Share ( `true` ) or not ( `false` ).
+
+Users can still share individual emails and events, and respond to sharing
+requests from other users.
+
+`enableInboxActivitySharing` boolean
+
+Indicates whether the default activity sharing for new users is set to
+`Everyone` ( `true` ) or not ( `false` ).
+
+For example, if `enableInboxActivitySharing` is `true`, then
+new Einstein Activity Capture users have their activity sharing set to
+
+`Everyone` by default. This setting does not affect the activity sharing
+setting of existing users.
+
+
+Metadata Types EACSettings
+
+**Field Name** **Field Type** **Description**
+
+Default value is `true` .
+
+`enableInsightsInTimeline` boolean
+
+Indicates whether Email Insights is enabled ( `true` ) or not ( `false` ).
+
+Default value is `true` .
+
+`enableInsightsInTimelineEacStd` boolean Indicates whether Email Insights is enabled for users with an Einstein
+Activity Capture Standard permission set ( `true` ) or not ( `false` ). For
+
+more information, see "Turn On Einstein Email Insights" in Salesforce
+Help.
+
+Default value is `false` .
+
+`provisionProductivityFeatures` boolean
+
+`relationshipGraphPref` boolean
+
+`salesforceEventsOnlyPref` boolean
+
+`sensitiveEmailFilter` boolean
+
+`syncInternalEvents` boolean
+
+`s2XSvcAccEmail` boolean
+
+Indicates whether your org is ready for productivity features to be
+enabled ( `true` ) or not ( `false` ).
+
+Default value is `false` .
+
+Indicates whether Buyer Relationship Map is enabled ( `true` ) or not
+( `false` ).
+
+Default value is `true` .
+
+Available in API version 61.0 and later.
+
+Indicates whether the activity timeline shows only events that are
+Salesforce records ( `true` ) or not ( `false` ). For more information, see
+[Guidelines for Using Events with Einstein Activity Capture](https://help.salesforce.com/s/articleView?id=sales.aac_event_considerations.htm&type=5&language=en_US)
+
+Available in API version 53.0 and later.
+
+Indicates whether the setting to prevent sensitive emails from being
+shared is on ( `true` ) or not ( `false` ).
+
+Available in API version 54.0 and later.
+
+Indicates whether internal events sync between the connected account
+and Salesforce ( `true` ) or not ( `false` ). Events are internal when all
+attendees are part of the internal domain.
+
+Available in API version 53.0 and later.
+
+Indicates whether a warning email has be sent to the customer if they're
+using Service Account OAuth on Exchange Online ( `true` ) or not
+( `false` ).
+
+Default value is `false` .
+
+Available in API version 62.0 and later.
+
+
+#### Metadata Types EinsteinAISettings
+
+Declarative Metadata Sample Definition
+
+The following is an example of the EAC.settings file:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <EACSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <enableActivityCapture>true</enableActivityCapture>
+
+    <enableActivityMetrics>true</enableActivityMetrics>
+
+    <enableActivitySyncEngine>true</enableActivitySyncEngine>
+
+    <enableEACForEveryonePref>true</enableEACForEveryonePref>
+
+    <enableInboxActivitySharing>true</enableInboxActivitySharing>
+
+    <enableInsightsInTimeline>true</enableInsightsInTimeline>
+
+    <enableInsightsInTimelineEacStd>true</enableInsightsInTimelineEacStd>
+
+    <provisionProductivityFeatures>true</provisionProductivityFeatures>
+
+   </EACSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the EAC settings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>EAC</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>29.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### EinsteinAISettings
+
+Represents Einstein AI settings, including AI feedback integration with Data 360 and PII masking for AI trust features.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the "Settings" name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### EinsteinAISettings values are stored in the EinsteinAISettings.settings file in the settings folder. The
+
+`.settings` files are different from other named components, because there is only one settings file for each settings component.
+
+
+Metadata Types EinsteinAISettings
+
+Version
+
+EinsteinAISettings is available in API version 60.0 and later. Individual fields may have specific minimum API version requirements as
+noted in the field descriptions.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
 
 **Field Name** **Description**
 
 ```
-masterLabel
+enableAIFeedbackWithDC
 
-messagingRegion
+```
 
-namedCredential
+**Field Type**
+boolean
 
-storageBucketName
+**Description**
+Indicates whether AI feedback integration with Data 360 is enabled ( `true` ) or not
+( `false` ). Available in API version 60.0 and later.
 
-usageType
+`enableAITrustInputToxicityDetection` Reserved for internal use.
 
-videoCallApptTypeValue
+`enableAITrustPromptInjectionDetection` Reserved for internal use.
+
+`enablePBHideScopedNotif` Reserved for internal use.
+
+`enablePBPromptPerformanceMetrics` Reserved for internal use.
+
+```
+enableTrustPIIMasking
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether PII (Personally Identifiable Information) masking for AI trust features
+is enabled ( `true` ) or not ( `false` ). Available in API version 60.0 and later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an EinsteinAISettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EinsteinAISettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <enableAIFeedbackWithDC>true</enableAIFeedbackWithDC>
+
+   <enableTrustPIIMasking>true</enableTrustPIIMasking>
+
+</EinsteinAISettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>EinsteinAI</members>
+
+     <name>Settings</name>
+
+```
+
+
+#### Metadata Types EinsteinAgentSettings
+
+```
+      </types>
+
+      <version>64.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn't apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### EinsteinAgentSettings
+
+Represents settings for Einstein classification apps, Einstein Case Classification and Einstein Case Wrap-Up, in an org. This type extends
+the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### EinsteinAgentSettings values are stored in the EinsteinAgent.settings file in the settings folder. The .settings files
+
+are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### EinsteinAgentSettings components are available in API version 52.0 and later. In API version 52.0, we renamed CaseClassificationSettings
+
+components to EinsteinAgentSettings components to reflect how we consolidated settings for Einstein Case Classification and Einstein
+Case Wrap-Up. CaseClassificationSettings components are available in API version 47.0 through 51.0.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`einsteinAgentRecommendations` boolean Indicates whether Einstein classification apps are enabled in your org.
+The default value is `false` .
+
+`reRunAttributeBasedRules` boolean If `true`, skills-based routing rules are run after Einstein Case Classification
+automatically updates field values. The default value is `false` .
+
+`runAssignmentRules` boolean If `true`, assignment rules are run after Einstein Case Classification
+automatically updates field values. The default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a EinsteinAgentSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <EinsteinAgentSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <einsteinAgentRecommendations>true</einsteinAgentRecommendations>
+
+      <reRunAttributeBasedRules>true</reRunAttributeBasedRules>
+
+```
+
+
+#### Metadata Types EinsteinGptSettings
+
+```
+      <runAssignmentRules>true</runAssignmentRules>
+
+   </EinsteinAgentSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>EinsteinAgent</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>52.0</version>
+
+   </Package>
+
+#### EinsteinGptSettings
+
+```
+
+Represents settings for Einstein Generative AI features in an org.This type extends the Metadata metadata type and inherits its `fullName`
+field
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### EinsteinGptSettings values are stored in the EinsteinGpt.settings file in the settings folder. The .settings files are
+
+different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### EinsteinGptSettings components are available in API version 61.0 and later.
+
+Fields
+
+**Field Name** **Field** **Description**
+**Type**
+
+`disableAIProvAWSBedrock` boolean
+
+`disableAIProvAzureOpenAI` boolean
+
+`disableAIProvOpenAI` boolean
+
+`disableAIProvVertexGemini` boolean
+
+
+Indicates whether AWS Bedrock is turned off and
+access to its models are blocked. The default value
+is `false` .
+
+Indicates whether Azure OpenAI is turned off and
+access to its models are blocked. The default value
+is `false` .
+
+Indicates whether OpenAI is turned off and access
+to its models are blocked. The default value is
+`false` .
+
+Indicates whether Vertex AI (Google) is turned off
+and access to its models are blocked. The default
+value is `false` .
+
+#### Metadata Types EmailAdministrationSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`disableAIProviderRegionFallback` boolean
+
+Indicates whether the fallback of Azure OpenAI
+requests outside the model endpoint region for your
+org is turned off. The default value is `false` .
+
+`enableAIModelBeta` boolean Indicates whether to turn on beta models for Einstein
+generative AI features. The default value is `false` .
+
+`enableEinsteinGptAllowUnsafePTInputChanges` boolean Reserved for internal use.
+
+`enableEinsteinGptGlobalLangSupport` boolean Indicates whether to turn on global languages with
+prompt templates. The default value is `false` .
+
+`enableEinsteinGptPlatform` boolean Indicates whether to turn on generative AI features
+across Salesforce. The default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of an EinsteinGptSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EinsteinGptSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <enableEinsteinGptGlobalLangSupport>true</einsteinAgentRecommendations>
+
+   <enableEinsteinGptPlatform>true</reRunAttributeBasedRules>
+
+</EinsteinGptSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>EinsteinGpt</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>63.0</version>
+
+</Package>
+
+#### EmailAdministrationSettings
+
+```
+
+Represents an organization’s email administration settings, including email deliverability, security compliance, relay configurations, and
+system notifications. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### EmailAdministrationSettings values are stored in the EmailAdminstration.settings file in the settings directory. The
+
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+
+Metadata Types EmailAdministrationSettings
+
+Version
+
+EmailAdministrationSettings is available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableComplianceBcc` boolean
+
+Indicates whether a copy of each outbound email message
+is sent to an email address you specify ( `true` ) or not
+( `false` ). This field has a default value of `false` .
+
+Note: To use this feature, you must specify an email
+address in **Compliance BCC Email** in Setup.
+
+`enableEmailConsentManagement` boolean Indicates whether Enforce Email Privacy Settings is enabled
+`(true)` or not `(false)` . When enabled, Salesforce
+
+respects each recipient’s email privacy preferences. Default
+value is `false` .
+
+`enableEmailSenderIdCompliance` boolean Indicates whether outgoing emails comply with Sender ID
+email protocols ( `true` ) or not ( `false` ). This field has a
+
+default value of `false` . To enable this preference,
+`enableEmailSpfCompliance` must be set to `true` .
+
+Note: Evaluate the multiple standard email security
+protocols (SPF, DKIM, and DMARC) supported by
+Salesforce before you enable this setting.
+
+`enableEmailSpfCompliance` boolean
+
+Indicates whether outgoing emails comply with Sender
+Policy Framework (SPF) email authentication ( `true` ) or not
+( `false` ). This field has a default value of `true` .
+
+`enableEmailToSalesforce` boolean Indicates whether Email to Salesforce is enabled ( `true` ) or
+disabled ( `false` ). This field has a default value of `false` .
+
+`enableEmailWorkflowApproval` boolean Indicates whether users can respond to email approval
+requests directly from their email ( `true` ) or not ( `false` ).
+
+This field has a default value of `false` [. See Considerations](https://help.salesforce.com/articleView?id=approvals_email_limitations.htm&language=en_US)
+[for Email Approval before enabling this field.](https://help.salesforce.com/articleView?id=approvals_email_limitations.htm&language=en_US)
+
+`enableEnhancedEmailEnabled` boolean Indicates whether Enhanced Email is enabled `(true)` or
+not `(false)` . Default value is `true` .
+
+`enableHandleBouncedEmails` boolean Indicates whether emails sent from Salesforce to an invalid
+email address bounce back to Salesforce ( `true` ) or not
+
+( `false` ) . This field has a default value of `true` . With
+bounce handling enabled, reps know which lead, contact,
+or person account has a bad email address, and they know
+which specific email wasn’t delivered.
+
+
+Metadata Types EmailAdministrationSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableHtmlEmail` boolean Indicates whether users receive Email-To-Case emails in
+HTML format ( `true` ) or receive a text version instead
+
+( `false` ). This field has a default value of `false` . When
+this field is set to `true`, users receive a warning message
+about potential malicious HTML before they view incoming
+HTML email content.
+
+`enableInternationalEmailAddresses` boolean Indicates whether non-Latin-based characters are allowed
+in email addresses ( `true` ) or not ( `false` ) when sending
+
+emails to and from Salesforce. This field has a default value
+of `true` in orgs created in Summer '20 or later. In orgs
+created in Spring '20 or earlier, the default value is `false` .
+Available in API version 49.0 and later.
+
+Note: Review the Email Address Internationalization
+prerequisites and considerations in Salesforce Help
+before enabling this setting.
+
+`enableListEmailLogActivities` boolean Indicates whether Salesforce logs sent list emails as activities
+`(true)` or not `(false)` . Default value is `true` .
+
+`enableResendBouncedEmails` boolean Indicates whether the system forwards a copy of each
+bounced email message to the sender ( `true` ) or only
+
+displays the bounce alert ( `false` ). This field has a default
+value of `false` . To enable this preference,
+`enableHandleBouncedEmails` must be set to
+`true` .
+
+`enableRestrictTlsToDomains` boolean Indicates whether the selected Transport Layer Security (TLS)
+setting applies only to specific domains ( `true` ) or applies
+
+to all domains ( `false` ). This field has a default value of
+`false` .
+
+Note: To enable this preference, you must specify a
+**TLS Setting** other than Preferred and provide the
+comma-separated list of domains through
+**Deliverability** in Setup. When this field is set to
+`true`, any domains not in the list use the system
+default TLS Setting of Preferred.
+
+`enableSendThroughGmailPref` boolean Deprecated.
+
+`enableSendViaExchangePref` boolean Indicates whether users can use Office 365 to send emails
+`(true)` or not `(false)` . Default value is `false` .
+
+`enableSendViaGmailPref` boolean Indicates whether users can use Gmail to send emails
+`(true)` or not `(false)` . Default value is `false` .
+
+`enableUseOrgFootersForExtTrans` boolean Indicates whether emails sent through external email services
+(such as Gmail or Office 365) include the Salesforce footer
+
+
+Metadata Types EmailAdministrationSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+( `true` ) or not ( `false` ). This field has a default value of
+`false` .
+
+`sendMassEmailNotification` boolean
+
+`sendTextOnlySystemEmails` boolean
+
+Declarative Metadata Sample Definition
+
+Indicates whether users receive an auto-generated status
+email from Salesforce for each mass email they send ( `true` )
+or not ( `false` ). This field has a default value of `true` .
+
+Indicates whether all system emails are sent via text only
+( `true` ) or allow other formats ( `false` ). This field has a
+default value of `false` .
+
+The following is an example of an EmailAdministrationSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+         <EmailAdministrationSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+          <enableEmailWorkflowApproval>false</enableEmailWorkflowApproval>
+
+          <enableComplianceBcc>false</enableComplianceBcc>
+
+          <enableEmailSenderIdCompliance>false</enableEmailSenderIdCompliance>
+
+          <enableEmailSpfCompliance>true</enableEmailSpfCompliance>
+
+          <enableEmailToSalesforce>false</enableEmailToSalesforce>
+
+          <enableHandleBouncedEmails>true</enableHandleBouncedEmails>
+
+          <enableHtmlEmail>true</enableHtmlEmail>
+
+         <enableInternationalEmailAddresses>true</enableInternationalEmailAddresses>
+
+          <enableResendBouncedEmails>false</enableResendBouncedEmails>
+
+          <enableRestrictTlsToDomains>false</enableRestrictTlsToDomains>
+
+          <sendMassEmailNotification>true</sendMassEmailNotification>
+
+          <sendTextOnlySystemEmails>false</sendTextOnlySystemEmails>
+
+          <enableUseOrgFootersForExtTrans>false</enableUseOrgFootersForExtTrans>
+
+          <enableSendViaGmailPref>false</enableSendViaGmailPref>
+
+          <enableSendViaExchangePref>true</enableSendViaExchangePref>
+
+          <enableListEmailLogActivities>false</enableListEmailLogActivities>
+
+          <enableEnhancedEmailEnabled>false</enableEnhancedEmailEnabled>
+
+          <enableEmailConsentManagement>false</enableEmailConsentManagement>
+
+          </EmailAdministrationSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+          <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+          <types>
+
+          <members>EmailAdministration</members>
+
+          <name>Settings</name>
+
+          </types>
+
+          <version>49.0</version>
+
+          </Package>
+
+```
+
+
+#### Metadata Types EmailIntegrationSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+SEE ALSO:
+
+_Salesforce Help_ [: Email Address Internationalization](https://help.salesforce.com/articleView?id=emailadmin_eai.htm&language=en_US)
+
+#### EmailIntegrationSettings
+
+Represents an org’s settings for the Outlook integration, Gmail integration, and Salesforce Inbox.This type extends the Metadata metadata
+type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### EmailIntegrationSettings values are stored in the EmailIntegration.settings file in the settings directory. The
+
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### EmailIntegrationSettings fields are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`doesEmailLogAsEmailMessageInOutlook` boolean
+
+Indicates whether the Outlook integration logs emails to the Email
+Message object ( `true` ) or as tasks ( `false` ). The default value is `true` .
+
+This field can only be used if the `enableOutlookIntegration`
+field is set to `true` .
+
+`doesGmailStayConnectedToSalesforce` boolean Indicates whether Gmail integration users log in to Salesforce from Gmail
+each time their session expires. If set to `true`, users log in from the
+
+Gmail integration one time, and their credentials are remembered the
+next time they use the Gmail integration. If set to `false`, users log in
+to Salesforce from the Gmail integration each time their Salesforce
+session expires. The default value is `false` .
+
+This field can only be used if the `enableGmailIntegration`
+field is set to `true` .
+
+`enableContactAndEventSync` boolean Indicates whether users can sync calendar events and contacts between
+Salesforce and their Microsoft and Google accounts ( `true` ) or not
+
+( `false` ). Lightning Sync or Einstein Activity Capture must be enabled
+to use this feature. The default value is `false` .
+
+
+Metadata Types EmailIntegrationSettings
+
+**Field Name** **Field Type** **Description**
+
+Available in API version 48.0 and later.
+
+`enableContextualEverywhere` boolean
+
+Indicates whether contextual insights in Sales Cloud Everywhere,
+available in the Salesforce Chrome extension, are enabled ( `true` ) or
+not ( `false` ).
+
+This field is available in API version 58.0 and later.
+
+`enableEmailTrackingInMobile` boolean Indicates whether Salesforce Inbox users can track emails ( `true` ) or not
+( `false` ) while in the Outlook integration with Inbox or the Gmail
+
+integration with Inbox. It also controls email tracking in the Inbox mobile
+app and legacy versions of Inbox. The default value is `true` .
+
+`enableEngageForOutlook` boolean
+
+Indicates whether Engage For Outlook is enabled ( `true` ) or not
+( `false` ). When set to `true`, Engage users can connect their Outlook
+account and send Engage emails from their Outlook inbox.
+
+`enableExtensionHostUnrestricted` boolean Indicates whether the contextual web experience is enabled in the
+chrome extension or not.
+
+`enableGmailIntegration` boolean Indicates whether the Gmail integration is enabled ( `true` ) or not
+( `false` ). When set to `true`, G Suite users with the Gmail integration
+
+can connect their Gmail account and work with Salesforce data in their
+email. The default value is `true` .
+
+`enableInboxInternalEmailTracking` boolean
+
+Indicates whether a read-receipt status is shown for emails that are sent
+within the same domain ( `true` ) or not ( `false` ).
+
+This field is available in API version 58.0 and later.
+
+`enableInboxMobileIntune` boolean Indicates whether Inbox is enabled to use Microsoft Intune to manage
+security settings ( `true` ) or not ( `false` ). When set to `true`, Inbox
+
+mobile users need a Microsoft Intune license to log in to the app. The
+default value is `false` .
+
+Available in API version 50.0 and later.
+
+`enableOutlookIntegration` boolean Indicates whether the Outlook integration is enabled ( `true` ) or not
+( `false` ). When set to `true`, Outlook users with the Outlook integration
+
+can connect their Outlook account and work with Salesforce data in
+their email. The default value is `false` .
+
+`enableProductivityFeatures` boolean
+
+Indicates whether Inbox features, such as Availability and Send later, are
+available ( `true` ) or not available ( `false` ) in the Outlook or Gmail
+integration. The default value is `false` .
+
+This field can only be used if either the
+`enableOutlookIntegration` or
+
+`enableGmailIntegration` field is set to `true` and if the org
+has an Inbox license.
+
+
+Metadata Types EmailIntegrationSettings
+
+**Field Name** **Field Type** **Description**
+
+Note: To see Inbox features, users must also have either the
+Inbox with Einstein Activity Capture or the Inbox without Einstein
+Activity capture permission set.
+
+`enableSupplementalContactInfoInMobile` boolean
+
+Indicates whether Salesforce Inbox mobile app users see third-party
+contact information when contacts are shown ( `true` ) or not ( `false` )
+in the Inbox mobile app. The default value is `false` .
+
+`isLayoutCustomizationAllowed` boolean Indicates whether Salesforce admins are allowed ( `true` ) or not allowed
+( `false` ) to create custom email application panes using the Lightning
+
+App Builder. The email application pane defines the layout of the
+Salesforce pane in Outlook and Gmail. The default value is `true` .
+
+This field can only be used if either the
+`enableOutlookIntegration` or
+`enableGmailIntegration` field is set to `true` .
+
+`orgIsSyncingEventsOutbound` boolean Indicates whether changes to Salesforce events sync to Outlook and
+Google calendars `(true` ) or not ( `false` ).
+
+Note: This field is set by Salesforce. We do not recommend that
+you set this field manually, as doing so may cause interruptions
+in your org's event syncing.
+
+This field is available in API version 50.0 and later
+
+`shouldUseTrustedDomainsList` boolean Indicates if the web domains listed in the Outlook Integration & Sync
+page in Salesforce Setup are supported ( `true` ) or not ( `false` ). These
+
+domains are for users who access email using Outlook on the web. The
+default value is `true` .
+
+This field can only be used if the `enableOutlookIntegration`
+field is set to `true` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a EmailIntegrationSettings file.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EmailIntegrationSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <enableContactAndEventSync>true</enableContactAndEventSync>
+
+     <enableProductivityFeatures>true</enableProductivityFeatures>
+
+     <doesGmailStayConnectedToSalesforce>true</doesGmailStayConnectedToSalesforce>
+
+     <enableOutlookIntegration>true</enableOutlookIntegration>
+
+     <enableGmailIntegration>true</enableGmailIntegration>
+
+     <isLayoutCustomizationAllowed>true</isLayoutCustomizationAllowed>
+
+     <doesEmailLogAsEmailMessageInOutlook>false</doesEmailLogAsEmailMessageInOutlook>
+
+     <shouldUseTrustedDomainsList>false</shouldUseTrustedDomainsList>
+
+     <enableEmailTrackingInMobile>true</enableEmailTrackingInMobile>
+
+    <enableSupplementalContactInfoInMobile>false</enableSupplementalContactInfoInMobile>
+
+```
+
+
+#### Metadata Types EmailTemplateSettings
+
+```
+        <enableEngageForOutlook>true</enableEngageForOutlook>
+
+   </EmailIntegrationSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>EmailIntegration</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>47.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### EmailTemplateSettings
+
+Represents an org’s email template settings. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### EmailTemplateSettings values are stored in the EmailTemplate.settings file in the settings directory. The .settings
+
+files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### EmailTemplateSettings is available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableTemplateEnhancedFolderPref` boolean
+
+Indicates whether Folders and Enhanced Sharing for Email Templates is
+enabled ( `true` ) or not ( `false` ). This feature allows users to create and
+manage folders for email templates.
+
+Default value is `false` .
+
+
+#### Metadata Types EmployeeUserSettings
+
+Declarative Metadata Sample Definition
+
+The following is an example of the package file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>EmailTemplate</members>
+
+        <name>Settings</name>
+
+      </types>
+
+   </Package>
+
+```
+
+The package file references the following EmaillTemplate.settings file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <EmailTemplateSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableTemplateEnhancedFolderPref>true</enableTemplateEnhancedFolderPref>
+
+   </EmailTemplateSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### EmployeeUserSettings
+
+Represents the employee-user settings used for automatically creating or syncing employee and user data in work.com orgs. This type
+extends the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+A EmployeeUserSettings component file has the suffix `.settings` and is stored in the `settings` directory. The `.settings`
+files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### EmployeeUserSettings components are available in API version 50.0 and later.
+
+Special Access Rules
+
+Access to the EmployeeUserSettings type requires the Workplace Command Center permission set license available in the org and
+assigned to the user. The WorkplaceCommandCenterUser scratch org feature must also be enabled in the org.
+
+
+Metadata Types EmployeeUserSettings
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`emailEncoding` string
+
+Required. The default encoding setting is Unicode: `UTF-8` .
+
+Valid values include:
+
+**•** `UTF-8` —Unicode (UTF-8)
+
+**•** `ISO-8859-1` —General US & Western Europe (ISO-8859–1,
+ISO-LATIN-1)
+
+**•** `Shift_JIS` —Japanese (Shift-JIS)
+
+**•** `ISO-2022-JP` —Japanese (JIS)
+
+**•** `EUC-JP` —Japanese (EUC-JP)
+
+**•** `x-SJIS_0213` —Japanese (Shift-JIS_2004)
+
+**•** `ks_c_5601-1987` —Korean (ks_c_5601-1987)
+
+**•** `Big5` —Traditional Chinese (Big5)
+
+**•** `GB2312` —Simplified Chinese (GB2312)
+
+**•** `Big5-HKSCS` —Traditional Chinese Hong Kong (Big5–HKSCS)
+
+`enableEmployeeAutoCreateUser` boolean If `true`, users are auto-created when a new employee record is created.
+The default value for this field is `false` .
+
+`enableEmployeeIsSourceOfTruth` boolean If `true`, the employee record is the source of truth. The default value
+for this field is `false` .
+
+`permset` string Represents a set of permissions that's used to grant more access to a
+user. You can use permission sets to grant access but not to deny access.
+
+`profile` string Required. Represents a user profile. A profile defines a user’s permission
+to perform different functions within Salesforce.
+
+`usernameSuffix` string Represents a domain name. We create a unique login by combining this
+domain name with each employee’s username.
+
+Declarative Metadata Sample Definition
+
+The following is an example `EmployeeUser.settings-meta.xml` that deploys the EmployeeUserSettings metadata to an
+org. The file is in the dir path `force-app/main/default/settings` :
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EmployeeUserSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+<emailEncoding>ISO-8859-1</emailEncoding>
+
+<enableEmployeeAutoCreateUser>true</enableEmployeeAutoCreateUser>
+
+<enableEmployeeIsSourceOfTruth>false</enableEmployeeIsSourceOfTruth>
+
+<profile>MarketingProfile</profile>
+
+<usernameSuffix>example.com</usernameSuffix>
+
+</EmployeeUserSettings>
+
+```
+
+
+#### Metadata Types EnhancedNotesSettings
+
+The following example of `package.xml` file retrieves the EmployeeUserSettings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+   <name>Settings</name>
+
+   <members>EmployeeUser</members>
+
+   </types>
+
+   <version>50.0</version>
+
+   </Package>
+
+#### EnhancedNotesSettings
+
+```
+
+Represents an org’s enhanced note settings, such as enabling enhanced notes and enabling tasks in enhanced notes.This type extends
+the Metadata metadata type and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### EnhancedNotesSettings values are stored in the EnhancedNotes.settings file in the settings directory.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+Version
+
+#### EnhancedNotesSettings is available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableEnhancedNotes` boolean Indicates whether enhanced notes are enabled `(true)` or not
+`(false)` . With enhanced notes, users can relate a note to multiple
+
+records, access version history, and enjoy enhanced format options.
+Users must have the Use New Notes permission to use enhanced notes.
+
+Default value is `true` .
+
+`enableTasksOnEnhancedNotes` boolean Indicates whether users can create tasks from notes `(true)` or not
+`(false)` . In the Salesforce app, users can create a task from a note by
+
+swiping a line on the note. Alternatively, they can tap in the toolbar to
+add or update the status of an action item. Users must have the Use New
+Notes permission to use enhanced notes.
+
+Default value is `true` .
+
+
+#### Metadata Types EncryptionKeySettings
+
+Declarative Metadata Sample Definition
+
+The following is an example of the `EnhancedNotesSettings.settings` file:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <EnhancedNotesSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <enableEnhancedNotes>true</enableEnhancedNotes>
+
+    <enableTasksOnEnhancedNotes>true</enableTasksOnEnhancedNotes>
+
+   </EnhancedNotesSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the EnhancedNotesSettings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>EnhancedNotes</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>47.0</version>
+
+   </Package>
+
+#### EncryptionKeySettings
+
+```
+
+Represents an org’s encryption key settings, such as customer-supplied keys options and key derivation settings. This type extends the
+Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### EncryptionKeySettings values are stored in the EncryptionKey.settings file in the settings folder. The .settings
+
+files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### EncryptionKeySettings is available in API versions 47.0 and later.
+
+Special Access Rules
+
+To enable EncryptionKeySettings, you need the Customize Application and Manage Encryption Keys permissions.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`canEncryptTransactionalDatabase` boolean Indicates whether users can encrypt the transactional database ( `true` )
+or can’t ( `false` ). The default value is `false` . If set to `true`,
+
+transactional database encryption is enabled and a transactional
+
+
+Metadata Types EncryptionKeySettings
+
+**Field Name** **Field Type** **Description**
+
+database tenant secret is generated. Available in API version 63.0 and
+later.
+
+`canExternalKeyManagement` boolean Indicates whether External Key Management is available ( `true` ) or not
+( `false` ). The default value is `false` . If set to `true`, users can
+
+configure connections to external key stores and use keys saved in those
+key stores to encrypt and decrypt Salesforce data. Available in API version
+63.0 and later.
+
+`canManageDataCloudKeys` boolean
+
+`canOptOutOfDerivationWithBYOK` boolean
+
+Indicates whether key management for Data 360 is enabled and an
+initial customer-managed root key is present ( `true` ) or not ( `false` ).
+Available in API version 63.0 and later.
+
+Indicates that users can opt out of key derivation processes on a
+key-by-key basis when they upload key material ( `true` ) or can’t
+( `false` ). The default value is `false` .
+
+`enableCacheOnlyKeys` boolean Indicates whether the Cache-Only Key Service is available ( `true` ) or
+not ( `false` ). The default value is `false` . If set to `true`, users can
+
+configure a cache-only key callout connection and apply key material
+stored outside of Salesforce to data on demand.
+
+`enableReplayDetection` boolean Indicates whether cache-only key callouts are protected from replay
+attacks by a nonce ( `true` ) or not ( `false` ). Requires
+
+`enableCacheOnlyKeys=”true”` before setting
+`enableReplayDetection` to `true` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of the EncryptionKey.settings file:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EncryptionKeySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <canEncryptTransactionalDatabase>true</canEncryptTransactionalDatabase>
+
+   <canManageDataCloudKeys>true</canManageDataCloudKeys>
+
+   <enableExternalKeyManagement>true</enableExternalKeyManagement>
+
+</EncryptionKeySettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the encryption key settings metadata for an organization:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>EncryptionKey</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>47.0</version>
+
+</Package>
+
+```
+
+
+#### Metadata Types EntitlementSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### EntitlementSettings
+
+Represents an organization’s entitlement settings.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### EntitlementSettings values are stored in the Entitlements.settings file in the settings directory. The .settings files
+
+are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### EntitlementSettings is available in API version 27.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`assetLookupLimitedToActiveEntitlementsOnAccount` boolean
+
+`assetLookupLimitedToActiveEntitlementsOnContact` boolean
+
+`assetLookupLimitedToSameAccount` boolean
+
+`assetLookupLimitedToSameContact` boolean
+
+Indicates whether entitlements-related lookup filters on
+cases return only the assets related to the active
+entitlements on the case’s account ( `true` ) or not ( `false` ).
+
+Indicates whether entitlements-related lookup filters on
+cases return only the assets related to the active
+entitlements on the case’s contact ( `true` ) or not ( `false` ).
+
+Indicates whether entitlements-related lookup filters on
+cases return only the assets related to the case’s account
+( `true` ) or not ( `false` ).
+
+Indicates whether entitlements-related lookup filters on
+cases return only the assets related to the case’s contact
+( `true` ) or not ( `false` ).
+
+`enableEntitlements` boolean Indicates whether entitlements are enabled ( `true` ) or not
+( `false` ).
+
+`enableEntitlementVersioning` boolean
+
+Indicates whether entitlement versioning is enabled
+( `true` ) or not ( `false` ).
+
+This field is available in API version 28.0 and later.
+
+`enableMilestoneFeedItem` boolean When set to `true`, indicates whether to post to the feed
+and the record owner’s profile page when a milestone is
+
+
+Metadata Types EntitlementSettings
+
+**Field Name** **Field Type** **Description**
+
+completed or violated. When set to `false`, indicates that
+no post occurs when a milestone is completed or violated.
+
+This field is available in API version 47.0 and later.
+
+`enableMilestoneStoppedTime` boolean
+
+`entitlementLookupLimitedToActiveStatus` boolean
+
+`entitlementLookupLimitedToSameAccount` boolean
+
+`entitlementLookupLimitedToSameAsset` boolean
+
+`entitlementLookupLimitedToSameContact` boolean
+
+`ignoreMilestoneBusinessHours` boolean
+
+Declarative Metadata Sample Definition
+
+This is a sample entitlements settings file.
+
+Indicates whether to show the **Stopped Time** and **Actual**
+**Elapsed Time** fields on an entitlement milestone ( `true` )
+or not ( `false` ).
+
+This field is available in API version 47.0 and later.
+
+Indicates whether entitlements-related lookup filters on
+cases return only active entitlements ( `true` ) or not
+( `false` ).
+
+Indicates whether entitlements-related lookup filters on
+cases return only the entitlements related to the case’s
+account ( `true` ) or not ( `false` ).
+
+Indicates whether entitlements-related lookup filters on
+cases return only the entitlements related to the case’s
+asset ( `true` ) or not ( `false` ).
+
+Indicates whether entitlements-related lookup filters on
+cases return only the entitlements related to the case’s
+contact ( `true` ) or not ( `false` ).
+
+Indicates whether to show the time remaining on an event
+milestone in actual hours ( `true` ) or business hours
+( `false` ).
+
+This field is available in API version 47.0 and later.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<EntitlementSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <assetLookupLimitedToActiveEntitlementsOnAccount>
+
+     false
+
+   </assetLookupLimitedToActiveEntitlementsOnAccount>
+
+   <assetLookupLimitedToActiveEntitlementsOnContact>
+
+     false
+
+   </assetLookupLimitedToActiveEntitlementsOnContact>
+
+   <assetLookupLimitedToSameAccount>
+
+     false
+
+   </assetLookupLimitedToSameAccount>
+
+   <assetLookupLimitedToSameContact>
+
+     false
+
+   </assetLookupLimitedToSameContact>
+
+   <enableEntitlements>
+
+```
+
+
+#### Metadata Types EventSettings
+
+```
+        true
+
+      </enableEntitlements>
+
+      <entitlementLookupLimitedToActiveStatus>
+
+        false
+
+      </entitlementLookupLimitedToActiveStatus>
+
+      <entitlementLookupLimitedToSameAccount>
+
+        false
+
+      </entitlementLookupLimitedToSameAccount>
+
+      <entitlementLookupLimitedToSameAsset>
+
+        false
+
+      </entitlementLookupLimitedToSameAsset>
+
+      <entitlementLookupLimitedToSameContact>
+
+        false
+
+      </entitlementLookupLimitedToSameContact>
+
+   </EntitlementSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### EventSettings
+
+Represents an org's platform event settings for Event Monitoring.
+
+File Suffix and Directory Location
+
+#### EventSettings components have the suffix .settings and are stored in the settings folder.
+
+Version
+
+#### EventSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`bypassMeteringBlock` boolean Determines the behavior of metering service protection for
+Transaction Security policies. When `true`, metering occurs
+
+but doesn't block the user operation that triggered the policy.
+When `false` and a policy can't be handled within three
+seconds, metering occurs and the user's action is blocked.
+Default value is `false` .
+
+`enableDeleteMonitoringData` boolean Allows ( `true` ) or disallows ( `false` ) users to delete event
+log files and LoginEvent data. Users require the Delete Event
+
+Monitoring Records user permission, which is available when
+this setting is enabled. Default value is `false` .
+
+
+Metadata Types EventSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableDynamicStreamingChannel` boolean
+
+Enables ( `true` ) or disables ( `false` ) the dynamic creation
+of a streaming channel when you subscribe to generic
+streaming. Default value is `false` .
+
+`enableEventLogGeneration` boolean Enables ( `true` ) or disables ( `false` ) the generation of event
+monitoring log files. Default value is `false` .
+
+`enableEventLogWaveIntegration` boolean
+
+Enables ( `true` ) or disables ( `false` ) the integration of event
+monitoring log files and Analytics apps. Analytics apps help
+you visualize your user’s activity. Default value is `false` .
+
+`enableLightningLoggerEvents` boolean Enables ( `true` ) or disables ( `false` ) the generation of
+Lightning Logger events. Lightning Logger events track
+
+information about custom Lightning web components.
+Default value is `false` . Requires Salesforce Shield or
+Salesforce Event Monitoring add-on subscriptions.
+
+`enableLoginForensics` boolean Enables ( `true` ) or disables ( `false` ) the Login Forensics
+feature. Login Forensics helps you track and audit your org's
+
+user login activity. Default value is `false` . Available in API
+versions 47.0–49.0.
+
+Tip: In versions 50.0 and later, enable LoginEvent on
+the Event Manager Setup page.
+
+`enableStreamingApi` boolean Enables ( `true` ) or disables ( `false` ) Streaming API in the
+org. Default value is `true` .
+
+`enableTerminateOldestSession` boolean Determines the behavior of legacy transaction security policies
+that trigger an end-session action during an API-based login
+
+(a login that doesn’t come through the UI.) An end-session
+action occurs when a user exceeds the maximum number of
+allowed Salesforce sessions.
+
+When `true`, and a user triggers an end-session action,
+Salesforce terminates the user’s oldest session until the user
+is in compliance. When set to `false`, Salesforce blocks the
+most recent user’s attempt to log in and doesn’t allow a new
+user session. Default value is `false` . Available in API versions
+47.0–49.0.
+
+Note: As of Summer '20, Legacy Transaction Security
+is a retired feature in all Salesforce orgs.
+
+`enableTransactionSecurityPolicies` boolean
+
+Enables ( `true` ) or disables ( `false` ) the ability to create and
+use transaction security policies in the Salesforce UI. Default
+value is `false` .
+
+`enableApexLimitEvents` boolean The Apex Limit Events (Pilot) feature is discontinued. Don’t
+use this field.
+
+
+#### Metadata Types ExperienceBundleSettings
+
+**Field Name** **Field Type** **Description**
+
+`eventLogRetentionDuration` integer Specifies the number of days (between 30 and 365) that your
+event log file data is retained for. If this value is not set, your
+
+event log file data is retained for your org's default retention
+period.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an `EventSettings.settings` file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <EventSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableDeleteMonitoringData>true</enableDeleteMonitoringData>
+
+      <enableDynamicStreamingChannel>false</enableDynamicStreamingChannel>
+
+      <enableEventLogWaveIntegration>true</enableEventLogWaveIntegration>
+
+      <enableStreamingApi>true</enableStreamingApi>
+
+      <enableTransactionSecurityPolicies>true</enableTransactionSecurityPolicies>
+
+   </EventSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the Event settings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <types>
+
+        <members>Event</members>
+
+        <name>Settings</name>
+
+     </types>
+
+     <version>47.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ExperienceBundleSettings
+
+Represents the org setting that enables the ExperienceBundle metadata type for Aura sites in Experience Cloud. The setting doesn’t
+affect LWR sites, which use ExperienceBundle by default. This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+Note: ExperienceBundle is a text-based code structure of the settings and site components, such as pages, branding sets, and
+themes, that make up an Experience Builder site. Developers can quickly update and deploy one or more Experience Builder sites
+programmatically using their preferred development tools.
+
+
+#### Metadata Types ExternalClientAppSettings
+
+File Suffix and Directory Location
+
+ExperienceBundleSettings values are stored in a single file named `ExperienceBundle.settings` in the `settings` directory.
+The `.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+ExperienceBundleSettings is available in API version 46.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableExperienceBundleMetadata` boolean Indicates whether the ExperienceBundle metadata type is enabled for
+Aura sites. Default is `false` . LWR sites use ExperienceBundle by default.
+
+Declarative Metadata Sample Definition
+
+Here’s an example of `ExperienceBundle.settings` that references the previous definition.
+
+```
+   <ExperienceBundleSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+        <enableExperienceBundleMetadata>true</enableExperienceBundleMetadata>
+
+   </ExperienceBundleSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+SEE ALSO:
+
+ExperienceBundle
+
+#### ExternalClientAppSettings
+
+Represents settings to enable the External Client App feature and provide access to the OAuth consumer secret.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types are accessed using the Settings name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### ExternalClientAppSettings values are stored in the .settings file in the settings folder. The .settings files
+
+are different from other named components, because there’s only one settings file for each settings component.
+
+
+#### Metadata Types ExternalServicesSettings
+
+Version
+
+ExternalClientAppSettings components are available in API version 58.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableClientSecretInRestApiAccess` boolean
+
+Indicates whether OAuth consumer secrets can be accessed through
+the `credentials` REST API ( `true` ) or not ( `false` ). This field is
+available in API version 62.0 and later.
+
+`enableConsumerSecretApiAccess` boolean Indicates whether OAuth consumer secrets can be accessed through
+Metadata API ( `true` ) or not ( `false` ).
+
+`enablePackageEcaOauthFromDevOrg` boolean Indicates whether you can package an external client app that is owned
+by an org, that isn't a Dev Hub org, ( `true` ) or not ( `false` ). It’s
+
+recommended that you only package OAuth-enabled external client
+apps that are owned by a Dev Hub org. This practice maintains the
+integrity of the OAuth client credentials by storing them on an org that
+won't be deleted. If you have other ways to maintain the OAuth client
+credentials, you can enable this field and package an external client app
+form a different type of org. External client apps built on ephemeral orgs,
+like Scratch orgs or sandboxes, can't be packaged even with this field
+set to true. This field is available in API version 62.0 and later.
+
+Declarative Metadata Sample Definition
+
+The example shows a settings file component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ExternalClientAppSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <enableClientSecretInRestApiAccess>true</enableClientSecretInRestApiAccess>
+
+     <enableConsumerSecretApiAccess>true</enableConsumerSecretApiAccess>
+
+     <enablePackageEcaOauthFromDevOrg>false</enablePackageEcaOauthFromDevOrg>
+
+</ExternalClientAppSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+[wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)
+[manifest file, see Deploying and Retrieving Metadata with the Zip File.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+
+#### ExternalServicesSettings
+
+Represents settings for an External Services registration.
+
+
+Metadata Types ExternalServicesSettings
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+`ExternalServicesSettings` values are stored in the `externalServicesSettings.settings` file in the `settings`
+folder. The `.settings` files are different from other named components, because there is only one settings file for each settings
+component.
+
+Version
+
+ExternalServicesSettings components are available in API version 47.0 to 55.0. This metadata type is removed in version 56.0 and later.
+
+As of Winter ’23, External Services automatically validates the schema and provides detailed messages for any errors in the UI at registration
+[time so that you can make corrections. See Register an External Service in Salesforce Help.](https://help.salesforce.com/s/articleView?id=platform.external_services_register.htm&type=5&language=en_US)
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableIgnoreUnsupportedOperations
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether your registration should ignore and filter out unsupported schema
+operations rather than fail the entire registration ( `true` ), or whether a specification
+with invalid schema operations can't be registered successfully ( `false` ). Detailed
+schema errors pertaining to unsupported operations are shown only if this flag is
+`false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of an ExternalServicesSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ExternalServicesSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <enableIgnoreUnsupportedOperations>true</enableIgnoreUnsupportedOperations>
+
+</ExternalServicesSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<types>
+
+   <members>ExternalServices</members>
+
+   <name>Settings</name>
+
+  </types>
+
+```
+
+
+#### Metadata Types FieldServiceSettings
+
+Wildcard Support in the Manifest File
+
+This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
+using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### FieldServiceSettings
+
+Represents an organization’s Field Service settings.
+
+[To learn more about Field Service settings, see Enable Field Service in Salesforce Help.](https://help.salesforce.com/articleView?id=fs_enable.htm&language=en_US)
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for more details.
+
+Version
+
+#### FieldServiceSettings is available in API version 40.0 and later.
+
+Fields
+
+
+Metadata Types FieldServiceSettings
+
+
+Metadata Types FieldServiceSettings
+
+
+Metadata Types FieldServiceSettings
+
+
+Metadata Types FieldServiceSettings
+
+ObjectMappingItem
+
+Represents an organization's custom field mapping for Work Plan or Work Step generation. Custom Fields can be mapped from
+WorkPlanTemplate to WorkPlan, WorkStepTemplate to WorkStep, or WorkPlanTemplateEntry to WorkStep. Available in API version 52.0
+and later.
+
+
+Metadata Types FieldServiceSettings
+
+**Field Name** **Field Type** **Description**
+
+`mappingType` string The type of object mapping. Valid values
+are:
+
+**•** `WorkPlans_WorkPlanTemplate_WorkPlan`
+
+                                             - Maps a WorkPlanTemplate to a
+WorkPlan
+
+**•** `WorkPlans_WorkStepTemplate_WorkStep`
+
+                                            - Maps a WorkStepTemplate to a
+WorkStep
+
+**•** `WorkPlans_WorkPlanTemplateEntry_WorkStep`
+
+                                             - Maps a WorkPlanTemplateEntry to
+a WorkStep
+
+`objectMapping` ObjectMapping on page 2066 The object mapping details.
+
+ObjectMapping
+
+Represents a map of fields in the input object to fields in the output object.
+
+**Field Name** **Field Type** **Description**
+
+`inputObject` string
+
+Required. The name of the object type
+containing the source fields for mapping.
+Valid values are:
+
+**•** `WorkPlanTemplate`
+
+**•** `WorkStepTemplate`
+
+**•** `WorkPlanTemplateEntry`
+
+`mappingFields` [ObjectMappingField on page 2066] Required. The mapping of source object
+fields to target object fields.
+
+`outputObject` string
+
+ObjectMappingField
+
+A field name in the input object and the corresponding field name in the output object.
+
+**Field Name** **Field Type** **Description**
+
+Required. The name of the object type that
+receives data from the source fields. Valid
+values are:
+
+**•** `WorkPlan`
+
+**•** `WorkStep`
+
+`inputField` string Required. The name of a custom field supplying source data. This field
+is from the object specified in `inputObject` .
+
+
+Metadata Types FieldServiceSettings
+
+**Field Name** **Field Type** **Description**
+
+`outputField` string
+
+Required. The name of a custom field that receives data from the source
+field specified in `inputField` . This field is from the object specified
+in `outputObject` .
+
+Declarative Metadata Sample Definition
+
+This sample file shows a subset of the possible field service settings that you can customize.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FieldServiceSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <doesAllowEditSaForCrew>false</doesAllowEditSaForCrew>
+
+  <doesShareSaParentWoWithAr>false</doesShareSaParentWoWithAr>
+
+  <doesShareSaWithAr>false</doesShareSaWithAr>
+
+  <enableWorkOrders>false</enableWorkOrders>
+
+  <enableWorkPlansAutoGeneration>true</enableWorkPlansAutoGeneration>
+
+  <fieldServiceNotificationsOrgPref>false</fieldServiceNotificationsOrgPref>
+
+  <fieldServiceOrgPref>true</fieldServiceOrgPref>
+
+  <isGeoCodeSyncEnabled>false</isGeoCodeSyncEnabled>
+
+  <isLocationHistoryEnabled>false</isLocationHistoryEnabled>
+
+  <o2EngineEnabled>false</o2EngineEnabled>
+
+  <objectMappingItem>
+
+    <mappingType>WorkPlans_WorkPlanTemplate_WorkPlan</mappingType>
+
+    <objectMapping>
+
+      <inputObject>WorkPlanTemplate</inputObject>
+
+      <mappingFields>
+
+        <inputField>WorkPlanTemplate_CustomNumberField__c</inputField>
+
+        <outputField>WorkPlan_CustomNumberField__c</outputField>
+
+      </mappingFields>
+
+      <mappingFields>
+
+        <inputField>WorkPlanTemplate_CustomTextField__c</inputField>
+
+        <outputField>WorkPlan_CustomPicklistField__c</outputField>
+
+      </mappingFields>
+
+      <outputObject>WorkPlan</outputObject>
+
+    </objectMapping>
+
+  </objectMappingItem>
+
+  <objectMappingItem>
+
+    <mappingType>WorkPlans_WorkStepTemplate_WorkStep</mappingType>
+
+    <objectMapping>
+
+      <inputObject>WorkStepTemplate</inputObject>
+
+      <mappingFields>
+
+        <inputField>WokStepTemplate_CustomNumberField__c</inputField>
+
+        <outputField>WokStep_CustomNumberField__c</outputField>
+
+      </mappingFields>
+
+      <mappingFields>
+
+        <inputField>WokStepTemplate_CustomTextField__c</inputField>
+
+        <outputField>WokStep_CustomTextField__c</outputField>
+
+      </mappingFields>
+
+      <outputObject>WorkStep</outputObject>
+
+    </objectMapping>
+
+  </objectMappingItem>
+
+  <objectMappingItem>
+
+```
+
+
+#### Metadata Types FilesConnectSettings
+
+```
+       <mappingType>WorkPlans_WorkPlanTemplateEntry_WorkStep</mappingType>
+
+       <objectMapping>
+
+         <inputObject>WorkPlanTemplateEntry</inputObject>
+
+         <mappingFields>
+
+           <inputField>WorkPlanTemplateEntry_CustomDateField__c</inputField>
+
+           <outputField>WokStep_CustomDateField__c</outputField>
+
+         </mappingFields>
+
+         <outputObject>WorkStep</outputObject>
+
+       </objectMapping>
+
+     </objectMappingItem>
+
+     <optimizationServiceAccess>false</optimizationServiceAccess>
+
+     <serviceAppointmentsDueDateOffsetOrgValue>7</serviceAppointmentsDueDateOffsetOrgValue>
+
+     <workOrderLineItemSearchFields>Subject</workOrderLineItemSearchFields>
+
+     <workOrderSearchFields>Subject</workOrderSearchFields>
+
+   </FieldServiceSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### FilesConnectSettings
+
+Represents the settings that modify the Files Connect feature.This type extends the Metadata metadata type and inherits its `fullName`
+field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### FilesConnectSettings values are stored in the FilesConnect.settings file in the settings folder. The .settings
+
+files are different from other named components, because there’s only one settings file for each settings component.
+
+Version
+
+#### FilesConnectSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableContentHubAllowed` boolean Indicates whether Files Connect is enabled ( `true` ) or not ( `false` ).
+
+`enableContentHubCvtLinksAllowed` boolean Indicates whether the ability to link conversions in the feed publisher is
+enabled ( `true` ) or not ( `false` ) for Google Drive and Quip links.
+
+`enableContentHubEOSearchLayout` boolean Indicates whether the external object’s search layout can be used in
+Global Search ( `true` ) or not ( `false` ).
+
+
+#### Metadata Types FileUploadAndDownloadSecuritySettings
+
+Declarative Metadata Sample Definition
+
+The following is an example of a FilesConnectSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <FilesConnectSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableContentHubAllowed>false</enableCurrencyEffectiveDates>
+
+      <enableContentHubCvtLinksAllowed>false</enableCurrencySymbolWithMultiCurrency>
+
+      <enableContentHubEOSearchLayout>false</enableMultiCurrency>
+
+   </FilesConnectSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>FilesConnect</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>47.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### FileUploadAndDownloadSecuritySettings
+
+Represents the security settings for uploading and downloading files. This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+File Suffix and Directory Location
+
+#### FileUploadAndDownloadSecuritySettings components have the suffix .settings and are stored in the settings folder.
+
+Version
+
+#### FileUploadAndDownloadSecuritySettings components are available in API version 39.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`dispositions` FileTypeDispositionAssignmentBean[] Represents the metadata used to manage filetype behavior.
+This field is available in API version 39.0 and later.
+
+`noHtmlUploadAsAttachment` boolean
+
+Indicates whether to allow HTML uploads as attachments or
+document records. This field is available in API version 39.0 and
+later.
+
+
+Metadata Types FileUploadAndDownloadSecuritySettings
+
+FileTypeDispositionAssignmentBean
+
+Represents the metadata used to manage filetype behavior.
+
+**Field Name** **Field Type** **Description**
+
+`behavior` FileDownloadBehavior One of the following values:
+(enumeration of type string)
+
+**•** DOWNLOAD
+
+**•** EXECUTE
+
+**•** HYBRID
+
+The following filetypes are a security risk and can not have EXECUTE
+behavior:
+
+**•** EXE
+
+**•** FLASH
+
+**•** HTML
+
+**•** RFC822
+
+**•** SVG
+
+**•** TXML
+
+**•** UNKNOWN
+
+**•** WEBVIEW
+
+**•** XHTML
+
+**•** XML
+
+`filetype` FileType (enumeration of type Although more filetypes exist, these are the only ones supported
+string) by FileTypeDispositionAssignmentBean:
+
+**•** AVI
+
+**•** EXCEL
+
+**•** EXCEL_X
+
+**•** EXE
+
+**•** FLASH
+
+**•** HTML
+
+**•** INSIGHT
+
+**•** MOV
+
+**•** MP3
+
+**•** MP4
+
+**•** MPEG
+
+**•** PDF
+
+**•** POWER_POINT
+
+**•** POWER_POINT_X
+
+**•** RFC822
+
+**•** SVG
+
+**•** TXML
+
+
+Metadata Types FileUploadAndDownloadSecuritySettings
+
+**Field Name** **Field Type** **Description**
+
+**•** UNKNOWN
+
+**•** WAV
+
+**•** WEBVIEW
+
+**•** WMA
+
+**•** WMV
+
+**•** WORD
+
+**•** WORD_X
+
+**•** XHTML
+
+**•** XML
+
+`securityRiskFileType` boolean Indicates filetypes that cannot have behavior set to EXECUTE, due
+to security risks. This field is read-only.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a FileUploadAndDownloadSecuritySettings component.
+
+```
+   <FileUploadAndDownloadSecuritySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>AVI</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>WORD</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>WORD_X</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>EXE</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>HTML</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>WEBVIEW</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+```
+
+
+Metadata Types FileUploadAndDownloadSecuritySettings
+
+```
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>RFC822</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>MOV</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>MP3</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>MP4</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>MPEG</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>PDF</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>POWER_POINT</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>POWER_POINT_X</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>SVG</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>FLASH</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>TXML</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+```
+
+
+Metadata Types FileUploadAndDownloadSecuritySettings
+
+```
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>UNKNOWN</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>WAV</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>WMA</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>WMV</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>XHTML</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>EXCEL</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>HYBRID</behavior>
+
+        <fileType>EXCEL_X</fileType>
+
+        <securityRiskFileType>false</securityRiskFileType>
+
+      </dispositions>
+
+      <dispositions>
+
+        <behavior>DOWNLOAD</behavior>
+
+        <fileType>XML</fileType>
+
+        <securityRiskFileType>true</securityRiskFileType>
+
+      </dispositions>
+
+      <noHtmlUploadAsAttachment>false</noHtmlUploadAsAttachment>
+
+   </FileUploadAndDownloadSecuritySettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <types>
+
+        <members>FileUploadAndDownloadSecurity</members>
+
+        <name>Settings</name>
+
+     </types>
+
+     <version>39.0</version>
+
+   </Package>
+
+```
+
+
+#### Metadata Types FlowSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### FlowSettings
+
+Represents the Salesforce settings for processes and flows, such as whether Lightning runtime for flows is enabled.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### FlowSettings values are stored in the Flow.settings file in the settings directory. The .settings files are different from other
+
+named components because there’s only one settings file for each settings component.
+
+Version
+
+#### FlowSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field** **Description**
+**Type**
+
+`canDebugFlowAsAnotherUser` boolean Indicates whether a flow can be debugged as another user ( `true` ) or
+not ( `false` ). Corresponds to the `Let admins debug flows`
+
+`as other users` field on the Process Automation Settings page
+in Setup. Available in API version 50.0 and later.
+
+`doesEnforceApexCpuTimeLimit` boolean
+
+`doesFormulaEnforceDataAccess` boolean
+
+Indicates whether Salesforce accurately measures the CPU time that
+flows and processes consume ( `true` ) or not ( `false` ).
+
+Corresponds to the Accurately Measure the CPU Time Consumption of
+Flows and Processes release update. Available in API version 51.0 and
+later.
+
+Indicates whether formula resources and formula fields in a flow enforce
+record-level security ( `true` ) or not ( `false` ).
+
+Corresponds to the Enforce Data Access in Flow Formulas critical update.
+Available in API version 48.0 and later.
+
+`doesFormulaGenerateHtmlOutput` boolean Indicates whether flow formula functions that generate HTML, such as
+`BR()`, `IMAGE()`, and `HYPERLINK()`, include encoded markers
+
+( `__BR_ENCODED__` ) ( `true` ) or not ( `false` ). Available in API version
+48.0 and later.
+
+
+Metadata Types FlowSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableFlowBREncodedFixEnabled` boolean
+
+`enableFlowCustomPropertyEditor` boolean
+
+Indicates whether `BR()` functions in flow and process formulas result
+in a line break ( `true` ) or resolve to `_BR_ENCODED_` as a literal value
+( `false` ).
+
+Corresponds to the Use the BR() Function in Flows and Processes critical
+update.
+
+Indicates whether an org has custom property editors enabled for actions
+and screen fields in Flow Builder ( `true` ) or not ( `false` ).
+
+This field is available in API version 48.0 to 50.0. The field is deprecated
+in API version 50.0 and later. All orgs that have Flow Builder support
+custom property editors for actions and screen fields.
+
+`enableFlowDeployAsActiveEnabled` boolean Indicates whether processes and flows can be deployed as active via
+change sets or Metadata API. When the value is `false`, all processes
+
+and flows are deployed as inactive. When the value is `true`, deploying
+an active process or flow in a production org causes your Apex tests to
+run. If Apex tests don’t launch your org’s required percentage of active
+processes and autolaunched flows, the deployment is rolled back.
+
+The default value is `false` for production orgs and is `true` for
+non-production orgs such as scratch, sandbox, and developer orgs.
+
+Corresponds to the `Deploy processes and flows as`
+`active` field on the Process Automation Settings page in Setup. The
+field appears in the user interface on production orgs only.
+
+`enableFlowFieldFilterEnabled` boolean Indicates whether flows can successfully execute Create Records and
+Update Records elements that update fields to which the running doesn’t
+
+have edit access. By default ( `false` ), the Create Records or Update
+Records element fails and executes the fault path if it has one. When the
+value is `true`, the element sets only the fields that the running user
+can edit. No notification is sent when some fields aren’t updated.
+
+Corresponds to the `Filter inaccessible fields from`
+`flow requests` field on the Process Automation Settings page in
+Setup.
+
+`enableFlowFormulasFixEnabled` boolean Indicates whether process and flow formulas return null values when
+the calculations involve a null record variable or null lookup relationship
+
+field. When the value is `true`, those formulas return null values at run
+time. When the value is `false`, those formulas return unhandled
+exceptions at run time.
+
+Corresponds to the Check for Null Record Variables or Null Values of
+Lookup Relationship Fields in Process and Flow Formulas critical update.
+
+`enableFlowInterviewSharingEnabled` boolean Indicates whether users can resume the paused flow interviews that
+they have edit access to. By default ( `true` ), users can resume interviews
+
+that are shared with them, either directly or via the role hierarchy. When
+
+
+Metadata Types FlowSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+the value is `false`, each paused interview can be resumed only by the
+interview owner or a flow admin who has view access to the interview.
+
+Corresponds to the `Let users resume shared flow`
+`interviews` field on the Process Automation Settings page in Setup.
+
+`enableFlowNullPreviousValueFix` boolean Indicates whether each process evaluates criteria by always using the
+original record field values from when the process begins. When the
+
+value is `true`, each process with an Update Records action and multiple
+criteria nodes always evaluates criteria using the original field values of
+the record. When the value is `false`, processes evaluate the updated
+values of record fields that were null when the process began.
+
+Corresponds to the Evaluate Criteria Based on Original Record Values in
+the Process Builder critical update.
+
+`enableFlowPauseEnabled` boolean
+
+Indicates whether screens can display the Pause button so that users
+can pause flow interviews. By default, the value is `false` .
+
+Corresponds to the `Let users pause flows` field on the Process
+Automation Settings page in Setup.
+
+`enableFlowReactiveScreens` boolean Indicates whether supported screen components in flows running on
+API version 57.0 and 58.0 can react to changes in other components on
+
+the same screen. This setting isn’t applicable to flows running on API
+version 59.0 and later. By default, the value is `false` . To make a
+component reactive, reference the output of another component on
+the same screen in the configuration pane.
+
+Corresponds to the `Enable Reactive Components for`
+`Specific Flow Versions` field on the Process Automation
+Settings page in Setup.
+
+`enableFlowUseApexExceptionEmail` boolean Indicates whether process and flow error emails are sent to:
+
+**•** The user who last modified the process or flow ( `false` )
+
+**•** The addresses set on the Apex Exception Email page in Setup ( `true` )
+
+By default, the value is `false` . Corresponds to the `Send Process`
+`or Flow Error Email to` field on the Process Automation
+Settings page in Setup.
+
+`enableFlowViaRestUsesUserCtxt` boolean
+
+Indicates whether a flow that runs via REST API uses the running user’s
+profile and permission sets to determine the object permissions and
+field-level access of the flow.
+
+Corresponds to the Run Flows in User Context via REST API critical update.
+Available in API version 54.0 and later.
+
+
+Metadata Types FlowSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableInvocableFlowFixEnabled` boolean
+
+`enableLightningRuntimeEnabled` boolean
+
+`isAccessToInvokedApexRequired` boolean
+
+Removed in API version 50.0 and later.
+
+Indicates whether all autolaunched flow interviews are executed when
+they’re invoked in bulk from a process or the Invocable Actions resource
+
+in REST API ( `true` ) or not ( `false` ). When the value is `false`, flow
+interviews that share identical input parameters aren’t executed.
+
+Corresponds to the Execute All Flow Interviews When Invoked in Bulk
+critical update.
+
+Indicates whether flows that are launched from a URL or from Setup use
+the Lightning runtime experience ( `true` ) or the Classic runtime
+experience ( `false` ). By default, the value is `true` .
+
+Corresponds to the `Enable Lightning runtime for flows`
+field on the Process Automation Settings page in Setup.
+
+Indicates whether flows can invoke Apex classes only when the running
+users’ profiles or permission sets include access to those Apex classes.
+When the value is `false`, Apex class security doesn’t apply to flows.
+
+Corresponds to the Require User Access to Apex Classes Invoked by Flow
+critical update.
+
+This field is available in API versions 47.0 to 58.0. The field is deprecated
+in API version 59.0 and later.
+
+`isApexPluginAccessModifierRespected` boolean Indicates whether flows respect the public access modifiers for legacy
+Apex actions. When the value is `true` :
+
+**•** Flows fail when they execute public legacy Apex actions from a
+different namespace.
+
+**•** Public legacy Apex actions from a different namespace aren't
+available in Flow Builder.
+
+**•** Global legacy Apex actions with public `describe` or `invoke`
+methods are unavailable to flows in a different namespace.
+
+When the value is `false`, you can add public legacy Apex actions to
+flows even though they’re not supported. Also, global legacy Apex
+actions with public `describe` or `invoke` methods are available to
+flows in a different namespace.
+
+Corresponds to the Make Flows Respect Access Modifiers for Legacy
+Apex Actions critical update. Available in API version 48.0 and later.
+
+`isEnhancedFlowListViewVisible` boolean Indicates whether the enhanced Flows list view in Lightning Experience
+replaces the Classic Flows list view ( `true` ) or not ( `false` ). The default
+
+value is `true` . If the field is set to `false`, the Classic Flows list view
+replaces the enhanced list view.
+
+
+Metadata Types FlowSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`isFlowApexContextRetired` boolean
+
+Indicates whether the rules for enforcing explicit access to Apex classes
+are disabled ( `true` ) or not ( `false` ). For most Salesforce orgs the default
+value is `true` .
+
+Corresponds to the Disable Rules for Enforcing Explicit Access to Apex
+Classes release update.
+
+This field is available in API versions 49.0 to 58.0. The field is deprecated
+in API version 59.0 and later.
+
+`isFlowBlockAccessToSessionIDEnabled` boolean Indicates whether a valid session ID is returned in API.SessionID ( `false` )
+or not ( `true` ). The default value is false. When the value is `true`, flows
+
+that access the session ID variable receive a placeholder string instead
+of a valid session ID.
+
+`isManageFlowRequiredForAutomationCharts` boolean Indicates whether the Manage Flow permission is required to view all
+charts in Automation Home (Beta) ( `true` ) or not ( `false` ). The default
+
+value is `false` . All users with the View Setup and Configuration
+permission can view all charts in Automation Home. If the field is set to
+`true`, then users with the View Setup and Configuration permission
+can view only the Total Started Automations by Process Type chart. The
+Manage Flow permission is required to view all charts.
+
+`isTimeResumedInSameRunContext` boolean
+
+Indicates whether paused autolaunched flows always resume in the
+same context and retain the user access that they had before being
+paused ( `true` ) or not ( `false` ).
+
+Corresponds to the Make Paused Flow Interviews Resume in the Same
+Context with the Same User Access release update.
+
+This field is available in API version 57.0 and later.
+
+Declarative Metadata Sample Definition
+
+Here’s an example of the Flow.settings file.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FlowSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <doesFormulaEnforceDataAccess>true</doesFormulaEnforceDataAccess>
+
+   <enableFlowBREncodedFixEnabled>true</enableFlowBREncodedFixEnabled>
+
+   <enableFlowDeployAsActiveEnabled>false</enableFlowDeployAsActiveEnabled>
+
+   <enableFlowFieldFilterEnabled>false</enableFlowFieldFilterEnabled>
+
+   <enableFlowFormulasFixEnabled>true</enableFlowFormulasFixEnabled>
+
+   <enableFlowInterviewSharingEnabled>true</enableFlowInterviewSharingEnabled>
+
+   <enableFlowNullPreviousValueFix>true</enableFlowNullPreviousValueFix>
+
+   <enableFlowPauseEnabled>true</enableFlowPauseEnabled>
+
+   <enableFlowUseApexExceptionEmail>false</enableFlowUseApexExceptionEmail>
+
+   <enableLightningRuntimeEnabled>true</enableLightningRuntimeEnabled>
+
+   <isApexPluginAccessModifierRespected>true</isApexPluginAccessModifierRespected>
+
+   <isEnhancedFlowListViewVisible>true</isEnhancedFlowListViewVisible>
+
+```
+
+
+#### Metadata Types ForecastingObjectListSettings
+
+```
+     <isManageFlowRequiredForAutomationCharts>false</isManageFlowRequiredForAutomationCharts>
+
+   </FlowSettings>
+
+```
+
+Example Package Manifest
+
+Here’s an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>Flow</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>47.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ForecastingObjectListSettings
+
+Represents an org’s forecasting object list settings. Use these settings to control which object types and field types appear in the list of
+object details on the forecasts page. For example, pipeline forecasts use the Opportunity object, and the object list settings specify which
+fields from that object are available in the opportunity list section of the forecasts page. This type extends the Metadata metadata type
+and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### ForecastingObjectListSettings values are stored in the ForecastingObjectList.settings file in the settings folder.
+
+The `.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### ForecastingObjectListSettings is available in API versions 52.0 and later.
+
+Note: The information in this topic applies only to forecast types created in Summer ’21 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`forecastingTypeObjectListSettings` ForecastingTypeObjectListSettings
+
+For each forecast type, specifies the information that is displayed in the
+list of object details that roll up into the forecasts. For example, the list
+of opportunities rolls up into opportunity-based forecasts.
+
+
+Metadata Types ForecastingObjectListSettings
+
+ForecastingTypeObjectListSettings
+
+Represents an org’s forecasting type object list settings.
+
+**Field Name** **Field Type** **Description**
+
+`forecastingObjectListLabelMappings` ForecastingObjectListLabelMapping Mapping of labels with each field displayed as a column in the object
+detail list on the forecasts page.
+
+`forecastingObjectListSelectedSettings` forecastingObjectListSelectedSettings Specifies the object fields that are used as columns in the object detail
+list on the forecasts page.
+
+`forecastingObjectListUnselectedSettings` forecastingObjectListUnselectedSe **t** ings Lists the object fields that are available but not currently used as columns
+in the object detail list on the forecasts page. Changes to
+
+`forecastingObjectListSelectedSettings` field are
+reflected in this field.
+
+`forecastingTypeDeveloperName` string Developer name of the forecast type that these object list settings apply
+to.
+
+ForecastingObjectListLabelMapping
+
+Represents an org’s forecasting type object list label mapping.
+
+**Field Name** **Field Type** **Description**
+
+`field` string Object field’s API name.
+
+`label` string Object field’s name in the object detail list on the forecasts page.
+
+forecastingObjectListSelectedSettings
+
+Represents an org’s forecasting type object list selected settings.
+
+**Field Name** **Field Type** **Description**
+
+`field` string Object field’s API name.
+
+forecastingObjectListUnselectedSettings
+
+Represents an org’s forecasting type object list unselected settings.
+
+**Field Name** **Field Type** **Description**
+
+`field` string Object field’s API name.
+
+
+Metadata Types ForecastingObjectListSettings
+
+Declarative Metadata Sample Definition
+
+The following is an example of the ForecastingObjectListSettings.settings file:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <ForecastingObjectListSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <forecastingTypeObjectListSettings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>CREATEDBY_USER.ALIAS</field>
+
+           <label>Created By Alias</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.AMOUNT</field>
+
+           <label>Amount</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.CLOSE_DATE</field>
+
+           <label>Close Date</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.TYPE</field>
+
+           <label>Type</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.CREATED_DATE</field>
+
+           <label>Created Date</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.LAST_UPDATE</field>
+
+           <label>Last Modified Date</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.LEAD_SOURCE</field>
+
+           <label>Lead Source</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.EXP_AMOUNT</field>
+
+           <label>Expected Revenue</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.CLOSED</field>
+
+           <label>Closed</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.WON</field>
+
+           <label>Won</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>00Nxx000001G2W0</field>
+
+           <label>CustomOppCurr</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>CORE.USERS.ALIAS</field>
+
+           <label>Opportunity Owner Alias</label>
+
+        </forecastingObjectListLabelMappings>
+
+```
+
+
+Metadata Types ForecastingObjectListSettings
+
+```
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.PROBABILITY</field>
+
+           <label>Probability (%)</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.LAST_ACTIVITY</field>
+
+           <label>Last Activity</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.FISCAL_QUARTER</field>
+
+           <label>Fiscal Quarter</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>00Nxx000001G8GS</field>
+
+           <label>TaraTestOppCurr</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>DESCRIPTION</field>
+
+           <label>Description</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.FISCAL_PERIOD</field>
+
+           <label>Fiscal Period</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>FULL_NAME</field>
+
+           <label>Owner Full Name</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.NEXT_STEP</field>
+
+           <label>Next Step</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>UPDATEDBY_USER.ALIAS</field>
+
+           <label>Last Modified By Alias</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.STAGE_NAME</field>
+
+           <label>Stage</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>CONTRACT.NAME</field>
+
+           <label>Contract Name</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.QUANTITY</field>
+
+           <label>Quantity</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>SPLITAMOUNT</field>
+
+           <label>Forecasted Amount</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.NAME</field>
+
+```
+
+
+Metadata Types ForecastingObjectListSettings
+
+```
+           <label>Opportunity Name</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>CORE.USERS.LAST_NAME</field>
+
+           <label>Owner Last Name</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.FISCAL_YEAR</field>
+
+           <label>Fiscal Year</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>TERR2_NAME</field>
+
+           <label>Territory Name</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>CORE.USERS.FIRST_NAME</field>
+
+           <label>Owner First Name</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>ACCOUNT.SITE</field>
+
+           <label>Account Site</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>ACCOUNT.NAME</field>
+
+           <label>Account Name</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>OPPORTUNITY.PRIVATE</field>
+
+           <label>Private</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>TERR2_DESC</field>
+
+           <label>Territory Description</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>CONTRACT.CONTRACT_NUMBER</field>
+
+           <label>Contract Number</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListLabelMappings>
+
+           <field>FORECAST_CATEGORY</field>
+
+           <label>Forecast Category</label>
+
+        </forecastingObjectListLabelMappings>
+
+        <forecastingObjectListSelectedSettings>
+
+           <field>OPPORTUNITY.NAME</field>
+
+        </forecastingObjectListSelectedSettings>
+
+        <forecastingObjectListUnselectedSettings>
+
+           <field>ACCOUNT.NAME</field>
+
+           <field>CONTRACT.CONTRACT_NUMBER</field>
+
+           <field>CONTRACT.NAME</field>
+
+           <field>OPPORTUNITY.STAGE_NAME</field>
+
+           <field>FORECAST_CATEGORY</field>
+
+           <field>OPPORTUNITY.CLOSE_DATE</field>
+
+           <field>OPPORTUNITY.AMOUNT</field>
+
+           <field>CORE.USERS.ALIAS</field>
+
+```
+
+
+Metadata Types ForecastingObjectListSettings
+
+```
+           <field>CORE.USERS.FIRST_NAME</field>
+
+           <field>CORE.USERS.LAST_NAME</field>
+
+           <field>FULL_NAME</field>
+
+           <field>OPPORTUNITY.PROBABILITY</field>
+
+           <field>DESCRIPTION</field>
+
+           <field>OPPORTUNITY.EXP_AMOUNT</field>
+
+           <field>OPPORTUNITY.LEAD_SOURCE</field>
+
+           <field>OPPORTUNITY.NEXT_STEP</field>
+
+           <field>OPPORTUNITY.PRIVATE</field>
+
+           <field>OPPORTUNITY.QUANTITY</field>
+
+           <field>OPPORTUNITY.TYPE</field>
+
+           <field>UPDATEDBY_USER.ALIAS</field>
+
+           <field>CREATEDBY_USER.ALIAS</field>
+
+           <field>OPPORTUNITY.CLOSED</field>
+
+           <field>OPPORTUNITY.WON</field>
+
+           <field>ACCOUNT.SITE</field>
+
+           <field>OPPORTUNITY.FISCAL_YEAR</field>
+
+           <field>OPPORTUNITY.FISCAL_QUARTER</field>
+
+           <field>OPPORTUNITY.FISCAL_PERIOD</field>
+
+           <field>OPPORTUNITY.LAST_ACTIVITY</field>
+
+           <field>OPPORTUNITY.CREATED_DATE</field>
+
+           <field>OPPORTUNITY.LAST_UPDATE</field>
+
+           <field>SPLITAMOUNT</field>
+
+           <field>00Nxx000001G2W0</field>
+
+           <field>00Nxx000001G8GS</field>
+
+           <field>TERR2_NAME</field>
+
+           <field>TERR2_DESC</field>
+
+        </forecastingObjectListUnselectedSettings>
+
+   <forecastingTypeDeveloperName>OpportunityLineItemRevenue</forecastingTypeDeveloperName>
+
+      </forecastingTypeObjectListSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the ForecastingObjectListSettingsSettings settings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>ForecastingObjectListSettings</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>52.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types ForecastingSettings ForecastingSettings
+
+Represents the Forecasts settings options. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
+terms to avoid any effect on customer implementations.
+
+#### Note: ForecastingSettings components are available in API version 28 and later. The structure of the ForecastingSettings type
+
+changed significantly in API version 30.0 and in API version 53.0.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### ForecastingSettings values are stored in a single file named Forecasting.settings in the settings directory of the
+
+corresponding package directory. The `.settings` files are different from other named components because there’s only one settings
+file for each settings component.
+
+Version
+
+#### ForecastingSettings components are available in API version 28 and later. The structure of the ForecastingSettings type changed
+
+significantly in API version 30.0 and in API version 53.0.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+```
+displayCurrency
+
+```
+
+DisplayCurrency Removed. The currency for displaying forecasts; either the organization's
+(enumeration of corporate currency or each forecast owner's personal currency setting.
+type string) The selected currency is the default used in forecasts and selected in
+
+setup. The selection must be one of the currencies enabled for use in
+the organization, and only one selection is allowed. The default is
+`CORPORATE` . The valid values are:
+
+**•** `CORPORATE`
+
+**•** `PERSONAL`
+
+Available in API version 28.0 to 46.0. In API version 47.0 and later, use
+`defaultToPersonalCurrency` .
+
+`defaultToPersonalCurrency` boolean
+
+`enableForecasts` boolean
+
+If multicurrency is enabled, this field indicates whether the user’s personal
+currency is used in forecasts. If `true` (default), the user’s personal
+currency is used. If `false`, the corporate currency is used.
+
+Available in API version 47.0 and later.
+
+Indicates if Salesforce Forecasting is enabled or not. Set to `true` to
+enable and `false` to disable the functionality.
+
+Disabling Forecasts can result in data loss. Refer to Salesforce Help before
+disabling any functionality.
+
+
+Metadata Types ForecastingSettings
+
+**Field Name** **Field Type** **Description**
+
+`forecastingCategoryMappings` ForecastingCategoryMapping[] A list of mappings associating forecast types with forecast rollups. As of
+Spring ’20 and later, only standard users with the View All Forecasts or
+
+Allow Forecasting permission or delegated forecast manager status can
+access this subtype.
+
+`forecastingDisplayedFamilySettings` ForecastingDisplayedFamilySe **t** ings[] The product families chosen to allow forecasting on in Lightning
+Experience. This field is available in API version 40.0 and later.
+
+`forecastingSubmissionSettings` ForecastingSubmissionSettings The submission options for forecasts. Available in API version 62.0 and
+later.
+
+`forecastingTypeSettings` ForecastingTypeSettings[] A list of forecast types. For field values, see ForecastingTypeSettings. The
+maximum number of forecast types is four.
+
+`globalAdjustmentsSettings` AdjustmentsSettings[]
+
+`globalForecastRangeSettings` ForecastRangeSettings[]
+
+`globalQuotasSettings` QuotasSettings[]
+
+ForecastingCategoryMapping
+
+The adjustment options for forecasts. Available in API version 53.0 and
+later. In API version 52.0 and earlier, use the
+`adjustmentsSettings` field on ForecastingTypeSettings.
+
+The default periods and range selections in forecasts. Available in API
+version 53.0 and later. In API version 52.0 and earlier, use the
+`forecastRangeSettings` field on ForecastingTypeSettings.
+
+Enables or disables quotas in Salesforce Forecasting. Available in API
+version 53.0 and later. In API version 52.0 and earlier, use the
+`quotasSettings` field on ForecastingTypeSettings.
+
+The category mappings for forecasts. This subtype appears eight times within the `ForecastingSettings` type. Each occurrence
+includes fields that specify a type of forecast category rollup, which forecast categories each rollup includes, and the weight of each
+forecast category in the rollup. Organizations using either cumulative forecast rollups or individual forecast category columns must
+include all eight occurrences of this subtype. As of Spring ’20 and later, only standard users with the View All Forecasts or Allow Forecasting
+permission or delegated forecast manager status can access this subtype.
+
+**Field** **Field Type** **Description**
+
+`forecastingItemCategoryApiName` string Required. This field specifies the API name of the rollup type.
+The valid values are:
+
+**•** `openpipeline`
+
+**•** `bestcaseforecast`
+
+**•** `commitforecast`
+
+**•** `pipelineonly`
+
+**•** `bestcaseonly`
+
+**•** `commitonly`
+
+**•** `closedonly`
+
+**•** `omittedonly`
+
+**•** `customcategory`
+
+
+Metadata Types ForecastingSettings
+
+**Field** **Field Type** **Description**
+
+`weightedSourceCategories` WeightedSourceCategory[] This field can occur more than one time when specifying more
+than one forecast category to include in the rollup type. Each
+
+occurrence contains two subfields that specify a forecast
+category to include in the forecast rollup type and its weight.
+Some rollup types include more than one forecast category. This
+list shows the forecast categories that are included in each rollup
+type.
+
+**•** Rollup: `openpipeline`, Forecast categories: pipeline,
+best case, commit
+
+**•** Rollup: `bestcaseforecast`, Forecast categories: best
+case, commit, closed
+
+**•** Rollup: `commitforecast`, Forecast categories: commit,
+closed
+
+**•** Rollup: `pipelineonly`, Forecast categories: `pipeline`
+
+**•** Rollup: `bestcaseonly`, Forecast categories: `best`
+
+```
+                               case
+
+```
+
+**•** Rollup: `commitonly`, Forecast categories: `commit`
+
+**•** Rollup: `closedonly`, Forecast categories: `closed`
+
+**•** Rollup: `omittedonly`, Forecast categories: `omitted`
+
+**•** Rollup: customcategory, Forecast categories: custom
+category
+
+ForecastingDisplayedFamilySettings
+
+The product families that an admin chooses to allow forecasting on in Lightning Experience. This field is available in API version 40.0
+and later.
+
+**Field** **Field Type** **Description**
+
+`productFamily` string The product family available to forecast on. Each product family
+is unique.
+
+ForecastingSubmissionSettings
+
+The setting allows forecast users to submit their forecast numbers at a point in time.
+
+**Field** **Field Type** **Description**
+
+`allowForecastingSubmissions` boolean Required. Indicates whether forecast submissions are allowed
+in forecasts.
+
+
+Metadata Types ForecastingSettings
+
+ForecastingTypeSettings
+
+The settings for each forecast type. An organization can have up to four forecast types active. If you omit a previously enabled forecast
+type that has a minimum API version less than or equal to the metadata package version, its quota and adjustment data is deleted from
+the org.
+
+Omitting a forecast type field from the XML can deactivate that forecast type: if the forecast type was available in the release specified
+by the XML package version, that forecast type is deactivated and its quota and adjustment data are deleted.
+
+**Field Name** **Field Type** **Description**
+
+`active` boolean
+
+Required. Indicates whether the forecast type specified in the `name`
+field is active.
+
+Setting the `active` field to false purges all forecasting data,
+adjustments, and quotas for the forecast type. When `active` is set to
+
+true, some values on the Forecasts tab don’t appear immediately. An
+in-process con appears to indicate that the values are being calculated.
+
+`adjustmentsSettings` AdjustmentsSettings Removed. This field enables or disables the adjustments option in
+forecasts. In API version 53.0 and later, use globalAdjustmentsSettings.
+
+`displayedCategoryApiNames` string This read-only field appears four times to specify the four forecast rollup
+categories displayed in the Forecasts tab, for either cumulative forecast
+
+rollups, or individual forecast category rollups. Always use the same 4
+values for both `displayedCategoryApiNames` and
+`forecastedCategoryApiNames` .
+
+Valid values for organizations using cumulative forecast rollups:
+
+**•** `openpipeline`
+
+**•** `bestcaseforecast`
+
+**•** `commitforecast`
+
+**•** `closedonly`
+
+Valid values for organizations using individual forecast category rollups:
+
+**•** `pipelineonly`
+
+**•** `bestcaseonly`
+
+**•** `commitonly`
+
+**•** `closedonly`
+
+`forecastedCategoryApiNames` string
+
+This field appears four times to specify the four forecast rollup categories
+used in the organization, for either cumulative forecast rollups, or
+individual forecast category rollups.
+
+Valid values for organizations using cumulative forecast rollups:
+
+**•** `openpipeline`
+
+**•** `bestcaseforecast`
+
+**•** `commitforecast`
+
+**•** `closedonly`
+
+**•** `customcategory`
+
+
+Metadata Types ForecastingSettings
+
+**Field Name** **Field Type** **Description**
+
+Valid values for organizations using individual forecast category rollups:
+
+**•** `pipelineonly`
+
+**•** `bestcaseonly`
+
+**•** `commitonly`
+
+**•** `closedonly`
+
+**•** `customcategory`
+
+Changing from one set of four values to the other changes the
+organization setting for Enable Cumulative Forecast Rollups in Setup. If
+this field is omitted, the setting isn’t changed.
+
+Required. The date type that forecast amounts are based on.
+
+Valid values are:
+
+**•** `OpportunityCloseDate` (default)
+
+**•** `ProductDate`
+
+**•** `ScheduleDate`
+
+**•** OLIMeasureCloseDateOnly
+
+**•** `ProductDateOnly`
+
+**•** `ScheduleDateOnly`
+
+**•** `OpportunityCustomDate` (Available in API version 57.0 and
+later)
+
+**•** `OLIMeasureOppCustomDateOnly` (Available in API version
+57.0 and later)
+
+Available in API version 42.0 and later. In API version 42.0 only, date types
+are read only and available only via API.
+
+```
+forecastingDateType
+
+```
+
+ForecastingDateType
+(enumeration of
+type string)
+
+`forecastRangeSettings` ForecastRangeSettings Removed. The default periods and range selections in forecasts. In API
+version 53.0 and later, use globalForecastRangeSettings.
+
+`hasProductFamily` boolean Required. Indicates whether the forecasting type has product family
+forecasts enabled. Available in API version 41.0 and later.
+
+`isAmount` boolean
+
+Required. This read-only field indicates whether the forecast type is based
+on revenue amounts. The value of `isAmount` is always the opposite
+of the value of `isQuantity` .
+
+`isAvailable` boolean Required. This read-only field indicates whether the forecast type can
+currently be used in the organization. For example, the revenue splits
+
+forecast type can’t be used in an organization that doesn’t have
+Opportunity Splits enabled.
+
+`isQuantity` boolean
+
+Required. This read-only field indicates whether the forecast type is based
+on product quantities. The value of `isQuantity` is always the
+opposite of the value of `isAmount` .
+
+
+Metadata Types ForecastingSettings
+
+**Field Name** **Field Type** **Description**
+
+`managerAdjustableCategoryApiNames` string This read-only field appears twice to specify the two forecast rollup
+categories that forecast managers can adjust in the organization for
+
+either cumulative forecast rollups or individual forecast category rollups.
+This field can only be used when the `enableAdjustments` field
+contains a value of true. If both the
+`managerAdjustableCategoryApiNames` and
+`ownerAdjustableCategoryApiNames` fields are being used,
+they must contain the same two values. Their values must also be
+consistent with the values of the `enableAdjustments` and
+`enableOwnerAdjustments` fields.
+
+Valid values for organizations using cumulative forecast rollups:
+
+**•** `bestcaseforecast`
+
+**•** `commitforecast`
+
+Valid values for organizations using individual forecast category rollups:
+
+**•** `bestcaseonly`
+
+**•** `commitonly`
+
+`masterLabel` string Required. This read-only field indicates the UI label for the forecast type.
+
+`name` string
+
+Required. The name of the forecast type. Each forecast type requires a
+specific string.
+
+Using ForecastingSettings, you can activate only these forecast types.
+
+**•** `LineItemQuantityProductDate` : Product Families Quantity by product date. Available in API versions 47.0 and later.
+
+**•** `LineItemQuantityScheduleDate` : Product Families Quantity by schedule date. Available in API versions 47.0 and later.
+
+**•** `LineItemRevenueProductDate` : Product Families - Revenue
+by product date. Available in API versions 47.0 and later.
+
+**•** `LineItemRevenueScheduleDate` : Product Families Revenue by schedule date. Available in API versions 47.0 and later.
+
+**•** `OpportunityLineItemQuantity` : Product Families Quantity.
+
+**•** `OpportunityLineItemRevenue` : Product Families - Revenue.
+
+**•** `OpportunityOverlayRevenue` : Opportunity Overlay Splits
+
+  - Revenue.
+
+**•** `OpportunityQuantity` : Opportunities - Quantity.
+
+**•** `OpportunityQuantityProductDate` : Opportunities Quantity by product date. Available in API versions 43.0 and later.
+
+**•** `OpportunityQuantityScheduleDate` : Opportunities Quantity by schedule date. Available in API versions 43.0 and later.
+
+**•** `OpportunityRevenue` : Opportunities - Revenue.
+
+
+Metadata Types ForecastingSettings
+
+**Field Name** **Field Type** **Description**
+
+**•** `OpportunityRevenueProductDate` : Opportunities Revenue by product date. Available in API versions 43.0 and later.
+
+**•** `OpportunityRevenueScheduleDate` : Opportunities Revenue by schedule date. Available in API versions 43.0 and later.
+
+**•** `OpportunitySplitRevenue` : Opportunity Revenue Splits Revenue.
+
+**•** _**`Territory_Model_NameN`**_ : Territories, where
+_`Territory_Model_Name`_ is the name of your active territory
+model in the API. _`Territory_Model_Name`_ can be followed
+by _`N`_, an auto-generated number that distinguishes between territory
+forecast types. Available in API versions 44.0 and later.
+
+**•** _**`Territory_Model_NameN`**_ `_ProductFamily` : Deprecated.
+Territories - Product Families, where _`Territory_Model_Name`_
+is the name of your active territory model in the API and can be
+followed by _`N`_, an auto-generated number that distinguishes
+between territory forecast types. Available in API versions 45.0 and
+46.0. For territory models created in API version 47.0 and later,
+_**`Territory_Model_NameN`**_ is used.
+
+**•** The name of a custom opportunity split type that has been enabled
+as a forecast type. Custom split types are based on currency fields,
+which can contain revenue amounts only.
+
+To create and manage other forecast types in API version 52.0 and later,
+use ForecastingSourceDefinition, ForecastingType, and
+ForecastingTypeSource.
+
+`opportunityListFieldsLabelMappings` OpportunityListFieldsLabelMapping A read-only list of the API names and UI labels for all fields on the
+Opportunity object.
+
+`opportunityListFields` OpportunityListFields
+`SelectedSettings` SelectedSettings
+
+Required. The fields selected to appear in the opportunity pane of the
+forecast page for the forecast type. One of the selected fields must be
+**Opportunity Name** . You can select up to 15 fields.
+
+`opportunityListFields` OpportunityListFields Required. The fields _not_ selected to appear in the opportunity pane of
+`UnselectedSettings` UnselectedSettings the forecast page for the forecast type.
+
+`opportunitySplitName` string Indicates whether the forecasting type has a split type, and if so, the
+name of the split type. Available in API version 41.0 and later.
+
+`ownerAdjustableCategoryApiNames` string This read-only field appears twice to specify the two forecast rollup
+categories that forecast owners can adjust in the organization, for either
+
+cumulative forecast rollups, or individual forecast category rollups. This
+field can only be used when the `enableOwnerAdjustments` field
+contains a value of true. If both the
+`managerAdjustableCategoryApiNames` and
+`ownerAdjustableCategoryApiNames` fields are being used,
+they must contain the same two values. Their values must also be
+
+
+Metadata Types ForecastingSettings
+
+**Field Name** **Field Type** **Description**
+
+consistent with the values of the `enableAdjustments` and
+`enableOwnerAdjustments` fields.
+
+Valid values for organizations using cumulative forecast rollups:
+
+**•** `bestcaseforecast`
+
+**•** `commitforecast`
+
+Valid values for organizations using individual forecast category rollups:
+
+**•** `bestcaseonly`
+
+**•** `commitonly`
+
+`quotasSettings` QuotasSettings Removed. This field enables or disables the quota option in forecasts. In
+API version 53.0 and later, use globalQuotasSettings.
+
+`territory2ModelName` string Indicates whether the forecasting type has a Territory2 model, and if so,
+the name of the Territory2 model. Available in API version 41.0 and later.
+
+AdjustmentsSettings
+
+The adjustment options for forecasts.
+
+**Field** **Field Type** **Description**
+
+`allowExpandedColumns` boolean Required. Set to `true` to show separate columns on the
+forecasts page for each adjustable forecast category and `false`
+
+to show adjustments when a user hovers over a forecast
+category. All forecast types must contain the same
+`allowExpandedColumns` value.
+
+`enableAdjustments` boolean
+
+`enableOwnerAdjustments` boolean
+
+ForecastingGroup
+
+Required. Set to `true` to enable manager adjustments and
+`false` to disable them. All forecast types must contain the
+same `enableAdjustments` value.
+
+Disabling adjustments results in adjustment data being purged.
+
+Required. Set to `true` to enable owner adjustments for
+forecasts and `false` to disable them. All forecast types must
+contain the same `enableOwnerAdjustments` value.
+
+Disabling adjustments results in forecast adjustment data being
+purged.
+
+The group based on a custom picklist that is used to group or roll up forecast totals on the forecasts page. For example, group forecasts
+using a custom picklist for industry or sales type.
+
+
+Metadata Types ForecastingSettings
+
+**Field** **Field Type** **Description**
+
+`developerName` string Required. The API name that identifies the forecast group.
+
+`forecastingGroupItems` ForecastingGroupItem Required. The picklist values for the forecast type. Possible values
+include the picklist values defined in `groupField` .
+
+`groupField` string
+
+Required. The field name of the custom picklist used as a group.
+Possible values include custom, single-selection picklists
+available in `sourceObject` .
+
+`masterLabel` string Required. This read-only field indicates the UI label for the
+forecast group.
+
+`sourceObject` string Required. The source object for the picklist for the forecast
+group. Possible values include:
+
+**•** Opportunity
+
+**•** OpportunityLineItem
+
+**•** Product2
+
+ForecastingGroupItem
+
+The picklist value that is specified as the forecasting group for a forecast type, and the order it displays in on the forecasts page.
+
+**Field** **Field Type** **Description**
+
+`displayPosition` int Required. Indicates the display order of the values on the
+forecasts page.
+
+`sourceAPIValue` string Required. The API name is that’s derived from the group value.
+
+ForecastRangeSettings
+
+The default periods and range selections in forecasts. Users can forecast up to 15 months, 15 fiscal periods, or 8 quarters in the future or
+past. If your forecast range includes the current month, period, or quarter, the forecasts page shows the current month, period, or quarter
+by default. If not, the first month, period, or quarter of the range is selected. All forecast types must contain the same
+`forecastRangeSettings` field values.
+
+**Field** **Field Type** **Description**
+
+`beginning` int Required. Indicates the beginning month or quarter to display
+by default.
+
+`displaying` int
+
+Required. Indicates the number of months or quarters to display
+by default. The maximum number of months is 12 and quarters
+is 8.
+
+`periodType` PeriodTypes (enumeration of Required. Indicates what type of period to use. Valid values are:
+type string)
+
+**•** `Month`
+
+**•** `Quarter`
+
+
+Metadata Types ForecastingSettings
+
+**Field** **Field Type** **Description**
+
+**•** `Week`
+
+**•** `Year`
+
+OpportunityListFieldsLabelMapping
+
+A read-only list of the API names and UI labels for all fields on the Opportunity object.
+
+**Field** **Field Type** **Description**
+
+`field` string Required. The API name of the Opportunity field.
+
+`label` string Required. The UI label of the Opportunity field.
+
+OpportunityListFieldsSelectedSettings
+
+The fields selected to appear in the opportunity pane of the forecast page for the forecast type. One of the selected fields must be
+**Opportunity Name** . You can select up to 15 fields.
+
+**Field** **Field Type** **Description**
+
+`field` string Specifies names of fields to display in the opportunity pane.
+
+OpportunityListFieldsUnselectedSettings
+
+The fields _not_ selected to appear in the opportunity pane of the forecast page for the forecast type.
+
+**Field** **Field Type** **Description**
+
+`field` string Specifies names of fields not displayed in the opportunity pane.
+
+QuotasSettings
+
+QuotasSettings indicates if quotas are available in forecasts.
+
+**Field** **Field Type** **Description**
+
+`showQuotas` boolean Required. Set to `true` to enable quotas. All forecast types must
+contain the same `showQuotas` field value.
+
+WeightedSourceCategory
+
+This field can occur more than one time when specifying more than one forecast category to include in the rollup type. Each occurrence
+contains two subfields that specify a forecast category to include in the forecast rollup type and its weight. Some rollup types include
+more than one forecast category. This table shows the forecast categories that are included in each rollup type.
+
+
+Metadata Types ForecastingSettings
+
+**Field** **Field Type** **Description**
+
+`sourceCategoryApiName` string Required. Specifies the API name of a forecast category to include
+in the rollup type. The valid values are.
+
+**•** `pipeline`
+
+**•** `best case`
+
+**•** `commit`
+
+**•** `closed`
+
+**•** `omitted`
+
+**•** `customcategory`
+
+`weight` double
+
+Declarative Metadata Sample Definition
+
+Required. Specifies the weight given to the forecast category
+when calculating the forecast for the rollup type. The only
+supported value is `1.0` .
+
+The following is an example of a ForecastingSettings component that enables the Opportunity-Revenue forecast type, adjustments,
+owner adjustments, and quotas, and changes forecast range settings:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ForecastingSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <defaultToPersonalCurrency>false</defaultToPersonalCurrency>
+
+   <enableForecasts>true</enableForecasts>
+
+   <globalAdjustmentsSettings>
+
+     <enableAdjustments>true</enableAdjustments>
+
+     <enableOwnerAdjustments>true</enableOwnerAdjustments>
+
+   </globalAdjustmentsSettings>
+
+   <globalForecastRangeSettings>
+
+     <beginning>1</beginning>
+
+     <displaying>6</displaying>
+
+     <periodType>Month</periodType>
+
+   </globalForecastRangeSettings>
+
+   <globalQuotasSettings>
+
+     <showQuotas>true</showQuotas>
+
+   </globalQuotasSettings>
+
+   <forecastingCategoryMappings>
+
+     <forecastingItemCategoryApiName>commitonly</forecastingItemCategoryApiName>
+
+     <weightedSourceCategories>
+
+        <sourceCategoryApiName>commit</sourceCategoryApiName>
+
+        <weight>1.0</weight>
+
+     </weightedSourceCategories>
+
+   </forecastingCategoryMappings>
+
+   <forecastingCategoryMappings>
+
+     <forecastingItemCategoryApiName>closedonly</forecastingItemCategoryApiName>
+
+     <weightedSourceCategories>
+
+        <sourceCategoryApiName>closed</sourceCategoryApiName>
+
+        <weight>1.0</weight>
+
+     </weightedSourceCategories>
+
+```
+
+
+Metadata Types ForecastingSettings
+
+```
+      </forecastingCategoryMappings>
+
+      <forecastingCategoryMappings>
+
+        <forecastingItemCategoryApiName>openpipeline</forecastingItemCategoryApiName>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>most likely</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>commit</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>pipeline</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>best case</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+      </forecastingCategoryMappings>
+
+      <forecastingCategoryMappings>
+
+        <forecastingItemCategoryApiName>omittedonly</forecastingItemCategoryApiName>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>omitted</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+      </forecastingCategoryMappings>
+
+      <forecastingCategoryMappings>
+
+        <forecastingItemCategoryApiName>bestcaseforecast</forecastingItemCategoryApiName>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>most likely</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>commit</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>closed</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>best case</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+      </forecastingCategoryMappings>
+
+      <forecastingCategoryMappings>
+
+        <forecastingItemCategoryApiName>pipelineonly</forecastingItemCategoryApiName>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>pipeline</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+      </forecastingCategoryMappings>
+
+```
+
+
+Metadata Types ForecastingSettings
+
+```
+      <forecastingCategoryMappings>
+
+        <forecastingItemCategoryApiName>commitforecast</forecastingItemCategoryApiName>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>closed</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>commit</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+      </forecastingCategoryMappings>
+
+      <forecastingCategoryMappings>
+
+        <forecastingItemCategoryApiName>bestcaseonly</forecastingItemCategoryApiName>
+
+        <weightedSourceCategories>
+
+           <sourceCategoryApiName>best case</sourceCategoryApiName>
+
+           <weight>1.0</weight>
+
+        </weightedSourceCategories>
+
+      </forecastingCategoryMappings>
+
+      <forecastingTypeSettings>
+
+    <name>OpportunityRevenue</name>
+
+        <active>true</active>
+
+        <hasProductFamily>false</hasProductFamily>
+
+        <isAmount>true</isAmount>
+
+        <isAvailable>true</isAvailable>
+
+        <isQuantity>false</isQuantity>
+
+        <managerAdjustableCategoryApiNames>commitonly</managerAdjustableCategoryApiNames>
+
+       <managerAdjustableCategoryApiNames>bestcaseonly</managerAdjustableCategoryApiNames>
+
+        <masterLabel>Opportunities</masterLabel>
+
+    <displayedCategoryApiNames>closedonly</displayedCategoryApiNames>
+
+        <displayedCategoryApiNames>commitonly</displayedCategoryApiNames>
+
+        <displayedCategoryApiNames>bestcaseonly</displayedCategoryApiNames>
+
+        <displayedCategoryApiNames>pipelineonly</displayedCategoryApiNames>
+
+        <forecastedCategoryApiNames>commitonly</forecastedCategoryApiNames>
+
+        <forecastedCategoryApiNames>closedonly</forecastedCategoryApiNames>
+
+        <forecastedCategoryApiNames>pipelineonly</forecastedCategoryApiNames>
+
+        <forecastedCategoryApiNames>bestcaseonly</forecastedCategoryApiNames>
+
+        <forecastingDateType>OpportunityCloseDate</forecastingDateType>
+
+        <opportunityListFieldsSelectedSettings>
+
+           <field>OPPORTUNITY.NAME</field>
+
+        </opportunityListFieldsSelectedSettings>
+
+      </forecastingTypeSettings>
+
+   </ForecastingSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types HighVelocitySalesSettings HighVelocitySalesSettings
+
+Represents an org’s Sales Engagement settings. With Sales Engagement, you can make your inside sales team as effective as possible.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### HighVelocitySalesSettings values are stored in a single file named HighVelocitySales.settings in the settings directory
+
+of the corresponding package directory.
+
+Version
+
+#### HighVelocitySalesSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableACAutoSendEmail` boolean Indicates whether a cadence step of type Automated Send can be created
+`(true)` or not `(false)` . Allowing Salesforce to automatically send
+
+an email to a prospect can make your sales team more efficient, because
+reps don’t have to send the email themselves.
+
+Default value is `true` .
+
+Available in API version 48.0 and later.
+
+`enableACChangeTargetAssignee` boolean
+
+`enableACSkipWeekends` boolean
+
+`enableBusinessHours` boolean
+
+`enableCadenceVariantTestingPref` boolean
+
+`enableChgTgtAssigneeUsrPermPref` boolean
+
+Indicates whether target assignees, target owners, and users with access
+to related cadences can update target assignees `(true)` or not
+`(false)` .
+
+Available in API version 50.0 and later.
+
+Indicates whether Skip Weekends is enabled `(true)` or not `(false)` .
+
+Available in API version 48.0 and later.
+
+Indicates whether Business Hours is enabled in Sales Engagement
+`(true)` or not `(false)` .
+
+Available in API version 58.0 and later.
+
+Indicates whether AB testing for cadence steps is enabled `(true)` or
+not `(false)` .
+
+Available in API version 53.0 and later.
+
+Indicates whether the change target assignee action is controlled by
+user permission `(true)` or not `(false)` .
+
+Available in API version 51.0 and later.
+
+
+Metadata Types HighVelocitySalesSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableDispositionCategory` boolean Indicates whether Call Outcomes For Branching is enabled in Sales
+Engagement `(true)` or not `(false)` . Use Call Outcomes For
+
+Branching to group calls into different outcome categories such as "Left
+Voicemail" or "Not Interested." You can see the outcomes in a report, or
+use them to determine how cadences are branched.
+`enableHighVelocitySales` must be `true` to use Sales
+Engagement.
+
+Default value is `false` .
+
+`enableEngagementWaveAnalyticsPref` boolean Indicates whether you can see engagement statistics in CRM Analytics
+`(true)` or not `(false)` . Use CRM Analytics to analyze information
+
+about calls, engagement, and how each sales rep moves through their
+cadence steps.
+
+`enableHighVelocitySales` boolean
+
+`enableHighVelocitySalesSetup` boolean
+
+`enableInvoiceAttributionPref` boolean
+
+`enableLogACallForCTIPref` boolean
+
+`enableLogTasksForLinkedInPref` boolean
+
+`enableMultipleCadencesPref` boolean
+
+`enableOpportunityAttributionPermPref` boolean
+
+Indicates whether Sales Engagement is enabled `(true)` or not
+`(false)` . If enabled, it turns on the features required for the product
+and makes the app available to users.
+
+Default value is `false` .
+
+Indicates whether Sales Engagement is enabled `(true)` or not
+`(false)` .
+
+Default value is `false` .
+
+Indicates whether Invoice Attribution is enabled `(true)` or not
+`(false)` .
+
+Available in API version 56.0 and later.
+
+Indicates whether Log a Call appears to CTI users by default `(true)`
+or not `(false)` .
+
+Available in API version 54.0 and later.
+
+Indicates whether users can log standard tasks upon completion of a
+LinkedIn step `(true)` or not `(false)` .
+
+Available in API version 54.0 and later.
+
+Indicates whether targets can be assigned to multiple cadences
+`(true)` or not `(false)` .
+
+Available in API version 57.0 and later.
+
+Indicates whether Opportunity Attribution is enabled `(true)` or not
+`(false)` .
+
+Available in API version 51.0 and later.
+
+
+Metadata Types HighVelocitySalesSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableQuickCadenceAutoSendEmail` boolean
+
+`enableTaskLoggingPref` boolean
+
+Indicates whether Automated Email send is enabled for Sales
+Engagement quick cadences `(true)` or not `(false)` .
+
+Available in API version 57.0 and later.
+
+Indicates whether users can log tasks after manual completion of a
+cadence step `(true)` or not `(false)` .
+
+Available in API version 56.0 and later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of the `HighVelocitySales.settings` file:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<HighVelocitySalesSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <enableACAutoSendEmail>false</enableACAutoSendEmail>
+
+  <enableACChangeTargetAssignee>false</enableACChangeTargetAssignee>
+
+  <enableACSkipWeekends>false</enableACSkipWeekends>
+
+  <enableBusinessHours>false</enableBusinessHours>
+
+  <enableCadenceVariantTestingPref>false</enableCadenceVariantTestingPref>
+
+  <enableChgTgtAssigneeUsrPermPref>false</enableChgTgtAssigneeUsrPermPref>
+
+  <enableDispositionCategory>true</enableDispositionCategory>
+
+  <enableEngagementWaveAnalyticsPref>true</enableEngagementWaveAnalyticsPref>
+
+  <enableHighVelocitySales>true</enableHighVelocitySales>
+
+  <enableHighVelocitySalesSetup>true</enableHighVelocitySalesSetup>
+
+  <enableInvoiceAttributionPref>false</enableInvoiceAttributionPref>
+
+  <enableLogACallForCTIPref>false</enableLogACallForCTIPref>
+
+  <enableLogTasksForLinkedInPref>false</enableLogTasksForLinkedInPref>
+
+  <enableMultipleCadencesPref>false</enableMultipleCadencesPref>
+
+  <enableOpportunityAttributionPermPref>false</enableOpportunityAttributionPermPref>
+
+  <enableQuickCadenceAutoSendEmail>false</enableQuickCadenceAutoSendEmail>
+
+  <enableTaskLoggingPref>true</enableTaskLoggingPref>
+
+</HighVelocitySalesSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the HighVelocitySalesSettings settings metadata:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <types>
+
+  <members>HighVelocitySalesSettings</members>
+
+  <name>Settings</name>
+
+ </types>
+
+ <version>47.0</version>
+
+</Package>
+
+```
+
+
+#### Metadata Types IdeasSettings IdeasSettings
+
+Represents the metadata used to manage settings for Ideas.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### IdeasSettings is stored in one file named Ideas.settings in the settings folder of the corresponding package directory. The
+
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### IdeasSettings is available in API version 27.0 and later. Ideas
+
+Represents settings for Ideas and Idea Themes.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableIdeaThemes` boolean Indicates whether Idea Themes is enabled ( `true` ) or not ( `false` ).
+
+`enableIdeas` boolean Indicates whether Ideas is enabled ( `true` ) or not ( `false` ).
+
+`enableIdeasReputation` boolean Indicates whether Reputation is enabled ( `true` ) or not ( `false` ). You
+can’t enable IdeasReputation without enabling the Ideas Reputation
+
+permission in your organization. This field is available in API version 28.0
+and later.
+
+`enableChatterProfile` boolean Indicates that the Chatter user profile is used for Ideas user profiles. If
+`enableChatterProfile` is `true`, the `ideasProfilePage`
+
+value must not be specified. If `enableChatterProfile` is `false`,
+then specify a `ideasProfilePage` value, otherwise the Ideas zone
+profile is used. This field is available in API version 29.0 and later.
+
+`ideasProfilePage` string The name of the Visualforce page to use for a custom Ideas user profile,
+if `enableChatterProfile` is `false` . If
+
+`enableChatterProfile` is `false`, then specify a
+`ideasProfilePage` value, otherwise the Ideas zone profile is used.
+This field is available in API version 29.0 and later.
+
+`halfLife` double Indicates how quickly old ideas drop in ranking on the Popular Ideas
+subtab. The half-life setting determines how the number of days after
+
+which old ideas drop in ranking on the Popular Ideas subtab, to make
+room for ideas with more recent votes. A shorter half-life moves older
+ideas down the page faster than a longer half-life.
+
+
+#### Metadata Types IdentityProviderSettings
+
+Declarative Metadata Sample Definition
+
+The following is an example `ideas.settings` metadata file:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <IdeasSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <enableIdeaThemes>true</enableIdeaThemes>
+
+     <enableIdeas>true</enableIdeas>
+
+     <enableIdeasReputation>true</enableIdeasReputation>
+
+     <enableChatterProfile>false</enableChatterProfile>
+
+     <ideasProfilePage> name of Visualforce page </ideasProfilePage>
+
+     <halfLife>2.6</halfLife>
+
+   </IdeasSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### IdentityProviderSettings
+
+Represents the settings used to enable or disable Salesforce as a SAML identity provider for single sign-on (SSO).
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### IdentityProviderSettings values are stored in the IdentityProvider.settings file in the settings folder.
+
+The `.settings` files are different from other named components, because there is only one settings file for each settings component.
+
+Version
+
+#### IdentityProviderSettings components are available in API version 57.0 and later.
+
+Special Access Rules
+
+To access IdentityProviderSettings, a user must have the Customize Application user permission.
+
+Fields
+
+**Field Name** **Description**
+
+```
+certificateName
+
+```
+
+**Field Type**
+string
+
+
+#### Metadata Types IframeWhiteListUrlSettings
+
+**Field Name** **Description**
+
+**Description**
+
+Required.
+
+The certificate that Salesforce uses to communicate with SAML SSO service providers,
+such as third-party service providers or another Salesforce org acting as a service
+provider. You can enter the name of a self-signed certificate or a certificate signed by
+a certificate authority.
+
+```
+enableIdentityProvider
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+
+Required.
+
+Indicates whether Salesforce can be used as a SAML identity provider ( `true` ) or not
+( `false` ).
+
+Declarative Metadata Sample Definition
+
+The following is an example of an IdentityProviderSettings component. In this example, Salesforce is enabled as a SAML identity provider.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IdentityProviderSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <certificateName>Certificate Name</certificateName>
+
+   <enableIdentityProvider>true</enableIdentityProvider>
+
+</IdentityProviderSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>IdentityProvider</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>57.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
+using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### IframeWhiteListUrlSettings
+
+Represents settings related to the list of trusted external domains that you allow to frame your Visualforce pages or surveys. This type
+extends the Metadata metadata type and inherits its `fullName` field.
+
+
+Metadata Types IframeWhiteListUrlSettings
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
+terms in our code can break current implementations, we maintained this metadata type’s name.
+
+File Suffix and Directory Location
+
+`IframeWhiteListUrlSettings` values are stored in the `IframeWhiteListUrlSettings.settings` file in the
+`iframeWhiteListUrlSettings` folder. The `.settings` files are different from other named components, because there is
+only one settings file for each settings component.
+
+Version
+
+IframeWhiteListUrlSettings on page 2103 components are available in API version 49.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`iframeWhiteListUrls` IframeWhiteListUrl[] The list of external domains that you allow to frame your Visualforce
+pages or surveys.
+
+IframeWhiteListUrl
+
+Represents the external domains that you allow to frame your Visualforce pages or surveys.
+
+**Field Name** **Field Type** **Description**
+
+```
+context
+
+```
+
+IFrameWhitelistContext Required. The type of content in the iframe. Valid values are:
+(enumeration of
+
+**•** `LightningOut` —Reserved for future use. Available in API version
+
+type string)
+
+60.0 and later
+
+**•** `Surveys`
+
+**•** `VisualforcePages`
+
+**•** `DisclosureAndComplianceHubConnector`
+
+`url` string The unique domain that is allowed to frame your Visualforce pages,
+surveys, or Disclosure and Compliance Hub Connector. Accepts these
+
+formats: `example.com`, `*example.com`, and
+`https://example.com` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a IframeWhiteListUrlSettings on page 2103 component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IframeWhiteListUrlSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <iframeWhiteListUrl>
+
+    <context>Surveys></context>
+
+    <url>example1.com</url>
+
+```
+
+
+#### Metadata Types IncidentMgmtSettings
+
+```
+      </iframeWhiteListUrl>
+
+      <iframeWhiteListUrl>
+
+       <context>VisualforcePages</context>
+
+       <url>example2.com</url>
+
+      </iframeWhiteListUrl>
+
+      <iframeWhiteListUrl>
+
+        <context>DisclosureAndComplianceHubConnector</context>
+
+        <url>example3.com</url>
+
+      </iframeWhiteListUrl>
+
+   </IframeWhiteListUrlSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+       <members>IframeWhiteListUrlSettings</members>
+
+       <name>IframeWhiteListUrlSettings</name>
+
+     </types>
+
+      <version>62.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+This metadata type doesn’t support the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about
+using the manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### IncidentMgmtSettings
+
+Represents settings for Customer Service Incident Management and Broadcast Communications.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### IncidentMgmtSettings values are stored in the IncidentMgmt.settings file in the settings folder. The .settings
+
+files are different from other named components, because there is only one settings file for each settings component.
+
+Version
+
+#### IncidentMgmtSettings components are available in API version 54.0 and later.
+
+Special Access Rules
+
+#### IncidentMgmtSettings requires a Service Cloud license.
+
+
+Metadata Types IncidentMgmtSettings
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableAiKnowledgeCreation
+
+enableAlertBroadcastType
+
+enableAutoClosureOfChildIncident
+
+enableAutoCreationOfProblem
+
+enableChangePriorityMatrix
+
+enableChangePriorityOverride
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the ITSM Knowledge Creation feature is enabled ( `true` ) or disabled
+( `false` ) for your org. The default value is `false` . Available in API version 65.0 and
+later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether broadcast communication alerts are enabled ( `true` ) or disabled
+( `false` ) for your org. Lets incident managers send disruptive in-app notifications
+when an incident occurs. The default value is `false` . Available in API version 57.0
+and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Automatically Close Child Incidents feature is enabled ( `true` )
+or disabled ( `false` ) for your org. The default value is `false` . Available in API version
+64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the automatic creation of problem record feature is enabled ( `true` )
+or disabled ( `false` ) for your org. This setting automates creation of a problem record
+when an incident is approved as a major incident. The default value is `false` . Available
+in API version 64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Automatic Priority Assignment for IT Service feature is enabled
+( `true` ) or disabled ( `false` ) for your org. The default value is `false` . Available in
+API version 65.0 and later.
+
+**Field Type**
+boolean
+
+
+Metadata Types IncidentMgmtSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether the Manual Priority Override feature is enabled ( `true` ) or disabled
+( `false` ) for your org. The default value is `false` . Available in API version 65.0 and
+later.
+
+```
+enableChangeRequestValidations
+
+enableChatToIncidentAi
+
+enableCnfgItemCopyForRecords
+
+enableDedupE2IncidentAttachment
+
+enableEmailBroadcastType
+
+enableEmailToIncident
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Change Request Validations feature is enabled ( `true` ) or
+disabled ( `false` ) for your org. The default value is `false` . Available in API version
+64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Chat and Voice to Incident with Al feature is enabled ( `true` )
+or disabled ( `false` ) for your org. The default value is `false` . Available in API version
+64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the feature is enabled ( `true` ) or disabled ( `false` ) for your org.
+The default value is `false` . Available in API version 64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the delete duplicate email attachments feature is enabled ( `true` )
+or disabled ( `false` ) for your org. The default value is `false` . Available in API version
+64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether broadcast communication emails are enabled ( `true` ) or disabled
+( `false` ) for your org. Lets users send an email with critical information to impacted
+customers. The default value is `false` . Available in API version 56.0 and later.
+
+**Field Type**
+boolean
+
+
+Metadata Types IncidentMgmtSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether the Email-to-Incident feature is enabled ( `true` ) or disabled ( `false` )
+for your org. The default value is `false` . Available in API version 64.0 and later.
+
+```
+enableEmailToIncidentAi
+
+enableITSMChangeMgmt
+
+enableITSMIncidentMgmt
+
+enableITSMMajorIncParent
+
+enableITSMProblemMgmt
+
+enableIncPriorityMatrix
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Email-to-Incident with Al feature is enabled ( `true` ) or disabled
+( `false` ) for your org. The default value is `false` . Available in API version 64.0 and
+later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the ITSM Change Management feature is enabled ( `true` ) or disabled
+( `false` ) for your org. The default value is `false` . Available in API version 63.0 and
+later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the ITSM Incident Management feature is enabled ( `true` ) or disabled
+( `false` ) for your org. The default value is `false` . Available in API version 63.0 and
+later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Major Incident Management Parent Incident feature is enabled
+( `true` ) or disabled ( `false` ) for your org. The default value is `false` . Available in
+API version 64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the ITSM Problem Management feature is enabled ( `true` ) or
+disabled ( `false` ) for your org. The default value is `false` . Available in API version
+63.0 and later.
+
+**Field Type**
+boolean
+
+
+Metadata Types IncidentMgmtSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether the Automatic Priority Assignment for IT Service feature is enabled
+( `true` ) or disabled ( `false` ) for your org. The default value is `false` . Available in
+API version 65.0 and later.
+
+```
+enableIncPriorityOverride
+
+enableIncidentMgmt
+
+enableIncidentValidations
+
+enableProbPriorityMatrix
+
+enableProbPriorityOverride
+
+enableProblemValidations
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manual Priority Override for Incident feature is enabled ( `true` )
+or disabled ( `false` ) for your org. The default value is `false` . Available in API version
+65.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether Customer Service Incident Management is enabled ( `true` ) or
+disabled ( `false` ) for your org. Customer Service Incident Management is a Service
+Cloud solution that helps your teams track large-scale disruptions and delegate tasks
+to the right experts to ensure that your business delivers on customer expectations.
+The default value is `true` . Available in API version 54.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Incident Field Validations feature is enabled ( `true` ) or disabled
+( `false` ) for your org. The default value is `false` . Available in API version 64.0 and
+later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Automatic Priority Assignment for IT Service feature is enabled
+( `true` ) or disabled ( `false` ) for your org. The default value is `false` . Available in
+API version 65.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manual Priority Override feature is enabled ( `true` ) or disabled
+( `false` ) for your org. The default value is `false` . Available in API version 65.0 and
+later.
+
+**Field Type**
+boolean
+
+
+Metadata Types IncidentMgmtSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether the Problem Field Validations feature is enabled ( `true` ) or disabled
+( `false` ) for your org. The default value is `false` . Available in API version 64.0 and
+later.
+
+```
+enableRiskAssessment
+
+enableSaveE2IncidentAttachment
+
+enableSiteBannerBroadcastType
+
+enableSlackBroadcastType
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Risk Assessment feature is enabled ( `true` ) or disabled ( `false` )
+for your org. The default value is `false` . Available in API version 64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Save Email to Incident Attachment feature is enabled ( `true` )
+or disabled ( `false` ) for your org. The default value is `false` . Available in API version
+64.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether broadcast communication for site banners is enabled ( `true` ) or
+disabled ( `false` ) for your org. Lets users add a banner with critical information to
+your Aura and LWR sites. The default value is `false` . Available in API version 56.0
+and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether broadcast communication Slack messages are enabled ( `true` ) or
+disabled ( `false` ) for your org. Lets incident managers send broadcasts to Slack when
+an incident occurs. The default value is `false` . Available in API version 57.0 and later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of an IncidentMgmtSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IncidentMgmtSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+ <enableAiKnowledgeCreation>true</enableAiKnowledgeCreation>
+
+ <enableAlertBroadcastType>false</enableAlertBroadcastType>
+
+ <enableAutoClosureOfChildIncident>true</enableAutoClosureOfChildIncident>
+
+ <enableAutoCreationOfProblem>false</enableAutoCreationOfProblem>
+
+ <enableChangePriorityMatrix>true</enableChangePriorityMatrix>
+
+```
+
+
+#### Metadata Types IndustriesEinsteinFeatureSettings
+
+```
+    <enableChangePriorityOverride>false</enableChangePriorityOverride>
+
+    <enableChangeRequestValidations>true</enableChangeRequestValidations>
+
+    <enableChatToIncidentAi>true</enableChatToIncidentAi>
+
+    <enableCnfgItemCopyForRecords>false</enableCnfgItemCopyForRecords>
+
+    <enableDedupE2IncidentAttachment>true</enableDedupE2IncidentAttachment>
+
+    <enableEmailBroadcastType>true</enableEmailBroadcastType>
+
+    <enableEmailToIncident>true</enableEmailToIncident>
+
+    <enableEmailToIncidentAi>false</enableEmailToIncidentAi>
+
+    <enableITSMChangeMgmt>true</enableITSMChangeMgmt>
+
+    <enableITSMIncidentMgmt>true</enableITSMIncidentMgmt>
+
+    <enableITSMMajorIncParent>true</enableITSMMajorIncParent>
+
+    <enableITSMProblemMgmt>false</enableITSMProblemMgmt>
+
+    <enableIncPriorityMatrix>true</enableIncPriorityMatrix>
+
+    <enableIncPriorityOverride>false</enableIncPriorityOverride>
+
+    <enableIncidentMgmt>true</enableIncidentMgmt>
+
+    <enableIncidentValidations>true</enableIncidentValidations>
+
+    <enableProbPriorityMatrix>true</enableProbPriorityMatrix>
+
+    <enableProbPriorityOverride>false</enableProbPriorityOverride>
+
+    <enableProblemValidations>true</enableProblemValidations>
+
+    <enableRiskAssessment>true</enableRiskAssessment>
+
+    <enableSaveE2IncidentAttachment>true</enableSaveE2IncidentAttachment>
+
+    <enableSiteBannerBroadcastType>false</enableSiteBannerBroadcastType>
+
+    <enableSlackBroadcastType>true</enableSlackBroadcastType>
+
+   </IncidentMgmtSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>IncidentMgmt</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>54.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### IndustriesEinsteinFeatureSettings
+
+Represents the settings for enabling the Industries Einstein feature.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for more details.
+
+
+Metadata Types IndustriesEinsteinFeatureSettings
+
+File Suffix and Directory Location
+
+IndustriesEinsteinFeatureSettings values are stored in a single file named `IndustriesEinsteinFeature.settings` in the
+`settings` folder. The `.settings` files are different from other named components because there’s only one settings file for each
+settings component.
+
+Version
+
+IndustriesEinsteinFeatureSettings components are available in API version 57.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+documentReaderConfidenceOrgValue
+
+```
+
+**Field Type**
+double
+
+**Description**
+
+Required.
+
+Specify the confidence score threshold to indicate the reliability of data in a
+document. You can enter a number from 0 to 100, with up to two decimal places,
+where 0 is the least confident and 100 is the most confident.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a IndustriesEinsteinFeatureSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IndustriesEinsteinFeatureSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <documentReaderConfidenceOrgValue>61</documentReaderConfidenceOrgValue>
+
+</IndustriesEinsteinFeatureSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <types>
+
+   <members>IndustriesEinsteinFeature</members>
+
+   <name>Settings</name>
+
+  </types>
+
+  <version>66.0</version>
+
+</Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+
+#### Metadata Types IndustriesLoyaltySettings IndustriesLoyaltySettings
+
+Represents the settings to enable capabilities of Loyalty Management.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### IndustriesLoyaltySettings values are stored in a single file named IndustriesLoyalty.settings in the settings folder.
+
+The `.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### IndustriesLoyaltySettings components are available in API version 53.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableAutomaticMemberTierAssessmentSelection` boolean Indicates whether the capability that automatically selects members as
+eligible for tier assessment when members’ qualifying points balance
+
+changes is enabled ( `true` ) or disabled ( `false` ) for your org. The default
+value is `false` . This field is available in API version 58.0 or later.
+
+`enableAutomaticVoucherCodeGeneration` boolean
+
+`enableConfigureClubs` boolean
+
+Indicates whether the capability to automatically generate voucher
+codes is enabled ( `true` ) or not ( `false` ). This field is available in API
+version 57.0 and later.
+
+Indicates whether the capability to create and manage clubs is enabled
+( `true` ) or not ( `false` ). The default value is `false` . This field is
+available in API version 64.0 or later.
+
+`enableFixedTypeNQPAggregation` boolean Indicates whether the capability to aggregate and expire fixed type
+non-qualifying points in batches is enabled ( `true` ) or disabled ( `false` )
+
+for your org. The default value is `true` . This field is available in API
+version 54.0 or later.
+
+`enableLoyaltyApiAccessForExternalSiteUsers` boolean Indicates whether the capability that allows customers to join and leave
+loyalty programs and allows members to join and opt out of promotions
+
+from Experience Cloud sites is enabled ( `true` ) or disabled ( `false` ) for
+your org. The default value is `false` . This field is available in API version
+58.0 or later.
+
+`enableLoyaltyGenerativeAi` boolean
+
+Indicates whether the Einstein AI capabilities of Loyalty Management
+are enabled ( `true` ) or not ( `false` ). The default value is `false` . This
+field is available in API version 62.0 or later.
+
+`enableLoyaltyRedeemedPointsExpirationInfoPref` boolean Indicates whether the capability that automatically calculates and adds
+the expiration date of points credited back to members for canceled
+
+
+Metadata Types IndustriesLoyaltySettings
+
+**Field Name** **Field Type** **Description**
+
+redemptions is enabled ( `true` ) or disabled ( `false` ) for your org. The
+default value is `true` . This field is available in API version 55.0 or later.
+
+`enableLoyaltyRulesVerifyCdpMemberSegment` boolean Indicates whether the capability that allows:
+
+**•** Loyalty program process rules to process transaction journals only
+when the loyalty program member is part of a Data Cloud segment
+associated with the rule's promotion is enabled ( `true` ) or disabled
+( `false` ) for your org.
+
+**•** The Promotion Eligibility component on Loyalty Program Member
+record page to categorize promotions based on whether the member
+belongs to the promotion’s campaign or Data Cloud segment is
+enabled ( `true` ) or disabled ( `false` ) for your org.
+
+The default value is `false` . This field is available in API version 55.0 or
+later.
+
+`enableLoyaltyServiceExcellence` boolean
+
+Indicates whether Service Console for Loyalty Management is enabled
+( `true` ) or disabled ( `false` ) for your org. The default value is `false` .
+This field is available in API version 57.0 or later.
+
+`enableNegativePointBalance` boolean Indicates whether the capability that lets loyalty program members to
+hold negative point balances for non-qualifying currencies is enabled
+
+( `true` ) or disabled ( `false` ) for your org. The default value is `false` .
+This field is available in API version 61.0 or later.
+
+`enableNonQualifyingPointsConsolidation` boolean Indicates whether the capability to aggregate and expire fixed type
+non-qualifying points in real time is enabled ( `true` ) or disabled ( `false` )
+
+for your org. The default value is `true` . This field is available in API
+version 58.0 or later.
+
+`enablePointsLifecycleTracking` boolean Indicates whether the capability that allows the company to trace how
+members redeem their accrued fixed-model non-qualifying points is
+
+enabled ( `true` ) or disabled ( `false` ) for your org. The default value is
+`false` . This field is available in API version 62.0 or later.
+
+`enablePromSetupProcRuleStatusInheritDplymt` boolean Indicates whether the capability, which allows Promotion Setup processes
+and rules to be deployed to target orgs in the same status as the source
+
+orgs when using the LoyaltyProgramSetup metadata type, is enabled
+( `true` ) or disabled ( `false` ). The default value is `false` . This field is
+available in API version 62.0 or later.
+
+`enableQPRealTimePointBalance` boolean
+
+`enableNQPRealTimePointBalance` boolean
+
+Indicates whether the real time qualifying points balance update
+capability is enabled ( `true` ) or disabled ( `false` ) for your org. The
+default value is `true` . This field is available in API version 55.0 or later.
+
+Indicates whether the capability to update the non-qualifying point
+balance of members in real time is enabled ( `true` ) or disabled ( `false` )
+for your org. The default value is `true` .
+
+`enableSegmentQueryApiMultipleDataSpace` boolean Indicates whether the capability that allows Query API to verify the Data
+Cloud segments that customers are part of across multiple data spaces
+
+
+Metadata Types IndustriesLoyaltySettings
+
+**Field Name** **Field Type** **Description**
+
+is enabled ( `true` ) or not ( `false` ). The default value is `false` . This
+field is available in API version 64.0 or later.
+
+`enableSegmentQueryByDataGraph` boolean Indicates whether the capability, which uses Data Cloud data graphs to
+query for Data Cloud segments that customers are part of, is enabled
+
+( `true` ) or disabled ( `false` ). The default value is `false` . This field is
+available in API version 62.0 or later.
+
+`enableTransferPointsToMemberGroupsRealtime` boolean Indicates whether the capability that automates real-time transfer of a
+member's non-qualifying points to associated group is enabled ( `true` )
+
+or not ( `false` ). The default value is `false` . This field is available in
+API version 64.0 or later.
+
+`enableUsePromPtyUsageForEngmtTrail` boolean Indicates whether the capability that uses Promotion Party Usage records
+to store attributes for Engagement Trail promotions is enabled ( `true` )
+
+or not ( `false` ). The default value is `true` . This field is available in API
+version 64.0 or later.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a IndustriesLoyaltySettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <IndustriesLoyaltySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableNQPRealTimePointBalance>true</enableNQPRealTimePointBalance>
+
+      <enableFixedTypeNQPAggregation>true</enableFixedTypeNQPAggregation>
+
+      <enableQPRealTimePointBalance>true</enableQPRealTimePointBalance>
+
+   <enableLoyaltyRulesVerifyCdpMemberSegment>false</enableLoyaltyRulesVerifyCdpMemberSegment>
+
+   <enableLoyaltyRedeemedPointsExpirationInfoPref>true</enableLoyaltyRedeemedPointsExpirationInfoPref>
+
+      <enableLoyaltyServiceExcellence>true</enableLoyaltyServiceExcellence>
+
+      <enableAutomaticVoucherCodeGeneration>true</enableAutomaticVoucherCodeGeneration>
+
+   <enableLoyaltyApiAccessForExternalSiteUsers>false</enableLoyaltyApiAccessForExternalSiteUsers>
+
+   <enableAutomaticMemberTierAssessmentSelection>false</enableAutomaticMemberTierAssessmentSelection>
+
+     <enableNonQualifyingPointsConsolidation>false</enableNonQualifyingPointsConsolidation>
+
+      <enablePointsLifecycleTracking>false</enablePointsLifecycleTracking>
+
+      <enableNegativePointBalance>false</enableNegativePointBalance>
+
+      <enableSegmentQueryByDataGraph>false</enableSegmentQueryByDataGraph>
+
+   <enablePromSetupProcRuleStatusInheritDplymt>false</enablePromSetupProcRuleStatusInheritDplymt>
+
+      <enableLoyaltyGenerativeAi>false</enableLoyaltyGenerativeAi>
+
+```
+
+
+#### Metadata Types IndustriesSettings
+
+```
+   <enableTransferPointsToMemberGroupsRealtime>false</enableTransferPointsToMemberGroupsRealtime>
+
+      <enableUsePromPtyUsageForEngmtTrail>false</enableUsePromPtyUsageForEngmtTrail>
+
+      <enableSegmentQueryApiMultipleDataSpace>true</enableSegmentQueryApiMultipleDataSpace>
+
+      <enableConfigureClubs>true</enableConfigureClubs>
+
+   </IndustriesLoyaltySettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <types>
+
+      <members>IndustriesLoyalty</members>
+
+      <name>Settings</name>
+
+     </types>
+
+     <version>53.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### IndustriesSettings
+
+Represents settings for industries verticals such as Financial Services Cloud, Consumer Goods Cloud, Public Sector Solutions, Education
+Cloud, Salesforce Scheduler, Life Sciences Cloud, and Health Cloud.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+Important: Where possible, we changed noninclusive terms to align with our company value of Equality. Because changing
+terms in our code can break current implementations, we maintained this metadata type’s name.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### IndustriesSettings are stored in a single file named Industries.settings in the settings directory.
+
+Version
+
+Industries settings are available in API version 47.0 and later.
+
+Special Access Rules
+
+Settings are specific to an industry vertical and are only available to customers with org editions where the vertical is enabled.
+
+
+Metadata Types IndustriesSettings
+
+Fields for Financial Services Cloud
+
+Users need the FSC Insurance permission set to access the settings available in editions with Financial Services Cloud.
+
+**Field Name** **Field** **Description**
+**Type**
+
+`allowBenefitAssignmentWithInactiveProgramEnrollment` boolean
+
+`allowMultipleProducersToWorkOnSamePolicy` boolean
+
+Indicates whether benefit assignment is allowed when the associated
+program enrollment is inactive. The default is `false` . This field is
+available in API version 65.0 and later.
+
+Indicates whether multiple producers can be assigned to the same
+insurance policy. The default is `false` . This field is available in
+editions where Financial Services Cloud is enabled.
+
+`brwrCntctFrExtrnlSrcsPref` boolean Indicates whether borrower contact information can be sourced from
+external systems ( `true` ) or not ( `false` ). When enabled, this setting
+
+allows the system to retrieve and update borrower contact details
+from integrated external data sources. The default value is `false` .
+
+`collectionAsaAgentPref` boolean
+
+Indicates whether the Collection as an Agent preference is enabled
+for your org ( `true` ) or not ( `false` ). This setting controls collection
+agent capabilities and workflows. The default value is `false` .
+
+`clctnAndRecoveryAgntPref` boolean Indicates whether the Collections and Recovery Agent feature is
+enabled for your org ( `true` ) or not ( `false` ). When enabled, this
+
+feature allows users to manage debt collection processes and recovery
+workflows. The default value is `false` .
+
+`createCustomerPropertyFromLAProperty` boolean
+
+When importing loan application data, indicates whether to create a
+customer property record from a loan application property record to
+represent the new home.
+
+`createFinancialAccountFromLAAsset` boolean When importing loan application data, indicates whether to create
+financial account records from the assets listed in the loan application.
+
+`createFinancialAccountFromLALiability` boolean
+
+When importing loan application data, indicates whether to create
+financial account records from the liabilities listed in the loan
+application.
+
+`createFinancialAccountsFromLAFinancials` boolean When importing loan application data, indicates whether to create a
+financial account record that represents the mortgage loan.
+
+`createFinancialAccountsFromLAProperty` boolean
+
+When importing loan application data, indicates whether to create a
+financial account record from the loan application property to
+represent the new home.
+
+`createFSCAssetFromLAAsset` boolean When importing loan application data, indicates whether to create
+asset records from the assets listed in the loan application.
+
+`createFSCAssetFromLAProperty` boolean
+
+When importing loan application data, indicates whether to create
+an asset record from a loan application property record to represent
+the new home that was acquired.
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`createFSCLiabilityFromLAFinancial` boolean
+
+When importing loan application data, indicates whether to create a
+liability record from a loan application property record to represent
+the new mortgage loan.
+
+`createFSCLiabilityFromLALiability` boolean When importing loan application data, indicates whether to create
+liability records from the liabilities listed in the loan application.
+
+`enableAccessToMasterListOfCoverageTypes` boolean
+
+Indicates whether insurance agents can access the main list of
+coverage types. The default is `false` . This field is available in editions
+where Financial Services Cloud is enabled.
+
+`enableAccountScoreEnabled` boolean Indicates whether Account Scoring is enabled for your org ( `true` ) or
+not ( `false` ). When enabled, this feature provides scoring and rating
+
+capabilities for financial services accounts, helping relationship
+managers prioritize engagement and identify growth opportunities.
+The default value is `false` .
+
+`enableB2B` boolean Indicates whether Business-to-Business (B2B) capabilities are enabled
+for Financial Services Cloud ( `true` ) or not ( `false` ). When enabled,
+
+this feature provides tools and data models for managing B2B financial
+services relationships, including business accounts, commercial
+lending, and corporate banking. The default value is `false` .
+
+`enableB2BAccountPlan` boolean Indicates whether B2B Account Planning is enabled for your org
+( `true` ) or not ( `false` ). This feature enables relationship managers
+
+to create and manage strategic account plans for business clients,
+including growth strategies, cross-sell opportunities, and relationship
+mapping. The default value is `false` .
+
+`enableB2BEinstein` boolean Indicates whether Einstein AI features for B2B Financial Services are
+enabled for your org ( `true` ) or not ( `false` ). This feature provides
+
+AI-powered insights, recommendations, and predictive analytics for
+B2B financial services relationships. The default value is `false` .
+
+`enableCallReportAdminContextPref` boolean Indicates whether admins can configure the Account Interactions
+component and use a component attribute to control whether end
+
+users can view data on the component with admin privileges ( `true` )
+or not ( `false` ). The default is `false` .
+
+`enableCalculationUsingParentPolicyOnly` boolean Indicates whether the policy premiums are calculated by using only
+the parent policy's premium ( `true` ) or not ( `false` ). Use this for
+
+hierarchical policies where premiums are stored at different levels.
+The default value is `false` .
+
+`enableCollectionFLowOps` boolean Indicates whether Collection Flow Operations are enabled for your
+org ( `true` ) or not ( `false` ). When enabled, this feature provides
+
+automated workflows for managing collection processes, including
+dunning, payment plans, and recovery actions. The default value is
+`false` .
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableCollectionRiskScoringCFE` boolean Indicates whether Collection Risk Scoring with Credit and Financial
+Engine is enabled for your org ( `true` ) or not ( `false` ). This feature
+
+enables AI-powered risk assessment for collection accounts to prioritize
+recovery efforts. The default value is `false` .
+
+`enableCollectionTimeline` boolean Indicates whether the Collection Timeline feature is enabled for your
+org ( `true` ) or not ( `false` ). When enabled, users can view a
+
+chronological timeline of collection activities, communications, and
+payment history for accounts in collections. The default value is
+`false` . This field is available in editions where Financial Services
+Cloud is enabled.
+
+`enableCompliantDataSharingForInteraction` boolean Indicates whether compliant data sharing is enabled for the Interaction
+object ( `true` ) or not ( `false` ). The default value is `false` .
+
+`enableClaimMgmt` boolean Indicates whether the recording and processing of the first loss
+notifications and managing claim participants, coverages, and
+
+settlements are enabled ( `true` ) or not ( `false` ). The default value
+is `false` .
+
+`enableCompliantDataSharingForAccount` boolean
+
+Indicates whether the Compliant Data Sharing feature is enabled for
+the Account object. The default is `false` . This field is available in
+editions where Financial Services Cloud is enabled.
+
+`enableCompliantDataSharingForCustomObjects` boolean Indicates whether the Compliant Data Sharing feature is enabled for
+custom objects ( `true` ) or not ( `false` ). The default value is `false` .
+
+This field is available in editions where Financial Services Cloud is
+enabled.
+
+`enableCompliantDataSharingForOpportunity` boolean Indicates whether the Compliant Data Sharing feature is enabled for
+the Opportunity object ( `true` ) or not ( `false` ). The default value is
+
+`false` . This field is available in editions where Financial Services
+Cloud is enabled.
+
+`enableCompliantDataSharingForInteractionSummary` boolean
+
+`enableDealManagement` boolean
+
+Indicates whether Compliant Data Sharing is enabled for the
+Interaction Summary object ( `true` ) or not ( `false` ). The default
+value is `false` .
+
+Indicates whether the Financial Deal Management feature is enabled.
+The default is `false` . This field is available in editions where Financial
+Services Cloud is enabled.
+
+`enableDigitalLendingPref` boolean Indicates whether Digital Lending capabilities are enabled for your
+org ( `true` ) or not ( `false` ). When enabled, this feature provides a
+
+comprehensive digital lending platform including online applications,
+automated underwriting, document management, and loan servicing
+capabilities. The default value is `false` .
+
+`enableDigitalLendingReadOnlyOrgPref` boolean Indicates whether Digital Lending is enabled in read-only mode for
+your org ( `true` ) or not ( `false` ). When enabled, users can view
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+Digital Lending data and reports but cannot create or modify loan
+applications or lending workflows. The default value is `false` .
+
+`enableDiscoveryFrameworkMetadata` boolean
+
+Indicates whether the Assessment Question and Assessment Question
+Set features of the Discovery Framework Metadata are enabled ( `true` )
+or not ( `false` ). The default value is `false` .
+
+`enableEinsteinDocReaderMappings` boolean Indicates whether the Intelligent Form Reader Mappings feature is
+enabled. The default is `false` .
+
+`enableEnhancedQuestionCreation` boolean
+
+`enableFinancialAccountMgmt` boolean
+
+`enableFinancialDealRoleHierarchy` boolean
+
+Indicates whether the Enhanced Question Creation Experience feature
+of the Discovery Framework is enabled `true` ) or not ( `false` ). The
+default value is `false` .
+
+Indicates whether the Financial Account Management Standard
+Objects setting is enabled for your org. The default is `false` . This
+field is available in editions where Financial Services Cloud is enabled.
+
+Indicates whether data sharing for the financial deals is configured to
+follow the role-based hierarchy ( `true` ) or not ( `false` ). The default
+value is `false` .
+
+`enableFinancialDealCallReportCmpPref` boolean Indicates whether admins can use junction objects between the
+Financial Deal object and the Interaction and Interaction Summary
+
+objects within the Interaction Summary/Sharing component ( `true` )
+or not ( `false` ). This field is available in API version 54.0 and later.
+
+`enableFinancialDealCallReportPref` boolean Indicates whether the junction object is enabled between the Financial
+Deal object and the Interaction and Interaction Summary objects
+
+( `true` ) or not ( `false` ). This field is available in API version 54.0 and
+later.
+
+`enableFSCInsuranceReport` boolean Indicates whether sales managers can access the dashboard and
+prebuilt reports. The default is `false` . This field is available in API
+
+version 48.0 and later in editions where Financial Services Cloud is
+enabled.
+
+Note: This setting can be enabled only if the
+
+```
+                           allowMultipleProducersToWorkOnSamePolicy
+```
+
+setting is already set to `true` .
+
+`enableIndustriesAssessment` boolean
+
+Indicates whether the Industries Assessment feature of the Discovery
+Framework is enabled `true` ) or not ( `false` ). The default value is
+`false` .
+
+`enableIndustriesKYC` boolean Indicates whether the Industries KYC (Know Your Customer) is enabled
+`true` ) or not ( `false` ). The default value is `false` .
+
+`enableInteractionRoleHierarchy` boolean
+
+Indicates whether role hierarchy-based sharing is available for
+interactions to users in the organization `true` ) or not ( `false` ). The
+default value is `false` .
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableInteractionSummaryPref` boolean
+
+`enableInteractionSummaryRoleHierarchy` boolean
+
+Indicates whether the Interaction Summary setting is enabled for your
+org. The default is `false` . This field is available in editions where
+Financial Services Cloud is enabled.
+
+Indicates whether the Role-Hierarchy-Based Sharing for Interaction
+Summaries is enabled for your org. The default is `false` . This field
+is available in editions where Financial Services Cloud is enabled.
+
+`enableManyToManyRelationships` boolean Indicates whether insurance can manage many-to-many relationships
+between claims and cases, claims and assets, and assets and policy
+
+participants. For example, if set to `true`, agents can handle multiple
+claims through one case or have multiple cases handling one claim.
+The default is `false` . This field is available in editions where Financial
+Services Cloud is enabled.
+
+`enableMortgageRlaTotalsOrgPref` boolean Indicates whether the calculation of assets and liabilities for residential
+loan application records is enabled for your org (true) or not (false).
+
+The default is `false` . This field is available in editions where Financial
+Services Cloud is enabled.
+
+`enablePolicyAdministration` boolean Indicates whether the data model related to policy administrator is
+enabled `true` ) or not ( `false` ). If this option is enabled, entities such
+
+as transactions and transaction details are available within the policy
+admin data model. The default value is `false` .
+
+`enableRBLUsingCalcService` boolean
+
+`enableRecordRollup` boolean
+
+`enableReferralScoring` boolean
+
+`enableSlackForCib` boolean
+
+`enableSyncInteractionsPref` boolean
+
+Indicates whether Roll-by-Lookup (RBL) Using Calc Service is enabled
+for your org. The default is `false` . This field is available in editions
+where Financial Services Cloud is enabled.
+
+Indicates whether Record Rollup Optimization is enabled for your org.
+The default is `false` . This field is available in editions where Financial
+Services Cloud is enabled.
+
+Indicates whether Einstein Referral Scoring for Financial Services Cloud
+is enabled for your org (true) or not (false). The default is `false` . This
+field is available in editions where Financial Services Cloud is enabled.
+
+Indicates whether the access to Financial Services Cloud capabilities
+on Slack is enabled ( `true` ) or not ( `false` ). The default value is
+`false` .
+
+Indicates whether the Sync Interactions with Einstein Activity Capture
+setting is enabled ( `true` ) or not ( `false` ). The default value is
+`false` .
+
+`enableTimelinePref` boolean Indicates whether the Timeline features are enabled for your
+organization ( `true` ) or not ( `false` ). The default value is `false` .
+
+`enableWealthManagementAIPref` boolean Indicates whether AI features for Wealth Management are enabled
+for your org ( `true` ) or not ( `false` ). When enabled, this feature
+
+provides AI-powered capabilities for wealth management including
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+portfolio analysis, investment recommendations, risk assessment, and
+client insights. The default value is `false` . This field is available in
+API version 63.0 and later.
+
+`loanApplicantAddressAutoCreation` boolean Indicates whether automatic generation of loan applicant records for
+new residential loan applications that are associated with person
+
+accounts is enabled for your org. The default is `false` . This field is
+available in editions where Financial Services Cloud is enabled.
+Available in API version 51.0 and later.
+
+`loanApplicantAutoCreation` boolean Indicates whether automatic generation of loan applicant address
+records for new residential loan applications that are associated with
+
+person accounts is enabled for your org. The default is `false` . This
+field is available in editions where Financial Services Cloud is enabled.
+Available in API version 51.0 and later.
+
+`rlaEditIfAccHasEdit` boolean
+
+Indicates whether a user can edit a residential loan application only
+if they have edit access on the account ( `true` ) or not ( `false` ). The
+default value is `false` .
+
+`showCollectionContactAndAccount` boolean Indicates whether collection contact and account information is
+displayed in collection workflows ( `true` ) or not ( `false` ). This setting
+
+controls the visibility of contact and account details within the
+collections management interface. The default value is `false` .
+
+`transformRBLtoDPE` boolean Indicates whether you can convert RBL rules into Data Processing
+Engine definitions for faster calculations. The default is `false` .
+
+Fields for Health Cloud
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableAuthorizationCustomSharingPCU` boolean Indicates whether to enable custom sharing to give your users access
+to view and manage electronic consent forms. Users with a Customer
+
+Community Plus license can share Authorization Form Texts and Data
+Use Purpose records with Accounts, Contracts, and Users specified in
+the Information Authorization Request record.
+
+`enableCandidateMatching` boolean Indicates whether to enable Candidate Matching to automatically
+match candidates to clinical trials.
+
+`enableCareMgmtSlackAccess` boolean Indicates whether Care Coordination for Slack app is enabled for your
+org ( `true` ) or not ( `false` ). Available in API version 56.0 and later.
+
+`enableClinicalDataModel` boolean
+
+Indicates whether Clinical Data Model is enabled for your org ( `true` )
+or not ( `false` ). The default is `false` . Available in API version 51.0
+and later.
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableContactCenterAccess` boolean
+
+`enableCustomFlowsOnCycleCount` boolean
+
+`enableCustomFlowsOnExpiryPage` boolean
+
+`enableDiseaseSurveillancePref` boolean
+
+Indicates whether Contact Center for Health Cloud app is enabled for
+your org ( `true` ) or not ( `false` ). The default is `false` . Available in
+API version 56.0 and later.
+
+Indicates whether Custom Flows on Cycle Count page for the Health
+Cloud app is enabled for your org ( `true` ) or not ( `false` ). Available
+in API version 56.0 and later.
+
+Indicates whether Custom Flows on Expiry page for Health Cloud app
+is enabled for your org ( `true` ) or not ( `false` ). Available in API version
+56.0 and later.
+
+Indicates whether the disease surveillance preference that monitors
+infectious diseases is enabled ( `true` ) or not ( `false` ). Available in
+API version 64.0 and later.
+
+`enableHcCorePatientConsole` boolean Indicates whether to enable the OOTB Health Cloud Console App for
+Patients viewing.
+
+`enableHcStdRelationshipJunctions` boolean Indicates whether to start using the core group membership settings
+instead of the ones coming from package for existing managed
+
+customers or for new ones to start using the relationships from core
+directly.
+
+`enableHlsClinicalDcsnSuptAccessOrgPreference` boolean Indicates whether to enable Clinical Decision Support capabilities
+(OOTB IP, Data Model, and others.) ( `true` ) or not ( `false` ).
+
+`enableHlsFhirSubscriptionSetting` boolean
+
+Indicates whether to enable Documentation Template Rule (DTR)
+processes, data model underneath, and others for processing DTR use
+cases for Utilization Management & Clinical Decision Support users.
+
+`enableIndustriesLPIPreference` boolean Indicates whether Industries Licensing, Permitting, and Inspections
+(LPI) feature is enabled for your org ( `true` ) or not ( `false` ). The
+
+default is `false` . This field is available in editions where Health Cloud
+is enabled. Available in API version 63.0 and later.
+
+`enableLifeSciencesClinialTrialManagement` boolean
+
+`enableMedicationManagementEnabled` boolean
+
+Indicates whether to enable participant recruitment and enrollment
+to help organizations design and execute clinical trials and manage
+trial participant journeys.
+
+Indicates whether Medication Management is enabled for your org
+( `true` ) or not ( `false` ). The default is `false` .This field is available
+in API version 53.0 and later.
+
+`enableMedicalDeviceEnabled` boolean Indicates whether the Intelligent Sales features are enabled ( `true` )
+or not ( `false` ).
+
+`enableMedRecSetting` boolean
+
+Indicates whether Medication Reconciliation is enabled for your org
+( `true` ) or not ( `false` ). The default is `false` . This field is available
+in API version 54.0 and later.
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableMultipleCareProgramEnrolleeOrgPref` boolean Indicates whether Multiple Care Program Enrollee is enabled for your
+org ( `true` ) or not ( `false` ). Available in API version 49.0 and later.
+
+`enableProviderSearchSyncOrgPref` boolean
+
+Indicates whether provider data search is synced every six hours
+( `true` ) or not ( `false` ). The default is `false` . This field is available
+in editions where Health Cloud is enabled.
+
+`enableRosterFileFeatureOrgPreference` boolean Indicates whether this is the org pref used for the roster file in Provider
+Network Management ( `true` ) or not ( `false` ). The default is `false` .
+
+`enableTrialManagementConsentManagement` boolean
+
+`enableUMPayerAppAccessOrgPreference` boolean
+
+Indicates whether to enable consent management to help
+organizations take consent from prospective or enrolled candidates
+before storing their data.
+
+Indicates whether to enable the OOTB Console Utilization
+Management (UM) Payers App for UM Payers App Enablement. This
+setting can be enabled by Customers.
+
+`enableVisitInventoryEnabled` boolean Indicates whether the visit data model is enabled ( `true` ) or not
+( `false` ).
+
+`IsHomeHealthEnabled` boolean
+
+Fields for Life Sciences Cloud
+
+Indicates whether users can schedule and execute visits for the home
+healthcare services they provide for their patients ( `true` ) or not
+( `false` ).
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableAccountBasedSharing` boolean Indicates whether to enable Account-Based Sharing to control data
+access based on account ownership.
+
+`enableAdverseEvents` boolean
+
+Indicates whether Adverse Events and its data model is enabled for
+your org ( `true` ) or not ( `false` ). The default value is `false` .
+Available in API version 61.0 and later.
+
+`enableAppAlerts` boolean Indicates whether to enable in-app alerts and notifications.
+
+`enableCarePlansPreference` boolean Indicates whether to enable user preferences for Care Plans.
+
+`enableComprehendMedical` boolean
+
+Indicates whether Comprehend Medical Analysis is enabled for your
+org ( `true` ) or not ( `false` ). The default value is `false` . This field
+is available in API version 54.0 and later.
+
+`enableCPBestConTimeSharing` boolean Indicates whether to enable sharing of the best time to contact a
+patient within Care Plans.
+
+`enableCPSocialCustomSharing` boolean Indicates whether to enable custom social sharing features within
+Care Plans.
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableGroupMembershipPref` boolean Indicates whether to enable user preferences for group memberships.
+
+`enableIESentimentAnalysis` boolean
+
+Indicates whether Industries Einstein Sentiment Insights is enabled
+for your org ( `true` ) or not ( `false` ). The default value is `false` .
+This field is available in API version 54.0 and later.
+
+`enableIndCrossObjChangelog` boolean Indicates whether a cross-object change log to track changes across
+multiple related objects is enabled for your org.
+
+`enableLifeSciGenericWorkflow` boolean Indicates whether to enable the generic workflow engine for life
+sciences processes.
+
+`enableLifeSciInquiry` boolean Indicates whether to enable the Inquiry feature for managing and
+responding to inquiries in a life sciences context.
+
+`enableLifeSciListsAndFilters` boolean Indicates whether to enable lists and filters for enhanced data sorting
+and searching in life sciences.
+
+`enableLifeSciencesActivityPlan` boolean Indicates whether to enable the Activity Plan feature for creating and
+managing activity plans within life sciences.
+
+`enableLifeSciencesClinialTrailManagement` boolean Indicates whether Clinical Trial Management and its data model is
+enabled for your org ( `true` ) or not ( `false` ). Using this feature,
+
+organizations can design and execute clinical trials and manage trial
+participant journeys. The default value is `false` . Available in API
+version 61.0 and later.
+
+`enableLifeSciencesConsent` boolean Indicates whether to enable the Consent feature for managing patient
+or customer consent within life sciences.
+
+`enableLifeSciencesCustomerEngagementBase` boolean Indicates whether to enable the foundational components of the Life
+Sciences Customer Engagement (LS C4CE).
+
+`enableLifeSciencesMergeManagement` boolean Indicates whether to enable the Merge Management feature for
+merging duplicate records within life sciences data.
+
+`enableLifeSciencesProviderEngagementCompliance` boolean Indicates whether to enable compliance features for provider
+engagement within the life sciences industry.
+
+`enableLifeSciencesSiteManagement` boolean Indicates whether to enable the Site Management feature for
+managing clinical trial or other sites in the life sciences industry.
+
+`enableLSC4CEDocumentManagement` boolean Indicates whether to enable Document Management for the Life
+Sciences Customer Engagement (LS C4CE).
+
+`enableLSC4CEEmailAndTemplate` boolean Indicates whether to enable email and template management features
+for the Life Sciences Customer Engagement (LS C4CE).
+
+`enableLSC4CEKeyAccountManagement` boolean Indicates whether to enable Key Account Management functionality
+within the Life Sciences Customer Engagement (LS C4CE).
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableLSC4CEMedInsights` boolean
+
+Indicates whether to enable Medical Insights functionality in the Life
+Sciences Customer Engagement (LS C4CE) platform to provide insights
+to medical teams.
+
+`enableLSC4CEPackage` boolean Indicates whether to enable the core package for the Life Sciences
+Customer Engagement (LS C4CE).
+
+`enableLSC4CERemoteEngagement` boolean Indicates whether to enable features for remote engagement with
+customers within the Life Sciences Customer Engagement (LS C4CE).
+
+`enableLSC4CEVisits` boolean
+
+`enableNextBestAction` boolean
+
+Indicates whether to enable the Visits feature to manage and track
+customer visits within the Life Sciences Customer Engagement (LS
+C4CE).
+
+Indicates whether to enable Next Best Action, a feature that provides
+AI-driven recommendations for the next best step to take with a
+customer or patient.
+
+`enableNextBestCustomer` boolean Indicates whether to enable Next Best Customer, a feature that uses
+data to identify and recommend the most valuable customers.
+
+`enableNextBestMessage` boolean
+
+Indicates whether to enable Next Best Message, a feature that
+recommends the most effective message to send to a customer or
+patient.
+
+`enablePATSTerritoryBasedSharing` boolean Indicates whether to enable Territory-Based Sharing for the Provider
+and Affiliate Tracking System (PATS).
+
+`enablePrimaryProviderRestriction` boolean Indicates whether to enable restrictions based on the primary provider.
+
+`enableProdAdminBusinessGrpFilter` boolean Indicates whether to enable filtering by Business Group in the Product
+Administration interface.
+
+`enableProdTerrAlgnPrtHrchyAcc` boolean Indicates whether to enable access to the Product Territory Alignment
+Partner Hierarchy.
+
+`enableProdTerrAvlRecSharing` boolean Indicates whether to enable sharing of available records for Product
+Territories.
+
+`enableProviderSummarization` boolean Indicates whether to enable data summarization for provider records.
+
+`enableSampleLimits` boolean Indicates whether to enable sample limits for product distribution.
+
+`enableTrialManagementRandomization` boolean Indicates whether Research Study Randomization is enabled for your
+org ( `true` ) or not ( `false` ). Using this feature, users can design and
+
+run randomization procedures for their clinical trials. The default value
+is `false` . Available in API version 61.0 and later.
+
+`enableVisitInventoryEnabled` boolean Indicates whether to enable inventory tracking for visits.
+
+`enableVisitPlanningAndExecutionAction` boolean Indicates whether to enable actions for Visit Planning and Execution.
+
+`enableWaitlistManagementPref` boolean Indicates whether to enable preferences for Waitlist Management.
+
+
+Metadata Types IndustriesSettings
+
+Fields for Automotive Cloud
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableCriteriaBasedSearchAndFilter` boolean
+
+Fields for Net Zero Cloud
+
+Indicates whether Criteria-Based Search and Filter is enabled for your
+org. The default is `false` . This field is available in editions where
+Automotive Cloud is enabled.
+
+**Field Name** **Description**
+
+```
+enableGnrcDisclsFrmwrk
+
+enableInformationLibrary
+
+enableMaterialityAssessment
+
+enableNZCMngEsgPgm
+
+enableSCAssignFootprint
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Industries Disclosure and Compliance Hub feature
+is enabled ( `true` ) or not ( `false` ) for your org. The default is `false` .
+Available in API version 57.0 and later in editions where Disclosure and
+Compliance Hub is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Information Library feature is enabled for your org.
+The default is `false` . Available in API version 59.0 and later in editions
+where Disclosure and Compliance Hub is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Materiality Assessments feature is enabled
+for your org. The default is `false` . Available in API version 59.0 and later
+in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Environmental, Social, and Governance
+Programs feature is enabled for your org. The default is `false` . Available
+in API version 59.0 and later in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether the Assign Carbon Footprint to Energy Use Records
+feature is enabled for your org. The default is `false` . Available in API
+version 54.0 and later in editions where Net Zero Cloud is enabled.
+
+```
+enableSCBEIEnabled
+
+enableSCCarbonAccounting
+
+enableSCCarbonCreditAlloc
+
+enableSCCreateFootprint
+
+enableSCDGF
+
+enableSCExpansionUseCase
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Building Energy Intensity feature is enabled
+for your org. The default is `false` . Available in API version 54.0 and later
+in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Carbon Accounting feature is enabled for
+your org. The default is `false` . Available in API version 54.0 and later in
+editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Allocate Carbon Credits to offset the unavoidable
+emissions feature is enabled for your org. The default is `false` . Available
+in API version 56.0 and later in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Auto-Create Carbon Footprints feature is enabled
+for your org. The default is `false` . Available in API version 54.0 and later
+in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Data Gaps feature is enabled for your org.
+The default is `false` . Available in API version 54.0 and later in editions
+where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether the Manage Carbon Accounting for Extended
+Organizational Boundaries feature is enabled for your org. The default is
+`false` . Available in API version 57.0 and later in editions where Net Zero
+Cloud is enabled.
+
+```
+enableSCExternalEngMgmt
+
+enableSCEmssnsForecasting
+
+enableSCSNGManagement
+
+enableSCScope3HubEnabled
+
+enableSCTargetSetting
+
+enableSCWasteManagement
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Supplier Sustainability Data feature is
+enabled for your org. The default is `false` . Available in API version 54.0
+and later in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Carbon Emissions Forecast feature is
+enabled for your org. The default is `false` . Available in API version 54.0
+and later in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Social and Governance feature is enabled
+for your org. The default is `false` . Available in API version 57.0 and later
+in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Scope 3 Procurement Hub feature is
+enabled for your org. The default is `false` . Available in API version 54.0
+and later in editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Emissions Target feature is enabled for
+your org. The default is `false` . Available in API version 54.0 and later in
+editions where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether the Manage Waste-Related Data feature is enabled for
+your org. The default is `false` . Available in API version 54.0 and later in
+editions where Net Zero Cloud is enabled.
+
+```
+enableSCWaterManagement
+
+enableSustainabilityCloud
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Manage Water-Related Data feature is enabled for
+your org. For example, water consumption, withdrawal, and discharge.
+The default is `false` . Available in API version 56.0 and later in editions
+where Net Zero Cloud is enabled.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Net Zero Cloud feature is enabled for your org. The
+default is `false` . Available in API version 54.0 and later in editions where
+Net Zero Cloud is enabled.
+
+Fields for Public Sector Solutions Features
+
+Industries settings for Public Sector Solutions features are available in API version 57.0 and later.
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableBenefitAndGoalSharingPref` boolean
+
+`enableBenefitManagementPreference` boolean
+
+`enableCarePlansPreference` boolean
+
+Indicates whether the benefit and goal sharing feature is enabled for
+your org. The default is `false` . Available in editions where Public
+Sector Solutions is enabled.
+
+Indicates whether the program and benefit management feature is
+enabled for your org. The default is `false` . Available in editions
+where Public Sector Solutions is enabled.
+
+Indicates whether the care plan feature is enabled for your org. The
+care plan feature lets you create and edit care plans. The default is
+`false` . Available in editions where Public Sector Solutions is enabled.
+
+This field is available in API version 58.0 and later.
+
+`enableEnhancedUIForISPref` Indicates whether the enhanced interaction note interface feature is
+enabled for your org. The enhanced interaction note interface is a
+
+single guided flow that enables you to seamlessly create meeting
+notes; add interaction details, attendees, and interest tags; and share
+the notes with other users. The default is `false` . Available in editions
+where Public Sector Solutions is enabled.
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+This field is available in API version 61.0 and later.
+
+Fields for Salesforce Scheduler
+
+**Field Name** **Field Type** **Description**
+
+`appointmentDistributionOrgPref` boolean
+
+`captureResourceUtilizationOrgPref` boolean
+
+Indicates whether to schedule appointments for service resources based
+on appointment distribution ( `true` ) or not ( `false` ). The default value
+is `false` . Available in API version 52.0 and later.
+
+Indicates whether to use a background process to calculate the usage
+of service resources from service appointments ( `true` ) or not ( `false` ).
+The default value is `false` . Available in API version 52.0 and later.
+
+`enableAnyResourceTypeOrgPref` boolean Indicates whether to enable Salesforce Scheduler to consider service
+resource records with Agent resource type ( `true` ) or not ( `false` ).
+
+Before enabling this setting, create a service resource record as Main for
+each user, or update one of the service resource records as Main for each
+user. The default value is `false` . Available in API version 57.0 and later.
+
+`enableAppFrmAnywhereOrgPref` boolean Indicates whether to use engagement channels for setting up shifts,
+work types, and booking a service appointment ( `true` ) or not ( `false` ).
+
+The default value is `false` . Available in API version 56.0 and later. See
+[the prerequisites before you enable this setting.](https://help.salesforce.com/s/articleView?id=platform.ls_prereqs_for_using_engagement_channels.htm&type=5&language=en_US)
+
+`enableBlockResourceAvailabilityOrgPref` boolean Indicates whether Salesforce Scheduler service appointments are added
+to users' Salesforce calendars. For example, if set to `false`, users don’t
+
+see their service appointments on their calendars. The default is `false` .
+Available in API version 47.0 and later.
+
+This setting is used in Financial Services Cloud.
+
+`enableCapacitySchedulingPref` boolean Indicates whether users can use capacity-based scheduling ( `true` ) or
+not ( `false` ). Use capacity-based scheduling to control the number of
+
+appointments that can be scheduled for a given shift and type of work.
+[Available in API version 62.0 and later. See the prerequisite before you](https://help.salesforce.com/s/articleView?id=platform.ls_prereqs_capacity_based_scheduling.htm&language=en_US)
+enable this setting.
+
+`enableCreateMultiAttendeeEventOrgPref` boolean Indicates whether users can group individual events, and view the list
+of all attendees under a single event `true` or not `false` . The default
+
+is `false` [. See the prerequisites before you enable this setting. Available](https://help.salesforce.com/s/articleView?id=platform.ls_prereqs_multiple_attendee_event.htm&type=5&language=en_US)
+in API version 55.0 and later.
+
+This setting is used in Financial Services Cloud.
+
+`enableDropInAppointmentsOrgPref` boolean
+
+Indicates whether users can manage drop-in participants ( `true` ) or not
+( `false` ). The default value is `false` . Available in API version 58.0 and
+[later. See the prerequisite before you enable this setting.](https://help.salesforce.com/s/articleView?id=platform.ls_prereqs_drop_in_appointments.htm&type=5&language=en_US)
+
+
+Metadata Types IndustriesSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableDropInSkillMatchingOrgPref` boolean Indicates whether skill and skill level matching is enabled for service
+resources that are assigned to waitlists for a service territory ( `true` ) or
+
+not ( `false` ). The default value is `false` . Available in API version 58.0
+and later.
+
+`enableEventManagementOrgPref` boolean
+
+Indicates whether users can add Salesforce Scheduler service
+appointments to their Salesforce calendars. The default is `false` .
+Available in API version 47.0 and later.
+
+This setting is used in Financial Services Cloud.
+
+`enableEventWriteOrgPref` boolean Indicates whether to publish high-volume platform events when users
+create, update, or delete service appointments in Salesforce Scheduler
+
+( `true` ) or not ( `false` ). If enabled, write these events to an external
+system to update it with Salesforce Scheduler service appointments. The
+default value is `false` . Available in API version 49.0 and later.
+
+`enableMultipleTopicsForShiftsOrgPref` boolean
+
+`enableMultiResourceOrgPref` boolean
+
+Indicates whether the multiple topics for shifts feature is enabled ( `true` )
+or disabled ( `false` ). The default value is `false` . Available in API
+[version 56.0 and later. See the prerequisite before you enable this setting.](https://help.salesforce.com/s/articleView?id=sf.ls_prereqs_multiple_topics_to_shifts.htm&language=en_US)
+
+Indicates whether users can add multiple service resources to a service
+appointment. The default is `false` Available in API version 47.0 and
+later.
+
+This setting is used in Financial Services Cloud.
+
+`enableOverbookingOrgPref` boolean Indicates whether users can add multiple service appointments to a
+single time slot for a service resource. If set to `false`, concurrent time
+
+slots are visible, but can't be modified. The default is `false` Available
+in API version 47.0 and later.
+
+This setting is used in Financial Services Cloud.
+
+`enableShareSaWithArOrgPref` boolean
+
+Indicates whether to share service appointments with assigned resources
+( `true` ) or not ( `false` ). The default value is `false` . Available in API
+version 55.0 and later.
+
+`enableTopicOrTemplate` boolean Indicates whether to use Salesforce Scheduler to manage Health Cloud
+appointments ( `true` ) or not ( `false` ). The default value is `false` .
+
+You must enable the `enableTopicTimeSlot` field before enabling
+this setting. Available in API version 52.0 and later.
+
+`enableTopicTimeSlot` boolean
+
+Indicates whether to set operating hours for Service Territory Members
+for Work Type Groups ( `true` ) or not ( `false` ). The default value is
+`false` . Available in API version 52.0 and later.
+
+[See the prerequisites before you enable this setting. After you enable](https://help.salesforce.com/s/articleView?id=platform.ls_prereqs_operating_hours_for_resources_working_on_appointment_topics.htm&type=5&language=en_US)
+this setting, you can't disable it.
+
+
+Metadata Types IndustriesSettings
+
+Fields for Education Cloud
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableEducationCloud` boolean
+
+`enableStudentSuccess` boolean
+
+`enableAcademicOperations` boolean
+
+`enableAlumniRelations` boolean
+
+`enableMentoring` boolean
+
+`enableAdvancementGenAI` boolean
+
+`enableAdvisingAgent` boolean
+
+Indicates whether Education Cloud is enabled in Salesforce (true) or
+not (false). The default is `false` . Available in API version 57.0 and
+later in Developer, Enterprise, Performance and Unlimited editions.
+
+Indicates whether Student Success is enabled in Salesforce (true) or
+not (false). The default is `false` . Available in API version 58.0 and
+later in Developer, Enterprise, Performance and Unlimited editions.
+
+Indicates whether Academic Operations is enabled in Salesforce (true)
+or not (false). The default is `false` . Available in API version 59.0 and
+later in Developer, Enterprise, Performance and Unlimited editions.
+
+Indicates whether Alumni Relations is enabled (true) or not (false).
+The default is `false` . Available in API version 59.0 and later in
+Developer, Enterprise, Performance and Unlimited editions.
+
+Indicates whether Mentoring is enabled (true) or not (false). The default
+is `false` . Available in API version 60.0 and later in Developer,
+Enterprise, Performance and Unlimited editions.
+
+Indicates whether Advancement Generative AI features are enabled
+for Education Cloud. The default is false. Available in API version 64.0
+and later in Developer, Enterprise, Performance and Unlimited editions.
+
+Indicates whether the Advising Agent feature is enabled for Education
+Cloud. The default is false. Available in API version 64.0 and later in
+Developer, Enterprise, Performance and Unlimited editions.
+
+`enableEduAdvncdAcadOper` boolean Indicates whether Advanced Academic Operations features are
+enabled for Education Cloud. The default is false. Available in API
+
+version 64.0 and later in Developer, Enterprise, Performance and
+Unlimited editions.
+
+`enableStudentRecruitmentAgent` boolean
+
+Fields for Nonprofit Cloud
+
+Indicates whether the Student Recruitment Agent feature is enabled
+for Education Cloud. The default is false. Available in API version 64.0
+and later in Developer, Enterprise, Performance and Unlimited editions.
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enableGiftEntryGrid` boolean Indicates whether the Gift Entry Grid feature is enabled for Nonprofit
+Cloud. The default is false. Available in API version 64.0 and later.
+
+
+#### Metadata Types InterestTaggingSettings
+
+**Field Name** **Field** **Description**
+**Type**
+
+`enablePhilResearchAgent` boolean
+
+Declarative Metadata Sample Definition
+
+Indicates whether the Philanthropic Research Agent feature is enabled
+for Nonprofit Cloud. The default is false. Available in API version 64.0
+and later.
+
+The following is an example of an Industries.Settings metadata file.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IndustriesSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <enableCreateMultiAttendeeEventOrgPref>true</enableCreateMultiAttendeeEventOrgPref>
+
+   <enableEventManagementOrgPref>true</enableEventManagementOrgPref>
+
+   <enableMultiResourceOrgPref>false</enableMultiResourceOrgPref>
+
+   <enableOverbookingOrgPref>true</enableOverbookingOrgPref>
+
+   <enableBlockResourceAvailabilityOrgPref>true</enableBlockResourceAvailabilityOrgPref>
+
+  <enableAccessToMasterListOfCoverageTypes>true</enableAccessToMasterListOfCoverageTypes>
+
+   <enableManyToManyRelationships>true</enableManyToManyRelationships>
+
+<allowMultipleProducersToWorkOnSamePolicy>false</allowMultipleProducersToWorkOnSamePolicy>
+
+   <enableMortgageRlaTotalsOrgPref>true</enableMortgageRlaTotalsOrgPref>
+
+   <enableObjectDetection>true</enableObjectDetection>
+
+   <enableProviderSearchSyncOrgPref>true</enableProviderSearchSyncOrgPref>
+
+   <enableReferralScoring>true</enableReferralScoring>
+
+   <enableFSCInsuranceReport>true</enableFSCInsuranceReport>
+
+   <enableSCCarbonAccounting>true</enableSCCarbonAccounting>
+
+   <enableBenefitAndGoalSharingPref>true</enableBenefitAndGoalSharingPref>
+
+   <enableBenefitManagementPreference>true</enableBenefitManagementPreference>
+
+   <enableCarePlansPreference>true</enableCarePlansPreference>
+
+</IndustriesSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>Industries</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>47.0</version>
+
+</Package>
+
+#### InterestTaggingSettings
+
+```
+
+Represents settings for Interest Tags, which your users can add to client records to capture client needs, interests, and prospecting
+opportunities.
+
+
+Metadata Types InterestTaggingSettings
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+`InterestTaggingSettings` values are stored in the `InterestTagging.settings` file in the `settings` folder. The
+`.settings` files are different from other named components, because there’s only one settings file for each settings component.
+
+Version
+
+InterestTaggingSettings components are available in API version 54.0 and later.
+
+Special Access Rules
+
+Before you enable Interest Tags, you must enable Topics for Financial Services Cloud objects and assign Interest Tags permissions to
+[users. See Interest Tags.](https://developer.salesforce.com/docs/atlas.en-us.260.0.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_interest_tags.htm)
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableInterestTagging
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Enables Interest Tags in your org when set to `true` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of an InterestTaggingSettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<InterestTaggingSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <enableInterestTagging>true</enableInterestTagging>
+
+</InterestTaggingSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>InterestTagging</members>
+
+     <name>Settings</name>
+
+   </types>
+
+</Package>
+
+```
+
+
+#### Metadata Types InventorySettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### InventorySettings
+
+Represents options for the Salesforce Omnichannel Inventory product.This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### InventorySettings values are stored in the Inventory.settings file in the settings directory. The .settings files are
+
+different from other named components because there is only one settings file for each settings component.
+
+Version
+
+Inventory settings are available in API version 51 and later.
+
+Special Access Rules
+
+This metadata type is only accessible by developers and customers using Salesforce Omnichannel Inventory.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableOCIB2CIntegration` boolean
+
+Indicates whether Omnichannel Inventory is allowed to exchange
+inventory data with B2C Commerce ( `true` ) or not ( `false` ). The default
+value is `false` .
+
+`enableOmniChannelInventory` boolean Indicates whether Omnichannel Inventory features are enabled ( `true` )
+or not ( `false` ). The default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of an InventorySettings component.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<InventorySettings xmlns="http://soap.sforce.com/2006/04/metadata"
+
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <enableOmniChannelInventory>true</enableOmniChannelInventory>
+
+   <enableOCIB2CIntegration>true</enableOCIB2CIntegration>
+
+   </InventorySettings>
+
+```
+
+
+#### Metadata Types InvLatePymntRiskCalcSettings
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>Inventory</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>51.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### InvLatePymntRiskCalcSettings
+
+Represents the org’s settings to identify the level of risks associated with payment of invoices.
+
+Parent Type and Manifest Access
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### InvLatePymntRiskCalcSettings values are stored in the InvLatePymntRiskCalc.settings file in the settings
+
+folder. The `.settings` files are different from other named components, because there’s only one settings file for each settings
+component.
+
+Version
+
+#### InvLatePymntRiskCalcSettings components are available in API version 55.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableInvLatePymntRiskCalc
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates the level of risk associated with payment of
+an invoice when the value is `true` .
+
+
+#### Metadata Types InvocableActionSettings
+
+Declarative Metadata Sample Definition
+
+Theis example shows a sample InvLatePymntRiskCalcSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <InvLatePymntRiskCalcSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableInvLatePymntRiskCalc>true</enableInvLatePymntRiskCalc>
+
+   </InvLatePymntRiskCalcSettings>
+
+```
+
+This example shows a sample `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>InvLatePymntRiskCalc</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version> 66.0 </version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The wildcard
+applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the manifest
+file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### InvocableActionSettings
+
+Represents the org’s invocable action settings, such as whether partial save is allowed.This type extends the Metadata metadata type
+and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### InvocableActionSettings values are stored in the InvocableAction.settings file in the settings directory. The .settings
+
+files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### InvocableActionSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`isPartialSaveAllowed` boolean Indicates whether partial save is enabled for most invocable actions that
+are invoked via REST API and executed in bulk. When the value is `true`,
+
+Salesforce tries three times to execute invocable actions that run
+successfully and rolls back only the invocable actions that fail to execute.
+This functionality is called partial save. If the field is set to `false`, if one
+
+
+#### Metadata Types KnowledgeSettings
+
+**Field Name** **Field Type** **Description**
+
+invocable action fails, Salesforce rolls back other invocable actions in the
+same transaction and the entire transaction fails.
+
+Corresponds to the Enable Partial Save for Invocable Actions critical
+update.
+
+Declarative Metadata Sample Definition
+
+The following is an example of the InvocableAction.settings file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <InvocableActionSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <isPartialSaveAllowed>false</isPartialSaveAllowed>
+
+   </InvocableActionSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>InvocableAction</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>47.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### KnowledgeSettings
+
+Represents the metadata used to manage settings for Salesforce Knowledge.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### KnowledgeSettings values are stored in a single file named Knowledge.settings in the settings directory. The .settings
+
+files are different from other named components because there’s only one settings file for each settings component.
+
+
+Metadata Types KnowledgeSettings
+
+Version
+
+KnowledgeSettings is available in API version 27.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`answers` KnowledgeAnswerSettings Represents the metadata used to manage settings
+for Salesforce Knowledge and Answers.
+
+`cases` KnowledgeCaseSettings Represents the metadata used to manage settings
+for Salesforce Knowledge and Cases.
+
+`defaultLanguage` string Required. The default language for Salesforce
+Knowledge. Use the abbreviation for the
+
+language, for example, en_US for United States
+English.
+
+`enableChatterQuestionKBDeflection` boolean Indicates whether tracking for case deflection via
+Chatter is enabled ( `true` ) or not ( `false` ).
+
+`enableCreateEditOnArticlesTab` boolean
+
+Indicates whether users can create and edit
+articles on the articles tab ( `true` ) or not
+( `false` ).
+
+`enableExternalMediaContent` boolean Indicates whether connecting to external media
+is enabled ( `true` ) or not ( `false` ).
+
+`enableKbStandardSharing` boolean Indicates whether standard Salesforce sharing is
+enabled ( `true` ) or not ( `false` ).
+
+`enableKnowledge` boolean
+
+Indicates whether Salesforce Knowledge is
+enabled ( `true` ) or not ( `false` ). This field is
+`false` by default.
+
+`enableKnowledgeAgentContribution` boolean Indicates whether a user can create an article from
+a case ( `true` ) or not ( `false` ). (Classic only)
+
+`enableKnowledgeArticleTextHighlights` boolean Indicates whether text snippet highlights in
+Salesforce Knowledge search results are enabled
+
+( `true` ) or not ( `false` ). This field is `true` by
+default. Available in API version 47.0 and later.
+
+`enableKnowledgeAnswersPromotion` boolean Indicates whether a user can create an article from
+a reply ( `true` ) or not ( `false` ). (Classic Only)
+
+`enableKnowledgeCaseRL` boolean
+
+Indicates whether creating a list of cases linked
+to an article is enabled ( `true` ) or not ( `false` ).
+(Classic Only)
+
+`enableKnowledgeKeywordAutoComplete` boolean Indicates whether auto-complete for keywords
+is enabled ( `true` ) or not ( `false` ) when
+
+searching Salesforce Knowledge. This field is
+
+
+Metadata Types KnowledgeSettings
+
+**Field Name** **Field Type** **Description**
+
+`true` by default. Available in API version 47.0
+and later.
+
+`enableKnowledgeTitleAutoComplete` boolean Indicates whether auto-complete for article titles
+is enabled ( `true` ) or not ( `false` ) when
+
+searching Salesforce Knowledge. This field is
+`true` by default. Available in API version 47.0
+and later.
+
+`enableLightningKbAutoLoadRichTextField` boolean Indicates whether rich text fields are enabled for
+editing when an article loads in Lightning
+
+Knowledge ( `true` ) or not ( `false` ). This field is
+`false` by default. Available in API version 47.0
+and later.
+
+`enableLightningKnowledge` boolean Indicates whether Lightning Knowledge is
+enabled ( `true` ) or not ( `false` ).
+
+`languages` KnowledgeLanguageSettings A list of languages enabled for Salesforce
+Knowledge.
+
+`showArticleSummariesCustomerPortal` boolean Indicates whether article summaries appear in
+the Customer Portal ( `true` ) or not ( `false` ).
+
+`showArticleSummariesInternalApp` boolean
+
+Indicates whether article summaries appear in
+the internal knowledge base ( `true` ) or not
+( `false` ).
+
+`showArticleSummariesPartnerPortal` boolean Indicates whether article summaries appear in
+the partner portal ( `true` ) or not ( `false` ).
+
+`showValidationStatusField` boolean Indicates whether validation status appears on
+articles ( `true` ) or not ( `false` ).
+
+`suggestedArticles` KnowledgeSuggestedArticlesSettings
+
+`votingEnabled` boolean
+
+KnowledgeAnswerSettings
+
+Represents the metadata used to manage settings
+for the case fields used to suggest articles for
+cases. Available in API version 37.0 and later.
+
+When `true`, enables users to vote for a product
+or feature that uses Vote, such as Articles in
+Knowledge. Available in API version 50.0 and later.
+
+Represents the metadata used to manage settings for Salesforce Knowledge and Answers.
+
+**Field Name** **Field Type** **Description**
+
+`assignTo` string Specifies the username an article is assigned to from Answers.
+
+`defaultArticleType` string The default article type for articles created from Answers. Uses the API
+name of the article type.
+
+
+Metadata Types KnowledgeSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableArticleCreation` boolean Indicates whether users can create articles from Answers ( `true` ) or not
+( `false` ).
+
+KnowledgeCaseSettings
+
+Represents the metadata used to manage settings for Salesforce Knowledge and Cases.
+
+**Field Name** **Field Type** **Description**
+
+`articlePDFCreationProfile` string The profile used to create a PDF of an article from
+Cases.
+
+`articlePublicSharingSites` KnowledgeSitesSettings Represents the metadata used to manage settings
+for Salesforce Knowledge and Sites.
+
+`articlePublicSharingCommunities` KnowledgeSitesSettings
+
+`articlePublicSharingSitesChatterAnswers` KnowledgeSitesSettings
+
+Represents the metadata used to manage settings
+for Salesforce Knowledge and Experience Cloud
+sites.
+
+Represents the metadata used to manage settings
+for Salesforce Knowledge and Sites with Chatter
+Answers.
+
+`assignTo` string Specifies the username an article is assigned to from
+Cases.
+
+`customizationClass` string Specifies the Apex class used for customization.
+
+`defaultContributionArticleType` string The default article type for articles created from
+Cases.
+
+`editor` KnowledgeCaseEditor Indicates the rich text editor type. Valid values are:
+(enumeration of type string)
+
+**•** `simple`
+
+**•** `standard`
+
+`enableArticleCreation` boolean
+
+Indicates whether users can create articles from
+Cases ( `true` ) or not ( `false` ). Controls whether
+other fields on KnowledgeCaseSettings can be set.
+
+`enableArticlePublicSharingSites` boolean Indicates whether articles can be shared via a public
+site (URL) from Cases ( `true` ) or not ( `false` ).
+
+`enableCaseDataCategoryMapping` boolean Indicates whether Case Data Category mapping is
+enabled ( `true` ) or not ( `false` ).
+
+`useProfileForPDFCreation` boolean Indicates whether a profile is used to create a PDF
+of an article from Cases ( `true` ) or not ( `false` ).
+
+
+Metadata Types KnowledgeSettings
+
+KnowledgeSitesSettings
+
+Represents the metadata used to manage settings for Salesforce Knowledge and Sites.
+
+**Field Name** **Field Type** **Description**
+
+`site` string[] Specifies the site used for Salesforce Knowledge and Sites.
+
+KnowledgeLanguageSettings
+
+A list of languages enabled for Salesforce Knowledge. KnowledgeLanguageSettings is available in API version 28.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`language` KnowledgeLanguage[] Represents the metadata used to manage settings for
+the languages enabled for Salesforce Knowledge.
+
+KnowledgeLanguage
+
+Represents the metadata used to manage settings for the languages enabled for Salesforce Knowledge. KnowledgeLanguage is available
+in API version 28.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`active` boolean Indicates whether the language is enabled ( `true` ) or
+not ( `false` ).
+
+`defaultAssignee` string The default assignee for articles in the language.
+
+`defaultAssigneeType` KnowledgeLanguageLookupValueType Indicates the default assignee type. Valid values are:
+(enumeration of type string)
+
+**•** `User`
+
+**•** `Queue`
+
+`defaultReviewer` string The default reviewer for articles in the language.
+
+`defaultReviewerType` KnowledgeLanguageLookupValueType Indicates the default reviewer type. Valid values are:
+(enumeration of type string)
+
+**•** `User`
+
+**•** `Queue`
+
+`name` string The code for the language name, for example: English
+is `en` . See “What languages does Salesforce support?”
+
+in the Salesforce Help for a list of supported languages
+and their codes.
+
+KnowledgeSuggestedArticlesSettings
+
+Represents the metadata used to manage settings for the articles suggested for cases, work orders, and work order line items. The Work
+Order and Work Order Line Item objects must be enabled in the org to use the associated fields.
+
+
+Metadata Types KnowledgeSettings
+
+**Field Name** **Field Type** **Description**
+
+`caseFields` KnowledgeCaseFieldsSettings Represents a list of the case fields used to suggest
+articles for the case.
+
+`useSuggestedArticlesForCase` boolean Indicates whether case content is used to suggest
+articles for cases (true) or not (false).
+
+`workOrderFields` KnowledgeWorkOrderFieldsSettings Represents a list of the work order fields used to
+suggest articles for the work order.
+
+`workOrderLineItemFields` KnowledgeWorkOrderLineItemFieldsSettings Represents a list of the work order line item fields used
+to suggest articles for the work order line item.
+
+KnowledgeCaseFieldsSettings
+
+Represents a list of the case fields used to suggest articles for the case. Available in API version 37.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`field` KnowledgeCaseField[] Specifies the names of the case fields used to suggest
+articles for the case.
+
+KnowledgeCaseField
+
+Represents the name of the case field used to suggest articles for the case. Available in API version 37.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`name` string Specifies the name of the case field used to suggest
+articles for the case.
+
+KnowledgeWorkOrderFieldsSettings
+
+Represents a list of the work order fields used to suggest articles for the work order. Available in API version 39.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`field` KnowledgeWorkOrderField[] Specifies the names of the work order fields used to
+suggest articles for the work order.
+
+KnowledgeWorkOrderField
+
+Represents the name of the work order field used to suggest articles for the work order. Available in API version 39.0 and later.
+
+**Field Name** **Field Type** **Description**
+
+`name` string Specifies the name of the work order field used to
+suggest articles for the work order.
+
+
+Metadata Types KnowledgeSettings
+
+KnowledgeWorkOrderLineItemFieldsSettings
+
+Represents a list of the work order line item fields used to suggest articles for the work order line item. Available in API version 39.0 and
+later.
+
+**Field Name** **Field Type** **Description**
+
+`field` KnowledgeWorkOrderLineItemField[] Specifies the names of the work order line item fields
+used to suggest articles for the work order line item.
+
+KnowledgeWorkOrderLineItemField
+
+Represents the name of the work order line item field used to suggest articles for the work order line item. Available in API version 39.0
+and later.
+
+**Field Name** **Field Type** **Description**
+
+`name` string Specifies the name of the work order line item field
+used to suggest articles for the work order line item.
+
+Declarative Metadata Sample Definition
+
+This is a sample Knowledge settings file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <KnowledgeSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <answers>
+
+        <enableArticleCreation>false</enableArticleCreation>
+
+      </answers>
+
+      <cases>
+
+        <articlePDFCreationProfile>partner portal knowledge
+
+   profile</articlePDFCreationProfile>
+
+        <articlePublicSharingSites>
+
+           <site>KnowledgeSite</site>
+
+           <site>PKB2Site</site>
+
+           <site>ChatterAnswersSite</site>
+
+        </articlePublicSharingSites>
+
+        <articlePublicSharingSitesChatterAnswers>
+
+           <site>ChatterAnswersSite</site>
+
+        </articlePublicSharingSitesChatterAnswers>
+
+        <assignTo>testall@kb.org</assignTo>
+
+        <defaultContributionArticleType>Support</defaultContributionArticleType>
+
+        <editor>simple</editor>
+
+        <enableArticleCreation>true</enableArticleCreation>
+
+        <enableArticlePublicSharingSites>true</enableArticlePublicSharingSites>
+
+        <useProfileForPDFCreation>true</useProfileForPDFCreation>
+
+      </cases>
+
+      <defaultLanguage>ja</defaultLanguage>
+
+      <enableCreateEditOnArticlesTab>true</enableCreateEditOnArticlesTab>
+
+      <enableExternalMediaContent>true</enableExternalMediaContent>
+
+      <enableKnowledge>true</enableKnowledge>
+
+      <showArticleSummariesCustomerPortal>true</showArticleSummariesCustomerPortal>
+
+```
+
+
+#### Metadata Types LanguageSettings
+
+```
+      <showArticleSummariesInternalApp>true</showArticleSummariesInternalApp>
+
+      <showArticleSummariesPartnerPortal>true</showArticleSummariesPartnerPortal>
+
+      <showValidationStatusField>true</showValidationStatusField>
+
+      <suggestedArticles>
+
+       <caseFields>
+
+         <field>
+
+           <name>Subject</name>
+
+         </field>
+
+         <field>
+
+           <name>SuppliedEmail</name>
+
+         </field>
+
+       </caseFields>
+
+       <useSuggestedArticlesForCase>true</useSuggestedArticlesForCase>
+
+      </suggestedArticles>
+
+   </KnowledgeSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### LanguageSettings
+
+Represents an organization’s language settings. Language settings control end-user language selection, locale formats, and translation
+options. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### LanguageSettings values are stored in the Language.settings file in the settings directory. The .settings files are
+
+different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### LanguageSettings is available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableCanadaIcuFormat` boolean Indicates whether the ICU format is enabled for the en_CA locale ( `true` )
+or not ( `false` ). This field has a default value of `true` for orgs created
+
+in API version 47.0 and later. Orgs created prior to API version 47.0 have
+a default of `false` .
+
+`enableDataTranslation` boolean
+
+Indicates whether data translation is enabled ( `true` ) or not ( `false` ).
+This field has a default value of `false` . This field is available in API
+version 49.0 and later.
+
+
+Metadata Types LanguageSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableEndUserLanguages` boolean Indicates whether end-user languages are enabled ( `true` ) or not
+( `false` ). This field has a default value of `false` .
+
+`enableICULocaleDateFormat` boolean Indicates whether date and currency are formatted with the International
+Components for Unicode ( `true` ) or not ( `false` ). This field has a default
+
+value of `true` for orgs created in API version 47.0 and later. Orgs created
+prior to API version 47.0 have a default of `false` .
+
+[See Go Global with New International Locale Formats for more](https://help.salesforce.com/articleView?id=icu_migration_overview.htm&language=en_US)
+information.
+
+`enableLanguageExtensionPackage` boolean Indicates whether the org has enabled language extension packages
+`(beta)` ( `true` ) or not ( `false` ). Language extension packages contain
+translations of components in other packages. This field has a default
+value of `false` . This field is available in API version 58.0 and later.
+
+Note: enableLanguageExtensionPackage (beta) is a pilot or beta
+[service that is subject to the Beta Services Terms at Agreements](https://www.salesforce.com/company/legal/agreements/)
+
+[- Salesforce.com or a written Unified Pilot Agreement if executed](https://www.salesforce.com/company/legal/agreements/)
+[by Customer, and applicable terms in the Product Terms Directory.](https://ptd.salesforce.com/)
+Use of this pilot or beta service is at the Customer's sole discretion.
+
+`enableLocaleInsensitiveFiltering` boolean Indicates whether users can filter query results, regardless of the locale
+or language associated with the user ( `true` ) or if they can’t filter results
+
+( `false` ). This field has a default value of `false` . This field is available
+in API version 56.0 and later.
+
+`enableLocalNamesForStdObjects` boolean
+
+`enablePlatformLanguages` boolean
+
+Indicates whether local name fields can be defined for standard objects
+( `true` ) or not ( `false` ). This field has a default value of `false` . This
+field is available in API version 48.0 and later.
+
+Indicates whether platform-only languages are enabled ( `true` ) or not
+( `false` ). This field has a default value of `false` . Setting this field to
+`true` also sets `enableEndUserLanguages` to `true` .
+
+`enableTranslationWorkbench` boolean Indicates whether the Translation Workbench is enabled ( `true` ) or not
+( `false` ). This field has a default value of `false` .
+
+`useLanguageFallback` boolean
+
+Indicates whether translation follows the language fallback rule ( `true` )
+or returns the primary label ( `false` ). This field has a default value of
+`true` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a LanguageSettings file.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LanguageSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <enableCanadaIcuFormat>true</enableCanadaIcuFormat>
+
+   <enableDataTranslation>false</enableDataTranslation>
+
+   <enableEndUserLanguages>true</enableEndUserLanguages>
+
+```
+
+
+#### Metadata Types LeadConfigSettings
+
+```
+      <enableICULocaleDateFormat>true</enableICULocaleDateFormat>
+
+      <enableLocalNamesForStdObjects>false</enableLocalNamesForStdObjects>
+
+      <enablePlatformLanguages>false</enablePlatformLanguages>
+
+      <enableTranslationWorkbench>true</enableTranslationWorkbench>
+
+      <useLanguageFallback>true</useLanguageFallback>
+
+   </LanguageSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>Language</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>49.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### LeadConfigSettings
+
+Represents configuration settings for Leads that control how they are converted and displayed, and what actions are available. This type
+extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### LeadConfigSettings values are stored in the LeadConfig.settings file in the settings folder. The .settings files are
+
+different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### LeadConfigSettings is available in API versions 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`doesEnableLeadConvertDefaultSubjectBlankTaskCreation` boolean
+
+Configures whether tasks without a subject are created during lead
+conversion. If `true`, tasks are created when the default subject field
+has no value. If `false`, only tasks with a subject are created.
+
+
+Metadata Types LeadConfigSettings
+
+**Field Name** **Field Type** **Description**
+
+`doesHideOpportunityInConvertLeadWindow` boolean
+
+Hides the opportunity section of the Convert Lead window during the
+conversion of a lead.
+
+Default value is `false` .
+
+`doesPreserveLeadStatus` boolean If your organization uses record types, the lead status changes to the
+lead status value of the new owner's record type during conversion. Set
+
+`doesPreserveLeadStatus` to `true` to preserve the value of
+the lead status during conversion.
+
+Orgs that use record types can create a lead process that allows different
+lead status values for different record types. If
+`doesPreserveLeadStatus` is `false`, the lead status might
+change during lead conversion if the new owner's record type has a
+different default value for lead status.
+
+Default value is `true` .
+
+`doesSelectNoOpportunityOnConvertLead` boolean
+
+`doesTrackHistory` boolean
+
+`enableConversionsOnMobile` boolean
+
+`enableOrgWideMergeAndDelete` boolean
+
+`shouldLeadConvertRequireValidation` boolean
+
+`shouldSendNotificationEmailWhenLeadOwnerUpdatesViaApexInLEX` boolean
+
+Prevents an opportunity from being created when the lead is converted.
+
+Default value is `false` .
+
+Enables field history tracking for leads. When field history tracking is
+enabled, users can choose the fields they want to track.
+
+Default value is `false` .
+
+Lets a user convert leads on their mobile devices. The Convert Lead
+action converts qualified leads to contacts.
+
+Default value is `true` .
+
+Lets a user merge and delete leads. The user must also have the Public
+Read/Write/Transfer permission.
+
+Default value is `false` .
+
+Enforces validation rules when converting leads.
+
+Default value is `true` .
+
+Indicates whether an email notification is sent when the lead owner is
+updated through Apex in Lightning Experience.
+
+Default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of the LeadConfigSettings type:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LeadConfigSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+<doesEnableLeadConvertDefaultSubjectBlankTaskCreation>false</doesEnableLeadConvertDefaultSubjectBlankTaskCreation>
+
+```
+
+
+#### Metadata Types LeadConvertSettings
+
+```
+   <doesHideOpportunityInConvertLeadWindow>false</doesHideOpportunityInConvertLeadWindow>
+
+   <doesPreserveLeadStatus>true</doesPreserveLeadStatus>
+
+   <doesSelectNoOpportunityOnConvertLead>false</doesSelectNoOpportunityOnConvertLead>
+
+   <doesTrackHistory>false</doesTrackHistory>
+
+   <enableConversionsOnMobile>true</enableConversionsOnMobile>
+
+   <enableOrgWideMergeAndDelete>false</enableOrgWideMergeAndDelete>
+
+   <shouldLeadConvertRequireValidation>true</shouldLeadConvertRequireValidation>
+
+   <shouldSendNotificationEmailWhenLeadOwnerUpdatesViaApexInLEX>false</shouldSendNotificationEmailWhenLeadOwnerUpdatesViaApexInLEX>
+
+   </LeadConfigSettings>
+
+```
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the LeadConfig settings metadata for an organization:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <!-
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>LeadConfig</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>61.0</version>
+
+   </Package>
+
+#### LeadConvertSettings
+
+```
+
+Represents an organization’s custom field mappings for lead conversion. Custom fields can be mapped from Leads to Accounts, Contacts,
+and Opportunities. Options for creating opportunities during lead conversion can also be specified. This type extends the Metadata
+metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+#### LeadConvertSettings components have the suffix LeadConvertSetting and are stored in the LeadConvertSettings
+
+folder.
+
+Version
+
+#### LeadConvertSettings is available in API versions 39.0 and later.
+
+Fields
+
+**Field Name** **Description**
+
+```
+allowOwnerChange
+
+```
+
+**Field Type**
+boolean
+
+
+Metadata Types LeadConvertSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether to include the **Record Owner** field in the **Convert Lead** dialog box
+( `true` ) or not ( `false` ).
+
+```
+objectMapping
+
+opportunityCreationOptions
+
+```
+
+ObjectMapping
+
+**Field Type**
+
+ObjectMapping[]
+
+**Description**
+A set of custom field mappings between objects. Up to three `objectMapping`
+types can be declared—one each for account, contact, and opportunity.
+
+**Field Type**
+VisibleOrRequired (enumeration of type string)
+
+**Description**
+This field determines whether the **Opportunity** field is visible or required in the
+**Convert Lead** dialog box.
+
+Values are:
+
+**•** `VisibleOptional` —The **Opportunity** field is included in the dialog box but
+not required. A new opportunity is created if the user enters an opportunity name.
+This is the default value.
+
+**•** `VisibleRequired` —The **Opportunity** field is included in the dialog box
+and is required. A new opportunity is created based on the name the user enters.
+
+**•** `NotVisible` —The **Opportunity** field is not included in the dialog box. No
+opportunity is created.
+
+Represents a custom field mapping between two objects.
+
+**Field Name** **Description**
+
+```
+inputObject
+
+mappingFields
 
 ```
 
@@ -7703,64 +20834,51 @@ string
 
 Required.
 
-A user-friendly name for VirtualVisitConfig, which is defined when the VirtualVisitConfig
-is created.
+The name of the object type containing the source fields for mapping. The value is
+always `Lead` .
 
 **Field Type**
-string
+
+ObjectMappingField[]
 
 **Description**
-The region where the waiting room and messaging channel data is processed and
-stored. Available in API version 57.0 and later.
-
-**Field Type**
-string
-
-**Description**
-The named credential record used to authenticate and authorize a video call vendor’s
-account.
-
-**Field Type**
-string
-
-**Description**
-The name of the storage bucket that stores the meeting transcript.
-
-**Field Type**
-VirtualVisitUsageType (enumeration of type string)
-
-**Description**
-The name of the Salesforce feature for which the video call configuration record is
-created.
-
-Valid values are:
-
-**•** `CHIME`
-
-**•** `ENTITY_DETECTION`
-
-**•** `INTELLIGENT_FORM_READER`
-
-**•** `KEY_PHRASE_EXTRACTION`
-
-**•** `SENTIMENT_ANALYSIS`
-
-**Field Type**
-string
-
-**Description**
-The default Appointment Type picklist values from the Service Appointment object
-that represent a video appointment type. Use semicolons to separate multiple values.
+A set of input and output field names of the custom fields to be mapped.
 
 
-Metadata Types VirtualVisitConfig
+Metadata Types LeadConvertSettings
 
 **Field Name** **Description**
 
 ```
-videoControlRegion
+outputObject
 
-visitRegion
+```
+
+ObjectMappingField
+
+**Field Type**
+string
+
+**Description**
+
+Required.
+
+The object type receiving data during lead conversion.
+
+**•** `Account`
+
+**•** `Contact`
+
+**•** `Opportunity`
+
+Represents custom field names to be mapped between objects.
+
+**Field Name** **Description**
+
+```
+inputField
+
+outputField
 
 ```
 
@@ -7768,1691 +20886,434 @@ visitRegion
 string
 
 **Description**
-The region where API calls related to Video Calls are made. Available in API version
-57.0 and later.
+
+Required.
+
+The name of a custom lead field supplying source data during lead conversion.
 
 **Field Type**
-VirtualVisitVisitRegion (enumeration of type string)
+string
 
 **Description**
-The region where the Video Call audio and video data is processed.
 
-Valid values are:
+Required.
 
-**•** `af-south-1`
-
-**•** `ap-east-1`
-
-**•** `ap-northeast-1`
-
-**•** `ap-northeast-2`
-
-**•** `ap-northeast-3`
-
-**•** `ap-south-1`
-
-**•** `ap-southeast-1`
-
-**•** `ap-southeast-2`
-
-**•** `ca-central-1`
-
-**•** `eu-central-1`
-
-**•** `eu-north-1`
-
-**•** `eu-south-1`
-
-**•** `eu-west-1`
-
-**•** `eu-west-2`
-
-**•** `eu-west-3`
-
-**•** `me-south-1`
-
-**•** `sa-east-1`
-
-**•** `us-east-1`
-
-**•** `us-east-2`
-
-**•** `us-west-1`
-
-**•** `us-west-2`
+The name of a custom account, contact, or opportunity field that will receive data from
+source field named in the accompanying `inputField` entry.
 
 Declarative Metadata Sample Definition
 
-This is an example of a VirtualVisitConfig component.
+The following is an example of the LeadConvertSettings type:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
- <VirtualVisitConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+<LeadConvertSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   <usageType>CHIME</usageType>
+   <allowOwnerChange>false</allowOwnerChange>
 
-```
+   <objectMapping>
 
+     <inputObject>Lead</inputObject>
 
-### Metadata Types WaveAnalyticAssetCollection
+     <mappingFields>
 
-```
-      <visitRegion>us-east-1</visitRegion>
+        <inputField>custom_lead_field_1</inputField>
 
-      <masterLabel>vvconfig1</masterLabel>
+        <outputField>custom_account_field_1</outputField>
 
-      <experienceCloudSiteUrl>videocall_c@testcloudurl.com</experienceCloudSiteUrl>
+     </mappingFields>
 
-      <namedCredential>SampleNamedCredential</namedCredential>
-
-      <comprehendServiceType>ComprehendService</comprehendServiceType>
-
-      <storageBucketName>comprehendbucket</storageBucketName>
-
-      <isProtected>false</isProtected>
-
-    </VirtualVisitConfig>
+     <mappingFields>
 
 ```
 
-This is an example `package.xml` that references the previous definition.
+
+#### Metadata Types LiveAgentSettings
 
 ```
-   <?xml version="1.0" encoding="UTF-8"?>
+           <inputField>custom_lead_field_2</inputField>
 
-    <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+           <outputField>custom_account_field_2</outputField>
 
-      <namespacePrefix>[namespacePrefix]</namespacePrefix>
+        </mappingFields>
 
-      <fullName>deployPackage</fullName>
+        <mappingFields>
 
-      <types>
+           <inputField>custom_lead_field_3</inputField>
 
-         <members>*</members>
+           <outputField>custom_account_field_3</outputField>
 
-         <name>VirtualVisitConfig</name>
+        </mappingFields>
 
-      </types>
+        <outputObject>Account</outputObject>
 
-      <types>
+      </objectMapping>
 
-         <members>*</members>
+      <objectMapping>
 
-         <name>NamedCredential</name>
+        <inputObject>Lead</inputObject>
 
-      </types>
+        <mappingFields>
 
-      <version>55.0</version>
+           <inputField>custom_lead_field_4</inputField>
 
-    </Package>
+           <outputField>custom_opportunity_field_1</outputField>
+
+        </mappingFields>
+
+        <outputObject>Opportunity</outputObject>
+
+      </objectMapping>
+
+      <opportunityCreationOptions>VisibleOptional</opportunityCreationOptions>
+
+   </LeadConvertSettings>
 
 ```
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### WaveAnalyticAssetCollection
+#### LiveAgentSettings
 
-Represents a collection of Analytics assets. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
+Represents an organization’s Chat settings, such as whether Chat is enabled. This type extends the Metadata metadata type and inherits
+its `fullName` field.
 
 File Suffix and Directory Location
 
-WaveAnalyticsAssetCollection components have the suffix `.collection` and are stored in the `wave` folder.
+#### LiveAgentSettings values are stored in the LiveAgent.settings file in the settings directory. The .settings files are
+
+different from other named components because there’s only one settings file for each settings component.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 Version
 
-WaveAnalyticsAssetCollection components are available in API version 58.0 and later.
-
-
-Metadata Types WaveAnalyticAssetCollection
+#### LiveAgentSettings is available in API version 28.0 and later.
 
 Fields
 
 **Field Name** **Field Type** **Description**
 
-`collectionType` string The collection type.
+`enableChatFindOrCreateEnable` boolean
 
-`color` string The display color for the collection.
+Indicates whether the `findOrCreate` method of the
+Chat API is enabled for agents ( `true` ) or not ( `false` ).
+Available in API version 53.0 and later.
 
-`description` string The description that appears in the user interface.
 
-`folder` string The internal API name of the folder or application.
+#### Metadata Types LightningExperienceSettings
 
-`items` WaveAnalayticAssestCo **l** ectionItem A list of Analytics asset items.
+**Field Name** **Field Type** **Description**
 
-`label` string The label for the collection.
+`enableLiveAgent` boolean Indicates whether Chat is enabled ( `true` ) or not ( `false` ).
 
-`shares` FolderShare The folder sharing rules.
+`enableQuickTextEnabled` boolean Indicates whether Quick Text is enabled ( `true` ) or not
+( `false` ).
+
+`priority` integer Indicates the priority level of a Chat.
 
 Declarative Metadata Sample Definition
 
-The following is an example of a WaveAnalyticsAssetCollection component.
+This is a sample Chat settings file.
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
-   <WaveAnalyticsAssetCollection xmlns="http://soap.sforce.com/2006/04/metadata">
+   <LiveAgentSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-     <collectionType>static</collectionType>
+      <enableLiveAgent>true</enableLiveAgent>
 
-     <color>#1b96ff</color>
-
-     <description>A collection of my Dashboards</description>
-
-     <folder>Shared</folder>
-
-     <label>My Dashboard Collection</label>
-
-     <items>
-
-      <item>
-
-        <asset>Dashboard One</asset>
-
-        <assetType>dashboard</assetType>
-
-        <sortOrder>1</sortOrder>
-
-      </item>
-
-      <item>
-
-        <asset>Dashboard Two</asset>
-
-        <assetType>dashboard</assetType>
-
-        <sortOrder>2</sortOrder>
-
-      </item>
-
-     </items>
-
-     <shares>
-
-      <accessLevel>EditAllContents</accessLevel>
-
-      <sharedTo>shareswith@org.ee</sharedTo>
-
-      <sharedToType>User</sharedToType>
-
-     </shares>
-
-   </WaveAnalyticsAssetCollection>
+   </LiveAgentSettings>
 
 ```
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
+SEE ALSO:
 
-### Metadata Types WaveApplication
+_[Service Cloud Chat Developer Guide:](https://developer.salesforce.com/docs/atlas.en-us.260.0.live_agent_dev.meta/live_agent_dev/live_agent_creating_records.htm)_ findOrCreate
 
-WaveAnalyticAssestCollectionItem
+#### LightningExperienceSettings
 
-WaveAnalyticAssestCollectionItem represents an Analytics asset item.
+Represents the settings that modify an org’s Lightning Experience configuration. This type extends the Metadata metadata type and
+inherits its `fullName` field.
 
-**Field** **Field Type** **Description**
-
-`asset` string The asset name.
-
-`assetType` string The asset type.
-
-`sortOrder` int The sort order for the asset.
-
-### WaveApplication
-
-Represents the Analytics application. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
 File Suffix and Directory Location
 
-### WaveApplication components have the suffix .wapp and are stored in the wave folder.
+A LightningExperienceSettings component has the suffix `.settings` and is stored in the `settings` folder. The `.settings`
+files are different from other named components because there is only one settings file for each settings component.
 
 Version
 
-### WaveApplication components are available in API version 37.0 and later.
+#### LightningExperienceSettings components are available in API version 47.0 and later.
 
 Fields
 
 **Field Name** **Field Type** **Description**
 
-`assetIcon` string The icon that represents the Analytics application.
-
-`description` string The description that appears in the user interface.
-
-`folder` string The internal api name of the folder or application.
-
-`masterLabel` string The user interface label name of the folder or application.
-
-`shares` FolderShare The folder sharing rules.
-
-`templateOrigin` string
-
-`templateVersion` string
-
-The internal (unique) name of the template used to create the
-application. This field is blank if the application wasn’t created from a
-template.
-
-The version assigned to the application template by the template's
-creator. This field is blank if the application wasn’t created from a
-template.
+`activeThemeName` string If specified, indicates the API name of the custom
+LightningExperienceTheme that’s currently active in the org. If the field
 
 
-### Metadata Types WaveComponent
-
-Declarative Metadata Sample Definition
-
-The following is an example of a WaveApplication component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
-
-     <assetIcon>/analytics/wave/web/proto/images/app/icons/11.png</assetIcon>
-
-     <description>Application that shows my sales</description>
-
-     <folder>edit</folder>
-
-     <masterLabel>Sales Application</masterLabel>
-
-     <shares>
-
-     <accessLevel>EditAllContents</accessLevel>
-
-     <sharedTo>shareswith@org.ee</sharedTo>
-
-     <sharedToType>User</sharedToType>
-
-     </shares>
-
-   </WaveApplication>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### WaveComponent
-
-Represents the WaveComponent object in the Analytics application. This type extends the MetadataWithContent metadata type and
-inherits its `content` and `fullName` fields.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-When using Metadata API to work with Analytics components, consider that:
-
-**•** Modifications to the `.wcomp` component are unsupported.
-
-File Suffix and Directory Location
-
-### WaveComponent components have the suffix .wcomp and are stored in the wave folder.
-
-Version
-
-### WaveComponent components are available in API version 51.0 and later.
-
-Fields
+Metadata Types LightningExperienceSettings
 
 **Field Name** **Field Type** **Description**
 
-`application` string Required. The internal name of the application.
+isn’t specified, then the org uses one of the built-in themes that Salesforce
+provides. Custom themes are available in API version 48.0 and later.
 
-`description` string The component description that appears in the user interface.
+`enableAccessCheckCrucPref` boolean Deprecated in API version 47.0 and later because the feature is no longer
+available.
 
-`masterLabel` string Required. The component name that appears in the user interface.
+`enableApiUserLtngOutAccessPref` boolean Deprecated in API version 48.0 and later because the feature is no longer
+available. This field corresponds to the API Only Users Can Access Only
 
+Salesforce APIs critical update, which was enforced in Spring ’20. If a user
+has the API Only User permission, they can access Salesforce only via
+APIs, regardless of their other permissions. This restriction already applied
+to other Salesforce features, but the critical update enforced the
+restriction in Lightning Out also.
 
-### Metadata Types WaveDataflow
+`enableAuraBoxcarReductionPref` If `true`, dynamic boxcar optimization for the Aura framework is disabled.
+With dynamic boxcar optimization, a limited number of server-side Aura
 
-**Field Name** **Field Type** **Description**
+actions are grouped in a single network request, which improves the
+performance of Lightning components and apps. For more information,
+[see Boxcar Grouping and Optimization in the](https://developer.salesforce.com/docs/atlas.en-us.258.0.lightning.meta/lightning/controllers_server_actions_boxcar_dynamic.htm) _Lightning Aura Components_
+_Developer Guide_ .
 
-`templateAssetSourceName` string Links the component to the template used to create it. Null for assets
-not created from a template.
+The default value is `false` .
 
-Declarative Metadata Sample Definition
+`enableAuraCDNPref` boolean Indicates whether Lightning Experience and other apps use a content
+delivery network (CDN) to serve the static content for Lightning
 
-The following is an example of a WaveComponent component.
+Component framework. A CDN generally speeds up page load time, but
+it also changes the source domain that serves the files. If your company
+has IP range restrictions for content served from Salesforce, test
+thoroughly before enabling this setting. The default is `true` .
 
-```
-   <?xml version="1.0" encoding="UTF-8"?>
+`enableAuraDepAccessChksCRUCPref` boolean Removed in API version 51.0 and later because the feature is no longer
+available.
 
-   <WaveComponent xmlns="http://soap.sforce.com/2006/04/metadata"
+`enableAuraSecStaticResCRUCPref` boolean Indicates whether the Enable Secure Static Resources for Lightning
+Components release update is enforced ( `true` ) or not ( `false` ). To
 
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+improve security, this update serves all static resources from the
+`visualforce` domain instead of the `lightning` domain. This
+change prevents a script included in a static resource from accessing
+the document in the `lightning` domain due to the same-origin
+security policy. This field is available in API version 50.0 and later.
 
-      <content xsi:nil="true"/>
+`enableDeferRenderingWorkspacePage` boolean Indicates whether the “Defer loading inactive console workspace pages”
+setting is enabled ( `true` ) or not ( `false` ). The default value is `true` .
 
-      <application>dev__app</application>
+[This field is available in API version 64.0 and later. See Defer Loading](https://help.salesforce.com/s/articleView?id=service.console_lex_defer_loading_inactive_pages.htm&type=5&language=en_US)
+[Inactive Lightning Console Workspace Pages in Salesforce Help.](https://help.salesforce.com/s/articleView?id=service.console_lex_defer_loading_inactive_pages.htm&type=5&language=en_US)
 
-      <masterLabel>Component1</masterLabel>
+`enableErrorExperienceEnabled` boolean Reserved for future use.
 
-      <description>Component description</description>
+`enableFeedbackInMobile` boolean Indicates whether users can send feedback to Salesforce from the mobile
+app. The default is `false` .
 
-   </WaveComponent>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### WaveDataflow
-
-Represents the WaveDataflow object in the Analytics application. This type extends the MetadataWithContent metadata type and inherits
-its `content` and `fullName` fields.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### WaveDataflow components have the suffix .wdf and are stored in the wave folder.
-
-Version
-
-### WaveDataflow components are available in API version 37.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`application` string The name of the Analytics application the dataflow is connected to. This
-field is available in API version 48.0 and later.
+`enableGoogleSheetsForSfdcEnabled` boolean Reserved. Do not use.
 
 
-### Metadata Types WaveDashboard
+Metadata Types LightningExperienceSettings
 
 **Field Name** **Field Type** **Description**
 
-`dataflowType` string
+`enableIE11DeprecationMsgHidden` boolean Deprecated in API version 47.0 and later because the feature is no longer
+available.
 
-The type of the dataflow. Supported types are `User` and `Prepared` .
-The default value is `User` This field is available in API version 41.0 and
+`enableIE11LEXCrucPref` boolean Deprecated in API version 47.0 and later because the feature is no longer
+available.
+
+`enableInAppLearning` boolean Indicates whether Learning Paths is enabled ( `true` ) or not ( `false` ).
+The default is `true` . If `false`, you can’t assign learning items to users,
+
+and users can’t view assigned learning items in the Guidance Center or
+access Learning Home. This field is available in API version 54.0 and later.
+[See Learning Paths in Salesforce Help.](https://help.salesforce.com/s/articleView?id=platform.customhelp_lex_learning_intro.htm&type=5&language=en_US)
+
+`enableInAppTooltips` boolean Indicates whether users see onboarding tips in the mobile app. The
+default is `false` .
+
+`enableLEXOnIpadEnabled` boolean
+
+Indicates whether Lightning Experience is turned on for iPad Browsers
+( `true` ) or not ( `false` ). The default is `false` [. See Give Users Access](https://help.salesforce.com/articleView?id=lex_ipad_browser_enable.htm&language=en_US)
+[to Lightning Experience on iPad Browsers (Beta) in Salesforce Help.](https://help.salesforce.com/articleView?id=lex_ipad_browser_enable.htm&language=en_US)
+
+`enableLexEndUsersNoSwitching` boolean Indicates whether Salesforce Classic is turned off for your org ( `true` ) or
+not ( `false` ). Removes the Switcher for all users in the org. The default
+
+is `false` [. See Turn Off Salesforce Classic for Your Org in Salesforce Help.](https://help.salesforce.com/articleView?id=lex_turn_off_classic.htm&language=en_US)
+This field is similar to `enableUsersAreLightningOnly` . If either
+field is set to `true`, users are blocked from switching to Salesforce
+Classic.
+
+`enableLightningPreviewPref` boolean Indicates whether Local Dev is turned on for your org ( `true` ) or not
+( `false` ). The default value is `false` [. See Preview Components with](https://developer.salesforce.com/docs/platform/lwc/guide/get-started-test-components.html)
+
+[Local Dev in Salesforce Developers. This field is available in API version](https://developer.salesforce.com/docs/platform/lwc/guide/get-started-test-components.html)
+62.0 and later.
+
+`enableNavPersonalizationOptOut` boolean Indicates whether users are blocked from personalizing the Lightning
+Experience navigation bar ( `true` ) or not ( `false` ). The default is
+
+`false` (that is, users can personalize the navigation bar by default).
+Salesforce recommends disabling personalization at the app level, not
+[the org level. See Configure User Interface Settings in Salesforce Help.](https://help.salesforce.com/articleView?id=customize_ui_settings.htm&language=en_US)
+
+`enableNoBackgroundNavigations` boolean Indicates whether consecutive API navigation calls in Visualforce pages
+are allowed ( `false` ) or blocked ( `true` ). The default is `false` .
+
+`enableQuip` boolean Indicates whether Quip is available for your org. This field is available in
+API version 51.0 and later.
+
+`enableRemoveThemeBrandBanner` boolean Deprecated in API version 47.0 and later because the feature is no longer
+available.
+
+`enableS1BannerPref` boolean Deprecated in API version 47.0 and later because the feature is no longer
+available.
+
+`enableS1BrowserEnabled` boolean Indicates whether all users can access the Salesforce mobile web view
+from a supported mobile browser ( `true` ) or not ( `false` ). If `false`,
+
+then users must access the Salesforce mobile full site view from a mobile
+
+
+Metadata Types LightningExperienceSettings
+
+**Field Name** **Field Type** **Description**
+
+browser. Full site view doesn’t have the full functionality of mobile web
+view. Salesforce Classic and Lightning Experience aren’t supported on
+mobile browsers.
+
+`enableS1DesktopEnabled` boolean Indicates whether Lightning Experience is turned on in the org ( `true` )
+or not ( `false` ). After it’s enabled, this setting can’t be disabled via the
+
+[user interface or the API. See Turn on Lightning Experience for Your Org](https://help.salesforce.com/articleView?id=lex_enable_turn_on.htm&language=en_US)
+in Salesforce Help.
+
+`enableS1UiLoggingEnabled` boolean Deprecated in API version 47.0 and later because the feature is no longer
+available.
+
+`enableSidToken3rdPartyAuraApp` boolean Reserved for internal use.
+
+`enableSkypeChatEnabled` boolean Deprecated in API version 50.0 and later because the feature is no longer
+available.
+
+`enableSparkAllUsers` boolean Deprecated in API version 50.0 and later because the feature is no longer
+available.
+
+`enableSparkConversationEnabled` boolean Deprecated in API version 50.0 and later because the feature is no longer
+available.
+
+`enableSplitViewOnStandard` boolean Removed in API version 52.0 and later because the feature is no longer
+available.
+
+`enableStackedModalManagerEnabled` boolean Indicates whether the Enable LWC Stacked Modals release update is
+enabled ( `true` ) or not ( `false` ). For orgs created before Summer ’24,
+
+the default value is `false` . For orgs created in Summer ’24 and later,
+the default value is `true` . This field is available in API version 61.0 and
 later.
 
-`description` string The dataflow description that appears in the user interface.
+`enableTryLightningOptOut` boolean
 
-`masterLabel` string Required. The dataflow name that appears in the user interface.
+Indicates whether the Try Lightning Experience Now prompt is hidden
+from users ( `true` ) or not ( `false` ). The default is `false` [. See Try](https://help.salesforce.com/articleView?id=lex_encourage_work_try_lex.htm&language=en_US)
+[Lightning Experience Now Prompt in Salesforce Help.](https://help.salesforce.com/articleView?id=lex_encourage_work_try_lex.htm&language=en_US)
+
+`enableUseS1AlohaDesktop` boolean Deprecated in API version 47.0 and later because the feature is no longer
+available.
+
+`enableUsersAreLightningOnly` boolean Indicates whether Salesforce Classic is turned off for your org ( `true` ) or
+not ( `false` ). Removes the Switcher for all users in the org. The default
+
+is `false` . This field is similar to
+`enableLexEndUsersNoSwitching` . If either field is set to `true`,
+users are blocked from switching to Salesforce Classic.
+
+`enableWebExEnabled` boolean Deprecated in API version 50.0 and later because the feature is no longer
+available.
+
+`enableWebexAllUsers` boolean Deprecated in API version 50.0 and later because the feature is no longer
+available.
+
+`isLEXExtensionComponentCustomizationOff` boolean Indicates whether all users can enable the Lightning Extension
+Component Customization feature. If `false`, the feature is disabled
+
+
+Metadata Types LightningExperienceSettings
+
+**Field Name** **Field Type** **Description**
+
+[for all users, even users who had it enabled. See Try New Features with](https://help.salesforce.com/articleView?id=lex_lightning_extension.htm&type=5&language=en_US)
+[the Lightning Extension for Chrome. This field is available in API version](https://help.salesforce.com/articleView?id=lex_lightning_extension.htm&type=5&language=en_US)
+48.0 and later.
+
+`isLEXExtensionDarkModeOff` boolean
+
+Indicates whether all users can enable the Lightning Extension Dark
+Mode feature. If `false`, the feature is disabled for all users, even users
+who had it enabled. This field is available in API version 48.0 and later.
+
+`isLEXExtensionLinkGrabberOff` boolean Indicates whether all users can enable the Lightning Extension Link
+Grabber feature. If `false`, the feature is disabled for all users, even
+
+users who had it enabled. This field is available in API version 48.0 and
+later.
+
+`isLEXExtensionOff` boolean Indicates whether all users can enable the Lightning Extension for your
+org. If `false`, your users can’t enable the Lightning Extension, even if
+
+they already have it installed. This field is available in API version 48.0
+and later.
 
 Declarative Metadata Sample Definition
 
-The following is an example of a WaveDataflow component.
+The following is an example of a LightningExperienceSettings component.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
-<WaveDataflow xmlns="http://soap.sforce.com/2006/04/metadata"
+<LightningExperienceSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <content xsi:nil="true"/>
+   <enableAuraCDNPref>true</enableAuraCDNPref>
 
-   <description>flow1</description>
+   <enableFeedbackInMobile>true</enableFeedbackInMobile>
 
-   <masterLabel>flow1</masterLabel>
+   <enableInAppTooltips>true</enableInAppTooltips>
 
-</WaveDataflow>
+   <enableLEXOnIpadEnabled>true</enableLEXOnIpadEnabled>
 
-```
+   <enableLexEndUsersNoSwitching>true</enableLexEndUsersNoSwitching>
 
-Wildcard Support in the Manifest File
+   <enableNavPersonalizationOptOut>true</enableNavPersonalizationOptOut>
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
+   <enableS1BrowserEnabled>false</enableS1BrowserEnabled>
 
-### WaveDashboard
+   <enableS1DesktopEnabled>true</enableS1DesktopEnabled>
 
-Represents the WaveDashboard object in the Analytics application. This type extends the MetadataWithContent metadata type and
-inherits its `content` and `fullName` fields.
+   <enableTryLightningOptOut>true</enableTryLightningOptOut>
 
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
+   <enableUsersAreLightningOnly>true</enableUsersAreLightningOnly>
 
-When using Metadata API to work with Analytics dashboards, consider that:
-
-**•** Modifications to the `.wdash` component are unsupported.
-
-**•** Modifying or removing conditional formatting from the source org or `.wdash` component doesn’t cause issues while deploying.
-
-**•** Removing steps from the `.wdash` component causes deployment to the destination org to fail because the source dashboard
-fails validation.
-
-File Suffix and Directory Location
-
-### WaveDashboard components have the suffix .wdash and are stored in the wave folder.
-
-Version
-
-### WaveDashboard components are available in API version 37.0 and later.
-
-
-### Metadata Types WaveDataset
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`application` string Required. The internal name of the application.
-
-`dateVersion` integer The date version for the dashboard. Only available in v55.0 and above.
-
-`description` string The dashboard description that appears in the user interface.
-
-`masterLabel` string Required. The dashboard name that appears in the user interface.
-
-`templateAssetSourceName` string Links the dashboard to the template used to create it. Null for assets not
-created from a template.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a WaveDashboard component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <WaveDashboard xmlns="http://soap.sforce.com/2006/04/metadata"
-
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-     <content xsi:nil="true"/>
-
-     <application>dev__app</application>
-
-     <masterLabel>Dashboard1</masterLabel>
-
-     <description>somedesc</description>
-
-   </WaveDashboard>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### WaveDataset
-
-Represents the WaveDataset object in the Analytics application.This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### WaveDataset components have the suffix .wds and are stored in the wave folder.
-
-Version
-
-### WaveDataset components are available in API version 37.0 and later.
-
-
-### Metadata Types WaveLens
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`application` string Required. The internal name of the application.
-
-`description` string The dataset description that appears in the user interface.
-
-`masterLabel` string Required. The user interface label name of the dataset.
-
-`templateAssetSourceName` string Links the dataset to the template used to create it. Null for assets not
-created from a template.
-
-`type` string The type of the dataset. Dataset types include `Default`,
-`Live`, `StagedData`, and `Trended` .
-
-Declarative Metadata Sample Definition
-
-The following is an example of a WaveDataset component.
-
-```
-   <WaveDataset>
-
-      <application>SharedApp</application>
-
-      <description>description</description>
-
-      <masterLabel>datasetLabel</masterLabel>
-
-      <type>Default</type>
-
-   </WaveDataset>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### WaveLens
-
-Represents the WaveLens object in the Analytics application.
-
-This type extends to MetadataWithContent metadata type and inherits its `content` and `fullName` fields.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### WaveLens components have the suffix .wlens and are stored in the wave folder.
-
-Version
-
-### WaveLens components are available in API version 37.0 and later.
-
-
-Metadata Types WaveLens
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`application` string Required. The internal name of the application.
-
-`datasets` string A reference to the dataset used to create this lens.
-
-`dateVersion` int The date version used for this lens.
-
-`description` string The dashboard description that appears in the user interface.
-
-`masterLabel` string Required. The user interface label name of the dashboard.
-
-`templateAssetSourceName` string Links the lens to the template used to create it. Null for assets not created
-from a template.
-
-`visualizationType` string Required. The visualization type to be used for this lens. Valid values are:
-
-**•** `calheatmap` —Calendar heat map
-
-**•** `comparisontable` —Comparison table
-
-**•** `heatmap` —Heat map
-
-**•** `hbar` —Horizontal bar
-
-**•** `hbarhdot` —Horizontal dot plot
-
-**•** `matrix` —Matrix
-
-**•** `parallelcoords` —Parallel coordinates
-
-**•** `pie` —Donut
-
-**•** `pivottable` —Pivot table
-
-**•** `scatter` —Scatter plot
-
-**•** `stackhbar` —Stacked horizontal bar
-
-**•** `stackvbar` —Stacked vertical bar
-
-**•** `time` —Time line
-
-**•** `valuestable` —Values table
-
-**•** `vbar` —Vertical bar
-
-**•** `vdot` —Vertical dot plot
-
-Declarative Metadata Sample Definition
-
-The following is an example of a WaveLens component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <WaveLens xmlns="http://soap.sforce.com/2006/04/metadata"
-
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-     <content xsi:nil="true"/>
-
-     <application>dev__app</application>
-
-     <datasets>dev__abc</datasets>
-
-     <masterLabel>lens1</masterLabel>
-
-     <description>lens in shared app</description>
-
-```
-
-
-### Metadata Types WaveRecipe
-
-```
-     <visualizationType>hbar</visualizationType>
-
-   </WaveLens>
-
-```
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### WaveRecipe
-
-Represents the WaveRecipe type in an Analytics application. A recipe is a saved set of steps to perform on a specific source dataset or
-connected data. This type extends the MetadataWithContent metadata type and inherits its `content` and `fullName` fields.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### WaveRecipe components have the suffix .wdpr and are stored in the wave folder.
-
-Version
-
-### WaveRecipe components are available in API version 41.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`application` string The internal name of the application.
-
-`dataflow` string Required. The dataflow ID for the Analytics recipe.
-
-`format` string The format of the current recipe definition. Valid values are:
-
-**•** `R2`                          - recipes created with Data Prep
-
-**•** `R3`                          - recipes created with Data Prep (API version 49.0)
-
-`masterLabel` string Required. The recipe name that appears in the user interface.
-
-`securityPredicate` string A filter condition that defines row-level access to records in a recipe.
-
-`targetDatasetAlias` string The name of the dataset the recipe saves data results into.
-
-`templateAssetSourceName` string Links the recipe to the template used to create it. Null for assets not
-created from a template.
-
-
-### Metadata Types WaveTemplateBundle
-
-Declarative Metadata Sample Definition
-
-The following is an example of a WaveRecipe component.
-
-```
-   <?xml version="1.0" encoding="UTF-8"?>
-
-   <WaveRecipe xmlns="http://soap.sforce.com/2006/04/metadata"
-
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <content xsi:nil="true"/>
-
-      <dataflow>02KB0000000b5c7MAA</dataflow>
-
-      <format>R3</format>
-
-      <masterLabel>recipe1</masterLabel>
-
-      <securityPredicate>'UserId' == "$User.Id"</securityPredicate>
-
-      <targetDatasetAlias>Dataset One</targetDatasetAlias>
-
-   </WaveRecipe>
-
-```
-
-Deleting a WaveRecipe Component
-
-Use a simple destructiveChanges.xml file with only the WaveRecipe component declared. This deletes the WaveRecipe and any related
-WaveDataflow components. For more information, see Delete Components from an Organization. on page 74
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-Note: Use of the wildcard character doesn’t return the recipe’s associated dataflows.
-
-### WaveTemplateBundle
-
-Represents an Analytics template bundle, which can be used to create Analytics apps. A bundle contains an Analytics template definition
-and all its related resources.This type extends the Metadata metadata type and inherits its `fullName` field.
-
-File Suffix and Directory Location
-
-An Analytics template bundle is a folder that contains definition files for a template. Unlike other metadata components, a
-### WaveTemplateBundle component isn’t represented by a single component file, but instead by a collection of JSON and CSV definition
-
-files. Each definition file represents a resource in a template, such as lenses, dashboards, dataflows, and comma-separated values. For
-example, this directory structure shows the hierarchy of the folders and files for one Analytics Template definition, template1.
-
-```
-   waveTemplates
-
-      template1
-
-        template-info.json
-
-        variables.json
-
-        ui.json
-
-        extFiles
-
-           PostalCodes.csv
-
-```
-
-Analytics template bundles must be under a top-level folder that’s named `waveTemplates` . Each bundle must have its own subfolder
-under the `waveTemplates` folder and be named with the template's fully qualified API name. The bundle folder must contain a
-template-info.json file to specify the metadata about the template and the references to other definition files. An entire bundle doesn’t
-have a suffix and definition files can have one of the following suffixes.
-
-
-### Metadata Types WaveXmd
-
-Version
-
-WaveTemplateBundle components are available in API version 35.0 and later.
-
-Special Access Rules
-
-Definitions can be created in both managed and unmanaged packages.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`assetIcon` string The icon to use by default for new Analytics apps based on this template.
-Valid values are `1.png` through `20.png` .
-
-`description` string The specification of the template.
-
-`label` string Required. The label of the template.
-
-`templateType` string Required. The type of the template. Valid values are:
-
-**•** `App`
-
-**•** `Dashboard`
-
-**•** `Lens`
-
-Wildcard Support in the Manifest File
-
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
-manifest file, see Deploying and Retrieving Metadata with the Zip File.
-
-### WaveXmd
-
-Represents the WaveXmd object in the Analytics application.This type extends the Metadata metadata type and inherits its `fullName`
-field.
-
-File Suffix and Directory Location
-
-### WaveXmd components have the suffix .xmd and are stored in the wave folder.
-
-
-Metadata Types WaveXmd
-
-Version
-
-WaveXmd components are available in API version 39.0 and later.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`application` string The name of the Analytics application the XMD is associated with.
-Available in API version 43.0 and later.
-
-`dataset` string Required. Specifies the dataset associated with this XMD.
-
-`datasetConnector` string The name of the connector source for the dataset.
-
-`datasetFullyQualifiedName` string Specifies the fully qualified name of the dataset version associated with
-this XMD.
-
-`dates` WaveXmdDate List of dates, with formatting information.
-
-`dimensions` WaveXmdDimension List of dimensions, with formatting information.
-
-`measures` WaveXmdMeasure List of measures, with formatting information.
-
-`organizations` WaveXmdOrganization List of organizations, for multi-organization support.
-
-`origin` string The origin of the dataset version.
-
-`type` string The XMD type. Valid values are:
-
-**•** `System`
-
-**•** `User`
-
-**•** `Main`
-
-**•** `Asset`
-
-Available in API version 43.0 and later.
-
-`waveVisualization` string The visualization behavior for Analytics assets. Valid values are:
-
-**•** `dashboard`
-
-**•** `lens`
-
-Available in API version 43.0 and later.
-
-WaveXmdDate
-
-WaveXmdDate represents a date.
-
-**Field** **Field Type** **Description**
-
-`alias` string Required. Alias of the Date column.
-
-`compact` boolean Indicates whether the date is displayed in compact form ( `true` )
-or not ( `false` ).
-
-
-Metadata Types WaveXmd
-
-**Field** **Field Type** **Description**
-
-`dateFieldDay` string The day field.
-
-`dateFieldEpochDay` string The epoch day field.
-
-`dateFieldEpochSecond` string The epoch second field.
-
-`dateFieldFiscalMonth` string The fiscal month field.
-
-`dateFieldFiscalQuarter` string The fiscal quarter field.
-
-`dateFieldFiscalWeek` string The fiscal week field.
-
-`dateFieldFiscalYear` string The fiscal year field.
-
-`dateFieldFullYear` string The full year field.
-
-`dateFieldHour` string The hour field.
-
-`dateFieldMinute` string The minute field.
-
-`dateFieldMonth` string The month field.
-
-`dateFieldQuarter` string The quarter field.
-
-`dateFieldSecond` string The second field.
-
-`dateFieldWeek` string The week field.
-
-`dateFieldYear` string The year field.
-
-`description` string The description of the date column.
-
-`firstDayOfWeek` int Required. Represents the first day of the week.
-
-`fiscalMonthOffset` int Required. Offset number of months for the fiscal year in relation
-to the calendar year.
-
-`isYearEndFiscalYear` boolean Indicates whether the year end is the fiscal year ( `true` ) or not
-( `false` ).
-
-`label` string The label of the date column.
-
-`showInExplorer` boolean Indicates whether the date is displayed in the explorer ( `true` )
-or not ( `false` ).
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-`type` string Required. The type of date. Valid values are:
-
-**•** `Date` —A legacy date type. Available when the time zone
-isn’t enabled.
-
-**•** `DateOnly` —A date type without an associated time.
-Available when the time zone is enabled.
-
-**•** `DateTime` —A date type that contains both date and time
-parts. Available when the time zone is enabled.
-
-
-Metadata Types WaveXmd
-
-WaveXmdDimension
-
-WaveXmdDimension represents a dimension.
-
-**Field** **Field Type** **Description**
-
-`conditionalFormatting` WaveXmdFormattingProperty The conditional formatting property for the dimension. Available
-in API version 43.0 and later.
-
-`customActions` WaveXmdDimensionCustomAction Custom actions linked to this dimension.
-
-`customActionsEnabled` boolean Indicates whether the dimension has custom actions enabled
-( `true` ) or not ( `false` ).
-
-`dateFormat` string The format used for a date that is a dimension.
-
-`defaultAction` string The default action assigned to a dimension. An action for a
-dimension can be `openSfdcRecord`,
-
-`openActionsMenu`, `none`, or a valid API name with dot
-notation like `Global.LogACall` or `FeedItem.Post` .
-
-`description` string The description of the dimension.
-
-`field` string Required. The field name of the dimension (used in queries).
-
-`fullyQualifiedName` string The fully qualified name of the dimension.
-
-`imageTemplate` string The image template.
-
-`isDerived` boolean Required. Indicates whether the dimension is derived ( `true` )
-or not ( `false` ).
-
-`isMultiValue` boolean Indicates whether the dimension is multi-value ( `true` ) or not
-( `false` ).
-
-`label` string The label for the dimension.
-
-`linkTemplate` string The template for formatting a link.
-
-`linkTemplateEnabled` boolean Indicates whether the dimension has link templates enabled
-( `true` ) or not ( `false` ).
-
-`linkTooltip` string The tooltip to be displayed for links.
-
-`members` WaveXmdDimensionMember The member overrides for a dimension.
-
-`origin` string The origin of this dimension.
-
-`recordDisplayFields` WaveXmdRecordDisplayLookup Ordered list of dimensions. The list defines the default order in
-which to display the dimensions in the user interface.
-
-`recordIdField` string The record ID for this dimension.
-
-`recordOrganizationIdField` string The record organization ID for this dimension.
-
-`salesforceActions` WaveXmdDimensionSalesforceAction Salesforce actions linked to this dimension.
-
-
-Metadata Types WaveXmd
-
-**Field** **Field Type** **Description**
-
-`salesforceActionsEnabled` boolean Indicates whether the dimension has Salesforce actions enabled
-( `true` ) or not ( `false` ).
-
-`showDetailsDefaultFieldIndex` int Default order in which to show the dimensions in the user
-interface.
-
-`showInExplorer` boolean Indicates whether the dimension is displayed in the explorer
-( `true` ) or not ( `false` ).
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-WaveXmdFormattingProperty
-
-WaveXmdFormattingProperty represents an XMD formatting property for conditional formatting.
-
-**Field** **Field Type** **Description**
-
-`formattingBins` WaveXmdFormattingBin The formatting bins for this property.
-
-`formattingPredicates` WaveXmdFormattingPredicate The formatting predicates for this property.
-
-`property` string Required. The property name.
-
-`referenceField` string Required. The reference field for this property.
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-`type` string Required. The property type.
-
-WaveXmdFormattingBin
-
-WaveXmdFormatttingBin represents an XMD formatting bin for conditional formatting.
-
-**Field** **Field Type** **Description**
-
-`bin` string Required. The formatting bin.
-
-`formatValue` string Required. The format value for the bin.
-
-`label` string Required. The label for the bin.
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-WaveXmdFormattingPredicate
-
-WaveXmdFormattingPredicate represents an XMD formatting predicate for conditional formatting.
-
-
-Metadata Types WaveXmd
-
-**Field** **Field Type** **Description**
-
-`formatValue` string Required. The format value for the predicate.
-
-`operator` string Required. The operator for the predicate.
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-`value` string Required. The value for the predicate.
-
-WaveXmdDimensionCustomAction
-
-WaveXmdDimensionCustomAction represents a custom action in a dimension.
-
-**Field** **Field Type** **Description**
-
-`customActionName` string Required. The name of this custom action.
-
-`enabled` boolean Required. Indicates whether the action is enabled for a specific
-dimension ( `true` ) or not ( `false` ).
-
-`icon` string The icon for the action.
-
-`method` string The method for the action.
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-`target` string The target for the action.
-
-`tooltip` string The tooltip for the action.
-
-`url` string The URL for the action.
-
-WaveXmdDimensionMember
-
-WaveXmdDimensionMember represents a dimension.
-
-**Field** **Field Type** **Description**
-
-`color` string The color for the member.
-
-`label` string The label for the member.
-
-Note: Multi-line text isn't supported
-
-`member` string Required. The member value.
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-
-Metadata Types WaveXmd
-
-WaveXmdRecordDisplayLookup
-
-WaveXmdDimensionRecordDisplayLookup represents a record display field.
-
-**Field** **Field Type** **Description**
-
-`recordDisplayField` string Required. The field to display.
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-WaveXmdDimensionSalesforceAction
-
-WaveXmdDimensionSalesforceAction represents an action in a dimension.
-
-**Field** **Field Type** **Description**
-
-`enabled` boolean Required. Indicates whether the action is enabled for a specific
-dimension ( `true` ) or not ( `false` ).
-
-`salesforceActionName` string Required. The name of the action.
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-WaveXmdMeasure
-
-WaveXmdMeasure represents a measure.
-
-**Field** **Field Type** **Description**
-
-`conditionalFormatting` WaveXmdFormattingProperty The conditional formatting for the measure. Available in API
-version 43.0 and later.
-
-`currencies` WaveXmdMeasure[] The list of currency formats for multiple currencies. Use this field
-to set the format for each currency used in the dataset.
-
-`currencyCode` String The default currency code for the dataset.
-
-`dateFormat` string The format used for a date that is a measure.
-
-`description` string The description of the measure.
-
-`field` string Required. The field name of the measure (used in queries).
-
-`formatCustomFormat` string The original (XMD 1.1) format array as a single string.
-
-`formatDecimalDigits` int The number of digits displayed after the decimal place.
-
-`formatDecimalSeparator` string The custom separator for the decimal place. Available in API
-version 48.0 and later.
-
-`formatIsNegativeParens` boolean Indicates whether to display negative numbers with parentheses,
-rather than a minus sign ( `true` ) or not ( `false` ).
-
-
-Metadata Types WaveXmd
-
-**Field** **Field Type** **Description**
-
-`formatPrefix` string The prefix placed before the field value.
-
-`formatSuffix` string The suffix placed after the field value.
-
-`formatThousandsSeparator` string The custom separator for the thousands place. Available in API
-version 48.0 and later.
-
-`formatUnit` string The unit string for the measure. For example, ' `cm` '.
-
-`formatUnitMultiplier` double The multiplier for the unit.
-
-`fullyQualifiedName` string The fully qualified name of the measure.
-
-`isDerived` boolean Required. Indicates whether the measure is derived ( `true` ) or
-not ( `false` ).
-
-`isMultiCurrency` boolean Indicates whether multiple currencies are available for this
-dataset ( `true` ) or not ( `false` ).
-
-`label` string The label for the measure.
-
-`origin` string The origin of the measure.
-
-`showDetailsDefaultFieldIndex` int Default order in which to show the measures in the user
-interface.
-
-`showInExplorer` boolean Indicates whether the measure is displayed in the explorer
-( `true` ) or not ( `false` ).
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-WaveXmdOrganization
-
-WaveXmdOrganization represents a Salesforce organization.
-
-**Field** **Field Type** **Description**
-
-`instanceUrl` string Required. The instance URL for the organization.
-
-`label` string Required. The label for the organization.
-
-`organizationIdentifier` string Required. The ID of the organization.
-
-`sortIndex` int Required. The index value the system assigns to indicate where
-the item appears in a list.
-
-Declarative Metadata Sample Definition
-
-The following is an example of a WaveXmd component for an Asset XMD belonging to a dashboard.
-
-```
-   <WaveXmd>
-
-      <dataset xsi:nil="true"/>
-
-```
-
-
-Metadata Types WaveXmd
-
-```
-      <dimesions>
-
-        <conditionalFormatting>
-
-           <formattingBins>
-
-             <bin>*</bin>
-
-             <formatValue>#FFFFFF</formatValue>
-
-             <label xsi:nil="true"/>
-
-             <sortIndex>0</sortIndex>
-
-           </formattingBins>
-
-           <formattingBins>
-
-             <bin>0</bin>
-
-             <formatValue>#000000</formatValue>
-
-             <label xsi:nil="true"/>
-
-             <sortIndex>1</sortIndex>
-
-           </formattingBins>
-
-           <property>chartColor</property>
-
-           <referenceField>count</referenceField>
-
-           <sortIndex xsi:nil="true"/>
-
-           <type>multiple</type>
-
-        </conditionalFormatting>
-
-        <field>all_1.ALL</field>
-
-        <isDerived>false</isDerived>
-
-        <sortIndex>0</sortIndex>
-
-      </dimensions>
-
-      <measures>
-
-        <conditionalFormatting>
-
-           <formattingBins>
-
-             <bin>*</bin>
-
-             <formatValue>#FFFFFF</formatValue>
-
-             <label xsi:nil="true"/>
-
-             <sortIndex>0</sortIndex>
-
-           </formattingBins>
-
-           <formattingBins>
-
-             <bin>0</bin>
-
-             <formatValue>#000000</formatValue>
-
-             <label xsi:nil="true"/>
-
-             <sortIndex>1</sortIndex>
-
-           </formattingBins>
-
-           <property>chartColor</property>
-
-           <referenceField>count</referenceField>
-
-           <sortIndex xsi:nil="true"/>
-
-           <type>multiple</type>
-
-        </conditionalFormatting>
-
-        <field>all_1.count</field>
-
-        <formatCustomFormat>[&quot;#,###.##%&quot;,1]</formatCustomFormat>
-
-        <isDerived>false</isDerived>
-
-        <sortIndex>0</sortIndex>
-
-      </measures>
-
-      <type>Asset</type>
-
-      <waveVisualization>dashboard</waveVisualization>
-
-   </WaveXmd>
-
-```
-
-
-### Metadata Types WebStoreBundle WebStoreBundle
-
-For internal use only.
-
-### WebStoreTemplate
-
-Represents a configuration for creating commerce stores.
-
-This type extends the Metadata metadata type and inherits its `fullName` field.
-
-Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
-terms to avoid any effect on customer implementations.
-
-File Suffix and Directory Location
-
-### WebStoreTemplate components have the suffix .webstoretemplate and are stored in the webstoretemplate folder.
-
-Version
-
-### WebStoreTemplate components are available in API version 49.0 and later.
-
-Special Access Rules
-
-A B2B Commerce or D2C Commerce license and access to Commerce objects is required.
-
-Fields
-
-**Field Name** **Field Type** **Description**
-
-`autoFacetingEnabled` boolean Indicates whether auto faceting is enabled ( `true` ) or not ( `false` ). If
-enabled (True), the most relevant search facets are automatically
-
-returned, in addition to the configured search facets, in the product
-search results. If disabled (False), only the configured search facets are
-returned. The default is `False` [. See Add Product Search Filters (Facets)](https://help.salesforce.com/s/articleView?id=commerce.comm_search_add_filters.htm&type=5&language=en_US)
-for more information. This field is available in API version 50.0 or later.
-
-`cartAsyncProcessingEnabled` boolean
-
-`cartCalculateEnabled` boolean
-
-`cartToOrderAutoCustomFieldMapping` boolean
-
-Indicates whether add-to-cart requests are processed asynchronously
-( `True` ) or not ( `False` ). The default value is `True` . This field is available
-in API version 59.0 or later.
-
-Indicates whether the cart calculate extension is enabled ( `True` ) or not
-( `False` ). The default value is `False` . This field is available in API version
-59.0 or later.
-
-Indicates whether custom field mapping for cart and order objects is
-enabled ( `True` ) or not ( `False` ). The default value is `True` . This field
-is available in API version 57.0 or later.
-
-
-Metadata Types WebStoreTemplate
-
-**Field Name** **Field Type** **Description**
-
-`checkoutTimeToLive` int Amount of time in minutes that a checkout stays active and doesn’t
-expire. This field is available in API version 52.0 and later.
-
-`checkoutValidAfterDate` dateTime
-
-A timestamp in the default server timezone (GMT). All checkouts that
-start before this date are considered expired. This field is available in API
-version 52.0 and later.
-
-`commerceEinsteinActivitiesTracked` boolean Indicates whether Commerce Einstein activities tracking is enabled
-( `true` ) or not ( `false` ).
-
-`commerceEinsteinDeployed` boolean Indicates whether Commerce Einstein is deployed ( `true` ) or not
-( `false` ).
-
-`country` string
-
-Two-digit ISO code of the store's country. Purchases can be shipped only
-to the country assigned to the store. Valid for only D2C stores. This field
-is available in API version 56.0 and later.
-
-`defaultCurrency` string The template’s default currency setting for new records.
-
-`defaultLanguage` string Required. The template’s default language setting for new records.
-
-```
-defaultTaxLocaleType
-
-```
-
-TaxLocaleType Required. The template’s default tax type for your webstore. Possible
-(enumeration of values include:
-type string)
-
-**•** `Automatic`
-
-**•** `Gross`
-
-**•** `Net`
-
-`description` string The description of the template.
-
-`duplicateCartItemsEnabled` boolean
-
-Indicates whether a cart can include multiple items with the same
-product ID ( `True` ) or not ( `False` ). The default value is `False` . This
-field is available in API version 59.0 or later.
-
-`guestBrowsingEnabled` boolean Indicates whether guest browsing is enabled for this store. Set the option
-to `True` to allow guest buyers access to products in the store.
-
-`guestCartEnabled` boolean
-
-`guestCheckoutEnabled` boolean
-
-Required. Indicates whether guest cart access is enabled for a store
-created with an LWR template. Set the option to `True` to allow guest
-buyers access to products in the store.
-
-This field is available in API version 58.0 and later.
-
-Required. Indicates whether guest checkout access is enabled for a store
-created with an LWR template. Set the option to `True` to allow guest
-buyers access to products in the store.
-
-This field is available in API version 58.0 and later.
-
-`masterLabel` string Required. The original (untranslated) name of a label. Each translated
-label is paired with its original untranslated version.
-
-`maxValuesPerFacet` int Maximum number of values that can be added to a facet.
-
-
-Metadata Types WebStoreTemplate
-
-**Field Name** **Field Type** **Description**
-
-`orderActivationStatus` string Status of the order. Possible values include:
-
-**•** `Activated`
-
-**•** `Draft`
-
-This field is available in API version 55.0 and later.
-
-```
-orderLifeCycleType
-
-```
-
-OrderLifeCycleType The order life cycle type. Possible values include:
-(enumeration of
-
-**•** `MANAGED`
-
-type string)
-
-**•** `MANAGED`
-
-**•** `UNMANAGED`
-
-This field is available in API version 55.0 and later.
-
-`paginationSize` int Number of results displayed per search results page.
-
-`preserveGuestCartEnabled` boolean
-
-Required. Indicates whether cart contents are preserved when a guest
-logs in to the store. Set the option to `True` to preserve guest carts.
-
-This field is available in API version 60.0 and later.
-
-```
-pricingStrategy
-
-productGrouping
-
-```
-
-PricingStrategy Required. The price selected to display to buyers. Possible values include:
-(enumeration of
-
-**•** `LowestPrice`
-
-type string)
-
-ProductGrouping
-(enumeration of
-type string)
-
-**•** `LowestPrice`
-
-**•** `Priority`
-
-The default value is `LowestPrice` .
-
-Determines whether product variations are listed individually in search
-results or are represented by the parent product, which links to its
-children. Possible values are:
-
-**•** `NoGrouping` —Variations are listed individually in search results.
-
-**•** `VariationParent` —The parent product is returned in search
-results with a link to its children.
-
-The default value is `VariationParent` . This field is available in API
-version 52.0 and later.
-
-`skipAdditionalEntitlementCheckForSearch` boolean By default, user entitlement checks are run as part of a search index
-rebuild and again when product search results are returned. Skips the
-
-second check to promote faster search performance. Set the option to
-`True` to skip additional entitlement checks on a search. This field is
-available in API version 52.0 and later.
-
-`skuDetectionEnabled` boolean Indicates whether SKU detection is enabled ( `true` ) or not ( `false` ).
-
-`splitShipmentEnabled` boolean Required. Indicates whether split shipments are enabled ( `true` ) or not
-( `false` ).
-
-`supportedCurrencies` string Currencies supported for store template.
-
-`supportedLanguages` string Required. Languages supported for store template.
-
-`supportedShipToCountries` string Countries that a store created from the template can ship to.
-
-
-Metadata Types WebStoreTemplate
-
-**Field Name** **Field Type** **Description**
-
-```
-type
-
-```
-
-WebStoreType Required. The type of store configuration, `B2C`, `B2B`, `or B2CE` . Default
-(enumeration of is B2B.
-type string)
-
-Declarative Metadata Sample Definition
-
-The following is an example of a web store template component.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-
-<WebStoreTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-
-   <autoFacetingEnabled>true</autoFacetingEnabled>
-
-   <cartAsyncProcessingEnabled>true</cartAsyncProcessingEnabled>
-
-   <cartCalculateEnabled>false</cartCalculateEnabled>
-
-   <cartToOrderAutoCustomFieldMapping>true</cartToOrderAutoCustomFieldMapping>
-
-   <checkoutTimeToLive>10</checkoutTimeToLive>
-
-   <checkoutValidAfterDate>2020-08-10T09:26:50</checkoutValidAfterDate>
-
-   <commerceEinsteinActivitiesTracked>false</commerceEinsteinActivitiesTracked>
-
-   <commerceEinsteinDeployed>false</commerceEinsteinDeployed>
-
-   <country>US</country>
-
-   <defaultCurrency>USD</defaultCurrency>
-
-   <defaultLanguage>ENGLISH</defaultLanguage>
-
-   <defaultTaxLocaleType>Net</defaultTaxLocaleType>
-
-   <description>WebStore description</description>
-
-   <duplicateCartItemsEnabled>false</duplicateCartItemsEnabled>
-
-   <guestBrowsingEnabled>true</guestBrowsingEnabled>
-
-   <guestCartEnabled>false</guestCartEnabled>
-
-   <guestCartTimeToLive>10</guestCartTimeToLive>
-
-   <guestCheckoutEnabled>false</guestCheckoutEnabled>
-
-   <masterLabel>WebStore</masterLabel>
-
-   <maxValuesPerFacet>99</maxValuesPerFacet>
-
-   <orderActivationStatus>Activated</orderActivationStatus>
-
-   <orderLifeCycleType>MANAGED</orderLifeCycleType>
-
-   <paginationSize>9</paginationSize>
-
-   <preserveGuestCartEnabled>false</preserveGuestCartEnabled>
-
-   <pricingStrategy>Priority</pricingStrategy>
-
-   <productGrouping>VariationParent</productGrouping>
-
-  <skipAdditionalEntitlementCheckForSearch>true</skipAdditionalEntitlementCheckForSearch>
-
-   <skuDetectionEnabled>false</skuDetectionEnabled>
-
-   <supportedCurrencies>USD</supportedCurrencies>
-
-   <supportedLanguages>en_us</supportedLanguages>
-
-   <supportedShipToCountries>CA;US</supportedShipToCountries>
-
-   <splitShipmentEnabled>false</splitShipmentEnabled>
-
-   <type>B2B</type>
-
-</WebStoreTemplate>
+</LightningExperienceSettings>
 
 ```
 
@@ -9465,19 +21326,1289 @@ The following is an example `package.xml` that references the previous definitio
 
    <types>
 
+     <members>LightningExperience</members>
+
+     <name>Settings</name>
+
+   </types>
+
+   <version>47.0</version>
+
+</Package>
+
 ```
 
 
-### Metadata Types Workflow
+#### Metadata Types LiveMessageSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### LiveMessageSettings
+
+Represents an org’s LiveMessage settings.
+
+Version
+
+#### LiveMessageSettings components are available in API version 42.0 and later.
+
+File Suffix and Directory Location
+
+#### LiveMessageSettings values are stored in the LiveMessage.settings file in the settings folder. The .settings files are different from other
+
+named components because there is only one settings file for each settings component.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableCheckCEUserPerm` boolean
+
+Gives access to ConversationEntry objects only to users with the Access
+Conversation Entries user permission enabled (true) or to all users (false)
+in an org.
+
+For orgs created before API version 50.0, the default value is `false` .
+
+For orgs created on or after API version 50.0, the default value is `true` .
+
+`enableLiveMessage` boolean Turns LiveMessage on ( `true` ) or off ( `false` ) in an org. The default
+value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a `liveMessageSettings` component.
 
 ```
-        <members>*</members>
+<?xml version="1.0" encoding="UTF-8"?>
 
-        <name>WebStoreTemplate</name>
+<LiveMessageSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+  <enableLiveMessage>true</enableLiveMessage>
+
+</LiveMessageSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <types>
+
+     <members>LiveMessage</members>
+
+     <name>Settings</name>
+
+   </types>
+
+```
+
+
+#### Metadata Types MacroSettings
+
+```
+      <version>44.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### MacroSettings
+
+Represents an organization’s Macro settings, such as whether or not folders is enabled. This type extends the Metadata metadata type
+and inherits its `fullName` field.
+
+File Suffix and Directory Location
+
+#### MacroSettings values are stored in the Macro.settings file in the settings directory. The .settings files are different
+
+from other named components because there’s only one settings file for each settings component.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+Version
+
+#### MacroSettings is available in API version 39.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableAdvancedSearch` boolean Indicates whether users can search all macro text fields
+( `true` ) or not ( `false` ).
+
+`macrosInFolders` boolean
+
+Declarative Metadata Sample Definition
+
+This is a sample Macro settings file.
+
+Indicates whether users can organize and share macros using
+folders ( `true` ) or not ( `false` ). Available in API version 44.0
+and later.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MacroSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+   <enableAdvancedSearch>true</enableAdvancedSearch>
+
+   <macrosInFolders>true</macrosInFolders>
+
+</MacroSettings>
+
+```
+
+
+#### Metadata Types MailMergeSettings
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### MailMergeSettings
+
+Represents the settings for Extended Mail Merge functionality.
+
+File Suffix and Directory Location
+
+A MailMerge component file has the suffix `MailMerge.settings` and is stored in the `settings` directory.
+
+Version
+
+#### MailMergeSettings components are available in API version 51.0 and later. Before API version 51.0, fields from MailMergeSettings were
+
+found within OrgSettings components.
+
+Fields
+
+**Field Name** **Field Type** **Descriptions**
+
+`enableExtendedMailMerge` boolean Indicates whether the Salesforce Classic product, Extended Mail Merge,
+is enabled ( `true` ) or not ( `false` ). Use Extended Mail Merge to generate
+
+Microsoft Word documents — such as form letters or address labels —
+from Salesforce records using Word document templates. Default value
+is `false` .
+
+`saveMailMergeDocsAsSalesforceDocs` boolean Indicates whether mail-merged documents are saved to the My Personal
+Documents folder of the user who generated the mail merge. ( `true` )
+
+or not ( `false` ). If ( `false` ), only documents over 3 MB are saved to
+the user’s documents folder. Smaller documents are emailed to the user.
+Default value is ( `false` ).
+
+Declarative Metadata Sample Definition
+
+The following is an example of a MailMergeSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <MailMergeSettings xmlns="http://soap.sforce.com/2006/04/metadata"
+
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+      <enableExtendedMailMerge>true</enableExtendedMailMerge>
+
+   </MailMergeSettings>
+
+```
+
+
+#### Metadata Types MapAndLocationSettings
+
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve mail merge settings metadata for an organization:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <name>MailMergeSettings</name>
 
       </types>
 
-      <version>60.0</version>
+      <version>51.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### MapAndLocationSettings
+
+Represents an org’s map and location settings.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+Declarative Metadata File Suffix and Directory Location
+
+#### MapAndLocationSettings values are stored in a single file named Mapandlocation.settings in the settings directory.
+
+The `.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+Map and location settings are available in API version 46.0 and later.
+
+Fields
+
+**Field** **Field Type** **Description**
+
+`enableAddressAutoComplete` boolean Indicates whether auto-complete is enabled
+on address fields ( `true` ) or not ( `false` ).
+
+`enableMapsAndLocation` boolean
+
+Declarative Metadata Sample Definition
+
+This is a sample `mapandlocation.settings` metadata file.
+
+Indicates whether the maps and location
+services are enabled ( `true` ) or not
+( `false` )
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MapsAndLocationSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+```
+
+
+#### Metadata Types MeetingsSettings
+
+```
+      <enableAddressAutoComplete>false</enableAddressAutoComplete>
+
+      <enableMapsAndLocation>false</enableMapsAndLocation>
+
+   </MapsAndLocationSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### MeetingsSettings
+
+Represents the settings to enable Salesforce Meetings and the integration with Zoom video conferencing.
+
+Version
+
+#### MeetingsSettings components are available in API version 51.0 and later.
+
+Special Access Rules
+
+The MeetingsSettings type isn’t available in scratch orgs.
+
+Fields
+
+**Field Name** **Description**
+
+```
+enableSalesforceMeetings
+
+enableSalesforceMeetingsSyncCheck
+
+enableZoomVideoConference
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Salesforce Meetings feature is enabled ( `true` ) or not ( `false` ).
+When set to `true`, Salesforce admins can assign the Salesforce Meetings user
+permission to grant users access to the Meeting Digest and other Salesforce Meetings
+features. The default value is `false` .
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether your company uses an activity sync solution ( `true` ) or hasn’t made
+that indication ( `false` ). Indicating your company uses an activity solution such as
+Einstein Activity Capture is required to enable Salesforce Meetings. The default value
+is `false` .
+
+**Field Type**
+boolean
+
+
+#### Metadata Types MobileSettings
+
+**Field Name** **Description**
+
+**Description**
+Indicates whether users can connect their company Zoom accounts to Salesforce
+( `true` ) or not ( `false` ). When set to `true`, Zoom can be added as a recording in
+Einstein Conversation Insights. The default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a MeetingsSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <MeetingsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+        <enableSalesforceMeetings>true</enableSalesforceMeetings>
+
+        <enableSalesforceMeetingsSyncCheck>true</enableSalesforceMeetingsSyncCheck>
+
+        <enableZoomVideoConference>false</enableZoomVideoConference>
+
+   </MeetingsSettings>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>MeetingsSettings</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>51.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### MobileSettings
+
+Represents an organization’s mobile settings. This type extends the Metadata metadata type and inherits its `fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+#### Note: MobileSettings on page 2164 is no longer available in API versions 25.0 and 26.0.
+
+Declarative Metadata File Suffix and Directory Location
+
+#### MobileSettings on page 2164 values are stored in a single file named Mobile.settings in the settings directory. The
+
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+
+Metadata Types MobileSettings
+
+Version
+
+Mobile settings are available in API version 27.0 and later.
+
+Fields
+
+**Field** **Field Type** **Description**
+
+`chatterMobile` (Removed) ChatterMobileSettings The settings for devices running Chatter
+mobile. Removed in API version 46.0.
+
+`dashboardMobile` (Deprecated) DashboardMobileSettings The settings for devices running the mobile
+dashboards app.
+
+`enableImportContactFromDevice` boolean
+
+Indicates whether users can import contacts
+from their mobile device ( `true` ) or not
+( `false` ).
+
+Available in API version 47.0 and later.
+
+`enableLightningOnMobile` boolean Indicates whether the org is enabled for the
+(Removed) Salesforce mobile app. Available in API
+version 47.0 only. Removed in API version
+48.0.
+
+`enableNewSalesforceMobileAppForTablet` boolean
+(Removed)
+
+Indicates whether the org is enabled for the
+Salesforce mobile app tablet experience.
+Removed in API version 56.0.
+
+`enableNewSalesforceMobileAppForTabletWideScreen` boolean Indicates whether the org is enabled for the
+(Removed) Salesforce mobile app widescreen tablet
+experience. Available in API version 52.0
+through 55.0. Removed in API version 56.0.
+
+`enableOfflineDraftsEnabled` boolean Indicates whether users can create, edit, and
+delete records while offline in the Salesforce
+
+mobile app ( `true` ) or not ( `false` ). The
+default value is `true` . This option isn’t
+available if `enableS1OfflinePref`
+is set to `false` .
+
+Available in API version 47.0 and later.
+
+`enablePopulateNameManuallyInToday` boolean Indicates whether the user’s name is shown
+on the Today page in the Salesforce mobile
+
+app ( `true` ) or not ( `false` ). The default
+value is `false` .
+
+Available in API version 47.0 and later.
+
+`enableS1EncryptedStoragePref2` boolean Indicates whether the Salesforce mobile
+web uses secure and persistent browser
+
+
+Metadata Types MobileSettings
+
+**Field** **Field Type** **Description**
+
+caching to improve performance ( `true` )
+or not ( `false` ). The default value is `true` .
+
+Available in API version 47.0 and later.
+
+`enableS1OfflinePref` boolean Indicates whether users can access records
+offline in the Salesforce mobile app ( `true` )
+
+or not ( `false` ). This option is set to `true`
+the first time someone in your org installs
+one of the Salesforce downloadable apps.
+
+Available in API version 47.0 and later.
+However, offline access isn’t supported in
+all versions of the downloadable mobile
+apps. Users must have version 10.0 or later
+of the Salesforce for Android app or the
+Salesforce for iOS app. Offline access isn’t
+available for the Salesforce mobile web.
+
+`touchMobile` (Removed) TouchMobileSettings The settings for devices running Salesforce
+Touch. Removed in API version 46.0.
+
+ChatterMobileSettings
+
+These fields are removed in API version 46.0. Represents your organization's Chatter Mobile settings.
+
+**Field** **Field Type** **Description**
+
+`IPadAuthorized` boolean Indicates whether iPad devices are enabled
+for Chatter Mobile ( `true` ) or not ( `false` ).
+
+`IPhoneAuthorized` boolean
+
+`androidAuthorized` boolean
+
+`blackBerryAuthorized` boolean
+
+`enableChatterMobile` boolean
+
+Indicates whether iPhone devices are
+enabled for Chatter Mobile ( `true` ) or not
+( `false` ).
+
+Indicates whether Android devices are
+enabled for Chatter Mobile ( `true` ) or not
+( `false` ).
+
+Indicates whether Blackberry devices are
+enabled for Chatter Mobile ( `true` ) or not
+( `false` ).
+
+Indicates whether Chatter Mobile has been
+enabled for your organization ( `true` ) or
+not ( `false` ).
+
+Setting this field to `true` enables you to
+set all the other ChatterMobile settings. If
+
+you change this setting from `true` to
+`false`, and also try to change any of the
+
+
+Metadata Types MobileSettings
+
+**Field** **Field Type** **Description**
+
+other ChatterMobile settings, your
+deployment fails with an error.
+
+`enablePushNotifications` boolean
+
+`sessionTimeout` MobileSessionTimeout (enumeration of type
+string)
+
+DashboardMobileSettings
+
+Indicates whether Chatter push notifications
+have been enabled for your organization
+( `true` ) or not ( `false` )
+
+The length of time after which users without
+activity are prompted to log out or continue
+working. Valid values are:
+
+**•** `Never`
+
+**•** `OneMinute`
+
+**•** `FiveMinutes`
+
+**•** `TenMinutes`
+
+**•** `ThirtyMinutes`
+
+These fields are deprecated. Represents your organization's Mobile Dashboards iPad app settings.
+
+**Field** **Field Type** **Description**
+
+`enableDashboardIPadApp` boolean
+
+TouchMobileSettings
+
+Indicates whether Mobile Dashboards iPad
+app has been enabled for your organization
+( `true` ) or not ( `false` ).
+
+These fields are removed in API version 46.0. Salesforce Touch has been upgraded to the Salesforce mobile app.
+
+**Field** **Field Type** **Description**
+
+`enableTouchBrowserIPad` boolean
+
+`enableTouchAppIPad` boolean
+
+Indicates whether your organization has the
+Salesforce Touch mobile browser app
+enabled ( `true` ) or not ( `false` ).
+
+Indicates whether your organization has the
+Salesforce Touch downloadable app
+enabled ( `true` ) or not ( `false` )
+
+
+#### Metadata Types MyDomainSettings
+
+Declarative Metadata Sample Definition
+
+Here’s a sample `mobile.settings` metadata file.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <MobileSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableImportContactFromDevice>true</enableImportContactFromDevice>
+
+      <enableOfflineDraftsEnabled>true</enableOfflineDraftsEnabled>
+
+      <enableS1EncryptedStoragePref2>true</enableS1EncryptedStoragePref2>
+
+      <enableS1OfflinePref>true</enableS1OfflinePref>
+
+   </MobileSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### MyDomainSettings
+
+Represents your org’s My Domain settings. With My Domain, you can include your company name in your URLs, for example,
+`https://yourcompanyname.my.salesforce.com` . This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+File Suffix and Directory Location
+
+#### MyDomainSettings values are stored in a single file named MyDomain.settings in the settings directory. The .settings
+
+files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+#### MyDomainSettings components are available in API version 47.0 and later.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`areLegacyRedirectsMaintained` boolean Salesforce checks this field when this org is upgraded to Summer ’25. If
+`areLegacyRedirectsMaintained` is `false`, Salesforce
+
+disables `enableLegacyRedirections` during the upgrade. If
+`true`, no change is made to `enableLegacyRedirections`
+during the upgrade. The default is `false` .
+
+This field has no impact after this org is on Summer ’25.
+
+Available in API version 63.0 and later.
+
+`areLgcyRdirMaintainedWntr26` boolean Salesforce checks this field when this org is upgraded to Winter ’26. If
+`areLgcyRdirMaintainedWntr26` is `false`, Salesforce disables
+
+`enableLegacyRedirections` during the upgrade. If `true`, no
+
+
+Metadata Types MyDomainSettings
+
+**Field Name** **Field Type** **Description**
+
+change is made to `enableLegacyRedirections` during the
+upgrade. The default is `false` .
+
+This field has no impact after this org is on Winter ’26.
+
+Available in API version 64.0 and later.
+
+`canOnlyLoginWithMyDomainUrl` boolean If `true`, users must use the org's My Domain login URL to log in. If
+`false` (default), users can also log in using the org’s instance Salesforce
+
+URL, `https://` _`InstanceName`_ `.salesforce.com`, and through
+the login URL `https://login.salesforce.com` .
+
+Admins can log in to a sandbox via the **Log In** action on the Sandboxes
+Setup page only when `canOnlyLoginWithMyDomainUrl` is
+`false` in the sandbox.
+
+`doesApiLoginRequireOrgDomain` boolean If `true`, users must use the org’s My Domain login URL to access the
+Salesforce API. If `false` (default), users can also access the Salesforce
+
+API using the generic Salesforce page,
+`https://` _`InstanceName`_ `.salesforce.com` and through
+the login URL `https://login.salesforce.com` .
+
+`doesWarnOnForceComRedirect` boolean
+
+`doesWarnOnRedirect` boolean
+
+Indicates whether users who visit a previous *.force.com site URL for this
+org see a message with the current URL during redirections ( `true` ) or
+not ( `false` ). The default is `false` .
+
+This field is applicable only when
+
+**•** Your org has a previous *.force.com URL associated with an
+Experience Cloud site or Salesforce Site.
+
+**•** `redirectForceComSitesUrls` is `true`
+
+This field is available in API version 59.0 and later.
+
+Indicates whether users who visit a previous My Domain URL see a
+message with the current URL during redirections ( `true` ) or not
+( `false` ). The default is `false` .
+
+This field is applicable only when
+
+**•** Your org has a previous My Domain. For example, after an admin
+deploys a change to the My Domain.
+
+**•** The previous My Domain hasn’t been removed via the Routing
+options on the My Domain Setup page. If the previous My Domain
+is removed, calls to URLs associated with that My Domain aren’t
+redirected.
+
+**•** `redirectPriorMyDomain` is `true` .
+
+This field is available in API version 59.0 and later.
+
+```
+domainPartition
+
+```
+
+OrgDomainShard The partition for this org. When `none`, partitioned domains aren’t
+(enumeration of enabled. Otherwise, My Domain hostnames include the partition value.
+type string) For example, the format of a My Domain login hostname for a Developer
+
+
+Metadata Types MyDomainSettings
+
+**Field Name** **Field Type** **Description**
+
+Edition org with partitioned domains is
+_`MyDomainName`_ `.develop.my.salesforce.com` .
+
+This field is read-only in the API. Possible values are:
+
+**•** `demo` —Used in demo orgs. Available in API version 60.0 and later.
+
+**•** `develop` —Used in Developer Edition orgs. Also used in patch
+orgs where partitioned domains were deployed before Winter ’24.
+
+**•** `free` —Reserved for internal use.
+
+**•** `none` —Indicates that this org doesn’t use partitioned domains.
+
+**•** `patch` —Used in patch orgs. Available in API version 59.0 and later.
+
+**•** `sandbox` —Used in sandboxes with enhanced domains. These
+orgs are always partitioned.
+
+**•** `scratch` —Used in scratch orgs.
+
+**•** `sfdctest` —Reserved for internal use.
+
+**•** `trailblaze` —Used in Trailblazer Playgrounds.
+
+Partitioned domains require enhanced domains. Production orgs always
+have a value of `none`, and only the sandbox partition is available in
+Government Cloud—Defense orgs.
+
+Qualifying new orgs are partitioned by default and get the corresponding
+`domainPartition` value. You can’t disable this feature in those
+orgs.
+
+Available in API version 55.0 and later.
+
+If `useEdge` is `true`, the routing method for traffic for requests to this
+org. If `useEdge` is `false`, this field has no effect. The default is
+`global` .
+
+Possible values are:
+
+**•** `global` —Route requests to the Salesforce Edge Network location
+closest to the origin of the request. This method provides the best
+performance and security.
+
+**•** `regional` —Route requests to Salesforce locations only in the
+country where your org is located.
+
+This routing method is only available in orgs on a Hyperforce instance
+in Japan.
+
+This routing method can result in increased round-trip time for
+requests, especially for users located outside of your country.
+
+This field is read-only in the API. Update this setting on the My Domain
+Setup page.
+
+Available in API version 65.0 and later.
+
+
+```
+edgeRoutingMethod
+
+```
+
+edgeRoutingOption
+(enumeration of
+type string)
+
+Metadata Types MyDomainSettings
+
+**Field Name** **Field Type** **Description**
+
+`enableCrossDomainPreviewCookies` boolean
+
+If `isFirstPartyCookieUseRequired` is `true`, indicates
+whether cross-domain cookies are allowed on the Experience Builder
+preview domain ( `true` ) or not ( `false` ).
+
+If `isFirstPartyCookieUseRequired` is `false`, this field has
+no effect.
+
+Available in API version 62.0 and later.
+
+`enableEdgeDuringRollout` boolean Indicates whether Salesforce Edge Network is enabled in this org during
+the scheduled rollout. If `true`, Salesforce notifies admins by email
+
+before Salesforce Edge Network is enabled. If `false`, the Edge
+enablement is deferred. The default value is `true` .
+
+If `useEdge` is `true`, this field has no effect.
+
+Available in API version 58.0 and later.
+
+`enableExtendedRedirections` boolean If Salesforce configured temporary extended redirections for select legacy
+hostnames for this org, indicates whether calls to those hostnames are
+
+redirected ( `true` ) or not ( `false` ). The default is `true` . If extended
+redirections aren’t configured for this org, this field has no effect.
+
+Available in API version 62.0 and later.
+
+`enableLegacyRedirections` boolean
+
+If `redirectPriorMyDomain` is `true`, indicates whether legacy
+hostnames for this org are redirected ( `true` ) or not ( `false` ).
+
+If any of these conditions are true, this field has no effect.
+
+**•** No legacy (non-enhanced) hostnames exist for the org
+
+**•** `redirectPriorMyDomain` is `false`
+
+**•** Salesforce stopped legacy redirections for this org
+
+For more information about the end of legacy hostname redirections,
+[see Prepare for the End of Redirections for Non-Enhanced Domains in](https://help.salesforce.com/s/articleView?id=products.domain_name_redirections_non_enhanced.htm&type=5&language=en_US)
+Salesforce Help.
+
+Available in API version 62.0 and later.
+
+`enableNativeBrowserForAuthOnAndroid` boolean If `true`, use the native browser for authentication of Android mobile
+apps. Default is `false` .
+
+`enableNativeBrowserForAuthOnIos` boolean If `true`, use the native browser for authentication of iOS mobile apps.
+Default is `false` .
+
+Indicates how user visits to this org’s instanced URL are handled.
+
+Possible values are:
+
+**•** `Redirect` —Redirect users to the equivalent page on this org’s
+My Domain hostnames.
+
+**•** `WarnOnRedirect` —Display a brief warning message to users
+as they are redirected to the equivalent page on this org’s My Domain
+hostnames.
+
+
+```
+instancedUrlRedirectHandling
+
+```
+
+OrgDomainRedirectOption
+(enumeration of
+type string)
+
+Metadata Types MyDomainSettings
+
+**Field Name** **Field Type** **Description**
+
+**•** `NoRedirect` —Require users to use your My Domain hostnames
+when they view this org’s pages. Visits to this page’s instanced URL
+aren’t redirected.
+
+For example, when a user visits
+`https://` _**`InstanceName`**_ `.lightning.force.com/lightning/page/home`,
+this setting determines whether they’re redirected to
+`https://` _**`MyDomainName`**_ `.lightning.force.com/lightning/page/home` .
+
+The value of this field has no effect on user’s ability to log in via the org’s
+instanced URL. To control that behavior, use
+`canOnlyLoginWithMyDomainUrl` .
+
+Available in API version 59.0 and later.
+
+`isFirstPartyCookieUseRequired` boolean Indicates whether the `SameSite=None` attribute is removed from
+Salesforce cookies ( `true` ) or not ( `false` ). In Salesforce orgs created
+
+in Summer ’24 and later, the default is `true` . In all other orgs, the default
+is `false` .
+
+Service Cloud Voice with Amazon Connect and Service Cloud Voice with
+Partner Telephony from Amazon Connect aren’t compatible with this
+setting. If you use those features, set
+`isFirstPartyCookieUseRequired` to `false` . [Learn more.](https://help.salesforce.com/s/articleView?id=004333227&type=1&language=en_US)
+
+Available in API version 61.0 and later.
+
+`isIcorInstApiTrafficBlocked` boolean
+
+`logRedirections` boolean
+
+`myDomainName` string
+
+This field is reserved for future use. The default is `false` .
+
+Available in API version 64.0 and later.
+
+If `true`, Salesforce produces a log for the Hostname Redirects event
+type when daily event logs are generated. The default is `false` .
+
+The Hostname Redirects event is free for all customers with a 24-hour
+data retention period. When `logRedirections` is `true`, this event
+
+is available in the API but not in the Event Monitoring Analytics app. You
+can also download the latest Hostname Redirects event log file through
+a button on the My Domain page.
+
+Available in API version 56.0 and later.
+
+The subdomain name used in My Domain URLs for this org, such as
+`MyDomainName.my.salesforce.com` and
+`MyDomainName.lightning.force.com` .
+
+This field is read-only in the API. You can change your org’s My Domain
+name from the My Domain Setup page.
+
+Available in API version 51.0 and later.
+
+The domain suffix for this org’s My Domain login URL. This field is
+read-only in the API.
+
+Possible values are:
+
+
+```
+myDomainSuffix
+
+```
+
+OrgDomainProdSuffix
+(enumeration of
+type string)
+
+Metadata Types MyDomainSettings
+
+**Field Name** **Field Type** **Description**
+
+**•** `CloudforceLimited`                          - `cloudforce.com`
+
+**•** `DatabaseLimited`                          - `database.com`
+
+**•** `MySalesforce`                          - `my.salesforce.com` with enhanced
+domains
+
+**•** `MySalesforceLimited`                          - `my.salesforce.com` without
+enhanced domains
+
+**•** `OrgLevelCertificate`                          - `my-salesforce.com`
+
+**•** `OrgLevelCertificateLimited` —legacy version of
+`my-salesforce.com` that’s noncompliant with browser
+settings that block third-party cookies
+
+**•** `Restricted1` —Reserved for future use.
+
+**•** `Restricted2` —Reserved for future use.
+
+Available in API version 51.0 and later.
+
+`onboardCustomerSpecificSuffix` boolean
+
+This field is reserved for future use. The default is `false` .
+
+Available in API version 63.0 and later.
+
+`redirectForceComSitesUrls` boolean If `true`, calls to URLs ending in `.force.com` that serve your
+Experience Cloud sites and Salesforce Sites are redirected to the
+
+corresponding current My Domain site URL. If `false`, these calls aren’t
+redirected and the user gets a file not found (404) error. The default is
+`true` .
+
+This field is only applicable when
+
+**•** Enhanced domains are enabled.
+
+**•** Your org has a previous *.force.com URL associated with an
+Experience Cloud site or Salesforce Site.
+
+Available in API version 55.0 and later.
+
+`redirectPriorMyDomain` boolean If `true`, calls to URLs associated with your previous My Domain name
+are redirected to the corresponding URL associated with your current
+
+My Domain. If `false`, these calls aren’t redirected. When you deploy
+a new My Domain, this setting resets to its default, `true` .
+
+This field is only applicable when
+
+**•** Your org has a previous My Domain. For example, after an admin
+deploys a change to the My Domain.
+
+**•** The previous My Domain hasn’t been removed via the Routing
+options on the My Domain Setup page. If the previous My Domain
+is removed, calls to URLs associated with that My Domain aren’t
+redirected.
+
+Available in API version 54.0 and later.
+
+`use3rdPartyCookieBlockingCompatibleHostnames` boolean Indicates whether the org’s instance name is included in Visualforce
+URLs when third-party cookies are blocked ( `true` ) or not ( `false` ). This
+
+
+Metadata Types MyDomainSettings
+
+**Field Name** **Field Type** **Description**
+
+field has a default value of `true` . Setting this field `true` prevents
+potential issues loading Visualforce pages with stabilized URLs.
+
+Only applicable when `useStabilizedMyDomainHostnames`
+is set to `true` and `myDomainSuffix` is set to
+`MySalesforceLimited`, `CloudforceLimited`, or
+`DatabaseLimited` .
+
+Available in API version 51.0 and later.
+
+`useEdge` boolean
+
+`useEnhancedDomainsInSandbox` boolean
+
+Indicates whether this org’s qualifying My Domain URLs are routed
+through Salesforce Edge Network ( `true` ) or not ( `false` ). This field has
+a default value of `true` .
+
+This field is read-only in the API. If your org can use Salesforce Edge
+Network, you can enable this setting from the My Domain Setup page.
+After this field is set to `true` from Setup, it can't be set to `false` .
+
+Available in API version 51.0 and later.
+
+This field corresponds to the previous My Domain setting, Use enhanced
+domains by default in new and refreshed sandboxes, that was removed
+in Summer ’23.
+
+Previously, in API versions 55.0 to 57.0, if enhanced domains weren’t
+enabled, this field indicated whether new and refreshed sandboxes
+
+created from this org used enhanced domains by default ( `true` ) or not
+( `false` ), and the default value was `true` . As of API version 58.0, this
+field’s value is always `true`, regardless of the value that you set.
+Changing its value has no effect on Salesforce, even if it reads `false` .
+
+`useStabilizedMyDomainHostnames` boolean Indicates whether the instance name is hidden in My Domain URLs for
+Visualforce, Experience Builder, Site.com Studio, and content files ( `true` )
+
+or not ( `false` ). This field has a default value of `true` . For example,
+
+```
+                        MyDomainName -- PackageName .na44.visual.force.com
+```
+
+becomes
+_`MyDomainName`_ `--` _`PackageName`_ `.visualforce.com` when
+this field is set to `true` .
+
+Only applicable when `myDomainSuffix` is set to
+`MySalesforceLimited`, `CloudforceLimited`, or
+`DatabaseLimited` .
+
+`useStabilizedSandboxMyDomainHostnames` boolean
+
+This field corresponds to the Stabilize the Hostname for My Domain URLs
+in Sandboxes release update, which was enforced in Summer ’20.
+
+When `true`, the instance name is hidden in My Domain URLs for
+sandboxes orgs. For example,
+
+_`MyDomainName`_ `--test.cs5.my.salesforce.com` became
+_`MyDomainName`_ `--test.my.salesforce.com` . As of API
+version 49.0, this field's value is always `true`, regardless of the value
+
+
+Metadata Types MyDomainSettings
+
+**Field Name** **Field Type** **Description**
+
+that you set. Changing its value has no effect on Salesforce, even if it
+reads `false` .
+
+This change applies retroactively back to API version 47.0, when this field
+was first introduced. Previously, in API version 47.0 to 49.0, this field
+indicated whether the instance name was hidden in My Domain URLs
+for sandboxes orgs ( `true` ) or not ( `false` ), and the field's default value
+was `false` . Now, in all API versions, this field's value is always `true`,
+even if it reads `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of a MyDomainSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <MyDomainSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <areLegacyRedirectsMaintained>false</areLegacyRedirectsMaintained>
+
+      <areLgcyRdirMaintainedWntr26>false</areLgcyRdirMaintainedWntr26>
+
+      <canOnlyLoginWithMyDomainUrl>false</canOnlyLoginWithMyDomainUrl>
+
+      <doesApiLoginRequireOrgDomain>false</doesApiLoginRequireOrgDomain>
+
+      <doesWarnOnForceComRedirect>false</doesWarnOnForceComRedirect>
+
+      <doesWarnOnRedirect>true</doesWarnOnRedirect>
+
+      <domainPartition>none</domainPartition>
+
+      <edgeRoutingMethod>global</edgeRoutingMethod>
+
+      <enableCrossDomainPreviewCookies>true</enableCrossDomainPreviewCookies>
+
+      <enableEdgeDuringRollout>true</enableEdgeDuringRollout>
+
+      <enableExtendedRedirections>false</enableExtendedRedirections>
+
+      <enableLegacyRedirections>false</enableLegacyRedirections>
+
+      <enableNativeBrowserForAuthOnAndroid>false</enableNativeBrowserForAuthOnAndroid>
+
+      <enableNativeBrowserForAuthOnIos>false</enableNativeBrowserForAuthOnIos>
+
+      <instancedUrlRedirectHandling>false</instancedUrlRedirectHandling>
+
+      <isFirstPartyCookieUseRequired>true</isFirstPartyCookieUseRequired>
+
+      <isIcorInstApiTrafficBlocked>true</isIcorInstApiTrafficBlocked>
+
+      <logRedirections>true</logRedirections>
+
+      <myDomainName>mycompany</myDomainName>
+
+      <myDomainSuffix>MySalesforce</myDomainSuffix>
+
+      <onboardCustomerSpecificSuffix>false</onboardCustomerSpecificSuffix>
+
+      <redirectForceComSitesUrls>true</redirectForceComSitesUrls>
+
+      <redirectPriorMyDomain>true</redirectPriorMyDomain>
+
+   <use3rdPartyCookieBlockingCompatibleHostnames>true</use3rdPartyCookieBlockingCompatibleHostnames>
+
+      <useEdge>true</useEdge>
+
+      <useEnhancedDomainsInSandbox>true</useEnhancedDomainsInSandbox>
+
+      <useStabilizedMyDomainHostnames>true</useStabilizedMyDomainHostnames>
+
+      <useStabilizedSandboxMyDomainHostnames>true</useStabilizedSandboxMyDomainHostnames>
+
+   </MyDomainSettings>
+
+```
+
+
+#### Metadata Types MfgServiceConsoleSettings
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+        <members>MyDomain</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>65.0</version>
+
+   </Package>
+
+#### MfgServiceConsoleSettings
+
+```
+
+Represents the settings to access the Service Console for Manufacturing.This type extends the Metadata metadata type and inherits its
+`fullName` field.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for more details.
+
+File Suffix and Directory Location
+
+#### MfgServiceConsoleSettings values are stored in the MfgServiceConsole.settings file in the settings directory.
+
+Version
+
+#### MfgServiceConsoleSettings components are available in API version 56.0 and later.
+
+Special Access Rules
+
+To use this metadata type, your Salesforce org must have the Manufacturing Cloud license.
+
+Fields
+
+**Field Name** **Field Type** **Description**
+
+`enableMfgServiceConsole` boolean Indicates whether Service Console for Manufacturing is enabled in your
+org ( `true` ) or not `false` ).
+
+Note: By default, Service Console for Manufacturing is disabled.
+
+Declarative Metadata Sample Definition
+
+The following is an example of a MfgServiceConsoleSettings component.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <MfgServiceConsoleSettings
+
+    xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <enableMfgServiceConsole>true</enableMfgServiceConsole>
+
+   </MfgServiceConsoleSettings>
+
+```
+
+
+#### Metadata Types NameSettings
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package
+
+    xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>MfgServiceConsole</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>56.0</version>
 
    </Package>
 
@@ -9488,2602 +22619,1326 @@ Wildcard Support in the Manifest File
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### Workflow
+#### NameSettings
 
-Represents the metadata associated with a workflow rule. A workflow rule sets workflow actions into motion when its designated
-conditions are met. You can configure workflow actions to execute immediately when a record meets the conditions in your workflow
-rule, or set time triggers that execute the workflow actions on a specific day. Use this metadata type to create, update, or delete workflow
-rule definitions.
+Enables or disables the formal name, middle name, and suffix attributes for these person objects: Contact, Lead, Person Account, and
+User. This type extends the Metadata metadata type and inherits its `fullName` field.
 
-For more information, see Workflow in Salesforce Help. This type extends the Metadata metadata type and inherits its `fullName` field.
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-When using a manifest file, retrieve all workflow components using this code.
+[You can’t enable local name fields programmatically via the Metadata API. For more information about enabling local fields, see Local](https://help.salesforce.com/s/articleView?id=xcloud.admin_local_name_fields.htm&language=en_US)
+[Name Fields and Enable ‘Local Name’ Fields.](https://help.salesforce.com/s/articleView?id=xcloud.admin_local_name_fields.htm&language=en_US)
 
-```
-   <types>
+File Suffix and Directory Location
 
-      <members>*</members>
+#### NameSettings values are stored in a single file named Name.settings in the settings folder. The .settings files are
 
-      <name>Workflow</name>
-
-   </types>
-
-```
-
-Declarative Metadata File Suffix and Directory Location
-
-### Workflow files have the suffix .workflow . There’s one file per standard or custom object that has workflow. These files are stored in
-
-the `workflows` directory of the corresponding package.
+different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-### Workflow rules are available in API version 13.0 and later. Workflow
+#### NameSettings components are available in API version 31.0 and later.
 
-This metadata type represents the valid types of workflow rules and actions associated with a standard or custom object.
-
-**Field Name** **Field Type** **Description**
-
-### alerts WorkflowAlert[] An array of all alerts for the object associated with the workflow. fieldUpdates WorkflowFieldUpdate[] An array of all field updates for the object associated with the
-
-workflow.
-
-
-Metadata Types Workflow
+Fields
 
 **Field Name** **Field Type** **Description**
 
-`flowActions` WorkflowFlowAction[]
+`enableInformalName` boolean Reserved for internal use. Available in API version 48.0 and later.
 
-An array of flow triggers for the object associated with the
-workflow. Available in API version 30.0 and later.
+`enableMiddleName` boolean Indicates whether middle names are enabled ( `true` ) or disabled
+( `false` ) for person objects.
 
-The pilot program for flow trigger workflow actions is closed. If
-you already enabled the pilot in your org, you can continue to
+`enableNameSuffix` boolean Indicates whether suffixes are enabled ( `true` ) or disabled ( `false` ) for
+person objects.
 
-create and edit flow trigger workflow actions. If you didn’t enable
-the pilot, use Flow Builder to create a record-triggered flow, or
-use Process Builder to launch a flow from a process.
 
-`fullName` string The developer name used as a unique identifier for API access.
-The `fullName` can contain only underscores and
-
-alphanumeric characters. It must be unique, begin with a letter,
-not include spaces, not end with an underscore, and not contain
-two consecutive underscores. This field is inherited from the
-Metadata component.
-
-`knowledgePublishes` WorkflowKnowledgePublish[] An array of Salesforce Knowledge Workflow Publishes associated
-with the workflow. Available in API version 27.0 and later.
-
-`outboundMessages` WorkflowOutboundMessage[] An array of all the outbound messages for the object associated
-with the workflow.
-
-`rules` WorkflowRule[] An array of all the objects associated with the workflow.
-
-`tasks` WorkflowTask[] An array of all the tasks for the object associated with the
-workflow.
-
-WorkflowActionReference
-
-WorkflowActionReference represents one of the workflow actions.
-
-**Field Name** **Field Type** **Description**
-
-`name` string Required. The name of the workflow action.
-
-`type` WorkflowActionType Required. Available types of workflow actions:
-(enumeration of type string)
-
-**•** `Alert`
-
-**•** `FieldUpdate`
-
-**•** `FlowAction` —Available in API version 30.0 and later
-
-**•** `OutboundMessage`
-
-**•** `Task`
-
-The pilot program for flow trigger workflow actions is closed. If you
-already enabled the pilot in your org, you can continue to create
-and edit flow trigger workflow actions. If you didn't enable the pilot,
-use Flow Builder to create a record-triggered flow, or use Process
-Builder to launch a flow from a process.
-
-
-Metadata Types Workflow
-
-WorkflowAlert
-
-WorkflowAlert represents an email alert associated with a workflow rule.
-
-**Field Name** **Field Type** **Description**
-
-`ccEmails` string[]
-
-Additional email addresses. This field is similar to the CC field
-in email clients.
-
-For the email to be sent successfully, set a value for
-`ccEmails` or `recipients` . You can set values for both
-
-fields. The value of `ccEmails` can include up to 5 different
-email addresses.
-
-`description` string Required. A description of the email alert. Available in API
-version 16.0 and later.
-
-`fullName` string Required. The developer name used as a unique identifier for
-API access. The `fullName` can contain only underscores
-
-and alphanumeric characters. It must be unique, begin with
-a letter, not include spaces, not end with an underscore, and
-not contain two consecutive underscores. This field is inherited
-from the Metadata component.
-
-`protected` boolean Required. Indicates whether this component is protected
-( `true` ) or not ( `false` ). Protected components can’t be linked
-
-to or referenced by components created in the installing
-organization.
-
-`recipients` WorkflowEmailRecipient[]
-
-The recipients for the email.
-
-For the email to be sent successfully, set a value for
-`ccEmails` or `recipients` . You can set values for both
-fields.
-
-`senderAddress` string The address in the From field for the email alert. With this
-address, you can use a standard global email address for your
-
-organization, such as `support@company.com`, instead
-of the default From field, which is the email address of the
-person who updates the record. You can only specify a value
-in this field if the `senderType` is set to
-`OrgWideEmailAddress` . See Organization-Wide Email
-Addresses in Salesforce Help.
-
-`senderType` ActionEmailSenderType The email used as the sender’s From and Reply-To addresses.
-(enumeration of type string) These values are valid.
-
-**•** `CurrentUser` —The email address of the person
-updating the record. This value is the default setting.
-
-**•** `DefaultWorkflowUser` —The email address of the
-default workflow user. If the email alert is installed from a
-package, this field value is changed to `CurrentUser` .
-
-
-Metadata Types Workflow
-
-**Field Name** **Field Type** **Description**
-
-**•** `OrgWideEmailAddress` —A verified global email
-address for your organization, such as
-`support@company.com` .
-
-`template` string
-
-WorkflowEmailRecipient
-
-Required. Named reference to an EmailTemplate. This email
-template isn’t required to exist in the zip file, but it must exist
-in Metadata API.
-
-Lightning email templates aren’t packageable. We recommend
-using a Classic email template.
-
-WorkflowEmailRecipient represents a recipient for an email alert associated with a workflow rule.
-
-**Field Name** **Field Type** **Description**
-
-`field` string Name of the field referenced in `type` . The field named is of
-the type specified in `type` .
-
-`recipient` string The recipients for the email. Depending on the type selected,
-this field is required.
-
-`type` ActionEmailRecipientTypes Named reference to an EmailTemplate component. Valid values
-(enumeration of type string) are:
-
-**•** `accountOwner` —The email is sent to the record’s
-account owner. For example, the Account owner for an
-Opportunity.
-
-**•** `accountTeam` —Only applicable on the Account object.
-The email is sent to everyone on that Account’s account
-team.
-
-**•** `campaignMemberDerivedOwner` —Emails are sent
-to lead and contact owners when contacts are added to a
-campaign or in response to a campaign.
-
-**•** `contactLookup` —The email is sent to a contact whose
-value is looked up from a field on the record. For this value,
-the `field` field must reference a Contact.
-
-**•** `creator` —The email is sent to the record’s creator.
-
-**•** `customerPortalOwner` —The email is sent to a
-specific self-service portal user. For this value, the recipient
-field must reference a self-service portal user by their
-username.
-
-**•** `email` —The email is sent to an email address whose value
-is looked up from a field on the record. For this value, the
-`field` field must reference an email field.
-
-
-Metadata Types Workflow
-
-**Field Name** **Field Type** **Description**
-
-**•** `group` —The email is sent to all users in a group. For this
-value, the recipient field must reference a group by group
-name.
-
-**•** `opportunityTeam` —Only applicable on the
-Opportunity object. The email is sent to everyone on that
-Opportunity’s opportunity team.
-
-**•** `owner` —The email is sent to the record’s owner.
-
-**•** `partnerUser` —The email is sent to a specific partner
-user. For this value, the recipient field must reference a
-partner user by username.
-
-**•** `portalRole`                             - Like `role`, but for portal roles only.
-
-**•** `portalRoleSubordinates`                             - Like
-`roleSubordinates`, but for portal roles only.
-
-**•** `role` —The email is sent to all users in a role. For this value,
-the recipient field must reference a role name in the role
-hierarchy.
-
-**•** `roleSubordinates` —The email is sent to all users in
-a role subordinate. For this value, the recipient field must
-reference a role.
-
-**•** `roleSubordinatesInternal` —Like
-`roleSubordinates`, but for internal portal roles only.
-
-**•** `user` —The email is sent to a specific user. For this value,
-the recipient field must reference a user by username.
-
-**•** `userLookup` —The email is sent to a user whose value
-is looked up from a field on the record. For this value, the
-`field` field must reference a user foreign key field.
-
-WorkflowFieldUpdate
-
-WorkflowFieldUpdate represents a workflow field update. With field updates, you can automatically update a field value to one that you
-specify when a workflow rule is triggered.
-
-**Field Name** **Field Type** **Description**
-
-`description` string The description of the field update. This information is useful to
-track the reasoning for initially configuring the field update.
-
-`field` string Required. The field on the object for the workflow to be updated.
-
-`formula` string If the `operation` field value is `Formula`, the formula used
-to compute the new field value.
-
-`fullName` string Required. The developer name used as a unique identifier for API
-access. The `fullName` can contain only underscores and
-
-alphanumeric characters. It must be unique, begin with a letter,
-
-
-Metadata Types Workflow
-
-**Field Name** **Field Type** **Description**
-
-not include spaces, not end with an underscore, and not contain
-two consecutive underscores. This field is inherited from the
-Metadata component.
-
-`literalValue` string If the `operation` field value is `Literal`, the literal value for
-the field.
-
-`lookupValue` string If the `operation` field value is `lookupValue`, the lookup
-value that is referenced.
-
-`lookupValueType` LookupValueType The type of object that the `lookupValue` field value is
-(enumeration of type string) referencing. The valid values are:
-
-**•** `Queue`
-
-**•** `RecordType`
-
-**•** `User`
-
-`name` string Required. A name for the component. Available in version API
-16.0 and later.
-
-`notifyAssignee` boolean Required. Notify the assignee when the field is updated.
-
-`operation` FieldUpdateOperation Required. The operation that computes the value with which to
-(enumeration of type string) update the field. Valid values are:
-
-**•** `Formula` —Indicates the field is set to a formula. If set, the
-formula must be a valid formula.
-
-**•** `Literal` —Indicates the field is set to a literal value. If set,
-the literalValue must be a valid literal value for this field.
-
-**•** `LookupValue` —Similar to Literal, but for an object
-reference, such as a contact, user, or account. If set, the
-`lookupValue` element must be set. Only User is supported
-in the current API.
-
-**•** `NextValue` —Indicates that the field will be set to its next
-value. Only allowed when the field update references a picklist.
-
-**•** `Null` —Indicates that the field is set to null.
-
-**•** `PreviousValue` —Indicates that the field is set to its
-previous value. Only allowed when the field update references
-a picklist.
-
-`protected` boolean
-
-Required. Indicates whether this component is protected ( `true` )
-or not ( `false` ). Protected components can’t be linked to or
-referenced by components created in the installing organization.
-
-`reevaluateOnChange` boolean When set to `true`, if the field update changes the field’s value,
-all workflow rules on the associated object are reevaluated. Any
-
-workflow rules whose criteria are met as a result of the field value
-change are triggered.
-
-
-Metadata Types Workflow
-
-**Field Name** **Field Type** **Description**
-
-If any of the triggered workflow rules result in another field update
-that’s also enabled for workflow rule reevaluation, a domino effect
-occurs, and more workflow rules can be reevaluated as a result of
-the newly triggered field update. This cascade of workflow rule
-reevaluation and triggering can happen up to 5 times after the
-initial field update that started it.
-
-`targetObject` string Object set if the change is detected on a child record. If set, the
-object points to the foreign key reference on the child object that
-
-points to the parent. For example, if `EmailMessage` child
-record is changed, `EmailMessage.ParentId` points to
-the `Case` parent. This field is named `sourceField` before
-version 14.0. The field name change is automatically handled
-between versions and doesn’t require any manual editing of
-existing XML component files.
-
-WorkflowFlowAction
-
-Represents a flow trigger, which is a workflow action that launches a flow. Available in API version 30.0 and later. For more information,
-see these topics in Salesforce Help.
-
-**•** Define a Flow Trigger for Workflow (Pilot)
-
-**•** Flow Trigger Considerations (Pilot)
-
-Note:
-
-**•** The pilot program for flow trigger workflow actions is closed. If you already enabled the pilot in your org, you can continue to
-create and edit flow trigger workflow actions. If you didn’t enable the pilot, use Flow Builder to create a record-triggered flow,
-or use Process Builder to launch a flow from a process.
-
-**•** Test mode for flow triggers isn’t supported in the Metadata API. If you want a flow trigger to run the latest flow version when
-an administrator causes the workflow rule to fire, enable test mode via the user interface after deployment.
-
-**Field Name** **Field Type** **Description**
-
-`description` string Describes the flow trigger.
-
-`flow` string Required. API name of the flow that this workflow action launches.
-
-`flowInputs` WorkflowFlowActionParameter[] An array of values to pass into flow variables when launching the
-flow.
-
-`label` string Required. Name of the flow trigger.
-
-`language` string Reserved for future use.
-
-`protected` boolean Reserved for future use.
-
-
-Metadata Types Workflow
-
-WorkflowFlowActionParameter
-
-Represents a value specified in the flow trigger that is passed into a variable when launching the flow.
-
-Note: The pilot program for flow trigger workflow actions is closed. If you already enabled the pilot in your org, you can continue
-to create and edit flow trigger workflow actions. If you didn’t enable the pilot, use Flow Builder to create a record-triggered flow,
-or use Process Builder to launch a flow from a process.
-
-**Field Name** **Field Type** **Description**
-
-`name` string
-
-`value` string
-
-Required. API name of the flow variable.
-
-The flow variable must have `isInput` set to `True` .
-
-Required. Value to assign to the flow variable when launching the flow.
-
-If the variable's data type is sObject, `value` must be a merge field that identifies a record—or a
-lookup relationship field that references a record—of the same object type as the variable. For example:
-
-**•** _`{!this}`_ —Identifies the record that fired the workflow rule.
-
-**•** _`{!Contact}`_ —Identifies the contact associated with the record that fired the workflow rule.
-
-**•** _`{!Asset.Account}`_ —Identifies the account associated with the asset that is associated with
-the record that fired the workflow rule.
-
-**•** _`{!SomeObject__r}`_ —Uses a lookup relationship field to identify a custom object record
-associated with the record that fired the workflow rule.
-
-For variables of other data types, you can enter a merge field or a literal value. Manually enter a literal
-value when the variable requires the same value every time the flow is launched, regardless of which
-record fired the workflow rule. For example, you can enter _`true`_ or _`false`_ for a variable of type
-Boolean.
-
-Supported merge fields identify a global variable or a field of the same data type as the flow variable.
-For example:
-
-**•** _`{!Id}`_ —ID of the record that fired the workflow rule.
-
-**•** _`{!Account.Owner.Email}`_ —Email address of the account owner for the account associated
-with the record that fired the workflow rule.
-
-**•** _`{!$Organization.Country}`_ —Country of the organization.
-
-WorkflowKnowledgePublish
-
-WorkflowKnowledgePublish represents Salesforce Knowledge article publishing actions and information. Available in API version 27.0
-and later.
-
-**Field Name** **Field Type** **Description**
-
-`action` KnowledgeWorkflowAction Required. The article publishing actions available when
-(enumeration of type string) this rule fires. Valid values are:
-
-**•** `PublishAsNew` —Publishes the article as a new
-article.
-
-
-Metadata Types Workflow
-
-**Field Name** **Field Type** **Description**
-
-**•** `Publish` —Publishes the article as a version of a
-previously published article.
-
-`description` string A brief article description.
-
-`label` string
-
-Required. Label that represents the article throughout the
-Salesforce user interface.
-
-`language` string The language of the article.
-
-`protected` boolean Required. Indicates whether this component is protected
-( `true` ) or not ( `false` ). Protected components can’t be
-
-linked to or referenced by components created in the
-installing organization.
-
-WorkflowOutboundMessage
-
-WorkflowOutboundMessage represents an outbound message associated with a workflow rule. Outbound messages are workflow and
-approval actions that send the information you specify to an endpoint you designate, such as an external service. An outbound message
-sends the data in the specified fields in the form of a SOAP message to the endpoint. For more information, see Outbound Message
-Actions in Salesforce Help.
-
-**Field Name** **Field Type** **Description**
-
-`apiVersion` double
-
-Required. The API version of the outbound message. Automatically set
-to the current API version when the outbound message is created. Valid
-API versions for outbound messages are 8.0 and 18.0 or later.
-
-This API version is used in API calls back to Salesforce using the enterprise
-or partner WSDLs. The `API Version` can only be modified by using
-
-Metadata API. It can’t be modified using the Salesforce user interface.
-This field is available in API version 18.0 and later.
-
-If you change the `apiVersion` to a version that doesn’t support one
-of the `fields` configured for the outbound message, the messages
-fail until you update your outbound message listener to consume the
-updated WSDL.
-
-To monitor the status of outbound messages, from Setup, in the Quick
-Find box, enter _`Outbound Messages`_, and then select **Outbound**
-**Messages** inSalesforce.
-
-`description` string Describes the outbound message.
-
-`endpointUrl` string Required. The endpoint URL to which the outbound message is sent.
-
-`fields` string[] The named references to the fields to be sent.
-
-`fullName` string Required. The developer name used as a unique identifier for API access.
-The `fullName` can contain only underscores and alphanumeric
-
-characters. It must be unique, begin with a letter, not include spaces, not
-
-
-Metadata Types Workflow
-
-**Field Name** **Field Type** **Description**
-
-end with an underscore, and not contain two consecutive underscores.
-This field is inherited from the Metadata component.
-
-`includeSessionId` boolean
-
-Required. Set if you want the Salesforce _session ID_ included in the
-outbound message. Useful if you intend to make API calls and you don’t
-want to include a username and password.
-
-`integrationUser` string Required. The named reference to the user under which this message is
-sent.
-
-`name` string Required. A name for the component. Available in version API 16.0 and
-later.
-
-`protected` boolean
-
-`useDeadLetterQueue` boolean
-
-WorkflowRule
-
-Required. Indicates whether this component is protected ( `true` ) or not
-( `false` ). Protected components can’t be linked to or referenced by
-components created in the installing organization.
-
-This field is only available for organizations with dead letter queue
-permissions turned on. If set, this outbound message uses the dead letter
-queue if normal delivery fails.
-
-This metadata type represents a workflow rule. This type extends the Metadata metadata type and inherits its `fullName` field.
-
-**Field Name** **Field Type** **Description**
-
-`actions` WorkflowActionReference[] An array of references for the actions that
-happen when this rule fires.
-
-`active` boolean Required. Determines if this rule is active.
-
-`booleanFilter` string
-
-For advanced criteria filter, the boolean
-formula. For example, `(1 AND 2) OR`
-`3` .
-
-`criteriaItems` FilterItem[] An array of the boolean criteria (conditions)
-under which this rule fires. Either
-
-`criteriaItems` or `formula` must
-be set.
-
-`description` string The description of the workflow rule.
-
-`failedMigrationToolVersion` string The API version in which a migration fails.
-Used as a reference to admins to retry the
-
-migration when the next version is
-released.
-
-Available in API version 54.0 and later.
-
-
-Metadata Types Workflow
-
-**Field Name** **Field Type** **Description**
-
-`formula` string
-
-The formula condition under which this
-rule first must be set, either `formula` or
-`criteriaItems` .
-
-`fullName` string The developer name used as a unique
-identifier for API access. The `fullName`
-
-can contain only underscores and
-alphanumeric characters. It must be
-unique, begin with a letter, not include
-spaces, not end with an underscore, and
-not contain two consecutive underscores.
-This field is inherited from the Metadata
-component.
-
-`triggerType` WorkflowTriggerTypes (enumeration of type string) Under what conditions the trigger fires.
-Valid values are:
-
-**•** `onAllChanges` —The workflow
-rule is considered on all changes.
-
-**•** `onCreateOnly` —The workflow
-rule is considered only on create.
-
-**•** `onCreateOrTriggeringUpdate` —The
-workflow rule is considered on create
-and triggering updates.
-
-`workflowTimeTriggers` WorkflowTimeTrigger Represents a set of Workflow actions,
-including Field Updates, Email Alerts,
-
-Outbound Messages, and Tasks, that
-executes before or after a specified interval
-of time.
-
-WorkflowTask
-
-This metadata type references an assigned workflow task.
-
-**Field Name** **Field Type** **Description**
-
-`assignedTo` string Specifies the user, role, or team to which the workflow rule
-or action is assigned. The field corresponding to the value
-
-specified here must be the same as the specified
-`assignedToType` .
-
-`assignedToType` ActionTaskAssignedToTypes Valid string values for this type are:
-(enumeration of type string)
-
-**•** `accountCreator` —When set, the task is assigned
-to the record’s account's creator.
-
-**•** `accountOwner` —When set, the task is assigned to
-the record’s account owner (Opportunity).
-
-
-Metadata Types Workflow
-
-**Field Name** **Field Type** **Description**
-
-**•** `accountTeam` —Same as WorkflowAlert type
-
-**•** `creator` —When set, the task is assigned to the
-record’s creator.
-
-**•** `opportunityTeam` —Same as WorkflowAlert type
-
-**•** `owner` —When set, the task is assigned to the record’s
-owner.
-
-**•** `partnerUser` —When set, the `assignedTo` field
-references a partner user by username.
-
-**•** `portalRole` —When set, the `assignedTo` field
-references a Role by role name, a portal role.
-
-**•** `role` —When set, the `assignedTo` field references
-a Role by role name.
-
-**•** `user` —When set, the `assignedTo` field references
-a User by username.
-
-`description` string The description of this workflow task.
-
-`dueDateOffset` int Required. The offset, in days, from either the trigger date,
-or the date specified in the (optional)
-
-`offsetFromField` . The offset can be a negative
-number.
-
-`fullName` string Required. The developer name used as a unique identifier
-for API access. The `fullName` can contain only
-
-underscores and alphanumeric characters. It must be
-unique, begin with a letter, not include spaces, not end
-with an underscore, and not contain two consecutive
-underscores. This field is inherited from the Metadata
-component.
-
-`notifyAssignee` boolean Required. Set to send an email notification when the task
-is assigned.
-
-`offsetFromField` string Optional field reference of the date field from which the
-`dueDate` is computed.
-
-`priority` string Required. The priority to assign the created task.
-
-`protected` boolean Required. Indicates whether this component is protected
-( `true` ) or not ( `false` ). Protected components can’t be
-
-linked to or referenced by components created in the
-installing organization.
-
-`status` string Required. The status to assign the created task.
-
-`subject` string
-
-Required. A subject for the workflow task that’s used if an
-email notification is sent when the task is assigned. Available
-in API version 16.0 and later.
-
-
-Metadata Types Workflow
-
-WorkflowTimeTrigger
-
-Represents a set of Workflow actions, including Field Updates, Email Alerts, Outbound Messages, and Tasks, that execute before or after
-a specified interval of time.
-
-**Field Name** **Field Type** **Description**
-
-`actions` WorkflowActionReference[] An array of references for the actions that happen when this trigger
-fires.
-
-`offsetFromField` string The date type field name that the time-based workflow triggers
-from, such as `Created Date`, `Last Modified Date`,
-
-`Rule Trigger Date`, or a custom date field on the object
-for which the workflow rule is defined.
-
-`timeLength` string The numeric value of the time after or before the workflow triggers.
-A negative value represents the time length before the trigger fires.
-
-The `timeLength` is measured in either hours or days, as specified
-by `workflowTimeTriggerUnit` .
-
-`workflowTimeTriggerUnit` WorkflowTimeUnits The unit of time before or after which the time-based workflow
-(enumeration of type string) triggers. Valid string values are:
-
-**•** `Hours`
-
-**•** `Days`
+#### Metadata Types NotificationsSettings
 
 Declarative Metadata Sample Definition
 
-Here’s the definition of a workflow rule.
+This example shows a NameSettings component.
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
-   <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+   <NameSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-      <alerts>
+      <enableMiddleName>true</enableMiddleName>
 
-        <fullName>Another_alert</fullName>
+      <enableNameSuffix>false</enableNameSuffix>
 
-        <description>Another alert</description>
-
-        <protected>false</protected>
-
-        <recipients>
-
-           <type>accountOwner</type>
-
-        </recipients>
-
-        <recipients>
-
-           <field>Contact__c</field>
-
-           <type>contactLookup</type>
-
-        </recipients>
-
-        <recipients>
-
-           <field>Email__c</field>
-
-           <type>email</type>
-
-        </recipients>
-
-        <template>TestEmail/Email Test</template>
-
-      </alerts>
-
-      <fieldUpdates>
-
-        <fullName>Enum_Field_Update</fullName>
-
-        <description>Blah</description>
-
-        <field>EnumField__c</field>
+   </NameSettings>
 
 ```
 
-
-Metadata Types Workflow
-
-```
-        <name>Enum Field Update</name>
-
-        <notifyAssignee>true</notifyAssignee>
-
-        <operation>NextValue</operation>
-
-        <protected>false</protected>
-
-      </fieldUpdates>
-
-      <fieldUpdates>
-
-        <fullName>Enum_Field_Update2</fullName>
-
-        <description>Blah</description>
-
-        <field>EnumField__c</field>
-
-        <literalValue>PLX2</literalValue>
-
-        <name>Enum Field Update2</name>
-
-        <notifyAssignee>true</notifyAssignee>
-
-        <operation>Literal</operation>
-
-        <protected>false</protected>
-
-      </fieldUpdates>
-
-      <fieldUpdates>
-
-        <fullName>Field_Update</fullName>
-
-        <description>TestField update desc</description>
-
-        <field>Name</field>
-
-        <formula>Name &amp; &quot;Updated&quot;</formula>
-
-        <name>Field Update</name>
-
-        <notifyAssignee>false</notifyAssignee>
-
-        <operation>Formula</operation>
-
-        <protected>false</protected>
-
-      </fieldUpdates>
-
-      <fieldUpdates>
-
-        <fullName>Lookup_On_Contact</fullName>
-
-        <field>RealOwner__c</field>
-
-        <lookupValue>admin@acme.com</lookupValue>
-
-        <name>Lookup On Contact</name>
-
-        <notifyAssignee>false</notifyAssignee>
-
-        <operation>LookupValue</operation>
-
-        <protected>false</protected>
-
-      </fieldUpdates>
-
-      <outboundMessages>
-
-        <fullName>Another_Outbound_message</fullName>
-
-        <description>Another Random outbound.</description>
-
-        <endpointUrl>http://www.test.com</endpointUrl>
-
-        <fields>Email__c</fields>
-
-        <fields>Id</fields>
-
-        <fields>Name</fields>
-
-        <includeSessionId>true</includeSessionId>
-
-        <integrationUser>admin@acme.com</integrationUser>
-
-        <name>Another Outbound message</name>
-
-        <protected>false</protected>
-
-      </outboundMessages>
-
-      <rules>
-
-        <fullName>BooleanFilter</fullName>
-
-        <active>false</active>
-
-        <booleanFilter>1 AND 2 OR 3</booleanFilter>
-
-        <criteriaItems>
-
-           <field>CustomObjectForWorkflow__c.CreatedById</field>
-
-           <operation>notEqual</operation>
-
-        </criteriaItems>
+This example `package.xml` manifest references the NameSettings definitions.
 
 ```
+   <?xml version="1.0" encoding="UTF-8"?>
 
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-Metadata Types Workflow
+      <types>
 
-```
-        <criteriaItems>
+        <members>Name</members>
 
-           <field>CustomObjectForWorkflow__c.CreatedById</field>
+        <name>Settings</name>
 
-           <operation>notEqual</operation>
+      </types>
 
-           <value>abc</value>
+      <version>31.0</version>
 
-        </criteriaItems>
-
-        <criteriaItems>
-
-           <field>CustomObjectForWorkflow__c.CreatedById</field>
-
-           <operation>equals</operation>
-
-           <value>xyz</value>
-
-        </criteriaItems>
-
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-
-      </rules>
-
-      <rules>
-
-        <fullName>Custom Rule1</fullName>
-
-        <actions>
-
-           <name>Another_alert</name>
-
-           <type>Alert</type>
-
-        </actions>
-
-        <actions>
-
-           <name>Enum_Field_Update2</name>
-
-           <type>FieldUpdate</type>
-
-        </actions>
-
-        <actions>
-
-           <fullName>Field_Update</name>
-
-             <type>FieldUpdate</type>
-
-        </actions>
-
-        <actions>
-
-           <name>Another_Outbound_message</name>
-
-           <type>OutboundMessage</type>
-
-        </actions>
-
-        <actions>
-
-           <name>Role_task_was_completed</name>
-
-           <type>Task</type>
-
-        </actions>
-
-        <active>true</active>
-
-        <criteriaItems>
-
-           <field>CustomObjectForWorkflow__c.Name</field>
-
-           <operation>startsWith</operation>
-
-           <value>ABC</value>
-
-        </criteriaItems>
-
-        <description>Custom Rule1 desc</description>
-
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-
-      </rules>
-
-      <rules>
-
-        <fullName>IsChangedFunctionRule</fullName>
-
-        <active>true</active>
-
-        <description>IsChangedDesc</description>
-
-        <formula>ISCHANGED(Name)</formula>
-
-        <triggerType>onAllChanges</triggerType>
-
-      </rules>
-
-      <tasks>
-
-        <fullName>Another_task_was_completed</fullName>
-
-        <assignedToType>owner</assignedToType>
-
-        <description>Random Comment</description>
-
-```
-
-
-### Metadata Types WorkSkillRouting
-
-```
-        <dueDateOffset>20</dueDateOffset>
-
-        <notifyAssignee>true</notifyAssignee>
-
-        <priority>High</priority>
-
-        <protected>false</protected>
-
-        <status>Completed</status>
-
-        <subject>Another task was completed</subject>
-
-      </tasks>
-
-      <tasks>
-
-        <fullName>Role_task_was_completed</fullName>
-
-        <assignedTo>R11</assignedTo>
-
-        <assignedToType>role</assignedToType>
-
-        <dueDateOffset>-2</dueDateOffset>
-
-        <notifyAssignee>true</notifyAssignee>
-
-        <offsetFromField>CustomObjectForWorkflow__c.CreatedDate</offsetFromField>
-
-        <priority>High</priority>
-
-        <protected>false</protected>
-
-        <status>Completed</status>
-
-        <subject>Role task was completed</subject>
-
-      </tasks>
-
-      <tasks>
-
-        <fullName>User_task_was_completed</fullName>
-
-        <assignedTo>admin@acme.com</assignedTo>
-
-        <assignedToType>user</assignedToType>
-
-        <dueDateOffset>-2</dueDateOffset>
-
-        <notifyAssignee>true</notifyAssignee>
-
-        <offsetFromField>User.CreatedDate</offsetFromField>
-
-        <priority>High</priority>
-
-        <protected>false</protected>
-
-        <status>Completed</status>
-
-        <subject>User task was completed</subject>
-
-      </tasks>
-
-   </Workflow>
+   </Package>
 
 ```
 
 Wildcard Support in the Manifest File
 
-This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-### WorkSkillRouting
+#### NotificationsSettings
 
-Represents a setup object that stores a set of WorkSkillRoutingAttribute objects. These objects are used to route a work item to an agent
-who has the skills necessary to take the work. This type extends the Metadata metadata type and inherits its `fullName` field.
+Represents an organization’s mobile settings.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+Declarative Metadata File Suffix and Directory Location
+
+#### NotificationsSettings values are stored in a single file named Notifications.settings in the settings directory. The
+
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
+
+Version
+
+Mobile settings are available in API version 46.0 and later.
+
+Fields
+
+**Field** **Field Type** **Description**
+
+`enableActivityReminderBrowserNotifs` boolean Reserved for internal use.
+
+`enableMobileAppPushNotifications` boolean Indicates whether mobile push notifications
+are enabled.
+
+`enableNotifications` boolean Indicates whether notifications are enabled.
+
+
+#### Metadata Types OauthOidcSettings
+
+Declarative Metadata Sample Definition
+
+This is a sample `notifications.settings` metadata file.
+
+```
+   <NotificationsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <enableMobileAppPushNotifications>true</enableMobileAppPushNotifications>
+
+      <enableNotifications>true</enableNotifications>
+
+   </NotificationsSettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### OauthOidcSettings
+
+Represents org settings for disabling OAuth OpenID Connect authorization flows.
+
+Parent Type and Manifest Access
+
+[This type extends the Metadata metadata type and inherits its](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/metadata.htm) `fullName` field.
+
+[In the package manifest, all the settings metadata types for the org are accessed using the “Settings” name. See Settings for more details.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_settings.htm)
+
+File Suffix and Directory Location
+
+#### OauthOidcSettings values are stored in the OauthOidc.settings file in the settings folder. The .settings files
+
+are different from other named components, because there is only one settings file for each settings component.
+
+Version
+
+#### OauthOidcSettings is available in API version 56.0 and later.
+
+Special Access Rules
+
+There are no additional access requirements that are specific to this type.
+
+Fields
+
+**Field Name** **Description**
+
+```
+agentAuthLinking
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+For internal use only.
+
+
+Metadata Types OauthOidcSettings
+
+**Field Name** **Description**
+
+```
+blockOAuthUnPwFlow
+
+blockOAuthUsrAgtFlow
+
+enableHdlessFgtPswFlow
+
+isPkceRequired
+
+oAuthCdCrdtFlowEnable
+
+```
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the username-password flow is blocked ( `true` ) or not blocked
+( `false` ). The default value is `false` .
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the user-agent flow is blocked ( `true` ) or not blocked ( `false` ).
+The default value is `false` .
+
+**Field Type**
+boolean
+
+**Description**
+For internal use only.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the OAuth 2.0 Proof Key for Code Exchange (PKCE) security extension
+is required for variations of the OAuth authorization code flow that access this org
+( `true` ) or not ( `false` ). This setting requires PKCE for all supported variations of the
+authorization code flow, including the web server flow, the Authorization Code and
+Credentials Flow, and their derivatives. The default value is `false` . This field is available
+in API version 59.0 and later.
+
+**Field Type**
+boolean
+
+**Description**
+Indicates whether the Authorization Code and Credentials Flow is enabled ( `true` ) or
+blocked ( `false` ). The default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of the OauthOidcSettings file.
+
+```
+<?xml version=“1.0” encoding=“UTF-8"?>
+
+<OauthOidcSettings xmlns=“http://soap.sforce.com/2006/04/metadata”>
+
+   <blockOAuthUnPwFlow>true</blockOAuthUnPwFlow>
+
+   <blockOAuthUsrAgtFlow>true</blockOAuthUsrAgtFlow>
+
+   <oAuthCdCrdtFlowEnable>false</oAuthCdCrdtFlowEnable>
+
+</OauthOidcSettings>
+
+```
+
+
+#### Metadata Types ObjectHierarchyRelationship
+
+Example Package Manifest
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version=“1.0" encoding=“UTF-8”?>
+
+   <Package xmlns=“http://soap.sforce.com/2006/04/metadata”>
+
+     <types>
+
+      <members>OauthOidc</members>
+
+      <name>Settings</name>
+
+     </types>
+
+     <version>56.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### ObjectHierarchyRelationship
+
+Represents an organization’s custom field mappings for sales agreement conversion. Fields can be mapped from Opportunity and Quotes
+to SalesAgreement and SalesAgreementProduct.
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
 
 Important: Where possible, we changed noninclusive terms to align with our company value of Equality. We maintained certain
 terms to avoid any effect on customer implementations.
 
 File Suffix and Directory Location
 
-### WorkSkillRouting components have the suffix workSkillRouting and are stored in the workSkillRoutings folder.
-
-
-Metadata Types WorkSkillRouting
+#### ObjectHierarchyRelationship components have the suffix ObjectHierarchyRelationship.settings and are stored in the ObjectHierarchyRelationship folder.
 
 Version
 
-WorkSkillRouting components are available in API version 46.0 and later.
+#### ObjectHierarchyRelationship components are available in API version 51.0 and later.
 
 Fields
 
-**Field Name** **Field Type** **Description**
+**Field Name** **Description**
 
-`isActive` boolean Required. Indicates whether assignment rules are active and can be
-evaluated.
+```
+childObjectMapping
 
-`masterLabel` string Required. The label for this object. This display value is the internal label
-that is not translated.
+```
 
-`relatedEntity` string Required. Type of Salesforce object that the attributes are associated
-with.
+**Field Type**
 
-`workSkillRoutingAttributes` WorkSki **l** RoutingAttribute[] A set of mappings between work-item field values and skills. Create one
-attribute mapping set for each object.
+ObjectMapping
 
-WorkSkillRoutingAttribute
+**Description**
+Set of `inputObject`, `mappingFields`, and `outputObject` entries.
+For example, fields from the input object of OpportunityLineItem maps to fields
+of the output object of SalesAgreementProduct.
 
-Represents the routing assignments between object attributes and skills. Attributes are used to route a work item to an agent who has
-the skills necessary to take the work.
+
+Metadata Types ObjectHierarchyRelationship
+
+**Field Name** **Description**
+
+```
+childObjectMappingId
+
+inputObjRecordsGrpFieldName
+
+mappingType
+
+masterLabel
+
+outputPntRelationshipFieldName
+
+parentObjectMapping
+
+```
+
+**Field Type**
+String
+
+**Description**
+The ID of the child object mapping record. This field is available in API version 56.0
+and later.
+
+**Field Type**
+string
+
+**Description**
+The field name in the input object used to group the records. This field is available
+in API version 55.0 and later.
+
+**Field Type**
+ObjHierarchyMappingType (enumeration of type string)
+
+**Description**
+Specifies the type of relationship between two objects. This field is available in API
+version 55.0 and later.
+
+Valid values are:
+
+**•** `ChildToChild`
+
+**•** `ParentToChild`
+
+**•** `ParentToParent`
+
+**•** `Support`
+
+**Field Type**
+string
+
+**Description**
+Label name of the mapping definition.
+
+**Field Type**
+string
+
+**Description**
+The field name that defines the relationship between a parent and child for the
+output object. This field is available in API version 55.0 and later.
+
+**Field Type**
+
+ObjectMapping
+
+**Description**
+Required.
+
+Set of `inputObject`, `mappingFields`, and `outputObject` entries.
+For example, fields from the input object of Opportunity maps to fields of the
+output object of SalesAgreement.
+
+
+Metadata Types ObjectHierarchyRelationship
+
+**Field Name** **Description**
+
+```
+parentObjectMappingId
+
+parentRecord
+
+parentRelationshipFieldName
+
+sourceReferenceRelaFieldName
+
+usageType
+
+```
+
+ObjectMapping
+
+**Field Type**
+string
+
+**Description**
+The ID of the parent object mapping record. This field is available in API version
+56.0 and later.
+
+**Field Type**
+string
+
+**Description**
+The parent record for this object hierarchy relationship. This field is available in API
+version 55.0 and later.
+
+**Field Type**
+string
+
+**Description**
+Name of the field that defines the relationship between the parent and child.
+
+**Field Type**
+string
+
+**Description**
+The field name in an object that's used to define the relationship between a source
+and reference object. This field is available in API version 56.0 and later.
+
+**Field Type**
+MappingUsageType (enumeration of type string)
+
+**Description**
+Required.
+
+Name of the usage type of an object hierarchy relationship.
+
+Valid value is:
+
+**•** `ConvertToSalesAgreement`
+
+**•** `CLMFieldMapping`
+
+**•** `EligibleProgramRebateType`
+
+**•** `MapJournalToMemberAggregate`
+
+**•** `TransformationMapping`
+
+Represents a set of `inputObject`, `mappingFields`, and `outputObject` entries.
+
+
+Metadata Types ObjectHierarchyRelationship
 
 Fields
 
-**Field Name** **Field Type** **Description**
+**Field Name** **Description**
 
-`field` string Required. Field that this attribute applies to.
+```
+inputObject
 
-`isAdditionalSkill` boolean
+mappingFields
 
-After a designated timeout period, additional skills are dropped from
-Omni-Channel routing. The case is then routed to the best-matched
-agent even if they don’t have all the skills.
+outputObject
 
-`skill` string Required. Skill used to route the work item when the attribute maps to
-the value selected.
+```
 
-`skillLevel` int Level of the skill required. This value can range from 0 to 10.
+ObjectMappingField
 
-`skillPriority` int For additional skills, specify the order in which a skill is dropped if after
-the Drop Additional Skills Timeout on the routing configuration, no agent
+**Field Type**
+string
 
-with that skill is available. Skills with a lower priority rank (9 or 10) are
-dropped first. Skills with a higher priority rank (0 or 1) are dropped last.
-Skills with the same priority value are dropped as a group. You can set
-skill priority using attribute setup for skills-based routing or Apex code.
-Available in API version 49.0 and later.
+**Description**
+Required.
 
-`value` string Attribute value that is assigned to the selected skill.
+Name of the input object type containing the source fields for mapping. For example,
+Opportunity or OpportunityLineItem.
+
+**Field Type**
+
+ObjectMappingField
+
+**Description**
+Mapping of source object input fields to target object for SalesAgreement and
+SalesAgreementProduct.
+
+**Field Type**
+string
+
+**Description**
+Required.
+
+Name of the output object type receiving data conversion. For example, SalesAgreement
+or SalesAgreementProduct.
+
+Represents a set of `inputField` and `outputField` entries.
+
+Fields
+
+**Field Name** **Description**
+
+```
+inputField
+
+outputField
+
+```
+
+**Field Type**
+string
+
+**Description**
+Required.
+
+Field in the object specified by the `inputObject` field in ObjectMapping on page 2183.
+This field is mapped to the field in `outputField`, which is a field in the object specified
+by the `outputObject` field in ObjectMapping on page 2183.
+
+**Field Type**
+string
 
 
-Metadata Types WorkSkillRouting
+Metadata Types ObjectHierarchyRelationship
+
+**Field Name** **Description**
+
+**Description**
+Required.
+
+Field in the object specified by the `outputObject` field in ObjectMapping on page 2183.
+This field is mapped to the field name in `inputField`, which is a field in the object
+specified by the `inputObject` field in ObjectMapping on page 2183.
 
 Declarative Metadata Sample Definition
 
-The following is an example of a WorkSkillRouting component.
+The following is an example of a ObjectHierarchyRelationship component.
 
 ```
    <?xml version="1.0" encoding="UTF-8"?>
 
-   <WorkSkillRouting xmlns="http://soap.sforce.com/2006/04/metadata">
+   <ObjectHierarchyRelationship xmlns="http://soap.sforce.com/2006/04/metadata">
 
-     <isActive>true</isActive>
+     <parentObjectMapping>
 
-     <masterLabel>Attribute setup for skills-based routing for Case object</masterLabel>
+      <inputObject>Opportunity</inputObject>
 
-     <relatedEntity>Case</relatedEntity>
+      <mappingFields>
 
-     <workSkillRoutingAttributes>
+       <inputField>Name</inputField>
 
-      <field>Case.Origin</field>
+       <outputField>Name</outputField>
 
-      <isAdditionalSkill>false</isAdditionalSkill>
+      </mappingFields>
 
-      <skill>Technical_Skill</skill>
+      <mappingFields>
 
-      <skillLevel>3</skillLevel>
+       <inputField>CloseDate</inputField>
 
-      <skillPriority>2</skillPriority>
+       <outputField>StartDate</outputField>
 
-      <value>Web</value>
+      </mappingFields>
 
-     </workSkillRoutingAttributes>
+      <mappingFields>
 
-   </WorkSkillRouting>
+       <inputField>Account</inputField>
+
+       <outputField>Account</outputField>
+
+      </mappingFields>
+
+      <mappingFields>
+
+       <inputField>Pricebook2</inputField>
+
+       <outputField>Pricebook</outputField>
+
+      </mappingFields>
+
+      <outputObject>SalesAgreement</outputObject>
+
+     </parentObjectMapping>
+
+     <childObjectMapping>
+
+      <inputObject>OpportunityLineItem</inputObject>
+
+      <mappingFields>
+
+       <inputField>Id</inputField>
+
+       <outputField>Name</outputField>
+
+      </mappingFields>
+
+      <mappingFields>
+
+       <inputField>UnitPrice</inputField>
+
+       <outputField>SalesPrice</outputField>
+
+      </mappingFields>
+
+      <mappingFields>
+
+       <inputField>PricebookEntry</inputField>
+
+       <outputField>PricebookEntry</outputField>
+
+      </mappingFields>
+
+      <mappingFields>
 
 ```
+
+
+#### Metadata Types ObjectLinkingSettings (Beta)
+
+```
+       <inputField>Quantity</inputField>
+
+       <outputField>InitialPlannedQuantity</outputField>
+
+      </mappingFields>
+
+      <outputObject>SalesAgreementProduct</outputObject>
+
+     </childObjectMapping>
+
+     <masterLabel>ObjectHierarchyRelationship</masterLabel>
+
+     <usageType>ConvertToSalesAgreement</usageType>
+
+     <parentRelationshipFieldName>Opportunity</parentRelationshipFieldName>
+
+     <outputPntRelationshipFieldName>SalesAgreement</outputPntRelationshipFieldName>
+
+     <parentRecord></parentRecord>
+
+     <inputObjRecordsGrpFieldName>Account</inputObjRecordsGrpFieldName>
+
+     <mappingType>ParentToParent</mappingType>
+
+   </ObjectHierarchyRelationship>
+
+```
+
+The following is an example `package.xml` that references the previous definition.
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+      <types>
+
+       <members>*</members>
+
+       <name>ObjectHierarchyRelationship</name>
+
+      </types>
+
+      <version>51.0</version>
+
+   </Package>
+
+```
+
+Usage
+
+Use the `deploy()` call to deploy metadata with a .zip file. Every .zip file contains a project manifest, a file that’s named package.xml,
+and a set of directories that contain the components. The manifest file defines the components that you’re trying to retrieve or deploy
+in the .zip file. The manifest also defines the API version that’s used for the deployment or retrieval. For more information on the .zip file,
+[deploying, and retrieving metadata, see Deploying and Retrieving Metadata with the Zip File. You can also deploy and retrieve the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/file_based_zip_file.htm)
+metadata API using Postman.
+
+Ensure you map all the required fields for sales agreement conversion.
 
 Wildcard Support in the Manifest File
 
 This metadata type supports the wildcard character `*` (asterisk) in the `package.xml` manifest file. For information about using the
 manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
+#### ObjectLinkingSettings (Beta)
 
-## CHAPTER 14 Headers
+Represents the channel-object linking settings for an org. This type extends the Metadata metadata type and inherits its `fullName`
+field.
 
-Use headers in Metadata API calls to set options for each call.
+Note: As a beta feature, Channel-Object Linking is a preview and isn’t part of the “Services” under your Main Services Agreement
+with Salesforce. Use this feature at your sole discretion, and make your purchase decisions only on the basis of generally available
+products and features. Salesforce doesn’t guarantee general availability of this feature within any particular time frame or at all,
+and we can discontinue it at any time. This feature is for evaluation purposes only, not for production use. It’s offered as is and isn’t
 
-### AllOrNoneHeader
 
-Indicates whether to roll back all metadata changes when some of the records in a call result in failures.
+#### Metadata Types OpportunityInsightsSettings
 
-CallOptions
-Specifies the API client identifier.
+supported, and Salesforce has no liability for any harm or damage arising out of or in connection with it. All restrictions, Salesforce
+reservation of rights, obligations concerning the Services, and terms for related Non-Salesforce Applications and Content apply
+equally to your use of this feature. For information on enabling this feature, contact Salesforce.
 
-DebuggingHeader
-Specifies that the deployment result contains the debug log output, and specifies the level of detail included in the log. The debug
-log contains the output of Apex tests that are executed as part of a deployment.
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-SessionHeader
-Specifies the session ID that the login call returns. This session ID is used to authenticate all subsequent Metadata API calls.
+File Suffix and Directory Location
 
-### **`AllOrNoneHeader`**
-
-Indicates whether to roll back all metadata changes when some of the records in a call result in failures.
+ObjectLinkingSettings values are stored in the `ObjectLinking.settings` file in the `settings` folder. The `.settings` files
+are different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-This header is available in API version 34.0 and later.
-
-Supported Calls
-
-createMetadata(), updateMetadata(), upsertMetadata(), deleteMetadata()
-
-Usage
-
-If this header isn’t used in API version 34.0 and later, by default a call can save a partial set of records (equivalent to
-### AllOrNoneHeader=false )—the records that are processed successfully are saved and records that have failures aren’t saved.
+ObjectLinkingSettings components are available in API version 47.0 and later.
 
 Fields
 
+**Field Name** **Field Type** **Description**
 
-Headers AllOrNoneHeader
+`enableObjectLinking` boolean
 
-Sample Code—Java
+Indicates whether Channel-Object Linking is enabled, allowing you to
+link channel interactions to objects such as Contacts. The default value
+is `false` .
 
-Add the `AllOrNoneHeader` to the metadata connection before you perform a call as follows:
+Declarative Metadata Sample Definition
 
-```
-   metadataConnection.setAllOrNoneHeader(true);
-
-```
-
-This next example shows how to use the `AllOrNoneHeader` when creating two custom objects. Because the second custom object
-doesn’t have the required `Name` field, the `create()` call can’t create this custom object and rolls back the first custom object. The
-output is shown after this code sample.
+The following is an example of an ObjectLinkingSettings component.
 
 ```
-   import com.sforce.soap.metadata.*;
+<?xml version="1.0" encoding="UTF-8"?>
 
-   import com.sforce.soap.metadata.Error;
+<ObjectLinkingSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   import com.sforce.ws.ConnectionException;
+   <enableObjectLinking>true</enableObjectLinking>
 
-   public class CallWithHeader {
-
-      MetadataConnection metadataConnection = null;
-
-      public static void main(String[] args) throws ConnectionException {
-
-      CallWithHeader samples = new CallWithHeader();
-
-        samples.createWithHeader();
-
-      }
-
-      public CallWithHeader() throws ConnectionException {
-
-        metadataConnection = MetadataLoginUtil.login();
-
-      }
-
-      public void createWithHeader() throws ConnectionException {
-
-        // Define two custom objects to be inserted.
-
-        CustomObject co1 = new CustomObject();
-
-        String name1 = "MyCustomObject1";
-
-        co1.setFullName(name1 + "__c");
-
-        co1.setDeploymentStatus(DeploymentStatus.Deployed);
-
-        co1.setDescription("Created by the Metadata API");
-
-        co1.setEnableActivities(true);
-
-        co1.setLabel(name1 + " Object");
-
-        co1.setPluralLabel(co1.getLabel() + "s");
-
-        co1.setSharingModel(SharingModel.ReadWrite);
-
-        CustomField nf = new CustomField();
-
-        nf.setType(FieldType.Text);
-
-        nf.setLabel(co1.getFullName() + " Name");
-
-        co1.setNameField(nf);
-
-        // The second custom object doesn't have a Name field
-
-        CustomObject co2 = new CustomObject();
-
-        String name2 = "MyCustomObject2";
-
-        co2.setFullName(name2 + "__c");
+</ObjectLinkingSettings>
 
 ```
 
-
-### Headers CallOptions
+The following is an example `package.xml` that references the previous definition.
 
 ```
-        co2.setDeploymentStatus(DeploymentStatus.Deployed);
+<?xml version="1.0" encoding="UTF-8"?>
 
-        co2.setDescription("Created by the Metadata API");
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-        co2.setEnableActivities(true);
+   <types>
 
-        co2.setLabel(name2 + " Object");
+     <members>ObjectLinking</members>
 
-        co2.setPluralLabel(co2.getLabel() + "s");
+     <name>Settings</name>
 
-        co2.setSharingModel(SharingModel.ReadWrite);
+   </types>
 
-        // Setting the allOrNone header to true to cause
+   <version>47.0</version>
 
-        // the call to not commit any record if one or more
+</Package>
 
-        // records in this call have failures.
-
-        metadataConnection.setAllOrNoneHeader(true);
-
-        // Now that the header has been set, make the create call.
-
-        SaveResult[] results = metadataConnection
-
-             .createMetadata(new Metadata[] { co1, co2 });
-
-        // Iterate through the call results
-
-        for (SaveResult r : results) {
-
-           if (r.isSuccess()) {
-
-             System.out.println("Created component: " + r.getFullName());
-
-           } else {
-
-             System.out
-
-                  .println("Errors were encountered while creating "
-
-                       + r.getFullName());
-
-             for (Error e : r.getErrors()) {
-
-               System.out.println("Error message: " + e.getMessage());
-
-               System.out.println("Status code: " + e.getStatusCode());
-
-             }
-
-           }
-
-        }
-
-      }
-
-   }
+#### OpportunityInsightsSettings
 
 ```
 
-This is the output that the sample returns. The first record is rolled back and the second has a failure.
+Represents an org’s Einstein Opportunity Insights settings. This setting controls features that give you relevant updates about your
+opportunities.
 
-```
-   Errors were encountered while creating MyCustomObject1__c
+Note: This metadata type has been deprecated as of API version 59.0.
 
-   Error message: Record rolled back because not all records were valid and the request was
+This type extends the Metadata metadata type and inherits its `fullName` field.
 
-   using AllOrNone header
 
-   Status code: ALL_OR_NONE_OPERATION_ROLLED_BACK
+#### Metadata Types OpportunitySettings
 
-   Errors were encountered while creating MyCustomObject2__c
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-   Error message: Must specify a nameField of type Text or AutoNumber
+File Suffix and Directory Location
 
-   Status code: FIELD_INTEGRITY_EXCEPTION
-
-### CallOptions
-
-```
-
-Specifies the API client identifier.
+OpportunityInsightsSettings values are stored in the `OpportunityInsights.settings` file in the `settings` folder. The
+`.settings` files are different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-This call is available in all API versions.
-
-
-### Headers DebuggingHeader
-
-Supported Calls
-
-All Metadata API calls.
+OpportunityInsightsSettings is available in API versions 48.0 to 58.0.
 
 Fields
 
-Sample Code—Java
+**Field Name** **Field Type** **Description**
 
-To change the API client ID, add the `CallOptions` header to the metadata connection before you perform a call as follows:
+`enableOpportunityInsights` boolean Indicates whether Einstein Opportunity Insights is enabled ( `true` ) or
+not ( `false` ). The default value is `false` .
+
+Declarative Metadata Sample Definition
+
+The following is an example of the OpportunityInsights.settings file:
 
 ```
-   metadataConnection.setCallOptions("client ID");
+   <?xml version="1.0" encoding="UTF-8"?>
 
-### **`DebuggingHeader`**
+   <OpportunityInsightsSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <enableOpportunityInsights>true</enableOpportunityInsights>
+
+   </OpportunityInsightsSettings>
 
 ```
 
-Specifies that the deployment result contains the debug log output, and specifies the level of detail included in the log. The debug log
-contains the output of Apex tests that are executed as part of a deployment.
+Example Package Manifest
+
+The following is an example package manifest used to deploy or retrieve the OpportunityInsights settings metadata:
+
+```
+   <?xml version="1.0" encoding="UTF-8"?>
+
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+
+     <members>OpportunityInsights</members>
+
+     <name>Settings</name>
+
+    </types>
+
+    <version>29.0</version>
+
+   </Package>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### OpportunitySettings
+
+Represents org preferences for features such as automatic opportunity updates and similar-opportunity filters.
+
+
+Metadata Types OpportunitySettings
+
+This type extends the Metadata metadata type and inherits its `fullName` field.
+
+Use opportunity settings to control the actions that users can perform on their opportunities.
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+Opportunities values are stored in a single file named `Opportunity.settings` in the `settings` directory of the corresponding
+package directory.
 
 Version
 
-This header is available in all API versions.
-
-Supported Calls
-
-```
-   deploy()
-
-```
+OpportunitySettings is available in API version 28.0 and later.
 
 Fields
 
+**Field Name** **Field Type** **Description**
 
-Headers DebuggingHeader
+`autoActivateNewReminders` boolean Automatically uses scheduled updates for new opportunities.
 
-LogInfo
+`customizableProductSchedulesEnabled` boolean
 
-Specifies the type and amount of information to be returned in the debug log. The `categories` field takes a list of these objects.
-LogInfo is a mapping of `category` to `level` .
-
-**Element Name** **Type** **Description**
-
-`category` LogCategory Specify the type of information returned in the debug log. Valid values are:
-
-**•** `Db`
-
-**•** `Workflow`
-
-**•** `Validation`
-
-**•** `Callout`
-
-**•** `Apex_code`
-
-**•** `Apex_profiling`
-
-**•** `Visualforce`
-
-**•** `System`
-
-**•** `All`
-
-`level` LogCategoryLevel
-
-Sample Code—Java
-
-Specifies the level of detail returned in the debug log.
-
-Valid log levels are (listed from lowest to highest):
-
-**•** `NONE`
-
-**•** `ERROR`
-
-**•** `WARN`
-
-**•** `INFO`
-
-**•** `DEBUG`
-
-**•** `FINE`
-
-**•** `FINER`
-
-**•** `FINEST`
-
-Add the `DebuggingHeader` to the metadata connection before you perform the `deploy()` call as follows.
+`doesEnforceStandardOpportunitySaveLogic` boolean
 
 ```
-LogInfo[] logs = new LogInfo[1];
-
-logs[0] = new LogInfo();
+enableExpandedPipelineInspectionSetup
 
 ```
 
+Lets Salesforce admins customize product schedules by using custom
+fields, validation rules, and Apex triggers on the LineItemSchedule object.
+This field is available in API version 46.0 and later.
 
-### Headers SessionHeader
+If customizable product schedules are enabled, you can use custom
+fields in default schedules and customize their layout, but Apex triggers
+or validation rules that you apply to default schedules are bypassed.
+
+Enforces standard validation and triggers for opportunity products and
+opportunity product schedules. Default value is `true` . Can't be set to
+`false` .
+
+Available in API version 47.0 and later.
+
+Displays a Pipeline Inspection setup page to Salesforce admins with all
+setup steps for enabling and configuring the feature. The set up also
+includes historical trending. The default value is false.
+
+Available in API version 52.0 and later.
+
+`enableFindSimilarOpportunities` boolean Lets users see related or similar existing opportunities.
+
+`enableForecastCategoryMetrics` boolean
+
+`enableOpportunityFieldHistoryTracking` boolean
+
+Lets users see single and cumulative forecast category rollups over a
+selected period. Applies to the following categories: Best Case, Closed
+Lost, Closed Won, Commit, Most Likely, Open Pipeline, and Total.
+
+Default value is `true` . Available in API version 57.0 and later.
+
+Enables history tracking for the opportunity field. For more information,
+see “Field History Tracking” in Salesforce Help. Default value is `true` .
+
+Available in API version 47.0 and later.
+
+
+Metadata Types OpportunitySettings
+
+**Field Name** **Field Type** **Description**
+
+`enableOpportunityInsightsInMobile` boolean Deprecated in API version 59.0 and later because the feature is no longer
+available. Indicates whether a user can see Einstein Opportunity Insights
+
+on their mobile device `(true)` or not `(false)` . Einstein Opportunity
+Insights includes predictions about which deals are likely to be won,
+reminders to follow up, and notifications when key moments in a deal
+take place.
+
+Available in API version 47.0 to 58.0.
+
+`enableOpportunityTeam` boolean Lets users associate team members with opportunities.
+
+`enablePipelineChangesMetrics` boolean Lets users see net change to the pipeline (positive or negative)
+contributed by each deal within a selected timeframe. Applies to the
+
+following categories: Open Pipeline, New, Won, Increased, Moved In,
+Moved Out, Decreased, Lost, and Overdue.
+
+Default value is `true` . Available in API version 57.0 and later.
+
+`enablePipelineInspection` boolean Enables the Pipeline Inspection feature in the Opportunity tab. Also
+enables historical trending for opportunities, if the org has the historical
+
+trending org perm. Pipeline Inspection is a consolidated view of pipeline
+metrics, corresponding opportunities, and highlights of recent
+opportunity changes and insights. The default value is false.
+
+Also enables historical trending for opportunities, if historical trending
+isn’t already enabled. To use Pipeline Inspection, additional configuration
+in Setup is required.
+
+Available in API version 52.0 and later.
+
+`enablePipelineInspectionFlow` boolean Enables the Pipeline Inspection Flow Chart in the Opportunity tab. This
+chart shows Pipeline Inspection users the changes to opportunities in
+
+different forecast categories over time. Users can filter results to see the
+data that’s most useful to them.
+
+To use this feature, access to Revenue Insights is required.
+
+Available in API version 54.0 and later.
+
+`enablePipelineInspectionSingleCategoryRollup` boolean
+
+`enableRevenueInsights` boolean
+
+Indicates that Pipeline Inspection metrics display as single forecast
+categories `(true)`, or multiple categories rolled up `(false)` . The
+default value is `(false)` .
+
+To use this feature, Pipeline Inspection configuration in Setup is required.
+
+Available in API version 55.0 and later.
+
+Sets up Revenue Insights dashboards and installs the related CRM
+Analytics app. The dashboards give users access to sales performance,
+pipeline, and forecasting reports and analytics.
+
+Revenue Insights is part of Revenue Intelligence, which is available for
+an additional cost.
+
+Available in API version 54.0 and later.
+
+
+Metadata Types OpportunitySettings
+
+**Field Name** **Field Type** **Description**
+
+`enableServiceCaseInsights` boolean
+
+Indicates whether insights based on service cases are enabled `(true)`
+or not `(false)` in Pipeline Inspection. The default value is `(false)` .
+
+Available in API version 55.0 and later.
+
+`enableUpdateReminders` boolean Lets users enable automatic, scheduled updates on opportunities.
+
+`findSimilarOppFilter` FindSimilarOppFilter Defines parameters for similar opportunities.
+on page 2191
+
+`oppAmountDealMotionEnabled` boolean
+
+`oppCloseDateDealMotionEnabled` boolean
+
+Indicates whether deal change highlights are enabled for opportunity
+amounts `(true)` or not `(false)` . The default value is `(true)` .
+
+Available in API version 50.0 and later.
+
+Indicates whether deal change highlights are enabled for opportunity
+close dates `(true)` or not `(false)` . The default value is `(true)` .
+
+Available in API version 50.0 and later.
+
+`promptToAddProducts` boolean Prompts users to add related products to an opportunity.
+
+`pushCountEnabled` boolean
+
+Indicates whether the Push Count field is visible to users in opportunity
+list views and Pipeline Inspection views `(true)` or not ( `false` ). The
+default value is ( `true` ).
+
+Available in API version 56.0 and later.
+
+`simpleOppCreateFromContact` boolean Indicates whether you can create an opportunity with prefilled
+information (such as the contact’s account) from the Global Actions
+
+menu while viewing a contact `(true)` or not `(false)` . Available
+in API version 54.0 and later.
+
+`simpleOppCreateFromEvent` boolean Indicates whether you can create an opportunity with prefilled
+information (such as the event’s account) from the Global Actions menu
+
+while viewing an event `(true)` or not `(false)` . Available in API
+version 54.0 and later.
+
+FindSimilarOppFilter
+
+Defines whether to match by entire columns or fields.
+
+**Field** **Field Type** **Description**
+
+`similarOpportunitiesDisplayColumns` string The columns to compare.
+
+`similarOpportunitiesMatchFields` string The fields to compare.
+
+
+#### Metadata Types OpportunityScoreSettings
+
+Declarative Metadata Sample Definition
+
+The following is an example of the package file.
 
 ```
-   logs[0].setCategory(LogCategory.Apex_code);
+   <?xml version="1.0" encoding="UTF-8"?>
 
-   logs[0].setLevel(LogCategoryLevel.Fine);
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   metadataConnection.setDebuggingHeader(logs);
+      <types>
+
+        <members>Opportunity</members>
+
+        <name>Settings</name>
+
+      </types>
+
+      <version>28.0</version>
+
+   </Package>
 
 ```
 
-The result of the `deploy()` call is obtained by calling `checkDeployStatus()` . After the deployment finishes, and if tests were
-run, the response of `checkDeployStatus()` contains the debug log output in the `debugLog` field of a `DebuggingInfo`
-output header.
+The package file references the following Opportunity.settings file.
 
-### SessionHeader
+```
+   <?xml version="1.0" encoding="UTF-8"?>
 
-Specifies the session ID that the login call returns. This session ID is used to authenticate all subsequent Metadata API calls.
+   <OpportunitySettings xmlns="http://soap.sforce.com/2006/04/metadata">
+
+     <autoActivateNewReminders>true</autoActivateNewReminders>
+
+     <customizableProductSchedulesEnabled>false</customizableProductSchedulesEnabled>
+
+    <doesEnforceStandardOpportunitySaveLogic>true</doesEnforceStandardOpportunitySaveLogic>
+
+     <enableFindSimilarOpportunities>true</enableFindSimilarOpportunities>
+
+     <enableForecastCategoryMetrics>true</enableForecastCategoryMetrics>
+
+     <enablePipelineChangesMetrics>true</enablePipelineChangesMetrics>
+
+     <findSimilarOppFilter>
+
+     <similarOpportunitiesMatchFields>OPPORTUNITY.Account</similarOpportunitiesMatchFields>
+
+   <similarOpportunitiesMatchFields>OPPORTUNITY.OpportunityCompetitors</similarOpportunitiesMatchFields>
+
+      <similarOpportunitiesMatchFields>CustomField__c</similarOpportunitiesMatchFields>
+
+     <similarOpportunitiesDisplayColumns>CustomField__c</similarOpportunitiesDisplayColumns>
+
+     </findSimilarOppFilter>
+
+     <enableOpportunityFieldHistoryTracking>true</enableOpportunityFieldHistoryTracking>
+
+     <enableOpportunityInsightsInMobile>false</enableOpportunityInsightsInMobile>
+
+     <enableOpportunityTeam>true</enableOpportunityTeam>
+
+     <enableUpdateReminders>true</enableUpdateReminders>
+
+     <promptToAddProducts>true</promptToAddProducts>
+
+   ..<oppAmountDealMotionEnabled>true</oppAmountDealMotionEnabled>
+
+   ..<oppCloseDateDealMotionEnabled>true</oppCloseDateDealMotionEnabled>
+
+   </OpportunitySettings>
+
+```
+
+Wildcard Support in the Manifest File
+
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
+
+#### OpportunityScoreSettings
+
+Represents an org’s Einstein Opportunity Scoring settings, such as whether or not Einstein Opportunity Scoring is enabled. Einstein
+Opportunity Scoring helps determine the likelihood of an opportunity being won. This type extends the Metadata metadata type and
+inherits its `fullName` field.
+
+
+Metadata Types OpportunityScoreSettings
+
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
+
+File Suffix and Directory Location
+
+OpportunityScoreSettings values are stored in the `OpportunityScore.settings` file in the `settings` folder. The `.settings`
+files are different from other named components because there’s only one settings file for each settings component.
 
 Version
 
-This header is available in all API versions.
-
-Supported Calls
-
-All Metadata API calls.
+OpportunityScoreSettings is available in API versions 49.0 and later.
 
 Fields
 
-Sample Code—Java
+**Field Name** **Field Type** **Description**
 
-### Add the SessionHeader to the metadata connection before you perform a call as follows:
+`enableOpportunityScoring` boolean Indicates whether Einstein Opportunity Scoring is enabled ( `true` ) or
+not ( `false` ). The default value is `false` .
 
-```
-   metadataConnection.setSessionHeader("<session_ID>");
-
-```
-
-
-APPENDICES
-
-## APPENDIX A CustomObjectTranslation Language Support: Fully
-
-Supported Languages
-
-Not every language supports all the possible values for the fields in CustomObjectTranslation. Use this appendix to determine which
-field values a language supports.
-
-Note: Salesforce offers three levels of language support: fully supported languages, end-user languages, and platform-only
-languages. This appendix provides information only for fully supported languages.
-
-Chinese (Simplified)
-
-```
-plural
-
-  false
-
-```
-
-Chinese (Traditional)
-
-```
-plural
-
-  false
-
-```
-
-Danish
-
-```
-article
-
-  None
-
-  Definite
-
-  Indefinite
-
-gender
-
-  Feminine
-
-  Neuter
-
-plural
-
-  true
-
-  false
-
-```
-
-Dutch
-
-```
-gender
-
-  Feminine
-
-```
-
-
-CustomObjectTranslation Language Support: Fully Supported
-Languages
-
-```
-    Neuter
-
-   plural
-
-    true
-
-    false
-
-```
-
-Finnish
-
-```
-   caseType
-
-    Ablative
-
-    Adessive
-
-    Allative
-
-    Elative
-
-    Essive
-
-    Genitive
-
-    Illative
-
-    Inessive
-
-    Nominative
-
-    Partitive
-
-    Translative
-
-   plural
-
-    true
-
-    false
-
-   possessive
-
-    None
-
-    First
-
-    Second
-
-```
-
-French
-
-```
-   gender
-
-    Masculine
-
-    Feminine
-
-   startsWith
-
-    Consonant
-
-    Vowel
-
-   plural
-
-    true
-
-    false
-
-```
-
-
-CustomObjectTranslation Language Support: Fully Supported
-Languages
-
-German
-
-```
-   caseType
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Nominative
-
-   gender
-
-    Masculine
-
-    Feminine
-
-    Neuter
-
-   plural
-
-    true
-
-    false
-
-```
-
-Italian
-
-```
-   gender
-
-    Masculine
-
-    Feminine
-
-   startsWith
-
-    Consonant
-
-    Special
-
-    Vowel
-
-   plural
-
-    true
-
-    false
-
-```
-
-Japanese
-
-```
-   plural
-
-    false
-
-```
-
-Korean
-
-```
-   plural
-
-    false
-
-```
-
-
-CustomObjectTranslation Language Support: Fully Supported
-Languages
-
-Norwegian
-
-```
-   article
-
-    Definite
-
-    Indefinite
-
-    None
-
-   gender
-
-    Masculine
-
-    Feminine
-
-    Neuter
-
-   plural
-
-    true
-
-    false
-
-```
-
-Portuguese (Brazil)
-
-```
-   gender
-
-    Masculine
-
-    Feminine
-
-   plural
-
-    true
-
-    false
-
-```
-
-Russian
-
-```
-   caseType
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Instrumental
-
-    Nominative
-
-    Prepositional
-
-   gender
-
-    Masculine
-
-    Feminine
-
-    Neuter
-
-    AnimateMasculine
-
-   plural
-
-    true
-
-```
-
-
-CustomObjectTranslation Language Support: Fully Supported
-Languages
-
-```
-    false
-
-```
-
-Spanish
-
-```
-   gender
-
-    Masculine
-
-    Feminine
-
-   plural
-
-    true
-
-    false
-
-```
-
-Spanish (Mexico)
-
-```
-   gender
-
-    Masculine
-
-    Feminine
-
-   plural
-
-    true
-
-    false
-
-```
-
-Swedish
-
-```
-   article
-
-    None
-
-    Definite
-
-    Indefinite
-
-   gender
-
-    Feminine
-
-    Neuter
-
-   plural
-
-    true
-
-    false
-
-```
-
-Thai
-
-```
-   plural
-
-    false
-
-```
-
-
-## APPENDIX B CustomObjectTranslation Language Support:
-
-End-User Languages
-
-Not every language supports all the possible values for the fields in CustomObjectTranslation. Use this appendix to determine which
-field values a language supports.
-
-Note: Salesforce offers three levels of language support: fully supported languages, end-user languages, and platform-only
-languages. This appendix provides information only for end-user languages.
-
-Arabic
-
-```
-article
-
-  Definite
-
-  None
-
-gender
-
-  Masculine
-
-  Feminine
-
-plural
-
-  true
-
-  false
-
-possessive
-
-  None
-
-  First
-
-  Second
-
-```
-
-Bulgarian
+Declarative Metadata Sample Definition
 
-```
-gender
-
-  Masculine
-
-  Feminine
-
-  Neuter
-
-plural
-
-  true
-
-  false
-
-```
-
-
-CustomObjectTranslation Language Support: End-User
-Languages
-
-Croatian
-
-```
-   caseType
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Instrumental
-
-    Locative
-
-    Nominative
-
-   gender
-
-    Feminine
-
-    Masculine
-
-    Neuter
-
-   plural
-
-    true
-
-    false
-
-```
-
-Czech
-
-```
-   caseType
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Instrumental
-
-    Locative
-
-    Nominative
-
-   gender
-
-    Masculine
-
-    Feminine
-
-    Neuter
-
-    AnimateMasculine
-
-   plural
-
-    true
-
-    false
-
-```
-
-English (UK)
-
-```
-   plural
-
-    false
-
-```
-
-
-CustomObjectTranslation Language Support: End-User
-Languages
-
-```
-    true
-
-   startsWith
-
-    Consonant
-
-    Vowel
-
-```
-
-Greek
-
-```
-   caseType
-
-    Accusative
-
-    Genitive
-
-    Nominative
-
-   gender
-
-    Masculine
-
-    Feminine
-
-    Neuter
-
-   plural
-
-    true
-
-    false
-
-```
-
-Hebrew
-
-```
-   article
-
-    Definite
-
-    None
-
-   gender
-
-    Masculine
-
-    Feminine
-
-   plural
-
-    true
-
-    false
-
-```
-
-Hungarian
-
-```
-   caseType
-
-    Ablative
-
-    Accusative
-
-    Allative
-
-    Causalfinal
-
-    Dative
-
-    Delative
-
-```
-
-
-CustomObjectTranslation Language Support: End-User
-Languages
-
-```
-    Distributive
-
-    Elative
-
-    Essiveformal
-
-    Illative
-
-    Inessive
-
-    Instrumental
-
-    Nominative
-
-    Sublative
-
-    Termanative
-
-    Translative
-
-    Superessive
-
-   plural
-
-    true
-
-    false
-
-   possessive
-
-    None
-
-    First
+The following is an example of the OpportunityScore.settings file:
 
-    Second
-
-   startsWith
-
-    Consonant
-
-    Vowel
-
-```
-
-Indonesian
-
-```
-   plural
-
-    false
-
-    true
-
-```
-
-Polish
-
-```
-   caseType
-
-    Nominative
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Instrumental
-
-    Locative
-
-   gender
-
-    Masculine
-
-```
-
-
-CustomObjectTranslation Language Support: End-User
-Languages
-
-```
-    Feminine
-
-    Neuter
-
-    AnimateMasculine
-
-   plural
-
-    true
-
-    false
-
-```
-
-Portuguese (Portugal)
-
-```
-   gender
-
-    Feminine
-
-    Masculine
-
-   plural
-
-    true
-
-    false
-
-```
-
-Romanian
-
-```
-   article
-
-    Definite
-
-    None
-
-   gender
-
-    Masculine
-
-    Feminine
-
-    Neuter
-
-   plural
-
-    true
-
-    false
-
-```
-
-Slovak
-
-```
-   caseType
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Instrumental
-
-    Nominative
-
-    Locative
-
-   gender
-
-    Feminine
-
-```
-
-
-CustomObjectTranslation Language Support: End-User
-Languages
-
 ```
-    Masculine
-
-    Neuter
-
-    AnimateMasculine
-
-   plural
-
-    true
-
-    false
-
-```
-
-Slovenian
-
-```
-   caseType
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Instrumental
-
-    Nominative
+   <?xml version="1.0" encoding="UTF-8"?>
 
-    Locative
+   <OpportunityScoreSettings xmlns="http://soap.sforce.com/2006/04/metadata">
 
-   gender
+    <enableOpportunityScoring>true</enableOpportunityScoring>
 
-    Feminine
+   </OpportunityScoreSettings>
 
-    Masculine
-
-    Neuter
-
-    AnimateMasculine
-
-   plural
-
-    true
-
-    false
-
-```
-
-Turkish
-
 ```
-   caseType
-
-    Ablative
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Nominative
-
-    Locative
 
-   possessive
+Example Package Manifest
 
-    None
+The following is an example package manifest used to deploy or retrieve the OpportunityScore settings metadata:
 
-    First
-
-    Second
-
 ```
+   <?xml version="1.0" encoding="UTF-8"?>
 
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-CustomObjectTranslation Language Support: End-User
-Languages
+    <types>
 
-```
-   plural
+     <members>OpportunityScore</members>
 
-    true
+     <name>Settings</name>
 
-    false
+    </types>
 
-```
+    <version>49.0</version>
 
-Ukrainian
+   </Package>
 
 ```
-   caseType
-
-    Accusative
-
-    Dative
-
-    Genitive
-
-    Instrumental
 
-    Nominative
+Wildcard Support in the Manifest File
 
-    Locative
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-   gender
 
-    Masculine
+#### Metadata Types OrderManagementSettings OrderManagementSettings
 
-    Feminine
+Represents options for the Salesforce Order Management product. This type extends the Metadata metadata type and inherits its
+`fullName` field.
 
-    Neuter
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
-    AnimateMasculine
+File Suffix and Directory Location
 
-   plural
+#### OrderManagementSettings values are stored in the OrderManagement.settings file in the settings directory. The
 
-    true
+`.settings` files are different from other named components because there is only one settings file for each settings component.
 
-    false
+Version
 
-```
-
-Vietnamese
-
-```
-   plural
-
-    true
-
-    false
-
-```
+Order Management settings are available in API version 48 and later.
 
+Special Access Rules
 
-## APPENDIX C StandardValueSet Names and Standard Picklist
+This metadata type is only accessible by developers and customers using Salesforce Order Management.
 
 Fields
 
-In API version 38.0 and later, standard picklists are represented by the StandardValueSet type. In previous versions, standard picklists are
-represented by the CustomField type. This table lists the names of standard picklists as standard value sets and their corresponding field
-names.
+**Field Name** **Field Type** **Description**
 
-Note: The names of standard value sets and picklist fields are case-sensitive.
+`deliveryEstimationEnabled` boolean Specifies whether delivery estimation is active ( `true` ) or not ( `false` ).
+The default value is `false` . Available in API version 62.0 and later.
 
+`enableB2CIntegration` boolean
 
-StandardValueSet Names and Standard Picklist Fields
+Indicates whether Order Management is allowed to accept order data
+from B2C Commerce ( `true` ) or not ( `false` ). The default value is
+`false` .
 
+`enableDuplicateManagement` boolean Indicates whether the Order Management B2C Commerce Integration
+applies the Salesforce org’s duplicate and matching rules for Accounts,
 
-StandardValueSet Names and Standard Picklist Fields
+Contacts, and Person Accounts to shopper records ( `true` ) or not
+( `false` ). The default value is `false` . The Setup toggle label is **B2C**
+**Integration Data Matching Rules** . Available in API version 53.0 and
+later.
 
+`enableHighScaleOrders` boolean Indicates whether the Order Management B2C Commerce Integration
+uses the High Scale Orders feature ( `true` ) or the original order ingestion
 
-StandardValueSet Names and Standard Picklist Fields
+system ( `false` ). The default value is `false` . Available in API version
+56.0 and later.
 
+`enableOrderManagement` boolean Indicates whether Order Management features are enabled ( `true` ) or
+not ( `false` ). The default value is `false` .
 
-StandardValueSet Names and Standard Picklist Fields
+`enablePersonAccountsForShoppers` boolean
 
-
-StandardValueSet Names and Standard Picklist Fields
-
-
-StandardValueSet Names and Standard Picklist Fields
-
-
-StandardValueSet Names and Standard Picklist Fields
-
-
-StandardValueSet Names and Standard Picklist Fields
-
-
-StandardValueSet Names and Standard Picklist Fields
-
-
-StandardValueSet Names and Standard Picklist Fields
+Indicates whether Order Management represents each shopper with a
+Person Account ( `true` ) or a normal Account and a Contact ( `false` ).
+The default value is `false` . Available in API version 49.0 and later.
 
 
-StandardValueSet Names and Standard Picklist Fields
+#### Metadata Types OrderSettings
 
+Declarative Metadata Sample Definition
 
-StandardValueSet Names and Standard Picklist Fields
+The following is an example of an OrderManagementSettings component.
 
+```
+   <?xml version="1.0" encoding="UTF-8"?>
 
-StandardValueSet Names and Standard Picklist Fields
+   <OrderManagementSettings xmlns="http://soap.sforce.com/2006/04/metadata"
 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-StandardValueSet Names and Standard Picklist Fields
+      <enableOrderManagement>true</enableOrderManagement>
 
+      <deliveryEstimationEnabled>false</deliveryEstimationEnabled>
 
-StandardValueSet Names and Standard Picklist Fields
+      <enableB2CIntegration>true</enableB2CIntegration>
 
+      <enableDuplicateManagement>true</enableB2CIntegration>
 
-StandardValueSet Names and Standard Picklist Fields
+      <enableHighScaleOrders>false</enableB2CSelfService>
 
+      <enablePersonAccountsForShoppers>true</enablePersonAccountsForShoppers>
 
-StandardValueSet Names and Standard Picklist Fields
+      </OrderManagementSettings>
 
+```
 
-StandardValueSet Names and Standard Picklist Fields
+The following is an example `package.xml` that references the previous definition.
 
+```
+   <?xml version="1.0" encoding="UTF-8"?>
 
-StandardValueSet Names and Standard Picklist Fields
+   <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
+      <types>
 
-StandardValueSet Names and Standard Picklist Fields
+        <members>OrderManagement</members>
 
+        <name>Settings</name>
 
-StandardValueSet Names and Standard Picklist Fields
+      </types>
 
-1Part of Salesforce Health Cloud.
+      <version>49.0</version>
 
-2You can only update the label in this standard value set or picklist field. You can’t insert or delete picklist values.
+   </Package>
 
-3You can’t read or update this standard value set or picklist field.
+```
 
-4Part of Salesforce Net Zero Cloud.
+Wildcard Support in the Manifest File
 
+The wildcard character `*` (asterisk) in the `package.xml` manifest file doesn’t apply to metadata types for feature settings. The
+wildcard applies only when retrieving all settings, not for an individual setting. For details, see Settings. For information about using the
+manifest file, see Deploying and Retrieving Metadata with the Zip File.
 
-StandardValueSet Names and Standard Picklist Fields
+#### OrderSettings
 
-5Part of Public Sector Solutions.
+Represents order settings.
 
-6Part of Digital Lending Solutions.
+This type extends the Metadata metadata type and inherits its `fullName` field.
 
-[For values used in Loyalty Management, see StandardValueSet Names and Standard Picklist Fields for Loyalty Management.](https://developer.salesforce.com/docs/atlas.en-us.260.0.loyalty.meta/loyalty/loyalty_standardvalueset_names.htm)
+In the package manifest, all organization settings metadata types are accessed using the Settings name. See Settings for details.
 
+File Suffix and Directory Location
 
-INDEX
+There is one OrderSettings component in a file named `Order.settings` in the `settings` folder. The `.settings` files are
+different from other named components because there’s only one settings file for each settings component.
 
-C
-
-ChatterEmailsMDSettings component 1995
-Components
-ChatterEmailsMDSettings 1995
-
-P
-
-Prompt component 1750
-
-U
-
-UserEngagementSettings component 2274
+Version
 

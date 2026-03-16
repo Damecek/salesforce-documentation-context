@@ -1,3 +1,10027 @@
+
+Type: void
+
+##### **`setGatewayToken(gatewayToken)`**
+
+Sets the token ID that a payment gateway generates when it first processes a payment.
+
+Signature
+
+```
+   public void setGatewayToken(String gatewayToken)
+
+```
+
+Parameters
+
+```
+   gatewayToken
+```
+
+Type: String
+
+A unique, alphanumeric ID, called a token, that a payment gateway generates when it first processes a payment. The token replaces
+the actual payment data so that the data is kept secure. This token is stored as encrypted text, and can be used for recurring payments.
+
+Return Value
+
+Type: void
+
+##### **`setGatewayTokenDetails(gatewayTokenDetails)`**
+
+Sets the details about the payment gateway token.
+
+Signature
+
+```
+   public void setGatewayTokenDetails(String gatewayTokenDetails)
+
+```
+
+
+### Apex Reference Guide AuditParamsRequest
+
+Parameters
+
+```
+   gatewayTokenDetails
+```
+
+Type: String
+
+Detailed information about the gateway token.
+
+Return Value
+
+Type: void
+
+##### **`setName(name)`**
+
+Sets the name that is assigned to the PaymentMethod object.
+
+Signature
+
+```
+   public void setName(String name)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Name that you assign to the payment method object.
+
+Return Value
+
+Type: void
+
+### AuditParamsRequest AuditParamsRequest is used for audit parameters in a transaction request. This is an abstract request class that is extended by
+
+the `BaseRequest` class.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+### AuditParamsRequest is an abstract class that holds attributes related to audit parameters such as email, IP address, MAC address,
+
+and phone number. This class can't be instantiated on its own. All `CommercePayments` request classes extend this class.
+
+IN THIS SECTION:
+
+### AuditParamsRequest Constructors AuditParamsRequest Properties
+
+
+#### Apex Reference Guide AuditParamsRequest AuditParamsRequest Constructors The following are constructors for AuditParamsRequest .
+
+IN THIS SECTION:
+
+##### AuditParamsRequest(email, macAddress, ipAddress, phone)
+
+This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
+
+##### AuditParamsRequest(email, macAddress, ipAddress, phone)
+
+This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
+
+Signature
+
+```
+   AuditParamsRequest(String email, String macAddress, String ipAddress, String phone)
+
+```
+
+Parameters
+
+```
+   email
+```
+
+Type: String
+
+Email of the client that initiated the request.
+
+```
+   macAddress
+```
+
+Type: String
+
+Mac address of the customer’s device. Gateways often use this data in risk checks.
+
+```
+   ipAddress
+```
+
+Type: String
+
+The customer’s IP address. Gateways often use this data in risk checks.
+
+```
+   phone
+```
+
+Type: String
+
+Phone number of the client that initiated the request.
+
+#### AuditParamsRequest Properties The following are properties for AuditParamsRequest .
+
+IN THIS SECTION:
+
+email
+Email of the client that initiated the request.
+
+ipAddress
+The customer’s IP address. Gateways often use this data in risk checks.
+
+macAddress
+Mac address of the customer’s device. Gateways often use this data in risk checks.
+
+phone
+Phone number of the client that initiated the request.
+
+
+### Apex Reference Guide AuthApiPaymentMethodRequest Class
+
+##### email
+
+Email of the client that initiated the request.
+
+Property Value
+
+Type: String
+
+##### ipAddress
+
+The customer’s IP address. Gateways often use this data in risk checks.
+
+Property Value
+
+Type: String
+
+##### macAddress
+
+Mac address of the customer’s device. Gateways often use this data in risk checks.
+
+Property Value
+
+Type: String
+
+##### phone
+
+Phone number of the client that initiated the request.
+
+Property Value
+
+Type: String
+
+### AuthApiPaymentMethodRequest Class
+
+Sends information about a payment method to a gateway adapter during an authorization service call.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+Contains information about the payment method that is used for an authorization request. It contains all available payment methods
+as fields, but populates only one field for each request. The gateway adapter uses this class when constructing an authorization request.
+An object of this class is available through the `paymentMethod` field on the `AuthorizationRequest Class` object.
+
+IN THIS SECTION:
+
+AuthApiPaymentMethodRequest Constructors
+
+AuthApiPaymentMethodRequest Properties
+
+
+Apex Reference Guide AuthApiPaymentMethodRequest Class
+
+#### AuthApiPaymentMethodRequest Constructors The following are constructors for AuthApiPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### AuthApiPaymentMethodRequest(cardPaymentMethodRequest) Constructs a sample cardPaymentMethodRequest . This constructor is intended for test usage and throws an exception if
+
+used outside of the Apex test context.
+
+##### AuthApiPaymentMethodRequest()
+#### Constructor for AuthApiPaymentMethodRequest .
+
+##### AuthApiPaymentMethodRequest(cardPaymentMethodRequest) Constructs a sample cardPaymentMethodRequest . This constructor is intended for test usage and throws an exception if used
+
+outside of the Apex test context.
+
+Signature
+
+```
+   global AuthApiPaymentMethodRequest(commercepayments.CardPaymentMethodRequest
+
+##### `cardPaymentMethodRequest)`
+
+```
+
+Parameters
+
+##### _`cardPaymentMethodRequest`_
+
+Type: commercepayments.CardPaymentMethodRequest on page 403
+
+Contains information about the card payment method. Used to send information to a gateway adapter during a service call.
+
+##### AuthApiPaymentMethodRequest()
+
+#### Constructor for AuthApiPaymentMethodRequest .
+
+Signature
+
+```
+   global AuthApiPaymentMethodRequest()
+
+#### AuthApiPaymentMethodRequest Properties The following are properties for AuthApiPaymentMethodRequest .
+
+```
+
+IN THIS SECTION:
+
+##### cardPaymentMethod
+
+The card payment method object used in a payment method request.
+
+##### cardPaymentMethod
+
+The card payment method object used in a payment method request.
+
+
+### Apex Reference Guide AuthorizationRequest Class
+
+Signature
+
+```
+   global commercepayments.CardPaymentMethodRequest cardPaymentMethod {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.CardPaymentMethodRequest on page 403
+
+### AuthorizationRequest Class
+
+Sends information about an authorization request to a gateway adapter during a service call. This class extends the `BaseRequest`
+class and inherits all its methods.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+This class contains information about a transaction authorization request. The gateway adapter reads fields from this class while
+constructing an authorization JSON request to send to the payment gateway. An object of this class is available by calling
+`getPaymentRequest()` in the `PaymentGatewayContext Class` .
+
+Example
+
+Creating a `buildAuthRequest` class to store information about the authorization request.
+
+```
+   private String buildAuthRequest(commercepayments.AuthorizationRequest authRequest) {
+
+        // Multiply amount by 100.0 to convert to cents
+
+        String requestBody =
+
+   createRequestBody(String.ValueOf((authRequest.amount*100.0).intValue()), authRequest);
+
+        return requestBody;
+
+       private String createRequestBody(String amount, commercepayments.AuthorizationRequest
+
+    authRequest) {
+
+        JSONGenerator jsonGeneratorInstance = JSON.createGenerator(true);
+
+        String currencyIso = authRequest.currencyIsoCode;
+
+        commercepayments.AuthApiPaymentMethodRequest paymentMethod =
+
+   authRequest.paymentMethod;
+
+        commercepayments.GatewayErrorResponse error;
+
+        // Write data to the JSON string.
+
+        jsonGeneratorInstance.writeStartObject();
+
+       jsonGeneratorInstance.writeStringField('merchantAccount', '{!$Credential.Username}');
+
+        jsonGeneratorInstance.writeStringField('reference', authRequest.comments == null
+
+   ? 'randomstring' : authRequest.comments);
+
+        if(currencyIso == null) {
+
+           currencyIso = UserInfo.getDefaultCurrency();
+
+        }
+
+        jsonGeneratorInstance.writeFieldName('amount');
+
+```
+
+
+Apex Reference Guide AuthorizationRequest Class
+
+```
+        jsonGeneratorInstance.writeStartObject();
+
+        jsonGeneratorInstance.writeStringField('value', amount);
+
+        jsonGeneratorInstance.writeStringField('currency', currencyIso);
+
+        jsonGeneratorInstance.writeEndObject();
+
+        commercepayments.CardPaymentMethodRequest cardPaymentMethod;
+
+        if(paymentMethod != null) {
+
+           cardPaymentMethod = paymentMethod.cardPaymentMethod;
+
+           if (cardPaymentMethod != null) {
+
+             if (cardPaymentMethod.CardCategory != null) {
+
+               if (commercepayments.CardCategory.CreditCard ==
+
+   cardPaymentMethod.CardCategory) {
+
+                  jsonGeneratorInstance.writeFieldName('card');
+
+                  jsonGeneratorInstance.writeStartObject();
+
+                  if (cardPaymentMethod.cvv != null)
+
+                    jsonGeneratorInstance.writeStringField('cvc',
+
+   String.ValueOf(cardPaymentMethod.cvv));
+
+                  if (cardPaymentMethod.cardholdername != null)
+
+                    jsonGeneratorInstance.writeStringField('holderName',
+
+   cardPaymentMethod.cardholdername);
+
+                  if (cardPaymentMethod.cardnumber != null)
+
+                    jsonGeneratorInstance.writeStringField('number',
+
+   cardPaymentMethod.cardnumber);
+
+                  if (cardPaymentMethod.expiryMonth != null &&
+
+   cardPaymentMethod.expiryYear != null ) {
+
+                    String expMonth =
+
+   ((String.ValueOf(cardPaymentMethod.expiryMonth)).length() == 1 ? '0' : '') +
+
+   String.ValueOf(cardPaymentMethod.expiryMonth);
+
+                  jsonGeneratorInstance.writeStringField('expiryMonth', expMonth);
+
+                    jsonGeneratorInstance.writeStringField('expiryYear',
+
+   String.ValueOf(cardPaymentMethod.expiryYear));
+
+                  }
+
+                  jsonGeneratorInstance.writeEndObject();
+
+               } else {
+
+               //Support for other card type
+
+               }
+
+             } else {
+
+               throw new SampleValidationException('Required Field Missing :
+
+   CardCategory');
+
+             }
+
+           } else {
+
+             throw new SampleValidationException('Required Field Missing :
+
+   CardPaymentMethod');
+
+           }
+
+        } else {
+
+          throw new SampleValidationException('Required Field Missing : PaymentMethod');
+
+        }
+
+        jsonGeneratorInstance.writeEndObject();
+
+        return jsonGeneratorInstance.getAsString();
+
+      }
+
+```
+
+
+Apex Reference Guide AuthorizationRequest Class
+
+IN THIS SECTION:
+
+#### AuthorizationRequest Constructors AuthorizationRequest Properties
+
+AuthorizationRequest Methods
+
+#### AuthorizationRequest Constructors The following are constructors for AuthorizationRequest .
+
+IN THIS SECTION:
+
+##### AuthorizationRequest(amount)
+
+Constructor for building the amount in an authorization request. This constructor is intended for test usage and throws an exception
+if used outside of the Apex test context.
+
+##### AuthorizationRequest(amount)
+
+Constructor for building the amount in an authorization request. This constructor is intended for test usage and throws an exception if
+used outside of the Apex test context.
+
+Signature
+
+```
+   global AuthorizationRequest(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+The amount of the authorization.
+
+#### AuthorizationRequest Properties The following are properties for AuthorizationRequest .
+
+IN THIS SECTION:
+
+accountId
+The customer account where the authorization is performed.
+
+amount
+The total amount of the authorization. Can be positive or negative.
+
+comments
+Comments about the authorization. Users can enter comments to provide additional information.
+
+currencyIsoCode
+The ISO currency code for the authorization request.
+
+paymentMethod
+The payment method used to process the authorization in the authorization request.
+
+
+Apex Reference Guide AuthorizationRequest Class
+
+##### accountId
+
+The customer account where the authorization is performed.
+
+Signature
+
+```
+   global String accountId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### amount
+
+The total amount of the authorization. Can be positive or negative.
+
+Signature
+
+```
+   global Double amount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### comments
+
+Comments about the authorization. Users can enter comments to provide additional information.
+
+Signature
+
+```
+   global String comments {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### currencyIsoCode
+
+The ISO currency code for the authorization request.
+
+Signature
+
+```
+   global String currencyIsoCode {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### paymentMethod
+
+The payment method used to process the authorization in the authorization request.
+
+
+Apex Reference Guide AuthorizationRequest Class
+
+Signature
+
+```
+   global AuthApiPaymentMethodRequest paymentMethod {get; set;}
+
+```
+
+Property Value
+
+Type: AuthApiPaymentMethodRequest on page 342
+
+#### AuthorizationRequest Methods The following are methods for AuthorizationRequest .
+
+IN THIS SECTION:
+
+##### equals(obj)
+#### Maintains the integrity of lists of type AuthorizationRequest by determining the equality of external objects in a list. This
+
+method is dynamic and based on the equals method in Java.
+
+##### hashCode()
+#### Maintains the integrity of lists of type AuthorizationRequest by determining the uniqueness of the external object in a list.
+
+toString()
+Converts a date to a string.
+
+##### equals(obj)
+
+#### Maintains the integrity of lists of type AuthorizationRequest by determining the equality of external objects in a list. This
+
+method is dynamic and based on the equals method in Java.
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### hashCode()
+
+#### Maintains the integrity of lists of type AuthorizationRequest by determining the uniqueness of the external object in a list.
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+
+### Apex Reference Guide AuthorizationResponse Class
+
+Return Value
+
+Type: Integer
+
+##### toString()
+
+Converts a date to a string.
+
+Signature
+
+```
+   global String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### AuthorizationResponse Class
+
+Response sent by the payment gateway adapter for an authorization service.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.AuthorizationResponse authr = new
+
+   CommercePayments.AuthorizationResponse();
+
+```
+
+Contains information about the payment gateway’s response following an authorization transaction. The gateway adapter uses the
+### payment gateway’s response to populate the AuthorizationResponse fields. The payments platform uses the information from
+
+this class to construct the authorization gateway response shown to the user.
+
+Example
+
+```
+   private commercepayments.GatewayResponse createAuthResponse(HttpResponse response, Double
+
+    amount) {
+
+        Map<String, Object> mapOfResponseValues = (Map
+
+                    <String, Object>) JSON.deserializeUntyped(response.getBody());
+
+        commercepayments.AuthorizationResponse authResponse = new
+
+   commercepayments.AuthorizationResponse();
+
+        String resultCode = (String)mapOfResponseValues.get('resultCode');
+
+        if(resultCode != null){
+
+           system.debug('Response - success');
+
+           if(resultCode.equals('Authorised')){
+
+             system.debug('status - authorised');
+
+```
+
+
+Apex Reference Guide AuthorizationResponse Class
+
+```
+            authResponse.setGatewayAuthCode((String)mapOfResponseValues.get('authCode'));
+
+             authResponse.setSalesforceResultCodeInfo(new
+
+   commercepayments.SalesforceResultCodeInfo(commercepayments.SalesforceResultCode.Success));
+
+           } else {
+
+             //Sample returns 200 with refused status in some cases
+
+             system.debug('status - refused');
+
+   authResponse.setGatewayResultCodeDescription((String)mapOfResponseValues.get('refusalReason'));
+
+             authResponse.setSalesforceResultCodeInfo(new
+
+   commercepayments.SalesforceResultCodeInfo(commercepayments.SalesforceResultCode.Decline));
+
+           }
+
+   authResponse.setGatewayReferenceNumber((String)mapOfResponseValues.get('pspReference'));
+
+           authResponse.setAmount(amount);
+
+           authResponse.setGatewayDate(system.now());
+
+           return authResponse;
+
+        } else {
+
+           system.debug('Response - failed');
+
+           system.debug('Validation error');
+
+           String statusCode = (String)mapOfResponseValues.get('errorType');
+
+           String message = (String)mapOfResponseValues.get('message');
+
+           commercepayments.GatewayErrorResponse error = new
+
+   commercepayments.GatewayErrorResponse(statusCode, message);
+
+           return error;
+
+        }
+
+      }
+
+```
+
+IN THIS SECTION:
+
+#### AuthorizationResponse Methods AuthorizationResponse Methods The following are methods for AuthorizationResponse .
+
+IN THIS SECTION:
+
+setAmount(amount)
+Sets the amount of the authorization. Must be a non-zero value.
+
+setAsync(async)
+Indicates whether the gateway response is received asynchronously ( `true` ) or not ( `false` ). When set to `true`, the authorize
+payment method remains in a pending state until the async notification is received.
+
+setAuthorizationExpirationDate(authExpDate)
+Sets the expiration date of the authorization request.
+
+setGatewayAuthCode(gatewayAuthCode)
+Sets the authorization code that the gateway returned. Maximum length of 64 characters.
+
+
+Apex Reference Guide AuthorizationResponse Class
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the authorization occurred. Some gateways don’t send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the authorization request. Maximum length of 255 characters.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Stores data that you can use for subsequent authorizations. You can use any data that isn’t normalized in financial entities. This field
+has a maximum length of 1000 characters and can store data as JSON or XML.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
+
+setGatewayResultCode(gatewayResultCode)
+Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse)
+Sets information from the gateway about the tokenized payment method.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
+uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+##### setAmount(amount)
+
+Sets the amount of the authorization. Must be a non-zero value.
+
+Signature
+
+```
+   global void setAmount(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+Return Value
+
+Type: void
+
+##### **`setAsync(async)`**
+
+Indicates whether the gateway response is received asynchronously ( `true` ) or not ( `false` ). When set to `true`, the authorize payment
+method remains in a pending state until the async notification is received.
+
+Signature
+
+```
+   public void setAsync(Boolean async)
+
+```
+
+
+Apex Reference Guide AuthorizationResponse Class
+
+Parameters
+
+```
+   async
+```
+
+Type: Boolean
+
+Return Value
+
+Type: void
+
+##### setAuthorizationExpirationDate(authExpDate)
+
+Sets the expiration date of the authorization request.
+
+Signature
+
+```
+   global void setAuthorizationExpirationDate(Datetime authExpDate)
+
+```
+
+Parameters
+
+```
+   authExpDate
+```
+
+Type: Datetime
+
+Return Value
+
+Type: void
+
+##### setGatewayAuthCode(gatewayAuthCode)
+
+Sets the authorization code that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayAuthCode(String gatewayAuthCode)
+
+```
+
+Parameters
+
+```
+   gatewayAuthCode
+```
+
+Type: String
+
+The authorization code returned by the gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayAvsCode(gatewayAvsCode)
+
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+
+Apex Reference Guide AuthorizationResponse Class
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
+gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayDate(gatewayDate)
+
+Sets the date that the authorization occurred. Some gateways don’t send this value.
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets error messages that the gateway returned for the authorization request. Maximum length of 255 characters.
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceDetails(gatewayReferenceDetails)
+
+Stores data that you can use for subsequent authorizations. You can use any data that isn’t normalized in financial entities. This field has
+a maximum length of 1000 characters and can store data as JSON or XML.
+
+
+Apex Reference Guide AuthorizationResponse Class
+
+Signature
+
+```
+   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceNumber(gatewayReferenceNumber)
+
+Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
+
+Signature
+
+```
+   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Unique authorization ID created by the payment gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+Gateway-specific result code. Must be used to map a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide AuthorizationResponse Class
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Description of the gateway’s result code. Use this field to learn more about why the gateway returned a certain result code.
+
+Return Value
+
+Type: void
+
+##### setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse)
+
+Sets information from the gateway about the tokenized payment method.
+
+Signature
+
+```
+   global void
+
+   setPaymentMethodTokenizationResponse(commercepayments.PaymentMethodTokenizationResponse
+
+   paymentMethodTokenizationResponse)
+
+```
+
+Parameters
+
+```
+   paymentMethodTokenizationResponse
+```
+
+PaymentMethodTokenizationResponse on page 442
+
+Gateway response sent by payment gateway adapters for the payment method tokenization request.
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
+the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+
+### Apex Reference Guide AuthorizationReversalRequest Class
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: SalesforceResultCodeInfo on page 502
+
+Description of the Salesforce result code value.
+
+Return Value
+
+Type: void
+
+### AuthorizationReversalRequest Class
+
+Sends information about an authorization reversal request to a gateway adapter during a service call.
+
+Namespace
+
+CommercePayments on page 316
+
+Example
+
+### Add your reversal classes to your payment gateway adapter. We recommend adding AuthorizationReversal as a possible
+
+requestType value when calling processRequest on the gateway’s response.
+
+```
+   global commercepayments.GatewayResponse processRequest(commercepayments.paymentGatewayContext
+
+    gatewayContext) {
+
+        commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
+
+        commercepayments.GatewayResponse response;
+
+        try {
+
+        //add other requestType values here
+
+        //..
+
+        else if (requestType == commercepayments.RequestType.AuthorizationReversal) {
+
+             response =
+
+   createAuthReversalResponse((commercepayments.AuthorizationReversalRequest)gatewayContext.getPaymentRequest());}
+
+        return response;
+
+```
+
+Then, add a class that sets the amount of the authorization reversal request, as well as gateway information and the Salesforce result
+code.
+
+```
+   global commercepayments.GatewayResponse
+
+   createAuthReversalResponse(commercepayments.AuthorizationReversalRequest authReversalRequest)
+
+    {
+
+        commercepayments.AuthorizationReversalResponse authReversalResponse = new
+
+   commercepayments.AuthorizationReversalResponse();
+
+        if(authReversalRequest.amount!=null )
+
+        {
+
+           authReversalResponse.setAmount(authReversalRequest.amount);
+
+        }
+
+        else
+
+```
+
+
+Apex Reference Guide AuthorizationReversalRequest Class
+
+```
+        {
+
+           throw new SalesforceValidationException('Required Field Missing : Amount');
+
+        }
+
+        system.debug('Response - success');
+
+        authReversalResponse.setGatewayDate(system.now());
+
+        authReversalResponse.setGatewayResultCode('00');
+
+        authReversalResponse.setGatewayResultCodeDescription('Transaction Normal');
+
+        authReversalResponse.setGatewayReferenceNumber('SF'+getRandomNumber(6));
+
+   authReversalResponse.setSalesforceResultCodeInfo(SUCCESS_SALESFORCE_RESULT_CODE_INFO);
+
+        return authReversalResponse;
+
+      }
+
+```
+
+IN THIS SECTION:
+
+#### AuthorizationReversalRequest Constructors
+
+AuthorizationReversalRequest Properties
+
+AuthorizationReversalRequest Methods
+
+#### AuthorizationReversalRequest Constructors The following are constructors for AuthorizationReversalRequest .
+
+IN THIS SECTION:
+
+##### AuthorizationReversalRequest(amount, authorizationId)
+
+Constructor for building the amount in an authorization reversal request. This constructor is intended for test usage and throws an
+exception if used outside of the Apex test context.
+
+##### AuthorizationReversalRequest(amount, authorizationId)
+
+Constructor for building the amount in an authorization reversal request. This constructor is intended for test usage and throws an
+exception if used outside of the Apex test context.
+
+Signature
+
+```
+   global AuthorizationReversalRequest(Double amount, String authorizationId)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+The amount of the authorization reversal request.
+
+```
+   authorizationId
+```
+
+Type: String
+
+The authorization request to be reversed.
+
+
+Apex Reference Guide AuthorizationReversalRequest Class
+
+#### AuthorizationReversalRequest Properties The following are properties for AuthorizationReversalRequest .
+
+IN THIS SECTION:
+
+##### accountId
+
+References the customer account for the transaction where the authorization reversal was performed.
+
+##### amount
+
+The total amount of the authorization reversal request. Can be positive or negative.
+
+##### paymentAuthorizationId
+
+References the payment authorization to be reversed.
+
+##### accountId
+
+References the customer account for the transaction where the authorization reversal was performed.
+
+Signature
+
+```
+   global String accountId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### amount
+
+The total amount of the authorization reversal request. Can be positive or negative.
+
+Signature
+
+```
+   global Double amount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### paymentAuthorizationId
+
+References the payment authorization to be reversed.
+
+Signature
+
+```
+   global String paymentAuthorizationId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+
+Apex Reference Guide AuthorizationReversalRequest Class
+
+#### AuthorizationReversalRequest Methods The following are methods for AuthorizationReversalRequest .
+
+IN THIS SECTION:
+
+##### equals(obj)
+#### Maintains the integrity of lists of type AuthorizationReversalRequest by determining the equality of external objects
+
+in a list. This method is dynamic and based on the equals method in Java.
+
+##### hashCode()
+#### Maintains the integrity of lists of type AuthorizationReversalRequest by determining the uniqueness of the external
+
+object in a list.
+
+toString()
+Converts a date to a string.
+
+##### equals(obj)
+
+#### Maintains the integrity of lists of type AuthorizationReversalRequest by determining the equality of external objects in a
+
+list. This method is dynamic and based on the equals method in Java.
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### hashCode()
+
+#### Maintains the integrity of lists of type AuthorizationReversalRequest by determining the uniqueness of the external object
+
+in a list.
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+
+### Apex Reference Guide AuthorizationReversalResponse Class
+
+##### toString()
+
+Converts a date to a string.
+
+Signature
+
+```
+   global String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### AuthorizationReversalResponse Class
+
+Response sent by the payment gateway following a payment authorization reversal service.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.AuthorizationReversalResponse authRevRes = new
+
+   CommercePayments.AuthorizationResponse();
+
+```
+
+Contains information about the payment gateway’s response following an authorization reversal transaction. The gateway adapter uses
+### the payment gateway’s response to populate the AuthorizationReversalResponse fields. The payments platform uses the
+
+information from this class to construct the authorization gateway response shown to the user.
+
+Example
+
+This class builds an authorization reversal response that contains the amount of the original reversal request, gateway information, and
+the Salesforce result code.
+
+```
+   global commercepayments.GatewayResponse
+
+   createAuthReversalResponse(commercepayments.AuthorizationReversalRequest authReversalRequest)
+
+    {
+
+        commercepayments.AuthorizationReversalResponse authReversalResponse = new
+
+   commercepayments.AuthorizationReversalResponse();
+
+        if(authReversalRequest.amount!=null )
+
+        {
+
+           authReversalResponse.setAmount(authReversalRequest.amount);
+
+        }
+
+        else
+
+        {
+
+           throw new SalesforceValidationException('Required Field Missing : Amount');
+
+        }
+
+        system.debug('Response - success');
+
+        authReversalResponse.setGatewayDate(system.now());
+
+```
+
+
+Apex Reference Guide AuthorizationReversalResponse Class
+
+```
+        authReversalResponse.setGatewayResultCode('00');
+
+        authReversalResponse.setGatewayResultCodeDescription('Transaction Normal');
+
+        authReversalResponse.setGatewayReferenceNumber('SF'+getRandomNumber(6));
+
+   authReversalResponse.setSalesforceResultCodeInfo(SUCCESS_SALESFORCE_RESULT_CODE_INFO);
+
+        return authReversalResponse;
+
+      }
+
+```
+
+IN THIS SECTION:
+
+#### AuthorizationReversalResponse Methods AuthorizationReversalResponse Methods The following are methods for AuthorizationReversalResponse .
+
+IN THIS SECTION:
+
+##### setAmount(amount)
+
+Contains the amount of the authorization reversal. Must be a non-zero value.
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (Address Verification System) result code that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the authorization reversal request occurred in the payment gateway. Some gateways don't send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the authorization reversal request. Maximum length of 255 characters.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Stores data that you can use for subsequent authorizations. You can use any data that isn’t normalized in financial entities. This field
+has a maximum length of 1000 characters and can store data as JSON or XML.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets a unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
+
+setGatewayResultCode(gatewayResultCode)
+Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
+uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+##### setAmount(amount)
+
+Contains the amount of the authorization reversal. Must be a non-zero value.
+
+Signature
+
+```
+   global void setAmount(Double amount)
+
+```
+
+
+Apex Reference Guide AuthorizationReversalResponse Class
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+Return Value
+
+Type: void
+
+##### setGatewayAvsCode(gatewayAvsCode)
+
+Sets the AVS (Address Verification System) result code that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
+gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayDate(gatewayDate)
+
+Sets the date that the authorization reversal request occurred in the payment gateway. Some gateways don't send this value.
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets error messages that the gateway returned for the authorization reversal request. Maximum length of 255 characters.
+
+
+Apex Reference Guide AuthorizationReversalResponse Class
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceDetails(gatewayReferenceDetails)
+
+Stores data that you can use for subsequent authorizations. You can use any data that isn’t normalized in financial entities. This field has
+a maximum length of 1000 characters and can store data as JSON or XML.
+
+Signature
+
+```
+   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceNumber(gatewayReferenceNumber)
+
+Sets a unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
+
+Signature
+
+```
+   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Unique reference ID created by the payment gateway.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide AuthorizationReversalResponse Class
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+Gateway-specific result code. Must be used to map a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Description of the gateway’s result code. Use this field to learn more about why the gateway returned a certain result code.
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
+the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: SalesforceResultCodeInfo
+
+
+### Apex Reference Guide BankType Enum
+
+Description of the Salesforce result code value.
+
+Return Value
+
+Type: void
+
+### BankType Enum
+
+Specifies the bank type.
+
+Enum Values
+
+The following are the values of the `commercepayments.BankType` enum.
+
+**Value** **Description**
+
+`Ach` Automated Clearing House transaction.
+
+`Bacs` Bankers' Automated Clearing Services transaction.
+
+`Becs` Bulk Electronic Clearing System transaction.
+
+`SepaDebit` Single Euro Payments Area transaction.
+
+### BankPaymentMethodRequest Class
+
+Sends data related to a bank payment method to a gateway adapter during a service call.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+### Use the BankPaymentMethodRequest class to include bank payment details in a Tokenize request. The gateway adapter reads
+
+the fields from this class when constructing the tokenized JSON request for the payment gateway. You can create an instance of this
+class by calling `bankPaymentMethod` on the `PaymentMethodTokenizationRequest` class.
+
+Example
+
+```
+   private String buildTokenizationRequest(commercepayments.PaymentMethodTokenizationRequest
+
+    tokenizeRequest) {
+
+      commercepayments.BankPaymentMethodRequest bankPaymentMethod =
+
+   tokenizeRequest.bankPaymentMethod;
+
+      // Setup currency
+
+      String currencyIso = UserInfo.getDefaultCurrency();
+
+      String accountId;
+
+```
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+```
+      JSONGenerator jsonGeneratorInstance = JSON.createGenerator(true);
+
+      jsonGeneratorInstance.writeStartObject();
+
+      // Basic fields
+
+      jsonGeneratorInstance.writeStringField('merchantAccount', '{!$Credential.Username}');
+
+      jsonGeneratorInstance.writeStringField('reference', 'Tokenize_' +
+
+   String.valueOf(Datetime.now().getTime()));
+
+      // Payment method details (from encrypted form input)
+
+      jsonGeneratorInstance.writeFieldName('paymentMethod');
+
+      jsonGeneratorInstance.writeStartObject();
+
+      if (bankPaymentMethod != null) {
+
+        accountId = bankPaymentMethod.accountId;
+
+        if (bankPaymentMethod.bankType.equals(commercepayments.BankType.Ach)) {
+
+           currencyIso = 'USD';
+
+           jsonGeneratorInstance.writeStringField('type', 'ach');
+
+           jsonGeneratorInstance.writeStringField('bankAccountNumber',
+
+   bankPaymentMethod.accountNumber);
+
+           jsonGeneratorInstance.writeStringField('bankLocationId',
+
+   bankPaymentMethod.bankCode);
+
+           jsonGeneratorInstance.writeStringField('ownerName',
+
+   bankPaymentMethod.accountHolderName);
+
+        } else if (bankPaymentMethod.bankType.equals(commercepayments.BankType.SepaDebit))
+
+    {
+
+           currencyIso = 'EUR';
+
+           jsonGeneratorInstance.writeStringField('type', 'sepadirectdebit');
+
+          jsonGeneratorInstance.writeStringField('iban', bankPaymentMethod.accountNumber);
+
+           jsonGeneratorInstance.writeStringField('ownerName',
+
+   bankPaymentMethod.accountHolderName);
+
+        } else if (bankPaymentMethod.bankType.equals(commercepayments.BankType.Bacs)) {
+
+           currencyIso = 'GBP';
+
+           jsonGeneratorInstance.writeStringField('type', 'directdebit_GB');
+
+           jsonGeneratorInstance.writeStringField('bankAccountNumber',
+
+   bankPaymentMethod.accountNumber);
+
+           jsonGeneratorInstance.writeStringField('bankLocationId',
+
+   bankPaymentMethod.bankCode);
+
+           jsonGeneratorInstance.writeStringField('holderName',
+
+   bankPaymentMethod.accountHolderName);
+
+        } else if (bankPaymentMethod.bankType.equals(commercepayments.BankType.Becs)) {
+
+           currencyIso = 'AUD';
+
+           jsonGeneratorInstance.writeStringField('type', 'directdebit_AU');
+
+           jsonGeneratorInstance.writeStringField('bankAccountNumber',
+
+   bankPaymentMethod.accountNumber);
+
+           jsonGeneratorInstance.writeStringField('bsb', bankPaymentMethod.bankCode);
+
+           jsonGeneratorInstance.writeStringField('ownerName',
+
+```
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+```
+   bankPaymentMethod.accountHolderName);
+
+        } else {
+
+           //Add support for other banks if required in future.
+
+        }
+
+        jsonGeneratorInstance.writeEndObject();
+
+      }
+
+      // Zero-dollar amount
+
+      jsonGeneratorInstance.writeFieldName('amount');
+
+      jsonGeneratorInstance.writeStartObject();
+
+      jsonGeneratorInstance.writeNumberField('value', 0);
+
+      jsonGeneratorInstance.writeStringField('currency', currencyIso);
+
+      jsonGeneratorInstance.writeEndObject();
+
+      // Save payment method for later
+
+      jsonGeneratorInstance.writeStringField('shopperReference', accountId);
+
+      jsonGeneratorInstance.writeBooleanField('storePaymentMethod', true);
+
+      jsonGeneratorInstance.writeStringField('shopperInteraction', 'Ecommerce');
+
+      jsonGeneratorInstance.writeStringField('recurringProcessingModel',
+
+   'UnscheduledCardOnFile');
+
+      commercepayments.AddressRequest billingAddress = tokenizeRequest.address;
+
+      if (billingAddress != null) {
+
+        jsonGeneratorInstance.writeFieldName('billingAddress');
+
+        jsonGeneratorInstance.writeStartObject();
+
+        jsonGeneratorInstance.writeStringField('street', billingAddress.street);
+
+        jsonGeneratorInstance.writeStringField('stateOrProvince', billingAddress.state);
+
+        jsonGeneratorInstance.writeStringField('city', billingAddress.city);
+
+        jsonGeneratorInstance.writeStringField('postalCode', billingAddress.postalCode);
+
+        jsonGeneratorInstance.writeStringField('country', billingAddress.country);
+
+        jsonGeneratorInstance.writeEndObject();
+
+      }
+
+      jsonGeneratorInstance.writeEndObject();
+
+      return jsonGeneratorInstance.getAsString();
+
+   }
+
+```
+
+IN THIS SECTION:
+
+#### BankPaymentMethodRequest Properties
+
+BankPaymentMethodRequest Methods
+
+#### BankPaymentMethodRequest Properties The following are properties for BankPaymentMethodRequest .
+
+IN THIS SECTION:
+
+accountHolderFirstName
+The first name of the account holder for the bank payment method.
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+accountHolderLastName
+The last name of the account holder for the bank payment method.
+
+accountHolderName
+The name of the account holder for the bank payment method.
+
+accountHolderType
+The type of the account holder.
+
+accountId
+Salesforce Payments account ID associated with the bank payment method.
+
+accountNumber
+The unique account number for the bank account.
+
+accountType
+The type for the bank account.
+
+autoPay
+Indicates whether a token for recurring payments is being requested (true) or not (false). The token enables the payment method
+to be used for recurring payments.
+
+bankCode
+The routing number is a unique nine-digit code that identifies the bank.
+
+bankType
+The bank type associated with the bank payment method.
+
+comments
+Additional details about the bank account.
+
+email
+The email address of the bank account holder.
+
+mandate
+Authorization from the account holder to debit their payment method.
+
+nickName
+The nick name of the account holder.
+
+standardEntryClassCode
+The three-letter code that identifies the type of electronic payment transaction being processed within the Automated Clearing
+House (ACH) network.
+
+##### **`accountHolderFirstName`**
+
+The first name of the account holder for the bank payment method.
+
+Signature
+
+```
+   public String accountHolderFirstName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+##### **`accountHolderLastName`**
+
+The last name of the account holder for the bank payment method.
+
+Signature
+
+```
+   public String accountHolderLastName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`accountHolderName`**
+
+The name of the account holder for the bank payment method.
+
+Signature
+
+```
+   public String accountHolderName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`accountHolderType`**
+
+The type of the account holder.
+
+Signature
+
+```
+   public commercepayments.AccountHolderType accountHolderType {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.AccountHolderType on page 329
+
+##### **`accountId`**
+
+Salesforce Payments account ID associated with the bank payment method.
+
+Signature
+
+```
+   public String accountId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`accountNumber`**
+
+The unique account number for the bank account.
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+Signature
+
+```
+   public String accountNumber {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`accountType`**
+
+The type for the bank account.
+
+Signature
+
+```
+   public commercepayments.AccountType accountType {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.AccountType on page 328
+
+##### **`autoPay`**
+
+Indicates whether a token for recurring payments is being requested (true) or not (false). The token enables the payment method to be
+used for recurring payments.
+
+Signature
+
+```
+   public Boolean autoPay {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+##### **`bankCode`**
+
+The routing number is a unique nine-digit code that identifies the bank.
+
+Signature
+
+```
+   public String bankCode {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`bankType`**
+
+The bank type associated with the bank payment method.
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+Signature
+
+```
+   public commercepayments.BankType bankType {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.BankType on page 365
+
+##### **`comments`**
+
+Additional details about the bank account.
+
+Signature
+
+```
+   public String comments {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`email`**
+
+The email address of the bank account holder.
+
+Signature
+
+```
+   public String email {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`mandate`**
+
+Authorization from the account holder to debit their payment method.
+
+Signature
+
+```
+   public String mandate {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`nickName`**
+
+The nick name of the account holder.
+
+Signature
+
+```
+   public String nickName {get; set;}
+
+```
+
+
+Apex Reference Guide BankPaymentMethodRequest Class
+
+Property Value
+
+Type: String
+
+##### **`standardEntryClassCode`**
+
+The three-letter code that identifies the type of electronic payment transaction being processed within the Automated Clearing House
+(ACH) network.
+
+Signature
+
+```
+   public commercepayments.StandardEntryClassCode standardEntryClassCode {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.StandardEntryClassCode on page 503
+
+#### BankPaymentMethodRequest Methods The following are methods for BankPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### equals(obj)
+#### Maintains the integrity of lists of type BankPaymentMethodRequest by determining the equality of external objects in a list.
+
+This method is dynamic and based on the equals method in Java.
+
+hashCode()
+#### Maintains the integrity of lists of type BankPaymentMethodRequest .
+
+toString()
+Converts a date to a string.
+
+##### **`equals(obj)`**
+
+#### Maintains the integrity of lists of type BankPaymentMethodRequest by determining the equality of external objects in a list. This
+
+method is dynamic and based on the equals method in Java.
+
+Signature
+
+```
+   public Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+
+### Apex Reference Guide BankPaymentMethodResponse Class
+
+##### **`hashCode()`**
+
+Maintains the integrity of lists of type `BankPaymentMethodRequest` .
+
+Signature
+
+```
+   public Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### **`toString()`**
+
+Converts a date to a string.
+
+Signature
+
+```
+   public String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### BankPaymentMethodResponse Class
+
+This class contains information about the bank payment method response. The gateway adapter reads the gateway response and
+### generates a BankPaymentMethodResponse, populating the required fields to create a bank payment method.
+
+Namespace
+
+CommercePayments on page 316
+
+IN THIS SECTION:
+
+#### BankPaymentMethodResponse Methods BankPaymentMethodResponse Methods
+
+### The following are methods for BankPaymentMethodResponse .
+
+IN THIS SECTION:
+
+setAccountHolderType(accountHolderType)
+Sets the account holder type for the bank payment method.
+
+setAccountId(accountId)
+Sets the Payments account ID associated with the bank payment method.
+
+setAccountType(accountType)
+Sets the account type for the bank payment method.
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
+
+setBankCode(bankCode)
+Sets the unique nine-digit code that identifies the bank code for the bank payment method.
+
+setBankName(bankName)
+Sets the bank name for the bank payment method.
+
+setBankType(bankType)
+Sets the bank type for the bank payment method.
+
+setComments(comments)
+Sets any additional details about the bank account.
+
+setEmail(email)
+Sets the email address of the bank account holder.
+
+setGatewayToken(gatewayToken)
+Sets the gateway token value that the gateway returned.
+
+setGatewayTokenDetails(gatewayTokenDetails)
+Sets any additional information that the gateway returned about the payment token.
+
+setLast4(lastFour)
+Sets the last four digits of the bank account number.
+
+setName(name)
+Sets the name of the account holder for the bank payment method.
+
+setSavedPaymentMethodId(savedPaymentMethodId)
+Sets the saved payment method ID for the bank account holder.
+
+setStandardEntryClassCode(standardEntryClassCode)
+Sets the code that identifies the type of electronic payment transaction being processed within the Automated Clearing House
+(ACH) network.
+
+##### **`setAccountHolderType(accountHolderType)`**
+
+Sets the account holder type for the bank payment method.
+
+Signature
+
+```
+   public void setAccountHolderType(commercepayments.AccountHolderType accountHolderType)
+
+```
+
+Parameters
+
+```
+   accountHolderType
+```
+
+Type: commercepayments.AccountHolderType on page 329
+
+Return Value
+
+Type: void
+
+##### **`setAccountId(accountId)`**
+
+Sets the Payments account ID associated with the bank payment method.
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
+
+Signature
+
+```
+   public void setAccountId(String accountId)
+
+```
+
+Parameters
+
+```
+   accountId
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setAccountType(accountType)`**
+
+Sets the account type for the bank payment method.
+
+Signature
+
+```
+   public void setAccountType(commercepayments.AccountType accountType)
+
+```
+
+Parameters
+
+```
+   accountType
+```
+
+Type: commercepayments.AccountType on page 328
+
+Return Value
+
+Type: void
+
+##### **`setBankCode(bankCode)`**
+
+Sets the unique nine-digit code that identifies the bank code for the bank payment method.
+
+Signature
+
+```
+   public void setBankCode(String bankCode)
+
+```
+
+Parameters
+
+```
+   bankCode
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setBankName(bankName)`**
+
+Sets the bank name for the bank payment method.
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
+
+Signature
+
+```
+   public void setBankName(String bankName)
+
+```
+
+Parameters
+
+```
+   bankName
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setBankType(bankType)`**
+
+Sets the bank type for the bank payment method.
+
+Signature
+
+```
+   public void setBankType(commercepayments.BankType bankType)
+
+```
+
+Parameters
+
+```
+   bankType
+```
+
+Type: commercepayments.BankType on page 365
+
+Return Value
+
+Type: void
+
+##### **`setComments(comments)`**
+
+Sets any additional details about the bank account.
+
+Signature
+
+```
+   public void setComments(String comments)
+
+```
+
+Parameters
+
+```
+   comments
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setEmail(email)`**
+
+Sets the email address of the bank account holder.
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
+
+Signature
+
+```
+   public void setEmail(String email)
+
+```
+
+Parameters
+
+```
+   email
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setGatewayToken(gatewayToken)`**
+
+Sets the gateway token value that the gateway returned.
+
+Signature
+
+```
+   public void setGatewayToken(String gatewayToken)
+
+```
+
+Parameters
+
+```
+   gatewayToken
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setGatewayTokenDetails(gatewayTokenDetails)`**
+
+Sets any additional information that the gateway returned about the payment token.
+
+Signature
+
+```
+   public void setGatewayTokenDetails(String gatewayTokenDetails)
+
+```
+
+Parameters
+
+```
+   gatewayTokenDetails
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setLast4(lastFour)`**
+
+Sets the last four digits of the bank account number.
+
+
+Apex Reference Guide BankPaymentMethodResponse Class
+
+Signature
+
+```
+   public void setLast4(String lastFour)
+
+```
+
+Parameters
+
+```
+   lastFour
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setName(name)`**
+
+Sets the name of the account holder for the bank payment method.
+
+Signature
+
+```
+   public void setName(String name)
+
+```
+
+Parameters
+
+```
+   name
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setSavedPaymentMethodId(savedPaymentMethodId)`**
+
+Sets the saved payment method ID for the bank account holder.
+
+Signature
+
+```
+   public void setSavedPaymentMethodId(String savedPaymentMethodId)
+
+```
+
+Parameters
+
+```
+   savedPaymentMethodId
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setStandardEntryClassCode(standardEntryClassCode)`**
+
+Sets the code that identifies the type of electronic payment transaction being processed within the Automated Clearing House (ACH)
+network.
+
+
+### Apex Reference Guide BaseApiPaymentMethodRequest Class
+
+Signature
+
+```
+   public void setStandardEntryClassCode(commercepayments.StandardEntryClassCode
+
+   standardEntryClassCode)
+
+```
+
+Parameters
+
+```
+   standardEntryClassCode
+```
+
+Type: commercepayments.StandardEntryClassCode on page 503
+
+Return Value
+
+Type: void
+
+### BaseApiPaymentMethodRequest Class
+
+Abstract class used to send information about a payment method to a gateway adapter during a service call.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+### BaseApiPaymentMethodRequest is the base class for SaleApiPaymentMethodRequest and
+
+`AuthApiPaymentMethodRequest` .
+
+IN THIS SECTION:
+
+#### BaseApiPaymentMethodRequest Constructors
+
+BaseApiPaymentMethodRequest Properties
+
+BaseApiPaymentMethodRequest Methods
+
+#### BaseApiPaymentMethodRequest Constructors
+
+### The following are constructors for BaseApiPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### BaseApiPaymentMethodRequest(address, id, saveForFuture)
+
+Constructs a payment method. This constructor is intended for test usage and throws an exception if used outside of the Apex test
+context.
+
+##### BaseApiPaymentMethodRequest(address, id, saveForFuture)
+
+Constructs a payment method. This constructor is intended for test usage and throws an exception if used outside of the Apex test
+context.
+
+
+Apex Reference Guide BaseApiPaymentMethodRequest Class
+
+Signature
+
+```
+   global BaseApiPaymentMethodRequest(commercepayments.AddressRequest address, String id,
+
+   Boolean saveForFuture)
+
+```
+
+Parameters
+
+##### _`address`_
+
+Type: commercepayments.AddressRequest on page 329
+
+Sends data related on address request to a gateway adapter during a service call.
+
+##### _`id`_
+
+Type: String
+
+```
+   saveForFuture
+```
+
+Type: Boolean
+
+Indicates whether Salesforce saves the payment method for future use.
+
+#### BaseApiPaymentMethodRequest Properties The following are properties for BaseApiPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### address
+
+The payment method’s address.
+
+##### id
+
+ID of the payment method request.
+
+##### idType
+
+ID of the payment method type.
+
+saveForFuture
+Indicates whether the payment method is saved as a record in Salesforce for future use.
+
+##### address
+
+The payment method’s address.
+
+Signature
+
+```
+   global commercepayments.AddressRequest address {get; set;}
+
+```
+
+Property Value
+
+Type: AddressRequest on page 329
+
+##### id
+
+ID of the payment method request.
+
+
+Apex Reference Guide BaseApiPaymentMethodRequest Class
+
+Signature
+
+```
+   global String id {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`idType`**
+
+ID of the payment method type.
+
+Signature
+
+```
+   public commercepayments.PaymentMethodIdType idType {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.PaymentMethodIdType
+
+##### saveForFuture
+
+Indicates whether the payment method is saved as a record in Salesforce for future use.
+
+Signature
+
+```
+   global Boolean saveForFuture {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+#### BaseApiPaymentMethodRequest Methods The following are methods for BaseApiPaymentMethodRequest .
+
+IN THIS SECTION:
+
+equals(obj)
+#### Maintains the integrity of lists of type BaseApiPaymentMethodRequest by determining the equality of external objects in
+
+a list. This method is dynamic and is based on the equals method in Java.
+
+hashCode()
+#### Maintains the integrity of lists of type BaseApiPaymentMethodRequest by determining the uniqueness of the external
+
+object records in a list.
+
+toString()
+Converts a date to a string.
+
+
+### Apex Reference Guide BaseNotification Class
+
+##### equals(obj)
+
+Maintains the integrity of lists of type `BaseApiPaymentMethodRequest` by determining the equality of external objects in a
+list. This method is dynamic and is based on the equals method in Java.
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### hashCode()
+
+Maintains the integrity of lists of type `BaseApiPaymentMethodRequest` by determining the uniqueness of the external object
+records in a list.
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### toString()
+
+Converts a date to a string.
+
+Signature
+
+```
+   global String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### BaseNotification Class
+
+Abstract class for storing notification information sent from payment gateways.
+
+
+Apex Reference Guide BaseNotification Class
+
+Namespace
+
+CommercePayments
+
+Usage
+
+#### An abstract class that contains the common fields from payment gateways. BaseNotification can’t be instantiated on its own.
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.BaseNotification bnt = new CommercePayments.BaseNotification();
+
+```
+
+Example
+
+```
+   commercepayments.BaseNotification notification = null;
+
+        if ('CAPTURE'.equals(eventCode)) {
+
+           notification = new commercepayments.CaptureNotification();
+
+        } else if ('REFUND'.equals(eventCode)) {
+
+           notification = new commercepayments.ReferencedRefundNotification();
+
+        }
+
+```
+
+IN THIS SECTION:
+
+#### BaseNotification Methods BaseNotification Methods The following are methods for BaseNotification .
+
+IN THIS SECTION:
+
+setAmount(amount)
+Sets the transaction amount. Must be a non-negative value.
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (address verification system) result code that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the notification occurred. Some gateways don’t send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the notification request. Maximum length of 255 characters.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets the payment gateway’s reference details.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the payment gateway’s reference number.
+
+setGatewayResultCode(gatewayResultCode)
+Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+
+Apex Reference Guide BaseNotification Class
+
+setId(id)
+Sets the ID of the notification sent by the gateway.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets the information about the Salesforce-specific result code used to match a result code from a payment gateway.
+
+setStatus(status)
+Sets the status of the notification sent by the gateway.
+
+##### setAmount(amount)
+
+Sets the transaction amount. Must be a non-negative value.
+
+Signature
+
+```
+   global void setAmount(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+The amount of the transaction.
+
+Return Value
+
+Type: void
+
+##### **`setGatewayAvsCode(gatewayAvsCode)`**
+
+Sets the AVS (address verification system) result code that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   public void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
+gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayDate(gatewayDate)
+
+Sets the date that the notification occurred. Some gateways don’t send this value.
+
+
+Apex Reference Guide BaseNotification Class
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+The date that the notification occurred.
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets error messages that the gateway returned for the notification request. Maximum length of 255 characters.
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+The message that the gateway returned with the notification request. Contains additional information about the notification.
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceDetails(gatewayReferenceDetails)
+
+Sets the payment gateway’s reference details.
+
+Signature
+
+```
+   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Provides information about the gateway communication.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide BaseNotification Class
+
+##### setGatewayReferenceNumber(gatewayReferenceNumber)
+
+Sets the payment gateway’s reference number.
+
+Signature
+
+```
+   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Unique transaction ID created by the payment gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+Gateway-specific result code. Must be used to map a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Provides additional information about the result code and why the gateway returned the code. Descriptions vary between different
+gateways.
+
+
+Apex Reference Guide BaseNotification Class
+
+Return Value
+
+Type: void
+
+##### setId(id)
+
+Sets the ID of the notification sent by the gateway.
+
+Signature
+
+```
+   global void setId(String id)
+
+```
+
+Parameters
+
+```
+   id
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets the information about the Salesforce-specific result code used to match a result code from a payment gateway.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: commercepayments.SalesforceResultCodeInfo on page 502
+
+Payment gateways have many response codes for payment calls. Salesforce uses the result code information to map payment
+gateway codes to a predefined set of standard Salesforce result codes.
+
+Return Value
+
+Type: void
+
+##### setStatus(status)
+
+Sets the status of the notification sent by the gateway.
+
+Signature
+
+```
+   global void setStatus(commercepayments.NotificationStatus status)
+
+```
+
+
+### Apex Reference Guide BasePaymentMethodRequest Class
+
+Parameters
+
+```
+   status
+```
+
+Type: commercepayments.NotificationStatus on page 426
+
+Shows whether the payments platform successfully received the notification from the gateway.
+
+Return Value
+
+Type: void
+
+### BasePaymentMethodRequest Class
+
+Abstract class for storing information about payment methods.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+### The BasePaymentMethodRequest class contains fields common to CardPaymentMethodRequest on page 403
+
+.
+
+IN THIS SECTION:
+
+#### BasePaymentMethodRequest Methods BasePaymentMethodRequest Methods
+
+### The following are methods for BasePaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### equals(obj)
+### Maintains the integrity of lists of type BasePaymentMethodRequest by determining the equality of external objects in a list.
+
+This method is dynamic and based on the equals method in Java.
+
+hashCode()
+### Maintains the integrity of lists of type BasePaymentMethodRequest by determining the uniqueness of the external object
+
+records in a list.
+
+toString()
+Converts a date to a string.
+
+##### equals(obj)
+
+### Maintains the integrity of lists of type BasePaymentMethodRequest by determining the equality of external objects in a list. This
+
+method is dynamic and based on the equals method in Java.
+
+
+### Apex Reference Guide BaseRequest Class
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### hashCode()
+
+Maintains the integrity of lists of type `BasePaymentMethodRequest` by determining the uniqueness of the external object
+records in a list.
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### toString()
+
+Converts a date to a string.
+
+Signature
+
+```
+   global String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### BaseRequest Class BaseRequest is extended by all the request classes.
+
+Namespace
+
+CommercePayments
+
+IN THIS SECTION:
+
+BaseRequest Methods
+
+
+### Apex Reference Guide CaptureNotification Class
+
+#### BaseRequest Methods The following are methods for BaseRequest .
+
+IN THIS SECTION:
+
+##### BaseRequest(AdditionalData, IdempotencyKey)
+
+Used for testing.
+
+##### BaseRequest(AdditionalData, IdempotencyKey)
+
+Used for testing.
+
+Signature
+
+```
+   global Void BaseRequest(String AdditionalData, Map<String, String> IdempotencyKey)
+
+```
+
+Parameters
+
+```
+   AdditionalData
+```
+
+Type: String
+
+Contains additional data that may be required for a payment request. The `additionalData` object consists of key-value pairs.
+You can retrieve the `additionalData` object from the request object: `Map<String, String>`
+
+```
+    additionalData=request.additionalData
+
+   IdempotencyKey
+```
+
+Type: Map<String, String>
+
+Unique value that's generated by a client and sent to the server in the request. The server stores the value and uses the it to keep
+track of the request status.
+
+Return Value
+
+Type: Void
+
+### CaptureNotification Class
+
+When a payment gateway sends a notification for a capture transaction, the payment gateway adapter creates the
+### CaptureNotification object to store information about the notification.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+### CaptureNotification is used in asynchronous payment gateway adapters.
+
+Specify the `CommercePayments` namespace when creating an instance of this class. The constructor of this class takes no arguments.
+For example:
+
+```
+   CommercePayments.CaptureNotification crn = new CommercePayments.CaptureNotification();
+
+```
+
+
+Apex Reference Guide CaptureNotification Class
+
+Example
+
+```
+   commercepayments.BaseNotification notification = null;
+
+        if ('CAPTURE'.equals(eventCode)) {
+
+           notification = new commercepayments.CaptureNotification();
+
+        } else if ('REFUND'.equals(eventCode)) {
+
+           notification = new commercepayments.ReferencedRefundNotification();
+
+        }
+
+```
+
+IN THIS SECTION:
+
+#### CaptureNotification Methods CaptureNotification Methods The following are methods for CaptureNotification .
+
+IN THIS SECTION:
+
+setAmount(amount)
+Sets the transaction amount. Must be a non-negative value.
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (address verification system) result code that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the transaction occurred. Some gateways don’t send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the payment request. Maximum length of 255 characters.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets additional data that you can use for subsequent transactions. You can use any data that isn’t normalized in financial entities.
+This field has a maximum length of 1000 characters and can store data as JSON or XML.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
+
+setGatewayResultCode(gatewayResultCode)
+Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a gateway returned. Maximum length of 1000 characters.
+
+setId(id)
+Sets the ID of a notification sent by the payment gateway.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
+uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+setStatus(status)
+Sets the notification status to the same value that was sent by the gateway.
+
+
+Apex Reference Guide CaptureNotification Class
+
+##### setAmount(amount)
+
+Sets the transaction amount. Must be a non-negative value.
+
+Signature
+
+```
+   global void setAmount(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+The amount to be debited or captured.
+
+Return Value
+
+Type: void
+
+##### **`setGatewayAvsCode(gatewayAvsCode)`**
+
+Sets the AVS (address verification system) result code that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   public void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
+gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayDate(gatewayDate)
+
+Sets the date that the transaction occurred. Some gateways don’t send this value.
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+Date and time of the gateway communication.
+
+
+Apex Reference Guide CaptureNotification Class
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets error messages that the gateway returned for the payment request. Maximum length of 255 characters.
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Information on error messages sent from the gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceDetails(gatewayReferenceDetails)
+
+Sets additional data that you can use for subsequent transactions. You can use any data that isn’t normalized in financial entities. This
+field has a maximum length of 1000 characters and can store data as JSON or XML.
+
+Signature
+
+```
+   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceNumber(gatewayReferenceNumber)
+
+Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
+
+Signature
+
+```
+   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+
+Apex Reference Guide CaptureNotification Class
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Unique transaction ID created by the payment gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets a gateway-specific result code. The code can be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+Gateway-specific result code. Map this value to a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets a description of the gateway-specific result code that a gateway returned. Maximum length of 1000 characters.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Description of the gateway’s result code. Use this field to learn more about why the gateway returned a certain result code.
+
+Return Value
+
+Type: void
+
+##### setId(id)
+
+Sets the ID of a notification sent by the payment gateway.
+
+
+Apex Reference Guide CaptureNotification Class
+
+Signature
+
+```
+   global void setId(String id)
+
+```
+
+Parameters
+
+```
+   id
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
+the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: commercepayments.SalesforceResultCodeInfo on page 502
+
+Description of the Salesforce result code value.
+
+Return Value
+
+Type: void
+
+##### setStatus(status)
+
+Sets the notification status to the same value that was sent by the gateway.
+
+Signature
+
+```
+   global void setStatus(commercepayments.NotificationStatus status)
+
+```
+
+Parameters
+
+```
+   status
+```
+
+Type: NotificationStatus on page 426
+
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
+uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+Return Value
+
+Type: void
+
+
+### Apex Reference Guide CaptureRequest Class CaptureRequest Class
+
+Represents a capture request. This class extends the `BaseRequest` class and inherits all its methods.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+### The CaptureRequest class’s buildCaptureRequest method creates a CaptureRequest object to store payment information,
+
+such as value and currency, as JSON strings.
+
+Example
+
+Builds a CaptureRequest object for a multicurrency org.
+
+```
+      private String buildCaptureRequest(commercepayments.CaptureRequest captureRequest) {
+
+        Boolean IS_MULTICURRENCY_ORG = UserInfo.isMultiCurrencyOrganization();
+
+        QueryUtils qBuilderForAuth = new QueryUtils(PaymentAuthorization.SObjectType);
+
+        // Add required fields
+
+        qBuilderForAuth.getSelectClause().addField('GatewayRefNumber', false);
+
+        if (IS_MULTICURRENCY_ORG) {
+
+           // addField also takes a boolean to enable translation (uses label instead of
+
+    actual value)
+
+           qBuilderForAuth.getSelectClause().addField('CurrencyIsoCode', false);
+
+        }
+
+```
+
+IN THIS SECTION:
+
+#### CaptureRequest Constructors
+
+CaptureRequest Properties
+
+#### CaptureRequest Constructors
+
+### The following are constructors for CaptureRequest .
+
+IN THIS SECTION:
+
+##### CaptureRequest(amount, authorizationId)
+
+This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
+
+##### CaptureRequest(amount, authorizationId)
+
+This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+
+### Apex Reference Guide CaptureResponse Class
+
+The amount to be debited or captured.
+
+```
+   authorizationId
+```
+
+Type: String
+
+Represents a payment authorization record.
+
+#### CaptureRequest Properties The following are properties for CaptureRequest .
+
+IN THIS SECTION:
+
+##### accountId
+
+Account ID value. References an account record.
+
+##### amount
+
+Amount of currency that needs to be captured.
+
+##### paymentAuthorizationId
+
+ID value that references a PaymentAuthorization.
+
+##### accountId
+
+Account ID value. References an account record.
+
+Property Value
+
+Type: String
+
+##### amount
+
+Amount of currency that needs to be captured.
+
+Property Value
+
+Type: Double
+
+##### paymentAuthorizationId
+
+ID value that references a PaymentAuthorization.
+
+Property Value
+
+Type: String
+
+### CaptureResponse Class
+
+The payment gateway adapter sends this response for the capture request type. This class extends `AbstractResponse` and inherits
+its methods.
+
+
+Apex Reference Guide CaptureResponse Class
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+You must specify the `CommercePayments` namespace when creating an instance of this class. The constructor of this class takes
+no arguments. For example:
+
+```
+   CommercePayments.Capture Response ctr = new CommercePayments.CaptureResponse();
+
+```
+
+IN THIS SECTION:
+
+#### CaptureResponse Methods CaptureResponse Methods The following are methods for CaptureResponse .
+
+IN THIS SECTION:
+
+##### setAmount(amount)
+
+Sets the transaction amount.
+
+setAsync(async)
+Indicates whether the payment gateway adapter used in the payment capture was asynchronous ( `True` ) or synchronous ( `False` ).
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the payment gateway’s AVS (address verification system) code.
+
+setGatewayDate(gatewayDate)
+Sets the payment gateway’s date.
+
+setGatewayMessage(gatewayMessage)
+Sets information or messages that the gateway returned.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets the payment gateway’s reference details.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the payment gateway’s reference number.
+
+setGatewayResultCode(gatewayResultCode)
+Sets the payment gateway’s result code.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets the payment gateway’s result code description.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets Salesforce result code information.
+
+##### setAmount(amount)
+
+Sets the transaction amount.
+
+
+Apex Reference Guide CaptureResponse Class
+
+Signature
+
+```
+   global void setAmount(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+The amount to be debited or captured.
+
+Return Value
+
+Type: void
+
+##### setAsync(async)
+
+Indicates whether the payment gateway adapter used in the payment capture was asynchronous ( `True` ) or synchronous ( `False` ).
+
+Signature
+
+```
+   global void setAsync(Boolean async)
+
+```
+
+Parameters
+
+```
+   async
+```
+
+Type: Boolean
+
+Return Value
+
+Type: void
+
+##### setGatewayAvsCode(gatewayAvsCode)
+
+Sets the payment gateway’s AVS (address verification system) code.
+
+Signature
+
+```
+   global void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Payment gateways that use an AVS system return this code.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide CaptureResponse Class
+
+##### setGatewayDate(gatewayDate)
+
+Sets the payment gateway’s date.
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+The date that communication happened with the gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets information or messages that the gateway returned.
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Information or error messages returned by the gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceDetails(gatewayReferenceDetails)
+
+Sets the payment gateway’s reference details.
+
+Signature
+
+```
+   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Provides information about the gateway communication.
+
+
+Apex Reference Guide CaptureResponse Class
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceNumber(gatewayReferenceNumber)
+
+Sets the payment gateway’s reference number.
+
+Signature
+
+```
+   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Unique transaction ID created by the payment gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets the payment gateway’s result code.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+The gateway result code. You must map this to a Salesforce result code.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets the payment gateway’s result code description.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+
+### Apex Reference Guide CardCategory Enum
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Description of the GatewayResultCode. Provides additional context about the result code that the gateway returned.
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets Salesforce result code information.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+SalesforceResultCodeInfoType: commercepayments.SalesforceResultCodeInfo
+
+Description of the Salesforce result code value.
+
+Return Value
+
+Type: void
+
+### CardCategory Enum
+
+Defines whether the payment method represents a credit card or a debit card.
+
+Namespace
+
+CommercePayments on page 316
+
+Enum Values
+
+The following are the values of the `commercepayments.CardCategory` enum.
+
+**Value** **Description**
+
+`CreditCard` Shows that the payment method is a credit card.
+
+`DebitCard` Shows that the payment method is a debit card.
+
+
+### Apex Reference Guide CardPaymentMethodRequest Class CardPaymentMethodRequest Class
+
+Sends data related to a card payment method to a gateway adapter during a service call.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+This class contains details about the card used as a payment method for authorization, sale, or tokenization transaction requests. The
+gateway adapter reads the fields of this class object while constructing a transaction JSON request to send to the payment gateway.
+The object of this class is available as the `cardPaymentMethod` field in the `SaleApiPaymentMethodRequest Class`,
+
+`AuthApiPaymentMethodRequest Class`, and `PaymentMethodTokenizationRequest Class` .
+
+Example: This code sample retrieves the `cardPaymentMethodRequest` object from the `paymentMethod` class.
+
+```
+      commercepayments.CardPaymentMethodRequest cardPaymentMethod =
+
+      paymentMethod.cardPaymentMethod;
+
+```
+
+IN THIS SECTION:
+
+#### CardPaymentMethodRequest Constructors
+
+CardPaymentMethodRequest Properties
+
+CardPaymentMethodRequest Methods
+
+#### CardPaymentMethodRequest Constructors
+
+### The following are constructors for CardPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### CardPaymentMethodRequest(cardCategory)
+
+Sets the `cardCategory` value for the card payment method request.
+
+##### CardPaymentMethodRequest(cardCategory)
+
+Sets the `cardCategory` value for the card payment method request.
+
+Signature
+
+```
+   global CardPaymentMethodRequest(commercepayments.CardCategory cardCategory)
+
+```
+
+Parameters
+
+```
+   cardCategory
+```
+
+Type: CardCategory on page 402
+
+Defines whether the card payment method is a credit card or a debit card.
+
+
+Apex Reference Guide CardPaymentMethodRequest Class
+
+#### CardPaymentMethodRequest Properties The following are properties for CardPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### accountId
+
+Customer account for this payment method.
+
+autoPay
+Indicates whether a token is being requested so that the payment method can be used for recurring payments.
+
+cardCategory
+Indicates whether a card payment method is for a credit card or debit card.
+
+cardHolderFirstName
+The first name of the cardholder for the card payment method.
+
+cardHolderLastName
+The last name of the cardholder for the card payment method.
+
+cardHolderName
+Full name of the cardholder on the card payment method.
+
+cardNumber
+System-defined unique ID for the card payment method.
+
+cardType
+Defines the credit card bank. Possible values are `AmericanExpress`, `DinersClub`, `JCB`, `Maestro`, `MasterCard`,
+and `Visa` .
+
+cvv
+The card security code for the credit or debit card on a card payment method.
+
+email
+Email address of the cardholder for the credit or debit card on a card payment method.
+
+expiryMonth
+Expiration month for the credit or debit card on a card payment method.
+
+expiryYear
+Expiration year of the credit or debit card for the card payment method.
+
+inputCardType
+Input field for the card type. This field doesn’t store the card type directly, but instead populates CardBin, LastFour, and
+DisplayCardNumber based on the value entered in `inputCardType` .
+
+startMonth
+The credit or debit card becomes valid on the first day of the `startMonth` in the `startYear`
+
+startYear
+Year during which the credit or debit card becomes valid.
+
+##### accountId
+
+Customer account for this payment method.
+
+
+Apex Reference Guide CardPaymentMethodRequest Class
+
+Signature
+
+```
+   global String accountId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### autoPay
+
+Indicates whether a token is being requested so that the payment method can be used for recurring payments.
+
+Signature
+
+```
+   global Boolean autoPay {get; set;}
+
+```
+
+Property Value
+
+Type: Boolean
+
+##### cardCategory
+
+Indicates whether a card payment method is for a credit card or debit card.
+
+Signature
+
+```
+   global commercepayments.CardCategory cardCategory {get; set;}
+
+```
+
+Property Value
+
+Type: CardCategory on page 402
+
+##### cardHolderFirstName
+
+The first name of the cardholder for the card payment method.
+
+Signature
+
+```
+   global String cardHolderFirstName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### cardHolderLastName
+
+The last name of the cardholder for the card payment method.
+
+Signature
+
+```
+   global String cardHolderLastName {get; set;}
+
+```
+
+
+Apex Reference Guide CardPaymentMethodRequest Class
+
+Property Value
+
+Type: String
+
+##### cardHolderName
+
+Full name of the cardholder on the card payment method.
+
+Signature
+
+```
+   global String cardHolderName {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### cardNumber
+
+System-defined unique ID for the card payment method.
+
+Signature
+
+```
+   global String cardNumber {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### cardType
+
+Defines the credit card bank. Possible values are `AmericanExpress`, `DinersClub`, `JCB`, `Maestro`, `MasterCard`, and `Visa` .
+
+Signature
+
+```
+   global commercepayments.CardType cardType {get; set;}
+
+```
+
+Property Value
+
+Type: CardType
+
+##### cvv
+
+The card security code for the credit or debit card on a card payment method.
+
+Signature
+
+```
+   global String cvv {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+
+Apex Reference Guide CardPaymentMethodRequest Class
+
+##### email
+
+Email address of the cardholder for the credit or debit card on a card payment method.
+
+Signature
+
+```
+   global String email {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### expiryMonth
+
+Expiration month for the credit or debit card on a card payment method.
+
+Signature
+
+```
+   global Integer expiryMonth {get; set;}
+
+```
+
+Property Value
+
+Type: Integer
+
+##### expiryYear
+
+Expiration year of the credit or debit card for the card payment method.
+
+Signature
+
+```
+   global Integer expiryYear {get; set;}
+
+```
+
+Property Value
+
+Type: Integer
+
+##### inputCardType
+
+Input field for the card type. This field doesn’t store the card type directly, but instead populates CardBin, LastFour, and DisplayCardNumber
+##### based on the value entered in inputCardType .
+
+Signature
+
+```
+   global String inputCardType {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+
+Apex Reference Guide CardPaymentMethodRequest Class
+
+##### startMonth The credit or debit card becomes valid on the first day of the startMonth in the startYear
+
+Signature
+
+```
+   global Integer startMonth {get; set;}
+
+```
+
+Property Value
+
+Type: Integer
+
+##### startYear
+
+Year during which the credit or debit card becomes valid.
+
+Signature
+
+```
+   global Integer startYear {get; set;}
+
+```
+
+Property Value
+
+Type: Integer
+
+#### CardPaymentMethodRequest Methods The following are methods for CardPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### equals(obj)
+#### Maintains the integrity of lists of type CardPaymentMethodRequest by determining the equality of external objects in a list.
+
+This method is dynamic and based on the equals method in Java.
+
+hashCode()
+#### Maintains the integrity of lists of type CardPaymentMethodRequest .
+
+toString()
+Converts a date to a string.
+
+##### equals(obj)
+
+#### Maintains the integrity of lists of type CardPaymentMethodRequest by determining the equality of external objects in a list. This
+
+method is dynamic and based on the equals method in Java.
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+
+### Apex Reference Guide CardPaymentMethodResponse Class
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### hashCode()
+
+Maintains the integrity of lists of type `CardPaymentMethodRequest` .
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### toString()
+
+Converts a date to a string.
+
+Signature
+
+```
+   global String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### CardPaymentMethodResponse Class
+
+This class contains details about the card payment method.
+
+Namespace
+
+CommercePayments
+
+IN THIS SECTION:
+
+#### CardPaymentMethodResponse Methods CardPaymentMethodResponse Methods
+
+### The following are methods for CardPaymentMethodResponse .
+
+
+Apex Reference Guide CardPaymentMethodResponse Class
+
+IN THIS SECTION:
+
+##### setAccountId(accountId)
+
+Sets the Salesforce payments account to which this payment method is linked.
+
+setAutoPay(autoPay)
+Sets whether a token for recurring payments is being requested or not.
+
+setCardBin(cardBin)
+Sets the card Bank Identification Number (BIN).
+
+setCardCategory(cardCategory)
+Sets the card category.
+
+setCardHolderFirstName(cardHolderFirstName)
+Sets the first name of the card holder.
+
+setCardHolderLastName(cardHolderLastName)
+Sets the last name of the card holder.
+
+setCardHolderName(cardHolderName)
+Sets the name of the card holder.
+
+setCardLastFour(cardLastFour)
+Sets the last four digits of the card.
+
+setCardType(cardType)
+Specifies the type of the credit card issuer.
+
+setCardTypeCategory(cardTypeCategory)
+Sets the credit card issuer.
+
+setComments(comments)
+Sets the notes added by a user for card payment.
+
+setDisplayCardNumber(displayCardNumber)
+Sets the display card number.
+
+setEmail(email)
+Sets the email address of the card holder.
+
+setExpiryMonth(expiryMonth)
+Sets the month of expiry of the card.
+
+setExpiryYear(expiryYear)
+Sets the year of expiry of the card.
+
+setNickName(nickName)
+Sets the nickname of the card.
+
+setStartMonth(startMonth)
+Sets the month the card becomes active.
+
+setStartYear(startYear)
+Sets the year the card becomes active.
+
+##### **`setAccountId(accountId)`**
+
+Sets the Salesforce payments account to which this payment method is linked.
+
+
+Apex Reference Guide CardPaymentMethodResponse Class
+
+Signature
+
+```
+   public void setAccountId(Id accountId)
+
+```
+
+Parameters
+
+```
+   accountId
+```
+
+Type: Id
+
+Salesforce Payments account to which this payment method is linked.
+
+Return Value
+
+Type: void
+
+##### **`setAutoPay(autoPay)`**
+
+Sets whether a token for recurring payments is being requested or not.
+
+Signature
+
+```
+   public void setAutoPay(Boolean autoPay)
+
+```
+
+Parameters
+
+```
+   autoPay
+```
+
+Type: Boolean
+
+Indicates whether a token for recurring payments is being requested ( `true` ) or not ( `false` ). The token lets the payment method
+be used for recurring payments.
+
+Return Value
+
+Type: void
+
+##### **`setCardBin(cardBin)`**
+
+Sets the card Bank Identification Number (BIN).
+
+Signature
+
+```
+   public void setCardBin(String cardBin)
+
+```
+
+Parameters
+
+```
+   cardBin
+```
+
+Type: String
+
+Bank Identification Number (BIN). The BIN is the first 4-6 numbers on a payment card that identifies the card issuer.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide CardPaymentMethodResponse Class
+
+##### **`setCardCategory(cardCategory)`**
+
+Sets the card category.
+
+Signature
+
+```
+   public void setCardCategory(commercepayments.CardCategory cardCategory)
+
+```
+
+Parameters
+
+```
+   cardCategory
+```
+
+Type: CommercePayments.CardCategory
+
+Specifies whether it is a credit card or debit card.
+
+Return Value
+
+Type: void
+
+##### **`setCardHolderFirstName(cardHolderFirstName)`**
+
+Sets the first name of the card holder.
+
+Signature
+
+```
+   public void setCardHolderFirstName(String cardHolderFirstName)
+
+```
+
+Parameters
+
+```
+   cardHolderFirstName
+```
+
+Type: String
+
+First name of the card holder.
+
+Return Value
+
+Type: void
+
+##### **`setCardHolderLastName(cardHolderLastName)`**
+
+Sets the last name of the card holder.
+
+Signature
+
+```
+   public void setCardHolderLastName(String cardHolderLastName)
+
+```
+
+Parameters
+
+```
+   cardHolderLastName
+```
+
+Type: String
+
+Last name of the card holder.
+
+
+Apex Reference Guide CardPaymentMethodResponse Class
+
+Return Value
+
+Type: void
+
+##### **`setCardHolderName(cardHolderName)`**
+
+Sets the name of the card holder.
+
+Signature
+
+```
+   public void setCardHolderName(String cardHolderName)
+
+```
+
+Parameters
+
+```
+   cardHolderName
+```
+
+Type: String
+
+Card holder name.
+
+Return Value
+
+Type: void
+
+##### **`setCardLastFour(cardLastFour)`**
+
+Sets the last four digits of the card.
+
+Signature
+
+```
+   public void setCardLastFour(String cardLastFour)
+
+```
+
+Parameters
+
+```
+   cardLastFour
+```
+
+Type: String
+
+Last four digits of the card.
+
+Return Value
+
+Type: void
+
+##### **`setCardType(cardType)`**
+
+Specifies the type of the credit card issuer.
+
+Signature
+
+```
+   public void setCardType(String cardType)
+
+```
+
+
+Apex Reference Guide CardPaymentMethodResponse Class
+
+Parameters
+
+```
+   cardType
+```
+
+Type: String
+
+Type of the credit card issuer.
+
+Return Value
+
+Type: void
+
+##### **`setCardTypeCategory(cardTypeCategory)`**
+
+Sets the credit card issuer.
+
+Signature
+
+```
+   public void setCardTypeCategory(commercepayments.CardType cardTypeCategory)
+
+```
+
+Parameters
+
+```
+   cardTypeCategory
+```
+
+Type: CommercePayments.CardType
+
+Credit card issuer.
+
+Return Value
+
+Type: void
+
+##### **`setComments(comments)`**
+
+Sets the notes added by a user for card payment.
+
+Signature
+
+```
+   public void setComments(String comments)
+
+```
+
+Parameters
+
+```
+   comments
+```
+
+Type: String
+
+Details about a record added by a user, maximum is 1000 characters.
+
+Return Value
+
+Type: void
+
+##### **`setDisplayCardNumber(displayCardNumber)`**
+
+Sets the display card number.
+
+
+Apex Reference Guide CardPaymentMethodResponse Class
+
+Signature
+
+```
+   public void setDisplayCardNumber(String displayCardNumber)
+
+```
+
+Parameters
+
+```
+   displayCardNumber
+```
+
+Type: String
+
+Displayed card number.
+
+Return Value
+
+Type: void
+
+##### **`setEmail(email)`**
+
+Sets the email address of the card holder.
+
+Signature
+
+```
+   public void setEmail(String email)
+
+```
+
+Parameters
+
+```
+   email
+```
+
+Type: String
+
+Email address of the card holder.
+
+Return Value
+
+Type: void
+
+##### **`setExpiryMonth(expiryMonth)`**
+
+Sets the month of expiry of the card.
+
+Signature
+
+```
+   public void setExpiryMonth(Integer expiryMonth)
+
+```
+
+Parameters
+
+```
+   expiryMonth
+```
+
+Type: Integer
+
+Month of expiry of the card.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide CardPaymentMethodResponse Class
+
+##### **`setExpiryYear(expiryYear)`**
+
+Sets the year of expiry of the card.
+
+Signature
+
+```
+   public void setExpiryYear(Integer expiryYear)
+
+```
+
+Parameters
+
+```
+   expiryYear
+```
+
+Type: Integer
+
+Year of expiry of the card.
+
+Return Value
+
+Type: void
+
+##### **`setNickName(nickName)`**
+
+Sets the nickname of the card.
+
+Signature
+
+```
+   public void setNickName(String nickName)
+
+```
+
+Parameters
+
+```
+   nickName
+```
+
+Type: String
+
+Card nickname.
+
+Return Value
+
+Type: void
+
+##### **`setStartMonth(startMonth)`**
+
+Sets the month the card becomes active.
+
+Signature
+
+```
+   public void setStartMonth(Integer startMonth)
+
+```
+
+Parameters
+
+```
+   startMonth
+```
+
+Type: Integer
+
+Determines from which month the card becomes active.
+
+
+### Apex Reference Guide CardType Enum
+
+Return Value
+
+Type: void
+
+##### **`setStartYear(startYear)`**
+
+Sets the year the card becomes active.
+
+Signature
+
+```
+   public void setStartYear(Integer startYear)
+
+```
+
+Parameters
+
+```
+   startYear
+```
+
+Type: Integer
+
+Determines from which year the card becomes active.
+
+Return Value
+
+Type: void
+
+### CardType Enum
+
+Specifies the credit card issuer.
+
+Enum Values
+
+The following are the values of the `commercepayments.CardType` enum.
+
+**Value** **Description**
+
+`AmericanExpress` American Express card
+
+`DinersClub` Diners Club card
+
+`Jcb` Japan Credit Bureau (JCB) card
+
+`Maestro` Maestro card
+
+`MasterCard` Master card
+
+`Visa` Visa card
+
+### CustomMetadataTypeInfo Class Access information about custom metadata. The PaymentGatewayAdapter can send CustomMetadataTypeInfo to
+
+transaction requests through the response object’s `SalesforceResultCodeInfo` .
+
+
+### Apex Reference Guide GatewayErrorResponse Class
+
+Namespace
+
+CommercePayments on page 316
+
+IN THIS SECTION:
+
+#### CustomMetadataTypeInfo Constructors CustomMetadataTypeInfo Methods CustomMetadataTypeInfo Constructors The following are constructors for CustomMetadataTypeInfo .
+
+IN THIS SECTION:
+
+##### CustomMetadataTypeInfo(cmtRecordId, cmtSfResultCodeFieldName)
+
+Constructor for providing custom metadata type information.
+
+##### CustomMetadataTypeInfo(cmtRecordId, cmtSfResultCodeFieldName)
+
+Constructor for providing custom metadata type information.
+
+Signature
+
+```
+   global CustomMetadataTypeInfo(String cmtRecordId, String cmtSfResultCodeFieldName)
+
+```
+
+Parameters
+
+```
+   cmtRecordId
+```
+
+Type: String
+
+ID of the matchedcustom metadata type record
+
+```
+   cmtSfResultCodeFieldName
+```
+
+Type: String
+
+Field that contains the Salesforce result code values. Belongs to the custom metadata type.
+
+#### CustomMetadataTypeInfo Methods The following are methods for CustomMetadataTypeInfo .
+
+### GatewayErrorResponse Class
+
+Use to respond with an error indication following errors from the `PaymentGateway` adapter, such as request-forbidden responses,
+custom validation errors, or expired API tokens.
+
+Namespace
+
+CommercePayments on page 316
+
+
+Apex Reference Guide GatewayErrorResponse Class
+
+Usage
+
+#### Use GatewayErrorResponse to create an object that stores information about error responses sent by the payment gateway
+
+adapter.
+
+Example
+
+#### If GatewayResponse receives an exception rather than a valid request, it calls GatewayErrorResponse to create an error
+
+object with information about the exception.
+
+```
+   global commercepayments.GatewayResponse processRequest(commercepayments.paymentGatewayContext
+
+    gatewayContext) {
+
+        commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
+
+        commercepayments.GatewayResponse response;
+
+        try {
+
+           if (requestType == commercepayments.RequestType.Authorize) {
+
+             response =
+
+   createAuthResponse((commercepayments.AuthorizationRequest)gatewayContext.getPaymentRequest());
+
+           } else if (requestType == commercepayments.RequestType.Capture) {
+
+             response =
+
+   createCaptureResponse((commercepayments.CaptureRequest)gatewayContext.getPaymentRequest())
+
+    ;
+
+           } else if (requestType == commercepayments.RequestType.ReferencedRefund) {
+
+             response =
+
+   createRefundResponse((commercepayments.ReferencedRefundRequest)gatewayContext.getPaymentRequest());
+
+           }
+
+           return response;
+
+        } catch(SalesforceValidationException e) {
+
+           commercepayments.GatewayErrorResponse error = new
+
+   commercepayments.GatewayErrorResponse('400', e.getMessage());
+
+           return error;
+
+        }
+
+      }
+
+```
+
+IN THIS SECTION:
+
+#### GatewayErrorResponse Constructors GatewayErrorResponse Constructors The following are constructors for GatewayErrorResponse .
+
+IN THIS SECTION:
+
+GatewayErrorResponse(errorCode, errorMessage)
+Constructor to create a GatewayErrorResponse object that accepts `errorCode` and `errorMessage` .
+
+
+### Apex Reference Guide GatewayNotificationResponse Class
+
+##### GatewayErrorResponse(errorCode, errorMessage)
+
+Constructor to create a GatewayErrorResponse object that accepts `errorCode` and `errorMessage` .
+
+Signature
+
+```
+   global GatewayErrorResponse(String errorCode, String errorMessage)
+
+```
+
+Parameters
+
+```
+   errorCode
+```
+
+Type: String
+
+Should match with the HTTP status code to be returned to the user. Here are a few examples.
+
+**•** If the status code is for a bad request, the errorCode should be 400.
+
+**•** If the status code is for a forbidden request, errorCode should be 403.
+
+**•** If errorCode isn’t a valid HTTP status code, a 500 internal server error is returned.
+
+Note: _`errorCode`_ must have a value, otherwise the platform throws an error.
+
+```
+   errorMessage
+```
+
+Type: String
+
+The message response to users following an error.
+
+Note: _`errorMessage`_ must have a value, otherwise the platform throws an error.
+
+### GatewayNotificationResponse Class
+
+When the payment gateway sends a notification to the payments platform, the platform responds with a
+### GatewayNotificationResponse indicating whether the platform succeeded or failed at receiving the notification.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+You must specify the `CommercePayments` namespace when creating an instance of this class. The constructor of this class takes
+no arguments. For example:
+
+```
+   CommercePayments.GatewayNotificationResponse gnr = new
+
+   CommercePayments.GatewayNotificationResponse();
+
+```
+
+When an asynchronous payment gateway sends a notification, the gateway requires the platform to acknowledge that it has either
+succeeded or failed in receiving the notification. Payment gateway adapters use this class to construct the acknowledgment response,
+### which gateways expect for a notification. GatewayNotificationResponse is the return type of the processNotification
+
+method.
+
+
+Apex Reference Guide GatewayNotificationResponse Class
+
+Example
+
+```
+   commercepayments.GatewayNotificationResponse gnr = new
+
+   commercepayments.GatewayNotificationResponse();
+
+   if (saveResult.isSuccess()) {
+
+      system.debug('Notification accepted by platform');
+
+   } else {
+
+      system.debug('Errors in the result '+ Blob.valueOf(saveResult.getErrorMessage()));
+
+   }
+
+   gnr.setStatusCode(200);
+
+   gnr.setResponseBody(Blob.valueOf('[accepted]'));
+
+   return gnr;
+
+```
+
+IN THIS SECTION:
+
+#### GatewayNotificationResponse Methods GatewayNotificationResponse Methods The following are methods for GatewayNotificationResponse .
+
+IN THIS SECTION:
+
+##### setResponseBody(responseBody)
+
+Sets the body of the response to the gateway. Some gateways expect the payments platform to acknowledge the notification with
+a response regardless of whether the notification was accepted.
+
+setStatusCode(statusCode)
+Sets the HTTP status code sent to the gateway as part of the payments platform’s response notification.
+
+##### setResponseBody(responseBody)
+
+Sets the body of the response to the gateway. Some gateways expect the payments platform to acknowledge the notification with a
+response regardless of whether the notification was accepted.
+
+Signature
+
+```
+   global void setResponseBody(Blob responseBody)
+
+```
+
+Parameters
+
+```
+   responseBody
+```
+
+Type: Blob
+
+Common response values include `accepted` for successfully receiving the response. For example:
+
+```
+     commercepayments.GatewayNotificationResponse gnr = new
+
+     commercepayments.GatewayNotificationResponse();
+
+     if (saveResult.isSuccess()) {
+
+       system.debug('Notification accepted by platform');
+
+     } else {
+
+       system.debug('Errors in the result '+ Blob.valueOf(saveResult.getErrorMessage()));
+
+     }
+
+```
+
+
+### Apex Reference Guide GatewayResponse Interface
+
+```
+     gnr.setStatusCode(200);
+
+     gnr.setResponseBody(Blob.valueOf('[accepted]'));
+
+     return gnr;
+
+```
+
+Return Value
+
+Type: void
+
+##### setStatusCode(statusCode)
+
+Sets the HTTP status code sent to the gateway as part of the payments platform’s response notification.
+
+Signature
+
+```
+   global void setStatusCode(Integer statusCode)
+
+```
+
+Parameters
+
+```
+   statusCode
+```
+
+Type: Integer
+
+The status code will vary based on the type of payments platform response. Users should configure their
+`GatewayNotificationResponse` class to account for all values that their payments platform can possibly return. For
+example:
+
+```
+     commercepayments.GatewayNotificationResponse gnr = new
+
+     commercepayments.GatewayNotificationResponse();
+
+     if (saveResult.isSuccess()) {
+
+       system.debug('Notification accepted by platform');
+
+     } else {
+
+       system.debug('Errors in the result '+ Blob.valueOf(saveResult.getErrorMessage()));
+
+     }
+
+     gnr.setStatusCode(200);
+
+     gnr.setResponseBody(Blob.valueOf('[accepted]'));
+
+     return gnr;
+
+```
+
+Return Value
+
+Type: void
+
+### GatewayResponse Interface
+
+Generic payment gateway response interface. This class extends the `CaptureResponse` on page 397,
+`AbstractTransactionResponse` on page 324, and `AbstractResponse` on page 320 classes and inherits all their properties.
+It has no unique methods or parameters.
+
+Namespace
+
+CommercePayments on page 316
+
+
+### Apex Reference Guide NotificationClient Class
+
+IN THIS SECTION:
+
+#### GatewayResponse Example Implementation GatewayResponse Example Implementation
+
+This is an example implementation of the `commercepayments.GatewayResponse` interface.
+
+```
+   /**
+
+      * Abstract function to build gateway response for a Transaction
+
+      * The input is the response from gateway
+
+      * It creates and returns GatewayResponse from the HttpResponse
+
+      */
+
+     public abstract commercepayments.GatewayResponse buildResponse(HttpResponse response);
+
+      /**
+
+      * Function to process transaction requests
+
+      * Steps involved are:
+
+      * 1. Build HttpRequest with the input Request from gateway context
+
+      * 2. Send request and get the response from gateway
+
+      * 3. Parse the response from gateway and return GatewayResponse
+
+      */
+
+      public commercepayments.GatewayResponse execute(){
+
+             HttpRequest req;
+
+        try{
+
+           //Building a new request
+
+           req = buildRequest();
+
+        } catch(PayeezeValidationException e) {
+
+           return getValidationExceptionError(e);
+
+        }
+
+        commercepayments.PaymentsHttp http = new commercepayments.PaymentsHttp();
+
+        HttpResponse res = null;
+
+        try{
+
+           //Sending the request
+
+           res = http.send(req);
+
+        } catch(CalloutException ce) {
+
+           return getCalloutExceptionError(ce);
+
+        }
+
+        try{
+
+           //Parsing the response from gateway
+
+           return buildResponse(res);
+
+        } catch(Exception e) {
+
+           return getParseExceptionError(e);
+
+        }
+
+      }
+
+```
+
+[For additional context, review the complete Sample Gateway Adapter in the CommercePayments Gateway Reference Implementation.](https://github.com/forcedotcom/Core-Payments-Reference-Gateway-Integration-Adapters/blob/master/PayeezyGatewayAdapter/classes/AbstractTransactionService.apex)
+
+### NotificationClient Class
+
+Communicates with the payment platform regarding the gateway’s notification.
+
+
+Apex Reference Guide NotificationClient Class
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+Specify the `CommercePayments` namespace when creating an instance of this class. The constructor of this class takes no arguments.
+For example:
+
+```
+   CommercePayments.NotificationClient ntc = new CommercePayments.NotificationClient();
+
+```
+
+This class is used in asynchronous payment gateway adapters. The notification client contains API for communicating with the payments
+##### platform regarding the gateway’s notification. When the gateway sends a notification, the gateway adapter invokes the record
+#### method in NotificationClient to request that the platform updates notification details.
+
+Example
+
+The `NotificationSaveResult` class creates a saveResult object to store the result of the save request made to the payment
+gateway.
+
+```
+   commercepayments.NotificationSaveResult saveResult =
+
+   commercepayments.NotificationClient.record(notification);
+
+```
+
+IN THIS SECTION:
+
+#### NotificationClient Methods NotificationClient Methods The following are methods for NotificationClient .
+
+IN THIS SECTION:
+
+##### record(notification)
+
+Stores the results of a notification request.
+
+##### record(notification)
+
+Stores the results of a notification request.
+
+Signature
+
+```
+   global static commercepayments.NotificationSaveResult
+
+   record(commercepayments.BaseNotification notification)
+
+```
+
+Parameters
+
+```
+   notification
+```
+
+Type: BaseNotification on page 382
+
+
+### Apex Reference Guide NotificationSaveResult Class
+
+Return Value
+
+Type: NotificationSaveResult on page 425
+
+### NotificationSaveResult Class
+
+Contains the result of the payment platform’s attempt to record data from the gateway’s notification.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+This class is used with asynchronous payments. It is the return type of the `NotificiationClient.record` operation and
+contains the result of the payment platform’s attempt to save notification details.
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.NotificationSaveResult nsr = new
+
+   CommercePayments.NotificationSaveResult();
+
+```
+
+Example
+
+```
+   commercepayments.NotificationSaveResult saveResult =
+
+   commercepayments.NotificationClient.record(notification);
+
+```
+
+IN THIS SECTION:
+
+#### NotificationSaveResult Methods NotificationSaveResult Methods
+
+### The following are methods for NotificationSaveResult .
+
+IN THIS SECTION:
+
+##### getErrorMessage()
+
+Gets the error message, if any, from the payment platform regarding its attempt to save the notification sent from the payment
+gateway.
+
+getStatusCode()
+Gets the status code from the payment platform’s attempt to save the notification sent from the payment gateway.
+
+isSuccess()
+Gets the status of whether the payment platform successfully saved the notification sent from the payment gateway.
+
+##### getErrorMessage()
+
+Gets the error message, if any, from the payment platform regarding its attempt to save the notification sent from the payment gateway.
+
+
+### Apex Reference Guide NotificationStatus Enum
+
+Signature
+
+```
+   global String getErrorMessage()
+
+```
+
+Return Value
+
+Type: String
+
+##### getStatusCode()
+
+Gets the status code from the payment platform’s attempt to save the notification sent from the payment gateway.
+
+Signature
+
+```
+   global Integer getStatusCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### isSuccess()
+
+Gets the status of whether the payment platform successfully saved the notification sent from the payment gateway.
+
+Signature
+
+```
+   global Boolean isSuccess()
+
+```
+
+Return Value
+
+Type: Boolean
+
+### NotificationStatus Enum
+
+Shows whether the payments platform successfully received the notification from the gateway.
+
+Usage
+
+When the gateway sends a notification for a payment request, the payments platform delegates the notification request to the gateway
+adapter. First, the adapter evaluates the signature from the notification request. If the signature is valid, the adapter builds a notification
+### object to store information about the notification. During this process, the adapter sets the NotificationStatus to Failed
+
+or `Success` based on information from the notification request.
+
+Enum Values
+
+The following are the values of the `commercepayments.NotificationStatus` enum.
+
+**Value** **Description**
+
+`Failed` The payments platform couldn’t receive the notification due to an error.
+
+
+### Apex Reference Guide PaymentGatewayAdapter Interface
+
+**Value** **Description**
+
+`Success` The payments platform received the notification.
+
+### PaymentGatewayAdapter Interface
+
+`PaymentGatewayAdapters` can implement this interface in order to process requests.
+
+Namespace
+
+CommercePayments on page 316
+
+IN THIS SECTION:
+
+#### PaymentGatewayAdapter Methods PaymentGatewayAdapter Methods
+
+### The following are methods for PaymentGatewayAdapter .
+
+IN THIS SECTION:
+
+##### processRequest(var1)
+
+The entry point for processing payment requests. Returns the response from the payment gateway.
+
+##### **`processRequest(var1)`**
+
+The entry point for processing payment requests. Returns the response from the payment gateway.
+
+Signature
+
+```
+   global commercepayments.GatewayResponse
+
+   processRequest(commercepayments.PaymentGatewayContext var1)
+
+```
+
+Parameters
+
+```
+   var1
+```
+
+[Type: commercepayments.PaymentGatewayContext](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_PaymentGatewayContext.htm#apex_class_commerce_payments_PaymentGatewayContext)
+
+You can retrieve the request type and the request from the Context object.
+
+Return Value
+
+Type: commercepayments.GatewayResponse
+
+The response from the payment gateway.
+
+### PaymentGatewayAsyncAdapter Interface
+
+Implement the interface to allow customers to process payments asynchronously.
+
+
+Apex Reference Guide PaymentGatewayAsyncAdapter Interface
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+##### Implementing an asynchronous adapter also requires the processNotification method from the GatewayNotificationResponse
+
+on page 420 class.
+
+Example
+
+```
+   global with sharing class SampleAsyncAdapter
+
+        implements commercepayments.PaymentGatewayAsyncAdapter,
+
+        commercepayments.PaymentGatewayAdapter {
+
+        global SampleAsyncAdapter() {
+
+        }
+
+        global commercepayments.GatewayResponse processRequest(
+
+        commercepayments.paymentGatewayContext gatewayContext) {
+
+        }
+
+        global commercepayments.GatewayNotificationResponse processNotification(
+
+        commercepayments.PaymentGatewayNotificationContext gatewayNotificationContext) {
+
+        }
+
+        }
+
+```
+
+IN THIS SECTION:
+
+#### PaymentGatewayAsyncAdapter Methods
+
+PaymentGatewayAsyncAdapter Example Implementation
+
+#### PaymentGatewayAsyncAdapter Methods The following are methods for PaymentGatewayAsyncAdapter .
+
+IN THIS SECTION:
+
+##### processNotification(paymentGatewayNotificationContext)
+
+Entry point for processing notifications from payment gateways.
+
+##### processNotification(paymentGatewayNotificationContext)
+
+Entry point for processing notifications from payment gateways.
+
+Signature
+
+```
+   global commercepayments.GatewayNotificationResponse
+
+   processNotification(commercepayments.PaymentGatewayNotificationContext var1)
+
+```
+
+
+Apex Reference Guide PaymentGatewayAsyncAdapter Interface
+
+Parameters
+
+```
+   paymentGatewayNotificationContext
+```
+
+Type: PaymentGatewayNotificationContext on page 432
+
+The `PaymentGatewayNotificationContext` object wraps all the information related to a gateway notification.
+
+Return Value
+
+Type: GatewayNotificationResponse on page 420
+
+When the payment gateway sends a notification to the payments platform, the platform responds with a
+`GatewayNotificationResponse` indicating whether the platform succeeded or failed at receiving the notification.
+
+#### PaymentGatewayAsyncAdapter Example Implementation
+
+This is a sample implementation of the `commercepayments.PaymentGatewayAsyncAdapter` interface.
+
+```
+   global with sharing class AdyenAdapter implements
+
+   commercepayments.PaymentGatewayAsyncAdapter, commercepayments.PaymentGatewayAdapter {
+
+      global AdyenAdapter() {}
+
+      global commercepayments.GatewayResponse
+
+   processRequest(commercepayments.paymentGatewayContext gatewayContext) {
+
+      }
+
+      global commercepayments.GatewayNotificationResponse
+
+   processNotification(commercepayments.PaymentGatewayNotificationContext
+
+   gatewayNotificationContext) {
+
+      }
+
+   }
+
+   commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
+
+   if (requestType == commercepayments.RequestType.Capture) {
+
+      req.setEndpoint('/pal/servlet/Payment/v52/capture');
+
+      body =
+
+   buildCaptureRequest((commercepayments.CaptureRequest)gatewayContext.getPaymentRequest());
+
+   } else if (requestType == commercepayments.RequestType.ReferencedRefund) {
+
+      req.setEndpoint('/pal/servlet/Payment/v52/refund');
+
+      body =
+
+   buildRefundRequest((commercepayments.ReferencedRefundRequest)gatewayContext.getPaymentRequest());
+
+   }
+
+   req.setBody(body);
+
+   req.setMethod('POST');
+
+   commercepayments.PaymentsHttp http = new commercepayments.PaymentsHttp();
+
+   HttpResponse res = null;
+
+   try {
+
+      res = http.send(req);
+
+   } catch(CalloutException ce) {
+
+      commercepayments.GatewayErrorResponse error = new
+
+   commercepayments.GatewayErrorResponse('500', ce.getMessage());
+
+      return error;
+
+   }
+
+```
+
+
+Apex Reference Guide PaymentGatewayAsyncAdapter Interface
+
+```
+   if ( requestType == commercepayments.RequestType.Capture) {
+
+      response = createCaptureResponse(res);
+
+   } else if ( requestType == commercepayments.RequestType.ReferencedRefund) {
+
+      response = createRefundResponse(res);
+
+   }
+
+   return response;
+
+   commercepayments.PaymentGatewayNotificationRequest notificationRequest =
+
+   gatewayNotificationContext.getPaymentGatewayNotificationRequest();
+
+   Blob request = notificationRequest.getRequestBody();
+
+   Map<String, Object> jsonReq = (Map<String,
+
+   Object>)JSON.deserializeUntyped(request.toString());
+
+   List<Object> notificationItems = (List<Object>)jsonReq.get('notificationItems');
+
+   Map<String, Object> notificationRequestItem =
+
+      (Map<String, Object>)((Map<String,
+
+   Object>)notificationItems[0]).get('NotificationRequestItem');
+
+   Boolean success = Boolean.valueOf(notificationRequestItem.get('success'));
+
+   String pspReference = (String)notificationRequestItem.get('pspReference');
+
+   String eventCode = (String)notificationRequestItem.get('eventCode');
+
+   Double amount = (Double)((Map<String,
+
+   Object>)notificationRequestItem.get('amount')).get('value');
+
+   commercepayments.NotificationStatus notificationStatus = null;
+
+   if (success) {
+
+      notificationStatus = commercepayments.NotificationStatus.Success;
+
+   } else {
+
+      notificationStatus = commercepayments.NotificationStatus.Failed;
+
+   }
+
+   commercepayments.BaseNotification notification = null;
+
+   if ('CAPTURE'.equals(eventCode)) {
+
+      notification = new commercepayments.CaptureNotification();
+
+   } else if ('REFUND'.equals(eventCode)) {
+
+      notification = new commercepayments.ReferencedRefundNotification();
+
+   }
+
+   notification.setStatus(notificationStatus);
+
+   notification.setGatewayReferenceNumber(pspReference);
+
+   notification.setAmount(amount);
+
+   commercepayments.NotificationSaveResult saveResult =
+
+   commercepayments.NotificationClient.record(notification);
+
+   commercepayments.GatewayNotificationResponse gnr = new
+
+   commercepayments.GatewayNotificationResponse();
+
+   if (saveResult.isSuccess()) {
+
+      system.debug('Notification accepted by platform');
+
+   } else {
+
+      system.debug('Errors in the result '+ Blob.valueOf(saveResult.getErrorMessage()));
+
+   }
+
+   gnr.setStatusCode(200);
+
+   gnr.setResponseBody(Blob.valueOf('[accepted]'));
+
+   return gnr;
+
+```
+
+
+### Apex Reference Guide PaymentGatewayContext Class PaymentGatewayContext Class
+
+Wraps the information related to a payment request.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.PaymentGatewayContext pgc = new
+
+   CommercePayments.PaymentGatewayContext();
+
+```
+
+Example
+
+```
+   global commercepayments.GatewayResponse processRequest(commercepayments.PaymentGatewayContext
+
+    gatewayContext) {
+
+      commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
+
+      if (requestType == commercepayments.RequestType.Capture) {
+
+        commercepayments.CaptureRequest captureRequest = (commercepayments.CaptureRequest)
+
+    gatewayContext.getPaymentRequest();
+
+      }
+
+   }
+
+```
+
+IN THIS SECTION:
+
+#### PaymentGatewayContext Constructors
+
+PaymentGatewayContext Methods
+
+#### PaymentGatewayContext Constructors
+
+### The following are constructors for PaymentGatewayContext .
+
+IN THIS SECTION:
+
+##### PaymentGatewayContext(request, requestType)
+
+Constructor to enable instance creation. This constructor is intended for test usage and throws an exception if used outside of the
+Apex test context.
+
+##### **`PaymentGatewayContext(request, requestType)`**
+
+Constructor to enable instance creation. This constructor is intended for test usage and throws an exception if used outside of the Apex
+test context.
+
+Signature
+
+```
+   global PaymentGatewayContext(commercepayments.PaymentGatewayRequest request, String
+
+   requestType)
+
+```
+
+
+### Apex Reference Guide PaymentGatewayNotificationContext Class
+
+Parameters
+
+```
+   request
+```
+
+Type: commercepayments.PaymentGatewayRequest
+
+Raw payload. Sensitive attributes are masked to ensure PCI compliance.
+
+```
+   requestType
+```
+
+[Type: commercepayments.RequestType Enum](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_enum_commercepayments_RequestType.htm)
+
+Defines the type of request made to the gateway
+
+#### PaymentGatewayContext Methods The following are methods for PaymentGatewayContext .
+
+IN THIS SECTION:
+
+##### getPaymentRequest()
+
+Returns the payment request object.
+
+##### getPaymentRequestType()
+
+Returns the payment request type.
+
+##### getPaymentRequest()
+
+Returns the payment request object.
+
+Signature
+
+```
+   global commercepayments.PaymentGatewayRequest getPaymentRequest()
+
+```
+
+Return Value
+
+Type: PaymentGatewayRequest
+
+##### getPaymentRequestType()
+
+Returns the payment request type.
+
+Signature
+
+```
+   global String getPaymentRequestType()
+
+```
+
+Return Value
+
+Type: String
+
+### PaymentGatewayNotificationContext Class
+
+Wraps the information related to a gateway notification.
+
+
+Apex Reference Guide PaymentGatewayNotificationContext Class
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+This class is used with asynchronous payments. It wraps all of the information related to a notification from the payment gateway. The
+payments platform provides its context to the payment gateway adapters.
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.PaymentGatewayNotificationContext pgnc = new
+
+   CommercePayments.PaymentGatewayNotificationContext();
+
+```
+
+Example
+
+```
+   global commercepayments.GatewayNotificationResponse
+
+   processNotification(commercepayments.PaymentGatewayNotificationContext
+
+   gatewayNotificationContext) {
+
+   commercepayments.PaymentGatewayNotificationRequest notificationRequest =
+
+   gatewayNotificationContext.getPaymentGatewayNotificationRequest();
+
+   }
+
+```
+
+IN THIS SECTION:
+
+#### PaymentGatewayNotificationContext Methods PaymentGatewayNotificationContext Methods The following are methods for PaymentGatewayNotificationContext .
+
+IN THIS SECTION:
+
+##### getPaymentGatewayNotificationRequest()
+
+Returns the payment gateway’s notification request.
+
+##### getPaymentGatewayNotificationRequest()
+
+Returns the payment gateway’s notification request.
+
+Signature
+
+```
+   global commercepayments.PaymentGatewayNotificationRequest
+
+##### `getPaymentGatewayNotificationRequest()`
+
+```
+
+Return Value
+
+Type: PaymentGatewayNotificationRequest on page 434
+
+
+### Apex Reference Guide PaymentGatewayNotificationRequest Class PaymentGatewayNotificationRequest Class
+
+Contains the notification request data from the gateway.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+When the payment gateway sends a notification for a payment request, the payments platform sends the notification request to the
+gateway adapter. If the notification payload contains an `eventCode` of `CAPTURE`, the adapter constructs a
+`CaptureNotification` . If the notification payload contains an `eventCode` of `REFUND`, the adapter constructs a
+`ReferencedRefundNotification` . If the notification payload contains `eventCode` of `AUTHORISATION`, the adapter
+constructs a `GatewayNotificationResponse` .
+
+You can obtain a notification request from `PaymentGatewayNotificationContext` on page 432 by invoking its
+`getPaymentGatewayNotificationRequest` method.
+
+Example
+
+```
+   global commercepayments.GatewayNotificationResponse
+
+      processNotification(commercepayments.PaymentGatewayNotificationContext
+
+   gatewayNotificationContext) {
+
+        commercepayments.PaymentGatewayNotificationRequest notificationRequest =
+
+   gatewayNotificationContext.getPaymentGatewayNotificationRequest();
+
+   }
+
+```
+
+IN THIS SECTION:
+
+#### PaymentGatewayNotificationRequest Properties
+
+PaymentGatewayNotificationRequest Methods
+
+#### PaymentGatewayNotificationRequest Properties
+
+### The following are properties for PaymentGatewayNotificationRequest .
+
+IN THIS SECTION:
+
+##### requestBody
+
+Body of the notification request sent by the payment gateway.
+
+##### requestBody
+
+Body of the notification request sent by the payment gateway.
+
+Signature
+
+```
+   global Blob requestBody {get; set;}
+
+```
+
+
+### Apex Reference Guide PaymentMethodDetailsResponse Class
+
+Property Value
+
+Type: Blob
+
+#### PaymentGatewayNotificationRequest Methods The following are methods for PaymentGatewayNotificationRequest .
+
+IN THIS SECTION:
+
+##### getHeaders()
+
+Gets HTTP headers from the notification request sent by the payment gateway.
+
+##### getRequestBody()
+
+Stores the notification request body information from the payment gateway’s notification request.
+
+##### getHeaders()
+
+Gets HTTP headers from the notification request sent by the payment gateway.
+
+Signature
+
+```
+   global Map<String,String> getHeaders()
+
+```
+
+Return Value
+
+Type: Map<String,String>
+
+##### getRequestBody()
+
+Stores the notification request body information from the payment gateway’s notification request.
+
+Signature
+
+```
+   global Blob getRequestBody()
+
+```
+
+Return Value
+
+Type: Blob
+
+### PaymentMethodDetailsResponse Class
+
+This class contains the details about the payment method.
+
+Namespace
+
+CommercePayments
+
+
+Apex Reference Guide PaymentMethodDetailsResponse Class
+
+Example
+
+```
+   commercepayments.AlternativePaymentMethodResponse alternativePaymentMethodResponse = new
+
+   commercepayments.AlternativePaymentMethodResponse();
+
+   alternativePaymentMethodResponse.setEmail('alternativePaymentMethod');
+
+   alternativePaymentMethodResponse.setEmail('foo@foo.com');
+
+   alternativePaymentMethodResponse.setGatewayToken('NMoPoIOnTZSaRaWcV7gUUXe');
+
+   alternativePaymentMethodResponse.setGatewayTokenDetails('gateway token details');
+
+   commercepayments.PaymentMethodDetailsResponse response = new
+
+   commercepayments.PaymentMethodDetailsResponse();
+
+   response.setAlternativePaymentMethod(alternativePaymentMethodResponse);
+
+```
+
+IN THIS SECTION:
+
+#### PaymentMethodDetailsResponse Methods PaymentMethodDetailsResponse Methods The following are methods for PaymentMethodDetailsResponse .
+
+IN THIS SECTION:
+
+##### setAlternativePaymentMethod(alternativePaymentMethod)
+
+Sets the alternative payment method details.
+
+##### setCardPaymentMethod(cardPaymentMethod)
+
+Sets the details about the card payment method.
+
+##### **`setAlternativePaymentMethod(alternativePaymentMethod)`**
+
+Sets the alternative payment method details.
+
+Signature
+
+```
+   public void setAlternativePaymentMethod(commercepayments.AlternativePaymentMethodResponse
+
+   alternativePaymentMethod)
+
+```
+
+Parameters
+
+```
+   alternativePaymentMethod
+```
+
+Type: CommercePayments.AlternativePaymentMethodResponse
+
+Details of the alternative payment method.
+
+Return Value
+
+Type: void
+
+##### **`setCardPaymentMethod(cardPaymentMethod)`**
+
+Sets the details about the card payment method.
+
+
+### Apex Reference Guide PaymentMethodIdType Enum
+
+Signature
+
+```
+   public void setCardPaymentMethod(commercepayments.CardPaymentMethodResponse
+
+   cardPaymentMethod)
+
+```
+
+Parameters
+
+```
+   cardPaymentMethod
+```
+
+Type: CommercePayments.CardPaymentMethodResponse
+
+Details about the card payment method.
+
+Return Value
+
+Type: void
+
+### PaymentMethodIdType Enum
+
+Specifies the ID of the payment method type.
+
+Enum Values
+
+The following are the values of the `commercepayments.PaymentMethodIdType` enum.
+
+**Value** **Description**
+
+`CardPaymentMethod` Card payment method ID.
+
+`SavedPaymentMethod` Saved payment method ID.
+
+### PaymentMethodTokenizationRequest Class
+
+Stores data about a request to tokenize a card payment method. The tokenization process occurs in the payment gateway. This process
+replaces sensitive customer data, such as a card number or CVV, with unique identification symbols. The symbols are used while the
+data is handled by Salesforce, the payment gateway, and the customer bank, allowing Salesforce to store the token without storing
+sensitive customer data.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.PaymentMethodTokenizationRequest pmtr = new
+
+   CommercePayments.PaymentMethodTokenizationRequest();
+
+```
+
+This class holds all the required details about the tokenize request. Gateway adapters read the information in this class while constructing
+a tokenization JSON request, which is sent to the payment gateway.
+
+
+Apex Reference Guide PaymentMethodTokenizationRequest Class
+
+Example
+
+The following code is used within your payment gateway adapter Apex class.
+
+Use the `GatewayResponse` class's `processRequest` method to build responses based on the request type that it receives
+from an instance of `PaymentGatewayContext on page 431` . If the request type is Tokenize, `GatewayResponse on`
+`page 422` calls the `createTokenizeResponse` method and passes an instance of the
+`PaymentMethodTokenizationRequest` class. The passed `PaymentMethodTokenizationRequest` object contains
+the address and cardPaymentMethod information that the payment gateway needs to manage the tokenization process. For example:
+
+```
+   global commercepayments.GatewayResponse processRequest(commercepayments.paymentGatewayContext
+
+    gatewayContext) {
+
+        commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
+
+         commercepayments.GatewayResponse response;
+
+         try
+
+         {
+
+           if (requestType == commercepayments.RequestType.Tokenize) {
+
+                response =
+
+   createTokenizeResponse((commercepayments.PaymentMethodTokenizationRequest)gatewayContext.getPaymentRequest());
+
+           }
+
+           //Add other else if statements for different request types as needed.
+
+           return response;
+
+         }
+
+         catch(SalesforceValidationException e)
+
+         {
+
+            commercepayments.GatewayErrorResponse error = new
+
+   commercepayments.GatewayErrorResponse('400', e.getMessage());
+
+            return error;
+
+         }
+
+      }
+
+```
+
+Configure the `createTokenizeResponse` method to accept an instance of `PaymentMethodTokenizationRequest` .
+Then, build an instance of `PaymentMethodTokenizationResponse` based on the values received from the payment gateway.
+
+```
+      public commercepayments.GatewayResponse
+
+   createTokenizeResponse(commercepayments.PaymentMethodTokenizationRequest tokenizeRequest)
+
+    {
+
+         commercepayments.PaymentMethodTokenizationResponse tokenizeResponse = new
+
+   commercepayments.PaymentMethodTokenizationResponse();
+
+         tokenizeResponse.setGatewayTokenEncrypted(encryptedValue);
+
+         tokenizeResponse.setGatewayTokenDetails(tokenDetails);
+
+         tokenizeResponse.setGatewayAvsCode(avsCode);
+
+         tokenizeResponse.setGatewayMessage(gatewayMessage);
+
+         tokenizeResponse.setGatewayResultCode(resultcode);
+
+         tokenizeResponse.setGatewayResultCodeDescription(resultCodeDescription);
+
+         tokenizeResponse.setSalesforceResultCodeInfo(resultCodeInfo);
+
+         tokenizeResponse.setGatewayDate(system.now());
+
+         return tokenizeResponse;
+
+      }
+
+```
+
+The `tokenizeResponse` contains the results of the gateway's tokenization process, and if successful, the tokenized value.
+
+
+Apex Reference Guide PaymentMethodTokenizationRequest Class
+
+IN THIS SECTION:
+
+#### PaymentMethodTokenizationRequest Constructors PaymentMethodTokenizationRequest Properties
+
+PaymentMethodTokenizationRequest Methods
+
+#### PaymentMethodTokenizationRequest Constructors The following are constructors for PaymentMethodTokenizationRequest .
+
+IN THIS SECTION:
+
+##### PaymentMethodTokenizationRequest(paymentGatewayId)
+
+Payment gateway ID constructor used with `paymentMethodTokenizationRequest` . This constructor is intended for test
+usage and throws an exception if used outside of the Apex test context.
+
+##### PaymentMethodTokenizationRequest()
+#### The following are constructors for PaymentMethodTokenizationRequest .
+
+##### PaymentMethodTokenizationRequest(paymentGatewayId)
+
+Payment gateway ID constructor used with `paymentMethodTokenizationRequest` . This constructor is intended for test
+usage and throws an exception if used outside of the Apex test context.
+
+Signature
+
+```
+   global PaymentMethodTokenizationRequest(String paymentGatewayId)
+
+```
+
+Parameters
+
+```
+   paymentGatewayId
+```
+
+Type: String
+
+The payment method’s payment gateway ID that will be tokenized.
+
+##### PaymentMethodTokenizationRequest()
+
+#### The following are constructors for PaymentMethodTokenizationRequest .
+
+Signature
+
+```
+   global PaymentMethodTokenizationRequest()
+
+#### PaymentMethodTokenizationRequest Properties The following are properties for PaymentMethodTokenizationRequest .
+
+```
+
+IN THIS SECTION:
+
+address
+The card payment method address to be tokenized.
+
+
+Apex Reference Guide PaymentMethodTokenizationRequest Class
+
+##### bankPaymentMethod
+
+The bank payment method containing data to be tokenized.
+
+##### cardPaymentMethod
+
+The card payment method containing data to be tokenized.
+
+##### savedByMerchant
+
+Indicates whether the payment method to be tokenized is saved by the marchant ( `true` ) or not ( `false` ).
+
+##### address
+
+The card payment method address to be tokenized.
+
+Signature
+
+```
+   global commercepayments.AddressRequest address {get; set;}
+
+```
+
+Property Value
+
+Type: AddressRequest on page 329
+
+##### **`bankPaymentMethod`**
+
+The bank payment method containing data to be tokenized.
+
+Signature
+
+```
+   public commercepayments.BankPaymentMethodRequest bankPaymentMethod {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.BankPaymentMethodRequest on page 365
+
+##### cardPaymentMethod
+
+The card payment method containing data to be tokenized.
+
+Signature
+
+```
+   global commercepayments.CardPaymentMethodRequest cardPaymentMethod {get; set;}
+
+```
+
+Property Value
+
+Type: CardPaymentMethodRequest on page 403
+
+##### **`savedByMerchant`**
+
+Indicates whether the payment method to be tokenized is saved by the marchant ( `true` ) or not ( `false` ).
+
+Signature
+
+```
+   public Boolean savedByMerchant {get; set;}
+
+```
+
+
+Apex Reference Guide PaymentMethodTokenizationRequest Class
+
+Property Value
+
+Type: Boolean
+
+#### PaymentMethodTokenizationRequest Methods The following are methods for PaymentMethodTokenizationRequest .
+
+IN THIS SECTION:
+
+##### equals(obj)
+#### Maintains the integrity of lists of type PaymentMethodTokenizationRequest by determining the equality of external
+
+objects in a list. This method is dynamic and is based on the equals method in Java.
+
+##### hashCode()
+#### Maintains the integrity of lists of type PaymentMethodTokenizationRequest by determining the uniquness of the
+
+external object records in a list.
+
+toString()
+Converts a date to a string.
+
+##### equals(obj)
+
+#### Maintains the integrity of lists of type PaymentMethodTokenizationRequest by determining the equality of external objects
+
+in a list. This method is dynamic and is based on the equals method in Java.
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+External object whose key is to be validated.
+
+Return Value
+
+Type: Boolean
+
+##### hashCode()
+
+#### Maintains the integrity of lists of type PaymentMethodTokenizationRequest by determining the uniquness of the external
+
+object records in a list.
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+
+### Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+Return Value
+
+Type: Integer
+
+##### toString()
+
+Converts a date to a string.
+
+Signature
+
+```
+   global String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### PaymentMethodTokenizationResponse Class
+
+Gateway response sent by payment gateway adapters for the payment method tokenization request. The response includes the payment
+method’s token ID value.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.PaymentMethodTokenizationResponse pmtr = new
+
+   CommercePayments.PaymentMethodTokenizationResponse();
+
+### After the payment gateway processes a tokenization request, the fields of PaymentMethodTokenizationResponse receive
+```
+
+and store information from the gateway's response. The gateway's response shows whether the tokenization request was successful,
+the token value, and any additional messages or information about the tokenization process. You can then pass an instance of
+### PaymentMethodTokenizationResponse to an authorization response or a sale response. This class is mapped to a response
+
+class in the Java layer.
+
+Example
+
+### This constructor builds a new instance of the PaymentMethodTokenizationResponse class.
+
+```
+   commercepayments.PaymentMethodTokenizationResponse tokenizeResponse = new
+
+   commercepayments.PaymentMethodTokenizationResponse();
+
+### PaymentMethodTokenizationResponse contains only setter methods. Each setter accepts a value from the payment gateway and use it to set an attribute of PaymentMethodTokenizationResponse . The most important method in PaymentMethodTokenizationResponse is setGatewayTokenEncrypted, which
+```
+
+[uses Salesforce encryption to set an encrypted token value for a payment method. The](https://developer.salesforce.com/docs/atlas.en-us.260.0.securityImplGuide.meta/securityImplGuide/fields_about_encrypted_fields.htm) `setGatewayTokenEncrypted` method
+is available in Salesforce API v52.0 and later. We recommend using it to ensure your tokenized payment method values are encrypted
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+and secure. While the `setGatewayToken` method (available in earlier API versions) also returns a payment method token, the
+tokenized value isn't encrypted.
+
+If the instantiated class already has a gateway token, `setGatewayTokenEncrypted` throws an error.
+
+```
+      /** @description Method to set Gateway token to persist in Encrypted Text */
+
+      global void setGatewayTokenEncrypted(String gatewayTokenEncrypted) {
+
+         if (gatewayTokenSet) {
+
+           throwTokenError();
+
+         }
+
+         this.delegate.setGatewayTokenEncrypted(gatewayTokenEncrypted);
+
+         gatewayTokenEncryptedSet = true;
+
+      }
+
+```
+
+A typical instantiation of `PaymentMethodTokenizationResponse` sets the encrypted gateway token alongside the other
+tokenization response values sent by the gateway.
+
+```
+      public commercepayments.GatewayResponse
+
+   createTokenizeResponse(commercepayments.PaymentMethodTokenizationRequest tokenizeRequest)
+
+    {
+
+         commercepayments.PaymentMethodTokenizationResponse tokenizeResponse = new
+
+   commercepayments.PaymentMethodTokenizationResponse();
+
+         tokenizeResponse.setGatewayTokenEncrypted(gatewayTokenEncrypted);
+
+         tokenizeResponse.setGatewayTokenDetails(gatewayTokenDetails);
+
+         tokenizeResponse.setGatewayAvsCode(gatewayAvsCode);
+
+         tokenizeResponse.setGatewayMessage(gatewayMessage);
+
+         tokenizeResponse.setGatewayResultCode(gatewayResultCode);
+
+         tokenizeResponse.setGatewayResultCodeDescription(gatewayResultCodeDescription);
+
+        tokenizeResponse.setSalesforceResultCodeInfo(SUCCESS_SALESFORCE_RESULT_CODE_INFO);
+
+         tokenizeResponse.setGatewayDate(system.now());
+
+         return tokenizeResponse;
+
+      }
+
+```
+
+After you've built a PaymentMethodTokenizationResponse object and set the encrypted gateway token, pass the object to the
+`setPaymentMethodTokenizationResponse` method of an authorization response or a sale response.
+
+**Authorization Response**
+
+```
+        public commercepayments.GatewayResponse
+
+     createAuthResponse(commercepayments.AuthorizationRequest authRequest) {
+
+          commercepayments.AuthorizationResponse authResponse = new
+
+     commercepayments.AuthorizationResponse();
+
+          commercepayments.PaymentMethodTokenizationResponse
+
+     paymentMethodTokenizationResponse = new
+
+     commercepayments.PaymentMethodTokenizationResponse();
+
+          if(authRequest.amount!=null )
+
+          {
+
+             authResponse.setAmount(authRequest.amount);
+
+          }
+
+          else
+
+          {
+
+            throw new SalesforceValidationException('Required Field Missing : Amount');
+
+          }
+
+```
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+```
+          authResponse.setGatewayResultCode('00');
+
+          authResponse.setGatewayResultCodeDescription('Transaction Normal');
+
+          authResponse.setGatewayAuthCode('SF'+getRandomNumber(6));
+
+          authResponse.setGatewayReferenceNumber(getRandomNumber(10));
+
+          authResponse.setSalesforceResultCodeInfo(SUCCESS_SALESFORCE_RESULT_CODE_INFO);
+
+          authResponse.setGatewayDate(system.now());
+
+     paymentMethodTokenizationResponse.setGatewayTokenEncrypted(gatewayTokenEncrypted);
+
+     authResponse.setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse);
+
+          return authResponse;
+
+        }
+
+```
+
+**Sale Response**
+
+```
+        public commercepayments.GatewayResponse
+
+     createSaleResponse(commercepayments.SaleRequest saleRequest) {
+
+          commercepayments.SaleResponse saleResponse = new commercepayments.SaleResponse();
+
+          commercepayments.PaymentMethodTokenizationResponse
+
+     paymentMethodTokenizationResponse = new
+
+     commercepayments.PaymentMethodTokenizationResponse();
+
+          if(saleRequest.amount!=null )
+
+          {
+
+             saleResponse.setAmount(saleRequest.amount);
+
+          }
+
+          else
+
+          {
+
+            throw new SalesforceValidationException('Required Field Missing : Amount');
+
+          }
+
+          system.debug('Response - success');
+
+          saleResponse.setGatewayDate(system.now());
+
+          saleResponse.setGatewayResultCode('00');
+
+          saleResponse.setGatewayResultCodeDescription('Transaction Normal');
+
+          saleResponse.setGatewayReferenceNumber('SF'+getRandomNumber(6));
+
+          saleResponse.setSalesforceResultCodeInfo(SUCCESS_SALESFORCE_RESULT_CODE_INFO);
+
+     paymentMethodTokenizationResponse.setGatewayTokenEncrypted(gatewayTokenEncrypted) ;
+
+     saleResponse.setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse) ;
+
+          return saleResponse;
+
+        }
+
+```
+
+IN THIS SECTION:
+
+#### PaymentMethodTokenizationResponse Methods PaymentMethodTokenizationResponse Methods The following are methods for PaymentMethodTokenizationResponse .
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+IN THIS SECTION:
+
+##### setAmount(amount)
+
+Sets the amount for payment tokenization. Can be positive, negative, or zero.
+
+setAsync(async)
+Indicates whether the gateway response is received asynchronously ( `true` ) or not ( `false` ). When set to `true`, the saved payment
+method remains in a pending state until the async notification is received.
+
+setBankName(bankName)
+Sets the bank name for payment tokenization.
+
+setChecksum(checksum)
+Sets the unique hash of the payment method that the gateway returned.
+
+setCustomerReference(customerReference)
+Sets the customer reference number that the gateway returned.
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the tokenization occurred. Some gateways don’t send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the tokenization request. Maximum length of 255 characters.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets any additional reference details that the gateway returned.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the reference number that the gateway returned.
+
+setGatewayResultCode(gatewayResultCode)
+Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+setGatewayToken(gatewayToken)
+Sets the gateway token value that the gateway returned.
+
+setGatewayTokenDetails(gatewayTokenDetails)
+Sets any additional information that the gateway returned about the payment token.
+
+setGatewayTokenEncrypted(gatewayTokenEncrypted)
+Sets the value of the `gatewayTokenEncrypted` field on a CardPaymentMethod or DigitalWallet object.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
+uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+##### **`setAmount(amount)`**
+
+Sets the amount for payment tokenization. Can be positive, negative, or zero.
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+Signature
+
+```
+   public void setAmount(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+Return Value
+
+Type: void
+
+##### **`setAsync(async)`**
+
+Indicates whether the gateway response is received asynchronously ( `true` ) or not ( `false` ). When set to `true`, the saved payment
+method remains in a pending state until the async notification is received.
+
+Signature
+
+```
+   public void setAsync(Boolean async)
+
+```
+
+Parameters
+
+```
+   async
+```
+
+Type: Boolean
+
+Return Value
+
+Type: void
+
+##### **`setBankName(bankName)`**
+
+Sets the bank name for payment tokenization.
+
+Signature
+
+```
+   public void setBankName(String bankName)
+
+```
+
+Parameters
+
+```
+   bankName
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setChecksum(checksum)`**
+
+Sets the unique hash of the payment method that the gateway returned.
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+Signature
+
+```
+   public void setChecksum(String checksum)
+
+```
+
+Parameters
+
+```
+   checksum
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setCustomerReference(customerReference)`**
+
+Sets the customer reference number that the gateway returned.
+
+Signature
+
+```
+   public void setCustomerReference(String customerReference)
+
+```
+
+Parameters
+
+```
+   customerReference
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setGatewayAvsCode(gatewayAvsCode)
+
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
+gateway.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+##### setGatewayDate(gatewayDate)
+
+Sets the date that the tokenization occurred. Some gateways don’t send this value.
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets error messages that the gateway returned for the tokenization request. Maximum length of 255 characters.
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setGatewayReferenceDetails(gatewayReferenceDetails)`**
+
+Sets any additional reference details that the gateway returned.
+
+Signature
+
+```
+   public void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+##### **`setGatewayReferenceNumber(gatewayReferenceNumber)`**
+
+Sets the reference number that the gateway returned.
+
+Signature
+
+```
+   public void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+Gateway-specific result code. Must be used to map a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Provides additional information about the result code and why the gateway returned the specific code. Descriptions will vary between
+different gateways.
+
+
+Apex Reference Guide PaymentMethodTokenizationResponse Class
+
+Return Value
+
+Type: void
+
+##### setGatewayToken(gatewayToken)
+
+Sets the gateway token value that the gateway returned.
+
+Signature
+
+```
+   global void setGatewayToken(String gatewayToken)
+
+```
+
+Parameters
+
+```
+   gatewayToken
+```
+
+Type: String
+
+The gateway token that the payment gateway sends following a tokenization request.
+
+For the CardPaymentMethod and DigitalWallet objects, use the _`gatewyTokenEncrypted`_ parameter, which encrypts the
+token value.
+
+Return Value
+
+Type: void
+
+##### setGatewayTokenDetails(gatewayTokenDetails)
+
+Sets any additional information that the gateway returned about the payment token.
+
+Signature
+
+```
+   global void setGatewayTokenDetails(String gatewayTokenDetails)
+
+```
+
+Parameters
+
+```
+   gatewayTokenDetails
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setGatewayTokenEncrypted(gatewayTokenEncrypted)`**
+
+Sets the value of the `gatewayTokenEncrypted` field on a CardPaymentMethod or DigitalWallet object.
+
+Signature
+
+```
+   global void setGatewayTokenEncrypted(String gatewayTokenEncrypted)
+
+```
+
+
+### Apex Reference Guide PaymentsHttp Class
+
+Parameters
+
+```
+   gatewayTokenEncrypted
+```
+
+Type: String
+
+[The gateway token that the payment gateway sends following a tokenization request. Salesforce Payments uses Salesforce encryption](https://developer.salesforce.com/docs/atlas.en-us.260.0.securityImplGuide.meta/securityImplGuide/fields_about_encrypted_fields.htm)
+to encrypt the token value.
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
+the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: SalesforceResultCodeInfo on page 502
+
+Description of the Salesforce result code value.
+
+Return Value
+
+Type: void
+
+### PaymentsHttp Class
+
+Makes an HTTP request to start the interaction with the payment gateway.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+You must specify the `CommercePayments` namespace when creating an instance of this class. The constructor of this class takes
+no arguments. For example:
+
+```
+   CommercePayments.PaymentsHttp payhttp = new CommercePayments.PaymentsHttp();
+
+```
+
+IN THIS SECTION:
+
+PaymentsHttp Methods
+
+PaymentsHttp Constructors
+
+
+### Apex Reference Guide PostAuthApiPaymentMethodRequest Class
+
+#### PaymentsHttp Methods The following are methods for PaymentsHttp . All methods are instance methods.
+
+IN THIS SECTION:
+
+##### send(Request)
+
+Sends an HttpRequest and returns the response.
+
+##### send(Request)
+
+Sends an HttpRequest and returns the response.
+
+Signature
+
+```
+   global HttpResponse send(HttpRequest request)
+
+```
+
+Parameters
+
+```
+   request
+```
+
+[Type: System.HttpRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httprequest.htm#apex_classes_restful_http_httprequest)
+
+Return Value
+
+[Type: System.HttpResponse](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_classes_restful_http_httpresponse.htm#apex_classes_restful_http_httpresponse)
+
+#### PaymentsHttp Constructors The following are constructors for PaymentsHttp .
+
+IN THIS SECTION:
+
+##### PaymentsHttp()
+
+Initiates an HTTP request and response.
+
+##### PaymentsHttp()
+
+Initiates an HTTP request and response.
+
+Signature
+
+```
+   global PaymentsHttp()
+
+### PostAuthApiPaymentMethodRequest Class
+
+```
+
+Sends information about a payment method to a gateway adapter during a postauthorization service call.
+
+Namespace
+
+CommercePayments
+
+
+Apex Reference Guide PostAuthApiPaymentMethodRequest Class
+
+Usage
+
+Contains information about the payment method that is used for a postauthorization request. It contains all available payment methods
+as fields, but populates only one field for each request. The gateway adapter uses this class when constructing a postauthorization
+request. An object of this class is available through the `paymentMethod` field on the `PostAuthorizationRequest Class`
+object.
+
+IN THIS SECTION:
+
+#### PostAuthApiPaymentMethodRequest Constructors
+
+Lists the constructors for the PostAuthApiPaymentMethodRequest.
+
+PostAuthApiPaymentMethodRequest Properties
+Lists the properties for PostAuthApiPaymentMethodRequest.
+
+#### PostAuthApiPaymentMethodRequest Constructors
+
+Lists the constructors for the PostAuthApiPaymentMethodRequest.
+
+#### The following are constructors for PostAuthApiPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### PostAuthApiPaymentMethodRequest(cardPaymentMethodRequest)
+
+Constructs a sample `cardPaymentMethodRequest` . This constructor is intended for test usage and throws an exception if
+used outside of the Apex test context.
+
+PostAuthApiPaymentMethodRequest(AlternativePaymentMethodRequest)
+Constructs a sample `alternativePaymentMethodRequest` . This constructor is intended for test usage and throws an
+exception if used outside of the Apex test context.
+
+PostAuthApiPaymentMethodRequest()
+#### Constructor for PostAuthApiPaymentMethodRequest .
+
+##### **`PostAuthApiPaymentMethodRequest(cardPaymentMethodRequest)`**
+
+Constructs a sample `cardPaymentMethodRequest` . This constructor is intended for test usage and throws an exception if used
+outside of the Apex test context.
+
+Signature
+
+```
+   global PostAuthApiPaymentMethodRequest(commercepayments.CardPaymentMethodRequest
+
+   cardPaymentMethodRequest)
+
+```
+
+Parameters
+
+```
+   cardPaymentMethodRequest
+```
+
+Type: commercepayments.CardPaymentMethodRequest on page 403
+
+Contains information about the card payment method. Used to send information to a gateway adapter during a service call.
+
+
+Apex Reference Guide PostAuthApiPaymentMethodRequest Class
+
+##### **`PostAuthApiPaymentMethodRequest(AlternativePaymentMethodRequest)`**
+
+Constructs a sample `alternativePaymentMethodRequest` . This constructor is intended for test usage and throws an exception
+if used outside of the Apex test context.
+
+Signature
+
+```
+   global
+
+   PostAuthApiPaymentMethodRequest(commercepayments.AlternativePaymentMethodRequestPaymentMethodRequest)
+
+```
+
+Parameters
+
+```
+   alternativePaymentMethodRequest
+```
+
+Type: commercepayments.AlternativePaymentMethodRequest on page 403
+
+Contains information about the alternative payment method. Used to send information to a gateway adapter during a service call.
+
+##### **`PostAuthApiPaymentMethodRequest()`** Constructor for PostAuthApiPaymentMethodRequest .
+
+Signature
+
+```
+   global PostAuthApiPaymentMethodRequest()
+
+#### PostAuthApiPaymentMethodRequest Properties
+
+```
+
+Lists the properties for PostAuthApiPaymentMethodRequest.
+
+##### The following are properties for PostAuthApiPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### cardPaymentMethod
+
+The card payment method object used in a postauthorizaiton payment method request.
+
+alternativePaymentMethod
+The alternative payment method object used in a postauthorizaiton payment method request.
+
+##### **`cardPaymentMethod`**
+
+The card payment method object used in a postauthorizaiton payment method request.
+
+Signature
+
+```
+   global commercepayments.CardPaymentMethodRequest cardPaymentMethod {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.CardPaymentMethodRequest on page 403
+
+
+### Apex Reference Guide PostAuthorizationRequest Class
+
+##### **`alternativePaymentMethod`**
+
+The alternative payment method object used in a postauthorizaiton payment method request.
+
+Signature
+
+```
+   global commercepayments.AlternativePaymentMethodRequest PaymentMethod {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.alternativePaymentMethodRequest
+
+### PostAuthorizationRequest Class
+
+Sends information about a postauthorization request to a gateway adapter during a service call.
+
+Namespace
+
+CommercePayments
+
+Usage
+
+This class extends `[BaseRequest](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_BaseRequest.htm)` and contains information about a transaction postauthorization request. The gateway adapter reads
+fields from this class to validate the client-side transaction with the payment gateway. An object of this class is available by calling
+`getPaymentRequest()` in the `PaymentGatewayContext Class` ).
+
+```
+    ((commercepayments.PostAuthorizationRequest)gatewayContext.getPaymentRequest());
+
+```
+
+IN THIS SECTION:
+
+#### PostAuthorizationRequest Constructors
+
+Lists the constructors for postauthorization requests.
+
+PostAuthorizationRequest Properties
+Lists properties for a postauthorizaiton request.
+
+#### PostAuthorizationRequest Constructors
+
+Lists the constructors for postauthorization requests.
+
+### The following are constructors for PostAuthorizationRequest .
+
+IN THIS SECTION:
+
+PostAuthorizationRequest(amount)
+Constructor for building the amount in a postauthorization request. This constructor is intended for test usage and throws an
+exception if used outside of the Apex test context.
+
+
+Apex Reference Guide PostAuthorizationRequest Class
+
+##### **`PostAuthorizationRequest(amount)`**
+
+Constructor for building the amount in a postauthorization request. This constructor is intended for test usage and throws an exception
+if used outside of the Apex test context.
+
+Signature
+
+```
+   global PostAuthorizationRequest(Double amount)
+
+```
+
+Parameters
+
+##### _`amount`_
+
+Type: Double
+
+The amount of the authorization.
+
+#### PostAuthorizationRequest Properties
+
+Lists properties for a postauthorizaiton request.
+
+##### The following are properties for a PostAuthorizationRequest .
+
+IN THIS SECTION:
+
+##### accountId
+
+The customer account that is settled when the postauthorization is performed.
+
+##### amount
+
+The total amount of the postauthorization request.
+
+comments
+Comments about the postauthorization. Users can enter comments to provide additional information.
+
+currencyIsoCode
+The ISO currency code for the postauthorization request.
+
+paymentMethod
+The payment method used to process the postauthorization request.
+
+##### **`accountId`**
+
+The customer account that is settled when the postauthorization is performed.
+
+Signature
+
+```
+   global String accountId {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`amount`**
+
+The total amount of the postauthorization request.
+
+
+### Apex Reference Guide PostAuthorizationResponse Class
+
+Signature
+
+```
+   global Double amount {get; set;}
+
+```
+
+Property Value
+
+Type: Double
+
+##### **`comments`**
+
+Comments about the postauthorization. Users can enter comments to provide additional information.
+
+Signature
+
+```
+   global String comments {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`currencyIsoCode`**
+
+The ISO currency code for the postauthorization request.
+
+Signature
+
+```
+   global String currencyIsoCode {get; set;}
+
+```
+
+Property Value
+
+Type: String
+
+##### **`paymentMethod`**
+
+The payment method used to process the postauthorization request.
+
+Signature
+
+```
+   global PostAuthApiPaymentMethodRequest paymentMethod {get; set;}
+
+```
+
+Property Value
+
+Type: AuthApiPaymentMethodRequest on page 342
+
+### PostAuthorizationResponse Class
+
+Response sent by the payment gateway adapter for a postauthorization service.
+
+Namespace
+
+CommercePayments
+
+
+Apex Reference Guide PostAuthorizationResponse Class
+
+Usage
+
+[This class extends AbstractTransactionResponse. The constructor of this class takes no arguments. For example:](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexref.meta/apexref/apex_class_commercepayments_AbstractTransactionResponse.htm)
+
+```
+   CommercePayments.PostAuthorizationResponse authr = new
+
+   CommercePayments.PostAuthorizationResponse();
+
+```
+
+Contains information about the payment gateway’s response following an authorization transaction. The gateway adapter uses the
+#### payment gateway’s response to populate the PostAuthorizationResponse fields. The payments platform uses the information
+
+from this class to settle the transaction.
+
+IN THIS SECTION:
+
+#### PostAuthorizationResponse Methods Lists the methods for the PostAuthorizationResponse . PostAuthorizationResponse Methods Lists the methods for the PostAuthorizationResponse . The following are methods for PostAuthorizationResponse .
+
+IN THIS SECTION:
+
+setAlternativePaymentMethodResponse(AlternativePaymentMethodResponsealternativePaymentMethod)
+Sets details from the gateway about the authorized alternative payment method.
+
+setAmount(amount)
+Sets the amount for payment authorization. Can be positive, negative, or zero.
+
+setAsync(async)
+Sets whether the payment capture or authorization is asynchronous ( `True` ) or synchronous ( `False` ). If `True`, then the payment
+or payment authorization record created has a status of `Pending` .
+
+setAuthorizationExpirationDate(authExpDate)
+Sets the expiration date of the authorization request.
+
+setGatewayAuthCode(gatewayAuthCode)
+Sets the authorization code that the gateway returned. Maximum length of 64 characters.
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the authorization occurred. Some gateways don’t send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the tokenization request. Maximum length of 255 characters.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets any additional reference details that the gateway returned.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the reference number that the gateway returned.
+
+setGatewayResultCode(gatewayResultCode)
+Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+
+Apex Reference Guide PostAuthorizationResponse Class
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+setPaymentMethodDetails(paymentMethodDetails)
+Sets details about the payment method.
+
+setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse)
+Sets information from the gateway about the tokenized payment method.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce
+uses the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+##### **`setAlternativePaymentMethodResponse(AlternativePaymentMethodResponsealternativePaymentMethod)`**
+
+Sets details from the gateway about the authorized alternative payment method.
+
+Signature
+
+```
+   global void
+
+   setAlternativePaymentMethodResponse(commercepayments.AlternativePaymentMethodResponse
+
+   paymentMethodResponse)
+
+```
+
+Parameters
+
+```
+   alternativePaymentMethodResponse
+```
+
+Gateway response sent by payment gateway adapter for the alternative payment method request.
+
+Return Value
+
+Type: void
+
+##### **`setAmount(amount)`**
+
+Sets the amount for payment authorization. Can be positive, negative, or zero.
+
+Signature
+
+```
+   public void setAmount(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide PostAuthorizationResponse Class
+
+##### **`setAsync(async)`**
+
+Sets whether the payment capture or authorization is asynchronous ( `True` ) or synchronous ( `False` ). If `True`, then the payment or
+payment authorization record created has a status of `Pending` .
+
+Signature
+
+```
+   global void setAsync(Boolean async)
+
+```
+
+Parameters
+
+```
+   async
+```
+
+Type: Boolean
+
+Return Value
+
+Type: void
+
+##### **`setAuthorizationExpirationDate(authExpDate)`**
+
+Sets the expiration date of the authorization request.
+
+Signature
+
+```
+   global void setAuthorizationExpirationDate(Datetime authExpDate)
+
+```
+
+Parameters
+
+```
+   authExpDate
+```
+
+Type: Datetime
+
+Return Value
+
+Type: void
+
+##### **`setGatewayAuthCode(gatewayAuthCode)`**
+
+Sets the authorization code that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   global void setGatewayAuthCode(String gatewayAuthCode)
+
+```
+
+Parameters
+
+```
+   gatewayAuthCode
+```
+
+Type: String
+
+The authorization code returned by the gateway.
+
+
+Apex Reference Guide PostAuthorizationResponse Class
+
+Return Value
+
+Type: void
+
+##### **`setGatewayAvsCode(gatewayAvsCode)`**
+
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   public void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
+gateway.
+
+Return Value
+
+Type: void
+
+##### **`setGatewayDate(gatewayDate)`**
+
+Sets the date that the authorization occurred. Some gateways don’t send this value.
+
+Signature
+
+```
+   public void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+Return Value
+
+Type: void
+
+##### **`setGatewayMessage(gatewayMessage)`**
+
+Sets error messages that the gateway returned for the tokenization request. Maximum length of 255 characters.
+
+Signature
+
+```
+   public void setGatewayMessage(String gatewayMessage)
+
+```
+
+
+Apex Reference Guide PostAuthorizationResponse Class
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setGatewayReferenceDetails(gatewayReferenceDetails)`**
+
+Sets any additional reference details that the gateway returned.
+
+Signature
+
+```
+   public void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setGatewayReferenceNumber(gatewayReferenceNumber)`**
+
+Sets the reference number that the gateway returned.
+
+Signature
+
+```
+   public void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### **`setGatewayResultCode(gatewayResultCode)`**
+
+Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
+
+Signature
+
+```
+   public void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+
+Apex Reference Guide PostAuthorizationResponse Class
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+Gateway-specific result code. Must be used to map a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+##### **`setGatewayResultCodeDescription(gatewayResultCodeDescription)`**
+
+Sets a description of the gateway-specific result code that a payment gateway returned. Maximum length of 1000 characters.
+
+Signature
+
+```
+   public void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Provides additional information about the result code and why the gateway returned the specific code. Descriptions will vary between
+different gateways.
+
+Return Value
+
+Type: void
+
+##### **`setPaymentMethodDetails(paymentMethodDetails)`**
+
+Sets details about the payment method.
+
+Signature
+
+```
+   public void setPaymentMethodDetails(commercepayments.PaymentMethodDetailsResponse
+
+   paymentMethodDetails)
+
+```
+
+Parameters
+
+```
+   paymentMethodDetails
+```
+
+Type: commercepayments.PaymentMethodDetailsResponse
+
+Return Value
+
+Type: void
+
+##### **`setPaymentMethodTokenizationResponse(paymentMethodTokenizationResponse)`**
+
+Sets information from the gateway about the tokenized payment method.
+
+
+### Apex Reference Guide ReferencedRefundNotification Class
+
+Signature
+
+```
+   global void
+
+   setPaymentMethodTokenizationResponse(commercepayments.PaymentMethodTokenizationResponse
+
+   paymentMethodTokenizationResponse)
+
+```
+
+Parameters
+
+```
+   paymentMethodTokenizationResponse
+```
+
+PaymentMethodTokenizationResponse on page 442
+
+Gateway response sent by payment gateway adapters for the payment method tokenization request.
+
+Return Value
+
+Type: void
+
+##### **`setSalesforceResultCodeInfo(salesforceResultCodeInfo)`**
+
+Sets the Salesforce-specific result code information. Payment gateways have many response codes for payment calls. Salesforce uses
+the result code information to map payment gateway codes to a predefined set of standard Salesforce result codes.
+
+Signature
+
+```
+   public void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: commercepayments.SalesforceResultCodeInfo on page 502
+
+Description of the Salesforce result code value.
+
+Return Value
+
+Type: void
+
+### ReferencedRefundNotification Class
+
+When a payment gateway sends a notification for a refund transaction, the payment gateway adapter creates the
+### ReferencedRefundNotification object to store information about notification.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+This class is used with asynchronous payments. When a payment gateway sends a notification for a refund transcation, the gateway
+### adapter creates an object of type ReferencedRefundNotification to populate the respective values.
+
+
+Apex Reference Guide ReferencedRefundNotification Class
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.ReferencedRefundNotification rrn = new
+
+   CommercePayments.ReferencedRefundNotification();
+
+```
+
+Example
+
+```
+   commercepayments.NotificationStatus notificationStatus = null;
+
+        if (success) {
+
+           notificationStatus = commercepayments.NotificationStatus.Success;
+
+        } else {
+
+           notificationStatus = commercepayments.NotificationStatus.Failed;
+
+        }
+
+        commercepayments.BaseNotification notification = null;
+
+        if ('CAPTURE'.equals(eventCode)) {
+
+           notification = new commercepayments.CaptureNotification();
+
+        } else if ('REFUND'.equals(eventCode)) {
+
+           notification = new commercepayments.ReferencedRefundNotification();
+
+        }
+
+```
+
+IN THIS SECTION:
+
+#### ReferencedRefundNotification Methods ReferencedRefundNotification Methods The following are methods for ReferencedRefundNotification .
+
+IN THIS SECTION:
+
+setAmount(amount)
+Sets the transaction amount. Can be positive, negative, or zero.
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that communication for the refund notification occurred with the payment gateway.
+
+setGatewayMessage(gatewayMessage)
+Sets information or messages that the gateway returned.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets the payment gateway’s reference details.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the payment gateway’s reference number.
+
+setGatewayResultCode(gatewayResultCode)
+Sets the payment gateway’s result code.
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets the payment gateway’s result code description.
+
+
+Apex Reference Guide ReferencedRefundNotification Class
+
+setId(id)
+Sets the ID of a notification sent by the payment gateway.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Sets Salesforce result code information.
+
+setStatus(status)
+Sets the notification status value on the notification object.
+
+##### setAmount(amount)
+
+Sets the transaction amount. Can be positive, negative, or zero.
+
+Signature
+
+```
+   global void setAmount(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+The amount to be debited or captured.
+
+Return Value
+
+Type: void
+
+##### **`setGatewayAvsCode(gatewayAvsCode)`**
+
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+Signature
+
+```
+   public void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Used to verify the address mapped to a payment method when the payments platform requests tokenization from the payment
+gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayDate(gatewayDate)
+
+Sets the date that communication for the refund notification occurred with the payment gateway.
+
+
+Apex Reference Guide ReferencedRefundNotification Class
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+The date that communication happened with the gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets information or messages that the gateway returned.
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceDetails(gatewayReferenceDetails)
+
+Sets the payment gateway’s reference details.
+
+Signature
+
+```
+   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Provides information about the gateway communication.
+
+Return Value
+
+Type: void
+
+
+Apex Reference Guide ReferencedRefundNotification Class
+
+##### setGatewayReferenceNumber(gatewayReferenceNumber)
+
+Sets the payment gateway’s reference number.
+
+Signature
+
+```
+   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Unique transaction ID created by the payment gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets the payment gateway’s result code.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+The gateway result code. You must map this to a Salesforce-specific result code.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets the payment gateway’s result code description.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Description of the gateway result code. Provides additional context about the result code .
+
+
+Apex Reference Guide ReferencedRefundNotification Class
+
+Return Value
+
+Type: void
+
+##### setId(id)
+
+Sets the ID of a notification sent by the payment gateway.
+
+Signature
+
+```
+   global void setId(String id)
+
+```
+
+Parameters
+
+```
+   id
+```
+
+Type: String
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Sets Salesforce result code information.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: SalesforceResultCodeInfo on page 502
+
+Description of the Salesforce result code value.
+
+Return Value
+
+Type: void
+
+##### setStatus(status)
+
+Sets the notification status value on the notification object.
+
+Signature
+
+```
+   global void setStatus(commercepayments.NotificationStatus status)
+
+```
+
+
+### Apex Reference Guide ReferencedRefundRequest
+
+Parameters
+
+```
+   status
+```
+
+Type: NotificationStatus on page 426
+
+Indicates whether the payments platform successfully received the notification from the payment gateway.
+
+Return Value
+
+Type: void
+
+### ReferencedRefundRequest
+
+Access information about the referenced refund requests. Extends the `RefundRequest` class.
+
+Namespace
+
+CommercePayments on page 316
+
+Example
+
+```
+   global commercepayments.GatewayResponse processRequest(commercepayments.PaymentGatewayContext
+
+    gatewayContext) {
+
+      commercepayments.RequestType requestType = gatewayContext.getPaymentRequestType();
+
+      if (requestType == commercepayments.RequestType.ReferencedRefund) {
+
+        commercepayments.*ReferencedRefundRequest* refundRequest =
+
+   (commercepayments.*ReferencedRefundRequest*) gatewayContext.getPaymentRequest();
+
+      }
+
+   }
+
+```
+
+IN THIS SECTION:
+
+### ReferencedRefundRequest Constructors ReferencedRefundRequest Properties ReferencedRefundRequest Methods ReferencedRefundRequest Constructors The following are constructors for ReferencedRefundRequest .
+
+IN THIS SECTION:
+
+### ReferencedRefundRequest(amount, paymentId)
+
+This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
+
+### ReferencedRefundRequest(amount, paymentId)
+
+This constructor is intended for test usage and throws an exception if used outside of the Apex test context.
+
+
+#### Apex Reference Guide ReferencedRefundRequest
+
+Parameters
+
+##### _`amount`_
+
+Type: Double
+
+The amount to be debited or captured.
+
+```
+   paymentId
+```
+
+Type: String
+
+The payment record.
+
+#### ReferencedRefundRequest Properties The following are properties for ReferencedRefundRequest .
+
+IN THIS SECTION:
+
+##### PaymentId
+
+References a payment object.
+
+##### accountId
+
+References an account.
+
+##### amount
+
+References an amount.
+
+##### PaymentId
+
+References a payment object.
+
+Property Value
+
+Type: String
+
+##### accountId
+
+References an account.
+
+Property Value
+
+Type: String
+
+##### amount
+
+References an amount.
+
+Property Value
+
+Type: Double
+
+
+### Apex Reference Guide ReferencedRefundResponse Class
+
+#### ReferencedRefundRequest Methods The following are methods for ReferencedRefundRequest .
+
+### ReferencedRefundResponse Class
+
+#### The payment gateway adapter sends this response for the ReferencedRefund request type.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.ReferencedRefundResponse refr = new
+
+   CommercePayments.ReferencedRefundResponse();
+
+```
+
+IN THIS SECTION:
+
+#### ReferencedRefundResponse Methods ReferencedRefundResponse Methods
+
+### The following are methods for ReferencedRefundResponse .
+
+IN THIS SECTION:
+
+setAmount(amount)
+Sets the transaction amount. The value must be a postive number.
+
+setAsync(async)
+Sets whether the payment capture or authorization is asynchronous ( `True` ) or synchronous ( `False` ). If `True`, then the payment
+refund record created has a status of `Pending` .
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the payment gateway’s address verification system (AVS) code.
+
+setGatewayDate(gatewayDate)
+Sets the payment gateway’s date.
+
+setGatewayMessage(gatewayMessage)
+Sets information or messages that the gateway returned.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets the payment gateway’s reference details.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the payment gateway’s reference number.
+
+setGatewayResultCode(gatewayResultCode)
+Sets the payment gateway’s result code.
+
+
+Apex Reference Guide ReferencedRefundResponse Class
+
+setGatewayResultCodeDescription(gatewayResultCodeDescription)
+Sets the payment gateway’s result code description.
+
+setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+Set the Salesforce result code info.
+
+##### setAmount(amount)
+
+Sets the transaction amount. The value must be a postive number.
+
+Signature
+
+```
+   global void setAmount(Double amount)
+
+```
+
+Parameters
+
+```
+   amount
+```
+
+Type: Double
+
+The amount to be debited or captured.
+
+Return Value
+
+Type: void
+
+##### **`setAsync(async)`**
+
+Sets whether the payment capture or authorization is asynchronous ( `True` ) or synchronous ( `False` ). If `True`, then the payment
+refund record created has a status of `Pending` .
+
+Signature
+
+```
+   public void setAsync(Boolean async)
+
+```
+
+Parameters
+
+```
+   async
+```
+
+Type: Boolean
+
+Return Value
+
+Type: void
+
+##### setGatewayAvsCode(gatewayAvsCode)
+
+Sets the payment gateway’s address verification system (AVS) code.
+
+Signature
+
+```
+   global void setGatewayAvsCode(String gatewayAvsCode)
+
+```
+
+
+Apex Reference Guide ReferencedRefundResponse Class
+
+Parameters
+
+```
+   gatewayAvsCode
+```
+
+Type: String
+
+Code sent by gateways that use an address verification system.
+
+Return Value
+
+Type: void
+
+##### setGatewayDate(gatewayDate)
+
+Sets the payment gateway’s date.
+
+Signature
+
+```
+   global void setGatewayDate(Datetime gatewayDate)
+
+```
+
+Parameters
+
+```
+   gatewayDate
+```
+
+Type: Datetime
+
+Date and time of the gateway communication.
+
+Return Value
+
+Type: void
+
+##### setGatewayMessage(gatewayMessage)
+
+Sets information or messages that the gateway returned.
+
+Signature
+
+```
+   global void setGatewayMessage(String gatewayMessage)
+
+```
+
+Parameters
+
+```
+   gatewayMessage
+```
+
+Type: String
+
+Information or error messages returned by the gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceDetails(gatewayReferenceDetails)
+
+Sets the payment gateway’s reference details.
+
+
+Apex Reference Guide ReferencedRefundResponse Class
+
+Signature
+
+```
+   global void setGatewayReferenceDetails(String gatewayReferenceDetails)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceDetails
+```
+
+Type: String
+
+Information about the gateway communication.
+
+Return Value
+
+Type: void
+
+##### setGatewayReferenceNumber(gatewayReferenceNumber)
+
+Sets the payment gateway’s reference number.
+
+Signature
+
+```
+   global void setGatewayReferenceNumber(String gatewayReferenceNumber)
+
+```
+
+Parameters
+
+```
+   gatewayReferenceNumber
+```
+
+Type: String
+
+Unique transaction ID created by the payment gateway.
+
+Return Value
+
+Type: void
+
+##### setGatewayResultCode(gatewayResultCode)
+
+Sets the payment gateway’s result code.
+
+Signature
+
+```
+   global void setGatewayResultCode(String gatewayResultCode)
+
+```
+
+Parameters
+
+```
+   gatewayResultCode
+```
+
+Type: String
+
+The gateway result code. Must be mapped to a Salesforce result code.
+
+Return Value
+
+Type: void
+
+
+### Apex Reference Guide RefundRequest Class
+
+##### setGatewayResultCodeDescription(gatewayResultCodeDescription)
+
+Sets the payment gateway’s result code description.
+
+Signature
+
+```
+   global void setGatewayResultCodeDescription(String gatewayResultCodeDescription)
+
+```
+
+Parameters
+
+```
+   gatewayResultCodeDescription
+```
+
+Type: String
+
+Description of the `GatewayResultCode` . Provides more information about the result code returned by the gateway.
+
+Return Value
+
+Type: void
+
+##### setSalesforceResultCodeInfo(salesforceResultCodeInfo)
+
+Set the Salesforce result code info.
+
+Signature
+
+```
+   global void setSalesforceResultCodeInfo(commercepayments.SalesforceResultCodeInfo
+
+   salesforceResultCodeInfo)
+
+```
+
+Parameters
+
+```
+   salesforceResultCodeInfo
+```
+
+Type: commercepayments.SalesforceResultCodeInfo on page 502
+
+Describes the Salesforce result code value.
+
+Return Value
+
+Type: void
+
+### RefundRequest Class
+
+Sends data related to a refund to the payment gateway adapter.
+
+Namespace
+
+CommercePayments on page 476
+
+Usage
+
+The constructor of this class takes no arguments. For example:
+
+```
+   CommercePayments.RefundRequest rrq = new CommercePayments.RefundRequest();
+
+```
+
+
+Apex Reference Guide RefundRequest Class
+
+Example
+
+```
+   commercepayments.ReferencedRefundRequest refundRequest = new
+
+   commercepayments.ReferencedRefundRequest(80, pmt.id);
+
+```
+
+IN THIS SECTION:
+
+#### RefundRequest Methods RefundRequest Methods The following are methods for RefundRequest .
+
+IN THIS SECTION:
+
+##### equals(obj)
+#### Maintains the integrity of lists of type RefundRequest by determining the equality of external objects in a list. This method is
+
+dynamic and is based on the equals method in Java.
+
+##### hashCode()
+#### Maintains the integrity of lists of type RefundRequest by determining the uniqueness of the external object records in a list.
+
+##### equals(obj)
+
+#### Maintains the integrity of lists of type RefundRequest by determining the equality of external objects in a list. This method is
+
+dynamic and is based on the equals method in Java.
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+Return Value
+
+Type: Boolean
+
+##### hashCode()
+
+#### Maintains the integrity of lists of type RefundRequest by determining the uniqueness of the external object records in a list.
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+
+### Apex Reference Guide RequestType Enum RequestType Enum
+
+Defines the type of payment transaction request made to the payment gateway.
+
+Enum Values
+
+The following are the values of the `commercepayments.RequestType` enum.
+
+**Value** **Description**
+
+`Authorize` Payment authorization request
+
+`PostAuth` Post authorization request
+
+`Capture` Payment capture request
+
+`AuthorizationReversal` Authorization Reversal request
+
+`ReferencedRefund` Payment refund request
+
+`Sale` Sale request
+
+```
+    commercepayments.RequestType,
+
+    Sale
+
+```
+
+`Tokenize` Payment tokenize request
+
+```
+    commercepayments.RequestType,
+
+    Tokenize
+
+### RetryCategory Enum
+
+```
+
+Specifies the retry category.
+
+Enum Values
+
+The following are the values of the `commercepayments.RetryCategory` enum.
+
+**Value** **Description**
+
+`CardLimit` Insufficient funds, exceeded spending limits, or other restrictions on the card.
+
+`GatewayConnection` Connectivity or communication errors between systems, including upstream gateway
+errors.
+
+`PaymentInformation` Missing or incorrect data such as incorrect card numbers, addresses, or currencies.
+
+`PaymentProcessing` Payment account is invalid, closed, restricted, or the transaction was declined for
+reasons other than insufficient funds.
+
+`Security` Security violations or issues such as fraud, risk, authentication, verification, and
+authorization.
+
+
+### Apex Reference Guide RetryDecision Enum
+
+**Value** **Description**
+
+`Unknown` The payment gateway error code isn't recognized or isn't mapped to a specific
+category.
+
+### RetryDecision Enum
+
+Specifies the retry decision.
+
+Enum Values
+
+The following are the values of the `commercepayments.RetryDecision` enum.
+
+**Value** **Description**
+
+`NonRetriable` The payment operation cannot be retried.
+
+`Retriable` The payment operation can be retried.
+
+### SaleApiPaymentMethodRequest Class
+
+Sends data related to a card payment method to a gateway adapter during a sale service call.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+### This class holds information about a payment method that was used for a Sale request. SaleApiPaymentMethodRequest
+
+contains all the possible payment methods as fields, but only one value is populated for a given request. Gateway adapters use this class
+when constructing a sale request. The object of this class is obtained through the `paymentMethod` field on the `SaleRequest`
+object.
+
+### Example: This code sample retrieves the SaleApiPaymentMethodRequest object from the SaleRequest class.
+
+```
+      commercepayments.SaleApiPaymentMethodRequest paymentMethod = saleRequest.paymentMethod;
+
+```
+
+IN THIS SECTION:
+
+#### SaleApiPaymentMethodRequest Constructors
+
+SaleApiPaymentMethodRequest Properties
+
+SaleApiPaymentMethodRequest Methods
+
+#### SaleApiPaymentMethodRequest Constructors
+
+### The following are constructors for SaleApiPaymentMethodRequest .
+
+
+Apex Reference Guide SaleApiPaymentMethodRequest Class
+
+IN THIS SECTION:
+
+##### SaleApiPaymentMethodRequest(cardPaymentMethodRequest)
+
+Sends data related to a card payment method to a gateway adapter during a sale service call.
+
+##### SaleApiPaymentMethodRequest()
+
+Constructor for building a sale payment method request. This constructor is intended for test usage and throws an exception if used
+outside of the Apex test context.
+
+##### SaleApiPaymentMethodRequest(cardPaymentMethodRequest)
+
+Sends data related to a card payment method to a gateway adapter during a sale service call.
+
+Signature
+
+```
+   global SaleApiPaymentMethodRequest(commercepayments.CardPaymentMethodRequest
+
+##### `cardPaymentMethodRequest)`
+
+```
+
+Parameters
+
+##### _`cardPaymentMethodRequest`_
+
+Type: CardPaymentMethodRequest on page 403
+
+##### SaleApiPaymentMethodRequest()
+
+Constructor for building a sale payment method request. This constructor is intended for test usage and throws an exception if used
+outside of the Apex test context.
+
+Signature
+
+```
+   global SaleApiPaymentMethodRequest()
+
+#### SaleApiPaymentMethodRequest Properties
+
+##### The following are properties for SaleApiPaymentMethodRequest .
+
+```
+
+IN THIS SECTION:
+
+##### cardPaymentMethod
+
+Contains details of the card used in a payment method.
+
+standardEntryClassCode
+Contains details of the standard entry class code used in a payment method.
+
+##### cardPaymentMethod
+
+Contains details of the card used in a payment method.
+
+Signature
+
+```
+   global commercepayments.CardPaymentMethodRequest cardPaymentMethod {get; set;}
+
+```
+
+
+Apex Reference Guide SaleApiPaymentMethodRequest Class
+
+Property Value
+
+Type: CardPaymentMethodRequest on page 403
+
+##### **`standardEntryClassCode`**
+
+Contains details of the standard entry class code used in a payment method.
+
+Signature
+
+```
+   public commercepayments.StandardEntryClassCode standardEntryClassCode {get; set;}
+
+```
+
+Property Value
+
+Type: commercepayments.StandardEntryClassCode on page 503
+
+#### SaleApiPaymentMethodRequest Methods The following are methods for SaleApiPaymentMethodRequest .
+
+IN THIS SECTION:
+
+##### equals(obj)
+#### Maintains the integrity of lists of type SaleApiPaymentMethodRequest by determining the equality of external objects in
+
+a list. This method is dynamic and is based on the equals method in Java.
+
+hashCode()
+#### Maintains the integrity of lists of type SaleApiPaymentMethodRequest by determining the uniqueness of the external
+
+object records in a list.
+
+toString()
+Converts a date to a string.
+
+##### equals(obj)
+
+#### Maintains the integrity of lists of type SaleApiPaymentMethodRequest by determining the equality of external objects in a
+
+list. This method is dynamic and is based on the equals method in Java.
+
+Signature
+
+```
+   global Boolean equals(Object obj)
+
+```
+
+Parameters
+
+```
+   obj
+```
+
+Type: Object
+
+Return Value
+
+Type: Boolean
+
+
+### Apex Reference Guide SaleNotification Class
+
+##### hashCode()
+
+Maintains the integrity of lists of type `SaleApiPaymentMethodRequest` by determining the uniqueness of the external object
+records in a list.
+
+Signature
+
+```
+   global Integer hashCode()
+
+```
+
+Return Value
+
+Type: Integer
+
+##### toString()
+
+Converts a date to a string.
+
+Signature
+
+```
+   global String toString()
+
+```
+
+Return Value
+
+Type: String
+
+### SaleNotification Class When a payment gateway sends a notification for a sale payment, the payment gateway adapter creates the SaleNotification
+
+object to store information about notification.
+
+Namespace
+
+CommercePayments on page 316
+
+Usage
+
+### SaleNotification is used in asynchronous payment gateway adapters. Specify the CommercePayments namespace when
+
+creating an instance of this class. The constructor of this class takes no arguments. For example:
+
+```
+   commercePayments.SaleNotification saleNotification = new
+
+   commercepayments.SaleNotification();
+
+```
+
+Example
+
+```
+   global commercepayments.GatewayNotificationResponse
+
+   processNotification(commercepayments.PaymentGatewayNotificationContext
+
+   gatewayNotificationContext) {
+
+      commercepayments.PaymentGatewayNotificationRequest gatewayNotificationRequest =
+
+   gatewayNotificationContext.getPaymentGatewayNotificationRequest();
+
+      Blob request = gatewayNotificationRequest.getRequestBody();
+
+```
+
+
+Apex Reference Guide SaleNotification Class
+
+```
+      AdyenNotificationRequest notificationRequest =
+
+   AdyenNotificationRequest.parse(request.toString().replace('currency', 'currencyCode'));
+
+      List < AdyenNotificationRequest.NotificationItems > notificationItems =
+
+   notificationRequest.notificationItems;
+
+      AdyenNotificationRequest.NotificationRequestItem notificationRequestItem =
+
+   notificationItems[0].NotificationRequestItem;
+
+      Boolean success = Boolean.valueOf(notificationRequestItem.success);
+
+      String pspReference = notificationRequestItem.pspReference;
+
+      String eventCode = notificationRequestItem.eventCode;
+
+      Double amount = notificationRequestItem.amount.value;
+
+      String reason = notificationRequestItem.reason;
+
+      Datetime eventDate = notificationRequestItem.eventDate;
+
+      commercepayments.NotificationStatus notificationStatus = null;
+
+      if (success) {
+
+        notificationStatus = commercepayments.NotificationStatus.Success;
+
+      } else {
+
+        notificationStatus = commercepayments.NotificationStatus.Failed;
+
+      }
+
+      commercepayments.BaseNotification notification = null;
+
+      if ('AUTHORISATION'.equals(eventCode) && amount > 0) {
+
+        notification = new commercepayments.SaleNotification();
+
+        notification.setGatewayReferenceNumber(pspReference);
+
+      } else {
+
+        system.debug('handling unknown event : ' + eventCode);
+
+        commercepayments.GatewayNotificationResponse unknownEventResponse = new
+
+   commercepayments.GatewayNotificationResponse();
+
+        unknownEventResponse.setStatusCode(200);
+
+        unknownEventResponse.setResponseBody(Blob.valueOf('[not allowed]'));
+
+        return unknownEventResponse;
+
+      }
+
+      notification.setStatus(notificationStatus);
+
+      notification.setAmount(amount / 100);
+
+      notification.setGatewayResultCodeDescription(reason);
+
+      notification.setGatewayDate(eventDate);
+
+      commercepayments.NotificationSaveResult saveResult =
+
+   commercepayments.NotificationClient.record(notification);
+
+      commercepayments.GatewayNotificationResponse gnr = new
+
+   commercepayments.GatewayNotificationResponse();
+
+      if (saveResult.isSuccess()) {
+
+        gnr.setStatusCode(200);
+
+      } else {
+
+        gnr.setStatusCode(400);
+
+      }
+
+      gnr.setResponseBody(Blob.valueOf(saveResult.toString()));
+
+      return gnr;
+
+   }
+
+```
+
+
+Apex Reference Guide SaleNotification Class
+
+IN THIS SECTION:
+
+#### SaleNotification Methods SaleNotification Methods The following are methods for SaleNotification .
+
+IN THIS SECTION:
+
+##### setAmount(amount)
+
+Sets the amount for the sale payment.
+
+setGatewayAvsCode(gatewayAvsCode)
+Sets the AVS (address verification system) result code information that the gateway returned. Maximum length of 64 characters.
+
+setGatewayDate(gatewayDate)
+Sets the date that the sale occurred. Some gateways don’t send this value.
+
+setGatewayMessage(gatewayMessage)
+Sets error messages that the gateway returned for the sale request. Maximum length of 255 characters.
+
+setGatewayReferenceDetails(gatewayReferenceDetails)
+Sets additional data that you can use for the sale payment. You can use any data that isn’t normalized in financial entities. This field
+has a maximum length of 1000 characters and can store data as JSON or XML.
+
+setGatewayReferenceNumber(gatewayReferenceNumber)
+Sets the unique gateway reference number for the transaction that the gateway returned. Maximum length of 255 characters.
+
+setGatewayResultCode(gatewayResultCode)
 Sets a gateway-specific result code. The code may be mapped to a Salesforce-specific result code. Maximum length of 64 characters.
 
 setGatewayResultCodeDescription(gatewayResultCodeDescription)
@@ -23684,17080 +33708,3 @@ API Version
 
 44.0
 
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentsCapability getCommentsForFeedElement(String communityId,
-
-   String feedElementId, ConnectApi.FeedCommentSortOrder sortParam, Boolean
-
-   threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedCommentSortOrder`
-
-Order of comments. Values are:
-
-**•** `CreatedDateLatestAsc` —Sorts by most recently created comments in ascending order.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `CreatedDateOldestAsc` —Sorts by oldest comments in ascending order.
-
-**•** `Relevance` —Sorts by most relevant content.
-
-Sorting in descending order isn’t supported.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.CommentsCapability`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getExtensions(communityId, pageParam, pageSize)`**
-
-Get extensions.
-
-API Version
-
-40.0
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ExtensionDefinitions getExtensions(String communityId, String
-
-   pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   pageParam
-```
-
-Type: String
-
-Specifies the page token to use to view a page of information. Page tokens are returned as part of the response class, such as
-`currentPageToken` or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 through 100. The default size is 15.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.ExtensionDefinitions`
-
-##### **`getFeed(communityId, feedType)`**
-
-Get a feed.
-
-API Version
-
-28.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Feed getFeed(String communityId, ConnectApi.FeedType feedType)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` .
-
-Return Value
-
-Type: `ConnectApi.Feed`
-
-##### **`getFeed(communityId, feedType, sortParam)`**
-
-Get a sorted feed.
-
-API Version
-
-28.0
-
-Available to Guest Users
-
-32.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Feed getFeed(String communityId, ConnectApi.FeedType feedType,
-
-   ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` .
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-If _`feedType`_ is `DirectMessages`, _`sortParam`_ must be `LastModifiedDateDesc` .
-
-Return Value
-
-Type: `ConnectApi.Feed`
-
-##### **`getFeed(communityId, feedType, subjectId)`**
-
-Get a feed for a record or user.
-
-API Version
-
-28.0
-
-Available to Guest Users
-
-32.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Feed getFeed(String communityId, ConnectApi.FeedType feedType,
-
-   String subjectId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessageModeration`,
-`DirectMessages`, `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `Streams`, _`subjectId`_
-must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID. If _`feedType`_ is `UserProfile`, _`subjectId`_
-can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the alias `me` .
-
-Return Value
-
-Type: `ConnectApi.Feed`
-
-##### **`getFeed(communityId, feedType, subjectId, sortParam)`**
-
-Get a sorted feed for a record or user.
-
-API Version
-
-28.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Feed getFeed(String communityId, ConnectApi.FeedType feedType,
-
-   String subjectId, ConnectApi.FeedSortOrder sortParam)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessageModeration`,
-`DirectMessages`, `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `Streams`, _`subjectId`_
-must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID. If _`feedType`_ is `UserProfile`, _`subjectId`_
-can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the alias `me` .
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.Feed`
-
-##### **`getFeedDirectory(String)`**
-
-Get a list of all feeds available to the context user.
-
-API Version
-
-30.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedDirectory getFeedDirectory(String communityId)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-Return Value
-
-Type: `ConnectApi.FeedDirectory`
-
-##### **`getFeedElement(communityId, feedElementId)`**
-
-Get a feed element.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getFeedElement(String communityId, String
-
-   feedElementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-##### **`getFeedElement(communityId, feedElementId, commentSort)`**
-
-Get a feed element with sorted comments.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-41.0
-
-Available to Guest Users
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getFeedElement(String communityId, String
-
-   feedElementId, ConnectApi.FeedCommentSortOrder commentSort)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   commentSort
-```
-
-Type: `ConnectApi.FeedCommentSortOrder`
-
-Order of comments.
-
-**•** `CreatedDateLatestAsc` —Sorts by most recently created comments in ascending order.
-
-**•** `CreatedDateOldestAsc` —Sorts by oldest comments in ascending order.
-
-**•** `Relevance` —Sorts by most relevant content.
-
-The default value is `CreatedDateLatestAsc` .
-
-Sorting in descending order isn’t supported.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-##### **`getFeedElement(communityId, feedElementId, threadedCommentsCollapsed)`**
-
-Get a feed element and its comments in a threaded style.
-
-API Version
-
-44.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getFeedElement(String communityId, String
-
-   feedElementId, Boolean threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-##### **`getFeedElement(communityId, feedElementId, threadedCommentsCollapsed,`**
-
-```
-  commentSort)
-
-```
-
-Get a feed element and its sorted comments in a threaded style.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getFeedElement(String communityId, String
-
-   feedElementId, Boolean threadedCommentsCollapsed, ConnectApi.FeedCommentSortOrder
-
-   commentSort)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-```
-   commentSort
-```
-
-Type: `ConnectApi.FeedCommentSortOrder`
-
-Order of comments.
-
-**•** `CreatedDateLatestAsc` —Sorts by most recently created comments in ascending order.
-
-**•** `CreatedDateOldestAsc` —Sorts by oldest comments in ascending order.
-
-**•** `Relevance` —Sorts by most relevant content.
-
-Sorting in descending order isn’t supported.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-##### **`getFeedElement(communityId, feedElementId, recentCommentCount,`**
-
-```
-  elementsPerBundle)
-
-```
-
-Get a feed element with the specified number of elements per bundle including no more than the specified number of comments per
-feed element.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getFeedElement(String communityId, String
-
-   feedElementId, Integer recentCommentCount, Integer elementsPerBundle)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-##### **`getFeedElement(communityId, feedElementId, recentCommentCount,`**
-
-```
-  elementsPerBundle, threadedCommentsCollapsed)
-
-```
-
-Get a feed element with its comments in a threaded style with the specified number of elements per bundle and comments per feed
-element.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getFeedElement(String communityId, String
-
-   feedElementId, Integer recentCommentCount, Integer elementsPerBundle, Boolean
-
-   threadedCommentsCollapsed)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-##### **`getFeedElement(communityId, feedElementId, recentCommentCount,`**
-
-```
-  elementsPerBundle, threadedCommentsCollapsed, commentSort)
-
-```
-
-Get a feed element with its sorted comments in a threaded style with the specified number of elements per bundle and comments per
-feed element.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getFeedElement(String communityId, String
-
-   feedElementId, Integer recentCommentCount, Integer elementsPerBundle, Boolean
-
-   threadedCommentsCollapsed, ConnectApi.FeedCommentSortOrder commentSort)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-```
-   commentSort
-```
-
-Type: `ConnectApi.FeedCommentSortOrder`
-
-Order of comments.
-
-**•** `CreatedDateLatestAsc` —Sorts by most recently created comments in ascending order.
-
-**•** `CreatedDateOldestAsc` —Sorts by oldest comments in ascending order.
-
-**•** `Relevance` —Sorts by most relevant content.
-
-Sorting in descending order isn’t supported.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-##### **`getFeedElement(communityId, feedElementId, recentCommentCount,`**
-
-```
-  elementsPerBundle, commentSort)
-
-```
-
-Get a feed element with the specified number of elements per bundle including no more than the specified number of sorted comments
-per feed element.
-
-API Version
-
-41.0
-
-Available to Guest Users
-
-41.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement getFeedElement(String communityId, String
-
-   feedElementId, Integer recentCommentCount, Integer elementsPerBundle,
-
-   ConnectApi.FeedCommentSortOrder commentSort)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   commentSort
-```
-
-Type: `ConnectApi.FeedCommentSortOrder`
-
-Order of comments.
-
-**•** `CreatedDateLatestAsc` —Sorts by most recently created comments in ascending order.
-
-**•** `CreatedDateOldestAsc` —Sorts by oldest comments in ascending order.
-
-**•** `Relevance` —Sorts by most relevant content.
-
-The default value is `CreatedDateLatestAsc` .
-
-Sorting in descending order isn’t supported.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-##### **`getFeedElementBatch(communityId, feedElementIds)`**
-
-Get a list of feed elements.
-
-API Version
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.BatchResult[] getFeedElementBatch(String communityId,
-
-   List<String> feedElementIds)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementIds
-```
-
-Type: List<String>
-
-A list of up to 500 feed element IDs.
-
-Return Value
-
-Type: `ConnectApi.BatchResult` []
-
-The `ConnectApi.BatchResult.getResult()` method returns a `ConnectApi.FeedElement` object and errors for
-feed elements that didn’t load.
-
-##### **`getFeedElementPoll(communityId, feedElementId)`**
-
-Get the poll associated with a feed element.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.PollCapability getFeedElementPoll(String communityId, String
-
-   feedElementId)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-Return Value
-
-Type: `ConnectApi.PollCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-Note: Triggers on FeedItem objects run before their attachment and capabilities information is saved, which means that
-`ConnectApi.FeedItem.attachment` information and `ConnectApi.FeedElement.capabilities` information
-may not be available in the trigger.
-
-##### **`getFeedElementsFromBundle(communityId, feedElementId)`**
-
-Get feed elements from a bundle.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromBundle(String communityId,
-
-   String feedElementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getFeedElementsFromBundle(communityId, feedElementId, pageParam, pageSize,`**
-
-```
-  elementsPerBundle, recentCommentCount)
-
-```
-
-Get a page of feed elements from a bundle. Specify the number of elements per bundle and include no more than the specified number
-of comments per feed element.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromBundle(String communityId,
-
-   String feedElementId, String pageParam, Integer pageSize, Integer elementsPerBundle,
-
-   Integer recentCommentCount)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   pageParam
-```
-
-Type: String
-
-Specifies the page token to use to view a page of information. Page tokens are returned as part of the response class, such as
-`currentPageToken` or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getFeedElementsFromFeed(communityId, feedType)`**
-
-Get feed elements from the `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`, `Moderation`,
-and `PendingReview` feeds.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, pageParam, pageSize, sortParam)`**
-
-Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` feeds.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` .
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-If _`feedType`_ is `DirectMessages`, _`sortParam`_ must be `LastModifiedDateDesc` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density,`**
-
-```
-  pageParam, pageSize, sortParam)
-
-```
-
-Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` feeds. Each feed element contains no more than the specified number of comments.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-If _`feedType`_ is `DirectMessages`, _`sortParam`_ must be `LastModifiedDateDesc` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density,`**
-
-```
-  pageParam, pageSize, sortParam, filter)
-
-```
-
-Get a page of sorted and filtered feed elements from the `Home` feed. Each feed element contains no more than the specified number
-of comments.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam,
-
-   ConnectApi.FeedFilter filter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. The only valid value is `Home` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-When the _`sortParam`_ is `MostViewed`, you must pass in `null` for the _`pageParam`_ .
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-When the _`sortParam`_ is `MostViewed`, the _`pageSize`_ must be a value from 1 to 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, filter,
-result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density,`**
-
-```
-  pageParam, pageSize, sortParam, filter, threadedCommentsCollapsed)
-
-```
-
-Get a page of filtered and sorted feed elements with comments in a threaded style from the `Home` feed. Each feed element contains
-no more than the specified number of comments.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam,
-
-   ConnectApi.FeedFilter filter, Boolean threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. The only valid value is `Home` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-When the _`sortParam`_ is `MostViewed`, you must pass in `null` for the _`pageParam`_ .
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-When the _`sortParam`_ is `MostViewed`, the _`pageSize`_ must be a value from 1 to 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, filter,
-threadedCommentsCollapsed, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId)`**
-
-Get feed elements from any feed other than `Company`, `DirectMessageModeration`, `DirectMessages`, `Filter`, `Home`,
-`Isolated`, `Landing`, `Moderation`, and `PendingReview` for a user or record.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessageModeration`,
-`DirectMessages`, `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `Streams`, _`subjectId`_
-must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID. If _`feedType`_ is `UserProfile`, _`subjectId`_
-can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the alias `me` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-Example for Getting the Context User’s News Feed
-
-```
-   ConnectApi.FeedElementPage fep =
-
-   ConnectApi.ChatterFeeds.getFeedElementsFromFeed(Network.getNetworkId(),
-
-   ConnectApi.FeedType.News, 'me');
-
-```
-
-Example for Getting Another User’s Profile Feed
-
-```
-   ConnectApi.FeedElementPage fep =
-
-   ConnectApi.ChatterFeeds.getFeedElementsFromFeed(Network.getNetworkId(),
-
-   ConnectApi.FeedType.UserProfile, '005R0000000HwMA');
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Example for Getting Another User’s Record Feed
-
-```
-   ConnectApi.FeedElementPage fep =
-
-   ConnectApi.ChatterFeeds.getFeedElementsFromFeed(Network.getNetworkId(),
-
-   ConnectApi.FeedType.Record, '005R0000000HwMA');
-
-```
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, pageParam, pageSize,`**
-
-```
-  sortParam)
-
-```
-
-Get a page of sorted feed elements from any feed other than `Company`, `DirectMessageModeration`, `DirectMessages`,
-`Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessageModeration`,
-`DirectMessages`, `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `Streams`, _`subjectId`_
-must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID. If _`feedType`_ is `UserProfile`, _`subjectId`_
-can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the alias `me` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-The number of feed elements per page.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam)
-
-```
-
-Get a page of sorted feed elements from any feed other than `Company`, `DirectMessageModeration`, `DirectMessages`,
-`Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` . Each feed element includes no more than the
-specified number of comments.
-
-API Version
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessageModeration`,
-`DirectMessages`, `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `Streams`, _`subjectId`_
-must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID. If _`feedType`_ is `UserProfile`, _`subjectId`_
-can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, showInternalOnly)
-
-```
-
-Get a page of sorted feed elements from a record feed. Each feed element includes no more than the specified number of comments.
-Specify whether to return feed elements posted by internal (non-Experience Cloud site) users only.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, showInternalOnly, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, filter)
-
-```
-
-Get a page of sorted and filtered feed elements from the `UserProfile` feed.
-
-API Version
-
-35.0
-
-Available to Guest Users
-
-35.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, ConnectApi.FeedFilter filter)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.UserProfile` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of any user. To specify the context user, use the user ID or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Value must be `ConnectApi.FeedFilter.CommunityScoped` or `ConnectApi.FeedFilter.AuthoredBy` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-Example
-
-This example gets only community-specific feed elements.
-
-```
-   ConnectApi.FeedElementPage fep =
-
-   ConnectApi.ChatterFeeds.getFeedElementsFromFeed(Network.getNetworkId(),
-
-   ConnectApi.FeedType.UserProfile, 'me', 3, ConnectApi.FeedDensity.FewerUpdates, null, null,
-
-    ConnectApi.FeedSortOrder.LastModifiedDateDesc, ConnectApi.FeedFilter.CommunityScoped );
-
-```
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, filter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, filter, threadedCommentsCollapsed)
-
-```
-
-Get a page of feed elements with comments in a threaded style from the `UserProfile` feed.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, ConnectApi.FeedFilter filter, Boolean
-
-   threadedCommentsCollapsed)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.UserProfile` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of any user. To specify the context user, use the user ID or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Value must be `ConnectApi.FeedFilter.CommunityScoped` or `ConnectApi.FeedFilter.AuthoredBy` .
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, filter, threadedCommentsCollapsed, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, customFilter)
-
-```
-
-Get a page of sorted and filtered feed elements from the case feed.
-
-API Version
-
-40.0
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String customFilter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, customFilter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  elementsPerBundle, density, pageParam, pageSize, sortParam, showInternalOnly)
-
-```
-
-Get a page of sorted feed elements from a record feed. Specify the number of elements per bundle and include no more than the
-specified number of comments per feed element. Specify whether to return feed elements posted by internal (non-Experience Cloud
-site) users only.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  elementsPerBundle, density, pageParam, pageSize, sortParam, showInternalOnly,
-
-  filter)
-
-```
-
-Get a page of sorted and filtered feed elements from a record feed. Specify the number of elements per bundle and include no more
-than the specified number of comments per feed element. Specify whether to return feed elements posted by internal (non-Experience
-Cloud site) users only.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, ConnectApi.FeedFilter
-
-   filter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, filter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  elementsPerBundle, density, pageParam, pageSize, sortParam, showInternalOnly,
-
-  filter, threadedCommentsCollapsed)
-
-```
-
-Get a page of sorted and filtered feed elements with comments in a threaded style for a record feed. Specify the number of elements
-per bundle and include no more than the specified number of comments per feed element. Specify whether to return feed elements
-posted by internal (non-Experience Cloud site) users only.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, ConnectApi.FeedFilter
-
-   filter, Boolean threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, filter, threadedCommentsCollapsed, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  elementsPerBundle, density, pageParam, pageSize, sortParam, showInternalOnly,
-
-  customFilter)
-
-```
-
-Get a page of sorted and filtered feed elements from a case feed.
-
-API Version
-
-40.0
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, String customFilter)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, customFilter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  elementsPerBundle, density, pageParam, pageSize, sortParam, showInternalOnly,
-
-  customFilter, threadedCommentsCollapsed)
-
-```
-
-Get a page of filtered and sorted feed elements with comments in a threaded style from a case feed.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, String customFilter,
-
-   Boolean threadedCommentsCollapsed)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, customFilter, threadedCommentsCollapsed, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix)`**
-
-Get feed elements from a feed filtered by a key prefix for a user.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFilterFeed(String
-
-   communityId, String subjectId, String keyPrefix)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam,`**
-
-```
-  pageSize, sortParam)
-
-```
-
-Get a page of sorted feed elements from a feed filtered by a key prefix for a user.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFilterFeed(String
-
-   communityId, String subjectId, String keyPrefix, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  sortParam)
-
-```
-
-Get a page of sorted feed elements from a feed filtered by a key prefix for a user. Each feed element contains no more than the specified
-number of comments.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFilterFeed(String
-
-   communityId, String subjectId, String keyPrefix, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsFromFilterFeedUpdatedSince(communityId, subjectId, keyPrefix,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  updatedSince)
-
-```
-
-Get a page of feed elements from a feed filtered by a key prefix for a user. Include only feed elements that have been updated since the
-time specified in the _`updatedSince`_ parameter.
-
-API Version
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsFromFilterFeedUpdatedSince(String
-
-   communityId, String subjectId, String keyPrefix, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   String updatedSince)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   updatedSince
-```
-
-Type: String
-
-Opaque token defining the modification timestamp of the feed and the sort order.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsFromFilterFeedUpdatedSince(communityId, subjectId, keyPrefix, recentCommentCount, elementsPerBundle,
-density, pageParam, pageSize, updatedSince, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, updatedSince)
-
-```
-
-Get a page of feed elements from the `Company`, `DirectMessageModeration`, `Home`, and `Moderation` feeds. Include only
-feed elements that have been updated since the time specified in the _`updatedSince`_ parameter. Each feed element contains no
-more than the specified number of comments.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, String updatedSince)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `Home`, and `Moderation` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince,
-result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, updatedSince, filter)
-
-```
-
-Get a page of filtered feed elements from the `Home` feed. Include only feed elements that have been updated since the time specified
-in the _`updatedSince`_ parameter. Each feed element contains no more than the specified number of comments.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, String updatedSince, ConnectApi.FeedFilter filter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. The only valid value is `Home` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince,
-filter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, updatedSince)
-
-```
-
-Get a page of feed elements from the `Files`, `Groups`, `News`, `People`, and `Record` feeds. Include only feed elements that have
-been updated since the time specified in the _`updatedSince`_ parameter. Each feed element contains no more than the specified
-number of comments.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize, String updatedSince)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-One of these values:
-
-**•** `Files`
-
-**•** `Groups`
-
-**•** `News`
-
-**•** `People`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `Record`
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `ConnectApi.Record`, _`subjectId`_ can be any record ID, including a group ID. Otherwise, it must be the
-context user or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-updatedSince, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, updatedSince,
-
-  showInternalOnly)
-
-```
-
-Get a page of feed elements from a record feed. Include only feed elements that have been updated since the time specified in the
-_`updatedSince`_ parameter. Specify whether to return feed elements posted by internal (non-Experience Cloud site) users only.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize, String updatedSince,
-
-   Boolean showInternalOnly)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-updatedSince, showInternalOnly, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  updatedSince, filter)
-
-```
-
-Get a page of filtered feed elements from a `UserProfile` feed. Include only feed elements that have been updated since the time
-specified in the _`updatedSince`_ parameter.
-
-API Version
-
-35.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Available to Guest Users
-
-35.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   String updatedSince, ConnectApi.FeedFilter filter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.UserProfile` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of any user. To specify the context user, use the user ID or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-Opaque token defining the modification timestamp of the feed and the sort order.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Value must be `ConnectApi.FeedFilter.CommunityScoped` . Filters the feed to include only feed elements that are
-scoped to Experience Cloud sites. Feed elements that are always visible in all sites are filtered out.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, filter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  updatedSince, customFilter)
-
-```
-
-Get a page of filtered feed elements from a case feed. Include only feed elements that have been updated since the time specified in
-the _`updatedSince`_ parameter.
-
-API Version
-
-40.0
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   String updatedSince, String customFilter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-Opaque token defining the modification timestamp of the feed and the sort order.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, customFilter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  updatedSince, showInternalOnly)
-
-```
-
-Get a page of feed elements from a record feed. Include only feed elements that have been updated since the time specified in the
-_`updatedSince`_ parameter. Specify the maximum number of feed elements in a bundle and whether to return feed elements posted
-by internal (non-Experience Cloud site) users only.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   String updatedSince, Boolean showInternalOnly)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, showInternalOnly, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  updatedSince, showInternalOnly, filter)
-
-```
-
-Get a page of filtered feed elements from a record feed. Include only feed elements that have been updated since the time specified in
-the _`updatedSince`_ parameter. Specify the maximum number of feed elements in a bundle and whether to return feed elements
-posted by internal (non-Experience Cloud site) users only.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   String updatedSince, Boolean showInternalOnly, ConnectApi.FeedFilter filter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, showInternalOnly, filter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedElementsUpdatedSince(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  updatedSince, showInternalOnly, customFilter)
-
-```
-
-Get a page of filtered feed elements from a case feed. Include only feed elements that have been updated since the time specified in
-the _`updatedSince`_ parameter.
-
-API Version
-
-40.0
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getFeedElementsUpdatedSince(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount, Integer
-
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   String updatedSince, Boolean showInternalOnly, String customFilter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Do not construct this token. Retrieve this token
-from the `updatesToken` property of the `ConnectApi.FeedElementPage` response body.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, showInternalOnly, customFilter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getFeedWithFeedElements(communityId, feedType, pageSize)`**
-
-Get information about a feed and a page of feed elements from the feed.
-
-API Version
-
-40.0
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Feed getFeedWithFeedElements(String communityId,
-
-   ConnectApi.FeedType feedType, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Landing`, `Moderation`, and `PendingReview` . `Landing` is valid only when _`communityId`_ is `internal` .
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in 0, feed elements aren’t returned
-with the feed.
-
-Return Value
-
-Type: `ConnectApi.Feed`
-
-##### **`getFeedWithFeedElements(communityId, feedType, pageSize, recentCommentCount)`**
-
-Get a page of information about the feed and the feed elements with the specified number of comments per feed element from the
-feed.
-
-API Version
-
-40.0
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Feed getFeedWithFeedElements(String communityId,
-
-   ConnectApi.FeedType feedType, Integer pageSize, Integer recentCommentCount)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Landing`, `Moderation`, and `PendingReview` . `Landing` is valid only when _`communityId`_ is `internal` .
-
-```
-   pageSize
-```
-
-Type: Integer
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in 0, feed elements aren’t returned
-with the feed.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-Return Value
-
-Type: `ConnectApi.Feed`
-
-##### **`getFilterFeed(communityId, subjectId, keyPrefix)`**
-
-Get a feed filtered by a key prefix for a user.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Feed getFilterFeed(String communityId, String subjectId, String
-
-   keyPrefix)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A _key prefix_ is the first three characters of a record ID, which specifies the object type.
-
-Return Value
-
-Type: `ConnectApi.Feed`
-
-##### **`getFilterFeed(communityId, subjectId, keyPrefix, sortParam)`**
-
-Get a sorted feed filtered by a key prefix for a user.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Feed getFilterFeed(String communityId, String subjectId, String
-
-   keyPrefix, ConnectApi.FeedType sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedType`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.Feed`
-
-##### **`getFilterFeedDirectory(communityId, subjectId)`**
-
-Get a feed directory of filter feeds available to the context user.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-30.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedDirectory getFilterFeedDirectory(String communityId, String
-
-   subjectId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-Return Value
-
-Type: `ConnectApi.FeedDirectory`
-
-This feed directory contains a list of filter feeds, which are the news feed filtered to include feed items whose parent is a specific entity
-type.
-
-Usage
-
-Call this method to return a directory containing a list of `ConnectApi.FeedDirectoryItem` objects. Each object contains a
-key prefix associated with an entity type the context user is following. A _key prefix_ is the first three characters of a record ID, which specifies
-the object type.
-
-Use key prefixes to filter the news feed so that it contains only feed items whose parent is the entity type associated with the key prefix.
-For example, get all the feed items whose parent is an Account. To get the feed items, pass a key prefix to the
-`ConnectApi.getFeedItemsFromFilterFeed` method.
-
-The information about filter feeds never contains the key prefixes for users ( `005` ) or groups ( `0F9` ), but all users can use those key prefixes
-as filters.
-
-The `ConnectApi.FeedDirectory.favorites` property is always empty when returned by a call to
-`getFilterFeedDirectory` because you can’t filter a news feed by favorites.
-
-Example
-
-This example calls `getFilterFeedDirectory` and loops through the returned `FeedDirectoryItem` objects to find the
-key prefixes the context user can use to filter their news feed. It then copies each `keyPrefix` value to a list. Finally, it passes one of
-
-
-Apex Reference Guide ChatterFeeds Class
-
-the key prefixes from the list to the `getFeedItemsFromFilterFeed` method. The returned feed items include every feed item
-from the news feed whose parent is the entity type specified by the passed key prefix.
-
-```
-   String communityId = null;
-
-   String subjectId = 'me';
-
-   // Create a list to populate with key prefixes.
-
-   List<String> keyPrefixList = new List<String>();
-
-   // Prepopulate with User and Group record types
-
-   // which are available to all users.
-
-   keyPrefixList.add('005');
-
-   keyPrefixList.add('0F9');
-
-   System.debug(keyPrefixList);
-
-   // Get the key prefixes available to the context user.
-
-   ConnectApi.FeedDirectory myFeedDirectory =
-
-     ConnectApi.ChatterFeeds.getFilterFeedDirectory(null, 'me');
-
-   // Loop through the returned feeds list.
-
-   for (ConnectApi.FeedDirectoryItem i : myFeedDirectory.feeds) {
-
-     // Grab each key prefix and add it to the list.
-
-     keyPrefixList.add(i.keyPrefix);
-
-   }
-
-   System.debug(keyPrefixList);
-
-   // Use a key prefix from the list to filter the feed items in the news feed.
-
-   ConnectApi.FeedItemPage myFeedItemPage =
-
-     ConnectApi.ChatterFeeds.getFeedItemsFromFilterFeed(communityId, subjectId,
-
-   keyPrefixList[0]);
-
-   System.debug(myFeedItemPage);
-
-##### **`getLike(communityId, likeId)`**
-
-```
-
-Get a like on a post or comment.
-
-API Version
-
-28.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLike getLike(String communityId, String likeId)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   likeId
-```
-
-Type: String
-
-ID for a like.
-
-Return Value
-
-Type: `ConnectApi.ChatterLike`
-
-##### **`getLikesForComment(communityId, commentId)`**
-
-Get likes for a comment.
-
-API Version
-
-28.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLikePage getLikesForComment(String communityId, String
-
-   commentId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID for a comment.
-
-Return Value
-
-Type: `ConnectApi.ChatterLikePage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getLikesForComment(communityId, commentId, pageParam, pageSize)`**
-
-Get a page of likes for a comment.
-
-API Version
-
-28.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLikePage getLikesForComment(String communityId, String
-
-   commentId, Integer pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID for a comment.
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-Return Value
-
-Type: `ConnectApi.ChatterLikePage`
-
-##### **`getLikesForFeedElement(communityId, feedElementId)`**
-
-Get likes for a feed element.
-
-API Version
-
-32.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLikePage getLikesForFeedElement(String communityId,
-
-   String feedElementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-Return Value
-
-Type: `ConnectApi.ChatterLikePage`
-
-If the feed element doesn’t support the `ChatterLikes` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getLikesForFeedElement(communityId, feedElementId, pageParam, pageSize)`**
-
-Get a page of likes for a feed element.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLikePage getLikesForFeedElement(String communityId,
-
-   String feedElementId, Integer pageParam, Integer pageSize)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-Return Value
-
-Type: `ConnectApi.ChatterLikePage`
-
-If the feed element doesn’t support the `ChatterLikes` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getLinkMetadata(communityId, urls)`**
-
-Get link metadata for URLs.
-
-API Version
-
-42.0
-
-Available to Guest Users
-
-42.0
-
-Requires Chatter
-
-No
-
-Signature
-
-```
-   public static ConnectApi.LinkMetadataCollection getLinkMetadata(String communityId,
-
-   String urls)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   urls
-```
-
-Type: String
-
-Comma-separated list of URL-encoded URLs.
-
-Return Value
-
-Type: `ConnectApi.LinkMetadataCollection`
-
-##### **`getPinnedFeedElementsFromFeed(communityId, feedType, subjectId)`**
-
-Get pinned feed elements from a group or topic feed.
-
-API Version
-
-41.0
-
-Available to Guest Users
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.PinnedFeedElements getPinnedFeedElementsFromFeed(String
-
-   communityId, ConnectApi.FeedType feedType, String subjectId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. Valid values are `Record` and `Topics` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ must be a group ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID.
-
-Return Value
-
-Type: `ConnectApi.PinnedFeedElements`
-
-If the feed doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Usage
-
-In the UI, pinned feed elements don’t show all auxiliary information, such as comments, likes, interaction counts, or read by information.
-As a result, the `ConnectApi.PinnedFeedElements` output class doesn’t include all the information for these capabilities.
-
-##### **`getReadByForFeedElement(communityId, feedElementId)`**
-
-Get information about who read a feed element and when.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ReadByPage getReadByForFeedElement(String communityId, String
-
-   feedElementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-Return Value
-
-Type: `ConnectApi.ReadByPage`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getReadByForFeedElement(communityId, feedElementId, pageParam, pageSize)`**
-
-Get a page of information about who read a feed element and when.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.ReadByPage getReadByForFeedElement(String communityId, String
-
-   feedElementId, Integer pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   pageParam
-```
-
-Type: String
-
-Specifies the page token to use to view a page of information. Page tokens are returned as part of the response class, such as
-`currentPageToken` or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-Return Value
-
-Type: `ConnectApi.ReadByPage`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getRelatedPosts(communityId, feedElementId, filter, maxResults)`**
-
-Get posts related to the context feed element.
-
-API Version
-
-37.0
-
-Available to Guest Users
-
-37.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.RelatedFeedPosts getRelatedPosts(String communityId, String
-
-   feedElementId, ConnectApi.RelatedFeedPostType filter, Integer maxResults)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element. The feed element must be a question.
-
-```
-   filter
-```
-
-Type: `ConnectApi.RelatedFeedPostType`
-
-Specifies the type of related post. Values are:
-
-**•** `Answered` —Related questions that have at least one answer.
-
-**•** `BestAnswer` —Related questions that have a best answer.
-
-**•** `Generic` —All types of related questions, including answered, with a best answer, and unanswered.
-
-**•** `Unanswered` —Related questions that don’t have answers.
-
-`Generic` is the default value.
-
-```
-   maxResults
-```
-
-Type: Integer
-
-The maximum number of results to return. You can return up to 25 results; 5 is the default.
-
-Return Value
-
-Type: `ConnectApi.RelatedFeedPosts`
-
-In version 37.0 and later, related feed posts are questions.
-
-Each related feed post has a score indicating how closely it’s related to the context feed post. We return related feed posts sorted by
-score, with the highest score first.
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-##### **`getStream(communityId, streamId)`**
-
-Get information about a Chatter feed stream.
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.ChatterStream getStream(String communityId, String streamId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   streamId
-```
-
-Type: String
-
-ID of the Chatter feed stream.
-
-Return Value
-
-Type: `ConnectApi.ChatterStream`
-
-##### **`getStream(communityId, streamId, globalScope)`**
-
-Get information about a Chatter feed stream, regardless of Experience Cloud site.
-
-API Version
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStream getStream(String communityId, String streamId,
-
-   Boolean globalScope)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   streamId
-```
-
-Type: String
-
-ID of the Chatter feed stream.
-
-```
-   globalScope
-```
-
-Type: Boolean
-
-Specifies whether to get streams from all the context user’s Experience Cloud sites, regardless of the _`communityId`_ value.
-
-Tip: If you know the _`communityId`_ for the stream, we recommend setting _`globalScope`_ to `false` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.ChatterStream`
-
-##### **`getStreams(communityId)`**
-
-Get the Chatter feed streams for the context user.
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage getStreams(String communityId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-##### **`getStreams(communityId, sortParam)`**
-
-Get and sort the Chatter feed streams for the context user.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage getStreams(String communityId,
-
-   ConnectApi.SortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.SortOrder`
-
-Specifies the sort order. Values are:
-
-**•** `Ascending` —Items are in ascending alphabetical order (A-Z).
-
-**•** `Descending` —Items are in descending alphabetical order (Z-A).
-
-**•** `MostRecentlyViewed` —Items are in descending chronological order by view. This sort order is valid only for Chatter feed
-streams.
-
-If not specified, default value is `Ascending` .
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-##### **`getStreams(communityId, pageParam, pageSize)`**
-
-Get a page of Chatter feed streams for the context user.
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage getStreams(String communityId, Integer
-
-   pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 to 250. The default size is 25.
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getStreams(communityId, pageParam, pageSize, sortParam)`**
-
-Get a sorted page of Chatter feed streams for the context user.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage getStreams(String communityId, Integer
-
-   pageParam, Integer pageSize, ConnectApi.SortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 to 250. The default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.SortOrder`
-
-Specifies the sort order. Values are:
-
-**•** `Ascending` —Items are in ascending alphabetical order (A-Z).
-
-**•** `Descending` —Items are in descending alphabetical order (Z-A).
-
-**•** `MostRecentlyViewed` —Items are in descending chronological order by view. This sort order is valid only for Chatter feed
-streams.
-
-If not specified, default value is `Ascending` .
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-##### **`getStreams(communityId, pageParam, pageSize, sortParam, globalScope)`**
-
-Get a sorted page of Chatter feed streams from all Enterprise Cloud sites for the context user.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage getStreams(String communityId, Integer
-
-   pageParam, Integer pageSize, ConnectApi.SortOrder sortParam, Boolean globalScope)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 to 250. The default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.SortOrder`
-
-Specifies the sort order. Values are:
-
-**•** `Ascending` —Items are in ascending alphabetical order (A-Z).
-
-**•** `Descending` —Items are in descending alphabetical order (Z-A).
-
-**•** `MostRecentlyViewed` —Items are in descending chronological order by view. This sort order is valid only for Chatter feed
-streams.
-
-If not specified, default value is `Ascending` .
-
-```
-   globalScope
-```
-
-Type: Boolean
-
-Specifies whether to get streams from all the context user’s Experience Cloud sites, regardless of the _`communityId`_ value.
-
-Tip: If you know the _`communityId`_ for the streams, we recommend setting _`globalScope`_ to `false` .
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-##### **`getSupportedEmojis()`**
-
-Get supported emojis for the org.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.SupportedEmojis getSupportedEmojis()
-
-```
-
-Return Value
-
-Type: `ConnectApi.SupportedEmojis`
-
-Usage
-
-To get the list, emojis must be enabled in your org.
-
-##### **`getThreadsForFeedComment(communityId, commentId)`**
-
-Get threaded comments for a comment.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentPage getThreadsForFeedComment(String communityId, String
-
-   commentId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.CommentPage`
-
-If the comment doesn’t support the `comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getThreadsForFeedComment(communityId, commentId, pageParam, pageSize)`**
-
-Get a page of threaded comments for a comment.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentPage getThreadsForFeedComment(String communityId, String
-
-   commentId, String pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-```
-   pageParam
-```
-
-Type: String
-
-Specifies the page token to use to view a page of information. Page tokens are returned as part of the response class, such as
-`currentPageToken` or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-Return Value
-
-Type: `ConnectApi.CommentPage`
-
-If the comment doesn’t support the `comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`getThreadsForFeedComment(communityId, commentId, threadedCommentsCollapsed)`**
-
-Access the comments capability for a comment.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.CommentsCapability getThreadsForFeedComment(String communityId,
-
-   String commentId, Boolean threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.CommentsCapability`
-
-If the comment doesn’t support the `comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### getTopUnansweredQuestions(communityId) (Pilot)
-
-Get top unanswered questions for the context user in aExperience Cloud site.
-
-Note: We provided top-five unanswered questions to selected customers through a pilot program that required agreement to
-specific terms and conditions. This pilot program is closed and not accepting new participants.
-
-API Version
-
-42.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getTopUnansweredQuestions(String communityId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID of the Experience Cloud site.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetTopUnansweredQuestions(communityId, result) (Pilot)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### getTopUnansweredQuestions(communityId, filter) (Pilot)
-
-Get filtered top unanswered questions for the context user in an Experience Cloud site.
-
-Note: We provided top-five unanswered questions to selected customers through a pilot program that required agreement to
-specific terms and conditions. This pilot program is closed and not accepting new participants.
-
-API Version
-
-42.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getTopUnansweredQuestions(String communityId,
-
-   ConnectApi.TopUnansweredQuestionsFilterType filter)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID of the Experience Cloud site.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the filter for the feed. `UnansweredQuestionsWithCandidateAnswers` is the only valid value.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetTopUnansweredQuestions(communityId, filter, result) (Pilot)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### getTopUnansweredQuestions(communityId, pageSize) (Pilot)
-
-Get a page of top unanswered questions for the context user in an Experience Cloud site.
-
-Note: We provided top-five unanswered questions to selected customers through a pilot program that required agreement to
-specific terms and conditions. This pilot program is closed and not accepting new participants.
-
-API Version
-
-42.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getTopUnansweredQuestions(String communityId,
-
-   Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID of the Experience Cloud site.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Specifies the number of items per page. Valid values are from 0 through 10. If you pass in `null`, the default size is 5.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetTopUnansweredQuestions(communityId, pageSize, result) (Pilot)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### getTopUnansweredQuestions(communityId, filter, pageSize) (Pilot)
-
-Get a page of filtered top unanswered questions for the context user in an Experience Cloud site.
-
-Note: We provided top-five unanswered questions to selected customers through a pilot program that required agreement to
-specific terms and conditions. This pilot program is closed and not accepting new participants.
-
-API Version
-
-42.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage getTopUnansweredQuestions(String communityId,
-
-   ConnectApi.FeedFilter filter, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID of the Experience Cloud site.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the filter for the feed. `UnansweredQuestionsWithCandidateAnswers` is the only valid value.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 0 through 10. If you pass in `null`, the default size is 5.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestGetTopUnansweredQuestions(communityId, filter, pageSize, result) (Pilot)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`getVotesForComment(communityId, commentId, vote)`**
-
-Get the first page of users who upvoted or downvoted a comment.
-
-API Version
-
-42.0
-
-Available to Guest Users
-
-42.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.VotePage getVotesForComment(String communityId, String
-
-   commentId, ConnectApi.UpDownVoteValue vote)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-```
-   vote
-```
-
-Type: `ConnectApi.UpDownVoteValue`
-
-Specifies the value of the vote for the feed element. Values are:
-
-**•** `Down`
-
-**•** `Up`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-You can’t specify `None` .
-
-Return Value
-
-Type: `ConnectApi.VotePage`
-
-If the comment doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getVotesForComment(communityId, commentId, vote, pageParam, pageSize)`**
-
-Get a page of users who upvoted or downvoted a comment.
-
-API Version
-
-42.0
-
-Available to Guest Users
-
-42.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.VotePage getVotesForComment(String communityId, String
-
-   commentId, ConnectApi.UpDownVoteValue vote, Integer pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-```
-   vote
-```
-
-Type: `ConnectApi.UpDownVoteValue`
-
-Specifies the value of the vote for the feed element. Values are:
-
-**•** `Down`
-
-**•** `Up`
-
-You can’t specify `None` .
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-Return Value
-
-Type: `ConnectApi.VotePage`
-
-If the comment doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getVotesForFeedElement(communityId, feedElementId, vote)`**
-
-Get the first page of users who upvoted or downvoted a feed element.
-
-API Version
-
-42.0
-
-Available to Guest Users
-
-42.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.VotePage getVotesForFeedElement(String communityId, String
-
-   feedElementId, ConnectApi.UpDownVoteValue vote)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   vote
-```
-
-Type: `ConnectApi.UpDownVoteValue`
-
-Specifies the value of the vote for the feed element. Values are:
-
-**•** `Down`
-
-**•** `Up`
-
-You can’t specify `None` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.VotePage`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`getVotesForFeedElement(communityId, feedElementId, vote, pageParam, pageSize)`**
-
-Get a page of users who upvoted or downvoted a feed element.
-
-API Version
-
-42.0
-
-Available to Guest Users
-
-42.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.VotePage getVotesForFeedElement(String communityId, String
-
-   feedElementId, ConnectApi.UpDownVoteValue vote, Integer pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   vote
-```
-
-Type: `ConnectApi.UpDownVoteValue`
-
-Specifies the value of the vote for the feed element. Values are:
-
-**•** `Down`
-
-**•** `Up`
-
-You can’t specify `None` .
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.VotePage`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`isCommentEditableByMe(communityId, commentId)`**
-
-Discover whether the context user can edit a comment.
-
-API Version
-
-34.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedEntityIsEditable isCommentEditableByMe(String communityId,
-
-   String commentId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-Return Value
-
-Type: `ConnectApi.FeedEntityIsEditable`
-
-If the comment doesn’t support the `edit` capability, the return value is `ConnectApi.NotFoundException` .
-
-SEE ALSO:
-
-[Edit a Comment](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_edit_comment.htm)
-
-##### **`isFeedElementEditableByMe(communityId, feedElementId)`**
-
-Discover whether the context user can edit a feed element.
-
-API Version
-
-34.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedEntityIsEditable isFeedElementEditableByMe(String
-
-   communityId, String feedElementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element. Feed items are the only type of feed element that can be edited.
-
-Return Value
-
-Type: `ConnectApi.FeedEntityIsEditable`
-
-If the feed element doesn’t support the `edit` capability, the return value is `ConnectApi.NotFoundException` .
-
-SEE ALSO:
-
-[Edit a Feed Element](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_edit_feed_element.htm)
-
-[Edit a Question Title and Post](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectapi_examples_edit_question_title_post.htm)
-
-##### **`isModified(communityId, feedType, subjectId, since)`**
-
-Discover whether a news feed has been updated or changed. Use this method to poll a news feed for updates.
-
-Important: This feature is available through a Feed Polling pilot program. This pilot program is closed and not accepting new
-participants.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedModifiedInfo isModified(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, String since)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Specifies the type of feed. The only supported type is `News`
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   since
-```
-
-Type: String
-
-An opaque token containing information about the last modified date of the feed. Retrieve this token from the
-`FeedElementPage.isModifiedToken` property.
-
-Return Value
-
-Type: `ConnectApi.FeedModifiedInfo`
-
-##### **`likeComment(communityId, commentId)`**
-
-Like a comment for the context user.
-
-API Version
-
-28.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLike likeComment(String communityId, String commentId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID for a comment.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.ChatterLike`
-
-If the context user has already liked the comment, this method is a non-operation and returns the existing like.
-
-##### **`likeFeedElement(communityId, feedElementId)`**
-
-Like a feed element.
-
-API Version
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLike likeFeedElement(String communityId, String
-
-   feedElementId)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-Return Value
-
-Type: `ConnectApi.ChatterLike`
-
-If the feed element doesn’t support the `ChatterLikes` capability, the return value is `ConnectApi.NotFoundException` .
-
-Example
-
-```
-   ConnectApi.ChatterLike chatterLike = ConnectApi.ChatterFeeds.likeFeedElement(null,
-
-   '0D5D0000000KuGh');
-
-##### **`postCommentToFeedElement(communityId, feedElementId, text)`**
-
-```
-
-Post a plain-text comment to a feed element.
-
-API Version
-
-32.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Comment postCommentToFeedElement(String communityId, String
-
-   feedElementId, String text)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   text
-```
-
-Type: String
-
-Text of the comment. A comment can contain up to 10,000 characters.
-
-Return Value
-
-Type: `ConnectApi.Comment`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-Example
-
-```
-   ConnectApi.Comment comment = ConnectApi.ChatterFeeds.postCommentToFeedElement(null,
-
-   '0D5D0000000KuGh', 'I agree with the proposal.' );
-
-##### **`postCommentToFeedElement(communityId, feedElementId, comment,`**
-
-  feedElementFileUpload)
-
-```
-
-Post a rich-text comment to a feed element. Use this method to include mentions and to attach a file.
-
-API Version
-
-32.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.Comment postCommentToFeedElement(String communityId, String
-
-   feedElementId, ConnectApi.CommentInput comment, ConnectApi.BinaryInput
-
-   feedElementFileUpload)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   comment
-```
-
-Type: `ConnectApi.CommentInput`
-
-The comment body, including text and mentions, and capabilities, such as information about an attached file. A comment can
-contain up to 10,000 characters.
-
-```
-   feedElementFileUpload
-```
-
-Type: `ConnectApi.BinaryInput`
-
-A new binary file to attach to the comment, or `null` . If you specify a binary file, specify the title and description of the file in the
-_`comment`_ parameter.
-
-Return Value
-
-Type: `ConnectApi.Comment`
-
-If the feed element doesn’t support the `Comments` capability, the return value is `ConnectApi.NotFoundException` .
-
-Example for Posting a Comment with Mentions
-
-[You can post comments with mentions two ways. Use the ConnectApiHelper repository on GitHub to write a single line of code, or use](https://github.com/forcedotcom/ConnectApiHelper)
-this method example.
-
-```
-   String communityId = null;
-
-   String feedElementId = '0D5D0000000KtW3';
-
-   ConnectApi.CommentInput commentInput = new ConnectApi.CommentInput();
-
-   ConnectApi.MentionSegmentInput mentionSegmentInput = new ConnectApi.MentionSegmentInput();
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   textSegmentInput.text = 'Does anyone in this group have an idea? ';
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   mentionSegmentInput.id = '005D00000000oOT';
-
-   messageBodyInput.messageSegments.add(mentionSegmentInput);
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   commentInput.body = messageBodyInput;
-
-   ConnectApi.Comment commentRep = ConnectApi.ChatterFeeds.postCommentToFeedElement(communityId,
-
-    feedElementId, commentInput, null);
-
-```
-
-Example for Posting a Comment with an Existing File
-
-```
-   String feedElementId = '0D5D0000000KtW3';
-
-   ConnectApi.CommentInput commentInput = new ConnectApi.CommentInput();
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   textSegmentInput.text = 'I attached this file from Salesforce Files.';
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   commentInput.body = messageBodyInput;
-
-   ConnectApi.CommentCapabilitiesInput commentCapabilitiesInput = new
-
-   ConnectApi.CommentCapabilitiesInput();
-
-   ConnectApi.ContentCapabilityInput contentCapabilityInput = new
-
-   ConnectApi.ContentCapabilityInput();
-
-   commentCapabilitiesInput.content = contentCapabilityInput;
-
-   contentCapabilityInput.contentDocumentId = '069D00000001rNJ';
-
-   commentInput.capabilities = commentCapabilitiesInput;
-
-   ConnectApi.Comment commentRep =
-
-   ConnectApi.ChatterFeeds.postCommentToFeedElement(Network.getNetworkId(), feedElementId,
-
-   commentInput, null);
-
-```
-
-Example for Posting a Comment with a New File
-
-```
-   String feedElementId = '0D5D0000000KtW3';
-
-   ConnectApi.CommentInput commentInput = new ConnectApi.CommentInput();
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   textSegmentInput.text = 'Enjoy this new file.';
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   commentInput.body = messageBodyInput;
-
-   ConnectApi.CommentCapabilitiesInput commentCapabilitiesInput = new
-
-   ConnectApi.CommentCapabilitiesInput();
-
-   ConnectApi.ContentCapabilityInput contentCapabilityInput = new
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   ConnectApi.ContentCapabilityInput();
-
-   commentCapabilitiesInput.content = contentCapabilityInput;
-
-   contentCapabilityInput.title = 'Title';
-
-   commentInput.capabilities = commentCapabilitiesInput;
-
-   String text = 'These are the contents of the new file.';
-
-   Blob myBlob = Blob.valueOf(text);
-
-   ConnectApi.BinaryInput binInput = new ConnectApi.BinaryInput(myBlob, 'text/plain',
-
-   'fileName');
-
-   ConnectApi.Comment commentRep =
-
-   ConnectApi.ChatterFeeds.postCommentToFeedElement(Network.getNetworkId(), feedElementId,
-
-   commentInput, binInput);
-
-```
-
-Example for Posting a Rich-Text Comment with an Inline Image
-
-[You can post rich-text comments with inline images and mentions two ways. Use the ConnectApiHelper repository on GitHub to write](https://github.com/forcedotcom/ConnectApiHelper)
-a single line of code, or use this method example. In this example, the image file is existing content that has already been uploaded to
-Salesforce.
-
-```
-   String communityId = null;
-
-   String feedElementId = '0D5R0000000SBEr';
-
-   String imageId = '069R00000000IgQ';
-
-   String mentionedUserId = '005R0000000DiMz';
-
-   ConnectApi.CommentInput input = new ConnectApi.CommentInput();
-
-   ConnectApi.MessageBodyInput messageInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegment;
-
-   ConnectApi.MentionSegmentInput mentionSegment;
-
-   ConnectApi.MarkupBeginSegmentInput markupBeginSegment;
-
-   ConnectApi.MarkupEndSegmentInput markupEndSegment;
-
-   ConnectApi.InlineImageSegmentInput inlineImageSegment;
-
-   messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
-
-   markupBeginSegment.markupType = ConnectApi.MarkupType.Bold;
-
-   messageInput.messageSegments.add(markupBeginSegment);
-
-   textSegment = new ConnectApi.TextSegmentInput();
-
-   textSegment.text = 'Hello ';
-
-   messageInput.messageSegments.add(textSegment);
-
-   mentionSegment = new ConnectApi.MentionSegmentInput();
-
-   mentionSegment.id = mentionedUserId;
-
-   messageInput.messageSegments.add(mentionSegment);
-
-   textSegment = new ConnectApi.TextSegmentInput();
-
-   textSegment.text = '!';
-
-   messageInput.messageSegments.add(textSegment);
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   markupEndSegment = new ConnectApi.MarkupEndSegmentInput();
-
-   markupEndSegment.markupType = ConnectApi.MarkupType.Bold;
-
-   messageInput.messageSegments.add(markupEndSegment);
-
-   inlineImageSegment = new ConnectApi.InlineImageSegmentInput();
-
-   inlineImageSegment.altText = 'image one';
-
-   inlineImageSegment.fileId = imageId;
-
-   messageInput.messageSegments.add(inlineImageSegment);
-
-   input.body = messageInput;
-
-   ConnectApi.ChatterFeeds.postCommentToFeedElement(communityId, feedElementId, input, null);
-
-```
-
-Example for Posting a Rich-Text Comment with a Code Block
-
-```
-   String communityId = null;
-
-   String feedElementId = '0D5R0000000SBEr';
-
-   String codeSnippet = '<html>\n\t<body>\n\t\tHello, world!\n\t</body>\n</html>';
-
-   ConnectApi.CommentInput input = new ConnectApi.CommentInput();
-
-   ConnectApi.MessageBodyInput messageInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegment;
-
-   ConnectApi.MarkupBeginSegmentInput markupBeginSegment;
-
-   ConnectApi.MarkupEndSegmentInput markupEndSegment;
-
-   messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
-
-   markupBeginSegment.markupType = ConnectApi.MarkupType.Code;
-
-   messageInput.messageSegments.add(markupBeginSegment);
-
-   textSegment = new ConnectApi.TextSegmentInput();
-
-   textSegment.text = codeSnippet;
-
-   messageInput.messageSegments.add(textSegment);
-
-   markupEndSegment = new ConnectApi.MarkupEndSegmentInput();
-
-   markupEndSegment.markupType = ConnectApi.MarkupType.Code;
-
-   messageInput.messageSegments.add(markupEndSegment);
-
-   input.body = messageInput;
-
-   ConnectApi.ChatterFeeds.postCommentToFeedElement(communityId, feedElementId, input, null);
-
-##### **`postFeedElement(communityId, subjectId, feedElementType, text)`**
-
-```
-
-Post a plain-text feed element.
-
-API Version
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement postFeedElement(String communityId, String
-
-   subjectId, ConnectApi.FeedElementType feedElementType, String text)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of the parent this feed element is being posted to. This value can be the ID of a user, group, or record, or the string `me` to
-indicate the context user.
-
-```
-   feedElementType
-```
-
-Type: `ConnectApi.FeedElementType`
-
-The only possible value is `FeedItem` .
-
-```
-   text
-```
-
-Type: String
-
-The text of the feed element. A feed element can contain up to 10,000 characters.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-Example
-
-```
-   ConnectApi.FeedElement feedElement =
-
-   ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), '0F9d0000000TreH',
-
-   ConnectApi.FeedElementType.FeedItem, 'On vacation this week.');
-
-##### **`postFeedElement(communityId, feedElement)`**
-
-```
-
-Post a rich-text feed element. Include mentions and hashtag topics, attach already uploaded files to a feed element, and associate action
-link groups with a feed element. You can also use this method to share a feed element and add a comment.
-
-API Version
-
-36.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.FeedElement postFeedElement(String communityId,
-
-   ConnectApi.FeedElementInput feedElement)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElement
-```
-
-Type: `ConnectApi.FeedElementInput`
-
-Specify rich text, including mentions. Optionally, specify a link, a poll, or up to 10 existing files.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-Example for Posting a Feed Element with a Mention
-
-[You can post feed elements with mentions two ways. Use the ConnectApiHelper repository on GitHub to write a single line of code, or](https://github.com/forcedotcom/ConnectApiHelper)
-use this method example.
-
-```
-   ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
-
-   ConnectApi.MentionSegmentInput mentionSegmentInput = new ConnectApi.MentionSegmentInput();
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   mentionSegmentInput.id = '005RR000000Dme9';
-
-   messageBodyInput.messageSegments.add(mentionSegmentInput);
-
-   textSegmentInput.text = 'Could you take a look?';
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   feedItemInput.body = messageBodyInput;
-
-   feedItemInput.feedElementType = ConnectApi.FeedElementType.FeedItem;
-
-   feedItemInput.subjectId = '0F9RR0000004CPw';
-
-   ConnectApi.FeedElement feedElement =
-
-   ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), feedItemInput);
-
-```
-
-Example for Posting a Feed Element with Existing Content
-
-```
-   // Define the FeedItemInput object to pass to postFeedElement
-
-   ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
-
-   feedItemInput.subjectId = 'me';
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   textSegmentInput.text = 'Would you please review these docs?';
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   // The MessageBodyInput object holds the text in the post
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   feedItemInput.body = messageBodyInput;
-
-   // The FeedElementCapabilitiesInput object holds the capabilities of the feed item.
-
-   // For this feed item, we define a files capability to hold the file(s).
-
-   List<String> fileIds = new List<String>();
-
-   fileIds.add('069xx00000000QO');
-
-   fileIds.add('069xx00000000QT');
-
-   fileIds.add('069xx00000000Qn');
-
-   fileIds.add('069xx00000000Qi');
-
-   fileIds.add('069xx00000000Qd');
-
-   ConnectApi.FilesCapabilityInput filesInput = new ConnectApi.FilesCapabilityInput();
-
-   filesInput.items = new List<ConnectApi.FileIdInput>();
-
-   for (String fileId : fileIds) {
-
-      ConnectApi.FileIdInput idInput = new ConnectApi.FileIdInput();
-
-      idInput.id = fileId;
-
-      filesInput.items.add(idInput);
-
-   }
-
-   ConnectApi.FeedElementCapabilitiesInput feedElementCapabilitiesInput = new
-
-   ConnectApi.FeedElementCapabilitiesInput();
-
-   feedElementCapabilitiesInput.files = filesInput;
-
-   feedItemInput.capabilities = feedElementCapabilitiesInput;
-
-   // Post the feed item.
-
-   ConnectApi.FeedElement feedElement =
-
-   ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), feedItemInput);
-
-```
-
-Example for Posting a Rich-Text Feed Element with an Inline Image
-
-[You can post rich-text feed elements with inline images and mentions two ways. Use the ConnectApiHelper repository on GitHub to](https://github.com/forcedotcom/ConnectApiHelper)
-write a single line of code, or use this method example. In this example, the image file is existing content that has already been uploaded
-to Salesforce. The post also includes text and a mention.
-
-```
-   String communityId = null;
-
-   String imageId = '069D00000001INA';
-
-   String mentionedUserId = '005D0000001QNpr';
-
-   String targetUserOrGroupOrRecordId = '005D0000001Gif0';
-
-   ConnectApi.FeedItemInput input = new ConnectApi.FeedItemInput();
-
-   input.subjectId = targetUserOrGroupOrRecordId;
-
-   input.feedElementType = ConnectApi.FeedElementType.FeedItem;
-
-   ConnectApi.MessageBodyInput messageInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegment;
-
-   ConnectApi.MentionSegmentInput mentionSegment;
-
-   ConnectApi.MarkupBeginSegmentInput markupBeginSegment;
-
-   ConnectApi.MarkupEndSegmentInput markupEndSegment;
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   ConnectApi.InlineImageSegmentInput inlineImageSegment;
-
-   messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
-
-   markupBeginSegment.markupType = ConnectApi.MarkupType.Bold;
-
-   messageInput.messageSegments.add(markupBeginSegment);
-
-   textSegment = new ConnectApi.TextSegmentInput();
-
-   textSegment.text = 'Hello ';
-
-   messageInput.messageSegments.add(textSegment);
-
-   mentionSegment = new ConnectApi.MentionSegmentInput();
-
-   mentionSegment.id = mentionedUserId;
-
-   messageInput.messageSegments.add(mentionSegment);
-
-   textSegment = new ConnectApi.TextSegmentInput();
-
-   textSegment.text = '!';
-
-   messageInput.messageSegments.add(textSegment);
-
-   markupEndSegment = new ConnectApi.MarkupEndSegmentInput();
-
-   markupEndSegment.markupType = ConnectApi.MarkupType.Bold;
-
-   messageInput.messageSegments.add(markupEndSegment);
-
-   inlineImageSegment = new ConnectApi.InlineImageSegmentInput();
-
-   inlineImageSegment.altText = 'image one';
-
-   inlineImageSegment.fileId = imageId;
-
-   messageInput.messageSegments.add(inlineImageSegment);
-
-   input.body = messageInput;
-
-   ConnectApi.ChatterFeeds.postFeedElement(communityId, input);
-
-```
-
-Example for Posting a Rich-Text Feed Element with a Code Block
-
-```
-   String communityId = null;
-
-   String targetUserOrGroupOrRecordId = 'me';
-
-   String codeSnippet = '<html>\n\t<body>\n\t\tHello, world!\n\t</body>\n</html>';
-
-   ConnectApi.FeedItemInput input = new ConnectApi.FeedItemInput();
-
-   input.subjectId = targetUserOrGroupOrRecordId;
-
-   input.feedElementType = ConnectApi.FeedElementType.FeedItem;
-
-   ConnectApi.MessageBodyInput messageInput = new ConnectApi.MessageBodyInput();
-
-   ConnectApi.TextSegmentInput textSegment;
-
-   ConnectApi.MarkupBeginSegmentInput markupBeginSegment;
-
-   ConnectApi.MarkupEndSegmentInput markupEndSegment;
-
-   messageInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   markupBeginSegment = new ConnectApi.MarkupBeginSegmentInput();
-
-   markupBeginSegment.markupType = ConnectApi.MarkupType.Code;
-
-   messageInput.messageSegments.add(markupBeginSegment);
-
-   textSegment = new ConnectApi.TextSegmentInput();
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   textSegment.text = codeSnippet;
-
-   messageInput.messageSegments.add(textSegment);
-
-   markupEndSegment = new ConnectApi.MarkupEndSegmentInput();
-
-   markupEndSegment.markupType = ConnectApi.MarkupType.Code;
-
-   messageInput.messageSegments.add(markupEndSegment);
-
-   input.body = messageInput;
-
-   ConnectApi.ChatterFeeds.postFeedElement(communityId, input);
-
-```
-
-Example for Sharing a Feed Element (in Version 39.0 and Later)
-
-```
-   // Define the FeedItemInput object to pass to postFeedElement
-
-   ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
-
-   feedItemInput.subjectId = 'me';
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   textSegmentInput.text = 'Look at this post I'm sharing.';
-
-   // The MessageBodyInput object holds the text in the post
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   feedItemInput.body = messageBodyInput;
-
-   ConnectApi.FeedEntityShareCapabilityInput shareInput = new
-
-   ConnectApi.FeedEntityShareCapabilityInput();
-
-   shareInput.feedEntityId = '0D5R0000000SEbc';
-
-   ConnectApi.FeedElementCapabilitiesInput feedElementCapabilitiesInput = new
-
-   ConnectApi.FeedElementCapabilitiesInput();
-
-   feedElementCapabilitiesInput.feedEntityShare = shareInput;
-
-   feedItemInput.capabilities = feedElementCapabilitiesInput;
-
-   // Post the feed item.
-
-   ConnectApi.FeedElement feedElement =
-
-   ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), feedItemInput);
-
-```
-
-Example for Sending a Direct Message
-
-```
-   // Define the FeedItemInput object to pass to postFeedElement
-
-   ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
-
-   ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-   textSegmentInput.text = 'Thanks for attending my presentation test run this morning. Send
-
-    me any feedback.';
-
-   // The MessageBodyInput object holds the text in the post
-
-   ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-   messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-   messageBodyInput.messageSegments.add(textSegmentInput);
-
-   feedItemInput.body = messageBodyInput;
-
-   // The FeedElementCapabilitiesInput object holds the capabilities of the feed item.
-
-   // For this feed item, we define a direct message capability to hold the member(s) and the
-
-    subject.
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   List<String> memberIds = new List<String>();
-
-   memberIds.add('005B00000016OUQ');
-
-   memberIds.add('005B0000001rIN6');
-
-   ConnectApi.DirectMessageCapabilityInput dmInput = new
-
-   ConnectApi.DirectMessageCapabilityInput();
-
-   dmInput.subject = 'Thank you!';
-
-   dmInput.membersToAdd = memberIds;
-
-   ConnectApi.FeedElementCapabilitiesInput feedElementCapabilitiesInput = new
-
-   ConnectApi.FeedElementCapabilitiesInput();
-
-   feedElementCapabilitiesInput.directMessage = dmInput;
-
-   feedItemInput.capabilities = feedElementCapabilitiesInput;
-
-   // Post the feed item.
-
-   ConnectApi.FeedElement feedElement =
-
-   ConnectApi.ChatterFeeds.postFeedElement(Network.getNetworkId(), feedItemInput);
-
-##### **`postFeedElementBatch(communityId, feedElements)`**
-
-```
-
-Post a list of feed elements.
-
-API Version
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.BatchResult[] postFeedElementBatch(String communityId,
-
-   List<ConnectApi.BatchInput> feedElements)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElements
-```
-
-Type: List< `ConnectApi.BatchInput`       
-
-The list can contain up to 500 `ConnectApi.BatchInput` objects. In the `ConnectApi.BatchInput` constructor, the
-input object must be a concrete instance of the abstract `ConnectApi.FeedElementInput` class.
-
-Return Value
-
-Type: `ConnectApi.BatchResult` []
-
-
-Apex Reference Guide ChatterFeeds Class
-
-The `ConnectApi.BatchResult.getResult()` method returns a `ConnectApi.FeedElement` object.
-
-The returned objects correspond to each of the input objects and are returned in the same order as the input objects.
-
-The method call fails only if an error occurs that affects the entire operation (such as a parsing failure). If an individual object causes an
-error, the error is embedded within the `ConnectApi.BatchResult` list.
-
-Usage
-
-Use this method to post a list of feed elements efficiently. Create a list containing up to 500 objects and insert them all for the cost of
-one DML statement.
-
-In version 36.0 and later, you can attach only one already uploaded file to each post. The `ConnectApi.BatchInput` has three
-constructors, but the `postFeedElementBatch` method supports only `ConnectApi.BatchInput(Object input)`
-in version 35.0 and later. This constructor doesn’t support a binary input.
-
-In version 32.0–35.0, this method supports both `ConnectApi.BatchInput(Object input)` and
-`ConnectApi.BatchInput(Object input, ConnectApi.BinaryInput binary)` constructors. The
-`ConnectApi.BatchInput(Object input, ConnectApi.BinaryInput binary)` constructor allows for a single
-binary input.
-
-In each constructor, the input object must be an instance of `ConnectApi.FeedElementInput` .
-
-Example
-
-This trigger bulk posts to the feeds of newly inserted accounts.
-
-```
-   trigger postFeedItemToAccount on Account (after insert) {
-
-      Account[] accounts = Trigger.new;
-
-      // Bulk post to the account feeds.
-
-      List<ConnectApi.BatchInput> batchInputs = new List<ConnectApi.BatchInput>();
-
-      for (Account a : accounts) {
-
-        ConnectApi.FeedItemInput input = new ConnectApi.FeedItemInput();
-
-        input.subjectId = a.id;
-
-        ConnectApi.MessageBodyInput body = new ConnectApi.MessageBodyInput();
-
-        body.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-        ConnectApi.TextSegmentInput textSegment = new ConnectApi.TextSegmentInput();
-
-        textSegment.text = 'Let\'s win the ' + a.name + ' account.';
-
-        body.messageSegments.add(textSegment);
-
-        input.body = body;
-
-        ConnectApi.BatchInput batchInput = new ConnectApi.BatchInput(input);
-
-        batchInputs.add(batchInput);
-
-      }
-
-      ConnectApi.ChatterFeeds.postFeedElementBatch(Network.getNetworkId(), batchInputs);
-
-   }
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`publishDraftFeedElement(communityId, feedElementId, feedElement)`**
-
-Publish a draft feed element.
-
-API Version
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement publishDraftFeedElement(String communityId, String
-
-   feedElementId, ConnectApi.FeedElementInput feedElement)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element to publish.
-
-```
-   feedElement
-```
-
-Type: `ConnectApi.FeedElementInput`
-
-Use this optional parameter to edit your draft before publishing.
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-The published feed element has a new ID.
-
-##### **`searchFeedElements(communityId, q)`**
-
-Get the first page of feed elements that match the search criteria.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElements(String communityId, String
-
-   q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElements(communityId, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElements(communityId, q, sortParam)`**
-
-Get the first page of sorted feed elements that match the search criteria.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElements(String communityId, String
-
-   q, ConnectApi.FeedSortOrder sortParam)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElements(communityId, q, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElements(communityId, q, threadedCommentsCollapsed)`**
-
-Get the feed elements and comments that match the search criteria.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElements(String communityId, String
-
-   q, Boolean threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElements(communityId, q, threadedCommentsCollapsed, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElements(communityId, q, pageParam, pageSize)`**
-
-Get a page of feed elements that match the search criteria.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElements(String communityId, String
-
-   q, String pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElements(communityId, q, pageParam, pageSize, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElements(communityId, q, pageParam, pageSize, sortParam)`**
-
-Get a page of sorted feed elements that match the search criteria.
-
-API Version
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElements(String communityId, String
-
-   q, String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElements(communityId, q, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElements(communityId, q, pageParam, pageSize,`**
-
-```
-  threadedCommentsCollapsed)
-
-```
-
-Get a page of feed elements with comments in a threaded style that match the search criteria.
-
-API Version
-
-44.0
-
-Available to Guest Users
-
-44.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElements(String communityId, String
-
-   q, String pageParam, Integer pageSize, Boolean threadedCommentsCollapsed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElements(communityId, q, pageParam, pageSize, threadedCommentsCollapsed, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElements(communityId, q, recentCommentCount, pageParam, pageSize,`**
-
-```
-  sortParam)
-
-```
-
-Get a page of sorted feed elements that match the search criteria. Each feed element includes no more than the specified number of
-comments.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElements(String communityId, String
-
-   q, Integer recentCommentCount, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElements(communityId, q, recentCommentCount, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, q)`**
-
-Get the feed elements from the `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`, and
-`PendingReview` feeds that match the search criteria.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`, and
-`PendingReview` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`searchFeedElementsInFeed(communityId, feedType, pageParam, pageSize,`**
-
-```
-  sortParam, q)
-
-```
-
-Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`,
-and `PendingReview` feeds that match the search criteria.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`, and
-`PendingReview` .
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, pageParam, pageSize, sortParam, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, recentCommentCount, density,`**
-
-```
-  pageParam, pageSize, sortParam, q)
-
-```
-
-Get a page of sorted feed elements from the `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`,
-and `PendingReview` feeds that match the search criteria. Each feed element includes no more than the specified number of
-comments.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam, String q)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `Home`, `Isolated`, `Moderation`, and
-`PendingReview` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, recentCommentCount, density,`**
-
-```
-  pageParam, pageSize, sortParam, q, filter)
-
-```
-
-Get a page of sorted and filtered feed elements from the `Home` feed that match the search criteria. Each feed element includes no more
-than the specified number of comments.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam, String q,
-
-   ConnectApi.FeedFilter filter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. The only valid value is `Home` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-When the _`sortParam`_ is `MostViewed`, you must pass in `null` for the _`pageParam`_ .
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-When the _`sortParam`_ is `MostViewed`, the _`pageSize`_ must be a value from 1 to 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-filter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, subjectId, q)`**
-
-Search up to 5,000 of the most recent feed elements in a feed for a subject ID that match the search string. Feed elements are returned
-in order of most recent activity.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, String q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessages`, `Filter`,
-`Landing`, `Streams`, and `Topics` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `UserProfile`,
-_`subjectId`_ can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the
-alias `me` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, subjectId, pageParam,`**
-
-```
-  pageSize, sortParam, q)
-
-```
-
-Get a page of sorted feed elements from a feed for a record or user that match the search criteria.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessages`, `Filter`,
-`Landing`, `Streams`, and `Topics` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `UserProfile`,
-_`subjectId`_ can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the
-alias `me` .
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Order of feed items in the feed.
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Search term. Searches keywords in the user or group name. A minimum of one character is required. This parameter doesn’t support
-wildcards. This parameter is required.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, pageParam, pageSize, sortParam, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, q)
-
-```
-
-Get a page of sorted feed elements from a feed that match the search criteria. Each feed element includes no more than the specified
-number of comments.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessages`, `Filter`,
-`Landing`, `Streams`, and `Topics` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `UserProfile`,
-_`subjectId`_ can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the
-alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, q, filter)
-
-```
-
-Get a page of sorted and filtered feed elements from a `UserProfile` feed that match the search criteria.
-
-API Version
-
-35.0
-
-Available to Guest Users
-
-35.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q, ConnectApi.FeedFilter filter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.UserProfile` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of any user. To specify the context user, use the user ID or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-One or more keywords to search for in the feed elements visible to the context user. The search string can contain wildcards and
-[must contain at least two characters that aren’t wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Value must be `ConnectApi.FeedFilter.CommunityScoped` . Filters the feed to include only feed elements that are
-scoped to Experience Cloud sites. Feed elements that are always visible in all sites are filtered out.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, filter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, q, customFilter)
-
-```
-
-Get a page of sorted and filtered feed elements from a case feed that match the search criteria.
-
-API Version
-
-40.0
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q, String customFilter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-One or more keywords to search for in the feed elements visible to the context user. The search string can contain wildcards and
-[must contain at least two characters that aren’t wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, customFilter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, q, showInternalOnly)
-
-```
-
-Get a page of sorted feed elements from a feed for a record or user that match the search criteria. Each feed element includes no more
-than the specified number of comments. Specify whether to return feed elements posted by internal (non-Experience Cloud site) users
-only.
-
-API Version
-
-31.0
-
-Available to Guest Users
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q, Boolean showInternalOnly)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, showInternalOnly, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, q, showInternalOnly, filter)
-
-```
-
-Get a page of sorted and filtered feed elements from a feed for a record or user that match the search criteria. Each feed element includes
-no more than the specified number of comments. Specify whether to return feed elements posted by internal (non-Experience Cloud
-site) users only.
-
-API Version
-
-32.0
-
-Available to Guest Users
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q, Boolean showInternalOnly,
-
-   ConnectApi.FeedFilter filter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, showInternalOnly, filter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, q, showInternalOnly, customFilter)
-
-```
-
-Get a page of sorted and filtered feed elements from a case feed that match the search criteria.
-
-API Version
-
-40.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Available to Guest Users
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFeed(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q, Boolean showInternalOnly, String
-
-   customFilter)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed elements from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   filter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, showInternalOnly, customFilter, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, q)`**
-
-Get the feed elements from a feed filtered by a key prefix that match the search criteria.
-
-API Version
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFilterFeed(String
-
-   communityId, String subjectId, String keyPrefix, String q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, pageParam,`**
-
-```
-  pageSize, sortParam, q)
-
-```
-
-Get a page of sorted feed elements from a feed filtered by a key prefix that match the search criteria.
-
-API Version
-
-31.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFilterFeed(String
-
-   communityId, String subjectId, String keyPrefix, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, sortParam, q)
-
-```
-
-Get a page of sorted feed elements from a feed filtered by a key prefix that match the search criteria. Each feed element includes no
-more than the specified number of comments.
-
-API Version
-
-31.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElementPage searchFeedElementsInFilterFeed(String
-
-   communityId, String subjectId, String keyPrefix, Integer recentCommentCount,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, String q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-Return Value
-
-Type: `ConnectApi.FeedElementPage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchStreams(communityId, q)`**
-
-Search the Chatter feed streams for the context user.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage searchStreams(String communityId, String q)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchStreams(communityId, q, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`searchStreams(communityId, q, sortParam)`**
-
-Search and sort the Chatter feed streams for the context user.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage searchStreams(String communityId, String q,
-
-   ConnectApi.SortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.SortOrder`
-
-Specifies the sort order. Values are:
-
-**•** `Ascending` —Items are in ascending alphabetical order (A-Z).
-
-**•** `Descending` —Items are in descending alphabetical order (Z-A).
-
-**•** `MostRecentlyViewed` —Items are in descending chronological order by view. This sort order is valid only for Chatter feed
-streams.
-
-If not specified, default value is `Ascending` .
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchStreams(communityId, q, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`searchStreams(communityId, q, pageParam, pageSize)`**
-
-Search the Chatter feed streams for the context user and return a page of results.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage searchStreams(String communityId, String q,
-
-   Integer pageParam, Integer pageSize)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 to 250. The default size is 25.
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchStreams(communityId, q, pageParam, pageSize, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`searchStreams(communityId, q, pageParam, pageSize, sortParam)`**
-
-Search the Chatter feed streams for the context user and return a sorted page of results.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage searchStreams(String communityId, String q,
-
-   Integer pageParam, Integer pageSize, ConnectApi.SortOrder sortParam)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 to 250. The default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.SortOrder`
-
-Specifies the sort order. Values are:
-
-**•** `Ascending` —Items are in ascending alphabetical order (A-Z).
-
-**•** `Descending` —Items are in descending alphabetical order (Z-A).
-
-**•** `MostRecentlyViewed` —Items are in descending chronological order by view. This sort order is valid only for Chatter feed
-streams.
-
-If not specified, default value is `Ascending` .
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-SEE ALSO:
-
-setTestSearchStreams(communityId, q, pageParam, pageSize, sortParam, result)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`searchStreams(communityId, q, pageParam, pageSize, sortParam, globalScope)`**
-
-Search the Chatter feed streams from all Experience Cloud sites for the context user and return a sorted page of results.
-
-API Version
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStreamPage searchStreams(String communityId, String q,
-
-   Integer pageParam, Integer pageSize, ConnectApi.SortOrder sortParam, Boolean globalScope)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   q
-```
-
-Type: String
-
-Required and can’t be `null` . Specifies the string to search. The search string must contain at least two characters, not including
-[wildcards. See Wildcards.](https://developer.salesforce.com/docs/atlas.en-us.260.0.chatterapi.meta/chatterapi/intro_wildcards.htm)
-
-```
-   pageParam
-```
-
-Type: Integer
-
-Number of the page you want returned. Starts at 0. If you pass in `null` or 0, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of items per page. Valid values are from 1 to 250. The default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.SortOrder`
-
-Specifies the sort order. Values are:
-
-**•** `Ascending` —Items are in ascending alphabetical order (A-Z).
-
-**•** `Descending` —Items are in descending alphabetical order (Z-A).
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `MostRecentlyViewed` —Items are in descending chronological order by view. This sort order is valid only for Chatter feed
-streams.
-
-If not specified, default value is `Ascending` .
-
-```
-   globalScope
-```
-
-Type: Boolean
-
-Specifies whether to get streams from all the context user’s Experience Cloud sites, regardless of the _`communityId`_ value.
-
-Tip: If you know the _`communityId`_ for the streams, we recommend setting _`globalScope`_ to `false` .
-
-Return Value
-
-Type: `ConnectApi.ChatterStreamPage`
-
-Usage
-
-To test code that uses this method, use the matching set test method (prefix the method name with `setTest` ). Use the set test method
-with the same parameters or the code throws an exception.
-
-##### **`setCommentIsVerified(communityId, commentId, isVerified)`**
-
-Mark a comment as verified or unverified.
-
-API Version
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.VerifiedCapability setCommentIsVerified(String communityId,
-
-   String commentId, Boolean isVerified)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment on a question post. Only one comment on a question post can be marked as verified.
-
-```
-   isVerified
-```
-
-Type: Boolean
-
-Specifies whether to mark the comment as verified ( `true` ) or unverified ( `false` ).
-
-Only verified comments can be marked as unverified, and only unverified comments can be marked as verified.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.VerifiedCapability`
-
-If the comment doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`setCommentIsVerifiedByAnonymized(communityId, commentId, isVerified,`**
-
-```
-  isVerifiedByAnonymized)
-
-```
-
-Mark a comment as verified by an anonymous user.
-
-API Version
-
-43.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.VerifiedCapability setCommentIsVerifiedByAnonymized(String
-
-   communityId, String commentId, Boolean isVerified, Boolean isVerifiedByAnonymized)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment on a question post. Only one comment on a question post can be marked as verified.
-
-```
-   isVerified
-```
-
-Type: Boolean
-
-Specifies whether to mark the comment as verified ( `true` ) or unverified ( `false` ).
-
-Only verified comments can be marked as unverified, and only unverified comments can be marked as verified.
-
-```
-   isVerifiedByAnonymized
-```
-
-Type: Boolean
-
-Specifies whether to mark the comment as verified by an anonymous user ( `true` ).
-
-If a user previously verified a comment and then requested the activity to be deleted, use `isVerifiedByAnonymized` to
-maintain the verification and anonymize the value of `lastVerifiedByUser` .
-
-You can’t set `isVerified` and `isVerifiedByAnonymized` to `true` at the same time. `isVerifiedByAnonymized`
-can be set to `true` only if `isVerified` is already set to `true` .
-
-You can’t set `isVerifiedByAnonymized` to `false` . After `isVerifiedByAnonymized` is set to `true`, it can be
-undone only when another user marks the comment as unverified and then reverifies the comment.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.VerifiedCapability`
-
-If the comment doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`setCommentVote(communityId, commentId, upDownVote)`**
-
-Upvote or downvote a comment.
-
-API Version
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.UpDownVoteCapability setCommentVote(String communityId, String
-
-   commentId, ConnectApi.UpDownVoteCapabilityInput upDownVote)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-```
-   upDownVote
-```
-
-Type: `ConnectApi.UpDownVoteCapabilityInput`
-
-A `ConnectApi.UpDownVoteCapabilityInput` object that includes your vote.
-
-Return Value
-
-Type: `ConnectApi.UpDownVoteCapability`
-
-If the comment doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`setFeedCommentStatus(communityId, commentId, status)`**
-
-Set the status of a comment.
-
-API Version
-
-38.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.StatusCapability setFeedCommentStatus(String communityId,
-
-   String commentId, ConnectApi.StatusCapabilityInput status)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-```
-   status
-```
-
-Type: `ConnectApi.StatusCapabilityInput`
-
-A `ConnectApi.StatusCapabilityInput` object that includes the status you want to set.
-
-Return Value
-
-Type: `ConnectApi.StatusCapability`
-
-If the comment doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-Usage
-
-Only users with the Can Approve Feed Post and Comment permission can set the status of a feed post or comment.
-
-##### **`setFeedElementIsClosed(communityId, feedElementId, isClosed)`**
-
-Set a feed element to closed.
-
-Users can’t edit (specifically the feed item body or title), comment on, or delete a closed feed element. If the closed feed element is a
-poll, users can’t vote on it. Users can’t edit (specifically the comment body) or delete a comment on a closed feed element or select or
-remove it as best answer.
-
-Admins and moderators can edit and delete closed feed elements and comments on closed feed elements. Admins and moderators
-can select or remove the best answer status on comments on closed feed elements.
-
-API Version
-
-43.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.CloseCapability setFeedElementIsClosed(String communityId,
-
-   String feedElementId, Boolean isClosed)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   isClosed
-```
-
-Type: Boolean
-
-Specifies whether to set the feed element to closed ( `true` ) or not ( `false` ).
-
-Return Value
-
-Type: `ConnectApi.CloseCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`setFeedElementVote(communityId, feedElementId, upDownVote)`**
-
-Upvote or downvote a feed element.
-
-API Version
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.UpDownVoteCapability setFeedElementVote(String communityId,
-
-   String feedElementId, ConnectApi.UpDownVoteCapabilityInput upDownVote)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   upDownVote
-```
-
-Type: `ConnectApi.UpDownVoteCapabilityInput`
-
-A `ConnectApi.UpDownVoteCapabilityInput` object that includes your vote.
-
-Return Value
-
-Type: `ConnectApi.UpDownVoteCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`setFeedEntityStatus(communityId, feedElementId, status)`**
-
-Set the status of a feed post.
-
-API Version
-
-37.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.StatusCapability setFeedEntityStatus(String communityId, String
-
-   feedElementId, ConnectApi.StatusCapabilityInput status)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   status
-```
-
-Type: `ConnectApi.StatusCapabilityInput`
-
-A `ConnectApi.StatusCapabilityInput` object that includes the status you want to set.
-
-Return Value
-
-Type: `ConnectApi.StatusCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-Usage
-
-Only users with the Can Approve Feed Post and Comment permission can set the status of a feed post or comment.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`setIsMutedByMe(communityId, feedElementId, isMutedByMe)`**
-
-Mute or unmute a feed element.
-
-API Version
-
-35.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.MuteCapability setIsMutedByMe(String communityId, String
-
-   feedElementId, Boolean isMutedByMe)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   isMutedByMe
-```
-
-Type: Boolean
-
-Indicates whether the feed element is muted for the context user. Default value is `false` .
-
-Return Value
-
-Type: `ConnectApi.MuteCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`setIsReadByMe(communityId, feedElementId, readBy)`**
-
-Mark a feed element as read for the context user using an input class.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static ConnectApi.ReadByCapability setIsReadByMe(String communityId, String
-
-   feedElementId, ConnectApi.ReadByCapabilityInput readBy)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element to mark as read.
-
-```
-   readBy
-```
-
-Type: `ConnectApi.ReadByCapabilityInput`
-
-A `ConnectApi.ReadByCapabilityInput` body indicating to mark the feed elements as read.
-
-Return Value
-
-Type: `ConnectApi.ReadByCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`setIsReadByMe(communityId, feedElementId, isReadByMe)`**
-
-Mark a feed element as read for the context user.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ReadByCapability setIsReadByMe(String communityId, String
-
-   feedElementId, Boolean isReadByMe)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element to mark as read.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   isReadByMe
-```
-
-Type: Boolean
-
-Specifies to mark the feed element as read ( `true` ) for the context user.
-
-Return Value
-
-Type: `ConnectApi.ReadByCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`updateComment(communityId, commentId, comment)`**
-
-Edit a comment.
-
-API Version
-
-34.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.Comment updateComment(String communityId, String commentId,
-
-   ConnectApi.CommentInput comment)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment to be edited.
-
-```
-   comment
-```
-
-Type: `ConnectApi.CommentInput`
-
-Information about the comment to be edited.
-
-Return Value
-
-Type: `ConnectApi.Comment`
-
-If the comment doesn’t support the `edit` capability, the return value is `ConnectApi.NotFoundException` .
-
-Example
-
-```
-   String commentId;
-
-   String communityId = Network.getNetworkId();
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   // Get the last feed item created by the context user.
-
-   List<FeedItem> feedItems = [SELECT Id FROM FeedItem WHERE CreatedById = :UserInfo.getUserId()
-
-    ORDER BY CreatedDate DESC];
-
-   if (feedItems.isEmpty()) {
-
-      // Return null within anonymous apex.
-
-      return null;
-
-   }
-
-   String feedElementId = feedItems[0].id;
-
-   ConnectApi.CommentPage commentPage =
-
-   ConnectApi.ChatterFeeds.getCommentsForFeedElement(communityId, feedElementId);
-
-   if (commentPage.items.isEmpty()) {
-
-      // Return null within anonymous apex.
-
-      return null;
-
-   }
-
-   commentId = commentPage.items[0].id;
-
-   ConnectApi.FeedEntityIsEditable isEditable =
-
-   ConnectApi.ChatterFeeds.isCommentEditableByMe(communityId, commentId);
-
-   if (isEditable.isEditableByMe == true){
-
-      ConnectApi.CommentInput commentInput = new ConnectApi.CommentInput();
-
-      ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-      ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-      messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-      textSegmentInput.text = 'This is my edited comment.';
-
-      messageBodyInput.messageSegments.add(textSegmentInput);
-
-      commentInput.body = messageBodyInput;
-
-      ConnectApi.Comment editedComment = ConnectApi.ChatterFeeds.updateComment(communityId,
-
-    commentId, commentInput);
-
-   }
-
-##### **`updateDirectMessage(communityId, feedElementId, directMessage)`**
-
-```
-
-Update the members of a direct message.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.DirectMessageCapability updateDirectMessage(String communityId,
-
-   String feedElementId, ConnectApi.DirectMessageCapabilityInput directMessage)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   directMessage
-```
-
-Type: `ConnectApi.DirectMessageCapabilityInput`
-
-A `ConnectApi.DirectMessageCapabilityInput` body that includes the members to add and remove.
-
-Return Value
-
-Type: `ConnectApi.DirectMessageCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`updateFeedElement(communityId, feedElementId, feedElement)`**
-
-Edit a feed element.
-
-API Version
-
-34.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.FeedElement updateFeedElement(String communityId, String
-
-   feedElementId, ConnectApi.FeedElementInput feedElement)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element to be edited. Feed items are the only type of feed element that can be edited.
-
-```
-   feedElement
-```
-
-Type: `ConnectApi.FeedElementInput`
-
-Information about the feed item to be edited.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.FeedElement`
-
-If the feed element doesn’t support the `edit` capability, the return value is `ConnectApi.NotFoundException` .
-
-Example for Editing a Feed Post
-
-```
-   String communityId = Network.getNetworkId();
-
-   // Get the last feed item created by the context user.
-
-   List<FeedItem> feedItems = [SELECT Id FROM FeedItem WHERE CreatedById = :UserInfo.getUserId()
-
-    ORDER BY CreatedDate DESC];
-
-   if (feedItems.isEmpty()) {
-
-      // Return null within anonymous apex.
-
-      return null;
-
-   }
-
-   String feedElementId = feedItems[0].id;
-
-   ConnectApi.FeedEntityIsEditable isEditable =
-
-   ConnectApi.ChatterFeeds.isFeedElementEditableByMe(communityId, feedElementId);
-
-   if (isEditable.isEditableByMe == true){
-
-      ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
-
-      ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-      ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-      messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-      textSegmentInput.text = 'This is my edited post.';
-
-      messageBodyInput.messageSegments.add(textSegmentInput);
-
-      feedItemInput.body = messageBodyInput;
-
-      ConnectApi.FeedElement editedFeedElement =
-
-   ConnectApi.ChatterFeeds.updateFeedElement(communityId, feedElementId, feedItemInput);
-
-   }
-
-```
-
-Example for Editing a Question Title and Post
-
-```
-   String communityId = Network.getNetworkId();
-
-   // Get the last feed item created by the context user.
-
-   List<FeedItem> feedItems = [SELECT Id FROM FeedItem WHERE CreatedById = :UserInfo.getUserId()
-
-    ORDER BY CreatedDate DESC];
-
-   if (feedItems.isEmpty()) {
-
-      // Return null within anonymous apex.
-
-      return null;
-
-   }
-
-   String feedElementId = feedItems[0].id;
-
-   ConnectApi.FeedEntityIsEditable isEditable =
-
-   ConnectApi.ChatterFeeds.isFeedElementEditableByMe(communityId, feedElementId);
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   if (isEditable.isEditableByMe == true){
-
-      ConnectApi.FeedItemInput feedItemInput = new ConnectApi.FeedItemInput();
-
-      ConnectApi.FeedElementCapabilitiesInput feedElementCapabilitiesInput = new
-
-   ConnectApi.FeedElementCapabilitiesInput();
-
-      ConnectApi.QuestionAndAnswersCapabilityInput questionAndAnswersCapabilityInput = new
-
-   ConnectApi.QuestionAndAnswersCapabilityInput();
-
-      ConnectApi.MessageBodyInput messageBodyInput = new ConnectApi.MessageBodyInput();
-
-      ConnectApi.TextSegmentInput textSegmentInput = new ConnectApi.TextSegmentInput();
-
-      messageBodyInput.messageSegments = new List<ConnectApi.MessageSegmentInput>();
-
-      textSegmentInput.text = 'This is my edited question.';
-
-      messageBodyInput.messageSegments.add(textSegmentInput);
-
-      feedItemInput.body = messageBodyInput;
-
-      feedItemInput.capabilities = feedElementCapabilitiesInput;
-
-      feedElementCapabilitiesInput.questionAndAnswers = questionAndAnswersCapabilityInput;
-
-      questionAndAnswersCapabilityInput.questionTitle = 'Where is my edited question?';
-
-      ConnectApi.FeedElement editedFeedElement =
-
-   ConnectApi.ChatterFeeds.updateFeedElement(communityId, feedElementId, feedItemInput);
-
-   }
-
-##### **`updateFeedElementBookmarks(communityId, feedElementId, bookmarks)`**
-
-```
-
-Bookmark a feed element or remove a bookmark from a feed element using an input class.
-
-API Version
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.BookmarksCapability updateFeedElementBookmarks(String
-
-   communityId, String feedElementId, ConnectApi.BookmarksCapabilityInput bookmarks)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   bookmarks
-```
-
-Type: `ConnectApi.BookmarksCapabilityInput`
-
-Information about a bookmark.
-
-Return Value
-
-Type: ConnectApi.BookmarksCapability
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`updateFeedElementBookmarks(communityId, feedElementId,`**
-
-```
-  isBookmarkedByCurrentUser)
-
-```
-
-Bookmark a feed element or remove a bookmark from a feed element.
-
-API Version
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.BookmarksCapability updateFeedElementBookmarks(String
-
-   communityId, String feedElementId, Boolean isBookmarkedByCurrentUser)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   isBookmarkedByCurrentUser
-```
-
-Type: Boolean
-
-Specify whether to bookmark the feed element ( `true` ) or not ( `false` ).
-
-Return Value
-
-Type: `ConnectApi.BookmarksCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Example
-
-```
-   ConnectApi.BookmarksCapability bookmark =
-
-   ConnectApi.ChatterFeeds.updateFeedElementBookmarks(null, '0D5D0000000KuGh', true);
-
-##### **`updateFeedElementReadByCapabilityBatch(communityId, feedElementIds, readBy)`**
-
-```
-
-Mark multiple feed elements as read by the context user at the same time using an input class.
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.BatchResult[] updateFeedElementReadByCapabilityBatch(String
-
-   communityId, List<String> feedElementIds, ConnectApi.ReadByCapabilityInput readBy)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementIds
-```
-
-Type: List<String>
-
-Up to 500 feed element IDs to mark as read.
-
-```
-   readBy
-```
-
-Type: `ConnectApi.ReadByCapabilityInput`
-
-A `ConnectApi.ReadByCapabilityInput` body indicating to mark the feed elements as read.
-
-Return Value
-
-Type: `ConnectApi.BatchResult` []
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-The returned objects correspond to each of the input objects and are returned in the same order as the input objects.
-
-The method call fails only if an error occurs that affects the entire operation (such as a parsing failure). If an individual object causes an
-error, the error is embedded within the `ConnectApi.BatchResult` list.
-
-##### **`updateFeedElementReadByCapabilityBatch(communityId, feedElementIds,`**
-
-```
-  isReadByMe)
-
-```
-
-Mark multiple feed elements as read by the context user at the same time.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-40.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.BatchResult[] updateFeedElementReadByCapabilityBatch(String
-
-   communityId, List<String> feedElementIds, Boolean isReadByMe)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementIds
-```
-
-Type: List<String>
-
-Up to 500 feed element IDs to mark as read.
-
-```
-   isReadByMe
-```
-
-Type: Boolean
-
-Specifies to mark the feed element as read ( `true` ) for the context user.
-
-Return Value
-
-Type: `ConnectApi.BatchResult` []
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`updateLikeForComment(communityId, commentId, isLikedByCurrentUser)`**
-
-Like or unlike a comment.
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLikePage updateLikeForComment(String communityId, String
-
-   commentId, Boolean isLikedByCurrentUser)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   commentId
-```
-
-Type: String
-
-ID of the comment.
-
-```
-   isLikedByCurrentUser
-```
-
-Type: Boolean
-
-Specifies if the context user likes ( `true` ) or unlikes ( `false` ) the comment.
-
-Return Value
-
-Type: `ConnectApi.ChatterLikePage`
-
-##### **`updateLikeForFeedElement(communityId, feedElementId, isLikedByCurrentUser)`**
-
-Like or unlike a feed element.
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterLikePage updateLikeForFeedElement(String communityId,
-
-   String feedElementId, Boolean isLikedByCurrentUser)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   isLikedByCurrentUser
-```
-
-Type: Boolean
-
-Specifies if the context user likes ( `true` ) or unlikes ( `false` ) the feed element.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: `ConnectApi.ChatterLikePage`
-
-If the feed element doesn’t support the `ChatterLikes` capability, the return value is `ConnectApi.NotFoundException` .
-
-##### **`updatePinnedFeedElements(communityId, feedType, subjectId, pin)`**
-
-Pin or unpin feed elements to a group or topic feed.
-
-API Version
-
-41.0
-
-Available to Guest Users
-
-41.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.PinCapability updatePinnedFeedElements(String communityId,
-
-   ConnectApi.FeedType feedType, String subjectId, ConnectApi.PinCapabilityInput pin)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. Valid values are `Record` and `Topics` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ must be a group ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID.
-
-```
-   pin
-```
-
-Type: `ConnectApi.PinCapabilityInput`
-
-A `ConnectApi.PinCapabilityInput` object indicating the feed element to pin or unpin.
-
-Return Value
-
-Type: `ConnectApi.PinCapability`
-
-If the feed doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`updateStream(communityId, streamId, streamInput)`**
-
-Update a Chatter feed stream.
-
-API Version
-
-39.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.ChatterStream updateStream(String communityId, String streamId,
-
-   ConnectApi.ChatterStreamInput streamInput)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   streamId
-```
-
-Type: String
-
-ID of the Chatter feed stream.
-
-```
-   streamInput
-```
-
-Type: `ConnectApi.ChatterStreamInput`
-
-A `ConnectApi.ChatterStreamInput` object.
-
-Return Value
-
-Type: `ConnectApi.ChatterStream`
-
-##### **`voteOnFeedElementPoll(communityId, feedElementId, myChoiceId)`**
-
-Vote on a poll or change your vote on a poll.
-
-API Version
-
-32.0
-
-Requires Chatter
-
-Yes
-
-Signature
-
-```
-   public static ConnectApi.PollCapability voteOnFeedElementPoll(String communityId, String
-
-   feedElementId, String myChoiceId)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedElementId
-```
-
-Type: String
-
-ID of the feed element.
-
-```
-   myChoiceId
-```
-
-Type: String
-
-ID of the poll item you’re voting for. The key prefix for poll items is 09A.
-
-Return Value
-
-Type: `ConnectApi.PollCapability`
-
-If the feed element doesn’t support this capability, the return value is `ConnectApi.NotFoundException` .
-
-Example
-
-```
-   ConnectApi.PollCapability poll = ConnectApi.ChatterFeeds.voteOnFeedElementPoll(null,
-
-   '0D5D0000000XZaUKAW', '09AD000000000TKMAY');
-
-#### ChatterFeeds Test Methods These test methods are for ChatterFeeds . All methods are static.
-
-```
-
-For information about using these methods to test your `ConnectApi` [code, see Testing ConnectApi Code.](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-IN THIS SECTION:
-
-setTestGetFeedElementsFromFeed(communityId, feedType, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, filter,
-result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, filter,
-threadedCommentsCollapsed, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getFeedElementsFromFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, showInternalOnly, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, filter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, filter, threadedCommentsCollapsed, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getFeedElementsFromFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, customFilter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, filter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, filter, threadedCommentsCollapsed, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, customFilter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, customFilter, threadedCommentsCollapsed, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getFeedElementsFromFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, result)
-a `ConnectApi.FeedElementPage` object to be returned when the matching `getFeedElementsFromFilterFeed`
-method is called in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching `getFeedElements`
-`FromFilterFeed` method is called in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching `getFeedElements`
-`FromFilterFeed` method is called in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsFromFilterFeedUpdatedSince(communityId, subjectId, keyPrefix, recentCommentCount, elementsPerBundle,
-density, pageParam, pageSize, updatedSince, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the
-`getFeedElementsFromFilterFeedUpdatedSince` method is called in a test context.
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince,
-result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, recentCommentCount, density, pageParam, pageSize, updatedSince,
-filter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-updatedSince, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-updatedSince, showInternalOnly, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, filter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, customFilter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, showInternalOnly, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, showInternalOnly, filter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetFeedElementsUpdatedSince(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density,
-pageParam, pageSize, updatedSince, showInternalOnly, customFilter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsUpdatedSince` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestGetRelatedPosts(communityId, feedElementId, filter, maxResults, result)
-Register a `ConnectApi.RelatedFeedPosts` object to be returned when the matching
-`ConnectApi.getRelatedPosts(communityId, feedElementId, filter, maxResults)` method is
-called in a test context. Use the method with the same parameters or you receive an exception.
-
-setTestGetTopUnansweredQuestions(communityId, result) (Pilot)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getTopUnansweredQuestions` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestGetTopUnansweredQuestions(communityId, filter, result) (Pilot)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getTopUnansweredQuestions` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestGetTopUnansweredQuestions(communityId, pageSize, result) (Pilot)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getTopUnansweredQuestions` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestGetTopUnansweredQuestions(communityId, filter, pageSize, result) (Pilot)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getTopUnansweredQuestions` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElements(communityId, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElements` method is called in a test context. Use the method with the same parameters or you
-receive an exception.
-
-setTestSearchFeedElements(communityId, q, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElements` method is called in a test context. Use the method with the same parameters or you
-receive an exception.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-setTestSearchFeedElements(communityId, q, threadedCommentsCollapsed, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElements` method is called in a test context. Use the method with the same parameters or you
-receive an exception.
-
-setTestSearchFeedElements(communityId, q, pageParam, pageSize, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElements` method is called in a test context. Use the method with the same parameters or you
-receive an exception.
-
-setTestSearchFeedElements(communityId, q, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElements` method is called in a test context. Use the method with the same parameters or you
-receive an exception.
-
-setTestSearchFeedElements(communityId, q, pageParam, pageSize, threadedCommentsCollapsed, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElements` method is called in a test context. Use the method with the same parameters or you
-receive an exception.
-
-setTestSearchFeedElements(communityId, q, recentCommentCount, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElements` method is called in a test context. Use the method with the same parameters or you
-receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, pageParam, pageSize, sortParam, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, q,
-filter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, pageParam, pageSize, sortParam, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, filter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when `searchFeedElementsInFeed` is called
-with matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, customFilter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, showInternalOnly, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, showInternalOnly, filter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, showInternalOnly, customFilter, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFeed` method is called in a test context. Use the method with the same parameters
-or you receive an exception.
-
-setTestSearchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFilterFeed` method is called in a test context. Use the method with the same
-parameters or you receive an exception.
-
-setTestSearchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFilterFeed` method is called in a test context. Use the method with the same
-parameters or you receive an exception.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-setTestSearchFeedElementsInFilterFeed(communityId, subjectId, keyPrefix, recentCommentCount, density, pageParam, pageSize,
-sortParam, q, result)
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.searchFeedElementsInFilterFeed` method is called in a test context. Use the method with the same
-parameters or you receive an exception.
-
-setTestSearchStreams(communityId, q, result)
-Register a `ConnectApi.ChatterStreamPage` object to be returned when the matching
-`ConnectApi.searchStream(communityId, q)` method is called in a test context. Use the method with the same
-parameters or you receive an exception.
-
-setTestSearchStreams(communityId, q, sortParam, result)
-Register a `ConnectApi.ChatterStreamPage` object to be returned when the matching
-`ConnectApi.searchStream(communityId, q, sortParam)` method is called in a test context. Use the method
-with the same parameters or you receive an exception.
-
-setTestSearchStreams(communityId, q, pageParam, pageSize, result)
-Register a `ConnectApi.ChatterStreamPage` object to be returned when the matching
-`ConnectApi.searchStreams(communityId, q, pageParam, pageSize)` method is called in a test context.
-Use the method with the same parameters or you receive an exception.
-
-setTestSearchStreams(communityId, q, pageParam, pageSize, sortParam, result)
-Register a `ConnectApi.ChatterStreamPage` object to be returned when the matching
-`ConnectApi.searchStreams(communityId, q, pageParam, pageSize, sortParam)` method is called
-in a test context. Use the method with the same parameters or you receive an exception.
-
-setTestSearchStreams(communityId, q, pageParam, pageSize, sortParam, globalScope, result)
-Register a `ConnectApi.ChatterStreamPage` object to be returned when the matching
-
-```
-    ConnectApi.searchStreams(communityId, q, pageParam, pageSize, sortParam, globalScope)
-```
-
-method is called in a test context. Use the method with the same parameters or you receive an exception.
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, result)`**
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, pageParam, pageSize,`**
-
-```
-  sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam,
-
-   ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The only valid value for this parameter is `Company` .
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, Integer recentCommentCount, ConnectApi.FeedDensity density, String pageParam,
-
-   Integer pageSize, ConnectApi.FeedSortOrder sortParam, ConnectApi.FeedElementPage result)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values are `Company`, `DirectMessageModeration`, `DirectMessages`, `Home`, `Isolated`,
-`Moderation`, and `PendingReview` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, filter, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-32.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, Integer recentCommentCount, ConnectApi.FeedDensity density, String pageParam,
-
-   Integer pageSize, ConnectApi.FeedSortOrder sortParam, ConnectApi.FeedFilter filter,
-
-   ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. The only valid value is `Home` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, filter)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, sortParam, filter, threadedCommentsCollapsed,
-
-  result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getFeedElementsFromFeed` method is called in a test context. Use the method with the same parameters or
-you receive an exception.
-
-API Version
-
-44.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, Integer recentCommentCount, ConnectApi.FeedDensity density, String pageParam,
-
-   Integer pageSize, ConnectApi.FeedSortOrder sortParam, ConnectApi.FeedFilter filter,
-
-   Boolean threadedCommentsCollapsed, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The type of feed. The only valid value is `Home` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-getFeedElementsFromFeed(communityId, feedType, recentCommentCount, density, pageParam, pageSize, sortParam, filter,
-threadedCommentsCollapsed)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, result)`**
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-The feed type.
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId, pageParam,`**
-
-```
-  pageSize, sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, String pageParam, Integer pageSize, ConnectApi.FeedSortOrder
-
-   sortParam, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessageModeration`,
-`DirectMessages`, `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `Streams`, _`subjectId`_
-must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID. If _`feedType`_ is `UserProfile`, _`subjectId`_
-can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the alias `me` .
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam,
-
-   ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Type of feed. Valid values include every `ConnectApi.FeedType` except `Company`, `DirectMessageModeration`,
-`DirectMessages`, `Filter`, `Home`, `Isolated`, `Landing`, `Moderation`, and `PendingReview` .
-
-```
-   subjectId
-```
-
-Type: String
-
-If _`feedType`_ is `Record`, _`subjectId`_ can be any record ID, including a group ID. If _`feedType`_ is `Streams`, _`subjectId`_
-must be a stream ID. If _`feedType`_ is `Topics`, _`subjectId`_ must be a topic ID. If _`feedType`_ is `UserProfile`, _`subjectId`_
-can be any user ID. If the _`feedType`_ is any other value, _`subjectId`_ must be the ID of the context user or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, sortParam, showInternalOnly,
-
-  result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam, Boolean
-
-   showInternalOnly, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-showInternalOnly)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, sortParam, filter, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the method with the same parameters or the code throws an exception.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-API Version
-
-35.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam,
-
-   ConnectApi.FeedFilter filter, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.UserProfile` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of any user. To specify the context user, use the user ID or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Value must be `ConnectApi.FeedFilter.CommunityScoped` . Filters the feed to include only feed elements that are
-scoped to Experience Cloud sites. Feed elements that are always visible in all sites are filtered out. Currently, feed elements scoped
-to sites have a User or a Group parent record. However, other parent record types could be scoped to sites in the future.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-filter)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, sortParam, filter,
-
-  threadedCommentsCollapsed, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getFeedElementsFromFeed` method is called in a test context. Use the method with the same parameters or
-you receive an exception.
-
-API Version
-
-44.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam,
-
-   ConnectApi.FeedFilter filter, Boolean threadedCommentsCollapsed,
-
-   ConnectApi.FeedElementPage result)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.UserProfile` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of any user. To specify the context user, use the user ID or the alias `me` .
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Value must be `ConnectApi.FeedFilter.CommunityScoped` . Filters the feed to include only feed elements that are
-scoped to Experience Cloud sites. Feed elements that are always visible in all sites are filtered out. Currently, feed elements scoped
-to sites have a User or a Group parent record. However, other parent record types could be scoped to sites in the future.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-filter, threadedCommentsCollapsed)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, density, pageParam, pageSize, sortParam, customFilter,
-
-  result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-40.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, ConnectApi.FeedDensity density,
-
-   String pageParam, Integer pageSize, ConnectApi.FeedSortOrder sortParam, String
-
-   customFilter, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, density, pageParam, pageSize, sortParam,
-customFilter)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  sortParam, showInternalOnly, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, Integer elementsPerBundle,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, ConnectApi.FeedElementPage
-
-   result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  sortParam, showInternalOnly, filter, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-32.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, Integer elementsPerBundle,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, ConnectApi.FeedFilter
-
-   filter, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, filter)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  sortParam, showInternalOnly, filter, threadedCommentsCollapsed, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-44.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, Integer elementsPerBundle,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, ConnectApi.FeedFilter
-
-   filter, Boolean threadedCommentsCollapsed, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-Any record ID, including a group ID.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   filter
-```
-
-Type: `ConnectApi.FeedFilter`
-
-Specifies the feed filters.
-
-**•** `AllQuestions` —Feed elements that are questions.
-
-**•** `AuthoredBy` —Feed elements authored by the user profile owner. This value is valid only for the `UserProfile` feed.
-
-**•** `CommunityScoped` —Feed elements that are scoped to Experience Cloud sites. Currently, these feed elements have a User
-or a Group parent record. However, other parent record types could be scoped to sites in the future. Feed elements that are
-always visible in all sites are filtered out. This value is valid only for the `UserProfile` feed.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `QuestionsWithCandidateAnswers` —Feed elements that are questions that have candidate answers associated with
-them. This value is valid only for users with the Access Einstein-Generated Answers permission.
-
-**•** `QuestionsWithCandidateAnswersReviewedPublished` —Feed elements that are questions that have candidate
-answers that have been reviewed or published. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Read` —Feed elements that are older than 30 days or are marked as read for the context user. Includes existing feed elements
-when the context user joined the group. This value is valid only for the `Record` feed of a group.
-
-**•** `SolvedQuestions` —Feed elements that are questions and that have a best answer.
-
-**•** `UnansweredQuestions` —Feed elements that are questions and that don’t have any answers.
-
-**•** `UnansweredQuestionsWithCandidateAnswers` —Feed elements that are questions that don’t have answers but
-have candidate answers associated with them. This value is valid only for users with the Access Einstein-Generated Answers
-permission.
-
-**•** `Unread` —Feed elements that are created in the past 30 days and aren’t marked as read for the context user. This value is valid
-only for the `Record` feed of a group.
-
-**•** `UnsolvedQuestions` —Feed elements that are questions and that don’t have a best answer.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, filter, threadedCommentsCollapsed)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  sortParam, showInternalOnly, customFilter, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when `getFeedElementsFromFeed` is called with
-matching parameters in a test context. Use the get feed method with the same parameters or the code throws an exception.
-
-API Version
-
-40.0
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, Integer elementsPerBundle,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, String customFilter,
-
-   ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, customFilter)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFeed(communityId, feedType, subjectId,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  sortParam, showInternalOnly, customFilter, threadedCommentsCollapsed, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching
-`ConnectApi.getFeedElementsFromFeed` method is called in a test context. Use the method with the same parameters or
-you receive an exception.
-
-API Version
-
-44.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFeed(String communityId, ConnectApi.FeedType
-
-   feedType, String subjectId, Integer recentCommentCount, Integer elementsPerBundle,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   ConnectApi.FeedSortOrder sortParam, Boolean showInternalOnly, String customFilter,
-
-   Boolean threadedCommentsCollapsed, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   feedType
-```
-
-Type: `ConnectApi.FeedType`
-
-Value must be `ConnectApi.FeedType.Record` .
-
-```
-   subjectId
-```
-
-Type: String
-
-The ID of a case.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed item. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   showInternalOnly
-```
-
-Type: Boolean
-
-Specifies whether to show only feed items from internal (non-Experience Cloud site) users ( `true` ), or not ( `false` ). The default
-value is `false` .
-
-```
-   customFilter
-```
-
-Type: String
-
-[Custom filter that applies only to the case feed. See customFeedFilter in the](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_customfeedfilter.htm) _Metadata API Developer Guide_ for supported values.
-
-```
-   threadedCommentsCollapsed
-```
-
-Type: Boolean
-
-Specifies whether to return threaded comments in a collapsed style ( `true` ) or not ( `false` ). If you pass in `null`, the default is
-
-`false` .
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-getFeedElementsFromFeed(communityId, feedType, subjectId, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam, showInternalOnly, customFilter, threadedCommentsCollapsed)
-
-##### **`setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix,`**
-
-```
-  result)
-
-```
-
-a `ConnectApi.FeedElementPage` object to be returned when the matching `getFeedElementsFromFilterFeed`
-method is called in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFilterFeed(String communityId, String
-
-   subjectId, String keyPrefix, ConnectApi.FeedElementPage result)
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix,`**
-
-```
-  pageParam, pageSize, sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching `getFeedElements`
-`FromFilterFeed` method is called in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFilterFeed(String communityId, String
-
-   subjectId, String keyPrefix, String pageParam, Integer pageSize, ConnectApi.FeedSortOrder
-
-   sortParam, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, pageParam, pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-
-Apex Reference Guide ChatterFeeds Class
-
-##### **`setTestGetFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix,`**
-
-```
-  recentCommentCount, elementsPerBundle, density, pageParam, pageSize,
-
-  sortParam, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when the matching `getFeedElements`
-`FromFilterFeed` method is called in a test context. Use the method with the same parameters or the code throws an exception.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFilterFeed(String communityId, String
-
-   subjectId, String keyPrefix, Integer recentCommentCount, Integer elementsPerBundle,
-
-   ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   ConnectApi.FeedSortOrder sortParam, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   sortParam
-```
-
-Type: `ConnectApi.FeedSortOrder`
-
-Values are:
-
-**•** `CreatedDateAsc` —Sorts by oldest creation date. This sort order is available only for `DirectMessageModeration`,
-`Draft`, `Isolated`, `Moderation`, and `PendingReview` feeds.
-
-**•** `CreatedDateDesc` —Sorts by most recent creation date.
-
-**•** `LastModifiedDateDesc` —Sorts by most recent activity.
-
-**•** `MostViewed` —Sorts by most viewed content. This sort order is available only for `Home` feeds when the
-`ConnectApi.FeedFilter` is `UnansweredQuestions` .
-
-**•** `Relevance` —Sorts by most relevant content. This sort order is available only for `Company`, `Home`, and `Topics` feeds.
-
-If you pass in `null`, the default value `CreatedDateDesc` is used.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFilterFeed(communityId, subjectId, keyPrefix, recentCommentCount, elementsPerBundle, density, pageParam,
-pageSize, sortParam)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsFromFilterFeedUpdatedSince(communityId, subjectId,`**
-
-```
-  keyPrefix, recentCommentCount, elementsPerBundle, density, pageParam,
-
-  pageSize, updatedSince, result)
-
-```
-
-Register a `ConnectApi.FeedElementPage` object to be returned when the
-`getFeedElementsFromFilterFeedUpdatedSince` method is called in a test context.
-
-API Version
-
-31.0
-
-Signature
-
-```
-   public static Void setTestGetFeedElementsFromFilterFeedUpdatedSince(String communityId,
-
-   String subjectId, String keyPrefix, Integer recentCommentCount, Integer
-
-```
-
-
-Apex Reference Guide ChatterFeeds Class
-
-```
-   elementsPerBundle, ConnectApi.FeedDensity density, String pageParam, Integer pageSize,
-
-   String updatedSince, ConnectApi.FeedElementPage result)
-
-```
-
-Parameters
-
-```
-   communityId
-```
-
-Type: String
-
-ID for an Experience Cloud site, `internal`, or `null` .
-
-```
-   subjectId
-```
-
-Type: String
-
-ID of the context user or the alias `me` .
-
-```
-   keyPrefix
-```
-
-Type: String
-
-A key prefix that specifies record type. A key prefix is the first three characters in the object ID, which specifies the object type. For
-example, User objects have a prefix of 005 and Group objects have a prefix of 0F9.
-
-```
-   recentCommentCount
-```
-
-Type: Integer
-
-Maximum number of comments to return with each feed element. The default value is 3.
-
-```
-   elementsPerBundle
-```
-
-Type: Integer
-
-Maximum number of feed elements to include in a bundle. The value must be an integer between 0 and 10. The default value is 3.
-
-```
-   density
-```
-
-Type: `ConnectApi.FeedDensity`
-
-Specify the amount of content in a feed.
-
-**•** `AllUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also displays
-custom recommendations.
-
-**•** `FewerUpdates` —Displays all updates from people and records the user follows and groups the user is a member of. Also
-displays custom recommendations, but hides some system-generated updates from records.
-
-```
-   pageParam
-```
-
-Type: String
-
-Page token to use to view the page. Page tokens are returned as part of the response class, for example, `currentPageToken`
-or `nextPageToken` . If you pass in `null`, the first page is returned.
-
-```
-   pageSize
-```
-
-Type: Integer
-
-Specifies the number of feed elements per page. Valid values are from 1 through 100. If you pass in `null`, the default size is 25.
-
-```
-   updatedSince
-```
-
-Type: String
-
-Opaque token defining the modification timestamp of the feed and the sort order.
-
-The _`updatedSince`_ parameter doesn’t return feed elements that are created in the same second as the call.
-
-```
-   result
-```
-
-Type: `ConnectApi.FeedElementPage`
-
-Object containing test data.
-
-
-Apex Reference Guide ChatterFeeds Class
-
-Return Value
-
-Type: Void
-
-SEE ALSO:
-
-getFeedElementsFromFilterFeedUpdatedSince(communityId, subjectId, keyPrefix, recentCommentCount, elementsPerBundle,
-density, pageParam, pageSize, updatedSince)
-
-_Apex Developer Guide_ [: Testing ConnectApi Code](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/connectAPI_TestingApex.htm)
-
-##### **`setTestGetFeedElementsUpdatedSince(communityId, feedType, recentCommentCount,`**
-
-```
-  density, pageParam, pageSize, updatedSince, result)

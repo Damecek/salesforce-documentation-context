@@ -1,3 +1,6559 @@
+Customizing Client-Side Logic for the Salesforce Mobile App, Lightning
+Experience, and Standalone Apps
+
+Since the Salesforce mobile app and Lightning Experience automatically handle many events, you have to do extra work if your component
+runs in a standalone app. Instantiating the event using `$A.get()` can help you determine if your component is running within the
+Salesforce mobile app and Lightning Experience or a standalone app. For example, you want to display a toast when a component loads
+in the Salesforce mobile app and Lightning Experience. You can fire the `force:showToast` event and set its parameters for the
+Salesforce mobile app and Lightning Experience, but you have to create your own implementation for a standalone app.
+
+```
+   displayToast : function (component, event, helper) {
+
+      var toast = $A.get("e.force:showToast");
+
+      if (toast){
+
+        //fire the toast event in Salesforce app and Lightning Experience
+
+        toast.setParams({
+
+           "title": "Success!",
+
+           "message": "The component loaded successfully."
+
+        });
+
+        toast.fire();
+
+      } else {
+
+        //your toast implementation for a standalone app here
+
+      }
+
+   }
+
+```
+
+SEE ALSO:
+
+aura:dependency
+
+Fire Component Events
+
+Fire Application Events
+
+
+## Communicating with Events System Events System Events
+
+The framework fires several system events during its lifecycle.
+
+You can handle these events in your Lightning apps or components, and within the Salesforce mobile app.
+
+For examples, see the Lightning Component Library.
+
+**Event Name** **Description**
+
+`aura:doneRendering` (deprecated) Indicates that the initial rendering of the root application has completed.
+
+Note: The `aura:doneRendering` event is deprecated. Unless your
+component is running in complete isolation in a standalone app and not
+included in complex apps, such as Lightning Experience or the Salesforce
+mobile app, the container app may trigger your event handler multiple
+times. This behavior makes it difficult to handle each event appropriately.
+
+`aura:doneWaiting` (deprecated) Indicates that the app is done waiting for a response to a server request. This
+event is preceded by an `aura:waiting` event.
+
+Note: The `aura:doneWaiting` event is deprecated. The
+`aura:doneWaiting` application event is fired for every server
+response, even for responses from other components in your app. Unless
+your component is running in complete isolation in a standalone app and
+not included in Lightning Experience or the Salesforce mobile app, the
+container app may trigger your event handler multiple times. This behavior
+makes it difficult to handle each event appropriately.
+
+`aura:locationChange` Indicates that the hash part of the URL has changed.
+
+`aura:noAccess` Indicates that a requested resource is not accessible due to security constraints
+on that resource.
+
+`aura:systemError` Indicates that an error has occurred.
+
+`aura:valueChange` Indicates that an attribute value has changed.
+
+`aura:valueDestroy` Indicates that a component has been destroyed.
+
+`aura:valueInit` Indicates that an app or component has been initialized.
+
+`aura:valueRender` Indicates that an app or component has been rendered or rerendered.
+
+`aura:waiting` (deprecated) Indicates that the app is waiting for a response to a server request.
+
+Note: The `aura:waiting` event is deprecated. The
+`aura:waiting` application event is fired for every server request, even
+for requests from other components in your app. Unless your component
+is running in complete isolation in a standalone app and not included in
+Lightning Experience or the Salesforce mobile app, the container app may
+trigger your event handler multiple times. This behavior makes it difficult
+to handle each event appropriately.
+
+
+# CHAPTER 6 Communicating Across the DOM with Lightning
+
+Message Service
+
+In this chapter ...
+
+**•** Create a Message
+Channel
+
+Use Lightning message service to communicate across the DOM within a Lightning page. Communicate
+between Visualforce pages embedded in the same Lightning page, Aura components, and Lightning
+web components, including components in a utility bar and pop-out utilities. Choose whether a
+component subscribes to messages from the entire application, or from only the active area.
+
+**•** Publish on a
+If you're switching from Salesforce Classic to Lightning Experience, you can build Lightning web
+Message Channel
+components that can communicate with existing Visualforce pages or Aura components. You can also
+
+**•** Subscribe to a
+use Lightning message service to communicate with softphones via Open CTI.
+Message Channel
+
+**•** Lightning Message Important: Lightning message service is available in Lightning Experience and as a beta feature
+Service Limitations for Lightning components used in Experience Builder sites.
+
+To access Lightning message service in Aura, use the `lightning:messageChannel` component.
+A message is a serializable JSON object. Examples of data that you can pass in a message include strings,
+numbers, booleans, and objects. A message can’t contain functions and symbols. The
+`lightning:messageChannel` component is only available in Lightning Experience.
+
+SEE ALSO:
+
+[Blog: Lightning Message Service](https://developer.salesforce.com/blogs/2019/10/lightning-message-service-developer-preview.html)
+
+_Lightning Web Components Developer Guide_ [: Communicating Across the DOM with Lightning Message](https://developer.salesforce.com/docs/atlas.en-us.260.0.lightning.meta/lightning/message_channel_intro.htm)
+[Service](https://developer.salesforce.com/docs/atlas.en-us.260.0.lightning.meta/lightning/message_channel_intro.htm)
+
+_Visualforce Developer Guide_ [: Communicating Across the DOM with Lightning Message Service](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/message_channel_intro.htm)
+
+_Open CTI Developer Guide_ [: Lightning Message Service Methods for Lightning Experience](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_cti.meta/api_cti/sforce_api_cti_methods_lms.htm)
+
+
+## Communicating Across the DOM with Lightning Message Create a Message Channel
+
+Service
+
+## Create a Message Channel
+
+To create a `lightning:messageChannel` component in your org, use the LightningMessageChannel metadata type and append
+it with `__c` . The message channel isn’t a custom object, it just uses the same suffix.
+
+[Note: See LightningMessageChannel in the Metadata API Developer Guide.](https://developer.salesforce.com/docs/atlas.en-us.260.0.api_meta.meta/api_meta/meta_lightningmessagechannel.htm)
+
+To deploy a LightningMessageChannel into your org, create a Salesforce DX project. Include the XML definition in the
+`force-app/main/default/messageChannels/` directory. The LightningMessageChannel file name follows the format
+_`messageChannelName`_ .messageChannel-meta.xml. To deploy it to your scratch org, sandbox, or Developer Edition org, run the
+`sf project deploy start` Salesforce CLI command.
+
+SEE ALSO:
+
+[Trailhead: Set Up Salesforce DX](https://trailhead.salesforce.com/en/content/learn/modules/sfdx_app_dev/sfdx_app_dev_setup_dx)
+
+[Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
+
+## Publish on a Message Channel
+
+To publish a message on a message channel, include a `lightning:messageChannel` component in your Aura component and
+use the `publish()` method in your Aura component's controller file.
+
+Example: The `lmsPublisherAuraComponent` [from the github.com/trailheadapps/lwc-recipes repo shows how to](https://github.com/trailheadapps/lwc-recipes)
+publish a message to notify subscribers on a Lightning page when a contact is selected.
+
+To reference a message channel, add the `lightning:messageChannel` component to your Aura component. The component
+has a required `type` attribute, which is the name of the message channel.
+
+```
+   <!-- myComponent.cmp -->
+
+   <aura:component>
+
+      <lightning:messageChannel type="SampleMessageChannel__c"/>
+
+   </aura:component>
+
+```
+
+To reference a message channel from an org that has a namespace, prefix the message channel name with the namespace:
+`<lightning:messageChannel type="` _**`Namespace__MessageChannelName__c`**_ `"/>` .
+
+This example shows how to publish a message on the `SampleMessageChannel__c` channel when a button is clicked.
+
+In `myComponent.cmp`, we create two components, `lightning:button` and `lightning:messageChannel` . On
+`lightning:button`, the `onclick` handler calls the `handleClick()` JavaScript function in the controller. We assign the
+`aura:id` attribute to `lightning:messageChannel` to access the `publish()` method.
+
+```
+   <!-- myComponent.cmp -->
+
+   <aura:component>
+
+      <lightning:button onclick="{! c.handleClick }"/>
+
+      <lightning:messageChannel type="SampleMessageChannel__c"
+
+        aura:id="sampleMessageChannel"/>
+
+   </aura:component>
+
+   // myComponentController.js
+
+   ({
+
+      handleClick: function(cmp, event, helper) {
+
+        var payload = {
+
+```
+
+
+## Communicating Across the DOM with Lightning Message Subscribe to a Message Channel
+
+Service
+
+```
+           recordId: "some string",
+
+           recordData: {
+
+             value: "some value"
+
+           }
+
+        };
+
+        cmp.find("sampleMessageChannel").publish(payload);
+
+      }
+
+   })
+
+```
+
+In the controller, `handleClick()` contains the `payload` object. This object holds the message that gets sent on the
+`SampleMessageChannel__c` message channel. Here, the message is a `recordId` with the value "some string" and
+`recordData`, whose value is the key-value pair `value: "some value"` . Then, the controller finds the
+`lightning:messageChannel` component referenced in `myComponent.cmp` and calls `publish()` with the payload.
+
+Note: Lightning message service publishes messages to any subscribed component until the destroy phase of the component's
+lifecycle, even if the component isn't visible. Sometimes when you navigate away from a Lightning page, components are cached
+and not destroyed. These components still receive messages. For more information, see lifecycle on page 294 and related system
+events on page 298
+
+## Subscribe to a Message Channel
+
+To subscribe to a message channel, create a handler method to run when it receives a message.
+
+Example: The `lmsSubscriberAuraComponent` [from the github.com/trailheadapps/lwc-recipes repo shows how to](https://github.com/trailheadapps/lwc-recipes)
+subscribe and unsubscribe from a message channel.
+
+In this example, we define an Aura component called `myNewComponent` that contains the custom message channel,
+`SampleMessageChannel__c` . The `lightning:messageChannel` component's `onMessage` attribute calls the
+`handleChanged` method in the client-side controller.
+
+By default, communication over a message channel can occur only between components in an active navigation tab, an active navigation
+item, or a utility item. Utility items are always active. A navigation tab or item is active when it’s selected. Navigation tabs and items
+include:
+
+**•** Standard navigation tabs
+
+**•** Console navigation workspace tabs
+
+**•** Console navigations subtabs
+
+**•** Console navigation items
+
+To receive messages on a message channel from anywhere in the application, use `lightning:messageChannel` 's optional
+parameter, `scope` . Set `scope` to the value `"APPLICATION"` .
+
+```
+   <lightning:messageChannel type=" messageChannel " onMessage="{! listener }"
+
+   scope="APPLICATION"/>
+
+```
+
+The component `myNewComponent` detects a new message and updates the display value.
+
+```
+   <!-- myNewComponent.cmp -->
+
+   <aura:component>
+
+      <aura:attribute name="recordValue" type="String"/>
+
+      <lightning:formattedText value="{!v.recordValue}" />
+
+      <lightning:messageChannel type="SampleMessageChannel__c"
+
+```
+
+
+## Communicating Across the DOM with Lightning Message Lightning Message Service Limitations
+
+Service
+
+```
+         onMessage="{!c.handleChanged}"/>
+
+   </aura:component>
+
+   // myNewComponentController.js
+
+   ({
+
+      handleChanged: function(cmp, message, helper) {
+
+      // Read the message argument to get the values in the message payload
+
+      if (message != null && message.getParam("recordData") != null) {
+
+        cmp.set("v.recordValue", message.getParam("recordData").value);
+
+      }
+
+     }
+
+   })
+
+```
+
+Write the handler in your component's client-side controller. The `handleChanged` method fires when there is a new message. It
+checks whether there is a payload in the message, and if so, assigns the new data to the `v.recordValue` attribute. The
+`lightning:formattedText` element updates to display the new value.
+
+## Lightning Message Service Limitations
+
+Keep the following in mind when working with Lightning message service.
+
+**Supported Experiences**
+Lightning message service supports only the following experiences:
+
+**•** Lightning Experience standard navigation
+
+**•** Lightning Experience console navigation
+
+**•** Salesforce mobile app for Aura and Lightning Web Components, but not for Visualforce pages
+
+**•** Lightning components used in Experience Builder sites.
+
+Note: Lightning Message Service doesn't work with Salesforce Tabs + Visualforce sites or with Visualforce pages in
+Experience Builder sites.
+
+**Aura Components That Don’t Render Aren’t Supported**
+Lightning message service only supports Aura components that render. You can’t use `lightning:messageChannel` in an
+Aura component that uses the background utility item interface. Similarly, Aura components that use
+`lightning:messageChannel` can’t call Lightning Message Service methods in the `init` lifecycle handler because the
+component hasn’t rendered.
+
+**`lightning:messageChannel`** **Must Be a Child of** **`aura:component`**
+In a custom Aura component, `lightning:messageChannel` must be an immediate child of the `aura:component` tag.
+It can’t be nested in an HTML tag or another component.
+
+For example, the following code renders without a problem.
+
+```
+     <aura:component>
+
+      <lightning:messageChannel type="myMessageChannel__c" />
+
+      <lightning:card>...</lightning:card>
+
+     </aura:component>
+
+```
+
+This code throws an error when the Aura component tries to render.
+
+```
+     <aura:component>
+
+      <lightning:card>
+
+       <lightning:messageChannel type="myMessageChannel__c" />
+
+```
+
+
+Communicating Across the DOM with Lightning Message Lightning Message Service Limitations
+Service
+
+```
+      </lightning:card>
+
+     </aura:component>
+
+```
+
+**Messages are Constrained by iframe Boundary**
+If your component uses Lightning message service to publish a message, that message is constrained by any iframe boundary. To
+work around this limitation, use the `sforce.one.subscribe()` and `[sforce.one.unsubscribe()](https://developer.salesforce.com/docs/atlas.en-us.260.0.pages.meta/pages/message_channel_subscribe.htm)` methods.
+
+**Avoid Dynamically Creating lightning:messageChannel Components in Aura**
+Do not use `createComponent()` on page 476 to dynamically create a `lightning:messageChannel` component in
+Aura. Dynamically created components may not work as expected. For information on supported ways to create a
+`lightning:messageChannel` component, see Create a Message Channel on page 300.
+
+SEE ALSO:
+
+[Invoking Actions on Component Initialization](https://developer.salesforce.com/docs/atlas.en-us.260.0.lightning.meta/lightning/js_cb_init_handler.htm)
+
+_Component Reference_ : `[lightning:backgroundUtilityItem](https://developer.salesforce.com/docs/component-library/bundle/lightning:backgroundUtilityItem/documentation)`
+
+
+# CHAPTER 7 Creating Apps
+
+In this chapter ... Components are the building blocks of an app. This section shows you a typical workflow to put the
+pieces together to create a new app.
+
+**•** App Overview
+First, you should decide whether you’re creating a component for a standalone app or for Salesforce
+
+**•** Designing App UI
+apps, such as Lightning Experience or Salesforce for Android, iOS, and mobile web. Both components
+# • Creating App can access your Salesforce data, but only a component created for Lightning Experience or Salesforce
+
+Templates
+
+for Android, iOS, and mobile web can automatically handle Salesforce events that take advantage of
+
+**•** Using the AppCache record create and edit pages, among other benefits.
+
+**•** Distributing
+Applications and
+Components
+
+The Quick Start on page 6 walks you through creating components for a standalone app and
+components for Salesforce for Android, iOS, and mobile web to help you determine which one you need.
+
+
+## Creating Apps App Overview App Overview
+
+An app is a special top-level component whose markup is in a `.app` resource.
+
+On a production server, the `.app` resource is the only addressable unit in a browser URL. Access an app using the URL:
+
+`https://` _`MyDomainName`_ `.lightning.force.com/<namespace>/<appName>.app` .
+
+SEE ALSO:
+
+aura:application
+
+Supported HTML Tags
+
+## Designing App UI
+
+Design your app's UI by including markup in the `.app` resource. Each part of your UI corresponds to a component, which can in turn
+contain nested components. Compose components to create a sophisticated app.
+
+An app’s markup starts with the `<aura:application>` tag.
+
+Note: Creating a standalone app enables you to host your components outside of Salesforce for Android, iOS, and mobile web
+or Lightning Experience, such as with Lightning Out or Lightning components in Visualforce pages. To learn more about the
+`<aura:application>` tag, see aura:application.
+
+Let's look at a `sample.app` file, which starts with the `<aura:application>` tag.
+
+```
+   <aura:application extends="force:slds">
+
+      <lightning:layout>
+
+        <lightning:layoutItem padding="around-large">
+
+           <h1 class="slds-text-heading_large">Sample App</h1>
+
+        </lightning:layoutItem>
+
+      </lightning:layout>
+
+      <lightning:layout>
+
+        <lightning:layoutItem padding="around-small">
+
+           Sidebar
+
+           <!-- Other component markup here -->
+
+        </lightning:layoutItem>
+
+        <lightning:layoutItem padding="around-small">
+
+           Content
+
+           <!-- Other component markup here -->
+
+        </lightning:layoutItem>
+
+      </lightning:layout>
+
+   </aura:application>
+
+```
+
+The `sample.app` file contains HTML tags, such as `<h1>`, as well as components, such as `<lightning:layout>` . We won't go
+into the details for all the components here but note how simple the markup is. The `<lightning:layoutItem>` component
+can contain other components or HTML markup.
+
+SEE ALSO:
+
+aura:application
+
+
+## Creating Apps Creating App Templates Creating App Templates
+
+An app template bootstraps the loading of the framework and the app. Customize an app’s template by creating a component that
+extends the default `aura:template` template.
+
+A template must have the `isTemplate` system attribute in the `<aura:component>` tag set to `true` . This informs the framework
+to allow restricted items, such as `<script>` tags, which aren't allowed in regular components.
+
+A component with the `isTemplate` system attribute set to `true` can’t be used on a site page. To use a component on a site page,
+the `isTemplate` system attribute can’t be set to `true` .
+
+For example, a sample app has a `np:template` template that extends `aura:template` . `np:template` looks like:
+
+```
+   <aura:component isTemplate="true" extends="aura:template">
+
+      <aura:set attribute="title" value="My App"/>
+
+      ...
+
+   </aura:component>
+
+```
+
+Note how the component extends `aura:template` and sets the `title` attribute using `aura:set` .
+
+The app points at the custom template by setting the `template` system attribute in `<aura:application>` .
+
+```
+   <aura:application template="np:template">
+
+      ...
+
+   </aura:application>
+
+```
+
+A template can only extend a component or another template. A component or an application can't extend a template.
+
+## Using the AppCache
+
+AppCache support is deprecated. Browser vendors have deprecated AppCache, so we followed their lead. Remove the `useAppcache`
+attribute in the `<aura:application>` tag of your standalone apps ( `.app` resources) to avoid cross-browser support issues due
+to deprecation by browser vendors.
+
+If you don’t currently set `useAppcache` in an `<aura:application>` tag, you don’t have to do anything because the default
+value of `useAppcache` is `false` .
+
+[Note: See an introduction to AppCache for more information.](http://www.html5rocks.com/en/tutorials/appcache/beginner/)
+
+SEE ALSO:
+
+aura:application
+
+## Distributing Applications and Components
+
+As an ISV or Salesforce partner, you can package and distribute applications and components to other Salesforce users and organizations,
+including those outside your company.
+
+Publish applications and components to and install them from AppExchange.
+
+A managed package ensures that your application and other resources are fully upgradeable. To create and work with managed packages,
+you must register a namespace prefix. A managed package includes your namespace prefix in the component names and prevents
+naming conflicts in an installer’s organization. After a managed package is released, the application or component names are locked,
+but the package developer can still edit these attributes.
+
+
+### Creating Apps Apex Class Considerations for Packages
+
+**•** API Version
+
+**•** Description
+
+**•** Label
+
+**•** Language
+
+**•** Markup
+
+IN THIS SECTION:
+
+### Apex Class Considerations for Packages
+
+Keep these considerations in mind when you develop Apex classes for packages.
+
+Adding Aura Components to Managed Packages
+Add an Aura component to a managed package from a package detail page in Setup.
+
+Deleting Aura Components from Managed Packages
+After you’ve released a managed package, you may decide to refactor the package and delete an Aura component. It’s your
+responsibility to educate your customers about the potential impact from any components you delete. In the Release Notes for your
+upgraded package, list all custom components you’ve deleted and notify customers of any necessary actions.
+
+SEE ALSO:
+
+_[Second-Generation Managed Packaging Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)_
+
+_[First-Generation Managed Packaging Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/sharing_apps.htm)_
+
+Testing Your Apex Code
+
+### Apex Class Considerations for Packages
+
+Keep these considerations in mind when you develop Apex classes for packages.
+
+Test Coverage
+
+Any Apex that is included as part of your definition bundle must have at least 75% cumulative test coverage. When you upload your
+package to AppExchange, all tests are run to ensure that they run without errors. The tests are also run when the package is installed.
+
+Grant User Access for Apex Classes
+
+An authenticated or guest user can access an `@AuraEnabled` Apex method only when the user’s profile or an assigned permission
+set allows access to the Apex class.
+
+**•** To enable access to a `public` Apex controller that’s part of a managed package, a subscriber org must use a permission set. You
+can’t enable access to a `public` Apex controller from a managed package using a user profile.
+
+**•** To enable access to a `global` Apex controller that’s part of a managed package, a subscriber org can use a permission set or a
+user profile.
+
+Apex Class Usage in Subscriber Orgs
+
+Only methods marked with the `global` access modifier are accessible by Aura components from outside the managed package’s
+namespace. Methods marked with the `public` access modifier are accessible only to Aura components included in the managed
+package’s namespace.
+
+
+### Creating Apps Adding Aura Components to Managed Packages
+
+If you declare an Apex method as `global`, you must also declare the Apex class that contains it as `global` .
+
+An Aura component outside the package can access a public Apex method installed from a non-namespaced unlocked package. The
+Aura component can be installed from another package or created in the org. For accessing Apex methods, a non-namespaced unlocked
+package is treated the same as an unmanaged package.
+
+SEE ALSO:
+
+Granting User Access for Apex Classes
+
+Apex Server-Side Controller Overview
+
+_[Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.260.0.apexcode.meta/apexcode/apex_classes_access_modifiers.htm)_ : Access Modifiers
+
+### Adding Aura Components to Managed Packages
+
+Add an Aura component to a managed package from a package detail page in Setup.
+
+When you add an application or component to a package, all definition bundles referenced by the application or component are
+automatically included, such as other components, events, and interfaces. Custom fields, custom objects, list views, page layouts, and
+Apex classes referenced by the application or component are also included.
+
+However, when you add a custom object to a package, you must explicitly add the application and other definition bundles that reference
+that custom object to the package. Other dependencies that you must add to a package explicitly include the following.
+
+**•** Trusted URLs
+
+**•** Remote Site Settings
+
+SEE ALSO:
+
+_[Second-Generation Managed Packaging Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp.htm)_
+
+_[First-Generation Managed Packaging Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/sharing_apps.htm)_
+
+### Deleting Aura Components from Managed Packages
+
+After you’ve released a managed package, you may decide to refactor the package and delete an Aura component. It’s your responsibility
+to educate your customers about the potential impact from any components you delete. In the Release Notes for your upgraded package,
+list all custom components you’ve deleted and notify customers of any necessary actions.
+
+[Note: To enable component deletion in your packaging org, log a case in the Partner Community.](https://partners.salesforce.com/)
+
+To delete an Aura component from a managed package:
+
+**1.** From Setup, enter _`Lightning Components`_ in the Quick Find box.
+
+**2.** Select **Lightning Components** .
+
+### 3. Click Del for the component that you want to delete.
+
+
+Creating Apps Deleting Aura Components from Managed Packages
+
+You can delete an Aura component from the Developer Console also.
+
+Note: When a developer removes an Aura component from a package, the component remains in a subscriber’s org after they
+install the upgraded package. The administrator of the subscriber’s org can delete the component, if desired. This behavior is the
+same for an Aura component with a `public` or `global` access value.
+
+The `access` attribute on the `aura:component` tag can be set to `public` or `global` to control whether the component can
+be used outside of the component’s namespace.
+
+We recommend a two-stage process to package developers when you delete an Aura component with `global` access. This process
+ensures that a global component that you delete from the package has no dependencies on the other items in the package.
+
+**1.** Stage one: Remove references
+
+**a.** Edit the global component that you want to delete to remove all references to other Lightning components.
+
+**b.** Upload your new package version.
+
+**c.** Push the stage-one upgrade to your subscribers.
+
+**2.** Stage two: Delete your obsolete component
+
+**a.** Delete the global Lightning component from the package.
+
+**b.** Optionally, delete other related components and classes.
+
+**c.** Upload your new package version.
+
+**d.** Push the stage-two upgrade to your subscribers.
+
+SEE ALSO:
+
+Component Access Control
+
+_Second-Generation Managed Packaging Developer Guide_ [: Remove Metadata Components from Second-Generation Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg2_dev.meta/pkg2_dev/sfdx_dev_dev2gp_remove_md_components.htm)
+
+_First-Generation Managed Packaging Developer Guide_ [: Delete Components from First-Generation Managed Packages](https://developer.salesforce.com/docs/atlas.en-us.pkg1_dev.meta/pkg1_dev/packaging_managed_component_deletion.htm)
+
+
+# CHAPTER 8 Styling Apps
+
+In this chapter ... An app is a special top-level component whose markup is in a `.app` resource. Just like any other
+component, you can put CSS in its bundle in a resource called `<appName>.css` .
+
+**•** Using the Salesforce
+Lightning Design
+System in Apps
+
+For example, if the app markup is in `notes.app`, its CSS is in `notes.css` .
+
+System in Apps When viewed in Salesforce for Android, iOS, and Lightning Experience, the components include styling
+
+**•** Using External CSS that matches those visual themes. For example, the `lightning:button` includes the
+`slds-button_neutral` class to display a neutral style.
+
+**•** More Readable
+Styling Markup with
+Note: Styles added to Lightning components in Salesforce for Android, iOS, and Lightning
+the join Expression
+Experience don’t apply to components in standalone apps.
+Expression
+
+**•** Tips for CSS in
+Components
+
+**•** CSS for RTL
+Languages
+
+**•** Vendor Prefixes
+
+**•** Styling with Design
+Tokens and Styling
+Hooks
+
+SEE ALSO:
+
+CSS in Components
+
+
+## Styling Apps Using the Salesforce Lightning Design System in Apps Using the Salesforce Lightning Design System in Apps
+
+The Salesforce Lightning Design System (SLDS) provides a look and feel that’s consistent with Lightning Experience. Use Lightning
+Design System styles to give your custom stand-alone Lightning applications a UI that is consistent with Salesforce, without having to
+reverse-engineer our styles.
+
+Your application automatically gets Lightning Design System styles and design tokens if it extends `force:slds` . This method is the
+easiest way to stay up to date and consistent with Lightning Design System enhancements.
+
+To extend `force:slds` :
+
+```
+   <aura:application extends="force:slds">
+
+      <!-- customize your application here -->
+
+   </aura:application>
+
+```
+
+Using a Static Resource
+
+When you extend `force:slds`, the version of Lightning Design System styles is automatically updated whenever the CSS changes.
+If you want to use a specific Lightning Design System version, download the version and add it to your org as a static resource.
+
+Note: We recommend extending `force:slds` instead so that you automatically get the latest Lightning Design System styles.
+If you stick to a specific Lightning Design System version, your app’s styles will gradually start to drift from later versions in Lightning
+Experience or incur the cost of duplicate CSS downloads.
+
+To download a version of Lightning Design System that doesn’t exceed the maximum size for a static resource, go to the Lightning
+[Design System downloads page.](https://www.lightningdesignsystem.com/resources/downloads/)
+
+Salesforce recommends that you name the Lightning Design System archive static resource using the name format SLDS _`###`_, where
+_`###`_ is the Lightning Design System version number (for example, _`SLDS252`_ ). This lets you have multiple versions of the Lightning
+Design System installed, and manage version usage in your components.
+
+To use the static version of the Lightning Design System in a component, include it using `<ltng:require/>` . For example:
+
+```
+   <aura:component>
+
+      <ltng:require
+
+        styles="{!$Resource.SLDS252 +
+
+           '/styles/salesforce-lightning-design-system.min.css'}" />
+
+   </aura:component>
+
+```
+
+SEE ALSO:
+
+Styling with Design Tokens and Styling Hooks
+
+## Using External CSS
+
+To reference an external CSS resource, upload it as a static resource and use a `<ltng:require>` tag in your `.cmp` or `.app` markup.
+
+`ltng:require` enables you to load external CSS and JavaScript libraries for your component or app.
+
+Important: You can’t load JavaScript resources from a third-party site, even if it’s a CSP Trusted Site. To use a JavaScript library
+from a third-party site, add it to a static resource, and then add the static resource to your component. After the library is loaded
+from the static resource, you can use it as normal.
+
+
+Styling Apps Using External CSS
+
+Here’s an example of using `ltng:require` :
+
+```
+   <ltng:require styles="{!$Resource. resourceName }" />
+
+```
+
+_`resourceName`_ is the `Name` of the static resource. In a managed package, the resource name must include the package namespace
+prefix, such as `$Resource.yourNamespace__resourceName` . For a stand-alone static resource, such as an individual graphic
+or script, you only need the name of the resource. For example, if you uploaded `myScript.js` and set the `Name` to `myScript`,
+reference it as `$Resource.myScript` . To reference an item within an archive static resource, add the rest of the path to the item
+using string concatenation.
+
+Here are some considerations for loading styles:
+
+**Loading Sets of CSS**
+Specify a comma-separated list of resources in the `styles` attribute to load a set of CSS.
+
+Note: Due to a quirk in the way `$Resource` is parsed in expressions, use the `join` operator to include multiple
+`$Resource` references in a single attribute. For example, if you have more than one style sheet to include into a component
+the `styles` attribute should be something like the following.
+
+```
+       styles="{!join(',',
+
+          $Resource.myStyles + '/stylesheetOne.css',
+
+          $Resource.myStyles + '/moreStyles.css')}"
+
+```
+
+**Loading Order**
+The styles are loaded in the order that they are listed.
+
+**One-Time Loading**
+The styles load only once, even if they’re specified in multiple `<ltng:require>` tags in the same component or across different
+components.
+
+**Encapsulation**
+To ensure encapsulation and reusability, add the `<ltng:require>` tag to every `.cmp` or `.app` resource that uses the CSS
+resource.
+
+`ltng:require` also has a `scripts` attribute to load a list of JavaScript libraries. The `afterScriptsLoaded` event enables
+you to call a controller action after the `scripts` are loaded. It's only triggered by loading of the `scripts` and is never triggered
+when the CSS in `styles` is loaded.
+
+Styling Components for Lightning Experience or Salesforce for Android, iOS,
+and mobile web
+
+To prevent styling conflicts in Lightning Experience or Salesforce for Android, iOS, and mobile web, prefix your external CSS with a unique
+namespace. For example, if you prefix your external CSS declarations with `.myBootstrap`, wrap your component markup with a
+`<div>` tag that specifies the `myBootstrap` class.
+
+```
+   <ltng:require styles="{!$Resource.bootstrap}"/>
+
+   <div class="myBootstrap">
+
+      <c:myComponent />
+
+      <!-- Other component markup -->
+
+   </div>
+
+```
+
+
+## Styling Apps More Readable Styling Markup with the join Expression
+
+Expression
+
+Note: Prefixing your CSS with a unique namespace only applies to external CSS. If you’re using CSS within a component bundle,
+the `.THIS` keyword becomes `.namespaceComponentName` during runtime.
+
+SEE ALSO:
+
+Using External JavaScript Libraries
+
+CSS in Components
+
+$Resource
+
+## More Readable Styling Markup with the join Expression Expression
+
+Markup can get messy when you specify the class names to apply based on the component attribute values. Try using a `join` expression
+for easier-to-read markup.
+
+This example sets the class names based on the component attribute values. It’s readable, but the spaces between class names are easy
+to forget.
+
+```
+   <li class="{! 'calendarEvent ' +
+
+      v.zoomDirection + ' ' +
+
+      (v.past ? 'pastEvent ' : '') +
+
+      (v.zoomed ? 'zoom ' : '') +
+
+      (v.multiDayFragment ? 'multiDayFragment ' : '')}">
+
+      <!-- content here -->
+
+   </li>
+
+```
+
+Sometimes, if the markup is not broken into multiple lines, it can hurt your eyes or make you mutter profanities under your breath.
+
+```
+   <li class="{! 'calendarEvent ' + v.zoomDirection + ' ' + (v.past ? 'pastEvent ' : '') +
+
+   (v.zoomed ? 'zoom ' : '') + (v.multiDayFragment ? 'multiDayFragment ' : '')}">
+
+      <!-- content here -->
+
+   </li>
+
+```
+
+Try using a `join` expression instead for easier-to-read markup. This example `join` expression sets `' '` as the first argument so that
+you don’t have to specify it for each subsequent argument in the expression.
+
+```
+   <li
+
+      class="{! join(' ',
+
+        'calendarEvent',
+
+        v.zoomDirection,
+
+        v.past ? 'pastEvent' : '',
+
+        v.zoomed ? 'zoom' : '',
+
+        v.multiDayFragment ? 'multiDayFragment' : ''
+
+      )}">
+
+      <!-- content here -->
+
+   </li>
+
+```
+
+You can also use a `join` expression for dynamic styling.
+
+```
+   <div style="{! join(';',
+
+      'top:' + v.timeOffsetTop + '%',
+
+      'left:' + v.timeOffsetLeft + '%',
+
+      'width:' + v.timeOffsetWidth + '%'
+
+   )}">
+
+```
+
+
+## Styling Apps Tips for CSS in Components
+
+```
+      <!-- content here -->
+
+   </div>
+
+```
+
+SEE ALSO:
+
+Expression Functions Reference
+
+## Tips for CSS in Components
+
+Here are some tips for configuring the CSS for components that you plan to use in Lightning pages, the Lightning App Builder, or the
+Experience Builder.
+
+**Components must be set to 100% width**
+Because they can be moved to different locations on a Lightning page, components must not have a specific width nor a left or
+right margin. Components should take up 100% of whatever container they display in. Adding a left or right margin changes the
+width of a component and can break the layout of the page.
+
+**Don’t remove HTML elements from the flow of the document**
+Some CSS rules remove the HTML element from the flow of the document. For example:
+
+```
+     float: left;
+
+     float: right;
+
+     position: absolute;
+
+     position: fixed;
+
+```
+
+Because they can be moved to different locations on the page as well as used on different pages entirely, components must rely on
+the normal document flow. Using floats and absolute or fixed positions breaks the layout of the page the component is on. Even if
+they don’t break the layout of the page _you’re_ looking at, they will break the layout of _some_ page the component can be put on.
+
+**Child elements shouldn’t be styled to be larger than the root element**
+The Lightning page maintains consistent spacing between components, and can’t do that if child elements are larger than the root
+element.
+
+For example, avoid these patterns:
+
+```
+     <div style="height: 100px">
+
+      <div style="height: 200px">
+
+       <!--Other markup here-->
+
+      </div>
+
+     </div>
+
+     <!--Margin increases the element’s effective size-->
+
+     <div style="height: 100px">
+
+      <div style="height: 100px margin: 10px">
+
+       <!--Other markup here-->
+
+      </div>
+
+     </div>
+
+## CSS for RTL Languages
+
+```
+
+When your Language setting in Salesforce is set to a right-to-left (RTL) language, the framework automatically flips property names,
+such as `left` and `border-left` to `right` and `border-right` respectively. The framework also rearranges certain values
+like `padding`, `margin`, and `border-radius` so that the `right` and `left` units are swapped.
+
+
+Styling Apps CSS for RTL Languages
+
+Flipped CSS Properties
+
+These properties are automatically flipped for RTL languages.
+
+Flipped CSS Keywords
+
+These keywords are automatically flipped for RTL languages.
+
+
+Styling Apps CSS for RTL Languages
+
+Flipped CSS Percentage Values
+
+If the value is a percentage for these properties, the flipped value is set to 100 minus the value.
+
+**•** `background`
+
+**•** `background-position`
+
+**•** `background-position-x`
+
+Flipped Property Arguments
+
+For these properties that can take four values, the second and fourth values are swapped. For example, `property: A B C D`
+becomes `property: A D C B` .
+
+**•** `padding`
+
+**•** `margin`
+
+**•** `border-color`
+
+**•** `border-style`
+
+**•** `border-width`
+
+Flipped **`border-radius`** Arguments
+
+The arguments for the `border-radius` property are flipped with these patterns.
+
+
+## Styling Apps Vendor Prefixes
+
+Override Flipping With **`@noflip`**
+
+To override the automatic flipping, add a `/*@noflip*/` annotation in a comment directly before the property. For example:
+
+```
+   .THIS.mycontainer {
+
+      /*@noflip*/ direction : rtl;
+
+   }
+
+```
+
+Use Conditional CSS
+
+Use the `@if(isRTL)` conditional statement to manually provide the appropriately oriented CSS for each direction.
+
+```
+   .THIS {
+
+      transform: skew(28deg) translate3d(0, 0, 0);
+
+   }
+
+   @if(isRTL) {
+
+      .THIS {
+
+        transform: skew(-28deg) translate3d(0, 0, 0);
+
+      }
+
+   }
+
+```
+
+SEE ALSO:
+
+_Salesforce Help_ [: Right-to-Left (RTL) Language Support](https://help.salesforce.com/articleView?id=faq_getstart_rtl.htm&language=en_US)
+
+## Vendor Prefixes
+
+Vendor prefixes, such as `—moz-` and `—webkit-` among many others, are automatically added in Lightning.
+
+You only need to write the unprefixed version, and the framework automatically adds any prefixes that are necessary when generating
+the CSS output. If you choose to add them, they are used as-is. This enables you to specify alternative values for certain prefixes.
+
+Example: For example, this is an unprefixed version of `border-radius` .
+
+```
+      .class {
+
+       border-radius: 2px;
+
+      }
+
+```
+
+The previous declaration results in the following declarations.
+
+```
+      .class {
+
+       -webkit-border-radius: 2px;
+
+       -moz-border-radius: 2px;
+
+       border-radius: 2px;
+
+      }
+
+```
+
+
+## Styling Apps Styling with Design Tokens and Styling Hooks Styling with Design Tokens and Styling Hooks
+
+Capture the essential values of your visual design into named tokens or global styling hooks. Reuse these values throughout your
+Lightning components CSS resources. Tokens and styling hooks make it easy to ensure that your design is consistent, and even easier
+to update your design as it evolves.
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+Design tokens and styling hooks are visual design “atoms” for building a design for your components or apps. Specifically, they’re named
+entities that store visual design attributes: pixel values for margins and spacing, font sizes and families, or hex values for colors. Both
+design tokens and styling hooks are a terrific way to centralize the low-level values, which you then use to compose the styles that make
+up the design of your component or app.
+
+IN THIS SECTION:
+
+### Tokens Bundles
+
+Tokens are a type of bundle, just like components, events, and interfaces.
+
+Create a Tokens Bundle
+Create a tokens bundle in your org using the Developer Console.
+
+Defining and Using Tokens
+A token is a name-value pair that you specify using the `<aura:token>` component. Define tokens in a tokens bundle, and then
+use tokens in your components’ CSS styles resources.
+
+Using Expressions in Tokens
+Tokens support a restricted set of expressions. Use expressions to reuse one token value in another token, or to combine tokens to
+form a more complex style property.
+
+Extending Tokens Bundles
+Use the `extends` attribute to extend one tokens bundle from another.
+
+Using Standard Design Tokens
+Salesforce exposes a set of “base” tokens that you can access in your component style resources. Use these standard tokens to mimic
+the look-and-feel of the Salesforce Lightning Design System (SLDS) in your own custom components.
+
+Replace Design Tokens with Styling Hooks
+If you use design tokens to customize the styling of your Aura components, use SLDS global styling hooks instead. Custom components
+that use design tokens still work, but they no longer receive updates after LWC API version 61.0. By using styling hooks, you can
+cleanly adopt future product innovations and updated web accessibility standards.
+
+### Tokens Bundles
+
+Tokens are a type of bundle, just like components, events, and interfaces.
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+A tokens bundle contains only one resource, a tokens collection definition.
+
+
+### Styling Apps Create a Tokens Bundle
+
+**Resource** **Resource Name** **Usage**
+
+Tokens Collection `defaultTokens.tokens`
+
+The only required resource in a tokens bundle. Contains markup
+for one or more tokens. Each tokens bundle contains only one
+tokens resource.
+
+Note: You can’t edit the tokens bundle name or description in the Developer Console after you create it. The bundle’s
+`AuraBundleDefinition` can be modified using the Metadata API.
+
+A tokens collection starts with the `<aura:tokens>` tag. It can only contain `<aura:token>` tags to define tokens.
+
+Tokens collections have restricted support for expressions; see Using Expressions in Tokens. You can’t use other markup, renderers,
+controllers, or anything else in a tokens collection.
+
+SEE ALSO:
+
+Using Expressions in Tokens
+
+### Create a Tokens Bundle
+
+Create a tokens bundle in your org using the Developer Console.
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+To create a tokens bundle:
+
+**1.** In the Developer Console, select **File** - **New** - **Lightning Tokens** .
+
+**2.** Enter a name for the tokens bundle.
+
+Your first tokens bundle should be named _`defaultTokens`_ . The tokens defined within `defaultTokens` are automatically
+accessible in your Lightning components. Tokens defined in any other bundle won’t be accessible in your components unless you
+import them into the `defaultTokens` bundle.
+
+You have an empty tokens bundle, ready to edit.
+
+```
+<aura:tokens>
+
+</aura:tokens>
+
+```
+
+Note: You can’t edit the tokens bundle name or description in the Developer Console after you create it. The bundle’s
+`AuraBundleDefinition` can be modified using the Metadata API. Although you can set a version on a tokens bundle,
+doing so has no effect.
+
+### Defining and Using Tokens
+
+A token is a name-value pair that you specify using the `<aura:token>` component. Define tokens in a tokens bundle, and then use
+tokens in your components’ CSS styles resources.
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+
+### Styling Apps Using Expressions in Tokens
+
+Defining Tokens
+
+Add new tokens as child components of the bundle’s `<aura:tokens>` component. For example:
+
+```
+   <aura:tokens>
+
+      <aura:token name="myBodyTextFontFace"
+
+            value="'Salesforce Sans', Helvetica, Arial, sans-serif"/>
+
+      <aura:token name="myBodyTextFontWeight" value="normal"/>
+
+      <aura:token name="myBackgroundColor" value="#f4f6f9"/>
+
+      <aura:token name="myDefaultMargin" value="6px"/>
+
+   </aura:tokens>
+
+```
+
+The only allowed attributes for the `<aura:token>` tag are `name` and `value` .
+
+Using Tokens
+
+Tokens created in the `defaultTokens` bundle are automatically available in components in your namespace. To use a design token,
+reference it using the `token()` function and the token name in the CSS resource of a component bundle. For example:
+
+```
+   .THIS p {
+
+      font-family: token(myBodyTextFontFace);
+
+      font-weight: token(myBodyTextFontWeight);
+
+   }
+
+```
+
+If you prefer a more concise function name for referencing tokens, you can use the `t()` function instead of `token()` . The two are
+equivalent. If your token names follow a naming convention or are sufficiently descriptive, the use of the more terse function name
+won’t affect the clarity of your CSS styles.
+
+### Using Expressions in Tokens
+
+Tokens support a restricted set of expressions. Use expressions to reuse one token value in another token, or to combine tokens to form
+a more complex style property.
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+Cross-Referencing Tokens
+
+To reference one token’s value in another token’s definition, wrap the token to be referenced in standard expression syntax.
+
+In the following example, we reference tokens provided by Salesforce in our custom tokens. Although you can’t see the standard tokens
+directly, imagine that they look something like the following.
+
+```
+   <!-- force:base tokens (SLDS standard tokens) -->
+
+   <aura:tokens>
+
+     ...
+
+     <aura:token name="colorBackground" value="rgb(244, 246, 249)" />
+
+     <aura:token name="fontFamily" value="'Salesforce Sans', Arial, sans-serif" />
+
+     ...
+
+   </aura:tokens>
+
+```
+
+
+Styling Apps Using Expressions in Tokens
+
+With the preceding in mind, you can reference the standard tokens in your custom tokens, as in the following.
+
+```
+   <!-- defaultTokens.tokens (your tokens) -->
+
+   <aura:tokens extends="force:base">
+
+     <aura:token name="mainColor" value="{! colorBackground }" />
+
+     <aura:token name="btnColor" value="{! mainColor }" />
+
+     <aura:token name="myFont" value="{! fontFamily }" />
+
+   </aura:tokens>
+
+```
+
+You can only cross-reference tokens defined in the same file or a parent.
+
+Expression syntax in tokens resources is restricted to references to other tokens.
+
+Combining Tokens
+
+To support combining individual token values into more complex CSS style properties, the `token()` function supports string
+concatenation. For example, if you have the following tokens defined:
+
+```
+   <!-- defaultTokens.tokens (your tokens) -->
+
+   <aura:tokens>
+
+     <aura:token name="defaultHorizonalSpacing" value="12px" />
+
+     <aura:token name="defaultVerticalSpacing" value="6px" />
+
+   </aura:tokens>
+
+```
+
+You can combine these two tokens in a CSS style definition. For example:
+
+```
+   /* myComponent.css */
+
+   .THIS div.notification {
+
+     margin: token(defaultVerticalSpacing + ' ' + defaultHorizonalSpacing);
+
+     /* more styles here */
+
+   }
+
+```
+
+You can mix tokens with strings as much as necessary to create the right style definition. For example, use `margin:`
+`token(defaultVerticalSpacing + ' ' + defaultHorizonalSpacing + ' 3px');` to hard code the bottom
+spacing in the preceding definition.
+
+The only operator supported within the `token()` function is “+” for string concatenation.
+
+Note: Since Winter ’21, we convert Aura tokens to CSS custom properties under the covers. CSS custom properties are a web
+standard that wasn’t supported when we initially created Aura tokens. Concatenating an Aura token with another token that
+defines a CSS unit isn’t supported due to how we convert the Aura tokens. The tokens are statically converted to custom properties
+and can result in incorrect CSS syntax, which is then discarded by the CSS parser.
+
+For example, don’t separate the size and unit into separate tokens.
+
+```
+   <!-- DO NOT DO THIS! -->
+
+   <aura:token name="v24" value="24" />
+
+   <aura:token name="px" value="px" />
+
+```
+
+If you concatenate the tokens, the CSS doesn’t work as you expect.
+
+```
+   .THIS { font-size: token(v24+px); }
+
+```
+
+The result is font-size: 24, though you might expect it to be font-size: 24px.
+
+
+### Styling Apps Extending Tokens Bundles
+
+Instead, define a size and unit in one token for this use case.
+
+```
+   <aura:token name="v24" value="24px" />
+
+```
+
+SEE ALSO:
+
+Defining and Using Tokens
+
+### Extending Tokens Bundles
+
+Use the `extends` attribute to extend one tokens bundle from another.
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+To add tokens from one bundle to another, extend the “child” tokens bundle from the “parent” tokens, like this.
+
+```
+   <aura:tokens extends="yourNamespace:parentTokens">
+
+      <!-- additional tokens here -->
+
+   </aura:tokens>
+
+```
+
+Overriding tokens values works mostly as you’d expect: tokens in a child tokens bundle override tokens with the same name from a
+parent bundle. The exception is if you’re using standard tokens. You can’t override standard tokens in Lightning Experience or the
+Salesforce mobile app.
+
+Important: Overriding standard token values is undefined behavior and unsupported. If you create a token with the same name
+as a standard token, it overrides the standard token’s value in some contexts, and has no effect in others. This behavior will change
+in a future release. Don’t use it.
+
+SEE ALSO:
+
+### Using Standard Design Tokens Using Standard Design Tokens
+
+Salesforce exposes a set of “base” tokens that you can access in your component style resources. Use these standard tokens to mimic
+the look-and-feel of the Salesforce Lightning Design System (SLDS) in your own custom components.
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+To add the standard tokens to your org, extend a tokens bundle from the base tokens, like so.
+
+```
+   <aura:tokens extends="force:base">
+
+      <!-- your own tokens here -->
+
+   </aura:tokens>
+
+```
+
+Once added to `defaultTokens` (or another tokens bundle that `defaultTokens` extends) you can reference tokens from
+`force:base` just like your own tokens, using the `token()` function and token name. For example:
+
+```
+   .THIS p {
+
+      font-family: token(fontFamily);
+
+```
+
+
+Styling Apps Using Standard Design Tokens
+
+```
+      font-weight: token(fontWeightRegular);
+
+   }
+
+```
+
+You can mix-and-match your tokens with the standard tokens. It’s a best practice to develop a naming system for your own tokens to
+make them easily distinguishable from standard tokens. Consider prefixing your token names with “my”, or something else easily
+identifiable.
+
+IN THIS SECTION:
+
+#### Overriding Standard Tokens (Deprecated)
+
+If you override design tokens for your custom components, replace them with SLDS styling hooks.
+
+#### Standard Design Tokens— force:base
+
+The standard tokens available are a subset of the design tokens offered in the Salesforce Lightning Design System (SLDS). The
+following tokens are available when extending from `force:base` .
+
+Standard Design Tokens for Experience Builder Sites
+Use a subset of the standard design tokens to make your components compatible with the Theme panel in Experience Builder. The
+Theme panel enables administrators to quickly style an entire site using these properties. Each property in the Theme panel maps
+to one or more standard design tokens. When an administrator updates a property in the Theme panel, the system automatically
+updates any Lightning components that use the tokens associated with that branding property.
+
+SEE ALSO:
+
+Extending Tokens Bundles
+
+#### Overriding Standard Tokens (Deprecated)
+
+If you override design tokens for your custom components, replace them with SLDS styling hooks.
+
+Important: Overriding standard tokens is deprecated as of API version 61.0, the Summer ’24 release. We recommend that you
+[use Styling Hooks instead. See Replace Design Tokens with Styling Hooks.](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+
+SEE ALSO:
+
+#### Standard Design Tokens— force:base Standard Design Tokens— force:base
+
+The standard tokens available are a subset of the design tokens offered in the Salesforce Lightning Design System (SLDS). The following
+tokens are available when extending from `force:base` .
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+Available Tokens
+
+Important: The standard token values evolve along with SLDS. Available tokens and their values can change without notice.
+Token values presented here are for example only.
+
+
+Styling Apps Using Standard Design Tokens
+
+**Token Name** **Example Value**
+
+`borderWidthThin` 1px
+
+`borderWidthThick` 2px
+
+`spacingXxxSmall` 0.125rem
+
+`spacingXxSmall` 0.25rem
+
+`spacingXSmall` 0.5rem
+
+`spacingSmall` 0.75rem
+
+`spacingMedium` 1rem
+
+`spacingLarge` 1.5rem
+
+`spacingXLarge` 2rem
+
+`varSpacingXxSmall` 0.25rem
+
+`varSpacingXSmall` 0.5rem
+
+`varSpacingSmall` 0.75rem
+
+`varSpacingMedium` 1rem
+
+`varSpacingLarge` 1.5rem
+
+`varSpacingXLarge` 2rem
+
+`varSpacingXxLarge` 3rem
+
+`varSpacingVerticalXxSmall` 0.25rem
+
+`varSpacingVerticalXSmall` 0.5rem
+
+`varSpacingVerticalSmall` 0.75rem
+
+`varSpacingVerticalMedium` 1rem
+
+`varSpacingVerticalLarge` 1.5rem
+
+`varSpacingVerticalXLarge` 2rem
+
+`varSpacingVerticalXxLarge` 3rem
+
+`varSpacingHorizontalXxSmall` 0.25rem
+
+`varSpacingHorizontalXSmall` 0.5rem
+
+`varSpacingHorizontalSmall` 0.75rem
+
+`varSpacingHorizontalMedium` 1rem
+
+`varSpacingHorizontalLarge` 1.5rem
+
+`varSpacingHorizontalXLarge` 2rem
+
+`varSpacingHorizontalXxLarge` 3rem
+
+
+Styling Apps Using Standard Design Tokens
+
+**Token Name** **Example Value**
+
+`sizeXxSmall` 6rem
+
+`sizeXSmall` 12rem
+
+`sizeSmall` 15rem
+
+`sizeMedium` 20rem
+
+`sizeLarge` 25rem
+
+`sizeXLarge` 40rem
+
+`sizeXxLarge` 60rem
+
+`squareIconUtilitySmall` 1rem
+
+`squareIconUtilityMedium` 1.25rem
+
+`squareIconUtilityLarge` 1.5rem
+
+`squareIconLargeBoundary` 3rem
+
+`squareIconLargeBoundaryAlt` 5rem
+
+`squareIconLargeContent` 2rem
+
+`squareIconMediumBoundary` 2rem
+
+`squareIconMediumBoundaryAlt` 2.25rem
+
+`squareIconMediumContent` 1rem
+
+`squareIconSmallBoundary` 1.5rem
+
+`squareIconSmallContent` .75rem
+
+`squareIconXSmallBoundary` 1.25rem
+
+`squareIconXSmallContent` .5rem
+
+`fontWeightLight` 300
+
+`fontWeightRegular` 400
+
+`fontWeightBold` 700
+
+`lineHeightHeading` 1.25
+
+`lineHeightText` 1.375
+
+`lineHeightReset` 1
+
+`lineHeightTab` 2.5rem
+
+`fontFamily` 'Salesforce Sans', Arial, sans-serif
+
+`borderRadiusSmall` .125rem
+
+`borderRadiusMedium` .25rem
+
+
+Styling Apps Using Standard Design Tokens
+
+**Token Name** **Example Value**
+
+`borderRadiusLarge` .5rem
+
+`borderRadiusPill` 15rem
+
+`borderRadiusCircle` 50%
+
+`colorBorder` rgb(216, 221, 230)
+
+`colorBorderBrand` rgb(21, 137, 238)
+
+`colorBorderError` rgb(194, 57, 52)
+
+`colorBorderSuccess` rgb(75, 202, 129)
+
+`colorBorderWarning` rgb(255, 183, 93)
+
+`colorBorderTabSelected` rgb(0, 112, 210)
+
+`colorBorderSeparator` rgb(244, 246, 249)
+
+`colorBorderSeparatorAlt` rgb(216, 221, 230)
+
+`colorBorderSeparatorInverse` rgb(42, 66, 108)
+
+`colorBorderRowSelected` rgb(0, 112, 210)
+
+`colorBorderRowSelectedHover` rgb(21, 137, 238)
+
+`colorBorderButtonBrand` rgb(0, 112, 210)
+
+`colorBorderButtonBrandDisabled` rgba(0, 0, 0, 0)
+
+`colorBorderButtonDefault` rgb(216, 221, 230)
+
+`colorBorderButtonInverseDisabled` rgba(255, 255, 255, 0.15)
+
+`colorBorderInput` rgb(216, 221, 230)
+
+`colorBorderInputActive` rgb(21, 137, 238)
+
+`colorBorderInputDisabled` rgb(168, 183, 199)
+
+`colorBorderInputCheckboxSelectedCheckmark` rgb(255, 255, 255)
+
+`colorBackground` rgb(244, 246, 249)
+
+`colorBackgroundAlt` rgb(255, 255, 255)
+
+`colorBackgroundAltInverse` rgb(22, 50, 92)
+
+`colorBackgroundRowHover` rgb(244, 246, 249)
+
+`colorBackgroundRowActive` rgb(238, 241, 246)
+
+`colorBackgroundRowSelected` rgb(240, 248, 252)
+
+`colorBackgroundRowNew` rgb(217, 255, 223)
+
+`colorBackgroundInverse` rgb(6, 28, 63)
+
+
+Styling Apps Using Standard Design Tokens
+
+**Token Name** **Example Value**
+
+`colorBackgroundBrowser` rgb(84, 105, 141)
+
+`colorBackgroundChromeMobile` rgb(0, 112, 210)
+
+`colorBackgroundChromeDesktop` rgb(255, 255, 255)
+
+`colorBackgroundHighlight` rgb(250, 255, 189)
+
+`colorBackgroundModal` rgb(255, 255, 255)
+
+`colorBackgroundModalBrand` rgb(0, 112, 210)
+
+`colorBackgroundNotificationBadge` rgb(194, 57, 52)
+
+`colorBackgroundNotificationBadgeHover` rgb(0, 95, 178)
+
+`colorBackgroundNotificationBadgeFocus` rgb(0, 95, 178)
+
+`colorBackgroundNotificationBadgeActive` rgb(0, 57, 107)
+
+`colorBackgroundNotificationNew` rgb(240, 248, 252)
+
+`colorBackgroundPayload` rgb(244, 246, 249)
+
+`colorBackgroundShade` rgb(224, 229, 238)
+
+`colorBackgroundStencil` rgb(238, 241, 246)
+
+`colorBackgroundStencilAlt` rgb(224, 229, 238)
+
+`colorBackgroundScrollbar` rgb(224, 229, 238)
+
+`colorBackgroundScrollbarTrack` rgb(168, 183, 199)
+
+`colorBrand` rgb(21, 137, 238)
+
+`colorBrandDark` rgb(0, 112, 210)
+
+`colorBackgroundModalButton` rgba(0, 0, 0, 0.07)
+
+`colorBackgroundModalButtonActive` rgba(0, 0, 0, 0.16)
+
+`colorBackgroundInput` rgb(255, 255, 255)
+
+`colorBackgroundInputActive` rgb(255, 255, 255)
+
+`colorBackgroundInputCheckbox` rgb(255, 255, 255)
+
+`colorBackgroundInputCheckboxDisabled` rgb(216, 221, 230)
+
+`colorBackgroundInputCheckboxSelected` rgb(21, 137, 238)
+
+`colorBackgroundInputDisabled` rgb(224, 229, 238)
+
+`colorBackgroundInputError` rgb(255, 221, 225)
+
+`colorBackgroundPill` rgb(255, 255, 255)
+
+`colorBackgroundToast` rgba(84, 105, 141, 0.95)
+
+
+Styling Apps Using Standard Design Tokens
+
+**Token Name** **Example Value**
+
+`colorBackgroundToastSuccess` rgb(4, 132, 75)
+
+`colorBackgroundToastError` rgba(194, 57, 52, 0.95)
+
+`shadowDrag` 0 2px 4px 0 rgba(0, 0, 0, 0.40)
+
+`shadowDropDown` 0 2px 3px 0 rgba(0, 0, 0, 0.16)
+
+`shadowHeader` 0 2px 4px rgba(0, 0, 0, 0.07)
+
+`shadowButtonFocus` 0 0 3px #0070D2
+
+`shadowButtonFocusInverse` 0 0 3px #E0E5EE
+
+`colorTextActionLabel` rgb(84, 105, 141)
+
+`colorTextActionLabelActive` rgb(22, 50, 92)
+
+`colorTextBrand` rgb(21, 137, 238)
+
+`colorTextBrowser` rgb(255, 255, 255)
+
+`colorTextBrowserActive` rgba(0, 0, 0, 0.4)
+
+`colorTextDefault` rgb(22, 50, 92)
+
+`colorTextError` rgb(194, 57, 52)
+
+`colorTextInputDisabled` rgb(84, 105, 141)
+
+`colorTextInputFocusInverse` rgb(22, 50, 92)
+
+`colorTextInputIcon` rgb(159, 170, 181)
+
+`colorTextInverse` rgb(255, 255, 255)
+
+`colorTextInverseWeak` rgb(159, 170, 181)
+
+`colorTextInverseActive` rgb(94, 180, 255)
+
+`colorTextInverseHover` rgb(159, 170, 181)
+
+`colorTextLink` rgb(0, 112, 210)
+
+`colorTextLinkActive` rgb(0, 57, 107)
+
+`colorTextLinkDisabled` rgb(22, 50, 92)
+
+`colorTextLinkFocus` rgb(0, 95, 178)
+
+`colorTextLinkHover` rgb(0, 95, 178)
+
+`colorTextLinkInverse` rgb(255, 255, 255)
+
+`colorTextLinkInverseHover` rgba(255, 255, 255, 0.75)
+
+`colorTextLinkInverseActive` rgba(255, 255, 255, 0.5)
+
+`colorTextLinkInverseDisabled` rgba(255, 255, 255, 0.15)
+
+
+Styling Apps Using Standard Design Tokens
+
+**Token Name** **Example Value**
+
+`colorTextModal` rgb(255, 255, 255)
+
+`colorTextModalButton` rgb(84, 105, 141)
+
+`colorTextStageLeft` rgb(224, 229, 238)
+
+`colorTextTabLabel` rgb(22, 50, 92)
+
+`colorTextTabLabelSelected` rgb(0, 112, 210)
+
+`colorTextTabLabelHover` rgb(0, 95, 178)
+
+`colorTextTabLabelFocus` rgb(0, 95, 178)
+
+`colorTextTabLabelActive` rgb(0, 57, 107)
+
+`colorTextTabLabelDisabled` rgb(224, 229, 238)
+
+`colorTextToast` rgb(224, 229, 238)
+
+`colorTextWeak` rgb(84, 105, 141)
+
+`colorTextIconBrand` rgb(0, 112, 210)
+
+`colorTextButtonBrand` rgb(255, 255, 255)
+
+`colorTextButtonBrandHover` rgb(255, 255, 255)
+
+`colorTextButtonBrandActive` rgb(255, 255, 255)
+
+`colorTextButtonBrandDisabled` rgb(255, 255, 255)
+
+`colorTextButtonDefault` rgb(0, 112, 210)
+
+`colorTextButtonDefaultHover` rgb(0, 112, 210)
+
+`colorTextButtonDefaultActive` rgb(0, 112, 210)
+
+`colorTextButtonDefaultDisabled` rgb(216, 221, 230)
+
+`colorTextButtonDefaultHint` rgb(159, 170, 181)
+
+`colorTextButtonInverse` rgb(224, 229, 238)
+
+`colorTextButtonInverseDisabled` rgba(255, 255, 255, 0.15)
+
+`colorTextIconDefault` rgb(84, 105, 141)
+
+`colorTextIconDefaultHint` rgb(159, 170, 181)
+
+`colorTextIconDefaultHover` rgb(0, 112, 210)
+
+`colorTextIconDefaultActive` rgb(0, 57, 107)
+
+`colorTextIconDefaultDisabled` rgb(216, 221, 230)
+
+`colorTextIconInverse` rgb(255, 255, 255)
+
+`colorTextIconInverseHover` rgb(255, 255, 255)
+
+
+Styling Apps Using Standard Design Tokens
+
+**Token Name** **Example Value**
+
+`colorTextIconInverseActive` rgb(255, 255, 255)
+
+`colorTextIconInverseDisabled` rgba(255, 255, 255, 0.15)
+
+`colorTextLabel` rgb(84, 105, 141)
+
+`colorTextPlaceholder` rgb(84, 105, 141)
+
+`colorTextPlaceholderInverse` rgb(224, 229, 238)
+
+`colorTextRequired` rgb(194, 57, 52)
+
+`colorTextPill` rgb(0, 112, 210)
+
+`durationInstantly` 0s
+
+`durationImmediately` 0.05s
+
+`durationQuickly` 0.1s
+
+`durationPromptly` 0.2s
+
+`durationSlowly` 0.4s
+
+`durationPaused` 3.2s
+
+`colorBackgroundButtonBrand` rgb(0, 112, 210)
+
+`colorBackgroundButtonBrandActive` rgb(0, 57, 107)
+
+`colorBackgroundButtonBrandHover` rgb(0, 95, 178)
+
+`colorBackgroundButtonBrandDisabled` rgb(224, 229, 238)
+
+`colorBackgroundButtonDefault` rgb(255, 255, 255)
+
+`colorBackgroundButtonDefaultHover` rgb(244, 246, 249)
+
+`colorBackgroundButtonDefaultFocus` rgb(244, 246, 249)
+
+`colorBackgroundButtonDefaultActive` rgb(238, 241, 246)
+
+`colorBackgroundButtonDefaultDisabled` rgb(255, 255, 255)
+
+`colorBackgroundButtonIcon` rgba(0, 0, 0, 0)
+
+`colorBackgroundButtonIconHover` rgb(244, 246, 249)
+
+`colorBackgroundButtonIconFocus` rgb(244, 246, 249)
+
+`colorBackgroundButtonIconActive` rgb(238, 241, 246)
+
+`colorBackgroundButtonIconDisabled` rgb(255, 255, 255)
+
+`colorBackgroundButtonInverse` rgba(0, 0, 0, 0)
+
+`colorBackgroundButtonInverseActive` rgba(0, 0, 0, 0.24)
+
+`colorBackgroundButtonInverseDisabled` rgba(0, 0, 0, 0)
+
+
+Styling Apps Using Standard Design Tokens
+
+**Token Name** **Example Value**
+
+`lineHeightButton` 1.875rem
+
+`lineHeightButtonSmall` 1.75rem
+
+`colorBackgroundAnchor` rgb(244, 246, 249)
+
+[For a complete list of the design tokens available in the SLDS, see Design Tokens on the Lightning Design System site.](https://www.lightningdesignsystem.com/design-tokens/)
+
+SEE ALSO:
+
+Extending Tokens Bundles
+
+#### Standard Design Tokens for Experience Builder Sites
+
+Use a subset of the standard design tokens to make your components compatible with the Theme panel in Experience Builder. The
+Theme panel enables administrators to quickly style an entire site using these properties. Each property in the Theme panel maps to
+one or more standard design tokens. When an administrator updates a property in the Theme panel, the system automatically updates
+any Lightning components that use the tokens associated with that branding property.
+
+[Important: Salesforce recommends that you use Styling Hooks instead of design tokens if possible. While existing design tokens](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)
+still work, styling hooks are the future of customization for Lightning web components and Aura components. See Replace Design
+Tokens with Styling Hooks.
+
+
+Styling Apps Using Standard Design Tokens
+
+Available Tokens for Experience Builder Sites
+
+For Experience Builder sites, these standard tokens are available when extending from `forceCommunity:base` .
+
+Important: The standard token values evolve along with SLDS. Available tokens and their values can change without notice.
+
+Important: Design tokens are not available for navigation branding properties. To add branding to navigation properties, override
+[the navigation bar within the custom components. See CSS Overrides Migration for the Navigation Menu.](https://developer.salesforce.com/docs/atlas.en-us.260.0.communities_dev.meta/communities_dev/communities_dev_nav_menu_css.htm)
+
+**These Branding panel properties...** **...map to these standard design tokens**
+
+Text Color `colorTextDefault`
+
+Detail Text Color
+
+**•** `colorTextActionLabel`
+
+**•** `colorTextLabel`
+
+**•** `colorTextPlaceholder`
+
+
+Styling Apps Using Standard Design Tokens
+
+**These Branding panel properties...** **...map to these standard design tokens**
+
+**•** `colorTextWeak`
+
+Action Color
+
+**•** `colorBackgroundButtonBrand`
+
+**•** `colorBorderBrand`
+
+**•** `colorBorderButtonBrand`
+
+**•** `colorBrand`
+
+**•** `colorTextBrand`
+
+**•** `colorTextTabLabelSelected`
+
+**•** `colorTextActionLabelActive`
+
+Note: As of Summer ’18 `colorBackgroundHighlight` is no longer
+mapped to Action Color.
+
+Link Color `colorTextLink`
+
+Overlay Text Color
+
+**•** `colorTextButtonBrand`
+
+**•** `colorTextButtonBrandHover`
+
+**•** `colorTextInverse`
+
+Border Color
+
+**•** `colorBorder`
+
+**•** `colorBorderButtonDefault`
+
+**•** `colorBorderInput`
+
+**•** `colorBorderSeparatorAlt`
+
+Company Logo `brandLogoImage`
+
+Header Image `headerImageUrl`
+
+Login Pages Background Image `LoginBackgroundImage`
+
+Primary Font `fontFamily`
+
+Text Case `textTransform`
+
+In addition, the following standard tokens are available for derived theme properties in the template. You can indirectly access derived
+properties when you update the properties in the Theme panel. For example, if you change the Action Color property in the Theme
+panel, the system automatically recalculates the Action Color Darker value based on the new value.
+
+**These derived branding properties...** **...map to these standard design tokens**
+
+Action Color Darker
+
+(Derived from Action Color)
+
+Hover Color
+
+(Derived from Action Color)
+
+**•** `colorBackgroundButtonBrandActive`
+
+**•** `colorBackgroundButtonBrandHover`
+
+**•** `colorBackgroundButtonDefaultHover`
+
+**•** `colorBackgroundRowHover`
+
+
+### Styling Apps Replace Design Tokens with Styling Hooks
+
+**These derived branding properties...** **...map to these standard design tokens**
+
+**•** `colorBackgroundRowSelected`
+
+**•** `colorBackgroundShade`
+
+Link Color Darker
+
+(Derived from Link Color)
+
+**•** `colorTextLinkActive`
+
+**•** `colorTextLinkHover`
+
+[For a complete list of the design tokens available in the SLDS, see Design Tokens on the Lightning Design System site.](http://www.lightningdesignsystem.com/resources/tokens/)
+
+SEE ALSO:
+
+Configure Components for Experience Builder
+
+### Replace Design Tokens with Styling Hooks
+
+If you use design tokens to customize the styling of your Aura components, use SLDS global styling hooks instead. Custom components
+that use design tokens still work, but they no longer receive updates after LWC API version 61.0. By using styling hooks, you can cleanly
+adopt future product innovations and updated web accessibility standards.
+
+### Replace Design Tokens with Styling Hooks
+
+Directly replace design tokens with `--slds` styling hooks in your Aura CSS file.
+
+```
+/* Aura Custom Component CSS */
+
+.THIS .my-custom-container {
+
+  background-color: var(--slds-g-color-surface-container-1);
+
+}
+
+```
+
+Most of the customization options provided by design tokens are available with SLDS global styling hooks. For a full list of global styling
+[hooks, see the Global Styling Hooks Reference.](https://www.lightningdesignsystem.com/platforms/lightning/reference/)
+
+Styling if Styling Hooks are Unavailable
+
+Only Lightning Experience supports the latest global styling hooks. In containers such as Experience Cloud sites, newer styling hooks,
+such as the `--slds-g-color-*` styling hooks, aren’t available. To accommodate containers that can’t access these styling hooks,
+include an `--lwc` custom property as a fallback. Use this solution only if the component is expected to run in a container that doesn’t
+support styling hooks.
+
+Convert a design token to an `--lwc` property by adding `--lwc` as a prefix to the design token name. For example, instead of
+`t(colorTextBrand)`, use `var(--lwc-colorTextBrand)` .
+
+Example: This example shows an Aura CSS file for a custom component that uses a design token to override the component’s
+background color.
+
+```
+   /* Aura CSS using an Aura token to override*/
+
+   .THIS .my-custom-container {
+
+    background-color: t(cardColorBackground);
+
+   }
+
+```
+
+
+Styling Apps Replace Design Tokens with Styling Hooks
+
+The best replacement is the new `--slds-g-color-*` styling hooks. However, in this case the container can’t access newer
+styling hooks. So this example replaces the design token by referencing a global color styling hook and also an `--lwc` property
+that’s derived from the original design token.
+
+```
+      /* Aura Custom Component CSS */
+
+      .THIS .my-custom-container {
+
+       background-color: var(--slds-g-color-surface-container-1, --lwc-cardColorBackground);
+
+      }
+
+```
+
+SEE ALSO:
+
+**[Salesforce Lightning Design System:](https://www.lightningdesignsystem.com/platforms/lightning/styling-hooks/)** Styling Hooks
+
+
+# CHAPTER 9 Developing Secure Code
+
+Aura components have a client-side security architecture that helps protect your custom components
+by automatically blocking or modifying any insecure behavior of APIs. This layer prevents components
+from accessing data that belongs to platform code or components from other namespaces without
+explicit permission.
+
+[To learn how to build components that work with Lightning Web Security (LWS) or the legacy architecture](https://developer.salesforce.com/docs/platform/lightning-components-security/guide/lws-intro.html)
+[Lightning Locker, see the Security for Lightning Components guide.](https://developer.salesforce.com/docs/platform/lightning-components-security/guide/locker-intro.html)
+
+[The framework also uses JavaScript strict mode to turn on native security features in the browser, and](https://developer.salesforce.com/docs/platform/lightning-components-security/guide/js-strict-mode-intro.html)
+[Content Security Policy (CSP) rules to control the source of content that can be loaded on a page.](https://developer.salesforce.com/docs/platform/lightning-components-security/guide/content-security-policy-intro.html)
+
+SEE ALSO:
+
+_Security for Lightning Components_ [: Compare Lightning Web Security to Lightning Locker](https://developer.salesforce.com/docs/platform/lightning-components-security/guide/get-started-compare-lws-locker.html)
+
+
+# CHAPTER 10 Using JavaScript
+
+In this chapter ... Use JavaScript for client-side code. The `$A` namespace is the entry point for using the framework in
+JavaScript code.
+
+**•** Supported JavaScript
+For all the methods available in `$A`, see the JavaScript API.
+
+**•** Invoking Actions on
+Component A component bundle can contain JavaScript code in a client-side controller, helper, or renderer. Client-side
+Initialization controllers are the most commonly used of these JavaScript resources.
+
+**•** Sharing JavaScript
+Code in a
+Component Bundle
+
+**•** Sharing JavaScript
+Code Across
+Components
+
+**•** Using External
+JavaScript Libraries
+
+Expressions in JavaScript Code
+
+In JavaScript, use string syntax to evaluate an expression. For example, this expression retrieves the
+`label` attribute in a component.
+
+```
+var theLabel = cmp.get("v.label");
+
+```
+
+Note: Only use the `{! }` expression syntax in markup in `.app` or `.cmp` resources.
+
+**•** Dynamically Creating
+Components
+
+**•** Detecting Data
+Changes with
+Change Handlers
+
+**•** Finding Components
+by ID
+
+**•** Working with
+Attribute Values in
+JavaScript
+
+**•** Working with a
+Component Body in
+JavaScript
+
+**•** Working with Events
+in JavaScript
+
+**•** Modifying the DOM
+
+**•** Checking
+Component Validity
+
+**•** Modifying
+Components Outside
+the Framework
+Lifecycle
+
+**•** Throwing and
+Handling Errors
+
+SEE ALSO:
+
+Handling Events with Client-Side Controllers
+
+
+Using JavaScript
+
+**•** Calling Component
+Methods
+
+**•** Dynamically Adding
+Event Handlers To a
+Component
+
+**•** Dynamically Showing
+or Hiding Markup
+
+**•** Adding and
+Removing Styles
+
+**•** Which Button Was
+Pressed?
+
+**•** Formatting Dates in
+JavaScript
+
+**•** Using JavaScript
+Promises
+
+**•** Making API Calls
+from Components
+
+
+## Using JavaScript Supported JavaScript Supported JavaScript
+
+The Aura Components programming model supports ES5 syntax and ES6 Promises.
+
+For the most reliable experience, use ES5 to develop Aura components because the pipeline from authoring to serialization to execution
+was built for ES5. Promises from ES6 are also available. Using any other syntax or feature is not supported.
+
+This developer guide explains how to develop Aura components and documents the JavaScript usage that's unique to the Aura
+Components programming model.
+
+[If you want to use ES6 or later for development, use the Lightning Web Components programming model, which has been architected](https://developer.salesforce.com/docs/component-library/documentation/lwc)
+for modern JavaScript development.
+
+SEE ALSO:
+
+Browser Support for Aura Components
+
+## Invoking Actions on Component Initialization
+
+Use the `init` event to initialize a component or fire an event after component construction but before rendering.
+
+Note: The `init` event is fired only once per lifecycle of the component. The `init` event doesn’t get fired if the component
+is served from cache. To execute JavaScript code every time a component is rendered, use the `render` event instead.
+
+Let’s look at an example.
+
+```
+   <!--initCmp.cmp-->
+
+   <aura:component>
+
+      <aura:attribute name="setMeOnInit" type="String" default="default value" />
+
+      <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+      <p>This value is set in the controller after the component initializes and before
+
+   rendering.</p>
+
+      <p><b>{!v.setMeOnInit}</b></p>
+
+   </aura:component>
+
+```
+
+The magic happens in this line.
+
+```
+   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+```
+
+This code registers an `init` event handler for the component. `init` is a predefined event sent to every component. Setting
+`value="{!this}"` marks this as a value event. You should always use this setting for an `init` event.
+
+After the component is initialized, the `doInit` action is called in the component’s controller.
+
+```
+   // initCmp.js
+
+   ({
+
+      doInit: function(cmp) {
+
+        // Set the attribute value.
+
+        // You could also fire an event here instead.
+
+        cmp.set("v.setMeOnInit", "controller init magic!");
+
+      }
+
+   })
+
+```
+
+The `doInit` action sets an attribute value, but it could do something more interesting, such as firing an event.
+
+
+## Using JavaScript Sharing JavaScript Code in a Component Bundle
+
+If a component is contained in another component or app, the inner component is initialized first.
+
+SEE ALSO:
+
+Handling Events with Client-Side Controllers
+
+Handle the render Event Event
+
+Component Attributes
+
+Detecting Data Changes with Change Handlers
+
+## Sharing JavaScript Code in a Component Bundle
+
+Put functions that you want to reuse in the component’s helper. Helper functions also enable specialization of tasks, such as processing
+data and queueing server-side actions. Helper functions are local to a component, improve code reuse, and move the heavy lifting of
+JavaScript logic away from the client-side controller, where possible.
+
+A helper function can be called from any JavaScript code in a component’s bundle, such as from a client-side controller or renderer.
+
+Helper functions are similar to client-side controller functions in shape, surrounded by parentheses and curly braces to denote a JavaScript
+object in object-literal notation containing a map of name-value pairs. A helper function can pass in any arguments required by the
+function, such as the component it belongs to, a callback, or any other objects.
+
+```
+   ({
+
+      helperMethod1 : function() {
+
+        // logic here
+
+      },
+
+      helperMethod2 : function(component) {
+
+        // logic here
+
+        this.helperMethod3(var1, var2);
+
+      },
+
+      helperMethod3 : function(var1, var2) {
+
+         // do something with var1 and var2 here
+
+      }
+
+   })
+
+```
+
+To call another function in the same helper, use the syntax: `this.` _`methodName`_, where `this` is a reference to the helper itself. For
+example, `helperMethod2` calls `helperMethod3` with this code.
+
+```
+   this.helperMethod3(var1, var2);
+
+```
+
+Creating a Helper
+
+A helper resource is part of the component bundle and is auto-wired via the naming convention, _`<componentName>`_ `Helper.js` .
+
+To create a helper using the Developer Console, click **HELPER** in the sidebar of the component. This helper file is valid for the scope of
+the component to which it’s auto-wired.
+
+Using a Helper in a Controller
+
+Add a `helper` argument to a controller function to enable the function to use the helper. Specify `(component, event,`
+`helper)` in the controller. These are standard parameters and you don't have to access them in the function.
+
+
+Using JavaScript Sharing JavaScript Code in a Component Bundle
+
+This controller code calls an `updateItem` helper function.
+
+```
+   /* controller */
+
+   ({
+
+      newItemEvent: function(component, event, helper) {
+
+        helper.updateItem(component, event.getParam("item"));
+
+      }
+
+   })
+
+```
+
+Here’s the helper that contains the `updateItem` function called by the controller.
+
+```
+   /* helper */
+
+   ({
+
+      updateItem : function(component, item, callback) {
+
+        // Update the items via a server-side action
+
+        var action = component.get("c.saveItem");
+
+        action.setParams({"item" : item});
+
+        // Set any optional callback and enqueue the action
+
+        if (callback) {
+
+           action.setCallback(this, callback);
+
+        }
+
+        $A.enqueueAction(action);
+
+      }
+
+   })
+
+```
+
+The `updateItem` function accepts three parameters.
+
+**1.** `component` —The component to which the helper belongs.
+
+**2.** `item` —An item that’s set as an `item` parameter for the `saveItem` Apex action.
+
+**3.** `callback` —An optional callback to call after the `saveItem` Apex action returns. In our example, the `newItemEvent`
+controller method passes in only two arguments so there’s no callback.
+
+Using a Helper in a Renderer
+
+Add a helper argument to a renderer function to enable the function to use the helper. In the renderer, specify `(component,`
+`helper)` as parameters in a function signature to enable the function to access the component's helper. These are standard parameters
+and you don't have to access them in the function. The following code shows an example on how you can override the `afterRender()`
+function in the renderer and call `open` in the helper method.
+
+**detailsRenderer.js**
+
+```
+   ({
+
+      afterRender : function(component, helper){
+
+        helper.open(component, null, "new");
+
+      }
+
+   })
+
+```
+
+**detailsHelper.js**
+
+```
+   ({
+
+      open : function(component, note, mode, sort){
+
+        if(mode === "new") {
+
+           //do something
+
+        }
+
+        // do something else, such as firing an event
+
+```
+
+
+## Using JavaScript Sharing JavaScript Code Across Components
+
+```
+      }
+
+   })
+
+```
+
+SEE ALSO:
+
+Create a Custom Renderer
+
+Component Bundles
+
+Handling Events with Client-Side Controllers
+
+## Sharing JavaScript Code Across Components
+
+You can build simple Lightning components that are entirely self-contained. However, if you build more complex applications, you
+probably want to share code, or even client-side data, between components.
+
+The `<ltng:require>` tag enables you to load external JavaScript libraries after you upload them as static resources. You can also
+use `<ltng:require>` to import your own JavaScript libraries of utility methods.
+
+Let’s look at a simple counter library that provides a `getValue()` method, which returns the current value of the counter, and an
+`increment()` method, which increments the value of that counter.
+
+Create the JavaScript Library
+
+**1.** In the Developer Console, click **File**    - **New**    - **Static Resource** .
+
+**2.** Enter _`counter`_ in the `Name` field.
+
+**3.** Select _`text/javascript`_ in the `MIME Type` field.
+
+**4.** Click **Submit** .
+
+**5.** Enter this code and click **File**    - **Save** .
+
+```
+     window._counter = (function() {
+
+       var value = 0; // private
+
+       return { //public API
+
+          increment: function() {
+
+            value = value + 1;
+
+            return value;
+
+          },
+
+          getValue: function() {
+
+            return value;
+
+          }
+
+       };
+
+     }());
+
+```
+
+This code uses the JavaScript module pattern. Using this closure-based pattern, the `value` variable remains private to your library.
+Components using the library can’t access `value` directly.
+
+The most important line of the code to note is:
+
+```
+   window. _counter = (function() {
+
+```
+
+
+Using JavaScript Sharing JavaScript Code Across Components
+
+You must attach `_counter` to the `window` object as a requirement of JavaScript strict mode, which is implicitly enabled in Lightning
+Locker. Even though `window._counter` looks like a global declaration, `_counter` is attached to the Lightning Locker secure
+window object and therefore is a namespace variable, not a global variable.
+
+If you use `_counter` instead of `window._counter`, `_counter` isn’t available. When you try to access it, you get an error similar
+to:
+
+```
+   Action failed: ... [_counter is not defined]
+
+```
+
+Use the JavaScript Library
+
+Let’s use the library in a `MyCounter` component that has a simple UI to exercise the `counter` methods.
+
+```
+   <!--c:MyCounter-->
+
+   <aura:component access="global">
+
+      <ltng:require scripts="{!$Resource.counter}"
+
+              afterScriptsLoaded="{!c.getValue}"/>
+
+      <aura:attribute name="value" type="Integer"/>
+
+      <h1>MyCounter</h1>
+
+      <p>{!v.value}</p>
+
+      <lightning:button label="Get Value" onclick="{!c.getValue}"/>
+
+      <lightning:button label="Increment" onclick="{!c.increment}"/>
+
+   </aura:component>
+
+```
+
+The `<ltng:require>` tag loads the counter library and calls the `getValue` action in the component’s client-side controller after
+the library is loaded.
+
+Here’s the client-side controller.
+
+```
+   /* MyCounterController.js */
+
+   ({
+
+      getValue : function(component, event, helper) {
+
+        component.set("v.value", _counter.getValue());
+
+      },
+
+      increment : function(component, event, helper) {
+
+        component.set("v.value", _counter.increment());
+
+      }
+
+   })
+
+```
+
+You can access properties of the `window` object without having to type the `window.` prefix. Therefore, you can use
+`_counter.getValue()` as shorthand for `window._counter.getValue()` .
+
+Click the buttons to get the value or increment it.
+
+Our counter library shares the counter value between any components that use the library. If you need each component to have a
+separate counter, you could modify the counter implementation. To see the per-component code and for more details, see this blog
+[post about Modularizing Code in Lightning Components.](https://developer.salesforce.com/blogs/developer-relations/2016/12/lightning-components-code-sharing.html)
+
+SEE ALSO:
+
+Using External JavaScript Libraries
+
+_Security for Lightning Components:_ [JavaScript Strict Mode Enforcement](https://developer.salesforce.com/docs/platform/lightning-components-security/guide/js-strict-mode-intro.html)
+
+
+## Using JavaScript Using External JavaScript Libraries Using External JavaScript Libraries
+
+To reference a JavaScript library, upload it as a static resource and use a `<ltng:require>` tag in your `.cmp` or `.app` markup.
+
+[Note: Before you use a third-party JavaScript library, we recommend that you check AppExchange for components or apps from](https://appexchange.salesforce.com/)
+[Salesforce partners that match your requirements. Alternatively, check if a base component provides your desired functionality.](https://developer.salesforce.com/docs/component-library)
+
+The framework’s content security policy mandates that external JavaScript libraries must be uploaded to Salesforce static resources.
+
+You can’t use a `<script>` tag in a component. This restriction mitigates the risk of cross-site scripting attacks. You can add a
+
+`<script>` tag to an application’s template, which is a special type of component that extends `aura:template` .
+
+Note: Only third-party JavaScript libraries that are loaded via `ltng:require` are supported. Documentation and examples
+that demonstrate using a third-party JavaScript library don't constitute an endorsement of that library. We recommend that you
+check the third-party JavaScript library documentation for usage information.
+
+Here’s an example of using `ltng:require` .
+
+```
+   <ltng:require scripts="{!$Resource. resourceName }"
+
+      afterScriptsLoaded="{!c.afterScriptsLoaded}" />
+
+```
+
+_`resourceName`_ is the `Name` of the static resource. In a managed package, the resource name must include the package namespace
+prefix, such as `$Resource.yourNamespace__resourceName` . For a stand-alone static resource, such as an individual graphic
+or script, you only need the name of the resource. For example, if you uploaded `myScript.js` and set the `Name` to `myScript`,
+reference it as `$Resource.myScript` . To reference an item within an archive static resource, add the rest of the path to the item
+using string concatenation.
+
+The `afterScriptsLoaded` action in the client-side controller is called after the scripts are loaded and the component is rendered.
+Don’t use the `init` event to access scripts loaded by `ltng:require` . These scripts load asynchronously and are most likely not
+available when the `init` event handler is called.
+
+Here are some considerations for loading scripts:
+
+**Loading Sets of Scripts**
+Specify a comma-separated list of resources in the `scripts` attribute to load a set of resources.
+
+Note: Due to a quirk in the way `$Resource` is parsed in expressions, use the `join` operator to include multiple
+`$Resource` references in a single attribute. For example, if you have more than one JavaScript library to include into a
+component the `scripts` attribute should be something like the following.
+
+```
+       scripts="{!join(',',
+
+          $Resource.jsLibraries + '/jsLibOne.js',
+
+          $Resource.jsLibraries + '/jsLibTwo.js')}"
+
+```
+
+**Loading Order**
+The scripts are loaded in the order that they are listed.
+
+**One-Time Loading**
+Scripts load only once, even if they’re specified in multiple `<ltng:require>` tags in the same component or across different
+components.
+
+**Parallel Loading**
+Use separate `<ltng:require>` tags for parallel loading if you have multiple sets of scripts that are not dependent on each
+other.
+
+
+Using JavaScript Using External JavaScript Libraries
+
+**Encapsulation**
+To ensure encapsulation and reusability, add the `<ltng:require>` tag to every `.cmp` or `.app` resource that uses the JavaScript
+library.
+
+`ltng:require` also has a `styles` attribute to load a list of CSS resources. You can set the `scripts` and `styles` attributes in
+one `<ltng:require>` tag.
+
+Using a Client-Side Controller with External JavaScript Libraries
+
+If you’re using an external library to work with your HTML elements after rendering, use `afterScriptsLoaded` to wire up a
+client-side controller. The following example sets up a chart using the `Chart.js` library, which is uploaded as a static resource.
+
+```
+   <ltng:require scripts="{!$Resource.chart}"
+
+            afterScriptsLoaded="{!c.setup}"/>
+
+   <canvas aura:id="chart" id="myChart" width="400" height="400"/>
+
+```
+
+The component’s client-side controller sets up the chart after component initialization and rendering.
+
+```
+   setup : function(component, event, helper) {
+
+      var data = {
+
+        labels: ["January", "February", "March"],
+
+        datasets: [{
+
+           data: [65, 59, 80, 81, 56, 55, 40]
+
+        }]
+
+      };
+
+      var el = component.find("chart").getElement();
+
+      var ctx = el.getContext("2d");
+
+      var myNewChart = new Chart(ctx).Line(data);
+
+   }
+
+```
+
+Troubleshooting Errors from **`ltng:require`**
+
+Let’s say your component references a custom JavaScript library with `ltng:require` . When you try to load the component, a modal
+dialog interrupts and displays information about an error.
+
+For example, the dialog could show a message like the following.
+
+```
+   Custom Script Eval error in 'ltng:require' [SecureDOMEvent: [object Event] {key:
+
+   {namespace":"c"}}]
+
+```
+
+The dialog could also include a stack trace. If it doesn’t, check the browser’s JavaScript console for more information. If the component
+didn't load, the console doesn’t show much and the problem is likely in the library you referenced.
+
+[Use the Locker Console to evaluate the JavaScript from the library to see if it’s affected by Locker restrictions.](https://developer.salesforce.com/docs/component-library/tools/locker-service-console)
+
+If `ltng:require` encounters errors in your script, you see an error in the JavaScript console that includes details about the problem.
+The JavaScript console could show a message such as the following.
+
+```
+   WARNING: Failed to load script at
+
+   /resource/156768268766/MyHeader/static/myLib.js:
+
+   Cannot assign to read only property 'someProp' of object '[object Object]'
+
+```
+
+
+## Using JavaScript Dynamically Creating Components
+
+This also indicates the problem is in the static resource, `myLib.js` in this case. If the Locker Console gives you the same message
+when you evaluate the JavaScript from `myLib.js`, this confirms that the script is attempting to perform an action that is not allowed
+by Locker.
+
+SEE ALSO:
+
+_Salesforce Help_ [: Static Resources](https://help.salesforce.com/apex/HTViewHelpDoc?id=pages_static_resources.htm&language=en_US)
+
+$Resource
+
+Using External CSS
+
+Lightning Component Library
+
+_Security for Lightning Components:_ [Content Security Policy Overview](https://developer.salesforce.com/docs/platform/lightning-components-security/guide/content-security-policy-intro.html)
+
+Creating App Templates
+
+## Dynamically Creating Components
+
+Create a component dynamically in your client-side JavaScript code by using the `$A.createComponent()` method. To create
+multiple components, use `$A.createComponents()` .
+
+Note: Use `$A.createComponent()` instead of the deprecated `$A.newCmp()` and `$A.newCmpAsync()` methods.
+
+Client-Side Versus Server-Side Component Creation
+
+The `$A.createComponent()` and `$A.createComponents()` methods support both client-side (synchronous) and
+server-side (asynchronous) component creation. For performance and other reasons, client-side creation is preferred.
+
+To use `$A.createComponent()`, we need the component definition. If we don’t have the definition already on the client, the
+framework makes a server trip to get it. You can avoid this server trip by adding an `<aura:dependency>` tag for the component
+you’re creating in the markup of the component that calls `$A.createComponent()` . The tag ensures that the component definition
+is always available on the client. The tradeoff is that the definition is always downloaded instead of only when it’s needed. This performance
+tradeoff decision depends on your use case.
+
+If no server-side dependencies are found, the methods are executed synchronously on the client-side. The top-level component
+determines whether a server request is necessary for component creation. A component with server-side dependencies must be created
+on the server. Server-side dependencies include component definitions or dynamically loaded labels that aren’t already on the client,
+and other elements that can’t be predetermined by static markup analysis.
+
+Note: A server-side controller isn’t a server-side dependency for component creation because controller actions are only called
+after the component has been created.
+
+A single call to `createComponent()` or `createComponents()` can result in many components being created. The call creates
+the requested component and all its child components. In addition to performance considerations, server-side component creation has
+a limit of 10,000 components that can be created in a single request. If you hit this limit, explicitly declare component dependencies
+with the `<aura:dependency>` tag or otherwise pre-load dependent elements. The components are then created on the client
+side instead.
+
+There’s no limit on component creation on the client side.
+
+Note: Creating components where the top-level components don’t have server dependencies but nested inner components do
+have dependencies isn’t currently supported.
+
+
+Using JavaScript Dynamically Creating Components
+
+Syntax
+
+The syntax is:
+
+```
+   $A.createComponent(String type, Object attributes, function callback)
+
+```
+
+**1.** `type` —The type of component to create; for example, `"lightning:button"` .
+
+**2.** `attributes` —A map of attributes for the component, including the local Id ( `aura:id` ).
+
+**3.** `callback(cmp, status, errorMessage)` —The callback to invoke after the component is created.
+
+Tip: Component creation is asynchronous if it requires a server trip. Follow good asynchronous practices, such as only using
+the new component in the callback.
+
+The callback has three parameters.
+
+**a.** `cmp` —The component that was created. This parameter enables you to do something with the new component, such as add
+it to the body of the component that creates it. If there’s an error, `cmp` is `null` .
+
+**b.** `status` —The status of the call. The possible values are `SUCCESS`, `INCOMPLETE`, or `ERROR` . Always check that the status
+is `SUCCESS` before you try to use the component.
+
+**c.** `errorMessage` —The error message if the status is `ERROR` .
+
+Example
+
+Let’s add a dynamically created button to this sample component.
+
+```
+   <!--c:createComponent-->
+
+   <aura:component>
+
+      <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+      <p>Dynamically created button</p>
+
+      {!v.body}
+
+   </aura:component>
+
+```
+
+The client-side controller calls `$A.createComponent()` to create a `lightning:button` with a local ID ( `aura:id` ) and a
+handler for the `onclick` attribute. The `function(newButton, ...)` callback appends the button to the `body` of
+`c:createComponent` . The `newButton` that’s dynamically created by `$A.createComponent()` is passed as the first
+argument to the callback.
+
+```
+   /*createComponentController.js*/
+
+   ({
+
+      doInit : function(cmp) {
+
+        $A.createComponent(
+
+           "lightning:button",
+
+           {
+
+             "aura:id": "findableAuraId",
+
+             "label": "Press Me",
+
+             "onclick": cmp.getReference("c.handlePress")
+
+           },
+
+           function(newButton, status, errorMessage){
+
+             //Add the new button to the body array
+
+             if (status === "SUCCESS") {
+
+               var body = cmp.get("v.body");
+
+               body.push(newButton);
+
+```
+
+
+Using JavaScript Dynamically Creating Components
+
+```
+               cmp.set("v.body", body);
+
+             }
+
+             else if (status === "INCOMPLETE") {
+
+               console.log("No response from server or client is offline.")
+
+               // Show offline error
+
+             }
+
+             else if (status === "ERROR") {
+
+               console.log("Error: " + errorMessage);
+
+               // Show error message
+
+             }
+
+           }
+
+        );
+
+      },
+
+      handlePress : function(cmp) {
+
+        // Find the button by the aura:id value
+
+        console.log("button: " + cmp.find("findableAuraId"));
+
+        console.log("button pressed");
+
+      }
+
+   })
+
+```
+
+Note: `c:createComponent` contains a `{!v.body}` expression. When you use `cmp.set("v.body", ...)` to set
+the component body, you must explicitly include `{!v.body}` in your component markup.
+
+Creating Nested Components
+
+To dynamically create a component in the body of another component, use `$A.createComponents()` to create the components.
+In the function callback, nest the components by setting the inner component in the `body` of the outer component. This example
+creates a `lightning:icon` component in the `body` of a `lightning:card` component.
+
+```
+   $A.createComponents([
+
+      ["lightning:card",{
+
+             "title" : "Dynamic Components"
+
+           }],
+
+           ["lightning:icon",{
+
+             "iconName" : "utility:success",
+
+             "alternativeText": "Icon that represents a successful step",
+
+             "variant": "success",
+
+             "class": "slds-m-around_small"
+
+           }]
+
+      ],
+
+      function(components, status, errorMessages){
+
+        if (status === "SUCCESS") {
+
+           var card = components[0];
+
+           var icon = components[1];
+
+           // set lightning:icon as the body of lightning:card
+
+           card.set("v.body", icon);
+
+           cmp.set("v.body", card);
+
+        }
+
+        else if (status === "INCOMPLETE") {
+
+           console.log("No response from server or client is offline.")
+
+           // Show offline error
+
+        }
+
+```
+
+
+## Using JavaScript Detecting Data Changes with Change Handlers
+
+```
+        else if (status === "ERROR") {
+
+           console.log("Error message: " + errorMessages[0].message);
+
+        }
+
+      }
+
+   );
+
+```
+
+Destroying Dynamically Created Components
+
+After a component that is declared in markup is no longer in use, the framework automatically destroys it and frees up its memory.
+
+If you create a component dynamically in JavaScript and don’t add it to a facet like `v.body` or another attribute of type
+`Aura.Component[]`, you have to destroy it manually. Use `Component.destroy()` to destroy the component and free up
+its memory to avoid memory leaks.
+
+Important: When a user navigates to a different page, components on the previous page remain in the cache and are hidden,
+not destroyed. See Event Handler Behavior for Active Components on page 285.
+
+SEE ALSO:
+
+aura:dependency
+
+Invoking Actions on Component Initialization
+
+Dynamically Adding Event Handlers To a Component
+
+## Detecting Data Changes with Change Handlers
+
+Configure a component to automatically invoke a change handler, which is a client-side controller action, when a value in one of the
+component's attributes changes.
+
+When the value changes, the `valueChange.evt` event is automatically fired. The event has `type="VALUE"` .
+
+In the component, define a handler with `name="change"` .
+
+```
+   <aura:handler name="change" value="{!v.numItems}" action="{!c.itemsChange}"/>
+
+```
+
+The `value` attribute sets the component attribute that the change handler tracks.
+
+The `action` attribute sets the client-side controller action to invoke when the attribute value changes.
+
+A component can have multiple `<aura:handler name="change">` tags to detect changes to different attributes.
+
+In the controller, define the action for the handler.
+
+```
+   ({
+
+      itemsChange: function(cmp, evt) {
+
+        console.log("numItems has changed");
+
+        console.log("old value: " + evt.getParam("oldValue"));
+
+        console.log("current value: " + evt.getParam("value"));
+
+      }
+
+   })
+
+```
+
+The `valueChange` event gives you access to the previous value ( `oldValue` ) and the current value ( `value` ) in the handler action.
+
+
+## Using JavaScript Finding Components by ID
+
+When a change occurs to a value that is represented by the `change` handler, the framework handles the firing of the event and
+rerendering of the component.
+
+SEE ALSO:
+
+Invoking Actions on Component Initialization
+
+## Finding Components by ID
+
+Retrieve a component by its ID in JavaScript code.
+
+Use `aura:id` to add a local ID of `button1` to the `lightning:button` component.
+
+```
+   <lightning:button aura:id="button1" label="button1"/>
+
+```
+
+You can find the component by calling `cmp.find("button1")`, where `cmp` is a reference to the component containing the
+button. The `find()` function has one parameter, which is the local ID of a component within the markup.
+
+`find()` returns different types depending on the result.
+
+**•** If the local ID is unique, `find()` returns the component.
+
+**•** If there are multiple components with the same local ID, `find()` returns an array of the components.
+
+**•** If there is no matching local ID, `find()` returns `undefined` .
+
+SEE ALSO:
+
+Component IDs
+
+Value Providers
+
+## Working with Attribute Values in JavaScript
+
+These common patterns are useful for working with attribute values in JavaScript.
+
+`component.get(String key)` and `component.set(String key, Object value)` retrieves and assigns values
+associated with the specified key on the component. Keys are passed in as an expression, which represents an attribute value.
+
+To retrieve an attribute value of a component reference, use `component.find("cmpId").get("v.value")` .
+
+Similarly, to set the attribute value of a component reference, use `component.find("cmpId").set("v.value", myValue)` .
+
+This example shows how you can retrieve and set attribute values on a component reference, represented by the button with an ID of
+`button1` .
+
+```
+   <aura:component>
+
+      <aura:attribute name="buttonLabel" type="String"/>
+
+      <lightning:button aura:id="button1" label="Button 1"/>
+
+      {!v.buttonLabel}
+
+      <lightning:button label="Get Label" onclick="{!c.getLabel}"/>
+
+   </aura:component>
+
+```
+
+This controller action retrieves the `label` attribute value of a button in a component and sets its value on the `buttonLabel`
+attribute.
+
+```
+   ({
+
+      getLabel : function(component, event, helper) {
+
+```
+
+
+Using JavaScript Working with Attribute Values in JavaScript
+
+```
+        var myLabel = component.find("button1").get("v.label");
+
+        component.set("v.buttonLabel", myLabel);
+
+      }
+
+   })
+
+```
+
+In the following examples, `cmp` is a reference to a component in your JavaScript code.
+
+To get the value of a component’s `label` attribute:
+
+```
+   var label = cmp.get("v.label");
+
+```
+
+Set an Attribute Value
+
+To set the value of a component’s `label` attribute:
+
+```
+   cmp.set("v.label","This is a label");
+
+```
+
+Deep Set an Attribute Value
+
+If an attribute has an object or collection type, such as `Map`, you can deep set properties in the attribute value using the dot notation
+for expressions. For example, this code sets a value for the `firstName` property in the `user` attribute.
+
+```
+   component.set("v.user.firstName", "Nina");
+
+```
+
+For deeply nested objects and attributes, continue adding dots to traverse the structure and access the nested values.
+
+Let’s look at a component with a `user` attribute of type `Map` .
+
+```
+   <aura:component >
+
+        <aura:attribute name="user" type="Map"
+
+         default="{
+
+           'id': 99,
+
+           'firstName': 'Eunice',
+
+           'lastName': 'Gomez'}" />
+
+      <p>First Name: {!v.user.firstName}</p>
+
+      <lightning:button onclick="{!c.deepSet}" label="Deep Set" />
+
+   </aura:component>
+
+```
+
+When you click the button in the component, you call the `deepSet` action in the client-side controller.
+
+```
+   ({
+
+      deepSet : function(component, event, helper) {
+
+        console.log(component.get("v.user.firstName"));
+
+        component.set("v.user.firstName", "Nina");
+
+        console.log(component.get("v.user.firstName"));
+
+      }
+
+   })
+
+```
+
+The `component.set("v.user.firstName", "Nina")` line sets a value for the `firstName` property in the `user`
+attribute.
+
+
+## Using JavaScript Working with a Component Body in JavaScript
+
+Validate That an Attribute Value Is Defined
+
+To determine if a component’s `label` attribute is defined:
+
+```
+   var isDefined = !$A.util.isUndefined(cmp.get("v.label"));
+
+```
+
+Validate That an Attribute Value Is Empty
+
+To determine if a component’s `label` attribute is empty:
+
+```
+   var isEmpty = $A.util.isEmpty(cmp.get("v.label"));
+
+```
+
+SEE ALSO:
+
+## Working with a Component Body in JavaScript Working with a Component Body in JavaScript
+
+These are useful and common patterns for working with a component’s body in JavaScript.
+
+In these examples, `cmp` is a reference to a component in your JavaScript code. It’s usually easy to get a reference to a component in
+JavaScript code. Remember that the `body` attribute is an array of components, so you can use the JavaScript `Array` methods on it.
+
+Note: When you use `cmp.set("v.body", ...)` to set the component body, you must explicitly include `{!v.body}`
+in your component markup.
+
+Replace a Component's Body
+
+To replace the current value of a component’s body with another component:
+
+```
+   // newCmp is a reference to another component
+
+   cmp.set("v.body", newCmp);
+
+```
+
+Clear a Component's Body
+
+To clear or empty the current value of a component’s body:
+
+```
+   cmp.set("v.body", []);
+
+```
+
+Append a Component to a Component's Body
+
+To append a `newCmp` component to a component’s body:
+
+```
+   var body = cmp.get("v.body");
+
+   // newCmp is a reference to another component
+
+   body.push(newCmp);
+
+   cmp.set("v.body", body);
+
+```
+
+
+## Using JavaScript Working with Events in JavaScript
+
+Prepend a Component to a Component's Body
+
+To prepend a `newCmp` component to a component’s body:
+
+```
+   var body = cmp.get("v.body");
+
+   body.unshift(newCmp);
+
+   cmp.set("v.body", body);
+
+```
+
+Remove a Component from a Component's Body
+
+To remove an indexed entry from a component’s body:
+
+```
+   var body = cmp.get("v.body");
+
+   // Index (3) is zero-based so remove the fourth component in the body
+
+   body.splice(3, 1);
+
+   cmp.set("v.body", body);
+
+```
+
+SEE ALSO:
+
+Component Body
+
+Working with Attribute Values in JavaScript
+
+## Working with Events in JavaScript
+
+These are useful and common patterns for working with events in JavaScript.
+
+Events communicate data across components. Events can contain attributes with values set before the event is fired and read when the
+event is handled.
+
+Fire an Event
+
+Fire a component event or an application event that’s registered on a component.
+
+```
+   //Fire a component event
+
+   var compEvent = cmp.getEvent("sampleComponentEvent");
+
+   compEvent.fire();
+
+   //Fire an application event
+
+   var appEvent = $A.get("e.c:appEvent");
+
+   appEvent.fire();
+
+```
+
+For more information, see:
+
+**•** Fire Component Events
+
+**•** Fire Application Events
+
+Get an Event Name
+
+To get the name of the event that’s fired:
+
+```
+   event.getSource().getName();
+
+```
+
+
+Using JavaScript Working with Events in JavaScript
+
+Get an Event Parameter
+
+To get an attribute that’s passed into an event:
+
+```
+   event.getParam("value");
+
+```
+
+Get Parameters on an Event
+
+To get all attributes that are passed into an event:
+
+```
+   event.getParams();
+
+```
+
+`event.getParams()` returns an object containing all event parameters.
+
+Get the Current Phase of an Event
+
+To get the current phase of an event:
+
+```
+   event.getPhase();
+
+```
+
+If the event hasn’t been fired, `event.getPhase()` returns `undefined` . Possible return values for component and application
+events are `capture`, `bubble`, and `default` . Value events return `default` . For more information, see:
+
+**•** Component Event Propagation
+
+**•** Application Event Propagation
+
+Get the Source Component
+
+To get the component that fired the event:
+
+```
+   event.getSource();
+
+```
+
+To retrieve an attribute on the component that fired the event:
+
+```
+   event.getSource().get("v.myName");
+
+```
+
+Pause the Event
+
+To pause the fired event:
+
+```
+   event.pause();
+
+```
+
+If paused, the event is not handled until `event.resume()` is called. You can pause an event in the `capture` or `bubble` phase
+only. For more information, see:
+
+**•** Handling Bubbled or Captured Component Events
+
+**•** Handling Bubbled or Captured Application Events
+
+Prevent the Default Event Execution
+
+To cancel the default action on the event:
+
+```
+   event.preventDefault();
+
+```
+
+
+## Using JavaScript Modifying the DOM
+
+For example, you can prevent a `lightning:button` component from submitting a form when it’s clicked.
+
+Resume a Paused Event
+
+To resume event handling for a paused event:
+
+```
+   event.resume();
+
+```
+
+You can resume a paused event in the `capture` or `bubble` phase only. For more information, see:
+
+**•** Handling Bubbled or Captured Component Events
+
+**•** Handling Bubbled or Captured Application Events
+
+Set a Value for an Event Parameter
+
+To set a value for an event parameter:
+
+```
+   event.setParam("name", cmp.get("v.myName"));
+
+```
+
+If the event has already been fired, setting a parameter value has no effect on the event.
+
+Set Values for Event Parameters
+
+To set values for parameters on an event:
+
+```
+   event.setParams({
+
+      key : value
+
+   });
+
+```
+
+If the event has already been fired, setting the parameter values has no effect on the event.
+
+Stop Event Propagation
+
+To prevent further propagation of an event:
+
+```
+   event.stopPropagation();
+
+```
+
+You can stop event propagation in the `capture` or `bubble` phase only.
+
+## Modifying the DOM
+
+The Document Object Model (DOM) is the language-independent model for representing and interacting with objects in HTML and
+XML documents. It’s important to know how to modify the DOM safely so that the framework’s rendering service doesn’t stomp on your
+changes and give you unexpected results.
+
+IN THIS SECTION:
+
+Modifying DOM Elements Managed by
+The framework creates and manages the DOM elements owned by a component. If you want to modify these DOM elements created
+by the framework, modify the DOM elements in the handler for the component’s `render` event or in a custom renderer. Otherwise,
+the framework will override your changes when the component is rerendered.
+
+
+### Using JavaScript Modifying DOM Elements Managed by Modifying DOM Elements Managed by External Libraries
+
+You can use different libraries, such as a charting library, to create and manage DOM elements. You don’t have to modify these DOM
+elements within the `render` event handler or a renderer because they are managed by the external library.
+
+### Modifying DOM Elements Managed by
+
+The framework creates and manages the DOM elements owned by a component. If you want to modify these DOM elements created
+by the framework, modify the DOM elements in the handler for the component’s `render` event or in a custom renderer. Otherwise,
+the framework will override your changes when the component is rerendered.
+
+For example, if you modify DOM elements directly from a client-side controller, the changes may be overwritten when the component
+is rendered.
+
+You can read from the DOM outside a `render` event handler or a custom renderer.
+
+The simplest approach is to leave DOM updates to the framework. Update a component’s attribute and use an expression in the markup.
+The framework’s rendering service takes care of the DOM updates.
+
+You can modify CSS classes for a component outside a renderer by using the `$A.util.addClass()`, `$A.util.removeClass()`,
+and `$A.util.toggleClass()` methods.
+
+There are some use cases where you want to perform post-processing on the DOM or react to rendering or rerendering of a component.
+For these use cases, there are a few options.
+
+IN THIS SECTION:
+
+#### Handle the render Event Event
+
+When a component is rendered or rerendered, the `aura:valueRender` event, also known as the `render` event, is fired.
+Handle this event to perform post-processing on the DOM or react to component rendering or rerendering. The event is preferred
+and easier to use than the alternative of creating a custom renderer.
+
+Create a Custom Renderer
+The framework’s rendering service takes in-memory component state and creates and manages the DOM elements owned by the
+component. If you want to modify DOM elements created by the framework for a component, you can modify the DOM elements
+in the component’s renderer. Otherwise, the framework will override your changes when the component is rerendered.
+
+SEE ALSO:
+
+### Modifying DOM Elements Managed by External Libraries
+
+Using Expressions
+
+Dynamically Showing or Hiding Markup
+
+#### Handle the render Event Event
+
+When a component is rendered or rerendered, the `aura:valueRender` event, also known as the `render` event, is fired. Handle
+this event to perform post-processing on the DOM or react to component rendering or rerendering. The event is preferred and easier
+to use than the alternative of creating a custom renderer.
+
+The `render` event is fired after all methods in a custom renderer are invoked. For more details on the sequence in the rendering or
+rerendering lifecycles, see Create a Custom Renderer.
+
+Handling the `aura:valueRender` event is similar to handling the `init` hook. Add a handler to your component's markup.
+
+```
+   <aura:handler name="render" value="{!this}" action="{!c.onRender}"/>
+
+```
+
+
+Using JavaScript Modifying DOM Elements Managed by
+
+In this example, the `onRender` action in your client-side controller handles initial rendering and rerendering of the component. You
+can choose any name for the `action` attribute.
+
+SEE ALSO:
+
+Invoking Actions on Component Initialization
+
+#### Create a Custom Renderer Create a Custom Renderer
+
+The framework’s rendering service takes in-memory component state and creates and manages the DOM elements owned by the
+component. If you want to modify DOM elements created by the framework for a component, you can modify the DOM elements in
+the component’s renderer. Otherwise, the framework will override your changes when the component is rerendered.
+
+The DOM is the language-independent model for representing and interacting with objects in HTML and XML documents. The framework
+automatically renders your components so you don’t have to know anything more about rendering unless you need to customize the
+default rendering behavior for a component.
+
+Note: It’s preferred and easier to handle the `render` event rather than the alternative of creating a custom renderer.
+
+Base Component Rendering
+
+The base component in the framework is `aura:component` . Every component extends this base component.
+
+The renderer for `aura:component` is in `componentRenderer.js` . This renderer has base implementations for the four phases
+of the rendering and rerendering cycles:
+
+**•** `render()`
+
+**•** `rerender()`
+
+**•** `afterRender()`
+
+**•** `unrender()`
+
+The framework calls these functions as part of the rendering and rerendering lifecycles and we will learn more about them soon. You
+can override the base rendering functions in a custom renderer.
+
+Rendering Lifecycle
+
+The rendering lifecycle happens once in the lifetime of a component unless the component gets explicitly unrendered. When you create
+a component:
+
+**1.** The framework fires an `init` event, enabling you to update a component or fire an event after component construction but before
+rendering.
+
+**2.** The `render()` method is called to render the component’s body.
+
+**3.** The `afterRender()` method is called to enable you to interact with the DOM tree after the framework’s rendering service has
+inserted DOM elements.
+
+**4.** The framework fires a `render` event, enabling you to interact with the DOM tree after the framework’s rendering service has
+inserted DOM elements. Handling the `render` event is preferred to creating a custom renderer and overriding `afterRender()` .
+
+
+Using JavaScript Modifying DOM Elements Managed by
+
+Rerendering Lifecycle
+
+The rerendering lifecycle automatically handles rerendering of components whenever the underlying data changes. Here is a typical
+sequence.
+
+**1.** A browser event triggers one or more Lightning events.
+
+**2.** Each Lightning event triggers one or more actions that can update data. The updated data can fire more events.
+
+**3.** The rendering service tracks the stack of events that are fired.
+
+**4.** The framework rerenders all the components that own modified data by calling each component’s `rerender()` method.
+
+**5.** The framework fires a `render` event, enabling you to interact with the DOM tree after the framework rerenders a component.
+Handling the `render` event is preferred to creating a custom renderer and overriding `rerender()` .
+
+The component rerendering lifecycle repeats whenever the underlying data changes as long as the component is valid and not explicitly
+unrendered.
+
+For more information, see Events Fired During the Rendering Lifecycle .
+
+Custom Renderer
+
+You don’t normally have to write a custom renderer, but it’s useful when you want to interact with the DOM tree after the framework’s
+rendering service has inserted DOM elements. If you want to customize rendering behavior and you can’t do it in markup or by using
+the `init` event, you can create a client-side renderer.
+
+A renderer file is part of the component bundle and is auto-wired if you follow the naming convention,
+`<componentName>Renderer.js` . For example, the renderer for `sample.cmp` would be in `sampleRenderer.js` .
+
+Note: These guidelines are important when you customize rendering.
+
+**•** Only modify DOM elements that are part of the component. Never break component encapsulation by reaching in to another
+component and changing its DOM elements, even if you are reaching in from the parent component.
+
+**•** Never fire an event as it can trigger new rendering cycles. An alternative is to use an `init` event instead.
+
+**•** Don’t set attribute values on other components as these changes can trigger new rendering cycles.
+
+**•** Move as much of the UI concerns, including positioning, to CSS.
+
+Customize Component Rendering
+
+Customize rendering by creating a `render()` function in your component’s renderer to override the base `render()` function,
+which updates the DOM.
+
+The `render()` function returns a DOM node, an array of DOM nodes, or nothing. The base HTML component expects DOM nodes
+when it renders a component.
+
+You generally want to extend default rendering by calling `superRender()` from your `render()` function before you add your
+custom rendering code. Calling `superRender()` creates the DOM nodes specified in the markup.
+
+This code outlines a custom `render()` function.
+
+```
+   render : function(cmp, helper) {
+
+      var ret = this.superRender();
+
+      // do custom rendering here
+
+      return ret;
+
+   },
+
+```
+
+
+Using JavaScript Modifying DOM Elements Managed by
+
+Rerender Components
+
+When an event is fired, it may trigger actions to change data and call `rerender()` on affected components. The `rerender()`
+function enables components to update themselves based on updates to other components since they were last rendered. This function
+doesn’t return a value.
+
+If you update data in a component, the framework automatically calls `rerender()` .
+
+You generally want to extend default rerendering by calling `superRerender()` from your `renderer()` function before you
+add your custom rerendering code. Calling `superRerender()` chains the rerendering to the components in the `body` attribute.
+
+This code outlines a custom `rerender()` function.
+
+```
+   rerender : function(cmp, helper){
+
+      this.superRerender();
+
+      // do custom rerendering here
+
+   }
+
+```
+
+Access the DOM After Rendering
+
+The `afterRender()` function enables you to interact with the DOM tree after the framework’s rendering service has inserted DOM
+elements. It’s not necessarily the final call in the rendering lifecycle; it’s simply called after `render()` and it doesn’t return a value.
+
+You generally want to extend default after rendering by calling `superAfterRender()` function before you add your custom code.
+
+This code outlines a custom `afterRender()` function.
+
+```
+   afterRender: function (component, helper) {
+
+      this.superAfterRender();
+
+      // interact with the DOM here
+
+   },
+
+```
+
+Unrender Components
+
+The base `unrender()` function deletes all the DOM nodes rendered by a component’s `render()` function. It is called by the
+framework when a component is being destroyed. Customize this behavior by overriding `unrender()` in your component’s renderer.
+This method can be useful when you are working with third-party libraries that are not native to the framework.
+
+You generally want to extend default unrendering by calling `superUnrender()` from your `unrender()` function before you
+add your custom code.
+
+This code outlines a custom `unrender()` function.
+
+```
+   unrender: function () {
+
+      this.superUnrender();
+
+      // do custom unrendering here
+
+   }
+
+```
+
+SEE ALSO:
+
+Modifying the DOM
+
+Invoking Actions on Component Initialization
+
+Component Bundles
+
+Modifying Components Outside the Framework Lifecycle
+
+Sharing JavaScript Code in a Component Bundle
+
+
+### Using JavaScript Modifying DOM Elements Managed by External Libraries Modifying DOM Elements Managed by External Libraries
+
+You can use different libraries, such as a charting library, to create and manage DOM elements. You don’t have to modify these DOM
+elements within the `render` event handler or a renderer because they are managed by the external library.
+
+A `render` event handler or a renderer are used only to customize DOM elements created and managed by the Aura Components
+programming model.
+
+To use external libraries, use `<ltng:require>` . The `afterScriptsLoaded` attribute enables you to interact with the DOM
+after your libraries have loaded and the DOM is ready. `<ltng:require>` tag orchestrates the loading of your library of choice with
+the rendering cycle of the Aura Components programming model to ensure that everything works in concert.
+
+SEE ALSO:
+
+Using External JavaScript Libraries
+
+### Modifying DOM Elements Managed by
+
+## Checking Component Validity
+
+If you navigate elsewhere in the UI while asynchronous code is executing, the framework unrenders and destroys the component that
+made the asynchronous request. You can still have a reference to that component, but it is no longer valid. The `cmp.isValid()`
+call returns `false` for an invalid component.
+
+If you call `cmp.get()` on an invalid component, `cmp.get()` returns `null` .
+
+If you call `cmp.set()` on an invalid component, nothing happens and no error occurs. It’s essentially a no op.
+
+In many scenarios, the `cmp.isValid()` call isn’t necessary because a `null` check on a value retrieved from `cmp.get()` is
+sufficient. The main reason to call `cmp.isValid()` is if you’re making multiple calls against the component and you want to avoid
+a `null` check for each result.
+
+Inside the Framework Lifecycle
+
+You don’t need a `cmp.isValid()` check in the callback in a client-side controller when you reference the component associated
+with the client-side controller. The framework automatically checks that the component is valid. Similarly, you don’t need a
+`cmp.isValid()` check during event handling or in a framework lifecycle hook, such as the `init` event.
+
+Let’s look at a sample client-side controller.
+
+```
+   ({
+
+      "doSomething" : function(cmp) {
+
+        var action = cmp.get("c.serverEcho");
+
+        action.setCallback(this, function(response) {
+
+           var state = response.getState();
+
+           if (state === "SUCCESS") {
+
+             if (cmp.get("v.displayResult)) {
+
+               alert("From server: " + response.getReturnValue());
+
+             }
+
+           }
+
+           // other state handling omitted for brevity
+
+        });
+
+        $A.enqueueAction(action);
+
+```
+
+
+Using JavaScript Checking Component Validity
+
+```
+      }
+
+   })
+
+```
+
+The component wired to the client-side controller is passed into the `doSomething` action as the `cmp` parameter. When
+`cmp.get("v.displayResult)` is called, we don’t need a `cmp.isValid()` check.
+
+However, if you hold a reference to another component that may not be valid despite your component being valid, you might need a
+`cmp.isValid()` check for the other component. Let’s look at another example of a component that has a reference to another
+component with a local ID of `child` .
+
+```
+   ({
+
+      "doSomething" : function(cmp) {
+
+        var action = cmp.get("c.serverEcho");
+
+        var child = cmp.find("child");
+
+        action.setCallback(this, function(response) {
+
+           var state = response.getState();
+
+           if (state === "SUCCESS") {
+
+             if (child.get("v.displayResult)) {
+
+               alert("From server: " + response.getReturnValue());
+
+             }
+
+           }
+
+           // other state handling omitted for brevity
+
+        });
+
+        $A.enqueueAction(action);
+
+      }
+
+   })
+
+```
+
+This line in the previous example without the child component:
+
+```
+   if (cmp.get("v.displayResult)) {
+
+```
+
+changed to:
+
+```
+   if (child.get("v.displayResult)) {
+
+```
+
+You don’t need a `child.isValid()` call here as `child.get("v.displayResult)` will return `null` if the child component
+is invalid. Add a `child.isValid()` check only if you’re making multiple calls against the child component and you want to avoid
+a `null` check for each result.
+
+Outside the Framework Lifecycle
+
+If you reference a component in asynchronous code, such as `setTimeout()` or `setInterval()`, or when you use Promises, a
+`cmp.isValid()` call checks that the component is still valid before processing the results of the asynchronous request. In many
+scenarios, the `cmp.isValid()` call isn’t necessary because a `null` check on a value retrieved from `cmp.get()` is sufficient.
+The main reason to call `cmp.isValid()` is if you’re making multiple calls against the component and you want to avoid a `null`
+check for each result.
+
+For example, you don’t need a `cmp.isValid()` check within this `setTimeout()` call as the `cmp.set()` call doesn’t do
+anything when the component is invalid.
+
+```
+   window.setTimeout(
+
+      $A.getCallback(function() {
+
+        cmp.set("v.visible", true);
+
+```
+
+
+## Using JavaScript Modifying Components Outside the Framework Lifecycle
+
+```
+      }), 5000
+
+   );
+
+```
+
+SEE ALSO:
+
+Handling Events with Client-Side Controllers
+
+Invoking Actions on Component Initialization
+
+## Modifying Components Outside the Framework Lifecycle Modifying Components Outside the Framework Lifecycle
+
+Use `$A.getCallback()` to wrap any code that modifies a component outside the normal rerendering lifecycle, such as in a
+`setTimeout()` call. The `$A.getCallback()` call ensures that the framework rerenders the modified component and processes
+any enqueued actions.
+
+Note: `$A.run()` is deprecated. Use `$A.getCallback()` instead.
+
+You don't need to use `$A.getCallback()` if your code is executed as part of the framework's call stack; for example, your code is
+handling an event or in the callback for a server-side controller action. An exception is when you want to pass the callback to Lightning
+Data Service, such as when you are creating a record using `force:recordData` . If the callback is passed in without being wrapped
+in `$A.getCallback()`, any attempt to access private attributes of your component results in access check failures.
+
+An example of where you need to use `$A.getCallback()` is calling `window.setTimeout()` in an event handler to execute
+some logic after a time delay. This puts your code outside the framework's call stack.
+
+This sample sets the `visible` attribute on a component to `true` after a five-second delay.
+
+```
+   window.setTimeout(
+
+      $A.getCallback(function() {
+
+        cmp.set("v.visible", true);
+
+      }), 5000
+
+   );
+
+```
+
+Note how the code updating a component attribute is wrapped in `$A.getCallback()`, which ensures that the framework rerenders
+the modified component.
+
+Note: You don't need a `cmp.isValid()` check within this `setTimeout()` call as the `cmp.set()` call doesn't do
+anything when the component is invalid.
+
+Warning: Don't save a reference to a function wrapped in `$A.getCallback()` . If you use the reference later to send actions,
+the saved transaction state will cause the actions to be aborted.
+
+SEE ALSO:
+
+Creating a Record
+
+Handling Events with Client-Side Controllers
+
+Checking Component Validity
+
+Firing Events from Non-Aura Code
+
+Communicating with Events
+
+
+## Using JavaScript Throwing and Handling Errors Throwing and Handling Errors
+
+The framework gives you flexibility in handling unrecoverable and recoverable app errors in JavaScript code. For example, you can throw
+these errors in a callback when handling an error in a server-side response.
+
+Don’t depend on the internals of a Lightning base component for error handling as its internals can change in future releases. Errors that
+are recoverable can change into unrecoverable errors and vice versa. If you encounter an unexpected error, you can sometimes get more
+[information by enabling debug mode](https://help.salesforce.com/articleView?id=sf.aura_debug_mode.htm&language=en_US)
+
+Unrecoverable Errors
+
+Use `throw new Error("error message here")` for unrecoverable errors, such as an error that prevents your app from
+starting successfully. The error message is displayed.
+
+Note: `$A.error()` is deprecated. Throw the native JavaScript `Error` object instead by using `throw new Error()` .
+
+This example shows you the basics of throwing an unrecoverable error in a JavaScript controller.
+
+```
+   <!--c:unrecoverableError-->
+
+   <aura:component>
+
+      <lightning:button label="throw error" onclick="{!c.throwError}"/>
+
+   </aura:component>
+
+```
+
+Here is the client-side controller source.
+
+```
+   /*unrecoverableErrorController.js*/
+
+   ({
+
+      throwError : function(component, event){
+
+        throw new Error("I can’t go on. This is the end.");
+
+      }
+
+   })
+
+```
+
+Recoverable Errors
+
+To handle recoverable errors, use a component, such as `ui:message`, to tell users about the problem.
+
+This sample shows you the basics of throwing and catching a recoverable error in a JavaScript controller.
+
+```
+   <!--c:recoverableError-->
+
+   <aura:component>
+
+      <p>Click the button to trigger the controller to throw an error.</p>
+
+      <div aura:id="div1"></div>
+
+      <lightning:button label="Throw an Error" onclick="{!c.throwErrorForKicks}"/>
+
+   </aura:component>
+
+```
+
+Here is the client-side controller source.
+
+```
+   /*recoverableErrorController.js*/
+
+   ({
+
+      throwErrorForKicks: function(cmp) {
+
+        // this sample always throws an error to demo try/catch
+
+        var hasPerm = false;
+
+        try {
+
+```
+
+
+## Using JavaScript Calling Component Methods
+
+```
+           if (!hasPerm) {
+
+             throw new Error("You don't have permission to edit this record.");
+
+           }
+
+        }
+
+        catch (e) {
+
+           $A.createComponents([
+
+             ["ui:message",{
+
+               "title" : "Sample Thrown Error",
+
+               "severity" : "error",
+
+             }],
+
+             ["lightning:formattedText",{
+
+               "value" : e.message
+
+             }]
+
+             ],
+
+             function(components, status, errorMessage){
+
+               if (status === "SUCCESS") {
+
+                  var message = components[0];
+
+                  var outputText = components[1];
+
+                  // set the body of the ui:message to be the ui:outputText
+
+                  message.set("v.body", outputText);
+
+                  var div1 = cmp.find("div1");
+
+                  // Replace div body with the dynamic component
+
+                  div1.set("v.body", message);
+
+               }
+
+               else if (status === "INCOMPLETE") {
+
+                  console.log("No response from server or client is offline.")
+
+                  // Show offline error
+
+               }
+
+               else if (status === "ERROR") {
+
+                  console.log("Error: " + errorMessage);
+
+                  // Show error message
+
+               }
+
+             }
+
+           );
+
+        }
+
+      }
+
+   })
+
+```
+
+The controller code always throws an error and catches it in this example. The message in the error is displayed to the user in a dynamically
+created `ui:message` component. The body of the `ui:message` is a `ui:outputText` component containing the error text.
+
+SEE ALSO:
+
+Dynamically Creating Components
+
+## Calling Component Methods
+
+Use `<aura:method>` to define a method as part of a component's API. This enables you to directly call a method in a component’s
+client-side controller instead of firing and handling a component event. Using `<aura:method>` simplifies the code needed for a
+parent component to call a method on a child component that it contains.
+
+
+Using JavaScript Calling Component Methods
+
+Communicate Between Components
+
+Use `aura:method` to communicate down the containment hierarchy. For example, a parent component calls an `aura:method`
+on a child component that it contains.
+
+To communicate up the containment hierarchy, fire a component event in the child component and handle it in the parent component.
+
+Syntax
+
+Use this syntax to call a method in JavaScript code.
+
+```
+   cmp.sampleMethod(arg1, … argN);
+
+```
+
+`cmp` is a reference to the component.
+
+`sampleMethod` is the name of the `aura:method` .
+
+`arg1, … argN` is an optional comma-separated list of arguments passed to the method. Each argument corresponds to an
+`aura:attribute` defined in the `aura:method` markup.
+
+Using Inherited Methods
+
+A sub component that extends a super component has access to any methods defined in the super component.
+
+An interface can also include an `<aura:method>` tag. A component that implements the interface can access the method.
+
+Example
+
+Let's look at an example app.
+
+```
+   <!-- c:auraMethodCallerWrapper.app -->
+
+   <aura:application >
+
+      <c:auraMethodCaller />
+
+   </aura:application>
+
+```
+
+`c:auraMethodCallerWrapper.app` contains a `c:auraMethodCaller` component.
+
+```
+   <!-- c:auraMethodCaller.cmp -->
+
+   <aura:component >
+
+      <p>Parent component calls aura:method in child component</p>
+
+      <c:auraMethod aura:id="child" />
+
+      ...
+
+   </aura:component>
+
+```
+
+`c:auraMethodCaller` is the parent component. `c:auraMethodCaller` contains the child component, `c:auraMethod` .
+
+We'll show how `c:auraMethodCaller` calls an `aura:method` defined in `c:auraMethod` .
+
+We'll use `c:auraMethodCallerWrapper.app` to see how to return results from synchronous and asynchronous code.
+
+IN THIS SECTION:
+
+Return Result for Synchronous Code
+
+`aura:method` executes synchronously. A synchronous method finishes executing before it returns. Use the `return` statement
+to return a value from synchronous JavaScript code.
+
+
+### Using JavaScript Return Result for Synchronous Code
+
+Return Result for Asynchronous Code
+
+`aura:method` executes synchronously. Use the `return` statement to return a value from synchronous JavaScript code. JavaScript
+code that calls a server-side action is asynchronous. Asynchronous code can continue to execute after it returns. You can’t use the
+
+`return` statement to return the result of an asynchronous call because the `aura:method` returns before the asynchronous
+code completes. For asynchronous code, use a callback instead of a `return` statement.
+
+SEE ALSO:
+
+aura:method
+
+Component Events
+
+### Return Result for Synchronous Code
+
+`aura:method` executes synchronously. A synchronous method finishes executing before it returns. Use the `return` statement to
+return a value from synchronous JavaScript code.
+
+An asynchronous method can continue to execute after it returns. JavaScript code often uses the callback pattern to return a result after
+asynchronous code completes. We’ll describe later how to return a result for an asynchronous action.
+
+Step 1: Define **`aura:method`** in Markup
+
+Let’s look at a `logParam aura:method` that executes synchronous code. We’ll use the `c:auraMethodCallerWrapper.app`
+and components outlined in Calling Component Methods. Here’s the markup that defines the `aura:method` .
+
+```
+   <!-- c:auraMethod -->
+
+   <aura:component>
+
+      <aura:method name="logParam"
+
+       description="Sample method with parameter">
+
+        <aura:attribute name="message" type="String" default="default message" />
+
+      </aura:method>
+
+      <p>This component has an aura:method definition.</p>
+
+   </aura:component>
+
+```
+
+The `logParam aura:method` has an `aura:attribute` with a name of `message` . This attribute enables you to set a
+`message` parameter when you call the `logParam` method.
+
+The name attribute of `logParam` configures the `aura:method` to invoke `logParam()` in the client-side controller.
+
+An `aura:method` can have multiple `aura:attribute` tags. Each `aura:attribute` corresponds to a parameter that you
+can pass into the `aura:method` . For more details on the syntax, see aura:method.
+
+You don’t explicitly declare a return value in the `aura:method` markup. You just use a `return` statement in the JavaScript controller.
+
+Step 2: Implement **`aura:method`** Logic in Controller
+
+The `logParam aura:method` invokes `logParam()` in `auraMethodController.js` . Let’s look at that source.
+
+```
+   /* auraMethodController.js */
+
+   ({
+
+      logParam : function(cmp, event) {
+
+        var params = event.getParam('arguments');
+
+        if (params) {
+
+           var message = params.message;
+
+```
+
+
+Using JavaScript Return Result for Synchronous Code
+
+```
+           console.log("message: " + message);
+
+           return message;
+
+        }
+
+      },
+
+   })
+
+```
+
+`logParam()` simply logs the parameter passed in and returns the parameter value to demonstrate how to use the `return` statement.
+If your code is synchronous, you can use a `return` statement; for example, you’re not making an asynchronous server-side action call.
+
+Step 3: Call **`aura:method`** from Parent Controller
+
+`callAuraMethod()` in the controller for `c:auraMethodCaller` calls the `logParam aura:method` defined in its child
+component, `c:auraMethod` . Here’s the controller for `c:auraMethodCaller` .
+
+```
+   /* auraMethodCallerController.js */
+
+   ({
+
+      callAuraMethod : function(component, event, helper) {
+
+        var childCmp = component.find("child");
+
+        // call the aura:method in the child component
+
+        var auraMethodResult =
+
+         childCmp.logParam("message sent by parent component");
+
+        console.log("auraMethodResult: " + auraMethodResult);
+
+      },
+
+   })
+
+```
+
+`callAuraMethod()` finds the child component, `c:auraMethod`, and calls its `logParam aura:method` with an argument
+for the message parameter of the `aura:method` .
+
+```
+   childCmp.logParam("message sent by parent component");
+
+```
+
+`auraMethodResult` is the value returned from `logParam` .
+
+Step 4: Add Button to Initiate Call to **`aura:method`**
+
+The `c:auraMethodCaller` markup contains a `lightning:button` that invokes `callAuraMethod()` in
+`auraMethodCallerController.js` . We use this button to initiate the call to `aura:method` in the child component.
+
+```
+   <!-- c:auraMethodCaller.cmp -->
+
+   <aura:component >
+
+      <p>Parent component calls aura:method in child component</p>
+
+      <c:auraMethod aura:id="child" />
+
+      <lightning:button label="Call aura:method in child component"
+
+        onclick="{! c.callAuraMethod}" />
+
+   </aura:component>
+
+```
+
+SEE ALSO:
+
+Return Result for Asynchronous Code
+
+Calling Component Methods
+
+aura:method
+
+
+### Using JavaScript Return Result for Asynchronous Code Return Result for Asynchronous Code
+
+`aura:method` executes synchronously. Use the `return` statement to return a value from synchronous JavaScript code. JavaScript
+code that calls a server-side action is asynchronous. Asynchronous code can continue to execute after it returns. You can’t use the
+
+`return` statement to return the result of an asynchronous call because the `aura:method` returns before the asynchronous code
+completes. For asynchronous code, use a callback instead of a `return` statement.
+
+Step 1: Define **`aura:method`** in Markup
+
+Let’s look at an `echo aura:method` that uses a callback. We’ll use the `c:auraMethodCallerWrapper.app` and components
+outlined in Calling Component Methods. Here’s the `echo aura:method` in the `c:auraMethod` component.
+
+```
+   <!-- c:auraMethod -->
+
+   <aura:component controller="SimpleServerSideController">
+
+      <aura:method name="echo"
+
+       description="Sample method with server-side call">
+
+        <aura:attribute name="callback" type="Function" />
+
+      </aura:method>
+
+      <p>This component has an aura:method definition.</p>
+
+   </aura:component>
+
+```
+
+The `echo aura:method` has an `aura:attribute` with a name of callback. This attribute enables you to set a callback that’s
+invoked by the `aura:method` after execution of the server-side action in `SimpleServerSideController` .
+
+Step 2: Implement **`aura:method`** Logic in Controller
+
+The `echo aura:method` invokes `echo()` in `auraMethodController.js` . Let’s look at the source.
+
+```
+   /* auraMethodController.js */
+
+   ({
+
+      echo : function(cmp, event) {
+
+        var params = event.getParam('arguments');
+
+        var callback;
+
+        if (params) {
+
+           callback = params.callback;
+
+        }
+
+        var action = cmp.get("c.serverEcho");
+
+        action.setCallback(this, function(response) {
+
+           var state = response.getState();
+
+           if (state === "SUCCESS") {
+
+             console.log("From server: " + response.getReturnValue());
+
+             // return doesn't work for async server action call
+
+             //return response.getReturnValue();
+
+             // call the callback passed into aura:method
+
+             if (callback) callback(response.getReturnValue());
+
+           }
+
+           else if (state === "INCOMPLETE") {
+
+             // do something
+
+           }
+
+           else if (state === "ERROR") {
+
+             var errors = response.getError();
+
+```
+
+
+Using JavaScript Return Result for Asynchronous Code
+
+```
+             if (errors) {
+
+               if (errors[0] && errors[0].message) {
+
+                  console.log("Error message: " +
+
+                   errors[0].message);
+
+               }
+
+             } else {
+
+               console.log("Unknown error");
+
+             }
+
+           }
+
+        });
+
+        $A.enqueueAction(action);
+
+      },
+
+   })
+
+```
+
+`echo()` calls the `serverEcho()` server-side controller action, which we’ll create next.
+
+Note: You can’t return the result with a `return` statement. The `aura:method` returns before the asynchronous server-side
+action call completes. Instead, we invoke the callback passed into the `aura:method` and set the result as a parameter in the
+callback.
+
+Step 3: Create Apex Server-Side Controller
+
+The `echo aura:method` calls a server-side controller action called `serverEcho` . Here’s the source for the server-side controller.
+
+```
+   public with sharing class SimpleServerSideController {
+
+      @AuraEnabled
+
+      public static String serverEcho() {
+
+        return ('Hello from the server');
+
+      }
+
+   }
+
+```
+
+The `serverEcho()` method returns a `String` .
+
+Step 4: Call **`aura:method`** from Parent Controller
+
+Here’s the controller for `c:auraMethodCaller` . It calls the `echo aura:method` in its child component, `c:auraMethod` .
+
+```
+   /* auraMethodCallerController.js */
+
+   ({
+
+      callAuraMethodServerTrip : function(component, event, helper) {
+
+        var childCmp = component.find("child");
+
+        // call the aura:method in the child component
+
+        childCmp.echo(function(result) {
+
+           console.log("callback for aura:method was executed");
+
+           console.log("result: " + result);
+
+        });
+
+      },
+
+   })
+
+```
+
+`callAuraMethodServerTrip()` finds the child component, `c:auraMethod`, and calls its `echo aura:method` . `echo()`
+passes a callback function into the `aura:method` .
+
+
+## Using JavaScript Dynamically Adding Event Handlers To a Component
+
+The callback configured in `auraMethodCallerController.js` logs the result.
+
+```
+   function(result) {
+
+      console.log("callback for aura:method was executed");
+
+      console.log("result: " + result);
+
+   }
+
+```
+
+Step 5: Add Button to Initiate Call to **`aura:method`**
+
+The `c:auraMethodCaller` markup contains a `lightning:button` that invokes `callAuraMethodServerTrip()`
+in `auraMethodCallerController.js` . We use this button to initiate the call to the `aura:method` in the child component.
+
+Here’s the markup for `c:auraMethodCaller` .
+
+```
+   <!-- c:auraMethodCaller.cmp -->
+
+   <aura:component >
+
+      <p>Parent component calls aura:method in child component</p>
+
+      <c:auraMethod aura:id="child" />
+
+      <lightning:button label="Call aura:method (server trip) in child component"
+
+        onclick="{! c.callAuraMethodServerTrip}" />
+
+   </aura:component>
+
+```
+
+SEE ALSO:
+
+Return Result for Synchronous Code
+
+Calling Component Methods
+
+aura:method
+
+## Dynamically Adding Event Handlers To a Component
+
+You can dynamically add a handler for an event that a component fires.
+
+The `addEventHandler()` method in the `Component` object replaces the deprecated `addHandler()` method.
+
+To add an event handler to a component dynamically, use the `addEventHandler()` method.
+
+```
+   addEventHandler(String event, Function handler, String phase, String includeFacets)
+
+   event
+```
+
+The first argument is the name of the event that triggers the handler. You can’t force a component to start firing events that it doesn’t
+fire, so make sure that this argument corresponds to an event that the component fires. The `<aura:registerEvent>` tag in
+a component’s markup advertises an event that the component fires.
+
+**•** For a component event, set this argument to match the `name` attribute of the `<aura:registerEvent>` tag.
+
+**•** For an application event, set this argument to match the event descriptor in the format `namespace:eventName` .
+
+```
+   handler
+```
+
+The second argument is the action that handles the event. The format is similar to the value you would put in the `action` attribute
+in the `<aura:handler>` tag if the handler was statically defined in the markup. There are two options for this argument.
+
+**•** To use a controller action, use the format: `cmp.getReference("c.actionName")` .
+
+
+Using JavaScript Dynamically Adding Event Handlers To a Component
+
+**•** To use an anonymous function, use the format:
+
+```
+       function(auraEvent) {
+
+         // handling logic here
+
+       }
+
+```
+
+[For a description of the other arguments, see the JavaScript API in the Aura Reference app.](http://documentation.auraframework.org/auradocs#reference)
+
+You can also add an event handler to a component that is created dynamically in the callback function of `$A.createComponent()` .
+For more information, see Dynamically Creating Components.
+
+Example
+
+This component has buttons to fire and handle a component event and an application event.
+
+```
+   <!--c:dynamicHandler-->
+
+   <aura:component >
+
+      <aura:registerEvent name="compEvent" type="c:sampleEvent"/>
+
+      <aura:registerEvent name="appEvent" type="c:appEvent"/>
+
+      <h1>Add dynamic handler for event</h1>
+
+      <p>
+
+        <lightning:button label="Fire component event" onclick="{!c.fireEvent}" />
+
+        <lightning:button label="Add dynamic event handler for component event"
+
+   onclick="{!c.addEventHandler}" />
+
+      </p>
+
+      <p>
+
+        <lightning:button label="Fire application event" onclick="{!c.fireAppEvent}" />
+
+        <lightning:button label="Add dynamic event handler for application event"
+
+   onclick="{!c.addAppEventHandler}" />
+
+      </p>
+
+   </aura:component>
+
+```
+
+Here’s the client-side controller.
+
+```
+   /* dynamicHandlerController.js */
+
+   ({
+
+      fireEvent : function(cmp, event) {
+
+        // Get the component event by using the
+
+        // name value from <aura:registerEvent> tag
+
+        var compEvent = cmp.getEvent("compEvent");
+
+        compEvent.fire();
+
+        console.log("Fired a component event");
+
+      },
+
+      addEventHandler : function(cmp, event) {
+
+        // First param matches name attribute in <aura:registerEvent> tag
+
+        cmp.addEventHandler("compEvent", cmp.getReference("c.handleEvent"));
+
+        console.log("Added handler for component event");
+
+      },
+
+      handleEvent : function(cmp, event) {
+
+        alert("Handled the component event");
+
+      },
+
+```
+
+
+## Using JavaScript Dynamically Showing or Hiding Markup
+
+```
+      fireAppEvent : function(cmp, event) {
+
+        var appEvent = $A.get("e.c:appEvent");
+
+        appEvent.fire();
+
+        console.log("Fired an application event");
+
+      },
+
+      addAppEventHandler : function(cmp, event) {
+
+        // Can use cmp.getReference() or anonymous function for handler
+
+        // First param is event descriptor, "c:appEvent", for application events
+
+        cmp.addEventHandler("c:appEvent", cmp.getReference("c.handleAppEvent"));
+
+        // Can alternatively use anonymous function for handler
+
+        //cmp.addEventHandler("c:appEvent", function(auraEvent) {
+
+           // console.log("Handled the application event in anonymous function");
+
+        //});
+
+        console.log("Added handler for application event");
+
+      },
+
+      handleAppEvent : function(cmp, event) {
+
+        alert("Handled the application event");
+
+      }
+
+   })
+
+```
+
+Notice the first parameter of the `addEventHandler()` calls. The syntax for a component event is:
+
+```
+   cmp.addEventHandler("compEvent", cmp.getReference("c.handleEvent"));
+
+```
+
+The syntax for an application event is:
+
+```
+   cmp.addEventHandler("c:appEvent", cmp.getReference("c.handleAppEvent"));
+
+```
+
+For either a component or application event, you can use an anonymous function as a handler instead of using `cmp.getReference()`
+for a controller action.
+
+For example, the application event handler could be:
+
+```
+   cmp.addEventHandler("c:appEvent", function(auraEvent) {
+
+      // add handler logic here
+
+      console.log("Handled the application event in anonymous function");
+
+   });
+
+```
+
+SEE ALSO:
+
+Handling Events with Client-Side Controllers
+
+Handling Component Events
+
+Lightning Component Library
+
+## Dynamically Showing or Hiding Markup
+
+You can use CSS to toggle markup visibility. However, `<aura:if>` is the preferred approach because it defers the creation and
+rendering of the enclosed element tree until needed.
+
+For an example using `<aura:if>`, see Best Practices for Conditional Markup.
+
+
+## Using JavaScript Adding and Removing Styles
+
+This example uses `$A.util.toggleClass(cmp, 'class')` to toggle visibility of markup.
+
+```
+   <!--c:toggleCss-->
+
+   <aura:component>
+
+      <lightning:button label="Toggle" onclick="{!c.toggle}"/>
+
+      <p aura:id="text">Now you see me</p>
+
+   </aura:component>
+
+   /*toggleCssController.js*/
+
+   ({
+
+      toggle : function(component, event, helper) {
+
+        var toggleText = component.find("text");
+
+        $A.util.toggleClass(toggleText, "toggle");
+
+      }
+
+   })
+
+   /*toggleCss.css*/
+
+   .THIS.toggle {
+
+      display: none;
+
+   }
+
+```
+
+Note: There’s no space in the `.THIS.toggle` selector because we’re using the rule to match a `<p>` tag, which is a top-level
+element. For more information, see CSS in Components.
+
+Add the `c:toggleCss` component to an app. To hide or show the text by toggling the CSS class, click the **Toggle** button.
+
+SEE ALSO:
+
+Handling Events with Client-Side Controllers
+
+Component Attributes
+
+## Adding and Removing Styles Adding and Removing Styles
+
+You can add or remove a CSS style on a component or element during runtime.
+
+To retrieve the class name on a component, use `component.find('myCmp').get('v.class')`, where `myCmp` is the
+`aura:id` attribute value.
+
+To append and remove CSS classes from a component or element, use the `$A.util.addClass(cmpTarget, 'class')`
+and `$A.util.removeClass(cmpTarget, 'class')` methods.
+
+**Component source**
+
+```
+   <aura:component>
+
+      <div aura:id="changeIt">Change Me!</div><br />
+
+      <lightning:button onclick="{!c.applyCSS}" label="Add Style" />
+
+      <lightning:button onclick="{!c.removeCSS}" label="Remove Style" />
+
+   </aura:component>
+
+```
+
+**CSS source**
+
+```
+   .THIS.changeMe {
+
+      background-color:yellow;
+
+```
+
+
+## Using JavaScript Which Button Was Pressed?
+
+```
+      width:200px;
+
+   }
+
+```
+
+**Client-side controller source**
+
+```
+   {
+
+      applyCSS: function(cmp, event) {
+
+        var cmpTarget = cmp.find('changeIt');
+
+        $A.util.addClass(cmpTarget, 'changeMe');
+
+      },
+
+      removeCSS: function(cmp, event) {
+
+        var cmpTarget = cmp.find('changeIt');
+
+        $A.util.removeClass(cmpTarget, 'changeMe');
+
+      }
+
+   }
+
+```
+
+The buttons in this demo are wired to controller actions that append or remove the CSS styles. To append a CSS style to a component,
+use `$A.util.addClass(cmpTarget, 'class')` . Similarly, remove the class by using
+`$A.util.removeClass(cmpTarget, 'class')` in your controller. `cmp.find()` locates the component using the local
+ID, denoted by `aura:id="changeIt"` in this demo.
+
+Toggling a Class
+
+To toggle a class, use `$A.util.toggleClass(cmp, 'class')`, which adds or removes the class.
+
+The `cmp` parameter can be component or a DOM element.
+
+Note: We recommend using a component instead of a DOM element. If the utility function is not used inside `afterRender()`
+or `rerender()`, passing in `cmp.getElement()` might result in your class not being applied when the components are
+rerendered. For more information, see Events Fired During the Rendering Lifecycle on page 294.
+
+To hide or show markup dynamically, see Dynamically Showing or Hiding Markup on page 372.
+
+To conditionally set a class for an array of components, pass in the array to `$A.util.toggleClass()` .
+
+```
+   mapClasses: function(arr, cssClass) {
+
+      for(var cmp in arr) {
+
+        $A.util.toggleClass(arr[cmp], cssClass);
+
+      }
+
+   }
+
+```
+
+SEE ALSO:
+
+Handling Events with Client-Side Controllers
+
+CSS in Components
+
+Component Bundles
+
+## Which Button Was Pressed?
+
+To find out which button was pressed in a component containing multiple buttons, use `Component.getLocalId()` .
+
+
+## Using JavaScript Formatting Dates in JavaScript
+
+Let’s look at an example with multiple `lightning:button` components. Each button has a unique local ID, set by an `aura:id`
+attribute.
+
+```
+   <!--c:buttonPressed-->
+
+   <aura:component>
+
+      <aura:attribute name="whichButton" type="String" />
+
+      <p>You clicked: {!v.whichButton}</p>
+
+      <lightning:button aura:id="button1" label="Click me" onclick="{!c.nameThatButton}"/>
+
+     <lightning:button aura:id="button2" label="Click me too" onclick="{!c.nameThatButton}"/>
+
+   </aura:component>
+
+```
+
+Use `event.getSource()` in the client-side controller to get the button component that was clicked. Call `getLocalId()` to
+get the `aura:id` of the clicked button.
+
+```
+   /* buttonPressedController.js */
+
+   ({
+
+      nameThatButton : function(cmp, event, helper) {
+
+        var whichOne = event.getSource().getLocalId();
+
+        console.log(whichOne);
+
+        cmp.set("v.whichButton", whichOne);
+
+      }
+
+   })
+
+```
+
+In the client-side controller, you can use one of the following methods to find out which button was clicked.
+
+**•** `event.getSource().getLocalId()` returns the `aura:id` of the clicked button.
+
+**•** `event.getSource().get("v.name")` returns the `name` of the clicked button.
+
+SEE ALSO:
+
+Component IDs
+
+Finding Components by ID
+
+## Formatting Dates in JavaScript
+
+The `AuraLocalizationService` JavaScript API provides methods for formatting and localizing dates.
+
+For example, the `formatDate()` method formats a date based on the `formatString` parameter set as the second argument.
+
+```
+   formatDate (String | Number | Date date, String formatString)
+
+```
+
+The `date` [parameter can be a String, Number, or most typically a JavaScript Date. If you provide a String value, use ISO 8601 format to](https://www.iso.org/iso-8601-date-and-time-format.html)
+avoid parsing warnings.
+
+The `formatString` parameter contains tokens to format a date and time. For example, `"YYYY-MM-DD"` formats `15th`
+`January, 2017` as `"2017-01-15"` . The default format string comes from the `$Locale` value provider.
+
+This table shows the list of tokens supported in `formatString` .
+
+
+Using JavaScript Formatting Dates in JavaScript
+
+
+## Using JavaScript Using JavaScript Promises
+
+There are similar methods that differ in their default output values.
+
+**•** `formatDateTime()` —The default formatString outputs datetime instead of date.
+
+**•** `formatDateTimeUTC()` —Formats a datetime in UTC standard time.
+
+**•** `formatDateUTC()` —Formats a date in UTC standard time.
+
+For more information on all the methods in `AuraLocalizationService`, see JavaScript API.
+
+Example: This example converts a selected date on a date field using the given format, `yyyy-MM-dd` . The converted date is
+displayed below the date field.
+
+```
+      <aura:component implements="flexipage:availableForRecordHome">
+
+        <aura:attribute name="formatDate" type="String"/>
+
+        <lightning:input
+
+           type="date"
+
+           value="{!v.formatDate}"
+
+           onchange="{!c.convertDate}">
+
+        </lightning:input>
+
+        {!v.formatDate}
+
+      </aura:component>
+
+      ({
+
+        convertDate: function (cmp, event) {
+
+           var date = event.getParam("value");
+
+           var formatted = $A.localizationService.formatDate(date, "yyyy-MM-dd");
+
+           cmp.set("v.formatDate", formatted);
+
+        },
+
+      })
+
+```
+
+SEE ALSO:
+
+Localization
+
+## Using JavaScript Promises
+
+You can use ES6 Promises in JavaScript code. Promises can simplify code that handles the success or failure of asynchronous calls, or
+code that chains together multiple asynchronous calls.
+
+If the browser doesn’t provide a native version, the framework uses a polyfill so that promises work in all browsers supported for Lightning
+Experience.
+
+We assume that you are familiar with the fundamentals of promises. For a great introduction to promises, see
+[https://web.dev/articles/promises.](https://web.dev/articles/promises)
+
+Promises are an optional feature. Some people love them, some don’t. Use them if they make sense for your use case.
+
+
+Using JavaScript Using JavaScript Promises
+
+Create a Promise
+
+This `firstPromise` function returns a Promise.
+
+```
+   firstPromise : function() {
+
+      return new Promise($A.getCallback(function(resolve, reject) {
+
+       // do something
+
+       if (/* success */) {
+
+        resolve("Resolved");
+
+       }
+
+       else {
+
+        reject("Rejected");
+
+       }
+
+      }));
+
+   }
+
+```
+
+The promise constructor determines the conditions for calling `resolve()` or `reject()` on the promise.
+
+Chaining Promises
+
+When you need to coordinate or chain together multiple callbacks, promises can be useful. The generic pattern is:
+
+```
+   firstPromise()
+
+      .then(
+
+        // resolve handler
+
+        $A.getCallback(function(result) {
+
+           return anotherPromise();
+
+        }),
+
+        // reject handler
+
+        $A.getCallback(function(error) {
+
+           console.log("Promise was rejected: ", error);
+
+           return errorRecoveryPromise();
+
+        })
+
+      )
+
+      .then(
+
+        // resolve handler
+
+        $A.getCallback(function() {
+
+           return yetAnotherPromise();
+
+        })
+
+      );
+
+```
+
+The `then()` method chains multiple promises. In this example, each resolve handler returns another promise.
+
+`then()` is part of the Promises API. It takes two arguments:
+
+**1.** A callback for a fulfilled promise (resolve handler)
+
+**2.** A callback for a rejected promise (reject handler)
+
+The first callback, `function(result)`, is called when `resolve()` is called in the promise constructor. The `result` object in
+the callback is the object passed as the argument to `resolve()` .
+
+The second callback, `function(error)`, is called when `reject()` is called in the promise constructor. The `error` object in
+the callback is the object passed as the argument to `reject()` .
+
+
+## Using JavaScript Making API Calls from Components
+
+Note: The two callbacks are wrapped by `$A.getCallback()` in our example. What’s that all about? Promises execute their
+resolve and reject functions asynchronously so the code is outside the Lightning event loop and normal rendering lifecycle. If the
+resolve or reject code makes any calls to the Lightning Component framework, such as setting a component attribute, use
+`$A.getCallback()` to wrap the code. For more information, see Modifying Components Outside the Framework Lifecycle
+on page 362.
+
+Always Use **`catch()`** or a Reject Handler
+
+The reject handler in the first `then()` method returns a promise with `errorRecoveryPromise()` . Reject handlers are often
+used "midstream" in a promise chain to trigger an error recovery mechanism.
+
+The Promises API includes a `catch()` method to optionally catch unhandled errors. Always include a reject handler or a `catch()`
+method in your promise chain.
+
+Throwing an error in a promise doesn’t trigger `window.onerror`, which is where the framework configures its global error handler.
+If you don't have a `catch()` method, keep an eye on your browser’s console during development for reports about uncaught errors
+in a promise. To show an error message in a `catch()` method, use `$A.reportError()` . The syntax for `catch()` is:
+
+```
+   promise.then(...)
+
+      .catch(function(error) {
+
+        $A.reportError("error message here", error);
+
+      });
+
+```
+
+For more information on `catch()` [, see the Mozilla Developer Network.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)
+
+Don’t Use Storable Actions in Promises
+
+The framework stores the response for storable actions in client-side cache. This stored response can dramatically improve the performance
+of your app and allow offline usage for devices that temporarily don’t have a network connection. Storable actions are only suitable for
+read-only actions.
+
+Storable actions might have their callbacks invoked more than once: first with cached data, then with updated data from the server. The
+multiple invocations don't align well with promises, which are expected to resolve or reject only once.
+
+SEE ALSO:
+
+Storable Actions
+
+## Making API Calls from Components
+
+By default, you can’t make calls to third-party APIs from client-side code. Add a remote site as a Trusted URL with Content Security Policy
+(CSP) directives to allow client-side component code to load assets from and make API requests to that site’s domain.
+
+[The Lightning Component framework uses Content Security Policy (CSP) to impose restrictions on content. The main objective is to help](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+[prevent cross-site scripting (XSS) and other code injection attacks. Lightning apps are served from a different domain than Salesforce](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
+APIs, and the default CSP policy doesn’t allow API calls from JavaScript code. You change the policy, and the content of the CSP header,
+by adding Trusted URLs.
+
+Important: Otherwise, you can’t load JavaScript resources from a third party, even if it’s a trusted URL. To use a JavaScript library
+from a third-party site, add that third-party site to a static resource, and then add the static resource to your component. After the
+library is loaded from the static resource, you can use it as normal.
+
+
+Using JavaScript Making API Calls from Components
+
+Sometimes, you have to make API calls from server-side controllers rather than client-side code. In particular, you can’t make calls to
+Salesforce APIs from client-side Aura component code. For information about making API calls from server-side controllers, see Making
+API Calls from Apex on page 448.
+
+SEE ALSO:
+
+_Security for Lightning Components:_ [Content Security Policy Overview](https://developer.salesforce.com/docs/platform/lightning-components-security/guide/content-security-policy-intro.html)
+
+
+# CHAPTER 11 Working with Salesforce Data
+
+In this chapter ...
+
+**•** Lightning Data
+Service
+
+**•** Using Apex
+
+To create, read, and update Salesforce data from an Aura component, use Lightning Data Service via
+`force:recordData` or the form-based components. To delete Salesforce data, use
+`force:recordData` .
+
+
+## Working with Salesforce Data Lightning Data Service Lightning Data Service
+
+Use Lightning Data Service to load, create, edit, or delete a record in your component without requiring Apex code. Lightning Data
+Service handles sharing rules and field-level security for you. In addition to simplifying access to Salesforce data, Lightning Data Service
+improves performance and user interface consistency.
+
+At the simplest level, you can think of Lightning Data Service as the Lightning components version of the Visualforce standard controller.
+While this statement is an over-simplification, it serves to illustrate a point. Whenever possible, use Lightning Data Service to read and
+modify Salesforce data in your components.
+
+Data access with Lightning Data Service is simpler than the equivalent using a server-side Apex controller. Read-only access can be
+entirely declarative in your component’s markup. For code that modifies data, your component’s JavaScript controller is roughly the
+same amount of code, and you eliminate the Apex entirely. All your data access code is consolidated into your component, which
+significantly reduces complexity.
+
+## Lightning Data Service provides other benefits aside from the code. It’s built on highly efficient local storage that’s shared across all
+
+components that use it. Records loaded in Lightning Data Service are cached and shared across components.
+
+[Note: Working with Lightning Data Service in Lightning Web Components? See the Lightning Web Components Developer](https://developer.salesforce.com/docs/component-library/documentation/lwc/lwc.data_ui_api)
+[Guide.](https://developer.salesforce.com/docs/component-library/documentation/lwc/lwc.data_ui_api)
+
+Components accessing the same record see significant performance improvements, because a record is loaded only once, no matter
+how many components are using it. Shared records also improve user interface consistency. When one component updates a record,
+the other components using it are notified, and in most cases, refresh automatically.
+
+Creating Components That Use Lightning Data Service
+
+## Lightning Data Service is available through force:recordData and several base components. To return raw record data, for
+
+example if you need to view or edit only a few fields, and don't need any UI elements or layout information, use `force:recordData` .
+When using `force:recordData`, load the data once and pass it to child components as attributes. This approach reduces the
+number of listeners and minimizes server calls, which improves performance and ensures that your components show consistent data.
+[For more information, see force:recordData documentation.](https://developer.salesforce.com/docs/component-library/bundle/force:recordData/documentation)
+
+To create a form for working with records, use `lightning:recordForm`, `lightning:recordEditForm`, or
+`lightning:recordViewForm` . One advantage of using the form-based components is that you can achieve many of your record
+display needs entirely in markup without JavaScript. Another powerful feature of the form-based components is automatic field mapping
+with field-level validation. The form-based components use a base component that’s appropriate for the field type to render the field
+automatically.
+
+`force:recordData` doesn’t include any UI elements; it’s simply logic and a way to communicate to the server. Here are the
+components that use Lightning Data Service.
+
+```
+   lightning:recordForm
+```
+
+Display, create, or edit records
+
+```
+   lightning:recordViewForm
+```
+
+Display records with `lightning:outputField`
+
+```
+   lightning:recordEditForm
+```
+
+Create or edit records with `lightning:inputField`
+
+```
+   force:recordData
+```
+
+Create, edit, or delete record data using your own custom UI components
+
+
+### Working with Salesforce Data Loading a Record
+
+IN THIS SECTION:
+
+### Loading a Record
+
+Loading a record can be accomplished entirely in markup using `lightning:recordForm` . If you need a custom layout, use
+`lightning:recordViewForm` . If you need more customization than the form-based components allow for viewing record
+data, use `force:recordData` .
+
+Editing a Record
+The simplest way to create a form that enables you to edit a record is to use the `lightning:recordForm` component. If you
+want to customize the form layout or preload custom values, use `lightning:recordEditForm` . If you want to customize
+a form more than the form-based components allow, use `force:recordData` .
+
+Creating a Record
+The simplest way to create a form that enables users create a record is to use `lightning:recordForm` . If you want to customize
+the form layout or preload custom values, use `lightning:recordEditForm` . If you need more customization than the
+form-based components allow, use `force:recordData` .
+
+Deleting a Record
+To delete a record using Lightning Data Service, call `deleteRecord` on the `force:recordData` component, and pass in
+a callback function to be invoked after the delete operation completes. The form-based components, such as
+`lightning:recordForm`, don’t currently support deleting a record.
+
+Record Changes
+To perform more advanced tasks using `force:recordData` when the record changes, handle the `recordUpdated` event.
+You can handle record loaded, updated, and deleted changes, applying different actions to each change type.
+
+Handling Errors
+Lightning Data Service returns an error when a resource, such as a record or an object, is inaccessible on the server.
+
+Changing the Display Density
+In Lightning Experience, the display density setting determines how densely content is displayed and where field labels are located.
+Display density is controlled for the org in Setup, and users can also set display density to their liking from their profile menu.
+
+Considerations
+Lightning Data Service is powerful and simple to use. However, it’s not a complete replacement for writing your own data access
+code. Here are some considerations to keep in mind when using it.
+
+Lightning Action Examples
+Here are some examples that use the base components to create a Quick Contact action panel.
+
+SaveRecordResult
+Represents the result of a Lightning Data Service operation that makes a persistent change to record data.
+
+Displaying the Create and Edit Record Modals
+You can take advantage of built-in events to display modals that let you create or edit records via an Aura component.
+
+### Loading a Record
+
+Loading a record can be accomplished entirely in markup using `lightning:recordForm` . If you need a custom layout, use
+`lightning:recordViewForm` . If you need more customization than the form-based components allow for viewing record data,
+use `force:recordData` .
+
+
+Working with Salesforce Data Loading a Record
+
+Display a Record Using **`lightning:recordForm`**
+
+To display a record using `lightning:recordForm`, provide the record ID and the object API name. Additionally, provide fields
+using either the `fields` or `layoutType` attribute. You can display a record in two modes using the `mode` attribute.
+
+```
+   view
+```
+
+Loads the form using output fields with inline editing enabled. Editable fields have edit icons. If a user clicks an edit icon, editable
+fields in the form become editable, and the form displays Cancel and Save buttons. This is the default mode when a record ID is
+provided.
+
+```
+   readonly
+```
+
+Loads the form with output fields only. The form doesn’t include edit icons or Cancel and Save buttons.
+
+This example displays an account record in view mode using the compact layout, which includes fewer fields than the full layout. The
+`columns` attribute displays the record fields in two columns that are evenly sized. Update the record ID with your own.
+
+```
+   <aura:component>
+
+      <lightning:recordForm
+
+        recordId="001XXXXXXXXXXXXXXX"
+
+        objectApiName="Account"
+
+        layoutType="Compact"
+
+        columns="2"/>
+
+   </aura:component>
+
+```
+
+To display the field values on a record page, implement the `flexipage:availableForRecordHome` and
+`flexipage:hasRecordId` . The component automatically inherits the record ID.
+
+This example displays read-only values for the account’s `Name` and `Industry` fields. Add this example to an account record page.
+
+```
+   <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+
+      <aura:attribute name="recordId" type="String" />
+
+      <aura:attribute name="fields" type="String[]" default="['Name','Industry']" />
+
+      <lightning:recordForm recordId="{!v.recordId}"
+
+                   objectApiName="Account"
+
+                   mode="readonly"
+
+                   fields="{!v.fields}" />
+
+```
+
+If you provide both `fields` and `layoutType` attributes, the display order of the fields is not guaranteed. To specify the field order,
+use `fields` without the `layoutType` attribute. Alternatively, use the `lightning:recordViewForm` component as shown
+in the next section.
+
+Display a Record with a Custom Layout Using **`lightning:recordViewForm`**
+
+To display a read-only record with a custom layout, use the `lightning:recordViewForm` component. To compose a form field,
+use `lightning:outputField` components, which maps to a Salesforce field by using the `fieldName` attribute. Including
+individual fields lets you style a custom layout using the Lightning Design System utility classes, such as the grid system.
+
+```
+   <aura:component>
+
+      <lightning:recordViewForm recordId="001XXXXXXXXXXXXXXX"
+
+                     objectApiName="Account">
+
+      <div class="slds-grid">
+
+        <div class="slds-col slds-size_2-of-3">
+
+           <lightning:outputField fieldName="Name" />
+
+           <lightning:outputField fieldName="Phone" />
+
+        </div>
+
+        <div class="slds-col slds-size_1-of-3">
+
+```
+
+
+Working with Salesforce Data Loading a Record
+
+```
+           <lightning:outputField fieldName="Industry" />
+
+           <lightning:outputField fieldName="AnnualRevenue" />
+
+        </div>
+
+      </div>
+
+   </lightning:recordViewForm>
+
+   </aura:component>
+
+```
+
+If you require more customization when displaying a record than what `lightning:recordForm` and
+`lightning:recordViewForm` allow, consider using `force:recordData` .
+
+Display Record Data in a Custom User Interface Using **`force:recordData`**
+
+`force:recordData` enables granular customization, including providing your own component to load data. To load a record using
+Lightning Data Service, add the `force:recordData` tag to your component and specify:
+
+**•** The ID of the record to load
+
+**•** A component attribute to assign the loaded record
+
+**•** A list of fields to load
+
+To specify a list of fields to load, use the `fields` attribute. For example, `fields="Name,BillingCity,BillingState"` .
+
+Alternatively, you can specify a layout using the `layoutType` attribute. All fields on that layout are loaded for the record. The layout
+depends on the page layout assignment for the profile. For example, if a user using the Marketing User profile is assigned the default
+account layout, all fields on that layout are available to that user. Layouts are typically modified by administrators, so `layoutType`
+isn’t as flexible as `fields` when you want to request specific fields. Loading record data using `layoutType` allows your component
+to adapt to layout definitions. Valid values for `layoutType` are `FULL` and `COMPACT` .
+
+Note: We recommend that you use the `fields` attribute instead of `layoutType` . Use `layoutType` only if you want the
+administrator, not the component, to control the fields that are provisioned. The component must handle receiving every field
+that is assigned to the layout for the context user.
+
+To get a field from an object regardless of whether an admin has included it in a layout, use the `fields` attribute and request the field
+by name.
+
+`targetRecord` is populated with the current record, containing the fields relevant to the requested `layoutType` or the fields
+listed in the `fields` attribute. `targetFields` is populated with a simplified view of the loaded record. For example, for the `Name`
+field, `v.targetRecord.fields.Name.value` is equivalent to `v.targetFields.Name` .
+
+Example: **Loading a Record**
+
+The following example illustrates the essentials of loading a record using `force:recordData` . This component can be added
+to a record home page in the Lightning App Builder, or as a custom action. The record ID is supplied by the implicit `recordId`
+attribute added by the `force:hasRecordId` interface.
+
+```
+     ldsLoad.cmp
+
+      <aura:component implements="flexipage:availableForRecordHome,
+
+      force:lightningQuickActionWithoutHeader, force:hasRecordId">
+
+        <aura:attribute name="record" type="Object"/>
+
+        <aura:attribute name="simpleRecord" type="Object"/>
+
+        <aura:attribute name="recordError" type="String"/>
+
+        <force:recordData aura:id="recordLoader"
+
+         fields="Name,BillingCity,BillingState,Industry"
+
+         recordId="{!v.recordId}"
+
+```
+
+
+Working with Salesforce Data Loading a Record
+
+```
+         targetFields="{!v.simpleRecord}"
+
+         targetError="{!v.recordError}"
+
+         recordUpdated="{!c.handleRecordUpdated}"
+
+         />
+
+        <!-- Display a lightning card with details about the record -->
+
+        <div class="Record Details">
+
+        <lightning:card iconName="standard:account" title="{!v.simpleRecord.Name}" >
+
+           <div class="slds-p-horizontal--small">
+
+             <p class="slds-text-heading--small">
+
+               <lightning:formattedText title="Billing City"
+
+      value="{!v.simpleRecord.BillingCity}" /></p>
+
+             <p class="slds-text-heading--small">
+
+               <lightning:formattedText title="Billing State"
+
+      value="{!v.simpleRecord.BillingState}" /></p>
+
+           </div>
+
+        </lightning:card>
+
+        </div>
+
+        <!-- Display Lightning Data Service errors, if any -->
+
+        <aura:if isTrue="{!not(empty(v.recordError))}">
+
+           <div class="recordError">
+
+             {!v.recordError}</div>
+
+        </aura:if>
+
+      </aura:component>
+
+```
+
+When you use the `fields` attribute, the `targetFields` attribute returns the record’s `Id` and `SystemModstamp` fields,
+in addition to the fields you requested. In this example, `{!v.simpleRecord}` returns:
+
+```
+      {
+
+       "Id":"0011a0000000000000",
+
+       "Name":"Salesforce",
+
+       "SystemModstamp":"2020-06-14T23:44:43.000Z",
+
+       "BillingCity":"San Franscisco",
+
+       "BillingState":"CA",
+
+       "Industry":"Technology"
+
+      }
+
+     ldsLoadController.js
+
+      ({
+
+        handleRecordUpdated: function(component, event, helper) {
+
+           var eventParams = event.getParams();
+
+           if(eventParams.changeType === "LOADED") {
+
+            // record is loaded (render other component which needs record data value)
+
+             console.log("Record is loaded successfully.");
+
+             console.log("You loaded a record in " +
+
+                    component.get("v.simpleRecord.Industry"));
+
+           } else if(eventParams.changeType === "CHANGED") {
+
+             // record is changed
+
+           } else if(eventParams.changeType === "REMOVED") {
+
+             // record is deleted
+
+           } else if(eventParams.changeType === "ERROR") {
+
+             // there’s an error while loading, saving, or deleting the record
+
+```
+
+
+### Working with Salesforce Data Editing a Record
+
+```
+           }
+
+        }
+
+      })
+
+```
+
+When the record loads or updates, to access the record fields in the JavaScript controller, use the
+`component.get("v.simpleRecord.fieldName")` syntax.
+
+`force:recordData` loads data asynchronously by design since it may go to the server to retrieve data. To track when the
+record is loaded or changed, use the `recordUpdated` event as shown in the previous example. Alternatively, you can place
+a change handler on the attribute provided to `targetRecord` or `targetFields` .
+
+SEE ALSO:
+
+_Component Library_ : `[lightning:recordForm](https://developer.salesforce.com/docs/component-library/bundle/lightning:recordForm/documentation)`
+
+_Component Library_ : `[lightning:recordViewForm](https://developer.salesforce.com/docs/component-library/bundle/lightning:recordViewForm/documentation)`
+
+Configure Components for Lightning Experience Record Pages
+
+Configure Components for Record-Specific Actions
+
+### Editing a Record
+
+The simplest way to create a form that enables you to edit a record is to use the `lightning:recordForm` component. If you
+want to customize the form layout or preload custom values, use `lightning:recordEditForm` . If you want to customize a form
+more than the form-based components allow, use `force:recordData` .
+
+Edit a Record using **`lightning:recordForm`**
+
+To edit a record using `lightning:recordForm`, provide the record ID and object API name. When you provide a record ID, view
+mode is the default mode of this component, which displays fields with edit icons. If you click an edit icon, all fields in the form become
+editable.
+
+This example creates a form that lets users update fields on an account record when an edit icon is clicked. It displays the fields from the
+compact layout in two columns. Add this example component to an account record page. The component inherits the record ID via
+the `force:hasRecordId` interface.
+
+```
+   <aura:component implements="flexipage:availableForRecordHome, force:hasRecordId">
+
+      <lightning:recordForm
+
+        recordId = "{!v.recordId}"
+
+        objectApiName="Account"
+
+        layoutType="Compact"
+
+        columns="2" />
+
+   </aura:component>
+
+```
+
+When the record is saved successfully, all components that contain the updated field values are refreshed automatically.
+
+Add `mode="edit"` to transform the form to one that displays input fields for editing. The form displays a Save button that updates
+the record, and a Cancel button that reverts changes.
+
+```
+   <aura:component implements="flexipage:availableForRecordHome, force:hasRecordId">
+
+      <lightning:recordForm
+
+        recordId = "{!v.recordId}"
+
+        objectApiName="Account"
+
+        layoutType="Compact"
+
+```
+
+
+Working with Salesforce Data Editing a Record
+
+```
+        mode="edit" />
+
+   </aura:component>
+
+```
+
+Customize Error Handling in **`lightning:recordForm`**
+
+To customize the behavior when a record is saved successfully, use the `onsuccess` event handler. Errors are automatically handled
+and displayed. To customize them, use the `onerror` event handler.
+
+```
+   <aura:component implements="flexipage:availableForRecordHome, force:hasRecordId">
+
+      <!-- Displays a toast notification -->
+
+      <lightning:notificationsLibrary aura:id="notifLib" />
+
+      <lightning:recordForm
+
+        recordId = "{!v.recordId}"
+
+        objectApiName="Account"
+
+        layoutType="Compact"
+
+        mode="edit"
+
+        onsuccess="{!c.handleSuccess}"
+
+        onerror="{!c.handleError}"/>
+
+   </aura:component>
+
+```
+
+A toast notification is displayed when a record is saved successfully or when an error is encountered during save.
+
+```
+   ({
+
+      handleSuccess: function (cmp, event, helper) {
+
+        cmp.find('notifLib').showToast({
+
+           "title": "Record updated!",
+
+           "message": "The record "+ event.getParam("id") + " has been updated
+
+   successfully.",
+
+           "variant": "success"
+
+        });
+
+      },
+
+      handleError: function (cmp, event, helper) {
+
+        cmp.find('notifLib').showToast({
+
+           "title": "Something has gone wrong!",
+
+           "message": event.getParam("message"),
+
+           "variant": "error"
+
+        });
+
+      }
+
+   })
+
+```
+
+[Note: For more information, see lightning:recordForm.](https://developer.salesforce.com/docs/component-library/bundle/lightning:recordForm/documentation)
+
+Edit a Record with a Custom Layout Using **`lightning:recordEditForm`**
+
+To provide a custom layout for your form fields, use the `lightning:recordEditForm` component.
+
+Pass in the fields to `lightning:inputField`, which displays an input control based on the record field type.
+
+This example displays a form with two fields using a custom layout. Add this example component to an account record page.
+
+```
+   <aura:component implements="flexipage:availableForRecordHome, force:hasRecordId">
+
+      <lightning:recordEditForm
+
+```
+
+
+Working with Salesforce Data Editing a Record
+
+```
+        recordId="{!v.recordId}"
+
+        objectApiName="Account">
+
+        <lightning:messages />
+
+           <div class="slds-grid">
+
+             <div class="slds-col slds-size_1-of-2">
+
+               <lightning:inputField fieldName="Name"/>
+
+             </div>
+
+             <div class="slds-col slds-size_1-of-2">
+
+               <lightning:inputField fieldName="Industry"/>
+
+             </div>
+
+           </div>
+
+        <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
+
+      </lightning:recordEditForm>
+
+   </aura:component>
+
+```
+
+When a server error is encountered, `lightning:recordEditForm` displays an error message above the form fields using the
+`lightning:messages` component. Alternatively, provide your own error handling using the `onerror` event handler.
+
+Another feature that `lightning:recordEditForm` provides that’s not available with `lightning:recordForm` is displaying
+the form with custom field values, as shown in the next section.
+
+Prepopulate Field Values
+
+To provide a custom field value when the form displays, use the `value` attribute on `lightning:inputField` . If you're providing
+a record ID, the value returned by the record on load does not override this custom value.
+
+Alternatively, set the field value using this syntax.
+
+```
+   cmp.find("nameField").set("v.value", "My New Account Name");
+
+```
+
+[Note: For more information, see lightning:recordEditForm.](https://developer.salesforce.com/docs/component-library/bundle/lightning:recordEditForm/documentation)
+
+If you require more customization when creating a record than what `lightning:recordForm` and
+`lightning:recordEditForm` allow, consider using `force:recordData` .
+
+Edit a Record via a Custom User Interface Using **`force:recordData`**
+
+To edit and save a record using `force:recordData`, call `saveRecord` and pass in a callback function to be invoked after the
+save operation completes. The save operation is used in two cases.
+
+**•** To save changes to an existing record
+
+**•** To create and save a new record
+
+To save changes to an existing record, load the record in EDIT mode and call `saveRecord` on the `force:recordData` component.
+
+To save a new record, and thus create it, create the record from a record template, as described in Creating a Record. Then call
+`saveRecord` on the `force:recordData` component.
+
+Load a Record in EDIT Mode
+
+To load a record that might be updated, set the `force:recordData` tag’s `mode` attribute to “EDIT”. Other than explicitly setting
+the `mode`, loading a record for editing is the same as loading it for any other purpose.
+
+Note: Since Lightning Data Service records are shared across multiple components, loading records provides the component
+with a copy of the record instead of a direct reference. If a component loads a record in VIEW mode, Lightning Data Service
+
+
+Working with Salesforce Data Editing a Record
+
+automatically overwrites that copy with a newer copy of the record when the record is changed. If a record is loaded in EDIT mode,
+the record is not updated when the record is changed. This prevents unsaved changes from appearing in components that
+reference the record while the record is being edited, and prevents any edits in progress from being overwritten. Notifications are
+still sent in both modes.
+
+Call **`saveRecord`** to Save Record Changes
+
+To perform the save operation, call `saveRecord` on the `force:recordData` component from the appropriate controller action
+handler. The `saveRecord` method takes one argument—a callback function to be invoked when the operation completes. This
+callback function receives a `SaveRecordResult` as its only parameter. `SaveRecordResult` includes a `state` attribute that
+indicates success or error, and other details you can use to handle the result of the operation.
+
+Example: **Saving a Record**
+
+The following example illustrates the essentials of saving a record using Lightning Data Service. It’s intended for use on a record
+page. The record ID is supplied by the implicit `recordId` attribute added by the `force:hasRecordId` interface.
+
+```
+     ldsSave.cmp
+
+      <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+
+        <aura:attribute name="record" type="Object"/>
+
+        <aura:attribute name="simpleRecord" type="Object"/>
+
+        <aura:attribute name="recordError" type="String"/>
+
+        <force:recordData aura:id="recordHandler"
+
+         recordId="{!v.recordId}"
+
+         fields="Name,BillingState,BillingCity"
+
+         targetRecord="{!v.record}"
+
+         targetFields="{!v.simpleRecord}"
+
+         targetError="{!v.recordError}"
+
+         mode="EDIT"
+
+         recordUpdated="{!c.handleRecordUpdated}"
+
+         />
+
+        <!-- Display a lightning card with details about the record -->
+
+        <div class="Record Details">
+
+           <lightning:card iconName="standard:account" title="{!v.simpleRecord.Name}" >
+
+             <div class="slds-p-horizontal--small">
+
+               <p class="slds-text-heading--small">
+
+                  <lightning:formattedText title="Billing State"
+
+      value="{!v.simpleRecord.BillingState}" /></p>
+
+               <p class="slds-text-heading--small">
+
+                  <lightning:formattedText title="Billing City"
+
+      value="{!v.simpleRecord.BillingCity}" /></p>
+
+             </div>
+
+           </lightning:card>
+
+        </div>
+
+        <!-- Display an editing form -->
+
+        <div class="Record Details">
+
+           <lightning:card iconName="action:edit" title="Edit Account">
+
+             <div class="slds-p-horizontal--small">
+
+               <lightning:input label="Account Name" value="{!v.simpleRecord.Name}"/>
+
+```
+
+
+Working with Salesforce Data Editing a Record
+
+```
+               <br/>
+
+               <lightning:button label="Save Account" variant="brand"
+
+      onclick="{!c.handleSaveRecord}" />
+
+             </div>
+
+           </lightning:card>
+
+        </div>
+
+        <!-- Display Lightning Data Service errors, if any -->
+
+        <aura:if isTrue="{!not(empty(v.recordError))}">
+
+           <div class="recordError">
+
+             {!v.recordError}</div>
+
+        </aura:if>
+
+      </aura:component>
+
+```
+
+To improve performance, we recommend using the `fields` attribute to query only the fields you need. Use `layoutType`
+only if you expect to display or edit a large number of fields on the compact or full layout.
+
+Note: To edit the constituent fields on compound fields, such as the FirstName and LastName fields in the Name compound
+field, create a separate `lightning:input` component for `{!v.simpleRecord.FirstName}` and
+`{!v.simpleRecord.LastName}` .
+
+This component loads a record using `force:recordData` set to EDIT mode, and provides a form for editing record values.
+(In this simple example, just the record name field.)
+
+```
+     ldsSaveController.js
+
+      ({
+
+        handleSaveRecord: function(component, event, helper) {
+
+          component.find("recordHandler").saveRecord($A.getCallback(function(saveResult)
+
+      {
+
+             // use the recordUpdated event handler to handle generic logic when record
+
+      is changed
+
+             if (saveResult.state === "SUCCESS" || saveResult.state === "DRAFT") {
+
+               // handle component related logic in event handler
+
+             } else if (saveResult.state === "INCOMPLETE") {
+
+               console.log("User is offline, device doesn't support drafts.");
+
+             } else if (saveResult.state === "ERROR") {
+
+               console.log('Problem saving record, error: ' +
+
+      JSON.stringify(saveResult.error));
+
+             } else {
+
+               console.log('Unknown problem, state: ' + saveResult.state + ', error:
+
+      ' + JSON.stringify(saveResult.error));
+
+             }
+
+           }));
+
+        },
+
+        /**
+
+         * Control the component behavior here when record is changed (via any component)
+
+         */
+
+        handleRecordUpdated: function(component, event, helper) {
+
+           var eventParams = event.getParams();
+
+           if(eventParams.changeType === "CHANGED") {
+
+             // get the fields that changed for this record
+
+```
+
+
+### Working with Salesforce Data Creating a Record
+
+```
+             var changedFields = eventParams.changedFields;
+
+             console.log('Fields that are changed: ' + JSON.stringify(changedFields));
+
+             // record is changed, so refresh the component (or other component logic)
+
+             var resultsToast = $A.get("e.force:showToast");
+
+             resultsToast.setParams({
+
+               "title": "Saved",
+
+               "message": "The record was updated."
+
+             });
+
+             resultsToast.fire();
+
+           } else if(eventParams.changeType === "LOADED") {
+
+             // record is loaded in the cache
+
+           } else if(eventParams.changeType === "REMOVED") {
+
+             // record is deleted and removed from the cache
+
+           } else if(eventParams.changeType === "ERROR") {
+
+             // there’s an error while loading, saving or deleting the record
+
+           }
+
+        }
+
+      })
+
+```
+
+The `handleSaveRecord` action here is a minimal version. There’s no form validation or real error handling. Whatever is
+entered in the form is attempted to be saved to the record.
+
+If you are creating multiple instances of `force:recordData` on a page, provide your `saveRecord` and `recordUpdated`
+handlers accordingly. For example, if you have two instances of `force:recordData` that updates the same record, assign a
+different `aura:id` to each instance, such that `saveRecord` is called uniquely, and subsequently the `recordUpdated`
+handler.
+
+SEE ALSO:
+
+_Component Library_ : `[lightning:recordForm](https://developer.salesforce.com/docs/component-library/bundle/lightning:recordForm/documentation)`
+
+_Component Library_ : `[lightning:recordEditForm](https://developer.salesforce.com/docs/component-library/bundle/lightning:recordEditForm/documentation)`
+
+SaveRecordResult
+
+Configure Components for Lightning Experience Record Pages
+
+Configure Components for Record-Specific Actions
+
+### Creating a Record
+
+The simplest way to create a form that enables users create a record is to use `lightning:recordForm` . If you want to customize
+the form layout or preload custom values, use `lightning:recordEditForm` . If you need more customization than the form-based
+components allow, use `force:recordData` .
+
+Create a Record using **`lightning:recordForm`**
+
+To create a record using `lightning:recordForm`, leave out the `recordId` attribute.
+
+
+Working with Salesforce Data Creating a Record
+
+This example displays a form that creates an account record with a list of fields. The Cancel and Save buttons are displayed at the bottom
+of the form.
+
+```
+   <aura:component>
+
+      <aura:attribute name="fields"
+
+               type="String[]"
+
+               default="['Name', 'Industry']"/>
+
+      <lightning:recordForm objectApiName="Account"
+
+                   fields="{!v.fields}"/>
+
+   </aura:component>
+
+```
+
+When the record saves successfully, the fields display pencil icons to denote that inline editing is available. This view is displayed until
+you refresh or reload the page. Then the form redisplays the record fields without data, ready to create a new record.
+
 Alternatively, use the `Full` layout type, which loads all fields from the full layout to display a form that creates a record. The `columns`
 attribute displays the record fields in two columns that are evenly sized.
 
