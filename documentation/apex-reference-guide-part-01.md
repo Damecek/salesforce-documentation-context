@@ -1,7 +1,7 @@
 # Apex Reference Guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_apex_reference_guide.pdf
-> Fetched: 2026-03-15T21:08:25Z
+> Fetched: 2026-03-16T10:00:11Z
 Apex Reference Guide
 
 Version 66.0, Spring ’26

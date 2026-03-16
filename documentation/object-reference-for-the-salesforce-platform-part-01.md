@@ -1,7 +1,7 @@
 # Object Reference for the Salesforce Platform
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/object_reference.pdf
-> Fetched: 2026-03-15T21:08:59Z
+> Fetched: 2026-03-16T10:03:06Z
 Object Reference for the
 Salesforce Platform
 

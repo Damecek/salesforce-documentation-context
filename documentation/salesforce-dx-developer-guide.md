@@ -1,7 +1,7 @@
 # Salesforce DX Developer Guide
 
 > Source: https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/sfdx_dev.pdf
-> Fetched: 2026-03-15T21:08:25Z
+> Fetched: 2026-03-16T10:00:11Z
 Salesforce DX Developer Guide
 
 Version 66.0, Spring ’26
