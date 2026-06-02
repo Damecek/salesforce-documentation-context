@@ -4,12 +4,30 @@ import asyncio
 import json
 import os
 import shutil
+import ssl
 import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 import httpx
+
+
+def _build_ssl_context() -> ssl.SSLContext:
+    """Verify TLS using the OS trust store when possible.
+
+    Some Salesforce hosts (e.g. resources.docs.salesforce.com) serve an
+    incomplete certificate chain (leaf only, missing the DigiCert
+    intermediate). certifi has only roots and Python does not chase AIA, so
+    verification fails. The native macOS/Windows verifier fetches the missing
+    intermediate, so prefer truststore and fall back to the default context.
+    """
+    try:
+        import truststore
+
+        return truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+    except Exception:
+        return ssl.create_default_context()
 
 from .docs import list_markdown_docs
 from .fsutil import ensure_dir, safe_join_under, write_text_atomic
@@ -87,7 +105,10 @@ async def _run_update_async(
 
     timeout = httpx.Timeout(http_timeout_s)
     limits = httpx.Limits(max_connections=concurrency, max_keepalive_connections=concurrency)
-    async with httpx.AsyncClient(timeout=timeout, follow_redirects=True, limits=limits) as client:
+    ssl_context = _build_ssl_context()
+    async with httpx.AsyncClient(
+        timeout=timeout, follow_redirects=True, limits=limits, verify=ssl_context
+    ) as client:
         sem = asyncio.Semaphore(concurrency)
 
         async def worker(entry: SrcEntry) -> None:

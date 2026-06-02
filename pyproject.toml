@@ -7,6 +7,7 @@ requires-python = ">=3.10"
 dependencies = [
   "httpx>=0.27.0",
   "pymupdf4llm>=0.0.16",
+  "truststore>=0.9.0",
 ]
 
 [dependency-groups]
@@ -17,6 +18,9 @@ dev = [
 
 [project.scripts]
 update = "sfdocctx.cli:main"
+
+[tool.setuptools]
+packages = ["sfdocctx"]
 
 [tool.uv]
 package = true
